@@ -610,7 +610,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     }
 
     /// <summary>
-    /// 
+    /// Enumerates the allowed DataType values
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.3.0.33572")]
     [System.SerializableAttribute()]
@@ -631,107 +631,6 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
 
         /// <remarks/>
         Color,
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    [System.SerializableAttribute()]
-    public enum DataType2
-    {
-
-        /// <remarks/>
-        String,
-
-        /// <remarks/>
-        Boolean,
-
-        /// <remarks/>
-        Integer,
-
-        /// <remarks/>
-        Real,
-
-        /// <remarks/>
-        Color,
-
-        /// <remarks/>
-        Angle,
-
-        /// <remarks/>
-        FillColor,
-
-        /// <remarks/>
-        LineColor,
-
-        /// <remarks/>
-        LineWeight,
-
-        /// <remarks/>
-        Content,
-
-        /// <remarks/>
-        Markup,
-
-        /// <remarks/>
-        FontName,
-
-        /// <remarks/>
-        Bold,
-
-        /// <remarks/>
-        Italic,
-
-        /// <remarks/>
-        Underlined,
-
-        /// <remarks/>
-        Overlined,
-
-        /// <remarks/>
-        ObliqueAngle,
-
-        /// <remarks/>
-        TrackSpacing,
-
-        /// <remarks/>
-        FontHeight,
-
-        /// <remarks/>
-        HorizontalAlignment,
-
-        /// <remarks/>
-        VerticalAlignment,
-
-        /// <remarks/>
-        Justification,
-
-        /// <remarks/>
-        LineSpacing,
-
-        /// <remarks/>
-        TextColor,
-
-        /// <remarks/>
-        GhostColor,
-
-        /// <remarks/>
-        FrameLineColor,
-
-        /// <remarks/>
-        FrameFillColor,
-
-        /// <remarks/>
-        StartOffset,
-
-        /// <remarks/>
-        EndOffset,
-
-        /// <remarks/>
-        RepeatX,
-
-        /// <remarks/>
-        RepeatY,
     }
 
     /// <summary>
@@ -940,23 +839,6 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// </summary>
         /// <value>The line miter limit.</value>
         string LineMiterLimit { get; set; }
-    }
-
-    /// <summary>
-    /// Path with support for scaling. Only applicable for Symbol Definition schema
-    /// 2.4.0 and higher
-    /// </summary>
-    public interface IPathGraphic2 : IPathGraphic
-    {
-        /// <summary>
-        /// >The amount to scale the path geometry in the horizontal direction. This is only applied to the Geometry element. Defaults to 1 if not specified.
-        /// </summary>
-        string ScaleX { get; set; }
-
-        /// <summary>
-        /// The amount to scale the path geometry in the vertical direction. This is only applied to the Geometry element. Defaults to 1 if not specified
-        /// </summary>
-        string ScaleY { get; set; }
     }
 
     /// <summary>
@@ -1291,7 +1173,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// </summary>
         OverlapDirect,
         /// <summary>
-        /// 
+        /// Introduced with Symbol Definition 1.1.0 schema
         /// </summary>
         OverlapNoWrap,
         /// <summary>
@@ -1503,7 +1385,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
 
     #region Symbol Definition 1.1.0 interfaces
     /// <summary>
-    /// An extension of the text element to support rich text
+    /// An extension of the text element to support rich text. Introduced with the Symbol Definition 1.1.0 schema
     /// </summary>
     public interface ITextGraphic2 : ITextGraphic
     {
@@ -1526,6 +1408,126 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// Gets or sets the width scale applied to inter character spacing independent of the font character spacing
         /// </summary>
         string TrackSpacing { get; set; }
+    }
+
+    /// <summary>
+    /// Enumerates the allowed DataType values. Introduced with Symbol Definition 1.1.0 schema
+    /// </summary>
+    [System.SerializableAttribute()]
+    public enum DataType2
+    {
+
+        /// <remarks/>
+        String,
+
+        /// <remarks/>
+        Boolean,
+
+        /// <remarks/>
+        Integer,
+
+        /// <remarks/>
+        Real,
+
+        /// <remarks/>
+        Color,
+
+        /// <remarks/>
+        Angle,
+
+        /// <remarks/>
+        FillColor,
+
+        /// <remarks/>
+        LineColor,
+
+        /// <remarks/>
+        LineWeight,
+
+        /// <remarks/>
+        Content,
+
+        /// <remarks/>
+        Markup,
+
+        /// <remarks/>
+        FontName,
+
+        /// <remarks/>
+        Bold,
+
+        /// <remarks/>
+        Italic,
+
+        /// <remarks/>
+        Underlined,
+
+        /// <remarks/>
+        Overlined,
+
+        /// <remarks/>
+        ObliqueAngle,
+
+        /// <remarks/>
+        TrackSpacing,
+
+        /// <remarks/>
+        FontHeight,
+
+        /// <remarks/>
+        HorizontalAlignment,
+
+        /// <remarks/>
+        VerticalAlignment,
+
+        /// <remarks/>
+        Justification,
+
+        /// <remarks/>
+        LineSpacing,
+
+        /// <remarks/>
+        TextColor,
+
+        /// <remarks/>
+        GhostColor,
+
+        /// <remarks/>
+        FrameLineColor,
+
+        /// <remarks/>
+        FrameFillColor,
+
+        /// <remarks/>
+        StartOffset,
+
+        /// <remarks/>
+        EndOffset,
+
+        /// <remarks/>
+        RepeatX,
+
+        /// <remarks/>
+        RepeatY,
+    }
+    #endregion
+
+    #region Symbol Definition 2.4.0 interfaces
+    /// <summary>
+    /// Path with support for scaling. Only applicable for Symbol Definition schema
+    /// 2.4.0 and higher
+    /// </summary>
+    public interface IPathGraphic2 : IPathGraphic
+    {
+        /// <summary>
+        /// >The amount to scale the path geometry in the horizontal direction. This is only applied to the Geometry element. Defaults to 1 if not specified.
+        /// </summary>
+        string ScaleX { get; set; }
+
+        /// <summary>
+        /// The amount to scale the path geometry in the vertical direction. This is only applied to the Geometry element. Defaults to 1 if not specified
+        /// </summary>
+        string ScaleY { get; set; }
     }
     #endregion
 }

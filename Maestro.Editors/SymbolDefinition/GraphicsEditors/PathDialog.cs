@@ -60,6 +60,17 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
                 symLineMiterLimit.Bind(_path, "LineMiterLimit");
                 symLineWeight.Bind(_path, "LineWeight");
                 symLineWeightScalable.Bind(_path, "LineWeightScalable");
+
+                IPathGraphic2 path2 = _path as IPathGraphic2;
+                if (path2 != null)
+                {
+                    symScaleX.Bind(path2, "ScaleX");
+                    symScaleY.Bind(path2, "ScaleY");
+                }
+                else
+                {
+                    tabControl1.TabPages.Remove(TAB_ADVANCED);
+                }
             }
             finally
             {

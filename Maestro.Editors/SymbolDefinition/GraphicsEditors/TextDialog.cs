@@ -83,6 +83,19 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
                 symLineColor.Bind(_frame, "LineColor");
                 symOffsetX.Bind(_frame, "OffsetX");
                 symOffsetY.Bind(_frame, "OffsetY");
+
+                var text2 = _text as ITextGraphic2;
+                if (text2 != null)
+                {
+                    symOverlined.Bind(text2, "Overlined");
+                    symObliqueAngle.Bind(text2, "ObliqueAngle");
+                    symTrackSpacing.Bind(text2, "TrackSpacing");
+                    symMarkup.Bind(text2, "Markup");
+                }
+                else
+                {
+                    tabControl1.TabPages.Remove(TAB_ADVANCED);
+                }
             }
             finally
             {

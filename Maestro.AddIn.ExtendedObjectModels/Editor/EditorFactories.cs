@@ -230,4 +230,34 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
             return new LoadProcedureEditor();
         }
     }
+
+    internal class SymbolDefinition110EditorFactory : IEditorFactory
+    {
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+
+        public SymbolDefinition110EditorFactory()
+        {
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.SymbolDefinition, "1.1.0");
+        }
+
+        public IEditorViewContent Create()
+        {
+            return new SymbolDefinitionEditor();
+        }
+    }
+
+    internal class SymbolDefinition240EditorFactory : IEditorFactory
+    {
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+
+        public SymbolDefinition240EditorFactory()
+        {
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.SymbolDefinition, "2.4.0");
+        }
+
+        public IEditorViewContent Create()
+        {
+            return new SymbolDefinitionEditor();
+        }
+    }
 }

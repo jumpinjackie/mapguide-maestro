@@ -79,11 +79,29 @@
             this.label20 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnContent = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.TAB_GENERAL = new System.Windows.Forms.TabPage();
+            this.TAB_POSITION = new System.Windows.Forms.TabPage();
+            this.TAB_FRAME = new System.Windows.Forms.TabPage();
+            this.TAB_ADVANCED = new System.Windows.Forms.TabPage();
+            this.label21 = new System.Windows.Forms.Label();
+            this.symOverlined = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.symObliqueAngle = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.label22 = new System.Windows.Forms.Label();
+            this.symTrackSpacing = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.label23 = new System.Windows.Forms.Label();
+            this.symMarkup = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.label24 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.grpTextFrame.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.TAB_GENERAL.SuspendLayout();
+            this.TAB_POSITION.SuspendLayout();
+            this.TAB_FRAME.SuspendLayout();
+            this.TAB_ADVANCED.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -106,32 +124,32 @@
             resources.ApplyResources(this.symFontUnderlined, "symFontUnderlined");
             this.symFontUnderlined.Name = "symFontUnderlined";
             this.symFontUnderlined.SupportedEnhancedDataTypes = null;
-            this.symFontUnderlined.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symFontUnderlined.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symFontUnderlined.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symFontItalic
             // 
             resources.ApplyResources(this.symFontItalic, "symFontItalic");
             this.symFontItalic.Name = "symFontItalic";
             this.symFontItalic.SupportedEnhancedDataTypes = null;
-            this.symFontItalic.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symFontItalic.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symFontItalic.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symFontBold
             // 
             resources.ApplyResources(this.symFontBold, "symFontBold");
             this.symFontBold.Name = "symFontBold";
             this.symFontBold.SupportedEnhancedDataTypes = null;
-            this.symFontBold.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symFontBold.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symFontBold.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symFontFamily
             // 
             resources.ApplyResources(this.symFontFamily, "symFontFamily");
             this.symFontFamily.Name = "symFontFamily";
             this.symFontFamily.SupportedEnhancedDataTypes = null;
-            this.symFontFamily.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symFontFamily.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symFontFamily.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // lnkSelectFont
             // 
@@ -196,40 +214,40 @@
             resources.ApplyResources(this.symPositionY, "symPositionY");
             this.symPositionY.Name = "symPositionY";
             this.symPositionY.SupportedEnhancedDataTypes = null;
-            this.symPositionY.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symPositionY.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symPositionY.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symPositionX
             // 
             resources.ApplyResources(this.symPositionX, "symPositionX");
             this.symPositionX.Name = "symPositionX";
             this.symPositionX.SupportedEnhancedDataTypes = null;
-            this.symPositionX.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symPositionX.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symPositionX.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symAngle
             // 
             resources.ApplyResources(this.symAngle, "symAngle");
             this.symAngle.Name = "symAngle";
             this.symAngle.SupportedEnhancedDataTypes = null;
-            this.symAngle.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symAngle.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symAngle.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symHeightScalable
             // 
             resources.ApplyResources(this.symHeightScalable, "symHeightScalable");
             this.symHeightScalable.Name = "symHeightScalable";
             this.symHeightScalable.SupportedEnhancedDataTypes = null;
-            this.symHeightScalable.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symHeightScalable.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symHeightScalable.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symHeight
             // 
             resources.ApplyResources(this.symHeight, "symHeight");
             this.symHeight.Name = "symHeight";
             this.symHeight.SupportedEnhancedDataTypes = null;
-            this.symHeight.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symHeight.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symHeight.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // label10
             // 
@@ -268,24 +286,24 @@
             resources.ApplyResources(this.symAlignmentJustification, "symAlignmentJustification");
             this.symAlignmentJustification.Name = "symAlignmentJustification";
             this.symAlignmentJustification.SupportedEnhancedDataTypes = null;
-            this.symAlignmentJustification.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symAlignmentJustification.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symAlignmentJustification.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symAlignmentVertical
             // 
             resources.ApplyResources(this.symAlignmentVertical, "symAlignmentVertical");
             this.symAlignmentVertical.Name = "symAlignmentVertical";
             this.symAlignmentVertical.SupportedEnhancedDataTypes = null;
-            this.symAlignmentVertical.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symAlignmentVertical.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symAlignmentVertical.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symAlignmentHorizontal
             // 
             resources.ApplyResources(this.symAlignmentHorizontal, "symAlignmentHorizontal");
             this.symAlignmentHorizontal.Name = "symAlignmentHorizontal";
             this.symAlignmentHorizontal.SupportedEnhancedDataTypes = null;
-            this.symAlignmentHorizontal.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symAlignmentHorizontal.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symAlignmentHorizontal.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // label11
             // 
@@ -321,32 +339,32 @@
             resources.ApplyResources(this.symOffsetY, "symOffsetY");
             this.symOffsetY.Name = "symOffsetY";
             this.symOffsetY.SupportedEnhancedDataTypes = null;
-            this.symOffsetY.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symOffsetY.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symOffsetY.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symOffsetX
             // 
             resources.ApplyResources(this.symOffsetX, "symOffsetX");
             this.symOffsetX.Name = "symOffsetX";
             this.symOffsetX.SupportedEnhancedDataTypes = null;
-            this.symOffsetX.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symOffsetX.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symOffsetX.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symFillColor
             // 
             resources.ApplyResources(this.symFillColor, "symFillColor");
             this.symFillColor.Name = "symFillColor";
             this.symFillColor.SupportedEnhancedDataTypes = null;
-            this.symFillColor.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symFillColor.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symFillColor.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symLineColor
             // 
             resources.ApplyResources(this.symLineColor, "symLineColor");
             this.symLineColor.Name = "symLineColor";
             this.symLineColor.SupportedEnhancedDataTypes = null;
-            this.symLineColor.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symLineColor.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineColor.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // label17
             // 
@@ -392,24 +410,24 @@
             resources.ApplyResources(this.symGhostColor, "symGhostColor");
             this.symGhostColor.Name = "symGhostColor";
             this.symGhostColor.SupportedEnhancedDataTypes = null;
-            this.symGhostColor.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symGhostColor.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symGhostColor.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symTextColor
             // 
             resources.ApplyResources(this.symTextColor, "symTextColor");
             this.symTextColor.Name = "symTextColor";
             this.symTextColor.SupportedEnhancedDataTypes = null;
-            this.symTextColor.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symTextColor.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symTextColor.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // symLineSpacing
             // 
             resources.ApplyResources(this.symLineSpacing, "symLineSpacing");
             this.symLineSpacing.Name = "symLineSpacing";
             this.symLineSpacing.SupportedEnhancedDataTypes = null;
-            this.symLineSpacing.ContentChanged += new System.EventHandler(this.OnContentChanged);
             this.symLineSpacing.RequestBrowse += new Maestro.Editors.SymbolDefinition.SymbolField.BrowseEventHandler(this.OnRequestBrowse);
+            this.symLineSpacing.ContentChanged += new System.EventHandler(this.OnContentChanged);
             // 
             // label18
             // 
@@ -440,21 +458,108 @@
             this.btnContent.UseVisualStyleBackColor = true;
             this.btnContent.Click += new System.EventHandler(this.btnContent_Click);
             // 
+            // tabControl1
+            // 
+            resources.ApplyResources(this.tabControl1, "tabControl1");
+            this.tabControl1.Controls.Add(this.TAB_GENERAL);
+            this.tabControl1.Controls.Add(this.TAB_POSITION);
+            this.tabControl1.Controls.Add(this.TAB_FRAME);
+            this.tabControl1.Controls.Add(this.TAB_ADVANCED);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            // 
+            // TAB_GENERAL
+            // 
+            this.TAB_GENERAL.Controls.Add(this.groupBox1);
+            this.TAB_GENERAL.Controls.Add(this.groupBox5);
+            resources.ApplyResources(this.TAB_GENERAL, "TAB_GENERAL");
+            this.TAB_GENERAL.Name = "TAB_GENERAL";
+            this.TAB_GENERAL.UseVisualStyleBackColor = true;
+            // 
+            // TAB_POSITION
+            // 
+            this.TAB_POSITION.Controls.Add(this.groupBox3);
+            this.TAB_POSITION.Controls.Add(this.groupBox2);
+            resources.ApplyResources(this.TAB_POSITION, "TAB_POSITION");
+            this.TAB_POSITION.Name = "TAB_POSITION";
+            this.TAB_POSITION.UseVisualStyleBackColor = true;
+            // 
+            // TAB_FRAME
+            // 
+            this.TAB_FRAME.Controls.Add(this.chkTextFrame);
+            this.TAB_FRAME.Controls.Add(this.grpTextFrame);
+            resources.ApplyResources(this.TAB_FRAME, "TAB_FRAME");
+            this.TAB_FRAME.Name = "TAB_FRAME";
+            this.TAB_FRAME.UseVisualStyleBackColor = true;
+            // 
+            // TAB_ADVANCED
+            // 
+            this.TAB_ADVANCED.Controls.Add(this.symMarkup);
+            this.TAB_ADVANCED.Controls.Add(this.label24);
+            this.TAB_ADVANCED.Controls.Add(this.symTrackSpacing);
+            this.TAB_ADVANCED.Controls.Add(this.label23);
+            this.TAB_ADVANCED.Controls.Add(this.symObliqueAngle);
+            this.TAB_ADVANCED.Controls.Add(this.label22);
+            this.TAB_ADVANCED.Controls.Add(this.symOverlined);
+            this.TAB_ADVANCED.Controls.Add(this.label21);
+            resources.ApplyResources(this.TAB_ADVANCED, "TAB_ADVANCED");
+            this.TAB_ADVANCED.Name = "TAB_ADVANCED";
+            this.TAB_ADVANCED.UseVisualStyleBackColor = true;
+            // 
+            // label21
+            // 
+            resources.ApplyResources(this.label21, "label21");
+            this.label21.Name = "label21";
+            // 
+            // symOverlined
+            // 
+            resources.ApplyResources(this.symOverlined, "symOverlined");
+            this.symOverlined.Name = "symOverlined";
+            this.symOverlined.SupportedEnhancedDataTypes = null;
+            // 
+            // symObliqueAngle
+            // 
+            resources.ApplyResources(this.symObliqueAngle, "symObliqueAngle");
+            this.symObliqueAngle.Name = "symObliqueAngle";
+            this.symObliqueAngle.SupportedEnhancedDataTypes = null;
+            // 
+            // label22
+            // 
+            resources.ApplyResources(this.label22, "label22");
+            this.label22.Name = "label22";
+            // 
+            // symTrackSpacing
+            // 
+            resources.ApplyResources(this.symTrackSpacing, "symTrackSpacing");
+            this.symTrackSpacing.Name = "symTrackSpacing";
+            this.symTrackSpacing.SupportedEnhancedDataTypes = null;
+            // 
+            // label23
+            // 
+            resources.ApplyResources(this.label23, "label23");
+            this.label23.Name = "label23";
+            // 
+            // symMarkup
+            // 
+            resources.ApplyResources(this.symMarkup, "symMarkup");
+            this.symMarkup.Name = "symMarkup";
+            this.symMarkup.SupportedEnhancedDataTypes = null;
+            // 
+            // label24
+            // 
+            resources.ApplyResources(this.label24, "label24");
+            this.label24.Name = "label24";
+            // 
             // TextDialog
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnContent);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.chkTextFrame);
-            this.Controls.Add(this.grpTextFrame);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txtContent);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.groupBox1);
             this.Name = "TextDialog";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -466,6 +571,13 @@
             this.grpTextFrame.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.TAB_GENERAL.ResumeLayout(false);
+            this.TAB_POSITION.ResumeLayout(false);
+            this.TAB_FRAME.ResumeLayout(false);
+            this.TAB_FRAME.PerformLayout();
+            this.TAB_ADVANCED.ResumeLayout(false);
+            this.TAB_ADVANCED.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,5 +635,18 @@
         private SymbolField symTextColor;
         private SymbolField symLineSpacing;
         private System.Windows.Forms.Button btnContent;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage TAB_GENERAL;
+        private System.Windows.Forms.TabPage TAB_POSITION;
+        private System.Windows.Forms.TabPage TAB_FRAME;
+        private System.Windows.Forms.TabPage TAB_ADVANCED;
+        private SymbolField symMarkup;
+        private System.Windows.Forms.Label label24;
+        private SymbolField symTrackSpacing;
+        private System.Windows.Forms.Label label23;
+        private SymbolField symObliqueAngle;
+        private System.Windows.Forms.Label label22;
+        private SymbolField symOverlined;
+        private System.Windows.Forms.Label label21;
     }
 }

@@ -112,22 +112,22 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="fontDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="fontDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="symFontUnderlined.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 97</value>
   </data>
   <data name="symFontUnderlined.Size" type="System.Drawing.Size, System.Drawing">
     <value>157, 21</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="symFontUnderlined.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
@@ -135,7 +135,7 @@
     <value>symFontUnderlined</value>
   </data>
   <data name="&gt;&gt;symFontUnderlined.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symFontUnderlined.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -156,7 +156,7 @@
     <value>symFontItalic</value>
   </data>
   <data name="&gt;&gt;symFontItalic.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symFontItalic.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -177,7 +177,7 @@
     <value>symFontBold</value>
   </data>
   <data name="&gt;&gt;symFontBold.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symFontBold.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -198,7 +198,7 @@
     <value>symFontFamily</value>
   </data>
   <data name="&gt;&gt;symFontFamily.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symFontFamily.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -225,7 +225,7 @@
     <value>lnkSelectFont</value>
   </data>
   <data name="&gt;&gt;lnkSelectFont.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lnkSelectFont.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -252,7 +252,7 @@
     <value>label5</value>
   </data>
   <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label5.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -279,7 +279,7 @@
     <value>label4</value>
   </data>
   <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label4.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -306,7 +306,7 @@
     <value>label3</value>
   </data>
   <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -333,7 +333,7 @@
     <value>label2</value>
   </data>
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -342,7 +342,7 @@
     <value>8</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 73</value>
+    <value>13, 13</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>300, 128</value>
@@ -357,13 +357,13 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TAB_GENERAL</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>0</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -384,7 +384,7 @@
     <value>label6</value>
   </data>
   <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label6.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -392,7 +392,7 @@
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="txtContent.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -403,7 +403,7 @@
     <value>True</value>
   </data>
   <data name="txtContent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>492, 57</value>
+    <value>284, 57</value>
   </data>
   <data name="txtContent.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -412,13 +412,13 @@
     <value>txtContent</value>
   </data>
   <data name="&gt;&gt;txtContent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtContent.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtContent.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>3</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -439,13 +439,13 @@
     <value>label1</value>
   </data>
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>4</value>
   </data>
   <data name="symPositionY.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 123</value>
@@ -460,7 +460,7 @@
     <value>symPositionY</value>
   </data>
   <data name="&gt;&gt;symPositionY.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symPositionY.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -481,7 +481,7 @@
     <value>symPositionX</value>
   </data>
   <data name="&gt;&gt;symPositionX.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symPositionX.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -502,7 +502,7 @@
     <value>symAngle</value>
   </data>
   <data name="&gt;&gt;symAngle.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symAngle.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -523,7 +523,7 @@
     <value>symHeightScalable</value>
   </data>
   <data name="&gt;&gt;symHeightScalable.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symHeightScalable.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -544,7 +544,7 @@
     <value>symHeight</value>
   </data>
   <data name="&gt;&gt;symHeight.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symHeight.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -571,7 +571,7 @@
     <value>label10</value>
   </data>
   <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label10.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -598,7 +598,7 @@
     <value>label8</value>
   </data>
   <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label8.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -625,7 +625,7 @@
     <value>label9</value>
   </data>
   <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label9.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -652,7 +652,7 @@
     <value>label7</value>
   </data>
   <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label7.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -661,10 +661,10 @@
     <value>9</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>327, 73</value>
+    <value>16, 15</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>299, 204</value>
+    <value>299, 158</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -676,13 +676,13 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TAB_POSITION</value>
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>1</value>
   </data>
   <data name="symAlignmentJustification.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 71</value>
@@ -697,7 +697,7 @@
     <value>symAlignmentJustification</value>
   </data>
   <data name="&gt;&gt;symAlignmentJustification.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symAlignmentJustification.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -718,7 +718,7 @@
     <value>symAlignmentVertical</value>
   </data>
   <data name="&gt;&gt;symAlignmentVertical.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symAlignmentVertical.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -739,7 +739,7 @@
     <value>symAlignmentHorizontal</value>
   </data>
   <data name="&gt;&gt;symAlignmentHorizontal.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symAlignmentHorizontal.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -766,7 +766,7 @@
     <value>label11</value>
   </data>
   <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label11.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -793,7 +793,7 @@
     <value>label12</value>
   </data>
   <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label12.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -820,7 +820,7 @@
     <value>label13</value>
   </data>
   <data name="&gt;&gt;label13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label13.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -829,7 +829,7 @@
     <value>5</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 216</value>
+    <value>16, 180</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>300, 106</value>
@@ -844,13 +844,13 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TAB_POSITION</value>
   </data>
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>0</value>
   </data>
   <data name="symOffsetY.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 97</value>
@@ -865,7 +865,7 @@
     <value>symOffsetY</value>
   </data>
   <data name="&gt;&gt;symOffsetY.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symOffsetY.Parent" xml:space="preserve">
     <value>grpTextFrame</value>
@@ -886,7 +886,7 @@
     <value>symOffsetX</value>
   </data>
   <data name="&gt;&gt;symOffsetX.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symOffsetX.Parent" xml:space="preserve">
     <value>grpTextFrame</value>
@@ -907,7 +907,7 @@
     <value>symFillColor</value>
   </data>
   <data name="&gt;&gt;symFillColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symFillColor.Parent" xml:space="preserve">
     <value>grpTextFrame</value>
@@ -928,7 +928,7 @@
     <value>symLineColor</value>
   </data>
   <data name="&gt;&gt;symLineColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symLineColor.Parent" xml:space="preserve">
     <value>grpTextFrame</value>
@@ -955,7 +955,7 @@
     <value>label17</value>
   </data>
   <data name="&gt;&gt;label17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label17.Parent" xml:space="preserve">
     <value>grpTextFrame</value>
@@ -982,7 +982,7 @@
     <value>label16</value>
   </data>
   <data name="&gt;&gt;label16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label16.Parent" xml:space="preserve">
     <value>grpTextFrame</value>
@@ -1009,7 +1009,7 @@
     <value>label15</value>
   </data>
   <data name="&gt;&gt;label15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label15.Parent" xml:space="preserve">
     <value>grpTextFrame</value>
@@ -1036,7 +1036,7 @@
     <value>label14</value>
   </data>
   <data name="&gt;&gt;label14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label14.Parent" xml:space="preserve">
     <value>grpTextFrame</value>
@@ -1045,7 +1045,7 @@
     <value>7</value>
   </data>
   <data name="grpTextFrame.Location" type="System.Drawing.Point, System.Drawing">
-    <value>327, 306</value>
+    <value>12, 36</value>
   </data>
   <data name="grpTextFrame.Size" type="System.Drawing.Size, System.Drawing">
     <value>300, 127</value>
@@ -1057,19 +1057,19 @@
     <value>grpTextFrame</value>
   </data>
   <data name="&gt;&gt;grpTextFrame.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;grpTextFrame.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TAB_FRAME</value>
   </data>
   <data name="&gt;&gt;grpTextFrame.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="chkTextFrame.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="chkTextFrame.Location" type="System.Drawing.Point, System.Drawing">
-    <value>327, 283</value>
+    <value>12, 14</value>
   </data>
   <data name="chkTextFrame.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 17</value>
@@ -1084,13 +1084,13 @@
     <value>chkTextFrame</value>
   </data>
   <data name="&gt;&gt;chkTextFrame.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;chkTextFrame.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TAB_FRAME</value>
   </data>
   <data name="&gt;&gt;chkTextFrame.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="symGhostColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 73</value>
@@ -1105,7 +1105,7 @@
     <value>symGhostColor</value>
   </data>
   <data name="&gt;&gt;symGhostColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symGhostColor.Parent" xml:space="preserve">
     <value>groupBox5</value>
@@ -1126,7 +1126,7 @@
     <value>symTextColor</value>
   </data>
   <data name="&gt;&gt;symTextColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symTextColor.Parent" xml:space="preserve">
     <value>groupBox5</value>
@@ -1147,7 +1147,7 @@
     <value>symLineSpacing</value>
   </data>
   <data name="&gt;&gt;symLineSpacing.Type" xml:space="preserve">
-    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;symLineSpacing.Parent" xml:space="preserve">
     <value>groupBox5</value>
@@ -1174,7 +1174,7 @@
     <value>label18</value>
   </data>
   <data name="&gt;&gt;label18.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label18.Parent" xml:space="preserve">
     <value>groupBox5</value>
@@ -1201,7 +1201,7 @@
     <value>label19</value>
   </data>
   <data name="&gt;&gt;label19.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label19.Parent" xml:space="preserve">
     <value>groupBox5</value>
@@ -1228,7 +1228,7 @@
     <value>label20</value>
   </data>
   <data name="&gt;&gt;label20.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label20.Parent" xml:space="preserve">
     <value>groupBox5</value>
@@ -1237,7 +1237,7 @@
     <value>5</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 328</value>
+    <value>13, 150</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>300, 106</value>
@@ -1252,19 +1252,19 @@
     <value>groupBox5</value>
   </data>
   <data name="&gt;&gt;groupBox5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TAB_GENERAL</value>
   </data>
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="btnClose.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
   <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>553, 442</value>
+    <value>326, 398</value>
   </data>
   <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -1279,19 +1279,19 @@
     <value>btnClose</value>
   </data>
   <data name="&gt;&gt;btnClose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnClose.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnClose.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnContent.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="btnContent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>581, 8</value>
+    <value>373, 12</value>
   </data>
   <data name="btnContent.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 23</value>
@@ -1306,19 +1306,346 @@
     <value>btnContent</value>
   </data>
   <data name="&gt;&gt;btnContent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnContent.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnContent.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="TAB_GENERAL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="TAB_GENERAL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>381, 294</value>
+  </data>
+  <data name="TAB_GENERAL.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="TAB_GENERAL.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="&gt;&gt;TAB_GENERAL.Name" xml:space="preserve">
+    <value>TAB_GENERAL</value>
+  </data>
+  <data name="&gt;&gt;TAB_GENERAL.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_GENERAL.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;TAB_GENERAL.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="TAB_POSITION.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="TAB_POSITION.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TAB_POSITION.Size" type="System.Drawing.Size, System.Drawing">
+    <value>381, 294</value>
+  </data>
+  <data name="TAB_POSITION.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="TAB_POSITION.Text" xml:space="preserve">
+    <value>Positioning / Alignment</value>
+  </data>
+  <data name="&gt;&gt;TAB_POSITION.Name" xml:space="preserve">
+    <value>TAB_POSITION</value>
+  </data>
+  <data name="&gt;&gt;TAB_POSITION.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_POSITION.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;TAB_POSITION.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TAB_FRAME.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="TAB_FRAME.Size" type="System.Drawing.Size, System.Drawing">
+    <value>381, 294</value>
+  </data>
+  <data name="TAB_FRAME.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="TAB_FRAME.Text" xml:space="preserve">
+    <value>Text Frame</value>
+  </data>
+  <data name="&gt;&gt;TAB_FRAME.Name" xml:space="preserve">
+    <value>TAB_FRAME</value>
+  </data>
+  <data name="&gt;&gt;TAB_FRAME.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_FRAME.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;TAB_FRAME.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="symMarkup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 97</value>
+  </data>
+  <data name="symMarkup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symMarkup.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;symMarkup.Name" xml:space="preserve">
+    <value>symMarkup</value>
+  </data>
+  <data name="&gt;&gt;symMarkup.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+  </data>
+  <data name="&gt;&gt;symMarkup.Parent" xml:space="preserve">
+    <value>TAB_ADVANCED</value>
+  </data>
+  <data name="&gt;&gt;symMarkup.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label24.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label24.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 100</value>
+  </data>
+  <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 13</value>
+  </data>
+  <data name="label24.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Markup</value>
+  </data>
+  <data name="&gt;&gt;label24.Name" xml:space="preserve">
+    <value>label24</value>
+  </data>
+  <data name="&gt;&gt;label24.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
+    <value>TAB_ADVANCED</value>
+  </data>
+  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="symTrackSpacing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 70</value>
+  </data>
+  <data name="symTrackSpacing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symTrackSpacing.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;symTrackSpacing.Name" xml:space="preserve">
+    <value>symTrackSpacing</value>
+  </data>
+  <data name="&gt;&gt;symTrackSpacing.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+  </data>
+  <data name="&gt;&gt;symTrackSpacing.Parent" xml:space="preserve">
+    <value>TAB_ADVANCED</value>
+  </data>
+  <data name="&gt;&gt;symTrackSpacing.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label23.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 73</value>
+  </data>
+  <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 13</value>
+  </data>
+  <data name="label23.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Track Spacing</value>
+  </data>
+  <data name="&gt;&gt;label23.Name" xml:space="preserve">
+    <value>label23</value>
+  </data>
+  <data name="&gt;&gt;label23.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
+    <value>TAB_ADVANCED</value>
+  </data>
+  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="symObliqueAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 43</value>
+  </data>
+  <data name="symObliqueAngle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symObliqueAngle.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;symObliqueAngle.Name" xml:space="preserve">
+    <value>symObliqueAngle</value>
+  </data>
+  <data name="&gt;&gt;symObliqueAngle.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+  </data>
+  <data name="&gt;&gt;symObliqueAngle.Parent" xml:space="preserve">
+    <value>TAB_ADVANCED</value>
+  </data>
+  <data name="&gt;&gt;symObliqueAngle.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label22.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 46</value>
+  </data>
+  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 13</value>
+  </data>
+  <data name="label22.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Oblique Angle</value>
+  </data>
+  <data name="&gt;&gt;label22.Name" xml:space="preserve">
+    <value>label22</value>
+  </data>
+  <data name="&gt;&gt;label22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
+    <value>TAB_ADVANCED</value>
+  </data>
+  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="symOverlined.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 16</value>
+  </data>
+  <data name="symOverlined.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 21</value>
+  </data>
+  <data name="symOverlined.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;symOverlined.Name" xml:space="preserve">
+    <value>symOverlined</value>
+  </data>
+  <data name="&gt;&gt;symOverlined.Type" xml:space="preserve">
+    <value>Maestro.Editors.SymbolDefinition.SymbolField, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+  </data>
+  <data name="&gt;&gt;symOverlined.Parent" xml:space="preserve">
+    <value>TAB_ADVANCED</value>
+  </data>
+  <data name="&gt;&gt;symOverlined.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label21.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 19</value>
+  </data>
+  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 13</value>
+  </data>
+  <data name="label21.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Overlined</value>
+  </data>
+  <data name="&gt;&gt;label21.Name" xml:space="preserve">
+    <value>label21</value>
+  </data>
+  <data name="&gt;&gt;label21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
+    <value>TAB_ADVANCED</value>
+  </data>
+  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="TAB_ADVANCED.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="TAB_ADVANCED.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TAB_ADVANCED.Size" type="System.Drawing.Size, System.Drawing">
+    <value>381, 294</value>
+  </data>
+  <data name="TAB_ADVANCED.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="TAB_ADVANCED.Text" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="&gt;&gt;TAB_ADVANCED.Name" xml:space="preserve">
+    <value>TAB_ADVANCED</value>
+  </data>
+  <data name="&gt;&gt;TAB_ADVANCED.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_ADVANCED.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;TAB_ADVANCED.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 73</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>389, 320</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>640, 477</value>
+    <value>412, 433</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
@@ -1330,12 +1657,12 @@
     <value>fontDialog1</value>
   </data>
   <data name="&gt;&gt;fontDialog1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FontDialog, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.FontDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>TextDialog</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

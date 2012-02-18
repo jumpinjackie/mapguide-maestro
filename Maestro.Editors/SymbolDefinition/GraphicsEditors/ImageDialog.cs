@@ -87,6 +87,24 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
             }
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            try
+            {
+                _init = true;
+                symAngle.Bind(_image, "Angle");
+                symPositionX.Bind(_image, "PositionX");
+                symPositionY.Bind(_image, "PositionY");
+                symSizeScalable.Bind(_image, "SizeScalable");
+                symSizeX.Bind(_image, "SizeX");
+                symSizeY.Bind(_image, "SizeY");
+            }
+            finally
+            {
+                _init = false;
+            }
+        }
+
         private void imageType_CheckedChanged(object sender, EventArgs e)
         {
             if (_init)

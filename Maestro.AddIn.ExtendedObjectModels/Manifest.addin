@@ -26,6 +26,8 @@
         <Class id="LayerDefinitionEditor240" class="Maestro.AddIn.ExtendedObjectModels.Editor.LayerDefinition240EditorFactory" />
         <Class id="MapDefinition230" class="Maestro.AddIn.ExtendedObjectModels.Editor.MapDefinition230EditorFactory" />
         <Class id="MapDefinition240" class="Maestro.AddIn.ExtendedObjectModels.Editor.MapDefinition240EditorFactory" />
+        <Class id="SymbolDefinition110" class="Maestro.AddIn.ExtendedObjectModels.Editor.SymbolDefinition110EditorFactory" />
+        <Class id="SymbolDefinition240" class="Maestro.AddIn.ExtendedObjectModels.Editor.SymbolDefinition240EditorFactory" />
         <Class id="WatermarkDefinition230" class="Maestro.AddIn.ExtendedObjectModels.Editor.WatermarkDefinition230EditorFactory" />
         <Class id="WatermarkDefinition240" class="Maestro.AddIn.ExtendedObjectModels.Editor.WatermarkDefinition240EditorFactory" />
     </Path>

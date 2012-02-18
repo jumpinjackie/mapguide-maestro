@@ -42,7 +42,21 @@
             this.picPreview = new System.Windows.Forms.PictureBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.btnResData = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.symSizeX = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.symPositionX = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.symPositionY = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.symSizeY = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.symAngle = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.label7 = new System.Windows.Forms.Label();
+            this.symSizeScalable = new Maestro.Editors.SymbolDefinition.SymbolField();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPreview)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // rdResourceRef
@@ -131,11 +145,96 @@
             this.btnResData.UseVisualStyleBackColor = true;
             this.btnResData.Click += new System.EventHandler(this.btnResData_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.symAngle);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.symSizeScalable);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.symPositionY);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.symSizeY);
+            this.groupBox1.Controls.Add(this.symPositionX);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.symSizeX);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // symSizeX
+            // 
+            resources.ApplyResources(this.symSizeX, "symSizeX");
+            this.symSizeX.Name = "symSizeX";
+            this.symSizeX.SupportedEnhancedDataTypes = null;
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // symPositionX
+            // 
+            resources.ApplyResources(this.symPositionX, "symPositionX");
+            this.symPositionX.Name = "symPositionX";
+            this.symPositionX.SupportedEnhancedDataTypes = null;
+            // 
+            // symPositionY
+            // 
+            resources.ApplyResources(this.symPositionY, "symPositionY");
+            this.symPositionY.Name = "symPositionY";
+            this.symPositionY.SupportedEnhancedDataTypes = null;
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // symSizeY
+            // 
+            resources.ApplyResources(this.symSizeY, "symSizeY");
+            this.symSizeY.Name = "symSizeY";
+            this.symSizeY.SupportedEnhancedDataTypes = null;
+            // 
+            // symAngle
+            // 
+            resources.ApplyResources(this.symAngle, "symAngle");
+            this.symAngle.Name = "symAngle";
+            this.symAngle.SupportedEnhancedDataTypes = null;
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // symSizeScalable
+            // 
+            resources.ApplyResources(this.symSizeScalable, "symSizeScalable");
+            this.symSizeScalable.Name = "symSizeScalable";
+            this.symSizeScalable.SupportedEnhancedDataTypes = null;
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
             // ImageDialog
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnResData);
             this.Controls.Add(this.picPreview);
             this.Controls.Add(this.lnkLoadImage);
@@ -151,6 +250,8 @@
             this.Controls.Add(this.rdResourceRef);
             this.Name = "ImageDialog";
             ((System.ComponentModel.ISupportInitialize)(this.picPreview)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,5 +272,18 @@
         private System.Windows.Forms.PictureBox picPreview;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Button btnResData;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private SymbolField symSizeX;
+        private SymbolField symAngle;
+        private System.Windows.Forms.Label label7;
+        private SymbolField symSizeScalable;
+        private System.Windows.Forms.Label label8;
+        private SymbolField symPositionY;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private SymbolField symSizeY;
+        private SymbolField symPositionX;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
     }
 }
