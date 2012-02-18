@@ -87,6 +87,7 @@ namespace Maestro.Editors.LayerDefinition
                 if (cls != null)
                 {
                     grdProperties.Rows.Clear();
+                    RemoveInvalidMappings(cls);
                     foreach (var col in cls.Properties)
                     {
                         if (col.Type == OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinitionType.Data)
@@ -117,6 +118,21 @@ namespace Maestro.Editors.LayerDefinition
                         OnResourceChanged();
                     }
                 }
+            }
+        }
+
+        private void RemoveInvalidMappings(OSGeo.MapGuide.MaestroAPI.Schema.ClassDefinition cls)
+        {
+            var remove = new List<INameStringPair>();
+            foreach (var mp in _vl.PropertyMapping)
+            {
+                if (cls.FindProperty(mp.Name) == null)
+                    remove.Add(mp);
+            }
+
+            foreach (var mp in remove)
+            {
+                _vl.RemovePropertyMapping(mp);
             }
         }
 
