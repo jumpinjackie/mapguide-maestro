@@ -92,6 +92,7 @@ namespace Maestro.Editors.DrawingSource
                 _edSvc.SyncSessionCopy();
                 //Re-calc extents
                 _dws.UpdateExtents();
+                OnResourceChanged();
             }
         }
 
