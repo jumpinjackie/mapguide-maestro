@@ -27,6 +27,7 @@ using System.Windows.Forms;
 using Maestro.Shared.UI;
 using System.Diagnostics;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using Maestro.Editors.Generic;
 
 namespace Maestro.Editors.LayerDefinition.Drawing
 {
@@ -36,10 +37,12 @@ namespace Maestro.Editors.LayerDefinition.Drawing
         public DrawingLayerSettingsCtrl()
         {
             InitializeComponent();
+            _sheets = new BindingList<OSGeo.MapGuide.ObjectModels.Common.DrawingSectionListSection>();
         }
 
         private IEditorService _service;
         private IDrawingLayerDefinition _dlayer;
+        private BindingList<OSGeo.MapGuide.ObjectModels.Common.DrawingSectionListSection> _sheets;
 
         public void Bind(IEditorService service)
         {
@@ -53,12 +56,13 @@ namespace Maestro.Editors.LayerDefinition.Drawing
             Debug.Assert(_dlayer != null);
 
             TextBoxBinder.BindText(txtDrawingSource, _dlayer, "ResourceId");
-
-            var sheets = _service.DrawingService.EnumerateDrawingSections(_dlayer.ResourceId);
             cmbSheet.DisplayMember = "Title";
             cmbSheet.ValueMember = "Name";
+            cmbSheet.DataSource = _sheets;
+            PopulateSheets();
+            cmbSheet_SelectedIndexChanged(this, EventArgs.Empty);
             ComboBoxBinder.BindSelectedIndexChanged(cmbSheet, "SelectedValue", _dlayer, "Sheet");
-            cmbSheet.DataSource = sheets.Section;
+            
 
             var minBinding = new Binding("Text", _dlayer, "MinScale");
             var maxBinding = new Binding("Text", _dlayer, "MaxScale");
@@ -99,6 +103,16 @@ namespace Maestro.Editors.LayerDefinition.Drawing
 
             //This is not the root object so no change listeners have been subscribed
             _dlayer.PropertyChanged += (sender, e) => { OnResourceChanged(); };
+        }
+
+        private void PopulateSheets()
+        {
+            _sheets.Clear();
+            var sheets = _service.DrawingService.EnumerateDrawingSections(_dlayer.ResourceId);
+            foreach (var sht in sheets.Section)
+            {
+                _sheets.Add(sht);
+            }
         }
 
         private void OnResourceChanged()
@@ -179,6 +193,26 @@ namespace Maestro.Editors.LayerDefinition.Drawing
         private void btnGoToDrawingSource_Click(object sender, EventArgs e)
         {
             _service.OpenResource(txtDrawingSource.Text);
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            using (var picker = new ResourcePicker(_service.ResourceService, 
+                                                   OSGeo.MapGuide.MaestroAPI.ResourceTypes.DrawingSource, 
+                                                   ResourcePickerMode.OpenResource))
+            {
+                if (picker.ShowDialog() == DialogResult.OK)
+                {
+                    if (!txtDrawingSource.Text.Equals(picker.ResourceID))
+                    {
+                        txtDrawingSource.Text = picker.ResourceID;
+                        _dlayer.LayerFilter = string.Empty;
+                        PopulateSheets();
+                        _dlayer.Sheet = _sheets[0].Name;
+                        cmbSheet_SelectedIndexChanged(this, EventArgs.Empty);
+                    }
+                }
+            }
         }
     }
 }

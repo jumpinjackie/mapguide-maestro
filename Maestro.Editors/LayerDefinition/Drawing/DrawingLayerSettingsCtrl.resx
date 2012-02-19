@@ -502,6 +502,6 @@
     <value>DrawingLayerSettingsCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Shared.UI.CollapsiblePanel, Maestro.Shared.UI, Version=4.0.0.6359, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Shared.UI.CollapsiblePanel, Maestro.Shared.UI, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
 </root>
