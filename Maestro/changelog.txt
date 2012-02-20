@@ -1,10 +1,29 @@
-﻿4.1
----
+﻿5.0 Beta 1
+----------
 
+ - Now requires .net Framework 4.0 / Mono 2.8
+ - New IronPython Scripting Engine for application scripting and automation
+ - New command and UI to view the XML diff of an edited resource
  - New experimental GeoREST AddIn for creating and editing GeoREST configurations
  - Support for v2.4.0 resources (Web Layout, Map Definition, Layer Definition, Watermark Definition, Symbol Definition)
  - Added extra symbol definition validation rules
  - New utility for inspecting the state of a Runtime Map (RtMapInspector.exe)
+ - Imporved Symbol Definition editor UIs with support for missing schema elements
+ - New Feature Manipulation APIs
+ - Http Connection Provider supports a GeoREST url parameter, which allows for feature manipulation support
+ - New shortcut buttons to jump from Layer Definition to Feature/Drawing Source
+ - Fix: Clear connection status before testing it in Feature Source Editor
+ - Fix: ResourcePicker fixes to optimize usability
+ - Fix: Incorrect map extent serialization
+ - Fix: Incorrect validation flag when saving a Map Definition that references an empty Feature Source
+ - Fix: Incorrect deserialization of Class Definitions
+ - Fix: Browse button in Drawing Source Layer editor does nothing
+ - Fix: Unnecessary dirty state flagging in Generic Feature Source Editor and Layer Definition editors
+ - Fix: Map Definition Editor dirty state flagging
+ - Fix: Web Layout Editor usability and UI fixes
+ - Fix: Inability to handle 3D geometry WKT
+ - Fix: Invalid Property Mappings not being removed when Layer Definition Editor loads
+ - Fix: Workaround Oracle issue with SpatialExtents()
  - Fix: Select font link in Text Symbol Definition dialog does nothing
  - Fix: Incorrect resource being flagged for Map Definition validation issues
  - Fix: Size Context not being saved for composite lines in Line Style Editor
