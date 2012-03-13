@@ -48,8 +48,6 @@ namespace Maestro.Editors.FeatureSource
         const int IDX_JOIN = 2;
 
         private IFeatureSource _fs;
-        private FeatureSourceDescription _cachedSchema;
-
         private IEditorService _edSvc;
 
         public override void Bind(IEditorService service)
@@ -146,19 +144,6 @@ namespace Maestro.Editors.FeatureSource
         void OnResourceSaved(object sender, EventArgs e)
         {
             Debug.Assert(!_edSvc.IsNew);
-            _cachedSchema = _fs.Describe();
-        }
-
-        private FeatureSourceDescription CachedSchema()
-        {
-            if (_cachedSchema == null)
-            {
-                using (new WaitCursor(this))
-                {
-                    _cachedSchema = _fs.Describe();
-                }
-            }
-            return _cachedSchema;
         }
 
         private void btnNewExtension_Click(object sender, EventArgs e)
@@ -327,7 +312,7 @@ namespace Maestro.Editors.FeatureSource
             var calc = e.Node.Tag as ICalculatedProperty;
             if (ext != null)
             {
-                var ctl = new ExtendedClassSettings(CachedSchema().AllClasses, ext);
+                var ctl = new ExtendedClassSettings(GetAllClassNames(), ext);
                 ctl.Dock = DockStyle.Fill;
                 //If editing to something valid, update the toolbar
                 ctl.ResourceChanged += (s, evt) =>
@@ -346,7 +331,7 @@ namespace Maestro.Editors.FeatureSource
                 ext = e.Node.Parent.Tag as IFeatureSourceExtension;
                 if (ext != null)
                 {
-                    ClassDefinition cls = CachedSchema().GetClass(ext.FeatureClass);
+                    ClassDefinition cls = _fs.GetClass(ext.FeatureClass); //TODO: Cache?
                     
                     if (cls != null)
                     {
@@ -364,7 +349,7 @@ namespace Maestro.Editors.FeatureSource
                 ext = e.Node.Parent.Tag as IFeatureSourceExtension;
                 if (ext != null)
                 {
-                    ClassDefinition cls = CachedSchema().GetClass(ext.FeatureClass);
+                    ClassDefinition cls = _fs.GetClass(ext.FeatureClass); //TODO: Cache?
                     if (cls != null)
                     {
                         var ctl = new CalculationSettings(_edSvc, cls, _fs, calc);
@@ -379,6 +364,16 @@ namespace Maestro.Editors.FeatureSource
             {
                 splitContainer1.Panel2.Controls.Clear();
             }
+        }
+
+        string[] GetAllClassNames()
+        {
+            var names = new List<string>();
+            foreach (var sn in _fs.GetSchemaNames())
+            {
+                names.AddRange(_fs.GetClassNames(sn));
+            }
+            return names.ToArray();
         }
     }
 }

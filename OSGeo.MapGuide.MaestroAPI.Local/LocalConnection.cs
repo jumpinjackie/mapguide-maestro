@@ -485,7 +485,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             throw new Exception("Unable to find class: " + parts[1] + " in schema " + parts[0]);
         }
 
-        public override FeatureSourceDescription DescribeFeatureSource(string resourceID)
+        protected override FeatureSourceDescription DescribeFeatureSourceInternal(string resourceID)
         {
             var fes = GetFeatureService();
             MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceID), "")));
@@ -571,6 +571,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                 names.Add(classNames.GetItem(i));
             }
             return names.ToArray();
+        }
+
+        protected override ClassDefinition GetClassDefinitionInternal(string resourceId, string schemaName, string className)
+        {
+            var cls = GetFeatureService().GetClassDefinition(new MgResourceIdentifier(resourceId), schemaName, className);
+            return Native.Utility.ConvertClassDefinition(cls);
         }
 
         public override Version SiteVersion

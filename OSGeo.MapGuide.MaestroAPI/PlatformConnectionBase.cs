@@ -448,6 +448,10 @@ namespace OSGeo.MapGuide.MaestroAPI
         public virtual void SetResourceXmlData(string resourceid, System.IO.Stream stream)
         {
             SetResourceXmlData(resourceid, stream, null);
+            int purged = PurgeCachedItemsOf(resourceid);
+#if DEBUG
+            System.Diagnostics.Trace.TraceInformation("{0} cached items purged for {1}", purged, resourceid);
+#endif
         }
 
         /// <summary>
@@ -1210,6 +1214,44 @@ namespace OSGeo.MapGuide.MaestroAPI
         abstract public void SetResourceData(string resourceid, string dataname, ObjCommon.ResourceDataType datatype, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback);
 
         /// <summary>
+        /// Removes all cached items associated with the given feature source
+        /// </summary>
+        /// <param name="resourceId"></param>
+        /// <returns></returns>
+        protected int PurgeCachedItemsOf(string resourceId)
+        {
+            //All keys are encoded with the resource id at the beginning,
+            //so hunt down all matching keys starting with our resource id
+            //these will be queued for removal.
+            var purgeFsd = new List<string>();
+            foreach (var key in m_featureSchemaCache.Keys)
+            {
+                if (key.StartsWith(resourceId))
+                    purgeFsd.Add(key);
+            }
+
+            var purgeCls = new List<string>();
+            foreach (var key in m_classDefinitionCache.Keys)
+            {
+                if (key.StartsWith(resourceId))
+                    purgeCls.Add(key);
+            }
+
+            int removed = 0;
+            foreach (var key in purgeFsd)
+            {
+                if (m_featureSchemaCache.Remove(key))
+                    removed++;
+            }
+            foreach (var key in purgeCls)
+            {
+                if (m_classDefinitionCache.Remove(key))
+                    removed++;
+            }
+            return removed;
+        }
+
+        /// <summary>
         /// Saves the resource.
         /// </summary>
         /// <param name="resource">The resource.</param>
@@ -1402,13 +1444,6 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Describes the feature source.
         /// </summary>
         /// <param name="resourceID">The resource ID.</param>
-        /// <returns></returns>
-        abstract public FeatureSourceDescription DescribeFeatureSource(string resourceID);
-
-        /// <summary>
-        /// Describes the feature source.
-        /// </summary>
-        /// <param name="resourceID">The resource ID.</param>
         /// <param name="schema">The schema.</param>
         /// <returns></returns>
         abstract public FeatureSchema DescribeFeatureSource(string resourceID, string schema);
@@ -1423,30 +1458,55 @@ namespace OSGeo.MapGuide.MaestroAPI
         protected Dictionary<string, ClassDefinition> m_classDefinitionCache = new Dictionary<string, ClassDefinition>();
 
         /// <summary>
+        /// Calls the actual implementation of the DescribeFeatureSource API
+        /// </summary>
+        /// <param name="resourceId"></param>
+        /// <returns></returns>
+        protected abstract FeatureSourceDescription DescribeFeatureSourceInternal(string resourceId);
+
+        /// <summary>
         /// Gets the feature source description.
         /// </summary>
         /// <param name="resourceID">The resource ID.</param>
         /// <returns></returns>
-        public virtual FeatureSourceDescription GetFeatureSourceDescription(string resourceID)
+        public virtual FeatureSourceDescription DescribeFeatureSource(string resourceID)
         {
+            bool bFromCache = true;
             if (!m_featureSchemaCache.ContainsKey(resourceID))
             {
+                bFromCache = false;
+                var fsd = this.DescribeFeatureSourceInternal(resourceID);
                 try
                 {
-                    m_featureSchemaCache[resourceID] = this.DescribeFeatureSource(resourceID);
-                    foreach (ClassDefinition scm in m_featureSchemaCache[resourceID].AllClasses)
-                        m_classDefinitionCache[resourceID + "!" + scm.QualifiedName] = scm;
+                    //Cache a clone of each class definition
+                    m_featureSchemaCache[resourceID] = FeatureSourceDescription.Clone(fsd);
+                    foreach (ClassDefinition cls in fsd.AllClasses)
+                    {
+                        string classCacheKey = resourceID + "!" + cls.QualifiedName;
+                        m_classDefinitionCache[classCacheKey] = cls;
+                    }
                 }
                 catch
                 {
                     m_featureSchemaCache[resourceID] = null;
                 }
             }
-
-            return m_featureSchemaCache[resourceID];
-
+#if DEBUG
+            if (bFromCache)
+                System.Diagnostics.Trace.TraceInformation("Returning cached description for {0}", resourceID);
+#endif
+            //Return a clone to ensure immutability of cached one
+            return FeatureSourceDescription.Clone(m_featureSchemaCache[resourceID]);
         }
 
+        /// <summary>
+        /// Fetches the specified class definition
+        /// </summary>
+        /// <param name="resourceId"></param>
+        /// <param name="schemaName"></param>
+        /// <param name="className"></param>
+        /// <returns></returns>
+        protected abstract ClassDefinition GetClassDefinitionInternal(string resourceId, string schemaName, string className);
 
         /// <summary>
         /// Gets the class definition.
@@ -1456,41 +1516,62 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public virtual ClassDefinition GetClassDefinition(string resourceID, string className)
         {
-            /*if (schema != null && schema.IndexOf(":") > 0)
-                schema = schema.Substring(0, schema.IndexOf(":"));*/
+            //NOTE: To prevent ambiguity, only class definitions queried with qualified
+            //names are cached. Un-qualified ones will call directly into the implementing
+            //GetClassDefinition API
+            bool bQualified = className.Contains(":");
+            string classCacheKey = resourceID + "!" + className;
+            ClassDefinition cls = null;
+            bool bStoreInCache = true;
+            bool bFromCache = false;
 
-            FeatureSourceDescription desc = null;
-            //If it is missing, just get the entire schema, and hope that we will need the others
-            //Some providers actually return the entire list even when asked for a particular schema
-            if (!m_featureSchemaCache.ContainsKey(resourceID + "!" + className))
-                desc = GetFeatureSourceDescription(resourceID);
-            if (!m_classDefinitionCache.ContainsKey(resourceID + "!" + className))
-                m_classDefinitionCache[resourceID + "!" + className] = null;
-
-            var cls = m_classDefinitionCache[resourceID + "!" + className];
-            if (cls == null)
+            //We don't interrogate the Feature Source Description cache because part of
+            //caching a Feature Source Description is to cache all the classes within
+            if (m_classDefinitionCache.ContainsKey(classCacheKey))
             {
-                //Try non qualified
-                if (desc != null)
+                cls = m_classDefinitionCache[classCacheKey];
+                bStoreInCache = false;
+                bFromCache = true;
+            }
+            else
+            {
+                if (bQualified)
                 {
-                    if (desc.Schemas.Length == 1)
-                    {
-                        return desc.GetClass(desc.SchemaNames[0], className);
-                    }
-                    else
-                    {
-                        //Since this is not qualified, just find the first matching
-                        //class by its name, regardless of its parent
-                        foreach (var klass in desc.AllClasses)
-                        {
-                            if (klass.Name == className)
-                                return klass;
-                        }
-                    }
+                    var tokens = className.Split(':');
+                    cls = GetClassDefinitionInternal(resourceID, tokens[0], tokens[1]);
+                }
+                else
+                {
+                    cls = GetClassDefinitionInternal(resourceID, null, className);
                 }
             }
-            return cls;
+
+            //Only class definitions queried with qualified names can be cached
+            if (bStoreInCache && !bQualified)
+                bStoreInCache = false;
+
+#if DEBUG
+            if (bFromCache)
+                System.Diagnostics.Trace.TraceInformation("Returning cached class ({0}) for {1}", className, resourceID);
+#endif
+
+            if (cls != null)
+            {
+                if (bStoreInCache)
+                {
+                    m_classDefinitionCache[classCacheKey] = cls;
+                }
+
+                //Return a clone of the cached object to ensure immutability of
+                //the original
+                return ClassDefinition.Clone(cls);
+            }
+            return null;
         }
+
+        internal int CachedFeatureSources { get { return m_featureSchemaCache.Count; } }
+
+        internal int CachedClassDefinitions { get { return m_classDefinitionCache.Count; } }
 
         /// <summary>
         /// Resets the feature source schema cache.

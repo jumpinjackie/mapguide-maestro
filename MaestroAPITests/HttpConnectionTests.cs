@@ -23,14 +23,88 @@ using System.Text;
 using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 using System.IO;
 using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels;
 
 namespace MaestroAPITests
 {
     [TestFixture(Ignore = TestControl.IgnoreHttpConnectionTests)]
     public class HttpConnectionTests
     {
+        [Test]
+        public void TestFeatureSourceCaching()
+        {
+            var conn = ConnectionUtil.CreateTestHttpConnection();
+            string fsId = "Library://UnitTests/HttpCaching.FeatureSource";
+            if (!conn.ResourceService.ResourceExists(fsId))
+            {
+                var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF");
+                fs.SetConnectionProperty("File", "%MG_DATA_FILE_PATH%Sheboygan_Parcels.sdf");
+                fs.ResourceID = fsId;
+                conn.ResourceService.SaveResourceAs(fs, fsId);
+                using (var stream = File.OpenRead("TestData/FeatureService/SDF/Sheboygan_Parcels.sdf"))
+                {
+                    fs.SetResourceData("Sheboygan_Parcels.sdf", ResourceDataType.File, stream);
+                }
+                Assert.True(Convert.ToBoolean(conn.FeatureService.TestConnection(fsId)));
+            }
+            var pc = (PlatformConnectionBase)conn;
+            pc.ResetFeatureSourceSchemaCache();
+
+            Assert.AreEqual(0, pc.CachedClassDefinitions);
+            Assert.AreEqual(0, pc.CachedFeatureSources);
+
+            var fsd = conn.FeatureService.DescribeFeatureSource(fsId);
+
+            Assert.AreEqual(1, pc.CachedFeatureSources);
+            Assert.AreEqual(1, pc.CachedClassDefinitions);
+
+            var fsd2 = conn.FeatureService.DescribeFeatureSource(fsId);
+
+            Assert.AreEqual(1, pc.CachedFeatureSources);
+            Assert.AreEqual(1, pc.CachedClassDefinitions);
+            //Each cached instance returned is a clone
+            Assert.False(object.ReferenceEquals(fsd, fsd2));
+        }
+
+        [Test]
+        public void TestClassDefinitionCaching()
+        {
+            var conn = ConnectionUtil.CreateTestHttpConnection();
+            string fsId = "Library://UnitTests/HttpCaching.FeatureSource";
+            if (!conn.ResourceService.ResourceExists(fsId))
+            {
+                var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF");
+                fs.SetConnectionProperty("File", "%MG_DATA_FILE_PATH%Sheboygan_Parcels.sdf");
+                conn.ResourceService.SaveResourceAs(fs, fsId);
+                fs.ResourceID = fsId;
+                using (var stream = File.OpenRead("TestData/FeatureService/SDF/Sheboygan_Parcels.sdf"))
+                {
+                    fs.SetResourceData("Sheboygan_Parcels.sdf", ResourceDataType.File, stream);
+                }
+                Assert.True(Convert.ToBoolean(conn.FeatureService.TestConnection(fsId)));
+            }
+            var pc = (PlatformConnectionBase)conn;
+            pc.ResetFeatureSourceSchemaCache();
+
+            Assert.AreEqual(0, pc.CachedClassDefinitions);
+            Assert.AreEqual(0, pc.CachedFeatureSources);
+
+            var cls = conn.FeatureService.GetClassDefinition(fsId, "SHP_Schema:Parcels");
+
+            Assert.AreEqual(0, pc.CachedFeatureSources);
+            Assert.AreEqual(1, pc.CachedClassDefinitions);
+
+            var cls2 = conn.FeatureService.GetClassDefinition(fsId, "SHP_Schema:Parcels");
+
+            Assert.AreEqual(0, pc.CachedFeatureSources);
+            Assert.AreEqual(1, pc.CachedClassDefinitions);
+            //Each cached instance returned is a clone
+            Assert.False(object.ReferenceEquals(cls, cls2));
+        }
+
         [Test]
         public void TestSheboyganCsToPseudoMercator()
         {

@@ -211,7 +211,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// Gets the specified class definition
         /// </summary>
         /// <param name="resourceID"></param>
-        /// <param name="schema"></param>
+        /// <param name="className">The feature class name. You can pass a qualified class name to be explicit about which class definition you are after</param>
         /// <returns></returns>
         ClassDefinition GetClassDefinition(string resourceID, string className);
 

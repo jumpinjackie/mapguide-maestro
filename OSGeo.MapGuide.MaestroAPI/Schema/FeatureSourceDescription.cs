@@ -147,118 +147,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             return null;
         }
 
-        #region old impl
-        /*
-        private ClassDefinition[] m_classes;
-
-        private string[] m_schemaNames;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FeatureSourceDescription"/> class.
-        /// </summary>
-        /// <param name="stream">The stream.</param>
-		public FeatureSourceDescription(System.IO.Stream stream)
-		{
-			XmlDocument doc = new XmlDocument();
-			doc.Load(stream);
-
-			if (doc.FirstChild.Name != "xml")
-				throw new Exception("Bad document");
-
-            XmlNode root;
-            if (doc.ChildNodes.Count == 2 && doc.ChildNodes[1].Name == "fdo:DataStore")
-                root = doc.ChildNodes[1];
-            else if (doc.ChildNodes.Count != 2 || doc.ChildNodes[1].Name != "xs:schema")
-                throw new Exception("Bad document");
-            else
-                root = doc;
-
-			XmlNamespaceManager mgr = new XmlNamespaceManager(doc.NameTable);
-			mgr.AddNamespace("xs", "http://www.w3.org/2001/XMLSchema");
-			mgr.AddNamespace("gml", "http://www.opengis.net/gml");
-			mgr.AddNamespace("fdo", "http://fdo.osgeo.org/schemas");
-
-            var keys = new Dictionary<string, string[]>();
-            var classMap = new Dictionary<string, ClassDefinition>();
-            XmlNodeList lst = root.SelectNodes("xs:schema/xs:complexType[@abstract='false']", mgr);
-            m_classes = new ClassDefinition[lst.Count];
-            for (int i = 0; i < m_classes.Length; i++)
-            {
-                m_classes[i] = new ClassDefinition(lst[i], mgr);
-                classMap.Add(m_classes[i].QualifiedName, m_classes[i]);
-            }
-            XmlNodeList keyNodes = root.SelectNodes("xs:schema/xs:element[@abstract='false']", mgr);
-            foreach (XmlNode keyNode in keyNodes)
-            {
-                var typeAttr = keyNode.Attributes["type"];
-                if (typeAttr != null)
-                {
-                    string clsName = typeAttr.Value.Substring(0, typeAttr.Value.Length - 4); //class name is suffixed with type
-                    if (classMap.ContainsKey(clsName))
-                    {
-                        List<string> keyFieldNames = new List<string>();
-
-                        var cls = classMap[clsName];
-                        XmlNodeList keyFields = keyNode.SelectNodes("xs:key/xs:field", mgr);
-                        foreach (XmlNode keyField in keyFields)
-                        {
-                            var xpathAttr = keyField.Attributes["xpath"];
-                            if (xpathAttr != null)
-                            {
-                                keyFieldNames.Add(xpathAttr.Value);
-                            }
-                        }
-
-                        cls.MarkIdentityProperties(keyFieldNames);
-                    }
-                }
-            }
-
-            var snames = new List<string>();
-            foreach (string qn in classMap.Keys)
-            {
-                string[] tokens = qn.Split(':');
-                if (!snames.Contains(tokens[0]))
-                    snames.Add(tokens[0]);
-            }
-            m_schemaNames = snames.ToArray();
-		}
-
-        /// <summary>
-        /// Gets the schema names.
-        /// </summary>
-        /// <value>The schema names.</value>
-        public string[] SchemaNames { get { return m_schemaNames; } }
-
-        /// <summary>
-        /// Gets the classes.
-        /// </summary>
-        /// <value>The classes.</value>
-		public ClassDefinition[] Classes { get { return m_classes; } }
-
-        /// <summary>
-        /// Gets the <see cref="OSGeo.MapGuide.MaestroAPI.ClassDefinition"/> at the specified index.
-        /// </summary>
-        /// <value></value>
-		public ClassDefinition this[int index] { get { return m_classes[index]; } }
-        /// <summary>
-        /// Gets the <see cref="OSGeo.MapGuide.MaestroAPI.ClassDefinition"/> at the specified index.
-        /// </summary>
-        /// <value></value>
-		public ClassDefinition this[string index] 
-		{
-			get 
-			{
-				for(int i =0 ;i<m_classes.Length; i++)
-					if (m_classes[i].Name == index)
-						return m_classes[i];
-
-				throw new OverflowException("No such item found: " + index);
-			}
-        }
-        */
-        #endregion
-
         /// <summary>
         /// Gets whether there are any class definitions
         /// </summary>
@@ -289,6 +177,32 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 throw new ArgumentException("Not a qualified class name: " + qualifiedName); //LOCALIZEME
 
             return GetClass(tokens[0], tokens[1]);
+        }
+
+        /// <summary>
+        /// Internal ctor for cloning purposes
+        /// </summary>
+        /// <param name="schemas"></param>
+        /// <param name="bPartial"></param>
+        internal FeatureSourceDescription(List<FeatureSchema> schemas, bool bPartial)
+        {
+            this.Schemas = schemas.ToArray();
+            this.IsPartial = bPartial;
+        }
+
+        /// <summary>
+        /// Creates a clone of the specified instance
+        /// </summary>
+        /// <param name="fsd">The instance to clone</param>
+        /// <returns></returns>
+        public static FeatureSourceDescription Clone(FeatureSourceDescription fsd)
+        {
+            var schemas = new List<FeatureSchema>();
+            foreach (var fs in fsd.Schemas)
+            {
+                schemas.Add(FeatureSchema.Clone(fs));
+            }
+            return new FeatureSourceDescription(schemas, fsd.IsPartial);
         }
     }
 }

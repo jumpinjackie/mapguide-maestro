@@ -1515,6 +1515,26 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
+        public string GetClassDefinition(string resourceId, string schemaName, string className)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "GETCLASSDEFINITION");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", m_userAgent);
+
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            param.Add("RESOURCEID", resourceId);
+            if (!string.IsNullOrEmpty(schemaName))
+                param.Add("SCHEMA", schemaName);
+            param.Add("CLASSNAME", className);
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
         public string GetSiteInfo()
         {
             NameValueCollection param = new NameValueCollection();

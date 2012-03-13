@@ -250,7 +250,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                     MgDataPropertyDefinition mgData = (MgDataPropertyDefinition)prop;
                     var dp = ConvertDataProperty(mgData);
 
-                    bool identity = (mgClass.GetIdentityProperties().Contains(mgData));
+                    //API Bug? passing object reference gives incorrect result for identity
+                    //properties
+                    bool identity = (mgClass.GetIdentityProperties().Contains(prop.Name));
                     cls.AddProperty(dp, identity);
                 }
                 else if (prop.PropertyType == MgFeaturePropertyType.GeometricProperty)

@@ -39,21 +39,19 @@ namespace Maestro.Editors.FeatureSource.Extensions
             InitializeComponent();
         }
 
-        public ExtendedClassSettings(IEnumerable<ClassDefinition> classes, IFeatureSourceExtension ext)
+        public ExtendedClassSettings(IEnumerable<string> qualifiedClassNames, IFeatureSourceExtension ext)
             : this()
         {
-            var klasses = new List<ClassDefinition>(classes);
-            cmbBaseClass.DisplayMember = "QualifiedName";
-            cmbBaseClass.ValueMember = "QualifiedName";
-            cmbBaseClass.DataSource = klasses;
+            var names = new List<string>(qualifiedClassNames);
+            cmbBaseClass.DataSource = names;
             ext.PropertyChanged += (sender, e) => { OnResourceChanged(); };
 
             //HACK
             if (string.IsNullOrEmpty(ext.FeatureClass))
-                ext.FeatureClass = klasses[0].QualifiedName;
+                ext.FeatureClass = names[0];
             
             TextBoxBinder.BindText(txtExtendedName, ext, "Name");
-            ComboBoxBinder.BindSelectedIndexChanged(cmbBaseClass, "SelectedValue", ext, "FeatureClass");
+            ComboBoxBinder.BindSelectedIndexChanged(cmbBaseClass, "SelectedItem", ext, "FeatureClass");
         }
 
         //private void txtExtendedName_TextChanged(object sender, EventArgs e)

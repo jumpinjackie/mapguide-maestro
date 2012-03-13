@@ -22,17 +22,91 @@ using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using OSGeo.MapGuide.MaestroAPI.Internal;
+using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.Common;
+using System.IO;
 
 namespace MaestroAPITests
 {
     public abstract class LocalNativeFeatureTestsBase
     {
         protected abstract IServerConnection CreateTestConnection();
+
+        protected void TestFeatureSourceCaching(string fsName)
+        {
+            var conn = ConnectionUtil.CreateTestHttpConnection();
+            string fsId = "Library://UnitTests/" + fsName + ".FeatureSource";
+            if (!conn.ResourceService.ResourceExists(fsId))
+            {
+                var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF");
+                fs.SetConnectionProperty("File", "%MG_DATA_FILE_PATH%Sheboygan_Parcels.sdf");
+                fs.ResourceID = fsId;
+                conn.ResourceService.SaveResourceAs(fs, fsId);
+                using (var stream = File.OpenRead("TestData/FeatureService/SDF/Sheboygan_Parcels.sdf"))
+                {
+                    fs.SetResourceData("Sheboygan_Parcels.sdf", ResourceDataType.File, stream);
+                }
+                Assert.True(Convert.ToBoolean(conn.FeatureService.TestConnection(fsId)));
+            }
+            var pc = (PlatformConnectionBase)conn;
+            pc.ResetFeatureSourceSchemaCache();
+
+            Assert.AreEqual(0, pc.CachedClassDefinitions);
+            Assert.AreEqual(0, pc.CachedFeatureSources);
+
+            var fsd = conn.FeatureService.DescribeFeatureSource(fsId);
+
+            Assert.AreEqual(1, pc.CachedFeatureSources);
+            Assert.AreEqual(1, pc.CachedClassDefinitions);
+
+            var fsd2 = conn.FeatureService.DescribeFeatureSource(fsId);
+
+            Assert.AreEqual(1, pc.CachedFeatureSources);
+            Assert.AreEqual(1, pc.CachedClassDefinitions);
+            //Each cached instance returned is a clone
+            Assert.False(object.ReferenceEquals(fsd, fsd2));
+        }
+
+        protected void TestClassDefinitionCaching(string fsName)
+        {
+            var conn = ConnectionUtil.CreateTestHttpConnection();
+            string fsId = "Library://UnitTests/" + fsName + ".FeatureSource";
+            if (!conn.ResourceService.ResourceExists(fsId))
+            {
+                var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF");
+                fs.SetConnectionProperty("File", "%MG_DATA_FILE_PATH%Sheboygan_Parcels.sdf");
+                conn.ResourceService.SaveResourceAs(fs, fsId);
+                fs.ResourceID = fsId;
+                using (var stream = File.OpenRead("TestData/FeatureService/SDF/Sheboygan_Parcels.sdf"))
+                {
+                    fs.SetResourceData("Sheboygan_Parcels.sdf", ResourceDataType.File, stream);
+                }
+                Assert.True(Convert.ToBoolean(conn.FeatureService.TestConnection(fsId)));
+            }
+            var pc = (PlatformConnectionBase)conn;
+            pc.ResetFeatureSourceSchemaCache();
+
+            Assert.AreEqual(0, pc.CachedClassDefinitions);
+            Assert.AreEqual(0, pc.CachedFeatureSources);
+
+            var cls = conn.FeatureService.GetClassDefinition(fsId, "SHP_Schema:Parcels");
+
+            Assert.AreEqual(0, pc.CachedFeatureSources);
+            Assert.AreEqual(1, pc.CachedClassDefinitions);
+
+            var cls2 = conn.FeatureService.GetClassDefinition(fsId, "SHP_Schema:Parcels");
+
+            Assert.AreEqual(0, pc.CachedFeatureSources);
+            Assert.AreEqual(1, pc.CachedClassDefinitions);
+            //Each cached instance returned is a clone
+            Assert.False(object.ReferenceEquals(cls, cls2));
+        }
 
         protected void CreateTestDataStore(IServerConnection conn, string fsId, ref FeatureSchema schema, ref ClassDefinition cls)
         {
@@ -303,6 +377,18 @@ namespace MaestroAPITests
         }
 
         [Test]
+        public void TestFeatureSourceCaching()
+        {
+            base.TestFeatureSourceCaching("LocalNativeFeatureSourceCaching");
+        }
+
+        [Test]
+        public void TestClassDefinitionCaching()
+        {
+            base.TestClassDefinitionCaching("LocalNativeClassCaching");
+        }
+
+        [Test]
         public override void TestApplySchema()
         {
             base.TestApplySchema();
@@ -339,6 +425,18 @@ namespace MaestroAPITests
         protected override IServerConnection CreateTestConnection()
         {
             return ConnectionProviderRegistry.CreateConnection("Maestro.Local", "ConfigFile", "Platform.ini");
+        }
+
+        [Test]
+        public void TestFeatureSourceCaching()
+        {
+            base.TestFeatureSourceCaching("LocalFeatureSourceCaching");
+        }
+
+        [Test]
+        public void TestClassDefinitionCaching()
+        {
+            base.TestClassDefinitionCaching("LocalClassCaching");
         }
 
         [Test]

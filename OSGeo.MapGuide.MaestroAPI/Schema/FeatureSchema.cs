@@ -189,5 +189,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             if (cls != null)
                 RemoveClass(cls);
         }
+
+        /// <summary>
+        /// Creates a clone of the specified instance
+        /// </summary>
+        /// <param name="fs">The instance to clone</param>
+        /// <returns></returns>
+        public static FeatureSchema Clone(FeatureSchema fs)
+        {
+            var clone = new FeatureSchema(fs.Name, fs.Description);
+            foreach (var cls in fs.Classes)
+            {
+                clone.AddClass(ClassDefinition.Clone(cls));
+            }
+            return clone;
+        }
     }
 }

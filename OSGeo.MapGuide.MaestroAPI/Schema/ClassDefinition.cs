@@ -381,6 +381,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                     clone.AddProperty(clonedProp);
                 }
             }
+            clone.DefaultGeometryPropertyName = source.DefaultGeometryPropertyName;
+            clone.IsAbstract = source.IsAbstract;
+            clone.IsComputed = source.IsComputed;
+            if (source.Parent != null)
+                clone.Parent = new FeatureSchema(source.Parent.Name, source.Parent.Description);
             //TODO: Base Class
             return clone;
         }

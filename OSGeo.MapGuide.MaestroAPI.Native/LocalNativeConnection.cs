@@ -351,8 +351,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return AggregateQueryFeatureSourceCore(resourceID, schema, filter, null, aggregateFunctions);
         }
 
-
-		public override FeatureSourceDescription DescribeFeatureSource(string resourceID)
+        protected override FeatureSourceDescription DescribeFeatureSourceInternal(string resourceID)
 		{
 			MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
 			System.IO.MemoryStream ms = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceID), "")));
@@ -1050,6 +1049,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 names.Add(classNames.GetItem(i));
             }
             return names.ToArray();
+        }
+
+        protected override ClassDefinition GetClassDefinitionInternal(string resourceId, string schemaName, string className)
+        {
+            var fsvc = (MgFeatureService)this.Connection.CreateService(MgServiceType.FeatureService);
+            var cls = fsvc.GetClassDefinition(new MgResourceIdentifier(resourceId), schemaName, className);
+            return Native.Utility.ConvertClassDefinition(cls);
         }
 
         public override IServerConnection Clone()

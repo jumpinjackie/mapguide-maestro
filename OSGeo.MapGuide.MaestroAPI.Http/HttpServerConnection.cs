@@ -673,7 +673,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             return QueryFeatureSourceCore(true, resourceID, schema, filter, null, aggregateFunctions);
         }
 
-		public override FeatureSourceDescription DescribeFeatureSource(string resourceID)
+        protected override FeatureSourceDescription DescribeFeatureSourceInternal(string resourceID)
 		{
             ResourceIdentifier.Validate(resourceID, ResourceTypes.FeatureSource);
             string req = m_reqBuilder.DescribeSchema(resourceID);
@@ -1806,6 +1806,16 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 var sc = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.Common.StringCollection>(s);
                 return sc.Item.ToArray();
+            }
+        }
+
+        protected override ClassDefinition GetClassDefinitionInternal(string resourceId, string schemaName, string className)
+        {
+            var req = m_reqBuilder.GetClassDefinition(resourceId, schemaName, className);
+            using (var s = this.OpenRead(req))
+            {
+                var fsd = new FeatureSourceDescription(s);
+                return fsd.Schemas[0].Classes[0];
             }
         }
 
