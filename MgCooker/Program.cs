@@ -26,6 +26,7 @@ using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.MaestroAPI;
 using System.Collections.Specialized;
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ExtendedObjectModels;
 
 namespace MgCooker
 {
@@ -56,7 +57,7 @@ namespace MgCooker
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.DoEvents();
             PreferredSiteList.InitCulture();
-
+            ModelSetup.Initialize(); //Ensures that > 1.0.0 Map Definitions are recognised
             //Parameters:
             //mapagent=
             //username=

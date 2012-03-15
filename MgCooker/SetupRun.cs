@@ -131,7 +131,10 @@ namespace MgCooker
             MapTree.Nodes.Clear();
             foreach (string m in maps)
             {
-                IMapDefinition mdef = (IMapDefinition)m_connection.ResourceService.GetResource(m);
+                IMapDefinition mdef = m_connection.ResourceService.GetResource(m) as IMapDefinition;
+                if (mdef == null) //Skip unknown Map Definition version (which would be returned as UntypedResource objects)
+                    continue;
+
                 IBaseMapDefinition baseMap = mdef.BaseMap;
                 if (baseMap != null &&
                     baseMap.ScaleCount > 0 && 
