@@ -110,10 +110,10 @@ namespace Maestro.Base.Events
             {
                 var viewMgr = ServiceRegistry.GetService<ViewContentManager>();
 
-                viewMgr.OpenContent(Properties.Resources.Content_SiteExplorer, 
-                                    Properties.Resources.Content_SiteExplorer, 
-                                    ViewRegion.Left, 
-                                    () => { return new SiteExplorer(); });
+                wb.ActiveSiteExplorer = viewMgr.OpenContent(Properties.Resources.Content_SiteExplorer, 
+                                        Properties.Resources.Content_SiteExplorer, 
+                                        ViewRegion.Left, 
+                                        () => { return new SiteExplorer(); });
             }
 
             wb.ActiveSiteExplorer.RefreshModel(name);

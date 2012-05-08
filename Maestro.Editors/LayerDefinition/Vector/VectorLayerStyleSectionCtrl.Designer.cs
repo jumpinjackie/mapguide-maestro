@@ -36,7 +36,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnDuplicate = new System.Windows.Forms.ToolStripButton();
             this.btnSort = new System.Windows.Forms.ToolStripButton();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lstScaleRanges = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnKmlElevation = new System.Windows.Forms.Button();
@@ -46,18 +45,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.grpScaleRange = new System.Windows.Forms.GroupBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.contentPanel.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // contentPanel
             // 
-            this.contentPanel.Controls.Add(this.splitContainer1);
+            this.contentPanel.Controls.Add(this.grpScaleRange);
+            this.contentPanel.Controls.Add(this.panel1);
             resources.ApplyResources(this.contentPanel, "contentPanel");
             // 
             // toolStrip1
@@ -107,22 +106,6 @@
             resources.ApplyResources(this.btnSort, "btnSort");
             this.btnSort.Name = "btnSort";
             this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
-            // 
-            // splitContainer1
-            // 
-            resources.ApplyResources(this.splitContainer1, "splitContainer1");
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.lstScaleRanges);
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainer1.Panel1.Controls.Add(this.toolStrip1);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.grpScaleRange);
             // 
             // lstScaleRanges
             // 
@@ -185,6 +168,14 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lstScaleRanges);
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.toolStrip1);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
             // VectorLayerStyleSectionCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -193,13 +184,11 @@
             this.contentPanel.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -211,7 +200,6 @@
         private System.Windows.Forms.ToolStripButton btnDelete;
         private System.Windows.Forms.ToolStripButton btnDuplicate;
         private System.Windows.Forms.ToolStripButton btnSort;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmbMaxScale;
@@ -222,5 +210,6 @@
         private System.Windows.Forms.ListBox lstScaleRanges;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Button btnKmlElevation;
+        private System.Windows.Forms.Panel panel1;
     }
 }

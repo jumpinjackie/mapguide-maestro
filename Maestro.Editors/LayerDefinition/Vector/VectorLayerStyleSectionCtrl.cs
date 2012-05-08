@@ -253,6 +253,8 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
         private Dictionary<VectorScaleRange, VectorScaleRangeCtrl> _rangeCtrls = new Dictionary<VectorScaleRange, VectorScaleRangeCtrl>();
 
+        private VectorScaleRangeCtrl _activeScaleRangeCtrl;
+
         private void lstScaleRanges_SelectedIndexChanged(object sender, EventArgs e)
         {
             var vsc = lstScaleRanges.SelectedItem as VectorScaleRange;
@@ -299,6 +301,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                         ctrl = _rangeCtrls[vsc];
                     }
                     grpScaleRange.Controls.Add(ctrl);
+                    _activeScaleRangeCtrl = ctrl;
                 }
                 finally
                 {

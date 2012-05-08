@@ -81,7 +81,7 @@ namespace Maestro.Base
                 if (value == null && current != null)
                 {
                     current.Close();
-                    CheckContainerStatus();
+                    //CheckContainerStatus();
                 }
             }
         }
@@ -95,11 +95,11 @@ namespace Maestro.Base
         protected override void OnViewActivated(object sender, IViewContent content)
         {
             //If a site explorer was activated, update our active site explorer property
-            var exp = content as ISiteExplorer;
-            if (exp != null)
-            {
-                this.ActiveSiteExplorer = exp;
-            }
+            //var exp = content as ISiteExplorer;
+            //if (exp != null)
+            //{
+            //    this.ActiveSiteExplorer = exp;
+            //}
 
             var editor = content as IEditorViewContent;
             if (editor != null)

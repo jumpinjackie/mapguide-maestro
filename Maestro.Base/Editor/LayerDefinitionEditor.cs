@@ -140,5 +140,10 @@ namespace Maestro.Base.Editor
                 return true;
             }
         }
+
+        private void panelBody_Resize(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

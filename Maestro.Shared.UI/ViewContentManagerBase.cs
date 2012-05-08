@@ -76,9 +76,9 @@ namespace Maestro.Shared.UI
                         if (handler != null)
                             handler(this, EventArgs.Empty);
 
-                        var wb = GetWorkbench();
-                        if (wb != null)
-                            wb.CheckContainerStatus();
+                        //var wb = GetWorkbench();
+                        //if (wb != null)
+                        //    wb.CheckContainerStatus();
                         return;
                     }
                 }
@@ -102,7 +102,7 @@ namespace Maestro.Shared.UI
                         if (!cnt.IsAttached)
                             wb.ShowContent(cnt);
                         cnt.Activate();
-                        wb.CheckContainerStatus();
+                        //wb.CheckContainerStatus();
                         return;
                     }
                 }
@@ -141,7 +141,7 @@ namespace Maestro.Shared.UI
                         if (!cnt.IsAttached)
                             wb.ShowContent(cnt);
                         cnt.Activate();
-                        wb.CheckContainerStatus();
+                        //wb.CheckContainerStatus();
                         return (T)cnt;
                     }
                 }

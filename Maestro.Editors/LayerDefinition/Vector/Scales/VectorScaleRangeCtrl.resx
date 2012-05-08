@@ -117,26 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="chkLine.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chkLine.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="chkLine.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="chkLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 120</value>
+    <value>175, 3</value>
   </data>
   <data name="chkLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 24</value>
+    <value>51, 17</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="chkLine.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="chkLine.Text" xml:space="preserve">
-    <value>Display Lines</value>
+    <value>Lines</value>
   </data>
   <data name="&gt;&gt;chkLine.Name" xml:space="preserve">
     <value>chkLine</value>
@@ -150,23 +150,23 @@
   <data name="&gt;&gt;chkLine.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="chkArea.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="chkArea.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="chkArea.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 241</value>
+    <value>232, 3</value>
   </data>
   <data name="chkArea.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 24</value>
+    <value>53, 17</value>
   </data>
   <data name="chkArea.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="chkArea.Text" xml:space="preserve">
-    <value>Display Areas</value>
+    <value>Areas</value>
   </data>
   <data name="&gt;&gt;chkArea.Name" xml:space="preserve">
     <value>chkArea</value>
@@ -178,25 +178,25 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkArea.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
-  <data name="chkComposite.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="chkComposite.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="chkComposite.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="chkComposite.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 362</value>
+    <value>291, 3</value>
   </data>
   <data name="chkComposite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 24</value>
+    <value>267, 17</value>
   </data>
   <data name="chkComposite.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
   <data name="chkComposite.Text" xml:space="preserve">
-    <value>Display Composite (Note: Previews currently not supported)</value>
+    <value>Composite (Note: Previews currently not supported)</value>
   </data>
   <data name="&gt;&gt;chkComposite.Name" xml:space="preserve">
     <value>chkComposite</value>
@@ -208,16 +208,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;chkComposite.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="compList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="compList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 386</value>
+    <value>3, 3</value>
   </data>
   <data name="compList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 109</value>
+    <value>612, 413</value>
   </data>
   <data name="compList.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -229,19 +229,19 @@
     <value>Maestro.Editors.LayerDefinition.Vector.Scales.CompositeStyleListCtrl, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;compList.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TAB_COMPOSITE</value>
   </data>
   <data name="&gt;&gt;compList.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="areaList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+    <value>Fill</value>
   </data>
   <data name="areaList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 265</value>
+    <value>3, 3</value>
   </data>
   <data name="areaList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 97</value>
+    <value>612, 413</value>
   </data>
   <data name="areaList.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -253,19 +253,19 @@
     <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;areaList.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TAB_AREAS</value>
   </data>
   <data name="&gt;&gt;areaList.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="lineList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+    <value>Fill</value>
   </data>
   <data name="lineList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 144</value>
+    <value>3, 3</value>
   </data>
   <data name="lineList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 97</value>
+    <value>593, 413</value>
   </data>
   <data name="lineList.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -277,19 +277,19 @@
     <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;lineList.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TAB_LINES</value>
   </data>
   <data name="&gt;&gt;lineList.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>0</value>
   </data>
   <data name="pointList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+    <value>Fill</value>
   </data>
   <data name="pointList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 23</value>
+    <value>3, 28</value>
   </data>
   <data name="pointList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 97</value>
+    <value>593, 388</value>
   </data>
   <data name="pointList.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -301,40 +301,365 @@
     <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;pointList.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TAB_POINTS</value>
   </data>
   <data name="&gt;&gt;pointList.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>0</value>
   </data>
-  <data name="pointStylePanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="chkPoints.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="pointStylePanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="chkPoints.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 3</value>
   </data>
-  <data name="pointStylePanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 23</value>
+  <data name="chkPoints.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 17</value>
   </data>
-  <data name="pointStylePanel.TabIndex" type="System.Int32, mscorlib">
+  <data name="chkPoints.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;pointStylePanel.Name" xml:space="preserve">
-    <value>pointStylePanel</value>
+  <data name="chkPoints.Text" xml:space="preserve">
+    <value>Points</value>
   </data>
-  <data name="&gt;&gt;pointStylePanel.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.Scales.PointStylePanel, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+  <data name="&gt;&gt;chkPoints.Name" xml:space="preserve">
+    <value>chkPoints</value>
   </data>
-  <data name="&gt;&gt;pointStylePanel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;chkPoints.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkPoints.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;pointStylePanel.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;chkPoints.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 4</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 13</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Enable these styles</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabGeomStyles.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="TAB_POINTS.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkAllowOverpost.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkAllowOverpost.Location" type="System.Drawing.Point, System.Drawing">
+    <value>108, 3</value>
+  </data>
+  <data name="chkAllowOverpost.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 17</value>
+  </data>
+  <data name="chkAllowOverpost.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="chkAllowOverpost.Text" xml:space="preserve">
+    <value>Allow Overpost</value>
+  </data>
+  <data name="&gt;&gt;chkAllowOverpost.Name" xml:space="preserve">
+    <value>chkAllowOverpost</value>
+  </data>
+  <data name="&gt;&gt;chkAllowOverpost.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkAllowOverpost.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;chkAllowOverpost.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="chkDisplayAsText.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkDisplayAsText.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="chkDisplayAsText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 17</value>
+  </data>
+  <data name="chkDisplayAsText.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="chkDisplayAsText.Text" xml:space="preserve">
+    <value>Display As Text</value>
+  </data>
+  <data name="&gt;&gt;chkDisplayAsText.Name" xml:space="preserve">
+    <value>chkDisplayAsText</value>
+  </data>
+  <data name="&gt;&gt;chkDisplayAsText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkDisplayAsText.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;chkDisplayAsText.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>593, 25</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>TAB_POINTS</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TAB_POINTS.ImageIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="TAB_POINTS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 23</value>
+  </data>
+  <data name="TAB_POINTS.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TAB_POINTS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>599, 419</value>
+  </data>
+  <data name="TAB_POINTS.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="TAB_POINTS.Text" xml:space="preserve">
+    <value>Points</value>
+  </data>
+  <data name="&gt;&gt;TAB_POINTS.Name" xml:space="preserve">
+    <value>TAB_POINTS</value>
+  </data>
+  <data name="&gt;&gt;TAB_POINTS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_POINTS.Parent" xml:space="preserve">
+    <value>tabGeomStyles</value>
+  </data>
+  <data name="&gt;&gt;TAB_POINTS.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TAB_LINES.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TAB_LINES.ImageIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="TAB_LINES.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 23</value>
+  </data>
+  <data name="TAB_LINES.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TAB_LINES.Size" type="System.Drawing.Size, System.Drawing">
+    <value>599, 419</value>
+  </data>
+  <data name="TAB_LINES.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="TAB_LINES.Text" xml:space="preserve">
+    <value>Lines</value>
+  </data>
+  <data name="&gt;&gt;TAB_LINES.Name" xml:space="preserve">
+    <value>TAB_LINES</value>
+  </data>
+  <data name="&gt;&gt;TAB_LINES.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_LINES.Parent" xml:space="preserve">
+    <value>tabGeomStyles</value>
+  </data>
+  <data name="&gt;&gt;TAB_LINES.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TAB_AREAS.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TAB_AREAS.ImageIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="TAB_AREAS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 23</value>
+  </data>
+  <data name="TAB_AREAS.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TAB_AREAS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>599, 419</value>
+  </data>
+  <data name="TAB_AREAS.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="TAB_AREAS.Text" xml:space="preserve">
+    <value>Areas</value>
+  </data>
+  <data name="&gt;&gt;TAB_AREAS.Name" xml:space="preserve">
+    <value>TAB_AREAS</value>
+  </data>
+  <data name="&gt;&gt;TAB_AREAS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_AREAS.Parent" xml:space="preserve">
+    <value>tabGeomStyles</value>
+  </data>
+  <data name="&gt;&gt;TAB_AREAS.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="TAB_COMPOSITE.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="TAB_COMPOSITE.ImageIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="TAB_COMPOSITE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 23</value>
+  </data>
+  <data name="TAB_COMPOSITE.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TAB_COMPOSITE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>599, 419</value>
+  </data>
+  <data name="TAB_COMPOSITE.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="TAB_COMPOSITE.Text" xml:space="preserve">
+    <value>Composite</value>
+  </data>
+  <data name="&gt;&gt;TAB_COMPOSITE.Name" xml:space="preserve">
+    <value>TAB_COMPOSITE</value>
+  </data>
+  <data name="&gt;&gt;TAB_COMPOSITE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_COMPOSITE.Parent" xml:space="preserve">
+    <value>tabGeomStyles</value>
+  </data>
+  <data name="&gt;&gt;TAB_COMPOSITE.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <metadata name="geomStyleIcons.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="geomStyleIcons.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABY
+        CgAAAk1TRnQBSQFMAgEBBAEAARgBAAEYAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
+        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
+        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
+        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
+        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
+        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
+        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
+        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
+        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
+        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
+        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
+        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
+        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
+        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
+        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
+        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
+        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
+        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
+        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
+        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
+        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
+        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
+        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
+        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
+        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
+        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
+        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD//8A/wD/AP8ANQAM/xQA
+        DP8B8gG7AfMRAAG8CgcBvBQADP8BuwH/AbsBAAHzAbsB8gr/AfIBuwHzAbwB/wj0Af8BBwL/HQAB/wK8
+        AfMBAAEJAf8BCQrwAQkB/wEJAbwB9AQqATABNwEwASoB9AHsAQcBvAUAAfQB8AW8AfAB9A4AAf8B8AH/
+        AwAB9AG8AQkK8gEJAbwB9AG8AfQFMQFYATcBMQH0AfcB/wEHAv8DAAHxAfAF8gHwAfENAAH/AfAB/wUA
+        AfAK8gHwAfQCAAG8Af8BEQEVAUsBUQF5AaAB5QFYAf8BtAH0AewBBwG8AwAB8AfyAfAMAAH/AfEB/wYA
+        AfEI8gHzAfEB9AMAAfAB/wFEAUsCWAFZAeUBWQFYAf8BtAH0AfcB/wG8AwAB8QfyAfELAAH/AfEB/wcA
+        AfEB8wXyA/AB9AQAAfAB/wFSB1gB/wHvAf8BSgH0AbwDAAHxAfMG8gHxCgAB/wHxAf8HAAH0AvAB8wTy
+        AfAB/wHwBQAB8AH/CDEB/wEHAf8BUQH0AbwDAAHyBPMC8gHzAfIJAAH/AfEB/wgAAfAB/wHwBfMD8AH0
+        BAAB8Ar/AbsB/wFRAf8BvAMAAfIB9AXzAfQB8ggAAf8B8gH/CQAB9ALwAfQF8wL0AfIB9AMAAfMB8QHv
+        AbwCswG0AbMDtAG7Af8BUQH/AfADAAHzAfIF9AHyAfMHAAH/AfIB/wwAAfQB8gL0BfMB9AHyAfQEAAHw
+        Cv8BUQH/AfADAAH/AfMF8gHzAf8GAAH/AfIB/w4AAfQB8QLwBvQB8QHwAfQCAAHzAfEB7wG8CFEB/wHw
+        EAAB9AHwAfEB/xAAAfEB/wHxBvIB8QH/AfEEAAHwCv8B8BAAAfEB/wHxEQAB9AHxAfQGAAH0AfEB9AQA
+        AfMK8QHzEAAB9AHxAfQtAAFCAU0BPgcAAT4DAAEoAwABQAMAASADAAEBAQABAQYAAQEWAAP/gQAG/wEA
+        AQ8C/wEAAQEC/wEAAQ8C/wEAAQEDAAEDA/8B4QMAAQMB4AEPAf8BxwQAAeABDwH/AY8BgAEDAgAB4AEP
+        Af8BHwGAAQcCAAHgAQ8B/gE/AYABDwIAAeABDwH8AX8BAAEfAgAB4AEPAfgB/wEAAQ8CAAHgAQ8B8QH/
+        AQABBwIAAeABDwHjAf8BwAEDAcABAAHgAQ8BxwH/AeABAAHAAQAC/wEPAf8B8AEAAfABAAL/AR8B/wHx
+        AfgB8AEAAv8BHwX/Cw==
+</value>
+  </data>
+  <data name="tabGeomStyles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="tabGeomStyles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>607, 446</value>
+  </data>
+  <data name="tabGeomStyles.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;tabGeomStyles.Name" xml:space="preserve">
+    <value>tabGeomStyles</value>
+  </data>
+  <data name="&gt;&gt;tabGeomStyles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabGeomStyles.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabGeomStyles.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 495</value>
+    <value>607, 472</value>
+  </data>
+  <data name="&gt;&gt;geomStyleIcons.Name" xml:space="preserve">
+    <value>geomStyleIcons</value>
+  </data>
+  <data name="&gt;&gt;geomStyleIcons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>VectorScaleRangeCtrl</value>

@@ -64,6 +64,30 @@ namespace Maestro.Shared.UI
             }
         }
 
+        private Form _parent;
+
+        public void SetParentForm(Form form)
+        {
+            if (_parent != null)
+                throw new InvalidOperationException("Parent form already set");
+
+            _parent = form;
+            _parent.FormClosing += new FormClosingEventHandler(OnParentFormClosing);
+            _parent.FormClosing += new FormClosingEventHandler(OnParentFormClosed);
+        }
+
+        void OnParentFormClosed(object sender, FormClosingEventArgs e)
+        {
+            var h = this.ViewContentClosed;
+            if (h != null)
+                h(this, EventArgs.Empty);
+        }
+
+        void OnParentFormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = CheckCancelEvents();
+        }
+
         /// <summary>
         /// Fires when the title has been changed
         /// </summary>
@@ -79,22 +103,23 @@ namespace Maestro.Shared.UI
             get { return true; }
         }
 
-        /// <summary>
-        /// Closes the view. This raises the <see cref="ViewContentClosing"/> event
-        /// </summary>
-        public virtual void Close()
+        internal bool CheckCancelEvents()
         {
             CancelEventArgs ce = new CancelEventArgs(false);
             var ceHandler = this.ViewContentClosing;
             if (ceHandler != null)
                 ceHandler(this, ce);
 
-            if (ce.Cancel)
-                return;
+            return ce.Cancel;
+        }
 
-            var handler = this.ViewContentClosed;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+        /// <summary>
+        /// Closes the view. This raises the <see cref="ViewContentClosing"/> event
+        /// </summary>
+        public virtual void Close()
+        {
+            if (_parent != null)
+                _parent.Close();
         }
 
         /// <summary>

@@ -44,10 +44,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         public VectorScaleRangeCtrl(IVectorScaleRange vsr, VectorLayerStyleSectionCtrl parent)
         {
             InitializeComponent();
-            //WTF: These events don't show in the designer! So bind them here
-            pointStylePanel.DisplayEnabledChanged += new EventHandler(OnPointDisplayEnabledChanged);
-            pointStylePanel.DisplayAsTextChanged += new EventHandler(OnPointDisplayAsTextChanged);
-            pointStylePanel.AllowOverpostChanged += new EventHandler(OnPointAllowOverpostChanged);
             _init = true;
 
             try
@@ -59,12 +55,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 _lns = vsr.LineStyle;
                 _ars = vsr.AreaStyle;
 
-                pointStylePanel.DisplayEnabled = true;
+                chkPoints.Checked = true;
                 chkLine.Checked = true;
                 chkArea.Checked = true;
                 chkComposite.Checked = true;
 
-                pointStylePanel.DisplayEnabled = (_pts != null);
+                chkPoints.Checked = (_pts != null);
                 chkLine.Checked = (_lns != null);
                 chkArea.Checked = (_ars != null);
 
@@ -79,8 +75,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 if (_pts == null)
                     _pts = parent.Factory.CreateDefaultPointStyle();
 
-                pointStylePanel.DisplayAsText = _pts.DisplayAsText;
-                pointStylePanel.AllowOverpost = _pts.AllowOverpost;
+                chkDisplayAsText.Checked = _pts.DisplayAsText;
+                chkAllowOverpost.Checked = _pts.AllowOverpost;
 
                 if (_lns == null)
                     _lns = parent.Factory.CreateDefaultLineStyle();
@@ -129,37 +125,90 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             }
         }
 
-        void OnPointDisplayEnabledChanged(object sender, EventArgs e)
+        private void chkDisplayAsText_CheckedChanged(object sender, EventArgs e)
         {
-            pointList.Visible = pointStylePanel.DisplayEnabled;
+            if (_init) return;
+            _pts.AllowOverpost = chkDisplayAsText.Checked;
+        }
+
+        private void chkAllowOverpost_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_init) return;
+            _pts.DisplayAsText = chkAllowOverpost.Checked;
+        }
+
+        private void SetPointTabVisibility(bool visible)
+        {
+            int idx = tabGeomStyles.TabPages.IndexOf(TAB_POINTS);
+            if (visible)
+            {
+                if (idx < 0)
+                    tabGeomStyles.TabPages.Insert(tabGeomStyles.TabPages.Count, TAB_POINTS);
+            }
+            else
+            {
+                if (idx >= 0)
+                    tabGeomStyles.TabPages.RemoveAt(idx);
+            }
+        }
+
+        private void SetLineTabVisibility(bool visible)
+        {
+            int idx = tabGeomStyles.TabPages.IndexOf(TAB_LINES);
+            if (visible)
+            {
+                if (idx < 0)
+                    tabGeomStyles.TabPages.Insert(tabGeomStyles.TabPages.Count, TAB_LINES);
+            }
+            else
+            {
+                if (idx >= 0)
+                    tabGeomStyles.TabPages.RemoveAt(idx);
+            }
+        }
+
+        private void SetAreaTabVisibility(bool visible)
+        {
+            int idx = tabGeomStyles.TabPages.IndexOf(TAB_AREAS);
+            if (visible)
+            {
+                if (idx < 0)
+                    tabGeomStyles.TabPages.Insert(tabGeomStyles.TabPages.Count, TAB_AREAS);
+            }
+            else
+            {
+                if (idx >= 0)
+                    tabGeomStyles.TabPages.RemoveAt(idx);
+            }
+        }
+
+        private void SetCompositeTabVisibility(bool visible)
+        {
+            int idx = tabGeomStyles.TabPages.IndexOf(TAB_COMPOSITE);
+            if (visible)
+            {
+                if (idx < 0)
+                    tabGeomStyles.TabPages.Insert(tabGeomStyles.TabPages.Count, TAB_COMPOSITE);
+            }
+            else
+            {
+                if (idx >= 0)
+                    tabGeomStyles.TabPages.RemoveAt(idx);
+            }
+        }
+
+        private void chkPoints_CheckedChanged(object sender, EventArgs e)
+        {
+            SetPointTabVisibility(chkPoints.Checked);
             if (_init) return;
 
-            _vsr.PointStyle = (pointStylePanel.DisplayEnabled) ? _pts : null;
+            _vsr.PointStyle = (chkPoints.Checked) ? _pts : null;
             _parent.RaiseResourceChanged();
-        }
-
-        void OnPointAllowOverpostChanged(object sender, EventArgs e)
-        {
-            _pts.AllowOverpost = pointStylePanel.AllowOverpost;
-        }
-
-        void OnPointDisplayAsTextChanged(object sender, EventArgs e)
-        {
-            _pts.DisplayAsText = pointStylePanel.DisplayAsText;
-        }
-
-        protected override void OnResize(EventArgs e)
-        {
-            pointList.ResizeAuto();
-            lineList.ResizeAuto();
-            areaList.ResizeAuto();
-            compList.ResizeAuto();
-            base.OnResize(e);
         }
 
         private void chkLine_CheckedChanged(object sender, EventArgs e)
         {
-            lineList.Visible = chkLine.Checked;
+            SetLineTabVisibility(chkLine.Checked);
             if (_init) return;
 
             _vsr.LineStyle = (chkLine.Checked) ? _lns : null;
@@ -168,7 +217,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private void chkArea_CheckedChanged(object sender, EventArgs e)
         {
-            areaList.Visible = chkArea.Checked;
+            SetAreaTabVisibility(chkArea.Checked);
             if (_init) return;
 
             _vsr.AreaStyle = (chkArea.Checked) ? _ars : null;
@@ -177,7 +226,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private void chkComposite_CheckedChanged(object sender, EventArgs e)
         {
-            compList.Visible = chkComposite.Checked;
+            SetCompositeTabVisibility(chkComposite.Checked);
             if (_init) return;
             var vsr2 = _vsr as IVectorScaleRange2;
             if (vsr2 == null) return;

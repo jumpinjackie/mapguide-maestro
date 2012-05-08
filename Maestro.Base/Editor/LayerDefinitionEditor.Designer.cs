@@ -30,6 +30,10 @@
         {
             this.SuspendLayout();
             // 
+            // panelBody
+            // 
+            this.panelBody.Resize += new System.EventHandler(this.panelBody_Resize);
+            // 
             // LayerDefinitionEditor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;

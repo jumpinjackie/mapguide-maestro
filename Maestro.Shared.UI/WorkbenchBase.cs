@@ -24,6 +24,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace Maestro.Shared.UI
 {
@@ -36,7 +37,7 @@ namespace Maestro.Shared.UI
         StatusStrip status;
         ToolStripStatusLabel statusLabel;
 
-        ZonedContainer contentPanel;
+        DockPanel contentPanel;
 
         ContextMenuStrip ctxToolbar;
 
@@ -51,10 +52,15 @@ namespace Maestro.Shared.UI
 
             this.Icon = _workbenchInitializer.GetIcon();
 
-            contentPanel = new ZonedContainer(_workbenchInitializer);
+            //contentPanel = new ZonedContainer(_workbenchInitializer);
+            //contentPanel.Dock = DockStyle.Fill;
+            //contentPanel.ViewActivated += new ViewContentActivateEventHandler(OnViewActivated);
+            contentPanel = new DockPanel();
+            contentPanel.DocumentStyle = DocumentStyle.DockingWindow;
             contentPanel.Dock = DockStyle.Fill;
-
-            contentPanel.ViewActivated += new ViewContentActivateEventHandler(OnViewActivated);
+            contentPanel.DockLeftPortion = 250;
+            contentPanel.DockBottomPortion = 150;
+            contentPanel.DockRightPortion = 200;
 
             menu = _workbenchInitializer.GetMainMenu(this);
 
@@ -229,7 +235,13 @@ namespace Maestro.Shared.UI
         /// </summary>
         public IViewContent ActiveDocumentView
         {
-            get { return contentPanel.ActiveDocumentView; }
+            get
+            { 
+                var doc = contentPanel.ActiveDocument as DockContent;
+                if (doc != null)
+                    return doc.Tag as IViewContent;
+                return null;
+            }
         }
 
         /// <summary>
@@ -238,27 +250,52 @@ namespace Maestro.Shared.UI
         /// <param name="vc">The vc.</param>
         internal void ShowContent(IViewContent vc)
         {
+            DockContent content = new DockContent();
+            content.TabText = vc.Title;
+            content.Text = vc.Title;
+            content.ToolTipText = vc.Title;
+            content.CloseButton = vc.AllowUserClose;
+            content.Tag = vc;
+
             switch (vc.DefaultRegion)
             {
                 case ViewRegion.Bottom:
+                    content.DockAreas = DockAreas.DockBottom;
+                    break;
                 case ViewRegion.Left:
+                    content.DockAreas = DockAreas.DockLeft;
+                    break;
                 case ViewRegion.Right:
+                    content.DockAreas = DockAreas.DockRight;
+                    break;
                 case ViewRegion.Document:
-                    contentPanel.AddContent(vc);
-                    var vcb = vc as ViewContentBase;
-                    if (vcb != null)
-                        vcb.IsAttached = true;
+                    content.DockAreas = DockAreas.Document;
                     break;
                 case ViewRegion.Floating:
-                    throw new NotImplementedException();
-                case ViewRegion.Dialog:
-                    throw new NotImplementedException();
+                    content.DockAreas = DockAreas.Float;
+                    break;
             }
-        }
+            vc.SetParentForm(content);
+            vc.TitleChanged += (sender, e) =>
+            {
+                content.TabText = vc.Title;
+                content.Text = vc.Title;
+                content.ToolTipText = vc.Title;
+            };
 
-        protected internal void CheckContainerStatus()
-        {
-            contentPanel.CheckContainerStatus();
+            content.ClientSize = vc.ContentControl.Size;
+            vc.ContentControl.Dock = DockStyle.Fill;
+            content.Controls.Add(vc.ContentControl);
+
+            if (vc.DefaultRegion == ViewRegion.Dialog)
+            {
+                content.StartPosition = FormStartPosition.CenterParent;
+                content.ShowDialog();
+            }
+            else 
+            {
+                content.Show(contentPanel);
+            }
         }
 
         void OnApplicationIdle(object sender, EventArgs e)

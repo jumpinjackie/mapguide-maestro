@@ -2,16 +2,23 @@
 ----------
 
  - Now requires .net Framework 4.0 / Mono 2.8
+ - Uses a patched version of the DockPanelSuite library for display and management of top-level UI content.
+ - Uses new mg-desktop release (8 May 2012, .net 4.0, VC10)
  - New IronPython Scripting Engine for application scripting and automation
  - New command and UI to view the XML diff of an edited resource
  - New experimental GeoREST AddIn for creating and editing GeoREST configurations
+ - UI usability improvements for Layer Definition editor.
  - Support for v2.4.0 resources (Web Layout, Map Definition, Layer Definition, Watermark Definition, Symbol Definition)
  - Added extra symbol definition validation rules
  - New utility for inspecting the state of a Runtime Map (RtMapInspector.exe)
  - Imporved Symbol Definition editor UIs with support for missing schema elements
  - New Feature Manipulation APIs
  - Http Connection Provider supports a GeoREST url parameter, which allows for feature manipulation support
+ - New command to open sources by entering its resource id
  - New shortcut buttons to jump from Layer Definition to Feature/Drawing Source
+ - Fix: MgCooker crashes with Map Definitions whose schema version is > 1.0.0
+ - Fix: Incorrect RuntimeMapLayer property initialization for tiled maps
+ - Fix: AllowOverpost and DisplayAsText properties for basic point style not exposed in editor UI
  - Fix: Clear connection status before testing it in Feature Source Editor
  - Fix: ResourcePicker fixes to optimize usability
  - Fix: Incorrect map extent serialization

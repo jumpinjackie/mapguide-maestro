@@ -66,6 +66,11 @@ namespace Maestro.Shared.UI
         /// <returns></returns>
         void Close();
         /// <summary>
+        /// Sets the parent form this view will reside in. INTERNAL USE ONLY
+        /// </summary>
+        /// <param name="form"></param>
+        void SetParentForm(System.Windows.Forms.Form form);
+        /// <summary>
         /// Fired when the view is activating
         /// </summary>
         event EventHandler ViewContentActivating;
