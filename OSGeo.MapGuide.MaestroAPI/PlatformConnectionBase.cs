@@ -1895,6 +1895,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             rtLayer.Name = source.Name;
             rtLayer.Selectable = source.Selectable;
             rtLayer.ShowInLegend = source.ShowInLegend;
+            rtLayer.Visible = true;
+            rtLayer.Type = RuntimeMapLayer.kBaseMap;
             
             return rtLayer;
         }
@@ -1907,9 +1909,15 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IMapLayer source)
         {
-            var rtLayer = CreateMapLayer(parent, (IBaseMapLayer)source);
+            ILayerDefinition layerDef = (ILayerDefinition)GetResource(source.ResourceId);
+            var rtLayer = CreateMapLayer(parent, layerDef);
 
             //These may not match, so set them here
+            rtLayer.ExpandInLegend = source.ExpandInLegend;
+            rtLayer.LegendLabel = source.LegendLabel;
+            rtLayer.Name = source.Name;
+            rtLayer.Selectable = source.Selectable;
+            rtLayer.ShowInLegend = source.ShowInLegend;
             rtLayer.Group = source.Group;
             rtLayer.Visible = source.Visible;
             

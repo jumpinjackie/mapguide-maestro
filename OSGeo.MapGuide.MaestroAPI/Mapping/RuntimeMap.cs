@@ -290,6 +290,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                         foreach (var layer in group.BaseMapLayer)
                         {
                             var rtl = _mapSvc.CreateMapLayer(this, layer);
+                            rtl.Type = RuntimeMapLayer.kDynamic; //HACK: Setting Visible = true not allowed for kBaseMap
                             rtl.Visible = true;
                             rtl.Type = RuntimeMapLayer.kBaseMap;
                             rtl.Group = group.Name;
