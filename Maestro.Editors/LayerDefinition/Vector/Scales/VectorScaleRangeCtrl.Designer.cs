@@ -29,22 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VectorScaleRangeCtrl));
-            this.chkPoint = new System.Windows.Forms.CheckBox();
             this.chkLine = new System.Windows.Forms.CheckBox();
             this.chkArea = new System.Windows.Forms.CheckBox();
             this.chkComposite = new System.Windows.Forms.CheckBox();
+            this.compList = new Maestro.Editors.LayerDefinition.Vector.Scales.CompositeStyleListCtrl();
             this.areaList = new Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons();
             this.lineList = new Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons();
             this.pointList = new Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons();
-            this.compList = new Maestro.Editors.LayerDefinition.Vector.Scales.CompositeStyleListCtrl();
+            this.pointStylePanel = new Maestro.Editors.LayerDefinition.Vector.Scales.PointStylePanel();
             this.SuspendLayout();
-            // 
-            // chkPoint
-            // 
-            resources.ApplyResources(this.chkPoint, "chkPoint");
-            this.chkPoint.Name = "chkPoint";
-            this.chkPoint.UseVisualStyleBackColor = true;
-            this.chkPoint.CheckedChanged += new System.EventHandler(this.chkPoint_CheckedChanged);
             // 
             // chkLine
             // 
@@ -67,6 +60,11 @@
             this.chkComposite.UseVisualStyleBackColor = true;
             this.chkComposite.CheckedChanged += new System.EventHandler(this.chkComposite_CheckedChanged);
             // 
+            // compList
+            // 
+            resources.ApplyResources(this.compList, "compList");
+            this.compList.Name = "compList";
+            // 
             // areaList
             // 
             resources.ApplyResources(this.areaList, "areaList");
@@ -85,10 +83,10 @@
             this.pointList.Name = "pointList";
             this.pointList.ItemChanged += new System.EventHandler(this.OnItemChanged);
             // 
-            // compList
+            // pointStylePanel
             // 
-            resources.ApplyResources(this.compList, "compList");
-            this.compList.Name = "compList";
+            resources.ApplyResources(this.pointStylePanel, "pointStylePanel");
+            this.pointStylePanel.Name = "pointStylePanel";
             // 
             // VectorScaleRangeCtrl
             // 
@@ -100,7 +98,7 @@
             this.Controls.Add(this.lineList);
             this.Controls.Add(this.chkLine);
             this.Controls.Add(this.pointList);
-            this.Controls.Add(this.chkPoint);
+            this.Controls.Add(this.pointStylePanel);
             this.Name = "VectorScaleRangeCtrl";
             resources.ApplyResources(this, "$this");
             this.ResumeLayout(false);
@@ -109,7 +107,6 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox chkPoint;
         private ConditionListButtons pointList;
         private System.Windows.Forms.CheckBox chkLine;
         private ConditionListButtons lineList;
@@ -117,6 +114,7 @@
         private ConditionListButtons areaList;
         private System.Windows.Forms.CheckBox chkComposite;
         private CompositeStyleListCtrl compList;
+        private PointStylePanel pointStylePanel;
 
 
     }

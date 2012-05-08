@@ -112,50 +112,26 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="chkPoint.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="chkPoint.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="chkPoint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 24</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="chkPoint.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="chkPoint.Text" xml:space="preserve">
-    <value>Display Points (Note: Symbol previews only show the symbol. It doesn't consider color overrides or size/rotation settings)</value>
-  </data>
-  <data name="&gt;&gt;chkPoint.Name" xml:space="preserve">
-    <value>chkPoint</value>
-  </data>
-  <data name="&gt;&gt;chkPoint.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkPoint.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;chkPoint.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="chkLine.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="chkLine.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="chkLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 121</value>
+    <value>0, 120</value>
   </data>
   <data name="chkLine.Size" type="System.Drawing.Size, System.Drawing">
     <value>598, 24</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="chkLine.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
@@ -166,7 +142,7 @@
     <value>chkLine</value>
   </data>
   <data name="&gt;&gt;chkLine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;chkLine.Parent" xml:space="preserve">
     <value>$this</value>
@@ -177,8 +153,11 @@
   <data name="chkArea.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="chkArea.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="chkArea.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 242</value>
+    <value>0, 241</value>
   </data>
   <data name="chkArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>598, 24</value>
@@ -193,7 +172,7 @@
     <value>chkArea</value>
   </data>
   <data name="&gt;&gt;chkArea.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;chkArea.Parent" xml:space="preserve">
     <value>$this</value>
@@ -204,8 +183,11 @@
   <data name="chkComposite.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="chkComposite.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="chkComposite.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 363</value>
+    <value>0, 362</value>
   </data>
   <data name="chkComposite.Size" type="System.Drawing.Size, System.Drawing">
     <value>598, 24</value>
@@ -220,7 +202,7 @@
     <value>chkComposite</value>
   </data>
   <data name="&gt;&gt;chkComposite.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;chkComposite.Parent" xml:space="preserve">
     <value>$this</value>
@@ -228,11 +210,35 @@
   <data name="&gt;&gt;chkComposite.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="compList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="compList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 386</value>
+  </data>
+  <data name="compList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>598, 109</value>
+  </data>
+  <data name="compList.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;compList.Name" xml:space="preserve">
+    <value>compList</value>
+  </data>
+  <data name="&gt;&gt;compList.Type" xml:space="preserve">
+    <value>Maestro.Editors.LayerDefinition.Vector.Scales.CompositeStyleListCtrl, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+  </data>
+  <data name="&gt;&gt;compList.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;compList.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="areaList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
   <data name="areaList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 266</value>
+    <value>0, 265</value>
   </data>
   <data name="areaList.Size" type="System.Drawing.Size, System.Drawing">
     <value>598, 97</value>
@@ -244,7 +250,7 @@
     <value>areaList</value>
   </data>
   <data name="&gt;&gt;areaList.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=3.5.0.6040, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;areaList.Parent" xml:space="preserve">
     <value>$this</value>
@@ -256,7 +262,7 @@
     <value>Top</value>
   </data>
   <data name="lineList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 145</value>
+    <value>0, 144</value>
   </data>
   <data name="lineList.Size" type="System.Drawing.Size, System.Drawing">
     <value>598, 97</value>
@@ -268,7 +274,7 @@
     <value>lineList</value>
   </data>
   <data name="&gt;&gt;lineList.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=3.5.0.6040, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;lineList.Parent" xml:space="preserve">
     <value>$this</value>
@@ -280,7 +286,7 @@
     <value>Top</value>
   </data>
   <data name="pointList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
+    <value>0, 23</value>
   </data>
   <data name="pointList.Size" type="System.Drawing.Size, System.Drawing">
     <value>598, 97</value>
@@ -292,7 +298,7 @@
     <value>pointList</value>
   </data>
   <data name="&gt;&gt;pointList.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=3.5.0.6040, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionListButtons, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;pointList.Parent" xml:space="preserve">
     <value>$this</value>
@@ -300,31 +306,31 @@
   <data name="&gt;&gt;pointList.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="compList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="pointStylePanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="compList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 387</value>
+  <data name="pointStylePanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="compList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>598, 108</value>
+  <data name="pointStylePanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>598, 23</value>
   </data>
-  <data name="compList.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+  <data name="pointStylePanel.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
-  <data name="&gt;&gt;compList.Name" xml:space="preserve">
-    <value>compList</value>
+  <data name="&gt;&gt;pointStylePanel.Name" xml:space="preserve">
+    <value>pointStylePanel</value>
   </data>
-  <data name="&gt;&gt;compList.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.Scales.CompositeStyleListCtrl, Maestro.Editors, Version=3.5.0.6040, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;pointStylePanel.Type" xml:space="preserve">
+    <value>Maestro.Editors.LayerDefinition.Vector.Scales.PointStylePanel, Maestro.Editors, Version=5.0.0.6514, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
-  <data name="&gt;&gt;compList.Parent" xml:space="preserve">
+  <data name="&gt;&gt;pointStylePanel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;compList.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;pointStylePanel.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
@@ -334,6 +340,6 @@
     <value>VectorScaleRangeCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

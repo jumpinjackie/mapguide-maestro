@@ -44,6 +44,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         public VectorScaleRangeCtrl(IVectorScaleRange vsr, VectorLayerStyleSectionCtrl parent)
         {
             InitializeComponent();
+            //WTF: These events don't show in the designer! So bind them here
+            pointStylePanel.DisplayEnabledChanged += new EventHandler(OnPointDisplayEnabledChanged);
+            pointStylePanel.DisplayAsTextChanged += new EventHandler(OnPointDisplayAsTextChanged);
+            pointStylePanel.AllowOverpostChanged += new EventHandler(OnPointAllowOverpostChanged);
             _init = true;
 
             try
@@ -55,12 +59,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 _lns = vsr.LineStyle;
                 _ars = vsr.AreaStyle;
 
-                chkPoint.Checked = true;
+                pointStylePanel.DisplayEnabled = true;
                 chkLine.Checked = true;
                 chkArea.Checked = true;
                 chkComposite.Checked = true;
 
-                chkPoint.Checked = (_pts != null);
+                pointStylePanel.DisplayEnabled = (_pts != null);
                 chkLine.Checked = (_lns != null);
                 chkArea.Checked = (_ars != null);
 
@@ -74,6 +78,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
                 if (_pts == null)
                     _pts = parent.Factory.CreateDefaultPointStyle();
+
+                pointStylePanel.DisplayAsText = _pts.DisplayAsText;
+                pointStylePanel.AllowOverpost = _pts.AllowOverpost;
 
                 if (_lns == null)
                     _lns = parent.Factory.CreateDefaultLineStyle();
@@ -122,6 +129,25 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             }
         }
 
+        void OnPointDisplayEnabledChanged(object sender, EventArgs e)
+        {
+            pointList.Visible = pointStylePanel.DisplayEnabled;
+            if (_init) return;
+
+            _vsr.PointStyle = (pointStylePanel.DisplayEnabled) ? _pts : null;
+            _parent.RaiseResourceChanged();
+        }
+
+        void OnPointAllowOverpostChanged(object sender, EventArgs e)
+        {
+            _pts.AllowOverpost = pointStylePanel.AllowOverpost;
+        }
+
+        void OnPointDisplayAsTextChanged(object sender, EventArgs e)
+        {
+            _pts.DisplayAsText = pointStylePanel.DisplayAsText;
+        }
+
         protected override void OnResize(EventArgs e)
         {
             pointList.ResizeAuto();
@@ -129,15 +155,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             areaList.ResizeAuto();
             compList.ResizeAuto();
             base.OnResize(e);
-        }
-
-        private void chkPoint_CheckedChanged(object sender, EventArgs e)
-        {
-            pointList.Visible = chkPoint.Checked;
-            if (_init) return;
-
-            _vsr.PointStyle = (chkPoint.Checked) ? _pts : null;
-            _parent.RaiseResourceChanged();
         }
 
         private void chkLine_CheckedChanged(object sender, EventArgs e)

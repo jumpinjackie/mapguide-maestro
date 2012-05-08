@@ -730,6 +730,12 @@
     <Compile Include="LayerDefinition\Vector\Scales\ItemStyle.designer.cs">
       <DependentUpon>ItemStyle.cs</DependentUpon>
     </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\PointStylePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\PointStylePanel.Designer.cs">
+      <DependentUpon>PointStylePanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="LayerDefinition\Vector\Scales\SymbolInstanceEditors\ReferenceCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1541,6 +1547,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\ItemStyle.resx">
       <DependentUpon>ItemStyle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\Scales\PointStylePanel.resx">
+      <DependentUpon>PointStylePanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\SymbolInstanceEditors\ReferenceCtrl.resx">
       <DependentUpon>ReferenceCtrl.cs</DependentUpon>
