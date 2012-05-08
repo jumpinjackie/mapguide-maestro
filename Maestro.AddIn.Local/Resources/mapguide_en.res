@@ -19,6 +19,7 @@
 # E X C E P T I O N S
 # *****************************************************************************
 [Exceptions]
+MgAliasNotFoundException							  = The given alias %1 is not defined in the configuration file
 MgAllProviderConnectionsUsedException                 = Cannot create any more connections to the %1 FDO provider.
 MgArgumentOutOfRangeException                         = Argument is out of range.
 MgArrayTypeMismatchException                          = Array type mismatch.
