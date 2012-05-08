@@ -292,6 +292,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                             var rtl = _mapSvc.CreateMapLayer(this, layer);
                             rtl.Visible = true;
                             rtl.Type = RuntimeMapLayer.kBaseMap;
+                            rtl.Group = group.Name;
                             this.Layers.Add(rtl);
                         }
                     }

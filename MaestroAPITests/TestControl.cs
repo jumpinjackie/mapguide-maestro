@@ -61,7 +61,7 @@ namespace MaestroAPITests
 
     public class ConnectionUtil
     {
-        public static string Port { get { return "8008"; } }
+        public static string Port { get { return ""; } }
 
         public static IServerConnection CreateTestHttpConnectionWithGeoRest()
         {
