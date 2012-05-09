@@ -506,30 +506,15 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         }
 
         [XmlIgnore]
-        public bool BrightnessFactorSpecified { get; set; }
-
-        [XmlIgnore]
-        public bool ContrastFactorSpecified { get; set; }
-
-        [XmlIgnore]
         double? IGridColorStyle.BrightnessFactor
         {
             get
             {
-                if (this.BrightnessFactorSpecified)
-                    return this.BrightnessFactor;
-                else
-                    return null;
+                return this.BrightnessFactor;
             }
             set
             {
-                if (value.HasValue)
-                {
-                    this.BrightnessFactor = value.Value;
-                    this.BrightnessFactorSpecified = true;
-                }
-                else
-                    this.BrightnessFactorSpecified = false;
+                this.BrightnessFactor = value.HasValue ? value.Value : default(double);
             }
         }
 
@@ -538,20 +523,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         {
             get
             {
-                if (this.ContrastFactorSpecified)
-                    return this.ContrastFactor;
-                else
-                    return null;
+                return this.ContrastFactor;
             }
             set
             {
-                if (value.HasValue)
-                {
-                    this.ContrastFactor = value.Value;
-                    this.ContrastFactorSpecified = true;
-                }
-                else
-                    this.ContrastFactorSpecified = false;
+                this.ContrastFactor = value.HasValue ? value.Value : default(double);
             }
         }
 

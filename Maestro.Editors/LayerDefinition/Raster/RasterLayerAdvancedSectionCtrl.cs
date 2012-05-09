@@ -122,37 +122,35 @@ namespace Maestro.Editors.LayerDefinition.Raster
             if (chkAdvanced.Checked)
             {
                 txtBrightnessFactor.Enabled = txtContrastFactor.Enabled = cmbTransparencyColor.Enabled = true;
-                try
-                {
-                    _init = true;
-                    //Restore values from UI fields
-                    txtBrightnessFactor_TextChanged(this, EventArgs.Empty);
-                    txtContrastFactor_TextChanged(this, EventArgs.Empty);
-                    cmbTransparencyColor_SelectedIndexChanged(this, EventArgs.Empty);
-                    //Check if attached
-                    EnableSurface.Checked = (_activeRange.SurfaceStyle != null);
-                    EnableHillshade.Checked = (_colorStyle.HillShade != null);
-                }
-                finally { _init = false; }
+                //Restore values from UI fields, can't call the actual event handler methods
+                //because _init = true so they do nothing
+                double d;
+                if (double.TryParse(txtBrightnessFactor.Text, out d))
+                    _colorStyle.BrightnessFactor = d;
+                else
+                    _colorStyle.BrightnessFactor = null;
+                if (double.TryParse(txtContrastFactor.Text, out d))
+                    _colorStyle.ContrastFactor = d;
+                else
+                    _colorStyle.ContrastFactor = null;
+                _colorStyle.TransparencyColor = Utility.SerializeHTMLColor(cmbTransparencyColor.CurrentColor, false);
+                //Check if attached
+                EnableSurface.Checked = (_activeRange.SurfaceStyle != null);
+                EnableHillshade.Checked = (_colorStyle.HillShade != null);
             }
             else
             {
-                try
-                {
-                    _init = true;
-                    _colorStyle.BrightnessFactor = null;
-                    _colorStyle.ContrastFactor = null;
-                    _colorStyle.TransparencyColor = null;
+                _colorStyle.BrightnessFactor = null;
+                _colorStyle.ContrastFactor = null;
+                _colorStyle.TransparencyColor = null;
 
-                    txtBrightnessFactor.Enabled = txtContrastFactor.Enabled = cmbTransparencyColor.Enabled = false;
+                txtBrightnessFactor.Enabled = txtContrastFactor.Enabled = cmbTransparencyColor.Enabled = false;
 
-                    //Detach
-                    EnableSurface.Checked = false;
-                    EnableHillshade.Checked = false;
-                    _colorStyle.HillShade = null;
-                    _activeRange.SurfaceStyle = null;
-                }
-                catch { _init = false; }
+                //Detach
+                EnableSurface.Checked = false;
+                EnableHillshade.Checked = false;
+                _colorStyle.HillShade = null;
+                _activeRange.SurfaceStyle = null;
             }
         }
 
