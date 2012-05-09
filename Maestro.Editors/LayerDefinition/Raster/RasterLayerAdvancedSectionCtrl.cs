@@ -152,6 +152,7 @@ namespace Maestro.Editors.LayerDefinition.Raster
                 _colorStyle.HillShade = null;
                 _activeRange.SurfaceStyle = null;
             }
+            OnResourceChanged();
         }
 
         private void EnableHillshade_CheckedChanged(object sender, EventArgs e)
