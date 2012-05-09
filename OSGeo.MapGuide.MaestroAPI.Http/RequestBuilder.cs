@@ -1173,8 +1173,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             param.Add("MAPDEFINITION", mapdefinition);
             param.Add("FORMAT", format);
             param.Add("BASEMAPLAYERGROUPNAME", groupname);
-            param.Add("TILECOL", row.ToString());
-            param.Add("TILEROW", col.ToString());
+            param.Add("TILECOL", col.ToString());
+            param.Add("TILEROW", row.ToString());
             param.Add("CLIENTAGENT", m_userAgent);
 
             return m_hosturi + "?" + EncodeParameters(param);
@@ -1191,8 +1191,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             param.Add("MAPDEFINITION", mapdefinition);
             param.Add("FORMAT", format);
             param.Add("BASEMAPLAYERGROUPNAME", groupname);
-            param.Add("TILECOL", row.ToString());
-            param.Add("TILEROW", col.ToString());
+            param.Add("TILECOL", col.ToString());
+            param.Add("TILEROW", row.ToString());
             param.Add("CLIENTAGENT", m_userAgent);
 
             return m_hosturi + "?" + EncodeParameters(param);
