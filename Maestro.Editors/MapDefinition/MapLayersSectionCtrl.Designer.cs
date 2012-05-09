@@ -121,12 +121,12 @@
             this.trvLayersGroup.NodeControls.Add(this.NODE_GROUP_ICON);
             this.trvLayersGroup.NodeControls.Add(this.NODE_GROUP_TEXT);
             this.trvLayersGroup.SelectedNode = null;
-            this.trvLayersGroup.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trvLayersGroup_MouseDoubleClick);
-            this.trvLayersGroup.DragOver += new System.Windows.Forms.DragEventHandler(this.trvLayersGroup_DragOver);
-            this.trvLayersGroup.MouseClick += new System.Windows.Forms.MouseEventHandler(this.trvLayersGroup_MouseClick);
+            this.trvLayersGroup.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvLayersGroup_ItemDrag);
             this.trvLayersGroup.DragDrop += new System.Windows.Forms.DragEventHandler(this.trvLayersGroup_DragDrop);
             this.trvLayersGroup.DragEnter += new System.Windows.Forms.DragEventHandler(this.trvLayersGroup_DragEnter);
-            this.trvLayersGroup.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvLayersGroup_ItemDrag);
+            this.trvLayersGroup.DragOver += new System.Windows.Forms.DragEventHandler(this.trvLayersGroup_DragOver);
+            this.trvLayersGroup.MouseClick += new System.Windows.Forms.MouseEventHandler(this.trvLayersGroup_MouseClick);
+            this.trvLayersGroup.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trvLayersGroup_MouseDoubleClick);
             // 
             // NODE_GROUP_ICON
             // 
@@ -251,12 +251,12 @@
             this.trvLayerDrawingOrder.NodeControls.Add(this.NODE_DRAW_ICON);
             this.trvLayerDrawingOrder.NodeControls.Add(this.NODE_DRAW_TEXT);
             this.trvLayerDrawingOrder.SelectedNode = null;
-            this.trvLayerDrawingOrder.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trvLayerDrawingOrder_MouseDoubleClick);
-            this.trvLayerDrawingOrder.DragOver += new System.Windows.Forms.DragEventHandler(this.trvLayerDrawingOrder_DragOver);
-            this.trvLayerDrawingOrder.MouseClick += new System.Windows.Forms.MouseEventHandler(this.trvLayerDrawingOrder_MouseClick);
+            this.trvLayerDrawingOrder.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvLayerDrawingOrder_ItemDrag);
             this.trvLayerDrawingOrder.DragDrop += new System.Windows.Forms.DragEventHandler(this.trvLayerDrawingOrder_DragDrop);
             this.trvLayerDrawingOrder.DragEnter += new System.Windows.Forms.DragEventHandler(this.trvLayerDrawingOrder_DragEnter);
-            this.trvLayerDrawingOrder.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvLayerDrawingOrder_ItemDrag);
+            this.trvLayerDrawingOrder.DragOver += new System.Windows.Forms.DragEventHandler(this.trvLayerDrawingOrder_DragOver);
+            this.trvLayerDrawingOrder.MouseClick += new System.Windows.Forms.MouseEventHandler(this.trvLayerDrawingOrder_MouseClick);
+            this.trvLayerDrawingOrder.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trvLayerDrawingOrder_MouseDoubleClick);
             // 
             // NODE_DRAW_ICON
             // 
@@ -366,12 +366,12 @@
             this.trvBaseLayers.NodeControls.Add(this.nodeIcon1);
             this.trvBaseLayers.NodeControls.Add(this.nodeTextBox1);
             this.trvBaseLayers.SelectedNode = null;
-            this.trvBaseLayers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trvBaseLayers_MouseDoubleClick);
-            this.trvBaseLayers.DragOver += new System.Windows.Forms.DragEventHandler(this.trvBaseLayers_DragOver);
-            this.trvBaseLayers.MouseClick += new System.Windows.Forms.MouseEventHandler(this.trvBaseLayers_MouseClick);
+            this.trvBaseLayers.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvBaseLayers_ItemDrag);
             this.trvBaseLayers.DragDrop += new System.Windows.Forms.DragEventHandler(this.trvBaseLayers_DragDrop);
             this.trvBaseLayers.DragEnter += new System.Windows.Forms.DragEventHandler(this.trvBaseLayers_DragEnter);
-            this.trvBaseLayers.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvBaseLayers_ItemDrag);
+            this.trvBaseLayers.DragOver += new System.Windows.Forms.DragEventHandler(this.trvBaseLayers_DragOver);
+            this.trvBaseLayers.MouseClick += new System.Windows.Forms.MouseEventHandler(this.trvBaseLayers_MouseClick);
+            this.trvBaseLayers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trvBaseLayers_MouseDoubleClick);
             // 
             // nodeIcon1
             // 

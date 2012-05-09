@@ -53,46 +53,81 @@ namespace Maestro.Editors.MapDefinition
 
         void trvLayersGroup_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
             {
                 var group = GetSelectedLayerGroupItem() as GroupItem;
                 var layer = GetSelectedLayerGroupItem() as LayerItem;
-                if (layer != null)
+                if (e.KeyCode == Keys.Delete)
                 {
-                    RemoveSelectedLayerGroupItem(layer);
+                    if (layer != null)
+                    {
+                        RemoveSelectedLayerGroupItem(layer);
+                    }
+                    else if (group != null)
+                    {
+                        RemoveSelectedLayerGroupItem(group);
+                    }
                 }
-                else if (group != null)
+                else
                 {
-                    RemoveSelectedLayerGroupItem(group);
+                    if (layer != null)
+                    {
+                        OnDynamicLayerItemSelected(layer);
+                    }
+                    else if (group != null)
+                    {
+                        OnDynamicGroupItemSelected(group);
+                    }
                 }
             }
         }
 
         void trvLayerDrawingOrder_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
             {
                 var layer = GetSelectedDrawOrderItem() as LayerItem;
                 if (layer != null)
                 {
-                    RemoveSelectedDrawOrderLayerItem(layer);
+                    if (e.KeyCode == Keys.Delete)
+                    {
+                        RemoveSelectedDrawOrderLayerItem(layer);
+                    }
+                    else
+                    {
+                        OnDrawOrderLayerItemSelected(layer);
+                    }
                 }
             }
         }
 
         void trvBaseLayers_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Delete)
+            if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
             {
                 var group = GetSelectedTiledLayerItem() as BaseLayerGroupItem;
                 var layer = GetSelectedTiledLayerItem() as BaseLayerItem;
-                if (group != null)
+                if (e.KeyCode == Keys.Delete)
                 {
-                    RemoveSelectedTiledLayerItem(group);
+                    if (group != null)
+                    {
+                        RemoveSelectedTiledLayerItem(group);
+                    }
+                    else if (layer != null)
+                    {
+                        RemoveSelectedTiledLayerItem(layer);
+                    }
                 }
-                else if (layer != null)
+                else
                 {
-                    RemoveSelectedTiledLayerItem(layer);
+                    if (layer != null)
+                    {
+                        OnBaseLayerItemSelected(layer);
+                    }
+                    else if (group != null)
+                    {
+                        OnBaseLayerGroupItemSelected(group);
+                    }
                 }
             }
         }
