@@ -79,5 +79,18 @@ namespace Maestro.Base.Editor
         {
             _orm.Open(resourceId, _conn, false, _siteExp);
         }
+
+        public override void RunProcess(string processName, params string[] args)
+        {
+            //HACK: Yeah yeah
+            if (processName.ToLower() == "mgcooker")
+            {
+                Maestro.Base.Commands.MgCookerCommand.RunCooker(args);
+            }
+            else
+            {
+                throw new ApplicationException(string.Format(Properties.Resources.ErrorUnknownExecutable, processName));
+            }
+        }
     }
 }

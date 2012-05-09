@@ -88,24 +88,11 @@ namespace Maestro.Base
 
         public IEditorViewContent ActiveEditor
         {
-            get;
-            private set;
+            get { return this.ActiveDocumentView as IEditorViewContent; }
         }
 
         protected override void OnViewActivated(object sender, IViewContent content)
         {
-            //If a site explorer was activated, update our active site explorer property
-            //var exp = content as ISiteExplorer;
-            //if (exp != null)
-            //{
-            //    this.ActiveSiteExplorer = exp;
-            //}
-
-            var editor = content as IEditorViewContent;
-            if (editor != null)
-            {
-                this.ActiveEditor = editor;
-            }
         }
 
         public Workbench(IWorkbenchInitializer init) : base(init) { }

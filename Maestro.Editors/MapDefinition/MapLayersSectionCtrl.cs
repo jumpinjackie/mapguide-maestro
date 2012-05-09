@@ -371,6 +371,45 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
+        private void btnBaseGroupToRegular_Click(object sender, EventArgs e)
+        {
+            var group = GetSelectedTiledLayerItem() as BaseLayerGroupItem;
+            if (group != null)
+            {
+                int counter = 0;
+                string groupName = group.Tag.Name;
+                while (_map.GetGroupByName(groupName) != null)
+                {
+                    counter++;
+                    groupName = group.Tag.Name + "(" + counter + ")";
+                }
+                _map.AddGroup(groupName);
+                int layerCount = _map.GetLayerCount();
+                foreach (var layer in group.Tag.BaseMapLayer)
+                {
+                    //We an avoid a duplicate name check because the Map Definition should already ensure uniqueness
+                    //among existing layers
+                    var dlayer = _map.AddLayer(groupName, layer.Name, layer.ResourceId);
+                    dlayer.ExpandInLegend = layer.ExpandInLegend;
+                    dlayer.LegendLabel = layer.LegendLabel;
+                    dlayer.Selectable = layer.Selectable;
+                    dlayer.ShowInLegend = layer.ShowInLegend;
+
+                    //HACK-ish, but we need to relocate this
+                    _map.RemoveLayer(dlayer);
+
+                    //Add to bottom
+                    _map.InsertLayer(layerCount, dlayer);
+                    layerCount++;
+                }
+                //Detach the base layer group
+                _map.BaseMap.RemoveBaseLayerGroup(group.Tag);
+                MessageBox.Show(string.Format(Properties.Resources.BaseLayerGroupConvertedToLayerGroup, group.Tag.Name, groupName));
+                this.RefreshModels();
+                tabControl1.SelectedIndex = 0; //Switch to Layer Groups
+            }
+        }
+
         private void btnDLAddLayer_Click(object sender, EventArgs e)
         {
             using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.LayerDefinition, ResourcePickerMode.OpenResource))
@@ -869,6 +908,7 @@ namespace Maestro.Editors.MapDefinition
         {
             btnAddBaseLayer.Enabled = true;
             btnRemoveBaseLayerGroup.Enabled = true;
+            btnBaseLayerGroupToRegular.Enabled = true;
 
             propertiesPanel.Controls.Clear();
             var item = new GroupPropertiesCtrl(group.Tag);
@@ -882,6 +922,7 @@ namespace Maestro.Editors.MapDefinition
             btnRemoveBaseLayer.Enabled = true;
             btnMoveBaseLayerDown.Enabled = true;
             btnMoveBaseLayerUp.Enabled = true;
+            btnBaseLayerGroupToRegular.Enabled = false;
 
             propertiesPanel.Controls.Clear();
             var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService);
@@ -1305,6 +1346,36 @@ namespace Maestro.Editors.MapDefinition
                     e.Effect = DragDropEffects.Move;
                 }
             }
+        }
+
+        private void btnInvokeMgCooker_Click(object sender, EventArgs e)
+        {
+            if (_edSvc.IsNew || _edSvc.IsDirty)
+            {
+                MessageBox.Show(Properties.Resources.SaveMapBeforeTiling);
+                return;
+            }
+
+            var conn = _map.CurrentConnection;
+            //HACK: Can't support other connection types beyond HTTP atm
+            if (!conn.ProviderName.ToLower().Contains("maestro.http"))
+            {
+                MessageBox.Show(string.Format(Properties.Resources.UnsupportedConnectionType, conn.ProviderName));
+                return;
+            }
+
+            if (_map.BaseMap == null || _map.BaseMap.GroupCount == 0)
+            {
+                MessageBox.Show(Properties.Resources.NotATiledMap);
+                return;
+            }
+
+            //HACK: This will ask for login again because we don't store username/password and MgCooker does not
+            //support initialization from a session id yet. But at least MgCooker will launch with the correct
+            //map definition loaded
+            _edSvc.RunProcess("MgCooker",
+                              "--mapagent=" + conn.GetCustomProperty("BaseUrl"),
+                              "--mapdefinitions=" + _edSvc.ResourceID);
         }
     }
 }

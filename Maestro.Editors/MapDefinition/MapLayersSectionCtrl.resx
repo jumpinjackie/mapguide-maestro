@@ -594,6 +594,47 @@
   <data name="btnMoveBaseLayerDown.ToolTipText" xml:space="preserve">
     <value>Move selected layer down</value>
   </data>
+  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
+  <data name="btnBaseLayerGroupToRegular.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnBaseLayerGroupToRegular.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnBaseLayerGroupToRegular.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnBaseLayerGroupToRegular.Text" xml:space="preserve">
+    <value>Convert Tiled Group to Regular Group</value>
+  </data>
+  <data name="btnInvokeMgCooker.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKcSURBVDhPfZHbT9JhGMe9qr+g27xoa8ta5ShQUJEsFA8N
+        bbNJ2tJ5WE1ucg1aTiaN1mJiBzMrRDBBSKHhIZFEEBGQg/wAD2nlocMWq4u6ccHml36r2c0Pe7fP9u55
+        3/fzfPe8aWkpFq/GdLj42lRHznWlk92inOM1jXSXCF7RUt2l1Eqbp5voUsmvWosBnKG7KNQzkak6j3rD
+        +k5x9WvpfyUlTbZi5v2GnVKTAumP+Cgf1YKlEyLPsoKj1gRqR2LgVpiv7ilhi59HCnRMcLRnkKXJRYX5
+        KYTBBMpcCdBM4zg52An+zb5vRUXC/RRJJudWOl3WgoJBJlj92RBalehe2UYrEYfAm8AJTSuOqwRgyBuR
+        lfOATREcyW9ntJkJMNQNaBh/gtHNOJSrcUjCcdTMfiQTlSCrnwe+Vo5TjM6LFAGNJTrYZliHNBpHuakD
+        PH0VRK4ZiEJxVLzxgqlh4hyZjqO4AjpTkZtyDo3tvpAouA2BZRBccvrsgRyUjQ6g0JkAwxrDaXUlcpul
+        sYwMyb6UAv5lE1c8/H6n3vUV2eQQWQMXwLVtgTaVwKHxbeR13EbVpT7xnr/Q1aXM63xsQ+09I/LVNcmz
+        E2tJ+sTPJM/2I1n3kIBEMgKDwWjfUzA5OTXscvkwNOzAHfk0JPJZtMrsuCF+CYVCB7vdDZfLC5lMdowi
+        IYsHvN5APBxeQji8iECAgM+38OeB0+mG3x9CKBRBNLoMlUqjoAh6e9WVBLGEYDD6j0AgCn8gAp8/jHkf
+        gbk5PzyeBZjNltUUghfVa++2yJgeCsHgMtn5A/R19ZjWGTEz49lMKdjY+IKxMSsFIvwWnz5/x/wzFdZC
+        y2SKeaqgp0eZTR5E3G73osOxi2PRat3FTu7/otcbtbsJfgMnls65GQK1+wAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnInvokeMgCooker.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnInvokeMgCooker.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
+  <data name="btnInvokeMgCooker.Text" xml:space="preserve">
+    <value>Start MgCooker</value>
+  </data>
   <data name="toolStrip3.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
@@ -884,6 +925,24 @@
   </data>
   <data name="&gt;&gt;btnMoveBaseLayerDown.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator8.Name" xml:space="preserve">
+    <value>toolStripSeparator8</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBaseLayerGroupToRegular.Name" xml:space="preserve">
+    <value>btnBaseLayerGroupToRegular</value>
+  </data>
+  <data name="&gt;&gt;btnBaseLayerGroupToRegular.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnInvokeMgCooker.Name" xml:space="preserve">
+    <value>btnInvokeMgCooker</value>
+  </data>
+  <data name="&gt;&gt;btnInvokeMgCooker.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MapLayersSectionCtrl</value>

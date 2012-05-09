@@ -71,6 +71,9 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnMoveBaseLayerUp = new System.Windows.Forms.ToolStripButton();
             this.btnMoveBaseLayerDown = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnBaseLayerGroupToRegular = new System.Windows.Forms.ToolStripButton();
+            this.btnInvokeMgCooker = new System.Windows.Forms.ToolStripButton();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.propertiesPanel = new System.Windows.Forms.Panel();
             this.contentPanel.SuspendLayout();
@@ -121,12 +124,12 @@
             this.trvLayersGroup.NodeControls.Add(this.NODE_GROUP_ICON);
             this.trvLayersGroup.NodeControls.Add(this.NODE_GROUP_TEXT);
             this.trvLayersGroup.SelectedNode = null;
-            this.trvLayersGroup.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvLayersGroup_ItemDrag);
-            this.trvLayersGroup.DragDrop += new System.Windows.Forms.DragEventHandler(this.trvLayersGroup_DragDrop);
-            this.trvLayersGroup.DragEnter += new System.Windows.Forms.DragEventHandler(this.trvLayersGroup_DragEnter);
+            this.trvLayersGroup.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trvLayersGroup_MouseDoubleClick);
             this.trvLayersGroup.DragOver += new System.Windows.Forms.DragEventHandler(this.trvLayersGroup_DragOver);
             this.trvLayersGroup.MouseClick += new System.Windows.Forms.MouseEventHandler(this.trvLayersGroup_MouseClick);
-            this.trvLayersGroup.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trvLayersGroup_MouseDoubleClick);
+            this.trvLayersGroup.DragDrop += new System.Windows.Forms.DragEventHandler(this.trvLayersGroup_DragDrop);
+            this.trvLayersGroup.DragEnter += new System.Windows.Forms.DragEventHandler(this.trvLayersGroup_DragEnter);
+            this.trvLayersGroup.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvLayersGroup_ItemDrag);
             // 
             // NODE_GROUP_ICON
             // 
@@ -251,12 +254,12 @@
             this.trvLayerDrawingOrder.NodeControls.Add(this.NODE_DRAW_ICON);
             this.trvLayerDrawingOrder.NodeControls.Add(this.NODE_DRAW_TEXT);
             this.trvLayerDrawingOrder.SelectedNode = null;
-            this.trvLayerDrawingOrder.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvLayerDrawingOrder_ItemDrag);
-            this.trvLayerDrawingOrder.DragDrop += new System.Windows.Forms.DragEventHandler(this.trvLayerDrawingOrder_DragDrop);
-            this.trvLayerDrawingOrder.DragEnter += new System.Windows.Forms.DragEventHandler(this.trvLayerDrawingOrder_DragEnter);
+            this.trvLayerDrawingOrder.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trvLayerDrawingOrder_MouseDoubleClick);
             this.trvLayerDrawingOrder.DragOver += new System.Windows.Forms.DragEventHandler(this.trvLayerDrawingOrder_DragOver);
             this.trvLayerDrawingOrder.MouseClick += new System.Windows.Forms.MouseEventHandler(this.trvLayerDrawingOrder_MouseClick);
-            this.trvLayerDrawingOrder.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trvLayerDrawingOrder_MouseDoubleClick);
+            this.trvLayerDrawingOrder.DragDrop += new System.Windows.Forms.DragEventHandler(this.trvLayerDrawingOrder_DragDrop);
+            this.trvLayerDrawingOrder.DragEnter += new System.Windows.Forms.DragEventHandler(this.trvLayerDrawingOrder_DragEnter);
+            this.trvLayerDrawingOrder.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvLayerDrawingOrder_ItemDrag);
             // 
             // NODE_DRAW_ICON
             // 
@@ -366,12 +369,12 @@
             this.trvBaseLayers.NodeControls.Add(this.nodeIcon1);
             this.trvBaseLayers.NodeControls.Add(this.nodeTextBox1);
             this.trvBaseLayers.SelectedNode = null;
-            this.trvBaseLayers.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvBaseLayers_ItemDrag);
-            this.trvBaseLayers.DragDrop += new System.Windows.Forms.DragEventHandler(this.trvBaseLayers_DragDrop);
-            this.trvBaseLayers.DragEnter += new System.Windows.Forms.DragEventHandler(this.trvBaseLayers_DragEnter);
+            this.trvBaseLayers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trvBaseLayers_MouseDoubleClick);
             this.trvBaseLayers.DragOver += new System.Windows.Forms.DragEventHandler(this.trvBaseLayers_DragOver);
             this.trvBaseLayers.MouseClick += new System.Windows.Forms.MouseEventHandler(this.trvBaseLayers_MouseClick);
-            this.trvBaseLayers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trvBaseLayers_MouseDoubleClick);
+            this.trvBaseLayers.DragDrop += new System.Windows.Forms.DragEventHandler(this.trvBaseLayers_DragDrop);
+            this.trvBaseLayers.DragEnter += new System.Windows.Forms.DragEventHandler(this.trvBaseLayers_DragEnter);
+            this.trvBaseLayers.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvBaseLayers_ItemDrag);
             // 
             // nodeIcon1
             // 
@@ -397,7 +400,10 @@
             this.btnRemoveBaseLayer,
             this.toolStripSeparator4,
             this.btnMoveBaseLayerUp,
-            this.btnMoveBaseLayerDown});
+            this.btnMoveBaseLayerDown,
+            this.toolStripSeparator8,
+            this.btnBaseLayerGroupToRegular,
+            this.btnInvokeMgCooker});
             resources.ApplyResources(this.toolStrip3, "toolStrip3");
             this.toolStrip3.Name = "toolStrip3";
             // 
@@ -458,6 +464,26 @@
             this.btnMoveBaseLayerDown.Image = global::Maestro.Editors.Properties.Resources.arrow_270;
             this.btnMoveBaseLayerDown.Name = "btnMoveBaseLayerDown";
             this.btnMoveBaseLayerDown.Click += new System.EventHandler(this.btnMoveBaseLayerDown_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            resources.ApplyResources(this.toolStripSeparator8, "toolStripSeparator8");
+            // 
+            // btnBaseLayerGroupToRegular
+            // 
+            this.btnBaseLayerGroupToRegular.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.btnBaseLayerGroupToRegular, "btnBaseLayerGroupToRegular");
+            this.btnBaseLayerGroupToRegular.Image = global::Maestro.Editors.Properties.Resources.arrow_curve_180_left;
+            this.btnBaseLayerGroupToRegular.Name = "btnBaseLayerGroupToRegular";
+            this.btnBaseLayerGroupToRegular.Click += new System.EventHandler(this.btnBaseGroupToRegular_Click);
+            // 
+            // btnInvokeMgCooker
+            // 
+            this.btnInvokeMgCooker.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.btnInvokeMgCooker, "btnInvokeMgCooker");
+            this.btnInvokeMgCooker.Name = "btnInvokeMgCooker";
+            this.btnInvokeMgCooker.Click += new System.EventHandler(this.btnInvokeMgCooker_Click);
             // 
             // splitter1
             // 
@@ -539,5 +565,8 @@
         private System.Windows.Forms.ToolStripButton btnMoveGroupUp;
         private System.Windows.Forms.ToolStripButton btnMoveGroupDown;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripButton btnBaseLayerGroupToRegular;
+        private System.Windows.Forms.ToolStripButton btnInvokeMgCooker;
     }
 }

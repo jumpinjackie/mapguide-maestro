@@ -482,5 +482,7 @@ namespace Maestro.Editors
         {
             get { return _conn.Capabilities.SupportedServices; }
         }
+
+        public abstract void RunProcess(string processName, params string[] args);
     }
 }

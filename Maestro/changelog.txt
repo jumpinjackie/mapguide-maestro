@@ -16,6 +16,9 @@
  - Http Connection Provider supports a GeoREST url parameter, which allows for feature manipulation support
  - New command to open sources by entering its resource id
  - New shortcut buttons to jump from Layer Definition to Feature/Drawing Source
+ - Fix: Missing [Convert Base Layer Group to Regular Group] and [Start MgCooker] buttons in Map Definition Editor
+ - Fix: Raster layer advanced settings not saving.
+ - Fix: Groups/Layer info in Map Definition editor not updating via up/down keypress
  - Fix: Row/Column mismatch in GetTile API (http implemenation)
  - Fix: MgCooker crashes with Map Definitions whose schema version is > 1.0.0
  - Fix: Incorrect RuntimeMapLayer property initialization for tiled maps

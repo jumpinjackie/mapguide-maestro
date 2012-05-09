@@ -211,6 +211,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Base Layer Group ({0}) converted to Regular Group ({1}).
+        /// </summary>
+        internal static string BaseLayerGroupConvertedToLayerGroup {
+            get {
+                return ResourceManager.GetString("BaseLayerGroupConvertedToLayerGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Between {0} and {1}.
         /// </summary>
         internal static string BetweenLabel {
@@ -2441,6 +2450,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This is not a Map Definition with tiled layers.
+        /// </summary>
+        internal static string NotATiledMap {
+            get {
+                return ResourceManager.GetString("NotATiledMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No transformation required.
         /// </summary>
         internal static string NoTransformationRequired {
@@ -2852,6 +2870,15 @@ namespace Maestro.Editors.Properties {
             get {
                 object obj = ResourceManager.GetObject("ruler1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must save this map first before you can run MgCooker.
+        /// </summary>
+        internal static string SaveMapBeforeTiling {
+            get {
+                return ResourceManager.GetString("SaveMapBeforeTiling", resourceCulture);
             }
         }
         
@@ -3342,6 +3369,15 @@ namespace Maestro.Editors.Properties {
         internal static string UnmanagedBrowserMultiSelectionNotAllowed {
             get {
                 return ResourceManager.GetString("UnmanagedBrowserMultiSelectionNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoking MgCooker is not supported for this connection type: {0}.
+        /// </summary>
+        internal static string UnsupportedConnectionType {
+            get {
+                return ResourceManager.GetString("UnsupportedConnectionType", resourceCulture);
             }
         }
         

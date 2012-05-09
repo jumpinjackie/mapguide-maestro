@@ -723,6 +723,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unknown executable specified: {0}.
+        /// </summary>
+        internal static string ErrorUnknownExecutable {
+            get {
+                return ResourceManager.GetString("ErrorUnknownExecutable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Autodesk DWF (*.dwf)|*.dwf.
         /// </summary>
         internal static string Filter_Dwf_Files {

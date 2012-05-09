@@ -1151,4 +1151,7 @@ Do you want to convert the values?</value>
   <data name="icon_document" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon_document.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ErrorUnknownExecutable" xml:space="preserve">
+    <value>Unknown executable specified: {0}</value>
+  </data>
 </root>

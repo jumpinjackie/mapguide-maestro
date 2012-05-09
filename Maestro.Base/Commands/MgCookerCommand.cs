@@ -32,6 +32,11 @@ namespace Maestro.Base.Commands
     {
         public override void Run()
         {
+            RunCooker();
+        }
+
+        internal static void RunCooker(params string [] args)
+        {
             string exe = PropertyService.Get(ConfigProperties.MgCookerPath, "");
 
             if (!File.Exists(exe))
@@ -50,6 +55,7 @@ namespace Maestro.Base.Commands
 
             var procInfo = new ProcessStartInfo(exe);
             procInfo.WorkingDirectory = Path.GetDirectoryName(exe);
+            procInfo.Arguments = string.Join(" ", args);
             var proc = Process.Start(procInfo);
         }
     }

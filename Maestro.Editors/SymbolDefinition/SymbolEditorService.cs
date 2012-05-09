@@ -220,5 +220,10 @@ namespace Maestro.Editors.SymbolDefinition
         {
             return _inner.GetCustomProperty(name);
         }
+
+        public void RunProcess(string processName, params string[] args)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

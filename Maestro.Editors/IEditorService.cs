@@ -246,5 +246,12 @@ namespace Maestro.Editors
         /// <param name="name"></param>
         /// <returns></returns>
         object GetCustomProperty(string name);
+
+        /// <summary>
+        /// Invokes the specified process name with the specified arguments
+        /// </summary>
+        /// <param name="processName"></param>
+        /// <param name="args"></param>
+        void RunProcess(string processName, params string[] args);
     }
 }
