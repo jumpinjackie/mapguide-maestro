@@ -41,6 +41,10 @@ namespace Maestro.Shared.UI
             InitializeComponent();
         }
 
+        public virtual bool IsModalWindow { get { return false; } }
+
+        public virtual bool IsExclusiveToDocumentRegion { get { return false; } }
+
         private string _title;
 
         /// <summary>
@@ -273,6 +277,14 @@ namespace Maestro.Shared.UI
         public virtual ViewRegion DefaultRegion
         {
             get { return ViewRegion.Document; }
+        }
+        
+        /// <summary>
+        /// Gets the icon for this view
+        /// </summary>
+        public virtual Icon ViewIcon
+        {
+            get { return null; }
         }
 
         /// <summary>

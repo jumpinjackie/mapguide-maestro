@@ -149,6 +149,14 @@ namespace Maestro.Base.Editor
             }
         }
 
+        public override bool IsExclusiveToDocumentRegion
+        {
+            get
+            {
+                return true;
+            }
+        }
+
         /// <summary>
         /// Performs any pre-save validation on the currently edited resource, by default
         /// this returns the results of a non-cascading <see cref="ResourceValidatorSet"/>
@@ -172,7 +180,7 @@ namespace Maestro.Base.Editor
 
         private string GetTooltip(string item)
         {
-            return string.Format(Properties.Resources.EditorTitleTemplate, item, Environment.NewLine, this.Resource.CurrentConnection.DisplayName);
+            return string.Format(Properties.Resources.EditorTitleTemplate, item, Environment.NewLine, this.Resource.CurrentConnection.DisplayName, this.Resource.ResourceVersion);
         }
 
         private void UpdateTitle()

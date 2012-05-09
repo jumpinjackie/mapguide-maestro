@@ -56,5 +56,13 @@ namespace Maestro.Base.Editor
                 csymCtrl.Bind(service);
             }
         }
+
+        public override Icon ViewIcon
+        {
+            get
+            {
+                return Properties.Resources.icon_symboldefinition;
+            }
+        }
     }
 }

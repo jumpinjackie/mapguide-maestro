@@ -45,5 +45,13 @@ namespace Maestro.Base.Editor
 
             webLayoutEditorCtrl.Bind(service);
         }
+
+        public override Icon ViewIcon
+        {
+            get
+            {
+                return Properties.Resources.icon_weblayout;
+            }
+        }
     }
 }

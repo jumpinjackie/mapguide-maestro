@@ -156,5 +156,13 @@ namespace Maestro.Base.Editor
         {
             editor.FindAndReplace(find, replace);
         }
+
+        public override Icon ViewIcon
+        {
+            get
+            {
+                return Properties.Resources.icon_xmleditor;
+            }
+        }
     }
 }

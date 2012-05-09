@@ -40,6 +40,9 @@
             this.chkOutbound = new System.Windows.Forms.CheckBox();
             this.chkMessages = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnBrowseRtMapInspector = new System.Windows.Forms.Button();
+            this.txtRtMapInspector = new System.Windows.Forms.TextBox();
             this.btnBrowseFsPreview = new System.Windows.Forms.Button();
             this.txtFsPreview = new System.Windows.Forms.TextBox();
             this.btnBrowseMgCooker = new System.Windows.Forms.Button();
@@ -51,9 +54,6 @@
             this.cmbOpenedColor = new Maestro.Editors.Common.ColorComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnBrowseRtMapInspector = new System.Windows.Forms.Button();
-            this.txtRtMapInspector = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -138,6 +138,24 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // btnBrowseRtMapInspector
+            // 
+            resources.ApplyResources(this.btnBrowseRtMapInspector, "btnBrowseRtMapInspector");
+            this.btnBrowseRtMapInspector.Name = "btnBrowseRtMapInspector";
+            this.btnBrowseRtMapInspector.UseVisualStyleBackColor = true;
+            this.btnBrowseRtMapInspector.Click += new System.EventHandler(this.btnBrowseRtMapInspector_Click);
+            // 
+            // txtRtMapInspector
+            // 
+            resources.ApplyResources(this.txtRtMapInspector, "txtRtMapInspector");
+            this.txtRtMapInspector.Name = "txtRtMapInspector";
+            this.txtRtMapInspector.ReadOnly = true;
+            // 
             // btnBrowseFsPreview
             // 
             resources.ApplyResources(this.btnBrowseFsPreview, "btnBrowseFsPreview");
@@ -205,24 +223,6 @@
             // 
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            // 
-            // btnBrowseRtMapInspector
-            // 
-            resources.ApplyResources(this.btnBrowseRtMapInspector, "btnBrowseRtMapInspector");
-            this.btnBrowseRtMapInspector.Name = "btnBrowseRtMapInspector";
-            this.btnBrowseRtMapInspector.UseVisualStyleBackColor = true;
-            this.btnBrowseRtMapInspector.Click += new System.EventHandler(this.btnBrowseRtMapInspector_Click);
-            // 
-            // txtRtMapInspector
-            // 
-            resources.ApplyResources(this.txtRtMapInspector, "txtRtMapInspector");
-            this.txtRtMapInspector.Name = "txtRtMapInspector";
-            this.txtRtMapInspector.ReadOnly = true;
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
             // 
             // GeneralPreferencesCtrl
             // 

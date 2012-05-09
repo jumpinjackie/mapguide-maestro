@@ -92,6 +92,7 @@
     <Content Include="Manifest.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\water.png" />
     <None Include="Resources\edit.png" />
     <None Include="Resources\marker.png" />
     <None Include="Resources\application-browser.png" />

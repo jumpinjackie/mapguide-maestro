@@ -126,9 +126,24 @@ namespace Maestro.Shared.UI
         /// </summary>
         bool IsAttached { get; }
         /// <summary>
+        /// Gets whether this view resides in a modal window. Only applies if the <see cref="DefaultRegion"/>
+        /// is Floating
+        /// </summary>
+        bool IsModalWindow { get; }
+        /// <summary>
+        /// Gets whether this view is set exclusively to the document region. If true, this view will always
+        /// be placed into the document region regardless of the regions specified in the <see cref="DefaultRegion"/>
+        /// property
+        /// </summary>
+        bool IsExclusiveToDocumentRegion { get; }
+        /// <summary>
         /// Indicates the default region this view content will be put in
         /// </summary>
         ViewRegion DefaultRegion { get; }
+        /// <summary>
+        /// Gets the icon for this view
+        /// </summary>
+        Icon ViewIcon { get; }
     }
 
     /// <summary>
@@ -137,28 +152,28 @@ namespace Maestro.Shared.UI
     public enum ViewRegion
     {
         /// <summary>
+        /// The view content will reside in a floating dialog
+        /// </summary>
+        Floating = 1,
+        /// <summary>
         /// The view content will be docked to the left
         /// </summary>
-        Left,
+        Left = 2,
         /// <summary>
         /// The view content will be docked to the right
         /// </summary>
-        Right,
+        Right = 4,
+        /// <summary>
+        /// The view content will be docked to the top
+        /// </summary>
+        Top = 8,
         /// <summary>
         /// The view content will be docked to the bottom
         /// </summary>
-        Bottom,
+        Bottom = 16,
         /// <summary>
         /// The view content will be docked to the center, (in a tabbed document interface)
         /// </summary>
-        Document,
-        /// <summary>
-        /// The view content will reside in a floating dialog
-        /// </summary>
-        Floating,
-        /// <summary>
-        /// The view content will reside in a modal dialog
-        /// </summary>
-        Dialog
+        Document = 32
     }
 }

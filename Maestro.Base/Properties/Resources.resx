@@ -1016,9 +1016,6 @@ Do you want to convert the values?</value>
   <data name="marker" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\marker.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Folder_Data" xml:space="preserve">
     <value>Data</value>
   </data>
@@ -1053,7 +1050,7 @@ Do you want to convert the values?</value>
     <value>You have already established such a connection</value>
   </data>
   <data name="EditorTitleTemplate" xml:space="preserve">
-    <value>Resource ID: {0}{1}Connection: {2}</value>
+    <value>Resource ID: {0}{1}Connection: {2}{1}Resource Version: {3}</value>
   </data>
   <data name="DwfHandlerAction" xml:space="preserve">
     <value>Create a Drawing Source</value>
@@ -1114,5 +1111,44 @@ Do you want to convert the values?</value>
   </data>
   <data name="ResourceNotFound" xml:space="preserve">
     <value>Resource not found</value>
+  </data>
+  <data name="water" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\water.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_drawingsource" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_drawingsource.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_featuresource" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_featuresource.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_fusion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_fusion.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_layerdefinition" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_layerdefinition.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_mapdefinition" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_mapdefinition.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_printlayout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_printlayout.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_symboldefinition" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_symboldefinition.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_symbolibrary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_symbolibrary.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_watermark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_watermark.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_weblayout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_weblayout.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_xmleditor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_xmleditor.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_document" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_document.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

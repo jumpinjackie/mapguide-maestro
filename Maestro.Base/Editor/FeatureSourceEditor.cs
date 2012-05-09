@@ -118,5 +118,13 @@ namespace Maestro.Base.Editor
                 return true;
             }
         }
+
+        public override Icon ViewIcon
+        {
+            get
+            {
+                return Properties.Resources.icon_featuresource;
+            }
+        }
     }
 }

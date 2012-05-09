@@ -55,6 +55,7 @@ namespace Maestro.Base.UI
         private TabPage licenseTab;
         private TextBox License;
         private TabControl tabControl;
+        private LinkLabel lnkDockPanel;
         private IServerConnection m_connection;
 
 		private AboutDialog()
@@ -105,18 +106,19 @@ namespace Maestro.Base.UI
             this.Localization = new System.Windows.Forms.Label();
             this.ServerVersion = new System.Windows.Forms.Label();
             this.thirdPartyTab = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tfnetLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.ziplibLinkLabel = new System.Windows.Forms.LinkLabel();
-            this.colorBrewerlinkLabel = new System.Windows.Forms.LinkLabel();
-            this.lnkSharpDevelop = new System.Windows.Forms.LinkLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.lnkAdvTreeView = new System.Windows.Forms.LinkLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.lnkSharpDevelop = new System.Windows.Forms.LinkLabel();
+            this.colorBrewerlinkLabel = new System.Windows.Forms.LinkLabel();
+            this.ziplibLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.tfnetLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.label2 = new System.Windows.Forms.Label();
             this.creditsTab = new System.Windows.Forms.TabPage();
             this.Credits = new System.Windows.Forms.TextBox();
             this.licenseTab = new System.Windows.Forms.TabPage();
             this.License = new System.Windows.Forms.TextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
+            this.lnkDockPanel = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayPalImage)).BeginInit();
             this.thirdPartyTab.SuspendLayout();
@@ -170,6 +172,7 @@ namespace Maestro.Base.UI
             // thirdPartyTab
             // 
             resources.ApplyResources(this.thirdPartyTab, "thirdPartyTab");
+            this.thirdPartyTab.Controls.Add(this.lnkDockPanel);
             this.thirdPartyTab.Controls.Add(this.lnkAdvTreeView);
             this.thirdPartyTab.Controls.Add(this.linkLabel1);
             this.thirdPartyTab.Controls.Add(this.lnkSharpDevelop);
@@ -180,39 +183,12 @@ namespace Maestro.Base.UI
             this.thirdPartyTab.Name = "thirdPartyTab";
             this.thirdPartyTab.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // lnkAdvTreeView
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // tfnetLinkLabel
-            // 
-            resources.ApplyResources(this.tfnetLinkLabel, "tfnetLinkLabel");
-            this.tfnetLinkLabel.Name = "tfnetLinkLabel";
-            this.tfnetLinkLabel.TabStop = true;
-            this.tfnetLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.tfnetLinkLabel_LinkClicked);
-            // 
-            // ziplibLinkLabel
-            // 
-            resources.ApplyResources(this.ziplibLinkLabel, "ziplibLinkLabel");
-            this.ziplibLinkLabel.Name = "ziplibLinkLabel";
-            this.ziplibLinkLabel.TabStop = true;
-            this.ziplibLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ziplibLinkLabel_LinkClicked);
-            // 
-            // colorBrewerlinkLabel
-            // 
-            resources.ApplyResources(this.colorBrewerlinkLabel, "colorBrewerlinkLabel");
-            this.colorBrewerlinkLabel.Name = "colorBrewerlinkLabel";
-            this.colorBrewerlinkLabel.TabStop = true;
-            this.colorBrewerlinkLabel.UseCompatibleTextRendering = true;
-            this.colorBrewerlinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkColorBrewer_Clicked);
-            // 
-            // lnkSharpDevelop
-            // 
-            resources.ApplyResources(this.lnkSharpDevelop, "lnkSharpDevelop");
-            this.lnkSharpDevelop.Name = "lnkSharpDevelop";
-            this.lnkSharpDevelop.TabStop = true;
-            this.lnkSharpDevelop.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSharpDevelop_LinkClicked);
+            resources.ApplyResources(this.lnkAdvTreeView, "lnkAdvTreeView");
+            this.lnkAdvTreeView.Name = "lnkAdvTreeView";
+            this.lnkAdvTreeView.TabStop = true;
+            this.lnkAdvTreeView.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkAdvTreeView_LinkClicked);
             // 
             // linkLabel1
             // 
@@ -222,12 +198,39 @@ namespace Maestro.Base.UI
             this.linkLabel1.UseCompatibleTextRendering = true;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkIcons_Clicked);
             // 
-            // lnkAdvTreeView
+            // lnkSharpDevelop
             // 
-            resources.ApplyResources(this.lnkAdvTreeView, "lnkAdvTreeView");
-            this.lnkAdvTreeView.Name = "lnkAdvTreeView";
-            this.lnkAdvTreeView.TabStop = true;
-            this.lnkAdvTreeView.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkAdvTreeView_LinkClicked);
+            resources.ApplyResources(this.lnkSharpDevelop, "lnkSharpDevelop");
+            this.lnkSharpDevelop.Name = "lnkSharpDevelop";
+            this.lnkSharpDevelop.TabStop = true;
+            this.lnkSharpDevelop.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSharpDevelop_LinkClicked);
+            // 
+            // colorBrewerlinkLabel
+            // 
+            resources.ApplyResources(this.colorBrewerlinkLabel, "colorBrewerlinkLabel");
+            this.colorBrewerlinkLabel.Name = "colorBrewerlinkLabel";
+            this.colorBrewerlinkLabel.TabStop = true;
+            this.colorBrewerlinkLabel.UseCompatibleTextRendering = true;
+            this.colorBrewerlinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkColorBrewer_Clicked);
+            // 
+            // ziplibLinkLabel
+            // 
+            resources.ApplyResources(this.ziplibLinkLabel, "ziplibLinkLabel");
+            this.ziplibLinkLabel.Name = "ziplibLinkLabel";
+            this.ziplibLinkLabel.TabStop = true;
+            this.ziplibLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ziplibLinkLabel_LinkClicked);
+            // 
+            // tfnetLinkLabel
+            // 
+            resources.ApplyResources(this.tfnetLinkLabel, "tfnetLinkLabel");
+            this.tfnetLinkLabel.Name = "tfnetLinkLabel";
+            this.tfnetLinkLabel.TabStop = true;
+            this.tfnetLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.tfnetLinkLabel_LinkClicked);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
             // 
             // creditsTab
             // 
@@ -263,6 +266,13 @@ namespace Maestro.Base.UI
             resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
+            // 
+            // lnkDockPanel
+            // 
+            resources.ApplyResources(this.lnkDockPanel, "lnkDockPanel");
+            this.lnkDockPanel.Name = "lnkDockPanel";
+            this.lnkDockPanel.TabStop = true;
+            this.lnkDockPanel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkDockPanel_LinkClicked);
             // 
             // AboutDialog
             // 
@@ -362,7 +372,12 @@ namespace Maestro.Base.UI
 
         private void lnkAdvTreeView_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            _launcher.OpenUrl("http://www.codeproject.com/KB/tree/treeviewadv.aspx");
+            _launcher.OpenUrl("http://sourceforge.net/projects/treeviewadv/");
+        }
+
+        private void lnkDockPanel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            _launcher.OpenUrl("https://github.com/lextm/sharpsnmplib/tree/master/WinFormsUI");
         }
 	}
 }

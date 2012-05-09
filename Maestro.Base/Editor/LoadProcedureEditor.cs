@@ -57,5 +57,13 @@ namespace Maestro.Base.Editor
                 lpEditor.Bind(service);
             }
         }
+
+        public override Icon ViewIcon
+        {
+            get
+            {
+                return Properties.Resources.icon_document;
+            }
+        }
     }
 }

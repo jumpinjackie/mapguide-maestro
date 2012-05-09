@@ -145,5 +145,13 @@ namespace Maestro.Base.Editor
         {
             
         }
+
+        public override Icon ViewIcon
+        {
+            get
+            {
+                return Properties.Resources.icon_layerdefinition;
+            }
+        }
     }
 }

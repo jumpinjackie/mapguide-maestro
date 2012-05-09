@@ -93,7 +93,7 @@ namespace Maestro.Base.UI
                         this.Icon = Properties.Resources.marker;
                         break;
                     case ResourceTypes.WatermarkDefinition:
-                        this.Icon = Properties.Resources.edit;
+                        this.Icon = Properties.Resources.water;
                         break;
                     default:
                         this.Icon = Properties.Resources.document;

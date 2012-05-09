@@ -57,6 +57,7 @@ namespace Maestro.Shared.UI
             //contentPanel.ViewActivated += new ViewContentActivateEventHandler(OnViewActivated);
             contentPanel = new DockPanel();
             contentPanel.DocumentStyle = DocumentStyle.DockingWindow;
+            contentPanel.ShowDocumentIcon = true;
             contentPanel.Dock = DockStyle.Fill;
             contentPanel.DockLeftPortion = 250;
             contentPanel.DockBottomPortion = 150;
@@ -253,41 +254,43 @@ namespace Maestro.Shared.UI
             DockContent content = new DockContent();
             content.TabText = vc.Title;
             content.Text = vc.Title;
-            content.ToolTipText = vc.Title;
+            content.ToolTipText = vc.Description;
             content.CloseButton = vc.AllowUserClose;
+            content.CloseButtonVisible = vc.AllowUserClose;
             content.Tag = vc;
-
-            switch (vc.DefaultRegion)
+            var icon = vc.ViewIcon;
+            if (icon != null)
             {
-                case ViewRegion.Bottom:
-                    content.DockAreas = DockAreas.DockBottom;
-                    break;
-                case ViewRegion.Left:
-                    content.DockAreas = DockAreas.DockLeft;
-                    break;
-                case ViewRegion.Right:
-                    content.DockAreas = DockAreas.DockRight;
-                    break;
-                case ViewRegion.Document:
-                    content.DockAreas = DockAreas.Document;
-                    break;
-                case ViewRegion.Floating:
-                    content.DockAreas = DockAreas.Float;
-                    break;
+                content.Icon = icon;
+                content.ShowIcon = true;
+            }
+
+            if (vc.IsExclusiveToDocumentRegion)
+            {
+                content.DockAreas = DockAreas.Document;
+            }
+            else
+            {
+                content.DockAreas = (DockAreas)(vc.DefaultRegion);
             }
             vc.SetParentForm(content);
             vc.TitleChanged += (sender, e) =>
             {
                 content.TabText = vc.Title;
                 content.Text = vc.Title;
-                content.ToolTipText = vc.Title;
             };
+            vc.DescriptionChanged += (sender, e) =>
+            {
+                content.ToolTipText = vc.Description;
+            };
+            if (vc.AllowUserClose && vc.IsExclusiveToDocumentRegion)
+                content.TabPageContextMenuStrip = documentTabContextMenu;
 
             content.ClientSize = vc.ContentControl.Size;
             vc.ContentControl.Dock = DockStyle.Fill;
             content.Controls.Add(vc.ContentControl);
 
-            if (vc.DefaultRegion == ViewRegion.Dialog)
+            if (vc.IsModalWindow && vc.DefaultRegion == ViewRegion.Floating)
             {
                 content.StartPosition = FormStartPosition.CenterParent;
                 content.ShowDialog();
@@ -304,6 +307,55 @@ namespace Maestro.Shared.UI
             // Depending on your application and the number of menu items with complex conditions,
             // you might want to update the status less frequently.
             _workbenchInitializer.UpdateMenuItemStatus(menu, _toolstrips.Values);
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var doc = contentPanel.ActiveDocument as DockContent;
+            if (doc != null)
+            {
+                var view = doc.Tag as IViewContent;
+                view.Close();
+            }
+        }
+
+        private void closeAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var closeMe = new List<IViewContent>();
+            foreach (var doc in contentPanel.Documents)
+            {
+                var cnt = doc as DockContent;
+                if (cnt != null)
+                {
+                    var view = cnt.Tag as IViewContent;
+                    if (view != null)
+                        closeMe.Add(view);
+                }
+            }
+
+            foreach (var view in closeMe)
+                view.Close();
+        }
+
+        private void closeAllButThisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var closeMe = new List<IViewContent>();
+            foreach (var doc in contentPanel.Documents)
+            {
+                if (doc == contentPanel.ActiveDocument)
+                    continue;
+
+                var cnt = doc as DockContent;
+                if (cnt != null)
+                {
+                    var view = cnt.Tag as IViewContent;
+                    if (view != null)
+                        closeMe.Add(view);
+                }
+            }
+
+            foreach (var view in closeMe)
+                view.Close();
         }
     }
 

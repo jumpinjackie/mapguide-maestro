@@ -58,5 +58,13 @@ namespace Maestro.Base.Editor
 
             flexEditor.Bind(_edsvc);
         }
+
+        public override Icon ViewIcon
+        {
+            get
+            {
+                return Properties.Resources.icon_fusion;
+            }
+        }
     }
 }

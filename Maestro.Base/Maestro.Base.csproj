@@ -427,6 +427,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Maestro.Base.addin" />
+    <None Include="Resources\icon_document.ico" />
+    <None Include="Resources\icon_xmleditor.ico" />
+    <None Include="Resources\icon_weblayout.ico" />
+    <None Include="Resources\icon_watermark.ico" />
+    <None Include="Resources\icon_symbolibrary.ico" />
+    <None Include="Resources\icon_symboldefinition.ico" />
+    <None Include="Resources\icon_printlayout.ico" />
+    <None Include="Resources\icon_mapdefinition.ico" />
+    <None Include="Resources\icon_layerdefinition.ico" />
+    <None Include="Resources\icon_fusion.ico" />
+    <None Include="Resources\icon_featuresource.ico" />
+    <None Include="Resources\icon_drawingsource.ico" />
+    <None Include="Resources\water.png" />
     <None Include="Resources\folder-open-document.png" />
     <None Include="Resources\edit-diff.png" />
     <None Include="Resources\edit-language.png" />

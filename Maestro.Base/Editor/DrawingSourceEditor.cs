@@ -59,5 +59,13 @@ namespace Maestro.Base.Editor
 
             dsEditor.Bind(_edsvc);
         }
+
+        public override Icon ViewIcon
+        {
+            get
+            {
+                return Properties.Resources.icon_drawingsource;
+            }
+        }
     }
 }

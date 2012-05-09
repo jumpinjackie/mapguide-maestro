@@ -112,22 +112,109 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="documentTabContextMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="closeToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAABfUlEQVQ4T6WTu0vDUBTGz1+g
+        VBtB1KBgdSsUNFvHQoZChw4upWoRupYO7a6giw66KCj4wgciuAiKg5M4XcFBUHAVBxdXcfD4fTGJqaZT
+        hx+353yPezNUVFU6oaMwL/YKDkXkCJyIuMDw5LzvE6cx87eAIaPNpvIEbqTA0z5qtVBrKfCN5qvR0Id8
+        Xj/rdcXOAJYQ81apeNpLqRRovy/YxXOAuwPje7Wq146jr+WyciaPhYK3u8vlvB29zISfwAGCbEHYhOG5
+        WNSLdFpvs1m9ymR027L02LaVGj30xhbAIBswrMN4nkrpXiLhcZBMKnfU6PlXsIjlElgBqzCtwXyGW08R
+        DuCOGj30MhN+QlCw/GMwlwjGQY2edgUUzA3CAZzb7NyWF8zjOcDcIxzAeQG3kTiNmfATbAxTMNYRekIJ
+        T87D2JM4jZmwAL8HwdiEyNw0wpMis5hHwRAYACOOyAw1ejCPMxMt6MKiF/T79OHsAd2AWgJYET3JfVjQ
+        yd/5G8s+qAWdGU8YAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="closeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="closeAllToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAABfUlEQVQ4T6WTu0vDUBTGz1+g
+        VBtB1KBgdSsUNFvHQoZChw4upWoRupYO7a6giw66KCj4wgciuAiKg5M4XcFBUHAVBxdXcfD4fTGJqaZT
+        hx+353yPezNUVFU6oaMwL/YKDkXkCJyIuMDw5LzvE6cx87eAIaPNpvIEbqTA0z5qtVBrKfCN5qvR0Id8
+        Xj/rdcXOAJYQ81apeNpLqRRovy/YxXOAuwPje7Wq146jr+WyciaPhYK3u8vlvB29zISfwAGCbEHYhOG5
+        WNSLdFpvs1m9ymR027L02LaVGj30xhbAIBswrMN4nkrpXiLhcZBMKnfU6PlXsIjlElgBqzCtwXyGW08R
+        DuCOGj30MhN+QlCw/GMwlwjGQY2edgUUzA3CAZzb7NyWF8zjOcDcIxzAeQG3kTiNmfATbAxTMNYRekIJ
+        T87D2JM4jZmwAL8HwdiEyNw0wpMis5hHwRAYACOOyAw1ejCPMxMt6MKiF/T79OHsAd2AWgJYET3JfVjQ
+        yd/5G8s+qAWdGU8YAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="closeAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="closeAllToolStripMenuItem.Text" xml:space="preserve">
+    <value>Close All</value>
+  </data>
+  <data name="closeAllButThisToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAABfUlEQVQ4T6WTu0vDUBTGz1+g
+        VBtB1KBgdSsUNFvHQoZChw4upWoRupYO7a6giw66KCj4wgciuAiKg5M4XcFBUHAVBxdXcfD4fTGJqaZT
+        hx+353yPezNUVFU6oaMwL/YKDkXkCJyIuMDw5LzvE6cx87eAIaPNpvIEbqTA0z5qtVBrKfCN5qvR0Id8
+        Xj/rdcXOAJYQ81apeNpLqRRovy/YxXOAuwPje7Wq146jr+WyciaPhYK3u8vlvB29zISfwAGCbEHYhOG5
+        WNSLdFpvs1m9ymR027L02LaVGj30xhbAIBswrMN4nkrpXiLhcZBMKnfU6PlXsIjlElgBqzCtwXyGW08R
+        DuCOGj30MhN+QlCw/GMwlwjGQY2edgUUzA3CAZzb7NyWF8zjOcDcIxzAeQG3kTiNmfATbAxTMNYRekIJ
+        T87D2JM4jZmwAL8HwdiEyNw0wpMis5hHwRAYACOOyAw1ejCPMxMt6MKiF/T79OHsAd2AWgJYET3JfVjQ
+        yd/5G8s+qAWdGU8YAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="closeAllButThisToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="closeAllButThisToolStripMenuItem.Text" xml:space="preserve">
+    <value>Close All But This</value>
+  </data>
+  <data name="documentTabContextMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 92</value>
+  </data>
+  <data name="&gt;&gt;documentTabContextMenu.Name" xml:space="preserve">
+    <value>documentTabContextMenu</value>
+  </data>
+  <data name="&gt;&gt;documentTabContextMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>792, 566</value>
   </data>
+  <data name="&gt;&gt;closeToolStripMenuItem.Name" xml:space="preserve">
+    <value>closeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;closeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;closeAllToolStripMenuItem.Name" xml:space="preserve">
+    <value>closeAllToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;closeAllToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;closeAllButThisToolStripMenuItem.Name" xml:space="preserve">
+    <value>closeAllButThisToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;closeAllButThisToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>Workbench</value>
+    <value>WorkbenchBase</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
