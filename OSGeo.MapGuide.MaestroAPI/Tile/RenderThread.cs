@@ -22,8 +22,9 @@ using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using System.Threading;
 
-namespace MgCooker
+namespace OSGeo.MapGuide.MaestroAPI.Tile
 {
     public class RenderThreads
     {
@@ -40,10 +41,10 @@ namespace MgCooker
             public int Col;
             public int Row;
             public Exception Exception;
-            public System.Threading.EventWaitHandle Event;
+            public EventWaitHandle Event;
             public object Result = null;
 
-            public EventPassing(EventType type, int row, int col, Exception ex, System.Threading.EventWaitHandle @event)
+            public EventPassing(EventType type, int row, int col, Exception ex, EventWaitHandle @event)
             {
                 this.Type = type;
                 this.Event = @event;
@@ -56,7 +57,7 @@ namespace MgCooker
         public Queue<KeyValuePair<int, int>> TileSet;
         private Queue<EventPassing> RaiseEvents = new Queue<EventPassing>();
         private object SyncLock;
-        private System.Threading.AutoResetEvent Event;
+        private AutoResetEvent Event;
         private int CompleteFlag;
         private BatchSettings Parent;
         private int Scale;
@@ -76,7 +77,7 @@ namespace MgCooker
         {
             TileSet = new Queue<KeyValuePair<int, int>>();
             SyncLock = new object();
-            Event = new System.Threading.AutoResetEvent(false);
+            Event = new AutoResetEvent(false);
             CompleteFlag = parent.Config.ThreadCount;
             RaiseEvents = new Queue<EventPassing>();
             this.Scale = scale;
@@ -93,13 +94,13 @@ namespace MgCooker
 
         public void RunAndWait()
         {
-            System.Threading.ThreadPool.QueueUserWorkItem(
-                new System.Threading.WaitCallback(QueueFiller));
+            ThreadPool.QueueUserWorkItem(
+                new WaitCallback(QueueFiller));
 
             for (int i = 0; i < Parent.Config.ThreadCount; i++)
             {
-                System.Threading.ThreadPool.QueueUserWorkItem(
-                    new System.Threading.WaitCallback(ThreadRender));
+                ThreadPool.QueueUserWorkItem(
+                    new WaitCallback(ThreadRender));
             }
 
             bool completed = false;
@@ -240,7 +241,7 @@ namespace MgCooker
                     }
 
                 if (!added) //Prevent CPU spinning
-                    System.Threading.Thread.Sleep(500);
+                    Thread.Sleep(500);
             }
         }
 
@@ -255,7 +256,7 @@ namespace MgCooker
                 //Create a copy of the connection for local usage
                 IServerConnection con = Parent.Connection.Clone();
                 var tileSvc = (ITileService)con.GetService((int)ServiceType.Tile);
-                System.Threading.AutoResetEvent ev = new System.Threading.AutoResetEvent(false);
+                AutoResetEvent ev = new AutoResetEvent(false);
 
 
                 while (!Parent.Cancel)
@@ -275,7 +276,7 @@ namespace MgCooker
                         return;
 
                     if (round == null) //No data, but producer is still running
-                        System.Threading.Thread.Sleep(500);
+                        Thread.Sleep(500);
                     else
                         RenderTile(ev, tileSvc, round.Value.Key, round.Value.Value, Scale, Group);
                 }
@@ -298,7 +299,7 @@ namespace MgCooker
         /// <param name="col">The column index of the tile</param>
         /// <param name="scaleindex">The scale index of the tile</param>
         /// <param name="group">The name of the baselayer group</param>
-        public void RenderTile(System.Threading.EventWaitHandle ev, ITileService tileSvc, long row, long col, int scaleindex, string group)
+        public void RenderTile(EventWaitHandle ev, ITileService tileSvc, long row, long col, int scaleindex, string group)
         {
             ev.Reset();
             lock (SyncLock)
@@ -310,7 +311,7 @@ namespace MgCooker
                     ));
                 Event.Set();
             }
-            ev.WaitOne(System.Threading.Timeout.Infinite, true);
+            ev.WaitOne(Timeout.Infinite, true);
 
             int c = Parent.Config.RetryCount;
             while (c > 0)
@@ -344,7 +345,7 @@ namespace MgCooker
                             Event.Set();
                         }
 
-                        ev.WaitOne(System.Threading.Timeout.Infinite, true);
+                        ev.WaitOne(Timeout.Infinite, true);
 
                         if (evobj.Result == null)
                             break;
@@ -367,7 +368,7 @@ namespace MgCooker
                 ));
                 Event.Set();
             }
-            ev.WaitOne(System.Threading.Timeout.Infinite, true);
+            ev.WaitOne(Timeout.Infinite, true);
         }
 
     }

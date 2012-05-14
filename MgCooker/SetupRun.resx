@@ -112,23 +112,23 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="button3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
     <value>227, 9</value>
   </data>
   <data name="button3.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 23</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="button3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
@@ -139,7 +139,7 @@
     <value>button3</value>
   </data>
   <data name="&gt;&gt;button3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button3.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -166,7 +166,7 @@
     <value>button2</value>
   </data>
   <data name="&gt;&gt;button2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button2.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -193,7 +193,7 @@
     <value>button1</value>
   </data>
   <data name="&gt;&gt;button1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button1.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -217,7 +217,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -231,62 +231,62 @@
   <data name="MapTree.ImageIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <metadata name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>145, 17</value>
   </metadata>
   <data name="imageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj0yLjAuMC4w
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACC
-        DAAAAk1TRnQBSQFMAgEBBAEAAUwBAAFMAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        DAAAAk1TRnQBSQFMAgEBBAEAAVQBAAFUAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABIAMAAQEBAAEgBgABIP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8AKgADHAEoAyQBNgMk
         ATYDJAE2AyQBNgMkATYDJAE2AyQBNgMkATYDJAE2AyQBNgMkATYDGwEmHAADFgEeAVsCWAHGAx0BKgMC
-        AQOgAAP9Af8D/QH/A/0B/wP9Af8D/QH/A/0B/wP9Af8D/QH/A/0B/wP9Af8D/QH/A/0B/wMbASYcAAGH
-        Am0B9wH0AeYB4QH/AcoBuwG6Af0BjQGFAYQB+QFNAkwBkQMRAReYAAP9Af8B9QHoAeQB/wH0AeUB4AH/
+        AQOgAAP9Af8D/QH/A/0B/wP9Af8D/QH/A/0B/wP9Af8D/QH/A/0B/wP9Af8D/QH/A/0B/wMbASYcAAGG
+        Am0B9wH0AeYB4QH/AccBugG5Af0BjAGEAYMB+QFNAkwBkQMRAReYAAP9Af8B9QHoAeQB/wH0AeUB4AH/
         AfIB4gHdAf8B8QHgAdkB/wHwAd0B1gH/Ae8B2wHTAf8B7gHZAdEB/wHuAdgB0AH/Ae4B2AHQAf8B7gHY
         AdAB/wP9Af8DGwEmGAABLAIrAUMB9QHoAeMB/wH0AeYB4QH/AfMB5AHfAf8B8gHjAd0B/wHyAeEB2wH/
-        AakBmwGYAfoBaQJaAfABNgI1AVgDCwEPDAADHQEqAx0BKiAAAwUBBwMdASoDHQEqTAAD/QH/AfcB7QHp
-        Af8B9gHqAeYB/wH0AecB4wH/Ad0BtQGwAf8BvQFrAWYB/wG+AW8BagH/AeMBwgG8Af8B7wHaAdIB/wHu
-        AdgB0AH/Ae4B2AHQAf8D/QH/AxsBJhgAAZECewH4AfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/AfIB4wHd
-        Af8B8gHhAdsB/wHxAd8B2QH/AfAB3QHXAf8B7wHcAdUB/wGeAYkBgwH6AVkCVwHCCwAB/ygAAzABTAMA
-        Af9MAAP9Af8B+AHwAe0B/wHtAdcB0gH/AbkBiQFpAf8BWQGTASkB/wHqAbEBMQH/AegBrgEoAf8B6wHB
-        AVwB/wGxAVMBTgH/Ae4B2QHSAf8B7gHZAdIB/wP9Af8DGwEmFAADQAFwAfUB6QHlAf8B9QHoAeMB/wH0
+        AaYBmQGVAfoBaAJaAfABNgI1AVgDCwEPDAADHQEqAx0BKiAAAwUBBwMdASoDHQEqTAAD/QH/AfcB7QHp
+        Af8B9gHqAeYB/wH0AecB4wH/Ad0BtQGwAf8BvQFqAWUB/wG+AW4BaQH/AeMBwgG8Af8B7wHaAdIB/wHu
+        AdgB0AH/Ae4B2AHQAf8D/QH/AxsBJhgAAY4CegH4AfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/AfIB4wHd
+        Af8B8gHhAdsB/wHxAd8B2QH/AfAB3QHXAf8B7wHcAdUB/wGcAYYBgAH6AVkCVwHCCwAB/ygAAzABTAMA
+        Af9MAAP9Af8B+AHwAe0B/wHtAdcB0gH/AbkBiQFoAf8BWAGTASgB/wHqAbEBMAH/AegBrgEnAf8B6wHB
+        AVsB/wGxAVIBTQH/Ae4B2QHSAf8B7gHZAdIB/wP9Af8DGwEmFAADQAFwAfUB6QHlAf8B9QHoAeMB/wH0
         AeYB4QH/AfMB5AHfAf8B8gHjAd0B/wHyAeEB2wH/AfEB3wHZAf8B8AHdAdcB/wHvAdwB1QH/Ae8B2gHT
         Af8DOAFcCwAB/wgAAUYCRQF/AwAEAQECA0UBfQQAAygBPAMlATcEAAMvAUoDAAH/DAADEQEXA1gB0QMA
-        Af8DKAE8EAADOAFcAwAB/xgAA/0B/wH2AeoB5gH/AegBvwGcAf8B+wHLAVwB/wE2Aa0BQwH/AU4BnQEk
-        Af8B/gHEATwB/wH+Ab4BJwH/AfYBtgEdAf8BlwFsAUkB/wHwAd0B1gH/A/0B/wMbASYUAAGYAYcBhQH4
+        Af8DKAE8EAADOAFcAwAB/xgAA/0B/wH2AeoB5gH/AegBvwGcAf8B+wHLAVsB/wE1Aa0BQgH/AU0BnQEj
+        Af8B/gHEATsB/wH+Ab4BJgH/AfYBtgEcAf8BlwFrAUgB/wHwAd0B1gH/A/0B/wMbASYUAAGWAYQBggH4
         AfUB6QHlAf8B9QHoAeMB/wH0AeYB4QH/AfMB5AHfAf8B8gHjAd0B/wHyAeEB2wH/AfEB3wHZAf8B8AHd
-        AdcB/wHvAdwB1QH/AXkCYgH2AwQBBgsAAf8LAAH/A0UBfQNIAYUDAAH/BwAB/wMAAf8EAAMvAUoDAAH/
-        EAADQgF0AwAB/xQAAw0BEQNaAdUYAAP9Af8BuQFZAUQB/wH6Ac4BaAH/AaQBtgFQAf8BNgGtAUQB/wE1
-        Aa0BQwH/AckBvwFSAf8B/gHEATsB/wH+AcABLAH/ATQBpQE7Af8BvAFrAWgB/wP9Af8DGwEmEAADUAGe
+        AdcB/wHvAdwB1QH/AXcCYgH2AwQBBgsAAf8LAAH/A0UBfQNIAYUDAAH/BwAB/wMAAf8EAAMvAUoDAAH/
+        EAADQgF0AwAB/xQAAw0BEQNaAdUYAAP9Af8BuQFYAUMB/wH6Ac4BZwH/AaQBtgFPAf8BNQGtAUMB/wE0
+        Aa0BQgH/AckBvwFRAf8B/gHEAToB/wH+AcABKwH/ATMBpQE6Af8BvAFqAWcB/wP9Af8DGwEmEAADUAGe
         AfYB6wHnAf8B9QHpAeUB/wH1AegB4wH/AfQB5gHhAf8B8wHkAd8B/wHyAeMB3QH/AfIB4QHbAf8B8QHf
-        AdkB/wHwAd0B1wH/Ab0BswGvAfwDKAE8DwAB/ygAAy8BSgMAAf8QAANCAXQDAAH/NAAD/QH/AeoBwwGh
-        Af8B/QHWAYQB/wGbAbYBVgH/ATQBnwEpAf8B8QHYAZEB/wH9AdEBbAH/AZwBsAE9Af8BNgGtAUQB/wE2
-        Aa0BRAH/AZgBZwFGAf8D/QH/AxsBJhAAAZsBiQGIAfcB9gHrAecB/wH1AekB5QH/AfUB6AHjAf8B9AHm
-        AeEB/wHzAeQB3wH/AfIB4wHdAf8B8gHhAdsB/wHxAd8B2QH/AfAB3QHXAf8BaQJZAesDAQECDwAB/ygA
-        Ay8BSgMAAf8QAANCAXQDAAH/FAADAgEDA1EBoRgAA/0B/wH6AeIBuQH/ATcBmgEgAf8C1AGbAf8B/QHj
-        AbUB/wH9Ad0BnQH/Af0B1AF1Af8B5AHIAVoB/wE1AawBQgH/AUwBnAEhAf8BngGKAVcB/wP9Af8DGwEm
+        AdkB/wHwAd0B1wH/AbsBsQGtAfwDKAE8DwAB/ygAAy8BSgMAAf8QAANCAXQDAAH/NAAD/QH/AeoBwwGh
+        Af8B/QHWAYQB/wGbAbYBVQH/ATMBnwEoAf8B8QHYAZEB/wH9AdEBawH/AZwBsAE8Af8BNQGtAUMB/wE1
+        Aa0BQwH/AZgBZgFFAf8D/QH/AxsBJhAAAZcBiAGHAfcB9gHrAecB/wH1AekB5QH/AfUB6AHjAf8B9AHm
+        AeEB/wHzAeQB3wH/AfIB4wHdAf8B8gHhAdsB/wHxAd8B2QH/AfAB3QHXAf8BaAJZAesDAQECDwAB/ygA
+        Ay8BSgMAAf8QAANCAXQDAAH/FAADAgEDA1EBoRgAA/0B/wH6AeIBuQH/ATYBmgEfAf8C1AGbAf8B/QHj
+        AbUB/wH9Ad0BnQH/Af0B1AF0Af8B5AHIAVkB/wE0AawBQQH/AUsBnAEgAf8BngGKAVYB/wP9Af8DGwEm
         DAABXAJZAckB9wHtAekB/wH2AesB5wH/AfUB6QHlAf8B9QHoAeMB/wH0AeYB4QH/AfMB5AHfAf8B8gHj
-        Ad0B/wHyAeEB2wH/AfEB3wHZAf8BrAGdAZoB+gMbASYTAAH/KAADLwFKAwAB/xAAA0IBdAMAAf8UAAM+
-        AWsDAAH/GAAD/QH/AWkBkAExAf8BNgGtAUQB/wE2Aa0BRAH/Aa8BwQFwAf8B/QHbAZUB/wH9AdMBcAH/
-        Af4BygFOAf8BPgGaASAB/wE0AZcBGwH/AZwBaQFHAf8D/QH/AxsBJggAAwQBBQGvAaIBoQH6AfcB7QHp
+        Ad0B/wHyAeEB2wH/AfEB3wHZAf8BqQGbAZgB+gMbASYTAAH/KAADLwFKAwAB/xAAA0IBdAMAAf8UAAM+
+        AWsDAAH/GAAD/QH/AWgBkAEwAf8BNQGtAUMB/wE1Aa0BQwH/Aa8BwQFvAf8B/QHbAZUB/wH9AdMBbwH/
+        Af4BygFNAf8BPQGaAR8B/wEzAZcBGgH/AZwBaAFGAf8D/QH/AxsBJggAAwQBBQGsAaABnwH6AfcB7QHp
         Af8B9gHrAecB/wH1AekB5QH/AfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/AfIB4wHdAf8B8gHhAdsB/wHx
-        Ad8B2QH/AV0CWQHSFwAB/ygAAy8BSgMAAf8QAANCAXYDAAH/NAAD/QH/Ab4BawFLAf8BNgGtAUQB/wE1
-        AaMBMgH/ATUBrQFDAf8BwAHCAWMB/wH+Ac4BXgH/Af4BxgFAAf8BVQGUARIB/wHCAboBQgH/AcUBgQF0
-        Af8D/QH/AxsBJggAAWQCWgHnAfgB7gHrAf8B9wHtAekB/wH2AesB5wH/AfUB6QHlAf8B9QHoAeMB/wH0
-        AeYB4QH/AfMB5AHfAf8B8gHjAd0B/wHyAeEB2wH/AZsBjQGKAfgDEwEaFwAB/ygAAy8BSgMAAf8MAAMI
-        AQsBWgJVAd4DAAH/NAAD/QH/AfcB7QHpAf8BcQGQATUB/wGnAbUBSgH/ATYBkwEUAf8BqgG3AUwB/wFJ
-        AZ4BJQH/AfIBwgE9Af8B/gG9ASIB/wHFAXQBYAH/AfkB8QHuAf8D/QH/AxsBJgQAAxIBGQGwAqQB+gH4
+        Ad8B2QH/AV0CWQHSFwAB/ygAAy8BSgMAAf8QAANCAXYDAAH/NAAD/QH/Ab4BagFKAf8BNQGtAUMB/wE0
+        AaMBMQH/ATQBrQFCAf8BwAHCAWIB/wH+Ac4BXQH/Af4BxgE/Af8BVAGUAREB/wHCAboBQQH/AcUBgQFz
+        Af8D/QH/AxsBJggAAWQCXAHnAfgB7gHrAf8B9wHtAekB/wH2AesB5wH/AfUB6QHlAf8B9QHoAeMB/wH0
+        AeYB4QH/AfMB5AHfAf8B8gHjAd0B/wHyAeEB2wH/AZkBigGHAfgDEwEaFwAB/ygAAy8BSgMAAf8MAAMI
+        AQsBWgJWAd4DAAH/NAAD/QH/AfcB7QHpAf8BcAGQATQB/wGnAbUBSQH/ATUBkwETAf8BqgG3AUsB/wFI
+        AZ4BJAH/AfIBwgE8Af8B/gG9ASEB/wHFAXMBXwH/AfkB8QHuAf8D/QH/AxsBJgQAAxIBGQGtAqIB+gH4
         Ae4B6wH/AfcB7QHpAf8B9gHrAecB/wH1AekB5QH/AfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/AfIB4wHd
-        Af8B8gHhAdsB/wNUAa8YAAFXAlQB3wFJAkgBhyAAAwsBDwNVAbcBVwJUAd9MAAP9Af8B+QHxAe4B/wHy
-        AeEB2wH/Aa0BhgFRAf8B7gHYAYsB/wFKAZ4BJQH/ATUBrQFDAf8BOwGUARcB/wG7AV4BSgH/AfgB8AHt
-        Af8B+QHxAe4B/wP9Af8DGwEmCAADAQECAVICUQGnAZUCigH5AfYB6wHnAf8B9QHpAeUB/wH1AegB4wH/
-        AfQB5gHhAf8B8wHkAd8B/wHyAeMB3QH/AZgBhAF+AfgDDgETmAAD/QH/AfkB8QHuAf8B+QHxAe4B/wH5
+        Af8B8gHhAdsB/wNUAa8YAAFXAlYB3wFJAkgBhyAAAwsBDwNVAbcBVwJWAd9MAAP9Af8B+QHxAe4B/wHy
+        AeEB2wH/Aa0BhgFQAf8B7gHYAYsB/wFJAZ4BJAH/ATQBrQFCAf8BOgGUARYB/wG7AV0BSQH/AfgB8AHt
+        Af8B+QHxAe4B/wP9Af8DGwEmCAADAQECAVICUQGnAZICiQH5AfYB6wHnAf8B9QHpAeUB/wH1AegB4wH/
+        AfQB5gHhAf8B8wHkAd8B/wHyAeMB3QH/AZYBgQF9AfgDDgETmAAD/QH/AfkB8QHuAf8B+QHxAe4B/wH5
         AfEB7gH/AewB0gHJAf8B0gGVAYIB/wHUAZoBiQH/AfIB4QHcAf8B+QHxAe4B/wH5AfEB7gH/AfkB8QHu
-        Af8D/QH/AxsBJhQAAx0BKQFhAlgB5AGiAY4BjQH5AfQB5gHhAf8B8wHkAd8B/wHyAeMB3QH/AUkCSAGI
+        Af8D/QH/AxsBJhQAAx0BKQFhAlkB5AGeAY0BjAH5AfQB5gHhAf8B8wHkAd8B/wHyAeMB3QH/AUkCSAGI
         nAAD/QH/AfoB9gH0Af8B+gH2AfQB/wH6AfYB9AH/AfoB9gH0Af8B+gH2AfQB/wH6AfYB9AH/AfoB9gH0
-        Af8B+gH2AfQB/wH6AfYB9AH/AfoB9gH0Af8D/QH/AxsBJiAAAz4BawGTAnsB+gGRAnoB+AMHAQqcAAGl
+        Af8B+gH2AfQB/wH6AfYB9AH/AfoB9gH0Af8D/QH/AxsBJiAAAz4BawGQAnoB+gGOAnkB+AMHAQqcAAGl
         AqAB/wGkAaABnwH/AaQCnwH/AaMCngH/AaICnQH/AaECnAH/AaACmwH/AZ8CmgH/AZ0CmQH/AZwBmAGX
         Af8BmwKWAf8BmQKVAf/IAAFCAU0BPgcAAT4DAAEoAwABQAMAASADAAEBAQABAQYAAQEWAAP/gQABwAEB
         AfwBPwT/AcABAQH8AQ8E/wHAAQEB+AEBAc8B8QL/AcABAQH4AQAB3wH5Av8BwAEBAfABAAHYAUkBwwHP
@@ -311,7 +311,7 @@
     <value>MapTree</value>
   </data>
   <data name="&gt;&gt;MapTree.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;MapTree.Parent" xml:space="preserve">
     <value>$this</value>
@@ -319,7 +319,7 @@
   <data name="&gt;&gt;MapTree.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="saveFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <data name="saveFileDialog1.Filter" xml:space="preserve">
@@ -353,7 +353,7 @@
     <value>ModfiedOverrideWarning</value>
   </data>
   <data name="&gt;&gt;ModfiedOverrideWarning.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ModfiedOverrideWarning.Parent" xml:space="preserve">
     <value>BoundsOverride</value>
@@ -377,7 +377,7 @@
     <value>ResetBounds</value>
   </data>
   <data name="&gt;&gt;ResetBounds.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ResetBounds.Parent" xml:space="preserve">
     <value>BoundsOverride</value>
@@ -398,7 +398,7 @@
     <value>txtUpperY</value>
   </data>
   <data name="&gt;&gt;txtUpperY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtUpperY.Parent" xml:space="preserve">
     <value>BoundsOverride</value>
@@ -422,7 +422,7 @@
     <value>label4</value>
   </data>
   <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label4.Parent" xml:space="preserve">
     <value>BoundsOverride</value>
@@ -443,7 +443,7 @@
     <value>txtUpperX</value>
   </data>
   <data name="&gt;&gt;txtUpperX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtUpperX.Parent" xml:space="preserve">
     <value>BoundsOverride</value>
@@ -467,7 +467,7 @@
     <value>label5</value>
   </data>
   <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label5.Parent" xml:space="preserve">
     <value>BoundsOverride</value>
@@ -488,7 +488,7 @@
     <value>txtLowerY</value>
   </data>
   <data name="&gt;&gt;txtLowerY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtLowerY.Parent" xml:space="preserve">
     <value>BoundsOverride</value>
@@ -512,7 +512,7 @@
     <value>label10</value>
   </data>
   <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label10.Parent" xml:space="preserve">
     <value>BoundsOverride</value>
@@ -533,7 +533,7 @@
     <value>txtLowerX</value>
   </data>
   <data name="&gt;&gt;txtLowerX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtLowerX.Parent" xml:space="preserve">
     <value>BoundsOverride</value>
@@ -557,7 +557,7 @@
     <value>label11</value>
   </data>
   <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label11.Parent" xml:space="preserve">
     <value>BoundsOverride</value>
@@ -584,7 +584,7 @@
     <value>BoundsOverride</value>
   </data>
   <data name="&gt;&gt;BoundsOverride.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;BoundsOverride.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -614,7 +614,7 @@
     <value>chkUseDifferentConnection</value>
   </data>
   <data name="&gt;&gt;chkUseDifferentConnection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;chkUseDifferentConnection.Parent" xml:space="preserve">
     <value>grpDifferentConnection</value>
@@ -637,7 +637,7 @@
   <data name="UseNativeAPI.Text" xml:space="preserve">
     <value>Connect using native API</value>
   </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>250, 17</value>
   </metadata>
   <data name="UseNativeAPI.ToolTip" xml:space="preserve">
@@ -647,7 +647,7 @@
     <value>UseNativeAPI</value>
   </data>
   <data name="&gt;&gt;UseNativeAPI.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;UseNativeAPI.Parent" xml:space="preserve">
     <value>grpDifferentConnection</value>
@@ -671,7 +671,7 @@
     <value>Password</value>
   </data>
   <data name="&gt;&gt;Password.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Password.Parent" xml:space="preserve">
     <value>grpDifferentConnection</value>
@@ -698,7 +698,7 @@
     <value>Username</value>
   </data>
   <data name="&gt;&gt;Username.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Username.Parent" xml:space="preserve">
     <value>grpDifferentConnection</value>
@@ -725,7 +725,7 @@
     <value>MapAgent</value>
   </data>
   <data name="&gt;&gt;MapAgent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;MapAgent.Parent" xml:space="preserve">
     <value>grpDifferentConnection</value>
@@ -752,7 +752,7 @@
     <value>label3</value>
   </data>
   <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>grpDifferentConnection</value>
@@ -779,7 +779,7 @@
     <value>label2</value>
   </data>
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>grpDifferentConnection</value>
@@ -806,7 +806,7 @@
     <value>label1</value>
   </data>
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>grpDifferentConnection</value>
@@ -827,7 +827,7 @@
     <value>grpDifferentConnection</value>
   </data>
   <data name="&gt;&gt;grpDifferentConnection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;grpDifferentConnection.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -860,7 +860,7 @@
     <value>RandomTileOrder</value>
   </data>
   <data name="&gt;&gt;RandomTileOrder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;RandomTileOrder.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -884,7 +884,7 @@
     <value>ThreadCount</value>
   </data>
   <data name="&gt;&gt;ThreadCount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ThreadCount.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -911,7 +911,7 @@
     <value>label9</value>
   </data>
   <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label9.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -935,7 +935,7 @@
     <value>groupBox3</value>
   </data>
   <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -962,7 +962,7 @@
     <value>MetersPerUnit</value>
   </data>
   <data name="&gt;&gt;MetersPerUnit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;MetersPerUnit.Parent" xml:space="preserve">
     <value>OfficialMethodPanel</value>
@@ -989,7 +989,7 @@
     <value>label8</value>
   </data>
   <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label8.Parent" xml:space="preserve">
     <value>OfficialMethodPanel</value>
@@ -1013,7 +1013,7 @@
     <value>OfficialMethodPanel</value>
   </data>
   <data name="&gt;&gt;OfficialMethodPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;OfficialMethodPanel.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1043,7 +1043,7 @@
     <value>LimitTileset</value>
   </data>
   <data name="&gt;&gt;LimitTileset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;LimitTileset.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1073,7 +1073,7 @@
     <value>UseOfficialMethod</value>
   </data>
   <data name="&gt;&gt;UseOfficialMethod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;UseOfficialMethod.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1097,7 +1097,7 @@
     <value>MaxRowLimit</value>
   </data>
   <data name="&gt;&gt;MaxRowLimit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;MaxRowLimit.Parent" xml:space="preserve">
     <value>TilesetLimitPanel</value>
@@ -1124,7 +1124,7 @@
     <value>label6</value>
   </data>
   <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label6.Parent" xml:space="preserve">
     <value>TilesetLimitPanel</value>
@@ -1148,7 +1148,7 @@
     <value>MaxColLimit</value>
   </data>
   <data name="&gt;&gt;MaxColLimit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;MaxColLimit.Parent" xml:space="preserve">
     <value>TilesetLimitPanel</value>
@@ -1175,7 +1175,7 @@
     <value>label7</value>
   </data>
   <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label7.Parent" xml:space="preserve">
     <value>TilesetLimitPanel</value>
@@ -1199,7 +1199,7 @@
     <value>TilesetLimitPanel</value>
   </data>
   <data name="&gt;&gt;TilesetLimitPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TilesetLimitPanel.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1223,7 +1223,7 @@
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -1247,7 +1247,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1255,7 +1255,7 @@
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
@@ -1774,24 +1774,24 @@
     <value>imageList1</value>
   </data>
   <data name="&gt;&gt;imageList1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ImageList, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;saveFileDialog1.Name" xml:space="preserve">
     <value>saveFileDialog1</value>
   </data>
   <data name="&gt;&gt;saveFileDialog1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolTip1.Name" xml:space="preserve">
     <value>toolTip1</value>
   </data>
   <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>SetupRun</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

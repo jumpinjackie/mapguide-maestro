@@ -24,7 +24,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.Common;
 
-namespace MgCooker
+namespace OSGeo.MapGuide.MaestroAPI.Tile
 {
     /// <summary>
     /// This delegate is used to monitor progress on tile rendering
@@ -609,7 +609,7 @@ namespace MgCooker
                 settings.RunAndWait();
 
                 if (settings.TileSet.Count != 0 && !m_parent.Cancel)
-                    throw new Exception(Properties.Resources.ThreadFailureError);
+                    throw new Exception(Properties.Resources.TS_ThreadFailureError);
             }
 
             m_parent.InvokeFinishRendering(this, group, scaleindex);

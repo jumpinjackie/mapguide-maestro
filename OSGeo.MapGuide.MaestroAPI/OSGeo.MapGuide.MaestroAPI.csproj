@@ -385,6 +385,8 @@
     <Compile Include="Services\NsDoc.cs" />
     <Compile Include="Services\ServiceType.cs" />
     <Compile Include="SiteVersion.cs" />
+    <Compile Include="Tile\BatchSettings.cs" />
+    <Compile Include="Tile\RenderThread.cs" />
     <Compile Include="Utf8XmlWriter.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="XmlValidator.cs" />

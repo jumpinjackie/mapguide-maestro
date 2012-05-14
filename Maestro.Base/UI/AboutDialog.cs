@@ -106,6 +106,7 @@ namespace Maestro.Base.UI
             this.Localization = new System.Windows.Forms.Label();
             this.ServerVersion = new System.Windows.Forms.Label();
             this.thirdPartyTab = new System.Windows.Forms.TabPage();
+            this.lnkDockPanel = new System.Windows.Forms.LinkLabel();
             this.lnkAdvTreeView = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.lnkSharpDevelop = new System.Windows.Forms.LinkLabel();
@@ -118,7 +119,6 @@ namespace Maestro.Base.UI
             this.licenseTab = new System.Windows.Forms.TabPage();
             this.License = new System.Windows.Forms.TextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.lnkDockPanel = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayPalImage)).BeginInit();
             this.thirdPartyTab.SuspendLayout();
@@ -182,6 +182,13 @@ namespace Maestro.Base.UI
             this.thirdPartyTab.Controls.Add(this.label2);
             this.thirdPartyTab.Name = "thirdPartyTab";
             this.thirdPartyTab.UseVisualStyleBackColor = true;
+            // 
+            // lnkDockPanel
+            // 
+            resources.ApplyResources(this.lnkDockPanel, "lnkDockPanel");
+            this.lnkDockPanel.Name = "lnkDockPanel";
+            this.lnkDockPanel.TabStop = true;
+            this.lnkDockPanel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkDockPanel_LinkClicked);
             // 
             // lnkAdvTreeView
             // 
@@ -266,13 +273,6 @@ namespace Maestro.Base.UI
             resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            // 
-            // lnkDockPanel
-            // 
-            resources.ApplyResources(this.lnkDockPanel, "lnkDockPanel");
-            this.lnkDockPanel.Name = "lnkDockPanel";
-            this.lnkDockPanel.TabStop = true;
-            this.lnkDockPanel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkDockPanel_LinkClicked);
             // 
             // AboutDialog
             // 

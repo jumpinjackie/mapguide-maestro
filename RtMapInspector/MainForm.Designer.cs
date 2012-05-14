@@ -39,13 +39,20 @@
             this.rdResourceId = new System.Windows.Forms.RadioButton();
             this.rdMapName = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.trvLayersAndGroups = new System.Windows.Forms.TreeView();
             this.imgList = new System.Windows.Forms.ImageList(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.properties = new System.Windows.Forms.PropertyGrid();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.trvLayersAndGroups = new System.Windows.Forms.TreeView();
+            this.TAB_LAYERS = new System.Windows.Forms.TabPage();
+            this.TAB_SELECTION = new System.Windows.Forms.TabPage();
+            this.trvSelection = new System.Windows.Forms.TreeView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.TAB_LAYERS.SuspendLayout();
+            this.TAB_SELECTION.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -141,25 +148,13 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.trvLayersAndGroups);
+            this.groupBox2.Controls.Add(this.tabControl1);
             this.groupBox2.Location = new System.Drawing.Point(13, 155);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(321, 328);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Layers and Groups";
-            // 
-            // trvLayersAndGroups
-            // 
-            this.trvLayersAndGroups.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trvLayersAndGroups.ImageIndex = 0;
-            this.trvLayersAndGroups.ImageList = this.imgList;
-            this.trvLayersAndGroups.Location = new System.Drawing.Point(3, 16);
-            this.trvLayersAndGroups.Name = "trvLayersAndGroups";
-            this.trvLayersAndGroups.SelectedImageIndex = 0;
-            this.trvLayersAndGroups.Size = new System.Drawing.Size(315, 309);
-            this.trvLayersAndGroups.TabIndex = 0;
-            this.trvLayersAndGroups.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvLayersAndGroups_AfterSelect);
+            this.groupBox2.Text = "Runtime Map";
             // 
             // imgList
             // 
@@ -191,6 +186,61 @@
             this.properties.Size = new System.Drawing.Size(264, 309);
             this.properties.TabIndex = 0;
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.TAB_LAYERS);
+            this.tabControl1.Controls.Add(this.TAB_SELECTION);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(3, 16);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(315, 309);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // trvLayersAndGroups
+            // 
+            this.trvLayersAndGroups.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trvLayersAndGroups.ImageIndex = 0;
+            this.trvLayersAndGroups.ImageList = this.imgList;
+            this.trvLayersAndGroups.Location = new System.Drawing.Point(3, 3);
+            this.trvLayersAndGroups.Name = "trvLayersAndGroups";
+            this.trvLayersAndGroups.SelectedImageIndex = 0;
+            this.trvLayersAndGroups.Size = new System.Drawing.Size(301, 277);
+            this.trvLayersAndGroups.TabIndex = 0;
+            this.trvLayersAndGroups.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvLayersAndGroups_AfterSelect);
+            // 
+            // TAB_LAYERS
+            // 
+            this.TAB_LAYERS.Controls.Add(this.trvLayersAndGroups);
+            this.TAB_LAYERS.Location = new System.Drawing.Point(4, 22);
+            this.TAB_LAYERS.Name = "TAB_LAYERS";
+            this.TAB_LAYERS.Padding = new System.Windows.Forms.Padding(3);
+            this.TAB_LAYERS.Size = new System.Drawing.Size(307, 283);
+            this.TAB_LAYERS.TabIndex = 0;
+            this.TAB_LAYERS.Text = "Layers and Groups";
+            this.TAB_LAYERS.UseVisualStyleBackColor = true;
+            // 
+            // TAB_SELECTION
+            // 
+            this.TAB_SELECTION.Controls.Add(this.trvSelection);
+            this.TAB_SELECTION.Location = new System.Drawing.Point(4, 22);
+            this.TAB_SELECTION.Name = "TAB_SELECTION";
+            this.TAB_SELECTION.Size = new System.Drawing.Size(307, 283);
+            this.TAB_SELECTION.TabIndex = 1;
+            this.TAB_SELECTION.Text = "Current Selection";
+            this.TAB_SELECTION.UseVisualStyleBackColor = true;
+            // 
+            // trvSelection
+            // 
+            this.trvSelection.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trvSelection.ImageIndex = 0;
+            this.trvSelection.ImageList = this.imgList;
+            this.trvSelection.Location = new System.Drawing.Point(0, 0);
+            this.trvSelection.Name = "trvSelection";
+            this.trvSelection.SelectedImageIndex = 0;
+            this.trvSelection.Size = new System.Drawing.Size(307, 283);
+            this.trvSelection.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,6 +256,9 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.TAB_LAYERS.ResumeLayout(false);
+            this.TAB_SELECTION.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -221,10 +274,14 @@
         private System.Windows.Forms.RadioButton rdMapName;
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TreeView trvLayersAndGroups;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.PropertyGrid properties;
         private System.Windows.Forms.ImageList imgList;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage TAB_LAYERS;
+        private System.Windows.Forms.TreeView trvLayersAndGroups;
+        private System.Windows.Forms.TabPage TAB_SELECTION;
+        private System.Windows.Forms.TreeView trvSelection;
     }
 }
 

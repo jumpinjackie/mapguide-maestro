@@ -176,10 +176,7 @@ Section
 	SetOutPath $INSTDIR
 	
 	# directories / core addins
-	File /r "${INST_OUTPUT_MAESTRO}\AddIns\ExtendedObjectModels"
-    File /r "${INST_OUTPUT_MAESTRO}\AddIns\FdoToolbox"
-    File /r "${INST_OUTPUT_MAESTRO}\AddIns\Scripting"
-    File "${INST_OUTPUT_MAESTRO}\AddIns\Maestro.Base.addin"
+	File /r "${INST_OUTPUT_MAESTRO}\AddIns"
     File /r "${INST_OUTPUT_MAESTRO}\Data"
     File /r "${INST_OUTPUT_MAESTRO}\Schemas"
     File /r "${INST_OUTPUT_MAESTRO}\UserDoc"
@@ -191,8 +188,12 @@ Section
 	File "${INST_OUTPUT_MAESTRO}\license.txt"
 	
 	# data/config files
+    File "${INST_OUTPUT_MAESTRO}\LocalConfigure.exe.config"
     File "${INST_OUTPUT_MAESTRO}\Maestro.exe.config"
     File "${INST_OUTPUT_MAESTRO}\MaestroFsPreview.exe.config"
+    File "${INST_OUTPUT_MAESTRO}\MgCooker.exe.config"
+    File "${INST_OUTPUT_MAESTRO}\MgCookerCmd.exe.config"
+    File "${INST_OUTPUT_MAESTRO}\RtMapInspector.exe.config"
 	File "${INST_OUTPUT_MAESTRO}\ConnectionProviders.xml"
     File "${INST_OUTPUT_MAESTRO}\FsEditorMap.xml"
     File "${INST_OUTPUT_MAESTRO}\OdbcDriverMap.xml"
@@ -203,27 +204,37 @@ Section
 	File "${INST_OUTPUT_MAESTRO}\ICSharpCode.Core.dll"
 	File "${INST_OUTPUT_MAESTRO}\ICSharpCode.Core.WinForms.dll"
     File "${INST_OUTPUT_MAESTRO}\ICSharpCode.SharpZipLib.dll"
-    File "${INST_OUTPUT_MAESTRO}\MapGuideDotNetApi.dll"
+    File "${INST_OUTPUT_MAESTRO}\IronPython.dll"
+    File "${INST_OUTPUT_MAESTRO}\IronPython.Modules.dll"
 	File "${INST_OUTPUT_MAESTRO}\Maestro.Base.dll"
 	File "${INST_OUTPUT_MAESTRO}\Maestro.Editors.dll"
 	File "${INST_OUTPUT_MAESTRO}\Maestro.Login.dll"
     File "${INST_OUTPUT_MAESTRO}\Maestro.Packaging.dll"
 	File "${INST_OUTPUT_MAESTRO}\Maestro.Shared.UI.dll"
+    File "${INST_OUTPUT_MAESTRO}\Microsoft.Dynamic.dll"
+    File "${INST_OUTPUT_MAESTRO}\Microsoft.Scripting.dll"
+    File "${INST_OUTPUT_MAESTRO}\Microsoft.Scripting.Metadata.dll"
     File "${INST_OUTPUT_MAESTRO}\NetTopologySuite.Merged.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ExtendedObjectModels.dll"
 	File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.dll"
 	File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.Http.dll"
-    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.Native.dll"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.Native32-2.2.0.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LayerDefinition-1.1.0.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LayerDefinition-1.2.0.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LayerDefinition-1.3.0.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LayerDefinition-2.3.0.dll"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LayerDefinition-2.4.0.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LoadProcedure-1.1.0.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LoadProcedure-2.2.0.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.MapDefinition-2.3.0.dll"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.MapDefinition-2.4.0.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.SymbolDefinition-1.1.0.dll"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.SymbolDefinition-2.4.0.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.3.0.dll"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.4.0.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WebLayout-1.1.0.dll"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0.dll"
+    File "${INST_OUTPUT_MAESTRO}\WeifenLuo.WinFormsUI.Docking.dll"
     
     # pdbs, we'll leave them in for the beta period duration
     File "${INST_OUTPUT_MAESTRO}\Aga.Controls.pdb"
@@ -238,17 +249,23 @@ Section
 	File "${INST_OUTPUT_MAESTRO}\Maestro.Shared.UI.pdb"
 	File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.pdb"
 	File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.Http.pdb"
-    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.Native.pdb"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.Native32-2.2.0.pdb"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LayerDefinition-1.1.0.pdb"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LayerDefinition-1.2.0.pdb"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LayerDefinition-1.3.0.pdb"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LayerDefinition-2.3.0.pdb"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LayerDefinition-2.4.0.pdb"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LoadProcedure-1.1.0.pdb"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.LoadProcedure-2.2.0.pdb"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.MapDefinition-2.3.0.pdb"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.MapDefinition-2.4.0.pdb"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.SymbolDefinition-1.1.0.pdb"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.SymbolDefinition-2.4.0.pdb"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.3.0.pdb"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.4.0.pdb"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WebLayout-1.1.0.pdb"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0.pdb"
+    File "${INST_OUTPUT_MAESTRO}\RtMapInspector.pdb"
 	
 	# main executables
 	File "${INST_OUTPUT_MAESTRO}\${EXE_MAESTRO}"
@@ -256,6 +273,7 @@ Section
 	File "${INST_OUTPUT_MAESTRO}\MgCooker.exe"
     File "${INST_OUTPUT_MAESTRO}\MgCookerCmd.exe"
     File "${INST_OUTPUT_MAESTRO}\MaestroFsPreview.exe"
+    File "${INST_OUTPUT_MAESTRO}\RtMapInspector.exe"
 	
 	# create uninstaller
 	WriteUninstaller "$INSTDIR\uninstall.exe"
@@ -327,15 +345,16 @@ Function .onInit
 	!endif
 	
 	!insertmacro MUI_LANGDLL_DISPLAY
-  
-	; Check .NET version
-	ReadRegDWORD $0 HKLM 'SOFTWARE\Microsoft\NET Framework Setup\NDP\v2.0.50727' SP
-	
-	; SP level of 1 or higher is enough
-	${If} $0 < 1
-		MessageBox MB_OK|MB_ICONINFORMATION "${INST_PRODUCT_QUALIFIED} requires that the .net Framework 2.0 SP1 or above is installed. Please download and install the .net Framework 2.0 SP1 or above before installing ${INST_PRODUCT}."
-	    Quit
-	${EndIf}
+
+    ; Check for .NET Framework 4.0
+    ReadRegDWORD $0 HKLM "SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" Install
+    IntOp $8 $0 & 1
+    IntCmp $8 1 done noDotNet done 
+
+    noDotNet: 
+        MessageBox MB_OK|MB_ICONINFORMATION "${INST_PRODUCT_QUALIFIED} requires that the .net Framework 4.0 is installed. Please download and install the .net Framework 4.0 before installing ${INST_PRODUCT}."
+        Quit
+    done:
 FunctionEnd
 
 Function LaunchLink

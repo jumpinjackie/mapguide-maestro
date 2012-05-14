@@ -24,6 +24,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using OSGeo.MapGuide.MaestroAPI.Tile;
 
 namespace MgCooker
 {

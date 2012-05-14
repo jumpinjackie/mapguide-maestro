@@ -446,6 +446,7 @@ namespace RtMapInspector
             _rtMap = null;
             properties.SelectedObject = null;
             trvLayersAndGroups.Nodes.Clear();
+            trvSelection.Nodes.Clear();
             if (rdMapName.Checked)
             {
                 _rtMap = _mappingSvc.OpenMap(string.Format("Session:{0}//{1}.Map", txtSessionId.Text, txtMapName.Text));
@@ -515,6 +516,41 @@ namespace RtMapInspector
             {
                 trvLayersAndGroups.EndUpdate();
             }
+
+            var sel = _rtMap.Selection;
+            if (sel != null)
+            {
+                try
+                {
+                    trvSelection.BeginUpdate();
+                    for (int i = 0; i < sel.Count; i++)
+                    {
+                        var rtLayer = sel[i].Layer;
+                        var node = new TreeNode(rtLayer.Name + " (" + sel[i].Count + " objects selected)");
+                        node.Tag = new LayerDecorator(rtLayer);
+                        node.ImageIndex = node.SelectedImageIndex = IDX_LAYER;
+                        trvSelection.Nodes.Add(node);
+                        for (int j = 0; j < sel[i].Count; j++)
+                        {
+                            node.Nodes.Add(Stringify(sel[i][j]));
+                        }
+                    }
+                }
+                finally
+                {
+                    trvSelection.EndUpdate();
+                }
+            }
+        }
+
+        static string Stringify(object[] values)
+        {
+            string[] list = new string[values.Length];
+            for (int i = 0; i < values.Length; i++)
+            {
+                list[i] = values[i].ToString();
+            }
+            return string.Join("', '", list);
         }
 
         private void trvLayersAndGroups_AfterSelect(object sender, TreeViewEventArgs e)

@@ -27,6 +27,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using System.Collections.Specialized;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ExtendedObjectModels;
+using OSGeo.MapGuide.MaestroAPI.Tile;
 
 namespace MgCooker
 {

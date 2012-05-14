@@ -83,24 +83,35 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             FeatureSourceDescription fsd = null;
             try
             {
+                //FIXME: Can we do this without a full schema walk? Really large schemas will timeout
                 fsd = context.DescribeFeatureSource(feature.ResourceID);
                 if (fsd == null || fsd.Schemas.Length == 0)
                     issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_NoSchemasFound, Properties.Resources.FS_SchemasMissingWarning));
             }
             catch (Exception ex)
             {
-                string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_SchemaReadError, string.Format(Properties.Resources.FS_SchemaReadError, msg)));
+                var wex = ex as System.Net.WebException;
+                if (wex != null) //Most likely timeout due to really large schema
+                {
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_Validation_Timeout, string.Format(Properties.Resources.FS_ValidationTimeout, msg)));
+                }
+                else
+                {
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_SchemaReadError, string.Format(Properties.Resources.FS_SchemaReadError, msg)));
+                }
             }
 
-
-            foreach (var cl in fsd.AllClasses)
+            if (fsd != null)
             {
-                var ids = cl.IdentityProperties;
-                if (ids.Count == 0)
-                    issues.Add(new ValidationIssue(feature, ValidationStatus.Information, ValidationStatusCode.Info_FeatureSource_NoPrimaryKey, string.Format(Properties.Resources.FS_PrimaryKeyMissingInformation, cl.QualifiedName)));
+                foreach (var cl in fsd.AllClasses)
+                {
+                    var ids = cl.IdentityProperties;
+                    if (ids.Count == 0)
+                        issues.Add(new ValidationIssue(feature, ValidationStatus.Information, ValidationStatusCode.Info_FeatureSource_NoPrimaryKey, string.Format(Properties.Resources.FS_PrimaryKeyMissingInformation, cl.QualifiedName)));
+                }
             }
-
             context.MarkValidated(resource.ResourceID);
 
             return issues.ToArray();

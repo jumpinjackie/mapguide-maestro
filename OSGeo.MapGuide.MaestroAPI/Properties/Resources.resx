@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ADF_MapInvalidError" xml:space="preserve">
     <value>Map with ID {0} does not point to a valid map</value>
@@ -478,7 +478,7 @@
   <data name="ADF_Widget_ZoomOut_Label" xml:space="preserve">
     <value>Zoom Out</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="BaseTemplate_ApplicationDefinition" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BaseTemplate.ApplicationDefinition.xml;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;iso-8859-1</value>
   </data>
@@ -562,5 +562,12 @@
   </data>
   <data name="MDF_LayerWithNullExtent" xml:space="preserve">
     <value>Map Definition references feature source {0} which has a null extent. Most likely caused by feature source having no actual data inside it</value>
+  </data>
+  <data name="TS_ThreadFailureError" xml:space="preserve">
+    <value>All threads crashed, and the tile set was only partially created</value>
+    <comment>An error message that displays if the render threads crash</comment>
+  </data>
+  <data name="FS_ValidationTimeout" xml:space="preserve">
+    <value>Maestro could not fully validate the feature source due to a a mapagent error. Assuming it is because of timeout: {0}</value>
   </data>
 </root>

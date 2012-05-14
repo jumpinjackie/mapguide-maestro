@@ -50,6 +50,7 @@ namespace MgCooker
             this.txtLowerX = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.grpDifferentConnection = new System.Windows.Forms.GroupBox();
+            this.chkUseDifferentConnection = new System.Windows.Forms.CheckBox();
             this.UseNativeAPI = new System.Windows.Forms.CheckBox();
             this.Password = new System.Windows.Forms.TextBox();
             this.Username = new System.Windows.Forms.TextBox();
@@ -73,7 +74,6 @@ namespace MgCooker
             this.MaxColLimit = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.chkUseDifferentConnection = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.BoundsOverride.SuspendLayout();
@@ -239,6 +239,12 @@ namespace MgCooker
             this.grpDifferentConnection.Name = "grpDifferentConnection";
             this.grpDifferentConnection.TabStop = false;
             // 
+            // chkUseDifferentConnection
+            // 
+            resources.ApplyResources(this.chkUseDifferentConnection, "chkUseDifferentConnection");
+            this.chkUseDifferentConnection.Name = "chkUseDifferentConnection";
+            this.chkUseDifferentConnection.UseVisualStyleBackColor = true;
+            // 
             // UseNativeAPI
             // 
             resources.ApplyResources(this.UseNativeAPI, "UseNativeAPI");
@@ -349,8 +355,8 @@ namespace MgCooker
             65536});
             resources.ApplyResources(this.MetersPerUnit, "MetersPerUnit");
             this.MetersPerUnit.Maximum = new decimal(new int[] {
-            10000,
-            0,
+            1410065408,
+            2,
             0,
             0});
             this.MetersPerUnit.Name = "MetersPerUnit";
@@ -414,12 +420,6 @@ namespace MgCooker
             // 
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            // 
-            // chkUseDifferentConnection
-            // 
-            resources.ApplyResources(this.chkUseDifferentConnection, "chkUseDifferentConnection");
-            this.chkUseDifferentConnection.Name = "chkUseDifferentConnection";
-            this.chkUseDifferentConnection.UseVisualStyleBackColor = true;
             // 
             // SetupRun
             // 

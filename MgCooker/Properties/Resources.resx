@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AlreadyAborting" xml:space="preserve">
     <value>I heard you the first time!
@@ -222,10 +222,6 @@ Either copy in the file, or do not use the Native connection method</value>
   <data name="RemainingTime" xml:space="preserve">
     <value>{0}, remaining time: {1}</value>
     <comment>Label that displays the remaining time</comment>
-  </data>
-  <data name="ThreadFailureError" xml:space="preserve">
-    <value>All threads crashed, and the tile set was only partially created</value>
-    <comment>An error message that displays if the render threads crash</comment>
   </data>
   <data name="TileErrorCount" xml:space="preserve">
     <value>({0} failed tiles)</value>

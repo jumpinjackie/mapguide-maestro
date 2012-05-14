@@ -170,7 +170,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             this.Layers = new RuntimeMapLayerCollection(this);
             this.Groups = new RuntimeMapGroupCollection(this);
-            this.Selection = new MapSelection(this);
             this.IsDirty = false;
         }
 
@@ -938,14 +937,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             return t;
         }
 
+        private MapSelection _selection;
+
         /// <summary>
         /// Gets the selection set
         /// </summary>
         /// <value>The selection.</value>
         public MapSelection Selection
         {
-            get;
-            private set;
+            get
+            {
+                if (null == _selection)
+                {
+                    _selection = new MapSelection(this);
+                    var resId = this.ResourceID.Replace(".Map", ".Selection");
+                    var ser = new MgBinaryDeserializer(this.ResourceService.GetResourceData(resId, "RuntimeData"), this.CurrentConnection.SiteVersion);
+                    _selection.Deserialize(ser);
+                }
+                return _selection;
+            }
         }
 
         /// <summary>

@@ -104,6 +104,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         Warning_FeatureSource_NoSchemasFound,
 
         /// <summary>
+        /// A mapagent error occurred during Feature Source validation. Most likely because of timeout. As a result, the full validity of the
+        /// Feature Source cannot be determined
+        /// </summary>
+        Warning_FeatureSource_Validation_Timeout,
+
+        /// <summary>
         /// DWG Load Procedures not supported. This is a limitation of Maestro
         /// </summary>
         Warning_LoadProcedure_DwgNotSupported = 3201,

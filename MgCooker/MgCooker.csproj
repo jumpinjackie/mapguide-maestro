@@ -72,7 +72,6 @@
     <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="BatchSettings.cs" />
     <Compile Include="CommandLineParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Progress.cs">
@@ -108,7 +107,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="RenderThread.cs" />
     <Compile Include="SetupRun.cs">
       <SubType>Form</SubType>
     </Compile>
