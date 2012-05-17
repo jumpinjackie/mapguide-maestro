@@ -997,7 +997,18 @@ namespace Maestro.Editors.MapDefinition
                 {
                     var gi = node.Tag as GroupItem;
                     if (gi != null)
+                    {
                         parent = gi.Tag;
+                    }
+                    else
+                    {
+                        if (node.Parent != null)
+                        {
+                            gi = node.Parent.Tag as GroupItem;
+                            if (gi != null)
+                                parent = gi.Tag;
+                        }
+                    }
                 }
 
                 int added = 0;
