@@ -95,12 +95,6 @@ namespace Maestro.Base.Events
             var svc = ServiceRegistry.GetService<ServerConnectionManager>();
             LoggingService.Info("There are now " + svc.GetConnectionNames().Count + " active connections"); //LOCALIZEME
             //Debug.Assert(wb.ActiveSiteExplorer.ConnectionName == name);
-
-            /*
-            //TODO: Review this API design when we do decide to support multiple
-            //site connections
-            ServerStatusMonitor.Init(null);
-             */
         }
 
         static void OnConnectionAdded(object sender, string name)
@@ -123,18 +117,6 @@ namespace Maestro.Base.Events
             var conn = svc.GetConnection(name);
 
             LoggingService.Info("There are now " + svc.GetConnectionNames().Count + " active connections"); //LOCALIZEME
-
-            /*
-            ISiteService siteSvc = null;
-            var svcTypes = conn.Capabilities.SupportedServices;
-            if (Array.IndexOf(svcTypes, (int)ServiceType.Site) >= 0)
-            {
-                siteSvc = (ISiteService)conn.GetService((int)ServiceType.Site);
-            }
-            //TODO: Review this API design when we do decide to support multiple
-            //site connections
-            ServerStatusMonitor.Init(siteSvc);
-             */
         }
     }
 }

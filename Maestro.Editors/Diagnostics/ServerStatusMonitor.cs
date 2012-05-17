@@ -74,8 +74,19 @@ namespace Maestro.Editors.Diagnostics
         /// </summary>
         public static void ShowWindow()
         {
+            ShowWindow(true);
+        }
+
+        private static bool _cleanupOnClose = true;
+
+        /// <summary>
+        /// Shows the window.
+        /// </summary>
+        public static void ShowWindow(bool cleanupOnClose)
+        {
             if (_smConn != null)
             {
+                _cleanupOnClose = cleanupOnClose;
                 _smMonitor.DoPoll();
                 _smMonitor.StartTimer();
                 _smMonitor.Show();
@@ -93,6 +104,8 @@ namespace Maestro.Editors.Diagnostics
         {
             _smMonitor.StopTimer();
             _smMonitor.Hide();
+            if (_cleanupOnClose)
+                Init(null);
         }
 
         private void pollTimer_Tick(object sender, EventArgs e)

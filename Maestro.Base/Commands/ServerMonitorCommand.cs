@@ -34,6 +34,20 @@ namespace Maestro.Base.Commands
         {
             try
             {
+                var wb = Workbench.Instance;
+                var exp = wb.ActiveSiteExplorer;
+                var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
+                var conn = connMgr.GetConnection(exp.ConnectionName);
+
+                ISiteService siteSvc = null;
+                var svcTypes = conn.Capabilities.SupportedServices;
+                if (Array.IndexOf(svcTypes, (int)ServiceType.Site) >= 0)
+                {
+                    siteSvc = (ISiteService)conn.GetService((int)ServiceType.Site);
+                }
+
+                if (siteSvc != null)
+                    ServerStatusMonitor.Init(siteSvc);
                 ServerStatusMonitor.ShowWindow();
             }
             catch (Exception ex)
