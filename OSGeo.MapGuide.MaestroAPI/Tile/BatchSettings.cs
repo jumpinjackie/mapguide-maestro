@@ -260,6 +260,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             m_connection = connection;
             m_maps = new List<BatchMap>();
 
+            AddMapDefinitions(maps);
+        }
+
+        public void AddMapDefinitions(string[] maps)
+        {
             if (maps == null || maps.Length == 0 || (maps.Length == 1 && maps[0].Trim().Length == 0))
             {
                 List<string> tmp = new List<string>();
@@ -467,7 +472,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             {
                 long rows, cols;
                 double scale = m_mapdefinition.BaseMap.GetScaleAt(i);
-
+                
                 if (m_parent.Config.UseOfficialMethod)
                 {
                     //This is the algorithm proposed by the MapGuide team:

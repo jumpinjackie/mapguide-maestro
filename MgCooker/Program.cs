@@ -67,7 +67,7 @@ namespace MgCooker
             //scaleindex=0,1,2,3,4,5
             //basegroups="x","y"
             //extentoverride=minx,miny,maxx,maxy
-
+            
             string mapagent = "http://localhost/mapguide";
             string username = "Anonymous";
             string password = "";
@@ -209,7 +209,7 @@ namespace MgCooker
             }
             
 
-            BatchSettings bx = new BatchSettings(connection, maps);
+            BatchSettings bx = new BatchSettings(connection);
             if (!string.IsNullOrEmpty(scaleindex))
             {
                 List<int> scales = new List<int>();
@@ -249,7 +249,7 @@ namespace MgCooker
 
             if (!string.IsNullOrEmpty(DPI) && int.TryParse(DPI, out x))
                 bx.Config.DPI = x;
-
+            
             double d;
             if (!string.IsNullOrEmpty(metersPerUnit) && double.TryParse(metersPerUnit, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentCulture, out d))
             {
@@ -262,6 +262,9 @@ namespace MgCooker
 
             if (opts.ContainsKey("threadcount") && int.TryParse(opts["threadcount"], out x) && x > 0)
                 bx.Config.ThreadCount = x;
+
+            //Now that all global parameters are set, we can now add the map definitions
+            bx.AddMapDefinitions(maps);
 
             if (overrideExtents != null)
                 foreach (BatchMap bm in bx.Maps)

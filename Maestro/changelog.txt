@@ -1,4 +1,11 @@
-﻿5.0 Beta 1
+﻿5.0 Beta 2
+----------
+ - MgCooker tiling classes now part of the MaestroAPI
+ - Fix: Some MgCooker command line arguments were being ignored
+ - Fix: Raise signficantly the maximum allowed "Meters per unit" value in MgCooker.
+ - Fix: Dragging and dropping onto a layer in the Map Definition editor will add the layer to that layer's parent group instead of the root
+
+5.0 Beta 1
 ----------
 
  - Now requires .net Framework 4.0 / Mono 2.8
