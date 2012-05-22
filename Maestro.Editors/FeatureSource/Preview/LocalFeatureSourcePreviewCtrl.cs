@@ -88,6 +88,8 @@ namespace Maestro.Editors.FeatureSource.Preview
             _caps = caps;
             ClearPreviewPanes();
             trvSchema.Nodes.Clear();
+            
+            //FIXME: Do this lazily ala. FDO Toolbox
             var schema = _fsvc.DescribeFeatureSource(currentFsId);
 
             Dictionary<string, List<ClassDefinition>> classes = new Dictionary<string, List<ClassDefinition>>();

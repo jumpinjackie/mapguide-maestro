@@ -35,6 +35,10 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Editors.LayerDefinition.Raster
 {
+    //NOTE: Unlike the Vector Layer editor, we have to do a full schema walk here because
+    //we need to filter out non-raster feature classes, something that the existing GetSchemas()
+    //and GetClassNames() cannot do for us.
+    
     [ToolboxItem(false)]
     internal partial class RasterLayerSettingsSectionCtrl : EditorBindableCollapsiblePanel
     {

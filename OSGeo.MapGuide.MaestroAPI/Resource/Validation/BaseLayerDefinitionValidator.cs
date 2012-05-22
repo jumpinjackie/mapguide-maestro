@@ -104,43 +104,34 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                         bool foundSchema = false;
                         bool foundGeometry = false;
 
-                        FeatureSourceDescription desc = context.DescribeFeatureSource(ldef.SubLayer.ResourceId);
-                        foreach (FeatureSchema fsc in desc.Schemas)
+                        cls = fs.GetClass(qualClassName);
+                        if (cls != null)
                         {
-                            foreach (ClassDefinition scm in fsc.Classes)
+                            foundSchema = true;
+                            foreach (PropertyDefinition col in cls.Properties)
                             {
-                                if (scm.QualifiedName == qualClassName)
+                                if (col.Name == geometry)
                                 {
-                                    foundSchema = true;
-                                    cls = scm;
-                                    foreach (PropertyDefinition col in scm.Properties)
+                                    foundGeometry = true;
+                                    break;
+                                }
+                            }
+
+                            if (vldef != null && vldef.PropertyMapping != null)
+                            {
+                                foreach (INameStringPair s in vldef.PropertyMapping)
+                                {
+                                    bool found = false;
+                                    foreach (PropertyDefinition col in cls.Properties)
                                     {
-                                        if (col.Name == geometry)
+                                        if (col.Name == s.Name)
                                         {
-                                            foundGeometry = true;
+                                            found = true;
                                             break;
                                         }
                                     }
-
-                                    if (vldef != null && vldef.PropertyMapping != null)
-                                    {
-                                        foreach (INameStringPair s in vldef.PropertyMapping)
-                                        {
-                                            bool found = false;
-                                            foreach (PropertyDefinition col in scm.Properties)
-                                            {
-                                                if (col.Name == s.Name)
-                                                {
-                                                    found = true;
-                                                    break;
-                                                }
-                                            }
-                                            if (!found)
-                                                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_ClassNotFound, string.Format(Properties.Resources.LDF_SchemaMissingError, qualClassName, fs.ResourceID)));
-                                        }
-                                    }
-
-                                    break;
+                                    if (!found)
+                                        issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_ClassNotFound, string.Format(Properties.Resources.LDF_SchemaMissingError, qualClassName, fs.ResourceID)));
                                 }
                             }
                         }

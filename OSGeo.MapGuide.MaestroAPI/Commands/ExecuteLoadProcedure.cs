@@ -420,6 +420,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                             // 4. Infer the supported geometry types for this feature class. Toggle supported styles accordingly.
 
                             //Step 1: Describe the schema
+                            //
+                            //NOTE: I think we can get away with the full schema walk here. It's very unlikely we will be uploading a flat
+                            //file with hundreds of classes. Even then, flat-file schema walk performance blows RDBMS walking performance
+                            //out of the water anyway.
                             FeatureSourceDescription desc = this.Parent.FeatureService.DescribeFeatureSource(fsId);
 
                             //Step 2: Find the first feature class with a geometry property
@@ -735,6 +739,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                 // 4. Infer the supported geometry types for this feature class. Toggle supported styles accordingly.
 
                                 //Step 1: Describe the schema
+                                //
+                                //NOTE: I think we can get away with the full schema walk here. It's very unlikely we will be uploading a flat
+                                //file with hundreds of classes. Even then, flat-file schema walk performance blows RDBMS walking performance
+                                //out of the water anyway.
                                 FeatureSourceDescription desc = this.Parent.FeatureService.DescribeFeatureSource(fsId);
 
                                 if (desc.HasClasses())

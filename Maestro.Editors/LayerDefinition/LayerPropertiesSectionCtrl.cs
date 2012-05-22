@@ -81,9 +81,7 @@ namespace Maestro.Editors.LayerDefinition
 
             if (_edsvc.ResourceService.ResourceExists(_vl.ResourceId))
             {
-                //TODO: Should just fetch the class definition
-                var desc = _edsvc.FeatureService.DescribeFeatureSource(_vl.ResourceId);
-                var cls = desc.GetClass(_vl.FeatureName);
+                var cls = _edsvc.FeatureService.GetClassDefinition(_vl.ResourceId, _vl.FeatureName);
                 if (cls != null)
                 {
                     grdProperties.Rows.Clear();

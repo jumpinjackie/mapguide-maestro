@@ -20,12 +20,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.MaestroAPI.Exceptions;
+
 using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {
@@ -55,8 +57,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             List<ValidationIssue> issues = new List<ValidationIssue>();
 
             IFeatureSource feature = (IFeatureSource)resource;
+            IFeatureService featSvc = feature.CurrentConnection.FeatureService;
             //Note: Must be saved!
-            string s = feature.CurrentConnection.FeatureService.TestConnection(feature.ResourceID);
+            string s = featSvc.TestConnection(feature.ResourceID);
             if (s.Trim().ToUpper() != true.ToString().ToUpper())
                 return new ValidationIssue[] { new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_ConnectionTestFailed, string.Format(Properties.Resources.FS_ConnectionTestFailed, s)) };
 
@@ -80,12 +83,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             }
 
             List<string> classes = new List<string>();
-            FeatureSourceDescription fsd = null;
             try
             {
-                //FIXME: Can we do this without a full schema walk? Really large schemas will timeout
-                fsd = context.DescribeFeatureSource(feature.ResourceID);
-                if (fsd == null || fsd.Schemas.Length == 0)
+                var schemaNames = featSvc.GetSchemas(feature.ResourceID);
+                if (schemaNames.Length == 0)
                     issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_NoSchemasFound, Properties.Resources.FS_SchemasMissingWarning));
             }
             catch (Exception ex)
@@ -103,13 +104,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 }
             }
 
-            if (fsd != null)
+            var classNames = featSvc.GetClassNames(feature.ResourceID, null);
+            foreach (var className in classNames)
             {
-                foreach (var cl in fsd.AllClasses)
+                try 
                 {
-                    var ids = cl.IdentityProperties;
-                    if (ids.Count == 0)
-                        issues.Add(new ValidationIssue(feature, ValidationStatus.Information, ValidationStatusCode.Info_FeatureSource_NoPrimaryKey, string.Format(Properties.Resources.FS_PrimaryKeyMissingInformation, cl.QualifiedName)));
+                    string[] idProps = featSvc.GetIdentityProperties(feature.ResourceID, className);
+                    if (idProps.Length == 0)
+                        issues.Add(new ValidationIssue(feature, ValidationStatus.Information, ValidationStatusCode.Info_FeatureSource_NoPrimaryKey, string.Format(Properties.Resources.FS_PrimaryKeyMissingInformation, className)));
+                }
+                catch (Exception ex)
+                {
+                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                    if (msg.Contains("MgClassNotFound")) //#1403 workaround
+                        issues.Add(new ValidationIssue(feature, ValidationStatus.Information, ValidationStatusCode.Info_FeatureSource_NoPrimaryKey, string.Format(Properties.Resources.FS_PrimaryKeyMissingInformation, className)));
+                    else
+                        issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_SchemaReadError, string.Format(Properties.Resources.FS_SchemaReadError, msg)));
                 }
             }
             context.MarkValidated(resource.ResourceID);
