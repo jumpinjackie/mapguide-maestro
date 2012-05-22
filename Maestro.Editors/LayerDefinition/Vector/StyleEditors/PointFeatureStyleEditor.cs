@@ -339,548 +339,551 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 		/// </summary>
 		private void InitializeComponent()
 		{
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PointFeatureStyleEditor));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.RotationBox = new System.Windows.Forms.ComboBox();
-            this.RotationTable = new System.Data.DataTable();
-            this.dataColumn7 = new System.Data.DataColumn();
-            this.dataColumn8 = new System.Data.DataColumn();
-            this.label9 = new System.Windows.Forms.Label();
-            this.HeightText = new System.Windows.Forms.ComboBox();
-            this.WidthText = new System.Windows.Forms.ComboBox();
-            this.SizeUnits = new System.Windows.Forms.ComboBox();
-            this.UnitsTable = new System.Data.DataTable();
-            this.dataColumn5 = new System.Data.DataColumn();
-            this.dataColumn6 = new System.Data.DataColumn();
-            this.SizeContext = new System.Windows.Forms.ComboBox();
-            this.SizeContextTable = new System.Data.DataTable();
-            this.dataColumn3 = new System.Data.DataColumn();
-            this.dataColumn4 = new System.Data.DataColumn();
-            this.Symbol = new System.Windows.Forms.ComboBox();
-            this.SymbolMarkTable = new System.Data.DataTable();
-            this.dataColumn1 = new System.Data.DataColumn();
-            this.dataColumn2 = new System.Data.DataColumn();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.grpSymbolFill = new System.Windows.Forms.GroupBox();
-            this.fillStyleEditor = new Maestro.Editors.LayerDefinition.Vector.StyleEditors.FillStyleEditor();
-            this.grpSymbolBorder = new System.Windows.Forms.GroupBox();
-            this.lineStyleEditor = new Maestro.Editors.LayerDefinition.Vector.StyleEditors.LineStyleEditor();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.previewPicture = new System.Windows.Forms.PictureBox();
-            this.ComboBoxDataSet = new System.Data.DataSet();
-            this.DisplayPoints = new System.Windows.Forms.CheckBox();
-            this.groupBoxFont = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.colorFontForeground = new Maestro.Editors.Common.ColorComboWithTransparency();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.FontBoldButton = new System.Windows.Forms.ToolStripButton();
-            this.FontItalicButton = new System.Windows.Forms.ToolStripButton();
-            this.FontUnderlineButton = new System.Windows.Forms.ToolStripButton();
-            this.lblForeground = new System.Windows.Forms.Label();
-            this.comboBoxCharacter = new System.Windows.Forms.ComboBox();
-            this.fontCombo = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.groupBoxSymbolLocation = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.ReferenceY = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.ReferenceX = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.MaintainAspectRatio = new System.Windows.Forms.CheckBox();
-            this.grpW2DStyle = new System.Windows.Forms.GroupBox();
-            this.chkW2DTextColor = new System.Windows.Forms.CheckBox();
-            this.cmbW2DTextColor = new Maestro.Editors.Common.ColorComboWithTransparency();
-            this.chkW2DLineColor = new System.Windows.Forms.CheckBox();
-            this.cmbW2DLineColor = new Maestro.Editors.Common.ColorComboWithTransparency();
-            this.chkW2DFillColor = new System.Windows.Forms.CheckBox();
-            this.cmbW2DFillColor = new Maestro.Editors.Common.ColorComboWithTransparency();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RotationTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SizeContextTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SymbolMarkTable)).BeginInit();
-            this.grpSymbolFill.SuspendLayout();
-            this.grpSymbolBorder.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).BeginInit();
-            this.groupBoxFont.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
-            this.groupBoxSymbolLocation.SuspendLayout();
-            this.grpW2DStyle.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.RotationBox);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.HeightText);
-            this.groupBox1.Controls.Add(this.WidthText);
-            this.groupBox1.Controls.Add(this.SizeUnits);
-            this.groupBox1.Controls.Add(this.SizeContext);
-            this.groupBox1.Controls.Add(this.Symbol);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
-            // 
-            // RotationBox
-            // 
-            resources.ApplyResources(this.RotationBox, "RotationBox");
-            this.RotationBox.DataSource = this.RotationTable;
-            this.RotationBox.DisplayMember = "Display";
-            this.RotationBox.Name = "RotationBox";
-            this.RotationBox.ValueMember = "Value";
-            this.RotationBox.SelectedIndexChanged += new System.EventHandler(this.RotationBox_SelectedIndexChanged);
-            this.RotationBox.TextChanged += new System.EventHandler(this.RotationBox_TextChanged);
-            // 
-            // RotationTable
-            // 
-            this.RotationTable.Columns.AddRange(new System.Data.DataColumn[] {
-            this.dataColumn7,
-            this.dataColumn8});
-            this.RotationTable.TableName = "Rotation";
-            // 
-            // dataColumn7
-            // 
-            this.dataColumn7.Caption = "Display";
-            this.dataColumn7.ColumnName = "Display";
-            // 
-            // dataColumn8
-            // 
-            this.dataColumn8.Caption = "Value";
-            this.dataColumn8.ColumnName = "Value";
-            // 
-            // label9
-            // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
-            // 
-            // HeightText
-            // 
-            resources.ApplyResources(this.HeightText, "HeightText");
-            this.HeightText.Items.AddRange(new object[] {
-            resources.GetString("HeightText.Items")});
-            this.HeightText.Name = "HeightText";
-            this.HeightText.SelectedIndexChanged += new System.EventHandler(this.HeigthText_SelectedIndexChanged);
-            this.HeightText.TextChanged += new System.EventHandler(this.HeightText_TextChanged);
-            // 
-            // WidthText
-            // 
-            resources.ApplyResources(this.WidthText, "WidthText");
-            this.WidthText.Items.AddRange(new object[] {
-            resources.GetString("WidthText.Items")});
-            this.WidthText.Name = "WidthText";
-            this.WidthText.SelectedIndexChanged += new System.EventHandler(this.WidthText_SelectedIndexChanged);
-            this.WidthText.TextChanged += new System.EventHandler(this.WidthText_TextChanged);
-            // 
-            // SizeUnits
-            // 
-            resources.ApplyResources(this.SizeUnits, "SizeUnits");
-            this.SizeUnits.DataSource = this.UnitsTable;
-            this.SizeUnits.DisplayMember = "Display";
-            this.SizeUnits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SizeUnits.Name = "SizeUnits";
-            this.SizeUnits.ValueMember = "Value";
-            this.SizeUnits.SelectedIndexChanged += new System.EventHandler(this.SizeUnits_SelectedIndexChanged);
-            // 
-            // UnitsTable
-            // 
-            this.UnitsTable.Columns.AddRange(new System.Data.DataColumn[] {
-            this.dataColumn5,
-            this.dataColumn6});
-            this.UnitsTable.TableName = "Units";
-            // 
-            // dataColumn5
-            // 
-            this.dataColumn5.Caption = "Display";
-            this.dataColumn5.ColumnName = "Display";
-            // 
-            // dataColumn6
-            // 
-            this.dataColumn6.Caption = "Value";
-            this.dataColumn6.ColumnName = "Value";
-            // 
-            // SizeContext
-            // 
-            resources.ApplyResources(this.SizeContext, "SizeContext");
-            this.SizeContext.DataSource = this.SizeContextTable;
-            this.SizeContext.DisplayMember = "Display";
-            this.SizeContext.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SizeContext.Name = "SizeContext";
-            this.SizeContext.ValueMember = "Value";
-            this.SizeContext.SelectedIndexChanged += new System.EventHandler(this.SizeContext_SelectedIndexChanged);
-            // 
-            // SizeContextTable
-            // 
-            this.SizeContextTable.Columns.AddRange(new System.Data.DataColumn[] {
-            this.dataColumn3,
-            this.dataColumn4});
-            this.SizeContextTable.TableName = "SizeContext";
-            // 
-            // dataColumn3
-            // 
-            this.dataColumn3.Caption = "Display";
-            this.dataColumn3.ColumnName = "Display";
-            // 
-            // dataColumn4
-            // 
-            this.dataColumn4.Caption = "Value";
-            this.dataColumn4.ColumnName = "Value";
-            // 
-            // Symbol
-            // 
-            resources.ApplyResources(this.Symbol, "Symbol");
-            this.Symbol.DataSource = this.SymbolMarkTable;
-            this.Symbol.DisplayMember = "Display";
-            this.Symbol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Symbol.Name = "Symbol";
-            this.Symbol.ValueMember = "Value";
-            this.Symbol.SelectedIndexChanged += new System.EventHandler(this.Symbol_SelectedIndexChanged);
-            // 
-            // SymbolMarkTable
-            // 
-            this.SymbolMarkTable.Columns.AddRange(new System.Data.DataColumn[] {
-            this.dataColumn1,
-            this.dataColumn2});
-            this.SymbolMarkTable.TableName = "SymbolMark";
-            // 
-            // dataColumn1
-            // 
-            this.dataColumn1.Caption = "Display";
-            this.dataColumn1.ColumnName = "Display";
-            // 
-            // dataColumn2
-            // 
-            this.dataColumn2.Caption = "Value";
-            this.dataColumn2.ColumnName = "Value";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(this.label5, "label5");
-            this.label5.Name = "label5";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // grpSymbolFill
-            // 
-            resources.ApplyResources(this.grpSymbolFill, "grpSymbolFill");
-            this.grpSymbolFill.Controls.Add(this.fillStyleEditor);
-            this.grpSymbolFill.Name = "grpSymbolFill";
-            this.grpSymbolFill.TabStop = false;
-            // 
-            // fillStyleEditor
-            // 
-            resources.ApplyResources(this.fillStyleEditor, "fillStyleEditor");
-            this.fillStyleEditor.Name = "fillStyleEditor";
-            // 
-            // grpSymbolBorder
-            // 
-            resources.ApplyResources(this.grpSymbolBorder, "grpSymbolBorder");
-            this.grpSymbolBorder.Controls.Add(this.lineStyleEditor);
-            this.grpSymbolBorder.Name = "grpSymbolBorder";
-            this.grpSymbolBorder.TabStop = false;
-            // 
-            // lineStyleEditor
-            // 
-            resources.ApplyResources(this.lineStyleEditor, "lineStyleEditor");
-            this.lineStyleEditor.Name = "lineStyleEditor";
-            // 
-            // groupBox4
-            // 
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.Controls.Add(this.previewPicture);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
-            // 
-            // previewPicture
-            // 
-            resources.ApplyResources(this.previewPicture, "previewPicture");
-            this.previewPicture.BackColor = System.Drawing.Color.White;
-            this.previewPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.previewPicture.Name = "previewPicture";
-            this.previewPicture.TabStop = false;
-            this.previewPicture.Paint += new System.Windows.Forms.PaintEventHandler(this.previewPicture_Paint);
-            // 
-            // ComboBoxDataSet
-            // 
-            this.ComboBoxDataSet.DataSetName = "ComboBoxDataSet";
-            this.ComboBoxDataSet.Locale = new System.Globalization.CultureInfo("da-DK");
-            this.ComboBoxDataSet.Tables.AddRange(new System.Data.DataTable[] {
-            this.SymbolMarkTable,
-            this.SizeContextTable,
-            this.UnitsTable,
-            this.RotationTable});
-            // 
-            // DisplayPoints
-            // 
-            resources.ApplyResources(this.DisplayPoints, "DisplayPoints");
-            this.DisplayPoints.Checked = true;
-            this.DisplayPoints.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.DisplayPoints.Name = "DisplayPoints";
-            this.DisplayPoints.UseVisualStyleBackColor = true;
-            this.DisplayPoints.CheckedChanged += new System.EventHandler(this.DisplayPoints_CheckedChanged);
-            // 
-            // groupBoxFont
-            // 
-            resources.ApplyResources(this.groupBoxFont, "groupBoxFont");
-            this.groupBoxFont.Controls.Add(this.label11);
-            this.groupBoxFont.Controls.Add(this.colorFontForeground);
-            this.groupBoxFont.Controls.Add(this.panel1);
-            this.groupBoxFont.Controls.Add(this.lblForeground);
-            this.groupBoxFont.Controls.Add(this.comboBoxCharacter);
-            this.groupBoxFont.Controls.Add(this.fontCombo);
-            this.groupBoxFont.Controls.Add(this.label10);
-            this.groupBoxFont.Name = "groupBoxFont";
-            this.groupBoxFont.TabStop = false;
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
-            // 
-            // colorFontForeground
-            // 
-            resources.ApplyResources(this.colorFontForeground, "colorFontForeground");
-            this.colorFontForeground.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.colorFontForeground.Name = "colorFontForeground";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.toolStrip1);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.FontBoldButton,
-            this.FontItalicButton,
-            this.FontUnderlineButton});
-            resources.ApplyResources(this.toolStrip1, "toolStrip1");
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            // 
-            // FontBoldButton
-            // 
-            this.FontBoldButton.CheckOnClick = true;
-            this.FontBoldButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.FontBoldButton, "FontBoldButton");
-            this.FontBoldButton.Name = "FontBoldButton";
-            this.FontBoldButton.Click += new System.EventHandler(this.FontBoldButton_Click);
-            // 
-            // FontItalicButton
-            // 
-            this.FontItalicButton.CheckOnClick = true;
-            this.FontItalicButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.FontItalicButton, "FontItalicButton");
-            this.FontItalicButton.Name = "FontItalicButton";
-            this.FontItalicButton.Click += new System.EventHandler(this.FontItalicButton_Click);
-            // 
-            // FontUnderlineButton
-            // 
-            this.FontUnderlineButton.CheckOnClick = true;
-            this.FontUnderlineButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.FontUnderlineButton, "FontUnderlineButton");
-            this.FontUnderlineButton.Name = "FontUnderlineButton";
-            this.FontUnderlineButton.Click += new System.EventHandler(this.FontUnderlineButton_Click);
-            // 
-            // lblForeground
-            // 
-            resources.ApplyResources(this.lblForeground, "lblForeground");
-            this.lblForeground.Name = "lblForeground";
-            // 
-            // comboBoxCharacter
-            // 
-            resources.ApplyResources(this.comboBoxCharacter, "comboBoxCharacter");
-            this.comboBoxCharacter.DisplayMember = "Display";
-            this.comboBoxCharacter.Name = "comboBoxCharacter";
-            this.comboBoxCharacter.ValueMember = "Value";
-            this.comboBoxCharacter.SelectedIndexChanged += new System.EventHandler(this.comboBoxCharacter_SelectedIndexChanged);
-            this.comboBoxCharacter.TextChanged += new System.EventHandler(this.comboBoxCharacter_TextChanged);
-            // 
-            // fontCombo
-            // 
-            resources.ApplyResources(this.fontCombo, "fontCombo");
-            this.fontCombo.DisplayMember = "Display";
-            this.fontCombo.Name = "fontCombo";
-            this.fontCombo.ValueMember = "Value";
-            this.fontCombo.SelectedIndexChanged += new System.EventHandler(this.fontCombo_SelectedIndexChanged);
-            // 
-            // label10
-            // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
-            // 
-            // groupBoxSymbolLocation
-            // 
-            resources.ApplyResources(this.groupBoxSymbolLocation, "groupBoxSymbolLocation");
-            this.groupBoxSymbolLocation.Controls.Add(this.button1);
-            this.groupBoxSymbolLocation.Controls.Add(this.ReferenceY);
-            this.groupBoxSymbolLocation.Controls.Add(this.label8);
-            this.groupBoxSymbolLocation.Controls.Add(this.ReferenceX);
-            this.groupBoxSymbolLocation.Controls.Add(this.label7);
-            this.groupBoxSymbolLocation.Controls.Add(this.label6);
-            this.groupBoxSymbolLocation.Controls.Add(this.MaintainAspectRatio);
-            this.groupBoxSymbolLocation.Name = "groupBoxSymbolLocation";
-            this.groupBoxSymbolLocation.TabStop = false;
-            // 
-            // button1
-            // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            // 
-            // ReferenceY
-            // 
-            resources.ApplyResources(this.ReferenceY, "ReferenceY");
-            this.ReferenceY.Name = "ReferenceY";
-            // 
-            // label8
-            // 
-            resources.ApplyResources(this.label8, "label8");
-            this.label8.Name = "label8";
-            // 
-            // ReferenceX
-            // 
-            resources.ApplyResources(this.ReferenceX, "ReferenceX");
-            this.ReferenceX.Name = "ReferenceX";
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
-            // 
-            // label6
-            // 
-            resources.ApplyResources(this.label6, "label6");
-            this.label6.Name = "label6";
-            // 
-            // MaintainAspectRatio
-            // 
-            resources.ApplyResources(this.MaintainAspectRatio, "MaintainAspectRatio");
-            this.MaintainAspectRatio.Name = "MaintainAspectRatio";
-            // 
-            // grpW2DStyle
-            // 
-            this.grpW2DStyle.Controls.Add(this.chkW2DTextColor);
-            this.grpW2DStyle.Controls.Add(this.cmbW2DTextColor);
-            this.grpW2DStyle.Controls.Add(this.chkW2DLineColor);
-            this.grpW2DStyle.Controls.Add(this.cmbW2DLineColor);
-            this.grpW2DStyle.Controls.Add(this.chkW2DFillColor);
-            this.grpW2DStyle.Controls.Add(this.cmbW2DFillColor);
-            resources.ApplyResources(this.grpW2DStyle, "grpW2DStyle");
-            this.grpW2DStyle.Name = "grpW2DStyle";
-            this.grpW2DStyle.TabStop = false;
-            // 
-            // chkW2DTextColor
-            // 
-            resources.ApplyResources(this.chkW2DTextColor, "chkW2DTextColor");
-            this.chkW2DTextColor.Name = "chkW2DTextColor";
-            this.chkW2DTextColor.UseVisualStyleBackColor = true;
-            this.chkW2DTextColor.CheckedChanged += new System.EventHandler(this.chkW2DTextColor_CheckedChanged);
-            // 
-            // cmbW2DTextColor
-            // 
-            resources.ApplyResources(this.cmbW2DTextColor, "cmbW2DTextColor");
-            this.cmbW2DTextColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cmbW2DTextColor.Name = "cmbW2DTextColor";
-            this.cmbW2DTextColor.CurrentColorChanged += new System.EventHandler(this.cmbW2DTextColor_SelectedIndexChanged);
-            // 
-            // chkW2DLineColor
-            // 
-            resources.ApplyResources(this.chkW2DLineColor, "chkW2DLineColor");
-            this.chkW2DLineColor.Name = "chkW2DLineColor";
-            this.chkW2DLineColor.UseVisualStyleBackColor = true;
-            this.chkW2DLineColor.CheckedChanged += new System.EventHandler(this.chkW2DLineColor_CheckedChanged);
-            // 
-            // cmbW2DLineColor
-            // 
-            resources.ApplyResources(this.cmbW2DLineColor, "cmbW2DLineColor");
-            this.cmbW2DLineColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cmbW2DLineColor.Name = "cmbW2DLineColor";
-            this.cmbW2DLineColor.CurrentColorChanged += new System.EventHandler(this.cmbW2DLineColor_SelectedIndexChanged);
-            // 
-            // chkW2DFillColor
-            // 
-            resources.ApplyResources(this.chkW2DFillColor, "chkW2DFillColor");
-            this.chkW2DFillColor.Name = "chkW2DFillColor";
-            this.chkW2DFillColor.UseVisualStyleBackColor = true;
-            this.chkW2DFillColor.CheckedChanged += new System.EventHandler(this.chkW2DFillColor_CheckedChanged);
-            // 
-            // cmbW2DFillColor
-            // 
-            resources.ApplyResources(this.cmbW2DFillColor, "cmbW2DFillColor");
-            this.cmbW2DFillColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cmbW2DFillColor.Name = "cmbW2DFillColor";
-            this.cmbW2DFillColor.CurrentColorChanged += new System.EventHandler(this.cmbW2DFillColor_SelectedIndexChanged);
-            // 
-            // PointFeatureStyleEditor
-            // 
-            resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.grpW2DStyle);
-            this.Controls.Add(this.groupBoxSymbolLocation);
-            this.Controls.Add(this.groupBoxFont);
-            this.Controls.Add(this.DisplayPoints);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.grpSymbolFill);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.grpSymbolBorder);
-            this.Name = "PointFeatureStyleEditor";
-            this.Load += new System.EventHandler(this.PointFeatureStyleEditor_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RotationTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SizeContextTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SymbolMarkTable)).EndInit();
-            this.grpSymbolFill.ResumeLayout(false);
-            this.grpSymbolBorder.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).EndInit();
-            this.groupBoxFont.ResumeLayout(false);
-            this.groupBoxFont.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.groupBoxSymbolLocation.ResumeLayout(false);
-            this.groupBoxSymbolLocation.PerformLayout();
-            this.grpW2DStyle.ResumeLayout(false);
-            this.grpW2DStyle.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+		    System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PointFeatureStyleEditor));
+		    this.groupBox1 = new System.Windows.Forms.GroupBox();
+		    this.RotationBox = new System.Windows.Forms.ComboBox();
+		    this.RotationTable = new System.Data.DataTable();
+		    this.dataColumn7 = new System.Data.DataColumn();
+		    this.dataColumn8 = new System.Data.DataColumn();
+		    this.label9 = new System.Windows.Forms.Label();
+		    this.HeightText = new System.Windows.Forms.ComboBox();
+		    this.WidthText = new System.Windows.Forms.ComboBox();
+		    this.SizeUnits = new System.Windows.Forms.ComboBox();
+		    this.UnitsTable = new System.Data.DataTable();
+		    this.dataColumn5 = new System.Data.DataColumn();
+		    this.dataColumn6 = new System.Data.DataColumn();
+		    this.SizeContext = new System.Windows.Forms.ComboBox();
+		    this.SizeContextTable = new System.Data.DataTable();
+		    this.dataColumn3 = new System.Data.DataColumn();
+		    this.dataColumn4 = new System.Data.DataColumn();
+		    this.Symbol = new System.Windows.Forms.ComboBox();
+		    this.SymbolMarkTable = new System.Data.DataTable();
+		    this.dataColumn1 = new System.Data.DataColumn();
+		    this.dataColumn2 = new System.Data.DataColumn();
+		    this.label5 = new System.Windows.Forms.Label();
+		    this.label4 = new System.Windows.Forms.Label();
+		    this.label3 = new System.Windows.Forms.Label();
+		    this.label2 = new System.Windows.Forms.Label();
+		    this.label1 = new System.Windows.Forms.Label();
+		    this.grpSymbolFill = new System.Windows.Forms.GroupBox();
+		    this.fillStyleEditor = new Maestro.Editors.LayerDefinition.Vector.StyleEditors.FillStyleEditor();
+		    this.grpSymbolBorder = new System.Windows.Forms.GroupBox();
+		    this.lineStyleEditor = new Maestro.Editors.LayerDefinition.Vector.StyleEditors.LineStyleEditor();
+		    this.groupBox4 = new System.Windows.Forms.GroupBox();
+		    this.previewPicture = new System.Windows.Forms.PictureBox();
+		    this.ComboBoxDataSet = new System.Data.DataSet();
+		    this.DisplayPoints = new System.Windows.Forms.CheckBox();
+		    this.groupBoxFont = new System.Windows.Forms.GroupBox();
+		    this.label11 = new System.Windows.Forms.Label();
+		    this.colorFontForeground = new Maestro.Editors.Common.ColorComboWithTransparency();
+		    this.panel1 = new System.Windows.Forms.Panel();
+		    this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+		    this.FontBoldButton = new System.Windows.Forms.ToolStripButton();
+		    this.FontItalicButton = new System.Windows.Forms.ToolStripButton();
+		    this.FontUnderlineButton = new System.Windows.Forms.ToolStripButton();
+		    this.lblForeground = new System.Windows.Forms.Label();
+		    this.comboBoxCharacter = new System.Windows.Forms.ComboBox();
+		    this.fontCombo = new System.Windows.Forms.ComboBox();
+		    this.label10 = new System.Windows.Forms.Label();
+		    this.groupBoxSymbolLocation = new System.Windows.Forms.GroupBox();
+		    this.button1 = new System.Windows.Forms.Button();
+		    this.ReferenceY = new System.Windows.Forms.TextBox();
+		    this.label8 = new System.Windows.Forms.Label();
+		    this.ReferenceX = new System.Windows.Forms.TextBox();
+		    this.label7 = new System.Windows.Forms.Label();
+		    this.label6 = new System.Windows.Forms.Label();
+		    this.MaintainAspectRatio = new System.Windows.Forms.CheckBox();
+		    this.grpW2DStyle = new System.Windows.Forms.GroupBox();
+		    this.chkW2DTextColor = new System.Windows.Forms.CheckBox();
+		    this.cmbW2DTextColor = new Maestro.Editors.Common.ColorComboWithTransparency();
+		    this.chkW2DLineColor = new System.Windows.Forms.CheckBox();
+		    this.cmbW2DLineColor = new Maestro.Editors.Common.ColorComboWithTransparency();
+		    this.chkW2DFillColor = new System.Windows.Forms.CheckBox();
+		    this.cmbW2DFillColor = new Maestro.Editors.Common.ColorComboWithTransparency();
+		    this.groupBox1.SuspendLayout();
+		    ((System.ComponentModel.ISupportInitialize)(this.RotationTable)).BeginInit();
+		    ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).BeginInit();
+		    ((System.ComponentModel.ISupportInitialize)(this.SizeContextTable)).BeginInit();
+		    ((System.ComponentModel.ISupportInitialize)(this.SymbolMarkTable)).BeginInit();
+		    this.grpSymbolFill.SuspendLayout();
+		    this.grpSymbolBorder.SuspendLayout();
+		    this.groupBox4.SuspendLayout();
+		    ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
+		    ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).BeginInit();
+		    this.groupBoxFont.SuspendLayout();
+		    this.panel1.SuspendLayout();
+		    this.toolStrip1.SuspendLayout();
+		    this.groupBoxSymbolLocation.SuspendLayout();
+		    this.grpW2DStyle.SuspendLayout();
+		    this.SuspendLayout();
+		    // 
+		    // groupBox1
+		    // 
+		    resources.ApplyResources(this.groupBox1, "groupBox1");
+		    this.groupBox1.Controls.Add(this.RotationBox);
+		    this.groupBox1.Controls.Add(this.label9);
+		    this.groupBox1.Controls.Add(this.HeightText);
+		    this.groupBox1.Controls.Add(this.WidthText);
+		    this.groupBox1.Controls.Add(this.SizeUnits);
+		    this.groupBox1.Controls.Add(this.SizeContext);
+		    this.groupBox1.Controls.Add(this.Symbol);
+		    this.groupBox1.Controls.Add(this.label5);
+		    this.groupBox1.Controls.Add(this.label4);
+		    this.groupBox1.Controls.Add(this.label3);
+		    this.groupBox1.Controls.Add(this.label2);
+		    this.groupBox1.Controls.Add(this.label1);
+		    this.groupBox1.Name = "groupBox1";
+		    this.groupBox1.TabStop = false;
+		    // 
+		    // RotationBox
+		    // 
+		    resources.ApplyResources(this.RotationBox, "RotationBox");
+		    this.RotationBox.DataSource = this.RotationTable;
+		    this.RotationBox.DisplayMember = "Display";
+		    this.RotationBox.Name = "RotationBox";
+		    this.RotationBox.ValueMember = "Value";
+		    this.RotationBox.SelectedIndexChanged += new System.EventHandler(this.RotationBox_SelectedIndexChanged);
+		    this.RotationBox.TextChanged += new System.EventHandler(this.RotationBox_TextChanged);
+		    // 
+		    // RotationTable
+		    // 
+		    this.RotationTable.Columns.AddRange(new System.Data.DataColumn[] {
+		    		    		    this.dataColumn7,
+		    		    		    this.dataColumn8});
+		    this.RotationTable.TableName = "Rotation";
+		    // 
+		    // dataColumn7
+		    // 
+		    this.dataColumn7.Caption = "Display";
+		    this.dataColumn7.ColumnName = "Display";
+		    // 
+		    // dataColumn8
+		    // 
+		    this.dataColumn8.Caption = "Value";
+		    this.dataColumn8.ColumnName = "Value";
+		    // 
+		    // label9
+		    // 
+		    resources.ApplyResources(this.label9, "label9");
+		    this.label9.Name = "label9";
+		    // 
+		    // HeightText
+		    // 
+		    resources.ApplyResources(this.HeightText, "HeightText");
+		    this.HeightText.Items.AddRange(new object[] {
+		    		    		    resources.GetString("HeightText.Items")});
+		    this.HeightText.Name = "HeightText";
+		    this.HeightText.SelectedIndexChanged += new System.EventHandler(this.HeigthText_SelectedIndexChanged);
+		    this.HeightText.TextChanged += new System.EventHandler(this.HeightText_TextChanged);
+		    // 
+		    // WidthText
+		    // 
+		    resources.ApplyResources(this.WidthText, "WidthText");
+		    this.WidthText.Items.AddRange(new object[] {
+		    		    		    resources.GetString("WidthText.Items")});
+		    this.WidthText.Name = "WidthText";
+		    this.WidthText.SelectedIndexChanged += new System.EventHandler(this.WidthText_SelectedIndexChanged);
+		    this.WidthText.TextChanged += new System.EventHandler(this.WidthText_TextChanged);
+		    // 
+		    // SizeUnits
+		    // 
+		    resources.ApplyResources(this.SizeUnits, "SizeUnits");
+		    this.SizeUnits.DataSource = this.UnitsTable;
+		    this.SizeUnits.DisplayMember = "Display";
+		    this.SizeUnits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+		    this.SizeUnits.Name = "SizeUnits";
+		    this.SizeUnits.ValueMember = "Value";
+		    this.SizeUnits.SelectedIndexChanged += new System.EventHandler(this.SizeUnits_SelectedIndexChanged);
+		    // 
+		    // UnitsTable
+		    // 
+		    this.UnitsTable.Columns.AddRange(new System.Data.DataColumn[] {
+		    		    		    this.dataColumn5,
+		    		    		    this.dataColumn6});
+		    this.UnitsTable.TableName = "Units";
+		    // 
+		    // dataColumn5
+		    // 
+		    this.dataColumn5.Caption = "Display";
+		    this.dataColumn5.ColumnName = "Display";
+		    // 
+		    // dataColumn6
+		    // 
+		    this.dataColumn6.Caption = "Value";
+		    this.dataColumn6.ColumnName = "Value";
+		    // 
+		    // SizeContext
+		    // 
+		    resources.ApplyResources(this.SizeContext, "SizeContext");
+		    this.SizeContext.DataSource = this.SizeContextTable;
+		    this.SizeContext.DisplayMember = "Display";
+		    this.SizeContext.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+		    this.SizeContext.Name = "SizeContext";
+		    this.SizeContext.ValueMember = "Value";
+		    this.SizeContext.SelectedIndexChanged += new System.EventHandler(this.SizeContext_SelectedIndexChanged);
+		    // 
+		    // SizeContextTable
+		    // 
+		    this.SizeContextTable.Columns.AddRange(new System.Data.DataColumn[] {
+		    		    		    this.dataColumn3,
+		    		    		    this.dataColumn4});
+		    this.SizeContextTable.TableName = "SizeContext";
+		    // 
+		    // dataColumn3
+		    // 
+		    this.dataColumn3.Caption = "Display";
+		    this.dataColumn3.ColumnName = "Display";
+		    // 
+		    // dataColumn4
+		    // 
+		    this.dataColumn4.Caption = "Value";
+		    this.dataColumn4.ColumnName = "Value";
+		    // 
+		    // Symbol
+		    // 
+		    resources.ApplyResources(this.Symbol, "Symbol");
+		    this.Symbol.DataSource = this.SymbolMarkTable;
+		    this.Symbol.DisplayMember = "Display";
+		    this.Symbol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+		    this.Symbol.Name = "Symbol";
+		    this.Symbol.ValueMember = "Value";
+		    this.Symbol.SelectedIndexChanged += new System.EventHandler(this.Symbol_SelectedIndexChanged);
+		    // 
+		    // SymbolMarkTable
+		    // 
+		    this.SymbolMarkTable.Columns.AddRange(new System.Data.DataColumn[] {
+		    		    		    this.dataColumn1,
+		    		    		    this.dataColumn2});
+		    this.SymbolMarkTable.TableName = "SymbolMark";
+		    // 
+		    // dataColumn1
+		    // 
+		    this.dataColumn1.Caption = "Display";
+		    this.dataColumn1.ColumnName = "Display";
+		    // 
+		    // dataColumn2
+		    // 
+		    this.dataColumn2.Caption = "Value";
+		    this.dataColumn2.ColumnName = "Value";
+		    // 
+		    // label5
+		    // 
+		    resources.ApplyResources(this.label5, "label5");
+		    this.label5.Name = "label5";
+		    // 
+		    // label4
+		    // 
+		    resources.ApplyResources(this.label4, "label4");
+		    this.label4.Name = "label4";
+		    // 
+		    // label3
+		    // 
+		    resources.ApplyResources(this.label3, "label3");
+		    this.label3.Name = "label3";
+		    // 
+		    // label2
+		    // 
+		    resources.ApplyResources(this.label2, "label2");
+		    this.label2.Name = "label2";
+		    // 
+		    // label1
+		    // 
+		    resources.ApplyResources(this.label1, "label1");
+		    this.label1.Name = "label1";
+		    // 
+		    // grpSymbolFill
+		    // 
+		    resources.ApplyResources(this.grpSymbolFill, "grpSymbolFill");
+		    this.grpSymbolFill.Controls.Add(this.fillStyleEditor);
+		    this.grpSymbolFill.Name = "grpSymbolFill";
+		    this.grpSymbolFill.TabStop = false;
+		    // 
+		    // fillStyleEditor
+		    // 
+		    resources.ApplyResources(this.fillStyleEditor, "fillStyleEditor");
+		    this.fillStyleEditor.Name = "fillStyleEditor";
+		    this.fillStyleEditor.ForegroundRequiresExpression += new System.EventHandler(this.FillStyleEditor_ForegroundRequiresExpression);
+		    this.fillStyleEditor.BackgroundRequiresExpression += new System.EventHandler(this.FillStyleEditor_BackgroundRequiresExpression);
+		    // 
+		    // grpSymbolBorder
+		    // 
+		    resources.ApplyResources(this.grpSymbolBorder, "grpSymbolBorder");
+		    this.grpSymbolBorder.Controls.Add(this.lineStyleEditor);
+		    this.grpSymbolBorder.Name = "grpSymbolBorder";
+		    this.grpSymbolBorder.TabStop = false;
+		    // 
+		    // lineStyleEditor
+		    // 
+		    this.lineStyleEditor.ColorExpression = "";
+		    resources.ApplyResources(this.lineStyleEditor, "lineStyleEditor");
+		    this.lineStyleEditor.Name = "lineStyleEditor";
+		    this.lineStyleEditor.RequiresExpressionEditor += new System.EventHandler(this.LineStyleEditor_RequiresExpressionEditor);
+		    // 
+		    // groupBox4
+		    // 
+		    resources.ApplyResources(this.groupBox4, "groupBox4");
+		    this.groupBox4.Controls.Add(this.previewPicture);
+		    this.groupBox4.Name = "groupBox4";
+		    this.groupBox4.TabStop = false;
+		    // 
+		    // previewPicture
+		    // 
+		    resources.ApplyResources(this.previewPicture, "previewPicture");
+		    this.previewPicture.BackColor = System.Drawing.Color.White;
+		    this.previewPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+		    this.previewPicture.Name = "previewPicture";
+		    this.previewPicture.TabStop = false;
+		    this.previewPicture.Paint += new System.Windows.Forms.PaintEventHandler(this.previewPicture_Paint);
+		    // 
+		    // ComboBoxDataSet
+		    // 
+		    this.ComboBoxDataSet.DataSetName = "ComboBoxDataSet";
+		    this.ComboBoxDataSet.Locale = new System.Globalization.CultureInfo("da-DK");
+		    this.ComboBoxDataSet.Tables.AddRange(new System.Data.DataTable[] {
+		    		    		    this.SymbolMarkTable,
+		    		    		    this.SizeContextTable,
+		    		    		    this.UnitsTable,
+		    		    		    this.RotationTable});
+		    // 
+		    // DisplayPoints
+		    // 
+		    resources.ApplyResources(this.DisplayPoints, "DisplayPoints");
+		    this.DisplayPoints.Checked = true;
+		    this.DisplayPoints.CheckState = System.Windows.Forms.CheckState.Checked;
+		    this.DisplayPoints.Name = "DisplayPoints";
+		    this.DisplayPoints.UseVisualStyleBackColor = true;
+		    this.DisplayPoints.CheckedChanged += new System.EventHandler(this.DisplayPoints_CheckedChanged);
+		    // 
+		    // groupBoxFont
+		    // 
+		    resources.ApplyResources(this.groupBoxFont, "groupBoxFont");
+		    this.groupBoxFont.Controls.Add(this.label11);
+		    this.groupBoxFont.Controls.Add(this.colorFontForeground);
+		    this.groupBoxFont.Controls.Add(this.panel1);
+		    this.groupBoxFont.Controls.Add(this.lblForeground);
+		    this.groupBoxFont.Controls.Add(this.comboBoxCharacter);
+		    this.groupBoxFont.Controls.Add(this.fontCombo);
+		    this.groupBoxFont.Controls.Add(this.label10);
+		    this.groupBoxFont.Name = "groupBoxFont";
+		    this.groupBoxFont.TabStop = false;
+		    // 
+		    // label11
+		    // 
+		    resources.ApplyResources(this.label11, "label11");
+		    this.label11.Name = "label11";
+		    // 
+		    // colorFontForeground
+		    // 
+		    resources.ApplyResources(this.colorFontForeground, "colorFontForeground");
+		    this.colorFontForeground.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+		    this.colorFontForeground.Name = "colorFontForeground";
+		    // 
+		    // panel1
+		    // 
+		    this.panel1.Controls.Add(this.toolStrip1);
+		    resources.ApplyResources(this.panel1, "panel1");
+		    this.panel1.Name = "panel1";
+		    // 
+		    // toolStrip1
+		    // 
+		    this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+		    this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+		    		    		    this.FontBoldButton,
+		    		    		    this.FontItalicButton,
+		    		    		    this.FontUnderlineButton});
+		    resources.ApplyResources(this.toolStrip1, "toolStrip1");
+		    this.toolStrip1.Name = "toolStrip1";
+		    this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+		    // 
+		    // FontBoldButton
+		    // 
+		    this.FontBoldButton.CheckOnClick = true;
+		    this.FontBoldButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+		    resources.ApplyResources(this.FontBoldButton, "FontBoldButton");
+		    this.FontBoldButton.Name = "FontBoldButton";
+		    this.FontBoldButton.Click += new System.EventHandler(this.FontBoldButton_Click);
+		    // 
+		    // FontItalicButton
+		    // 
+		    this.FontItalicButton.CheckOnClick = true;
+		    this.FontItalicButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+		    resources.ApplyResources(this.FontItalicButton, "FontItalicButton");
+		    this.FontItalicButton.Name = "FontItalicButton";
+		    this.FontItalicButton.Click += new System.EventHandler(this.FontItalicButton_Click);
+		    // 
+		    // FontUnderlineButton
+		    // 
+		    this.FontUnderlineButton.CheckOnClick = true;
+		    this.FontUnderlineButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+		    resources.ApplyResources(this.FontUnderlineButton, "FontUnderlineButton");
+		    this.FontUnderlineButton.Name = "FontUnderlineButton";
+		    this.FontUnderlineButton.Click += new System.EventHandler(this.FontUnderlineButton_Click);
+		    // 
+		    // lblForeground
+		    // 
+		    resources.ApplyResources(this.lblForeground, "lblForeground");
+		    this.lblForeground.Name = "lblForeground";
+		    // 
+		    // comboBoxCharacter
+		    // 
+		    resources.ApplyResources(this.comboBoxCharacter, "comboBoxCharacter");
+		    this.comboBoxCharacter.DisplayMember = "Display";
+		    this.comboBoxCharacter.Name = "comboBoxCharacter";
+		    this.comboBoxCharacter.ValueMember = "Value";
+		    this.comboBoxCharacter.SelectedIndexChanged += new System.EventHandler(this.comboBoxCharacter_SelectedIndexChanged);
+		    this.comboBoxCharacter.TextChanged += new System.EventHandler(this.comboBoxCharacter_TextChanged);
+		    // 
+		    // fontCombo
+		    // 
+		    resources.ApplyResources(this.fontCombo, "fontCombo");
+		    this.fontCombo.DisplayMember = "Display";
+		    this.fontCombo.Name = "fontCombo";
+		    this.fontCombo.ValueMember = "Value";
+		    this.fontCombo.SelectedIndexChanged += new System.EventHandler(this.fontCombo_SelectedIndexChanged);
+		    // 
+		    // label10
+		    // 
+		    resources.ApplyResources(this.label10, "label10");
+		    this.label10.Name = "label10";
+		    // 
+		    // groupBoxSymbolLocation
+		    // 
+		    resources.ApplyResources(this.groupBoxSymbolLocation, "groupBoxSymbolLocation");
+		    this.groupBoxSymbolLocation.Controls.Add(this.button1);
+		    this.groupBoxSymbolLocation.Controls.Add(this.ReferenceY);
+		    this.groupBoxSymbolLocation.Controls.Add(this.label8);
+		    this.groupBoxSymbolLocation.Controls.Add(this.ReferenceX);
+		    this.groupBoxSymbolLocation.Controls.Add(this.label7);
+		    this.groupBoxSymbolLocation.Controls.Add(this.label6);
+		    this.groupBoxSymbolLocation.Controls.Add(this.MaintainAspectRatio);
+		    this.groupBoxSymbolLocation.Name = "groupBoxSymbolLocation";
+		    this.groupBoxSymbolLocation.TabStop = false;
+		    // 
+		    // button1
+		    // 
+		    resources.ApplyResources(this.button1, "button1");
+		    this.button1.Name = "button1";
+		    // 
+		    // ReferenceY
+		    // 
+		    resources.ApplyResources(this.ReferenceY, "ReferenceY");
+		    this.ReferenceY.Name = "ReferenceY";
+		    // 
+		    // label8
+		    // 
+		    resources.ApplyResources(this.label8, "label8");
+		    this.label8.Name = "label8";
+		    // 
+		    // ReferenceX
+		    // 
+		    resources.ApplyResources(this.ReferenceX, "ReferenceX");
+		    this.ReferenceX.Name = "ReferenceX";
+		    // 
+		    // label7
+		    // 
+		    resources.ApplyResources(this.label7, "label7");
+		    this.label7.Name = "label7";
+		    // 
+		    // label6
+		    // 
+		    resources.ApplyResources(this.label6, "label6");
+		    this.label6.Name = "label6";
+		    // 
+		    // MaintainAspectRatio
+		    // 
+		    resources.ApplyResources(this.MaintainAspectRatio, "MaintainAspectRatio");
+		    this.MaintainAspectRatio.Name = "MaintainAspectRatio";
+		    // 
+		    // grpW2DStyle
+		    // 
+		    this.grpW2DStyle.Controls.Add(this.chkW2DTextColor);
+		    this.grpW2DStyle.Controls.Add(this.cmbW2DTextColor);
+		    this.grpW2DStyle.Controls.Add(this.chkW2DLineColor);
+		    this.grpW2DStyle.Controls.Add(this.cmbW2DLineColor);
+		    this.grpW2DStyle.Controls.Add(this.chkW2DFillColor);
+		    this.grpW2DStyle.Controls.Add(this.cmbW2DFillColor);
+		    resources.ApplyResources(this.grpW2DStyle, "grpW2DStyle");
+		    this.grpW2DStyle.Name = "grpW2DStyle";
+		    this.grpW2DStyle.TabStop = false;
+		    // 
+		    // chkW2DTextColor
+		    // 
+		    resources.ApplyResources(this.chkW2DTextColor, "chkW2DTextColor");
+		    this.chkW2DTextColor.Name = "chkW2DTextColor";
+		    this.chkW2DTextColor.UseVisualStyleBackColor = true;
+		    this.chkW2DTextColor.CheckedChanged += new System.EventHandler(this.chkW2DTextColor_CheckedChanged);
+		    // 
+		    // cmbW2DTextColor
+		    // 
+		    resources.ApplyResources(this.cmbW2DTextColor, "cmbW2DTextColor");
+		    this.cmbW2DTextColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+		    this.cmbW2DTextColor.Name = "cmbW2DTextColor";
+		    this.cmbW2DTextColor.CurrentColorChanged += new System.EventHandler(this.cmbW2DTextColor_SelectedIndexChanged);
+		    // 
+		    // chkW2DLineColor
+		    // 
+		    resources.ApplyResources(this.chkW2DLineColor, "chkW2DLineColor");
+		    this.chkW2DLineColor.Name = "chkW2DLineColor";
+		    this.chkW2DLineColor.UseVisualStyleBackColor = true;
+		    this.chkW2DLineColor.CheckedChanged += new System.EventHandler(this.chkW2DLineColor_CheckedChanged);
+		    // 
+		    // cmbW2DLineColor
+		    // 
+		    resources.ApplyResources(this.cmbW2DLineColor, "cmbW2DLineColor");
+		    this.cmbW2DLineColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+		    this.cmbW2DLineColor.Name = "cmbW2DLineColor";
+		    this.cmbW2DLineColor.CurrentColorChanged += new System.EventHandler(this.cmbW2DLineColor_SelectedIndexChanged);
+		    // 
+		    // chkW2DFillColor
+		    // 
+		    resources.ApplyResources(this.chkW2DFillColor, "chkW2DFillColor");
+		    this.chkW2DFillColor.Name = "chkW2DFillColor";
+		    this.chkW2DFillColor.UseVisualStyleBackColor = true;
+		    this.chkW2DFillColor.CheckedChanged += new System.EventHandler(this.chkW2DFillColor_CheckedChanged);
+		    // 
+		    // cmbW2DFillColor
+		    // 
+		    resources.ApplyResources(this.cmbW2DFillColor, "cmbW2DFillColor");
+		    this.cmbW2DFillColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+		    this.cmbW2DFillColor.Name = "cmbW2DFillColor";
+		    this.cmbW2DFillColor.CurrentColorChanged += new System.EventHandler(this.cmbW2DFillColor_SelectedIndexChanged);
+		    // 
+		    // PointFeatureStyleEditor
+		    // 
+		    resources.ApplyResources(this, "$this");
+		    this.Controls.Add(this.grpW2DStyle);
+		    this.Controls.Add(this.groupBoxSymbolLocation);
+		    this.Controls.Add(this.groupBoxFont);
+		    this.Controls.Add(this.DisplayPoints);
+		    this.Controls.Add(this.groupBox4);
+		    this.Controls.Add(this.grpSymbolFill);
+		    this.Controls.Add(this.groupBox1);
+		    this.Controls.Add(this.grpSymbolBorder);
+		    this.Name = "PointFeatureStyleEditor";
+		    this.Load += new System.EventHandler(this.PointFeatureStyleEditor_Load);
+		    this.groupBox1.ResumeLayout(false);
+		    this.groupBox1.PerformLayout();
+		    ((System.ComponentModel.ISupportInitialize)(this.RotationTable)).EndInit();
+		    ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).EndInit();
+		    ((System.ComponentModel.ISupportInitialize)(this.SizeContextTable)).EndInit();
+		    ((System.ComponentModel.ISupportInitialize)(this.SymbolMarkTable)).EndInit();
+		    this.grpSymbolFill.ResumeLayout(false);
+		    this.grpSymbolBorder.ResumeLayout(false);
+		    this.groupBox4.ResumeLayout(false);
+		    ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).EndInit();
+		    ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).EndInit();
+		    this.groupBoxFont.ResumeLayout(false);
+		    this.groupBoxFont.PerformLayout();
+		    this.panel1.ResumeLayout(false);
+		    this.panel1.PerformLayout();
+		    this.toolStrip1.ResumeLayout(false);
+		    this.toolStrip1.PerformLayout();
+		    this.groupBoxSymbolLocation.ResumeLayout(false);
+		    this.groupBoxSymbolLocation.PerformLayout();
+		    this.grpW2DStyle.ResumeLayout(false);
+		    this.grpW2DStyle.PerformLayout();
+		    this.ResumeLayout(false);
+		    this.PerformLayout();
 		}
 		#endregion
 
@@ -1657,5 +1660,26 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
+		
+		void FillStyleEditor_BackgroundRequiresExpression(object sender, EventArgs e)
+		{
+            string expr = m_editor.EditExpression(fillStyleEditor.backgroundColor.ColorExpression, m_schema, m_providername, m_featureSource, true);
+            if (expr != null)
+                fillStyleEditor.backgroundColor.ColorExpression = expr;
+		}
+		
+		void FillStyleEditor_ForegroundRequiresExpression(object sender, EventArgs e)
+		{
+            string expr = m_editor.EditExpression(fillStyleEditor.foregroundColor.ColorExpression, m_schema, m_providername, m_featureSource, true);
+            if (expr != null)
+                fillStyleEditor.foregroundColor.ColorExpression = expr;
+		}
+		
+		void LineStyleEditor_RequiresExpressionEditor(object sender, EventArgs e)
+		{
+            string expr = m_editor.EditExpression(lineStyleEditor.colorCombo.ColorExpression, m_schema, m_providername, m_featureSource, true);
+            if (expr != null)
+                lineStyleEditor.colorCombo.ColorExpression = expr;
+		}
     }
 }
