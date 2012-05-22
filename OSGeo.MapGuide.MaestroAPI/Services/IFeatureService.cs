@@ -196,6 +196,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// Describes the specified feature source
         /// </summary>
         /// <param name="resourceID"></param>
+        /// <remarks>
+        /// If you only need to list schemas and class names, use the respective <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemas" /> and
+        /// <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames" /> methods. Using this API will have a noticeable performance impact on 
+        /// really large datastores (whose size is in the 100s of classes).
+        /// </remarks>
         /// <returns></returns>
         FeatureSourceDescription DescribeFeatureSource(string resourceID);
 
@@ -204,6 +209,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// </summary>
         /// <param name="resourceID"></param>
         /// <param name="schema"></param>
+        /// <remarks>
+        /// If you only need to list schemas and class names, use the respective <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemas" /> and
+        /// <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames" /> methods. Using this API will have a noticeable performance impact on 
+        /// really large datastores (whose size is in the 100s of classes).
+        /// </remarks>
         /// <returns></returns>
         FeatureSchema DescribeFeatureSource(string resourceID, string schema);
 
