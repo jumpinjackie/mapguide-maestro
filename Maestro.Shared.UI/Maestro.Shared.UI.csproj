@@ -66,6 +66,10 @@
     <Compile Include="..\Properties\SignedAssemblyInfo2.cs">
       <Link>SignedAssemblyInfo2.cs</Link>
     </Compile>
+    <Compile Include="BusyWaitDialog.cs" />
+    <Compile Include="BusyWaitDialog.Designer.cs">
+      <DependentUpon>BusyWaitDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="CancelException.cs" />
     <Compile Include="CheckBoxBinder.cs" />
     <Compile Include="CollapsiblePanel.cs">
@@ -125,6 +129,9 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BusyWaitDialog.resx">
+      <DependentUpon>BusyWaitDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CollapsiblePanel.resx">
       <DependentUpon>CollapsiblePanel.cs</DependentUpon>
       <SubType>Designer</SubType>

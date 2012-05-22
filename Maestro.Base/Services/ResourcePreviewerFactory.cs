@@ -20,6 +20,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI;
 using Maestro.Base.Editor;
@@ -39,21 +40,25 @@ namespace Maestro.Base.Services
         public void Preview(IResource res, IEditorService edSvc)
         {
             IServerConnection conn = res.CurrentConnection;
-            string mapguideRootUrl = (string)conn.GetCustomProperty("BaseUrl");
-
-            //Save the current resource to another session copy
-            string resId = "Session:" + edSvc.SessionID + "//" + Guid.NewGuid() + "." + res.ResourceType.ToString();
-            edSvc.ResourceService.SetResourceXmlData(resId, ResourceTypeRegistry.Serialize(res));
-
-            //Copy any resource data
-            var previewCopy = edSvc.ResourceService.GetResource(resId);
-            res.CopyResourceDataTo(previewCopy);
-
-            //Now feed it to the preview engine
-            var url = new ResourcePreviewEngine(mapguideRootUrl, edSvc).GeneratePreviewUrl(previewCopy);
-            var launcher = ServiceRegistry.GetService<UrlLauncherService>();
-
-            launcher.OpenUrl(url);
+            BusyWaitDialog.Run(Properties.Resources.PrgPreparingResourcePreview, () => {
+                string mapguideRootUrl = (string)conn.GetCustomProperty("BaseUrl");
+                //Save the current resource to another session copy
+                string resId = "Session:" + edSvc.SessionID + "//" + Guid.NewGuid() + "." + res.ResourceType.ToString();
+                edSvc.ResourceService.SetResourceXmlData(resId, ResourceTypeRegistry.Serialize(res));
+    
+                //Copy any resource data
+                var previewCopy = edSvc.ResourceService.GetResource(resId);
+                res.CopyResourceDataTo(previewCopy);
+    
+                //Now feed it to the preview engine
+                return new ResourcePreviewEngine(mapguideRootUrl, edSvc).GeneratePreviewUrl(previewCopy);
+            }, (result) => {
+                if (result != null) {
+                    var url = result.ToString();
+                    var launcher = ServiceRegistry.GetService<UrlLauncherService>();
+                    launcher.OpenUrl(url);
+                }
+            });
         }
 
         public bool IsPreviewable(IResource res)

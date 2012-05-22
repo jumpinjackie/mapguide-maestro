@@ -1611,6 +1611,26 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Preparing resource preview.
+        /// </summary>
+        internal static string PrgPreparingResourcePreview {
+            get {
+                return ResourceManager.GetString("PrgPreparingResourcePreview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Performing pre-save validation...
+        ///
+        ///You can disable pre-save validation in Maestro options.
+        /// </summary>
+        internal static string PrgPreSaveValidation {
+            get {
+                return ResourceManager.GetString("PrgPreSaveValidation", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap printer {
             get {
                 object obj = ResourceManager.GetObject("printer", resourceCulture);

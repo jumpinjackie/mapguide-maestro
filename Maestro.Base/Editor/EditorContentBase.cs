@@ -121,20 +121,28 @@ namespace Maestro.Base.Editor
             try
             {
                 var validate = PropertyService.Get(ConfigProperties.ValidateOnSave, true);
-                if (validate)
+                if (this.IsDirty && validate)
                 {
-                    var errors = new List<ValidationIssue>(ValidateEditedResource()).ToArray();
-                    if (errors.Length > 0)
+                    BusyWaitDelegate del = () => 
                     {
-                        MessageService.ShowError(Properties.Resources.FixErrorsBeforeSaving);
-                        ValidationResultsDialog diag = new ValidationResultsDialog(this.Resource.ResourceID, errors);
-                        diag.ShowDialog(Workbench.Instance);
-                        e.Cancel = true;
-                    }
-                    else
-                    {
-                        e.Cancel = false;
-                    }
+                        var errors = new List<ValidationIssue>(ValidateEditedResource()).ToArray();
+                        return errors;
+                    };
+                    
+                    BusyWaitDialog.Run(Properties.Resources.PrgPreSaveValidation, del, (result) => {
+                        ValidationIssue[] errors = result as ValidationIssue[];
+                        if (errors.Length > 0)
+                        {
+                            MessageService.ShowError(Properties.Resources.FixErrorsBeforeSaving);
+                            ValidationResultsDialog diag = new ValidationResultsDialog(this.Resource.ResourceID, errors);
+                            diag.ShowDialog(Workbench.Instance);
+                            e.Cancel = true;
+                        }
+                        else
+                        {
+                            e.Cancel = false;
+                        }               
+                    });
                 }
                 else
                 {
