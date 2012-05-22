@@ -114,19 +114,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         static SiteResourceType()
         {
-            _resTypes = new ResourceTypes[]
-            {
-                ResourceTypes.ApplicationDefinition,
-                ResourceTypes.DrawingSource,
-                ResourceTypes.FeatureSource,
-                ResourceTypes.LayerDefinition,
-                ResourceTypes.LoadProcedure,
-                ResourceTypes.MapDefinition,
-                ResourceTypes.PrintLayout,
-                ResourceTypes.SymbolDefinition,
-                ResourceTypes.SymbolLibrary,
-                ResourceTypes.WebLayout
-            };
+            _resTypes = (ResourceTypes[])Enum.GetValues(typeof(ResourceTypes));
         }
 
         /// <summary>
