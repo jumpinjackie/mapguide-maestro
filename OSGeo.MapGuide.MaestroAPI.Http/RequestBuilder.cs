@@ -1510,7 +1510,8 @@ namespace OSGeo.MapGuide.MaestroAPI
                 param.Add("LOCALE", m_locale);
 
             param.Add("RESOURCEID", resourceId);
-            param.Add("SCHEMA", schemaName);
+            if (!string.IsNullOrEmpty(schemaName))
+                param.Add("SCHEMA", schemaName);
 
             return m_hosturi + "?" + EncodeParameters(param);
         }

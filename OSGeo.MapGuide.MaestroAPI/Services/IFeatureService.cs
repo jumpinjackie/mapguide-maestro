@@ -247,10 +247,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         string[] GetSchemas(string resourceId);
 
         /// <summary>
-        /// Gets an array of feature class names from the specified feature source
+        /// Gets an array of qualified feature class names from the specified feature source
         /// </summary>
-        /// <param name="resourceId"></param>
-        /// <param name="schemaName"></param>
+        /// <param name="resourceId">The feature source id</param>
+        /// <param name="schemaName">
+        /// The name of the schema whose class names are to be returned. If null, class names from all schemas in the feature source
+        /// are returned
+        /// </param>
         /// <returns></returns>
         string[] GetClassNames(string resourceId, string schemaName);
     }

@@ -47,17 +47,20 @@ namespace Maestro.Editors.FeatureSource.Extensions
 
         private IAttributeRelation _rel;
 
-        private ClassDefinition _primaryClass;
-        private ClassDefinition[] _secondaryClasses;
-        private ClassDefinition _secondaryClass;
+        private string _primaryFeatureSource;
+        private string _primaryClass;
+        private string[] _secondaryClasses;
+        private string _secondaryClass;
 
         private BindingList<IRelateProperty> _propertyJoins;
 
-        public JoinSettings(ClassDefinition primaryClass, IAttributeRelation rel)
+        public JoinSettings(string primaryFeatureSource, string primaryClass, IAttributeRelation rel)
             : this()
         {
             Check.NotNull(rel, "rel");
             Check.NotNull(primaryClass, "primaryClass");
+            Check.NotNull(primaryFeatureSource, "primaryFeatureSource");
+            _primaryFeatureSource = primaryFeatureSource;
             _primaryClass = primaryClass;
 
             _init = true;
@@ -89,9 +92,7 @@ namespace Maestro.Editors.FeatureSource.Extensions
             if (!string.IsNullOrEmpty(resId))
             {
                 txtFeatureSource.Text = resId;
-
-                var schema = _edSvc.FeatureService.DescribeFeatureSource(txtFeatureSource.Text);
-                _secondaryClasses = new List<ClassDefinition>(schema.AllClasses).ToArray();
+                _secondaryClasses = _edSvc.FeatureService.GetClassNames(txtFeatureSource.Text, null);
                 //Invalidate existing secondary class
                 txtSecondaryClass.Text = string.Empty;
                 _secondaryClass = null;
@@ -113,7 +114,7 @@ namespace Maestro.Editors.FeatureSource.Extensions
             if (selClass != null)
             {
                 _secondaryClass = selClass;
-                txtSecondaryClass.Text = _secondaryClass.QualifiedName;
+                txtSecondaryClass.Text = _secondaryClass;
                 CheckAddStatus();
             }
         }
@@ -137,14 +138,13 @@ namespace Maestro.Editors.FeatureSource.Extensions
             //Init selected classes
             if (!string.IsNullOrEmpty(_rel.ResourceId))
             {
-                var schema = _edSvc.FeatureService.DescribeFeatureSource(_rel.ResourceId);
-                _secondaryClasses = new List<ClassDefinition>(schema.AllClasses).ToArray();
+                _secondaryClasses = _edSvc.FeatureService.GetClassNames(_rel.ResourceId, null);
 
                 if (!string.IsNullOrEmpty(_rel.AttributeClass))
                 {
                     foreach (var cls in _secondaryClasses)
                     {
-                        if (cls.QualifiedName.Equals(_rel.AttributeClass))
+                        if (cls.Equals(_rel.AttributeClass))
                         {
                             _secondaryClass = cls;
                             break;
@@ -235,7 +235,10 @@ namespace Maestro.Editors.FeatureSource.Extensions
         {
             if (_primaryClass != null && _secondaryClass != null)
             {
-                var dlg = new SelectJoinKeyDialog(_primaryClass, _secondaryClass);
+                var pc = _edSvc.FeatureService.GetClassDefinition(_primaryFeatureSource, _primaryClass);
+                var sc = _edSvc.FeatureService.GetClassDefinition(_rel.ResourceId, _secondaryClass);
+                
+                var dlg = new SelectJoinKeyDialog(pc, sc);
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     var rel = _rel.CreatePropertyJoin(dlg.PrimaryProperty, dlg.SecondaryProperty);

@@ -331,11 +331,12 @@ namespace Maestro.Editors.FeatureSource
                 ext = e.Node.Parent.Tag as IFeatureSourceExtension;
                 if (ext != null)
                 {
-                    ClassDefinition cls = _fs.GetClass(ext.FeatureClass); //TODO: Cache?
-                    
-                    if (cls != null)
+                    if (ext.FeatureClass != null)
                     {
-                        var ctl = new JoinSettings(cls, join);
+                        //NOTE: The feature source id here may be session based, but this is still okay
+                        //as we're only giving context (the primary class to join on) for the secondary join UI. 
+                        //This feature source id is never written into the actual document
+                        var ctl = new JoinSettings(_fs.ResourceID, ext.FeatureClass, join);
                         ctl.Bind(_edSvc);
                         ctl.Dock = DockStyle.Fill;
                         splitContainer1.Panel2.Controls.Clear();
