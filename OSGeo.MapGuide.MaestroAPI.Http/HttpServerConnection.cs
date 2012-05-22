@@ -1262,7 +1262,9 @@ namespace OSGeo.MapGuide.MaestroAPI
                 if (typeof(WebException).IsAssignableFrom(ex.GetType()))
                     LogFailedRequest((WebException)ex);
 
-                var sessionRecreated = this.RestartSession(false);
+                var sessionRecreated = false;
+                if (this.IsSessionExpiredException(ex))
+                    sessionRecreated = this.RestartSession(false);
                 if (!this.m_autoRestartSession || !this.IsSessionExpiredException(ex) || !sessionRecreated)
                 {
                     Exception ex2 = Utility.ThrowAsWebException(ex);
