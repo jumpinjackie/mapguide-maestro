@@ -174,24 +174,28 @@ namespace Maestro.Editors.Common
                 open.Multiselect = true;
                 if (open.ShowDialog() == DialogResult.OK)
                 {
-                    using (new WaitCursor(this))
+                    try
                     {
-                        try
+                        foreach (var fileName in open.FileNames)
                         {
-                            foreach (var fileName in open.FileNames)
-                            {
-                                UploadFile(fileName);
-                                var handler = this.ResourceDataUploaded;
-                                if (handler != null)
-                                    handler(Path.GetFileName(fileName), fileName);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(NestedExceptionMessageProcessor.GetFullMessage(ex), Properties.Resources.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            UploadFile(fileName);
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(NestedExceptionMessageProcessor.GetFullMessage(ex), Properties.Resources.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
+            }
+        }
+
+        private void DoFileUpload(string fileName)
+        {
+            using (var fs = new FileStream(fileName, FileMode.Open))
+            {
+                //_edSvc.AddResourceData(Path.GetFileName(open.FileName), ResourceDataType.File, fs);
+                IResource res = _edSvc.GetEditedResource();
+                res.SetResourceData(Path.GetFileName(fileName), ResourceDataType.File, fs);
             }
         }
 
@@ -201,14 +205,16 @@ namespace Maestro.Editors.Common
         /// <param name="fileName">Name of the file.</param>
         public void UploadFile(string fileName)
         {
-            using (var fs = new FileStream(fileName, FileMode.Open))
+            //TODO: Obviously support progress
+            BusyWaitDelegate method = () => { DoFileUpload(fileName); return null; };
+            BusyWaitDialog.Run(Properties.Resources.TextUploading, method, (obj) => 
             {
-                //_edSvc.AddResourceData(Path.GetFileName(open.FileName), ResourceDataType.File, fs);
-                IResource res = _edSvc.GetEditedResource();
-                res.SetResourceData(Path.GetFileName(fileName), ResourceDataType.File, fs);
                 LoadResourceData();
                 OnDataListChanged();
-            }
+                var handler = this.ResourceDataUploaded;
+                if (handler != null)
+                    handler(Path.GetFileName(fileName), fileName);
+            });
         }
 
         private void OnDataListChanged()
@@ -260,19 +266,24 @@ namespace Maestro.Editors.Common
                     save.FileName = item.Name;
                     if (save.ShowDialog() == DialogResult.OK)
                     {
+                        var fn = save.FileName;
                         try
                         {
-                            using (new WaitCursor(this))
+                            //TODO: Obviously support progress
+                            BusyWaitDelegate method = () => 
                             {
-                                //var stream = _edSvc.GetResourceData(item.Name);
                                 IResource res = _edSvc.GetEditedResource();
                                 var stream = res.GetResourceData(item.Name);
-                                using (var fs = File.OpenWrite(save.FileName))
+                                using (var fs = File.OpenWrite(fn))
                                 {
                                     Utility.CopyStream(stream, fs);
                                 }
-                            }
-                            MessageBox.Show(string.Format(Properties.Resources.FileDownloaded, save.FileName));
+                                return null;
+                            };
+                            BusyWaitDialog.Run(Properties.Resources.TextDownloading, method, (obj) => 
+                            {
+                                MessageBox.Show(string.Format(Properties.Resources.FileDownloaded, fn));
+                            });
                         }
                         catch (Exception ex)
                         {
@@ -387,7 +398,6 @@ namespace Maestro.Editors.Common
         private void lstDataFiles_DragDrop(object sender, DragEventArgs e)
         {
             Array a = e.Data.GetData(DataFormats.FileDrop) as Array;
-            bool refresh = false;
             if (a != null && a.Length > 0)
             {
                 for (int i = 0; i < a.Length; i++)
@@ -395,20 +405,10 @@ namespace Maestro.Editors.Common
                     string file = a.GetValue(i).ToString();
                     try
                     {
-                        using (var fs = new FileStream(file, FileMode.Open))
-                        {
-                            IResource res = _edSvc.GetEditedResource();
-                            res.SetResourceData(Path.GetFileName(file), ResourceDataType.File, fs);
-                            refresh = true;
-                        }
+                        UploadFile(file);
                     }
                     catch { }
                 }
-            }
-            if (refresh)
-            {
-                LoadResourceData();
-                OnDataListChanged();
             }
         }
     }
