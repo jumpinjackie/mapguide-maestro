@@ -1,6 +1,12 @@
 ﻿5.0 Beta 2
 ----------
  - MgCooker tiling classes now part of the MaestroAPI
+ - Fix: Potentially long running tasks are now done on background threads with busy dialogs
+ - Fix: Non-working expression buttons for some color pickers
+ - Fix: Watermarks not showing up as a resource type in Create Package dialog
+ - Fix: HttpServerConnection no longer re-creates MapGuide session on any exception thrown, only ones relating to session expiry.
+ - Fix: Avoid using full schema walks wherever possible. Will improve performance on large data stores.
+ - Fix: Broken Server Status Monitor
  - Fix: Some MgCooker command line arguments were being ignored
  - Fix: Raise signficantly the maximum allowed "Meters per unit" value in MgCooker.
  - Fix: Dragging and dropping onto a layer in the Map Definition editor will add the layer to that layer's parent group instead of the root
