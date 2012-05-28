@@ -277,6 +277,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             {
                 var fs = (IFeatureSource)this.Parent.ResourceService.GetResource(vl.ResourceId);
                 var cls = fs.GetClass(vl.FeatureName);
+                if (cls == null)
+                    throw new Exception(string.Format(Properties.Resources.ERR_CLASS_NOT_FOUND, vl.FeatureName));
 
                 var idProps = cls.IdentityProperties;
                 var propInfo = new PropertyInfo[idProps.Count];
@@ -290,9 +292,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
                 this.IdentityProperties = propInfo;
             }
-            catch (Exception ex) //Has to be a bug in MapGuide
+            catch (Exception ex) //Has to be a bug in MapGuide or in the FDO provider
             {
-                Trace.TraceWarning("Could fetch and initialize identity properties for " + this.Name + " This is likely a bug in MapGuide " + Environment.NewLine + ex.ToString());
+                this.IdentityProperties = new PropertyInfo[0];
+                Trace.TraceWarning(string.Format(Properties.Resources.ERR_INIT_IDENTITY_PROPS, Environment.NewLine, this.Name, ex.ToString()));
             }
         }
 

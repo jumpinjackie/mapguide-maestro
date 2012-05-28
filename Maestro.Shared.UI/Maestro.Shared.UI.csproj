@@ -66,7 +66,9 @@
     <Compile Include="..\Properties\SignedAssemblyInfo2.cs">
       <Link>SignedAssemblyInfo2.cs</Link>
     </Compile>
-    <Compile Include="BusyWaitDialog.cs" />
+    <Compile Include="BusyWaitDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="BusyWaitDialog.Designer.cs">
       <DependentUpon>BusyWaitDialog.cs</DependentUpon>
     </Compile>

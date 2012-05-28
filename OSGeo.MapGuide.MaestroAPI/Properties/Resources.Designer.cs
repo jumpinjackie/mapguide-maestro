@@ -369,6 +369,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Class not found: {0}.
+        /// </summary>
+        internal static string ERR_CLASS_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("ERR_CLASS_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A resource converter for {0} is already registered.
         /// </summary>
         internal static string ERR_CONVERTER_ALREADY_REGISTERED {
@@ -392,6 +401,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         internal static string ERR_FS_NO_EMBEDDED_DATA {
             get {
                 return ResourceManager.GetString("ERR_FS_NO_EMBEDDED_DATA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could fetch and initialize identity properties for {1} This is likely a bug in MapGuide {0}{2}.
+        /// </summary>
+        internal static string ERR_INIT_IDENTITY_PROPS {
+            get {
+                return ResourceManager.GetString("ERR_INIT_IDENTITY_PROPS", resourceCulture);
             }
         }
         

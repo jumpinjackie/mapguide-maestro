@@ -951,8 +951,26 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 {
                     _selection = new MapSelection(this);
                     var resId = this.ResourceID.Replace(".Map", ".Selection");
-                    var ser = new MgBinaryDeserializer(this.ResourceService.GetResourceData(resId, "RuntimeData"), this.CurrentConnection.SiteVersion);
-                    _selection.Deserialize(ser);
+                    var bLoadedSelection = false;
+                    if (this.ResourceService.ResourceExists(resId))
+                    {
+                        var dataItems = this.ResourceService.EnumerateResourceData(resId);
+                        foreach (var item in dataItems.ResourceData)
+                        {
+                            if (item.Name == "RuntimeData")
+                            {
+                                var ser = new MgBinaryDeserializer(this.ResourceService.GetResourceData(resId, "RuntimeData"), this.CurrentConnection.SiteVersion);
+                                _selection.Deserialize(ser);
+                                bLoadedSelection = true;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    if (!bLoadedSelection)
+                    {
+                    
+                    }
                 }
                 return _selection;
             }
@@ -1257,9 +1275,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
         private void SaveSelectionXml(string resourceID)
         {
-            if (this.Selection == null)
-                return;
-
             ResourceIdentifier.Validate(resourceID, ResourceTypes.RuntimeMap);
             string selectionID = resourceID.Substring(0, resourceID.LastIndexOf(".")) + ".Selection";
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
