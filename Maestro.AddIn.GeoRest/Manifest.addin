@@ -1,7 +1,7 @@
 ﻿<AddIn name="Maestro.AddIn.GeoRest"
        author="Jackie Ng"
        url="http://trac.osgeo.org/mapguide/wiki/maestro"
-       description="GeoRest AddIn for MapGuide Maestro"
+       description="MapGuide Maestro AddIn for communicating with and configuring a GeoRest server"
        addInManagerHidden="preinstalled">
 
     <Manifest>

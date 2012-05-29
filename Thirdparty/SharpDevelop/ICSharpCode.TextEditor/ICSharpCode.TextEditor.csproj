@@ -147,7 +147,7 @@
     <Compile Include="Src\Document\ITextEditorProperties.cs" />
     <Compile Include="Src\Gui\Caret.cs" />
     <Compile Include="Src\Gui\TextArea.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Src\Gui\TextEditorControl.cs">
       <SubType>UserControl</SubType>
@@ -189,7 +189,7 @@
     </Compile>
     <Compile Include="Src\Gui\BrushRegistry.cs" />
     <Compile Include="Src\Gui\HRuler.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Src\Document\BookmarkManager\Bookmark.cs" />
     <Compile Include="Src\Document\BookmarkManager\BookmarkEventHandler.cs" />

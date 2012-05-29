@@ -1,7 +1,7 @@
 ﻿<AddIn name="Maestro.AddIn.ExtendedObjectModels"
        author="Jackie Ng"
        url="http://trac.osgeo.org/mapguide/wiki/maestro"
-       description="MapGuide Maestro AddIn to support extended versions of the core MapGuide resource schemas"
+       description="MapGuide Maestro AddIn to support additional versions of the core MapGuide resource schemas"
        addInManagerHidden="preinstalled">
 
     <Manifest>

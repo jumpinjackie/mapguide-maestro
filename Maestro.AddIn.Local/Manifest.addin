@@ -1,7 +1,7 @@
 ﻿<AddIn name="Maestro.AddIn.Local"
        author="Jackie Ng"
        url="http://trac.osgeo.org/mapguide/wiki/maestro"
-       description="MapGuide Maestro AddIn to support local repository"
+       description="MapGuide Maestro AddIn to support authoring resources in a local mg-desktop repository"
        addInManagerHidden="preinstalled">
 
     <Manifest>

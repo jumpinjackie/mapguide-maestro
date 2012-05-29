@@ -7,6 +7,8 @@ using Maestro.Base;
 using Maestro.AddIn.Scripting.UI;
 using Maestro.Shared.UI;
 using Maestro.Base.Services;
+using Props = ICSharpCode.Core.PropertyService;
+using Maestro.Base.UI.Preferences;
 
 namespace Maestro.AddIn.Scripting.Commands
 {
@@ -20,7 +22,8 @@ namespace Maestro.AddIn.Scripting.Commands
             Workbench.WorkbenchInitialized += (sender, e) =>
             {
                 var mgr = ServiceRegistry.GetService<ViewContentManager>();
-                mgr.OpenContent<IronPythonRepl>(ViewRegion.Bottom);
+                if (Props.Get(IronPythonPreferences.ShowIronPythonConsole, true))
+                    mgr.OpenContent<IronPythonRepl>(ViewRegion.Bottom);
             };
         }
     }

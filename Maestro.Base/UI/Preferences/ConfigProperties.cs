@@ -75,7 +75,7 @@ namespace Maestro.Base.UI.Preferences
         public static string DefaultLocalFsPreviewPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "MaestroFsPreview.exe"); } }
 
         public static string DefaultRtMapInspectorPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "RtMapInspector.exe"); } }
-
+        
         public static Color DefaultOpenColor { get { return Color.LightGreen; } }
 
         public static Color DefaultDirtyColor { get { return Color.Pink; } }
@@ -83,7 +83,7 @@ namespace Maestro.Base.UI.Preferences
         public static bool DefaultShowMessages { get { return true; } }
 
         public static bool DefaultShowOutboundRequests { get { return true; } }
-
+        
         public static bool DefaultValidateOnSave { get { return true; } }
 
         public static string DefaultXsdSchemaPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "Schemas"); } }

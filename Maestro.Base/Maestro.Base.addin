@@ -2,7 +2,7 @@
        author="Jackie Ng"
        url="http://trac.osgeo.org/mapguide/wiki/maestro"
        description="Base Component for MapGuide Maestro"
-       addInManagerHidden="preinstalled">
+       addInManagerHidden="true">
 
     <Manifest>
         <Identity name="Maestro.Base" />
@@ -193,6 +193,11 @@
                   type="Menu"
                   label="${res:Menu_Tools}">
             <Include id="ToolList" path="/Workspace/Tools" />
+            <MenuItem type="Separator" />
+            <MenuItem id="Menu_Tools_Options"
+                      label="${res:Menu_Tools_Options}"
+                      icon="application_task"
+                      class="Maestro.Base.Commands.OptionsCommand"/>
         </MenuItem>
         <MenuItem id="Menu_Window"
                   type="Menu"
@@ -690,11 +695,6 @@
         <MenuItem id="CacheView"
                   label="${res:CacheView}"
                   class="Maestro.Base.Commands.CacheViewerCommand"/>
-        <MenuItem type="Separator" />
-        <MenuItem id="Menu_Tools_Options"
-                  label="${res:Menu_Tools_Options}"
-                  icon="application_task"
-                  class="Maestro.Base.Commands.OptionsCommand"/>
     </Path>
     
 </AddIn>

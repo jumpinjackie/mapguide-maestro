@@ -333,6 +333,7 @@
     </Content>
     <Content Include="Manifest.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="MapGuideDesktopUnmanagedApi.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

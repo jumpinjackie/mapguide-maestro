@@ -1,7 +1,7 @@
 ﻿<AddIn name="Maestro.AddIn.FdoToolbox"
        author="Jackie Ng"
        url="http://trac.osgeo.org/mapguide/wiki/maestro"
-       description="FDO Toolbox AddIn for MapGuide Maestro"
+       description="AddIn for MapGuide Maestro for performing feature manipulation operations"
        addInManagerHidden="preinstalled">
 
     <Manifest>

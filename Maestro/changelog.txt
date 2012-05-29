@@ -1,5 +1,6 @@
 ﻿5.0 Beta 2
 ----------
+ - New AddIn Manager to manage and install thirdparty add-ins for Maestro
  - Upgrade SharpDevelop Core to 4.2
  - Revamped XML editor with ICSharpCode.TextEditor control
  - MgCooker tiling classes now part of the MaestroAPI

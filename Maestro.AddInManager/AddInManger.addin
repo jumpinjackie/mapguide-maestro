@@ -1,0 +1,75 @@
+﻿<AddIn name="Add-In Manager"
+       author="Jackie Ng"
+       url="http://trac.osgeo.org/mapguide/wiki/maestro"
+       description="Add-In Manager"
+       addInManagerHidden="true">
+
+    <Manifest>
+        <Identity name="Maestro.AddInManager" />
+    </Manifest>
+
+    <Runtime>
+        <Import assembly="Maestro.AddInManager.dll">
+            <ConditionEvaluator name="AddInManagerAddInState" class="Maestro.AddInManager.AddInManagerAddInStateConditionEvaluator"/>
+        </Import>
+    </Runtime>
+
+    <Path name = "/Workspace/Tools">
+        <MenuItem id = "ShowAddInManager"
+		          label = "${res:CMD_AddInManager}"
+                  icon = "plugin" 
+                  insertbefore="PrefSeparator" 
+		          class = "Maestro.AddInManager.ShowCommand"/>
+    </Path>
+
+    <Path name="/Workbench/Toolbar">
+        <MenuItem id = "ShowAddInManager"
+                  icon = "plugin"
+                  tooltip="${res:CMD_AddInManager}" 
+		          class = "Maestro.AddInManager.ShowCommand"/>
+    </Path>
+
+    <Path name = "/AddIns/AddInManager/ContextMenu">
+        <Condition name="AddInManagerAddInState" states="Enable">
+            <MenuItem id="Disable"
+			          label="${res:AddInManager.ActionDisable}"
+			          class="Maestro.AddInManager.DisableCommand"/>
+        </Condition>
+        <Condition name="AddInManagerAddInState" states="Disable">
+            <MenuItem id="Enable"
+			          label="${res:AddInManager.ActionEnable}"
+			          class="Maestro.AddInManager.EnableCommand"/>
+        </Condition>
+        <Condition name="AddInManagerAddInState" states="Enable,Disable,InstalledTwice,DependencyError">
+            <MenuItem id="Uninstall"
+			          label="${res:AddInManager.ActionUninstall}"
+			          class="Maestro.AddInManager.UninstallCommand"/>
+        </Condition>
+        <Condition name="AddInManagerAddInState" states="Install">
+            <MenuItem id="AbortInstall"
+			          label="${res:AddInManager.ActionCancelInstallation}"
+			          class="Maestro.AddInManager.AbortInstallCommand"/>
+        </Condition>
+        <Condition name="AddInManagerAddInState" states="Uninstall">
+            <MenuItem id="AbortUninstall"
+			          label="${res:AddInManager.ActionCancelDeinstallation}"
+			          class="Maestro.AddInManager.EnableCommand"/>
+        </Condition>
+        <Condition name="AddInManagerAddInState" states="Update">
+            <MenuItem id="AbortUpdate"
+			          label="${res:AddInManager.ActionCancelUpdate}"
+			          class="Maestro.AddInManager.AbortUpdateCommand"/>
+        </Condition>
+        <MenuItem id="Separator1" type="Separator"/>
+        <MenuItem id="GoToHomepage"
+		          label="${res:AddInManager.OpenWebsite}"
+		          class="Maestro.AddInManager.OpenHomepageCommand"
+		          loadclasslazy="false"/>
+    </Path>
+    
+    <!-- Auto-start commands -->
+    <Path name="/Workspace/Autostart">
+        <Class id="Startup" class="Maestro.AddInManager.StartupCommand" />
+    </Path>
+    
+</AddIn>
