@@ -204,6 +204,7 @@ Section
 	File "${INST_OUTPUT_MAESTRO}\ICSharpCode.Core.dll"
 	File "${INST_OUTPUT_MAESTRO}\ICSharpCode.Core.WinForms.dll"
     File "${INST_OUTPUT_MAESTRO}\ICSharpCode.SharpZipLib.dll"
+    File "${INST_OUTPUT_MAESTRO}\ICSharpCode.TextEditor.dll"
     File "${INST_OUTPUT_MAESTRO}\IronPython.dll"
     File "${INST_OUTPUT_MAESTRO}\IronPython.Modules.dll"
 	File "${INST_OUTPUT_MAESTRO}\Maestro.Base.dll"

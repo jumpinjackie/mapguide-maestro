@@ -47,31 +47,32 @@
             this.txtReplace = new System.Windows.Forms.ToolStripTextBox();
             this.btnReplaceAll = new System.Windows.Forms.ToolStripButton();
             this.lblCursorPos = new System.Windows.Forms.ToolStripLabel();
-            this.txtXmlContent = new System.Windows.Forms.TextBox();
             this.resDataCtrl = new Maestro.Editors.Generic.ResourceDataPanel();
+            this.nodeNumericUpDown1 = new Aga.Controls.Tree.NodeControls.NodeNumericUpDown();
+            this.txtXmlContent = new ICSharpCode.TextEditor.TextEditorControl();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnUndo,
-            this.toolStripSeparator1,
-            this.btnCopy,
-            this.btnCut,
-            this.btnPaste,
-            this.toolStripSeparator2,
-            this.btnFormat,
-            this.btnValidate,
-            this.toolStripSeparator3,
-            this.toolStripLabel1,
-            this.txtFind,
-            this.btnFindNext,
-            this.toolStripSeparator4,
-            this.toolStripLabel3,
-            this.txtReplace,
-            this.btnReplaceAll,
-            this.lblCursorPos});
+                                    this.btnUndo,
+                                    this.toolStripSeparator1,
+                                    this.btnCopy,
+                                    this.btnCut,
+                                    this.btnPaste,
+                                    this.toolStripSeparator2,
+                                    this.btnFormat,
+                                    this.btnValidate,
+                                    this.toolStripSeparator3,
+                                    this.toolStripLabel1,
+                                    this.txtFind,
+                                    this.btnFindNext,
+                                    this.toolStripSeparator4,
+                                    this.toolStripLabel3,
+                                    this.txtReplace,
+                                    this.btnReplaceAll,
+                                    this.lblCursorPos});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -181,25 +182,41 @@
             this.lblCursorPos.Name = "lblCursorPos";
             resources.ApplyResources(this.lblCursorPos, "lblCursorPos");
             // 
-            // txtXmlContent
-            // 
-            this.txtXmlContent.AcceptsReturn = true;
-            this.txtXmlContent.AcceptsTab = true;
-            resources.ApplyResources(this.txtXmlContent, "txtXmlContent");
-            this.txtXmlContent.Name = "txtXmlContent";
-            this.txtXmlContent.TextChanged += new System.EventHandler(this.txtXmlContent_TextChanged);
-            this.txtXmlContent.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtXmlContent_KeyUp);
-            this.txtXmlContent.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtXmlContent_MouseClick);
-            // 
             // resDataCtrl
             // 
             this.resDataCtrl.ContentBackgroundColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.resDataCtrl, "resDataCtrl");
             this.resDataCtrl.HeaderBackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.resDataCtrl.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resDataCtrl.HeaderText = "Resource Data Files";
             this.resDataCtrl.Name = "resDataCtrl";
             this.resDataCtrl.DataListChanged += new System.EventHandler(this.resDataCtrl_DataListChanged);
+            // 
+            // nodeNumericUpDown1
+            // 
+            this.nodeNumericUpDown1.Increment = new decimal(new int[] {
+                                    1,
+                                    0,
+                                    0,
+                                    0});
+            this.nodeNumericUpDown1.IncrementalSearchEnabled = true;
+            this.nodeNumericUpDown1.LeftMargin = 3;
+            this.nodeNumericUpDown1.Maximum = new decimal(new int[] {
+                                    100,
+                                    0,
+                                    0,
+                                    0});
+            this.nodeNumericUpDown1.Minimum = new decimal(new int[] {
+                                    0,
+                                    0,
+                                    0,
+                                    0});
+            this.nodeNumericUpDown1.ParentColumn = null;
+            // 
+            // txtXmlContent
+            // 
+            resources.ApplyResources(this.txtXmlContent, "txtXmlContent");
+            this.txtXmlContent.IsReadOnly = false;
+            this.txtXmlContent.Name = "txtXmlContent";
             // 
             // XmlEditorCtrl
             // 
@@ -213,14 +230,14 @@
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+        private Aga.Controls.Tree.NodeControls.NodeNumericUpDown nodeNumericUpDown1;
 
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
         private ResourceDataPanel resDataCtrl;
-        private System.Windows.Forms.TextBox txtXmlContent;
+        private ICSharpCode.TextEditor.TextEditorControl txtXmlContent;
         private System.Windows.Forms.ToolStripButton btnCopy;
         private System.Windows.Forms.ToolStripButton btnCut;
         private System.Windows.Forms.ToolStripButton btnPaste;

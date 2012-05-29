@@ -1,5 +1,7 @@
 ﻿5.0 Beta 2
 ----------
+ - Upgrade SharpDevelop Core to 4.2
+ - Revamped XML editor with ICSharpCode.TextEditor control
  - MgCooker tiling classes now part of the MaestroAPI
  - Fix: Potentially long running tasks are now done on background threads with busy dialogs
  - Fix: Non-working expression buttons for some color pickers

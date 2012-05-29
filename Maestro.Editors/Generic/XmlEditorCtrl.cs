@@ -20,17 +20,19 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using System.Xml.Schema;
 using System.Xml;
-using System.IO;
-using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using System.Xml.Schema;
+
+using ICSharpCode.TextEditor.Document;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 
 namespace Maestro.Editors.Generic
 {
@@ -38,6 +40,9 @@ namespace Maestro.Editors.Generic
     /// 
     /// </summary>
     public delegate void XmlValidationCallback(out string[] errors, out string[] warnings);
+
+    //TODO: Incorporate all the bells and whistles that ICSharpCode.TextEditor has to offer.
+    //Right now this is an obvious shim-job
 
     /// <summary>
     /// A generic XML content editor
@@ -52,7 +57,23 @@ namespace Maestro.Editors.Generic
         public XmlEditorCtrl()
         {
             InitializeComponent();
-            txtXmlContent.MaxLength = int.MaxValue;
+            //txtXmlContent.MaxLength = int.MaxValue;
+            txtXmlContent.SetHighlighting("XML");
+            txtXmlContent.ShowInvalidLines = true;
+            txtXmlContent.ShowSpaces = true;
+            txtXmlContent.ShowTabs = true;
+            txtXmlContent.TextChanged += new EventHandler(OnTextContentChanged);
+        }
+        
+        private string _origText;
+        
+        private void OnTextContentChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(_origText) && !txtXmlContent.Text.Equals(_origText))
+                OnResourceChanged();
+                
+            if (string.IsNullOrEmpty(_origText))
+                _origText = txtXmlContent.Text;
         }
 
         /// <summary>
@@ -110,9 +131,9 @@ namespace Maestro.Editors.Generic
 
         private void EvaluateCommands()
         {
-            btnUndo.Enabled = txtXmlContent.CanUndo;
-            btnCut.Enabled = txtXmlContent.SelectionLength > 0;
-            btnCopy.Enabled = txtXmlContent.SelectionLength > 0;
+            btnUndo.Enabled = txtXmlContent.EnableUndo;
+            btnCut.Enabled = txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.EnableCut;
+            btnCopy.Enabled = txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.EnableCopy;
             btnPaste.Enabled = Clipboard.ContainsText();
             btnValidate.Enabled = (this.Validator != null);
         }
@@ -124,7 +145,11 @@ namespace Maestro.Editors.Generic
         public string XmlContent
         {
             get { return txtXmlContent.Text; }
-            set { txtXmlContent.Text = value; FormatText(); }
+            set 
+            {
+                _origText = null;            
+                txtXmlContent.Text = value; FormatText();
+            }
         }
 
         private void btnUndo_Click(object sender, EventArgs e)
@@ -160,10 +185,11 @@ namespace Maestro.Editors.Generic
         public void FindAndReplace(string szFind, string szReplace)
         {
             var textEditor = txtXmlContent;
-
+            
+            var selections = textEditor.ActiveTextAreaControl.TextArea.SelectionManager.SelectionCollection;
             // find start 
-            int iStartSearching = textEditor.SelectionStart;
-            if (textEditor.SelectionLength > 0)
+            int iStartSearching = -1;
+            if (selections.Count > 0)
                 iStartSearching++;
 
             System.Text.RegularExpressions.Regex regexThis = new System.Text.RegularExpressions.Regex(szFind, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
@@ -201,54 +227,31 @@ namespace Maestro.Editors.Generic
             int iFound = textEditor.Text.IndexOf(szHighlight, iStartSearching);
             if (iFound > -1)
             {
-                textEditor.Focus();
-                textEditor.Select(iFound, szHighlight.Length);
+                /*
+                //textEditor.Select(iFound, szHighlight.Length);
+                var doc = GetDocument();
+                
+                textEditor.ActiveTextAreaControl.SelectionManager.SelectedText 
                 UpdateTextPosition();
-                textEditor.ScrollToCaret();
+                //textEditor.ScrollToCaret();
+                */
 
-                if (!String.IsNullOrEmpty(szReplace) && _ready)
-                    OnResourceChanged();
+                //if (!String.IsNullOrEmpty(szReplace) && _ready)
+                //    OnResourceChanged();
             }
+        }
+        
+        private IDocument GetDocument()
+        {
+            return txtXmlContent.ActiveTextAreaControl.Document;
         }
 
         private void UpdateTextPosition()
         {
             var textEditor = txtXmlContent;
-            int line = textEditor.GetLineFromCharIndex(textEditor.SelectionStart + textEditor.SelectionLength);
-            int col = (textEditor.SelectionStart + textEditor.SelectionLength) - textEditor.GetFirstCharIndexFromLine(line);
-
+            int line = textEditor.ActiveTextAreaControl.Caret.Line;
+            int col = textEditor.ActiveTextAreaControl.Caret.Column;
             lblCursorPos.Text = String.Format(Properties.Resources.XmlEditorCursorTemplate, line + 1, col + 1);
-        }
-
-        private void txtXmlContent_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == (Keys.Control | Keys.A))
-            {
-                txtXmlContent.SelectAll();
-                e.SuppressKeyPress = true;
-                e.Handled = true;
-            }/*
-            else if (e.KeyData == (Keys.Control | Keys.C))
-            {
-                txtXmlContent.Copy();
-                e.SuppressKeyPress = true;
-                e.Handled = true;
-            }
-            else if (e.KeyData == (Keys.Control | Keys.V))
-            {
-                txtXmlContent.Paste();
-                e.SuppressKeyPress = true;
-                e.Handled = true;
-            }
-            else if (e.KeyData == (Keys.Control | Keys.X))
-            {
-                txtXmlContent.Cut();
-                e.SuppressKeyPress = true;
-                e.Handled = true;
-            }
-            */
-            UpdateTextPosition();
-            EvaluateCommands();
         }
 
         private void txtXmlContent_TextChanged(object sender, EventArgs e)
@@ -258,12 +261,6 @@ namespace Maestro.Editors.Generic
 
             if (_ready) 
                 OnResourceChanged();
-        }
-
-        private void txtXmlContent_MouseClick(object sender, MouseEventArgs e)
-        {
-            UpdateTextPosition();
-            EvaluateCommands();
         }
 
         private void btnValidate_Click(object sender, EventArgs e)
@@ -389,17 +386,81 @@ namespace Maestro.Editors.Generic
 
         private void btnCut_Click(object sender, EventArgs e)
         {
-            txtXmlContent.Cut();
+            txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Cut(this, EventArgs.Empty);
         }
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
-            txtXmlContent.Copy();
+            txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Copy(this, EventArgs.Empty);
         }
 
         private void btnPaste_Click(object sender, EventArgs e)
         {
-            txtXmlContent.Paste();
+            txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Paste(this, EventArgs.Empty);
         }
     }
+    
+	/// <summary>
+	/// Holds information about the start of a fold in an xml string.
+	/// </summary>
+	internal class XmlFoldStart
+	{
+		int line = 0;
+		int col = 0;
+		string prefix = String.Empty;
+		string name = String.Empty;
+		string foldText = String.Empty;
+		
+		public XmlFoldStart(string prefix, string name, int line, int col)
+		{
+			this.line = line;
+			this.col = col;
+			this.prefix = prefix;
+			this.name = name;
+		}
+		
+		/// <summary>
+		/// The line where the fold should start.  Lines start from 0.
+		/// </summary>
+		public int Line {
+			get {
+				return line;
+			}
+		}
+		
+		/// <summary>
+		/// The column where the fold should start.  Columns start from 0.
+		/// </summary>
+		public int Column {
+			get {
+				return col;
+			}
+		}	
+		
+		/// <summary>
+		/// The name of the xml item with its prefix if it has one.
+		/// </summary>
+		public string Name {
+			get {
+				if (prefix.Length > 0) {
+					return String.Concat(prefix, ":", name);
+				} else {
+					return name;
+				}
+			}
+		}
+		
+		/// <summary>
+		/// The text to be displayed when the item is folded.
+		/// </summary>
+		public string FoldText {
+			get {
+				return foldText;
+			}
+			
+			set {
+				foldText = value;
+			}
+		}
+	}
 }
