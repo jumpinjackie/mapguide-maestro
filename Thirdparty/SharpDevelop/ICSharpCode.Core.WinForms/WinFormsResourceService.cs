@@ -175,18 +175,6 @@ namespace ICSharpCode.Core.WinForms
 				return ico;
 			}
 		}
-
-        /// <summary>
-        /// A simple check to determine if we're running in windows
-        /// </summary>
-        private static bool IsWindows
-        {
-            get
-            {
-                var id = Environment.OSVersion.Platform;
-                return id != PlatformID.Unix && id != PlatformID.Unix;
-            }
-        }
 		
 		/// <summary>
 		/// Converts a bitmap into an icon.
@@ -206,8 +194,7 @@ namespace ICSharpCode.Core.WinForms
 					return new Icon(tempIco, tempIco.Width, tempIco.Height);
 				} // dispose tempico, doesn't do much because the icon isn't owned
 			} finally {
-                if (IsWindows)
-				    NativeMethods.DestroyIcon(hIcon);
+				NativeMethods.DestroyIcon(hIcon);
 			}
 		}
 		

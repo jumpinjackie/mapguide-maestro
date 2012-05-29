@@ -27,27 +27,31 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <Optimize>False</Optimize>
-    <DebugType>Full</DebugType>
-    <DocumentationFile>
-    </DocumentationFile>
-    <NoWarn>1591</NoWarn>
-    <DefineConstants>DEBUG</DefineConstants>
     <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
     <OutputPath>bin\Debug\</OutputPath>
     <WarningLevel>4</WarningLevel>
+    <DebugType>Full</DebugType>
+    <DocumentationFile>bin\Debug\ICSharpCode.Core.xml</DocumentationFile>
+    <DefineConstants>DEBUG</DefineConstants>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugSymbols>False</DebugSymbols>
+    <DebugSymbols>false</DebugSymbols>
     <Optimize>True</Optimize>
     <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
     <OutputPath>bin\Release\</OutputPath>
     <WarningLevel>4</WarningLevel>
+    <DebugType>None</DebugType>
+    <DocumentationFile>bin\Release\ICSharpCode.Core.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
     <RegisterForComInterop>False</RegisterForComInterop>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <FileAlignment>4096</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <StartAction>Program</StartAction>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -57,9 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\GlobalAssemblyInfo.cs">
-      <Link>Configuration\GlobalAssemblyInfo.cs</Link>
-    </Compile>
     <Compile Include="Configuration\AssemblyInfo.cs" />
     <Compile Include="Src\AddInTree\AddIn\AddIn.cs" />
     <Compile Include="Src\AddInTree\AddIn\AddInLoadException.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Src\AddInTree\TopologicalSort.cs" />
     <Compile Include="Src\AddInTree\TreePathNotFoundException.cs" />
     <Compile Include="Src\CoreException.cs" />
+    <Compile Include="Src\ExtensionMethods.cs" />
     <Compile Include="Src\Services\AnalyticsMonitor\AnalyticsMonitorService.cs" />
     <Compile Include="Src\Services\AnalyticsMonitor\IAnalyticsMonitor.cs" />
     <Compile Include="Src\Services\ApplicationStateInfoService.cs" />
@@ -129,10 +131,17 @@
     <Compile Include="Src\AddInTree\CoreStartup.cs" />
     <Compile Include="Src\AddInTree\AddInManager.cs" />
     <Compile Include="Src\AddInTree\AddIn\DefaultDoozers\StringDoozer.cs" />
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Configuration\GlobalAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Src\AddInTree\AddIn\DefaultDoozers\ToolBarItem\AbstractTextBoxCommand.cs" />
     <Compile Include="Src\AddInTree\AddIn\DefaultDoozers\ToolBarItem\ITextBoxCommand.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Src\Services\LoggingService" />
+    <Folder Include="Src\Services\AnalyticsMonitor" />
+    <Folder Include="Src\Services\RegistryService" />
+    <Folder Include="Src\Services\ResourceService" />
     <Content Include="..\..\..\..\data\schemas\AddIn.xsd">
       <Link>Src\AddInTree\AddIn\AddIn.xsd</Link>
     </Content>
