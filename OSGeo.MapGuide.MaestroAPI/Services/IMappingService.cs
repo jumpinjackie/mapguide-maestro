@@ -171,6 +171,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="selection"></param>
         /// <param name="format"></param>
         /// <returns></returns>
+        [Obsolete("Use the version of RenderDynamicOverlay that is not marked Obsolete")]
         System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format);
 
         /// <summary>
@@ -181,7 +182,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="format"></param>
         /// <param name="keepSelection"></param>
         /// <returns></returns>
+        [Obsolete("Use the version of RenderDynamicOverlay that is not marked Obsolete")]
         System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, bool keepSelection);
+
+        /// <summary>
+        /// Renders a dynamic overlay image of the map
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="selection"></param>
+        /// <param name="format"></param>
+        /// <param name="selectionColor"></param>
+        /// <param name="behaviour"></param>
+        /// <returns></returns>
+        /// <exception cref="T:System.NotSupportedException">Thrown if the service is too old to be able to support this API</exception>
+        System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, Color selectionColor, int behaviour);
 
         /// <summary>
         /// Renders the runtime map.
@@ -310,6 +324,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="attributes">The type of layer to include in the query</param>
         /// <param name="raw">True if the result should contain the tooltip and link info</param>
         /// <returns>The selection Xml, or an empty string if there were no data.</returns>
+        [Obsolete("Use the version of QueryMapFeatures that isn't marked Obsolete")]
         string QueryMapFeatures(string runtimeMapName, string wkt, bool persist, QueryMapFeaturesLayerAttributes attributes, bool raw);
 
         /// <summary>
@@ -319,6 +334,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="wkt">The WKT of the geometry to query with (always uses intersection)</param>
         /// <param name="persist">True if the selection should be saved in the runtime map, false otherwise.</param>
         /// <returns>The selection Xml, or an empty string if there were no data.</returns>
+        [Obsolete("Use the version of QueryMapFeatures that isn't marked Obsolete")]
         string QueryMapFeatures(string runtimeMapName, string wkt, bool persist);
+
+        /// <summary>
+        /// Identifies features that meet the specified spatial selection criteria. These features can be persisted as selected features in a map. QueryMapFeatures returns an XML document describing the set of selected features. If a single feature is selected, the XML contains the tooltip, hyperlink, and properties of the feature.
+        /// </summary>
+        /// <param name="runtimeMapName"></param>
+        /// <param name="maxFeatures"></param>
+        /// <param name="wkt"></param>
+        /// <param name="persist"></param>
+        /// <param name="selectionVariant"></param>
+        /// <param name="extraOptions"></param>
+        /// <returns></returns>
+        string QueryMapFeatures(string runtimeMapName, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions);
     }
 }

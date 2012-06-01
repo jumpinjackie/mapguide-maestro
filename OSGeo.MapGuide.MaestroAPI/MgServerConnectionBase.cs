@@ -31,6 +31,8 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
+using System.Drawing;
+using OSGeo.MapGuide.MaestroAPI.Services;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -167,6 +169,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="raw">True if the result should contain the tooltip and link info</param>
         /// <returns>The selection Xml, or an empty string if there were no data.</returns>
         abstract public string QueryMapFeatures(string runtimeMapName, string wkt, bool persist, QueryMapFeaturesLayerAttributes attributes, bool raw);
+
+        public abstract string QueryMapFeatures(string runtimeMapName, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions);
 
         /// <summary>
         /// Renders a minature bitmap of the layers style
@@ -313,6 +317,17 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="keepSelection"></param>
         /// <returns></returns>
         public abstract System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, bool keepSelection);
+
+        /// <summary>
+        /// Renders a dynamic overlay image of the map
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="selection"></param>
+        /// <param name="format"></param>
+        /// <param name="selectionColor"></param>
+        /// <param name="behaviour"></param>
+        /// <returns></returns>
+        public abstract System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, Color selectionColor, int behaviour);
 
         #endregion
 

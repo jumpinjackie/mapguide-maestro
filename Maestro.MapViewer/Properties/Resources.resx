@@ -1,0 +1,454 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="about" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\about.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="buffer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\buffer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="control" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\control.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="control_180" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\control-180.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CountFormat" xml:space="preserve">
+    <value>{0} features in layer</value>
+  </data>
+  <data name="DefaultLayerTooltip" xml:space="preserve">
+    <value>Name: {1}{0}Feature Source: {2}{0}Feature Class: {3}</value>
+  </data>
+  <data name="DrawingLayerTooltip" xml:space="preserve">
+    <value>Name: {1}{0}Feature Source: {2}</value>
+  </data>
+  <data name="edit_copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit-copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_cut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit-cut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_duplicate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit-duplicate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_paste" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit-paste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_xml" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit-xml.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="error" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="file_print" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\file-print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="file_save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\file-save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="help" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\help.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconNavigator" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconNavigator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_etc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_etc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_home" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_home.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_loading" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_loading.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_pan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_pan.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_select" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_select.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_tasks" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_tasks.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_zoomselect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_zoomselect.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="info" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="initial_center" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\initial-center.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="invoke_script" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\invoke-script.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="invoke_url" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\invoke-url.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="layer_shape" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\layer-shape.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="layer_shape_ellipse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\layer-shape-ellipse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="layer_shape_line" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\layer-shape-line.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="layer_shape_polygon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\layer-shape-polygon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="layer_shape_polyline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\layer-shape-polyline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="layer_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\layer-small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lc_broken" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lc_broken.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lc_dwf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lc_dwf.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lc_group" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lc_group.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lc_raster" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lc_raster.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lc_select" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lc_select.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lc_theme" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lc_theme.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lc_unselect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lc_unselect.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="load_package" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\load_package.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="measure" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\measure.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="monitor_status" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\monitor_status.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="options" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\options.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="overview_map" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\overview-map.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PoweredBy_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PoweredBy_en.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="print" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="select_centre" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\select-centre.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="select_clear" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\select-clear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="select_features" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\select-features.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="select_polygon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\select-polygon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="select_radius" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\select-radius.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="select_zoom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\select-zoom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TextClearSelection" xml:space="preserve">
+    <value>Clear Selection</value>
+  </data>
+  <data name="TextCopyMap" xml:space="preserve">
+    <value>Copy map to clipboard</value>
+  </data>
+  <data name="TextDigitizeCircle" xml:space="preserve">
+    <value>Digitize Circle</value>
+  </data>
+  <data name="TextDigitizeLine" xml:space="preserve">
+    <value>Digitize Line</value>
+  </data>
+  <data name="TextDigitizeLineString" xml:space="preserve">
+    <value>Digitize Line String</value>
+  </data>
+  <data name="TextDigitizePoint" xml:space="preserve">
+    <value>Digitize Point</value>
+  </data>
+  <data name="TextDigitizePolygon" xml:space="preserve">
+    <value>Digitize Polygon</value>
+  </data>
+  <data name="TextDigitizeRectangle" xml:space="preserve">
+    <value>Digitize Rectangle</value>
+  </data>
+  <data name="TextDisableTooltips" xml:space="preserve">
+    <value>Disable Tooltips</value>
+  </data>
+  <data name="TextEnableTooltips" xml:space="preserve">
+    <value>Enable Tooltips</value>
+  </data>
+  <data name="TextExitApplication" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="TextLoadPackage" xml:space="preserve">
+    <value>Load Package</value>
+  </data>
+  <data name="TextNoSelection" xml:space="preserve">
+    <value>Nothing is selected</value>
+  </data>
+  <data name="TextOptionsSaved" xml:space="preserve">
+    <value>Options Saved</value>
+  </data>
+  <data name="TextPackageLoaded" xml:space="preserve">
+    <value>Package Loaded</value>
+  </data>
+  <data name="TextPan" xml:space="preserve">
+    <value>Pan</value>
+  </data>
+  <data name="TextPlotToDwf" xml:space="preserve">
+    <value>Plot to DWF</value>
+  </data>
+  <data name="TextPrint" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="TextRefreshMap" xml:space="preserve">
+    <value>Refresh Map</value>
+  </data>
+  <data name="TextScale" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="TextSelect" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="TextSelectPolygon" xml:space="preserve">
+    <value>Select Polygon</value>
+  </data>
+  <data name="TextSelectRadius" xml:space="preserve">
+    <value>Select Radius</value>
+  </data>
+  <data name="TextTaskPane" xml:space="preserve">
+    <value>Task Pane</value>
+  </data>
+  <data name="TextViewerOptions" xml:space="preserve">
+    <value>Viewer Options</value>
+  </data>
+  <data name="TextZoomExtents" xml:space="preserve">
+    <value>Zoom Extents</value>
+  </data>
+  <data name="TextZoomIn" xml:space="preserve">
+    <value>Zoom In</value>
+  </data>
+  <data name="TextZoomNext" xml:space="preserve">
+    <value>Zoom Next</value>
+  </data>
+  <data name="TextZoomOut" xml:space="preserve">
+    <value>Zoom Out</value>
+  </data>
+  <data name="TextZoomPrevious" xml:space="preserve">
+    <value>Zoom Previous</value>
+  </data>
+  <data name="TextZoomToSelection" xml:space="preserve">
+    <value>Zoom to Selection</value>
+  </data>
+  <data name="ThemedLayerTooltip" xml:space="preserve">
+    <value>Name: {1}{0}Feature Source: {2}{0}Feature Class: {3}{0}Number of Rules: {4}</value>
+  </data>
+  <data name="TitleBuffer" xml:space="preserve">
+    <value>Buffer</value>
+  </data>
+  <data name="TitleMeasure" xml:space="preserve">
+    <value>Measure</value>
+  </data>
+  <data name="TitlePrintSettings" xml:space="preserve">
+    <value>Print Settings</value>
+  </data>
+  <data name="TitleQuery" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="TitleTheme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="TitleViewerOptions" xml:space="preserve">
+    <value>Viewer Options</value>
+  </data>
+  <data name="TooltipDisableTooltips" xml:space="preserve">
+    <value>Tooltips are enabled. Click to disable</value>
+  </data>
+  <data name="TooltipEnableTooltips" xml:space="preserve">
+    <value>Tooltips are disabled. Click to enable</value>
+  </data>
+  <data name="ui_tooltip_balloon_bottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ui-tooltip-balloon-bottom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="view_back" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\view-back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="view_forward" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\view-forward.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="view_log" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\view_log.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="view_refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\view-refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zoom_dynamic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoom-dynamic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zoom_full" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoom-full.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zoom_in" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoom-in.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zoom_in_fixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoom-in-fixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zoom_out_fixed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoom-out-fixed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="grab" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\grab.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="zoomin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoomin.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="zoomout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoomout.cur;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="TextSelectedFeatures" xml:space="preserve">
+    <value>{0} features selected</value>
+  </data>
+  <data name="TextCoordinatePosition" xml:space="preserve">
+    <value>X: {0:0.0000000}, Y: {1:0.0000000}</value>
+  </data>
+</root>

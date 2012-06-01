@@ -31,6 +31,7 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System.Diagnostics;
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using System.Drawing;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
@@ -151,6 +152,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
         internal RuntimeMap(IServerConnection conn)
         {
+            this.StrictSelection = true;
             _disableChangeTracking = true;
 
             this.WatermarkUsage = (int)WatermarkUsageType.Viewer;
@@ -950,22 +952,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 if (null == _selection)
                 {
                     _selection = new MapSelection(this);
-                    var resId = this.ResourceID.Replace(".Map", ".Selection");
-                    var bLoadedSelection = false;
-                    if (this.ResourceService.ResourceExists(resId))
-                    {
-                        var dataItems = this.ResourceService.EnumerateResourceData(resId);
-                        foreach (var item in dataItems.ResourceData)
-                        {
-                            if (item.Name == "RuntimeData")
-                            {
-                                var ser = new MgBinaryDeserializer(this.ResourceService.GetResourceData(resId, "RuntimeData"), this.CurrentConnection.SiteVersion);
-                                _selection.Deserialize(ser);
-                                bLoadedSelection = true;
-                                break;
-                            }
-                        }
-                    }
+                    var bLoadedSelection = ReloadSelection();
                     
                     if (!bLoadedSelection)
                     {
@@ -974,6 +961,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 }
                 return _selection;
             }
+        }
+
+        private bool ReloadSelection()
+        {
+            var resId = this.ResourceID.Replace(".Map", ".Selection");
+            var bLoadedSelection = false;
+            if (this.ResourceService.ResourceExists(resId))
+            {
+                var dataItems = this.ResourceService.EnumerateResourceData(resId);
+                foreach (var item in dataItems.ResourceData)
+                {
+                    if (item.Name == "RuntimeData")
+                    {
+                        var ser = new MgBinaryDeserializer(this.ResourceService.GetResourceData(resId, "RuntimeData"), this.CurrentConnection.SiteVersion);
+                        _selection.Deserialize(ser);
+                        bLoadedSelection = true;
+                        break;
+                    }
+                }
+            }
+            return bLoadedSelection;
         }
 
         /// <summary>
@@ -1465,16 +1473,51 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="format"></param>
         /// <param name="keepSelection"></param>
         /// <returns></returns>
+        [Obsolete("Use the version of RenderDynamicOverlay that is not marked Obsolete")]
         public System.IO.Stream RenderDynamicOverlay(string format, bool keepSelection)
+        {
+            return RenderDynamicOverlay(this.Selection, format, keepSelection);
+        }
+        
+        /// <summary>
+        /// Convenience method for rendering a dynamic overlay of the current map
+        /// </summary>
+        /// <param name="sel"></param>
+        /// <param name="format"></param>
+        /// <param name="behavior"></param>
+        /// <returns></returns>
+        [Obsolete("Use the version of RenderDynamicOverlay that is not marked Obsolete")]
+        public System.IO.Stream RenderDynamicOverlay(MapSelection sel, string format, bool keepSelection)
         {
             if (_mapSvc == null)
                 throw new NotSupportedException();
 
             return _mapSvc.RenderDynamicOverlay(
                 this,
-                this.Selection,
+                sel,
                 format,
                 keepSelection);
+        }
+
+        /// <summary>
+        /// Convenience method for rendering a dynamic overlay of the current map
+        /// </summary>
+        /// <param name="selection"></param>
+        /// <param name="format"></param>
+        /// <param name="selectionColor"></param>
+        /// <param name="behaviour"></param>
+        /// <returns></returns>
+        public System.IO.Stream RenderDynamicOverlay(MapSelection selection, string format, Color selectionColor, int behaviour)
+        {
+            if (_mapSvc == null)
+                throw new NotSupportedException();
+
+            return _mapSvc.RenderDynamicOverlay(
+                this,
+                selection,
+                format,
+                selectionColor,
+                behaviour);
         }
 
         /// <summary>
@@ -1498,6 +1541,29 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 format);
         }
 
+        public string QueryMapFeatures(string wkt, int maxFeatures, bool persist, string selectionVariant, QueryMapOptions extraOptions)
+        {
+            if (_mapSvc == null)
+                throw new NotSupportedException();
+
+            var ret = _mapSvc.QueryMapFeatures(this.Name, maxFeatures, wkt, true, selectionVariant, extraOptions);
+
+            //Need to re-sync the selection as this will probably have been changed
+            ReloadSelection();
+
+            return ret;
+        }
+
+        public System.Drawing.Image GetLegendImage(string layerDefinitionID, double scale, int width, int height, string format, int geomType, int themeCategory)
+        {
+            if (_mapSvc == null)
+                throw new NotSupportedException();
+
+            return _mapSvc.GetLegendImage(scale, layerDefinitionID, themeCategory, geomType, width, height, format);
+        }
+
         #endregion
+
+        internal bool StrictSelection { get; set; }
     }
 }

@@ -27,6 +27,7 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using System.Diagnostics;
+using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
@@ -57,6 +58,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <value>The type.</value>
         public Type Type { get; set; }
+    }
+
+    public static class Extensions
+    {
+        public static RuntimeMapGroup GetParentGroup(this RuntimeMapLayer layer)
+        {
+            Check.NotNull(layer, "layer");
+
+            if (string.IsNullOrEmpty(layer.Group))
+                return null;
+
+            return layer.Parent.Groups[layer.Group];
+        }
     }
 
     /// <summary>
@@ -98,6 +112,61 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         public RuntimeMap Parent { get; private set; }
 
+        private void Initialize(ILayerDefinition ldf)
+        {
+            Check.NotNull(ldf, "ldf");
+            this.LayerDefinitionID = ldf.ResourceID;
+            if (ldf.SubLayer.LayerType == LayerType.Vector)
+            {
+                var vl = ((IVectorLayerDefinition)ldf.SubLayer);
+                _qualifiedClassName = vl.FeatureName;
+                _geometryPropertyName = vl.Geometry;
+                _featureSourceId = vl.ResourceId;
+                _filter = vl.Filter;
+                InitIdentityProperties(vl);
+                _hasTooltips = !string.IsNullOrEmpty(vl.ToolTip);
+                if (vl.HasVectorScaleRanges())
+                {
+                    int vsrCount = vl.GetScaleRangeCount();
+                    _scaleRanges = new double[vsrCount * 2];
+                    for (int i = 0; i < vsrCount; i++)
+                    {
+                        var vsr = vl.GetScaleRangeAt(i);
+                        _scaleRanges[i * 2] = vsr.MinScale.HasValue ? vsr.MinScale.Value : 0;
+                        _scaleRanges[i * 2 + 1] = vsr.MaxScale.HasValue ? vsr.MaxScale.Value : InfinityScale;
+                    }
+                }
+            }
+            else if (ldf.SubLayer.LayerType == LayerType.Raster)
+            {
+                var rl = ((IRasterLayerDefinition)ldf.SubLayer);
+                _qualifiedClassName = rl.FeatureName;
+                _geometryPropertyName = rl.Geometry;
+                _featureSourceId = rl.ResourceId;
+
+                if (rl.GridScaleRangeCount > 0)
+                {
+                    _scaleRanges = new double[rl.GridScaleRangeCount * 2];
+                    int i = 0;
+                    foreach (var gsr in rl.GridScaleRange)
+                    {
+                        _scaleRanges[i * 2] = gsr.MinScale.HasValue ? gsr.MinScale.Value : 0;
+                        _scaleRanges[i * 2 + 1] = gsr.MaxScale.HasValue ? gsr.MaxScale.Value : InfinityScale;
+                        i++;
+                    }
+                }
+            }
+
+            _expandInLegend = false;
+            this.Name = ResourceIdentifier.GetName(ldf.ResourceID);
+            _legendLabel = this.Name;
+            _selectable = true;
+            _showInLegend = true;
+            _visible = true;
+
+            EnsureOrderedMinMaxScales();
+        }
+
         internal RuntimeMapLayer(RuntimeMap parent) 
         {
             _scaleRanges = new double[] { 0.0, InfinityScale };
@@ -116,34 +185,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         internal RuntimeMapLayer(RuntimeMap parent, ILayerDefinition ldf)
             : this(parent)
         {
-            Check.NotNull(ldf, "ldf");
-
-            this.LayerDefinitionID = ldf.ResourceID;
-            if (ldf.SubLayer.LayerType == LayerType.Vector)
-            {
-                var vl = ((IVectorLayerDefinition)ldf.SubLayer);
-                _qualifiedClassName = vl.FeatureName;
-                _geometryPropertyName = vl.Geometry;
-                _featureSourceId = vl.ResourceId;
-                _filter = vl.Filter;
-                InitIdentityProperties(vl);
-                _hasTooltips = !string.IsNullOrEmpty(vl.ToolTip);
-            }
-            else if (ldf.SubLayer.LayerType == LayerType.Raster)
-            {
-                var rl = ((IRasterLayerDefinition)ldf.SubLayer);
-                _qualifiedClassName = rl.FeatureName;
-                _geometryPropertyName = rl.Geometry;
-                _featureSourceId = rl.ResourceId;
-            }
-
-            _expandInLegend = false;
-            this.Name = ResourceIdentifier.GetName(ldf.ResourceID);
-            _legendLabel = this.Name;
-            _selectable = true;
-            _showInLegend = true;
-            _visible = true;
-
+            _disableChangeTracking = true;
+            Initialize(ldf);
             _disableChangeTracking = false;
         }
 
@@ -175,72 +218,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             Check.NotNull(source, "source");
             Check.NotNull(ldf, "ldf");
             Check.Precondition(source.ResourceId == ldf.ResourceID, "source.ResourceId == ldf.ResourceID");
-
-            _disableChangeTracking = true;
-
-            this.LayerDefinitionID = source.ResourceId;
-            _expandInLegend = source.ExpandInLegend;
-            this.Name = source.Name;
-            _selectable = source.Selectable;
-            _showInLegend = source.ShowInLegend;
-            _legendLabel = source.LegendLabel;
-
-            _needsRefresh = false;
-            _displayOrder = 0;
-
-            switch (ldf.SubLayer.LayerType)
-            {
-                case LayerType.Drawing:
-                    {
-                    }
-                    break;
-                case LayerType.Raster:
-                    {
-                        IRasterLayerDefinition rdf = (IRasterLayerDefinition)ldf.SubLayer;
-                        _featureSourceId = rdf.ResourceId;
-                        _geometryPropertyName = rdf.Geometry;
-                        _qualifiedClassName = rdf.FeatureName;
-
-                        if (rdf.GridScaleRangeCount > 0)
-                        {
-                            _scaleRanges = new double[rdf.GridScaleRangeCount * 2];
-                            int i = 0;
-                            foreach (var gsr in rdf.GridScaleRange)
-                            {
-                                _scaleRanges[i * 2] = gsr.MinScale.HasValue ? gsr.MinScale.Value : 0;
-                                _scaleRanges[i * 2 + 1] = gsr.MaxScale.HasValue ? gsr.MaxScale.Value : InfinityScale;
-                                i++;
-                            }
-                        }
-                    }
-                    break;
-                case LayerType.Vector:
-                    {
-                        IVectorLayerDefinition vld = (IVectorLayerDefinition)ldf.SubLayer;
-                        _featureSourceId = vld.ResourceId;
-                        _geometryPropertyName = vld.Geometry;
-                        _qualifiedClassName = vld.FeatureName;
-                        _filter = vld.Filter;
-
-                        if (vld.HasVectorScaleRanges())
-                        {
-                            int vsrCount = vld.GetScaleRangeCount();
-                            _scaleRanges = new double[vsrCount * 2];
-                            for (int i = 0; i < vsrCount; i++)
-                            {
-                                var vsr = vld.GetScaleRangeAt(i);
-                                _scaleRanges[i * 2] = vsr.MinScale.HasValue ? vsr.MinScale.Value : 0;
-                                _scaleRanges[i * 2 + 1] = vsr.MaxScale.HasValue ? vsr.MaxScale.Value : InfinityScale;
-                            }
-                        }
-                        _hasTooltips = !string.IsNullOrEmpty(vld.ToolTip);
-                        //get identity property information
-                        InitIdentityProperties(vld);
-                    }
-                    break;
-            }
-            EnsureOrderedMinMaxScales();
-            _disableChangeTracking = false;
         }
 
         private void EnsureOrderedMinMaxScales()
@@ -953,6 +930,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// Convenience method to get the associated class definition
+        /// </summary>
+        /// <returns></returns>
+        public ClassDefinition GetClassDefinition()
+        {
+            var tokens = this.QualifiedClassName.Split(':');
+            return this.Parent.FeatureService.GetClassDefinition(tokens[0], tokens[1]);
         }
     }
 }

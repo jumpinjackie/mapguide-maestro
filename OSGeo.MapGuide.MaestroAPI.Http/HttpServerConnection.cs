@@ -921,6 +921,18 @@ namespace OSGeo.MapGuide.MaestroAPI
                 OnResourceAdded(newpath);
 		}
 
+        public override System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, Color selectionColor, int behavior)
+        {
+            //This API was introduced in MGOS 2.1 so this won't work with older versions
+            if (this.SiteVersion < new Version(2, 1, 0))
+                throw new NotSupportedException();
+
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            var req = m_reqBuilder.GetDynamicMapOverlayImage(map.Name, (selection == null ? string.Empty : selection.ToXml()), format, selectionColor, behavior);
+
+            return this.OpenRead(req);
+        }
+
         public override System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, bool keepSelection)
         {
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
@@ -1747,6 +1759,24 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 return base.MoveResourceWithReferences(oldpath, newpath, callback, progress);
             }
+        }
+
+        public override string QueryMapFeatures(string runtimeMapName, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)
+        {
+            //The request may execeed the url limit of the server, when large geometries
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            System.Net.WebRequest req = m_reqBuilder.QueryMapFeatures(runtimeMapName, maxFeatures, wkt, persist, selectionVariant, extraOptions, ms);
+            req.Timeout = 200 * 1000;
+            ms.Position = 0;
+
+            using (System.IO.Stream rs = req.GetRequestStream())
+            {
+                Utility.CopyStream(ms, rs);
+                rs.Flush();
+            }
+
+            using (var sr = new StreamReader(req.GetResponse().GetResponseStream()))
+                return sr.ReadToEnd();
         }
 
         public override string QueryMapFeatures(string runtimeMapName, string wkt, bool persist, QueryMapFeaturesLayerAttributes attributes, bool raw)

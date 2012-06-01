@@ -303,7 +303,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 if (layer == null)
                     throw new ArgumentNullException("layer");
 
-                if (layer.IdentityProperties.Length == 0)
+                if (layer.IdentityProperties.Length == 0 && layer.Parent.StrictSelection)
                     throw new Exception("The layer does not have a primary key, and cannot be used for selection");
 
                 m_layer = layer;

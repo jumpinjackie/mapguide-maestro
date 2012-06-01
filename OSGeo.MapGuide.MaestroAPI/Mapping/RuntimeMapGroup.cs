@@ -210,7 +210,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public int Type
         {
             get;
-            private set;
+            internal set;
         }
 
         /// <summary>

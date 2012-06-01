@@ -181,9 +181,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             }
         }
 
-        private void LogMethodCall(string method, bool success, params string[] values)
+        private void LogMethodCall(string method, bool success, params object[] values)
         {
-            OnRequestDispatched(method + "(" + string.Join(", ", values) + ") " + ((success) ? "Success" : "Failure"));
+            string[] strValues = new string[values.Length];
+            for (int i = 0; i < values.Length; i++)
+                strValues[i] = values[i].ToString();
+            OnRequestDispatched(method + "(" + string.Join(", ", strValues) + ") " + ((success) ? "Success" : "Failure"));
         }
 
 		public override ResourceList GetRepositoryResources(string startingpoint, string type, int depth, bool computeChildren)
@@ -606,6 +609,28 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             LogMethodCall("MgRenderingService::RenderMap", true, "MgMap", "MgSelection", "MgEnvelope", width.ToString(), height.ToString(), "MgColor", format);
 
             return result;
+        }
+
+        public override Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, Color selectionColor, int behaviour)
+        {
+            MgRenderingService rnd = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+
+            MgMap mmap = new MgMap();
+            mmap.Open(res, map.Name);
+            MgSelection sel = new MgSelection(mmap);
+            if (selection != null)
+                sel.FromXml(selection.ToXml());
+
+            var rndOpts = new MgRenderingOptions(format, behaviour, new MgColor(selectionColor));
+
+            LogMethodCall("MgRenderingService::RenderDynamicOverlay", true, "MgMap", "MgSelection", "MgRenderingOptions");
+
+            GetByteReaderMethod fetch = () =>
+            {
+                return rnd.RenderDynamicOverlay(mmap, sel, rndOpts);
+            };
+            return new MgReadOnlyStream(fetch);
         }
 
         public override Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, bool keepSelection)
@@ -1228,6 +1253,59 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return res;
         }
 
+        public override string QueryMapFeatures(string runtimeMapName, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)
+        {
+            MgRenderingService rs = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            MgMap map = new MgMap();
+            string mapname = runtimeMapName.IndexOf(":") > 0 ? new ResourceIdentifier(runtimeMapName).Path : runtimeMapName;
+            map.Open(res, mapname);
+
+            MgWktReaderWriter r = new MgWktReaderWriter();
+            MgStringCollection layerNames = null;
+            string featureFilter = "";
+            int layerAttributeFilter = 0;
+            int op = MgFeatureSpatialOperations.Intersects;
+            if (selectionVariant == "TOUCHES")
+                op = MgFeatureSpatialOperations.Touches;
+            else if (selectionVariant == "INTERSECTS")
+                op = MgFeatureSpatialOperations.Intersects;
+            else if (selectionVariant == "WITHIN")
+                op = MgFeatureSpatialOperations.Within;
+            else if (selectionVariant == "ENVELOPEINTERSECTS")
+                op = MgFeatureSpatialOperations.EnvelopeIntersects;
+            else
+                throw new ArgumentException("Unknown or unsupported selection variant: " + selectionVariant);
+
+            if (extraOptions != null)
+            {
+                if (!string.IsNullOrEmpty(extraOptions.FeatureFilter))
+                    featureFilter = extraOptions.FeatureFilter;
+                if (extraOptions.LayerNames != null && extraOptions.LayerNames.Length > 0)
+                {
+                    layerNames = new MgStringCollection();
+                    foreach (var name in extraOptions.LayerNames)
+                        layerNames.Add(name);
+                }
+                layerAttributeFilter = (int)extraOptions.LayerAttributeFilter;
+            }
+
+            MgFeatureInformation info = rs.QueryFeatures(map, layerNames, r.Read(wkt), op, featureFilter, maxFeatures, layerAttributeFilter);
+
+            string xml = "";
+            GetByteReaderMethod fetch = () => { return info.ToXml(); };
+            using (var sr = new StreamReader(new MgReadOnlyStream(fetch)))
+            {
+                xml = sr.ReadToEnd();
+            }
+            MgSelection sel = new MgSelection(map, xml);
+            sel.Save(res, mapname);
+
+            LogMethodCall("QueryMapFeatures", true, runtimeMapName, wkt, persist, selectionVariant, extraOptions == null ? "null" : "QueryMapOptions");
+
+            return xml;
+        }
+
         public override string QueryMapFeatures(string runtimeMapName, string wkt, bool persist, QueryMapFeaturesLayerAttributes attributes, bool raw)
         {
             MgRenderingService rs = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
@@ -1239,24 +1317,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             MgWktReaderWriter r = new MgWktReaderWriter();
             MgFeatureInformation info = rs.QueryFeatures(map, null, r.Read(wkt), (int)MgFeatureSpatialOperations.Intersects, "", -1, (int)attributes);
 
-            using (var ms = new MemoryStream())
+            string xml = "";
+            GetByteReaderMethod fetch = () => { return info.ToXml(); };
+            using (var sr = new StreamReader(new MgReadOnlyStream(fetch)))
             {
-                using (var stream = Utility.MgStreamToNetStream(info, info.GetType().GetMethod("ToXml"), null))
-                {
-                    MaestroAPI.Utility.CopyStream(stream, ms);
-                    ms.Position = 0L;
-
-                    string xml = System.Text.Encoding.UTF8.GetString(ms.ToArray()).Trim();
-
-                    if (persist)
-                    {
-                        MgSelection sel = new MgSelection(map, xml);
-                        sel.Save(res, mapname);
-                    }
-
-                    return xml;
-                }
+                xml = sr.ReadToEnd();
             }
+            MgSelection sel = new MgSelection(map, xml);
+            sel.Save(res, mapname);
+
+            LogMethodCall("QueryMapFeatures", true, runtimeMapName, wkt, persist, (int)attributes, raw);
+
+            return xml;
         }
 
         internal void InsertFeatures(MgResourceIdentifier fsId, string className, MgPropertyCollection props)

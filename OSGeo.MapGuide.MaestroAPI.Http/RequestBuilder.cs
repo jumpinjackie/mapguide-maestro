@@ -22,6 +22,7 @@ using System;
 using System.Collections.Specialized;
 using OSGeo.MapGuide.ObjectModels.Common;
 using System.Globalization;
+using System.Drawing;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -1003,6 +1004,39 @@ namespace OSGeo.MapGuide.MaestroAPI
 			return req;
 		}
 
+        internal System.Net.WebRequest QueryMapFeatures(string runtimeMapName, int maxFeatures, string wkt, bool persist, string selectionVariant, Services.QueryMapOptions extraOptions, System.IO.Stream outStream)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "QUERYMAPFEATURES");
+            param.Add("VERSION", "1.0.0");
+            param.Add("PERSIST", persist ? "1" : "0");
+            param.Add("MAPNAME", runtimeMapName);
+            param.Add("SESSION", m_sessionID);
+            param.Add("GEOMETRY", wkt);
+            param.Add("SELECTIONVARIANT", selectionVariant);
+            param.Add("MAXFEATURES", maxFeatures.ToString(CultureInfo.InvariantCulture));
+            if (extraOptions != null)
+            {
+                param.Add("LAYERATTRIBUTEFILTER", ((int)extraOptions.LayerAttributeFilter).ToString());
+                if (!string.IsNullOrEmpty(extraOptions.FeatureFilter))
+                    param.Add("FEATUREFILTER", extraOptions.FeatureFilter);
+                if (extraOptions.LayerNames != null && extraOptions.LayerNames.Length > 0)
+                    param.Add("LAYERNAMES", string.Join(",", extraOptions.LayerNames));
+            }
+            param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", m_userAgent);
+
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            string boundary;
+            System.Net.WebRequest req = PrepareFormContent(outStream, out boundary);
+            EncodeFormParameters(boundary, param, outStream);
+            req.ContentLength = outStream.Length;
+
+            return req;
+        }
+
 		public string EnumerateApplicationTemplates()
 		{
 			NameValueCollection param = new NameValueCollection();
@@ -1518,6 +1552,27 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public string GetClassDefinition(string resourceId, string schemaName, string className)
         {
+            //BOGUS: GETCLASSDEFINITION is FUBAR (#2015)
+            //
+            //Fortunately, we can workaround this via DESCRIBEFEATURESCHEMA with CLASSNAMES hint.
+            //This should still tap into FDO RFC23 enhancements server-side where applicable
+
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "DESCRIBEFEATURESCHEMA");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", m_userAgent);
+
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            param.Add("RESOURCEID", resourceId);
+            if (!string.IsNullOrEmpty(schemaName))
+                param.Add("SCHEMA", schemaName);
+            param.Add("CLASSNAMES", className);
+
+            /*
             NameValueCollection param = new NameValueCollection();
             param.Add("OPERATION", "GETCLASSDEFINITION");
             param.Add("VERSION", "1.0.0");
@@ -1532,7 +1587,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (!string.IsNullOrEmpty(schemaName))
                 param.Add("SCHEMA", schemaName);
             param.Add("CLASSNAME", className);
-
+            */
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
@@ -1546,6 +1601,26 @@ namespace OSGeo.MapGuide.MaestroAPI
             param.Add("CLIENTAGENT", m_userAgent);
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
+        internal string GetDynamicMapOverlayImage(string mapname, string selectionXml, string format, Color selectionColor, int behavior)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "GETDYNAMICMAPOVERLAYIMAGE");
+            param.Add("VERSION", "2.1.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("MAPNAME", mapname);
+            param.Add("CLIENTAGENT", m_userAgent);
+            param.Add("SELECTIONCOLOR", Utility.SerializeHTMLColorRGBA(selectionColor, true));
+            param.Add("BEHAVIOR", behavior.ToString(CultureInfo.InvariantCulture));
+
+            if (format != null && format.Length != 0)
+                param.Add("FORMAT", format);
+
+            if (!string.IsNullOrEmpty(selectionXml))
+                param.Add("SELECTION", selectionXml);
 
             return m_hosturi + "?" + EncodeParameters(param);
         }
