@@ -37,6 +37,7 @@
             this.lblSelected = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblScale = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.saveBackToMapDefinitionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.legend1 = new Maestro.MapViewer.Legend();
             this.mapViewer1 = new Maestro.MapViewer.MapViewer();
             this.defaultToolbar1 = new Maestro.MapViewer.DefaultToolbar();
@@ -63,6 +64,7 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openMapDefinitionToolStripMenuItem,
+            this.saveBackToMapDefinitionToolStripMenuItem,
             this.quitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -71,14 +73,14 @@
             // openMapDefinitionToolStripMenuItem
             // 
             this.openMapDefinitionToolStripMenuItem.Name = "openMapDefinitionToolStripMenuItem";
-            this.openMapDefinitionToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.openMapDefinitionToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.openMapDefinitionToolStripMenuItem.Text = "Open Map Definition";
             this.openMapDefinitionToolStripMenuItem.Click += new System.EventHandler(this.openMapDefinitionToolStripMenuItem_Click);
             // 
             // quitToolStripMenuItem
             // 
             this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-            this.quitToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.quitToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
@@ -129,6 +131,14 @@
             this.splitContainer1.SplitterDistance = 217;
             this.splitContainer1.TabIndex = 3;
             // 
+            // saveBackToMapDefinitionToolStripMenuItem
+            // 
+            this.saveBackToMapDefinitionToolStripMenuItem.Enabled = false;
+            this.saveBackToMapDefinitionToolStripMenuItem.Name = "saveBackToMapDefinitionToolStripMenuItem";
+            this.saveBackToMapDefinitionToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.saveBackToMapDefinitionToolStripMenuItem.Text = "Save back to Map Definition";
+            this.saveBackToMapDefinitionToolStripMenuItem.Click += new System.EventHandler(this.saveBackToMapDefinitionToolStripMenuItem_Click);
+            // 
             // legend1
             // 
             this.legend1.AllowDrop = true;
@@ -149,7 +159,6 @@
             // 
             // mapViewer1
             // 
-            this.mapViewer1.ConvertTiledGroupsToNonTiled = true;
             this.mapViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.mapViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mapViewer1.Location = new System.Drawing.Point(0, 0);
@@ -218,6 +227,7 @@
         private MapViewer.DefaultToolbar defaultToolbar1;
         private MapViewer.MapStatusTracker mapStatusTracker1;
         private MapViewer.Legend legend1;
+        private System.Windows.Forms.ToolStripMenuItem saveBackToMapDefinitionToolStripMenuItem;
     }
 }
 

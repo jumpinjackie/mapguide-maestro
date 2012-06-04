@@ -1565,5 +1565,108 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         #endregion
 
         internal bool StrictSelection { get; set; }
+
+        /// <summary>
+        /// Converts this instance to an equivalent Map Definition
+        /// </summary>
+        /// <param name="useOriginalAsTemplate">If true, the converted Map Definition will use core settings from the original Map Definition used to create this instance</param>
+        /// <returns></returns>
+        public IMapDefinition ToMapDefinition(bool useOriginalAsTemplate)
+        {
+            var newMdf = ObjectFactory.CreateMapDefinition(this.CurrentConnection, ResourceIdentifier.GetName(this.MapDefinition));
+            if (useOriginalAsTemplate && this.ResourceService.ResourceExists(this.MapDefinition))
+            {
+                var oldMdf = (IMapDefinition)this.ResourceService.GetResource(this.MapDefinition);
+                newMdf.BackgroundColor = oldMdf.BackgroundColor;
+                newMdf.CoordinateSystem = oldMdf.CoordinateSystem;
+                newMdf.Metadata = oldMdf.Metadata;
+                newMdf.Extents = oldMdf.Extents;
+            }
+
+            var baseGroups = new List<RuntimeMapGroup>();
+
+            //Add dynamic groups
+            for (int i = this.Groups.Count - 1; i >= 0; i--)
+            {
+                //Deal with base groups later
+                if (this.Groups[i].Type == RuntimeMapGroup.kBaseMap)
+                {
+                    baseGroups.Add(this.Groups[i]);
+                    continue;
+                }
+
+                var rtGroup = this.Groups[i];
+                var newGroup = newMdf.AddGroup(rtGroup.Name);
+                newGroup.Group = rtGroup.Group;
+                newGroup.ExpandInLegend = rtGroup.ExpandInLegend;
+                newGroup.LegendLabel = rtGroup.LegendLabel;
+                newGroup.ShowInLegend = rtGroup.ShowInLegend;
+                newGroup.Visible = rtGroup.Visible;
+            }
+
+            var baseLayers = new List<RuntimeMapLayer>();
+
+            //Populate dynamic layers. Loop in reverse order so that they are added in correct draw order
+            for (int i = this.Layers.Count - 1; i >= 0; i--)
+            {
+                //Deal with base layers later
+                if (this.Layers[i].Type == RuntimeMapLayer.kBaseMap)
+                {
+                    baseLayers.Add(this.Layers[i]);
+                    continue;
+                }
+
+                var rtLayer = this.Layers[i];
+                var newLayer = newMdf.AddLayer(rtLayer.Group, rtLayer.Name, rtLayer.LayerDefinitionID);
+                newLayer.ExpandInLegend = rtLayer.ExpandInLegend;
+                newLayer.LegendLabel = rtLayer.LegendLabel;
+                newLayer.Selectable = rtLayer.Selectable;
+                newLayer.ShowInLegend = rtLayer.ShowInLegend;
+                newLayer.Visible = rtLayer.Visible;
+            }
+
+            if (baseLayers.Count > 0 && baseGroups.Count > 0)
+            {
+                newMdf.InitBaseMap();
+
+                //Add finite scales first
+                for (int i = _finiteDisplayScales.Length - 1; i >= 0; i--)
+                {
+                    newMdf.BaseMap.AddFiniteDisplayScale(_finiteDisplayScales[i]);
+                }
+
+                var baseGroupsByName = new Dictionary<string, IBaseMapGroup>();
+
+                //Now groups
+                for (int i = baseGroups.Count - 1; i >= 0; i--)
+                {
+                    var rtGroup = baseGroups[i];
+                    var newGroup = newMdf.BaseMap.AddBaseLayerGroup(rtGroup.Name);
+                    newGroup.ExpandInLegend = rtGroup.ExpandInLegend;
+                    newGroup.LegendLabel = rtGroup.LegendLabel;
+                    newGroup.ShowInLegend = rtGroup.ShowInLegend;
+                    newGroup.Visible = rtGroup.Visible;
+
+                    baseGroupsByName.Add(newGroup.Name, newGroup);
+                }
+
+                //Then layers. Loop in reverse order so that they are added in correct draw order
+                for (int i = baseLayers.Count - 1; i >= 0; i--)
+                {
+                    var rtLayer = baseLayers[i];
+                    //Should always happen
+                    if (baseGroupsByName.ContainsKey(rtLayer.Group))
+                    {
+                        var newLayer = baseGroupsByName[rtLayer.Group].AddLayer(rtLayer.Name, rtLayer.LayerDefinitionID);
+                        newLayer.ExpandInLegend = rtLayer.ExpandInLegend;
+                        newLayer.LegendLabel = rtLayer.LegendLabel;
+                        newLayer.Selectable = rtLayer.Selectable;
+                        newLayer.ShowInLegend = rtLayer.ShowInLegend;
+                    }
+                }
+            }
+
+            return newMdf;
+        }
     }
 }

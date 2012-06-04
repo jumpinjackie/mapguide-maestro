@@ -91,6 +91,7 @@ namespace Maestro.TestViewer
 
             var rtMap = mapSvc.CreateMap(mdf);
             mapViewer1.LoadMap(rtMap);
+            saveBackToMapDefinitionToolStripMenuItem.Enabled = true;
         }
 
         private void legend1_DragDrop(object sender, DragEventArgs e)
@@ -112,6 +113,28 @@ namespace Maestro.TestViewer
         {
             Trace.TraceInformation("Legend: DragOver");
             e.Effect = DragDropEffects.Move;
+        }
+
+        private void saveBackToMapDefinitionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var rtMap = mapViewer1.GetMap();
+            if (rtMap == null)
+            {
+                MessageBox.Show("No map loaded");
+                return;
+            }
+
+            var mdf = rtMap.ToMapDefinition(true);
+            var resSvc = mdf.CurrentConnection.ResourceService;
+            using (var resPicker = new ResourcePicker(resSvc, ResourceTypes.MapDefinition, ResourcePickerMode.SaveResource))
+            {
+                if (resPicker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    mdf.ResourceID = resPicker.ResourceID;
+                    resSvc.SaveResource(mdf);
+                    MessageBox.Show("Map saved to: " + resPicker.ResourceID);
+                }
+            }
         }
     }
 }
