@@ -204,7 +204,7 @@ namespace Maestro.MapViewer
                         continue;
 
                     //Add ones without parents first.
-                    if (layer.Group != null)
+                    if (!string.IsNullOrEmpty(layer.Group))
                     {
                         remainingLayers.Add(layer);
                     }

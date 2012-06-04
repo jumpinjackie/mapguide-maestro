@@ -31,6 +31,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using Maestro.Editors.Generic;
+using System.Diagnostics;
 
 namespace Maestro.TestViewer
 {
@@ -90,6 +91,27 @@ namespace Maestro.TestViewer
 
             var rtMap = mapSvc.CreateMap(mdf);
             mapViewer1.LoadMap(rtMap);
+        }
+
+        private void legend1_DragDrop(object sender, DragEventArgs e)
+        {
+            Trace.TraceInformation("Legend: DragDrop");
+        }
+
+        private void legend1_DragEnter(object sender, DragEventArgs e)
+        {
+            Trace.TraceInformation("Legend: DragEnter");
+        }
+
+        private void legend1_DragLeave(object sender, EventArgs e)
+        {
+            Trace.TraceInformation("Legend: DragLeave");
+        }
+
+        private void legend1_DragOver(object sender, DragEventArgs e)
+        {
+            Trace.TraceInformation("Legend: DragOver");
+            e.Effect = DragDropEffects.Move;
         }
     }
 }

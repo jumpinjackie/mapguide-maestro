@@ -973,8 +973,13 @@ namespace Maestro.MapViewer
                 for (int i = 0; i < groups.Count; i++)
                 {
                     var group = groups[i];
-                    //_provider.MakeGroupNormal(group);
                     group.Type = RuntimeMapGroup.kNormal;
+
+                    var layers = _map.GetLayersOfGroup(group.Name);
+                    for (int j = 0; j < layers.Length; j++)
+                    {
+                        layers[j].Type = RuntimeMapLayer.kDynamic;
+                    }
                 }
             }
 

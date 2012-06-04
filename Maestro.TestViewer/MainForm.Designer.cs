@@ -33,14 +33,14 @@
             this.openMapDefinitionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lblCoordinates = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblSelected = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblScale = new System.Windows.Forms.ToolStripStatusLabel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.legend1 = new Maestro.MapViewer.Legend();
             this.mapViewer1 = new Maestro.MapViewer.MapViewer();
             this.defaultToolbar1 = new Maestro.MapViewer.DefaultToolbar();
             this.mapStatusTracker1 = new Maestro.MapViewer.MapStatusTracker();
-            this.legend1 = new Maestro.MapViewer.Legend();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -94,6 +94,23 @@
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // lblCoordinates
+            // 
+            this.lblCoordinates.Name = "lblCoordinates";
+            this.lblCoordinates.Size = new System.Drawing.Size(0, 17);
+            // 
+            // lblSelected
+            // 
+            this.lblSelected.Name = "lblSelected";
+            this.lblSelected.Size = new System.Drawing.Size(640, 17);
+            this.lblSelected.Spring = true;
+            this.lblSelected.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblScale
+            // 
+            this.lblScale.Name = "lblScale";
+            this.lblScale.Size = new System.Drawing.Size(0, 17);
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -112,25 +129,27 @@
             this.splitContainer1.SplitterDistance = 217;
             this.splitContainer1.TabIndex = 3;
             // 
-            // lblCoordinates
+            // legend1
             // 
-            this.lblCoordinates.Name = "lblCoordinates";
-            this.lblCoordinates.Size = new System.Drawing.Size(0, 17);
-            // 
-            // lblSelected
-            // 
-            this.lblSelected.Name = "lblSelected";
-            this.lblSelected.Size = new System.Drawing.Size(640, 17);
-            this.lblSelected.Spring = true;
-            this.lblSelected.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblScale
-            // 
-            this.lblScale.Name = "lblScale";
-            this.lblScale.Size = new System.Drawing.Size(0, 17);
+            this.legend1.AllowDrop = true;
+            this.legend1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.legend1.GroupContextMenu = null;
+            this.legend1.LayerContextMenu = null;
+            this.legend1.Location = new System.Drawing.Point(0, 0);
+            this.legend1.Name = "legend1";
+            this.legend1.ShowTooltips = false;
+            this.legend1.Size = new System.Drawing.Size(217, 404);
+            this.legend1.TabIndex = 0;
+            this.legend1.ThemeCompressionLimit = 25;
+            this.legend1.Viewer = this.mapViewer1;
+            this.legend1.DragDrop += new System.Windows.Forms.DragEventHandler(this.legend1_DragDrop);
+            this.legend1.DragEnter += new System.Windows.Forms.DragEventHandler(this.legend1_DragEnter);
+            this.legend1.DragOver += new System.Windows.Forms.DragEventHandler(this.legend1_DragOver);
+            this.legend1.DragLeave += new System.EventHandler(this.legend1_DragLeave);
             // 
             // mapViewer1
             // 
+            this.mapViewer1.ConvertTiledGroupsToNonTiled = true;
             this.mapViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.mapViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mapViewer1.Location = new System.Drawing.Point(0, 0);
@@ -158,19 +177,6 @@
             this.mapStatusTracker1.ScaleLabel = this.lblScale;
             this.mapStatusTracker1.SelectedLabel = this.lblSelected;
             this.mapStatusTracker1.Viewer = this.mapViewer1;
-            // 
-            // legend1
-            // 
-            this.legend1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.legend1.GroupContextMenu = null;
-            this.legend1.LayerContextMenu = null;
-            this.legend1.Location = new System.Drawing.Point(0, 0);
-            this.legend1.Name = "legend1";
-            this.legend1.ShowTooltips = false;
-            this.legend1.Size = new System.Drawing.Size(217, 404);
-            this.legend1.TabIndex = 0;
-            this.legend1.ThemeCompressionLimit = 25;
-            this.legend1.Viewer = this.mapViewer1;
             // 
             // MainForm
             // 
