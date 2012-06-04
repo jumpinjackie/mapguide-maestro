@@ -1,5 +1,8 @@
 ﻿5.0 Beta 2
 ----------
+ - New standalone Live Map Definition editor
+ - New RuntimeMap viewer SDK component
+ - New Preference to toggle visibility of IronPython console.
  - New AddIn Manager to manage and install thirdparty add-ins for Maestro
  - Upgrade SharpDevelop Core to 4.2
  - Revamped XML editor with ICSharpCode.TextEditor control

@@ -489,6 +489,15 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
             }
         }
 
+        void IMapDefinition.RemoveAllGroups()
+        {
+            this.MapLayerGroup.Clear();
+        }
+
+        void IMapDefinition.RemoveAllLayers()
+        {
+            this.MapLayer.Clear();
+        }
 
         int IMapDefinition.GetIndex(IMapLayer layer)
         {

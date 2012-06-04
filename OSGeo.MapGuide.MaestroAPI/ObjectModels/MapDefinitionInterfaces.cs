@@ -228,6 +228,16 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         /// </summary>
         /// <param name="group"></param>
         int MoveUpGroup(IMapLayerGroup group);
+
+        /// <summary>
+        /// Removes all dynamic groups from this Map Definition
+        /// </summary>
+        void RemoveAllGroups();
+
+        /// <summary>
+        /// Removes all dynamic layers from this Map Definition
+        /// </summary>
+        void RemoveAllLayers();
     }
 
     /// <summary>

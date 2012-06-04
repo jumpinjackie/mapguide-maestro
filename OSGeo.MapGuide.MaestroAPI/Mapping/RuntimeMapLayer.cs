@@ -324,7 +324,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public string LayerDefinitionID
         {
             get;
-            private set;
+            internal set;
         }
 
         private bool _selectable;

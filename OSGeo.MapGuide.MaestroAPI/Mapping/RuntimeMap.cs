@@ -1567,21 +1567,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         internal bool StrictSelection { get; set; }
 
         /// <summary>
-        /// Converts this instance to an equivalent Map Definition
+        /// Updates and replaces the layer/group structure of the specified Map Definition with the
+        /// layer/group structure of this Runtime Map
         /// </summary>
-        /// <param name="useOriginalAsTemplate">If true, the converted Map Definition will use core settings from the original Map Definition used to create this instance</param>
-        /// <returns></returns>
-        public IMapDefinition ToMapDefinition(bool useOriginalAsTemplate)
+        /// <param name="newMdf"></param>
+        public void UpdateMapDefinition(IMapDefinition newMdf)
         {
-            var newMdf = ObjectFactory.CreateMapDefinition(this.CurrentConnection, ResourceIdentifier.GetName(this.MapDefinition));
-            if (useOriginalAsTemplate && this.ResourceService.ResourceExists(this.MapDefinition))
-            {
-                var oldMdf = (IMapDefinition)this.ResourceService.GetResource(this.MapDefinition);
-                newMdf.BackgroundColor = oldMdf.BackgroundColor;
-                newMdf.CoordinateSystem = oldMdf.CoordinateSystem;
-                newMdf.Metadata = oldMdf.Metadata;
-                newMdf.Extents = oldMdf.Extents;
-            }
+            newMdf.RemoveAllLayers();
+            newMdf.RemoveAllGroups();
+            newMdf.RemoveBaseMap();
 
             var baseGroups = new List<RuntimeMapGroup>();
 
@@ -1665,7 +1659,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     }
                 }
             }
+        }
 
+        /// <summary>
+        /// Converts this instance to an equivalent Map Definition
+        /// </summary>
+        /// <param name="useOriginalAsTemplate">If true, the converted Map Definition will use core settings from the original Map Definition used to create this instance</param>
+        /// <returns></returns>
+        public IMapDefinition ToMapDefinition(bool useOriginalAsTemplate)
+        {
+            var newMdf = ObjectFactory.CreateMapDefinition(this.CurrentConnection, ResourceIdentifier.GetName(this.MapDefinition));
+            if (useOriginalAsTemplate && this.ResourceService.ResourceExists(this.MapDefinition))
+            {
+                var oldMdf = (IMapDefinition)this.ResourceService.GetResource(this.MapDefinition);
+                newMdf.BackgroundColor = oldMdf.BackgroundColor;
+                newMdf.CoordinateSystem = oldMdf.CoordinateSystem;
+                newMdf.Metadata = oldMdf.Metadata;
+                newMdf.Extents = oldMdf.Extents;
+            }
+
+            UpdateMapDefinition(newMdf);
+           
             return newMdf;
         }
     }

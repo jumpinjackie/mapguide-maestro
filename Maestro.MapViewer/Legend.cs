@@ -34,6 +34,8 @@ using System.IO;
 
 namespace Maestro.MapViewer
 {
+    public delegate void NodeSelectionEventHandler(object sender, TreeNode node);
+
     public partial class Legend : UserControl
     {
         const string IMG_BROKEN = "lc_broken";
@@ -527,23 +529,61 @@ namespace Maestro.MapViewer
             RefreshLegend();
         }
 
-        class LegendNodeMetadata
+        public class LegendNodeMetadata
         {
+            [Browsable(false)]
             public bool IsGroup { get; protected set; }
         }
 
-        class GroupNodeMetadata : LegendNodeMetadata
+        public class GroupNodeMetadata : LegendNodeMetadata
         {
-            internal RuntimeMapGroup Group { get; set; }
+            [Browsable(false)]
+            internal RuntimeMapGroup WrappedGroupObject { get; set; }
 
             public GroupNodeMetadata(RuntimeMapGroup group) 
             { 
                 base.IsGroup = true;
-                this.Group = group;
+                this.WrappedGroupObject = group;
+            }
+
+            public bool Visible
+            {
+                get { return this.WrappedGroupObject.Visible; }
+                set { this.WrappedGroupObject.Visible = value; }
+            }
+
+            public string Group
+            {
+                get { return this.WrappedGroupObject.Group; }
+                set { this.WrappedGroupObject.Group = value; }
+            }
+
+            public string Name
+            {
+                get { return this.WrappedGroupObject.Name; }
+                set { this.WrappedGroupObject.Name = value; }
+            }
+
+            public bool ShowInLegend
+            {
+                get { return this.WrappedGroupObject.ShowInLegend; }
+                set { this.WrappedGroupObject.ShowInLegend = value; }
+            }
+
+            public string LegendLabel
+            {
+                get { return this.WrappedGroupObject.LegendLabel; }
+                set { this.WrappedGroupObject.LegendLabel = value; }
+            }
+
+            public bool ExpandInLegend
+            {
+                get { return this.WrappedGroupObject.ExpandInLegend; }
+                set { this.WrappedGroupObject.ExpandInLegend = value; }
             }
         }
 
-        class LayerNodeMetadata : LegendNodeMetadata
+        public class LayerNodeMetadata : LegendNodeMetadata
         {
             public LayerNodeMetadata(RuntimeMapLayer layer) 
             { 
@@ -554,17 +594,65 @@ namespace Maestro.MapViewer
                 this.IsThemeRule = false;
             }
 
+            [Browsable(false)]
             internal RuntimeMapLayer Layer { get; set; }
 
+            [Browsable(false)]
             public bool DrawSelectabilityIcon { get; set; }
 
+            [Browsable(false)]
             public bool IsSelectable { get; set; }
 
+            [Browsable(false)]
             public bool IsThemeRule { get; set; }
 
+            [Browsable(false)]
             public bool IsBaseLayer { get; set; }
 
+            [Browsable(false)]
             public Image ThemeIcon { get; set; }
+
+            public string Group
+            {
+                get { return this.Layer.Group; }
+                set { this.Layer.Group = value; }
+            }
+
+            public bool Selectable
+            {
+                get { return this.Layer.Selectable; }
+                set { this.Layer.Selectable = this.IsSelectable = value; }
+            }
+
+            public string Name
+            {
+                get { return this.Layer.Name; }
+                set { this.Layer.Name = value; }
+            }
+
+            public bool ShowInLegend
+            {
+                get { return this.Layer.ShowInLegend; }
+                set { this.Layer.ShowInLegend = value; }
+            }
+
+            public string LegendLabel
+            {
+                get { return this.Layer.LegendLabel; }
+                set { this.Layer.LegendLabel = value; }
+            }
+
+            public bool ExpandInLegend
+            {
+                get { return this.Layer.ExpandInLegend; }
+                set { this.Layer.ExpandInLegend = value; }
+            }
+
+            public string LayerDefinition
+            {
+                get { return this.Layer.LayerDefinitionID; }
+                set { this.Layer.LayerDefinitionID = value; }
+            }
         }
 
         private bool HasVisibleParent(RuntimeMapGroup grp)
@@ -911,7 +999,7 @@ namespace Maestro.MapViewer
 
             var grp = trvLegend.SelectedNode.Tag as GroupNodeMetadata;
             if (grp != null)
-                return grp.Group;
+                return grp.WrappedGroupObject;
 
             return null;
         }
@@ -920,6 +1008,15 @@ namespace Maestro.MapViewer
         {
             get { return trvLegend.ShowNodeToolTips; }
             set { trvLegend.ShowNodeToolTips = value; }
+        }
+
+        public event NodeSelectionEventHandler NodeSelected;
+
+        private void trvLegend_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            var h = this.NodeSelected;
+            if (h != null)
+                h(this, e.Node);
         }
     }
 }

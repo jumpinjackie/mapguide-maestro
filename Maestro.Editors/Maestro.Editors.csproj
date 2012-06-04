@@ -880,6 +880,12 @@
     <Compile Include="MapDefinition\LayerPropertiesCtrl.Designer.cs">
       <DependentUpon>LayerPropertiesCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="MapDefinition\LiveMapDefinitionEditorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapDefinition\LiveMapDefinitionEditorCtrl.Designer.cs">
+      <DependentUpon>LiveMapDefinitionEditorCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MapDefinition\ManualScaleEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1629,6 +1635,9 @@
       <DependentUpon>LayerPropertiesCtrl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="MapDefinition\LiveMapDefinitionEditorCtrl.resx">
+      <DependentUpon>LiveMapDefinitionEditorCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MapDefinition\ManualScaleEditor.resx">
       <DependentUpon>ManualScaleEditor.cs</DependentUpon>
     </EmbeddedResource>
@@ -1782,6 +1791,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Maestro.MapViewer\Maestro.MapViewer.csproj">
+      <Project>{4F9658DE-D16F-4B40-B830-BB1E0136DBD7}</Project>
+      <Name>Maestro.MapViewer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Maestro.Packaging\Maestro.Packaging.csproj">
       <Project>{0EA33E36-9C33-4D60-B378-B87FADAA0F40}</Project>
       <Name>Maestro.Packaging</Name>
@@ -2261,6 +2274,7 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\layer--minus1.png" />
     <None Include="Resources\icon_maptip_disabled.gif" />
     <None Include="Resources\icon_maptip.gif" />
     <None Include="Resources\layers-stack.png" />
