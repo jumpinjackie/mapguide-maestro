@@ -53,6 +53,7 @@
             this.trvLegend.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.trvLegend_DrawNode);
             this.trvLegend.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvLegend_AfterSelect);
             this.trvLegend.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvLegend_NodeMouseClick);
+            this.trvLegend.MouseDown += new System.Windows.Forms.MouseEventHandler(this.trvLegend_MouseDown);
             // 
             // imgLegend
             // 

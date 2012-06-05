@@ -28,22 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tabLayersAndGroups = new System.Windows.Forms.TabControl();
             this.TAB_LEGEND = new System.Windows.Forms.TabPage();
-            this.legendCtrl = new Maestro.MapViewer.Legend();
-            this.ctxLegend = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.addNewGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewLayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.grpContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.addLayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeThisGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.layerContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.removeThisLayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.legendCtrl = new Maestro.Editors.MapDefinition.LiveMapEditorLegend();
             this.viewer = new Maestro.MapViewer.MapViewer();
             this.TAB_DRAW_ORDER = new System.Windows.Forms.TabPage();
+            this.drawOrderCtrl = new Maestro.Editors.MapDefinition.LiveMapEditorDrawOrder();
             this.tabProperties = new System.Windows.Forms.TabControl();
             this.TAB_PROPERTIES = new System.Windows.Forms.TabPage();
             this.propGrid = new System.Windows.Forms.PropertyGrid();
@@ -63,9 +55,7 @@
             this.splitContainer2.SuspendLayout();
             this.tabLayersAndGroups.SuspendLayout();
             this.TAB_LEGEND.SuspendLayout();
-            this.ctxLegend.SuspendLayout();
-            this.grpContextMenu.SuspendLayout();
-            this.layerContextMenu.SuspendLayout();
+            this.TAB_DRAW_ORDER.SuspendLayout();
             this.tabProperties.SuspendLayout();
             this.TAB_PROPERTIES.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -132,76 +122,14 @@
             // 
             // legendCtrl
             // 
-            this.legendCtrl.ContextMenuStrip = this.ctxLegend;
             this.legendCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.legendCtrl.GroupContextMenu = this.grpContextMenu;
-            this.legendCtrl.LayerContextMenu = this.layerContextMenu;
             this.legendCtrl.Location = new System.Drawing.Point(3, 3);
             this.legendCtrl.Name = "legendCtrl";
-            this.legendCtrl.ShowTooltips = true;
             this.legendCtrl.Size = new System.Drawing.Size(275, 135);
             this.legendCtrl.TabIndex = 0;
-            this.legendCtrl.ThemeCompressionLimit = 25;
             this.legendCtrl.Viewer = this.viewer;
-            this.legendCtrl.NodeSelected += new Maestro.MapViewer.NodeSelectionEventHandler(this.legendCtrl_NodeSelected);
-            // 
-            // ctxLegend
-            // 
-            this.ctxLegend.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addNewGroupToolStripMenuItem,
-            this.addNewLayerToolStripMenuItem});
-            this.ctxLegend.Name = "ctxLegend";
-            this.ctxLegend.Size = new System.Drawing.Size(160, 48);
-            // 
-            // addNewGroupToolStripMenuItem
-            // 
-            this.addNewGroupToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.folder__plus;
-            this.addNewGroupToolStripMenuItem.Name = "addNewGroupToolStripMenuItem";
-            this.addNewGroupToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.addNewGroupToolStripMenuItem.Text = "Add New Group";
-            // 
-            // addNewLayerToolStripMenuItem
-            // 
-            this.addNewLayerToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.layer__plus;
-            this.addNewLayerToolStripMenuItem.Name = "addNewLayerToolStripMenuItem";
-            this.addNewLayerToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.addNewLayerToolStripMenuItem.Text = "Add New Layer";
-            // 
-            // grpContextMenu
-            // 
-            this.grpContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addLayerToolStripMenuItem,
-            this.removeThisGroupToolStripMenuItem});
-            this.grpContextMenu.Name = "grpContextMenu";
-            this.grpContextMenu.Size = new System.Drawing.Size(179, 48);
-            // 
-            // addLayerToolStripMenuItem
-            // 
-            this.addLayerToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.layer__plus;
-            this.addLayerToolStripMenuItem.Name = "addLayerToolStripMenuItem";
-            this.addLayerToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.addLayerToolStripMenuItem.Text = "Add Layer";
-            // 
-            // removeThisGroupToolStripMenuItem
-            // 
-            this.removeThisGroupToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.folder__minus;
-            this.removeThisGroupToolStripMenuItem.Name = "removeThisGroupToolStripMenuItem";
-            this.removeThisGroupToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.removeThisGroupToolStripMenuItem.Text = "Remove This Group";
-            // 
-            // layerContextMenu
-            // 
-            this.layerContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.removeThisLayerToolStripMenuItem});
-            this.layerContextMenu.Name = "layerContextMenu";
-            this.layerContextMenu.Size = new System.Drawing.Size(174, 26);
-            // 
-            // removeThisLayerToolStripMenuItem
-            // 
-            this.removeThisLayerToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.layer__minus;
-            this.removeThisLayerToolStripMenuItem.Name = "removeThisLayerToolStripMenuItem";
-            this.removeThisLayerToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
-            this.removeThisLayerToolStripMenuItem.Text = "Remove This Layer";
+            this.legendCtrl.NodeDeleted += new Maestro.MapViewer.NodeEventHandler(this.legendCtrl_NodeDeleted);
+            this.legendCtrl.NodeSelected += new Maestro.MapViewer.NodeEventHandler(this.legendCtrl_NodeSelected);
             // 
             // viewer
             // 
@@ -219,13 +147,25 @@
             // 
             // TAB_DRAW_ORDER
             // 
+            this.TAB_DRAW_ORDER.Controls.Add(this.drawOrderCtrl);
             this.TAB_DRAW_ORDER.Location = new System.Drawing.Point(4, 22);
             this.TAB_DRAW_ORDER.Name = "TAB_DRAW_ORDER";
             this.TAB_DRAW_ORDER.Padding = new System.Windows.Forms.Padding(3);
-            this.TAB_DRAW_ORDER.Size = new System.Drawing.Size(197, 141);
+            this.TAB_DRAW_ORDER.Size = new System.Drawing.Size(281, 141);
             this.TAB_DRAW_ORDER.TabIndex = 1;
             this.TAB_DRAW_ORDER.Text = "Draw Order";
             this.TAB_DRAW_ORDER.UseVisualStyleBackColor = true;
+            // 
+            // drawOrderCtrl
+            // 
+            this.drawOrderCtrl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.drawOrderCtrl.Location = new System.Drawing.Point(3, 3);
+            this.drawOrderCtrl.Name = "drawOrderCtrl";
+            this.drawOrderCtrl.Size = new System.Drawing.Size(275, 135);
+            this.drawOrderCtrl.TabIndex = 0;
+            this.drawOrderCtrl.Viewer = this.viewer;
+            this.drawOrderCtrl.LayerChanged += new Maestro.Editors.MapDefinition.LayerEventHandler(this.drawOrderCtrl_LayerChanged);
+            this.drawOrderCtrl.LayerDeleted += new Maestro.Editors.MapDefinition.LayerEventHandler(this.drawOrderCtrl_LayerDeleted);
             // 
             // tabProperties
             // 
@@ -320,9 +260,7 @@
             this.splitContainer2.ResumeLayout(false);
             this.tabLayersAndGroups.ResumeLayout(false);
             this.TAB_LEGEND.ResumeLayout(false);
-            this.ctxLegend.ResumeLayout(false);
-            this.grpContextMenu.ResumeLayout(false);
-            this.layerContextMenu.ResumeLayout(false);
+            this.TAB_DRAW_ORDER.ResumeLayout(false);
             this.tabProperties.ResumeLayout(false);
             this.TAB_PROPERTIES.ResumeLayout(false);
             this.statusStrip.ResumeLayout(false);
@@ -331,6 +269,8 @@
             this.PerformLayout();
 
         }
+        private Maestro.Editors.MapDefinition.LiveMapEditorDrawOrder drawOrderCtrl;
+        private Maestro.Editors.MapDefinition.LiveMapEditorLegend legendCtrl;
 
         #endregion
 
@@ -340,20 +280,11 @@
         private System.Windows.Forms.TabPage TAB_DRAW_ORDER;
         private MapViewer.MapViewer viewer;
         private MapViewer.DefaultToolbar toolbar;
-        private MapViewer.Legend legendCtrl;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel lblCoordinates;
         private System.Windows.Forms.ToolStripStatusLabel lblSelected;
         private System.Windows.Forms.ToolStripStatusLabel lblScale;
         private MapViewer.MapStatusTracker mapStatusTracker;
-        private System.Windows.Forms.ContextMenuStrip grpContextMenu;
-        private System.Windows.Forms.ContextMenuStrip layerContextMenu;
-        private System.Windows.Forms.ToolStripMenuItem addLayerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeThisLayerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeThisGroupToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip ctxLegend;
-        private System.Windows.Forms.ToolStripMenuItem addNewGroupToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewLayerToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.TabControl tabProperties;
         private System.Windows.Forms.TabPage TAB_PROPERTIES;

@@ -886,6 +886,24 @@
     <Compile Include="MapDefinition\LiveMapDefinitionEditorCtrl.Designer.cs">
       <DependentUpon>LiveMapDefinitionEditorCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="MapDefinition\LiveMapEditorDrawOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapDefinition\LiveMapEditorDrawOrder.Designer.cs">
+      <DependentUpon>LiveMapEditorDrawOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapDefinition\LiveMapEditorLegend.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapDefinition\LiveMapEditorLegend.Designer.cs">
+      <DependentUpon>LiveMapEditorLegend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapDefinition\Live\NewGroupDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapDefinition\Live\NewGroupDialog.Designer.cs">
+      <DependentUpon>NewGroupDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="MapDefinition\ManualScaleEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1637,6 +1655,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MapDefinition\LiveMapDefinitionEditorCtrl.resx">
       <DependentUpon>LiveMapDefinitionEditorCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapDefinition\LiveMapEditorDrawOrder.resx">
+      <DependentUpon>LiveMapEditorDrawOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapDefinition\LiveMapEditorLegend.resx">
+      <DependentUpon>LiveMapEditorLegend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapDefinition\Live\NewGroupDialog.resx">
+      <DependentUpon>NewGroupDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MapDefinition\ManualScaleEditor.resx">
       <DependentUpon>ManualScaleEditor.cs</DependentUpon>

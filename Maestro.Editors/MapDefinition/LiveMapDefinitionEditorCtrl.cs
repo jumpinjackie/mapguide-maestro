@@ -95,5 +95,24 @@ namespace Maestro.Editors.MapDefinition
                 return;
             propGrid.SelectedObject = node.Tag;
         }
+
+        private void drawOrderCtrl_LayerChanged(object sender, RuntimeMapLayer layer)
+        {
+            propGrid.SelectedObject = layer;
+        }
+
+        private void drawOrderCtrl_LayerDeleted(object sender, RuntimeMapLayer layer)
+        {
+            if (layer == propGrid.SelectedObject)
+                propGrid.SelectedObject = null;
+        }
+
+        private void legendCtrl_NodeDeleted(object sender, TreeNode node)
+        {
+            var layer = node.Tag as Maestro.MapViewer.Legend.LayerNodeMetadata;
+            //Nothing to edit for theme rule nodes
+            if (layer != null && layer == propGrid.SelectedObject)
+                propGrid.SelectedObject = null;
+        }
     }
 }

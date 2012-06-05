@@ -34,7 +34,7 @@ using System.IO;
 
 namespace Maestro.MapViewer
 {
-    public delegate void NodeSelectionEventHandler(object sender, TreeNode node);
+    public delegate void NodeEventHandler(object sender, TreeNode node);
 
     public partial class Legend : UserControl
     {
@@ -271,6 +271,8 @@ namespace Maestro.MapViewer
                 trvLegend.EndUpdate();
             }
         }
+
+        public TreeNode SelectedNode { get { return trvLegend.SelectedNode; } }
 
         private static void ClearNodes(TreeNodeCollection nodes)
         {
@@ -1010,13 +1012,23 @@ namespace Maestro.MapViewer
             set { trvLegend.ShowNodeToolTips = value; }
         }
 
-        public event NodeSelectionEventHandler NodeSelected;
+        public event NodeEventHandler NodeSelected;
 
         private void trvLegend_AfterSelect(object sender, TreeViewEventArgs e)
         {
             var h = this.NodeSelected;
             if (h != null)
                 h(this, e.Node);
+        }
+
+        public bool SelectOnRightClick { get; set; }
+
+        private void trvLegend_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && this.SelectOnRightClick)
+            {
+                trvLegend.SelectedNode = trvLegend.GetNodeAt(e.X, e.Y);
+            }
         }
     }
 }

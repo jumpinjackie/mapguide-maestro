@@ -19,8 +19,11 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
+
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using System.Collections;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
@@ -29,7 +32,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     /// </summary>
     /// <typeparam name="TKey">The type of the key.</typeparam>
     /// <typeparam name="TVal">The type of the value.</typeparam>
-    public abstract class KeyValueCollection<TKey, TVal> : IList<TVal> where TVal : class
+    public abstract class KeyValueCollection<TKey, TVal> : IList<TVal>, IList where TVal : class
     {
         /// <summary>
         /// The internal list of value
@@ -96,6 +99,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             _values.Insert(index, item);
             _valuesByKey.Add(key, item);
             OnItemAdded(item);
+            OnCollectionChanged();
         }
 
         /// <summary>
@@ -121,6 +125,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 _valuesByKey.Remove(key);
 
                 OnItemRemoved(item);
+                OnCollectionChanged();
             }
         }
 
@@ -149,6 +154,34 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 if (_values[index] != null)
                     RemoveAt(index);
                 _values[index] = value;
+                OnCollectionChanged();
+            }
+        }
+
+        /// <summary>
+        /// Sets the new index of the specified object. This object must already be present inside the collection
+        /// </summary>
+        /// <param name="newIndex"></param>
+        /// <param name="item"></param>
+        public void SetNewIndex(int newIndex, TVal item)
+        {
+            int idx = this.IndexOf(item);
+            if (idx >= 0)
+            {
+                bool bSuccess = false;
+                try
+                {
+                    bSuppressCollectionChanged = true;
+                    this.RemoveAt(idx);
+                    this.Insert(newIndex, item);
+                    bSuccess = true;
+                }
+                finally
+                {
+                    bSuppressCollectionChanged = false;
+                    if (bSuccess)
+                        OnCollectionChanged();
+                }
             }
         }
 
@@ -169,6 +202,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             _values.Add(item);
             _valuesByKey.Add(key, item);
             OnItemAdded(item);
+            OnCollectionChanged();
         }
 
         /// <summary>
@@ -179,23 +213,34 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         ///   </exception>
         public virtual void Clear()
         {
-            //We don't call Clear() directly because we need to propagate removal of each
-            //item back to the map
-            var items = new List<TVal>(this);
-            foreach (var item in items)
+            bool hasRemovedAnItem = false;
+            try 
             {
-                Remove(item);
+                bSuppressCollectionChanged = true;
+                //We don't call Clear() directly because we need to propagate removal of each
+                //item back to the map
+                var items = new List<TVal>(this);
+                foreach (var item in items)
+                {
+                    Remove(item);
+                    hasRemovedAnItem = true;
+                }
+                //This shouldn't happen
+                if (_values.Count > 0)
+                {
+                    System.Diagnostics.Trace.TraceWarning("Expected empty values collection!");
+                    _values.Clear();
+                }
+                if (_valuesByKey.Count > 0)
+                {
+                    System.Diagnostics.Trace.TraceWarning("Expected empty values collection!");
+                    _valuesByKey.Clear();
+                }
             }
-            //This shouldn't happen
-            if (_values.Count > 0)
-            {
-                System.Diagnostics.Trace.TraceWarning("Expected empty values collection!");
-                _values.Clear();
-            }
-            if (_valuesByKey.Count > 0)
-            {
-                System.Diagnostics.Trace.TraceWarning("Expected empty values collection!");
-                _valuesByKey.Clear();
+            finally {
+                bSuppressCollectionChanged = false;
+                if (hasRemovedAnItem)
+                    OnCollectionChanged();
             }
         }
 
@@ -279,6 +324,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 _valuesByKey.Remove(key);
 
                 OnItemRemoved(item);
+                OnCollectionChanged();
                 return ret;
             }
             return ret;
@@ -323,7 +369,31 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public TVal this[TKey key]
         {
             get { return _valuesByKey.ContainsKey(key) ? _valuesByKey[key] : null; }
-            set { _valuesByKey[key] = value; }
+            set 
+            { 
+                _valuesByKey[key] = value;
+                OnCollectionChanged();
+            }
+        }
+        
+        /// <summary>
+        /// Raised when the collection has been modified
+        /// </summary>
+        public event EventHandler CollectionChanged;
+        
+        private bool bSuppressCollectionChanged = false;
+        
+        /// <summary>
+        /// Raises the <see cref="CollectionChanged" /> event
+        /// </summary>
+        protected virtual void OnCollectionChanged()
+        {
+            if (bSuppressCollectionChanged)
+                return;
+        
+            var h = this.CollectionChanged;
+            if (h != null)
+                h(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -357,6 +427,86 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="value">The value.</param>
         /// <returns></returns>
         protected abstract TKey SelectKey(TVal value);
+
+        int IList.Add(object value)
+        {
+            this.Add((TVal)value);
+            return this.Count - 1;
+        }
+
+        void IList.Clear()
+        {
+            this.Clear();
+        }
+
+        bool IList.Contains(object value)
+        {
+            return this.Contains((TVal)value);
+        }
+
+        int IList.IndexOf(object value)
+        {
+            return this.IndexOf((TVal)value);
+        }
+
+        void IList.Insert(int index, object value)
+        {
+            this.Insert(index, (TVal)value);
+        }
+
+        bool IList.IsFixedSize
+        {
+            get { return false; }
+        }
+
+        bool IList.IsReadOnly
+        {
+            get { return false; }
+        }
+
+        void IList.Remove(object value)
+        {
+            this.Remove((TVal)value);
+        }
+
+        void IList.RemoveAt(int index)
+        {
+            this.RemoveAt(index);
+        }
+
+        object IList.this[int index]
+        {
+            get
+            {
+                return this[index];
+            }
+            set
+            {
+                this[index] = (TVal)value;
+            }
+        }
+
+        void ICollection.CopyTo(Array array, int index)
+        {
+            this.CopyTo((TVal[])array, index);
+        }
+
+        int ICollection.Count
+        {
+            get { return this.Count; }
+        }
+
+        bool ICollection.IsSynchronized
+        {
+            get { return false; }
+        }
+
+        private readonly object _syncRoot = new object();
+
+        object ICollection.SyncRoot
+        {
+            get { return _syncRoot; }
+        }
     }
 
     /// <summary>
