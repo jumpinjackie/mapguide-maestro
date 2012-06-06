@@ -148,7 +148,7 @@ namespace Maestro.Editors.Generic
             set 
             {
                 _origText = null;            
-                txtXmlContent.Text = value; FormatText();
+                txtXmlContent.Text = value; //FormatText();
             }
         }
 

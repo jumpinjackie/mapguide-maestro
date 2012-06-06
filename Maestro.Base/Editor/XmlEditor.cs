@@ -78,36 +78,44 @@ namespace Maestro.Base.Editor
             string[] warnings;
             string[] errors;
 
-            ValidateXml(out errors, out warnings);
-            var issues = new List<ValidationIssue>();
-            foreach (string err in errors)
+            Func<ValidationIssue[]> validator = () =>
             {
-                issues.Add(new ValidationIssue(this.Resource, ValidationStatus.Error, ValidationStatusCode.Error_General_ValidationError, err));
-            }
-            foreach (string warn in warnings)
-            {
-                issues.Add(new ValidationIssue(this.Resource, ValidationStatus.Warning, ValidationStatusCode.Warning_General_ValidationWarning, warn));
-            }
+                ValidateXml(out errors, out warnings);
+                var issues = new List<ValidationIssue>();
+                foreach (string err in errors)
+                {
+                    issues.Add(new ValidationIssue(this.Resource, ValidationStatus.Error, ValidationStatusCode.Error_General_ValidationError, err));
+                }
+                foreach (string warn in warnings)
+                {
+                    issues.Add(new ValidationIssue(this.Resource, ValidationStatus.Warning, ValidationStatusCode.Warning_General_ValidationWarning, warn));
+                }
 
-            //Put through ValidationResultSet to weed out redundant messages
-            var set = new ValidationResultSet(issues);
+                //Put through ValidationResultSet to weed out redundant messages
+                var set = new ValidationResultSet(issues);
 
-            try
-            {
-                var res = ResourceTypeRegistry.Deserialize(editor.XmlContent);
-                var context = new ResourceValidationContext(_edSvc.ResourceService, _edSvc.FeatureService);
-                //We don't care about dependents, we just want to validate *this* resource
-                var resIssues = ResourceValidatorSet.Validate(context, res, false);
-                set.AddIssues(resIssues);
-            }
-            catch 
-            { 
-                //This can fail because the XML may be for something that Maestro does not offer a strongly-typed class for yet.
-                //So the XML may be legit, just not for this version of Maestro that is doing the validating
-            }
+                try
+                {
+                    var res = ResourceTypeRegistry.Deserialize(editor.XmlContent);
+                    var context = new ResourceValidationContext(_edSvc.ResourceService, _edSvc.FeatureService);
+                    //We don't care about dependents, we just want to validate *this* resource
+                    var resIssues = ResourceValidatorSet.Validate(context, res, false);
+                    set.AddIssues(resIssues);
+                }
+                catch
+                {
+                    //This can fail because the XML may be for something that Maestro does not offer a strongly-typed class for yet.
+                    //So the XML may be legit, just not for this version of Maestro that is doing the validating
+                }
 
-            //Only care about errors. Warnings and other types should not derail us from saving
-            return set.GetAllIssues(ValidationStatus.Error);
+                //Only care about errors. Warnings and other types should not derail us from saving
+                return set.GetAllIssues(ValidationStatus.Error);
+            };
+
+            if (this.InvokeRequired)
+                return (ValidationIssue[])this.Invoke(validator);
+            else
+                return validator();
         }
 
         public override string GetXmlContent()
