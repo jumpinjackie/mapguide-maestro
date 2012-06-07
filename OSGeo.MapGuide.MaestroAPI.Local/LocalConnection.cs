@@ -226,9 +226,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         public override System.IO.Stream GetResourceXmlData(string resourceID)
         {
             var res = GetResourceService();
-            var result = Native.Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceContent"), new object[] { new MgResourceIdentifier(resourceID) });
+            //var result = Native.Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceContent"), new object[] { new MgResourceIdentifier(resourceID) });
+            GetByteReaderMethod fetch = () =>
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return res.GetResourceContent(resId);
+            };
             LogMethodCall("MgResourceService::GetResourceContent", true, resourceID);
-            return result;
+            return new MgReadOnlyStream(fetch);
         }
 
         public override void DeleteResource(string resourceID)
@@ -244,10 +249,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             if (type == null)
                 type = "";
             var res = GetResourceService();
-            System.Reflection.MethodInfo mi = res.GetType().GetMethod("EnumerateResources", new Type[] { typeof(MgResourceIdentifier), typeof(int), typeof(string), typeof(bool) });
-            var result = (ResourceList)base.DeserializeObject(typeof(ResourceList), Native.Utility.MgStreamToNetStream(res, mi, new object[] { new MgResourceIdentifier(startingpoint), depth, type, computeChildren }));
+            GetByteReaderMethod fetch = () => 
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(startingpoint);
+                return res.EnumerateResources(resId, depth, type, computeChildren);
+            };
             LogMethodCall("MgResourceService::EnumerateResources", true, startingpoint, depth.ToString(), type, computeChildren.ToString());
-            return result;
+            return base.DeserializeObject<ResourceList>(new MgReadOnlyStream(fetch));
         }
 
         public override ResourceReferenceList EnumerateResourceReferences(string resourceid)
@@ -323,9 +331,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         public override System.IO.Stream GetResourceData(string resourceID, string dataname)
         {
             var res = GetResourceService();
-            var result = Native.Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceData"), new object[] { new MgResourceIdentifier(resourceID), dataname });
+            //var result = Native.Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceData"), new object[] { new MgResourceIdentifier(resourceID), dataname });
+            GetByteReaderMethod fetch = () => 
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return res.GetResourceData(resId, dataname);
+            };
             LogMethodCall("MgResourceService::GetResourceData", true, resourceID, dataname);
-            return result;
+            return new MgReadOnlyStream(fetch);
         }
 
         public override void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback)
@@ -431,9 +444,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             get 
             {
-                var fes = GetFeatureService();
-                var reg = (FeatureProviderRegistry)base.DeserializeObject(typeof(FeatureProviderRegistry), Native.Utility.MgStreamToNetStream(fes, fes.GetType().GetMethod("GetFeatureProviders"), new object[] { }));
+                MgFeatureService fes = GetFeatureService();
+                GetByteReaderMethod fetch = () =>
+                {
+                    return fes.GetFeatureProviders();
+                };
                 LogMethodCall("MgFeatureService::GetFeatureProviders", true);
+                var reg = base.DeserializeObject<FeatureProviderRegistry>(new MgReadOnlyStream(fetch));
                 return reg.FeatureProvider.ToArray();
             }
         }
@@ -442,10 +459,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             var fes = GetFeatureService();
             MgSpatialContextReader rd = fes.GetSpatialContexts(new MgResourceIdentifier(resourceID), activeOnly);
+            GetByteReaderMethod fetch = () =>
+            {
+                return rd.ToXml();
+            };
             LogMethodCall("MgFeatureService::GetSpatialContexts", true, resourceID, activeOnly.ToString());
-            var scList = this.DeserializeObject(typeof(FdoSpatialContextList), Native.Utility.MgStreamToNetStream(rd, rd.GetType().GetMethod("ToXml"), null)) as FdoSpatialContextList;
-            rd.Close();
-            return scList;
+            return base.DeserializeObject<FdoSpatialContextList>(new MgReadOnlyStream(fetch));
         }
 
         public override string[] GetIdentityProperties(string resourceID, string classname)
@@ -542,9 +561,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         public override DataStoreList EnumerateDataStores(string providerName, string partialConnString)
         {
             var fes = GetFeatureService();
-            var list = (DataStoreList)base.DeserializeObject(typeof(DataStoreList), Native.Utility.MgStreamToNetStream(fes, fes.GetType().GetMethod("EnumerateDataStores"), new object[] { providerName, partialConnString }));
+            GetByteReaderMethod fetch = () =>
+            {
+                return fes.EnumerateDataStores(providerName, partialConnString);
+            };
             LogMethodCall("MgFeatureService::EnumerateDataStores", true, providerName, partialConnString);
-            return list;
+            return base.DeserializeObject<DataStoreList>(new MgReadOnlyStream(fetch));
         }
 
         public override string[] GetSchemas(string resourceId)
@@ -698,30 +720,37 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         public ResourceDataList EnumerateResourceData(string resourceID)
         {
             var res = GetResourceService();
-            System.IO.Stream ms = Native.Utility.MgStreamToNetStream(res, res.GetType().GetMethod("EnumerateResourceData"), new object[] { new MgResourceIdentifier(resourceID) });
-
+            GetByteReaderMethod fetch = () =>
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return res.EnumerateResourceData(resId);
+            };
             LogMethodCall("MgResourceService::EnumerateResourceData", true, resourceID);
-
-            return (ResourceDataList)DeserializeObject(typeof(ResourceDataList), ms);
+            return base.DeserializeObject<ResourceDataList>(new MgReadOnlyStream(fetch));
         }
 
         public System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format)
         {
             var ts = GetTileService();
-
-            Type[] types = new Type[] { typeof(MgResourceIdentifier), typeof(string), typeof(int), typeof(int), typeof(int) };
-
-            var result = Native.Utility.MgStreamToNetStream(ts, ts.GetType().GetMethod("GetTile", types), new object[] { new MgResourceIdentifier(mapdefinition), baselayergroup, col, row, scaleindex });
+            GetByteReaderMethod fetch = () =>
+            {
+                MgResourceIdentifier mdf = new MgResourceIdentifier(mapdefinition);
+                return ts.GetTile(mdf, baselayergroup, col, row, scaleindex);
+            };
             LogMethodCall("MgTileService::GetTile", true, mapdefinition, baselayergroup, col.ToString(), row.ToString(), scaleindex.ToString());
-            return result;
+            return new MgReadOnlyStream(fetch);
         }
 
         public System.IO.Stream DescribeDrawing(string resourceID)
         {
             var dwSvc = GetDrawingService();
-            var result = Native.Utility.MgStreamToNetStream(dwSvc, dwSvc.GetType().GetMethod("DescribeDrawing"), new object[] { new MgResourceIdentifier(resourceID) });
-            LogMethodCall("MgDrawingService::DescribeDrawing", true, resourceID);
-            return result;
+            GetByteReaderMethod fetch = () =>
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return dwSvc.GetDrawing(resId);
+            };
+            LogMethodCall("MgDrawingService::GetDrawing", true, resourceID);
+            return new MgReadOnlyStream(fetch);
         }
 
         public string[] EnumerateDrawingLayers(string resourceID, string sectionName)
@@ -740,17 +769,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         public DrawingSectionResourceList EnumerateDrawingSectionResources(string resourceID, string sectionName)
         {
             var dwSvc = GetDrawingService();
-            var list = base.DeserializeObject<DrawingSectionResourceList>(Native.Utility.MgStreamToNetStream(dwSvc, dwSvc.GetType().GetMethod("EnumerateDrawingSectionResources"), new object[] { new MgResourceIdentifier(resourceID), sectionName }));
+            GetByteReaderMethod fetch = () =>
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return dwSvc.EnumerateSectionResources(resId, sectionName);
+            };
             LogMethodCall("MgDrawingService::EnumerateDrawingSectionResources", true, resourceID, sectionName);
-            return list;
+            return base.DeserializeObject<DrawingSectionResourceList>(new MgReadOnlyStream(fetch));
         }
 
         public DrawingSectionList EnumerateDrawingSections(string resourceID)
         {
             var dwSvc = GetDrawingService();
-            var list = base.DeserializeObject<DrawingSectionList>(Native.Utility.MgStreamToNetStream(dwSvc, dwSvc.GetType().GetMethod("EnumerateDrawingSections"), new object[] { new MgResourceIdentifier(resourceID) }));
+            GetByteReaderMethod fetch = () =>
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return dwSvc.EnumerateSections(resId);
+            };
             LogMethodCall("MgDrawingService::EnumerateDrawingSections", true, resourceID);
-            return list;
+            return base.DeserializeObject<DrawingSectionList>(new MgReadOnlyStream(fetch));
         }
 
         public string GetDrawingCoordinateSpace(string resourceID)
@@ -764,33 +801,49 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         public System.IO.Stream GetDrawing(string resourceID)
         {
             var dwSvc = GetDrawingService();
-            var res = Native.Utility.MgStreamToNetStream(dwSvc, dwSvc.GetType().GetMethod("GetDrawing"), new object[] { new MgResourceIdentifier(resourceID) });
+            GetByteReaderMethod fetch = () =>
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return dwSvc.GetDrawing(resId);
+            };
             LogMethodCall("MgDrawingService::GetDrawing", true, resourceID);
-            return res;
+            return new MgReadOnlyStream(fetch);
         }
 
         public System.IO.Stream GetLayer(string resourceID, string sectionName, string layerName)
         {
             var dwSvc = GetDrawingService();
-            var res = Native.Utility.MgStreamToNetStream(dwSvc, dwSvc.GetType().GetMethod("GetLayer"), new object[] { new MgResourceIdentifier(resourceID), sectionName, layerName });
+            GetByteReaderMethod fetch = () =>
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return dwSvc.GetLayer(resId, sectionName, layerName);
+            };
             LogMethodCall("MgDrawingService::GetLayer", true, resourceID, sectionName, layerName);
-            return res;
+            return new MgReadOnlyStream(fetch);
         }
 
         public System.IO.Stream GetSection(string resourceID, string sectionName)
         {
             var dwSvc = GetDrawingService();
-            var res = Native.Utility.MgStreamToNetStream(dwSvc, dwSvc.GetType().GetMethod("GetSection"), new object[] { new MgResourceIdentifier(resourceID), sectionName });
+            GetByteReaderMethod fetch = () =>
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return dwSvc.GetSection(resId, sectionName);
+            };
             LogMethodCall("MgDrawingService::GetSection", true, resourceID, sectionName);
-            return res;
+            return new MgReadOnlyStream(fetch);
         }
 
         public System.IO.Stream GetSectionResource(string resourceID, string resourceName)
         {
             var dwSvc = GetDrawingService();
-            var res = Native.Utility.MgStreamToNetStream(dwSvc, dwSvc.GetType().GetMethod("GetSectionResource"), new object[] { new MgResourceIdentifier(resourceID), resourceName });
+            GetByteReaderMethod fetch = () =>
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return dwSvc.GetSectionResource(resId, resourceName);
+            };
             LogMethodCall("MgDrawingService::GetSectionResource", true, resourceID, resourceName);
-            return res;
+            return new MgReadOnlyStream(fetch);
         }
 
         public IFeatureService FeatureService

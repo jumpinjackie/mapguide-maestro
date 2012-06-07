@@ -57,58 +57,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             }
         }
 
-
-        /// <summary>
-        /// Converts a MgStream to a .Net Stream object.
-        /// Due to some swig issues, it is not possible to pass on an MgStream to a function,
-        /// so this function calls a method to retrieve the stream locally.
-        /// </summary>
-        /// <param name="source">The object which has a stream</param>
-        /// <param name="mi">The method to call</param>
-        /// <param name="args">Arguments to the method</param>
-        /// <returns>A read-only <see cref="System.IO.Stream"/> that wraps the underlying <see cref="OSGeo.MapGuide.MgByteReader"/></returns>
-        public static System.IO.Stream MgStreamToNetStream(object source, System.Reflection.MethodInfo mi, object[] args)
-        {
-            try
-            {
-                //How can we work around invalidating MgByteReader when it's passed as a parameter?
-                //Cheat the system by deferring execution of MgByteReader reference assignment until
-                //we're in the ctor of MgReadOnlyStream. Only MgReadOnlyStream has access to the MgByteReader
-                //Everything else interacts through the .net Stream interface. Win-win.
-                GetByteReaderMethod method = () => { return (OSGeo.MapGuide.MgByteReader)mi.Invoke(source, args); };
-                return new MgReadOnlyStream(method);
-            }
-            catch (System.Reflection.TargetInvocationException tex)
-            {
-                if (tex.InnerException != null)
-                    throw tex.InnerException;
-                else
-                    throw;
-            }
-            /* 
-            try
-            {
-                OSGeo.MapGuide.MgByteReader rd = (OSGeo.MapGuide.MgByteReader)mi.Invoke(source, args);
-                System.IO.MemoryStream ms = new System.IO.MemoryStream();
-                byte[] buf = new byte[1024];
-                int c = 0;
-                do
-                {
-                    c = rd.Read(buf, buf.Length);
-                    ms.Write(buf, 0, c);
-                } while (c != 0);
-                ms.Position = 0;
-                return ms;
-            }
-            catch (System.Reflection.TargetInvocationException tex)
-            {
-                if (tex.InnerException != null)
-                    throw tex.InnerException;
-                else
-                    throw;
-            }*/
-        }
-
         /// <summary>
         /// Returns a type used to define a raster column in a feature reader
         /// </summary>

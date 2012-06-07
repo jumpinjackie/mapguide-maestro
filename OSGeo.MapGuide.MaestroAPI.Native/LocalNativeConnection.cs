@@ -193,11 +193,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 		{
 			if (type == null)
 				type = "";
-			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
-			System.Reflection.MethodInfo mi = res.GetType().GetMethod("EnumerateResources", new Type[] { typeof(MgResourceIdentifier), typeof(int), typeof(string), typeof(bool) });
-			var result = (ResourceList) base.DeserializeObject(typeof(ResourceList), Utility.MgStreamToNetStream(res, mi, new object[] {new MgResourceIdentifier(startingpoint), depth, type, computeChildren }));
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            GetByteReaderMethod fetch = () => 
+            { 
+                MgResourceIdentifier startingPoint = new MgResourceIdentifier(startingpoint);
+                return res.EnumerateResources(startingPoint, depth, type, computeChildren);
+            };
             LogMethodCall("MgResourceService::EnumerateResources", true, startingpoint, depth.ToString(), type, computeChildren.ToString());
-            return result;
+            return (ResourceList)base.DeserializeObject<ResourceList>(new MgReadOnlyStream(fetch));
 		}
 
 		public override FeatureProviderRegistryFeatureProvider[] FeatureProviders
@@ -205,8 +208,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 			get
 			{
 				MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
-                var reg = (FeatureProviderRegistry)base.DeserializeObject(typeof(FeatureProviderRegistry), Utility.MgStreamToNetStream(fes, fes.GetType().GetMethod("GetFeatureProviders"), new object[] { }));
+                GetByteReaderMethod fetch = () => 
+                {
+                    return fes.GetFeatureProviders();
+                };
                 LogMethodCall("MgFeatureService::GetFeatureProviders", true);
+                var reg = base.DeserializeObject<FeatureProviderRegistry>(new MgReadOnlyStream(fetch));
                 return reg.FeatureProvider.ToArray();
 			}
 		}
@@ -238,25 +245,36 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 		public FdoProviderCapabilities GetProviderCapabilities(string provider)
 		{
 			MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
-			var res = (FdoProviderCapabilities) base.DeserializeObject(typeof(FdoProviderCapabilities), Utility.MgStreamToNetStream(fes, fes.GetType().GetMethod("GetCapabilities"), new object[] { provider }));
+            GetByteReaderMethod fetch = () => 
+            {
+                return fes.GetCapabilities(provider);
+            };
             LogMethodCall("MgFeatureService::GetProviderCapabilities", true, provider);
-            return res;
+            return base.DeserializeObject<FdoProviderCapabilities>(new MgReadOnlyStream(fetch));
 		}
 
 		public override System.IO.Stream GetResourceData(string resourceID, string dataname)
 		{
 			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
-			var result = Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceData"), new object[] { new MgResourceIdentifier(resourceID), dataname });
+            GetByteReaderMethod fetch = () => 
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return res.GetResourceData(resId, dataname);
+            };
             LogMethodCall("MgResourceService::GetResourceData", true, resourceID, dataname);
-            return result;
+            return new MgReadOnlyStream(fetch);
 		}
 
 		public override Stream GetResourceXmlData(string resourceID)
 		{
 			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
-            var result = Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceContent"), new object[] { new MgResourceIdentifier(resourceID) });
+            GetByteReaderMethod fetch = () => 
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return res.GetResourceContent(resId);
+            };
             LogMethodCall("MgResourceService::GetResourceContent", true, resourceID);
-            return result;
+            return new MgReadOnlyStream(fetch);
 		}
 
 		public override void SetResourceXmlData(string resourceid, System.IO.Stream content, System.IO.Stream header)
@@ -387,11 +405,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 		public ResourceDataList EnumerateResourceData(string resourceID)
 		{
 			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
-			System.IO.Stream ms = Utility.MgStreamToNetStream(res, res.GetType().GetMethod("EnumerateResourceData"), new object[] { new MgResourceIdentifier(resourceID) });
-
+            GetByteReaderMethod fetch = () => 
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return res.EnumerateResourceData(resId);
+            };
             LogMethodCall("MgResourceService::EnumerateResourceData", true, resourceID);
-            
-            return (ResourceDataList)DeserializeObject(typeof(ResourceDataList), ms);
+            return base.DeserializeObject<ResourceDataList>(new MgReadOnlyStream(fetch));
 		}
 
 		public override void DeleteResource(string resourceID)
@@ -483,10 +503,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 		public override ResourceReferenceList EnumerateResourceReferences(string resourceid)
 		{
 			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
-            System.IO.Stream ms = Utility.MgStreamToNetStream(res, res.GetType().GetMethod("EnumerateReferences"), new object[] { new MgResourceIdentifier(resourceid) });
-
+            GetByteReaderMethod fetch = () => 
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceid);
+                return res.EnumerateReferences(resId);
+            };
             LogMethodCall("MgResourceService::EnumerateReferences", true, resourceid);
-            return (ResourceReferenceList)DeserializeObject(typeof(ResourceReferenceList), ms);
+            return base.DeserializeObject<ResourceReferenceList>(new MgReadOnlyStream(fetch));
 		}
 
 		public override void CopyResource(string oldpath, string newpath, bool overwrite)
@@ -569,20 +592,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 
 			string mapname = new ResourceIdentifier(resourceId).Path;
 
-			MgMap map = new MgMap();
-			map.Open(res, mapname);
-			MgSelection sel = new MgSelection(map);
-            //The color accepted by MgColor has alpha as the last value, but the returned has alpha first
-			MgColor color = new MgColor(Utility.ParseHTMLColor(map.GetBackgroundColor()));
-
-            //TODO: The render method is missing the overload for the Clip parameter
-            object[] args = new object[] { map, sel, gf.CreateCoordinateXY(x, y), scale, width, height, color, format, true };
-            Type[] types = new Type[] { args[0].GetType(), args[1].GetType(), args[2].GetType(), args[3].GetType(), args[4].GetType(), args[5].GetType(), args[6].GetType(), args[7].GetType(), args[8].GetType() };
-			var result = Utility.MgStreamToNetStream(rnd, rnd.GetType().GetMethod("RenderMap", types), args);
-
+            GetByteReaderMethod fetch = () => 
+            {
+                MgMap map = new MgMap();
+			    map.Open(res, mapname);
+			    MgSelection sel = new MgSelection(map);
+                //The color accepted by MgColor has alpha as the last value, but the returned has alpha first
+			    MgColor color = new MgColor(Utility.ParseHTMLColor(map.GetBackgroundColor()));
+                MgCoordinate coord = gf.CreateCoordinateXY(x, y);
+                return rnd.RenderMap(map, sel, coord, scale, width, height, color, format, true);
+            };
             LogMethodCall("MgRenderingService::RenderMap", true, "MgMap", "MgSelection", "MgPoint("+ x + "," + y + ")", scale.ToString(), width.ToString(), height.ToString(), "MgColor", format, true.ToString());
-
-            return result;
+            return new MgReadOnlyStream(fetch);
 		}
 
         public override System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
@@ -593,22 +614,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 
             string mapname = new ResourceIdentifier(resourceId).Path;
 
-            MgMap map = new MgMap();
-            map.Open(res, mapname);
-            MgSelection sel = new MgSelection(map);
-            //The color accepted by MgColor has alpha as the last value, but the returned has alpha first
-            MgColor color = new MgColor(Utility.ParseHTMLColor(map.GetBackgroundColor()));
-            MgEnvelope env = new MgEnvelope(gf.CreateCoordinateXY(x1, y1), gf.CreateCoordinateXY(x2, y2));
-
             //TODO: The render is missing the clip param for the extent override method
 
-            object[] args = new object[] { map, sel, env, width, height, color, format };
-            Type[] types = new Type[] { args[0].GetType(), args[1].GetType(), args[2].GetType(), args[3].GetType(), args[4].GetType(), args[5].GetType(), args[6].GetType() };
-            var result = Utility.MgStreamToNetStream(rnd, rnd.GetType().GetMethod("RenderMap", types), args);
+            GetByteReaderMethod fetch = () => 
+            {
+                MgMap map = new MgMap();
+                map.Open(res, mapname);
+                MgSelection sel = new MgSelection(map);
+                //The color accepted by MgColor has alpha as the last value, but the returned has alpha first
+                MgColor color = new MgColor(Utility.ParseHTMLColor(map.GetBackgroundColor()));
+                MgEnvelope env = new MgEnvelope(gf.CreateCoordinateXY(x1, y1), gf.CreateCoordinateXY(x2, y2));
 
+                return rnd.RenderMap(map, sel, env, width, height, color, format);
+            };
             LogMethodCall("MgRenderingService::RenderMap", true, "MgMap", "MgSelection", "MgEnvelope", width.ToString(), height.ToString(), "MgColor", format);
-
-            return result;
+            return new MgReadOnlyStream(fetch);
         }
 
         public override Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, Color selectionColor, int behaviour)
@@ -623,13 +643,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 sel.FromXml(selection.ToXml());
 
             var rndOpts = new MgRenderingOptions(format, behaviour, new MgColor(selectionColor));
-
-            LogMethodCall("MgRenderingService::RenderDynamicOverlay", true, "MgMap", "MgSelection", "MgRenderingOptions");
-
             GetByteReaderMethod fetch = () =>
             {
                 return rnd.RenderDynamicOverlay(mmap, sel, rndOpts);
             };
+            LogMethodCall("MgRenderingService::RenderDynamicOverlay", true, "MgMap", "MgSelection", "MgRenderingOptions");
+
             return new MgReadOnlyStream(fetch);
         }
 
@@ -638,19 +657,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             MgRenderingService rnd = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
             MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
 
-            MgMap mmap = new MgMap();
-            mmap.Open(res, map.Name);
-            MgSelection sel = new MgSelection(mmap);
-            if (selection != null)
-                sel.FromXml(selection.ToXml());
+            GetByteReaderMethod fetch = () => 
+            {
+                MgMap mmap = new MgMap();
+                mmap.Open(res, map.Name);
+                MgSelection sel = new MgSelection(mmap);
+                if (selection != null)
+                    sel.FromXml(selection.ToXml());
 
-            object[] args = new object[] { mmap, sel, format, keepSelection };
-            Type[] types = new Type[] { args[0].GetType(), args[1].GetType(), args[2].GetType(), args[3].GetType() };
-            var result = Utility.MgStreamToNetStream(rnd, rnd.GetType().GetMethod("RenderDynamicOverlay", types), args);
-
+                return rnd.RenderDynamicOverlay(mmap, sel, format, keepSelection);
+            };
             LogMethodCall("MgRenderingService::RenderDynamicOverlay", true, "MgMap", "MgSelection", format, keepSelection.ToString());
-
-            return result;
+            return new MgReadOnlyStream(fetch);
         }
 
         public Stream RenderMapLegend(RuntimeMap map, int width, int height, System.Drawing.Color backgroundColor, string format)
@@ -658,19 +676,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             MgRenderingService rnd = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
             MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
 
-            MgMap mmap = new MgMap();
-            mmap.Open(res, map.Name);
-            MgSelection sel = new MgSelection(mmap);
-
-            MgColor color = new MgColor(backgroundColor);
-
-            object[] args = new object[] { mmap, width, height, color, format };
-            Type[] types = new Type[] { args[0].GetType(), args[1].GetType(), args[2].GetType(), args[3].GetType(), args[4].GetType() };
-            var result = Utility.MgStreamToNetStream(rnd, rnd.GetType().GetMethod("RenderMapLegend", types), args);
-
+            GetByteReaderMethod fetch = () => 
+            {
+                MgMap mmap = new MgMap();
+                mmap.Open(res, map.Name);
+                MgSelection sel = new MgSelection(mmap);
+                MgColor color = new MgColor(backgroundColor);
+                return rnd.RenderMapLegend(mmap, width, height, color, format);
+            };
             LogMethodCall("MgRenderingService::RenderMapLegend", true, "MgMap", width.ToString(CultureInfo.InvariantCulture), height.ToString(CultureInfo.InvariantCulture), "#" + ColorTranslator.ToHtml(backgroundColor), format);
-
-            return result;
+            return new MgReadOnlyStream(fetch);
         }
 
 		public override bool IsSessionExpiredException(Exception ex)
@@ -689,9 +704,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 			MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
 			MgSpatialContextReader rd = fes.GetSpatialContexts(new MgResourceIdentifier(resourceID), activeOnly);
 
+            GetByteReaderMethod fetch = () => 
+            {
+                return rd.ToXml();
+            };
             LogMethodCall("MgFeatureService::GetSpatialContexts", true, resourceID, activeOnly.ToString());
-
-            return this.DeserializeObject(typeof(FdoSpatialContextList), Utility.MgStreamToNetStream(rd, rd.GetType().GetMethod("ToXml"), null)) as FdoSpatialContextList;
+            return base.DeserializeObject<FdoSpatialContextList>(new MgReadOnlyStream(fetch));
 		}
 
 		/// <summary>
@@ -705,31 +723,24 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 			MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
 			string[] parts = classname.Split(':');
             MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
-			MgPropertyDefinitionCollection props;
+			
 		    if (parts.Length == 1)
 				parts = new string[] { classname };
 			else if (parts.Length != 2)
 				throw new Exception("Unable to parse classname into class and schema: " + classname);
 
-            var classes = fes.DescribeSchema(resId, parts[0])[0].GetClasses();
+            MgClassDefinition cls = fes.GetClassDefinition(resId, parts[0], parts[1]);
+            if (cls == null)
+                throw new Exception("Unable to find class: " + parts[1] + " in schema " + parts[0]);
 
             LogMethodCall("MgFeatureService::DescribeSchema", true, resourceID, parts[0]);
 
-            foreach (MgClassDefinition cdef in classes)
-            {
-                if (parts.Length == 1 || cdef.Name.ToLower().Trim().Equals(parts[1].ToLower().Trim()))
-                {
-                    props = cdef.GetIdentityProperties();
+            MgPropertyDefinitionCollection props = cls.GetIdentityProperties();
+            string[] res = new string[props.Count];
+            for (int i = 0; i < props.Count; i++)
+                res[i] = (props[i] as MgProperty).Name;
 
-                    string[] res = new string[props.Count];
-                    for (int i = 0; i < props.Count; i++)
-                        res[i] = (props[i] as MgProperty).Name;
-
-                    return res;
-                }
-            }
-
-            throw new Exception("Unable to find class: " + parts[1] + " in schema " + parts[0]);
+            return res;
 		}
 
 		/// <summary>
@@ -781,13 +792,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 		/// <returns>A list of unmanaged data</returns>
 		public override UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type)
 		{
-			throw new MissingMethodException();
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            GetByteReaderMethod fetch = () => 
+            {
+                return res.EnumerateUnmanagedData(startpath, recursive, type.ToString(), filter);
+            };
+            LogMethodCall("MgResourceService::EnumerateUnmanagedData", true, startpath, recursive, type.ToString(), filter);
+            return base.DeserializeObject<UnmanagedDataList>(new MgReadOnlyStream(fetch));
 		}
 
         public override void UpdateRepository(string resourceId, ResourceFolderHeaderType header)
         {
             MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
-
+            
             if (header == null)
             {
                 res.UpdateRepository(new MgResourceIdentifier(resourceId), null, null);
@@ -806,10 +823,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         public override object GetFolderOrResourceHeader(string resourceID)
         {
 			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            GetByteReaderMethod fetch = () => 
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return res.GetResourceHeader(resId);
+            };
             if (ResourceIdentifier.IsFolderResource(resourceID))
-                return this.DeserializeObject<ResourceFolderHeaderType>(Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceHeader"), new object[] { new MgResourceIdentifier(resourceID) }));
+                return this.DeserializeObject<ResourceFolderHeaderType>(new MgReadOnlyStream(fetch));
             else
-                return this.DeserializeObject<ResourceDocumentHeaderType>(Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceHeader"), new object[] { new MgResourceIdentifier(resourceID) }));
+                return this.DeserializeObject<ResourceDocumentHeaderType>(new MgReadOnlyStream(fetch));
         }
 
 
@@ -822,7 +844,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         {
             if (m_cachedUserList == null)
             {
-                m_cachedUserList = this.DeserializeObject<UserList>(Utility.MgStreamToNetStream(this.Connection.GetSite(), this.Connection.GetSite().GetType().GetMethod("EnumerateUsers"), new object[] { group }));
+                GetByteReaderMethod fetch = () => 
+                {
+                    MgSite site = this.Connection.GetSite();
+                    return site.EnumerateUsers(group);
+                };
+                m_cachedUserList = this.DeserializeObject<UserList>(new MgReadOnlyStream(fetch));
                 LogMethodCall("MgSite::EnumerateUsers", true, group);
             }
             return m_cachedUserList;
@@ -836,7 +863,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         {
             if (m_cachedGroupList == null)
             {
-                m_cachedGroupList = this.DeserializeObject<GroupList>(Utility.MgStreamToNetStream(this.Connection.GetSite(), this.Connection.GetSite().GetType().GetMethod("EnumerateGroups"), null));
+                GetByteReaderMethod fetch = () =>
+                {
+                    MgSite site = this.Connection.GetSite();
+                    return site.EnumerateGroups();
+                };
+                m_cachedGroupList = this.DeserializeObject<GroupList>(new MgReadOnlyStream(fetch));
                 LogMethodCall("MgSite::EnumerateGroups", true);
             }
             return m_cachedGroupList;
@@ -845,13 +877,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         public override System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format)
         {
             MgTileService ts = this.Connection.CreateService(MgServiceType.TileService) as MgTileService;
-
-            Type[] types = new Type[] { typeof(MgResourceIdentifier), typeof(string), typeof(int), typeof(int), typeof(int) };
-
-            var result = Utility.MgStreamToNetStream(ts, ts.GetType().GetMethod("GetTile", types), new object[] { new MgResourceIdentifier(mapdefinition), baselayergroup, col, row, scaleindex });
+            GetByteReaderMethod fetch = () => 
+            {
+                MgResourceIdentifier mdf = new MgResourceIdentifier(mapdefinition);
+                return ts.GetTile(mdf, baselayergroup, col, row, scaleindex);
+            };
             LogMethodCall("MgTileService::GetTile", true, mapdefinition, baselayergroup, col.ToString(), row.ToString(), scaleindex.ToString());
-            return result;
-            //ts.GetTile(new MgResourceIdentifier(mapdefinition), baselayergroup, col, row, scaleindex)
+            return new MgReadOnlyStream(fetch);
         }
 
         public override bool ResourceExists(string resourceid)
@@ -914,11 +946,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         public override System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
         {
             MgMappingService ms = this.Connection.CreateService(MgServiceType.MappingService) as MgMappingService;
-            MgResourceIdentifier ldef = new MgResourceIdentifier(layerdefinition);
-
-            var bmp = new System.Drawing.Bitmap(Utility.MgStreamToNetStream(ms, ms.GetType().GetMethod("GenerateLegendImage"), new object[] { ldef, scale, width, height, format, type, themeIndex }));
+            GetByteReaderMethod fetch = () => 
+            {
+                MgResourceIdentifier ldef = new MgResourceIdentifier(layerdefinition);
+                return ms.GenerateLegendImage(ldef, scale, width, height, format, type, themeIndex);
+            };
             LogMethodCall("MgMappingService::GetLegendImage", true, scale.ToString(), layerdefinition, themeIndex.ToString(), type.ToString());
-            return bmp;
+            return new Bitmap(new MgReadOnlyStream(fetch));
         }
 
         public OSGeo.MapGuide.MaestroAPI.Services.IFeatureService FeatureService
@@ -1045,9 +1079,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         public override DataStoreList EnumerateDataStores(string providerName, string partialConnString)
         {
             var fes = (MgFeatureService)this.Connection.CreateService(MgServiceType.FeatureService);
-            var list = (DataStoreList)base.DeserializeObject(typeof(DataStoreList), Utility.MgStreamToNetStream(fes, fes.GetType().GetMethod("EnumerateDataStores"), new object[] { providerName, partialConnString }));
+            GetByteReaderMethod fetch = () => 
+            {
+                return fes.EnumerateDataStores(providerName, partialConnString);
+            };
             LogMethodCall("MgFeatureService::EnumerateDataStores", true, providerName, partialConnString);
-            return list;
+            return base.DeserializeObject<DataStoreList>(new MgReadOnlyStream(fetch));
         }
 
         public override string[] GetSchemas(string resourceId)
@@ -1179,9 +1216,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         public Stream DescribeDrawing(string resourceID)
         {
             var dwSvc = (MgDrawingService)this.Connection.CreateService(MgServiceType.DrawingService);
-            var result = Utility.MgStreamToNetStream(dwSvc, dwSvc.GetType().GetMethod("DescribeDrawing"), new object[] { new MgResourceIdentifier(resourceID) });
+            GetByteReaderMethod fetch = () => 
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return dwSvc.DescribeDrawing(resId);
+            };
             LogMethodCall("MgDrawingService::DescribeDrawing", true, resourceID);
-            return result;
+            return new MgReadOnlyStream(fetch);
         }
 
         public string[] EnumerateDrawingLayers(string resourceID, string sectionName)
@@ -1200,17 +1241,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         public DrawingSectionResourceList EnumerateDrawingSectionResources(string resourceID, string sectionName)
         {
             var dwSvc = (MgDrawingService)this.Connection.CreateService(MgServiceType.DrawingService);
-            var list = base.DeserializeObject<DrawingSectionResourceList>(Utility.MgStreamToNetStream(dwSvc, dwSvc.GetType().GetMethod("EnumerateDrawingSectionResources"), new object[] { new MgResourceIdentifier(resourceID), sectionName }));
+            GetByteReaderMethod fetch = () => 
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return dwSvc.EnumerateSectionResources(resId, sectionName);
+            };
             LogMethodCall("MgDrawingService::EnumerateDrawingSectionResources", true, resourceID, sectionName);
-            return list;
+            return base.DeserializeObject<DrawingSectionResourceList>(new MgReadOnlyStream(fetch));
         }
 
         public DrawingSectionList EnumerateDrawingSections(string resourceID)
         {
             var dwSvc = (MgDrawingService)this.Connection.CreateService(MgServiceType.DrawingService);
-            var list = base.DeserializeObject<DrawingSectionList>(Utility.MgStreamToNetStream(dwSvc, dwSvc.GetType().GetMethod("EnumerateDrawingSections"), new object[] { new MgResourceIdentifier(resourceID) }));
+            GetByteReaderMethod fetch = () => 
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return dwSvc.EnumerateSections(resId);
+            };
             LogMethodCall("MgDrawingService::EnumerateDrawingSections", true, resourceID);
-            return list;
+            return base.DeserializeObject<DrawingSectionList>(new MgReadOnlyStream(fetch));
         }
 
         public string GetDrawingCoordinateSpace(string resourceID)
@@ -1224,33 +1273,49 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         public Stream GetDrawing(string resourceID)
         {
             var dwSvc = (MgDrawingService)this.Connection.CreateService(MgServiceType.DrawingService);
-            var res = Utility.MgStreamToNetStream(dwSvc, dwSvc.GetType().GetMethod("GetDrawing"), new object[] { new MgResourceIdentifier(resourceID) });
+            GetByteReaderMethod fetch = () =>
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return dwSvc.GetDrawing(resId);
+            };
             LogMethodCall("MgDrawingService::GetDrawing", true, resourceID);
-            return res;
+            return new MgReadOnlyStream(fetch);
         }
 
         public Stream GetLayer(string resourceID, string sectionName, string layerName)
         {
             var dwSvc = (MgDrawingService)this.Connection.CreateService(MgServiceType.DrawingService);
-            var res = Utility.MgStreamToNetStream(dwSvc, dwSvc.GetType().GetMethod("GetLayer"), new object[] { new MgResourceIdentifier(resourceID), sectionName, layerName });
+            GetByteReaderMethod fetch = () => 
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return dwSvc.GetLayer(resId, sectionName, layerName);
+            };
             LogMethodCall("MgDrawingService::GetLayer", true, resourceID, sectionName, layerName);
-            return res;
+            return new MgReadOnlyStream(fetch);
         }
 
         public Stream GetSection(string resourceID, string sectionName)
         {
             var dwSvc = (MgDrawingService)this.Connection.CreateService(MgServiceType.DrawingService);
-            var res = Utility.MgStreamToNetStream(dwSvc, dwSvc.GetType().GetMethod("GetSection"), new object[] { new MgResourceIdentifier(resourceID), sectionName });
+            GetByteReaderMethod fetch = () =>
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return dwSvc.GetSection(resId, sectionName);
+            };
             LogMethodCall("MgDrawingService::GetSection", true, resourceID, sectionName);
-            return res;
+            return new MgReadOnlyStream(fetch);
         }
 
         public Stream GetSectionResource(string resourceID, string resourceName)
         {
             var dwSvc = (MgDrawingService)this.Connection.CreateService(MgServiceType.DrawingService);
-            var res = Utility.MgStreamToNetStream(dwSvc, dwSvc.GetType().GetMethod("GetSectionResource"), new object[] { new MgResourceIdentifier(resourceID), resourceName });
+            GetByteReaderMethod fetch = () =>
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                return dwSvc.GetSectionResource(resId, resourceName);
+            };
             LogMethodCall("MgDrawingService::GetSectionResource", true, resourceID, resourceName);
-            return res;
+            return new MgReadOnlyStream(fetch);
         }
 
         public override string QueryMapFeatures(string runtimeMapName, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)
