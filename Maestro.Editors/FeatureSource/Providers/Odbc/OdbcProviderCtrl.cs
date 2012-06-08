@@ -308,7 +308,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
 
             try
             {
-                var desc = _fs.Describe();
+                //#2002 TODO: Here is where we would present a list of classes in order to be able to create a filtered down
+                //logical schema
+                var desc = _fs.Describe(); //TODO: Describe only the selected class names
                 if (desc.Schemas.Length == 0)
                     throw new ApplicationException("Could not retrieve any schemas from this connection. If it is a DSN, ensure it is a valid DSN");
                 _doc.AddSchema(desc.Schemas[0]); //Only one schema is supported by ODBC so this is ok
