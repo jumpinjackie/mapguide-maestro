@@ -284,11 +284,11 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                     {
                         _doc.AddOverride(table);
                     }
-                    string updatedContent = _doc.ToXml();
                     foreach (var sc in _doc.SpatialContexts)
                     {
                         sc.CoordinateSystemWkt = diag.CoordinateSystemWkt;
                     }
+                    string updatedContent = _doc.ToXml();
                     _fs.SetConfigurationContent(updatedContent);
                     OnResourceChanged();
                 }
