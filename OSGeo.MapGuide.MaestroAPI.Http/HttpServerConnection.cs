@@ -705,6 +705,37 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
 		}
 
+        public override FeatureSchema DescribeFeatureSourcePartial(string resourceID, string schema, string[] classNames)
+        {
+            ResourceIdentifier.Validate(resourceID, ResourceTypes.FeatureSource);
+            string req = m_reqBuilder.DescribeSchemaPartial(resourceID, schema, classNames);
+            try
+            {
+                var fsd = new FeatureSourceDescription(this.OpenRead(req));
+                return fsd.Schemas[0];
+            }
+            catch (Exception ex)
+            {
+                if (typeof(WebException).IsAssignableFrom(ex.GetType()))
+                    LogFailedRequest((WebException)ex);
+                try
+                {
+                    if (this.IsSessionExpiredException(ex) && this.AutoRestartSession && this.RestartSession(false))
+                        return this.DescribeFeatureSourcePartial(resourceID, schema, classNames);
+                }
+                catch
+                {
+                    //Throw the original exception, not the secondary one
+                }
+
+                Exception ex2 = Utility.ThrowAsWebException(ex);
+                if (ex2 != ex)
+                    throw ex2;
+                else
+                    throw;
+            }
+        }
+
 		public override FeatureSchema DescribeFeatureSource(string resourceID, string schema)
 		{
             ResourceIdentifier.Validate(resourceID, ResourceTypes.FeatureSource);

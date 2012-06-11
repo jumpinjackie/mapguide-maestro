@@ -1550,6 +1550,25 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
+        internal string DescribeSchemaPartial(string resourceID, string schemaName, string[] classNames)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "DESCRIBEFEATURESCHEMA");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("FORMAT", "text/xml");
+            param.Add("CLIENTAGENT", m_userAgent);
+
+            if (m_locale != null)
+                param.Add("LOCALE", m_locale);
+
+            param.Add("RESOURCEID", resourceID);
+            if (!string.IsNullOrEmpty(schemaName))
+                param.Add("SCHEMA", schemaName);
+            param.Add("CLASSNAMES", string.Join(".", classNames));
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
         public string GetClassDefinition(string resourceId, string schemaName, string className)
         {
             //BOGUS: GETCLASSDEFINITION is FUBAR (#2015)

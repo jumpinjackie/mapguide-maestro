@@ -5692,4 +5692,10 @@ Do you want to continue?</value>
   <data name="TextSelectionOnly" xml:space="preserve">
     <value>(Selection Only)</value>
   </data>
+  <data name="TextNoItemSelected" xml:space="preserve">
+    <value>No Items Selected</value>
+  </data>
+  <data name="TextPreparingConfigurationDocument" xml:space="preserve">
+    <value>Preparing Configuration Document</value>
+  </data>
 </root>

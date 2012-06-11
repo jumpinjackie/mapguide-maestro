@@ -382,6 +382,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 			return new FeatureSourceDescription(ms);
 		}
 
+        public override FeatureSchema DescribeFeatureSourcePartial(string resourceID, string schema, string[] classNames)
+        {
+            MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+            MgStringCollection names = new MgStringCollection();
+            foreach (var clsName in classNames)
+            {
+                names.Add(clsName);
+            }
+            string xml = fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceID), schema, names);
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(xml));
+            LogMethodCall("MgFeatureService::DescribeSchemaAsXml", true, resourceID, schema, "{" + string.Join(",", classNames) + "}");
+            return new FeatureSourceDescription(ms).Schemas[0];
+        }
+
         public override FeatureSchema DescribeFeatureSource(string resourceID, string schema)
 		{
 			MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;

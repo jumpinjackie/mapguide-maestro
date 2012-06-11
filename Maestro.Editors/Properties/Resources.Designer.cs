@@ -3235,6 +3235,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Items Selected.
+        /// </summary>
+        internal static string TextNoItemSelected {
+            get {
+                return ResourceManager.GetString("TextNoItemSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Occurences Found.
         /// </summary>
         internal static string TextNoOccurrencesFound {
@@ -3267,6 +3276,15 @@ namespace Maestro.Editors.Properties {
         internal static string TextOccurrencesReplaced {
             get {
                 return ResourceManager.GetString("TextOccurrencesReplaced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preparing Configuration Document.
+        /// </summary>
+        internal static string TextPreparingConfigurationDocument {
+            get {
+                return ResourceManager.GetString("TextPreparingConfigurationDocument", resourceCulture);
             }
         }
         

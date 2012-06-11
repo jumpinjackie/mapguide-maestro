@@ -1449,6 +1449,15 @@ namespace OSGeo.MapGuide.MaestroAPI
         abstract public FeatureSchema DescribeFeatureSource(string resourceID, string schema);
 
         /// <summary>
+        /// Describes the specified feature source restricted to only the specified schema and the specified class names
+        /// </summary>
+        /// <param name="resourceID"></param>
+        /// <param name="schema"></param>
+        /// <param name="classNames"></param>
+        /// <returns></returns>
+        public abstract FeatureSchema DescribeFeatureSourcePartial(string resourceID, string schema, string[] classNames);
+
+        /// <summary>
         /// feature source description cache
         /// </summary>
         protected Dictionary<string, FeatureSourceDescription> m_featureSchemaCache = new Dictionary<string, FeatureSourceDescription>();

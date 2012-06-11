@@ -401,6 +401,11 @@ namespace MaestroAPITests
             {
                 throw new NotImplementedException();
             }
+
+            public FeatureSchema DescribeFeatureSourcePartial(string resourceID, string schema, string[] classNames)
+            {
+                throw new NotImplementedException();
+            }
         }
         #endregion
 

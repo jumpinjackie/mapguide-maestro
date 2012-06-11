@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Text;
+using System.Linq;
 using System.Windows.Forms;
 using Maestro.Editors.Common;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
@@ -33,6 +34,8 @@ using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using System.Xml;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor;
+using Maestro.Editors.FeatureSource.Providers.Common;
+using Maestro.Shared.UI;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc
 {
@@ -308,18 +311,30 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
 
             try
             {
-                //#2002 TODO: Here is where we would present a list of classes in order to be able to create a filtered down
-                //logical schema
-                var desc = _fs.Describe(); //TODO: Describe only the selected class names
-                if (desc.Schemas.Length == 0)
-                    throw new ApplicationException("Could not retrieve any schemas from this connection. If it is a DSN, ensure it is a valid DSN");
-                _doc.AddSchema(desc.Schemas[0]); //Only one schema is supported by ODBC so this is ok
+                var schemaName = _fs.GetSchemaNames()[0];
+                var classNames = _fs.GetClassNames(schemaName);
+                var diag = new FilteredLogicalSchemaDialog(classNames);
+                if (diag.ShowDialog() == DialogResult.Cancel)
+                    throw new ApplicationException(Properties.Resources.TextNoItemSelected);
 
-                var scList = _fs.GetSpatialInfo(false);
-                foreach (var sc in scList.SpatialContext)
+                var names = diag.ClassNames;
+
+                BusyWaitDelegate worker = () =>
                 {
-                    _doc.AddSpatialContext(sc);
-                }
+                    classNames = names.Select(x => x.Contains(":") ? x.Split(':')[1] : x).ToArray();
+                    var schema = _fs.CurrentConnection.FeatureService.DescribeFeatureSourcePartial(_fs.ResourceID, schemaName, classNames);
+                    _doc.AddSchema(schema); //Only one schema is supported by ODBC so this is ok
+                    var scList = _fs.GetSpatialInfo(false);
+                    foreach (var sc in scList.SpatialContext)
+                    {
+                        _doc.AddSpatialContext(sc);
+                    }
+                    return null;
+                };
+                BusyWaitDialog.Run(Properties.Resources.TextPreparingConfigurationDocument, worker, (obj) => 
+                { 
+                    //Done
+                });
             }
             catch (Exception ex)
             {
