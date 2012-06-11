@@ -40,6 +40,7 @@
             this.btnStandard = new System.Windows.Forms.ToolStripButton();
             this.btnClose = new System.Windows.Forms.ToolStripButton();
             this.tabPreviews = new System.Windows.Forms.TabControl();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -66,6 +67,7 @@
             this.trvSchema.ImageList = this.schemaImageList;
             this.trvSchema.Name = "trvSchema";
             this.trvSchema.ShowNodeToolTips = true;
+            this.trvSchema.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.trvSchema_AfterExpand);
             this.trvSchema.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvSchema_AfterSelect);
             // 
             // schemaImageList
@@ -142,6 +144,7 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

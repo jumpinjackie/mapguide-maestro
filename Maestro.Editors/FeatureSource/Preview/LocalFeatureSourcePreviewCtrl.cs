@@ -77,6 +77,39 @@ namespace Maestro.Editors.FeatureSource.Preview
 
         private FdoProviderCapabilities _caps;
 
+        class SchemaNodeTag
+        {
+            public string SchemaName { get; set; }
+
+            public bool Loaded { get; set; }
+
+            public SchemaNodeTag(string name)
+            {
+                this.SchemaName = name;
+                this.Loaded = false;
+            }
+        }
+
+        class ClassNodeTag
+        {
+            public string SchemaName { get; set; }
+
+            public string ClassName { get; set; }
+
+            public string QualifiedName { get { return this.SchemaName + ":" + this.ClassName; } }
+
+            public ClassDefinition Class { get; set; }
+
+            public bool Loaded { get; set; }
+
+            public ClassNodeTag(string schemaName, string className)
+            {
+                this.SchemaName = schemaName;
+                this.ClassName = className;
+                this.Loaded = false;
+            }
+        }
+
         /// <summary>
         /// Reloads the tree.
         /// </summary>
@@ -88,108 +121,101 @@ namespace Maestro.Editors.FeatureSource.Preview
             _caps = caps;
             ClearPreviewPanes();
             trvSchema.Nodes.Clear();
-            
-            //FIXME: Do this lazily ala. FDO Toolbox
-            var schema = _fsvc.DescribeFeatureSource(currentFsId);
 
-            Dictionary<string, List<ClassDefinition>> classes = new Dictionary<string, List<ClassDefinition>>();
-            foreach (var cls in schema.AllClasses)
-            {
-                string[] tokens = cls.QualifiedName.Split(':');
-                if (!classes.ContainsKey(tokens[0]))
-                    classes[tokens[0]] = new List<ClassDefinition>();
-
-                classes[tokens[0]].Add(cls);
-            }
-
-            string[] schemaNames = schema.SchemaNames;
+            string[] schemaNames = _fsvc.GetSchemas(currentFsId);
             foreach (var s in schemaNames)
             {
                 var schemaNode = new TreeNode(s);
-                schemaNode.Tag = s;
+                schemaNode.Tag = new SchemaNodeTag(s);
                 schemaNode.ImageIndex = schemaNode.SelectedImageIndex = IDX_SCHEMA;
-
+                schemaNode.Nodes.Add(Properties.Resources.TextLoading);
                 trvSchema.Nodes.Add(schemaNode);
+            }
+        }
 
-                if (classes.ContainsKey(s))
+        private static void UpdateClassNode(TreeNode classNode, ClassDefinition cls)
+        {
+            //var classNode = new TreeNode(cls.Name);
+            classNode.Nodes.Clear();
+            classNode.Name = cls.Name;
+            classNode.Text = cls.Name;
+            var clsTag = classNode.Tag as ClassNodeTag;
+            if (clsTag == null)
+            {
+                classNode.Tag = new ClassNodeTag(cls.Parent.Name, cls.Name) { Loaded = true, Class = cls };
+            }
+            else
+            {
+                clsTag.Loaded = true;
+                clsTag.Class = cls;
+            }
+            classNode.ImageIndex = classNode.SelectedImageIndex = IDX_CLASS;
+
+            classNode.ToolTipText = string.Format(Properties.Resources.FsPreview_ClassNodeTooltip,
+                cls.Name,
+                cls.Description,
+                cls.DefaultGeometryPropertyName,
+                Environment.NewLine);
+
+            foreach (var prop in cls.Properties)
+            {
+                var propNode = new TreeNode(prop.Name);
+                propNode.Text = prop.Name;
+                propNode.Tag = prop;
+
+                if (prop.Type == PropertyDefinitionType.Geometry)
                 {
-                    foreach (var cls in classes[s])
-                    {
-                        var classNode = new TreeNode(cls.Name);
-                        classNode.Text = cls.Name;
-                        classNode.Tag = cls;
-                        classNode.ImageIndex = classNode.SelectedImageIndex = IDX_CLASS;
-
-                        classNode.ToolTipText = string.Format(Properties.Resources.FsPreview_ClassNodeTooltip,
-                            cls.Name,
-                            cls.Description,
-                            cls.DefaultGeometryPropertyName,
-                            Environment.NewLine);
-
-                        foreach (var prop in cls.Properties)
-                        {
-                            var propNode = new TreeNode(prop.Name);
-                            propNode.Text = prop.Name;
-                            propNode.Tag = prop;
-
-                            if (prop.Type == PropertyDefinitionType.Geometry)
-                            {
-                                var g = (GeometricPropertyDefinition)prop;
-                                propNode.ImageIndex = propNode.SelectedImageIndex = IDX_GEOMETRY;
-                                propNode.ToolTipText = string.Format(Properties.Resources.FsPreview_GeometryPropertyNodeTooltip,
-                                    g.Name,
-                                    g.Description,
-                                    g.GeometryTypesToString(),
-                                    g.IsReadOnly,
-                                    g.HasElevation,
-                                    g.HasMeasure,
-                                    g.SpatialContextAssociation,
-                                    Environment.NewLine);
-                            }
-                            else if (prop.Type == PropertyDefinitionType.Data)
-                            {
-                                var d = (DataPropertyDefinition)prop;
-                                if (cls.IdentityProperties.Contains((DataPropertyDefinition)prop))
-                                    propNode.ImageIndex = propNode.SelectedImageIndex = IDX_IDENTITY;
-                                else
-                                    propNode.ImageIndex = propNode.SelectedImageIndex = IDX_PROP;
-
-                                propNode.ToolTipText = string.Format(Properties.Resources.FsPreview_DataPropertyNodeTooltip,
-                                    d.Name,
-                                    d.Description,
-                                    d.DataType.ToString(),
-                                    d.IsNullable,
-                                    d.IsReadOnly,
-                                    d.Length,
-                                    d.Precision,
-                                    d.Scale,
-                                    Environment.NewLine);
-                            }
-                            else if (prop.Type == PropertyDefinitionType.Raster)
-                            {
-                                var r = (RasterPropertyDefinition)prop;
-                                propNode.ImageIndex = propNode.SelectedImageIndex = IDX_RASTER;
-
-                                propNode.ToolTipText = string.Format(Properties.Resources.FsPreview_RasterPropertyNodeTooltip,
-                                    r.Name,
-                                    r.Description,
-                                    r.IsNullable,
-                                    r.DefaultImageXSize,
-                                    r.DefaultImageYSize,
-                                    r.SpatialContextAssociation,
-                                    Environment.NewLine);
-                            }
-                            else
-                            {
-                                propNode.ImageIndex = propNode.SelectedImageIndex = IDX_PROP;
-                            }
-
-                            classNode.Nodes.Add(propNode);
-                        }
-
-                        schemaNode.Nodes.Add(classNode);
-                    }
+                    var g = (GeometricPropertyDefinition)prop;
+                    propNode.ImageIndex = propNode.SelectedImageIndex = IDX_GEOMETRY;
+                    propNode.ToolTipText = string.Format(Properties.Resources.FsPreview_GeometryPropertyNodeTooltip,
+                        g.Name,
+                        g.Description,
+                        g.GeometryTypesToString(),
+                        g.IsReadOnly,
+                        g.HasElevation,
+                        g.HasMeasure,
+                        g.SpatialContextAssociation,
+                        Environment.NewLine);
                 }
+                else if (prop.Type == PropertyDefinitionType.Data)
+                {
+                    var d = (DataPropertyDefinition)prop;
+                    if (cls.IdentityProperties.Contains((DataPropertyDefinition)prop))
+                        propNode.ImageIndex = propNode.SelectedImageIndex = IDX_IDENTITY;
+                    else
+                        propNode.ImageIndex = propNode.SelectedImageIndex = IDX_PROP;
+
+                    propNode.ToolTipText = string.Format(Properties.Resources.FsPreview_DataPropertyNodeTooltip,
+                        d.Name,
+                        d.Description,
+                        d.DataType.ToString(),
+                        d.IsNullable,
+                        d.IsReadOnly,
+                        d.Length,
+                        d.Precision,
+                        d.Scale,
+                        Environment.NewLine);
+                }
+                else if (prop.Type == PropertyDefinitionType.Raster)
+                {
+                    var r = (RasterPropertyDefinition)prop;
+                    propNode.ImageIndex = propNode.SelectedImageIndex = IDX_RASTER;
+
+                    propNode.ToolTipText = string.Format(Properties.Resources.FsPreview_RasterPropertyNodeTooltip,
+                        r.Name,
+                        r.Description,
+                        r.IsNullable,
+                        r.DefaultImageXSize,
+                        r.DefaultImageYSize,
+                        r.SpatialContextAssociation,
+                        Environment.NewLine);
+                }
+                else
+                {
+                    propNode.ImageIndex = propNode.SelectedImageIndex = IDX_PROP;
+                }
+
+                classNode.Nodes.Add(propNode);
             }
         }
 
@@ -260,7 +286,9 @@ namespace Maestro.Editors.FeatureSource.Preview
         {
             if (trvSchema.SelectedNode != null)
             {
-                return trvSchema.SelectedNode.Tag as ClassDefinition;
+                var tag = trvSchema.SelectedNode.Tag as ClassNodeTag;
+                if (tag != null)
+                    return tag.Class;
             }
             return null;
         }
@@ -270,11 +298,16 @@ namespace Maestro.Editors.FeatureSource.Preview
             switch (e.Node.Level)
             {
                 case 1: //Class
-                    var cls = e.Node.Tag as ClassDefinition;
-                    if (cls != null)
+                    var cls = e.Node.Tag as ClassNodeTag;
+                    if (cls != null && cls.Class != null)
                     {
                         btnStandard.Enabled = true;
                         btnSql.Enabled = this.SupportsSQL;
+                    }
+                    else
+                    {
+                        btnStandard.Enabled = false;
+                        btnSql.Enabled = false;
                     }
                     break;
                 default:
@@ -321,6 +354,43 @@ namespace Maestro.Editors.FeatureSource.Preview
                 }
 
                 btnClose.Enabled = (tabPreviews.TabPages.Count > 0);
+            }
+        }
+
+        private void trvSchema_AfterExpand(object sender, TreeViewEventArgs e)
+        {
+            var schTag = e.Node.Tag as SchemaNodeTag;
+            var clsTag = e.Node.Tag as ClassNodeTag;
+            if (schTag != null)
+            {
+                if (schTag.Loaded)
+                    return;
+
+                e.Node.Nodes.Clear();
+
+                var classNames = _fsvc.GetClassNames(currentFsId, schTag.SchemaName);
+                foreach (var qClsName in classNames)
+                {
+                    var clsName = qClsName.Split(':')[1];
+                    var node = new TreeNode(clsName);
+                    node.Text = clsName;
+                    node.Tag = new ClassNodeTag(schTag.SchemaName, clsName);
+                    node.ImageIndex = node.SelectedImageIndex = IDX_CLASS;
+                    node.Nodes.Add(Properties.Resources.TextLoading);
+
+                    e.Node.Nodes.Add(node);
+                }
+
+                schTag.Loaded = true;
+            }
+            else if (clsTag != null)
+            {
+                if (clsTag.Loaded)
+                    return;
+
+                var cls = _fsvc.GetClassDefinition(currentFsId, clsTag.QualifiedName);
+                clsTag.Class = cls;
+                UpdateClassNode(e.Node, cls);
             }
         }
     }

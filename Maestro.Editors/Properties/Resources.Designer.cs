@@ -3235,6 +3235,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Loading.
+        /// </summary>
+        internal static string TextLoading {
+            get {
+                return ResourceManager.GetString("TextLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Items Selected.
         /// </summary>
         internal static string TextNoItemSelected {
