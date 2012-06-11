@@ -22,10 +22,16 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
             grdTables.DataSource = _tables;
         }
 
-        public TableConfigurationDialog(OdbcConfigurationDocument doc, string schemaName)
+        private IEditorService _edSvc;
+
+        public TableConfigurationDialog(IEditorService edSvc, OdbcConfigurationDocument doc, string schemaName)
             : this()
         {
-            tableConfigCtrl.SetSpatialContexts(doc.GetSpatialContextNames());
+            _edSvc = edSvc;
+            var scNames = doc.GetSpatialContextNames();
+            tableConfigCtrl.SetSpatialContexts(scNames);
+            var sc = doc.GetSpatialContext(scNames[0]);
+            txtCoordinateSystem.Text = sc.CoordinateSystemWkt;
 
             var schema = doc.GetSchema(schemaName);
             Dictionary<string, TableOverrideItem> tables = new Dictionary<string, TableOverrideItem>();
@@ -71,6 +77,8 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
                 _tables.Add(tbl);
             }
         }
+
+        public string CoordinateSystemWkt { get { return txtCoordinateSystem.Text; } }
 
         public OdbcTableItem[] ConfiguredTables
         {
@@ -137,6 +145,13 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
                     tableConfigCtrl.Init((TableOverrideItem)row.DataBoundItem);
                 }
             }
+        }
+
+        private void btnPickCs_Click(object sender, EventArgs e)
+        {
+            var cs = _edSvc.GetCoordinateSystem();
+            if (!string.IsNullOrEmpty(cs))
+                txtCoordinateSystem.Text = cs;
         }
     }
 }

@@ -69,6 +69,35 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             return items;
         }
 
+        /*
+        public override void WriteXml(XmlDocument doc, XmlNode currentNode)
+        {
+            //
+            foreach (var schema in this.Schemas)
+            {
+                foreach (var cls in schema.Classes)
+                {
+                    var ov = this.GetOverride(schema.Name, cls.Name);
+                    if (ov != null)
+                    {
+                        if (!string.IsNullOrEmpty(ov.XColumn))
+                        {
+                            cls.RemoveProperty(ov.XColumn);
+                        }
+                        if (!string.IsNullOrEmpty(ov.YColumn))
+                        {
+                            cls.RemoveProperty(ov.YColumn);
+                        }
+                        if (!string.IsNullOrEmpty(ov.ZColumn))
+                        {
+                            cls.RemoveProperty(ov.ZColumn);
+                        }
+                    }
+                }
+            }
+            base.WriteXml(doc, currentNode);
+        }*/
+
         /// <summary>
         /// Write this document's schema mappings to the given XML document
         /// </summary>

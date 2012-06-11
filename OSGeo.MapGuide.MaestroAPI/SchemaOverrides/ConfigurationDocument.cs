@@ -147,7 +147,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// </summary>
         /// <param name="doc"></param>
         /// <param name="currentNode"></param>
-        public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
+        public virtual void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             var dstore = doc.CreateElement("fdo", "DataStore", XmlNamespaces.FDO);
             dstore.SetAttribute("xmlns:xs", XmlNamespaces.XS);

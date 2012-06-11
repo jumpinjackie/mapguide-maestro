@@ -167,7 +167,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         {
             return _properties.IndexOf(prop);
         }
-        
+
+        /// <summary>
+        /// Removes the property definition of the specified name. If it is a data property
+        /// it is also removed from the identity properties (if it is specified as one)
+        /// </summary>
+        /// <param name="propertyName"></param>
+        public void RemoveProperty(string propertyName)
+        {
+            int idx = -1;
+            for (int i = 0; i < _properties.Count; i++)
+            {
+                if (_properties[i].Name == propertyName)
+                {
+                    idx = i;
+                    break;
+                }
+            }
+            if (idx >= 0)
+                RemovePropertyAt(idx);
+        }
+
         /// <summary>
         /// Removes the property definition at the specified index. If it is a data property
         /// is is also removed from the identity properties (if it is specified as one)

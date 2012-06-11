@@ -76,44 +76,49 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                 {
                     var table = doc.CreateElement("Table");
                     table.SetAttribute("name", this.ClassName);
-                    {
-                        PropertyDefinition geomProp = null;
-                        foreach (var prop in cls.Properties)
-                        {
-                            //If this is geometry, we'll handle it later
-                            if (prop.Name == cls.DefaultGeometryPropertyName)
-                            {
-                                geomProp = prop;
-                                continue;
-                            }
-
-                            var el = doc.CreateElement("element");
-                            el.SetAttribute("name", Utility.EncodeFDOName(prop.Name));
-
-                            var col = doc.CreateElement("Column");
-                            col.SetAttribute("name", prop.Name);
-
-                            el.AppendChild(col);
-                            table.AppendChild(el);
-                        }
-
-                        //Append geometry mapping
-                        if (geomProp != null)
-                        {
-                            var el = doc.CreateElement("element");
-                            el.SetAttribute("name", geomProp.Name);
-
-                            if (!string.IsNullOrEmpty(this.XColumn))
-                                el.SetAttribute("xColumnName", this.XColumn);
-                            if (!string.IsNullOrEmpty(this.YColumn))
-                                el.SetAttribute("yColumnName", this.YColumn);
-                            if (!string.IsNullOrEmpty(this.ZColumn))
-                                el.SetAttribute("zColumnName", this.ZColumn);
-
-                            table.AppendChild(el);
-                        }
-                    }
                     ctype.AppendChild(table);
+
+                    PropertyDefinition geomProp = null;
+                    foreach (var prop in cls.Properties)
+                    {
+                        //If this is geometry, we'll handle it later
+                        if (prop.Name == cls.DefaultGeometryPropertyName)
+                        {
+                            geomProp = prop;
+                            continue;
+                        }
+
+                        //If this is a geometry mapped X/Y/Z property, skip it
+                        if (prop.Name == this.XColumn ||
+                            prop.Name == this.YColumn ||
+                            prop.Name == this.ZColumn)
+                            continue;
+
+                        var el = doc.CreateElement("element");
+                        el.SetAttribute("name", Utility.EncodeFDOName(prop.Name));
+
+                        var col = doc.CreateElement("Column");
+                        col.SetAttribute("name", prop.Name);
+
+                        el.AppendChild(col);
+                        ctype.AppendChild(el);
+                    }
+
+                    //Append geometry mapping
+                    if (geomProp != null)
+                    {
+                        var el = doc.CreateElement("element");
+                        el.SetAttribute("name", geomProp.Name);
+
+                        if (!string.IsNullOrEmpty(this.XColumn))
+                            el.SetAttribute("xColumnName", this.XColumn);
+                        if (!string.IsNullOrEmpty(this.YColumn))
+                            el.SetAttribute("yColumnName", this.YColumn);
+                        if (!string.IsNullOrEmpty(this.ZColumn))
+                            el.SetAttribute("zColumnName", this.ZColumn);
+
+                        ctype.AppendChild(el);
+                    }
                 }
                 currentNode.AppendChild(ctype);
             }
@@ -143,8 +148,9 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             }
 
             var table = node["Table"];
-
-            foreach (System.Xml.XmlNode el in table.ChildNodes)
+            var el = table.NextSibling;
+            //foreach (System.Xml.XmlNode el in table.ChildNodes)
+            while(el != null)
             {
                 var colName = el.Attributes["name"];
 
@@ -161,6 +167,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                     if (z != null)
                         this.ZColumn = z.Value;
                 }
+                el = el.NextSibling;
             }
         }
     }

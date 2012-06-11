@@ -34,17 +34,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.grdTables = new System.Windows.Forms.DataGridView();
-            this.tableConfigCtrl = new Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor.TableConfigCtrl();
             this.COL_OVERRIDE = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.COL_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.COL_KEY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.COL_X = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.COL_Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.COL_Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableConfigCtrl = new Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor.TableConfigCtrl();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCoordinateSystem = new System.Windows.Forms.TextBox();
+            this.btnPickCs = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdTables)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
@@ -96,13 +104,8 @@
             this.grdTables.Name = "grdTables";
             this.grdTables.RowHeadersVisible = false;
             this.grdTables.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTables_CellContentClick);
-            this.grdTables.CurrentCellDirtyStateChanged += new System.EventHandler(this.grdTables_CurrentCellDirtyStateChanged);
             this.grdTables.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTables_CellContentClick);
-            // 
-            // tableConfigCtrl
-            // 
-            resources.ApplyResources(this.tableConfigCtrl, "tableConfigCtrl");
-            this.tableConfigCtrl.Name = "tableConfigCtrl";
+            this.grdTables.CurrentCellDirtyStateChanged += new System.EventHandler(this.grdTables_CurrentCellDirtyStateChanged);
             // 
             // COL_OVERRIDE
             // 
@@ -146,22 +149,66 @@
             this.COL_Z.Name = "COL_Z";
             this.COL_Z.ReadOnly = true;
             // 
+            // tableConfigCtrl
+            // 
+            resources.ApplyResources(this.tableConfigCtrl, "tableConfigCtrl");
+            this.tableConfigCtrl.Name = "tableConfigCtrl";
+            // 
+            // groupBox1
+            // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.splitContainer1);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // groupBox2
+            // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.btnPickCs);
+            this.groupBox2.Controls.Add(this.txtCoordinateSystem);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // txtCoordinateSystem
+            // 
+            resources.ApplyResources(this.txtCoordinateSystem, "txtCoordinateSystem");
+            this.txtCoordinateSystem.Name = "txtCoordinateSystem";
+            this.txtCoordinateSystem.ReadOnly = true;
+            // 
+            // btnPickCs
+            // 
+            resources.ApplyResources(this.btnPickCs, "btnPickCs");
+            this.btnPickCs.Name = "btnPickCs";
+            this.btnPickCs.UseVisualStyleBackColor = true;
+            this.btnPickCs.Click += new System.EventHandler(this.btnPickCs_Click);
+            // 
             // TableConfigurationDialog
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Name = "TableConfigurationDialog";
             this.ShowIcon = false;
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdTables)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -179,5 +226,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn COL_X;
         private System.Windows.Forms.DataGridViewTextBoxColumn COL_Y;
         private System.Windows.Forms.DataGridViewTextBoxColumn COL_Z;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnPickCs;
+        private System.Windows.Forms.TextBox txtCoordinateSystem;
+        private System.Windows.Forms.Label label2;
     }
 }

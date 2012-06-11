@@ -276,7 +276,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                     }
                 }
 
-                var diag = new TableConfigurationDialog(_doc, _defaultSchemaName);
+                var diag = new TableConfigurationDialog(_service, _doc, _defaultSchemaName);
                 if (diag.ShowDialog() == DialogResult.OK)
                 {
                     _doc.ClearMappings();
@@ -285,6 +285,10 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                         _doc.AddOverride(table);
                     }
                     string updatedContent = _doc.ToXml();
+                    foreach (var sc in _doc.SpatialContexts)
+                    {
+                        sc.CoordinateSystemWkt = diag.CoordinateSystemWkt;
+                    }
                     _fs.SetConfigurationContent(updatedContent);
                     OnResourceChanged();
                 }
@@ -323,6 +327,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                 {
                     classNames = names.Select(x => x.Contains(":") ? x.Split(':')[1] : x).ToArray();
                     var schema = _fs.CurrentConnection.FeatureService.DescribeFeatureSourcePartial(_fs.ResourceID, schemaName, classNames);
+                    
                     _doc.AddSchema(schema); //Only one schema is supported by ODBC so this is ok
                     var scList = _fs.GetSpatialInfo(false);
                     foreach (var sc in scList.SpatialContext)
