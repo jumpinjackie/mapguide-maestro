@@ -57,11 +57,12 @@ namespace Maestro.Editors.Generic
         public XmlEditorCtrl()
         {
             InitializeComponent();
-            //txtXmlContent.MaxLength = int.MaxValue;
             txtXmlContent.SetHighlighting("XML");
+            txtXmlContent.EnableFolding = true;
             txtXmlContent.ShowInvalidLines = true;
             txtXmlContent.ShowSpaces = true;
             txtXmlContent.ShowTabs = true;
+            txtXmlContent.LineViewerStyle = LineViewerStyle.FullRow;
             txtXmlContent.TextChanged += new EventHandler(OnTextContentChanged);
         }
         
@@ -70,7 +71,10 @@ namespace Maestro.Editors.Generic
         private void OnTextContentChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(_origText) && !txtXmlContent.Text.Equals(_origText))
+            {
                 OnResourceChanged();
+                EvaluateCommands();
+            }
                 
             if (string.IsNullOrEmpty(_origText))
                 _origText = txtXmlContent.Text;
@@ -148,7 +152,8 @@ namespace Maestro.Editors.Generic
             set 
             {
                 _origText = null;            
-                txtXmlContent.Text = value; //FormatText();
+                txtXmlContent.Text = value;
+                FormatText();
             }
         }
 
@@ -157,90 +162,6 @@ namespace Maestro.Editors.Generic
             txtXmlContent.Undo();
         }
 
-        private void btnFindNext_Click(object sender, EventArgs e)
-        {
-            String szFind = txtFind.Text;
-            if (String.IsNullOrEmpty(szFind))
-            {
-                MessageBox.Show(this, Properties.Resources.FindEmptyString, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtFind.Focus();
-                return;
-            }
-            FindAndReplace(szFind, null);
-        }
-
-        private void btnReplaceAll_Click(object sender, EventArgs e)
-        {
-            if (txtFind.Text.Length == 0)
-                MessageBox.Show(Properties.Resources.FindReplaceNothing);
-
-            FindAndReplace(txtFind.Text, txtReplace.Text);
-        }
-
-        /// <summary>
-        /// Finds and replaces the specified search string with the specified replacement string
-        /// </summary>
-        /// <param name="szFind">The search string.</param>
-        /// <param name="szReplace">The replacement string.</param>
-        public void FindAndReplace(string szFind, string szReplace)
-        {
-            var textEditor = txtXmlContent;
-            
-            var selections = textEditor.ActiveTextAreaControl.TextArea.SelectionManager.SelectionCollection;
-            // find start 
-            int iStartSearching = -1;
-            if (selections.Count > 0)
-                iStartSearching++;
-
-            System.Text.RegularExpressions.Regex regexThis = new System.Text.RegularExpressions.Regex(szFind, System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-            System.Text.RegularExpressions.Match matchThis = regexThis.Match(textEditor.Text, iStartSearching);
-
-            // look by regex, then simple find
-            String szFindInstance = "";
-            if (matchThis.Success)
-            {
-                int iRegExStart = matchThis.Index;
-                int iRegExLength = matchThis.Length;
-
-                // TODO: this is a rubbish hack for single occurrance - there is probably a better RegEx way to find/replace
-                szFindInstance = matchThis.ToString();
-            }
-            else
-            {
-                if (textEditor.Text.IndexOf(szFind, iStartSearching, StringComparison.OrdinalIgnoreCase) < 0)
-                {
-                    MessageBox.Show(this, Properties.Resources.FindNothing, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
-                szFindInstance = szFind;
-            }
-
-            String szHighlight;
-            if (String.IsNullOrEmpty(szReplace))
-                szHighlight = szFindInstance;
-            else
-            {
-                textEditor.Text = textEditor.Text.Replace(szFindInstance, szReplace);
-                szHighlight = szReplace;
-            }
-
-            int iFound = textEditor.Text.IndexOf(szHighlight, iStartSearching);
-            if (iFound > -1)
-            {
-                /*
-                //textEditor.Select(iFound, szHighlight.Length);
-                var doc = GetDocument();
-                
-                textEditor.ActiveTextAreaControl.SelectionManager.SelectedText 
-                UpdateTextPosition();
-                //textEditor.ScrollToCaret();
-                */
-
-                //if (!String.IsNullOrEmpty(szReplace) && _ready)
-                //    OnResourceChanged();
-            }
-        }
-        
         private IDocument GetDocument()
         {
             return txtXmlContent.ActiveTextAreaControl.Document;
@@ -328,34 +249,16 @@ namespace Maestro.Editors.Generic
 
         private void FormatText()
         {
-            string content = null;
-            if (string.IsNullOrEmpty(txtXmlContent.Text.Trim()))
+            if (string.IsNullOrEmpty(txtXmlContent.Text))
                 return;
-            try
-            {
-                XmlDocument doc = new XmlDocument();
-                doc.LoadXml(txtXmlContent.Text);
 
-                using (var ms = new MemoryStream())
-                {
-                    using (var sw = new StreamWriter(ms))
-                    {
-                        var writer = XmlWriter.Create(sw, new XmlWriterSettings() { Encoding = Encoding.UTF8, Indent = true });
-                        doc.Save(writer);
-
-                        content = Encoding.UTF8.GetString(ms.GetBuffer());
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(NestedExceptionMessageProcessor.GetFullMessage(ex), Properties.Resources.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if (!string.IsNullOrEmpty(content))
-            {
-                txtXmlContent.Text = content;
-            }
+            System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
+            doc.LoadXml(txtXmlContent.Text);
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            System.Xml.XmlWriter xw = System.Xml.XmlTextWriter.Create(sb, new System.Xml.XmlWriterSettings() { Indent = true });
+            doc.WriteTo(xw);
+            xw.Flush();
+            txtXmlContent.Text = sb.ToString();
         }
 
         /// <summary>
@@ -397,6 +300,27 @@ namespace Maestro.Editors.Generic
         private void btnPaste_Click(object sender, EventArgs e)
         {
             txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Paste(this, EventArgs.Empty);
+        }
+
+        private XmlEditor.FindAndReplaceForm _findForm = new XmlEditor.FindAndReplaceForm();
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            var editor = txtXmlContent;
+            if (editor == null) return;
+            _findForm.ShowFor(editor, false);
+        }
+
+        private void btnFindAndReplace_Click(object sender, EventArgs e)
+        {
+            var editor = txtXmlContent;
+            if (editor == null) return;
+            _findForm.ShowFor(editor, true);
+        }
+
+        public void FindAndReplace(string find, string replace)
+        {
+            _findForm.FindAndReplace(find, replace);
         }
     }
     

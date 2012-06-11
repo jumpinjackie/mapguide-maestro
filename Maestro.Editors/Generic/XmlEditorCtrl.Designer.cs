@@ -39,14 +39,9 @@
             this.btnFormat = new System.Windows.Forms.ToolStripButton();
             this.btnValidate = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.txtFind = new System.Windows.Forms.ToolStripTextBox();
-            this.btnFindNext = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-            this.txtReplace = new System.Windows.Forms.ToolStripTextBox();
-            this.btnReplaceAll = new System.Windows.Forms.ToolStripButton();
             this.lblCursorPos = new System.Windows.Forms.ToolStripLabel();
+            this.btnFind = new System.Windows.Forms.ToolStripButton();
+            this.btnFindAndReplace = new System.Windows.Forms.ToolStripButton();
             this.resDataCtrl = new Maestro.Editors.Generic.ResourceDataPanel();
             this.nodeNumericUpDown1 = new Aga.Controls.Tree.NodeControls.NodeNumericUpDown();
             this.txtXmlContent = new ICSharpCode.TextEditor.TextEditorControl();
@@ -56,23 +51,18 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                                    this.btnUndo,
-                                    this.toolStripSeparator1,
-                                    this.btnCopy,
-                                    this.btnCut,
-                                    this.btnPaste,
-                                    this.toolStripSeparator2,
-                                    this.btnFormat,
-                                    this.btnValidate,
-                                    this.toolStripSeparator3,
-                                    this.toolStripLabel1,
-                                    this.txtFind,
-                                    this.btnFindNext,
-                                    this.toolStripSeparator4,
-                                    this.toolStripLabel3,
-                                    this.txtReplace,
-                                    this.btnReplaceAll,
-                                    this.lblCursorPos});
+            this.btnUndo,
+            this.toolStripSeparator1,
+            this.btnCopy,
+            this.btnCut,
+            this.btnPaste,
+            this.toolStripSeparator2,
+            this.btnFormat,
+            this.btnValidate,
+            this.toolStripSeparator3,
+            this.lblCursorPos,
+            this.btnFind,
+            this.btnFindAndReplace});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -139,48 +129,25 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            resources.ApplyResources(this.toolStripLabel1, "toolStripLabel1");
-            // 
-            // txtFind
-            // 
-            this.txtFind.Name = "txtFind";
-            resources.ApplyResources(this.txtFind, "txtFind");
-            // 
-            // btnFindNext
-            // 
-            resources.ApplyResources(this.btnFindNext, "btnFindNext");
-            this.btnFindNext.Name = "btnFindNext";
-            this.btnFindNext.Click += new System.EventHandler(this.btnFindNext_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
-            // 
-            // toolStripLabel3
-            // 
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            resources.ApplyResources(this.toolStripLabel3, "toolStripLabel3");
-            // 
-            // txtReplace
-            // 
-            this.txtReplace.Name = "txtReplace";
-            resources.ApplyResources(this.txtReplace, "txtReplace");
-            // 
-            // btnReplaceAll
-            // 
-            resources.ApplyResources(this.btnReplaceAll, "btnReplaceAll");
-            this.btnReplaceAll.Name = "btnReplaceAll";
-            this.btnReplaceAll.Click += new System.EventHandler(this.btnReplaceAll_Click);
-            // 
             // lblCursorPos
             // 
             this.lblCursorPos.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.lblCursorPos.Name = "lblCursorPos";
             resources.ApplyResources(this.lblCursorPos, "lblCursorPos");
+            // 
+            // btnFind
+            // 
+            this.btnFind.Image = global::Maestro.Editors.Properties.Resources.magnifier_left;
+            resources.ApplyResources(this.btnFind, "btnFind");
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            // 
+            // btnFindAndReplace
+            // 
+            this.btnFindAndReplace.Image = global::Maestro.Editors.Properties.Resources.magnifier_left;
+            resources.ApplyResources(this.btnFindAndReplace, "btnFindAndReplace");
+            this.btnFindAndReplace.Name = "btnFindAndReplace";
+            this.btnFindAndReplace.Click += new System.EventHandler(this.btnFindAndReplace_Click);
             // 
             // resDataCtrl
             // 
@@ -194,22 +161,22 @@
             // nodeNumericUpDown1
             // 
             this.nodeNumericUpDown1.Increment = new decimal(new int[] {
-                                    1,
-                                    0,
-                                    0,
-                                    0});
+            1,
+            0,
+            0,
+            0});
             this.nodeNumericUpDown1.IncrementalSearchEnabled = true;
             this.nodeNumericUpDown1.LeftMargin = 3;
             this.nodeNumericUpDown1.Maximum = new decimal(new int[] {
-                                    100,
-                                    0,
-                                    0,
-                                    0});
+            100,
+            0,
+            0,
+            0});
             this.nodeNumericUpDown1.Minimum = new decimal(new int[] {
-                                    0,
-                                    0,
-                                    0,
-                                    0});
+            0,
+            0,
+            0,
+            0});
             this.nodeNumericUpDown1.ParentColumn = null;
             // 
             // txtXmlContent
@@ -230,6 +197,7 @@
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
         private Aga.Controls.Tree.NodeControls.NodeNumericUpDown nodeNumericUpDown1;
 
@@ -246,14 +214,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnValidate;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripTextBox txtFind;
-        private System.Windows.Forms.ToolStripButton btnFindNext;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripButton btnReplaceAll;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
-        private System.Windows.Forms.ToolStripTextBox txtReplace;
         private System.Windows.Forms.ToolStripLabel lblCursorPos;
         private System.Windows.Forms.ToolStripButton btnFormat;
+        private System.Windows.Forms.ToolStripButton btnFind;
+        private System.Windows.Forms.ToolStripButton btnFindAndReplace;
     }
 }

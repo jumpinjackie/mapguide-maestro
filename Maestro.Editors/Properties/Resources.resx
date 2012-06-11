@@ -120,8 +120,8 @@
   <data name="OdbcDriverAccess" xml:space="preserve">
     <value>{Microsoft Access Driver (*.mdb)}</value>
   </data>
-  <data name="PackageBuildError" xml:space="preserve">
-    <value>An error occured while building package: {0}</value>
+  <data name="Func_LOOKUP_DefaultValueDescription" xml:space="preserve">
+    <value>Default value returned if expression does not evaluate to any of the keys</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="blueprints" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -140,30 +140,8 @@
         Ab7ReT9BDLTyAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="ParameterOverrideExists" xml:space="preserve">
-    <value>Parameter Override already specified</value>
-  </data>
-  <data name="icon_plotdwf_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIecAP7+/rW6x9PW48TD1uHg6ba6x////8HBxMTFyMC/wrK+y/r6+v39/cTD173JyMLG
-        0fT09/P09d3d5qGprPX3+MPFxtXW2dLT1vj4+JOjqcXFxujo6OLk5+Dl58TFyba7x8fIy7a6xuDi4+Li
-        4drb3cHG0Onp6cLP29vb3u7w8ODg6LG2utjc4IeSk+Tx6dTr5dLV4urq6palqp2ho6ezwL69vrTBz8TD
-        1ebu9rvI1Lq+vKSvvdzm89XY3r+/wtLV2PX3+dTX3tHQ3Ymbj+Lk6b/KxOvt8PD1+bS5xvz9/aGvvPX3
-        98LOzLa6yJ+suuvr66CsurzKyM7Q0OHf6NHT1uzu8sTGyb3KyMrKztLX5M3L2b2+wdbY3O3u8sTGyODg
-        6cbIyNrb4Le9v8rLzrq+y5GunKvMuNna3eHi5fDx8qayu7u7vpShq/Py9fX19ZKop8LU2Jmps+nq67TN
-        x5eosPn6++/1+bO/zKCsu/T398XR36Goqp+rutbX2r/AwdHe6tPW5O3v787M2sfL1fz8/K22v/X199ze
-        4t3c5rW6xr/Dz/n5+c7Q0cnKzdze5MTGyoaSiJenndPW4o+ul+Df6MDAxL3BzcHDxcvX1Jyws8XD142g
-        lv///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAACcACwAAAAAEAAQAAAI8QA5CRwoEJODKHcUMElBcOCCQA5c
-        2OFx4k0GDAMNCRkw4MqLIzj+5NgEaQUnQVoGAACwqMMcM3D0KJDRYganBitXMoBQZFKZTDTwsNlz8wkA
-        AwAYAOAQaQgdJTvUiBGoKacBFQR0TIhTyIYTNwNvACBA4EsYDzU08IEih2AASlO4gNjiBwaYNX0GEioR
-        4MClClIESKKQ5wKZgQWojAEkQoCAJUDONDoQADGAQxayAEBBAkGCEAESDQzAAkAVNF6sPEIgIc0GLKN7
-        dEnwIwAjRBGSmBBgaSCRD0Yq+QjQpE4MRUHaNFzwAEkBTiMGOWrIKSAAOw==
-</value>
+  <data name="SelectProperty" xml:space="preserve">
+    <value>Select Property</value>
   </data>
   <data name="TitleError" xml:space="preserve">
     <value>Error</value>
@@ -181,11 +159,6 @@
         TuIsd0ir1ZJer2ffB4MBgsEgfD4fCoUCms3mszjLHdJoNAfXPGq32z0LZ0X3muRy+Z5CofAqlUr/S3CH
         /ltycf5WuDgTZ9+86lPm38A/lieNoGpgVUMAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="FunctionTooltip" xml:space="preserve">
-    <value>Function: {1}({2})
-Description: {3}
-Returns: {0}</value>
   </data>
   <data name="Func_URLENCODE_StringValueDescription" xml:space="preserve">
     <value>String to URL encode</value>
@@ -267,6 +240,21 @@ Returns: {0}</value>
         CBiQGI2CFwokMhAwuXLFzZ3RBAQAOw==
 </value>
   </data>
+  <data name="icon_printablepage_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIZsAO7y9pKaptzi6LC5xtra4P39/f///6qrsqmqsdbX26+xuN/j6O/v8qurs9HT3ff4
+        +f7+/qmrsr6/xvj4+bi4vaqrs8TFzqyrs7q9wb/CyL2+w+zs7bW2vO3v8dLT3rW2vcHEzLu7wOrs7cPG
+        zfP09crM0/X298/R2sTGyre2vP39/qystNva3sbGycbHy7q9wuLk6fr6+8bJ0eHj6LGxt6mrsejp7Pv7
+        +8/Q0bu9w7i4vry8wtrc4N3g5s/Q0vT198PDy729wtvc4e3t77CxuNzd4vz8/M/R27q9xb6+xvb3+L7A
+        w7S0vuDg5ayut/Lz9NXV1ubn7N7g5czMz+Tl59vc38DBxMXGydTW3M7R27Cvt7i5v/z8+87O0fn5+vLz
+        9fr7+6yttLi5wMHCx8PEzaiqsdXV2Ozs8aqqscTFyNfX29LT1////wAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQB
+        AABsACwAAAAAEAAQAAAI1gDZCBQ4oKDBggMTshlgoGHDAQACKPSxREcQABgBQBQgkQ0OK1OGFDBzJeNG
+        jim6bDBQ4EaBHSYDyAwAhQOEAmC8KKHSIqOAnxI1oIgxwcQXAiEyYuQo8MMEAlAJMBHzwmfHMVATaFVQ
+        BMaWpRIjjACSAIkCBSWSFKhCAwDHBj24SMigAAuDMz86sNDiNsAKB1JUSHjygAeGAzkQpAGK4IiDKCRA
+        1EDgYYYIIjMDlMlygoEMJ00gGCnw4AKFBajZNDgQoQKCMEJsuDhgQY1ChWgOkFmjMCAAOw==
+</value>
+  </data>
   <data name="plus-circle" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -297,6 +285,16 @@ Returns: {0}</value>
   </data>
   <data name="AggregateQuery" xml:space="preserve">
     <value>Aggregate Query</value>
+  </data>
+  <data name="icon_buffer" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIQAAEZCU1KTygpgs6jS54Sv2XuSpTJ6wL/e65jI40mOyObv92Wfz7LX6Iy+3hlquKXM
+        4rjb6leVykqUxY2bqK7V6JzK5Gih0FuazVCSybzd6sTh66TQ5mme0f///wAAAAAAACH/C05FVFNDQVBF
+        Mi4wAwEBAAAh+QQBBwAdACwAAAAAEAAQAAAIoQA7KODgwAABBR0SKlxIIAKCBhEEKFRAwIBBhAYaFACw
+        IYHEDgIiNIDIoUNGACgHeBSQYACAAhUcdCBwwWXKAThRAmhgQCBLCjopAEVJ4QIBhQIwDNUJgAIGAQiR
+        MmDAlMHThQkFTNVp9eNCAQEg6IQQwGtCBWAz6MxQFuvMBQd0Hojo1uQDnRro1jXwYAKAvGaxErAA4YGF
+        wFgHFjxYN2FAADs=
+</value>
   </data>
   <data name="LayerGroupConvertedToBaseLayerGroup" xml:space="preserve">
     <value>Layer Group ({0}) successfully converted to Base Layer Group ({1})</value>
@@ -384,6 +382,21 @@ Returns: {0}</value>
         DQcyVhUrogSACxoKeFDrsOJDARNOAsV4QIAKtQwDIwwIADs=
 </value>
   </data>
+  <data name="icon_zoomout" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIZ6AG1LJgE0ZkV2qN7s9bK8xuqvdtfk7LOcjH+AgLrK25i1019fX6OmqdDc41lZWV1d
+        XcnV4XF3fJrU5Xp6emVlZbHE2Y6QkY+Rk7DE2ZGkuLvJ2MjV4VlZWmZmZlpbW8PP3XmTsLHN3rGai5ux
+        yYWFhajN32NobG5vcOz0+a+vr6ewuYGYstzq9LW8weXx993r9WSHraDP4VxcXJ641IeHh3uFj5qzzn6a
+        uF9hY6rK3YepxarA19bk7ouLi5230rnAxdLe56m80ZKYodjm8M3a5nplTnt7e3Jyctfl7/z9/dLg6tPh
+        65m108HP3aurq5vO4mlpabvM3M7b58fHx1xdXoCAgG5ubometKy/zoeNkkZJTGdrb1tcXczZ5cfU4MvL
+        y7GxsXFxcae+12NjZJOluLHJ25yvwcva5lJrhePv9ZKov9He6aHE28PQ3WJjZGRkZKC61WNjY2mGp21+
+        kaS2x3d4eH5/gHyWsaW911dXVwAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQB
+        AAB6ACwAAAAAEAAQAAAIxgD1CPwyQUYeB1DACFy4kAYFBg0GGPiB4AhDgSTqGBgw4MWQJVIuVGE45Y2B
+        JChYIFFCZMMHOykWGmEwwEUaHmu6eGmSQEWYhQsiChhKVACGIAsWOhhwJoDTpwHEwHmw8AEQLHQgtIkS
+        IgeeGSPiLLTSwkwGDQnKlIjxRIGQHgudICBzRU2FHWwk6LAx5mKHCCtA3PDBRAEaNxZEXDxhYo4cGHdq
+        UNFSpMCBi1lweODAZYseAgAAWL5I+nPo0aUZghad+uLqgAA7
+</value>
+  </data>
   <data name="OperationCompleted" xml:space="preserve">
     <value>Operation Completed</value>
   </data>
@@ -395,6 +408,10 @@ Returns: {0}</value>
   </data>
   <data name="UnitsKb" xml:space="preserve">
     <value>KB</value>
+  </data>
+  <data name="TooMuchDataWarning" xml:space="preserve">
+    <value>The selected column contains more than {0} different values.
+The calculated averages only accounts for the first {0} distinct values.</value>
   </data>
   <data name="icon_home" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -423,32 +440,28 @@ Returns: {0}</value>
         IAGFBAsYaM4cEAA7
 </value>
   </data>
-  <data name="icon_zoomout" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIZ6AG1LJgE0ZkV2qN7s9bK8xuqvdtfk7LOcjH+AgLrK25i1019fX6OmqdDc41lZWV1d
-        XcnV4XF3fJrU5Xp6emVlZbHE2Y6QkY+Rk7DE2ZGkuLvJ2MjV4VlZWmZmZlpbW8PP3XmTsLHN3rGai5ux
-        yYWFhajN32NobG5vcOz0+a+vr6ewuYGYstzq9LW8weXx993r9WSHraDP4VxcXJ641IeHh3uFj5qzzn6a
-        uF9hY6rK3YepxarA19bk7ouLi5230rnAxdLe56m80ZKYodjm8M3a5nplTnt7e3Jyctfl7/z9/dLg6tPh
-        65m108HP3aurq5vO4mlpabvM3M7b58fHx1xdXoCAgG5ubometKy/zoeNkkZJTGdrb1tcXczZ5cfU4MvL
-        y7GxsXFxcae+12NjZJOluLHJ25yvwcva5lJrhePv9ZKov9He6aHE28PQ3WJjZGRkZKC61WNjY2mGp21+
-        kaS2x3d4eH5/gHyWsaW911dXVwAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQB
-        AAB6ACwAAAAAEAAQAAAIxgD1CPwyQUYeB1DACFy4kAYFBg0GGPiB4AhDgSTqGBgw4MWQJVIuVGE45Y2B
-        JChYIFFCZMMHOykWGmEwwEUaHmu6eGmSQEWYhQsiChhKVACGIAsWOhhwJoDTpwHEwHmw8AEQLHQgtIkS
-        IgeeGSPiLLTSwkwGDQnKlIjxRIGQHgudICBzRU2FHWwk6LAx5mKHCCtA3PDBRAEaNxZEXDxhYo4cGHdq
-        UNFSpMCBi1lweODAZYseAgAAWL5I+nPo0aUZghad+uLqgAA7
-</value>
-  </data>
-  <data name="OperationCancelled" xml:space="preserve">
-    <value>Operation Cancelled</value>
+  <data name="TitleNewFeatureClass" xml:space="preserve">
+    <value>New Feature Class</value>
   </data>
   <data name="NoFolderSelected" xml:space="preserve">
     <value>You have not selected a starting folder, do you want to back up the entire site?</value>
   </data>
-  <data name="ExportNoCommandsSelected" xml:space="preserve">
-    <value>No commands selected. Nothing to export</value>
-  </data>
-  <data name="UnsupportedConnectionType" xml:space="preserve">
-    <value>Invoking MgCooker is not supported for this connection type: {0}</value>
+  <data name="application_browser" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACiklEQVQ4T6WUXUiTURiAT3rl
+        heBNXQTdCGF2E+1qUIwkiwwsleyHfonUrAhCMTAKE7xINCORgnSslqYNZSmJusrQnH9zttraVkNJdLOt
+        uaWbzrH19H1eBF2aLzycc97D8/KeA+cIQGwEkZ+fnypxSqJwnchOqsjLyzttNBqtLpcLp9OBzWbDYvmI
+        yWRiZGQEaY+hIZlRaT7B8LCF8XE7PT0frLIrcnJyig0GA319fVKyh+7ubrq6utDr9XR0dKDT6WhtbaWl
+        pQWtVotGo0GtVtPY2EhiYmKhfIQi6Q7+K2RX5ObmXo7H48RisX8Ir8YwTC1T1h8kX7/Awbafa6O8lvPL
+        0TiyK7Kzs69Eo1EikchfvnnDFHS6uaB3Uz/qp/XLIp3ORSYXY7z6vsLVXh+FXR5kV2RlZV1bWVkhFAqt
+        YZ8LcPL5VyoMs+jsAUyS1Gz7xRNzAKM3gj0K9lVQfw6yufxdm8jMzLy+tLREIBBg3rfAuSYzd3qmuTfo
+        oc8TkQr8ptkaoF3qYPBHhLFgjLEwGEOQeNfxXqhUqhvBYBCfz4fug5Ps+wOcb/vK5c5pnjpDVL6b5fbb
+        WV44luj3w53XLrRSvmMeEkqNA0KpVJb4/X7cbjeXHvZSrLVwSG3ngMbBUa2DEy9dnG2folg/zRnNJ47U
+        j1JniVIuVUso6BwSCoWizOv1MjMzw76SZ5R2z5PRYGVX3QTKx1b2PLGiarSxt2GSc+1ubg7FuWYIo6oz
+        s+m4ekSkpaXdktv3eDwoCh6hrHjDfvUc26tG2VEzQXqNmZ21ZtKrx1FUm1E9sHOsPcy20l7E4dpxkZyc
+        XJSSklIlIzIqTeti98UmIUWSxBaJretEdpI29JTlb+APrpaoVzbDpskAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="icon_back" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -461,8 +474,8 @@ Returns: {0}</value>
         smYnBgQAOw==
 </value>
   </data>
-  <data name="FileDownloaded" xml:space="preserve">
-    <value>File Downloaded to {0}</value>
+  <data name="FsPostgreSql" xml:space="preserve">
+    <value>PostgreSQL/PostGIS Feature Source</value>
   </data>
   <data name="SpatialContextsFound" xml:space="preserve">
     <value>{0} spatial contexts found</value>
@@ -517,8 +530,23 @@ Returns: {0}</value>
   <data name="TitleQuestion" xml:space="preserve">
     <value>Question</value>
   </data>
+  <data name="icon_null" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIECANji87HH6f///wAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAACACwAAAAAEAAQ
+        AAAIRAAFCBxIsKDBgwYDKFzIUCHBAAAiSpwY4OHEiwAqDoSIUaJGgRw7ZrQocuTGkiZBovwoIGRHli4x
+        wlz5sKFNhDhzHgwIADs=
+</value>
+  </data>
   <data name="Func_ARGB_GValueDescription" xml:space="preserve">
     <value>Green value</value>
+  </data>
+  <data name="icon_measure" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIQSAHFCCr2NKldCE9ajLmddJf7nWp3M3BJEd005EQGM5AGK4wGN4QEzZgGK5QE1ZwI0
+        ZQE0awE1Zf///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBF
+        Mi4wAwEBAAAh+QQBAAASACwAAAAAEAAQAAAIWgAlCBxIsKDBgwgTDlSQAIIEAwYeRoQogSGEBgsiSDhw
+        YGNHjhIwRnjAwIFCkiYVqlzJUsIAAS9jwpwpswABmzhv6swZAEGAnz6B/uz5E4DRo0iTAmjJtOnAgAA7
+</value>
   </data>
   <data name="OutputFileMissing" xml:space="preserve">
     <value>You must enter a full path to the output file</value>
@@ -556,6 +584,24 @@ Returns: {0}</value>
         rkJggg==
 </value>
   </data>
+  <data name="map--minus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACt0lEQVQ4T52ROU8TUACA32bQ
+        H6BxI+qgJqjEwRgHBhMHxcQoCwNLxSJYiiC0QcALRQIFIodURYW0hoKglSuAnGIVbL2g1gMFpAWRiCKF
+        QkA+34txMg76ki9v+b53iohTp8IlR/6D8EMZGUIcTE/X8h9DdRIhDqSmxizLBaw9adzpO0/PQBHuQSvO
+        wRYs/QNk9noxdvs43uxDV+cjttaH8lUnEWK/wRC7tLzMjfYUWgdN9HrN9HnMTAXaeTXzhspxPxkOH+fc
+        kOaEWLsP5atOIsTepKS4hR8/MDcfp95zgfYPBTQ/NfFp5i6Tcw4efx0h58kQ2W/h9Es4VjeK8lUnEWKP
+        Xq8LLC1RVBfHlZZEKjpTsbuy6HhRwMvXFfS+aaTS4+GsY5iUjhH0TSMoX3USIXbHxcX7FxfJr4mh0nkS
+        +8A5LF0neTRaytCUjS9zbbS527CNf8f0fpnE1mGUrzqJEGFabcL0wgKmW0ewOAxUPU3nWmsy99/n4xor
+        Y2z6Di5PtbzKMGWjCxg7hlC+6iRC7NJoEqfm58m7rqW8Kxlrr5GSBj0Nry/SOXQJ9+cKnANljPqdNE9O
+        cLr7HcpXnUSIHVFRSZOBAAUlseTcjCa3MpriRh2XGxO4ft9I1YOzONwlOPvLaXnRROGj5yhfdRIhtkdG
+        Jk/MzVFUoMNiN1LedoJcWzQ2Vxp2d6b82jxqH57H+62Gz7Pd1LraUb7q4kNChNgaEWEYm52lOEePrSqd
+        ivoULlo0WB4bqH6WIb82C+u+UO5uCaZ+23pqNq2T8zauBgV5bwlhFhvDw1O9fj/F2fEU5sRjKowhu0xD
+        tlWDqVpL4T0d5g1rCERF/UGpEE6xZufOMxPyVT/OzPyV24cPUyR3/U1xaCgnVqwYy1QnCAoOPrpq8+as
+        f0V1YeLXWClZLVn7DyhfdeInSrd8PdhgSYgAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="icon_zoomnext_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIZqAK2km+XXyefi3uvv85ScqJWdqPb3+OXn6cHCwq6vsJqirpWdqsPJ0Li9w+fs8cTJ
@@ -569,6 +615,24 @@ Returns: {0}</value>
         HTGc1GBAIskPIQwfsChiYAwTCAoGOCDj5SIMKgZ6LIlSYEuEKykuElGyQYyCCWdWVBkR5KKNL0MopCFA
         wAeOGR8uqkFgZYCZDgUOHPGARiwGBFoymJDBJUQCsQtBcEACxEiLBAACCMArFkDgwYQZGhacWHHgxopd
         QL4YEAA7
+</value>
+  </data>
+  <data name="SelectFolder" xml:space="preserve">
+    <value>Select Folder</value>
+  </data>
+  <data name="icon_zoomrect_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIZWAI2aptjb4q2km+vv8+/y9efs8eXXyfX29/b3+PX2+PL199Pa4Nrl6a6vsMHCwujt
+        8ujr7uHk5+Pp76SkpLu7u/T19ufp6qSkpfH09vP09fr7+9fY2aurq8LHzO7x9Ozt7tbX2NPU1sC/v8nK
+        ypubm+Xn6c/Pz9LS0t3g49ri6cLHy/Dy9N3k6/Hz9dXd5czNzcjIyL69vdvg5cPExbO1ttDf4ejq7Nni
+        6paWltrb3Nvf4+js787Q0uXp7ezw9NTT08bJzfP19ujt8bu8vfL09uzu8LGzteLp79PZ38TGx62tre7w
+        8t7l7MLDxK2trODj5be5usXQ2tXb4bCvr9bW1rW2tgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQB
+        AABWACwAAAAAEAAQAAAIqwCtABhIsGDBAAIDKFzIUCEAhA+tSJxIMaFAK1RETInxo6JFKyZyPImAIgSM
+        ihFflFhR4UCLHTqaUHx4YsOBIhoSYPAgBMiIiQ8pWECwJAgRAgMKIFECNICTDAgg9CDgo8CRFCSaVvmQ
+        QAHSAgyYLLhwMAkIrwMeMKhxowOUhlYc2EgrwUUUKUY8SnTAQwaLBSpoNNArcQYHHBOGWGkgwABhjwIa
+        P64Y2bGVgAA7
 </value>
   </data>
   <data name="icon_pandown" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -592,16 +656,25 @@ Returns: {0}</value>
         iEmUMn62FGwxJMMJPTzUHKlQgwYShA/kaCFi4E4TCRgsRBzEBQGCOTbcwNk8iA2FHQ4MyAgIADs=
 </value>
   </data>
-  <data name="icon_maptip" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="icon_panup" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        R0lGODlhEAAQAIU/APT19/Dx89HV3PX292tpdYuKld3g5N3g5by9xdnc4c7S2dXY3snO1sbHzJGQmdXY
-        37K1v+Dj5/P09Nba393h5dTX3czN0PP09dfb4M7S2uLk6Nrd4tHW3ImJlGFgbezu8bi7w93h5NTZ3urr
-        7oWGke3u8eXn6svQ2O/x8+rr7enr7c3S2ZSTnMzQ1+3v8dHW2+Hj6Nnd4t7g5c7T2tPX3eHk6NXZ36al
-        rGpodMvQ19nc4s3S2ubo6+3v8EZDUv///yH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAA/ACwAAAAAEAAQ
-        AAAIvAB/3MDho6DBgzhuCCQwoOEAFAAifog4gMDACDky7tjIkQGDHBEIZtTIcWOLExkLztixwsPBghAy
-        KFBQUIBNGhUg+CCxkYOAFwIKPrCxYIENED462FhqQ8SDgjES6MAwAYGPAjqyStVRMMQBCgY2WMWqw8AB
-        swVrqK0hY2zWGjBqaChogoddHg18OLh7t+AIvnn33lWRomCPw4ct+GCB2EWPEj5wBAiAuPLhyQESEpBg
-        ufIFCRYFEnyJUGFAADs=
+        R0lGODlhEAAQAIeDAJhpZZpqZiJNeNikptelprG+zCBPfSJNdyJOfVJvjMybl9Kgn7ShnSNOeCJPea2f
+        nq6entWjojVkl6CBgB9NfjVjlB5OftOnqDJejp1xbp9wbM6cnbWEgbaGhKh3eJBkYbeKh9CdnM2jpMeU
+        kcCNirqIi9qoqZ5ybdOfodSmptenpbuKhriHg6uWkyNQeq59fNakpciYljZklaB1dCtXhTFhkC1Zid2m
+        qdilpJlxbah2cyBPe////9ioqLCRjtCdmrKiotuop8OWkaZ0c3+hvdmhpMyZlipZhkFiirWgnd2prcGP
+        jvXm6TNfjcmdmtShoMKPjoKVs9KanbmTkrqIiaiOjVFwjNulpZJnZqNwcpd0dE9wkGF8mNimpdimp7GR
+        kvfk6MeVlKyfqcSSkd6rqDVjk9KeoqGEgbyWk5emu36SscSUkjFfj8WUkDdlltOaoDJeirqurqOPjiBM
+        eax/f9Ghn8aUkyBOf9yorNympKJybtKeoMOTkcuYlShYh6R/fpx6eL6KjL6LigAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAACDACwAAAAAEAAQAAAIxAAHCRxIcKCLgggHFhBQQKAdLwGm
+        VEGYQECCQSJ0CLkCgMyMOAUbCJzQI8CIAQCU/IFA8IDAM3QIAFiDAwAeJ18GuhSYg0OeAG0GdLiRwkfC
+        D2G6sPjxZo+JCwwSalABY0MIFEUIoCnoIUadLEukLDDzJEIQMQSTYDGi4EUJQWP68AGTxgpBIIBWQAFB
+        gkogJlHK+NlSsMWQDCf08FBzpEINGkgQPpCjhYiBO00kYLCQUCAXBAjm2HADp7NANhR2ODAgIyAAOw==
 </value>
   </data>
   <data name="SelectFeatureClass" xml:space="preserve">
@@ -623,25 +696,17 @@ Returns: {0}</value>
         QmCC
 </value>
   </data>
+  <data name="InvalidRecordCountError" xml:space="preserve">
+    <value>Invalid record count in line {0}</value>
+  </data>
   <data name="ConfirmGoogleScaleList" xml:space="preserve">
     <value>Are you sure you want to use a Google-compatible Scale List? This will overwrite your existing scale ranges and will only line up with commercial layers in Fusion if your Map's Coordinate System is WGS84.PseudoMercator</value>
   </data>
-  <data name="printer" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACYklEQVQ4T42SX0hTYRjGX1To
-        omIggdDVLvJi5o0IJjrI5ZgtNuG4KVsodtPZGSNScirHzY2mTIQSDPVK8MKBN6JSyVTUGAkTuqyLBInU
-        iQRZ+OdChz5978nBxJTew+/84/c853zwkbO7mzLUh0J2gXwJdxzBIEldXecgfpmF51c6jdTBATb29/F9
-        b09jJpGAcDyCwgsFkqpSFsrvoyNs7O7i684Ovmxv43MqhdjsLHiEp1hbW/UmRSGmzuMhcjgcVCfLVNvR
-        wXj3j4/xQ3w1u+TN+DgyFFqtAQE9qK/XstrJ6XSSo6mJbG1tvgNR8PPw8EIJ/wkvhx12tcxZQY54sAs8
-        eXl5r/x+P66CHXY5IwpySJKkW6qqhnbEmhVFQSQSQTAYvEAgEEA4HNacra0tdHZ2hjhLNpvNMDg4OLa2
-        tgaXy4X29nbIsozm5mZIUh2qq82orDSirOwerNZHmjM3t4yent4xzlJNTU3V5OTk8urqKsxmswh7YLFY
-        YTRWieD9c5jNDzVnZmYBAwPDy5wlk8nkSiaT60tLSygpKUFDQ6OQ7P/EYqnVHFkcExPv1zlLFRUVz+Lx
-        OGKxGPR6PZzOJ7DbH18KO6Ojo5iamgJnqbS01J9IfMT0dBw+33P09w+jr28I0ehwFiPi/i9ebysWFj5p
-        cJYMBoO6uLiC+fkVuN3u/yJTwFnS6XQt+fn5vUxubm5fSmyY6mgKr9+mMPTuAypfuHG3UYXRO4Jvm5tg
-        J+NzlsTcFNxmCsrLX2qbPmtOTk/BpE9OkBZXdjL+WZY7iK4VFNCN4uKn14uKolfBDruZ+QOvqgI74xfB
-        qAAAAABJRU5ErkJggg==
-</value>
+  <data name="SelectColumnPlaceholder" xml:space="preserve">
+    <value>&lt;Select column&gt;</value>
+  </data>
+  <data name="GenericError" xml:space="preserve">
+    <value>An error occured: {0}</value>
   </data>
   <data name="LastUpdated" xml:space="preserve">
     <value>Last Updated: </value>
@@ -667,13 +732,10 @@ Returns: {0}</value>
         JEoZP1sKthiS4YQeHmqOVKhBA0nCB3K0EDFwp4kEDBZGDuKCAMEcG27gaB7EhsIOBwZkBAQAOw==
 </value>
   </data>
-  <data name="icon_measure" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIQSAHFCCr2NKldCE9ajLmddJf7nWp3M3BJEd005EQGM5AGK4wGN4QEzZgGK5QE1ZwI0
-        ZQE0awE1Zf///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBF
-        Mi4wAwEBAAAh+QQBAAASACwAAAAAEAAQAAAIWgAlCBxIsKDBgwgTDlSQAIIEAwYeRoQogSGEBgsiSDhw
-        YGNHjhIwRnjAwIFCkiYVqlzJUsIAAS9jwpwpswABmzhv6swZAEGAnz6B/uz5E4DRo0iTAmjJtOnAgAA7
-</value>
+  <data name="FunctionTooltip" xml:space="preserve">
+    <value>Function: {1}({2})
+Description: {3}
+Returns: {0}</value>
   </data>
   <data name="OdbcDriverExcel" xml:space="preserve">
     <value>{Microsoft Excel Driver (*.xls)}</value>
@@ -693,22 +755,6 @@ Returns: {0}</value>
         aIiQYcWFFDModDABk4Dnz6A/DwkIADs=
 </value>
   </data>
-  <data name="icon_refreshmap_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIYAAAAAAP////38/f7+//39/vz8/evr7Nzd4M7P0s3O0bGzuOvs7n6Ej32DjnyCjH6E
-        js3Q1c3P0szO0ers77K4wLG3v6+1vYaasLC3v6+2vq61vK+2vczQ1Ors7unr7fb3+N7f4Kqtrpienqes
-        rKisrKqtramsrN3f38TGxvT19d/g4Kesq6isq6qtrMPGxcTGxdzf3c7Sz7a9t0J2QlqAWneNd3uOe4KU
-        gpSllJmomaOyo6WzpdHi0dHh0cXUxdbk1snWyd3p3dvn26avpqOso97p3tHc0a22rdPd0+Ls4uXu5cTK
-        xMHHwenr6f7+/v39/fz8/O7u7v///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQB
-        AABSACwAAAAAEAAQAAAI8AAxZKiwAYPBCgYvSFm4EEOBhyYKEIBSAAMEhQwxPHlSwIQAjhULcMAoxUIE
-        BBFKJEiAAAEGBgweMLRQAAGBFQQeFjjQoYPMhRUiSIgwooAAJwNSDBhgIGPOAiEkDlhio6oMhhkKqECx
-        4gWIADYCiLVBA2gBFwRIEEAxNYcSJTaQ5JCSgQQLEytYtIgypImRJDaMGKGhoQCKAi2guBhwI8gOGzJ2
-        FKmBgcCJFyNcgHByQ4gOJjZ0CKlBocDGERudHAECJGwTIDRKd/AgYsKCDzBw+Aj7A8cMDA4aPAjuQIGB
-        GETC8uhhg6Fz5zOq2pgREAA7
-</value>
-  </data>
   <data name="sort-number" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -722,9 +768,6 @@ Returns: {0}</value>
         Pcxm8x2j4rtCcTd6rFbr359p+zGxnjNXzD3zaDKZnhgVijvzwFwzF8wpcvqCE76fbZeXrLZ/wBxh+PBA
         KfgFcqFa2BgtJlQAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="NoTransformationRequired" xml:space="preserve">
-    <value>No transformation required</value>
   </data>
   <data name="icon_zoomnext" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -839,11 +882,8 @@ Returns: {0}</value>
         rkJggg==
 </value>
   </data>
-  <data name="TitleNewFeatureClass" xml:space="preserve">
-    <value>New Feature Class</value>
-  </data>
-  <data name="MissingColumnError" xml:space="preserve">
-    <value>Missing column "{0}"</value>
+  <data name="Func_RANGE_MaxDescription" xml:space="preserve">
+    <value>Exclusive maximum of range that can be matched by the key expression</value>
   </data>
   <data name="icon_selectradius_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -892,21 +932,6 @@ Returns: {0}</value>
   <data name="CoordinateTransformationFailed" xml:space="preserve">
     <value>Failed to transform coordinates: {0}</value>
   </data>
-  <data name="minus-circle" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACC0lEQVQ4T6WSP2gTYRjGP5JA
-        EyhNc0M8SotbAxU7pNDsNRA6hLQIpXiVzi0d3RVEaAUXBwexYgT7T9EKcfHfWQlSJJfmUFAhZOgJRocM
-        yh1ZjtfnCXq0pY2DgR+8933v87v3u3xKRNT/0AnfV0o9ABtgU6mBLaWWwBoo/4H1EvfYw15mmD0qyD+O
-        xcxaJuP8mJtzfy0u+j8XFvzvhuHujY873IMgf5Ig/7S/32oahvdtfl4cwzgE177Oznrb8bgFQf7QBEWO
-        Fo2a+zMz3pfpaflUKBzL56kpqRcK3npPj8lMcIS7ON+7dNqxJyfl/cREV/ZyOXk1MuIwEwhuK7X+IZdz
-        zUxG/vI8nZbtVErWBgflXjIpdzStA+tSKuUyEwhu4Wvj7f6LsTFpt9vSaDSkWq2KbdtSr9el2WxKq9Xq
-        UEwk5NHQkM9MILiJByub9Z8ND0utVpNKpXJsmIItCJ7ous9MILiBcd6MjroljLiBhm6UKNA0l5lAsMKL
-        k0zu7+B8r9HwL4qxmMNMILiGv+R6OGzu6Lq3iyl2ITmJl/G4txIKmcwEgqu4lpdxOZYjEausaZ4NiQ3J
-        Ud4ivBwOW+xlJhCgVqfBeWxcgn01GnXKfX3ux0TCJ6y5xj32sJe/g4IInk+BMwNKncsqdeWCUg8v4ksT
-        1lzjHnrOAh1EDgpCWOgFSYC+rvBF7A1R8BuYvt7nXvKiFAAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="document_task" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -944,6 +969,28 @@ Returns: {0}</value>
   <data name="FolderMissingPrefix" xml:space="preserve">
     <value>The folder must start with \"Library://\", do you want the starting folder to become:\n {0} ?</value>
   </data>
+  <data name="icon_plotdwf_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIecAP7+/rW6x9PW48TD1uHg6ba6x////8HBxMTFyMC/wrK+y/r6+v39/cTD173JyMLG
+        0fT09/P09d3d5qGprPX3+MPFxtXW2dLT1vj4+JOjqcXFxujo6OLk5+Dl58TFyba7x8fIy7a6xuDi4+Li
+        4drb3cHG0Onp6cLP29vb3u7w8ODg6LG2utjc4IeSk+Tx6dTr5dLV4urq6palqp2ho6ezwL69vrTBz8TD
+        1ebu9rvI1Lq+vKSvvdzm89XY3r+/wtLV2PX3+dTX3tHQ3Ymbj+Lk6b/KxOvt8PD1+bS5xvz9/aGvvPX3
+        98LOzLa6yJ+suuvr66CsurzKyM7Q0OHf6NHT1uzu8sTGyb3KyMrKztLX5M3L2b2+wdbY3O3u8sTGyODg
+        6cbIyNrb4Le9v8rLzrq+y5GunKvMuNna3eHi5fDx8qayu7u7vpShq/Py9fX19ZKop8LU2Jmps+nq67TN
+        x5eosPn6++/1+bO/zKCsu/T398XR36Goqp+rutbX2r/AwdHe6tPW5O3v787M2sfL1fz8/K22v/X199ze
+        4t3c5rW6xr/Dz/n5+c7Q0cnKzdze5MTGyoaSiJenndPW4o+ul+Df6MDAxL3BzcHDxcvX1Jyws8XD142g
+        lv///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAACcACwAAAAAEAAQAAAI8QA5CRwoEJODKHcUMElBcOCCQA5c
+        2OFx4k0GDAMNCRkw4MqLIzj+5NgEaQUnQVoGAACwqMMcM3D0KJDRYganBitXMoBQZFKZTDTwsNlz8wkA
+        AwAYAOAQaQgdJTvUiBGoKacBFQR0TIhTyIYTNwNvACBA4EsYDzU08IEih2AASlO4gNjiBwaYNX0GEioR
+        4MClClIESKKQ5wKZgQWojAEkQoCAJUDONDoQADGAQxayAEBBAkGCEAESDQzAAkAVNF6sPEIgIc0GLKN7
+        dEnwIwAjRBGSmBBgaSCRD0Yq+QjQpE4MRUHaNFzwAEkBTiMGOWrIKSAAOw==
+</value>
+  </data>
   <data name="PromptUseOffice2010Drivers" xml:space="preserve">
     <value>Use Office 2010 Drivers? (these are 64-bit compatible)</value>
   </data>
@@ -952,6 +999,9 @@ Returns: {0}</value>
   </data>
   <data name="AllResourceTypes" xml:space="preserve">
     <value>All types</value>
+  </data>
+  <data name="FindNothing" xml:space="preserve">
+    <value>Could not find specified string or end of document reached</value>
   </data>
   <data name="icon_restorecenter_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -995,6 +1045,9 @@ Returns: {0}</value>
   <data name="SQLQuery" xml:space="preserve">
     <value>SQL Query</value>
   </data>
+  <data name="WidgetNameExists" xml:space="preserve">
+    <value>A widget named {0} already exists</value>
+  </data>
   <data name="map--plus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -1029,23 +1082,11 @@ Returns: {0}</value>
         sODgROSUAGIzM2gx4UoIHSJ/hMHSJMYDHzYmVOGxxIvIgrAHlplNu7bt2QEBADs=
 </value>
   </data>
-  <data name="gear--exclamation" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACv0lEQVQ4T6WQbUhTYRTHn9sm
-        IhbolwWlEqaYTEO2SGcfFiu1ph/UbZ8MxC+9EEUQjQwTkkyioMIFpWIpawVGoUyDTTfTeVfe5e5eTJfT
-        llxfNoiSWIUUp+dsLhT61oUf53DO///n3IcAAPkfYma1Wk2qqqpITU0Nqa2tjVWtVqugnNpAsXmHWvQg
-        WwKqq6tLqfAMrbuxrq+vQzQahc0z1PwzoLKy8pBer78biUSgoaHhChWdXV5eAgR7nOEONajdckFFRQWh
-        nAuFQsBxk7C0JIDZbJ4TBAEQ7IPBYGyHGtRueOK/oFAoiFKpzNBoNM0eDw8874aFhXlYXPwUA3uc4Q41
-        qEVPcXFxPKCkpERJBxeRnp7HQb/fBybTk5mCgoL7CPY4w11Ch56/ATKZTO9ycWC328DpZMHr9UJh4f42
-        kUhEEOw9zuvAWVQwYb0MqEUPJX6BVCptdDgcYLVaAavP9x6KimQtDMMQRC6TtrpHNfA10gsTQ8fAMW4D
-        9FDiAbm5uWU5OTlNSHu74aPb7YeBgWG3XH7wKvLCpPcHPefhV7QP3ljKhZMnJEb0UOIBWVlZJDMzc49M
-        Jr/Nsi4YGRmHQECA1dUfsLLyDdz2OviyfAd0Oh2EF5p/2kwik6OPEVPiARKJBGlhWR76+y0wNuYCg6Ez
-        NDnphwl7B0zZtb/XhCYgVL4yexoGjXuF0WfMEfvTjYD09HRCOa5SlRk5bhby8vLvpaWltbKsD2wvdTA7
-        Vfd9xlcOg+ZL4OUPwzu2dG3YyDyw9NIHwgvwE4vFJCUlRZ2amtqWnJycjZXnzOB8dRRCARXMT8tjF2Cd
-        nz4Ar5/vcA51M6WJADFd7qTQZyVyJCkpqf7aBZGHH82OhufyIfxhH0Q/N8YqEnBmhPsfMl2JgG3UtJ0i
-        oexK0NlKOiiuzXTdIFx3G3n76CZhe28Rwx+y4Aflu5kbswAAAABJRU5ErkJggg==
-</value>
+  <data name="RequiredServiceNotSupported" xml:space="preserve">
+    <value>This connection does not support required service: </value>
+  </data>
+  <data name="PromptSelectMap" xml:space="preserve">
+    <value>Select Map</value>
   </data>
   <data name="FdoConnectionStringComponentNotFound" xml:space="preserve">
     <value>The component "{0}" could not be found in the specified FDO connection string</value>
@@ -1122,11 +1163,25 @@ Returns: {0}</value>
   <data name="FilterShp" xml:space="preserve">
     <value>ESRI Shape File (*.shp)|*.shp</value>
   </data>
-  <data name="Func_LOOKUP_IndexDescription" xml:space="preserve">
-    <value>Lookup index that can be matched by the key expression</value>
+  <data name="InvalidResourceIdFolder" xml:space="preserve">
+    <value>Must be valid resource id. Cannot be a folder</value>
   </data>
-  <data name="WidgetNameExists" xml:space="preserve">
-    <value>A widget named {0} already exists</value>
+  <data name="InvalidFieldCountError" xml:space="preserve">
+    <value>Invalid field count in line {0}</value>
+  </data>
+  <data name="document--minus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAB20lEQVQ4T42SO0hbYRTHz2jo
+        5qBZOgiJgwgl6dAgqCAIBlQqRnBQQTDGoEFuCAbfIkK3Lg5GXLUdOrVD3IVujjo4lYpRkeAj7/fxfy45
+        i4+rH/zg3sv3/3HOuYd8a2skjKyvD4DpN3AMr67S0NISfV1cpMHxTiL5UCeQrVT4rljkm1yOE5kMn6fT
+        /D+VMvl9dMS4FwBOFYjEtNWZSZdKnETw6uGB/yWTfHZ9zaeXl3ySSPBBPM5ycHcGOCVsCgajUSWYgeA2
+        m31Rsr2/z4rT610BJFB/JKLM5splvkf5r0mkEmkHmVnNUZ9hKHN5zCCVz1tKRIDMnOaoNxRSQgUIMoWC
+        pUQGi0xIc9QTDCrzpWqVc5iDlUT+DjLzmqMuv18xyhAUMAcryQ1aRMbQHHVMTirhSq3GRbRhJZE9QSYs
+        OcPlIvoyNqZEqhBIFVaSFFpEJvLdbqefhPN5dFRZqGFRKhA8lfydmuK4y2Vy6Hbzns12gfDxD6JdcnR3
+        0yefT4jKptVQxVPJL4TyExPPiEEiRdBHj4davd5lc1dfkPzx+3kHEiEGFhoaEhsIb0kFODbQ1OzxbKrA
+        lACZiQxWWpJfLHtSxLvclUw9S414aLe1tIQ/tLV9ew9yVzKg8REGvINQesvmrAAAAABJRU5ErkJggg==
+</value>
   </data>
   <data name="FiniteDisplayScales" xml:space="preserve">
     <value>Finite Display Scales</value>
@@ -1162,8 +1217,8 @@ Returns: {0}</value>
   <data name="FindEmptyString" xml:space="preserve">
     <value>Cannot Find an Empty String</value>
   </data>
-  <data name="ProcessedItem" xml:space="preserve">
-    <value>Processed: {0}</value>
+  <data name="UnsupportedConnectionType" xml:space="preserve">
+    <value>Invoking MgCooker is not supported for this connection type: {0}</value>
   </data>
   <data name="Func_ARGB_Description" xml:space="preserve">
     <value>Color generation function</value>
@@ -1186,6 +1241,14 @@ Returns: {0}</value>
         uFAwQoSDFVwiuiFToEATKjlsaHaDpMCHDgocBAQAOw==
 </value>
   </data>
+  <data name="icon_selectpolygon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIMLAM2qrs8YGBU2aKi0ws2OkfLyl851eMbMjqiToKOuhs6QkwAAAAAAAAAAAAAAAAAA
+        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAALACwAAAAAEAAQAAAIbwAXCFxgIIDBgwcHCixIAIDDhwAC
+        KGQIEaLEhQEaVnRI4CLFjQA6GhCYcaMABBFHkgQp4CQAhQFYHhAwACbLAjNrrjRZACfNnQ8bCujps2bM
+        oBKHJmjZcgFCgwoWCFg6oKpOhQNbXsWK9SfXr2ADAgA7
+</value>
+  </data>
   <data name="edit-indent" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -1198,9 +1261,6 @@ Returns: {0}</value>
         Ib5030ST1UctrpUKJotPSVSv8gIy3sQ8XMAlXME13MId3MMjkp/hpeYO9L6NkvbFR8C9EUnbNbomEWMt
         sGBsgDrtCFwAzEVBanC1saTAL88kUjz8yRfZAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="ErrorMapExtentCalculationFailed" xml:space="preserve">
-    <value>Could not transform extents of any layer in this Map Definition. You will have to specify the extents manually.</value>
   </data>
   <data name="arrow-circle-135" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1221,20 +1281,25 @@ Returns: {0}</value>
         SUVORK5CYII=
 </value>
   </data>
-  <data name="Func_ARGB_BValueDescription" xml:space="preserve">
-    <value>Blue value</value>
-  </data>
-  <data name="PromptSelectMap" xml:space="preserve">
-    <value>Select Map</value>
-  </data>
   <data name="AlternateNameMissing" xml:space="preserve">
     <value>You must enter a alternate name, or remove the checkmark</value>
   </data>
   <data name="SelectWidget" xml:space="preserve">
     <value>Select widget</value>
   </data>
-  <data name="GenericError" xml:space="preserve">
-    <value>An error occured: {0}</value>
+  <data name="icon_select" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIZdAOvsxmuAjjRRfpOhtpOitjRQeDVQejtTfDZUdzBMejtXf///1/385///74OTl3WE
+        mu7w81Zhdv384KCuwG+EmZWjtPz72/7+3ISQoeLlyFptkPj5vs3Q1ImYsOPl0ktgg3CBnP/95mp9if//
+        4NfZ3P//zYKTjKWviv3919/inpuovOTo59DU27e6weTn4P//7KGyxzVRfjVQezJNdlRqgoCQl7/Gzm6C
+        n9fd15adp+PmzNfe0P//97C6y2d7ltXb45mppoqZra2yt+rs7v///5mjuOLjrdLauuzvqmN5jjVSdf//
+        9NfavlltiGp/nGB1h9nenmBviLq9wrS4vjRQdzNQelhujqGwnOXp7M/V2KWvwfv60+Ln2v///wAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQB
+        AABdACwAAAAAEAAQAAAIjAC7CBxIsCDBBDcMKuyioMeEhQVjQPihAuJAAViIZAlisYuMFUt44BhgsYqL
+        Bgxe7CAA0QCXEBIsjMhQYSEVDxdQbGFyBEgHhQV0LABQgsaBD1EUIgBQ48kGBw+ESFGoJIAVH1eMaBiy
+        cAaIKRgoIDFRZKENEl1YRDgBpQmHjjmSpBDRomMXGE60FAwIADs=
+</value>
   </data>
   <data name="ruler1" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1249,9 +1314,6 @@ Returns: {0}</value>
         eiBm0CCkGWYSyDkTPBn3vAa64NmWxv8gNkiMWCAPVGiUasywsM2Z4TgIA9nzgGLKQCwHxBJALAzEfEDM
         CcSsQAwMPQQQADIloRikWAyIRYBYCIj5gZgHiLmAmB2qmRlIw50HAIdyTYaOb/frAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="Func_RANGE_DefaultValueDescription" xml:space="preserve">
-    <value>Default value returned if expression does not fall into any of the ranges</value>
   </data>
   <data name="BetweenLabel" xml:space="preserve">
     <value>Between {0} and {1}</value>
@@ -1304,14 +1366,33 @@ Returns: {0}</value>
         laHiZ4UJYWRYwYgszQgLQaItHIaKXxQswuj/gm+HNTFEuMVJpAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="icon_ctxarrow" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhBAAIAIcAAAAAAIAAAACAAICAAAAAgIAAgACAgICAgMDAwP8AAAD/AP//AAAA//8A/wD/////
+        /wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAMwAAZgAAmQAAzAAA/wAzAAAzMwAzZgAzmQAzzAAz/wBmAABmMwBmZgBm
+        mQBmzABm/wCZAACZMwCZZgCZmQCZzACZ/wDMAADMMwDMZgDMmQDMzADM/wD/AAD/MwD/ZgD/mQD/zAD/
+        /zMAADMAMzMAZjMAmTMAzDMA/zMzADMzMzMzZjMzmTMzzDMz/zNmADNmMzNmZjNmmTNmzDNm/zOZADOZ
+        MzOZZjOZmTOZzDOZ/zPMADPMMzPMZjPMmTPMzDPM/zP/ADP/MzP/ZjP/mTP/zDP//2YAAGYAM2YAZmYA
+        mWYAzGYA/2YzAGYzM2YzZmYzmWYzzGYz/2ZmAGZmM2ZmZmZmmWZmzGZm/2aZAGaZM2aZZmaZmWaZzGaZ
+        /2bMAGbMM2bMZmbMmWbMzGbM/2b/AGb/M2b/Zmb/mWb/zGb//5kAAJkAM5kAZpkAmZkAzJkA/5kzAJkz
+        M5kzZpkzmZkzzJkz/5lmAJlmM5lmZplmmZlmzJlm/5mZAJmZM5mZZpmZmZmZzJmZ/5nMAJnMM5nMZpnM
+        mZnMzJnM/5n/AJn/M5n/Zpn/mZn/zJn//8wAAMwAM8wAZswAmcwAzMwA/8wzAMwzM8wzZswzmcwzzMwz
+        /8xmAMxmM8xmZsxmmcxmzMxm/8yZAMyZM8yZZsyZmcyZzMyZ/8zMAMzMM8zMZszMmczMzMzM/8z/AMz/
+        M8z/Zsz/mcz/zMz///8AAP8AM/8AZv8Amf8AzP8A//8zAP8zM/8zZv8zmf8zzP8z//9mAP9mM/9mZv9m
+        mf9mzP9m//+ZAP+ZM/+ZZv+Zmf+ZzP+Z///MAP/MM//MZv/Mmf/MzP/M////AP//M///Zv//mf//zP//
+        /yH/C05FVFNDQVBFMi4wAwEBAAAh+QQAAAAAACwAAAAABAAIAAAIFAABPBgIQOCDggIRKlR40KDBBwEB
+        ADs=
+</value>
+  </data>
   <data name="ColumnValueError" xml:space="preserve">
     <value>An error occured while reading column values: {0}</value>
   </data>
   <data name="UnmanagedBrowserMultiSelectionNotAllowed" xml:space="preserve">
     <value>Multiple selection is not allowed when SelectFoldersOnly is set to true</value>
   </data>
-  <data name="AddWidgetReference" xml:space="preserve">
-    <value>Add Widget Reference</value>
+  <data name="ErrorMapExtentCalculationFailed" xml:space="preserve">
+    <value>Could not transform extents of any layer in this Map Definition. You will have to specify the extents manually.</value>
   </data>
   <data name="PromptName" xml:space="preserve">
     <value>Enter the name</value>
@@ -1339,9 +1420,6 @@ Returns: {0}</value>
   </data>
   <data name="DataReadError" xml:space="preserve">
     <value>Unable to read data from the selected column: {0}</value>
-  </data>
-  <data name="PromptUpdateMapWidgetReference" xml:space="preserve">
-    <value>Update Map Widget to point to</value>
   </data>
   <data name="ModeNotAllowed" xml:space="preserve">
     <value>Mode not allowed: {0}</value>
@@ -1382,31 +1460,11 @@ Returns: {0}</value>
   <data name="SymbolGraphicsTextPlaceholder" xml:space="preserve">
     <value>&lt;text&gt;</value>
   </data>
-  <data name="IncompatibleConnection" xml:space="preserve">
-    <value>This connection is not compatible</value>
-  </data>
-  <data name="InvalidFieldCountError" xml:space="preserve">
-    <value>Invalid field count in line {0}</value>
+  <data name="Func_RANGE_Description" xml:space="preserve">
+    <value>Range table for style theming</value>
   </data>
   <data name="InvokeUrlNoMapDefined" xml:space="preserve">
     <value>Cannot get layers. No map definition specified</value>
-  </data>
-  <data name="application_browser" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACiklEQVQ4T6WUXUiTURiAT3rl
-        heBNXQTdCGF2E+1qUIwkiwwsleyHfonUrAhCMTAKE7xINCORgnSslqYNZSmJusrQnH9zttraVkNJdLOt
-        uaWbzrH19H1eBF2aLzycc97D8/KeA+cIQGwEkZ+fnypxSqJwnchOqsjLyzttNBqtLpcLp9OBzWbDYvmI
-        yWRiZGQEaY+hIZlRaT7B8LCF8XE7PT0frLIrcnJyig0GA319fVKyh+7ubrq6utDr9XR0dKDT6WhtbaWl
-        pQWtVotGo0GtVtPY2EhiYmKhfIQi6Q7+K2RX5ObmXo7H48RisX8Ir8YwTC1T1h8kX7/Awbafa6O8lvPL
-        0TiyK7Kzs69Eo1EikchfvnnDFHS6uaB3Uz/qp/XLIp3ORSYXY7z6vsLVXh+FXR5kV2RlZV1bWVkhFAqt
-        YZ8LcPL5VyoMs+jsAUyS1Gz7xRNzAKM3gj0K9lVQfw6yufxdm8jMzLy+tLREIBBg3rfAuSYzd3qmuTfo
-        oc8TkQr8ptkaoF3qYPBHhLFgjLEwGEOQeNfxXqhUqhvBYBCfz4fug5Ps+wOcb/vK5c5pnjpDVL6b5fbb
-        WV44luj3w53XLrRSvmMeEkqNA0KpVJb4/X7cbjeXHvZSrLVwSG3ngMbBUa2DEy9dnG2folg/zRnNJ47U
-        j1JniVIuVUso6BwSCoWizOv1MjMzw76SZ5R2z5PRYGVX3QTKx1b2PLGiarSxt2GSc+1ubg7FuWYIo6oz
-        s+m4ekSkpaXdktv3eDwoCh6hrHjDfvUc26tG2VEzQXqNmZ21ZtKrx1FUm1E9sHOsPcy20l7E4dpxkZyc
-        XJSSklIlIzIqTeti98UmIUWSxBaJretEdpI29JTlb+APrpaoVzbDpskAAAAASUVORK5CYII=
-</value>
   </data>
   <data name="sql-join-right" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1436,14 +1494,8 @@ Returns: {0}</value>
   <data name="LessThanLabel" xml:space="preserve">
     <value>Less than {0}</value>
   </data>
-  <data name="FieldRequired" xml:space="preserve">
-    <value>This field is required: {0}</value>
-  </data>
   <data name="NewLayerGroup" xml:space="preserve">
     <value>New Layer Group</value>
-  </data>
-  <data name="ConfigurationDocumentReset" xml:space="preserve">
-    <value>Configuration Document has been reset</value>
   </data>
   <data name="icon_refreshmap" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1463,6 +1515,9 @@ Returns: {0}</value>
   </data>
   <data name="QuestionResetFsOverrideList" xml:space="preserve">
     <value>Reset Feature Source override list?</value>
+  </data>
+  <data name="AddWidgetReference" xml:space="preserve">
+    <value>Add Widget Reference</value>
   </data>
   <data name="Infinity" xml:space="preserve">
     <value>Infinity</value>
@@ -3183,8 +3238,8 @@ Returns: {0}</value>
 "5. Products derived from this software may not be called ""ColorBrewer"", nor may ""ColorBrewer"" appear in their name, without prior written permission of Cynthia Brewer.",,,,,,,,,
 </value>
   </data>
-  <data name="Func_LOOKUP_DefaultValueDescription" xml:space="preserve">
-    <value>Default value returned if expression does not evaluate to any of the keys</value>
+  <data name="Func_LOOKUP_IndexDescription" xml:space="preserve">
+    <value>Lookup index that can be matched by the key expression</value>
   </data>
   <data name="icon_search_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3224,21 +3279,27 @@ Returns: {0}</value>
   <data name="DeleteConfirmation" xml:space="preserve">
     <value>Do you want to remove the selected item?</value>
   </data>
-  <data name="drive-download" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="icon_popupscrollup_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACTklEQVQ4T42OXWhSYRjHH4KK
-        iBNkX9AHWx9QeaQuDpTsZgu7CsRJGjIcqyAFiY0xhm7RFqxTdLPoqtjCm+jCPsCwUhtL86O0nRo2zZy5
-        tXWR3qztYuUkfHqfsSOOsdWRHzz+n9//4YV6ZwFWQXB+xwYxUW5ge2E1D47d/FTh+K0xqLs7LWO79/XP
-        9Y7AvMgym5yTU92B2s5AhQOOEBy9NgJCf4Z4fCe1kLJ6ZlJsfkQZ7cip7qw4cKg7CoevxoDv+yj1vZ/D
-        M4NfkGbKaLfmgf32N7eZ4FtCsoVmUHV/Atl/Sc7JWfaCvW2vQGZPq9988Eoo1Z4o4SVpAQXfPG5zzWH9
-        8C80RH9jjSOYJKe6UylTuPuyFxQXn5p3tfuT2pEybveWcd2zMqqCZdzR5kvSjpxlB060iECcPH8Djlic
-        sPXCE9hsemDeYnUn66KItcOInMWdpIx25JAr90Cn0y2i1+vBaDTCaZMN9p3rh/WNg+aNLa6xDQyaKaMd
-        OeTKvRUHSCBOnbUA39hZQ9As52sd4AwGQxPD+g+a2Au4ygu0Wi0s0RwOh8cTiQTG4zEMBl+j1/sSPR4P
-        4znDzwigy/VinPnNcg8EQQCNRkO0lkolLBaLODv7E/P5Hzg19Q1zuRxjgjGNkpTGTCaP5FKHuosfz/Og
-        Vqs7CoUCut1uFEURe3t7sKvLgXY70cMQ0cJ+sVgayaWO/G1iw06lUtnNnjuZzWYxnf6Mo6MfmPwOI5EI
-        I8qI49DQWxwYeDhJLnUY1AUFQ8VxnEmhUIj/A7nUoe5fouy03kA6Jw4AAAAASUVORK5CYII=
+        R0lGODlhEAAQAIcAAAAAAIAAAACAAICAAAAAgIAAgACAgICAgMDAwP8AAAD/AP//AAAA//8A/wD/////
+        /wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAMwAAZgAAmQAAzAAA/wAzAAAzMwAzZgAzmQAzzAAz/wBmAABmMwBmZgBm
+        mQBmzABm/wCZAACZMwCZZgCZmQCZzACZ/wDMAADMMwDMZgDMmQDMzADM/wD/AAD/MwD/ZgD/mQD/zAD/
+        /zMAADMAMzMAZjMAmTMAzDMA/zMzADMzMzMzZjMzmTMzzDMz/zNmADNmMzNmZjNmmTNmzDNm/zOZADOZ
+        MzOZZjOZmTOZzDOZ/zPMADPMMzPMZjPMmTPMzDPM/zP/ADP/MzP/ZjP/mTP/zDP//2YAAGYAM2YAZmYA
+        mWYAzGYA/2YzAGYzM2YzZmYzmWYzzGYz/2ZmAGZmM2ZmZmZmmWZmzGZm/2aZAGaZM2aZZmaZmWaZzGaZ
+        /2bMAGbMM2bMZmbMmWbMzGbM/2b/AGb/M2b/Zmb/mWb/zGb//5kAAJkAM5kAZpkAmZkAzJkA/5kzAJkz
+        M5kzZpkzmZkzzJkz/5lmAJlmM5lmZplmmZlmzJlm/5mZAJmZM5mZZpmZmZmZzJmZ/5nMAJnMM5nMZpnM
+        mZnMzJnM/5n/AJn/M5n/Zpn/mZn/zJn//8wAAMwAM8wAZswAmcwAzMwA/8wzAMwzM8wzZswzmcwzzMwz
+        /8xmAMxmM8xmZsxmmcxmzMxm/8yZAMyZM8yZZsyZmcyZzMyZ/8zMAMzMM8zMZszMmczMzMzM/8z/AMz/
+        M8z/Zsz/mcz/zMz///8AAP8AM/8AZv8Amf8AzP8A//8zAP8zM/8zZv8zmf8zzP8z//9mAP9mM/9mZv9m
+        mf9mzP9m//+ZAP+ZM/+ZZv+Zmf+ZzP+Z///MAP/MM//MZv/Mmf/MzP/M////AP//M///Zv//mf//zP//
+        /yH/C05FVFNDQVBFMi4wAwEBAAAh+QQAAAAAACwAAAAAEAAQAAAILwAfCBxIsKDBgwgTKkSAQOFAhgwd
+        QoSYcOLEgxYtFsyY8SHHjh8/OhxJsqRJkwEBADs=
 </value>
+  </data>
+  <data name="LoadProcedureVersionExecutionNotSupported" xml:space="preserve">
+    <value>This connection does not support executing this type of Load Procedure</value>
   </data>
   <data name="OverwriteResource" xml:space="preserve">
     <value>This resource already exists, continue with save?</value>
@@ -3261,11 +3322,14 @@ Returns: {0}</value>
         AEiwtKnDqQGYTmSZ1epEAFq3cggrVmFAADs=
 </value>
   </data>
-  <data name="NewFlyout" xml:space="preserve">
-    <value>New Flyout</value>
+  <data name="Func_IF_FalseValueDescription" xml:space="preserve">
+    <value>Returned if condition is false</value>
   </data>
   <data name="PromptRepairBrokenFeatureSource" xml:space="preserve">
     <value>The resource id {0} could not be found. You will now be prompted to select the correct feature source</value>
+  </data>
+  <data name="PackageBuildError" xml:space="preserve">
+    <value>An error occured while building package: {0}</value>
   </data>
   <data name="UnitsMs" xml:space="preserve">
     <value>ms</value>
@@ -3276,26 +3340,8 @@ Returns: {0}</value>
   <data name="OdbcNoMarkedFile" xml:space="preserve">
     <value>Could not infer ODBC driver. No file specified</value>
   </data>
-  <data name="icon_panleft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIeDAJhpZZpqZiJNeNikptelprG+zCBPfSJNdyJOfVJvjMybl9Kgn7ShnSNOeCJPea2f
-        nq6entWjojVkl6CBgB9NfjVjlB5OftOnqDJejp1xbp9wbM6cnbWEgbaGhKh3eJBkYbeKh9CdnM2jpMeU
-        kcCNirqIi9qoqZ5ybdOfodSmptenpbuKhriHg6uWkyNQeq59fNakpciYljZklaB1dCtXhTFhkC1Zid2m
-        qdilpJlxbah2cyBPe////9ioqLCRjtCdmrKiotuop8OWkaZ0c3+hvdmhpMyZlipZhkFiirWgnd2prcGP
-        jvXm6TNfjcmdmtShoMKPjoKVs9KanbmTkrqIiaiOjVFwjNulpZJnZqNwcpd0dE9wkGF8mNimpdimp7GR
-        kvfk6MeVlKyfqcSSkd6rqDVjk9KeoqGEgbyWk5emu36SscSUkjFfj8WUkDdlltOaoDJeirqurqOPjiBM
-        eax/f9Ghn8aUkyBOf9yorNympKJybtKeoMOTkcuYlShYh6R/fpx6eL6KjL6LigAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAACDACwAAAAAEAAQAAAIwQAHCRxIcFCBBAUTCnQhQECDAwcG
-        2fESYEqVggcHitAh5AoAMjPiKBw0oUeAEQMAKPkDQeEZOgQArMEBAI+TLwpzcMgToM2ADjdS+FD4IUwX
-        Fj/e7DFxgYFCDSpgbAiBoggBNAU9xKiTZYmUBWaeRAgihmASLEYUvCghaEwfPmDSWCEIBNAKKCBIUAnE
-        JEoZP1sKthiS4YQeHmqOVKhBA0nCB3K0EDFwp4kEDBZGDuKCAMEcG27gaB7EhsIOBwZkBAQAOw==
-</value>
+  <data name="Func_FEATURECLASS_Description" xml:space="preserve">
+    <value>Returns the active feature class name</value>
   </data>
   <data name="folder_horizontal" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3322,21 +3368,6 @@ Returns: {0}</value>
         Gh+OoIlBh4mFGyx07FHA8E6UGRSmqMljI4eGDXueMAQjJASUKgTGJElR48WeBgyRYEjz4EuFBBAkDPmR
         kYESF0akyMlgZwIHHhl3mHHjpAcBL1kuFHGQcQ8eNkBMBFmwRoUBPXX3wBERxsqWK2UMABAwIHCBDgVw
         7AkAYHHjwA0pW8acubIAzp3ngM5MZk9AADs=
-</value>
-  </data>
-  <data name="Func_LOOKUP_ExpressionDescription" xml:space="preserve">
-    <value>Key expression</value>
-  </data>
-  <data name="icon_invokescript" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIU6AEtypf///9bn92+wPq3D3hExZKq+r3ugdmupO1WHSD14K7fH3Jiymb7M37HMxlmP
-        RFeLTVyTSVuQRY/SS6DfUZjYTl6fN1iORJ6xxny6Qn+og4jHR5vbTzJpMpvbUIjGR3Gad4/RS4nISHvB
-        RIrOSXCzP5/eUaDeUJ7dUJPVTYfKSIbLSIDGRnWPsoLHR2WkOT95LD11Pp3cUJPVTIPCRZ6+rIPDRWak
-        OZfYTnGzQAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAA6ACwAAAAAEAAQ
-        AAAIuAB1CNSBAYDBgwgxDNRhsEGAhxADNACwEMBEARgzYqQ4EEAAhCA5CvRIoKRJAgUWGjgQAwYEDQ4y
-        ohzIQAKCATJEIIhQA+NMHQYkZBgQYAAFChkixPx5AMEJokVRmECgQcDPBB84QC3qYQMEqyl1KKiAY2vR
-        CgoItAibgEaKrSFm2OhQoMACgQdeTICqgsSEGyAW3BVo4MEAoixcrBjwwMBCgQwuWMgxooSFCwweD1yZ
-        QEGCA441BwQAOw==
 </value>
   </data>
   <data name="drive-upload" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -3369,6 +3400,9 @@ Returns: {0}</value>
         g8OJBwUKKGCxY0TGNAiSOBlAQAoPLSEYnEW7ocENAyvMJJgrUEeRF0I6pEkAIADfswAKH86Y2PBiho0f
         Q24iOWNAADs=
 </value>
+  </data>
+  <data name="FileDownloaded" xml:space="preserve">
+    <value>File Downloaded to {0}</value>
   </data>
   <data name="ContentFileMissing" xml:space="preserve">
     <value>The content file does not exist</value>
@@ -3406,8 +3440,8 @@ Returns: {0}</value>
         yd/5G8s+qAWdGU8YAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="OdbcCannotInferDriver" xml:space="preserve">
-    <value>Could not infer ODBC driver from file name: {0}</value>
+  <data name="FilterXml" xml:space="preserve">
+    <value>XML Files (.xml)|*.xml</value>
   </data>
   <data name="TestConnectionNoErrors" xml:space="preserve">
     <value>Provider reported no errors</value>
@@ -3451,31 +3485,59 @@ Returns: {0}</value>
   <data name="UnitsSeconds" xml:space="preserve">
     <value>s</value>
   </data>
-  <data name="SelectColumnPlaceholder" xml:space="preserve">
-    <value>&lt;Select column&gt;</value>
+  <data name="TooManyIndiviualValuesError" xml:space="preserve">
+    <value>The selected column contains more than {0} different values, and thus cannot be used for theming with individual values</value>
   </data>
-  <data name="document--minus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="icon_maptip" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAB20lEQVQ4T42SO0hbYRTHz2jo
-        5qBZOgiJgwgl6dAgqCAIBlQqRnBQQTDGoEFuCAbfIkK3Lg5GXLUdOrVD3IVujjo4lYpRkeAj7/fxfy45
-        i4+rH/zg3sv3/3HOuYd8a2skjKyvD4DpN3AMr67S0NISfV1cpMHxTiL5UCeQrVT4rljkm1yOE5kMn6fT
-        /D+VMvl9dMS4FwBOFYjEtNWZSZdKnETw6uGB/yWTfHZ9zaeXl3ySSPBBPM5ycHcGOCVsCgajUSWYgeA2
-        m31Rsr2/z4rT610BJFB/JKLM5splvkf5r0mkEmkHmVnNUZ9hKHN5zCCVz1tKRIDMnOaoNxRSQgUIMoWC
-        pUQGi0xIc9QTDCrzpWqVc5iDlUT+DjLzmqMuv18xyhAUMAcryQ1aRMbQHHVMTirhSq3GRbRhJZE9QSYs
-        OcPlIvoyNqZEqhBIFVaSFFpEJvLdbqefhPN5dFRZqGFRKhA8lfydmuK4y2Vy6Hbzns12gfDxD6JdcnR3
-        0yefT4jKptVQxVPJL4TyExPPiEEiRdBHj4davd5lc1dfkPzx+3kHEiEGFhoaEhsIb0kFODbQ1OzxbKrA
-        lACZiQxWWpJfLHtSxLvclUw9S414aLe1tIQ/tLV9ew9yVzKg8REGvINQesvmrAAAAABJRU5ErkJggg==
+        R0lGODlhEAAQAIU/APT19/Dx89HV3PX292tpdYuKld3g5N3g5by9xdnc4c7S2dXY3snO1sbHzJGQmdXY
+        37K1v+Dj5/P09Nba393h5dTX3czN0PP09dfb4M7S2uLk6Nrd4tHW3ImJlGFgbezu8bi7w93h5NTZ3urr
+        7oWGke3u8eXn6svQ2O/x8+rr7enr7c3S2ZSTnMzQ1+3v8dHW2+Hj6Nnd4t7g5c7T2tPX3eHk6NXZ36al
+        rGpodMvQ19nc4s3S2ubo6+3v8EZDUv///yH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAA/ACwAAAAAEAAQ
+        AAAIvAB/3MDho6DBgzhuCCQwoOEAFAAifog4gMDACDky7tjIkQGDHBEIZtTIcWOLExkLztixwsPBghAy
+        KFBQUIBNGhUg+CCxkYOAFwIKPrCxYIENED462FhqQ8SDgjES6MAwAYGPAjqyStVRMMQBCgY2WMWqw8AB
+        swVrqK0hY2zWGjBqaChogoddHg18OLh7t+AIvnn33lWRomCPw4ct+GCB2EWPEj5wBAiAuPLhyQESEpBg
+        ufIFCRYFEnyJUGFAADs=
 </value>
   </data>
   <data name="UnknownResourceTypes" xml:space="preserve">
     <value>Unknown types</value>
   </data>
-  <data name="NoSchemasInFeatureSource" xml:space="preserve">
-    <value>Feature Source has no schemas</value>
+  <data name="printer" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACYklEQVQ4T42SX0hTYRjGX1To
+        omIggdDVLvJi5o0IJjrI5ZgtNuG4KVsodtPZGSNScirHzY2mTIQSDPVK8MKBN6JSyVTUGAkTuqyLBInU
+        iQRZ+OdChz5978nBxJTew+/84/c853zwkbO7mzLUh0J2gXwJdxzBIEldXecgfpmF51c6jdTBATb29/F9
+        b09jJpGAcDyCwgsFkqpSFsrvoyNs7O7i684Ovmxv43MqhdjsLHiEp1hbW/UmRSGmzuMhcjgcVCfLVNvR
+        wXj3j4/xQ3w1u+TN+DgyFFqtAQE9qK/XstrJ6XSSo6mJbG1tvgNR8PPw8EIJ/wkvhx12tcxZQY54sAs8
+        eXl5r/x+P66CHXY5IwpySJKkW6qqhnbEmhVFQSQSQTAYvEAgEEA4HNacra0tdHZ2hjhLNpvNMDg4OLa2
+        tgaXy4X29nbIsozm5mZIUh2qq82orDSirOwerNZHmjM3t4yent4xzlJNTU3V5OTk8urqKsxmswh7YLFY
+        YTRWieD9c5jNDzVnZmYBAwPDy5wlk8nkSiaT60tLSygpKUFDQ6OQ7P/EYqnVHFkcExPv1zlLFRUVz+Lx
+        OGKxGPR6PZzOJ7DbH18KO6Ojo5iamgJnqbS01J9IfMT0dBw+33P09w+jr28I0ehwFiPi/i9ebysWFj5p
+        cJYMBoO6uLiC+fkVuN3u/yJTwFnS6XQt+fn5vUxubm5fSmyY6mgKr9+mMPTuAypfuHG3UYXRO4Jvm5tg
+        J+NzlsTcFNxmCsrLX2qbPmtOTk/BpE9OkBZXdjL+WZY7iK4VFNCN4uKn14uKolfBDruZ+QOvqgI74xfB
+        qAAAAABJRU5ErkJggg==
+</value>
   </data>
   <data name="InvokeScriptCmdDescription" xml:space="preserve">
     <value>Invoke Script Command</value>
+  </data>
+  <data name="drive-download" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACTklEQVQ4T42OXWhSYRjHH4KK
+        iBNkX9AHWx9QeaQuDpTsZgu7CsRJGjIcqyAFiY0xhm7RFqxTdLPoqtjCm+jCPsCwUhtL86O0nRo2zZy5
+        tXWR3qztYuUkfHqfsSOOsdWRHzz+n9//4YV6ZwFWQXB+xwYxUW5ge2E1D47d/FTh+K0xqLs7LWO79/XP
+        9Y7AvMgym5yTU92B2s5AhQOOEBy9NgJCf4Z4fCe1kLJ6ZlJsfkQZ7cip7qw4cKg7CoevxoDv+yj1vZ/D
+        M4NfkGbKaLfmgf32N7eZ4FtCsoVmUHV/Atl/Sc7JWfaCvW2vQGZPq9988Eoo1Z4o4SVpAQXfPG5zzWH9
+        8C80RH9jjSOYJKe6UylTuPuyFxQXn5p3tfuT2pEybveWcd2zMqqCZdzR5kvSjpxlB060iECcPH8Djlic
+        sPXCE9hsemDeYnUn66KItcOInMWdpIx25JAr90Cn0y2i1+vBaDTCaZMN9p3rh/WNg+aNLa6xDQyaKaMd
+        OeTKvRUHSCBOnbUA39hZQ9As52sd4AwGQxPD+g+a2Au4ygu0Wi0s0RwOh8cTiQTG4zEMBl+j1/sSPR4P
+        4znDzwigy/VinPnNcg8EQQCNRkO0lkolLBaLODv7E/P5Hzg19Q1zuRxjgjGNkpTGTCaP5FKHuosfz/Og
+        Vqs7CoUCut1uFEURe3t7sKvLgXY70cMQ0cJ+sVgayaWO/G1iw06lUtnNnjuZzWYxnf6Mo6MfmPwOI5EI
+        I8qI49DQWxwYeDhJLnUY1AUFQ8VxnEmhUIj/A7nUoe5fouy03kA6Jw4AAAAASUVORK5CYII=
+</value>
   </data>
   <data name="CheckGeometryFirst" xml:space="preserve">
     <value>Ensure the Geometry box is checked</value>
@@ -3498,9 +3560,6 @@ Returns: {0}</value>
         xGmjjz17ZfmGEOgS4qMaRMxHMTzXh9+jS8h7UqYOuZYzBGfBQFjbTKbJ3RbLzWboHodO7lqxyMZQ8z3X
         coazfwEpq4JeDHDvFwAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="LoadProcedureVersionExecutionNotSupported" xml:space="preserve">
-    <value>This connection does not support executing this type of Load Procedure</value>
   </data>
   <data name="SaveResourceFirst" xml:space="preserve">
     <value>Please save this resource first</value>
@@ -3526,6 +3585,29 @@ Returns: {0}</value>
   </data>
   <data name="ResourceDoesntExist" xml:space="preserve">
     <value>Resource doesn't exist</value>
+  </data>
+  <data name="icon_help" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIfIAOXl5QA5cw4/cnaYt/////Hy8UJyoUl4pjVtoQs8bhRGeDVqn+Xi3hBPjkBwnhJH
+        elF/q/Dx8FWHtVaFtWCPvVd5nxRIePDw8AApYCdWhEdskRFCc16CptHt/0+DtgA5a53K9wU5bFaJuTRq
+        n0p4qUp6qVqItiBZjWeXwkVzorbK3FF+rPPy8Q9CdwAhYCRUiBhVjTZllW+gzzlqlrDV+0luk3Wo3Xyt
+        2TpqmTxrnFOBq26h05WswEBwnE1wl3Om1ZKtxc3p/+P2/zFsqOP4/43B802HvwdDfj5qkjx4sXONqG+W
+        wBBBc7LI3j5tm3KVt5aovPP7/xtMffT//yJUg2eMryRTf4Cs1xFNham7zEBvoGSTwFl+omGRw3ik0WeU
+        wFJ2m09/qej//3Wn2rLE1fPz8hxMfRxMfAAkXB5QhShZixJFdwU9ciVWjSVXh7nM4FiGsypbjISv2VZ7
+        n1iGsQw+b+fv+liNu7fJ3VyApQ1CclSDrwQ8cEF1qXSn1DJik2GNuVGBr8jp/63D1Tx0rHiRrB1Pfe/w
+        7z90qHao2aSzx8rX5SFRgvD9/5+30B9PgeT9/z1lioiy2/P08itflO3r6CFQgqHQ+3CeyQAkXWiZySxd
+        kOXj3lWJuwAuZhtQgrLF2QU5a3ut3oKu2DRkkgAuaYqiu+Pv97PV+c7z/yRfmyRXjMfl/wAza+78/3yf
+        wO/y80l7rkRrkOTr78Xa8Ut5p0d6rythlTxrmwpBduXv+Z2uv6zT+Fx7mQAnYPT08kt6q3em1iRVg5qx
+        yGCNvBBIesPe9jl0rP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAADIACwAAAAAEAAQAAAI/wCRIasEq0CBMr8msSgQ4cIhTgLt
+        2BjjZ4eRJMeGEOqDAMEAZABE3ZAUTISjN01A6RhRK8WRAQASybmyZRYqVh1oRKlyq8eqPAB+jOqkAoQx
+        MkBoFdEV588nDgBkeJlwasoiVQ148BKC5MUDLgA0YaKw5NUeYFiyXHKVIU2uCgC6oPgiIVaJE4qCQDLF
+        hgofMADuEAMEZwWlYYKIQCn1yFArHwA8mKADwQCpRql2uWBkRoGnGgBsBQpzANemQXgsFZOyhgkGDQAQ
+        kTjgYEabOb2EtbAgoA4aWQAWGNCCQ40VAmIK+dqQIJSASABg5HASw80ZAgSUZNIT4oOAj08CiA8fT17A
+        d4EMAKhfz169wIAAOw==
+</value>
   </data>
   <data name="HeaderFileMissing" xml:space="preserve">
     <value>The header file does not exist</value>
@@ -3610,9 +3692,6 @@ Returns: {0}</value>
 This will cause the package to be restored a the root of the resource tree.
 Are you sure this is what you want?</value>
   </data>
-  <data name="Func_RANGE_Description" xml:space="preserve">
-    <value>Range table for style theming</value>
-  </data>
   <data name="InvalidConnection" xml:space="preserve">
     <value>This is not a valid connection: {0}</value>
   </data>
@@ -3632,20 +3711,22 @@ Are you sure this is what you want?</value>
         QmCC
 </value>
   </data>
-  <data name="icon_invokeurl_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIU4ANrf46y7zJ6rvLXLss/Z4cXQ2rPD1M3Fo8fR2rjHwK/BtbTJsb3TtcLXt8TOzsDL
-        ycTDpbrQtL7UtrnNs7DCtMHWt6m9rqm9rcHL1LHDtrDDtLPIsb7MxMDVtrLEtbHHsLbMs6u8xK/CtK++
-        q6y/ssDWtrrPtLjPtLrRtLzRtLvStb/VtqS1s7nJw8jSz63AtbzQtMDWt7bMsrvRtcHXt7zStcDMz7zR
-        tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAA4ACwAAAAAEAAQ
-        AAAIuQBx4MAQoKDBgwUxCAxgoKHDhgAMRBSwEKHFABRxBCDAsaNHjhk3AhhJsmSBjCFaZLCQgQOEAzAP
-        ADiJ4wGJBQMq3FjgwYVJihomDAAwoEGDCR5eyjyZYEGDoUQr0FjAgeRJBTBKQCUaI8UImDMFXOiwYivR
-        DhasClBgQsJWBhIivChAl+kGBlBn1GCwgYWAv38daBgwNAIKFQNE2EDAmHFNCh9AnJDxgcIDgZgxO0ig
-        4IKCBA4yYw4IADs=
-</value>
+  <data name="FieldRequired" xml:space="preserve">
+    <value>This field is required: {0}</value>
   </data>
-  <data name="SelectPackageFile" xml:space="preserve">
-    <value>Select the package file to edit</value>
+  <data name="ruler" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAB3UlEQVQ4T2PYn8jCsD+JheFA
+        EksGEHdDcQZIbG0EM0gcJw3SywAiQIqAdM/fm8v+/7qy8D+IjU8jzGCwAfsSWTJBGpaFMF98sLnh/9dT
+        0//vTWQ5AxJbE8E8Bx8N0suwPZZlyu9ri/9fnej+/8fFef8/n5gKZ9/fWAcWw0aD9ID0MgBtmf92f8//
+        baUm/+9tqP3/8eik/6dbrP4/29aMF4P0gPQyzAtgap7lx7QRyLn/9fSM/+8P9YMk7oPECGGQXgagIjCe
+        5MY0787aqv8gkzdHM88AiU30ZMSLQWoYloYwM2yIAuPZIOe/2tP5H8QGic30xW8I2IBOeyYYXnhzZdn/
+        FzvbwH4DYlD4MMzAYwjYgJVhzDC8COR8UOABxRYhiTNM98HuErABjZaMMLz0+tKi/0+AaWFZKNNSIGaA
+        YS0xRgZ0oCrMyOCrDhRfHMwEwytfAZ3/CBiVQLGVMHFNUUzNKIaJsTEwVBgxgvDqK4vy/z9YV/1/rj/T
+        eiBm0CCkGWYSyDkTPBn3vAa64NmWxv8gNkiMWCAPVGiUasywsM2Z4TgIA9nzgGLKQCwHxBJALAzEfEDM
+        CcSsQAwMPQQQADIloRikWAyIRYBYCIj5gZgHiLmAmB2qmRlIw50HAIdyTYaOb/frAAAAAElFTkSuQmCC
+</value>
   </data>
   <data name="QualitativeName" xml:space="preserve">
     <value>Qualitative</value>
@@ -3665,12 +3746,8 @@ Are you sure this is what you want?</value>
         sPPAGaBDix4NOiAAOw==
 </value>
   </data>
-  <data name="icon_null" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIECANji87HH6f///wAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAACACwAAAAAEAAQ
-        AAAIRAAFCBxIsKDBgwYDKFzIUCHBAAAiSpwY4OHEiwAqDoSIUaJGgRw7ZrQocuTGkiZBovwoIGRHli4x
-        wlz5sKFNhDhzHgwIADs=
-</value>
+  <data name="NoSchemasInFeatureSource" xml:space="preserve">
+    <value>Feature Source has no schemas</value>
   </data>
   <data name="ConfirmDeleteResourceData" xml:space="preserve">
     <value>Are you sure you want to delete this resource data?</value>
@@ -3706,6 +3783,9 @@ Are you sure this is what you want?</value>
         AbE4EEthwRJAMTEgFgFiAahGkHqQZhYgZqI8M1GSlUF6AcIC84BckOgRAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="ColumnHasNoValidDataError" xml:space="preserve">
+    <value>The selected column had no non-null values and cannot be used.</value>
+  </data>
   <data name="FiletypeMGP" xml:space="preserve">
     <value>MapGuide Packages ({0})</value>
   </data>
@@ -3738,21 +3818,6 @@ Are you sure this is what you want?</value>
         R0lGODlhEAAQAIIAAJmZmdra2rS2uLe5u7W1vbq6uv///wAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQB
         BwAGACwAAAAAEAAQAAAIYgANCBQAoKBBAAUEKhQIIIDDhwEKJFxooCFEhwUiUrR4MaNGhRcfShwpcMDB
         ggMuAmAYkqPDlQRbCoAIwKTLlwgfFsR58KXOmyp/hqT586TRokAN6rTZEsDMggJKGh1A0UBAADs=
-</value>
-  </data>
-  <data name="icon_panup_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIZuAJumsOTY2MS5uK+2vcW5uJumstrOzsi9vOHV1eHU1ZunsuXZ2dve4d7S0aaxvuTX
-        2ObZ2aaxvePY2NnNzODU0+HT1Ofb2sTJ0c7Jyfjz9J+rttvPztrPzpumsdbS0pqmsdfR0dbS0aSvupum
-        s9zPz9/T08/ExMzFxNbKydfOzdXJyqOuutjMy9zQz8fP1tvPz97R0dLLytfLysG2ttPQ08vEw6Ouucq9
-        vs/Dw6eyvuLW1eXX1+TY1+DW1sa8u+LV1vj09dTQ0NPHx8i/v9fKy+PX1pynsc3BwaSvu+fZ2tTIx+PX
-        18m9vJqlsNLMzMK4t8zAv9zQ0P///9TR0KGsuObY2Mu/v6CrtqSwu6mxu8m/vubZ2pqmst7T0tXKydXJ
-        yc/Jyca9vcbL0si8u7e9xK+3v5+rt8zDw9PHxtjPztrX1+fa28/S2NTMzAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQB
-        AABuACwAAAAAEAAQAAAIxADdCBxIcKCRgggHMgDAQOCLAARSgEE4AMAANz2gcIAgwIIWNQUBCKyxgACJ
-        BwLWnAlCUKSbEyYCCDDAQ8CWLm0GunTjA00VAhseCEkiIUbCGS0CKKFQIcECCSESjgmwpASFHzsCpCl4
-        JAqCGxMqIEigowgEGgRBPGnQAIcKGQZgGMjA5uJAD0NQTPDC4gsRIGIimClT0ImVAweYSLmgIQKWK1kQ
-        TsEQxoWCESIcrOCSUCCZAgWaUMlho7NAJAU+dFDgICAAOw==
 </value>
   </data>
   <data name="script--arrow" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -3802,6 +3867,20 @@ Are you sure this is what you want?</value>
         AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="application-export" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAABzklEQVQ4T6WTO2hiURCGB+0M
+        go0YtrwKaqlphKCVhQ/EB1qE9Ek2CYElsFvErRZ7KytBEAtBsFDBqK2P5MpmIckiaCGIKCqi+MAHyuyZ
+        W66Fhgx85zTzDWd+OICI8BnA5/NxjDPGxYFQL+f1eoEAj8dzXi6X3xuNBtZqNXx7e8WXl9/4/PyEpVIZ
+        i8UKu3msVP4gz//Fx8fiOzkMcgFcLtfXQqGAuVwOs9ksZjIZTKVSmEwmMZFIYDwex1gshtFoFCORCIbD
+        YRSLxRcikQgIWuGSZfChIodBLoDb7b7abre42Wz2wvM85vN5ZE+/cjqdYLFYABwOx/V6vcblcrkXWo3K
+        brff2Gw2nclkArBarbeLxQJns9kO/X4f6/U6C7Ek5EJ59Ho9YQiTvxmNxhMwm8130+kUR6PRDpPJBOfz
+        Oa5WK6Q1/y+dTvcDaNJ4PMbBYLBDs9nEarWK6XRaSD8YDGK73RbmcBz3U6VSGcBgMNwPh0PsdDp7CQQC
+        giyXy38pFIpTNgRAr9d/p11brdZeQqEQ+v1+1Gg0D0qlErRaLYBarX6g53e73YOgXnIY5AJIpdJLmUwW
+        +AjkSCQSIKjoPGZ8ORDqPRJMqs98ZXL/Ad8QklT8D+CBAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="SelectLayer" xml:space="preserve">
     <value>Select Layer</value>
   </data>
@@ -3831,9 +3910,6 @@ Are you sure this is what you want?</value>
   </data>
   <data name="FilterDwf" xml:space="preserve">
     <value>Autodesk DWF (*.dwf)|*.dwf</value>
-  </data>
-  <data name="FsPostgreSql" xml:space="preserve">
-    <value>PostgreSQL/PostGIS Feature Source</value>
   </data>
   <data name="NewFolder" xml:space="preserve">
     <value>New folder</value>
@@ -3883,17 +3959,14 @@ Are you sure this is what you want?</value>
         AgYTKwZIyICycEMDLAkQlKDwxEdHHTyQVLjQEQsQCFMKBgQAOw==
 </value>
   </data>
+  <data name="ExtentsCalculationCompleted" xml:space="preserve">
+    <value>Map extents calculation completed. Click Accept to use the calculated extents.</value>
+  </data>
   <data name="MoreThanLabel" xml:space="preserve">
     <value>More than {0}</value>
   </data>
-  <data name="ColorCountError" xml:space="preserve">
-    <value>Failed to read {0} color(s) in line {1}</value>
-  </data>
   <data name="SymbolGraphicsImagePlaceholder" xml:space="preserve">
     <value>&lt;image&gt;</value>
-  </data>
-  <data name="TextDownloading" xml:space="preserve">
-    <value>Downloading</value>
   </data>
   <data name="sum" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3907,6 +3980,27 @@ Are you sure this is what you want?</value>
   </data>
   <data name="FailEnumDataStores" xml:space="preserve">
     <value>Failed to enumerate data stores. Reason: {0}</value>
+  </data>
+  <data name="globe--plus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAADV0lEQVQ4T3WPf1DTdRzG327K
+        5WnY4RWnZ51pU0AvuXUlanJNVDDvILs8y5MpWaDmxWkCd96pSQgxmGBGOgc7ajBtuo7MdfxQ+wM1xmAT
+        227MpjOSTVwEDLG1cI/vz+KuP7y+d697Pt/353me7/tLkn0/k6TIStLPfiVp2W9PSVX9q6UVPhVzjmmb
+        UFV0Lu7ZJ/zRHPPvQRQUu+fypWZpbZ+97MofAYMzGDrvDka6R8ZDjZ6HgTUGn13cC9+TBYWWuTMO2Zvy
+        f+jznXUNoSs4jkbnCLS2IVy7H4IrDLj+Bo5aB33CJ2H/fxvkmadKdrXq8ptu+cvb/Wj1h7gggkbHEEzu
+        INoHQugcHkfnGHDtAVDa7vMLv0Tk8sxEk7YY0pP2Nzu3fnsTO8578bX7AYov38WBS3dxuncUPw0CB80e
+        6Hn+3T3g3O//QFbwo1PkJm3Wc8GGE18o62xDGToX1tT3Ikvfi01GD7JNt7GzyYst9TeQedyCqp4w9nPb
+        +6Y72Mx+kWOIKL28eY/5XlhR48CSqm6knHRghdaB1FonXq+xQ2nyoejqI+xuG0NqlQ3JFVa8edIWFjmG
+        CxSHLSmHLkbSdP2QHbEgobIbiZU2JKltSFRZIVfZkFrtwjumMTy/rwVyNZdXdkREjuGCNz5tWaGyhl8s
+        7sBLZV2QcWDhBAmsspIOvFbtwdrGMbyQ34L1JmCDfiAscgwXpB35clFR8/CC8htIqPgFi486kFzlgPyY
+        M0qyugdLj3mwpKQHM7U5iDWuxizdtpDIMVyQoV4Xl62/+Qqb5MzymttYpfEivdaLjLo7WKv1QnHCg1dL
+        7Yg7k4YP/ixAzKnkECk/Xkd7s7gg86up9JamIeFgZ2CVxo/M+gG8Z7iPbcYAtp8NRHV+/Q7M0C5HvEGB
+        jYFc0HHZINXNtFFtnIZo0zdE7zbMm5xtbJWXOQLKM8P4qCmITy6MotA8GtXntCuh8L/9BFTzTBevwE98
+        Ev9KyTzK+b5hTuFVd5a2f3iXaSRccOFhROic6py/pnz+cohKZYOL+1aCKmO7oqhjeQMiKfMsk0hPx6fQ
+        stwPSWnUUW5zG+W1WqIq3sX8wHTXbO8i0OHp12n+ZCmXRL8vYaZNlMxm/X92xugob8p12h2jncjRY8Vf
+        HJIr03vAAAAAAElFTkSuQmCC
+</value>
   </data>
   <data name="application-search-result" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3925,6 +4019,25 @@ Are you sure this is what you want?</value>
         mEwmE4KEACz0Y8g4ft7GTSrUgpqQAl1DV5EMXUFSMYhCKOAXo8sWCvVAT3EAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="color" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAC3klEQVQ4T6XSa0hTYRgH8Cdd
+        yyCCBDWLWRARdsE+VhRllCH0LWEYFSZ2wTJ0kIhm0dzy0rIbCGGOXKkLNU1y3nNU1vCSudlxK0bBlpk5
+        5Ciabu78e/TDTAj60Ic/L+dw/r/zPu85BID+JwvlisdEA8+IPuYTWRIpbOAQKe07g7X2cHmZXb6mzC7b
+        rh2kWGU/HQ8TSEM2qiUztS50lwI3KdZxLdQwWnamf+al0SO9Nfukjle+GUOTZzSppN8RmmMQqCD270AD
+        HXZUK1pmP1eJsD4BjFeBPBWg4jX3MVDajdl7VtGxvqrFRvWHl+zgSQ1FWntWm2Y8jybhLgYsXGxUA3od
+        oHsAaBqAy128fsGM+vukdZXF1ErmyMAIejOlCe4E15xUCkxmAK4iwKYHOqqBmhag/ANQ/BXIFDGX54ew
+        3+0ykiUtABRaqP7TVOEvN7IwjuuYm+PyeDPg7AZ6HUDbGPwGLyZuAN94cx+Sp37pyFIfAM69JrvVXyJ1
+        4RJsKIQLTzEJC/yzbkgj05juA4brAOE28C4d6Dzvl1LptT0AHOokZ7O/QKpEGhoZeMPAIAPD+IkfIjD0
+        nosMNDFgZEB/wi8doU5nAIhqpXbtRIq3iHdwh0cohwHNDHRjDL0MtDFQYQTu8wjaVODCwQnvRmptDwDL
+        Kih711CMmMFABnJRhEro0YNqBmom+AwH+Axr+Aw1QNIpIHrDkBhEddkBgNSkkJvkwlHxpDeFR1DxCGr0
+        QgcPdAxorPwVeYSkQmDfMdErW24SiB4qFoF0Iqok5coXEe4D41d8iahFCvpwkYGLDJxlIPE5sDd33Bei
+        eOEmqlYS3V38lblOFM1JD1bK9NGCoksl7h5t9sb7RqR4j0/a0zHqjcrqEmUxeoHkKi5vXags7oBIxtcR
+        nG20aUUcnd5yizQJZsrPdFJOvpMSNWbalnyLQjbH8TM7OGs5sj+BIL6xihPOWfePzL9o/tmgeeA3KbNy
+        RaQn6HMAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="InvalidColumnNameError" xml:space="preserve">
     <value>Invalid column name</value>
   </data>
@@ -3937,6 +4050,9 @@ Are you sure this is what you want?</value>
         zGQOweCXH55vQ9AfQtD5ofccGoJ+VwR7fmXc/QGbydmsomqW4QAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="ExportNoCommandsSelected" xml:space="preserve">
+    <value>No commands selected. Nothing to export</value>
+  </data>
   <data name="ui_menu" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -3947,9 +4063,6 @@ Are you sure this is what you want?</value>
         r9fRkSELlmV90aNtW6HIkAXTNL+LosApkQXDMH6apsG6roUiQxZ0Xf+tqgpt28ayLEdHhizM53P/crng
         +XwWigxZkCTpTZblvymRBT4z3gvvVTAys38hdsO4G3bw/gAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="SelectProperty" xml:space="preserve">
-    <value>Select Property</value>
   </data>
   <data name="FilterSqlite" xml:space="preserve">
     <value>SQLite files|*.sqlite;*.db;*.sdx;*.slt</value>
@@ -4141,36 +4254,8 @@ Type: {1}</value>
         oBKHJmjZcgFCgwoWCFg6oKpOhQNbXsWK9SfXr2ADAgA7
 </value>
   </data>
-  <data name="function" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAABIElEQVQ4T6WTsU4CQRRFdwnE
-        EIkxKBL5BkKjDRQWFljQEwq0pCI2FFT8ABV+gB0dxMrEBAsTowmVxs5f8CvWc/GtWcdZDWGSk3nvvnl3
-        Zmd3gyiKgk0IwjD00UafG4q967Sxr3BMww2cQtXitQx6NM1gL23nWE87wYQFV/81q+4ajBHvHGqJvGum
-        ZdO6vhPUKd6DZj33hc0d03UvU2j6TqCGS1hAyXmEBvmD8X2hvhNcs0i4t95CewK9oVQD7foIA8dA38HS
-        OPvL4ITiC2gONJiHpilW7dwMFH+9hcQYEb9B2bQ+83uiHufSWtKTBnXyZ7j9Yfk7KSCJ1YgNPojFKxzB
-        PhRhF3ZgG/KwBTnIQgbC2KBCcgg6+sHaBpv8yur9BCINtCQt9llRAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="SelectSpatialContext" xml:space="preserve">
     <value>Select Spatial Context</value>
-  </data>
-  <data name="FilterXml" xml:space="preserve">
-    <value>XML Files (.xml)|*.xml</value>
-  </data>
-  <data name="icon_select" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIZdAOvsxmuAjjRRfpOhtpOitjRQeDVQejtTfDZUdzBMejtXf///1/385///74OTl3WE
-        mu7w81Zhdv384KCuwG+EmZWjtPz72/7+3ISQoeLlyFptkPj5vs3Q1ImYsOPl0ktgg3CBnP/95mp9if//
-        4NfZ3P//zYKTjKWviv3919/inpuovOTo59DU27e6weTn4P//7KGyxzVRfjVQezJNdlRqgoCQl7/Gzm6C
-        n9fd15adp+PmzNfe0P//97C6y2d7ltXb45mppoqZra2yt+rs7v///5mjuOLjrdLauuzvqmN5jjVSdf//
-        9NfavlltiGp/nGB1h9nenmBviLq9wrS4vjRQdzNQelhujqGwnOXp7M/V2KWvwfv60+Ln2v///wAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQB
-        AABdACwAAAAAEAAQAAAIjAC7CBxIsCDBBDcMKuyioMeEhQVjQPihAuJAAViIZAlisYuMFUt44BhgsYqL
-        Bgxe7CAA0QCXEBIsjMhQYSEVDxdQbGFyBEgHhQV0LABQgsaBD1EUIgBQ48kGBw+ESFGoJIAVH1eMaBiy
-        cAaIKRgoIDFRZKENEl1YRDgBpQmHjjmSpBDRomMXGE60FAwIADs=
-</value>
   </data>
   <data name="NoColumnValuesError" xml:space="preserve">
     <value>No values found in selected column</value>
@@ -4193,15 +4278,6 @@ Type: {1}</value>
         ZOHTRoMQHTMDABEB5YWDGUmU6KHxQAwGBKj95EkRIw6LFVV6fEig5oJChVHMbOijMCAAOw==
 </value>
   </data>
-  <data name="icon_selectradius" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIQZAM2vsxU2aKi0ws2TlvLyl86Ym82Xm85ucM5hY85sbs81Ns9GR82rr8bMjs8cHM5c
-        Xs8xMaOuhqiXpKiAjc5YWs8bG6lYZM6Bg889PgAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBF
-        Mi4wAwEBAAAh+QQBAAAZACwAAAAAEAAQAAAIjAAzCCyAQIEDCBQKCFy48MCCBAMYDEiA4QBDgQceGADA
-        kaOBBxYXFliwsWNHAwsUCkSQwKTLCwgWQhjgEkAACQAGQFjogEHNADcZVFiogKbLAA0CTFCwkOVPAkkt
-        iCR5lADUAAIaajQZwOrVrBgfRhzQNQJQoAwJGlQQwKyAt2AvCgQaVy5DrHbz2g0IADs=
-</value>
-  </data>
   <data name="InvalidValueError" xml:space="preserve">
     <value>Invalid value</value>
   </data>
@@ -4219,9 +4295,6 @@ Type: {1}</value>
   <data name="FilterAll" xml:space="preserve">
     <value>All File Types (*.*)|*.*</value>
   </data>
-  <data name="Func_FEATURECLASS_Description" xml:space="preserve">
-    <value>Returns the active feature class name</value>
-  </data>
   <data name="icon_panleft_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIZuAJumsOTY2MS5uK+2vcW5uJumstrOzsi9vOHV1eHU1ZunsuXZ2dve4d7S0aaxvuTX
@@ -4237,22 +4310,32 @@ Type: {1}</value>
         jBDhYAWXkG7IFCjQhEoOG5jdICnwoYMCBwEBADs=
 </value>
   </data>
+  <data name="gear--exclamation" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACv0lEQVQ4T6WQbUhTYRTHn9sm
+        IhbolwWlEqaYTEO2SGcfFiu1ph/UbZ8MxC+9EEUQjQwTkkyioMIFpWIpawVGoUyDTTfTeVfe5e5eTJfT
+        llxfNoiSWIUUp+dsLhT61oUf53DO///n3IcAAPkfYma1Wk2qqqpITU0Nqa2tjVWtVqugnNpAsXmHWvQg
+        WwKqq6tLqfAMrbuxrq+vQzQahc0z1PwzoLKy8pBer78biUSgoaHhChWdXV5eAgR7nOEONajdckFFRQWh
+        nAuFQsBxk7C0JIDZbJ4TBAEQ7IPBYGyHGtRueOK/oFAoiFKpzNBoNM0eDw8874aFhXlYXPwUA3uc4Q41
+        qEVPcXFxPKCkpERJBxeRnp7HQb/fBybTk5mCgoL7CPY4w11Ch56/ATKZTO9ycWC328DpZMHr9UJh4f42
+        kUhEEOw9zuvAWVQwYb0MqEUPJX6BVCptdDgcYLVaAavP9x6KimQtDMMQRC6TtrpHNfA10gsTQ8fAMW4D
+        9FDiAbm5uWU5OTlNSHu74aPb7YeBgWG3XH7wKvLCpPcHPefhV7QP3ljKhZMnJEb0UOIBWVlZJDMzc49M
+        Jr/Nsi4YGRmHQECA1dUfsLLyDdz2OviyfAd0Oh2EF5p/2kwik6OPEVPiARKJBGlhWR76+y0wNuYCg6Ez
+        NDnphwl7B0zZtb/XhCYgVL4yexoGjXuF0WfMEfvTjYD09HRCOa5SlRk5bhby8vLvpaWltbKsD2wvdTA7
+        Vfd9xlcOg+ZL4OUPwzu2dG3YyDyw9NIHwgvwE4vFJCUlRZ2amtqWnJycjZXnzOB8dRRCARXMT8tjF2Cd
+        nz4Ar5/vcA51M6WJADFd7qTQZyVyJCkpqf7aBZGHH82OhufyIfxhH0Q/N8YqEnBmhPsfMl2JgG3UtJ0i
+        oexK0NlKOiiuzXTdIFx3G3n76CZhe28Rwx+y4Aflu5kbswAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="FsPreview_RasterPropertyNodeTooltip" xml:space="preserve">
     <value>Name: {0}{6}Description: {1}{6}Nullable: {2}{6}Image X Size: {3}{6}Image Y Size: {4}{6}Spatial Context: {5}</value>
   </data>
   <data name="SelectSymbolLibraryFirst" xml:space="preserve">
     <value>Please specify the symbol library first</value>
   </data>
-  <data name="icon_selectpolygon" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIMLAM2qrs8YGBU2aKi0ws2OkfLyl851eMbMjqiToKOuhs6QkwAAAAAAAAAAAAAAAAAA
-        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAALACwAAAAAEAAQAAAIbwAXCFxgIIDBgwcHCixIAIDDhwAC
-        KGQIEaLEhQEaVnRI4CLFjQA6GhCYcaMABBFHkgQp4CQAhQFYHhAwACbLAjNrrjRZACfNnQ8bCujps2bM
-        oBKHJmjZcgFCgwoWCFg6oKpOhQNbXsWK9SfXr2ADAgA7
-</value>
-  </data>
-  <data name="TooManyIndiviualValuesError" xml:space="preserve">
-    <value>The selected column contains more than {0} different values, and thus cannot be used for theming with individual values</value>
+  <data name="ProcessedItem" xml:space="preserve">
+    <value>Processed: {0}</value>
   </data>
   <data name="icon_search" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4355,8 +4438,8 @@ Are you absolutely sure that is what you want?</value>
         4sYRGFgFKozSccGGJjZMAC0IoMKBJzh49EhSo+DGAwQMrBybFUDeDCuzOiTrcbDgwwQbKs4aEAA7
 </value>
   </data>
-  <data name="UpdatingConfiguration" xml:space="preserve">
-    <value>Updating Configuration Document</value>
+  <data name="NoTransformationRequired" xml:space="preserve">
+    <value>No transformation required</value>
   </data>
   <data name="PromptDeleteWidgetAndReferences" xml:space="preserve">
     <value>Delete this widget and all references to it?</value>
@@ -4392,22 +4475,16 @@ Are you absolutely sure that is what you want?</value>
         L1tJUV/SlAd3xCblH+s4aw2T/BzJAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="map--minus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="icon_invokeurl_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACt0lEQVQ4T52ROU8TUACA32bQ
-        H6BxI+qgJqjEwRgHBhMHxcQoCwNLxSJYiiC0QcALRQIFIodURYW0hoKglSuAnGIVbL2g1gMFpAWRiCKF
-        QkA+34txMg76ki9v+b53iohTp8IlR/6D8EMZGUIcTE/X8h9DdRIhDqSmxizLBaw9adzpO0/PQBHuQSvO
-        wRYs/QNk9noxdvs43uxDV+cjttaH8lUnEWK/wRC7tLzMjfYUWgdN9HrN9HnMTAXaeTXzhspxPxkOH+fc
-        kOaEWLsP5atOIsTepKS4hR8/MDcfp95zgfYPBTQ/NfFp5i6Tcw4efx0h58kQ2W/h9Es4VjeK8lUnEWKP
-        Xq8LLC1RVBfHlZZEKjpTsbuy6HhRwMvXFfS+aaTS4+GsY5iUjhH0TSMoX3USIXbHxcX7FxfJr4mh0nkS
-        +8A5LF0neTRaytCUjS9zbbS527CNf8f0fpnE1mGUrzqJEGFabcL0wgKmW0ewOAxUPU3nWmsy99/n4xor
-        Y2z6Di5PtbzKMGWjCxg7hlC+6iRC7NJoEqfm58m7rqW8Kxlrr5GSBj0Nry/SOXQJ9+cKnANljPqdNE9O
-        cLr7HcpXnUSIHVFRSZOBAAUlseTcjCa3MpriRh2XGxO4ft9I1YOzONwlOPvLaXnRROGj5yhfdRIhtkdG
-        Jk/MzVFUoMNiN1LedoJcWzQ2Vxp2d6b82jxqH57H+62Gz7Pd1LraUb7q4kNChNgaEWEYm52lOEePrSqd
-        ivoULlo0WB4bqH6WIb82C+u+UO5uCaZ+23pqNq2T8zauBgV5bwlhFhvDw1O9fj/F2fEU5sRjKowhu0xD
-        tlWDqVpL4T0d5g1rCERF/UGpEE6xZufOMxPyVT/OzPyV24cPUyR3/U1xaCgnVqwYy1QnCAoOPrpq8+as
-        f0V1YeLXWClZLVn7DyhfdeInSrd8PdhgSYgAAAAASUVORK5CYII=
+        R0lGODlhEAAQAIU4ANrf46y7zJ6rvLXLss/Z4cXQ2rPD1M3Fo8fR2rjHwK/BtbTJsb3TtcLXt8TOzsDL
+        ycTDpbrQtL7UtrnNs7DCtMHWt6m9rqm9rcHL1LHDtrDDtLPIsb7MxMDVtrLEtbHHsLbMs6u8xK/CtK++
+        q6y/ssDWtrrPtLjPtLrRtLzRtLvStb/VtqS1s7nJw8jSz63AtbzQtMDWt7bMsrvRtcHXt7zStcDMz7zR
+        tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAA4ACwAAAAAEAAQ
+        AAAIuQBx4MAQoKDBgwUxCAxgoKHDhgAMRBSwEKHFABRxBCDAsaNHjhk3AhhJsmSBjCFaZLCQgQOEAzAP
+        ADiJ4wGJBQMq3FjgwYVJihomDAAwoEGDCR5eyjyZYEGDoUQr0FjAgeRJBTBKQCUaI8UImDMFXOiwYivR
+        DhasClBgQsJWBhIivChAl+kGBlBn1GCwgYWAv38daBgwNAIKFQNE2EDAmHFNCh9AnJDxgcIDgZgxO0ig
+        4IKCBA4yYw4IADs=
 </value>
   </data>
   <data name="document" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -4443,23 +4520,29 @@ Are you absolutely sure that is what you want?</value>
         5ET8AeUdBAROQKmSAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="icon_printablepage_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="icon_selectradius" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        R0lGODlhEAAQAIZsAO7y9pKaptzi6LC5xtra4P39/f///6qrsqmqsdbX26+xuN/j6O/v8qurs9HT3ff4
-        +f7+/qmrsr6/xvj4+bi4vaqrs8TFzqyrs7q9wb/CyL2+w+zs7bW2vO3v8dLT3rW2vcHEzLu7wOrs7cPG
-        zfP09crM0/X298/R2sTGyre2vP39/qystNva3sbGycbHy7q9wuLk6fr6+8bJ0eHj6LGxt6mrsejp7Pv7
-        +8/Q0bu9w7i4vry8wtrc4N3g5s/Q0vT198PDy729wtvc4e3t77CxuNzd4vz8/M/R27q9xb6+xvb3+L7A
-        w7S0vuDg5ayut/Lz9NXV1ubn7N7g5czMz+Tl59vc38DBxMXGydTW3M7R27Cvt7i5v/z8+87O0fn5+vLz
-        9fr7+6yttLi5wMHCx8PEzaiqsdXV2Ozs8aqqscTFyNfX29LT1////wAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQB
-        AABsACwAAAAAEAAQAAAI1gDZCBQ4oKDBggMTshlgoGHDAQACKPSxREcQABgBQBQgkQ0OK1OGFDBzJeNG
-        jim6bDBQ4EaBHSYDyAwAhQOEAmC8KKHSIqOAnxI1oIgxwcQXAiEyYuQo8MMEAlAJMBHzwmfHMVATaFVQ
-        BMaWpRIjjACSAIkCBSWSFKhCAwDHBj24SMigAAuDMz86sNDiNsAKB1JUSHjygAeGAzkQpAGK4IiDKCRA
-        1EDgYYYIIjMDlMlygoEMJ00gGCnw4AKFBajZNDgQoQKCMEJsuDhgQY1ChWgOkFmjMCAAOw==
+        R0lGODlhEAAQAIQZAM2vsxU2aKi0ws2TlvLyl86Ym82Xm85ucM5hY85sbs81Ns9GR82rr8bMjs8cHM5c
+        Xs8xMaOuhqiXpKiAjc5YWs8bG6lYZM6Bg889PgAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBF
+        Mi4wAwEBAAAh+QQBAAAZACwAAAAAEAAQAAAIjAAzCCyAQIEDCBQKCFy48MCCBAMYDEiA4QBDgQceGADA
+        kaOBBxYXFliwsWNHAwsUCkSQwKTLCwgWQhjgEkAACQAGQFjogEHNADcZVFiogKbLAA0CTFCwkOVPAkkt
+        iCR5lADUAAIaajQZwOrVrBgfRhzQNQJQoAwJGlQQwKyAt2AvCgQaVy5DrHbz2g0IADs=
 </value>
   </data>
-  <data name="InvalidRecordCountError" xml:space="preserve">
-    <value>Invalid record count in line {0}</value>
+  <data name="icon_panup_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIZuAJumsOTY2MS5uK+2vcW5uJumstrOzsi9vOHV1eHU1ZunsuXZ2dve4d7S0aaxvuTX
+        2ObZ2aaxvePY2NnNzODU0+HT1Ofb2sTJ0c7Jyfjz9J+rttvPztrPzpumsdbS0pqmsdfR0dbS0aSvupum
+        s9zPz9/T08/ExMzFxNbKydfOzdXJyqOuutjMy9zQz8fP1tvPz97R0dLLytfLysG2ttPQ08vEw6Ouucq9
+        vs/Dw6eyvuLW1eXX1+TY1+DW1sa8u+LV1vj09dTQ0NPHx8i/v9fKy+PX1pynsc3BwaSvu+fZ2tTIx+PX
+        18m9vJqlsNLMzMK4t8zAv9zQ0P///9TR0KGsuObY2Mu/v6CrtqSwu6mxu8m/vubZ2pqmst7T0tXKydXJ
+        yc/Jyca9vcbL0si8u7e9xK+3v5+rt8zDw9PHxtjPztrX1+fa28/S2NTMzAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQB
+        AABuACwAAAAAEAAQAAAIxADdCBxIcKCRgggHMgDAQOCLAARSgEE4AMAANz2gcIAgwIIWNQUBCKyxgACJ
+        BwLWnAlCUKSbEyYCCDDAQ8CWLm0GunTjA00VAhseCEkiIUbCGS0CKKFQIcECCSESjgmwpASFHzsCpCl4
+        JAqCGxMqIEigowgEGgRBPGnQAIcKGQZgGMjA5uJAD0NQTPDC4gsRIGIimClT0ImVAweYSLmgIQKWK1kQ
+        TsEQxoWCESIcrOCSUCCZAgWaUMlho7NAJAU+dFDgICAAOw==
+</value>
   </data>
   <data name="ExtendedClassTooltip" xml:space="preserve">
     <value>Extended class based on: {0}</value>
@@ -4484,8 +4567,8 @@ Are you absolutely sure that is what you want?</value>
   <data name="ExportNoCustomCommandsSelected" xml:space="preserve">
     <value>No custom commands selected. Nothing to export</value>
   </data>
-  <data name="FindNothing" xml:space="preserve">
-    <value>Could not find specified string or end of document reached</value>
+  <data name="ColorCountError" xml:space="preserve">
+    <value>Failed to read {0} color(s) in line {1}</value>
   </data>
   <data name="DeleteCommand" xml:space="preserve">
     <value>Delete Command</value>
@@ -4538,8 +4621,8 @@ Are you absolutely sure that is what you want?</value>
   <data name="FsMySql" xml:space="preserve">
     <value>MySQL Feature Source</value>
   </data>
-  <data name="ColumnHasNoValidDataError" xml:space="preserve">
-    <value>The selected column had no non-null values and cannot be used.</value>
+  <data name="OperationCancelled" xml:space="preserve">
+    <value>Operation Cancelled</value>
   </data>
   <data name="images_stack" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4601,11 +4684,11 @@ Are you absolutely sure that is what you want?</value>
         cmzwcWHIoBGfFriKNOvTAQywVl2oQOxThWUfcPR6diaEmxDGnh1Y8GDbhAEBADs=
 </value>
   </data>
-  <data name="Func_IF_FalseValueDescription" xml:space="preserve">
-    <value>Returned if condition is false</value>
-  </data>
   <data name="Func_URLENCODE_Description" xml:space="preserve">
     <value>String encoding function</value>
+  </data>
+  <data name="UpdatingConfiguration" xml:space="preserve">
+    <value>Updating Configuration Document</value>
   </data>
   <data name="icon_tasks_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4632,37 +4715,19 @@ Are you absolutely sure that is what you want?</value>
         sJgIoscTFB1OcKjBeciIIDQmeoCB+WwJG6iBhFgxY2KB17Bjyw4IADs=
 </value>
   </data>
-  <data name="color" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="function" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAC3klEQVQ4T6XSa0hTYRgH8Cdd
-        yyCCBDWLWRARdsE+VhRllCH0LWEYFSZ2wTJ0kIhm0dzy0rIbCGGOXKkLNU1y3nNU1vCSudlxK0bBlpk5
-        5Ciabu78e/TDTAj60Ic/L+dw/r/zPu85BID+JwvlisdEA8+IPuYTWRIpbOAQKe07g7X2cHmZXb6mzC7b
-        rh2kWGU/HQ8TSEM2qiUztS50lwI3KdZxLdQwWnamf+al0SO9Nfukjle+GUOTZzSppN8RmmMQqCD270AD
-        HXZUK1pmP1eJsD4BjFeBPBWg4jX3MVDajdl7VtGxvqrFRvWHl+zgSQ1FWntWm2Y8jybhLgYsXGxUA3od
-        oHsAaBqAy128fsGM+vukdZXF1ErmyMAIejOlCe4E15xUCkxmAK4iwKYHOqqBmhag/ANQ/BXIFDGX54ew
-        3+0ykiUtABRaqP7TVOEvN7IwjuuYm+PyeDPg7AZ6HUDbGPwGLyZuAN94cx+Sp37pyFIfAM69JrvVXyJ1
-        4RJsKIQLTzEJC/yzbkgj05juA4brAOE28C4d6Dzvl1LptT0AHOokZ7O/QKpEGhoZeMPAIAPD+IkfIjD0
-        nosMNDFgZEB/wi8doU5nAIhqpXbtRIq3iHdwh0cohwHNDHRjDL0MtDFQYQTu8wjaVODCwQnvRmptDwDL
-        Kih711CMmMFABnJRhEro0YNqBmom+AwH+Axr+Aw1QNIpIHrDkBhEddkBgNSkkJvkwlHxpDeFR1DxCGr0
-        QgcPdAxorPwVeYSkQmDfMdErW24SiB4qFoF0Iqok5coXEe4D41d8iahFCvpwkYGLDJxlIPE5sDd33Bei
-        eOEmqlYS3V38lblOFM1JD1bK9NGCoksl7h5t9sb7RqR4j0/a0zHqjcrqEmUxeoHkKi5vXags7oBIxtcR
-        nG20aUUcnd5yizQJZsrPdFJOvpMSNWbalnyLQjbH8TM7OGs5sj+BIL6xihPOWfePzL9o/tmgeeA3KbNy
-        RaQn6HMAAAAASUVORK5CYII=
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAABIElEQVQ4T6WTsU4CQRRFdwnE
+        EIkxKBL5BkKjDRQWFljQEwq0pCI2FFT8ABV+gB0dxMrEBAsTowmVxs5f8CvWc/GtWcdZDWGSk3nvvnl3
+        Zmd3gyiKgk0IwjD00UafG4q967Sxr3BMww2cQtXitQx6NM1gL23nWE87wYQFV/81q+4ajBHvHGqJvGum
+        ZdO6vhPUKd6DZj33hc0d03UvU2j6TqCGS1hAyXmEBvmD8X2hvhNcs0i4t95CewK9oVQD7foIA8dA38HS
+        OPvL4ITiC2gONJiHpilW7dwMFH+9hcQYEb9B2bQ+83uiHufSWtKTBnXyZ7j9Yfk7KSCJ1YgNPojFKxzB
+        PhRhF3ZgG/KwBTnIQgbC2KBCcgg6+sHaBpv8yur9BCINtCQt9llRAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="control-stop-square" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAABcUlEQVQ4T8XTO0hCYRjG8Q8M
-        6YKE2RC1VRANQVNDQi65RVC0hDQEBS2F4FBQSy2BQxdrUOg6mDWEBJZJUdBSw1cEZYNh2AUywgiHEBSf
-        3ldQ+ChJcGj4cc6B/3nOtxwBQBSjqJf5w5mBjtWoMK29uYgsgIv77KkzN0bXC5PLEWD+Pq2YC6WR5XgA
-        uONeGWhzhAWR9rsUJs8Tec3eJMEd98pAqz0oiJy5SmA0EM8Z8cUwuPuKgZ0nWDwRWI/fwR33ykDztBRE
-        Tl18YXgvhn73I7qctzAvXqJzQeZYPCFwx70yUD9+Joi0nn7A7AzCtHT9q153CNxxrwzUjQUEkT2+KFpW
-        wnmZtp/BHffKQPWQVxDZ7o+jxhPLq8n7Ce64VwZ0li1BZONRClpvMq8qXxLcca8MlPatCyIbTgBDANAf
-        ApV+QEcqDoByUrZPz3TlTmuaUAeEEBqN0bah6XbJPxltm9SXKCfgAaIntQUw/Bj417/xG49phw+gF0Mn
-        AAAAAElFTkSuQmCC
-</value>
+  <data name="Func_ARGB_BValueDescription" xml:space="preserve">
+    <value>Blue value</value>
   </data>
   <data name="icon_zoomin" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4699,26 +4764,8 @@ Are you absolutely sure that is what you want?</value>
   <data name="FindReplaceNothing" xml:space="preserve">
     <value>Nothing to replace</value>
   </data>
-  <data name="icon_panup" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIeDAJhpZZpqZiJNeNikptelprG+zCBPfSJNdyJOfVJvjMybl9Kgn7ShnSNOeCJPea2f
-        nq6entWjojVkl6CBgB9NfjVjlB5OftOnqDJejp1xbp9wbM6cnbWEgbaGhKh3eJBkYbeKh9CdnM2jpMeU
-        kcCNirqIi9qoqZ5ybdOfodSmptenpbuKhriHg6uWkyNQeq59fNakpciYljZklaB1dCtXhTFhkC1Zid2m
-        qdilpJlxbah2cyBPe////9ioqLCRjtCdmrKiotuop8OWkaZ0c3+hvdmhpMyZlipZhkFiirWgnd2prcGP
-        jvXm6TNfjcmdmtShoMKPjoKVs9KanbmTkrqIiaiOjVFwjNulpZJnZqNwcpd0dE9wkGF8mNimpdimp7GR
-        kvfk6MeVlKyfqcSSkd6rqDVjk9KeoqGEgbyWk5emu36SscSUkjFfj8WUkDdlltOaoDJeirqurqOPjiBM
-        eax/f9Ghn8aUkyBOf9yorNympKJybtKeoMOTkcuYlShYh6R/fpx6eL6KjL6LigAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAACDACwAAAAAEAAQAAAIxAAHCRxIcKCLgggHFhBQQKAdLwGm
-        VEGYQECCQSJ0CLkCgMyMOAUbCJzQI8CIAQCU/IFA8IDAM3QIAFiDAwAeJ18GuhSYg0OeAG0GdLiRwkfC
-        D2G6sPjxZo+JCwwSalABY0MIFEUIoCnoIUadLEukLDDzJEIQMQSTYDGi4EUJQWP68AGTxgpBIIBWQAFB
-        gkogJlHK+NlSsMWQDCf08FBzpEINGkgQPpCjhYiBO00kYLCQUCAXBAjm2HADp7NANhR2ODAgIyAAOw==
-</value>
+  <data name="SelectPackageFile" xml:space="preserve">
+    <value>Select the package file to edit</value>
   </data>
   <data name="Func_DECAP_StringValueDescription" xml:space="preserve">
     <value>String to format</value>
@@ -4732,64 +4779,28 @@ Are you absolutely sure that is what you want?</value>
   <data name="SaveMapBeforeTiling" xml:space="preserve">
     <value>You must save this map first before you can run MgCooker</value>
   </data>
-  <data name="globe--minus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="IncompatibleConnection" xml:space="preserve">
+    <value>This connection is not compatible</value>
+  </data>
+  <data name="ParameterOverrideExists" xml:space="preserve">
+    <value>Parameter Override already specified</value>
+  </data>
+  <data name="OdbcCannotInferDriver" xml:space="preserve">
+    <value>Could not infer ODBC driver from file name: {0}</value>
+  </data>
+  <data name="minus-circle" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAADSklEQVQ4T4WRbUxTVxzGD+1M
-        JGYuMSFmiyMOQQuaiDUqGwsRGG+aoCRkKpHOlymKi2SZQkKmbAxtKC8FtUoDErRQFalhzhpe3PaBqZRC
-        G7RNKavWKbRAJZQi2lXWZ/9zxU9+8Ca/PPee//M859x7mejYfSYqMjLxL38zsfyfhWLF6FfiCpeCaCO6
-        51UhrPM5+bif57JKvmXCjVBQal9OQ/Wmhqdm+V/PPVqrz3/T7gsOTM/5WxwvPSlal5nPue9tAc++KSg0
-        LP+oxNxe8NtT13XbFPp9c2ixTqPeNIV7E37YAoDtX6DaOOniPu4XckJBnj5UlN/VWND+yF3e40aX208F
-        QbRYpqCz+9Az7kefdw59s8C9F8DpHpeb+4Vcnp6xkN3atJjiDus314Zx6KYTl+wvUPrHCE78PoIrQzP4
-        cxI4qXdAQ+s3xoC2Z68Rdfy2ledCcjRUkHXhjOyiaSq90YaUpiFs0wxhR6sDubrHONzuxO6mB8g8a4By
-        MIBiatune4Ic8vMcwRhLK+/4Xj8WSFRZsFY5gLg6C+LrLUhosOJLlRkynQtFd//Dd92zSFCaEFthxJY6
-        U4DnCCpI/NkQV3InmNw4iqhTBkgqBxBdaUJMlQnRCiOkChMSamzI1s3i02OdkFZReWVvkOcIKtj8U2e8
-        whj4rLQXkfJ+RFFg1TwS0qiyXmyscSC1ZRbhBZ3YqgOyNOMBniOoIPnUudVFHd6V5Q8gqXiINdUWxCot
-        kNZaBWKrBrGp1oG1ZYOIV48hrQ1IVj3y8hxBBelVGUtyNcPrySQlvlA9RpLaibQGJ9IvPkFqvROJFxzY
-        cNqMr29DYNnhG8OrN+ZnZEemUkHm+VC2Xd0sOdnnSVK7kdk0jl3aCexp9WD/dY+g8qRcqMLXoEGynjT6
-        dc2isEltiMikZUzN2I7LjO1sjvggt7VLKrd4ZFe9ONLuww+3ZlConxFUGbkOr2Syd6hjrJ+OQNfSGHqV
-        sgi299fmZYV37dvqR735uunA8Vsvg1yPxO98dTRshf/o4o8nfxQveEifrp9TJpyAMTERRkSzD5fGsc8P
-        HmCy1kZ2sKOb5XUZBOXPfJ3PGaPdWFg45fg/4JeIWDRf8gnp++CbcT/Psf8BxLcXab+EC34AAAAASUVO
-        RK5CYII=
-</value>
-  </data>
-  <data name="globe--plus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAADV0lEQVQ4T3WPf1DTdRzG327K
-        5WnY4RWnZ51pU0AvuXUlanJNVDDvILs8y5MpWaDmxWkCd96pSQgxmGBGOgc7ajBtuo7MdfxQ+wM1xmAT
-        227MpjOSTVwEDLG1cI/vz+KuP7y+d697Pt/353me7/tLkn0/k6TIStLPfiVp2W9PSVX9q6UVPhVzjmmb
-        UFV0Lu7ZJ/zRHPPvQRQUu+fypWZpbZ+97MofAYMzGDrvDka6R8ZDjZ6HgTUGn13cC9+TBYWWuTMO2Zvy
-        f+jznXUNoSs4jkbnCLS2IVy7H4IrDLj+Bo5aB33CJ2H/fxvkmadKdrXq8ptu+cvb/Wj1h7gggkbHEEzu
-        INoHQugcHkfnGHDtAVDa7vMLv0Tk8sxEk7YY0pP2Nzu3fnsTO8578bX7AYov38WBS3dxuncUPw0CB80e
-        6Hn+3T3g3O//QFbwo1PkJm3Wc8GGE18o62xDGToX1tT3Ikvfi01GD7JNt7GzyYst9TeQedyCqp4w9nPb
-        +6Y72Mx+kWOIKL28eY/5XlhR48CSqm6knHRghdaB1FonXq+xQ2nyoejqI+xuG0NqlQ3JFVa8edIWFjmG
-        CxSHLSmHLkbSdP2QHbEgobIbiZU2JKltSFRZIVfZkFrtwjumMTy/rwVyNZdXdkREjuGCNz5tWaGyhl8s
-        7sBLZV2QcWDhBAmsspIOvFbtwdrGMbyQ34L1JmCDfiAscgwXpB35clFR8/CC8htIqPgFi486kFzlgPyY
-        M0qyugdLj3mwpKQHM7U5iDWuxizdtpDIMVyQoV4Xl62/+Qqb5MzymttYpfEivdaLjLo7WKv1QnHCg1dL
-        7Yg7k4YP/ixAzKnkECk/Xkd7s7gg86up9JamIeFgZ2CVxo/M+gG8Z7iPbcYAtp8NRHV+/Q7M0C5HvEGB
-        jYFc0HHZINXNtFFtnIZo0zdE7zbMm5xtbJWXOQLKM8P4qCmITy6MotA8GtXntCuh8L/9BFTzTBevwE98
-        Ev9KyTzK+b5hTuFVd5a2f3iXaSRccOFhROic6py/pnz+cohKZYOL+1aCKmO7oqhjeQMiKfMsk0hPx6fQ
-        stwPSWnUUW5zG+W1WqIq3sX8wHTXbO8i0OHp12n+ZCmXRL8vYaZNlMxm/X92xugob8p12h2jncjRY8Vf
-        HJIr03vAAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="TooMuchDataWarning" xml:space="preserve">
-    <value>The selected column contains more than {0} different values.
-The calculated averages only accounts for the first {0} distinct values.</value>
-  </data>
-  <data name="ruler" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAB3UlEQVQ4T2PYn8jCsD+JheFA
-        EksGEHdDcQZIbG0EM0gcJw3SywAiQIqAdM/fm8v+/7qy8D+IjU8jzGCwAfsSWTJBGpaFMF98sLnh/9dT
-        0//vTWQ5AxJbE8E8Bx8N0suwPZZlyu9ri/9fnej+/8fFef8/n5gKZ9/fWAcWw0aD9ID0MgBtmf92f8//
-        baUm/+9tqP3/8eik/6dbrP4/29aMF4P0gPQyzAtgap7lx7QRyLn/9fSM/+8P9YMk7oPECGGQXgagIjCe
-        5MY0787aqv8gkzdHM88AiU30ZMSLQWoYloYwM2yIAuPZIOe/2tP5H8QGic30xW8I2IBOeyYYXnhzZdn/
-        FzvbwH4DYlD4MMzAYwjYgJVhzDC8COR8UOABxRYhiTNM98HuErABjZaMMLz0+tKi/0+AaWFZKNNSIGaA
-        YS0xRgZ0oCrMyOCrDhRfHMwEwytfAZ3/CBiVQLGVMHFNUUzNKIaJsTEwVBgxgvDqK4vy/z9YV/1/rj/T
-        eiBm0CCkGWYSyDkTPBn3vAa64NmWxv8gNkiMWCAPVGiUasywsM2Z4TgIA9nzgGLKQCwHxBJALAzEfEDM
-        CcSsQAwMPQQQADIloRikWAyIRYBYCIj5gZgHiLmAmB2qmRlIw50HAIdyTYaOb/frAAAAAElFTkSuQmCC
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACC0lEQVQ4T6WSP2gTYRjGP5JA
+        EyhNc0M8SotbAxU7pNDsNRA6hLQIpXiVzi0d3RVEaAUXBwexYgT7T9EKcfHfWQlSJJfmUFAhZOgJRocM
+        yh1ZjtfnCXq0pY2DgR+8933v87v3u3xKRNT/0AnfV0o9ABtgU6mBLaWWwBoo/4H1EvfYw15mmD0qyD+O
+        xcxaJuP8mJtzfy0u+j8XFvzvhuHujY873IMgf5Ig/7S/32oahvdtfl4cwzgE177Oznrb8bgFQf7QBEWO
+        Fo2a+zMz3pfpaflUKBzL56kpqRcK3npPj8lMcIS7ON+7dNqxJyfl/cREV/ZyOXk1MuIwEwhuK7X+IZdz
+        zUxG/vI8nZbtVErWBgflXjIpdzStA+tSKuUyEwhu4Wvj7f6LsTFpt9vSaDSkWq2KbdtSr9el2WxKq9Xq
+        UEwk5NHQkM9MILiJByub9Z8ND0utVpNKpXJsmIItCJ7ous9MILiBcd6MjroljLiBhm6UKNA0l5lAsMKL
+        k0zu7+B8r9HwL4qxmMNMILiGv+R6OGzu6Lq3iyl2ITmJl/G4txIKmcwEgqu4lpdxOZYjEausaZ4NiQ3J
+        Ud4ivBwOW+xlJhCgVqfBeWxcgn01GnXKfX3ux0TCJ6y5xj32sJe/g4IInk+BMwNKncsqdeWCUg8v4ksT
+        1lzjHnrOAh1EDgpCWOgFSYC+rvBF7A1R8BuYvt7nXvKiFAAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="application--plus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -4829,20 +4840,8 @@ The calculated averages only accounts for the first {0} distinct values.</value>
         +fPlBQYEADs=
 </value>
   </data>
-  <data name="icon_zoom" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIZsAAE1Z3BJJai7zuqxd9nFs1tgZNnm88fb8MXa78/a5LjH1+fu9dDh8trn9KjR43yP
-        orrT7erv8+Dq9ISAf622v2Rrcmxtb6Sttqq8z2BocJ+fn4aKjcvY5ZqbnYSHi9jm8pGRkpSVl7S3u83U
-        2f///4SFiHV5fq6yt6Cnr77L2K7L54SdtXh3d1xbXcjQ2Ozw9GRgX5yzy7CurcLQ3efs8eLs9UpMTODo
-        8XahzMbb78rc7s7X39ri6uHr9HyQo6/N6uLr9eXq79Dh8dHh8jAvLrvU7X98e5DO1pmirDg3N97m7auo
-        qKamp5u83sjIx6TF54iOlKu0vJy20IWUo67C1aC50unv9Mza6EdKTV5cWr7H0bC/z4OGiKWqsdDg8YBq
-        V+vw9bbBzauvs7e/x1hYWdfb36jG5OTr8W50evT3+Zu20MPT4wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQB
-        AABsACwAAAAAEAAQAAAIuQDZCJQxAYaRJQITAkjIRoMILSnCdAHhRGHCDi6U0LBy48oWD2wAiBTJ5EQE
-        EmkWSPigY0oIgQvZsBjxgseZHga8IIjRAqbALEHAcFjTYAgCCGaSMGRjocyCGg0Y5HDwQwqWFSMBQBED
-        xICQAw6OPPGBZumYEjsYHCjSBEeVDFGWskHBBQkVFWoeVCggVyCFDWSI2DBxoUCAAQTkJlCAQUECNgIC
-        HE7cl2HkyZUtSx6QWfOXzpZnsAkIADs=
-</value>
+  <data name="Func_RANGE_DefaultValueDescription" xml:space="preserve">
+    <value>Default value returned if expression does not fall into any of the ranges</value>
   </data>
   <data name="gear--plus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4864,6 +4863,27 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="NoWidgetEditorIface" xml:space="preserve">
     <value>The specified editor does not implement the required IWidgetEditor interface</value>
   </data>
+  <data name="icon_panleft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAIeDAJhpZZpqZiJNeNikptelprG+zCBPfSJNdyJOfVJvjMybl9Kgn7ShnSNOeCJPea2f
+        nq6entWjojVkl6CBgB9NfjVjlB5OftOnqDJejp1xbp9wbM6cnbWEgbaGhKh3eJBkYbeKh9CdnM2jpMeU
+        kcCNirqIi9qoqZ5ybdOfodSmptenpbuKhriHg6uWkyNQeq59fNakpciYljZklaB1dCtXhTFhkC1Zid2m
+        qdilpJlxbah2cyBPe////9ioqLCRjtCdmrKiotuop8OWkaZ0c3+hvdmhpMyZlipZhkFiirWgnd2prcGP
+        jvXm6TNfjcmdmtShoMKPjoKVs9KanbmTkrqIiaiOjVFwjNulpZJnZqNwcpd0dE9wkGF8mNimpdimp7GR
+        kvfk6MeVlKyfqcSSkd6rqDVjk9KeoqGEgbyWk5emu36SscSUkjFfj8WUkDdlltOaoDJeirqurqOPjiBM
+        eax/f9Ghn8aUkyBOf9yorNympKJybtKeoMOTkcuYlShYh6R/fpx6eL6KjL6LigAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAACDACwAAAAAEAAQAAAIwQAHCRxIcFCBBAUTCnQhQECDAwcG
+        2fESYEqVggcHitAh5AoAMjPiKBw0oUeAEQMAKPkDQeEZOgQArMEBAI+TLwpzcMgToM2ADjdS+FD4IUwX
+        Fj/e7DFxgYFCDSpgbAiBoggBNAU9xKiTZYmUBWaeRAgihmASLEYUvCghaEwfPmDSWCEIBNAKKCBIUAnE
+        JEoZP1sKthiS4YQeHmqOVKhBA0nCB3K0EDFwp4kEDBZGDuKCAMEcG27gaB7EhsIOBwZkBAQAOw==
+</value>
+  </data>
   <data name="icon_measure_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIMPAKufkcu/pqqomunkwKKdkdXIq5Whrtbh5YyZpZy+1J6Zj42Zp5y/1I2appy+1f//
@@ -4872,8 +4892,42 @@ The calculated averages only accounts for the first {0} distinct values.</value>
         owBWKl06MCAAOw==
 </value>
   </data>
+  <data name="globe--minus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAADSklEQVQ4T4WRbUxTVxzGD+1M
+        JGYuMSFmiyMOQQuaiDUqGwsRGG+aoCRkKpHOlymKi2SZQkKmbAxtKC8FtUoDErRQFalhzhpe3PaBqZRC
+        G7RNKavWKbRAJZQi2lXWZ/9zxU9+8Ca/PPee//M859x7mejYfSYqMjLxL38zsfyfhWLF6FfiCpeCaCO6
+        51UhrPM5+bif57JKvmXCjVBQal9OQ/Wmhqdm+V/PPVqrz3/T7gsOTM/5WxwvPSlal5nPue9tAc++KSg0
+        LP+oxNxe8NtT13XbFPp9c2ixTqPeNIV7E37YAoDtX6DaOOniPu4XckJBnj5UlN/VWND+yF3e40aX208F
+        QbRYpqCz+9Az7kefdw59s8C9F8DpHpeb+4Vcnp6xkN3atJjiDus314Zx6KYTl+wvUPrHCE78PoIrQzP4
+        cxI4qXdAQ+s3xoC2Z68Rdfy2ledCcjRUkHXhjOyiaSq90YaUpiFs0wxhR6sDubrHONzuxO6mB8g8a4By
+        MIBiatune4Ic8vMcwRhLK+/4Xj8WSFRZsFY5gLg6C+LrLUhosOJLlRkynQtFd//Dd92zSFCaEFthxJY6
+        U4DnCCpI/NkQV3InmNw4iqhTBkgqBxBdaUJMlQnRCiOkChMSamzI1s3i02OdkFZReWVvkOcIKtj8U2e8
+        whj4rLQXkfJ+RFFg1TwS0qiyXmyscSC1ZRbhBZ3YqgOyNOMBniOoIPnUudVFHd6V5Q8gqXiINdUWxCot
+        kNZaBWKrBrGp1oG1ZYOIV48hrQ1IVj3y8hxBBelVGUtyNcPrySQlvlA9RpLaibQGJ9IvPkFqvROJFxzY
+        cNqMr29DYNnhG8OrN+ZnZEemUkHm+VC2Xd0sOdnnSVK7kdk0jl3aCexp9WD/dY+g8qRcqMLXoEGynjT6
+        dc2isEltiMikZUzN2I7LjO1sjvggt7VLKrd4ZFe9ONLuww+3ZlConxFUGbkOr2Syd6hjrJ+OQNfSGHqV
+        sgi299fmZYV37dvqR735uunA8Vsvg1yPxO98dTRshf/o4o8nfxQveEifrp9TJpyAMTERRkSzD5fGsc8P
+        HmCy1kZ2sKOb5XUZBOXPfJ3PGaPdWFg45fg/4JeIWDRf8gnp++CbcT/Psf8BxLcXab+EC34AAAAASUVO
+        RK5CYII=
+</value>
+  </data>
   <data name="PreviewQueryElapsed" xml:space="preserve">
     <value>Preview Completed in {0}ms</value>
+  </data>
+  <data name="control-stop-square" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAABcUlEQVQ4T8XTO0hCYRjG8Q8M
+        6YKE2RC1VRANQVNDQi65RVC0hDQEBS2F4FBQSy2BQxdrUOg6mDWEBJZJUdBSw1cEZYNh2AUywgiHEBSf
+        3ldQ+ChJcGj4cc6B/3nOtxwBQBSjqJf5w5mBjtWoMK29uYgsgIv77KkzN0bXC5PLEWD+Pq2YC6WR5XgA
+        uONeGWhzhAWR9rsUJs8Tec3eJMEd98pAqz0oiJy5SmA0EM8Z8cUwuPuKgZ0nWDwRWI/fwR33ykDztBRE
+        Tl18YXgvhn73I7qctzAvXqJzQeZYPCFwx70yUD9+Joi0nn7A7AzCtHT9q153CNxxrwzUjQUEkT2+KFpW
+        wnmZtp/BHffKQPWQVxDZ7o+jxhPLq8n7Ce64VwZ0li1BZONRClpvMq8qXxLcca8MlPatCyIbTgBDANAf
+        ApV+QEcqDoByUrZPz3TlTmuaUAeEEBqN0bah6XbJPxltm9SXKCfgAaIntQUw/Bj417/xG49phw+gF0Mn
+        AAAAAElFTkSuQmCC
+</value>
   </data>
   <data name="ColHeaderName" xml:space="preserve">
     <value>Name</value>
@@ -4950,23 +5004,19 @@ The calculated averages only accounts for the first {0} distinct values.</value>
         IECQOISOAlIeYxkAocGLFTISVxlSoIAAARgGYLHAuQERJwtACCCQYspmhqw7C2gAIfVF3AOCXwwIADs=
 </value>
   </data>
-  <data name="icon_ctxarrow" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="icon_zoom" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        R0lGODlhBAAIAIcAAAAAAIAAAACAAICAAAAAgIAAgACAgICAgMDAwP8AAAD/AP//AAAA//8A/wD/////
-        /wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAMwAAZgAAmQAAzAAA/wAzAAAzMwAzZgAzmQAzzAAz/wBmAABmMwBmZgBm
-        mQBmzABm/wCZAACZMwCZZgCZmQCZzACZ/wDMAADMMwDMZgDMmQDMzADM/wD/AAD/MwD/ZgD/mQD/zAD/
-        /zMAADMAMzMAZjMAmTMAzDMA/zMzADMzMzMzZjMzmTMzzDMz/zNmADNmMzNmZjNmmTNmzDNm/zOZADOZ
-        MzOZZjOZmTOZzDOZ/zPMADPMMzPMZjPMmTPMzDPM/zP/ADP/MzP/ZjP/mTP/zDP//2YAAGYAM2YAZmYA
-        mWYAzGYA/2YzAGYzM2YzZmYzmWYzzGYz/2ZmAGZmM2ZmZmZmmWZmzGZm/2aZAGaZM2aZZmaZmWaZzGaZ
-        /2bMAGbMM2bMZmbMmWbMzGbM/2b/AGb/M2b/Zmb/mWb/zGb//5kAAJkAM5kAZpkAmZkAzJkA/5kzAJkz
-        M5kzZpkzmZkzzJkz/5lmAJlmM5lmZplmmZlmzJlm/5mZAJmZM5mZZpmZmZmZzJmZ/5nMAJnMM5nMZpnM
-        mZnMzJnM/5n/AJn/M5n/Zpn/mZn/zJn//8wAAMwAM8wAZswAmcwAzMwA/8wzAMwzM8wzZswzmcwzzMwz
-        /8xmAMxmM8xmZsxmmcxmzMxm/8yZAMyZM8yZZsyZmcyZzMyZ/8zMAMzMM8zMZszMmczMzMzM/8z/AMz/
-        M8z/Zsz/mcz/zMz///8AAP8AM/8AZv8Amf8AzP8A//8zAP8zM/8zZv8zmf8zzP8z//9mAP9mM/9mZv9m
-        mf9mzP9m//+ZAP+ZM/+ZZv+Zmf+ZzP+Z///MAP/MM//MZv/Mmf/MzP/M////AP//M///Zv//mf//zP//
-        /yH/C05FVFNDQVBFMi4wAwEBAAAh+QQAAAAAACwAAAAABAAIAAAIFAABPBgIQOCDggIRKlR40KDBBwEB
-        ADs=
+        R0lGODlhEAAQAIZsAAE1Z3BJJai7zuqxd9nFs1tgZNnm88fb8MXa78/a5LjH1+fu9dDh8trn9KjR43yP
+        orrT7erv8+Dq9ISAf622v2Rrcmxtb6Sttqq8z2BocJ+fn4aKjcvY5ZqbnYSHi9jm8pGRkpSVl7S3u83U
+        2f///4SFiHV5fq6yt6Cnr77L2K7L54SdtXh3d1xbXcjQ2Ozw9GRgX5yzy7CurcLQ3efs8eLs9UpMTODo
+        8XahzMbb78rc7s7X39ri6uHr9HyQo6/N6uLr9eXq79Dh8dHh8jAvLrvU7X98e5DO1pmirDg3N97m7auo
+        qKamp5u83sjIx6TF54iOlKu0vJy20IWUo67C1aC50unv9Mza6EdKTV5cWr7H0bC/z4OGiKWqsdDg8YBq
+        V+vw9bbBzauvs7e/x1hYWdfb36jG5OTr8W50evT3+Zu20MPT4wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQB
+        AABsACwAAAAAEAAQAAAIuQDZCJQxAYaRJQITAkjIRoMILSnCdAHhRGHCDi6U0LBy48oWD2wAiBTJ5EQE
+        EmkWSPigY0oIgQvZsBjxgseZHga8IIjRAqbALEHAcFjTYAgCCGaSMGRjocyCGg0Y5HDwQwqWFSMBQBED
+        xICQAw6OPPGBZumYEjsYHCjSBEeVDFGWskHBBQkVFWoeVCggVyCFDWSI2DBxoUCAAQTkJlCAQUECNgIC
+        HE7cl2HkyZUtSx6QWfOXzpZnsAkIADs=
 </value>
   </data>
   <data name="icon_zoomout_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -5020,47 +5070,24 @@ The calculated averages only accounts for the first {0} distinct values.</value>
         NtwA4YEACVCjTi05UoHMpVMHPBAZdWSBgRU0FLjQVYHbBQU0Oi2QYcKECwEcxE34dMCAAoATEAwIADs=
 </value>
   </data>
-  <data name="icon_help" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="icon_refreshmap_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        R0lGODlhEAAQAIfIAOXl5QA5cw4/cnaYt/////Hy8UJyoUl4pjVtoQs8bhRGeDVqn+Xi3hBPjkBwnhJH
-        elF/q/Dx8FWHtVaFtWCPvVd5nxRIePDw8AApYCdWhEdskRFCc16CptHt/0+DtgA5a53K9wU5bFaJuTRq
-        n0p4qUp6qVqItiBZjWeXwkVzorbK3FF+rPPy8Q9CdwAhYCRUiBhVjTZllW+gzzlqlrDV+0luk3Wo3Xyt
-        2TpqmTxrnFOBq26h05WswEBwnE1wl3Om1ZKtxc3p/+P2/zFsqOP4/43B802HvwdDfj5qkjx4sXONqG+W
-        wBBBc7LI3j5tm3KVt5aovPP7/xtMffT//yJUg2eMryRTf4Cs1xFNham7zEBvoGSTwFl+omGRw3ik0WeU
-        wFJ2m09/qej//3Wn2rLE1fPz8hxMfRxMfAAkXB5QhShZixJFdwU9ciVWjSVXh7nM4FiGsypbjISv2VZ7
-        n1iGsQw+b+fv+liNu7fJ3VyApQ1CclSDrwQ8cEF1qXSn1DJik2GNuVGBr8jp/63D1Tx0rHiRrB1Pfe/w
-        7z90qHao2aSzx8rX5SFRgvD9/5+30B9PgeT9/z1lioiy2/P08itflO3r6CFQgqHQ+3CeyQAkXWiZySxd
-        kOXj3lWJuwAuZhtQgrLF2QU5a3ut3oKu2DRkkgAuaYqiu+Pv97PV+c7z/yRfmyRXjMfl/wAza+78/3yf
-        wO/y80l7rkRrkOTr78Xa8Ut5p0d6rythlTxrmwpBduXv+Z2uv6zT+Fx7mQAnYPT08kt6q3em1iRVg5qx
-        yGCNvBBIesPe9jl0rP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        R0lGODlhEAAQAIYAAAAAAP////38/f7+//39/vz8/evr7Nzd4M7P0s3O0bGzuOvs7n6Ej32DjnyCjH6E
+        js3Q1c3P0szO0ers77K4wLG3v6+1vYaasLC3v6+2vq61vK+2vczQ1Ors7unr7fb3+N7f4Kqtrpienqes
+        rKisrKqtramsrN3f38TGxvT19d/g4Kesq6isq6qtrMPGxcTGxdzf3c7Sz7a9t0J2QlqAWneNd3uOe4KU
+        gpSllJmomaOyo6WzpdHi0dHh0cXUxdbk1snWyd3p3dvn26avpqOso97p3tHc0a22rdPd0+Ls4uXu5cTK
+        xMHHwenr6f7+/v39/fz8/O7u7v///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        ACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAADIACwAAAAAEAAQAAAI/wCRIasEq0CBMr8msSgQ4cIhTgLt
-        2BjjZ4eRJMeGEOqDAMEAZABE3ZAUTISjN01A6RhRK8WRAQASybmyZRYqVh1oRKlyq8eqPAB+jOqkAoQx
-        MkBoFdEV588nDgBkeJlwasoiVQ148BKC5MUDLgA0YaKw5NUeYFiyXHKVIU2uCgC6oPgiIVaJE4qCQDLF
-        hgofMADuEAMEZwWlYYKIQCn1yFArHwA8mKADwQCpRql2uWBkRoGnGgBsBQpzANemQXgsFZOyhgkGDQAQ
-        kTjgYEabOb2EtbAgoA4aWQAWGNCCQ40VAmIK+dqQIJSASABg5HASw80ZAgSUZNIT4oOAj08CiA8fT17A
-        d4EMAKhfz169wIAAOw==
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQB
+        AABSACwAAAAAEAAQAAAI8AAxZKiwAYPBCgYvSFm4EEOBhyYKEIBSAAMEhQwxPHlSwIQAjhULcMAoxUIE
+        BBFKJEiAAAEGBgweMLRQAAGBFQQeFjjQoYPMhRUiSIgwooAAJwNSDBhgIGPOAiEkDlhio6oMhhkKqECx
+        4gWIADYCiLVBA2gBFwRIEEAxNYcSJTaQ5JCSgQQLEytYtIgypImRJDaMGKGhoQCKAi2guBhwI8gOGzJ2
+        FKmBgcCJFyNcgHByQ4gOJjZ0CKlBocDGERudHAECJGwTIDRKd/AgYsKCDzBw+Aj7A8cMDA4aPAjuQIGB
+        GETC8uhhg6Fz5zOq2pgREAA7
 </value>
   </data>
-  <data name="icon_popupscrollup_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIcAAAAAAIAAAACAAICAAAAAgIAAgACAgICAgMDAwP8AAAD/AP//AAAA//8A/wD/////
-        /wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAMwAAZgAAmQAAzAAA/wAzAAAzMwAzZgAzmQAzzAAz/wBmAABmMwBmZgBm
-        mQBmzABm/wCZAACZMwCZZgCZmQCZzACZ/wDMAADMMwDMZgDMmQDMzADM/wD/AAD/MwD/ZgD/mQD/zAD/
-        /zMAADMAMzMAZjMAmTMAzDMA/zMzADMzMzMzZjMzmTMzzDMz/zNmADNmMzNmZjNmmTNmzDNm/zOZADOZ
-        MzOZZjOZmTOZzDOZ/zPMADPMMzPMZjPMmTPMzDPM/zP/ADP/MzP/ZjP/mTP/zDP//2YAAGYAM2YAZmYA
-        mWYAzGYA/2YzAGYzM2YzZmYzmWYzzGYz/2ZmAGZmM2ZmZmZmmWZmzGZm/2aZAGaZM2aZZmaZmWaZzGaZ
-        /2bMAGbMM2bMZmbMmWbMzGbM/2b/AGb/M2b/Zmb/mWb/zGb//5kAAJkAM5kAZpkAmZkAzJkA/5kzAJkz
-        M5kzZpkzmZkzzJkz/5lmAJlmM5lmZplmmZlmzJlm/5mZAJmZM5mZZpmZmZmZzJmZ/5nMAJnMM5nMZpnM
-        mZnMzJnM/5n/AJn/M5n/Zpn/mZn/zJn//8wAAMwAM8wAZswAmcwAzMwA/8wzAMwzM8wzZswzmcwzzMwz
-        /8xmAMxmM8xmZsxmmcxmzMxm/8yZAMyZM8yZZsyZmcyZzMyZ/8zMAMzMM8zMZszMmczMzMzM/8z/AMz/
-        M8z/Zsz/mcz/zMz///8AAP8AM/8AZv8Amf8AzP8A//8zAP8zM/8zZv8zmf8zzP8z//9mAP9mM/9mZv9m
-        mf9mzP9m//+ZAP+ZM/+ZZv+Zmf+ZzP+Z///MAP/MM//MZv/Mmf/MzP/M////AP//M///Zv//mf//zP//
-        /yH/C05FVFNDQVBFMi4wAwEBAAAh+QQAAAAAACwAAAAAEAAQAAAILwAfCBxIsKDBgwgTKkSAQOFAhgwd
-        QoSYcOLEgxYtFsyY8SHHjh8/OhxJsqRJkwEBADs=
-</value>
+  <data name="MissingColumnError" xml:space="preserve">
+    <value>Missing column "{0}"</value>
   </data>
   <data name="icon_viewoptions_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5096,8 +5123,8 @@ The calculated averages only accounts for the first {0} distinct values.</value>
         SkTwYKJFig4vQiyoESNHiwknLozY8GHDkygbBgQAOw==
 </value>
   </data>
-  <data name="SelectFolder" xml:space="preserve">
-    <value>Select Folder</value>
+  <data name="NewFlyout" xml:space="preserve">
+    <value>New Flyout</value>
   </data>
   <data name="map--arrow" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5531,9 +5558,6 @@ Do you want to continue?</value>
   <data name="InvalidResourceId" xml:space="preserve">
     <value>Not a valid resource identifier</value>
   </data>
-  <data name="NoRasterClasses" xml:space="preserve">
-    <value>This feature source has no class definitions with raster properties</value>
-  </data>
   <data name="property" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -5551,17 +5575,14 @@ Do you want to continue?</value>
         SUVORK5CYII=
 </value>
   </data>
-  <data name="RequiredServiceNotSupported" xml:space="preserve">
-    <value>This connection does not support required service: </value>
+  <data name="NoRasterClasses" xml:space="preserve">
+    <value>This feature source has no class definitions with raster properties</value>
   </data>
   <data name="EditWatermarkInstance" xml:space="preserve">
     <value>Edit Watermark Instance</value>
   </data>
-  <data name="ExtentsCalculationCompleted" xml:space="preserve">
-    <value>Map extents calculation completed. Click Accept to use the calculated extents.</value>
-  </data>
-  <data name="Func_RANGE_MaxDescription" xml:space="preserve">
-    <value>Exclusive maximum of range that can be matched by the key expression</value>
+  <data name="PromptUpdateMapWidgetReference" xml:space="preserve">
+    <value>Update Map Widget to point to</value>
   </data>
   <data name="Separator" xml:space="preserve">
     <value>Separator</value>
@@ -5607,14 +5628,16 @@ Do you want to continue?</value>
   <data name="TransparentName" xml:space="preserve">
     <value>Transparent</value>
   </data>
-  <data name="icon_buffer" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="icon_invokescript" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        R0lGODlhEAAQAIQAAEZCU1KTygpgs6jS54Sv2XuSpTJ6wL/e65jI40mOyObv92Wfz7LX6Iy+3hlquKXM
-        4rjb6leVykqUxY2bqK7V6JzK5Gih0FuazVCSybzd6sTh66TQ5mme0f///wAAAAAAACH/C05FVFNDQVBF
-        Mi4wAwEBAAAh+QQBBwAdACwAAAAAEAAQAAAIoQA7KODgwAABBR0SKlxIIAKCBhEEKFRAwIBBhAYaFACw
-        IYHEDgIiNIDIoUNGACgHeBSQYACAAhUcdCBwwWXKAThRAmhgQCBLCjopAEVJ4QIBhQIwDNUJgAIGAQiR
-        MmDAlMHThQkFTNVp9eNCAQEg6IQQwGtCBWAz6MxQFuvMBQd0Hojo1uQDnRro1jXwYAKAvGaxErAA4YGF
-        wFgHFjxYN2FAADs=
+        R0lGODlhEAAQAIU6AEtypf///9bn92+wPq3D3hExZKq+r3ugdmupO1WHSD14K7fH3Jiymb7M37HMxlmP
+        RFeLTVyTSVuQRY/SS6DfUZjYTl6fN1iORJ6xxny6Qn+og4jHR5vbTzJpMpvbUIjGR3Gad4/RS4nISHvB
+        RIrOSXCzP5/eUaDeUJ7dUJPVTYfKSIbLSIDGRnWPsoLHR2WkOT95LD11Pp3cUJPVTIPCRZ6+rIPDRWak
+        OZfYTnGzQAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAA6ACwAAAAAEAAQ
+        AAAIuAB1CNSBAYDBgwgxDNRhsEGAhxADNACwEMBEARgzYqQ4EEAAhCA5CvRIoKRJAgUWGjgQAwYEDQ4y
+        ohzIQAKCATJEIIhQA+NMHQYkZBgQYAAFChkixPx5AMEJokVRmECgQcDPBB84QC3qYQMEqyl1KKiAY2vR
+        CgoItAibgEaKrSFm2OhQoMACgQdeTICqgsSEGyAW3BVo4MEAoixcrBjwwMBCgQwuWMgxooSFCwweD1yZ
+        QEGCA441BwQAOw==
 </value>
   </data>
   <data name="cross-script" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -5632,36 +5655,41 @@ Do you want to continue?</value>
         24IinbtF9pUaeCn4QTdWdFAHNsFGMAqr5tprwhbHoJzP+Q95lHpGrVHH8wAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="InvalidResourceIdFolder" xml:space="preserve">
-    <value>Must be valid resource id. Cannot be a folder</value>
+  <data name="ConfigurationDocumentReset" xml:space="preserve">
+    <value>Configuration Document has been reset</value>
   </data>
-  <data name="icon_zoomrect_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAIZWAI2aptjb4q2km+vv8+/y9efs8eXXyfX29/b3+PX2+PL199Pa4Nrl6a6vsMHCwujt
-        8ujr7uHk5+Pp76SkpLu7u/T19ufp6qSkpfH09vP09fr7+9fY2aurq8LHzO7x9Ozt7tbX2NPU1sC/v8nK
-        ypubm+Xn6c/Pz9LS0t3g49ri6cLHy/Dy9N3k6/Hz9dXd5czNzcjIyL69vdvg5cPExbO1ttDf4ejq7Nni
-        6paWltrb3Nvf4+js787Q0uXp7ezw9NTT08bJzfP19ujt8bu8vfL09uzu8LGzteLp79PZ38TGx62tre7w
-        8t7l7MLDxK2trODj5be5usXQ2tXb4bCvr9bW1rW2tgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQB
-        AABWACwAAAAAEAAQAAAIqwCtABhIsGDBAAIDKFzIUCEAhA+tSJxIMaFAK1RETInxo6JFKyZyPImAIgSM
-        ihFflFhR4UCLHTqaUHx4YsOBIhoSYPAgBMiIiQ8pWECwJAgRAgMKIFECNICTDAgg9CDgo8CRFCSaVvmQ
-        QAHSAgyYLLhwMAkIrwMeMKhxowOUhlYc2EgrwUUUKUY8SnTAQwaLBSpoNNArcQYHHBOGWGkgwABhjwIa
-        P64Y2bGVgAA7
-</value>
+  <data name="Func_LOOKUP_ExpressionDescription" xml:space="preserve">
+    <value>Key expression</value>
   </data>
-  <data name="application-export" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAABzklEQVQ4T6WTO2hiURCGB+0M
-        go0YtrwKaqlphKCVhQ/EB1qE9Ek2CYElsFvErRZ7KytBEAtBsFDBqK2P5MpmIckiaCGIKCqi+MAHyuyZ
-        W66Fhgx85zTzDWd+OICI8BnA5/NxjDPGxYFQL+f1eoEAj8dzXi6X3xuNBtZqNXx7e8WXl9/4/PyEpVIZ
-        i8UKu3msVP4gz//Fx8fiOzkMcgFcLtfXQqGAuVwOs9ksZjIZTKVSmEwmMZFIYDwex1gshtFoFCORCIbD
-        YRSLxRcikQgIWuGSZfChIodBLoDb7b7abre42Wz2wvM85vN5ZE+/cjqdYLFYABwOx/V6vcblcrkXWo3K
-        brff2Gw2nclkArBarbeLxQJns9kO/X4f6/U6C7Ek5EJ59Ho9YQiTvxmNxhMwm8130+kUR6PRDpPJBOfz
-        Oa5WK6Q1/y+dTvcDaNJ4PMbBYLBDs9nEarWK6XRaSD8YDGK73RbmcBz3U6VSGcBgMNwPh0PsdDp7CQQC
-        giyXy38pFIpTNgRAr9d/p11brdZeQqEQ+v1+1Gg0D0qlErRaLYBarX6g53e73YOgXnIY5AJIpdJLmUwW
-        +AjkSCQSIKjoPGZ8ORDqPRJMqs98ZXL/Ad8QklT8D+CBAAAAAElFTkSuQmCC
-</value>
+  <data name="TextDownloading" xml:space="preserve">
+    <value>Downloading</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="magnifier-left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\magnifier-left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TextFind" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="TextFindAndReplace" xml:space="preserve">
+    <value>Find &amp; Replace</value>
+  </data>
+  <data name="TextNoOccurrencesFound" xml:space="preserve">
+    <value>No Occurences Found</value>
+  </data>
+  <data name="TextNoStringSpecifiedToLookFor" xml:space="preserve">
+    <value>No string specified to look for!</value>
+  </data>
+  <data name="TextNotFound" xml:space="preserve">
+    <value>Text Not Found</value>
+  </data>
+  <data name="TextOccurrencesReplaced" xml:space="preserve">
+    <value>Replaced {0} occurrances</value>
+  </data>
+  <data name="TextSearchTextNotFound" xml:space="preserve">
+    <value>Search Text Not Found</value>
+  </data>
+  <data name="TextSelectionOnly" xml:space="preserve">
+    <value>(Selection Only)</value>
   </data>
 </root>
