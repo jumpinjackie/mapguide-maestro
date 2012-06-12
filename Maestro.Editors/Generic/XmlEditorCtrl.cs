@@ -320,6 +320,7 @@ namespace Maestro.Editors.Generic
 
         public void FindAndReplace(string find, string replace)
         {
+            _findForm.ShowFor(txtXmlContent, true, false); //This is just to initialize it just in case
             _findForm.FindAndReplace(find, replace);
         }
     }

@@ -64,9 +64,9 @@ namespace Maestro.Editors.Generic.XmlEditor
 			this.Text = text;
 		}
 
-		public void ShowFor(TextEditorControl editor, bool replaceMode)
-		{
-			Editor = editor;
+        internal void ShowFor(TextEditorControl editor, bool replaceMode, bool show)
+        {
+            Editor = editor;
 
 			_search.ClearScanRegion();
 			var sm = editor.ActiveTextAreaControl.SelectionManager;
@@ -86,11 +86,19 @@ namespace Maestro.Editors.Generic.XmlEditor
 			
 			ReplaceMode = replaceMode;
 
-			this.Owner = (Form)editor.TopLevelControl;
-			this.Show();
+            if (show)
+            {
+			    this.Owner = (Form)editor.TopLevelControl;
+			    this.Show();
 			
-			txtLookFor.SelectAll();
-			txtLookFor.Focus();
+			    txtLookFor.SelectAll();
+			    txtLookFor.Focus();
+            }
+        }
+
+		public void ShowFor(TextEditorControl editor, bool replaceMode)
+		{
+			ShowFor(editor, replaceMode, true);
 		}
 
 		public bool ReplaceMode
