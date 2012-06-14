@@ -33,12 +33,17 @@ namespace WeifenLuo.WinFormsUI.Docking
 			GC.SuppressFinalize(this);
 		}
 
+        private bool m_inProcessOfDisposing = false; //variable to guard against potential infinite disposal loop in mono
+
 		protected virtual void Dispose(bool disposing)
 		{
+            if (m_inProcessOfDisposing)
+                return;
 			if(disposing)
 			{
 				lock(this)
 				{
+                    m_inProcessOfDisposing = true;
 					DockPanel = null;
 					if (m_autoHideTab != null)
 						m_autoHideTab.Dispose();
