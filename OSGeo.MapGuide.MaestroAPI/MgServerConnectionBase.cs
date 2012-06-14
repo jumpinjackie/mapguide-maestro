@@ -104,12 +104,31 @@ namespace OSGeo.MapGuide.MaestroAPI
             RestartSession(true);
         }
 
+        public event EventHandler SessionIDChanged;
+
         /// <summary>
         /// Restarts the server session, and creates a new session ID
         /// </summary>
         /// <param name="throwException">If set to true, the call throws an exception if the call failed</param>
         /// <returns>True if the creation succeed, false otherwise</returns>
-        abstract public bool RestartSession(bool throwException);
+        public bool RestartSession(bool throwException)
+        {
+            var oldSessionId = this.SessionID;
+            var ret = RestartSessionInternal(throwException);
+            var newSessionId = this.SessionID;
+            if (!string.IsNullOrEmpty(oldSessionId))
+            {
+                if (oldSessionId != newSessionId)
+                {
+                    var h = this.SessionIDChanged;
+                    if (h != null)
+                        h(this, EventArgs.Empty);
+                }
+            }
+            return ret;
+        }
+
+        protected abstract bool RestartSessionInternal(bool throwException);
 
         #endregion
 

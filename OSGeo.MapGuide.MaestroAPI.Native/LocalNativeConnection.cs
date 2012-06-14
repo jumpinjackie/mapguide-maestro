@@ -762,7 +762,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 		/// </summary>
 		/// <param name="throwException">If set to true, the call throws an exception if the call failed</param>
 		/// <returns>True if the creation succeed, false otherwise</returns>
-		public override bool RestartSession(bool throwException)
+		protected override bool RestartSessionInternal(bool throwException)
 		{
 			if (m_username == null || m_password == null)
 				if (throwException)

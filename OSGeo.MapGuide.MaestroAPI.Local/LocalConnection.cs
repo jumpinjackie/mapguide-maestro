@@ -45,6 +45,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                                    //IMappingService,
                                    IDrawingService
     {
+        public event EventHandler SessionIDChanged; //Not used
+
         public static LocalConnection Create(NameValueCollection initParams)
         {
             return new LocalConnection(initParams);

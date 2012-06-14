@@ -120,6 +120,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         string SessionID { get; }
 
         /// <summary>
+        /// Raised when the session ID has changed
+        /// </summary>
+        event EventHandler SessionIDChanged;
+
+        /// <summary>
         /// Gets or sets a value indicating if the session should automatically be restarted if it expires
         /// </summary>
         bool AutoRestartSession { get; set; }

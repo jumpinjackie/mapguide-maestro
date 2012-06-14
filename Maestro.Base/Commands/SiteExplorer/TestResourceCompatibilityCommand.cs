@@ -298,5 +298,8 @@ namespace Maestro.Base.Commands.SiteExplorer
         }
 
         public event RequestEventHandler RequestDispatched;
+
+
+        public event EventHandler SessionIDChanged;
     }
 }
