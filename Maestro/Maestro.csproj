@@ -116,10 +116,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SDK\bin\OSGeo.MapGuide.MaestroAPI.dll</HintPath>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.MaestroAPI.Http, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\OSGeo.MapGuide.MaestroAPI.Http.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -426,6 +422,10 @@
     <ProjectReference Include="..\Maestro.Base\Maestro.Base.csproj">
       <Project>{F1E2F468-5030-4DBA-968C-9620284AFAA1}</Project>
       <Name>Maestro.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Http\OSGeo.MapGuide.MaestroAPI.Http.csproj">
+      <Project>{6EF1E775-444B-4E5F-87FB-D687C43A68D7}</Project>
+      <Name>OSGeo.MapGuide.MaestroAPI.Http</Name>
     </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Native\OSGeo.MapGuide.MaestroAPI.Native32-2.2.0.csproj">
       <Project>{F4420153-9DF3-4407-AD65-E8ABED2B6E25}</Project>
