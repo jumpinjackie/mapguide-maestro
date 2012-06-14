@@ -1155,6 +1155,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 			Uri hosturl = new Uri(m_reqBuilder.HostURI);
 			string locale = m_reqBuilder.Locale;
+            string oldSessionId = m_reqBuilder.SessionID;
 
 			try
 			{
@@ -1168,6 +1169,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 					reqb.SessionID = System.Text.Encoding.Default.GetString(wc.DownloadData(req));
                     if (reqb.SessionID.IndexOf("<") >= 0)
                         throw new Exception("Invalid server token recieved: " + reqb.SessionID);
+                    else
+                        CheckAndRaiseSessionChanged(oldSessionId, reqb.SessionID);
 				}
 				catch (Exception ex)
 				{
@@ -1187,14 +1190,13 @@ namespace OSGeo.MapGuide.MaestroAPI
 							reqb.SessionID = System.Text.Encoding.Default.GetString(wc.DownloadData(req));
                             if (reqb.SessionID.IndexOf("<") >= 0)
                                 throw new Exception("Invalid server token recieved: " + reqb.SessionID);
-				
 							ok = true;
 						}
 					}
 					catch {}
 
-					if (!ok)
-					{
+                    if (!ok)
+                    {
                         if (throwException) //Report original error
                         {
                             if (ex is WebException) //These exceptions, we just want the underlying message. No need for 50 bajillion nested exceptions
@@ -1204,7 +1206,11 @@ namespace OSGeo.MapGuide.MaestroAPI
                         }
                         else
                             return false;
-					}
+                    }
+                    else
+                    {
+                        CheckAndRaiseSessionChanged(oldSessionId, reqb.SessionID);
+                    }
 				}
 
 				//Reset cached items

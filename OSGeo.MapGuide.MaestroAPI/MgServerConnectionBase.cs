@@ -116,6 +116,12 @@ namespace OSGeo.MapGuide.MaestroAPI
             var oldSessionId = this.SessionID;
             var ret = RestartSessionInternal(throwException);
             var newSessionId = this.SessionID;
+            CheckAndRaiseSessionChanged(oldSessionId, newSessionId);
+            return ret;
+        }
+
+        protected void CheckAndRaiseSessionChanged(string oldSessionId, string newSessionId)
+        {
             if (!string.IsNullOrEmpty(oldSessionId))
             {
                 if (oldSessionId != newSessionId)
@@ -125,7 +131,6 @@ namespace OSGeo.MapGuide.MaestroAPI
                         h(this, EventArgs.Empty);
                 }
             }
-            return ret;
         }
 
         protected abstract bool RestartSessionInternal(bool throwException);

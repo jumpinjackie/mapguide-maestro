@@ -41,7 +41,7 @@ namespace Maestro.Base.Editor
         private ISiteExplorer _siteExp;
         private OpenResourceManager _orm;
 
-        public ResourceEditorService(string resourceID, IServerConnection conn, IUrlLauncherService launcher, ISiteExplorer siteExp, OpenResourceManager orm)
+        internal ResourceEditorService(string resourceID, IServerConnection conn, IUrlLauncherService launcher, ISiteExplorer siteExp, OpenResourceManager orm)
             : base(resourceID, conn)
         {
             _siteExp = siteExp;

@@ -2682,4 +2682,7 @@ You can disable pre-save validation in Maestro options</value>
   <data name="PrgPreparingResourcePreview" xml:space="preserve">
     <value>Preparing resource preview</value>
   </data>
+  <data name="TextReloadNewResource" xml:space="preserve">
+    <value>Sorry, this is a newly created resource. The editor will close instead</value>
+  </data>
 </root>

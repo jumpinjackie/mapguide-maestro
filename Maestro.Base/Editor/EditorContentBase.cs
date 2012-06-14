@@ -51,6 +51,12 @@ namespace Maestro.Base.Editor
             private set { upgradePanel.Visible = value; }
         }
 
+        public bool RequiresReload
+        {
+            get { return sessionRestartPanel.Visible; }
+            set { sessionRestartPanel.Visible = true; }
+        }
+
         private IEditorService _svc;
 
         public IEditorService EditorService
@@ -67,6 +73,9 @@ namespace Maestro.Base.Editor
                     _svc.DirtyStateChanged -= OnDirtyStateChanged;
                     _svc.Saved -= OnSaved;
                     _svc.BeforeSave -= OnBeforeSave;
+
+                    var res = _svc.GetEditedResource();
+                    res.CurrentConnection.SessionIDChanged -= OnSessionIdChanged;
                 }
 
                 _svc = value;
@@ -74,8 +83,13 @@ namespace Maestro.Base.Editor
                 _svc.Saved += OnSaved;
                 _svc.BeforeSave += OnBeforeSave;
 
+                {
+                    var res = _svc.GetEditedResource();
+                    res.CurrentConnection.SessionIDChanged += OnSessionIdChanged;
+                }
+
                 UpdateTitle();
-                
+
                 this.CanUpgrade = _svc.IsUpgradeAvailable;
 
                 Bind(_svc);
@@ -86,6 +100,11 @@ namespace Maestro.Base.Editor
                 //XML edit mode
                 this.Focus();
             }
+        }
+
+        void OnSessionIdChanged(object sender, EventArgs e)
+        {
+            this.RequiresReload = true;
         }
 
         /// <summary>
@@ -332,6 +351,25 @@ namespace Maestro.Base.Editor
                 this.EditorService = this.EditorService;
                 MessageBox.Show(string.Format(Properties.Resources.ResourceUpgraded, ver.Major, ver.Minor, ver.Build));
                 this.EditorService.MarkDirty(); //It gets re-init with a clean slate, but an in-place upgrade is a dirty operation
+            }
+        }
+
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            if (this.EditorService.IsNew)
+            {
+                MessageService.ShowMessage(Properties.Resources.TextReloadNewResource);
+                this.Close(true);
+            }
+            else
+            {
+                var omgr = ServiceRegistry.GetService<OpenResourceManager>();
+                var res = this.EditorService.GetEditedResource();
+                var origResId = this.EditorService.ResourceID;
+                var conn = res.CurrentConnection;
+                var wb = Workbench.Instance;
+                this.Close();
+                omgr.Open(origResId, conn, false, wb.ActiveSiteExplorer);
             }
         }
     }

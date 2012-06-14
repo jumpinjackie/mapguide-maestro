@@ -33,7 +33,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnUpgrade = new System.Windows.Forms.Button();
             this.panelBody = new System.Windows.Forms.Panel();
+            this.sessionRestartPanel = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnReload = new System.Windows.Forms.Button();
             this.upgradePanel.SuspendLayout();
+            this.sessionRestartPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // upgradePanel
@@ -61,14 +65,36 @@
             resources.ApplyResources(this.panelBody, "panelBody");
             this.panelBody.Name = "panelBody";
             // 
+            // sessionRestartPanel
+            // 
+            this.sessionRestartPanel.BackColor = System.Drawing.SystemColors.Info;
+            this.sessionRestartPanel.Controls.Add(this.label2);
+            this.sessionRestartPanel.Controls.Add(this.btnReload);
+            resources.ApplyResources(this.sessionRestartPanel, "sessionRestartPanel");
+            this.sessionRestartPanel.Name = "sessionRestartPanel";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // btnReload
+            // 
+            resources.ApplyResources(this.btnReload, "btnReload");
+            this.btnReload.Name = "btnReload";
+            this.btnReload.UseVisualStyleBackColor = true;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
+            // 
             // EditorContentBase
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.panelBody);
+            this.Controls.Add(this.sessionRestartPanel);
             this.Controls.Add(this.upgradePanel);
             this.Name = "EditorContentBase";
             resources.ApplyResources(this, "$this");
             this.upgradePanel.ResumeLayout(false);
+            this.sessionRestartPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -79,5 +105,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnUpgrade;
         protected System.Windows.Forms.Panel panelBody;
+        private System.Windows.Forms.Panel sessionRestartPanel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnReload;
     }
 }
