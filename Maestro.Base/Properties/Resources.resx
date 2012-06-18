@@ -2685,4 +2685,7 @@ You can disable pre-save validation in Maestro options</value>
   <data name="TextReloadNewResource" xml:space="preserve">
     <value>Sorry, this is a newly created resource. The editor will close instead</value>
   </data>
+  <data name="StatusActiveConnection" xml:space="preserve">
+    <value>Active Connection: {0}</value>
+  </data>
 </root>

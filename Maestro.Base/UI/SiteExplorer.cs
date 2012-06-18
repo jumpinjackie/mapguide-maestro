@@ -72,6 +72,32 @@ namespace Maestro.Base.UI
             }
         }
 
+        public event EventHandler ActiveConnectionChanged;
+
+        private void OnActiveConnectionChanged()
+        {
+            var h = this.ActiveConnectionChanged;
+            if (h != null)
+                h(this, EventArgs.Empty);
+        }
+
+        private string _currentConnectionName;
+
+        private void trvResources_SelectionChanged(object sender, EventArgs e)
+        {
+            var connName = this.ConnectionName;
+            if (_currentConnectionName == null)
+            {
+                _currentConnectionName = connName;
+                OnActiveConnectionChanged();
+            }
+            else if (_currentConnectionName != connName)
+            {
+                _currentConnectionName = connName;
+                OnActiveConnectionChanged();
+            }
+        }
+
         public string ConnectionName
         {
             get

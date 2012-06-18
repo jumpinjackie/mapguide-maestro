@@ -1,4 +1,6 @@
-﻿5.0 Beta 2
+﻿ - Status bar now shows the active site connection
+
+5.0 Beta 2
 ----------
  - New standalone Live Map Definition editor
  - New RuntimeMap viewer SDK component

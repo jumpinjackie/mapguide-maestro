@@ -58,16 +58,17 @@
             this.trvResources.SelectedNode = null;
             this.trvResources.SelectionMode = Aga.Controls.Tree.TreeSelectionMode.MultiSameParent;
             this.trvResources.ShowNodeToolTips = true;
-            this.trvResources.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trvResources_MouseDoubleClick);
-            this.trvResources.DragOver += new System.Windows.Forms.DragEventHandler(this.trvResources_DragOver);
-            this.trvResources.MouseClick += new System.Windows.Forms.MouseEventHandler(this.trvResources_MouseClick);
-            this.trvResources.DragDrop += new System.Windows.Forms.DragEventHandler(this.trvResources_DragDrop);
-            this.trvResources.Expanding += new System.EventHandler<Aga.Controls.Tree.TreeViewAdvEventArgs>(this.trvResources_Expanding);
-            this.trvResources.DragEnter += new System.Windows.Forms.DragEventHandler(this.trvResources_DragEnter);
-            this.trvResources.KeyUp += new System.Windows.Forms.KeyEventHandler(this.trvResources_KeyUp);
-            this.trvResources.KeyDown += new System.Windows.Forms.KeyEventHandler(this.trvResources_KeyDown);
-            this.trvResources.Expanded += new System.EventHandler<Aga.Controls.Tree.TreeViewAdvEventArgs>(this.trvResources_Expanded);
             this.trvResources.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvResources_ItemDrag);
+            this.trvResources.SelectionChanged += new System.EventHandler(this.trvResources_SelectionChanged);
+            this.trvResources.Expanding += new System.EventHandler<Aga.Controls.Tree.TreeViewAdvEventArgs>(this.trvResources_Expanding);
+            this.trvResources.Expanded += new System.EventHandler<Aga.Controls.Tree.TreeViewAdvEventArgs>(this.trvResources_Expanded);
+            this.trvResources.DragDrop += new System.Windows.Forms.DragEventHandler(this.trvResources_DragDrop);
+            this.trvResources.DragEnter += new System.Windows.Forms.DragEventHandler(this.trvResources_DragEnter);
+            this.trvResources.DragOver += new System.Windows.Forms.DragEventHandler(this.trvResources_DragOver);
+            this.trvResources.KeyDown += new System.Windows.Forms.KeyEventHandler(this.trvResources_KeyDown);
+            this.trvResources.KeyUp += new System.Windows.Forms.KeyEventHandler(this.trvResources_KeyUp);
+            this.trvResources.MouseClick += new System.Windows.Forms.MouseEventHandler(this.trvResources_MouseClick);
+            this.trvResources.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.trvResources_MouseDoubleClick);
             // 
             // rdResourceIcon
             // 

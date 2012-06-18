@@ -2435,6 +2435,15 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Active Connection: {0}.
+        /// </summary>
+        internal static string StatusActiveConnection {
+            get {
+                return ResourceManager.GetString("StatusActiveConnection", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap system_monitor {
             get {
                 object obj = ResourceManager.GetObject("system_monitor", resourceCulture);

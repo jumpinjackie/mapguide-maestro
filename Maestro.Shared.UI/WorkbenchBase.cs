@@ -43,9 +43,13 @@ namespace Maestro.Shared.UI
 
         private IWorkbenchInitializer _workbenchInitializer;
 
-        protected WorkbenchBase(IWorkbenchInitializer init)
+        private WorkbenchBase()
         {
             InitializeComponent();
+        }
+
+        protected WorkbenchBase(IWorkbenchInitializer init) : this()
+        {
             _workbenchInitializer = init;
             _toolstrips = new Dictionary<string, ToolStrip>();
             _toolstripRegions = new Dictionary<string, ToolbarRegion>();

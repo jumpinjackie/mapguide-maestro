@@ -108,6 +108,8 @@ namespace Maestro.Base.Events
                                         Properties.Resources.Content_SiteExplorer, 
                                         ViewRegion.Left, 
                                         () => { return new SiteExplorer(); });
+
+                wb.ActiveSiteExplorer.ActiveConnectionChanged += new EventHandler(OnActiveConnectionChanged);
             }
 
             wb.ActiveSiteExplorer.RefreshModel(name);
@@ -117,6 +119,20 @@ namespace Maestro.Base.Events
             var conn = svc.GetConnection(name);
 
             LoggingService.Info("There are now " + svc.GetConnectionNames().Count + " active connections"); //LOCALIZEME
+        }
+
+        static void OnActiveConnectionChanged(object sender, EventArgs e)
+        {
+            var wb = Workbench.Instance;
+            var exp = wb.ActiveSiteExplorer;
+            if (exp != null)
+            {
+                wb.SetStatusLabel(string.Format(Properties.Resources.StatusActiveConnection, exp.ConnectionName));
+            }
+            else
+            {
+                wb.SetStatusLabel("");
+            }
         }
     }
 }

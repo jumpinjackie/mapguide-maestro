@@ -29,6 +29,10 @@ namespace Maestro.Base.UI
     public interface ISiteExplorer : IViewContent
     {
         /// <summary>
+        /// Raised when the active connection has changed
+        /// </summary>
+        event EventHandler ActiveConnectionChanged;
+        /// <summary>
         /// The name of the active <see cref="IServerConnection"/> associated with this site explorer. The active connection
         /// is the connection whose node or child nodes is currently selected
         /// </summary>
