@@ -1566,7 +1566,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             if (cls != null)
             {
-                if (bStoreInCache)
+                var key = resourceID + "!" + cls.QualifiedName; //Sanity check
+                if (bStoreInCache && classCacheKey == key)
                 {
                     m_classDefinitionCache[classCacheKey] = cls;
                 }

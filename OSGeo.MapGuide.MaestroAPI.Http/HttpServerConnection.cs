@@ -1884,7 +1884,10 @@ namespace OSGeo.MapGuide.MaestroAPI
             using (var s = this.OpenRead(req))
             {
                 var fsd = new FeatureSourceDescription(s);
-                return fsd.Schemas[0].Classes[0];
+                //We can't just assume first class item is the one, as ones that do not take
+                //class name hints will return the full schema
+                var schema = fsd.Schemas[0];
+                return schema.GetClass(className);
             }
         }
 
