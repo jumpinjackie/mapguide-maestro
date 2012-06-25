@@ -128,13 +128,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private void chkDisplayAsText_CheckedChanged(object sender, EventArgs e)
         {
             if (_init) return;
-            _pts.AllowOverpost = chkDisplayAsText.Checked;
+            _pts.DisplayAsText = chkDisplayAsText.Checked;
+            _parent.RaiseResourceChanged();
         }
 
         private void chkAllowOverpost_CheckedChanged(object sender, EventArgs e)
         {
             if (_init) return;
-            _pts.DisplayAsText = chkAllowOverpost.Checked;
+            _pts.AllowOverpost = chkAllowOverpost.Checked;
+            _parent.RaiseResourceChanged();
         }
 
         private void SetPointTabVisibility(bool visible)
