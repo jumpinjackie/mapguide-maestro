@@ -129,7 +129,7 @@
     <value>128, 176</value>
   </data>
   <data name="RotationBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 21</value>
+    <value>211, 21</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="RotationBox.TabIndex" type="System.Int32, mscorlib">
@@ -184,7 +184,7 @@
     <value>128, 144</value>
   </data>
   <data name="HeightText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 21</value>
+    <value>211, 21</value>
   </data>
   <data name="HeightText.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -211,7 +211,7 @@
     <value>128, 112</value>
   </data>
   <data name="WidthText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 21</value>
+    <value>211, 21</value>
   </data>
   <data name="WidthText.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -235,7 +235,7 @@
     <value>128, 80</value>
   </data>
   <data name="SizeUnits.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 21</value>
+    <value>211, 21</value>
   </data>
   <data name="SizeUnits.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -259,7 +259,7 @@
     <value>128, 48</value>
   </data>
   <data name="SizeContext.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 21</value>
+    <value>211, 21</value>
   </data>
   <data name="SizeContext.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -283,7 +283,7 @@
     <value>128, 16</value>
   </data>
   <data name="Symbol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 21</value>
+    <value>211, 21</value>
   </data>
   <data name="Symbol.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -436,10 +436,10 @@
     <value>11</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
+    <value>6, 6</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 208</value>
+    <value>347, 208</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -454,10 +454,10 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TAB_STYLE</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>0</value>
   </data>
   <data name="grpSymbolFill.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -469,7 +469,7 @@
     <value>3, 16</value>
   </data>
   <data name="fillStyleEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>338, 149</value>
+    <value>341, 149</value>
   </data>
   <data name="fillStyleEditor.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -487,10 +487,10 @@
     <value>0</value>
   </data>
   <data name="grpSymbolFill.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 540</value>
+    <value>6, 6</value>
   </data>
   <data name="grpSymbolFill.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 168</value>
+    <value>347, 168</value>
   </data>
   <data name="grpSymbolFill.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -505,10 +505,10 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;grpSymbolFill.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TAB_FILL_BORDER</value>
   </data>
   <data name="&gt;&gt;grpSymbolFill.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>0</value>
   </data>
   <data name="grpSymbolBorder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -520,7 +520,7 @@
     <value>3, 16</value>
   </data>
   <data name="lineStyleEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>338, 133</value>
+    <value>341, 133</value>
   </data>
   <data name="lineStyleEditor.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -538,10 +538,10 @@
     <value>0</value>
   </data>
   <data name="grpSymbolBorder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 714</value>
+    <value>6, 180</value>
   </data>
   <data name="grpSymbolBorder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 152</value>
+    <value>347, 152</value>
   </data>
   <data name="grpSymbolBorder.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -556,10 +556,10 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;grpSymbolBorder.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TAB_FILL_BORDER</value>
   </data>
   <data name="&gt;&gt;grpSymbolBorder.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>1</value>
   </data>
   <data name="groupBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -571,7 +571,7 @@
     <value>8, 16</value>
   </data>
   <data name="previewPicture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>328, 24</value>
+    <value>362, 24</value>
   </data>
   <data name="previewPicture.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -589,10 +589,10 @@
     <value>0</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 869</value>
+    <value>0, 585</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 48</value>
+    <value>378, 48</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -610,7 +610,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <metadata name="ComboBoxDataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>122, 17</value>
@@ -640,7 +640,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;DisplayPoints.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="groupBoxFont.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -682,7 +682,7 @@
     <value>96, 56</value>
   </data>
   <data name="colorFontForeground.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 48</value>
+    <value>139, 48</value>
   </data>
   <data name="colorFontForeground.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -700,7 +700,7 @@
     <value>1</value>
   </data>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>0, 0</value>
+    <value>17, 17</value>
   </metadata>
   <data name="FontBoldButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt, style=Bold</value>
@@ -868,7 +868,7 @@
     <value>Top, Right</value>
   </data>
   <data name="comboBoxCharacter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>248, 24</value>
+    <value>251, 24</value>
   </data>
   <data name="comboBoxCharacter.MaxLength" type="System.Int32, mscorlib">
     <value>1</value>
@@ -898,7 +898,7 @@
     <value>96, 24</value>
   </data>
   <data name="fontCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>136, 21</value>
+    <value>139, 21</value>
   </data>
   <data name="fontCombo.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -943,10 +943,10 @@
     <value>6</value>
   </data>
   <data name="groupBoxFont.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 316</value>
+    <value>6, 298</value>
   </data>
   <data name="groupBoxFont.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 112</value>
+    <value>347, 112</value>
   </data>
   <data name="groupBoxFont.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -961,7 +961,7 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxFont.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TAB_STYLE</value>
   </data>
   <data name="&gt;&gt;groupBoxFont.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1123,7 +1123,7 @@
     <value>124, 16</value>
   </data>
   <data name="MaintainAspectRatio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 16</value>
+    <value>211, 16</value>
   </data>
   <data name="MaintainAspectRatio.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -1144,10 +1144,10 @@
     <value>6</value>
   </data>
   <data name="groupBoxSymbolLocation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 238</value>
+    <value>6, 220</value>
   </data>
   <data name="groupBoxSymbolLocation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 72</value>
+    <value>347, 72</value>
   </data>
   <data name="groupBoxSymbolLocation.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1162,10 +1162,13 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxSymbolLocation.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TAB_STYLE</value>
   </data>
   <data name="&gt;&gt;groupBoxSymbolLocation.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
+  </data>
+  <data name="grpW2DStyle.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <data name="chkW2DTextColor.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1207,7 +1210,7 @@
     <value>124, 73</value>
   </data>
   <data name="cmbW2DTextColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 21</value>
+    <value>220, 21</value>
   </data>
   <data name="cmbW2DTextColor.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1264,7 +1267,7 @@
     <value>124, 46</value>
   </data>
   <data name="cmbW2DLineColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 21</value>
+    <value>220, 21</value>
   </data>
   <data name="cmbW2DLineColor.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1318,7 +1321,7 @@
     <value>124, 19</value>
   </data>
   <data name="cmbW2DFillColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 21</value>
+    <value>220, 21</value>
   </data>
   <data name="cmbW2DFillColor.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1336,10 +1339,10 @@
     <value>5</value>
   </data>
   <data name="grpW2DStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 434</value>
+    <value>6, 416</value>
   </data>
   <data name="grpW2DStyle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 100</value>
+    <value>347, 100</value>
   </data>
   <data name="grpW2DStyle.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -1354,22 +1357,100 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;grpW2DStyle.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>TAB_STYLE</value>
   </data>
   <data name="&gt;&gt;grpW2DStyle.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabControl1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="TAB_STYLE.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="TAB_STYLE.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TAB_STYLE.Size" type="System.Drawing.Size, System.Drawing">
+    <value>359, 529</value>
+  </data>
+  <data name="TAB_STYLE.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="TAB_STYLE.Text" xml:space="preserve">
+    <value>Point Style</value>
+  </data>
+  <data name="&gt;&gt;TAB_STYLE.Name" xml:space="preserve">
+    <value>TAB_STYLE</value>
+  </data>
+  <data name="&gt;&gt;TAB_STYLE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_STYLE.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;TAB_STYLE.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TAB_FILL_BORDER.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="TAB_FILL_BORDER.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TAB_FILL_BORDER.Size" type="System.Drawing.Size, System.Drawing">
+    <value>359, 529</value>
+  </data>
+  <data name="TAB_FILL_BORDER.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="TAB_FILL_BORDER.Text" xml:space="preserve">
+    <value>Fill/Border</value>
+  </data>
+  <data name="&gt;&gt;TAB_FILL_BORDER.Name" xml:space="preserve">
+    <value>TAB_FILL_BORDER</value>
+  </data>
+  <data name="&gt;&gt;TAB_FILL_BORDER.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_FILL_BORDER.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;TAB_FILL_BORDER.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 24</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>367, 555</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>46</value>
+  </metadata>
   <data name="$this.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
-    <value>344, 824</value>
+    <value>344, 640</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 921</value>
+    <value>378, 640</value>
   </data>
   <data name="&gt;&gt;RotationTable.Name" xml:space="preserve">
     <value>RotationTable</value>

@@ -1366,6 +1366,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FeatureSource\Providers\Odbc\OdbcProviderCtrl.resx">
       <DependentUpon>OdbcProviderCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FeatureSource\Providers\Odbc\OverrideEditor\TableConfigCtrl.resx">
       <DependentUpon>TableConfigCtrl.cs</DependentUpon>
@@ -1425,6 +1426,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fusion\FlexibleLayoutEditor.resx">
       <DependentUpon>FlexibleLayoutEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Fusion\FlexLayoutSettingsCtrl.resx">
       <DependentUpon>FlexLayoutSettingsCtrl.cs</DependentUpon>
@@ -1434,6 +1436,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fusion\MapSettingsCtrl.resx">
       <DependentUpon>MapSettingsCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Fusion\NewWidgetDialog.resx">
       <DependentUpon>NewWidgetDialog.cs</DependentUpon>
@@ -1521,6 +1524,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fusion\WidgetSettingsCtrl.resx">
       <DependentUpon>WidgetSettingsCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Generic\ResourceDataPanel.resx">
       <DependentUpon>ResourceDataPanel.cs</DependentUpon>
@@ -1574,9 +1578,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\ConditionList.resx">
       <DependentUpon>ConditionList.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\ConditionListButtons.resx">
       <DependentUpon>ConditionListButtons.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\EditorTemplateForm.resx">
       <DependentUpon>EditorTemplateForm.cs</DependentUpon>
