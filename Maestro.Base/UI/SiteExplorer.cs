@@ -570,7 +570,7 @@ namespace Maestro.Base.UI
                 if (data.Length == 1)
                 {
                     if (data[0].IsFolder)
-                        return data[0].ToString();
+                        return data[0].ResourceId.ToString();
                     else
                         return data[0].Parent.ResourceId;
                 }
