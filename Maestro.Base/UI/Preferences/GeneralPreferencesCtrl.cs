@@ -59,10 +59,10 @@ namespace Maestro.Base.UI.Preferences
             var totd = Props.Get(ConfigProperties.ShowTipOfTheDay, ConfigProperties.DefaultShowTipOfTheDay);
             chkShowTipOfTheDay.Checked = totd;
             
-
             txtFsPreview.Text = Props.Get(ConfigProperties.LocalFsPreviewPath, ConfigProperties.DefaultLocalFsPreviewPath);
             txtMgCooker.Text = Props.Get(ConfigProperties.MgCookerPath, ConfigProperties.DefaultMgCookerPath);
             txtRtMapInspector.Text = Props.Get(ConfigProperties.RtMapInspectorPath, ConfigProperties.DefaultRtMapInspectorPath);
+            txtLiveMapEditor.Text = Props.Get(ConfigProperties.LiveMapEditorPath, ConfigProperties.DefaultLiveMapEditorPath);
 
             cmbOpenedColor.CurrentColor = Props.Get(ConfigProperties.OpenColor, Color.LightGreen);
             cmbModifiedColor.CurrentColor = Props.Get(ConfigProperties.DirtyColor, Color.Pink);
@@ -78,12 +78,12 @@ namespace Maestro.Base.UI.Preferences
             get { return this; }
         }
 
-        private bool Apply(string key, object newValue)
+        private bool Apply<T>(string key, T newValue)
         {
-            if (Props.Get(key).Equals(newValue))
+            if (Props.Get<T>(key, newValue).Equals(newValue))
                 return false;
 
-            Props.Set(key, newValue);
+            Props.Set<T>(key, newValue);
             return true;
         }
 
@@ -101,6 +101,7 @@ namespace Maestro.Base.UI.Preferences
             Apply(ConfigProperties.MgCookerPath, txtMgCooker.Text);
             Apply(ConfigProperties.LocalFsPreviewPath, txtFsPreview.Text);
             Apply(ConfigProperties.RtMapInspectorPath, txtRtMapInspector.Text);
+            Apply(ConfigProperties.LiveMapEditorPath, txtLiveMapEditor.Text);
             Apply(ConfigProperties.OpenColor, (Color)cmbOpenedColor.CurrentColor);
             Apply(ConfigProperties.DirtyColor, (Color)cmbModifiedColor.CurrentColor);
             Apply(ConfigProperties.ShowTipOfTheDay, chkShowTipOfTheDay.Checked);
@@ -167,6 +168,19 @@ namespace Maestro.Base.UI.Preferences
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     txtRtMapInspector.Text = dlg.FileName;
+                }
+            }
+        }
+
+        private void btnBrowseLiveMapEditor_Click(object sender, EventArgs e)
+        {
+            using (var dlg = DialogFactory.OpenFile())
+            {
+                dlg.Title = string.Format(Properties.Resources.LocateExecutable, "Maestro.LiveMapEditor.exe");
+                dlg.Filter = Properties.Resources.FilterExecutables;
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    txtLiveMapEditor.Text = dlg.FileName;
                 }
             }
         }

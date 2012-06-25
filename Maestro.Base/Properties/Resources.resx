@@ -2688,4 +2688,7 @@ You can disable pre-save validation in Maestro options</value>
   <data name="StatusActiveConnection" xml:space="preserve">
     <value>Active Connection: {0}</value>
   </data>
+  <data name="LiveMapEditor" xml:space="preserve">
+    <value>Live Map Definition Editor</value>
+  </data>
 </root>

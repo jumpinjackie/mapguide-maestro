@@ -695,6 +695,9 @@
         <MenuItem id="CacheView"
                   label="${res:CacheView}"
                   class="Maestro.Base.Commands.CacheViewerCommand"/>
+        <MenuItem id="LiveMapEditor"
+                  label="${res:LiveMapEditor}"
+                  class="Maestro.Base.Commands.LiveMapEditorCommand"/>
     </Path>
     
 </AddIn>

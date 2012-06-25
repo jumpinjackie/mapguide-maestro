@@ -41,6 +41,7 @@ namespace Maestro.Base.UI.Preferences
         public const string ValidateOnSave = "General.ValidateResourceOnSave";
         public const string XsdSchemaPath = "Editor.XsdSchemaPath";
         public const string ShowTipOfTheDay = "General.ShowTipOfTheDay";
+        public const string LiveMapEditorPath = "General.LiveMapEditorPath";
 
         internal static void ApplyDefaults()
         {
@@ -66,6 +67,7 @@ namespace Maestro.Base.UI.Preferences
             Props.Set(ConfigProperties.RtMapInspectorPath, DefaultRtMapInspectorPath);
             Props.Set(ConfigProperties.LocalFsPreviewPath, DefaultLocalFsPreviewPath);
             Props.Set(ConfigProperties.ShowTipOfTheDay, DefaultShowTipOfTheDay);
+            Props.Set(ConfigProperties.LiveMapEditorPath, DefaultLiveMapEditorPath);
         }
 
         public static bool DefaultShowTipOfTheDay { get { return true; } }
@@ -75,6 +77,8 @@ namespace Maestro.Base.UI.Preferences
         public static string DefaultLocalFsPreviewPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "MaestroFsPreview.exe"); } }
 
         public static string DefaultRtMapInspectorPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "RtMapInspector.exe"); } }
+
+        public static string DefaultLiveMapEditorPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "Maestro.LiveMapEditor.exe"); } }
         
         public static Color DefaultOpenColor { get { return Color.LightGreen; } }
 

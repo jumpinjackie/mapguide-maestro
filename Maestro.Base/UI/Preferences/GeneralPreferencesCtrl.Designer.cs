@@ -54,6 +54,9 @@
             this.cmbOpenedColor = new Maestro.Editors.Common.ColorComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnBrowseLiveMapEditor = new System.Windows.Forms.Button();
+            this.txtLiveMapEditor = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -126,6 +129,9 @@
             // groupBox2
             // 
             resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.btnBrowseLiveMapEditor);
+            this.groupBox2.Controls.Add(this.txtLiveMapEditor);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.btnBrowseRtMapInspector);
             this.groupBox2.Controls.Add(this.txtRtMapInspector);
@@ -224,6 +230,24 @@
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
+            // btnBrowseLiveMapEditor
+            // 
+            resources.ApplyResources(this.btnBrowseLiveMapEditor, "btnBrowseLiveMapEditor");
+            this.btnBrowseLiveMapEditor.Name = "btnBrowseLiveMapEditor";
+            this.btnBrowseLiveMapEditor.UseVisualStyleBackColor = true;
+            this.btnBrowseLiveMapEditor.Click += new System.EventHandler(this.btnBrowseLiveMapEditor_Click);
+            // 
+            // txtLiveMapEditor
+            // 
+            resources.ApplyResources(this.txtLiveMapEditor, "txtLiveMapEditor");
+            this.txtLiveMapEditor.Name = "txtLiveMapEditor";
+            this.txtLiveMapEditor.ReadOnly = true;
+            // 
             // GeneralPreferencesCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -276,5 +300,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnBrowseRtMapInspector;
         private System.Windows.Forms.TextBox txtRtMapInspector;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btnBrowseLiveMapEditor;
+        private System.Windows.Forms.TextBox txtLiveMapEditor;
     }
 }

@@ -1066,6 +1066,15 @@ namespace Maestro.Base.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Live Map Definition Editor.
+        /// </summary>
+        internal static string LiveMapEditor {
+            get {
+                return ResourceManager.GetString("LiveMapEditor", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Bitmap loading {
             get {
                 object obj = ResourceManager.GetObject("loading", resourceCulture);
