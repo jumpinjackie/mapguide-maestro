@@ -64,12 +64,16 @@ namespace Maestro.Editors.WatermarkDefinition
                 {
                     LastSelectedFolder.FolderId = picker.SelectedFolder;
                     var wdf = (IWatermarkDefinition)_resSvc.GetResource(picker.ResourceID);
-                    var wm = wdf.CreateInstance();
+                    //var wm = wdf.CreateInstance();
+                    var wm = _watermarks.AddWatermark(wdf);
                     var diag = new WatermarkInstanceEditorDialog(_resSvc, wm);
                     if (diag.ShowDialog() == DialogResult.OK)
                     {
                         _list.Add(wm);
-                        _watermarks.AddWatermark(wm);
+                    }
+                    else //Undo
+                    {
+                        _watermarks.RemoveWatermark(wm);
                     }
                 }
             }

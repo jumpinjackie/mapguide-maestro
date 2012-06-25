@@ -73,6 +73,9 @@
     <Compile Include="..\..\OSGeo.MapGuide.MaestroAPI\ObjectModels\VectorLayerDefinitionImpl.cs">
       <Link>VectorLayerDefinitionImpl.cs</Link>
     </Compile>
+    <Compile Include="..\..\OSGeo.MapGuide.MaestroAPI\ObjectModels\WatermarkCollectionUtil.cs">
+      <Link>WatermarkCollectionUtil.cs</Link>
+    </Compile>
     <Compile Include="..\..\Properties\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>

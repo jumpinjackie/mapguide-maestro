@@ -663,26 +663,14 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
             }
         }
 
-        void IWatermarkCollection.AddWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark watermark)
+        IWatermark IWatermarkCollection.AddWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermarkDefinition watermark)
         {
-#if MDF_240
-            var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0.WatermarkType;
-#else
-            var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType;
-#endif
-            if (wm != null)
-                this.Watermarks.Add(wm);
+            return WatermarkCollectionUtil.AddWatermark(this.Watermarks, watermark);
         }
 
         void IWatermarkCollection.RemoveWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark watermark)
         {
-#if MDF_240
-            var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0.WatermarkType;
-#else
-            var wm = watermark as OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType;
-#endif
-            if (wm != null)
-                this.Watermarks.Remove(wm);
+            WatermarkCollectionUtil.RemoveWatermark(this.Watermarks, watermark);
         }
 
         int IWatermarkCollection.WatermarkCount

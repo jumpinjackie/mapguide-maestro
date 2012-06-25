@@ -183,7 +183,7 @@ namespace Maestro.Base.Editor
             IMapDefinition2 map = (IMapDefinition2)ObjectFactory.CreateMapDefinition(wmd.CurrentConnection, wmd.SupportedMapDefinitionVersion, "Watermark Definition Preview");
             map.CoordinateSystem = @"LOCAL_CS[""*XY-M*"", LOCAL_DATUM[""*X-Y*"", 10000], UNIT[""Meter"", 1], AXIS[""X"", EAST], AXIS[""Y"", NORTH]]";
             map.Extents = ObjectFactory.CreateEnvelope(-1000000, -1000000, 1000000, 1000000);
-            map.AddWatermark(wmd.CreateInstance());
+            map.AddWatermark(wmd);
             return GenerateMapPreviewUrl(map);
         }
 

@@ -210,17 +210,6 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0
             return this.Clone();
         }
 
-        public IWatermark CreateInstance()
-        {
-            return new WatermarkType() 
-            {
-                ResourceId = this.ResourceID,
-                Name = ResourceIdentifier.GetName(this.ResourceID),
-                Usage = UsageType.All
-            };
-        }
-
-
         public IXYPosition CreateXYPosition()
         {
             return new XYPositionType()

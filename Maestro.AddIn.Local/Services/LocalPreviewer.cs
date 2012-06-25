@@ -67,14 +67,13 @@ namespace Maestro.AddIn.Local.Services
                 string resId = "Session:" + edSvc.SessionID + "//" + Guid.NewGuid() + "." + res.ResourceType.ToString();
                 edSvc.ResourceService.SetResourceXmlData(resId, ResourceTypeRegistry.Serialize(res));
 
-                var wm = ((IWatermarkDefinition)res).CreateInstance();
-                wm.ResourceId = resId;
                 var csFact = new MgCoordinateSystemFactory();
                 var arbXY = csFact.ConvertCoordinateSystemCodeToWkt("XY-M");
                 mapDef = ObjectFactory.CreateMapDefinition(conn, new Version(2, 3, 0), "Preview");
                 mapDef.CoordinateSystem = arbXY;
                 mapDef.SetExtents(-100000, -100000, 100000, 100000);
-                ((IMapDefinition2)mapDef).AddWatermark(wm);
+                var wm = ((IMapDefinition2)mapDef).AddWatermark(((IWatermarkDefinition)res));
+                wm.ResourceId = resId;
             }
 
             var mapResId = new MgResourceIdentifier("Session:" + edSvc.SessionID + "//" + Guid.NewGuid() + "." + res.ResourceType.ToString());

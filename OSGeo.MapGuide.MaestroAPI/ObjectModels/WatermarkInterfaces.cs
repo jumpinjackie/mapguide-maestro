@@ -23,6 +23,7 @@ using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using System.ComponentModel;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
 {
@@ -119,12 +120,6 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
         /// Gets or sets the position of the watermark
         /// </summary>
         IPosition Position { get; set; }
-
-        /// <summary>
-        /// Creates an new watermark instance from this definition
-        /// </summary>
-        /// <returns></returns>
-        IWatermark CreateInstance();
 
         /// <summary>
         /// Creates the XY position.
@@ -288,8 +283,9 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
         /// <summary>
         /// Adds a watermark
         /// </summary>
-        /// <param name="watermark"></param>
-        void AddWatermark(IWatermark watermark);
+        /// <param name="watermarkDef">The watermark definition to add</param>
+        /// <returns>The added watermark instance.</returns>
+        IWatermark AddWatermark(IWatermarkDefinition watermarkDef);
 
         /// <summary>
         /// Removes the specified watermark

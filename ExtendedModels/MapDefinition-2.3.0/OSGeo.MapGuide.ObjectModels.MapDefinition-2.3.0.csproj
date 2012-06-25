@@ -67,6 +67,9 @@
     <Compile Include="..\..\OSGeo.MapGuide.MaestroAPI\ObjectModels\MapDefinition.cs">
       <Link>MapDefinition.cs</Link>
     </Compile>
+    <Compile Include="..\..\OSGeo.MapGuide.MaestroAPI\ObjectModels\WatermarkCollectionUtil.cs">
+      <Link>WatermarkCollectionUtil.cs</Link>
+    </Compile>
     <Compile Include="..\..\Properties\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>

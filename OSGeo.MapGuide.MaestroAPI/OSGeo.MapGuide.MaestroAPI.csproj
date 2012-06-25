@@ -251,6 +251,7 @@
     <Compile Include="ObjectModels\IFdoSpatialContext.cs" />
     <Compile Include="ObjectModels\NsDoc.cs" />
     <Compile Include="ObjectModels\SymbolDefFactory.cs" />
+    <Compile Include="ObjectModels\WatermarkCollectionUtil.cs" />
     <Compile Include="ObjectModels\WatermarkInterfaces.cs" />
     <Compile Include="Resource\Comparison\BinaryData.cs" />
     <Compile Include="Resource\Comparison\CharData.cs" />
