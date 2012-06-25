@@ -3532,6 +3532,13 @@ namespace Maestro.Editors.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap water {
+            get {
+                object obj = ResourceManager.GetObject("water", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to A widget named {0} already exists.
         /// </summary>

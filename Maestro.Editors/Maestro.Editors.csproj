@@ -2319,6 +2319,7 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\water.png" />
     <None Include="Resources\magnifier-left.png" />
     <None Include="Resources\icon_maptip_disabled.gif" />
     <None Include="Resources\icon_maptip.gif" />

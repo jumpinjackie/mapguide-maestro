@@ -155,7 +155,7 @@ namespace Maestro.Editors
             imgList.Images.Add(Properties.Resources.blueprints);
             imgList.Images.Add(Properties.Resources.applications_stack);
             imgList.Images.Add(Properties.Resources.marker);
-            imgList.Images.Add(Properties.Resources.edit);
+            imgList.Images.Add(Properties.Resources.water);
             imgList.Images.Add(Properties.Resources.script__arrow);
             imgList.Images.Add(Properties.Resources.server);
             imgList.Images.Add(Properties.Resources.folder_horizontal);
