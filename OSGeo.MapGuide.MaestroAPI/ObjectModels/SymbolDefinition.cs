@@ -328,7 +328,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
         public ITextGraphic CreateTextGraphics()
         {
-            return new Text() { };
+            return new Text() { Content = "", FontName = "'Arial'" }; //Required for minimum content
         }
 
         public IPathGraphic CreatePathGraphics()

@@ -100,7 +100,7 @@ namespace Maestro.Editors.SymbolDefinition
             var img = _sym.CreateImageGraphics();
             AddGraphicsItem(img);
             _sym.AddGraphics(img);
-            new ImageDialog(this, _sym, img).ShowDialog();
+            new ImageDialog(this, _sym.CurrentConnection.ResourceService, _sym, img).ShowDialog();
         }
 
         private void lstGraphics_SelectedIndexChanged(object sender, EventArgs e)
@@ -129,7 +129,7 @@ namespace Maestro.Editors.SymbolDefinition
                 }
                 else if (img != null)
                 {
-                    new ImageDialog(this, _sym, img).ShowDialog();
+                    new ImageDialog(this, _sym.CurrentConnection.ResourceService, _sym, img).ShowDialog();
                 }
             }
         }

@@ -46,11 +46,13 @@ namespace Maestro.Editors.WatermarkDefinition
         private IImageGraphic _image;
 
         private bool _init = false;
+        private IEditorService _edSvc;
 
         public override void Bind(IEditorService service)
         {
             service.RegisterCustomNotifier(this);
             _init = true;
+            _edSvc = service;
             try
             {
                 _wmd = (IWatermarkDefinition)service.GetEditedResource();
@@ -128,7 +130,7 @@ namespace Maestro.Editors.WatermarkDefinition
 
         private void btnEditImage_Click(object sender, EventArgs e)
         {
-            var diag = new ImageDialog(this, _sym, _image);
+            var diag = new ImageDialog(this, _edSvc.ResourceService, _sym, _image);
             diag.ShowDialog(this);
             OnResourceChanged();
         }

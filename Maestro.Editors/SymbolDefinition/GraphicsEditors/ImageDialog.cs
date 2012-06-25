@@ -30,6 +30,8 @@ using Maestro.Shared.UI;
 using System.IO;
 using Maestro.Editors.Common;
 using Maestro.Editors.Generic;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Services;
 
 namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
 {
@@ -40,15 +42,17 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
         private IImageReference _imageRef;
         private IInlineImage _imageInline;
         private EditorBindableCollapsiblePanel _ed;
+        private IResourceService _resSvc;
 
         private bool _init = false;
 
-        public ImageDialog(EditorBindableCollapsiblePanel parent, ISimpleSymbolDefinition ssd, IImageGraphic image)
+        public ImageDialog(EditorBindableCollapsiblePanel parent, IResourceService resSvc, ISimpleSymbolDefinition ssd, IImageGraphic image)
         {
             InitializeComponent();
             _ed = parent;
             _ssd = ssd;
             _image = image;
+            _resSvc = resSvc;
             try
             {
                 _init = true;
@@ -131,7 +135,7 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
 
         private void txtResourceId_TextChanged(object sender, EventArgs e)
         {
-            _imageRef.ResourceId = txtImageBase64.Text;
+            _imageRef.ResourceId = txtResourceId.Text;
         }
 
         private void txtResData_TextChanged(object sender, EventArgs e)
@@ -163,8 +167,19 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
                         _image.Item = _imageInline;
                     txtImageBase64.Text = Convert.ToBase64String(content);
                     txtImageBase64.Tag = content;
+                    using (var ms = new MemoryStream(content))
+                    {
+                        Image img = Image.FromStream(ms);
+                        symSizeX.Content = "'" + PxToMM(img.Width, 96).ToString(System.Globalization.CultureInfo.InvariantCulture) + "'";
+                        symSizeY.Content = "'" + PxToMM(img.Height, 96).ToString(System.Globalization.CultureInfo.InvariantCulture) + "'";
+                    }
                 }
             }
+        }
+
+        static double PxToMM(int px, int dpi)
+        {
+            return (px * 25.4) / dpi;
         }
 
         private void lnkPreview_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -189,7 +204,7 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_ssd.CurrentConnection.ResourceService, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_resSvc, ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
@@ -205,13 +220,13 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
             if (string.IsNullOrEmpty(resourceId))
                 resourceId = _ssd.ResourceID;
 
-            if (!_ssd.CurrentConnection.ResourceService.ResourceExists(resourceId))
+            if (!_resSvc.ResourceExists(resourceId))
             {
                 MessageBox.Show(Properties.Resources.ResourceDoesntExist);
                 return;
             }
 
-            var resData = _ssd.CurrentConnection.ResourceService.EnumerateResourceData(resourceId);
+            var resData = _resSvc.EnumerateResourceData(resourceId);
             var items = new List<string>();
             foreach (var rd in resData.ResourceData)
             {
