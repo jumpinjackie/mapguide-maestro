@@ -1522,8 +1522,7 @@ namespace Maestro.MapViewer
                 OnPropertyChanged("ViewHistoryIndex");
             }
 
-            _map.ViewCenter.X = x;
-            _map.ViewCenter.Y = y;
+            _map.SetViewCenter(x, y);
 #if VIEWER_DEBUG
             UpdateCenterDebugPoint();
             //var mapExt = _map.MapExtent;

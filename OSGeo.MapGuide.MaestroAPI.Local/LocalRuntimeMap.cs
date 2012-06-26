@@ -27,6 +27,12 @@ using OSGeo.MapGuide.ObjectModels;
 
 namespace OSGeo.MapGuide.MaestroAPI.Local
 {
+    // A general note about this implementation
+    //
+    // The only thing this shares with RuntimeMap is the ancestry (which is needed if we want to use rendering APIs) because
+    // other than that, these implementations are complete wrappers around their respective MgdMap, MgLayerGroup and MgLayerBase
+    // classes, barely touching anything from their respective superclasses (and almost overriding everything from their parents)
+
     internal class LocalRuntimeMap : RuntimeMap
     {
         private MgdMap _impl;
@@ -194,13 +200,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                 var coord = pt.Coordinate;
                 return ObjectFactory.CreatePoint2D(coord.X, coord.Y);
             }
-            set
-            {
-                if (value == null)
-                    throw new ArgumentNullException();
+        }
 
-                _impl.SetViewCenterXY(value.X, value.Y);
-            }
+        public override void SetViewCenter(double x, double y)
+        {
+            _impl.SetViewCenterXY(x, y);
         }
 
         public override double ViewScale

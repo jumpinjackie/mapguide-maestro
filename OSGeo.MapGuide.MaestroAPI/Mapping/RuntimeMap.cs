@@ -318,7 +318,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.DisplayDpi = 96;
             this.DisplayWidth = 0;
             this.DisplayHeight = 0;
-            this.ViewCenter = this.DataExtent.Center();
+            var pt = this.DataExtent.Center();
+            this.SetViewCenter(pt.X, pt.Y);
 
             _disableChangeTracking = false;
         }
@@ -475,9 +476,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             {
                 return _viewCenter;
             }
-            set
+        }
+
+        public virtual void SetViewCenter(double x, double y)
+        {
+            if (_viewCenter == null)
             {
-                _viewCenter = value;
+                _viewCenter = ObjectFactory.CreatePoint2D(x, y);
+            }
+            else
+            {
+                _viewCenter.X = x;
+                _viewCenter.Y = y;
             }
         }
 
@@ -804,7 +814,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             else
             {
-                this.ViewCenter = ObjectFactory.CreatePoint2D(cc[0], cc[1]);
+                this.SetViewCenter(cc[0], cc[1]);
             }
             this.ViewScale = d.ReadDouble();
 
