@@ -156,6 +156,7 @@ namespace Maestro.Editors.MapDefinition
             this.legendCtrl.Location = new System.Drawing.Point(0, 25);
             this.legendCtrl.Name = "legendCtrl";
             this.legendCtrl.SelectOnRightClick = true;
+            this.legendCtrl.ShowAllLayersAndGroups = true;
             this.legendCtrl.ShowTooltips = true;
             this.legendCtrl.Size = new System.Drawing.Size(275, 356);
             this.legendCtrl.TabIndex = 1;

@@ -59,7 +59,14 @@ namespace Maestro.MapViewer
         {
             InitializeComponent();
             this.ThemeCompressionLimit = 25;
+            this.ShowAllLayersAndGroups = false;
         }
+
+        /// <summary>
+        /// Gets whether to display all layers and groups regardless of display settings
+        /// and visibility
+        /// </summary>
+        public bool ShowAllLayersAndGroups { get; set; }
 
         private IMapViewer _viewer;
 
@@ -94,6 +101,16 @@ namespace Maestro.MapViewer
         private Dictionary<string, RuntimeMapGroup> _groups = new Dictionary<string, RuntimeMapGroup>();
         private Dictionary<string, string> _layerDefinitionContents = new Dictionary<string, string>();
 
+        private bool GetVisibilityFlag(RuntimeMapGroup group)
+        {
+            return this.ShowAllLayersAndGroups;
+        }
+
+        private bool GetVisibilityFlag(RuntimeMapLayer layer)
+        {
+            return layer.IsVisibleAtScale(_map.ViewScale);
+        }
+
         /// <summary>
         /// Refreshes this component
         /// </summary>
@@ -127,7 +144,7 @@ namespace Maestro.MapViewer
                 {
                     var group = groups[i];
                     _groups.Add(group.ObjectId, group);
-                    if (!group.ShowInLegend)
+                    if (!this.ShowAllLayersAndGroups && !group.ShowInLegend)
                         continue;
 
                     //Add ones without parents first.
@@ -137,7 +154,7 @@ namespace Maestro.MapViewer
                     }
                     else
                     {
-                        var node = CreateGroupNode(group);
+                        var node = CreateGroupNode(group, GetVisibilityFlag(group));
                         trvLegend.Nodes.Add(node);
                     }
 
@@ -153,7 +170,7 @@ namespace Maestro.MapViewer
                             var nodes = trvLegend.Nodes.Find(parentId, false);
                             if (nodes.Length == 1)
                             {
-                                var node = CreateGroupNode(remainingNodes[j]);
+                                var node = CreateGroupNode(remainingNodes[j], GetVisibilityFlag(remainingNodes[j]));
                                 nodes[0].Nodes.Add(node);
                                 toRemove.Add(remainingNodes[j]);
                             }
@@ -199,10 +216,10 @@ namespace Maestro.MapViewer
 
                     bool display = layer.ShowInLegend;
                     bool visible = layer.IsVisibleAtScale(_map.ViewScale);
-                    if (!display)
+                    if (!this.ShowAllLayersAndGroups && !display)
                         continue;
 
-                    if (!visible)
+                    if (!this.ShowAllLayersAndGroups && !visible)
                         continue;
 
                     //Add ones without parents first.
@@ -212,7 +229,7 @@ namespace Maestro.MapViewer
                     }
                     else
                     {
-                        var node = CreateLayerNode(layer);
+                        var node = CreateLayerNode(layer, GetVisibilityFlag(layer));
                         if (node != null)
                         {
                             trvLegend.Nodes.Add(node);
@@ -231,7 +248,7 @@ namespace Maestro.MapViewer
                             var nodes = trvLegend.Nodes.Find(parentId, false);
                             if (nodes.Length == 1)
                             {
-                                var node = CreateLayerNode(remainingLayers[j]);
+                                var node = CreateLayerNode(remainingLayers[j], GetVisibilityFlag(remainingLayers[j]));
                                 if (node != null)
                                 {
                                     nodes[0].Nodes.Add(node);
@@ -307,7 +324,7 @@ namespace Maestro.MapViewer
             imgLegend.Images.Add(IMG_OTHER, Properties.Resources.icon_etc);
         }
 
-        private TreeNode CreateLayerNode(RuntimeMapLayer layer)
+        private TreeNode CreateLayerNode(RuntimeMapLayer layer, bool visibilityFlag)
         {
             var node = new TreeNode();
             node.Name = layer.ObjectId;
@@ -320,7 +337,7 @@ namespace Maestro.MapViewer
             if (fsId.EndsWith("DrawingSource"))
             {
                 node.SelectedImageKey = node.ImageKey = IMG_DWF;
-                node.Tag = new LayerNodeMetadata(layer);
+                node.Tag = new LayerNodeMetadata(layer, visibilityFlag);
                 node.ToolTipText = string.Format(Properties.Resources.DrawingLayerTooltip, Environment.NewLine, layer.Name, layer.FeatureSourceID);
             }
             else
@@ -368,7 +385,7 @@ namespace Maestro.MapViewer
                         string id = Guid.NewGuid().ToString();
                         imgLegend.Images.Add(id, layerIcon);
                         node.SelectedImageKey = node.ImageKey = id;
-                        node.Tag = new LayerNodeMetadata(layer)
+                        node.Tag = new LayerNodeMetadata(layer, visibilityFlag)
                         {
                             ThemeIcon = layerIcon
                         };
@@ -377,11 +394,19 @@ namespace Maestro.MapViewer
                     else
                     {
                         node.SelectedImageKey = node.ImageKey = IMG_BROKEN;
+                        node.Tag = new LayerNodeMetadata(layer, visibilityFlag)
+                        {
+                            ThemeIcon = imgLegend.Images[IMG_BROKEN]
+                        };
                     }
                 }
                 catch
                 {
                     node.SelectedImageKey = node.ImageKey = IMG_BROKEN;
+                    node.Tag = new LayerNodeMetadata(layer, visibilityFlag)
+                    {
+                        ThemeIcon = imgLegend.Images[IMG_BROKEN]
+                    };
                 }
 
                 for (int sc = 0; sc < scaleRanges.Count; sc++)
@@ -424,15 +449,15 @@ namespace Maestro.MapViewer
                                 }
                                 if (this.ThemeCompressionLimit > 0 && rules.Count > this.ThemeCompressionLimit)
                                 {
-                                    AddThemeRuleNode(layer, node, geomType, 0, rules, 0);
-                                    node.Nodes.Add(CreateCompressedThemeNode(rules.Count - 2));
-                                    AddThemeRuleNode(layer, node, geomType, rules.Count - 1, rules, rules.Count - 1);
+                                    AddThemeRuleNode(layer, node, geomType, 0, rules, 0, visibilityFlag);
+                                    node.Nodes.Add(CreateCompressedThemeNode(rules.Count - 2, visibilityFlag));
+                                    AddThemeRuleNode(layer, node, geomType, rules.Count - 1, rules, rules.Count - 1, visibilityFlag);
                                 }
                                 else
                                 {
                                     for (int r = 0; r < rules.Count; r++)
                                     {
-                                        AddThemeRuleNode(layer, node, geomType, catIndex++, rules, r);
+                                        AddThemeRuleNode(layer, node, geomType, catIndex++, rules, r, visibilityFlag);
                                     }
                                 }
                             }
@@ -444,7 +469,7 @@ namespace Maestro.MapViewer
             return node;
         }
 
-        private void AddThemeRuleNode(RuntimeMapLayer layer, TreeNode node, int geomType, int catIndex, XmlNodeList rules, int r)
+        private void AddThemeRuleNode(RuntimeMapLayer layer, TreeNode node, int geomType, int catIndex, XmlNodeList rules, int r, bool visibilityFlag)
         {
             XmlElement rule = (XmlElement)rules[r];
             XmlNodeList label = rule.GetElementsByTagName("LegendLabel");
@@ -457,16 +482,16 @@ namespace Maestro.MapViewer
             //if (filter != null && filter.Count > 0 && filter[0].ChildNodes.Count > 0)
             //    filterText = filter[0].ChildNodes[0].Value;
 
-            var child = CreateThemeRuleNode(layer.LayerDefinitionID, _map.ViewScale, labelText, (geomType + 1), catIndex);
+            var child = CreateThemeRuleNode(layer.LayerDefinitionID, _map.ViewScale, labelText, (geomType + 1), catIndex, visibilityFlag);
             node.Nodes.Add(child);
         }
 
-        private TreeNode CreateCompressedThemeNode(int count)
+        private TreeNode CreateCompressedThemeNode(int count, bool visibilityFlag)
         {
             TreeNode node = new TreeNode();
             node.Text = (count + " other styles");
             node.ImageKey = node.SelectedImageKey = IMG_OTHER;
-            node.Tag = new LayerNodeMetadata(null) {
+            node.Tag = new LayerNodeMetadata(null, visibilityFlag) {
                 IsBaseLayer = false,
                 ThemeIcon = Properties.Resources.icon_etc,
                 IsThemeRule = true
@@ -474,7 +499,7 @@ namespace Maestro.MapViewer
             return node;
         }
 
-        private TreeNode CreateThemeRuleNode(string layerDefId, double viewScale, string labelText, int geomType, int categoryIndex)
+        private TreeNode CreateThemeRuleNode(string layerDefId, double viewScale, string labelText, int geomType, int categoryIndex, bool visibilityFlag)
         {
             Image layerIcon = null;
             try
@@ -495,7 +520,7 @@ namespace Maestro.MapViewer
             node.Text = labelText;
             if (layerIcon != null)
             {
-                var tag = new LayerNodeMetadata(null)
+                var tag = new LayerNodeMetadata(null, visibilityFlag)
                 {
                     IsBaseLayer = false,
                     IsThemeRule = true
@@ -507,14 +532,14 @@ namespace Maestro.MapViewer
             return node;
         }
 
-        private TreeNode CreateGroupNode(RuntimeMapGroup group)
+        private TreeNode CreateGroupNode(RuntimeMapGroup group, bool visibilityFlag)
         {
             var node = new TreeNode();
             node.Name = group.ObjectId;
             node.Text = group.LegendLabel;
             node.Checked = group.Visible;
             node.SelectedImageKey = node.ImageKey = IMG_GROUP;
-            node.Tag = new GroupNodeMetadata(group);
+            node.Tag = new GroupNodeMetadata(group, visibilityFlag);
             node.ContextMenuStrip = this.GroupContextMenu;
             return node;
         }
@@ -542,11 +567,15 @@ namespace Maestro.MapViewer
             [Browsable(false)]
             internal RuntimeMapGroup WrappedGroupObject { get; set; }
 
-            public GroupNodeMetadata(RuntimeMapGroup group) 
+            public GroupNodeMetadata(RuntimeMapGroup group, bool visibilityFlag) 
             { 
                 base.IsGroup = true;
                 this.WrappedGroupObject = group;
+                this.VisbilityFlag = visibilityFlag;
             }
+
+            [Browsable(false)]
+            internal bool VisbilityFlag { get; private set; }
 
             public bool Visible
             {
@@ -587,14 +616,18 @@ namespace Maestro.MapViewer
 
         public class LayerNodeMetadata : LegendNodeMetadata
         {
-            public LayerNodeMetadata(RuntimeMapLayer layer) 
+            public LayerNodeMetadata(RuntimeMapLayer layer, bool visibilityFlag) 
             { 
                 base.IsGroup = false;
                 this.Layer = layer;
                 this.IsSelectable = (layer != null) ? layer.Selectable : false;
                 this.DrawSelectabilityIcon = (layer != null);
                 this.IsThemeRule = false;
+                this.VisibilityFlag = visibilityFlag;
             }
+
+            [Browsable(false)]
+            internal bool VisibilityFlag { get; private set; }
 
             [Browsable(false)]
             internal RuntimeMapLayer Layer { get; set; }
@@ -787,11 +820,14 @@ namespace Maestro.MapViewer
                 //For some reason, the default bounds are way off from what you would
                 //expect it to be. So we apply this offset for any text/image draw operations
                 int xoffset = -36;
+                var tag = e.Node.Tag as LayerNodeMetadata;
 
+                bool bDrawSelection = false;
                 if ((e.State & TreeNodeStates.Selected) == TreeNodeStates.Selected)
                 {
                     backColor = SystemColors.Highlight;
                     foreColor = SystemColors.HighlightText;
+                    bDrawSelection = true;
                 }
                 else if ((e.State & TreeNodeStates.Hot) == TreeNodeStates.Hot)
                 {
@@ -801,10 +837,9 @@ namespace Maestro.MapViewer
                 else
                 {
                     backColor = e.Node.BackColor;
-                    foreColor = e.Node.ForeColor;
+                    foreColor = (tag != null && !tag.VisibilityFlag) ? SystemColors.InactiveCaptionText : Color.Black; //e.Node.ForeColor;
                 }
 
-                var tag = e.Node.Tag as LayerNodeMetadata;
                 var checkBoxOffset = xoffset;
                 var selectabilityOffset = xoffset + 16;
                 var iconOffsetNoSelect = xoffset + 16;
@@ -849,7 +884,20 @@ namespace Maestro.MapViewer
                         }
                     }
 
-                    using (SolidBrush brush = new SolidBrush(Color.Black))
+                    if (bDrawSelection)
+                    {
+                        var size = e.Graphics.MeasureString(e.Node.Text, trvLegend.Font);
+                        using (var brush = new SolidBrush(backColor))
+                        {
+                            e.Graphics.FillRectangle(brush,
+                                                     e.Node.Bounds.X + (tag.DrawSelectabilityIcon ? textOffset : textOffsetNoSelect),
+                                                     e.Node.Bounds.Y,
+                                                     size.Width,
+                                                     size.Height);
+                        }
+                    }
+
+                    using (SolidBrush brush = new SolidBrush(tag.VisibilityFlag ? foreColor : Color.Gray))
                     {
                         e.Graphics.DrawString(e.Node.Text, trvLegend.Font, brush, e.Node.Bounds.X + (tag.DrawSelectabilityIcon ? textOffset : textOffsetNoSelect), e.Node.Bounds.Y);
                     }
@@ -944,10 +992,7 @@ namespace Maestro.MapViewer
 
         private void trvLegend_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-            {
-                trvLegend.SelectedNode = e.Node;
-            }
+            trvLegend.SelectedNode = e.Node;
             var meta = e.Node.Tag as LayerNodeMetadata;
             if (meta != null && meta.DrawSelectabilityIcon)
             {
