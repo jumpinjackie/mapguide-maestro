@@ -37,10 +37,12 @@
             this.btnBrowseAliasFile = new System.Windows.Forms.Button();
             this.tt = new System.Windows.Forms.ToolTip(this.components);
             this.unmanagedPanel = new System.Windows.Forms.Panel();
-            this.resDataCtrl = new Maestro.Editors.Common.ResourceDataCtrl();
+            this.grpAlias = new System.Windows.Forms.GroupBox();
             this.btnBrowseAliasFolder = new System.Windows.Forms.Button();
+            this.resDataCtrl = new Maestro.Editors.Common.ResourceDataCtrl();
             this.contentPanel.SuspendLayout();
             this.unmanagedPanel.SuspendLayout();
+            this.grpAlias.SuspendLayout();
             this.SuspendLayout();
             // 
             // contentPanel
@@ -90,18 +92,18 @@
             // unmanagedPanel
             // 
             resources.ApplyResources(this.unmanagedPanel, "unmanagedPanel");
-            this.unmanagedPanel.Controls.Add(this.btnBrowseAliasFolder);
+            this.unmanagedPanel.Controls.Add(this.grpAlias);
             this.unmanagedPanel.Controls.Add(this.label1);
-            this.unmanagedPanel.Controls.Add(this.btnBrowseAliasFile);
             this.unmanagedPanel.Controls.Add(this.txtAlias);
             this.unmanagedPanel.Name = "unmanagedPanel";
             // 
-            // resDataCtrl
+            // grpAlias
             // 
-            resources.ApplyResources(this.resDataCtrl, "resDataCtrl");
-            this.resDataCtrl.MarkedFile = "";
-            this.resDataCtrl.MarkEnabled = true;
-            this.resDataCtrl.Name = "resDataCtrl";
+            resources.ApplyResources(this.grpAlias, "grpAlias");
+            this.grpAlias.Controls.Add(this.btnBrowseAliasFolder);
+            this.grpAlias.Controls.Add(this.btnBrowseAliasFile);
+            this.grpAlias.Name = "grpAlias";
+            this.grpAlias.TabStop = false;
             // 
             // btnBrowseAliasFolder
             // 
@@ -111,6 +113,13 @@
             this.btnBrowseAliasFolder.UseVisualStyleBackColor = true;
             this.btnBrowseAliasFolder.Click += new System.EventHandler(this.btnBrowseAliasFolder_Click);
             // 
+            // resDataCtrl
+            // 
+            resources.ApplyResources(this.resDataCtrl, "resDataCtrl");
+            this.resDataCtrl.MarkedFile = "";
+            this.resDataCtrl.MarkEnabled = true;
+            this.resDataCtrl.Name = "resDataCtrl";
+            // 
             // FileBasedCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -119,6 +128,7 @@
             this.contentPanel.PerformLayout();
             this.unmanagedPanel.ResumeLayout(false);
             this.unmanagedPanel.PerformLayout();
+            this.grpAlias.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -134,5 +144,6 @@
         protected System.Windows.Forms.RadioButton rdUnmanaged;
         protected System.Windows.Forms.RadioButton rdManaged;
         protected System.Windows.Forms.Button btnBrowseAliasFolder;
+        private System.Windows.Forms.GroupBox grpAlias;
     }
 }

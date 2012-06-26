@@ -60,7 +60,7 @@
             // ShpFileCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "SHP Feature Source";
+            resources.ApplyResources(this, "$this");
             this.Name = "ShpFileCtrl";
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();

@@ -70,7 +70,7 @@
             // SdfFileCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "SDF Feature Source";
+            resources.ApplyResources(this, "$this");
             this.Name = "SdfFileCtrl";
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();
