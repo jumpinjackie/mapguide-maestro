@@ -167,7 +167,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             EnsureOrderedMinMaxScales();
         }
 
-        internal RuntimeMapLayer(RuntimeMap parent) 
+        protected internal RuntimeMapLayer(RuntimeMap parent) 
         {
             _scaleRanges = new double[] { 0.0, InfinityScale };
             _type = kDynamic;
@@ -182,7 +182,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="parent">The parent.</param>
         /// <param name="ldf">The LDF.</param>
-        internal RuntimeMapLayer(RuntimeMap parent, ILayerDefinition ldf)
+        protected internal RuntimeMapLayer(RuntimeMap parent, ILayerDefinition ldf)
             : this(parent)
         {
             _disableChangeTracking = true;
@@ -195,13 +195,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="parent">The parent.</param>
         /// <param name="source">The source.</param>
-        internal RuntimeMapLayer(RuntimeMap parent, IMapLayer source)
+        protected internal RuntimeMapLayer(RuntimeMap parent, IMapLayer source)
             : this(parent, source, (ILayerDefinition)parent.CurrentConnection.ResourceService.GetResource(source.ResourceId))
         {
             _disableChangeTracking = false;
         }
 
-        internal RuntimeMapLayer(RuntimeMap parent, IMapLayer source, ILayerDefinition ldf)
+        protected internal RuntimeMapLayer(RuntimeMap parent, IMapLayer source, ILayerDefinition ldf)
             : this(parent, (IBaseMapLayer)source, ldf)
         {
             _disableChangeTracking = true;
@@ -212,7 +212,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             _disableChangeTracking = false;
         }
 
-        internal RuntimeMapLayer(RuntimeMap parent, IBaseMapLayer source, ILayerDefinition ldf) 
+        protected internal RuntimeMapLayer(RuntimeMap parent, IBaseMapLayer source, ILayerDefinition ldf) 
             : this(parent, ldf)
         {
             Check.NotNull(source, "source");
@@ -282,7 +282,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets a value indicating whether this <see cref="RuntimeMapLayer"/> is visible.
         /// </summary>
         /// <value><c>true</c> if visible; otherwise, <c>false</c>.</value>
-        public bool Visible
+        public virtual bool Visible
         {
             get
             {
@@ -304,7 +304,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets the group.
         /// </summary>
         /// <value>The group.</value>
-        public string Group
+        public virtual string Group
         {
             get
             {
@@ -321,7 +321,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets the layer definition ID.
         /// </summary>
         /// <value>The layer definition ID.</value>
-        public string LayerDefinitionID
+        public virtual string LayerDefinitionID
         {
             get;
             internal set;
@@ -333,7 +333,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets a value indicating whether this <see cref="RuntimeMapLayer"/> is selectable.
         /// </summary>
         /// <value><c>true</c> if selectable; otherwise, <c>false</c>.</value>
-        public bool Selectable
+        public virtual bool Selectable
         {
             get
             {
@@ -352,7 +352,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets the name.
         /// </summary>
         /// <value>The name.</value>
-        public string Name
+        public virtual string Name
         {
             get
             {
@@ -371,7 +371,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets a value indicating whether [show in legend].
         /// </summary>
         /// <value><c>true</c> if [show in legend]; otherwise, <c>false</c>.</value>
-        public bool ShowInLegend
+        public virtual bool ShowInLegend
         {
             get
             {
@@ -390,7 +390,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets the legend label.
         /// </summary>
         /// <value>The legend label.</value>
-        public string LegendLabel
+        public virtual string LegendLabel
         {
             get
             {
@@ -409,7 +409,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets a value indicating whether [expand in legend].
         /// </summary>
         /// <value><c>true</c> if [expand in legend]; otherwise, <c>false</c>.</value>
-        public bool ExpandInLegend
+        public virtual bool ExpandInLegend
         {
             get
             {
@@ -428,7 +428,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets the feature source ID.
         /// </summary>
         /// <value>The feature source ID.</value>
-        public string FeatureSourceID
+        public virtual string FeatureSourceID
         {
             get { return _featureSourceId; }
             internal set { _featureSourceId = value; }
@@ -440,7 +440,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets the name of the qualified name of the feature class.
         /// </summary>
         /// <value>The name of the qualified name of the feature class.</value>
-        public string QualifiedClassName
+        public virtual string QualifiedClassName
         {
             get { return _qualifiedClassName; }
             internal set { _qualifiedClassName = value; }
@@ -462,7 +462,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets the object id.
         /// </summary>
         /// <value>The object id.</value>
-        public string ObjectId
+        public virtual string ObjectId
         {
             get { return _objectId; }
             internal set { _objectId = value; }
@@ -474,7 +474,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets the name of the geometry property.
         /// </summary>
         /// <value>The name of the geometry property.</value>
-        public string GeometryPropertyName
+        public virtual string GeometryPropertyName
         {
             get { return _geometryPropertyName; }
             private set { _geometryPropertyName = value; }
@@ -486,7 +486,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets the filter.
         /// </summary>
         /// <value>The filter.</value>
-        public string Filter
+        public virtual string Filter
         {
             get { return _filter; }
             internal set { _filter = value; }
@@ -497,7 +497,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets the type
         /// </summary>
-        public int Type
+        public virtual int Type
         {
             get { return _type; }
             internal set { _type = value; }
@@ -508,7 +508,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets the display order
         /// </summary>
-        public double DisplayOrder
+        public virtual double DisplayOrder
         {
             get { return _displayOrder; }
             internal set { _displayOrder = value; }
@@ -519,7 +519,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets whether this layer needs to be refreshed
         /// </summary>
-        public bool NeedsRefresh
+        public virtual bool NeedsRefresh
         {
             get { return _needsRefresh; }
             internal set { _needsRefresh = value; }
@@ -528,7 +528,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Sets the refresh flag for this layer
         /// </summary>
-        public void ForceRefresh()
+        public virtual void ForceRefresh()
         {
             if (!this.IsVisibleAtScale(this.Parent.ViewScale))
                 return;
@@ -541,7 +541,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets whether this layer has tooltips
         /// </summary>
-        public bool HasTooltips
+        public virtual bool HasTooltips
         {
             get { return _hasTooltips; }
             internal set { _hasTooltips = value; }
@@ -567,7 +567,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Serializes this instance to a binary stream
         /// </summary>
         /// <param name="s"></param>
-        public void Serialize(MgBinarySerializer s)
+        public virtual void Serialize(MgBinarySerializer s)
         {
             s.Write(this.Group);
 
@@ -698,7 +698,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Initializes this instance with the specified binary stream
         /// </summary>
         /// <param name="d"></param>
-        public void Deserialize(MgBinaryDeserializer d)
+        public virtual void Deserialize(MgBinaryDeserializer d)
         {
             this.Group = d.ReadString();
 

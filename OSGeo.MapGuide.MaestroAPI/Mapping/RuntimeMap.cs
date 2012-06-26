@@ -150,7 +150,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         public const double Z_ORDER_TOP = 100.0;
 
-        internal RuntimeMap(IServerConnection conn)
+        protected internal RuntimeMap(IServerConnection conn)
         {
             this.StrictSelection = true;
             _disableChangeTracking = true;
@@ -327,10 +327,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets the map extents.
         /// </summary>
         /// <value>The map extents.</value>
-        public IEnvelope MapExtent
+        public virtual IEnvelope MapExtent
         {
             get;
-            private set;
+            protected set;
         }
         
         /// <summary>
@@ -342,7 +342,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets the data extent.
         /// </summary>
         /// <value>The data extent.</value>
-        public IEnvelope DataExtent
+        public virtual IEnvelope DataExtent
         {
             get
             {
@@ -376,7 +376,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets the display dpi.
         /// </summary>
         /// <value>The display dpi.</value>
-        public int DisplayDpi
+        public virtual int DisplayDpi
         {
             get
             {
@@ -397,7 +397,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets the display height.
         /// </summary>
         /// <value>The display height.</value>
-        public int DisplayHeight
+        public virtual int DisplayHeight
         {
             get
             {
@@ -418,7 +418,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets the display width.
         /// </summary>
         /// <value>The display width.</value>
-        public int DisplayWidth
+        public virtual int DisplayWidth
         {
             get
             {
@@ -434,7 +434,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets the map definition resource id
         /// </summary>
         /// <value>The map definition resource id.</value>
-        public string MapDefinition
+        public virtual string MapDefinition
         {
             get;
             internal set;
@@ -444,7 +444,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets the object id.
         /// </summary>
         /// <value>The object id.</value>
-        public string ObjectId
+        public virtual string ObjectId
         {
             get;
             internal set;
@@ -454,7 +454,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets the session id.
         /// </summary>
         /// <value>The session id.</value>
-        public string SessionId
+        public virtual string SessionId
         {
             get;
             internal set;
@@ -469,7 +469,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets the view center.
         /// </summary>
         /// <value>The view center.</value>
-        public IPoint2D ViewCenter
+        public virtual IPoint2D ViewCenter
         {
             get
             {
@@ -490,7 +490,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets the view scale.
         /// </summary>
         /// <value>The view scale.</value>
-        public double ViewScale
+        public virtual double ViewScale
         {
             get
             {
@@ -526,7 +526,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets the coordinate system in WKT format
         /// </summary>
         /// <value>The coordinate system in WKT format.</value>
-        public string CoordinateSystem
+        public virtual string CoordinateSystem
         {
             get { return _mapSrs; }
             internal set { SetField(ref _mapSrs, value, "CoordinateSystem"); }
@@ -541,7 +541,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets or sets the color of the background.
         /// </summary>
         /// <value>The color of the background.</value>
-        public System.Drawing.Color BackgroundColor
+        public virtual System.Drawing.Color BackgroundColor
         {
             get
             {
@@ -584,7 +584,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets the meters per unit value.
         /// </summary>
         /// <value>The meters per unit.</value>
-        public double MetersPerUnit
+        public virtual double MetersPerUnit
         {
             get;
             internal set;
@@ -593,7 +593,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets the watermark usage. Not applicable for version of MapGuide older than 2.3
         /// </summary>
-        public int WatermarkUsage
+        public virtual int WatermarkUsage
         {
             get;
             private set;
@@ -613,7 +613,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets the layer refresh mode.
         /// </summary>
         /// <value>The layer refresh mode.</value>
-        public int LayerRefreshMode
+        public virtual int LayerRefreshMode
         {
             get;
             private set;
@@ -625,7 +625,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Serializes this instance to the specified binary stream
         /// </summary>
         /// <param name="s"></param>
-        public void Serialize(MgBinarySerializer s)
+        public virtual void Serialize(MgBinarySerializer s)
         {
             if (s.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
             {
@@ -777,7 +777,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Initializes this instance from the specified binary stream
         /// </summary>
         /// <param name="d"></param>
-        public void Deserialize(MgBinaryDeserializer d)
+        public virtual void Deserialize(MgBinaryDeserializer d)
         {
             _disableChangeTracking = true;
 
@@ -945,7 +945,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets the selection set
         /// </summary>
         /// <value>The selection.</value>
-        public MapSelection Selection
+        public virtual MapSelection Selection
         {
             get
             {

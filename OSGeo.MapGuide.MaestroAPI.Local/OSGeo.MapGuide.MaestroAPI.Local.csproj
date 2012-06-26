@@ -126,6 +126,7 @@
     </Compile>
     <Compile Include="LocalCapabilities.cs" />
     <Compile Include="LocalConnection.cs" />
+    <Compile Include="LocalRuntimeMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

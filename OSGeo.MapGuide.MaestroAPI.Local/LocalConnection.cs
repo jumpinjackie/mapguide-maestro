@@ -42,7 +42,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                                    IFeatureService,
                                    IResourceService,
                                    ITileService,
-                                   //IMappingService,
+                                   IMappingService,
                                    IDrawingService
     {
         public event EventHandler SessionIDChanged; //Not used
@@ -901,6 +901,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                 case ServiceType.Feature:
                 case ServiceType.Resource:
                 case ServiceType.Tile:
+                case ServiceType.Mapping:
                     return this;
             }
             throw new UnsupportedServiceTypeException(st);
@@ -1025,6 +1026,193 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                 ex.Dispose();
                 throw exMgd;
             }
+        }
+
+        protected override double InferMPU(string csWkt, double units)
+        {
+            return base.InferMPU(csWkt, units);
+        }
+
+        public override Mapping.RuntimeMap CreateMap(string runtimeMapResourceId, ObjectModels.MapDefinition.IMapDefinition mdf, double metersPerUnit)
+        {
+            var mdfId = new MgResourceIdentifier(mdf.ResourceID);
+            var implMap = new MgdMap(mdfId);
+            var map = new LocalRuntimeMap(this, implMap);
+            map.ResourceID = runtimeMapResourceId;
+            return map;
+        }
+
+        public override Mapping.RuntimeMapGroup CreateMapGroup(Mapping.RuntimeMap parent, ObjectModels.MapDefinition.IBaseMapGroup group)
+        {
+            var impl = parent as LocalRuntimeMap;
+            if (impl == null)
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+
+            var rtGroup = new MgLayerGroup(group.Name);
+            rtGroup.DisplayInLegend = group.ShowInLegend;
+            MgdMap.SetGroupExpandInLegend(rtGroup, group.ExpandInLegend);
+            //MgdMap.SetLayerGroupType(rtGroup, MgLayerGroupType.BaseMap);
+            rtGroup.LegendLabel = group.LegendLabel;
+            rtGroup.Visible = group.Visible;
+
+            return new LocalRuntimeMapGroup(impl, rtGroup);
+        }
+
+        public override Mapping.RuntimeMapGroup CreateMapGroup(Mapping.RuntimeMap parent, ObjectModels.MapDefinition.IMapLayerGroup group)
+        {
+            var impl = parent as LocalRuntimeMap;
+            if (impl == null)
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+
+            var rtGroup = new MgLayerGroup(group.Name);
+            rtGroup.DisplayInLegend = group.ShowInLegend;
+            MgdMap.SetGroupExpandInLegend(rtGroup, group.ExpandInLegend);
+            rtGroup.LegendLabel = group.LegendLabel;
+            rtGroup.Visible = group.Visible;
+
+            return new LocalRuntimeMapGroup(impl, rtGroup);
+        }
+
+        public override Mapping.RuntimeMapGroup CreateMapGroup(Mapping.RuntimeMap parent, string name)
+        {
+            var impl = parent as LocalRuntimeMap;
+            if (impl == null)
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+
+            var group = new MgLayerGroup(name);
+            return new LocalRuntimeMapGroup(impl, group);
+        }
+
+        public override Mapping.RuntimeMapLayer CreateMapLayer(Mapping.RuntimeMap parent, ObjectModels.LayerDefinition.ILayerDefinition ldf)
+        {
+            var impl = parent as LocalRuntimeMap;
+            if (impl == null)
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+
+            var ldfId = new MgResourceIdentifier(ldf.ResourceID);
+            var layer = new MgdLayer(ldfId, GetResourceService());
+            return new LocalRuntimeMapLayer(impl, layer);
+        }
+
+        public Stream RenderDynamicOverlay(Mapping.RuntimeMap map, Mapping.MapSelection selection, string format)
+        {
+            return RenderDynamicOverlay(map, selection, format, true);
+        }
+
+        private static MgdSelection Convert(Mapping.MapSelection sel)
+        {
+            if (sel == null)
+                return null;
+
+            MgdSelection impl = new MgdSelection();
+            var xml = sel.ToXml();
+            if (!string.IsNullOrEmpty(xml))
+                impl.FromXml(xml);
+            return impl;
+        }
+
+        public Stream RenderDynamicOverlay(Mapping.RuntimeMap map, Mapping.MapSelection selection, string format, bool keepSelection)
+        {
+            var impl = map as LocalRuntimeMap;
+            if (impl == null)
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+            var renderSvc = GetRenderingService();
+            GetByteReaderMethod fetch = () =>
+            {
+                var sel = Convert(selection);
+                return renderSvc.RenderDynamicOverlay(impl.GetWrappedInstance(), sel, format, keepSelection);
+            };
+            return new MgReadOnlyStream(fetch);
+        }
+
+        public Stream RenderDynamicOverlay(Mapping.RuntimeMap map, Mapping.MapSelection selection, string format, System.Drawing.Color selectionColor, int behaviour)
+        {
+            var impl = map as LocalRuntimeMap;
+            if (impl == null)
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+            var renderSvc = GetRenderingService();
+            GetByteReaderMethod fetch = () =>
+            {
+                var sel = Convert(selection);
+                var opts = new MgRenderingOptions(format, behaviour, new MgColor(selectionColor));
+                return renderSvc.RenderDynamicOverlay(impl.GetWrappedInstance(), sel, opts);
+            };
+            return new MgReadOnlyStream(fetch);
+        }
+
+        public Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi)
+        {
+            throw new NotImplementedException(); //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
+        }
+
+        public Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi)
+        {
+            throw new NotImplementedException(); //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
+        }
+
+        public Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format)
+        {
+            throw new NotImplementedException(); //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
+        }
+
+        public Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format)
+        {
+            throw new NotImplementedException(); //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
+        }
+
+        public Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
+        {
+            throw new NotImplementedException(); //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
+        }
+
+        public Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
+        {
+            throw new NotImplementedException(); //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
+        }
+
+        public Stream RenderMapLegend(Mapping.RuntimeMap map, int width, int height, System.Drawing.Color backgroundColor, string format)
+        {
+            var impl = map as LocalRuntimeMap;
+            if (impl == null)
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+            var renderSvc = GetRenderingService();
+            GetByteReaderMethod fetch = () =>
+            {
+                MgColor bgColor = new MgColor(backgroundColor);
+                return renderSvc.RenderMapLegend(impl.GetWrappedInstance(), width, height, bgColor, format);
+            };
+            return new MgReadOnlyStream(fetch);
+        }
+
+        public System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type)
+        {
+            return GetLegendImage(scale, layerdefinition, themeIndex, type, 16, 16, "PNG");
+        }
+
+        public System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
+        {
+            var renderSvc = GetRenderingService();
+            GetByteReaderMethod fetch = () =>
+            {
+                MgResourceIdentifier resId = new MgResourceIdentifier(layerdefinition);
+                return renderSvc.GenerateLegendImage(resId, scale, width, height, format, type, themeIndex);
+            };
+            return new System.Drawing.Bitmap(new MgReadOnlyStream(fetch));
+        }
+
+        public string QueryMapFeatures(string runtimeMapName, string wkt, bool persist, QueryMapFeaturesLayerAttributes attributes, bool raw)
+        {
+            return string.Empty; //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
+        }
+
+        public string QueryMapFeatures(string runtimeMapName, string wkt, bool persist)
+        {
+            return string.Empty; //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
+        }
+
+        public string QueryMapFeatures(string runtimeMapName, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)
+        {
+            return string.Empty; //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
         }
     }
 }

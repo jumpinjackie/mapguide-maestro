@@ -49,7 +49,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="map">The map.</param>
         /// <param name="name">The name.</param>
-        internal RuntimeMapGroup(RuntimeMap map, string name) 
+        protected internal RuntimeMapGroup(RuntimeMap map, string name) 
             : this()
         {
             this.Parent = map;
@@ -63,7 +63,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="map">The map.</param>
         /// <param name="group">The group.</param>
-        internal RuntimeMapGroup(RuntimeMap map, IMapLayerGroup group)
+        protected internal RuntimeMapGroup(RuntimeMap map, IMapLayerGroup group)
             : this(map, group.Name)
         {
             _disableChangeTracking = true;
@@ -98,7 +98,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets or sets whether this group is visible
         /// </summary>
-        public bool Visible
+        public virtual bool Visible
         {
             get
             {
@@ -115,7 +115,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets or sets the name of the parent group
         /// </summary>
-        public string Group
+        public virtual string Group
         {
             get
             {
@@ -141,7 +141,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets or sets the name of this group
         /// </summary>
-        public string Name
+        public virtual string Name
         {
             get
             {
@@ -158,7 +158,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets or sets whether this group is visible in the legend
         /// </summary>
-        public bool ShowInLegend
+        public virtual bool ShowInLegend
         {
             get
             {
@@ -175,7 +175,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets or sets the legend label
         /// </summary>
-        public string LegendLabel
+        public virtual string LegendLabel
         {
             get
             {
@@ -192,7 +192,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets or sets whether this group is expanded in the legend
         /// </summary>
-        public bool ExpandInLegend
+        public virtual bool ExpandInLegend
         {
             get
             {
@@ -207,7 +207,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets the group type
         /// </summary>
-        public int Type
+        public virtual int Type
         {
             get;
             internal set;
@@ -216,7 +216,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets the unique identifier for this group
         /// </summary>
-        public string ObjectId
+        public virtual string ObjectId
         {
             get;
             private set;
@@ -226,7 +226,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Serializes this instance
         /// </summary>
         /// <param name="s"></param>
-        public void Serialize(MgBinarySerializer s)
+        public virtual void Serialize(MgBinarySerializer s)
         {
             s.Write(this.Group);
             if (s.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
@@ -246,7 +246,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Initialize this instance using the specified binary stream
         /// </summary>
         /// <param name="d"></param>
-        public void Deserialize(MgBinaryDeserializer d)
+        public virtual void Deserialize(MgBinaryDeserializer d)
         {
             this.Group = d.ReadString();
             int objid = d.ReadClassId();
