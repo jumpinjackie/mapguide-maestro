@@ -68,11 +68,7 @@ namespace Maestro.AddIn.Local.UI
                 }
             }
             var fact = new MgServiceFactory();
-            viewer.Init(
-                new MgDesktopMapViewerProvider(
-                    _map, 
-                    (MgdResourceService)fact.CreateService(MgServiceType.ResourceService), 
-                    (MgRenderingService)fact.CreateService(MgServiceType.RenderingService)));
+            viewer.Init(new MgDesktopMapViewerProvider(_map));
             viewer.RefreshMap();
         }
 

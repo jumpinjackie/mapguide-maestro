@@ -138,9 +138,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
         private MgdResourceService _resSvc;
         private MgdFeatureService _featSvc;
-        private MgDrawingService _drawSvc;
-        private MgRenderingService _renderSvc;
-        private MgTileService _tileSvc;
+        private MgdDrawingService _drawSvc;
+        private MgdMappingService _mappingSvc;
+        private MgdRenderingService _renderSvc;
+        private MgdTileService _tileSvc;
 
         public override void Dispose()
         {
@@ -191,26 +192,34 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return _featSvc;
         }
 
-        private MgDrawingService GetDrawingService()
+        private MgdDrawingService GetDrawingService()
         {
             if (_drawSvc == null)
-                _drawSvc = (MgDrawingService)_fact.CreateService(MgServiceType.DrawingService);
+                _drawSvc = (MgdDrawingService)_fact.CreateService(MgServiceType.DrawingService);
 
             return _drawSvc;
         }
 
-        private MgRenderingService GetRenderingService()
+        private MgdMappingService GetMappingService()
+        {
+            if (_mappingSvc == null)
+                _mappingSvc = (MgdMappingService)_fact.CreateService(MgServiceType.MappingService);
+
+            return _mappingSvc;
+        }
+
+        private MgdRenderingService GetRenderingService()
         {
             if (_renderSvc == null)
-                _renderSvc = (MgRenderingService)_fact.CreateService(MgServiceType.RenderingService);
+                _renderSvc = (MgdRenderingService)_fact.CreateService(MgServiceType.RenderingService);
 
             return _renderSvc;
         }
 
-        private MgTileService GetTileService()
+        private MgdTileService GetTileService()
         {
             if (_tileSvc == null)
-                _tileSvc = (MgTileService)_fact.CreateService(MgServiceType.TileService);
+                _tileSvc = (MgdTileService)_fact.CreateService(MgServiceType.TileService);
 
             return _tileSvc;
         }
@@ -1191,11 +1200,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
         public System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
         {
-            var renderSvc = GetRenderingService();
+            var mappingSvc = GetMappingService();
             GetByteReaderMethod fetch = () =>
             {
                 MgResourceIdentifier resId = new MgResourceIdentifier(layerdefinition);
-                return renderSvc.GenerateLegendImage(resId, scale, width, height, format, type, themeIndex);
+                return mappingSvc.GenerateLegendImage(resId, scale, width, height, format, type, themeIndex);
             };
             return new System.Drawing.Bitmap(new MgReadOnlyStream(fetch));
         }
