@@ -451,4 +451,28 @@
   <data name="TextCoordinatePosition" xml:space="preserve">
     <value>X: {0:0.0000000}, Y: {1:0.0000000}</value>
   </data>
+  <data name="CircleDigitizationPrompt" xml:space="preserve">
+    <value>Click to finish</value>
+  </data>
+  <data name="GeneralDigitizationInstructions" xml:space="preserve">
+    <value>Press ESC to cancel</value>
+  </data>
+  <data name="LineDigitizationPrompt" xml:space="preserve">
+    <value>Click to finish</value>
+  </data>
+  <data name="LineStringDigitizationPrompt" xml:space="preserve">
+    <value>Click again to add a new vertex.\nDouble-click to finish</value>
+  </data>
+  <data name="MultiSegmentDigitzationInstructions" xml:space="preserve">
+    <value>Press Ctrl-Z to undo last point.\nPress ESC to cancel</value>
+  </data>
+  <data name="PointDigitizationPrompt" xml:space="preserve">
+    <value>Click to finish</value>
+  </data>
+  <data name="PolygonDigitizationPrompt" xml:space="preserve">
+    <value>Click again to add a new vertex.\nDouble-click to finish</value>
+  </data>
+  <data name="RectangleDigitizationPrompt" xml:space="preserve">
+    <value>Click to finish</value>
+  </data>
 </root>

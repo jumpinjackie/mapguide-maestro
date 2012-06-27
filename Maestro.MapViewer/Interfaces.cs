@@ -83,6 +83,56 @@ namespace Maestro.MapViewer
         void DigitizeRectangle(RectangleDigitizationCallback callback);
 
         /// <summary>
+        /// Starts the digitization process for a circle
+        /// </summary>
+        /// <param name="callback">The callback to be invoked when the digitization process completes</param>
+        /// <param name="customPrompt">The custom prompt to use for the tracking tooltip</param>
+        void DigitizeCircle(CircleDigitizationCallback callback, string customPrompt);
+
+        /// <summary>
+        /// Starts the digitization process for a line
+        /// </summary>
+        /// <param name="callback">The callback to be invoked when the digitization process completes</param>
+        /// <param name="customPrompt">The custom prompt to use for the tracking tooltip</param>
+        void DigitizeLine(LineDigitizationCallback callback, string customPrompt);
+
+        /// <summary>
+        /// Starts the digitization process for a point
+        /// </summary>
+        /// <param name="callback">The callback to be invoked when the digitization process completes</param>
+        /// <param name="customPrompt">The custom prompt to use for the tracking tooltip</param>
+        void DigitizePoint(PointDigitizationCallback callback, string customPrompt);
+
+        /// <summary>
+        /// Starts the digitization process for a polygon
+        /// </summary>
+        /// <param name="callback">The callback to be invoked when the digitization process completes</param>
+        /// <param name="customPrompt">The custom prompt to use for the tracking tooltip</param>
+        void DigitizePolygon(PolygonDigitizationCallback callback, string customPrompt);
+
+        /// <summary>
+        /// Starts the digitization process for a line string (polyline)
+        /// </summary>
+        /// <param name="callback">The callback to be invoked when the digitization process completes</param>
+        /// <param name="customPrompt">The custom prompt to use for the tracking tooltip</param>
+        void DigitizeLineString(LineStringDigitizationCallback callback, string customPrompt);
+
+        /// <summary>
+        /// Starts the digitization process for a line string (polyline)
+        /// </summary>
+        /// <param name="callback">The callback to be invoked when the digitization process completes</param>
+        /// <param name="segmentDigitized">The callback to be invoked when a new segment of the current line string is digitized</param>
+        /// <param name="customPrompt">The custom prompt to use for the tracking tooltip</param>
+        void DigitizeLineString(LineStringDigitizationCallback callback, LineDigitizationCallback segmentDigitized, string customPrompt);
+
+        /// <summary>
+        /// Starts the digitization process for a rectangle
+        /// </summary>
+        /// <param name="callback">The callback to be invoked when the digitization process completes</param>
+        /// <param name="customPrompt">The custom prompt to use for the tracking tooltip</param>
+        void DigitizeRectangle(RectangleDigitizationCallback callback, string customPrompt);
+
+        /// <summary>
         /// Gets the current runtime map
         /// </summary>
         /// <returns></returns>
@@ -97,6 +147,21 @@ namespace Maestro.MapViewer
         /// Gets or sets the active tool
         /// </summary>
         MapActiveTool ActiveTool { get; set; }
+
+        /// <summary>
+        /// Gets or sets the minimum allowed zoom scale for this viewer
+        /// </summary>
+        int MinScale { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maximum allowed zoom scale for this viewer
+        /// </summary>
+        int MaxScale { get; set; }
+
+        /// <summary>
+        /// The amount of time (in ms) to wait to re-render after a mouse wheel scroll
+        /// </summary>
+        int MouseWheelDelayRenderInterval { get; set; }
 
         /// <summary>
         /// Gets or sets the factor by which to multiply the scale to zoom in
