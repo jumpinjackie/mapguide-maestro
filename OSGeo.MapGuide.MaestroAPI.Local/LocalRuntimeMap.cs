@@ -41,6 +41,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         { 
             _impl = map;
             InitializeLayersAndGroups();
+            _disableChangeTracking = false;
         }
 
         private void InitializeLayersAndGroups()
@@ -115,7 +116,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
             set
             {
-                _impl.DisplayDpi = value;
+                Action<int> setter = (val) => { _impl.DisplayDpi = val; };
+                ObservableSet(_impl.DisplayDpi, value, setter, "DisplayDpi");
             }
         }
 
@@ -127,7 +129,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
             set
             {
-                _impl.SetDisplaySize(_impl.DisplayWidth, value);
+                Action<int> setter = (val) => { _impl.SetDisplaySize(_impl.DisplayWidth, val); };
+                ObservableSet(_impl.DisplayHeight, value, setter, "DisplayHeight");
             }
         }
 
@@ -139,7 +142,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
             set
             {
-                _impl.SetDisplaySize(value, _impl.DisplayHeight);
+                Action<int> setter = (val) => { _impl.SetDisplaySize(val, _impl.DisplayHeight); };
+                ObservableSet(_impl.DisplayWidth, value, setter, "DisplayWidth");
             }
         }
 
@@ -204,7 +208,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
         public override void SetViewCenter(double x, double y)
         {
-            _impl.SetViewCenterXY(x, y);
+            var center = this.ViewCenter;
+            if (center.X != x || center.Y != y)
+            {
+                _impl.SetViewCenterXY(x, y);
+                OnPropertyChanged("ViewCenter");
+            }
         }
 
         public override double ViewScale
@@ -215,7 +224,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
             set
             {
-                _impl.SetViewScale(value);
+                Action<double> setter = (val) => { _impl.SetViewScale(val); };
+                ObservableSet(_impl.ViewScale, value, setter, "ViewScale");
             }
         }
 
@@ -227,13 +237,55 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
         }
 
+        public override bool IsDirty
+        {
+            get
+            {
+                return base.IsDirty;
+            }
+            protected set
+            {
+                if (_disableChangeTracking) return;
+                base.IsDirty = value;
+            }
+        }
+
         public override void Save()
         {
             //Synchronize the ordering of our layers and groups
+            var layers = _impl.GetLayers();
+            var groups = _impl.GetLayerGroups();
 
+            layers.Clear();
+            groups.Clear();
+
+            foreach (LocalRuntimeMapGroup group in this.Groups)
+            {
+                groups.Add(group.GetWrappedInstance());
+            }
+
+            foreach (LocalRuntimeMapLayer layer in this.Layers)
+            {
+                layers.Add(layer.GetWrappedInstance());
+            }
+
+            this.IsDirty = false;
         }
 
         public MgdMap GetWrappedInstance() { return _impl; }
+
+        public override void Deserialize(Serialization.MgBinaryDeserializer d)
+        {
+            
+        }
+
+        public override void Serialize(Serialization.MgBinarySerializer s)
+        {
+            
+        }
+
+        internal void ResetDirtyState() { this.IsDirty = false; }
+        internal void MakeDirty() { this.IsDirty = true; }
     }
 
     internal class LocalRuntimeMapGroup : RuntimeMapGroup
@@ -245,6 +297,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             _parent = parent;
             _impl = group;
+            _disableChangeTracking = false;
         }
 
         public override bool ExpandInLegend
@@ -255,7 +308,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
             set
             {
-                MgdMap.SetGroupExpandInLegend(_impl, value);
+                Action<bool> setter = (val) => { MgdMap.SetGroupExpandInLegend(_impl, val); };
+                ObservableSet(_impl.ExpandInLegend, value, setter, "ExpandInLegend");
             }
         }
 
@@ -276,7 +330,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                 if (groups.IndexOf(value) >= 0)
                 {
                     var grp = groups.GetItem(value);
-                    _impl.Group = grp;
+                    if (grp != _impl.Group)
+                    {
+                        _impl.Group = grp;
+                        OnPropertyChanged("Group");
+                    }
                 }
                 else
                 {
@@ -294,7 +352,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             set
             {
                 if (_disableChangeTracking) return; //Still initializing it seems
-                _impl.LegendLabel = value;
+
+                Action<string> setter = (val) => { _impl.LegendLabel = val; };
+                ObservableSet(_impl.LegendLabel, value, setter, "LegendLabel");
             }
         }
 
@@ -328,7 +388,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             set
             {
                 if (_disableChangeTracking) return; //Still initializing it seems
-                _impl.SetDisplayInLegend(value);
+                Action<bool> setter = (val) => { _impl.SetDisplayInLegend(val); };
+                ObservableSet(_impl.GetDisplayInLegend(), value, setter, "ShowInLegend");
             }
         }
 
@@ -349,8 +410,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             set
             {
                 if (_disableChangeTracking) return; //Still initializing it seems
-                _impl.Visible = value;
+                Action<bool> setter = (val) => { _impl.Visible = val; };
+                ObservableSet(_impl.Visible, value, setter, "Visible");
             }
+        }
+
+        internal MgLayerGroup GetWrappedInstance() { return _impl; }
+
+        public override void Deserialize(Serialization.MgBinaryDeserializer d)
+        {
+            
+        }
+
+        public override void Serialize(Serialization.MgBinarySerializer s)
+        {
+            
         }
     }
 
@@ -363,6 +437,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             _parent = parent;
             _impl = layer;
+            _disableChangeTracking = false;
         }
 
         public override bool ExpandInLegend
@@ -374,7 +449,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             set
             {
                 if (_disableChangeTracking) return; //Still initializing it seems
-                MgdMap.SetLayerExpandInLegend(_impl, value);
+                Action<bool> setter = (val) => { MgdMap.SetLayerExpandInLegend(_impl, val); };
+                if (ObservableSet(_impl.ExpandInLegend, value, setter, "ExpandInLegend"))
+                    _parent.MakeDirty();
             }
         }
 
@@ -415,11 +492,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             {
                 if (_disableChangeTracking) return; //Still initializing it seems
                 var impl = _parent.GetWrappedInstance();
-                var groups = impl.GetLayerGroups();
-                if (groups.IndexOf(value) >= 0)
+                var grp = _parent.Groups[value] as LocalRuntimeMapGroup;
+                if (grp != null)
                 {
-                    var grp = groups.GetItem(value);
-                    _impl.Group = grp;
+                    var implGroup = grp.GetWrappedInstance();
+                    if (implGroup != _impl.Group)
+                    {
+                        _impl.Group = implGroup;
+                        OnPropertyChanged("Group");
+                        _parent.MakeDirty();
+                    }
                 }
                 else
                 {
@@ -444,7 +526,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
             set
             {
-                _impl.LegendLabel = value;
+                Action<string> setter = (val) => { _impl.LegendLabel = val; };
+                if (ObservableSet(_impl.LegendLabel, value, setter, "LegendLabel"))
+                    _parent.MakeDirty();
             }
         }
 
@@ -493,7 +577,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
             set
             {
-                _impl.Selectable = value;
+                Action<bool> setter = (val) => { _impl.Selectable = val; };
+                if (ObservableSet(_impl.Selectable, value, setter, "Selectable"))
+                    _parent.MakeDirty();
             }
         }
 
@@ -505,7 +591,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
             set
             {
-                _impl.DisplayInLegend = value;
+                Action<bool> setter = (val) => { _impl.DisplayInLegend = val; };
+                if (ObservableSet(_impl.DisplayInLegend, value, setter, "ShowInLegend"))
+                    _parent.MakeDirty();
             }
         }
 
@@ -525,8 +613,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
             set
             {
-                _impl.Visible = value;
+                Action<bool> setter = (val) => { _impl.Visible = val; };
+                if (ObservableSet(_impl.Visible, value, setter, "Visible"))
+                    _parent.MakeDirty();
             }
+        }
+
+        internal MgLayerBase GetWrappedInstance() { return _impl; }
+
+        public override void Serialize(Serialization.MgBinarySerializer s)
+        {
+            
+        }
+
+        public override void Deserialize(Serialization.MgBinaryDeserializer d)
+        {
+            
         }
     }
 }

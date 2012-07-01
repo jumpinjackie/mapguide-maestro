@@ -208,7 +208,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="height">The height.</param>
         /// <param name="dpi">The dpi.</param>
         /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi);
+        System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi);
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
@@ -221,7 +221,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="height">The height.</param>
         /// <param name="dpi">The dpi.</param>
         /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi);
+        System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi);
 
         /// <summary>
         /// Renders the runtime map.
@@ -235,7 +235,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="dpi">The dpi.</param>
         /// <param name="format">The format.</param>
         /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format);
+        System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format);
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
@@ -249,7 +249,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="dpi">The dpi.</param>
         /// <param name="format">The format.</param>
         /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format);
+        System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format);
 
         /// <summary>
         /// Renders the runtime map.
@@ -264,7 +264,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="format">The format.</param>
         /// <param name="clip">if set to <c>true</c> [clip].</param>
         /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format, bool clip);
+        System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip);
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
@@ -279,7 +279,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="format">The format.</param>
         /// <param name="clip">if set to <c>true</c> [clip].</param>
         /// <returns></returns>
-        System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip);
+        System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip);
 
         /// <summary>
         /// Renders the legend for the specified <see cref="RuntimeMap"/> to the requested size and format

@@ -692,6 +692,9 @@ namespace Maestro.MapViewer
 
         private bool HasVisibleParent(RuntimeMapGroup grp)
         {
+            if (string.IsNullOrEmpty(grp.Group))
+                return true;
+
             var current = _map.Groups[grp.Group];
             if (current != null)
                 return current.Visible;
@@ -700,6 +703,9 @@ namespace Maestro.MapViewer
 
         private bool HasVisibleParent(RuntimeMapLayer layer)
         {
+            if (string.IsNullOrEmpty(layer.Group))
+                return true;
+
             var current = _map.Groups[layer.Group];
             if (current != null)
                 return current.Visible;

@@ -153,6 +153,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         protected internal RuntimeMap(IServerConnection conn)
         {
             this.StrictSelection = true;
+            this.IsDirty = false;
             _disableChangeTracking = true;
 
             this.WatermarkUsage = (int)WatermarkUsageType.Viewer;
@@ -172,7 +173,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             this.Layers = new RuntimeMapLayerCollection(this);
             this.Groups = new RuntimeMapGroupCollection(this);
-            this.IsDirty = false;
         }
 
         static IEnumerable<string> GetLayerIds(IMapDefinition mdf)
@@ -1285,10 +1285,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <value>
         ///   <c>true</c> if this instance is dirty; otherwise, <c>false</c>.
         /// </value>
-        public bool IsDirty
+        public virtual bool IsDirty
         {
             get;
-            internal set;
+            protected internal set;
         }
 
         private void SaveSelectionXml(string resourceID)
@@ -1467,7 +1467,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 throw new NotSupportedException();
 
             return _mapSvc.RenderRuntimeMap(
-                this.ResourceID, 
+                this, 
                 this.ViewCenter.X, 
                 this.ViewCenter.Y, 
                 this.ViewScale, 

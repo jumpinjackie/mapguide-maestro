@@ -34,6 +34,7 @@ using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using System.Diagnostics;
 using OSGeo.MapGuide.MaestroAPI.Local.Commands;
 using OSGeo.MapGuide.MaestroAPI.Commands;
+using OSGeo.MapGuide.MaestroAPI.Mapping;
 
 namespace OSGeo.MapGuide.MaestroAPI.Local
 {
@@ -1042,12 +1043,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return base.InferMPU(csWkt, units);
         }
 
+        public override Mapping.RuntimeMap OpenMap(string runtimeMapResourceId)
+        {
+            throw new NotSupportedException();
+        }
+
         public override Mapping.RuntimeMap CreateMap(string runtimeMapResourceId, ObjectModels.MapDefinition.IMapDefinition mdf, double metersPerUnit)
         {
             var mdfId = new MgResourceIdentifier(mdf.ResourceID);
             var implMap = new MgdMap(mdfId);
             var map = new LocalRuntimeMap(this, implMap);
             map.ResourceID = runtimeMapResourceId;
+            map.ResetDirtyState();
             return map;
         }
 
@@ -1108,12 +1115,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return RenderDynamicOverlay(map, selection, format, true);
         }
 
-        private static MgdSelection Convert(Mapping.MapSelection sel)
+        private static MgdSelection Convert(MgdMap map, Mapping.MapSelection sel)
         {
             if (sel == null)
                 return null;
 
-            MgdSelection impl = new MgdSelection();
+            MgdSelection impl = new MgdSelection(map);
             var xml = sel.ToXml();
             if (!string.IsNullOrEmpty(xml))
                 impl.FromXml(xml);
@@ -1128,8 +1135,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             var renderSvc = GetRenderingService();
             GetByteReaderMethod fetch = () =>
             {
-                var sel = Convert(selection);
-                return renderSvc.RenderDynamicOverlay(impl.GetWrappedInstance(), sel, format, keepSelection);
+                var implMap = impl.GetWrappedInstance();
+                var sel = Convert(implMap, selection);
+                return renderSvc.RenderDynamicOverlay(implMap, sel, format, keepSelection);
             };
             return new MgReadOnlyStream(fetch);
         }
@@ -1142,41 +1150,87 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             var renderSvc = GetRenderingService();
             GetByteReaderMethod fetch = () =>
             {
-                var sel = Convert(selection);
+                var implMap = impl.GetWrappedInstance();
+                var sel = Convert(implMap, selection);
                 var opts = new MgRenderingOptions(format, behaviour, new MgColor(selectionColor));
-                return renderSvc.RenderDynamicOverlay(impl.GetWrappedInstance(), sel, opts);
+                return renderSvc.RenderDynamicOverlay(implMap, sel, opts);
             };
             return new MgReadOnlyStream(fetch);
         }
 
-        public Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi)
+        public Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi)
         {
-            throw new NotImplementedException(); //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
+            return this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, "PNG", false);
         }
 
-        public Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi)
+        public Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi)
         {
-            throw new NotImplementedException(); //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
+            return this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, "PNG", false);
         }
 
-        public Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format)
+        public Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format)
         {
-            throw new NotImplementedException(); //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
+            return this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, format, false);
         }
 
-        public Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format)
+        public Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format)
         {
-            throw new NotImplementedException(); //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
+            return this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, format, false);
         }
 
-        public Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
+        public Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
         {
-            throw new NotImplementedException(); //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
+            var impl = map as LocalRuntimeMap;
+            if (impl == null)
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+            var implMap = impl.GetWrappedInstance();
+            var renderSvc = GetRenderingService();
+            GetByteReaderMethod fetch = () =>
+            {
+                implMap.SetViewCenterXY(x, y);
+                implMap.SetViewScale(scale);
+                implMap.SetDisplaySize(width, height);
+                implMap.SetDisplayDpi(dpi);
+                return renderSvc.RenderMap(implMap, null, format, false, clip);
+            };
+            return new MgReadOnlyStream(fetch);
         }
 
-        public Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
+        private static double CalculateScale(double mcsW, double mcsH, LocalRuntimeMap map)
         {
-            throw new NotImplementedException(); //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
+            var mpu = map.MetersPerUnit;
+            var mpp = 0.0254 / map.MetersPerUnit;
+            if (map.DisplayHeight * mcsW > map.DisplayWidth * mcsH)
+                return mcsW * mpu / (map.DisplayWidth * mpp); //width-limited
+            else
+                return mcsH * mpu / (map.DisplayHeight * mpp); //height-limited
+        }
+
+        private void GetDisplayViewAndCenter(double llx, double lly, double urx, double ury, LocalRuntimeMap map, out double vcx, out double vcy, out double vscale)
+        {
+            vscale = CalculateScale((urx - llx), (ury - lly), map);
+            vcx = llx + ((urx - llx) / 2);
+            vcy = ury + ((lly - ury) / 2);
+        }
+
+        public Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
+        {
+            var impl = map as LocalRuntimeMap;
+            if (impl == null)
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+            var implMap = impl.GetWrappedInstance();
+            var renderSvc = GetRenderingService();
+            GetByteReaderMethod fetch = () =>
+            {
+                double x, y, scale;
+                GetDisplayViewAndCenter(x1, y1, x2, y2, impl, out x, out y, out scale);
+                implMap.SetViewCenterXY(x, y);
+                implMap.SetViewScale(scale);
+                implMap.SetDisplaySize(width, height);
+                implMap.SetDisplayDpi(dpi);
+                return renderSvc.RenderMap(implMap, null, format, false, clip);
+            };
+            return new MgReadOnlyStream(fetch);
         }
 
         public Stream RenderMapLegend(Mapping.RuntimeMap map, int width, int height, System.Drawing.Color backgroundColor, string format)

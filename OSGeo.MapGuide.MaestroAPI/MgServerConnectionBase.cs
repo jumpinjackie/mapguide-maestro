@@ -233,9 +233,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="height">The height.</param>
         /// <param name="dpi">The dpi.</param>
         /// <returns></returns>
-        public virtual System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi)
+        public virtual System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi)
         {
-            return this.RenderRuntimeMap(resourceId, x, y, scale, width, height, dpi, "PNG", false);
+            return this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, "PNG", false);
         }
 
         /// <summary>
@@ -250,9 +250,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="height">The height.</param>
         /// <param name="dpi">The dpi.</param>
         /// <returns></returns>
-        public virtual System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi)
+        public virtual System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi)
         {
-            return this.RenderRuntimeMap(resourceId, x1, y1, x2, y2, width, height, dpi, "PNG", false);
+            return this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, "PNG", false);
         }
 
         /// <summary>
@@ -267,9 +267,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="dpi">The dpi.</param>
         /// <param name="format">The format.</param>
         /// <returns></returns>
-        public virtual System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format)
+        public virtual System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format)
         {
-            return this.RenderRuntimeMap(resourceId, x, y, scale, width, height, dpi, format, false);
+            return this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, format, false);
         }
 
         /// <summary>
@@ -285,9 +285,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="dpi">The dpi.</param>
         /// <param name="format">The format.</param>
         /// <returns></returns>
-        public virtual System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format)
+        public virtual System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format)
         {
-            return this.RenderRuntimeMap(resourceId, x1, y1, x2, y2, width, height, dpi, format, false);
+            return this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, format, false);
         }
 
         /// <summary>
@@ -303,7 +303,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="format">The format.</param>
         /// <param name="clip">if set to <c>true</c> [clip].</param>
         /// <returns></returns>
-        public abstract System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format, bool clip);
+        public abstract System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip);
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
@@ -318,7 +318,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="format">The format.</param>
         /// <param name="clip">if set to <c>true</c> [clip].</param>
         /// <returns></returns>
-        public abstract System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip);
+        public abstract System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip);
 
         /// <summary>
         /// Renders a dynamic overlay image of the map

@@ -1,6 +1,6 @@
 # *****************************************************************************
 # MapGuide Resource File
-# Copyright (C) 2004-2010 by Autodesk, Inc.
+# Copyright (C) 2004-2011 by Autodesk, Inc.
 #
 # WARNING: DO NOT MODIFY THIS FILE
 #
@@ -19,7 +19,6 @@
 # E X C E P T I O N S
 # *****************************************************************************
 [Exceptions]
-MgAliasNotFoundException							  = The given alias %1 is not defined in the configuration file
 MgAllProviderConnectionsUsedException                 = Cannot create any more connections to the %1 FDO provider.
 MgArgumentOutOfRangeException                         = Argument is out of range.
 MgArrayTypeMismatchException                          = Array type mismatch.
@@ -158,6 +157,7 @@ MgXmlParserException                                  = An exception occurred in
 # *****************************************************************************
 [ErrorDescription]
 MgArgumentsMismatch                                   = The arguments needed do not match the arguments provided.
+MgArgumentOutOfRange                                  = Argument out of range [%1, %2]: %3
 MgClassWOIdentity                                     = A class definition has no identity property.
 MgCollectionEmpty                                     = The collection cannot be empty.
 MgCoordinateSystemNotReadyException                   = The object is not ready for this operation.
@@ -225,14 +225,17 @@ MgCoordinateSystemUnexpectedError                     = Unexpected error.
 MgCoordinateSystemUnknownUnit                         = Unknown unit.
 MgDataReaderIdNotFound                                = The data reader ID was not found.
 MgDocumentIdentifierFilenameFailed                    = Failed to get the filename from the document identifier because no matching document path found.
+MgDuplicateObject                                     = Duplicate object found for name: %1
 MgFailedToGetFileNameForDates                         = Failed to get the filename for the specified dates.
 MgFailedToLoadFdoLibrary                              = Failed to load FDO library.
 MgFailedToRetrieveSystemExceptionMesage               = Failed to retrieve the system exception mesage. This message may not be unicode compliant.
 MgFailedToRetrieveThirdPartyExceptionMesage           = Failed to retrieve the third party exception mesage. This message may not be unicode compliant.
+MgFeatureSourceFormatInnerExceptionMessage            = Error occurred in Feature Source (%1): %2 (Cause: %3, Root Cause: %4)
 MgFeatureReaderIdNotFound                             = The feature reader ID was not found.
 MgFilenamesIdentical                                  = The filenames cannot be the same.
 MgFormatAllExceptionDetail                            = - %1(%2)
 MgFormatAllExceptionStackTrace                        = - %1(%2) line %3 file %4
+MgFormatFdoExceptionMessage                           = %1 (Cause: %2, Root Cause: %3)
 MgFormatInnerExceptionMessage                         = %1
 MgGeometryEmpty                                       = The geometry cannot be empty.
 MgGeometryPropertyEmpty                               = The geometry property cannot be empty.
@@ -260,6 +263,7 @@ MgInvalidImageSizeTooBig                              = The requested image size
 MgInvalidIpConfigurationForSiteServer                 = The site server (%1) must have the same IP address as this local server (%2).
 MgInvalidIpConfigurationForSupportServer              = The site server (%1) must have a different IP address than this support server (%2).
 MgInvalidLogType                                      = The log type is invalid because it is not recognized.
+MgInvalidLocale                                       = The specified locale (%1) is not a 2-letter ISO 639-1 language code
 MgInvalidMapPlotCollectionMapPlotInstruction          = The map plot is invalid because it contains an unrecognized map plot instruction.
 MgInvalidMicroSecond                                  = The microsecond is invalid because it must be between 0 and 999999.
 MgInvalidMinute                                       = The minute is invalid because it must be between 0 and 59.
@@ -285,6 +289,7 @@ MgInvalidWebTargetViewerType                          = The web target viewer ty
 MgInvalidWebWidgetType                                = The web widget type is invalid because it is not recognized.
 MgInvalidXmlDateTime                                  = The Xml date time is invalid because not all of the fields were found.
 MgInvalidYear                                         = The year is invalid because it must be between 1 and 9999.
+MgLayerBelongsToGroupNotInMap                         = The layer (%1) belongs to a group (%2) which is not part of the map.
 MgMachineIpMustBeLocalHost                            = The machine IP address must be a local host.
 MgMapCacheCleared                                     = The Tile Service map cache has been cleared.  Please increase TiledMapCacheSize in serverconfig.ini.
 MgMapDisplayDpiCannotBeLessThanOrEqualToZero          = The map DPI cannot be less than or equal to zero.
@@ -298,6 +303,9 @@ MgMissingSchema                                       = No schema specified.
 MgMissingSrs                                          = No coordinate system specified.
 MgNameNotFound                                        = The name was not found.
 MgNoDataFromRenderer                                  = No data from renderer.
+MgNoNameForObject                                     = No object found for name (%1)
+MgNullArgument                                        = Null argument: %1
+MgNullPointer                                         = Null pointer: %1
 MgPropertyValuesEmpty                                 = The property values cannot be empty.
 MgReaderIdNotFound                                    = The reader ID was not found.
 MgRepositoryAlreadyOpened                             = The repository is already opened by another process (e.g. If you are running the server interactively as an application from the command line, are you also running the server as a service?).
@@ -309,6 +317,9 @@ MgResourceRootPathsDifferent                          = The resource root paths 
 MgResourceTypesDifferent                              = The resource types cannot be different.
 MgResourcesIdentical                                  = The resources cannot be the same.
 MgSchemaNameMismatch                                  = This schema name does not match the one specified in the qualified class name '%1' provided.
+MgSessionExpired                                      = The session (%1) has expired.
+MgSelectionOpenWithEmptySession                       = Attempted to open a map selection with an empty or expired session id
+MgSelectionSaveWithEmptySession                       = Attempted to save a map selection with an empty or expired session id
 MgSiteServerIpMustNotBeLocalHost                      = The site server IP address must not be a local host.
 MgSqlReaderIdNotFound                                 = The SQL reader ID was not found.
 MgStringContainsReservedCharacters                    = The string cannot contain reserved characters %1

@@ -145,7 +145,7 @@ namespace Maestro.LiveMapEditor
 
         private void EvaluateCommandStates()
         {
-            btnMapProperties.Enabled = btnSaveMap.Enabled = btnSaveMapAs.Enabled = (_mapEditor != null);
+            btnMapProperties.Enabled = btnSaveMap.Enabled = btnSaveMapAs.Enabled = saveAsToolStripMenuItem.Enabled = saveToolStripMenuItem.Enabled = (_mapEditor != null);
             UpdateTitle();
         }
 

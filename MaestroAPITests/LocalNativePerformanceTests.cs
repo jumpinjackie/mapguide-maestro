@@ -31,7 +31,7 @@ namespace MaestroAPITests
         [Test]
         public void TestCase1914()
         {
-            var conn = LocalNativeConnectionUtil.CreateTestConnection();
+            var conn = ConnectionUtil.CreateTestLocalNativeConnection();
             var sw = new Stopwatch();
             sw.Start();
             conn.ResourceService.ResourceExists("Library://UnitTests/Data/Parcels.FeatureSource");

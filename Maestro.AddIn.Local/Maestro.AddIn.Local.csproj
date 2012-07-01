@@ -214,7 +214,7 @@
     <Content Include="FDO\FDOSpatial.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="FDO\gdal17.dll">
+    <Content Include="FDO\gdal19.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="FDO\GRFPMessage.dll">

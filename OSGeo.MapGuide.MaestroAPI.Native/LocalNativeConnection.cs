@@ -598,8 +598,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 OnResourceAdded(newpath);
 		}
 
-		public override System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
+        public override System.IO.Stream RenderRuntimeMap(RuntimeMap rtmap, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
 		{
+            var resourceId = rtmap.ResourceID;
 			MgRenderingService rnd = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
 			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
 			MgGeometryFactory gf = new MgGeometryFactory();
@@ -620,8 +621,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return new MgReadOnlyStream(fetch);
 		}
 
-        public override System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
+        public override System.IO.Stream RenderRuntimeMap(RuntimeMap rtmap, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
         {
+            var resourceId = rtmap.ResourceID;
             MgRenderingService rnd = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
             MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
             MgGeometryFactory gf = new MgGeometryFactory();

@@ -37,6 +37,7 @@ namespace MaestroAPITests
         public const bool IgnoreObjectTests = false;
         public const bool IgnoreResourceTests = false;
         public const bool IgnoreHttpRuntimeMapTests = false;
+        public const bool IgnoreLocalRuntimeMapTests = false;
         public const bool IgnoreLocalNativeRuntimeMapTests = true;
         public const bool IgnoreLocalNativePerformanceTests = true;
         public const bool IgnoreLocalNativeFeatureTests = true;
@@ -48,20 +49,22 @@ namespace MaestroAPITests
         public const bool IgnoreMiscTests = false;
     }
 
-    public class LocalNativeConnectionUtil
+    public class ConnectionUtil
     {
-        public static IServerConnection CreateTestConnection()
+        public static string Port { get { return ""; } }
+
+        public static IServerConnection CreateTestLocalNativeConnection()
         {
             return ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative",
                     "ConfigFile", "MGOS22\\webconfig.ini",
                     "Username", "Administrator",
                     "Password", "admin");
         }
-    }
 
-    public class ConnectionUtil
-    {
-        public static string Port { get { return ""; } }
+        public static IServerConnection CreateTestLocalConnection()
+        {
+            return ConnectionProviderRegistry.CreateConnection("Maestro.Local", "ConfigFile", "Platform.ini");
+        }
 
         public static IServerConnection CreateTestHttpConnectionWithGeoRest()
         {

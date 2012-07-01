@@ -75,7 +75,7 @@ namespace MaestroAPITests
                 _conn = CreateTestConnection();
                 SetupTestData();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -162,7 +162,7 @@ namespace MaestroAPITests
             //Assert.IsTrue(Matches(map3, mdf));
         }
 
-        private bool Matches(RuntimeMap map, IMapDefinition mdf)
+        protected bool Matches(RuntimeMap map, IMapDefinition mdf)
         {
             if (map.MapDefinition != mdf.ResourceID) return false;
             if (map.Groups.Count != mdf.GetGroupCount()) return false;
@@ -212,7 +212,7 @@ namespace MaestroAPITests
             var mid = "Session:" + _conn.SessionID + "//TestSave.Map";
             var map = mapSvc.CreateMap(mid, mdf, 1.0);
             //Doesn't exist yet because save isn't called
-            Assert.IsTrue(!resSvc.ResourceExists(mid));
+            if (CaresAboutRuntimeMapState) Assert.IsTrue(!resSvc.ResourceExists(mid));
             
             //Call save
             Assert.IsTrue(Matches(map, mdf));
@@ -220,7 +220,11 @@ namespace MaestroAPITests
             map.Save();
             Assert.IsFalse(map.IsDirty);
             Assert.IsTrue(Matches(map, mdf));
-            Assert.IsTrue(resSvc.ResourceExists(mid));
+            if (CaresAboutRuntimeMapState) Assert.IsTrue(resSvc.ResourceExists(mid));
+
+            //Tests below not applicable if test suite doesn't care about runtime state
+            if (!CaresAboutRuntimeMapState)
+                return;
 
             //Open second runtime map instance
             var map2 = mapSvc.OpenMap(mid);
@@ -228,8 +232,8 @@ namespace MaestroAPITests
             Assert.IsTrue(Matches(map2, mdf));
 
             //Tweak some settings
-            var parcels = map2.GetLayerByName("Parcels");
-            var rail = map2.GetLayerByName("Rail");
+            var parcels = map2.Layers["Parcels"];
+            var rail = map2.Layers["Rail"];
             Assert.NotNull(parcels);
 
             parcels.Visible = false;
@@ -252,8 +256,8 @@ namespace MaestroAPITests
             parcels = null;
             rail = null;
 
-            parcels = map3.GetLayerByName("Parcels");
-            rail = map3.GetLayerByName("Rail");
+            parcels = map3.Layers["Parcels"];
+            rail = map3.Layers["Rail"];
             Assert.NotNull(parcels);
 
             Assert.IsFalse(parcels.Visible);
@@ -263,6 +267,10 @@ namespace MaestroAPITests
 
             Assert.IsFalse(rail.Selectable);
         }
+
+        public abstract string TestPrefix { get; }
+
+        protected virtual bool CaresAboutRuntimeMapState { get { return true; } }
 
         public virtual void TestRender75k()
         {
@@ -288,27 +296,28 @@ namespace MaestroAPITests
             metersPerUnit = cs.MetersPerUnitX;
             Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
 
-            var mid = "Session:" + _conn.SessionID + "//TestRender75k.Map";
+            var mid = "Session:" + _conn.SessionID + "//" + TestPrefix + "TestRender75k.Map";
             var map = mapSvc.CreateMap(mid, mdf, metersPerUnit);
+            Assert.IsFalse(map.IsDirty);
             map.ViewScale = 75000;
             map.DisplayWidth = 1024;
             map.DisplayHeight = 1024;
             map.DisplayDpi = 96;
 
             //Doesn't exist yet because save isn't called
-            Assert.IsTrue(!resSvc.ResourceExists(mid));
+            if (CaresAboutRuntimeMapState) Assert.IsTrue(!resSvc.ResourceExists(mid));
             Assert.IsTrue(map.IsDirty);
             map.Save();
             Assert.IsFalse(map.IsDirty);
 
             //Render default
-            RenderAndVerify(mapSvc, map, "TestRender75k.png", "PNG");
-            RenderAndVerifyConvenience(map, "TestRender75kConvenience.png", "PNG");
-            RenderDynamicOverlayAndVerify(mapSvc, map, "TestRenderOverlay75k.png", "PNG");
-            RenderDynamicOverlayAndVerifyConvenience(map, "TestRenderOverlay75kConvenience.png", "PNG");
+            RenderAndVerify(mapSvc, map, TestPrefix + "TestRender75k.png", "PNG");
+            RenderAndVerifyConvenience(map, TestPrefix + "TestRender75kConvenience.png", "PNG");
+            RenderDynamicOverlayAndVerify(mapSvc, map, TestPrefix + "TestRenderOverlay75k.png", "PNG");
+            RenderDynamicOverlayAndVerifyConvenience(map, TestPrefix + "TestRenderOverlay75kConvenience.png", "PNG");
 
             //Turn off parcels
-            var rail = map.GetLayerByName("Rail");
+            var rail = map.Layers["Rail"];
             Assert.NotNull(rail);
             rail.Visible = false;
             Assert.IsTrue(map.IsDirty);
@@ -316,14 +325,14 @@ namespace MaestroAPITests
             Assert.IsFalse(map.IsDirty);
 
             //Render again
-            RenderAndVerify(mapSvc, map, "TestRender75k_NoRail.png", "PNG");
-            RenderAndVerifyConvenience(map, "TestRender75kConvenience_NoRail.png", "PNG");
-            RenderDynamicOverlayAndVerify(mapSvc, map, "TestRenderOverlay75k_NoRail.png", "PNG");
-            RenderDynamicOverlayAndVerifyConvenience(map, "TestRenderOverlay75kConvenience_NoRail.png", "PNG");
+            RenderAndVerify(mapSvc, map, TestPrefix + "TestRender75k_NoRail.png", "PNG");
+            RenderAndVerifyConvenience(map, TestPrefix + "TestRender75kConvenience_NoRail.png", "PNG");
+            RenderDynamicOverlayAndVerify(mapSvc, map, TestPrefix + "TestRenderOverlay75k_NoRail.png", "PNG");
+            RenderDynamicOverlayAndVerifyConvenience(map, TestPrefix + "TestRenderOverlay75kConvenience_NoRail.png", "PNG");
 
             //Turn Rail back on
             rail = null;
-            rail = map.GetLayerByName("Rail");
+            rail = map.Layers["Rail"];
             Assert.NotNull(rail);
             rail.Visible = true;
             Assert.IsTrue(map.IsDirty);
@@ -331,10 +340,10 @@ namespace MaestroAPITests
             Assert.IsFalse(map.IsDirty);
 
             //Render again
-            RenderAndVerify(mapSvc, map, "TestRender75k_RailBackOn.png", "PNG");
-            RenderAndVerifyConvenience(map, "TestRender75kConvenience_RailBackOn.png", "PNG");
-            RenderDynamicOverlayAndVerify(mapSvc, map, "TestRenderOverlay75k_RailBackOn.png", "PNG");
-            RenderDynamicOverlayAndVerifyConvenience(map, "TestRenderOverlay75kConvenience_RailBackOn.png", "PNG");
+            RenderAndVerify(mapSvc, map, TestPrefix + "TestRender75k_RailBackOn.png", "PNG");
+            RenderAndVerifyConvenience(map, TestPrefix + "TestRender75kConvenience_RailBackOn.png", "PNG");
+            RenderDynamicOverlayAndVerify(mapSvc, map, TestPrefix + "TestRenderOverlay75k_RailBackOn.png", "PNG");
+            RenderDynamicOverlayAndVerifyConvenience(map, TestPrefix + "TestRenderOverlay75kConvenience_RailBackOn.png", "PNG");
         }
 
         #region render helpers
@@ -441,7 +450,7 @@ namespace MaestroAPITests
 
         private static void RenderAndVerify(IMappingService mapSvc, RuntimeMap map, string fileName, string format)
         {
-            using (var stream = mapSvc.RenderRuntimeMap(map.ResourceID, map.ViewCenter.X, map.ViewCenter.Y, map.ViewScale, map.DisplayWidth, map.DisplayHeight, map.DisplayDpi, format))
+            using (var stream = mapSvc.RenderRuntimeMap(map, map.ViewCenter.X, map.ViewCenter.Y, map.ViewScale, map.DisplayWidth, map.DisplayHeight, map.DisplayDpi, format))
             {
                 using (var ms = new MemoryStream())
                 using (var ms2 = new MemoryStream())
@@ -511,7 +520,7 @@ namespace MaestroAPITests
             metersPerUnit = cs.MetersPerUnitX;
             Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
 
-            var mid = "Session:" + _conn.SessionID + "//TestLegendIconRendering.Map";
+            var mid = "Session:" + _conn.SessionID + "//" + TestPrefix + "TestLegendIconRendering.Map";
             var map = mapSvc.CreateMap(mid, mdf, metersPerUnit);
             map.ViewScale = 12000;
             map.DisplayWidth = 1024;
@@ -528,28 +537,28 @@ namespace MaestroAPITests
             foreach (var layer in map.Layers)
             {
                 var icon = mapSvc.GetLegendImage(map.ViewScale, layer.LayerDefinitionID, -1, -1);
-                icon.Save("TestLegendIconRendering_" + counter + "_16x16.png");
+                icon.Save(TestPrefix + "TestLegendIconRendering_" + counter + "_16x16.png");
                 counter++;
             }
 
             foreach (var layer in map.Layers)
             {
                 var icon = mapSvc.GetLegendImage(map.ViewScale, layer.LayerDefinitionID, -1, -1, 16, 16, "JPG");
-                icon.Save("TestLegendIconRendering_" + counter + "_16x16.jpg");
+                icon.Save(TestPrefix + "TestLegendIconRendering_" + counter + "_16x16.jpg");
                 counter++;
             }
 
             foreach (var layer in map.Layers)
             {
                 var icon = mapSvc.GetLegendImage(map.ViewScale, layer.LayerDefinitionID, -1, -1, 16, 16, "GIF");
-                icon.Save("TestLegendIconRendering_" + counter + "_16x16.gif");
+                icon.Save(TestPrefix + "TestLegendIconRendering_" + counter + "_16x16.gif");
                 counter++;
             }
 
             foreach (var layer in map.Layers)
             {
                 var icon = mapSvc.GetLegendImage(map.ViewScale, layer.LayerDefinitionID, -1, -1, 160, 50, "PNG");
-                icon.Save("TestLegendIconRendering_" + counter + "_160x50.png");
+                icon.Save(TestPrefix + "TestLegendIconRendering_" + counter + "_160x50.png");
                 counter++;
             }
         }
@@ -578,8 +587,9 @@ namespace MaestroAPITests
             metersPerUnit = cs.MetersPerUnitX;
             Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
 
-            var mid = "Session:" + _conn.SessionID + "//TestRender12k.Map";
+            var mid = "Session:" + _conn.SessionID + "//" + TestPrefix + "TestRender12k.Map";
             var map = mapSvc.CreateMap(mid, mdf, metersPerUnit);
+            Assert.IsFalse(map.IsDirty);
             map.ViewScale = 12000;
             map.DisplayWidth = 1024;
             map.DisplayHeight = 1024;
@@ -592,13 +602,13 @@ namespace MaestroAPITests
             Assert.IsFalse(map.IsDirty);
 
             //Render default
-            RenderAndVerify(mapSvc, map, "TestRender12k.png", "PNG");
-            RenderAndVerifyConvenience(map, "TestRender12kConvenience.png", "PNG");
-            RenderDynamicOverlayAndVerify(mapSvc, map, "TestRenderOverlay12k.png", "PNG");
-            RenderDynamicOverlayAndVerifyConvenience(map, "TestRenderOverlay12kConvenience.png", "PNG");
+            RenderAndVerify(mapSvc, map, TestPrefix + "TestRender12k.png", "PNG");
+            RenderAndVerifyConvenience(map, TestPrefix + "TestRender12kConvenience.png", "PNG");
+            RenderDynamicOverlayAndVerify(mapSvc, map, TestPrefix + "TestRenderOverlay12k.png", "PNG");
+            RenderDynamicOverlayAndVerifyConvenience(map, TestPrefix + "TestRenderOverlay12kConvenience.png", "PNG");
 
             //Turn off parcels
-            var parcels = map.GetLayerByName("Parcels");
+            var parcels = map.Layers["Parcels"];
             Assert.NotNull(parcels);
             parcels.Visible = false;
             Assert.IsTrue(map.IsDirty);
@@ -606,14 +616,14 @@ namespace MaestroAPITests
             Assert.IsFalse(map.IsDirty);
             
             //Render again
-            RenderAndVerify(mapSvc, map, "TestRender12k_NoParcels.png", "PNG");
-            RenderAndVerifyConvenience(map, "TestRender12kConvenience_NoParcels.png", "PNG");
-            RenderDynamicOverlayAndVerify(mapSvc, map, "TestRenderOverlay12k_NoParcels.png", "PNG");
-            RenderDynamicOverlayAndVerifyConvenience(map, "TestRenderOverlay12kConvenience_NoParcels.png", "PNG");
+            RenderAndVerify(mapSvc, map, TestPrefix + "TestRender12k_NoParcels.png", "PNG");
+            RenderAndVerifyConvenience(map, TestPrefix + "TestRender12kConvenience_NoParcels.png", "PNG");
+            RenderDynamicOverlayAndVerify(mapSvc, map, TestPrefix + "TestRenderOverlay12k_NoParcels.png", "PNG");
+            RenderDynamicOverlayAndVerifyConvenience(map, TestPrefix + "TestRenderOverlay12kConvenience_NoParcels.png", "PNG");
 
             //Turn parcels back on
             parcels = null;
-            parcels = map.GetLayerByName("Parcels");
+            parcels = map.Layers["Parcels"];
             Assert.NotNull(parcels);
             parcels.Visible = true;
             Assert.IsTrue(map.IsDirty);
@@ -621,10 +631,10 @@ namespace MaestroAPITests
             Assert.IsFalse(map.IsDirty);
 
             //Render again
-            RenderAndVerify(mapSvc, map, "TestRender12k_ParcelsBackOn.png", "PNG");
-            RenderAndVerifyConvenience(map, "TestRender12kConvenience_ParcelsBackOn.png", "PNG");
-            RenderDynamicOverlayAndVerify(mapSvc, map, "TestRenderOverlay12k_ParcelsBackOn.png", "PNG");
-            RenderDynamicOverlayAndVerifyConvenience(map, "TestRenderOverlay12kConvenience_ParcelsBackOn.png", "PNG");
+            RenderAndVerify(mapSvc, map, TestPrefix + "TestRender12k_ParcelsBackOn.png", "PNG");
+            RenderAndVerifyConvenience(map, TestPrefix + "TestRender12kConvenience_ParcelsBackOn.png", "PNG");
+            RenderDynamicOverlayAndVerify(mapSvc, map, TestPrefix + "TestRenderOverlay12k_ParcelsBackOn.png", "PNG");
+            RenderDynamicOverlayAndVerifyConvenience(map, TestPrefix + "TestRenderOverlay12kConvenience_ParcelsBackOn.png", "PNG");
         }
 
         public virtual void TestMapManipulation()
@@ -650,7 +660,7 @@ namespace MaestroAPITests
             metersPerUnit = cs.MetersPerUnitX;
             Trace.TraceInformation("Using MPU of: {0}", metersPerUnit);
 
-            var mid = "Session:" + _conn.SessionID + "//TestMapManipulation.Map";
+            var mid = "Session:" + _conn.SessionID + "//" + TestPrefix + "TestMapManipulation.Map";
             var map = mapSvc.CreateMap(mid, mdf, metersPerUnit);
             map.ViewScale = 12000;
             map.DisplayWidth = 1024;
@@ -664,43 +674,43 @@ namespace MaestroAPITests
             Assert.IsFalse(map.IsDirty);
 
             //Render default
-            RenderAndVerify(mapSvc, map, "TestMapManipulation12kWithRail.png", "PNG");
-            RenderAndVerifyConvenience(map, "TestMapManipulation12kConvenienceWithRail.png", "PNG");
-            RenderDynamicOverlayAndVerify(mapSvc, map, "TestMapManipulationOverlay12kWithRail.png", "PNG");
-            RenderDynamicOverlayAndVerifyConvenience(map, "TestMapManipulationOverlay12kConvenienceWithRail.png", "PNG");
+            RenderAndVerify(mapSvc, map, TestPrefix + "TestMapManipulation12kWithRail.png", "PNG");
+            RenderAndVerifyConvenience(map, TestPrefix + "TestMapManipulation12kConvenienceWithRail.png", "PNG");
+            RenderDynamicOverlayAndVerify(mapSvc, map, TestPrefix + "TestMapManipulationOverlay12kWithRail.png", "PNG");
+            RenderDynamicOverlayAndVerifyConvenience(map, TestPrefix + "TestMapManipulationOverlay12kConvenienceWithRail.png", "PNG");
 
-            RenderLegendAndVerify(mapSvc, map, 200, 600, "TestLegend12kWithRail.png", "PNG");
-            RenderLegendAndVerifyConvenience(map, 200, 600, "TestLegend12kConvenienceWithRail.png", "PNG");
+            RenderLegendAndVerify(mapSvc, map, 200, 600, TestPrefix + "TestLegend12kWithRail.png", "PNG");
+            RenderLegendAndVerifyConvenience(map, 200, 600, TestPrefix + "TestLegend12kConvenienceWithRail.png", "PNG");
 
             //Remove parcels
-            var rail = map.GetLayerByName("Rail");
+            var rail = map.Layers["Rail"];
             Assert.NotNull(rail);
-            map.RemoveLayer(rail);
+            map.Layers.Remove(rail);
             Assert.IsTrue(map.IsDirty);
             map.Save();
             Assert.IsFalse(map.IsDirty);
 
             //Render again
-            RenderAndVerify(mapSvc, map, "TestMapManipulation12k_RailRemoved.png", "PNG");
-            RenderAndVerifyConvenience(map, "TestMapManipulation12kConvenience_RailRemoved.png", "PNG");
-            RenderDynamicOverlayAndVerify(mapSvc, map, "TestMapManipulationOverlay12k_RailRemoved.png", "PNG");
-            RenderDynamicOverlayAndVerifyConvenience(map, "TestMapManipulationOverlay12kConvenience_RailRemoved.png", "PNG");
+            RenderAndVerify(mapSvc, map, TestPrefix + "TestMapManipulation12k_RailRemoved.png", "PNG");
+            RenderAndVerifyConvenience(map, TestPrefix + "TestMapManipulation12kConvenience_RailRemoved.png", "PNG");
+            RenderDynamicOverlayAndVerify(mapSvc, map, TestPrefix + "TestMapManipulationOverlay12k_RailRemoved.png", "PNG");
+            RenderDynamicOverlayAndVerifyConvenience(map, TestPrefix + "TestMapManipulationOverlay12kConvenience_RailRemoved.png", "PNG");
 
-            RenderLegendAndVerify(mapSvc, map, 200, 600, "TestLegend12k_RailRemoved.png", "PNG");
-            RenderLegendAndVerifyConvenience(map, 200, 600, "TestLegend12kConvenience_RailRemoved.png", "PNG");
+            RenderLegendAndVerify(mapSvc, map, 200, 600, TestPrefix + "TestLegend12k_RailRemoved.png", "PNG");
+            RenderLegendAndVerifyConvenience(map, 200, 600, TestPrefix + "TestLegend12kConvenience_RailRemoved.png", "PNG");
 
             //Add rail again
             rail = null;
-            rail = map.GetLayerByName("Rail");
+            rail = map.Layers["Rail"];
             Assert.Null(rail);
 
-            rail = map.CreateLayer("Library://UnitTests/Layers/Rail.LayerDefinition", null);
+            rail = mapSvc.CreateMapLayer(map, (ILayerDefinition)resSvc.GetResource("Library://UnitTests/Layers/Rail.LayerDefinition"));
             rail.LegendLabel = "Rail";
             rail.Visible = true;
             rail.ShowInLegend = true;
             rail.ExpandInLegend = true;
 
-            map.InsertLayer(0, rail);
+            map.Layers.Insert(0, rail);
 
             //map.AddLayer(rail);
             //Set draw order above parcels
@@ -712,13 +722,13 @@ namespace MaestroAPITests
             Assert.IsFalse(map.IsDirty);
 
             //Render again. Rail should be above parcels
-            RenderAndVerify(mapSvc, map, "TestMapManipulation12k_RailReAdded.png", "PNG");
-            RenderAndVerifyConvenience(map, "TestMapManipulation12kConvenience_RailReAdded.png", "PNG");
-            RenderDynamicOverlayAndVerify(mapSvc, map, "TestMapManipulationOverlay12k_RailReAdded.png", "PNG");
-            RenderDynamicOverlayAndVerifyConvenience(map, "TestMapManipulationOverlay12kConvenience_RailReAdded.png", "PNG");
+            RenderAndVerify(mapSvc, map, TestPrefix + "TestMapManipulation12k_RailReAdded.png", "PNG");
+            RenderAndVerifyConvenience(map, TestPrefix + "TestMapManipulation12kConvenience_RailReAdded.png", "PNG");
+            RenderDynamicOverlayAndVerify(mapSvc, map, TestPrefix + "TestMapManipulationOverlay12k_RailReAdded.png", "PNG");
+            RenderDynamicOverlayAndVerifyConvenience(map, TestPrefix + "TestMapManipulationOverlay12kConvenience_RailReAdded.png", "PNG");
 
-            RenderLegendAndVerify(mapSvc, map, 200, 600, "TestLegend12k_RailReAdded.png", "PNG");
-            RenderLegendAndVerifyConvenience(map, 200, 600, "TestLegend12kConvenience_RailReAdded.png", "PNG");
+            RenderLegendAndVerify(mapSvc, map, 200, 600, TestPrefix + "TestLegend12k_RailReAdded.png", "PNG");
+            RenderLegendAndVerifyConvenience(map, 200, 600, TestPrefix + "TestLegend12kConvenience_RailReAdded.png", "PNG");
         }
 
         public virtual void TestMapManipulation2()
@@ -752,8 +762,13 @@ namespace MaestroAPITests
             foreach (var removeMe in removeGroups)
                 mdf.RemoveGroup(removeMe);
 
+            var testResourceId = "Library://UnitTests/Maps/Sheboygan_" + TestPrefix + "_TestMapManipulation2.MapDefinition";
+            resSvc.SaveResourceAs(mdf, testResourceId);
+            mdf = resSvc.GetResource(testResourceId) as IMapDefinition;
+            Assert.NotNull(mdf);
+
             //Now create our runtime map
-            var mid = "Session:" + _conn.SessionID + "//TestMapManipulation2.Map";
+            var mid = "Session:" + _conn.SessionID + "//" + TestPrefix + "TestMapManipulation2.Map";
             var map = mapSvc.CreateMap(mid, mdf, metersPerUnit);
             map.ViewScale = 12000;
             map.DisplayWidth = 1024;
@@ -763,8 +778,8 @@ namespace MaestroAPITests
             Assert.AreEqual(0, map.Layers.Count);
             Assert.AreEqual(0, map.Groups.Count);
 
-            map.Groups.Add(new RuntimeMapGroup(map, "Group1"));
-            map.Groups.Add(new RuntimeMapGroup(map, "Group2"));
+            map.Groups.Add(mapSvc.CreateMapGroup(map, "Group1"));//new RuntimeMapGroup(map, "Group1"));
+            map.Groups.Add(mapSvc.CreateMapGroup(map, "Group2"));//new RuntimeMapGroup(map, "Group2"));
             Assert.AreEqual(2, map.Groups.Count);
 
             Assert.NotNull(map.Groups["Group1"]);
@@ -876,8 +891,13 @@ namespace MaestroAPITests
             foreach (var removeMe in removeGroups)
                 mdf.RemoveGroup(removeMe);
 
+            var testResourceId = "Library://UnitTests/Maps/Sheboygan_" + TestPrefix + "_TestMapManipulation3.MapDefinition";
+            resSvc.SaveResourceAs(mdf, testResourceId);
+            mdf = resSvc.GetResource(testResourceId) as IMapDefinition;
+            Assert.NotNull(mdf);
+
             //Now create our runtime map
-            var mid = "Session:" + _conn.SessionID + "//TestMapManipulation2.Map";
+            var mid = "Session:" + _conn.SessionID + "//" + TestPrefix + "TestMapManipulation2.Map";
             var map = mapSvc.CreateMap(mid, mdf, metersPerUnit);
             map.ViewScale = 12000;
             map.DisplayWidth = 1024;
@@ -887,8 +907,8 @@ namespace MaestroAPITests
             Assert.AreEqual(0, map.Layers.Count);
             Assert.AreEqual(0, map.Groups.Count);
 
-            map.Groups.Add(new RuntimeMapGroup(map, "Group1"));
-            map.Groups.Add(new RuntimeMapGroup(map, "Group2"));
+            map.Groups.Add(mapSvc.CreateMapGroup(map, "Group1"));//new RuntimeMapGroup(map, "Group1"));
+            map.Groups.Add(mapSvc.CreateMapGroup(map, "Group2"));//new RuntimeMapGroup(map, "Group2"));
             Assert.AreEqual(2, map.Groups.Count);
 
             Assert.NotNull(map.Groups["Group1"]);
@@ -1095,6 +1115,11 @@ namespace MaestroAPITests
             return ConnectionUtil.CreateTestHttpConnection();
         }
 
+        public override string TestPrefix
+        {
+            get { return "Http"; }
+        }
+
         [Test]
         public override void TestExtentSerialization()
         {
@@ -1175,11 +1200,16 @@ namespace MaestroAPITests
     }
 
     [TestFixture(Ignore = TestControl.IgnoreLocalNativeRuntimeMapTests)]
-    public class LocalRuntimeMapTests : RuntimeMapTests
+    public class LocalNativeRuntimeMapTests : RuntimeMapTests
     {
         protected override IServerConnection CreateTestConnection()
         {
-            return LocalNativeConnectionUtil.CreateTestConnection();
+            return ConnectionUtil.CreateTestLocalNativeConnection();
+        }
+
+        public override string TestPrefix
+        {
+            get { return "LocalNative"; }
         }
 
         [Test]
@@ -1247,5 +1277,95 @@ namespace MaestroAPITests
         {
             base.TestLargeMapCreatePerformance();
         }
+    }
+
+    [TestFixture(Ignore = TestControl.IgnoreLocalRuntimeMapTests)]
+    public class LocalRuntimeMapTests : RuntimeMapTests
+    {
+        protected override IServerConnection CreateTestConnection()
+        {
+            return ConnectionUtil.CreateTestLocalConnection();
+        }
+
+        public override string TestPrefix
+        {
+            get { return "Local"; }
+        }
+
+        protected override bool CaresAboutRuntimeMapState
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        /*
+        [Test]
+        public override void TestExtentSerialization()
+        {
+            base.TestExtentSerialization();
+        }*/
+
+        [Test]
+        public override void TestResourceEvents()
+        {
+            base.TestResourceEvents();
+        }
+
+        [Test]
+        public override void TestCreate()
+        {
+            base.TestCreate();
+        }
+        
+        [Test]
+        public override void TestSave()
+        {
+            base.TestSave();
+        }
+        
+        [Test]
+        public override void TestRender75k()
+        {
+            base.TestRender75k();
+        }
+
+        [Test]
+        public override void TestRender12k()
+        {
+            base.TestRender12k();
+        }
+
+        [Test]
+        public override void TestLegendIconRendering()
+        {
+            base.TestLegendIconRendering();
+        }
+
+        [Test]
+        public override void TestMapManipulation()
+        {
+            base.TestMapManipulation();
+        }
+
+        [Test]
+        public override void TestMapManipulation2()
+        {
+            base.TestMapManipulation2();
+        }
+
+        [Test]
+        public override void TestMapManipulation3()
+        {
+            base.TestMapManipulation3();
+        }
+
+        /*
+        [Test]
+        public override void TestLargeMapCreatePerformance()
+        {
+            base.TestLargeMapCreatePerformance();
+        }*/
     }
 }

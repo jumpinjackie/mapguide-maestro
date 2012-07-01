@@ -373,7 +373,7 @@ namespace MaestroAPITests
     {
         protected override IServerConnection CreateTestConnection()
         {
-            return LocalNativeConnectionUtil.CreateTestConnection();
+            return ConnectionUtil.CreateTestLocalNativeConnection();
         }
 
         [Test]
@@ -424,7 +424,7 @@ namespace MaestroAPITests
     {
         protected override IServerConnection CreateTestConnection()
         {
-            return ConnectionProviderRegistry.CreateConnection("Maestro.Local", "ConfigFile", "Platform.ini");
+            return ConnectionUtil.CreateTestLocalConnection();
         }
 
         [Test]

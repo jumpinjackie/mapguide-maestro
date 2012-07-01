@@ -54,6 +54,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             return true;
         }
 
+        protected virtual bool ObservableSet<T>(T oldValue, T newValue, Action<T> setter, string propertyName)
+        {
+            if (EqualityComparer<T>.Default.Equals(oldValue, newValue))
+                return false;
+
+            setter.Invoke(newValue);
+            OnPropertyChanged(propertyName);
+            return true;
+        }
+
         /// <summary>
         /// Raises the <see cref="PropertyChanged"/> event
         /// </summary>

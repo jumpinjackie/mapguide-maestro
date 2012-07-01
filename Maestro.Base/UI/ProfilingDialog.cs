@@ -229,7 +229,7 @@ namespace Maestro.Base.UI
                                 {
                                     //TODO: Use extents rather than scale
                                     //using (System.IO.Stream s = m_connection.RenderRuntimeMap(tmp2, m.Extents, 1024, 800, 96))
-                                    using (System.IO.Stream s = mpsvc.RenderRuntimeMap(rtmap.ResourceID, ((rtmap.DataExtent.MaxX - rtmap.DataExtent.MinX) / 2) + rtmap.DataExtent.MinX, ((rtmap.DataExtent.MaxY - rtmap.DataExtent.MinY) / 2) + rtmap.DataExtent.MinY, 50000, 1024, 800, 96))
+                                    using (System.IO.Stream s = mpsvc.RenderRuntimeMap(rtmap, ((rtmap.DataExtent.MaxX - rtmap.DataExtent.MinX) / 2) + rtmap.DataExtent.MinX, ((rtmap.DataExtent.MaxY - rtmap.DataExtent.MinY) / 2) + rtmap.DataExtent.MinY, 50000, 1024, 800, 96))
                                     {
                                         backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_MapRenderingImageSize, s.Length)));
                                     }
@@ -351,7 +351,7 @@ namespace Maestro.Base.UI
                 {
                     //TODO: Use extents rather than scale
                     //using (System.IO.Stream s = m_connection.RenderRuntimeMap(tmp2, mdef.Extents, 1024, 800, 96))
-                    using (System.IO.Stream s = mpsvc.RenderRuntimeMap(rtmap.ResourceID, ((mdef.Extents.MaxX - mdef.Extents.MinX) / 2) + mdef.Extents.MinX, ((mdef.Extents.MaxY - mdef.Extents.MinY) / 2) + mdef.Extents.MinY, 50000, 1024, 800, 96))
+                    using (System.IO.Stream s = mpsvc.RenderRuntimeMap(rtmap, ((mdef.Extents.MaxX - mdef.Extents.MinX) / 2) + mdef.Extents.MinX, ((mdef.Extents.MaxY - mdef.Extents.MinY) / 2) + mdef.Extents.MinY, 50000, 1024, 800, 96))
                     {
                         //Just dispose it after being read
                         backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_MapRenderingImageSize, s.Length)));

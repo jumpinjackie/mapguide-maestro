@@ -993,8 +993,9 @@ namespace OSGeo.MapGuide.MaestroAPI
             return this.OpenRead(req);
         }
 
-		public override System.IO.Stream RenderRuntimeMap(string resourceId, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
+		public override System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
 		{
+            var resourceId = map.ResourceID;
             ResourceIdentifier.Validate(resourceId, ResourceTypes.RuntimeMap);
 			string mapname = resourceId.Substring(resourceId.IndexOf("//") + 2);
 			mapname = mapname.Substring(0, mapname.LastIndexOf("."));
@@ -1024,8 +1025,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 #endif
 		}
 
-        public override System.IO.Stream RenderRuntimeMap(string resourceId, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
+        public override System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
         {
+            var resourceId = map.ResourceID;
             ResourceIdentifier.Validate(resourceId, ResourceTypes.RuntimeMap);
             string mapname = resourceId.Substring(resourceId.IndexOf("//") + 2);
             mapname = mapname.Substring(0, mapname.LastIndexOf("."));
