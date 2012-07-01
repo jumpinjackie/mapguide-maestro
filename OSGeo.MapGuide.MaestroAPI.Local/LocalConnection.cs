@@ -629,7 +629,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
         public override Version SiteVersion
         {
-            get { return new Version(2, 4, 0, 0); }
+            get { return typeof(MgdMap).Assembly.GetName().Version; }
         }
 
         public override string[] GetCustomPropertyNames()
@@ -1107,7 +1107,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
             var ldfId = new MgResourceIdentifier(ldf.ResourceID);
             var layer = new MgdLayer(ldfId, GetResourceService());
-            return new LocalRuntimeMapLayer(impl, layer);
+            return new LocalRuntimeMapLayer(impl, layer, this);
         }
 
         public Stream RenderDynamicOverlay(Mapping.RuntimeMap map, Mapping.MapSelection selection, string format)
@@ -1263,19 +1263,57 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new System.Drawing.Bitmap(new MgReadOnlyStream(fetch));
         }
 
-        public string QueryMapFeatures(string runtimeMapName, string wkt, bool persist, QueryMapFeaturesLayerAttributes attributes, bool raw)
+        public string QueryMapFeatures(RuntimeMap rtMap, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)
         {
-            return string.Empty; //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
-        }
+            var impl = rtMap as LocalRuntimeMap;
+            if (impl == null)
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
 
-        public string QueryMapFeatures(string runtimeMapName, string wkt, bool persist)
-        {
-            return string.Empty; //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
-        }
+            var rs = GetRenderingService();
+            var res = GetResourceService();
+            var map = impl.GetWrappedInstance();
 
-        public string QueryMapFeatures(string runtimeMapName, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)
-        {
-            return string.Empty; //TODO: Not needed for Live Map Editor, but will have problems when viewer component is used standalone
+            MgWktReaderWriter r = new MgWktReaderWriter();
+            MgStringCollection layerNames = null;
+            string featureFilter = "";
+            int layerAttributeFilter = 0;
+            int op = MgFeatureSpatialOperations.Intersects;
+            if (selectionVariant == "TOUCHES")
+                op = MgFeatureSpatialOperations.Touches;
+            else if (selectionVariant == "INTERSECTS")
+                op = MgFeatureSpatialOperations.Intersects;
+            else if (selectionVariant == "WITHIN")
+                op = MgFeatureSpatialOperations.Within;
+            else if (selectionVariant == "ENVELOPEINTERSECTS")
+                op = MgFeatureSpatialOperations.EnvelopeIntersects;
+            else
+                throw new ArgumentException("Unknown or unsupported selection variant: " + selectionVariant);
+
+            if (extraOptions != null)
+            {
+                if (!string.IsNullOrEmpty(extraOptions.FeatureFilter))
+                    featureFilter = extraOptions.FeatureFilter;
+                if (extraOptions.LayerNames != null && extraOptions.LayerNames.Length > 0)
+                {
+                    layerNames = new MgStringCollection();
+                    foreach (var name in extraOptions.LayerNames)
+                        layerNames.Add(name);
+                }
+                layerAttributeFilter = (int)extraOptions.LayerAttributeFilter;
+            }
+
+            MgdFeatureInformation info = rs.QueryFeatures(map, layerNames, r.Read(wkt), op, featureFilter, maxFeatures, layerAttributeFilter);
+
+            string xml = "";
+            GetByteReaderMethod fetch = () => { return info.ToXml(); };
+            using (var sr = new StreamReader(new MgReadOnlyStream(fetch)))
+            {
+                xml = sr.ReadToEnd();
+            }
+            
+            impl.Selection.LoadXml(xml);
+
+            return xml;
         }
     }
 }

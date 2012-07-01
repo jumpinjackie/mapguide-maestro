@@ -1726,7 +1726,9 @@ namespace Maestro.MapViewer
             }
             if (args.SelectionRenderingOptions != null)
             {
-                res.SelectionImage = Image.FromStream(_map.RenderDynamicOverlay(null, args.SelectionRenderingOptions.Format, args.SelectionRenderingOptions.Color, args.SelectionRenderingOptions.Behavior));
+                //HACK: HTTP provider is stateless, so passing the selection is not only redundant, but will probably break on large selections.
+                var sel = (_map.CurrentConnection.ProviderName.ToUpper().Equals("MAESTRO.HTTP")) ? null : _map.Selection;
+                res.SelectionImage = Image.FromStream(_map.RenderDynamicOverlay(sel, args.SelectionRenderingOptions.Format, args.SelectionRenderingOptions.Color, args.SelectionRenderingOptions.Behavior));
             }
 
             e.Result = res;
@@ -2034,7 +2036,7 @@ namespace Maestro.MapViewer
             var sw = new Stopwatch();
             sw.Start();
 #endif
-            _map.QueryMapFeatures(wkt, -1, true, "INTERSECTS", null);
+            _map.QueryMapFeatures(wkt, -1, true, "INTERSECTS", CreateQueryOptionsForSelection());
 #if TRACE
             sw.Stop();
             Trace.TraceInformation("Selection processing completed in {0}ms", sw.ElapsedMilliseconds);
@@ -2044,6 +2046,14 @@ namespace Maestro.MapViewer
             var handler = this.SelectionChanged;
             if (handler != null)
                 handler(this, EventArgs.Empty);
+        }
+
+        private QueryMapOptions CreateQueryOptionsForSelection()
+        {
+            return new QueryMapOptions()
+            {
+                LayerAttributeFilter = QueryMapFeaturesLayerAttributes.OnlySelectable | QueryMapFeaturesLayerAttributes.OnlyVisible
+            };
         }
 
         protected override void OnResize(EventArgs e)

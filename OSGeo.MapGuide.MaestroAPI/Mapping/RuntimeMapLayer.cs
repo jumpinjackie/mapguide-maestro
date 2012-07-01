@@ -112,7 +112,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         public RuntimeMap Parent { get; private set; }
 
-        private void Initialize(ILayerDefinition ldf)
+        protected void Initialize(ILayerDefinition ldf)
         {
             Check.NotNull(ldf, "ldf");
             this.LayerDefinitionID = ldf.ResourceID;

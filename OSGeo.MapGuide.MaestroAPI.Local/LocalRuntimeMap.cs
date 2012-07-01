@@ -24,6 +24,8 @@ using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
 using System.Drawing;
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
 namespace OSGeo.MapGuide.MaestroAPI.Local
 {
@@ -36,10 +38,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
     internal class LocalRuntimeMap : RuntimeMap
     {
         private MgdMap _impl;
+        private LocalConnection _conn;
 
         public LocalRuntimeMap(LocalConnection conn, MgdMap map) : base(conn)
         { 
             _impl = map;
+            _conn = conn;
             InitializeLayersAndGroups();
             _disableChangeTracking = false;
         }
@@ -61,7 +65,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             //Then layers
             for (int i = 0; i < layers.GetCount(); i++)
             {
-                this.Layers.Add(new LocalRuntimeMapLayer(this, layers.GetItem(i)));
+                this.Layers.Add(new LocalRuntimeMapLayer(this, layers.GetItem(i), _conn));
             }
         }
 
@@ -433,10 +437,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         private LocalRuntimeMap _parent;
         private MgLayerBase _impl;
 
-        public LocalRuntimeMapLayer(LocalRuntimeMap parent, MgLayerBase layer) : base(parent)
+        internal LocalRuntimeMapLayer(LocalRuntimeMap parent, MgLayerBase layer, IResourceService resSvc) : base(parent)
         {
             _parent = parent;
             _impl = layer;
+            var ldfId = layer.GetLayerDefinition();
+            var ldf = (ILayerDefinition)resSvc.GetResource(ldfId.ToString());
+            Initialize(ldf);
             _disableChangeTracking = false;
         }
 
@@ -565,7 +572,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             get
             {
-                return _impl.GetClassName();
+                return _impl.GetFeatureClassName();
             }
         }
 

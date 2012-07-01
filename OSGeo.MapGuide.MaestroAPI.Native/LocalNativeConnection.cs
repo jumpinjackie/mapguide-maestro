@@ -1334,8 +1334,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return new MgReadOnlyStream(fetch);
         }
 
-        public override string QueryMapFeatures(string runtimeMapName, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)
+        public override string QueryMapFeatures(RuntimeMap rtMap, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)
         {
+            string runtimeMapName = rtMap.Name;
             MgRenderingService rs = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
             MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
             MgMap map = new MgMap();
@@ -1383,31 +1384,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             sel.Save(res, mapname);
 
             LogMethodCall("QueryMapFeatures", true, runtimeMapName, wkt, persist, selectionVariant, extraOptions == null ? "null" : "QueryMapOptions");
-
-            return xml;
-        }
-
-        public override string QueryMapFeatures(string runtimeMapName, string wkt, bool persist, QueryMapFeaturesLayerAttributes attributes, bool raw)
-        {
-            MgRenderingService rs = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
-            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
-            MgMap map = new MgMap();
-            string mapname = runtimeMapName.IndexOf(":") > 0 ? new ResourceIdentifier(runtimeMapName).Path : runtimeMapName;
-            map.Open(res, mapname);
-
-            MgWktReaderWriter r = new MgWktReaderWriter();
-            MgFeatureInformation info = rs.QueryFeatures(map, null, r.Read(wkt), (int)MgFeatureSpatialOperations.Intersects, "", -1, (int)attributes);
-
-            string xml = "";
-            GetByteReaderMethod fetch = () => { return info.ToXml(); };
-            using (var sr = new StreamReader(new MgReadOnlyStream(fetch)))
-            {
-                xml = sr.ReadToEnd();
-            }
-            MgSelection sel = new MgSelection(map, xml);
-            sel.Save(res, mapname);
-
-            LogMethodCall("QueryMapFeatures", true, runtimeMapName, wkt, persist, (int)attributes, raw);
 
             return xml;
         }

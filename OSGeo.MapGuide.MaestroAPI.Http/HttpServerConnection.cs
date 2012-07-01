@@ -1800,8 +1800,9 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        public override string QueryMapFeatures(string runtimeMapName, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)
+        public override string QueryMapFeatures(RuntimeMap map, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)
         {
+            string runtimeMapName = map.Name;
             //The request may execeed the url limit of the server, when large geometries
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             System.Net.WebRequest req = m_reqBuilder.QueryMapFeatures(runtimeMapName, maxFeatures, wkt, persist, selectionVariant, extraOptions, ms);
@@ -1816,48 +1817,6 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             using (var sr = new StreamReader(req.GetResponse().GetResponseStream()))
                 return sr.ReadToEnd();
-        }
-
-        public override string QueryMapFeatures(string runtimeMapName, string wkt, bool persist, QueryMapFeaturesLayerAttributes attributes, bool raw)
-        {
-            //The request may execeed the url limit of the server, when large geometries
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            System.Net.WebRequest req = m_reqBuilder.QueryMapFeatures(runtimeMapName, persist, wkt, ms, attributes);
-            req.Timeout = 200 * 1000;
-            ms.Position = 0;
-
-            using (System.IO.Stream rs = req.GetRequestStream())
-            {
-                Utility.CopyStream(ms, rs);
-                rs.Flush();
-            }
-
-            System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
-#if DEBUG
-            System.IO.MemoryStream xms = new System.IO.MemoryStream();
-            Utility.CopyStream(req.GetResponse().GetResponseStream(), xms);
-            xms.Position = 0;
-            string f = System.Text.Encoding.UTF8.GetString(xms.ToArray());
-            if (raw)
-                return f;
-            xms.Position = 0;
-            doc.Load(xms);
-
-#else
-			
-			if (raw)
-			{
-				System.IO.MemoryStream xms = new System.IO.MemoryStream();
-				Utility.CopyStream(req.GetResponse().GetResponseStream(), xms);
-				return System.Text.Encoding.UTF8.GetString(xms.ToArray());
-			}
-
-			doc.Load(req.GetResponse().GetResponseStream());
-#endif
-            if (doc.SelectSingleNode("FeatureInformation/FeatureSet") != null && doc["FeatureInformation"]["FeatureSet"].ChildNodes.Count > 0)
-                return "<FeatureSet>" + doc["FeatureInformation"]["FeatureSet"].InnerXml + "</FeatureSet>";
-            else
-                return "";
         }
 
         public override string[] GetSchemas(string resourceId)

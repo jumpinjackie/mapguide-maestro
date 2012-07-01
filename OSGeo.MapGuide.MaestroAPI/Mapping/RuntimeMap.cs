@@ -1551,12 +1551,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 format);
         }
 
-        public string QueryMapFeatures(string wkt, int maxFeatures, bool persist, string selectionVariant, QueryMapOptions extraOptions)
+        public virtual string QueryMapFeatures(string wkt, int maxFeatures, bool persist, string selectionVariant, QueryMapOptions extraOptions)
         {
             if (_mapSvc == null)
                 throw new NotSupportedException();
 
-            var ret = _mapSvc.QueryMapFeatures(this.Name, maxFeatures, wkt, true, selectionVariant, extraOptions);
+            var ret = _mapSvc.QueryMapFeatures(this, maxFeatures, wkt, true, selectionVariant, extraOptions);
 
             //Need to re-sync the selection as this will probably have been changed
             ReloadSelection();
