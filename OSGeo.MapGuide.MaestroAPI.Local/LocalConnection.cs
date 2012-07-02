@@ -624,7 +624,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         protected override ClassDefinition GetClassDefinitionInternal(string resourceId, string schemaName, string className)
         {
             var cls = GetFeatureService().GetClassDefinition(new MgResourceIdentifier(resourceId), schemaName, className);
-            return Native.Utility.ConvertClassDefinition(cls);
+            var klass = Native.Utility.ConvertClassDefinition(cls);
+            var parent = new FeatureSchema(schemaName, "");
+            parent.AddClass(klass);
+            return klass;
         }
 
         public override Version SiteVersion

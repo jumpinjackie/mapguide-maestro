@@ -1133,7 +1133,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         {
             var fsvc = (MgFeatureService)this.Connection.CreateService(MgServiceType.FeatureService);
             var cls = fsvc.GetClassDefinition(new MgResourceIdentifier(resourceId), schemaName, className);
-            return Native.Utility.ConvertClassDefinition(cls);
+            var klass = Native.Utility.ConvertClassDefinition(cls);
+            var parent = new FeatureSchema(schemaName, "");
+            parent.AddClass(klass);
+            return klass;
         }
 
         public override IServerConnection Clone()
