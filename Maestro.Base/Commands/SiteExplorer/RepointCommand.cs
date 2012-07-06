@@ -41,6 +41,12 @@ namespace Maestro.Base.Commands.SiteExplorer
             var exp = wb.ActiveSiteExplorer;
             var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
             var conn = connMgr.GetConnection(exp.ConnectionName);
+            if (!IsValid(conn))
+            {
+                MessageService.ShowError(Properties.Resources.ConnectionDoesNotSupportRequiredInterfaces);
+                return;
+            }
+
             if (exp.SelectedItems.Length == 1)
             {
                 var selected = exp.SelectedItems[0];
@@ -58,6 +64,11 @@ namespace Maestro.Base.Commands.SiteExplorer
                     MessageService.ShowMessage(Properties.Resources.ResourceNotRepointable);
                 }
             }
+        }
+
+        private bool IsValid(IServerConnection conn)
+        {
+            return conn.Capabilities.SupportsResourceReferences;
         }
 
         private void DoRepointMap(Workbench wb, OSGeo.MapGuide.MaestroAPI.IServerConnection conn, ResourceIdentifier resId)

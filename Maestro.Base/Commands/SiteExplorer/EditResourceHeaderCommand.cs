@@ -37,6 +37,12 @@ namespace Maestro.Base.Commands.SiteExplorer
             {
                 var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
                 var conn = connMgr.GetConnection(exp.ConnectionName);
+                if (!IsValid(conn))
+                {
+                    MessageService.ShowError(Properties.Resources.ConnectionDoesNotSupportRequiredInterfaces);
+                    return;
+                }
+
                 var item = exp.SelectedItems[0];
                 var diag = new ResourceHeaderXmlDialog(item.ResourceId, conn.ResourceService);
                 if (item.IsFolder)
@@ -51,6 +57,11 @@ namespace Maestro.Base.Commands.SiteExplorer
                 }
                 diag.ShowDialog();
             }
+        }
+
+        private bool IsValid(OSGeo.MapGuide.MaestroAPI.IServerConnection conn)
+        {
+            return conn.Capabilities.SupportsResourceHeaders;
         }
     }
 }

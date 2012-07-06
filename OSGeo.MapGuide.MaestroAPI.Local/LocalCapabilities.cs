@@ -67,5 +67,45 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             get { return false; }
         }
+
+        public override bool SupportsResourceReferences
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public override bool SupportsResourceSecurity
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public override bool SupportsWfsPublishing
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public override bool SupportsWmsPublishing
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public override bool SupportsResourceHeaders
+        {
+            get
+            {
+                return false;
+            }
+        }
     }
 }

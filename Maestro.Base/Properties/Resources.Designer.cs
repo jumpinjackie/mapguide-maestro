@@ -459,6 +459,15 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The current connection does not support the required interfaces to perform this action.
+        /// </summary>
+        internal static string ConnectionDoesNotSupportRequiredInterfaces {
+            get {
+                return ResourceManager.GetString("ConnectionDoesNotSupportRequiredInterfaces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Messages.
         /// </summary>
         internal static string Content_Messages {

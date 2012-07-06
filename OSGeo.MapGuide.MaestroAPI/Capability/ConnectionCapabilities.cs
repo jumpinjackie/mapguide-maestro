@@ -279,5 +279,45 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         {
             return IsSupportedResourceType(resType.ToString());
         }
+
+        /// <summary>
+        /// Gets whether this connection supports publishing resources for WFS
+        /// </summary>
+        public virtual bool SupportsWfsPublishing
+        {
+            get { return true; }
+        }
+
+        /// <summary>
+        /// Gets whether this connection supports publishing resources for WMS
+        /// </summary>
+        public virtual bool SupportsWmsPublishing
+        {
+            get { return true; }
+        }
+
+        /// <summary>
+        /// Gets whether this connection supports resource reference tracking
+        /// </summary>
+        public virtual bool SupportsResourceReferences
+        {
+            get { return true; }
+        }
+
+        /// <summary>
+        /// Gets whether this connection supports resource security
+        /// </summary>
+        public virtual bool SupportsResourceSecurity
+        {
+            get { return true; }
+        }
+
+        /// <summary>
+        /// Gets whether this connection supports the concept of resource headers
+        /// </summary>
+        public virtual bool SupportsResourceHeaders
+        {
+            get { return true; }
+        }
     }
 }

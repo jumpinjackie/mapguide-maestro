@@ -35,6 +35,12 @@ namespace Maestro.Base.Commands.SiteExplorer
             var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
             var conn = connMgr.GetConnection(wb.ActiveSiteExplorer.ConnectionName);
 
+            if (!IsValid(conn))
+            {
+                MessageService.ShowError(Properties.Resources.ConnectionDoesNotSupportRequiredInterfaces);
+                return;
+            }
+
             //Can only show properties of one selected item
             if (items.Length == 1)
             {
@@ -42,6 +48,15 @@ namespace Maestro.Base.Commands.SiteExplorer
                 var dlg = new ResourcePropertiesDialog(icons, conn, items[0].ResourceId);
                 dlg.ShowDialog(wb);
             }
+        }
+
+        private bool IsValid(OSGeo.MapGuide.MaestroAPI.IServerConnection conn)
+        {
+            return conn.Capabilities.SupportsResourceHeaders &&
+                   conn.Capabilities.SupportsResourceReferences &&
+                   conn.Capabilities.SupportsResourceSecurity &&
+                   conn.Capabilities.SupportsWfsPublishing &&
+                   conn.Capabilities.SupportsWmsPublishing;
         }
     }
 }
