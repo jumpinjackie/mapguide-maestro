@@ -112,16 +112,16 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 16</value>
   </data>
@@ -138,13 +138,13 @@
     <value>label1</value>
   </data>
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>DataGroup</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -165,7 +165,7 @@
     <value>label2</value>
   </data>
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>RuleCountPanel</value>
@@ -192,7 +192,7 @@
     <value>AggregateLabel</value>
   </data>
   <data name="&gt;&gt;AggregateLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;AggregateLabel.Parent" xml:space="preserve">
     <value>GroupPanel</value>
@@ -219,13 +219,13 @@
     <value>OverwriteRules</value>
   </data>
   <data name="&gt;&gt;OverwriteRules.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;OverwriteRules.Parent" xml:space="preserve">
     <value>DataGroup</value>
   </data>
   <data name="&gt;&gt;OverwriteRules.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="AppendRules.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -246,15 +246,15 @@
     <value>AppendRules</value>
   </data>
   <data name="&gt;&gt;AppendRules.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;AppendRules.Parent" xml:space="preserve">
     <value>DataGroup</value>
   </data>
   <data name="&gt;&gt;AppendRules.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ColumnCombo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -271,13 +271,13 @@
     <value>ColumnCombo</value>
   </data>
   <data name="&gt;&gt;ColumnCombo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ColumnCombo.Parent" xml:space="preserve">
     <value>DataGroup</value>
   </data>
   <data name="&gt;&gt;ColumnCombo.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="RuleCount.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -295,7 +295,7 @@
     <value>RuleCount</value>
   </data>
   <data name="&gt;&gt;RuleCount.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;RuleCount.Parent" xml:space="preserve">
     <value>RuleCountPanel</value>
@@ -331,7 +331,7 @@
     <value>AggregateCombo</value>
   </data>
   <data name="&gt;&gt;AggregateCombo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;AggregateCombo.Parent" xml:space="preserve">
     <value>GroupPanel</value>
@@ -341,6 +341,33 @@
   </data>
   <data name="DataGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
+  </data>
+  <data name="chkUseFirstRuleAsTemplate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="chkUseFirstRuleAsTemplate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>147, 94</value>
+  </data>
+  <data name="chkUseFirstRuleAsTemplate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>165, 36</value>
+  </data>
+  <data name="chkUseFirstRuleAsTemplate.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="chkUseFirstRuleAsTemplate.Text" xml:space="preserve">
+    <value>Use geometry and label style from current first rule</value>
+  </data>
+  <data name="&gt;&gt;chkUseFirstRuleAsTemplate.Name" xml:space="preserve">
+    <value>chkUseFirstRuleAsTemplate</value>
+  </data>
+  <data name="&gt;&gt;chkUseFirstRuleAsTemplate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkUseFirstRuleAsTemplate.Parent" xml:space="preserve">
+    <value>DataGroup</value>
+  </data>
+  <data name="&gt;&gt;chkUseFirstRuleAsTemplate.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="GroupPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 40</value>
@@ -355,13 +382,13 @@
     <value>GroupPanel</value>
   </data>
   <data name="&gt;&gt;GroupPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;GroupPanel.Parent" xml:space="preserve">
     <value>DataGroup</value>
   </data>
   <data name="&gt;&gt;GroupPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="RuleCountPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -379,13 +406,13 @@
     <value>RuleCountPanel</value>
   </data>
   <data name="&gt;&gt;RuleCountPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;RuleCountPanel.Parent" xml:space="preserve">
     <value>DataGroup</value>
   </data>
   <data name="&gt;&gt;RuleCountPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="DataGroup.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 8</value>
@@ -403,7 +430,7 @@
     <value>DataGroup</value>
   </data>
   <data name="&gt;&gt;DataGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;DataGroup.Parent" xml:space="preserve">
     <value>$this</value>
@@ -433,7 +460,7 @@
     <value>label3</value>
   </data>
   <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>ColorBrewerPanel</value>
@@ -454,7 +481,7 @@
     <value>ColorBrewerDataType</value>
   </data>
   <data name="&gt;&gt;ColorBrewerDataType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ColorBrewerDataType.Parent" xml:space="preserve">
     <value>ColorBrewerPanel</value>
@@ -475,7 +502,7 @@
     <value>ColorBrewerColorSet</value>
   </data>
   <data name="&gt;&gt;ColorBrewerColorSet.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.CustomCombo, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.CustomCombo, Maestro.Editors, Version=5.0.0.6640, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;ColorBrewerColorSet.Parent" xml:space="preserve">
     <value>ColorBrewerPanel</value>
@@ -496,7 +523,7 @@
     <value>ColorBrewerPanel</value>
   </data>
   <data name="&gt;&gt;ColorBrewerPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ColorBrewerPanel.Parent" xml:space="preserve">
     <value>DisplayGroup</value>
@@ -523,7 +550,7 @@
     <value>ColorBrewerLabel</value>
   </data>
   <data name="&gt;&gt;ColorBrewerLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ColorBrewerLabel.Parent" xml:space="preserve">
     <value>DisplayGroup</value>
@@ -544,7 +571,7 @@
     <value>GradientToColor</value>
   </data>
   <data name="&gt;&gt;GradientToColor.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=5.0.0.6640, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;GradientToColor.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -565,7 +592,7 @@
     <value>GradientFromColor</value>
   </data>
   <data name="&gt;&gt;GradientFromColor.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=5.0.0.6640, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;GradientFromColor.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -592,7 +619,7 @@
     <value>label4</value>
   </data>
   <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label4.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -613,7 +640,7 @@
     <value>panel2</value>
   </data>
   <data name="&gt;&gt;panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
     <value>DisplayGroup</value>
@@ -637,7 +664,7 @@
     <value>ChangeBaseStyleBtn</value>
   </data>
   <data name="&gt;&gt;ChangeBaseStyleBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ChangeBaseStyleBtn.Parent" xml:space="preserve">
     <value>DisplayGroup</value>
@@ -661,7 +688,7 @@
     <value>ColorBrewerColors</value>
   </data>
   <data name="&gt;&gt;ColorBrewerColors.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ColorBrewerColors.Parent" xml:space="preserve">
     <value>DisplayGroup</value>
@@ -688,7 +715,7 @@
     <value>GradientColors</value>
   </data>
   <data name="&gt;&gt;GradientColors.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;GradientColors.Parent" xml:space="preserve">
     <value>DisplayGroup</value>
@@ -712,7 +739,7 @@
     <value>DisplayGroup</value>
   </data>
   <data name="&gt;&gt;DisplayGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;DisplayGroup.Parent" xml:space="preserve">
     <value>$this</value>
@@ -736,7 +763,7 @@
     <value>PreviewPicture</value>
   </data>
   <data name="&gt;&gt;PreviewPicture.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;PreviewPicture.Parent" xml:space="preserve">
     <value>PreviewGroup</value>
@@ -760,7 +787,7 @@
     <value>PreviewGroup</value>
   </data>
   <data name="&gt;&gt;PreviewGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;PreviewGroup.Parent" xml:space="preserve">
     <value>$this</value>
@@ -787,7 +814,7 @@
     <value>CancelBtn</value>
   </data>
   <data name="&gt;&gt;CancelBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CancelBtn.Parent" xml:space="preserve">
     <value>ButtonPanel</value>
@@ -814,7 +841,7 @@
     <value>OKBtn</value>
   </data>
   <data name="&gt;&gt;OKBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;OKBtn.Parent" xml:space="preserve">
     <value>ButtonPanel</value>
@@ -838,7 +865,7 @@
     <value>ButtonPanel</value>
   </data>
   <data name="&gt;&gt;ButtonPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ButtonPanel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -859,14 +886,11 @@
     <value>colorComboBox1</value>
   </data>
   <data name="&gt;&gt;colorComboBox1.Type" xml:space="preserve">
-    <value>OSGeo.MapGuide.Maestro.ResourceEditors.GeometryStyleEditors.ColorComboBox, OSGeo.MapGuide.Maestro.ResourceEditors, Version=1.1.0.4347, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=5.0.0.6640, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>333, 363</value>
   </data>
@@ -877,6 +901,6 @@
     <value>ThemeCreator</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

@@ -39,17 +39,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.RuleCount = new System.Windows.Forms.NumericUpDown();
             this.AggregateCombo = new System.Windows.Forms.ComboBox();
             this.DataGroup = new System.Windows.Forms.GroupBox();
+            this.chkUseFirstRuleAsTemplate = new System.Windows.Forms.CheckBox();
             this.GroupPanel = new System.Windows.Forms.Panel();
             this.RuleCountPanel = new System.Windows.Forms.Panel();
             this.DisplayGroup = new System.Windows.Forms.GroupBox();
             this.ColorBrewerPanel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.ColorBrewerDataType = new System.Windows.Forms.ComboBox();
-            this.ColorBrewerColorSet = new CustomCombo();
+            this.ColorBrewerColorSet = new Maestro.Editors.Common.CustomCombo();
             this.ColorBrewerLabel = new System.Windows.Forms.LinkLabel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.GradientToColor = new ColorComboBox();
-            this.GradientFromColor = new ColorComboBox();
+            this.GradientToColor = new Maestro.Editors.Common.ColorComboBox();
+            this.GradientFromColor = new Maestro.Editors.Common.ColorComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.ChangeBaseStyleBtn = new System.Windows.Forms.Button();
             this.ColorBrewerColors = new System.Windows.Forms.RadioButton();
@@ -59,7 +60,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.ButtonPanel = new System.Windows.Forms.Panel();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.OKBtn = new System.Windows.Forms.Button();
-            this.colorComboBox1 = new ColorComboBox();
+            this.colorComboBox1 = new Maestro.Editors.Common.ColorComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.RuleCount)).BeginInit();
             this.DataGroup.SuspendLayout();
             this.GroupPanel.SuspendLayout();
@@ -141,6 +142,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             // DataGroup
             // 
             resources.ApplyResources(this.DataGroup, "DataGroup");
+            this.DataGroup.Controls.Add(this.chkUseFirstRuleAsTemplate);
             this.DataGroup.Controls.Add(this.GroupPanel);
             this.DataGroup.Controls.Add(this.RuleCountPanel);
             this.DataGroup.Controls.Add(this.ColumnCombo);
@@ -149,6 +151,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.DataGroup.Controls.Add(this.label1);
             this.DataGroup.Name = "DataGroup";
             this.DataGroup.TabStop = false;
+            // 
+            // chkUseFirstRuleAsTemplate
+            // 
+            resources.ApplyResources(this.chkUseFirstRuleAsTemplate, "chkUseFirstRuleAsTemplate");
+            this.chkUseFirstRuleAsTemplate.Checked = true;
+            this.chkUseFirstRuleAsTemplate.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkUseFirstRuleAsTemplate.Name = "chkUseFirstRuleAsTemplate";
+            this.chkUseFirstRuleAsTemplate.UseVisualStyleBackColor = true;
             // 
             // GroupPanel
             // 
@@ -303,8 +313,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             // 
             // ThemeCreator
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.ButtonPanel);
             this.Controls.Add(this.PreviewGroup);
             this.Controls.Add(this.DisplayGroup);
@@ -363,5 +373,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox ColorBrewerDataType;
         private System.Windows.Forms.LinkLabel ColorBrewerLabel;
+        private System.Windows.Forms.CheckBox chkUseFirstRuleAsTemplate;
     }
 }

@@ -712,6 +712,45 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             RefreshPreview();
         }
 
+        private IPointRule CreatePointRule(IPointRule template, ILayerElementFactory factory)
+        {
+            var ptRule = factory.CreateDefaultPointRule();
+
+            var srcSym = template.PointSymbolization2D;
+            if (srcSym != null)
+            {
+                ptRule.PointSymbolization2D = srcSym.Clone();
+            }
+            var srcLabel = template.Label;
+            if (srcLabel != null)
+            {
+                ptRule.Label = srcLabel.Clone();
+            }
+            return ptRule;
+        }
+
+        private ILineRule CreateLineRule(ILineRule template, ILayerElementFactory factory)
+        {
+            var lrule = factory.CreateDefaultLineRule();
+            foreach (var st in template.Strokes)
+            {
+                lrule.AddStroke(st.Clone());
+            }
+            if (template.Label != null)
+                lrule.Label = template.Label.Clone();
+            return lrule;
+        }
+
+        private IAreaRule CreateAreaRule(IAreaRule template, ILayerElementFactory factory)
+        {
+            var arule = factory.CreateDefaultAreaRule();
+            if (template.AreaSymbolization2D != null)
+                arule.AreaSymbolization2D = template.AreaSymbolization2D.Clone();
+            if (template.Label != null)
+                arule.Label = template.Label.Clone();
+            return arule;
+        }
+
         private void OKBtn_Click(object sender, EventArgs e)
         {
             try
@@ -728,12 +767,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 {
                     IPointVectorStyle col = m_ruleCollection as IPointVectorStyle;
 
+                    IPointRule template = null;
+                    if (chkUseFirstRuleAsTemplate.Checked && col.RuleCount > 0)
+                    {
+                        template = col.GetRuleAt(0);
+                    }
+
                     if (OverwriteRules.Checked)
                         col.RemoveAllRules();
 
                     foreach (RuleItem entry in rules)
                     {
-                        IPointRule r = _factory.CreateDefaultPointRule();
+                        IPointRule r = (template != null) ? CreatePointRule(template, _factory) : _factory.CreateDefaultPointRule();
                         r.Filter = entry.Filter;
                         r.LegendLabel = entry.Label;
                         var sym = r.PointSymbolization2D.Symbol;
@@ -745,7 +790,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                         {
                             ((IFontSymbol)sym).ForegroundColor = Utility.SerializeHTMLColor(entry.Color, true);
                         }
-
                         col.AddRule(r);
                     }
                 }
@@ -753,12 +797,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 {
                     ILineVectorStyle col = m_ruleCollection as ILineVectorStyle;
 
+                    ILineRule template = null;
+                    if (chkUseFirstRuleAsTemplate.Checked && col.RuleCount > 0)
+                    {
+                        template = col.GetRuleAt(0);
+                    }
+
                     if (OverwriteRules.Checked)
                         col.RemoveAllRules();
 
                     foreach (RuleItem entry in rules)
                     {
-                        var l = _factory.CreateDefaultLineRule();
+                        var l = (template != null) ? CreateLineRule(template, _factory) : _factory.CreateDefaultLineRule();
                         l.Filter = entry.Filter;
                         l.LegendLabel = entry.Label;
                         foreach (var st in l.Strokes)
@@ -772,12 +822,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 {
                     IAreaVectorStyle col = m_ruleCollection as IAreaVectorStyle;
 
+                    IAreaRule template = null;
+                    if (chkUseFirstRuleAsTemplate.Checked && col.RuleCount > 0)
+                    {
+                        template = col.GetRuleAt(0);
+                    }
+
                     if (OverwriteRules.Checked)
                         col.RemoveAllRules();
 
                     foreach (RuleItem entry in rules)
                     {
-                        var r = _factory.CreateDefaultAreaRule();
+                        var r = (template != null) ? CreateAreaRule(template, _factory) : _factory.CreateDefaultAreaRule();
                         r.Filter = entry.Filter;
                         r.LegendLabel = entry.Label;
                         r.AreaSymbolization2D.Fill.ForegroundColor = Utility.SerializeHTMLColor(entry.Color, true);
