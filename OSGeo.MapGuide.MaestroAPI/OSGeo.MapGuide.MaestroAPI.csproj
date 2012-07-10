@@ -213,6 +213,7 @@
     <Compile Include="CoordinateSystem\ISimpleTransform.cs" />
     <Compile Include="CoordinateSystem\MeterBasedCoordinateSystem.cs" />
     <Compile Include="CoordinateSystem\NsDoc.cs" />
+    <Compile Include="CredentialWriter.cs" />
     <Compile Include="CrossConnection\NsDoc.cs" />
     <Compile Include="CrossConnection\ResourceRebaser.cs" />
     <Compile Include="Exceptions\CustomPropertyNotFoundException.cs" />

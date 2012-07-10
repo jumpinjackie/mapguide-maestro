@@ -33,6 +33,94 @@ namespace MaestroAPITests
     [TestFixture(Ignore = TestControl.IgnoreHttpConnectionTests)]
     public class HttpConnectionTests
     {
+        //[Test]
+        public void TestEncryptedFeatureSourceCredentials()
+        {
+            //Sensitive data redacted, nevertheless you can test and verify this by filling in the
+            //blanks here and uncommenting the above [Test] attribute. If the test passes, credential encryption is working
+            string server       = "";
+            string database     = "";
+            string actualUser   = "";
+            string actualPass   = "";
+            string bogusUser    = "foo";
+            string bogusPass    = "bar";
+
+            var conn = ConnectionUtil.CreateTestHttpConnection();
+            string fsId = "Library://UnitTests/EncryptedCredentials.FeatureSource";
+            var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLServerSpatial");
+            fs.SetConnectionProperty("Username", "%MG_USERNAME%");
+            fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
+            fs.SetConnectionProperty("Service", server);
+            fs.SetConnectionProperty("DataStore", database);
+            fs.ResourceID = fsId;
+            conn.ResourceService.SaveResource(fs);
+
+            using (var ms = CredentialWriter.Write(actualUser, actualPass))
+            {
+                conn.ResourceService.SetResourceData(fsId, "MG_USER_CREDENTIALS", ResourceDataType.String, ms);
+            }
+
+            string result = conn.FeatureService.TestConnection(fsId);
+            Assert.AreEqual("TRUE", result.ToUpper());
+
+            //Test convenience method
+            fsId = "Library://UnitTests/EncryptedCredentials2.FeatureSource";
+            fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLServerSpatial");
+            fs.SetConnectionProperty("Username", "%MG_USERNAME%");
+            fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
+            fs.SetConnectionProperty("Service", server);
+            fs.SetConnectionProperty("DataStore", database);
+            fs.ResourceID = fsId;
+            conn.ResourceService.SaveResource(fs);
+            fs.SetEncryptedCredentials(actualUser, actualPass);
+
+            result = conn.FeatureService.TestConnection(fsId);
+            Assert.AreEqual("TRUE", result.ToUpper());
+            Assert.AreEqual(actualUser, fs.GetEncryptedUsername());
+
+            //Do not set encrypted credentials
+            fsId = "Library://UnitTests/EncryptedCredentials3.FeatureSource";
+            fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLServerSpatial");
+            fs.SetConnectionProperty("Username", "%MG_USERNAME%");
+            fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
+            fs.SetConnectionProperty("Service", server);
+            fs.SetConnectionProperty("DataStore", database);
+            fs.ResourceID = fsId;
+            conn.ResourceService.SaveResource(fs);
+
+            try
+            {
+                result = conn.FeatureService.TestConnection(fsId);
+                Assert.AreEqual("FALSE", result.ToUpper());
+            }
+            catch //Exception or false I can't remember, as long as the result is not "true"
+            {
+
+            }
+
+            //Encrypt credentials, but use bogus username/password
+            fsId = "Library://UnitTests/EncryptedCredentials4.FeatureSource";
+            fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLServerSpatial");
+            fs.SetConnectionProperty("Username", "%MG_USERNAME%");
+            fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
+            fs.SetConnectionProperty("Service", server);
+            fs.SetConnectionProperty("DataStore", database);
+            fs.ResourceID = fsId;
+            conn.ResourceService.SaveResource(fs);
+            fs.SetEncryptedCredentials(bogusUser, bogusPass);
+
+            try
+            {
+                result = conn.FeatureService.TestConnection(fsId);
+                Assert.AreEqual("FALSE", result.ToUpper());
+            }
+            catch
+            {
+                //Exception or false I can't remember, as long as the result is not "true"
+            }
+            Assert.AreEqual(bogusUser, fs.GetEncryptedUsername());
+        }
+
         [Test]
         public void TestFeatureSourceCaching()
         {
