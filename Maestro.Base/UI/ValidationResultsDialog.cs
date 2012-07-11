@@ -105,6 +105,7 @@ namespace Maestro.Base
                             break;
                     }
                     lvi.SubItems.Add(issue.Message);
+                    lvi.SubItems.Add(issue.StatusCode.ToString());
                     listView1.Items.Add(lvi);
                 }
             }
@@ -135,7 +136,7 @@ namespace Maestro.Base
                                 sw.WriteLine(new string('*', 80));
                                 sw.WriteLine(string.Format(Properties.Resources.ValidationProgressMessage, p.Key));
                                 foreach (ValidationIssue i in p.Value)
-                                    sw.WriteLine(string.Format(Properties.Resources.ValidationResultFormat, i.Status, i.Resource, i.Message));
+                                    sw.WriteLine(string.Format(Properties.Resources.ValidationResultFormat, i.Status, i.StatusCode, i.Message));
 
                                 sw.WriteLine();
                             }

@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ValidationResultsDialog));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chkNotices = new System.Windows.Forms.CheckBox();
+            this.chkWarnings = new System.Windows.Forms.CheckBox();
+            this.chkErrors = new System.Windows.Forms.CheckBox();
             this.SaveReportBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -38,9 +41,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.chkErrors = new System.Windows.Forms.CheckBox();
-            this.chkWarnings = new System.Windows.Forms.CheckBox();
-            this.chkNotices = new System.Windows.Forms.CheckBox();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +54,33 @@
             this.panel1.Controls.Add(this.CancelBtn);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            // 
+            // chkNotices
+            // 
+            resources.ApplyResources(this.chkNotices, "chkNotices");
+            this.chkNotices.Checked = true;
+            this.chkNotices.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkNotices.Name = "chkNotices";
+            this.chkNotices.UseVisualStyleBackColor = true;
+            this.chkNotices.CheckedChanged += new System.EventHandler(this.OnResultFilterCheckedChanged);
+            // 
+            // chkWarnings
+            // 
+            resources.ApplyResources(this.chkWarnings, "chkWarnings");
+            this.chkWarnings.Checked = true;
+            this.chkWarnings.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkWarnings.Name = "chkWarnings";
+            this.chkWarnings.UseVisualStyleBackColor = true;
+            this.chkWarnings.CheckedChanged += new System.EventHandler(this.OnResultFilterCheckedChanged);
+            // 
+            // chkErrors
+            // 
+            resources.ApplyResources(this.chkErrors, "chkErrors");
+            this.chkErrors.Checked = true;
+            this.chkErrors.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkErrors.Name = "chkErrors";
+            this.chkErrors.UseVisualStyleBackColor = true;
+            this.chkErrors.CheckedChanged += new System.EventHandler(this.OnResultFilterCheckedChanged);
             // 
             // SaveReportBtn
             // 
@@ -73,7 +101,8 @@
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
-            this.columnHeader2});
+            this.columnHeader2,
+            this.columnHeader3});
             resources.ApplyResources(this.listView1, "listView1");
             this.listView1.GridLines = true;
             this.listView1.Name = "listView1";
@@ -102,32 +131,9 @@
             this.saveFileDialog.DefaultExt = "txt";
             resources.ApplyResources(this.saveFileDialog, "saveFileDialog");
             // 
-            // chkErrors
+            // columnHeader3
             // 
-            resources.ApplyResources(this.chkErrors, "chkErrors");
-            this.chkErrors.Checked = true;
-            this.chkErrors.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkErrors.Name = "chkErrors";
-            this.chkErrors.UseVisualStyleBackColor = true;
-            this.chkErrors.CheckedChanged += new System.EventHandler(this.OnResultFilterCheckedChanged);
-            // 
-            // chkWarnings
-            // 
-            resources.ApplyResources(this.chkWarnings, "chkWarnings");
-            this.chkWarnings.Checked = true;
-            this.chkWarnings.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkWarnings.Name = "chkWarnings";
-            this.chkWarnings.UseVisualStyleBackColor = true;
-            this.chkWarnings.CheckedChanged += new System.EventHandler(this.OnResultFilterCheckedChanged);
-            // 
-            // chkNotices
-            // 
-            resources.ApplyResources(this.chkNotices, "chkNotices");
-            this.chkNotices.Checked = true;
-            this.chkNotices.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkNotices.Name = "chkNotices";
-            this.chkNotices.UseVisualStyleBackColor = true;
-            this.chkNotices.CheckedChanged += new System.EventHandler(this.OnResultFilterCheckedChanged);
+            resources.ApplyResources(this.columnHeader3, "columnHeader3");
             // 
             // ValidationResultsDialog
             // 
@@ -157,5 +163,6 @@
         private System.Windows.Forms.CheckBox chkNotices;
         private System.Windows.Forms.CheckBox chkWarnings;
         private System.Windows.Forms.CheckBox chkErrors;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }

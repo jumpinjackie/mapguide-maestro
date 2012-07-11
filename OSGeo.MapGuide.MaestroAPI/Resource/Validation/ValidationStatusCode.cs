@@ -110,6 +110,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         Warning_FeatureSource_Validation_Timeout,
 
         /// <summary>
+        /// Due to a limitation in the public APIs provided by MapGuide. Feature Sources with encrypted security credentials (MG_USER_CREDENTIALS)
+        /// cannot be packaged by Maestro's packager without discarding the MG_USER_CREDENTIALS element. The workaround is to either re-secure these
+        /// feature sources after loading the Maestro-created package, or to use the official packaging method which will preserve MG_USER_CREDENTIALS
+        /// in its encrypted state
+        /// </summary>
+        Warning_FeatureSource_Cannot_Package_Secured_Credentials,
+        
+        /// <summary>
+        /// A Feature Source whose provider contains username/password connection parameters contains login credentials in plaintext. This is not secure
+        /// as such Feature Sources can be accessed by the Anonymous MapGuide user account. It is strongly advised that such Feature Sources can be 
+        /// re-secured with MapGuide/Infrastructure Studio or with Maestro 4.0.3 (or newer)
+        /// </summary>
+        Warning_FeatureSource_Plaintext_Credentials,
+
+        /// <summary>
         /// DWG Load Procedures not supported. This is a limitation of Maestro
         /// </summary>
         Warning_LoadProcedure_DwgNotSupported = 3201,
@@ -234,6 +249,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// Unclassified error when describing a schema
         /// </summary>
         Error_FeatureSource_SchemaReadError,
+
+        /// <summary>
+        /// The validator found the %MG_USERNAME% and %MG_PASSWORD% placeholder tokens in the Feature Source content, but could not find the
+        /// matching MG_USER_CREDENTIALS resource data item that contains the encrypted credentials
+        /// </summary>
+        Error_FeatureSource_SecuredCredentialTokensWithoutSecuredCredentialData,
 
         /// <summary>
         /// No finite display scales defined for a map definition that contains tiled layers.

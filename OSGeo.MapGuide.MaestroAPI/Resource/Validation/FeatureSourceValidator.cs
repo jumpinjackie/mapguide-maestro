@@ -58,10 +58,55 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 
             IFeatureSource feature = (IFeatureSource)resource;
             IFeatureService featSvc = feature.CurrentConnection.FeatureService;
+
+            //Plaintext credential check
+            string providerNameUpper = feature.Provider.ToUpper();
+            string fsXml = feature.Serialize().ToUpper();
+
+            //You'll get warnings either way
+            if (providerNameUpper == "OSGEO.SQLSERVERSPATIAL" ||
+                providerNameUpper == "OSGEO.MYSQL" ||
+                providerNameUpper == "OSGEO.POSTGRESQL" ||
+                providerNameUpper == "OSGEO.ARCSDE" ||
+                providerNameUpper == "OSGEO.WFS" ||
+                providerNameUpper == "OSGEO.WMS" ||
+                providerNameUpper == "KING.ORACLE" ||
+                providerNameUpper == "AUTODESK.ORACLE")
+            {
+                //Fortunately, all the above providers are universal in the naming choice of credential connection parameters
+                if ((fsXml.Contains("<NAME>USERNAME</NAME>") && !fsXml.Contains("%MG_USERNAME%")) || (fsXml.Contains("<NAME>PASSWORD</NAME>") && !fsXml.Contains("%MG_PASSWORD%")))
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_Plaintext_Credentials, Properties.Resources.FS_PlaintextCredentials));
+                else
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_Cannot_Package_Secured_Credentials, Properties.Resources.FS_CannotPackageSecuredCredentials));
+
+                //Has the placeholder token(s)
+                if (fsXml.Contains("%MG_USERNAME%") || fsXml.Contains("%MG_PASSWORD%"))
+                {
+                    //Find the MG_USER_CREDENTIALS resource data item
+                    bool bFound = false;
+                    var resData = feature.EnumerateResourceData();
+                    foreach (var data in resData)
+                    {
+                        if (data.Name == "MG_USER_CREDENTIALS")
+                        {
+                            bFound = true;
+                        }
+                    }
+
+                    if (!bFound)
+                    {
+                        issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_SecuredCredentialTokensWithoutSecuredCredentialData, Properties.Resources.FS_SecuredCredentialTokensWithoutSecuredCredentialData));
+                    }
+                }
+            }
+            
             //Note: Must be saved!
             string s = featSvc.TestConnection(feature.ResourceID);
             if (s.Trim().ToUpper() != true.ToString().ToUpper())
-                return new ValidationIssue[] { new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_ConnectionTestFailed, string.Format(Properties.Resources.FS_ConnectionTestFailed, s)) };
+            {
+                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_ConnectionTestFailed, string.Format(Properties.Resources.FS_ConnectionTestFailed, s)));
+                return issues.ToArray();
+            }
 
             try
             {

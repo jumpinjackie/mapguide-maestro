@@ -2766,4 +2766,13 @@
   <data name="ERR_INIT_IDENTITY_PROPS" xml:space="preserve">
     <value>Could fetch and initialize identity properties for {1} This is likely a bug in MapGuide {0}{2}</value>
   </data>
+  <data name="FS_CannotPackageSecuredCredentials" xml:space="preserve">
+    <value>Due to a limitation in the public APIs provided by MapGuide. This Feature Source cannot be packaged by Maestro's packager without discarding the MG_USER_CREDENTIALS element. The workaround is to either re-secure these Feature Sources after loading the Maestro-created package, or to use the official packaging method which will preserve MG_USER_CREDENTIALS in its encrypted state</value>
+  </data>
+  <data name="FS_PlaintextCredentials" xml:space="preserve">
+    <value>This Feature Source uses plaintext credentials. This would happen if you are using an old version of Maestro (4.0.2 or older). This is not secure as such Feature Sources can be accessed by the Anonymous MapGuide user account. It is strongly advised that such Feature Sources can be re-secured with MapGuide/Infrastructure Studio or with Maestro 4.0.3 (or newer)</value>
+  </data>
+  <data name="FS_SecuredCredentialTokensWithoutSecuredCredentialData" xml:space="preserve">
+    <value>Feature source content has the %MG_USERNAME% and %MG_PASSWORD% tokens, but does not have the MG_USER_CREDENTIALS resource data item</value>
+  </data>
 </root>
