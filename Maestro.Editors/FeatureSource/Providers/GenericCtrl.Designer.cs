@@ -47,6 +47,7 @@
             this.pickAnAliasedFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pickAnAliasedDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mGDATAFILEPATHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lnkSetCredentials = new System.Windows.Forms.LinkLabel();
             this.contentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdConnectionParameters)).BeginInit();
             this.ctxEnumerable.SuspendLayout();
@@ -55,6 +56,7 @@
             // 
             // contentPanel
             // 
+            this.contentPanel.Controls.Add(this.lnkSetCredentials);
             this.contentPanel.Controls.Add(this.txtTestResult);
             this.contentPanel.Controls.Add(this.btnTest);
             this.contentPanel.Controls.Add(this.cmbLongTransaction);
@@ -86,10 +88,10 @@
             this.grdConnectionParameters.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdConnectionParameters.Name = "grdConnectionParameters";
             this.grdConnectionParameters.RowHeadersVisible = false;
-            this.grdConnectionParameters.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdConnectionParameters_CellValueChanged);
-            this.grdConnectionParameters.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grdConnectionParameters_MouseClick);
             this.grdConnectionParameters.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.grdConnectionParameters_CellPainting);
+            this.grdConnectionParameters.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdConnectionParameters_CellValueChanged);
             this.grdConnectionParameters.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.grdConnectionParameters_EditingControlShowing);
+            this.grdConnectionParameters.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grdConnectionParameters_MouseClick);
             // 
             // label2
             // 
@@ -180,12 +182,18 @@
             resources.ApplyResources(this.mGDATAFILEPATHToolStripMenuItem, "mGDATAFILEPATHToolStripMenuItem");
             this.mGDATAFILEPATHToolStripMenuItem.Click += new System.EventHandler(this.useActiveResourceDataFile_Click);
             // 
+            // lnkSetCredentials
+            // 
+            resources.ApplyResources(this.lnkSetCredentials, "lnkSetCredentials");
+            this.lnkSetCredentials.Name = "lnkSetCredentials";
+            this.lnkSetCredentials.TabStop = true;
+            this.lnkSetCredentials.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSetCredentials_LinkClicked);
+            // 
             // GenericCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "Feature Source (using Generic Editor)";
-            this.Name = "GenericCtrl";
             resources.ApplyResources(this, "$this");
+            this.Name = "GenericCtrl";
             this.Controls.SetChildIndex(this.contentPanel, 0);
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();
@@ -215,5 +223,6 @@
         private System.Windows.Forms.ToolStripMenuItem pickAnAliasedDirectoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mGDATAFILEPATHToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pickADataStoreFromListToolStripMenuItem;
+        private System.Windows.Forms.LinkLabel lnkSetCredentials;
     }
 }

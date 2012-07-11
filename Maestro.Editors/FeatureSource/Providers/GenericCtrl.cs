@@ -78,6 +78,8 @@ namespace Maestro.Editors.FeatureSource.Providers
 
         private void InitGrid()
         {
+            grdConnectionParameters.Rows.Clear();
+            grdConnectionParameters.Columns.Clear();
             var prov = _service.FeatureService.GetFeatureProvider(_fs.Provider);
 
             var colName = new DataGridViewColumn();
@@ -372,6 +374,29 @@ namespace Maestro.Editors.FeatureSource.Providers
                 var name = grdConnectionParameters[0, e.RowIndex].Value.ToString();
                 var value = grdConnectionParameters[e.ColumnIndex, e.RowIndex].Value;
                 _fs.SetConnectionProperty(name, value == null ? string.Empty : value.ToString());
+            }
+        }
+
+        private void lnkSetCredentials_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var prov = _service.FeatureService.GetFeatureProvider(_fs.Provider);
+            var connProps = new List<string>();
+            foreach (var p in prov.ConnectionProperties)
+            {
+                if (!p.Enumerable)
+                    connProps.Add(p.Name);
+            }
+            using (var diag = new SetCredentialsDialog(connProps.ToArray()))
+            {
+                if (diag.ShowDialog() == DialogResult.OK)
+                {
+                    _fs.SetConnectionProperty(diag.UserProperty, "%MG_USERNAME%");
+                    _fs.SetConnectionProperty(diag.PasswordProperty, "%MG_PASSWORD%");
+                    _fs.SetEncryptedCredentials(diag.Username, diag.Password);
+                    _service.SyncSessionCopy();
+                    InitGrid();
+                    resDataCtrl.Init(_service);
+                }
             }
         }
     }
