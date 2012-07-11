@@ -36,9 +36,9 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnConnect = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cmbDataStore = new System.Windows.Forms.ComboBox();
+            this.btnBrowseDataStore = new System.Windows.Forms.Button();
+            this.txtDataStore = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtStatus = new System.Windows.Forms.TextBox();
             this.btnTest = new System.Windows.Forms.Button();
@@ -88,7 +88,6 @@
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.btnConnect);
             this.groupBox1.Controls.Add(this.txtService);
             this.groupBox1.Controls.Add(this.txtPassword);
             this.groupBox1.Controls.Add(this.label1);
@@ -98,27 +97,27 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
-            // btnConnect
-            // 
-            resources.ApplyResources(this.btnConnect, "btnConnect");
-            this.btnConnect.Name = "btnConnect";
-            this.btnConnect.UseVisualStyleBackColor = true;
-            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
-            // 
             // groupBox2
             // 
             resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Controls.Add(this.cmbDataStore);
+            this.groupBox2.Controls.Add(this.btnBrowseDataStore);
+            this.groupBox2.Controls.Add(this.txtDataStore);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
-            // cmbDataStore
+            // btnBrowseDataStore
             // 
-            resources.ApplyResources(this.cmbDataStore, "cmbDataStore");
-            this.cmbDataStore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDataStore.FormattingEnabled = true;
-            this.cmbDataStore.Name = "cmbDataStore";
+            resources.ApplyResources(this.btnBrowseDataStore, "btnBrowseDataStore");
+            this.btnBrowseDataStore.Name = "btnBrowseDataStore";
+            this.btnBrowseDataStore.UseVisualStyleBackColor = true;
+            this.btnBrowseDataStore.Click += new System.EventHandler(this.btnBrowseDataStore_Click);
+            // 
+            // txtDataStore
+            // 
+            resources.ApplyResources(this.txtDataStore, "txtDataStore");
+            this.txtDataStore.Name = "txtDataStore";
+            this.txtDataStore.ReadOnly = true;
             // 
             // label4
             // 
@@ -157,7 +156,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox cmbDataStore;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtService;
@@ -165,8 +163,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.Button btnBrowseDataStore;
+        private System.Windows.Forms.TextBox txtDataStore;
     }
 }

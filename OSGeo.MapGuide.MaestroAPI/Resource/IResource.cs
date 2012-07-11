@@ -102,6 +102,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <summary>
         /// Copies the resource data to the specified resource
         /// </summary>
+        /// <remarks>
+        /// Avoid using this method if you are copying a IFeatureSource with MG_USER_CREDENTIALS resource data, as MapGuide will automatically return
+        /// the decrypted username for MG_USER_CREDENTIALS, rendering the resource data invalid for the target resource. Instead use the
+        /// <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IResourceService.CopyResource"/> method, which will copy the resource and its resource
+        /// data and keep any MG_USER_CREDENTIALS items intact
+        /// </remarks>
         /// <param name="source">The source.</param>
         /// <param name="target">The target.</param>
         public static void CopyResourceDataTo(this IResource source, IResource target)
@@ -125,6 +131,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <summary>
         /// Copies the resource data to the specified resource
         /// </summary>
+        /// <remarks>
+        /// Avoid using this method if you are copying a IFeatureSource with MG_USER_CREDENTIALS resource data, as MapGuide will automatically return
+        /// the decrypted username for MG_USER_CREDENTIALS, rendering the resource data invalid for the target resource. Instead use the
+        /// <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IResourceService.CopyResource"/> method, which will copy the resource and its resource
+        /// data and keep any MG_USER_CREDENTIALS items intact
+        /// </remarks>
         /// <param name="source">The source.</param>
         /// <param name="targetID">The target ID.</param>
         public static void CopyResourceDataTo(this IResource source, string targetID)

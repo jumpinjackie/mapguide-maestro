@@ -43,12 +43,11 @@ namespace Maestro.Base.Services
             BusyWaitDialog.Run(Properties.Resources.PrgPreparingResourcePreview, () => {
                 string mapguideRootUrl = (string)conn.GetCustomProperty("BaseUrl");
                 //Save the current resource to another session copy
-                string resId = "Session:" + edSvc.SessionID + "//" + Guid.NewGuid() + "." + res.ResourceType.ToString();
-                edSvc.ResourceService.SetResourceXmlData(resId, ResourceTypeRegistry.Serialize(res));
-    
-                //Copy any resource data
+                string resId = "Session:" + edSvc.SessionID + "//" + res.ResourceType.ToString() + "Preview" + Guid.NewGuid() + "." + res.ResourceType.ToString();
+                
+                edSvc.ResourceService.SaveResourceAs(res, resId);
+                edSvc.ResourceService.CopyResource(res.ResourceID, resId, true);
                 var previewCopy = edSvc.ResourceService.GetResource(resId);
-                res.CopyResourceDataTo(previewCopy);
     
                 //Now feed it to the preview engine
                 return new ResourcePreviewEngine(mapguideRootUrl, edSvc).GeneratePreviewUrl(previewCopy);

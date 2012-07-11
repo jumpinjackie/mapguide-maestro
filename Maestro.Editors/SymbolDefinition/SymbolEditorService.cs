@@ -225,5 +225,14 @@ namespace Maestro.Editors.SymbolDefinition
         {
             throw new NotImplementedException();
         }
+
+        public void PrePreviewProcess()
+        {
+            var handler = this.BeforePreview;
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
+
+        public event EventHandler BeforePreview;
     }
 }

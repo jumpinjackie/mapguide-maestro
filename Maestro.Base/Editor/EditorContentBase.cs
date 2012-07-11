@@ -305,6 +305,7 @@ namespace Maestro.Base.Editor
         public virtual void Preview()
         {
             var conn = this.Resource.CurrentConnection;
+            _svc.PrePreviewProcess();
             var previewer = ResourcePreviewerFactory.GetPreviewer(conn.ProviderName);
             if (previewer != null)
                 previewer.Preview(this.Resource, this.EditorService);

@@ -25,6 +25,8 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using Maestro.Editors.Common;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using Maestro.Shared.UI;
 
@@ -72,14 +74,20 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
         {
             if (_init)
                 return;
-            _fs.SetConnectionProperty("Username", txtUsername.Text);
+            if (string.IsNullOrEmpty(txtUsername.Text))
+                _fs.SetConnectionProperty("Username", null);
+            else
+                _fs.SetConnectionProperty("Username", txtUsername.Text);
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
             if (_init)
                 return;
-            _fs.SetConnectionProperty("Password", txtPassword.Text);
+            if (string.IsNullOrEmpty(txtPassword.Text))
+                _fs.SetConnectionProperty("Password", null);
+            else
+                _fs.SetConnectionProperty("Password", txtPassword.Text);
         }
 
         private void btnTest_Click(object sender, EventArgs e)
@@ -87,14 +95,42 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             txtStatus.Text = string.Empty;
             using (new WaitCursor(this))
             {
-                _service.SyncSessionCopy();
+                WriteEncryptedCredentials();
                 txtStatus.Text = string.Format(Properties.Resources.FdoConnectionStatus, _fs.TestConnection());
+            }
+        }
+
+        private void WriteEncryptedCredentials()
+        {
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+
+            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
+            {
+                if (username != "%MG_USERNAME%" && password != "%MG_PASSWORD%")
+                {
+                    _fs.SetConnectionProperty("Username", "%MG_USERNAME%");
+                    _fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
+                    _fs.SetEncryptedCredentials(username, password);
+                    _service.SyncSessionCopy();
+                }
+            }
+            else
+            {
+                _fs.SetConnectionProperty("Username", null);
+                _fs.SetConnectionProperty("Password", null);
+                try
+                {
+                    _fs.DeleteResourceData("MG_USER_CREDENTIALS");
+                }
+                catch { }
+                _service.SyncSessionCopy();
             }
         }
 
         private void btnAdvanced_Click(object sender, EventArgs e)
         {
-            _service.SyncSessionCopy();
+            WriteEncryptedCredentials();
             var diag = new WmsAdvancedConfigurationDialog(_service);
             if (diag.ShowDialog() == DialogResult.OK)
             {

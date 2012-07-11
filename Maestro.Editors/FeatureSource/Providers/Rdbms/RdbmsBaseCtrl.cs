@@ -28,6 +28,7 @@ using Maestro.Editors.Common;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 using Maestro.Editors.FeatureSource.Providers.Odbc;
 
 namespace Maestro.Editors.FeatureSource.Providers.Rdbms
@@ -45,30 +46,38 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
             this.HeaderText = this.Title;
         }
 
+        protected override void UnsubscribeEventHandlers()
+        {
+            _service.BeforeSave -= OnBeforeSave;
+            _service.BeforePreview -= OnBeforePreview;
+        }
+
         private IEditorService _service;
         private IFeatureSource _fs;
 
         public override void Bind(IEditorService service)
         {
             _service = service;
+            _service.BeforeSave += OnBeforeSave;
+            _service.BeforePreview += OnBeforePreview;
             _service.RegisterCustomNotifier(this);
             _fs = _service.GetEditedResource() as IFeatureSource;
 
             //Set the field values
             txtService.Text = _fs.GetConnectionProperty("Service");
-            txtUsername.Text = _fs.GetConnectionProperty("Username");
-            txtPassword.Text = _fs.GetConnectionProperty("Password");
 
-            UpdateDataStoreValues(true);
+            //We're gonna follow MG Studio behaviour here which is: Never load the password
+            //and auto trigger dirty state.
+            if (!_service.IsNew)
+            {
+                txtUsername.Text = _fs.GetEncryptedUsername() ?? _fs.GetConnectionProperty("Username");
+                //txtPassword.Text = _fs.GetConnectionProperty("Password");
+                OnResourceChanged();
+            }
 
             //Set initial value of data store if possible
             var dstore = _fs.GetConnectionProperty("DataStore");
-            if (!string.IsNullOrEmpty(dstore) && cmbDataStore.Items.Count > 0)
-            {
-                var idx = cmbDataStore.Items.IndexOf(dstore);
-                if (idx >= 0)
-                    cmbDataStore.SelectedIndex = idx;
-            }
+            txtDataStore.Text = dstore;
 
             //As our connection properties are not CLR properties, 
             //"manually" bind these fields
@@ -79,19 +88,63 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
 
             txtUsername.TextChanged += (s, e) =>
             {
-                _fs.SetConnectionProperty("Username", txtUsername.Text);
+                if (string.IsNullOrEmpty(txtUsername.Text))
+                    _fs.SetConnectionProperty("Username", null);
+                else
+                    _fs.SetConnectionProperty("Username", txtUsername.Text);
             };
             
             txtPassword.TextChanged += (s, e) =>
             {
-                _fs.SetConnectionProperty("Password", txtPassword.Text);
+                if (string.IsNullOrEmpty(txtPassword.Text))
+                    _fs.SetConnectionProperty("Password", null);
+                else
+                    _fs.SetConnectionProperty("Password", txtPassword.Text);
             };
 
-            cmbDataStore.SelectedIndexChanged += (s, e) =>
+            txtDataStore.TextChanged += (s, e) =>
             {
-                if (cmbDataStore.SelectedItem != null)
-                    _fs.SetConnectionProperty("DataStore", cmbDataStore.SelectedItem.ToString());
+                _fs.SetConnectionProperty("DataStore", txtDataStore.Text);
             };
+
+        }
+
+        void OnBeforePreview(object sender, EventArgs e)
+        {
+            WriteEncryptedCredentials();
+        }
+
+        void OnBeforeSave(object sender, CancelEventArgs e)
+        {
+            WriteEncryptedCredentials();
+        }
+
+        private void WriteEncryptedCredentials()
+        {
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+
+            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
+            {
+                if (username != "%MG_USERNAME%" && password != "%MG_PASSWORD%")
+                {
+                    _fs.SetConnectionProperty("Username", "%MG_USERNAME%");
+                    _fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
+                    _fs.SetEncryptedCredentials(username, password);
+                    _service.SyncSessionCopy();
+                }
+            }
+            else if (string.IsNullOrEmpty(username) && string.IsNullOrEmpty(password))
+            {
+                _fs.SetConnectionProperty("Username", null);
+                _fs.SetConnectionProperty("Password", null);
+                try
+                {
+                    _fs.DeleteResourceData("MG_USER_CREDENTIALS");
+                }
+                catch { }
+                _service.SyncSessionCopy();
+            }
         }
 
         public virtual string Title
@@ -105,44 +158,18 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
             get { throw new NotImplementedException(); }
         }
 
-        private string GetPartialConnectionString()
+        private string GetPartialConnectionStringForDataStoreEnumeration()
         {
             var builder = new System.Data.Common.DbConnectionStringBuilder();
             builder["Service"] = _fs.GetConnectionProperty("Service");
-            builder["Username"] = _fs.GetConnectionProperty("Username");
-            builder["Password"] = _fs.GetConnectionProperty("Password");
+            builder["Username"] = txtUsername.Text; //_fs.GetConnectionProperty("Username");
+            builder["Password"] = txtPassword.Text; //_fs.GetConnectionProperty("Password");
             return builder.ToString();
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            UpdateDataStoreValues(false);
-        }
-
-        private void UpdateDataStoreValues(bool silent)
-        {
-            using (new WaitCursor(this))
-            {
-                string[] values = null;
-                string reason = string.Empty;
-                try
-                {
-                    var dstore = _service.FeatureService.EnumerateDataStores(this.Provider, GetPartialConnectionString());
-                    values = ConvertToArray(dstore);
-                }
-                catch (Exception ex) { reason = ex.ToString(); }
-                if (values != null && values.Length > 0)
-                {
-                    cmbDataStore.DataSource = values;
-                }
-                else
-                {
-                    if (!silent)
-                        MessageBox.Show(string.Format(Properties.Resources.FailEnumDataStores, reason));
-
-                    cmbDataStore.DataSource = null;
-                }
-            }
+            WriteEncryptedCredentials();
         }
 
         private static string[] ConvertToArray(OSGeo.MapGuide.ObjectModels.Common.DataStoreList dstore)
@@ -160,8 +187,26 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
             txtStatus.Text = string.Empty;
             using (new WaitCursor(this))
             {
-                _service.SyncSessionCopy();
+                WriteEncryptedCredentials();
                 txtStatus.Text = string.Format(Properties.Resources.FdoConnectionStatus, _fs.TestConnection());
+            }
+        }
+
+        private void btnBrowseDataStore_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var dstore = _service.FeatureService.EnumerateDataStores(this.Provider, GetPartialConnectionStringForDataStoreEnumeration());
+                var values = ConvertToArray(dstore);
+                string item = GenericItemSelectionDialog.SelectItem(Properties.Resources.TextSelectDataStore, Properties.Resources.TextSelectDataStore, values);
+                if (item != null)
+                {
+                    txtDataStore.Text = item;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format(Properties.Resources.FailEnumDataStores, ex.Message));
             }
         }
     }

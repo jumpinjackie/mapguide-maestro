@@ -140,6 +140,17 @@ namespace Maestro.Editors
         IResource GetEditedResource();
 
         /// <summary>
+        /// Raises the <see cref="E:Maestro.Editors.IEditorService.BeforePreview"/> event and performs any other pre-preview
+        /// processing tasks
+        /// </summary>
+        void PrePreviewProcess();
+
+        /// <summary>
+        /// Raised before a preview occurs
+        /// </summary>
+        event EventHandler BeforePreview;
+
+        /// <summary>
         /// Raised before a save operation commences
         /// </summary>
         event CancelEventHandler BeforeSave;

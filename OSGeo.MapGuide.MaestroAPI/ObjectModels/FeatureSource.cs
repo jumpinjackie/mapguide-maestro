@@ -147,15 +147,26 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
                 }
             }
 
+            bool bRaise = false;
             if (pr != null)
             {
-                pr.Value = value;
+                if (value != null)
+                    pr.Value = value;
+                else
+                    this.Parameter.Remove(pr);
+                bRaise = true;
             }
             else
             {
-                this.Parameter.Add(new NameValuePairType() { Name = name, Value = value });
+                if (value != null)
+                {
+                    this.Parameter.Add(new NameValuePairType() { Name = name, Value = value });
+                    bRaise = true;
+                }
             }
-            OnPropertyChanged("Parameter");
+
+            if (bRaise)
+                OnPropertyChanged("Parameter");
         }
 
         protected void DetachChangeListeners()

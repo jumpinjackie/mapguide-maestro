@@ -243,9 +243,8 @@ namespace Maestro.Editors
 
             if (!OnBeforeSave())
             {
-                _conn.ResourceService.SaveResourceAs(_editCopy, resourceID);
-                //Don't forget to copy attached resource data!
-                _editCopy.CopyResourceDataTo(resourceID);
+                //_conn.ResourceService.SaveResourceAs(_editCopy, resourceID);
+                _conn.ResourceService.CopyResource(_editCopy.ResourceID, resourceID, true);
                 this.ResourceID = resourceID;
                 this.IsNew = false;
                 this.IsDirty = false;
@@ -484,5 +483,15 @@ namespace Maestro.Editors
         }
 
         public abstract void RunProcess(string processName, params string[] args);
+
+        public void PrePreviewProcess()
+        {
+            SyncSessionCopy();
+            var handler = this.BeforePreview;
+            if (handler != null)
+                handler(this, EventArgs.Empty);
+        }
+
+        public event EventHandler BeforePreview;
     }
 }

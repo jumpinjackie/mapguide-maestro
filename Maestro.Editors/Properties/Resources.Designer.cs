@@ -3307,6 +3307,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select Data Store.
+        /// </summary>
+        internal static string TextSelectDataStore {
+            get {
+                return ResourceManager.GetString("TextSelectDataStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (Selection Only).
         /// </summary>
         internal static string TextSelectionOnly {

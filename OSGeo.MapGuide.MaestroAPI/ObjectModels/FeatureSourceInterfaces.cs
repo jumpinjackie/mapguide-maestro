@@ -62,7 +62,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// Sets the connection property.
         /// </summary>
         /// <param name="name">The name.</param>
-        /// <param name="value">The value.</param>
+        /// <param name="value">The value. If null, the matching parameter is removed from the feature source</param>
         void SetConnectionProperty(string name, string value);
 
         /// <summary>
