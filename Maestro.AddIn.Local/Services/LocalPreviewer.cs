@@ -76,7 +76,7 @@ namespace Maestro.AddIn.Local.Services
                 wm.ResourceId = resId;
             }
 
-            var mapResId = new MgResourceIdentifier("Session:" + edSvc.SessionID + "//" + Guid.NewGuid() + "." + res.ResourceType.ToString());
+            var mapResId = new MgResourceIdentifier("Session:" + edSvc.SessionID + "//" + mapDef.ResourceType.ToString() + "Preview" + Guid.NewGuid() + "." + mapDef.ResourceType.ToString());
             edSvc.ResourceService.SetResourceXmlData(mapResId.ToString(), ResourceTypeRegistry.Serialize(mapDef));
 
             //MgdMap map = new MgdMap(mapResId);
