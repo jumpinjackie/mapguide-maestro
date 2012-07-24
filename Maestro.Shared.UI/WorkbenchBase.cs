@@ -56,9 +56,6 @@ namespace Maestro.Shared.UI
 
             this.Icon = _workbenchInitializer.GetIcon();
 
-            //contentPanel = new ZonedContainer(_workbenchInitializer);
-            //contentPanel.Dock = DockStyle.Fill;
-            //contentPanel.ViewActivated += new ViewContentActivateEventHandler(OnViewActivated);
             contentPanel = new DockPanel();
             contentPanel.DocumentStyle = DocumentStyle.DockingWindow;
             contentPanel.ShowDocumentIcon = true;
@@ -66,7 +63,7 @@ namespace Maestro.Shared.UI
             contentPanel.DockLeftPortion = 250;
             contentPanel.DockBottomPortion = 150;
             contentPanel.DockRightPortion = 200;
-
+            
             menu = _workbenchInitializer.GetMainMenu(this);
 
             toolStripContainer = new ToolStripContainer();
@@ -278,6 +275,10 @@ namespace Maestro.Shared.UI
                 content.DockAreas = (DockAreas)(vc.DefaultRegion);
             }
             vc.SetParentForm(content);
+            vc.ViewContentActivating += (sender, e) =>
+            {
+                content.Activate();
+            };
             vc.TitleChanged += (sender, e) =>
             {
                 content.TabText = vc.Title;
