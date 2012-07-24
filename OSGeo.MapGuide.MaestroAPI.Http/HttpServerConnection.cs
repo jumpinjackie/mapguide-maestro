@@ -1848,7 +1848,24 @@ namespace OSGeo.MapGuide.MaestroAPI
                 //We can't just assume first class item is the one, as ones that do not take
                 //class name hints will return the full schema
                 var schema = fsd.Schemas[0];
-                return schema.GetClass(className);
+                if (schema.Classes.Count > 1)
+                {
+                    //Since we have the full schema anyway, let's cache these other classes
+                    ClassDefinition ret = null;
+                    foreach (var cls in schema.Classes)
+                    {
+                        string key = resourceId + "!" + cls.QualifiedName;
+                        m_classDefinitionCache[key] = cls;
+
+                        if (cls.Name == className)
+                            ret = cls;
+                    }
+                    return ret;
+                }
+                else
+                {
+                    return schema.GetClass(className);
+                }
             }
         }
 
