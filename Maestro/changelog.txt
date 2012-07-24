@@ -1,4 +1,25 @@
-﻿ - Status bar now shows the active site connection
+﻿5.0 Beta 3
+----------
+ - mg-desktop binary update (20 July 2012 release)
+ - Added support for new validations rules regarding Feature Source credentials
+ - Added support for creating Feature Sources with secured credentials
+ - Added support for creating themes using the first style rule as the rule template
+ - mg-desktop viewer enhancements ported over to Live Map Definition editor
+ - Alias UI improvements for SHP/SDF feature source editor
+ - mg-desktop Runtime Map support for Live Map Definition editor
+ - UI space optimization for Point Style Editor
+ - Live Map Definition editor added to Tools menu
+ - Status bar now shows the active site connection
+ - Fix: Double-clicking an already opened resource in the Site Explorer re-activates the associated open editor tab
+ - Fix: Gracefully handle capabilities not supported by the mg-desktop LocalConection
+ - Fix: Show all layers and groups regardless of visibility in the Live Map Definition Editor
+ - Fix: NullReferenceException in the Image Picker for the Watermark Editor
+ - Fix: Incorrect minimum content model for a Simple Symbol Definition
+ - Fix: GetCommonParent for Site Explorer
+ - Fix: "Display as Text" and "Allow Overpost" options not triggering dirty state
+ - Fix: Unable to use Watermarks using the 2.4.0 schema
+ - Fix: Feature Class dropdown for Layer Definition editor only shows first item
+ - Fix: GetClassDefinition for HTTP connection
 
 5.0 Beta 2
 ----------
