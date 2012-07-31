@@ -767,10 +767,24 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 {
                     IPointVectorStyle col = m_ruleCollection as IPointVectorStyle;
 
+                    string fillAlpha = "";
                     IPointRule template = null;
                     if (chkUseFirstRuleAsTemplate.Checked && col.RuleCount > 0)
                     {
                         template = col.GetRuleAt(0);
+                        var sym = template.PointSymbolization2D.Symbol;
+                        if (sym.Type == PointSymbolType.Mark)
+                        {
+                            string htmlColor = ((IMarkSymbol)sym).Fill.ForegroundColor;
+                            if (htmlColor.Length == 8)
+                                fillAlpha = htmlColor.Substring(0, 2);
+                        }
+                        else if (sym.Type == PointSymbolType.Font)
+                        {
+                            string htmlColor = ((IFontSymbol)sym).ForegroundColor;
+                            if (htmlColor.Length == 8)
+                                fillAlpha = htmlColor.Substring(0, 2);
+                        }
                     }
 
                     if (OverwriteRules.Checked)
@@ -784,11 +798,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                         var sym = r.PointSymbolization2D.Symbol;
                         if (sym.Type == PointSymbolType.Mark)
                         {
-                            ((IMarkSymbol)sym).Fill.ForegroundColor = Utility.SerializeHTMLColor(entry.Color, true);
+                            ((IMarkSymbol)sym).Fill.ForegroundColor = fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
                         }
                         else if (sym.Type == PointSymbolType.Font)
                         {
-                            ((IFontSymbol)sym).ForegroundColor = Utility.SerializeHTMLColor(entry.Color, true);
+                            ((IFontSymbol)sym).ForegroundColor = fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
                         }
                         col.AddRule(r);
                     }
@@ -797,10 +811,21 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 {
                     ILineVectorStyle col = m_ruleCollection as ILineVectorStyle;
 
+                    string bordAlpha = "";
                     ILineRule template = null;
                     if (chkUseFirstRuleAsTemplate.Checked && col.RuleCount > 0)
                     {
                         template = col.GetRuleAt(0);
+
+                        //TODO: Composite lines? Which "alpha" value wins there?
+                        foreach (var st in template.Strokes)
+                        {
+                            if (st.Color.Length == 8) 
+                            {
+                                bordAlpha = st.Color.Substring(0, 2);
+                                break;
+                            }
+                        }
                     }
 
                     if (OverwriteRules.Checked)
@@ -813,7 +838,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                         l.LegendLabel = entry.Label;
                         foreach (var st in l.Strokes)
                         {
-                            st.Color = Utility.SerializeHTMLColor(entry.Color, true);
+                            st.Color = bordAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(bordAlpha));
                         }
                         col.AddRule(l);
                     }
@@ -822,10 +847,20 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 {
                     IAreaVectorStyle col = m_ruleCollection as IAreaVectorStyle;
 
+                    string fillAlpha = "";
                     IAreaRule template = null;
                     if (chkUseFirstRuleAsTemplate.Checked && col.RuleCount > 0)
                     {
                         template = col.GetRuleAt(0);
+
+                        if (template.AreaSymbolization2D != null)
+                        {
+                            if (template.AreaSymbolization2D.Fill != null)
+                            {
+                                if (template.AreaSymbolization2D.Fill.ForegroundColor.Length == 8)
+                                    fillAlpha = template.AreaSymbolization2D.Fill.ForegroundColor.Substring(0, 2);
+                            }
+                        }
                     }
 
                     if (OverwriteRules.Checked)
@@ -836,7 +871,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                         var r = (template != null) ? CreateAreaRule(template, _factory) : _factory.CreateDefaultAreaRule();
                         r.Filter = entry.Filter;
                         r.LegendLabel = entry.Label;
-                        r.AreaSymbolization2D.Fill.ForegroundColor = Utility.SerializeHTMLColor(entry.Color, true);
+                        r.AreaSymbolization2D.Fill.ForegroundColor = fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
 
                         col.AddRule(r);
                     }
