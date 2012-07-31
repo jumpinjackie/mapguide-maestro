@@ -31,6 +31,37 @@ Introduced: MapGuide Open Source 2.1 / MapGuide Enterprise 2010
  - Support for disabling certain geometry styles from appearing in the legend (http://trac.osgeo.org/mapguide/wiki/MapGuideRfc50)
  
 
+v2.3.0
+------
+
+Introduced: Autodesk Infrastructure Map Server 2012
+
+ - Support for Watermarks (http://trac.osgeo.org/mapguide/wiki/MapGuideRfc108)
+
+v2.4.0
+------
+
+Introduced: MapGuide Open Source 2.4 / Autodesk Infrastructure Map Server 2013
+
+ - No new features. Schema version bump a result of Symbol Definition version bump to 2.4.0
+
+Map Definition
+--------------
+
+v2.3.0
+------
+
+Introduced: Autodesk Infrastructure Map Server 2012
+
+ - Support for Watermarks (http://trac.osgeo.org/mapguide/wiki/MapGuideRfc108)
+ 
+v2.4.0
+------
+
+Introduced: MapGuide Open Source 2.4 / Autodesk Infrastructure Map Server 2013
+
+ - No new features. Schema version bump a result of Symbol Definition version bump to 2.4.0
+
 Symbol Definition
 -----------------
 
@@ -41,6 +72,13 @@ Introduced: MapGuide Open Source 2.0 / MapGuide Enterprise 2009
 
  - Support for edit controls and rich text (http://trac.osgeo.org/mapguide/wiki/MapGuideRfc31)
 
+v2.4.0
+------
+
+Introduced: MapGuide Open Source 2.4 / Autodesk Infrastructure Map Server 2013
+
+ - Support for path scaling (http://trac.osgeo.org/mapguide/wiki/MapGuideRfc113)
+
 Web Layout
 ----------
 
@@ -50,7 +88,14 @@ v1.1.0
 Introduced: MapGuide Open Source 2.2 / MapGuide Enterprise 2011
 
  - New ping server option (http://trac.osgeo.org/mapguide/wiki/MapGuideRfc66)
- 
+
+v2.4.0
+------
+
+Introduced: MapGuide Open Source 2.4 / Autodesk Infrastructure Map Server 2013
+
+ - Support for a new tooltip-toggle command (http://trac.osgeo.org/mapguide/wiki/MapGuideRfc120)
+
 Load Procedure
 --------------
 
