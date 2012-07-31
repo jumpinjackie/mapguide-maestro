@@ -52,7 +52,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.GradientToColor = new Maestro.Editors.Common.ColorComboBox();
             this.GradientFromColor = new Maestro.Editors.Common.ColorComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.ChangeBaseStyleBtn = new System.Windows.Forms.Button();
             this.ColorBrewerColors = new System.Windows.Forms.RadioButton();
             this.GradientColors = new System.Windows.Forms.RadioButton();
             this.PreviewGroup = new System.Windows.Forms.GroupBox();
@@ -180,7 +179,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.DisplayGroup.Controls.Add(this.ColorBrewerPanel);
             this.DisplayGroup.Controls.Add(this.ColorBrewerLabel);
             this.DisplayGroup.Controls.Add(this.panel2);
-            this.DisplayGroup.Controls.Add(this.ChangeBaseStyleBtn);
             this.DisplayGroup.Controls.Add(this.ColorBrewerColors);
             this.DisplayGroup.Controls.Add(this.GradientColors);
             this.DisplayGroup.Name = "DisplayGroup";
@@ -248,13 +246,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            // 
-            // ChangeBaseStyleBtn
-            // 
-            resources.ApplyResources(this.ChangeBaseStyleBtn, "ChangeBaseStyleBtn");
-            this.ChangeBaseStyleBtn.Name = "ChangeBaseStyleBtn";
-            this.ChangeBaseStyleBtn.UseVisualStyleBackColor = true;
-            this.ChangeBaseStyleBtn.Click += new System.EventHandler(this.ChangeBaseStyleBtn_Click);
             // 
             // ColorBrewerColors
             // 
@@ -358,7 +349,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         private System.Windows.Forms.Button CancelBtn;
         private System.Windows.Forms.Button OKBtn;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button ChangeBaseStyleBtn;
         private System.Windows.Forms.RadioButton ColorBrewerColors;
         private System.Windows.Forms.RadioButton GradientColors;
         private CustomCombo ColorBrewerColorSet;

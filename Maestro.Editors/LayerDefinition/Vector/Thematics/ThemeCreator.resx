@@ -648,30 +648,6 @@
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="ChangeBaseStyleBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 80</value>
-  </data>
-  <data name="ChangeBaseStyleBtn.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 23</value>
-  </data>
-  <data name="ChangeBaseStyleBtn.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="ChangeBaseStyleBtn.Text" xml:space="preserve">
-    <value>Change base style</value>
-  </data>
-  <data name="&gt;&gt;ChangeBaseStyleBtn.Name" xml:space="preserve">
-    <value>ChangeBaseStyleBtn</value>
-  </data>
-  <data name="&gt;&gt;ChangeBaseStyleBtn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ChangeBaseStyleBtn.Parent" xml:space="preserve">
-    <value>DisplayGroup</value>
-  </data>
-  <data name="&gt;&gt;ChangeBaseStyleBtn.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="ColorBrewerColors.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -694,7 +670,7 @@
     <value>DisplayGroup</value>
   </data>
   <data name="&gt;&gt;ColorBrewerColors.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="GradientColors.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -721,7 +697,7 @@
     <value>DisplayGroup</value>
   </data>
   <data name="&gt;&gt;GradientColors.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="DisplayGroup.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 152</value>

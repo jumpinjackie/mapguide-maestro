@@ -52,7 +52,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         private DataPropertyType m_dataType;
         
         private object m_ruleCollection;
-        private object m_defaultItem;
 
         private static readonly Type[] NUMERIC_TYPES = null;
 
@@ -906,50 +905,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             if (!m_isUpdating)
                 GradientColors.Checked = true;
             RefreshPreview();
-        }
-
-        private void ChangeBaseStyleBtn_Click(object sender, EventArgs e)
-        {
-            IVectorLayerDefinition vl = (IVectorLayerDefinition)m_layer.SubLayer;
-            UserControl uc = null;
-            if (m_ruleCollection is IPointVectorStyle)
-            {
-                uc = new PointFeatureStyleEditor(m_editor, m_schema, vl.ResourceId);
-                ((PointFeatureStyleEditor)uc).Item = (IPointSymbolization2D)Utility.XmlDeepCopy(m_defaultItem);
-                ((PointFeatureStyleEditor)uc).SetupForTheming();
-            }
-            else if (m_ruleCollection is ILineVectorStyle)
-            {
-                uc = new LineFeatureStyleEditor(m_editor, m_schema, vl.ResourceId, _factory);
-                var rule = _factory.CreateDefaultLineRule();
-                ((LineFeatureStyleEditor)uc).Item = new List<IStroke>(rule.Strokes);
-                ((LineFeatureStyleEditor)uc).SetupForTheming();
-            }
-            else if (m_ruleCollection is IAreaVectorStyle)
-            {
-                uc = new AreaFeatureStyleEditor(m_editor, m_schema, vl.ResourceId);
-                ((AreaFeatureStyleEditor)uc).Item = (IAreaSymbolizationFill)Utility.XmlDeepCopy(m_defaultItem);
-                ((AreaFeatureStyleEditor)uc).SetupForTheming();
-            }
-
-            if (uc != null)
-            {
-                EditorTemplateForm dlg = new EditorTemplateForm();
-                dlg.ItemPanel.Controls.Add(uc);
-                uc.Dock = DockStyle.Fill;
-                dlg.RefreshSize();
-
-                if (dlg.ShowDialog(this) == DialogResult.OK)
-                {
-                    if (m_ruleCollection is IPointVectorStyle)
-                        m_defaultItem = ((PointFeatureStyleEditor)uc).Item;
-                    else if (m_ruleCollection is ILineVectorStyle)
-                        m_defaultItem = ((LineFeatureStyleEditor)uc).Item;
-                    else if (m_ruleCollection is IAreaVectorStyle)
-                        m_defaultItem = ((AreaFeatureStyleEditor)uc).Item;
-                }
-            }
-
         }
 
         private void ColorBrewerDataType_SelectedIndexChanged(object sender, EventArgs e)
