@@ -74,8 +74,7 @@ namespace Maestro.Editors.MapDefinition
 
             CheckBoxBinder.BindChecked(chkExpanded, group, "ExpandInLegend");
             CheckBoxBinder.BindChecked(chkLegendVisible, group, "ShowInLegend");
-            //CheckBoxBinder.BindChecked(chkVisible, group, "Visible");
-            chkVisible.Visible = false;
+            CheckBoxBinder.BindChecked(chkVisible, group, "Visible");
         }
 
         void OnGroupChanged(object sender, PropertyChangedEventArgs e)
