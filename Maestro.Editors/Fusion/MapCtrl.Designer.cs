@@ -50,7 +50,7 @@
             this.grpCms = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.chkOsmMapnik = new System.Windows.Forms.CheckBox();
-            this.chkOsmOsmarender = new System.Windows.Forms.CheckBox();
+            this.chkOsmTransportMap = new System.Windows.Forms.CheckBox();
             this.chkOsmCycleMap = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.chkGoogTerrain = new System.Windows.Forms.CheckBox();
@@ -209,7 +209,7 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.chkOsmMapnik);
-            this.groupBox6.Controls.Add(this.chkOsmOsmarender);
+            this.groupBox6.Controls.Add(this.chkOsmTransportMap);
             this.groupBox6.Controls.Add(this.chkOsmCycleMap);
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
@@ -222,12 +222,12 @@
             this.chkOsmMapnik.UseVisualStyleBackColor = true;
             this.chkOsmMapnik.CheckedChanged += new System.EventHandler(this.chkOsmMapnik_CheckedChanged);
             // 
-            // chkOsmOsmarender
+            // chkOsmTransportMap
             // 
-            resources.ApplyResources(this.chkOsmOsmarender, "chkOsmOsmarender");
-            this.chkOsmOsmarender.Name = "chkOsmOsmarender";
-            this.chkOsmOsmarender.UseVisualStyleBackColor = true;
-            this.chkOsmOsmarender.CheckedChanged += new System.EventHandler(this.chkOsmOsmarender_CheckedChanged);
+            resources.ApplyResources(this.chkOsmTransportMap, "chkOsmTransportMap");
+            this.chkOsmTransportMap.Name = "chkOsmTransportMap";
+            this.chkOsmTransportMap.UseVisualStyleBackColor = true;
+            this.chkOsmTransportMap.CheckedChanged += new System.EventHandler(this.chkOsmTransportMap_CheckedChanged);
             // 
             // chkOsmCycleMap
             // 
@@ -408,7 +408,7 @@
         private System.Windows.Forms.CheckBox chkGoogTerrain;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.CheckBox chkOsmMapnik;
-        private System.Windows.Forms.CheckBox chkOsmOsmarender;
+        private System.Windows.Forms.CheckBox chkOsmTransportMap;
         private System.Windows.Forms.CheckBox chkOsmCycleMap;
     }
 }

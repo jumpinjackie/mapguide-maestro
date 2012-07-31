@@ -57,7 +57,7 @@ namespace Maestro.Editors.Fusion
         const string Type_OSM = "OpenStreetMap";
 
         const string OSM_MAP_MAPNIK = "Mapnik";
-        const string OSM_MAP_OSMARENDER = "Osmarender";
+        const string OSM_MAP_TRANSPORTMAP = "TransportMap";
         const string OSM_MAP_CYCLEMAP = "CycleMap";
 
         private MapCtrl()
@@ -348,8 +348,8 @@ namespace Maestro.Editors.Fusion
                 _cmsMaps[BING_HYBRID] = new CmsMap(group.CreateCmsMapEntry(Type_Bing, true, "Bing Maps Hybrid", BING_HYBRID)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(OSM_MAP_MAPNIK))
                 _cmsMaps[OSM_MAP_MAPNIK] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, "Open Street Map", OSM_MAP_MAPNIK)) { IsEnabled = false };
-            if (!_cmsMaps.ContainsKey(OSM_MAP_OSMARENDER))
-                _cmsMaps[OSM_MAP_OSMARENDER] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, "Open Street Map (Osmarender)", OSM_MAP_OSMARENDER)) { IsEnabled = false };
+            if (!_cmsMaps.ContainsKey(OSM_MAP_TRANSPORTMAP))
+                _cmsMaps[OSM_MAP_TRANSPORTMAP] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, "Open Street Map (TransportMap)", OSM_MAP_TRANSPORTMAP)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(OSM_MAP_CYCLEMAP))
                 _cmsMaps[OSM_MAP_CYCLEMAP] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, "Open Street Map (CycleMap)", OSM_MAP_CYCLEMAP)) { IsEnabled = false };
         }
@@ -533,15 +533,19 @@ namespace Maestro.Editors.Fusion
             if (_noEvents)
                 return;
 
+            if (chkOsmMapnik.Checked)
+                _appDef.SetValue("OpenStreetMapScript", OSM_URL);
             SetCmsAvailability(OSM_MAP_MAPNIK, chkOsmMapnik.Checked);
         }
 
-        private void chkOsmOsmarender_CheckedChanged(object sender, EventArgs e)
+        private void chkOsmTransportMap_CheckedChanged(object sender, EventArgs e)
         {
             if (_noEvents)
                 return;
 
-            SetCmsAvailability(OSM_MAP_OSMARENDER, chkOsmOsmarender.Checked);
+            if (chkOsmTransportMap.Checked)
+                _appDef.SetValue("OpenStreetMapScript", OSM_URL);
+            SetCmsAvailability(OSM_MAP_TRANSPORTMAP, chkOsmTransportMap.Checked);
         }
 
         private void chkOsmCycleMap_CheckedChanged(object sender, EventArgs e)
@@ -549,6 +553,8 @@ namespace Maestro.Editors.Fusion
             if (_noEvents)
                 return;
 
+            if (chkOsmCycleMap.Checked)
+                _appDef.SetValue("OpenStreetMapScript", OSM_URL);
             SetCmsAvailability(OSM_MAP_CYCLEMAP, chkOsmCycleMap.Checked);
         }
 
@@ -580,6 +586,7 @@ namespace Maestro.Editors.Fusion
             _appDef.SetValue("YahooScript", YAHOO_URL + txtYahooApiKey.Text);
         }
 
+        const string OSM_URL = "http://www.openstreetmap.org/openlayers/OpenStreetMap.js";
         const string GOOGLE_URL = "http://maps.google.com/maps/api/js?sensor=false";
         const string YAHOO_URL = "http://api.maps.yahoo.com/ajaxymap?v=3.0&amp;appid=";
         const string BING_URL = "http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.2";
