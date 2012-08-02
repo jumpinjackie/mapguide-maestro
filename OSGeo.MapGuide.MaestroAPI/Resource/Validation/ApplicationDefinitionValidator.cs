@@ -124,9 +124,66 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 }
             }
 
+            //Check labels of referenced widgets
+            foreach (var wset in fusionApp.WidgetSets)
+            {
+                foreach (var cnt in wset.Containers)
+                {
+                    var menu = cnt as IMenu;
+                    if (menu != null)
+                    {
+                        ValidateWidgetReferencesForMenu(fusionApp, menu, issues, context, resource);
+                    }
+                }
+            }
+
             context.MarkValidated(resource.ResourceID);
 
             return issues.ToArray();
+        }
+
+        private void ValidateWidgetReferencesForMenu(IApplicationDefinition fusionApp, IMenu menu, List<ValidationIssue> issues, ResourceValidationContext context, IResource resource)
+        {
+            foreach (var item in menu.Items)
+            {
+                var subMenu = item as IMenu;
+                var widgetRef = item as IWidgetItem;
+                if (subMenu != null)
+                {
+                    ValidateWidgetReferencesForMenu(fusionApp, subMenu, issues, context, resource);
+                }
+                else if (widgetRef != null)
+                {
+                    var id = widgetRef.Widget;
+                    var wgt = fusionApp.FindWidget(id);
+                    var uiWgt = wgt as IUIWidget;
+                    string parentName = "<unknown>";
+                    var cnt = menu as IWidgetContainer;
+                    var fly = menu as IFlyoutItem;
+                    if (cnt != null)
+                        parentName = cnt.Name;
+                    else if (fly != null)
+                        parentName = fly.Label;
+                    if (wgt == null)
+                    {
+                        issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_Fusion_InvalidWidgetReference, string.Format(Properties.Resources.ADF_InvalidWidgetReferenceInContainer, id, parentName)));
+                    }
+                    else
+                    {
+                        if (uiWgt == null)
+                        {
+                            issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_Fusion_NonStandardUiWidgetAttachedToContainer, string.Format(Properties.Resources.ADF_NonUiWidgetAttachedToContainer, id, parentName)));
+                        }
+                        else
+                        {
+                            if (string.IsNullOrEmpty(uiWgt.Label) && string.IsNullOrEmpty(uiWgt.ImageUrl))
+                            {
+                                issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_Fusion_NoLabelOnWidget, string.Format(Properties.Resources.ADF_ReferencedWidgetInMenuHasNoLabel, id, parentName)));
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private static bool IsCommercialOverlay(IMap map)

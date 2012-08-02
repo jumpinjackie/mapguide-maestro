@@ -600,15 +600,29 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
             Check.NotNull(appDef, "appDef");
             Check.NotEmpty(name, "name");
 
+            return appDef.FindWidget(name) != null;
+        }
+
+        /// <summary>
+        /// Gets the widget of the specified name
+        /// </summary>
+        /// <param name="appDef"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static IWidget FindWidget(this IApplicationDefinition appDef, string name)
+        {
+            Check.NotNull(appDef, "appDef");
+            Check.NotEmpty(name, "name");
+
             foreach (var set in appDef.WidgetSets)
             {
                 foreach (var wgt in set.Widgets)
                 {
                     if (wgt.Name == name)
-                        return true;
+                        return wgt;
                 }
             }
-            return false;
+            return null;
         }
 
         /// <summary>

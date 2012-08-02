@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtXmlContent = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnWidgetInfo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -52,9 +53,17 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // btnWidgetInfo
+            // 
+            resources.ApplyResources(this.btnWidgetInfo, "btnWidgetInfo");
+            this.btnWidgetInfo.Name = "btnWidgetInfo";
+            this.btnWidgetInfo.UseVisualStyleBackColor = true;
+            this.btnWidgetInfo.Click += new System.EventHandler(this.btnWidgetInfo_Click);
+            // 
             // GenericWidgetCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.btnWidgetInfo);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtXmlContent);
             this.Controls.Add(this.label1);
@@ -70,5 +79,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtXmlContent;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnWidgetInfo;
     }
 }

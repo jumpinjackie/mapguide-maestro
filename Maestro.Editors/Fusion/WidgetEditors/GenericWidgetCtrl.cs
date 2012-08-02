@@ -42,11 +42,14 @@ namespace Maestro.Editors.Fusion.WidgetEditors
 
         private string _xml;
         private IWidget _widget;
+        private IWidgetInfo _widgetInfo;
 
         public void Setup(IWidget widget, FlexibleLayoutEditorContext context, IEditorService edsvc)
         {
             _widget = widget;
             _xml = _widget.ToXml();
+            _widgetInfo = context.GetWidgetInfo(widget.Type);
+            btnWidgetInfo.Enabled = (_widgetInfo != null);
             txtXmlContent.Text = _xml;
         }
 
@@ -85,9 +88,12 @@ namespace Maestro.Editors.Fusion.WidgetEditors
                 if (node != null)
                 {
                     List<XmlElement> elements = new List<XmlElement>();
-                    foreach (XmlNode child in node.ChildNodes)
+                    //foreach (XmlNode child in node.ChildNodes)
+                    for (int i = 0; i < node.ChildNodes.Count; i++)
                     {
-                        elements.Add(node[child.Name]);
+                        var el = doc.CreateElement(node.ChildNodes[i].Name);
+                        el.InnerXml = node.ChildNodes[i].InnerXml;
+                        elements.Add(el);
                     }
                     _widget.Extension.Content = elements.ToArray();
                 }
@@ -130,6 +136,12 @@ namespace Maestro.Editors.Fusion.WidgetEditors
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnWidgetInfo_Click(object sender, EventArgs e)
+        {
+            if (_widgetInfo != null)
+                new WidgetInfoDialog(_widgetInfo).ShowDialog();
         }
     }
 }

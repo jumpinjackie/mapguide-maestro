@@ -197,6 +197,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         Warning_Fusion_MapCoordSysIncompatibleWithCommericalLayers,
 
         /// <summary>
+        /// The referenced widget has no label, which may cause display problems if there is no icon specified
+        /// </summary>
+        Warning_Fusion_NoLabelOnWidget,
+
+        /// <summary>
+        /// A toolbar or container contains a reference to a non-UI widget
+        /// </summary>
+        Warning_Fusion_NonStandardUiWidgetAttachedToContainer,
+
+        /// <summary>
         /// Unrecognised layer type
         /// </summary>
         Warning_LayerDefinition_UnsupportedLayerType = 3501,
@@ -311,6 +321,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// Unclassified error validating the referenced map definition
         /// </summary>
         Error_Fusion_MapValidationError,
+
+        /// <summary>
+        /// A toolbar or container contains a reference to a non-existent widget
+        /// </summary>
+        Error_Fusion_InvalidWidgetReference,
 
         /// <summary>
         /// Unclassifed validation error

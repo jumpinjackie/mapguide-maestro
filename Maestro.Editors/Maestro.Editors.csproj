@@ -450,6 +450,12 @@
     <Compile Include="Fusion\MapSettingsCtrl.Designer.cs">
       <DependentUpon>MapSettingsCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fusion\MenuCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\MenuCtrl.Designer.cs">
+      <DependentUpon>MenuCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fusion\NewWidgetDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -458,6 +464,12 @@
     </Compile>
     <Compile Include="Fusion\NsDoc.cs" />
     <Compile Include="Fusion\WidgetEditors\NsDoc.cs" />
+    <Compile Include="Fusion\WidgetEditors\WidgetInfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fusion\WidgetEditors\WidgetInfoDialog.Designer.cs">
+      <DependentUpon>WidgetInfoDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fusion\WidgetManagementDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1447,8 +1459,14 @@
       <DependentUpon>MapSettingsCtrl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\MenuCtrl.resx">
+      <DependentUpon>MenuCtrl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Fusion\NewWidgetDialog.resx">
       <DependentUpon>NewWidgetDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\WidgetEditors\WidgetInfoDialog.resx">
+      <DependentUpon>WidgetInfoDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fusion\WidgetManagementDialog.resx">
       <DependentUpon>WidgetManagementDialog.cs</DependentUpon>

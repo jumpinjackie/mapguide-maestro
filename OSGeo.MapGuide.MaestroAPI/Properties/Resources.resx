@@ -2775,4 +2775,13 @@
   <data name="FS_SecuredCredentialTokensWithoutSecuredCredentialData" xml:space="preserve">
     <value>Feature source content has the %MG_USERNAME% and %MG_PASSWORD% tokens, but does not have the MG_USER_CREDENTIALS resource data item</value>
   </data>
+  <data name="ADF_InvalidWidgetReferenceInContainer" xml:space="preserve">
+    <value>A non-existent widget by the id of {0} is being referenced from a menu/container : {1}</value>
+  </data>
+  <data name="ADF_NonUiWidgetAttachedToContainer" xml:space="preserve">
+    <value>A non-UI widget by the id of {0} is residing in the menu/container ({1}). Being a non-UI widget, this may cause rendering problems for that particular container</value>
+  </data>
+  <data name="ADF_ReferencedWidgetInMenuHasNoLabel" xml:space="preserve">
+    <value>A widget by the id of {0} has no label. This may cause display problems in the menu/container ({1}) if there is no icon specified</value>
+  </data>
 </root>

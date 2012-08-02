@@ -130,8 +130,8 @@ namespace Maestro.Editors.Fusion
             {
                 string[] widgets = _flexLayout.GetAllReferenceableWidgetNames();
                 string widget = GenericItemSelectionDialog.SelectItem(
-                    Properties.Resources.AddWidgetReference, 
-                    Properties.Resources.SelectWidget, 
+                    Properties.Resources.AddWidgetReference,
+                    Properties.Resources.SelectWidget,
                     widgets);
                 if (widget != null)
                 {
@@ -139,6 +139,25 @@ namespace Maestro.Editors.Fusion
                     var item = _flexLayout.CreateWidgetReference(widget);
                     cnt.Insert(item, cnt.ItemCount);
                     this.SelectedNode.Nodes.Add(CreateNode(item));
+                }
+            }
+            else
+            {
+                var menu = this.SelectedNode.Tag as IMenu;
+                if (menu != null)
+                {
+                    string[] widgets = _flexLayout.GetAllReferenceableWidgetNames();
+                    string widget = GenericItemSelectionDialog.SelectItem(
+                        Properties.Resources.AddWidgetReference,
+                        Properties.Resources.SelectWidget,
+                        widgets);
+                    if (widget != null)
+                    {
+                        //at end
+                        var item = _flexLayout.CreateWidgetReference(widget);
+                        menu.Insert(item, menu.ItemCount);
+                        this.SelectedNode.Nodes.Add(CreateNode(item));
+                    }
                 }
             }
         }
@@ -150,8 +169,19 @@ namespace Maestro.Editors.Fusion
             {
                 //at end
                 var item = _flexLayout.CreateSeparator();
-                cnt.Insert(item, cnt.ItemCount - 1);
+                cnt.Insert(item, cnt.ItemCount);
                 this.SelectedNode.Nodes.Add(CreateNode(item));
+            }
+            else
+            {
+                var menu = this.SelectedNode.Tag as IMenu;
+                if (menu != null)
+                {
+                    //at end
+                    var item = _flexLayout.CreateSeparator();
+                    menu.Insert(item, menu.ItemCount);
+                    this.SelectedNode.Nodes.Add(CreateNode(item));
+                }
             }
         }
 
@@ -162,8 +192,19 @@ namespace Maestro.Editors.Fusion
             {
                 //at end
                 var item = _flexLayout.CreateFlyout(Properties.Resources.NewFlyout);
-                cnt.Insert(item, cnt.ItemCount - 1);
+                cnt.Insert(item, cnt.ItemCount);
                 this.SelectedNode.Nodes.Add(CreateNode(item));
+            }
+            else
+            {
+                var menu = this.SelectedNode.Tag as IMenu;
+                if (menu != null)
+                {
+                    //at end
+                    var item = _flexLayout.CreateFlyout(Properties.Resources.NewFlyout);
+                    menu.Insert(item, menu.ItemCount);
+                    this.SelectedNode.Nodes.Add(CreateNode(item));
+                }
             }
         }
 
@@ -251,6 +292,16 @@ namespace Maestro.Editors.Fusion
                     parent.Nodes.Remove(node);
                     OnResourceChanged();
                 }
+                else
+                {
+                    var menu = parent.Tag as IMenu;
+                    if (menu != null && item != null)
+                    {
+                        menu.RemoveItem(item);
+                        parent.Nodes.Remove(node);
+                        OnResourceChanged();
+                    }
+                }
             }
         }
 
@@ -273,6 +324,23 @@ namespace Maestro.Editors.Fusion
                         parent.Nodes.Insert(index, node);
                         trvWidgets.SelectedNode = node;
                         OnResourceChanged();
+                    }
+                }
+                else
+                {
+                    var menu = parent.Tag as IMenu;
+                    if (menu != null && item != null)
+                    {
+                        int index = node.Index;
+                        if (index >= 0)
+                        {
+                            index--;
+                            menu.MoveUp(item);
+                            parent.Nodes.Remove(node);
+                            parent.Nodes.Insert(index, node);
+                            trvWidgets.SelectedNode = node;
+                            OnResourceChanged();
+                        }
                     }
                 }
             }
@@ -299,6 +367,23 @@ namespace Maestro.Editors.Fusion
                         OnResourceChanged();
                     }
                 }
+                else
+                { 
+                    var menu = parent.Tag as IMenu;
+                    if (menu != null && item != null)
+                    {
+                        int index = node.Index;
+                        if (index < parent.Nodes.Count - 1)
+                        {
+                            index++;
+                            menu.MoveDown(item);
+                            parent.Nodes.Remove(node);
+                            parent.Nodes.Insert(index, node);
+                            trvWidgets.SelectedNode = node;
+                            OnResourceChanged();
+                        }
+                    }
+                }
             }
         }
 
@@ -321,6 +406,15 @@ namespace Maestro.Editors.Fusion
             if (menu != null)
             {
                 btnAddWidget.Enabled = true;
+                var fly = menu as IFlyoutItem;
+                if (fly != null) //Can only edit menus that are flyouts
+                {
+                    btnRemoveWidget.Enabled = true;
+                    btnMoveDown.Enabled = btnMoveUp.Enabled = true;
+                    var ctrl = new MenuCtrl(fly, _edsvc);
+                    ctrl.Dock = DockStyle.Fill;
+                    propertiesPanel.Controls.Add(ctrl);
+                }
             }
             else
             {

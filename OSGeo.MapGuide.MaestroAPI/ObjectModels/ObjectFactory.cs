@@ -716,18 +716,22 @@ namespace OSGeo.MapGuide.ObjectModels
 
             //Show Overview
             var showOverview = (IUIWidget)appDef.CreateWidget("showOverview", widgets.FindWidget(KnownWidgetNames.InvokeScript));
+            showOverview.Label = "Show Overview";
             showOverview.SetValue("Script", "showOverviewMap()");
 
             //Show Task Pane
             var showTaskPane = (IUIWidget)appDef.CreateWidget("showTaskPane", widgets.FindWidget(KnownWidgetNames.InvokeScript));
+            showTaskPane.Label = "Show Task Pane";
             showTaskPane.SetValue("Script", "showTaskPane()");
 
             //Show Legend
             var showLegend = (IUIWidget)appDef.CreateWidget("showLegend", widgets.FindWidget(KnownWidgetNames.InvokeScript));
+            showLegend.Label = "Show Legend";
             showLegend.SetValue("Script", "showLegend()");
 
             //Show Selection Panel
             var showSelectionPanel = (IUIWidget)appDef.CreateWidget("showSelectionPanel", widgets.FindWidget(KnownWidgetNames.InvokeScript));
+            showSelectionPanel.Label = "Show Selection Panel";
             showSelectionPanel.SetValue("Script", "showSelectionPanel()");
 
             //Coordinate Tracker

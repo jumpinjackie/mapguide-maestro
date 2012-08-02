@@ -88,6 +88,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A non-existent widget by the id of {0} is being referenced from a menu/container : {1}.
+        /// </summary>
+        internal static string ADF_InvalidWidgetReferenceInContainer {
+            get {
+                return ResourceManager.GetString("ADF_InvalidWidgetReferenceInContainer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Map with ID {0} does not point to a valid map.
         /// </summary>
         internal static string ADF_MapInvalidError {
@@ -120,6 +129,24 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         internal static string ADF_MapWithIncompatibleCommericalCs {
             get {
                 return ResourceManager.GetString("ADF_MapWithIncompatibleCommericalCs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A non-UI widget by the id of {0} is residing in the menu/container ({1}). Being a non-UI widget, this may cause rendering problems for that particular container.
+        /// </summary>
+        internal static string ADF_NonUiWidgetAttachedToContainer {
+            get {
+                return ResourceManager.GetString("ADF_NonUiWidgetAttachedToContainer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A widget by the id of {0} has no label. This may cause display problems in the menu/container ({1}) if there is no icon specified.
+        /// </summary>
+        internal static string ADF_ReferencedWidgetInMenuHasNoLabel {
+            get {
+                return ResourceManager.GetString("ADF_ReferencedWidgetInMenuHasNoLabel", resourceCulture);
             }
         }
         

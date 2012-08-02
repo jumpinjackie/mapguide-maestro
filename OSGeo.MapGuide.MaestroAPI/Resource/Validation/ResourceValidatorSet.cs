@@ -93,6 +93,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                     catch (Exception ex)
                     {
                         string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
+                        if (ex is NullReferenceException)
+                            msg = ex.ToString();
                         issueSet.AddIssue(new ValidationIssue(item, ValidationStatus.Error, ValidationStatusCode.Error_General_ValidationError, "Failed in validator: " + msg));
                     }
                 }
