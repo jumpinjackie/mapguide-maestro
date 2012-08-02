@@ -558,6 +558,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Extended Feature Class ({0}) is using an empty Join Prefix. A join prefix is used to prevent collisions between property names which may exist in both the primary and joined feature classes..
+        /// </summary>
+        internal static string FS_EmptyJoinPrefix {
+            get {
+                return ResourceManager.GetString("FS_EmptyJoinPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Empty spatial context extent detected.
         /// </summary>
         internal static string FS_EmptySpatialContextWarning {
@@ -590,6 +599,24 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         internal static string FS_PlaintextCredentials {
             get {
                 return ResourceManager.GetString("FS_PlaintextCredentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Extended Feature Class ({0}) does not satisfy the required parameters for optimal Feature Join performance (both sides sortable, on a single property). Join Performance may not be optimal. Left-side sortable: {1}, Right-side sortable: {2}.
+        /// </summary>
+        internal static string FS_PotentialBadJoinPerformance {
+            get {
+                return ResourceManager.GetString("FS_PotentialBadJoinPerformance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Extended Feature Class ({0}) does not satisfy the required parameters for optimal Feature Join performance (both sides sortable, on a single property). Join Performance may not be optimal..
+        /// </summary>
+        internal static string FS_PotentialBadJoinPerformance2 {
+            get {
+                return ResourceManager.GetString("FS_PotentialBadJoinPerformance2", resourceCulture);
             }
         }
         

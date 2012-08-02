@@ -1,4 +1,17 @@
-﻿5.0 Beta 3
+﻿- New Validation rules for Fusion and Feature Join performance
+- Include full stack trace for any general unclassified validation errors triggered by a NullReferenceException
+- Fusion editor fixes
+   - OSM support
+   - Incorrect serialization of widget XML
+   - Flyout Menu support
+   - Improperly enabled/disabled
+   - Missing label in new fusion templates
+- Fusion editor improvements
+   - Can view widget info in the Generic Widget XML editor
+- Fix: Theming using first rule as template now preserves transparency
+- Fix: Restore missing checkbox for toggling Tiled Layer Group visibility in a Map Definition
+
+5.0 Beta 3
 ----------
  - mg-desktop binary update (20 July 2012 release)
  - Added support for new validations rules regarding Feature Source credentials

@@ -2784,4 +2784,13 @@
   <data name="ADF_ReferencedWidgetInMenuHasNoLabel" xml:space="preserve">
     <value>A widget by the id of {0} has no label. This may cause display problems in the menu/container ({1}) if there is no icon specified</value>
   </data>
+  <data name="FS_EmptyJoinPrefix" xml:space="preserve">
+    <value>The Extended Feature Class ({0}) is using an empty Join Prefix. A join prefix is used to prevent collisions between property names which may exist in both the primary and joined feature classes.</value>
+  </data>
+  <data name="FS_PotentialBadJoinPerformance" xml:space="preserve">
+    <value>The Extended Feature Class ({0}) does not satisfy the required parameters for optimal Feature Join performance (both sides sortable, on a single property). Join Performance may not be optimal. Left-side sortable: {1}, Right-side sortable: {2}</value>
+  </data>
+  <data name="FS_PotentialBadJoinPerformance2" xml:space="preserve">
+    <value>The Extended Feature Class ({0}) does not satisfy the required parameters for optimal Feature Join performance (both sides sortable, on a single property). Join Performance may not be optimal.</value>
+  </data>
 </root>

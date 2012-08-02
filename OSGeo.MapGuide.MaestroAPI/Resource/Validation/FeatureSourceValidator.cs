@@ -59,6 +59,65 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             IFeatureSource feature = (IFeatureSource)resource;
             IFeatureService featSvc = feature.CurrentConnection.FeatureService;
 
+            //Feature Join Optimization check
+            foreach (var ext in feature.Extension)
+            {
+                foreach (var rel in ext.AttributeRelate)
+                {
+                    if (string.IsNullOrEmpty(rel.Name))
+                    {
+                        issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_EmptyJoinPrefix, string.Format(Properties.Resources.FS_EmptyJoinPrefix, ext.Name)));
+                    }
+
+                    if (rel.RelatePropertyCount > 0)
+                    {
+                        if (rel.RelatePropertyCount == 1)
+                        {
+                            var srcFs = feature;
+                            var dstFs = (IFeatureSource)context.GetResource(rel.ResourceId);
+
+                            var leftProvider = srcFs.Provider.ToUpper();
+                            var rightProvider = dstFs.Provider.ToUpper();
+
+                            //FDO Join optimization check
+                            if (leftProvider.Contains("OSGEO.SQLITE") && rightProvider.Contains("OSGEO.SQLITE") && srcFs.ResourceID == rel.ResourceId)
+                                continue;
+
+                            //FDO Join optimization check
+                            if (leftProvider.Contains("OSGEO.SQLSERVERSPATIAL") && rightProvider.Contains("OSGEO.SQLSERVERSPATIAL") && srcFs.ResourceID == rel.ResourceId)
+                                continue;
+
+                            //TODO: Fix the capabilities response. Because it's not telling us enough information!
+                            //Anyways, these are the providers known to provide sorted query results.
+                            bool bLeftSortable = leftProvider.Contains("OSGEO.SDF") ||
+                                                 leftProvider.Contains("OSGEO.SHP") ||
+                                                 leftProvider.Contains("OSGEO.SQLITE") ||
+                                                 leftProvider.Contains("OSGEO.ODBC") ||
+                                                 leftProvider.Contains("OSGEO.SQLSERVERSPATIAL") ||
+                                                 leftProvider.Contains("OSGEO.MYSQL") ||
+                                                 leftProvider.Contains("OSGEO.POSTGRESQL");
+
+                            bool bRightSortable = leftProvider.Contains("OSGEO.SDF") ||
+                                                 leftProvider.Contains("OSGEO.SHP") ||
+                                                 leftProvider.Contains("OSGEO.SQLITE") ||
+                                                 leftProvider.Contains("OSGEO.ODBC") ||
+                                                 leftProvider.Contains("OSGEO.SQLSERVERSPATIAL") ||
+                                                 leftProvider.Contains("OSGEO.MYSQL") ||
+                                                 leftProvider.Contains("OSGEO.POSTGRESQL");
+
+                            if (!bLeftSortable || !bRightSortable)
+                            {
+                                issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_Potential_Bad_Join_Performance, string.Format(Properties.Resources.FS_PotentialBadJoinPerformance, ext.Name, bLeftSortable, bRightSortable)));
+                            }
+                        }
+                        else 
+                        {
+                            issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_Potential_Bad_Join_Performance, string.Format(Properties.Resources.FS_PotentialBadJoinPerformance2, ext.Name)));
+                        }
+                    }
+                }
+            }
+
             //Plaintext credential check
             string providerNameUpper = feature.Provider.ToUpper();
             string fsXml = feature.Serialize().ToUpper();

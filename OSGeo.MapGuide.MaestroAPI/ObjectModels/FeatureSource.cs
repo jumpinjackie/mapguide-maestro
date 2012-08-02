@@ -452,6 +452,12 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
             }
         }
 
+        [XmlIgnore]
+        int IAttributeRelation.RelatePropertyCount
+        {
+            get { return this.RelateProperty.Count; }
+        }
+
         void IAttributeRelation.AddRelateProperty(IRelateProperty prop)
         {
             var rel = prop as RelatePropertyType;

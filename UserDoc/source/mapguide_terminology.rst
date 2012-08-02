@@ -44,6 +44,8 @@ Version(s):
  * 1.1.0 - MapGuide Open Source 1.2 / MapGuide Enterprise 2008
  * 1.2.0 - MapGuide Open Source 2.0 / MapGuide Enterprise 2009
  * 1.3.0 - MapGuide Open Source 2.1 / MapGuide Enterprise 2010
+ * 2.3.0 - Autodesk Infrastructure Map Server 2012
+ * 2.4.0 - MapGuide Open Source 2.4 / Autodesk Infrastructure Map Server 2013
 
 Layer Definitions describe how data from a Feature Source is to be styled. (see below: Displaying Data)
 
@@ -58,6 +60,7 @@ Version(s):
 
  * 1.0.0 - MapGuide Open Source 1.0 / MapGuide Enterprise 2007
  * 2.3.0 - MapGuide Open Source 2.3 / MapGuide Enterprise 2012
+ * 2.4.0 - MapGuide Open Source 2.4 / Autodesk Infrastructure Map Server 2013
 
 Map Definitions contains one or more Layer Definitions grouped together and sorted by drawing order.
 
@@ -70,6 +73,7 @@ Version(s):
 
  * 1.0.0 - MapGuide Open Source 1.0 / MapGuide Enterprise 2007
  * 1.1.0 - MapGuide Open Source 2.2 / MapGuide Enterprise 2011
+ * 2.4.0 - MapGuide Open Source 2.4 / Autodesk Infrastructure Map Server 2013
 
 Describes the user interface for the AJAX viewer (see: Understanding MapGuide Applications - Web Layouts)
 
@@ -130,10 +134,9 @@ Version(s):
 
  * 1.0.0 - MapGuide Open Source 1.2 / MapGuide Enterprise 2008
  * 1.1.0 - MapGuide Open Source 2.0 / MapGuide Enterprise 2009
+ * 2.4.0 - MapGuide Open Source 2.4 / Autodesk Infrastructure Map Server 2013
 
 Describes a cartographic symbol, which has lots of display and customisation parameters. Used by Layer Definitions.
-
-There is no specialized editor support for Symbol Definitions. Opening Symbol Definitions will default to the generic XML editor.
 
 Watermark Definitions
 ^^^^^^^^^^^^^^^^^^^^^
@@ -145,5 +148,3 @@ Version(s):
  * 2.3.0 - MapGuide Open Source 2.3 / MapGuide Enterprise 2012
 
 Describes a watermark that is rendered as part of the map when viewing it. Used by Map Definitions.
-
-There is no specialized editor support for Watermark Definitions. Opening Watermark Definitions will default to the generic XML editor.

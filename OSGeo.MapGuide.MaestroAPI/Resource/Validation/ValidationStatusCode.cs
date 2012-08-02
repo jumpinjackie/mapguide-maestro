@@ -125,6 +125,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         Warning_FeatureSource_Plaintext_Credentials,
 
         /// <summary>
+        /// An Extended Feature Class does not specify a join prefix. This will cause collisions if the primary and secondary classes have one or more identical
+        /// property names
+        /// </summary>
+        Warning_FeatureSource_EmptyJoinPrefix,
+
+        /// <summary>
+        /// An Extended Feature Class does not specify 
+        /// </summary>
+        Warning_FeatureSource_Potential_Bad_Join_Performance,
+
+        /// <summary>
         /// DWG Load Procedures not supported. This is a limitation of Maestro
         /// </summary>
         Warning_LoadProcedure_DwgNotSupported = 3201,

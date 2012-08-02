@@ -304,6 +304,11 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         IEnumerable<IRelateProperty> RelateProperty { get; }
 
         /// <summary>
+        /// Gets the number of properties being joined on
+        /// </summary>
+        int RelatePropertyCount { get; }
+
+        /// <summary>
         /// Creates the property join.
         /// </summary>
         /// <param name="primaryProperty">The primary property.</param>
