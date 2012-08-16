@@ -245,7 +245,7 @@ namespace Maestro.MapViewer
 
             _viewer.DigitizeCircle((x, y, r) =>
             {
-                _viewer.SelectByWkt(MakeWktCircle(x, y, r));
+                _viewer.SelectByWkt(MakeWktCircle(x, y, r), -1);
             });
         }
 
@@ -266,7 +266,7 @@ namespace Maestro.MapViewer
                     wkt.Append(coordinates[i, 0] + " " + coordinates[i, 1]);
                 }
                 wkt.Append("))");
-                _viewer.SelectByWkt(wkt.ToString());
+                _viewer.SelectByWkt(wkt.ToString(), -1);
             });
         }
 

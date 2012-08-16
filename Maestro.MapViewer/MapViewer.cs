@@ -2024,8 +2024,9 @@ namespace Maestro.MapViewer
         /// <summary>
         /// Selects features from all selectable layers that intersects the given geometry
         /// </summary>
-        /// <param name="geom"></param>
-        public void SelectByWkt(string wkt)
+        /// <param name="wkt">The geometry wkt</param>
+        /// <param name="maxFeatures">The maximum number of features to select. Specify -1 to select all features.</param>
+        public void SelectByWkt(string wkt, int maxFeatures)
         {
             //Don't select if dragging. This is the cause of the failure to render
             //multiple selections, which required a manual refresh afterwards
@@ -2036,7 +2037,7 @@ namespace Maestro.MapViewer
             var sw = new Stopwatch();
             sw.Start();
 #endif
-            _map.QueryMapFeatures(wkt, -1, true, "INTERSECTS", CreateQueryOptionsForSelection());
+            _map.QueryMapFeatures(wkt, maxFeatures, true, "INTERSECTS", CreateQueryOptionsForSelection());
 #if TRACE
             sw.Stop();
             Trace.TraceInformation("Selection processing completed in {0}ms", sw.ElapsedMilliseconds);
@@ -2354,7 +2355,7 @@ namespace Maestro.MapViewer
                         Math.Max(mapPt1.X, mapPt2.X),
                         Math.Max(mapPt1.Y, mapPt2.Y));
 
-                    SelectByWkt(MakeWktPolygon(env.MinX, env.MinY, env.MaxX, env.MaxY));
+                    SelectByWkt(MakeWktPolygon(env.MinX, env.MinY, env.MaxX, env.MaxY), 1);
                 }
                 else if (this.ActiveTool == MapActiveTool.ZoomIn)
                 {
@@ -2536,7 +2537,7 @@ namespace Maestro.MapViewer
                         Math.Min(mapPt.Y, mapDragPt.Y),
                         Math.Max(mapPt.X, mapDragPt.X),
                         Math.Max(mapPt.Y, mapDragPt.Y));
-                    SelectByWkt(MakeWktPolygon(env.MinX, env.MinY, env.MaxX, env.MaxY));
+                    SelectByWkt(MakeWktPolygon(env.MinX, env.MinY, env.MaxX, env.MaxY), -1);
                 }
                 else if (this.ActiveTool == MapActiveTool.ZoomIn)
                 {

@@ -251,7 +251,9 @@ namespace Maestro.MapViewer
         /// <summary>
         /// Selects features from all selectable layers that intersects the given geometry in WKT format
         /// </summary>
-        void SelectByWkt(string wkt);
+        /// <param name="wkt">The geometry wkt</param>
+        /// <param name="maxFeatures">The maximum number of features to select. Specify -1 to select all features</param>
+        void SelectByWkt(string wkt, int maxFeatures);
 
         /// <summary>
         /// Zooms to the initial map view
