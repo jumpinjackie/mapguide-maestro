@@ -375,40 +375,28 @@
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="trvFolders.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="repoView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="trvFolders.ImageIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <metadata name="folderImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>137, 17</value>
-  </metadata>
-  <data name="folderImageList.ImageSize" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
-  </data>
-  <data name="trvFolders.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="repoView.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 31</value>
   </data>
-  <data name="trvFolders.SelectedImageIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="trvFolders.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="repoView.Size" type="System.Drawing.Size, System.Drawing">
     <value>178, 298</value>
   </data>
-  <data name="trvFolders.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="repoView.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;trvFolders.Name" xml:space="preserve">
-    <value>trvFolders</value>
+  <data name="&gt;&gt;repoView.Name" xml:space="preserve">
+    <value>repoView</value>
   </data>
-  <data name="&gt;&gt;trvFolders.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TreeView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;repoView.Type" xml:space="preserve">
+    <value>Maestro.Editors.Common.RepositoryView, Maestro.Editors, Version=5.0.0.6640, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
-  <data name="&gt;&gt;trvFolders.Parent" xml:space="preserve">
+  <data name="&gt;&gt;repoView.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
   </data>
-  <data name="&gt;&gt;trvFolders.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;repoView.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
@@ -455,6 +443,12 @@
   </data>
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <metadata name="folderImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>137, 17</value>
+  </metadata>
+  <data name="folderImageList.ImageSize" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
   </data>
   <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>

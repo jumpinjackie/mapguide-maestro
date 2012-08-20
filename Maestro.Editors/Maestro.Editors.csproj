@@ -127,6 +127,13 @@
       <DependentUpon>GenericItemSelectionDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\NsDoc.cs" />
+    <Compile Include="Common\RepositoryTreeModel.cs" />
+    <Compile Include="Common\RepositoryView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\RepositoryView.Designer.cs">
+      <DependentUpon>RepositoryView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\ResourceDataCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1281,6 +1288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Common\GenericItemSelectionDialog.resx">
       <DependentUpon>GenericItemSelectionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\RepositoryView.resx">
+      <DependentUpon>RepositoryView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Common\ResourceDataCtrl.resx">
       <DependentUpon>ResourceDataCtrl.cs</DependentUpon>

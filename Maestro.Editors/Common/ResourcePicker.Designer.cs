@@ -43,13 +43,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.trvFolders = new System.Windows.Forms.TreeView();
             this.folderImageList = new System.Windows.Forms.ImageList(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.txtFolder = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.resIdComponentPanel = new System.Windows.Forms.Panel();
+            this.repoView = new Maestro.Editors.Common.RepositoryView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -145,19 +145,13 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.trvFolders);
+            this.splitContainer1.Panel1.Controls.Add(this.repoView);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.lstResources);
             this.splitContainer1.Panel2.Controls.Add(this.label4);
-            // 
-            // trvFolders
-            // 
-            resources.ApplyResources(this.trvFolders, "trvFolders");
-            this.trvFolders.ImageList = this.folderImageList;
-            this.trvFolders.Name = "trvFolders";
             // 
             // folderImageList
             // 
@@ -196,6 +190,11 @@
             this.resIdComponentPanel.Controls.Add(this.label2);
             this.resIdComponentPanel.Controls.Add(this.txtFolder);
             this.resIdComponentPanel.Name = "resIdComponentPanel";
+            // 
+            // repoView
+            // 
+            resources.ApplyResources(this.repoView, "repoView");
+            this.repoView.Name = "repoView";
             // 
             // ResourcePicker
             // 
@@ -246,7 +245,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Panel resIdComponentPanel;
-        private System.Windows.Forms.TreeView trvFolders;
         private System.Windows.Forms.ImageList folderImageList;
+        private Common.RepositoryView repoView;
     }
 }

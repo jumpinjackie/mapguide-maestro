@@ -30,6 +30,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.Common;
 using System.Security.AccessControl;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using Maestro.Editors.Common;
 
 namespace Maestro.Editors.Generic
 {
@@ -67,8 +68,6 @@ namespace Maestro.Editors.Generic
 
         private bool _resourceMode = false;
 
-        private RepositoryFolderTreeModel _model;
-
         /// <summary>
         /// Constructs a new instance. Use this overload to select any resource type. If only
         /// folder selection is desired, set <see cref="SelectFoldersOnly"/> to true before
@@ -80,8 +79,8 @@ namespace Maestro.Editors.Generic
             : this()
         {
             _resSvc = resSvc;
-            _model = new RepositoryFolderTreeModel(_resSvc, trvFolders);
-            _model.FolderSelected += OnFolderSelected;
+            repoView.Init(resSvc, true);
+            repoView.ItemSelected += OnFolderSelected;
             this.UseFilter = true;
             this.Mode = mode;
             SetStartingPoint(LastSelectedFolder.FolderId);
@@ -108,8 +107,8 @@ namespace Maestro.Editors.Generic
             if (!_resSvc.ResourceExists(folderId))
                 folderId = "Library://";
 
-            this.ActiveControl = trvFolders;
-            _model.NavigateTo(folderId);
+            this.ActiveControl = repoView;
+            repoView.NavigateTo(folderId);
             this.SelectedFolder = folderId;
 
             //HACK: Navigating to the specified folder takes away the focus to the 
@@ -309,24 +308,21 @@ namespace Maestro.Editors.Generic
         }
 
         private void UpdateDocumentList()
-        {   
-            if (_model != null)
+        {
+            IRepositoryItem folder = repoView.SelectedItem;
+            if (folder != null)
             {
-                RepositoryFolder folder = _model.SelectedFolder;
-                if (folder != null)
+                txtFolder.Text = folder.ResourceId;
+
+                if (!this.SelectFoldersOnly)
                 {
-                    txtFolder.Text = folder.ResourceId;
+                    ResourceList list = null;
+                    if (!this.UseFilter)
+                        list = _resSvc.GetRepositoryResources(folder.ResourceId, 1);
+                    else
+                        list = _resSvc.GetRepositoryResources(folder.ResourceId, this.Filter.ToString(), 1);
 
-                    if (!this.SelectFoldersOnly)
-                    {
-                        ResourceList list = null;
-                        if (!this.UseFilter)
-                            list = _resSvc.GetRepositoryResources(folder.ResourceId, 1);
-                        else
-                            list = _resSvc.GetRepositoryResources(folder.ResourceId, this.Filter.ToString(), 1);
-
-                        PopulateDocumentList(list);
-                    }
+                    PopulateDocumentList(list);
                 }
             }
         }
@@ -424,216 +420,5 @@ namespace Maestro.Editors.Generic
         /// 
         /// </summary>
         OpenFolder
-    }
-
-    internal class RepositoryFolder
-    {
-        private IRepositoryItem _item;
-
-        public RepositoryFolder(IRepositoryItem item)
-        {
-            _item = item;
-        }
-
-        public string Name { get { return _item.Name; } }
-
-        public string ResourceId { get { return _item.ResourceId; } }
-
-        public bool HasChildren { get { return _item.HasChildren; } }
-
-        public Image Icon
-        {
-            get
-            {
-                if (IsRoot)
-                {
-                    return Properties.Resources.server;
-                }
-                else
-                {
-                    return Properties.Resources.folder_horizontal;
-                }
-            }
-        }
-
-        public bool IsRoot
-        {
-            get { return this.ResourceId == "Library://"; }
-        }
-    }
-
-    internal class RepositoryFolderTreeModel
-    {
-        class DummyNode : TreeNode
-        {
-
-        }
-
-        internal event EventHandler FolderSelected;
-
-        private IResourceService _resSvc;
-        private TreeView _tree;
-
-        public RepositoryFolder SelectedFolder
-        {
-            get;
-            private set;
-        }
-
-        private void StartUpdate()
-        {
-            _tree.BeginUpdate();
-            _tree.Cursor = Cursors.WaitCursor;
-        }
-
-        private void EndUpdate()
-        {
-            _tree.EndUpdate();
-            _tree.Cursor = Cursors.Default;
-        }
-
-        public RepositoryFolderTreeModel(IResourceService resSvc, TreeView tree)
-        {
-            _resSvc = resSvc;
-            _tree = tree;
-
-            _tree.AfterExpand += new TreeViewEventHandler(OnNodeAfterExpand);
-            _tree.AfterSelect += new TreeViewEventHandler(OnNodeAfterSelect);
-
-            StartUpdate();
-            foreach (RepositoryFolder folder in GetChildren(null))
-            {
-                var node = CreateNode(folder);
-                _tree.Nodes.Add(node);
-            }
-            EndUpdate();
-        }
-
-        void OnNodeAfterSelect(object sender, TreeViewEventArgs e)
-        {
-            RepositoryFolder folder = (RepositoryFolder)e.Node.Tag;
-            SetSelectedFolder(folder);
-        }
-
-        private void SetSelectedFolder(RepositoryFolder folder)
-        {
-            this.SelectedFolder = folder;
-            var handler = this.FolderSelected;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
-        }
-
-        bool IsNodeNotPopulated(TreeNode node)
-        {
-            return node.Nodes.Count == 1 && node.Nodes[0].GetType() == typeof(DummyNode);
-        }
-
-        void OnNodeAfterExpand(object sender, TreeViewEventArgs e)
-        {
-            UpdateNode(e.Node);
-        }
-
-        private void UpdateNode(TreeNode nodeToUpdate)
-        {
-            RepositoryFolder folder = (RepositoryFolder)nodeToUpdate.Tag;
-            if (IsNodeNotPopulated(nodeToUpdate))
-                nodeToUpdate.Nodes.Clear();
-
-            if (folder.HasChildren && nodeToUpdate.Nodes.Count == 0)
-            {
-                StartUpdate();
-                foreach (RepositoryFolder f in GetChildren(folder))
-                {
-                    var node = CreateNode(f);
-                    nodeToUpdate.Nodes.Add(node);
-                }
-                EndUpdate();
-            }
-        }
-
-        private static TreeNode CreateNode(RepositoryFolder folder)
-        {
-            var node = new TreeNode();
-            node.Name = folder.Name;
-            node.Text = folder.Name;
-            node.Tag = folder;
-            node.ImageIndex = node.SelectedImageIndex = folder.IsRoot ? RepositoryIcons.RES_ROOT : RepositoryIcons.RES_FOLDER;
-            node.Nodes.Add(new DummyNode());
-            return node;
-        }
-
-        private System.Collections.IEnumerable GetSorted(ResourceList list)
-        {
-            //Sort them before returning them
-            SortedList<string, RepositoryFolder> folders = new SortedList<string, RepositoryFolder>();
-            foreach (var item in list.Children)
-            {
-                if (item.IsFolder)
-                    folders.Add(item.Name, new RepositoryFolder(item));
-            }
-            foreach (var folder in folders.Values)
-            {
-                yield return folder;
-            }
-        }
-
-        public System.Collections.IEnumerable GetChildren(RepositoryFolder folder)
-        {
-            if (folder == null)
-            {
-                var list = _resSvc.GetRepositoryResources("Library://", 0);
-                return GetSorted(list);
-            }
-            else
-            {
-                if (folder.HasChildren)
-                {
-                    var list = _resSvc.GetRepositoryResources(folder.ResourceId, ResourceTypes.Folder.ToString(), 1, true);
-                    return GetSorted(list);
-                }
-                else
-                {
-                    return new RepositoryFolder[0];
-                }
-            }
-        }
-
-        internal void NavigateTo(string folderId)
-        {
-            NavigateTo(folderId, null);
-        }
-
-        internal void NavigateTo(string folderId, TreeNode currentNode)
-        {
-            TreeNodeCollection nodeList = null;
-
-            if (currentNode == null)
-            {
-                nodeList = _tree.Nodes;
-            }
-            else
-            {
-                var folder = (RepositoryFolder)currentNode.Tag;
-                if (folderId.Equals(folder.ResourceId))
-                {
-                    _tree.SelectedNode = currentNode;
-                    SetSelectedFolder(folder);
-                    return;
-                }
-                nodeList = currentNode.Nodes;
-            }
-
-            foreach (TreeNode node in nodeList)
-            {
-                var folder = (RepositoryFolder)node.Tag;
-                if (folderId.StartsWith(folder.ResourceId))
-                {
-                    UpdateNode(node);
-                    node.Expand();
-                    NavigateTo(folderId, node);
-                    break;
-                }
-            }
-        }
     }
 }
