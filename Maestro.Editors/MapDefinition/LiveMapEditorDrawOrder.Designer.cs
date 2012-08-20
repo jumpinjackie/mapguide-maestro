@@ -91,7 +91,7 @@ namespace Maestro.Editors.MapDefinition
             // 
             // lstDrawOrder
             // 
-            this.lstDrawOrder.DisplayMember = "LegendLabel";
+            this.lstDrawOrder.DisplayMember = "DisplayString";
             this.lstDrawOrder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstDrawOrder.FormattingEnabled = true;
             this.lstDrawOrder.Location = new System.Drawing.Point(0, 25);

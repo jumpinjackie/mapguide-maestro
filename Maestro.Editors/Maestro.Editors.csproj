@@ -935,6 +935,12 @@
     <Compile Include="MapDefinition\LiveMapEditorLegend.Designer.cs">
       <DependentUpon>LiveMapEditorLegend.cs</DependentUpon>
     </Compile>
+    <Compile Include="MapDefinition\LiveMapEditorRepositoryView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapDefinition\LiveMapEditorRepositoryView.Designer.cs">
+      <DependentUpon>LiveMapEditorRepositoryView.cs</DependentUpon>
+    </Compile>
     <Compile Include="MapDefinition\Live\NewGroupDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1723,6 +1729,9 @@
     <EmbeddedResource Include="MapDefinition\LiveMapEditorLegend.resx">
       <DependentUpon>LiveMapEditorLegend.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MapDefinition\LiveMapEditorRepositoryView.resx">
+      <DependentUpon>LiveMapEditorRepositoryView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MapDefinition\Live\NewGroupDialog.resx">
       <DependentUpon>NewGroupDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -2362,6 +2371,7 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\folder-horizontal-open.png" />
     <None Include="Resources\water.png" />
     <None Include="Resources\magnifier-left.png" />
     <None Include="Resources\icon_maptip_disabled.gif" />

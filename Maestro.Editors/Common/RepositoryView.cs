@@ -27,6 +27,8 @@ using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 
 namespace Maestro.Editors.Common
 {
@@ -84,5 +86,35 @@ namespace Maestro.Editors.Common
         }
 
         public event EventHandler ItemSelected;
+
+        public void AddResourceTypeFilter(ResourceTypes rt) { if (_model != null) _model.AddResourceTypeFilter(rt); }
+
+        public void ClearResourceTypeFilters() { if (_model != null) _model.ClearResourceTypeFilters(); }
+
+        public bool HasFilteredTypes() 
+        {
+            if (_model != null)
+                return _model.HasFilteredTypes();
+            else
+                return false;
+        }
+
+        public void RefreshModel(string folderId)
+        {
+            if (_model != null)
+            {
+                if (string.IsNullOrEmpty(folderId))
+                {
+                    _model.Refresh(null);
+                }
+                else
+                {
+                    if (!ResourceIdentifier.IsFolderResource(folderId))
+                        throw new ArgumentException(Properties.Resources.ErrNotAFolder);
+
+                    _model.Refresh(folderId);
+                }
+            }
+        }
     }
 }

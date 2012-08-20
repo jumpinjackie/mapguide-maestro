@@ -35,6 +35,8 @@ namespace Maestro.Editors.MapDefinition
         public LiveMapEditorDrawOrder()
         {
             InitializeComponent();
+            //HACK: http://social.msdn.microsoft.com/Forums/zh/winformsdatacontrols/thread/2db8e07a-6aa8-4865-9b59-c02025eaf317
+            lstDrawOrder.CreateControl();
         }
         
         private RuntimeMap _map;

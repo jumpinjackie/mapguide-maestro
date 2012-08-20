@@ -79,7 +79,7 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        private static string GenerateUniqueName(string prefix, RuntimeMapLayerCollection layers)
+        internal static string GenerateUniqueName(string prefix, RuntimeMapLayerCollection layers)
         {
             int counter = 0;
             string name = prefix;

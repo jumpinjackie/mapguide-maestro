@@ -941,5 +941,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             var tokens = this.QualifiedClassName.Split(':');
             return this.Parent.FeatureService.GetClassDefinition(tokens[0], tokens[1]);
         }
+
+        /// <summary>
+        /// Gets a display string for this layer for presentation purposes
+        /// </summary>
+        public string DisplayString { get { return this.LegendLabel + " (" + this.Name + ")"; } }
     }
 }

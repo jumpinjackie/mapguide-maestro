@@ -29,31 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepositoryView));
             this.trvRepository = new System.Windows.Forms.TreeView();
             this.resImageList = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // trvRepository
             // 
-            this.trvRepository.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trvRepository.ImageIndex = 0;
+            resources.ApplyResources(this.trvRepository, "trvRepository");
             this.trvRepository.ImageList = this.resImageList;
-            this.trvRepository.Location = new System.Drawing.Point(0, 0);
             this.trvRepository.Name = "trvRepository";
-            this.trvRepository.SelectedImageIndex = 0;
-            this.trvRepository.Size = new System.Drawing.Size(150, 150);
-            this.trvRepository.TabIndex = 0;
             // 
             // resImageList
             // 
             this.resImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.resImageList.ImageSize = new System.Drawing.Size(16, 16);
+            resources.ApplyResources(this.resImageList, "resImageList");
             this.resImageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // RepositoryView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.trvRepository);
             this.Name = "RepositoryView";
             this.ResumeLayout(false);

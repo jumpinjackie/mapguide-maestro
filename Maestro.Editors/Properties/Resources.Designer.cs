@@ -631,6 +631,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not a folder.
+        /// </summary>
+        internal static string ErrNotAFolder {
+            get {
+                return ResourceManager.GetString("ErrNotAFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error loading WMS configuration document: {0}. A default document will be created.
         /// </summary>
         internal static string ErrorLoadingWmsConfig {
@@ -915,6 +924,13 @@ namespace Maestro.Editors.Properties {
         internal static System.Drawing.Bitmap folder_horizontal {
             get {
                 object obj = ResourceManager.GetObject("folder_horizontal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap folder_horizontal_open {
+            get {
+                object obj = ResourceManager.GetObject("folder-horizontal-open", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

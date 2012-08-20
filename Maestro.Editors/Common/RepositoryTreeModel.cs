@@ -114,10 +114,15 @@ namespace Maestro.Editors.Common
             _tree.AfterSelect += new TreeViewEventHandler(OnNodeAfterSelect);
 
             _tree.Nodes.Clear();
+            InitRoot();
+        }
+
+        private void InitRoot()
+        {
             StartUpdate();
-            foreach (RepositoryModelItem folder in GetChildren(null))
+            foreach (RepositoryModelItem item in GetChildren(null))
             {
-                var node = CreateNode(folder);
+                var node = CreateNode(item);
                 _tree.Nodes.Add(node);
             }
             EndUpdate();
@@ -149,16 +154,16 @@ namespace Maestro.Editors.Common
 
         private void UpdateNode(TreeNode nodeToUpdate)
         {
-            RepositoryModelItem folder = (RepositoryModelItem)nodeToUpdate.Tag;
+            RepositoryModelItem item = (RepositoryModelItem)nodeToUpdate.Tag;
             if (IsNodeNotPopulated(nodeToUpdate))
                 nodeToUpdate.Nodes.Clear();
 
-            if (folder.HasChildren && nodeToUpdate.Nodes.Count == 0)
+            if (item.HasChildren && nodeToUpdate.Nodes.Count == 0)
             {
                 StartUpdate();
-                foreach (RepositoryModelItem f in GetChildren(folder))
+                foreach (RepositoryModelItem child in GetChildren(item))
                 {
-                    var node = CreateNode(f);
+                    var node = CreateNode(child);
                     nodeToUpdate.Nodes.Add(node);
                 }
                 EndUpdate();
@@ -171,8 +176,9 @@ namespace Maestro.Editors.Common
             node.Name = item.Name;
             node.Text = item.Name;
             node.Tag = item;
-            node.ImageIndex = node.SelectedImageIndex = item.IsRoot ? RepositoryIcons.RES_ROOT : RepositoryIcons.RES_FOLDER;
-            node.Nodes.Add(new DummyNode());
+            node.ImageIndex = node.SelectedImageIndex = item.ImageIndex;
+            if (item.IsFolder)
+                node.Nodes.Add(new DummyNode());
             return node;
         }
 
@@ -180,16 +186,34 @@ namespace Maestro.Editors.Common
         {
             //Sort them before returning them
             SortedList<string, RepositoryModelItem> folders = new SortedList<string, RepositoryModelItem>();
+            SortedList<string, RepositoryModelItem> docs = new SortedList<string, RepositoryModelItem>();
             foreach (var item in list.Children)
             {
                 if (item.IsFolder)
-                    folders.Add(item.Name, new RepositoryModelItem(item));
+                    folders.Add(item.ResourceId, new RepositoryModelItem(item));
+                else if (!HasFilteredTypes() || (HasFilteredTypes() && IsFilteredType(item.ResourceType)))
+                    docs.Add(item.ResourceId, new RepositoryModelItem(item));
+
             }
             foreach (var folder in folders.Values)
             {
                 yield return folder;
             }
+            foreach (var doc in docs.Values)
+            {
+                yield return doc;
+            }
         }
+
+        private HashSet<ResourceTypes> _filteredTypes = new HashSet<ResourceTypes>();
+
+        public void AddResourceTypeFilter(ResourceTypes rt) { _filteredTypes.Add(rt); }
+
+        public void ClearResourceTypeFilters() { _filteredTypes.Clear(); }
+
+        public bool HasFilteredTypes() { return _filteredTypes.Count > 0; }
+
+        public bool IsFilteredType(ResourceTypes rt) { return _filteredTypes.Contains(rt); }
 
         public System.Collections.IEnumerable GetChildren(RepositoryModelItem item)
         {
@@ -246,6 +270,55 @@ namespace Maestro.Editors.Common
                     node.Expand();
                     NavigateTo(folderId, node);
                     break;
+                }
+            }
+        }
+
+        private TreeNode FindNode(string folderId, TreeNode currentNode)
+        {
+            TreeNodeCollection nodeList = null;
+
+            if (currentNode == null)
+            {
+                nodeList = _tree.Nodes;
+            }
+            else
+            {
+                var item = (RepositoryModelItem)currentNode.Tag;
+                if (folderId.Equals(item.ResourceId))
+                {
+                    return currentNode;
+                }
+                nodeList = currentNode.Nodes;
+            }
+
+            foreach (TreeNode node in nodeList)
+            {
+                var folder = (RepositoryModelItem)node.Tag;
+                if (folderId.StartsWith(folder.ResourceId))
+                {
+                    UpdateNode(node);
+                    node.Expand();
+                    return FindNode(folderId, node);
+                }
+            }
+
+            return null;
+        }
+
+        internal void Refresh(string folderId)
+        {
+            if (string.IsNullOrEmpty(folderId) || folderId == "Library://")
+            {
+                InitRoot();
+            }
+            else
+            {
+                var node = FindNode(folderId, null);
+                if (node != null)
+                {
+                    node.Nodes.Clear();
+                    UpdateNode(node);
                 }
             }
         }

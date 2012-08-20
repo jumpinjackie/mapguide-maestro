@@ -28,6 +28,9 @@ using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 
 namespace Maestro.Editors.MapDefinition
 {
@@ -83,6 +86,9 @@ namespace Maestro.Editors.MapDefinition
             _shadowCopy = (IMapDefinition)service.GetEditedResource();
             _mapSvc = (IMappingService)_shadowCopy.CurrentConnection.GetService((int)ServiceType.Mapping);
             _rtMap = _mapSvc.CreateMap(_shadowCopy);
+            repoView.Init(service.ResourceService, new ResourceTypes[] {
+                ResourceTypes.LayerDefinition
+            });
 
             viewer.LoadMap(_rtMap);
         }
@@ -113,6 +119,26 @@ namespace Maestro.Editors.MapDefinition
             //Nothing to edit for theme rule nodes
             if (layer != null && layer == propGrid.SelectedObject)
                 propGrid.SelectedObject = null;
+        }
+
+        private void repoView_RequestAddToMap(object sender, EventArgs e)
+        {
+            var item = repoView.SelectedItem;
+            if (item != null && item.ResourceType == ResourceTypes.LayerDefinition)
+            {
+                var layer = _mapSvc.CreateMapLayer(_rtMap, ((ILayerDefinition)this.EditorService.ResourceService.GetResource(item.ResourceId)));
+                layer.Name = LiveMapEditorLegend.GenerateUniqueName(ResourceIdentifier.GetName(item.ResourceId), _rtMap.Layers);
+                layer.LegendLabel = ResourceIdentifier.GetName(item.ResourceId);
+                layer.Visible = true;
+                layer.ShowInLegend = true;
+                _rtMap.Layers.Insert(0, layer);
+                viewer.RefreshMap();
+            }
+        }
+
+        private void repoView_RequestEdit(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not implemented yet");
         }
     }
 }
