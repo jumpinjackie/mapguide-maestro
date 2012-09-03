@@ -70,6 +70,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return null;
         }
 
+        public override PropertyValueType GetPropertyType(int index)
+        {
+            return (PropertyValueType)_reader.GetPropertyType(index); //We can do this because the enum values map directly to MgPropertyType
+        }
+
+        public override PropertyValueType GetPropertyType(string name)
+        {
+            return (PropertyValueType)_reader.GetPropertyType(name); //We can do this because the enum values map directly to MgPropertyType
+        }
+
         public override void Close()
         {
             _reader.Close();

@@ -23,6 +23,7 @@ using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Internal;
+using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace OSGeo.MapGuide.MaestroAPI.Native
 {
@@ -49,6 +50,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 return new LocalNativeFeature(_reader, _mgReader, _agfRw, _wktRw);
 
             return null;
+        }
+
+        public override PropertyValueType GetPropertyType(int index)
+        {
+            return (PropertyValueType)_reader.GetPropertyType(index); //We can do this because the enum values map directly to MgPropertyType
+        }
+
+        public override PropertyValueType GetPropertyType(string name)
+        {
+            return (PropertyValueType)_reader.GetPropertyType(name); //We can do this because the enum values map directly to MgPropertyType
         }
 
         public override void Dispose()

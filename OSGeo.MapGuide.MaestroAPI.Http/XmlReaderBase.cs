@@ -140,6 +140,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             }
         }
 
+        public override PropertyValueType GetPropertyType(string name)
+        {
+            return _propertyMap[name].Type;
+        }
+
+        public override PropertyValueType GetPropertyType(int index)
+        {
+            return _properties[index].Type;
+        }
+
         public override Type GetFieldType(int i)
         {
             return ClrFdoTypeMap.GetClrType(_properties[i].Type);

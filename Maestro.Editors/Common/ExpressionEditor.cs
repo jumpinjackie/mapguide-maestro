@@ -973,8 +973,45 @@ namespace Maestro.Editors.Common
 
         private void LookupValues_Click(object sender, EventArgs e)
         {
+            //Use UNIQUE() method first. This should work in most cases
             using (new WaitCursor(this))
             {
+                string filter = null;
+                var expr = "UNIQUE(" + ColumnName.Text + ")";
+                bool bFallback = false;
+                ColumnValue.Items.Clear();
+                ColumnValue.Tag = null;
+                try
+                {
+                    using (var rdr = _featSvc.AggregateQueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new System.Collections.Specialized.NameValueCollection() { 
+                            { "UNIQ_VALS", expr }
+                        }))
+                    {
+                        ColumnValue.Tag = rdr.GetPropertyType("UNIQ_VALS");
+                        while (rdr.ReadNext())
+                        {
+                            if (!rdr.IsNull("UNIQ_VALS"))
+                            {
+                                object value = rdr["UNIQ_VALS"];
+                                ColumnValue.Items.Add(value);
+                            }
+                        }
+                        rdr.Close();
+                    }
+                }
+                catch
+                {
+                    ColumnValue.Items.Clear();
+                    bFallback = true;
+                }
+                if (!bFallback)
+                {
+                    ColumnValue.Enabled = true;
+                    ColumnValue.SelectedIndex = -1;
+                    ColumnValue.DroppedDown = true;
+                    return;
+                }
+
                 try
                 {
                     SortedList<string, PropertyDefinition> cols = (SortedList<string, PropertyDefinition>)ColumnName.Tag;
@@ -982,7 +1019,6 @@ namespace Maestro.Editors.Common
 
                     bool retry = true;
                     Exception rawEx = null;
-                    string filter = null;
 
                     SortedList<string, string> values = new SortedList<string, string>();
                     bool hasNull = false;
@@ -1048,12 +1084,27 @@ namespace Maestro.Editors.Common
 
         private void ColumnValue_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ColumnValue.SelectedIndex >= 0 && ColumnValue.Tag as Type != null)
+            if (ColumnValue.SelectedIndex >= 0)
             {
-                if (ColumnValue.Tag == typeof(string) && (ColumnValue.SelectedIndex != 0 || ColumnValue.Text != "NULL"))
-                    ExpressionText.SelectedText = " '" + ColumnValue.Text + "' ";
-                else
-                    ExpressionText.SelectedText = " " + ColumnValue.Text + " ";
+                var tag = ColumnValue.Tag;
+                if (tag != null)
+                {
+                    if (ColumnValue.Tag == typeof(string) && (ColumnValue.SelectedIndex != 0 || ColumnValue.Text != "NULL"))
+                    {
+                        InsertText("'" + ColumnValue.Text + "'");
+                    }
+                    else
+                    {
+                        if (tag is PropertyValueType && (PropertyValueType)tag == PropertyValueType.String)
+                            InsertText("'" + ColumnValue.Text + "'");
+                        else
+                            InsertText(ColumnValue.Text);
+                    }
+                }
+                else 
+                {
+                    InsertText(ColumnValue.Text);
+                }
             }
         }
     }

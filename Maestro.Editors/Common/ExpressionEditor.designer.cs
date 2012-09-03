@@ -35,6 +35,8 @@ namespace Maestro.Editors.Common
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblHint = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnProperties = new System.Windows.Forms.ToolStripDropDownButton();
+            this.btnFunctions = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnFilter = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnCondition = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSpatial = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,8 +47,6 @@ namespace Maestro.Editors.Common
             this.ColumnName = new System.Windows.Forms.ToolStripComboBox();
             this.ExpressionText = new System.Windows.Forms.TextBox();
             this._autoCompleteTooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.btnFunctions = new System.Windows.Forms.ToolStripDropDownButton();
-            this.btnProperties = new System.Windows.Forms.ToolStripDropDownButton();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -91,6 +91,18 @@ namespace Maestro.Editors.Common
             this.ColumnName});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
+            // 
+            // btnProperties
+            // 
+            this.btnProperties.Image = global::Maestro.Editors.Properties.Resources.property;
+            resources.ApplyResources(this.btnProperties, "btnProperties");
+            this.btnProperties.Name = "btnProperties";
+            // 
+            // btnFunctions
+            // 
+            this.btnFunctions.Image = global::Maestro.Editors.Properties.Resources.function;
+            resources.ApplyResources(this.btnFunctions, "btnFunctions");
+            this.btnFunctions.Name = "btnFunctions";
             // 
             // btnFilter
             // 
@@ -160,22 +172,10 @@ namespace Maestro.Editors.Common
             this.ExpressionText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ExpressionText_KeyDown);
             this.ExpressionText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ExpressionText_KeyUp);
             // 
-            // btnFunctions
-            // 
-            this.btnFunctions.Image = global::Maestro.Editors.Properties.Resources.function;
-            resources.ApplyResources(this.btnFunctions, "btnFunctions");
-            this.btnFunctions.Name = "btnFunctions";
-            // 
-            // btnProperties
-            // 
-            this.btnProperties.Image = global::Maestro.Editors.Properties.Resources.property;
-            resources.ApplyResources(this.btnProperties, "btnProperties");
-            this.btnProperties.Name = "btnProperties";
-            // 
             // ExpressionEditor
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            resources.ApplyResources(this, "$this");
             this.ControlBox = false;
             this.Controls.Add(this.ExpressionText);
             this.Controls.Add(this.toolStrip1);

@@ -134,6 +134,36 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             _pos = -1;
         }
 
+        public override PropertyValueType GetPropertyType(int index)
+        {
+            var prop = this.ClassDefinition.Properties[index];
+            if (prop.Type == PropertyDefinitionType.Data)
+                return (PropertyValueType)((DataPropertyDefinition)prop).DataType;
+            else if (prop.Type == PropertyDefinitionType.Geometry)
+                return PropertyValueType.Geometry;
+            else if (prop.Type == PropertyDefinitionType.Raster)
+                return PropertyValueType.Raster;
+            else
+                throw new ArgumentException();
+        }
+
+        public override PropertyValueType GetPropertyType(string name)
+        {
+            var prop = this.ClassDefinition.FindProperty(name);
+            if (prop != null)
+            {
+                if (prop.Type == PropertyDefinitionType.Data)
+                    return (PropertyValueType)((DataPropertyDefinition)prop).DataType;
+                else if (prop.Type == PropertyDefinitionType.Geometry)
+                    return PropertyValueType.Geometry;
+                else if (prop.Type == PropertyDefinitionType.Raster)
+                    return PropertyValueType.Raster;
+                else
+                    throw new ArgumentException();
+            }
+            throw new ArgumentException();
+        }
+
         /// <summary>
         /// Reads the next feature.
         /// </summary>

@@ -98,6 +98,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Expression
             return _reader.GetName(index);
         }
 
+        public override Schema.PropertyValueType GetPropertyType(int index)
+        {
+            return _reader.GetPropertyType(index);
+        }
+
+        public override Schema.PropertyValueType GetPropertyType(string name)
+        {
+            return _reader.GetPropertyType(name);
+        }
+
         public override ReaderType ReaderType
         {
             get { return _reader.ReaderType; }
