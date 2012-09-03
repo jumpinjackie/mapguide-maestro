@@ -315,6 +315,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [Composite Style].
+        /// </summary>
+        internal static string CompositeStyleDisplayString {
+            get {
+                return ResourceManager.GetString("CompositeStyleDisplayString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copied resource: {0}.
         /// </summary>
         internal static string CopiedResource {

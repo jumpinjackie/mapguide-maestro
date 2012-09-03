@@ -2793,4 +2793,7 @@
   <data name="FS_PotentialBadJoinPerformance2" xml:space="preserve">
     <value>The Extended Feature Class ({0}) does not satisfy the required parameters for optimal Feature Join performance (both sides sortable, on a single property). Join Performance may not be optimal.</value>
   </data>
+  <data name="CompositeStyleDisplayString" xml:space="preserve">
+    <value>[Composite Style]</value>
+  </data>
 </root>

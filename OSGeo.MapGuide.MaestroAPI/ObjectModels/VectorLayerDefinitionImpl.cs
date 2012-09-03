@@ -2188,6 +2188,15 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 #endif
     {
         [XmlIgnore]
+        string ICompositeTypeStyle.DisplayString
+        {
+            get
+            {
+                return ExternalStrings.CompositeStyleDisplayString;
+            }
+        }
+
+        [XmlIgnore]
         IEnumerable<ICompositeRule> ICompositeTypeStyle.CompositeRule
         {
             get 

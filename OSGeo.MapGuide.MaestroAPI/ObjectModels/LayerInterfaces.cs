@@ -1749,6 +1749,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// </summary>
     public interface ICompositeTypeStyle : IVectorStyle, IRuleCollection<ICompositeRule>
     {
+        string DisplayString { get; }
         /// <summary>
         /// Gets the composite rules.
         /// </summary>

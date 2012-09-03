@@ -232,6 +232,7 @@
     <Compile Include="Expression\FdoFunctionNamespace.cs" />
     <Compile Include="Expression\MgFunctionNamespace.cs" />
     <Compile Include="Expression\NsDoc.cs" />
+    <Compile Include="ExternalStrings.cs" />
     <Compile Include="Feature\ClrFdoTypeMap.cs" />
     <Compile Include="Feature\FeatureBase.cs" />
     <Compile Include="Feature\FeatureReaderBase.cs" />

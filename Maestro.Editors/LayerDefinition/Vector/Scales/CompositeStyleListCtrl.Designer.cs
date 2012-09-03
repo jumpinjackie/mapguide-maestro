@@ -34,6 +34,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -52,6 +53,7 @@
             // 
             // lstStyles
             // 
+            this.lstStyles.DisplayMember = "DisplayString";
             resources.ApplyResources(this.lstStyles, "lstStyles");
             this.lstStyles.FormattingEnabled = true;
             this.lstStyles.Name = "lstStyles";
@@ -87,6 +89,7 @@
             this.Name = "CompositeStyleListCtrl";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

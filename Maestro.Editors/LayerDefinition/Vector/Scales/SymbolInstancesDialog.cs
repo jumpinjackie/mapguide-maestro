@@ -33,6 +33,7 @@ using Maestro.Editors.LayerDefinition.Vector.Scales.SymbolInstanceEditors;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using Maestro.Shared.UI;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
@@ -69,9 +70,42 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 AddInstance(inst, false);
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            UpdatePreviewImage();
+        }
+
         public bool UseLayerIconPreview
         {
             get { return _mappingSvc != null && _preview != null; }
+        }
+
+        private void UpdatePreviewImage()
+        {
+            using (new WaitCursor(this))
+            {
+                _edSvc.SyncSessionCopy();
+                _previewImg = _mappingSvc.GetLegendImage(_preview.Scale, _preview.LayerDefinition, _preview.ThemeCategory, 4, symPreview.Width, symPreview.Height, _preview.ImageFormat);
+                symPreview.Invalidate();
+            }
+        }
+
+        private Image _previewImg = null;
+
+        private void previewPicture_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+        {
+            if (UseLayerIconPreview)
+            {
+                if (_previewImg != null)
+                {
+                    e.Graphics.DrawImage(_previewImg, new Point(0, 0));
+                }
+            }
+            else 
+            {
+                e.Graphics.DrawString("Preview\nnot available", Control.DefaultFont, Brushes.Black, new PointF(0, 0));
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -162,6 +196,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 splitContainer1.Panel2.Controls.Clear();
                 splitContainer1.Panel2.Controls.Add(c);
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            UpdatePreviewImage();
         }
     }
 }

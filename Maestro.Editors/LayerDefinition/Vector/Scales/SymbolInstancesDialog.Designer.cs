@@ -41,10 +41,16 @@
             this.inlineSimpleSymbolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inlineCompoundSymbolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.symPreview = new System.Windows.Forms.PictureBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.symPreview)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -63,6 +69,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             // 
             // groupBox1
             // 
@@ -135,20 +142,45 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.symPreview);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // symPreview
+            // 
+            resources.ApplyResources(this.symPreview, "symPreview");
+            this.symPreview.Name = "symPreview";
+            this.symPreview.TabStop = false;
+            this.symPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.previewPicture_Paint);
+            // 
+            // btnRefresh
+            // 
+            resources.ApplyResources(this.btnRefresh, "btnRefresh");
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // SymbolInstancesDialog
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.btnClose);
             this.Name = "SymbolInstancesDialog";
             this.splitContainer1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.symPreview)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -166,5 +198,8 @@
         private System.Windows.Forms.ToolStripMenuItem inlineCompoundSymbolToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton btnDelete;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.PictureBox symPreview;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

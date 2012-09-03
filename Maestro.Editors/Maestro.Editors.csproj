@@ -1146,6 +1146,12 @@
     <Compile Include="SymbolDefinition\SymbolParameterEditor.Designer.cs">
       <DependentUpon>SymbolParameterEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="SymbolDefinition\SymbolPreviewDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\SymbolPreviewDialog.Designer.cs">
+      <DependentUpon>SymbolPreviewDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SymbolDefinition\UsageContextsCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1829,6 +1835,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SymbolDefinition\SymbolParameterEditor.resx">
       <DependentUpon>SymbolParameterEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\SymbolPreviewDialog.resx">
+      <DependentUpon>SymbolPreviewDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SymbolDefinition\UsageContextsCtrl.resx">
       <DependentUpon>UsageContextsCtrl.cs</DependentUpon>
