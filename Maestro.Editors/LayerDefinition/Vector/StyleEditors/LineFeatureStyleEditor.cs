@@ -29,58 +29,63 @@ using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using Maestro.Editors.Common;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using Maestro.Shared.UI;
 
 namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 {
-	/// <summary>
-	/// Summary description for LineFeatureStyleEditor.
-	/// </summary>
+    /// <summary>
+    /// Summary description for LineFeatureStyleEditor.
+    /// </summary>
     [ToolboxItem(false)]
-	internal class LineFeatureStyleEditor : System.Windows.Forms.UserControl
-	{
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
-		private System.Windows.Forms.GroupBox CompositeGroup;
-		private System.Windows.Forms.Panel AdvancedPanel;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.PictureBox previewPicture;
-		private System.Windows.Forms.CheckBox applyLineStyle;
-		private System.Windows.Forms.CheckBox compositeLines;
-		private System.Windows.Forms.ListBox lineStyles;
-		private System.Windows.Forms.Panel propertyPanel;
-		private System.Windows.Forms.ComboBox sizeUnitsCombo;
-		private System.Windows.Forms.ComboBox sizeContextCombo;
-		private LineStyleEditor lineStyleEditor;
-		
-		private IList<IStroke> m_item = null;
-		private System.Windows.Forms.Panel compositePanel;
-		private System.Windows.Forms.GroupBox lineGroup;
-		private System.Windows.Forms.GroupBox sizeGroup;
-		private System.Windows.Forms.GroupBox previewGroup;
-		private System.Data.DataSet ComboBoxDataSet;
-		private System.Data.DataTable SizeContextTable;
-		private System.Data.DataColumn dataColumn3;
-		private System.Data.DataColumn dataColumn4;
-		private System.Data.DataTable UnitsTable;
-		private System.Data.DataColumn dataColumn5;
-		private System.Data.DataColumn dataColumn6;
-		private bool m_inUpdate = false;
+    internal class LineFeatureStyleEditor : System.Windows.Forms.UserControl
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.Container components = null;
+        private System.Windows.Forms.GroupBox CompositeGroup;
+        private System.Windows.Forms.Panel AdvancedPanel;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox previewPicture;
+        private System.Windows.Forms.CheckBox applyLineStyle;
+        private System.Windows.Forms.CheckBox compositeLines;
+        private System.Windows.Forms.ListBox lineStyles;
+        private System.Windows.Forms.Panel propertyPanel;
+        private System.Windows.Forms.ComboBox sizeUnitsCombo;
+        private System.Windows.Forms.ComboBox sizeContextCombo;
+        private LineStyleEditor lineStyleEditor;
+        
+        private IList<IStroke> m_item = null;
+        private System.Windows.Forms.Panel compositePanel;
+        private System.Windows.Forms.GroupBox lineGroup;
+        private System.Windows.Forms.GroupBox sizeGroup;
+        private System.Windows.Forms.GroupBox previewGroup;
+        private System.Data.DataSet ComboBoxDataSet;
+        private System.Data.DataTable SizeContextTable;
+        private System.Data.DataColumn dataColumn3;
+        private System.Data.DataColumn dataColumn4;
+        private System.Data.DataTable UnitsTable;
+        private System.Data.DataColumn dataColumn5;
+        private System.Data.DataColumn dataColumn6;
+        private bool m_inUpdate = false;
         private ToolStrip toolStrip1;
         private ToolStripButton AddStyleButton;
         private ToolStripButton RemoveStyleButton;
 
-		public event EventHandler Changed;
+        public event EventHandler Changed;
 
         private IEditorService m_editor;
         private ClassDefinition m_schema;
         private string m_featureSource;
         private string m_providername;
         private ILayerElementFactory _factory;
+        private IMappingService _mappingSvc;
+        private LinkLabel lnkRefresh;
+        private ILayerStylePreviewable _preview;
 
-        public LineFeatureStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource, ILayerElementFactory factory)
+        internal LineFeatureStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource, ILayerElementFactory factory, ILayerStylePreviewable prev)
             : this()
         {
             m_editor = editor;
@@ -92,39 +97,52 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             m_providername = fs.Provider;
             m_featureSource = featureSource;
+
+            _preview = prev;
+            var conn = editor.GetEditedResource().CurrentConnection;
+            if (Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0)
+            {
+                _mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+            }
+            lnkRefresh.Visible = this.UseLayerIconPreview;
         }
 
-		private LineFeatureStyleEditor()
-		{
-			//
-			// Required for Windows Form Designer support
-			//
-			InitializeComponent();
+        public bool UseLayerIconPreview
+        {
+            get { return _mappingSvc != null && _preview != null; }
+        }
+
+        private LineFeatureStyleEditor()
+        {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
             using (System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.GeometryStyleComboDataset))
                 ComboBoxDataSet.ReadXml(sr);
 
-			lineStyleEditor.displayLine.Visible = false;
+            lineStyleEditor.displayLine.Visible = false;
             lineStyleEditor.thicknessCombo.SelectedIndexChanged += new EventHandler(thicknessCombo_SelectedIndexChanged);
             lineStyleEditor.thicknessCombo.TextChanged += new EventHandler(thicknessCombo_TextChanged);
             lineStyleEditor.colorCombo.CurrentColorChanged += new EventHandler(colorCombo_CurrentValueChanged);
-			lineStyleEditor.fillCombo.SelectedIndexChanged += new EventHandler(fillCombo_SelectedIndexChanged);
-		}
+            lineStyleEditor.fillCombo.SelectedIndexChanged += new EventHandler(fillCombo_SelectedIndexChanged);
+        }
 
-		public void UpdateDisplay()
-		{
-			try
-			{
-				m_inUpdate = true;
-				applyLineStyle.Checked = (m_item != null && m_item.Count != 0);
+        public void UpdateDisplay()
+        {
+            try
+            {
+                m_inUpdate = true;
+                applyLineStyle.Checked = (m_item != null && m_item.Count != 0);
 
-				lineStyles.Items.Clear();
-				if (applyLineStyle.Checked)
+                lineStyles.Items.Clear();
+                if (applyLineStyle.Checked)
                     foreach (IStroke st in m_item)
-						lineStyles.Items.Add(st);
+                        lineStyles.Items.Add(st);
 
-				compositeLines.Checked = lineStyles.Items.Count > 1;
-				if (lineStyles.Items.Count > 0)
-					lineStyles.SelectedIndex = 0;
+                compositeLines.Checked = lineStyles.Items.Count > 1;
+                if (lineStyles.Items.Count > 0)
+                    lineStyles.SelectedIndex = 0;
 
                 if (!compositeLines.Checked)
                 {
@@ -138,33 +156,33 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     }
                 }
 
-				UpdateDisplayForSelected();
+                UpdateDisplayForSelected();
 
-			}
-			finally
-			{
-				m_inUpdate = false;
-			}
+            }
+            finally
+            {
+                m_inUpdate = false;
+            }
 
-		}
+        }
 
-		private void UpdateDisplayForSelected()
-		{
-			bool prevUpdate = m_inUpdate;
-			try
-			{
-				m_inUpdate = true;
+        private void UpdateDisplayForSelected()
+        {
+            bool prevUpdate = m_inUpdate;
+            try
+            {
+                m_inUpdate = true;
                 IStroke st = this.CurrentStrokeType;
-				sizeGroup.Enabled = 
-				lineGroup.Enabled =
-				previewGroup.Enabled =
-					st != null;
+                sizeGroup.Enabled = 
+                lineGroup.Enabled =
+                previewGroup.Enabled =
+                    st != null;
 
                 RemoveStyleButton.Enabled = st != null && m_item.Count > 1;
 
-				if (st != null)
-				{
-				    sizeUnitsCombo.SelectedValue = st.Unit.ToString();
+                if (st != null)
+                {
+                    sizeUnitsCombo.SelectedValue = st.Unit.ToString();
                     
                     //sizeContextCombo.SelectedValue = st.SizeContext.ToString();
 
@@ -188,51 +206,51 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                         sizeContextCombo.SelectedValue = st2.SizeContext;
                     else
                         sizeContextCombo.Enabled = false;
-				}
-				previewPicture.Refresh();
-			} 
-			finally
-			{
-				m_inUpdate = prevUpdate;
-			}
+                }
+                previewPicture.Refresh();
+            } 
+            finally
+            {
+                m_inUpdate = prevUpdate;
+            }
 
-		}
+        }
 
         private IStroke CurrentStrokeType
-		{
-			get 
-			{
-				if (lineStyles.Items.Count == 0)
-					return null;
-				else if (lineStyles.Items.Count == 1 || lineStyles.SelectedIndex <= 0)
+        {
+            get 
+            {
+                if (lineStyles.Items.Count == 0)
+                    return null;
+                else if (lineStyles.Items.Count == 1 || lineStyles.SelectedIndex <= 0)
                     return (IStroke)lineStyles.Items[0];
-				else
+                else
                     return (IStroke)lineStyles.SelectedItem;
-			}
-		}
+            }
+        }
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if(components != null)
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose( bool disposing )
+        {
+            if( disposing )
+            {
+                if(components != null)
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose( disposing );
+        }
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LineFeatureStyleEditor));
             this.applyLineStyle = new System.Windows.Forms.CheckBox();
             this.compositeLines = new System.Windows.Forms.CheckBox();
@@ -258,6 +276,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.previewGroup = new System.Windows.Forms.GroupBox();
+            this.lnkRefresh = new System.Windows.Forms.LinkLabel();
             this.previewPicture = new System.Windows.Forms.PictureBox();
             this.ComboBoxDataSet = new System.Data.DataSet();
             this.CompositeGroup.SuspendLayout();
@@ -440,10 +459,19 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             // 
             // previewGroup
             // 
+            this.previewGroup.Controls.Add(this.lnkRefresh);
             this.previewGroup.Controls.Add(this.previewPicture);
             resources.ApplyResources(this.previewGroup, "previewGroup");
             this.previewGroup.Name = "previewGroup";
             this.previewGroup.TabStop = false;
+            // 
+            // lnkRefresh
+            // 
+            resources.ApplyResources(this.lnkRefresh, "lnkRefresh");
+            this.lnkRefresh.BackColor = System.Drawing.Color.Transparent;
+            this.lnkRefresh.Name = "lnkRefresh";
+            this.lnkRefresh.TabStop = true;
+            this.lnkRefresh.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkRefresh_LinkClicked);
             // 
             // previewPicture
             // 
@@ -483,23 +511,24 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             ((System.ComponentModel.ISupportInitialize)(this.UnitsTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SizeContextTable)).EndInit();
             this.previewGroup.ResumeLayout(false);
+            this.previewGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).EndInit();
             this.ResumeLayout(false);
 
-		}
-		#endregion
+        }
+        #endregion
 
 
-		private void lineStyles_SelectedIndexChanged(object sender, System.EventArgs e)
-		{
-			UpdateDisplayForSelected();
-		}
+        private void lineStyles_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            UpdateDisplayForSelected();
+        }
 
-		private void sizeContextCombo_SelectedIndexChanged(object sender, System.EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void sizeContextCombo_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
             var st2 = this.CurrentStrokeType as IStroke2;
             if (st2 != null)
@@ -510,28 +539,28 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 if (Changed != null)
                     Changed(this, new EventArgs());
             }
-		}
+        }
 
-		private void sizeUnitsCombo_SelectedIndexChanged(object sender, System.EventArgs e)
-		{
-			if (m_inUpdate || this.CurrentStrokeType == null)
-				return;
-			this.CurrentStrokeType.Unit = (LengthUnitType)Enum.Parse(typeof(LengthUnitType), (string)sizeUnitsCombo.SelectedValue);
-			previewPicture.Refresh();
-			lineStyles.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+        private void sizeUnitsCombo_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            if (m_inUpdate || this.CurrentStrokeType == null)
+                return;
+            this.CurrentStrokeType.Unit = (LengthUnitType)Enum.Parse(typeof(LengthUnitType), (string)sizeUnitsCombo.SelectedValue);
+            previewPicture.Refresh();
+            lineStyles.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
         public IList<IStroke> Item
-		{
-			get { return m_item; }
-			set
-			{
-				m_item = value;
-				UpdateDisplay();
-			}
-		}
+        {
+            get { return m_item; }
+            set
+            {
+                m_item = value;
+                UpdateDisplay();
+            }
+        }
 
         private void thicknessCombo_TextChanged(object sender, EventArgs e)
         {
@@ -559,38 +588,38 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), lineStyleEditor.thicknessCombo, current, expr != null);
         }
 
-		private void colorCombo_CurrentValueChanged(object sender, EventArgs e)
-		{
+        private void colorCombo_CurrentValueChanged(object sender, EventArgs e)
+        {
             if (m_inUpdate || this.CurrentStrokeType == null)
-				return;
+                return;
             this.CurrentStrokeType.Color = lineStyleEditor.colorCombo.ColorExpression;
-			previewPicture.Refresh();
-			lineStyles.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            previewPicture.Refresh();
+            lineStyles.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
-		private void fillCombo_SelectedIndexChanged(object sender, EventArgs e)
-		{
+        private void fillCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
             if (m_inUpdate || this.CurrentStrokeType == null)
-				return;
+                return;
 
             if (lineStyleEditor.fillCombo.SelectedItem as ImageStylePicker.NamedImage != null)
                 this.CurrentStrokeType.LineStyle = (lineStyleEditor.fillCombo.SelectedItem as ImageStylePicker.NamedImage).Name;
-			previewPicture.Refresh();
-			lineStyles.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            previewPicture.Refresh();
+            lineStyles.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
-		private void applyLineStyle_CheckedChanged(object sender, System.EventArgs e)
-		{
-			compositePanel.Enabled = 
-			compositeLines.Enabled = 
-			sizeGroup.Enabled = 
-			lineGroup.Enabled =
-			previewGroup.Enabled =
-				applyLineStyle.Checked;
+        private void applyLineStyle_CheckedChanged(object sender, System.EventArgs e)
+        {
+            compositePanel.Enabled = 
+            compositeLines.Enabled = 
+            sizeGroup.Enabled = 
+            lineGroup.Enabled =
+            previewGroup.Enabled =
+                applyLineStyle.Checked;
 
             if (!m_inUpdate)
             {
@@ -612,41 +641,63 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     UpdateDisplay();
                 }
             }
-		}
+        }
 
-		private void compositeLines_CheckedChanged(object sender, System.EventArgs e)
-		{
-			if (compositePanel.Visible && !compositeLines.Checked)
-				this.AutoScrollMinSize = new Size(this.AutoScrollMinSize.Width, this.AutoScrollMinSize.Height - compositePanel.Height);
-			else if (!compositePanel.Visible && compositeLines.Checked)
+        private void compositeLines_CheckedChanged(object sender, System.EventArgs e)
+        {
+            if (compositePanel.Visible && !compositeLines.Checked)
+                this.AutoScrollMinSize = new Size(this.AutoScrollMinSize.Width, this.AutoScrollMinSize.Height - compositePanel.Height);
+            else if (!compositePanel.Visible && compositeLines.Checked)
                 this.AutoScrollMinSize = new Size(this.AutoScrollMinSize.Width, this.AutoScrollMinSize.Height + compositePanel.Height);
 
-			compositePanel.Visible = compositeLines.Checked;
+            compositePanel.Visible = compositeLines.Checked;
 
-			if (m_inUpdate)
-				return;
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            if (m_inUpdate)
+                return;
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
-		private void previewPicture_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
-		{
-			FeaturePreviewRender.RenderPreviewLine(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), m_item);		
-		}
+        private void UpdatePreviewImage()
+        {
+            using (new WaitCursor(this))
+            {
+                m_editor.SyncSessionCopy();
+                _previewImg = _mappingSvc.GetLegendImage(_preview.Scale, _preview.LayerDefinition, _preview.ThemeCategory, 2, previewPicture.Width, previewPicture.Height, _preview.ImageFormat);
+                previewPicture.Invalidate();
+            }
+        }
 
-		private void lineStyles_DrawItem(object sender, System.Windows.Forms.DrawItemEventArgs e)
-		{
-			e.DrawBackground();
+        private Image _previewImg = null;
+
+        private void previewPicture_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+        {
+            if (UseLayerIconPreview)
+            {
+                if (_previewImg != null)
+                {
+                    e.Graphics.DrawImage(_previewImg, new Point(0, 0));
+                }
+            }
+            else
+            {
+                FeaturePreviewRender.RenderPreviewLine(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), m_item);
+            }
+        }
+
+        private void lineStyles_DrawItem(object sender, System.Windows.Forms.DrawItemEventArgs e)
+        {
+            e.DrawBackground();
             if ((e.State & DrawItemState.Focus) != 0)
                 e.DrawFocusRectangle();
             
             if (e.Index >= 0 && e.Index < lineStyles.Items.Count)
-			{
+            {
                 var col = new BindingList<IStroke>();
-				col.Add((IStroke) lineStyles.Items[e.Index]);
-				FeaturePreviewRender.RenderPreviewLine(e.Graphics, new Rectangle(e.Bounds.Left + 1, e.Bounds.Top + 1, e.Bounds.Width - 2, e.Bounds.Height - 2), col);		
-			}
-		}
+                col.Add((IStroke) lineStyles.Items[e.Index]);
+                FeaturePreviewRender.RenderPreviewLine(e.Graphics, new Rectangle(e.Bounds.Left + 1, e.Bounds.Top + 1, e.Bounds.Width - 2, e.Bounds.Height - 2), col);		
+            }
+        }
 
         private void RemoveStyleButton_Click(object sender, EventArgs e)
         {
@@ -703,6 +754,28 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             string expr = m_editor.EditExpression(lineStyleEditor.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)
                 lineStyleEditor.ColorExpression = expr;
+        }
+
+        private void lnkRefresh_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (_editCommit != null)
+                _editCommit.Invoke();
+            UpdatePreviewImage();
+        }
+
+        private Action _editCommit;
+
+        internal void SetEditCommit(Action editCommit)
+        {
+            _editCommit = editCommit;
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            if (_editCommit != null)
+                _editCommit.Invoke();
+            UpdatePreviewImage();
         }
     }
 }

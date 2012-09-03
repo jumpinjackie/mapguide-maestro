@@ -118,23 +118,39 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
                 if (m_point != null)
                 {
+                    int idx = 0;
                     foreach (IPointRule prt in m_point.Rules)
-                        AddRuleControl(prt);
+                    {
+                        AddRuleControl(prt, idx);
+                        idx++;
+                    }
                 }
                 else if (m_line != null)
                 {
+                    int idx = 0;
                     foreach (ILineRule lrt in m_line.Rules)
-                        AddRuleControl(lrt);
+                    {
+                        AddRuleControl(lrt, idx);
+                        idx++;
+                    }
                 }
                 else if (m_area != null)
                 {
+                    int idx = 0;
                     foreach (IAreaRule art in m_area.Rules)
-                        AddRuleControl(art);
+                    {
+                        AddRuleControl(art, idx);
+                        idx++;
+                    }
                 }
                 else if (m_comp != null)
                 {
+                    int idx = 0;
                     foreach (ICompositeRule comp in m_comp.CompositeRule)
-                        AddRuleControl(comp);
+                    {
+                        AddRuleControl(comp, idx);
+                        idx++;
+                    }
                 }
             }
             finally
@@ -144,22 +160,54 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             }
         }
 
-        public Condition AddRuleControl(object rule)
+        private double GetApplicablePreviewScale()
+        {
+            double scale = default(double);
+            if (m_parent != null)
+            {
+                if (m_parent.MinScale.HasValue)
+                {
+                    if (m_parent.MaxScale.HasValue)
+                    {
+                        scale = (m_parent.MinScale.Value + m_parent.MaxScale.Value) / 2.0;
+                    }
+                    else //min = true, max = false
+                    {
+                        scale = m_parent.MinScale.Value + 1.0;
+                    }
+                }
+                else
+                {
+                    if (m_parent.MaxScale.HasValue) //min = false
+                    {
+                        scale = Math.Floor(m_parent.MaxScale.Value - 0.0001);
+                    }
+                    else //both false 
+                    {
+                        scale = 42; //Any number will do
+                    }
+                }
+            }
+            return scale;
+        }
+
+        public Condition AddRuleControl(object rule, int themeCategory)
         {
             if (rule == null)
                 return null;
 
+            double scale = GetApplicablePreviewScale();
             //Not pretty, but we need a server connection to fetch DWF symbol thumbnails for previewing
             Condition c = new Condition(m_owner.EditorService.GetEditedResource().CurrentConnection);
 
             if (rule as IPointRule != null)
-                c.SetItem(rule as IPointRule);
+                c.SetItem(rule as IPointRule, scale, themeCategory);
             else if (rule as ILineRule != null)
-                c.SetItem(rule as ILineRule);
+                c.SetItem(rule as ILineRule, scale, themeCategory);
             else if (rule as IAreaRule != null)
-                c.SetItem(rule as IAreaRule);
+                c.SetItem(rule as IAreaRule, scale, themeCategory);
             else if (rule as ICompositeRule != null)
-                c.SetItem(rule as ICompositeRule);
+                c.SetItem(rule as ICompositeRule, scale, themeCategory);
 
             c.Owner = m_owner;
             c.Dock = DockStyle.Top;

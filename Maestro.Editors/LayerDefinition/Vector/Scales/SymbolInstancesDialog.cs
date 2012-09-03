@@ -32,6 +32,7 @@ using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using Maestro.Editors.LayerDefinition.Vector.Scales.SymbolInstanceEditors;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.MaestroAPI.Services;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
@@ -44,7 +45,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private string _provider;
         private string _featureSourceId;
 
-        public SymbolInstancesDialog(IEditorService edSvc, ICompositeSymbolization comp, ClassDefinition cls, string provider, string featureSourceId)
+        private IMappingService _mappingSvc;
+        private ILayerStylePreviewable _preview;
+
+        public SymbolInstancesDialog(IEditorService edSvc, ICompositeSymbolization comp, ClassDefinition cls, string provider, string featureSourceId, ILayerStylePreviewable prev)
         {
             InitializeComponent();
             _edSvc = edSvc;
@@ -54,8 +58,20 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             _provider = provider;
             _featureSourceId = featureSourceId;
 
+            _preview = prev;
+            var conn = edSvc.GetEditedResource().CurrentConnection;
+            if (Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0)
+            {
+                _mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+            }
+
             foreach (var inst in _comp.SymbolInstance)
                 AddInstance(inst, false);
+        }
+
+        public bool UseLayerIconPreview
+        {
+            get { return _mappingSvc != null && _preview != null; }
         }
 
         private void btnClose_Click(object sender, EventArgs e)

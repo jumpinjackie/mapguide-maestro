@@ -356,6 +356,12 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// </summary>
         /// <returns></returns>
         IUrlData CreateUrlData();
+
+        /// <summary>
+        /// Creates a default AreaSymbolizationFill element
+        /// </summary>
+        /// <returns></returns>
+        IAreaSymbolizationFill CreateDefaultAreaSymbolizationFill();
     }
 
     /// <summary>

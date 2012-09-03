@@ -68,27 +68,27 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             _conn = conn;
         }
 
-        public void SetItem(IPointRule prt)
+        public void SetItem(IPointRule prt, double previewScale, int themeCategory)
         {
-            SetItemInternal(prt);
+            SetItemInternal(prt, previewScale, themeCategory);
         }
 
-        public void SetItem(ILineRule lrt)
+        public void SetItem(ILineRule lrt, double previewScale, int themeCategory)
         {
-            SetItemInternal(lrt);
+            SetItemInternal(lrt, previewScale, themeCategory);
         }
 
-        public void SetItem(IAreaRule art)
+        public void SetItem(IAreaRule art, double previewScale, int themeCategory)
         {
-            SetItemInternal(art);
+            SetItemInternal(art, previewScale, themeCategory);
         }
 
-        public void SetItem(ICompositeRule comp)
+        public void SetItem(ICompositeRule comp, double previewScale, int themeCategory)
         {
-            SetItemInternal(comp);
+            SetItemInternal(comp, previewScale, themeCategory);
         }
 
-        private void SetItemInternal(object item)
+        private void SetItemInternal(object item, double previewScale, int themeCategory)
         {
             m_prt = item as IPointRule;
             m_lrt = item as ILineRule;
@@ -112,31 +112,31 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                             w2d = SymbolPicker.GetSymbol(_conn, sym.W2DSymbol.ResourceId, sym.W2DSymbol.LibraryItemName);
                         }
                     }
-                    FeatureStyle.SetItem(m_prt, m_prt.PointSymbolization2D, w2d);
-                    LabelStyle.SetItem(m_prt, m_prt.Label);
+                    FeatureStyle.SetItem(m_prt, m_prt.PointSymbolization2D, w2d, previewScale, themeCategory);
+                    LabelStyle.SetItem(m_prt, m_prt.Label, previewScale, themeCategory);
                     LabelStyle.Visible = true;
                 }
                 else if (m_lrt != null)
                 {
                     RuleCondition.Text = m_lrt.Filter;
                     LegendLabel.Text = m_lrt.LegendLabel;
-                    FeatureStyle.SetItem(m_lrt, m_lrt.Strokes);
-                    LabelStyle.SetItem(m_lrt, m_lrt.Label);
+                    FeatureStyle.SetItem(m_lrt, m_lrt.Strokes, previewScale, themeCategory);
+                    LabelStyle.SetItem(m_lrt, m_lrt.Label, previewScale, themeCategory);
                     LabelStyle.Visible = true;
                 }
                 else if (m_art != null)
                 {
                     RuleCondition.Text = m_art.Filter;
                     LegendLabel.Text = m_art.LegendLabel;
-                    FeatureStyle.SetItem(m_art, m_art.AreaSymbolization2D);
-                    LabelStyle.SetItem(m_art, m_art.Label);
+                    FeatureStyle.SetItem(m_art, m_art.AreaSymbolization2D, previewScale, themeCategory);
+                    LabelStyle.SetItem(m_art, m_art.Label, previewScale, themeCategory);
                     LabelStyle.Visible = true;
                 }
                 else if (m_comp != null)
                 {
                     RuleCondition.Text = m_comp.Filter;
                     LegendLabel.Text = m_comp.LegendLabel;
-                    FeatureStyle.SetItem(m_comp, m_comp.CompositeSymbolization);
+                    FeatureStyle.SetItem(m_comp, m_comp.CompositeSymbolization, previewScale, themeCategory);
                     LabelStyle.Visible = false;
                 }
             }

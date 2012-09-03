@@ -731,6 +731,7 @@
       <DependentUpon>VectorLayerEditorCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="LayerDefinition\Vector\FeaturePreviewRender.cs" />
+    <Compile Include="LayerDefinition\Vector\ILayerStylePreviewable.cs" />
     <Compile Include="LayerDefinition\Vector\Scales\CompositeStyleListCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>

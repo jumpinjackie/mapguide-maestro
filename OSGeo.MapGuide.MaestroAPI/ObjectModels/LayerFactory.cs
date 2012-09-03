@@ -328,11 +328,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             {
                 LegendLabel = ""
             };
-            ar.AreaSymbolization2D = CreateDefaultAreaSymbolization2D();
+            ar.AreaSymbolization2D = CreateDefaultAreaSymbolizationFill();
             return ar;
         }
 
-        private IAreaSymbolizationFill CreateDefaultAreaSymbolization2D()
+        public IAreaSymbolizationFill CreateDefaultAreaSymbolizationFill()
         {
             IAreaSymbolizationFill fill = new AreaSymbolizationFillType();
             fill.Fill = CreateDefaultFill();

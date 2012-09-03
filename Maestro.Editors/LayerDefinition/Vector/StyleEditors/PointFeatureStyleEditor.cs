@@ -31,74 +31,76 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using Maestro.Shared.UI;
 
 namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 {
-	/// <summary>
-	/// Summary description for PointFeatureStyleEditor.
-	/// </summary>
+    /// <summary>
+    /// Summary description for PointFeatureStyleEditor.
+    /// </summary>
     [ToolboxItem(false)]
-	internal class PointFeatureStyleEditor : System.Windows.Forms.UserControl
-	{
-		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.GroupBox grpSymbolFill;
-		private System.Windows.Forms.GroupBox grpSymbolBorder;
-		private System.Windows.Forms.GroupBox groupBox4;
-		private System.Windows.Forms.PictureBox previewPicture;
-		private System.Data.DataSet ComboBoxDataSet;
-		private System.Data.DataTable SymbolMarkTable;
-		private System.Data.DataColumn dataColumn1;
-		private System.Data.DataColumn dataColumn2;
-		private System.Data.DataTable SizeContextTable;
-		private System.Data.DataColumn dataColumn3;
-		private System.Data.DataColumn dataColumn4;
-		private System.Data.DataTable UnitsTable;
-		private System.Data.DataColumn dataColumn5;
-		private System.Data.DataColumn dataColumn6;
-		private System.Data.DataTable RotationTable;
-		private System.Data.DataColumn dataColumn7;
-		private System.Data.DataColumn dataColumn8;
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
-		private System.ComponentModel.Container components = null;
-		private System.Windows.Forms.ComboBox HeightText;
-		private System.Windows.Forms.ComboBox WidthText;
-		private System.Windows.Forms.ComboBox SizeUnits;
-		private System.Windows.Forms.ComboBox SizeContext;
-		private System.Windows.Forms.ComboBox Symbol;
-		private LineStyleEditor lineStyleEditor;
+    internal class PointFeatureStyleEditor : System.Windows.Forms.UserControl
+    {
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox grpSymbolFill;
+        private System.Windows.Forms.GroupBox grpSymbolBorder;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.PictureBox previewPicture;
+        private System.Data.DataSet ComboBoxDataSet;
+        private System.Data.DataTable SymbolMarkTable;
+        private System.Data.DataColumn dataColumn1;
+        private System.Data.DataColumn dataColumn2;
+        private System.Data.DataTable SizeContextTable;
+        private System.Data.DataColumn dataColumn3;
+        private System.Data.DataColumn dataColumn4;
+        private System.Data.DataTable UnitsTable;
+        private System.Data.DataColumn dataColumn5;
+        private System.Data.DataColumn dataColumn6;
+        private System.Data.DataTable RotationTable;
+        private System.Data.DataColumn dataColumn7;
+        private System.Data.DataColumn dataColumn8;
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.Container components = null;
+        private System.Windows.Forms.ComboBox HeightText;
+        private System.Windows.Forms.ComboBox WidthText;
+        private System.Windows.Forms.ComboBox SizeUnits;
+        private System.Windows.Forms.ComboBox SizeContext;
+        private System.Windows.Forms.ComboBox Symbol;
+        private LineStyleEditor lineStyleEditor;
 
-		private IPointSymbolization2D m_item;
+        private IPointSymbolization2D m_item;
         private IMarkSymbol m_lastMark = null;
         private IFontSymbol m_lastFont = null;
 
-		private bool m_inUpdate = false;
+        private bool m_inUpdate = false;
 
-		private IFill previousFill = null;
+        private IFill previousFill = null;
         private CheckBox DisplayPoints;
-		private IStroke previousEdge = null;
-		private GroupBox groupBoxFont;
-		private ComboBox fontCombo;
-		private Label label10;
-		private ComboBox comboBoxCharacter;
-		private GroupBox groupBoxSymbolLocation;
-		private Button button1;
-		private TextBox ReferenceY;
-		private Label label8;
-		private TextBox ReferenceX;
-		private Label label7;
-		private Label label6;
-		private CheckBox MaintainAspectRatio;
-		private ComboBox RotationBox;
-		private Label label9;
+        private IStroke previousEdge = null;
+        private GroupBox groupBoxFont;
+        private ComboBox fontCombo;
+        private Label label10;
+        private ComboBox comboBoxCharacter;
+        private GroupBox groupBoxSymbolLocation;
+        private Button button1;
+        private TextBox ReferenceY;
+        private Label label8;
+        private TextBox ReferenceX;
+        private Label label7;
+        private Label label6;
+        private CheckBox MaintainAspectRatio;
+        private ComboBox RotationBox;
+        private Label label9;
         private FillStyleEditor fillStyleEditor;
-		private Label lblForeground;
+        private Label lblForeground;
         private Panel panel1;
         private ToolStrip toolStrip1;
         private ToolStripButton FontBoldButton;
@@ -124,8 +126,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         private TabPage TAB_STYLE;
         private TabPage TAB_FILL_BORDER;
         private ILayerElementFactory _factory;
+        private IMappingService _mappingSvc;
+        private LinkLabel lnkRefresh;
 
-        public PointFeatureStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource)
+        private ILayerStylePreviewable _preview;
+
+        internal PointFeatureStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource, ILayerStylePreviewable prev)
             : this()
         {
             m_editor = editor;
@@ -138,44 +144,60 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_featureSource = featureSource;
 
             m_item = _factory.CreateDefaultPointSymbolization2D();
+
+            _preview = prev;
+            var conn = editor.GetEditedResource().CurrentConnection;
+            if (Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0)
+            {
+                _mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+            }
+            lnkRefresh.Visible = this.UseLayerIconPreview;
         }
 
-        public PointFeatureStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource, Image currentW2D)
-            : this(editor, schema, featureSource)
+        public bool UseLayerIconPreview
+        {
+            get
+            {
+                return _mappingSvc != null && _preview != null; 
+            }
+        }
+
+        internal PointFeatureStyleEditor(IEditorService editor, ClassDefinition schema, string featureSource, Image currentW2D, ILayerStylePreviewable prev)
+            : this(editor, schema, featureSource, prev)
         {
             grpW2DStyle.Tag = currentW2D;
         }
 
-		private PointFeatureStyleEditor()
-		{
-			//
-			// Required for Windows Form Designer support
-			//
-			InitializeComponent();
+        private PointFeatureStyleEditor()
+        {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
             //this.AutoScroll = false;
             using(System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.GeometryStyleComboDataset))
-				ComboBoxDataSet.ReadXml(sr);
+                ComboBoxDataSet.ReadXml(sr);
 
-			fontCombo.Items.Clear();
+            fontCombo.Items.Clear();
             foreach (FontFamily f in new System.Drawing.Text.InstalledFontCollection().Families)
                 fontCombo.Items.Add(f.Name);
 
-			colorFontForeground.CurrentColorChanged += new EventHandler(colourFontForeground_CurrentColorChanged);
+            colorFontForeground.CurrentColorChanged += new EventHandler(colourFontForeground_CurrentColorChanged);
 
-			fillStyleEditor.displayFill.CheckedChanged += new EventHandler(displayFill_CheckedChanged);
-			fillStyleEditor.fillCombo.SelectedIndexChanged += new EventHandler(fillCombo_SelectedIndexChanged);
-			fillStyleEditor.foregroundColor.CurrentColorChanged += new EventHandler(foregroundColor_CurrentColorChanged);
-			fillStyleEditor.backgroundColor.CurrentColorChanged +=new EventHandler(backgroundColor_CurrentColorChanged);
+            fillStyleEditor.displayFill.CheckedChanged += new EventHandler(displayFill_CheckedChanged);
+            fillStyleEditor.fillCombo.SelectedIndexChanged += new EventHandler(fillCombo_SelectedIndexChanged);
+            fillStyleEditor.foregroundColor.CurrentColorChanged += new EventHandler(foregroundColor_CurrentColorChanged);
+            fillStyleEditor.backgroundColor.CurrentColorChanged +=new EventHandler(backgroundColor_CurrentColorChanged);
 
-			lineStyleEditor.displayLine.CheckedChanged +=new EventHandler(displayLine_CheckedChanged);
-			lineStyleEditor.thicknessCombo.SelectedIndexChanged += new EventHandler(thicknessCombo_SelectedIndexChanged);
+            lineStyleEditor.displayLine.CheckedChanged +=new EventHandler(displayLine_CheckedChanged);
+            lineStyleEditor.thicknessCombo.SelectedIndexChanged += new EventHandler(thicknessCombo_SelectedIndexChanged);
             lineStyleEditor.thicknessCombo.TextChanged += new EventHandler(thicknessCombo_TextChanged);
-			lineStyleEditor.colorCombo.CurrentColorChanged +=new EventHandler(colorCombo_CurrentColorChanged);
-			lineStyleEditor.fillCombo.SelectedIndexChanged +=new EventHandler(fillCombo_Line_SelectedIndexChanged);
-		}
+            lineStyleEditor.colorCombo.CurrentColorChanged +=new EventHandler(colorCombo_CurrentColorChanged);
+            lineStyleEditor.fillCombo.SelectedIndexChanged +=new EventHandler(fillCombo_Line_SelectedIndexChanged);
+        }
 
-		private void setUIForMarkSymbol(bool isMark)
-		{
+        private void setUIForMarkSymbol(bool isMark)
+        {
             groupBoxSymbolLocation.Enabled = isMark;
             grpSymbolFill.Enabled = isMark;
             grpSymbolBorder.Enabled = isMark;
@@ -189,16 +211,16 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 groupBoxFont.Enabled = (m_item.Symbol.Type == PointSymbolType.Font);
                 grpW2DStyle.Enabled = (m_item.Symbol.Type == PointSymbolType.W2D);
             }
-		}
+        }
 
-		private void UpdateDisplay()
-		{
-			if (m_inUpdate)
-				return;
+        private void UpdateDisplay()
+        {
+            if (m_inUpdate)
+                return;
 
-			try
-			{
-				m_inUpdate = true;
+            try
+            {
+                m_inUpdate = true;
 
                 if (m_item == null)
                 {
@@ -211,7 +233,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 if (m_item.Symbol == null)
                     m_item.Symbol = _factory.CreateDefaultMarkSymbol();
 
-				// shared values
+                // shared values
                 WidthText.Text = m_item.Symbol.SizeX;
                 HeightText.Text = m_item.Symbol.SizeY;
                 RotationBox.SelectedIndex = -1;
@@ -220,11 +242,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 SizeUnits.SelectedValue = m_item.Symbol.Unit;
                 SizeContext.SelectedValue = m_item.Symbol.SizeContext.ToString();
 
-				// specifics
-				if (m_item.Symbol.Type == PointSymbolType.Mark)
-				{
+                // specifics
+                if (m_item.Symbol.Type == PointSymbolType.Mark)
+                {
                     MaintainAspectRatio.Checked = m_item.Symbol.MaintainAspect;
-					double d;
+                    double d;
                     if (double.TryParse(m_item.Symbol.InsertionPointX, NumberStyles.Float, CultureInfo.InvariantCulture, out d))
                         ReferenceX.Text = d.ToString(System.Threading.Thread.CurrentThread.CurrentUICulture);
                     else
@@ -236,37 +258,37 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                         ReferenceY.Text = m_item.Symbol.InsertionPointY;
 
                     IMarkSymbol t = (IMarkSymbol)m_item.Symbol;
-					Symbol.SelectedValue = t.Shape.ToString();
+                    Symbol.SelectedValue = t.Shape.ToString();
 
-					fillStyleEditor.displayFill.Checked = t.Fill != null;
-					if (t.Fill != null)
-					{
+                    fillStyleEditor.displayFill.Checked = t.Fill != null;
+                    if (t.Fill != null)
+                    {
                         fillStyleEditor.foregroundColor.ColorExpression = t.Fill.ForegroundColor;
                         fillStyleEditor.backgroundColor.ColorExpression = t.Fill.BackgroundColor;
-						fillStyleEditor.fillCombo.SelectedValue = t.Fill.FillPattern;
-						if (fillStyleEditor.fillCombo.SelectedItem == null && fillStyleEditor.fillCombo.Items.Count > 0)
-							fillStyleEditor.fillCombo.SelectedIndex = fillStyleEditor.fillCombo.FindString(t.Fill.FillPattern);
-					}
+                        fillStyleEditor.fillCombo.SelectedValue = t.Fill.FillPattern;
+                        if (fillStyleEditor.fillCombo.SelectedItem == null && fillStyleEditor.fillCombo.Items.Count > 0)
+                            fillStyleEditor.fillCombo.SelectedIndex = fillStyleEditor.fillCombo.FindString(t.Fill.FillPattern);
+                    }
 
-					lineStyleEditor.displayLine.Checked = t.Edge != null;
-					if (t.Edge != null)
-					{
-						lineStyleEditor.fillCombo.SelectedValue = t.Edge.LineStyle;
-						if (lineStyleEditor.fillCombo.SelectedItem == null && lineStyleEditor.fillCombo.Items.Count > 0)
-							lineStyleEditor.fillCombo.SelectedIndex = lineStyleEditor.fillCombo.FindString(t.Edge.LineStyle);
+                    lineStyleEditor.displayLine.Checked = t.Edge != null;
+                    if (t.Edge != null)
+                    {
+                        lineStyleEditor.fillCombo.SelectedValue = t.Edge.LineStyle;
+                        if (lineStyleEditor.fillCombo.SelectedItem == null && lineStyleEditor.fillCombo.Items.Count > 0)
+                            lineStyleEditor.fillCombo.SelectedIndex = lineStyleEditor.fillCombo.FindString(t.Edge.LineStyle);
 
                         lineStyleEditor.colorCombo.ColorExpression = t.Edge.Color;
-						lineStyleEditor.thicknessCombo.Text = t.Edge.Thickness;
-					}
+                        lineStyleEditor.thicknessCombo.Text = t.Edge.Thickness;
+                    }
 
-					setUIForMarkSymbol(true);
-				}
-				else if (m_item.Symbol.Type == PointSymbolType.Font)
-				{
-					IFontSymbol f = (IFontSymbol)m_item.Symbol;
+                    setUIForMarkSymbol(true);
+                }
+                else if (m_item.Symbol.Type == PointSymbolType.Font)
+                {
+                    IFontSymbol f = (IFontSymbol)m_item.Symbol;
 
-					// TODO: Dislike this hard coding, but with association from 'Shape' the 'Font...' string cannot be found or set from the Symbol combobox
-					Symbol.SelectedIndex = 6; //Font
+                    // TODO: Dislike this hard coding, but with association from 'Shape' the 'Font...' string cannot be found or set from the Symbol combobox
+                    Symbol.SelectedIndex = 6; //Font
 
                     fontCombo.SelectedIndex = fontCombo.FindString(f.FontName);
                     if (string.Compare(fontCombo.Text, f.FontName, true) == 0)
@@ -285,8 +307,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     else
                         colorFontForeground.CurrentColor = Utility.ParseHTMLColor(f.ForegroundColor);
 
-					setUIForMarkSymbol(false);
-				}
+                    setUIForMarkSymbol(false);
+                }
                 else if (m_item.Symbol.Type == PointSymbolType.W2D)
                 {
                     // TODO: Dislike this hard coding, but with association from 'Shape' the 'Font...' string cannot be found or set from the Symbol combobox
@@ -312,37 +334,37 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     //TODO: Fix this
                     MessageBox.Show(this, Properties.Resources.SymbolTypeNotSupported, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-				previewPicture.Refresh();
-			} 
-			finally
-			{
-				m_inUpdate = false;
-			}
-		}
+                previewPicture.Refresh();
+            } 
+            finally
+            {
+                m_inUpdate = false;
+            }
+        }
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if(components != null)
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose( bool disposing )
+        {
+            if( disposing )
+            {
+                if(components != null)
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose( disposing );
+        }
 
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PointFeatureStyleEditor));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.RotationBox = new System.Windows.Forms.ComboBox();
@@ -374,6 +396,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.grpSymbolBorder = new System.Windows.Forms.GroupBox();
             this.lineStyleEditor = new Maestro.Editors.LayerDefinition.Vector.StyleEditors.LineStyleEditor();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lnkRefresh = new System.Windows.Forms.LinkLabel();
             this.previewPicture = new System.Windows.Forms.PictureBox();
             this.ComboBoxDataSet = new System.Data.DataSet();
             this.DisplayPoints = new System.Windows.Forms.CheckBox();
@@ -632,9 +655,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             // groupBox4
             // 
             resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Controls.Add(this.lnkRefresh);
             this.groupBox4.Controls.Add(this.previewPicture);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
+            // 
+            // lnkRefresh
+            // 
+            resources.ApplyResources(this.lnkRefresh, "lnkRefresh");
+            this.lnkRefresh.BackColor = System.Drawing.Color.Transparent;
+            this.lnkRefresh.Name = "lnkRefresh";
+            this.lnkRefresh.TabStop = true;
+            this.lnkRefresh.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkRefresh_LinkClicked);
             // 
             // previewPicture
             // 
@@ -901,6 +933,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.grpSymbolFill.ResumeLayout(false);
             this.grpSymbolBorder.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).EndInit();
             this.groupBoxFont.ResumeLayout(false);
@@ -919,40 +952,63 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
-		#endregion
+        }
+        #endregion
 
-		private void PointFeatureStyleEditor_Load(object sender, System.EventArgs e)
-		{
-			UpdateDisplay();
-		}
+        private void PointFeatureStyleEditor_Load(object sender, System.EventArgs e)
+        {
+            UpdateDisplay();
+        }
 
-		private void previewPicture_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
-		{
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            if (m_item != null && m_item.Symbol.Type == PointSymbolType.Mark)
-                FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (IMarkSymbol)m_item.Symbol);
-            else if (m_item != null && m_item.Symbol.Type == PointSymbolType.Font)
-                FeaturePreviewRender.RenderPreviewFontSymbol(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (IFontSymbol)m_item.Symbol);
-            else if (m_item != null && m_item.Symbol.Type == PointSymbolType.W2D)
-                FeaturePreviewRender.RenderW2DImage(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (IW2DSymbol)m_item.Symbol, grpW2DStyle.Tag as Image);
+        private void UpdatePreviewImage()
+        {
+            using (new WaitCursor(this))
+            {
+                UpdateDisplay();
+                m_editor.SyncSessionCopy();
+                _previewImg = _mappingSvc.GetLegendImage(_preview.Scale, _preview.LayerDefinition, _preview.ThemeCategory, 1, previewPicture.Width, previewPicture.Height, _preview.ImageFormat);
+                previewPicture.Invalidate();
+            }
+        }
+
+        private Image _previewImg = null;
+
+        private void previewPicture_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+        {
+            if (UseLayerIconPreview && !(m_item != null && m_item.Symbol.Type == PointSymbolType.Font))
+            {
+                if (_previewImg != null)
+                {
+                    e.Graphics.DrawImage(_previewImg, new Point(0, 0));
+                }
+            }
             else
-                FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), null);
-		}
+            {
+                e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                if (m_item != null && m_item.Symbol.Type == PointSymbolType.Mark)
+                    FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (IMarkSymbol)m_item.Symbol);
+                else if (m_item != null && m_item.Symbol.Type == PointSymbolType.Font)
+                    FeaturePreviewRender.RenderPreviewFontSymbol(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (IFontSymbol)m_item.Symbol);
+                else if (m_item != null && m_item.Symbol.Type == PointSymbolType.W2D)
+                    FeaturePreviewRender.RenderW2DImage(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), (IW2DSymbol)m_item.Symbol, grpW2DStyle.Tag as Image);
+                else
+                    FeaturePreviewRender.RenderPreviewPoint(e.Graphics, new Rectangle(1, 1, previewPicture.Width - 2, previewPicture.Height - 2), null);
+            }
+        }
 
         private IW2DSymbol m_lastSymbol;
 
         internal Image W2DSymbolPreviewImage { get { return grpW2DStyle.Tag as Image; } }
 
-		private void Symbol_SelectedIndexChanged(object sender, System.EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void Symbol_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
             bool isSymbol = false;
             ShapeType selectedShape = ShapeType.Circle;
 
-			// see if need to change symbol type
+            // see if need to change symbol type
             foreach (string s in Enum.GetNames(typeof(ShapeType)))
                 if (string.Compare(s, (string)Symbol.SelectedValue, true) == 0)
                 {
@@ -983,13 +1039,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 if (update)
                     UpdateDisplay();
             }
-			else if (Symbol.SelectedIndex == 6) //Font
-			{
+            else if (Symbol.SelectedIndex == 6) //Font
+            {
                 //W2D symbol is not selected, so invalidate
                 grpW2DStyle.Tag = null;
 
-			    // user wants to change away FROM a valid 'Mark' symbol type
-			    // if ("Font..." == Symbol.SelectedText)
+                // user wants to change away FROM a valid 'Mark' symbol type
+                // if ("Font..." == Symbol.SelectedText)
 
                 bool update = m_item.Symbol != m_lastFont;
 
@@ -1043,15 +1099,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
             }
 
-			previewPicture.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
-		private void SizeContext_SelectedIndexChanged(object sender, System.EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void SizeContext_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
             if (m_item.Symbol.Type == PointSymbolType.Mark)
                 ((IMarkSymbol)m_item.Symbol).SizeContext = (SizeContextType)Enum.Parse((typeof(SizeContextType)), (string)SizeContext.SelectedValue);
@@ -1059,22 +1115,22 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 ((IFontSymbol)m_item.Symbol).SizeContext = (SizeContextType)Enum.Parse((typeof(SizeContextType)), (string)SizeContext.SelectedValue);
             else if (m_item.Symbol.Type == PointSymbolType.W2D)
                 ((IW2DSymbol)m_item.Symbol).SizeContext = (SizeContextType)Enum.Parse((typeof(SizeContextType)), (string)SizeContext.SelectedValue);
-			previewPicture.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
-		private void SizeUnits_SelectedIndexChanged(object sender, System.EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void SizeUnits_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
-			if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font || m_item.Symbol.Type == PointSymbolType.W2D)
+            if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font || m_item.Symbol.Type == PointSymbolType.W2D)
                 m_item.Symbol.Unit = (LengthUnitType)Enum.Parse(typeof(LengthUnitType), (string)SizeUnits.SelectedValue);
-			previewPicture.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
         public delegate void UpdateComboTextFromSelectChangedDelegate(ComboBox owner, string text, bool userChange);
 
@@ -1099,10 +1155,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             }
         }
 
-		private void WidthText_SelectedIndexChanged(object sender, System.EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void WidthText_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
             if (WidthText.SelectedIndex == WidthText.Items.Count - 1)
             {
@@ -1121,12 +1177,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 //This is required as we cannot update the text from within the SelectedIndexChanged event :(
                 BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), WidthText, current, expr != null);
             }
-		}
+        }
 
-		private void HeigthText_SelectedIndexChanged(object sender, System.EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void HeigthText_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
             if (HeightText.SelectedIndex == HeightText.Items.Count - 1)
             {
@@ -1145,12 +1201,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 //This is required as we cannot update the text from within the SelectedIndexChanged event :(
                 BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), HeightText, current, expr != null);
             }
-		}
+        }
 
-		private void ReferenceX_TextChanged(object sender, System.EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void ReferenceX_TextChanged(object sender, System.EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
             if (m_item.Symbol.Type == PointSymbolType.Mark)
             {
@@ -1162,15 +1218,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 else
                     m_item.Symbol.InsertionPointX = ReferenceX.Text;
             }
-			previewPicture.Refresh();		
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            previewPicture.Refresh();		
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
-		private void ReferenceY_TextChanged(object sender, System.EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void ReferenceY_TextChanged(object sender, System.EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
             if (m_item.Symbol.Type == PointSymbolType.Mark)
             {
@@ -1180,15 +1236,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 else
                     m_item.Symbol.InsertionPointY = "0.5";
             }
-			previewPicture.Refresh();		
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            previewPicture.Refresh();		
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
-		private void RotationBox_SelectedIndexChanged(object sender, System.EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void RotationBox_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
             if (RotationBox.SelectedIndex == RotationBox.Items.Count - 1)
             {
@@ -1215,81 +1271,81 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 //RotationBox.SelectedIndex = -1;
             }
 
-		}
+        }
 
-		private void displayFill_CheckedChanged(object sender, EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void displayFill_CheckedChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
-			if (m_item.Symbol.Type == PointSymbolType.Mark)
-				if (fillStyleEditor.displayFill.Checked)
-					((IMarkSymbol) m_item.Symbol).Fill = previousFill == null ? _factory.CreateDefaultFill() : previousFill;
-				else
-				{
+            if (m_item.Symbol.Type == PointSymbolType.Mark)
+                if (fillStyleEditor.displayFill.Checked)
+                    ((IMarkSymbol) m_item.Symbol).Fill = previousFill == null ? _factory.CreateDefaultFill() : previousFill;
+                else
+                {
                     if (((IMarkSymbol)m_item.Symbol).Fill != null)
                         previousFill = ((IMarkSymbol)m_item.Symbol).Fill;
                     ((IMarkSymbol)m_item.Symbol).Fill = null;
-				}
-			previewPicture.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+                }
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
-		private void displayLine_CheckedChanged(object sender, EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void displayLine_CheckedChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
-			if (m_item.Symbol.Type == PointSymbolType.Mark)
-				if (lineStyleEditor.displayLine.Checked)
-					((IMarkSymbol) m_item.Symbol).Edge = previousEdge == null ? _factory.CreateDefaultStroke() : previousEdge;
-				else
-				{
+            if (m_item.Symbol.Type == PointSymbolType.Mark)
+                if (lineStyleEditor.displayLine.Checked)
+                    ((IMarkSymbol) m_item.Symbol).Edge = previousEdge == null ? _factory.CreateDefaultStroke() : previousEdge;
+                else
+                {
                     if (((IMarkSymbol)m_item.Symbol).Edge != null)
                         previousEdge = ((IMarkSymbol)m_item.Symbol).Edge;
                     ((IMarkSymbol)m_item.Symbol).Edge = null;
-				}
-			previewPicture.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+                }
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
-		private void fillCombo_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void fillCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
-			if (m_item.Symbol.Type == PointSymbolType.Mark)
-				((IMarkSymbol) m_item.Symbol).Fill.FillPattern = fillStyleEditor.fillCombo.Text;
-			previewPicture.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            if (m_item.Symbol.Type == PointSymbolType.Mark)
+                ((IMarkSymbol) m_item.Symbol).Fill.FillPattern = fillStyleEditor.fillCombo.Text;
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
-		private void foregroundColor_CurrentColorChanged(object sender, EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void foregroundColor_CurrentColorChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
             if (m_item.Symbol.Type == PointSymbolType.Mark)
                 ((IMarkSymbol)m_item.Symbol).Fill.ForegroundColor = fillStyleEditor.foregroundColor.ColorExpression;
-			previewPicture.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
-		private void backgroundColor_CurrentColorChanged(object sender, EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void backgroundColor_CurrentColorChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
             if (m_item.Symbol.Type == PointSymbolType.Mark)
                 ((IMarkSymbol)m_item.Symbol).Fill.BackgroundColor = fillStyleEditor.backgroundColor.ColorExpression;
-			previewPicture.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
 
         private void thicknessCombo_TextChanged(object sender, EventArgs e)
@@ -1306,9 +1362,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         }
 
         private void thicknessCombo_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			if (m_inUpdate || lineStyleEditor.thicknessCombo.SelectedIndex != lineStyleEditor.thicknessCombo.Items.Count - 1)
-				return;
+        {
+            if (m_inUpdate || lineStyleEditor.thicknessCombo.SelectedIndex != lineStyleEditor.thicknessCombo.Items.Count - 1)
+                return;
 
                 string current = null;
                 if (m_item.Symbol.Type == PointSymbolType.Mark)
@@ -1326,104 +1382,104 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), lineStyleEditor.thicknessCombo, current, expr != null);
         }
 
-		private void colorCombo_CurrentColorChanged(object sender, EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void colorCombo_CurrentColorChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
             if (m_item.Symbol.Type == PointSymbolType.Mark)
                 ((IMarkSymbol)m_item.Symbol).Edge.Color = lineStyleEditor.colorCombo.ColorExpression;
-			previewPicture.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
-		private void fillCombo_Line_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void fillCombo_Line_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
-			if (m_item.Symbol.Type == PointSymbolType.Mark)
+            if (m_item.Symbol.Type == PointSymbolType.Mark)
                 ((IMarkSymbol)m_item.Symbol).Edge.LineStyle = lineStyleEditor.fillCombo.Text;
-			previewPicture.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
-		private void colourFontForeground_CurrentColorChanged(object sender, EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void colourFontForeground_CurrentColorChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
             if (m_item.Symbol.Type == PointSymbolType.Font)
                 ((IFontSymbol)m_item.Symbol).ForegroundColor = Utility.SerializeHTMLColor(colorFontForeground.CurrentColor, true);
 
             previewPicture.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
-		private void fontCombo_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void fontCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
-			//TODO: Validate
+            //TODO: Validate
             if (!(m_item.Symbol is IFontSymbol))
-				return;
+                return;
             ((IFontSymbol)m_item.Symbol).FontName = fontCombo.Text;
 
-			comboBoxCharacter.Items.Clear();
-			try
-			{
-				comboBoxCharacter.Font = new Font(fontCombo.SelectedText, (float)8.25);
-			}
-			catch
-			{
-				MessageBox.Show(this, string.Format(Properties.Resources.SymbolTypeNotSupported, fontCombo.SelectedText), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-				return;
-			}
+            comboBoxCharacter.Items.Clear();
+            try
+            {
+                comboBoxCharacter.Font = new Font(fontCombo.SelectedText, (float)8.25);
+            }
+            catch
+            {
+                MessageBox.Show(this, string.Format(Properties.Resources.SymbolTypeNotSupported, fontCombo.SelectedText), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
-			// populate with a basic A-Z
-			for (char c = 'A'; c < 'Z'; c++)
-				comboBoxCharacter.Items.Add(c);
+            // populate with a basic A-Z
+            for (char c = 'A'; c < 'Z'; c++)
+                comboBoxCharacter.Items.Add(c);
 
-			previewPicture.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
-		private void comboBoxCharacter_SelectedIndexChanged(object sender, System.EventArgs e)
-		{
-			if (m_inUpdate)
-				return;
+        private void comboBoxCharacter_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            if (m_inUpdate)
+                return;
 
-			//TODO: Validate
-			if (m_item.Symbol.Type != PointSymbolType.Font)
-				return;
+            //TODO: Validate
+            if (m_item.Symbol.Type != PointSymbolType.Font)
+                return;
 
-			((IFontSymbol)m_item.Symbol).Character = comboBoxCharacter.Text;
+            ((IFontSymbol)m_item.Symbol).Character = comboBoxCharacter.Text;
 
-			previewPicture.Refresh();
-			if (Changed != null)
-				Changed(this, new EventArgs());
-		}
+            previewPicture.Refresh();
+            if (Changed != null)
+                Changed(this, new EventArgs());
+        }
 
-		private void comboBoxCharacter_TextChanged(object sender, System.EventArgs e)
-		{
-			comboBoxCharacter_SelectedIndexChanged(sender, e);
-		}
+        private void comboBoxCharacter_TextChanged(object sender, System.EventArgs e)
+        {
+            comboBoxCharacter_SelectedIndexChanged(sender, e);
+        }
 
 
-		public IPointSymbolization2D Item
-		{
-			get { return m_item; }
-			set 
-			{
-				m_item = value;
-				UpdateDisplay();
-			}
-		}
+        public IPointSymbolization2D Item
+        {
+            get { return m_item; }
+            set 
+            {
+                m_item = value;
+                UpdateDisplay();
+            }
+        }
 
         private void DisplayPoints_CheckedChanged(object sender, EventArgs e)
         {
@@ -1491,8 +1547,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 Changed(this, new EventArgs());
         }
 
-		private void RotationBox_TextChanged(object sender, EventArgs e)
-		{
+        private void RotationBox_TextChanged(object sender, EventArgs e)
+        {
             if (m_inUpdate || RotationBox.SelectedIndex != -1)
                 return;
 
@@ -1506,9 +1562,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             previewPicture.Refresh();
             if (Changed != null)
                 Changed(this, new EventArgs());
-		}
-		
-		private void ReferenceY_Leave(object sender, EventArgs e)
+        }
+        
+        private void ReferenceY_Leave(object sender, EventArgs e)
         {
             double d;
             if (m_item.Symbol is IMarkSymbol)
@@ -1695,26 +1751,48 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
-		
-		void FillStyleEditor_BackgroundRequiresExpression(object sender, EventArgs e)
-		{
+        
+        void FillStyleEditor_BackgroundRequiresExpression(object sender, EventArgs e)
+        {
             string expr = m_editor.EditExpression(fillStyleEditor.backgroundColor.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)
                 fillStyleEditor.backgroundColor.ColorExpression = expr;
-		}
-		
-		void FillStyleEditor_ForegroundRequiresExpression(object sender, EventArgs e)
-		{
+        }
+        
+        void FillStyleEditor_ForegroundRequiresExpression(object sender, EventArgs e)
+        {
             string expr = m_editor.EditExpression(fillStyleEditor.foregroundColor.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)
                 fillStyleEditor.foregroundColor.ColorExpression = expr;
-		}
-		
-		void LineStyleEditor_RequiresExpressionEditor(object sender, EventArgs e)
-		{
+        }
+        
+        void LineStyleEditor_RequiresExpressionEditor(object sender, EventArgs e)
+        {
             string expr = m_editor.EditExpression(lineStyleEditor.colorCombo.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)
                 lineStyleEditor.colorCombo.ColorExpression = expr;
-		}
+        }
+
+        private void lnkRefresh_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (_editCommit != null)
+                _editCommit.Invoke();
+            UpdatePreviewImage();
+        }
+
+        private Action _editCommit;
+
+        internal void SetEditCommit(Action editCommit)
+        {
+            _editCommit = editCommit;
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            if (_editCommit != null)
+                _editCommit.Invoke();
+            UpdatePreviewImage();
+        }
     }
 }

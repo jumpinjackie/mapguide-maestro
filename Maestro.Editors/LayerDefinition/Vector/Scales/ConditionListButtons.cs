@@ -133,25 +133,29 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             if (m_point != null)
             {
                 IPointRule prt = _factory.CreateDefaultPointRule();
-                conditionList.AddRuleControl(prt).Focus();
+                int idx = m_point.RuleCount;
+                conditionList.AddRuleControl(prt, idx).Focus();
                 m_point.AddRule(prt);
             }
             else if (m_line != null)
             {
                 ILineRule lrt = _factory.CreateDefaultLineRule();
-                conditionList.AddRuleControl(lrt).Focus();
+                int idx = m_line.RuleCount;
+                conditionList.AddRuleControl(lrt, idx).Focus();
                 m_line.AddRule(lrt);
             }
             else if (m_area != null)
             {
                 IAreaRule art = _factory.CreateDefaultAreaRule();
-                conditionList.AddRuleControl(art).Focus();
+                int idx = m_area.RuleCount;
+                conditionList.AddRuleControl(art, idx).Focus();
                 m_area.AddRule(art);
             }
             else if (m_comp != null)
             {
                 ICompositeRule cr = _factory.CreateDefaultCompositeRule();
-                conditionList.AddRuleControl(cr).Focus();
+                int idx = m_area.RuleCount;
+                conditionList.AddRuleControl(cr, idx).Focus();
                 m_comp.AddCompositeRule(cr);
             }
 
@@ -215,23 +219,26 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
             object rule = Utility.XmlDeepCopy(conditionList.SelectedItem);
 
-
+            int idx = -1;
             if (m_point != null)
             {
+                idx = m_point.RuleCount;
                 m_point.AddRule((IPointRule)rule);
             }
             else if (m_line != null)
             {
+                idx = m_line.RuleCount;
                 m_line.AddRule((ILineRule)rule);
             }
             else if (m_area != null)
             {
+                idx = m_area.RuleCount;
                 m_area.AddRule((IAreaRule)rule);
             }
             else
                 return;
 
-            conditionList.AddRuleControl(rule).Focus();
+            conditionList.AddRuleControl(rule, idx).Focus();
 
             if (ItemChanged != null)
                 ItemChanged(this, null);
