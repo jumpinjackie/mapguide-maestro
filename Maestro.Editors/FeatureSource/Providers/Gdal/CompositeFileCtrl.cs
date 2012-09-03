@@ -274,7 +274,11 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
                 string dir = null;
                 if (isAlias)
                 {
-                    dir = add.Substring(0, add.LastIndexOf("/"));
+                    int idx = add.LastIndexOf("/");
+                    if (idx >= 0)
+                        dir = add.Substring(0, idx);
+                    else
+                        dir = add.Substring(0, add.LastIndexOf("%") + 1);
                 }
                 else
                 {
@@ -293,10 +297,20 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
 
                 var scList = fs.GetSpatialInfo(false);
                 
-                var raster = new GdalRasterItem()
+                var raster = new GdalRasterItem();
+
+                if (isAlias)
                 {
-                    FileName = isAlias ? add.Substring(add.LastIndexOf("/") + 1) : Path.GetFileName(add)
-                };
+                    int idx = add.LastIndexOf("/");
+                    if (idx >= 0)
+                        raster.FileName = add.Substring(add.LastIndexOf("/") + 1);
+                    else
+                        raster.FileName = add.Substring(add.LastIndexOf("%"));
+                }
+                else
+                {
+                    raster.FileName = Path.GetFileName(add);
+                }
 
                 if (scList.SpatialContext.Count > 0)
                 {
