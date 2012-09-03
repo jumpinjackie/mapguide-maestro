@@ -279,7 +279,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
         IVectorScaleRange IVectorScaleRange.Clone()
         {
-            return this.Clone();
+            return VectorScaleRangeType.Deserialize(this.Serialize());
         }
 
 #if LDF_110 || LDF_120

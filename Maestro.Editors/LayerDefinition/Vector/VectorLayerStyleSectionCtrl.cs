@@ -85,7 +85,8 @@ namespace Maestro.Editors.LayerDefinition.Vector
             var vsc = lstScaleRanges.SelectedItem as VectorScaleRange;
             if (vsc != null)
             {
-                AddScaleRange(vsc.Clone());
+                var clone = vsc.Clone();
+                AddScaleRange(clone);
             }
         }
 
