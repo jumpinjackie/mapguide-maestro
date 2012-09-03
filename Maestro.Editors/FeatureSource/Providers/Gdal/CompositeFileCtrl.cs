@@ -305,7 +305,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
                     if (idx >= 0)
                         raster.FileName = add.Substring(add.LastIndexOf("/") + 1);
                     else
-                        raster.FileName = add.Substring(add.LastIndexOf("%"));
+                        raster.FileName = add.Substring(add.LastIndexOf("%") + 1);
                 }
                 else
                 {
