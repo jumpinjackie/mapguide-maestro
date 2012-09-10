@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XmlEditorCtrl));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnUndo = new System.Windows.Forms.ToolStripButton();
@@ -44,8 +45,16 @@
             this.btnFindAndReplace = new System.Windows.Forms.ToolStripButton();
             this.resDataCtrl = new Maestro.Editors.Generic.ResourceDataPanel();
             this.nodeNumericUpDown1 = new Aga.Controls.Tree.NodeControls.NodeNumericUpDown();
-            this.txtXmlContent = new ICSharpCode.TextEditor.TextEditorControl();
+            this.txtXmlContent = new XmlTextEditorControl();
+            this.ctxXmlEditor = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.findToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findReplaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
+            this.ctxXmlEditor.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -181,9 +190,57 @@
             // 
             // txtXmlContent
             // 
+            this.txtXmlContent.ContextMenuStrip = this.ctxXmlEditor;
             resources.ApplyResources(this.txtXmlContent, "txtXmlContent");
             this.txtXmlContent.IsReadOnly = false;
             this.txtXmlContent.Name = "txtXmlContent";
+            // 
+            // ctxXmlEditor
+            // 
+            this.ctxXmlEditor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cutToolStripMenuItem,
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem,
+            this.toolStripSeparator4,
+            this.findToolStripMenuItem,
+            this.findReplaceToolStripMenuItem});
+            this.ctxXmlEditor.Name = "ctxXmlEditor";
+            resources.ApplyResources(this.ctxXmlEditor, "ctxXmlEditor");
+            // 
+            // cutToolStripMenuItem
+            // 
+            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            resources.ApplyResources(this.cutToolStripMenuItem, "cutToolStripMenuItem");
+            this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem_Click);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            resources.ApplyResources(this.copyToolStripMenuItem, "copyToolStripMenuItem");
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            resources.ApplyResources(this.pasteToolStripMenuItem, "pasteToolStripMenuItem");
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
+            // 
+            // findToolStripMenuItem
+            // 
+            this.findToolStripMenuItem.Name = "findToolStripMenuItem";
+            resources.ApplyResources(this.findToolStripMenuItem, "findToolStripMenuItem");
+            this.findToolStripMenuItem.Click += new System.EventHandler(this.findToolStripMenuItem_Click);
+            // 
+            // findReplaceToolStripMenuItem
+            // 
+            this.findReplaceToolStripMenuItem.Name = "findReplaceToolStripMenuItem";
+            resources.ApplyResources(this.findReplaceToolStripMenuItem, "findReplaceToolStripMenuItem");
+            this.findReplaceToolStripMenuItem.Click += new System.EventHandler(this.findReplaceToolStripMenuItem_Click);
             // 
             // XmlEditorCtrl
             // 
@@ -195,6 +252,7 @@
             resources.ApplyResources(this, "$this");
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.ctxXmlEditor.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,7 +263,7 @@
 
         private System.Windows.Forms.ToolStrip toolStrip1;
         private ResourceDataPanel resDataCtrl;
-        private ICSharpCode.TextEditor.TextEditorControl txtXmlContent;
+        private XmlTextEditorControl txtXmlContent;
         private System.Windows.Forms.ToolStripButton btnCopy;
         private System.Windows.Forms.ToolStripButton btnCut;
         private System.Windows.Forms.ToolStripButton btnPaste;
@@ -218,5 +276,12 @@
         private System.Windows.Forms.ToolStripButton btnFormat;
         private System.Windows.Forms.ToolStripButton btnFind;
         private System.Windows.Forms.ToolStripButton btnFindAndReplace;
+        private System.Windows.Forms.ContextMenuStrip ctxXmlEditor;
+        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem findReplaceToolStripMenuItem;
     }
 }

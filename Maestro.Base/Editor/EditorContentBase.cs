@@ -51,10 +51,12 @@ namespace Maestro.Base.Editor
             private set { upgradePanel.Visible = value; }
         }
 
+        [DefaultValue(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RequiresReload
         {
             get { return sessionRestartPanel.Visible; }
-            set { sessionRestartPanel.Visible = true; }
+            set { sessionRestartPanel.Visible = value; }
         }
 
         private IEditorService _svc;

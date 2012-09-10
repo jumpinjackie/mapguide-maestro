@@ -33,6 +33,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels;
+using ICSharpCode.TextEditor.Actions;
 
 namespace Maestro.Editors.Generic
 {
@@ -49,6 +50,33 @@ namespace Maestro.Editors.Generic
     /// </summary>
     public partial class XmlEditorCtrl : EditorBase, INotifyResourceChanged
     {
+        class FindAction : AbstractEditAction
+        {
+            private XmlEditorCtrl _parent;
+
+            public FindAction(XmlEditorCtrl parent)
+            {
+                _parent = parent;
+            }
+
+            public override void Execute(ICSharpCode.TextEditor.TextArea textArea)
+            {
+                _parent.DoFind();
+            }
+        }
+
+        class FindAndReplaceAction : AbstractEditAction
+        {
+            private XmlEditorCtrl _parent;
+
+            public FindAndReplaceAction(XmlEditorCtrl parent) { _parent = parent; }
+
+            public override void Execute(ICSharpCode.TextEditor.TextArea textArea)
+            {
+                _parent.DoFindReplace();
+            }
+        }
+
         private bool _ready = false;
 
         /// <summary>
@@ -57,6 +85,8 @@ namespace Maestro.Editors.Generic
         public XmlEditorCtrl()
         {
             InitializeComponent();
+            txtXmlContent.RegisterAction(Keys.Control | Keys.F, new FindAction(this));
+            txtXmlContent.RegisterAction(Keys.Control | Keys.H, new FindAndReplaceAction(this));
             txtXmlContent.SetHighlighting("XML");
             txtXmlContent.EnableFolding = true;
             txtXmlContent.ShowInvalidLines = true;
@@ -136,9 +166,9 @@ namespace Maestro.Editors.Generic
         private void EvaluateCommands()
         {
             btnUndo.Enabled = txtXmlContent.EnableUndo;
-            btnCut.Enabled = txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.EnableCut;
-            btnCopy.Enabled = txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.EnableCopy;
-            btnPaste.Enabled = Clipboard.ContainsText();
+            cutToolStripMenuItem.Enabled = btnCut.Enabled = txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.EnableCut;
+            copyToolStripMenuItem.Enabled = btnCopy.Enabled = txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.EnableCopy;
+            pasteToolStripMenuItem.Enabled = btnPaste.Enabled = Clipboard.ContainsText();
             btnValidate.Enabled = (this.Validator != null);
         }
 
@@ -306,12 +336,22 @@ namespace Maestro.Editors.Generic
 
         private void btnFind_Click(object sender, EventArgs e)
         {
+            DoFind();
+        }
+
+        private void DoFind()
+        {
             var editor = txtXmlContent;
             if (editor == null) return;
             _findForm.ShowFor(editor, false);
         }
 
         private void btnFindAndReplace_Click(object sender, EventArgs e)
+        {
+            DoFindReplace();
+        }
+
+        private void DoFindReplace()
         {
             var editor = txtXmlContent;
             if (editor == null) return;
@@ -323,69 +363,94 @@ namespace Maestro.Editors.Generic
             _findForm.ShowFor(txtXmlContent, true, false); //This is just to initialize it just in case
             _findForm.FindAndReplace(find, replace);
         }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Cut(this, EventArgs.Empty);
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Copy(this, EventArgs.Empty);
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Paste(this, EventArgs.Empty);
+        }
+
+        private void findToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DoFind();
+        }
+
+        private void findReplaceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DoFindReplace();
+        }
     }
     
-	/// <summary>
-	/// Holds information about the start of a fold in an xml string.
-	/// </summary>
-	internal class XmlFoldStart
-	{
-		int line = 0;
-		int col = 0;
-		string prefix = String.Empty;
-		string name = String.Empty;
-		string foldText = String.Empty;
-		
-		public XmlFoldStart(string prefix, string name, int line, int col)
-		{
-			this.line = line;
-			this.col = col;
-			this.prefix = prefix;
-			this.name = name;
-		}
-		
-		/// <summary>
-		/// The line where the fold should start.  Lines start from 0.
-		/// </summary>
-		public int Line {
-			get {
-				return line;
-			}
-		}
-		
-		/// <summary>
-		/// The column where the fold should start.  Columns start from 0.
-		/// </summary>
-		public int Column {
-			get {
-				return col;
-			}
-		}	
-		
-		/// <summary>
-		/// The name of the xml item with its prefix if it has one.
-		/// </summary>
-		public string Name {
-			get {
-				if (prefix.Length > 0) {
-					return String.Concat(prefix, ":", name);
-				} else {
-					return name;
-				}
-			}
-		}
-		
-		/// <summary>
-		/// The text to be displayed when the item is folded.
-		/// </summary>
-		public string FoldText {
-			get {
-				return foldText;
-			}
-			
-			set {
-				foldText = value;
-			}
-		}
-	}
+    /// <summary>
+    /// Holds information about the start of a fold in an xml string.
+    /// </summary>
+    internal class XmlFoldStart
+    {
+        int line = 0;
+        int col = 0;
+        string prefix = String.Empty;
+        string name = String.Empty;
+        string foldText = String.Empty;
+        
+        public XmlFoldStart(string prefix, string name, int line, int col)
+        {
+            this.line = line;
+            this.col = col;
+            this.prefix = prefix;
+            this.name = name;
+        }
+        
+        /// <summary>
+        /// The line where the fold should start.  Lines start from 0.
+        /// </summary>
+        public int Line {
+            get {
+                return line;
+            }
+        }
+        
+        /// <summary>
+        /// The column where the fold should start.  Columns start from 0.
+        /// </summary>
+        public int Column {
+            get {
+                return col;
+            }
+        }	
+        
+        /// <summary>
+        /// The name of the xml item with its prefix if it has one.
+        /// </summary>
+        public string Name {
+            get {
+                if (prefix.Length > 0) {
+                    return String.Concat(prefix, ":", name);
+                } else {
+                    return name;
+                }
+            }
+        }
+        
+        /// <summary>
+        /// The text to be displayed when the item is folded.
+        /// </summary>
+        public string FoldText {
+            get {
+                return foldText;
+            }
+            
+            set {
+                foldText = value;
+            }
+        }
+    }
 }

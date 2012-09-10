@@ -647,6 +647,9 @@
     <Compile Include="Fusion\WidgetSettingsCtrl.Designer.cs">
       <DependentUpon>WidgetSettingsCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generic\XmlTextEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Generic\NsDoc.cs" />
     <Compile Include="Generic\ResourceDataPanel.cs">
       <SubType>UserControl</SubType>
