@@ -115,12 +115,12 @@ namespace Maestro.Editors.Diagnostics
 
         private static string ParseMs(string value)
         {
-            return value + " " + Properties.Resources.UnitsMs;
+            return value + " " + Properties.Resources.UnitsMs; //NOXLATE
         }
 
         private static string ParseSeconds(string value)
         {
-            return value + " " + Properties.Resources.UnitsSeconds;
+            return value + " " + Properties.Resources.UnitsSeconds; //NOXLATE
         }
 
         private static string ParseKb(string valueBytes)
@@ -131,7 +131,7 @@ namespace Maestro.Editors.Diagnostics
                                 System.Threading.Thread.CurrentThread.CurrentUICulture, 
                                 out d))
             {
-                return (d / 1000.0).ToString(System.Threading.Thread.CurrentThread.CurrentUICulture) + " " + Properties.Resources.UnitsKb;
+                return (d / 1000.0).ToString(System.Threading.Thread.CurrentThread.CurrentUICulture) + " " + Properties.Resources.UnitsKb; //NOXLATE
             }
             return valueBytes;
         }

@@ -87,7 +87,7 @@ namespace Maestro.Editors.Generic
             InitializeComponent();
             txtXmlContent.RegisterAction(Keys.Control | Keys.F, new FindAction(this));
             txtXmlContent.RegisterAction(Keys.Control | Keys.H, new FindAndReplaceAction(this));
-            txtXmlContent.SetHighlighting("XML");
+            txtXmlContent.SetHighlighting("XML"); //NOXLATE
             txtXmlContent.EnableFolding = true;
             txtXmlContent.ShowInvalidLines = true;
             txtXmlContent.ShowSpaces = true;
@@ -433,7 +433,7 @@ namespace Maestro.Editors.Generic
         public string Name {
             get {
                 if (prefix.Length > 0) {
-                    return String.Concat(prefix, ":", name);
+                    return String.Concat(prefix, ":", name); //NOXLATE
                 } else {
                     return name;
                 }

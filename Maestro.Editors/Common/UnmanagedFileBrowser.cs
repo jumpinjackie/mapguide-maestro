@@ -213,12 +213,12 @@ namespace Maestro.Editors.Common
             get
             {
                 List<string> items = new List<string>();
-                string[] tokens = txtItem.Text.Split('\t');
+                string[] tokens = txtItem.Text.Split('\t'); //NOXLATE
                 foreach (var path in tokens)
                 {
-                    var leftpart = path.Substring(0, path.IndexOf("]"));
-                    var rightpart = path.Substring(path.IndexOf("]") + 1);
-                    items.Add("%MG_DATA_PATH_ALIAS" + leftpart + "]%" + rightpart);
+                    var leftpart = path.Substring(0, path.IndexOf("]")); //NOXLATE
+                    var rightpart = path.Substring(path.IndexOf("]") + 1); //NOXLATE
+                    items.Add("%MG_DATA_PATH_ALIAS" + leftpart + "]%" + rightpart); //NOXLATE
                 }
                 return items.ToArray();
             }
@@ -277,58 +277,58 @@ namespace Maestro.Editors.Common
 
         private int GetImageIndex(string fileName)
         {
-            string ext = fileName.Substring(fileName.LastIndexOf(".") + 1);
+            string ext = fileName.Substring(fileName.LastIndexOf(".") + 1); //NOXLATE
             switch (ext.ToUpper())
             {
-                case "EXE":
+                case "EXE": //NOXLATE
                     return IDX_FILE_EXE;
-                case "DOC":
-                case "DOCX":
+                case "DOC": //NOXLATE
+                case "DOCX": //NOXLATE
                     return IDX_FILE_DOC;
-                case "MDB":
-                case "ACCDB":
+                case "MDB": //NOXLATE
+                case "ACCDB": //NOXLATE
                     return IDX_FILE_MDB;
-                case "XLS":
-                case "XLSX":
+                case "XLS": //NOXLATE
+                case "XLSX": //NOXLATE
                     return IDX_FILE_XLS;
-                case "CSV":
+                case "CSV": //NOXLATE
                     return IDX_FILE_CSV;
-                case "MOV":
-                case "MPG":
-                case "AVI":
-                case "MP4":
-                case "WMV":
-                case "ASF":
-                case "FLV":
+                case "MOV": //NOXLATE
+                case "MPG": //NOXLATE
+                case "AVI": //NOXLATE
+                case "MP4": //NOXLATE
+                case "WMV": //NOXLATE
+                case "ASF": //NOXLATE
+                case "FLV": //NOXLATE
                     return IDX_FILE_MOVIE;
-                case "HTM":
-                case "HTML":
+                case "HTM": //NOXLATE
+                case "HTML": //NOXLATE
                     return IDX_FILE_HTML;
-                case "PNG":
-                case "JPG":
-                case "GIF":
-                case "ICO":
-                case "BMP":
-                case "TGA":
+                case "PNG": //NOXLATE
+                case "JPG": //NOXLATE
+                case "GIF": //NOXLATE
+                case "ICO": //NOXLATE
+                case "BMP": //NOXLATE
+                case "TGA": //NOXLATE
                     return IDX_FILE_IMAGE;
-                case "PDF":
+                case "PDF": //NOXLATE
                     return IDX_FILE_PDF;
-                case "PHP":
+                case "PHP": //NOXLATE
                     return IDX_FILE_PHP;
-                case "PPT":
-                case "PPTX":
+                case "PPT": //NOXLATE
+                case "PPTX": //NOXLATE
                     return IDX_FILE_PPT;
-                case "TXT":
+                case "TXT": //NOXLATE
                     return IDX_FILE_TXT;
-                case "ZIP":
-                case "RAR":
-                case "ACE":
-                case "7Z":
-                case "GZ":
-                case "TAR":
-                case "BZ2":
+                case "ZIP": //NOXLATE
+                case "RAR": //NOXLATE
+                case "ACE": //NOXLATE
+                case "7Z": //NOXLATE
+                case "GZ": //NOXLATE
+                case "TAR": //NOXLATE
+                case "BZ2": //NOXLATE
                     return IDX_FILE_ARCHIVE;
-                case "XML":
+                case "XML": //NOXLATE
                     return IDX_FILE_XML;
                 default:
                     return IDX_FILE_UNKNOWN;
@@ -364,7 +364,7 @@ namespace Maestro.Editors.Common
                 {
                     names.Add(item.Name);
                 }
-                txtItem.Text = string.Join("\t", names.ToArray());
+                txtItem.Text = string.Join("\t", names.ToArray()); //NOXLATE
             }
         }
 

@@ -139,7 +139,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private Control CreateEditor(ISymbolInstance symRef, IResourceService resSvc)
         {
-            Check.NotNull(symRef, "symRef");
+            Check.NotNull(symRef, "symRef"); //NOXLATE
             if (symRef.Reference.Type == SymbolInstanceType.Reference)
             {
                 return new ReferenceCtrl((ISymbolInstanceReferenceLibrary)symRef.Reference, resSvc);

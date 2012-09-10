@@ -27,6 +27,7 @@ using System.Windows.Forms;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System.Diagnostics;
 using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.FeatureSource.Providers.SQLite
 {
@@ -51,10 +52,10 @@ namespace Maestro.Editors.FeatureSource.Providers.SQLite
             MarkSelected();
 
             //HACK: Set UseFdoMetadata property if not specified otherwise this will be an invalid feature source
-            if (string.IsNullOrEmpty(_fs.GetConnectionProperty("UseFdoMetadata")))
-                _fs.SetConnectionProperty("UseFdoMetadata", "FALSE");
+            if (string.IsNullOrEmpty(_fs.GetConnectionProperty("UseFdoMetadata"))) //NOXLATE
+                _fs.SetConnectionProperty("UseFdoMetadata", "FALSE"); //NOXLATE
 
-            chkUseFdoMetadata.Checked = _fs.GetConnectionProperty("UseFdoMetadata").ToUpper().Equals(true.ToString().ToUpper());
+            chkUseFdoMetadata.Checked = _fs.GetConnectionProperty("UseFdoMetadata").ToUpper().Equals(true.ToString().ToUpper()); //NOXLATE
         }
 
         private void MarkSelected()
@@ -84,7 +85,7 @@ namespace Maestro.Editors.FeatureSource.Providers.SQLite
 
         protected override void OnResourceMarked(string dataName)
         {
-            string fileProp = "%MG_DATA_FILE_PATH%" + dataName;
+            string fileProp = StringConstants.MgDataFilePath + dataName;
             string currFileProp = _fs.GetConnectionProperty(this.FileFdoProperty);
             if (!currFileProp.Equals(fileProp))
                 _fs.SetConnectionProperty(this.FileFdoProperty, fileProp);
@@ -93,9 +94,9 @@ namespace Maestro.Editors.FeatureSource.Providers.SQLite
         private void chkUseFdoMetadata_CheckedChanged(object sender, EventArgs e)
         {
             var newValue = chkUseFdoMetadata.Checked.ToString().ToUpper();
-            var currValue = _fs.GetConnectionProperty("UseFdoMetadata");
+            var currValue = _fs.GetConnectionProperty("UseFdoMetadata"); //NOXLATE
             if (!newValue.Equals(currValue))
-                _fs.SetConnectionProperty("UseFdoMetadata", newValue);
+                _fs.SetConnectionProperty("UseFdoMetadata", newValue); //NOXLATE
         }
 
         private void btnTest_Click(object sender, EventArgs e)

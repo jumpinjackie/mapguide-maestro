@@ -21,6 +21,27 @@ using System;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
+    public class StringConstants
+    {
+        /// <summary>
+        /// The root resource identifier
+        /// </summary>
+        public const string RootIdentifier = "Library://"; //NOXLATE
+
+        /// <summary>
+        /// A thumbnail dwf resource role
+        /// </summary>
+        public const string Thumbnail = "Thumbnail"; //NOXLATE
+
+        public const string MgUsernamePlaceholder = "%MG_USERNAME%"; //NOXLATE
+
+        public const string MgPasswordPlaceholder = "%MG_PASSWORD%"; //NOXLATE
+
+        public const string MgDataFilePath = "%MG_DATA_FILE_PATH%"; //NOXLATE
+
+        public const string MgUserCredentialsResourceData = "MG_USER_CREDENTIALS"; //NOXLATE
+    }
+
     /// <summary>
     /// Represents the common resource types in MapGuide
     /// </summary>

@@ -104,7 +104,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             }
             else 
             {
-                e.Graphics.DrawString("Preview\nnot available", Control.DefaultFont, Brushes.Black, new PointF(0, 0));
+                e.Graphics.DrawString(Properties.Resources.TextRenderPreviewNotAvailable, Control.DefaultFont, Brushes.Black, new PointF(0, 0));
             }
         }
 
@@ -148,11 +148,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             var res = (ILayerDefinition)_edSvc.GetEditedResource();
             var vl = (IVectorLayerDefinition)res.SubLayer;
             if (vl.SymbolDefinitionVersion == null)
-                throw new InvalidOperationException("This Layer Definition version does not support composite symbolization");
+                throw new InvalidOperationException(Properties.Resources.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
             var ssym = ObjectFactory.CreateSimpleSymbol(_edSvc.GetEditedResource().CurrentConnection, 
                                                         vl.SymbolDefinitionVersion, 
-                                                        "InlineSimpleSymbol", 
-                                                        "Inline Simple Symbol");
+                                                        "InlineSimpleSymbol", //NOXLATE
+                                                        Properties.Resources.TextInlineSimpleSymbol);
 
             var instance = _comp.CreateInlineSimpleSymbol(ssym);
             AddInstance(instance, true);
@@ -163,11 +163,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             var res = (ILayerDefinition)_edSvc.GetEditedResource();
             var vl = (IVectorLayerDefinition)res.SubLayer;
             if (vl.SymbolDefinitionVersion == null)
-                throw new InvalidOperationException("This Layer Definition version does not support composite symbolization");
+                throw new InvalidOperationException(Properties.Resources.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
             var csym = ObjectFactory.CreateCompoundSymbol(_edSvc.GetEditedResource().CurrentConnection,
                                                           vl.SymbolDefinitionVersion,
                                                           "InlineCompoundSymbol",
-                                                          "Inline Compound Symbol");
+                                                          Properties.Resources.TextInlineCompoundSymbol); //NOXLATE
 
             var instance = _comp.CreateInlineCompoundSymbol(csym);
             AddInstance(instance, true);

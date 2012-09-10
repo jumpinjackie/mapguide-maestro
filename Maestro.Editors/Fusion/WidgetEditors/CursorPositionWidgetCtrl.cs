@@ -44,9 +44,9 @@ namespace Maestro.Editors.Fusion.WidgetEditors
             _widget = widget;
             baseEditor.Setup(_widget, context, edsvc);
 
-            txtTemplate.Text = _widget.GetValue("Template");
-            numPrecision.Value = Convert.ToDecimal(_widget.GetValue("Precision"));
-            txtUnits.Text = _widget.GetValue("Units");
+            txtTemplate.Text = _widget.GetValue("Template"); //NOXLATE
+            numPrecision.Value = Convert.ToDecimal(_widget.GetValue("Precision")); //NOXLATE
+            txtUnits.Text = _widget.GetValue("Units"); //NOXLATE
         }
 
         public Control Content
@@ -56,17 +56,17 @@ namespace Maestro.Editors.Fusion.WidgetEditors
 
         private void txtTemplate_TextChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("Template", txtTemplate.Text);
+            _widget.SetValue("Template", txtTemplate.Text); //NOXLATE
         }
 
         private void numPrecision_ValueChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("Precision", numPrecision.Value.ToString(CultureInfo.InvariantCulture));
+            _widget.SetValue("Precision", numPrecision.Value.ToString(CultureInfo.InvariantCulture)); //NOXLATE
         }
 
         private void txtUnits_TextChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("Units", txtUnits.Text);
+            _widget.SetValue("Units", txtUnits.Text); //NOXLATE
         }
     }
 }

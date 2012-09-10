@@ -39,7 +39,7 @@ namespace Maestro.Editors.Fusion
             _appDef = appDef;
             _context = context;
 
-            cmbWidgets.DisplayMember = "Type";
+            cmbWidgets.DisplayMember = "Type"; //NOXLATE
             cmbWidgets.DataSource = _context.GetAllWidgets();
         }
 

@@ -28,11 +28,11 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
             set
             {
                 _override = value;
-                OnPropertyChanged("Override");
+                OnPropertyChanged("Override"); //NOXLATE
             }
         }
 
-        [DisplayName("Spatial Context")]
+        [DisplayName("Spatial Context")] //NOXLATE
         public string SpatialContext
         {
             get { return _spatialContext; }
@@ -45,64 +45,64 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
                     if (prop != null)
                         prop.SpatialContextAssociation = value;
                 }
-                OnPropertyChanged("SpatialContext");
+                OnPropertyChanged("SpatialContext"); //NOXLATE
             }
         }
 
-        [DisplayName("Key Column")]
+        [DisplayName("Key Column")] //NOXLATE
         public string Key
         {
             get { return _key; }
             set
             {
                 _key = value;
-                OnPropertyChanged("Key");
+                OnPropertyChanged("Key"); //NOXLATE
             }
         }
 
         private bool _geom;
 
-        [DisplayName("Has Geometry")]
+        [DisplayName("Has Geometry")] //NOXLATE
         public bool Geometry
         {
             get { return _geom; }
             set
             {
                 _geom = value;
-                OnPropertyChanged("Geometry");
+                OnPropertyChanged("Geometry"); //NOXLATE
             }
         }
 
-        [DisplayName("X Column")]
+        [DisplayName("X Column")] //NOXLATE
         public string X
         {
             get { return _x; }
             set
             {
                 _x = value;
-                OnPropertyChanged("X");
+                OnPropertyChanged("X"); //NOXLATE
             }
         }
 
-        [DisplayName("Y Column")]
+        [DisplayName("Y Column")] //NOXLATE
         public string Y
         {
             get { return _y; }
             set
             {
                 _y = value;
-                OnPropertyChanged("Y");
+                OnPropertyChanged("Y"); //NOXLATE
             }
         }
 
-        [DisplayName("Z Column")]
+        [DisplayName("Z Column")] //NOXLATE
         public string Z
         {
             get { return _z; }
             set
             {
                 _z = value;
-                OnPropertyChanged("Z");
+                OnPropertyChanged("Z"); //NOXLATE
             }
         }
 

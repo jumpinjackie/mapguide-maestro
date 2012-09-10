@@ -42,7 +42,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
         {
             _widget = widget;
             baseEditor.Setup(_widget, context, edsvc);
-            txtTarget.Text = _widget.GetValue("Target");
+            txtTarget.Text = _widget.GetValue("Target"); //NOXLATE
         }
 
         public Control Content
@@ -52,7 +52,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
 
         private void txtTarget_TextChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("Target", txtTarget.Text);
+            _widget.SetValue("Target", txtTarget.Text); //NOXLATE
         }
     }
 }

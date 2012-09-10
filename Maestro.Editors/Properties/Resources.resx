@@ -5713,4 +5713,79 @@ Do you want to continue?</value>
   <data name="ErrNotAFolder" xml:space="preserve">
     <value>Not a folder</value>
   </data>
+  <data name="ErrorInvalidSymbolLibraryResourceId" xml:space="preserve">
+    <value>Not a valid symbol library resource identifier: {0}</value>
+  </data>
+  <data name="GeomFilterTemplate" xml:space="preserve">
+    <value>&lt;geometry property&gt; {0} GeomFromText('&lt;FGF geometry text&gt;')</value>
+  </data>
+  <data name="CmsBingHybrid" xml:space="preserve">
+    <value>Bing Maps Hybrid</value>
+  </data>
+  <data name="CmsBingSatellite" xml:space="preserve">
+    <value>Bing Maps Satellite</value>
+  </data>
+  <data name="CmsBingStreet" xml:space="preserve">
+    <value>Bing Maps Street</value>
+  </data>
+  <data name="CmsGoogleHybrid" xml:space="preserve">
+    <value>Google Hybrid</value>
+  </data>
+  <data name="CmsGooglePhysical" xml:space="preserve">
+    <value>Google Physical</value>
+  </data>
+  <data name="CmsGoogleSatellite" xml:space="preserve">
+    <value>Google Satellite</value>
+  </data>
+  <data name="CmsGoogleStreets" xml:space="preserve">
+    <value>Google Streets</value>
+  </data>
+  <data name="CmsOsm" xml:space="preserve">
+    <value>Open Street Map</value>
+  </data>
+  <data name="CmsOsmCycle" xml:space="preserve">
+    <value>Open Street Map (CycleMap)</value>
+  </data>
+  <data name="CmsOsmTransport" xml:space="preserve">
+    <value>Open Street Map (TransportMap)</value>
+  </data>
+  <data name="CmsYahooHybrid" xml:space="preserve">
+    <value>Yahoo! Maps Hybrid</value>
+  </data>
+  <data name="CmsYahooSatellite" xml:space="preserve">
+    <value>Yahoo! Maps Satellite</value>
+  </data>
+  <data name="CmsYahooStreet" xml:space="preserve">
+    <value>Yahoo! Maps Street</value>
+  </data>
+  <data name="PromptDirection" xml:space="preserve">
+    <value>Specify Direction to traverse extent history</value>
+  </data>
+  <data name="PromptSelectBufferUnits" xml:space="preserve">
+    <value>Select Buffer Units</value>
+  </data>
+  <data name="PromptViewType" xml:space="preserve">
+    <value>Select zoom extents option</value>
+  </data>
+  <data name="TitleBufferUnits" xml:space="preserve">
+    <value>Buffer Units</value>
+  </data>
+  <data name="TitleDirection" xml:space="preserve">
+    <value>Direction</value>
+  </data>
+  <data name="TitleViewType" xml:space="preserve">
+    <value>View Type</value>
+  </data>
+  <data name="ErrorLayerDefnitionDoesNotSupportCompositeSymbolization" xml:space="preserve">
+    <value>This Layer Definition version does not support composite symbolization</value>
+  </data>
+  <data name="TextInlineCompoundSymbol" xml:space="preserve">
+    <value>Inline Compound Symbol</value>
+  </data>
+  <data name="TextInlineSimpleSymbol" xml:space="preserve">
+    <value>Inline Simple Symbol</value>
+  </data>
+  <data name="TextRenderPreviewNotAvailable" xml:space="preserve">
+    <value>Preview\nnot available</value>
+  </data>
 </root>

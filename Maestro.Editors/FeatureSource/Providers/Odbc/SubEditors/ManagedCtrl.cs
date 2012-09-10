@@ -71,16 +71,16 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             set
             {
                 var inner = new System.Data.Odbc.OdbcConnectionStringBuilder();
-                if (value["ConnectionString"] == null)
-                    throw new InvalidOperationException(string.Format(Properties.Resources.FdoConnectionStringComponentNotFound, "ConnectionString"));
+                if (value["ConnectionString"] == null) //NOXLATE
+                    throw new InvalidOperationException(string.Format(Properties.Resources.FdoConnectionStringComponentNotFound, "ConnectionString")); //NOXLATE
 
-                inner.ConnectionString = value["ConnectionString"];
-                if (inner["Dbq"] == null)
-                    throw new InvalidOperationException(string.Format(Properties.Resources.OdbcConnectionStringComponentNotFound, "Dbq"));
+                inner.ConnectionString = value["ConnectionString"]; //NOXLATE
+                if (inner["Dbq"] == null) //NOXLATE
+                    throw new InvalidOperationException(string.Format(Properties.Resources.OdbcConnectionStringComponentNotFound, "Dbq")); //NOXLATE
 
-                string path = inner["Dbq"].ToString();
-                if (path.Contains("%MG_DATA_FILE_PATH%"))
-                    resDataCtrl.MarkedFile = path.Substring("%MG_DATA_FILE_PATH%".Length);
+                string path = inner["Dbq"].ToString(); //NOXLATE
+                if (path.Contains(StringConstants.MgDataFilePath))
+                    resDataCtrl.MarkedFile = path.Substring(StringConstants.MgDataFilePath.Length);
             }
         }
 
@@ -103,9 +103,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             //throw new InvalidOperationException(string.Format(Properties.Resources.OdbcCannotInferDriver, resDataCtrl.MarkedFile));
 
             var inner = new System.Data.Odbc.OdbcConnectionStringBuilder();
-            inner["Driver"] = drv;
-            inner["Dbq"] = "%MG_DATA_FILE_PATH%" + resDataCtrl.MarkedFile;
-            values["ConnectionString"] = inner.ToString();
+            inner["Driver"] = drv; //NOXLATE
+            inner["Dbq"] = StringConstants.MgDataFilePath + resDataCtrl.MarkedFile;
+            values["ConnectionString"] = inner.ToString(); //NOXLATE
 
             return values;
         }
@@ -116,16 +116,16 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         {
             string ext = System.IO.Path.GetExtension(fileName).ToUpper();
             switch (ext)
-            { 
-                case ".ACCDB":
+            {
+                case ".ACCDB": //NOXLATE
                     return Properties.Resources.OdbcDriverAccess64;
-                case ".MDB":
+                case ".MDB": //NOXLATE
                     return use64Bit ? Properties.Resources.OdbcDriverAccess64 : Properties.Resources.OdbcDriverAccess;
-                case ".XLS":
+                case ".XLS": //NOXLATE
                     return use64Bit ? Properties.Resources.OdbcDriverExcel64 : Properties.Resources.OdbcDriverExcel;
-                case ".XLSX":
-                case ".XLSM":
-                case ".XLSB":
+                case ".XLSX": //NOXLATE
+                case ".XLSM": //NOXLATE
+                case ".XLSB": //NOXLATE
                     return Properties.Resources.OdbcDriverExcel64;
             }
             return null;

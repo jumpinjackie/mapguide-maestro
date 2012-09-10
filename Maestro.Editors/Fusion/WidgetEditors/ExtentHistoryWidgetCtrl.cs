@@ -43,7 +43,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
         {
             _widget = widget;
             baseEditor.Setup(_widget, context, edsvc);
-            txtDirection.Text = _widget.GetValue("Direction");
+            txtDirection.Text = _widget.GetValue("Direction"); //NOXLATE
         }
 
         public Control Content
@@ -51,11 +51,11 @@ namespace Maestro.Editors.Fusion.WidgetEditors
             get { return this; }
         }
 
-        private string[] _values = { "Next", "Previous" };
+        private string[] _values = { "Next", "Previous" }; //NOXLATE
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            var item = GenericItemSelectionDialog.SelectItem("Direction", "Specify Direction to traverse extent history", _values);
+            var item = GenericItemSelectionDialog.SelectItem(Properties.Resources.TitleDirection, Properties.Resources.PromptDirection, _values);
             if (item != null)
             {
                 txtDirection.Text = item;
@@ -64,7 +64,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
 
         private void txtDirection_TextChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("Direction", txtDirection.Text);
+            _widget.SetValue("Direction", txtDirection.Text); //NOXLATE
         }
     }
 }

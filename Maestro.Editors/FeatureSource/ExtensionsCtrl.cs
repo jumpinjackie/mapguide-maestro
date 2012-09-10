@@ -71,11 +71,11 @@ namespace Maestro.Editors.FeatureSource
 
                     ext.PropertyChanged += (s, evt) =>
                     {
-                        if (evt.PropertyName == "Name")
+                        if (evt.PropertyName == "Name") //NOXLATE
                         {
                             node.Text = ext.Name;
                         }
-                        else if (evt.PropertyName == "FeatureClass")
+                        else if (evt.PropertyName == "FeatureClass") //NOXLATE
                         {
                             node.ToolTipText = string.Format(Properties.Resources.ExtendedClassTooltip, ext.FeatureClass);
                         }
@@ -96,11 +96,11 @@ namespace Maestro.Editors.FeatureSource
 
                             calc.PropertyChanged += (s, evt) =>
                             {
-                                if (evt.PropertyName == "Name")
+                                if (evt.PropertyName == "Name") //NOXLATE
                                 {
                                     cNode.Text = calc.Name;
                                 }
-                                else if (evt.PropertyName == "Expression")
+                                else if (evt.PropertyName == "Expression") //NOXLATE
                                 {
                                     cNode.ToolTipText = calc.Expression;
                                 }
@@ -121,7 +121,7 @@ namespace Maestro.Editors.FeatureSource
 
                             join.PropertyChanged += (s, evt) =>
                             {
-                                if (evt.PropertyName == "Name")
+                                if (evt.PropertyName == "Name") //NOXLATE
                                 {
                                     jNode.Text = join.Name;
                                 }
@@ -160,11 +160,11 @@ namespace Maestro.Editors.FeatureSource
             node.ImageIndex = node.SelectedImageIndex = IDX_EXTENSION;
             ext.PropertyChanged += (s, evt) =>
             {
-                if (evt.PropertyName == "Name")
+                if (evt.PropertyName == "Name") //NOXLATE
                 {
                     node.Text = ext.Name;
                 }
-                else if (evt.PropertyName == "FeatureClass")
+                else if (evt.PropertyName == "FeatureClass") //NOXLATE
                 {
                     node.ToolTipText = string.Format(Properties.Resources.ExtendedClassTooltip, ext.FeatureClass);
                 }
@@ -197,11 +197,11 @@ namespace Maestro.Editors.FeatureSource
                     cNode.Tag = calc;
                     calc.PropertyChanged += (s, evt) =>
                     {
-                        if (evt.PropertyName == "Name")
+                        if (evt.PropertyName == "Name") //NOXLATE
                         {
                             cNode.Text = calc.Name;
                         }
-                        else if (evt.PropertyName == "Expression")
+                        else if (evt.PropertyName == "Expression") //NOXLATE
                         {
                             cNode.ToolTipText = calc.Expression;
                         }
@@ -238,7 +238,7 @@ namespace Maestro.Editors.FeatureSource
                     jNode.ImageIndex = jNode.SelectedImageIndex = IDX_JOIN;
                     join.PropertyChanged += (s, evt) =>
                     {
-                        if (evt.PropertyName == "Name")
+                        if (evt.PropertyName == "Name") //NOXLATE
                         {
                             jNode.Text = join.Name;
                         }

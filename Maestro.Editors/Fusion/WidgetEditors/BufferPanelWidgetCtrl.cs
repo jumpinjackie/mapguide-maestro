@@ -44,16 +44,16 @@ namespace Maestro.Editors.Fusion.WidgetEditors
             _widget = widget;
             baseEditor.Setup(_widget, context, edsvc);
 
-            TextBoxBinder.BindText(txtTarget, this, "Target");
+            TextBoxBinder.BindText(txtTarget, this, "Target"); //NOXLATE
         }
 
         public string Target
         {
-            get { return _widget.GetValue("Target"); }
+            get { return _widget.GetValue("Target"); } //NOXLATE
             set 
-            { 
-                _widget.SetValue("Target", value);
-                OnPropertyChanged("Target");
+            {
+                _widget.SetValue("Target", value); //NOXLATE
+                OnPropertyChanged("Target"); //NOXLATE
             }
         }
 

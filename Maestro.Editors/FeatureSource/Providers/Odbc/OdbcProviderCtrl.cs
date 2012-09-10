@@ -89,17 +89,17 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
 
             cmbMethod.DataSource = (OdbcConnectionMethod[])Enum.GetValues(typeof(OdbcConnectionMethod));
             var values = _fs.GetConnectionProperties();
-            string odbcStr = values["ConnectionString"];
+            string odbcStr = values["ConnectionString"]; //NOXLATE
             if (!string.IsNullOrEmpty(odbcStr))
             {
                 //See if it is file-basd
-                if (odbcStr.Contains("Dbq="))
+                if (odbcStr.Contains("Dbq=")) //NOXLATE
                 {
-                    if (odbcStr.Contains("%MG_DATA_FILE_PATH%"))
+                    if (odbcStr.Contains("%MG_DATA_FILE_PATH%")) //NOXLATE
                     {
                         cmbMethod.SelectedItem = OdbcConnectionMethod.ManagedFile;
                     }
-                    else if (odbcStr.Contains("%MG_DATA_PATH_ALIAS"))
+                    else if (odbcStr.Contains("%MG_DATA_PATH_ALIAS")) //NOXLATE
                     {
                         cmbMethod.SelectedItem = OdbcConnectionMethod.Unmanaged;
                     }
@@ -113,7 +113,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                     cmbMethod.SelectedItem = OdbcConnectionMethod.KnownDriver;
                 }
             }
-            else if (values["DataSourceName"] != null)
+            else if (values["DataSourceName"] != null) //NOXLATE
             {
                 cmbMethod.SelectedItem = OdbcConnectionMethod.DSN;
             }
@@ -236,7 +236,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
             _service.SyncSessionCopy();
 
             string result = _fs.TestConnection();
-            if (!result.ToLower().Equals("true"))
+            if (!result.ToLower().Equals("true")) //NOXLATE
             {
                 MessageBox.Show(string.Format(Properties.Resources.InvalidConnection, result), Properties.Resources.TitleError);
                 return false;
@@ -301,12 +301,12 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
 
             var xmlDoc = new XmlDocument();
             XmlNamespaceManager mgr = new XmlNamespaceManager(xmlDoc.NameTable);
-            mgr.AddNamespace("xs", XmlNamespaces.XS);
-            mgr.AddNamespace("xsi", XmlNamespaces.XSI);
-            mgr.AddNamespace("fdo", XmlNamespaces.FDO);
-            mgr.AddNamespace("gml", XmlNamespaces.GML);
-            mgr.AddNamespace("xlink", XmlNamespaces.XLINK);
-            mgr.AddNamespace("fds", XmlNamespaces.FDS);
+            mgr.AddNamespace("xs", XmlNamespaces.XS); //NOXLATE
+            mgr.AddNamespace("xsi", XmlNamespaces.XSI); //NOXLATE
+            mgr.AddNamespace("fdo", XmlNamespaces.FDO); //NOXLATE
+            mgr.AddNamespace("gml", XmlNamespaces.GML); //NOXLATE
+            mgr.AddNamespace("xlink", XmlNamespaces.XLINK); //NOXLATE
+            mgr.AddNamespace("fds", XmlNamespaces.FDS); //NOXLATE
 
             //This may have changed, so reapply
             var props = Use64BitDriver ? this.ChildEditor.Get64BitConnectionProperties() : this.ChildEditor.ConnectionProperties;
@@ -325,7 +325,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
 
                 BusyWaitDelegate worker = () =>
                 {
-                    classNames = names.Select(x => x.Contains(":") ? x.Split(':')[1] : x).ToArray();
+                    classNames = names.Select(x => x.Contains(":") ? x.Split(':')[1] : x).ToArray(); //NOXLATE
                     var schema = _fs.CurrentConnection.FeatureService.DescribeFeatureSourcePartial(_fs.ResourceID, schemaName, classNames);
                     
                     _doc.AddSchema(schema); //Only one schema is supported by ODBC so this is ok

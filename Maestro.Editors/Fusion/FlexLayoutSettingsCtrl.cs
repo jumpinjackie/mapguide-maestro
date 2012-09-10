@@ -56,10 +56,10 @@ namespace Maestro.Editors.Fusion
             try
             {
                 _fsvc = (IFusionService)_edsvc.GetService((int)ServiceType.Fusion);
-                _baseUrl = service.GetCustomProperty("BaseUrl").ToString();
+                _baseUrl = service.GetCustomProperty("BaseUrl").ToString(); //NOXLATE
 
-                if (!_baseUrl.EndsWith("/"))
-                    _baseUrl += "/";
+                if (!_baseUrl.EndsWith("/")) //NOXLATE
+                    _baseUrl += "/"; //NOXLATE
             }
             catch 
             {
@@ -69,8 +69,8 @@ namespace Maestro.Editors.Fusion
             _edsvc.Saved += OnSaved;
             _flexLayout = (IApplicationDefinition)service.GetEditedResource();
 
-            TextBoxBinder.BindText(txtTemplateUrl, _flexLayout, "TemplateUrl");
-            TextBoxBinder.BindText(txtTitle, _flexLayout, "Title");
+            TextBoxBinder.BindText(txtTemplateUrl, _flexLayout, "TemplateUrl"); //NOXLATE
+            TextBoxBinder.BindText(txtTitle, _flexLayout, "Title"); //NOXLATE
             var templates = _fsvc.GetApplicationTemplates();
             InitializeTemplateList(templates);
 
@@ -96,13 +96,13 @@ namespace Maestro.Editors.Fusion
             try
             {
                 var conn = _flexLayout.CurrentConnection;
-                string baseUrl = conn.GetCustomProperty("BaseUrl").ToString();
-                if (!baseUrl.EndsWith("/"))
-                    baseUrl += "/";
+                string baseUrl = conn.GetCustomProperty("BaseUrl").ToString(); //NOXLATE
+                if (!baseUrl.EndsWith("/")) //NOXLATE
+                    baseUrl += "/"; //NOXLATE
 
                 if (!_edsvc.IsNew)
                 {
-                    txtPublicUrl.Text = baseUrl + txtTemplateUrl.Text + "?ApplicationDefinition=" + _edsvc.ResourceID;
+                    txtPublicUrl.Text = baseUrl + txtTemplateUrl.Text + "?ApplicationDefinition=" + _edsvc.ResourceID; //NOXLATE
                     btnShowInBrowser.Enabled = true;
                 }
                 else

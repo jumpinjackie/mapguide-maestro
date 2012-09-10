@@ -53,7 +53,7 @@ namespace Maestro.Editors.DrawingSource
             resDataCtrl.Init(service);
             resDataCtrl.DataListChanged += new EventHandler(OnResourceDataListChanged);
             resDataCtrl.ResourceDataMarked += new ResourceDataSelectionEventHandler(OnResourceDataMarked);
-            TextBoxBinder.BindText(txtSourceCs, _dws, "CoordinateSpace");
+            TextBoxBinder.BindText(txtSourceCs, _dws, "CoordinateSpace"); //NOXLATE
             MarkSelected();
         }
 

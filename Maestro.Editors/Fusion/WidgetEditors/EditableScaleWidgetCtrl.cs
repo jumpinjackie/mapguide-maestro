@@ -44,7 +44,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
             _widget = widget;
             baseEditor.Setup(_widget, context, edsvc);
 
-            numPrecision.Value = Convert.ToDecimal(_widget.GetValue("Precision"));
+            numPrecision.Value = Convert.ToDecimal(_widget.GetValue("Precision")); //NOXLATE
         }
 
         public Control Content
@@ -54,7 +54,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
 
         private void numPrecision_ValueChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("Precision", numPrecision.Value.ToString(CultureInfo.InvariantCulture));
+            _widget.SetValue("Precision", numPrecision.Value.ToString(CultureInfo.InvariantCulture)); //NOXLATE
         }
     }
 }

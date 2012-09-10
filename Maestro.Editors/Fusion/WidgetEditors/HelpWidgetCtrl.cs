@@ -42,8 +42,8 @@ namespace Maestro.Editors.Fusion.WidgetEditors
         {
             _widget = widget;
             baseEditor.Setup(_widget, context, edsvc);
-            txtTarget.Text = _widget.GetValue("Target");
-            txtUrl.Text = _widget.GetValue("Url");
+            txtTarget.Text = _widget.GetValue("Target"); //NOXLATE
+            txtUrl.Text = _widget.GetValue("Url"); //NOXLATE
         }
 
         public Control Content
@@ -53,12 +53,12 @@ namespace Maestro.Editors.Fusion.WidgetEditors
 
         private void txtTarget_TextChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("Target", txtTarget.Text);
+            _widget.SetValue("Target", txtTarget.Text); //NOXLATE
         }
 
         private void txtUrl_TextChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("Url", txtUrl.Text);
+            _widget.SetValue("Url", txtUrl.Text); //NOXLATE
         }
     }
 }

@@ -45,7 +45,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
             _widget = widget;
             _edsvc = edsvc;
             baseEditor.Setup(_widget, context, edsvc);
-            txtFolder.Text = _widget.GetValue("Folder");
+            txtFolder.Text = _widget.GetValue("Folder"); //NOXLATE
         }
 
         public Control Content
@@ -67,7 +67,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
 
         private void txtFolder_TextChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("Folder", txtFolder.Text);
+            _widget.SetValue("Folder", txtFolder.Text); //NOXLATE
         }
     }
 }

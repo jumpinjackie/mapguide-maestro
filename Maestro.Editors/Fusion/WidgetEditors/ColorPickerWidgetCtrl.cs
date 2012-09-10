@@ -43,7 +43,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
             _widget = widget;
             baseEditor.Setup(_widget, context, edsvc);
 
-            txtColorInputId.Text = _widget.GetValue("ColorInputId");
+            txtColorInputId.Text = _widget.GetValue("ColorInputId"); //NOXLATE
         }
 
         public Control Content
@@ -53,7 +53,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
 
         private void txtColorInputId_TextChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("ColorInputId", txtColorInputId.Text);
+            _widget.SetValue("ColorInputId", txtColorInputId.Text); //NOXLATE
         }
     }
 }

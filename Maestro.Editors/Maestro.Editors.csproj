@@ -798,6 +798,9 @@
     <Compile Include="LayerDefinition\Vector\StyleEditors\AreaFeatureStyleEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="LayerDefinition\Vector\StyleEditors\AreaFeatureStyleEditor.Designer.cs">
+      <DependentUpon>AreaFeatureStyleEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="LayerDefinition\Vector\StyleEditors\ColorExpressionField.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -813,8 +816,14 @@
     <Compile Include="LayerDefinition\Vector\StyleEditors\FillStyleEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="LayerDefinition\Vector\StyleEditors\FillStyleEditor.Designer.cs">
+      <DependentUpon>FillStyleEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="LayerDefinition\Vector\StyleEditors\FontStyleEditor.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\StyleEditors\FontStyleEditor.Designer.cs">
+      <DependentUpon>FontStyleEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="LayerDefinition\Vector\StyleEditors\LineFeatureStyleEditor.cs">
       <SubType>UserControl</SubType>

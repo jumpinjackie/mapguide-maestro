@@ -83,8 +83,8 @@ namespace Maestro.Editors.LayerDefinition.Raster
                 else
                     _hillShade = _colorStyle.HillShade;
 
-                txtBrightnessFactor.Text = _colorStyle.BrightnessFactor.HasValue ? _colorStyle.BrightnessFactor.Value.ToString() : "0";
-                txtContrastFactor.Text = _colorStyle.ContrastFactor.HasValue ? _colorStyle.ContrastFactor.Value.ToString() : "0";
+                txtBrightnessFactor.Text = _colorStyle.BrightnessFactor.HasValue ? _colorStyle.BrightnessFactor.Value.ToString() : "0"; //NOXLATE
+                txtContrastFactor.Text = _colorStyle.ContrastFactor.HasValue ? _colorStyle.ContrastFactor.Value.ToString() : "0"; //NOXLATE
 
                 if (!string.IsNullOrEmpty(_colorStyle.TransparencyColor))
                 {

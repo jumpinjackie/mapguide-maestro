@@ -41,8 +41,8 @@ namespace Maestro.Editors.Common
 			if (!this.DesignMode)
 			{
 				base.SetCustomRender(new RenderCustomItem(ImageComboRender));
-				base.ValueMember = "Name";
-				base.DisplayMember = "Name";
+                base.ValueMember = "Name"; //NOXLATE
+                base.DisplayMember = "Name"; //NOXLATE
 			}
 		}
 

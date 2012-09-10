@@ -95,7 +95,7 @@ namespace Maestro.Editors.FeatureSource.Providers
             }
         }
 
-        protected virtual string FileFdoProperty { get { return "File"; } }
+        protected virtual string FileFdoProperty { get { return "File"; } } //NOXLATE
 
         protected virtual bool CanSelectFolders()
         {

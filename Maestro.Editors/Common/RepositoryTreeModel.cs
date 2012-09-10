@@ -69,7 +69,7 @@ namespace Maestro.Editors.Common
 
         public bool IsRoot
         {
-            get { return this.ResourceId == "Library://"; }
+            get { return this.ResourceId == StringConstants.RootIdentifier; }
         }
 
         public IRepositoryItem Instance { get { return _item; } }
@@ -219,14 +219,14 @@ namespace Maestro.Editors.Common
         {
             if (item == null)
             {
-                var list = _resSvc.GetRepositoryResources("Library://", 0);
+                var list = _resSvc.GetRepositoryResources(StringConstants.RootIdentifier, 0);
                 return GetSorted(list);
             }
             else
             {
                 if (item.HasChildren)
                 {
-                    var list = _resSvc.GetRepositoryResources(item.ResourceId, _bFoldersOnly ? ResourceTypes.Folder.ToString() : "", 1, true);
+                    var list = _resSvc.GetRepositoryResources(item.ResourceId, _bFoldersOnly ? ResourceTypes.Folder.ToString() : "", 1, true); //NOXLATE
                     return GetSorted(list);
                 }
                 else
@@ -308,7 +308,7 @@ namespace Maestro.Editors.Common
 
         internal void Refresh(string folderId)
         {
-            if (string.IsNullOrEmpty(folderId) || folderId == "Library://")
+            if (string.IsNullOrEmpty(folderId) || folderId == StringConstants.RootIdentifier)
             {
                 InitRoot();
             }

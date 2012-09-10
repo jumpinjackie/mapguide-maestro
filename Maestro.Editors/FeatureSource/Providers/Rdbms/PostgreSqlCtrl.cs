@@ -39,7 +39,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
         {
             get
             {
-                return "OSGeo.PostgreSQL";
+                return "OSGeo.PostgreSQL"; //NOXLATE
             }
         }
 

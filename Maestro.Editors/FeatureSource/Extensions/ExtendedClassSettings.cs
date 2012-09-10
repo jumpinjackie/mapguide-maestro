@@ -49,9 +49,9 @@ namespace Maestro.Editors.FeatureSource.Extensions
             //HACK
             if (string.IsNullOrEmpty(ext.FeatureClass))
                 ext.FeatureClass = names[0];
-            
-            TextBoxBinder.BindText(txtExtendedName, ext, "Name");
-            ComboBoxBinder.BindSelectedIndexChanged(cmbBaseClass, "SelectedItem", ext, "FeatureClass");
+
+            TextBoxBinder.BindText(txtExtendedName, ext, "Name"); //NOXLATE
+            ComboBoxBinder.BindSelectedIndexChanged(cmbBaseClass, "SelectedItem", ext, "FeatureClass"); //NOXLATE
         }
 
         //private void txtExtendedName_TextChanged(object sender, EventArgs e)

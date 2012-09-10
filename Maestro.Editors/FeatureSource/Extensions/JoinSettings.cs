@@ -57,9 +57,9 @@ namespace Maestro.Editors.FeatureSource.Extensions
         public JoinSettings(string primaryFeatureSource, string primaryClass, IAttributeRelation rel)
             : this()
         {
-            Check.NotNull(rel, "rel");
-            Check.NotNull(primaryClass, "primaryClass");
-            Check.NotNull(primaryFeatureSource, "primaryFeatureSource");
+            Check.NotNull(rel, "rel"); //NOXLATE
+            Check.NotNull(primaryClass, "primaryClass"); //NOXLATE
+            Check.NotNull(primaryFeatureSource, "primaryFeatureSource"); //NOXLATE
             _primaryFeatureSource = primaryFeatureSource;
             _primaryClass = primaryClass;
 
@@ -110,7 +110,7 @@ namespace Maestro.Editors.FeatureSource.Extensions
                 return;
             }
 
-            var selClass = GenericItemSelectionDialog.SelectItem(Properties.Resources.SelectFeatureClass, Properties.Resources.SelectFeatureClass, _secondaryClasses, "QualifiedName", "QualifiedName");
+            var selClass = GenericItemSelectionDialog.SelectItem(Properties.Resources.SelectFeatureClass, Properties.Resources.SelectFeatureClass, _secondaryClasses, "QualifiedName", "QualifiedName"); //NOXLATE
             if (selClass != null)
             {
                 _secondaryClass = selClass;
@@ -131,9 +131,9 @@ namespace Maestro.Editors.FeatureSource.Extensions
             _edSvc = service;
             _edSvc.RegisterCustomNotifier(this);
 
-            TextBoxBinder.BindText(txtJoinName, _rel, "Name");
-            TextBoxBinder.BindText(txtFeatureSource, _rel, "ResourceId");
-            TextBoxBinder.BindText(txtSecondaryClass, _rel, "AttributeClass");
+            TextBoxBinder.BindText(txtJoinName, _rel, "Name"); //NOXLATE
+            TextBoxBinder.BindText(txtFeatureSource, _rel, "ResourceId"); //NOXLATE
+            TextBoxBinder.BindText(txtSecondaryClass, _rel, "AttributeClass"); //NOXLATE
 
             //Init selected classes
             if (!string.IsNullOrEmpty(_rel.ResourceId))

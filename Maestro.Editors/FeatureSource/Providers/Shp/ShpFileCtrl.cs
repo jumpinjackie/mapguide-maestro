@@ -28,6 +28,7 @@ using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System.Diagnostics;
 using System.IO;
 using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.FeatureSource.Providers.Shp
 {
@@ -50,18 +51,18 @@ namespace Maestro.Editors.FeatureSource.Providers.Shp
             Debug.Assert(_fs != null);
             if (_fs.ConnectionPropertyNames.Length == 0)
             {
-                _fs.SetConnectionProperty("DefaultFileLocation", "%MG_DATA_FILE_PATH%");
+                _fs.SetConnectionProperty("DefaultFileLocation", StringConstants.MgDataFilePath); //NOXLATE
             }
             MarkSelected();
             resDataCtrl.ResourceDataUploaded += new Maestro.Editors.Common.ResourceDataCtrl.ResourceUploadEventHandler(OnResourceDataUploaded);
         }
 
-        static readonly string[] SHP_RELATED_EXTENSIONS = { ".shx", ".dbf", ".idx", ".prj", ".cpg" };
+        static readonly string[] SHP_RELATED_EXTENSIONS = { ".shx", ".dbf", ".idx", ".prj", ".cpg" }; //NOXLATE
 
         void OnResourceDataUploaded(string dataName, string origPath)
         {
             //If a SHP file was loaded, we want all of its buddies too
-            if (origPath.ToLower().EndsWith(".shp"))
+            if (origPath.ToLower().EndsWith(".shp")) //NOXLATE
             {
                 var pathPrefix = origPath.Substring(0, origPath.Length - 4);
                 foreach (string ext in SHP_RELATED_EXTENSIONS)
@@ -82,14 +83,14 @@ namespace Maestro.Editors.FeatureSource.Providers.Shp
 
         protected override string[] GetUnmanagedFileExtensions()
         {
-            return new string[] { "shp" };
+            return new string[] { "shp" }; //NOXLATE
         }
 
         protected override string FileFdoProperty
         {
             get
             {
-                return "DefaultFileLocation";
+                return "DefaultFileLocation"; //NOXLATE
             }
         }
 
@@ -120,7 +121,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Shp
 
         protected override void OnResourceMarked(string dataName)
         {
-            var newValue = "%MG_DATA_FILE_PATH%" + dataName;
+            var newValue = StringConstants.MgDataFilePath + dataName;
             var currValue = _fs.GetConnectionProperty(this.FileFdoProperty);
             if (!newValue.Equals(currValue))
                 _fs.SetConnectionProperty(this.FileFdoProperty, newValue);

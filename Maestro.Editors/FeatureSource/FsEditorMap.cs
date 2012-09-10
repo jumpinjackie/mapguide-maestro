@@ -14,17 +14,17 @@ namespace Maestro.Editors.FeatureSource
         static FsEditorMap()
         {
             _editors = new Dictionary<string, Type>();
-            if (System.IO.File.Exists("FsEditorMap.xml"))
+            if (System.IO.File.Exists("FsEditorMap.xml")) //NOXLATE
             {
                 var doc = new XmlDocument();
-                doc.Load("FsEditorMap.xml");
-                var list = doc.SelectNodes("//FeatureSourceEditorMap/Editor");
+                doc.Load("FsEditorMap.xml"); //NOXLATE
+                var list = doc.SelectNodes("//FeatureSourceEditorMap/Editor"); //NOXLATE
                 foreach (XmlNode node in list)
                 {
                     try
                     {
-                        string provider = node.Attributes["provider"].Value.ToUpper();
-                        string typeName = node.Attributes["type"].Value;
+                        string provider = node.Attributes["provider"].Value.ToUpper(); //NOXLATE
+                        string typeName = node.Attributes["type"].Value; //NOXLATE
 
                         _editors[provider] = Type.GetType(typeName);
                     }
@@ -35,11 +35,11 @@ namespace Maestro.Editors.FeatureSource
 
         static string Normalize(string provider)
         {
-            string[] tokens = provider.Split('.');
+            string[] tokens = provider.Split('.'); //NOXLATE
             if (tokens.Length == 2)
                 return provider;
             else
-                return tokens[0] + "." + tokens[1];
+                return tokens[0] + "." + tokens[1]; //NOXLATE
         }
 
         public static CollapsiblePanel GetPanel(string provider)

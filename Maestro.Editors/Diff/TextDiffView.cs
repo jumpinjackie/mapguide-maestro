@@ -41,6 +41,8 @@ namespace Maestro.Editors.Diff
             InitializeComponent();
         }
 
+        const string NumFormat = "00000";
+
         public TextDiffView(TextFileDiffList source, TextFileDiffList destination, List<DiffResultSpan> DiffLines, double seconds)
             : this()
         {
@@ -56,12 +58,12 @@ namespace Maestro.Editors.Diff
                     case DiffResultSpanStatus.DeleteSource:
                         for (i = 0; i < drs.Length; i++)
                         {
-                            lviS = new ListViewItem(cnt.ToString("00000"));
-                            lviD = new ListViewItem(cnt.ToString("00000"));
+                            lviS = new ListViewItem(cnt.ToString(NumFormat));
+                            lviD = new ListViewItem(cnt.ToString(NumFormat));
                             lviS.BackColor = Color.Red;
                             lviS.SubItems.Add(((TextLine)source.GetByIndex(drs.SourceIndex + i)).Line);
                             lviD.BackColor = Color.LightGray;
-                            lviD.SubItems.Add("");
+                            lviD.SubItems.Add(string.Empty);
 
                             lvSource.Items.Add(lviS);
                             lvDestination.Items.Add(lviD);
@@ -72,8 +74,8 @@ namespace Maestro.Editors.Diff
                     case DiffResultSpanStatus.NoChange:
                         for (i = 0; i < drs.Length; i++)
                         {
-                            lviS = new ListViewItem(cnt.ToString("00000"));
-                            lviD = new ListViewItem(cnt.ToString("00000"));
+                            lviS = new ListViewItem(cnt.ToString(NumFormat));
+                            lviD = new ListViewItem(cnt.ToString(NumFormat));
                             lviS.BackColor = Color.White;
                             lviS.SubItems.Add(((TextLine)source.GetByIndex(drs.SourceIndex + i)).Line);
                             lviD.BackColor = Color.White;
@@ -88,10 +90,10 @@ namespace Maestro.Editors.Diff
                     case DiffResultSpanStatus.AddDestination:
                         for (i = 0; i < drs.Length; i++)
                         {
-                            lviS = new ListViewItem(cnt.ToString("00000"));
-                            lviD = new ListViewItem(cnt.ToString("00000"));
+                            lviS = new ListViewItem(cnt.ToString(NumFormat));
+                            lviD = new ListViewItem(cnt.ToString(NumFormat));
                             lviS.BackColor = Color.LightGray;
-                            lviS.SubItems.Add("");
+                            lviS.SubItems.Add(string.Empty);
                             lviD.BackColor = Color.LightGreen;
                             lviD.SubItems.Add(((TextLine)destination.GetByIndex(drs.DestIndex + i)).Line);
 
@@ -104,8 +106,8 @@ namespace Maestro.Editors.Diff
                     case DiffResultSpanStatus.Replace:
                         for (i = 0; i < drs.Length; i++)
                         {
-                            lviS = new ListViewItem(cnt.ToString("00000"));
-                            lviD = new ListViewItem(cnt.ToString("00000"));
+                            lviS = new ListViewItem(cnt.ToString(NumFormat));
+                            lviD = new ListViewItem(cnt.ToString(NumFormat));
                             lviS.BackColor = Color.Red;
                             lviS.SubItems.Add(((TextLine)source.GetByIndex(drs.SourceIndex + i)).Line);
                             lviD.BackColor = Color.LightGreen;

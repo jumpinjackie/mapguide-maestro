@@ -47,7 +47,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         {
             service.RegisterCustomNotifier(this);
             _fs = (IFeatureSource)service.GetEditedResource();
-            _dsnNames = service.FeatureService.GetConnectionPropertyValues("OSGeo.ODBC", "DataSourceName", string.Empty);
+            _dsnNames = service.FeatureService.GetConnectionPropertyValues("OSGeo.ODBC", "DataSourceName", string.Empty); //NOXLATE
         }
 
         void OnConnectionChanged()
@@ -63,12 +63,12 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             {
                 var values = new NameValueCollection();
                 if (!string.IsNullOrEmpty(txtDSN.Text))
-                    values["DataSourceName"] = txtDSN.Text;
+                    values["DataSourceName"] = txtDSN.Text; //NOXLATE
                 return values;
             }
             set
             {
-                txtDSN.Text = value["DataSourceName"];
+                txtDSN.Text = value["DataSourceName"]; //NOXLATE
             }
         }
 

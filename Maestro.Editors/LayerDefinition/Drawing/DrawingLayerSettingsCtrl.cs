@@ -55,17 +55,17 @@ namespace Maestro.Editors.LayerDefinition.Drawing
             _dlayer = lyr.SubLayer as IDrawingLayerDefinition;
             Debug.Assert(_dlayer != null);
 
-            TextBoxBinder.BindText(txtDrawingSource, _dlayer, "ResourceId");
-            cmbSheet.DisplayMember = "Title";
-            cmbSheet.ValueMember = "Name";
+            TextBoxBinder.BindText(txtDrawingSource, _dlayer, "ResourceId"); //NOXLATE
+            cmbSheet.DisplayMember = "Title"; //NOXLATE
+            cmbSheet.ValueMember = "Name"; //NOXLATE
             cmbSheet.DataSource = _sheets;
             PopulateSheets();
             cmbSheet_SelectedIndexChanged(this, EventArgs.Empty);
-            ComboBoxBinder.BindSelectedIndexChanged(cmbSheet, "SelectedValue", _dlayer, "Sheet");
-            
+            ComboBoxBinder.BindSelectedIndexChanged(cmbSheet, "SelectedValue", _dlayer, "Sheet"); //NOXLATE
 
-            var minBinding = new Binding("Text", _dlayer, "MinScale");
-            var maxBinding = new Binding("Text", _dlayer, "MaxScale");
+
+            var minBinding = new Binding("Text", _dlayer, "MinScale"); //NOXLATE
+            var maxBinding = new Binding("Text", _dlayer, "MaxScale"); //NOXLATE
 
             minBinding.Format += (sender, ce) =>
             {
@@ -138,7 +138,7 @@ namespace Maestro.Editors.LayerDefinition.Drawing
             }
             else 
             {
-                string[] visible = _dlayer.LayerFilter.Split(',');
+                string[] visible = _dlayer.LayerFilter.Split(','); //NOXLATE
                 foreach (var lyr in layers)
                 {
                     if (Array.IndexOf<string>(visible, lyr) >= 0)
@@ -171,7 +171,7 @@ namespace Maestro.Editors.LayerDefinition.Drawing
                 {
                     list.Add(obj.ToString());
                 }
-                return string.Join(",", list.ToArray());
+                return string.Join(",", list.ToArray()); //NOXLATE
             }
         }
 

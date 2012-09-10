@@ -27,6 +27,7 @@ using System.Windows.Forms;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System.Diagnostics;
 using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.FeatureSource.Providers.Sdf
 {
@@ -51,10 +52,10 @@ namespace Maestro.Editors.FeatureSource.Providers.Sdf
             MarkSelected();
 
             //HACK: Set ReadOnly property if not specified otherwise this will be an invalid feature source
-            if (string.IsNullOrEmpty(_fs.GetConnectionProperty("ReadOnly")))
-                _fs.SetConnectionProperty("ReadOnly", "FALSE");
+            if (string.IsNullOrEmpty(_fs.GetConnectionProperty("ReadOnly"))) //NOXLATE
+                _fs.SetConnectionProperty("ReadOnly", "FALSE"); //NOXLATE
 
-            chkReadOnly.Checked = _fs.GetConnectionProperty("ReadOnly").ToUpper().Equals(true.ToString().ToUpper());
+            chkReadOnly.Checked = _fs.GetConnectionProperty("ReadOnly").ToUpper().Equals(true.ToString().ToUpper()); //NOXLATE
         }
 
         private void MarkSelected()
@@ -78,7 +79,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Sdf
 
         protected override string[] GetUnmanagedFileExtensions()
         {
-            return new string[] { "sdf" };
+            return new string[] { "sdf" }; //NOXLATE
         }
 
         protected override void OnResourceChanged()
@@ -90,14 +91,14 @@ namespace Maestro.Editors.FeatureSource.Providers.Sdf
         private void chkReadOnly_CheckedChanged(object sender, EventArgs e)
         {
             var newValue = chkReadOnly.Checked.ToString().ToUpper();
-            var currValue = _fs.GetConnectionProperty("ReadOnly");
+            var currValue = _fs.GetConnectionProperty("ReadOnly"); //NOXLATE
             if (!newValue.Equals(currValue))
-                _fs.SetConnectionProperty("ReadOnly", newValue);
+                _fs.SetConnectionProperty("ReadOnly", newValue); //NOXLATE
         }
 
         protected override void OnResourceMarked(string dataName)
         {
-            string fileProp = "%MG_DATA_FILE_PATH%" + dataName;
+            string fileProp = StringConstants.MgDataFilePath + dataName;
             string currFileProp = _fs.GetConnectionProperty(this.FileFdoProperty);
             if (!currFileProp.Equals(fileProp))
                 _fs.SetConnectionProperty(this.FileFdoProperty, fileProp);

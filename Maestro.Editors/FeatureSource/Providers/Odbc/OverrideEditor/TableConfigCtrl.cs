@@ -101,7 +101,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
                 if (_item != null)
                 {
                     //Set logical geometry property
-                    var prop = new GeometricPropertyDefinition("Geometry", "");
+                    var prop = new GeometricPropertyDefinition("Geometry", ""); //NOXLATE
                     prop.GeometricTypes = FeatureGeometricType.Point;
                     prop.HasElevation = true;
                     prop.HasMeasure = true;

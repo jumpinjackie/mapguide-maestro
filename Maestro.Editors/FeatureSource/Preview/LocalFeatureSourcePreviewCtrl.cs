@@ -271,7 +271,7 @@ namespace Maestro.Editors.FeatureSource.Preview
             {
                 var pane = new PreviewPane(currentFsId, mode, cls, _fsvc, _caps);
                 var page = new TabPage();
-                page.Text = Properties.Resources.StandardQuery + " - " + cls.QualifiedName;
+                page.Text = Properties.Resources.StandardQuery + " - " + cls.QualifiedName; //NOXLATE
                 page.Tag = mode;
                 pane.Dock = DockStyle.Fill;
                 page.Controls.Add(pane);
@@ -371,7 +371,7 @@ namespace Maestro.Editors.FeatureSource.Preview
                 var classNames = _fsvc.GetClassNames(currentFsId, schTag.SchemaName);
                 foreach (var qClsName in classNames)
                 {
-                    var clsName = qClsName.Split(':')[1];
+                    var clsName = qClsName.Split(':')[1]; //NOXLATE
                     var node = new TreeNode(clsName);
                     node.Text = clsName;
                     node.Tag = new ClassNodeTag(schTag.SchemaName, clsName);

@@ -49,7 +49,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         /// <value>
         /// The color expression.
         /// </value>
-        [DefaultValue("00000000")]
+        [DefaultValue("00000000")] //NOXLATE
         public string ColorExpression
         {
             get { return txtColor.Text; }

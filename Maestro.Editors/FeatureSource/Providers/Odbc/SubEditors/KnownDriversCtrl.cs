@@ -55,13 +55,13 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             {
                 var values = new NameValueCollection();
                 if (this.SelectedDriver != null)
-                    values["ConnectionString"] = this.SelectedDriver.OdbcConnectionString;
+                    values["ConnectionString"] = this.SelectedDriver.OdbcConnectionString; //NOXLATE
                 return values;
             }
             set
             {
-                if (this.SelectedDriver != null && value["ConnectionString"] != null)
-                    this.SelectedDriver.OdbcConnectionString = value["ConnectionString"];
+                if (this.SelectedDriver != null && value["ConnectionString"] != null) //NOXLATE
+                    this.SelectedDriver.OdbcConnectionString = value["ConnectionString"]; //NOXLATE
             }
         }
 

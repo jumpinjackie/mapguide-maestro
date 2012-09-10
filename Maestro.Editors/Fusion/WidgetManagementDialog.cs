@@ -91,7 +91,7 @@ namespace Maestro.Editors.Fusion
 
             widget.PropertyChanged += (s, e) =>
             {
-                if (e.PropertyName == "Name")
+                if (e.PropertyName == "Name") //NOXLATE
                     item.Name = widget.Name;
             };
 

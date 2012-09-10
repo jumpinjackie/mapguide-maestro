@@ -63,15 +63,15 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             string ext = System.IO.Path.GetExtension(fileName).ToUpper();
             switch (ext)
             {
-                case ".ACCDB":
+                case ".ACCDB": //NOXLATE
                     return Properties.Resources.OdbcDriverAccess64;
-                case ".MDB":
+                case ".MDB": //NOXLATE
                     return use64Bit ? Properties.Resources.OdbcDriverAccess64 : Properties.Resources.OdbcDriverAccess;
-                case ".XLS":
+                case ".XLS": //NOXLATE
                     return use64Bit ? Properties.Resources.OdbcDriverExcel64 : Properties.Resources.OdbcDriverExcel;
-                case ".XLSX":
-                case ".XLSM":
-                case ".XLSB":
+                case ".XLSX": //NOXLATE
+                case ".XLSM": //NOXLATE
+                case ".XLSB": //NOXLATE
                     return Properties.Resources.OdbcDriverExcel64;
             }
             return null;
@@ -85,11 +85,11 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             }
             set
             {
-                var cstr = value["ConnectionString"];
+                var cstr = value["ConnectionString"]; //NOXLATE
                 var builder = new System.Data.Common.DbConnectionStringBuilder();
                 builder.ConnectionString = cstr;
-                if (builder["Dbq"] != null)
-                    txtFilePath.Text = builder["Dbq"].ToString();
+                if (builder["Dbq"] != null) //NOXLATE
+                    txtFilePath.Text = builder["Dbq"].ToString(); //NOXLATE
             }
         }
 
@@ -107,9 +107,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             //throw new InvalidOperationException(string.Format(Properties.Resources.OdbcCannotInferDriver, path));
 
             var inner = new System.Data.Odbc.OdbcConnectionStringBuilder();
-            inner["Driver"] = drv;
-            inner["Dbq"] = path;
-            values["ConnectionString"] = inner.ToString();
+            inner["Driver"] = drv; //NOXLATE
+            inner["Dbq"] = path; //NOXLATE
+            values["ConnectionString"] = inner.ToString(); //NOXLATE
 
             return values;
         }
@@ -125,10 +125,10 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         {
             using (var open = new OpenFileDialog())
             {
-                open.Filter = Properties.Resources.OdbcDriverAccess + "|*.mdb|" +
-                              Properties.Resources.OdbcDriverAccess64 + "|*.accdb,*.mdb|" + 
-                              Properties.Resources.OdbcDriverExcel + "|*.xls|" +
-                              Properties.Resources.OdbcDriverExcel64 + "|*.xlsx,*.xlsm,*.xlsb";
+                open.Filter = Properties.Resources.OdbcDriverAccess + "|*.mdb|" + //NOXLATE
+                              Properties.Resources.OdbcDriverAccess64 + "|*.accdb,*.mdb|" +  //NOXLATE
+                              Properties.Resources.OdbcDriverExcel + "|*.xls|" + //NOXLATE
+                              Properties.Resources.OdbcDriverExcel64 + "|*.xlsx,*.xlsm,*.xlsb"; //NOXLATE
 
                 if (open.ShowDialog() == DialogResult.OK)
                 {

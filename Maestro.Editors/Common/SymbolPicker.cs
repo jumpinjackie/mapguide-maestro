@@ -66,7 +66,7 @@ namespace Maestro.Editors.Common
             : this(conn)
         {
             if (ResourceIdentifier.GetResourceType(symbolLibrary) != OSGeo.MapGuide.MaestroAPI.ResourceTypes.SymbolLibrary)
-                throw new ArgumentException("Not a valid symbol library resource identifier: " + symbolLibrary); //LOCALIZE
+                throw new ArgumentException(string.Format(Properties.Resources.ErrorInvalidSymbolLibraryResourceId, symbolLibrary));
 
             txtSymbolLibrary.Text = symbolLibrary;
         }
@@ -120,7 +120,7 @@ namespace Maestro.Editors.Common
 
                     foreach (var res in sectResources.SectionResource)
                     {
-                        if (res.Role.ToUpper() == "THUMBNAIL")
+                        if (res.Role.ToUpper() == StringConstants.Thumbnail.ToUpper())
                         {
                             using (var rs = drawSvc.GetSectionResource(ds.ResourceID, res.Href))
                             {
@@ -155,7 +155,7 @@ namespace Maestro.Editors.Common
 
                 foreach (var res in sectResources.SectionResource)
                 {
-                    if (res.Role.ToUpper() == "THUMBNAIL")
+                    if (res.Role.ToUpper() == StringConstants.Thumbnail.ToUpper())
                     {
                         using (var rs = drawSvc.GetSectionResource(ds.ResourceID, res.Href))
                         {
@@ -183,7 +183,7 @@ namespace Maestro.Editors.Common
         private static IDrawingSource PrepareSymbolDrawingSource(IServerConnection conn, string symResId)
         {
             //Extract the symbols.dwf resource data and copy to a session based drawing source
-            var dwf = conn.ResourceService.GetResourceData(symResId, "symbols.dwf");
+            var dwf = conn.ResourceService.GetResourceData(symResId, "symbols.dwf"); //NOXLATE
             if (!dwf.CanSeek)
             {
                 //House in MemoryStream
@@ -196,13 +196,13 @@ namespace Maestro.Editors.Common
                 dwf = ms;
             }
             var ds = OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateDrawingSource(conn);
-            ds.SourceName = "symbols.dwf";
-            ds.ResourceID = "Session:" + conn.SessionID + "//" + Guid.NewGuid() + ".DrawingSource";
+            ds.SourceName = "symbols.dwf"; //NOXLATE
+            ds.ResourceID = "Session:" + conn.SessionID + "//" + Guid.NewGuid() + ".DrawingSource"; //NOXLATE
             conn.ResourceService.SaveResource(ds);
 
             using (dwf)
             {
-                conn.ResourceService.SetResourceData(ds.ResourceID, "symbols.dwf", OSGeo.MapGuide.ObjectModels.Common.ResourceDataType.File, dwf);
+                conn.ResourceService.SetResourceData(ds.ResourceID, "symbols.dwf", OSGeo.MapGuide.ObjectModels.Common.ResourceDataType.File, dwf); //NOXLATE
             }
             return ds;
         }

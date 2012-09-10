@@ -65,7 +65,8 @@ namespace Maestro.Editors.LayerDefinition
 
         void OnVectorLayerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "ResourceId") //Feature Source changed
+            //Feature Source changed 
+            if (e.PropertyName == "ResourceId") //NOXLATE
             {
                 _vl.RemoveAllScaleRanges();
                 PopulatePropertyList();

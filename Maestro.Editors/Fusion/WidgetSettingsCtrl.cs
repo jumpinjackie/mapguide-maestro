@@ -58,10 +58,10 @@ namespace Maestro.Editors.Fusion
                 _edsvc = service;
                 _fsvc = (IFusionService)_edsvc.GetService((int)ServiceType.Fusion);
                 _context = new FlexibleLayoutEditorContext(_fsvc);
-                _baseUrl = service.GetCustomProperty("BaseUrl").ToString();
+                _baseUrl = service.GetCustomProperty("BaseUrl").ToString(); //NOXLATE
 
-                if (!_baseUrl.EndsWith("/"))
-                    _baseUrl += "/";
+                if (!_baseUrl.EndsWith("/")) //NOXLATE
+                    _baseUrl += "/"; //NOXLATE
             }
             catch
             {
@@ -210,7 +210,7 @@ namespace Maestro.Editors.Fusion
 
         private TreeNode CreateNode(IUIItem item)
         {
-            Check.NotNull(item, "item");
+            Check.NotNull(item, "item"); //NOXLATE
             var node = new TreeNode();
             switch (item.Function)
             {
@@ -222,7 +222,7 @@ namespace Maestro.Editors.Fusion
 
                         item.PropertyChanged += (s, evt) =>
                         {
-                            if (evt.PropertyName == "Label")
+                            if (evt.PropertyName == "Label") //NOXLATE
                             {
                                 node.Text = ((IFlyoutItem)item).Label;
                                 OnResourceChanged();
@@ -245,7 +245,7 @@ namespace Maestro.Editors.Fusion
 
                         item.PropertyChanged += (s, evt) =>
                         {
-                            if (evt.PropertyName == "Widget")
+                            if (evt.PropertyName == "Widget") //NOXLATE
                             {
                                 node.Text = ((IWidgetItem)item).Widget;
                                 OnResourceChanged();

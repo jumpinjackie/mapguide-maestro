@@ -61,9 +61,9 @@ namespace Maestro.Editors.LayerDefinition.Raster
             _rl = res.SubLayer as IRasterLayerDefinition;
             Debug.Assert(_rl != null);
 
-            TextBoxBinder.BindText(txtFeatureSource, _rl, "ResourceId");
-            TextBoxBinder.BindText(txtFeatureClass, _rl, "FeatureName");
-            TextBoxBinder.BindText(txtGeometry, _rl, "Geometry");
+            TextBoxBinder.BindText(txtFeatureSource, _rl, "ResourceId"); //NOXLATE
+            TextBoxBinder.BindText(txtFeatureClass, _rl, "FeatureName"); //NOXLATE
+            TextBoxBinder.BindText(txtGeometry, _rl, "Geometry"); //NOXLATE
             _rl.PropertyChanged += OnRasterLayerPropertyChanged;
         }
 
@@ -142,7 +142,7 @@ namespace Maestro.Editors.LayerDefinition.Raster
                 return;
             }
 
-            var item = GenericItemSelectionDialog.SelectItem(null, null, list.ToArray(), "QualifiedName", "QualifiedName");
+            var item = GenericItemSelectionDialog.SelectItem(null, null, list.ToArray(), "QualifiedName", "QualifiedName"); //NOXLATE
             if (item != null)
             {
                 SetFeatureClass(item);
@@ -194,7 +194,7 @@ namespace Maestro.Editors.LayerDefinition.Raster
                         geoms.Add(col);
                 }
 
-                var item = GenericItemSelectionDialog.SelectItem(null, null, geoms.ToArray(), "Name", "Name");
+                var item = GenericItemSelectionDialog.SelectItem(null, null, geoms.ToArray(), "Name", "Name"); //NOXLATE
                 if (item != null)
                 {
                     txtGeometry.Text = item.Name;

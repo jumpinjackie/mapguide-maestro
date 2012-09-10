@@ -43,7 +43,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
         {
             _widget = widget;
             baseEditor.Setup(_widget, context, edsvc);
-            txtViewType.Text = _widget.GetValue("ViewType");
+            txtViewType.Text = _widget.GetValue("ViewType"); //NOXLATE
         }
 
         public Control Content
@@ -51,11 +51,11 @@ namespace Maestro.Editors.Fusion.WidgetEditors
             get { return this; }
         }
 
-        private string[] _values = { "full", "initial" };
+        private string[] _values = { "full", "initial" }; //NOXLATE
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            var item = GenericItemSelectionDialog.SelectItem("View Type", "Select zoom extents option", _values);
+            var item = GenericItemSelectionDialog.SelectItem(Properties.Resources.TitleViewType, Properties.Resources.PromptViewType, _values);
             if (item != null)
             {
                 txtViewType.Text = item;
@@ -64,7 +64,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
 
         private void txtViewType_TextChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("ViewType", txtViewType.Text);
+            _widget.SetValue("ViewType", txtViewType.Text); //NOXLATE
         }
     }
 }

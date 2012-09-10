@@ -40,7 +40,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
             InitializeComponent();
         }
 
-        private string[] _units = { "meters", "feet", "miles", "kilometers" };
+        private string[] _units = { "meters", "feet", "miles", "kilometers" }; //NOXLATE
 
         private IWidget _widget;
 
@@ -49,14 +49,14 @@ namespace Maestro.Editors.Fusion.WidgetEditors
             _widget = widget;
             baseEditor.Setup(_widget, context, edsvc);
 
-            TextBoxBinder.BindText(txtBorderColorInput, this, "BorderColorInput");
-            TextBoxBinder.BindText(txtBufferDistance, this, "BufferDistance");
-            TextBoxBinder.BindText(txtBufferDistanceInput, this, "BufferDistanceInput");
-            TextBoxBinder.BindText(txtBufferUnitsInput, this, "BufferUnitsInput");
-            TextBoxBinder.BindText(txtFillColorInput, this, "FillColorInput");
-            TextBoxBinder.BindText(txtLayerName, this, "LayerName");
-            TextBoxBinder.BindText(txtLayerNameInput, this, "LayerNameInput");
-            TextBoxBinder.BindText(txtBufferUnits, this, "BufferUnits");
+            TextBoxBinder.BindText(txtBorderColorInput, this, "BorderColorInput"); //NOXLATE
+            TextBoxBinder.BindText(txtBufferDistance, this, "BufferDistance"); //NOXLATE
+            TextBoxBinder.BindText(txtBufferDistanceInput, this, "BufferDistanceInput"); //NOXLATE
+            TextBoxBinder.BindText(txtBufferUnitsInput, this, "BufferUnitsInput"); //NOXLATE
+            TextBoxBinder.BindText(txtFillColorInput, this, "FillColorInput"); //NOXLATE
+            TextBoxBinder.BindText(txtLayerName, this, "LayerName"); //NOXLATE
+            TextBoxBinder.BindText(txtLayerNameInput, this, "LayerNameInput"); //NOXLATE
+            TextBoxBinder.BindText(txtBufferUnits, this, "BufferUnits"); //NOXLATE
 
             cmbBorderColor.CurrentColor = this.BorderColor;
             cmbFillColor.CurrentColor = this.FillColor;
@@ -69,21 +69,21 @@ namespace Maestro.Editors.Fusion.WidgetEditors
 
         public string LayerName
         {
-            get { return _widget.GetValue("LayerName"); }
+            get { return _widget.GetValue("LayerName"); } //NOXLATE
             set
             {
-                _widget.SetValue("LayerName", value);
-                OnPropertyChanged("LayerName");
+                _widget.SetValue("LayerName", value); //NOXLATE
+                OnPropertyChanged("LayerName"); //NOXLATE
             }
         }
 
         public string LayerNameInput
         {
-            get { return _widget.GetValue("LayerNameInput"); }
+            get { return _widget.GetValue("LayerNameInput"); } //NOXLATE
             set
             {
-                _widget.SetValue("LayerNameInput", value);
-                OnPropertyChanged("LayerNameInput");
+                _widget.SetValue("LayerNameInput", value); //NOXLATE
+                OnPropertyChanged("LayerNameInput"); //NOXLATE
             }
         }
 
@@ -92,84 +92,84 @@ namespace Maestro.Editors.Fusion.WidgetEditors
             get
             {
                 double value;
-                if (double.TryParse(_widget.GetValue("BufferDistance"), out value))
+                if (double.TryParse(_widget.GetValue("BufferDistance"), out value)) //NOXLATE
                     return value;
                 return 100.0;
             }
             set
             {
-                _widget.SetValue("BufferDistance", value.ToString(CultureInfo.InvariantCulture));
-                OnPropertyChanged("BufferDistance");
+                _widget.SetValue("BufferDistance", value.ToString(CultureInfo.InvariantCulture)); //NOXLATE
+                OnPropertyChanged("BufferDistance"); //NOXLATE
             }
         }
 
         public string BufferDistanceInput
         {
-            get { return _widget.GetValue("BufferDistanceInput"); }
+            get { return _widget.GetValue("BufferDistanceInput"); } //NOXLATE
             set
             {
-                _widget.SetValue("BufferDistanceInput", value);
-                OnPropertyChanged("BufferDistanceInput");
+                _widget.SetValue("BufferDistanceInput", value); //NOXLATE
+                OnPropertyChanged("BufferDistanceInput"); //NOXLATE
             }
         }
 
         public string BufferUnits
         {
-            get { return _widget.GetValue("BufferUnits"); }
+            get { return _widget.GetValue("BufferUnits"); } //NOXLATE
             set
             {
-                _widget.SetValue("BufferUnits", value);
-                OnPropertyChanged("BufferUnits");
+                _widget.SetValue("BufferUnits", value); //NOXLATE
+                OnPropertyChanged("BufferUnits"); //NOXLATE
             }
         }
 
         public string BufferUnitsInput
         {
-            get { return _widget.GetValue("BufferUnitsInput"); }
+            get { return _widget.GetValue("BufferUnitsInput"); } //NOXLATE
             set
             {
-                _widget.SetValue("BufferUnitsInput", value);
-                OnPropertyChanged("BufferUnitsInput");
+                _widget.SetValue("BufferUnitsInput", value); //NOXLATE
+                OnPropertyChanged("BufferUnitsInput"); //NOXLATE
             }
         }
 
         public Color BorderColor
         {
-            get { return Utility.ParseHTMLColor(_widget.GetValue("BorderColor")); }
+            get { return Utility.ParseHTMLColor(_widget.GetValue("BorderColor")); } //NOXLATE
             set
             {
-                _widget.SetValue("BorderColor", Utility.SerializeHTMLColor(value, true));
-                OnPropertyChanged("BorderColor");
+                _widget.SetValue("BorderColor", Utility.SerializeHTMLColor(value, true)); //NOXLATE
+                OnPropertyChanged("BorderColor"); //NOXLATE
             }
         }
 
         public string BorderColorInput
         {
-            get { return _widget.GetValue("BorderColorInput"); }
+            get { return _widget.GetValue("BorderColorInput"); } //NOXLATE
             set
             {
-                _widget.SetValue("BorderColorInput", value);
-                OnPropertyChanged("BorderColorInput");
+                _widget.SetValue("BorderColorInput", value); //NOXLATE
+                OnPropertyChanged("BorderColorInput"); //NOXLATE
             }
         }
 
         public Color FillColor
         {
-            get { return Utility.ParseHTMLColor(_widget.GetValue("FillColor")); }
+            get { return Utility.ParseHTMLColor(_widget.GetValue("FillColor")); } //NOXLATE
             set
             {
-                _widget.SetValue("FillColor", Utility.SerializeHTMLColor(value, true));
-                OnPropertyChanged("FillColor");
+                _widget.SetValue("FillColor", Utility.SerializeHTMLColor(value, true)); //NOXLATE
+                OnPropertyChanged("FillColor"); //NOXLATE
             }
         }
 
         public string FillColorInput
         {
-            get { return _widget.GetValue("FillColorInput"); }
+            get { return _widget.GetValue("FillColorInput"); } //NOXLATE
             set
             {
-                _widget.SetValue("FillColorInput", value);
-                OnPropertyChanged("FillColorInput");
+                _widget.SetValue("FillColorInput", value); //NOXLATE
+                OnPropertyChanged("FillColorInput"); //NOXLATE
             }
         }
 
@@ -184,7 +184,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
 
         private void btnBrowseBufferUnits_Click(object sender, EventArgs e)
         {
-            var item = GenericItemSelectionDialog.SelectItem("Buffer Units", "Select Buffer Units", _units);
+            var item = GenericItemSelectionDialog.SelectItem(Properties.Resources.TitleBufferUnits, Properties.Resources.PromptSelectBufferUnits, _units);
             if (item != null)
             {
                 txtBufferUnits.Text = item;

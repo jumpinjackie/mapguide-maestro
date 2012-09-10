@@ -42,8 +42,8 @@ namespace Maestro.Editors.FeatureSource.Extensions
             lblPrimary.Text = primary.QualifiedName;
             lblSecondary.Text = secondary.QualifiedName;
 
-            cmbPrimary.DisplayMember = "Name";
-            cmbSecondary.DisplayMember = "Name";
+            cmbPrimary.DisplayMember = "Name"; //NOXLATE
+            cmbSecondary.DisplayMember = "Name"; //NOXLATE
 
             cmbPrimary.DataSource = primary.Properties;
             cmbSecondary.DataSource = secondary.Properties;

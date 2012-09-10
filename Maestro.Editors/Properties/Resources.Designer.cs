@@ -259,6 +259,123 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bing Maps Hybrid.
+        /// </summary>
+        internal static string CmsBingHybrid {
+            get {
+                return ResourceManager.GetString("CmsBingHybrid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bing Maps Satellite.
+        /// </summary>
+        internal static string CmsBingSatellite {
+            get {
+                return ResourceManager.GetString("CmsBingSatellite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bing Maps Street.
+        /// </summary>
+        internal static string CmsBingStreet {
+            get {
+                return ResourceManager.GetString("CmsBingStreet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Google Hybrid.
+        /// </summary>
+        internal static string CmsGoogleHybrid {
+            get {
+                return ResourceManager.GetString("CmsGoogleHybrid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Google Physical.
+        /// </summary>
+        internal static string CmsGooglePhysical {
+            get {
+                return ResourceManager.GetString("CmsGooglePhysical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Google Satellite.
+        /// </summary>
+        internal static string CmsGoogleSatellite {
+            get {
+                return ResourceManager.GetString("CmsGoogleSatellite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Google Streets.
+        /// </summary>
+        internal static string CmsGoogleStreets {
+            get {
+                return ResourceManager.GetString("CmsGoogleStreets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Street Map.
+        /// </summary>
+        internal static string CmsOsm {
+            get {
+                return ResourceManager.GetString("CmsOsm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Street Map (CycleMap).
+        /// </summary>
+        internal static string CmsOsmCycle {
+            get {
+                return ResourceManager.GetString("CmsOsmCycle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Street Map (TransportMap).
+        /// </summary>
+        internal static string CmsOsmTransport {
+            get {
+                return ResourceManager.GetString("CmsOsmTransport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yahoo! Maps Hybrid.
+        /// </summary>
+        internal static string CmsYahooHybrid {
+            get {
+                return ResourceManager.GetString("CmsYahooHybrid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yahoo! Maps Satellite.
+        /// </summary>
+        internal static string CmsYahooSatellite {
+            get {
+                return ResourceManager.GetString("CmsYahooSatellite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yahoo! Maps Street.
+        /// </summary>
+        internal static string CmsYahooStreet {
+            get {
+                return ResourceManager.GetString("CmsYahooStreet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         internal static string ColHeaderName {
@@ -636,6 +753,24 @@ namespace Maestro.Editors.Properties {
         internal static string ErrNotAFolder {
             get {
                 return ResourceManager.GetString("ErrNotAFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not a valid symbol library resource identifier: {0}.
+        /// </summary>
+        internal static string ErrorInvalidSymbolLibraryResourceId {
+            get {
+                return ResourceManager.GetString("ErrorInvalidSymbolLibraryResourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This Layer Definition version does not support composite symbolization.
+        /// </summary>
+        internal static string ErrorLayerDefnitionDoesNotSupportCompositeSymbolization {
+            get {
+                return ResourceManager.GetString("ErrorLayerDefnitionDoesNotSupportCompositeSymbolization", resourceCulture);
             }
         }
         
@@ -1382,6 +1517,15 @@ namespace Maestro.Editors.Properties {
         internal static string GeometryStyleComboDataset {
             get {
                 return ResourceManager.GetString("GeometryStyleComboDataset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;geometry property&gt; {0} GeomFromText(&apos;&lt;FGF geometry text&gt;&apos;).
+        /// </summary>
+        internal static string GeomFilterTemplate {
+            get {
+                return ResourceManager.GetString("GeomFilterTemplate", resourceCulture);
             }
         }
         
@@ -2730,6 +2874,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Specify Direction to traverse extent history.
+        /// </summary>
+        internal static string PromptDirection {
+            get {
+                return ResourceManager.GetString("PromptDirection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter the name.
         /// </summary>
         internal static string PromptName {
@@ -2757,6 +2910,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select Buffer Units.
+        /// </summary>
+        internal static string PromptSelectBufferUnits {
+            get {
+                return ResourceManager.GetString("PromptSelectBufferUnits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select Map.
         /// </summary>
         internal static string PromptSelectMap {
@@ -2780,6 +2942,15 @@ namespace Maestro.Editors.Properties {
         internal static string PromptUseOffice2010Drivers {
             get {
                 return ResourceManager.GetString("PromptUseOffice2010Drivers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select zoom extents option.
+        /// </summary>
+        internal static string PromptViewType {
+            get {
+                return ResourceManager.GetString("PromptViewType", resourceCulture);
             }
         }
         
@@ -3251,6 +3422,24 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Inline Compound Symbol.
+        /// </summary>
+        internal static string TextInlineCompoundSymbol {
+            get {
+                return ResourceManager.GetString("TextInlineCompoundSymbol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inline Simple Symbol.
+        /// </summary>
+        internal static string TextInlineSimpleSymbol {
+            get {
+                return ResourceManager.GetString("TextInlineSimpleSymbol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Loading.
         /// </summary>
         internal static string TextLoading {
@@ -3314,6 +3503,15 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preview\nnot available.
+        /// </summary>
+        internal static string TextRenderPreviewNotAvailable {
+            get {
+                return ResourceManager.GetString("TextRenderPreviewNotAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search Text Not Found.
         /// </summary>
         internal static string TextSearchTextNotFound {
@@ -3364,6 +3562,24 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Buffer Units.
+        /// </summary>
+        internal static string TitleBufferUnits {
+            get {
+                return ResourceManager.GetString("TitleBufferUnits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Direction.
+        /// </summary>
+        internal static string TitleDirection {
+            get {
+                return ResourceManager.GetString("TitleDirection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string TitleError {
@@ -3387,6 +3603,15 @@ namespace Maestro.Editors.Properties {
         internal static string TitleQuestion {
             get {
                 return ResourceManager.GetString("TitleQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Type.
+        /// </summary>
+        internal static string TitleViewType {
+            get {
+                return ResourceManager.GetString("TitleViewType", resourceCulture);
             }
         }
         

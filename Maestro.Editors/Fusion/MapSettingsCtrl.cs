@@ -53,10 +53,10 @@ namespace Maestro.Editors.Fusion
             try
             {
                 _fsvc = (IFusionService)service.GetService((int)ServiceType.Fusion);
-                _baseUrl = service.GetCustomProperty("BaseUrl").ToString();
+                _baseUrl = service.GetCustomProperty("BaseUrl").ToString(); //NOXLATE
 
-                if (!_baseUrl.EndsWith("/"))
-                    _baseUrl += "/";
+                if (!_baseUrl.EndsWith("/")) //NOXLATE
+                    _baseUrl += "/"; //NOXLATE
             }
             catch
             {
@@ -80,7 +80,7 @@ namespace Maestro.Editors.Fusion
             item.Tag = group;
             group.PropertyChanged += (s, e) =>
             {
-                if (e.PropertyName == "id")
+                if (e.PropertyName == "id") //NOXLATE
                     item.Text = group.id;
             };
             lstMaps.Items.Add(item);

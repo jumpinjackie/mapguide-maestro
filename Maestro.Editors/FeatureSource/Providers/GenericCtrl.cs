@@ -83,12 +83,12 @@ namespace Maestro.Editors.FeatureSource.Providers
             var prov = _service.FeatureService.GetFeatureProvider(_fs.Provider);
 
             var colName = new DataGridViewColumn();
-            colName.Name = "COL_NAME";
+            colName.Name = "COL_NAME"; //NOXLATE
             colName.HeaderText = Properties.Resources.ColHeaderName;
             colName.ReadOnly = true;
             colName.CellTemplate = new DataGridViewTextBoxCell();
             var colValue = new DataGridViewColumn();
-            colValue.Name = "COL_VALUE";
+            colValue.Name = "COL_VALUE"; //NOXLATE
             colValue.HeaderText = Properties.Resources.ColHeaderValue;
             colValue.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colValue.CellTemplate = new DataGridViewTextBoxCell();
@@ -150,7 +150,7 @@ namespace Maestro.Editors.FeatureSource.Providers
                 {
                     e.Paint(e.CellBounds, DataGridViewPaintParts.All & ~DataGridViewPaintParts.ContentForeground);
                     Graphics g = e.Graphics;
-                    g.DrawString(new string('*', cell.Value.ToString().Length), this.Font, new SolidBrush(Color.Black), e.CellBounds);
+                    g.DrawString(new string('*', cell.Value.ToString().Length), this.Font, new SolidBrush(Color.Black), e.CellBounds); //NOXLATE
                     e.Handled = true;
                 }
             }
@@ -191,7 +191,7 @@ namespace Maestro.Editors.FeatureSource.Providers
             var param = GetConnectionParameters();
 
             var cloneFs = (IFeatureSource)_fs.Clone();
-            _service.ResourceService.SaveResourceAs(cloneFs, "Session:" + _service.SessionID + "//" + Guid.NewGuid().ToString() + ".FeatureSource");
+            _service.ResourceService.SaveResourceAs(cloneFs, "Session:" + _service.SessionID + "//" + Guid.NewGuid().ToString() + ".FeatureSource"); //NOXLATE
             
             cloneFs.ClearConnectionProperties();
             foreach (var key in param.AllKeys)
@@ -357,7 +357,7 @@ namespace Maestro.Editors.FeatureSource.Providers
             var file = resDataCtrl.MarkedFile;
             if (!string.IsNullOrEmpty(file))
             {
-                var value = "%MG_DATA_FILE_PATH%" + file;
+                var value = "%MG_DATA_FILE_PATH%" + file; //NOXLATE
                 cell.Value = value;
             }
             else
@@ -390,8 +390,8 @@ namespace Maestro.Editors.FeatureSource.Providers
             {
                 if (diag.ShowDialog() == DialogResult.OK)
                 {
-                    _fs.SetConnectionProperty(diag.UserProperty, "%MG_USERNAME%");
-                    _fs.SetConnectionProperty(diag.PasswordProperty, "%MG_PASSWORD%");
+                    _fs.SetConnectionProperty(diag.UserProperty, StringConstants.MgUsernamePlaceholder);
+                    _fs.SetConnectionProperty(diag.PasswordProperty, StringConstants.MgPasswordPlaceholder);
                     _fs.SetEncryptedCredentials(diag.Username, diag.Password);
                     _service.SyncSessionCopy();
                     InitGrid();

@@ -60,7 +60,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
 
         internal void InitDefaults()
         {
-            txtPath.Text = _fs.GetConnectionProperty("DefaultRasterFileLocation");
+            txtPath.Text = _fs.GetConnectionProperty("DefaultRasterFileLocation"); //NOXLATE
         }
 
         private void txtPath_TextChanged(object sender, EventArgs e)
@@ -68,7 +68,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
             if (_init)
                 return;
 
-            _fs.SetConnectionProperty("DefaultRasterFileLocation", txtPath.Text);
+            _fs.SetConnectionProperty("DefaultRasterFileLocation", txtPath.Text); //NOXLATE
         }
 
         private void btnBrowseFile_Click(object sender, EventArgs e)

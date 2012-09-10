@@ -105,7 +105,7 @@ namespace Maestro.Editors.Generic
             
             // Library:// will *always* exist, so fallback to this if given folder doesn't check out
             if (!_resSvc.ResourceExists(folderId))
-                folderId = "Library://";
+                folderId = StringConstants.RootIdentifier;
 
             this.ActiveControl = repoView;
             repoView.NavigateTo(folderId);

@@ -43,17 +43,17 @@ namespace Maestro.Editors.Fusion.WidgetEditors
             _widget = widget;
             baseEditor.Setup(_widget, context, edsvc);
 
-            chkHideInvisibleLayers.Checked = Convert.ToBoolean(_widget.GetValue("HideInvisibleLayers"));
-            chkShowMapFolder.Checked = Convert.ToBoolean(_widget.GetValue("ShowMapFolder"));
-            chkShowRootFolder.Checked = Convert.ToBoolean(_widget.GetValue("ShowRootFolder"));
+            chkHideInvisibleLayers.Checked = Convert.ToBoolean(_widget.GetValue("HideInvisibleLayers")); //NOXLATE
+            chkShowMapFolder.Checked = Convert.ToBoolean(_widget.GetValue("ShowMapFolder")); //NOXLATE
+            chkShowRootFolder.Checked = Convert.ToBoolean(_widget.GetValue("ShowRootFolder")); //NOXLATE
 
-            txtDisabledLayerIcon.Text = _widget.GetValue("DisabledLayerIcon");
-            txtGroupInfoIcon.Text = _widget.GetValue("GroupInfoIcon");
-            txtLayerDwfIcon.Text = _widget.GetValue("LayerDWFIcon");
-            txtLayerInfoIcon.Text = _widget.GetValue("LayerInfoIcon");
-            txtLayerRasterIcon.Text = _widget.GetValue("LayerRasterIcon");
-            txtLayerThemeIcon.Text = _widget.GetValue("LayerThemeIcon");
-            txtRootFolderIcon.Text = _widget.GetValue("RootFolderIcon");
+            txtDisabledLayerIcon.Text = _widget.GetValue("DisabledLayerIcon"); //NOXLATE
+            txtGroupInfoIcon.Text = _widget.GetValue("GroupInfoIcon"); //NOXLATE
+            txtLayerDwfIcon.Text = _widget.GetValue("LayerDWFIcon"); //NOXLATE
+            txtLayerInfoIcon.Text = _widget.GetValue("LayerInfoIcon"); //NOXLATE
+            txtLayerRasterIcon.Text = _widget.GetValue("LayerRasterIcon"); //NOXLATE
+            txtLayerThemeIcon.Text = _widget.GetValue("LayerThemeIcon"); //NOXLATE
+            txtRootFolderIcon.Text = _widget.GetValue("RootFolderIcon"); //NOXLATE
         }
 
         public Control Content
@@ -63,52 +63,52 @@ namespace Maestro.Editors.Fusion.WidgetEditors
 
         private void chkHideInvisibleLayers_CheckedChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("HideInvisibleLayers", chkHideInvisibleLayers.Checked.ToString());
+            _widget.SetValue("HideInvisibleLayers", chkHideInvisibleLayers.Checked.ToString()); //NOXLATE
         }
 
         private void chkShowRootFolder_CheckedChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("ShowRootFolder", chkShowRootFolder.Checked.ToString());
+            _widget.SetValue("ShowRootFolder", chkShowRootFolder.Checked.ToString()); //NOXLATE
         }
 
         private void chkShowMapFolder_CheckedChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("ShowMapFolder", chkShowMapFolder.Checked.ToString());
+            _widget.SetValue("ShowMapFolder", chkShowMapFolder.Checked.ToString()); //NOXLATE
         }
 
         private void txtLayerRasterIcon_TextChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("LayerRasterIcon", txtLayerRasterIcon.Text);
+            _widget.SetValue("LayerRasterIcon", txtLayerRasterIcon.Text); //NOXLATE
         }
 
         private void txtLayerDwfIcon_TextChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("LayerDWFIcon", txtLayerDwfIcon.Text);
+            _widget.SetValue("LayerDWFIcon", txtLayerDwfIcon.Text); //NOXLATE
         }
 
         private void txtLayerThemeIcon_TextChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("LayerThemeIcon", txtLayerThemeIcon.Text);
+            _widget.SetValue("LayerThemeIcon", txtLayerThemeIcon.Text); //NOXLATE
         }
 
         private void txtDisabledLayerIcon_TextChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("DisabledLayerIcon", txtDisabledLayerIcon.Text);
+            _widget.SetValue("DisabledLayerIcon", txtDisabledLayerIcon.Text); //NOXLATE
         }
 
         private void txtLayerInfoIcon_TextChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("LayerInfoIcon", txtLayerInfoIcon.Text);
+            _widget.SetValue("LayerInfoIcon", txtLayerInfoIcon.Text); //NOXLATE
         }
 
         private void txtGroupInfoIcon_TextChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("GroupInfoIcon", txtGroupInfoIcon.Text);
+            _widget.SetValue("GroupInfoIcon", txtGroupInfoIcon.Text); //NOXLATE
         }
 
         private void txtRootFolderIcon_TextChanged(object sender, EventArgs e)
         {
-            _widget.SetValue("RootFolderIcon", txtRootFolderIcon.Text);
+            _widget.SetValue("RootFolderIcon", txtRootFolderIcon.Text); //NOXLATE
         }
     }
 }

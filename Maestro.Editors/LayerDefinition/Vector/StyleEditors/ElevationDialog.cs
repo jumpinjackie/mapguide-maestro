@@ -60,7 +60,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             chkEnabled.Checked = (_elSettings != null);
 
             if (_elSettings == null)
-                _elSettings = vsr2.Create("0", "0", ElevationTypeType.RelativeToGround, LengthUnitType.Meters);
+                _elSettings = vsr2.Create("0", "0", ElevationTypeType.RelativeToGround, LengthUnitType.Meters); //NOXLATE
 
             try
             {

@@ -48,7 +48,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             _items = new BindingList<RasterWmsItem>();
             _service = service;
             _fs = (IFeatureSource)_service.GetEditedResource();
-            txtFeatureServer.Text = _fs.GetConnectionProperty("FeatureServer");
+            txtFeatureServer.Text = _fs.GetConnectionProperty("FeatureServer"); //NOXLATE
             string xml = _fs.GetConfigurationContent();
             if (!string.IsNullOrEmpty(xml))
             {
@@ -78,7 +78,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             var contexts = _fs.GetSpatialInfo(false);
             var schemaName = _fs.GetSchemaNames()[0];
             var clsNames = _fs.GetClassNames(schemaName);
-            var schema = new FeatureSchema(schemaName, "");
+            var schema = new FeatureSchema(schemaName, string.Empty);
             doc.AddSchema(schema);
 
             foreach (var sc in contexts.SpatialContext)
@@ -90,15 +90,15 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
 
             foreach (var clsName in clsNames)
             {
-                var className = clsName.Split(':')[1];
-                var cls = new ClassDefinition(className, "");
-                cls.AddProperty(new DataPropertyDefinition("Id", "")
+                var className = clsName.Split(':')[1]; //NOXLATE
+                var cls = new ClassDefinition(className, string.Empty);
+                cls.AddProperty(new DataPropertyDefinition("Id", string.Empty) //NOXLATE
                 {
                     DataType = DataPropertyType.String,
                     Length = 256,
                     IsNullable = false
                 }, true);
-                cls.AddProperty(new RasterPropertyDefinition("Image", "")
+                cls.AddProperty(new RasterPropertyDefinition("Image", string.Empty) //NOXLATE
                 {
                     DefaultImageXSize = 1024,
                     DefaultImageYSize = 1024,
@@ -107,7 +107,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
 
                 schema.AddClass(cls);
 
-                var item = CreateDefaultItem(schema.Name, cls.Name, "Image", defaultSc);
+                var item = CreateDefaultItem(schema.Name, cls.Name, "Image", defaultSc); //NOXLATE
                 doc.AddRasterItem(item);
             }
 
@@ -117,12 +117,12 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
         private static RasterWmsItem CreateDefaultItem(string schemaName, string clsName, string rasName, IFdoSpatialContext defaultSc)
         {
             var item = new RasterWmsItem(clsName, rasName);
-            item.ImageFormat = "PNG";
+            item.ImageFormat = "PNG"; //NOXLATE
             item.IsTransparent = true;
             item.BackgroundColor = Color.White;
             item.SpatialContextName = defaultSc.Name;
             item.UseTileCache = false;
-            item.AddLayer(new WmsLayerDefinition(schemaName + ":" + clsName) { Style = "default" });
+            item.AddLayer(new WmsLayerDefinition(schemaName + ":" + clsName) { Style = "default" }); //NOXLATE
             return item;
         }
 
@@ -180,15 +180,15 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             var name = GenericInputDialog.GetValue(Properties.Resources.TitleNewFeatureClass, Properties.Resources.PromptName, null);
             var schema = _config.Schemas[0];
 
-            var cls = new ClassDefinition(name, "");
-            cls.AddProperty(new DataPropertyDefinition("Id", "")
+            var cls = new ClassDefinition(name, string.Empty);
+            cls.AddProperty(new DataPropertyDefinition("Id", string.Empty) //NOXLATE
             {
                 DataType = DataPropertyType.String,
                 Length = 256,
                 IsNullable = false
             }, true);
 
-            var rp = new RasterPropertyDefinition("Image", "")
+            var rp = new RasterPropertyDefinition("Image", string.Empty) //NOXLATE
             {
                 DefaultImageXSize = 800,
                 DefaultImageYSize = 800

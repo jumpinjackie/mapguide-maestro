@@ -53,9 +53,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
                 _service.RegisterCustomNotifier(this);
                 _fs = (IFeatureSource)_service.GetEditedResource();
 
-                txtFeatureServer.Text = _fs.GetConnectionProperty("FeatureServer");
-                txtUsername.Text = _fs.GetConnectionProperty("Username");
-                txtPassword.Text = _fs.GetConnectionProperty("Password");
+                txtFeatureServer.Text = _fs.GetConnectionProperty("FeatureServer"); //NOXLATE
+                txtUsername.Text = _fs.GetConnectionProperty("Username"); //NOXLATE
+                txtPassword.Text = _fs.GetConnectionProperty("Password"); //NOXLATE
             }
             finally
             {
@@ -67,7 +67,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
         {
             if (_init)
                 return;
-            _fs.SetConnectionProperty("FeatureServer", txtFeatureServer.Text);
+            _fs.SetConnectionProperty("FeatureServer", txtFeatureServer.Text); //NOXLATE
         }
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
@@ -75,9 +75,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             if (_init)
                 return;
             if (string.IsNullOrEmpty(txtUsername.Text))
-                _fs.SetConnectionProperty("Username", null);
+                _fs.SetConnectionProperty("Username", null); //NOXLATE
             else
-                _fs.SetConnectionProperty("Username", txtUsername.Text);
+                _fs.SetConnectionProperty("Username", txtUsername.Text); //NOXLATE
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
@@ -85,9 +85,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             if (_init)
                 return;
             if (string.IsNullOrEmpty(txtPassword.Text))
-                _fs.SetConnectionProperty("Password", null);
+                _fs.SetConnectionProperty("Password", null); //NOXLATE
             else
-                _fs.SetConnectionProperty("Password", txtPassword.Text);
+                _fs.SetConnectionProperty("Password", txtPassword.Text); //NOXLATE
         }
 
         private void btnTest_Click(object sender, EventArgs e)
@@ -107,21 +107,21 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
 
             if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
             {
-                if (username != "%MG_USERNAME%" && password != "%MG_PASSWORD%")
+                if (username != StringConstants.MgUsernamePlaceholder && password != StringConstants.MgPasswordPlaceholder)
                 {
-                    _fs.SetConnectionProperty("Username", "%MG_USERNAME%");
-                    _fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
+                    _fs.SetConnectionProperty("Username", StringConstants.MgUsernamePlaceholder); //NOXLATE
+                    _fs.SetConnectionProperty("Password", StringConstants.MgPasswordPlaceholder); //NOXLATE
                     _fs.SetEncryptedCredentials(username, password);
                     _service.SyncSessionCopy();
                 }
             }
             else
             {
-                _fs.SetConnectionProperty("Username", null);
-                _fs.SetConnectionProperty("Password", null);
+                _fs.SetConnectionProperty("Username", null); //NOXLATE
+                _fs.SetConnectionProperty("Password", null); //NOXLATE
                 try
                 {
-                    _fs.DeleteResourceData("MG_USER_CREDENTIALS");
+                    _fs.DeleteResourceData(StringConstants.MgUserCredentialsResourceData);
                 }
                 catch { }
                 _service.SyncSessionCopy();

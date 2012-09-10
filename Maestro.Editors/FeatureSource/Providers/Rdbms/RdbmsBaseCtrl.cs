@@ -64,47 +64,47 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
             _fs = _service.GetEditedResource() as IFeatureSource;
 
             //Set the field values
-            txtService.Text = _fs.GetConnectionProperty("Service");
+            txtService.Text = _fs.GetConnectionProperty("Service"); //NOXLATE
 
             //We're gonna follow MG Studio behaviour here which is: Never load the password
             //and auto trigger dirty state.
             if (!_service.IsNew)
             {
-                txtUsername.Text = _fs.GetEncryptedUsername() ?? _fs.GetConnectionProperty("Username");
+                txtUsername.Text = _fs.GetEncryptedUsername() ?? _fs.GetConnectionProperty("Username"); //NOXLATE
                 //txtPassword.Text = _fs.GetConnectionProperty("Password");
                 OnResourceChanged();
             }
 
             //Set initial value of data store if possible
-            var dstore = _fs.GetConnectionProperty("DataStore");
+            var dstore = _fs.GetConnectionProperty("DataStore"); //NOXLATE
             txtDataStore.Text = dstore;
 
             //As our connection properties are not CLR properties, 
             //"manually" bind these fields
             txtService.TextChanged += (s, e) =>
             {
-                _fs.SetConnectionProperty("Service", txtService.Text);
+                _fs.SetConnectionProperty("Service", txtService.Text); //NOXLATE
             };
 
             txtUsername.TextChanged += (s, e) =>
             {
                 if (string.IsNullOrEmpty(txtUsername.Text))
-                    _fs.SetConnectionProperty("Username", null);
+                    _fs.SetConnectionProperty("Username", null); //NOXLATE
                 else
-                    _fs.SetConnectionProperty("Username", txtUsername.Text);
+                    _fs.SetConnectionProperty("Username", txtUsername.Text); //NOXLATE
             };
             
             txtPassword.TextChanged += (s, e) =>
             {
                 if (string.IsNullOrEmpty(txtPassword.Text))
-                    _fs.SetConnectionProperty("Password", null);
+                    _fs.SetConnectionProperty("Password", null); //NOXLATE
                 else
-                    _fs.SetConnectionProperty("Password", txtPassword.Text);
+                    _fs.SetConnectionProperty("Password", txtPassword.Text); //NOXLATE
             };
 
             txtDataStore.TextChanged += (s, e) =>
             {
-                _fs.SetConnectionProperty("DataStore", txtDataStore.Text);
+                _fs.SetConnectionProperty("DataStore", txtDataStore.Text); //NOXLATE
             };
 
         }
@@ -126,21 +126,21 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
 
             if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
             {
-                if (username != "%MG_USERNAME%" && password != "%MG_PASSWORD%")
+                if (username != StringConstants.MgUsernamePlaceholder && password != StringConstants.MgPasswordPlaceholder)
                 {
-                    _fs.SetConnectionProperty("Username", "%MG_USERNAME%");
-                    _fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
+                    _fs.SetConnectionProperty("Username", StringConstants.MgUsernamePlaceholder); //NOXLATE
+                    _fs.SetConnectionProperty("Password", StringConstants.MgPasswordPlaceholder); //NOXLATE
                     _fs.SetEncryptedCredentials(username, password);
                     _service.SyncSessionCopy();
                 }
             }
             else if (string.IsNullOrEmpty(username) && string.IsNullOrEmpty(password))
             {
-                _fs.SetConnectionProperty("Username", null);
-                _fs.SetConnectionProperty("Password", null);
+                _fs.SetConnectionProperty("Username", null); //NOXLATE
+                _fs.SetConnectionProperty("Password", null); //NOXLATE
                 try
                 {
-                    _fs.DeleteResourceData("MG_USER_CREDENTIALS");
+                    _fs.DeleteResourceData(StringConstants.MgUserCredentialsResourceData);
                 }
                 catch { }
                 _service.SyncSessionCopy();
@@ -161,9 +161,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
         private string GetPartialConnectionStringForDataStoreEnumeration()
         {
             var builder = new System.Data.Common.DbConnectionStringBuilder();
-            builder["Service"] = _fs.GetConnectionProperty("Service");
-            builder["Username"] = txtUsername.Text; //_fs.GetConnectionProperty("Username");
-            builder["Password"] = txtPassword.Text; //_fs.GetConnectionProperty("Password");
+            builder["Service"] = _fs.GetConnectionProperty("Service"); //NOXLATE
+            builder["Username"] = txtUsername.Text; //_fs.GetConnectionProperty("Username"); //NOXLATE
+            builder["Password"] = txtPassword.Text; //_fs.GetConnectionProperty("Password"); //NOXLATE
             return builder.ToString();
         }
 

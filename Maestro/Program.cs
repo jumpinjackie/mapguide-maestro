@@ -60,16 +60,16 @@ namespace Maestro
             //ServiceManager.MessageService = wfmsg;
 
             ServiceManager.Instance = new MaestroServiceManager();
-            LoggingService.Info("Application start");
+            LoggingService.Info("Application start"); //NOXLATE
 
             // Setup Platform.ini if required
             if (!Platform.IsRunningOnMono)
             {
-                if (!File.Exists("Platform.ini") && File.Exists("LocalConfigure.exe"))
+                if (!File.Exists("Platform.ini") && File.Exists("LocalConfigure.exe")) //NOXLATE
                 {
                     var proc = new ProcessStartInfo("LocalConfigure.exe");
                     if (Environment.OSVersion.Version.Major >= 6)
-                        proc.Verb = "runas";
+                        proc.Verb = "runas"; //NOXLATE
 
                     var p = Process.Start(proc);
                     p.WaitForExit();
@@ -95,12 +95,12 @@ namespace Maestro
             // "data/resources" for language resources, "data/options" for default options
             FileUtility.ApplicationRootPath = Path.GetDirectoryName(exe.Location);
 
-            LoggingService.Info("Starting core services...");
+            LoggingService.Info("Starting core services..."); //NOXLATE
 
             // CoreStartup is a helper class making starting the Core easier.
             // The parameter is used as the application name, e.g. for the default title of
             // MessageService.ShowMessage() calls.
-            CoreStartup coreStartup = new CoreStartup("MapGuide Maestro");
+            CoreStartup coreStartup = new CoreStartup("MapGuide Maestro"); //NOXLATE
             // It is also used as default storage location for the application settings:
             // "%Application Data%\%Application Name%", but you can override that by setting c.ConfigDirectory
 
@@ -109,40 +109,40 @@ namespace Maestro
             coreStartup.ConfigDirectory = MaestroPaths.BasePath;
 
             // Specify the name of the application settings file (.xml is automatically appended)
-            coreStartup.PropertiesName = "AppProperties";
+            coreStartup.PropertiesName = "AppProperties"; //NOXLATE
 
             // Initializes the Core services (ResourceService, PropertyService, etc.)
             coreStartup.StartCoreServices();
 
-            LoggingService.Info("Looking for AddIns...");
+            LoggingService.Info("Looking for AddIns..."); //NOXLATE
             // Searches for ".addin" files in the application directory.
-            coreStartup.AddAddInsFromDirectory(Path.Combine(FileUtility.ApplicationRootPath, "AddIns"));
+            coreStartup.AddAddInsFromDirectory(Path.Combine(FileUtility.ApplicationRootPath, "AddIns")); //NOXLATE
 
             // Searches for a "AddIns.xml" in the user profile that specifies the names of the
             // add-ins that were deactivated by the user, and adds "external" AddIns.
-            coreStartup.ConfigureExternalAddIns(Path.Combine(PropertyService.ConfigDirectory, "AddIns.xml"));
+            coreStartup.ConfigureExternalAddIns(Path.Combine(PropertyService.ConfigDirectory, "AddIns.xml")); //NOXLATE
 
             // Searches for add-ins installed by the user into his profile directory. This also
             // performs the job of installing, uninstalling or upgrading add-ins if the user
             // requested it the last time this application was running.
-            coreStartup.ConfigureUserAddIns(Path.Combine(PropertyService.ConfigDirectory, "AddInInstallTemp"),
-                                            Path.Combine(PropertyService.ConfigDirectory, "AddIns"));
+            coreStartup.ConfigureUserAddIns(Path.Combine(PropertyService.ConfigDirectory, "AddInInstallTemp"), //NOXLATE
+                                            Path.Combine(PropertyService.ConfigDirectory, "AddIns")); //NOXLATE
 
             ResourceService.Language = lang;
-            LoggingService.Info("Loading AddInTree...");
+            LoggingService.Info("Loading AddInTree..."); //NOXLATE
             // Now finally initialize the application. This parses the ".addin" files and
             // creates the AddIn tree. It also automatically runs the commands in
             // "/Workspace/Autostart"
             coreStartup.RunInitialization();
 
-            LoggingService.Info("Initializing Workbench...");
+            LoggingService.Info("Initializing Workbench..."); //NOXLATE
             // Workbench is our class from the base project, this method creates an instance
             // of the main form.
             ServiceRegistry.Initialize(() => {
                 Workbench.InitializeWorkbench(new WorkbenchInitializer());
                 try
                 {
-                    LoggingService.Info("Running application...");
+                    LoggingService.Info("Running application..."); //NOXLATE
                     // Workbench.Instance is the instance of the main form, run the message loop.
                     Application.Run(Workbench.Instance);
                 }
@@ -155,10 +155,10 @@ namespace Maestro
                     }
                     catch (Exception ex)
                     {
-                        ErrorDialog.Show("Error storing properties", ex.ToString());
+                        ErrorDialog.Show(Properties.Resources.Error_StoreProperties, ex.ToString());
                     }
                 }
-                LoggingService.Info("Application shutdown");
+                LoggingService.Info("Application shutdown"); //NOXLATE
             });
         }
 
@@ -173,7 +173,7 @@ namespace Maestro
 
         static void CurrentDomain_AssemblyLoad(object sender, AssemblyLoadEventArgs args)
         {
-            LoggingService.InfoFormatted("Loaded assembly: {0}", args.LoadedAssembly.GetName().Name);
+            LoggingService.InfoFormatted("Loaded assembly: {0}", args.LoadedAssembly.GetName().Name); //NOXLATE
         }
 
         static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)

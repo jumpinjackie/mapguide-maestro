@@ -38,27 +38,27 @@ namespace Maestro.Editors.Fusion
     [ToolboxItem(false)]
     internal partial class MapCtrl : UserControl, INotifyResourceChanged
     {
-        const string G_NORMAL_MAP = "G_NORMAL_MAP";
-        const string G_SATELLITE_MAP = "G_SATELLITE_MAP";
-        const string G_HYBRID_MAP = "G_HYBRID_MAP";
-        const string G_PHYSICAL_MAP = "G_PHYSICAL_MAP";
+        const string G_NORMAL_MAP = "G_NORMAL_MAP"; //NOXLATE
+        const string G_SATELLITE_MAP = "G_SATELLITE_MAP"; //NOXLATE
+        const string G_HYBRID_MAP = "G_HYBRID_MAP"; //NOXLATE
+        const string G_PHYSICAL_MAP = "G_PHYSICAL_MAP"; //NOXLATE
 
-        const string YAHOO_MAP_REG = "YAHOO_MAP_REG";
-        const string YAHOO_MAP_SAT = "YAHOO_MAP_SAT";
-        const string YAHOO_MAP_HYB = "YAHOO_MAP_HYB";
+        const string YAHOO_MAP_REG = "YAHOO_MAP_REG"; //NOXLATE
+        const string YAHOO_MAP_SAT = "YAHOO_MAP_SAT"; //NOXLATE
+        const string YAHOO_MAP_HYB = "YAHOO_MAP_HYB"; //NOXLATE
 
-        const string BING_ROAD = "Road";
-        const string BING_AERIAL = "Aerial";
-        const string BING_HYBRID = "Hybrid";
+        const string BING_ROAD = "Road"; //NOXLATE
+        const string BING_AERIAL = "Aerial"; //NOXLATE
+        const string BING_HYBRID = "Hybrid"; //NOXLATE
 
-        const string Type_Google = "Google";
-        const string Type_Yahoo = "Yahoo";
-        const string Type_Bing = "VirtualEarth";
-        const string Type_OSM = "OpenStreetMap";
+        const string Type_Google = "Google"; //NOXLATE
+        const string Type_Yahoo = "Yahoo"; //NOXLATE
+        const string Type_Bing = "VirtualEarth"; //NOXLATE
+        const string Type_OSM = "OpenStreetMap"; //NOXLATE
 
-        const string OSM_MAP_MAPNIK = "Mapnik";
-        const string OSM_MAP_TRANSPORTMAP = "TransportMap";
-        const string OSM_MAP_CYCLEMAP = "CycleMap";
+        const string OSM_MAP_MAPNIK = "Mapnik"; //NOXLATE
+        const string OSM_MAP_TRANSPORTMAP = "TransportMap"; //NOXLATE
+        const string OSM_MAP_CYCLEMAP = "CycleMap"; //NOXLATE
 
         private MapCtrl()
         {
@@ -166,7 +166,7 @@ namespace Maestro.Editors.Fusion
 
             foreach (var map in group.Map)
             {
-                if (map.Type.Equals("MapGuide"))
+                if (map.Type.Equals("MapGuide")) //NOXLATE
                 {
                     _map = map;
                 }
@@ -212,8 +212,8 @@ namespace Maestro.Editors.Fusion
                 }
             }
 
-            string googUrl = _appDef.GetValue("GoogleScript");
-            string yahooUrl = _appDef.GetValue("YahooScript");
+            string googUrl = _appDef.GetValue("GoogleScript"); //NOXLATE
+            string yahooUrl = _appDef.GetValue("YahooScript"); //NOXLATE
 
             if (!string.IsNullOrEmpty(yahooUrl))
             {
@@ -263,7 +263,7 @@ namespace Maestro.Editors.Fusion
                 }
             };
 
-            TextBoxBinder.BindText(txtMapId, group, "id");
+            TextBoxBinder.BindText(txtMapId, group, "id"); //NOXLATE
 
             txtMapDefinition.Text = _map.GetMapDefinition();
             txtMapDefinition.TextChanged += (s, e) => 
@@ -272,10 +272,10 @@ namespace Maestro.Editors.Fusion
                 OnResourceChanged();
             };
 
-            CheckBoxBinder.BindChecked(chkSingleTiled, _map, "SingleTile");
+            CheckBoxBinder.BindChecked(chkSingleTiled, _map, "SingleTile"); //NOXLATE
 
-            var selOverlay = _map.GetValue("SelectionAsOverlay");
-            var selColor = _map.GetValue("SelectionColor");
+            var selOverlay = _map.GetValue("SelectionAsOverlay"); //NOXLATE
+            var selColor = _map.GetValue("SelectionColor"); //NOXLATE
 
             if (!string.IsNullOrEmpty(selColor))
                 cmbSelectionColor.CurrentColor = Utility.ParseHTMLColorRGBA(selColor.Substring(2)); //Strip the "0x" part
@@ -289,12 +289,12 @@ namespace Maestro.Editors.Fusion
 
             cmbSelectionColor.SelectedIndexChanged += (s, e) => 
             {
-                _map.SetValue("SelectionColor", "0x" + Utility.SerializeHTMLColorRGBA(cmbSelectionColor.CurrentColor, true));
+                _map.SetValue("SelectionColor", "0x" + Utility.SerializeHTMLColorRGBA(cmbSelectionColor.CurrentColor, true)); //NOXLATE
                 OnResourceChanged();
             };
             chkSelectionAsOverlay.CheckedChanged += (s, e) => 
-            { 
-                _map.SetValue("SelectionAsOverlay", chkSelectionAsOverlay.Checked.ToString().ToLower());
+            {
+                _map.SetValue("SelectionAsOverlay", chkSelectionAsOverlay.Checked.ToString().ToLower()); //NOXLATE
                 OnResourceChanged();
             };
             
@@ -327,31 +327,31 @@ namespace Maestro.Editors.Fusion
 
             //Check for maps unaccounted for, these will be disabled
             if (!_cmsMaps.ContainsKey(G_HYBRID_MAP))
-                _cmsMaps[G_HYBRID_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, "Google Hybrid", G_HYBRID_MAP)) { IsEnabled = false };
+                _cmsMaps[G_HYBRID_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, Properties.Resources.CmsGoogleHybrid, G_HYBRID_MAP)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(G_NORMAL_MAP))
-                _cmsMaps[G_NORMAL_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, "Google Streets", G_NORMAL_MAP)) { IsEnabled = false };
+                _cmsMaps[G_NORMAL_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, Properties.Resources.CmsGoogleStreets, G_NORMAL_MAP)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(G_SATELLITE_MAP))
-                _cmsMaps[G_SATELLITE_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, "Google Satellite", G_SATELLITE_MAP)) { IsEnabled = false };
+                _cmsMaps[G_SATELLITE_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, Properties.Resources.CmsGoogleSatellite, G_SATELLITE_MAP)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(G_PHYSICAL_MAP))
-                _cmsMaps[G_PHYSICAL_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, "Google Physical", G_PHYSICAL_MAP)) { IsEnabled = false };
+                _cmsMaps[G_PHYSICAL_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, Properties.Resources.CmsGooglePhysical, G_PHYSICAL_MAP)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(YAHOO_MAP_HYB))
-                _cmsMaps[YAHOO_MAP_HYB] = new CmsMap(group.CreateCmsMapEntry(Type_Yahoo, true, "Yahoo! Maps Hybrid", YAHOO_MAP_HYB)) { IsEnabled = false };
+                _cmsMaps[YAHOO_MAP_HYB] = new CmsMap(group.CreateCmsMapEntry(Type_Yahoo, true, Properties.Resources.CmsYahooHybrid, YAHOO_MAP_HYB)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(YAHOO_MAP_REG))
-                _cmsMaps[YAHOO_MAP_REG] = new CmsMap(group.CreateCmsMapEntry(Type_Yahoo, true, "Yahoo! Maps Street", YAHOO_MAP_REG)) { IsEnabled = false };
+                _cmsMaps[YAHOO_MAP_REG] = new CmsMap(group.CreateCmsMapEntry(Type_Yahoo, true, Properties.Resources.CmsYahooStreet, YAHOO_MAP_REG)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(YAHOO_MAP_SAT))
-                _cmsMaps[YAHOO_MAP_SAT] = new CmsMap(group.CreateCmsMapEntry(Type_Yahoo, true, "Yahoo! Maps Satellite", YAHOO_MAP_SAT)) { IsEnabled = false };
+                _cmsMaps[YAHOO_MAP_SAT] = new CmsMap(group.CreateCmsMapEntry(Type_Yahoo, true, Properties.Resources.CmsYahooSatellite, YAHOO_MAP_SAT)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(BING_ROAD))
-                _cmsMaps[BING_ROAD] = new CmsMap(group.CreateCmsMapEntry(Type_Bing, true, "Bing Maps Street", BING_ROAD)) { IsEnabled = false };
+                _cmsMaps[BING_ROAD] = new CmsMap(group.CreateCmsMapEntry(Type_Bing, true, Properties.Resources.CmsBingStreet, BING_ROAD)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(BING_AERIAL))
-                _cmsMaps[BING_AERIAL] = new CmsMap(group.CreateCmsMapEntry(Type_Bing, true, "Bing Maps Satellite", BING_AERIAL)) { IsEnabled = false };
+                _cmsMaps[BING_AERIAL] = new CmsMap(group.CreateCmsMapEntry(Type_Bing, true, Properties.Resources.CmsBingSatellite, BING_AERIAL)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(BING_HYBRID))
-                _cmsMaps[BING_HYBRID] = new CmsMap(group.CreateCmsMapEntry(Type_Bing, true, "Bing Maps Hybrid", BING_HYBRID)) { IsEnabled = false };
+                _cmsMaps[BING_HYBRID] = new CmsMap(group.CreateCmsMapEntry(Type_Bing, true, Properties.Resources.CmsBingHybrid, BING_HYBRID)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(OSM_MAP_MAPNIK))
-                _cmsMaps[OSM_MAP_MAPNIK] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, "Open Street Map", OSM_MAP_MAPNIK)) { IsEnabled = false };
+                _cmsMaps[OSM_MAP_MAPNIK] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, Properties.Resources.CmsOsm, OSM_MAP_MAPNIK)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(OSM_MAP_TRANSPORTMAP))
-                _cmsMaps[OSM_MAP_TRANSPORTMAP] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, "Open Street Map (TransportMap)", OSM_MAP_TRANSPORTMAP)) { IsEnabled = false };
+                _cmsMaps[OSM_MAP_TRANSPORTMAP] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, Properties.Resources.CmsOsmTransport, OSM_MAP_TRANSPORTMAP)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(OSM_MAP_CYCLEMAP))
-                _cmsMaps[OSM_MAP_CYCLEMAP] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, "Open Street Map (CycleMap)", OSM_MAP_CYCLEMAP)) { IsEnabled = false };
+                _cmsMaps[OSM_MAP_CYCLEMAP] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, Properties.Resources.CmsOsmCycle, OSM_MAP_CYCLEMAP)) { IsEnabled = false };
         }
 
         private void chkOverride_CheckedChanged(object sender, EventArgs e)
@@ -382,7 +382,7 @@ namespace Maestro.Editors.Fusion
 
         private void SetCmsAvailability(string olType, bool enabled)
         {
-            Trace.TraceInformation("Setting availability of CMS provider ({0}) to {1}", olType, enabled);
+            Trace.TraceInformation("Setting availability of CMS provider ({0}) to {1}", olType, enabled); //NOXLATE
             if (_cmsMaps.ContainsKey(olType))
             {
                 var map = _cmsMaps[olType];
@@ -413,7 +413,7 @@ namespace Maestro.Editors.Fusion
             }
 
             if (IsUsingCmsLayers())
-                _map.OverlayOptions = _map.CreateOverlayOptions(false, true, "EPSG:900913");
+                _map.OverlayOptions = _map.CreateOverlayOptions(false, true, "EPSG:900913"); //NOXLATE
             else
                 _map.OverlayOptions = null;
 
@@ -437,7 +437,7 @@ namespace Maestro.Editors.Fusion
                 return;
 
             if (chkBingStreets.Checked)
-                _appDef.SetValue("VirtualEarthScript", BING_URL);
+                _appDef.SetValue("VirtualEarthScript", BING_URL); //NOXLATE
             SetCmsAvailability(BING_ROAD, chkBingStreets.Checked);
         }
 
@@ -447,7 +447,7 @@ namespace Maestro.Editors.Fusion
                 return;
 
             if (chkBingSatellite.Checked)
-                _appDef.SetValue("VirtualEarthScript", BING_URL);
+                _appDef.SetValue("VirtualEarthScript", BING_URL); //NOXLATE
             SetCmsAvailability(BING_AERIAL, chkBingSatellite.Checked);
         }
 
@@ -457,7 +457,7 @@ namespace Maestro.Editors.Fusion
                 return;
 
             if (chkBingHybrid.Checked)
-                _appDef.SetValue("VirtualEarthScript", BING_URL);
+                _appDef.SetValue("VirtualEarthScript", BING_URL); //NOXLATE
             SetCmsAvailability(BING_HYBRID, chkBingHybrid.Checked);
         }
 
@@ -467,7 +467,7 @@ namespace Maestro.Editors.Fusion
                 return;
 
             if (chkGoogStreets.Checked)
-                _appDef.SetValue("GoogleScript", GOOGLE_URL);
+                _appDef.SetValue("GoogleScript", GOOGLE_URL); //NOXLATE
             SetCmsAvailability(G_NORMAL_MAP, chkGoogStreets.Checked);
         }
 
@@ -477,7 +477,7 @@ namespace Maestro.Editors.Fusion
                 return;
 
             if (chkGoogSatellite.Checked)
-                _appDef.SetValue("GoogleScript", GOOGLE_URL);
+                _appDef.SetValue("GoogleScript", GOOGLE_URL); //NOXLATE
             SetCmsAvailability(G_SATELLITE_MAP, chkGoogSatellite.Checked);
         }
 
@@ -487,7 +487,7 @@ namespace Maestro.Editors.Fusion
                 return;
 
             if (chkGoogHybrid.Checked)
-                _appDef.SetValue("GoogleScript", GOOGLE_URL);
+                _appDef.SetValue("GoogleScript", GOOGLE_URL); //NOXLATE
             SetCmsAvailability(G_HYBRID_MAP, chkGoogHybrid.Checked);
         }
 
@@ -497,7 +497,7 @@ namespace Maestro.Editors.Fusion
                 return;
 
             if (chkGoogTerrain.Checked)
-                _appDef.SetValue("GoogleScript", GOOGLE_URL);
+                _appDef.SetValue("GoogleScript", GOOGLE_URL); //NOXLATE
             SetCmsAvailability(G_PHYSICAL_MAP, chkGoogTerrain.Checked);
         }
 
@@ -534,7 +534,7 @@ namespace Maestro.Editors.Fusion
                 return;
 
             if (chkOsmMapnik.Checked)
-                _appDef.SetValue("OpenStreetMapScript", OSM_URL);
+                _appDef.SetValue("OpenStreetMapScript", OSM_URL); //NOXLATE
             SetCmsAvailability(OSM_MAP_MAPNIK, chkOsmMapnik.Checked);
         }
 
@@ -544,7 +544,7 @@ namespace Maestro.Editors.Fusion
                 return;
 
             if (chkOsmTransportMap.Checked)
-                _appDef.SetValue("OpenStreetMapScript", OSM_URL);
+                _appDef.SetValue("OpenStreetMapScript", OSM_URL); //NOXLATE
             SetCmsAvailability(OSM_MAP_TRANSPORTMAP, chkOsmTransportMap.Checked);
         }
 
@@ -554,7 +554,7 @@ namespace Maestro.Editors.Fusion
                 return;
 
             if (chkOsmCycleMap.Checked)
-                _appDef.SetValue("OpenStreetMapScript", OSM_URL);
+                _appDef.SetValue("OpenStreetMapScript", OSM_URL); //NOXLATE
             SetCmsAvailability(OSM_MAP_CYCLEMAP, chkOsmCycleMap.Checked);
         }
 
@@ -583,13 +583,13 @@ namespace Maestro.Editors.Fusion
             if (_noEvents)
                 return;
 
-            _appDef.SetValue("YahooScript", YAHOO_URL + txtYahooApiKey.Text);
+            _appDef.SetValue("YahooScript", YAHOO_URL + txtYahooApiKey.Text); //NOXLATE
         }
 
-        const string OSM_URL = "http://www.openstreetmap.org/openlayers/OpenStreetMap.js";
-        const string GOOGLE_URL = "http://maps.google.com/maps/api/js?sensor=false";
-        const string YAHOO_URL = "http://api.maps.yahoo.com/ajaxymap?v=3.0&amp;appid=";
-        const string BING_URL = "http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.2";
+        const string OSM_URL = "http://www.openstreetmap.org/openlayers/OpenStreetMap.js"; //NOXLATE
+        const string GOOGLE_URL = "http://maps.google.com/maps/api/js?sensor=false"; //NOXLATE
+        const string YAHOO_URL = "http://api.maps.yahoo.com/ajaxymap?v=3.0&amp;appid="; //NOXLATE
+        const string BING_URL = "http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.2"; //NOXLATE
 
         private void OnResourceChanged()
         {

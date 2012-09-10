@@ -32,25 +32,25 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.Drivers
         /// <summary>
         /// The SQL Server Name
         /// </summary>
-        [Description("The SQL Server Name")]
+        [Description("The SQL Server Name")] //NOXLATE
         public string ServerName { get; set; }
 
         /// <summary>
         /// The SQL Server database
         /// </summary>
-        [Description("The SQL Server database")]
+        [Description("The SQL Server database")] //NOXLATE
         public string Database { get; set; }
 
         /// <summary>
         /// The user name
         /// </summary>
-        [Description("Username")]
+        [Description("Username")] //NOXLATE
         public string UserName { get; set; }
 
         /// <summary>
         /// The password
         /// </summary>
-        [Description("Password")]
+        [Description("Password")] //NOXLATE
         public string Password { get; set; }
 
         /// <summary>

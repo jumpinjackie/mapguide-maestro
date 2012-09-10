@@ -71,20 +71,20 @@ namespace Maestro.Editors.Fusion.WidgetEditors
                 doc.LoadXml(txtXmlContent.Text);
 
                 //Base widget properties
-                XmlNode node = doc.SelectSingleNode("//WidgetType/Name");
+                XmlNode node = doc.SelectSingleNode("//WidgetType/Name"); //NOXLATE
                 if (node != null)
                     _widget.Name = node.InnerText;
 
-                node = doc.SelectSingleNode("//WidgetType/Type");
+                node = doc.SelectSingleNode("//WidgetType/Type"); //NOXLATE
                 if (node != null)
                     _widget.Type = node.InnerText;
 
-                node = doc.SelectSingleNode("//WidgetType/Location");
+                node = doc.SelectSingleNode("//WidgetType/Location"); //NOXLATE
                 if (node != null)
                     _widget.Location = node.InnerText;
 
                 //Extension elements
-                node = doc.SelectSingleNode("//WidgetType/Extension");
+                node = doc.SelectSingleNode("//WidgetType/Extension"); //NOXLATE
                 if (node != null)
                 {
                     List<XmlElement> elements = new List<XmlElement>();
@@ -102,27 +102,27 @@ namespace Maestro.Editors.Fusion.WidgetEditors
                 var uiw = _widget as IUIWidget;
                 if (uiw != null)
                 {
-                    node = doc.SelectSingleNode("//WidgetType/StatusItem");
+                    node = doc.SelectSingleNode("//WidgetType/StatusItem"); //NOXLATE
                     if (node != null)
                         uiw.StatusText = node.InnerText;
 
-                    node = doc.SelectSingleNode("//WidgetType/ImageUrl");
+                    node = doc.SelectSingleNode("//WidgetType/ImageUrl"); //NOXLATE
                     if (node != null)
                         uiw.ImageUrl = node.InnerText;
 
-                    node = doc.SelectSingleNode("//WidgetType/ImageClass");
+                    node = doc.SelectSingleNode("//WidgetType/ImageClass"); //NOXLATE
                     if (node != null)
                         uiw.ImageClass = node.InnerText;
 
-                    node = doc.SelectSingleNode("//WidgetType/Tooltip");
+                    node = doc.SelectSingleNode("//WidgetType/Tooltip"); //NOXLATE
                     if (node != null)
                         uiw.Tooltip = node.InnerText;
 
-                    node = doc.SelectSingleNode("//WidgetType/Label");
+                    node = doc.SelectSingleNode("//WidgetType/Label"); //NOXLATE
                     if (node != null)
                         uiw.Label = node.InnerText;
 
-                    node = doc.SelectSingleNode("//Widget/Disabled");
+                    node = doc.SelectSingleNode("//Widget/Disabled"); //NOXLATE
                     if (node != null)
                         uiw.Disabled = node.InnerText;
                 }

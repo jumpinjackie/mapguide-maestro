@@ -178,13 +178,13 @@ namespace Maestro.Editors.LayerDefinition.Vector
 			Font font;
             Color? foreground = null;
             Color? background = null;
-			string text = "";
+			string text = string.Empty;
             BackgroundStyleType bgStyle;
             
 
 			if (item == null || item.FontName == null)
 			{
-				font = new Font("Arial", 12);
+                font = new Font("Arial", 12); //NOXLATE
 				foreground = Color.Black;
 				background = Color.White;
 				text = Properties.Resources.EmptyText;
@@ -193,7 +193,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
 			else
 			{
 				try { font = new Font(item.FontName, 12); }
-				catch { font = new Font("Arial", 12); }
+                catch { font = new Font("Arial", 12); } //NOXLATE
                 try
                 {
                     foreground = Utility.ParseHTMLColor(item.ForegroundColor);
@@ -203,11 +203,11 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 bgStyle = item.BackgroundStyle;
 
 				FontStyle fs = FontStyle.Regular;
-				if (item.Bold == "true")
+                if (item.Bold == "true") //NOXLATE
 					fs |= FontStyle.Bold;
-				if (item.Italic == "true")
+                if (item.Italic == "true") //NOXLATE
 					fs |= FontStyle.Italic;
-				if (item.Underlined == "true")
+                if (item.Underlined == "true") //NOXLATE
 					fs |= FontStyle.Underline;
 				font = new Font(font, fs);
 
@@ -260,7 +260,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
 		{
 			Font font;
             Color? foreground = null;
-			string text = "";
+			string text = string.Empty;
 
             if (item == null || item.FontName == null)
             {
@@ -270,7 +270,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
             else
             {
                 try { font = new Font(item.FontName, 12); }
-                catch { font = new Font("Arial", 12); }
+                catch { font = new Font("Arial", 12); } //NOXLATE
 
                 try
                 {
@@ -502,7 +502,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
 			get
 			{
                 if (m_fillImages == null)
-                    m_fillImages = StyleImageCache.FillImages; //ReadImagesFromDisk("WebStudio" + System.IO.Path.DirectorySeparatorChar.ToString() + "areas"); //typeof(GeometryStyleEditors.ImageStylePicker).Namespace + ".Fillstyles");
+                    m_fillImages = StyleImageCache.FillImages;
 				return m_fillImages;
 			}
 		}
@@ -512,7 +512,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
 			get
 			{
                 if (m_lineStyles == null)
-                    m_lineStyles = StyleImageCache.LineStyles; //ReadImagesFromDisk("WebStudio" + System.IO.Path.DirectorySeparatorChar.ToString() + "lines");  //typeof(GeometryStyleEditors.ImageStylePicker).Namespace + ".Linestyles");
+                    m_lineStyles = StyleImageCache.LineStyles;
 				return m_lineStyles;
 			}
 		}

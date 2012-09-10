@@ -31,17 +31,17 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
         static OdbcDriverMap()
         {
             _drivers = new Dictionary<string, Type>();
-            if (System.IO.File.Exists("OdbcEditorMap.xml"))
+            if (System.IO.File.Exists("OdbcEditorMap.xml")) //NOXLATE
             {
                 var doc = new XmlDocument();
-                doc.Load("OdbcEditorMap.xml");
-                var list = doc.SelectNodes("//OdbcDriverMap/Driver");
+                doc.Load("OdbcEditorMap.xml"); //NOXLATE
+                var list = doc.SelectNodes("//OdbcDriverMap/Driver"); //NOXLATE
                 foreach (XmlNode node in list)
                 {
                     try
                     {
-                        string provider = node.Attributes["name"].Value.ToUpper();
-                        string typeName = node.Attributes["type"].Value;
+                        string provider = node.Attributes["name"].Value.ToUpper(); //NOXLATE
+                        string typeName = node.Attributes["type"].Value; //NOXLATE
 
                         _drivers[provider] = Type.GetType(typeName);
                     }

@@ -53,12 +53,12 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             get
             {
                 var values = new NameValueCollection();
-                values["ConnectionString"] = txtConnStr.Text;
+                values["ConnectionString"] = txtConnStr.Text; //NOXLATE
                 return values;
             }
             set
             {
-                txtConnStr.Text = value["ConnectionString"];
+                txtConnStr.Text = value["ConnectionString"]; //NOXLATE
             }
         }
 

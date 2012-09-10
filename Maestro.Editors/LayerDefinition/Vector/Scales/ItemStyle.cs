@@ -175,7 +175,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                                                                     this.PreviewScale,
                                                                     80,
                                                                     40,
-                                                                    "PNG",
+                                                                    "PNG", //NOXLATE
                                                                     this.ThemeCategory);
 
             //TODO: This is obviously a mess and could do with some future cleanup, but the idea here should be

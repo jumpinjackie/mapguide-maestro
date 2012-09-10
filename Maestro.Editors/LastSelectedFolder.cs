@@ -20,6 +20,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors
 {
@@ -38,7 +39,7 @@ namespace Maestro.Editors
             get
             {
                 if (string.IsNullOrEmpty(smFolderId))
-                    return "Library://";
+                    return StringConstants.RootIdentifier;
                 else
                     return smFolderId;
             }
