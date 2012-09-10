@@ -87,8 +87,8 @@ namespace Maestro.Login
                 dlg.InitialDirectory = Application.StartupPath;
                 //WTF does this default to false??? Does MS not realize that changing directories 
                 //via this dialog absolutely screws up file/assembly loading from relative paths?
-                dlg.RestoreDirectory = true; 
-                dlg.Filter = "*.ini|*.ini";
+                dlg.RestoreDirectory = true;
+                dlg.Filter = "*.ini|*.ini"; //NOXLATE
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     txtWebConfig.Text = dlg.FileName;

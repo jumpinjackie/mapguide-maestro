@@ -25,6 +25,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using System.Globalization;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Login
 {
@@ -35,6 +36,10 @@ namespace Maestro.Login
         public HttpLoginCtrl()
         {
             InitializeComponent();
+            cmbServerUrl.Text = DefaultValues.Server;
+            txtUsername.Text = DefaultValues.Username;
+            txtStartingpoint.Text = DefaultValues.StartingPoint;
+            txtPassword.Text = DefaultValues.Password;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -42,10 +47,10 @@ namespace Maestro.Login
             base.OnLoad(e);
 
             List<CultureInfo> supported = new List<CultureInfo>();
-            supported.Add(CultureInfo.GetCultureInfo("en-US"));
+            supported.Add(CultureInfo.GetCultureInfo("en-US")); //NOXLATE
 
             //Probe for language bundles and add them as well
-            System.Text.RegularExpressions.Regex cix = new System.Text.RegularExpressions.Regex("[A-z][A-z](\\-[A-z][A-z])?");
+            System.Text.RegularExpressions.Regex cix = new System.Text.RegularExpressions.Regex("[A-z][A-z](\\-[A-z][A-z])?"); //NOXLATE
             foreach (string f in System.IO.Directory.GetDirectories(Application.StartupPath))
             {
                 if (cix.Match(System.IO.Path.GetFileName(f)).Length == System.IO.Path.GetFileName(f).Length)
@@ -58,8 +63,8 @@ namespace Maestro.Login
                 }
             }
 
-            cmbLanguage.DisplayMember = "DisplayName";
-            cmbLanguage.ValueMember = "Name";
+            cmbLanguage.DisplayMember = "DisplayName"; //NOXLATE
+            cmbLanguage.ValueMember = "Name"; //NOXLATE
 
             //Set default language based on current thread culture
             int selected = -1;
@@ -201,7 +206,7 @@ namespace Maestro.Login
             if (site.SavePassword)
                 txtPassword.Text = site.UnscrambledPassword;
             else
-                txtPassword.Text = "";
+                txtPassword.Text = string.Empty;
 
             CheckSavedPassword(this, EventArgs.Empty);
         }
@@ -213,5 +218,13 @@ namespace Maestro.Login
             else
                 DisabledOk(this, EventArgs.Empty);
         }
+    }
+
+    static class DefaultValues
+    {
+        public const string Server = "http://localhost/mapguide/mapagent/mapagent.fcgi"; //NOXLATE
+        public const string StartingPoint = StringConstants.RootIdentifier;
+        public const string Username = "Administrator"; //NOXLATE
+        public const string Password = "admin"; //NOXLATE
     }
 }

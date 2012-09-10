@@ -101,10 +101,10 @@ namespace Maestro.Login
 
             if (_siteList.Sites.Length == 0)
             {
-                _http.Server = "http://localhost/mapguide/mapagent/mapagent.fcgi";
-                _http.StartingPoint = "Library://";
-                _http.Username = "Administrator";
-                _http.Password = "admin";
+                _http.Server = DefaultValues.Server;
+                _http.StartingPoint = DefaultValues.StartingPoint;
+                _http.Username = DefaultValues.Username;
+                _http.Password = DefaultValues.Password;
                 chkSavePassword.Checked = true;
                 //chkAutoConnect.Checked = false;
             }
@@ -127,12 +127,12 @@ namespace Maestro.Login
             var providers = ConnectionProviderRegistry.GetProviders();
             foreach (var prv in providers)
             {
-                if (prv.Name.ToUpper().Equals("MAESTRO.LOCALNATIVE"))
+                if (prv.Name.ToUpper().Equals("MAESTRO.LOCALNATIVE")) //NOXLATE
                 {
                     isNativeApiAvailable = true;
                     break;
                 }
-                else if (prv.Name.ToUpper().Equals("MAESTRO.LOCAL"))
+                else if (prv.Name.ToUpper().Equals("MAESTRO.LOCAL")) //NOXLATE
                 {
                     isLocalApiAvailable = true;
                     break;
@@ -209,20 +209,17 @@ namespace Maestro.Login
 
                     if (_selectedIndex == 0) //HTTP
                     {
-                        //string format = "Url={0};Username={1};Password={2};Locale={3};AllowUntestedVersion={4}";
-                        //string connStr = string.Format(format, _http.Server, _http.Username, _http.Password, _http.Language, true);
-
                         var builder = new System.Data.Common.DbConnectionStringBuilder();
-                        builder["Url"] = _http.Server;
-                        builder["Username"] = _http.Username;
-                        builder["Password"] = _http.Password;
-                        builder["Locale"] = _http.Language;
-                        builder["AllowUntestedVersion"] = true;
+                        builder["Url"] = _http.Server; //NOXLATE
+                        builder["Username"] = _http.Username; //NOXLATE
+                        builder["Password"] = _http.Password; //NOXLATE
+                        builder["Locale"] = _http.Language; //NOXLATE
+                        builder["AllowUntestedVersion"] = true; //NOXLATE
 
-                        string agent = "MapGuide Maestro v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                        string agent = "MapGuide Maestro v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); //NOXLATE
 
-                        _conn = ConnectionProviderRegistry.CreateConnection("Maestro.Http", builder.ToString());
-                        _conn.SetCustomProperty("UserAgent", agent);
+                        _conn = ConnectionProviderRegistry.CreateConnection("Maestro.Http", builder.ToString()); //NOXLATE
+                        _conn.SetCustomProperty("UserAgent", agent); //NOXLATE
 
                         //Update preferred site entry if it exists
                         int index = 0;
@@ -259,7 +256,7 @@ namespace Maestro.Login
                             if (ps.SavePassword)
                                 ps.UnscrambledPassword = _http.Password;
                             else
-                                ps.ScrambledPassword = "";
+                                ps.ScrambledPassword = string.Empty;
 
                             if (index >= _siteList.Sites.Length)
                                 _siteList.AddSite(ps);
@@ -281,17 +278,17 @@ namespace Maestro.Login
                     else if (_selectedIndex == 1) //Native
                     {
                         System.Data.Common.DbConnectionStringBuilder builder = new System.Data.Common.DbConnectionStringBuilder();
-                        builder["ConfigFile"] = _localNative.WebConfigPath;
-                        builder["Username"] = _localNative.Username;
-                        builder["Password"] = _localNative.Password;
-                        builder["Locale"] = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-                        _conn = ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", builder.ToString());
+                        builder["ConfigFile"] = _localNative.WebConfigPath; //NOXLATE
+                        builder["Username"] = _localNative.Username; //NOXLATE
+                        builder["Password"] = _localNative.Password; //NOXLATE
+                        builder["Locale"] = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName; //NOXLATE
+                        _conn = ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", builder.ToString()); //NOXLATE
                     }
                     else //Local
                     {
                         NameValueCollection param = new NameValueCollection();
-                        param["ConfigFile"] = _local.PlatformConfigPath;
-                        _conn = ConnectionProviderRegistry.CreateConnection("Maestro.Local", param);
+                        param["ConfigFile"] = _local.PlatformConfigPath; //NOXLATE
+                        _conn = ConnectionProviderRegistry.CreateConnection("Maestro.Local", param); //NOXLATE
                     }
 
                     _conn.AutoRestartSession = true;
