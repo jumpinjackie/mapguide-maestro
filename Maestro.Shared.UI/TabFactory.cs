@@ -38,7 +38,7 @@ namespace Maestro.Shared.UI
     {
         static Platform()
         {
-            _mrtType = Type.GetType("Mono.Runtime");
+            _mrtType = Type.GetType("Mono.Runtime"); //NOXLATE
         }
 
         private static Type _mrtType;
@@ -68,8 +68,6 @@ namespace Maestro.Shared.UI
     {
         private static List<HiddenTab> _hiddenTabs = new List<HiddenTab>();
 
-        static ContextMenuStrip smStrip;
-
         internal static TabPage CreateTab(IViewContent content, string imgKey)
         {
             TabPage page = new TabPage();
@@ -78,14 +76,6 @@ namespace Maestro.Shared.UI
             page.ToolTipText = content.Description;
             page.Tag = content;
 
-            if (smStrip == null)
-            {
-                smStrip = new ContextMenuStrip();
-                smStrip.Items.Add("Close This Tab");
-                smStrip.Items.Add("Close All But This");
-                smStrip.Items.Add("Close All");
-            }
-            
             content.TitleChanged += (sender, e) => 
             {
                 page.Text = content.Title; 

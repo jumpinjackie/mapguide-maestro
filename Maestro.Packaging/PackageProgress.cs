@@ -71,7 +71,7 @@ namespace Maestro.Packaging
             //dlg.AutoUpgradeEnabled = true;
             dlg.CheckFileExists = true;
             dlg.CheckPathExists = true;
-            dlg.DefaultExt = ".mgp";
+            dlg.DefaultExt = ".mgp"; //NOXLATE
             dlg.Filter = Properties.Resources.UploadPackageDialogFilter;
             dlg.FilterIndex = 0;
             dlg.Multiselect = false;
@@ -148,7 +148,7 @@ namespace Maestro.Packaging
             PackageProgress pkgp = new PackageProgress();
             pkgp.m_invokeArgs = new object[] { packageFile };
             pkgp.m_invokeObj = new PackageBuilder(connection);
-            pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("ListPackageContents");
+            pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("ListPackageContents"); //NOXLATE
 
             if (pkgp.ShowDialog(owner) == DialogResult.OK)
                 return (Dictionary<string, ResourceItem>)pkgp.m_invokeResult;
@@ -169,7 +169,7 @@ namespace Maestro.Packaging
             pkgp.Text = Properties.Resources.TitleUploading;
             pkgp.m_invokeArgs = new object[] { packageFile };
             pkgp.m_invokeObj = new PackageBuilder(connection);
-            pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("UploadPackage");
+            pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("UploadPackage"); //NOXLATE
 
             return pkgp.ShowDialog(owner);
         }
@@ -188,7 +188,7 @@ namespace Maestro.Packaging
             pkgp.Text = Properties.Resources.TitleUploading;
             pkgp.m_invokeArgs = new object[] { packageFile, result };
             pkgp.m_invokeObj = new PackageBuilder(connection);
-            pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("UploadPackageNonTransactional");
+            pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("UploadPackageNonTransactional"); //NOXLATE
 
             return pkgp.ShowDialog(owner);
         }
@@ -208,7 +208,7 @@ namespace Maestro.Packaging
             PackageProgress pkgp = new PackageProgress();
             pkgp.m_invokeArgs = new object[] { sourcePackageFile, items, targetfile, insertEraseCommands };
             pkgp.m_invokeObj = new PackageBuilder(connection);
-            pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("RebuildPackage");
+            pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("RebuildPackage"); //NOXLATE
 
             return pkgp.ShowDialog(owner);
         }
@@ -229,7 +229,7 @@ namespace Maestro.Packaging
             PackageProgress pkgp = new PackageProgress();
             pkgp.m_invokeArgs = new object[] {folderResourceId, zipfilename, allowedExtensions, removeExistingFiles, alternateTargetResourceId };
             pkgp.m_invokeObj = new PackageBuilder(connection);
-            pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("CreatePackage");
+            pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("CreatePackage"); //NOXLATE
 
             return pkgp.ShowDialog(owner);
         }

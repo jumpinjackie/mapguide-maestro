@@ -66,7 +66,7 @@ namespace Maestro.Shared.UI
         /// Gets or sets the color of the header background.
         /// </summary>
         /// <value>The color of the header background.</value>
-        [Category("Collapsible Panel Header")]
+        [Category("Collapsible Panel Header")] //NOXLATE
         public Color HeaderBackgroundColor
         {
             get { return headerPanel.BackColor; }
@@ -77,7 +77,7 @@ namespace Maestro.Shared.UI
         /// Gets or sets the header text.
         /// </summary>
         /// <value>The header text.</value>
-        [Category("Collapsible Panel Header")]
+        [Category("Collapsible Panel Header")] //NOXLATE
         [Localizable(true)]
         public string HeaderText
         {
@@ -89,7 +89,7 @@ namespace Maestro.Shared.UI
         /// Gets or sets the header font.
         /// </summary>
         /// <value>The header font.</value>
-        [Category("Collapsible Panel Header")]
+        [Category("Collapsible Panel Header")] //NOXLATE
         public Font HeaderFont
         {
             get { return lblHeaderText.Font; }
@@ -100,7 +100,7 @@ namespace Maestro.Shared.UI
         /// Gets or sets the color of the content background.
         /// </summary>
         /// <value>The color of the content background.</value>
-        [Category("Collapsible Panel Content")]
+        [Category("Collapsible Panel Content")] //NOXLATE
         public Color ContentBackgroundColor
         {
             get { return contentPanel.BackColor; }
@@ -114,7 +114,7 @@ namespace Maestro.Shared.UI
         /// 	<c>true</c> if this instance can collapse; otherwise, <c>false</c>.
         /// </value>
         [DefaultValue(true)]
-        [Category("Collapsible Panel")]
+        [Category("Collapsible Panel")] //NOXLATE
         public bool CanCollapse
         {
             get { return btnCollapse.Visible && btnExpand.Visible; }
@@ -128,7 +128,7 @@ namespace Maestro.Shared.UI
         /// </summary>
         /// <value><c>true</c> if collapsed; otherwise, <c>false</c>.</value>
         [DefaultValue(false)]
-        [Category("Collapsible Panel")]
+        [Category("Collapsible Panel")] //NOXLATE
         public bool Collapsed
         {
             get

@@ -57,7 +57,7 @@ namespace Maestro.Shared.UI
         /// <returns></returns>
         public static Binding BindChecked(CheckBox chk, object dataSource, string dataMember)
         {
-            var binding = chk.DataBindings.Add("Checked", dataSource, dataMember);
+            var binding = chk.DataBindings.Add("Checked", dataSource, dataMember); //NOXLATE
             chk.CheckedChanged += (sender, e) => { binding.WriteValue(); };
 
             return binding;

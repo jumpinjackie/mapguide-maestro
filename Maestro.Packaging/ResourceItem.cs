@@ -42,7 +42,7 @@ namespace Maestro.Packaging
             m_contentpath = contentPath;
             m_entryType = EntryTypeEnum.Regular;
             m_items = new List<ResourceDataItem>();
-            m_isFolder = m_originalResourcePath.EndsWith("/");
+            m_isFolder = m_originalResourcePath.EndsWith("/"); //NOXLATE
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Maestro.Packaging
 
         internal string GenerateUniqueName()
         {
-            return this.ResourcePath.Replace("://", "_").Replace("/", "_").Replace(".", "_") + Guid.NewGuid().ToString();
+            return this.ResourcePath.Replace("://", "_").Replace("/", "_").Replace(".", "_") + Guid.NewGuid().ToString(); //NOXLATE
         }
     }
 }

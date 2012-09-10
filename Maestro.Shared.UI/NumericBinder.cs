@@ -57,7 +57,7 @@ namespace Maestro.Shared.UI
         /// <returns></returns>
         public static Binding BindValueChanged(NumericUpDown num, object dataSource, string dataMember)
         {
-            var binding = num.DataBindings.Add("Value", dataSource, dataMember);
+            var binding = num.DataBindings.Add("Value", dataSource, dataMember); //NOXLATE
             num.ValueChanged += (sender, e) => { binding.WriteValue(); };
 
             return binding;

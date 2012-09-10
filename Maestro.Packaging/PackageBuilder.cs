@@ -119,7 +119,7 @@ namespace Maestro.Packaging
         public PackageBuilder(IServerConnection connection)
         {
             if (connection == null)
-                throw new ArgumentNullException("connection");
+                throw new ArgumentNullException("connection"); //NOXLATE
             m_connection = connection;
         }
 
@@ -181,18 +181,18 @@ namespace Maestro.Packaging
             //    then skip it. Otherwise process the directive that uses this id.
 
             ZipFile package = new ZipFile(sourceFile);
-            ZipEntry manifestEntry = package.GetEntry("MgResourcePackageManifest.xml");
+            ZipEntry manifestEntry = package.GetEntry("MgResourcePackageManifest.xml"); //NOXLATE
             XmlDocument doc = new XmlDocument();
             using (var s = package.GetInputStream(manifestEntry))
             {
                 doc.Load(s);
             }
-            XmlNodeList opNodes = doc.GetElementsByTagName("Operation");
+            XmlNodeList opNodes = doc.GetElementsByTagName("Operation"); //NOXLATE
             double unit = (100.0 / (double)opNodes.Count);
             foreach (XmlNode opNode in opNodes)
             {
                 step += unit;
-                string name = opNode["Name"].InnerText.ToUpper();
+                string name = opNode["Name"].InnerText.ToUpper(); //NOXLATE
 
                 PackageOperation op = ParseOperation(opNode);
                 //TODO: A DELETERESOURCE would cause a null operation. Should we bother to support it?
@@ -202,13 +202,13 @@ namespace Maestro.Packaging
                 //Is a skipped operation?
                 if (skipOps.ContainsKey(op))
                 {
-                    System.Diagnostics.Trace.TraceInformation("Skipping " + op.OperationName + " on " + op.ResourceId);
+                    System.Diagnostics.Trace.TraceInformation("Skipping " + op.OperationName + " on " + op.ResourceId); //NOXLATE
                     continue;
                 }
 
                 switch (name)
                 {
-                    case "SETRESOURCE":
+                    case "SETRESOURCE": //NOXLATE
                         {
                             SetResourcePackageOperation sop = (SetResourcePackageOperation)op;
                             if (sop.Content == null)
@@ -256,7 +256,7 @@ namespace Maestro.Packaging
                             }
                         }
                         break;
-                    case "SETRESOURCEDATA":
+                    case "SETRESOURCEDATA": //NOXLATE
                         {
                             SetResourceDataPackageOperation sop = (SetResourceDataPackageOperation)op;
                             ZipEntry dataEntry = package.GetEntry(sop.Data);
@@ -298,27 +298,27 @@ namespace Maestro.Packaging
         {
             PackageOperation op = null;
             NameValueCollection p = new NameValueCollection();
-            foreach (XmlNode paramNode in opNode["Parameters"].ChildNodes)
+            foreach (XmlNode paramNode in opNode["Parameters"].ChildNodes) //NOXLATE
             {
-                p[paramNode["Name"].InnerText] = paramNode["Value"].InnerText;
+                p[paramNode["Name"].InnerText] = paramNode["Value"].InnerText; //NOXLATE
             }
-            string resourceId = p["RESOURCEID"];
-            switch (opNode["Name"].InnerText)
+            string resourceId = p["RESOURCEID"]; //NOXLATE
+            switch (opNode["Name"].InnerText) //NOXLATE
             {
-                case "SETRESOURCE":
+                case "SETRESOURCE": //NOXLATE
                     {
-                        op = new SetResourcePackageOperation(resourceId, p["CONTENT"], p["HEADER"]);
+                        op = new SetResourcePackageOperation(resourceId, p["CONTENT"], p["HEADER"]); //NOXLATE
                     }
                     break;
-                case "SETRESOURCEDATA":
+                case "SETRESOURCEDATA": //NOXLATE
                     {
                         ResourceDataType rdt;
                         try
                         {
-                            rdt = (ResourceDataType)Enum.Parse(typeof(ResourceDataType), p["DATATYPE"], true);
+                            rdt = (ResourceDataType)Enum.Parse(typeof(ResourceDataType), p["DATATYPE"], true); //NOXLATE
                         }
                         catch { rdt = ResourceDataType.File; }
-                        op = new SetResourceDataPackageOperation(resourceId, p["DATA"], p["DATANAME"], rdt);
+                        op = new SetResourceDataPackageOperation(resourceId, p["DATA"], p["DATANAME"], rdt); //NOXLATE
                     }
                     break;
             }
@@ -331,7 +331,7 @@ namespace Maestro.Packaging
             {
                 if (m_lastPg < 0 || remain == 0 || copied - m_lastPg > 1024 * 50)
                 {
-                    Progress(ProgressType.Uploading, "", (int)(total / 1024), (int)(copied / 1024));
+                    Progress(ProgressType.Uploading, string.Empty, (int)(total / 1024), (int)(copied / 1024));
                     m_lastPg = copied;
                 }
             }
@@ -358,7 +358,7 @@ namespace Maestro.Packaging
             List<ResourceListResourceFolder> folders = new List<ResourceListResourceFolder>();
             Dictionary<string, List<ResourceDataListResourceData>> resourceData = new Dictionary<string, List<ResourceDataListResourceData>>();
             ResourcePackageManifest manifest = new ResourcePackageManifest();
-            manifest.Description = "MapGuide Package created with Maestro";
+            manifest.Description = "MapGuide Package created with Maestro"; //NOXLATE
             manifest.Operations = new ResourcePackageManifestOperations();
             manifest.Operations.Operation = new System.ComponentModel.BindingList<ResourcePackageManifestOperationsOperation>();
             //System.Collections.Hashtable knownTypes = ((ServerConnectionBase)m_connection).ResourceTypeLookup;
@@ -419,7 +419,7 @@ namespace Maestro.Packaging
 
                     int itemCount = resourceData[doc.ResourceId].Count + 1;
 
-                    filemap.Add(new KeyValuePair<string, string>(filebase + "_CONTENT.xml", System.IO.Path.Combine(temppath, Guid.NewGuid().ToString())));
+                    filemap.Add(new KeyValuePair<string, string>(filebase + "_CONTENT.xml", System.IO.Path.Combine(temppath, Guid.NewGuid().ToString()))); //NOXLATE
                     using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
                     {
                         using (var s = m_connection.ResourceService.GetResourceXmlData(doc.ResourceId))
@@ -459,7 +459,7 @@ namespace Maestro.Packaging
                         Progress(ProgressType.MovingResources, Properties.Resources.ProgressUpdatedReferences, 100, 100);
                 }
 
-                filemap.Add(new KeyValuePair<string, string>(System.IO.Path.Combine(temppath, "MgResourcePackageManifest.xml"), System.IO.Path.Combine(temppath, Guid.NewGuid().ToString())));
+                filemap.Add(new KeyValuePair<string, string>(System.IO.Path.Combine(temppath, "MgResourcePackageManifest.xml"), System.IO.Path.Combine(temppath, Guid.NewGuid().ToString()))); //NOXLATE
                 using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
                     m_connection.ResourceService.SerializeObject(manifest, fs);
 
@@ -467,7 +467,7 @@ namespace Maestro.Packaging
                 if (Progress != null)
                     Progress(ProgressType.MovingResources, zipfilename, filemap.Count, 0);
 
-                ZipDirectory(zipfilename, temppath, "MapGuide Package created by Maestro", filemap);
+                ZipDirectory(zipfilename, temppath, "MapGuide Package created by Maestro", filemap); //NOXLATE
 
                 if (Progress != null)
                 {
@@ -490,7 +490,7 @@ namespace Maestro.Packaging
 
         private void AddResourceData(ResourcePackageManifest manifest, string temppath, ResourceListResourceDocument doc, System.IO.FileInfo fi, string resourcePath, ResourceDataListResourceData rd, IServerConnection connection)
         {
-            string contentType = "application/octet-stream";
+            string contentType = "application/octet-stream"; //NOXLATE
 
             /*
             try
@@ -505,7 +505,7 @@ namespace Maestro.Packaging
             string name = rd.Name;
             string type = rd.Type.ToString();
             string resourceId = doc.ResourceId;
-            string filename = RelativeName(resourcePath, temppath).Replace('\\', '/');
+            string filename = RelativeName(resourcePath, temppath).Replace('\\', '/'); //NOXLATE
             long size = fi.Length;
 
             AddResourceData(manifest, resourceId, contentType, type, name, filename, size);
@@ -514,25 +514,25 @@ namespace Maestro.Packaging
         private void AddResourceData(ResourcePackageManifest manifest, string resourceId, string contentType, string type, string name, string filename, long size)
         {
             ResourcePackageManifestOperationsOperation op = new ResourcePackageManifestOperationsOperation();
-            op.Name = "SETRESOURCEDATA";
-            op.Version = "1.0.0";
+            op.Name = "SETRESOURCEDATA"; //NOXLATE
+            op.Version = "1.0.0"; //NOXLATE
             op.Parameters = new ResourcePackageManifestOperationsOperationParameters();
             op.Parameters.Parameter = new System.ComponentModel.BindingList<ResourcePackageManifestOperationsOperationParametersParameter>();
 
             ResourcePackageManifestOperationsOperationParametersParameter param = new ResourcePackageManifestOperationsOperationParametersParameter();
 
-            param.Name = "DATA";
+            param.Name = "DATA"; //NOXLATE
             param.Value = filename;
             param.ContentType = contentType;
             op.Parameters.Parameter.Add(param);
 
             param = new ResourcePackageManifestOperationsOperationParametersParameter();
-            param.Name = "DATALENGTH";
+            param.Name = "DATALENGTH"; //NOXLATE
             param.Value = size.ToString();
             op.Parameters.Parameter.Add(param);
 
             param = new ResourcePackageManifestOperationsOperationParametersParameter();
-            param.Name = "DATANAME";
+            param.Name = "DATANAME"; //NOXLATE
             param.Value = name;
             op.Parameters.Parameter.Add(param);
 
@@ -542,7 +542,7 @@ namespace Maestro.Packaging
             op.Parameters.Parameter.Add(param);
 
             param = new ResourcePackageManifestOperationsOperationParametersParameter();
-            param.Name = "RESOURCEID";
+            param.Name = "RESOURCEID"; //NOXLATE
             param.Value = resourceId;
             op.Parameters.Parameter.Add(param);
 
@@ -553,12 +553,12 @@ namespace Maestro.Packaging
         {
             string filebase = CreateFolderForResource(doc.ResourceId, temppath);
 
-            filemap.Add(new KeyValuePair<string, string>(filebase + "_HEADER.xml", System.IO.Path.Combine(temppath, Guid.NewGuid().ToString())));
+            filemap.Add(new KeyValuePair<string, string>(filebase + "_HEADER.xml", System.IO.Path.Combine(temppath, Guid.NewGuid().ToString()))); //NOXLATE
             using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
                 connection.ResourceService.SerializeObject(connection.ResourceService.GetResourceHeader(doc.ResourceId), fs);
 
-            string headerpath = RelativeName(filemap[filemap.Count - 1].Key, temppath).Replace('\\', '/');
-            string contentpath = RelativeName(contentfilename, temppath).Replace('\\', '/');
+            string headerpath = RelativeName(filemap[filemap.Count - 1].Key, temppath).Replace('\\', '/'); //NOXLATE
+            string contentpath = RelativeName(contentfilename, temppath).Replace('\\', '/'); //NOXLATE
             AddFileResource(manifest, doc.ResourceId, headerpath, contentpath, eraseFirst);
         }
 
@@ -567,41 +567,41 @@ namespace Maestro.Packaging
             if (eraseFirst)
             {
                 ResourcePackageManifestOperationsOperation delop = new ResourcePackageManifestOperationsOperation();
-                delop.Name = "DELETERESOURCE";
-                delop.Version = "1.0.0";
+                delop.Name = "DELETERESOURCE"; //NOXLATE
+                delop.Version = "1.0.0"; //NOXLATE
                 delop.Parameters = new ResourcePackageManifestOperationsOperationParameters();
                 delop.Parameters.Parameter = new System.ComponentModel.BindingList<ResourcePackageManifestOperationsOperationParametersParameter>();
 
                 ResourcePackageManifestOperationsOperationParametersParameter delparam = new ResourcePackageManifestOperationsOperationParametersParameter();
 
-                delparam.Name = "RESOURCEID";
+                delparam.Name = "RESOURCEID"; //NOXLATE
                 delparam.Value = resourceId;
                 delop.Parameters.Parameter.Add(delparam);
                 manifest.Operations.Operation.Add(delop);
             }
 
             ResourcePackageManifestOperationsOperation op = new ResourcePackageManifestOperationsOperation();
-            op.Name = "SETRESOURCE";
-            op.Version = "1.0.0";
+            op.Name = "SETRESOURCE"; //NOXLATE
+            op.Version = "1.0.0"; //NOXLATE
             op.Parameters = new ResourcePackageManifestOperationsOperationParameters();
             op.Parameters.Parameter = new System.ComponentModel.BindingList<ResourcePackageManifestOperationsOperationParametersParameter>();
 
             ResourcePackageManifestOperationsOperationParametersParameter param = new ResourcePackageManifestOperationsOperationParametersParameter();
 
             param = new ResourcePackageManifestOperationsOperationParametersParameter();
-            param.Name = "CONTENT";
+            param.Name = "CONTENT"; //NOXLATE
             param.Value = contentpath;
-            param.ContentType = "text/xml";
+            param.ContentType = "text/xml"; //NOXLATE
             op.Parameters.Parameter.Add(param);
 
             param = new ResourcePackageManifestOperationsOperationParametersParameter();
-            param.Name = "HEADER";
+            param.Name = "HEADER"; //NOXLATE
             param.Value = headerpath;
-            param.ContentType = "text/xml";
+            param.ContentType = "text/xml"; //NOXLATE
             op.Parameters.Parameter.Add(param);
 
             param = new ResourcePackageManifestOperationsOperationParametersParameter();
-            param.Name = "RESOURCEID";
+            param.Name = "RESOURCEID"; //NOXLATE
             param.Value = resourceId;
             op.Parameters.Parameter.Add(param);
 
@@ -610,16 +610,16 @@ namespace Maestro.Packaging
 
         private void AddFolderResource(ResourcePackageManifest manifest, string temppath, ResourceListResourceFolder folder, bool eraseFirst, IServerConnection connection, List<KeyValuePair<string, string>> filemap)
         {
-            string filebase = System.IO.Path.GetDirectoryName(CreateFolderForResource(folder.ResourceId + "dummy.xml", temppath));
+            string filebase = System.IO.Path.GetDirectoryName(CreateFolderForResource(folder.ResourceId + "dummy.xml", temppath)); //NOXLATE
 
-            filemap.Add(new KeyValuePair<string, string>(System.IO.Path.Combine(filebase, "_HEADER.xml"), System.IO.Path.Combine(temppath, Guid.NewGuid().ToString())));
+            filemap.Add(new KeyValuePair<string, string>(System.IO.Path.Combine(filebase, "_HEADER.xml"), System.IO.Path.Combine(temppath, Guid.NewGuid().ToString()))); //NOXLATE
             using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
                 connection.ResourceService.SerializeObject(connection.ResourceService.GetFolderHeader(folder.ResourceId), fs);
 
             if (!filebase.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()))
                 filebase += System.IO.Path.DirectorySeparatorChar;
 
-            string headerpath = RelativeName(filebase + "_HEADER.xml", temppath).Replace('\\', '/');
+            string headerpath = RelativeName(filebase + "_HEADER.xml", temppath).Replace('\\', '/'); //NOXLATE
 
             AddFolderResource(manifest, folder.ResourceId, headerpath, eraseFirst);
         }
@@ -630,37 +630,37 @@ namespace Maestro.Packaging
             if (eraseFirst)
             {
                 ResourcePackageManifestOperationsOperation delop = new ResourcePackageManifestOperationsOperation();
-                delop.Name = "DELETERESOURCE";
-                delop.Version = "1.0.0";
+                delop.Name = "DELETERESOURCE"; //NOXLATE
+                delop.Version = "1.0.0"; //NOXLATE
                 delop.Parameters = new ResourcePackageManifestOperationsOperationParameters();
                 delop.Parameters.Parameter = new System.ComponentModel.BindingList<ResourcePackageManifestOperationsOperationParametersParameter>();
 
                 ResourcePackageManifestOperationsOperationParametersParameter delparam = new ResourcePackageManifestOperationsOperationParametersParameter();
 
-                delparam.Name = "RESOURCEID";
+                delparam.Name = "RESOURCEID"; //NOXLATE
                 delparam.Value = resourceId;
                 delop.Parameters.Parameter.Add(delparam);
                 manifest.Operations.Operation.Add(delop);
             }
 
             ResourcePackageManifestOperationsOperation op = new ResourcePackageManifestOperationsOperation();
-            if (resourceId.EndsWith("//"))
-                op.Name = "UPDATEREPOSITORY";
+            if (resourceId.EndsWith("//")) //NOXLATE
+                op.Name = "UPDATEREPOSITORY"; //NOXLATE
             else
-                op.Name = "SETRESOURCE";
-            op.Version = "1.0.0";
+                op.Name = "SETRESOURCE"; //NOXLATE
+            op.Version = "1.0.0"; //NOXLATE
             op.Parameters = new ResourcePackageManifestOperationsOperationParameters();
             op.Parameters.Parameter = new System.ComponentModel.BindingList<ResourcePackageManifestOperationsOperationParametersParameter>();
 
             ResourcePackageManifestOperationsOperationParametersParameter param = new ResourcePackageManifestOperationsOperationParametersParameter();
 
-            param.Name = "HEADER";
+            param.Name = "HEADER"; //NOXLATE
             param.Value = headerpath;
-            param.ContentType = "text/xml";
+            param.ContentType = "text/xml"; //NOXLATE
             op.Parameters.Parameter.Add(param);
 
             param = new ResourcePackageManifestOperationsOperationParametersParameter();
-            param.Name = "RESOURCEID";
+            param.Name = "RESOURCEID"; //NOXLATE
             param.Value = resourceId;
             op.Parameters.Parameter.Add(param);
 
@@ -676,7 +676,7 @@ namespace Maestro.Packaging
             return filebase.Substring(temppath.Length);
         }
 
-        private System.Text.RegularExpressions.Regex m_filenameTransformer = new System.Text.RegularExpressions.Regex(@"[^A-Za-z0-9\.-\/]", System.Text.RegularExpressions.RegexOptions.Compiled);
+        private System.Text.RegularExpressions.Regex m_filenameTransformer = new System.Text.RegularExpressions.Regex(@"[^A-Za-z0-9\.-\/]", System.Text.RegularExpressions.RegexOptions.Compiled); //NOXLATE
 
         //There are some problems with the Zip reader in MapGuide and international characters :(
         private string EncodeFilename(string filename)
@@ -687,7 +687,7 @@ namespace Maestro.Packaging
 
             while (m != null && m.Success)
             {
-                string replaceval = string.Format("-x{0:x2}-", (int)m.Value[0]);
+                string replaceval = string.Format("-x{0:x2}-", (int)m.Value[0]); //NOXLATE
 
                 sb.Append(filename.Substring(previndex, m.Index - previndex));
                 sb.Append(replaceval);
@@ -709,11 +709,11 @@ namespace Maestro.Packaging
         {
             var rid = new ResourceIdentifier(resourceId);
             string filebase = EncodeFilename(rid.Name);
-            string folder = "Library/" + EncodeFilename(rid.Path);
+            string folder = "Library/" + EncodeFilename(rid.Path); //NOXLATE
             folder = folder.Substring(0, folder.Length - filebase.Length);
-            filebase += resourceId.Substring(resourceId.LastIndexOf('.'));
+            filebase += resourceId.Substring(resourceId.LastIndexOf('.')); //NOXLATE
 
-            folder = folder.Replace('/', System.IO.Path.DirectorySeparatorChar);
+            folder = folder.Replace('/', System.IO.Path.DirectorySeparatorChar); //NOXLATE
             folder = System.IO.Path.Combine(temppath, folder);
 
             return System.IO.Path.Combine(folder, filebase);
@@ -721,10 +721,10 @@ namespace Maestro.Packaging
 
         private void RemapFiles(IServerConnection connection, ResourcePackageManifest manifest, string tempdir, string origpath, string newpath, List<KeyValuePair<string, string>> filemap)
         {
-            if (!newpath.EndsWith("/"))
-                newpath += "/";
-            if (!origpath.EndsWith("/"))
-                origpath += "/";
+            if (!newpath.EndsWith("/")) //NOXLATE
+                newpath += "/"; //NOXLATE
+            if (!origpath.EndsWith("/")) //NOXLATE
+                origpath += "/"; //NOXLATE
 
             Dictionary<string, string> lookup = new Dictionary<string, string>();
             foreach (KeyValuePair<string, string> p in filemap)
@@ -732,10 +732,10 @@ namespace Maestro.Packaging
 
             foreach (ResourcePackageManifestOperationsOperation op in manifest.Operations.Operation)
             {
-                op.Parameters.SetParameterValue("RESOURCEID", newpath + op.Parameters.GetParameterValue("RESOURCEID").Substring(origpath.Length));
-                if (op.Parameters.GetParameterValue("CONTENT") != null)
+                op.Parameters.SetParameterValue("RESOURCEID", newpath + op.Parameters.GetParameterValue("RESOURCEID").Substring(origpath.Length)); //NOXLATE
+                if (op.Parameters.GetParameterValue("CONTENT") != null) //NOXLATE
                 {
-                    string path = System.IO.Path.Combine(tempdir, op.Parameters.GetParameterValue("CONTENT").Replace('/', System.IO.Path.DirectorySeparatorChar));
+                    string path = System.IO.Path.Combine(tempdir, op.Parameters.GetParameterValue("CONTENT").Replace('/', System.IO.Path.DirectorySeparatorChar)); //NOXLATE
                     System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
                     doc.Load(lookup[path]);
                     ((PlatformConnectionBase)connection).UpdateResourceReferences(doc, origpath, newpath, true);
@@ -804,7 +804,7 @@ namespace Maestro.Packaging
             "	<Security xsi:noNamespaceSchemaLocation=\"ResourceSecurity-1.0.0.xsd\">\n" +
             "		<Inherited>true</Inherited>\n" +
             "	</Security>\n" +
-            "</ResourceFolderHeader>";
+            "</ResourceFolderHeader>"; //NOXLATE
 
 
         private string MapResourcePathToFolder(string tempfolder, string resourcename)
@@ -845,7 +845,7 @@ namespace Maestro.Packaging
                         Progress(ProgressType.ReadingFileList, sourcePackageFile, 100, 100);
 
                     if (Progress != null)
-                        Progress(ProgressType.PreparingFolder, "", items.Count, 0);
+                        Progress(ProgressType.PreparingFolder, string.Empty, items.Count, 0);
 
                     foreach (ResourceItem ri in items)
                     {
@@ -855,15 +855,15 @@ namespace Maestro.Packaging
                         string filebase;
                         if (ri.IsFolder)
                         {
-                            filebase = System.IO.Path.GetDirectoryName(MapResourcePathToFolder(tempfolder, ri.ResourcePath + "dummy.xml"));
+                            filebase = System.IO.Path.GetDirectoryName(MapResourcePathToFolder(tempfolder, ri.ResourcePath + "dummy.xml")); //NOXLATE
                             if (!filebase.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()))
                                 filebase += System.IO.Path.DirectorySeparatorChar;
                         }
                         else
                             filebase = MapResourcePathToFolder(tempfolder, ri.ResourcePath);
 
-                        string headerpath = filebase + "_HEADER.xml";
-                        string contentpath = filebase + "_CONTENT.xml";
+                        string headerpath = filebase + "_HEADER.xml"; //NOXLATE
+                        string contentpath = filebase + "_CONTENT.xml"; //NOXLATE
 
                         if (ri.EntryType == EntryTypeEnum.Added)
                         {
@@ -925,7 +925,7 @@ namespace Maestro.Packaging
 
                         foreach (ResourceDataItem rdi in ri.Items)
                         {
-                            string targetpath = filebase + "_DATA_" + EncodeFilename(rdi.ResourceName);
+                            string targetpath = filebase + "_DATA_" + EncodeFilename(rdi.ResourceName); //NOXLATE
                             if (rdi.EntryType == EntryTypeEnum.Added)
                             {
                                 var tempFilePath = System.IO.Path.Combine(tempfolder, ri.GenerateUniqueName());
@@ -996,7 +996,7 @@ namespace Maestro.Packaging
 
                 //Step 3: Create an updated definition file
                 ResourcePackageManifest manifest = new ResourcePackageManifest();
-                manifest.Description = "MapGuide Package created by Maestro";
+                manifest.Description = "MapGuide Package created by Maestro"; //NOXLATE
                 manifest.Operations = new ResourcePackageManifestOperations();
                 manifest.Operations.Operation = new System.ComponentModel.BindingList<ResourcePackageManifestOperationsOperation>();
 
@@ -1007,7 +1007,7 @@ namespace Maestro.Packaging
                         AddFolderResource(
                             manifest,
                             ri.ResourcePath,
-                            RelativeName(ri.Headerpath, tempfolder).Replace('\\', '/'),
+                            RelativeName(ri.Headerpath, tempfolder).Replace('\\', '/'), //NOXLATE
                             insertEraseCommands);
                     }
                     else
@@ -1015,8 +1015,8 @@ namespace Maestro.Packaging
                         AddFileResource(
                             manifest,
                             ri.ResourcePath,
-                            RelativeName(ri.Headerpath, tempfolder).Replace('\\', '/'),
-                            RelativeName(ri.Contentpath, tempfolder).Replace('\\', '/'),
+                            RelativeName(ri.Headerpath, tempfolder).Replace('\\', '/'), //NOXLATE
+                            RelativeName(ri.Contentpath, tempfolder).Replace('\\', '/'), //NOXLATE
                             insertEraseCommands);
 
                         foreach (ResourceDataItem rdi in ri.Items)
@@ -1027,13 +1027,13 @@ namespace Maestro.Packaging
                                 rdi.ContentType,
                                 rdi.DataType,
                                 rdi.ResourceName,
-                                RelativeName(rdi.Filename, tempfolder).Replace('\\', '/'),
+                                RelativeName(rdi.Filename, tempfolder).Replace('\\', '/'), //NOXLATE
                                 new System.IO.FileInfo(filemap_lookup[rdi.Filename]).Length);
                         }
                     }
                 }
 
-                filemap.Add(new KeyValuePair<string, string>(System.IO.Path.Combine(tempfolder, "MgResourcePackageManifest.xml"), System.IO.Path.Combine(tempfolder, Guid.NewGuid().ToString())));
+                filemap.Add(new KeyValuePair<string, string>(System.IO.Path.Combine(tempfolder, "MgResourcePackageManifest.xml"), System.IO.Path.Combine(tempfolder, Guid.NewGuid().ToString()))); //NOXLATE
                 using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
                     m_connection.ResourceService.SerializeObject(manifest, fs);
 
@@ -1055,9 +1055,9 @@ namespace Maestro.Packaging
 
         private int FindZipEntry(ICSharpCode.SharpZipLib.Zip.ZipFile file, string path)
         {
-            string p = path.Replace('\\', '/');
+            string p = path.Replace('\\', '/'); //NOXLATE
             foreach (ICSharpCode.SharpZipLib.Zip.ZipEntry ze in file)
-                if (ze.Name.Replace('\\', '/').Equals(p))
+                if (ze.Name.Replace('\\', '/').Equals(p)) //NOXLATE
                     return (int)ze.ZipFileIndex;
 
             return -1;
@@ -1079,7 +1079,7 @@ namespace Maestro.Packaging
             ICSharpCode.SharpZipLib.Zip.ZipConstants.DefaultCodePage = System.Text.Encoding.UTF8.CodePage;
             using (ICSharpCode.SharpZipLib.Zip.ZipFile zipfile = new ICSharpCode.SharpZipLib.Zip.ZipFile(packageFile))
             {
-                int index = FindZipEntry(zipfile, "MgResourcePackageManifest.xml");
+                int index = FindZipEntry(zipfile, "MgResourcePackageManifest.xml"); //NOXLATE
                 if (index < 0)
                     throw new Exception(Properties.Resources.InvalidPackageFileError);
 
@@ -1096,26 +1096,26 @@ namespace Maestro.Packaging
                 if (Progress != null)
                     Progress(ProgressType.ListingFiles, packageFile, manifest.Operations.Operation.Count, i++);
 
-                if (op.Name.ToLower().Equals("setresource"))
+                if (op.Name.ToLower().Equals("setresource")) //NOXLATE
                 {
-                    string id = op.Parameters.GetParameterValue("RESOURCEID");
+                    string id = op.Parameters.GetParameterValue("RESOURCEID"); //NOXLATE
                     string header;
-                    if (op.Parameters.GetParameterValue("HEADER") != null)
-                        header = op.Parameters.GetParameterValue("HEADER");
+                    if (op.Parameters.GetParameterValue("HEADER") != null) //NOXLATE
+                        header = op.Parameters.GetParameterValue("HEADER"); //NOXLATE
                     else
                         header = null;
-                    string content = op.Parameters.GetParameterValue("CONTENT") == null ? null : op.Parameters.GetParameterValue("CONTENT");
+                    string content = op.Parameters.GetParameterValue("CONTENT") == null ? null : op.Parameters.GetParameterValue("CONTENT"); //NOXLATE
 
                     resourceList.Add(id, new ResourceItem(id, header, content));
                 }
-                else if (op.Name.ToLower().Equals("setresourcedata"))
+                else if (op.Name.ToLower().Equals("setresourcedata")) //NOXLATE
                 {
-                    string id = op.Parameters.GetParameterValue("RESOURCEID");
+                    string id = op.Parameters.GetParameterValue("RESOURCEID"); //NOXLATE
                     ResourceItem ri = resourceList[id];
-                    string name = op.Parameters.GetParameterValue("DATANAME");
-                    string file = op.Parameters.GetParameterValue("DATA");
-                    string contentType = op.Parameters.GetParameterValue("DATA");
-                    string dataType = op.Parameters.GetParameterValue("DATATYPE");
+                    string name = op.Parameters.GetParameterValue("DATANAME"); //NOXLATE
+                    string file = op.Parameters.GetParameterValue("DATA"); //NOXLATE
+                    string contentType = op.Parameters.GetParameterValue("DATA"); //NOXLATE
+                    string dataType = op.Parameters.GetParameterValue("DATATYPE"); //NOXLATE
 
                     ri.Items.Add(new ResourceDataItem(name, contentType, file, dataType));
                 }
@@ -1169,7 +1169,7 @@ namespace Maestro.Packaging
         public SetResourcePackageOperation(string resId, string content, string header)
             : base(resId)
         {
-            this.OperationName = "SETRESOURCE";
+            this.OperationName = "SETRESOURCE"; //NOXLATE
             this.Content = content;
             this.Header = header;
         }
@@ -1227,7 +1227,7 @@ namespace Maestro.Packaging
             unchecked
             {
                 int hash = 17;
-                hash = hash * 23 + (this.Content ?? "").GetHashCode();
+                hash = hash * 23 + (this.Content ?? string.Empty).GetHashCode();
                 if (this.Header != null)
                     hash = hash * 23 + this.Header.GetHashCode();
                 hash = hash * 23 + this.OperationName.GetHashCode();
@@ -1253,7 +1253,7 @@ namespace Maestro.Packaging
         public SetResourceDataPackageOperation(string resId, string data, string dataName, ResourceDataType dataType)
             : base(resId)
         {
-            this.OperationName = "SETRESOURCEDATA";
+            this.OperationName = "SETRESOURCEDATA"; //NOXLATE
             this.Data = data;
             this.DataName = dataName;
             this.DataType = dataType;

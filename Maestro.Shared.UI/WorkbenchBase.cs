@@ -82,7 +82,7 @@ namespace Maestro.Shared.UI
             toolbar = _workbenchInitializer.GetMainToolStrip(this);
             toolbar.Stretch = true;
 
-            AddToolbar("Base", toolbar, ToolbarRegion.Top, true);
+            AddToolbar("Base", toolbar, ToolbarRegion.Top, true); //NOXLATE
             
             status = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();

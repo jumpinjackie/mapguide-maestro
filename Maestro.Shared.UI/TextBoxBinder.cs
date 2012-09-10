@@ -60,7 +60,7 @@ namespace Maestro.Shared.UI
         /// <returns></returns>
         public static Binding BindText(TextBoxBase txt, object dataSource, string dataMember)
         {
-            var binding = txt.DataBindings.Add("Text", dataSource, dataMember);
+            var binding = txt.DataBindings.Add("Text", dataSource, dataMember); //NOXLATE
             txt.TextChanged += (sender, e) => 
             { 
                 binding.WriteValue(); 

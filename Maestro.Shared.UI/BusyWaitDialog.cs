@@ -52,9 +52,9 @@ namespace Maestro.Shared.UI
         public static void Run(string message, BusyWaitDelegate action, Action<object> onComplete)
         {
             if (action == null)
-                throw new ArgumentNullException("action");
+                throw new ArgumentNullException("action"); //NOXLATE
             if (onComplete == null)
-                throw new ArgumentNullException("onComplete");
+                throw new ArgumentNullException("onComplete"); //NOXLATE
             
             var frm = new BusyWaitDialog(action);
             frm.lblBusy.Text = message;

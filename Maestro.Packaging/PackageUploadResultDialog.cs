@@ -48,9 +48,9 @@ namespace Maestro.Packaging
             lblSkipped.Text = string.Format(Properties.Resources.PackageOperationsSkipped, result.SkipOperations.Count);
             lblSucceeded.Text = string.Format(Properties.Resources.PackageOperationsSucceeded, result.Successful.Count);
             //grdFailed.DataSource = result.Failed;
-            grdFailed.Columns.Add("Resource ID", "Resource ID");
-            grdFailed.Columns.Add("Operation", "Operation");
-            grdFailed.Columns.Add("Error", "Error");
+            grdFailed.Columns.Add("Resource ID", Properties.Resources.HeaderResourceId); //NOXLATE
+            grdFailed.Columns.Add("Operation", Properties.Resources.HeaderOperation); //NOXLATE
+            grdFailed.Columns.Add("Error", Properties.Resources.HeaderError); //NOXLATE
             foreach (var op in result.Failed.Keys)
             {
                 grdFailed.Rows.Add(op.ResourceId, op.OperationName, result.Failed[op].ToString());
