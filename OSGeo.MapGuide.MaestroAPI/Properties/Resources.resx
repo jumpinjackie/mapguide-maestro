@@ -2796,4 +2796,502 @@
   <data name="CompositeStyleDisplayString" xml:space="preserve">
     <value>[Composite Style]</value>
   </data>
+  <data name="ErrorArgContainsReservedCharacters" xml:space="preserve">
+    <value>{0} contains reserved characters</value>
+  </data>
+  <data name="ErrorBadNullEncodedString" xml:space="preserve">
+    <value>Bad null encoded string</value>
+  </data>
+  <data name="ErrorBoundingBoxDoesNotHave2Dimensions" xml:space="preserve">
+    <value>Bounding box for map had {0} dimensions. Expected 2 dimensions</value>
+  </data>
+  <data name="ErrorCurrentRecordIsEmpty" xml:space="preserve">
+    <value>Current record is empty</value>
+  </data>
+  <data name="ErrorEmptyFeatureSourceId" xml:space="preserve">
+    <value>Empty feature source id</value>
+  </data>
+  <data name="ErrorExprCurrentRowIsEmpty" xml:space="preserve">
+    <value>Unable to evaluate. Current row is empty</value>
+  </data>
+  <data name="ErrorFailedToFindTypeForClrType" xml:space="preserve">
+    <value>Failed to find type for: {0}</value>
+  </data>
+  <data name="ErrorFailedValueConversion" xml:space="preserve">
+    <value>Failed to convert value for {0} from {1} to {2}</value>
+  </data>
+  <data name="ErrorInvalidClassIdentifierBox2d" xml:space="preserve">
+    <value>Invalid class identifier. Expected Box2D</value>
+  </data>
+  <data name="ErrorInvalidGroupObjectId" xml:space="preserve">
+    <value>Group must have object id 12001, but had: {0}</value>
+  </data>
+  <data name="ErrorInvalidMapVersion" xml:space="preserve">
+    <value>Invalid or unsupported map version</value>
+  </data>
+  <data name="ErrorJaggedResultSet" xml:space="preserve">
+    <value>Incoming record must be structurally identical</value>
+  </data>
+  <data name="ErrorKeyAlreadyExists" xml:space="preserve">
+    <value>Key {0} already exists</value>
+  </data>
+  <data name="ErrorLayerHasNoPk" xml:space="preserve">
+    <value>The layer does not have a primary key, and cannot be used for selection</value>
+  </data>
+  <data name="ErrorLayerKeyMismatch" xml:space="preserve">
+    <value>The layers key consists of {0} columns, but only {1} columns were given</value>
+  </data>
+  <data name="ErrorNoClassNameSpecified" xml:space="preserve">
+    <value>No class name specified</value>
+  </data>
+  <data name="ErrorNoCoordinateSystemWktSpecified" xml:space="preserve">
+    <value>No coordinate system WKT specified</value>
+  </data>
+  <data name="ErrorNoExtentSpecifiedForStaticType" xml:space="preserve">
+    <value>No extent specified for static extent type</value>
+  </data>
+  <data name="ErrorNoFeatureSourceIdSpecified" xml:space="preserve">
+    <value>No feature source id specified</value>
+  </data>
+  <data name="ErrorNoFileNameSpecified" xml:space="preserve">
+    <value>No file name specified</value>
+  </data>
+  <data name="ErrorNoProviderSpecified" xml:space="preserve">
+    <value>No provider specified</value>
+  </data>
+  <data name="ErrorNoResourceIdAttached" xml:space="preserve">
+    <value>Resource has no resource id attached</value>
+  </data>
+  <data name="ErrorNoSchemaSpecified" xml:space="preserve">
+    <value>No schema specified</value>
+  </data>
+  <data name="ErrorNoSchemaSpecifiedToApply" xml:space="preserve">
+    <value>No schema specified to apply</value>
+  </data>
+  <data name="ErrorNoSpatialContextNameSpecified" xml:space="preserve">
+    <value>No spatial context name specified. This is the name that should be referred to by any spatial context associations in your feature schema</value>
+  </data>
+  <data name="ErrorNothingToInsert" xml:space="preserve">
+    <value>Nothing to insert</value>
+  </data>
+  <data name="ErrorNoValuesSpecifiedForUpdating" xml:space="preserve">
+    <value>No values specified for updating</value>
+  </data>
+  <data name="ErrorNullKeyValue" xml:space="preserve">
+    <value>The value for {0} is null, which is not supported as a key</value>
+  </data>
+  <data name="ErrorNullValue" xml:space="preserve">
+    <value>Null Value</value>
+  </data>
+  <data name="ErrorObjectSetNullValuesNotPermitted" xml:space="preserve">
+    <value>null values are not permitted. Use SetNull() if you need to specify null values</value>
+  </data>
+  <data name="ErrorParseExpectedCloser" xml:space="preserve">
+    <value>Expected ')' but encountered '{0}'</value>
+  </data>
+  <data name="ErrorParseExpectedCloserOrComma" xml:space="preserve">
+    <value>Expected ')' or ',' but encountered '{0}'</value>
+  </data>
+  <data name="ErrorParseExpectedEmpty" xml:space="preserve">
+    <value>Expected 'EMPTY' or '(' but encountered '{0}'</value>
+  </data>
+  <data name="ErrorParseExpectedNumber" xml:space="preserve">
+    <value>Expected number but encountered {0}</value>
+  </data>
+  <data name="ErrorParseExpectedNumberEol" xml:space="preserve">
+    <value>Expected number but encountered end of line</value>
+  </data>
+  <data name="ErrorParseExpectedNumberEos" xml:space="preserve">
+    <value>Expected number but encountered end of stream</value>
+  </data>
+  <data name="ErrorParseExpectedNumberGotWord" xml:space="preserve">
+    <value>Expected number but encountered word {0}</value>
+  </data>
+  <data name="ErrorParseExpectedWord" xml:space="preserve">
+    <value>Expected word but encountered number: {0}</value>
+  </data>
+  <data name="ErrorParseGeometryRead" xml:space="preserve">
+    <value>Error reading geometry</value>
+  </data>
+  <data name="ErrorParseUnknownType" xml:space="preserve">
+    <value>Unknown type: {0}</value>
+  </data>
+  <data name="ErrorProviderAlreadyRegistered" xml:space="preserve">
+    <value>Provider already registered: {0}</value>
+  </data>
+  <data name="ErrorProviderNotRegistered" xml:space="preserve">
+    <value>Provider not registered: {0}</value>
+  </data>
+  <data name="ErrorProviderNotUsableForYourPlatform" xml:space="preserve">
+    <value>The specified provider is not usable in your operating system: {0}</value>
+  </data>
+  <data name="ErrorResourceIdentifierClassIdNotFound" xml:space="preserve">
+    <value>Resource Identifier class id expected, but got: {0}</value>
+  </data>
+  <data name="ErrorRuntimeMapNotInSessionRepo" xml:space="preserve">
+    <value>Runtime maps must be in the session repository</value>
+  </data>
+  <data name="ErrorSelectedLayerHasNoId" xml:space="preserve">
+    <value>A layer in selection had no id</value>
+  </data>
+  <data name="ErrorSettingVisibilityOfTiledLayer" xml:space="preserve">
+    <value>Setting visibility of tiled map layers is not permitted</value>
+  </data>
+  <data name="ErrorShouldHaveNoLayerDataInMap" xml:space="preserve">
+    <value>On new versions, there should be no layer data in map</value>
+  </data>
+  <data name="ErrorTokenListContainsNullValue" xml:space="preserve">
+    <value>Token list contains a null value</value>
+  </data>
+  <data name="ErrorUnsupportedPkType" xml:space="preserve">
+    <value>The type {0} is not supported for primary keys</value>
+  </data>
+  <data name="TemplateCreated" xml:space="preserve">
+    <value>Created: {0}</value>
+  </data>
+  <data name="TemplateFileNotFound" xml:space="preserve">
+    <value>File not found: {0}</value>
+  </data>
+  <data name="TemplateFileProcessed" xml:space="preserve">
+    <value>File processed: {0}</value>
+  </data>
+  <data name="TemplateLoaded" xml:space="preserve">
+    <value>Loaded: {0}</value>
+  </data>
+  <data name="TemplateSetSpatialContext" xml:space="preserve">
+    <value>Set default spatial context for: {0}</value>
+  </data>
+  <data name="TemplateSuccess" xml:space="preserve">
+    <value>Success: {0}</value>
+  </data>
+  <data name="TemplateUploadedPrj" xml:space="preserve">
+    <value>Uploaded: {0}.prj</value>
+  </data>
+  <data name="ErrorBadDocumentExpectedElement" xml:space="preserve">
+    <value>Bad document. Expected element {0}</value>
+  </data>
+  <data name="ErrorBadDocumentInvalidBbox" xml:space="preserve">
+    <value>Bad document. Invalid bounding box</value>
+  </data>
+  <data name="ErrorCmsOptionsOnMapGuideMap" xml:space="preserve">
+    <value>Commerical layer options are only available for non-MapGuide maps</value>
+  </data>
+  <data name="ErrorInvalidResourceIdentifier" xml:space="preserve">
+    <value>Invalid resource identifier</value>
+  </data>
+  <data name="ErrorNoServerConnectionAttached" xml:space="preserve">
+    <value>No server connection set for object</value>
+  </data>
+  <data name="ErrorNullNotAccepted" xml:space="preserve">
+    <value>Null values not accepted</value>
+  </data>
+  <data name="ErrorOverlayOptionsOnNonMapGuideMap" xml:space="preserve">
+    <value>Overlay options are only applicable to MapGuide maps</value>
+  </data>
+  <data name="ErrorUnexpectedResourceType" xml:space="preserve">
+    <value>Unexpected resource type for {0}. Expected {1}</value>
+  </data>
+  <data name="ErrorValueNotComparable" xml:space="preserve">
+    <value>Value is not comparable</value>
+  </data>
+  <data name="ErrorValueOutOfRange" xml:space="preserve">
+    <value>Value falls outside the range of {0} and  {1}</value>
+  </data>
+  <data name="TitlePreview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="ErrorCouldNotDetermineSymbolType" xml:space="preserve">
+    <value>Could not determine symbol type</value>
+  </data>
+  <data name="ErrorObjectNotICompositeTypeStyle" xml:space="preserve">
+    <value>Value does not implement ICompositeTypeStyle</value>
+  </data>
+  <data name="ErrorBadDocumentExpectedAttribute" xml:space="preserve">
+    <value>Bad document. Expected attribute: {0}</value>
+  </data>
+  <data name="ErrorBadHtmlColor" xml:space="preserve">
+    <value>Bad HTML color: {0}</value>
+  </data>
+  <data name="ErrorBinarySerializerInvalidAmountOfCoordinates" xml:space="preserve">
+    <value>Invalid amount of coordinates</value>
+  </data>
+  <data name="ErrorBinarySerializerInvalidCoordinateDimensionCount" xml:space="preserve">
+    <value>Coordinate count reported: {0}, for a single coordinate</value>
+  </data>
+  <data name="ErrorInvalidResourceHeaderRootElement" xml:space="preserve">
+    <value>Header must be either ResourceFolderHeaderType or ResourceDocumentHeaderType</value>
+  </data>
+  <data name="ErrorInvalidResourceIdentifierType" xml:space="preserve">
+    <value>Invalid resource identifier type. Must be Library or Session</value>
+  </data>
+  <data name="ErrorNoDataInResource" xml:space="preserve">
+    <value>No data found in resource: {0}</value>
+  </data>
+  <data name="ErrorNotAQualifiedClassName" xml:space="preserve">
+    <value>Not a qualified class name: {0}</value>
+  </data>
+  <data name="ErrorPropertyNotFound" xml:space="preserve">
+    <value>Property not found: {0}</value>
+  </data>
+  <data name="ErrorResourceIdCannotChangeExtensionForFolder" xml:space="preserve">
+    <value>Cannot change extension for a folder</value>
+  </data>
+  <data name="ErrorResourceIdentifierInvalidChars" xml:space="preserve">
+    <value>The resource name must not contain ':', \"//\" or '.'</value>
+  </data>
+  <data name="ErrorResourceIdentifierNameInvalidChars" xml:space="preserve">
+    <value>The new name must not contain the \"/\" character</value>
+  </data>
+  <data name="ErrorResourceIdInvalidExtension" xml:space="preserve">
+    <value>The supplied extension is invalid</value>
+  </data>
+  <data name="ErrorResourceMustBeUpdatedWithFolderHeader" xml:space="preserve">
+    <value>The resourceId: {0} must be updated with a folder header</value>
+  </data>
+  <data name="ErrorTypeHasNoSchemaInfo" xml:space="preserve">
+    <value>Type {0} does not contain schema info</value>
+  </data>
+  <data name="ErrorUnknownResourceType" xml:space="preserve">
+    <value>The given type is not a known resource type</value>
+  </data>
+  <data name="ErrorUnsupporteFdoSchemaXml" xml:space="preserve">
+    <value>Unrecognized element. Only a subset of the FDO logical schema is supported here</value>
+  </data>
+  <data name="ErrorValidationGeneric" xml:space="preserve">
+    <value>Failed in validator: {0}</value>
+  </data>
+  <data name="ProgressCopyingFolder" xml:space="preserve">
+    <value>Copying Folder ...</value>
+  </data>
+  <data name="ProgressFindingFolderRefs" xml:space="preserve">
+    <value>Finding Folder References ...</value>
+  </data>
+  <data name="ProgressMovingFolder" xml:space="preserve">
+    <value>Moving Folder ...</value>
+  </data>
+  <data name="WL_Desc_About" xml:space="preserve">
+    <value>Display information about this application</value>
+  </data>
+  <data name="WL_Desc_Buffer" xml:space="preserve">
+    <value>Create buffers around the selected features</value>
+  </data>
+  <data name="WL_Desc_ClearSelection" xml:space="preserve">
+    <value>Clear the current selection</value>
+  </data>
+  <data name="WL_Desc_Copy" xml:space="preserve">
+    <value>Copy current view of map to clipboard</value>
+  </data>
+  <data name="WL_Desc_GetPrintablePage" xml:space="preserve">
+    <value>Get Printer-friendly page</value>
+  </data>
+  <data name="WL_Desc_Help" xml:space="preserve">
+    <value>Launch help for this application</value>
+  </data>
+  <data name="WL_Desc_InitialCenterScale" xml:space="preserve">
+    <value>Zoom to initial map center and scale</value>
+  </data>
+  <data name="WL_Desc_InitialMapView" xml:space="preserve">
+    <value>Fit the extents of the map to the window</value>
+  </data>
+  <data name="WL_Desc_MapTip" xml:space="preserve">
+    <value>Click to enable/disable display of map tooltips</value>
+  </data>
+  <data name="WL_Desc_Measure" xml:space="preserve">
+    <value>Measure distances on the map</value>
+  </data>
+  <data name="WL_Desc_NextView" xml:space="preserve">
+    <value>Go to next view</value>
+  </data>
+  <data name="WL_Desc_Pan" xml:space="preserve">
+    <value>Drag the map to view areas out of range</value>
+  </data>
+  <data name="WL_Desc_PanDown" xml:space="preserve">
+    <value>Pan down by a preset increment</value>
+  </data>
+  <data name="WL_Desc_PanLeft" xml:space="preserve">
+    <value>Pan left by a preset increment</value>
+  </data>
+  <data name="WL_Desc_PanRight" xml:space="preserve">
+    <value>Pan right by a preset increment</value>
+  </data>
+  <data name="WL_Desc_PanUp" xml:space="preserve">
+    <value>Pan up by a preset increment</value>
+  </data>
+  <data name="WL_Desc_PrevView" xml:space="preserve">
+    <value>Go to previous view</value>
+  </data>
+  <data name="WL_Desc_Print" xml:space="preserve">
+    <value>Print with optional layout</value>
+  </data>
+  <data name="WL_Desc_RefreshMap" xml:space="preserve">
+    <value>Refresh map to reload all layers keeping current center and scale</value>
+  </data>
+  <data name="WL_Desc_Select" xml:space="preserve">
+    <value>Select features by clicking and dragging</value>
+  </data>
+  <data name="WL_Desc_SelectPolygon" xml:space="preserve">
+    <value>Click and drag to select all features that fall within</value>
+  </data>
+  <data name="WL_Desc_SelectRadius" xml:space="preserve">
+    <value>Click and drag to select all features inside the circle</value>
+  </data>
+  <data name="WL_Desc_SelectWithin" xml:space="preserve">
+    <value>Select features that fall within currently selected areas</value>
+  </data>
+  <data name="WL_Desc_TaskBack" xml:space="preserve">
+    <value>Return to previous task page</value>
+  </data>
+  <data name="WL_Desc_TaskForward" xml:space="preserve">
+    <value>Forward to next task page</value>
+  </data>
+  <data name="WL_Desc_TaskHome" xml:space="preserve">
+    <value>Return to home task page</value>
+  </data>
+  <data name="WL_Desc_TaskList" xml:space="preserve">
+    <value>View a list of available tasks</value>
+  </data>
+  <data name="WL_Desc_ViewOptions" xml:space="preserve">
+    <value>View Options</value>
+  </data>
+  <data name="WL_Desc_ZoomDynamic" xml:space="preserve">
+    <value>Zoom dynamically by clicking and dragging</value>
+  </data>
+  <data name="WL_Desc_ZoomIn" xml:space="preserve">
+    <value>Zoom in by a preset increment</value>
+  </data>
+  <data name="WL_Desc_ZoomOut" xml:space="preserve">
+    <value>Zoom out by a preset increment</value>
+  </data>
+  <data name="WL_Desc_ZoomRect" xml:space="preserve">
+    <value>Zoom in on an area</value>
+  </data>
+  <data name="WL_Desc_ZoomSelection" xml:space="preserve">
+    <value>Zoom to the extents of selected features</value>
+  </data>
+  <data name="WL_Label_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="WL_Label_Buffer" xml:space="preserve">
+    <value>Buffer</value>
+  </data>
+  <data name="WL_Label_ClearSelection" xml:space="preserve">
+    <value>Clear Selection</value>
+  </data>
+  <data name="WL_Label_Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="WL_Label_GetPrintablePage" xml:space="preserve">
+    <value>Get Printable Page</value>
+  </data>
+  <data name="WL_Label_Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="WL_Label_InitialCenterScale" xml:space="preserve">
+    <value>Initial Center and Scale</value>
+  </data>
+  <data name="WL_Label_InitialMapView" xml:space="preserve">
+    <value>Initial Map View</value>
+  </data>
+  <data name="WL_Label_Measure" xml:space="preserve">
+    <value>Measure</value>
+  </data>
+  <data name="WL_Label_NextView" xml:space="preserve">
+    <value>Next View</value>
+  </data>
+  <data name="WL_Label_Pan" xml:space="preserve">
+    <value>Pan Mode</value>
+  </data>
+  <data name="WL_Label_PanDown" xml:space="preserve">
+    <value>Pan Down</value>
+  </data>
+  <data name="WL_Label_PanLeft" xml:space="preserve">
+    <value>Pan Left</value>
+  </data>
+  <data name="WL_Label_PanRight" xml:space="preserve">
+    <value>Pan Right</value>
+  </data>
+  <data name="WL_Label_PanUp" xml:space="preserve">
+    <value>Pan Up</value>
+  </data>
+  <data name="WL_Label_PrevView" xml:space="preserve">
+    <value>Previous View</value>
+  </data>
+  <data name="WL_Label_Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="WL_Label_RefreshMap" xml:space="preserve">
+    <value>Refresh Map</value>
+  </data>
+  <data name="WL_Label_Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="WL_Label_SelectMore" xml:space="preserve">
+    <value>Select More</value>
+  </data>
+  <data name="WL_Label_SelectPolygon" xml:space="preserve">
+    <value>Select Polygon</value>
+  </data>
+  <data name="WL_Label_SelectRadius" xml:space="preserve">
+    <value>Select Radius</value>
+  </data>
+  <data name="WL_Label_SelectWithin" xml:space="preserve">
+    <value>Select Within</value>
+  </data>
+  <data name="WL_Label_TaskList" xml:space="preserve">
+    <value>Task List</value>
+  </data>
+  <data name="WL_Label_ViewOptions" xml:space="preserve">
+    <value>View Options</value>
+  </data>
+  <data name="WL_Label_Zoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="WL_Label_ZoomDynamic" xml:space="preserve">
+    <value>Zoom Dynamic</value>
+  </data>
+  <data name="WL_Label_ZoomIn" xml:space="preserve">
+    <value>Zoom In</value>
+  </data>
+  <data name="WL_Label_ZoomOut" xml:space="preserve">
+    <value>Zoom Out</value>
+  </data>
+  <data name="WL_Label_ZoomRect" xml:space="preserve">
+    <value>Zoom Rectangle</value>
+  </data>
+  <data name="WL_Label_ZoomSelection" xml:space="preserve">
+    <value>Zoom Selection</value>
+  </data>
+  <data name="ErrorBinarySerializerBufferTooSmall" xml:space="preserve">
+    <value>Buffer too small</value>
+  </data>
+  <data name="ErrorBinarySerializerCoordinateUnexpectedType" xml:space="preserve">
+    <value>Coordinate expected, but got object: {0}</value>
+  </data>
+  <data name="ErrorBinarySerializerExpectedEndOfStream" xml:space="preserve">
+    <value>The read value was: {0} while &lt;end of stream&gt; was expected</value>
+  </data>
+  <data name="ErrorBinarySerializerGetCharWidth" xml:space="preserve">
+    <value>Failed to get valid string char width</value>
+  </data>
+  <data name="ErrorBinarySerializerPrematureEndOfStream" xml:space="preserve">
+    <value>Stream ended prematurely</value>
+  </data>
+  <data name="ErrorBinarySerializerStreamExhausted" xml:space="preserve">
+    <value>Stream exhausted while reading {0} bytes</value>
+  </data>
+  <data name="ErrorBinarySerializerUnexpectedType" xml:space="preserve">
+    <value>Data in stream had type: {0} but type '{1}' was expected</value>
+  </data>
+  <data name="ErrorBinarySerializerUnknownObjectType" xml:space="preserve">
+    <value>Unknown object type: {0}</value>
+  </data>
+  <data name="WL_Label_TaskBack" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="WL_Label_TaskForward" xml:space="preserve">
+    <value>Forward</value>
+  </data>
+  <data name="WL_Label_TaskHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
 </root>

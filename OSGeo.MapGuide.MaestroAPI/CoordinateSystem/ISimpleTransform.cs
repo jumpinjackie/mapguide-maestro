@@ -51,7 +51,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         private ICoordinateSystem _target;
         private ICoordinateTransformation _trans;
 
-        const string CSMAP_WGS84_PSEUDO_MERCATOR = @"PROJCS[""WGS84.PseudoMercator"",GEOGCS[""LL84"",DATUM[""WGS84"",SPHEROID[""WGS84"",6378137.000,298.25722293]],PRIMEM[""Greenwich"",0],UNIT[""Degree"",0.017453292519943295]],PROJECTION[""Popular Visualisation Pseudo Mercator""],PARAMETER[""false_easting"",0.000],PARAMETER[""false_northing"",0.000],PARAMETER[""central_meridian"",0.00000000000000],UNIT[""Meter"",1.00000000000000]]";
+        const string CSMAP_WGS84_PSEUDO_MERCATOR = @"PROJCS[""WGS84.PseudoMercator"",GEOGCS[""LL84"",DATUM[""WGS84"",SPHEROID[""WGS84"",6378137.000,298.25722293]],PRIMEM[""Greenwich"",0],UNIT[""Degree"",0.017453292519943295]],PROJECTION[""Popular Visualisation Pseudo Mercator""],PARAMETER[""false_easting"",0.000],PARAMETER[""false_northing"",0.000],PARAMETER[""central_meridian"",0.00000000000000],UNIT[""Meter"",1.00000000000000]]"; //NOXLATE
 
         // Proj.Net cannot handle the WGS84.PseudoMercator WKT. Here's an alternative WKT that is Proj.Net compatible and produces
         // approximately similar results:
@@ -75,7 +75,7 @@ PARAMETER[""Central_Meridian"", 0],
 PARAMETER[""Latitude_of_origin"", 0],
 UNIT[""metre"", 1, AUTHORITY[""EPSG"", ""9001""]],
 AXIS[""East"", EAST], AXIS[""North"", NORTH],
-AUTHORITY[""EPSG"",""3785""]]";
+AUTHORITY[""EPSG"",""3785""]]"; //NOXLATE
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultSimpleTransform"/> class.

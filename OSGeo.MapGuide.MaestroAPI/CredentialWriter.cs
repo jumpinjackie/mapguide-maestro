@@ -40,12 +40,12 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="password"></param>
         public static void SetEncryptedCredentials(this IFeatureSource fs, string username, string password)
         {
-            Check.NotNull(fs, "fs");
+            Check.NotNull(fs, "fs"); //NOXLATE
             if (string.IsNullOrEmpty(fs.ResourceID))
-                throw new ArgumentException("Feature Source has no resource ID attached"); //LOCALIZEME
+                throw new ArgumentException(Properties.Resources.ErrorNoResourceIdAttached);
             using (var stream = CredentialWriter.Write(username, password))
             {
-                fs.SetResourceData("MG_USER_CREDENTIALS", ObjectModels.Common.ResourceDataType.String, stream);
+                fs.SetResourceData(StringConstants.MgUserCredentialsResourceData, ObjectModels.Common.ResourceDataType.String, stream);
             }
         }
 
@@ -56,13 +56,13 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public static string GetEncryptedUsername(this IFeatureSource fs)
         {
-            Check.NotNull(fs, "fs");
+            Check.NotNull(fs, "fs"); //NOXLATE
             var resData = fs.EnumerateResourceData();
             foreach (var rd in resData)
             {
-                if (rd.Name.ToUpper() == "MG_USER_CREDENTIALS")
+                if (rd.Name.ToUpper() == StringConstants.MgUserCredentialsResourceData)
                 {
-                    using (var sr = new StreamReader(fs.GetResourceData("MG_USER_CREDENTIALS")))
+                    using (var sr = new StreamReader(fs.GetResourceData(StringConstants.MgUserCredentialsResourceData)))
                     {
                         return sr.ReadToEnd();
                     }
@@ -83,20 +83,20 @@ namespace OSGeo.MapGuide.MaestroAPI
         //I'm sure this particular key isn't meant to be made public, but being able to correctly
         //write MG_USER_CREDENTIALS trumps this concern. Besides, if this key were to be truly private, it wouldn't be publicly visible
         //in the source code of a publicly accessible repository now would it?
-        const string MG_CRYPTOGRAPHY_PRIVATE_KEY         = "WutsokeedbA";
+        const string MG_CRYPTOGRAPHY_PRIVATE_KEY         = "WutsokeedbA"; //NOXLATE
 
-        static readonly char[] MG_CRYPTOGRAPHY_DEC_CHARS = { '0','1','2','3','4','5','6','7','8','9' };
-        static readonly char[] MG_CRYPTOGRAPHY_HEX_CHARS = { '0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'};
-        const int MG_CRYPTOGRAPHY_MAGIC_NUMBER_1         = 42;
+        static readonly char[] MG_CRYPTOGRAPHY_DEC_CHARS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' }; //NOXLATE
+        static readonly char[] MG_CRYPTOGRAPHY_HEX_CHARS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' }; //NOXLATE
+        const int MG_CRYPTOGRAPHY_MAGIC_NUMBER_1         = 42; //NOXLATE
         const int MG_CRYPTOGRAPHY_MAGIC_NUMBER_2         = 3;
         const int MG_CRYPTOGRAPHY_MIN_COLUMN_NUMBER      = 5;
 
         const int MIN_CIPHER_TEXT_LENGTH = 34;
         const int MIN_KEY_LENGTH = 14;
         const int MAX_KEY_LENGTH = 32;
-        const string STRING_DELIMITER = "\v";
-        const string RESERVED_CHARACTERS_STRINGS = "\v\f";
-        const string RESERVED_CHARACTERS_CREDENTIALS = "\t\r\n\v\f";
+        const string STRING_DELIMITER = "\v"; //NOXLATE
+        const string RESERVED_CHARACTERS_STRINGS = "\v\f"; //NOXLATE
+        const string RESERVED_CHARACTERS_CREDENTIALS = "\t\r\n\v\f"; //NOXLATE
 
         /// <summary>
         /// Encrypts the specified credentials. For a feature source that uses %MG_USERNAME% and %MG_PASSWORD% placeholder tokens to
@@ -118,11 +118,11 @@ namespace OSGeo.MapGuide.MaestroAPI
             var reservedChars = reservedCharacters.ToCharArray();
             if (plainText1.IndexOfAny(reservedChars) >= 0)
             {
-                throw new ArgumentException("plainText1 contains reserved characters");
+                throw new ArgumentException(string.Format(Properties.Resources.ErrorArgContainsReservedCharacters, "plainText1")); //NOXLATE
             }
             if (plainText2.IndexOfAny(reservedChars) >= 0)
             {
-                throw new ArgumentException("plainText2 contains reserved characters");
+                throw new ArgumentException(string.Format(Properties.Resources.ErrorArgContainsReservedCharacters, "plainText2")); //NOXLATE
             }
 
             string publicKey;
@@ -177,7 +177,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         static void GenerateCryptographKey(out string publicKey)
         {
             DateTime dt = DateTime.UtcNow;
-            publicKey = dt.ToString("yyyymmddHHmmss");
+            publicKey = dt.ToString("yyyymmddHHmmss"); //NOXLATE
         }
 
         static void CombineStrings(string str1, string str2, out string outStr)
@@ -219,7 +219,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             int binStrLen = binStr.Length;
 
-            hexStr = "";
+            hexStr = string.Empty;
 
             StringBuilder sb = new StringBuilder();
 

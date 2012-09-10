@@ -109,8 +109,8 @@ namespace OSGeo.MapGuide.ObjectModels.DrawingSource
         /// <param name="source"></param>
         public static void UpdateExtents(this IDrawingSource source)
         {
-            Check.NotNull(source, "source");
-            Check.NotEmpty(source.ResourceID, "source.ResourceID");
+            Check.NotNull(source, "source"); //NOXLATE
+            Check.NotEmpty(source.ResourceID, "source.ResourceID"); //NOXLATE
 
             //Need drawing service
             if (Array.IndexOf(source.CurrentConnection.Capabilities.SupportedServices, (int)ServiceType.Drawing) < 0)
@@ -123,7 +123,7 @@ namespace OSGeo.MapGuide.ObjectModels.DrawingSource
                 var list = drawSvc.EnumerateDrawingSectionResources(source.ResourceID, sht.Name);
                 foreach (var res in list.SectionResource)
                 {
-                    if (res.Role == "AutoCAD Viewport Data")
+                    if (res.Role == "AutoCAD Viewport Data") //NOXLATE
                     {
                         using (var stream = drawSvc.GetSectionResource(source.ResourceID, res.Href))
                         {
@@ -143,14 +143,18 @@ namespace OSGeo.MapGuide.ObjectModels.DrawingSource
                                     //
                                     //A the first space after each number of each parameter marks the end of that value
 
-                                    int idx = content.IndexOf("llx") + 4; // 4 - length of "llx="
-                                    string sllx = content.Substring(idx, content.IndexOf(" ", idx) - idx);
-                                    idx = content.IndexOf("lly") + 4; // 4 - length of "lly="
-                                    string slly = content.Substring(idx, content.IndexOf(" ", idx) - idx);
-                                    idx = content.IndexOf("urx") + 4; // 4 - length of "urx="
-                                    string surx = content.Substring(idx, content.IndexOf(" ", idx) - idx);
-                                    idx = content.IndexOf("ury") + 4; // 4 - length of "ury="
-                                    string sury = content.Substring(idx, content.IndexOf(" ", idx) - idx);
+                                    // 4 - length of "llx="
+                                    int idx = content.IndexOf("llx") + 4;  //NOXLATE
+                                    string sllx = content.Substring(idx, content.IndexOf(" ", idx) - idx); //NOXLATE
+                                    // 4 - length of "lly="
+                                    idx = content.IndexOf("lly") + 4; //NOXLATE
+                                    string slly = content.Substring(idx, content.IndexOf(" ", idx) - idx); //NOXLATE
+                                    // 4 - length of "urx="
+                                    idx = content.IndexOf("urx") + 4; //NOXLATE
+                                    string surx = content.Substring(idx, content.IndexOf(" ", idx) - idx); //NOXLATE
+                                    // 4 - length of "ury="
+                                    idx = content.IndexOf("ury") + 4; //NOXLATE
+                                    string sury = content.Substring(idx, content.IndexOf(" ", idx) - idx); //NOXLATE
 
                                     //Update extents
                                     sht.Extent = ObjectFactory.CreateEnvelope(

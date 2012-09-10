@@ -64,26 +64,6 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
                     {
                         m_items = _parent.EnumerateCoordinateSystems(m_name);
                     }
-                    /*
-                    if (_parent != null)
-                    {
-                        string req = m_httpParent.RequestBuilder.EnumerateCoordinateSystems(m_name);
-                        XmlDocument doc = new XmlDocument();
-                        doc.Load(m_httpParent.Connection.WebClient.OpenRead(req));
-                        XmlNodeList lst = doc.SelectNodes("BatchPropertyCollection/PropertyCollection");
-                        CoordSys[] data = new CoordSys[lst.Count];
-                        for (int i = 0; i < lst.Count; i++)
-                            data[i] = new CoordSys(this, lst[i]);
-                        m_items = data;
-                    }
-                    else
-                    {
-                        MgBatchPropertyCollection bp = m_localParent.m_cf.EnumerateCoordinateSystems(m_name);
-                        List<CoordSys> lst = new List<CoordSys>();
-                        for(int i = 0; i < bp.Count; i++)
-                            lst.Add(new CoordSys(this, bp[i]));
-
-                    }*/
 				}
 				return m_items;
 			}

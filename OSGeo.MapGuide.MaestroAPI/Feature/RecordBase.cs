@@ -77,7 +77,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public void PutValue(string name, PropertyValue value)
         {
             if (_values.ContainsKey(name))
-                throw new ArgumentException("Key " + name + " already exists"); //LOCALIZEME
+                throw new ArgumentException(string.Format(Properties.Resources.ErrorKeyAlreadyExists, name));
 
             _ordinalMap[this.FieldCount] = name;
             _values[name] = value;
@@ -449,7 +449,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public void Update(IRecord record)
         {
             if (record.FieldCount != this.FieldCount)
-                throw new InvalidOperationException("Incoming record must be structurally identical"); //LOCALIZEME
+                throw new InvalidOperationException(Properties.Resources.ErrorJaggedResultSet);
 
             foreach (var v in _values.Values)
             {

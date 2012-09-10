@@ -71,11 +71,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             var cls = this.Parent.GetClass(this.SchemaName, this.ClassName);
             if (cls != null)
             {
-                var ctype = doc.CreateElement("complexType");
-                ctype.SetAttribute("name", Utility.EncodeFDOName(this.ClassName) + "Type");
+                var ctype = doc.CreateElement("complexType"); //NOXLATE
+                ctype.SetAttribute("name", Utility.EncodeFDOName(this.ClassName) + "Type"); //NOXLATE
                 {
-                    var table = doc.CreateElement("Table");
-                    table.SetAttribute("name", this.ClassName);
+                    var table = doc.CreateElement("Table"); //NOXLATE
+                    table.SetAttribute("name", this.ClassName); //NOXLATE
                     ctype.AppendChild(table);
 
                     PropertyDefinition geomProp = null;
@@ -94,11 +94,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                             prop.Name == this.ZColumn)
                             continue;
 
-                        var el = doc.CreateElement("element");
-                        el.SetAttribute("name", Utility.EncodeFDOName(prop.Name));
+                        var el = doc.CreateElement("element"); //NOXLATE
+                        el.SetAttribute("name", Utility.EncodeFDOName(prop.Name)); //NOXLATE
 
-                        var col = doc.CreateElement("Column");
-                        col.SetAttribute("name", prop.Name);
+                        var col = doc.CreateElement("Column"); //NOXLATE
+                        col.SetAttribute("name", prop.Name); //NOXLATE
 
                         el.AppendChild(col);
                         ctype.AppendChild(el);
@@ -107,15 +107,15 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                     //Append geometry mapping
                     if (geomProp != null)
                     {
-                        var el = doc.CreateElement("element");
-                        el.SetAttribute("name", geomProp.Name);
+                        var el = doc.CreateElement("element"); //NOXLATE
+                        el.SetAttribute("name", geomProp.Name); //NOXLATE
 
                         if (!string.IsNullOrEmpty(this.XColumn))
-                            el.SetAttribute("xColumnName", this.XColumn);
+                            el.SetAttribute("xColumnName", this.XColumn); //NOXLATE
                         if (!string.IsNullOrEmpty(this.YColumn))
-                            el.SetAttribute("yColumnName", this.YColumn);
+                            el.SetAttribute("yColumnName", this.YColumn); //NOXLATE
                         if (!string.IsNullOrEmpty(this.ZColumn))
-                            el.SetAttribute("zColumnName", this.ZColumn);
+                            el.SetAttribute("zColumnName", this.ZColumn); //NOXLATE
 
                         ctype.AppendChild(el);
                     }
@@ -131,14 +131,14 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <param name="mgr"></param>
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
-            if (!node.Name.Equals("complexType"))
-                throw new Exception("Bad document. Expected element: complexType"); //LOCALIZEME
+            if (!node.Name.Equals("complexType")) //NOXLATE
+                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "complexType"));
 
-            var sn = node.ParentNode.Attributes["name"];
+            var sn = node.ParentNode.Attributes["name"]; //NOXLATE
             this.SchemaName = sn.Value;
 
-            var cn = node.Attributes["name"];
-            this.ClassName = Utility.DecodeFDOName(cn.Value.Substring(0, cn.Value.Length - "Type".Length));
+            var cn = node.Attributes["name"]; //NOXLATE
+            this.ClassName = Utility.DecodeFDOName(cn.Value.Substring(0, cn.Value.Length - "Type".Length)); //NOXLATE
 
             var cls = this.Parent.GetClass(this.SchemaName, this.ClassName);
             if (!string.IsNullOrEmpty(cls.DefaultGeometryPropertyName))
@@ -147,18 +147,18 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                 this.SpatialContextName = geom.SpatialContextAssociation;
             }
 
-            var table = node["Table"];
+            var table = node["Table"]; //NOXLATE
             var el = table.NextSibling;
             //foreach (System.Xml.XmlNode el in table.ChildNodes)
             while(el != null)
             {
-                var colName = el.Attributes["name"];
+                var colName = el.Attributes["name"]; //NOXLATE
 
                 if (colName.Value == cls.DefaultGeometryPropertyName)
                 {
-                    var x = el.Attributes["xColumnName"];
-                    var y = el.Attributes["yColumnName"];
-                    var z = el.Attributes["zColumnName"];
+                    var x = el.Attributes["xColumnName"]; //NOXLATE
+                    var y = el.Attributes["yColumnName"]; //NOXLATE
+                    var z = el.Attributes["zColumnName"]; //NOXLATE
 
                     if (x != null)
                         this.XColumn = x.Value;

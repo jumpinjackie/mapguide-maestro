@@ -107,13 +107,13 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         {
             foreach (var fs in _schemas)
             {
-                var map = doc.CreateElement("SchemaMapping");
+                var map = doc.CreateElement("SchemaMapping"); //NOXLATE
                 //The version is required for data compatiblity with FDO. I don't think
                 //the actual value matters. So use a safe version of FDO
-                map.SetAttribute("provider", "OSGeo.ODBC.3.2");
-                map.SetAttribute("xmlns:rdb", "http://fdordbms.osgeo.org/schemas");
-                map.SetAttribute("xmlns", "http://fdoodbc.osgeo.org/schemas");
-                map.SetAttribute("name", fs.Name);
+                map.SetAttribute("provider", "OSGeo.ODBC.3.2"); //NOXLATE
+                map.SetAttribute("xmlns:rdb", "http://fdordbms.osgeo.org/schemas"); //NOXLATE
+                map.SetAttribute("xmlns", "http://fdoodbc.osgeo.org/schemas"); //NOXLATE
+                map.SetAttribute("name", fs.Name); //NOXLATE
                 var items = GetMappingsForSchema(fs.Name);
                 if (items.Count > 0)
                 {
@@ -136,17 +136,16 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             //var mappings = node.SelectNodes("SchemaMapping", mgr);
             foreach (XmlNode map in node.ChildNodes)
             {
-                if (map.Name != "SchemaMapping")
+                if (map.Name != "SchemaMapping") //NOXLATE
                     continue;
 
-                var sn = map.Attributes["name"];
+                var sn = map.Attributes["name"]; //NOXLATE
                 if (sn == null)
-                    throw new Exception("Bad document. Expected attribute: name"); //LOCALIZEME
+                    throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedAttribute, "name"));
 
-                //XmlNodeList clsMaps = map.SelectNodes("complexType");
                 foreach (XmlNode clsMap in map.ChildNodes)
                 {
-                    if (clsMap.Name != "complexType")
+                    if (clsMap.Name != "complexType") //NOXLATE
                         continue;
 
                     var item = new OdbcTableItem();

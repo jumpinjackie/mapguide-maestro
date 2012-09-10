@@ -148,40 +148,40 @@ namespace OSGeo.MapGuide.ObjectModels.Common
             if (this.ExtentType == FdoSpatialContextListSpatialContextExtentType.Dynamic)
                 return;
 
-            var crs = doc.CreateElement("gml", "DerivedCRS", XmlNamespaces.GML);
+            var crs = doc.CreateElement("gml", "DerivedCRS", XmlNamespaces.GML); //NOXLATE
             {
-                crs.SetAttribute("id", XmlNamespaces.GML, this.Name);
-                var meta = doc.CreateElement("gml", "metaDataProperty", XmlNamespaces.GML);
+                crs.SetAttribute("id", XmlNamespaces.GML, this.Name); //NOXLATE
+                var meta = doc.CreateElement("gml", "metaDataProperty", XmlNamespaces.GML); //NOXLATE
                 crs.AppendChild(meta);
                 {
-                    var genMeta = doc.CreateElement("gml", "GenericMetaData", XmlNamespaces.GML);
+                    var genMeta = doc.CreateElement("gml", "GenericMetaData", XmlNamespaces.GML); //NOXLATE
                     meta.AppendChild(genMeta);
                     {
-                        var fdoXY = doc.CreateElement("fdo", "XYTolerance", XmlNamespaces.FDO);
-                        var fdoZ = doc.CreateElement("fdo", "ZTolerance", XmlNamespaces.FDO);
+                        var fdoXY = doc.CreateElement("fdo", "XYTolerance", XmlNamespaces.FDO); //NOXLATE
+                        var fdoZ = doc.CreateElement("fdo", "ZTolerance", XmlNamespaces.FDO); //NOXLATE
                         fdoXY.InnerText = this.XYTolerance.ToString(CultureInfo.InvariantCulture);
                         fdoZ.InnerText = this.ZTolerance.ToString(CultureInfo.InvariantCulture);
                         genMeta.AppendChild(fdoXY);
                         genMeta.AppendChild(fdoZ);
                     }
                 }
-                
-                var remarks = doc.CreateElement("gml", "remarks", XmlNamespaces.GML);
+
+                var remarks = doc.CreateElement("gml", "remarks", XmlNamespaces.GML); //NOXLATE
                 remarks.InnerText = this.Description;
                 crs.AppendChild(remarks);
 
-                var csName = doc.CreateElement("gml", "srsName", XmlNamespaces.GML);
+                var csName = doc.CreateElement("gml", "srsName", XmlNamespaces.GML); //NOXLATE
                 csName.InnerText = string.IsNullOrEmpty(this.CoordinateSystemName) ? this.Name : this.CoordinateSystemName;
                 crs.AppendChild(csName);
 
-                var ext = doc.CreateElement("gml", "validArea", XmlNamespaces.GML);
+                var ext = doc.CreateElement("gml", "validArea", XmlNamespaces.GML); //NOXLATE
                 {
-                    var bbox = doc.CreateElement("gml", "boundingBox", XmlNamespaces.GML);
+                    var bbox = doc.CreateElement("gml", "boundingBox", XmlNamespaces.GML); //NOXLATE
                     {
-                        var ll = doc.CreateElement("gml", "pos", XmlNamespaces.GML);
-                        var ur = doc.CreateElement("gml", "pos", XmlNamespaces.GML);
-                        ll.InnerText = this.Extent.LowerLeftCoordinate.X + " " + this.Extent.LowerLeftCoordinate.Y;
-                        ur.InnerText = this.Extent.UpperRightCoordinate.X + " " + this.Extent.UpperRightCoordinate.Y;
+                        var ll = doc.CreateElement("gml", "pos", XmlNamespaces.GML); //NOXLATE
+                        var ur = doc.CreateElement("gml", "pos", XmlNamespaces.GML); //NOXLATE
+                        ll.InnerText = this.Extent.LowerLeftCoordinate.X + " " + this.Extent.LowerLeftCoordinate.Y; //NOXLATE
+                        ur.InnerText = this.Extent.UpperRightCoordinate.X + " " + this.Extent.UpperRightCoordinate.Y; //NOXLATE
                         bbox.AppendChild(ll);
                         bbox.AppendChild(ur);
                     }
@@ -189,23 +189,23 @@ namespace OSGeo.MapGuide.ObjectModels.Common
                 }
                 crs.AppendChild(ext);
 
-                var baseCrs = doc.CreateElement("gml", "baseCRS", XmlNamespaces.GML);
-                var definedBy = doc.CreateElement("gml", "definedByConversion", XmlNamespaces.GML);
-                var derivedCrs = doc.CreateElement("gml", "derivedCRSType", XmlNamespaces.GML);
-                var userCs = doc.CreateElement("gml", "usesCS", XmlNamespaces.GML);
+                var baseCrs = doc.CreateElement("gml", "baseCRS", XmlNamespaces.GML); //NOXLATE
+                var definedBy = doc.CreateElement("gml", "definedByConversion", XmlNamespaces.GML); //NOXLATE
+                var derivedCrs = doc.CreateElement("gml", "derivedCRSType", XmlNamespaces.GML); //NOXLATE
+                var userCs = doc.CreateElement("gml", "usesCS", XmlNamespaces.GML); //NOXLATE
 
                 if (string.IsNullOrEmpty(this.CoordinateSystemWkt))
                 {
-                    baseCrs.SetAttribute("href", XmlNamespaces.XLINK, "http://fdo.osgeo.org/schemas/feature/crs/#" + (string.IsNullOrEmpty(this.CoordinateSystemName) ? this.Name : this.CoordinateSystemName));
+                    baseCrs.SetAttribute("href", XmlNamespaces.XLINK, "http://fdo.osgeo.org/schemas/feature/crs/#" + (string.IsNullOrEmpty(this.CoordinateSystemName) ? this.Name : this.CoordinateSystemName)); //NOXLATE
                 }
                 else
                 {
-                    var wktCRS = doc.CreateElement("fdo", "WKTCRS", XmlNamespaces.FDO);
-                    wktCRS.SetAttribute("id", XmlNamespaces.GML, this.Name);
+                    var wktCRS = doc.CreateElement("fdo", "WKTCRS", XmlNamespaces.FDO); //NOXLATE
+                    wktCRS.SetAttribute("id", XmlNamespaces.GML, this.Name); //NOXLATE
                     {
-                        var srsName = doc.CreateElement("gml", "srsName", XmlNamespaces.GML);
+                        var srsName = doc.CreateElement("gml", "srsName", XmlNamespaces.GML); //NOXLATE
                         srsName.InnerText = this.nameField;
-                        var fdowkt = doc.CreateElement("fdo", "WKT", XmlNamespaces.FDO);
+                        var fdowkt = doc.CreateElement("fdo", "WKT", XmlNamespaces.FDO); //NOXLATE
                         fdowkt.InnerText = this.CoordinateSystemWkt;
                         wktCRS.AppendChild(srsName);
                         wktCRS.AppendChild(fdowkt);
@@ -213,10 +213,10 @@ namespace OSGeo.MapGuide.ObjectModels.Common
                     baseCrs.AppendChild(wktCRS);
                 }
 
-                definedBy.SetAttribute("href", XmlNamespaces.XLINK, "http://fdo.osgeo.org/coord_conversions#identity");
-                derivedCrs.SetAttribute("codeSpace", "http://fdo.osgeo.org/crs_types");
-                derivedCrs.InnerText = "geographic";
-                userCs.SetAttribute("href", XmlNamespaces.XLINK, "http://fdo.osgeo.org/cs#default_cartesian");
+                definedBy.SetAttribute("href", XmlNamespaces.XLINK, "http://fdo.osgeo.org/coord_conversions#identity"); //NOXLATE
+                derivedCrs.SetAttribute("codeSpace", "http://fdo.osgeo.org/crs_types"); //NOXLATE
+                derivedCrs.InnerText = "geographic"; //NOXLATE
+                userCs.SetAttribute("href", XmlNamespaces.XLINK, "http://fdo.osgeo.org/cs#default_cartesian"); //NOXLATE
 
                 crs.AppendChild(baseCrs);
                 crs.AppendChild(definedBy);
@@ -229,20 +229,20 @@ namespace OSGeo.MapGuide.ObjectModels.Common
 
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
-            if (!node.Name.Equals("gml:DerivedCRS"))
-                throw new Exception("Bad document. Expected element gml:DerivedCRS"); //LOCALIZEME
+            if (!node.Name.Equals("gml:DerivedCRS")) //NOXLATE
+                throw new Exception(string.Format(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorBadDocumentExpectedElement, "gml:DerivedCRS"));
 
             //Start off as dynamic, until we find a bounding box. Then we set it to static
             this.ExtentType = FdoSpatialContextListSpatialContextExtentType.Dynamic;
 
-            var meta = node["gml:metaDataProperty"];
+            var meta = node["gml:metaDataProperty"]; //NOXLATE
             if (meta != null)
             {
-                var genMeta = meta["gml:GenericMetaData"];
+                var genMeta = meta["gml:GenericMetaData"]; //NOXLATE
 
-                var scType = Utility.GetFdoElement(genMeta, "SCExtentType");
-                var xyTol = Utility.GetFdoElement(genMeta, "XYTolerance");
-                var zTol = Utility.GetFdoElement(genMeta, "ZTolerance");
+                var scType = Utility.GetFdoElement(genMeta, "SCExtentType"); //NOXLATE
+                var xyTol = Utility.GetFdoElement(genMeta, "XYTolerance"); //NOXLATE
+                var zTol = Utility.GetFdoElement(genMeta, "ZTolerance"); //NOXLATE
 
                 //this.ExtentType = (scType == null || scType.InnerText == "dynamic") ? FdoSpatialContextListSpatialContextExtentType.Dynamic : FdoSpatialContextListSpatialContextExtentType.Static;
 
@@ -261,25 +261,25 @@ namespace OSGeo.MapGuide.ObjectModels.Common
                 this.ZTolerance = 0.0001;
             }
 
-            var remarks = node["gml:remarks"];
-            var srsName = node["gml:srsName"];
-            var ext = node["gml:validArea"];
-            var baseCrs = node["gml:baseCRS"];
+            var remarks = node["gml:remarks"]; //NOXLATE
+            var srsName = node["gml:srsName"]; //NOXLATE
+            var ext = node["gml:validArea"]; //NOXLATE
+            var baseCrs = node["gml:baseCRS"]; //NOXLATE
 
             this.Name = srsName.InnerText;
             this.Description = (remarks != null) ? remarks.InnerText : string.Empty;
 
-            var bbox = ext["gml:boundingBox"];
+            var bbox = ext["gml:boundingBox"]; //NOXLATE
             if (bbox != null)
             {
                 var ll = bbox.FirstChild;
                 var ur = bbox.LastChild;
 
-                var llt = ll.InnerText.Split(' ');
-                var urt = ur.InnerText.Split(' ');
+                var llt = ll.InnerText.Split(' '); //NOXLATE
+                var urt = ur.InnerText.Split(' '); //NOXLATE
 
                 if (llt.Length != 2 || urt.Length != 2)
-                    throw new Exception("Bad document. Invalid bounding box"); //LOCALIZEME
+                    throw new Exception(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorBadDocumentInvalidBbox);
 
                 this.Extent = new FdoSpatialContextListSpatialContextExtent()
                 {
@@ -298,16 +298,16 @@ namespace OSGeo.MapGuide.ObjectModels.Common
                 this.ExtentType = FdoSpatialContextListSpatialContextExtentType.Static;
             }
 
-            if (baseCrs.HasAttribute("xlink:href"))
+            if (baseCrs.HasAttribute("xlink:href")) //NOXLATE
             {
-                var href = baseCrs.GetAttribute("xlink:href");
-                this.CoordinateSystemName = href.Substring(href.LastIndexOf("#") + 1);
+                var href = baseCrs.GetAttribute("xlink:href"); //NOXLATE
+                this.CoordinateSystemName = href.Substring(href.LastIndexOf("#") + 1); //NOXLATE
             }
 
-            var wktCrs = Utility.GetFdoElement(baseCrs, "WKTCRS");
+            var wktCrs = Utility.GetFdoElement(baseCrs, "WKTCRS"); //NOXLATE
             if (wktCrs != null)
             {
-                var wkt = Utility.GetFdoElement(wktCrs, "WKT");
+                var wkt = Utility.GetFdoElement(wktCrs, "WKT"); //NOXLATE
                 if (wkt != null)
                 {
                     this.CoordinateSystemWkt = wkt.InnerText;

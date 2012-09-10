@@ -31,26 +31,26 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <summary>
         /// XML Schema namespace
         /// </summary>
-        public const string XS = "http://www.w3.org/2001/XMLSchema";
+        public const string XS = "http://www.w3.org/2001/XMLSchema"; //NOXLATE
         /// <summary>
         /// XML Schema Instance namespace
         /// </summary>
-        public const string XSI = "http://www.w3.org/2001/XMLSchema-instance";
+        public const string XSI = "http://www.w3.org/2001/XMLSchema-instance"; //NOXLATE
         /// <summary>
         /// XLink namespace
         /// </summary>
-        public const string XLINK = "http://www.w3.org/1999/xlink";
+        public const string XLINK = "http://www.w3.org/1999/xlink"; //NOXLATE
         /// <summary>
         /// GML (Geography Markup Language) namespace
         /// </summary>
-        public const string GML = "http://www.opengis.net/gml";
+        public const string GML = "http://www.opengis.net/gml"; //NOXLATE
         /// <summary>
         /// FDO (Feature Data Objects) namespace
         /// </summary>
-        public const string FDO = "http://fdo.osgeo.org/schemas";
+        public const string FDO = "http://fdo.osgeo.org/schemas"; //NOXLATE
         /// <summary>
         /// FDS namespace
         /// </summary>
-        public const string FDS = "http://fdo.osgeo.org/schemas/fds";
+        public const string FDS = "http://fdo.osgeo.org/schemas/fds"; //NOXLATE
     }
 }

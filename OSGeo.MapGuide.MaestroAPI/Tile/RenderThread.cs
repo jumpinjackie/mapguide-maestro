@@ -147,8 +147,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                                     eventToRaise.Col,
                                     ref eventToRaise.Exception);
                                 break;
-                            default: 
-                                throw new Exception("Bad event type"); //Not translated, because it is an internal error that should never happen
+                            default:
+                                //Not translated, because it is an internal error that should never happen 
+                                throw new Exception("Bad event type"); //NOXLATE
                         }
                         eventToRaise.Event.Set();
                         eventToRaise = null;
@@ -321,7 +322,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                 {
                     if (!Parent.Cancel)
                         if (Parent.Config.RenderMethod == null)
-                            tileSvc.GetTile(MapDefinition, group, (int)col, (int)row, scaleindex, "PNG").Dispose();
+                            tileSvc.GetTile(MapDefinition, group, (int)col, (int)row, scaleindex, "PNG").Dispose(); //NOXLATE
                         else
                             Parent.Config.RenderMethod(MapDefinition, group, (int)col, (int)row, scaleindex);
 

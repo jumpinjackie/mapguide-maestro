@@ -71,14 +71,14 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             set
             {
                 if (!ResourceIdentifier.Validate(value))
-                    throw new InvalidOperationException("Not a valid resource identifier"); //LOCALIZE
+                    throw new InvalidOperationException(OSGeo.MapGuide.ObjectModels.LayerDefinition.CommonErrorMessages.InvalidResourceIdentifier);
 
                 var res = new ResourceIdentifier(value);
                 if (res.Extension != ResourceTypes.SymbolDefinition.ToString())
-                    throw new InvalidOperationException("Invalid resource identifier for this type of object: " + res.Extension); //LOCALIZE
+                    throw new InvalidOperationException(string.Format(OSGeo.MapGuide.ObjectModels.LayerDefinition.CommonErrorMessages.UnexpectedResourceType, res.ToString(), ResourceTypes.SymbolDefinition));
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID");
+                this.OnPropertyChanged("ResourceID"); //NOXLATE
             }
         }
 
@@ -106,14 +106,14 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         }
 
 #if SYM_DEF_240
-        protected string _vschema = "SymbolDefinition-2.4.0.xsd";
+        protected string _vschema = "SymbolDefinition-2.4.0.xsd"; //NOXLATE
 #elif SYM_DEF_110
-        protected string _vschema = "SymbolDefinition-1.1.0.xsd";
+        protected string _vschema = "SymbolDefinition-1.1.0.xsd"; //NOXLATE
 #else
-        protected string _vschema = "SymbolDefinition-1.0.0.xsd";
+        protected string _vschema = "SymbolDefinition-1.0.0.xsd"; //NOXLATE
 #endif
 
-        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
+        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")] //NOXLATE
         public string ValidatingSchema
         {
             get { return _vschema; }
@@ -263,10 +263,10 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         {
             return new PointUsage()
             {
-                //Angle = "0",
-                //AngleControl = "'FromAngle'",
-                //OriginOffsetX = "0.0",
-                //OriginOffsetY = "0.0"
+                //Angle = "0", //NOXLATE
+                //AngleControl = "'FromAngle'", //NOXLATE
+                //OriginOffsetX = "0.0", //NOXLATE
+                //OriginOffsetY = "0.0" //NOXLATE
             };
         }
 
@@ -274,21 +274,21 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         {
             return new LineUsage()
             {
-                //Angle = "0",
-                //AngleControl = "'FromGeometry'",
+                //Angle = "0", //NOXLATE
+                //AngleControl = "'FromGeometry'", //NOXLATE
                 /*
                 DefaultPath = new Path()
                 {
                     
                 },*/
-                //EndOffset = "0",
-                //Repeat = "0",
-                //StartOffset = "0",
-                //UnitsControl = "'Absolute'",
-                //VertexAngleLimit = "0",
-                //VertexControl = "'OverlapNone'",
-                //VertexJoin = "'Round'",
-                //VertexMiterLimit = "5"
+                //EndOffset = "0", //NOXLATE
+                //Repeat = "0", //NOXLATE
+                //StartOffset = "0", //NOXLATE
+                //UnitsControl = "'Absolute'", //NOXLATE
+                //VertexAngleLimit = "0", //NOXLATE
+                //VertexControl = "'OverlapNone'", //NOXLATE
+                //VertexJoin = "'Round'", //NOXLATE
+                //VertexMiterLimit = "5" //NOXLATE
             };
         }
 
@@ -296,15 +296,15 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         {
             return new AreaUsage()
             {
-                //Angle = "0",
-                //AngleControl = "'FromAngle'",
-                //BufferWidth = "0",
-                //ClippingControl = "'Clip'",
-                //OriginControl = "'Global'",
-                //OriginX = "0",
-                //OriginY = "0",
-                //RepeatX = "0",
-                //RepeatY = "0"
+                //Angle = "0", //NOXLATE
+                //AngleControl = "'FromAngle'", //NOXLATE
+                //BufferWidth = "0", //NOXLATE
+                //ClippingControl = "'Clip'", //NOXLATE
+                //OriginControl = "'Global'", //NOXLATE
+                //OriginX = "0", //NOXLATE
+                //OriginY = "0", //NOXLATE
+                //RepeatX = "0", //NOXLATE
+                //RepeatY = "0" //NOXLATE
             };
         }
 
@@ -312,11 +312,11 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         {
             return new ResizeBox()
             {
-                SizeX = "1.0",
-                SizeY = "1.0",
-                PositionX = "0.0",
-                PositionY = "0.0",
-                GrowControl = "\'GrowInXYMaintainAspect\'"
+                SizeX = "1.0", //NOXLATE
+                SizeY = "1.0", //NOXLATE
+                PositionX = "0.0", //NOXLATE
+                PositionY = "0.0", //NOXLATE
+                GrowControl = "\'GrowInXYMaintainAspect\'" //NOXLATE
             };
         }
 
@@ -328,7 +328,8 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
         public ITextGraphic CreateTextGraphics()
         {
-            return new Text() { Content = "", FontName = "'Arial'" }; //Required for minimum content
+            //Required for minimum content
+            return new Text() { Content = "", FontName = "'Arial'" };  //NOXLATE
         }
 
         public IPathGraphic CreatePathGraphics()
@@ -348,11 +349,11 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         public IParameter CreateParameter()
         {
             return new Parameter() 
-            { 
-                Identifier = "",
-                DefaultValue = "",
-                Description = "",
-                DisplayName = "",
+            {
+                Identifier = "", //NOXLATE
+                DefaultValue = "", //NOXLATE
+                Description = "", //NOXLATE
+                DisplayName = "", //NOXLATE
             };
         }
 
@@ -806,14 +807,14 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             set
             {
                 if (!ResourceIdentifier.Validate(value))
-                    throw new InvalidOperationException("Not a valid resource identifier"); //LOCALIZE
+                    throw new InvalidOperationException(OSGeo.MapGuide.ObjectModels.LayerDefinition.CommonErrorMessages.InvalidResourceIdentifier);
 
                 var res = new ResourceIdentifier(value);
                 if (res.Extension != ResourceTypes.SymbolDefinition.ToString())
-                    throw new InvalidOperationException("Invalid resource identifier for this type of object: " + res.Extension); //LOCALIZE
+                    throw new InvalidOperationException(string.Format(OSGeo.MapGuide.ObjectModels.LayerDefinition.CommonErrorMessages.UnexpectedResourceType, res.ToString(), ResourceTypes.SymbolDefinition));
 
                 this.Item = value;
-                OnPropertyChanged("ResourceId");
+                OnPropertyChanged("ResourceId"); //NOXLATE
             }
         }
     }

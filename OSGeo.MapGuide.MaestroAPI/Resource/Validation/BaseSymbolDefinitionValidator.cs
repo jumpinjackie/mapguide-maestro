@@ -42,7 +42,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <returns></returns>
         protected static ValidationIssue[] ValidateBase(ResourceValidationContext context, IResource resource, bool recurse)
         {
-            Check.NotNull(context, "context");
+            Check.NotNull(context, "context"); //NOXLATE
 
             if (context.IsAlreadyValidated(resource.ResourceID))
                 return null;
@@ -145,7 +145,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             //Check non existent symbol parameters
             foreach (var paramDef in ssym.ParameterDefinition.Parameter)
             {
-                string name = "%" + paramDef.Identifier + "%";
+                string name = "%" + paramDef.Identifier + "%"; //NOXLATE
                 if (!xml.Contains(name) && string.IsNullOrEmpty(paramDef.DefaultValue))
                 {
                     yield return new ValidationIssue(ssym, ValidationStatus.Warning, ValidationStatusCode.Warning_SymbolDefinition_SymbolParameterNotUsed,

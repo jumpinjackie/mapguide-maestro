@@ -245,7 +245,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <param name="password">The password to connect with</param>
         /// <param name="maps">A list of maps to process, leave empty to process all layers</param>
         public BatchSettings(string mapagent, string username, string password, params string[] maps)
-            : this(ConnectionProviderRegistry.CreateConnection("Maestro.Http", "Url", mapagent, "Username", username, "Password", password, "AllowUntestedVersions", "true"), maps)
+            : this(ConnectionProviderRegistry.CreateConnection("Maestro.Http", "Url", mapagent, "Username", username, "Password", password, "AllowUntestedVersions", "true"), maps) //NOXLATE
         {
         }
 
@@ -268,7 +268,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             if (maps == null || maps.Length == 0 || (maps.Length == 1 && maps[0].Trim().Length == 0))
             {
                 List<string> tmp = new List<string>();
-                foreach (var doc in m_connection.ResourceService.GetRepositoryResources("Library://", "MapDefinition").Children)
+                foreach (var doc in m_connection.ResourceService.GetRepositoryResources(StringConstants.RootIdentifier, ResourceTypes.MapDefinition.ToString()).Children)
                     tmp.Add(doc.ResourceId);
                 maps = tmp.ToArray();
             }

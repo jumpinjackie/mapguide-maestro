@@ -239,7 +239,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static IWebLayout CreateWebLayout(IServerConnection owner, Version version, string mapDefinitionId)
         {
-            Check.NotNull(owner, "owner");
+            Check.NotNull(owner, "owner"); //NOXLATE
 
             if (!_wlFactories.ContainsKey(version))
                 throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownWebLayoutVersion + version.ToString());
@@ -283,7 +283,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static ILayerDefinition CreateDefaultLayer(IServerConnection owner, LayerType type, Version version)
         {
-            Check.NotNull(owner, "owner");
+            Check.NotNull(owner, "owner"); //NOXLATE
 
             if (!_layerFactories.ContainsKey(version))
                 throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownLayerVersion + version.ToString());
@@ -301,7 +301,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static IDrawingSource CreateDrawingSource(IServerConnection owner)
         {
-            Check.NotNull(owner, "owner");
+            Check.NotNull(owner, "owner"); //NOXLATE
 
             return new OSGeo.MapGuide.ObjectModels.DrawingSource_1_0_0.DrawingSource() 
             { 
@@ -320,7 +320,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static IFeatureSource CreateFeatureSource(IServerConnection owner, string provider)
         {
-            Check.NotNull(owner, "owner");
+            Check.NotNull(owner, "owner"); //NOXLATE
 
             return new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.FeatureSourceType()
             {
@@ -353,7 +353,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static IWatermarkDefinition CreateWatermark(IServerConnection owner, SymbolDefinitionType type)
         {
-            Check.NotNull(owner, "owner");
+            Check.NotNull(owner, "owner"); //NOXLATE
             return CreateWatermark(owner, type, owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.WatermarkDefinition));
         }
 
@@ -366,7 +366,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static IWatermarkDefinition CreateWatermark(IServerConnection owner, SymbolDefinitionType type, Version version)
         {
-            Check.NotNull(owner, "owner");
+            Check.NotNull(owner, "owner"); //NOXLATE
 
             if (!_watermarkFactories.ContainsKey(version))
                 throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownWatermarkDefinitionVersion + version.ToString());
@@ -385,7 +385,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static IMapDefinition CreateMapDefinition(IServerConnection owner, Version version, string name)
         {
-            Check.NotNull(owner, "owner");
+            Check.NotNull(owner, "owner"); //NOXLATE
 
             if (!_mapDefinitionFactories.ContainsKey(version))
                 throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownMapDefinitionVersion + version.ToString());
@@ -436,7 +436,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static IMapDefinition CreateMapDefinition(IServerConnection owner, string name)
         {
-            Check.NotNull(owner, "owner");
+            Check.NotNull(owner, "owner"); //NOXLATE
 
             return CreateMapDefinition(owner, owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition), name);
         }
@@ -450,7 +450,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static IMapDefinition CreateMapDefinition(IServerConnection owner, string name, string coordinateSystemWkt)
         {
-            Check.NotNull(owner, "owner");
+            Check.NotNull(owner, "owner"); //NOXLATE
 
             return CreateMapDefinition(owner, owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition), name, coordinateSystemWkt);
         }
@@ -465,7 +465,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static IMapDefinition CreateMapDefinition(IServerConnection owner, string name, string coordinateSystemWkt, IEnvelope env)
         {
-            Check.NotNull(owner, "owner");
+            Check.NotNull(owner, "owner"); //NOXLATE
 
             return CreateMapDefinition(owner, owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition), name, coordinateSystemWkt, env);
         }
@@ -480,7 +480,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static ISimpleSymbolDefinition CreateSimpleSymbol(IServerConnection owner, Version version, string name, string description)
         {
-            Check.NotNull(owner, "owner");
+            Check.NotNull(owner, "owner"); //NOXLATE
 
             if (!_simpleSymbolFactories.ContainsKey(version))
                 throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownSymbolDefVersion + version.ToString());
@@ -515,7 +515,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static ICompoundSymbolDefinition CreateCompoundSymbol(IServerConnection owner, Version version, string name, string description)
         {
-            Check.NotNull(owner, "owner");
+            Check.NotNull(owner, "owner"); //NOXLATE
 
             if (!_compoundSymbolFactories.ContainsKey(version))
                 throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownSymbolDefVersion + version.ToString());
@@ -558,7 +558,7 @@ namespace OSGeo.MapGuide.ObjectModels
         private static IUIWidget CreateVerticalWidget(IUIWidget widget)
         {
             var vert = widget.Clone();
-            vert.Name = "vert" + widget.Name;
+            vert.Name = "vert" + widget.Name; //NOXLATE
             vert.Label = string.Empty;
             return vert;
         }
@@ -573,7 +573,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static IApplicationDefinition CreateFlexibleLayout(IServerConnection owner, string templateName)
         {
-            Check.NotNull(owner, "owner");
+            Check.NotNull(owner, "owner"); //NOXLATE
 
             /*
             Check.Precondition(Array.IndexOf(owner.Capabilities.SupportedServices, (int)ServiceType.Fusion) >= 0, "Required Fusion service not supported on this connection");
@@ -624,21 +624,21 @@ namespace OSGeo.MapGuide.ObjectModels
             }
 
             //Toolbars, every template has them
-            var toolbar = appDef.CreateContainer("Toolbar", containers.FindContainer("Toolbar"));
-            var secToolbar = appDef.CreateContainer("ToolbarSecondary", containers.FindContainer("Toolbar"));
-            var vertToolbar = appDef.CreateContainer("ToolbarVertical", containers.FindContainer("Toolbar"));
+            var toolbar = appDef.CreateContainer("Toolbar", containers.FindContainer("Toolbar")); //NOXLATE
+            var secToolbar = appDef.CreateContainer("ToolbarSecondary", containers.FindContainer("Toolbar")); //NOXLATE
+            var vertToolbar = appDef.CreateContainer("ToolbarVertical", containers.FindContainer("Toolbar")); //NOXLATE
 
             //Context menus, every template has them
-            var mapContextMenu = appDef.CreateContainer("MapContextMenu", containers.FindContainer("ContextMenu"));
-            var taskPaneMenu = appDef.CreateContainer("TaskMenu", containers.FindContainer("ContextMenu"));
+            var mapContextMenu = appDef.CreateContainer("MapContextMenu", containers.FindContainer("ContextMenu")); //NOXLATE
+            var taskPaneMenu = appDef.CreateContainer("TaskMenu", containers.FindContainer("ContextMenu")); //NOXLATE
 
             //Menu
-            var menu = appDef.CreateContainer("FileMenu", containers.FindContainer("Toolbar"));
+            var menu = appDef.CreateContainer("FileMenu", containers.FindContainer("Toolbar")); //NOXLATE
 
             //Status bar
-            var statusbar = appDef.CreateContainer("Statusbar", containers.FindContainer("Splitterbar"));
+            var statusbar = appDef.CreateContainer("Statusbar", containers.FindContainer("Splitterbar")); //NOXLATE
 
-            string mapId = "MainMap";
+            string mapId = "MainMap"; //NOXLATE
             //Set default map group
             appDef.AddMapGroup(mapId, true, string.Empty);
 
@@ -659,95 +659,95 @@ namespace OSGeo.MapGuide.ObjectModels
             //Add some parameterized ones
 
             //Zoom In
-            var zoomIn = (IUIWidget)appDef.CreateWidget("ZoomIn", widgets.FindWidget(KnownWidgetNames.ZoomOnClick));
-            zoomIn.SetValue("Factor", "2");
+            var zoomIn = (IUIWidget)appDef.CreateWidget("ZoomIn", widgets.FindWidget(KnownWidgetNames.ZoomOnClick)); //NOXLATE
+            zoomIn.SetValue("Factor", "2"); //NOXLATE
             zoomIn.StatusText = zoomIn.Tooltip = Res.ADF_Widget_ZoomIn_Desc;
             zoomIn.Label = Res.ADF_Widget_ZoomIn_Label;
-            zoomIn.ImageUrl = "images/icons.png";
-            zoomIn.ImageClass = "zoom-in-fixed";
+            zoomIn.ImageUrl = "images/icons.png"; //NOXLATE
+            zoomIn.ImageClass = "zoom-in-fixed"; //NOXLATE
             var vZoomIn = CreateVerticalWidget(zoomIn);
 
             //Zoom Out
-            var zoomOut = (IUIWidget)appDef.CreateWidget("ZoomOut", widgets.FindWidget(KnownWidgetNames.ZoomOnClick));
-            zoomOut.SetValue("Factor", "0.5");
+            var zoomOut = (IUIWidget)appDef.CreateWidget("ZoomOut", widgets.FindWidget(KnownWidgetNames.ZoomOnClick)); //NOXLATE
+            zoomOut.SetValue("Factor", "0.5"); //NOXLATE
             zoomOut.StatusText = zoomOut.Tooltip = Res.ADF_Widget_ZoomOut_Desc;
             zoomOut.Label = Res.ADF_Widget_ZoomOut_Label;
-            zoomOut.ImageUrl = "images/icons.png";
-            zoomOut.ImageClass = "zoom-out-fixed";
+            zoomOut.ImageUrl = "images/icons.png"; //NOXLATE
+            zoomOut.ImageClass = "zoom-out-fixed"; //NOXLATE
             var vZoomOut = CreateVerticalWidget(zoomOut);
 
             //Previous View
-            var prevView = (IUIWidget)appDef.CreateWidget("PreviousView", widgets.FindWidget(KnownWidgetNames.ExtentHistory));
-            prevView.SetValue("Direction", "previous");
+            var prevView = (IUIWidget)appDef.CreateWidget("PreviousView", widgets.FindWidget(KnownWidgetNames.ExtentHistory)); //NOXLATE
+            prevView.SetValue("Direction", "previous"); //NOXLATE
             prevView.StatusText = prevView.Tooltip = Res.ADF_Widget_PreviousView_Desc;
             prevView.Label = Res.ADF_Widget_PreviousView_Label;
-            prevView.ImageUrl = "images/icons.png";
-            prevView.ImageClass = "view-back";
+            prevView.ImageUrl = "images/icons.png"; //NOXLATE
+            prevView.ImageClass = "view-back"; //NOXLATE
             var vPrevView = CreateVerticalWidget(prevView);
 
             //Next View
-            var nextView = (IUIWidget)appDef.CreateWidget("NextView", widgets.FindWidget(KnownWidgetNames.ExtentHistory));
-            nextView.SetValue("Direction", "next");
+            var nextView = (IUIWidget)appDef.CreateWidget("NextView", widgets.FindWidget(KnownWidgetNames.ExtentHistory)); //NOXLATE
+            nextView.SetValue("Direction", "next"); //NOXLATE
             nextView.StatusText = nextView.Tooltip = Res.ADF_Widget_NextView_Desc;
             nextView.Label = Res.ADF_Widget_NextView_Label;
-            nextView.ImageUrl = "images/icons.png";
-            nextView.ImageClass = "view-forward";
+            nextView.ImageUrl = "images/icons.png"; //NOXLATE
+            nextView.ImageClass = "view-forward"; //NOXLATE
             var vNextView = CreateVerticalWidget(nextView);
 
             //Buffer
-            var buffer = (IUIWidget)appDef.CreateWidget("tbBuffer", widgets.FindWidget(KnownWidgetNames.BufferPanel));
-            //buffer.SetValue("Target", "TaskPane");
+            var buffer = (IUIWidget)appDef.CreateWidget("tbBuffer", widgets.FindWidget(KnownWidgetNames.BufferPanel)); //NOXLATE
+            //buffer.SetValue("Target", "TaskPane"); //NOXLATE
             buffer.StatusText = buffer.Tooltip = Res.ADF_Widget_Buffer_Desc;
             buffer.Tooltip = Res.ADF_Widget_Buffer_Label;
 
             //Measure
-            var measure = (IUIWidget)appDef.CreateWidget("Measure", widgets.FindWidget(KnownWidgetNames.Measure));
+            var measure = (IUIWidget)appDef.CreateWidget("Measure", widgets.FindWidget(KnownWidgetNames.Measure)); //NOXLATE
             var measureParams = new NameValueCollection();
-            measureParams["Type"] = "both";
-            measureParams["MeasureTooltipContainer"] = "MeasureResult";
-            measureParams["MeasureTooltipType"] = "dynamic";
-            measureParams["DistancePrecision"] = "0";
-            measureParams["AreaPrecision"] = "0";
-            measureParams["Units"] = "meters";
-            measureParams["Target"] = "TaskPane";
+            measureParams["Type"] = "both"; //NOXLATE
+            measureParams["MeasureTooltipContainer"] = "MeasureResult"; //NOXLATE
+            measureParams["MeasureTooltipType"] = "dynamic"; //NOXLATE
+            measureParams["DistancePrecision"] = "0"; //NOXLATE
+            measureParams["AreaPrecision"] = "0"; //NOXLATE
+            measureParams["Units"] = "meters"; //NOXLATE
+            measureParams["Target"] = "TaskPane"; //NOXLATE
             measure.SetAllValues(measureParams);
             measure.StatusText = buffer.Tooltip = Res.ADF_Widget_Measure_Desc;
             measure.Tooltip = Res.ADF_Widget_Measure_Label;
 
             //Show Overview
-            var showOverview = (IUIWidget)appDef.CreateWidget("showOverview", widgets.FindWidget(KnownWidgetNames.InvokeScript));
-            showOverview.Label = "Show Overview";
-            showOverview.SetValue("Script", "showOverviewMap()");
+            var showOverview = (IUIWidget)appDef.CreateWidget("showOverview", widgets.FindWidget(KnownWidgetNames.InvokeScript)); //NOXLATE
+            showOverview.Label = "Show Overview"; //NOXLATE
+            showOverview.SetValue("Script", "showOverviewMap()"); //NOXLATE
 
             //Show Task Pane
-            var showTaskPane = (IUIWidget)appDef.CreateWidget("showTaskPane", widgets.FindWidget(KnownWidgetNames.InvokeScript));
-            showTaskPane.Label = "Show Task Pane";
-            showTaskPane.SetValue("Script", "showTaskPane()");
+            var showTaskPane = (IUIWidget)appDef.CreateWidget("showTaskPane", widgets.FindWidget(KnownWidgetNames.InvokeScript)); //NOXLATE
+            showTaskPane.Label = "Show Task Pane"; //NOXLATE
+            showTaskPane.SetValue("Script", "showTaskPane()"); //NOXLATE
 
             //Show Legend
-            var showLegend = (IUIWidget)appDef.CreateWidget("showLegend", widgets.FindWidget(KnownWidgetNames.InvokeScript));
-            showLegend.Label = "Show Legend";
-            showLegend.SetValue("Script", "showLegend()");
+            var showLegend = (IUIWidget)appDef.CreateWidget("showLegend", widgets.FindWidget(KnownWidgetNames.InvokeScript)); //NOXLATE
+            showLegend.Label = "Show Legend"; //NOXLATE
+            showLegend.SetValue("Script", "showLegend()"); //NOXLATE
 
             //Show Selection Panel
-            var showSelectionPanel = (IUIWidget)appDef.CreateWidget("showSelectionPanel", widgets.FindWidget(KnownWidgetNames.InvokeScript));
-            showSelectionPanel.Label = "Show Selection Panel";
-            showSelectionPanel.SetValue("Script", "showSelectionPanel()");
+            var showSelectionPanel = (IUIWidget)appDef.CreateWidget("showSelectionPanel", widgets.FindWidget(KnownWidgetNames.InvokeScript)); //NOXLATE
+            showSelectionPanel.Label = "Show Selection Panel"; //NOXLATE
+            showSelectionPanel.SetValue("Script", "showSelectionPanel()"); //NOXLATE
 
             //Coordinate Tracker
-            var coordTracker = appDef.CreateWidget("statusCoordinates", widgets.FindWidget(KnownWidgetNames.CursorPosition));
-            coordTracker.SetValue("Template", "X: {x} {units}, Y: {y} {units}");
-            coordTracker.SetValue("Precision", "4");
-            coordTracker.SetValue("EmptyText", "&amp;nbsp;");
+            var coordTracker = appDef.CreateWidget("statusCoordinates", widgets.FindWidget(KnownWidgetNames.CursorPosition)); //NOXLATE
+            coordTracker.SetValue("Template", "X: {x} {units}, Y: {y} {units}"); //NOXLATE
+            coordTracker.SetValue("Precision", "4"); //NOXLATE
+            coordTracker.SetValue("EmptyText", "&amp;nbsp;"); //NOXLATE
 
             //Selection Info
-            var selInfo = appDef.CreateWidget("statusSelection", widgets.FindWidget(KnownWidgetNames.SelectionInfo));
-            selInfo.SetValue("EmptyText", "No selection");
+            var selInfo = appDef.CreateWidget("statusSelection", widgets.FindWidget(KnownWidgetNames.SelectionInfo)); //NOXLATE
+            selInfo.SetValue("EmptyText", "No selection"); //NOXLATE
 
             //View Size
-            var viewSize = appDef.CreateWidget("statusViewSize", widgets.FindWidget(KnownWidgetNames.ViewSize));
-            viewSize.SetValue("Template", "{w} x {h} ({units})");
-            viewSize.SetValue("Precision", "2");
+            var viewSize = appDef.CreateWidget("statusViewSize", widgets.FindWidget(KnownWidgetNames.ViewSize)); //NOXLATE
+            viewSize.SetValue("Template", "{w} x {h} ({units})"); //NOXLATE
+            viewSize.SetValue("Precision", "2"); //NOXLATE
 
             widgetSet.AddWidget(zoomIn);
             widgetSet.AddWidget(zoomOut);
@@ -825,13 +825,13 @@ namespace OSGeo.MapGuide.ObjectModels
             widgetSet.AddWidget(CreateVerticalWidget((IUIWidget)appDef.CreateWidget(KnownWidgetNames.InitialMapView, widgets.FindWidget(KnownWidgetNames.InitialMapView))));
             widgetSet.AddWidget(CreateVerticalWidget((IUIWidget)appDef.CreateWidget(KnownWidgetNames.ZoomToSelection, widgets.FindWidget(KnownWidgetNames.ZoomToSelection))));
 
-            vertToolbar.AddItem(appDef.CreateWidgetReference("vert" + KnownWidgetNames.Select));
-            vertToolbar.AddItem(appDef.CreateWidgetReference("vert" + KnownWidgetNames.Pan));
-            vertToolbar.AddItem(appDef.CreateWidgetReference("vert" + KnownWidgetNames.Zoom));
+            vertToolbar.AddItem(appDef.CreateWidgetReference("vert" + KnownWidgetNames.Select)); //NOXLATE
+            vertToolbar.AddItem(appDef.CreateWidgetReference("vert" + KnownWidgetNames.Pan)); //NOXLATE
+            vertToolbar.AddItem(appDef.CreateWidgetReference("vert" + KnownWidgetNames.Zoom)); //NOXLATE
             vertToolbar.AddItem(appDef.CreateWidgetReference(vZoomIn.Name));
             vertToolbar.AddItem(appDef.CreateWidgetReference(vZoomOut.Name));
-            vertToolbar.AddItem(appDef.CreateWidgetReference("vert" + KnownWidgetNames.InitialMapView));
-            vertToolbar.AddItem(appDef.CreateWidgetReference("vert" + KnownWidgetNames.ZoomToSelection));
+            vertToolbar.AddItem(appDef.CreateWidgetReference("vert" + KnownWidgetNames.InitialMapView)); //NOXLATE
+            vertToolbar.AddItem(appDef.CreateWidgetReference("vert" + KnownWidgetNames.ZoomToSelection)); //NOXLATE
             vertToolbar.AddItem(appDef.CreateWidgetReference(vPrevView.Name));
             vertToolbar.AddItem(appDef.CreateWidgetReference(vNextView.Name));
 
@@ -913,13 +913,13 @@ namespace OSGeo.MapGuide.ObjectModels
             widgetSet.AddContainer(taskPaneMenu);
 
             //Set positioning
-            toolbar.Position = "top";
-            secToolbar.Position = "top";
-            menu.Position = "top";
-            statusbar.Position = "bottom";
-            mapContextMenu.Position = "top";
-            taskPaneMenu.Position = "top";
-            vertToolbar.Position = "left";
+            toolbar.Position = "top"; //NOXLATE
+            secToolbar.Position = "top"; //NOXLATE
+            menu.Position = "top"; //NOXLATE
+            statusbar.Position = "bottom"; //NOXLATE
+            mapContextMenu.Position = "top"; //NOXLATE
+            taskPaneMenu.Position = "top"; //NOXLATE
+            vertToolbar.Position = "left"; //NOXLATE
 
             return appDef;
         }
@@ -939,15 +939,15 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static IApplicationDefinition CreatePreviewFlexLayout(IServerConnection owner)
         {
-            Check.NotNull(owner, "owner");
+            Check.NotNull(owner, "owner"); //NOXLATE
             var appDef = new ApplicationDefinitionType()
             {
                 CurrentConnection = owner,
-                Title = "Preview",
+                Title = OSGeo.MapGuide.MaestroAPI.Properties.Resources.TitlePreview,
                 MapSet = new System.ComponentModel.BindingList<MapGroupType>(),
                 WidgetSet = new System.ComponentModel.BindingList<WidgetSetType>()
             };
-            appDef.TemplateUrl = "fusion/templates/mapguide/preview/index.html";
+            appDef.TemplateUrl = "fusion/templates/mapguide/preview/index.html"; //NOXLATE
             return appDef;
         }
 
@@ -958,7 +958,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static IPrintLayout CreatePrintLayout(IServerConnection owner)
         {
-            Check.NotNull(owner, "owner");
+            Check.NotNull(owner, "owner"); //NOXLATE
 
             return new OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0.PrintLayout()
             {
@@ -1064,10 +1064,10 @@ namespace OSGeo.MapGuide.ObjectModels
         public static IEnvelope CreateEnvelope(double minx, double miny, double maxx, double maxy)
         {
             if (minx > maxx)
-                throw new ArgumentException("minx > maxx", "minx");
+                throw new ArgumentException("minx > maxx", "minx"); //NOXLATE
 
             if (miny > maxy)
-                throw new ArgumentException("miny > maxy", "miny");
+                throw new ArgumentException("miny > maxy", "miny"); //NOXLATE
 
             return new Envelope()
             {

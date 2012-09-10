@@ -46,7 +46,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <returns></returns>
         public ValidationIssue[] Validate(ResourceValidationContext context, IResource resource, bool recurse)
         {
-            Check.NotNull(context, "context");
+            Check.NotNull(context, "context"); //NOXLATE
 
             if (context.IsAlreadyValidated(resource.ResourceID))
                 return null;
@@ -80,30 +80,30 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                             var rightProvider = dstFs.Provider.ToUpper();
 
                             //FDO Join optimization check
-                            if (leftProvider.Contains("OSGEO.SQLITE") && rightProvider.Contains("OSGEO.SQLITE") && srcFs.ResourceID == rel.ResourceId)
+                            if (leftProvider.Contains("OSGEO.SQLITE") && rightProvider.Contains("OSGEO.SQLITE") && srcFs.ResourceID == rel.ResourceId) //NOXLATE
                                 continue;
 
                             //FDO Join optimization check
-                            if (leftProvider.Contains("OSGEO.SQLSERVERSPATIAL") && rightProvider.Contains("OSGEO.SQLSERVERSPATIAL") && srcFs.ResourceID == rel.ResourceId)
+                            if (leftProvider.Contains("OSGEO.SQLSERVERSPATIAL") && rightProvider.Contains("OSGEO.SQLSERVERSPATIAL") && srcFs.ResourceID == rel.ResourceId) //NOXLATE
                                 continue;
 
                             //TODO: Fix the capabilities response. Because it's not telling us enough information!
                             //Anyways, these are the providers known to provide sorted query results.
-                            bool bLeftSortable = leftProvider.Contains("OSGEO.SDF") ||
-                                                 leftProvider.Contains("OSGEO.SHP") ||
-                                                 leftProvider.Contains("OSGEO.SQLITE") ||
-                                                 leftProvider.Contains("OSGEO.ODBC") ||
-                                                 leftProvider.Contains("OSGEO.SQLSERVERSPATIAL") ||
-                                                 leftProvider.Contains("OSGEO.MYSQL") ||
-                                                 leftProvider.Contains("OSGEO.POSTGRESQL");
+                            bool bLeftSortable = leftProvider.Contains("OSGEO.SDF") || //NOXLATE
+                                                 leftProvider.Contains("OSGEO.SHP") || //NOXLATE
+                                                 leftProvider.Contains("OSGEO.SQLITE") || //NOXLATE
+                                                 leftProvider.Contains("OSGEO.ODBC") || //NOXLATE
+                                                 leftProvider.Contains("OSGEO.SQLSERVERSPATIAL") || //NOXLATE
+                                                 leftProvider.Contains("OSGEO.MYSQL") || //NOXLATE
+                                                 leftProvider.Contains("OSGEO.POSTGRESQL"); //NOXLATE
 
-                            bool bRightSortable = leftProvider.Contains("OSGEO.SDF") ||
-                                                 leftProvider.Contains("OSGEO.SHP") ||
-                                                 leftProvider.Contains("OSGEO.SQLITE") ||
-                                                 leftProvider.Contains("OSGEO.ODBC") ||
-                                                 leftProvider.Contains("OSGEO.SQLSERVERSPATIAL") ||
-                                                 leftProvider.Contains("OSGEO.MYSQL") ||
-                                                 leftProvider.Contains("OSGEO.POSTGRESQL");
+                            bool bRightSortable = leftProvider.Contains("OSGEO.SDF") || //NOXLATE
+                                                 leftProvider.Contains("OSGEO.SHP") || //NOXLATE
+                                                 leftProvider.Contains("OSGEO.SQLITE") || //NOXLATE
+                                                 leftProvider.Contains("OSGEO.ODBC") || //NOXLATE
+                                                 leftProvider.Contains("OSGEO.SQLSERVERSPATIAL") || //NOXLATE
+                                                 leftProvider.Contains("OSGEO.MYSQL") || //NOXLATE
+                                                 leftProvider.Contains("OSGEO.POSTGRESQL"); //NOXLATE
 
                             if (!bLeftSortable || !bRightSortable)
                             {
@@ -123,30 +123,30 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             string fsXml = feature.Serialize().ToUpper();
 
             //You'll get warnings either way
-            if (providerNameUpper == "OSGEO.SQLSERVERSPATIAL" ||
-                providerNameUpper == "OSGEO.MYSQL" ||
-                providerNameUpper == "OSGEO.POSTGRESQL" ||
-                providerNameUpper == "OSGEO.ARCSDE" ||
-                providerNameUpper == "OSGEO.WFS" ||
-                providerNameUpper == "OSGEO.WMS" ||
-                providerNameUpper == "KING.ORACLE" ||
-                providerNameUpper == "AUTODESK.ORACLE")
+            if (providerNameUpper == "OSGEO.SQLSERVERSPATIAL" || //NOXLATE
+                providerNameUpper == "OSGEO.MYSQL" || //NOXLATE
+                providerNameUpper == "OSGEO.POSTGRESQL" || //NOXLATE
+                providerNameUpper == "OSGEO.ARCSDE" || //NOXLATE
+                providerNameUpper == "OSGEO.WFS" || //NOXLATE
+                providerNameUpper == "OSGEO.WMS" || //NOXLATE
+                providerNameUpper == "KING.ORACLE" || //NOXLATE
+                providerNameUpper == "AUTODESK.ORACLE") //NOXLATE
             {
                 //Fortunately, all the above providers are universal in the naming choice of credential connection parameters
-                if ((fsXml.Contains("<NAME>USERNAME</NAME>") && !fsXml.Contains("%MG_USERNAME%")) || (fsXml.Contains("<NAME>PASSWORD</NAME>") && !fsXml.Contains("%MG_PASSWORD%")))
+                if ((fsXml.Contains("<NAME>USERNAME</NAME>") && !fsXml.Contains(StringConstants.MgUsernamePlaceholder)) || (fsXml.Contains("<NAME>PASSWORD</NAME>") && !fsXml.Contains(StringConstants.MgPasswordPlaceholder))) //NOXLATE
                     issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_Plaintext_Credentials, Properties.Resources.FS_PlaintextCredentials));
                 else
                     issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_Cannot_Package_Secured_Credentials, Properties.Resources.FS_CannotPackageSecuredCredentials));
 
                 //Has the placeholder token(s)
-                if (fsXml.Contains("%MG_USERNAME%") || fsXml.Contains("%MG_PASSWORD%"))
+                if (fsXml.Contains(StringConstants.MgUsernamePlaceholder) || fsXml.Contains(StringConstants.MgPasswordPlaceholder))
                 {
                     //Find the MG_USER_CREDENTIALS resource data item
                     bool bFound = false;
                     var resData = feature.EnumerateResourceData();
                     foreach (var data in resData)
                     {
-                        if (data.Name == "MG_USER_CREDENTIALS")
+                        if (data.Name == StringConstants.MgUserCredentialsResourceData)
                         {
                             bFound = true;
                         }
@@ -220,7 +220,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 catch (Exception ex)
                 {
                     string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    if (msg.Contains("MgClassNotFound")) //#1403 workaround
+                    //#1403 workaround
+                    if (msg.Contains("MgClassNotFound")) //NOXLATE
                         issues.Add(new ValidationIssue(feature, ValidationStatus.Information, ValidationStatusCode.Info_FeatureSource_NoPrimaryKey, string.Format(Properties.Resources.FS_PrimaryKeyMissingInformation, className)));
                     else
                         issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_SchemaReadError, string.Format(Properties.Resources.FS_SchemaReadError, msg)));
@@ -237,7 +238,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <value></value>
         public ResourceTypeDescriptor SupportedResourceAndVersion
         {
-            get { return new ResourceTypeDescriptor(ResourceTypes.FeatureSource, "1.0.0"); }
+            get { return new ResourceTypeDescriptor(ResourceTypes.FeatureSource, "1.0.0"); } //NOXLATE
         }
     }
 }

@@ -60,8 +60,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <param name="msg">The message.</param>
         public ValidationIssue(IResource res, ValidationStatus stat, ValidationStatusCode code, string msg)
         {
-            Check.NotNull(res, "res");
-            Check.NotEmpty(msg, "msg");
+            Check.NotNull(res, "res"); //NOXLATE
+            Check.NotEmpty(msg, "msg"); //NOXLATE
 
             this.Resource = res;
             this.Status = stat;

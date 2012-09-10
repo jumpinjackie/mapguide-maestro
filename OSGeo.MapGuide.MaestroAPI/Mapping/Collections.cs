@@ -228,12 +228,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 //This shouldn't happen
                 if (_values.Count > 0)
                 {
-                    System.Diagnostics.Trace.TraceWarning("Expected empty values collection!");
+                    System.Diagnostics.Trace.TraceWarning("Expected empty values collection!"); //NOXLATE
                     _values.Clear();
                 }
                 if (_valuesByKey.Count > 0)
                 {
-                    System.Diagnostics.Trace.TraceWarning("Expected empty values collection!");
+                    System.Diagnostics.Trace.TraceWarning("Expected empty values collection!"); //NOXLATE
                     _valuesByKey.Clear();
                 }
             }

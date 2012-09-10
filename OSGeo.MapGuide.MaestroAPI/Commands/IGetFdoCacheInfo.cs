@@ -53,7 +53,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     /// <summary>
     /// Represents the cache status of FDO connections currently managed by the MapGuide Server
     /// </summary>
-    [XmlRoot(ElementName = "FdoCacheInformation")]
+    [XmlRoot(ElementName = "FdoCacheInformation")] //NOXLATE
     public class FdoCacheInfo
     {
         private static XmlSerializer smSerializer;
@@ -88,16 +88,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// <value>
         /// The configuration.
         /// </value>
-        [XmlElement(ElementName = "ConfigurationSettings")]
-        [DisplayName("Configuration Settings")]
+        [XmlElement(ElementName = "ConfigurationSettings")] //NOXLATE
+        [DisplayName("Configuration Settings")] //NOXLATE
         public ConfigurationSettings Configuration { get; set; }
 
 
         /// <summary>
         /// Gets an array of cache status of connections for each provider
         /// </summary>
-        [XmlElement(ElementName = "Provider")]
-        [DisplayName("Cached FDO Providers")]
+        [XmlElement(ElementName = "Provider")] //NOXLATE
+        [DisplayName("Cached FDO Providers")] //NOXLATE
         public CachedProviderInfo[] Providers { get; set; }
     }
 
@@ -112,7 +112,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// Gets the feature source
         /// </summary>
         [XmlElement]
-        [DisplayName("Feature Source")]
+        [DisplayName("Feature Source")] //NOXLATE
         public string Name { get; set; }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// <summary>
         /// Gets the feature source
         /// </summary>
-        [XmlElement(ElementName = "Name")]
+        [XmlElement(ElementName = "Name")] //NOXLATE
         public string FeatureSourceId { get; set; }
 
         /// <summary>
@@ -197,8 +197,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// <summary>
         /// Gets an array of cached connections using this provider
         /// </summary>
-        [XmlElement(ElementName = "CachedFdoConnection")]
-        [DisplayName("Cached Feature Sources")]
+        [XmlElement(ElementName = "CachedFdoConnection")] //NOXLATE
+        [DisplayName("Cached Feature Sources")] //NOXLATE
         public CachedFdoConnection[] CachedFdoConnections { get; set; }
     }
 

@@ -43,49 +43,49 @@ using GeoAPI.Geometries;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
-	/// <summary>
-	/// Base class of all connection classes. Covers functionality encompassed by
+    /// <summary>
+    /// Base class of all connection classes. Covers functionality encompassed by
     /// the MapGuide Geospatial Platform API (ie. Feature Service and Resource Service)
-	/// </summary>
-	public abstract class PlatformConnectionBase
-	{
-		/// <summary>
-		/// A list of cached serializers
-		/// </summary>
-		protected Hashtable m_serializers;
+    /// </summary>
+    public abstract class PlatformConnectionBase
+    {
+        /// <summary>
+        /// A list of cached serializers
+        /// </summary>
+        protected Hashtable m_serializers;
 
-		/// <summary>
-		/// The current XML validator
-		/// </summary>
-		protected XmlValidator m_validator;
+        /// <summary>
+        /// The current XML validator
+        /// </summary>
+        protected XmlValidator m_validator;
 
-		/// <summary>
-		/// The path of Xsd schemas 
-		/// </summary>
-		protected string m_schemasPath;
+        /// <summary>
+        /// The path of Xsd schemas 
+        /// </summary>
+        protected string m_schemasPath;
 
-		/// <summary>
-		/// A lookup table for Xsd Schemas
-		/// </summary>
-		protected Hashtable m_cachedSchemas;
+        /// <summary>
+        /// A lookup table for Xsd Schemas
+        /// </summary>
+        protected Hashtable m_cachedSchemas;
 
-		/// <summary>
-		/// A flag indicating if Xsd validation is perfomed
-		/// </summary>
-		protected bool m_disableValidation = false;
+        /// <summary>
+        /// A flag indicating if Xsd validation is perfomed
+        /// </summary>
+        protected bool m_disableValidation = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PlatformConnectionBase"/> class.
         /// </summary>
-		protected PlatformConnectionBase()
-		{
+        protected PlatformConnectionBase()
+        {
             ResourceTypeRegistry.Init();
             
             m_serializers = new Hashtable();
             m_validator = new XmlValidator();
             m_cachedSchemas = new Hashtable();
-            m_schemasPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "Schemas");
-		}
+            m_schemasPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "Schemas"); //NOXLATE
+        }
 
         #region Serialization plumbing
 
@@ -100,14 +100,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             return (T)DeserializeObject(typeof(T), data);
         }
 
-		/// <summary>
-		/// Deserializes an object from a stream.
-		/// </summary>
-		/// <param name="type">The expected object type</param>
-		/// <param name="data">The stream containing the object</param>
-		/// <returns>The deserialized object</returns>
-		virtual public object DeserializeObject(Type type, System.IO.Stream data)
-		{
+        /// <summary>
+        /// Deserializes an object from a stream.
+        /// </summary>
+        /// <param name="type">The expected object type</param>
+        /// <param name="data">The stream containing the object</param>
+        /// <returns>The deserialized object</returns>
+        virtual public object DeserializeObject(Type type, System.IO.Stream data)
+        {
             //HACK: MGOS 2.2 outputs different capabilities xml (because it's actually the correct one!), so 
             //without breaking support against 2.1 and older servers, we transform the xml to its pre-2.2 form
             if (type == typeof(FdoProviderCapabilities) && this.SiteVersion < new Version(2, 2))
@@ -120,12 +120,12 @@ namespace OSGeo.MapGuide.MaestroAPI
 
                 //Pre-2.2 the elements were suffixed with Collection, change the suffix to List
 
-                sb.Replace("<FunctionDefinitionCollection>", "<FunctionDefinitionList>");
-                sb.Replace("</FunctionDefinitionCollection>", "</FunctionDefinitionList>");
-                sb.Replace("<FunctionDefinitionCollection/>", "<FunctionDefinitionList/>");
-                sb.Replace("<ArgumentDefinitionCollection>", "<ArgumentDefinitionList>");
-                sb.Replace("</ArgumentDefinitionCollection>", "</ArgumentDefinitionList>");
-                sb.Replace("<ArgumentDefinitionCollection/>", "<ArgumentDefinitionList/>");
+                sb.Replace("<FunctionDefinitionCollection>", "<FunctionDefinitionList>"); //NOXLATE
+                sb.Replace("</FunctionDefinitionCollection>", "</FunctionDefinitionList>"); //NOXLATE
+                sb.Replace("<FunctionDefinitionCollection/>", "<FunctionDefinitionList/>"); //NOXLATE
+                sb.Replace("<ArgumentDefinitionCollection>", "<ArgumentDefinitionList>"); //NOXLATE
+                sb.Replace("</ArgumentDefinitionCollection>", "</ArgumentDefinitionList>"); //NOXLATE
+                sb.Replace("<ArgumentDefinitionCollection/>", "<ArgumentDefinitionList/>"); //NOXLATE
 
                 byte[] bytes = Encoding.UTF8.GetBytes(sb.ToString());
 
@@ -133,77 +133,77 @@ namespace OSGeo.MapGuide.MaestroAPI
                 data = new MemoryStream(bytes);
             }
 
-			//Must copy stream, because we will be reading it twice :(
-			//Once for validation, and once for deserialization
-			System.IO.MemoryStream ms = new System.IO.MemoryStream();
-			Utility.CopyStream(data, ms);
-			ms.Position = 0;
+            //Must copy stream, because we will be reading it twice :(
+            //Once for validation, and once for deserialization
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            Utility.CopyStream(data, ms);
+            ms.Position = 0;
 
 #if DEBUG_LASTMESSAGE
-			//Save us a copy for later investigation
-			using (System.IO.FileStream fs = System.IO.File.Open("lastResponse.xml", System.IO.FileMode.Create, System.IO.FileAccess.ReadWrite, System.IO.FileShare.None))
-				Utility.CopyStream(ms, fs);
+            //Save us a copy for later investigation
+            using (System.IO.FileStream fs = System.IO.File.Open("lastResponse.xml", System.IO.FileMode.Create, System.IO.FileAccess.ReadWrite, System.IO.FileShare.None)) //NOXLATE
+                Utility.CopyStream(ms, fs);
 
-			ms.Position = 0;
+            ms.Position = 0;
 #endif
-			//TODO: Find out why the "xs:include" doesn't work with validator
-			//Validation is quite important, as we otherwise may end up injecting malicious code
-			//			if (!m_disableValidation)
-			//			{
-			//				m_validator.Validate(ms, GetSchema(type));
-			//				ms.Position = 0;
-			//			}
+            //TODO: Find out why the "xs:include" doesn't work with validator
+            //Validation is quite important, as we otherwise may end up injecting malicious code
+            //			if (!m_disableValidation)
+            //			{
+            //				m_validator.Validate(ms, GetSchema(type));
+            //				ms.Position = 0;
+            //			}
 
-			try
-			{
-				return GetSerializer(type).Deserialize(ms);
-			}
-			catch (Exception ex)
-			{
-				string s = ex.Message;
-				throw;
-			}
-		}
+            try
+            {
+                return GetSerializer(type).Deserialize(ms);
+            }
+            catch (Exception ex)
+            {
+                string s = ex.Message;
+                throw;
+            }
+        }
 
-		/// <summary>
-		/// Serialize an object into a new memory stream.
-		/// </summary>
-		/// <param name="o">The object to serialize</param>
-		/// <returns>A memorystream with the serialized object</returns>
-		virtual public System.IO.MemoryStream SerializeObject(object o)
-		{
-			System.IO.MemoryStream ms = new System.IO.MemoryStream();
+        /// <summary>
+        /// Serialize an object into a new memory stream.
+        /// </summary>
+        /// <param name="o">The object to serialize</param>
+        /// <returns>A memorystream with the serialized object</returns>
+        virtual public System.IO.MemoryStream SerializeObject(object o)
+        {
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
             GetSerializer(o.GetType()).Serialize(new Utf8XmlWriter(ms), o);
             return Utility.RemoveUTF8BOM(ms);
-		}
+        }
 
-		/// <summary>
-		/// Serializes an object into a stream
-		/// </summary>
-		/// <param name="o">The object to serialize</param>
-		/// <param name="stream">The stream to serialize into</param>
-		virtual public void SerializeObject(object o, System.IO.Stream stream)
-		{
-			//The Utf8 writer makes sure the Utf8 tag is in place + sets encoding to Utf8
-			//This is needed because the server fails when rendering maps using non utf8 xml documents
-			//And the XmlSerializer sytem in .Net does not have a method to set the encoding attribute
+        /// <summary>
+        /// Serializes an object into a stream
+        /// </summary>
+        /// <param name="o">The object to serialize</param>
+        /// <param name="stream">The stream to serialize into</param>
+        virtual public void SerializeObject(object o, System.IO.Stream stream)
+        {
+            //The Utf8 writer makes sure the Utf8 tag is in place + sets encoding to Utf8
+            //This is needed because the server fails when rendering maps using non utf8 xml documents
+            //And the XmlSerializer sytem in .Net does not have a method to set the encoding attribute
 
             //This does not remove the utf8 BOM marker :(
             //GetSerializer(o.GetType()).Serialize(new Utf8XmlWriter(stream), o);
 
             SerializeObject(o).WriteTo(stream);
-		}
+        }
 
-		/// <summary>
-		/// Returns an XmlSerializer for the given type
-		/// </summary>
-		/// <param name="type">The object type to serialize</param>
-		/// <returns>An XmlSerializer for the given type</returns>
-		virtual protected System.Xml.Serialization.XmlSerializer GetSerializer(Type type)
-		{
-			if (m_serializers[type] == null)
-				m_serializers[type] = new System.Xml.Serialization.XmlSerializer(type);
-			return (System.Xml.Serialization.XmlSerializer)m_serializers[type];
+        /// <summary>
+        /// Returns an XmlSerializer for the given type
+        /// </summary>
+        /// <param name="type">The object type to serialize</param>
+        /// <returns>An XmlSerializer for the given type</returns>
+        virtual protected System.Xml.Serialization.XmlSerializer GetSerializer(Type type)
+        {
+            if (m_serializers[type] == null)
+                m_serializers[type] = new System.Xml.Serialization.XmlSerializer(type);
+            return (System.Xml.Serialization.XmlSerializer)m_serializers[type];
         }
 
         #endregion
@@ -220,22 +220,22 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
-		/// Validates the current server version against the highest tested version.
-		/// </summary>
-		/// <param name="version">The version to validate</param>
+        /// Validates the current server version against the highest tested version.
+        /// </summary>
+        /// <param name="version">The version to validate</param>
         virtual protected void ValidateVersion(ObjCommon.SiteVersion version)
-		{
-			ValidateVersion(new Version(version.Version));
-		}
+        {
+            ValidateVersion(new Version(version.Version));
+        }
 
-		/// <summary>
-		/// Validates the current server version against the highest tested version.
-		/// </summary>
-		/// <param name="version">The version to validate</param>
-		virtual protected void ValidateVersion(Version version)
-		{
-			if (version > this.MaxTestedVersion)
-				throw new Exception("Untested with MapGuide Build > " + this.MaxTestedVersion.ToString());
+        /// <summary>
+        /// Validates the current server version against the highest tested version.
+        /// </summary>
+        /// <param name="version">The version to validate</param>
+        virtual protected void ValidateVersion(Version version)
+        {
+            if (version > this.MaxTestedVersion)
+                throw new Exception("Untested with MapGuide Build > " + this.MaxTestedVersion.ToString()); //NOXLATE
         }
 
         #endregion
@@ -263,38 +263,38 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         protected abstract IServerConnection GetInterface();
 
-		/// <summary>
-		/// Removes the version numbers from a providername
-		/// </summary>
-		/// <param name="providername">The name of the provider, with or without version numbers</param>
-		/// <returns>The provider name without version numbers</returns>
-		virtual public string RemoveVersionFromProviderName(string providername)
-		{
+        /// <summary>
+        /// Removes the version numbers from a providername
+        /// </summary>
+        /// <param name="providername">The name of the provider, with or without version numbers</param>
+        /// <returns>The provider name without version numbers</returns>
+        virtual public string RemoveVersionFromProviderName(string providername)
+        {
             return Utility.StripVersionFromProviderName(providername);
-		}
+        }
 
-		/// <summary>
-		/// Gets the Xsd schema for a given type.
-		/// </summary>
-		/// <param name="type">The type to get the schema for</param>
-		/// <returns>The schema for the given type</returns>
-		virtual protected System.Xml.Schema.XmlSchema GetSchema(Type type)
-		{
-			if (m_cachedSchemas[type] == null)
-			{
-				System.Reflection.FieldInfo fi = type.GetField("SchemaName", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public );
-				if (fi == null)
-					throw new Exception("Type " + type + ", does not contain Schema Info");
+        /// <summary>
+        /// Gets the Xsd schema for a given type.
+        /// </summary>
+        /// <param name="type">The type to get the schema for</param>
+        /// <returns>The schema for the given type</returns>
+        virtual protected System.Xml.Schema.XmlSchema GetSchema(Type type)
+        {
+            if (m_cachedSchemas[type] == null)
+            {
+                System.Reflection.FieldInfo fi = type.GetField("SchemaName", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public); //NOXLATE
+                if (fi == null)
+                    throw new Exception(string.Format(Properties.Resources.ErrorTypeHasNoSchemaInfo, type));
 
-				string xsd = (string)fi.GetValue(null);
+                string xsd = (string)fi.GetValue(null);
 
-				using (System.IO.FileStream fs = System.IO.File.Open(System.IO.Path.Combine(m_schemasPath, xsd), System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read))
-					m_cachedSchemas.Add(type, System.Xml.Schema.XmlSchema.Read(fs, null));
-			}
+                using (System.IO.FileStream fs = System.IO.File.Open(System.IO.Path.Combine(m_schemasPath, xsd), System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read))
+                    m_cachedSchemas.Add(type, System.Xml.Schema.XmlSchema.Read(fs, null));
+            }
 
-			return (System.Xml.Schema.XmlSchema)m_cachedSchemas[type];
-		
-		}
+            return (System.Xml.Schema.XmlSchema)m_cachedSchemas[type];
+        
+        }
 
         /// <summary>
         /// Raised when a resource is added
@@ -345,14 +345,14 @@ namespace OSGeo.MapGuide.MaestroAPI
                 handler(this, new ResourceEventArgs(resId));
         }
 
-		/// <summary>
-		/// Gets or sets the collection of cached schemas. Use the object type for key, and an XmlSchema instance for value.
-		/// </summary>
-		virtual public Hashtable CachedSchemas
-		{
-			get { return m_cachedSchemas; }
-			set { m_cachedSchemas = value; }
-		}
+        /// <summary>
+        /// Gets or sets the collection of cached schemas. Use the object type for key, and an XmlSchema instance for value.
+        /// </summary>
+        virtual public Hashtable CachedSchemas
+        {
+            get { return m_cachedSchemas; }
+            set { m_cachedSchemas = value; }
+        }
 
         /// <summary>
         /// Releases unmanaged and - optionally - managed resources
@@ -432,9 +432,9 @@ namespace OSGeo.MapGuide.MaestroAPI
             }*/
 
 #if DEBUG_LASTMESSAGE
-			using (System.IO.Stream s = System.IO.File.Open("lastSave.xml", System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
-				Utility.CopyStream(ms, s);
-			ms.Position = 0;
+            using (System.IO.Stream s = System.IO.File.Open("lastSave.xml", System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                Utility.CopyStream(ms, s);
+            ms.Position = 0;
 #endif
 
             SetResourceXmlData(resourceid, ms);
@@ -450,7 +450,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             SetResourceXmlData(resourceid, stream, null);
             int purged = PurgeCachedItemsOf(resourceid);
 #if DEBUG
-            System.Diagnostics.Trace.TraceInformation("{0} cached items purged for {1}", purged, resourceid);
+            System.Diagnostics.Trace.TraceInformation("{0} cached items purged for {1}", purged, resourceid); //NOXLATE
 #endif
         }
 
@@ -461,7 +461,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>A list of contained resources</returns>
         virtual public ObjCommon.ResourceList GetRepositoryResources()
         {
-            return GetRepositoryResources("Library://", null, -1, true);
+            return GetRepositoryResources(StringConstants.RootIdentifier, null, -1, true);
         }
 
         /// <summary>
@@ -472,7 +472,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>A list of contained resources</returns>
         virtual public ObjCommon.ResourceList GetRepositoryResources(int depth)
         {
-            return GetRepositoryResources("Library://", null, depth, true);
+            return GetRepositoryResources(StringConstants.RootIdentifier, null, depth, true);
         }
 
         /// <summary>
@@ -556,10 +556,10 @@ namespace OSGeo.MapGuide.MaestroAPI
             try
             {
                 string sourcefolder;
-                if (resourceid.EndsWith("/"))
-                    sourcefolder = resourceid.Substring(0, resourceid.Substring(0, resourceid.Length - 1).LastIndexOf("/") + 1);
+                if (resourceid.EndsWith("/")) //NOXLATE
+                    sourcefolder = resourceid.Substring(0, resourceid.Substring(0, resourceid.Length - 1).LastIndexOf("/") + 1); //NOXLATE
                 else
-                    sourcefolder = resourceid.Substring(0, resourceid.LastIndexOf("/") + 1);
+                    sourcefolder = resourceid.Substring(0, resourceid.LastIndexOf("/") + 1); //NOXLATE
 
                 ObjCommon.ResourceList lst = GetRepositoryResources(sourcefolder, 1);
                 foreach (object o in lst.Items)
@@ -615,10 +615,10 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             if (folderupdates)
             {
-                if (!oldresourcepath.EndsWith("/"))
-                    oldresourcepath += "/";
-                if (!newresourcepath.EndsWith("/"))
-                    newresourcepath += "/";
+                if (!oldresourcepath.EndsWith("/")) //NOXLATE
+                    oldresourcepath += "/"; //NOXLATE
+                if (!newresourcepath.EndsWith("/")) //NOXLATE
+                    newresourcepath += "/"; //NOXLATE
             }
 
             //If the value is a document or fragment of a document, we still wan't to repoint it
@@ -642,7 +642,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                         if (nx.NodeType == System.Xml.XmlNodeType.Element)
                             lst.Enqueue(nx);
 
-                    if (n.Name == "ResourceId")
+                    if (n.Name == "ResourceId") //NOXLATE
                     {
                         string current = n.InnerXml;
                         if (folderupdates && current.StartsWith(oldresourcepath))
@@ -652,7 +652,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     }
 
                     foreach (System.Xml.XmlAttribute a in n.Attributes)
-                        if (a.Name == "ResourceId")
+                        if (a.Name == "ResourceId") //NOXLATE
                         {
                             string current = a.Value;
                             if (folderupdates && current.StartsWith(oldresourcepath))
@@ -682,15 +682,15 @@ namespace OSGeo.MapGuide.MaestroAPI
                     //If we are at a ResourceId property, update it as needed
                     if (v is string)
                     {
-                        bool isResId = pi.Name == "ResourceId";
+                        bool isResId = pi.Name == "ResourceId"; //NOXLATE
                         if (!isResId)
                         {
                             //Search for attributes
                             object[] xmlAttrs = pi.GetCustomAttributes(typeof(System.Xml.Serialization.XmlElementAttribute), false);
                             if (xmlAttrs != null)
                                 foreach (System.Xml.Serialization.XmlElementAttribute attr in xmlAttrs)
-                                    if (attr.Type == typeof(string) && attr.ElementName == "ResourceId")
-                                        if (pi.Name == "ResourceId")
+                                    if (attr.Type == typeof(string) && attr.ElementName == "ResourceId") //NOXLATE
+                                        if (pi.Name == "ResourceId") //NOXLATE
                                         {
                                             isResId = true;
                                             break;
@@ -854,7 +854,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             oldpath = FixAndValidateFolderPath(oldpath);
             newpath = FixAndValidateFolderPath(newpath);
 
-            LengthyOperationProgressArgs la = new LengthyOperationProgressArgs("Moving folder...", -1);
+            LengthyOperationProgressArgs la = new LengthyOperationProgressArgs(Properties.Resources.ProgressMovingFolder, -1);
 
             if (progress != null)
                 progress(this, la);
@@ -870,7 +870,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             int pg = 0;
             la.Progress = 0;
-            la.StatusMessage = "Finding folder references...";
+            la.StatusMessage = Properties.Resources.ProgressFindingFolderRefs;
             if (progress != null)
                 progress(this, la);
             if (la.Cancel)
@@ -985,7 +985,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             newpath = FixAndValidateFolderPath(newpath);
             ObjCommon.ResourceList lst = GetRepositoryResources(oldpath);
 
-            LengthyOperationProgressArgs la = new LengthyOperationProgressArgs("Copying folder...", -1);
+            LengthyOperationProgressArgs la = new LengthyOperationProgressArgs(Properties.Resources.ProgressCopyingFolder, -1);
             if (progress != null)
                 progress(this, la);
             if (la.Cancel)
@@ -999,7 +999,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 
             la.Progress = 0;
-            la.StatusMessage = "Finding folder references...";
+            la.StatusMessage = Properties.Resources.ProgressFindingFolderRefs;
             int pg = 0;
             if (progress != null)
                 progress(this, la);
@@ -1104,11 +1104,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>The fixed path</returns>
         virtual protected string FixAndValidateFolderPath(string folderpath)
         {
-            if (!folderpath.StartsWith("Library://") && !folderpath.StartsWith("Session:" + this.SessionID + "//"))
-                throw new Exception("Invalid folder path, must be either library or session");
+            if (!folderpath.StartsWith(StringConstants.RootIdentifier) && !folderpath.StartsWith("Session:" + this.SessionID + "//")) //NOXLATE
+                throw new Exception(Properties.Resources.ErrorInvalidResourceIdentifierType);
 
-            if (!folderpath.EndsWith("/"))
-                folderpath += "/";
+            if (!folderpath.EndsWith("/")) //NOXLATE
+                folderpath += "/"; //NOXLATE
 
             return folderpath;
         }
@@ -1355,7 +1355,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public virtual void SetFolderOrResourceHeader(string resourceID, object header)
         {
             if (header == null)
-                throw new ArgumentNullException("header");
+                throw new ArgumentNullException("header"); //NOXLATE
 
             ObjCommon.ResourceSecurityType sec;
             if (header as ObjCommon.ResourceFolderHeaderType != null)
@@ -1363,7 +1363,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             else if (header as ObjCommon.ResourceDocumentHeaderType != null)
                 sec = (header as ObjCommon.ResourceDocumentHeaderType).Security;
             else
-                throw new ArgumentException("Header must be either ResourceFolderHeaderType or ResourceDocumentHeaderType", "header");
+                throw new ArgumentException(Properties.Resources.ErrorInvalidResourceHeaderRootElement, "header"); //NOXLATE
 
             if (sec.Users != null && sec.Users.User != null && sec.Users.User.Count == 0)
                 sec.Users = null;
@@ -1371,10 +1371,10 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (sec.Groups != null && sec.Groups.Group != null && sec.Groups.Group.Count == 0)
                 sec.Groups = null;
 
-            if (resourceID.EndsWith("//"))
+            if (resourceID.EndsWith("//")) //NOXLATE
             {
                 if (header as ObjCommon.ResourceFolderHeaderType == null)
-                    throw new Exception("The resourceId: " + resourceID + " must be updated with a folder header");
+                    throw new Exception(string.Format(Properties.Resources.ErrorResourceMustBeUpdatedWithFolderHeader, resourceID));
                 UpdateRepository(resourceID, header as ObjCommon.ResourceFolderHeaderType);
             }
             else
@@ -1491,7 +1491,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     m_featureSchemaCache[resourceID] = FeatureSourceDescription.Clone(fsd);
                     foreach (ClassDefinition cls in fsd.AllClasses)
                     {
-                        string classCacheKey = resourceID + "!" + cls.QualifiedName;
+                        string classCacheKey = resourceID + "!" + cls.QualifiedName; //NOXLATE
                         m_classDefinitionCache[classCacheKey] = cls;
                     }
                 }
@@ -1502,7 +1502,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
 #if DEBUG
             if (bFromCache)
-                System.Diagnostics.Trace.TraceInformation("Returning cached description for {0}", resourceID);
+                System.Diagnostics.Trace.TraceInformation("Returning cached description for {0}", resourceID); //NOXLATE
 #endif
             //Return a clone to ensure immutability of cached one
             return FeatureSourceDescription.Clone(m_featureSchemaCache[resourceID]);
@@ -1528,8 +1528,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             //NOTE: To prevent ambiguity, only class definitions queried with qualified
             //names are cached. Un-qualified ones will call directly into the implementing
             //GetClassDefinition API
-            bool bQualified = className.Contains(":");
-            string classCacheKey = resourceID + "!" + className;
+            bool bQualified = className.Contains(":"); //NOXLATE
+            string classCacheKey = resourceID + "!" + className; //NOXLATE
             ClassDefinition cls = null;
             bool bStoreInCache = true;
             bool bFromCache = false;
@@ -1546,7 +1546,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 if (bQualified)
                 {
-                    var tokens = className.Split(':');
+                    var tokens = className.Split(':'); //NOXLATE
                     cls = GetClassDefinitionInternal(resourceID, tokens[0], tokens[1]);
                 }
                 else
@@ -1561,12 +1561,13 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 #if DEBUG
             if (bFromCache)
-                System.Diagnostics.Trace.TraceInformation("Returning cached class ({0}) for {1}", className, resourceID);
+                System.Diagnostics.Trace.TraceInformation("Returning cached class ({0}) for {1}", className, resourceID); //NOXLATE
 #endif
 
             if (cls != null)
             {
-                var key = resourceID + "!" + cls.QualifiedName; //Sanity check
+                //Sanity check
+                var key = resourceID + "!" + cls.QualifiedName; //NOXLATE
                 if (bStoreInCache && classCacheKey == key)
                 {
                     m_classDefinitionCache[classCacheKey] = cls;
@@ -1674,22 +1675,22 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         protected virtual OSGeo.MapGuide.ObjectModels.Common.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, string filter, bool allowFallbackToContextInformation)
         {
-            Check.NotEmpty(schema, "schema");
-            Check.NotEmpty(geometry, "geometry");
+            Check.NotEmpty(schema, "schema"); //NOXLATE
+            Check.NotEmpty(geometry, "geometry"); //NOXLATE
             try
             {
                 System.Collections.Specialized.NameValueCollection fun = new System.Collections.Specialized.NameValueCollection();
-                fun.Add("EXTENT", "SpatialExtents(\"" + geometry + "\")");
+                fun.Add("EXTENT", "SpatialExtents(\"" + geometry + "\")"); //NOXLATE
                 using (IReader fsr = AggregateQueryFeatureSource(resourceID, schema, filter, fun))
                 {
                     try
                     {
                         if (fsr.ReadNext())
                         {
-                            if (fsr.IsNull("EXTENT"))
+                            if (fsr.IsNull("EXTENT")) //NOXLATE
                                 throw new NullExtentException();
 
-                            IGeometry geom = fsr["EXTENT"] as IGeometry;
+                            IGeometry geom = fsr["EXTENT"] as IGeometry; //NOXLATE
                             if (geom == null)
                             {
                                 throw new NullExtentException();
@@ -1705,7 +1706,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                             }
                         }
                         else
-                            throw new Exception("No data found in resource: " + resourceID);
+                            throw new Exception(string.Format(Properties.Resources.ErrorNoDataInResource, resourceID));
                     }
                     finally
                     {
@@ -2035,13 +2036,13 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public virtual RuntimeMap OpenMap(string runtimeMapResourceId)
         {
-            if (!runtimeMapResourceId.StartsWith("Session:") || !runtimeMapResourceId.EndsWith(".Map"))
-                throw new ArgumentException("Runtime maps must be in the current session repository");
+            if (!runtimeMapResourceId.StartsWith("Session:") || !runtimeMapResourceId.EndsWith(".Map")) //NOXLATE
+                throw new ArgumentException(Properties.Resources.ErrorRuntimeMapNotInSessionRepo);
 
             var map = new RuntimeMap(GetInterface());
-            map.Deserialize(new MgBinaryDeserializer(this.GetResourceData(runtimeMapResourceId, "RuntimeData"), this.SiteVersion));
+            map.Deserialize(new MgBinaryDeserializer(this.GetResourceData(runtimeMapResourceId, "RuntimeData"), this.SiteVersion)); //NOXLATE
             if (this.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
-                map.DeserializeLayerData(new MgBinaryDeserializer(this.GetResourceData(runtimeMapResourceId, "LayerGroupData"), this.SiteVersion));
+                map.DeserializeLayerData(new MgBinaryDeserializer(this.GetResourceData(runtimeMapResourceId, "LayerGroupData"), this.SiteVersion)); //NOXLATE
 
             map.IsDirty = false;
             return map;

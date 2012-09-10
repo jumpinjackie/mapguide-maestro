@@ -39,7 +39,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Exceptions
                 return string.Empty;
 
             Exception ex = error;
-            string innerPrefix = Environment.NewLine + "\t";
+            string innerPrefix = Environment.NewLine + "\t"; //NOXLATE
             StringBuilder sb = new StringBuilder();
             while (ex.InnerException != null)
             {

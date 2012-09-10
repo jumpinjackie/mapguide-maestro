@@ -75,11 +75,11 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             var map = new MapWidgetType()
             {
                 MapId = mapId,
-                Name = "Map",
-                Type = "Map",
+                Name = "Map", //NOXLATE
+                Type = "Map", //NOXLATE
                 Extension = new CustomContentType() { Any = new XmlElement[0] }
             };
-            map.SetValue("MenuContainer", contextMenuId);
+            map.SetValue("MenuContainer", contextMenuId); //NOXLATE
             return map;
         }
 
@@ -106,7 +106,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
                 {
                     new MapType()
                     {
-                        Type = "MapGuide",
+                        Type = "MapGuide", //NOXLATE
                         SingleTile = singleTile.ToString(),
                         Extension = new CustomContentType()
                         {
@@ -115,7 +115,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
                     }
                 },
             };
-            map.Map[0].Extension.Any[0] = AppDefDocument.Instance.CreateElement("ResourceId");
+            map.Map[0].Extension.Any[0] = AppDefDocument.Instance.CreateElement("ResourceId"); //NOXLATE
             map.Map[0].Extension.Any[0].InnerText = mapDefinitionId;
 
             this.MapSet.Add(map);
@@ -150,14 +150,14 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             set
             {
                 if (!ResourceIdentifier.Validate(value))
-                    throw new InvalidOperationException("Not a valid resource identifier"); //LOCALIZE
+                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorInvalidResourceIdentifier);
 
                 var res = new ResourceIdentifier(value);
                 if (res.Extension != ResourceTypes.ApplicationDefinition.ToString())
-                    throw new InvalidOperationException("Invalid resource identifier for this type of object: " + res.Extension); //LOCALIZE
+                    throw new InvalidOperationException(string.Format(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.ApplicationDefinition));
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID");
+                this.OnPropertyChanged("ResourceID"); //NOXLATE
             }
         }
 
@@ -184,10 +184,10 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             return this.Clone();
         }
 
-        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
+        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")] //NOXLATE
         public string ValidatingSchema 
-        { 
-            get { return "ApplicationDefinition-1.0.0.xsd"; }
+        {
+            get { return "ApplicationDefinition-1.0.0.xsd"; } //NOXLATE
             set { }
         }
 
@@ -212,7 +212,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             {
                 widget = new UiWidgetType()
                 {
-                    Disabled = "false",
+                    Disabled = "false", //NOXLATE
                     Extension = new CustomContentType() { Any = new XmlElement[0] },
                     ImageClass = widgetInfo.ImageClass,
                     ImageUrl = widgetInfo.ImageUrl,
@@ -311,7 +311,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             if (grp != null)
             {
                 this.MapSet.Add(grp);
-                OnPropertyChanged("MapSet");
+                OnPropertyChanged("MapSet"); //NOXLATE
             }
         }
 
@@ -321,7 +321,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             if (grp != null)
             {
                 this.MapSet.Remove(grp);
-                OnPropertyChanged("MapSet");
+                OnPropertyChanged("MapSet"); //NOXLATE
             }
         }
 
@@ -343,7 +343,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             if (wset != null)
             {
                 this.WidgetSet.Add(wset);
-                OnPropertyChanged("WidgetSet");
+                OnPropertyChanged("WidgetSet"); //NOXLATE
             }
         }
 
@@ -353,7 +353,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             if (wset != null)
             {
                 this.WidgetSet.Remove(wset);
-                OnPropertyChanged("WidgetSet");
+                OnPropertyChanged("WidgetSet"); //NOXLATE
             }
         }
 
@@ -428,7 +428,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             {
                 this.Item.Insert(index, it);
                 it.Parent = this;
-                OnPropertyChanged("Item");
+                OnPropertyChanged("Item"); //NOXLATE
             }
         }
 
@@ -439,7 +439,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             {
                 this.Item.Add(it);
                 it.Parent = this;
-                OnPropertyChanged("Item");
+                OnPropertyChanged("Item"); //NOXLATE
             }
         }
 
@@ -450,7 +450,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             {
                 this.Item.Remove(it);
                 it.Parent = null;
-                OnPropertyChanged("Item");
+                OnPropertyChanged("Item"); //NOXLATE
             }
         }
     }
@@ -516,7 +516,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             {
                 this.Item.Insert(index, it);
                 it.Parent = this;
-                OnPropertyChanged("Item");
+                OnPropertyChanged("Item"); //NOXLATE
             }
         }
 
@@ -527,7 +527,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             {
                 this.Item.Add(it);
                 it.Parent = this;
-                OnPropertyChanged("Item");
+                OnPropertyChanged("Item"); //NOXLATE
             }
         }
 
@@ -538,7 +538,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             {
                 this.Item.Remove(it);
                 it.Parent = null;
-                OnPropertyChanged("Item");
+                OnPropertyChanged("Item"); //NOXLATE
             }
         }
     }
@@ -579,7 +579,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             if (cnt != null)
             {
                 this.Container.Add(cnt);
-                OnPropertyChanged("Container");
+                OnPropertyChanged("Container"); //NOXLATE
             }
         }
 
@@ -589,7 +589,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             if (cnt != null)
             {
                 this.Container.Remove(cnt);
-                OnPropertyChanged("Container");
+                OnPropertyChanged("Container"); //NOXLATE
             }
         }
 
@@ -699,9 +699,9 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
     {
         IMap IMapGroup.CreateCmsMapEntry(string type, bool singleTile, string name, string olType)
         {
-            var el = AppDefDocument.Instance.CreateElement("Options");
-            var n = AppDefDocument.Instance.CreateElement("name");
-            var t = AppDefDocument.Instance.CreateElement("type");
+            var el = AppDefDocument.Instance.CreateElement("Options"); //NOXLATE
+            var n = AppDefDocument.Instance.CreateElement("name"); //NOXLATE
+            var t = AppDefDocument.Instance.CreateElement("type"); //NOXLATE
 
             n.InnerText = name;
             t.InnerText = olType;
@@ -714,7 +714,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
                 {
                     Any = new XmlElement[] { el }
                 },
-                SingleTile = "true",
+                SingleTile = "true", //NOXLATE
                 Type = type
             };
         }
@@ -769,7 +769,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             if (m != null)
             {
                 this.Map.Add(m);
-                OnPropertyChanged("Map");
+                OnPropertyChanged("Map"); //NOXLATE
             }
         }
 
@@ -779,7 +779,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             if (m != null)
             {
                 this.Map.Remove(m);
-                OnPropertyChanged("Map");
+                OnPropertyChanged("Map"); //NOXLATE
             }
         }
 
@@ -858,12 +858,12 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
                      var els = new List<XmlElement>(this.extensionField.Any);
                      for (int i = 0; i < els.Count; i++)
                      {
-                         if (els[i].Name.Equals("Options"))
+                         if (els[i].Name.Equals("Options")) //NOXLATE
                          {
                              try
                              {
-                                 var n = els[i]["name"];
-                                 var t = els[i]["type"];
+                                 var n = els[i]["name"]; //NOXLATE
+                                 var t = els[i]["type"]; //NOXLATE
 
                                  if (n != null && t != null)
                                      return new MapOptions() { Name = n.InnerText, Type = t.InnerText };
@@ -883,8 +883,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             }
             set
             {
-                if (this.Type.Equals("MapGuide"))
-                    throw new InvalidOperationException("CMS options are only available for non-MapGuide maps");
+                if (this.Type.Equals("MapGuide")) //NOXLATE
+                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorCmsOptionsOnMapGuideMap);
 
                 if (value == null)
                 {
@@ -893,7 +893,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
                         var els = new List<XmlElement>(this.extensionField.Any);
                         for (int i = 0; i < els.Count; i++)
                         {
-                            if (els[i].Name.Equals("Options"))
+                            if (els[i].Name.Equals("Options")) //NOXLATE
                             {
                                 els.RemoveAt(i);
                                 break;
@@ -906,10 +906,10 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
                     XmlElement el = null;
                     if (this.Extension.Any.Length == 0)
                     {
-                        el = AppDefDocument.Instance.CreateElement("Options");
+                        el = AppDefDocument.Instance.CreateElement("Options"); //NOXLATE
 
-                        var n = AppDefDocument.Instance.CreateElement("name");
-                        var t = AppDefDocument.Instance.CreateElement("type");
+                        var n = AppDefDocument.Instance.CreateElement("name"); //NOXLATE
+                        var t = AppDefDocument.Instance.CreateElement("type"); //NOXLATE
 
                         n.InnerText = value.Name;
                         t.InnerText = value.Type;
@@ -924,12 +924,12 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
                         var els = new List<XmlElement>(this.extensionField.Any);
                         for (int i = 0; i < els.Count; i++)
                         {
-                            if (els[i].Name.Equals("Options"))
+                            if (els[i].Name.Equals("Options")) //NOXLATE
                             {
                                 els[i].RemoveAll();
 
-                                var n = AppDefDocument.Instance.CreateElement("name");
-                                var t = AppDefDocument.Instance.CreateElement("type");
+                                var n = AppDefDocument.Instance.CreateElement("name"); //NOXLATE
+                                var t = AppDefDocument.Instance.CreateElement("type"); //NOXLATE
 
                                 n.InnerText = value.Name;
                                 t.InnerText = value.Type;
@@ -968,13 +968,13 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
                     var els = new List<XmlElement>(this.extensionField.Any);
                     for (int i = 0; i < els.Count; i++)
                     {
-                        if (els[i].Name.Equals("Options"))
+                        if (els[i].Name.Equals("Options")) //NOXLATE
                         {
                             try
                             {
-                                var n = els[i]["isBaseLayer"];
-                                var t = els[i]["useOverlay"];
-                                var p = els[i]["projection"];
+                                var n = els[i]["isBaseLayer"]; //NOXLATE
+                                var t = els[i]["useOverlay"]; //NOXLATE
+                                var p = els[i]["projection"]; //NOXLATE
 
                                 if (n != null && t != null)
                                     return CreateOverlayOptions(Convert.ToBoolean(n.InnerText), Convert.ToBoolean(t.InnerText), p.InnerText);
@@ -994,8 +994,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             }
             set
             {
-                if (!this.Type.Equals("MapGuide"))
-                    throw new InvalidOperationException("Overlay options are only applicable to MapGuide maps"); //LOCALIZEME
+                if (!this.Type.Equals("MapGuide")) //NOXLATE
+                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorOverlayOptionsOnNonMapGuideMap);
 
                 if (value == null)
                 {
@@ -1004,7 +1004,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
                         var els = new List<XmlElement>(this.extensionField.Any);
                         for (int i = 0; i < els.Count; i++)
                         {
-                            if (els[i].Name.Equals("Options"))
+                            if (els[i].Name.Equals("Options")) //NOXLATE
                             {
                                 els.RemoveAt(i);
                                 this.extensionField.Any = els.ToArray();
@@ -1018,7 +1018,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
                     XmlElement el = null;
                     if (this.Extension.Any.Length == 0)
                     {
-                        el = AppDefDocument.Instance.CreateElement("Options");
+                        el = AppDefDocument.Instance.CreateElement("Options"); //NOXLATE
 
                         this.Extension.Any = new XmlElement[] { el };
                     }
@@ -1027,7 +1027,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
                         var els = new List<XmlElement>(this.extensionField.Any);
                         for (int i = 0; i < els.Count; i++)
                         {
-                            if (els[i].Name.Equals("Options"))
+                            if (els[i].Name.Equals("Options")) //NOXLATE
                             {
                                 el = els[i];
                                 break;
@@ -1036,7 +1036,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
 
                         if (el == null)
                         {
-                            el = AppDefDocument.Instance.CreateElement("Options");
+                            el = AppDefDocument.Instance.CreateElement("Options"); //NOXLATE
                             els.Add(el);
                             this.Extension.Any = els.ToArray();
                         }
@@ -1044,9 +1044,9 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
 
                     el.RemoveAll();
 
-                    var n = el.OwnerDocument.CreateElement("isBaseLayer");
-                    var t = el.OwnerDocument.CreateElement("useOverlay");
-                    var p = el.OwnerDocument.CreateElement("projection");
+                    var n = el.OwnerDocument.CreateElement("isBaseLayer"); //NOXLATE
+                    var t = el.OwnerDocument.CreateElement("useOverlay"); //NOXLATE
+                    var p = el.OwnerDocument.CreateElement("projection"); //NOXLATE
 
                     n.InnerText = value.IsBaseLayer.ToString().ToLower();
                     t.InnerText = value.UseOverlay.ToString().ToLower();

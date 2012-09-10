@@ -38,8 +38,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <param name="targetFolder">The target folder.</param>
         public RebaseOptions(string sourceFolder, string targetFolder)
         {
-            Check.Precondition(ResourceIdentifier.IsFolderResource(sourceFolder), "ResourceIdentifier.IsFolderResource(sourceFolder)");
-            Check.Precondition(ResourceIdentifier.IsFolderResource(targetFolder), "ResourceIdentifier.IsFolderResource(targetFolder)");
+            Check.Precondition(ResourceIdentifier.IsFolderResource(sourceFolder), "ResourceIdentifier.IsFolderResource(sourceFolder)"); //NOXLATE
+            Check.Precondition(ResourceIdentifier.IsFolderResource(targetFolder), "ResourceIdentifier.IsFolderResource(targetFolder)"); //NOXLATE
 
             this.SourceFolder = sourceFolder;
             this.TargetFolder = targetFolder;
@@ -95,7 +95,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
             var doc = new XmlDocument();
             doc.LoadXml(xml);
 
-            var elements = doc.GetElementsByTagName("ResourceId");
+            var elements = doc.GetElementsByTagName("ResourceId"); //NOXLATE
             foreach (XmlNode el in elements)
             {
                 el.InnerText = el.InnerText.Replace(sourceRoot, targetRoot);

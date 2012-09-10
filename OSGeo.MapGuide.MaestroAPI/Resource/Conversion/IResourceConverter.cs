@@ -73,7 +73,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
             //wayside in the process, and any new bits flubbed with default values as part of deserialization
 
             var resVer = resource.GetResourceTypeDescriptor().Version;
-            var dstVer = string.Format("{0}.{1}.{2}", targetVersion.Major, targetVersion.Minor, targetVersion.Build);
+            var dstVer = string.Format("{0}.{1}.{2}", targetVersion.Major, targetVersion.Minor, targetVersion.Build); //NOXLATE
             var dstXsd = resource.ValidatingSchema.Replace(resVer, dstVer);
 
             using (var sr = ResourceTypeRegistry.Serialize(resource))
@@ -82,7 +82,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
                 {
                     var xml = new StringBuilder(str.ReadToEnd());
                     xml.Replace(resource.ValidatingSchema, dstXsd);
-                    xml.Replace("version=\"" + resVer, "version=\"" + dstVer);
+                    xml.Replace("version=\"" + resVer, "version=\"" + dstVer); //NOXLATE
 
                     var convRes = ResourceTypeRegistry.Deserialize(xml.ToString());
                     convRes.CurrentConnection = resource.CurrentConnection;

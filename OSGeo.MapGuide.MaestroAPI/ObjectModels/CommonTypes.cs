@@ -27,10 +27,10 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace OSGeo.MapGuide.ObjectModels.Common
 {
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.3.0.33572")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.3.0.33572")] //NOXLATE
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.ComponentModel.DesignerCategoryAttribute("code")] //NOXLATE
     public partial class ExtendedDataType : System.ComponentModel.INotifyPropertyChanged
     {
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -52,13 +52,13 @@ namespace OSGeo.MapGuide.ObjectModels.Common
                     if ((anyField.Equals(value) != true))
                     {
                         this.anyField = value;
-                        this.OnPropertyChanged("Any");
+                        this.OnPropertyChanged("Any"); //NOXLATE
                     }
                 }
                 else
                 {
                     this.anyField = value;
-                    this.OnPropertyChanged("Any");
+                    this.OnPropertyChanged("Any"); //NOXLATE
                 }
             }
         }

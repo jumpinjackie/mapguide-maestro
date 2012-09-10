@@ -100,27 +100,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             switch (dataPropertyType)
             {
                 case DataPropertyType.Blob:
-                    return "xs:hexBinary";
+                    return "xs:hexBinary"; //NOXLATE
                 case DataPropertyType.Boolean:
-                    return "xs:boolean";
+                    return "xs:boolean"; //NOXLATE
                 case DataPropertyType.Byte:
-                    return "xs:unsignedByte";
+                    return "xs:unsignedByte"; //NOXLATE
                 case DataPropertyType.DateTime:
-                    return "xs:dateTime";
+                    return "xs:dateTime"; //NOXLATE
                 case DataPropertyType.Double:
-                    return "xs:double";
+                    return "xs:double"; //NOXLATE
                 case DataPropertyType.Int16:
-                    return "xs:short";
+                    return "xs:short"; //NOXLATE
                 case DataPropertyType.Int32:
-                    return "xs:int";
+                    return "xs:int"; //NOXLATE
                 case DataPropertyType.Int64:
-                    return "xs:long";
+                    return "xs:long"; //NOXLATE
                 case DataPropertyType.Single:
-                    return "xs:float";
+                    return "xs:float"; //NOXLATE
                 case DataPropertyType.String:
-                    return "xs:string";
+                    return "xs:string"; //NOXLATE
                 case DataPropertyType.Clob:
-                    return "fdo:clob";
+                    return "fdo:clob"; //NOXLATE
                 default:
                     throw new ArgumentException();
             }
@@ -135,50 +135,50 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         {
             switch (xmlType.ToLower())
             {
-                case "xs:hexbinary":
-                case "xs:base64binary":
+                case "xs:hexbinary": //NOXLATE
+                case "xs:base64binary": //NOXLATE
                     return DataPropertyType.Blob;
-                case "xs:boolean":
+                case "xs:boolean": //NOXLATE
                     return DataPropertyType.Boolean;
-                case "fdo:byte":
-                case "xs:byte":
-                case "xs:unsignedbyte":
+                case "fdo:byte": //NOXLATE
+                case "xs:byte": //NOXLATE
+                case "xs:unsignedbyte": //NOXLATE
                     return DataPropertyType.Byte;
-                case "xs:date":
-                case "xs:datetime":
+                case "xs:date": //NOXLATE
+                case "xs:datetime": //NOXLATE
                     return DataPropertyType.DateTime;
-                case "fdo:double":
-                case "fdo:decimal":
-                case "xs:decimal":
-                case "xs:double":
+                case "fdo:double": //NOXLATE
+                case "fdo:decimal": //NOXLATE
+                case "xs:decimal": //NOXLATE
+                case "xs:double": //NOXLATE
                     return DataPropertyType.Double;
-                case "fdo:int16":
-                case "xs:int16":
-                case "xs:short":
-                case "xs:unsignedshort":
+                case "fdo:int16": //NOXLATE
+                case "xs:int16": //NOXLATE
+                case "xs:short": //NOXLATE
+                case "xs:unsignedshort": //NOXLATE
                     return DataPropertyType.Int16;
-                case "fdo:int32":
-                case "xs:int32":
-                case "xs:integer":
-                case "xs:negativeinteger":
-                case "xs:nonnegativeinteger":
-                case "xs:nonpositiveinteger":
-                case "xs:positiveinteger":
-                case "xs:unsignedint":
-                case "xs:int":
+                case "fdo:int32": //NOXLATE
+                case "xs:int32": //NOXLATE
+                case "xs:integer": //NOXLATE
+                case "xs:negativeinteger": //NOXLATE
+                case "xs:nonnegativeinteger": //NOXLATE
+                case "xs:nonpositiveinteger": //NOXLATE
+                case "xs:positiveinteger": //NOXLATE
+                case "xs:unsignedint": //NOXLATE
+                case "xs:int": //NOXLATE
                     return DataPropertyType.Int32;
-                case "fdo:int64":
-                case "xs:int64":
-                case "xs:long":
-                case "xs:unsignedlong":
+                case "fdo:int64": //NOXLATE
+                case "xs:int64": //NOXLATE
+                case "xs:long": //NOXLATE
+                case "xs:unsignedlong": //NOXLATE
                     return DataPropertyType.Int64;
-                case "xs:float":
-                case "xs:single":
-                case "fdo:single":
+                case "xs:float": //NOXLATE
+                case "xs:single": //NOXLATE
+                case "fdo:single": //NOXLATE
                     return DataPropertyType.Single;
-                case "xs:string":
+                case "xs:string": //NOXLATE
                     return DataPropertyType.String;
-                case "fdo:clob":
+                case "fdo:clob": //NOXLATE
                     return DataPropertyType.Clob;
                 default:
                     throw new ArgumentException();
@@ -194,25 +194,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         {
             var en = Utility.EncodeFDOName(this.Name);
 
-            var prop = doc.CreateElement("xs", "element", XmlNamespaces.XS);
-            prop.SetAttribute("name", en);
-            prop.SetAttribute("minOccurs", this.IsNullable ? "0" : "1");
+            var prop = doc.CreateElement("xs", "element", XmlNamespaces.XS); //NOXLATE
+            prop.SetAttribute("name", en); //NOXLATE
+            prop.SetAttribute("minOccurs", this.IsNullable ? "0" : "1"); //NOXLATE
             if (this.IsReadOnly)
-                prop.SetAttribute("readOnly", XmlNamespaces.FDO, this.IsReadOnly.ToString().ToLower());
+                prop.SetAttribute("readOnly", XmlNamespaces.FDO, this.IsReadOnly.ToString().ToLower()); //NOXLATE
             if (this.IsAutoGenerated)
-                prop.SetAttribute("autogenerated", XmlNamespaces.FDO, this.IsAutoGenerated.ToString().ToLower());
+                prop.SetAttribute("autogenerated", XmlNamespaces.FDO, this.IsAutoGenerated.ToString().ToLower()); //NOXLATE
 
-            var simp = doc.CreateElement("xs", "simpleType", XmlNamespaces.XS);
+            var simp = doc.CreateElement("xs", "simpleType", XmlNamespaces.XS); //NOXLATE
             prop.AppendChild(simp);
 
-            var rest = doc.CreateElement("xs", "restriction", XmlNamespaces.XS);
+            var rest = doc.CreateElement("xs", "restriction", XmlNamespaces.XS); //NOXLATE
             simp.AppendChild(rest);
 
-            rest.SetAttribute("base", GetXmlType(this.DataType));
+            rest.SetAttribute("base", GetXmlType(this.DataType)); //NOXLATE
             if (this.DataType == DataPropertyType.String)
             {
-                var max = doc.CreateElement("xs", "maxLength", XmlNamespaces.XS);
-                max.SetAttribute("value", this.Length.ToString(CultureInfo.InvariantCulture));
+                var max = doc.CreateElement("xs", "maxLength", XmlNamespaces.XS); //NOXLATE
+                max.SetAttribute("value", this.Length.ToString(CultureInfo.InvariantCulture)); //NOXLATE
 
                 rest.AppendChild(max);
             }
@@ -227,14 +227,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <param name="mgr"></param>
         public override void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
-            var ro = Utility.GetFdoAttribute(node, "readOnly");
-            var autogen = Utility.GetFdoAttribute(node, "autogenerated");
+            var ro = Utility.GetFdoAttribute(node, "readOnly"); //NOXLATE
+            var autogen = Utility.GetFdoAttribute(node, "autogenerated"); //NOXLATE
 
-            this.DataType = GetDataType(node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value.ToLower());
-            this.IsNullable = (node.Attributes["minOccurs"] != null && node.Attributes["minOccurs"].Value == "0");
-            this.IsReadOnly = (ro != null && ro.Value == "true");
-            this.IsAutoGenerated = (autogen != null && autogen.Value == "true");
-            this.DefaultValue = (node.Attributes["default"] != null ? node.Attributes["default"].Value : string.Empty);
+            this.DataType = GetDataType(node["xs:simpleType"]["xs:restriction"].Attributes["base"].Value.ToLower()); //NOXLATE
+            this.IsNullable = (node.Attributes["minOccurs"] != null && node.Attributes["minOccurs"].Value == "0"); //NOXLATE
+            this.IsReadOnly = (ro != null && ro.Value == "true"); //NOXLATE
+            this.IsAutoGenerated = (autogen != null && autogen.Value == "true"); //NOXLATE
+            this.DefaultValue = (node.Attributes["default"] != null ? node.Attributes["default"].Value : string.Empty); //NOXLATE
         }
 
         /// <summary>

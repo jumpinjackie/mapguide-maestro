@@ -126,13 +126,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <param name="currentNode"></param>
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
-            var schema = doc.CreateElement("xs", "schema", XmlNamespaces.XS);
-            schema.SetAttribute("xmlns:xs", XmlNamespaces.XS);
-            schema.SetAttribute("targetNamespace", XmlNamespaces.FDO  + "/feature/" + this.Name);
-            schema.SetAttribute("xmlns:fdo", XmlNamespaces.FDO);
-            schema.SetAttribute("xmlns:" + this.Name, XmlNamespaces.FDO + "/feature/" + this.Name);
-            schema.SetAttribute("elementFormDefault", "qualified");
-            schema.SetAttribute("attributeFormDefault", "unqualified");
+            var schema = doc.CreateElement("xs", "schema", XmlNamespaces.XS); //NOXLATE
+            schema.SetAttribute("xmlns:xs", XmlNamespaces.XS); //NOXLATE
+            schema.SetAttribute("targetNamespace", XmlNamespaces.FDO + "/feature/" + this.Name); //NOXLATE
+            schema.SetAttribute("xmlns:fdo", XmlNamespaces.FDO); //NOXLATE
+            schema.SetAttribute("xmlns:" + this.Name, XmlNamespaces.FDO + "/feature/" + this.Name); //NOXLATE
+            schema.SetAttribute("elementFormDefault", "qualified"); //NOXLATE
+            schema.SetAttribute("attributeFormDefault", "unqualified"); //NOXLATE
 
             foreach (var cls in this.Classes)
             {
@@ -149,14 +149,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <param name="mgr"></param>
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
-            if (!node.Name.Equals("xs:schema"))
-                throw new Exception("Bad document. Expected element: xs:schema"); //LOCALIZEME
+            if (!node.Name.Equals("xs:schema")) //NOXLATE
+                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "xs:schema"));
 
             var tns = node.Attributes["targetNamespace"];
             if (tns == null)
-                throw new Exception("Bad document. Expected attribute: targetNamespace"); //LOCALIZEME
+                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedAttribute, "targetNamespace"));
 
-            int lidx = tns.Value.LastIndexOf("/") + 1;
+            int lidx = tns.Value.LastIndexOf("/") + 1; //NOXLATE
             this.Name = tns.Value.Substring(lidx);
 
             //TODO: Description
@@ -164,14 +164,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             //Now handle classes
             if (node.ChildNodes.Count > 0)
             {
-                XmlNodeList clsNodes = node.SelectNodes("xs:complexType", mgr);
+                XmlNodeList clsNodes = node.SelectNodes("xs:complexType", mgr); //NOXLATE
                 foreach (XmlNode clsNode in clsNodes)
                 {
-                    var nn = clsNode.Attributes["name"];
+                    var nn = clsNode.Attributes["name"]; //NOXLATE
                     if (nn == null)
-                        throw new Exception("Bad document. Expected attribute: name"); //LOCALIZEME
+                        throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedAttribute, "name")); //NOXLATE
 
-                    string name = Utility.DecodeFDOName(nn.Value.Substring(0, nn.Value.Length - "Type".Length));
+                    string name = Utility.DecodeFDOName(nn.Value.Substring(0, nn.Value.Length - "Type".Length)); //NOXLATE
                     ClassDefinition cls = new ClassDefinition(name, string.Empty); //TODO: Description
                     cls.ReadXml(clsNode, mgr);
                     this.AddClass(cls);

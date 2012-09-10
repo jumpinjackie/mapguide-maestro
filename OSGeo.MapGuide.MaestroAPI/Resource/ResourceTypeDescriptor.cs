@@ -39,8 +39,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
 
         private ResourceTypeDescriptor(string resType, string ver)
         {
-            Check.NotEmpty(resType, "resType");
-            Check.NotEmpty(ver, "ver");
+            Check.NotEmpty(resType, "resType"); //NOXLATE
+            Check.NotEmpty(ver, "ver"); //NOXLATE
 
             this.ResourceType = resType;
             this.Version = ver;
@@ -53,7 +53,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         {
             get
             {
-                return ResourceType + "-" + Version + ".xsd";
+                return ResourceType + "-" + Version + ".xsd"; //NOXLATE
             }
         }
 
@@ -115,7 +115,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// </summary>
         public static ResourceTypeDescriptor ApplicationDefinition
         {
-            get { return new ResourceTypeDescriptor("ApplicationDefinition", "1.0.0"); }
+            get { return new ResourceTypeDescriptor("ApplicationDefinition", "1.0.0"); } //NOXLATE
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// </summary>
         public static ResourceTypeDescriptor FeatureSource
         {
-            get { return new ResourceTypeDescriptor("FeatureSource", "1.0.0"); }
+            get { return new ResourceTypeDescriptor("FeatureSource", "1.0.0"); } //NOXLATE
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// </summary>
         public static ResourceTypeDescriptor DrawingSource
         {
-            get { return new ResourceTypeDescriptor("DrawingSource", "1.0.0"); }
+            get { return new ResourceTypeDescriptor("DrawingSource", "1.0.0"); } //NOXLATE
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// </summary>
         public static ResourceTypeDescriptor LayerDefinition
         {
-            get { return new ResourceTypeDescriptor("LayerDefinition", "1.0.0"); }
+            get { return new ResourceTypeDescriptor("LayerDefinition", "1.0.0"); } //NOXLATE
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// </summary>
         public static ResourceTypeDescriptor LoadProcedure
         {
-            get { return new ResourceTypeDescriptor("LoadProcedure", "1.0.0"); }
+            get { return new ResourceTypeDescriptor("LoadProcedure", "1.0.0"); } //NOXLATE
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// </summary>
         public static ResourceTypeDescriptor MapDefinition
         {
-            get { return new ResourceTypeDescriptor("MapDefinition", "1.0.0"); }
+            get { return new ResourceTypeDescriptor("MapDefinition", "1.0.0"); } //NOXLATE
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// </summary>
         public static ResourceTypeDescriptor PrintLayout
         {
-            get { return new ResourceTypeDescriptor("PrintLayout", "1.0.0"); }
+            get { return new ResourceTypeDescriptor("PrintLayout", "1.0.0"); } //NOXLATE
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// </summary>
         public static ResourceTypeDescriptor SymbolLibrary
         {
-            get { return new ResourceTypeDescriptor("SymbolLibrary", "1.0.0"); }
+            get { return new ResourceTypeDescriptor("SymbolLibrary", "1.0.0"); } //NOXLATE
         }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// </summary>
         public static ResourceTypeDescriptor SymbolDefinition
         {
-            get { return new ResourceTypeDescriptor("SymbolDefinition", "1.0.0"); }
+            get { return new ResourceTypeDescriptor("SymbolDefinition", "1.0.0"); } //NOXLATE
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// </summary>
         public static ResourceTypeDescriptor WebLayout
         {
-            get { return new ResourceTypeDescriptor("WebLayout", "1.0.0"); }
+            get { return new ResourceTypeDescriptor("WebLayout", "1.0.0"); } //NOXLATE
         }
     }
 }

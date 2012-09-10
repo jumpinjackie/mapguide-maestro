@@ -258,7 +258,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public static string GenerateSessionResourceId(this IServerConnection conn, string name, ResourceTypes resType)
         {
-            return "Session:" + conn.SessionID + "//" + name + "." + resType.ToString();
+            return "Session:" + conn.SessionID + "//" + name + "." + resType.ToString(); //NOXLATE
         }
     }
 }

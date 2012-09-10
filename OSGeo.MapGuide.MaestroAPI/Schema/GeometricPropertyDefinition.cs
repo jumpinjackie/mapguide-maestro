@@ -271,15 +271,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         {
             var en = Utility.EncodeFDOName(this.Name);
 
-            var geom = doc.CreateElement("xs", "element", XmlNamespaces.XS);
-            geom.SetAttribute("name", en); //TODO: This may have been decoded. Should it be re-encoded?
-            geom.SetAttribute("type", "gml:AbstractGeometryType");
-            geom.SetAttribute("hasMeasure", XmlNamespaces.FDO, this.HasMeasure.ToString().ToLower());
-            geom.SetAttribute("hasElevation", XmlNamespaces.FDO, this.HasElevation.ToString().ToLower());
-            geom.SetAttribute("srsName", XmlNamespaces.FDO, this.SpatialContextAssociation);
-            geom.SetAttribute("geometricTypes", XmlNamespaces.FDO, GeometricTypesToString());
-            geom.SetAttribute("geometryTypes", XmlNamespaces.FDO, GeometryTypesToString());
-            geom.SetAttribute("geometryReadOnly", XmlNamespaces.FDO, this.IsReadOnly.ToString().ToLower());
+            var geom = doc.CreateElement("xs", "element", XmlNamespaces.XS); //NOXLATE
+            //TODO: This may have been decoded. Should it be re-encoded?
+            geom.SetAttribute("name", en); //NOXLATE
+            geom.SetAttribute("type", "gml:AbstractGeometryType"); //NOXLATE
+            geom.SetAttribute("hasMeasure", XmlNamespaces.FDO, this.HasMeasure.ToString().ToLower()); //NOXLATE
+            geom.SetAttribute("hasElevation", XmlNamespaces.FDO, this.HasElevation.ToString().ToLower()); //NOXLATE
+            geom.SetAttribute("srsName", XmlNamespaces.FDO, this.SpatialContextAssociation); //NOXLATE
+            geom.SetAttribute("geometricTypes", XmlNamespaces.FDO, GeometricTypesToString()); //NOXLATE
+            geom.SetAttribute("geometryTypes", XmlNamespaces.FDO, GeometryTypesToString()); //NOXLATE
+            geom.SetAttribute("geometryReadOnly", XmlNamespaces.FDO, this.IsReadOnly.ToString().ToLower()); //NOXLATE
 
             currentNode.AppendChild(geom);
         }
@@ -291,12 +292,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <param name="mgr"></param>
         public override void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
-            var gt = Utility.GetFdoAttribute(node, "geometricTypes");
-            var gt2 = Utility.GetFdoAttribute(node, "geometryTypes");
-            var gtro = Utility.GetFdoAttribute(node, "geometryReadOnly");
-            var hms = Utility.GetFdoAttribute(node, "hasMeasure");
-            var hev = Utility.GetFdoAttribute(node, "hasElevation");
-            var srs = Utility.GetFdoAttribute(node, "srsName");
+            var gt = Utility.GetFdoAttribute(node, "geometricTypes"); //NOXLATE
+            var gt2 = Utility.GetFdoAttribute(node, "geometryTypes"); //NOXLATE
+            var gtro = Utility.GetFdoAttribute(node, "geometryReadOnly"); //NOXLATE
+            var hms = Utility.GetFdoAttribute(node, "hasMeasure"); //NOXLATE
+            var hev = Utility.GetFdoAttribute(node, "hasElevation"); //NOXLATE
+            var srs = Utility.GetFdoAttribute(node, "srsName"); //NOXLATE
 
             this.GeometricTypes = ProcessGeometricTypes(gt.Value);
             if (gt2 != null)
@@ -320,7 +321,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             {
                 values.Add(gt.ToString().ToLower());
             }
-            return string.Join(" ", values.ToArray());
+            return string.Join(" ", values.ToArray()); //NOXLATE
         }
 
         /// <summary>
@@ -367,37 +368,37 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             {
                 switch (t)
                 {
-                    case "curvepolygon":
+                    case "curvepolygon": //NOXLATE
                         values.Add(SpecificGeometryType.CurvePolygon);
                         break;
-                    case "curvestring":
+                    case "curvestring": //NOXLATE
                         values.Add(SpecificGeometryType.CurveString);
                         break;
-                    case "linestring":
+                    case "linestring": //NOXLATE
                         values.Add(SpecificGeometryType.LineString);
                         break;
-                    case "multicurvepolygon":
+                    case "multicurvepolygon": //NOXLATE
                         values.Add(SpecificGeometryType.MultiCurvePolygon);
                         break;
-                    case "multicurvestring":
+                    case "multicurvestring": //NOXLATE
                         values.Add(SpecificGeometryType.MultiCurveString);
                         break;
-                    case "multigeometry":
+                    case "multigeometry": //NOXLATE
                         values.Add(SpecificGeometryType.MultiGeometry);
                         break;
-                    case "multilinestring":
+                    case "multilinestring": //NOXLATE
                         values.Add(SpecificGeometryType.MultiLineString);
                         break;
-                    case "multipoint":
+                    case "multipoint": //NOXLATE
                         values.Add(SpecificGeometryType.MultiPoint);
                         break;
-                    case "multipolygon":
+                    case "multipolygon": //NOXLATE
                         values.Add(SpecificGeometryType.MultiPolygon);
                         break;
-                    case "point":
+                    case "point": //NOXLATE
                         values.Add(SpecificGeometryType.Point);
                         break;
-                    case "polygon":
+                    case "polygon": //NOXLATE
                         values.Add(SpecificGeometryType.Polygon);
                         break;
                 }
@@ -408,12 +409,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         private static FeatureGeometricType ProcessGeometricTypes(string p)
         {
             FeatureGeometricType? gt = null;
-            string[] tokens = p.ToLower().Split(' ');
+            string[] tokens = p.ToLower().Split(' '); //NOXLATE
             foreach (string str in tokens)
             {
                 switch (str)
                 {
-                    case "point":
+                    case "point": //NOXLATE
                         {
                             if (gt.HasValue)
                                 gt = gt.Value | FeatureGeometricType.Point;
@@ -421,7 +422,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                                 gt = FeatureGeometricType.Point;
                         }
                         break;
-                    case "curve":
+                    case "curve": //NOXLATE
                         {
                             if (gt.HasValue)
                                 gt = gt.Value | FeatureGeometricType.Curve;
@@ -429,7 +430,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                                 gt = FeatureGeometricType.Curve;
                         }
                         break;
-                    case "surface":
+                    case "surface": //NOXLATE
                         {
                             if (gt.HasValue)
                                 gt = gt.Value | FeatureGeometricType.Surface;
@@ -437,7 +438,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                                 gt = FeatureGeometricType.Surface;
                         }
                         break;
-                    case "solid":
+                    case "solid": //NOXLATE
                         {
                             if (gt.HasValue)
                                 gt = gt.Value | FeatureGeometricType.Solid;

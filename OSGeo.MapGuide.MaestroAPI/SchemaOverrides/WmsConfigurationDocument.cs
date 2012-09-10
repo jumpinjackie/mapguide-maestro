@@ -55,16 +55,16 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <param name="currentNode"></param>
         protected override void WriteSchemaMappings(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
-            var map = doc.CreateElement("SchemaMapping");
-            map.SetAttribute("provider", "OSGeo.WMS.3.2");
-            map.SetAttribute("xmlns", "http://fdowms.osgeo.org/schemas");
-            map.SetAttribute("name", base._schemas[0].Name);
+            var map = doc.CreateElement("SchemaMapping"); //NOXLATE
+            map.SetAttribute("provider", "OSGeo.WMS.3.2"); //NOXLATE
+            map.SetAttribute("xmlns", "http://fdowms.osgeo.org/schemas"); //NOXLATE
+            map.SetAttribute("name", base._schemas[0].Name); //NOXLATE
             {
                 foreach(var ritem in _rasterItems)
                 {
-                    var ctype = doc.CreateElement("complexType");
-                    var ctypeName = doc.CreateAttribute("name");
-                    ctypeName.Value = ritem.FeatureClass + "Type";
+                    var ctype = doc.CreateElement("complexType"); //NOXLATE
+                    var ctypeName = doc.CreateAttribute("name"); //NOXLATE
+                    ctypeName.Value = ritem.FeatureClass + "Type"; //NOXLATE
                     ctype.Attributes.Append(ctypeName);
                     {
                         ritem.WriteXml(doc, ctype);
@@ -82,33 +82,31 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <param name="mgr">The namespace manager.</param>
         protected override void ReadSchemaMappings(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
-            //XmlNodeList mappings = node.SelectNodes("SchemaMapping");
             foreach (XmlNode map in node.ChildNodes)
             {
-                if (map.Name != "SchemaMapping")
+                if (map.Name != "SchemaMapping") //NOXLATE
                     continue;
 
-                var prv = map.Attributes["provider"];
+                var prv = map.Attributes["provider"]; //NOXLATE
                 if (prv == null)
-                    throw new Exception("Bad document. Expected attribute: provider"); //LOCALIZEME
+                    throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedAttribute, "provider"));
 
                 var sn = map.Attributes["name"];
                 if (sn == null)
-                    throw new Exception("Bad document. Expected attribute: name"); //LOCALIZEME
+                    throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedAttribute, "name"));
 
-                //XmlNodeList list = map.SelectNodes("complexType");
                 foreach (XmlNode clsMap in map.ChildNodes)
                 {
-                    if (clsMap.Name != "complexType")
+                    if (clsMap.Name != "complexType") //NOXLATE
                         continue;
 
-                    var cn = clsMap.Attributes["name"];
+                    var cn = clsMap.Attributes["name"]; //NOXLATE
                     if (cn == null)
-                        throw new Exception("Bad document. Expected attribute: name"); //LOCALIZEME
+                        throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedAttribute, "name"));
 
                     var rdf = clsMap.FirstChild;
                     if (rdf == null || rdf.Name != "RasterDefinition")
-                        throw new Exception("Bad document. Expected element: RasterDefinition"); //LOCALIZEME
+                        throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "RasterDefinition"));
 
                     RasterWmsItem item = new RasterWmsItem();
                     item.ReadXml(rdf, mgr);

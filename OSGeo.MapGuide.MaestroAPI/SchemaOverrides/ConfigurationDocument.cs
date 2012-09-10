@@ -149,13 +149,13 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <param name="currentNode"></param>
         public virtual void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
-            var dstore = doc.CreateElement("fdo", "DataStore", XmlNamespaces.FDO);
-            dstore.SetAttribute("xmlns:xs", XmlNamespaces.XS);
-            dstore.SetAttribute("xmlns:xsi", XmlNamespaces.XSI);
-            dstore.SetAttribute("xmlns:xlink", XmlNamespaces.XLINK);
-            dstore.SetAttribute("xmlns:gml", XmlNamespaces.GML);
-            dstore.SetAttribute("xmlns:fdo", XmlNamespaces.FDO);
-            dstore.SetAttribute("xmlns:fds", XmlNamespaces.FDS);
+            var dstore = doc.CreateElement("fdo", "DataStore", XmlNamespaces.FDO); //NOXLATE
+            dstore.SetAttribute("xmlns:xs", XmlNamespaces.XS); //NOXLATE
+            dstore.SetAttribute("xmlns:xsi", XmlNamespaces.XSI); //NOXLATE
+            dstore.SetAttribute("xmlns:xlink", XmlNamespaces.XLINK); //NOXLATE
+            dstore.SetAttribute("xmlns:gml", XmlNamespaces.GML); //NOXLATE
+            dstore.SetAttribute("xmlns:fdo", XmlNamespaces.FDO); //NOXLATE
+            dstore.SetAttribute("xmlns:fds", XmlNamespaces.FDS); //NOXLATE
             foreach (var sc in _spatialContexts)
             {
                 sc.WriteXml(doc, dstore);
@@ -190,13 +190,13 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <param name="mgr"></param>
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
-            if (!node.Name.Equals("fdo:DataStore"))
-                throw new Exception("Bad document. Expected element fdo:DataStore"); //LOCALIZEME
+            if (!node.Name.Equals("fdo:DataStore")) //NOXLATE
+                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "fdo:DataStore")); //NOXLATE
 
             _spatialContexts.Clear();
             _schemas.Clear();
 
-            XmlNodeList csNodes = node.SelectNodes("gml:DerivedCRS", mgr);
+            XmlNodeList csNodes = node.SelectNodes("gml:DerivedCRS", mgr); //NOXLATE
             foreach (XmlNode cs in csNodes)
             {
                 var context = new FdoSpatialContextListSpatialContext();
@@ -205,7 +205,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                 AddSpatialContext(context);
             }
 
-            XmlNodeList schemaNodes = node.SelectNodes("xs:schema", mgr);
+            XmlNodeList schemaNodes = node.SelectNodes("xs:schema", mgr); //NOXLATE
             foreach (XmlNode sn in schemaNodes)
             {
                 FeatureSchema fs = new FeatureSchema();
@@ -237,16 +237,16 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(xml);
             var mgr = new XmlNamespaceManager(doc.NameTable);
-            mgr.AddNamespace("xs", XmlNamespaces.XS);
-            mgr.AddNamespace("xsi", XmlNamespaces.XSI);
-            mgr.AddNamespace("fdo", XmlNamespaces.FDO);
-            mgr.AddNamespace("gml", XmlNamespaces.GML);
-            mgr.AddNamespace("xlink", XmlNamespaces.XLINK);
-            mgr.AddNamespace("fds", XmlNamespaces.FDS);
+            mgr.AddNamespace("xs", XmlNamespaces.XS); //NOXLATE
+            mgr.AddNamespace("xsi", XmlNamespaces.XSI); //NOXLATE
+            mgr.AddNamespace("fdo", XmlNamespaces.FDO); //NOXLATE
+            mgr.AddNamespace("gml", XmlNamespaces.GML); //NOXLATE
+            mgr.AddNamespace("xlink", XmlNamespaces.XLINK); //NOXLATE
+            mgr.AddNamespace("fds", XmlNamespaces.FDS); //NOXLATE
 
             ConfigurationDocument conf = null;
             var root = doc.DocumentElement;
-            if (root == null || root.Name != "fdo:DataStore")
+            if (root == null || root.Name != "fdo:DataStore") //NOXLATE
                 return null;
 
             //Sample the first schema mapping node. Even if there are multiples
@@ -255,16 +255,16 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             //NOTE: Why does the XPath query (commented out) fail? 
 
             var map = root.LastChild; //root.SelectSingleNode("SchemaMapping"); 
-            if (map != null && map.Name == "SchemaMapping")
+            if (map != null && map.Name == "SchemaMapping") //NOXLATE
             {
-                var prov = map.Attributes["provider"];
+                var prov = map.Attributes["provider"]; //NOXLATE
                 if (prov != null)
                 {
-                    if (prov.Value.StartsWith("OSGeo.ODBC"))
+                    if (prov.Value.StartsWith("OSGeo.ODBC")) //NOXLATE
                         conf = new OdbcConfigurationDocument();
-                    else if (prov.Value.StartsWith("OSGeo.Gdal"))
+                    else if (prov.Value.StartsWith("OSGeo.Gdal")) //NOXLATE
                         conf = new GdalConfigurationDocument();
-                    else if (prov.Value.StartsWith("OSGeo.WMS"))
+                    else if (prov.Value.StartsWith("OSGeo.WMS")) //NOXLATE
                         conf = new WmsConfigurationDocument();
                     else
                         conf = new GenericConfigurationDocument();
@@ -273,7 +273,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 
             if (conf != null)
             {
-                conf.ReadXml(doc.SelectSingleNode("fdo:DataStore", mgr), mgr);
+                conf.ReadXml(doc.SelectSingleNode("fdo:DataStore", mgr), mgr); //NOXLATE
                 return conf;
             }
 

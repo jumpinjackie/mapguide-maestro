@@ -136,7 +136,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 if ((minScaleFieldSpecified.Equals(value) != true))
                 {
                     this.minScaleFieldSpecified = value;
-                    this.OnPropertyChanged("MinScaleSpecified");
+                    this.OnPropertyChanged("MinScaleSpecified"); //NOXLATE
                 }
             }
         }
@@ -315,7 +315,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                     foreach (var item in value)
                     {
                         if (!typeof(ICompositeTypeStyle).IsAssignableFrom(item.GetType()))
-                            throw new InvalidOperationException("Assigned value does not implement ICompositeTypeStyle");
+                            throw new InvalidOperationException(OSGeo.MapGuide.ObjectModels.LayerDefinition.CommonErrorMessages.ObjectNotICompositeType);
 
                         this.itemsField.Add(item);
                     }
@@ -355,7 +355,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                     foreach (var item in value)
                     {
                         if (!typeof(ICompositeTypeStyle2).IsAssignableFrom(item.GetType()))
-                            throw new InvalidOperationException("Assigned value does not implement ICompositeTypeStyle2");
+                            throw new InvalidOperationException(OSGeo.MapGuide.ObjectModels.LayerDefinition.CommonErrorMessages.ObjectNotICompositeType);
 
                         this.itemsField.Add(item);
                     }
@@ -821,7 +821,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
         void ILineRule.SetStrokes(IEnumerable<IStroke> strokes)
         {
-            Check.NotNull(strokes, "strokes");
+            Check.NotNull(strokes, "strokes"); //NOXLATE
             this.Items.Clear();
             foreach (var stroke in strokes)
             {
@@ -1574,14 +1574,14 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             set
             {
                 if (!ResourceIdentifier.Validate(value))
-                    throw new InvalidOperationException("Not a valid resource identifier"); //LOCALIZE
+                    throw new InvalidOperationException(CommonErrorMessages.InvalidResourceIdentifier);
 
                 var res = new ResourceIdentifier(value);
                 if (res.Extension != ResourceTypes.LayerDefinition.ToString())
-                    throw new InvalidOperationException("Invalid resource identifier for this type of object: " + res.Extension); //LOCALIZE
+                    throw new InvalidOperationException(string.Format(CommonErrorMessages.UnexpectedResourceType, res.ToString(), ResourceTypes.LayerDefinition));
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID");
+                this.OnPropertyChanged("ResourceID"); //NOXLATE
             }
         }
 
@@ -1608,21 +1608,21 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             return this.Clone();
         }
 
-        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
+        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")] //NOXLATE
         public string ValidatingSchema
         {
 #if LDF_110
-            get { return "LayerDefinition-1.1.0.xsd"; }
+            get { return "LayerDefinition-1.1.0.xsd"; } //NOXLATE
 #elif LDF_120
-            get { return "LayerDefinition-1.2.0.xsd"; }
+            get { return "LayerDefinition-1.2.0.xsd"; } //NOXLATE
 #elif LDF_130
-            get { return "LayerDefinition-1.3.0.xsd"; }
+            get { return "LayerDefinition-1.3.0.xsd"; } //NOXLATE
 #elif LDF_230
-            get { return "LayerDefinition-2.3.0.xsd"; }
+            get { return "LayerDefinition-2.3.0.xsd"; } //NOXLATE
 #elif LDF_240
-            get { return "LayerDefinition-2.4.0.xsd"; }
+            get { return "LayerDefinition-2.4.0.xsd"; } //NOXLATE
 #else
-            get { return "LayerDefinition-1.0.0.xsd"; }
+            get { return "LayerDefinition-1.0.0.xsd"; } //NOXLATE
 #endif
             set { }
         }
@@ -1711,14 +1711,14 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                     if (this.urlDataField == null)
                         this.urlDataField = new URLDataType();
                     this.urlDataField.Content = value;
-                    OnPropertyChanged("Url");
+                    OnPropertyChanged("Url"); //NOXLATE
                 }
                 else 
                 {
                     //NOTE: None of the other URLData properties seem to be used atm
                     //hence why we are nulling this
                     this.urlDataField = null;
-                    OnPropertyChanged("Url");
+                    OnPropertyChanged("Url"); //NOXLATE
                 }
             }
 #else
@@ -2085,7 +2085,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             { 
                 if (_resId == value) return;
                 _resId = value;
-                OnPropertyChanged("ResourceId");
+                OnPropertyChanged("ResourceId"); //NOXLATE
             }
         }
 

@@ -37,7 +37,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 
         public TextLine(string str)
         {
-            Line = str.Replace("\t", "    ");
+            Line = str.Replace("\t", "    "); //NOXLATE
             _hash = str.GetHashCode();
         }
         #region IComparable Members

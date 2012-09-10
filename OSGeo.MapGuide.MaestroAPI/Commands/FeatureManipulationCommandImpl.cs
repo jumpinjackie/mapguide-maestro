@@ -109,9 +109,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         {
             base.ValidateCoreParams();
             if (string.IsNullOrEmpty(this.FeatureSourceId))
-                throw new InvalidOperationException("No feature source id specified"); //LOCALIZEME
+                throw new InvalidOperationException(Properties.Resources.ErrorNoFeatureSourceIdSpecified);
             if (string.IsNullOrEmpty(this.ClassName))
-                throw new InvalidOperationException("No class name specified"); //LOCALIZEME
+                throw new InvalidOperationException(Properties.Resources.ErrorNoFeatureSourceIdSpecified);
         }
     }
 
@@ -155,7 +155,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
             {
                 base.ValidateParams();
                 if (this.RecordToInsert == null)
-                    throw new InvalidOperationException("Nothing to insert"); //LOCALIZEME
+                    throw new InvalidOperationException(Properties.Resources.ErrorNothingToInsert);
 
                 this.ExecuteInternal(); 
             }
@@ -217,7 +217,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         {
             base.ValidateParams();
             if (this.ValuesToUpdate == null)
-                throw new InvalidOperationException("No values specified for updating"); //LOCALIZEME
+                throw new InvalidOperationException(Properties.Resources.ErrorNoValuesSpecifiedForUpdating);
 
             return ExecuteInternal();
         }
@@ -307,9 +307,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         {
             base.ValidateCoreParams();
             if (string.IsNullOrEmpty(this.FeatureSourceId))
-                throw new InvalidOperationException("Empty feature source id"); //LOCALIZEME
+                throw new InvalidOperationException(Properties.Resources.ErrorEmptyFeatureSourceId);
             if (this.Schema == null)
-                throw new InvalidOperationException("No schema specified to apply"); //LOCALIZEME
+                throw new InvalidOperationException(Properties.Resources.ErrorNoSchemaSpecifiedToApply);
 
             this.ExecuteInternal();
         }
@@ -387,19 +387,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         {
             this.ValidateCoreParams();
             if (string.IsNullOrEmpty(this.FeatureSourceId))
-                throw new InvalidOperationException("No feature source id specified"); //LOCALIZEME
+                throw new InvalidOperationException(Properties.Resources.ErrorNoFeatureSourceIdSpecified);
             if (string.IsNullOrEmpty(this.CoordinateSystemWkt))
-                throw new InvalidOperationException("No coordinate system WKT specified"); //LOCALIZEME
+                throw new InvalidOperationException(Properties.Resources.ErrorNoCoordinateSystemWktSpecified);
             if (this.Extent == null && this.ExtentType != OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContextExtentType.Dynamic)
-                throw new InvalidOperationException("No extent specified for static extent type"); //LOCALIZEME
+                throw new InvalidOperationException(Properties.Resources.ErrorNoExtentSpecifiedForStaticType);
             if (string.IsNullOrEmpty(this.FileName))
-                throw new InvalidOperationException("No file name specified"); //LOCALIZEME
+                throw new InvalidOperationException(Properties.Resources.ErrorNoFileNameSpecified);
             if (string.IsNullOrEmpty(this.Name))
-                throw new InvalidOperationException("No spatial context name specified. This is the name that should be referred to by any spatial context associations in your feature schema");
+                throw new InvalidOperationException(Properties.Resources.ErrorNoSpatialContextNameSpecified);
             if (string.IsNullOrEmpty(this.Provider))
-                throw new InvalidOperationException("No provider specified"); //LOCALIZEME
+                throw new InvalidOperationException(Properties.Resources.ErrorNoProviderSpecified);
             if (this.Schema == null)
-                throw new InvalidOperationException("No schema specified"); //LOCALIZEME
+                throw new InvalidOperationException(Properties.Resources.ErrorNoSchemaSpecified);
             this.ExecuteInternal();
         }
 

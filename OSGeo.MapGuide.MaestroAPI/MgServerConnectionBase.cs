@@ -183,7 +183,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>The minature bitmap</returns>
         public virtual System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type)
         {
-            return GetLegendImage(scale, layerdefinition, themeIndex, type, 16, 16, "PNG");
+            return GetLegendImage(scale, layerdefinition, themeIndex, type, 16, 16, "PNG"); //NOXLATE
         }
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public virtual System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi)
         {
-            return this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, "PNG", false);
+            return this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, "PNG", false); //NOXLATE
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public virtual System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi)
         {
-            return this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, "PNG", false);
+            return this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, "PNG", false); //NOXLATE
         }
 
         /// <summary>

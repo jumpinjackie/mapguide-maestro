@@ -82,12 +82,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         {
             var en = Utility.EncodeFDOName(this.Name);
 
-            var geom = doc.CreateElement("xs", "element", XmlNamespaces.XS);
-            geom.SetAttribute("name", en); //TODO: This may have been decoded. Should it be re-encoded?
-            geom.SetAttribute("type", "fdo:RasterPropertyType");
-            geom.SetAttribute("defaultImageXSize", XmlNamespaces.FDO, this.DefaultImageXSize.ToString());
-            geom.SetAttribute("defaultImageYSize", XmlNamespaces.FDO, this.DefaultImageYSize.ToString());
-            geom.SetAttribute("srsName", XmlNamespaces.FDO, this.SpatialContextAssociation);
+            var geom = doc.CreateElement("xs", "element", XmlNamespaces.XS); //NOXLATE
+            //TODO: This may have been decoded. Should it be re-encoded?
+            geom.SetAttribute("name", en); //NOXLATE
+            geom.SetAttribute("type", "fdo:RasterPropertyType"); //NOXLATE
+            geom.SetAttribute("defaultImageXSize", XmlNamespaces.FDO, this.DefaultImageXSize.ToString()); //NOXLATE
+            geom.SetAttribute("defaultImageYSize", XmlNamespaces.FDO, this.DefaultImageYSize.ToString()); //NOXLATE
+            geom.SetAttribute("srsName", XmlNamespaces.FDO, this.SpatialContextAssociation); //NOXLATE
 
             currentNode.AppendChild(geom);
         }
@@ -99,18 +100,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <param name="mgr"></param>
         public override void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
-            var dix = Utility.GetFdoAttribute(node, "defaultImageXSize");
-            var diy = Utility.GetFdoAttribute(node, "defaultImageYSize");
-            var srs = Utility.GetFdoAttribute(node, "srsName");
-            var ro = Utility.GetFdoAttribute(node, "readOnly");
+            var dix = Utility.GetFdoAttribute(node, "defaultImageXSize"); //NOXLATE
+            var diy = Utility.GetFdoAttribute(node, "defaultImageYSize"); //NOXLATE
+            var srs = Utility.GetFdoAttribute(node, "srsName"); //NOXLATE
+            var ro = Utility.GetFdoAttribute(node, "readOnly"); //NOXLATE
 
             this.DefaultImageXSize = Convert.ToInt32(dix.Value);
             this.DefaultImageYSize = Convert.ToInt32(diy.Value);
 
             //TODO: Just copypasta'd from DataPropertyDefinition assuming the same attributes would be used 
             //to indicate nullability and read-only states. Would be nice to verify with an actual example property
-            this.IsNullable = (node.Attributes["minOccurs"] != null && node.Attributes["minOccurs"].Value == "0");
-            this.IsReadOnly = (ro != null && ro.Value == "true");
+            this.IsNullable = (node.Attributes["minOccurs"] != null && node.Attributes["minOccurs"].Value == "0"); //NOXLATE
+            this.IsReadOnly = (ro != null && ro.Value == "true"); //NOXLATE
 
             this.SpatialContextAssociation = (srs != null ? srs.Value : string.Empty);
         }

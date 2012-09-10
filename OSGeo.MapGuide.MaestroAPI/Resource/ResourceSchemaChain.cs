@@ -37,15 +37,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         {
             switch (schema)
             {
-                case "LayerDefinition-1.0.0.xsd":
-                    return new string[] { schema, "PlatformCommon-1.0.0.xsd" };
-                case "LayerDefinition-1.1.0.xsd":
-                    return new string[] { schema, "SymbolDefinition-1.0.0.xsd", "PlatformCommon-1.0.0.xsd" };
-                case "LayerDefinition-1.2.0.xsd":
-                case "LayerDefinition-1.3.0.xsd":
-                    return new string[] { schema, "SymbolDefinition-1.1.0.xsd", "PlatformCommon-1.0.0.xsd" };
+                case "LayerDefinition-1.0.0.xsd": //NOXLATE
+                    return new string[] { schema, "PlatformCommon-1.0.0.xsd" }; //NOXLATE
+                case "LayerDefinition-1.1.0.xsd": //NOXLATE
+                    return new string[] { schema, "SymbolDefinition-1.0.0.xsd", "PlatformCommon-1.0.0.xsd" }; //NOXLATE
+                case "LayerDefinition-1.2.0.xsd": //NOXLATE
+                case "LayerDefinition-1.3.0.xsd": //NOXLATE
+                    return new string[] { schema, "SymbolDefinition-1.1.0.xsd", "PlatformCommon-1.0.0.xsd" }; //NOXLATE
             }
-            return new string[] { schema, "PlatformCommon-1.0.0.xsd" };
+            return new string[] { schema, "PlatformCommon-1.0.0.xsd" }; //NOXLATE
         }
     }
 }

@@ -118,7 +118,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             get
             {
                 if (IsNull)
-                    throw new Exception("Null Value"); //LOCALIZEME
+                    throw new Exception(Properties.Resources.ErrorNullValue); //LOCALIZEME
 
                 return _value.Value;
             }
@@ -182,7 +182,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             get
             {
                 if (IsNull)
-                    throw new Exception("Null Value"); //LOCALIZEME
+                    throw new Exception(Properties.Resources.ErrorNullValue);
 
                 return _value;
             }
@@ -218,7 +218,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception("Null Value"); //LOCALIZEME
+                throw new Exception(Properties.Resources.ErrorNullValue);
 
             return this.Value.ToString(CultureInfo.InvariantCulture);
         }
@@ -248,7 +248,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception("Null Value"); //LOCALIZEME
+                throw new Exception(Properties.Resources.ErrorNullValue);
 
             return this.Value.ToString();
         }
@@ -362,16 +362,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception("Null Value"); //LOCALIZEME
+                throw new Exception(Properties.Resources.ErrorNullValue);
 
             var dt = this.Value;
-            return string.Format("TIMESTAMP '{0}-{1}-{2} {3}:{4}:{5}'",
-                PadLeft(dt.Year.ToString(), '0', 4),
-                PadLeft(dt.Month.ToString(), '0', 2),
-                PadLeft(dt.Year.ToString(), '0', 2),
-                PadLeft(dt.Hour.ToString(), '0', 2),
-                PadLeft(dt.Minute.ToString(), '0', 2),
-                PadLeft(dt.Second.ToString(), '0', 2));
+            return string.Format("TIMESTAMP '{0}-{1}-{2} {3}:{4}:{5}'", //NOXLATE
+                PadLeft(dt.Year.ToString(), '0', 4), //NOXLATE
+                PadLeft(dt.Month.ToString(), '0', 2), //NOXLATE
+                PadLeft(dt.Year.ToString(), '0', 2), //NOXLATE
+                PadLeft(dt.Hour.ToString(), '0', 2), //NOXLATE
+                PadLeft(dt.Minute.ToString(), '0', 2), //NOXLATE
+                PadLeft(dt.Second.ToString(), '0', 2)); //NOXLATE
         }
     }
 
@@ -399,7 +399,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception("Null Value"); //LOCALIZEME
+                throw new Exception(Properties.Resources.ErrorNullValue);
 
             return this.Value.ToString(CultureInfo.InvariantCulture);
         }
@@ -440,7 +440,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception("Null Value"); //LOCALIZEME
+                throw new Exception(Properties.Resources.ErrorNullValue);
 
             throw new NotSupportedException();
         }
@@ -481,7 +481,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception("Null Value"); //LOCALIZEME
+                throw new Exception(Properties.Resources.ErrorNullValue);
 
             return this.Value.AsText();
         }
@@ -511,7 +511,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception("Null Value"); //LOCALIZEME
+                throw new Exception(Properties.Resources.ErrorNullValue);
 
             return this.Value.ToString(CultureInfo.InvariantCulture);
         }
@@ -541,7 +541,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception("Null Value"); //LOCALIZEME
+                throw new Exception(Properties.Resources.ErrorNullValue);
 
             return this.Value.ToString(CultureInfo.InvariantCulture);
         }
@@ -571,7 +571,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception("Null Value"); //LOCALIZEME
+                throw new Exception(Properties.Resources.ErrorNullValue);
 
             return this.Value.ToString(CultureInfo.InvariantCulture);
         }
@@ -639,7 +639,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception("Null Value"); //LOCALIZEME
+                throw new Exception(Properties.Resources.ErrorNullValue);
 
             return this.Value.ToString(CultureInfo.InvariantCulture);
         }
@@ -680,7 +680,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception("Null Value"); //LOCALIZEME
+                throw new Exception(Properties.Resources.ErrorNullValue);
 
             return this.Value;
         }

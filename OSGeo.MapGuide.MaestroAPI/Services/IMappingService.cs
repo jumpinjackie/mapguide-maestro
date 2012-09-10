@@ -171,7 +171,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="selection"></param>
         /// <param name="format"></param>
         /// <returns></returns>
-        [Obsolete("Use the version of RenderDynamicOverlay that is not marked Obsolete")]
+        [Obsolete("Use the version of RenderDynamicOverlay that is not marked Obsolete")] //NOXLATE
         System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format);
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="format"></param>
         /// <param name="keepSelection"></param>
         /// <returns></returns>
-        [Obsolete("Use the version of RenderDynamicOverlay that is not marked Obsolete")]
+        [Obsolete("Use the version of RenderDynamicOverlay that is not marked Obsolete")] //NOXLATE
         System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, bool keepSelection);
 
         /// <summary>

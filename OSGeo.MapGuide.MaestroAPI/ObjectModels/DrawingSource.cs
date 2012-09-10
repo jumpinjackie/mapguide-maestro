@@ -55,14 +55,14 @@ namespace OSGeo.MapGuide.ObjectModels.DrawingSource_1_0_0
             set
             {
                 if (!ResourceIdentifier.Validate(value))
-                    throw new InvalidOperationException("Not a valid resource identifier"); //LOCALIZE
+                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorInvalidResourceIdentifier); //LOCALIZE
 
                 var res = new ResourceIdentifier(value);
                 if (res.Extension != ResourceTypes.DrawingSource.ToString())
-                    throw new InvalidOperationException("Invalid resource identifier for this type of object: " + res.Extension); //LOCALIZE
+                    throw new InvalidOperationException(string.Format(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.DrawingSource)); //LOCALIZE
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID");
+                this.OnPropertyChanged("ResourceID"); //NOXLATE
             }
         }
 
@@ -89,10 +89,10 @@ namespace OSGeo.MapGuide.ObjectModels.DrawingSource_1_0_0
             return this.Clone();
         }
 
-        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
+        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")] //NOXLATE
         public string ValidatingSchema 
-        { 
-            get { return "DrawingSource-1.0.0.xsd"; }
+        {
+            get { return "DrawingSource-1.0.0.xsd"; } //NOXLATE
             set { }
         }
 

@@ -31,7 +31,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     {
         static Platform()
         {
-            _mrtType = Type.GetType("Mono.Runtime");
+            _mrtType = Type.GetType("Mono.Runtime"); //NOXLATE
         }
 
         private static Type _mrtType;

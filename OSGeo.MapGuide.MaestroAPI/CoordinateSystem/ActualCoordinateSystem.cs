@@ -32,27 +32,15 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
     internal class ActualCoordinateSystem : MeterBasedCoordinateSystem
     {
         private ICoordinateTransformation m_transform;
-        private const string XY_M = "LOCAL_CS[\"Non-Earth (Meter)\",LOCAL_DATUM[\"Local Datum\",0],UNIT[\"Meter\", 1],AXIS[\"X\",EAST],AXIS[\"Y\",NORTH]]";
+        private const string XY_M = "LOCAL_CS[\"Non-Earth (Meter)\",LOCAL_DATUM[\"Local Datum\",0],UNIT[\"Meter\", 1],AXIS[\"X\",EAST],AXIS[\"Y\",NORTH]]"; //NOXLATE
 
         internal ActualCoordinateSystem(ICoordinateSystem coordinateSystem)
         {
             if (coordinateSystem == null)
-                throw new ArgumentNullException("coordinateSystem");
+                throw new ArgumentNullException("coordinateSystem"); //NOXLATE
 
             CoordinateTransformationFactory f = new CoordinateTransformationFactory();
             CoordinateSystemFactory cf = new CoordinateSystemFactory();
-
-            /*Topology.CoordinateSystems.ICoordinateSystem local = cf.CreateLocalCoordinateSystem(
-                "Non-Earth (Meter)",
-                cf.CreateLocalDatum("Local Datum", Topology.CoordinateSystems.DatumType.VD_Normal),
-                new Topology.CoordinateSystems.LinearUnit(1.0, "Meter", "", 0, "", "", ""),
-                new List<Topology.CoordinateSystems.AxisInfo>(new Topology.CoordinateSystems.AxisInfo[] {
-                    new Topology.CoordinateSystems.AxisInfo("X", Topology.CoordinateSystems.AxisOrientationEnum.East),
-                    new Topology.CoordinateSystems.AxisInfo("Y", Topology.CoordinateSystems.AxisOrientationEnum.North)
-                })
-            );
-
-            string s = cf.ToString();*/
 
             m_transform = f.CreateFromCoordinateSystems(coordinateSystem, cf.CreateFromWkt(XY_M));
         }

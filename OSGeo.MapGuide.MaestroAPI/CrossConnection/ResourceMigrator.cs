@@ -77,8 +77,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <param name="target">The target.</param>
         public ResourceMigrator(IServerConnection source, IServerConnection target)
         {
-            Check.NotNull(source, "source");
-            Check.NotNull(target, "target");
+            Check.NotNull(source, "source"); //NOXLATE
+            Check.NotNull(target, "target"); //NOXLATE
             _source = source;
             _target = target;
             _converter = new ResourceObjectConverter();
@@ -95,9 +95,9 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <returns></returns>
         public string[] CopyResources(string[] sourceResourceIds, string[] targetResourceIds, bool overwrite, RebaseOptions options, LengthyOperationProgressCallBack callback)
         {
-            Check.NotNull(sourceResourceIds, "sourceResourceIds");
-            Check.NotNull(targetResourceIds, "targetResourceIds");
-            Check.Precondition(sourceResourceIds.Length == targetResourceIds.Length, "resourceIds.Length == targetResourceIds.Length");
+            Check.NotNull(sourceResourceIds, "sourceResourceIds"); //NOXLATE
+            Check.NotNull(targetResourceIds, "targetResourceIds"); //NOXLATE
+            Check.Precondition(sourceResourceIds.Length == targetResourceIds.Length, "resourceIds.Length == targetResourceIds.Length"); //NOXLATE
 
             var copiedItems = new List<string>();
             var cb = callback;
@@ -115,7 +115,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
             int unit = 100 / sourceResourceIds.Length;
             int progress = 0;
 
-            string message = "";
+            string message = string.Empty;
             for (int i = 0; i < sourceResourceIds.Length; i++)
             {
                 var srcResId = sourceResourceIds[i];
@@ -193,8 +193,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <returns></returns>
         public int CopyResources(string[] resourceIds, string folderId, bool overwrite, LengthyOperationProgressCallBack callback)
         {
-            Check.NotNull(resourceIds, "resourceIds");
-            Check.NotEmpty(folderId, "folderId");
+            Check.NotNull(resourceIds, "resourceIds"); //NOXLATE
+            Check.NotEmpty(folderId, "folderId"); //NOXLATE
 
             var cb = callback;
             if (cb == null)
@@ -212,8 +212,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
             int progress = 0;
             foreach (var resId in resourceIds)
             {
-                string targetId = folderId + ResourceIdentifier.GetName(resId) + "." + ResourceIdentifier.GetResourceType(resId);
-                string message = "";
+                string targetId = folderId + ResourceIdentifier.GetName(resId) + "." + ResourceIdentifier.GetResourceType(resId); //NOXLATE
+                string message = string.Empty;
                 IResource res = _source.ResourceService.GetResource(resId);
 
                 //Skip if target exists and overwrite is not specified
@@ -275,8 +275,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <returns></returns>
         public int MoveResources(string[] resourceIds, string folderId, bool overwrite, LengthyOperationProgressCallBack callback)
         {
-            Check.NotNull(resourceIds, "resourceIds");
-            Check.NotEmpty(folderId, "folderId");
+            Check.NotNull(resourceIds, "resourceIds"); //NOXLATE
+            Check.NotEmpty(folderId, "folderId"); //NOXLATE
 
             var cb = callback;
             if (cb == null)
@@ -294,8 +294,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
             int progress = 0;
             foreach (var resId in resourceIds)
             {
-                string targetId = folderId + ResourceIdentifier.GetName(resId) + "." + ResourceIdentifier.GetResourceType(resId);
-                string message = "";
+                string targetId = folderId + ResourceIdentifier.GetName(resId) + "." + ResourceIdentifier.GetResourceType(resId); //NOXLATE
+                string message = string.Empty;
                 IResource res = _source.ResourceService.GetResource(resId);
 
                 //Skip if target exists and overwrite is not specified
@@ -358,8 +358,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <returns>An array of resource ids that were succesfully migrated</returns>
         public string[] MigrateResource(string resourceId, string[] dependentResourceIds, bool overwrite, LengthyOperationProgressCallBack callback)
         {
-            Check.NotEmpty(resourceId, "resourceId");
-            Check.NotNull(dependentResourceIds, "dependentResourceIds");
+            Check.NotEmpty(resourceId, "resourceId"); //NOXLATE
+            Check.NotNull(dependentResourceIds, "dependentResourceIds"); //NOXLATE
 
             //TODO: Figure out a more elegant strategy of handling saving resources
             //to older versions (downgrading?)
@@ -488,7 +488,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <returns>An array of resource ids that were succesfully migrated</returns>
         public string[] MigrateResource(string resourceId, bool overwrite, LengthyOperationProgressCallBack callback)
         {
-            Check.NotEmpty(resourceId, "resourceId");
+            Check.NotEmpty(resourceId, "resourceId"); //NOXLATE
             Dictionary<string, string> resIds = new Dictionary<string, string>();
             var refList = GetReverseReferences(resourceId);
             BuildFullDependencyList(resIds, refList);

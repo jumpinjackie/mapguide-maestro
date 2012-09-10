@@ -156,16 +156,16 @@ namespace OSGeo.MapGuide.MaestroAPI
                         //HACK: We have to peek at the XML to determine if this is simple or compound.
                         var doc = new XmlDocument();
                         doc.LoadXml(xml);
-                        if (doc.DocumentElement.Name == "SimpleSymbolDefinition")
+                        if (doc.DocumentElement.Name == "SimpleSymbolDefinition") //NOXLATE
                         {
                             return OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.SimpleSymbolDefinition.Deserialize(xml);
                         }
                         else
                         {
-                            if (doc.DocumentElement.Name == "CompoundSymbolDefinition")
+                            if (doc.DocumentElement.Name == "CompoundSymbolDefinition") //NOXLATE
                                 return OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.CompoundSymbolDefinition.Deserialize(xml);
                             else //WTF?
-                                throw new SerializationException("Could not determine symbol type"); //LOCALIZE
+                                throw new SerializationException(Properties.Resources.ErrorCouldNotDetermineSymbolType);
                         }
                     }
                 });
@@ -197,7 +197,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public static void RegisterResource(ResourceTypeDescriptor desc, ResourceSerializer serializer)
         {
             if (_serializers.ContainsKey(desc))
-                throw new ArgumentException(string.Format(Properties.Resources.ERR_SERIALIZER_ALREADY_REGISTERED, desc.ResourceType, desc.Version), "desc");
+                throw new ArgumentException(string.Format(Properties.Resources.ERR_SERIALIZER_ALREADY_REGISTERED, desc.ResourceType, desc.Version), "desc"); //NOXLATE
 
             _serializers.Add(desc, serializer);
         }

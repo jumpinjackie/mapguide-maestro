@@ -102,86 +102,86 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// Gets or sets the code.
         /// </summary>
         /// <value>The code.</value>
-		public string Code 
-		{ 
-			get { return m_code; } 
-			set { m_code = value; }
-		}
+        public string Code 
+        { 
+            get { return m_code; } 
+            set { m_code = value; }
+        }
         /// <summary>
         /// Gets or sets the description.
         /// </summary>
         /// <value>The description.</value>
-		public string Description 
-		{ 
-			get { return m_description; } 
-			set { m_description = value; }
-		}
+        public string Description 
+        { 
+            get { return m_description; } 
+            set { m_description = value; }
+        }
         /// <summary>
         /// Gets the projection.
         /// </summary>
         /// <value>The projection.</value>
-		public string Projection { get { return m_projection; } }
+        public string Projection { get { return m_projection; } }
         /// <summary>
         /// Gets the projection description.
         /// </summary>
         /// <value>The projection description.</value>
-		public string ProjectionDescription { get { return m_projectionDescription; } }
+        public string ProjectionDescription { get { return m_projectionDescription; } }
         /// <summary>
         /// Gets the datum.
         /// </summary>
         /// <value>The datum.</value>
-		public string Datum { get { return m_datum; } }
+        public string Datum { get { return m_datum; } }
         /// <summary>
         /// Gets the datum description.
         /// </summary>
         /// <value>The datum description.</value>
-		public string DatumDescription { get { return m_datumDescription; } }
+        public string DatumDescription { get { return m_datumDescription; } }
         /// <summary>
         /// Gets the ellipsoid.
         /// </summary>
         /// <value>The ellipsoid.</value>
-		public string Ellipsoid { get { return m_ellipsoid; } }
+        public string Ellipsoid { get { return m_ellipsoid; } }
         /// <summary>
         /// Gets the ellipsoid description.
         /// </summary>
         /// <value>The ellipsoid description.</value>
-		public string EllipsoidDescription { get { return m_ellipsoidDescription; } }
+        public string EllipsoidDescription { get { return m_ellipsoidDescription; } }
 
         /// <summary>
         /// Gets or sets the WKT.
         /// </summary>
         /// <value>The WKT.</value>
-		public string WKT 
-		{
-			get 
-			{
-				if (m_wkt == null)
-					m_wkt = m_parent.Parent.ConvertCoordinateSystemCodeToWkt(m_code);
-				return m_wkt;
-			}
-			set
-			{
-				m_wkt = value;
-			}
-		}
+        public string WKT 
+        {
+            get 
+            {
+                if (m_wkt == null)
+                    m_wkt = m_parent.Parent.ConvertCoordinateSystemCodeToWkt(m_code);
+                return m_wkt;
+            }
+            set
+            {
+                m_wkt = value;
+            }
+        }
 
         /// <summary>
         /// Gets the EPSG code
         /// </summary>
         /// <value>The EPSG code.</value>
-		public string EPSG 
-		{
-			get 
-			{
-				if (m_epsg == null)
-					if (m_code.StartsWith("EPSG:"))
-						m_epsg = m_code.Substring(5);
-					else
-						m_epsg = m_parent.Parent.ConvertWktToEpsgCode(m_parent.Parent.ConvertCoordinateSystemCodeToWkt(m_code));
+        public string EPSG 
+        {
+            get 
+            {
+                if (m_epsg == null)
+                    if (m_code.StartsWith("EPSG:")) //NOXLATE
+                        m_epsg = m_code.Substring(5);
+                    else
+                        m_epsg = m_parent.Parent.ConvertWktToEpsgCode(m_parent.Parent.ConvertCoordinateSystemCodeToWkt(m_code));
 
-				return m_epsg;
-			}
-		}
+                return m_epsg;
+            }
+        }
 
         /// <summary>
         /// Returns a <see cref="System.String"/> that represents this instance.
@@ -189,16 +189,16 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <returns>
         /// A <see cref="System.String"/> that represents this instance.
         /// </returns>
-		public override string ToString()
-		{
-			if (m_description == null && m_code == null)
-				return m_wkt == null ? "<null>" : m_wkt;
-			else if (m_description == null)
-				return m_code;
-			else if (m_code == null)
-				return m_description;
-			else
-				return m_description + " (" + m_code + ")";
-		}
+        public override string ToString()
+        {
+            if (m_description == null && m_code == null)
+                return m_wkt == null ? "<null>" : m_wkt; //NOXLATE
+            else if (m_description == null)
+                return m_code;
+            else if (m_code == null)
+                return m_description;
+            else
+                return m_description + " (" + m_code + ")"; //NOXLATE
+        }
     }
 }

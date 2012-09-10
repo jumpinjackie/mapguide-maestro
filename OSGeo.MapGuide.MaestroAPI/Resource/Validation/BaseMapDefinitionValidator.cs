@@ -65,7 +65,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <returns></returns>
         protected static ValidationIssue[] ValidateBase(ResourceValidationContext context, IResource resource, bool recurse)
         {
-            Check.NotNull(context, "context");
+            Check.NotNull(context, "context"); //NOXLATE
 
             if (context.IsAlreadyValidated(resource.ResourceID))
                 return null;
@@ -86,7 +86,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             {
                 if (g.ShowInLegend && (g.LegendLabel == null || g.LegendLabel.Trim().Length == 0))
                     issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, ValidationStatusCode.Info_MapDefinition_GroupMissingLabelInformation, string.Format(Properties.Resources.MDF_GroupMissingLabelInformation, g.Name)));
-                else if (g.ShowInLegend && g.LegendLabel.Trim().ToLower() == "layer group")
+                else if (g.ShowInLegend && g.LegendLabel.Trim().ToLower() == "layer group") //NOXLATE
                     issues.Add(new ValidationIssue(mdef, ValidationStatus.Information, ValidationStatusCode.Info_MapDefinition_GroupHasDefaultLabel, string.Format(Properties.Resources.MDF_GroupHasDefaultLabelInformation, g.Name)));
 
                 if (!string.IsNullOrEmpty(g.Group))

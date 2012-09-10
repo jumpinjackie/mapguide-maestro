@@ -111,23 +111,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 doc.LoadXml(xml);
 
             //There are two variations
-            System.Xml.XmlNodeList lst = doc.SelectNodes("FeatureSet/Layer");
+            System.Xml.XmlNodeList lst = doc.SelectNodes("FeatureSet/Layer"); //NOXLATE
             if (lst.Count == 0)
-                lst = doc.SelectNodes("FeatureInformation/FeatureSet/Layer");
+                lst = doc.SelectNodes("FeatureInformation/FeatureSet/Layer"); //NOXLATE
 
             foreach (System.Xml.XmlNode n in lst)
             {
-                if (n.Attributes["id"] != null)
+                if (n.Attributes["id"] != null) //NOXLATE
                 {
-                    string guid = n.Attributes["id"].Value;
+                    string guid = n.Attributes["id"].Value; //NOXLATE
                     var l = _map.Layers.GetByObjectId(guid);
                     if (l != null)
                     {
-                        foreach (System.Xml.XmlNode c in n.SelectNodes("Class"))
+                        foreach (System.Xml.XmlNode c in n.SelectNodes("Class")) //NOXLATE
                         {
-                            if (c.Attributes["id"] != null)
-                                if (c.Attributes["id"].Value == l.QualifiedClassName)
-                                    _layers.Add(new LayerSelection(l, c.SelectNodes("ID")));
+                            if (c.Attributes["id"] != null) //NOXLATE
+                                if (c.Attributes["id"].Value == l.QualifiedClassName) //NOXLATE
+                                    _layers.Add(new LayerSelection(l, c.SelectNodes("ID"))); //NOXLATE
                         }
                     }
                 }
@@ -141,18 +141,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public string ToXml()
         {
             System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
-            System.Xml.XmlNode root = doc.AppendChild(doc.CreateElement("FeatureSet"));
+            System.Xml.XmlNode root = doc.AppendChild(doc.CreateElement("FeatureSet")); //NOXLATE
 
             foreach (LayerSelection layer in _layers)
             {
-                System.Xml.XmlNode ln = root.AppendChild(doc.CreateElement("Layer"));
-                ln.Attributes.Append(doc.CreateAttribute("id")).Value = layer.Layer.ObjectId;
+                System.Xml.XmlNode ln = root.AppendChild(doc.CreateElement("Layer")); //NOXLATE
+                ln.Attributes.Append(doc.CreateAttribute("id")).Value = layer.Layer.ObjectId; //NOXLATE
 
-                System.Xml.XmlNode cn = ln.AppendChild(doc.CreateElement("Class"));
-                cn.Attributes.Append(doc.CreateAttribute("id")).Value = layer.Layer.QualifiedClassName;
+                System.Xml.XmlNode cn = ln.AppendChild(doc.CreateElement("Class")); //NOXLATE
+                cn.Attributes.Append(doc.CreateAttribute("id")).Value = layer.Layer.QualifiedClassName; //NOXLATE
 
                 for (int i = 0; i < layer.Count; i++)
-                    cn.AppendChild(doc.CreateElement("ID")).InnerText = layer.EncodeIDString(layer[i]);
+                    cn.AppendChild(doc.CreateElement("ID")).InnerText = layer.EncodeIDString(layer[i]); //NOXLATE
             }
 
             return doc.OuterXml;
@@ -266,7 +266,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                             ms.WriteByte(0);
                         }
                         else
-                            throw new Exception(string.Format("The type {0} is not supported for primary keys", type.ToString()));
+                            throw new Exception(string.Format(Properties.Resources.ErrorUnsupportedPkType, type.ToString()));
                     }
 
                     return Convert.ToBase64String(ms.ToArray());
@@ -301,10 +301,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             public LayerSelection(RuntimeMapLayer layer)
             {
                 if (layer == null)
-                    throw new ArgumentNullException("layer");
+                    throw new ArgumentNullException("layer"); //NOXLATE
 
                 if (layer.IdentityProperties.Length == 0 && layer.Parent.StrictSelection)
-                    throw new Exception("The layer does not have a primary key, and cannot be used for selection");
+                    throw new Exception(Properties.Resources.ErrorLayerHasNoPk);
 
                 m_layer = layer;
             }
@@ -330,20 +330,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             private object[] NormalizeAndValidate(object[] values)
             {
                 if (values == null)
-                    throw new ArgumentNullException("values");
+                    throw new ArgumentNullException("values"); //NOXLATE
 
                 if (values.Length != m_layer.IdentityProperties.Length)
-                    throw new Exception(string.Format("The layers key consists of {0} columns, but only {1} columns were given", m_layer.IdentityProperties.Length, values.Length));
+                    throw new Exception(string.Format(Properties.Resources.ErrorLayerKeyMismatch, m_layer.IdentityProperties.Length, values.Length));
 
                 object[] tmp = new object[values.Length];
 
                 for (int i = 0; i < values.Length; i++)
                 {
                     if (values[i] == null)
-                        throw new Exception(string.Format("The value for {0} is null, which is not supported as a key", m_layer.IdentityProperties[i].Name));
+                        throw new Exception(string.Format(Properties.Resources.ErrorNullKeyValue, m_layer.IdentityProperties[i].Name));
                     if (values[i].GetType() != m_layer.IdentityProperties[i].Type)
                         try { tmp[i] = Convert.ChangeType(values[i], m_layer.IdentityProperties[i].Type); }
-                        catch (Exception ex) { throw new Exception(string.Format("Failed to convert value for {0} from {1} to {2}", m_layer.IdentityProperties[i].Name, values[i].GetType(), m_layer.IdentityProperties[i].Type), ex); }
+                        catch (Exception ex) { throw new Exception(string.Format(Properties.Resources.ErrorFailedValueConversion, m_layer.IdentityProperties[i].Name, values[i].GetType(), m_layer.IdentityProperties[i].Type), ex); }
                     else
                         tmp[i] = values[i];
                 }
@@ -536,27 +536,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             var m_selection = new XmlDocument();
             m_selection.LoadXml(ToXml());
-            if (m_selection["FeatureSet"] == null)
+            if (m_selection["FeatureSet"] == null) //NOXLATE
             {
                 s.Write((int)0);
                 return;
             }
 
-            XmlNodeList lst = m_selection["FeatureSet"].SelectNodes("Layer");
+            XmlNodeList lst = m_selection["FeatureSet"].SelectNodes("Layer"); //NOXLATE
             s.Write(lst.Count);
             foreach (XmlNode n in lst)
             {
-                if (n.Attributes["id"] == null)
-                    throw new Exception("A layer in selection had no id");
-                s.Write(n.Attributes["id"].Value);
+                if (n.Attributes["id"] == null) //NOXLATE
+                    throw new Exception(Properties.Resources.ErrorSelectedLayerHasNoId);
+                s.Write(n.Attributes["id"].Value); //NOXLATE
 
-                XmlNodeList cls = n.SelectNodes("Class");
+                XmlNodeList cls = n.SelectNodes("Class"); //NOXLATE
                 s.Write(cls.Count);
 
                 foreach (XmlNode c in cls)
                 {
-                    s.Write(c.Attributes["id"].Value);
-                    XmlNodeList ids = c.SelectNodes("ID");
+                    s.Write(c.Attributes["id"].Value); //NOXLATE
+                    XmlNodeList ids = c.SelectNodes("ID"); //NOXLATE
                     s.Write(ids.Count);
 
                     foreach (XmlNode id in ids)
@@ -572,22 +572,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public void Deserialize(MgBinaryDeserializer d)
         {
             XmlDocument doc = new XmlDocument();
-            XmlNode root = doc.AppendChild(doc.CreateElement("FeatureSet"));
+            XmlNode root = doc.AppendChild(doc.CreateElement("FeatureSet")); //NOXLATE
             int layerCount = d.ReadInt32();
             for (int i = 0; i < layerCount; i++)
             {
-                XmlNode layer = root.AppendChild(doc.CreateElement("Layer"));
-                layer.Attributes.Append(doc.CreateAttribute("id")).Value = d.ReadString();
+                XmlNode layer = root.AppendChild(doc.CreateElement("Layer")); //NOXLATE
+                layer.Attributes.Append(doc.CreateAttribute("id")).Value = d.ReadString(); //NOXLATE
 
                 int classCount = d.ReadInt32();
                 for (int j = 0; j < classCount; j++)
                 {
-                    XmlNode @class = layer.AppendChild(doc.CreateElement("Class"));
-                    @class.Attributes.Append(doc.CreateAttribute("id")).Value = d.ReadString();
+                    XmlNode @class = layer.AppendChild(doc.CreateElement("Class")); //NOXLATE
+                    @class.Attributes.Append(doc.CreateAttribute("id")).Value = d.ReadString(); //NOXLATE
 
                     int idCount = d.ReadInt32();
                     for (int k = 0; k < idCount; k++)
-                        @class.AppendChild(doc.CreateElement("ID")).InnerText = d.ReadString();
+                        @class.AppendChild(doc.CreateElement("ID")).InnerText = d.ReadString(); //NOXLATE
                 }
             }
             LoadXml(doc.OuterXml);

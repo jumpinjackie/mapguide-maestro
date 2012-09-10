@@ -64,7 +64,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     {
         public static RuntimeMapGroup GetParentGroup(this RuntimeMapLayer layer)
         {
-            Check.NotNull(layer, "layer");
+            Check.NotNull(layer, "layer"); //NOXLATE
 
             if (string.IsNullOrEmpty(layer.Group))
                 return null;
@@ -114,7 +114,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
         protected void Initialize(ILayerDefinition ldf)
         {
-            Check.NotNull(ldf, "ldf");
+            Check.NotNull(ldf, "ldf"); //NOXLATE
             this.LayerDefinitionID = ldf.ResourceID;
             if (ldf.SubLayer.LayerType == LayerType.Vector)
             {
@@ -215,9 +215,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         protected internal RuntimeMapLayer(RuntimeMap parent, IBaseMapLayer source, ILayerDefinition ldf) 
             : this(parent, ldf)
         {
-            Check.NotNull(source, "source");
-            Check.NotNull(ldf, "ldf");
-            Check.Precondition(source.ResourceId == ldf.ResourceID, "source.ResourceId == ldf.ResourceID");
+            Check.NotNull(source, "source"); //NOXLATE
+            Check.NotNull(ldf, "ldf"); //NOXLATE
+            Check.Precondition(source.ResourceId == ldf.ResourceID, "source.ResourceId == ldf.ResourceID"); //NOXLATE
         }
 
         private void EnsureOrderedMinMaxScales()
@@ -291,9 +291,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             set
             {
                 if (this.Type == kBaseMap)
-                    throw new InvalidOperationException("Setting visbility of a tiled map layer is not permitted");
+                    throw new InvalidOperationException(Properties.Resources.ErrorSettingVisibilityOfTiledLayer);
 
-                if (SetField(ref _visible, value, "Visible"))
+                if (SetField(ref _visible, value, "Visible")) //NOXLATE
                     Parent.IsDirty = true;
             }
         }
@@ -312,7 +312,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                if (SetField(ref _group, value, "Group"))
+                if (SetField(ref _group, value, "Group")) //NOXLATE
                     Parent.IsDirty = true;
             }
         }
@@ -341,7 +341,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                if (SetField(ref _selectable, value, "Selectable"))
+                if (SetField(ref _selectable, value, "Selectable")) //NOXLATE
                     Parent.IsDirty = true;
             }
         }
@@ -360,7 +360,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                if (SetField(ref _name, value, "Name"))
+                if (SetField(ref _name, value, "Name")) //NOXLATE
                     Parent.IsDirty = true;
             }
         }
@@ -379,7 +379,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                if (SetField(ref _showInLegend, value, "ShowInLegend"))
+                if (SetField(ref _showInLegend, value, "ShowInLegend")) //NOXLATE
                     Parent.IsDirty = true;
             }
         }
@@ -398,7 +398,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                if (SetField(ref _legendLabel, value, "LegendLabel"))
+                if (SetField(ref _legendLabel, value, "LegendLabel")) //NOXLATE
                     Parent.IsDirty = true;
             }
         }
@@ -417,7 +417,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                if (SetField(ref _expandInLegend, value, "ExpandInLegend"))
+                if (SetField(ref _expandInLegend, value, "ExpandInLegend")) //NOXLATE
                     Parent.IsDirty = true;
             }
         }
@@ -554,7 +554,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             get
             {
-                var tokens = this.QualifiedClassName.Split(':');
+                var tokens = this.QualifiedClassName.Split(':'); //NOXLATE
                 if (tokens.Length == 2)
                     return tokens[0];
                 return string.Empty;
@@ -682,13 +682,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                         pos++;
 
                     if (pos >= data.Length)
-                        throw new Exception("Bad null encoded string");
+                        throw new Exception(Properties.Resources.ErrorBadNullEncodedString);
 
                     tmp[i] = System.Text.Encoding.UTF8.GetString(data, index, pos - index);
                     index = pos + 1;
                 }
                 else
-                    throw new Exception(string.Format("The type {0} is not supported for primary keys", type.ToString()));
+                    throw new Exception(string.Format(Properties.Resources.ErrorUnsupportedPkType, type.ToString()));
             }
 
             return tmp;
@@ -704,9 +704,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
             int classid = d.ReadClassId();
             if (d.SiteVersion <= SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP1_1) && classid != 19003)
-                throw new Exception("Resource Identifier expected, but got: " + classid.ToString());
+                throw new Exception(string.Format(Properties.Resources.ErrorResourceIdentifierClassIdNotFound, classid));
             if (d.SiteVersion > SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP1_1) && classid != 30501)
-                throw new Exception("Resource Identifier expected, but got: " + classid.ToString());
+                throw new Exception(string.Format(Properties.Resources.ErrorResourceIdentifierClassIdNotFound, classid));
 
             this.LayerDefinitionID = d.ReadResourceIdentifier();
 
@@ -875,7 +875,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 case Clob:
                     return typeof(byte[]);
                 default:
-                    throw new Exception("Failed to find type for: " + idType.ToString());
+                    throw new Exception(string.Format(Properties.Resources.ErrorFailedToFindTypeForClrType, idType));
             }
         }
 
@@ -891,23 +891,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             //register change items on map
             switch (propertyName)
             {
-                case "Group":
+                case "Group": //NOXLATE
                     this.Parent.OnLayerParentChanged(this, this.ObjectId);
                     break;
-                case "Visible":
-                    this.Parent.OnLayerVisibilityChanged(this, this.Visible ? "1" : "0");
+                case "Visible": //NOXLATE
+                    this.Parent.OnLayerVisibilityChanged(this, this.Visible ? "1" : "0"); //NOXLATE
                     break;
-                case "ShowInLegend":
-                    this.Parent.OnLayerDisplayInLegendChanged(this, this.ShowInLegend ? "1" : "0");
+                case "ShowInLegend": //NOXLATE
+                    this.Parent.OnLayerDisplayInLegendChanged(this, this.ShowInLegend ? "1" : "0"); //NOXLATE
                     break;
-                case "LegendLabel":
+                case "LegendLabel": //NOXLATE
                     this.Parent.OnLayerLegendLabelChanged(this, this.LegendLabel);
                     break;
-                case "LayerDefinitionID":
+                case "LayerDefinitionID": //NOXLATE
                     this.Parent.OnLayerDefinitionChanged(this);
                     break;
-                case "Selectable":
-                    this.Parent.OnLayerSelectabilityChanged(this, this.Selectable ? "1" : "0");
+                case "Selectable": //NOXLATE
+                    this.Parent.OnLayerSelectabilityChanged(this, this.Selectable ? "1" : "0"); //NOXLATE
                     break;
             }
 
@@ -945,6 +945,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets a display string for this layer for presentation purposes
         /// </summary>
-        public string DisplayString { get { return this.LegendLabel + " (" + this.Name + ")"; } }
+        public string DisplayString { get { return this.LegendLabel + " (" + this.Name + ")"; } } //NOXLATE
     }
 }

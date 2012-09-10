@@ -38,8 +38,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         internal RuntimeMapGroup() 
         {
             _disableChangeTracking = true;
-            this.Group = "";
-            this.LegendLabel = "";
+            this.Group = string.Empty;
+            this.LegendLabel = string.Empty;
             this.Type = kNormal;
             this.ObjectId = Guid.NewGuid().ToString();
         }
@@ -106,7 +106,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _visible, value, "Visible");
+                SetField(ref _visible, value, "Visible"); //NOXLATE
             }
         }
 
@@ -123,7 +123,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _group, value, "Group");
+                SetField(ref _group, value, "Group"); //NOXLATE
             }
         }
 
@@ -149,7 +149,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _name, value, "Name");
+                SetField(ref _name, value, "Name"); //NOXLATE
             }
         }
 
@@ -166,7 +166,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _showInLegend, value, "ShowInLegend");
+                SetField(ref _showInLegend, value, "ShowInLegend"); //NOXLATE
             }
         }
 
@@ -183,7 +183,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _legendLabel, value, "LegendLabel");
+                SetField(ref _legendLabel, value, "LegendLabel"); //NOXLATE
             }
         }
 
@@ -200,7 +200,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _expandInLegend, value, "ExpandInLegend");
+                SetField(ref _expandInLegend, value, "ExpandInLegend"); //NOXLATE
             }
         }
 
@@ -253,10 +253,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             if (d.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
             {
                 if (objid != 12001)
-                    throw new Exception("Group must have object id 12001, but had: " + objid);
+                    throw new Exception(string.Format(Properties.Resources.ErrorInvalidGroupObjectId, objid));
             }
             else if (objid != 19001)
-                throw new Exception("Group must have object id 19001, but had: " + objid);
+                throw new Exception(string.Format(Properties.Resources.ErrorInvalidGroupObjectId, objid));
 
             this.Name = d.ReadString();
             this.ObjectId = d.ReadString();
@@ -279,16 +279,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             //register change items on map
             switch (propertyName)
             {
-                case "Group":
+                case "Group": //NOXLATE
                     this.Parent.OnGroupParentChanged(this, this.ObjectId);
                     break;
-                case "Visible":
-                    this.Parent.OnGroupVisibilityChanged(this, this.Visible ? "1" : "0");
+                case "Visible": //NOXLATE
+                    this.Parent.OnGroupVisibilityChanged(this, this.Visible ? "1" : "0"); //NOXLATE
                     break;
-                case "ShowInLegend":
-                    this.Parent.OnGroupDisplayInLegendChanged(this, this.ShowInLegend ? "1" : "0");
+                case "ShowInLegend": //NOXLATE
+                    this.Parent.OnGroupDisplayInLegendChanged(this, this.ShowInLegend ? "1" : "0"); //NOXLATE
                     break;
-                case "LegendLabel":
+                case "LegendLabel": //NOXLATE
                     this.Parent.OnGroupLegendLabelChanged(this, this.LegendLabel);
                     break;
             }

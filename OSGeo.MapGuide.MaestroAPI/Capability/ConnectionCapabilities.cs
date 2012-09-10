@@ -256,7 +256,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         /// <returns></returns>
         public virtual bool IsSupportedResourceType(string resourceType)
         {
-            Check.NotEmpty(resourceType, "resourceType");
+            Check.NotEmpty(resourceType, "resourceType"); //NOXLATE
             var ver = _parent.SiteVersion;
             var rt = (ResourceTypes)Enum.Parse(typeof(ResourceTypes), resourceType);
             switch (rt)

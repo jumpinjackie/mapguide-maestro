@@ -51,10 +51,10 @@ namespace OSGeo.MapGuide.ObjectModels.Common
 
         //Required for saving/updating
 
-        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
+        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")] //NOXLATE
         public string ValidatingSchema 
         {
-            get { return "ResourceDocumentHeader-1.0.0.xsd"; }
+            get { return "ResourceDocumentHeader-1.0.0.xsd"; } //NOXLATE
             set { }
         }
     }
@@ -73,10 +73,10 @@ namespace OSGeo.MapGuide.ObjectModels.Common
 
         //Required for saving/updating
 
-        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
+        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")] //NOXLATE
         public string ValidatingSchema
         {
-            get { return "ResourceFolderHeader-1.0.0.xsd"; }
+            get { return "ResourceFolderHeader-1.0.0.xsd"; } //NOXLATE
             set { }
         }
     }

@@ -61,12 +61,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         public ResourceIdentifier(string name, ResourceTypes type)
         {
             if (string.IsNullOrEmpty(name))
-                throw new ArgumentNullException("name");
-            if (name.IndexOf(".") > 0 || name.IndexOf("//") > 0 || name.IndexOf(":") > 0)
-                throw new ArgumentException("The resource name must not contain ':', \"//\" or '.'", "name");
+                throw new ArgumentNullException("name"); //NOXLATE
+            if (name.IndexOf(".") > 0 || name.IndexOf("//") > 0 || name.IndexOf(":") > 0) //NOXLATE
+                throw new ArgumentException(Properties.Resources.ErrorResourceIdentifierInvalidChars, "name"); //NOXLATE
             if (!Enum.IsDefined(typeof(ResourceTypes), type))
-                throw new ArgumentException("The type given was not a valid ResourceType", "type");
-            m_id = "Library://" + name + EnumHelper.ResourceName(type, true);
+                throw new ArgumentException(Properties.Resources.ErrorUnknownResourceType, "type"); //NOXLATE
+            m_id = StringConstants.RootIdentifier + name + EnumHelper.ResourceName(type, true);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// </summary>
         public bool IsInLibrary
         {
-            get { return GetRepository(m_id) == "Library://"; }
+            get { return GetRepository(m_id) == StringConstants.RootIdentifier; }
         }
 
         /// <summary>
@@ -266,14 +266,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         public static string GetName(string identifier)
         {
             if (string.IsNullOrEmpty(identifier))
-                throw new ArgumentNullException("identifier");
+                throw new ArgumentNullException("identifier"); //NOXLATE
 
             string temp = GetPath(identifier);
 
             if (string.IsNullOrEmpty(temp))
-                throw new ArgumentException("The value must be a resource identifier", "identifier");
+                throw new ArgumentException(Properties.Resources.ErrorInvalidResourceIdentifier, "identifier"); //NOXLATE
 
-            return temp.Substring(temp.LastIndexOf("/") + 1);
+            return temp.Substring(temp.LastIndexOf("/") + 1); //NOXLATE
         }
 
         /// <summary>
@@ -285,17 +285,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         public static string SetName(string identifier, string newname)
         {
             string temp = GetPath(identifier);
-            if (identifier.EndsWith("/"))
+            if (identifier.EndsWith("/")) //NOXLATE
             {
-                if (!newname.EndsWith("/"))
-                    newname += "/";
+                if (!newname.EndsWith("/")) //NOXLATE
+                    newname += "/"; //NOXLATE
             }
             else
-                newname += "." + GetExtension(identifier);
+                newname += "." + GetExtension(identifier); //NOXLATE
 
 
-            if (newname.IndexOf("/") > 0)
-                throw new ArgumentException("The new name must not contain the \"/\" character", "newname");
+            if (newname.IndexOf("/") > 0) //NOXLATE
+                throw new ArgumentException(Properties.Resources.ErrorResourceIdentifierNameInvalidChars, "newname");
             temp = temp.Substring(0, temp.Length - GetName(identifier).Length) + newname;
 
             return GetRepository(identifier) + temp;
@@ -310,10 +310,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         public static string SetPath(string identifier, string newpath)
         {
             string temp = GetPath(identifier);
-            if (!identifier.EndsWith("/"))
-                newpath += "." + GetExtension(identifier);
+            if (!identifier.EndsWith("/")) //NOXLATE
+                newpath += "." + GetExtension(identifier); //NOXLATE
 
-            return GetRepository(identifier) + newpath + (identifier.EndsWith("/") ? "/" : "");
+            return GetRepository(identifier) + newpath + (identifier.EndsWith("/") ? "/" : ""); //NOXLATE
         }
 
         /// <summary>
@@ -324,14 +324,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <returns>The renmaed identifier</returns>
         public static string SetExtension(string identifier, string newextension)
         {
-            if (identifier.EndsWith("/"))
-                throw new Exception("Cannot change extension for a folder");
+            if (identifier.EndsWith("/")) //NOXLATE
+                throw new Exception(Properties.Resources.ErrorResourceIdCannotChangeExtensionForFolder);
 
-            if (!newextension.StartsWith("."))
-                newextension = "." + newextension;
+            if (!newextension.StartsWith(".")) //NOXLATE
+                newextension = "." + newextension; //NOXLATE
 
-            if (newextension.LastIndexOf(".") > 0)
-                throw new ArgumentException("The supplied extension is invalid", "newextension");
+            if (newextension.LastIndexOf(".") > 0) //NOXLATE
+                throw new ArgumentException(Properties.Resources.ErrorResourceIdInvalidExtension, "newextension"); //NOXLATE
 
             return identifier.Substring(0, identifier.Length - GetExtension(identifier).Length - 1) + newextension;
         }
@@ -344,16 +344,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         public static string GetRepository(string identifier)
         {
             if (string.IsNullOrEmpty(identifier))
-                throw new ArgumentNullException("identifier");
-            int ix = identifier.IndexOf("//");
+                throw new ArgumentNullException("identifier"); //NOXLATE
+            int ix = identifier.IndexOf("//"); //NOXLATE
             if (ix <= 0)
-                throw new ArgumentException("The value must be a resource identifier", "identifier");
+                throw new ArgumentException(Properties.Resources.ErrorInvalidResourceIdentifier, "identifier"); //NOXLATE
 
             string repo = identifier.Substring(0, ix);
-            if (repo != "Library:" && !repo.StartsWith("Session:"))
-                throw new ArgumentException("The value must be a resource identifier", "identifier");
+            if (repo != "Library:" && !repo.StartsWith("Session:")) //NOXLATE
+                throw new ArgumentException(Properties.Resources.ErrorInvalidResourceIdentifierType, "identifier"); //NOXLATE
 
-            return repo + "//";
+            return repo + "//"; //NOXLATE
         }
 
         /// <summary>
@@ -364,7 +364,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         public static string GetFullpath(string identifier)
         {
             if (string.IsNullOrEmpty(identifier))
-                throw new ArgumentNullException("identifier");
+                throw new ArgumentNullException("identifier"); //NOXLATE
             return identifier.Substring(GetRepository(identifier).Length);
         }
 
@@ -376,7 +376,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         public static string GetPath(string identifier)
         {
             if (string.IsNullOrEmpty(identifier))
-                throw new ArgumentNullException("identifier");
+                throw new ArgumentNullException("identifier"); //NOXLATE
             return identifier.Substring(GetRepository(identifier).Length, identifier.Length - GetExtension(identifier).Length - GetRepository(identifier).Length - 1);
         }
 
@@ -398,14 +398,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         private static string GetExtension(string identifier)
         {
             if (string.IsNullOrEmpty(identifier))
-                throw new ArgumentNullException("identifier");
+                throw new ArgumentNullException("identifier"); //NOXLATE
 
-            if (identifier.EndsWith("/"))
-                return "";
+            if (identifier.EndsWith("/")) //NOXLATE
+                return string.Empty;
 
-            int ix = identifier.LastIndexOf(".");
+            int ix = identifier.LastIndexOf("."); //NOXLATE
             if (ix <= 0)
-                throw new ArgumentException("The value must be a resource identifier", "identifier");
+                throw new ArgumentException(Properties.Resources.ErrorInvalidResourceIdentifier, "identifier"); //NOXLATE
 
             return identifier.Substring(ix + 1);
         }
@@ -417,7 +417,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <returns>The converted identifier</returns>
         public static string ConvertToLibrary(string identifier)
         {
-            return "Library://" + identifier.Substring(GetRepository(identifier).Length);
+            return StringConstants.RootIdentifier + identifier.Substring(GetRepository(identifier).Length);
         }
 
         /// <summary>
@@ -428,7 +428,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <returns>The converted identifier</returns>
         public static string ConvertToSession(string identifier, string sessionId)
         {
-            return "Session:" + sessionId + "//" + identifier.Substring(GetRepository(identifier).Length);
+            return "Session:" + sessionId + "//" + identifier.Substring(GetRepository(identifier).Length); //NOXLATE
         }
 
         /// <summary>
@@ -438,10 +438,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <returns>The full name of the identifier</returns>
         public static string GetFullname(string identifier)
         {
-            if (identifier.EndsWith("/"))
+            if (identifier.EndsWith("/")) //NOXLATE
                 return GetName(identifier);
             else
-                return GetName(identifier) + "." + GetExtension(identifier);
+                return GetName(identifier) + "." + GetExtension(identifier); //NOXLATE
         }
 
         /// <summary>
@@ -454,7 +454,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
             try
             {
                 GetRepository(identifier);
-                if (identifier.IndexOf(".") < 0 && !identifier.EndsWith("/"))
+                if (identifier.IndexOf(".") < 0 && !identifier.EndsWith("/")) //NOXLATE
                     return false;
 
             }
@@ -473,7 +473,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <returns>A value indicating if the resource points to a folder</returns>
         public static bool IsFolderResource(string identifier)
         {
-            return identifier.EndsWith("/");
+            return identifier.EndsWith("/"); //NOXLATE
         }
 
         /// <summary>
@@ -483,8 +483,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <returns>The normalized identifier</returns>
         public static string Normalize(string identifier)
         {
-            if (identifier.LastIndexOf(".") <= identifier.LastIndexOf("/") && !identifier.EndsWith("/"))
-                return identifier + "/";
+            if (identifier.LastIndexOf(".") <= identifier.LastIndexOf("/") && !identifier.EndsWith("/")) //NOXLATE
+                return identifier + "/"; //NOXLATE
             else
                 return identifier;
         }
@@ -514,10 +514,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         public static string GetRepositoryPath(string identifier)
         {
             if (!Validate(identifier))
-                throw new Exception("Invalid resource id: " + identifier);
+                throw new Exception("Invalid resource id: " + identifier); //NOXLATE
             identifier = Normalize(identifier);
 
-            return identifier.Substring(0, identifier.LastIndexOf("/", identifier.Length)) + "/";
+            return identifier.Substring(0, identifier.LastIndexOf("/", identifier.Length)) + "/"; //NOXLATE
         }
 
         /// <summary>
@@ -528,24 +528,24 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <returns>An identifier in the new folder</returns>
         public static string SetRepositoryPath(string identifier, string folder)
         {
-            if (!folder.StartsWith("Library:") && !folder.StartsWith("Session:"))
+            if (!folder.StartsWith("Library:") && !folder.StartsWith("Session:")) //NOXLATE
             {
-                string res = identifier.EndsWith("/") ? "" : GetFullname(identifier);
+                string res = identifier.EndsWith("/") ? string.Empty : GetFullname(identifier); //NOXLATE
                 string repo = GetRepository(identifier);
-                if (!folder.EndsWith("/") && !string.IsNullOrEmpty(folder))
-                    folder += "/";
+                if (!folder.EndsWith("/") && !string.IsNullOrEmpty(folder)) //NOXLATE
+                    folder += "/"; //NOXLATE
                 return repo + folder + res;
             }
-            else if (GetExtension(identifier) == "")
+            else if (GetExtension(identifier) == string.Empty)
             {
-                if (!folder.EndsWith("/"))
-                    folder += "/";
+                if (!folder.EndsWith("/")) //NOXLATE
+                    folder += "/"; //NOXLATE
                 return folder;
             }
             else
             {
-                if (!folder.EndsWith("/"))
-                    folder += "/";
+                if (!folder.EndsWith("/")) //NOXLATE
+                    folder += "/"; //NOXLATE
                 return folder + GetFullname(identifier);
             }
         }
@@ -558,16 +558,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         public static string GetParentFolder(string identifier)
         {
             if (!Validate(identifier))
-                throw new Exception("Invalid resource id: " + identifier);
+                throw new Exception(Properties.Resources.ErrorInvalidResourceIdentifier);
             identifier = Normalize(identifier);
 
             if (identifier == GetRepository(identifier))
                 return identifier;
 
-            if (identifier.EndsWith("/"))
+            if (identifier.EndsWith("/")) //NOXLATE
                 identifier = identifier.Remove(identifier.Length - 1);
 
-            identifier = identifier.Remove(identifier.LastIndexOf("/") + 1);
+            identifier = identifier.Remove(identifier.LastIndexOf("/") + 1); //NOXLATE
 
             return identifier;
         }
@@ -584,7 +584,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// </returns>
         public static bool IsSessionBased(string resourceID)
         {
-            return resourceID.StartsWith("Session:");
+            return resourceID.StartsWith("Session:"); //NOXLATE
         }
     }
 }

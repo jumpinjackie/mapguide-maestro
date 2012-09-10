@@ -176,8 +176,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 RebuildFactor = 1.0
             });
 
-            gl.GetScaleRangeAt(0).ColorStyle.GetColorRuleAt(0).Color.SetValue("000000");
-            gl.GetScaleRangeAt(0).ColorStyle.GetColorRuleAt(1).Color.SetValue("FFFFFF");
+            gl.GetScaleRangeAt(0).ColorStyle.GetColorRuleAt(0).Color.SetValue("000000"); //NOXLATE
+            gl.GetScaleRangeAt(0).ColorStyle.GetColorRuleAt(1).Color.SetValue("FFFFFF"); //NOXLATE
 
             this.Item = gl;
         }
@@ -214,8 +214,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             return new StrokeType()
             {
                 Color = Utility.SerializeHTMLColor(color, true),
-                LineStyle = "Solid",
-                Thickness = "1",
+                LineStyle = "Solid", //NOXLATE
+                Thickness = "1", //NOXLATE
                 Unit = LengthUnitType.Points
             };
         }
@@ -268,7 +268,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
         public IFill CreateDefaultFill()
         {
-            return CreateFill("Solid", Color.White, Color.White);
+            return CreateFill("Solid", Color.White, Color.White); //NOXLATE
         }
 
         public IMarkSymbol CreateDefaultMarkSymbol()
@@ -279,9 +279,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 SizeContext = SizeContextType.DeviceUnits,
                 MaintainAspect = true,
                 Shape = ShapeType.Square,
-                Rotation = "0",
-                SizeX = "10",
-                SizeY = "10",
+                Rotation = "0", //NOXLATE
+                SizeX = "10", //NOXLATE
+                SizeY = "10", //NOXLATE
                 Unit = LengthUnitType.Points
             };
             sym.Edge = CreateDefaultStroke();
@@ -295,10 +295,10 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             {
                 SizeContext = SizeContextType.DeviceUnits,
                 MaintainAspect = true,
-                FontName = "Arial",
-                Rotation = "0",
-                SizeX = "10",
-                SizeY = "10",
+                FontName = "Arial", //NOXLATE
+                Rotation = "0", //NOXLATE
+                SizeX = "10", //NOXLATE
+                SizeY = "10", //NOXLATE
                 Unit = LengthUnitType.Points
             };
             sym.SetForegroundColor(Color.Black);
@@ -316,7 +316,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         {
             IPointRule pr = new PointRuleType()
             {
-                LegendLabel = ""
+                LegendLabel = string.Empty
             };
             pr.PointSymbolization2D = CreateDefaultPointSymbolization2D();
             return pr;
@@ -326,7 +326,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         {
             IAreaRule ar = new AreaRuleType()
             {
-                LegendLabel = ""
+                LegendLabel = string.Empty
             };
             ar.AreaSymbolization2D = CreateDefaultAreaSymbolizationFill();
             return ar;
@@ -364,19 +364,19 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 AdvancedPlacement = null,
                 BackgroundColor = Utility.SerializeHTMLColor(Color.White, true),
                 BackgroundStyle = BackgroundStyleType.Transparent,
-                Bold = "false",
-                FontName = "Arial",
+                Bold = "false", //NOXLATE
+                FontName = "Arial", //NOXLATE
                 ForegroundColor = Utility.SerializeHTMLColor(Color.Black, true),
-                HorizontalAlignment = "'Center'",
-                Italic = "false",
-                Rotation = "0",
+                HorizontalAlignment = "'Center'", //NOXLATE
+                Italic = "false", //NOXLATE
+                Rotation = "0", //NOXLATE
                 SizeContext = SizeContextType.DeviceUnits,
-                SizeX = "10",
-                SizeY = "10",
-                Text = "",
-                Underlined = "false",
+                SizeX = "10", //NOXLATE
+                SizeY = "10", //NOXLATE
+                Text = string.Empty,
+                Underlined = "false", //NOXLATE
                 Unit = LengthUnitType.Points,
-                VerticalAlignment = "'Baseline'"
+                VerticalAlignment = "'Baseline'" //NOXLATE
             };
         }
 
@@ -400,7 +400,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 #else
             return new CompositeRule()
             {
-                LegendLabel = "",
+                LegendLabel = string.Empty,
                 CompositeSymbolization = new CompositeSymbolization()
                 {
                     SymbolInstance = new System.ComponentModel.BindingList<SymbolInstance>()  

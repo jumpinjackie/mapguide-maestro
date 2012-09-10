@@ -62,7 +62,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <returns></returns>
         protected static ValidationIssue[] ValidateBase(ResourceValidationContext context, IResource resource, bool recurse)
         {
-            Check.NotNull(context, "context");
+            Check.NotNull(context, "context"); //NOXLATE
 
             if (context.IsAlreadyValidated(resource.ResourceID))
                 return null;
@@ -336,7 +336,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                             if (!string.IsNullOrEmpty(dldef.LayerFilter))
                             {
                                 //Check if specified layers all exist in specified section
-                                var specifiedLayers = dldef.LayerFilter.Split(',');
+                                var specifiedLayers = dldef.LayerFilter.Split(','); //NOXLATE
                                 var dwLayers = new Dictionary<string, string>();
 
                                 var shtLayers = dwSvc.EnumerateDrawingLayers(dws.ResourceID, sheet.Name);

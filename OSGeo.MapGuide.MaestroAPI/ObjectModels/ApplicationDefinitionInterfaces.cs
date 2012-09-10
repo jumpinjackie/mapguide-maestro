@@ -296,27 +296,27 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <summary>
         /// The preview template. Used for previewing other resources
         /// </summary>
-        public const string Preview = "Preview";
+        public const string Preview = "Preview"; //NOXLATE
         /// <summary>
         /// The Aqua template
         /// </summary>
-        public const string Aqua = "Aqua";
+        public const string Aqua = "Aqua"; //NOXLATE
         /// <summary>
         /// The Maroon template
         /// </summary>
-        public const string Maroon = "Maroon";
+        public const string Maroon = "Maroon"; //NOXLATE
         /// <summary>
         /// The Slate template
         /// </summary>
-        public const string Slate = "Slate";
+        public const string Slate = "Slate"; //NOXLATE
         /// <summary>
         /// The LimeGold template
         /// </summary>
-        public const string LimeGold = "LimeGold";
+        public const string LimeGold = "LimeGold"; //NOXLATE
         /// <summary>
         /// The TurquoiseYellow template
         /// </summary>
-        public const string TurquoiseYellow = "TurquoiseYellow";
+        public const string TurquoiseYellow = "TurquoiseYellow"; //NOXLATE
     }
 
     /// <summary>
@@ -324,105 +324,105 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
     /// </summary>
     public static class KnownWidgetNames
     {
-        public const string About = "About";
+        public const string About = "About"; //NOXLATE
 
-        public const string ActivityIndicator = "ActivityIndicator";
+        public const string ActivityIndicator = "ActivityIndicator"; //NOXLATE
 
-        public const string BasemapSwitcher = "BasemapSwitcher";
+        public const string BasemapSwitcher = "BasemapSwitcher"; //NOXLATE
 
-        public const string Buffer = "Buffer";
+        public const string Buffer = "Buffer"; //NOXLATE
 
-        public const string BufferPanel = "BufferPanel";
+        public const string BufferPanel = "BufferPanel"; //NOXLATE
 
-        public const string CenterSelection = "CenterSelection";
+        public const string CenterSelection = "CenterSelection"; //NOXLATE
 
-        public const string ClearSelection = "ClearSelection";
+        public const string ClearSelection = "ClearSelection"; //NOXLATE
 
-        public const string ColorPicker = "ColorPicker";
+        public const string ColorPicker = "ColorPicker"; //NOXLATE
 
-        public const string CTRLClick = "CTRLClick";
+        public const string CTRLClick = "CTRLClick"; //NOXLATE
 
-        public const string CursorPosition = "CursorPosition";
+        public const string CursorPosition = "CursorPosition"; //NOXLATE
 
-        public const string EditableScale = "EditableScale";
+        public const string EditableScale = "EditableScale"; //NOXLATE
 
-        public const string ExtentHistory = "ExtentHistory";
+        public const string ExtentHistory = "ExtentHistory"; //NOXLATE
 
-        public const string FeatureInfo = "FeatureInfo";
+        public const string FeatureInfo = "FeatureInfo"; //NOXLATE
 
-        public const string Help = "Help";
+        public const string Help = "Help"; //NOXLATE
 
-        public const string InitialMapView = "InitialMapView";
+        public const string InitialMapView = "InitialMapView"; //NOXLATE
 
-        public const string InvokeScript = "InvokeScript";
+        public const string InvokeScript = "InvokeScript"; //NOXLATE
 
-        public const string InvokeURL = "InvokeURL";
+        public const string InvokeURL = "InvokeURL"; //NOXLATE
 
-        public const string LayerManager = "LayerManager";
+        public const string LayerManager = "LayerManager"; //NOXLATE
 
-        public const string Legend = "Legend";
+        public const string Legend = "Legend"; //NOXLATE
 
-        public const string LinkToView = "LinkToView";
+        public const string LinkToView = "LinkToView"; //NOXLATE
 
-        public const string MapMenu = "MapMenu";
+        public const string MapMenu = "MapMenu"; //NOXLATE
 
-        public const string Maptip = "Maptip";
+        public const string Maptip = "Maptip"; //NOXLATE
 
-        public const string Measure = "Measure";
+        public const string Measure = "Measure"; //NOXLATE
 
-        public const string Navigator = "Navigator";
+        public const string Navigator = "Navigator"; //NOXLATE
 
-        public const string OverviewMap = "OverviewMap";
+        public const string OverviewMap = "OverviewMap"; //NOXLATE
 
-        public const string Pan = "Pan";
+        public const string Pan = "Pan"; //NOXLATE
 
-        public const string PanOnClick = "PanOnClick";
+        public const string PanOnClick = "PanOnClick"; //NOXLATE
 
-        public const string PanQuery = "PanQuery";
+        public const string PanQuery = "PanQuery"; //NOXLATE
 
-        public const string Print = "Print";
+        public const string Print = "Print"; //NOXLATE
 
-        public const string Query = "Query";
+        public const string Query = "Query"; //NOXLATE
 
-        public const string QuickPlot = "QuickPlot";
+        public const string QuickPlot = "QuickPlot"; //NOXLATE
 
-        public const string Redline = "Redline";
+        public const string Redline = "Redline"; //NOXLATE
 
-        public const string RefreshMap = "RefreshMap";
+        public const string RefreshMap = "RefreshMap"; //NOXLATE
 
-        public const string SaveMap = "SaveMap";
+        public const string SaveMap = "SaveMap"; //NOXLATE
 
-        public const string Scalebar = "Scalebar";
+        public const string Scalebar = "Scalebar"; //NOXLATE
 
-        public const string ScalebarDual = "ScalebarDual";
+        public const string ScalebarDual = "ScalebarDual"; //NOXLATE
 
-        public const string Search = "Search";
+        public const string Search = "Search"; //NOXLATE
 
-        public const string Select = "Select";
+        public const string Select = "Select"; //NOXLATE
 
-        public const string SelectionInfo = "SelectionInfo";
+        public const string SelectionInfo = "SelectionInfo"; //NOXLATE
 
-        public const string SelectPolygon = "SelectPolygon";
+        public const string SelectPolygon = "SelectPolygon"; //NOXLATE
 
-        public const string SelectRadius = "SelectRadius";
+        public const string SelectRadius = "SelectRadius"; //NOXLATE
 
-        public const string SelectRadiusValue = "SelectRadiusValue";
+        public const string SelectRadiusValue = "SelectRadiusValue"; //NOXLATE
 
-        public const string SelectWithin = "SelectWithin";
+        public const string SelectWithin = "SelectWithin"; //NOXLATE
 
-        public const string TaskPane = "TaskPane";
+        public const string TaskPane = "TaskPane"; //NOXLATE
 
-        public const string Theme = "Theme";
+        public const string Theme = "Theme"; //NOXLATE
 
-        public const string ViewOptions = "ViewOptions";
+        public const string ViewOptions = "ViewOptions"; //NOXLATE
 
-        public const string ViewSize = "ViewSize";
+        public const string ViewSize = "ViewSize"; //NOXLATE
 
-        public const string Zoom = "Zoom";
+        public const string Zoom = "Zoom"; //NOXLATE
 
-        public const string ZoomOnClick = "ZoomOnClick";
+        public const string ZoomOnClick = "ZoomOnClick"; //NOXLATE
 
-        public const string ZoomToSelection = "ZoomToSelection";
+        public const string ZoomToSelection = "ZoomToSelection"; //NOXLATE
     }
 
     /// <summary>
@@ -633,8 +633,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <param name="deleteReferences">if set to <c>true</c> [deletes any references to the widget to be deleted].</param>
         public static void RemoveWidget(this IApplicationDefinition appDef, string widgetName, bool deleteReferences)
         {
-            Check.NotNull(appDef, "appDef");
-            Check.NotEmpty(widgetName, "widgetName");
+            Check.NotNull(appDef, "appDef"); //NOXLATE
+            Check.NotEmpty(widgetName, "widgetName"); //NOXLATE
 
             IWidgetSet matchingSet = null;
             IWidget matchingWidget = null;
@@ -676,7 +676,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
                                     if (witem != null && witem.Widget == widgetName)
                                     {
                                         removeMe.Add(witem);
-                                        System.Diagnostics.Trace.TraceInformation("Found widget reference in container: " + uicnt.Name);
+                                        System.Diagnostics.Trace.TraceInformation("Found widget reference in container: " + uicnt.Name); //NOXLATE
                                     }
                                 }
 
@@ -695,7 +695,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
             }
 
             if (deleteReferences)
-                System.Diagnostics.Trace.TraceInformation(removed + " widget references removed");  
+                System.Diagnostics.Trace.TraceInformation(removed + " widget references removed");   //NOXLATE
         }
 
         /// <summary>
@@ -706,8 +706,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static IApplicationDefinitionContainerInfo FindContainer(this IApplicationDefinitionContainerInfoSet set, string name)
         {
-            Check.NotNull(set, "set");
-            Check.NotEmpty(name, "name");
+            Check.NotNull(set, "set"); //NOXLATE
+            Check.NotEmpty(name, "name"); //NOXLATE
 
             foreach (var cnt in set.ContainerInfo)
             {
@@ -725,8 +725,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static IWidgetInfo FindWidget(this IApplicationDefinitionWidgetInfoSet set, string name)
         {
-            Check.NotNull(set, "set");
-            Check.NotEmpty(name, "name");
+            Check.NotNull(set, "set"); //NOXLATE
+            Check.NotEmpty(name, "name"); //NOXLATE
 
             foreach (var wgt in set.WidgetInfo)
             {
@@ -744,8 +744,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static IApplicationDefinitionTemplateInfo FindTemplate(this IApplicationDefinitionTemplateInfoSet set, string name)
         {
-            Check.NotNull(set, "set");
-            Check.NotEmpty(name, "name");
+            Check.NotNull(set, "set"); //NOXLATE
+            Check.NotEmpty(name, "name"); //NOXLATE
 
             foreach (var tpl in set.TemplateInfo)
             {
@@ -763,7 +763,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static IMapGroup GetGroupById(this IMapSet set, string id)
         {
-            Check.NotNull(set, "set");
+            Check.NotNull(set, "set"); //NOXLATE
             foreach (var group in set.MapGroups)
             {
                 if (group.id.Equals(id))
@@ -779,7 +779,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static string[] GetNames(this IExtensibleElement ext)
         {
-            Check.NotNull(ext, "ext");
+            Check.NotNull(ext, "ext"); //NOXLATE
 
             List<string> names = new List<string>();
 
@@ -798,7 +798,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static NameValueCollection GetAllValues(this IExtensibleElement ext)
         {
-            Check.NotNull(ext, "ext");
+            Check.NotNull(ext, "ext"); //NOXLATE
             NameValueCollection values = new NameValueCollection();
             foreach (var el in ext.Extension.Content)
             {
@@ -814,8 +814,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <param name="values"></param>
         public static void SetAllValues(this IExtensibleElement ext, NameValueCollection values)
         {
-            Check.NotNull(ext, "ext");
-            Check.NotNull(values, "values");
+            Check.NotNull(ext, "ext"); //NOXLATE
+            Check.NotNull(values, "values"); //NOXLATE
 
             var elements = new List<XmlElement>();
             foreach (string name in values.Keys)
@@ -836,8 +836,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <param name="value"></param>
         public static void SetValue(this IExtensibleElement ext, string name, string value)
         {
-            Check.NotNull(ext, "ext");
-            Check.NotEmpty(name, "name");
+            Check.NotNull(ext, "ext"); //NOXLATE
+            Check.NotEmpty(name, "name"); //NOXLATE
 
             if (ext.Extension.Content != null)
             {
@@ -862,7 +862,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
                 ext.Extension.Content = new XmlElement[] { rid };
             }
 
-            Trace.TraceInformation("Extensible element property {0} set to: {1}", name, value);
+            Trace.TraceInformation("Extensible element property {0} set to: {1}", name, value); //NOXLATE
         }
 
         /// <summary>
@@ -873,8 +873,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static string GetValue(this IExtensibleElement ext, string name)
         {
-            Check.NotNull(ext, "ext");
-            Check.NotEmpty(name, "name");
+            Check.NotNull(ext, "ext"); //NOXLATE
+            Check.NotEmpty(name, "name"); //NOXLATE
 
             if (ext.Extension.Content != null)
             {
@@ -895,7 +895,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static XmlElement FindElementByName(this XmlElement[] elements, string name)
         {
-            Check.NotNull(elements, "elements");
+            Check.NotNull(elements, "elements"); //NOXLATE
             foreach (var el in elements)
             {
                 if (el.Name == name)
@@ -911,8 +911,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static string GetMapDefinition(this IMap map)
         {
-            Check.NotNull(map, "map");
-            return map.GetValue("ResourceId");
+            Check.NotNull(map, "map"); //NOXLATE
+            return map.GetValue("ResourceId"); //NOXLATE
         }
 
         /// <summary>
@@ -922,8 +922,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <param name="mapDefId"></param>
         public static void SetMapDefinition(this IMap map, string mapDefId)
         {
-            Check.NotNull(map, "map");
-            map.SetValue("ResourceId", mapDefId);
+            Check.NotNull(map, "map"); //NOXLATE
+            map.SetValue("ResourceId", mapDefId); //NOXLATE
         }
 
         /// <summary>
@@ -933,7 +933,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static IWidgetSet GetFirstWidgetSet(this IApplicationDefinition appDef)
         {
-            Check.NotNull(appDef, "appDef");
+            Check.NotNull(appDef, "appDef"); //NOXLATE
             IWidgetSet set = null;
             foreach (var wgt in appDef.WidgetSets)
             {
@@ -947,151 +947,151 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         }
     }
 
-        /*
-    public abstract class WidgetValue
+    /*
+public abstract class WidgetValue
+{
+    protected WidgetValue(string name, bool required)
     {
-        protected WidgetValue(string name, bool required)
+        this.Name = name;
+        this.Nullable = !required;
+    }
+
+    public bool Nullable { get; protected set; }
+
+    public string Name { get; set; }
+
+    public abstract object Value { get; set; }
+
+    protected virtual string ValueToString()
+    {
+        if (this.Value == null)
+            return string.Empty;
+        else
+            return this.Value.ToString();
+    }
+
+    public virtual string ToXml()
+    {
+        if (this.Nullable && this.Value == null)
+            return string.Empty;
+
+        return "<" + this.Name + ">" + ValueToString() + "</" + this.Name + ">"; //NOXLATE
+    }
+}
+
+public class RangedWidgetValue : WidgetValue
+{
+    public RangedWidgetValue(string name, bool required, IComparable minValue, IComparable maxValue) : base(name, required) 
+    {
+        Check.NotNull(minValue, "minValue"); //NOXLATE
+        Check.NotNull(maxValue, "maxValue"); //NOXLATE
+
+        if (minValue.CompareTo(maxValue) <= 0)
         {
-            this.Name = name;
-            this.Nullable = !required;
+            this.MinValue = minValue;
+            this.MaxValue = maxValue;
         }
-
-        public bool Nullable { get; protected set; }
-
-        public string Name { get; set; }
-
-        public abstract object Value { get; set; }
-
-        protected virtual string ValueToString()
+        else
         {
-            if (this.Value == null)
-                return string.Empty;
+            this.MinValue = maxValue;
+            this.MaxValue = MinValue;
+        }
+    }
+
+    public IComparable MinValue { get; private set; }
+
+    public IComparable MaxValue { get; private set; }
+
+    private object _value;
+
+    public override object Value
+    {
+        get
+        {
+            return _value;
+        }
+        set
+        {
+            if (value == null)
+            {
+                if (!this.Nullable)
+                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.ErrorNullNotAccepted);
+
+                _value = value;
+            }
             else
-                return this.Value.ToString();
-        }
+            {
+                var cmp = value as IComparable;
+                if (cmp == null)
+                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.ErrroValueNotComparable);
 
-        public virtual string ToXml()
-        {
-            if (this.Nullable && this.Value == null)
-                return string.Empty;
-
-            return "<" + this.Name + ">" + ValueToString() + "</" + this.Name + ">";
+                if (cmp.CompareTo(this.MinValue) >= 0 && cmp.CompareTo(this.MaxValue) <= 0)
+                    _value = value;
+                else
+                    throw new InvalidOperationException(string.Format(OSGeo.MapGuide.MaestroAPI.Properties.ErrorValueOutOfRange, this.MinValue, this.MaxValue));
+            }
         }
     }
+}
 
-    public class RangedWidgetValue : WidgetValue
+public class RestrictedWidgetValue : WidgetValue
+{
+    public RestrictedWidgetValue(string name, bool required) : base(name, required) { }
+
+    private object _value;
+
+    public override object Value
     {
-        public RangedWidgetValue(string name, bool required, IComparable minValue, IComparable maxValue) : base(name, required) 
+        get
         {
-            Check.NotNull(minValue, "minValue");
-            Check.NotNull(maxValue, "maxValue");
-
-            if (minValue.CompareTo(maxValue) <= 0)
+            return _value;
+        }
+        set
+        {
+            if (value == null)
             {
-                this.MinValue = minValue;
-                this.MaxValue = maxValue;
+                if (!this.Nullable)
+                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.ErrorNullNotAccepted);
+
+                _value = value;
             }
             else
             {
-                this.MinValue = maxValue;
-                this.MaxValue = MinValue;
-            }
-        }
-
-        public IComparable MinValue { get; private set; }
-
-        public IComparable MaxValue { get; private set; }
-
-        private object _value;
-
-        public override object Value
-        {
-            get
-            {
-                return _value;
-            }
-            set
-            {
-                if (value == null)
-                {
-                    if (!this.Nullable)
-                        throw new InvalidOperationException("Null values not accepted"); //LOCALIZEME
-
-                    _value = value;
-                }
-                else
-                {
-                    var cmp = value as IComparable;
-                    if (cmp == null)
-                        throw new InvalidOperationException("Assigned value is not comparable"); //LOCALIZEME
-
-                    if (cmp.CompareTo(this.MinValue) >= 0 && cmp.CompareTo(this.MaxValue) <= 0)
-                        _value = value;
-                    else
-                        throw new InvalidOperationException("Value falls outside the range of " + this.MinValue + " and " + this.MaxValue); //LOCALIZEME
-                }
+                _value = value;
             }
         }
     }
+}
 
-    public class RestrictedWidgetValue : WidgetValue
+public class ArbitraryWidgetValue : WidgetValue
+{
+    public ArbitraryWidgetValue(string name, bool required) : base(name, required) { }
+
+    private object _value;
+
+    public override object Value
     {
-        public RestrictedWidgetValue(string name, bool required) : base(name, required) { }
-
-        private object _value;
-
-        public override object Value
+        get
         {
-            get
+            return _value;
+        }
+        set
+        {
+            if (value == null)
             {
-                return _value;
-            }
-            set
-            {
-                if (value == null)
-                {
-                    if (!this.Nullable)
-                        throw new InvalidOperationException("Null values not accepted"); //LOCALIZEME
+                if (!this.Nullable)
+                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.ErrorNullNotAccepted);
 
-                    _value = value;
-                }
-                else
-                {
-                    _value = value;
-                }
+                _value = value;
+            }
+            else
+            {
+                _value = value;
             }
         }
     }
-
-    public class ArbitraryWidgetValue : WidgetValue
-    {
-        public ArbitraryWidgetValue(string name, bool required) : base(name, required) { }
-
-        private object _value;
-
-        public override object Value
-        {
-            get
-            {
-                return _value;
-            }
-            set
-            {
-                if (value == null)
-                {
-                    if (!this.Nullable)
-                        throw new InvalidOperationException("Null values not accepted"); //LOCALIZEME
-
-                    _value = value;
-                }
-                else
-                {
-                    _value = value;
-                }
-            }
-        }
-    }
-        */
+}
+    */
 
     public interface IMapSet
     {

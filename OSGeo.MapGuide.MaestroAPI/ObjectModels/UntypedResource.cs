@@ -62,7 +62,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// </summary>
         public string ValidatingSchema
         {
-            get { return this.ResourceType + "-" + this.ResourceVersion.ToString() + ".xsd"; }
+            get { return this.ResourceType + "-" + this.ResourceVersion.ToString() + ".xsd"; } //NOXLATE
         }
 
         /// <summary>

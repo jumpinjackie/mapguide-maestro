@@ -4,6 +4,7 @@ using System.Text;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using System.IO;
+using OSGeo.MapGuide.MaestroAPI;
 
 #pragma warning disable 1591, 0114, 0108
 
@@ -20,16 +21,16 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0
     /// </summary>
     public static class LoadProcEntryPoint
     {
-        const string ARBITRARY_XYM = "LOCAL_CS[\"Non-Earth (Meter)\", LOCAL_DATUM[\"Local Datum\", 0], UNIT[\"Meter\", 1], AXIS[\"X\", EAST], AXIS[\"Y\", NORTH]]";
+        const string ARBITRARY_XYM = "LOCAL_CS[\"Non-Earth (Meter)\", LOCAL_DATUM[\"Local Datum\", 0], UNIT[\"Meter\", 1], AXIS[\"X\", EAST], AXIS[\"Y\", NORTH]]"; //NOXLATE
 
         private static void ApplyDefaults(LoadProcedureType lt)
         {
-            lt.RootPath = "Library://";
+            lt.RootPath = StringConstants.RootIdentifier;
             lt.CoordinateSystem = ARBITRARY_XYM;
-            lt.SpatialDataSourcesPath = "";
-            lt.SpatialDataSourcesFolder = "Data";
-            lt.LayersPath = "";
-            lt.LayersFolder = "Layers";
+            lt.SpatialDataSourcesPath = string.Empty;
+            lt.SpatialDataSourcesFolder = "Data"; //NOXLATE
+            lt.LayersPath = string.Empty;
+            lt.LayersFolder = "Layers"; //NOXLATE
             lt.GenerateMaps = false;
             lt.GenerateLayers = true;
             lt.GenerateSpatialDataSources = true;

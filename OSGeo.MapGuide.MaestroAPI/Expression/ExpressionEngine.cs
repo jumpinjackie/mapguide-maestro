@@ -71,7 +71,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Expression
         internal void UpdateVariables()
         {
             if (_reader.Current == null)
-                throw new InvalidOperationException("Current record is empty"); //LOCALIZEME
+                throw new InvalidOperationException(Properties.Resources.ErrorCurrentRecordIsEmpty);
 
             _context.Variables.Clear();
             for (int i = 0; i < _reader.FieldCount; i++)
@@ -105,11 +105,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expression
             //
             // Stripping double quotes (variables are not quoted)
             // Convert single to double quotes (string literals are just CLR strings)
-            var exprText = expression.Replace("\"", string.Empty)
-                                     .Replace("'", "\"");
+            var exprText = expression.Replace("\"", string.Empty) //NOXLATE
+                                     .Replace("'", "\""); //NOXLATE
 
             if (_reader.Current == null)
-                throw new InvalidOperationException("Unable to evaluate. Current row is empty"); //LOCALIZEME
+                throw new InvalidOperationException(Properties.Resources.ErrorExprCurrentRowIsEmpty);
 
             try
             {
@@ -139,11 +139,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expression
             //
             // Stripping double quotes (variables are not quoted)
             // Convert single to double quotes (string literals are just CLR strings)
-            var exprText = expression.Replace("\"", string.Empty)
-                                     .Replace("'", "\"");
+            var exprText = expression.Replace("\"", string.Empty) //NOXLATE
+                                     .Replace("'", "\""); //NOXLATE
 
             if (_reader.Current == null)
-                throw new InvalidOperationException("Unable to evaluate. Current row is empty"); //LOCALIZEME
+                throw new InvalidOperationException(Properties.Resources.ErrorExprCurrentRowIsEmpty);
 
             var expr = _context.CompileGeneric<T>(exprText);
             return expr.Evaluate();

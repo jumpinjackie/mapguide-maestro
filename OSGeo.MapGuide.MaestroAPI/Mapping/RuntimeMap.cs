@@ -112,7 +112,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     ///         {
     ///             int read = 0;
     ///             do
-	/// 		    {
+    /// 		    {
     /// 			    read = source.Read(buf, 0, buf.Length);
     /// 			    target.Write(buf, 0, read);
     /// 		    } while (read > 0);
@@ -253,7 +253,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             //batch. Eliminating lots of chatter for really large maps.
             if (_getRes != null)
             {
-                Trace.TraceInformation("[RuntimeMap.ctor]: Batching layer requests");
+                Trace.TraceInformation("[RuntimeMap.ctor]: Batching layer requests"); //NOXLATE
                 var res = _getRes.Execute(GetLayerIds(mdf));
                 //Pre-populate layer def cache so GetLayerDefinition() returns these
                 //instead of making a new request
@@ -263,7 +263,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     if (layer != null)
                         layerDefinitionCache.Add(key, layer);
                 }
-                Trace.TraceInformation("[RuntimeMap.ctor]: {0} layers pre-cached", layerDefinitionCache.Count);
+                Trace.TraceInformation("[RuntimeMap.ctor]: {0} layers pre-cached", layerDefinitionCache.Count); //NOXLATE
             }
 
             //Load map layers
@@ -385,7 +385,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _dpi, value, "DisplayDpi");
+                SetField(ref _dpi, value, "DisplayDpi"); //NOXLATE
             }
         }
 
@@ -508,7 +508,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _viewScale, value, "ViewScale");
+                SetField(ref _viewScale, value, "ViewScale"); //NOXLATE
             }
         }
 
@@ -524,7 +524,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public string Name
         {
             get { return _name; }
-            set { SetField(ref _name, value, "Name"); }
+            set { SetField(ref _name, value, "Name"); } //NOXLATE
         }
 
         /// <summary>
@@ -539,7 +539,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public virtual string CoordinateSystem
         {
             get { return _mapSrs; }
-            internal set { SetField(ref _mapSrs, value, "CoordinateSystem"); }
+            internal set { SetField(ref _mapSrs, value, "CoordinateSystem"); } //NOXLATE
         }
 
         /// <summary>
@@ -559,7 +559,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _bgColor, value, "BackgroundColor");
+                SetField(ref _bgColor, value, "BackgroundColor"); //NOXLATE
             }
         }
 
@@ -574,8 +574,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             get { return _resId; }
             set 
-            { 
-                SetField(ref _resId, value, "ResourceID");
+            {
+                SetField(ref _resId, value, "ResourceID"); //NOXLATE
                 if (this.Name == null)
                     this.Name = ResourceIdentifier.GetName(_resId);
             }
@@ -794,7 +794,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             if (d.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
             {
                 if (d.ReadInt32() != MgBinaryVersion)
-                    throw new Exception("Invalid map version");
+                    throw new Exception(Properties.Resources.ErrorInvalidMapVersion);
                 this.ResourceID = d.ReadResourceIdentifier();
             }
 
@@ -845,7 +845,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 }
                 int mapLayerCount = d.ReadInt32();
                 if (mapLayerCount != 0)
-                    throw new Exception("On new versions, there should be no layer data in map");
+                    throw new Exception(Properties.Resources.ErrorShouldHaveNoLayerDataInMap);
             }
             else
             {
@@ -863,13 +863,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             int classid = d.ReadClassId();
             if (d.SiteVersion <= SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP1_1) && classid != 18001)
-                throw new Exception("Invalid class identifier, expected Box2D");
+                throw new Exception(Properties.Resources.ErrorInvalidClassIdentifierBox2d);
             if (d.SiteVersion > SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP1_1) && classid != 20001)
-                throw new Exception("Invalid class identifier, expected Box2D");
+                throw new Exception(Properties.Resources.ErrorInvalidClassIdentifierBox2d);
 
             int dimensions = d.ReadInt32();
             if (dimensions != 2 && dimensions != 0)
-                throw new Exception("Bounding box for map had " + dimensions.ToString() + " dimensions, 2 was expected");
+                throw new Exception(string.Format(Properties.Resources.ErrorBoundingBoxDoesNotHave2Dimensions, dimensions));
             double x1 = d.ReadDouble();
             double y1 = d.ReadDouble();
 
@@ -975,16 +975,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
         private bool ReloadSelection()
         {
-            var resId = this.ResourceID.Replace(".Map", ".Selection");
+            var resId = this.ResourceID.Replace(".Map", ".Selection"); //NOXLATE
             var bLoadedSelection = false;
             if (this.ResourceService.ResourceExists(resId))
             {
                 var dataItems = this.ResourceService.EnumerateResourceData(resId);
                 foreach (var item in dataItems.ResourceData)
                 {
-                    if (item.Name == "RuntimeData")
+                    if (item.Name == "RuntimeData") //NOXLATE
                     {
-                        var ser = new MgBinaryDeserializer(this.ResourceService.GetResourceData(resId, "RuntimeData"), this.CurrentConnection.SiteVersion);
+                        var ser = new MgBinaryDeserializer(this.ResourceService.GetResourceData(resId, "RuntimeData"), this.CurrentConnection.SiteVersion); //NOXLATE
                         _selection.Deserialize(ser);
                         bLoadedSelection = true;
                         break;
@@ -999,10 +999,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns></returns>
-        [Obsolete("Use the indexer of the Groups property instead")]
+        [Obsolete("Use the indexer of the Groups property instead")] //NOXLATE
         public RuntimeMapGroup GetGroupByName(string name)
         {
-            Check.NotNull(name, "name");
+            Check.NotNull(name, "name"); //NOXLATE
             return this.Groups[name];
         }
 
@@ -1011,7 +1011,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="id">The id.</param>
         /// <returns></returns>
-        [Obsolete("Use the Layers property instead")]
+        [Obsolete("Use the Layers property instead")] //NOXLATE
         public RuntimeMapLayer GetLayerByObjectId(string id)
         {
             return this.Layers.GetByObjectId(id);
@@ -1045,7 +1045,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="layer"></param>
         /// <returns></returns>
-        [Obsolete("Use the Layers property instead")]
+        [Obsolete("Use the Layers property instead")] //NOXLATE
         internal void AddLayer(RuntimeMapLayer layer)
         {
             this.Layers.Add(layer);
@@ -1057,7 +1057,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="index"></param>
         /// <param name="layer"></param>
-        [Obsolete("Use the Layers property instead")]
+        [Obsolete("Use the Layers property instead")] //NOXLATE
         public void InsertLayer(int index, RuntimeMapLayer layer)
         {
             this.Layers.Insert(index, layer);
@@ -1068,7 +1068,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="index">The index.</param>
         /// <param name="layer">The layer.</param>
-        [Obsolete("Use the Layers property instead")]
+        [Obsolete("Use the Layers property instead")] //NOXLATE
         public void SetLayerIndex(int index, RuntimeMapLayer layer)
         {
             this.Layers[index] = layer;
@@ -1078,7 +1078,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Removes the layer at the specified index
         /// </summary>
         /// <param name="index">The index.</param>
-        [Obsolete("Use the Layers property instead")]
+        [Obsolete("Use the Layers property instead")] //NOXLATE
         public void RemoveLayerAt(int index)
         {
             this.Layers.RemoveAt(index);
@@ -1089,7 +1089,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="layer"></param>
         /// <returns></returns>
-        [Obsolete("Use the Layers property instead")]
+        [Obsolete("Use the Layers property instead")] //NOXLATE
         public int IndexOfLayer(RuntimeMapLayer layer)
         {
             return this.Layers.IndexOf(layer);
@@ -1100,10 +1100,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="layerName"></param>
         /// <returns></returns>
-        [Obsolete("Use the Layers property instead")]
+        [Obsolete("Use the Layers property instead")] //NOXLATE
         public int IndexOfLayer(string layerName)
         {
-            Check.NotEmpty(layerName, "layerName");
+            Check.NotEmpty(layerName, "layerName"); //NOXLATE
 
             var layer = this.Layers[layerName];
             return this.Layers.IndexOf(layer);
@@ -1116,7 +1116,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="layerDefinitionId"></param>
         /// <param name="group"></param>
         /// <returns></returns>
-        [Obsolete("Use RuntimeMapLayer constructor")]
+        [Obsolete("Use RuntimeMapLayer constructor")] //NOXLATE
         public RuntimeMapLayer CreateLayer(string layerDefinitionId, RuntimeMapGroup group)
         {
             ILayerDefinition ldf = GetLayerDefinition(layerDefinitionId);
@@ -1160,10 +1160,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Removes the specified layer.
         /// </summary>
         /// <param name="layer">The layer.</param>
-        [Obsolete("Use the Layers property instead")]
+        [Obsolete("Use the Layers property instead")] //NOXLATE
         public void RemoveLayer(RuntimeMapLayer layer)
         {
-            Check.NotNull(layer, "layer");
+            Check.NotNull(layer, "layer"); //NOXLATE
             this.Layers.Remove(layer);
         }
 
@@ -1171,10 +1171,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Removes the specified group.
         /// </summary>
         /// <param name="group">The group.</param>
-        [Obsolete("Use the Groups property instead")]
+        [Obsolete("Use the Groups property instead")] //NOXLATE
         public void RemoveGroup(RuntimeMapGroup group)
         {
-            Check.NotNull(group, "group");
+            Check.NotNull(group, "group"); //NOXLATE
             this.Groups.Remove(group);
         }
 
@@ -1186,7 +1186,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns></returns>
         public RuntimeMapLayer[] GetLayersOfGroup(string groupName)
         {
-            Check.NotEmpty(groupName, "groupName");
+            Check.NotEmpty(groupName, "groupName"); //NOXLATE
             List<RuntimeMapLayer> layers = new List<RuntimeMapLayer>();
             foreach (var lyr in this.Layers)
             {
@@ -1203,7 +1203,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns></returns>
         public RuntimeMapGroup[] GetGroupsOfGroup(string groupName)
         {
-            Check.NotEmpty(groupName, "groupName");
+            Check.NotEmpty(groupName, "groupName"); //NOXLATE
             List<RuntimeMapGroup> groups = new List<RuntimeMapGroup>();
             foreach (var grp in this.Groups)
             {
@@ -1224,24 +1224,24 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// A dummy resource, used for the runtime map
         /// </summary>
-        internal const string RUNTIMEMAP_XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Map></Map>";
+        internal const string RUNTIMEMAP_XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Map></Map>"; //NOXLATE
 
         /// <summary>
         /// A dummy resource, used for the runtime map
         /// </summary>
-        internal const string RUNTIMEMAP_SELECTION_XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Selection></Selection>";
+        internal const string RUNTIMEMAP_SELECTION_XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Selection></Selection>"; //NOXLATE
 
         private void Save(string resourceID)
         {
             var map = this;
 
-            string selectionID = resourceID.Substring(0, resourceID.LastIndexOf(".")) + ".Selection";
+            string selectionID = resourceID.Substring(0, resourceID.LastIndexOf(".")) + ".Selection"; //NOXLATE
             this.ResourceService.SetResourceXmlData(resourceID, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(RUNTIMEMAP_XML)));
             this.ResourceService.SetResourceXmlData(selectionID, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(RUNTIMEMAP_SELECTION_XML)));
 
             ResourceIdentifier.Validate(resourceID, ResourceTypes.RuntimeMap);
-            if (!resourceID.StartsWith("Session:" + this.SessionId + "//") || !resourceID.EndsWith(".Map"))
-                throw new Exception("Runtime maps must be in the current session repository");
+            if (!resourceID.StartsWith("Session:" + this.SessionId + "//") || !resourceID.EndsWith(".Map")) //NOXLATE
+                throw new Exception(Properties.Resources.ErrorRuntimeMapNotInSessionRepo);
 
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             System.IO.MemoryStream ms2 = null;
@@ -1251,8 +1251,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             string r = map.Name;
             string t = map.ResourceID;
 
-            string mapname = resourceID.Substring(resourceID.IndexOf("//") + 2);
-            mapname = mapname.Substring(0, mapname.LastIndexOf("."));
+            string mapname = resourceID.Substring(resourceID.IndexOf("//") + 2); //NOXLATE
+            mapname = mapname.Substring(0, mapname.LastIndexOf(".")); //NOXLATE
             map.Name = mapname;
             map.ResourceID = resourceID;
 
@@ -1265,9 +1265,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     map.SerializeLayerData(new MgBinarySerializer(ms2, this.SiteVersion));
                 }
 
-                this.ResourceService.SetResourceData(resourceID, "RuntimeData", ResourceDataType.Stream, ms);
+                this.ResourceService.SetResourceData(resourceID, "RuntimeData", ResourceDataType.Stream, ms); //NOXLATE
                 if (ms2 != null)
-                    this.ResourceService.SetResourceData(resourceID, "LayerGroupData", ResourceDataType.Stream, ms2);
+                    this.ResourceService.SetResourceData(resourceID, "LayerGroupData", ResourceDataType.Stream, ms2); //NOXLATE
 
                 SaveSelectionXml(resourceID);
                 this.IsDirty = false;
@@ -1294,12 +1294,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         private void SaveSelectionXml(string resourceID)
         {
             ResourceIdentifier.Validate(resourceID, ResourceTypes.RuntimeMap);
-            string selectionID = resourceID.Substring(0, resourceID.LastIndexOf(".")) + ".Selection";
+            string selectionID = resourceID.Substring(0, resourceID.LastIndexOf(".")) + ".Selection"; //NOXLATE
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             MgBinarySerializer serializer = new MgBinarySerializer(ms, this.SiteVersion);
             this.Selection.Serialize(serializer);
             ms.Position = 0;
-            this.ResourceService.SetResourceData(selectionID, "RuntimeData", ResourceDataType.Stream, ms);
+            this.ResourceService.SetResourceData(selectionID, "RuntimeData", ResourceDataType.Stream, ms); //NOXLATE
         }
 
         /// <summary>
@@ -1307,10 +1307,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns></returns>
-        [Obsolete("Use the indexer of the Layer property instead")]
+        [Obsolete("Use the indexer of the Layer property instead")] //NOXLATE
         public RuntimeMapLayer GetLayerByName(string name)
         {
-            Check.NotEmpty(name, "name");
+            Check.NotEmpty(name, "name"); //NOXLATE
             return this.Layers[name];
         }
 
@@ -1483,7 +1483,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="format"></param>
         /// <param name="keepSelection"></param>
         /// <returns></returns>
-        [Obsolete("Use the version of RenderDynamicOverlay that is not marked Obsolete")]
+        [Obsolete("Use the version of RenderDynamicOverlay that is not marked Obsolete")] //NOXLATE
         public System.IO.Stream RenderDynamicOverlay(string format, bool keepSelection)
         {
             return RenderDynamicOverlay(this.Selection, format, keepSelection);
@@ -1496,7 +1496,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="format"></param>
         /// <param name="behavior"></param>
         /// <returns></returns>
-        [Obsolete("Use the version of RenderDynamicOverlay that is not marked Obsolete")]
+        [Obsolete("Use the version of RenderDynamicOverlay that is not marked Obsolete")] //NOXLATE
         public System.IO.Stream RenderDynamicOverlay(MapSelection sel, string format, bool keepSelection)
         {
             if (_mapSvc == null)

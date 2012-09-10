@@ -46,11 +46,11 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             foreach (var arg in args)
             {
-                if (arg.Length > 0 && arg[0] == '-')
+                if (arg.Length > 0 && arg[0] == '-') //NOXLATE
                 {
                     string name = arg.Substring(1);
                     string value = string.Empty;
-                    var cidx = arg.IndexOf(':');
+                    var cidx = arg.IndexOf(':'); //NOXLATE
 
                     if (cidx >= 0)
                     {
@@ -109,21 +109,21 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// The name of the API provider
         /// </summary>
-        public const string Provider = "Provider";
+        public const string Provider = "Provider"; //NOXLATE
 
         /// <summary>
         /// The session id
         /// </summary>
-        public const string Session = "SessionId";
+        public const string Session = "SessionId"; //NOXLATE
 
         /// <summary>
         /// The username
         /// </summary>
-        public const string Username = "Username";
+        public const string Username = "Username"; //NOXLATE
 
         /// <summary>
         /// The password
         /// </summary>
-        public const string Password = "Password";
+        public const string Password = "Password"; //NOXLATE
     }
 }

@@ -54,14 +54,14 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0
             set
             {
                 if (!ResourceIdentifier.Validate(value))
-                    throw new InvalidOperationException("Not a valid resource identifier"); //LOCALIZE
+                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorInvalidResourceIdentifier);
 
                 var res = new ResourceIdentifier(value);
                 if (res.Extension != ResourceTypes.PrintLayout.ToString())
-                    throw new InvalidOperationException("Invalid resource identifier for this type of object: " + res.Extension); //LOCALIZE
+                    throw new InvalidOperationException(string.Format(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.PrintLayout));
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID");
+                this.OnPropertyChanged("ResourceID"); //NOXLATE
             }
         }
 
@@ -88,10 +88,10 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0
             return this.Clone();
         }
 
-        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
+        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")] //NOXLATE
         public string ValidatingSchema 
-        { 
-            get { return "PrintLayout-1.0.0.xsd"; }
+        {
+            get { return "PrintLayout-1.0.0.xsd"; } //NOXLATE
             set { }
         }
 
@@ -131,7 +131,7 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0
             if (l != null)
             {
                 this.CustomLogos.Remove(l);
-                OnPropertyChanged("CustomLogos");
+                OnPropertyChanged("CustomLogos"); //NOXLATE
             }
         }
 
@@ -153,7 +153,7 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0
             if (t != null)
             {
                 this.CustomText.Add(t);
-                OnPropertyChanged("CustomText");
+                OnPropertyChanged("CustomText"); //NOXLATE
             }
         }
 
@@ -163,7 +163,7 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0
             if (t != null)
             {
                 this.CustomText.Remove(t);
-                OnPropertyChanged("CustomText");
+                OnPropertyChanged("CustomText"); //NOXLATE
             }
         }
 
@@ -206,7 +206,7 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0
             if (l != null)
             {
                 this.CustomLogos.Add(l);
-                OnPropertyChanged("CustomLogos");
+                OnPropertyChanged("CustomLogos"); //NOXLATE
             }
         }
 

@@ -30,7 +30,7 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
     /// <summary>
     /// The allowed length units for a watermark position
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.38968")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.38968")] //NOXLATE
     [System.SerializableAttribute()]
     public enum UnitType {
         
@@ -53,7 +53,7 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
     /// <summary>
     /// The allowed horizontal alignment values for a watermark position
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.38968")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.38968")] //NOXLATE
     [System.SerializableAttribute()]
     public enum HorizontalAlignmentType {
         
@@ -70,7 +70,7 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
     /// <summary>
     /// The context in which the watermark is displayed
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.38968")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.38968")] //NOXLATE
     [System.SerializableAttribute()]
     public enum UsageType {
         
@@ -87,7 +87,7 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
     /// <summary>
     /// The allowed vertical alignments for a watermark position
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.38968")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.38968")] //NOXLATE
     [System.SerializableAttribute()]
     public enum VerticalAlignmentType {
         

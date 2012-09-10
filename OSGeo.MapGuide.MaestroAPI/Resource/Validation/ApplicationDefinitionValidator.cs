@@ -75,7 +75,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                         }
                         try
                         {
-                            if (map.Type.ToLower() == "mapguide")
+                            if (map.Type.ToLower() == "mapguide") //NOXLATE
                             {
                                 var mdfId = map.GetMapDefinition();
                                 if (string.IsNullOrEmpty(mdfId) || !resource.CurrentConnection.ResourceService.ResourceExists(mdfId))
@@ -115,7 +115,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                         {
                             var wkt = mdf.CoordinateSystem;
                             var csCode = resource.CurrentConnection.CoordinateSystemCatalog.ConvertWktToCoordinateSystemCode(wkt);
-                            if (csCode.ToUpper() != "WGS84.PSEUDOMERCATOR")
+                            if (csCode.ToUpper() != "WGS84.PSEUDOMERCATOR") //NOXLATE
                             {
                                 issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_Fusion_MapCoordSysIncompatibleWithCommericalLayers, string.Format(Properties.Resources.ADF_MapWithIncompatibleCommericalCs, mdf.ResourceID)));
                             }
@@ -157,7 +157,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                     var id = widgetRef.Widget;
                     var wgt = fusionApp.FindWidget(id);
                     var uiWgt = wgt as IUIWidget;
-                    string parentName = "<unknown>";
+                    string parentName = "<unknown>"; //NOXLATE
                     var cnt = menu as IWidgetContainer;
                     var fly = menu as IFlyoutItem;
                     if (cnt != null)
@@ -189,7 +189,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         private static bool IsCommercialOverlay(IMap map)
         {
             string type = map.Type.ToLower();
-            return type == "google" || type == "virtualearth" || type == "yahoo";
+            return type == "google" || type == "virtualearth" || type == "yahoo" || type == "osm"; //NOXLATE
         }
 
         /// <summary>

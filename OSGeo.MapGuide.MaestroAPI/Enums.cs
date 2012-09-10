@@ -152,13 +152,13 @@ namespace OSGeo.MapGuide.MaestroAPI
 	{
 		private static string[] ResourceTypeNames = new string[]
 		{
-			"MapDefinition",
-			"LayerDefinition",
-			"FeatureSource",
-			"WebLayout",
-			"Map",
-			"",
-			"ApplicationDefinition",
+			"MapDefinition", //NOXLATE
+			"LayerDefinition", //NOXLATE
+			"FeatureSource", //NOXLATE
+			"WebLayout", //NOXLATE
+			"Map", //NOXLATE
+			string.Empty, //NOXLATE
+			"ApplicationDefinition", //NOXLATE
 		};
 
 		internal static string ResourceName(ResourceTypes type)
@@ -171,7 +171,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 				if (type == ResourceTypes.Folder || !prefixWithDot)
 					return ResourceTypeNames[(int)type];
 				else
-					return "." + ResourceTypeNames[(int)type];
+                    return "." + ResourceTypeNames[(int)type]; //NOXLATE
 		}
 
 	}

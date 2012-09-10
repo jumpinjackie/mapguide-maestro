@@ -53,7 +53,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetLayerColor(this IBlockSymbol sym, Color c)
         {
-            Check.NotNull(sym, "sym");
+            Check.NotNull(sym, "sym"); //NOXLATE
             sym.LayerColor = Utility.SerializeHTMLColor(c, true);
         }
 
@@ -64,7 +64,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="f"></param>
         public static void Apply(this IFontSymbol sym, Font f)
         {
-            Check.NotNull(sym, "sym");
+            Check.NotNull(sym, "sym"); //NOXLATE
             sym.FontName = f.Name;
             sym.Italic = f.Italic;
             sym.Bold = f.Bold;
@@ -78,7 +78,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetForegroundColor(this IFontSymbol sym, Color c)
         {
-            Check.NotNull(sym, "sym");
+            Check.NotNull(sym, "sym"); //NOXLATE
             sym.ForegroundColor = Utility.SerializeHTMLColor(c, true);
         }
 
@@ -91,7 +91,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// </returns>
         public static bool HasVectorScaleRanges(this IVectorLayerDefinition vl)
         {
-            Check.NotNull(vl, "vl");
+            Check.NotNull(vl, "vl"); //NOXLATE
             return vl.GetScaleRangeCount() > 0;
         }
 
@@ -102,7 +102,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <returns></returns>
         public static int GetScaleRangeCount(this IVectorLayerDefinition vl)
         {
-            Check.NotNull(vl, "vl");
+            Check.NotNull(vl, "vl"); //NOXLATE
             var list = new List<IVectorScaleRange>(vl.VectorScaleRange);
             return list.Count;
         }
@@ -114,8 +114,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="geomTypes">The geometry types to remove</param>
         public static void RemoveStyles(this IVectorScaleRange range, IEnumerable<string> geomTypes)
         {
-            Check.NotNull(range, "range");
-            Check.NotNull(geomTypes, "geomTypes");
+            Check.NotNull(range, "range"); //NOXLATE
+            Check.NotNull(geomTypes, "geomTypes"); //NOXLATE
 
             List<IVectorStyle> remove = new List<IVectorStyle>();
 
@@ -153,9 +153,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <returns></returns>
         public static string GetCoordinateSystemWkt(this ILayerDefinition layer)
         {
-            Check.NotNull(layer, "layer");
+            Check.NotNull(layer, "layer"); //NOXLATE
             if (layer.CurrentConnection == null)
-                throw new System.Exception("No server set for object");
+                throw new System.Exception(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorNoServerConnectionAttached);
 
             var conn = layer.CurrentConnection;
             switch (layer.SubLayer.LayerType)
@@ -209,9 +209,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         public static IEnvelope GetSpatialExtent(this ILayerDefinition layer, bool allowFallbackToContextInformation, out string csWkt)
         {
             csWkt = null;
-            Check.NotNull(layer, "layer");
+            Check.NotNull(layer, "layer"); //NOXLATE
             if (layer.CurrentConnection == null)
-                throw new System.Exception("No server set for object");
+                throw new System.Exception(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorNoServerConnectionAttached);
 
             var conn = layer.CurrentConnection;
             switch (layer.SubLayer.LayerType)
@@ -304,10 +304,10 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <returns></returns>
         public static string GetSchema(this IVectorLayerDefinition vl)
         {
-            if (string.IsNullOrEmpty(vl.FeatureName) || !vl.FeatureName.Contains(":"))
+            if (string.IsNullOrEmpty(vl.FeatureName) || !vl.FeatureName.Contains(":")) //NOXLATE
                 return string.Empty;
             else
-                return vl.FeatureName.Split(':')[0];
+                return vl.FeatureName.Split(':')[0]; //NOXLATE
         }
 
         /// <summary>
@@ -317,7 +317,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetFillColor(this IW2DSymbol sym, Color c)
         {
-            Check.NotNull(sym, "sym");
+            Check.NotNull(sym, "sym"); //NOXLATE
             sym.FillColor = Utility.SerializeHTMLColor(c, true);
         }
 
@@ -328,7 +328,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetLineColor(this IW2DSymbol sym, Color c)
         {
-            Check.NotNull(sym, "sym");
+            Check.NotNull(sym, "sym"); //NOXLATE
             sym.LineColor = Utility.SerializeHTMLColor(c, true);
         }
 
@@ -339,7 +339,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetTextColor(this IW2DSymbol sym, Color c)
         {
-            Check.NotNull(sym, "sym");
+            Check.NotNull(sym, "sym"); //NOXLATE
             sym.TextColor = Utility.SerializeHTMLColor(c, true);
         }
 
@@ -350,7 +350,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetForegroundColor(this ITextSymbol sym, Color c)
         {
-            Check.NotNull(sym, "sym");
+            Check.NotNull(sym, "sym"); //NOXLATE
             sym.ForegroundColor = Utility.SerializeHTMLColor(c, true);
         }
 
@@ -361,7 +361,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetBackgroundColor(this ITextSymbol sym, Color c)
         {
-            Check.NotNull(sym, "sym");
+            Check.NotNull(sym, "sym"); //NOXLATE
             sym.BackgroundColor = Utility.SerializeHTMLColor(c, true);
         }
 
@@ -372,7 +372,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="f"></param>
         public static void Apply(this ITextSymbol sym, Font f)
         {
-            Check.NotNull(sym, "sym");
+            Check.NotNull(sym, "sym"); //NOXLATE
             sym.FontName = f.Name;
             sym.Italic = f.Italic.ToString();
             sym.Bold = f.Bold.ToString();
@@ -386,7 +386,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetBackgroundColor(this IFill fil, Color c)
         {
-            Check.NotNull(fil, "fil");
+            Check.NotNull(fil, "fil"); //NOXLATE
             fil.BackgroundColor = Utility.SerializeHTMLColor(c, true);
         }
 
@@ -397,7 +397,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetForegroundColor(this IFill fil, Color c)
         {
-            Check.NotNull(fil, "fil");
+            Check.NotNull(fil, "fil"); //NOXLATE
             fil.ForegroundColor = Utility.SerializeHTMLColor(c, true);
         }
 
@@ -408,7 +408,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetTransparencyColor(this IGridColorStyle style, Color c)
         {
-            Check.NotNull(style, "style");
+            Check.NotNull(style, "style"); //NOXLATE
             style.TransparencyColor = Utility.SerializeHTMLColor(c, true);
         }
 
@@ -419,7 +419,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetDefaultColor(this IGridSurfaceStyle style, Color c)
         {
-            Check.NotNull(style, "style");
+            Check.NotNull(style, "style"); //NOXLATE
             style.DefaultColor = Utility.SerializeHTMLColor(c, true);
         }
     }

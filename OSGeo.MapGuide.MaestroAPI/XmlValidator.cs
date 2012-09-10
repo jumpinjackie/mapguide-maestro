@@ -21,23 +21,23 @@ using System;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
-	using System;
-	using System.Collections;
-	using System.Data;
-	using System.IO;
-	using System.Xml;
-	using System.Xml.Schema;
-	using System.Text;
+    using System;
+    using System.Collections;
+    using System.Data;
+    using System.IO;
+    using System.Xml;
+    using System.Xml.Schema;
+    using System.Text;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using OSGeo.MapGuide.MaestroAPI.Resource;
     using OSGeo.MapGuide.MaestroAPI.Exceptions;
 
-	///<summary>
-	/// Class that makes XSD validation
-	///</summary>
-	public class XmlValidator
-	{
+    ///<summary>
+    /// Class that makes XSD validation
+    ///</summary>
+    public class XmlValidator
+    {
         private List<string> warnings = new List<string>();
         private List<string> errors = new List<string>();
 
@@ -62,8 +62,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="xml">The XML.</param>
         /// <param name="xsds">The array of <see cref="T:System.Xml.Schema.XmlSchema"/> objects to validate against.</param>
-		public void Validate(System.IO.Stream xml, XmlSchema[] xsds)
-		{
+        public void Validate(System.IO.Stream xml, XmlSchema[] xsds)
+        {
             this.warnings.Clear();
             this.errors.Clear();
 
@@ -95,7 +95,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 while (reader.Read()) { } //Trigger the validation
             }
-		}
+        }
 
         private static XmlSchema GetXsd(string xsdPath, string xsdFile)
         {
@@ -169,41 +169,41 @@ namespace OSGeo.MapGuide.MaestroAPI
                 //HACK: Yes this is hard-coded because XmlSchema's dependency resolution sucks!
 
                 //Nearly all relevant xsds include this anyway so add it to the set
-                var pc = GetXsd(xsdPath, "PlatformCommon-1.0.0.xsd");
+                var pc = GetXsd(xsdPath, "PlatformCommon-1.0.0.xsd"); //NOXLATE
                 if (pc != null)
-                    xsds.Add("PlatformCommon-1.0.0.xsd", pc);
+                    xsds.Add("PlatformCommon-1.0.0.xsd", pc); //NOXLATE
 
                 if (res.ResourceType == ResourceTypes.LayerDefinition)
                 {
                     string version = res.ResourceVersion.ToString();
-                    if (version.StartsWith("1.1.0"))
+                    if (version.StartsWith("1.1.0")) //NOXLATE
                     {
-                        var sym = GetXsd(xsdPath, "SymbolDefinition-1.0.0.xsd");
+                        var sym = GetXsd(xsdPath, "SymbolDefinition-1.0.0.xsd"); //NOXLATE
                         if (sym != null)
-                            xsds.Add("SymbolDefinition-1.0.0.xsd", sym);
+                            xsds.Add("SymbolDefinition-1.0.0.xsd", sym); //NOXLATE
                     }
-                    else if (version.StartsWith("1.2.0") || version.StartsWith("1.3.0"))
+                    else if (version.StartsWith("1.2.0") || version.StartsWith("1.3.0")) //NOXLATE
                     {
-                        var sym = GetXsd(xsdPath, "SymbolDefinition-1.1.0.xsd");
+                        var sym = GetXsd(xsdPath, "SymbolDefinition-1.1.0.xsd"); //NOXLATE
                         if (sym != null)
-                            xsds.Add("SymbolDefinition-1.1.0.xsd", sym);
+                            xsds.Add("SymbolDefinition-1.1.0.xsd", sym); //NOXLATE
                     }
-                    else if (version.StartsWith("2.3.0"))
+                    else if (version.StartsWith("2.3.0")) //NOXLATE
                     {
-                        var wmd = GetXsd(xsdPath, "WatermarkDefinition-2.3.0.xsd");
+                        var wmd = GetXsd(xsdPath, "WatermarkDefinition-2.3.0.xsd"); //NOXLATE
                         if (wmd != null)
-                            xsds.Add("WatermarkDefinition-2.3.0.xsd", wmd);
+                            xsds.Add("WatermarkDefinition-2.3.0.xsd", wmd); //NOXLATE
                     }
                 }
 
                 if (res.ResourceType == ResourceTypes.WatermarkDefinition)
                 {
                     string version = res.ResourceVersion.ToString();
-                    if (version.StartsWith("2.3.0"))
+                    if (version.StartsWith("2.3.0")) //NOXLATE
                     {
-                        var sym = GetXsd(xsdPath, "SymbolDefinition-1.1.0.xsd");
+                        var sym = GetXsd(xsdPath, "SymbolDefinition-1.1.0.xsd"); //NOXLATE
                         if (sym != null)
-                            xsds.Add("SymbolDefinition-1.1.0.xsd", sym);
+                            xsds.Add("SymbolDefinition-1.1.0.xsd", sym); //NOXLATE
                     }
                 }
 
@@ -212,17 +212,17 @@ namespace OSGeo.MapGuide.MaestroAPI
                     string version = res.ResourceVersion.ToString();
                     if (version.StartsWith("2.3.0"))
                     {
-                        var sym = GetXsd(xsdPath, "SymbolDefinition-1.1.0.xsd");
+                        var sym = GetXsd(xsdPath, "SymbolDefinition-1.1.0.xsd"); //NOXLATE
                         if (sym != null)
-                            xsds.Add("SymbolDefinition-1.1.0.xsd", sym);
+                            xsds.Add("SymbolDefinition-1.1.0.xsd", sym); //NOXLATE
 
-                        var wmd = GetXsd(xsdPath, "WatermarkDefinition-2.3.0.xsd");
+                        var wmd = GetXsd(xsdPath, "WatermarkDefinition-2.3.0.xsd"); //NOXLATE
                         if (wmd != null)
-                            xsds.Add("WatermarkDefinition-2.3.0.xsd", wmd);
+                            xsds.Add("WatermarkDefinition-2.3.0.xsd", wmd); //NOXLATE
                     }
                 }
 
-                string xsdName = res.ResourceType.ToString() + "-" + res.ResourceVersion.ToString() + ".xsd";
+                string xsdName = res.ResourceType.ToString() + "-" + res.ResourceVersion.ToString() + ".xsd"; //NOXLATE
                 if (!xsds.ContainsKey(xsdName))
                 {
                     var schemaObj = GetXsd(xsdPath, xsdName);
@@ -243,5 +243,5 @@ namespace OSGeo.MapGuide.MaestroAPI
             errors = err.ToArray();
             warnings = warn.ToArray();
         }
-	}
+    }
 }

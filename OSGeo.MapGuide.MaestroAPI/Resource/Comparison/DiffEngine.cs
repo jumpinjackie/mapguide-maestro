@@ -92,7 +92,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
                             stat = DiffStatus.NoMatch;
                             break;
                         default:
-                            System.Diagnostics.Debug.Assert(_length == -2, "Invalid status: _length < -2");
+                            System.Diagnostics.Debug.Assert(_length == -2, "Invalid status: _length < -2"); //NOXLATE
                             stat = DiffStatus.Unknown;
                             break;
                     }
@@ -114,8 +114,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 
         public void SetMatch(int start, int length)
         {
-            System.Diagnostics.Debug.Assert(length > 0, "Length must be greater than zero");
-            System.Diagnostics.Debug.Assert(start >= 0, "Start must be greater than or equal to zero");
+            System.Diagnostics.Debug.Assert(length > 0, "Length must be greater than zero"); //NOXLATE
+            System.Diagnostics.Debug.Assert(start >= 0, "Start must be greater than or equal to zero"); //NOXLATE
             _startIndex = start;
             _length = length;
         }
@@ -239,7 +239,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 
         public override string ToString()
         {
-            return string.Format("{0} (Dest: {1},Source: {2}) {3}",
+            return string.Format("{0} (Dest: {1},Source: {2}) {3}", //NOXLATE
                 _status.ToString(),
                 _destIndex.ToString(),
                 _sourceIndex.ToString(),

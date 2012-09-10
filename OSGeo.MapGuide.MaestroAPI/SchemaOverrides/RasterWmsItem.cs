@@ -41,19 +41,19 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             /// <summary>
             /// Portable Network Graphics (PNG)
             /// </summary>
-            public const string PNG = "PNG";
+            public const string PNG = "PNG"; //NOXLATE
             /// <summary>
             /// Tagged Image File (TIF)
             /// </summary>
-            public const string TIF = "TIF";
+            public const string TIF = "TIF"; //NOXLATE
             /// <summary>
             /// Joint Photographic Experts Group (JPEG)
             /// </summary>
-            public const string JPG = "JPG";
+            public const string JPG = "JPG"; //NOXLATE
             /// <summary>
             /// Graphics Interchange Format (GIF)
             /// </summary>
-            public const string GIF = "GIF";
+            public const string GIF = "GIF"; //NOXLATE
         }
 
         internal RasterWmsItem() { }
@@ -167,50 +167,50 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <param name="currentNode"></param>
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
-            var rasterDef = doc.CreateElement("RasterDefinition");
-            var n = doc.CreateAttribute("name");
+            var rasterDef = doc.CreateElement("RasterDefinition"); //NOXLATE
+            var n = doc.CreateAttribute("name"); //NOXLATE
             n.Value = this.RasterPropertyName;
             rasterDef.Attributes.Append(n);
             {
-                var format = doc.CreateElement("Format");
+                var format = doc.CreateElement("Format"); //NOXLATE
                 format.InnerText = this.ImageFormat;
 
-                var mimeType = doc.CreateElement("FormatType");
+                var mimeType = doc.CreateElement("FormatType"); //NOXLATE
                 if (!string.IsNullOrEmpty(this.ImageFormat))
                 {
                     switch (this.ImageFormat)
                     {
                         case WmsImageFormat.GIF:
-                            mimeType.InnerText = "image/gif";
+                            mimeType.InnerText = "image/gif"; //NOXLATE
                             break;
                         case WmsImageFormat.JPG:
-                            mimeType.InnerText = "image/jpg";
+                            mimeType.InnerText = "image/jpg"; //NOXLATE
                             break;
                         case WmsImageFormat.PNG:
-                            mimeType.InnerText = "image/png";
+                            mimeType.InnerText = "image/png"; //NOXLATE
                             break;
                         case WmsImageFormat.TIF:
-                            mimeType.InnerText = "image/tif";
+                            mimeType.InnerText = "image/tif"; //NOXLATE
                             break;
                     }
                 }
 
-                var transparent = doc.CreateElement("Transparent");
-                transparent.InnerText = this.IsTransparent ? "true" : "false";
+                var transparent = doc.CreateElement("Transparent"); //NOXLATE
+                transparent.InnerText = this.IsTransparent ? "true" : "false"; //NOXLATE
 
-                var bgcolor = doc.CreateElement("BackgroundColor");
-                bgcolor.InnerText = "0x" + Utility.SerializeHTMLColor(this.BackgroundColor, false);
+                var bgcolor = doc.CreateElement("BackgroundColor"); //NOXLATE
+                bgcolor.InnerText = "0x" + Utility.SerializeHTMLColor(this.BackgroundColor, false); //NOXLATE
 
-                var useTileCache = doc.CreateElement("UseTileCache");
-                useTileCache.InnerText = this.UseTileCache ? "true" : "false";
+                var useTileCache = doc.CreateElement("UseTileCache"); //NOXLATE
+                useTileCache.InnerText = this.UseTileCache ? "true" : "false"; //NOXLATE
 
-                var time = doc.CreateElement("Time");
+                var time = doc.CreateElement("Time"); //NOXLATE
                 time.InnerText = this.Time;
 
-                var elevation = doc.CreateElement("Elevation");
+                var elevation = doc.CreateElement("Elevation"); //NOXLATE
                 elevation.InnerText = this.ElevationDimension;
 
-                var sc = doc.CreateElement("SpatialContext");
+                var sc = doc.CreateElement("SpatialContext"); //NOXLATE
                 sc.InnerText = this.SpatialContextName;
 
                 rasterDef.AppendChild(format);
@@ -238,38 +238,38 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <param name="mgr"></param>
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
-            if (node.Name != "RasterDefinition")
-                throw new Exception("Bad document. Expected element: RasterDefinition");
+            if (node.Name != "RasterDefinition") //NOXLATE
+                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "RasterDefinition"));
 
-            var fc = node.ParentNode.Attributes["name"].Value;
-            this.FeatureClass = fc.Substring(0, fc.Length - "Type".Length);
-            this.RasterPropertyName = node.Attributes["name"].Value;
+            var fc = node.ParentNode.Attributes["name"].Value; //NOXLATE
+            this.FeatureClass = fc.Substring(0, fc.Length - "Type".Length); //NOXLATE
+            this.RasterPropertyName = node.Attributes["name"].Value; //NOXLATE
 
-            var format = node["Format"];
-            var transparent = node["Transparent"];
-            var useTileCache = node["UseTileCache"];
-            var bgcolor = node["BackgroundColor"];
-            var time = node["Time"];
-            var elevation = node["Elevation"];
-            var sc = node["SpatialContext"];
+            var format = node["Format"]; //NOXLATE
+            var transparent = node["Transparent"]; //NOXLATE
+            var useTileCache = node["UseTileCache"]; //NOXLATE
+            var bgcolor = node["BackgroundColor"]; //NOXLATE
+            var time = node["Time"]; //NOXLATE
+            var elevation = node["Elevation"]; //NOXLATE
+            var sc = node["SpatialContext"]; //NOXLATE
 
             if (format != null)
                 this.ImageFormat = format.InnerText;
 
             if (transparent != null)
-                this.IsTransparent = (transparent.InnerText.ToLower() == "true");
+                this.IsTransparent = (transparent.InnerText.ToLower() == "true"); //NOXLATE
 
             if (useTileCache != null)
-                this.UseTileCache = (useTileCache.InnerText.ToLower() == "true");
+                this.UseTileCache = (useTileCache.InnerText.ToLower() == "true"); //NOXLATE
 
             if (bgcolor != null)
             {
                 if (!string.IsNullOrEmpty(bgcolor.InnerText))
                 {
-                    if (bgcolor.InnerText.StartsWith("0x"))
-                        this.BackgroundColor = ColorTranslator.FromHtml("#" + bgcolor.InnerText.Substring(2));
+                    if (bgcolor.InnerText.StartsWith("0x")) //NOXLATE
+                        this.BackgroundColor = ColorTranslator.FromHtml("#" + bgcolor.InnerText.Substring(2)); //NOXLATE
                     else
-                        this.BackgroundColor = ColorTranslator.FromHtml("#" + bgcolor.InnerText);
+                        this.BackgroundColor = ColorTranslator.FromHtml("#" + bgcolor.InnerText); //NOXLATE
                 }
                 else 
                 {
@@ -288,7 +288,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 
             foreach (XmlNode ln in node.ChildNodes)
             {
-                if (ln.Name == "Layer")
+                if (ln.Name == "Layer") //NOXLATE
                 {
                     var layer = new WmsLayerDefinition();
                     layer.ReadXml(ln, mgr);

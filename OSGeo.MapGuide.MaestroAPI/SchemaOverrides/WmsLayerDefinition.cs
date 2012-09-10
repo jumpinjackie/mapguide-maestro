@@ -63,13 +63,13 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <param name="currentNode"></param>
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
-            var layer = doc.CreateElement("Layer");
-            var n = doc.CreateAttribute("name");
+            var layer = doc.CreateElement("Layer"); //NOXLATE
+            var n = doc.CreateAttribute("name"); //NOXLATE
             n.Value = this.Name;
             layer.Attributes.Append(n);
             {
-                var style = doc.CreateElement("Style");
-                var s = doc.CreateAttribute("name");
+                var style = doc.CreateElement("Style"); //NOXLATE
+                var s = doc.CreateAttribute("name"); //NOXLATE
                 s.Value = this.Style;
                 style.Attributes.Append(s);
                 layer.AppendChild(style);
@@ -84,17 +84,17 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <param name="mgr"></param>
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
-            if (node.Name != "Layer")
-                throw new Exception("Bad document. Expected element: Layer");
+            if (node.Name != "Layer") //NOXLATE
+                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "Layer")); //NOXLATE
 
-            var n = node.Attributes["name"];
+            var n = node.Attributes["name"]; //NOXLATE
             if (n == null)
-                throw new Exception("Bad document. Expected attribute: name");
+                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedAttribute, "name")); //NOXLATE
 
             var style = node.FirstChild;
             if (style != null)
             {
-                var s = style.Attributes["name"];
+                var s = style.Attributes["name"]; //NOXLATE
                 if (s != null)
                 {
                     this.Style = s.Value;

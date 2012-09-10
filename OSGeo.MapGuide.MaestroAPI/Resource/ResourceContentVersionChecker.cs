@@ -80,7 +80,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <returns></returns>
         public static ResourceTypeDescriptor GetVersionFromXmlStream(Stream ms)
         {
-            string version = "1.0.0";
+            string version = "1.0.0"; //NOXLATE
             using (var xr = XmlReader.Create(ms))
             {
                 xr.MoveToContent();
@@ -90,12 +90,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
                 try
                 {
                     //Parse version number from ResourceType-x.y.z.xsd
-                    string xsd = xr.GetAttribute("xsi:noNamespaceSchemaLocation");
+                    string xsd = xr.GetAttribute("xsi:noNamespaceSchemaLocation"); //NOXLATE
                     if (xsd == null)
                         return null;
 
-                    int start = (xsd.LastIndexOf("-"));
-                    int end = xsd.IndexOf(".xsd") - 1;
+                    int start = (xsd.LastIndexOf("-")); //NOXLATE
+                    int end = xsd.IndexOf(".xsd") - 1; //NOXLATE
                     version = xsd.Substring(start + 1, xsd.Length - end);
                     string typeStr = xsd.Substring(0, start);
 

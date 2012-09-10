@@ -143,7 +143,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             set
             {
                 if (value == null)
-                    throw new InvalidOperationException("null values are not permitted. Use SetNull() if you need to specify null values"); //LOCALIZEME
+                    throw new InvalidOperationException(Properties.Resources.ErrorObjectSetNullValuesNotPermitted);
 
                 switch (_values[name].Type)
                 {

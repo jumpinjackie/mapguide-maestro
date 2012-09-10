@@ -64,14 +64,14 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0
             set
             {
                 if (!ResourceIdentifier.Validate(value))
-                    throw new InvalidOperationException("Not a valid resource identifier"); //LOCALIZE
+                    throw new InvalidOperationException(OSGeo.MapGuide.ObjectModels.LayerDefinition.CommonErrorMessages.InvalidResourceIdentifier);
 
                 var res = new ResourceIdentifier(value);
                 if (res.Extension != ResourceTypes.LoadProcedure.ToString())
-                    throw new InvalidOperationException("Invalid resource identifier for this type of object: " + res.Extension); //LOCALIZE
+                    throw new InvalidOperationException(string.Format(OSGeo.MapGuide.ObjectModels.LayerDefinition.CommonErrorMessages.UnexpectedResourceType, res.ToString(), ResourceTypes.LoadProcedure));
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID");
+                this.OnPropertyChanged("ResourceID"); //NOXLATE
             }
         }
 
@@ -98,16 +98,16 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0
             return this.Clone();
         }
 
-        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
+        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")] //NOXLATE
         public string ValidatingSchema 
         { 
 
 #if LP110
-            get { return "LoadProcedure-1.1.0.xsd"; }
+            get { return "LoadProcedure-1.1.0.xsd"; } //NOXLATE
 #elif LP220
-            get { return "LoadProcedure-2.2.0.xsd"; }
+            get { return "LoadProcedure-2.2.0.xsd"; } //NOXLATE
 #else
-            get { return "LoadProcedure-1.0.0.xsd"; }
+            get { return "LoadProcedure-1.0.0.xsd"; } //NOXLATE
 #endif
             set { }
         }
@@ -137,7 +137,7 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0
 
         public void AddFiles(IEnumerable<string> files)
         {
-            Check.NotNull(files, "files");
+            Check.NotNull(files, "files"); //NOXLATE
 
             var _files = this.sourceFileField;
             foreach (var f in files)
@@ -149,7 +149,7 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0
 
         public void RemoveFile(string file)
         {
-            Check.NotEmpty(file, "file");
+            Check.NotEmpty(file, "file"); //NOXLATE
 
             if (this.sourceFileField.Contains(file))
             {

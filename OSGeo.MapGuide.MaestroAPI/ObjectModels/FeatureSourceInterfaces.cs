@@ -364,7 +364,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <returns></returns>
         public static NameValueCollection GetConnectionProperties(this IFeatureSource fs)
         {
-            Check.NotNull(fs, "fs");
+            Check.NotNull(fs, "fs"); //NOXLATE
             var values = new NameValueCollection();
             foreach (string name in fs.ConnectionPropertyNames)
             {
@@ -380,7 +380,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <returns></returns>
         public static string[] GetSchemaNames(this IFeatureSource fs)
         {
-            Check.NotNull(fs, "fs");
+            Check.NotNull(fs, "fs"); //NOXLATE
             return fs.CurrentConnection.FeatureService.GetSchemas(fs.ResourceID);
         }
 
@@ -392,8 +392,8 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <returns></returns>
         public static string[] GetClassNames(this IFeatureSource fs, string schemaName)
         {
-            Check.NotNull(fs, "fs");
-            Check.NotEmpty(schemaName, "schemaName");
+            Check.NotNull(fs, "fs"); //NOXLATE
+            Check.NotEmpty(schemaName, "schemaName"); //NOXLATE
 
             return fs.CurrentConnection.FeatureService.GetClassNames(fs.ResourceID, schemaName);
         }
@@ -405,8 +405,8 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <param name="values"></param>
         public static void ApplyConnectionProperties(this IFeatureSource fs, NameValueCollection values)
         {
-            Check.NotNull(fs, "fs");
-            Check.NotNull(values, "values");
+            Check.NotNull(fs, "fs"); //NOXLATE
+            Check.NotNull(values, "values"); //NOXLATE
 
             fs.ClearConnectionProperties();
 
@@ -425,7 +425,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <returns></returns>
         public static string GetConfigurationContent(this IFeatureSource fs)
         {
-            Check.NotNull(fs, "fs");
+            Check.NotNull(fs, "fs"); //NOXLATE
             if (string.IsNullOrEmpty(fs.ConfigurationDocument))
                 return string.Empty;
 
@@ -447,9 +447,9 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <param name="xmlContent"></param>
         public static void SetConfigurationContent(this IFeatureSource fs, string xmlContent)
         {
-            Check.NotNull(fs, "fs");
+            Check.NotNull(fs, "fs"); //NOXLATE
             if (string.IsNullOrEmpty(fs.ConfigurationDocument))
-                fs.ConfigurationDocument = "config.xml";
+                fs.ConfigurationDocument = "config.xml"; //NOXLATE
 
             if (string.IsNullOrEmpty(xmlContent))
             {
@@ -487,7 +487,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <returns></returns>
         public static FeatureSourceDescription Describe(this IFeatureSource fs)
         {
-            Check.NotNull(fs, "fs");
+            Check.NotNull(fs, "fs"); //NOXLATE
             return fs.CurrentConnection.FeatureService.DescribeFeatureSource(fs.ResourceID);
         }
 
@@ -497,7 +497,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <returns></returns>
         public static OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextList GetSpatialInfo(this IFeatureSource fs, bool activeOnly)
         {
-            Check.NotNull(fs, "fs");
+            Check.NotNull(fs, "fs"); //NOXLATE
             return fs.CurrentConnection.FeatureService.GetSpatialContextInfo(fs.ResourceID, activeOnly);
         }
 
@@ -509,7 +509,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <returns></returns>
         public static string[] GetIdentityProperties(this IFeatureSource fs, string className)
         {
-            Check.NotNull(fs, "fs");
+            Check.NotNull(fs, "fs"); //NOXLATE
             try
             {
                 return fs.CurrentConnection.FeatureService.GetIdentityProperties(fs.ResourceID, className);
@@ -518,7 +518,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
             {
                 //MgClassNotFoundException is thrown for classes w/ no identity properties
                 //when the correct server response should be an empty array
-                if (ex.Message.IndexOf("MgClassNotFoundException") >= 0)
+                if (ex.Message.IndexOf("MgClassNotFoundException") >= 0) //NOXLATE
                 {
                     return new string[0];
                 }
@@ -538,7 +538,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <returns></returns>
         public static IEnvelope GetSpatialExtent(this IFeatureSource fs, string className, string geomProperty)
         {
-            Check.NotNull(fs, "fs");
+            Check.NotNull(fs, "fs"); //NOXLATE
             return fs.CurrentConnection.FeatureService.GetSpatialExtent(fs.ResourceID, className, geomProperty);
         }
 
@@ -550,7 +550,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <returns></returns>
         public static ClassDefinition GetClass(this IFeatureSource fs, string qualifiedName)
         {
-            Check.NotNull(fs, "fs");
+            Check.NotNull(fs, "fs"); //NOXLATE
             return fs.CurrentConnection.FeatureService.GetClassDefinition(fs.ResourceID, qualifiedName);
         }
 
@@ -562,7 +562,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <param name="coordSys"></param>
         public static void AddSpatialContextOverride(this IFeatureSource fs, string name, string coordSys)
         {
-            Check.NotNull(fs, "fs");
+            Check.NotNull(fs, "fs"); //NOXLATE
             fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.SpatialContextType() { Name = name, CoordinateSystem = coordSys });
         }
 
@@ -574,7 +574,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <returns></returns>
         public static string TestConnection(this IFeatureSource fs)
         {
-            Check.NotNull(fs, "fs");
+            Check.NotNull(fs, "fs"); //NOXLATE
             return fs.CurrentConnection.FeatureService.TestConnection(fs.ResourceID);
         }
 
@@ -586,7 +586,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <param name="secondary"></param>
         public static void AddRelateProperty(this IAttributeRelation rel, string primary, string secondary)
         {
-            Check.NotNull(rel, "rel");
+            Check.NotNull(rel, "rel"); //NOXLATE
             rel.AddRelateProperty(new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.RelatePropertyType() { FeatureClassProperty = primary, AttributeClassProperty = secondary });
         }
     }

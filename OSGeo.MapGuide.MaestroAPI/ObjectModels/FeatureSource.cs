@@ -56,14 +56,14 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
             set
             {
                 if (!ResourceIdentifier.Validate(value))
-                    throw new InvalidOperationException("Not a valid resource identifier"); //LOCALIZE
+                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorInvalidResourceIdentifier);
 
                 var res = new ResourceIdentifier(value);
                 if (res.Extension != ResourceTypes.FeatureSource.ToString())
-                    throw new InvalidOperationException("Invalid resource identifier for this type of object: " + res.Extension); //LOCALIZE
+                    throw new InvalidOperationException(string.Format(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.FeatureSource));
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID");
+                this.OnPropertyChanged("ResourceID"); //NOXLATE
             }
         }
 
@@ -92,10 +92,10 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
             return fs;
         }
 
-        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
+        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")] //NOXLATE
         public string ValidatingSchema 
-        { 
-            get { return "FeatureSource-1.0.0.xsd"; }
+        {
+            get { return "FeatureSource-1.0.0.xsd"; } //NOXLATE
             set { }
         }
 
@@ -166,7 +166,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
             }
 
             if (bRaise)
-                OnPropertyChanged("Parameter");
+                OnPropertyChanged("Parameter"); //NOXLATE
         }
 
         protected void DetachChangeListeners()
@@ -191,8 +191,6 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
             }
         }
 
-        const string DATA_TAG = "%MG_DATA_FILE_PATH%";
-
         /// <summary>
         /// Gets the name of the embedded data resource. Can only be called if <see cref="UsesEmbeddedDataFiles"/> returns true.
         /// </summary>
@@ -204,17 +202,17 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
                 throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ERR_FS_NO_EMBEDDED_DATA);
 
             string connStr = this.ConnectionString;
-            int tagIndex = connStr.IndexOf(DATA_TAG);
+            int tagIndex = connStr.IndexOf(StringConstants.MgDataFilePath);
 
-            int end = connStr.IndexOf(";", tagIndex + DATA_TAG.Length);
+            int end = connStr.IndexOf(";", tagIndex + StringConstants.MgDataFilePath.Length); //NOXLATE
             //The "File" parameter was the last parameter
             if (end < 0)
-                return connStr.Substring(tagIndex + DATA_TAG.Length);
+                return connStr.Substring(tagIndex + StringConstants.MgDataFilePath.Length);
             else
-                return connStr.Substring(tagIndex + DATA_TAG.Length, end - (tagIndex + DATA_TAG.Length));
+                return connStr.Substring(tagIndex + StringConstants.MgDataFilePath.Length, end - (tagIndex + StringConstants.MgDataFilePath.Length));
         }
 
-        const string ALIAS_PREFIX = "%MG_DATA_PATH_ALIAS[";
+        const string ALIAS_PREFIX = "%MG_DATA_PATH_ALIAS["; //NOXLATE
 
         /// <summary>
         /// Gets the name of the alias. Can only be called if <see cref="UsesAliasedDataFiles"/> returns true
@@ -229,7 +227,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
             string connStr = this.ConnectionString;
 
             int braceStart = connStr.IndexOf(ALIAS_PREFIX) + ALIAS_PREFIX.Length;
-            int braceEnd = connStr.IndexOf(']', braceStart + 1);
+            int braceEnd = connStr.IndexOf(']', braceStart + 1); //NOXLATE
             int length = braceEnd - braceStart;
 
             return connStr.Substring(braceStart, length);
@@ -248,10 +246,10 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
 
             string connStr = this.ConnectionString;
             int braceStart = connStr.IndexOf(ALIAS_PREFIX) + ALIAS_PREFIX.Length;
-            int braceEnd = connStr.IndexOf(']', braceStart + 1);
+            int braceEnd = connStr.IndexOf(']', braceStart + 1); //NOXLATE
             int aliasEnd = braceEnd + 2;
 
-            int end = connStr.IndexOf(";", aliasEnd);
+            int end = connStr.IndexOf(";", aliasEnd); //NOXLATE
             //The "File" parameter was the last parameter
             if (end < 0)
                 return connStr.Substring(aliasEnd);
@@ -264,7 +262,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
         {
             get
             {
-                return this.ConnectionString.Contains(DATA_TAG);
+                return this.ConnectionString.Contains(StringConstants.MgDataFilePath);
             }
         }
 
@@ -487,7 +485,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
             if (this.LowerLeftCoordinate == null || this.UpperRightCoordinate == null)
                 return OSGeo.MapGuide.MaestroAPI.Properties.Resources.NullString;
 
-            return string.Format(Thread.CurrentThread.CurrentUICulture, "({0},{1},{2},{3})",
+            return string.Format(Thread.CurrentThread.CurrentUICulture, "({0},{1},{2},{3})", //NOXLATE
                 this.LowerLeftCoordinate.X,
                 this.LowerLeftCoordinate.Y,
                 this.UpperRightCoordinate.X,

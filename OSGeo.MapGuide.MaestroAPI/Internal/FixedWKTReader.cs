@@ -124,12 +124,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         private ICoordinate[] GetCoordinates(IList tokens, Boolean skipExtraParenthesis)
         {
             string nextToken = GetNextEmptyOrOpener(tokens);
-            if (nextToken.Equals("EMPTY"))
+            if (nextToken.Equals("EMPTY")) //NOXLATE
                 return new ICoordinate[] { };
             List<ICoordinate> coordinates = new List<ICoordinate>();
             coordinates.Add(GetPreciseCoordinate(tokens, skipExtraParenthesis));
             nextToken = GetNextCloserOrComma(tokens);
-            while (nextToken.Equals(","))
+            while (nextToken.Equals(",")) //NOXLATE
             {
                 coordinates.Add(GetPreciseCoordinate(tokens, skipExtraParenthesis));
                 nextToken = GetNextCloserOrComma(tokens);
@@ -149,7 +149,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             Boolean extraParenthesisFound = false;
             if (skipExtraParenthesis)
             {
-                extraParenthesisFound = IsStringValueNext(tokens, "(");
+                extraParenthesisFound = IsStringValueNext(tokens, "("); //NOXLATE
                 if (extraParenthesisFound)
                 {
                     index++;
@@ -162,7 +162,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
 
             if (skipExtraParenthesis &&
                 extraParenthesisFound &&
-                IsStringValueNext(tokens, ")"))
+                IsStringValueNext(tokens, ")")) //NOXLATE
             {
                 index++;
             }
@@ -201,21 +201,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             Token token = tokens[index++] as Token;
 
             if (token == null)
-                throw new ArgumentNullException("tokens", "Token list contains a null value");
+                throw new ArgumentNullException("tokens", Properties.Resources.ErrorTokenListContainsNullValue); //NOXLATE
             else if (token is EofToken)
-                throw new ParseException("Expected number but encountered end of stream");
+                throw new ParseException(Properties.Resources.ErrorParseExpectedNumberEos);
             else if (token is EolToken)
-                throw new ParseException("Expected number but encountered end of line");
+                throw new ParseException(Properties.Resources.ErrorParseExpectedNumberEol);
             else if (token is FloatToken || token is IntToken)
                 return (double)token.ConvertToType(typeof(double));
             else if (token is WordToken)
-                throw new ParseException("Expected number but encountered word: " + token.StringValue);
-            else if (token.StringValue == "(")
-                throw new ParseException("Expected number but encountered '('");
-            else if (token.StringValue == ")")
-                throw new ParseException("Expected number but encountered ')'");
-            else if (token.StringValue == ",")
-                throw new ParseException("Expected number but encountered ','");
+                throw new ParseException(string.Format(Properties.Resources.ErrorParseExpectedNumberGotWord, token.StringValue));
+            else if (token.StringValue == "(") //NOXLATE
+                throw new ParseException(string.Format(Properties.Resources.ErrorParseExpectedNumber, '(')); //NOXLATE
+            else if (token.StringValue == ")") //NOXLATE
+                throw new ParseException(string.Format(Properties.Resources.ErrorParseExpectedNumber, ')')); //NOXLATE
+            else if (token.StringValue == ",") //NOXLATE
+                throw new ParseException(string.Format(Properties.Resources.ErrorParseExpectedNumber, ',')); //NOXLATE
             else
             {
                 Assert.ShouldNeverReachHere();
@@ -237,26 +237,26 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             //The next word may be the dimension specifier. In such a case, read the
             //next word after that.
             string nextWord = GetNextWord(tokens);
-            if (nextWord.Equals("XYZ"))
+            if (nextWord.Equals("XYZ")) //NOXLATE
             {
                 hasZ = true;
                 nextWord = GetNextWord(tokens);
             }
-            else if (nextWord.Equals("XYM"))
+            else if (nextWord.Equals("XYM")) //NOXLATE
             {
                 hasM = true;
                 nextWord = GetNextWord(tokens);
             }
-            else if (nextWord.Equals("ZM"))
+            else if (nextWord.Equals("ZM")) //NOXLATE
             {
                 hasXY = false; 
                 hasZ = true; 
                 hasM = true;
                 nextWord = GetNextWord(tokens);
             }
-            if (nextWord.Equals("EMPTY") || nextWord.Equals("("))
+            if (nextWord.Equals("EMPTY") || nextWord.Equals("(")) //NOXLATE
                 return nextWord;
-            throw new ParseException("Expected 'EMPTY' or '(' but encountered '" + nextWord + "'");
+            throw new ParseException(string.Format(Properties.Resources.ErrorParseExpectedEmpty, nextWord));
         }
 
         /// <summary>
@@ -271,11 +271,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         private string GetNextCloserOrComma(IList tokens)
         {
             string nextWord = GetNextWord(tokens);
-            if (nextWord.Equals(",") || nextWord.Equals(")"))
+            if (nextWord.Equals(",") || nextWord.Equals(")")) //NOXLATE
                 return nextWord;
 
-            throw new ParseException("Expected ')' or ',' but encountered '" + nextWord
-                + "'");
+            throw new ParseException(string.Format(Properties.Resources.ErrorParseExpectedCloserOrComma, nextWord));
         }
 
         /// <summary>
@@ -290,9 +289,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         private string GetNextCloser(IList tokens)
         {
             string nextWord = GetNextWord(tokens);
-            if (nextWord.Equals(")"))
+            if (nextWord.Equals(")")) //NOXLATE
                 return nextWord;
-            throw new ParseException("Expected ')' but encountered '" + nextWord + "'");
+            throw new ParseException(string.Format(Properties.Resources.ErrorParseExpectedCloser, nextWord));
         }
 
         /// <summary>
@@ -308,19 +307,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             Token token = tokens[index++] as Token;
 
             if (token is EofToken)
-                throw new ParseException("Expected number but encountered end of stream");
+                throw new ParseException(Properties.Resources.ErrorParseExpectedNumberEos);
             else if (token is EolToken)
-                throw new ParseException("Expected number but encountered end of line");
+                throw new ParseException(Properties.Resources.ErrorParseExpectedNumberEol);
             else if (token is FloatToken || token is IntToken)
-                throw new ParseException("Expected word but encountered number: " + token.StringValue);
+                throw new ParseException(string.Format(Properties.Resources.ErrorParseExpectedWord, token.StringValue));
             else if (token is WordToken)
                 return token.StringValue.ToUpper();
-            else if (token.StringValue == "(")
-                return "(";
-            else if (token.StringValue == ")")
-                return ")";
-            else if (token.StringValue == ",")
-                return ",";
+            else if (token.StringValue == "(") //NOXLATE
+                return "("; //NOXLATE
+            else if (token.StringValue == ")") //NOXLATE
+                return ")"; //NOXLATE
+            else if (token.StringValue == ",") //NOXLATE
+                return ","; //NOXLATE
             else
             {
                 Assert.ShouldNeverReachHere();
@@ -347,7 +346,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             string sridValue = null;
             string type = tokens[0].ToString();
 
-            if (type == "SRID")
+            if (type == "SRID") //NOXLATE
             {
                 sridValue = tokens[2].ToString();
                 // tokens.RemoveRange(0, 4);
@@ -357,26 +356,26 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
                 tokens.RemoveAt(0);
             }
             else type = GetNextWord(tokens);
-            if (type.Equals("POINT"))
+            if (type.Equals("POINT")) //NOXLATE
                 returned = ReadPointText(tokens);
-            else if (type.Equals("LINESTRING"))
+            else if (type.Equals("LINESTRING")) //NOXLATE
                 returned = ReadLineStringText(tokens);
-            else if (type.Equals("LINEARRING"))
+            else if (type.Equals("LINEARRING")) //NOXLATE
                 returned = ReadLinearRingText(tokens);
-            else if (type.Equals("POLYGON"))
+            else if (type.Equals("POLYGON")) //NOXLATE
                 returned = ReadPolygonText(tokens);
-            else if (type.Equals("MULTIPOINT"))
+            else if (type.Equals("MULTIPOINT")) //NOXLATE
                 returned = ReadMultiPointText(tokens);
-            else if (type.Equals("MULTILINESTRING"))
+            else if (type.Equals("MULTILINESTRING")) //NOXLATE
                 returned = ReadMultiLineStringText(tokens);
-            else if (type.Equals("MULTIPOLYGON"))
+            else if (type.Equals("MULTIPOLYGON")) //NOXLATE
                 returned = ReadMultiPolygonText(tokens);
-            else if (type.Equals("GEOMETRYCOLLECTION"))
+            else if (type.Equals("GEOMETRYCOLLECTION")) //NOXLATE
                 returned = ReadGeometryCollectionText(tokens);
-            else throw new ParseException("Unknown type: " + type);
+            else throw new ParseException(string.Format(Properties.Resources.ErrorParseUnknownType, type));
 
             if (returned == null)
-                throw new NullReferenceException("Error reading geometry");
+                throw new NullReferenceException(Properties.Resources.ErrorParseGeometryRead);
 
             if (sridValue != null)
                 returned.SRID = Convert.ToInt32(sridValue);
@@ -396,7 +395,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         private IPoint ReadPointText(IList tokens)
         {
             string nextToken = GetNextEmptyOrOpener(tokens);
-            if (nextToken.Equals("EMPTY"))
+            if (nextToken.Equals("EMPTY")) //NOXLATE
                 return geometryFactory.CreatePoint((ICoordinate)null);
             IPoint point = geometryFactory.CreatePoint(GetPreciseCoordinate(tokens, false));
             GetNextCloser(tokens);
@@ -479,14 +478,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         private IPolygon ReadPolygonText(IList tokens)
         {
             string nextToken = GetNextEmptyOrOpener(tokens);
-            if (nextToken.Equals("EMPTY"))
+            if (nextToken.Equals("EMPTY")) //NOXLATE
                 return geometryFactory.CreatePolygon(
                     geometryFactory.CreateLinearRing(new ICoordinate[] { }), new ILinearRing[] { });
 
             List<ILinearRing> holes = new List<ILinearRing>();
             ILinearRing shell = ReadLinearRingText(tokens);
             nextToken = GetNextCloserOrComma(tokens);
-            while (nextToken.Equals(","))
+            while (nextToken.Equals(",")) //NOXLATE
             {
                 ILinearRing hole = ReadLinearRingText(tokens);
                 holes.Add(hole);
@@ -508,14 +507,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         private IMultiLineString ReadMultiLineStringText(IList tokens)
         {
             string nextToken = GetNextEmptyOrOpener(tokens);
-            if (nextToken.Equals("EMPTY"))
+            if (nextToken.Equals("EMPTY")) //NOXLATE
                 return geometryFactory.CreateMultiLineString(new ILineString[] { });
 
             List<ILineString> lineStrings = new List<ILineString>();
             ILineString lineString = ReadLineStringText(tokens);
             lineStrings.Add(lineString);
             nextToken = GetNextCloserOrComma(tokens);
-            while (nextToken.Equals(","))
+            while (nextToken.Equals(",")) //NOXLATE
             {
                 lineString = ReadLineStringText(tokens);
                 lineStrings.Add(lineString);
@@ -537,14 +536,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         private IMultiPolygon ReadMultiPolygonText(IList tokens)
         {
             string nextToken = GetNextEmptyOrOpener(tokens);
-            if (nextToken.Equals("EMPTY"))
+            if (nextToken.Equals("EMPTY")) //NOXLATE
                 return geometryFactory.CreateMultiPolygon(new IPolygon[] { });
 
             List<IPolygon> polygons = new List<IPolygon>();
             IPolygon polygon = ReadPolygonText(tokens);
             polygons.Add(polygon);
             nextToken = GetNextCloserOrComma(tokens);
-            while (nextToken.Equals(","))
+            while (nextToken.Equals(",")) //NOXLATE
             {
                 polygon = ReadPolygonText(tokens);
                 polygons.Add(polygon);
@@ -567,14 +566,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         private IGeometryCollection ReadGeometryCollectionText(IList tokens)
         {
             string nextToken = GetNextEmptyOrOpener(tokens);
-            if (nextToken.Equals("EMPTY"))
+            if (nextToken.Equals("EMPTY")) //NOXLATE
                 return geometryFactory.CreateGeometryCollection(new IGeometry[] { });
 
             List<IGeometry> geometries = new List<IGeometry>();
             IGeometry geometry = ReadGeometryTaggedText(tokens);
             geometries.Add(geometry);
             nextToken = GetNextCloserOrComma(tokens);
-            while (nextToken.Equals(","))
+            while (nextToken.Equals(",")) //NOXLATE
             {
                 geometry = ReadGeometryTaggedText(tokens);
                 geometries.Add(geometry);

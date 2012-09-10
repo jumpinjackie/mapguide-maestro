@@ -30,10 +30,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
     {
     }
 
-	/// <summary>
-	/// Class that represents a the layout of a feature source
-	/// </summary>
-	public class FeatureSourceDescription
+    /// <summary>
+    /// Class that represents a the layout of a feature source
+    /// </summary>
+    public class FeatureSourceDescription
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FeatureSourceDescription"/> class.
@@ -47,14 +47,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             doc.Load(stream);
 
             XmlNamespaceManager mgr = new XmlNamespaceManager(doc.NameTable);
-            mgr.AddNamespace("xs", XmlNamespaces.XS);
-            mgr.AddNamespace("gml", XmlNamespaces.GML);
-            mgr.AddNamespace("fdo", XmlNamespaces.FDO);
+            mgr.AddNamespace("xs", XmlNamespaces.XS); //NOXLATE
+            mgr.AddNamespace("gml", XmlNamespaces.GML); //NOXLATE
+            mgr.AddNamespace("fdo", XmlNamespaces.FDO); //NOXLATE
 
             //Assume XML configuration document
-            XmlNodeList schemaNodes = doc.SelectNodes("fdo:DataStore/xs:schema", mgr);
+            XmlNodeList schemaNodes = doc.SelectNodes("fdo:DataStore/xs:schema", mgr); //NOXLATE
             if (schemaNodes.Count == 0) //Then assume FDO schema
-                schemaNodes = doc.SelectNodes("xs:schema", mgr);
+                schemaNodes = doc.SelectNodes("xs:schema", mgr); //NOXLATE
 
             foreach (XmlNode sn in schemaNodes)
             {
@@ -171,10 +171,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <returns>The matching class definition. null if not found</returns>
         public ClassDefinition GetClass(string qualifiedName)
         {
-            Check.NotEmpty(qualifiedName, "qualifiedName");
-            var tokens = qualifiedName.Split(':');
+            Check.NotEmpty(qualifiedName, "qualifiedName"); //NOXLATE
+            var tokens = qualifiedName.Split(':'); //NOXLATE
             if (tokens.Length != 2)
-                throw new ArgumentException("Not a qualified class name: " + qualifiedName); //LOCALIZEME
+                throw new ArgumentException(string.Format(Properties.Resources.ErrorNotAQualifiedClassName, qualifiedName));
 
             return GetClass(tokens[0], tokens[1]);
         }

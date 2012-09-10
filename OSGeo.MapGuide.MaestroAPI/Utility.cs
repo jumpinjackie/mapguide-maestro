@@ -30,13 +30,13 @@ using GeoAPI.Geometries;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
-	/// <summary>
-	/// Various helper functions
-	/// </summary>
-	public class Utility
-	{
-		//Americans NEVER obey nationalization when outputting decimal values, so the rest of the world always have to work around their bugs :(
-		private static System.Globalization.CultureInfo m_enCI = new System.Globalization.CultureInfo("en-US");
+    /// <summary>
+    /// Various helper functions
+    /// </summary>
+    public class Utility
+    {
+        //Americans NEVER obey nationalization when outputting decimal values, so the rest of the world always have to work around their bugs :(
+        private static System.Globalization.CultureInfo m_enCI = new System.Globalization.CultureInfo("en-US");
 
         /// <summary>
         /// Converts the specified name value collection into a connection string
@@ -50,12 +50,12 @@ namespace OSGeo.MapGuide.MaestroAPI
             foreach (string name in values.Keys)
             {
                 string value = values[name];
-                if (value.Contains(";"))
-                    value = "\"" + value + "\"";
-                tokens.Add(name + "=" + value);
+                if (value.Contains(";")) //NOXLATE
+                    value = "\"" + value + "\""; //NOXLATE
+                tokens.Add(name + "=" + value); //NOXLATE
             }
 
-            return string.Join(";", tokens.ToArray());
+            return string.Join(";", tokens.ToArray()); //NOXLATE
         }
 
         /// <summary>
@@ -66,46 +66,46 @@ namespace OSGeo.MapGuide.MaestroAPI
         public static string StripVersionFromProviderName(string providername)
         {
             double x;
-            string[] parts = providername.Split('.');
+            string[] parts = providername.Split('.'); //NOXLATE
             for (int i = parts.Length - 1; i >= 0; i--)
             {
                 if (!double.TryParse(parts[i], System.Globalization.NumberStyles.Integer, null, out x))
                 {
                     if (i != 0)
-                        return string.Join(".", parts, 0, i + 1);
+                        return string.Join(".", parts, 0, i + 1); //NOXLATE
                     break;
                 }
             }
             return providername;
         }
 
-		/// <summary>
-		/// Parses a color in HTML notation (ea. #ffaabbff)
-		/// </summary>
-		/// <param name="color">The HTML representation of the color</param>
-		/// <returns>The .Net color structure that matches the color</returns>
-		public static Color ParseHTMLColor(string color)
-		{
-			if (color.Length == 8)
-			{
-				int a = int.Parse(color.Substring(0,2), System.Globalization.NumberStyles.HexNumber);
-				int r = int.Parse(color.Substring(2,2), System.Globalization.NumberStyles.HexNumber);
-				int g = int.Parse(color.Substring(4,2), System.Globalization.NumberStyles.HexNumber);
-				int b = int.Parse(color.Substring(6,2), System.Globalization.NumberStyles.HexNumber);
+        /// <summary>
+        /// Parses a color in HTML notation (ea. #ffaabbff)
+        /// </summary>
+        /// <param name="color">The HTML representation of the color</param>
+        /// <returns>The .Net color structure that matches the color</returns>
+        public static Color ParseHTMLColor(string color)
+        {
+            if (color.Length == 8)
+            {
+                int a = int.Parse(color.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+                int r = int.Parse(color.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+                int g = int.Parse(color.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+                int b = int.Parse(color.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
 
-				return Color.FromArgb(a, r,g,b);
-			}
-			else if (color.Length == 6)
-			{
-				int r = int.Parse(color.Substring(0,2), System.Globalization.NumberStyles.HexNumber);
-				int g = int.Parse(color.Substring(2,2), System.Globalization.NumberStyles.HexNumber);
-				int b = int.Parse(color.Substring(4,2), System.Globalization.NumberStyles.HexNumber);
+                return Color.FromArgb(a, r, g, b);
+            }
+            else if (color.Length == 6)
+            {
+                int r = int.Parse(color.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+                int g = int.Parse(color.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+                int b = int.Parse(color.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
 
-				return Color.FromArgb(r,g,b);
-			}
-			else
-				throw new Exception("Bad HTML color: \"" + color + "\"");
-		}
+                return Color.FromArgb(r, g, b);
+            }
+            else
+                throw new Exception(string.Format(Properties.Resources.ErrorBadHtmlColor, color));
+        }
 
         /// <summary>
         /// Parses a color in HTML notation (ea. #ffaabbff)
@@ -132,25 +132,25 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return Color.FromArgb(r, g, b);
             }
             else
-                throw new Exception("Bad HTML color: \"" + color + "\"");
+                throw new Exception(string.Format(Properties.Resources.ErrorBadHtmlColor, color));
         }
 
-		/// <summary>
-		/// Returns the HTML ARGB representation of an .Net color structure
-		/// </summary>
-		/// <param name="color">The color to encode</param>
-		/// <param name="includeAlpha">A flag indicating if the color structures alpha value should be included</param>
-		/// <returns>The HTML representation of the color structure</returns>
-		public static string SerializeHTMLColor(Color color, bool includeAlpha)
-		{
-			string res = "";
-			if (includeAlpha)
-				res += color.A.ToString("x02");
-			res += color.R.ToString("x02");
-			res += color.G.ToString("x02");
-			res += color.B.ToString("x02");
-			return res;
-		}
+        /// <summary>
+        /// Returns the HTML ARGB representation of an .Net color structure
+        /// </summary>
+        /// <param name="color">The color to encode</param>
+        /// <param name="includeAlpha">A flag indicating if the color structures alpha value should be included</param>
+        /// <returns>The HTML representation of the color structure</returns>
+        public static string SerializeHTMLColor(Color color, bool includeAlpha)
+        {
+            string res = string.Empty;
+            if (includeAlpha)
+                res += color.A.ToString("x02"); //NOXLATE
+            res += color.R.ToString("x02"); //NOXLATE
+            res += color.G.ToString("x02"); //NOXLATE
+            res += color.B.ToString("x02"); //NOXLATE
+            return res;
+        }
 
         /// <summary>
         /// Returns the HTML RGBA representation of an .Net color structure
@@ -160,44 +160,44 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>The HTML representation of the color structure</returns>
         public static string SerializeHTMLColorRGBA(Color color, bool includeAlpha)
         {
-            string res = "";
-            res += color.R.ToString("x02");
-            res += color.G.ToString("x02");
-            res += color.B.ToString("x02");
+            string res = string.Empty;
+            res += color.R.ToString("x02"); //NOXLATE
+            res += color.G.ToString("x02"); //NOXLATE
+            res += color.B.ToString("x02"); //NOXLATE
             if (includeAlpha)
-                res += color.A.ToString("x02");
+                res += color.A.ToString("x02"); //NOXLATE
             return res;
         }
 
-		/// <summary>
-		/// Parses a string with a decimal value in EN-US format
-		/// </summary>
-		/// <param name="digit">The string value</param>
-		/// <returns>The parsed value</returns>
-		public static float ParseDigit(string digit)
-		{
-			return (float)double.Parse(digit, m_enCI);
-		}
+        /// <summary>
+        /// Parses a string with a decimal value in EN-US format
+        /// </summary>
+        /// <param name="digit">The string value</param>
+        /// <returns>The parsed value</returns>
+        public static float ParseDigit(string digit)
+        {
+            return (float)double.Parse(digit, m_enCI);
+        }
 
-		/// <summary>
-		/// Turns a decimal value into a string representation in EN-US format
-		/// </summary>
-		/// <param name="digit">The value to encode</param>
-		/// <returns>The encoded value</returns>
-		public static string SerializeDigit(float digit)
-		{
-			return digit.ToString(m_enCI);
-		}
+        /// <summary>
+        /// Turns a decimal value into a string representation in EN-US format
+        /// </summary>
+        /// <param name="digit">The value to encode</param>
+        /// <returns>The encoded value</returns>
+        public static string SerializeDigit(float digit)
+        {
+            return digit.ToString(m_enCI);
+        }
 
-		/// <summary>
-		/// Turns a decimal value into a string representation in EN-US format
-		/// </summary>
-		/// <param name="digit">The value to encode</param>
-		/// <returns>The encoded value</returns>
-		public static string SerializeDigit(double digit)
-		{
-			return digit.ToString(m_enCI);
-		}
+        /// <summary>
+        /// Turns a decimal value into a string representation in EN-US format
+        /// </summary>
+        /// <param name="digit">The value to encode</param>
+        /// <returns>The encoded value</returns>
+        public static string SerializeDigit(double digit)
+        {
+            return digit.ToString(m_enCI);
+        }
 
 
         /// <summary>
@@ -211,16 +211,16 @@ namespace OSGeo.MapGuide.MaestroAPI
             CopyStream(source, target, true);
         }
 
-		/// <summary>
-		/// Copies the content of a stream into another stream.
-		/// </summary>
-		/// <param name="source">The source stream</param>
-		/// <param name="target">The target stream</param>
+        /// <summary>
+        /// Copies the content of a stream into another stream.
+        /// </summary>
+        /// <param name="source">The source stream</param>
+        /// <param name="target">The target stream</param>
         /// <param name="rewind">True if the source stream should be rewound before being copied</param>
-		public static void CopyStream(System.IO.Stream source, System.IO.Stream target, bool rewind)
-		{
-			int r;
-			byte[] buf = new byte[1024];
+        public static void CopyStream(System.IO.Stream source, System.IO.Stream target, bool rewind)
+        {
+            int r;
+            byte[] buf = new byte[1024];
 
             bool rewound = false;
             if (rewind)
@@ -248,12 +248,12 @@ namespace OSGeo.MapGuide.MaestroAPI
                 //    throw new InvalidOperationException("Could not rewind the source stream. Most likely the source stream does not support seeking or rewinding"); //LOCALIZEME
             }
 
-			do
-			{
-				r  = source.Read(buf, 0, buf.Length);
-				target.Write(buf, 0, r);
-			} while (r > 0);
-		}
+            do
+            {
+                r  = source.Read(buf, 0, buf.Length);
+                target.Write(buf, 0, r);
+            } while (r > 0);
+        }
 
         /// <summary>
         /// A delegate used to update a progress bar while copying a stream.
@@ -323,96 +323,96 @@ namespace OSGeo.MapGuide.MaestroAPI
             return ser.Deserialize(ms);
         }
 
-		/// <summary>
-		/// Makes a deep copy of an object, by copying all the public properties.
-		/// This overload tries to maintain object references by assigning properties
-		/// </summary>
-		/// <param name="source">The object to copy</param>
-		/// <param name="target">The object to assign to</param>
-		/// <returns>A copied object</returns>
-		public static object DeepCopy(object source, object target)
-		{
-			foreach(System.Reflection.PropertyInfo pi in source.GetType().GetProperties())
-			{
-				if (!pi.CanRead || !pi.CanWrite)
-					continue;
+        /// <summary>
+        /// Makes a deep copy of an object, by copying all the public properties.
+        /// This overload tries to maintain object references by assigning properties
+        /// </summary>
+        /// <param name="source">The object to copy</param>
+        /// <param name="target">The object to assign to</param>
+        /// <returns>A copied object</returns>
+        public static object DeepCopy(object source, object target)
+        {
+            foreach(System.Reflection.PropertyInfo pi in source.GetType().GetProperties())
+            {
+                if (!pi.CanRead || !pi.CanWrite)
+                    continue;
 
-				if (!pi.PropertyType.IsClass || pi.PropertyType == typeof(string) )
-					pi.SetValue(target, pi.GetValue(source, null) , null);
-				else if (pi.GetValue(source, null) == null)
-					pi.SetValue(target, null, null);
-				else if (pi.GetValue(source, null).GetType().GetInterface(typeof(System.Collections.ICollection).FullName) != null)
-				{
-					System.Collections.ICollection srcList = (System.Collections.ICollection)pi.GetValue(source, null);
-					System.Collections.ICollection trgList = (System.Collections.ICollection)Activator.CreateInstance(srcList.GetType());
-					foreach(object o in srcList)
-						trgList.GetType().GetMethod("Add").Invoke(trgList, new object[] { DeepCopy(o) } );
-					pi.SetValue(target, trgList, null);
-				}
-				else if (pi.GetValue(source, null).GetType().IsArray)
-				{
-					System.Array sourceArr = (System.Array)pi.GetValue(source, null);
-					System.Array targetArr = (System.Array)Activator.CreateInstance(sourceArr.GetType(), new object[] { sourceArr.Length });
-					for(int i = 0; i < targetArr.Length; i++)
-						targetArr.SetValue(DeepCopy(sourceArr.GetValue(i)), i);
-					pi.SetValue(target, targetArr, null);
-				}
-				else
-				{
-					if (pi.GetValue(target, null) == null)
-						pi.SetValue(target, Activator.CreateInstance(pi.GetValue(source, null).GetType()), null);
-					DeepCopy(pi.GetValue(source, null), pi.GetValue(target, null));
-				}
-			}
+                if (!pi.PropertyType.IsClass || pi.PropertyType == typeof(string) )
+                    pi.SetValue(target, pi.GetValue(source, null) , null);
+                else if (pi.GetValue(source, null) == null)
+                    pi.SetValue(target, null, null);
+                else if (pi.GetValue(source, null).GetType().GetInterface(typeof(System.Collections.ICollection).FullName) != null)
+                {
+                    System.Collections.ICollection srcList = (System.Collections.ICollection)pi.GetValue(source, null);
+                    System.Collections.ICollection trgList = (System.Collections.ICollection)Activator.CreateInstance(srcList.GetType());
+                    foreach(object o in srcList)
+                        trgList.GetType().GetMethod("Add").Invoke(trgList, new object[] { DeepCopy(o) }); //NOXLATE
+                    pi.SetValue(target, trgList, null);
+                }
+                else if (pi.GetValue(source, null).GetType().IsArray)
+                {
+                    System.Array sourceArr = (System.Array)pi.GetValue(source, null);
+                    System.Array targetArr = (System.Array)Activator.CreateInstance(sourceArr.GetType(), new object[] { sourceArr.Length });
+                    for(int i = 0; i < targetArr.Length; i++)
+                        targetArr.SetValue(DeepCopy(sourceArr.GetValue(i)), i);
+                    pi.SetValue(target, targetArr, null);
+                }
+                else
+                {
+                    if (pi.GetValue(target, null) == null)
+                        pi.SetValue(target, Activator.CreateInstance(pi.GetValue(source, null).GetType()), null);
+                    DeepCopy(pi.GetValue(source, null), pi.GetValue(target, null));
+                }
+            }
 
-			return target;
-		}
+            return target;
+        }
 
 
 
-		/// <summary>
-		/// Makes a deep copy of an object, by copying all the public properties
-		/// </summary>
-		/// <param name="source">The object to copy</param>
-		/// <returns>A copied object</returns>
-		public static object DeepCopy(object source)
-		{
+        /// <summary>
+        /// Makes a deep copy of an object, by copying all the public properties
+        /// </summary>
+        /// <param name="source">The object to copy</param>
+        /// <returns>A copied object</returns>
+        public static object DeepCopy(object source)
+        {
             if (source == null)
                 return null;
 
-			object target = Activator.CreateInstance(source.GetType());
+            object target = Activator.CreateInstance(source.GetType());
 
-			foreach(System.Reflection.PropertyInfo pi in source.GetType().GetProperties())
-			{
-				if (!pi.CanRead || !pi.CanWrite)
-					continue;
+            foreach(System.Reflection.PropertyInfo pi in source.GetType().GetProperties())
+            {
+                if (!pi.CanRead || !pi.CanWrite)
+                    continue;
 
-				if (!pi.PropertyType.IsClass || pi.PropertyType == typeof(string) )
-					pi.SetValue(target, pi.GetValue(source, null) , null);
-				else if (pi.GetValue(source, null) == null)
-					pi.SetValue(target, null, null);
-				else if (pi.GetValue(source, null).GetType().GetInterface(typeof(System.Collections.ICollection).FullName) != null)
-				{
-					System.Collections.ICollection srcList = (System.Collections.ICollection)pi.GetValue(source, null);
-					System.Collections.ICollection trgList = (System.Collections.ICollection)Activator.CreateInstance(srcList.GetType());
-					foreach(object o in srcList)
-						trgList.GetType().GetMethod("Add").Invoke(trgList, new object[] { DeepCopy(o) } );
-					pi.SetValue(target, trgList, null);
-				}
-				else if (pi.GetValue(source, null).GetType().IsArray)
-				{
-					System.Array sourceArr = (System.Array)pi.GetValue(source, null);
-					System.Array targetArr = (System.Array)Activator.CreateInstance(sourceArr.GetType(), new object[] { sourceArr.Length });
-					for(int i = 0; i < targetArr.Length; i++)
-						targetArr.SetValue(DeepCopy(sourceArr.GetValue(i)), i);
-					pi.SetValue(target, targetArr, null);
-				}
-				else
-					pi.SetValue(target, DeepCopy(pi.GetValue(source, null)), null);
-			}
+                if (!pi.PropertyType.IsClass || pi.PropertyType == typeof(string) )
+                    pi.SetValue(target, pi.GetValue(source, null) , null);
+                else if (pi.GetValue(source, null) == null)
+                    pi.SetValue(target, null, null);
+                else if (pi.GetValue(source, null).GetType().GetInterface(typeof(System.Collections.ICollection).FullName) != null)
+                {
+                    System.Collections.ICollection srcList = (System.Collections.ICollection)pi.GetValue(source, null);
+                    System.Collections.ICollection trgList = (System.Collections.ICollection)Activator.CreateInstance(srcList.GetType());
+                    foreach(object o in srcList)
+                        trgList.GetType().GetMethod("Add").Invoke(trgList, new object[] { DeepCopy(o) }); //NOXLATE
+                    pi.SetValue(target, trgList, null);
+                }
+                else if (pi.GetValue(source, null).GetType().IsArray)
+                {
+                    System.Array sourceArr = (System.Array)pi.GetValue(source, null);
+                    System.Array targetArr = (System.Array)Activator.CreateInstance(sourceArr.GetType(), new object[] { sourceArr.Length });
+                    for(int i = 0; i < targetArr.Length; i++)
+                        targetArr.SetValue(DeepCopy(sourceArr.GetValue(i)), i);
+                    pi.SetValue(target, targetArr, null);
+                }
+                else
+                    pi.SetValue(target, DeepCopy(pi.GetValue(source, null)), null);
+            }
 
-			return target;
-		}
+            return target;
+        }
 
         
 
@@ -422,52 +422,52 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="s">The stream to exhaust</param>
         /// <returns>The streams content as an array</returns>
-		public static byte[] StreamAsArray(System.IO.Stream s)
-		{
-			if (s as System.IO.MemoryStream != null)
-				return ((System.IO.MemoryStream)s).ToArray();
+        public static byte[] StreamAsArray(System.IO.Stream s)
+        {
+            if (s as System.IO.MemoryStream != null)
+                return ((System.IO.MemoryStream)s).ToArray();
 
-			if (!s.CanSeek)
-			{
-				System.IO.MemoryStream ms = new System.IO.MemoryStream();
-				byte[] buf = new byte[1024];
-				int c;
-				while((c = s.Read(buf, 0, buf.Length)) > 0)
-					ms.Write(buf, 0, c);
-				return ms.ToArray();
-			}
-			else
-			{
-				byte[] buf = new byte[s.Length];
-				s.Position = 0;
-				s.Read(buf, 0, buf.Length);
-				return buf;
-			}
-		}
+            if (!s.CanSeek)
+            {
+                System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                byte[] buf = new byte[1024];
+                int c;
+                while((c = s.Read(buf, 0, buf.Length)) > 0)
+                    ms.Write(buf, 0, c);
+                return ms.ToArray();
+            }
+            else
+            {
+                byte[] buf = new byte[s.Length];
+                s.Position = 0;
+                s.Read(buf, 0, buf.Length);
+                return buf;
+            }
+        }
 
-		/// <summary>
-		/// Creates a copy of the stream, with removed Utf8 BOM, if any
-		/// </summary>
-		/// <param name="ms">The stream to fix</param>
-		/// <returns>A stream with no Utf8 BOM</returns>
-		public static System.IO.MemoryStream RemoveUTF8BOM(System.IO.MemoryStream ms)
-		{
-			//Skip UTF file header, since the MapGuide XmlParser is broken
-			ms.Position = 0;
-			byte[] utfheader = new byte[3];
-			if (ms.Read(utfheader, 0, utfheader.Length) == utfheader.Length)
-				if (utfheader[0] == 0xEF && utfheader[1] == 0xBB && utfheader[2] == 0xBF)
-				{
-					ms.Position = 3;
-					System.IO.MemoryStream mxs = new System.IO.MemoryStream();
-					Utility.CopyStream(ms, mxs, false);
-					mxs.Position = 0;
-					return mxs;
-				}
+        /// <summary>
+        /// Creates a copy of the stream, with removed Utf8 BOM, if any
+        /// </summary>
+        /// <param name="ms">The stream to fix</param>
+        /// <returns>A stream with no Utf8 BOM</returns>
+        public static System.IO.MemoryStream RemoveUTF8BOM(System.IO.MemoryStream ms)
+        {
+            //Skip UTF file header, since the MapGuide XmlParser is broken
+            ms.Position = 0;
+            byte[] utfheader = new byte[3];
+            if (ms.Read(utfheader, 0, utfheader.Length) == utfheader.Length)
+                if (utfheader[0] == 0xEF && utfheader[1] == 0xBB && utfheader[2] == 0xBF)
+                {
+                    ms.Position = 3;
+                    System.IO.MemoryStream mxs = new System.IO.MemoryStream();
+                    Utility.CopyStream(ms, mxs, false);
+                    mxs.Position = 0;
+                    return mxs;
+                }
 
-			ms.Position = 0;
-			return ms;
-		}
+            ms.Position = 0;
+            return ms;
+        }
 
         /// <summary>
         /// Returns a type used to define an unknown column type in a feature reader
@@ -515,12 +515,12 @@ namespace OSGeo.MapGuide.MaestroAPI
                         if (m.Success && m.Groups.Count == 3)
                         {
                             html = m.Groups[2].Value;
-                            int n = html.IndexOf("</h2>");
+                            int n = html.IndexOf("</h2>"); //NOXLATE
                             if (n > 0)
-                                html = html.Substring(n + "</h2>".Length);
+                                html = html.Substring(n + "</h2>".Length); //NOXLATE
                         }
 
-                        return new Exception(wex.Message + ": " + html, wex);
+                        return new Exception(wex.Message + ": " + html, wex); //NOXLATE
                     }
                 }
                 catch
@@ -547,17 +547,17 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             System.Xml.XmlDocument doc2 = new System.Xml.XmlDocument();
 
-            System.Xml.XmlNode root1 = doc1["FeatureInformation"];
+            System.Xml.XmlNode root1 = doc1["FeatureInformation"]; //NOXLATE
             if (root1 == null)
                 root1 = doc1;
 
-            if (root1["FeatureSet"] != null)
+            if (root1["FeatureSet"] != null) //NOXLATE
             {
-                System.Xml.XmlNode root2 = doc2.AppendChild(doc2.CreateElement("FeatureSet"));
-                root2.InnerXml = root1["FeatureSet"].InnerXml;
+                System.Xml.XmlNode root2 = doc2.AppendChild(doc2.CreateElement("FeatureSet")); //NOXLATE
+                root2.InnerXml = root1["FeatureSet"].InnerXml; //NOXLATE
             }
 
-            return doc2.OuterXml == "<FeatureSet />" ? "" : doc2.OuterXml;
+            return doc2.OuterXml == "<FeatureSet />" ? "" : doc2.OuterXml; //NOXLATE
             
         }
 
@@ -569,13 +569,13 @@ namespace OSGeo.MapGuide.MaestroAPI
         public static string FormatSizeString(long size)
         {
             if (size > 1024 * 1024 * 1024)
-                return string.Format("{0:N} GB", (double)size / (1024 * 1024 * 1024));
+                return string.Format("{0:N} GB", (double)size / (1024 * 1024 * 1024)); //NOXLATE
             else if (size > 1024 * 1024)
-                return string.Format("{0:N} MB", (double)size / (1024 * 1024));
+                return string.Format("{0:N} MB", (double)size / (1024 * 1024)); //NOXLATE
             else if (size > 1024)
-                return string.Format("{0:N} KB", (double)size / 1024);
+                return string.Format("{0:N} KB", (double)size / 1024); //NOXLATE
             else
-                return string.Format("{0} bytes", size);
+                return string.Format("{0} bytes", size); //NOXLATE
         }
 
         private static System.Text.RegularExpressions.Regex EncRegExp = new System.Text.RegularExpressions.Regex(@"(\-x([0-9]|[a-e]|[A-E])([0-9]|[a-e]|[A-E])\-)|(\-dot\-)|(\-colon\-)", System.Text.RegularExpressions.RegexOptions.Compiled);
@@ -587,13 +587,13 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public static string EncodeFDOName(string name)
         {
-            return name.Replace("\"", "-x22-")
-                       .Replace("&", "-x26-")
-                       .Replace("'", "-x27-")
-                       .Replace("<", "-x3C-")
-                       .Replace(">", "-x3E-")
-                       .Replace("~", "-x7E-")
-                       .Replace(" ", "-x20-");
+            return name.Replace("\"", "-x22-") //NOXLATE
+                       .Replace("&", "-x26-") //NOXLATE
+                       .Replace("'", "-x27-") //NOXLATE
+                       .Replace("<", "-x3C-") //NOXLATE
+                       .Replace(">", "-x3E-") //NOXLATE
+                       .Replace("~", "-x7E-") //NOXLATE
+                       .Replace(" ", "-x20-"); //NOXLATE
         }
 
         /// <summary>
@@ -611,10 +611,10 @@ namespace OSGeo.MapGuide.MaestroAPI
             while (m != null && m.Success)
             {
                 string replaceval;
-                if (m.Value == "-dot-")
-                    replaceval = ".";
-                else if (m.Value == "-colon-")
-                    replaceval = ":";
+                if (m.Value == "-dot-") //NOXLATE
+                    replaceval = "."; //NOXLATE
+                else if (m.Value == "-colon-") //NOXLATE
+                    replaceval = ":"; //NOXLATE
                 else
                     replaceval = ((char)int.Parse(m.Value.Substring(2, 2), System.Globalization.NumberStyles.HexNumber)).ToString();
 
@@ -655,12 +655,12 @@ namespace OSGeo.MapGuide.MaestroAPI
                     if (nx.NodeType == System.Xml.XmlNodeType.Element)
                         lst.Enqueue(nx);
 
-                if (n.Name == "ResourceId")
+                if (n.Name == "ResourceId") //NOXLATE
                     res.Add(new KeyValuePair<System.Xml.XmlNode, string>(n, n.InnerXml));
 
                 if (n.Attributes != null)
                     foreach (System.Xml.XmlAttribute a in n.Attributes)
-                        if (a.Name == "ResourceId")
+                        if (a.Name == "ResourceId") //NOXLATE
                             res.Add(new KeyValuePair<System.Xml.XmlNode, string>(a, a.Value));
             }
 
@@ -703,10 +703,10 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="c">The callback function</param>
         public static void EnumerateObjects(object obj, EnumerateObjectCallback c)
         {
-			if (obj == null || c == null)
-				return;
+            if (obj == null || c == null)
+                return;
 
-		    Dictionary<object, object> visited = new Dictionary<object,object>();
+            Dictionary<object, object> visited = new Dictionary<object,object>();
 
             Queue<object> items = new Queue<object>();
             items.Enqueue(obj);
@@ -793,7 +793,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             var att = node.Attributes[name];
             if (att == null)
-                return node.Attributes["fdo:" + name];
+                return node.Attributes["fdo:" + name]; //NOXLATE
 
             return att;
         }
@@ -809,7 +809,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             var element = el[name];
             if (element == null)
-                return el["fdo:" + name];
+                return el["fdo:" + name]; //NOXLATE
             return element;
         }
     }

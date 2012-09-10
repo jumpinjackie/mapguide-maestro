@@ -37,7 +37,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <param name="validator">The validator.</param>
         public static void RegisterValidator(IResourceValidator validator)
         {
-            Check.NotNull(validator, "validator");
+            Check.NotNull(validator, "validator"); //NOXLATE
 
             if (!m_validators.Contains(validator))
                 m_validators.Add(validator);
@@ -52,7 +52,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <returns></returns>
         public static ValidationIssue[] Validate(ResourceValidationContext context, IEnumerable<IResource> items, bool recurse)
         {
-            Check.NotNull(items, "items");
+            Check.NotNull(items, "items"); //NOXLATE
             var issues = new List<ValidationIssue>();
             foreach (var item in items)
             {
@@ -71,7 +71,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <returns></returns>
         public static ValidationIssue[] Validate(ResourceValidationContext context, IResource item, bool recurse)
         {
-            Check.NotNull(item, "item");
+            Check.NotNull(item, "item"); //NOXLATE
             var issueSet = new ValidationResultSet();
             if (!HasValidator(item.ResourceType, item.ResourceVersion))
             {
@@ -95,7 +95,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                         string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                         if (ex is NullReferenceException)
                             msg = ex.ToString();
-                        issueSet.AddIssue(new ValidationIssue(item, ValidationStatus.Error, ValidationStatusCode.Error_General_ValidationError, "Failed in validator: " + msg));
+                        issueSet.AddIssue(new ValidationIssue(item, ValidationStatus.Error, ValidationStatusCode.Error_General_ValidationError, string.Format(Properties.Resources.ErrorValidationGeneric, msg)));
                     }
                 }
             }

@@ -91,7 +91,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 }
             }
 
-            throw new ArgumentException("Property not found: " + name); //LOCALIZEME
+            throw new ArgumentException(string.Format(MaestroAPI.Properties.Resources.ErrorPropertyNotFound, name));
         }
 
         /// <summary>
@@ -249,7 +249,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <summary>
         /// Gets the qualified name of this class. The qualified name takes the form [Schema Name]:[Class Name]
         /// </summary>
-        public string QualifiedName { get { return this.Parent != null ? this.Parent.Name + ":" + this.Name : this.Name; } }
+        public string QualifiedName { get { return this.Parent != null ? this.Parent.Name + ":" + this.Name : this.Name; } } //NOXLATE
 
         /// <summary>
         /// Writes the current element's content
@@ -263,25 +263,26 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             var en = Utility.EncodeFDOName(this.Name);
             if (_identity.Count > 0)
             {
-                id = doc.CreateElement("xs", "element", XmlNamespaces.XS);
-                
-                id.SetAttribute("name", en); //TODO: May need encoding
-                id.SetAttribute("type", this.Parent.Name + ":" + en + "Type");
-                id.SetAttribute("abstract", this.IsAbstract.ToString().ToLower());
-                id.SetAttribute("substitutionGroup", "gml:_Feature");
+                id = doc.CreateElement("xs", "element", XmlNamespaces.XS); //NOXLATE
 
-                var key = doc.CreateElement("xs", "key", XmlNamespaces.XS);
-                key.SetAttribute("name", en + "Key");
+                //TODO: May need encoding
+                id.SetAttribute("name", en); //NOXLATE
+                id.SetAttribute("type", this.Parent.Name + ":" + en + "Type"); //NOXLATE
+                id.SetAttribute("abstract", this.IsAbstract.ToString().ToLower()); //NOXLATE
+                id.SetAttribute("substitutionGroup", "gml:_Feature"); //NOXLATE
 
-                var selector = doc.CreateElement("xs", "selector", XmlNamespaces.XS);
-                selector.SetAttribute("xpath", ".//" + en);
+                var key = doc.CreateElement("xs", "key", XmlNamespaces.XS); //NOXLATE
+                key.SetAttribute("name", en + "Key"); //NOXLATE
+
+                var selector = doc.CreateElement("xs", "selector", XmlNamespaces.XS); //NOXLATE
+                selector.SetAttribute("xpath", ".//" + en); //NOXLATE
 
                 key.AppendChild(selector);
 
                 foreach (var prop in _identity)
                 {
-                    var field = doc.CreateElement("xs", "field", XmlNamespaces.XS);
-                    field.SetAttribute("xpath", prop.Name);
+                    var field = doc.CreateElement("xs", "field", XmlNamespaces.XS); //NOXLATE
+                    field.SetAttribute("xpath", prop.Name); //NOXLATE
 
                     key.AppendChild(field);
                 }
@@ -289,33 +290,34 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             }
 
             //Now write class body
-            var ctype = doc.CreateElement("xs", "complexType", XmlNamespaces.XS);
-            ctype.SetAttribute("name", en + "Type"); //TODO: This may have been decoded. Should it be re-encoded?
-            ctype.SetAttribute("abstract", this.IsAbstract.ToString().ToLower());
+            var ctype = doc.CreateElement("xs", "complexType", XmlNamespaces.XS); //NOXLATE
+            //TODO: This may have been decoded. Should it be re-encoded?
+            ctype.SetAttribute("name", en + "Type"); //NOXLATE
+            ctype.SetAttribute("abstract", this.IsAbstract.ToString().ToLower()); //NOXLATE
             if (!string.IsNullOrEmpty(this.DefaultGeometryPropertyName))
             {
                 var geom = FindProperty(this.DefaultGeometryPropertyName) as GeometricPropertyDefinition;
                 if (geom != null)
                 {
-                    ctype.SetAttribute("geometryName", XmlNamespaces.FDO, geom.Name);
+                    ctype.SetAttribute("geometryName", XmlNamespaces.FDO, geom.Name); //NOXLATE
                 }
             }
             else
             {
-                ctype.SetAttribute("hasGeometry", XmlNamespaces.FDO, "false");
+                ctype.SetAttribute("hasGeometry", XmlNamespaces.FDO, "false"); //NOXLATE
             }
 
-            var cnt = doc.CreateElement("xs", "complexContent", XmlNamespaces.XS);
+            var cnt = doc.CreateElement("xs", "complexContent", XmlNamespaces.XS); //NOXLATE
             ctype.AppendChild(cnt);
 
-            var ext = doc.CreateElement("xs", "extension", XmlNamespaces.XS);
+            var ext = doc.CreateElement("xs", "extension", XmlNamespaces.XS); //NOXLATE
             if (this.BaseClass != null)
-                ext.SetAttribute("base", this.BaseClass.QualifiedName);
+                ext.SetAttribute("base", this.BaseClass.QualifiedName); //NOXLATE
             else
-                ext.SetAttribute("base", "gml:AbstractFeatureType");
+                ext.SetAttribute("base", "gml:AbstractFeatureType"); //NOXLATE
             cnt.AppendChild(ext);
 
-            var seq = doc.CreateElement("xs", "sequence", XmlNamespaces.XS);
+            var seq = doc.CreateElement("xs", "sequence", XmlNamespaces.XS); //NOXLATE
             ext.AppendChild(seq);
 
             foreach (var prop in _properties)
@@ -337,14 +339,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         public void ReadXml(XmlNode node, XmlNamespaceManager mgr)
         {
             var en = Utility.EncodeFDOName(this.Name);
- 	        var abn = node.Attributes["abstract"];
+            var abn = node.Attributes["abstract"]; //NOXLATE
             if (abn != null)
                 this.IsAbstract = Convert.ToBoolean(abn.Value);
 
             //Process properties
-            XmlNodeList propNodes = node.SelectNodes("xs:complexContent/xs:extension/xs:sequence/xs:element", mgr);
+            XmlNodeList propNodes = node.SelectNodes("xs:complexContent/xs:extension/xs:sequence/xs:element", mgr); //NOXLATE
             if (propNodes.Count == 0)
-                propNodes = node.SelectNodes("xs:sequence/xs:element", mgr);
+                propNodes = node.SelectNodes("xs:sequence/xs:element", mgr); //NOXLATE
             foreach (XmlNode propNode in propNodes)
             {
                 var prop = PropertyDefinition.Parse(propNode, mgr);
@@ -352,7 +354,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             }
 
             //Set designated geometry property
-            var geom = Utility.GetFdoAttribute(node, "geometryName");
+            var geom = Utility.GetFdoAttribute(node, "geometryName"); //NOXLATE
 
             if (geom != null)
                 this.DefaultGeometryPropertyName = geom.Value;
@@ -362,16 +364,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             //Process identity properties
             var parent = node.ParentNode;
             //This is a lower-case coerced xpath query as our encoded name for querying may not be of the correct case
-            var xpath = "xs:element[translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')=\"" + en.ToLower() + "\"]/xs:key";
+            var xpath = "xs:element[translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')=\"" + en.ToLower() + "\"]/xs:key"; //NOXLATE
             var key = parent.SelectSingleNode(xpath, mgr);
             if (key != null)
             {
-                var fields = key.SelectNodes("xs:field", mgr);
+                var fields = key.SelectNodes("xs:field", mgr); //NOXLATE
                 foreach (XmlNode f in fields)
                 {
-                    var idpropa = f.Attributes["xpath"];
+                    var idpropa = f.Attributes["xpath"]; //NOXLATE
                     if (idpropa == null)
-                        throw new Exception("Bad document. Expected attribute: xpath"); //LOCALIZEME
+                        throw new Exception(string.Format(MaestroAPI.Properties.Resources.ErrorBadDocumentExpectedAttribute, "xpath"));
 
                     var prop = FindProperty(idpropa.Value);
                     if (prop != null && prop.Type == PropertyDefinitionType.Data)

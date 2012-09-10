@@ -531,6 +531,798 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} contains reserved characters.
+        /// </summary>
+        internal static string ErrorArgContainsReservedCharacters {
+            get {
+                return ResourceManager.GetString("ErrorArgContainsReservedCharacters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bad document. Expected attribute: {0}.
+        /// </summary>
+        internal static string ErrorBadDocumentExpectedAttribute {
+            get {
+                return ResourceManager.GetString("ErrorBadDocumentExpectedAttribute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bad document. Expected element {0}.
+        /// </summary>
+        internal static string ErrorBadDocumentExpectedElement {
+            get {
+                return ResourceManager.GetString("ErrorBadDocumentExpectedElement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bad document. Invalid bounding box.
+        /// </summary>
+        internal static string ErrorBadDocumentInvalidBbox {
+            get {
+                return ResourceManager.GetString("ErrorBadDocumentInvalidBbox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bad HTML color: {0}.
+        /// </summary>
+        internal static string ErrorBadHtmlColor {
+            get {
+                return ResourceManager.GetString("ErrorBadHtmlColor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bad null encoded string.
+        /// </summary>
+        internal static string ErrorBadNullEncodedString {
+            get {
+                return ResourceManager.GetString("ErrorBadNullEncodedString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buffer too small.
+        /// </summary>
+        internal static string ErrorBinarySerializerBufferTooSmall {
+            get {
+                return ResourceManager.GetString("ErrorBinarySerializerBufferTooSmall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coordinate expected, but got object: {0}.
+        /// </summary>
+        internal static string ErrorBinarySerializerCoordinateUnexpectedType {
+            get {
+                return ResourceManager.GetString("ErrorBinarySerializerCoordinateUnexpectedType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The read value was: {0} while &lt;end of stream&gt; was expected.
+        /// </summary>
+        internal static string ErrorBinarySerializerExpectedEndOfStream {
+            get {
+                return ResourceManager.GetString("ErrorBinarySerializerExpectedEndOfStream", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to get valid string char width.
+        /// </summary>
+        internal static string ErrorBinarySerializerGetCharWidth {
+            get {
+                return ResourceManager.GetString("ErrorBinarySerializerGetCharWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid amount of coordinates.
+        /// </summary>
+        internal static string ErrorBinarySerializerInvalidAmountOfCoordinates {
+            get {
+                return ResourceManager.GetString("ErrorBinarySerializerInvalidAmountOfCoordinates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coordinate count reported: {0}, for a single coordinate.
+        /// </summary>
+        internal static string ErrorBinarySerializerInvalidCoordinateDimensionCount {
+            get {
+                return ResourceManager.GetString("ErrorBinarySerializerInvalidCoordinateDimensionCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stream ended prematurely.
+        /// </summary>
+        internal static string ErrorBinarySerializerPrematureEndOfStream {
+            get {
+                return ResourceManager.GetString("ErrorBinarySerializerPrematureEndOfStream", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stream exhausted while reading {0} bytes.
+        /// </summary>
+        internal static string ErrorBinarySerializerStreamExhausted {
+            get {
+                return ResourceManager.GetString("ErrorBinarySerializerStreamExhausted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data in stream had type: {0} but type &apos;{1}&apos; was expected.
+        /// </summary>
+        internal static string ErrorBinarySerializerUnexpectedType {
+            get {
+                return ResourceManager.GetString("ErrorBinarySerializerUnexpectedType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown object type: {0}.
+        /// </summary>
+        internal static string ErrorBinarySerializerUnknownObjectType {
+            get {
+                return ResourceManager.GetString("ErrorBinarySerializerUnknownObjectType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bounding box for map had {0} dimensions. Expected 2 dimensions.
+        /// </summary>
+        internal static string ErrorBoundingBoxDoesNotHave2Dimensions {
+            get {
+                return ResourceManager.GetString("ErrorBoundingBoxDoesNotHave2Dimensions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commerical layer options are only available for non-MapGuide maps.
+        /// </summary>
+        internal static string ErrorCmsOptionsOnMapGuideMap {
+            get {
+                return ResourceManager.GetString("ErrorCmsOptionsOnMapGuideMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not determine symbol type.
+        /// </summary>
+        internal static string ErrorCouldNotDetermineSymbolType {
+            get {
+                return ResourceManager.GetString("ErrorCouldNotDetermineSymbolType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current record is empty.
+        /// </summary>
+        internal static string ErrorCurrentRecordIsEmpty {
+            get {
+                return ResourceManager.GetString("ErrorCurrentRecordIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empty feature source id.
+        /// </summary>
+        internal static string ErrorEmptyFeatureSourceId {
+            get {
+                return ResourceManager.GetString("ErrorEmptyFeatureSourceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to evaluate. Current row is empty.
+        /// </summary>
+        internal static string ErrorExprCurrentRowIsEmpty {
+            get {
+                return ResourceManager.GetString("ErrorExprCurrentRowIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to find type for: {0}.
+        /// </summary>
+        internal static string ErrorFailedToFindTypeForClrType {
+            get {
+                return ResourceManager.GetString("ErrorFailedToFindTypeForClrType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to convert value for {0} from {1} to {2}.
+        /// </summary>
+        internal static string ErrorFailedValueConversion {
+            get {
+                return ResourceManager.GetString("ErrorFailedValueConversion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid class identifier. Expected Box2D.
+        /// </summary>
+        internal static string ErrorInvalidClassIdentifierBox2d {
+            get {
+                return ResourceManager.GetString("ErrorInvalidClassIdentifierBox2d", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group must have object id 12001, but had: {0}.
+        /// </summary>
+        internal static string ErrorInvalidGroupObjectId {
+            get {
+                return ResourceManager.GetString("ErrorInvalidGroupObjectId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid or unsupported map version.
+        /// </summary>
+        internal static string ErrorInvalidMapVersion {
+            get {
+                return ResourceManager.GetString("ErrorInvalidMapVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Header must be either ResourceFolderHeaderType or ResourceDocumentHeaderType.
+        /// </summary>
+        internal static string ErrorInvalidResourceHeaderRootElement {
+            get {
+                return ResourceManager.GetString("ErrorInvalidResourceHeaderRootElement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid resource identifier.
+        /// </summary>
+        internal static string ErrorInvalidResourceIdentifier {
+            get {
+                return ResourceManager.GetString("ErrorInvalidResourceIdentifier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid resource identifier type. Must be Library or Session.
+        /// </summary>
+        internal static string ErrorInvalidResourceIdentifierType {
+            get {
+                return ResourceManager.GetString("ErrorInvalidResourceIdentifierType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incoming record must be structurally identical.
+        /// </summary>
+        internal static string ErrorJaggedResultSet {
+            get {
+                return ResourceManager.GetString("ErrorJaggedResultSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key {0} already exists.
+        /// </summary>
+        internal static string ErrorKeyAlreadyExists {
+            get {
+                return ResourceManager.GetString("ErrorKeyAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The layer does not have a primary key, and cannot be used for selection.
+        /// </summary>
+        internal static string ErrorLayerHasNoPk {
+            get {
+                return ResourceManager.GetString("ErrorLayerHasNoPk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The layers key consists of {0} columns, but only {1} columns were given.
+        /// </summary>
+        internal static string ErrorLayerKeyMismatch {
+            get {
+                return ResourceManager.GetString("ErrorLayerKeyMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No class name specified.
+        /// </summary>
+        internal static string ErrorNoClassNameSpecified {
+            get {
+                return ResourceManager.GetString("ErrorNoClassNameSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No coordinate system WKT specified.
+        /// </summary>
+        internal static string ErrorNoCoordinateSystemWktSpecified {
+            get {
+                return ResourceManager.GetString("ErrorNoCoordinateSystemWktSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No data found in resource: {0}.
+        /// </summary>
+        internal static string ErrorNoDataInResource {
+            get {
+                return ResourceManager.GetString("ErrorNoDataInResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No extent specified for static extent type.
+        /// </summary>
+        internal static string ErrorNoExtentSpecifiedForStaticType {
+            get {
+                return ResourceManager.GetString("ErrorNoExtentSpecifiedForStaticType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No feature source id specified.
+        /// </summary>
+        internal static string ErrorNoFeatureSourceIdSpecified {
+            get {
+                return ResourceManager.GetString("ErrorNoFeatureSourceIdSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No file name specified.
+        /// </summary>
+        internal static string ErrorNoFileNameSpecified {
+            get {
+                return ResourceManager.GetString("ErrorNoFileNameSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No provider specified.
+        /// </summary>
+        internal static string ErrorNoProviderSpecified {
+            get {
+                return ResourceManager.GetString("ErrorNoProviderSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource has no resource id attached.
+        /// </summary>
+        internal static string ErrorNoResourceIdAttached {
+            get {
+                return ResourceManager.GetString("ErrorNoResourceIdAttached", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No schema specified.
+        /// </summary>
+        internal static string ErrorNoSchemaSpecified {
+            get {
+                return ResourceManager.GetString("ErrorNoSchemaSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No schema specified to apply.
+        /// </summary>
+        internal static string ErrorNoSchemaSpecifiedToApply {
+            get {
+                return ResourceManager.GetString("ErrorNoSchemaSpecifiedToApply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No server connection set for object.
+        /// </summary>
+        internal static string ErrorNoServerConnectionAttached {
+            get {
+                return ResourceManager.GetString("ErrorNoServerConnectionAttached", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No spatial context name specified. This is the name that should be referred to by any spatial context associations in your feature schema.
+        /// </summary>
+        internal static string ErrorNoSpatialContextNameSpecified {
+            get {
+                return ResourceManager.GetString("ErrorNoSpatialContextNameSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not a qualified class name: {0}.
+        /// </summary>
+        internal static string ErrorNotAQualifiedClassName {
+            get {
+                return ResourceManager.GetString("ErrorNotAQualifiedClassName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nothing to insert.
+        /// </summary>
+        internal static string ErrorNothingToInsert {
+            get {
+                return ResourceManager.GetString("ErrorNothingToInsert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No values specified for updating.
+        /// </summary>
+        internal static string ErrorNoValuesSpecifiedForUpdating {
+            get {
+                return ResourceManager.GetString("ErrorNoValuesSpecifiedForUpdating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value for {0} is null, which is not supported as a key.
+        /// </summary>
+        internal static string ErrorNullKeyValue {
+            get {
+                return ResourceManager.GetString("ErrorNullKeyValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Null values not accepted.
+        /// </summary>
+        internal static string ErrorNullNotAccepted {
+            get {
+                return ResourceManager.GetString("ErrorNullNotAccepted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Null Value.
+        /// </summary>
+        internal static string ErrorNullValue {
+            get {
+                return ResourceManager.GetString("ErrorNullValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value does not implement ICompositeTypeStyle.
+        /// </summary>
+        internal static string ErrorObjectNotICompositeTypeStyle {
+            get {
+                return ResourceManager.GetString("ErrorObjectNotICompositeTypeStyle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to null values are not permitted. Use SetNull() if you need to specify null values.
+        /// </summary>
+        internal static string ErrorObjectSetNullValuesNotPermitted {
+            get {
+                return ResourceManager.GetString("ErrorObjectSetNullValuesNotPermitted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overlay options are only applicable to MapGuide maps.
+        /// </summary>
+        internal static string ErrorOverlayOptionsOnNonMapGuideMap {
+            get {
+                return ResourceManager.GetString("ErrorOverlayOptionsOnNonMapGuideMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expected &apos;)&apos; but encountered &apos;{0}&apos;.
+        /// </summary>
+        internal static string ErrorParseExpectedCloser {
+            get {
+                return ResourceManager.GetString("ErrorParseExpectedCloser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expected &apos;)&apos; or &apos;,&apos; but encountered &apos;{0}&apos;.
+        /// </summary>
+        internal static string ErrorParseExpectedCloserOrComma {
+            get {
+                return ResourceManager.GetString("ErrorParseExpectedCloserOrComma", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expected &apos;EMPTY&apos; or &apos;(&apos; but encountered &apos;{0}&apos;.
+        /// </summary>
+        internal static string ErrorParseExpectedEmpty {
+            get {
+                return ResourceManager.GetString("ErrorParseExpectedEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expected number but encountered {0}.
+        /// </summary>
+        internal static string ErrorParseExpectedNumber {
+            get {
+                return ResourceManager.GetString("ErrorParseExpectedNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expected number but encountered end of line.
+        /// </summary>
+        internal static string ErrorParseExpectedNumberEol {
+            get {
+                return ResourceManager.GetString("ErrorParseExpectedNumberEol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expected number but encountered end of stream.
+        /// </summary>
+        internal static string ErrorParseExpectedNumberEos {
+            get {
+                return ResourceManager.GetString("ErrorParseExpectedNumberEos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expected number but encountered word {0}.
+        /// </summary>
+        internal static string ErrorParseExpectedNumberGotWord {
+            get {
+                return ResourceManager.GetString("ErrorParseExpectedNumberGotWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expected word but encountered number: {0}.
+        /// </summary>
+        internal static string ErrorParseExpectedWord {
+            get {
+                return ResourceManager.GetString("ErrorParseExpectedWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error reading geometry.
+        /// </summary>
+        internal static string ErrorParseGeometryRead {
+            get {
+                return ResourceManager.GetString("ErrorParseGeometryRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown type: {0}.
+        /// </summary>
+        internal static string ErrorParseUnknownType {
+            get {
+                return ResourceManager.GetString("ErrorParseUnknownType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property not found: {0}.
+        /// </summary>
+        internal static string ErrorPropertyNotFound {
+            get {
+                return ResourceManager.GetString("ErrorPropertyNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provider already registered: {0}.
+        /// </summary>
+        internal static string ErrorProviderAlreadyRegistered {
+            get {
+                return ResourceManager.GetString("ErrorProviderAlreadyRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provider not registered: {0}.
+        /// </summary>
+        internal static string ErrorProviderNotRegistered {
+            get {
+                return ResourceManager.GetString("ErrorProviderNotRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified provider is not usable in your operating system: {0}.
+        /// </summary>
+        internal static string ErrorProviderNotUsableForYourPlatform {
+            get {
+                return ResourceManager.GetString("ErrorProviderNotUsableForYourPlatform", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot change extension for a folder.
+        /// </summary>
+        internal static string ErrorResourceIdCannotChangeExtensionForFolder {
+            get {
+                return ResourceManager.GetString("ErrorResourceIdCannotChangeExtensionForFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource Identifier class id expected, but got: {0}.
+        /// </summary>
+        internal static string ErrorResourceIdentifierClassIdNotFound {
+            get {
+                return ResourceManager.GetString("ErrorResourceIdentifierClassIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The resource name must not contain &apos;:&apos;, \&quot;//\&quot; or &apos;.&apos;.
+        /// </summary>
+        internal static string ErrorResourceIdentifierInvalidChars {
+            get {
+                return ResourceManager.GetString("ErrorResourceIdentifierInvalidChars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The new name must not contain the \&quot;/\&quot; character.
+        /// </summary>
+        internal static string ErrorResourceIdentifierNameInvalidChars {
+            get {
+                return ResourceManager.GetString("ErrorResourceIdentifierNameInvalidChars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The supplied extension is invalid.
+        /// </summary>
+        internal static string ErrorResourceIdInvalidExtension {
+            get {
+                return ResourceManager.GetString("ErrorResourceIdInvalidExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The resourceId: {0} must be updated with a folder header.
+        /// </summary>
+        internal static string ErrorResourceMustBeUpdatedWithFolderHeader {
+            get {
+                return ResourceManager.GetString("ErrorResourceMustBeUpdatedWithFolderHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Runtime maps must be in the session repository.
+        /// </summary>
+        internal static string ErrorRuntimeMapNotInSessionRepo {
+            get {
+                return ResourceManager.GetString("ErrorRuntimeMapNotInSessionRepo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A layer in selection had no id.
+        /// </summary>
+        internal static string ErrorSelectedLayerHasNoId {
+            get {
+                return ResourceManager.GetString("ErrorSelectedLayerHasNoId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting visibility of tiled map layers is not permitted.
+        /// </summary>
+        internal static string ErrorSettingVisibilityOfTiledLayer {
+            get {
+                return ResourceManager.GetString("ErrorSettingVisibilityOfTiledLayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On new versions, there should be no layer data in map.
+        /// </summary>
+        internal static string ErrorShouldHaveNoLayerDataInMap {
+            get {
+                return ResourceManager.GetString("ErrorShouldHaveNoLayerDataInMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Token list contains a null value.
+        /// </summary>
+        internal static string ErrorTokenListContainsNullValue {
+            get {
+                return ResourceManager.GetString("ErrorTokenListContainsNullValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type {0} does not contain schema info.
+        /// </summary>
+        internal static string ErrorTypeHasNoSchemaInfo {
+            get {
+                return ResourceManager.GetString("ErrorTypeHasNoSchemaInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unexpected resource type for {0}. Expected {1}.
+        /// </summary>
+        internal static string ErrorUnexpectedResourceType {
+            get {
+                return ResourceManager.GetString("ErrorUnexpectedResourceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The given type is not a known resource type.
+        /// </summary>
+        internal static string ErrorUnknownResourceType {
+            get {
+                return ResourceManager.GetString("ErrorUnknownResourceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The type {0} is not supported for primary keys.
+        /// </summary>
+        internal static string ErrorUnsupportedPkType {
+            get {
+                return ResourceManager.GetString("ErrorUnsupportedPkType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unrecognized element. Only a subset of the FDO logical schema is supported here.
+        /// </summary>
+        internal static string ErrorUnsupporteFdoSchemaXml {
+            get {
+                return ResourceManager.GetString("ErrorUnsupporteFdoSchemaXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed in validator: {0}.
+        /// </summary>
+        internal static string ErrorValidationGeneric {
+            get {
+                return ResourceManager.GetString("ErrorValidationGeneric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value is not comparable.
+        /// </summary>
+        internal static string ErrorValueNotComparable {
+            get {
+                return ResourceManager.GetString("ErrorValueNotComparable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value falls outside the range of {0} and  {1}.
+        /// </summary>
+        internal static string ErrorValueOutOfRange {
+            get {
+                return ResourceManager.GetString("ErrorValueOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Factory method already registered for version: .
         /// </summary>
         internal static string FactoryMethodAlreadyRegistered {
@@ -1188,6 +1980,33 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copying Folder ....
+        /// </summary>
+        internal static string ProgressCopyingFolder {
+            get {
+                return ResourceManager.GetString("ProgressCopyingFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finding Folder References ....
+        /// </summary>
+        internal static string ProgressFindingFolderRefs {
+            get {
+                return ResourceManager.GetString("ProgressFindingFolderRefs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Moving Folder ....
+        /// </summary>
+        internal static string ProgressMovingFolder {
+            get {
+                return ResourceManager.GetString("ProgressMovingFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This connection does not support required service: .
         /// </summary>
         internal static string RequiredServiceNotSupported {
@@ -1233,11 +2052,83 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Created: {0}.
+        /// </summary>
+        internal static string TemplateCreated {
+            get {
+                return ResourceManager.GetString("TemplateCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File not found: {0}.
+        /// </summary>
+        internal static string TemplateFileNotFound {
+            get {
+                return ResourceManager.GetString("TemplateFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File processed: {0}.
+        /// </summary>
+        internal static string TemplateFileProcessed {
+            get {
+                return ResourceManager.GetString("TemplateFileProcessed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loaded: {0}.
+        /// </summary>
+        internal static string TemplateLoaded {
+            get {
+                return ResourceManager.GetString("TemplateLoaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set default spatial context for: {0}.
+        /// </summary>
+        internal static string TemplateSetSpatialContext {
+            get {
+                return ResourceManager.GetString("TemplateSetSpatialContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success: {0}.
+        /// </summary>
+        internal static string TemplateSuccess {
+            get {
+                return ResourceManager.GetString("TemplateSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uploaded: {0}.prj.
+        /// </summary>
+        internal static string TemplateUploadedPrj {
+            get {
+                return ResourceManager.GetString("TemplateUploadedPrj", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not find template url for template: .
         /// </summary>
         internal static string TemplateUrlNotFound {
             get {
                 return ResourceManager.GetString("TemplateUrlNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preview.
+        /// </summary>
+        internal static string TitlePreview {
+            get {
+                return ResourceManager.GetString("TitlePreview", resourceCulture);
             }
         }
         
@@ -1305,6 +2196,303 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Display information about this application.
+        /// </summary>
+        internal static string WL_Desc_About {
+            get {
+                return ResourceManager.GetString("WL_Desc_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create buffers around the selected features.
+        /// </summary>
+        internal static string WL_Desc_Buffer {
+            get {
+                return ResourceManager.GetString("WL_Desc_Buffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear the current selection.
+        /// </summary>
+        internal static string WL_Desc_ClearSelection {
+            get {
+                return ResourceManager.GetString("WL_Desc_ClearSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy current view of map to clipboard.
+        /// </summary>
+        internal static string WL_Desc_Copy {
+            get {
+                return ResourceManager.GetString("WL_Desc_Copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get Printer-friendly page.
+        /// </summary>
+        internal static string WL_Desc_GetPrintablePage {
+            get {
+                return ResourceManager.GetString("WL_Desc_GetPrintablePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Launch help for this application.
+        /// </summary>
+        internal static string WL_Desc_Help {
+            get {
+                return ResourceManager.GetString("WL_Desc_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom to initial map center and scale.
+        /// </summary>
+        internal static string WL_Desc_InitialCenterScale {
+            get {
+                return ResourceManager.GetString("WL_Desc_InitialCenterScale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fit the extents of the map to the window.
+        /// </summary>
+        internal static string WL_Desc_InitialMapView {
+            get {
+                return ResourceManager.GetString("WL_Desc_InitialMapView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click to enable/disable display of map tooltips.
+        /// </summary>
+        internal static string WL_Desc_MapTip {
+            get {
+                return ResourceManager.GetString("WL_Desc_MapTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measure distances on the map.
+        /// </summary>
+        internal static string WL_Desc_Measure {
+            get {
+                return ResourceManager.GetString("WL_Desc_Measure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go to next view.
+        /// </summary>
+        internal static string WL_Desc_NextView {
+            get {
+                return ResourceManager.GetString("WL_Desc_NextView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drag the map to view areas out of range.
+        /// </summary>
+        internal static string WL_Desc_Pan {
+            get {
+                return ResourceManager.GetString("WL_Desc_Pan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pan down by a preset increment.
+        /// </summary>
+        internal static string WL_Desc_PanDown {
+            get {
+                return ResourceManager.GetString("WL_Desc_PanDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pan left by a preset increment.
+        /// </summary>
+        internal static string WL_Desc_PanLeft {
+            get {
+                return ResourceManager.GetString("WL_Desc_PanLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pan right by a preset increment.
+        /// </summary>
+        internal static string WL_Desc_PanRight {
+            get {
+                return ResourceManager.GetString("WL_Desc_PanRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pan up by a preset increment.
+        /// </summary>
+        internal static string WL_Desc_PanUp {
+            get {
+                return ResourceManager.GetString("WL_Desc_PanUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go to previous view.
+        /// </summary>
+        internal static string WL_Desc_PrevView {
+            get {
+                return ResourceManager.GetString("WL_Desc_PrevView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Print with optional layout.
+        /// </summary>
+        internal static string WL_Desc_Print {
+            get {
+                return ResourceManager.GetString("WL_Desc_Print", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh map to reload all layers keeping current center and scale.
+        /// </summary>
+        internal static string WL_Desc_RefreshMap {
+            get {
+                return ResourceManager.GetString("WL_Desc_RefreshMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select features by clicking and dragging.
+        /// </summary>
+        internal static string WL_Desc_Select {
+            get {
+                return ResourceManager.GetString("WL_Desc_Select", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click and drag to select all features that fall within.
+        /// </summary>
+        internal static string WL_Desc_SelectPolygon {
+            get {
+                return ResourceManager.GetString("WL_Desc_SelectPolygon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click and drag to select all features inside the circle.
+        /// </summary>
+        internal static string WL_Desc_SelectRadius {
+            get {
+                return ResourceManager.GetString("WL_Desc_SelectRadius", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select features that fall within currently selected areas.
+        /// </summary>
+        internal static string WL_Desc_SelectWithin {
+            get {
+                return ResourceManager.GetString("WL_Desc_SelectWithin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return to previous task page.
+        /// </summary>
+        internal static string WL_Desc_TaskBack {
+            get {
+                return ResourceManager.GetString("WL_Desc_TaskBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forward to next task page.
+        /// </summary>
+        internal static string WL_Desc_TaskForward {
+            get {
+                return ResourceManager.GetString("WL_Desc_TaskForward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return to home task page.
+        /// </summary>
+        internal static string WL_Desc_TaskHome {
+            get {
+                return ResourceManager.GetString("WL_Desc_TaskHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View a list of available tasks.
+        /// </summary>
+        internal static string WL_Desc_TaskList {
+            get {
+                return ResourceManager.GetString("WL_Desc_TaskList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Options.
+        /// </summary>
+        internal static string WL_Desc_ViewOptions {
+            get {
+                return ResourceManager.GetString("WL_Desc_ViewOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom dynamically by clicking and dragging.
+        /// </summary>
+        internal static string WL_Desc_ZoomDynamic {
+            get {
+                return ResourceManager.GetString("WL_Desc_ZoomDynamic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom in by a preset increment.
+        /// </summary>
+        internal static string WL_Desc_ZoomIn {
+            get {
+                return ResourceManager.GetString("WL_Desc_ZoomIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom out by a preset increment.
+        /// </summary>
+        internal static string WL_Desc_ZoomOut {
+            get {
+                return ResourceManager.GetString("WL_Desc_ZoomOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom in on an area.
+        /// </summary>
+        internal static string WL_Desc_ZoomRect {
+            get {
+                return ResourceManager.GetString("WL_Desc_ZoomRect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom to the extents of selected features.
+        /// </summary>
+        internal static string WL_Desc_ZoomSelection {
+            get {
+                return ResourceManager.GetString("WL_Desc_ZoomSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There web layout has more than one command named: {0}.
         /// </summary>
         internal static string WL_DuplicateCommandName {
@@ -1319,6 +2507,312 @@ namespace OSGeo.MapGuide.MaestroAPI.Properties {
         internal static string WL_DuplicateSearchResultColumn {
             get {
                 return ResourceManager.GetString("WL_DuplicateSearchResultColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        internal static string WL_Label_About {
+            get {
+                return ResourceManager.GetString("WL_Label_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buffer.
+        /// </summary>
+        internal static string WL_Label_Buffer {
+            get {
+                return ResourceManager.GetString("WL_Label_Buffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear Selection.
+        /// </summary>
+        internal static string WL_Label_ClearSelection {
+            get {
+                return ResourceManager.GetString("WL_Label_ClearSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy.
+        /// </summary>
+        internal static string WL_Label_Copy {
+            get {
+                return ResourceManager.GetString("WL_Label_Copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get Printable Page.
+        /// </summary>
+        internal static string WL_Label_GetPrintablePage {
+            get {
+                return ResourceManager.GetString("WL_Label_GetPrintablePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        internal static string WL_Label_Help {
+            get {
+                return ResourceManager.GetString("WL_Label_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Initial Center and Scale.
+        /// </summary>
+        internal static string WL_Label_InitialCenterScale {
+            get {
+                return ResourceManager.GetString("WL_Label_InitialCenterScale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Initial Map View.
+        /// </summary>
+        internal static string WL_Label_InitialMapView {
+            get {
+                return ResourceManager.GetString("WL_Label_InitialMapView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measure.
+        /// </summary>
+        internal static string WL_Label_Measure {
+            get {
+                return ResourceManager.GetString("WL_Label_Measure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next View.
+        /// </summary>
+        internal static string WL_Label_NextView {
+            get {
+                return ResourceManager.GetString("WL_Label_NextView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pan Mode.
+        /// </summary>
+        internal static string WL_Label_Pan {
+            get {
+                return ResourceManager.GetString("WL_Label_Pan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pan Down.
+        /// </summary>
+        internal static string WL_Label_PanDown {
+            get {
+                return ResourceManager.GetString("WL_Label_PanDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pan Left.
+        /// </summary>
+        internal static string WL_Label_PanLeft {
+            get {
+                return ResourceManager.GetString("WL_Label_PanLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pan Right.
+        /// </summary>
+        internal static string WL_Label_PanRight {
+            get {
+                return ResourceManager.GetString("WL_Label_PanRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pan Up.
+        /// </summary>
+        internal static string WL_Label_PanUp {
+            get {
+                return ResourceManager.GetString("WL_Label_PanUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous View.
+        /// </summary>
+        internal static string WL_Label_PrevView {
+            get {
+                return ResourceManager.GetString("WL_Label_PrevView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Print.
+        /// </summary>
+        internal static string WL_Label_Print {
+            get {
+                return ResourceManager.GetString("WL_Label_Print", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh Map.
+        /// </summary>
+        internal static string WL_Label_RefreshMap {
+            get {
+                return ResourceManager.GetString("WL_Label_RefreshMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select.
+        /// </summary>
+        internal static string WL_Label_Select {
+            get {
+                return ResourceManager.GetString("WL_Label_Select", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select More.
+        /// </summary>
+        internal static string WL_Label_SelectMore {
+            get {
+                return ResourceManager.GetString("WL_Label_SelectMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Polygon.
+        /// </summary>
+        internal static string WL_Label_SelectPolygon {
+            get {
+                return ResourceManager.GetString("WL_Label_SelectPolygon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Radius.
+        /// </summary>
+        internal static string WL_Label_SelectRadius {
+            get {
+                return ResourceManager.GetString("WL_Label_SelectRadius", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Within.
+        /// </summary>
+        internal static string WL_Label_SelectWithin {
+            get {
+                return ResourceManager.GetString("WL_Label_SelectWithin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        internal static string WL_Label_TaskBack {
+            get {
+                return ResourceManager.GetString("WL_Label_TaskBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forward.
+        /// </summary>
+        internal static string WL_Label_TaskForward {
+            get {
+                return ResourceManager.GetString("WL_Label_TaskForward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        internal static string WL_Label_TaskHome {
+            get {
+                return ResourceManager.GetString("WL_Label_TaskHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task List.
+        /// </summary>
+        internal static string WL_Label_TaskList {
+            get {
+                return ResourceManager.GetString("WL_Label_TaskList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Options.
+        /// </summary>
+        internal static string WL_Label_ViewOptions {
+            get {
+                return ResourceManager.GetString("WL_Label_ViewOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom.
+        /// </summary>
+        internal static string WL_Label_Zoom {
+            get {
+                return ResourceManager.GetString("WL_Label_Zoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom Dynamic.
+        /// </summary>
+        internal static string WL_Label_ZoomDynamic {
+            get {
+                return ResourceManager.GetString("WL_Label_ZoomDynamic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom In.
+        /// </summary>
+        internal static string WL_Label_ZoomIn {
+            get {
+                return ResourceManager.GetString("WL_Label_ZoomIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom Out.
+        /// </summary>
+        internal static string WL_Label_ZoomOut {
+            get {
+                return ResourceManager.GetString("WL_Label_ZoomOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom Rectangle.
+        /// </summary>
+        internal static string WL_Label_ZoomRect {
+            get {
+                return ResourceManager.GetString("WL_Label_ZoomRect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom Selection.
+        /// </summary>
+        internal static string WL_Label_ZoomSelection {
+            get {
+                return ResourceManager.GetString("WL_Label_ZoomSelection", resourceCulture);
             }
         }
         

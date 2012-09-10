@@ -208,30 +208,30 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         public static PropertyDefinition Parse(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             PropertyDefinition prop = null;
-            var nn = node.Attributes["name"];
-            var nulln = node.Attributes["minOccurs"];
+            var nn = node.Attributes["name"]; //NOXLATE
+            var nulln = node.Attributes["minOccurs"]; //NOXLATE
 
             string name = Utility.DecodeFDOName(nn.Value);
             string desc = string.Empty;
 
-            if (node.Attributes["type"] != null && node.Attributes["type"].Value == "gml:AbstractGeometryType")
+            if (node.Attributes["type"] != null && node.Attributes["type"].Value == "gml:AbstractGeometryType") //NOXLATE
             {
                 prop = new GeometricPropertyDefinition(name, desc);
             }
-            else if (node["xs:simpleType"] == null)
+            else if (node["xs:simpleType"] == null) //NOXLATE
             {
                 prop = new RasterPropertyDefinition(name, desc);
             }
             else
             {
-                if (node["xs:simpleType"] != null)
+                if (node["xs:simpleType"] != null) //NOXLATE
                     prop = new DataPropertyDefinition(name, desc);
             }
 
             if (prop != null)
                 prop.ReadXml(node, mgr);
             else
-                throw new NotSupportedException("Unrecognized element. Only a subset of the FDO logical schema is supported here"); //LOCALIZEME
+                throw new NotSupportedException(Properties.Resources.ErrorUnsupporteFdoSchemaXml);
 
             return prop;
         }

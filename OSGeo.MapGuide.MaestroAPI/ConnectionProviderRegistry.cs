@@ -122,7 +122,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// </example>
     public sealed class ConnectionProviderRegistry
     {
-        const string PROVIDER_CONFIG = "ConnectionProviders.xml";
+        const string PROVIDER_CONFIG = "ConnectionProviders.xml"; //NOXLATE
 
         static Dictionary<string, ConnectionFactoryMethod> _ctors;
         static List<ConnectionProviderEntry> _providers;
@@ -142,13 +142,13 @@ namespace OSGeo.MapGuide.MaestroAPI
             XmlDocument doc = new XmlDocument();
             doc.Load(path);
 
-            XmlNodeList providers = doc.SelectNodes("//ConnectionProviderRegistry/ConnectionProvider");
+            XmlNodeList providers = doc.SelectNodes("//ConnectionProviderRegistry/ConnectionProvider"); //NOXLATE
             foreach (XmlNode prov in providers)
             {
-                string name = prov["Name"].InnerText.ToUpper();
-                string desc = prov["Description"].InnerText;
-                string dll = prov["Assembly"].InnerText;
-                string type = prov["Type"].InnerText;
+                string name = prov["Name"].InnerText.ToUpper(); //NOXLATE
+                string desc = prov["Description"].InnerText; //NOXLATE
+                string dll = prov["Assembly"].InnerText; //NOXLATE
+                string type = prov["Type"].InnerText; //NOXLATE
 
                 if (!System.IO.Path.IsPathRooted(dll))
                     dll = System.IO.Path.Combine(_dllRoot, dll);
@@ -210,7 +210,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             string name = entry.Name.ToUpper();
             if (_ctors.ContainsKey(name))
-                throw new ArgumentException("Provider already registered: " + entry.Name);
+                throw new ArgumentException(string.Format(Properties.Resources.ErrorProviderAlreadyRegistered, entry.Name));
 
             _ctors[name] = method;
             _providers.Add(entry);
@@ -226,11 +226,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             string name = provider.ToUpper();
             if (!_ctors.ContainsKey(name))
-                throw new ArgumentException("Provider not registered: " + provider);
+                throw new ArgumentException(string.Format(Properties.Resources.ErrorProviderNotRegistered, provider));
 
             ConnectionProviderEntry prv = FindProvider(provider);
             if (prv != null && !prv.IsMultiPlatform && Platform.IsRunningOnMono)
-                throw new NotSupportedException("The specified provider is not usable in your operating system");
+                throw new NotSupportedException(string.Format(Properties.Resources.ErrorProviderNotUsableForYourPlatform, provider));
 
             ConnectionFactoryMethod method = _ctors[name];
 
@@ -248,11 +248,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             string name = provider.ToUpper();
             if (!_ctors.ContainsKey(name))
-                throw new ArgumentException("Provider not registered: " + provider);
+                throw new ArgumentException(string.Format(Properties.Resources.ErrorProviderNotRegistered, provider));
 
             ConnectionProviderEntry prv = FindProvider(provider);
             if (prv != null && !prv.IsMultiPlatform && Platform.IsRunningOnMono)
-                throw new NotSupportedException("The specified provider is not usable in your operating system");
+                throw new NotSupportedException(string.Format(Properties.Resources.ErrorProviderNotUsableForYourPlatform, provider));
 
             var method = _ctors[name];
             return method(connInitParams);

@@ -217,31 +217,31 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
             int current = 0;
 
             string root = shpl.RootPath;
-            if (!root.EndsWith("/"))
-                root += "/";
+            if (!root.EndsWith("/")) //NOXLATE
+                root += "/"; //NOXLATE
 
             string sdp = shpl.SpatialDataSourcesPath;
             string lp = shpl.LayersPath;
 
             if (!string.IsNullOrEmpty(sdp))
             {
-                if (!sdp.EndsWith("/"))
-                    sdp += "/";
+                if (!sdp.EndsWith("/")) //NOXLATE
+                    sdp += "/"; //NOXLATE
             }
 
             if (!string.IsNullOrEmpty(lp))
             {
-                if (!lp.EndsWith("/"))
-                    lp += "/";
+                if (!lp.EndsWith("/")) //NOXLATE
+                    lp += "/"; //NOXLATE
             }
 
             string fsRoot = (string.IsNullOrEmpty(sdp) ? root : sdp) + shpl.SpatialDataSourcesFolder;
             string layerRoot = (string.IsNullOrEmpty(lp) ? root : lp) + shpl.LayersFolder;
 
-            if (!fsRoot.EndsWith("/"))
-                fsRoot += "/";
-            if (!layerRoot.EndsWith("/"))
-                layerRoot += "/";
+            if (!fsRoot.EndsWith("/")) //NOXLATE
+                fsRoot += "/"; //NOXLATE
+            if (!layerRoot.EndsWith("/")) //NOXLATE
+                layerRoot += "/"; //NOXLATE
 
             List<string> resToUpdate = new List<string>();
             if (shpl.ResourceId != null)
@@ -261,12 +261,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                 if (!extraFiles.ContainsKey(shp))
                     extraFiles[shp] = new List<string>();
                 //we want to preserve casing for everything before the extension
-                string prefix = shp.Substring(0, shp.LastIndexOf(".") + 1);
-                extraFiles[shp].Add(prefix + "shx");
-                extraFiles[shp].Add(prefix + "dbf");
-                extraFiles[shp].Add(prefix + "idx");
-                extraFiles[shp].Add(prefix + "prj");
-                extraFiles[shp].Add(prefix + "cpg");
+                string prefix = shp.Substring(0, shp.LastIndexOf(".") + 1); //NOXLATE
+                extraFiles[shp].Add(prefix + "shx"); //NOXLATE
+                extraFiles[shp].Add(prefix + "dbf"); //NOXLATE
+                extraFiles[shp].Add(prefix + "idx"); //NOXLATE
+                extraFiles[shp].Add(prefix + "prj"); //NOXLATE
+                extraFiles[shp].Add(prefix + "cpg"); //NOXLATE
 
                 //TODO: Are we missing anything else?
             }
@@ -279,8 +279,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                     string resName = System.IO.Path.GetFileNameWithoutExtension(file);
                     string dataName = System.IO.Path.GetFileName(file);
 
-                    string fsId = fsRoot + resName + ".FeatureSource";
-                    string lyrId = layerRoot + resName + ".LayerDefinition";
+                    string fsId = fsRoot + resName + ".FeatureSource"; //NOXLATE
+                    string lyrId = layerRoot + resName + ".LayerDefinition"; //NOXLATE
 
                     if (shpl.GenerateSpatialDataSources)
                     {
@@ -297,13 +297,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
 
                             //Step 1: Create feature source document
                             var conp = new NameValueCollection();
-                            conp["DefaultFileLocation"] = "%MG_DATA_FILE_PATH%" + dataName;
-                            var fs = ObjectFactory.CreateFeatureSource(this.Parent, "OSGeo.SHP", conp);
+                            conp["DefaultFileLocation"] = StringConstants.MgDataFilePath + dataName; //NOXLATE
+                            var fs = ObjectFactory.CreateFeatureSource(this.Parent, "OSGeo.SHP", conp); //NOXLATE
                             fs.ResourceID = fsId;
 
                             this.Parent.ResourceService.SaveResource(fs);
                             resCreatedOrUpdated.Add(fsId);
-                            cb(this, new LengthyOperationProgressArgs("Created: " + fsId, current));
+                            cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateCreated, fsId), current));
 
                             //TODO: When the infrastructure is available to us (ie. A portable .net FDO/MG Feature Service API wrapper)
                             //Maybe then we can actually implement the generalization and conversion properties. Until then, we skip
@@ -312,7 +312,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                             //Step 2: Load resource data for document
                             this.Parent.ResourceService.SetResourceData(fsId, dataName, ResourceDataType.File, System.IO.File.OpenRead(file));
 
-                            cb(this, new LengthyOperationProgressArgs("Loaded: " + file, current));
+                            cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateLoaded, file), current));
 
                             //Load supplementary files
                             foreach (string extraFile in extraFiles[file])
@@ -321,7 +321,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                 if (System.IO.File.Exists(extraFile))
                                 {
                                     this.Parent.ResourceService.SetResourceData(fsId, dn, ResourceDataType.File, System.IO.File.OpenRead(extraFile));
-                                    cb(this, new LengthyOperationProgressArgs("Loaded: " + extraFile, current));
+                                    cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateLoaded, extraFile), current));
                                 }
                             }
 
@@ -329,7 +329,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                             string result = this.Parent.FeatureService.TestConnection(fsId);
 
                             //LocalNativeConnection returns this string, so I'm assuming this is the "success" result
-                            if (result == "No errors" || result.ToLower() == "true")
+                            if (result == "No errors" || result.ToLower() == "true") //NOXLATE
                             {
                                 //Step 4: Test to see if default cs needs to be specified
                                 FdoSpatialContextList spatialContexts = this.Parent.FeatureService.GetSpatialContextInfo(fsId, false);
@@ -339,7 +339,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                     //If there is no prj file, we can just upload one with the specified WKT
                                     foreach (var resd in fs.EnumerateResourceData())
                                     {
-                                        if (resd.Name == resName + ".prj")
+                                        if (resd.Name == resName + ".prj") //NOXLATE
                                         {
                                             hasPrj = true;
                                             break;
@@ -353,8 +353,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
 
                                         using (var fsr = System.IO.File.OpenRead(tmp))
                                         {
-                                            fs.SetResourceData(resName + ".prj", ResourceDataType.File, fsr);
-                                            cb(this, new LengthyOperationProgressArgs("Uploaded: " + resName + ".prj", current));
+                                            fs.SetResourceData(resName + ".prj", ResourceDataType.File, fsr); //NOXLATE
+                                            cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateUploadedPrj, resName), current));
                                         }
 
                                         try
@@ -368,14 +368,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                         //Register the default CS from the load procedure
                                         fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.SpatialContextType()
                                         {
-                                            Name = "Default",
+                                            Name = "Default", //NOXLATE
                                             CoordinateSystem = shpl.CoordinateSystem
                                         });
 
                                         //Update this feature source
                                         this.Parent.ResourceService.SaveResource(fs);
 
-                                        cb(this, new LengthyOperationProgressArgs("Set default spatial context for: " + fsId, current));
+                                        cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateSetSpatialContext, fsId), current));
                                     }
                                     else if (spatialContexts.SpatialContext.Count == 1) //Case 3: One spatial context with blank WKT. Override it using the SupplementalContextInfo
                                     {
@@ -392,7 +392,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                             //Update this feature source
                                             this.Parent.ResourceService.SaveResource(fs);
 
-                                            cb(this, new LengthyOperationProgressArgs("Set default spatial context for: " + fsId, current));
+                                            cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateSetSpatialContext, fsId), current));
                                         }
                                     }
                                 }
@@ -481,7 +481,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
 
                                 this.Parent.ResourceService.SaveResource(ld);
                                 resCreatedOrUpdated.Add(lyrId);
-                                cb(this, new LengthyOperationProgressArgs("Created: " + lyrId, current));
+                                cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateCreated, lyrId), current));
                             }
                         }
                     }
@@ -489,7 +489,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                 }
                 else
                 {
-                    cb(this, new LengthyOperationProgressArgs("File not found: " + file, current));
+                    cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateFileNotFound, file), current));
                 }
 
                 //This file is now fully processed, so increment progress
@@ -497,7 +497,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
 
                 if (success)
                 {
-                    cb(this, new LengthyOperationProgressArgs("Success: " + file, current));
+                    cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateSuccess, file), current));
                 }
             }
 
@@ -513,31 +513,31 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
             int current = 0;
 
             string root = proc.RootPath;
-            if (!root.EndsWith("/"))
-                root += "/";
+            if (!root.EndsWith("/")) //NOXLATE
+                root += "/"; //NOXLATE
 
             string sdp = proc.SpatialDataSourcesPath;
             string lp = proc.LayersPath;
 
             if (!string.IsNullOrEmpty(sdp))
             {
-                if (!sdp.EndsWith("/"))
-                    sdp += "/";
+                if (!sdp.EndsWith("/")) //NOXLATE
+                    sdp += "/"; //NOXLATE
             }
 
             if (!string.IsNullOrEmpty(lp))
             {
-                if (!lp.EndsWith("/"))
-                    lp += "/";
+                if (!lp.EndsWith("/")) //NOXLATE
+                    lp += "/"; //NOXLATE
             }
 
             string fsRoot = (string.IsNullOrEmpty(sdp) ? root : sdp) + proc.SpatialDataSourcesFolder;
             string layerRoot = (string.IsNullOrEmpty(lp) ? root : lp) + proc.LayersFolder;
 
-            if (!fsRoot.EndsWith("/"))
-                fsRoot += "/";
-            if (!layerRoot.EndsWith("/"))
-                layerRoot += "/";
+            if (!fsRoot.EndsWith("/")) //NOXLATE
+                fsRoot += "/"; //NOXLATE
+            if (!layerRoot.EndsWith("/")) //NOXLATE
+                layerRoot += "/"; //NOXLATE
 
             List<string> resToUpdate = new List<string>();
             if (proc.ResourceId != null && proc.ResourceId.Count > 0)
@@ -560,9 +560,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
 
                     string resName = System.IO.Path.GetFileNameWithoutExtension(file);
                     string dataName = System.IO.Path.GetFileName(file);
-                    string dsId = fsRoot + resName + ".DrawingSource";
-                    string fsId = fsRoot + resName + ".FeatureSource";
-                    string lyrId = layerRoot + resName + ".LayerDefinition";
+                    string dsId = fsRoot + resName + ".DrawingSource"; //NOXLATE
+                    string fsId = fsRoot + resName + ".FeatureSource"; //NOXLATE
+                    string lyrId = layerRoot + resName + ".LayerDefinition"; //NOXLATE
 
                     if (proc.GenerateSpatialDataSources)
                     {
@@ -584,11 +584,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                 ds.ResourceID = dsId;
                                 this.Parent.ResourceService.SaveResource(ds);
                                 resCreatedOrUpdated.Add(dsId);
-                                cb(this, new LengthyOperationProgressArgs("Created: " + dsId, current));
+                                cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateCreated, dsId), current));
 
                                 //Step 2: Load resource data for document
                                 this.Parent.ResourceService.SetResourceData(dsId, dataName, ResourceDataType.File, System.IO.File.OpenRead(file));
-                                cb(this, new LengthyOperationProgressArgs("Loaded: " + file, current));
+                                cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateLoaded, file), current));
 
                                 var dwSvc = (IDrawingService)Parent.GetService((int)ServiceType.Drawing);
                                 var list = dwSvc.EnumerateDrawingSections(dsId);
@@ -617,22 +617,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                 // 4. If no spatial contexts are detected, assign a default one from the load procedure and save the modified feature source.
 
                                 //Step 1: Create feature source document
-                                string provider = "OSGeo.SDF";
+                                string provider = "OSGeo.SDF"; //NOXLATE
 
                                 switch (proc.Type)
                                 {
                                     case LoadType.Sqlite:
-                                        provider = "OSGeo.SQLite";
+                                        provider = "OSGeo.SQLite"; //NOXLATE
                                         break;
                                 }
                                 var conp = new NameValueCollection();
-                                conp["File"] = "%MG_DATA_FILE_PATH%" + dataName;
+                                conp["File"] = StringConstants.MgDataFilePath + dataName;
                                 var fs = ObjectFactory.CreateFeatureSource(this.Parent, provider, conp);
                                 fs.ResourceID = fsId;
 
                                 this.Parent.ResourceService.SaveResource(fs);
                                 resCreatedOrUpdated.Add(fsId);
-                                cb(this, new LengthyOperationProgressArgs("Created: " + fsId, current));
+                                cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateCreated, fsId), current));
 
                                 //TODO: When the infrastructure is available to us (ie. A portable .net FDO/MG Feature Service API wrapper)
                                 //Maybe then we can actually implement the generalization and duplicate record handling properties. Until then, we skip
@@ -641,13 +641,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                 //Step 2: Load resource data for document
                                 this.Parent.ResourceService.SetResourceData(fsId, dataName, ResourceDataType.File, System.IO.File.OpenRead(file));
 
-                                cb(this, new LengthyOperationProgressArgs("Loaded: " + file, current));
+                                cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateCreated, file), current));
 
                                 //Step 3: Test to make sure we're all good so far
                                 string result = this.Parent.FeatureService.TestConnection(fsId);
 
                                 //LocalNativeConnection returns this string, so I'm assuming this is the "success" result
-                                if (result == "No errors" || result.ToLower() == "true")
+                                if (result == "No errors" || result.ToLower() == "true") //NOXLATE
                                 {
                                     //Step 4: Test to see if default cs needs to be specified
                                     FdoSpatialContextList spatialContexts = this.Parent.FeatureService.GetSpatialContextInfo(fsId, false);
@@ -659,14 +659,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                             //Register the default CS from the load procedure
                                             fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.SpatialContextType()
                                             {
-                                                Name = "Default",
+                                                Name = "Default", //NOXLATE
                                                 CoordinateSystem = proc.CoordinateSystem
                                             });
 
                                             //Update this feature source
                                             this.Parent.ResourceService.SaveResource(fs);
 
-                                            cb(this, new LengthyOperationProgressArgs("Set default spatial context for: " + fsId, current));
+                                            cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateSetSpatialContext, fsId), current));
                                         }
                                         else if (spatialContexts.SpatialContext.Count == 1) //Case 2: One spatial context, but its WKT is blank. Override using SupplementalContextInfo
                                         {
@@ -683,7 +683,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                                 //Update this feature source
                                                 this.Parent.ResourceService.SaveResource(fs);
 
-                                                cb(this, new LengthyOperationProgressArgs("Set default spatial context for: " + fsId, current));
+                                                cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateSetSpatialContext, fsId), current));
                                             }
                                         }
                                     }
@@ -720,7 +720,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
 
                                     this.Parent.ResourceService.SaveResource(ld);
                                     resCreatedOrUpdated.Add(lyrId);
-                                    cb(this, new LengthyOperationProgressArgs("Created: " + lyrId, current));
+                                    cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateCreated, lyrId), current));
                                 }
                             }
                             else
@@ -803,7 +803,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
 
                                         this.Parent.ResourceService.SaveResource(ld);
                                         resCreatedOrUpdated.Add(lyrId);
-                                        cb(this, new LengthyOperationProgressArgs("Created: " + lyrId, current));
+                                        cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateCreated, lyrId), current));
                                     }
                                 }
                             }
@@ -813,7 +813,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                 }
                 else
                 {
-                    cb(this, new LengthyOperationProgressArgs("File not found: " + file, current));
+                    cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateFileNotFound, file), current));
                 }
 
                 //This file is now fully processed, so increment progress
@@ -821,7 +821,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
 
                 if (success)
                 {
-                    cb(this, new LengthyOperationProgressArgs("File processed: " + file, current));
+                    cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.TemplateFileProcessed, file), current));
                 }
             }
             return resCreatedOrUpdated.ToArray();

@@ -112,8 +112,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <param name="target">The target.</param>
         public static void CopyResourceDataTo(this IResource source, IResource target)
         {
-            Check.NotNull(source, "source");
-            Check.NotNull(target, "target");
+            Check.NotNull(source, "source"); //NOXLATE
+            Check.NotNull(target, "target"); //NOXLATE
 
             foreach (var res in source.EnumerateResourceData())
             {
@@ -141,8 +141,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <param name="targetID">The target ID.</param>
         public static void CopyResourceDataTo(this IResource source, string targetID)
         {
-            Check.NotNull(source, "source");
-            Check.NotEmpty(targetID, "targetID");
+            Check.NotNull(source, "source"); //NOXLATE
+            Check.NotEmpty(targetID, "targetID"); //NOXLATE
 
             foreach (var res in source.EnumerateResourceData())
             {

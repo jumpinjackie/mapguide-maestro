@@ -90,8 +90,8 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <param name="currentNode"></param>
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
-            var loc = doc.CreateElement("Location");
-            var locName = doc.CreateAttribute("name");
+            var loc = doc.CreateElement("Location"); //NOXLATE
+            var locName = doc.CreateAttribute("name"); //NOXLATE
             locName.Value = this.Location;
             loc.Attributes.Append(locName);
 
@@ -110,10 +110,10 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <param name="mgr"></param>
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
-            if (node.Name != "Location")
-                throw new Exception("Bad document. Expected element: Location");
+            if (node.Name != "Location") //NOXLATE
+                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "Location")); //NOXLATE
 
-            var loc = node.Attributes["name"];
+            var loc = node.Attributes["name"]; //NOXLATE
             this.Location = loc.Value;
 
             foreach (System.Xml.XmlNode item in node.ChildNodes)
@@ -172,33 +172,33 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <param name="currentNode"></param>
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
-            var feat = doc.CreateElement("Feature");
+            var feat = doc.CreateElement("Feature"); //NOXLATE
 
-            var featName = doc.CreateAttribute("name");
+            var featName = doc.CreateAttribute("name"); //NOXLATE
             featName.Value = Path.GetFileNameWithoutExtension(this.FileName);
 
             feat.Attributes.Append(featName);
             {
-                var band = doc.CreateElement("Band");
-                var bandName = doc.CreateAttribute("name");
-                bandName.Value = "RGB";
-                var bandNo = doc.CreateAttribute("number");
-                bandNo.Value = "1";
+                var band = doc.CreateElement("Band"); //NOXLATE
+                var bandName = doc.CreateAttribute("name"); //NOXLATE
+                bandName.Value = "RGB"; //NOXLATE
+                var bandNo = doc.CreateAttribute("number"); //NOXLATE
+                bandNo.Value = "1"; //NOXLATE
 
                 band.Attributes.Append(bandName);
                 band.Attributes.Append(bandNo);
                 {
-                    var img = doc.CreateElement("Image");
-                    var imgFrame = doc.CreateAttribute("frame");
-                    imgFrame.Value = "1";
-                    var imgName = doc.CreateAttribute("name");
+                    var img = doc.CreateElement("Image"); //NOXLATE
+                    var imgFrame = doc.CreateAttribute("frame"); //NOXLATE
+                    imgFrame.Value = "1"; //NOXLATE
+                    var imgName = doc.CreateAttribute("name"); //NOXLATE
                     imgName.Value = this.FileName;
 
                     img.Attributes.Append(imgFrame);
                     img.Attributes.Append(imgName);
                     {
-                        var bounds = doc.CreateElement("Bounds");
-                        bounds.InnerXml = string.Format(CultureInfo.InvariantCulture, "<MinX>{0}</MinX><MinY>{1}</MinY><MaxX>{2}</MaxX><MaxY>{3}</MaxY>", this.MinX, this.MinY, this.MaxX, this.MaxY);
+                        var bounds = doc.CreateElement("Bounds"); //NOXLATE
+                        bounds.InnerXml = string.Format(CultureInfo.InvariantCulture, "<MinX>{0}</MinX><MinY>{1}</MinY><MaxX>{2}</MaxX><MaxY>{3}</MaxY>", this.MinX, this.MinY, this.MaxX, this.MaxY); //NOXLATE
 
                         img.AppendChild(bounds);
                     }
@@ -216,23 +216,23 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <param name="mgr"></param>
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
-            if (node.Name != "Feature")
-                throw new Exception("Bad document. Expected element: Feature");
+            if (node.Name != "Feature") //NOXLATE
+                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "Feature"));
 
             var band = node.FirstChild;
             var image = band.FirstChild;
             var bounds = image.FirstChild;
 
-            if (band.Name != "Band")
-                throw new Exception("Bad document. Expected element: Band");
+            if (band.Name != "Band") //NOXLATE
+                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "Band"));
 
-            if (image.Name != "Image")
-                throw new Exception("Bad document. Expected element: Image");
+            if (image.Name != "Image") //NOXLATE
+                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "Image"));
 
-            if (bounds.Name != "Bounds")
-                throw new Exception("Bad document. Expected element: Bounds");
+            if (bounds.Name != "Bounds") //NOXLATE
+                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "Bounds"));
 
-            var fileName = image.Attributes["name"];
+            var fileName = image.Attributes["name"]; //NOXLATE
             this.FileName = fileName.Value;
 
             var minx = bounds.ChildNodes[0];
@@ -240,17 +240,17 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             var maxx = bounds.ChildNodes[2];
             var maxy = bounds.ChildNodes[3];
 
-            if (minx.Name != "MinX")
-                throw new Exception("Bad document. Expected element: MinX");
+            if (minx.Name != "MinX") //NOXLATE
+                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "MinX"));
 
-            if (miny.Name != "MinY")
-                throw new Exception("Bad document. Expected element: MinY");
+            if (miny.Name != "MinY") //NOXLATE
+                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "MinY"));
 
-            if (maxx.Name != "MaxX")
-                throw new Exception("Bad document. Expected element: MaxX");
+            if (maxx.Name != "MaxX") //NOXLATE
+                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "MaxX"));
 
-            if (maxy.Name != "MaxY")
-                throw new Exception("Bad document. Expected element: MaxY");
+            if (maxy.Name != "MaxY") //NOXLATE
+                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "MaxY"));
 
             this.MinX = Convert.ToDouble(minx.InnerText);
             this.MinY = Convert.ToDouble(miny.InnerText);

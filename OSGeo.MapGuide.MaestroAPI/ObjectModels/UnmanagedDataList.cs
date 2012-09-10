@@ -37,13 +37,13 @@ namespace OSGeo.MapGuide.ObjectModels.Common
                 string str = this.unmanagedDataIdField;
                 if (!string.IsNullOrEmpty(str))
                 {
-                    if (str.Contains("/"))
+                    if (str.Contains("/")) //NOXLATE
                     {
-                        return str.Substring(str.LastIndexOf("/") + 1);
+                        return str.Substring(str.LastIndexOf("/") + 1); //NOXLATE
                     }
                     else
                     {
-                        return str.Substring(str.LastIndexOf("]") + 1);
+                        return str.Substring(str.LastIndexOf("]") + 1); //NOXLATE
                     }
                 }
                 return string.Empty;
@@ -61,17 +61,17 @@ namespace OSGeo.MapGuide.ObjectModels.Common
                 string str = this.unmanagedDataIdField;
                 if (!string.IsNullOrEmpty(str))
                 {
-                    if (str.EndsWith("/")) 
+                    if (str.EndsWith("/"))  //NOXLATE
                         str = str.Substring(0, str.Length - 1);
 
-                    var tokens = str.Split('/');
+                    var tokens = str.Split('/'); //NOXLATE
                     if (tokens.Length == 1)
                     {
                         var p = tokens[0];
-                        if (p.EndsWith("]"))
+                        if (p.EndsWith("]")) //NOXLATE
                             return p;
                         else
-                            return p.Substring(p.IndexOf("]") + 1);
+                            return p.Substring(p.IndexOf("]") + 1); //NOXLATE
                     }
                     else
                         return tokens[tokens.Length - 1];
