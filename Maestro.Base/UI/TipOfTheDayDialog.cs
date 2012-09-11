@@ -57,14 +57,14 @@ namespace Maestro.Base.UI
             //Init the tips
             List<string> tips = new List<string>();
             XmlDocument doc = new XmlDocument();
-            string totdRoot = Path.Combine(FileUtility.ApplicationRootPath, "Data/TipOfTheDay");
+            string totdRoot = Path.Combine(FileUtility.ApplicationRootPath, "Data/TipOfTheDay"); //NOXLATE
             var ci = Thread.CurrentThread.CurrentUICulture;
             //Try to find a localized source based on current UI culture, fallback to english if none found
-            string path = Path.Combine(totdRoot, ci.Name + ".xml");
+            string path = Path.Combine(totdRoot, ci.Name + ".xml"); //NOXLATE
             if (!File.Exists(path))
-                path = Path.Combine(totdRoot, "en.xml");
+                path = Path.Combine(totdRoot, "en.xml"); //NOXLATE
             doc.Load(path);
-            foreach (XmlNode node in doc.SelectNodes("//Tips/TipOfTheDay"))
+            foreach (XmlNode node in doc.SelectNodes("//Tips/TipOfTheDay")) //NOXLATE
             {
                 tips.Add(node.InnerText);
             }

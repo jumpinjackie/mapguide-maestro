@@ -34,7 +34,7 @@ namespace Maestro.Base.Services
             _handlers = new Dictionary<string, List<IDragDropHandler>>();
 
             //Find and register drag and drop handlers
-            List<IDragDropHandler> handlers = AddInTree.BuildItems<IDragDropHandler>("/Maestro/DragDropHandlers", this);
+            List<IDragDropHandler> handlers = AddInTree.BuildItems<IDragDropHandler>("/Maestro/DragDropHandlers", this); //NOXLATE
             if (handlers != null)
             {
                 foreach (IDragDropHandler h in handlers)

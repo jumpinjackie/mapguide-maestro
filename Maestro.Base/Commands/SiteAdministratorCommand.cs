@@ -34,13 +34,13 @@ namespace Maestro.Base.Commands
             var mgr = ServiceRegistry.GetService<ServerConnectionManager>();
             var conn = mgr.GetConnection(wb.ActiveSiteExplorer.ConnectionName);
 
-            if (conn.ProviderName.ToUpper() == "MAESTRO.HTTP")
+            if (conn.ProviderName.ToUpper() == "MAESTRO.HTTP") //NOXLATE
             {
-                string baseUrl = conn.GetCustomProperty("BaseUrl").ToString();
-                if (!baseUrl.EndsWith("/"))
-                    baseUrl += "/";
+                string baseUrl = conn.GetCustomProperty("BaseUrl").ToString(); //NOXLATE
+                if (!baseUrl.EndsWith("/")) //NOXLATE
+                    baseUrl += "/"; //NOXLATE
 
-                Process.Start(baseUrl + "mapadmin/login.php");
+                Process.Start(baseUrl + "mapadmin/login.php"); //NOXLATE
             }
         }
     }

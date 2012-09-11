@@ -33,7 +33,7 @@ namespace Maestro.Base.Commands.Conditions
             foreach (var connName in connMgr.GetConnectionNames())
             {
                 var conn = connMgr.GetConnection(connName);
-                if (conn.ProviderName.Equals(condition.Properties["provider"]))
+                if (conn.ProviderName.Equals(condition.Properties["provider"])) //NOXLATE
                     return true;
             }
             return false;

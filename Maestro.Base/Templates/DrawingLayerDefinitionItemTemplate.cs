@@ -51,7 +51,7 @@ namespace Maestro.Base.Templates
                     var ldf = ObjectFactory.CreateDefaultLayer(conn, OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Drawing, new Version(1, 0, 0));
                     ldf.SubLayer.ResourceId = picker.ResourceID;
                     var dl = ((IDrawingLayerDefinition)ldf.SubLayer);
-                    dl.LayerFilter = "";
+                    dl.LayerFilter = string.Empty;
                     dl.MinScale = 0;
 
                     IDrawingService dwSvc = (IDrawingService)conn.GetService((int)ServiceType.Drawing);

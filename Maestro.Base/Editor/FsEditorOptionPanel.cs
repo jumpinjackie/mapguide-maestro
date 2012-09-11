@@ -86,13 +86,13 @@ namespace Maestro.Base.Editor
             dlg.ShowDialog();
 
             /*
-            string exe = PropertyService.Get(ConfigProperties.LocalFsPreviewPath, "");
+            string exe = PropertyService.Get(ConfigProperties.LocalFsPreviewPath, string.Empty);
 
             if (!File.Exists(exe))
             {
                 using (var dlg = DialogFactory.OpenFile())
                 {
-                    dlg.Title = string.Format(Properties.Resources.LocateExecutable, "MaestroFsPreview.exe");
+                    dlg.Title = string.Format(Properties.Resources.LocateExecutable, "MaestroFsPreview.exe"); //NOXLATE
                     dlg.Filter = Properties.Resources.FilterExecutables;
                     if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
@@ -110,9 +110,9 @@ namespace Maestro.Base.Editor
             List<string> args = new List<string>();
             foreach (string key in clonep.Keys)
             {
-                args.Add("-" + key + ":" + clonep[key]);
+                args.Add("-" + key + ":" + clonep[key]); //NOXLATE
             }
-            procInfo.Arguments = string.Join(" ", args.ToArray());
+            procInfo.Arguments = string.Join(" ", args.ToArray()); //NOXLATE
             var proc = Process.Start(procInfo);
              */
         }

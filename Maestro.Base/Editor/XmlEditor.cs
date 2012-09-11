@@ -70,7 +70,7 @@ namespace Maestro.Base.Editor
             _edSvc.RegisterCustomNotifier(editor);
             editor.Bind(_edSvc);
             editor.ReadyForEditing(); //This turns on event broadcasting
-            this.Title = Properties.Resources.XmlEditor + " " + ResourceIdentifier.GetName(this.EditorService.ResourceID);
+            this.Title = Properties.Resources.XmlEditor + " " + ResourceIdentifier.GetName(this.EditorService.ResourceID); //NOXLATE
         }
 
         protected override ICollection<ValidationIssue> ValidateEditedResource()
@@ -140,7 +140,7 @@ namespace Maestro.Base.Editor
         public override void Preview()
         {
             //Save the current resource to another session copy
-            string resId = "Session:" + this.EditorService.SessionID + "//" + Guid.NewGuid() + "." + this.Resource.ResourceType.ToString();
+            string resId = "Session:" + this.EditorService.SessionID + "//" + Guid.NewGuid() + "." + this.Resource.ResourceType.ToString(); //NOXLATE
             this.EditorService.ResourceService.SetResourceXmlData(resId, new MemoryStream(Encoding.UTF8.GetBytes(this.XmlContent)));
 
             //Copy any resource data

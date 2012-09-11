@@ -23,6 +23,7 @@ using System.Text;
 using ICSharpCode.Core;
 using Maestro.Base.Services;
 using Maestro.Editors.FeatureSource;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -39,7 +40,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                     if (items.Length == 1)
                     {
                         var it = items[0];
-                        if (it.ResourceType == "FeatureSource")
+                        if (it.ResourceType == ResourceTypes.FeatureSource.ToString())
                         {
                             var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
                             var conn = connMgr.GetConnection(wb.ActiveSiteExplorer.ConnectionName);

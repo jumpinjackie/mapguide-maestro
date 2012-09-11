@@ -31,7 +31,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
 
         public WebLayout110EditorFactory()
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, "1.1.0");
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, "1.1.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -46,7 +46,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
 
         public WebLayout240EditorFactory()
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, "2.4.0");
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, "2.4.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -61,7 +61,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
 
         public LayerDefinition110EditorFactory()
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition, "1.1.0");
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition, "1.1.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -77,7 +77,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
 
         public LayerDefinition120EditorFactory()
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition, "1.2.0");
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition, "1.2.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -93,7 +93,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
 
         public LayerDefinition130EditorFactory()
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition, "1.3.0");
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition, "1.3.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -109,7 +109,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
 
         public LayerDefinition230EditorFactory()
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition, "2.3.0");
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition, "2.3.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -125,7 +125,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
 
         public LayerDefinition240EditorFactory()
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition, "2.4.0");
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition, "2.4.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -141,7 +141,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
 
         public MapDefinition230EditorFactory()
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition, "2.3.0");
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition, "2.3.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -157,7 +157,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
 
         public MapDefinition240EditorFactory()
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition, "2.4.0");
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition, "2.4.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -173,7 +173,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
 
         public WatermarkDefinition230EditorFactory()
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WatermarkDefinition, "2.3.0");
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WatermarkDefinition, "2.3.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -189,7 +189,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
 
         public WatermarkDefinition240EditorFactory()
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WatermarkDefinition, "2.4.0");
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WatermarkDefinition, "2.4.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -205,7 +205,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
 
         public LoadProcedure110EditorFactory()
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LoadProcedure, "1.1.0");
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LoadProcedure, "1.1.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -221,7 +221,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
 
         public LoadProcedure220EditorFactory()
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LoadProcedure, "2.2.0");
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LoadProcedure, "2.2.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -237,7 +237,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
 
         public SymbolDefinition110EditorFactory()
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.SymbolDefinition, "1.1.0");
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.SymbolDefinition, "1.1.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -252,7 +252,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
 
         public SymbolDefinition240EditorFactory()
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.SymbolDefinition, "2.4.0");
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.SymbolDefinition, "2.4.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()

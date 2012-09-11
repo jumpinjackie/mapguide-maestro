@@ -41,14 +41,14 @@ namespace Maestro.Base.Commands
             ResourceService.RegisterNeutralImages(Properties.Resources.ResourceManager);
             ResourceService.RegisterNeutralStrings(Properties.Resources.ResourceManager);
 
-            ResourcePreviewerFactory.RegisterPreviewer("Maestro.Http", new DefaultResourcePreviewer());
+            ResourcePreviewerFactory.RegisterPreviewer("Maestro.Http", new DefaultResourcePreviewer()); //NOXLATE
 
             Workbench.WorkbenchInitialized += (sender, e) =>
             {
                 ServiceRegistry.GetService<NewItemTemplateService>().InitUserTemplates();
                 var wb = Workbench.Instance;
                 wb.FormClosing += new System.Windows.Forms.FormClosingEventHandler(OnWorkbenchClosing);
-                wb.Text = "MapGuide Maestro";
+                wb.Text = "MapGuide Maestro"; //NOXLATE
 
                 var mgr = ServiceRegistry.GetService<ViewContentManager>();
 

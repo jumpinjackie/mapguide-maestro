@@ -29,19 +29,19 @@ namespace Maestro.Base.UI.Preferences
 {
     public static class ConfigProperties
     {
-        public const string PreviewViewerType = "General.PreviewViewerType";
-        public const string UserTemplatesDirectory = "General.UserTemplatesDirectory";
-        public const string ShowMessages = "General.ShowMessages";
-        public const string ShowOutboundRequests = "General.ShowOutboundRequests";
-        public const string OpenColor = "General.OpenColor";
-        public const string DirtyColor = "General.DirtyColor";
-        public const string MgCookerPath = "General.MgCookerPath";
-        public const string RtMapInspectorPath = "General.RtMapInspectorPath";
-        public const string LocalFsPreviewPath = "General.LocalFsPreviewPath";
-        public const string ValidateOnSave = "General.ValidateResourceOnSave";
-        public const string XsdSchemaPath = "Editor.XsdSchemaPath";
-        public const string ShowTipOfTheDay = "General.ShowTipOfTheDay";
-        public const string LiveMapEditorPath = "General.LiveMapEditorPath";
+        public const string PreviewViewerType = "General.PreviewViewerType"; //NOXLATE
+        public const string UserTemplatesDirectory = "General.UserTemplatesDirectory"; //NOXLATE
+        public const string ShowMessages = "General.ShowMessages"; //NOXLATE
+        public const string ShowOutboundRequests = "General.ShowOutboundRequests"; //NOXLATE
+        public const string OpenColor = "General.OpenColor"; //NOXLATE
+        public const string DirtyColor = "General.DirtyColor"; //NOXLATE
+        public const string MgCookerPath = "General.MgCookerPath"; //NOXLATE
+        public const string RtMapInspectorPath = "General.RtMapInspectorPath"; //NOXLATE
+        public const string LocalFsPreviewPath = "General.LocalFsPreviewPath"; //NOXLATE
+        public const string ValidateOnSave = "General.ValidateResourceOnSave"; //NOXLATE
+        public const string XsdSchemaPath = "Editor.XsdSchemaPath"; //NOXLATE
+        public const string ShowTipOfTheDay = "General.ShowTipOfTheDay"; //NOXLATE
+        public const string LiveMapEditorPath = "General.LiveMapEditorPath"; //NOXLATE
 
         internal static void ApplyDefaults()
         {
@@ -72,13 +72,13 @@ namespace Maestro.Base.UI.Preferences
 
         public static bool DefaultShowTipOfTheDay { get { return true; } }
 
-        public static string DefaultMgCookerPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "MgCooker.exe"); } }
+        public static string DefaultMgCookerPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "MgCooker.exe"); } } //NOXLATE
 
-        public static string DefaultLocalFsPreviewPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "MaestroFsPreview.exe"); } }
+        public static string DefaultLocalFsPreviewPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "MaestroFsPreview.exe"); } } //NOXLATE
 
-        public static string DefaultRtMapInspectorPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "RtMapInspector.exe"); } }
+        public static string DefaultRtMapInspectorPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "RtMapInspector.exe"); } } //NOXLATE
 
-        public static string DefaultLiveMapEditorPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "Maestro.LiveMapEditor.exe"); } }
+        public static string DefaultLiveMapEditorPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "Maestro.LiveMapEditor.exe"); } } //NOXLATE
         
         public static Color DefaultOpenColor { get { return Color.LightGreen; } }
 
@@ -90,10 +90,10 @@ namespace Maestro.Base.UI.Preferences
         
         public static bool DefaultValidateOnSave { get { return true; } }
 
-        public static string DefaultXsdSchemaPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "Schemas"); } }
+        public static string DefaultXsdSchemaPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "Schemas"); } } //NOXLATE
 
-        public static string DefaultPreviewViewerType { get { return "AJAX"; } }
+        public static string DefaultPreviewViewerType { get { return "AJAX"; } } //NOXLATE
 
-        public static string DefaultUserTemplatesDirectory { get { return Path.Combine(FileUtility.ApplicationRootPath, "UserTemplates"); } }
+        public static string DefaultUserTemplatesDirectory { get { return Path.Combine(FileUtility.ApplicationRootPath, "UserTemplates"); } } //NOXLATE
     }
 }

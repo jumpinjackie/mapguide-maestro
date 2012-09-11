@@ -108,7 +108,8 @@ namespace Maestro.AddIn.Scripting.UI
             if (!string.IsNullOrEmpty(text.Trim()))
             {
                 //sbOutput.Remove(0, sbOutput.Length);        //Clear
-                text = text.Replace("\\n", "\r\n");         //to support newline for textbox use
+                //to support newline for textbox use
+                text = text.Replace("\\n", "\r\n"); //NOXLATE
                 sbOutput.Append(text + Environment.NewLine);
             }
         }

@@ -57,25 +57,25 @@ namespace Maestro.Base.UI
                 try
                 {
                     System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
-                    if (bounds.Trim().StartsWith("&lt;"))
+                    if (bounds.Trim().StartsWith("&lt;")) //NOXLATE
                         bounds = System.Web.HttpUtility.HtmlDecode(bounds);
-                    bounds = "<root>" + bounds + "</root>";
+                    bounds = "<root>" + bounds + "</root>"; //NOXLATE
                     doc.LoadXml(bounds);
-                    System.Xml.XmlNode root = doc["root"];
-                    if (root["Bounds"] != null)
+                    System.Xml.XmlNode root = doc["root"]; //NOXLATE
+                    if (root["Bounds"] != null) //NOXLATE
                     {
-                        if (root["Bounds"].Attributes["SRS"] != null)
-                            SRSCombo.Text = root["Bounds"].Attributes["SRS"].Value;
+                        if (root["Bounds"].Attributes["SRS"] != null) //NOXLATE
+                            SRSCombo.Text = root["Bounds"].Attributes["SRS"].Value; //NOXLATE
 
-                        if (root["Bounds"].Attributes["west"] != null)
-                            MinX.Text = root["Bounds"].Attributes["west"].Value;
-                        if (root["Bounds"].Attributes["east"] != null)
-                            MaxX.Text = root["Bounds"].Attributes["east"].Value;
+                        if (root["Bounds"].Attributes["west"] != null) //NOXLATE
+                            MinX.Text = root["Bounds"].Attributes["west"].Value; //NOXLATE
+                        if (root["Bounds"].Attributes["east"] != null) //NOXLATE
+                            MaxX.Text = root["Bounds"].Attributes["east"].Value; //NOXLATE
 
-                        if (root["Bounds"].Attributes["south"] != null)
-                            MinY.Text = root["Bounds"].Attributes["south"].Value;
-                        if (root["Bounds"].Attributes["north"] != null)
-                            MaxY.Text = root["Bounds"].Attributes["north"].Value;
+                        if (root["Bounds"].Attributes["south"] != null) //NOXLATE
+                            MinY.Text = root["Bounds"].Attributes["south"].Value; //NOXLATE
+                        if (root["Bounds"].Attributes["north"] != null) //NOXLATE
+                            MaxY.Text = root["Bounds"].Attributes["north"].Value; //NOXLATE
                     }
                     else
                         throw new Exception(Properties.Resources.BoundsPicker_MissingBoundsError);
@@ -166,12 +166,12 @@ namespace Maestro.Base.UI
                     return;
             }
 
-            m_bounds = "<Bounds west=\"" + MinX.Text + "\" east=\"" + MaxX.Text + "\" south=\"" + MinY.Text + "\" north=\"" + MaxY.Text + "\" ";
+            m_bounds = "<Bounds west=\"" + MinX.Text + "\" east=\"" + MaxX.Text + "\" south=\"" + MinY.Text + "\" north=\"" + MaxY.Text + "\" "; //NOXLATE
             if (srs != null)
             {
-                m_bounds += " SRS=\"" + srs + "\"";
+                m_bounds += " SRS=\"" + srs + "\""; //NOXLATE
             }
-            m_bounds += " />";
+            m_bounds += " />"; //NOXLATE
             
             this.DialogResult = DialogResult.OK;
             this.Close();

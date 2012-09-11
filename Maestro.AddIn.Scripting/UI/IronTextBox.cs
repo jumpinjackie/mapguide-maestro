@@ -52,7 +52,7 @@ namespace Maestro.AddIn.Scripting.UI
         /// <summary>
         /// Default prompt text.
         /// </summary>
-        private string prompt = ">>>";
+        private string prompt = ">>>"; //NOXLATE
 
         /// <summary>
         /// Used for storing commands.
@@ -268,7 +268,7 @@ namespace Maestro.AddIn.Scripting.UI
                 return (string)this.Lines.GetValue(this.Lines.GetLength(0) - 1);
             }
             else
-                return "";
+                return string.Empty;
         }
 
         /// <summary>
@@ -439,7 +439,7 @@ namespace Maestro.AddIn.Scripting.UI
                 //If it is not an empty command, then "fire" the command
                 if (currentCommand.Length != 0 && this.defStmtBuilder.Length == 0 && !IsRawInput)
                 {
-                    if (!currentCommand.Trim().Contains("raw_input"))
+                    if (!currentCommand.Trim().Contains("raw_input")) //NOXLATE
                         printLine();
                     ((IronTextBoxControl)this.Parent).FireCommandEntered(currentCommand);
                     commandHistory.Add(currentCommand);
@@ -448,7 +448,7 @@ namespace Maestro.AddIn.Scripting.UI
                 //if we are doing a def statement (currentCommand.EndsWith(":"))
                 if (this.defStmtBuilder.Length != 0)
                 {
-                    if (currentCommand.EndsWith(":"))
+                    if (currentCommand.EndsWith(":")) //NOXLATE
                     {
                         //we are in the first line of a def, it has already printed to console
                         
@@ -456,17 +456,17 @@ namespace Maestro.AddIn.Scripting.UI
                         //int asize = Parser.GetNextAutoIndentSize(this.defStmtBuilder.ToString()+"\r\n", 4);
 
                         //don't printPrompt();
-                        ReplaceTextAtPrompt("..." + CreateIndentstring(4));
+                        ReplaceTextAtPrompt("..." + CreateIndentstring(4)); //NOXLATE
                         e.Handled = true;
                         return;
 
                     }
                     else//We are past the first line, and are indenting or ending a def
                     {
-                        this.defStmtBuilder.Append(currentCommand + "\r\n");
+                        this.defStmtBuilder.Append(currentCommand + "\r\n"); //NOXLATE
 
                         //if it is an empty command let's see if we just finished a def statement
-                        if (currentCommand.Trim().Equals(""))
+                        if (currentCommand.Trim().Equals(string.Empty)) //NOXLATE
                         {
                             ((IronTextBoxControl)this.Parent).FireCommandEntered(this.defStmtBuilder.ToString().Trim());
                             commandHistory.Add(this.defStmtBuilder.ToString());
@@ -477,7 +477,7 @@ namespace Maestro.AddIn.Scripting.UI
                         else
                         {
                             //don't printPrompt();
-                            AddText("\r\n..." + CreateIndentstring(4));
+                            AddText("\r\n..." + CreateIndentstring(4)); //NOXLATE
                             e.Handled = true;
                             return;
                         }
@@ -485,14 +485,14 @@ namespace Maestro.AddIn.Scripting.UI
                 }
 
                 //raw_input support...
-                if (currentCommand.Trim().Contains("raw_input("))
+                if (currentCommand.Trim().Contains("raw_input(")) //NOXLATE
                 {
                     IsRawInput = true;
 
                     //Note: if raw_input is in quotes this will not work
                     //fyi: IronPython.Modules.Builtin.RawInput();
                     //remove the "\r\n" from IPEWrapper
-                    this.Text = this.Text.Remove(this.Text.Length - "\r\n".Length, "\r\n".Length);
+                    this.Text = this.Text.Remove(this.Text.Length - "\r\n".Length, "\r\n".Length); //NOXLATE
                     rawprompt = (string)this.Lines.GetValue(this.Lines.Length - 1);
                     MoveCaretToEndOfText();
 
@@ -504,20 +504,20 @@ namespace Maestro.AddIn.Scripting.UI
                 if(IsRawInput)
                 {
                     string rawcommand = (string)this.Lines.GetValue(this.Lines.Length - 2);
-                    rawcommand = rawcommand.Replace(Prompt, "");
+                    rawcommand = rawcommand.Replace(Prompt, string.Empty);
                     string tempprompt = (string)this.Lines.GetValue(this.Lines.Length - 1);
 
                     var iptemp = Python.CreateEngine();
 
                     //examine to see what type of raw_input
-                    if (rawcommand.Trim().Equals("raw_input()"))
+                    if (rawcommand.Trim().Equals("raw_input()")) //NOXLATE
                     {
                         IsRawInput = false;
                     }
                     else// s = raw_input('--> ')
                     {
                         IsRawInput = false;
-                        rawprompt = "";
+                        rawprompt = string.Empty;
                         e.Handled = true;
                         printPrompt();
                         MoveCaretToEndOfText();
@@ -548,10 +548,10 @@ namespace Maestro.AddIn.Scripting.UI
         /// <returns></returns>
         public string CreateIndentstring(int indentsize)
         {
-            string r = "";
+            string r = string.Empty;
             for (int i = 0; i < indentsize; i++)
             {
-                r += " ";
+                r += " "; //NOXLATE
             }
             return r;
         }
@@ -642,7 +642,7 @@ namespace Maestro.AddIn.Scripting.UI
         /// <param name="index">index of StringCollection to retrieve.</param>
         public string GetStringCollectValue(System.Collections.Specialized.StringCollection inCol, int index)
         {
-            string value = "";
+            string value = string.Empty;
             int count = 0;
             System.Collections.Specialized.StringEnumerator myEnumerator = inCol.GetEnumerator();
             while (myEnumerator.MoveNext())
@@ -776,7 +776,7 @@ namespace Maestro.AddIn.Scripting.UI
             //Create the scope for the ScriptEngine
             scope = engine.CreateScope();
             //Expose our host application
-            scope.SetVariable("app", new Services.HostApplication());
+            scope.SetVariable("app", new Services.HostApplication()); //NOXLATE
             //IronTextBox's CommandEntered event
             CommandEntered += new EventCommandEntered(irontextboxControl_CommandEntered);
         }
@@ -832,17 +832,17 @@ namespace Maestro.AddIn.Scripting.UI
             object tempobject;
 
             //Begin IronTextBox evaluation if something there....
-            if (command != "")
+            if (command != string.Empty)
             {
-                if (command == "cls")
+                if (command == "cls") //NOXLATE
                     this.Clear();
-                else if (command.StartsWith("refl "))
+                else if (command.StartsWith("refl ")) //NOXLATE
                     this.ReflectIdentifier(command.Substring(5), false);
-                else if (command.StartsWith("reflw "))
+                else if (command.StartsWith("reflw ")) //NOXLATE
                     this.ReflectIdentifier(command.Substring(6), true);
-                else if (command.StartsWith("printw "))
+                else if (command.StartsWith("printw ")) //NOXLATE
                     this.PrintIdentifier(command.Substring(7), true);
-                else if (command == "history")
+                else if (command == "history") //NOXLATE
                 {
                     string[] commands = this.GetCommandHistory();
                     StringBuilder stringBuilder = new StringBuilder(commands.Length);
@@ -853,29 +853,29 @@ namespace Maestro.AddIn.Scripting.UI
                     }
                     this.WriteText(stringBuilder.ToString());
                 }
-                else if (command == "help")
+                else if (command == "help") //NOXLATE
                 {
                     this.WriteText(GetHelpText());
                 }
-                else if (command == "newconsole")
+                else if (command == "newconsole") //NOXLATE
                 {
                     //consoleTextBox.global_eng = new PythonEngine();
-                    this.WriteText("Not currently supported\r\n");
+                    this.WriteText("Not currently supported\r\n"); //NOXLATE
                 }
                 else if (command.StartsWith("prompt") && command.Length == 6)
                 {
-                    string[] parts = command.Split(new char[] { '=' });
-                    if (parts.Length == 2 && parts[0].Trim() == "prompt")
+                    string[] parts = command.Split(new char[] { '=' }); //NOXLATE
+                    if (parts.Length == 2 && parts[0].Trim() == "prompt") //NOXLATE
                         this.Prompt = parts[1].Trim();
                 }
-                else if (command == "btaf")
+                else if (command == "btaf") //NOXLATE
                 {
                     //btaf = Browse To Append File....
                     //Check to see if sys is loaded
-                    if (!DoIPEvaluate("dir()").ToString().Contains("sys"))
+                    if (!DoIPEvaluate("dir()").ToString().Contains("sys")) //NOXLATE
                     {
                         consoleTextBox.printPrompt();
-                        consoleTextBox.WriteText("import sys");
+                        consoleTextBox.WriteText("import sys"); //NOXLATE
                         this.SimEnter();
                     }
 
@@ -883,34 +883,34 @@ namespace Maestro.AddIn.Scripting.UI
                     ofd.SelectedPath = Paths.MiscDirs.vs_Projects;
                     ofd.ShowDialog();
                     consoleTextBox.printPrompt();
-                    consoleTextBox.WriteText("sys.path.append(\"" + ofd.SelectedPath + "\")");
+                    consoleTextBox.WriteText("sys.path.append(\"" + ofd.SelectedPath + "\")"); //NOXLATE
                     this.SimEnter();
                 }
-                else if (command == "runfile")
+                else if (command == "runfile") //NOXLATE
                 {
                     //runfile - Run a .Py file.  Calls OpenFileDialog to PythonEngine.RunFile....
                     //  goodfor debuging .y file within IDE
                     this.Runfile();
                 }
-                else if (command == "btwfi")
+                else if (command == "btwfi") //NOXLATE
                 {
                     //btwfi - Browse To Walk FIle. Calls OpenFileDialog.
                     this.WalkPythonFile();
                 }
-                else if (command == "rew")
+                else if (command == "rew") //NOXLATE
                 {
                     //btwfi - Browse To Walk FIle. Calls OpenFileDialog.
                     StringBuilder SBCode = new StringBuilder();
                     this.RewritePyFiletoSB(out SBCode);
                     DoIPExecute(SBCode.ToString()); //transformed object code from a .py
                 }
-                else if (command.StartsWith("paths"))
+                else if (command.StartsWith("paths")) //NOXLATE
                 {
                     //Appends all hardcoded common paths stored in Paths
                     //paths [-arg] - [args: -misc, -python24, -ironpython, -all] (-all=default)
-                    if (command.Contains(" -"))
+                    if (command.Contains(" -")) //NOXLATE
                     {
-                        string[] splitcommand = command.Split('-');
+                        string[] splitcommand = command.Split('-'); //NOXLATE
                         splitcommand[1] = splitcommand[1].Trim();
                         this.ImportPaths(splitcommand[1]);
                     }
@@ -918,7 +918,7 @@ namespace Maestro.AddIn.Scripting.UI
                         this.ImportPaths(command.Trim());
 
                 }
-                else if (command.TrimEnd().EndsWith(":") == true)
+                else if (command.TrimEnd().EndsWith(":") == true) //NOXLATE
                 {
                     //Need to do a ReadStatement...
                     try
@@ -940,14 +940,14 @@ namespace Maestro.AddIn.Scripting.UI
                         }
 
                         defBuilder.Append(line);
-                        defBuilder.Append("\r\n");
+                        defBuilder.Append("\r\n"); //NOXLATE
 
                         bool endOfInput = (line.Length == 0);
                         bool parsingMultiLineString;
                         bool parsingMultiLineCmpdStmt;
 
                         //old//s = ParsetheText(consoleTextBox.global_eng.Sys, new CompilerContext(), defBuilder.ToString(), endOfInput, out parsingMultiLineString, out isMultiLine);
-                        string[] seperators = new string[] { "\r" };
+                        string[] seperators = new string[] { "\r" }; //NOXLATE
                         string[] allpieces = defBuilder.ToString().Split(seperators, StringSplitOptions.None);
 
                         if (/*Options.AutoIndentSize != 0 &&*/ line.Trim().Length == 0)
@@ -983,7 +983,7 @@ namespace Maestro.AddIn.Scripting.UI
 
                     catch (Exception err)//catch any errors
                     {
-                        this.WriteText("\r\nERROR: " + err.Message);
+                        this.WriteText("\r\nERROR: " + err.Message); //NOXLATE
                     }
                 }
             }
@@ -1001,7 +1001,7 @@ namespace Maestro.AddIn.Scripting.UI
             }
             catch (Exception ex)
             {
-                WriteText("ERROR: " + ex.Message);
+                WriteText("ERROR: " + ex.Message); //NOXLATE
             }
         }
 
@@ -1011,20 +1011,20 @@ namespace Maestro.AddIn.Scripting.UI
             {
                 dynamic obj = scope.GetVariable(identifier);
                 var sb = new StringBuilder();
-                sb.Append("========= Reflecting " + identifier + " ==========" + Environment.NewLine);
+                sb.Append("========= Reflecting " + identifier + " ==========" + Environment.NewLine); //NOXLATE
                 Type t = obj.GetType();
-                sb.Append("CLR Type: " + t.Name + Environment.NewLine);
-                sb.Append("Methods:" + Environment.NewLine);
+                sb.Append("CLR Type: " + t.Name + Environment.NewLine); //NOXLATE
+                sb.Append("Methods:" + Environment.NewLine); //NOXLATE
                 foreach (var method in t.GetMethods())
                 {
-                    sb.Append(" - " + method.ToString() + Environment.NewLine);
+                    sb.Append(" - " + method.ToString() + Environment.NewLine); //NOXLATE
                 }
-                sb.Append("Properties:" + Environment.NewLine);
+                sb.Append("Properties:" + Environment.NewLine); //NOXLATE
                 foreach (var prop in t.GetProperties())
                 {
-                    sb.Append(" - " + prop.Name + " (" + prop.PropertyType.Name + ")" + Environment.NewLine);
+                    sb.Append(" - " + prop.Name + " (" + prop.PropertyType.Name + ")" + Environment.NewLine); //NOXLATE
                 }
-                sb.Append("========= Reflection complete ==========" + Environment.NewLine);
+                sb.Append("========= Reflection complete ==========" + Environment.NewLine); //NOXLATE
                 if (newWindow)
                     new TextWindow(sb.ToString()).ShowDialog();
                 else
@@ -1032,7 +1032,7 @@ namespace Maestro.AddIn.Scripting.UI
             }
             catch (Exception ex)
             {
-                WriteText("ERROR: " + ex.Message);
+                WriteText("ERROR: " + ex.Message); //NOXLATE
             }
         }
 
@@ -1044,40 +1044,40 @@ namespace Maestro.AddIn.Scripting.UI
         {
             string helpText;
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.Append("*******************************************");
+            stringBuilder.Append("*******************************************"); //NOXLATE
             stringBuilder.Append(System.Environment.NewLine);
-            stringBuilder.Append("**   Maestro IronPython Console Help     **");
+            stringBuilder.Append("**   Maestro IronPython Console Help     **"); //NOXLATE
             stringBuilder.Append(System.Environment.NewLine);
-            stringBuilder.Append("*******************************************");
+            stringBuilder.Append("*******************************************"); //NOXLATE
             stringBuilder.Append(System.Environment.NewLine);
-            //stringBuilder.Append("You are using " + engine.LanguageDisplayName + " (" + engine.LanguageVersion + ")");
-            stringBuilder.Append("You are using " + engine.Setup.DisplayName + " (" + engine.LanguageVersion + ")");
+            //stringBuilder.Append("You are using " + engine.LanguageDisplayName + " (" + engine.LanguageVersion + ")"); //NOXLATE
+            stringBuilder.Append("You are using " + engine.Setup.DisplayName + " (" + engine.LanguageVersion + ")"); //NOXLATE
             stringBuilder.Append(System.Environment.NewLine);
             stringBuilder.Append(System.Environment.NewLine);
-            stringBuilder.Append("Commands Available:");
+            stringBuilder.Append("Commands Available:"); //NOXLATE
             stringBuilder.Append(System.Environment.NewLine);
-            stringBuilder.Append(" prompt - Changes prompt. Usage: prompt=<desired_prompt>");
+            stringBuilder.Append(" prompt - Changes prompt. Usage: prompt=<desired_prompt>"); //NOXLATE
             stringBuilder.Append(System.Environment.NewLine);
-            stringBuilder.Append(" history - prints history of entered commands.");
+            stringBuilder.Append(" history - prints history of entered commands."); //NOXLATE
             stringBuilder.Append(System.Environment.NewLine);
-            stringBuilder.Append(" cls - Clears the screen.");
+            stringBuilder.Append(" cls - Clears the screen."); //NOXLATE
             stringBuilder.Append(System.Environment.NewLine);
             //stringBuilder.Append(" newconsole - Clears the current PythonEngine.");
-            stringBuilder.Append(" refl <variable> - Displays all members/properties of a given variable");
+            stringBuilder.Append(" refl <variable> - Displays all members/properties of a given variable"); //NOXLATE
             stringBuilder.Append(System.Environment.NewLine);
-            stringBuilder.Append(" reflw <variable> - Displays all members/properties of a given variable to a new window");
+            stringBuilder.Append(" reflw <variable> - Displays all members/properties of a given variable to a new window"); //NOXLATE
             stringBuilder.Append(System.Environment.NewLine);
-            stringBuilder.Append(" printw <variable> - Prints the value of the given variable to a new window");
+            stringBuilder.Append(" printw <variable> - Prints the value of the given variable to a new window"); //NOXLATE
             stringBuilder.Append(System.Environment.NewLine);
-            stringBuilder.Append(" btaf - Browse To Append Folder. Calls FolderBrowserDialog.");
+            stringBuilder.Append(" btaf - Browse To Append Folder. Calls FolderBrowserDialog."); //NOXLATE
             stringBuilder.Append(System.Environment.NewLine);
-            stringBuilder.Append(" btwfi - Browse To Walk FIle. Calls OpenFileDialog.");
+            stringBuilder.Append(" btwfi - Browse To Walk FIle. Calls OpenFileDialog."); //NOXLATE
             stringBuilder.Append(System.Environment.NewLine);
-            stringBuilder.Append(" paths [-arg] - [args: -misc, -python24, -ironpython, -all] (-all=default)");
+            stringBuilder.Append(" paths [-arg] - [args: -misc, -python24, -ironpython, -all] (-all=default)"); //NOXLATE
             stringBuilder.Append(System.Environment.NewLine);
-            stringBuilder.Append(" rew - Re-Write a Python file into a StringBuilder.(for testing)");
+            stringBuilder.Append(" rew - Re-Write a Python file into a StringBuilder.(for testing)"); //NOXLATE
             stringBuilder.Append(System.Environment.NewLine);
-            stringBuilder.Append(" runfile - Run a .Py file.  Calls OpenFileDialog to PythonEngine.RunFile.");
+            stringBuilder.Append(" runfile - Run a .Py file.  Calls OpenFileDialog to PythonEngine.RunFile."); //NOXLATE
             stringBuilder.Append(System.Environment.NewLine);
             helpText = stringBuilder.ToString();
             return helpText;
@@ -1217,7 +1217,7 @@ namespace Maestro.AddIn.Scripting.UI
             {
                 string filetext = File.ReadAllText(fullpathfilename);
                 //tabs create a problem when trying to remove comments
-                filetext = filetext.Replace("\t", "    ");
+                filetext = filetext.Replace("\t", "    "); //NOXLATE
 
                 // Create an instance of StreamReader to read from a file.
                 // The using statement also closes the StreamReader.
@@ -1231,16 +1231,16 @@ namespace Maestro.AddIn.Scripting.UI
                     while ((line = sr.ReadLine()) != null)
                     {
                        //if the line is a # comment line, or a single line do not add...
-                        if (!line.StartsWith("#") && !line.StartsWith("    #") && !line.StartsWith("        #") && !line.StartsWith("            #") && !line.Equals("\r\n") && line != "")
+                        if (!line.StartsWith("#") && !line.StartsWith("    #") && !line.StartsWith("        #") && !line.StartsWith("            #") && !line.Equals("\r\n") && line != "") //NOXLATE
                         {
                             //catch """ comments
-                            if (line.StartsWith("\"\"\"") || line.StartsWith("    \"\"\"") || line.StartsWith("        \"\"\"") || line.StartsWith("            \"\"\""))
+                            if (line.StartsWith("\"\"\"") || line.StartsWith("    \"\"\"") || line.StartsWith("        \"\"\"") || line.StartsWith("            \"\"\"")) //NOXLATE
                             {
                                 //the line may also end with """, so if it is not read until end
                                 if (!IsSingleCommentLine(line))
                                 {
                                     //get to the end of the comments
-                                    while (!sr.ReadLine().TrimEnd().EndsWith("\"\"\""))
+                                    while (!sr.ReadLine().TrimEnd().EndsWith("\"\"\"")) //NOXLATE
                                     {
                                         //do nothing
                                     }
@@ -1254,13 +1254,13 @@ namespace Maestro.AddIn.Scripting.UI
                             if (!IsSingleCommentLine(line))
                             {
                                 //if the line ends with """, then delete """ and read until end
-                                if (line.TrimEnd().EndsWith("\"\"\"") && line.IndexOf("\"\"\"") == line.Length - 3)
+                                if (line.TrimEnd().EndsWith("\"\"\"") && line.IndexOf("\"\"\"") == line.Length - 3) //NOXLATE
                                 {
                                     //remove """ and reassign line
                                     line = line.Remove(line.Length - 3);
 
                                     //get to the end of the comments
-                                    while (!sr.ReadLine().TrimEnd().EndsWith("\"\"\""))
+                                    while (!sr.ReadLine().TrimEnd().EndsWith("\"\"\"")) //NOXLATE
                                     {
                                         //do nothing
                                     }
@@ -1276,7 +1276,7 @@ namespace Maestro.AddIn.Scripting.UI
 
                         pos = sb.Length;
                         //if a blank line, enter previous text as a FuncDef
-                        if (line == "" && sb.Length != 0)
+                        if (line == string.Empty && sb.Length != 0)
                         {
                             try //try to find last ""
                             {
@@ -1297,7 +1297,7 @@ namespace Maestro.AddIn.Scripting.UI
             catch (Exception e)
             {
                 // Let the user know what went wrong.
-                consoleTextBox.WriteText("The file could not be read:");
+                consoleTextBox.WriteText("The file could not be read:"); //NOXLATE
                 consoleTextBox.WriteText(e.Message);
             }
 
@@ -1311,22 +1311,22 @@ namespace Maestro.AddIn.Scripting.UI
             try
             {
                 //See if sys is imported...
-                if (!DoIPEvaluate("dir()").ToString().Contains("sys"))
+                if (!DoIPEvaluate("dir()").ToString().Contains("sys")) //NOXLATE
                 {
                     consoleTextBox.printPrompt();
-                    consoleTextBox.WriteText("import sys");
+                    consoleTextBox.WriteText("import sys"); //NOXLATE
                     this.SimEnter();
                 }
 
                 //Browse to the file...
                 OpenFileDialog ofd = new OpenFileDialog();
                 ofd.InitialDirectory = Paths.MiscDirs.vs_Projects;
-                ofd.Filter = "Python files (*.py)|*.py|All files (*.*)|*.*";
+                ofd.Filter = "Python files (*.py)|*.py|All files (*.*)|*.*"; //NOXLATE
                 ofd.ShowDialog();
 
                 //Ask the user if they would like to append the path
-                string message = "Do you need to append the folder:\r\n" + Path.GetDirectoryName(Path.GetFullPath(ofd.FileName)) + "\r\n\r\nto the PythonEngine?";
-                string caption = "Append Folder Path";
+                string message = "Do you need to append the folder:\r\n" + Path.GetDirectoryName(Path.GetFullPath(ofd.FileName)) + "\r\n\r\nto the PythonEngine?"; //NOXLATE
+                string caption = "Append Folder Path"; //NOXLATE
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                 DialogResult result;
 
@@ -1335,14 +1335,14 @@ namespace Maestro.AddIn.Scripting.UI
                 if (result == DialogResult.Yes)
                 {
                     consoleTextBox.printPrompt();
-                    consoleTextBox.WriteText("sys.path.append(\"" + Path.GetDirectoryName(Path.GetFullPath(ofd.FileName)) + "\")");
+                    consoleTextBox.WriteText("sys.path.append(\"" + Path.GetDirectoryName(Path.GetFullPath(ofd.FileName)) + "\")"); //NOXLATE
                     this.SimEnter();
 
                     //Keep asking until No
                     while (result.Equals(DialogResult.Yes))
                     {
                         //Ask the user if more folders are needed to be appended
-                        message = "Do you need to append another folder?";
+                        message = "Do you need to append another folder?"; //NOXLATE
                         result = MessageBox.Show(this, message, caption, buttons);
                         if (result == DialogResult.Yes)
                         {
@@ -1350,7 +1350,7 @@ namespace Maestro.AddIn.Scripting.UI
                             fbd.SelectedPath = Path.GetDirectoryName(Path.GetFullPath(ofd.FileName));
                             fbd.ShowDialog();
                             consoleTextBox.printPrompt();
-                            consoleTextBox.WriteText("sys.path.append(\"" + fbd.SelectedPath + "\")");
+                            consoleTextBox.WriteText("sys.path.append(\"" + fbd.SelectedPath + "\")"); //NOXLATE
                             this.SimEnter();
                         }
                     }
@@ -1361,7 +1361,7 @@ namespace Maestro.AddIn.Scripting.UI
             catch (Exception e)
             {
                 // Let the user know what went wrong.
-                consoleTextBox.WriteText("The file could not be read:");
+                consoleTextBox.WriteText("The file could not be read:"); //NOXLATE
                 consoleTextBox.WriteText(e.Message);
             }
         }
@@ -1376,7 +1376,7 @@ namespace Maestro.AddIn.Scripting.UI
             //Browse to the file...
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.InitialDirectory = Paths.MiscDirs.vs_Projects;
-            ofd.Filter = "Python files (*.py)|*.py|All files (*.*)|*.*";
+            ofd.Filter = "Python files (*.py)|*.py|All files (*.*)|*.*"; //NOXLATE
             ofd.ShowDialog();
 
             DoIPExecuteFile(ofd.FileName);
@@ -1384,7 +1384,7 @@ namespace Maestro.AddIn.Scripting.UI
             }
             catch (Exception ex)
             {
-                consoleTextBox.WriteText("The file could not be read:");
+                consoleTextBox.WriteText("The file could not be read:"); //NOXLATE
                 consoleTextBox.WriteText(ex.Message);
             }
 
@@ -1399,17 +1399,17 @@ namespace Maestro.AddIn.Scripting.UI
             StringBuilder sb = new StringBuilder();
 
             //See if sys is imported...
-            if (!DoIPEvaluate("dir()").ToString().Contains("sys"))
+            if (!DoIPEvaluate("dir()").ToString().Contains("sys")) //NOXLATE
             {
                 consoleTextBox.printPrompt();
-                consoleTextBox.WriteText("import sys");
+                consoleTextBox.WriteText("import sys"); //NOXLATE
                 this.SimEnter();
             }
 
             //Browse to the file...
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.InitialDirectory = Paths.MiscDirs.vs_Projects;
-            ofd.Filter = "Python files (*.py)|*.py|All files (*.*)|*.*";
+            ofd.Filter = "Python files (*.py)|*.py|All files (*.*)|*.*"; //NOXLATE
             ofd.ShowDialog();
 
             try
@@ -1439,16 +1439,16 @@ namespace Maestro.AddIn.Scripting.UI
                         /////temp testing
 
                         //if the line is a # comment line, or a single line do not add...
-                        if (!line.StartsWith("#") && !line.StartsWith("    #") && !line.StartsWith("        #") && !line.StartsWith("            #") && !line.Equals("\r\n") && line != "")
+                        if (!line.StartsWith("#") && !line.StartsWith("    #") && !line.StartsWith("        #") && !line.StartsWith("            #") && !line.Equals("\r\n") && line != "") //NOXLATE
                         {
                             //catch """ comments
-                            if (line.StartsWith("\"\"\"") || line.StartsWith("    \"\"\"") || line.StartsWith("        \"\"\"") || line.StartsWith("            \"\"\""))
+                            if (line.StartsWith("\"\"\"") || line.StartsWith("    \"\"\"") || line.StartsWith("        \"\"\"") || line.StartsWith("            \"\"\"")) //NOXLATE
                             {
                                 //the line may also end with """, so if it is not read until end
                                 if (!IsSingleCommentLine(line))
                                 {
                                     //get to the end of the comments
-                                    while (!sr.ReadLine().TrimEnd().EndsWith("\"\"\""))
+                                    while (!sr.ReadLine().TrimEnd().EndsWith("\"\"\"")) //NOXLATE
                                     {
                                         //do nothing
                                     }
@@ -1462,13 +1462,13 @@ namespace Maestro.AddIn.Scripting.UI
                             if (!IsSingleCommentLine(line))
                             {
                                 //if the line ends with """, then delete """ and read until end
-                                if (line.TrimEnd().EndsWith("\"\"\"") && line.IndexOf("\"\"\"") == line.Length - 3)
+                                if (line.TrimEnd().EndsWith("\"\"\"") && line.IndexOf("\"\"\"") == line.Length - 3) //NOXLATE
                                 {
                                     //remove """ and reassign line
                                     line = line.Remove(line.Length - 3);
 
                                     //get to the end of the comments
-                                    while (!sr.ReadLine().TrimEnd().EndsWith("\"\"\""))
+                                    while (!sr.ReadLine().TrimEnd().EndsWith("\"\"\"")) //NOXLATE
                                     {
                                         //do nothing
                                     }
@@ -1484,7 +1484,7 @@ namespace Maestro.AddIn.Scripting.UI
             catch (Exception e)
             {
                 // Let the user know what went wrong.
-                consoleTextBox.WriteText("The file could not be read:");
+                consoleTextBox.WriteText("The file could not be read:"); //NOXLATE
                 consoleTextBox.WriteText(e.Message);
             }
 
@@ -1501,13 +1501,13 @@ namespace Maestro.AddIn.Scripting.UI
             //Trim the end of the line because sometimes whitespace after """
             line = line.TrimEnd();
 
-            if (line.StartsWith("#") || line.StartsWith("    #") || line.StartsWith("        #") || line.StartsWith("            #") && line != "")
+            if (line.StartsWith("#") || line.StartsWith("    #") || line.StartsWith("        #") || line.StartsWith("            #") && line != "") //NOXLATE
             {
                 return true;
             }
-            else if (line.StartsWith("\"\"\"") || line.StartsWith("    \"\"\"") || line.StartsWith("        \"\"\"") || line.StartsWith("            \"\"\""))
+            else if (line.StartsWith("\"\"\"") || line.StartsWith("    \"\"\"") || line.StartsWith("        \"\"\"") || line.StartsWith("            \"\"\"")) //NOXLATE
             {
-                if (line.TrimEnd().EndsWith("\"\"\"") && line.IndexOf("\"\"\"") != line.Length - 3)
+                if (line.TrimEnd().EndsWith("\"\"\"") && line.IndexOf("\"\"\"") != line.Length - 3) //NOXLATE
                 {
                     return true;
                 }
@@ -1581,10 +1581,10 @@ namespace Maestro.AddIn.Scripting.UI
             SCEIronPythonDirs.Reset();
 
             //Check to see if sys is loaded
-            if (!DoIPEvaluate("dir()").ToString().Contains("sys"))
+            if (!DoIPEvaluate("dir()").ToString().Contains("sys")) //NOXLATE
             {
                 consoleTextBox.printPrompt();
-                consoleTextBox.WriteText("import sys");
+                consoleTextBox.WriteText("import sys"); //NOXLATE
                 this.SimEnter();
             }
             else
@@ -1595,65 +1595,65 @@ namespace Maestro.AddIn.Scripting.UI
             {
                 switch (arg)
                 {
-                    case "misc":
+                    case "misc": //NOXLATE
                         {
                             while (SCEMiscDirs.MoveNext())
                             {
                                 //consoleTextBox.printPrompt();
-                                consoleTextBox.WriteText("sys.path.append(\"" + SCEMiscDirs.Current + "\")");
+                                consoleTextBox.WriteText("sys.path.append(\"" + SCEMiscDirs.Current + "\")"); //NOXLATE
                                 this.SimEnter();
                             }
                             break;
                         }
-                    case "python24":
+                    case "python24": //NOXLATE
                         {
                             while (SCEPython24Dirs.MoveNext())
                             {
                                 //consoleTextBox.printPrompt();
-                                consoleTextBox.WriteText("sys.path.append(\"" + SCEPython24Dirs.Current + "\")");
+                                consoleTextBox.WriteText("sys.path.append(\"" + SCEPython24Dirs.Current + "\")"); //NOXLATE
                                 this.SimEnter();
                             }
                             break;
                         }
-                    case "ironpython":
+                    case "ironpython": //NOXLATE
                         {
                             while (SCEIronPythonDirs.MoveNext())
                             {
                                 //consoleTextBox.printPrompt();
-                                consoleTextBox.WriteText("sys.path.append(\"" + SCEIronPythonDirs.Current + "\")");
+                                consoleTextBox.WriteText("sys.path.append(\"" + SCEIronPythonDirs.Current + "\")"); //NOXLATE
                                 this.SimEnter();
                             }
                             break;
                         }
-                    case "all":
+                    case "all": //NOXLATE
                         {
                             while (SCEAll.MoveNext())
                             {
                                 //consoleTextBox.printPrompt();
-                                consoleTextBox.WriteText("sys.path.append(\"" + SCEAll.Current + "\")");
+                                consoleTextBox.WriteText("sys.path.append(\"" + SCEAll.Current + "\")"); //NOXLATE
                                 this.SimEnter();
                             }
                             break;
                         }
-                    case "paths":
+                    case "paths": //NOXLATE
                         {
                             while (SCEAll.MoveNext())
                             {
                                 //consoleTextBox.printPrompt();
-                                consoleTextBox.WriteText("sys.path.append(\"" + SCEAll.Current + "\")");
+                                consoleTextBox.WriteText("sys.path.append(\"" + SCEAll.Current + "\")"); //NOXLATE
                                 this.SimEnter();
                             }
                             break;
                         }
                     default:
-                        consoleTextBox.WriteText("Invalid arg. Only: -misc, -python24, -ironpython, -all");
+                        consoleTextBox.WriteText("Invalid arg. Only: -misc, -python24, -ironpython, -all"); //NOXLATE
                         break;
                 }
             }
             catch (Exception e)
             {
                 // Let the user know what went wrong.
-                consoleTextBox.WriteText("ImportPaths error: ");
+                consoleTextBox.WriteText("ImportPaths error: "); //NOXLATE
                 consoleTextBox.WriteText(e.Message);
             }
         }
@@ -1733,33 +1733,33 @@ namespace Maestro.AddIn.Scripting.UI
 
                 switch (itstype.FullName)
                 {
-                    case "IronPython.Runtime.PythonDictionary":
+                    case "IronPython.Runtime.PythonDictionary": //NOXLATE
                         PythonDictionary IPDict = new PythonDictionary();
                         IPDict = (PythonDictionary)inobject;
                         MessageBox.Show(IPDict.ToString());
                         break;
-                    case "IronPython.Runtime.List":
+                    case "IronPython.Runtime.List": //NOXLATE
                         List IPList = new List();
                         IPList = (List)inobject;
                         MessageBox.Show(IPList.ToString());
                         break;
-                    case "System.String":
+                    case "System.String": //NOXLATE
                         MessageBox.Show(inobject.ToString());
                         break;
-                    case "System.Int32":
+                    case "System.Int32": //NOXLATE
                         MessageBox.Show(Convert.ToString(inobject));
                         break;
-                    case "System.Collections.Specialized.StringCollection":
+                    case "System.Collections.Specialized.StringCollection": //NOXLATE
                         StringCollection IPSC = new StringCollection();
                         IPSC = (StringCollection)inobject;
                         StringEnumerator SCE = IPSC.GetEnumerator();
-                        string output = "";
+                        string output = string.Empty;
                         while (SCE.MoveNext())
                             output += SCE.Current.ToString();
                         MessageBox.Show(output);
                         break;
                     default:
-                        MessageBox.Show(inobject.GetType().ToString() + " not yet implemented.");
+                        MessageBox.Show(inobject.GetType().ToString() + " not yet implemented."); //NOXLATE
                         break;
                 }
             }

@@ -36,14 +36,14 @@ namespace Maestro.Base.Services.DragDropHandlers
             get { return Properties.Resources.XmlResHandlerAction; }
         }
 
-        private string[] extensions = { ".xml", 
-                                        ".FeatureSource", 
-                                        ".LayerDefinition",
-                                        ".MapDefinition",
-                                        ".WebLayout",
-                                        ".SymbolDefinition",
-                                        ".ApplicationDefinition",
-                                        ".PrintLayout",
+        private string[] extensions = { ".xml", //NOXLATE
+                                        ".FeatureSource", //NOXLATE 
+                                        ".LayerDefinition", //NOXLATE
+                                        ".MapDefinition", //NOXLATE
+                                        ".WebLayout", //NOXLATE
+                                        ".SymbolDefinition", //NOXLATE
+                                        ".ApplicationDefinition", //NOXLATE
+                                        ".PrintLayout", //NOXLATE
                                       };
 
         public string[] FileExtensions
@@ -63,12 +63,12 @@ namespace Maestro.Base.Services.DragDropHandlers
 
                 int counter = 0;
                 string name = Path.GetFileNameWithoutExtension(file);
-                string resId = folderId + name + "." + res.ResourceType.ToString();
+                string resId = folderId + name + "." + res.ResourceType.ToString(); //NOXLATE
 
                 while (conn.ResourceService.ResourceExists(resId))
                 {
                     counter++;
-                    resId = folderId + name + " (" + counter + ")." + res.ResourceType.ToString(); 
+                    resId = folderId + name + " (" + counter + ")." + res.ResourceType.ToString(); //NOXLATE
                 }
 
                 res.ResourceID = resId;

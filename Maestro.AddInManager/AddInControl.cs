@@ -47,7 +47,7 @@ namespace Maestro.AddInManager
         {
             this.addIn = addIn;
             this.BackColor = SystemColors.Window;
-            this.ContextMenuStrip = MenuService.CreateContextMenu(this, "/AddIns/AddInManager/ContextMenu");
+            this.ContextMenuStrip = MenuService.CreateContextMenu(this, "/AddIns/AddInManager/ContextMenu"); //NOXLATE
 
             isExternal = !FileUtility.IsBaseDirectory(FileUtility.ApplicationRootPath, addIn.FileName)
                 && !FileUtility.IsBaseDirectory(PropertyService.ConfigDirectory, addIn.FileName);
@@ -140,12 +140,12 @@ namespace Maestro.AddInManager
             Brush textBrush;
             string description = GetText(out textBrush);
             int titleWidth;
-            using (Font boldFont = new Font("Arial", 8, FontStyle.Bold))
+            using (Font boldFont = new Font("Arial", 8, FontStyle.Bold)) //NOXLATE
             {
                 g.DrawString(addIn.Name, boldFont, textBrush, innerMargin, innerMargin);
                 titleWidth = (int)g.MeasureString(addIn.Name, boldFont).Width + 1;
             }
-            if (addIn.Version != null && addIn.Version.ToString() != "0.0.0.0")
+            if (addIn.Version != null && addIn.Version.ToString() != "0.0.0.0") //NOXLATE
             {
                 g.DrawString(addIn.Version.ToString(), Font, textBrush, innerMargin + titleWidth + 4, innerMargin);
             }
@@ -187,34 +187,34 @@ namespace Maestro.AddInManager
                     if (addIn.Enabled)
                     {
                         textBrush = SystemBrushes.ControlText;
-                        return addIn.Properties["description"];
+                        return addIn.Properties["description"]; //NOXLATE
                     }
                     else
                     {
                         textBrush = SystemBrushes.ActiveCaption;
-                        return ResourceService.GetString("AddInManager.AddInEnabled");
+                        return ResourceService.GetString("AddInManager.AddInEnabled"); //NOXLATE
                     }
                 case AddInAction.Disable:
                     textBrush = SystemBrushes.GrayText;
                     if (addIn.Enabled)
-                        return ResourceService.GetString("AddInManager.AddInWillBeDisabled");
+                        return ResourceService.GetString("AddInManager.AddInWillBeDisabled"); //NOXLATE
                     else
-                        return ResourceService.GetString("AddInManager.AddInDisabled");
+                        return ResourceService.GetString("AddInManager.AddInDisabled"); //NOXLATE
                 case AddInAction.Install:
                     textBrush = SystemBrushes.ActiveCaption;
-                    return ResourceService.GetString("AddInManager.AddInInstalled");
+                    return ResourceService.GetString("AddInManager.AddInInstalled"); //NOXLATE
                 case AddInAction.Uninstall:
                     textBrush = SystemBrushes.GrayText;
-                    return ResourceService.GetString("AddInManager.AddInRemoved");
+                    return ResourceService.GetString("AddInManager.AddInRemoved"); //NOXLATE
                 case AddInAction.Update:
                     textBrush = SystemBrushes.ActiveCaption;
-                    return ResourceService.GetString("AddInManager.AddInUpdated");
+                    return ResourceService.GetString("AddInManager.AddInUpdated"); //NOXLATE
                 case AddInAction.InstalledTwice:
                     textBrush = Brushes.Red;
-                    return ResourceService.GetString("AddInManager.AddInInstalledTwice");
+                    return ResourceService.GetString("AddInManager.AddInInstalledTwice"); //NOXLATE
                 case AddInAction.DependencyError:
                     textBrush = Brushes.Red;
-                    return ResourceService.GetString("AddInManager.AddInDependencyFailed");
+                    return ResourceService.GetString("AddInManager.AddInDependencyFailed"); //NOXLATE
                 case AddInAction.CustomError:
                     textBrush = Brushes.Red;
                     return StringParser.Parse(addIn.CustomErrorMessage);

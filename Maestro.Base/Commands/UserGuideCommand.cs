@@ -30,7 +30,7 @@ namespace Maestro.Base.Commands
     {
         public override void Run()
         {
-            var path = Path.Combine(FileUtility.ApplicationRootPath, "UserDoc/index.html");
+            var path = Path.Combine(FileUtility.ApplicationRootPath, "UserDoc/index.html"); //NOXLATE
             if (!File.Exists(path))
             {
                 MessageService.ShowError(Properties.Resources.HelpFileNotFound);

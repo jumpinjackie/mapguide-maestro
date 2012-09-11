@@ -28,7 +28,7 @@ namespace Maestro.Base.Commands.Conditions
     {
         public bool IsValid(object caller, Condition condition)
         {
-            var types = condition.Properties["types"];
+            var types = condition.Properties["types"]; //NOXLATE
             if (types != null)
             {
                 var wb = Workbench.Instance;
@@ -36,7 +36,7 @@ namespace Maestro.Base.Commands.Conditions
                 {
                     if (wb.ActiveSiteExplorer != null)
                     {
-                        var resTypes = new List<string>(types.Split(','));
+                        var resTypes = new List<string>(types.Split(',')); //NOXLATE
                         if (resTypes.Count > 0)
                         {
                             var items = wb.ActiveSiteExplorer.SelectedItems;

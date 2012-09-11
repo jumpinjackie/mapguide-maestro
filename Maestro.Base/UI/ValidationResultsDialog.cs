@@ -133,7 +133,7 @@ namespace Maestro.Base
                         {
                             if (p.Value.Length > 0)
                             {
-                                sw.WriteLine(new string('*', 80));
+                                sw.WriteLine(new string('*', 80)); //NOXLATE
                                 sw.WriteLine(string.Format(Properties.Resources.ValidationProgressMessage, p.Key));
                                 foreach (ValidationIssue i in p.Value)
                                     sw.WriteLine(string.Format(Properties.Resources.ValidationResultFormat, i.Status, i.StatusCode, i.Message));

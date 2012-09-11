@@ -64,9 +64,9 @@ namespace Maestro.Base.Services
 
             IServerConnection conn = res.CurrentConnection;
             BusyWaitDialog.Run(Properties.Resources.PrgPreparingResourcePreview, () => {
-                string mapguideRootUrl = (string)conn.GetCustomProperty("BaseUrl");
+                string mapguideRootUrl = (string)conn.GetCustomProperty("BaseUrl"); //NOXLATE
                 //Save the current resource to another session copy
-                string resId = "Session:" + edSvc.SessionID + "//" + res.ResourceType.ToString() + "Preview" + Guid.NewGuid() + "." + res.ResourceType.ToString();
+                string resId = "Session:" + edSvc.SessionID + "//" + res.ResourceType.ToString() + "Preview" + Guid.NewGuid() + "." + res.ResourceType.ToString(); //NOXLATE
                 
                 edSvc.ResourceService.SaveResourceAs(res, resId);
                 edSvc.ResourceService.CopyResource(res.ResourceID, resId, true);
@@ -81,10 +81,10 @@ namespace Maestro.Base.Services
                     {
                         //HACK-ish: We are flubbing a completely invalid Layer Definition under normal circumstances, 
                         //but one that has the minimum required content model to generate an appropriate GETLEGENDIMAGE preview for
-                        vl.FeatureName = "";
-                        vl.ResourceId = "";
-                        vl.Geometry = "";
-                        vl.ToolTip = "";
+                        vl.FeatureName = string.Empty;
+                        vl.ResourceId = string.Empty;
+                        vl.Geometry = string.Empty;
+                        vl.ToolTip = string.Empty;
                         var vsr = vl.GetScaleRangeAt(0) as IVectorScaleRange2;
                         if (vsr != null)
                         {
@@ -98,11 +98,11 @@ namespace Maestro.Base.Services
                             csym.AddSymbolInstance(si);
                             vsr.CompositeStyle = new List<ICompositeTypeStyle>() { cs };
 
-                            var ldfId = "Session:" + edSvc.SessionID + "//" + res.ResourceType.ToString() + "Preview" + Guid.NewGuid() + ".LayerDefinition";
+                            var ldfId = "Session:" + edSvc.SessionID + "//" + res.ResourceType.ToString() + "Preview" + Guid.NewGuid() + ".LayerDefinition"; //NOXLATE
                             edSvc.ResourceService.SaveResourceAs(layerDef, ldfId);
 
                             var mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
-                            var img = mappingSvc.GetLegendImage(42, ldfId, 0, 4, 100, 100, "PNG");
+                            var img = mappingSvc.GetLegendImage(42, ldfId, 0, 4, 100, 100, "PNG"); //NOXLATE
                             return new ImagePreviewResult() { ImagePreview = img };
                         }
                     }

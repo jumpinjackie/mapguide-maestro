@@ -36,7 +36,7 @@ namespace Maestro.Base.Commands.Conditions
                 var exp = wb.ActiveSiteExplorer;
                 if (exp != null)
                 {
-                    var cmds = condition.Properties["commands"].Split(',');
+                    var cmds = condition.Properties["commands"].Split(','); //NOXLATE
                     var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
                     var conn = connMgr.GetConnection(exp.ConnectionName);
 

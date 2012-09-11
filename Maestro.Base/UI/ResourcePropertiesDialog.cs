@@ -156,12 +156,12 @@ namespace Maestro.Base.UI
                             UpdateListItem(g, gl[g.Name]);
 
                 UseInherited.Checked = m_resourceHeader.Security.Inherited;
-                if (m_resourceId.Extension != "LayerDefinition")
+                if (m_resourceId.Extension != ResourceTypes.LayerDefinition.ToString())
                     tabControl1.TabPages.Remove(WMSTab);
                 else
                     UpdateWMSDisplay();
 
-                if (m_resourceId.Extension != "FeatureSource")
+                if (m_resourceId.Extension != ResourceTypes.FeatureSource.ToString())
                     tabControl1.TabPages.Remove(WFSTab);
                 else
                     UpdateWFSDisplay();
@@ -195,26 +195,26 @@ namespace Maestro.Base.UI
                 {
                     var props = m_resourceHeader.Metadata.GetProperties();
 
-                    WFSTitle.Text = props["_Title"];
-                    WFSKeywords.Text = props["_Keywords"];
-                    WFSAbstract.Text = props["_Abstract"];
-                    WFSMetadata.Text = props["_ExtendedMetadata"];
+                    WFSTitle.Text = props["_Title"]; //NOXLATE
+                    WFSKeywords.Text = props["_Keywords"]; //NOXLATE
+                    WFSAbstract.Text = props["_Abstract"]; //NOXLATE
+                    WFSMetadata.Text = props["_ExtendedMetadata"]; //NOXLATE
 
-                    txtPrimarySRS.Text = props["_PrimarySRS"];
-                    txtOtherSRS.Text = props["_OtherSRS"];
-                    WFSAvailable.Checked = props["_IsPublished"] == "1";
-                    WFSBounds.Text = props["_Bounds"];
+                    txtPrimarySRS.Text = props["_PrimarySRS"]; //NOXLATE
+                    txtOtherSRS.Text = props["_OtherSRS"]; //NOXLATE
+                    WFSAvailable.Checked = props["_IsPublished"] == "1"; //NOXLATE
+                    WFSBounds.Text = props["_Bounds"]; //NOXLATE
                 }
                 else
                 {
                     WFSTitle.Text =
                     WFSKeywords.Text =
                     WFSAbstract.Text =
-                    WFSMetadata.Text = "";
+                    WFSMetadata.Text = string.Empty;
 
                     txtPrimarySRS.Text =
                     txtOtherSRS.Text =
-                    WFSBounds.Text = "";
+                    WFSBounds.Text = string.Empty;
                     WFSAvailable.Checked = false;
                 }
             }
@@ -234,28 +234,28 @@ namespace Maestro.Base.UI
                 if (m_resourceHeader.Metadata != null && m_resourceHeader.Metadata.Simple != null && m_resourceHeader.Metadata.Simple.Property != null)
                 {
                     var props = m_resourceHeader.Metadata.GetProperties();
-                    WMSTitle.Text = props["_Title"];
-                    WMSKeyWords.Text = props["_Keywords"];
-                    WMSAbstract.Text = props["_Abstract"];
-                    WMSMetadata.Text = props["_ExtendedMetadata"];
+                    WMSTitle.Text = props["_Title"]; //NOXLATE
+                    WMSKeyWords.Text = props["_Keywords"]; //NOXLATE
+                    WMSAbstract.Text = props["_Abstract"]; //NOXLATE
+                    WMSMetadata.Text = props["_ExtendedMetadata"]; //NOXLATE
 
-                    WMSQueryable.Checked = props["_Queryable"] == "1";
-                    WMSOpaque.Checked = props["_Opaque"] == "1";
-                    WMSAvalible.Checked = props["_IsPublished"] == "1";
-                    WMSBounds.Text = props["_Bounds"];
+                    WMSQueryable.Checked = props["_Queryable"] == "1"; //NOXLATE
+                    WMSOpaque.Checked = props["_Opaque"] == "1"; //NOXLATE
+                    WMSAvalible.Checked = props["_IsPublished"] == "1"; //NOXLATE
+                    WMSBounds.Text = props["_Bounds"]; //NOXLATE
                 }
                 else
                 {
                     WMSTitle.Text =
                     WMSKeyWords.Text =
                     WMSAbstract.Text =
-                    WMSMetadata.Text = "";
+                    WMSMetadata.Text = string.Empty;
 
                     WMSQueryable.Checked =
                     WMSOpaque.Checked =
                     WMSAvalible.Checked = false;
 
-                    WMSBounds.Text = "";
+                    WMSBounds.Text = string.Empty;
                 }
             }
             finally
@@ -332,7 +332,7 @@ namespace Maestro.Base.UI
             if (m_isUpdating)
                 return;
             EnsureMetaData();
-            m_resourceHeader.Metadata.SetProperty("_Title", WMSTitle.Text);
+            m_resourceHeader.Metadata.SetProperty("_Title", WMSTitle.Text); //NOXLATE
         }
 
         private void EnsureMetaData()
@@ -349,56 +349,56 @@ namespace Maestro.Base.UI
                     m_resourceHeader.Metadata.Simple.Property = new ResourceDocumentHeaderTypeMetadataSimplePropertyCollection();
                 */
 
-                if (m_resourceId.Extension == "LayerDefinition")
+                if (m_resourceId.Extension == ResourceTypes.LayerDefinition.ToString())
                 {
                     var props = m_resourceHeader.Metadata.GetProperties();
                     bool apply = false;
 
-                    if (props["_Title"] == null)
+                    if (props["_Title"] == null) //NOXLATE
                     {
-                        props["_Title"] = "";
+                        props["_Title"] = string.Empty; //NOXLATE
                         apply = true;
                     }
 
-                    if (props["_Keywords"] == null)
+                    if (props["_Keywords"] == null) //NOXLATE
                     {
-                        props["_Keywords"] = "";
+                        props["_Keywords"] = string.Empty; //NOXLATE
                         apply = true;
                     }
 
-                    if (props["_Abstract"] == null)
+                    if (props["_Abstract"] == null) //NOXLATE
                     {
-                        props["_Abstract"] = "";
+                        props["_Abstract"] = string.Empty; //NOXLATE
                         apply = true;
                     }
 
-                    if (props["_ExtendedMetadata"] == null)
+                    if (props["_ExtendedMetadata"] == null) //NOXLATE
                     {
-                        props["_ExtendedMetadata"] = "";
+                        props["_ExtendedMetadata"] = string.Empty; //NOXLATE
                         apply = true;
                     }
 
-                    if (props["_Queryable"] == null)
+                    if (props["_Queryable"] == null) //NOXLATE
                     {
-                        props["_Queryable"] = "0";
+                        props["_Queryable"] = "0"; //NOXLATE
                         apply = true;
                     }
 
-                    if (props["_Opaque"] == null)
+                    if (props["_Opaque"] == null) //NOXLATE
                     {
-                        props["_Opaque"] = "0";
+                        props["_Opaque"] = "0"; //NOXLATE
                         apply = true;
                     }
 
-                    if (props["_IsPublished"] == null)
+                    if (props["_IsPublished"] == null) //NOXLATE
                     {
-                        props["_IsPublished"] = "0";
+                        props["_IsPublished"] = "0"; //NOXLATE
                         apply = true;
                     }
 
-                    if (props["_Bounds"] == null)
+                    if (props["_Bounds"] == null) //NOXLATE
                     {
-                        props["_Bounds"] = "";
+                        props["_Bounds"] = string.Empty; //NOXLATE
                         apply = true;
                     }
 
@@ -413,7 +413,7 @@ namespace Maestro.Base.UI
             if (m_isUpdating)
                 return;
             EnsureMetaData();
-            m_resourceHeader.Metadata.SetProperty("_Keywords", WMSKeyWords.Text);
+            m_resourceHeader.Metadata.SetProperty("_Keywords", WMSKeyWords.Text); //NOXLATE
         }
 
         private void WMSAbstract_TextChanged(object sender, EventArgs e)
@@ -421,7 +421,7 @@ namespace Maestro.Base.UI
             if (m_isUpdating)
                 return;
             EnsureMetaData();
-            m_resourceHeader.Metadata.SetProperty("_Abstract", WMSAbstract.Text);
+            m_resourceHeader.Metadata.SetProperty("_Abstract", WMSAbstract.Text); //NOXLATE
         }
 
         private void WMSMetadata_TextChanged(object sender, EventArgs e)
@@ -429,7 +429,7 @@ namespace Maestro.Base.UI
             if (m_isUpdating)
                 return;
             EnsureMetaData();
-            m_resourceHeader.Metadata.SetProperty("_ExtendedMetadata", WMSMetadata.Text);
+            m_resourceHeader.Metadata.SetProperty("_ExtendedMetadata", WMSMetadata.Text); //NOXLATE
         }
 
         private void WMSAvalible_CheckedChanged(object sender, EventArgs e)
@@ -437,7 +437,7 @@ namespace Maestro.Base.UI
             if (m_isUpdating)
                 return;
             EnsureMetaData();
-            m_resourceHeader.Metadata.SetProperty("_IsPublished", Convert.ToInt32(WMSAvalible.Checked).ToString());
+            m_resourceHeader.Metadata.SetProperty("_IsPublished", Convert.ToInt32(WMSAvalible.Checked).ToString()); //NOXLATE
         }
 
         private void WMSBounds_TextChanged(object sender, EventArgs e)
@@ -445,7 +445,7 @@ namespace Maestro.Base.UI
             if (m_isUpdating)
                 return;
             EnsureMetaData();
-            m_resourceHeader.Metadata.SetProperty("_Bounds", WMSBounds.Text);
+            m_resourceHeader.Metadata.SetProperty("_Bounds", WMSBounds.Text); //NOXLATE
         }
 
         private void WMSQueryable_CheckedChanged(object sender, EventArgs e)
@@ -453,7 +453,7 @@ namespace Maestro.Base.UI
             if (m_isUpdating)
                 return;
             EnsureMetaData();
-            m_resourceHeader.Metadata.SetProperty("_Queryable", Convert.ToInt32(WMSQueryable.Checked).ToString());
+            m_resourceHeader.Metadata.SetProperty("_Queryable", Convert.ToInt32(WMSQueryable.Checked).ToString()); //NOXLATE
         }
 
         private void WMSOpaque_CheckedChanged(object sender, EventArgs e)
@@ -461,7 +461,7 @@ namespace Maestro.Base.UI
             if (m_isUpdating)
                 return;
             EnsureMetaData();
-            m_resourceHeader.Metadata.SetProperty("_Opaque", Convert.ToInt32(WMSOpaque.Checked).ToString());
+            m_resourceHeader.Metadata.SetProperty("_Opaque", Convert.ToInt32(WMSOpaque.Checked).ToString()); //NOXLATE
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -489,7 +489,7 @@ namespace Maestro.Base.UI
             if (m_isUpdating)
                 return;
             EnsureMetaData();
-            m_resourceHeader.Metadata.SetProperty("_Title", WFSTitle.Text);
+            m_resourceHeader.Metadata.SetProperty("_Title", WFSTitle.Text); //NOXLATE
         }
 
         private void WFSKeywords_TextChanged(object sender, EventArgs e)
@@ -497,7 +497,7 @@ namespace Maestro.Base.UI
             if (m_isUpdating)
                 return;
             EnsureMetaData();
-            m_resourceHeader.Metadata.SetProperty("_Keywords", WFSKeywords.Text);
+            m_resourceHeader.Metadata.SetProperty("_Keywords", WFSKeywords.Text); //NOXLATE
         }
 
         private void WFSAbstract_TextChanged(object sender, EventArgs e)
@@ -505,7 +505,7 @@ namespace Maestro.Base.UI
             if (m_isUpdating)
                 return;
             EnsureMetaData();
-            m_resourceHeader.Metadata.SetProperty("_Abstract", WFSAbstract.Text);
+            m_resourceHeader.Metadata.SetProperty("_Abstract", WFSAbstract.Text); //NOXLATE
         }
 
         private void WFSMetadata_TextChanged(object sender, EventArgs e)
@@ -513,7 +513,7 @@ namespace Maestro.Base.UI
             if (m_isUpdating)
                 return;
             EnsureMetaData();
-            m_resourceHeader.Metadata.SetProperty("_ExtendedMetadata", WFSMetadata.Text);
+            m_resourceHeader.Metadata.SetProperty("_ExtendedMetadata", WFSMetadata.Text); //NOXLATE
         }
 
         private void WFSAvailable_CheckedChanged(object sender, EventArgs e)
@@ -521,7 +521,7 @@ namespace Maestro.Base.UI
             if (m_isUpdating)
                 return;
             EnsureMetaData();
-            m_resourceHeader.Metadata.SetProperty("_IsPublished", Convert.ToInt32(WFSAvailable.Checked).ToString());
+            m_resourceHeader.Metadata.SetProperty("_IsPublished", Convert.ToInt32(WFSAvailable.Checked).ToString()); //NOXLATE
         }
 
         private void WFSPrimarySRS_TextChanged(object sender, EventArgs e)
@@ -529,7 +529,7 @@ namespace Maestro.Base.UI
             if (m_isUpdating)
                 return;
             EnsureMetaData();
-            m_resourceHeader.Metadata.SetProperty("_PrimarySRS", txtPrimarySRS.Text);
+            m_resourceHeader.Metadata.SetProperty("_PrimarySRS", txtPrimarySRS.Text); //NOXLATE
         }
 
         private void WFSOtherSRS_TextChanged(object sender, EventArgs e)
@@ -537,7 +537,7 @@ namespace Maestro.Base.UI
             if (m_isUpdating)
                 return;
             EnsureMetaData();
-            m_resourceHeader.Metadata.SetProperty("_OtherSRS", txtOtherSRS.Text);
+            m_resourceHeader.Metadata.SetProperty("_OtherSRS", txtOtherSRS.Text); //NOXLATE
         }
 
         private void WFSBounds_TextChanged(object sender, EventArgs e)
@@ -545,7 +545,7 @@ namespace Maestro.Base.UI
             if (m_isUpdating)
                 return;
             EnsureMetaData();
-            m_resourceHeader.Metadata.SetProperty("_Bounds", WFSBounds.Text);
+            m_resourceHeader.Metadata.SetProperty("_Bounds", WFSBounds.Text); //NOXLATE
         }
 
         private void WFSClearHeaderButton_Click(object sender, EventArgs e)
@@ -563,8 +563,8 @@ namespace Maestro.Base.UI
 
             foreach (DataGridViewRow dr in dataGridView1.Rows)
             {
-                string k = dr.Cells[0].Value == null || dr.Cells[0].Value == DBNull.Value ? "" : dr.Cells[0].Value.ToString();
-                string v = dr.Cells[1].Value == null || dr.Cells[1].Value == DBNull.Value ? "" : dr.Cells[1].Value.ToString();
+                string k = dr.Cells[0].Value == null || dr.Cells[0].Value == DBNull.Value ? string.Empty : dr.Cells[0].Value.ToString();
+                string v = dr.Cells[1].Value == null || dr.Cells[1].Value == DBNull.Value ? string.Empty : dr.Cells[1].Value.ToString();
 
                 if (!string.IsNullOrEmpty(k))
                     m_resourceHeader.Metadata.SetProperty(k, v);
@@ -735,7 +735,7 @@ namespace Maestro.Base.UI
                     List<string> items = new List<string>();
                     foreach (OSGeo.MapGuide.MaestroAPI.CoordinateSystem.CoordinateSystemDefinitionBase c in m_connection.CoordinateSystemCatalog.Coordsys)
                     {
-                        if (c.Code.StartsWith("EPSG:"))
+                        if (c.Code.StartsWith("EPSG:")) //NOXLATE
                             items.Add(c.Code);
                     }
 
@@ -763,7 +763,7 @@ namespace Maestro.Base.UI
             try
             {
                 m_isUpdating = true;
-                string srs = "EPSG:????";
+                string srs = "EPSG:????"; //NOXLATE
                 string bounds = WMSBounds.Text;
                 bool warnedEPSG = false;
 
@@ -772,15 +772,15 @@ namespace Maestro.Base.UI
                     if (!string.IsNullOrEmpty(bounds))
                     {
                         System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
-                        if (bounds.Trim().StartsWith("&lt;"))
+                        if (bounds.Trim().StartsWith("&lt;")) //NOXLATE
                             bounds = System.Web.HttpUtility.HtmlDecode(bounds);
-                        bounds = "<root>" + bounds + "</root>";
+                        bounds = "<root>" + bounds + "</root>"; //NOXLATE
                         doc.LoadXml(bounds);
-                        System.Xml.XmlNode root = doc["root"];
-                        if (root["Bounds"] != null)
+                        System.Xml.XmlNode root = doc["root"]; //NOXLATE
+                        if (root["Bounds"] != null) //NOXLATE
                         {
-                            if (root["Bounds"].Attributes["SRS"] != null)
-                                srs = root["Bounds"].Attributes["SRS"].Value;
+                            if (root["Bounds"].Attributes["SRS"] != null) //NOXLATE
+                                srs = root["Bounds"].Attributes["SRS"].Value; //NOXLATE
                         }
                         else
                             throw new Exception(Properties.Resources.ResProp_MissingBoundsError);
@@ -800,17 +800,17 @@ namespace Maestro.Base.UI
                 //TODO: Convert wkt to EPSG code and use that?
                 //TODO: Convert to lon/lat
 
-                bounds = "<Bounds west=\"" + env.MinX.ToString(ic) + "\" east=\"" + env.MaxX.ToString(ic) + "\" south=\"" + env.MinY.ToString(ic) + "\" north=\"" + env.MaxY.ToString(ic) + "\" ";
-                bounds += " SRS=\"" + srs + "\"";
-                bounds += " />";
+                bounds = "<Bounds west=\"" + env.MinX.ToString(ic) + "\" east=\"" + env.MaxX.ToString(ic) + "\" south=\"" + env.MinY.ToString(ic) + "\" north=\"" + env.MaxY.ToString(ic) + "\" "; //NOXLATE
+                bounds += " SRS=\"" + srs + "\""; //NOXLATE
+                bounds += " />"; //NOXLATE
 
                 m_isUpdating = false;
                 WMSBounds.Text = bounds;
 
-                if ((srs == "" || srs == "EPSG:????") && !warnedEPSG)
+                if ((srs == string.Empty || srs == "EPSG:????") && !warnedEPSG) //NOXLATE
                 {
                     MessageBox.Show(this, Properties.Resources.ResProp_EpsgMissingWarning, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    WMSBounds.SelectionStart = WMSBounds.Text.IndexOf("SRS=\"") + "SRS=\"".Length;
+                    WMSBounds.SelectionStart = WMSBounds.Text.IndexOf("SRS=\"") + "SRS=\"".Length; //NOXLATE
                     WMSBounds.SelectionLength = WMSBounds.Text.IndexOf("\"", WMSBounds.SelectionStart) - WMSBounds.SelectionStart;
                     WMSBounds.ScrollToCaret();
                     WMSBounds.Focus();
@@ -864,7 +864,7 @@ namespace Maestro.Base.UI
                     throw new Exception(failures ? Properties.Resources.ResProp_NoSpatialDataWithFailuresError : Properties.Resources.ResProp_NoSpatialDataError);
 
                 m_isUpdating = false;
-                WFSBounds.Text = "<Bounds west=\"" + env.MinX.ToString(ic) + "\" east=\"" + env.MaxX.ToString(ic) + "\" south=\"" + env.MinY.ToString(ic) + "\" north=\"" + env.MaxY.ToString(ic) + "\" />";
+                WFSBounds.Text = "<Bounds west=\"" + env.MinX.ToString(ic) + "\" east=\"" + env.MaxX.ToString(ic) + "\" south=\"" + env.MinY.ToString(ic) + "\" north=\"" + env.MaxY.ToString(ic) + "\" />"; //NOXLATE
             }
             catch (Exception ex)
             {

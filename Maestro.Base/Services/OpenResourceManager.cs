@@ -69,7 +69,7 @@ namespace Maestro.Base.Services
             _openItems = new Dictionary<string, IEditorViewContent>();
             _factories = new Dictionary<ResourceTypeDescriptor, IEditorFactory>();
 
-            var facts = AddInTree.BuildItems<IEditorFactory>("/Maestro/Editors", this);
+            var facts = AddInTree.BuildItems<IEditorFactory>("/Maestro/Editors", this); //NOXLATE
             foreach (var fact in facts)
             {
                 if (_factories.ContainsKey(fact.ResourceTypeAndVersion))
@@ -102,10 +102,10 @@ namespace Maestro.Base.Services
 
         internal void RenameResourceId(string oldId, string newId, IServerConnection conn, ISiteExplorer siteExp)
         {
-            Check.NotEmpty(oldId, "oldId");
-            Check.NotEmpty(newId, "newId");
-            Check.NotNull(siteExp, "siteExp");
-            Check.NotNull(conn, "conn");
+            Check.NotEmpty(oldId, "oldId"); //NOXLATE
+            Check.NotEmpty(newId, "newId"); //NOXLATE
+            Check.NotNull(siteExp, "siteExp"); //NOXLATE
+            Check.NotNull(conn, "conn"); //NOXLATE
 
             string oldKey = ComputeResourceKey(oldId, conn);
             string newKey = ComputeResourceKey(newId, conn);
@@ -127,12 +127,12 @@ namespace Maestro.Base.Services
 
         public static string ComputeResourceKey(string resId, IServerConnection conn)
         {
-            return conn.DisplayName + "|" + resId;
+            return conn.DisplayName + "|" + resId; //NOXLATE
         }
 
         public static string ComputeResourceKey(IResource res, IServerConnection conn)
         {
-            return conn.DisplayName + "|" + res.ResourceID;
+            return conn.DisplayName + "|" + res.ResourceID; //NOXLATE
         }
 
         /// <summary>

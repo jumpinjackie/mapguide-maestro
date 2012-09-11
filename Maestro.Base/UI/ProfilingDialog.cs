@@ -83,23 +83,23 @@ namespace Maestro.Base.UI
                 mdf.RemoveLayer(layers[i]);
             }
 
-            var layer = mdf.AddLayer(null, "x", resourceId);
+            var layer = mdf.AddLayer(null, "x", resourceId); //NOXLATE
             layer.Visible = true;
             layer.Selectable = true;
-            layer.Name = "x";
-            layer.LegendLabel = "";
+            layer.Name = "x"; //NOXLATE
+            layer.LegendLabel = string.Empty;
         }
 
         private void MakeTempMap()
         {
             if (m_tempmap == null)
             {
-                IMapDefinition m = ObjectFactory.CreateMapDefinition(m_connection, "");
-                m.CoordinateSystem = @"LOCAL_CS[""*XY-M*"", LOCAL_DATUM[""*X-Y*"", 10000], UNIT[""Meter"", 1], AXIS[""X"", EAST], AXIS[""Y"", NORTH]]";
+                IMapDefinition m = ObjectFactory.CreateMapDefinition(m_connection, string.Empty);
+                m.CoordinateSystem = @"LOCAL_CS[""*XY-M*"", LOCAL_DATUM[""*X-Y*"", 10000], UNIT[""Meter"", 1], AXIS[""X"", EAST], AXIS[""Y"", NORTH]]"; //NOXLATE
                 m.SetExtents(-1, -1, 1, 1);
 
                 //AIMS 2012 demands this checks out. Can't flub it anymore
-                m.ResourceID = "Session:" + m_connection.SessionID + "//non-existing.MapDefinition";
+                m.ResourceID = "Session:" + m_connection.SessionID + "//non-existing.MapDefinition"; //NOXLATE
                 var mpsvc = (IMappingService)m_connection.GetService((int)ServiceType.Mapping);
                 var rid = new ResourceIdentifier(Guid.NewGuid().ToString(), ResourceTypes.RuntimeMap, m_connection.SessionID);
 
@@ -125,11 +125,11 @@ namespace Maestro.Base.UI
             {
                 try
                 {
-                    IMapDefinition mdef = ObjectFactory.CreateMapDefinition(m_connection, "");
+                    IMapDefinition mdef = ObjectFactory.CreateMapDefinition(m_connection, string.Empty);
                     //We cannot flub this anymore. AIMS 2012 demands the Map Definition id specified checks out
-                    mdef.ResourceID = "Session:" + m_connection.SessionID + "//ProfileTest.MapDefinition";
+                    mdef.ResourceID = "Session:" + m_connection.SessionID + "//ProfileTest.MapDefinition"; //NOXLATE
                     m_connection.ResourceService.SaveResource(mdef);
-                    IMapLayer layer = mdef.AddLayer(null, "Test Layer", ldef.ResourceID);
+                    IMapLayer layer = mdef.AddLayer(null, "Test Layer", ldef.ResourceID); //NOXLATE
                     layer.Visible = false;
                     layer.Selectable = false;
 
@@ -141,7 +141,7 @@ namespace Maestro.Base.UI
                     var map = mpsvc.CreateMap(mdef);
                     using (new Timer(Properties.Resources.Prof_LogMessageIdentifyFetching, backgroundWorker))
                     {
-                    	var rtl = map.Layers["Test Layer"];
+                        var rtl = map.Layers["Test Layer"]; //NOXLATE
                         rtl.Visible = true;
                         rtl.Selectable = true;
                     }
@@ -199,7 +199,7 @@ namespace Maestro.Base.UI
                                 {
                                     mdf.CoordinateSystem = lst.SpatialContext[0].CoordinateSystemWkt;
                                     if (string.IsNullOrEmpty(m_tempmap.CoordinateSystem))
-                                        mdf.CoordinateSystem = @"LOCAL_CS[""*XY-M*"", LOCAL_DATUM[""*X-Y*"", 10000], UNIT[""Meter"", 1], AXIS[""X"", EAST], AXIS[""Y"", NORTH]]";
+                                        mdf.CoordinateSystem = @"LOCAL_CS[""*XY-M*"", LOCAL_DATUM[""*X-Y*"", 10000], UNIT[""Meter"", 1], AXIS[""X"", EAST], AXIS[""Y"", NORTH]]"; //NOXLATE
                                     
                                     double llx = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.X, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture);
                                     double lly = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.Y, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture); ;
@@ -213,7 +213,7 @@ namespace Maestro.Base.UI
                                 
                                 var mpsvc = (IMappingService)m_connection.GetService((int)ServiceType.Mapping);
                                 //We cannot flub this anymore. AIMS 2012 demands the Map Definition id specified checks out
-                                mdf.ResourceID = "Session:" + m_connection.SessionID + "//ProfileTest.MapDefinition";
+                                mdf.ResourceID = "Session:" + m_connection.SessionID + "//ProfileTest.MapDefinition"; //NOXLATE
                                 m_connection.ResourceService.SaveResource(mdf);
                                 var rtmap = mpsvc.CreateMap(mdf);
 
@@ -249,7 +249,7 @@ namespace Maestro.Base.UI
             if (backgroundWorker.CancellationPending)
                 return;
 
-            backgroundWorker.ReportProgress(0, ("\r\n"));
+            backgroundWorker.ReportProgress(0, ("\r\n")); //NOXLATE
         }
 
         private void ProfileMapDefinition(IMapDefinition mapDef)
@@ -337,7 +337,7 @@ namespace Maestro.Base.UI
                     return;
 
                 //We cannot flub this anymore. AIMS 2012 demands the Map Definition id specified checks out
-                mdef.ResourceID = "Session:" + m_connection.SessionID + "//ProfilingTest.MapDefinition";
+                mdef.ResourceID = "Session:" + m_connection.SessionID + "//ProfilingTest.MapDefinition"; //NOXLATE
                 m_connection.ResourceService.SaveResource(mdef);
 
                 var rtmap = mpsvc.CreateMap(mdef);
@@ -388,7 +388,7 @@ namespace Maestro.Base.UI
                 {
                     TimeSpan ts = DateTime.Now - m_begin;
                     m_isDisposed = true;
-                    m_worker.ReportProgress(0, (m_text + ts.TotalMilliseconds)); //ts.Minutes.ToString("00") + ":" + ts.Seconds.ToString("00") + "." + ts.Milliseconds.ToString("000")));
+                    m_worker.ReportProgress(0, (m_text + ts.TotalMilliseconds));
                     m_worker = null;
                     m_text = null;
                 }
@@ -447,7 +447,7 @@ namespace Maestro.Base.UI
 
             bool scroll = Math.Abs((Results.SelectionStart + Results.SelectionLength) - Results.Text.Length) < 20;
 
-            Results.Text += message + "\r\n";
+            Results.Text += message + "\r\n"; //NOXLATE
             if (scroll)
             {
                 Results.SelectionLength = 0;

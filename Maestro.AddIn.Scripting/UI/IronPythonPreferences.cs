@@ -55,7 +55,7 @@ namespace Maestro.AddIn.Scripting.UI
             get { return this; }
         }
 
-        public const string ShowIronPythonConsole = "Scripting.ShowIronPythonConsole";
+        public const string ShowIronPythonConsole = "Scripting.ShowIronPythonConsole";//to support newline for textbox use
 
         public bool ApplyChanges()
         {

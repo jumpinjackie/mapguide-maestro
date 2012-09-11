@@ -46,7 +46,7 @@ namespace Maestro.Base.Events
             svc.ConnectionAdded += new ServerConnectionEventHandler(OnConnectionAdded);
             svc.ConnectionRemoved += new ServerConnectionEventHandler(OnConnectionRemoved);
 
-            LoggingService.Info("Starting session keep-alive timer");
+            LoggingService.Info("Starting session keep-alive timer"); //NOXLATE
             _keepAliveTimer.Start();
         }
 
@@ -58,7 +58,7 @@ namespace Maestro.Base.Events
             foreach (var name in svc.GetConnectionNames())
             {
                 var conn = svc.GetConnection(name);
-                if (conn.ProviderName.ToUpper().Equals("MAESTRO.LOCAL"))
+                if (conn.ProviderName.ToUpper().Equals("MAESTRO.LOCAL")) //NOXLATE
                     continue;
 
                 string sessionId = conn.SessionID;
@@ -66,8 +66,8 @@ namespace Maestro.Base.Events
                 {
                     try
                     {
-                        conn.FeatureService.GetProviderCapabilities("OSGeo.SDF");
-                        LoggingService.Info("Session kept alive: " + sessionId);
+                        conn.FeatureService.GetProviderCapabilities("OSGeo.SDF"); //NOXLATE
+                        LoggingService.Info("Session kept alive: " + sessionId); //NOXLATE
                     }
                     catch (Exception)
                     {
@@ -93,7 +93,7 @@ namespace Maestro.Base.Events
             Workbench wb = Workbench.Instance;
             Debug.Assert(wb.ActiveSiteExplorer != null);
             var svc = ServiceRegistry.GetService<ServerConnectionManager>();
-            LoggingService.Info("There are now " + svc.GetConnectionNames().Count + " active connections"); //LOCALIZEME
+            LoggingService.Info("There are now " + svc.GetConnectionNames().Count + " active connections");  //NOXLATE
             //Debug.Assert(wb.ActiveSiteExplorer.ConnectionName == name);
         }
 
@@ -118,7 +118,7 @@ namespace Maestro.Base.Events
             var svc = ServiceRegistry.GetService<ServerConnectionManager>();
             var conn = svc.GetConnection(name);
 
-            LoggingService.Info("There are now " + svc.GetConnectionNames().Count + " active connections"); //LOCALIZEME
+            LoggingService.Info("There are now " + svc.GetConnectionNames().Count + " active connections"); //NOXLATE
         }
 
         static void OnActiveConnectionChanged(object sender, EventArgs e)
@@ -131,7 +131,7 @@ namespace Maestro.Base.Events
             }
             else
             {
-                wb.SetStatusLabel("");
+                wb.SetStatusLabel(string.Empty);
             }
         }
     }

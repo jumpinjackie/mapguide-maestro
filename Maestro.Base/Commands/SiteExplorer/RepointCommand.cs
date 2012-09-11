@@ -112,7 +112,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                             {
                                 foreach (var map in mg.Map)
                                 {
-                                    if (map.Type.Equals("MapGuide"))
+                                    if (map.Type.Equals("MapGuide")) //NOXLATE
                                     {
                                         string mdfId = map.GetMapDefinition();
                                         if (mdfId.Equals(srcMap))

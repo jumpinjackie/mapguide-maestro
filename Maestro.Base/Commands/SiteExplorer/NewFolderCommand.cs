@@ -39,7 +39,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                 var item = exp.SelectedItems[0];
                 if (item.IsFolder)
                 {
-                    string defaultName = "New Folder";
+                    string defaultName = "New Folder"; //NOXLATE
                     string name = defaultName;
                     int counter = -1;
                     while (item.Contains(name))
@@ -60,13 +60,13 @@ namespace Maestro.Base.Commands.SiteExplorer
                     {
                         name = diag.FolderName;
                         //conn.ResourceService.CreateFolder(item.ResourceId + name);
-                        conn.ResourceService.SetResourceXmlData(item.ResourceId + name + "/", null);
+                        conn.ResourceService.SetResourceXmlData(item.ResourceId + name + "/", null); //NOXLATE
                         var path = item.Model.GetPath(item);
                         item.Model.RaiseStructureChanged(new Aga.Controls.Tree.TreeModelEventArgs(path, new object[0]));
 
                         //Expand so user can see this new folder
                         exp.ExpandNode(conn.DisplayName, item.ResourceId);
-                        exp.SelectNode(conn.DisplayName, item.ResourceId + name + "/");
+                        exp.SelectNode(conn.DisplayName, item.ResourceId + name + "/"); //NOXLATE
                     }
                 }
             }

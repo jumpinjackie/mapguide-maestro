@@ -55,13 +55,13 @@ namespace Maestro.Base
         public MenuStrip GetMainMenu(WorkbenchBase workbench)
         {
             var menu = new System.Windows.Forms.MenuStrip();
-            MenuService.AddItemsToMenu(menu.Items, workbench, "/Maestro/Shell/MainMenu");
+            MenuService.AddItemsToMenu(menu.Items, workbench, "/Maestro/Shell/MainMenu"); //NOXLATE
             return menu;
         }
 
         public ToolStrip GetMainToolStrip(WorkbenchBase workbench)
         {
-            return ToolbarService.CreateToolStrip(workbench, "/Maestro/Shell/Toolbars/Main");
+            return ToolbarService.CreateToolStrip(workbench, "/Maestro/Shell/Toolbars/Main"); //NOXLATE
         }
 
         public IViewContentManager GetViewContentManager()

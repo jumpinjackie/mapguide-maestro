@@ -49,7 +49,7 @@ namespace Maestro.Base.UI
             _large = new ImageList();
         }
 
-        const string UNKNOWN = "UNKNOWN";
+        const string UNKNOWN = "UNKNOWN"; //NOXLATE
 
         public static ResourceIconCache CreateDefault()
         {

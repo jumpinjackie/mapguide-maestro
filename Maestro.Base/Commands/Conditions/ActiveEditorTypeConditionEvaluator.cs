@@ -29,7 +29,7 @@ namespace Maestro.Base.Commands.Conditions
     {
         public bool IsValid(object caller, Condition condition)
         {
-            var types = condition.Properties["types"];
+            var types = condition.Properties["types"]; //NOXLATE
             if (types != null)
             {
                 var wb = Workbench.Instance;
@@ -38,7 +38,7 @@ namespace Maestro.Base.Commands.Conditions
                     if (wb.ActiveEditor != null)
                     {
                         var rtype = wb.ActiveEditor.EditorService.GetEditedResource().ResourceType.ToString();
-                        var resTypes = new List<string>(types.Split(','));
+                        var resTypes = new List<string>(types.Split(',')); //NOXLATE
                         return resTypes.Contains(rtype);
                     }
                 }

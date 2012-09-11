@@ -43,19 +43,19 @@ namespace Maestro.AddIn.Scripting.UI
             /// MIT's ConceptNet 2.1 directory.
             /// default: "...MyDocuments) + @"\Python Projects\conceptnet2.1"
             /// </summary>
-            public static string ConceptNet = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Python Projects\conceptnet2.1";
+            public static string ConceptNet = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Python Projects\conceptnet2.1"; //NOXLATE
             
             /// <summary>
             /// MIT's MontyLingua directory.
             /// default: "...MyDocuments) + @"\Python Projects\conceptnet2.1\montylingua"
             /// </summary>
-            public static string montylingua = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Python Projects\conceptnet2.1\montylingua";
+            public static string montylingua = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Python Projects\conceptnet2.1\montylingua"; //NOXLATE
 
             /// <summary>
             /// Visual Studio\Projects Folder.
             /// default: "..MyDocuments) + @"\Visual Studio 2008\Projects"
             /// </summary>
-            public static string vs_Projects = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Visual Studio 2008\Projects";
+            public static string vs_Projects = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Visual Studio 2008\Projects"; //NOXLATE
 
             /*
             /// <summary>
@@ -92,35 +92,35 @@ namespace Maestro.AddIn.Scripting.UI
             /// Folder to Python library modules.
             /// default: "C:\Python24\Lib"
             /// </summary>
-            public static string Python24_Lib = @"C:\Python24\Lib";
+            public static string Python24_Lib = @"C:\Python24\Lib"; //NOXLATE
 
             /// <summary>
             /// Folder to Tkinter library modules.
             /// default: "C:\Python24\Lib\lib-tk"
             /// </summary>
-            public static string Python24_Lib_lib_tk = @"C:\Python24\Lib\lib-tk";
+            public static string Python24_Lib_lib_tk = @"C:\Python24\Lib\lib-tk"; //NOXLATE
 
             /// <summary>
             /// default: "C:\Python24\libs"
             /// </summary>
-            public static string Python24_libs = @"C:\Python24\libs";
+            public static string Python24_libs = @"C:\Python24\libs"; //NOXLATE
 
             /// <summary>
             /// default: "C:\Python24\DLLs"
             /// </summary>
-            public static string Python24_DLLs = @"C:\Python24\DLLs";
+            public static string Python24_DLLs = @"C:\Python24\DLLs"; //NOXLATE
 
             /// <summary>
             /// Some useful programs written in Python.
             /// default: "C:\Python24\Tools"
             /// </summary>
-            public static string Python24_Tools = @"C:\Python24\Tools";
+            public static string Python24_Tools = @"C:\Python24\Tools"; //NOXLATE
 
             /// <summary>
             /// Some useful programs written in Python.
             /// default: "C:\Python24\Tools\Scripts"
             /// </summary>
-            public static string Python24_Tools_Scripts = @"C:\Python24\Tools\Scripts";
+            public static string Python24_Tools_Scripts = @"C:\Python24\Tools\Scripts"; //NOXLATE
 
             /*
             /// <summary>
@@ -160,35 +160,35 @@ namespace Maestro.AddIn.Scripting.UI
             /// Folder to Python library modules.
             /// default: "C:\Python25\Lib"
             /// </summary>
-            public static string Python25_Lib = @"C:\Python25\Lib";
+            public static string Python25_Lib = @"C:\Python25\Lib"; //NOXLATE
 
             /// <summary>
             /// Folder to Tkinter library modules.
             /// default: "C:\Python25\Lib\lib-tk"
             /// </summary>
-            public static string Python25_Lib_lib_tk = @"C:\Python25\Lib\lib-tk";
+            public static string Python25_Lib_lib_tk = @"C:\Python25\Lib\lib-tk"; //NOXLATE
 
             /// <summary>
             /// default: "C:\Python25\libs"
             /// </summary>
-            public static string Python25_libs = @"C:\Python25\libs";
+            public static string Python25_libs = @"C:\Python25\libs"; //NOXLATE
 
             /// <summary>
             /// default: "C:\Python25\DLLs"
             /// </summary>
-            public static string Python25_DLLs = @"C:\Python25\DLLs";
+            public static string Python25_DLLs = @"C:\Python25\DLLs"; //NOXLATE
 
             /// <summary>
             /// Some useful programs written in Python.
             /// default: "C:\Python25\Tools"
             /// </summary>
-            public static string Python25_Tools = @"C:\Python25\Tools";
+            public static string Python25_Tools = @"C:\Python25\Tools"; //NOXLATE
 
             /// <summary>
             /// Some useful programs written in Python.
             /// default: "C:\Python25\Tools\Scripts"
             /// </summary>
-            public static string Python25_Tools_Scripts = @"C:\Python25\Tools\Scripts";
+            public static string Python25_Tools_Scripts = @"C:\Python25\Tools\Scripts"; //NOXLATE
 
             /*
             /// <summary>
@@ -233,7 +233,7 @@ namespace Maestro.AddIn.Scripting.UI
             /// IronPython Tutorial scripts.
             /// default: "...MyDocuments) + @"\Visual Studio 2008\Projects\IronPython-2.0B2\Tutorial"
             /// </summary>
-            public static string IronPython_Tutorial = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Visual Studio 2008\Projects\IronPython-2.0B2\Tutorial";
+            public static string IronPython_Tutorial = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\Visual Studio 2008\Projects\IronPython-2.0B2\Tutorial"; //NOXLATE
 
             /// <summary>
             /// IronPython Paths

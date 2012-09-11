@@ -61,11 +61,11 @@ namespace Maestro.AddInManager
             //
             InitializeComponent();
 
-            installButton.Text = ResourceService.GetString("AddInManager.InstallButton");
-            uninstallButton.Text = ResourceService.GetString("AddInManager.ActionUninstall");
-            closeButton.Text = ResourceService.GetString("TextClose");
-            showPreinstalledAddInsCheckBox.Text = ResourceService.GetString("AddInManager.ShowPreinstalledAddIns");
-            this.Text = ResourceService.GetString("AddInManager.Title");
+            installButton.Text = ResourceService.GetString("AddInManager.InstallButton"); //NOXLATE
+            uninstallButton.Text = ResourceService.GetString("AddInManager.ActionUninstall"); //NOXLATE
+            closeButton.Text = ResourceService.GetString("TextClose"); //NOXLATE
+            showPreinstalledAddInsCheckBox.Text = ResourceService.GetString("AddInManager.ShowPreinstalledAddIns"); //NOXLATE
+            this.Text = ResourceService.GetString("AddInManager.Title"); //NOXLATE
             RightToLeftConverter.ConvertRecursive(this);
 
             CreateAddInList();
@@ -78,7 +78,7 @@ namespace Maestro.AddInManager
                 Rectangle rect = splitContainer.Panel1.ClientRectangle;
                 rect.Offset(16, 16);
                 rect.Inflate(-32, -32);
-                e.Graphics.DrawString(ResourceService.GetString("AddInManager.NoAddInsInstalled"),
+                e.Graphics.DrawString(ResourceService.GetString("AddInManager.NoAddInsInstalled"), //NOXLATE
                                       Font, SystemBrushes.WindowText, rect);
             }
         }
@@ -97,7 +97,7 @@ namespace Maestro.AddInManager
             foreach (AddIn addIn in addInList)
             {
                 string identity = addIn.Manifest.PrimaryIdentity;
-                if (addIn.Properties["addInManagerHidden"] == "true")
+                if (addIn.Properties["addInManagerHidden"] == "true") //NOXLATE
                     continue;
                 addInControl = new AddInControl(addIn);
                 addInControl.Dock = DockStyle.Top;
@@ -112,7 +112,7 @@ namespace Maestro.AddInManager
             }
             ShowPreinstalledAddInsCheckBoxCheckedChanged(null, null);
 
-			showPreinstalledAddInsCheckBox.Checked = true;
+            showPreinstalledAddInsCheckBox.Checked = true;
 
             splitContainer.Panel2Collapsed = true;
         }
@@ -283,8 +283,8 @@ namespace Maestro.AddInManager
                 if (allEnabled == true || allHaveIdentity == false)
                 {
                     selectedAction = AddInAction.Disable;
-                    actionGroupBox.Text = runActionButton.Text = ResourceService.GetString("AddInManager.ActionDisable");
-                    actionDescription.Text = ResourceService.GetString("AddInManager.DescriptionDisable");
+                    actionGroupBox.Text = runActionButton.Text = ResourceService.GetString("AddInManager.ActionDisable"); //NOXLATE
+                    actionDescription.Text = ResourceService.GetString("AddInManager.DescriptionDisable"); //NOXLATE
                     if (allHaveIdentity)
                         runActionButton.Enabled = ShowDependencies(selected, ShowDependencyMode.Disable);
                     else
@@ -294,8 +294,8 @@ namespace Maestro.AddInManager
                 else if (allDisabled)
                 {
                     selectedAction = AddInAction.Enable;
-                    actionGroupBox.Text = runActionButton.Text = ResourceService.GetString("AddInManager.ActionEnable");
-                    actionDescription.Text = ResourceService.GetString("AddInManager.DescriptionEnable");
+                    actionGroupBox.Text = runActionButton.Text = ResourceService.GetString("AddInManager.ActionEnable"); //NOXLATE
+                    actionDescription.Text = ResourceService.GetString("AddInManager.DescriptionEnable"); //NOXLATE
                     runActionButton.Enabled = ShowDependencies(selected, ShowDependencyMode.Enable);
                     if (hasErrors)
                         runActionButton.Enabled = false;
@@ -304,31 +304,31 @@ namespace Maestro.AddInManager
                 else if (allInstalling)
                 {
                     selectedAction = AddInAction.Uninstall;
-                    actionGroupBox.Text = runActionButton.Text = ResourceService.GetString("AddInManager.ActionCancelInstallation");
-                    actionDescription.Text = ResourceService.GetString("AddInManager.DescriptionCancelInstall");
+                    actionGroupBox.Text = runActionButton.Text = ResourceService.GetString("AddInManager.ActionCancelInstallation"); //NOXLATE
+                    actionDescription.Text = ResourceService.GetString("AddInManager.DescriptionCancelInstall"); //NOXLATE
                     runActionButton.Enabled = ShowDependencies(selected, ShowDependencyMode.Disable);
                     uninstallButton.Visible = false;
                 }
                 else if (allUninstalling)
                 {
                     selectedAction = AddInAction.Enable;
-                    actionGroupBox.Text = runActionButton.Text = ResourceService.GetString("AddInManager.ActionCancelDeinstallation");
-                    actionDescription.Text = ResourceService.GetString("AddInManager.DescriptionCancelDeinstallation");
+                    actionGroupBox.Text = runActionButton.Text = ResourceService.GetString("AddInManager.ActionCancelDeinstallation"); //NOXLATE
+                    actionDescription.Text = ResourceService.GetString("AddInManager.DescriptionCancelDeinstallation"); //NOXLATE
                     runActionButton.Enabled = ShowDependencies(selected, ShowDependencyMode.Enable);
                     uninstallButton.Visible = false;
                 }
                 else if (allUpdating)
                 {
                     selectedAction = AddInAction.InstalledTwice;
-                    actionGroupBox.Text = runActionButton.Text = ResourceService.GetString("AddInManager.ActionCancelUpdate");
-                    actionDescription.Text = ResourceService.GetString("AddInManager.DescriptionCancelUpdate");
+                    actionGroupBox.Text = runActionButton.Text = ResourceService.GetString("AddInManager.ActionCancelUpdate"); //NOXLATE
+                    actionDescription.Text = ResourceService.GetString("AddInManager.DescriptionCancelUpdate"); //NOXLATE
                     runActionButton.Enabled = ShowDependencies(selected, ShowDependencyMode.CancelUpdate);
                     uninstallButton.Visible = false;
                 }
                 else
                 {
-                    actionGroupBox.Text = "";
-                    actionDescription.Text = ResourceService.GetString("AddInManager.DescriptionInconsistentSelection");
+                    actionGroupBox.Text = string.Empty;
+                    actionDescription.Text = ResourceService.GetString("AddInManager.DescriptionInconsistentSelection"); //NOXLATE
                     runActionButton.Visible = false;
                     uninstallButton.Visible = false;
                 }
@@ -436,7 +436,7 @@ namespace Maestro.AddInManager
                 int rowIndex = 0;
                 if (dependencies.Count > 0)
                 {
-                    AddLabelRow(rowIndex++, ResourceService.GetString("AddInManager.RequiredDependencies"));
+                    AddLabelRow(rowIndex++, ResourceService.GetString("AddInManager.RequiredDependencies")); //NOXLATE
                     foreach (AddInReference dep in dependencies)
                     {
                         if (!AddDependencyRow(addInDict, dep, rowIndex++, null))
@@ -445,7 +445,7 @@ namespace Maestro.AddInManager
                 }
                 if (dependenciesToSel.Count > 0)
                 {
-                    AddLabelRow(rowIndex++, ResourceService.GetString("AddInManager.RequiredBy"));
+                    AddLabelRow(rowIndex++, ResourceService.GetString("AddInManager.RequiredBy")); //NOXLATE
                     foreach (KeyValuePair<AddIn, AddInReference> pair in dependenciesToSel)
                     {
                         if (!AddDependencyRow(addInDict, pair.Value, rowIndex++, pair.Key.Name))
@@ -500,7 +500,7 @@ namespace Maestro.AddInManager
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
-                dlg.Filter = ResourceService.GetString("AddInManager.FileFilter");
+                dlg.Filter = ResourceService.GetString("AddInManager.FileFilter"); //NOXLATE
                 dlg.Multiselect = true;
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
@@ -528,26 +528,26 @@ namespace Maestro.AddInManager
                     // Same file-extension check is in Panel1DragEnter
                     switch (Path.GetExtension(file).ToLowerInvariant())
                     {
-                        case ".addin":
+                        case ".addin": //NOXLATE
                             if (FileUtility.IsBaseDirectory(FileUtility.ApplicationRootPath, file))
                             {
-                                MessageService.ShowMessage("${res:AddInManager.CannotInstallIntoApplicationDirectory}");
+                                MessageService.ShowMessage("${res:AddInManager.CannotInstallIntoApplicationDirectory}"); //NOXLATE
                                 return false;
                             }
                             list.Add(new InstallableAddIn(file, false));
                             break;
-                        case ".sdaddin":
-                        case ".zip":
+                        case ".sdaddin": //NOXLATE
+                        case ".zip": //NOXLATE
                             list.Add(new InstallableAddIn(file, true));
                             break;
                         default:
-                            MessageService.ShowMessage("${res:AddInManager.UnknownFileFormat} " + Path.GetExtension(file));
+                            MessageService.ShowMessage("${res:AddInManager.UnknownFileFormat} " + Path.GetExtension(file)); //NOXLATE
                             return false;
                     }
                 }
                 catch (AddInLoadException ex)
                 {
-                    MessageService.ShowMessage("Error loading " + file + ":\n" + ex.Message);
+                    MessageService.ShowMessage(string.Format(Strings.ErrorLoadingFile, file, Environment.NewLine, ex.Message));
                     return false;
                 }
             }
@@ -594,38 +594,38 @@ namespace Maestro.AddInManager
 
             if (updateAddIns.Count == 0)
             {
-                actionGroupBox.Text = runActionButton.Text = ResourceService.GetString("AddInManager.ActionInstall");
+                actionGroupBox.Text = runActionButton.Text = ResourceService.GetString("AddInManager.ActionInstall"); //NOXLATE
             }
             else if (installAddIns.Count == 0)
             {
-                actionGroupBox.Text = runActionButton.Text = ResourceService.GetString("AddInManager.ActionUpdate");
+                actionGroupBox.Text = runActionButton.Text = ResourceService.GetString("AddInManager.ActionUpdate"); //NOXLATE
             }
             else
             {
                 actionGroupBox.Text = runActionButton.Text =
-                    ResourceService.GetString("AddInManager.ActionInstall")
-                    + " + " +
-                    ResourceService.GetString("AddInManager.ActionUpdate");
+                    ResourceService.GetString("AddInManager.ActionInstall") //NOXLATE
+                    + " + " + //NOXLATE
+                    ResourceService.GetString("AddInManager.ActionUpdate"); //NOXLATE
             }
             List<AddIn> addInList = new List<AddIn>();
             StringBuilder b = new StringBuilder();
             if (installAddIns.Count == 1)
             {
-                b.Append("Installs the AddIn " + installAddIns[0]);
+                b.Append("Installs the AddIn " + installAddIns[0]); //NOXLATE
             }
             else if (installAddIns.Count > 1)
             {
-                b.Append("Installs the AddIns " + string.Join(",", installAddIns.ToArray()));
+                b.Append("Installs the AddIns " + string.Join(",", installAddIns.ToArray())); //NOXLATE
             }
             if (updateAddIns.Count > 0 && installAddIns.Count > 0)
-                b.Append("; ");
+                b.Append("; "); //NOXLATE
             if (updateAddIns.Count == 1)
             {
-                b.Append("Updates the AddIn " + updateAddIns[0]);
+                b.Append("Updates the AddIn " + updateAddIns[0]); //NOXLATE
             }
             else if (updateAddIns.Count > 1)
             {
-                b.Append("Updates the AddIns " + string.Join(",", updateAddIns.ToArray()));
+                b.Append("Updates the AddIns " + string.Join(",", updateAddIns.ToArray())); //NOXLATE
             }
             actionDescription.Text = b.ToString();
             runActionButton.Enabled = ShowDependencies(addInList, ShowDependencyMode.Enable);
@@ -691,11 +691,11 @@ namespace Maestro.AddInManager
             {
                 switch (Path.GetExtension(file).ToLowerInvariant())
                 {
-                    case ".addin":
+                    case ".addin": //NOXLATE
                         addInCount += 1;
                         break;
-                    case ".sdaddin":
-                    case ".zip":
+                    case ".sdaddin": //NOXLATE
+                    case ".zip": //NOXLATE
                         packageCount += 1;
                         break;
                     default:
@@ -765,9 +765,9 @@ namespace Maestro.AddInManager
                 case AddInAction.Disable:
                     for (int i = 0; i < selected.Count; i++)
                     {
-                        if (selected[i].Manifest.PrimaryIdentity == "ICSharpCode.AddInManager")
+                        if (selected[i].Manifest.PrimaryIdentity == "ICSharpCode.AddInManager") //NOXLATE
                         {
-                            MessageService.ShowMessage("${res:AddInManager.CannotDisableAddInManager}");
+                            MessageService.ShowMessage("${res:AddInManager.CannotDisableAddInManager}"); //NOXLATE
                             selected.RemoveAt(i--);
                         }
                     }

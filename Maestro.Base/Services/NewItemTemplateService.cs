@@ -41,17 +41,17 @@ namespace Maestro.Base.Services
             base.Initialize();
             _templates = new Dictionary<string, List<ItemTemplate>>();
 
-            var tpls = AddInTree.BuildItems<ItemTemplate>("/Maestro/NewItemTemplates", this);
+            var tpls = AddInTree.BuildItems<ItemTemplate>("/Maestro/NewItemTemplates", this); //NOXLATE
             foreach (var tp in tpls)
             {
                 if (!_templates.ContainsKey(tp.Category))
                     _templates[tp.Category] = new List<ItemTemplate>();
 
                 _templates[tp.Category].Add(tp);
-                LoggingService.Info("Registered default template: " + tp.GetType()); //LOCALIZE
+                LoggingService.Info("Registered default template: " + tp.GetType()); //NOXLATE
             }
 
-            LoggingService.Info("Initialized: New Item Template Service"); //LOCALIZE
+            LoggingService.Info("Initialized: New Item Template Service"); //NOXLATE
         }
 
         internal void InitUserTemplates()
@@ -72,7 +72,7 @@ namespace Maestro.Base.Services
             List<UserItemTemplate> tpls = new List<UserItemTemplate>();
             
             //TODO: Store path in preferences
-            string userTplPath = Path.Combine(FileUtility.ApplicationRootPath, "UserTemplates");
+            string userTplPath = Path.Combine(FileUtility.ApplicationRootPath, "UserTemplates"); //NOXLATE
             if (Directory.Exists(userTplPath))
             {
                 foreach (string file in Directory.GetFiles(userTplPath))
@@ -84,7 +84,7 @@ namespace Maestro.Base.Services
                     }
                     catch (Exception)
                     {
-                        LoggingService.Info("Could not load user template: " + file); //LOCALIZE
+                        LoggingService.Info("Could not load user template: " + file); //NOXLATE
                     }
                 }
             }

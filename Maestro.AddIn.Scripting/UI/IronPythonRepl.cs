@@ -37,7 +37,7 @@ namespace Maestro.AddIn.Scripting.UI
         {
             InitializeComponent();
             _console = new IronTextBoxControl();
-            _console.Prompt = ">>>";
+            _console.Prompt = ">>>"; //NOXLATE
             _console.Dock = DockStyle.Fill;
             this.Controls.Add(_console);
 
@@ -46,7 +46,7 @@ namespace Maestro.AddIn.Scripting.UI
 
         protected override void OnLoad(EventArgs e)
         {
-            _console.WriteText("help" + Environment.NewLine);
+            _console.WriteText("help" + Environment.NewLine); //NOXLATE
             _console.SimEnter();
         }
 

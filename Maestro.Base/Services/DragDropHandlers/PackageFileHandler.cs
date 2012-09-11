@@ -36,7 +36,7 @@ namespace Maestro.Base.Services.DragDropHandlers
             get { return Properties.Resources.MgpHandlerAction; }
         }
 
-        string[] extensions = { ".mgp" };
+        string[] extensions = { ".mgp" }; //NOXLATE
 
         public string[] FileExtensions
         {

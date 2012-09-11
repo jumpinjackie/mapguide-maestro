@@ -46,8 +46,8 @@ namespace Maestro.Base.Templates
                 Properties.Resources.SelectFdoProvider,
                 Properties.Resources.SelectFdoProvider,
                 conn.FeatureService.FeatureProviders,
-                "DisplayName",
-                "Name");
+                "DisplayName", //NOXLATE
+                "Name"); //NOXLATE
 
             if (provider != null)
             {

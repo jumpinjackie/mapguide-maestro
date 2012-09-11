@@ -44,9 +44,9 @@ namespace Maestro.AddInManager
     {
         public bool IsValid(object caller, Condition condition)
         {
-            string states = condition.Properties["states"];
+            string states = condition.Properties["states"]; //NOXLATE
             string action = ((AddInControl)caller).AddIn.Action.ToString();
-            foreach (string state in states.Split(','))
+            foreach (string state in states.Split(',')) //NOXLATE
             {
                 if (state == action)
                     return true;
@@ -101,15 +101,15 @@ namespace Maestro.AddInManager
         {
             get
             {
-                return ((AddInControl)Owner).AddIn.Properties["url"].Length > 0;
+                return ((AddInControl)Owner).AddIn.Properties["url"].Length > 0; //NOXLATE
             }
         }
 
         public override void Run()
         {
-			try {
-				System.Diagnostics.Process.Start(((AddInControl)Owner).AddIn.Properties["url"]);
-			} catch {}
+            try {
+                System.Diagnostics.Process.Start(((AddInControl)Owner).AddIn.Properties["url"]); //NOXLATE
+            } catch {}
             ManagerForm.Instance.Close();
         }
     }

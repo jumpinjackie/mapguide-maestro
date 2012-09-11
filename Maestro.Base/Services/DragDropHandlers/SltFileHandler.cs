@@ -36,7 +36,7 @@ namespace Maestro.Base.Services.DragDropHandlers
             get { return Properties.Resources.SdfHandlerAction; }
         }
 
-        string[] extensions = { ".sqlite", ".db", ".slt" };
+        string[] extensions = { ".sqlite", ".db", ".slt" }; //NOXLATE
 
         public string[] FileExtensions
         {
@@ -49,19 +49,19 @@ namespace Maestro.Base.Services.DragDropHandlers
             {
                 var wb = Workbench.Instance;
                 var exp = wb.ActiveSiteExplorer;
-                var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLite");
+                var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLite"); //NOXLATE
 
                 string fileName = Path.GetFileName(file);
                 string resName = Path.GetFileNameWithoutExtension(file);
                 int counter = 0;
-                string resId = folderId + resName + ".FeatureSource";
+                string resId = folderId + resName + ".FeatureSource"; //NOXLATE
                 while (conn.ResourceService.ResourceExists(resId))
                 {
                     counter++;
-                    resId = folderId + resName + " (" + counter + ").FeatureSource";
+                    resId = folderId + resName + " (" + counter + ").FeatureSource"; //NOXLATE
                 }
                 fs.ResourceID = resId;
-                fs.SetConnectionProperty("File", "%MG_DATA_FILE_PATH%" + fileName);
+                fs.SetConnectionProperty("File", StringConstants.MgDataFilePath + fileName); //NOXLATE
                 conn.ResourceService.SaveResource(fs);
 
                 using (var stream = File.Open(file, FileMode.Open))

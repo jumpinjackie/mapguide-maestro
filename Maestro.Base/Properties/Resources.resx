@@ -2694,4 +2694,49 @@ You can disable pre-save validation in Maestro options</value>
   <data name="ConnectionDoesNotSupportRequiredInterfaces" xml:space="preserve">
     <value>The current connection does not support the required interfaces to perform this action</value>
   </data>
+  <data name="Cancelled" xml:space="preserve">
+    <value>Cancelled</value>
+  </data>
+  <data name="CompareError" xml:space="preserve">
+    <value>Compare Error</value>
+  </data>
+  <data name="PromptSelectFdoProvider" xml:space="preserve">
+    <value>Select an FDO Provider</value>
+  </data>
+  <data name="TitleSelectFdoProvider" xml:space="preserve">
+    <value>Select FDO Provider</value>
+  </data>
+  <data name="Desc_GetExtents" xml:space="preserve">
+    <value>Displays the current map extents</value>
+  </data>
+  <data name="Desc_GetMapKml" xml:space="preserve">
+    <value>Gets the current map as a KML document</value>
+  </data>
+  <data name="Desc_ZoomToScale" xml:space="preserve">
+    <value>Zoom to a specified scale</value>
+  </data>
+  <data name="Label_ExtraTools" xml:space="preserve">
+    <value>Extra Tools</value>
+  </data>
+  <data name="Label_GetExtents" xml:space="preserve">
+    <value>Get Extents</value>
+  </data>
+  <data name="Label_GetMapKml" xml:space="preserve">
+    <value>Get KML</value>
+  </data>
+  <data name="Label_Tools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="Label_ZoomToScale" xml:space="preserve">
+    <value>Zoom to Scale</value>
+  </data>
+  <data name="SiteVersionDoesntSupportWatermarks" xml:space="preserve">
+    <value>The site version of this current connection is not known to support watermarks</value>
+  </data>
+  <data name="VersionUnknown" xml:space="preserve">
+    <value>Unknown version</value>
+  </data>
+  <data name="VersionUnknownOrNotConnected" xml:space="preserve">
+    <value>Unknown version or not connected</value>
+  </data>
 </root>

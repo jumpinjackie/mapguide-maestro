@@ -54,7 +54,7 @@ namespace Maestro.Base.UI
         {
             if (!txtMessages.IsDisposed)
             {
-                txtMessages.AppendText(string.Format("[{0}]: {1}", msg.LogDate.ToString("dd MMM yyyy hh:mm:ss"), msg.Message));
+                txtMessages.AppendText(string.Format("[{0}]: {1}", msg.LogDate.ToString("dd MMM yyyy hh:mm:ss"), msg.Message)); //NOXLATE
                 txtMessages.ScrollToCaret();
             }
         }
@@ -68,7 +68,7 @@ namespace Maestro.Base.UI
         {
             using (var save = DialogFactory.SaveFile())
             {
-                save.Filter = "*.log|*.log";
+                save.Filter = "*.log|*.log"; //NOXLATE
                 if (save.ShowDialog() == DialogResult.OK)
                 {
                     File.WriteAllText(save.FileName, txtMessages.Text);

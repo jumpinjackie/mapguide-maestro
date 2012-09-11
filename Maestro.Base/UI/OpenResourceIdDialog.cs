@@ -48,7 +48,7 @@ namespace Maestro.Base.UI
             {
                 items.Add(new KeyValuePair<string, IServerConnection>(name, connMgr.GetConnection(name)));
             }
-            cmbConnection.DisplayMember = "Key";
+            cmbConnection.DisplayMember = "Key"; //NOXLATE
             cmbConnection.DataSource = items;
             cmbConnection.SelectedIndex = 0;
         }
@@ -73,11 +73,11 @@ namespace Maestro.Base.UI
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            lblMessage.Text = "";
+            lblMessage.Text = string.Empty;
             if (ResourceIdentifier.Validate(txtResourceId.Text) && !ResourceIdentifier.IsFolderResource(txtResourceId.Text))
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
             else
-                lblMessage.Text = "Resource ID is not valid";
+                lblMessage.Text = Properties.Resources.InvalidResourceId;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -64,7 +64,7 @@ namespace Maestro.Base.UI
 
         void OnRequestDispatched(object sender, OSGeo.MapGuide.MaestroAPI.RequestEventArgs e)
         {
-            string msg = string.Format("[{0}]: {1}", DateTime.Now.ToString("dd MMM yyyy hh:mm:ss"), e.Data);
+            string msg = string.Format("[{0}]: {1}", DateTime.Now.ToString("dd MMM yyyy hh:mm:ss"), e.Data); //NOXLATE
 
             if (!txtMessages.IsDisposed)
             {
@@ -93,7 +93,7 @@ namespace Maestro.Base.UI
         {
             using (var save = DialogFactory.SaveFile())
             {
-                save.Filter = "*.log|*.log";
+                save.Filter = "*.log|*.log"; //NOXLATE
                 if (save.ShowDialog() == DialogResult.OK)
                 {
                     File.WriteAllText(save.FileName, txtMessages.Text);

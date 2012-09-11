@@ -50,7 +50,7 @@ namespace Maestro.Base.Commands
 
                 // Connection display names should be unique. A duplicate means we are connecting to the same MG server
 
-                LoggingService.Info("Connection created: " + conn.DisplayName);
+                LoggingService.Info("Connection created: " + conn.DisplayName); //NOXLATE
                 if (mgr.GetConnection(conn.DisplayName) == null)
                 {
                     mgr.AddConnection(conn.DisplayName, conn);

@@ -64,7 +64,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                             if (parent != null)
                                 exp.RefreshModel(source.DisplayName, parent.ResourceId);
                             else
-                                exp.RefreshModel(source.DisplayName, "Library://");
+                                exp.RefreshModel(source.DisplayName, StringConstants.RootIdentifier);
                         }
                     }
                 }

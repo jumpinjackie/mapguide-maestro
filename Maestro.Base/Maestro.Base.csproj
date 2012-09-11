@@ -279,6 +279,9 @@
     <Compile Include="UI\AboutDialog.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\AboutDialog.Designer.cs">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\BoundsPicker.cs">
       <SubType>Form</SubType>
     </Compile>

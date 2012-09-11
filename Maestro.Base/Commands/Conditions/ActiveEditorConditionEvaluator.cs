@@ -34,21 +34,21 @@ namespace Maestro.Base.Commands.Conditions
             {
                 var cnt = wb.ActiveDocumentView;
                 var ed = cnt as IEditorViewContent;
-                string prop = condition.Properties["property"];
+                string prop = condition.Properties["property"]; //NOXLATE
                 if (!string.IsNullOrEmpty(prop))
                 {
                     prop = prop.ToUpper();
                     switch (prop)
                     {
-                        case "CANPREVIEW":
+                        case "CANPREVIEW": //NOXLATE
                             return ed != null && ed.CanBePreviewed;
-                        case "CANVALIDATE":
+                        case "CANVALIDATE": //NOXLATE
                             return ed != null && ed.CanBeValidated;
-                        case "CANSAVE":
+                        case "CANSAVE": //NOXLATE
                             return ed != null && !ed.IsNew && ed.IsDirty;
-                        case "CANPROFILE":
+                        case "CANPROFILE": //NOXLATE
                             return ed != null && ed.CanProfile;
-                        case "CANEDITASXML":
+                        case "CANEDITASXML": //NOXLATE
                             return ed != null && ed.CanEditAsXml;
                         default:
                             return false;

@@ -189,7 +189,7 @@ namespace Maestro.Base.UI
 
         private void lstTemplates_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtDescription.Text = "";
+            txtDescription.Text = string.Empty;
             if (lstTemplates.SelectedItems.Count == 1)
             {
                 var li = lstTemplates.SelectedItems[0];

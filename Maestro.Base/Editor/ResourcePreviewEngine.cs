@@ -48,12 +48,12 @@ namespace Maestro.Base.Editor
         private string GenerateFeatureSourcePreviewUrl(IResource res)
         {
             string url = _rootUrl;
-            if (!url.EndsWith("/"))
-                url += "/";
+            if (!url.EndsWith("/")) //NOXLATE
+                url += "/"; //NOXLATE
 
             var resId = res.ResourceID;
             var sessionId = _edSvc.SessionID;
-            url += "schemareport/describeschema.php?viewer=basic&schemaName=&className=&resId=" + resId + "&sessionId=" + sessionId;
+            url += "schemareport/describeschema.php?viewer=basic&schemaName=&className=&resId=" + resId + "&sessionId=" + sessionId; //NOXLATE
 
             return url;
         }
@@ -61,15 +61,15 @@ namespace Maestro.Base.Editor
         private string GenerateLayerPreviewUrl(IResource res)
         {
             string url = _rootUrl;
-            if (!url.EndsWith("/"))
-                url += "/";
+            if (!url.EndsWith("/")) //NOXLATE
+                url += "/"; //NOXLATE
 
             var ldf = (ILayerDefinition)res;
             var sessionId = _edSvc.SessionID;
             var conn = res.CurrentConnection;
 
             //Create temp map definition to house our current layer
-            var mdfId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".MapDefinition";
+            var mdfId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".MapDefinition"; //NOXLATE
             string csWkt;
             var extent = ldf.GetSpatialExtent(true, out csWkt);
 
@@ -86,7 +86,7 @@ namespace Maestro.Base.Editor
 
             conn.ResourceService.SaveResourceAs(mdf, mdfId);
 
-            if (PropertyService.Get(ConfigProperties.PreviewViewerType, "AJAX").Equals("AJAX"))
+            if (PropertyService.Get(ConfigProperties.PreviewViewerType, "AJAX").Equals("AJAX")) //NOXLATE
             {
                 //Create temp web layout to house this map
                 var wl = ObjectFactory.CreateWebLayout(_edSvc.GetEditedResource().CurrentConnection, new Version(1, 0, 0), mdfId);
@@ -94,21 +94,21 @@ namespace Maestro.Base.Editor
                 //Add a custom zoom command (to assist previews of layers that aren't [0, infinity] scale)
                 AttachPreviewCommands(wl);
 
-                var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".WebLayout";
+                var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".WebLayout"; //NOXLATE
 
                 conn.ResourceService.SaveResourceAs(wl, resId);
-                url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionId;
+                url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionId; //NOXLATE
             }
             else
             {
                 throw new NotImplementedException();
                 ////Create temp flex layout
                 //var appDef = ObjectFactory.CreatePreviewFlexLayout(conn);
-                //var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".ApplicationDefinition";
-                //appDef.AddMapGroup("previewmap", true, mdfId);
+                //var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".ApplicationDefinition"; //NOXLATE
+                //appDef.AddMapGroup("previewmap", true, mdfId); //NOXLATE
 
                 //conn.ResourceService.SaveResourceAs(appDef, resId);
-                //url += "fusion/templates/mapguide/preview/index.html?Session=" + sessionId + "&ApplicationDefinition=" + resId;
+                //url += "fusion/templates/mapguide/preview/index.html?Session=" + sessionId + "&ApplicationDefinition=" + resId; //NOXLATE
             }
 
             return url;
@@ -117,59 +117,59 @@ namespace Maestro.Base.Editor
         private static void AttachPreviewCommands(IWebLayout wl)
         {
             var cmd = wl.CreateInvokeScriptCommand();
-            cmd.Name = "ZoomScale";
-            cmd.Label = "Zoom to Scale"; //LOCALIZEME
-            cmd.Tooltip = "Zoom to a specified scale";
+            cmd.Name = "ZoomScale"; //NOXLATE
+            cmd.Label = Properties.Resources.Label_ZoomToScale;
+            cmd.Tooltip = Properties.Resources.Desc_ZoomToScale;
             cmd.Script = @"
                 var map = parent.parent.GetMapFrame();
                 var center = map.GetCenter();
                 var scale = parseFloat(prompt('Enter the scale:'));
                 map.ZoomToView(center.X, center.Y, scale, true);
-                ";
+                "; //NOXLATE
 
             cmd.TargetViewer = TargetViewerType.Ajax;
-            cmd.ImageURL = "../stdicons/icon_zoom.gif";
+            cmd.ImageURL = "../stdicons/icon_zoom.gif"; //NOXLATE
 
             wl.CommandSet.AddCommand(cmd);
 
             var cmd2 = wl.CreateInvokeScriptCommand();
-            cmd2.Name = "GetMapKml";
-            cmd2.Label = "Get KML";
-            cmd2.Description = "Gets the current map as a KML document";
-            cmd2.Tooltip = "Gets the current map as a KML document";
+            cmd2.Name = "GetMapKml"; //NOXLATE
+            cmd2.Label = Properties.Resources.Label_GetMapKml;
+            cmd2.Description = Properties.Resources.Desc_GetMapKml;
+            cmd2.Tooltip = Properties.Resources.Desc_GetMapKml;
 
             cmd2.Script = @"
                 var map = parent.parent.GetMapFrame();
                 var url = ""../mapagent/mapagent.fcgi?OPERATION=GETMAPKML&VERSION=1.0.0&FORMAT=KML&DISPLAYDPI=96&MAPDEFINITION=" + wl.Map.ResourceId + @""";
                 url += ""&SESSION="" + map.GetSessionId();
-                window.open(url);";
+                window.open(url);"; //NOXLATE
 
             cmd2.TargetViewer = TargetViewerType.Ajax;
-            cmd2.ImageURL = "../stdicons/icon_invokescript.gif";
+            cmd2.ImageURL = "../stdicons/icon_invokescript.gif"; //NOXLATE
 
             wl.CommandSet.AddCommand(cmd2);
 
             var cmd3 = wl.CreateInvokeScriptCommand();
-            cmd3.Name = "GetExtents";
-            cmd3.Label = "Get Extents";
-            cmd3.Description = "Displays the current map extents";
-            cmd3.Tooltip = "Displays the current map extents";
+            cmd3.Name = "GetExtents"; //NOXLATE
+            cmd3.Label = Properties.Resources.Label_GetExtents;
+            cmd3.Description = Properties.Resources.Desc_GetExtents;
+            cmd3.Tooltip = Properties.Resources.Desc_GetExtents;
 
             cmd3.Script = @"
                 var map = parent.parent.GetMapFrame();
                 alert('Map Extents\n\nLower Left: ' + map.extX1 + ', ' + map.extY2 + '\nUpper Right: ' + map.extX2 + ', ' + map.extY1);
-                ";
+                "; //NOXLATE
 
             cmd3.TargetViewer = TargetViewerType.Ajax;
-            cmd3.ImageURL = "../stdicons/icon_invokescript.gif";
+            cmd3.ImageURL = "../stdicons/icon_invokescript.gif"; //NOXLATE
 
             wl.CommandSet.AddCommand(cmd3);
             
             var zoomScale = wl.CreateCommandItem(cmd.Name);
-            var menu = wl.CreateFlyout("Tools", "Tools", "Extra tools", "", "", 
-                wl.CreateCommandItem("ZoomScale"),
-                wl.CreateCommandItem("GetMapKml"),
-                wl.CreateCommandItem("GetExtents")
+            var menu = wl.CreateFlyout(Properties.Resources.Label_Tools, Properties.Resources.Label_Tools, Properties.Resources.Label_ExtraTools, string.Empty, string.Empty,
+                wl.CreateCommandItem("ZoomScale"), //NOXLATE
+                wl.CreateCommandItem("GetMapKml"), //NOXLATE
+                wl.CreateCommandItem("GetExtents") //NOXLATE
             );
             wl.ToolBar.AddItem(menu);
         }
@@ -178,10 +178,10 @@ namespace Maestro.Base.Editor
         {
             //We demand a 2.3.0 Map Definition or higher
             if (wmd.CurrentConnection.SiteVersion < new Version(2, 3))
-                throw new InvalidOperationException("The site version of this current connection is not known to support watermarks");
+                throw new InvalidOperationException(Properties.Resources.SiteVersionDoesntSupportWatermarks);
 
-            IMapDefinition2 map = (IMapDefinition2)ObjectFactory.CreateMapDefinition(wmd.CurrentConnection, wmd.SupportedMapDefinitionVersion, "Watermark Definition Preview");
-            map.CoordinateSystem = @"LOCAL_CS[""*XY-M*"", LOCAL_DATUM[""*X-Y*"", 10000], UNIT[""Meter"", 1], AXIS[""X"", EAST], AXIS[""Y"", NORTH]]";
+            IMapDefinition2 map = (IMapDefinition2)ObjectFactory.CreateMapDefinition(wmd.CurrentConnection, wmd.SupportedMapDefinitionVersion, "Watermark Definition Preview"); //NOXLATE
+            map.CoordinateSystem = @"LOCAL_CS[""*XY-M*"", LOCAL_DATUM[""*X-Y*"", 10000], UNIT[""Meter"", 1], AXIS[""X"", EAST], AXIS[""Y"", NORTH]]"; //NOXLATE
             map.Extents = ObjectFactory.CreateEnvelope(-1000000, -1000000, 1000000, 1000000);
             map.AddWatermark(wmd);
             return GenerateMapPreviewUrl(map);
@@ -190,17 +190,17 @@ namespace Maestro.Base.Editor
         private string GenerateMapPreviewUrl(IResource res)
         {
             string url = _rootUrl;
-            if (!url.EndsWith("/"))
-                url += "/";
+            if (!url.EndsWith("/")) //NOXLATE
+                url += "/"; //NOXLATE
 
             var sessionId = _edSvc.SessionID;
-            var mdfId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".MapDefinition";
+            var mdfId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".MapDefinition"; //NOXLATE
             var mdf = (IMapDefinition)res;
 
             var conn = mdf.CurrentConnection;
             conn.ResourceService.SaveResourceAs(mdf, mdfId);
 
-            if (PropertyService.Get(ConfigProperties.PreviewViewerType, "AJAX").Equals("AJAX"))
+            if (PropertyService.Get(ConfigProperties.PreviewViewerType, "AJAX").Equals("AJAX")) //NOXLATE
             {
                 //Create temp web layout to house this map
                 var wl = ObjectFactory.CreateWebLayout(_edSvc.GetEditedResource().CurrentConnection, new Version(1, 0, 0), mdfId);
@@ -208,21 +208,21 @@ namespace Maestro.Base.Editor
                 //Add a custom zoom command (to assist previews of layers that aren't [0, infinity] scale)
                 AttachPreviewCommands(wl);
 
-                var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".WebLayout";
+                var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".WebLayout"; //NOXLATE
 
                 conn.ResourceService.SaveResourceAs(wl, resId);
-                url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionId;
+                url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionId; //NOXLATE
             }
             else
             {
                 throw new NotImplementedException();
                 ////Create temp flex layout
                 //var appDef = ObjectFactory.CreateFlexibleLayout(conn);
-                //var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".ApplicationDefinition";
-                //appDef.AddMapGroup("previewmap", true, mdfId);
+                //var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".ApplicationDefinition"; //NOXLATE
+                //appDef.AddMapGroup("previewmap", true, mdfId); //NOXLATE
 
                 //conn.ResourceService.SaveResourceAs(appDef, resId);
-                //url += "fusion/templates/mapguide/preview/index.html?Session=" + sessionId + "&ApplicationDefinition=" + resId;
+                //url += "fusion/templates/mapguide/preview/index.html?Session=" + sessionId + "&ApplicationDefinition=" + resId; //NOXLATE
             }
 
             return url;
@@ -231,16 +231,16 @@ namespace Maestro.Base.Editor
         private string GenerateWebLayoutPreviewUrl(IResource res)
         {
             string url = _rootUrl;
-            if (!url.EndsWith("/"))
-                url += "/";
+            if (!url.EndsWith("/")) //NOXLATE
+                url += "/"; //NOXLATE
 
             var sessionId = _edSvc.SessionID;
-            var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".WebLayout";
+            var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".WebLayout"; //NOXLATE
             var wl = (IWebLayout)res;
             var conn = wl.CurrentConnection;
 
             conn.ResourceService.SaveResourceAs(wl, resId);
-            url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionId;
+            url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionId; //NOXLATE
 
             return url;
         }
@@ -248,17 +248,17 @@ namespace Maestro.Base.Editor
         private string GenerateFlexLayoutPreviewUrl(IResource res)
         {
             string url = _rootUrl;
-            if (!url.EndsWith("/"))
-                url += "/";
+            if (!url.EndsWith("/")) //NOXLATE
+                url += "/"; //NOXLATE
 
             //Create temp flex layout
             var sessionId = _edSvc.SessionID;
             var appDef = (IApplicationDefinition)res;
             var conn = appDef.CurrentConnection;
-            var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".ApplicationDefinition";
+            var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".ApplicationDefinition"; //NOXLATE
             
             conn.ResourceService.SaveResourceAs(appDef, resId);
-            url += appDef.TemplateUrl + "?Session=" + sessionId + "&ApplicationDefinition=" + resId;
+            url += appDef.TemplateUrl + "?Session=" + sessionId + "&ApplicationDefinition=" + resId; //NOXLATE
             return url;
         }
 

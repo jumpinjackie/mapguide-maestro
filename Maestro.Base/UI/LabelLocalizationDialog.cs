@@ -113,7 +113,7 @@ namespace Maestro.Base.UI
                     return;
 
                 _translate = value;
-                OnPropertyChanged("Translate");
+                OnPropertyChanged("Translate"); //NOXLATE
             }
         }
 
@@ -130,7 +130,7 @@ namespace Maestro.Base.UI
                     return;
 
                 _translation = value;
-                OnPropertyChanged("Translation");
+                OnPropertyChanged("Translation"); //NOXLATE
             }
         }
 

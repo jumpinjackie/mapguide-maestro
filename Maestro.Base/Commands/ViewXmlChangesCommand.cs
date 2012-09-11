@@ -78,7 +78,7 @@ namespace Maestro.Base.Commands
 
                 var rep = de.DiffReport();
                 TextDiffView dlg = new TextDiffView(sLF, dLF, rep, time);
-                dlg.Text += " - " + edSvc.ResourceID;
+                dlg.Text += " - " + edSvc.ResourceID; //NOXLATE
                 dlg.ShowDialog();
                 dlg.Dispose();
             }
@@ -88,7 +88,7 @@ namespace Maestro.Base.Commands
                     ex.Message,
                     Environment.NewLine,
                     ex.StackTrace);
-                MessageBox.Show(tmp, "Compare Error");
+                MessageBox.Show(tmp, Properties.Resources.CompareError);
                 return;
             }
         }

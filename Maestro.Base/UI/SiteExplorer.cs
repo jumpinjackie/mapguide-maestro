@@ -52,7 +52,7 @@ namespace Maestro.Base.UI
             ndResource.ToolTipProvider = new RepositoryItemToolTipProvider();
             ndResource.DrawText += new EventHandler<Aga.Controls.Tree.NodeControls.DrawEventArgs>(OnNodeDrawText);
 
-            var ts = ToolbarService.CreateToolStripItems("/Maestro/Shell/SiteExplorer/Toolbar", this, true);
+            var ts = ToolbarService.CreateToolStripItems("/Maestro/Shell/SiteExplorer/Toolbar", this, true); //NOXLATE
             tsSiteExplorer.Items.AddRange(ts);
 
             _connManager = ServiceRegistry.GetService<ServerConnectionManager>();
@@ -220,9 +220,9 @@ namespace Maestro.Base.UI
                     {
                         RepositoryItem item = items[0];
                         if (item.IsFolder)
-                            MenuService.ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedFolder", trvResources, e.X, e.Y);
+                            MenuService.ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedFolder", trvResources, e.X, e.Y); //NOXLATE
                         else
-                            MenuService.ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedDocument", trvResources, e.X, e.Y);
+                            MenuService.ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedDocument", trvResources, e.X, e.Y); //NOXLATE
                     }
                     else //Multi select
                     {
@@ -237,15 +237,15 @@ namespace Maestro.Base.UI
 
                         if (folderCount == 0) //All selected documents
                         {
-                            MenuService.ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedDocuments", trvResources, e.X, e.Y);
+                            MenuService.ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedDocuments", trvResources, e.X, e.Y); //NOXLATE
                         }
                         else if (folderCount == items.Length) //All selected folders
                         {
-                            MenuService.ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedFolders", trvResources, e.X, e.Y);
+                            MenuService.ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedFolders", trvResources, e.X, e.Y); //NOXLATE
                         }
                         else //Mixed selection
                         {
-                            MenuService.ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedMixedResources", trvResources, e.X, e.Y);
+                            MenuService.ShowContextMenu(this, "/Maestro/Shell/SiteExplorer/SelectedMixedResources", trvResources, e.X, e.Y); //NOXLATE
                         }
                     }
                 }
@@ -302,7 +302,7 @@ namespace Maestro.Base.UI
 
         public void ExpandNode(string connectionName, string folderId)
         {
-            if ("Library://".Equals(folderId))
+            if (StringConstants.RootIdentifier.Equals(folderId))
                 return;
 
             var path = _model.GetPathFromResourceId(connectionName, folderId);
@@ -437,7 +437,7 @@ namespace Maestro.Base.UI
 
                         foreach (var fid in folders)
                         {
-                            LoggingService.Info("Refreshing: " + fid + " on " + connectionName); //LOCALIZEME
+                            LoggingService.Info("Refreshing: " + fid + " on " + connectionName);  //NOXLATE
                             RefreshModel(connectionName, fid);
                         }
                     }
@@ -472,22 +472,22 @@ namespace Maestro.Base.UI
             /*
             //If we're dropping to the root, the common parent becomes our 
             //target root
-            if (folderId == "Library://")
+            if (folderId == StringConstants.RootIdentifier)
                 folderId = rootSourceParent;
             */
             //If common parent is not root, we want the name of the folder to append
             //to our target
-            if (rootSourceParent != "Library://")
+            if (rootSourceParent != StringConstants.RootIdentifier)
             {
                 ResourceIdentifier resId = new ResourceIdentifier(rootSourceParent);
-                folderId = folderId + resId.Name + "/";
+                folderId = folderId + resId.Name + "/"; //NOXLATE
             }
 
             var targets = new List<string>();
             foreach (var resId in sourceIds)
             {
                 var dstId = resId.Replace(rootSourceParent, folderId);
-                System.Diagnostics.Trace.TraceInformation("{0} => {1}", resId, dstId);
+                System.Diagnostics.Trace.TraceInformation("{0} => {1}", resId, dstId); //NOXLATE
                 targets.Add(dstId);
             }
 
@@ -536,9 +536,9 @@ namespace Maestro.Base.UI
                 {
                     int matches = 0;
                     string[] parts = data.First().ResourceId.ToString()
-                                         .Substring("Library://".Length)
-                                         .Split('/');
-                    string test = "Library://";
+                                         .Substring(StringConstants.RootIdentifier.Length)
+                                         .Split('/'); //NOXLATE
+                    string test = StringConstants.RootIdentifier;
                     string parent = test;
                     int partIndex = 0;
                     //Use first one as a sample to see how far we can go. Keep going until we have
@@ -559,7 +559,7 @@ namespace Maestro.Base.UI
             }
             else
             {
-                return "Library://";
+                return StringConstants.RootIdentifier;
             }
         }
 
@@ -578,9 +578,9 @@ namespace Maestro.Base.UI
                 {
                     int matches = 0;
                     string[] parts = data.First().ResourceId.ToString()
-                                         .Substring("Library://".Length)
-                                         .Split('/');
-                    string test = "Library://";
+                                         .Substring(StringConstants.RootIdentifier.Length)
+                                         .Split('/'); //NOXLATE
+                    string test = StringConstants.RootIdentifier;
                     string parent = test;
                     int partIndex = 0;
                     //Use first one as a sample to see how far we can go. Keep going until we have
@@ -601,7 +601,7 @@ namespace Maestro.Base.UI
             }
             else
             {
-                return "Library://";
+                return StringConstants.RootIdentifier;
             }
         }
 
@@ -680,13 +680,13 @@ namespace Maestro.Base.UI
                         //otherwise the content *inside* the source folder is
                         //moved instead of the folder itself!
                         var rid = new ResourceIdentifier(r);
-                        var target = folderId + rid.Name + "/";
+                        var target = folderId + rid.Name + "/"; //NOXLATE
                         conn.ResourceService.MoveResourceWithReferences(r, target, null, cb);
                     }
                     else
                     {
                         var rid = new ResourceIdentifier(r);
-                        var target = folderId + rid.Name + "." + rid.Extension;
+                        var target = folderId + rid.Name + "." + rid.Extension; //NOXLATE
                         if (omgr.IsOpen(r, conn))
                         {
                             notMovedFromSource.Add(r);

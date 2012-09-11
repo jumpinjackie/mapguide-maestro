@@ -83,7 +83,7 @@ namespace Maestro.Base.Editor
         public override void RunProcess(string processName, params string[] args)
         {
             //HACK: Yeah yeah
-            if (processName.ToLower() == "mgcooker")
+            if (processName.ToLower() == "mgcooker") //NOXLATE
             {
                 Maestro.Base.Commands.MgCookerCommand.RunCooker(args);
             }

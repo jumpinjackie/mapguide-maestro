@@ -33,13 +33,13 @@ namespace Maestro.Base.Commands
     {
         public override void Run()
         {
-            string exe = PropertyService.Get(ConfigProperties.LiveMapEditorPath, "");
+            string exe = PropertyService.Get(ConfigProperties.LiveMapEditorPath, string.Empty);
 
             if (!File.Exists(exe))
             {
                 using (var dlg = DialogFactory.OpenFile())
                 {
-                    dlg.Title = string.Format(Properties.Resources.LocateExecutable, "Maestro.LiveMapEditor.exe");
+                    dlg.Title = string.Format(Properties.Resources.LocateExecutable, "Maestro.LiveMapEditor.exe"); //NOXLATE
                     dlg.Filter = Properties.Resources.FilterExecutables;
                     if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {

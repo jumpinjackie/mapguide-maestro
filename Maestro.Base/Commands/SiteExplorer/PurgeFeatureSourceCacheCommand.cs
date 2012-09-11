@@ -23,6 +23,7 @@ using System.Text;
 using ICSharpCode.Core;
 using Maestro.Base.Services;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -39,20 +40,20 @@ namespace Maestro.Base.Commands.SiteExplorer
                     if (items.Length == 1)
                     {
                         var it = items[0];
-                        if (it.ResourceType == "FeatureSource" || it.ResourceType == "LayerDefinition")
+                        if (it.ResourceType == ResourceTypes.FeatureSource.ToString() || it.ResourceType == ResourceTypes.LayerDefinition.ToString())
                         {
                             var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
                             var conn = connMgr.GetConnection(wb.ActiveSiteExplorer.ConnectionName);
                             var resId = it.ResourceId;
 
-                            if (it.ResourceType == "LayerDefinition")
+                            if (it.ResourceType == ResourceTypes.LayerDefinition.ToString())
                             {
                                 var res = (ILayerDefinition)conn.ResourceService.GetResource(resId);
                                 resId = res.SubLayer.ResourceId;
                             }
 
                             //If selected item is a Layer, it must be pointing to a Feature Source and not a Drawing Source
-                            if (resId.EndsWith("FeatureSource"))
+                            if (resId.EndsWith(ResourceTypes.FeatureSource.ToString()))
                             {
                                 using (var st = conn.ResourceService.GetResourceXmlData(resId))
                                 {

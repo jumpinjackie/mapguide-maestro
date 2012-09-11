@@ -47,9 +47,9 @@ namespace Maestro.Base.Commands
 
                     List<string> tags = new List<string>();
                     if (rt == OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout)
-                        tags.AddRange(new string[] { "Title", "Tooltip", "Description", "Label", "Prompt" });
+                        tags.AddRange(new string[] { "Title", "Tooltip", "Description", "Label", "Prompt" }); //NOXLATE
                     else if (rt == OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition)
-                        tags.AddRange(new string[] { "Title", "Label", "Tooltip", "StatusText", "EmptyText" });
+                        tags.AddRange(new string[] { "Title", "Label", "Tooltip", "StatusText", "EmptyText" }); //NOXLATE
                     var diag = new LabelLocalizationDialog(doc, tags.ToArray());
                     if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {

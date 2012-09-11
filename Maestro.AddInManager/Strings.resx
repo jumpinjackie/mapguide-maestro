@@ -220,7 +220,37 @@ Download an AddIn from the Internet, then click 'Install AddIn' and choose the d
   <data name="CMD_AddInManager" xml:space="preserve">
     <value>Add-In Manager</value>
   </data>
+  <data name="ErrorLoadingFile" xml:space="preserve">
+    <value>Error loading {0}:{1}{2}</value>
+  </data>
   <data name="TextClose" xml:space="preserve">
     <value>Close</value>
+  </data>
+  <data name="TitleAddInFile" xml:space="preserve">
+    <value>AddIn File</value>
+  </data>
+  <data name="TitleAddInName" xml:space="preserve">
+    <value>AddIn Name</value>
+  </data>
+  <data name="TitleAuthor" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="TitleCopyright" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
+  <data name="TitleDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="TitleInternalName" xml:space="preserve">
+    <value>Internal Name</value>
+  </data>
+  <data name="TitleLicense" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="TitleVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="TitleWebsite" xml:space="preserve">
+    <value>Website</value>
   </data>
 </root>

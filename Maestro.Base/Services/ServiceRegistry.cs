@@ -37,7 +37,7 @@ namespace Maestro.Base.Services
             if (_init)
                 return;
 
-            _services = AddInTree.BuildItems<ServiceBase>("/Maestro/ApplicationServices", null);
+            _services = AddInTree.BuildItems<ServiceBase>("/Maestro/ApplicationServices", null); //NOXLATE
             foreach (var svc in _services)
             {
                 svc.Initialize();

@@ -42,7 +42,7 @@ namespace Maestro.Base.Commands.Test
             }
             else
             {
-                MessageService.ShowMessage("Cancelled");
+                MessageService.ShowMessage(Properties.Resources.Cancelled);
             }
         }
     }
@@ -57,14 +57,14 @@ namespace Maestro.Base.Commands.Test
             var conn = mgr.GetConnection(exp.ConnectionName);
 
             var picker = new ResourcePicker(conn.ResourceService, ResourcePickerMode.OpenResource);
-            picker.SetStartingPoint("Library://Samples/Sheboygan/");
+            picker.SetStartingPoint("Library://Samples/Sheboygan/"); //NOXLATE
             if (picker.ShowDialog(wb) == System.Windows.Forms.DialogResult.OK)
             {
                 MessageService.ShowMessage(picker.ResourceID);
             }
             else
             {
-                MessageService.ShowMessage("Cancelled");
+                MessageService.ShowMessage(Properties.Resources.Cancelled);
             }
         }
     }
@@ -85,7 +85,7 @@ namespace Maestro.Base.Commands.Test
             }
             else
             {
-                MessageService.ShowMessage("Cancelled");
+                MessageService.ShowMessage(Properties.Resources.Cancelled);
             }
         }
     }
@@ -107,7 +107,7 @@ namespace Maestro.Base.Commands.Test
             }
             else
             {
-                MessageService.ShowMessage("Cancelled");
+                MessageService.ShowMessage(Properties.Resources.Cancelled);
             }
         }
     }

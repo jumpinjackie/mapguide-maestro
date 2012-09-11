@@ -32,13 +32,13 @@ namespace Maestro.Base.Commands
     {
         public override void Run()
         {
-            string exe = PropertyService.Get(ConfigProperties.RtMapInspectorPath, "");
+            string exe = PropertyService.Get(ConfigProperties.RtMapInspectorPath, string.Empty);
 
             if (!File.Exists(exe))
             {
                 using (var dlg = DialogFactory.OpenFile())
                 {
-                    dlg.Title = string.Format(Properties.Resources.LocateExecutable, "RtMapInspector.exe");
+                    dlg.Title = string.Format(Properties.Resources.LocateExecutable, "RtMapInspector.exe"); //NOXLATE
                     dlg.Filter = Properties.Resources.FilterExecutables;
                     if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {

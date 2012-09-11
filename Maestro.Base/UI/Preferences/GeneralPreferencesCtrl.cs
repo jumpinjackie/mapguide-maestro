@@ -44,13 +44,13 @@ namespace Maestro.Base.UI.Preferences
         {
             base.OnLoad(e);
 
-            var viewer = Props.Get(ConfigProperties.PreviewViewerType, "AJAX");
-            if (viewer.Equals("AJAX"))
+            var viewer = Props.Get(ConfigProperties.PreviewViewerType, "AJAX"); //NOXLATE
+            if (viewer.Equals("AJAX")) //NOXLATE
                 rdAjax.Checked = true;
             else
                 rdFusion.Checked = true;
 
-            var path = Props.Get(ConfigProperties.UserTemplatesDirectory, Path.Combine(FileUtility.ApplicationRootPath, "UserTemplates"));
+            var path = Props.Get(ConfigProperties.UserTemplatesDirectory, Path.Combine(FileUtility.ApplicationRootPath, "UserTemplates")); //NOXLATE
             txtTemplatePath.Text = path;
             var msg = Props.Get(ConfigProperties.ShowMessages, true);
             chkMessages.Checked = msg;
@@ -93,9 +93,9 @@ namespace Maestro.Base.UI.Preferences
 
             //These changes can be applied without restart
             if (rdFusion.Checked)
-                Apply(ConfigProperties.PreviewViewerType, "FUSION");
+                Apply(ConfigProperties.PreviewViewerType, "FUSION"); //NOXLATE
             else
-                Apply(ConfigProperties.PreviewViewerType, "AJAX");
+                Apply(ConfigProperties.PreviewViewerType, "AJAX"); //NOXLATE
 
             Apply(ConfigProperties.UserTemplatesDirectory, txtTemplatePath.Text);
             Apply(ConfigProperties.MgCookerPath, txtMgCooker.Text);
@@ -107,10 +107,10 @@ namespace Maestro.Base.UI.Preferences
             Apply(ConfigProperties.ShowTipOfTheDay, chkShowTipOfTheDay.Checked);
 
             //These changes require restart
-            if (Apply(ConfigProperties.ShowMessages, chkMessages.Checked ? "True" : "False"))
+            if (Apply(ConfigProperties.ShowMessages, chkMessages.Checked ? "True" : "False")) //NOXLATE
                 restart = true;
 
-            if (Apply(ConfigProperties.ShowOutboundRequests, chkOutbound.Checked ? "True" : "False"))
+            if (Apply(ConfigProperties.ShowOutboundRequests, chkOutbound.Checked ? "True" : "False")) //NOXLATE
                 restart = true;
 
             return restart;
@@ -137,7 +137,7 @@ namespace Maestro.Base.UI.Preferences
         {
             using (var dlg = DialogFactory.OpenFile())
             {
-                dlg.Title = string.Format(Properties.Resources.LocateExecutable, "MgCooker.exe");
+                dlg.Title = string.Format(Properties.Resources.LocateExecutable, "MgCooker.exe"); //NOXLATE
                 dlg.Filter = Properties.Resources.FilterExecutables;
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
@@ -150,7 +150,7 @@ namespace Maestro.Base.UI.Preferences
         {
             using (var dlg = DialogFactory.OpenFile())
             {
-                dlg.Title = string.Format(Properties.Resources.LocateExecutable, "MaestroFsPreview.exe");
+                dlg.Title = string.Format(Properties.Resources.LocateExecutable, "MaestroFsPreview.exe"); //NOXLATE
                 dlg.Filter = Properties.Resources.FilterExecutables;
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
@@ -163,7 +163,7 @@ namespace Maestro.Base.UI.Preferences
         {
             using (var dlg = DialogFactory.OpenFile())
             {
-                dlg.Title = string.Format(Properties.Resources.LocateExecutable, "RtMapInspector.exe");
+                dlg.Title = string.Format(Properties.Resources.LocateExecutable, "RtMapInspector.exe"); //NOXLATE
                 dlg.Filter = Properties.Resources.FilterExecutables;
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
@@ -176,7 +176,7 @@ namespace Maestro.Base.UI.Preferences
         {
             using (var dlg = DialogFactory.OpenFile())
             {
-                dlg.Title = string.Format(Properties.Resources.LocateExecutable, "Maestro.LiveMapEditor.exe");
+                dlg.Title = string.Format(Properties.Resources.LocateExecutable, "Maestro.LiveMapEditor.exe"); //NOXLATE
                 dlg.Filter = Properties.Resources.FilterExecutables;
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {

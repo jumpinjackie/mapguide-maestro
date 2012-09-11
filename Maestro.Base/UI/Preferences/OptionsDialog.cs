@@ -39,7 +39,7 @@ namespace Maestro.Base.UI.Preferences
 
         protected override void OnLoad(EventArgs e)
         {
-            _sheets = AddInTree.BuildItems<IPreferenceSheet>("/Maestro/Preferences", this);
+            _sheets = AddInTree.BuildItems<IPreferenceSheet>("/Maestro/Preferences", this); //NOXLATE
             tabPreferences.TabPages.Clear();
             foreach (var sh in _sheets)
             {
@@ -76,7 +76,7 @@ namespace Maestro.Base.UI.Preferences
                     restart = true;
             }
             PropertyService.Save();
-            LoggingService.Info("Preferences saved");
+            LoggingService.Info("Preferences saved"); //NOXLATE
             return restart;
         }
 
@@ -98,7 +98,7 @@ namespace Maestro.Base.UI.Preferences
                 restart = true;
             }
             PropertyService.Save();
-            LoggingService.Info("Preferences reset with default values");
+            LoggingService.Info("Preferences reset with default values"); //NOXLATE
             return restart;
         }
     }

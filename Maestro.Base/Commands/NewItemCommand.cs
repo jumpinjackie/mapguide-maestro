@@ -56,7 +56,7 @@ namespace Maestro.Base.Commands
                 var res = tpl.CreateItem(startPoint, conn);
                 if (res != null)
                 {
-                    res.ResourceID = "Session:" + conn.SessionID + "//" + Guid.NewGuid().ToString() + "." + res.ResourceType.ToString();
+                    res.ResourceID = "Session:" + conn.SessionID + "//" + Guid.NewGuid().ToString() + "." + res.ResourceType.ToString(); //NOXLATE
                     conn.ResourceService.SaveResource(res);
                     var ed = orm.Open(res.ResourceID, conn, false, exp);
                     if (!string.IsNullOrEmpty(startPoint))

@@ -81,7 +81,7 @@ namespace Maestro.Base.UI
                 else
                     _resSvc.SetResourceHeader(_resourceId, (ResourceDocumentHeaderType)obj);
 
-                LoggingService.Info("Resource Header Updated: " + _resourceId);
+                LoggingService.Info("Resource Header Updated: " + _resourceId); //NOXLATE
             }
             catch (Exception ex)
             {

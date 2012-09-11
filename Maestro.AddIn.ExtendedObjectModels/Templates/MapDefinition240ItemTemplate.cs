@@ -50,7 +50,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
 
         public override OSGeo.MapGuide.MaestroAPI.Resource.IResource CreateItem(string startPoint, OSGeo.MapGuide.MaestroAPI.IServerConnection conn)
         {
-            return ObjectFactory.CreateMapDefinition(conn, new Version(2, 4, 0), "");
+            return ObjectFactory.CreateMapDefinition(conn, new Version(2, 4, 0), string.Empty);
         }
     }
 }

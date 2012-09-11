@@ -167,7 +167,7 @@ namespace Maestro.Base.Editor
                 }
                 else
                 {
-                    LoggingService.Info("Skipping validation on save");
+                    LoggingService.Info("Skipping validation on save"); //NOXLATE
                     e.Cancel = false;
                 }
             }
@@ -218,7 +218,7 @@ namespace Maestro.Base.Editor
             this.Description = GetTooltip(this.IsNew ? Properties.Resources.NewResource : _svc.ResourceID);
         }
 
-        const string DIRTY_PREFIX = "* ";
+        const string DIRTY_PREFIX = "* "; //NOXLATE
 
         void OnDirtyStateChanged(object sender, EventArgs e)
         {

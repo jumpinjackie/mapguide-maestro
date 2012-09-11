@@ -36,7 +36,7 @@ namespace Maestro.Base.Services.DragDropHandlers
             get { return Properties.Resources.ShpHandlerAction; }
         }
 
-        private string[] extensions = { ".shp" };
+        private string[] extensions = { ".shp" }; //NOXLATE
 
         public string[] FileExtensions
         {
@@ -49,30 +49,30 @@ namespace Maestro.Base.Services.DragDropHandlers
             {
                 var wb = Workbench.Instance;
                 var exp = wb.ActiveSiteExplorer;
-                var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SHP");
+                var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SHP"); //NOXLATE
 
                 string fileName = Path.GetFileName(file);
                 string resName = Path.GetFileNameWithoutExtension(file);
                 int counter = 0;
-                string resId = folderId + resName + ".FeatureSource";
+                string resId = folderId + resName + ".FeatureSource"; //NOXLATE
                 while (conn.ResourceService.ResourceExists(resId))
                 {
                     counter++;
-                    resId = folderId + resName + " (" + counter + ").FeatureSource";
+                    resId = folderId + resName + " (" + counter + ").FeatureSource"; //NOXLATE
                 }
                 fs.ResourceID = resId;
-                fs.SetConnectionProperty("DefaultFileLocation", "%MG_DATA_FILE_PATH%" + fileName);
+                fs.SetConnectionProperty("DefaultFileLocation", StringConstants.MgDataFilePath + fileName); //NOXLATE
                 conn.ResourceService.SaveResource(fs);
 
                 //As we all know, the term shape file is deceptive...
                 string[] files = new string[] 
                 {
                     file,
-                    file.Substring(0, file.LastIndexOf(".")) + ".shx",
-                    file.Substring(0, file.LastIndexOf(".")) + ".dbf",
-                    file.Substring(0, file.LastIndexOf(".")) + ".idx",
-                    file.Substring(0, file.LastIndexOf(".")) + ".prj",
-                    file.Substring(0, file.LastIndexOf(".")) + ".cpg"
+                    file.Substring(0, file.LastIndexOf(".")) + ".shx", //NOXLATE
+                    file.Substring(0, file.LastIndexOf(".")) + ".dbf", //NOXLATE
+                    file.Substring(0, file.LastIndexOf(".")) + ".idx", //NOXLATE
+                    file.Substring(0, file.LastIndexOf(".")) + ".prj", //NOXLATE
+                    file.Substring(0, file.LastIndexOf(".")) + ".cpg" //NOXLATE
                 };
 
                 foreach (string fn in files)

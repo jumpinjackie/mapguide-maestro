@@ -138,7 +138,7 @@ namespace Maestro.Base.UI
                 if (this.ResourceType == ResourceTypes.Folder.ToString())
                     return this.Name;
                 else
-                    return this.Name + "." + this.ResourceType; 
+                    return this.Name + "." + this.ResourceType; //NOXLATE
             }
         }
 
@@ -198,7 +198,7 @@ namespace Maestro.Base.UI
 
         public bool IsRoot
         {
-            get { return this.ResourceId == "Library://"; }
+            get { return this.ResourceId == StringConstants.RootIdentifier; }
         }
 
         public string ResourceId
@@ -228,7 +228,7 @@ namespace Maestro.Base.UI
                         return;
 
                     string parentid = ResourceIdentifier.GetParentFolder(this.ResourceId);
-                    this.ResourceId = parentid + this.NameQualified + ((IsFolder) ? "/" : "");
+                    this.ResourceId = parentid + this.NameQualified + ((IsFolder) ? "/" : string.Empty); //NOXLATE
                     NotifyNodesChanged();
                 }
             }
@@ -299,7 +299,7 @@ namespace Maestro.Base.UI
 
         public bool IsFolder
         {
-            get { return this.ResourceId.EndsWith("/"); }
+            get { return this.ResourceId.EndsWith("/"); } //NOXLATE
         }
 
         public Image Icon
@@ -456,7 +456,7 @@ namespace Maestro.Base.UI
 
                     var conn = _connManager.GetConnection(connName);
 
-                    var list = conn.ResourceService.GetRepositoryResources("Library://", 0);
+                    var list = conn.ResourceService.GetRepositoryResources(StringConstants.RootIdentifier, 0); //NOXLATE
                     if (list.Items.Count != 1)
                     {
                         throw new InvalidOperationException(); //Huh?
@@ -487,7 +487,7 @@ namespace Maestro.Base.UI
                     string connName = GetParentConnectionName(node);
                     var conn = _connManager.GetConnection(connName);
                     node.ClearChildrenWithoutNotification();
-                    var list = conn.ResourceService.GetRepositoryResources(node.ResourceId, "", 1, false);
+                    var list = conn.ResourceService.GetRepositoryResources(node.ResourceId, string.Empty, 1, false); //NOXLATE
                     foreach (RepositoryItem item in GetSorted(connName, list))
                     {
                         node.AddChildWithoutNotification(item);
@@ -581,10 +581,10 @@ namespace Maestro.Base.UI
         internal TreePath GetPathFromResourceId(string connectionName, string resId)
         {
             var rootNode = _rootNodes[connectionName];
-            if ("Library://".Equals(resId))
+            if (StringConstants.RootIdentifier.Equals(resId))
                 return GetPath(rootNode);
-            
-            string[] components = ResourceIdentifier.GetPath(resId).Split('/');
+
+            string[] components = ResourceIdentifier.GetPath(resId).Split('/'); //NOXLATE
             if (!ResourceIdentifier.IsFolderResource(resId))
             {
                 //Fix extension to last component

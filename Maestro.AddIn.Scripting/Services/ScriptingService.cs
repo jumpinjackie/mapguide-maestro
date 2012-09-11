@@ -43,7 +43,7 @@ namespace Maestro.AddIn.Scripting.Services
 
         private void InitializeScope(ScriptScope scope)
         {
-            scope.SetVariable("app", new HostApplication());
+            scope.SetVariable("app", new HostApplication()); //NOXLATE
         }
 
         private static ScriptEngine CreateDefaultEngine()

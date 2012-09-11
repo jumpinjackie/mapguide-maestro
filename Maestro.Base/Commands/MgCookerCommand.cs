@@ -37,13 +37,13 @@ namespace Maestro.Base.Commands
 
         internal static void RunCooker(params string [] args)
         {
-            string exe = PropertyService.Get(ConfigProperties.MgCookerPath, "");
+            string exe = PropertyService.Get(ConfigProperties.MgCookerPath, string.Empty); //NOXLATE
 
             if (!File.Exists(exe))
             {
                 using (var dlg = DialogFactory.OpenFile())
                 {
-                    dlg.Title = string.Format(Properties.Resources.LocateExecutable, "MgCooker.exe");
+                    dlg.Title = string.Format(Properties.Resources.LocateExecutable, "MgCooker.exe"); //NOXLATE
                     dlg.Filter = Properties.Resources.FilterExecutables;
                     if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
@@ -55,7 +55,7 @@ namespace Maestro.Base.Commands
 
             var procInfo = new ProcessStartInfo(exe);
             procInfo.WorkingDirectory = Path.GetDirectoryName(exe);
-            procInfo.Arguments = string.Join(" ", args);
+            procInfo.Arguments = string.Join(" ", args); //NOXLATE
             var proc = Process.Start(procInfo);
         }
     }

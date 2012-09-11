@@ -34,7 +34,7 @@ namespace Maestro.Base.Commands.Conditions
                 if (wb.ActiveSiteExplorer != null && wb.ActiveSiteExplorer.SelectedItems.Length == 1)
                 {
                     var ri = wb.ActiveSiteExplorer.SelectedItems[0];
-                    string prop = condition.Properties["type"];
+                    string prop = condition.Properties["type"]; //NOXLATE
                     if (!string.IsNullOrEmpty(prop))
                     {
                         return prop.ToUpper() == ri.ResourceType.ToUpper();

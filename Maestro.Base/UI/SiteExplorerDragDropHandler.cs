@@ -49,7 +49,7 @@ namespace Maestro.Base.UI
         internal static void OnDragDrop(ISiteExplorer sender, DragEventArgs e, TreeNodeAdv droppedNode)
         {
             //If drop node specified, extract relevant folder, otherwise default to root (Library://)
-            string folderId = "Library://";
+            string folderId = StringConstants.RootIdentifier;
             IServerConnection conn = null;
             var mgr = ServiceRegistry.GetService<ServerConnectionManager>();
                 
@@ -61,7 +61,7 @@ namespace Maestro.Base.UI
                     if (ri.IsFolder)
                         folderId = ri.ResourceId;
                     else
-                        folderId = ri.Parent != null ? ri.Parent.ResourceId : "Library://";
+                        folderId = ri.Parent != null ? ri.Parent.ResourceId : StringConstants.RootIdentifier;
                 }
                 conn = mgr.GetConnection(ri.ConnectionName);
             }
