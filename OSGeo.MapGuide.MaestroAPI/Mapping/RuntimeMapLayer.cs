@@ -255,7 +255,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 var fs = (IFeatureSource)this.Parent.ResourceService.GetResource(vl.ResourceId);
                 var cls = fs.GetClass(vl.FeatureName);
                 if (cls == null)
-                    throw new Exception(string.Format(Properties.Resources.ERR_CLASS_NOT_FOUND, vl.FeatureName));
+                    throw new Exception(string.Format(Strings.ERR_CLASS_NOT_FOUND, vl.FeatureName));
 
                 var idProps = cls.IdentityProperties;
                 var propInfo = new PropertyInfo[idProps.Count];
@@ -272,7 +272,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             catch (Exception ex) //Has to be a bug in MapGuide or in the FDO provider
             {
                 this.IdentityProperties = new PropertyInfo[0];
-                Trace.TraceWarning(string.Format(Properties.Resources.ERR_INIT_IDENTITY_PROPS, Environment.NewLine, this.Name, ex.ToString()));
+                Trace.TraceWarning(string.Format(Strings.ERR_INIT_IDENTITY_PROPS, Environment.NewLine, this.Name, ex.ToString()));
             }
         }
 
@@ -291,7 +291,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             set
             {
                 if (this.Type == kBaseMap)
-                    throw new InvalidOperationException(Properties.Resources.ErrorSettingVisibilityOfTiledLayer);
+                    throw new InvalidOperationException(Strings.ErrorSettingVisibilityOfTiledLayer);
 
                 if (SetField(ref _visible, value, "Visible")) //NOXLATE
                     Parent.IsDirty = true;
@@ -682,13 +682,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                         pos++;
 
                     if (pos >= data.Length)
-                        throw new Exception(Properties.Resources.ErrorBadNullEncodedString);
+                        throw new Exception(Strings.ErrorBadNullEncodedString);
 
                     tmp[i] = System.Text.Encoding.UTF8.GetString(data, index, pos - index);
                     index = pos + 1;
                 }
                 else
-                    throw new Exception(string.Format(Properties.Resources.ErrorUnsupportedPkType, type.ToString()));
+                    throw new Exception(string.Format(Strings.ErrorUnsupportedPkType, type.ToString()));
             }
 
             return tmp;
@@ -704,9 +704,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
             int classid = d.ReadClassId();
             if (d.SiteVersion <= SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP1_1) && classid != 19003)
-                throw new Exception(string.Format(Properties.Resources.ErrorResourceIdentifierClassIdNotFound, classid));
+                throw new Exception(string.Format(Strings.ErrorResourceIdentifierClassIdNotFound, classid));
             if (d.SiteVersion > SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP1_1) && classid != 30501)
-                throw new Exception(string.Format(Properties.Resources.ErrorResourceIdentifierClassIdNotFound, classid));
+                throw new Exception(string.Format(Strings.ErrorResourceIdentifierClassIdNotFound, classid));
 
             this.LayerDefinitionID = d.ReadResourceIdentifier();
 
@@ -875,7 +875,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 case Clob:
                     return typeof(byte[]);
                 default:
-                    throw new Exception(string.Format(Properties.Resources.ErrorFailedToFindTypeForClrType, idType));
+                    throw new Exception(string.Format(Strings.ErrorFailedToFindTypeForClrType, idType));
             }
         }
 

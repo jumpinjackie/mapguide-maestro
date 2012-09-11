@@ -47,7 +47,7 @@ namespace Maestro.AddIn.Scripting.UI
 
         public string Title
         {
-            get { return Properties.Resources.Title_IronPython_Console; }
+            get { return Strings.Title_IronPython_Console; }
         }
 
         public Control ContentControl

@@ -141,24 +141,24 @@ namespace MgCooker
                 this.Invoke(new DisplayProgressDelegate(DisplayProgress), new object[] { map, group, scaleindex, row, column, cancel });
             else
             {
-                label1.Text = string.Format(Properties.Resources.CurrentGroupStatus, group, map.ResourceId);
+                label1.Text = string.Format(Strings.CurrentGroupStatus, group, map.ResourceId);
 
                 tilePG.Value = (int)Math.Max(Math.Min((m_tileCount / (double)m_totalTiles) * (tilePG.Maximum - tilePG.Minimum), tilePG.Maximum), tilePG.Minimum);
                 totalPG.Value = (int)Math.Max(Math.Min((m_grandTotalTileCount / (double)m_grandTotalTiles) * (totalPG.Maximum - totalPG.Minimum), totalPG.Maximum), totalPG.Minimum);
 
                 if (m_failCount == 0)
-                    tileCounter.Text = string.Format(Properties.Resources.CurrentTileCounter, m_grandTotalTileCount, m_grandTotalTiles, "");
+                    tileCounter.Text = string.Format(Strings.CurrentTileCounter, m_grandTotalTileCount, m_grandTotalTiles, "");
                 else
-                    tileCounter.Text = string.Format(Properties.Resources.CurrentTileCounter, m_grandTotalTileCount, m_grandTotalTiles, string.Format(Properties.Resources.TileErrorCount, m_failCount));
+                    tileCounter.Text = string.Format(Strings.CurrentTileCounter, m_grandTotalTileCount, m_grandTotalTiles, string.Format(Strings.TileErrorCount, m_failCount));
 
                 TimeSpan elapsed = DateTime.Now - m_grandBegin;
                 DateTime finish = DateTime.Now + (new TimeSpan(m_prevDuration.Ticks * m_grandTotalTiles) - elapsed);
                 TimeSpan remain = finish - DateTime.Now;
 
                 if (finish < DateTime.Now)
-                   finishEstimate.Text = Properties.Resources.InsufficientTimePassed;
+                   finishEstimate.Text = Strings.InsufficientTimePassed;
                 else
-                    finishEstimate.Text = string.Format(Properties.Resources.RemainingTime, finish.ToShortTimeString(), string.Format("{0}:{1}:{2}", (int)Math.Floor(remain.TotalHours), remain.Minutes.ToString("00"), remain.Seconds.ToString("00")));
+                    finishEstimate.Text = string.Format(Strings.RemainingTime, finish.ToShortTimeString(), string.Format("{0}:{1}:{2}", (int)Math.Floor(remain.TotalHours), remain.Minutes.ToString("00"), remain.Seconds.ToString("00")));
             }
         }
 
@@ -200,7 +200,7 @@ namespace MgCooker
         private void button1_Click(object sender, EventArgs e)
         {
             if (this.m_cancel)
-                MessageBox.Show(this, Properties.Resources.AlreadyAborting, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, Strings.AlreadyAborting, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 this.m_cancel = true;
         }
@@ -217,7 +217,7 @@ namespace MgCooker
         private void PauseBtn_Click(object sender, EventArgs e)
         {
             m_bx.PauseEvent.Reset();
-            MessageBox.Show(this, Properties.Resources.PauseMessage, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(this, Strings.PauseMessage, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             m_bx.PauseEvent.Set();
         }
 

@@ -131,7 +131,7 @@ namespace Maestro.Editors.WebLayout
                 }
                 else
                 {
-                    txtAjaxViewerUrl.Text = Properties.Resources.PreviewUrlNotAvailable;
+                    txtAjaxViewerUrl.Text = Strings.PreviewUrlNotAvailable;
                 }
             }
             catch { }

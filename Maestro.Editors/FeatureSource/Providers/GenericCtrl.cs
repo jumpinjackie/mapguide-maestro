@@ -84,12 +84,12 @@ namespace Maestro.Editors.FeatureSource.Providers
 
             var colName = new DataGridViewColumn();
             colName.Name = "COL_NAME"; //NOXLATE
-            colName.HeaderText = Properties.Resources.ColHeaderName;
+            colName.HeaderText = Strings.ColHeaderName;
             colName.ReadOnly = true;
             colName.CellTemplate = new DataGridViewTextBoxCell();
             var colValue = new DataGridViewColumn();
             colValue.Name = "COL_VALUE"; //NOXLATE
-            colValue.HeaderText = Properties.Resources.ColHeaderValue;
+            colValue.HeaderText = Strings.ColHeaderValue;
             colValue.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colValue.CellTemplate = new DataGridViewTextBoxCell();
 
@@ -203,7 +203,7 @@ namespace Maestro.Editors.FeatureSource.Providers
             string msg = _service.FeatureService.TestConnection(cloneFs.ResourceID);
 
             if (string.IsNullOrEmpty(msg))
-                msg = Properties.Resources.TestConnectionNoErrors;
+                msg = Strings.TestConnectionNoErrors;
 
             txtTestResult.Text = msg;
         }
@@ -246,7 +246,7 @@ namespace Maestro.Editors.FeatureSource.Providers
             }
             else
             {
-                MessageBox.Show(Properties.Resources.PropEnumNoValues);
+                MessageBox.Show(Strings.PropEnumNoValues);
             }
         }
 
@@ -283,7 +283,7 @@ namespace Maestro.Editors.FeatureSource.Providers
             }
             else
             {
-                MessageBox.Show(Properties.Resources.PropEnumNoValues);
+                MessageBox.Show(Strings.PropEnumNoValues);
             }
         }
 
@@ -362,7 +362,7 @@ namespace Maestro.Editors.FeatureSource.Providers
             }
             else
             {
-                MessageBox.Show(Properties.Resources.NoActiveDataFile);
+                MessageBox.Show(Strings.NoActiveDataFile);
             }
         }
 

@@ -175,7 +175,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             //
             InitializeComponent();
             //this.AutoScroll = false;
-            using(System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.GeometryStyleComboDataset))
+            using(System.IO.StringReader sr = new System.IO.StringReader(Strings.GeometryStyleComboDataset))
                 ComboBoxDataSet.ReadXml(sr);
 
             fontCombo.Items.Clear();
@@ -332,7 +332,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 }
                 else
                     //TODO: Fix this
-                    MessageBox.Show(this, Properties.Resources.SymbolTypeNotSupported, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, Strings.SymbolTypeNotSupported, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 previewPicture.Refresh();
             } 
@@ -1095,7 +1095,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 //W2D symbol is not selected, so invalidate
                 grpW2DStyle.Tag = null;
 
-                MessageBox.Show(this, Properties.Resources.SymbolTypeNotSupported, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, Strings.SymbolTypeNotSupported, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -1436,7 +1436,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             }
             catch
             {
-                MessageBox.Show(this, string.Format(Properties.Resources.SymbolTypeNotSupported, fontCombo.SelectedText), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, string.Format(Strings.SymbolTypeNotSupported, fontCombo.SelectedText), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -1569,7 +1569,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             double d;
             if (m_item.Symbol is IMarkSymbol)
                 if (!double.TryParse(((IMarkSymbol)m_item.Symbol).InsertionPointY, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d))
-                    MessageBox.Show(this, Properties.Resources.InsertionPointYError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(this, Strings.InsertionPointYError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void FontBoldButton_Click(object sender, EventArgs e)

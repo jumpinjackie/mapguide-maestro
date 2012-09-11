@@ -34,10 +34,10 @@ namespace Maestro.Base.Templates
     {
         public VectorLayerDefinitionItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_DEFAULT;
+            Category = Strings.TPL_CATEGORY_DEFAULT;
             Icon = Res.layer;
-            Description = Res.TPL_VLDF_DESC;
-            Name = Res.TPL_VLDF_NAME;
+            Description = Strings.TPL_VLDF_DESC;
+            Name = Strings.TPL_VLDF_NAME;
             ResourceType = ResourceTypes.LayerDefinition.ToString();
         }
 

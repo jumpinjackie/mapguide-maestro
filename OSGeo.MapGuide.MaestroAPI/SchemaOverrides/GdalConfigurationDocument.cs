@@ -150,11 +150,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 
                 var prv = map.Attributes["provider"]; //NOXLATE
                 if (prv == null)
-                    throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedAttribute, "provider"));
+                    throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedAttribute, "provider"));
 
                 var sn = map.Attributes["name"]; //NOXLATE
                 if (sn == null)
-                    throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedAttribute, "name"));
+                    throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedAttribute, "name"));
 
                 if (!prv.Value.StartsWith("OSGeo.Gdal")) //NOXLATE
                     continue;
@@ -174,10 +174,10 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                     var rasterDef = rasterType.FirstChild;
 
                     if (rasterType.Name != "complexType") //NOXLATE
-                        throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "complexType"));
+                        throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "complexType"));
 
                     if (rasterDef.Name != "RasterDefinition") //NOXLATE
-                        throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "RasterDefinition"));
+                        throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "RasterDefinition"));
 
                     foreach (XmlNode loc in rasterDef.ChildNodes)
                     {

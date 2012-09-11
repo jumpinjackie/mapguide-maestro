@@ -89,7 +89,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             // Required for Windows Form Designer support
             //
             InitializeComponent();
-            using (System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.GeometryStyleComboDataset))
+            using (System.IO.StringReader sr = new System.IO.StringReader(Strings.GeometryStyleComboDataset))
                 ComboBoxDataSet.ReadXml(sr);
 
             fillStyleEditor.displayFill.CheckedChanged += new EventHandler(displayFill_CheckedChanged);

@@ -66,7 +66,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 {
                     if (string.IsNullOrEmpty(rel.Name))
                     {
-                        issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_EmptyJoinPrefix, string.Format(Properties.Resources.FS_EmptyJoinPrefix, ext.Name)));
+                        issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_EmptyJoinPrefix, string.Format(Strings.FS_EmptyJoinPrefix, ext.Name)));
                     }
 
                     if (rel.RelatePropertyCount > 0)
@@ -107,12 +107,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 
                             if (!bLeftSortable || !bRightSortable)
                             {
-                                issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_Potential_Bad_Join_Performance, string.Format(Properties.Resources.FS_PotentialBadJoinPerformance, ext.Name, bLeftSortable, bRightSortable)));
+                                issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_Potential_Bad_Join_Performance, string.Format(Strings.FS_PotentialBadJoinPerformance, ext.Name, bLeftSortable, bRightSortable)));
                             }
                         }
                         else 
                         {
-                            issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_Potential_Bad_Join_Performance, string.Format(Properties.Resources.FS_PotentialBadJoinPerformance2, ext.Name)));
+                            issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_Potential_Bad_Join_Performance, string.Format(Strings.FS_PotentialBadJoinPerformance2, ext.Name)));
                         }
                     }
                 }
@@ -134,9 +134,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             {
                 //Fortunately, all the above providers are universal in the naming choice of credential connection parameters
                 if ((fsXml.Contains("<NAME>USERNAME</NAME>") && !fsXml.Contains(StringConstants.MgUsernamePlaceholder)) || (fsXml.Contains("<NAME>PASSWORD</NAME>") && !fsXml.Contains(StringConstants.MgPasswordPlaceholder))) //NOXLATE
-                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_Plaintext_Credentials, Properties.Resources.FS_PlaintextCredentials));
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_Plaintext_Credentials, Strings.FS_PlaintextCredentials));
                 else
-                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_Cannot_Package_Secured_Credentials, Properties.Resources.FS_CannotPackageSecuredCredentials));
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_Cannot_Package_Secured_Credentials, Strings.FS_CannotPackageSecuredCredentials));
 
                 //Has the placeholder token(s)
                 if (fsXml.Contains(StringConstants.MgUsernamePlaceholder) || fsXml.Contains(StringConstants.MgPasswordPlaceholder))
@@ -154,7 +154,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 
                     if (!bFound)
                     {
-                        issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_SecuredCredentialTokensWithoutSecuredCredentialData, Properties.Resources.FS_SecuredCredentialTokensWithoutSecuredCredentialData));
+                        issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_SecuredCredentialTokensWithoutSecuredCredentialData, Strings.FS_SecuredCredentialTokensWithoutSecuredCredentialData));
                     }
                 }
             }
@@ -163,7 +163,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             string s = featSvc.TestConnection(feature.ResourceID);
             if (s.Trim().ToUpper() != true.ToString().ToUpper())
             {
-                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_ConnectionTestFailed, string.Format(Properties.Resources.FS_ConnectionTestFailed, s)));
+                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_ConnectionTestFailed, string.Format(Strings.FS_ConnectionTestFailed, s)));
                 return issues.ToArray();
             }
 
@@ -172,18 +172,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 System.Globalization.CultureInfo ci = System.Globalization.CultureInfo.InvariantCulture;
                 FdoSpatialContextList lst = context.GetSpatialContexts(feature.ResourceID);
                 if (lst == null || lst.SpatialContext == null || lst.SpatialContext.Count == 0)
-                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_NoSpatialContext, Properties.Resources.FS_NoSpatialContextWarning));
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_NoSpatialContext, Strings.FS_NoSpatialContextWarning));
                 else
                     foreach (FdoSpatialContextListSpatialContext c in lst.SpatialContext)
                         if (c.Extent == null || c.Extent.LowerLeftCoordinate == null || c.Extent.UpperRightCoordinate == null)
-                            issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_EmptySpatialContext, Properties.Resources.FS_EmptySpatialContextWarning));
+                            issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_EmptySpatialContext, Strings.FS_EmptySpatialContextWarning));
                         else if (double.Parse(c.Extent.LowerLeftCoordinate.X, ci) <= -1000000 && double.Parse(c.Extent.LowerLeftCoordinate.Y, ci) <= -1000000 && double.Parse(c.Extent.UpperRightCoordinate.X, ci) >= 1000000 && double.Parse(c.Extent.UpperRightCoordinate.Y, ci) >= 1000000)
-                            issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_DefaultSpatialContext, Properties.Resources.FS_DefaultSpatialContextWarning));
+                            issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_DefaultSpatialContext, Strings.FS_DefaultSpatialContextWarning));
             }
             catch (Exception ex)
             {
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_SpatialContextReadError, string.Format(Properties.Resources.FS_SpatialContextReadError, msg)));
+                issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_SpatialContextReadError, string.Format(Strings.FS_SpatialContextReadError, msg)));
             }
 
             List<string> classes = new List<string>();
@@ -191,7 +191,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             {
                 var schemaNames = featSvc.GetSchemas(feature.ResourceID);
                 if (schemaNames.Length == 0)
-                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_NoSchemasFound, Properties.Resources.FS_SchemasMissingWarning));
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_NoSchemasFound, Strings.FS_SchemasMissingWarning));
             }
             catch (Exception ex)
             {
@@ -199,12 +199,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 if (wex != null) //Most likely timeout due to really large schema
                 {
                     string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_Validation_Timeout, string.Format(Properties.Resources.FS_ValidationTimeout, msg)));
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Warning, ValidationStatusCode.Warning_FeatureSource_Validation_Timeout, string.Format(Strings.FS_ValidationTimeout, msg)));
                 }
                 else
                 {
                     string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_SchemaReadError, string.Format(Properties.Resources.FS_SchemaReadError, msg)));
+                    issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_SchemaReadError, string.Format(Strings.FS_SchemaReadError, msg)));
                 }
             }
 
@@ -215,16 +215,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 {
                     string[] idProps = featSvc.GetIdentityProperties(feature.ResourceID, className);
                     if (idProps.Length == 0)
-                        issues.Add(new ValidationIssue(feature, ValidationStatus.Information, ValidationStatusCode.Info_FeatureSource_NoPrimaryKey, string.Format(Properties.Resources.FS_PrimaryKeyMissingInformation, className)));
+                        issues.Add(new ValidationIssue(feature, ValidationStatus.Information, ValidationStatusCode.Info_FeatureSource_NoPrimaryKey, string.Format(Strings.FS_PrimaryKeyMissingInformation, className)));
                 }
                 catch (Exception ex)
                 {
                     string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                     //#1403 workaround
                     if (msg.Contains("MgClassNotFound")) //NOXLATE
-                        issues.Add(new ValidationIssue(feature, ValidationStatus.Information, ValidationStatusCode.Info_FeatureSource_NoPrimaryKey, string.Format(Properties.Resources.FS_PrimaryKeyMissingInformation, className)));
+                        issues.Add(new ValidationIssue(feature, ValidationStatus.Information, ValidationStatusCode.Info_FeatureSource_NoPrimaryKey, string.Format(Strings.FS_PrimaryKeyMissingInformation, className)));
                     else
-                        issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_SchemaReadError, string.Format(Properties.Resources.FS_SchemaReadError, msg)));
+                        issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_SchemaReadError, string.Format(Strings.FS_SchemaReadError, msg)));
                 }
             }
             context.MarkValidated(resource.ResourceID);

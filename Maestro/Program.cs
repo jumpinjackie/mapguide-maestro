@@ -78,7 +78,7 @@ namespace Maestro
 
             if (Platform.IsRunningOnMono)
             {
-                LoggingService.Info(Properties.Resources.Warn_Mono);
+                LoggingService.Info(Strings.Warn_Mono);
             }
 
             //Init our default set of resource validators
@@ -155,7 +155,7 @@ namespace Maestro
                     }
                     catch (Exception ex)
                     {
-                        ErrorDialog.Show(Properties.Resources.Error_StoreProperties, ex.ToString());
+                        ErrorDialog.Show(Strings.Error_StoreProperties, ex.ToString());
                     }
                 }
                 LoggingService.Info("Application shutdown"); //NOXLATE

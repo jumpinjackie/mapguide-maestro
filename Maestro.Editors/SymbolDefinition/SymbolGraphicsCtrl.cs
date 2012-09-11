@@ -62,17 +62,17 @@ namespace Maestro.Editors.SymbolDefinition
             li.Tag = g;
             if (text != null)
             {
-                li.Text = Properties.Resources.SymbolGraphicsTextPlaceholder;
+                li.Text = Strings.SymbolGraphicsTextPlaceholder;
                 li.ImageIndex = 0;
             }
             else if (path != null)
             {
-                li.Text = Properties.Resources.SymbolGraphicsPathPlaceholder;
+                li.Text = Strings.SymbolGraphicsPathPlaceholder;
                 li.ImageIndex = 1;
             }
             else if (img != null)
             {
-                li.Text = Properties.Resources.SymbolGraphicsImagePlaceholder;
+                li.Text = Strings.SymbolGraphicsImagePlaceholder;
                 li.ImageIndex = 2;
             }
 

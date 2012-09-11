@@ -47,7 +47,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
         {
             get
             {
-                return Properties.Resources.FsSqlServerSpatial;
+                return Strings.FsSqlServerSpatial;
             }
         }
     }

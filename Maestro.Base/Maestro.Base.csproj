@@ -261,6 +261,11 @@
     <Compile Include="Services\ServiceRegistry.cs" />
     <Compile Include="Services\UrlLauncherService.cs" />
     <Compile Include="Services\ViewContentManager.cs" />
+    <Compile Include="Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
     <Compile Include="Templates\ApplicationDefinitionItemTemplate.cs" />
     <Compile Include="Templates\DrawingLayerDefinitionItemTemplate.cs" />
     <Compile Include="Templates\DrawingSourceItemTemplate.cs" />
@@ -551,6 +556,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>

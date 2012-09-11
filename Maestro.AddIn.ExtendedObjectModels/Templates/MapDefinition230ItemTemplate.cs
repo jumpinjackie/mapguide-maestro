@@ -33,10 +33,10 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     {
         public MapDefinition230ItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_MGOS23;
+            Category = Strings.TPL_CATEGORY_MGOS23;
             Icon = Res.map;
-            Description = Res.TPL_MDF_230_DESC;
-            Name = Res.TPL_MDF_230_NAME;
+            Description = Strings.TPL_MDF_230_DESC;
+            Name = Strings.TPL_MDF_230_NAME;
             ResourceType = ResourceTypes.LayerDefinition.ToString();
         }
 

@@ -81,7 +81,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
                     _item.AddLayer(new WmsLayerDefinition(line.Trim()));
                 }
             }
-            MessageBox.Show(Properties.Resources.WmsLayersUpdated);
+            MessageBox.Show(Strings.WmsLayersUpdated);
             lnkUpdate.Enabled = false;
         }
 

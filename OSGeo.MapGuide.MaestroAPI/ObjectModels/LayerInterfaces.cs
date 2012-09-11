@@ -183,32 +183,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     }
 
     /// <summary>
-    /// Common localizable error messages available to consumers of this library
-    /// </summary>
-    public static class CommonErrorMessages
-    {
-        public static string CouldNotDetermineSymbolType
-        {
-            get { return OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorCouldNotDetermineSymbolType; }
-        }
-
-        public static string InvalidResourceIdentifier
-        {
-            get { return OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorInvalidResourceIdentifier; }
-        }
-
-        public static string UnexpectedResourceType
-        {
-            get { return OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorUnexpectedResourceType; }
-        }
-
-        public static string ObjectNotICompositeType
-        {
-            get { return OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorObjectNotICompositeTypeStyle; }
-        }
-    }
-
-    /// <summary>
     /// Represents elements that can create clones of themselves
     /// </summary>
     /// <typeparam name="T"></typeparam>

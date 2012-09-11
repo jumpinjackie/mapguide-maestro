@@ -137,7 +137,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                     if (res.ResourceVersion > maxVer)
                     {
                         res = _converter.Convert(res, maxVer);
-                        cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.DowngradedResource, srcResId, maxVer), progress));
+                        cb(this, new LengthyOperationProgressArgs(string.Format(Strings.DowngradedResource, srcResId, maxVer), progress));
                     }
 
                     //Now rebase if rebase options supplied
@@ -172,7 +172,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                     }
 
                     copied++;
-                    message = string.Format(Properties.Resources.CopiedResourceToTarget, srcResId, dstResId);
+                    message = string.Format(Strings.CopiedResourceToTarget, srcResId, dstResId);
                 }
                 copiedItems.Add(srcResId);
                 progress += unit;
@@ -229,7 +229,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                     if (res.ResourceVersion > maxVer)
                     {
                         res = _converter.Convert(res, maxVer);
-                        cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.DowngradedResource, resId, maxVer), progress));
+                        cb(this, new LengthyOperationProgressArgs(string.Format(Strings.DowngradedResource, resId, maxVer), progress));
                     }
 
                     //Save resource
@@ -257,7 +257,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                     }
 
                     copied++;
-                    message = string.Format(Properties.Resources.CopiedResource, resId);
+                    message = string.Format(Strings.CopiedResource, resId);
                 }
                 progress += unit;
                 cb(this, new LengthyOperationProgressArgs(message, progress));
@@ -311,7 +311,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                     if (res.ResourceVersion > maxVer)
                     {
                         res = _converter.Convert(res, maxVer);
-                        cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.DowngradedResource, resId, maxVer), progress));
+                        cb(this, new LengthyOperationProgressArgs(string.Format(Strings.DowngradedResource, resId, maxVer), progress));
                     }
 
                     //Save resource
@@ -340,7 +340,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
 
                     moved++;
                     _source.ResourceService.DeleteResource(resId);
-                    message = string.Format(Properties.Resources.CopiedResource, resId);
+                    message = string.Format(Strings.CopiedResource, resId);
                 }
                 progress += unit;
                 cb(this, new LengthyOperationProgressArgs(message, progress));
@@ -391,7 +391,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                 if (res.ResourceVersion > maxVer)
                 {
                     res = _converter.Convert(res, maxVer);
-                    cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.DowngradedResource, resourceId, maxVer), progress));
+                    cb(this, new LengthyOperationProgressArgs(string.Format(Strings.DowngradedResource, resourceId, maxVer), progress));
                 }
                 _target.ResourceService.SaveResource(res);
 
@@ -427,7 +427,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
             if (migrated.Count == 1)
             {
                 progress += unit;
-                cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.CopiedResource, resourceId), progress));
+                cb(this, new LengthyOperationProgressArgs(string.Format(Strings.CopiedResource, resourceId), progress));
 
                 //Now copy dependents
                 foreach (var resId in dependentResourceIds)
@@ -471,7 +471,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                         }
 
                         progress += unit;
-                        cb(this, new LengthyOperationProgressArgs(string.Format(Properties.Resources.CopiedResource, resId), progress));
+                        cb(this, new LengthyOperationProgressArgs(string.Format(Strings.CopiedResource, resId), progress));
                     }
                 }
             }

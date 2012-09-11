@@ -118,7 +118,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             get
             {
                 if (IsNull)
-                    throw new Exception(Properties.Resources.ErrorNullValue); //LOCALIZEME
+                    throw new Exception(Strings.ErrorNullValue); //LOCALIZEME
 
                 return _value.Value;
             }
@@ -182,7 +182,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             get
             {
                 if (IsNull)
-                    throw new Exception(Properties.Resources.ErrorNullValue);
+                    throw new Exception(Strings.ErrorNullValue);
 
                 return _value;
             }
@@ -218,7 +218,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception(Properties.Resources.ErrorNullValue);
+                throw new Exception(Strings.ErrorNullValue);
 
             return this.Value.ToString(CultureInfo.InvariantCulture);
         }
@@ -248,7 +248,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception(Properties.Resources.ErrorNullValue);
+                throw new Exception(Strings.ErrorNullValue);
 
             return this.Value.ToString();
         }
@@ -362,7 +362,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception(Properties.Resources.ErrorNullValue);
+                throw new Exception(Strings.ErrorNullValue);
 
             var dt = this.Value;
             return string.Format("TIMESTAMP '{0}-{1}-{2} {3}:{4}:{5}'", //NOXLATE
@@ -399,7 +399,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception(Properties.Resources.ErrorNullValue);
+                throw new Exception(Strings.ErrorNullValue);
 
             return this.Value.ToString(CultureInfo.InvariantCulture);
         }
@@ -440,7 +440,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception(Properties.Resources.ErrorNullValue);
+                throw new Exception(Strings.ErrorNullValue);
 
             throw new NotSupportedException();
         }
@@ -481,7 +481,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception(Properties.Resources.ErrorNullValue);
+                throw new Exception(Strings.ErrorNullValue);
 
             return this.Value.AsText();
         }
@@ -511,7 +511,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception(Properties.Resources.ErrorNullValue);
+                throw new Exception(Strings.ErrorNullValue);
 
             return this.Value.ToString(CultureInfo.InvariantCulture);
         }
@@ -541,7 +541,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception(Properties.Resources.ErrorNullValue);
+                throw new Exception(Strings.ErrorNullValue);
 
             return this.Value.ToString(CultureInfo.InvariantCulture);
         }
@@ -571,7 +571,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception(Properties.Resources.ErrorNullValue);
+                throw new Exception(Strings.ErrorNullValue);
 
             return this.Value.ToString(CultureInfo.InvariantCulture);
         }
@@ -639,7 +639,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception(Properties.Resources.ErrorNullValue);
+                throw new Exception(Strings.ErrorNullValue);
 
             return this.Value.ToString(CultureInfo.InvariantCulture);
         }
@@ -680,7 +680,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override string ValueAsString()
         {
             if (IsNull)
-                throw new Exception(Properties.Resources.ErrorNullValue);
+                throw new Exception(Strings.ErrorNullValue);
 
             return this.Value;
         }

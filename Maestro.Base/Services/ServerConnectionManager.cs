@@ -57,7 +57,7 @@ namespace Maestro.Base.Services
         public override void Initialize()
         {
             base.Initialize();
-            LoggingService.Info(Properties.Resources.Service_Init_Server_Connection_Manager);
+            LoggingService.Info(Strings.Service_Init_Server_Connection_Manager);
         }
 
         public IServerConnection GetConnection(string name)

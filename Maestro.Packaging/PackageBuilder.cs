@@ -448,15 +448,15 @@ namespace Maestro.Packaging
                 }
 
                 if (Progress != null)
-                    Progress(ProgressType.PreparingFolder, Properties.Resources.ProgressDone, files.Count + folders.Count + 1, files.Count + folders.Count + 1);
+                    Progress(ProgressType.PreparingFolder, Strings.ProgressDone, files.Count + folders.Count + 1, files.Count + folders.Count + 1);
 
                 if (!string.IsNullOrEmpty(alternateTargetResourceId))
                 {
                     if (Progress != null)
-                        Progress(ProgressType.MovingResources, Properties.Resources.ProgressUpdatingReferences, 100, 0);
+                        Progress(ProgressType.MovingResources, Strings.ProgressUpdatingReferences, 100, 0);
                     RemapFiles(m_connection, manifest, temppath, folderResourceId, alternateTargetResourceId, filemap);
                     if (Progress != null)
-                        Progress(ProgressType.MovingResources, Properties.Resources.ProgressUpdatedReferences, 100, 100);
+                        Progress(ProgressType.MovingResources, Strings.ProgressUpdatedReferences, 100, 100);
                 }
 
                 filemap.Add(new KeyValuePair<string, string>(System.IO.Path.Combine(temppath, "MgResourcePackageManifest.xml"), System.IO.Path.Combine(temppath, Guid.NewGuid().ToString()))); //NOXLATE
@@ -670,7 +670,7 @@ namespace Maestro.Packaging
         private string RelativeName(string filebase, string temppath)
         {
             if (!filebase.StartsWith(temppath))
-                throw new Exception(string.Format(Properties.Resources.FilenameRelationInternalError, filebase, temppath));
+                throw new Exception(string.Format(Strings.FilenameRelationInternalError, filebase, temppath));
             if (!temppath.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()))
                 temppath += System.IO.Path.DirectorySeparatorChar;
             return filebase.Substring(temppath.Length);
@@ -900,7 +900,7 @@ namespace Maestro.Packaging
                             {
                                 int index = FindZipEntry(zipfile, ri.Headerpath);
                                 if (index < 0)
-                                    throw new Exception(string.Format(Properties.Resources.FileMissingError, ri.Headerpath));
+                                    throw new Exception(string.Format(Strings.FileMissingError, ri.Headerpath));
 
                                 filemap.Add(new KeyValuePair<string, string>(headerpath, System.IO.Path.Combine(tempfolder, ri.GenerateUniqueName())));
                                 using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
@@ -911,7 +911,7 @@ namespace Maestro.Packaging
                             {
                                 int index = FindZipEntry(zipfile, ri.Contentpath);
                                 if (index < 0)
-                                    throw new Exception(string.Format(Properties.Resources.FileMissingError, ri.Contentpath));
+                                    throw new Exception(string.Format(Strings.FileMissingError, ri.Contentpath));
 
                                 filemap.Add(new KeyValuePair<string, string>(contentpath, System.IO.Path.Combine(tempfolder, ri.GenerateUniqueName())));
                                 using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
@@ -937,7 +937,7 @@ namespace Maestro.Packaging
                             {
                                 int index = FindZipEntry(zipfile, rdi.Filename);
                                 if (index < 0)
-                                    throw new Exception(string.Format(Properties.Resources.FileMissingError, rdi.Filename));
+                                    throw new Exception(string.Format(Strings.FileMissingError, rdi.Filename));
 
                                 filemap.Add(new KeyValuePair<string, string>(targetpath, System.IO.Path.Combine(tempfolder, ri.GenerateUniqueName())));
                                 using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
@@ -961,7 +961,7 @@ namespace Maestro.Packaging
                 foreach (ResourceItem ri in items)
                 {
                     if (Progress != null)
-                        Progress(ProgressType.MovingResources, Properties.Resources.ProgressUpdatingResources, items.Count, i);
+                        Progress(ProgressType.MovingResources, Strings.ProgressUpdatingResources, items.Count, i);
 
                     if (ri.OriginalResourcePath != ri.ResourcePath)
                     {
@@ -988,11 +988,11 @@ namespace Maestro.Packaging
                         }
                     }
                     if (Progress != null)
-                        Progress(ProgressType.MovingResources, Properties.Resources.ProgressUpdatingResources, items.Count, i++);
+                        Progress(ProgressType.MovingResources, Strings.ProgressUpdatingResources, items.Count, i++);
                 }
 
                 if (Progress != null)
-                    Progress(ProgressType.MovingResources, Properties.Resources.ProgressUpdatedResources, items.Count, items.Count);
+                    Progress(ProgressType.MovingResources, Strings.ProgressUpdatedResources, items.Count, items.Count);
 
                 //Step 3: Create an updated definition file
                 ResourcePackageManifest manifest = new ResourcePackageManifest();
@@ -1038,13 +1038,13 @@ namespace Maestro.Packaging
                     m_connection.ResourceService.SerializeObject(manifest, fs);
 
                 if (Progress != null)
-                    Progress(ProgressType.Compressing, Properties.Resources.ProgressCompressing, 100, 0);
+                    Progress(ProgressType.Compressing, Strings.ProgressCompressing, 100, 0);
 
                 //Step 4: Create the zip file
                 ZipDirectory(targetfile, tempfolder, zipfilecomment, filemap);
 
                 if (Progress != null)
-                    Progress(ProgressType.Compressing, Properties.Resources.ProgressCompressed, 100, 100);
+                    Progress(ProgressType.Compressing, Strings.ProgressCompressed, 100, 100);
             }
             finally
             {
@@ -1081,7 +1081,7 @@ namespace Maestro.Packaging
             {
                 int index = FindZipEntry(zipfile, "MgResourcePackageManifest.xml"); //NOXLATE
                 if (index < 0)
-                    throw new Exception(Properties.Resources.InvalidPackageFileError);
+                    throw new Exception(Strings.InvalidPackageFileError);
 
                 manifest = m_connection.ResourceService.DeserializeObject<ResourcePackageManifest>(zipfile.GetInputStream(index));
             }

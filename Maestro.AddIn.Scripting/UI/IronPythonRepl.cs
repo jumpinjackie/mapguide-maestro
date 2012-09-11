@@ -41,7 +41,7 @@ namespace Maestro.AddIn.Scripting.UI
             _console.Dock = DockStyle.Fill;
             this.Controls.Add(_console);
 
-            this.Title = this.Description = Properties.Resources.Title_IronPython_Console;
+            this.Title = this.Description = Strings.Title_IronPython_Console;
         }
 
         protected override void OnLoad(EventArgs e)

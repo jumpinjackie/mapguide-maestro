@@ -58,7 +58,7 @@ namespace Maestro.Shared.UI
             }
             else
             {
-                throw new InvalidOperationException(string.Format(Properties.Resources.Error_ViewContent_Type_Not_Singleton, type.Name));
+                throw new InvalidOperationException(string.Format(Strings.Error_ViewContent_Type_Not_Singleton, type.Name));
             }
         }
 
@@ -85,7 +85,7 @@ namespace Maestro.Shared.UI
             }
             else
             {
-                throw new InvalidOperationException(string.Format(Properties.Resources.Error_ViewContent_Type_Not_Singleton, type.Name));
+                throw new InvalidOperationException(string.Format(Strings.Error_ViewContent_Type_Not_Singleton, type.Name));
             }
         }
 
@@ -109,7 +109,7 @@ namespace Maestro.Shared.UI
             }
             else
             {
-                throw new InvalidOperationException(string.Format(Properties.Resources.Error_ViewContent_Type_Not_Singleton, type.Name));
+                throw new InvalidOperationException(string.Format(Strings.Error_ViewContent_Type_Not_Singleton, type.Name));
             }
         }
 
@@ -150,7 +150,7 @@ namespace Maestro.Shared.UI
             T obj = method(); //(T)Activator.CreateInstance(type, true);
             SingletonViewContent svc = obj as SingletonViewContent;
             if (svc != null)
-                throw new InvalidOperationException(string.Format(Properties.Resources.Error_ViewContent_Not_Registered, type.Name));
+                throw new InvalidOperationException(string.Format(Strings.Error_ViewContent_Not_Registered, type.Name));
 
             obj.Title = title;
             obj.Description = description;

@@ -75,7 +75,7 @@ namespace Maestro.Base.UI
             {
                 translated += el.Apply();
             }
-            MessageBox.Show(string.Format(Properties.Resources.ItemsTranslated, translated.ToString()));
+            MessageBox.Show(string.Format(Strings.ItemsTranslated, translated.ToString()));
             this.DialogResult = DialogResult.OK;
         }
 

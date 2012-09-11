@@ -47,7 +47,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
             //command to be at a certain position (!!!). The seperator ensures the command is at
             //the right position
             wl.ToolBar.AddItem(wl.CreateSeparator());
-            wl.CommandSet.AddCommand(wl.CreateBasicCommand("Maptip", WebLayoutStrings.WL_Desc_MapTip, WebLayoutStrings.WL_Desc_MapTip, "icon_maptip", TargetViewerType.All, BasicCommandActionType.MapTip)); //NOXLATE
+            wl.CommandSet.AddCommand(wl.CreateBasicCommand("Maptip", Strings.WL_Desc_MapTip, Strings.WL_Desc_MapTip, "icon_maptip", TargetViewerType.All, BasicCommandActionType.MapTip)); //NOXLATE
             wl.ToolBar.AddItem(wl.CreateCommandItem(BasicCommandActionType.MapTip.ToString()));
 #endif
             return wl;
@@ -102,11 +102,11 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
             set
             {
                 if (!ResourceIdentifier.Validate(value))
-                    throw new InvalidOperationException(OSGeo.MapGuide.ObjectModels.LayerDefinition.CommonErrorMessages.InvalidResourceIdentifier);
+                    throw new InvalidOperationException(Strings.ErrorInvalidResourceIdentifier);
 
                 var res = new ResourceIdentifier(value);
                 if (res.Extension != ResourceTypes.WebLayout.ToString())
-                    throw new InvalidOperationException(string.Format(OSGeo.MapGuide.ObjectModels.LayerDefinition.CommonErrorMessages.UnexpectedResourceType, res.ToString(), ResourceTypes.WebLayout));
+                    throw new InvalidOperationException(string.Format(Strings.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.WebLayout));
 
                 _resId = value;
                 this.OnPropertyChanged("ResourceID"); //NOXLATE
@@ -192,24 +192,24 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
                         Back = new TaskButtonType()
                         {
                             Name = "Back",
-                            Tooltip = WebLayoutStrings.WL_Desc_TaskBack,
-                            Description = WebLayoutStrings.WL_Desc_TaskBack,
+                            Tooltip = Strings.WL_Desc_TaskBack,
+                            Description = Strings.WL_Desc_TaskBack,
                             ImageURL = "../stdicons/icon_back.gif",
                             DisabledImageURL = "../stdicons/icon_back_disabled.gif"
                         },
                         Forward = new TaskButtonType()
                         {
                             Name = "Forward",
-                            Tooltip = WebLayoutStrings.WL_Desc_TaskForward,
-                            Description = WebLayoutStrings.WL_Desc_TaskForward,
+                            Tooltip = Strings.WL_Desc_TaskForward,
+                            Description = Strings.WL_Desc_TaskForward,
                             ImageURL = "../stdicons/icon_forward.gif",
                             DisabledImageURL = "../stdicons/icon_forward_disabled.gif"
                         },
                         Home = new TaskButtonType()
                         {
                             Name = "Home",
-                            Tooltip = WebLayoutStrings.WL_Desc_TaskHome,
-                            Description = WebLayoutStrings.WL_Desc_TaskHome,
+                            Tooltip = Strings.WL_Desc_TaskHome,
+                            Description = Strings.WL_Desc_TaskHome,
                             ImageURL = "../stdicons/icon_home.gif",
                             DisabledImageURL = "../stdicons/icon_home_disabled.gif"
                         },
@@ -218,8 +218,8 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
                         Tasks = new TaskButtonType()
                         {
                             Name = "Tasks",
-                            Tooltip = WebLayoutStrings.WL_Label_TaskList,
-                            Description = WebLayoutStrings.WL_Desc_TaskList,
+                            Tooltip = Strings.WL_Label_TaskList,
+                            Description = Strings.WL_Desc_TaskList,
                             ImageURL = "../stdicons/icon_tasks.gif",
                             DisabledImageURL = "../stdicons/icon_tasks_disabled.gif"
                         },
@@ -256,7 +256,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
             wl.CreateCommandItem(BuiltInCommandType.Measure.ToString()),
             wl.CreateCommandItem(BuiltInCommandType.Buffer.ToString()),
             wl.CreateSeparator(),
-            wl.CreateFlyout(WebLayoutStrings.WL_Label_Zoom, null, null, null, null,
+            wl.CreateFlyout(Strings.WL_Label_Zoom, null, null, null, null,
                 wl.CreateCommandItem(BuiltInCommandType.PreviousView.ToString()),
                 wl.CreateCommandItem(BuiltInCommandType.NextView.ToString()),
                 wl.CreateCommandItem(BuiltInCommandType.RestoreView.ToString())
@@ -276,7 +276,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
             wl.ContextMenu.AddItems(
                             wl.CreateCommandItem(BuiltInCommandType.Select.ToString()),
                                 wl.CreateCommandItem(BuiltInCommandType.ClearSelection.ToString()),
-                                wl.CreateFlyout(WebLayoutStrings.WL_Label_SelectMore, null, null, null, null,
+                                wl.CreateFlyout(Strings.WL_Label_SelectMore, null, null, null, null,
                                     wl.CreateCommandItem(BuiltInCommandType.SelectRadius.ToString()),
                                     wl.CreateCommandItem(BuiltInCommandType.SelectPolygon.ToString()),
                                     wl.CreateCommandItem(BuiltInCommandType.SelectWithin.ToString())
@@ -287,7 +287,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
                                 wl.CreateCommandItem(BuiltInCommandType.ZoomIn.ToString()),
                                 wl.CreateCommandItem(BuiltInCommandType.ZoomOut.ToString()),
                                 wl.CreateCommandItem(BuiltInCommandType.Zoom.ToString()),
-                                wl.CreateFlyout(WebLayoutStrings.WL_Label_Zoom, null, null, null, null,
+                                wl.CreateFlyout(Strings.WL_Label_Zoom, null, null, null, null,
                                     wl.CreateCommandItem(BuiltInCommandType.PreviousView.ToString()),
                                     wl.CreateCommandItem(BuiltInCommandType.NextView.ToString()),
                                     wl.CreateCommandItem(BuiltInCommandType.FitToWindow.ToString()),
@@ -313,175 +313,175 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
         private static void CreateDefaultCommandSet(IWebLayout wl)
         {
             wl.CommandSet.AddCommand(
-                            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_Pan,
-                                               WebLayoutStrings.WL_Label_Pan,
-                                               WebLayoutStrings.WL_Desc_Pan,
+                            wl.CreateBasicCommand(Strings.WL_Label_Pan,
+                                               Strings.WL_Label_Pan,
+                                               Strings.WL_Desc_Pan,
                                                "icon_pan",
                                                TargetViewerType.All,
                                                BasicCommandActionType.Pan));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_PanUp,
-                               WebLayoutStrings.WL_Label_PanUp,
-                               WebLayoutStrings.WL_Desc_PanUp,
+            wl.CreateBasicCommand(Strings.WL_Label_PanUp,
+                               Strings.WL_Label_PanUp,
+                               Strings.WL_Desc_PanUp,
                                "icon_panup",
                                TargetViewerType.All,
                                BasicCommandActionType.PanUp));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_PanDown,
-                               WebLayoutStrings.WL_Label_PanDown,
-                               WebLayoutStrings.WL_Desc_PanDown,
+            wl.CreateBasicCommand(Strings.WL_Label_PanDown,
+                               Strings.WL_Label_PanDown,
+                               Strings.WL_Desc_PanDown,
                                "icon_pandown",
                                TargetViewerType.All,
                                BasicCommandActionType.PanDown));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_PanRight,
-                               WebLayoutStrings.WL_Label_PanRight,
-                               WebLayoutStrings.WL_Desc_PanRight,
+            wl.CreateBasicCommand(Strings.WL_Label_PanRight,
+                               Strings.WL_Label_PanRight,
+                               Strings.WL_Desc_PanRight,
                                "icon_panright",
                                TargetViewerType.All,
                                BasicCommandActionType.PanRight));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_PanLeft,
-                               WebLayoutStrings.WL_Label_PanLeft,
-                               WebLayoutStrings.WL_Desc_PanLeft,
+            wl.CreateBasicCommand(Strings.WL_Label_PanLeft,
+                               Strings.WL_Label_PanLeft,
+                               Strings.WL_Desc_PanLeft,
                                "icon_panleft",
                                TargetViewerType.All,
                                BasicCommandActionType.PanLeft));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_Zoom,
-                               WebLayoutStrings.WL_Label_ZoomDynamic,
-                               WebLayoutStrings.WL_Desc_ZoomDynamic,
+            wl.CreateBasicCommand(Strings.WL_Label_Zoom,
+                               Strings.WL_Label_ZoomDynamic,
+                               Strings.WL_Desc_ZoomDynamic,
                                "icon_zoom",
                                TargetViewerType.Dwf,
                                BasicCommandActionType.Zoom));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_ZoomIn,
-                               WebLayoutStrings.WL_Label_ZoomIn,
-                               WebLayoutStrings.WL_Desc_ZoomIn,
+            wl.CreateBasicCommand(Strings.WL_Label_ZoomIn,
+                               Strings.WL_Label_ZoomIn,
+                               Strings.WL_Desc_ZoomIn,
                                "icon_zoomin",
                                TargetViewerType.All,
                                BasicCommandActionType.ZoomIn));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_ZoomOut,
-                               WebLayoutStrings.WL_Label_ZoomOut,
-                               WebLayoutStrings.WL_Desc_ZoomOut,
+            wl.CreateBasicCommand(Strings.WL_Label_ZoomOut,
+                               Strings.WL_Label_ZoomOut,
+                               Strings.WL_Desc_ZoomOut,
                                "icon_zoomout",
                                TargetViewerType.All,
                                BasicCommandActionType.ZoomOut));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_ZoomRect,
-                               WebLayoutStrings.WL_Label_ZoomRect,
-                               WebLayoutStrings.WL_Desc_ZoomRect,
+            wl.CreateBasicCommand(Strings.WL_Label_ZoomRect,
+                               Strings.WL_Label_ZoomRect,
+                               Strings.WL_Desc_ZoomRect,
                                "icon_zoomrect",
                                TargetViewerType.All,
                                BasicCommandActionType.ZoomRectangle));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_ZoomSelection,
-                               WebLayoutStrings.WL_Label_ZoomSelection,
-                               WebLayoutStrings.WL_Desc_ZoomSelection,
+            wl.CreateBasicCommand(Strings.WL_Label_ZoomSelection,
+                               Strings.WL_Label_ZoomSelection,
+                               Strings.WL_Desc_ZoomSelection,
                                "icon_zoomselect",
                                TargetViewerType.All,
                                BasicCommandActionType.ZoomToSelection));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_InitialMapView,
-                               WebLayoutStrings.WL_Label_InitialMapView,
-                               WebLayoutStrings.WL_Desc_InitialMapView,
+            wl.CreateBasicCommand(Strings.WL_Label_InitialMapView,
+                               Strings.WL_Label_InitialMapView,
+                               Strings.WL_Desc_InitialMapView,
                                "icon_fitwindow",
                                TargetViewerType.All,
                                BasicCommandActionType.FitToWindow));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_PrevView,
-                               WebLayoutStrings.WL_Label_PrevView,
-                               WebLayoutStrings.WL_Desc_PrevView,
+            wl.CreateBasicCommand(Strings.WL_Label_PrevView,
+                               Strings.WL_Label_PrevView,
+                               Strings.WL_Desc_PrevView,
                                "icon_zoomprev",
                                TargetViewerType.All,
                                BasicCommandActionType.PreviousView));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_NextView,
-                               WebLayoutStrings.WL_Label_NextView,
-                               WebLayoutStrings.WL_Desc_NextView,
+            wl.CreateBasicCommand(Strings.WL_Label_NextView,
+                               Strings.WL_Label_NextView,
+                               Strings.WL_Desc_NextView,
                                "icon_zoomnext",
                                TargetViewerType.All,
                                BasicCommandActionType.NextView));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_InitialCenterScale,
-                               WebLayoutStrings.WL_Label_InitialCenterScale,
-                               WebLayoutStrings.WL_Desc_InitialCenterScale,
+            wl.CreateBasicCommand(Strings.WL_Label_InitialCenterScale,
+                               Strings.WL_Label_InitialCenterScale,
+                               Strings.WL_Desc_InitialCenterScale,
                                "icon_restorecenter.gif",
                                TargetViewerType.All,
                                BasicCommandActionType.RestoreView));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_Select,
-                               WebLayoutStrings.WL_Label_Select,
-                               WebLayoutStrings.WL_Desc_Select,
+            wl.CreateBasicCommand(Strings.WL_Label_Select,
+                               Strings.WL_Label_Select,
+                               Strings.WL_Desc_Select,
                                "icon_select",
                                TargetViewerType.All,
                                BasicCommandActionType.Select));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_SelectRadius,
-                               WebLayoutStrings.WL_Label_SelectRadius,
-                               WebLayoutStrings.WL_Desc_SelectRadius,
+            wl.CreateBasicCommand(Strings.WL_Label_SelectRadius,
+                               Strings.WL_Label_SelectRadius,
+                               Strings.WL_Desc_SelectRadius,
                                "icon_selectradius",
                                TargetViewerType.All,
                                BasicCommandActionType.SelectRadius));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_SelectPolygon,
-                               WebLayoutStrings.WL_Label_SelectPolygon,
-                               WebLayoutStrings.WL_Desc_SelectPolygon,
+            wl.CreateBasicCommand(Strings.WL_Label_SelectPolygon,
+                               Strings.WL_Label_SelectPolygon,
+                               Strings.WL_Desc_SelectPolygon,
                                "icon_selectpolygon",
                                TargetViewerType.All,
                                BasicCommandActionType.SelectPolygon));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Desc_ClearSelection,
-                               WebLayoutStrings.WL_Label_ClearSelection,
-                               WebLayoutStrings.WL_Desc_ClearSelection,
+            wl.CreateBasicCommand(Strings.WL_Desc_ClearSelection,
+                               Strings.WL_Label_ClearSelection,
+                               Strings.WL_Desc_ClearSelection,
                                "icon_clearselect",
                                TargetViewerType.All,
                                BasicCommandActionType.ClearSelection));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_RefreshMap,
-                               WebLayoutStrings.WL_Label_RefreshMap,
-                               WebLayoutStrings.WL_Desc_RefreshMap,
+            wl.CreateBasicCommand(Strings.WL_Label_RefreshMap,
+                               Strings.WL_Label_RefreshMap,
+                               Strings.WL_Desc_RefreshMap,
                                "icon_refreshmap",
                                TargetViewerType.All,
                                BasicCommandActionType.Refresh));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_Copy,
-                               WebLayoutStrings.WL_Label_Copy,
-                               WebLayoutStrings.WL_Desc_Copy,
+            wl.CreateBasicCommand(Strings.WL_Label_Copy,
+                               Strings.WL_Label_Copy,
+                               Strings.WL_Desc_Copy,
                                "icon_copy",
                                TargetViewerType.Dwf,
                                BasicCommandActionType.CopyMap));
             wl.CommandSet.AddCommand(
-            wl.CreateBasicCommand(WebLayoutStrings.WL_Label_About,
-                               WebLayoutStrings.WL_Label_About,
-                               WebLayoutStrings.WL_Desc_About,
+            wl.CreateBasicCommand(Strings.WL_Label_About,
+                               Strings.WL_Label_About,
+                               Strings.WL_Desc_About,
                                null,
                                TargetViewerType.All,
                                BasicCommandActionType.About));
             wl.CommandSet.AddCommand(
             wl.CreateTargetedCommand<BufferCommandType>(BuiltInCommandType.Buffer.ToString(),
-                                                     WebLayoutStrings.WL_Label_Buffer,
-                                                     WebLayoutStrings.WL_Label_Buffer,
-                                                     WebLayoutStrings.WL_Desc_Buffer,
+                                                     Strings.WL_Label_Buffer,
+                                                     Strings.WL_Label_Buffer,
+                                                     Strings.WL_Desc_Buffer,
                                                      "icon_buffer",
                                                      TargetViewerType.All,
                                                      TargetType.TaskPane,
                                                      null));
             wl.CommandSet.AddCommand(
             wl.CreateTargetedCommand<SelectWithinCommandType>(BuiltInCommandType.SelectWithin.ToString(),
-                                                     WebLayoutStrings.WL_Label_SelectWithin,
-                                                     WebLayoutStrings.WL_Label_SelectWithin,
-                                                     WebLayoutStrings.WL_Desc_SelectWithin,
+                                                     Strings.WL_Label_SelectWithin,
+                                                     Strings.WL_Label_SelectWithin,
+                                                     Strings.WL_Desc_SelectWithin,
                                                      "icon_selectwithin",
                                                      TargetViewerType.All,
                                                      TargetType.TaskPane,
                                                      null));
             wl.CommandSet.AddCommand(
             wl.CreateTargetedCommand<MeasureCommandType>(BuiltInCommandType.Measure.ToString(),
-                                                      WebLayoutStrings.WL_Label_Measure,
-                                                      WebLayoutStrings.WL_Label_Measure,
-                                                      WebLayoutStrings.WL_Desc_Measure,
+                                                      Strings.WL_Label_Measure,
+                                                      Strings.WL_Label_Measure,
+                                                      Strings.WL_Desc_Measure,
                                                       "icon_measure",
                                                       TargetViewerType.All,
                                                       TargetType.TaskPane,
@@ -490,27 +490,27 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
             new PrintCommandType()
             {
                 Name = "Print",
-                Label = WebLayoutStrings.WL_Label_Print,
-                Tooltip = WebLayoutStrings.WL_Label_Print,
-                Description = WebLayoutStrings.WL_Desc_Print,
+                Label = Strings.WL_Label_Print,
+                Tooltip = Strings.WL_Label_Print,
+                Description = Strings.WL_Desc_Print,
                 ImageURL = "../stdicons/icon_print.gif",
                 DisabledImageURL = "../stdicons/icon_print_disabled.gif",
                 TargetViewer = TargetViewerType.Dwf
             });
             wl.CommandSet.AddCommand(
             wl.CreateTargetedCommand<ViewOptionsCommandType>(BuiltInCommandType.ViewOptions.ToString(),
-                                                          WebLayoutStrings.WL_Label_ViewOptions,
-                                                          WebLayoutStrings.WL_Label_ViewOptions,
-                                                          WebLayoutStrings.WL_Desc_ViewOptions,
+                                                          Strings.WL_Label_ViewOptions,
+                                                          Strings.WL_Label_ViewOptions,
+                                                          Strings.WL_Desc_ViewOptions,
                                                           "icon_viewoptions",
                                                           TargetViewerType.All,
                                                           TargetType.TaskPane,
                                                           null));
             wl.CommandSet.AddCommand(
             wl.CreateTargetedCommand<GetPrintablePageCommandType>(BuiltInCommandType.GetPrintablePage.ToString(),
-                                                          WebLayoutStrings.WL_Label_GetPrintablePage,
-                                                          WebLayoutStrings.WL_Label_GetPrintablePage,
-                                                          WebLayoutStrings.WL_Desc_GetPrintablePage,
+                                                          Strings.WL_Label_GetPrintablePage,
+                                                          Strings.WL_Label_GetPrintablePage,
+                                                          Strings.WL_Desc_GetPrintablePage,
                                                           "icon_printablepage",
                                                           TargetViewerType.Ajax,
                                                           TargetType.NewWindow,
@@ -519,9 +519,9 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
             new HelpCommandType()
             {
                 Name = BuiltInCommandType.Help.ToString(),
-                Label = WebLayoutStrings.WL_Label_Help,
-                Tooltip = WebLayoutStrings.WL_Label_Help,
-                Description = WebLayoutStrings.WL_Desc_Help,
+                Label = Strings.WL_Label_Help,
+                Tooltip = Strings.WL_Label_Help,
+                Description = Strings.WL_Desc_Help,
                 ImageURL = "../stdicons/icon_help.gif",
                 DisabledImageURL = "../stdicons/icon_help_disabled.gif",
                 TargetViewer = TargetViewerType.All,

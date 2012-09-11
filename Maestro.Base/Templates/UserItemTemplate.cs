@@ -33,7 +33,7 @@ namespace Maestro.Base.Templates
         private IResource _res;
 
         public UserItemTemplate(string templatePath)
-            : this(Res.TPL_USER_DEFINED, templatePath)
+            : this(Strings.TPL_USER_DEFINED, templatePath)
         { }
 
         public UserItemTemplate(string description, string templatePath)
@@ -50,7 +50,7 @@ namespace Maestro.Base.Templates
         {
             this.Description = description;
 
-            this.Category = Res.TPL_CATEGORY_USERDEF;
+            this.Category = Strings.TPL_CATEGORY_USERDEF;
             this.Icon = Res.document;
             this.Name = name;
             this.TemplatePath = templatePath;

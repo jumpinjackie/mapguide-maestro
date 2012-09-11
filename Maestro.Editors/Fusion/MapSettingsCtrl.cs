@@ -60,7 +60,7 @@ namespace Maestro.Editors.Fusion
             }
             catch
             {
-                throw new NotSupportedException(Properties.Resources.IncompatibleConnection);
+                throw new NotSupportedException(Strings.IncompatibleConnection);
             }
             _edsvc = service;
             _edsvc.RegisterCustomNotifier(this);
@@ -141,7 +141,7 @@ namespace Maestro.Editors.Fusion
                             lstMaps.Items.Remove(item);
 
                             mapWidget.MapId = _flexLayout.MapSet.GetGroupAt(0).id;
-                            MessageBox.Show(string.Format(Properties.Resources.MapUpdatedToUseGroup, mapWidget.MapId));
+                            MessageBox.Show(string.Format(Strings.MapUpdatedToUseGroup, mapWidget.MapId));
                             OnResourceChanged();
                         }
                         else if (_flexLayout.MapSet.MapGroupCount > 2)
@@ -154,7 +154,7 @@ namespace Maestro.Editors.Fusion
 
                             mapGroupIds.Remove(group.id); //Remove the one to be removed from the list
 
-                            string id = GenericItemSelectionDialog.SelectItem(Properties.Resources.PromptSelectMap, Properties.Resources.PromptUpdateMapWidgetReference, mapGroupIds.ToArray());
+                            string id = GenericItemSelectionDialog.SelectItem(Strings.PromptSelectMap, Strings.PromptUpdateMapWidgetReference, mapGroupIds.ToArray());
                             if (id != null) //A replacement has been selected, now we can remove
                             {
                                 _flexLayout.MapSet.RemoveGroup(group);

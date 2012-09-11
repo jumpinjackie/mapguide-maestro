@@ -110,7 +110,7 @@ namespace Maestro.Editors.Common
                 else
                 {
                     if (!ResourceIdentifier.IsFolderResource(folderId))
-                        throw new ArgumentException(Properties.Resources.ErrNotAFolder);
+                        throw new ArgumentException(Strings.ErrNotAFolder);
 
                     _model.Refresh(folderId);
                 }

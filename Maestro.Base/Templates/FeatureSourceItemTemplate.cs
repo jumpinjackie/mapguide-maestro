@@ -33,18 +33,18 @@ namespace Maestro.Base.Templates
     {
         public FeatureSourceItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_DEFAULT;
+            Category = Strings.TPL_CATEGORY_DEFAULT;
             Icon = Res.database_share;
-            Description = Res.TPL_FS_DESC;
-            Name = Res.TPL_FS_NAME;
+            Description = Strings.TPL_FS_DESC;
+            Name = Strings.TPL_FS_NAME;
             ResourceType = ResourceTypes.FeatureSource.ToString();
         }
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
             var provider = GenericItemSelectionDialog.SelectItem(
-                Properties.Resources.SelectFdoProvider,
-                Properties.Resources.SelectFdoProvider,
+                Strings.SelectFdoProvider,
+                Strings.SelectFdoProvider,
                 conn.FeatureService.FeatureProviders,
                 "DisplayName", //NOXLATE
                 "Name"); //NOXLATE

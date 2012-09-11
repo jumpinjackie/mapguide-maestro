@@ -57,7 +57,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                     if (migrate.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         int affected = DoMigrate(source, target, migrate);
-                        MessageService.ShowMessage(string.Format(Properties.Resources.ItemsMigrated, affected));
+                        MessageService.ShowMessage(string.Format(Strings.ItemsMigrated, affected));
                         if (affected > 0 && migrate.SelectedAction == MigrationAction.Move)
                         {
                             var parent = exp.SelectedItems[0].Parent;

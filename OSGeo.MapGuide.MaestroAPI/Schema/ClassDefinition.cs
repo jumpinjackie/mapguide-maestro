@@ -91,7 +91,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 }
             }
 
-            throw new ArgumentException(string.Format(MaestroAPI.Properties.Resources.ErrorPropertyNotFound, name));
+            throw new ArgumentException(string.Format(MaestroAPI.Strings.ErrorPropertyNotFound, name));
         }
 
         /// <summary>
@@ -373,7 +373,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 {
                     var idpropa = f.Attributes["xpath"]; //NOXLATE
                     if (idpropa == null)
-                        throw new Exception(string.Format(MaestroAPI.Properties.Resources.ErrorBadDocumentExpectedAttribute, "xpath"));
+                        throw new Exception(string.Format(MaestroAPI.Strings.ErrorBadDocumentExpectedAttribute, "xpath"));
 
                     var prop = FindProperty(idpropa.Value);
                     if (prop != null && prop.Type == PropertyDefinitionType.Data)

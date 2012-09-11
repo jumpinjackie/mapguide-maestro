@@ -284,7 +284,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 System.Reflection.FieldInfo fi = type.GetField("SchemaName", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public); //NOXLATE
                 if (fi == null)
-                    throw new Exception(string.Format(Properties.Resources.ErrorTypeHasNoSchemaInfo, type));
+                    throw new Exception(string.Format(Strings.ErrorTypeHasNoSchemaInfo, type));
 
                 string xsd = (string)fi.GetValue(null);
 
@@ -744,7 +744,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public virtual bool MoveResourceWithReferences(string oldpath, string newpath, LengthyOperationCallBack callback, LengthyOperationProgressCallBack progress)
         {
-            LengthyOperationProgressArgs la = new LengthyOperationProgressArgs(Properties.Resources.MovingResource, -1);
+            LengthyOperationProgressArgs la = new LengthyOperationProgressArgs(Strings.MovingResource, -1);
 
             if (progress != null)
                 progress(this, la);
@@ -854,7 +854,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             oldpath = FixAndValidateFolderPath(oldpath);
             newpath = FixAndValidateFolderPath(newpath);
 
-            LengthyOperationProgressArgs la = new LengthyOperationProgressArgs(Properties.Resources.ProgressMovingFolder, -1);
+            LengthyOperationProgressArgs la = new LengthyOperationProgressArgs(Strings.ProgressMovingFolder, -1);
 
             if (progress != null)
                 progress(this, la);
@@ -870,7 +870,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             int pg = 0;
             la.Progress = 0;
-            la.StatusMessage = Properties.Resources.ProgressFindingFolderRefs;
+            la.StatusMessage = Strings.ProgressFindingFolderRefs;
             if (progress != null)
                 progress(this, la);
             if (la.Cancel)
@@ -985,7 +985,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             newpath = FixAndValidateFolderPath(newpath);
             ObjCommon.ResourceList lst = GetRepositoryResources(oldpath);
 
-            LengthyOperationProgressArgs la = new LengthyOperationProgressArgs(Properties.Resources.ProgressCopyingFolder, -1);
+            LengthyOperationProgressArgs la = new LengthyOperationProgressArgs(Strings.ProgressCopyingFolder, -1);
             if (progress != null)
                 progress(this, la);
             if (la.Cancel)
@@ -999,7 +999,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 
             la.Progress = 0;
-            la.StatusMessage = Properties.Resources.ProgressFindingFolderRefs;
+            la.StatusMessage = Strings.ProgressFindingFolderRefs;
             int pg = 0;
             if (progress != null)
                 progress(this, la);
@@ -1105,7 +1105,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         virtual protected string FixAndValidateFolderPath(string folderpath)
         {
             if (!folderpath.StartsWith(StringConstants.RootIdentifier) && !folderpath.StartsWith("Session:" + this.SessionID + "//")) //NOXLATE
-                throw new Exception(Properties.Resources.ErrorInvalidResourceIdentifierType);
+                throw new Exception(Strings.ErrorInvalidResourceIdentifierType);
 
             if (!folderpath.EndsWith("/")) //NOXLATE
                 folderpath += "/"; //NOXLATE
@@ -1363,7 +1363,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             else if (header as ObjCommon.ResourceDocumentHeaderType != null)
                 sec = (header as ObjCommon.ResourceDocumentHeaderType).Security;
             else
-                throw new ArgumentException(Properties.Resources.ErrorInvalidResourceHeaderRootElement, "header"); //NOXLATE
+                throw new ArgumentException(Strings.ErrorInvalidResourceHeaderRootElement, "header"); //NOXLATE
 
             if (sec.Users != null && sec.Users.User != null && sec.Users.User.Count == 0)
                 sec.Users = null;
@@ -1374,7 +1374,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (resourceID.EndsWith("//")) //NOXLATE
             {
                 if (header as ObjCommon.ResourceFolderHeaderType == null)
-                    throw new Exception(string.Format(Properties.Resources.ErrorResourceMustBeUpdatedWithFolderHeader, resourceID));
+                    throw new Exception(string.Format(Strings.ErrorResourceMustBeUpdatedWithFolderHeader, resourceID));
                 UpdateRepository(resourceID, header as ObjCommon.ResourceFolderHeaderType);
             }
             else
@@ -1706,7 +1706,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                             }
                         }
                         else
-                            throw new Exception(string.Format(Properties.Resources.ErrorNoDataInResource, resourceID));
+                            throw new Exception(string.Format(Strings.ErrorNoDataInResource, resourceID));
                     }
                     finally
                     {
@@ -2037,7 +2037,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public virtual RuntimeMap OpenMap(string runtimeMapResourceId)
         {
             if (!runtimeMapResourceId.StartsWith("Session:") || !runtimeMapResourceId.EndsWith(".Map")) //NOXLATE
-                throw new ArgumentException(Properties.Resources.ErrorRuntimeMapNotInSessionRepo);
+                throw new ArgumentException(Strings.ErrorRuntimeMapNotInSessionRepo);
 
             var map = new RuntimeMap(GetInterface());
             map.Deserialize(new MgBinaryDeserializer(this.GetResourceData(runtimeMapResourceId, "RuntimeData"), this.SiteVersion)); //NOXLATE

@@ -58,7 +58,7 @@ namespace Maestro.Shared.UI
                         txtMessage.Text,
                         txtDetails.Text));
 
-                MessageBox.Show(Properties.Resources.FileSaved);
+                MessageBox.Show(Strings.FileSaved);
             }
         }
 

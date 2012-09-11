@@ -160,7 +160,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             string path = System.IO.Path.Combine(Application.StartupPath, "ColorBrewer.csv");
             if (!File.Exists(path))
             {
-                string content = Properties.Resources.ColorBrewer;
+                string content = Strings.ColorBrewer;
                 try
                 {
                     File.WriteAllText(path, content);
@@ -180,7 +180,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             GradientToColor.CurrentColor = Color.Green;
 
             ColumnCombo.Items.Clear();
-            ColumnCombo.Items.Add(Properties.Resources.SelectColumnPlaceholder);
+            ColumnCombo.Items.Add(Strings.SelectColumnPlaceholder);
             ColumnCombo.SelectedIndex = 0;
 
             foreach (var col in m_schema.Properties)
@@ -216,7 +216,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 
                 //Not really possible
                 if (col == null)
-                    throw new Exception(Properties.Resources.InvalidColumnNameError);
+                    throw new Exception(Strings.InvalidColumnNameError);
 
                 string filter = null; //Attempt raw reading initially
                 Exception rawEx = null; //Original exception
@@ -291,14 +291,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 
                 if (rawEx != null)
                 {
-                    MessageBox.Show(this, string.Format(Properties.Resources.DataReadError, rawEx.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, string.Format(Strings.DataReadError, rawEx.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ColumnCombo.SelectedIndex = 0;
                     return;
                 }
 
                 if (m_values.Count == 0)
                 {
-                    MessageBox.Show(this, Properties.Resources.ColumnHasNoValidDataError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, Strings.ColumnHasNoValidDataError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ColumnCombo.SelectedIndex = 0;
                     return;
                 }
@@ -311,7 +311,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                     if (dp.IsNumericType())
                     {
                         if (m_values.Count >= 100000)
-                            MessageBox.Show(this, string.Format(Properties.Resources.TooMuchDataWarning, 100000), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show(this, string.Format(Strings.TooMuchDataWarning, 100000), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         GroupPanel.Enabled = true;
                         RuleCountPanel.Enabled = true;
@@ -341,7 +341,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                     {
                         if (m_values.Count > 100)
                         {
-                            MessageBox.Show(this, string.Format(Properties.Resources.TooManyValuesError, 100), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show(this, string.Format(Strings.TooManyValuesError, 100), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             ColumnCombo.SelectedIndex = 0;
                             return;
                         }
@@ -432,18 +432,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                     double chunksize = (max - min) / colors.Length;
                     result.Add(new RuleItem(
                         string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" <= {1}", ColumnCombo.Text, FormatValue(chunksize + min)),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Properties.Resources.LessThanLabel, FormatValue(chunksize + min)), 
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.LessThanLabel, FormatValue(chunksize + min)), 
                         colors[0]));
 
                     for (int i = 1; i < colors.Length - 1; i++)
                         result.Add(new RuleItem(
                             string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1} AND \"{0}\" <= {2}", ColumnCombo.Text, FormatValue(min + (i * chunksize)), FormatValue(min + ((i + 1) * chunksize))),
-                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Properties.Resources.BetweenLabel, FormatValue(min + (i * chunksize)), FormatValue(min + ((i + 1) * chunksize))),
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.BetweenLabel, FormatValue(min + (i * chunksize)), FormatValue(min + ((i + 1) * chunksize))),
                             colors[i]));
 
                     result.Add(new RuleItem(
                         string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1}", ColumnCombo.Text, FormatValue(max - chunksize)),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Properties.Resources.MoreThanLabel, FormatValue(max - chunksize)), 
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.MoreThanLabel, FormatValue(max - chunksize)), 
                         colors[colors.Length - 1]));
                 }
                 else if (AggregateCombo.SelectedIndex == 1) //Standard Deviation
@@ -463,18 +463,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 
                     result.Add(new RuleItem(
                         string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" < {1}", ColumnCombo.Text, FormatValue(lower + dev)),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Properties.Resources.LessThanLabel, FormatValue(lower + dev)),
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.LessThanLabel, FormatValue(lower + dev)),
                         colors[0]));
 
                     for (int i = 1; i < colors.Length - 1; i++)
                         result.Add(new RuleItem(
                             string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" >= {1} AND \"{0}\" < {2}", ColumnCombo.Text, FormatValue(lower + (i * dev)), FormatValue(lower + ((i + 1) * dev))),
-                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Properties.Resources.BetweenLabel, FormatValue(lower + (i * dev)), FormatValue(lower + ((i + 1) * dev))),
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.BetweenLabel, FormatValue(lower + (i * dev)), FormatValue(lower + ((i + 1) * dev))),
                             colors[i]));
 
                     result.Add(new RuleItem(
                         string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" >= {1}", ColumnCombo.Text, FormatValue(lower + (dev * (colors.Length - 1)))),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Properties.Resources.MoreThanLabel, FormatValue(lower + (dev * (colors.Length - 1)))),
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.MoreThanLabel, FormatValue(lower + (dev * (colors.Length - 1)))),
                         colors[colors.Length - 1]));
 
                 }
@@ -505,18 +505,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 
                     result.Add(new RuleItem(
                         string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" <= {1}", ColumnCombo.Text, FormatValue(separators[0])),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Properties.Resources.LessThanLabel, FormatValue(separators[0])),
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.LessThanLabel, FormatValue(separators[0])),
                         colors[0]));
 
                     for (int i = 1; i < colors.Length - 1; i++)
                         result.Add(new RuleItem(
                             string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1} AND \"{0}\" <= {2}", ColumnCombo.Text, FormatValue(separators[i - 1]), FormatValue(separators[i])),
-                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Properties.Resources.BetweenLabel, FormatValue(separators[i - 1]), FormatValue(separators[i])),
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.BetweenLabel, FormatValue(separators[i - 1]), FormatValue(separators[i])),
                             colors[i]));
 
                     result.Add(new RuleItem(
                         string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1}", ColumnCombo.Text, FormatValue(separators[separators.Count - 1])),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Properties.Resources.MoreThanLabel, FormatValue(separators[separators.Count - 1])),
+                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.MoreThanLabel, FormatValue(separators[separators.Count - 1])),
                         colors[colors.Length - 1]));
                 }
             }
@@ -669,7 +669,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             {
                 if (m_values.Count > 100)
                 {
-                    MessageBox.Show(this, string.Format(Properties.Resources.TooManyIndiviualValuesError, 100), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, string.Format(Strings.TooManyIndiviualValuesError, 100), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     AggregateCombo.SelectedIndex = 0;
                     return;
                 }
@@ -758,7 +758,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 
                 if (rules.Count > 1000)
                 {
-                    if (MessageBox.Show(this, Properties.Resources.TooManyRulesWarning, Application.ProductName, MessageBoxButtons.YesNoCancel) != DialogResult.Yes)
+                    if (MessageBox.Show(this, Strings.TooManyRulesWarning, Application.ProductName, MessageBoxButtons.YesNoCancel) != DialogResult.Yes)
                         return;
                 }
 
@@ -883,7 +883,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             {
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 //m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(Properties.Resources.GenericError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                MessageBox.Show(this, string.Format(Strings.GenericError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
             }
         }
 

@@ -78,12 +78,12 @@ namespace Maestro.Base.UI
                             MaxY.Text = root["Bounds"].Attributes["north"].Value; //NOXLATE
                     }
                     else
-                        throw new Exception(Properties.Resources.BoundsPicker_MissingBoundsError);
+                        throw new Exception(Strings.BoundsPicker_MissingBoundsError);
                 }
                 catch(Exception ex)
                 {
                     string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    MessageBox.Show(this, string.Format(Properties.Resources.BoundsPicker_BoundsDecodeError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                    MessageBox.Show(this, string.Format(Strings.BoundsPicker_BoundsDecodeError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 }
             }
         }
@@ -103,7 +103,7 @@ namespace Maestro.Base.UI
 
             if (MinX.Text.Trim().Length == 0 || MaxX.Text.Trim().Length == 0 || MinY.Text.Trim().Length == 0 || MaxY.Text.Trim().Length == 0 || (srs == null && SRSCombo.Visible))
             {
-                MessageBox.Show(this, Properties.Resources.BoundsPicker_IncompleBoundsError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, Strings.BoundsPicker_IncompleBoundsError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -123,35 +123,35 @@ namespace Maestro.Base.UI
 
             if (!isUs && isLocal)
             {
-                switch (MessageBox.Show(this, Properties.Resources.BoundsPicker_NumbersInRegionalError, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
+                switch (MessageBox.Show(this, Strings.BoundsPicker_NumbersInRegionalError, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question))
                 {
                     case DialogResult.Yes:
                         if (double.TryParse(MinX.Text, System.Globalization.NumberStyles.Float, localCI, out temp))
                             MinX.Text = temp.ToString(usCI);
                         else
                         {
-                            MessageBox.Show(this, Properties.Resources.BoundsPicker_InvalidMinXError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, Strings.BoundsPicker_InvalidMinXError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         if (double.TryParse(MaxX.Text, System.Globalization.NumberStyles.Float, localCI, out temp))
                             MaxX.Text = temp.ToString(usCI);
                         else
                         {
-                            MessageBox.Show(this, Properties.Resources.BoundsPicker_InvalidMaxXError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, Strings.BoundsPicker_InvalidMaxXError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         if (double.TryParse(MinY.Text, System.Globalization.NumberStyles.Float, localCI, out temp))
                             MinY.Text = temp.ToString(usCI);
                         else
                         {
-                            MessageBox.Show(this, Properties.Resources.BoundsPicker_InvalidMinYError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, Strings.BoundsPicker_InvalidMinYError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         if (double.TryParse(MaxY.Text, System.Globalization.NumberStyles.Float, localCI, out temp))
                             MaxY.Text = temp.ToString(usCI);
                         else
                         {
-                            MessageBox.Show(this, Properties.Resources.BoundsPicker_InvalidMaxYError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, Strings.BoundsPicker_InvalidMaxYError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                         break;
@@ -162,7 +162,7 @@ namespace Maestro.Base.UI
 
             if (!isUs && !isLocal)
             {
-                if (MessageBox.Show(this, Properties.Resources.BoundsPicker_UseInvalidCoordinatesWarning, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error) != DialogResult.Yes)
+                if (MessageBox.Show(this, Strings.BoundsPicker_UseInvalidCoordinatesWarning, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Error) != DialogResult.Yes)
                     return;
             }
 

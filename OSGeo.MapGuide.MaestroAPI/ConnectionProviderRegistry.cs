@@ -210,7 +210,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             string name = entry.Name.ToUpper();
             if (_ctors.ContainsKey(name))
-                throw new ArgumentException(string.Format(Properties.Resources.ErrorProviderAlreadyRegistered, entry.Name));
+                throw new ArgumentException(string.Format(Strings.ErrorProviderAlreadyRegistered, entry.Name));
 
             _ctors[name] = method;
             _providers.Add(entry);
@@ -226,11 +226,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             string name = provider.ToUpper();
             if (!_ctors.ContainsKey(name))
-                throw new ArgumentException(string.Format(Properties.Resources.ErrorProviderNotRegistered, provider));
+                throw new ArgumentException(string.Format(Strings.ErrorProviderNotRegistered, provider));
 
             ConnectionProviderEntry prv = FindProvider(provider);
             if (prv != null && !prv.IsMultiPlatform && Platform.IsRunningOnMono)
-                throw new NotSupportedException(string.Format(Properties.Resources.ErrorProviderNotUsableForYourPlatform, provider));
+                throw new NotSupportedException(string.Format(Strings.ErrorProviderNotUsableForYourPlatform, provider));
 
             ConnectionFactoryMethod method = _ctors[name];
 
@@ -248,11 +248,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             string name = provider.ToUpper();
             if (!_ctors.ContainsKey(name))
-                throw new ArgumentException(string.Format(Properties.Resources.ErrorProviderNotRegistered, provider));
+                throw new ArgumentException(string.Format(Strings.ErrorProviderNotRegistered, provider));
 
             ConnectionProviderEntry prv = FindProvider(provider);
             if (prv != null && !prv.IsMultiPlatform && Platform.IsRunningOnMono)
-                throw new NotSupportedException(string.Format(Properties.Resources.ErrorProviderNotUsableForYourPlatform, provider));
+                throw new NotSupportedException(string.Format(Strings.ErrorProviderNotUsableForYourPlatform, provider));
 
             var method = _ctors[name];
             return method(connInitParams);

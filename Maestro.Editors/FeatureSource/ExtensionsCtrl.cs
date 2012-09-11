@@ -67,7 +67,7 @@ namespace Maestro.Editors.FeatureSource
                     node.ImageIndex = node.SelectedImageIndex = IDX_EXTENSION;
 
                     node.Text = ext.Name;
-                    node.ToolTipText = string.Format(Properties.Resources.ExtendedClassTooltip, ext.FeatureClass);
+                    node.ToolTipText = string.Format(Strings.ExtendedClassTooltip, ext.FeatureClass);
 
                     ext.PropertyChanged += (s, evt) =>
                     {
@@ -77,7 +77,7 @@ namespace Maestro.Editors.FeatureSource
                         }
                         else if (evt.PropertyName == "FeatureClass") //NOXLATE
                         {
-                            node.ToolTipText = string.Format(Properties.Resources.ExtendedClassTooltip, ext.FeatureClass);
+                            node.ToolTipText = string.Format(Strings.ExtendedClassTooltip, ext.FeatureClass);
                         }
                     };
 
@@ -150,7 +150,7 @@ namespace Maestro.Editors.FeatureSource
         {
             if (_edSvc.IsNew)
             {
-                MessageBox.Show(Properties.Resources.SaveResourceFirst);
+                MessageBox.Show(Strings.SaveResourceFirst);
                 return;
             }
 
@@ -166,7 +166,7 @@ namespace Maestro.Editors.FeatureSource
                 }
                 else if (evt.PropertyName == "FeatureClass") //NOXLATE
                 {
-                    node.ToolTipText = string.Format(Properties.Resources.ExtendedClassTooltip, ext.FeatureClass);
+                    node.ToolTipText = string.Format(Strings.ExtendedClassTooltip, ext.FeatureClass);
                 }
             };
 
@@ -181,7 +181,7 @@ namespace Maestro.Editors.FeatureSource
         {
             if (_edSvc.IsNew)
             {
-                MessageBox.Show(Properties.Resources.SaveResourceFirst);
+                MessageBox.Show(Strings.SaveResourceFirst);
                 return;
             }
 
@@ -222,7 +222,7 @@ namespace Maestro.Editors.FeatureSource
         {
             if (_edSvc.IsNew)
             {
-                MessageBox.Show(Properties.Resources.SaveResourceFirst);
+                MessageBox.Show(Strings.SaveResourceFirst);
                 return;
             }
 

@@ -41,7 +41,7 @@ namespace Maestro.Base.UI.Preferences
 
         public string Title
         {
-            get { return Properties.Resources.Prefs_Editor; }
+            get { return Strings.Prefs_Editor; }
         }
 
         public Control ContentControl

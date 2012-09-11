@@ -365,7 +365,7 @@ namespace Maestro.Editors.MapDefinition
                 }
 
                 _map.RemoveLayerGroupAndChildLayers(layGroup.Name);
-                MessageBox.Show(string.Format(Properties.Resources.LayerGroupConvertedToBaseLayerGroup, layGroup.Name, groupName));
+                MessageBox.Show(string.Format(Strings.LayerGroupConvertedToBaseLayerGroup, layGroup.Name, groupName));
                 this.RefreshModels();
                 tabControl1.SelectedIndex = 2; //Switch to Base Layer Groups
             }
@@ -404,7 +404,7 @@ namespace Maestro.Editors.MapDefinition
                 }
                 //Detach the base layer group
                 _map.BaseMap.RemoveBaseLayerGroup(group.Tag);
-                MessageBox.Show(string.Format(Properties.Resources.BaseLayerGroupConvertedToLayerGroup, group.Tag.Name, groupName));
+                MessageBox.Show(string.Format(Strings.BaseLayerGroupConvertedToLayerGroup, group.Tag.Name, groupName));
                 this.RefreshModels();
                 tabControl1.SelectedIndex = 0; //Switch to Layer Groups
             }
@@ -614,12 +614,12 @@ namespace Maestro.Editors.MapDefinition
         private IMapLayerGroup CreateNewGroup(IMapLayerGroup parentGroup)
         {
             int counter = 0;
-            string prefix = Properties.Resources.NewLayerGroup;
+            string prefix = Strings.NewLayerGroup;
             var group = _map.GetGroupByName(prefix);
             while (group != null)
             {
                 counter++;
-                prefix = Properties.Resources.NewLayerGroup + counter;
+                prefix = Strings.NewLayerGroup + counter;
                 group = _map.GetGroupByName(prefix);
             }
 
@@ -734,16 +734,16 @@ namespace Maestro.Editors.MapDefinition
         {
             map.InitBaseMap();
             int counter = 0;
-            string name = Properties.Resources.BaseLayerGroup;
+            string name = Strings.BaseLayerGroup;
             if (map.BaseMap.GroupExists(name))
             {
                 counter++;
-                name = Properties.Resources.BaseLayerGroup + counter;
+                name = Strings.BaseLayerGroup + counter;
             }
             while (map.BaseMap.GroupExists(name))
             {
                 counter++;
-                name = Properties.Resources.BaseLayerGroup + counter;
+                name = Strings.BaseLayerGroup + counter;
             }
             return name;
         }
@@ -1363,7 +1363,7 @@ namespace Maestro.Editors.MapDefinition
         {
             if (_edSvc.IsNew || _edSvc.IsDirty)
             {
-                MessageBox.Show(Properties.Resources.SaveMapBeforeTiling);
+                MessageBox.Show(Strings.SaveMapBeforeTiling);
                 return;
             }
 
@@ -1371,13 +1371,13 @@ namespace Maestro.Editors.MapDefinition
             //HACK: Can't support other connection types beyond HTTP atm
             if (!conn.ProviderName.ToLower().Contains("maestro.http"))
             {
-                MessageBox.Show(string.Format(Properties.Resources.UnsupportedConnectionType, conn.ProviderName));
+                MessageBox.Show(string.Format(Strings.UnsupportedConnectionType, conn.ProviderName));
                 return;
             }
 
             if (_map.BaseMap == null || _map.BaseMap.GroupCount == 0)
             {
-                MessageBox.Show(Properties.Resources.NotATiledMap);
+                MessageBox.Show(Strings.NotATiledMap);
                 return;
             }
 

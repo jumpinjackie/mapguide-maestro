@@ -42,7 +42,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             Check.NotNull(fs, "fs"); //NOXLATE
             if (string.IsNullOrEmpty(fs.ResourceID))
-                throw new ArgumentException(Properties.Resources.ErrorNoResourceIdAttached);
+                throw new ArgumentException(Strings.ErrorNoResourceIdAttached);
             using (var stream = CredentialWriter.Write(username, password))
             {
                 fs.SetResourceData(StringConstants.MgUserCredentialsResourceData, ObjectModels.Common.ResourceDataType.String, stream);
@@ -118,11 +118,11 @@ namespace OSGeo.MapGuide.MaestroAPI
             var reservedChars = reservedCharacters.ToCharArray();
             if (plainText1.IndexOfAny(reservedChars) >= 0)
             {
-                throw new ArgumentException(string.Format(Properties.Resources.ErrorArgContainsReservedCharacters, "plainText1")); //NOXLATE
+                throw new ArgumentException(string.Format(Strings.ErrorArgContainsReservedCharacters, "plainText1")); //NOXLATE
             }
             if (plainText2.IndexOfAny(reservedChars) >= 0)
             {
-                throw new ArgumentException(string.Format(Properties.Resources.ErrorArgContainsReservedCharacters, "plainText2")); //NOXLATE
+                throw new ArgumentException(string.Format(Strings.ErrorArgContainsReservedCharacters, "plainText2")); //NOXLATE
             }
 
             string publicKey;

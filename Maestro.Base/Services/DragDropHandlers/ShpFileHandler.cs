@@ -33,7 +33,7 @@ namespace Maestro.Base.Services.DragDropHandlers
     {
         public string HandlerAction
         {
-            get { return Properties.Resources.ShpHandlerAction; }
+            get { return Strings.ShpHandlerAction; }
         }
 
         private string[] extensions = { ".shp" }; //NOXLATE

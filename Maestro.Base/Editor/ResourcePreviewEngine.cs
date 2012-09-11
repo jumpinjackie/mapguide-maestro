@@ -74,7 +74,7 @@ namespace Maestro.Base.Editor
             var extent = ldf.GetSpatialExtent(true, out csWkt);
 
             //TODO: Based on the visible scales in this layer, size this extents accordingly
-            var mdf = ObjectFactory.CreateMapDefinition(conn, Properties.Resources.PreviewMap, csWkt, extent);
+            var mdf = ObjectFactory.CreateMapDefinition(conn, Strings.PreviewMap, csWkt, extent);
 
             var layer = mdf.AddLayer(null, ResourceIdentifier.GetName(_edSvc.ResourceID), ldf.ResourceID);
 
@@ -118,8 +118,8 @@ namespace Maestro.Base.Editor
         {
             var cmd = wl.CreateInvokeScriptCommand();
             cmd.Name = "ZoomScale"; //NOXLATE
-            cmd.Label = Properties.Resources.Label_ZoomToScale;
-            cmd.Tooltip = Properties.Resources.Desc_ZoomToScale;
+            cmd.Label = Strings.Label_ZoomToScale;
+            cmd.Tooltip = Strings.Desc_ZoomToScale;
             cmd.Script = @"
                 var map = parent.parent.GetMapFrame();
                 var center = map.GetCenter();
@@ -134,9 +134,9 @@ namespace Maestro.Base.Editor
 
             var cmd2 = wl.CreateInvokeScriptCommand();
             cmd2.Name = "GetMapKml"; //NOXLATE
-            cmd2.Label = Properties.Resources.Label_GetMapKml;
-            cmd2.Description = Properties.Resources.Desc_GetMapKml;
-            cmd2.Tooltip = Properties.Resources.Desc_GetMapKml;
+            cmd2.Label = Strings.Label_GetMapKml;
+            cmd2.Description = Strings.Desc_GetMapKml;
+            cmd2.Tooltip = Strings.Desc_GetMapKml;
 
             cmd2.Script = @"
                 var map = parent.parent.GetMapFrame();
@@ -151,9 +151,9 @@ namespace Maestro.Base.Editor
 
             var cmd3 = wl.CreateInvokeScriptCommand();
             cmd3.Name = "GetExtents"; //NOXLATE
-            cmd3.Label = Properties.Resources.Label_GetExtents;
-            cmd3.Description = Properties.Resources.Desc_GetExtents;
-            cmd3.Tooltip = Properties.Resources.Desc_GetExtents;
+            cmd3.Label = Strings.Label_GetExtents;
+            cmd3.Description = Strings.Desc_GetExtents;
+            cmd3.Tooltip = Strings.Desc_GetExtents;
 
             cmd3.Script = @"
                 var map = parent.parent.GetMapFrame();
@@ -166,7 +166,7 @@ namespace Maestro.Base.Editor
             wl.CommandSet.AddCommand(cmd3);
             
             var zoomScale = wl.CreateCommandItem(cmd.Name);
-            var menu = wl.CreateFlyout(Properties.Resources.Label_Tools, Properties.Resources.Label_Tools, Properties.Resources.Label_ExtraTools, string.Empty, string.Empty,
+            var menu = wl.CreateFlyout(Strings.Label_Tools, Strings.Label_Tools, Strings.Label_ExtraTools, string.Empty, string.Empty,
                 wl.CreateCommandItem("ZoomScale"), //NOXLATE
                 wl.CreateCommandItem("GetMapKml"), //NOXLATE
                 wl.CreateCommandItem("GetExtents") //NOXLATE
@@ -178,7 +178,7 @@ namespace Maestro.Base.Editor
         {
             //We demand a 2.3.0 Map Definition or higher
             if (wmd.CurrentConnection.SiteVersion < new Version(2, 3))
-                throw new InvalidOperationException(Properties.Resources.SiteVersionDoesntSupportWatermarks);
+                throw new InvalidOperationException(Strings.SiteVersionDoesntSupportWatermarks);
 
             IMapDefinition2 map = (IMapDefinition2)ObjectFactory.CreateMapDefinition(wmd.CurrentConnection, wmd.SupportedMapDefinitionVersion, "Watermark Definition Preview"); //NOXLATE
             map.CoordinateSystem = @"LOCAL_CS[""*XY-M*"", LOCAL_DATUM[""*X-Y*"", 10000], UNIT[""Meter"", 1], AXIS[""X"", EAST], AXIS[""Y"", NORTH]]"; //NOXLATE
@@ -279,7 +279,7 @@ namespace Maestro.Base.Editor
                 case ResourceTypes.WatermarkDefinition:
                     return GenerateWatermarkPreviewUrl((IWatermarkDefinition)res);
                 default:
-                    throw new InvalidOperationException(Properties.Resources.UnpreviewableResourceType);
+                    throw new InvalidOperationException(Strings.UnpreviewableResourceType);
             }
         }
 

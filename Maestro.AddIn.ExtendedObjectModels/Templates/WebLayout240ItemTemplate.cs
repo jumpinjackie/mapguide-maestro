@@ -35,10 +35,10 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     {
         public WebLayout240ItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_MGOS24;
+            Category = Strings.TPL_CATEGORY_MGOS24;
             Icon = Res.application_browser;
-            Description = Res.TPL_WL_240_DESC;
-            Name = Res.TPL_WL_240_NAME;
+            Description = Strings.TPL_WL_240_DESC;
+            Name = Strings.TPL_WL_240_NAME;
             ResourceType = ResourceTypes.WebLayout.ToString();
         }
 

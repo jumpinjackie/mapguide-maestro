@@ -109,9 +109,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         {
             base.ValidateCoreParams();
             if (string.IsNullOrEmpty(this.FeatureSourceId))
-                throw new InvalidOperationException(Properties.Resources.ErrorNoFeatureSourceIdSpecified);
+                throw new InvalidOperationException(Strings.ErrorNoFeatureSourceIdSpecified);
             if (string.IsNullOrEmpty(this.ClassName))
-                throw new InvalidOperationException(Properties.Resources.ErrorNoFeatureSourceIdSpecified);
+                throw new InvalidOperationException(Strings.ErrorNoFeatureSourceIdSpecified);
         }
     }
 
@@ -155,7 +155,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
             {
                 base.ValidateParams();
                 if (this.RecordToInsert == null)
-                    throw new InvalidOperationException(Properties.Resources.ErrorNothingToInsert);
+                    throw new InvalidOperationException(Strings.ErrorNothingToInsert);
 
                 this.ExecuteInternal(); 
             }
@@ -217,7 +217,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         {
             base.ValidateParams();
             if (this.ValuesToUpdate == null)
-                throw new InvalidOperationException(Properties.Resources.ErrorNoValuesSpecifiedForUpdating);
+                throw new InvalidOperationException(Strings.ErrorNoValuesSpecifiedForUpdating);
 
             return ExecuteInternal();
         }
@@ -307,9 +307,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         {
             base.ValidateCoreParams();
             if (string.IsNullOrEmpty(this.FeatureSourceId))
-                throw new InvalidOperationException(Properties.Resources.ErrorEmptyFeatureSourceId);
+                throw new InvalidOperationException(Strings.ErrorEmptyFeatureSourceId);
             if (this.Schema == null)
-                throw new InvalidOperationException(Properties.Resources.ErrorNoSchemaSpecifiedToApply);
+                throw new InvalidOperationException(Strings.ErrorNoSchemaSpecifiedToApply);
 
             this.ExecuteInternal();
         }
@@ -387,19 +387,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         {
             this.ValidateCoreParams();
             if (string.IsNullOrEmpty(this.FeatureSourceId))
-                throw new InvalidOperationException(Properties.Resources.ErrorNoFeatureSourceIdSpecified);
+                throw new InvalidOperationException(Strings.ErrorNoFeatureSourceIdSpecified);
             if (string.IsNullOrEmpty(this.CoordinateSystemWkt))
-                throw new InvalidOperationException(Properties.Resources.ErrorNoCoordinateSystemWktSpecified);
+                throw new InvalidOperationException(Strings.ErrorNoCoordinateSystemWktSpecified);
             if (this.Extent == null && this.ExtentType != OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContextExtentType.Dynamic)
-                throw new InvalidOperationException(Properties.Resources.ErrorNoExtentSpecifiedForStaticType);
+                throw new InvalidOperationException(Strings.ErrorNoExtentSpecifiedForStaticType);
             if (string.IsNullOrEmpty(this.FileName))
-                throw new InvalidOperationException(Properties.Resources.ErrorNoFileNameSpecified);
+                throw new InvalidOperationException(Strings.ErrorNoFileNameSpecified);
             if (string.IsNullOrEmpty(this.Name))
-                throw new InvalidOperationException(Properties.Resources.ErrorNoSpatialContextNameSpecified);
+                throw new InvalidOperationException(Strings.ErrorNoSpatialContextNameSpecified);
             if (string.IsNullOrEmpty(this.Provider))
-                throw new InvalidOperationException(Properties.Resources.ErrorNoProviderSpecified);
+                throw new InvalidOperationException(Strings.ErrorNoProviderSpecified);
             if (this.Schema == null)
-                throw new InvalidOperationException(Properties.Resources.ErrorNoSchemaSpecified);
+                throw new InvalidOperationException(Strings.ErrorNoSchemaSpecified);
             this.ExecuteInternal();
         }
 

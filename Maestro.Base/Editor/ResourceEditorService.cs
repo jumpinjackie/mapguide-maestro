@@ -89,7 +89,7 @@ namespace Maestro.Base.Editor
             }
             else
             {
-                throw new ApplicationException(string.Format(Properties.Resources.ErrorUnknownExecutable, processName));
+                throw new ApplicationException(string.Format(Strings.ErrorUnknownExecutable, processName));
             }
         }
     }

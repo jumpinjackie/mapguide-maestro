@@ -154,7 +154,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
 
         private void btnKey_Click(object sender, EventArgs e)
         {
-            var item = GenericItemSelectionDialog.SelectItem(Properties.Resources.SelectProperty, Properties.Resources.SelectProperty, GetPropertyNames());
+            var item = GenericItemSelectionDialog.SelectItem(Strings.SelectProperty, Strings.SelectProperty, GetPropertyNames());
             if (!string.IsNullOrEmpty(item))
             {
                 txtKey.Text = item;
@@ -173,11 +173,11 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
         {
             if (!chkGeometry.Checked)
             {
-                MessageBox.Show(Properties.Resources.CheckGeometryFirst);
+                MessageBox.Show(Strings.CheckGeometryFirst);
                 return;
             }
 
-            var item = GenericItemSelectionDialog.SelectItem(Properties.Resources.SelectProperty, Properties.Resources.SelectProperty, GetNumericPropertyNames());
+            var item = GenericItemSelectionDialog.SelectItem(Strings.SelectProperty, Strings.SelectProperty, GetNumericPropertyNames());
             if (!string.IsNullOrEmpty(item))
             {
                 txtX.Text = item;
@@ -188,11 +188,11 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
         {
             if (!chkGeometry.Checked)
             {
-                MessageBox.Show(Properties.Resources.CheckGeometryFirst);
+                MessageBox.Show(Strings.CheckGeometryFirst);
                 return;
             }
 
-            var item = GenericItemSelectionDialog.SelectItem(Properties.Resources.SelectProperty, Properties.Resources.SelectProperty, GetNumericPropertyNames());
+            var item = GenericItemSelectionDialog.SelectItem(Strings.SelectProperty, Strings.SelectProperty, GetNumericPropertyNames());
             if (!string.IsNullOrEmpty(item))
             {
                 txtY.Text = item;
@@ -203,11 +203,11 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
         {
             if (!chkGeometry.Checked)
             {
-                MessageBox.Show(Properties.Resources.CheckGeometryFirst);
+                MessageBox.Show(Strings.CheckGeometryFirst);
                 return;
             }
 
-            var item = GenericItemSelectionDialog.SelectItem(Properties.Resources.SelectProperty, Properties.Resources.SelectProperty, GetNumericPropertyNames());
+            var item = GenericItemSelectionDialog.SelectItem(Strings.SelectProperty, Strings.SelectProperty, GetNumericPropertyNames());
             if (!string.IsNullOrEmpty(item))
             {
                 txtZ.Text = item;
@@ -218,11 +218,11 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
         {
             if (!chkGeometry.Checked)
             {
-                MessageBox.Show(Properties.Resources.CheckGeometryFirst);
+                MessageBox.Show(Strings.CheckGeometryFirst);
                 return;
             }
 
-            var item = GenericItemSelectionDialog.SelectItem(Properties.Resources.SelectSpatialContext, Properties.Resources.SelectSpatialContext, _scNames);
+            var item = GenericItemSelectionDialog.SelectItem(Strings.SelectSpatialContext, Strings.SelectSpatialContext, _scNames);
             if (!string.IsNullOrEmpty(item))
             {
                 txtSpatialContext.Text = item;

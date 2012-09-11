@@ -191,7 +191,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             if (!node.Name.Equals("fdo:DataStore")) //NOXLATE
-                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "fdo:DataStore")); //NOXLATE
+                throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "fdo:DataStore")); //NOXLATE
 
             _spatialContexts.Clear();
             _schemas.Clear();

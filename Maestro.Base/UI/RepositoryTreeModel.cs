@@ -374,7 +374,7 @@ namespace Maestro.Base.UI
             RepositoryItem item = node.Tag as RepositoryItem;
             if (item != null && !item.IsRoot)
             {
-                return string.Format(Properties.Resources.SITE_EXPLORER_TOOLTIP_TEMPLATE, Environment.NewLine, item.Name, item.ResourceType, item.CreatedDate, item.ModifiedDate, item.Owner);
+                return string.Format(Strings.SITE_EXPLORER_TOOLTIP_TEMPLATE, Environment.NewLine, item.Name, item.ResourceType, item.CreatedDate, item.ModifiedDate, item.Owner);
             }
             return string.Empty;
         }

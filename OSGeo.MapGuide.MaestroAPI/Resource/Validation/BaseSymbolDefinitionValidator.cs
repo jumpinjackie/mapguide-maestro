@@ -92,7 +92,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 ssym.LineUsage == null &&
                 ssym.PointUsage == null)
             {
-                yield return new ValidationIssue(ssym, ValidationStatus.Error, ValidationStatusCode.Error_SymbolDefinition_NoGeometryUsageContexts, Properties.Resources.SSDF_NoGeometryUsageContext);
+                yield return new ValidationIssue(ssym, ValidationStatus.Error, ValidationStatusCode.Error_SymbolDefinition_NoGeometryUsageContexts, Strings.SSDF_NoGeometryUsageContext);
             }
 
             //Validate image graphics
@@ -108,7 +108,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                             IImageReference imgRef = (IImageReference)image.Item;
                             if (!context.ResourceExists(imgRef.ResourceId))
                             {
-                                yield return new ValidationIssue(ssym, ValidationStatus.Error, ValidationStatusCode.Error_SymbolDefinition_ImageGraphicReferenceResourceIdNotFound, Properties.Resources.SSDF_ImageGraphicReferenceResourceIdNotFound);
+                                yield return new ValidationIssue(ssym, ValidationStatus.Error, ValidationStatusCode.Error_SymbolDefinition_ImageGraphicReferenceResourceIdNotFound, Strings.SSDF_ImageGraphicReferenceResourceIdNotFound);
                             }
                             else
                             {
@@ -126,7 +126,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                                     yield return new ValidationIssue(ssym,
                                                                      ValidationStatus.Error,
                                                                      ValidationStatusCode.Error_SymbolDefinition_ImageGraphicReferenceResourceDataNotFound,
-                                                                     string.Format(Properties.Resources.SSDF_ImageGraphicReferenceResourceDataNotFound,
+                                                                     string.Format(Strings.SSDF_ImageGraphicReferenceResourceDataNotFound,
                                                                         imgRef.ResourceId,
                                                                         imgRef.LibraryItemName));
                                 }
@@ -149,7 +149,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 if (!xml.Contains(name) && string.IsNullOrEmpty(paramDef.DefaultValue))
                 {
                     yield return new ValidationIssue(ssym, ValidationStatus.Warning, ValidationStatusCode.Warning_SymbolDefinition_SymbolParameterNotUsed,
-                        string.Format(Properties.Resources.SSDF_SymbolParameterNotUsed, paramDef.Identifier));
+                        string.Format(Strings.SSDF_SymbolParameterNotUsed, paramDef.Identifier));
                 }
             }
 

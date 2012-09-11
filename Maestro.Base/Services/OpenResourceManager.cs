@@ -74,16 +74,16 @@ namespace Maestro.Base.Services
             {
                 if (_factories.ContainsKey(fact.ResourceTypeAndVersion))
                 {
-                    LoggingService.Info(string.Format(Properties.Resources.OpenResourceManager_SkipEditorRegistration, fact.ResourceTypeAndVersion.ResourceType, fact.ResourceTypeAndVersion.Version));
+                    LoggingService.Info(string.Format(Strings.OpenResourceManager_SkipEditorRegistration, fact.ResourceTypeAndVersion.ResourceType, fact.ResourceTypeAndVersion.Version));
                 }
                 else
                 {
                     _factories.Add(fact.ResourceTypeAndVersion, fact);
-                    LoggingService.Info(string.Format(Properties.Resources.EditorRegistered, fact.GetType()));
+                    LoggingService.Info(string.Format(Strings.EditorRegistered, fact.GetType()));
                 }
             }
 
-            LoggingService.Info(Properties.Resources.Service_Init_Open_Resource_Manager);
+            LoggingService.Info(Strings.Service_Init_Open_Resource_Manager);
         }
 
         private IEditorFactory GetRegisteredEditor(ResourceTypeDescriptor rtd)
@@ -169,7 +169,7 @@ namespace Maestro.Base.Services
                     {
                         if (ed.IsNew)
                         {
-                            if (!MessageService.AskQuestion(string.Format(Properties.Resources.CloseUnsavedResource, string.Empty)))
+                            if (!MessageService.AskQuestion(string.Format(Strings.CloseUnsavedResource, string.Empty)))
                             {
                                 e.Cancel = true;
                             }

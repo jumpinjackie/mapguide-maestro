@@ -36,10 +36,10 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     {
         public SQLiteLoadProcedureItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_MGOS22;
+            Category = Strings.TPL_CATEGORY_MGOS22;
             //Icon = Res.document;
-            Description = Res.TPL_LP_SQLITE_DESC;
-            Name = Res.TPL_LP_SQLITE_NAME;
+            Description = Strings.TPL_LP_SQLITE_DESC;
+            Name = Strings.TPL_LP_SQLITE_NAME;
             ResourceType = ResourceTypes.LoadProcedure.ToString();
         }
 
@@ -56,7 +56,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
             using (var dlg = DialogFactory.OpenFile())
             {
                 dlg.Multiselect = true;
-                dlg.Filter = Properties.Resources.Filter_Sqlite_Files;
+                dlg.Filter = Strings.Filter_Sqlite_Files;
                 if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     var proc = ObjectFactory.CreateLoadProcedure(conn, LoadType.Sqlite, dlg.FileNames);

@@ -82,7 +82,7 @@ namespace Maestro.Base.Commands
                 catch (Exception ex)
                 {
                     string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    set.AddIssue(new ValidationIssue(item, ValidationStatus.Error, ValidationStatusCode.Error_General_ValidationError, string.Format(Properties.Resources.ValidationResourceLoadFailed, msg)));
+                    set.AddIssue(new ValidationIssue(item, ValidationStatus.Error, ValidationStatusCode.Error_General_ValidationError, string.Format(Strings.ValidationResourceLoadFailed, msg)));
                 }
                 i++;
                 worker.ReportProgress((int)((i / (double)documents.Count) * 100), s);
@@ -123,7 +123,7 @@ namespace Maestro.Base.Commands
                 }
                 else
                 {
-                    MessageService.ShowMessage(Properties.Resources.ValidationNoIssues);
+                    MessageService.ShowMessage(Strings.ValidationNoIssues);
                 }
             }
         }

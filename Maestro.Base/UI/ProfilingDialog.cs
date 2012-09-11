@@ -72,7 +72,7 @@ namespace Maestro.Base.UI
         {
             //TODO: Determine what profiling benchmarks to use
             string resourceId = fs == m_item ? m_resourceId : fs.ResourceID;
-            backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_LogMessageFeatureSource, resourceId)));
+            backgroundWorker.ReportProgress(0, (string.Format(Strings.Prof_LogMessageFeatureSource, resourceId)));
         }
 
         private static void SetTempLayer(IMapDefinition mdf, string resourceId)
@@ -120,8 +120,8 @@ namespace Maestro.Base.UI
 
             MakeTempMap();
 
-            backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_LogMessageLayerDefinition, resourceId)));
-            using (new Timer(Properties.Resources.Prof_LogMessageRuntimeLayer, backgroundWorker))
+            backgroundWorker.ReportProgress(0, (string.Format(Strings.Prof_LogMessageLayerDefinition, resourceId)));
+            using (new Timer(Strings.Prof_LogMessageRuntimeLayer, backgroundWorker))
             {
                 try
                 {
@@ -139,7 +139,7 @@ namespace Maestro.Base.UI
                     var mpsvc = (IMappingService)m_connection.GetService((int)ServiceType.Mapping);
                     
                     var map = mpsvc.CreateMap(mdef);
-                    using (new Timer(Properties.Resources.Prof_LogMessageIdentifyFetching, backgroundWorker))
+                    using (new Timer(Strings.Prof_LogMessageIdentifyFetching, backgroundWorker))
                     {
                         var rtl = map.Layers["Test Layer"]; //NOXLATE
                         rtl.Visible = true;
@@ -151,7 +151,7 @@ namespace Maestro.Base.UI
                 catch (Exception ex)
                 {
                     //string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_LayerDefinitionProfilingError, resourceId, ex.ToString(), Environment.NewLine)));
+                    backgroundWorker.ReportProgress(0, (string.Format(Strings.Prof_LayerDefinitionProfilingError, resourceId, ex.ToString(), Environment.NewLine)));
                 }
             }
 
@@ -161,7 +161,7 @@ namespace Maestro.Base.UI
             ILayerDefinition lx = (ILayerDefinition)ldef.Clone();
             if (lx.SubLayer.LayerType == LayerType.Vector || lx.SubLayer.LayerType == LayerType.Raster)
             {
-                using (new Timer(Properties.Resources.Prof_LogMessageRenderingScales, backgroundWorker))
+                using (new Timer(Strings.Prof_LogMessageRenderingScales, backgroundWorker))
                 {
                     if (lx.SubLayer.LayerType == LayerType.Vector)
                     {
@@ -225,13 +225,13 @@ namespace Maestro.Base.UI
                                 if (backgroundWorker.CancellationPending)
                                     return;
 
-                                using (new Timer(string.Format(Properties.Resources.Prof_LogMessageScaleRange, minscale, maxscale), backgroundWorker))
+                                using (new Timer(string.Format(Strings.Prof_LogMessageScaleRange, minscale, maxscale), backgroundWorker))
                                 {
                                     //TODO: Use extents rather than scale
                                     //using (System.IO.Stream s = m_connection.RenderRuntimeMap(tmp2, m.Extents, 1024, 800, 96))
                                     using (System.IO.Stream s = mpsvc.RenderRuntimeMap(rtmap, ((rtmap.DataExtent.MaxX - rtmap.DataExtent.MinX) / 2) + rtmap.DataExtent.MinX, ((rtmap.DataExtent.MaxY - rtmap.DataExtent.MinY) / 2) + rtmap.DataExtent.MinY, 50000, 1024, 800, 96))
                                     {
-                                        backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_MapRenderingImageSize, s.Length)));
+                                        backgroundWorker.ReportProgress(0, (string.Format(Strings.Prof_MapRenderingImageSize, s.Length)));
                                     }
                                 }
                             }
@@ -263,9 +263,9 @@ namespace Maestro.Base.UI
 
             string resourceId = mdef == m_item ? m_resourceId : mdef.ResourceID;
 
-            backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_LogMessageMapDefinition, resourceId)));
+            backgroundWorker.ReportProgress(0, (string.Format(Strings.Prof_LogMessageMapDefinition, resourceId)));
 
-            using (new Timer(Properties.Resources.Prof_LogMessageRuntimeMap, backgroundWorker))
+            using (new Timer(Strings.Prof_LogMessageRuntimeMap, backgroundWorker))
             {
                 foreach (var ml in mdef.MapLayer)
                 {
@@ -280,7 +280,7 @@ namespace Maestro.Base.UI
                     catch (Exception ex)
                     {
                         //string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                        backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_LayerDefinitionProfilingError, ml.ResourceId, ex.ToString(), Environment.NewLine)));
+                        backgroundWorker.ReportProgress(0, (string.Format(Strings.Prof_LayerDefinitionProfilingError, ml.ResourceId, ex.ToString(), Environment.NewLine)));
                     }
                 }
 
@@ -303,7 +303,7 @@ namespace Maestro.Base.UI
                                 catch (Exception ex)
                                 {
                                     //string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                                    backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_LayerDefinitionProfilingError, ml.ResourceId, ex.ToString(), Environment.NewLine)));
+                                    backgroundWorker.ReportProgress(0, (string.Format(Strings.Prof_LayerDefinitionProfilingError, ml.ResourceId, ex.ToString(), Environment.NewLine)));
                                 }
                             }
                         }
@@ -322,13 +322,13 @@ namespace Maestro.Base.UI
                     return;
 
                 //m_connection.ResetFeatureSourceSchemaCache();
-                using (new Timer(Properties.Resources.Prof_LogMessageRuntimeMapTotal, backgroundWorker))
+                using (new Timer(Strings.Prof_LogMessageRuntimeMapTotal, backgroundWorker))
                     mpsvc.CreateMap(mdef);
             }
             catch (Exception ex)
             {
                 //string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_RuntimeMapProfilingError, resourceId, ex.ToString(), Environment.NewLine)));
+                backgroundWorker.ReportProgress(0, (string.Format(Strings.Prof_RuntimeMapProfilingError, resourceId, ex.ToString(), Environment.NewLine)));
             }
 
             try
@@ -347,21 +347,21 @@ namespace Maestro.Base.UI
 
                 rtmap.Save();
 
-                using (new Timer(Properties.Resources.Prof_LogMessageRenderingMap, backgroundWorker))
+                using (new Timer(Strings.Prof_LogMessageRenderingMap, backgroundWorker))
                 {
                     //TODO: Use extents rather than scale
                     //using (System.IO.Stream s = m_connection.RenderRuntimeMap(tmp2, mdef.Extents, 1024, 800, 96))
                     using (System.IO.Stream s = mpsvc.RenderRuntimeMap(rtmap, ((mdef.Extents.MaxX - mdef.Extents.MinX) / 2) + mdef.Extents.MinX, ((mdef.Extents.MaxY - mdef.Extents.MinY) / 2) + mdef.Extents.MinY, 50000, 1024, 800, 96))
                     {
                         //Just dispose it after being read
-                        backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_MapRenderingImageSize, s.Length)));
+                        backgroundWorker.ReportProgress(0, (string.Format(Strings.Prof_MapRenderingImageSize, s.Length)));
                     }
                 }
             }
             catch (Exception ex)
             {
                 //string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                backgroundWorker.ReportProgress(0, (string.Format(Properties.Resources.Prof_MapRenderingError, resourceId, ex.ToString(), Environment.NewLine)));
+                backgroundWorker.ReportProgress(0, (string.Format(Strings.Prof_MapRenderingError, resourceId, ex.ToString(), Environment.NewLine)));
             }
         }
 
@@ -429,15 +429,15 @@ namespace Maestro.Base.UI
             }
             else
             {
-                backgroundWorker.ReportProgress(0, Properties.Resources.Prof_LogMessageUnsupportedResourceType);
+                backgroundWorker.ReportProgress(0, Strings.Prof_LogMessageUnsupportedResourceType);
             }
         }
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            CancelBtn.Text = Properties.Resources.CloseButtonText;
+            CancelBtn.Text = Strings.CloseButtonText;
             btnSave.Enabled = true;
-            WriteString(Properties.Resources.Prof_LogMessageDone);
+            WriteString(Strings.Prof_LogMessageDone);
         }
 
         private void WriteString(string message)
@@ -468,7 +468,7 @@ namespace Maestro.Base.UI
                 if (diag.ShowDialog() == DialogResult.OK)
                 {
                     System.IO.File.WriteAllText(diag.FileName, Results.Text);
-                    MessageService.ShowMessage(string.Format(Properties.Resources.Log_Saved, diag.FileName));
+                    MessageService.ShowMessage(string.Format(Strings.Log_Saved, diag.FileName));
                 }
             }
         }

@@ -120,7 +120,7 @@ namespace Maestro.Editors.LoadProcedure
             {
                 _ed.SyncSessionCopy();
                 var result = pdlg.RunOperationAsync(this.ParentForm, worker, _ed, _lp);
-                MessageBox.Show(Properties.Resources.OperationCompleted);
+                MessageBox.Show(Strings.OperationCompleted);
                 _ed.RequestRefresh(_lp.SubType.RootPath);
 
                 //Load procedure may have modified this resource as part of executioin
@@ -130,7 +130,7 @@ namespace Maestro.Editors.LoadProcedure
             }
             catch (CancelException)
             {
-                MessageBox.Show(Properties.Resources.OperationCancelled);
+                MessageBox.Show(Strings.OperationCancelled);
             }
         }
 

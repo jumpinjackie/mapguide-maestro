@@ -134,7 +134,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                     }
                     else
                     {
-                        System.Windows.Forms.MessageBox.Show(string.Format(Properties.Resources.ResourcesCompatibleWithSelectedVersion, _checkVersion));
+                        System.Windows.Forms.MessageBox.Show(string.Format(Strings.ResourcesCompatibleWithSelectedVersion, _checkVersion));
                     }
                 }
             }

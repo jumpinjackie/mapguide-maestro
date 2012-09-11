@@ -67,14 +67,14 @@ namespace Maestro.Base.UI
 
         private string[] StatusNames =
         {
-            Properties.Resources.ResProp_ReadWriteAccess,
-            Properties.Resources.ResProp_ReadOnlyAccess,
-            Properties.Resources.ResProp_NoAccess,
-            Properties.Resources.ResProp_ReadWriteAccess,
-            Properties.Resources.ResProp_ReadOnlyAccess,
-            Properties.Resources.ResProp_NoAccess,
-            Properties.Resources.ResProp_InheritedAccess,
-            Properties.Resources.ResProp_InheritedAccess
+            Strings.ResProp_ReadWriteAccess,
+            Strings.ResProp_ReadOnlyAccess,
+            Strings.ResProp_NoAccess,
+            Strings.ResProp_ReadWriteAccess,
+            Strings.ResProp_ReadOnlyAccess,
+            Strings.ResProp_NoAccess,
+            Strings.ResProp_InheritedAccess,
+            Strings.ResProp_InheritedAccess
         };
 
         private object m_lock = new object();
@@ -622,7 +622,7 @@ namespace Maestro.Base.UI
             catch (Exception ex)
             {
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                MessageBox.Show(this, string.Format(Properties.Resources.ResProp_SaveError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.ResProp_SaveError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -783,14 +783,14 @@ namespace Maestro.Base.UI
                                 srs = root["Bounds"].Attributes["SRS"].Value; //NOXLATE
                         }
                         else
-                            throw new Exception(Properties.Resources.ResProp_MissingBoundsError);
+                            throw new Exception(Strings.ResProp_MissingBoundsError);
                     }
                 }
                 catch (Exception ex)
                 {
                     string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                     warnedEPSG = true;
-                    MessageBox.Show(this, string.Format(Properties.Resources.ResProp_BoundsDecodeError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, string.Format(Strings.ResProp_BoundsDecodeError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 System.Globalization.CultureInfo ic = System.Globalization.CultureInfo.InvariantCulture;
@@ -809,7 +809,7 @@ namespace Maestro.Base.UI
 
                 if ((srs == string.Empty || srs == "EPSG:????") && !warnedEPSG) //NOXLATE
                 {
-                    MessageBox.Show(this, Properties.Resources.ResProp_EpsgMissingWarning, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(this, Strings.ResProp_EpsgMissingWarning, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     WMSBounds.SelectionStart = WMSBounds.Text.IndexOf("SRS=\"") + "SRS=\"".Length; //NOXLATE
                     WMSBounds.SelectionLength = WMSBounds.Text.IndexOf("\"", WMSBounds.SelectionStart) - WMSBounds.SelectionStart;
                     WMSBounds.ScrollToCaret();
@@ -819,7 +819,7 @@ namespace Maestro.Base.UI
             catch (Exception ex)
             {
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                MessageBox.Show(this, string.Format(Properties.Resources.ResProp_WMSBoundsReadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.ResProp_WMSBoundsReadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -861,7 +861,7 @@ namespace Maestro.Base.UI
                 }
 
                 if (env == null)
-                    throw new Exception(failures ? Properties.Resources.ResProp_NoSpatialDataWithFailuresError : Properties.Resources.ResProp_NoSpatialDataError);
+                    throw new Exception(failures ? Strings.ResProp_NoSpatialDataWithFailuresError : Strings.ResProp_NoSpatialDataError);
 
                 m_isUpdating = false;
                 WFSBounds.Text = "<Bounds west=\"" + env.MinX.ToString(ic) + "\" east=\"" + env.MaxX.ToString(ic) + "\" south=\"" + env.MinY.ToString(ic) + "\" north=\"" + env.MaxY.ToString(ic) + "\" />"; //NOXLATE
@@ -869,7 +869,7 @@ namespace Maestro.Base.UI
             catch (Exception ex)
             {
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                MessageBox.Show(this, string.Format(Properties.Resources.ResProp_WFSBoundsReadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.ResProp_WFSBoundsReadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -929,9 +929,9 @@ namespace Maestro.Base.UI
             if (e.Error != null || e.Result as object[] == null || (e.Result as object[]).Length != 2)
             {
                 if (e.Error != null)
-                    MessageBox.Show(this, string.Format(Properties.Resources.ResProp_ReferenceReadSpecificError, e.Error.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, string.Format(Strings.ResProp_ReferenceReadSpecificError, e.Error.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
-                    MessageBox.Show(this, Properties.Resources.ResProp_ReferenceReadError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, Strings.ResProp_ReferenceReadError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
             }

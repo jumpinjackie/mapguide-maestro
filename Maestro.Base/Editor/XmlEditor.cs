@@ -70,7 +70,7 @@ namespace Maestro.Base.Editor
             _edSvc.RegisterCustomNotifier(editor);
             editor.Bind(_edSvc);
             editor.ReadyForEditing(); //This turns on event broadcasting
-            this.Title = Properties.Resources.XmlEditor + " " + ResourceIdentifier.GetName(this.EditorService.ResourceID); //NOXLATE
+            this.Title = Strings.XmlEditor + " " + ResourceIdentifier.GetName(this.EditorService.ResourceID); //NOXLATE
         }
 
         protected override ICollection<ValidationIssue> ValidateEditedResource()

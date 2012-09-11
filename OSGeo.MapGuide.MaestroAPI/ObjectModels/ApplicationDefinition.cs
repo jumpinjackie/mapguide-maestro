@@ -150,11 +150,11 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             set
             {
                 if (!ResourceIdentifier.Validate(value))
-                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorInvalidResourceIdentifier);
+                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Strings.ErrorInvalidResourceIdentifier);
 
                 var res = new ResourceIdentifier(value);
                 if (res.Extension != ResourceTypes.ApplicationDefinition.ToString())
-                    throw new InvalidOperationException(string.Format(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.ApplicationDefinition));
+                    throw new InvalidOperationException(string.Format(OSGeo.MapGuide.MaestroAPI.Strings.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.ApplicationDefinition));
 
                 _resId = value;
                 this.OnPropertyChanged("ResourceID"); //NOXLATE
@@ -884,7 +884,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             set
             {
                 if (this.Type.Equals("MapGuide")) //NOXLATE
-                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorCmsOptionsOnMapGuideMap);
+                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Strings.ErrorCmsOptionsOnMapGuideMap);
 
                 if (value == null)
                 {
@@ -995,7 +995,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             set
             {
                 if (!this.Type.Equals("MapGuide")) //NOXLATE
-                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorOverlayOptionsOnNonMapGuideMap);
+                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Strings.ErrorOverlayOptionsOnNonMapGuideMap);
 
                 if (value == null)
                 {

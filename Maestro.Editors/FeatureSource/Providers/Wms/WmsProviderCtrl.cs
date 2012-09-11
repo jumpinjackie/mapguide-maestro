@@ -96,7 +96,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             using (new WaitCursor(this))
             {
                 WriteEncryptedCredentials();
-                txtStatus.Text = string.Format(Properties.Resources.FdoConnectionStatus, _fs.TestConnection());
+                txtStatus.Text = string.Format(Strings.FdoConnectionStatus, _fs.TestConnection());
             }
         }
 

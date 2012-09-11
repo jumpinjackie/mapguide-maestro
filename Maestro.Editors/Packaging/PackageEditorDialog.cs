@@ -83,7 +83,7 @@ namespace Maestro.Editors.Packaging
                     ex = ex.InnerException;
 
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                MessageBox.Show(this, string.Format(Properties.Resources.PackageReadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.PackageReadError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.DialogResult = DialogResult.Cancel;
                 this.Close();
                 return;
@@ -229,7 +229,7 @@ namespace Maestro.Editors.Packaging
             catch (Exception ex)
             {
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                MessageBox.Show(this, string.Format(Properties.Resources.FileCopyError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.FileCopyError, ex.Message), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -319,7 +319,7 @@ namespace Maestro.Editors.Packaging
 
         private void AddFolderButton_Click(object sender, EventArgs e)
         {
-            TreeNode n = new TreeNode(Properties.Resources.NewFolder, RepositoryIcons.RES_FOLDER, RepositoryIcons.RES_FOLDER);
+            TreeNode n = new TreeNode(Strings.NewFolder, RepositoryIcons.RES_FOLDER, RepositoryIcons.RES_FOLDER);
             n.Tag = new ResourceItem("", "", "");
             (n.Tag as ResourceItem).EntryType = EntryTypeEnum.Added;
             (n.Tag as ResourceItem).IsFolder = true;
@@ -346,7 +346,7 @@ namespace Maestro.Editors.Packaging
             if (ResourceTree.SelectedNode == null || ResourceTree.SelectedNode.Tag as ResourceItem == null)
                 return;
 
-            if (MessageBox.Show(this, Properties.Resources.DeleteConfirmation, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
+            if (MessageBox.Show(this, Strings.DeleteConfirmation, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
 
             TreeNode root = ResourceTree.SelectedNode;
@@ -458,7 +458,7 @@ namespace Maestro.Editors.Packaging
                     ex = ex.InnerException;
 
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                MessageBox.Show(this, string.Format(Properties.Resources.PackageBuildError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.PackageBuildError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             finally

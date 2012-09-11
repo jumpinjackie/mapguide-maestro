@@ -33,10 +33,10 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     {
         public SimpleSymbolDefinitionItem240Template()
         {
-            Category = Res.TPL_CATEGORY_MGOS24;
+            Category = Strings.TPL_CATEGORY_MGOS24;
             Icon = Res.marker;
-            Description = Res.TPL_SSD_240_DESC;
-            Name = Res.TPL_SSD_240_NAME;
+            Description = Strings.TPL_SSD_240_DESC;
+            Name = Strings.TPL_SSD_240_NAME;
             ResourceType = ResourceTypes.SymbolDefinition.ToString();
         }
 
@@ -50,7 +50,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
-            return ObjectFactory.CreateSimpleSymbol(conn, new Version(2, 4, 0), Res.DefaultSymbolName, Res.DefaultSymbolDescription);
+            return ObjectFactory.CreateSimpleSymbol(conn, new Version(2, 4, 0), Strings.DefaultSymbolName, Strings.DefaultSymbolDescription);
         }
     }
 
@@ -58,10 +58,10 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     {
         public CompoundSymbolDefinition240ItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_MGOS24;
+            Category = Strings.TPL_CATEGORY_MGOS24;
             Icon = Res.marker;
-            Description = Res.TPL_CSD_240_DESC;
-            Name = Res.TPL_CSD_240_NAME;
+            Description = Strings.TPL_CSD_240_DESC;
+            Name = Strings.TPL_CSD_240_NAME;
             ResourceType = ResourceTypes.SymbolDefinition.ToString();
         }
 
@@ -75,7 +75,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
-            return ObjectFactory.CreateCompoundSymbol(conn, new Version(2, 4, 0), Res.DefaultSymbolName, Res.DefaultSymbolDescription);
+            return ObjectFactory.CreateCompoundSymbol(conn, new Version(2, 4, 0), Strings.DefaultSymbolName, Strings.DefaultSymbolDescription);
         }
     }
 }

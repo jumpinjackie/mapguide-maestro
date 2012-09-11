@@ -56,11 +56,11 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
             set
             {
                 if (!ResourceIdentifier.Validate(value))
-                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorInvalidResourceIdentifier);
+                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Strings.ErrorInvalidResourceIdentifier);
 
                 var res = new ResourceIdentifier(value);
                 if (res.Extension != ResourceTypes.FeatureSource.ToString())
-                    throw new InvalidOperationException(string.Format(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.FeatureSource));
+                    throw new InvalidOperationException(string.Format(OSGeo.MapGuide.MaestroAPI.Strings.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.FeatureSource));
 
                 _resId = value;
                 this.OnPropertyChanged("ResourceID"); //NOXLATE
@@ -199,7 +199,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
         public string GetEmbeddedDataName()
         {
             if (!this.UsesEmbeddedDataFiles)
-                throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ERR_FS_NO_EMBEDDED_DATA);
+                throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Strings.ERR_FS_NO_EMBEDDED_DATA);
 
             string connStr = this.ConnectionString;
             int tagIndex = connStr.IndexOf(StringConstants.MgDataFilePath);
@@ -222,7 +222,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
         public string GetAliasName()
         {
             if (!this.UsesAliasedDataFiles)
-                throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ERR_FS_NO_ALIAS);
+                throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Strings.ERR_FS_NO_ALIAS);
 
             string connStr = this.ConnectionString;
 
@@ -242,7 +242,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
         public string GetAliasedFileName()
         {
             if (!this.UsesAliasedDataFiles)
-                throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ERR_FS_NO_ALIAS);
+                throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Strings.ERR_FS_NO_ALIAS);
 
             string connStr = this.ConnectionString;
             int braceStart = connStr.IndexOf(ALIAS_PREFIX) + ALIAS_PREFIX.Length;
@@ -483,7 +483,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         public override string ToString()
         {
             if (this.LowerLeftCoordinate == null || this.UpperRightCoordinate == null)
-                return OSGeo.MapGuide.MaestroAPI.Properties.Resources.NullString;
+                return OSGeo.MapGuide.MaestroAPI.Strings.NullString;
 
             return string.Format(Thread.CurrentThread.CurrentUICulture, "({0},{1},{2},{3})", //NOXLATE
                 this.LowerLeftCoordinate.X,

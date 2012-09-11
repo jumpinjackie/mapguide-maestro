@@ -149,7 +149,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
 
         public virtual string Title
         {
-            get { return Properties.Resources.RdbmsFeatureSource; }
+            get { return Strings.RdbmsFeatureSource; }
         }
 
         //MUST OVERRIDE
@@ -188,7 +188,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
             using (new WaitCursor(this))
             {
                 WriteEncryptedCredentials();
-                txtStatus.Text = string.Format(Properties.Resources.FdoConnectionStatus, _fs.TestConnection());
+                txtStatus.Text = string.Format(Strings.FdoConnectionStatus, _fs.TestConnection());
             }
         }
 
@@ -198,7 +198,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
             {
                 var dstore = _service.FeatureService.EnumerateDataStores(this.Provider, GetPartialConnectionStringForDataStoreEnumeration());
                 var values = ConvertToArray(dstore);
-                string item = GenericItemSelectionDialog.SelectItem(Properties.Resources.TextSelectDataStore, Properties.Resources.TextSelectDataStore, values);
+                string item = GenericItemSelectionDialog.SelectItem(Strings.TextSelectDataStore, Strings.TextSelectDataStore, values);
                 if (item != null)
                 {
                     txtDataStore.Text = item;
@@ -206,7 +206,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(string.Format(Properties.Resources.FailEnumDataStores, ex.Message));
+                MessageBox.Show(string.Format(Strings.FailEnumDataStores, ex.Message));
             }
         }
     }

@@ -202,7 +202,7 @@ namespace Maestro.Editors.Generic
             var textEditor = txtXmlContent;
             int line = textEditor.ActiveTextAreaControl.Caret.Line;
             int col = textEditor.ActiveTextAreaControl.Caret.Column;
-            lblCursorPos.Text = String.Format(Properties.Resources.XmlEditorCursorTemplate, line + 1, col + 1);
+            lblCursorPos.Text = String.Format(Strings.XmlEditorCursorTemplate, line + 1, col + 1);
         }
 
         private void txtXmlContent_TextChanged(object sender, EventArgs e)
@@ -265,7 +265,7 @@ namespace Maestro.Editors.Generic
                 else
                 {
                     if (!silentSuccess)
-                        MessageBox.Show(Properties.Resources.XmlDocIsValid);
+                        MessageBox.Show(Strings.XmlDocIsValid);
                     return true;
                 }
             }

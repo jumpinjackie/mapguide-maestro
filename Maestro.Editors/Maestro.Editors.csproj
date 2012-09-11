@@ -1066,6 +1066,11 @@
     <Compile Include="RepositoryHandle.cs" />
     <Compile Include="RepositoryIcons.cs" />
     <Compile Include="ResourceEditorServiceBase.cs" />
+    <Compile Include="Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
     <Compile Include="SymbolDefinition\AdvancedSettingsCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1801,6 +1806,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="SymbolDefinition\AdvancedSettingsCtrl.resx">
       <DependentUpon>AdvancedSettingsCtrl.cs</DependentUpon>

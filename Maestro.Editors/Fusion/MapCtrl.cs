@@ -327,31 +327,31 @@ namespace Maestro.Editors.Fusion
 
             //Check for maps unaccounted for, these will be disabled
             if (!_cmsMaps.ContainsKey(G_HYBRID_MAP))
-                _cmsMaps[G_HYBRID_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, Properties.Resources.CmsGoogleHybrid, G_HYBRID_MAP)) { IsEnabled = false };
+                _cmsMaps[G_HYBRID_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, Strings.CmsGoogleHybrid, G_HYBRID_MAP)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(G_NORMAL_MAP))
-                _cmsMaps[G_NORMAL_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, Properties.Resources.CmsGoogleStreets, G_NORMAL_MAP)) { IsEnabled = false };
+                _cmsMaps[G_NORMAL_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, Strings.CmsGoogleStreets, G_NORMAL_MAP)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(G_SATELLITE_MAP))
-                _cmsMaps[G_SATELLITE_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, Properties.Resources.CmsGoogleSatellite, G_SATELLITE_MAP)) { IsEnabled = false };
+                _cmsMaps[G_SATELLITE_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, Strings.CmsGoogleSatellite, G_SATELLITE_MAP)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(G_PHYSICAL_MAP))
-                _cmsMaps[G_PHYSICAL_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, Properties.Resources.CmsGooglePhysical, G_PHYSICAL_MAP)) { IsEnabled = false };
+                _cmsMaps[G_PHYSICAL_MAP] = new CmsMap(group.CreateCmsMapEntry(Type_Google, true, Strings.CmsGooglePhysical, G_PHYSICAL_MAP)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(YAHOO_MAP_HYB))
-                _cmsMaps[YAHOO_MAP_HYB] = new CmsMap(group.CreateCmsMapEntry(Type_Yahoo, true, Properties.Resources.CmsYahooHybrid, YAHOO_MAP_HYB)) { IsEnabled = false };
+                _cmsMaps[YAHOO_MAP_HYB] = new CmsMap(group.CreateCmsMapEntry(Type_Yahoo, true, Strings.CmsYahooHybrid, YAHOO_MAP_HYB)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(YAHOO_MAP_REG))
-                _cmsMaps[YAHOO_MAP_REG] = new CmsMap(group.CreateCmsMapEntry(Type_Yahoo, true, Properties.Resources.CmsYahooStreet, YAHOO_MAP_REG)) { IsEnabled = false };
+                _cmsMaps[YAHOO_MAP_REG] = new CmsMap(group.CreateCmsMapEntry(Type_Yahoo, true, Strings.CmsYahooStreet, YAHOO_MAP_REG)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(YAHOO_MAP_SAT))
-                _cmsMaps[YAHOO_MAP_SAT] = new CmsMap(group.CreateCmsMapEntry(Type_Yahoo, true, Properties.Resources.CmsYahooSatellite, YAHOO_MAP_SAT)) { IsEnabled = false };
+                _cmsMaps[YAHOO_MAP_SAT] = new CmsMap(group.CreateCmsMapEntry(Type_Yahoo, true, Strings.CmsYahooSatellite, YAHOO_MAP_SAT)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(BING_ROAD))
-                _cmsMaps[BING_ROAD] = new CmsMap(group.CreateCmsMapEntry(Type_Bing, true, Properties.Resources.CmsBingStreet, BING_ROAD)) { IsEnabled = false };
+                _cmsMaps[BING_ROAD] = new CmsMap(group.CreateCmsMapEntry(Type_Bing, true, Strings.CmsBingStreet, BING_ROAD)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(BING_AERIAL))
-                _cmsMaps[BING_AERIAL] = new CmsMap(group.CreateCmsMapEntry(Type_Bing, true, Properties.Resources.CmsBingSatellite, BING_AERIAL)) { IsEnabled = false };
+                _cmsMaps[BING_AERIAL] = new CmsMap(group.CreateCmsMapEntry(Type_Bing, true, Strings.CmsBingSatellite, BING_AERIAL)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(BING_HYBRID))
-                _cmsMaps[BING_HYBRID] = new CmsMap(group.CreateCmsMapEntry(Type_Bing, true, Properties.Resources.CmsBingHybrid, BING_HYBRID)) { IsEnabled = false };
+                _cmsMaps[BING_HYBRID] = new CmsMap(group.CreateCmsMapEntry(Type_Bing, true, Strings.CmsBingHybrid, BING_HYBRID)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(OSM_MAP_MAPNIK))
-                _cmsMaps[OSM_MAP_MAPNIK] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, Properties.Resources.CmsOsm, OSM_MAP_MAPNIK)) { IsEnabled = false };
+                _cmsMaps[OSM_MAP_MAPNIK] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, Strings.CmsOsm, OSM_MAP_MAPNIK)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(OSM_MAP_TRANSPORTMAP))
-                _cmsMaps[OSM_MAP_TRANSPORTMAP] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, Properties.Resources.CmsOsmTransport, OSM_MAP_TRANSPORTMAP)) { IsEnabled = false };
+                _cmsMaps[OSM_MAP_TRANSPORTMAP] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, Strings.CmsOsmTransport, OSM_MAP_TRANSPORTMAP)) { IsEnabled = false };
             if (!_cmsMaps.ContainsKey(OSM_MAP_CYCLEMAP))
-                _cmsMaps[OSM_MAP_CYCLEMAP] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, Properties.Resources.CmsOsmCycle, OSM_MAP_CYCLEMAP)) { IsEnabled = false };
+                _cmsMaps[OSM_MAP_CYCLEMAP] = new CmsMap(group.CreateCmsMapEntry(Type_OSM, true, Strings.CmsOsmCycle, OSM_MAP_CYCLEMAP)) { IsEnabled = false };
         }
 
         private void chkOverride_CheckedChanged(object sender, EventArgs e)

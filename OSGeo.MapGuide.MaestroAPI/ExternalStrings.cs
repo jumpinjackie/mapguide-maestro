@@ -33,7 +33,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             get
             {
-                return Properties.Resources.CompositeStyleDisplayString;
+                return Strings.CompositeStyleDisplayString;
             }
         }
     }

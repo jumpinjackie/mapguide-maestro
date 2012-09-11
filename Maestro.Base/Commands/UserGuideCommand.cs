@@ -33,7 +33,7 @@ namespace Maestro.Base.Commands
             var path = Path.Combine(FileUtility.ApplicationRootPath, "UserDoc/index.html"); //NOXLATE
             if (!File.Exists(path))
             {
-                MessageService.ShowError(Properties.Resources.HelpFileNotFound);
+                MessageService.ShowError(Strings.HelpFileNotFound);
             }
             else 
             {

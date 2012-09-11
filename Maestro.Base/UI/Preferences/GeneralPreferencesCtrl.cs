@@ -70,7 +70,7 @@ namespace Maestro.Base.UI.Preferences
 
         public string Title
         {
-            get { return Properties.Resources.Prefs_General; }
+            get { return Strings.Prefs_General; }
         }
 
         public Control ContentControl
@@ -137,8 +137,8 @@ namespace Maestro.Base.UI.Preferences
         {
             using (var dlg = DialogFactory.OpenFile())
             {
-                dlg.Title = string.Format(Properties.Resources.LocateExecutable, "MgCooker.exe"); //NOXLATE
-                dlg.Filter = Properties.Resources.FilterExecutables;
+                dlg.Title = string.Format(Strings.LocateExecutable, "MgCooker.exe"); //NOXLATE
+                dlg.Filter = Strings.FilterExecutables;
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     txtMgCooker.Text = dlg.FileName;
@@ -150,8 +150,8 @@ namespace Maestro.Base.UI.Preferences
         {
             using (var dlg = DialogFactory.OpenFile())
             {
-                dlg.Title = string.Format(Properties.Resources.LocateExecutable, "MaestroFsPreview.exe"); //NOXLATE
-                dlg.Filter = Properties.Resources.FilterExecutables;
+                dlg.Title = string.Format(Strings.LocateExecutable, "MaestroFsPreview.exe"); //NOXLATE
+                dlg.Filter = Strings.FilterExecutables;
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     txtFsPreview.Text = dlg.FileName;
@@ -163,8 +163,8 @@ namespace Maestro.Base.UI.Preferences
         {
             using (var dlg = DialogFactory.OpenFile())
             {
-                dlg.Title = string.Format(Properties.Resources.LocateExecutable, "RtMapInspector.exe"); //NOXLATE
-                dlg.Filter = Properties.Resources.FilterExecutables;
+                dlg.Title = string.Format(Strings.LocateExecutable, "RtMapInspector.exe"); //NOXLATE
+                dlg.Filter = Strings.FilterExecutables;
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     txtRtMapInspector.Text = dlg.FileName;
@@ -176,8 +176,8 @@ namespace Maestro.Base.UI.Preferences
         {
             using (var dlg = DialogFactory.OpenFile())
             {
-                dlg.Title = string.Format(Properties.Resources.LocateExecutable, "Maestro.LiveMapEditor.exe"); //NOXLATE
-                dlg.Filter = Properties.Resources.FilterExecutables;
+                dlg.Title = string.Format(Strings.LocateExecutable, "Maestro.LiveMapEditor.exe"); //NOXLATE
+                dlg.Filter = Strings.FilterExecutables;
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     txtLiveMapEditor.Text = dlg.FileName;

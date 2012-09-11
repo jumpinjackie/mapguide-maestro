@@ -34,10 +34,10 @@ namespace Maestro.Base.Templates
     {
         public ApplicationDefinitionItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_DEFAULT;
+            Category = Strings.TPL_CATEGORY_DEFAULT;
             Icon = Res.applications_stack;
-            Description = Res.TPL_ADF_DESC;
-            Name = Res.TPL_ADF_NAME;
+            Description = Strings.TPL_ADF_DESC;
+            Name = Strings.TPL_ADF_NAME;
             ResourceType = ResourceTypes.ApplicationDefinition.ToString();
         }
 

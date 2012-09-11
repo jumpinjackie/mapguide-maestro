@@ -305,19 +305,19 @@ namespace MgCooker
         {
             if (hasConsole)
                 Console.Clear();
-            Console.WriteLine(string.Format(Properties.Resources.ConsoleUpdateTime.Replace("\\t", "\t"), DateTime.Now));
-            Console.WriteLine(string.Format(Properties.Resources.ConsoleCurrentMap.Replace("\\t", "\t"), map.ResourceId, mapCount, map.Parent.Maps.Count));
-            Console.WriteLine(string.Format(Properties.Resources.ConsoleCurrentGroup.Replace("\\t", "\t"), group, groupCount, map.Map.BaseMap.GroupCount));
-            Console.WriteLine(string.Format(Properties.Resources.ConsoleCurrentScale.Replace("\\t", "\t"), map.Map.BaseMap.GetScaleAt(Array.IndexOf<int>(map.ScaleIndexMap, scaleindex)), Array.IndexOf<int>(map.ScaleIndexMap, scaleindex) + 1, map.Map.BaseMap.ScaleCount));
-            Console.WriteLine(string.Format(Properties.Resources.ConsoleCurrentTile.Replace("\\t", "\t"), tileCount, totalTiles));
+            Console.WriteLine(string.Format(Strings.ConsoleUpdateTime.Replace("\\t", "\t"), DateTime.Now));
+            Console.WriteLine(string.Format(Strings.ConsoleCurrentMap.Replace("\\t", "\t"), map.ResourceId, mapCount, map.Parent.Maps.Count));
+            Console.WriteLine(string.Format(Strings.ConsoleCurrentGroup.Replace("\\t", "\t"), group, groupCount, map.Map.BaseMap.GroupCount));
+            Console.WriteLine(string.Format(Strings.ConsoleCurrentScale.Replace("\\t", "\t"), map.Map.BaseMap.GetScaleAt(Array.IndexOf<int>(map.ScaleIndexMap, scaleindex)), Array.IndexOf<int>(map.ScaleIndexMap, scaleindex) + 1, map.Map.BaseMap.ScaleCount));
+            Console.WriteLine(string.Format(Strings.ConsoleCurrentTile.Replace("\\t", "\t"), tileCount, totalTiles));
             Console.WriteLine();
-            Console.WriteLine(string.Format(Properties.Resources.ConsoleGroupDuration.Replace("\\t", "\t"), DateTime.Now - beginGroup));
-            Console.WriteLine(string.Format(Properties.Resources.ConsoleGroupEstimate.Replace("\\t", "\t"), new TimeSpan(prevDuration.Ticks * totalTiles)));
+            Console.WriteLine(string.Format(Strings.ConsoleGroupDuration.Replace("\\t", "\t"), DateTime.Now - beginGroup));
+            Console.WriteLine(string.Format(Strings.ConsoleGroupEstimate.Replace("\\t", "\t"), new TimeSpan(prevDuration.Ticks * totalTiles)));
 
             if (exceptionList.Count != 0)
             {
                 Console.WriteLine();
-                Console.WriteLine(string.Format(Properties.Resources.ConsoleErrorSummary, exceptionList.Count, exceptionList[exceptionList.Count - 1].ToString()));
+                Console.WriteLine(string.Format(Strings.ConsoleErrorSummary, exceptionList.Count, exceptionList[exceptionList.Count - 1].ToString()));
             }
         }
 
@@ -326,7 +326,7 @@ namespace MgCooker
         {
             TimeSpan duration = DateTime.Now - beginGroup;
             if (m_logableProgress)
-                Console.WriteLine(string.Format(Properties.Resources.ConsoleOperationFinishGroup, DateTime.Now, group, duration));
+                Console.WriteLine(string.Format(Strings.ConsoleOperationFinishGroup, DateTime.Now, group, duration));
         }
 
         static void bx_BeginRenderingGroup(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
@@ -335,7 +335,7 @@ namespace MgCooker
             beginGroup = DateTime.Now;
 
             if (m_logableProgress)
-                Console.WriteLine(string.Format(Properties.Resources.ConsoleOperationBeginGroup, beginGroup, group, 1, 1));
+                Console.WriteLine(string.Format(Strings.ConsoleOperationBeginGroup, beginGroup, group, 1, 1));
 
             tileRuns = new List<TimeSpan>();
             tileCount = 0;
@@ -368,7 +368,7 @@ namespace MgCooker
 
 
                 if (m_logableProgress)
-                    Console.WriteLine(string.Format(Properties.Resources.ConsoleOperationFinishTile, tileCount, totalTiles, group, duration));
+                    Console.WriteLine(string.Format(Strings.ConsoleOperationFinishTile, tileCount, totalTiles, group, duration));
                 else
                     DisplayProgress(map, group, scaleindex, row, column, ref cancel);
             }
@@ -383,14 +383,14 @@ namespace MgCooker
         {
             TimeSpan duration = DateTime.Now - beginScale;
             if (m_logableProgress)
-                Console.WriteLine(string.Format(Properties.Resources.ConsoleOperationFinishScale, DateTime.Now, map.Map.BaseMap.GetScaleAt(scaleindex), duration));
+                Console.WriteLine(string.Format(Strings.ConsoleOperationFinishScale, DateTime.Now, map.Map.BaseMap.GetScaleAt(scaleindex), duration));
         }
 
         static void bx_BeginRenderingScale(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             beginScale = DateTime.Now;
             if (m_logableProgress)
-                Console.WriteLine(string.Format(Properties.Resources.ConsoleOperationBeginScale, beginMap, map.Map.BaseMap.GetScaleAt(scaleindex), scaleindex, map.Resolutions));
+                Console.WriteLine(string.Format(Strings.ConsoleOperationBeginScale, beginMap, map.Map.BaseMap.GetScaleAt(scaleindex), scaleindex, map.Resolutions));
         }
 
         static void bx_FinishRenderingMap(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
@@ -398,7 +398,7 @@ namespace MgCooker
             groupCount = 0;
             TimeSpan duration = DateTime.Now - beginMap;
             if (m_logableProgress)
-                Console.WriteLine(string.Format(Properties.Resources.ConsoleOperationFinishMap, DateTime.Now, map.ResourceId, duration));
+                Console.WriteLine(string.Format(Strings.ConsoleOperationFinishMap, DateTime.Now, map.ResourceId, duration));
         }
 
         static void bx_BeginRenderingMap(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
@@ -406,7 +406,7 @@ namespace MgCooker
             mapCount++;
             beginMap = DateTime.Now;
             if (m_logableProgress)
-                Console.WriteLine(string.Format(Properties.Resources.ConsoleOperationBeginMap, beginMap, map.ResourceId));
+                Console.WriteLine(string.Format(Strings.ConsoleOperationBeginMap, beginMap, map.ResourceId));
         }
     }
 }

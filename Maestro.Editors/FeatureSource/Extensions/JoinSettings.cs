@@ -106,11 +106,11 @@ namespace Maestro.Editors.FeatureSource.Extensions
         {
             if (string.IsNullOrEmpty(txtFeatureSource.Text))
             {
-                MessageBox.Show(Properties.Resources.SpecifySecondaryFeatureSource);
+                MessageBox.Show(Strings.SpecifySecondaryFeatureSource);
                 return;
             }
 
-            var selClass = GenericItemSelectionDialog.SelectItem(Properties.Resources.SelectFeatureClass, Properties.Resources.SelectFeatureClass, _secondaryClasses, "QualifiedName", "QualifiedName"); //NOXLATE
+            var selClass = GenericItemSelectionDialog.SelectItem(Strings.SelectFeatureClass, Strings.SelectFeatureClass, _secondaryClasses, "QualifiedName", "QualifiedName"); //NOXLATE
             if (selClass != null)
             {
                 _secondaryClass = selClass;

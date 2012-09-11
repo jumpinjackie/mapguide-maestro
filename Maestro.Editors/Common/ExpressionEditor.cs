@@ -255,29 +255,29 @@ namespace Maestro.Editors.Common
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "aValue", //NOXLATE
-                        Description = Properties.Resources.Func_ARGB_AValueDescription,
+                        Description = Strings.Func_ARGB_AValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
                     },
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "rValue", //NOXLATE
-                        Description = Properties.Resources.Func_ARGB_RValueDescription,
+                        Description = Strings.Func_ARGB_RValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
                     },
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "gValue", //NOXLATE
-                        Description = Properties.Resources.Func_ARGB_GValueDescription,
+                        Description = Strings.Func_ARGB_GValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
                     },
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "bValue", //NOXLATE
-                        Description = Properties.Resources.Func_ARGB_BValueDescription,
+                        Description = Strings.Func_ARGB_BValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
                     },
                 },
-                Description = Properties.Resources.Func_ARGB_Description,
+                Description = Strings.Func_ARGB_Description,
                 Name = "ARGB", //NOXLATE
                 ReturnType = "Int32" //NOXLATE
             };
@@ -289,11 +289,11 @@ namespace Maestro.Editors.Common
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "strValue", //NOXLATE
-                        Description = Properties.Resources.Func_DECAP_StringValueDescription,
+                        Description = Strings.Func_DECAP_StringValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     }
                 },
-                Description = Properties.Resources.Func_DECAP_Description,
+                Description = Strings.Func_DECAP_Description,
                 Name = "DECAP", //NOXLATE
                 ReturnType = "String" //NOXLATE
             };
@@ -301,7 +301,7 @@ namespace Maestro.Editors.Common
             yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
             {
                 ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
-                Description = Properties.Resources.Func_FEATURECLASS_Description,
+                Description = Strings.Func_FEATURECLASS_Description,
                 Name = "FEATURECLASS", //NOXLATE
                 ReturnType = "String" //NOXLATE
             };
@@ -309,7 +309,7 @@ namespace Maestro.Editors.Common
             yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
             {
                 ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
-                Description = Properties.Resources.Func_FEATUREID_Description,
+                Description = Strings.Func_FEATUREID_Description,
                 Name = "FEATUREID", //NOXLATE
                 ReturnType = "String" //NOXLATE
             };
@@ -321,23 +321,23 @@ namespace Maestro.Editors.Common
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "condition", //NOXLATE
-                        Description = Properties.Resources.Func_IF_ConditionDescription,
+                        Description = Strings.Func_IF_ConditionDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "trueValue", //NOXLATE
-                        Description = Properties.Resources.Func_IF_TrueValueDescription,
+                        Description = Strings.Func_IF_TrueValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "falseValue", //NOXLATE
-                        Description = Properties.Resources.Func_IF_FalseValueDescription,
+                        Description = Strings.Func_IF_FalseValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     }
                 },
-                Description = Properties.Resources.Func_IF_Description,
+                Description = Strings.Func_IF_Description,
                 Name = "IF", //NOXLATE
                 ReturnType = "String" //NOXLATE
             };
@@ -345,7 +345,7 @@ namespace Maestro.Editors.Common
             yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
             {
                 ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
-                Description = Properties.Resources.Func_LAYERID_Description,
+                Description = Strings.Func_LAYERID_Description,
                 Name = "LAYERID", //NOXLATE
                 ReturnType = "String" //NOXLATE
             };
@@ -357,29 +357,29 @@ namespace Maestro.Editors.Common
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "expression", //NOXLATE
-                        Description = Properties.Resources.Func_LOOKUP_ExpressionDescription,
+                        Description = Strings.Func_LOOKUP_ExpressionDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "defaultValue", //NOXLATE
-                        Description = Properties.Resources.Func_LOOKUP_DefaultValueDescription,
+                        Description = Strings.Func_LOOKUP_DefaultValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "index", //NOXLATE
-                        Description = Properties.Resources.Func_LOOKUP_IndexDescription,
+                        Description = Strings.Func_LOOKUP_IndexDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "value", //NOXLATE
-                        Description = Properties.Resources.Func_LOOKUP_ValueDescription,
+                        Description = Strings.Func_LOOKUP_ValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     }
                 },
-                Description = Properties.Resources.Func_LOOKUP_Description,
+                Description = Strings.Func_LOOKUP_Description,
                 Name = "LOOKUP", //NOXLATE
                 ReturnType = "String" //NOXLATE
             };
@@ -387,7 +387,7 @@ namespace Maestro.Editors.Common
             yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
             {
                 ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
-                Description = Properties.Resources.Func_MAPNAME_Description,
+                Description = Strings.Func_MAPNAME_Description,
                 Name = "MAPNAME", //NOXLATE
                 ReturnType = "String" //NOXLATE
             };
@@ -399,35 +399,35 @@ namespace Maestro.Editors.Common
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "expression", //NOXLATE
-                        Description = Properties.Resources.Func_RANGE_ExpressionDescription,
+                        Description = Strings.Func_RANGE_ExpressionDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "rangeMin", //NOXLATE
-                        Description = Properties.Resources.Func_RANGE_MinDescription,
+                        Description = Strings.Func_RANGE_MinDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "rangeMax", //NOXLATE
-                        Description = Properties.Resources.Func_RANGE_MaxDescription,
+                        Description = Strings.Func_RANGE_MaxDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "defaultValue", //NOXLATE
-                        Description = Properties.Resources.Func_RANGE_DefaultValueDescription,
+                        Description = Strings.Func_RANGE_DefaultValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "value", //NOXLATE
-                        Description = Properties.Resources.Func_RANGE_ValueDescription,
+                        Description = Strings.Func_RANGE_ValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     }
                 },
-                Description = Properties.Resources.Func_RANGE_Description,
+                Description = Strings.Func_RANGE_Description,
                 Name = "RANGE", //NOXLATE
                 ReturnType = "String" //NOXLATE
             };
@@ -435,7 +435,7 @@ namespace Maestro.Editors.Common
             yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
             {
                 ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
-                Description = Properties.Resources.Func_SESSION_Description,
+                Description = Strings.Func_SESSION_Description,
                 Name = "SESSION", //NOXLATE
                 ReturnType = "String" //NOXLATE
             };
@@ -447,11 +447,11 @@ namespace Maestro.Editors.Common
                     new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
                     {
                         Name = "strValue", //NOXLATE
-                        Description = Properties.Resources.Func_URLENCODE_StringValueDescription,
+                        Description = Strings.Func_URLENCODE_StringValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     }
                 },
-                Description = Properties.Resources.Func_URLENCODE_Description,
+                Description = Strings.Func_URLENCODE_Description,
                 Name = "URLENCODE", //NOXLATE
                 ReturnType = "String" //NOXLATE
             };
@@ -485,7 +485,7 @@ namespace Maestro.Editors.Common
         {
             if (!string.IsNullOrEmpty(op))
             {
-                string filterTemplate = Properties.Resources.GeomFilterTemplate;
+                string filterTemplate = Strings.GeomFilterTemplate;
                 string exprText = string.Format(filterTemplate, op);
                 InsertText(exprText);
             }
@@ -550,7 +550,7 @@ namespace Maestro.Editors.Common
                 {
                     if (string.IsNullOrEmpty(_ttText))
                     {
-                        _ttText = string.Format(Properties.Resources.PropertyTooltip, _propDef.Name, _propDef.Type.ToString());
+                        _ttText = string.Format(Strings.PropertyTooltip, _propDef.Name, _propDef.Type.ToString());
                     }
                     return _ttText;
                 }
@@ -591,7 +591,7 @@ namespace Maestro.Editors.Common
                 get
                 {
                     if (string.IsNullOrEmpty(_ttText))
-                        _ttText = string.Format(Properties.Resources.FunctionTooltip, GetReturnTypeString(), _func.Name, GetArgumentString(), _func.Description);
+                        _ttText = string.Format(Strings.FunctionTooltip, GetReturnTypeString(), _func.Name, GetArgumentString(), _func.Description);
 
                     return _ttText;
                 }
@@ -1066,7 +1066,7 @@ namespace Maestro.Editors.Common
                     ColumnValue.Tag = col.Type;
 
                     if (ColumnValue.Items.Count == 0)
-                        MessageBox.Show(this, Properties.Resources.NoColumnValuesError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(this, Strings.NoColumnValuesError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
                     {
                         ColumnValue.Enabled = true;
@@ -1077,7 +1077,7 @@ namespace Maestro.Editors.Common
                 catch (Exception ex)
                 {
                     string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    MessageBox.Show(this, string.Format(Properties.Resources.ColumnValueError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, string.Format(Strings.ColumnValueError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

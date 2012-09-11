@@ -60,7 +60,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                         }
                     }
 
-                    if (dirty && !MessageService.AskQuestion(Properties.Resources.ConfirmCloseEditors))
+                    if (dirty && !MessageService.AskQuestion(Strings.ConfirmCloseEditors))
                         return true;
                 }
 

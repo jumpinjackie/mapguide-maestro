@@ -47,7 +47,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                 {
                     //Ascertain the parent connection that requires refresh post-delete
                     string connName = items.First().ConnectionName;
-                    if (MessageService.AskQuestion(Properties.Resources.ConfirmDelete))
+                    if (MessageService.AskQuestion(Strings.ConfirmDelete))
                     {
                         if (ConfirmDeleteOpenResources(items, omgr.OpenEditors))
                         {
@@ -107,7 +107,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                 }
             }
 
-            if (isDeletingOpenResource && !MessageService.AskQuestion(Properties.Resources.ConfirmDeleteOpenResource))
+            if (isDeletingOpenResource && !MessageService.AskQuestion(Strings.ConfirmDeleteOpenResource))
                 return false;
 
             return true;

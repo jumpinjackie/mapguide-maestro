@@ -43,7 +43,7 @@ namespace Maestro.Base.Commands.SiteExplorer
             var conn = connMgr.GetConnection(exp.ConnectionName);
             if (!IsValid(conn))
             {
-                MessageService.ShowError(Properties.Resources.ConnectionDoesNotSupportRequiredInterfaces);
+                MessageService.ShowError(Strings.ConnectionDoesNotSupportRequiredInterfaces);
                 return;
             }
 
@@ -61,7 +61,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                 }
                 else
                 {
-                    MessageService.ShowMessage(Properties.Resources.ResourceNotRepointable);
+                    MessageService.ShowMessage(Strings.ResourceNotRepointable);
                 }
             }
         }
@@ -85,7 +85,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                 {
                     int updated = 0;
                     int total = deps.Count;
-                    wk.ReportProgress(0, Properties.Resources.ProgressUpdatingReferences);
+                    wk.ReportProgress(0, Strings.ProgressUpdatingReferences);
                     foreach (var dep in deps)
                     {
                         //Only web and flexible layouts depend on maps
@@ -141,7 +141,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                 };
                 var prd = new ProgressDialog();
                 int result = (int)prd.RunOperationAsync(wb, worker);
-                MessageService.ShowMessage(string.Format(Properties.Resources.ResourcesRepointed, result, dstMap));
+                MessageService.ShowMessage(string.Format(Strings.ResourcesRepointed, result, dstMap));
             }
         }
 
@@ -159,7 +159,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                 {
                     int updated = 0;
                     int total = deps.Count;
-                    wk.ReportProgress(0, Properties.Resources.ProgressUpdatingReferences);
+                    wk.ReportProgress(0, Strings.ProgressUpdatingReferences);
                     foreach (var dep in deps)
                     {
                         //Only maps depend on layers
@@ -205,7 +205,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                 };
                 var prd = new ProgressDialog();
                 int result = (int)prd.RunOperationAsync(wb, worker);
-                MessageService.ShowMessage(string.Format(Properties.Resources.ResourcesRepointed, result, targetLayer));
+                MessageService.ShowMessage(string.Format(Strings.ResourcesRepointed, result, targetLayer));
             }
         }
     }

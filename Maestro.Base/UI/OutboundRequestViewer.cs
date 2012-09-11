@@ -37,7 +37,7 @@ namespace Maestro.Base.UI
         public OutboundRequestViewer()
         {
             InitializeComponent();
-            this.Title = this.Description = Properties.Resources.Content_OutboundRequests;
+            this.Title = this.Description = Strings.Content_OutboundRequests;
 
             //This is okay because changing the value requires a restart, so it will either be listening
             //or not and that will remain in effect for the duration of the application running.
@@ -97,7 +97,7 @@ namespace Maestro.Base.UI
                 if (save.ShowDialog() == DialogResult.OK)
                 {
                     File.WriteAllText(save.FileName, txtMessages.Text);
-                    MessageService.ShowMessage(string.Format(Properties.Resources.Log_Saved, save.FileName));
+                    MessageService.ShowMessage(string.Format(Strings.Log_Saved, save.FileName));
                 }
             }
         }

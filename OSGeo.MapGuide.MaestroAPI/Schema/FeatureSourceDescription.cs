@@ -174,7 +174,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             Check.NotEmpty(qualifiedName, "qualifiedName"); //NOXLATE
             var tokens = qualifiedName.Split(':'); //NOXLATE
             if (tokens.Length != 2)
-                throw new ArgumentException(string.Format(Properties.Resources.ErrorNotAQualifiedClassName, qualifiedName));
+                throw new ArgumentException(string.Format(Strings.ErrorNotAQualifiedClassName, qualifiedName));
 
             return GetClass(tokens[0], tokens[1]);
         }

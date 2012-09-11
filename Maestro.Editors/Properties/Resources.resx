@@ -125,12 +125,6 @@
         ggMuAmAYkqPDlQRbCoAIwKTLlwgfFsR58KXOmyp/hqT586TRokAN6rTZEsDMggJKGh1A0UBAADs=
 </value>
   </data>
-  <data name="OdbcDriverAccess" xml:space="preserve">
-    <value>{Microsoft Access Driver (*.mdb)}</value>
-  </data>
-  <data name="Func_LOOKUP_DefaultValueDescription" xml:space="preserve">
-    <value>Default value returned if expression does not evaluate to any of the keys</value>
-  </data>
   <data name="blueprints" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -147,18 +141,6 @@
         Ab7ReT9BDLTyAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="ParameterOverrideExists" xml:space="preserve">
-    <value>Parameter Override already specified</value>
-  </data>
-  <data name="NewFlyout" xml:space="preserve">
-    <value>New Flyout</value>
-  </data>
-  <data name="SelectProperty" xml:space="preserve">
-    <value>Select Property</value>
-  </data>
-  <data name="TitleError" xml:space="preserve">
-    <value>Error</value>
-  </data>
   <data name="application-import" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -172,15 +154,6 @@
         TuIsd0ir1ZJer2ffB4MBgsEgfD4fCoUCms3mszjLHdJoNAfXPGq32z0LZ0X3muRy+Z5CofAqlUr/S3CH
         /ltycf5WuDgTZ9+86lPm38A/lieNoGpgVUMAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="Func_URLENCODE_StringValueDescription" xml:space="preserve">
-    <value>String to URL encode</value>
-  </data>
-  <data name="FiletypeAll" xml:space="preserve">
-    <value>All files ({0})</value>
-  </data>
-  <data name="NoActiveDataFile" xml:space="preserve">
-    <value>No active resource data file selected</value>
   </data>
   <data name="layer--plus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -213,15 +186,6 @@
         vbd5hw/ZnL3mL7p0YVc864XphQ78yJkFy9xR6h8tMeaod+AkM/34uxkbGOsY6xl9DJ31E8oHP+esX9nF
         ooW1fN/DWMlYznAuYQXPVYw1XV4XCn4Cnzlvq0a0CiQAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="InlineSymbolDefinition" xml:space="preserve">
-    <value>Inline Symbol Definition</value>
-  </data>
-  <data name="Func_ARGB_AValueDescription" xml:space="preserve">
-    <value>Alpha value</value>
-  </data>
-  <data name="FontPreviewError" xml:space="preserve">
-    <value>Cannot Preview Font "{0}"</value>
   </data>
   <data name="folder--minus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -280,21 +244,6 @@
         LsaYCjRkrKEZdIE6v0ZD9ap69ISa4ay5grM0gBbAG9iq9g0dqr5UjTNkxQU58AieZeICy5eWF1M9ejnD
         2V9PHt0DuAH/rjPLn/gnP9MPy8pUmKBE2kMAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="AggregateQuery" xml:space="preserve">
-    <value>Aggregate Query</value>
-  </data>
-  <data name="LayerGroupConvertedToBaseLayerGroup" xml:space="preserve">
-    <value>Layer Group ({0}) successfully converted to Base Layer Group ({1})</value>
-  </data>
-  <data name="FsSqlServerSpatial" xml:space="preserve">
-    <value>SQL Server Spatial Feature Source</value>
-  </data>
-  <data name="PreviewUrlNotAvailable" xml:space="preserve">
-    <value>The Preview URL is not currently available</value>
-  </data>
-  <data name="ScaleRange" xml:space="preserve">
-    <value>Scale Range</value>
   </data>
   <data name="table" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -385,18 +334,6 @@
         UNFSpMCBi1lweODAZYseAgAAWL5I+nPo0aUZghad+uLqgAA7
 </value>
   </data>
-  <data name="OperationCompleted" xml:space="preserve">
-    <value>Operation Completed</value>
-  </data>
-  <data name="NoTypesSelected" xml:space="preserve">
-    <value>You must select at least one type</value>
-  </data>
-  <data name="DivergingName" xml:space="preserve">
-    <value>Diverging</value>
-  </data>
-  <data name="UnitsKb" xml:space="preserve">
-    <value>KB</value>
-  </data>
   <data name="icon_home" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIZZAFJ5osvLxjZHVTdPa6C9zcOlRMjl9pa65GqZz3CLpPb4+f///329mg2RUJy1yE91
@@ -424,18 +361,6 @@
         IAGFBAsYaM4cEAA7
 </value>
   </data>
-  <data name="TitleNewFeatureClass" xml:space="preserve">
-    <value>New Feature Class</value>
-  </data>
-  <data name="OperationCancelled" xml:space="preserve">
-    <value>Operation Cancelled</value>
-  </data>
-  <data name="NoFolderSelected" xml:space="preserve">
-    <value>You have not selected a starting folder, do you want to back up the entire site?</value>
-  </data>
-  <data name="Func_DECAP_Description" xml:space="preserve">
-    <value>String formatting function</value>
-  </data>
   <data name="icon_back" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIUmABQ1Z7S/z3GFo5TY9aXb8YO37oC06oa78oCz6Ya68Y3B96HF64q+9YW58Im99Xer
@@ -446,18 +371,6 @@
         TDDQoYDNEAYoYLBAYgBMEwAIgEBQYYDRo0Z/xiRwQQSAp1ChBhC49AHMAFizYh249OdEEzG9fo059SvV
         smYnBgQAOw==
 </value>
-  </data>
-  <data name="TextSelectDataStore" xml:space="preserve">
-    <value>Select Data Store</value>
-  </data>
-  <data name="FsPostgreSql" xml:space="preserve">
-    <value>PostgreSQL/PostGIS Feature Source</value>
-  </data>
-  <data name="SpatialContextsFound" xml:space="preserve">
-    <value>{0} spatial contexts found</value>
-  </data>
-  <data name="TextFindAndReplace" xml:space="preserve">
-    <value>Find &amp; Replace</value>
   </data>
   <data name="exclamation" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -503,18 +416,9 @@
         WFv7wcxM6j8JZ9++bzL/aISV/Ja7mnNYqmY07YouQubg/l1NwG/XLb2y/7oFegAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="PromptDeleteCommand" xml:space="preserve">
-    <value>This command is referenced in the following menus: {0}. Do you want to delete this command and all menu items referencing it?</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="magnifier-left" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\magnifier-left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TitleQuestion" xml:space="preserve">
-    <value>Question</value>
-  </data>
-  <data name="Func_ARGB_GValueDescription" xml:space="preserve">
-    <value>Green value</value>
   </data>
   <data name="icon_measure" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -523,9 +427,6 @@
         Mi4wAwEBAAAh+QQBAAASACwAAAAAEAAQAAAIWgAlCBxIsKDBgwgTDlSQAIIEAwYeRoQogSGEBgsiSDhw
         YGNHjhIwRnjAwIFCkiYVqlzJUsIAAS9jwpwpswABmzhv6swZAEGAnz6B/uz5E4DRo0iTAmjJtOnAgAA7
 </value>
-  </data>
-  <data name="OutputFileMissing" xml:space="preserve">
-    <value>You must enter a full path to the output file</value>
   </data>
   <data name="databases-relation" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -608,9 +509,6 @@
         ufIFCRYFEnyJUGFAADs=
 </value>
   </data>
-  <data name="SelectFeatureClass" xml:space="preserve">
-    <value>Select Feature Class</value>
-  </data>
   <data name="tick" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -626,18 +524,6 @@
         iNmAmBHZAEagAMhzwNBhEIcqloSygZmAARhvDLxADPQnWDPQqUgGUJKdAYAsiHz3wn5/AAAAAElFTkSu
         QmCC
 </value>
-  </data>
-  <data name="ConfirmGoogleScaleList" xml:space="preserve">
-    <value>Are you sure you want to use a Google-compatible Scale List? This will overwrite your existing scale ranges and will only line up with commercial layers in Fusion if your Map's Coordinate System is WGS84.PseudoMercator</value>
-  </data>
-  <data name="SelectColumnPlaceholder" xml:space="preserve">
-    <value>&lt;Select column&gt;</value>
-  </data>
-  <data name="GenericError" xml:space="preserve">
-    <value>An error occured: {0}</value>
-  </data>
-  <data name="LastUpdated" xml:space="preserve">
-    <value>Last Updated: </value>
   </data>
   <data name="icon_panright" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -659,14 +545,6 @@
         Fj/e7DFxgcFFDSpgbAiBoggBNAU9xKiTZYmUBWaeRAgihmASLEYUvCghaEwfPmDSWCEIBNAKKCBIUAnE
         JEoZP1sKthiS4YQeHmqOVKhBA0nCB3K0EDFwp4kEDBZGDuKCAMEcG27gaB7EhsIOBwZkBAQAOw==
 </value>
-  </data>
-  <data name="FunctionTooltip" xml:space="preserve">
-    <value>Function: {1}({2})
-Description: {3}
-Returns: {0}</value>
-  </data>
-  <data name="OdbcDriverExcel" xml:space="preserve">
-    <value>{Microsoft Excel Driver (*.xls)}</value>
   </data>
   <data name="icon_tasks" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -728,9 +606,6 @@ Returns: {0}</value>
         MnQMWfLkxwIsX+6ieXKHgAA7
 </value>
   </data>
-  <data name="XmlEditorCursorTemplate" xml:space="preserve">
-    <value>Line {0}, Column {1}</value>
-  </data>
   <data name="database_share" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -764,12 +639,6 @@ Returns: {0}</value>
         yCdHlitbs8yUycn6b/wLvnCph/venGUAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="FiletypeZip" xml:space="preserve">
-    <value>Zip files ({0})</value>
-  </data>
-  <data name="Func_RANGE_ValueDescription" xml:space="preserve">
-    <value>Value that is returned when the key expression matches the associated range</value>
-  </data>
   <data name="layers-stack-arrange" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -788,18 +657,6 @@ Returns: {0}</value>
         nagM8+uBnL1H396Bua0rYfjwB5D4p3X4gwOzAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="InvalidResourceIdNotSpecifiedType" xml:space="preserve">
-    <value>Invalid Resource Identifier. Not the specified type</value>
-  </data>
-  <data name="SequentialName" xml:space="preserve">
-    <value>Sequential</value>
-  </data>
-  <data name="WarningMapExtentCalculation" xml:space="preserve">
-    <value>Could not transform extents of one or more layers in this Map Definition. These extents have not been factored into the computed result.</value>
-  </data>
-  <data name="SpecifyMapForWebLayout" xml:space="preserve">
-    <value>Specify a map for this web layout</value>
-  </data>
   <data name="server" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -813,12 +670,6 @@ Returns: {0}</value>
         rkJggg==
 </value>
   </data>
-  <data name="Func_RANGE_MaxDescription" xml:space="preserve">
-    <value>Exclusive maximum of range that can be matched by the key expression</value>
-  </data>
-  <data name="MissingColumnError" xml:space="preserve">
-    <value>Missing column "{0}"</value>
-  </data>
   <data name="icon_selectradius_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIQYAM3Lz5+svc3FycTM09bcyM3EyM26v86ssM6wtM26vs23u83KzsvSxs6mqs22us6r
@@ -827,12 +678,6 @@ Returns: {0}</value>
         kaMABxYXCkCwsWPHkQoFKkhgsqUFBQsfFGgJIEAEAAUeLGywgGYAmwsqLDwws2UABgEoHFi40icBpBNE
         kjRK4GmAAQ01mgxQ1SpWjA8jFuAK4edPhgQNHghQdoDbrxcF/oQbl+HVunjrBgQAOw==
 </value>
-  </data>
-  <data name="UnknownQueryMode" xml:space="preserve">
-    <value>Unknown query mode</value>
-  </data>
-  <data name="ColorPicker" xml:space="preserve">
-    <value>Color Picker ...</value>
   </data>
   <data name="icon_clearselect" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -862,9 +707,6 @@ Returns: {0}</value>
         EEuAIBqsDnDQIEaPI1NuHmQgY2wNJyegUEnp9SAIBiJgrFjwAIeChAESAkFiwQUFLAoEdJUYWOFBAYod
         S8YioKDlyZgdBwQAOw==
 </value>
-  </data>
-  <data name="CoordinateTransformationFailed" xml:space="preserve">
-    <value>Failed to transform coordinates: {0}</value>
   </data>
   <data name="minus-circle" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -915,9 +757,6 @@ Returns: {0}</value>
         QoSYcOLEgxYtFsyY8SHHjh8/OhxJsqRJkwEBADs=
 </value>
   </data>
-  <data name="FolderMissingPrefix" xml:space="preserve">
-    <value>The folder must start with \"Library://\", do you want the starting folder to become:\n {0} ?</value>
-  </data>
   <data name="icon_plotdwf_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIecAP7+/rW6x9PW48TD1uHg6ba6x////8HBxMTFyMC/wrK+y/r6+v39/cTD173JyMLG
@@ -940,15 +779,6 @@ Returns: {0}</value>
         dEnwIwAjRBGSmBBgaSCRD0Yq+QjQpE4MRUHaNFzwAEkBTiMGOWrIKSAAOw==
 </value>
   </data>
-  <data name="PromptUseOffice2010Drivers" xml:space="preserve">
-    <value>Use Office 2010 Drivers? (these are 64-bit compatible)</value>
-  </data>
-  <data name="BaseLayerGroup" xml:space="preserve">
-    <value>Base Layer Group</value>
-  </data>
-  <data name="AllResourceTypes" xml:space="preserve">
-    <value>All types</value>
-  </data>
   <data name="icon_restorecenter_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIUtAKq7y5+svcbS2MPQ1tTc4MvW29DZ3sTR17nH0tDZ3crV2tLa38fT2dHa3snU2tPb
@@ -960,12 +790,6 @@ Returns: {0}</value>
         BQ4wCDgwFEJQFQUUBGV7sEAElwHiOqjZ4cCAoRdcZgjgYAKDAB0CjPh70EOADBMCMFAb4ECJAIwBCNi8
         WYOFA34HiB5asPTAFqhTq16NOiAAOw==
 </value>
-  </data>
-  <data name="PackageReadError" xml:space="preserve">
-    <value>Failed to read package. Error message was: {0}</value>
-  </data>
-  <data name="TitleWarning" xml:space="preserve">
-    <value>Warning</value>
   </data>
   <data name="icon_selectwithin" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -984,12 +808,6 @@ Returns: {0}</value>
         YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAKklEQVQ4T2P4//8/AyWYIs0g
         i0cNoEYYMDExVVCCR2OBGrFASUYaHHkBAGwz1S9OnHZ7AAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="MapUpdatedToUseGroup" xml:space="preserve">
-    <value>Map widget has been updated to use the map group: {0}</value>
-  </data>
-  <data name="SQLQuery" xml:space="preserve">
-    <value>SQL Query</value>
   </data>
   <data name="map--plus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1024,18 +842,6 @@ Returns: {0}</value>
         gooKASMECKghkgROohIqCDggZogVHCI7BCCwAAjVAxa2RFihROSGAAMIGFgrA0qEMVk0iMwBOPDgBwxA
         sODgROSUAGIzM2gx4UoIHSJ/hMHSJMYDHzYmVOGxxIvIgrAHlplNu7bt2QEBADs=
 </value>
-  </data>
-  <data name="PromptSelectMap" xml:space="preserve">
-    <value>Select Map</value>
-  </data>
-  <data name="FdoConnectionStringComponentNotFound" xml:space="preserve">
-    <value>The component "{0}" could not be found in the specified FDO connection string</value>
-  </data>
-  <data name="NoSiteService" xml:space="preserve">
-    <value>No site service available</value>
-  </data>
-  <data name="Func_RANGE_ExpressionDescription" xml:space="preserve">
-    <value>Key expression</value>
   </data>
   <data name="icon_plotdwf" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1086,9 +892,6 @@ Returns: {0}</value>
         AElFTkSuQmCC
 </value>
   </data>
-  <data name="SymbolGraphicsPathPlaceholder" xml:space="preserve">
-    <value>&lt;path&gt;</value>
-  </data>
   <data name="icon_maptip_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIUqAO3u8e7v8vHz9cTDyPHz9O3v8fr7+9HQ1eTl6NPT1ujp6+Dh5enr7/f3+PP09dDQ
@@ -1099,21 +902,6 @@ Returns: {0}</value>
         LEjRIWMBADcLBvgQYKeGFA8+CBUaoGCJoxsiIEhx4KjTEgUJCBBAoMTSpiWkSi0ooquICVePehVREIOJ
         syYUpEiAFm3BBm3VskULoUFBFHjxXkjBIS9eCilCePDgt/BgDwkHGCjs14ABigIJqkSoMCAAOw==
 </value>
-  </data>
-  <data name="FilterShp" xml:space="preserve">
-    <value>ESRI Shape File (*.shp)|*.shp</value>
-  </data>
-  <data name="TextNoOccurrencesFound" xml:space="preserve">
-    <value>No Occurences Found</value>
-  </data>
-  <data name="InvalidFieldCountError" xml:space="preserve">
-    <value>Invalid field count in line {0}</value>
-  </data>
-  <data name="WidgetNameExists" xml:space="preserve">
-    <value>A widget named {0} already exists</value>
-  </data>
-  <data name="FiniteDisplayScales" xml:space="preserve">
-    <value>Finite Display Scales</value>
   </data>
   <data name="database--plus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1142,18 +930,6 @@ Returns: {0}</value>
         EAnSJkgxQGCCEQ8GEPDAVW2CEG1zzJiRlkaFFi1g2M0r4YAIDyYSB7BRIK0BAgNTWCAwA8UFFR06INhA
         gEVBFgRwYBi9YQEBjQhBS5BAoDUEggEBADs=
 </value>
-  </data>
-  <data name="FindEmptyString" xml:space="preserve">
-    <value>Cannot Find an Empty String</value>
-  </data>
-  <data name="UnsupportedConnectionType" xml:space="preserve">
-    <value>Invoking MgCooker is not supported for this connection type: {0}</value>
-  </data>
-  <data name="Func_ARGB_Description" xml:space="preserve">
-    <value>Color generation function</value>
-  </data>
-  <data name="InsertionPointYError" xml:space="preserve">
-    <value>You have entered a non-numeric value in the Reference Y field. Due to a bug in MapGuide, this will likely give an error when saving.</value>
   </data>
   <data name="icon_pandown_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1210,15 +986,6 @@ Returns: {0}</value>
         SUVORK5CYII=
 </value>
   </data>
-  <data name="AlternateNameMissing" xml:space="preserve">
-    <value>You must enter a alternate name, or remove the checkmark</value>
-  </data>
-  <data name="SelectWidget" xml:space="preserve">
-    <value>Select widget</value>
-  </data>
-  <data name="TextOccurrencesReplaced" xml:space="preserve">
-    <value>Replaced {0} occurrances</value>
-  </data>
   <data name="icon_select" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIZdAOvsxmuAjjRRfpOhtpOitjRQeDVQejtTfDZUdzBMejtXf///1/385///74OTl3WE
@@ -1247,12 +1014,6 @@ Returns: {0}</value>
         CcSsQAwMPQQQADIloRikWAyIRYBYCIj5gZgHiLmAmB2qmRlIw50HAIdyTYaOb/frAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="TextPreparingConfigurationDocument" xml:space="preserve">
-    <value>Preparing Configuration Document</value>
-  </data>
-  <data name="BetweenLabel" xml:space="preserve">
-    <value>Between {0} and {1}</value>
-  </data>
   <data name="folder--plus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -1268,9 +1029,6 @@ Returns: {0}</value>
         +Udxwfacx7rDy2ZKjDmTjj30QE3VVmoRDdP+AgqRc9vLR4PDAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="BaseLayerGroupConvertedToLayerGroup" xml:space="preserve">
-    <value>Base Layer Group ({0}) converted to Regular Group ({1})</value>
-  </data>
   <data name="application--arrow" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -1285,9 +1043,6 @@ Returns: {0}</value>
         QmCC
 </value>
   </data>
-  <data name="SpecifySecondaryFeatureSource" xml:space="preserve">
-    <value>Please specify the secondary feature source</value>
-  </data>
   <data name="marker" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -1300,18 +1055,6 @@ Returns: {0}</value>
         OdzHfERUaqysMFQyM/LtYTeQOW0KuR+u634/Q+GR49HeoL9DMXnZI7qp+XwMhTeeYQUmWRwXpnfl4Kv8
         laHiZ4UJYWRYwYgszQgLQaItHIaKXxQswuj/gm+HNTFEuMVJpAAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="ColumnValueError" xml:space="preserve">
-    <value>An error occured while reading column values: {0}</value>
-  </data>
-  <data name="UnmanagedBrowserMultiSelectionNotAllowed" xml:space="preserve">
-    <value>Multiple selection is not allowed when SelectFoldersOnly is set to true</value>
-  </data>
-  <data name="ErrorMapExtentCalculationFailed" xml:space="preserve">
-    <value>Could not transform extents of any layer in this Map Definition. You will have to specify the extents manually.</value>
-  </data>
-  <data name="PromptName" xml:space="preserve">
-    <value>Enter the name</value>
   </data>
   <data name="globe--arrow" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1333,18 +1076,6 @@ Returns: {0}</value>
         A8b4xHwimoWFC9nafXuZpLmW7dN1sIx2fahy71yf5mE7661hPzTcnSu+KKGQ0P08Ys50yMdU/5cP0qpq
         Zm0t2z3tY/8BOAMvdn6kKfgAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="DataReadError" xml:space="preserve">
-    <value>Unable to read data from the selected column: {0}</value>
-  </data>
-  <data name="PromptUpdateMapWidgetReference" xml:space="preserve">
-    <value>Update Map Widget to point to</value>
-  </data>
-  <data name="ModeNotAllowed" xml:space="preserve">
-    <value>Mode not allowed: {0}</value>
-  </data>
-  <data name="InvokeUrlCmdDescription" xml:space="preserve">
-    <value>Invoke URL command</value>
   </data>
   <data name="document-copy" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1376,15 +1107,6 @@ Returns: {0}</value>
         bZidsgs0CWg2ms3j1U1Nz/SoctZ+N7iMEcP1w9/YIUw7Q/B728HeTjIAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="SymbolGraphicsTextPlaceholder" xml:space="preserve">
-    <value>&lt;text&gt;</value>
-  </data>
-  <data name="Func_RANGE_Description" xml:space="preserve">
-    <value>Range table for style theming</value>
-  </data>
-  <data name="InvokeUrlNoMapDefined" xml:space="preserve">
-    <value>Cannot get layers. No map definition specified</value>
-  </data>
   <data name="sql-join-right" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -1404,21 +1126,6 @@ Returns: {0}</value>
         kqwM0gsAucRqK8NQIioAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="WmsLayersUpdated" xml:space="preserve">
-    <value>WMS layers updated</value>
-  </data>
-  <data name="FilterPng" xml:space="preserve">
-    <value>Portable Network Graphics (*.png)|*.png</value>
-  </data>
-  <data name="LessThanLabel" xml:space="preserve">
-    <value>Less than {0}</value>
-  </data>
-  <data name="NewLayerGroup" xml:space="preserve">
-    <value>New Layer Group</value>
-  </data>
-  <data name="ConfigurationDocumentReset" xml:space="preserve">
-    <value>Configuration Document has been reset</value>
-  </data>
   <data name="icon_refreshmap" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIYAAAAAAP////vz//79//fy//fz/vfz//38//bz//j2//b0/vf2/ff2//T0//T0/vb2
@@ -1434,1734 +1141,6 @@ Returns: {0}</value>
         HPhSZ4wXLWPeeJHBgEgVJVSGSPiiRswWL2LWeEFBwKMSjxLaoEGDlg5t1jl8MMGR4kcWMGbQngHjJQaJ
         DR1KcCjhQQQWLmjLkPGysTpDrtgDAgA7
 </value>
-  </data>
-  <data name="QuestionResetFsOverrideList" xml:space="preserve">
-    <value>Reset Feature Source override list?</value>
-  </data>
-  <data name="AddWidgetReference" xml:space="preserve">
-    <value>Add Widget Reference</value>
-  </data>
-  <data name="Infinity" xml:space="preserve">
-    <value>Infinity</value>
-  </data>
-  <data name="ColorBrewer" xml:space="preserve">
-    <value>"ColorName","NumOfColors","Type","CritVal","ColorNum","ColorLetter","R","G","B","SchemeType"
-"Accent",3,"qual",,1,"A",127,201,127,"Qualitative"
-,,,,2,"B",190,174,212,
-,,,,3,"C",253,192,134,
-"Accent",4,"qual",,1,"A",127,201,127,
-,,,,2,"B",190,174,212,
-,,,,3,"C",253,192,134,
-,,,,4,"D",255,255,153,
-"Accent",5,"qual",,1,"A",127,201,127,
-,,,,2,"B",190,174,212,
-,,,,3,"C",253,192,134,
-,,,,4,"D",255,255,153,
-,,,,5,"E",56,108,176,
-"Accent",6,"qual",,1,"A",127,201,127,
-,,,,2,"B",190,174,212,
-,,,,3,"C",253,192,134,
-,,,,4,"D",255,255,153,
-,,,,5,"E",56,108,176,
-,,,,6,"F",240,2,127,
-"Accent",7,"qual",,1,"A",127,201,127,
-,,,,2,"B",190,174,212,
-,,,,3,"C",253,192,134,
-,,,,4,"D",255,255,153,
-,,,,5,"E",56,108,176,
-,,,,6,"F",240,2,127,
-,,,,7,"G",191,91,23,
-"Accent",8,"qual",,1,"A",127,201,127,
-,,,,2,"B",190,174,212,
-,,,,3,"C",253,192,134,
-,,,,4,"D",255,255,153,
-,,,,5,"E",56,108,176,
-,,,,6,"F",240,2,127,
-,,,,7,"G",191,91,23,
-,,,,8,"H",102,102,102,
-"Blues",3,"seq",,1,"C",222,235,247,"Sequential"
-,,,,2,"F",158,202,225,
-,,,,3,"I",49,130,189,
-"Blues",4,"seq",,1,"B",239,243,255,
-,,,,2,"E",189,215,231,
-,,,,3,"G",107,174,214,
-,,,,4,"J",33,113,181,
-"Blues",5,"seq",,1,"B",239,243,255,
-,,,,2,"E",189,215,231,
-,,,,3,"G",107,174,214,
-,,,,4,"I",49,130,189,
-,,,,5,"K",8,81,156,
-"Blues",6,"seq",,1,"B",239,243,255,
-,,,,2,"D",198,219,239,
-,,,,3,"F",158,202,225,
-,,,,4,"G",107,174,214,
-,,,,5,"I",49,130,189,
-,,,,6,"K",8,81,156,
-"Blues",7,"seq",,1,"B",239,243,255,
-,,,,2,"D",198,219,239,
-,,,,3,"F",158,202,225,
-,,,,4,"G",107,174,214,
-,,,,5,"H",66,146,198,
-,,,,6,"J",33,113,181,
-,,,,7,"L",8,69,148,
-"Blues",8,"seq",,1,"A",247,251,255,
-,,,,2,"C",222,235,247,
-,,,,3,"D",198,219,239,
-,,,,4,"F",158,202,225,
-,,,,5,"G",107,174,214,
-,,,,6,"H",66,146,198,
-,,,,7,"J",33,113,181,
-,,,,8,"L",8,69,148,
-"Blues",9,"seq",,1,"A",247,251,255,
-,,,,2,"C",222,235,247,
-,,,,3,"D",198,219,239,
-,,,,4,"F",158,202,225,
-,,,,5,"G",107,174,214,
-,,,,6,"H",66,146,198,
-,,,,7,"J",33,113,181,
-,,,,8,"K",8,81,156,
-,,,,9,"M",8,48,107,
-"BrBG",3,"div",2,1,"E",216,179,101,"Diverging"
-,,,,2,"H",245,245,245,
-,,,,3,"K",90,180,172,
-"BrBG",4,"div","2,5",1,"C",166,97,26,
-,,,,2,"F",223,194,125,
-,,,,3,"J",128,205,193,
-,,,,4,"M",1,133,113,
-"BrBG",5,"div",3,1,"C",166,97,26,
-,,,,2,"F",223,194,125,
-,,,,3,"H",245,245,245,
-,,,,4,"J",128,205,193,
-,,,,5,"M",1,133,113,
-"BrBG",6,"div","3,5",1,"B",140,81,10,
-,,,,2,"E",216,179,101,
-,,,,3,"G",246,232,195,
-,,,,4,"I",199,234,229,
-,,,,5,"K",90,180,172,
-,,,,6,"N",1,102,94,
-"BrBG",7,"div",4,1,"B",140,81,10,
-,,,,2,"E",216,179,101,
-,,,,3,"G",246,232,195,
-,,,,4,"H",245,245,245,
-,,,,5,"I",199,234,229,
-,,,,6,"K",90,180,172,
-,,,,7,"N",1,102,94,
-"BrBG",8,"div","4,5",1,"B",140,81,10,
-,,,,2,"D",191,129,45,
-,,,,3,"F",223,194,125,
-,,,,4,"G",246,232,195,
-,,,,5,"I",199,234,229,
-,,,,6,"J",128,205,193,
-,,,,7,"L",53,151,143,
-,,,,8,"N",1,102,94,
-"BrBG",9,"div",5,1,"B",140,81,10,
-,,,,2,"D",191,129,45,
-,,,,3,"F",223,194,125,
-,,,,4,"G",246,232,195,
-,,,,5,"H",245,245,245,
-,,,,6,"I",199,234,229,
-,,,,7,"J",128,205,193,
-,,,,8,"L",53,151,143,
-,,,,9,"N",1,102,94,
-"BrBG",10,"div","5,5",1,"A",84,48,5,
-,,,,2,"B",140,81,10,
-,,,,3,"D",191,129,45,
-,,,,4,"F",223,194,125,
-,,,,5,"G",246,232,195,
-,,,,6,"I",199,234,229,
-,,,,7,"J",128,205,193,
-,,,,8,"L",53,151,143,
-,,,,9,"N",1,102,94,
-,,,,10,"O",0,60,48,
-"BrBG",11,"div",6,1,"A",84,48,5,
-,,,,2,"B",140,81,10,
-,,,,3,"D",191,129,45,
-,,,,4,"F",223,194,125,
-,,,,5,"G",246,232,195,
-,,,,6,"H",245,245,245,
-,,,,7,"I",199,234,229,
-,,,,8,"J",128,205,193,
-,,,,9,"L",53,151,143,
-,,,,10,"N",1,102,94,
-,,,,11,"O",0,60,48,
-"BuGn",3,"seq",,1,"C",229,245,249,"Sequential"
-,,,,2,"F",153,216,201,
-,,,,3,"I",44,162,95,
-"BuGn",4,"seq",,1,"B",237,248,251,
-,,,,2,"E",178,226,226,
-,,,,3,"G",102,194,164,
-,,,,4,"J",35,139,69,
-"BuGn",5,"seq",,1,"B",237,248,251,
-,,,,2,"E",178,226,226,
-,,,,3,"G",102,194,164,
-,,,,4,"I",44,162,95,
-,,,,5,"K",0,109,44,
-"BuGn",6,"seq",,1,"B",237,248,251,
-,,,,2,"D",204,236,230,
-,,,,3,"F",153,216,201,
-,,,,4,"G",102,194,164,
-,,,,5,"I",44,162,95,
-,,,,6,"K",0,109,44,
-"BuGn",7,"seq",,1,"B",237,248,251,
-,,,,2,"D",204,236,230,
-,,,,3,"F",153,216,201,
-,,,,4,"G",102,194,164,
-,,,,5,"H",65,174,118,
-,,,,6,"J",35,139,69,
-,,,,7,"L",0,88,36,
-"BuGn",8,"seq",,1,"A",247,252,253,
-,,,,2,"C",229,245,249,
-,,,,3,"D",204,236,230,
-,,,,4,"F",153,216,201,
-,,,,5,"G",102,194,164,
-,,,,6,"H",65,174,118,
-,,,,7,"J",35,139,69,
-,,,,8,"L",0,88,36,
-"BuGn",9,"seq",,1,"A",247,252,253,
-,,,,2,"C",229,245,249,
-,,,,3,"D",204,236,230,
-,,,,4,"F",153,216,201,
-,,,,5,"G",102,194,164,
-,,,,6,"H",65,174,118,
-,,,,7,"J",35,139,69,
-,,,,8,"K",0,109,44,
-,,,,9,"M",0,68,27,
-"BuPu",3,"seq",,1,"C",224,236,244,"Sequential"
-,,,,2,"F",158,188,218,
-,,,,3,"I",136,86,167,
-"BuPu",4,"seq",,1,"B",237,248,251,
-,,,,2,"E",179,205,227,
-,,,,3,"G",140,150,198,
-,,,,4,"J",136,65,157,
-"BuPu",5,"seq",,1,"B",237,248,251,
-,,,,2,"E",179,205,227,
-,,,,3,"G",140,150,198,
-,,,,4,"I",136,86,167,
-,,,,5,"K",129,15,124,
-"BuPu",6,"seq",,1,"B",237,248,251,
-,,,,2,"D",191,211,230,
-,,,,3,"F",158,188,218,
-,,,,4,"G",140,150,198,
-,,,,5,"I",136,86,167,
-,,,,6,"K",129,15,124,
-"BuPu",7,"seq",,1,"B",237,248,251,
-,,,,2,"D",191,211,230,
-,,,,3,"F",158,188,218,
-,,,,4,"G",140,150,198,
-,,,,5,"H",140,107,177,
-,,,,6,"J",136,65,157,
-,,,,7,"L",110,1,107,
-"BuPu",8,"seq",,1,"A",247,252,253,
-,,,,2,"C",224,236,244,
-,,,,3,"D",191,211,230,
-,,,,4,"F",158,188,218,
-,,,,5,"G",140,150,198,
-,,,,6,"H",140,107,177,
-,,,,7,"J",136,65,157,
-,,,,8,"L",110,1,107,
-"BuPu",9,"seq",,1,"A",247,252,253,
-,,,,2,"C",224,236,244,
-,,,,3,"D",191,211,230,
-,,,,4,"F",158,188,218,
-,,,,5,"G",140,150,198,
-,,,,6,"H",140,107,177,
-,,,,7,"J",136,65,157,
-,,,,8,"K",129,15,124,
-,,,,9,"M",77,0,75,
-"Dark2",3,"qual",,1,"A",27,158,119,"Qualitative"
-,,,,2,"B",217,95,2,
-,,,,3,"C",117,112,179,
-"Dark2",4,"qual",,1,"A",27,158,119,
-,,,,2,"B",217,95,2,
-,,,,3,"C",117,112,179,
-,,,,4,"D",231,41,138,
-"Dark2",5,"qual",,1,"A",27,158,119,
-,,,,2,"B",217,95,2,
-,,,,3,"C",117,112,179,
-,,,,4,"D",231,41,138,
-,,,,5,"E",102,166,30,
-"Dark2",6,"qual",,1,"A",27,158,119,
-,,,,2,"B",217,95,2,
-,,,,3,"C",117,112,179,
-,,,,4,"D",231,41,138,
-,,,,5,"E",102,166,30,
-,,,,6,"F",230,171,2,
-"Dark2",7,"qual",,1,"A",27,158,119,
-,,,,2,"B",217,95,2,
-,,,,3,"C",117,112,179,
-,,,,4,"D",231,41,138,
-,,,,5,"E",102,166,30,
-,,,,6,"F",230,171,2,
-,,,,7,"G",166,118,29,
-"Dark2",8,"qual",,1,"A",27,158,119,
-,,,,2,"B",217,95,2,
-,,,,3,"C",117,112,179,
-,,,,4,"D",231,41,138,
-,,,,5,"E",102,166,30,
-,,,,6,"F",230,171,2,
-,,,,7,"G",166,118,29,
-,,,,8,"H",102,102,102,
-"GnBu",3,"seq",,1,"C",224,243,219,"Sequential"
-,,,,2,"F",168,221,181,
-,,,,3,"I",67,162,202,
-"GnBu",4,"seq",,1,"B",240,249,232,
-,,,,2,"E",186,228,188,
-,,,,3,"G",123,204,196,
-,,,,4,"J",43,140,190,
-"GnBu",5,"seq",,1,"B",240,249,232,
-,,,,2,"E",186,228,188,
-,,,,3,"G",123,204,196,
-,,,,4,"I",67,162,202,
-,,,,5,"K",8,104,172,
-"GnBu",6,"seq",,1,"B",240,249,232,
-,,,,2,"D",204,235,197,
-,,,,3,"F",168,221,181,
-,,,,4,"G",123,204,196,
-,,,,5,"I",67,162,202,
-,,,,6,"K",8,104,172,
-"GnBu",7,"seq",,1,"B",240,249,232,
-,,,,2,"D",204,235,197,
-,,,,3,"F",168,221,181,
-,,,,4,"G",123,204,196,
-,,,,5,"H",78,179,211,
-,,,,6,"J",43,140,190,
-,,,,7,"L",8,88,158,
-"GnBu",8,"seq",,1,"A",247,252,240,
-,,,,2,"C",224,243,219,
-,,,,3,"D",204,235,197,
-,,,,4,"F",168,221,181,
-,,,,5,"G",123,204,196,
-,,,,6,"H",78,179,211,
-,,,,7,"J",43,140,190,
-,,,,8,"L",8,88,158,
-"GnBu",9,"seq",,1,"A",247,252,240,
-,,,,2,"C",224,243,219,
-,,,,3,"D",204,235,197,
-,,,,4,"F",168,221,181,
-,,,,5,"G",123,204,196,
-,,,,6,"H",78,179,211,
-,,,,7,"J",43,140,190,
-,,,,8,"K",8,104,172,
-,,,,9,"M",8,64,129,
-"Greens",3,"seq",,1,"C",229,245,224,"Sequential"
-,,,,2,"F",161,217,155,
-,,,,3,"I",49,163,84,
-"Greens",4,"seq",,1,"B",237,248,233,
-,,,,2,"E",186,228,179,
-,,,,3,"G",116,196,118,
-,,,,4,"J",35,139,69,
-"Greens",5,"seq",,1,"B",237,248,233,
-,,,,2,"E",186,228,179,
-,,,,3,"G",116,196,118,
-,,,,4,"I",49,163,84,
-,,,,5,"K",0,109,44,
-"Greens",6,"seq",,1,"B",237,248,233,
-,,,,2,"D",199,233,192,
-,,,,3,"F",161,217,155,
-,,,,4,"G",116,196,118,
-,,,,5,"I",49,163,84,
-,,,,6,"K",0,109,44,
-"Greens",7,"seq",,1,"B",237,248,233,
-,,,,2,"D",199,233,192,
-,,,,3,"F",161,217,155,
-,,,,4,"G",116,196,118,
-,,,,5,"H",65,171,93,
-,,,,6,"J",35,139,69,
-,,,,7,"L",0,90,50,
-"Greens",8,"seq",,1,"A",247,252,245,
-,,,,2,"C",229,245,224,
-,,,,3,"D",199,233,192,
-,,,,4,"F",161,217,155,
-,,,,5,"G",116,196,118,
-,,,,6,"H",65,171,93,
-,,,,7,"J",35,139,69,
-,,,,8,"L",0,90,50,
-"Greens",9,"seq",,1,"A",247,252,245,
-,,,,2,"C",229,245,224,
-,,,,3,"D",199,233,192,
-,,,,4,"F",161,217,155,
-,,,,5,"G",116,196,118,
-,,,,6,"H",65,171,93,
-,,,,7,"J",35,139,69,
-,,,,8,"K",0,109,44,
-,,,,9,"M",0,68,27,
-"Greys",3,"seq",,1,"C",240,240,240,"Sequential"
-,,,,2,"F",189,189,189,
-,,,,3,"I",99,99,99,
-"Greys",4,"seq",,1,"B",247,247,247,
-,,,,2,"E",204,204,204,
-,,,,3,"G",150,150,150,
-,,,,4,"J",82,82,82,
-"Greys",5,"seq",,1,"B",247,247,247,
-,,,,2,"E",204,204,204,
-,,,,3,"G",150,150,150,
-,,,,4,"I",99,99,99,
-,,,,5,"K",37,37,37,
-"Greys",6,"seq",,1,"B",247,247,247,
-,,,,2,"D",217,217,217,
-,,,,3,"F",189,189,189,
-,,,,4,"G",150,150,150,
-,,,,5,"I",99,99,99,
-,,,,6,"K",37,37,37,
-"Greys",7,"seq",,1,"B",247,247,247,
-,,,,2,"D",217,217,217,
-,,,,3,"F",189,189,189,
-,,,,4,"G",150,150,150,
-,,,,5,"H",115,115,115,
-,,,,6,"J",82,82,82,
-,,,,7,"L",37,37,37,
-"Greys",8,"seq",,1,"A",255,255,255,
-,,,,2,"C",240,240,240,
-,,,,3,"D",217,217,217,
-,,,,4,"F",189,189,189,
-,,,,5,"G",150,150,150,
-,,,,6,"H",115,115,115,
-,,,,7,"J",82,82,82,
-,,,,8,"L",37,37,37,
-"Greys",9,"seq",,1,"A",255,255,255,
-,,,,2,"C",240,240,240,
-,,,,3,"D",217,217,217,
-,,,,4,"F",189,189,189,
-,,,,5,"G",150,150,150,
-,,,,6,"H",115,115,115,
-,,,,7,"J",82,82,82,
-,,,,8,"K",37,37,37,
-,,,,9,"M",0,0,0,
-"Oranges",3,"seq",,1,"C",254,230,206,"Sequential"
-,,,,2,"F",253,174,107,
-,,,,3,"I",230,85,13,
-"Oranges",4,"seq",,1,"B",254,237,222,
-,,,,2,"E",253,190,133,
-,,,,3,"G",253,141,60,
-,,,,4,"J",217,71,1,
-"Oranges",5,"seq",,1,"B",254,237,222,
-,,,,2,"E",253,190,133,
-,,,,3,"G",253,141,60,
-,,,,4,"I",230,85,13,
-,,,,5,"K",166,54,3,
-"Oranges",6,"seq",,1,"B",254,237,222,
-,,,,2,"D",253,208,162,
-,,,,3,"F",253,174,107,
-,,,,4,"G",253,141,60,
-,,,,5,"I",230,85,13,
-,,,,6,"K",166,54,3,
-"Oranges",7,"seq",,1,"B",254,237,222,
-,,,,2,"D",253,208,162,
-,,,,3,"F",253,174,107,
-,,,,4,"G",253,141,60,
-,,,,5,"H",241,105,19,
-,,,,6,"J",217,72,1,
-,,,,7,"L",140,45,4,
-"Oranges",8,"seq",,1,"A",255,245,235,
-,,,,2,"C",254,230,206,
-,,,,3,"D",253,208,162,
-,,,,4,"F",253,174,107,
-,,,,5,"G",253,141,60,
-,,,,6,"H",241,105,19,
-,,,,7,"J",217,72,1,
-,,,,8,"L",140,45,4,
-"Oranges",9,"seq",,1,"A",255,245,235,
-,,,,2,"C",254,230,206,
-,,,,3,"D",253,208,162,
-,,,,4,"F",253,174,107,
-,,,,5,"G",253,141,60,
-,,,,6,"H",241,105,19,
-,,,,7,"J",217,72,1,
-,,,,8,"K",166,54,3,
-,,,,9,"M",127,39,4,
-"OrRd",3,"seq",,1,"C",254,232,200,"Sequential"
-,,,,2,"F",253,187,132,
-,,,,3,"I",227,74,51,
-"OrRd",4,"seq",,1,"B",254,240,217,
-,,,,2,"E",253,204,138,
-,,,,3,"G",252,141,89,
-,,,,4,"J",215,48,31,
-"OrRd",5,"seq",,1,"B",254,240,217,
-,,,,2,"E",253,204,138,
-,,,,3,"G",252,141,89,
-,,,,4,"I",227,74,51,
-,,,,5,"K",179,0,0,
-"OrRd",6,"seq",,1,"B",254,240,217,
-,,,,2,"D",253,212,158,
-,,,,3,"F",253,187,132,
-,,,,4,"G",252,141,89,
-,,,,5,"I",227,74,51,
-,,,,6,"K",179,0,0,
-"OrRd",7,"seq",,1,"B",254,240,217,
-,,,,2,"D",253,212,158,
-,,,,3,"F",253,187,132,
-,,,,4,"G",252,141,89,
-,,,,5,"H",239,101,72,
-,,,,6,"J",215,48,31,
-,,,,7,"L",153,0,0,
-"OrRd",8,"seq",,1,"A",255,247,236,
-,,,,2,"C",254,232,200,
-,,,,3,"D",253,212,158,
-,,,,4,"F",253,187,132,
-,,,,5,"G",252,141,89,
-,,,,6,"H",239,101,72,
-,,,,7,"J",215,48,31,
-,,,,8,"L",153,0,0,
-"OrRd",9,"seq",,1,"A",255,247,236,
-,,,,2,"C",254,232,200,
-,,,,3,"D",253,212,158,
-,,,,4,"F",253,187,132,
-,,,,5,"G",252,141,89,
-,,,,6,"H",239,101,72,
-,,,,7,"J",215,48,31,
-,,,,8,"K",179,0,0,
-,,,,9,"M",127,0,0,
-"Paired",3,"qual",,1,"A",166,206,227,"Qualitative"
-,,,,2,"B",31,120,180,
-,,,,3,"C",178,223,138,
-"Paired",4,"qual",,1,"A",166,206,227,
-,,,,2,"B",31,120,180,
-,,,,3,"C",178,223,138,
-,,,,4,"D",51,160,44,
-"Paired",5,"qual",,1,"A",166,206,227,
-,,,,2,"B",31,120,180,
-,,,,3,"C",178,223,138,
-,,,,4,"D",51,160,44,
-,,,,5,"E",251,154,153,
-"Paired",6,"qual",,1,"A",166,206,227,
-,,,,2,"B",31,120,180,
-,,,,3,"C",178,223,138,
-,,,,4,"D",51,160,44,
-,,,,5,"E",251,154,153,
-,,,,6,"F",227,26,28,
-"Paired",7,"qual",,1,"A",166,206,227,
-,,,,2,"B",31,120,180,
-,,,,3,"C",178,223,138,
-,,,,4,"D",51,160,44,
-,,,,5,"E",251,154,153,
-,,,,6,"F",227,26,28,
-,,,,7,"G",253,191,111,
-"Paired",8,"qual",,1,"A",166,206,227,
-,,,,2,"B",31,120,180,
-,,,,3,"C",178,223,138,
-,,,,4,"D",51,160,44,
-,,,,5,"E",251,154,153,
-,,,,6,"F",227,26,28,
-,,,,7,"G",253,191,111,
-,,,,8,"H",255,127,0,
-"Paired",9,"qual",,1,"A",166,206,227,
-,,,,2,"B",31,120,180,
-,,,,3,"C",178,223,138,
-,,,,4,"D",51,160,44,
-,,,,5,"E",251,154,153,
-,,,,6,"F",227,26,28,
-,,,,7,"G",253,191,111,
-,,,,8,"H",255,127,0,
-,,,,9,"I",202,178,214,
-"Paired",10,"qual",,1,"A",166,206,227,
-,,,,2,"B",31,120,180,
-,,,,3,"C",178,223,138,
-,,,,4,"D",51,160,44,
-,,,,5,"E",251,154,153,
-,,,,6,"F",227,26,28,
-,,,,7,"G",253,191,111,
-,,,,8,"H",255,127,0,
-,,,,9,"I",202,178,214,
-,,,,10,"J",106,61,154,
-"Paired",11,"qual",,1,"A",166,206,227,
-,,,,2,"B",31,120,180,
-,,,,3,"C",178,223,138,
-,,,,4,"D",51,160,44,
-,,,,5,"E",251,154,153,
-,,,,6,"F",227,26,28,
-,,,,7,"G",253,191,111,
-,,,,8,"H",255,127,0,
-,,,,9,"I",202,178,214,
-,,,,10,"J",106,61,154,
-,,,,11,"K",255,255,153,
-"Paired",12,"qual",,1,"A",166,206,227,
-,,,,2,"B",31,120,180,
-,,,,3,"C",178,223,138,
-,,,,4,"D",51,160,44,
-,,,,5,"E",251,154,153,
-,,,,6,"F",227,26,28,
-,,,,7,"G",253,191,111,
-,,,,8,"H",255,127,0,
-,,,,9,"I",202,178,214,
-,,,,10,"J",106,61,154,
-,,,,11,"K",255,255,153,
-,,,,12,"L",177,89,40,
-"Pastel1",3,"qual",,1,"A",251,180,174,"Qualitative"
-,,,,2,"B",179,205,227,
-,,,,3,"C",204,235,197,
-"Pastel1",4,"qual",,1,"A",251,180,174,
-,,,,2,"B",179,205,227,
-,,,,3,"C",204,235,197,
-,,,,4,"D",222,203,228,
-"Pastel1",5,"qual",,1,"A",251,180,174,
-,,,,2,"B",179,205,227,
-,,,,3,"C",204,235,197,
-,,,,4,"D",222,203,228,
-,,,,5,"E",254,217,166,
-"Pastel1",6,"qual",,1,"A",251,180,174,
-,,,,2,"B",179,205,227,
-,,,,3,"C",204,235,197,
-,,,,4,"D",222,203,228,
-,,,,5,"E",254,217,166,
-,,,,6,"F",255,255,204,
-"Pastel1",7,"qual",,1,"A",251,180,174,
-,,,,2,"B",179,205,227,
-,,,,3,"C",204,235,197,
-,,,,4,"D",222,203,228,
-,,,,5,"E",254,217,166,
-,,,,6,"F",255,255,204,
-,,,,7,"G",229,216,189,
-"Pastel1",8,"qual",,1,"A",251,180,174,
-,,,,2,"B",179,205,227,
-,,,,3,"C",204,235,197,
-,,,,4,"D",222,203,228,
-,,,,5,"E",254,217,166,
-,,,,6,"F",255,255,204,
-,,,,7,"G",229,216,189,
-,,,,8,"H",253,218,236,
-"Pastel1",9,"qual",,1,"A",251,180,174,
-,,,,2,"B",179,205,227,
-,,,,3,"C",204,235,197,
-,,,,4,"D",222,203,228,
-,,,,5,"E",254,217,166,
-,,,,6,"F",255,255,204,
-,,,,7,"G",229,216,189,
-,,,,8,"H",253,218,236,
-,,,,9,"I",242,242,242,
-"Pastel2",3,"qual",,1,"A",179,226,205,"Qualitative"
-,,,,2,"B",253,205,172,
-,,,,3,"C",203,213,232,
-"Pastel2",4,"qual",,1,"A",179,226,205,
-,,,,2,"B",253,205,172,
-,,,,3,"C",203,213,232,
-,,,,4,"D",244,202,228,
-"Pastel2",5,"qual",,1,"A",179,226,205,
-,,,,2,"B",253,205,172,
-,,,,3,"C",203,213,232,
-,,,,4,"D",244,202,228,
-,,,,5,"E",230,245,201,
-"Pastel2",6,"qual",,1,"A",179,226,205,
-,,,,2,"B",253,205,172,
-,,,,3,"C",203,213,232,
-,,,,4,"D",244,202,228,
-,,,,5,"E",230,245,201,
-,,,,6,"F",255,242,174,
-"Pastel2",7,"qual",,1,"A",179,226,205,
-,,,,2,"B",253,205,172,
-,,,,3,"C",203,213,232,
-,,,,4,"D",244,202,228,
-,,,,5,"E",230,245,201,
-,,,,6,"F",255,242,174,
-,,,,7,"G",241,226,204,
-"Pastel2",8,"qual",,1,"A",179,226,205,
-,,,,2,"B",253,205,172,
-,,,,3,"C",203,213,232,
-,,,,4,"D",244,202,228,
-,,,,5,"E",230,245,201,
-,,,,6,"F",255,242,174,
-,,,,7,"G",241,226,204,
-,,,,8,"H",204,204,204,
-"PiYG",3,"div",2,1,"E",233,163,201,"Diverging"
-,,,,2,"H",247,247,247,
-,,,,3,"K",161,215,106,
-"PiYG",4,"div","2,5",1,"C",208,28,139,
-,,,,2,"F",241,182,218,
-,,,,3,"J",184,225,134,
-,,,,4,"M",77,172,38,
-"PiYG",5,"div",3,1,"C",208,28,139,
-,,,,2,"F",241,182,218,
-,,,,3,"H",247,247,247,
-,,,,4,"J",184,225,134,
-,,,,5,"M",77,172,38,
-"PiYG",6,"div","3,5",1,"B",197,27,125,
-,,,,2,"E",233,163,201,
-,,,,3,"G",253,224,239,
-,,,,4,"I",230,245,208,
-,,,,5,"K",161,215,106,
-,,,,6,"N",77,146,33,
-"PiYG",7,"div",4,1,"B",197,27,125,
-,,,,2,"E",233,163,201,
-,,,,3,"G",253,224,239,
-,,,,4,"H",247,247,247,
-,,,,5,"I",230,245,208,
-,,,,6,"K",161,215,106,
-,,,,7,"N",77,146,33,
-"PiYG",8,"div","4,5",1,"B",197,27,125,
-,,,,2,"D",222,119,174,
-,,,,3,"F",241,182,218,
-,,,,4,"G",253,224,239,
-,,,,5,"I",230,245,208,
-,,,,6,"J",184,225,134,
-,,,,7,"L",127,188,65,
-,,,,8,"N",77,146,33,
-"PiYG",9,"div",5,1,"B",197,27,125,
-,,,,2,"D",222,119,174,
-,,,,3,"F",241,182,218,
-,,,,4,"G",253,224,239,
-,,,,5,"H",247,247,247,
-,,,,6,"I",230,245,208,
-,,,,7,"J",184,225,134,
-,,,,8,"L",127,188,65,
-,,,,9,"N",77,146,33,
-"PiYG",10,"div","5,5",1,"A",142,1,82,
-,,,,2,"B",197,27,125,
-,,,,3,"D",222,119,174,
-,,,,4,"F",241,182,218,
-,,,,5,"G",253,224,239,
-,,,,6,"I",230,245,208,
-,,,,7,"J",184,225,134,
-,,,,8,"L",127,188,65,
-,,,,9,"N",77,146,33,
-,,,,10,"O",39,100,25,
-"PiYG",11,"div",6,1,"A",142,1,82,
-,,,,2,"B",197,27,125,
-,,,,3,"D",222,119,174,
-,,,,4,"F",241,182,218,
-,,,,5,"G",253,224,239,
-,,,,6,"H",247,247,247,
-,,,,7,"I",230,245,208,
-,,,,8,"J",184,225,134,
-,,,,9,"L",127,188,65,
-,,,,10,"N",77,146,33,
-,,,,11,"O",39,100,25,
-"PRGn",3,"div",2,1,"E",175,141,195,"Diverging"
-,,,,2,"H",247,247,247,
-,,,,3,"K",127,191,123,
-"PRGn",4,"div","2,5",1,"C",123,50,148,
-,,,,2,"F",194,165,207,
-,,,,3,"J",166,219,160,
-,,,,4,"M",0,136,55,
-"PRGn",5,"div",3,1,"C",123,50,148,
-,,,,2,"F",194,165,207,
-,,,,3,"H",247,247,247,
-,,,,4,"J",166,219,160,
-,,,,5,"M",0,136,55,
-"PRGn",6,"div","3,5",1,"B",118,42,131,
-,,,,2,"E",175,141,195,
-,,,,3,"G",231,212,232,
-,,,,4,"I",217,240,211,
-,,,,5,"K",127,191,123,
-,,,,6,"N",27,120,55,
-"PRGn",7,"div",4,1,"B",118,42,131,
-,,,,2,"E",175,141,195,
-,,,,3,"G",231,212,232,
-,,,,4,"H",247,247,247,
-,,,,5,"I",217,240,211,
-,,,,6,"K",127,191,123,
-,,,,7,"N",27,120,55,
-"PRGn",8,"div","4,5",1,"B",118,42,131,
-,,,,2,"D",153,112,171,
-,,,,3,"F",194,165,207,
-,,,,4,"G",231,212,232,
-,,,,5,"I",217,240,211,
-,,,,6,"J",166,219,160,
-,,,,7,"L",90,174,97,
-,,,,8,"N",27,120,55,
-"PRGn",9,"div",5,1,"B",118,42,131,
-,,,,2,"D",153,112,171,
-,,,,3,"F",194,165,207,
-,,,,4,"G",231,212,232,
-,,,,5,"H",247,247,247,
-,,,,6,"I",217,240,211,
-,,,,7,"J",166,219,160,
-,,,,8,"L",90,174,97,
-,,,,9,"N",27,120,55,
-"PRGn",10,"div","5,5",1,"A",64,0,75,
-,,,,2,"B",118,42,131,
-,,,,3,"D",153,112,171,
-,,,,4,"F",194,165,207,
-,,,,5,"G",231,212,232,
-,,,,6,"I",217,240,211,
-,,,,7,"J",166,219,160,
-,,,,8,"L",90,174,97,
-,,,,9,"N",27,120,55,
-,,,,10,"O",0,68,27,
-"PRGn",11,"div",6,1,"A",64,0,75,
-,,,,2,"B",118,42,131,
-,,,,3,"D",153,112,171,
-,,,,4,"F",194,165,207,
-,,,,5,"G",231,212,232,
-,,,,6,"H",247,247,247,
-,,,,7,"I",217,240,211,
-,,,,8,"J",166,219,160,
-,,,,9,"L",90,174,97,
-,,,,10,"N",27,120,55,
-,,,,11,"O",0,68,27,
-"PuBu",3,"seq",,1,"C",236,231,242,"Sequential"
-,,,,2,"F",166,189,219,
-,,,,3,"I",43,140,190,
-"PuBu",4,"seq",,1,"B",241,238,246,
-,,,,2,"E",189,201,225,
-,,,,3,"G",116,169,207,
-,,,,4,"J",5,112,176,
-"PuBu",5,"seq",,1,"B",241,238,246,
-,,,,2,"E",189,201,225,
-,,,,3,"G",116,169,207,
-,,,,4,"I",43,140,190,
-,,,,5,"K",4,90,141,
-"PuBu",6,"seq",,1,"B",241,238,246,
-,,,,2,"D",208,209,230,
-,,,,3,"F",166,189,219,
-,,,,4,"G",116,169,207,
-,,,,5,"I",43,140,190,
-,,,,6,"K",4,90,141,
-"PuBu",7,"seq",,1,"B",241,238,246,
-,,,,2,"D",208,209,230,
-,,,,3,"F",166,189,219,
-,,,,4,"G",116,169,207,
-,,,,5,"H",54,144,192,
-,,,,6,"J",5,112,176,
-,,,,7,"L",3,78,123,
-"PuBu",8,"seq",,1,"A",255,247,251,
-,,,,2,"C",236,231,242,
-,,,,3,"D",208,209,230,
-,,,,4,"F",166,189,219,
-,,,,5,"G",116,169,207,
-,,,,6,"H",54,144,192,
-,,,,7,"J",5,112,176,
-,,,,8,"L",3,78,123,
-"PuBu",9,"seq",,1,"A",255,247,251,
-,,,,2,"C",236,231,242,
-,,,,3,"D",208,209,230,
-,,,,4,"F",166,189,219,
-,,,,5,"G",116,169,207,
-,,,,6,"H",54,144,192,
-,,,,7,"J",5,112,176,
-,,,,8,"K",4,90,141,
-,,,,9,"M",2,56,88,
-"PuBuGn",3,"seq",,1,"C",236,226,240,"Sequential"
-,,,,2,"F",166,189,219,
-,,,,3,"I",28,144,153,
-"PuBuGn",4,"seq",,1,"B",246,239,247,
-,,,,2,"E",189,201,225,
-,,,,3,"G",103,169,207,
-,,,,4,"J",2,129,138,
-"PuBuGn",5,"seq",,1,"B",246,239,247,
-,,,,2,"E",189,201,225,
-,,,,3,"G",103,169,207,
-,,,,4,"I",28,144,153,
-,,,,5,"K",1,108,89,
-"PuBuGn",6,"seq",,1,"B",246,239,247,
-,,,,2,"D",208,209,230,
-,,,,3,"F",166,189,219,
-,,,,4,"G",103,169,207,
-,,,,5,"I",28,144,153,
-,,,,6,"K",1,108,89,
-"PuBuGn",7,"seq",,1,"B",246,239,247,
-,,,,2,"D",208,209,230,
-,,,,3,"F",166,189,219,
-,,,,4,"G",103,169,207,
-,,,,5,"H",54,144,192,
-,,,,6,"J",2,129,138,
-,,,,7,"L",1,100,80,
-"PuBuGn",8,"seq",,1,"A",255,247,251,
-,,,,2,"C",236,226,240,
-,,,,3,"D",208,209,230,
-,,,,4,"F",166,189,219,
-,,,,5,"G",103,169,207,
-,,,,6,"H",54,144,192,
-,,,,7,"J",2,129,138,
-,,,,8,"L",1,100,80,
-"PuBuGn",9,"seq",,1,"A",255,247,251,
-,,,,2,"C",236,226,240,
-,,,,3,"D",208,209,230,
-,,,,4,"F",166,189,219,
-,,,,5,"G",103,169,207,
-,,,,6,"H",54,144,192,
-,,,,7,"J",2,129,138,
-,,,,8,"K",1,108,89,
-,,,,9,"M",1,70,54,
-"PuOr",3,"div",2,1,"E",241,163,64,"Diverging"
-,,,,2,"H",247,247,247,
-,,,,3,"K",153,142,195,
-"PuOr",4,"div","2,5",1,"C",230,97,1,
-,,,,2,"F",253,184,99,
-,,,,3,"J",178,171,210,
-,,,,4,"M",94,60,153,
-"PuOr",5,"div",3,1,"C",230,97,1,
-,,,,2,"F",253,184,99,
-,,,,3,"H",247,247,247,
-,,,,4,"J",178,171,210,
-,,,,5,"M",94,60,153,
-"PuOr",6,"div","3,5",1,"B",179,88,6,
-,,,,2,"E",241,163,64,
-,,,,3,"G",254,224,182,
-,,,,4,"I",216,218,235,
-,,,,5,"K",153,142,195,
-,,,,6,"N",84,39,136,
-"PuOr",7,"div",4,1,"B",179,88,6,
-,,,,2,"E",241,163,64,
-,,,,3,"G",254,224,182,
-,,,,4,"H",247,247,247,
-,,,,5,"I",216,218,235,
-,,,,6,"K",153,142,195,
-,,,,7,"N",84,39,136,
-"PuOr",8,"div","4,5",1,"B",179,88,6,
-,,,,2,"D",224,130,20,
-,,,,3,"F",253,184,99,
-,,,,4,"G",254,224,182,
-,,,,5,"I",216,218,235,
-,,,,6,"J",178,171,210,
-,,,,7,"L",128,115,172,
-,,,,8,"N",84,39,136,
-"PuOr",9,"div",5,1,"B",179,88,6,
-,,,,2,"D",224,130,20,
-,,,,3,"F",253,184,99,
-,,,,4,"G",254,224,182,
-,,,,5,"H",247,247,247,
-,,,,6,"I",216,218,235,
-,,,,7,"J",178,171,210,
-,,,,8,"L",128,115,172,
-,,,,9,"N",84,39,136,
-"PuOr",10,"div","5,5",1,"A",127,59,8,
-,,,,2,"B",179,88,6,
-,,,,3,"D",224,130,20,
-,,,,4,"F",253,184,99,
-,,,,5,"G",254,224,182,
-,,,,6,"I",216,218,235,
-,,,,7,"J",178,171,210,
-,,,,8,"L",128,115,172,
-,,,,9,"N",84,39,136,
-,,,,10,"O",45,0,75,
-"PuOr",11,"div",6,1,"A",127,59,8,
-,,,,2,"B",179,88,6,
-,,,,3,"D",224,130,20,
-,,,,4,"F",253,184,99,
-,,,,5,"G",254,224,182,
-,,,,6,"H",247,247,247,
-,,,,7,"I",216,218,235,
-,,,,8,"J",178,171,210,
-,,,,9,"L",128,115,172,
-,,,,10,"N",84,39,136,
-,,,,11,"O",45,0,75,
-"PuRd",3,"seq",,1,"C",231,225,239,"Sequential"
-,,,,2,"F",201,148,199,
-,,,,3,"I",221,28,119,
-"PuRd",4,"seq",,1,"B",241,238,246,
-,,,,2,"E",215,181,216,
-,,,,3,"G",223,101,176,
-,,,,4,"J",206,18,86,
-"PuRd",5,"seq",,1,"B",241,238,246,
-,,,,2,"E",215,181,216,
-,,,,3,"G",223,101,176,
-,,,,4,"I",221,28,119,
-,,,,5,"K",152,0,67,
-"PuRd",6,"seq",,1,"B",241,238,246,
-,,,,2,"D",212,185,218,
-,,,,3,"F",201,148,199,
-,,,,4,"G",223,101,176,
-,,,,5,"I",221,28,119,
-,,,,6,"K",152,0,67,
-"PuRd",7,"seq",,1,"B",241,238,246,
-,,,,2,"D",212,185,218,
-,,,,3,"F",201,148,199,
-,,,,4,"G",223,101,176,
-,,,,5,"H",231,41,138,
-,,,,6,"J",206,18,86,
-,,,,7,"L",145,0,63,
-"PuRd",8,"seq",,1,"A",247,244,249,
-,,,,2,"C",231,225,239,
-,,,,3,"D",212,185,218,
-,,,,4,"F",201,148,199,
-,,,,5,"G",223,101,176,
-,,,,6,"H",231,41,138,
-,,,,7,"J",206,18,86,
-,,,,8,"L",145,0,63,
-"PuRd",9,"seq",,1,"A",247,244,249,
-,,,,2,"C",231,225,239,
-,,,,3,"D",212,185,218,
-,,,,4,"F",201,148,199,
-,,,,5,"G",223,101,176,
-,,,,6,"H",231,41,138,
-,,,,7,"J",206,18,86,
-,,,,8,"K",152,0,67,
-,,,,9,"M",103,0,31,
-"Purples",3,"seq",,1,"C",239,237,245,"Sequential"
-,,,,2,"F",188,189,220,
-,,,,3,"I",117,107,177,
-"Purples",4,"seq",,1,"B",242,240,247,
-,,,,2,"E",203,201,226,
-,,,,3,"G",158,154,200,
-,,,,4,"J",106,81,163,
-"Purples",5,"seq",,1,"B",242,240,247,
-,,,,2,"E",203,201,226,
-,,,,3,"G",158,154,200,
-,,,,4,"I",117,107,177,
-,,,,5,"K",84,39,143,
-"Purples",6,"seq",,1,"B",242,240,247,
-,,,,2,"D",218,218,235,
-,,,,3,"F",188,189,220,
-,,,,4,"G",158,154,200,
-,,,,5,"I",117,107,177,
-,,,,6,"K",84,39,143,
-"Purples",7,"seq",,1,"B",242,240,247,
-,,,,2,"D",218,218,235,
-,,,,3,"F",188,189,220,
-,,,,4,"G",158,154,200,
-,,,,5,"H",128,125,186,
-,,,,6,"J",106,81,163,
-,,,,7,"L",74,20,134,
-"Purples",8,"seq",,1,"A",252,251,253,
-,,,,2,"C",239,237,245,
-,,,,3,"D",218,218,235,
-,,,,4,"F",188,189,220,
-,,,,5,"G",158,154,200,
-,,,,6,"H",128,125,186,
-,,,,7,"J",106,81,163,
-,,,,8,"L",74,20,134,
-"Purples",9,"seq",,1,"A",252,251,253,
-,,,,2,"C",239,237,245,
-,,,,3,"D",218,218,235,
-,,,,4,"F",188,189,220,
-,,,,5,"G",158,154,200,
-,,,,6,"H",128,125,186,
-,,,,7,"J",106,81,163,
-,,,,8,"K",84,39,143,
-,,,,9,"M",63,0,125,
-"RdBu",3,"div",2,1,"E",239,138,98,"Diverging"
-,,,,2,"H",247,247,247,
-,,,,3,"K",103,169,207,
-"RdBu",4,"div","2,5",1,"C",202,0,32,
-,,,,2,"F",244,165,130,
-,,,,3,"J",146,197,222,
-,,,,4,"M",5,113,176,
-"RdBu",5,"div",3,1,"C",202,0,32,
-,,,,2,"F",244,165,130,
-,,,,3,"H",247,247,247,
-,,,,4,"J",146,197,222,
-,,,,5,"M",5,113,176,
-"RdBu",6,"div","3,5",1,"B",178,24,43,
-,,,,2,"E",239,138,98,
-,,,,3,"G",253,219,199,
-,,,,4,"I",209,229,240,
-,,,,5,"K",103,169,207,
-,,,,6,"N",33,102,172,
-"RdBu",7,"div",4,1,"B",178,24,43,
-,,,,2,"E",239,138,98,
-,,,,3,"G",253,219,199,
-,,,,4,"H",247,247,247,
-,,,,5,"I",209,229,240,
-,,,,6,"K",103,169,207,
-,,,,7,"N",33,102,172,
-"RdBu",8,"div","4,5",1,"B",178,24,43,
-,,,,2,"D",214,96,77,
-,,,,3,"F",244,165,130,
-,,,,4,"G",253,219,199,
-,,,,5,"I",209,229,240,
-,,,,6,"J",146,197,222,
-,,,,7,"L",67,147,195,
-,,,,8,"N",33,102,172,
-"RdBu",9,"div",5,1,"B",178,24,43,
-,,,,2,"D",214,96,77,
-,,,,3,"F",244,165,130,
-,,,,4,"G",253,219,199,
-,,,,5,"H",247,247,247,
-,,,,6,"I",209,229,240,
-,,,,7,"J",146,197,222,
-,,,,8,"L",67,147,195,
-,,,,9,"N",33,102,172,
-"RdBu",10,"div","5,5",1,"A",103,0,31,
-,,,,2,"B",178,24,43,
-,,,,3,"D",214,96,77,
-,,,,4,"F",244,165,130,
-,,,,5,"G",253,219,199,
-,,,,6,"I",209,229,240,
-,,,,7,"J",146,197,222,
-,,,,8,"L",67,147,195,
-,,,,9,"N",33,102,172,
-,,,,10,"O",5,48,97,
-"RdBu",11,"div",6,1,"A",103,0,31,
-,,,,2,"B",178,24,43,
-,,,,3,"D",214,96,77,
-,,,,4,"F",244,165,130,
-,,,,5,"G",253,219,199,
-,,,,6,"H",247,247,247,
-,,,,7,"I",209,229,240,
-,,,,8,"J",146,197,222,
-,,,,9,"L",67,147,195,
-,,,,10,"N",33,102,172,
-,,,,11,"O",5,48,97,
-"RdGy",3,"div",2,1,"E",239,138,98,"Diverging"
-,,,,2,"H",255,255,255,
-,,,,3,"K",153,153,153,
-"RdGy",4,"div","2,5",1,"C",202,0,32,
-,,,,2,"F",244,165,130,
-,,,,3,"J",186,186,186,
-,,,,4,"M",64,64,64,
-"RdGy",5,"div",3,1,"C",202,0,32,
-,,,,2,"F",244,165,130,
-,,,,3,"H",255,255,255,
-,,,,4,"J",186,186,186,
-,,,,5,"M",64,64,64,
-"RdGy",6,"div","3,5",1,"B",178,24,43,
-,,,,2,"E",239,138,98,
-,,,,3,"G",253,219,199,
-,,,,4,"I",224,224,224,
-,,,,5,"K",153,153,153,
-,,,,6,"N",77,77,77,
-"RdGy",7,"div",4,1,"B",178,24,43,
-,,,,2,"E",239,138,98,
-,,,,3,"G",253,219,199,
-,,,,4,"H",255,255,255,
-,,,,5,"I",224,224,224,
-,,,,6,"K",153,153,153,
-,,,,7,"N",77,77,77,
-"RdGy",8,"div","4,5",1,"B",178,24,43,
-,,,,2,"D",214,96,77,
-,,,,3,"F",244,165,130,
-,,,,4,"G",253,219,199,
-,,,,5,"I",224,224,224,
-,,,,6,"J",186,186,186,
-,,,,7,"L",135,135,135,
-,,,,8,"N",77,77,77,
-"RdGy",9,"div",5,1,"B",178,24,43,
-,,,,2,"D",214,96,77,
-,,,,3,"F",244,165,130,
-,,,,4,"G",253,219,199,
-,,,,5,"H",255,255,255,
-,,,,6,"I",224,224,224,
-,,,,7,"J",186,186,186,
-,,,,8,"L",135,135,135,
-,,,,9,"N",77,77,77,
-"RdGy",10,"div","5,5",1,"A",103,0,31,
-,,,,2,"B",178,24,43,
-,,,,3,"D",214,96,77,
-,,,,4,"F",244,165,130,
-,,,,5,"G",253,219,199,
-,,,,6,"I",224,224,224,
-,,,,7,"J",186,186,186,
-,,,,8,"L",135,135,135,
-,,,,9,"N",77,77,77,
-,,,,10,"O",26,26,26,
-"RdGy",11,"div",6,1,"A",103,0,31,
-,,,,2,"B",178,24,43,
-,,,,3,"D",214,96,77,
-,,,,4,"F",244,165,130,
-,,,,5,"G",253,219,199,
-,,,,6,"H",255,255,255,
-,,,,7,"I",224,224,224,
-,,,,8,"J",186,186,186,
-,,,,9,"L",135,135,135,
-,,,,10,"N",77,77,77,
-,,,,11,"O",26,26,26,
-"RdPu",3,"seq",,1,"C",253,224,221,"Sequential"
-,,,,2,"F",250,159,181,
-,,,,3,"I",197,27,138,
-"RdPu",4,"seq",,1,"B",254,235,226,
-,,,,2,"E",251,180,185,
-,,,,3,"G",247,104,161,
-,,,,4,"J",174,1,126,
-"RdPu",5,"seq",,1,"B",254,235,226,
-,,,,2,"E",251,180,185,
-,,,,3,"G",247,104,161,
-,,,,4,"I",197,27,138,
-,,,,5,"K",122,1,119,
-"RdPu",6,"seq",,1,"B",254,235,226,
-,,,,2,"D",252,197,192,
-,,,,3,"F",250,159,181,
-,,,,4,"G",247,104,161,
-,,,,5,"I",197,27,138,
-,,,,6,"K",122,1,119,
-"RdPu",7,"seq",,1,"B",254,235,226,
-,,,,2,"D",252,197,192,
-,,,,3,"F",250,159,181,
-,,,,4,"G",247,104,161,
-,,,,5,"H",221,52,151,
-,,,,6,"J",174,1,126,
-,,,,7,"L",122,1,119,
-"RdPu",8,"seq",,1,"A",255,247,243,
-,,,,2,"C",253,224,221,
-,,,,3,"D",252,197,192,
-,,,,4,"F",250,159,181,
-,,,,5,"G",247,104,161,
-,,,,6,"H",221,52,151,
-,,,,7,"J",174,1,126,
-,,,,8,"L",122,1,119,
-"RdPu",9,"seq",,1,"A",255,247,243,
-,,,,2,"C",253,224,221,
-,,,,3,"D",252,197,192,
-,,,,4,"F",250,159,181,
-,,,,5,"G",247,104,161,
-,,,,6,"H",221,52,151,
-,,,,7,"J",174,1,126,
-,,,,8,"K",122,1,119,
-,,,,9,"M",73,0,106,
-"Reds",3,"seq",,1,"C",254,224,210,"Sequential"
-,,,,2,"F",252,146,114,
-,,,,3,"I",222,45,38,
-"Reds",4,"seq",,1,"B",254,229,217,
-,,,,2,"E",252,174,145,
-,,,,3,"G",251,106,74,
-,,,,4,"J",203,24,29,
-"Reds",5,"seq",,1,"B",254,229,217,
-,,,,2,"E",252,174,145,
-,,,,3,"G",251,106,74,
-,,,,4,"I",222,45,38,
-,,,,5,"K",165,15,21,
-"Reds",6,"seq",,1,"B",254,229,217,
-,,,,2,"D",252,187,161,
-,,,,3,"F",252,146,114,
-,,,,4,"G",251,106,74,
-,,,,5,"I",222,45,38,
-,,,,6,"K",165,15,21,
-"Reds",7,"seq",,1,"B",254,229,217,
-,,,,2,"D",252,187,161,
-,,,,3,"F",252,146,114,
-,,,,4,"G",251,106,74,
-,,,,5,"H",239,59,44,
-,,,,6,"J",203,24,29,
-,,,,7,"L",153,0,13,
-"Reds",8,"seq",,1,"A",255,245,240,
-,,,,2,"C",254,224,210,
-,,,,3,"D",252,187,161,
-,,,,4,"F",252,146,114,
-,,,,5,"G",251,106,74,
-,,,,6,"H",239,59,44,
-,,,,7,"J",203,24,29,
-,,,,8,"L",153,0,13,
-"Reds",9,"seq",,1,"A",255,245,240,
-,,,,2,"C",254,224,210,
-,,,,3,"D",252,187,161,
-,,,,4,"F",252,146,114,
-,,,,5,"G",251,106,74,
-,,,,6,"H",239,59,44,
-,,,,7,"J",203,24,29,
-,,,,8,"K",165,15,21,
-,,,,9,"M",103,0,13,
-"RdYlBu",3,"div",2,1,"E",252,141,89,"Diverging"
-,,,,2,"H",255,255,191,
-,,,,3,"K",145,191,219,
-"RdYlBu",4,"div","2,5",1,"C",215,25,28,
-,,,,2,"F",253,174,97,
-,,,,3,"J",171,217,233,
-,,,,4,"M",44,123,182,
-"RdYlBu",5,"div",3,1,"C",215,25,28,
-,,,,2,"F",253,174,97,
-,,,,3,"H",255,255,191,
-,,,,4,"J",171,217,233,
-,,,,5,"M",44,123,182,
-"RdYlBu",6,"div","3,5",1,"B",215,48,39,
-,,,,2,"E",252,141,89,
-,,,,3,"G",254,224,144,
-,,,,4,"I",224,243,248,
-,,,,5,"K",145,191,219,
-,,,,6,"N",69,117,180,
-"RdYlBu",7,"div",4,1,"B",215,48,39,
-,,,,2,"E",252,141,89,
-,,,,3,"G",254,224,144,
-,,,,4,"H",255,255,191,
-,,,,5,"I",224,243,248,
-,,,,6,"K",145,191,219,
-,,,,7,"N",69,117,180,
-"RdYlBu",8,"div","4,5",1,"B",215,48,39,
-,,,,2,"D",244,109,67,
-,,,,3,"F",253,174,97,
-,,,,4,"G",254,224,144,
-,,,,5,"I",224,243,248,
-,,,,6,"J",171,217,233,
-,,,,7,"L",116,173,209,
-,,,,8,"N",69,117,180,
-"RdYlBu",9,"div",5,1,"B",215,48,39,
-,,,,2,"D",244,109,67,
-,,,,3,"F",253,174,97,
-,,,,4,"G",254,224,144,
-,,,,5,"H",255,255,191,
-,,,,6,"I",224,243,248,
-,,,,7,"J",171,217,233,
-,,,,8,"L",116,173,209,
-,,,,9,"N",69,117,180,
-"RdYlBu",10,"div","5,5",1,"A",165,0,38,
-,,,,2,"B",215,48,39,
-,,,,3,"D",244,109,67,
-,,,,4,"F",253,174,97,
-,,,,5,"G",254,224,144,
-,,,,6,"I",224,243,248,
-,,,,7,"J",171,217,233,
-,,,,8,"L",116,173,209,
-,,,,9,"N",69,117,180,
-,,,,10,"O",49,54,149,
-"RdYlBu",11,"div",6,1,"A",165,0,38,
-,,,,2,"B",215,48,39,
-,,,,3,"D",244,109,67,
-,,,,4,"F",253,174,97,
-,,,,5,"G",254,224,144,
-,,,,6,"H",255,255,191,
-,,,,7,"I",224,243,248,
-,,,,8,"J",171,217,233,
-,,,,9,"L",116,173,209,
-,,,,10,"N",69,117,180,
-,,,,11,"O",49,54,149,
-"RdYlGn",3,"div",2,1,"E",252,141,89,"Diverging"
-,,,,2,"H",255,255,191,
-,,,,3,"K",145,207,96,
-"RdYlGn",4,"div","2,5",1,"C",215,25,28,
-,,,,2,"F",253,174,97,
-,,,,3,"J",166,217,106,
-,,,,4,"M",26,150,65,
-"RdYlGn",5,"div",3,1,"C",215,25,28,
-,,,,2,"F",253,174,97,
-,,,,3,"H",255,255,191,
-,,,,4,"J",166,217,106,
-,,,,5,"M",26,150,65,
-"RdYlGn",6,"div","3,5",1,"B",215,48,39,
-,,,,2,"E",252,141,89,
-,,,,3,"G",254,224,139,
-,,,,4,"I",217,239,139,
-,,,,5,"K",145,207,96,
-,,,,6,"N",26,152,80,
-"RdYlGn",7,"div",4,1,"B",215,48,39,
-,,,,2,"E",252,141,89,
-,,,,3,"G",254,224,139,
-,,,,4,"H",255,255,191,
-,,,,5,"I",217,239,139,
-,,,,6,"K",145,207,96,
-,,,,7,"N",26,152,80,
-"RdYlGn",8,"div","4,5",1,"B",215,48,39,
-,,,,2,"D",244,109,67,
-,,,,3,"F",253,174,97,
-,,,,4,"G",254,224,139,
-,,,,5,"I",217,239,139,
-,,,,6,"J",166,217,106,
-,,,,7,"L",102,189,99,
-,,,,8,"N",26,152,80,
-"RdYlGn",9,"div",5,1,"B",215,48,39,
-,,,,2,"D",244,109,67,
-,,,,3,"F",253,174,97,
-,,,,4,"G",254,224,139,
-,,,,5,"H",255,255,191,
-,,,,6,"I",217,239,139,
-,,,,7,"J",166,217,106,
-,,,,8,"L",102,189,99,
-,,,,9,"N",26,152,80,
-"RdYlGn",10,"div","5,5",1,"A",165,0,38,
-,,,,2,"B",215,48,39,
-,,,,3,"D",244,109,67,
-,,,,4,"F",253,174,97,
-,,,,5,"G",254,224,139,
-,,,,6,"I",217,239,139,
-,,,,7,"J",166,217,106,
-,,,,8,"L",102,189,99,
-,,,,9,"N",26,152,80,
-,,,,10,"O",0,104,55,
-"RdYlGn",11,"div",6,1,"A",165,0,38,
-,,,,2,"B",215,48,39,
-,,,,3,"D",244,109,67,
-,,,,4,"F",253,174,97,
-,,,,5,"G",254,224,139,
-,,,,6,"H",255,255,191,
-,,,,7,"I",217,239,139,
-,,,,8,"J",166,217,106,
-,,,,9,"L",102,189,99,
-,,,,10,"N",26,152,80,
-,,,,11,"O",0,104,55,
-"Set1",3,"qual",,1,"A",228,26,28,"Qualitative"
-,,,,2,"B",55,126,184,
-,,,,3,"C",77,175,74,
-"Set1",4,"qual",,1,"A",228,26,28,
-,,,,2,"B",55,126,184,
-,,,,3,"C",77,175,74,
-,,,,4,"D",152,78,163,
-"Set1",5,"qual",,1,"A",228,26,28,
-,,,,2,"B",55,126,184,
-,,,,3,"C",77,175,74,
-,,,,4,"D",152,78,163,
-,,,,5,"E",255,127,0,
-"Set1",6,"qual",,1,"A",228,26,28,
-,,,,2,"B",55,126,184,
-,,,,3,"C",77,175,74,
-,,,,4,"D",152,78,163,
-,,,,5,"E",255,127,0,
-,,,,6,"F",255,255,51,
-"Set1",7,"qual",,1,"A",228,26,28,
-,,,,2,"B",55,126,184,
-,,,,3,"C",77,175,74,
-,,,,4,"D",152,78,163,
-,,,,5,"E",255,127,0,
-,,,,6,"F",255,255,51,
-,,,,7,"G",166,86,40,
-"Set1",8,"qual",,1,"A",228,26,28,
-,,,,2,"B",55,126,184,
-,,,,3,"C",77,175,74,
-,,,,4,"D",152,78,163,
-,,,,5,"E",255,127,0,
-,,,,6,"F",255,255,51,
-,,,,7,"G",166,86,40,
-,,,,8,"H",247,129,191,
-"Set1",9,"qual",,1,"A",228,26,28,
-,,,,2,"B",55,126,184,
-,,,,3,"C",77,175,74,
-,,,,4,"D",152,78,163,
-,,,,5,"E",255,127,0,
-,,,,6,"F",255,255,51,
-,,,,7,"G",166,86,40,
-,,,,8,"H",247,129,191,
-,,,,9,"I",153,153,153,
-"Set2",3,"qual",,1,"A",102,194,165,"Qualitative"
-,,,,2,"B",252,141,98,
-,,,,3,"C",141,160,203,
-"Set2",4,"qual",,1,"A",102,194,165,
-,,,,2,"B",252,141,98,
-,,,,3,"C",141,160,203,
-,,,,4,"D",231,138,195,
-"Set2",5,"qual",,1,"A",102,194,165,
-,,,,2,"B",252,141,98,
-,,,,3,"C",141,160,203,
-,,,,4,"D",231,138,195,
-,,,,5,"E",166,216,84,
-"Set2",6,"qual",,1,"A",102,194,165,
-,,,,2,"B",252,141,98,
-,,,,3,"C",141,160,203,
-,,,,4,"D",231,138,195,
-,,,,5,"E",166,216,84,
-,,,,6,"F",255,217,47,
-"Set2",7,"qual",,1,"A",102,194,165,
-,,,,2,"B",252,141,98,
-,,,,3,"C",141,160,203,
-,,,,4,"D",231,138,195,
-,,,,5,"E",166,216,84,
-,,,,6,"F",255,217,47,
-,,,,7,"G",229,196,148,
-"Set2",8,"qual",,1,"A",102,194,165,
-,,,,2,"B",252,141,98,
-,,,,3,"C",141,160,203,
-,,,,4,"D",231,138,195,
-,,,,5,"E",166,216,84,
-,,,,6,"F",255,217,47,
-,,,,7,"G",229,196,148,
-,,,,8,"H",179,179,179,
-"Set3",3,"qual",,1,"A",141,211,199,"Qualitative"
-,,,,2,"B",255,255,179,
-,,,,3,"C",190,186,218,
-"Set3",4,"qual",,1,"A",141,211,199,
-,,,,2,"B",255,255,179,
-,,,,3,"C",190,186,218,
-,,,,4,"D",251,128,114,
-"Set3",5,"qual",,1,"A",141,211,199,
-,,,,2,"B",255,255,179,
-,,,,3,"C",190,186,218,
-,,,,4,"D",251,128,114,
-,,,,5,"E",128,177,211,
-"Set3",6,"qual",,1,"A",141,211,199,
-,,,,2,"B",255,255,179,
-,,,,3,"C",190,186,218,
-,,,,4,"D",251,128,114,
-,,,,5,"E",128,177,211,
-,,,,6,"F",253,180,98,
-"Set3",7,"qual",,1,"A",141,211,199,
-,,,,2,"B",255,255,179,
-,,,,3,"C",190,186,218,
-,,,,4,"D",251,128,114,
-,,,,5,"E",128,177,211,
-,,,,6,"F",253,180,98,
-,,,,7,"G",179,222,105,
-"Set3",8,"qual",,1,"A",141,211,199,
-,,,,2,"B",255,255,179,
-,,,,3,"C",190,186,218,
-,,,,4,"D",251,128,114,
-,,,,5,"E",128,177,211,
-,,,,6,"F",253,180,98,
-,,,,7,"G",179,222,105,
-,,,,8,"H",252,205,229,
-"Set3",9,"qual",,1,"A",141,211,199,
-,,,,2,"B",255,255,179,
-,,,,3,"C",190,186,218,
-,,,,4,"D",251,128,114,
-,,,,5,"E",128,177,211,
-,,,,6,"F",253,180,98,
-,,,,7,"G",179,222,105,
-,,,,8,"H",252,205,229,
-,,,,9,"I",217,217,217,
-"Set3",10,"qual",,1,"A",141,211,199,
-,,,,2,"B",255,255,179,
-,,,,3,"C",190,186,218,
-,,,,4,"D",251,128,114,
-,,,,5,"E",128,177,211,
-,,,,6,"F",253,180,98,
-,,,,7,"G",179,222,105,
-,,,,8,"H",252,205,229,
-,,,,9,"I",217,217,217,
-,,,,10,"J",188,128,189,
-"Set3",11,"qual",,1,"A",141,211,199,
-,,,,2,"B",255,255,179,
-,,,,3,"C",190,186,218,
-,,,,4,"D",251,128,114,
-,,,,5,"E",128,177,211,
-,,,,6,"F",253,180,98,
-,,,,7,"G",179,222,105,
-,,,,8,"H",252,205,229,
-,,,,9,"I",217,217,217,
-,,,,10,"J",188,128,189,
-,,,,11,"K",204,235,197,
-"Set3",12,"qual",,1,"A",141,211,199,
-,,,,2,"B",255,255,179,
-,,,,3,"C",190,186,218,
-,,,,4,"D",251,128,114,
-,,,,5,"E",128,177,211,
-,,,,6,"F",253,180,98,
-,,,,7,"G",179,222,105,
-,,,,8,"H",252,205,229,
-,,,,9,"I",217,217,217,
-,,,,10,"J",188,128,189,
-,,,,11,"K",204,235,197,
-,,,,12,"L",255,237,111,
-"Spectral",3,"div",2,1,"E",252,141,89,"Diverging"
-,,,,2,"H",255,255,191,
-,,,,3,"K",153,213,148,
-"Spectral",4,"div","2,5",1,"C",215,25,28,
-,,,,2,"F",253,174,97,
-,,,,3,"J",171,221,164,
-,,,,4,"M",43,131,186,
-"Spectral",5,"div",3,1,"C",215,25,28,
-,,,,2,"F",253,174,97,
-,,,,3,"H",255,255,191,
-,,,,4,"J",171,221,164,
-,,,,5,"M",43,131,186,
-"Spectral",6,"div","3,5",1,"B",213,62,79,
-,,,,2,"E",252,141,89,
-,,,,3,"G",254,224,139,
-,,,,4,"I",230,245,152,
-,,,,5,"K",153,213,148,
-,,,,6,"N",50,136,189,
-"Spectral",7,"div",4,1,"B",213,62,79,
-,,,,2,"E",252,141,89,
-,,,,3,"G",254,224,139,
-,,,,4,"H",255,255,191,
-,,,,5,"I",230,245,152,
-,,,,6,"K",153,213,148,
-,,,,7,"N",50,136,189,
-"Spectral",8,"div","4,5",1,"B",213,62,79,
-,,,,2,"D",244,109,67,
-,,,,3,"F",253,174,97,
-,,,,4,"G",254,224,139,
-,,,,5,"I",230,245,152,
-,,,,6,"J",171,221,164,
-,,,,7,"L",102,194,165,
-,,,,8,"N",50,136,189,
-"Spectral",9,"div",5,1,"B",213,62,79,
-,,,,2,"D",244,109,67,
-,,,,3,"F",253,174,97,
-,,,,4,"G",254,224,139,
-,,,,5,"H",255,255,191,
-,,,,6,"I",230,245,152,
-,,,,7,"J",171,221,164,
-,,,,8,"L",102,194,165,
-,,,,9,"N",50,136,189,
-"Spectral",10,"div","5,5",1,"A",158,1,66,
-,,,,2,"B",213,62,79,
-,,,,3,"D",244,109,67,
-,,,,4,"F",253,174,97,
-,,,,5,"G",254,224,139,
-,,,,6,"I",230,245,152,
-,,,,7,"J",171,221,164,
-,,,,8,"L",102,194,165,
-,,,,9,"N",50,136,189,
-,,,,10,"O",94,79,162,
-"Spectral",11,"div",6,1,"A",158,1,66,
-,,,,2,"B",213,62,79,
-,,,,3,"D",244,109,67,
-,,,,4,"F",253,174,97,
-,,,,5,"G",254,224,139,
-,,,,6,"H",255,255,191,
-,,,,7,"I",230,245,152,
-,,,,8,"J",171,221,164,
-,,,,9,"L",102,194,165,
-,,,,10,"N",50,136,189,
-,,,,11,"O",94,79,162,
-"YlGn",3,"seq",,1,"C",247,252,185,"Sequential"
-,,,,2,"F",173,221,142,
-,,,,3,"I",49,163,84,
-"YlGn",4,"seq",,1,"B",255,255,204,
-,,,,2,"E",194,230,153,
-,,,,3,"G",120,198,121,
-,,,,4,"J",35,132,67,
-"YlGn",5,"seq",,1,"B",255,255,204,
-,,,,2,"E",194,230,153,
-,,,,3,"G",120,198,121,
-,,,,4,"I",49,163,84,
-,,,,5,"K",0,104,55,
-"YlGn",6,"seq",,1,"B",255,255,204,
-,,,,2,"D",217,240,163,
-,,,,3,"F",173,221,142,
-,,,,4,"G",120,198,121,
-,,,,5,"I",49,163,84,
-,,,,6,"K",0,104,55,
-"YlGn",7,"seq",,1,"B",255,255,204,
-,,,,2,"D",217,240,163,
-,,,,3,"F",173,221,142,
-,,,,4,"G",120,198,121,
-,,,,5,"H",65,171,93,
-,,,,6,"J",35,132,67,
-,,,,7,"L",0,90,50,
-"YlGn",8,"seq",,1,"A",255,255,229,
-,,,,2,"C",247,252,185,
-,,,,3,"D",217,240,163,
-,,,,4,"F",173,221,142,
-,,,,5,"G",120,198,121,
-,,,,6,"H",65,171,93,
-,,,,7,"J",35,132,67,
-,,,,8,"L",0,90,50,
-"YlGn",9,"seq",,1,"A",255,255,229,
-,,,,2,"C",247,252,185,
-,,,,3,"D",217,240,163,
-,,,,4,"F",173,221,142,
-,,,,5,"G",120,198,121,
-,,,,6,"H",65,171,93,
-,,,,7,"J",35,132,67,
-,,,,8,"K",0,104,55,
-,,,,9,"M",0,69,41,
-"YlGnBu",3,"seq",,1,"C",237,248,177,"Sequential"
-,,,,2,"F",127,205,187,
-,,,,3,"I",44,127,184,
-"YlGnBu",4,"seq",,1,"B",255,255,204,
-,,,,2,"E",161,218,180,
-,,,,3,"G",65,182,196,
-,,,,4,"J",34,94,168,
-"YlGnBu",5,"seq",,1,"B",255,255,204,
-,,,,2,"E",161,218,180,
-,,,,3,"G",65,182,196,
-,,,,4,"I",44,127,184,
-,,,,5,"K",37,52,148,
-"YlGnBu",6,"seq",,1,"B",255,255,204,
-,,,,2,"D",199,233,180,
-,,,,3,"F",127,205,187,
-,,,,4,"G",65,182,196,
-,,,,5,"I",44,127,184,
-,,,,6,"K",37,52,148,
-"YlGnBu",7,"seq",,1,"B",255,255,204,
-,,,,2,"D",199,233,180,
-,,,,3,"F",127,205,187,
-,,,,4,"G",65,182,196,
-,,,,5,"H",29,145,192,
-,,,,6,"J",34,94,168,
-,,,,7,"L",12,44,132,
-"YlGnBu",8,"seq",,1,"A",255,255,217,
-,,,,2,"C",237,248,177,
-,,,,3,"D",199,233,180,
-,,,,4,"F",127,205,187,
-,,,,5,"G",65,182,196,
-,,,,6,"H",29,145,192,
-,,,,7,"J",34,94,168,
-,,,,8,"L",12,44,132,
-"YlGnBu",9,"seq",,1,"A",255,255,217,
-,,,,2,"C",237,248,177,
-,,,,3,"D",199,233,180,
-,,,,4,"F",127,205,187,
-,,,,5,"G",65,182,196,
-,,,,6,"H",29,145,192,
-,,,,7,"J",34,94,168,
-,,,,8,"K",37,52,148,
-,,,,9,"M",8,29,88,
-"YlOrBr",3,"seq",,1,"C",255,247,188,"Sequential"
-,,,,2,"F",254,196,79,
-,,,,3,"I",217,95,14,
-"YlOrBr",4,"seq",,1,"B",255,255,212,
-,,,,2,"E",254,217,142,
-,,,,3,"G",254,153,41,
-,,,,4,"J",204,76,2,
-"YlOrBr",5,"seq",,1,"B",255,255,212,
-,,,,2,"E",254,217,142,
-,,,,3,"G",254,153,41,
-,,,,4,"I",217,95,14,
-,,,,5,"K",153,52,4,
-"YlOrBr",6,"seq",,1,"B",255,255,212,
-,,,,2,"D",254,227,145,
-,,,,3,"F",254,196,79,
-,,,,4,"G",254,153,41,
-,,,,5,"I",217,95,14,
-,,,,6,"K",153,52,4,
-"YlOrBr",7,"seq",,1,"B",255,255,212,
-,,,,2,"D",254,227,145,
-,,,,3,"F",254,196,79,
-,,,,4,"G",254,153,41,
-,,,,5,"H",236,112,20,
-,,,,6,"J",204,76,2,
-,,,,7,"L",140,45,4,
-"YlOrBr",8,"seq",,1,"A",255,255,229,
-,,,,2,"C",255,247,188,
-,,,,3,"D",254,227,145,
-,,,,4,"F",254,196,79,
-,,,,5,"G",254,153,41,
-,,,,6,"H",236,112,20,
-,,,,7,"J",204,76,2,
-,,,,8,"L",140,45,4,
-"YlOrBr",9,"seq",,1,"A",255,255,229,
-,,,,2,"C",255,247,188,
-,,,,3,"D",254,227,145,
-,,,,4,"F",254,196,79,
-,,,,5,"G",254,153,41,
-,,,,6,"H",236,112,20,
-,,,,7,"J",204,76,2,
-,,,,8,"K",153,52,4,
-,,,,9,"M",102,37,6,
-"YlOrRd",3,"seq",,1,"C",255,237,160,"Sequential"
-,,,,2,"F",254,178,76,
-,,,,3,"I",240,59,32,
-"YlOrRd",4,"seq",,1,"B",255,255,178,
-,,,,2,"E",254,204,92,
-,,,,3,"G",253,141,60,
-,,,,4,"J",227,26,28,
-"YlOrRd",5,"seq",,1,"B",255,255,178,
-,,,,2,"E",254,204,92,
-,,,,3,"G",253,141,60,
-,,,,4,"I",240,59,32,
-,,,,5,"K",189,0,38,
-"YlOrRd",6,"seq",,1,"B",255,255,178,
-,,,,2,"D",254,217,118,
-,,,,3,"F",254,178,76,
-,,,,4,"G",253,141,60,
-,,,,5,"I",240,59,32,
-,,,,6,"K",189,0,38,
-"YlOrRd",7,"seq",,1,"B",255,255,178,
-,,,,2,"D",254,217,118,
-,,,,3,"F",254,178,76,
-,,,,4,"G",253,141,60,
-,,,,5,"H",252,78,42,
-,,,,6,"J",227,26,28,
-,,,,7,"L",177,0,38,
-"YlOrRd",8,"seq",,1,"A",255,255,204,
-,,,,2,"C",255,237,160,
-,,,,3,"D",254,217,118,
-,,,,4,"F",254,178,76,
-,,,,5,"G",253,141,60,
-,,,,6,"H",252,78,42,
-,,,,7,"J",227,26,28,
-,,,,8,"L",177,0,38,
-"YlOrRd",9,"seq",,1,"A",255,255,204,
-,,,,2,"C",255,237,160,
-,,,,3,"D",254,217,118,
-,,,,4,"F",254,178,76,
-,,,,5,"G",253,141,60,
-,,,,6,"H",252,78,42,
-,,,,7,"J",227,26,28,
-,,,,8,"K",189,0,38,
-,,,,9,"M",128,0,38,
-,,,,,,,,,
-"Apache-Style Software License for ColorBrewer software and ColorBrewer Color Schemes",,,,,,,,,
-,,,,,,,,,
-"Copyright (c) 2002 Cynthia Brewer, Mark Harrower, and The Pennsylvania State University.",,,,,,,,,
-,,,,,,,,,
-"Licensed under the Apache License, Version 2.0 (the ""License""); you may not use this file except in compliance with the License.",,,,,,,,,
-"You may obtain a copy of the License at",,,,,,,,,
-,,,,,,,,,
-"       http://www.apache.org/licenses/LICENSE-2.0",,,,,,,,,
-,,,,,,,,,
-"Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an ""AS IS"" BASIS,",,,,,,,,,
-"WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.",,,,,,,,,
-"See the License for the specific language governing permissions and limitations under the License.",,,,,,,,,
-,,,,,,,,,
-,,,,,,,,,
-"Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:",,,,,,,,,
-"1. Redistributions as source code must retain the above copyright notice, this list of conditions and the following disclaimer.",,,,,,,,,
-"2. The end-user documentation included with the redistribution, if any, must include the following acknowledgment:",,,,,,,,,
-"This product includes color specifications and designs developed by Cynthia Brewer (http://colorbrewer.org/).",,,,,,,,,
-"Alternately, this acknowledgment may appear in the software itself, if and wherever such third-party acknowledgments normally appear.",,,,,,,,,
-"4. The name ""ColorBrewer"" must not be used to endorse or promote products derived from this software without prior written permission. ",,,,,,,,,
-"For written permission, please contact Cynthia Brewer at cbrewer@psu.edu.",,,,,,,,,
-"5. Products derived from this software may not be called ""ColorBrewer"", nor may ""ColorBrewer"" appear in their name, without prior written permission of Cynthia Brewer.",,,,,,,,,
-</value>
-  </data>
-  <data name="Func_LOOKUP_IndexDescription" xml:space="preserve">
-    <value>Lookup index that can be matched by the key expression</value>
   </data>
   <data name="icon_search_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3198,27 +1177,6 @@ Returns: {0}</value>
         SvzxYKJFig4vQiyoESNHiwknLozY8GHDkygbBgQAOw==
 </value>
   </data>
-  <data name="DeleteConfirmation" xml:space="preserve">
-    <value>Do you want to remove the selected item?</value>
-  </data>
-  <data name="LoadProcedureVersionExecutionNotSupported" xml:space="preserve">
-    <value>This connection does not support executing this type of Load Procedure</value>
-  </data>
-  <data name="OverwriteResource" xml:space="preserve">
-    <value>This resource already exists, continue with save?</value>
-  </data>
-  <data name="Func_MAPNAME_Description" xml:space="preserve">
-    <value>Returns the active map name</value>
-  </data>
-  <data name="TextNotFound" xml:space="preserve">
-    <value>Text Not Found</value>
-  </data>
-  <data name="XmlDocIsValid" xml:space="preserve">
-    <value>Document is valid</value>
-  </data>
-  <data name="CustomCommandsImported" xml:space="preserve">
-    <value>{0} custom commands imported from {1}. The following commands had to be renamed to prevent clashes: {2}</value>
-  </data>
   <data name="icon_forward_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIQcALa4vIaKkNbe4tjZ29vc3uTn6ufq7ejr7uXo6+Hk58PK0M7V28zT2cHIzs3T2svR
@@ -3227,27 +1185,6 @@ Returns: {0}</value>
         AIJFhAdCGjBQAUGBAhEsfOQAwMCCBQ4YPJAw4QIGBQ0+thTAsydPBRQsaiAQoKhRoxsyWBxAQOCAp1AH
         AEiwtKnDqQGYTmSZ1epEAFq3cggrVmFAADs=
 </value>
-  </data>
-  <data name="Func_IF_FalseValueDescription" xml:space="preserve">
-    <value>Returned if condition is false</value>
-  </data>
-  <data name="PromptRepairBrokenFeatureSource" xml:space="preserve">
-    <value>The resource id {0} could not be found. You will now be prompted to select the correct feature source</value>
-  </data>
-  <data name="PackageBuildError" xml:space="preserve">
-    <value>An error occured while building package: {0}</value>
-  </data>
-  <data name="UnitsMs" xml:space="preserve">
-    <value>ms</value>
-  </data>
-  <data name="SymbolTypeNotSupported" xml:space="preserve">
-    <value>Only symbols of type "Mark" and "Font" are currently supported</value>
-  </data>
-  <data name="OdbcNoMarkedFile" xml:space="preserve">
-    <value>Could not infer ODBC driver. No file specified</value>
-  </data>
-  <data name="RdbmsFeatureSource" xml:space="preserve">
-    <value>RDBMS Feature Source</value>
   </data>
   <data name="folder_horizontal" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3275,9 +1212,6 @@ Returns: {0}</value>
         kYESF0akyMlgZwIHHhl3mHHjpAcBL1kuFHGQcQ8eNkBMBFmwRoUBPXX3wBERxsqWK2UMABAwIHCBDgVw
         7AkAYHHjwA0pW8acubIAzp3ngM5MZk9AADs=
 </value>
-  </data>
-  <data name="Func_LOOKUP_ExpressionDescription" xml:space="preserve">
-    <value>Key expression</value>
   </data>
   <data name="icon_invokescript" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3322,12 +1256,6 @@ Returns: {0}</value>
         Q24iOWNAADs=
 </value>
   </data>
-  <data name="FileDownloaded" xml:space="preserve">
-    <value>File Downloaded to {0}</value>
-  </data>
-  <data name="ContentFileMissing" xml:space="preserve">
-    <value>The content file does not exist</value>
-  </data>
   <data name="icon_forward" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIUmAHGFoxQ1Z5TY9bS/z7nD0r7Y8sPd97nT7bjS7IG16sHb9cPe+IO57nCk2YK27HWp
@@ -3352,12 +1280,6 @@ Returns: {0}</value>
         y8xphm9HUbHunwwMI5nhuvDRgTFyPCQq4N9/+ATdd0wu3kGkzgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="InvalidColorComponent" xml:space="preserve">
-    <value>Invalid {0} color component {1} in line {2}</value>
-  </data>
-  <data name="FsPreview_DataPropertyNodeTooltip" xml:space="preserve">
-    <value>Name: {0}{8}Description: {1}{8}Data Type: {2}{8}Nullable: {3}{8}Read Only: {4}{8}Length: {5}{8}Precision: {6}{8}Scale: {7}</value>
-  </data>
   <data name="cross" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -3369,400 +1291,6 @@ Returns: {0}</value>
         DuCOGj30MhN+QlCw/GMwlwjGQY2edgUUzA3CAZzb7NyWF8zjOcDcIxzAeQG3kTiNmfATbAxTMNYRekIJ
         T87D2JM4jZmwAL8HwdiEyNw0wpMis5hHwRAYACOOyAw1ejCPMxMt6MKiF/T79OHsAd2AWgJYET3JfVjQ
         yd/5G8s+qAWdGU8YAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="FilterXml" xml:space="preserve">
-    <value>XML Files (.xml)|*.xml</value>
-  </data>
-  <data name="TestConnectionNoErrors" xml:space="preserve">
-    <value>Provider reported no errors</value>
-  </data>
-  <data name="Func_IF_ConditionDescription" xml:space="preserve">
-    <value>Boolean expression (filter) encapsulated in a string</value>
-  </data>
-  <data name="CommandTypesDataset" xml:space="preserve">
-    <value>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
-
-&lt;!-- 
-  Note to translators:
-    You can only translate &lt;Label&gt;, &lt;ToolTip&gt; and &lt;Description&gt;
-    If you translate any of the others, the editor won't work!
---&gt;
-
-&lt;CommandTypesDataset&gt;
-	&lt;Command&gt;
-		&lt;Command&gt;About&lt;/Command&gt;
-		&lt;Label&gt;About&lt;/Label&gt;
-		&lt;ToolTip&gt;About&lt;/ToolTip&gt;
-		&lt;Action&gt;About&lt;/Action&gt;
-		&lt;Description&gt;Display information about this application&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Buffer&lt;/Command&gt;
-		&lt;Label&gt;Buffer&lt;/Label&gt;
-		&lt;ToolTip&gt;Buffer&lt;/ToolTip&gt;
-		&lt;Action&gt;Buffer&lt;/Action&gt;
-		&lt;Description&gt;Create buffers around the selected features&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_buffer.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_buffer_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Clear Selection&lt;/Command&gt;
-		&lt;Label&gt;Clear Selection&lt;/Label&gt;
-		&lt;ToolTip&gt;Clear selection&lt;/ToolTip&gt;
-		&lt;Action&gt;Clear Selection&lt;/Action&gt;
-		&lt;Description&gt;Clear the current selections&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_clearselect.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_clearselect_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Copy Map&lt;/Command&gt;
-		&lt;Label&gt;Copy&lt;/Label&gt;
-		&lt;ToolTip&gt;Copy&lt;/ToolTip&gt;
-		&lt;Action&gt;Copy Map&lt;/Action&gt;
-		&lt;Description&gt;Copy current view of map to clipboard&lt;/Description&gt;
-		&lt;Viewers&gt;DWF&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_copy.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_copy_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Help&lt;/Command&gt;
-		&lt;Label&gt;Help&lt;/Label&gt;
-		&lt;ToolTip&gt;Help&lt;/ToolTip&gt;
-		&lt;Action&gt;Help&lt;/Action&gt;
-		&lt;Description&gt;Launch help for this application&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_help.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_help_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Initial Center and Scale&lt;/Command&gt;
-		&lt;Label&gt;Initial Center and Scale&lt;/Label&gt;
-		&lt;ToolTip&gt;Initial center and scale&lt;/ToolTip&gt;
-		&lt;Action&gt;Restore View&lt;/Action&gt;
-		&lt;Description&gt;Zoom to the initial center and scale of the map&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_restorecenter.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_restorecenter_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Initial Map View&lt;/Command&gt;
-		&lt;Label&gt;Initial Map View&lt;/Label&gt;
-		&lt;ToolTip&gt;Initial map view&lt;/ToolTip&gt;
-		&lt;Action&gt;Fit To Window&lt;/Action&gt;
-		&lt;Description&gt;Fit the initial view of the map to the window&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_fitwindow.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_fitwindow_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Invoke Script&lt;/Command&gt;
-		&lt;Label&gt;Invoke Script&lt;/Label&gt;
-		&lt;ToolTip&gt;Invoke script&lt;/ToolTip&gt;
-		&lt;Action&gt;Invoke Script&lt;/Action&gt;
-		&lt;Description&gt;Invoke a script command&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Custom&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_invokescript.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_invokescript_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Invoke URL&lt;/Command&gt;
-		&lt;Label&gt;Invoke URL&lt;/Label&gt;
-		&lt;ToolTip&gt;Invoke a command by accessing a URL&lt;/ToolTip&gt;
-		&lt;Action&gt;Invoke URL&lt;/Action&gt;
-		&lt;Description&gt;Invoke a URL command&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Custom&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_invokeurl.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_invokeurl_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Measure&lt;/Command&gt;
-		&lt;Label&gt;Measure&lt;/Label&gt;
-		&lt;ToolTip&gt;Measure&lt;/ToolTip&gt;
-		&lt;Action&gt;Measure&lt;/Action&gt;
-		&lt;Description&gt;Measure distances on the map&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_measure.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_measure_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Next View&lt;/Command&gt;
-		&lt;Label&gt;Next View&lt;/Label&gt;
-		&lt;ToolTip&gt;Next View&lt;/ToolTip&gt;
-		&lt;Action&gt;Next View&lt;/Action&gt;
-		&lt;Description&gt;Buffer&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_zoomnext.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_zoomnext_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Pan&lt;/Command&gt;
-		&lt;Label&gt;Pan&lt;/Label&gt;
-		&lt;ToolTip&gt;Pan mode&lt;/ToolTip&gt;
-		&lt;Action&gt;Pan&lt;/Action&gt;
-		&lt;Description&gt;Drag the map to view areas out of range&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_pan.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_pan_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Pan Down&lt;/Command&gt;
-		&lt;Label&gt;Pan Down&lt;/Label&gt;
-		&lt;ToolTip&gt;Pan down&lt;/ToolTip&gt;
-		&lt;Action&gt;Pan Down&lt;/Action&gt;
-		&lt;Description&gt;Pan down by a preset increment&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_pandown.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_pandown_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Pan Left&lt;/Command&gt;
-		&lt;Label&gt;Pan Left&lt;/Label&gt;
-		&lt;ToolTip&gt;Pan left&lt;/ToolTip&gt;
-		&lt;Action&gt;Pan Left&lt;/Action&gt;
-		&lt;Description&gt;Pan left by a preset increment&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_panleft.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_panleft_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Pan Right&lt;/Command&gt;
-		&lt;Label&gt;Pan Right&lt;/Label&gt;
-		&lt;ToolTip&gt;Pan right&lt;/ToolTip&gt;
-		&lt;Action&gt;Pan Right&lt;/Action&gt;
-		&lt;Description&gt;Pan right by a preset increment&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_panright.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_panright_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Pan Up&lt;/Command&gt;
-		&lt;Label&gt;Pan Up&lt;/Label&gt;
-		&lt;ToolTip&gt;Pan up&lt;/ToolTip&gt;
-		&lt;Action&gt;Pan Up&lt;/Action&gt;
-		&lt;Description&gt;Pan up by a preset increment&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_panup.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_panup_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Previous View&lt;/Command&gt;
-		&lt;Label&gt;Previous View&lt;/Label&gt;
-		&lt;ToolTip&gt;Previous view&lt;/ToolTip&gt;
-		&lt;Action&gt;Previous View&lt;/Action&gt;
-		&lt;Description&gt;Go to previous view&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_zoomprev.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_zoomprev_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Print&lt;/Command&gt;
-		&lt;Label&gt;Print&lt;/Label&gt;
-		&lt;ToolTip&gt;Print&lt;/ToolTip&gt;
-		&lt;Action&gt;Print&lt;/Action&gt;
-		&lt;Description&gt;Print with optional layout&lt;/Description&gt;
-		&lt;Viewers&gt;DWF&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_print.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_print_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Refresh Map&lt;/Command&gt;
-		&lt;Label&gt;Refresh Map&lt;/Label&gt;
-		&lt;ToolTip&gt;Refresh map&lt;/ToolTip&gt;
-		&lt;Action&gt;Refresh&lt;/Action&gt;
-		&lt;Description&gt;Refresh map and reload all layers keeping current center and scale&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_refreshmap.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_refreshmap_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Search&lt;/Command&gt;
-		&lt;Label&gt;Search&lt;/Label&gt;
-		&lt;ToolTip&gt;Search&lt;/ToolTip&gt;
-		&lt;Action&gt;Search&lt;/Action&gt;
-		&lt;Description&gt;Perform a search&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Custom&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_search.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_search_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Select&lt;/Command&gt;
-		&lt;Label&gt;Select&lt;/Label&gt;
-		&lt;ToolTip&gt;Select mode&lt;/ToolTip&gt;
-		&lt;Action&gt;Select&lt;/Action&gt;
-		&lt;Description&gt;Select features by clicking and dragging&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_select.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_select_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Select Polygon&lt;/Command&gt;
-		&lt;Label&gt;Select Polygon&lt;/Label&gt;
-		&lt;ToolTip&gt;Select polygon&lt;/ToolTip&gt;
-		&lt;Action&gt;Select Polygon&lt;/Action&gt;
-		&lt;Description&gt;Create a polygon to select all features that fall within&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_selectpolygon.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_selectpolygon_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Select Radius&lt;/Command&gt;
-		&lt;Label&gt;Select Radius&lt;/Label&gt;
-		&lt;ToolTip&gt;Select radius&lt;/ToolTip&gt;
-		&lt;Action&gt;Select Radius&lt;/Action&gt;
-		&lt;Description&gt;Click and drag to select all features inside the circle&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_selectradius.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_selectradius_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Select Within&lt;/Command&gt;
-		&lt;Label&gt;Select Within&lt;/Label&gt;
-		&lt;ToolTip&gt;Select within&lt;/ToolTip&gt;
-		&lt;Action&gt;Select Within&lt;/Action&gt;
-		&lt;Description&gt;Select features that fall within currently selected areas&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_selectwithin.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_selectwithin_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;View Options&lt;/Command&gt;
-		&lt;Label&gt;View Options&lt;/Label&gt;
-		&lt;ToolTip&gt;View options&lt;/ToolTip&gt;
-		&lt;Action&gt;View Options&lt;/Action&gt;
-		&lt;Description&gt;View Options&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_viewoptions.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_viewoptions_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Zoom&lt;/Command&gt;
-		&lt;Label&gt;Zoom Dynamic&lt;/Label&gt;
-		&lt;ToolTip&gt;Zoom dynamic&lt;/ToolTip&gt;
-		&lt;Action&gt;Zoom&lt;/Action&gt;
-		&lt;Description&gt;Zoom dynamically by clicking and dragging&lt;/Description&gt;
-		&lt;Viewers&gt;DWF&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_zoom.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_zoom_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Zoom In&lt;/Command&gt;
-		&lt;Label&gt;Zoom In&lt;/Label&gt;
-		&lt;ToolTip&gt;Zoom in&lt;/ToolTip&gt;
-		&lt;Action&gt;Zoom In&lt;/Action&gt;
-		&lt;Description&gt;Zoom in by a preset increment&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_zoomin.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_zoomin_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Zoom Out&lt;/Command&gt;
-		&lt;Label&gt;Zoom Out&lt;/Label&gt;
-		&lt;ToolTip&gt;Zoom out&lt;/ToolTip&gt;
-		&lt;Action&gt;Zoom Out&lt;/Action&gt;
-		&lt;Description&gt;Zoom out by a preset increment&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_zoomout.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_zoomout_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Zoom Rectangle&lt;/Command&gt;
-		&lt;Label&gt;Zoom Rectangle&lt;/Label&gt;
-		&lt;ToolTip&gt;Zoom to rectangle&lt;/ToolTip&gt;
-		&lt;Action&gt;Zoom Rectangle&lt;/Action&gt;
-		&lt;Description&gt;Zoom in on an area&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_zoomrect.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_zoomrect_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Zoom Selection&lt;/Command&gt;
-		&lt;Label&gt;Zoom Selection&lt;/Label&gt;
-		&lt;ToolTip&gt;Zoom to selection&lt;/ToolTip&gt;
-		&lt;Action&gt;Zoom To Selection&lt;/Action&gt;
-		&lt;Description&gt;Zoom to extents of selected features&lt;/Description&gt;
-		&lt;Viewers&gt;All&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_zoomselect.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_zoomselect_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-	&lt;Command&gt;
-		&lt;Command&gt;Get Printable Page&lt;/Command&gt;
-		&lt;Label&gt;Printable Page&lt;/Label&gt;
-		&lt;ToolTip&gt;Get printable page&lt;/ToolTip&gt;
-		&lt;Action&gt;Get Printable Page&lt;/Action&gt;
-		&lt;Description&gt;Get printer-friendly page&lt;/Description&gt;
-		&lt;Viewers&gt;AJAX&lt;/Viewers&gt;
-		&lt;Type&gt;Built-In&lt;/Type&gt;
-		&lt;EnabledIcon&gt;../stdicons/icon_printablepage.gif&lt;/EnabledIcon&gt;		
-		&lt;DisabledIcon&gt;../stdicons/icon_printablepage_disabled.gif&lt;/DisabledIcon&gt;
-	&lt;/Command&gt;
-
-&lt;/CommandTypesDataset&gt;
 </value>
   </data>
   <data name="icon_zoomselect" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -3795,15 +1323,6 @@ Returns: {0}</value>
         AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="OdbcDriverExcel64" xml:space="preserve">
-    <value>{Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)}</value>
-  </data>
-  <data name="UnitsSeconds" xml:space="preserve">
-    <value>s</value>
-  </data>
-  <data name="TooManyIndiviualValuesError" xml:space="preserve">
-    <value>The selected column contains more than {0} different values, and thus cannot be used for theming with individual values</value>
-  </data>
   <data name="document--minus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -3817,15 +1336,6 @@ Returns: {0}</value>
         0yefT4jKptVQxVPJL4TyExPPiEEiRdBHj4davd5lc1dfkPzx+3kHEiEGFhoaEhsIb0kFODbQ1OzxbKrA
         lACZiQxWWpJfLHtSxLvclUw9S414aLe1tIQ/tLV9ew9yVzKg8REGvINQesvmrAAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="UnknownResourceTypes" xml:space="preserve">
-    <value>Unknown types</value>
-  </data>
-  <data name="NoSchemasInFeatureSource" xml:space="preserve">
-    <value>Feature Source has no schemas</value>
-  </data>
-  <data name="InvokeScriptCmdDescription" xml:space="preserve">
-    <value>Invoke Script Command</value>
   </data>
   <data name="drive-download" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3843,12 +1353,6 @@ Returns: {0}</value>
         I8qI49DQWxwYeDhJLnUY1AUFQ8VxnEmhUIj/A7nUoe5fouy03kA6Jw4AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="CheckGeometryFirst" xml:space="preserve">
-    <value>Ensure the Geometry box is checked</value>
-  </data>
-  <data name="NotATiledMap" xml:space="preserve">
-    <value>This is not a Map Definition with tiled layers</value>
-  </data>
   <data name="document--pencil" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -3865,15 +1369,6 @@ Returns: {0}</value>
         coazfwEpq4JeDHDvFwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="SaveResourceFirst" xml:space="preserve">
-    <value>Please save this resource first</value>
-  </data>
-  <data name="PreviewRecordCount" xml:space="preserve">
-    <value>{0} results found</value>
-  </data>
-  <data name="NotAFolder" xml:space="preserve">
-    <value>Not a folder: {0}</value>
-  </data>
   <data name="applications_stack" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -3886,18 +1381,6 @@ Returns: {0}</value>
         2CU7ZbdB8NxF72MBInbJTtltEJ5vWZZPtx3H7JKdstsgfN9Ed4EJwuWT5/XaW6yputouMn4B8esdOkQY
         S3EAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="ResourceDoesntExist" xml:space="preserve">
-    <value>Resource doesn't exist</value>
-  </data>
-  <data name="HeaderFileMissing" xml:space="preserve">
-    <value>The header file does not exist</value>
-  </data>
-  <data name="Func_IF_TrueValueDescription" xml:space="preserve">
-    <value>Returned if condition is true</value>
-  </data>
-  <data name="NoScalesToGenerate" xml:space="preserve">
-    <value>Number of Scales to generate cannot be less than or equal to 0</value>
   </data>
   <data name="table--arrow" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3936,12 +1419,6 @@ Returns: {0}</value>
         FQYMN3byCjya0A9hwzcNKmYUEAA7
 </value>
   </data>
-  <data name="FileCopyError" xml:space="preserve">
-    <value>An error occured while copying file: {0}</value>
-  </data>
-  <data name="TooManyValuesError" xml:space="preserve">
-    <value>The selected column contains more than {0} different values, and thus cannot be used for theming</value>
-  </data>
   <data name="globe--pencil" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -3962,20 +1439,6 @@ Returns: {0}</value>
         SERpAYmqu0eidU38ZHf2zvaEMJvlmccfIWXM8KMbnf+DySzPPPIbH8MN9etvR7oAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="CustomCommandsExported" xml:space="preserve">
-    <value>Custom commands exported to {0}</value>
-  </data>
-  <data name="ExtentsTransformationFailed" xml:space="preserve">
-    <value>Could not transform extent of layer {0} to the map definition's coordinate system. Extents ignored</value>
-  </data>
-  <data name="NoRestorePathWarning" xml:space="preserve">
-    <value>You have selected to restore the package at another location, but not entered one.
-This will cause the package to be restored a the root of the resource tree.
-Are you sure this is what you want?</value>
-  </data>
-  <data name="InvalidConnection" xml:space="preserve">
-    <value>This is not a valid connection: {0}</value>
-  </data>
   <data name="gear" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -3992,20 +1455,8 @@ Are you sure this is what you want?</value>
         QmCC
 </value>
   </data>
-  <data name="FieldRequired" xml:space="preserve">
-    <value>This field is required: {0}</value>
-  </data>
   <data name="water" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\water.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="SelectPackageFile" xml:space="preserve">
-    <value>Select the package file to edit</value>
-  </data>
-  <data name="QualitativeName" xml:space="preserve">
-    <value>Qualitative</value>
-  </data>
-  <data name="TextDownloading" xml:space="preserve">
-    <value>Downloading</value>
   </data>
   <data name="icon_fitwindow_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4019,18 +1470,12 @@ Are you sure this is what you want?</value>
         sPPAGaBDix4NOiAAOw==
 </value>
   </data>
-  <data name="TextSearchTextNotFound" xml:space="preserve">
-    <value>Search Text Not Found</value>
-  </data>
   <data name="icon_null" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIECANji87HH6f///wAAACH/C05FVFNDQVBFMi4wAwEBAAAh+QQBAAACACwAAAAAEAAQ
         AAAIRAAFCBxIsKDBgwYDKFzIUCHBAAAiSpwY4OHEiwAqDoSIUaJGgRw7ZrQocuTGkiZBovwoIGRHli4x
         wlz5sKFNhDhzHgwIADs=
 </value>
-  </data>
-  <data name="ConfirmDeleteResourceData" xml:space="preserve">
-    <value>Are you sure you want to delete this resource data?</value>
   </data>
   <data name="magnifier" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4048,9 +1493,6 @@ Are you sure this is what you want?</value>
         gJgPiLmBmBOI2aB6mIE0IwDSnmBluZcHuwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="OdbcCannotInferDriver" xml:space="preserve">
-    <value>Could not infer ODBC driver from file name: {0}</value>
-  </data>
   <data name="arrow-curve" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -4065,36 +1507,6 @@ Are you sure this is what you want?</value>
         ETL/DJt9RRWbbhADNgBTA1XnwSyuiaJMmNm6eDFQxBgLNgCK6QCxOlDNImaD2HAgWxiIeYGYHYiZQSZx
         AbE4EEthwRJAMTEgFgFiAahGkHqQZhYgZqI8M1GSlUF6AcIC84BckOgRAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="FiletypeMGP" xml:space="preserve">
-    <value>MapGuide Packages ({0})</value>
-  </data>
-  <data name="PropEnumNoValues" xml:space="preserve">
-    <value>Could not find possible values for enumerable property</value>
-  </data>
-  <data name="ErrorLoadingWmsConfig" xml:space="preserve">
-    <value>Error loading WMS configuration document: {0}. A default document will be created</value>
-  </data>
-  <data name="FdoConnectionStatus" xml:space="preserve">
-    <value>FDO Connection Status: {0}</value>
-  </data>
-  <data name="WidgetUpdated" xml:space="preserve">
-    <value>Widget updated</value>
-  </data>
-  <data name="Func_LOOKUP_Description" xml:space="preserve">
-    <value>Lookup table for style theming</value>
-  </data>
-  <data name="ColHeaderValue" xml:space="preserve">
-    <value>Value</value>
-  </data>
-  <data name="PromptResetOdbcConfigDocument" xml:space="preserve">
-    <value>Changing the DSN will reset the current configuration document. Proceed?</value>
-  </data>
-  <data name="OverwriteDisplayScales" xml:space="preserve">
-    <value>Overwrite the current display scales?</value>
-  </data>
-  <data name="RequiredServiceNotSupported" xml:space="preserve">
-    <value>This connection does not support required service: </value>
   </data>
   <data name="icon_panup_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4158,12 +1570,6 @@ Are you sure this is what you want?</value>
         AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="SelectLayer" xml:space="preserve">
-    <value>Select Layer</value>
-  </data>
-  <data name="Func_SESSION_Description" xml:space="preserve">
-    <value>Returns the active session</value>
-  </data>
   <data name="arrow-curve-180-left" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -4178,18 +1584,6 @@ Are you sure this is what you want?</value>
         wGZf4cERMv8MCDOLaSAkkVhsukEgdVXIahiB8qxAzAXEAsyG8SHM1sULgWwVINYEYj0gNgJiY2QMVAOy
         XgFkNsgAZqghHECaG4j5gVgIiEWBWByIJYFYCgsWoDwzUZKVQXoB+7/02cSOHsEAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="EmptyText" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="SaveResource" xml:space="preserve">
-    <value>Save Resource</value>
-  </data>
-  <data name="FilterDwf" xml:space="preserve">
-    <value>Autodesk DWF (*.dwf)|*.dwf</value>
-  </data>
-  <data name="NewFolder" xml:space="preserve">
-    <value>New folder</value>
   </data>
   <data name="icon_print" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4219,9 +1613,6 @@ Are you sure this is what you want?</value>
         c3ASpCfgKOAQwNWJO8hjzjPsDlbGOi57/0x7+cpY9y8yIme1LfwcuAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Confirm</value>
-  </data>
   <data name="icon_select_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIZYAM3Q1fn58aKpsqKps/Dw56GosrzBxsLGyK6xtujp68jM0fT19bS4vuvs7KWstvn5
@@ -4236,15 +1627,6 @@ Are you sure this is what you want?</value>
         AgYTKwZIyICycEMDLAkQlKDwxEdHHTyQVLjQEQsQCFMKBgQAOw==
 </value>
   </data>
-  <data name="MoreThanLabel" xml:space="preserve">
-    <value>More than {0}</value>
-  </data>
-  <data name="ColorCountError" xml:space="preserve">
-    <value>Failed to read {0} color(s) in line {1}</value>
-  </data>
-  <data name="SymbolGraphicsImagePlaceholder" xml:space="preserve">
-    <value>&lt;image&gt;</value>
-  </data>
   <data name="sum" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -4254,9 +1636,6 @@ Are you sure this is what you want?</value>
         gzTDXAWkYeJ4DeAEKlwPxA9x4A1AcS58XgAZIAzEUjiwKF4DyMlUA58XALSICQGuLQH3AAAAAElFTkSu
         QmCC
 </value>
-  </data>
-  <data name="FailEnumDataStores" xml:space="preserve">
-    <value>Failed to enumerate data stores. Reason: {0}</value>
   </data>
   <data name="application-search-result" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4275,12 +1654,6 @@ Are you sure this is what you want?</value>
         mEwmE4KEACz0Y8g4ft7GTSrUgpqQAl1DV5EMXUFSMYhCKOAXo8sWCvVAT3EAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="TextNoItemSelected" xml:space="preserve">
-    <value>No Items Selected</value>
-  </data>
-  <data name="InvalidColumnNameError" xml:space="preserve">
-    <value>Invalid column name</value>
-  </data>
   <data name="grid" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -4289,9 +1662,6 @@ Are you sure this is what you want?</value>
         KwlkZsHNBZFRYHSrFe40gcw8wZMEMrNgdkFkEhjdaoWFJpCZJ1hJIDMLXi6InARGt1rhTRPIXCbYvs+f
         zGQOweCXH55vQ9AfQtD5ofccGoJ+VwR7fmXc/QGbydmsomqW4QAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="ExportNoCommandsSelected" xml:space="preserve">
-    <value>No commands selected. Nothing to export</value>
   </data>
   <data name="ui_menu" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4303,166 +1673,6 @@ Are you sure this is what you want?</value>
         r9fRkSELlmV90aNtW6HIkAXTNL+LosApkQXDMH6apsG6roUiQxZ0Xf+tqgpt28ayLEdHhizM53P/crng
         +XwWigxZkCTpTZblvymRBT4z3gvvVTAys38hdsO4G3bw/gAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="FilterSqlite" xml:space="preserve">
-    <value>SQLite files|*.sqlite;*.db;*.sdx;*.slt</value>
-  </data>
-  <data name="NewLayer" xml:space="preserve">
-    <value>New Layer</value>
-  </data>
-  <data name="Func_ARGB_RValueDescription" xml:space="preserve">
-    <value>Red value</value>
-  </data>
-  <data name="GeometryStyleComboDataset" xml:space="preserve">
-    <value>&lt;?xml version="1.0" standalone="yes"?&gt;
-&lt;ComboBoxDataSet&gt;
-	&lt;SymbolMark&gt;
-		&lt;Display&gt;Square&lt;/Display&gt;
-		&lt;Value&gt;Square&lt;/Value&gt;
-	&lt;/SymbolMark&gt;
-	&lt;SymbolMark&gt;
-		&lt;Display&gt;Circle&lt;/Display&gt;
-		&lt;Value&gt;Circle&lt;/Value&gt;
-	&lt;/SymbolMark&gt;
-	&lt;SymbolMark&gt;
-		&lt;Display&gt;Triangle&lt;/Display&gt;
-		&lt;Value&gt;Triangle&lt;/Value&gt;
-	&lt;/SymbolMark&gt;
-	&lt;SymbolMark&gt;
-		&lt;Display&gt;Star&lt;/Display&gt;
-		&lt;Value&gt;Star&lt;/Value&gt;
-	&lt;/SymbolMark&gt;
-	&lt;SymbolMark&gt;
-		&lt;Display&gt;Cross&lt;/Display&gt;
-		&lt;Value&gt;Cross&lt;/Value&gt;
-	&lt;/SymbolMark&gt;
-	&lt;SymbolMark&gt;
-		&lt;Display&gt;X - Mark&lt;/Display&gt;
-		&lt;Value&gt;X&lt;/Value&gt;
-	&lt;/SymbolMark&gt;
-	&lt;SymbolMark&gt;
-		&lt;Display&gt;Font...&lt;/Display&gt;
-		&lt;Value&gt;&lt;/Value&gt;
-	&lt;/SymbolMark&gt;
-	&lt;SymbolMark&gt;
-		&lt;Display&gt;Symbol...&lt;/Display&gt;
-		&lt;Value&gt;&lt;/Value&gt;
-	&lt;/SymbolMark&gt;
-	
-	&lt;SizeContext&gt;
-		&lt;Display&gt;Device space&lt;/Display&gt;
-		&lt;Value&gt;DeviceUnits&lt;/Value&gt;
-	&lt;/SizeContext&gt;
-	&lt;SizeContext&gt;
-		&lt;Display&gt;Map space&lt;/Display&gt;
-		&lt;Value&gt;MappingUnits&lt;/Value&gt;
-	&lt;/SizeContext&gt;
-	
-	&lt;Units&gt;
-		&lt;Display&gt;Points&lt;/Display&gt;
-		&lt;Value&gt;Points&lt;/Value&gt;
-	&lt;/Units&gt;
-	&lt;Units&gt;
-		&lt;Display&gt;Inches&lt;/Display&gt;
-		&lt;Value&gt;Inches&lt;/Value&gt;
-	&lt;/Units&gt;
-	&lt;Units&gt;
-		&lt;Display&gt;Feet&lt;/Display&gt;
-		&lt;Value&gt;Feet&lt;/Value&gt;
-	&lt;/Units&gt;
-	&lt;Units&gt;
-		&lt;Display&gt;Yards&lt;/Display&gt;
-		&lt;Value&gt;Yards&lt;/Value&gt;
-	&lt;/Units&gt;
-	&lt;Units&gt;
-		&lt;Display&gt;Millimeters&lt;/Display&gt;
-		&lt;Value&gt;Millimeters&lt;/Value&gt;
-	&lt;/Units&gt;
-	&lt;Units&gt;
-		&lt;Display&gt;Centimeters&lt;/Display&gt;
-		&lt;Value&gt;Centimeters&lt;/Value&gt;
-	&lt;/Units&gt;
-	&lt;Units&gt;
-		&lt;Display&gt;Meters&lt;/Display&gt;
-		&lt;Value&gt;Meters&lt;/Value&gt;
-	&lt;/Units&gt;
-	&lt;Units&gt;
-		&lt;Display&gt;Kilometers&lt;/Display&gt;
-		&lt;Value&gt;Kilometers&lt;/Value&gt;
-	&lt;/Units&gt;
-
-	&lt;Rotation&gt;
-		&lt;Display&gt;0 degrees&lt;/Display&gt;
-		&lt;Value&gt;0&lt;/Value&gt;
-	&lt;/Rotation&gt;
-	&lt;Rotation&gt;
-		&lt;Display&gt;30 degrees&lt;/Display&gt;
-		&lt;Value&gt;30&lt;/Value&gt;
-	&lt;/Rotation&gt;
-	&lt;Rotation&gt;
-		&lt;Display&gt;45 degrees&lt;/Display&gt;
-		&lt;Value&gt;45&lt;/Value&gt;
-	&lt;/Rotation&gt;
-	&lt;Rotation&gt;
-		&lt;Display&gt;90 degrees&lt;/Display&gt;
-		&lt;Value&gt;90&lt;/Value&gt;
-	&lt;/Rotation&gt;
-  &lt;Rotation&gt;
-    &lt;Display&gt;Expression...&lt;/Display&gt;
-    &lt;Value&gt;Expression...&lt;/Value&gt;
-  &lt;/Rotation&gt;
-
-  &lt;BackgroundType&gt;
-    &lt;Display&gt;Ghosted&lt;/Display&gt;
-    &lt;Value&gt;Ghosted&lt;/Value&gt;
-  &lt;/BackgroundType&gt;
-  &lt;BackgroundType&gt;
-    &lt;Display&gt;Opaque&lt;/Display&gt;
-    &lt;Value&gt;Opaque&lt;/Value&gt;
-  &lt;/BackgroundType&gt;
-  &lt;BackgroundType&gt;
-    &lt;Display&gt;Transparent&lt;/Display&gt;
-    &lt;Value&gt;Transparent&lt;/Value&gt;
-  &lt;/BackgroundType&gt;
-
-  &lt;Vertical&gt;
-    &lt;Display&gt;Baseline&lt;/Display&gt;
-    &lt;Value&gt;'Baseline'&lt;/Value&gt;
-  &lt;/Vertical&gt;
-  &lt;Vertical&gt;
-    &lt;Display&gt;Bottom&lt;/Display&gt;
-    &lt;Value&gt;'Bottom'&lt;/Value&gt;
-  &lt;/Vertical&gt;
-  &lt;Vertical&gt;
-    &lt;Display&gt;Capline&lt;/Display&gt;
-    &lt;Value&gt;'Capline'&lt;/Value&gt;
-  &lt;/Vertical&gt;
-  &lt;Vertical&gt;
-    &lt;Display&gt;Halfline&lt;/Display&gt;
-    &lt;Value&gt;'Halfline'&lt;/Value&gt;
-  &lt;/Vertical&gt;
-  &lt;Vertical&gt;
-    &lt;Display&gt;Top&lt;/Display&gt;
-    &lt;Value&gt;'Top'&lt;/Value&gt;
-  &lt;/Vertical&gt;
-  &lt;Vertical&gt;
-    &lt;Display&gt;Expression...&lt;/Display&gt;
-    &lt;Value&gt;Expression...&lt;/Value&gt;
-  &lt;/Vertical&gt;
-
-  &lt;Horizontal&gt;
-    &lt;Display&gt;Center&lt;/Display&gt;
-    &lt;Value&gt;'Center'&lt;/Value&gt;
-  &lt;/Horizontal&gt;
-  &lt;Horizontal&gt;
-    &lt;Display&gt;Expression...&lt;/Display&gt;
-    &lt;Value&gt;Expression...&lt;/Value&gt;
-  &lt;/Horizontal&gt;
-
-&lt;/ComboBoxDataSet&gt;</value>
-  </data>
-  <data name="NotSessionBasedId" xml:space="preserve">
-    <value>Resource ID must not be session based</value>
   </data>
   <data name="layer--minus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4478,13 +1688,6 @@ Are you sure this is what you want?</value>
         +jeza5PsLzo+t6I60724XCV15xXEdacKtXs5+VqXKUO4iSdgr8OHSisuHrnypO3oVctdI7CLBi1uYGKy
         mOP/CY3pN4OVZi86RL5AAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="FsPreview_ClassNodeTooltip" xml:space="preserve">
-    <value>Name: {0}{3}Description: {1}{3}Geometry Property: {2}</value>
-  </data>
-  <data name="PropertyTooltip" xml:space="preserve">
-    <value>Property: {0}
-Type: {1}</value>
   </data>
   <data name="icon_selectpolygon_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4504,15 +1707,6 @@ Type: {1}</value>
         OPvL4ITiC2gONJiHpilW7dwMFH+9hcQYEb9B2bQ+83uiHufSWtKTBnXyZ7j9Yfk7KSCJ1YgNPojFKxzB
         PhRhF3ZgG/KwBTnIQgbC2KBCcgg6+sHaBpv8yur9BCINtCQt9llRAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="SelectSpatialContext" xml:space="preserve">
-    <value>Select Spatial Context</value>
-  </data>
-  <data name="NoColumnValuesError" xml:space="preserve">
-    <value>No values found in selected column</value>
-  </data>
-  <data name="ValidateOutputfileError" xml:space="preserve">
-    <value>An error occured while validating the output file path: {0}</value>
   </data>
   <data name="icon_printablepage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4538,9 +1732,6 @@ Type: {1}</value>
         iCR5lADUAAIaajQZwOrVrBgfRhzQNQJQoAwJGlQQwKyAt2AvCgQaVy5DrHbz2g0IADs=
 </value>
   </data>
-  <data name="InvalidValueError" xml:space="preserve">
-    <value>Invalid value</value>
-  </data>
   <data name="ui_splitter_horizontal" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -4551,12 +1742,6 @@ Type: {1}</value>
         B7rFwLIs/edVNAwD/K24WDdNkxzHORusxoPkz8K78CHiT+EfEbXwJrwIj1qzNTBk4Wm+OK+zAK1BiBpi
         rOMgNe5zlfe8xLt0cALSyt8vnqRT9gAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="FilterAll" xml:space="preserve">
-    <value>All File Types (*.*)|*.*</value>
-  </data>
-  <data name="Func_FEATURECLASS_Description" xml:space="preserve">
-    <value>Returns the active feature class name</value>
   </data>
   <data name="icon_panleft_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4591,15 +1776,6 @@ Type: {1}</value>
         oexK0NlKOiiuzXTdIFx3G3n76CZhe28Rwx+y4Aflu5kbswAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="FsPreview_RasterPropertyNodeTooltip" xml:space="preserve">
-    <value>Name: {0}{6}Description: {1}{6}Nullable: {2}{6}Image X Size: {3}{6}Image Y Size: {4}{6}Spatial Context: {5}</value>
-  </data>
-  <data name="SelectSymbolLibraryFirst" xml:space="preserve">
-    <value>Please specify the symbol library first</value>
-  </data>
-  <data name="ProcessedItem" xml:space="preserve">
-    <value>Processed: {0}</value>
-  </data>
   <data name="icon_search" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIcAAAAAAP///4CLnpWeriI3WjRJazVKbDRJajVKazdMbcHGziI8ZC1Ne0hadq+3wyA8
@@ -4622,12 +1798,6 @@ Type: {1}</value>
         4TljhiHBBg7Q6Natx1AeNBkFphlOfI+hNMEPqVm+fA3zgAA7
 </value>
   </data>
-  <data name="StandardQuery" xml:space="preserve">
-    <value>Standard Query</value>
-  </data>
-  <data name="FilterSdf" xml:space="preserve">
-    <value>Autodesk SDF (*.sdf)|*.sdf</value>
-  </data>
   <data name="icon_zoom_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIZfAHaFlJ2Sh9HW3Ojt8uDPvuPp79Tg5fP19uzw9O3x9OLo7t3l7PP1956foLa2t52d
@@ -4642,12 +1812,6 @@ Type: {1}</value>
         IsWNDklVONgwoMCCJiiMfNiS9AsSBy6qrOCRhEKDtgIvHClhI8aUHQ0CEMDbVkAAwYSTGkacOOHiwY0F
         GqYR2bHAgAA7
 </value>
-  </data>
-  <data name="RepositoryWipeWarning" xml:space="preserve">
-    <value>You have selected to restore the package at the root.
-You have also selected to delete the target before restoring.
-This will result in the entire repository being deleted and replaced with this package.
-Are you absolutely sure that is what you want?</value>
   </data>
   <data name="application_browser" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4683,9 +1847,6 @@ Are you absolutely sure that is what you want?</value>
         TkSuQmCC
 </value>
   </data>
-  <data name="InvalidFeatureSourceNoClasses" xml:space="preserve">
-    <value>Feature Source ({0}) has no usable feature classes. Choose a different feature source</value>
-  </data>
   <data name="icon_clearselect_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIZRAICAgMDAwPn5+fz8/Oru8OPhzubr7e3x8vHw5tPIoObY1b6/w9XYz8XJyOjn0bu2
@@ -4699,18 +1860,6 @@ Are you absolutely sure that is what you want?</value>
         Ig4oABCohAWQJSMeMNk4QUeBlRg8xIjghMQHASZpFAgBgAOIH1BODLnQwmFHABB2KGhg5IWPARQFSuiA
         4sYRGFgFKozSccGGJjZMAC0IoMKBJzh49EhSo+DGAwQMrBybFUDeDCuzOiTrcbDgwwQbKs4aEAA7
 </value>
-  </data>
-  <data name="NoTransformationRequired" xml:space="preserve">
-    <value>No transformation required</value>
-  </data>
-  <data name="PromptDeleteWidgetAndReferences" xml:space="preserve">
-    <value>Delete this widget and all references to it?</value>
-  </data>
-  <data name="QuestionAddItemToFlyout" xml:space="preserve">
-    <value>Add this item to the flyout? Clicking "No" will add it before the flyout</value>
-  </data>
-  <data name="Func_LOOKUP_ValueDescription" xml:space="preserve">
-    <value>Value that is returned when the key expression matches the associated index</value>
   </data>
   <data name="icon_zoomin_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4803,15 +1952,6 @@ Are you absolutely sure that is what you want?</value>
         1EDgYYYIIjMDlMlygoEMJ00gGCnw4AKFBajZNDgQoQKCMEJsuDhgQY1ChWgOkFmjMCAAOw==
 </value>
   </data>
-  <data name="InvalidRecordCountError" xml:space="preserve">
-    <value>Invalid record count in line {0}</value>
-  </data>
-  <data name="ExtendedClassTooltip" xml:space="preserve">
-    <value>Extended class based on: {0}</value>
-  </data>
-  <data name="Func_LAYERID_Description" xml:space="preserve">
-    <value>Returns the active layer Id</value>
-  </data>
   <data name="layer" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -4825,21 +1965,6 @@ Are you absolutely sure that is what you want?</value>
         FteYZO/zGJiDj+wedtGgpZDoZIotmayc3nKssr/o8u6RqP4NdrCLBi1e4WFpuTkR+YNNkQWKDjmwiwYt
         HhDKRDExf4Qm9B0h5nPvHST9+wAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="ExportNoCustomCommandsSelected" xml:space="preserve">
-    <value>No custom commands selected. Nothing to export</value>
-  </data>
-  <data name="FindNothing" xml:space="preserve">
-    <value>Could not find specified string or end of document reached</value>
-  </data>
-  <data name="DeleteCommand" xml:space="preserve">
-    <value>Delete Command</value>
-  </data>
-  <data name="InfiniteValue" xml:space="preserve">
-    <value>infinite</value>
-  </data>
-  <data name="PackageCreationFailedError" xml:space="preserve">
-    <value>Failed to create package, error message: {0}</value>
   </data>
   <data name="cross-circle-frame" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4877,15 +2002,6 @@ Are you absolutely sure that is what you want?</value>
         AABJRU5ErkJggg==
 </value>
   </data>
-  <data name="Func_FEATUREID_Description" xml:space="preserve">
-    <value>Returns the active feature Id</value>
-  </data>
-  <data name="FsMySql" xml:space="preserve">
-    <value>MySQL Feature Source</value>
-  </data>
-  <data name="ColumnHasNoValidDataError" xml:space="preserve">
-    <value>The selected column had no non-null values and cannot be used.</value>
-  </data>
   <data name="images_stack" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -4900,9 +2016,6 @@ Are you absolutely sure that is what you want?</value>
         EkRUjDyo9UltZChtdSo476sw9EaN3tYoOOoj95FPaDRiXzzkQT7zq6sHhmbCyNvrjJEH+RwmNBsi7xaI
         M0IkfseJvA6Kas+efP0DD+tcAk1PV7wAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="SelectLayerFirst" xml:space="preserve">
-    <value>Please select the layer first</value>
   </data>
   <data name="sql-join-inner" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4934,9 +2047,6 @@ Are you absolutely sure that is what you want?</value>
         QmCC
 </value>
   </data>
-  <data name="Func_IF_Description" xml:space="preserve">
-    <value>If evaluator for style theming</value>
-  </data>
   <data name="icon_buffer_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIQAAIyJk6y5xWibx7PN4423x/D1+cXHx3Ghy6PC3ZW9x4Gr0LXHx57Bx5S1xb3Hx7a/
@@ -4945,12 +2055,6 @@ Are you absolutely sure that is what you want?</value>
         gIDECAISLICIIEJGACg7ChBAwACAAA4ORGjoMqWBmygBLFAgkGVNjj8NJBig0GfOnCoRFsWJ1OPChAKY
         cmzwcWHIoBGfFriKNOvTAQywVl2oQOxThWUfcPR6diaEmxDGnh1Y8GDbhAEBADs=
 </value>
-  </data>
-  <data name="Func_URLENCODE_Description" xml:space="preserve">
-    <value>String encoding function</value>
-  </data>
-  <data name="UpdatingConfiguration" xml:space="preserve">
-    <value>Updating Configuration Document</value>
   </data>
   <data name="icon_tasks_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5013,9 +2117,6 @@ Are you absolutely sure that is what you want?</value>
         RaQn6HMAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="Func_ARGB_BValueDescription" xml:space="preserve">
-    <value>Blue value</value>
-  </data>
   <data name="icon_zoomin" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIZeAEV2qAE0Zm1LJt7s9eqvdrK8xtfk7LOcjF1dXdDc45i101lZWaOmqX+AgF9fX4ep
@@ -5048,9 +2149,6 @@ Are you absolutely sure that is what you want?</value>
         CBL/g/dyjRT1G7y5F+bDPK+HAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="FindReplaceNothing" xml:space="preserve">
-    <value>Nothing to replace</value>
-  </data>
   <data name="icon_panup" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIeDAJhpZZpqZiJNeNikptelprG+zCBPfSJNdyJOfVJvjMybl9Kgn7ShnSNOeCJPea2f
@@ -5072,21 +2170,6 @@ Are you absolutely sure that is what you want?</value>
         gkogJlHK+NlSsMWQDCf08FBzpEINGkgQPpCjhYiBO00kYLCQUCAXBAjm2HADp7NANhR2ODAgIyAAOw==
 </value>
   </data>
-  <data name="Func_DECAP_StringValueDescription" xml:space="preserve">
-    <value>String to format</value>
-  </data>
-  <data name="TextUploading" xml:space="preserve">
-    <value>Uploading</value>
-  </data>
-  <data name="OdbcDriverAccess64" xml:space="preserve">
-    <value>{Microsoft Access Driver (*.mdb, *.accdb)}</value>
-  </data>
-  <data name="SaveMapBeforeTiling" xml:space="preserve">
-    <value>You must save this map first before you can run MgCooker</value>
-  </data>
-  <data name="IncompatibleConnection" xml:space="preserve">
-    <value>This connection is not compatible</value>
-  </data>
   <data name="globe--plus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -5107,10 +2190,6 @@ Are you absolutely sure that is what you want?</value>
         stwPSWnUUW5zG+W1WqIq3sX8wHTXbO8i0OHp12n+ZCmXRL8vYaZNlMxm/X92xugob8p12h2jncjRY8Vf
         HJIr03vAAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="TooMuchDataWarning" xml:space="preserve">
-    <value>The selected column contains more than {0} different values.
-The calculated averages only accounts for the first {0} distinct values.</value>
   </data>
   <data name="map" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5181,9 +2260,6 @@ The calculated averages only accounts for the first {0} distinct values.</value>
         +fPlBQYEADs=
 </value>
   </data>
-  <data name="Func_RANGE_DefaultValueDescription" xml:space="preserve">
-    <value>Default value returned if expression does not fall into any of the ranges</value>
-  </data>
   <data name="gear--plus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -5200,9 +2276,6 @@ The calculated averages only accounts for the first {0} distinct values.</value>
         PqOI6SuO4jliQ3pR4pFevgHynCYOf1bmAmq1+govGgSYJT2mWzVt2In11aXZcf6LQ3r5DfhXw6nj8Jdh
         pn/SW/uK9ajT7EbtWDXDfgLZQt8vMfwSKAAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="NoWidgetEditorIface" xml:space="preserve">
-    <value>The specified editor does not implement the required IWidgetEditor interface</value>
   </data>
   <data name="icon_panleft" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5254,9 +2327,6 @@ The calculated averages only accounts for the first {0} distinct values.</value>
         RK5CYII=
 </value>
   </data>
-  <data name="PreviewQueryElapsed" xml:space="preserve">
-    <value>Preview Completed in {0}ms</value>
-  </data>
   <data name="control-stop-square" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -5269,12 +2339,6 @@ The calculated averages only accounts for the first {0} distinct values.</value>
         ApV+QEcqDoByUrZPz3TlTmuaUAeEEBqN0bah6XbJPxltm9SXKCfgAaIntQUw/Bj417/xG49phw+gF0Mn
         AAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="ColHeaderName" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="FsPreview_GeometryPropertyNodeTooltip" xml:space="preserve">
-    <value>Name: {0}{7}Description: {1}{7}Geometry Types: {2}{7}Read Only: {3}{7}Has Elevation: {4}{7}Has Measure: {5}{7}Spatial Context: {6}</value>
   </data>
   <data name="funnel" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5379,9 +2443,6 @@ The calculated averages only accounts for the first {0} distinct values.</value>
         EFDAUAmVIgUSXBEIAMDki6A7fwbNUDTpi50DAgA7
 </value>
   </data>
-  <data name="FilenameValidationError" xml:space="preserve">
-    <value>Failed to validate the filenames: {0}</value>
-  </data>
   <data name="icon_invokescript_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIUzAKy7zNrf48/Z4bXLssXQ2p6rvMTOzrjHwLDDtLTJsa/Btb3Ttam9rcfR2sDLycLX
@@ -5393,9 +2454,6 @@ The calculated averages only accounts for the first {0} distinct values.</value>
         DAwIiAirwEWErQsicDhRoEADgQcuLIAKI8aCCx8a3BUYdABRDiNKDEBgYKFABxM0gEDhQcMEB44HrlTA
         QMGBxpkDAgA7
 </value>
-  </data>
-  <data name="ExpressionItem" xml:space="preserve">
-    <value>Expression...</value>
   </data>
   <data name="icon_back_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5469,9 +2527,6 @@ The calculated averages only accounts for the first {0} distinct values.</value>
         ubPnzwEBADs=
 </value>
   </data>
-  <data name="InvalidRestorePathError" xml:space="preserve">
-    <value>An error occured while validating the restore path: {0}\nIt should have the format: \"Libray://folder/folder/\".</value>
-  </data>
   <data name="icon_popupscrolldown_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIcAAAAAAIAAAACAAICAAAAAgIAAgACAgICAgMDAwP8AAAD/AP//AAAA//8A/wD/////
@@ -5490,9 +2545,6 @@ The calculated averages only accounts for the first {0} distinct values.</value>
         /yH/C05FVFNDQVBFMi4wAwEBAAAh+QQAAAAAACwAAAAAEAAQAAAIMQAfCBxIsKDBgwgTKlzIUCCChxAj
         SkTwYKJFig4vQiyoESNHiwknLozY8GHDkygbBgQAOw==
 </value>
-  </data>
-  <data name="SelectFolder" xml:space="preserve">
-    <value>Select Folder</value>
   </data>
   <data name="map--arrow" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5528,19 +2580,6 @@ The calculated averages only accounts for the first {0} distinct values.</value>
         HE7cl2HkyZUtSx6QWfOXzpZnsAkIADs=
 </value>
   </data>
-  <data name="TextNoStringSpecifiedToLookFor" xml:space="preserve">
-    <value>No string specified to look for!</value>
-  </data>
-  <data name="SearchCmdDescription" xml:space="preserve">
-    <value>Search Command</value>
-  </data>
-  <data name="TooManyRulesWarning" xml:space="preserve">
-    <value>You are creating a large number of rules, this will likely result in Maestro becoming unresponsive.
-Do you want to continue?</value>
-  </data>
-  <data name="Func_RANGE_MinDescription" xml:space="preserve">
-    <value>Inclusive minimum of range that can be matched by the key expression</value>
-  </data>
   <data name="block" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -5555,12 +2594,6 @@ Do you want to continue?</value>
         JpwvDBmCu8DsQykpxe1GiL639TS61lL0Cpz1mCGQ/0+ZpFxSacN9ohlLJ8MQpZB7s+ojHvPYpWbmA8tY
         cADrXMqIVYe9mAAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="InvalidResourceId" xml:space="preserve">
-    <value>Not a valid resource identifier</value>
-  </data>
-  <data name="TextLoading" xml:space="preserve">
-    <value>Loading</value>
   </data>
   <data name="property" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5579,24 +2612,6 @@ Do you want to continue?</value>
         SUVORK5CYII=
 </value>
   </data>
-  <data name="NoRasterClasses" xml:space="preserve">
-    <value>This feature source has no class definitions with raster properties</value>
-  </data>
-  <data name="EditWatermarkInstance" xml:space="preserve">
-    <value>Edit Watermark Instance</value>
-  </data>
-  <data name="ExtentsCalculationCompleted" xml:space="preserve">
-    <value>Map extents calculation completed. Click Accept to use the calculated extents.</value>
-  </data>
-  <data name="TextSelectionOnly" xml:space="preserve">
-    <value>(Selection Only)</value>
-  </data>
-  <data name="Separator" xml:space="preserve">
-    <value>Separator</value>
-  </data>
-  <data name="MoreColorsName" xml:space="preserve">
-    <value>More colors...</value>
-  </data>
   <data name="icon_panright_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIZuAJumsOTY2MS5uK+2vcW5uJumstrOzsi9vOHV1eHU1ZunsuXZ2dve4d7S0aaxvuTX
@@ -5611,9 +2626,6 @@ Do you want to continue?</value>
         AUECHUUg0CAI4kmDBjhUyDAAw0AGNgMIehiCYoIXFl+IABETwUyZgk6sHDjARMoFDRGwXMmScAqGMC4U
         jBDhYAWXkG7IFCjQhEoOG5jdICnwoYMCBwEBADs=
 </value>
-  </data>
-  <data name="OdbcConnectionStringComponentNotFound" xml:space="preserve">
-    <value>The component "{0}" could not be found in the specified ODBC connection string</value>
   </data>
   <data name="gear--pencil" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5631,9 +2643,6 @@ Do you want to continue?</value>
         kcvlLD8/31JQUNCXl5enRg0t+GjyZZN08/0uYb7u6L4X8MC7ezIBUA5wNBw9yM3NPeNolfno9wrdupyz
         fKKOXcjMtLwW404pJBOQw9v9HBWnJAs6axXe2hsEW5aGi+DFDvsDd0bcBZIplukAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="TransparentName" xml:space="preserve">
-    <value>Transparent</value>
   </data>
   <data name="icon_buffer" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5659,9 +2668,6 @@ Do you want to continue?</value>
         632XYfSIiMsxqKdwiN2/mObadE3NEvGVrSXDpWHbem9/l0ibY4C2ncLBA5jsF0kFRPag7QRC8YEHNoMF
         24IinbtF9pUaeCn4QTdWdFAHNsFGMAqr5tprwhbHoJzP+Q95lHpGrVHH8wAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="InvalidResourceIdFolder" xml:space="preserve">
-    <value>Must be valid resource id. Cannot be a folder</value>
   </data>
   <data name="icon_zoomrect_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5692,9 +2698,6 @@ Do you want to continue?</value>
         +AjkSCQSIKjoPGZ8ORDqPRJMqs98ZXL/Ad8QklT8D+CBAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="TextFind" xml:space="preserve">
-    <value>Find</value>
-  </data>
   <data name="icon_invokeurl_disabled" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAIU4ANrf46y7zJ6rvLXLss/Z4cXQ2rPD1M3Fo8fR2rjHwK/BtbTJsb3TtcLXt8TOzsDL
@@ -5709,83 +2712,5 @@ Do you want to continue?</value>
   </data>
   <data name="folder-horizontal-open" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder-horizontal-open.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ErrNotAFolder" xml:space="preserve">
-    <value>Not a folder</value>
-  </data>
-  <data name="ErrorInvalidSymbolLibraryResourceId" xml:space="preserve">
-    <value>Not a valid symbol library resource identifier: {0}</value>
-  </data>
-  <data name="GeomFilterTemplate" xml:space="preserve">
-    <value>&lt;geometry property&gt; {0} GeomFromText('&lt;FGF geometry text&gt;')</value>
-  </data>
-  <data name="CmsBingHybrid" xml:space="preserve">
-    <value>Bing Maps Hybrid</value>
-  </data>
-  <data name="CmsBingSatellite" xml:space="preserve">
-    <value>Bing Maps Satellite</value>
-  </data>
-  <data name="CmsBingStreet" xml:space="preserve">
-    <value>Bing Maps Street</value>
-  </data>
-  <data name="CmsGoogleHybrid" xml:space="preserve">
-    <value>Google Hybrid</value>
-  </data>
-  <data name="CmsGooglePhysical" xml:space="preserve">
-    <value>Google Physical</value>
-  </data>
-  <data name="CmsGoogleSatellite" xml:space="preserve">
-    <value>Google Satellite</value>
-  </data>
-  <data name="CmsGoogleStreets" xml:space="preserve">
-    <value>Google Streets</value>
-  </data>
-  <data name="CmsOsm" xml:space="preserve">
-    <value>Open Street Map</value>
-  </data>
-  <data name="CmsOsmCycle" xml:space="preserve">
-    <value>Open Street Map (CycleMap)</value>
-  </data>
-  <data name="CmsOsmTransport" xml:space="preserve">
-    <value>Open Street Map (TransportMap)</value>
-  </data>
-  <data name="CmsYahooHybrid" xml:space="preserve">
-    <value>Yahoo! Maps Hybrid</value>
-  </data>
-  <data name="CmsYahooSatellite" xml:space="preserve">
-    <value>Yahoo! Maps Satellite</value>
-  </data>
-  <data name="CmsYahooStreet" xml:space="preserve">
-    <value>Yahoo! Maps Street</value>
-  </data>
-  <data name="PromptDirection" xml:space="preserve">
-    <value>Specify Direction to traverse extent history</value>
-  </data>
-  <data name="PromptSelectBufferUnits" xml:space="preserve">
-    <value>Select Buffer Units</value>
-  </data>
-  <data name="PromptViewType" xml:space="preserve">
-    <value>Select zoom extents option</value>
-  </data>
-  <data name="TitleBufferUnits" xml:space="preserve">
-    <value>Buffer Units</value>
-  </data>
-  <data name="TitleDirection" xml:space="preserve">
-    <value>Direction</value>
-  </data>
-  <data name="TitleViewType" xml:space="preserve">
-    <value>View Type</value>
-  </data>
-  <data name="ErrorLayerDefnitionDoesNotSupportCompositeSymbolization" xml:space="preserve">
-    <value>This Layer Definition version does not support composite symbolization</value>
-  </data>
-  <data name="TextInlineCompoundSymbol" xml:space="preserve">
-    <value>Inline Compound Symbol</value>
-  </data>
-  <data name="TextInlineSimpleSymbol" xml:space="preserve">
-    <value>Inline Simple Symbol</value>
-  </data>
-  <data name="TextRenderPreviewNotAvailable" xml:space="preserve">
-    <value>Preview\nnot available</value>
   </data>
 </root>

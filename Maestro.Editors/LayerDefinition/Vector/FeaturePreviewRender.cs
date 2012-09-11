@@ -30,37 +30,37 @@ using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
 namespace Maestro.Editors.LayerDefinition.Vector
 {
 
-	internal class FeaturePreviewRender
-	{
-		private static ImageStylePicker.NamedImage[] m_fillImages = null;
-		private static ImageStylePicker.NamedImage[] m_lineStyles = null;
+    internal class FeaturePreviewRender
+    {
+        private static ImageStylePicker.NamedImage[] m_fillImages = null;
+        private static ImageStylePicker.NamedImage[] m_lineStyles = null;
 
 
-		public static void RenderPreviewArea(Graphics g, Rectangle size, IAreaSymbolizationFill item)
-		{
-			if (item == null)
-			{
-				RenderPreviewFont(g, size, null);
-				return;
-			}
+        public static void RenderPreviewArea(Graphics g, Rectangle size, IAreaSymbolizationFill item)
+        {
+            if (item == null)
+            {
+                RenderPreviewFont(g, size, null);
+                return;
+            }
 
-			//Adjust, since painting always excludes top/right and includes left/bottom
-			Rectangle size_adj = new Rectangle(size.X, size.Y, size.Width - 1, size.Height - 1);
+            //Adjust, since painting always excludes top/right and includes left/bottom
+            Rectangle size_adj = new Rectangle(size.X, size.Y, size.Width - 1, size.Height - 1);
 
-			Point[] points = new Point[] 
-			{
-				new Point(size_adj.Left, size_adj.Top),
-				new Point(size_adj.Right, size_adj.Top),
-				new Point(size_adj.Right, size_adj.Bottom),
-				new Point(size_adj.Left, size_adj.Bottom),
-				new Point(size_adj.Left, size_adj.Top)
-			};
+            Point[] points = new Point[] 
+            {
+                new Point(size_adj.Left, size_adj.Top),
+                new Point(size_adj.Right, size_adj.Top),
+                new Point(size_adj.Right, size_adj.Bottom),
+                new Point(size_adj.Left, size_adj.Bottom),
+                new Point(size_adj.Left, size_adj.Top)
+            };
 
-			if (item.Fill != null)
-			{
+            if (item.Fill != null)
+            {
                 Brush b = null;
-			
-				Image texture = null;
+            
+                Image texture = null;
                 foreach (ImageStylePicker.NamedImage img in FillImages)
                 {
                     if (img.Name == item.Fill.FillPattern)
@@ -112,18 +112,18 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 catch { }
                 if (texture == null && bgColor.HasValue)
                     b = new SolidBrush(bgColor.Value);
-				else if (texture != null)
-					b = new TextureBrush(texture);
+                else if (texture != null)
+                    b = new TextureBrush(texture);
 
                 if (b != null)
                 {
                     g.FillPolygon(b, points);
                     b.Dispose();
                 }
-			}
+            }
 
-			if (item.Stroke != null && !string.IsNullOrEmpty(item.Stroke.Color))
-			{
+            if (item.Stroke != null && !string.IsNullOrEmpty(item.Stroke.Color))
+            {
                 Color? c = null;
                 try
                 {
@@ -135,17 +135,17 @@ namespace Maestro.Editors.LayerDefinition.Vector
                     using (Pen p = new Pen(c.Value, /*float.Parse(item.Stroke.Thickness)*/ 1)) //TODO: Calculate appropriate thickness
                         g.DrawPolygon(p, points); //TODO: Implement line dash
                 }
-			}
+            }
 
-		}
+        }
 
-		public static void RenderPreviewLine(Graphics g, Rectangle size, IEnumerable<IStroke> item)
-		{
-			if (item == null)
-			{
-				RenderPreviewFont(g, size, null);
-				return;
-			}
+        public static void RenderPreviewLine(Graphics g, Rectangle size, IEnumerable<IStroke> item)
+        {
+            if (item == null)
+            {
+                RenderPreviewFont(g, size, null);
+                return;
+            }
 
             try
             {
@@ -171,28 +171,28 @@ namespace Maestro.Editors.LayerDefinition.Vector
             catch
             {
             }
-		}
+        }
 
-		public static void RenderPreviewFont(Graphics g, Rectangle size, ITextSymbol item)
-		{
-			Font font;
+        public static void RenderPreviewFont(Graphics g, Rectangle size, ITextSymbol item)
+        {
+            Font font;
             Color? foreground = null;
             Color? background = null;
-			string text = string.Empty;
+            string text = string.Empty;
             BackgroundStyleType bgStyle;
             
 
-			if (item == null || item.FontName == null)
-			{
+            if (item == null || item.FontName == null)
+            {
                 font = new Font("Arial", 12); //NOXLATE
-				foreground = Color.Black;
-				background = Color.White;
-				text = Properties.Resources.EmptyText;
+                foreground = Color.Black;
+                background = Color.White;
+                text = Strings.EmptyText;
                 bgStyle = BackgroundStyleType.Transparent;
-			}
-			else
-			{
-				try { font = new Font(item.FontName, 12); }
+            }
+            else
+            {
+                try { font = new Font(item.FontName, 12); }
                 catch { font = new Font("Arial", 12); } //NOXLATE
                 try
                 {
@@ -202,17 +202,17 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 catch { }
                 bgStyle = item.BackgroundStyle;
 
-				FontStyle fs = FontStyle.Regular;
+                FontStyle fs = FontStyle.Regular;
                 if (item.Bold == "true") //NOXLATE
-					fs |= FontStyle.Bold;
+                    fs |= FontStyle.Bold;
                 if (item.Italic == "true") //NOXLATE
-					fs |= FontStyle.Italic;
+                    fs |= FontStyle.Italic;
                 if (item.Underlined == "true") //NOXLATE
-					fs |= FontStyle.Underline;
-				font = new Font(font, fs);
+                    fs |= FontStyle.Underline;
+                font = new Font(font, fs);
 
-				text = item.Text;
-			}
+                text = item.Text;
+            }
 
             if (bgStyle == BackgroundStyleType.Ghosted)
             {
@@ -254,13 +254,13 @@ namespace Maestro.Editors.LayerDefinition.Vector
                         g.DrawString(text, font, b, size);
                 }
             }
-		}
+        }
 
-		public static void RenderPreviewFontSymbol(Graphics g, Rectangle size, IFontSymbol item)
-		{
-			Font font;
+        public static void RenderPreviewFontSymbol(Graphics g, Rectangle size, IFontSymbol item)
+        {
+            Font font;
             Color? foreground = null;
-			string text = string.Empty;
+            string text = string.Empty;
 
             if (item == null || item.FontName == null)
             {
@@ -302,27 +302,27 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 using (Brush b = new SolidBrush(foreground.Value))
                     g.DrawString(text, font, b, center);
             }
-		}
+        }
 
-		public static void RenderPreviewPoint(Graphics g, Rectangle size, IMarkSymbol item)
-		{
-			if (item == null)
-			{
-				RenderPreviewFont(g, size, null);
-				return;
-			}
+        public static void RenderPreviewPoint(Graphics g, Rectangle size, IMarkSymbol item)
+        {
+            if (item == null)
+            {
+                RenderPreviewFont(g, size, null);
+                return;
+            }
 
-			//Adjust, since painting always excludes top/right and includes left/bottom
-			Rectangle size_adj = new Rectangle(size.X, size.Y, size.Width - 1, size.Height - 1);
+            //Adjust, since painting always excludes top/right and includes left/bottom
+            Rectangle size_adj = new Rectangle(size.X, size.Y, size.Width - 1, size.Height - 1);
 
-			Point[] points = null;
+            Point[] points = null;
 
             int radius = Math.Min(size_adj.Width / 2, size_adj.Height / 2);
             int npoints = Math.Min(Math.Max(15, radius / 5), 100);
             Point center = new Point(size_adj.X + size_adj.Width / 2, size_adj.Y + size_adj.Height / 2);
 
             switch(item.Shape)
-			{
+            {
                 case ShapeType.Square:
                     points = Rotate(CreateNGon(center, radius, 4), center, Math.PI / 4);
                     break;
@@ -359,16 +359,16 @@ namespace Maestro.Editors.LayerDefinition.Vector
                     if (item.Shape == ShapeType.X)
                         points = Rotate(points, center, Math.PI / 4);
                     break;
-				default: //Circle
-				{
+                default: //Circle
+                {
                     points = CreateNGon(center, radius, Math.Min(Math.Max(15, radius / 5), 100));
-					break;
-				}				
-			}
+                    break;
+                }				
+            }
 
-			if (item.Fill != null)
-			{
-				Brush b;
+            if (item.Fill != null)
+            {
+                Brush b;
 
                 Color? bgColor = null;
                 Color? fgColor = null;
@@ -380,7 +380,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 }
                 catch { }
 
-				Image texture = null;
+                Image texture = null;
                 foreach (ImageStylePicker.NamedImage img in FillImages)
                 {
                     if (img.Name == item.Fill.FillPattern)
@@ -414,20 +414,20 @@ namespace Maestro.Editors.LayerDefinition.Vector
                     }
                 }
 
-				if (texture == null && bgColor.HasValue)
-					b = new SolidBrush(bgColor.Value);
-				else
-					b = new TextureBrush(texture);
+                if (texture == null && bgColor.HasValue)
+                    b = new SolidBrush(bgColor.Value);
+                else
+                    b = new TextureBrush(texture);
 
                 if (b != null)
                 {
                     g.FillPolygon(b, points);
                     b.Dispose();
                 }
-			}
+            }
 
-			if (item.Edge != null)
-			{
+            if (item.Edge != null)
+            {
                 Color? c = null;
                 try
                 {
@@ -440,8 +440,8 @@ namespace Maestro.Editors.LayerDefinition.Vector
                     using (Pen p = new Pen(c.Value, /* float.Parse(item.Edge.Thickness) */ 1)) //TODO: Calculate appropriate thickness
                         g.DrawPolygon(p, points); //TODO: Implement line dash
                 }
-			}
-		}
+            }
+        }
 
         public static void RenderW2DImage(Graphics graphics, Rectangle rectangle, IW2DSymbol symb, Image image)
         {
@@ -497,25 +497,25 @@ namespace Maestro.Editors.LayerDefinition.Vector
             return points;
         }
 
-		public static ImageStylePicker.NamedImage[] FillImages
-		{
-			get
-			{
+        public static ImageStylePicker.NamedImage[] FillImages
+        {
+            get
+            {
                 if (m_fillImages == null)
                     m_fillImages = StyleImageCache.FillImages;
-				return m_fillImages;
-			}
-		}
+                return m_fillImages;
+            }
+        }
 
-		public static ImageStylePicker.NamedImage[] LineStyles
-		{
-			get
-			{
+        public static ImageStylePicker.NamedImage[] LineStyles
+        {
+            get
+            {
                 if (m_lineStyles == null)
                     m_lineStyles = StyleImageCache.LineStyles;
-				return m_lineStyles;
-			}
-		}
+                return m_lineStyles;
+            }
+        }
 
         internal static void RenderNoPreview(Graphics graphics, Rectangle rect)
         {

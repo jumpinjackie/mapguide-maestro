@@ -44,7 +44,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                     {
                         var res = conn.ResourceService.GetResource(exp.SelectedItems[0].ResourceId);
                         System.IO.File.WriteAllText(diag.FileName, res.Serialize());
-                        MessageService.ShowMessage(string.Format(Properties.Resources.SavedResource, diag.FileName));
+                        MessageService.ShowMessage(string.Format(Strings.SavedResource, diag.FileName));
                     }
                 }
             }

@@ -34,10 +34,10 @@ namespace Maestro.Base.Templates
     {
         public DrawingLayerDefinitionItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_DEFAULT;
+            Category = Strings.TPL_CATEGORY_DEFAULT;
             Icon = Res.layer;
-            Description = Res.TPL_DLDF_DESC;
-            Name = Res.TPL_DLDF_NAME;
+            Description = Strings.TPL_DLDF_DESC;
+            Name = Strings.TPL_DLDF_NAME;
             ResourceType = ResourceTypes.LayerDefinition.ToString();
         }
 

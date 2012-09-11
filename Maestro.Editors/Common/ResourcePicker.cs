@@ -101,7 +101,7 @@ namespace Maestro.Editors.Generic
             if (string.IsNullOrEmpty(folderId))
                 return;
             if (!ResourceIdentifier.IsFolderResource(folderId))
-                throw new ArgumentException(string.Format(Properties.Resources.NotAFolder, folderId));
+                throw new ArgumentException(string.Format(Strings.NotAFolder, folderId));
             
             // Library:// will *always* exist, so fallback to this if given folder doesn't check out
             if (!_resSvc.ResourceExists(folderId))
@@ -137,13 +137,13 @@ namespace Maestro.Editors.Generic
                 {
                     case ResourcePickerMode.OpenFolder:
                         {
-                            this.Text = Properties.Resources.SelectFolder;
+                            this.Text = Strings.SelectFolder;
                             this.SelectFoldersOnly = true;
                         } 
                         break;
                     case ResourcePickerMode.SaveResource:
                         {
-                            this.Text = Properties.Resources.SaveResource;
+                            this.Text = Strings.SaveResource;
                         }
                         break;
                 }
@@ -162,7 +162,7 @@ namespace Maestro.Editors.Generic
             : this(resSvc, mode)
         {
             if (mode == ResourcePickerMode.OpenFolder)
-                throw new InvalidOperationException(string.Format(Properties.Resources.ModeNotAllowed, mode));
+                throw new InvalidOperationException(string.Format(Strings.ModeNotAllowed, mode));
 
             this.Filter = resFilter;
             this.UseFilter = true;
@@ -266,7 +266,7 @@ namespace Maestro.Editors.Generic
             {
                 if (!_resSvc.ResourceExists(txtResourceId.Text))
                 {
-                    MessageBox.Show(Properties.Resources.ResourceDoesntExist);
+                    MessageBox.Show(Strings.ResourceDoesntExist);
                     return;
                 }
             }
@@ -274,28 +274,28 @@ namespace Maestro.Editors.Generic
             {
                 if (ResourceIdentifier.IsFolderResource(txtResourceId.Text))
                 {
-                    MessageBox.Show(Properties.Resources.InvalidResourceIdFolder);
+                    MessageBox.Show(Strings.InvalidResourceIdFolder);
                     return;
                 }
                 else
                 {
                     if (!ResourceIdentifier.Validate(txtResourceId.Text))
                     {
-                        MessageBox.Show(Properties.Resources.InvalidResourceId);
+                        MessageBox.Show(Strings.InvalidResourceId);
                         return;
                     }
                     else
                     {
                         if (ResourceIdentifier.GetResourceType(txtResourceId.Text) != (ResourceTypes)cmbResourceFilter.SelectedItem)
                         {
-                            MessageBox.Show(Properties.Resources.InvalidResourceIdNotSpecifiedType);
+                            MessageBox.Show(Strings.InvalidResourceIdNotSpecifiedType);
                             return;
                         }
                     }
 
                     if (_resSvc.ResourceExists(txtResourceId.Text))
                     {
-                        if (MessageBox.Show(Properties.Resources.OverwriteResource, Properties.Resources.SaveResource, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                        if (MessageBox.Show(Strings.OverwriteResource, Strings.SaveResource, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                             return;
                     }
                 }
@@ -303,7 +303,7 @@ namespace Maestro.Editors.Generic
             if (ResourceIdentifier.IsFolderResource(txtResourceId.Text))
                 LastSelectedFolder.FolderId = txtResourceId.Text;
             else
-                LastSelectedFolder.FolderId = (txtResourceId.Text != "Library://") ? ResourceIdentifier.GetParentFolder(txtResourceId.Text) : "Library://";
+                LastSelectedFolder.FolderId = (txtResourceId.Text != StringConstants.RootIdentifier) ? ResourceIdentifier.GetParentFolder(txtResourceId.Text) : StringConstants.RootIdentifier;
             this.DialogResult = DialogResult.OK;
         }
 

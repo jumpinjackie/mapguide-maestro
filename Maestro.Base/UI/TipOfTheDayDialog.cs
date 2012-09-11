@@ -95,7 +95,7 @@ namespace Maestro.Base.UI
 
         private static string GetTip(int index)
         {
-            return string.Format(Properties.Resources.TipNumber, (index + 1), _tips.Length)
+            return string.Format(Strings.TipNumber, (index + 1), _tips.Length)
                 + Environment.NewLine
                 + Environment.NewLine
                 + _tips[index];

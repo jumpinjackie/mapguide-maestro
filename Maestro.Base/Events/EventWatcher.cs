@@ -77,7 +77,7 @@ namespace Maestro.Base.Events
                         try
                         {
                             smShowingError = true;
-                            MessageService.ShowError(Properties.Resources.KeepAliveFailed);
+                            MessageService.ShowError(Strings.KeepAliveFailed);
                         }
                         finally
                         {
@@ -104,8 +104,8 @@ namespace Maestro.Base.Events
             {
                 var viewMgr = ServiceRegistry.GetService<ViewContentManager>();
 
-                wb.ActiveSiteExplorer = viewMgr.OpenContent(Properties.Resources.Content_SiteExplorer, 
-                                        Properties.Resources.Content_SiteExplorer, 
+                wb.ActiveSiteExplorer = viewMgr.OpenContent(Strings.Content_SiteExplorer, 
+                                        Strings.Content_SiteExplorer, 
                                         ViewRegion.Left, 
                                         () => { return new SiteExplorer(); });
 
@@ -127,7 +127,7 @@ namespace Maestro.Base.Events
             var exp = wb.ActiveSiteExplorer;
             if (exp != null)
             {
-                wb.SetStatusLabel(string.Format(Properties.Resources.StatusActiveConnection, exp.ConnectionName));
+                wb.SetStatusLabel(string.Format(Strings.StatusActiveConnection, exp.ConnectionName));
             }
             else
             {

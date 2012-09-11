@@ -231,7 +231,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             if (prop != null)
                 prop.ReadXml(node, mgr);
             else
-                throw new NotSupportedException(Properties.Resources.ErrorUnsupporteFdoSchemaXml);
+                throw new NotSupportedException(Strings.ErrorUnsupporteFdoSchemaXml);
 
             return prop;
         }

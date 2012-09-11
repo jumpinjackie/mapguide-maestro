@@ -77,7 +77,7 @@ namespace Maestro.Base.UI
             if (ResourceIdentifier.Validate(txtResourceId.Text) && !ResourceIdentifier.IsFolderResource(txtResourceId.Text))
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
             else
-                lblMessage.Text = Properties.Resources.InvalidResourceId;
+                lblMessage.Text = Strings.InvalidResourceId;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

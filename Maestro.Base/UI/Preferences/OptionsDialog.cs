@@ -82,7 +82,7 @@ namespace Maestro.Base.UI.Preferences
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            if (MessageService.AskQuestion(Properties.Resources.ConfirmResetPrefs))
+            if (MessageService.AskQuestion(Strings.ConfirmResetPrefs))
             {
                 this.RestartRequired = ApplyDefaults();
                 this.DialogResult = DialogResult.OK;

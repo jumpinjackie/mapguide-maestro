@@ -65,21 +65,21 @@ namespace Maestro.Editors.Packaging
             {
                 if (UseAlternateName.Checked && AlternateName.Text.Trim().Length == 0)
                 {
-                    MessageBox.Show(this, Properties.Resources.AlternateNameMissing, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, Strings.AlternateNameMissing, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     AlternateName.Focus();
                     return;
                 }
 
                 if (UseHeader.Checked && !System.IO.File.Exists(HeaderPath.Text))
                 {
-                    MessageBox.Show(this, Properties.Resources.HeaderFileMissing, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, Strings.HeaderFileMissing, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     HeaderPath.Focus();
                     return;
                 }
 
                 if (!System.IO.File.Exists(ContentPath.Text))
                 {
-                    MessageBox.Show(this, Properties.Resources.ContentFileMissing, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, Strings.ContentFileMissing, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ContentPath.Focus();
                     return;
                 }
@@ -87,7 +87,7 @@ namespace Maestro.Editors.Packaging
             catch (Exception ex)
             {
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                MessageBox.Show(this, string.Format(Properties.Resources.FilenameValidationError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.FilenameValidationError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

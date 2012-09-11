@@ -63,7 +63,7 @@ namespace Maestro.Editors.Fusion
             }
             catch 
             {
-                throw new NotSupportedException(Properties.Resources.IncompatibleConnection);
+                throw new NotSupportedException(Strings.IncompatibleConnection);
             }
 
             _edsvc.Saved += OnSaved;
@@ -107,7 +107,7 @@ namespace Maestro.Editors.Fusion
                 }
                 else
                 {
-                    txtPublicUrl.Text = Properties.Resources.PreviewUrlNotAvailable;
+                    txtPublicUrl.Text = Strings.PreviewUrlNotAvailable;
                 }
             }
             catch { }

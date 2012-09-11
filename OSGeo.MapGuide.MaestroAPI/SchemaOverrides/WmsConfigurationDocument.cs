@@ -89,11 +89,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 
                 var prv = map.Attributes["provider"]; //NOXLATE
                 if (prv == null)
-                    throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedAttribute, "provider"));
+                    throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedAttribute, "provider"));
 
                 var sn = map.Attributes["name"];
                 if (sn == null)
-                    throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedAttribute, "name"));
+                    throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedAttribute, "name"));
 
                 foreach (XmlNode clsMap in map.ChildNodes)
                 {
@@ -102,11 +102,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 
                     var cn = clsMap.Attributes["name"]; //NOXLATE
                     if (cn == null)
-                        throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedAttribute, "name"));
+                        throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedAttribute, "name"));
 
                     var rdf = clsMap.FirstChild;
                     if (rdf == null || rdf.Name != "RasterDefinition")
-                        throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "RasterDefinition"));
+                        throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "RasterDefinition"));
 
                     RasterWmsItem item = new RasterWmsItem();
                     item.ReadXml(rdf, mgr);

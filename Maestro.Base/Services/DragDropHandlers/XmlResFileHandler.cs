@@ -33,7 +33,7 @@ namespace Maestro.Base.Services.DragDropHandlers
     {
         public string HandlerAction
         {
-            get { return Properties.Resources.XmlResHandlerAction; }
+            get { return Strings.XmlResHandlerAction; }
         }
 
         private string[] extensions = { ".xml", //NOXLATE

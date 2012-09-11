@@ -64,12 +64,12 @@ namespace Maestro.Base.UI
             _launcher = ServiceRegistry.GetService<UrlLauncherService>();
             Debug.Assert(_launcher != null);
 
-            Credits.Text = Properties.Resources.Contributors;
-            Version.Text = string.Format(Properties.Resources.About_VersionLabel, Application.ProductVersion);
-            Localization.Text = string.Format(Properties.Resources.About_LanguageLabel, System.Threading.Thread.CurrentThread.CurrentUICulture, tmp.CurrentUICulture);
+            Credits.Text = Strings.Contributors;
+            Version.Text = string.Format(Strings.About_VersionLabel, Application.ProductVersion);
+            Localization.Text = string.Format(Strings.About_LanguageLabel, System.Threading.Thread.CurrentThread.CurrentUICulture, tmp.CurrentUICulture);
 
-            string version = Properties.Resources.VersionUnknownOrNotConnected;
-            string match = Properties.Resources.VersionUnknown;
+            string version = Strings.VersionUnknownOrNotConnected;
+            string match = Strings.VersionUnknown;
             if (m_connection != null)
             {
                 version = m_connection.SiteVersion.ToString();
@@ -78,7 +78,7 @@ namespace Maestro.Base.UI
                         match = ((KnownSiteVersions)i).ToString();
             }
 
-            ServerVersion.Text = string.Format(Properties.Resources.About_ServerVersionLabel, version, match);
+            ServerVersion.Text = string.Format(Strings.About_ServerVersionLabel, version, match);
         }
 
         private void PayPalImage_Click(object sender, System.EventArgs e)

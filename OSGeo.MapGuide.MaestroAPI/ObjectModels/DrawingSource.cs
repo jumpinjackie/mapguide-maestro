@@ -55,11 +55,11 @@ namespace OSGeo.MapGuide.ObjectModels.DrawingSource_1_0_0
             set
             {
                 if (!ResourceIdentifier.Validate(value))
-                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorInvalidResourceIdentifier); //LOCALIZE
+                    throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Strings.ErrorInvalidResourceIdentifier); //LOCALIZE
 
                 var res = new ResourceIdentifier(value);
                 if (res.Extension != ResourceTypes.DrawingSource.ToString())
-                    throw new InvalidOperationException(string.Format(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.DrawingSource)); //LOCALIZE
+                    throw new InvalidOperationException(string.Format(OSGeo.MapGuide.MaestroAPI.Strings.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.DrawingSource)); //LOCALIZE
 
                 _resId = value;
                 this.OnPropertyChanged("ResourceID"); //NOXLATE

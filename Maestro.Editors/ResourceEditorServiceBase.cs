@@ -239,7 +239,7 @@ namespace Maestro.Editors
         public void SaveAs(string resourceID)
         {
             if (ResourceIdentifier.IsSessionBased(resourceID))
-                throw new ArgumentException(Properties.Resources.NotSessionBasedId); //LOCALIZE
+                throw new ArgumentException(Strings.NotSessionBasedId); //LOCALIZE
 
             if (!OnBeforeSave())
             {

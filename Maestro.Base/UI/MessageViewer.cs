@@ -38,7 +38,7 @@ namespace Maestro.Base.UI
         public MessageViewer()
         {
             InitializeComponent();
-            this.Title = this.Description = Properties.Resources.Content_Messages;
+            this.Title = this.Description = Strings.Content_Messages;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -72,7 +72,7 @@ namespace Maestro.Base.UI
                 if (save.ShowDialog() == DialogResult.OK)
                 {
                     File.WriteAllText(save.FileName, txtMessages.Text);
-                    MessageService.ShowMessage(string.Format(Properties.Resources.Log_Saved, save.FileName));
+                    MessageService.ShowMessage(string.Format(Strings.Log_Saved, save.FileName));
                 }
             }
         }

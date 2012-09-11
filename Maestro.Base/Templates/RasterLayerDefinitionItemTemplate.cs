@@ -33,10 +33,10 @@ namespace Maestro.Base.Templates
     {
         public RasterLayerDefinitionItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_DEFAULT;
+            Category = Strings.TPL_CATEGORY_DEFAULT;
             Icon = Res.layer;
-            Description = Res.TPL_RLDF_DESC;
-            Name = Res.TPL_RLDF_NAME;
+            Description = Strings.TPL_RLDF_DESC;
+            Name = Strings.TPL_RLDF_NAME;
             ResourceType = ResourceTypes.LayerDefinition.ToString();
         }
 

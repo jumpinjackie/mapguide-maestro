@@ -33,7 +33,7 @@ namespace Maestro.Base.Services.DragDropHandlers
     {
         public string HandlerAction
         {
-            get { return Properties.Resources.DwfHandlerAction; }
+            get { return Strings.DwfHandlerAction; }
         }
 
         string[] extensions = { ".dwf" }; //NOXLATE

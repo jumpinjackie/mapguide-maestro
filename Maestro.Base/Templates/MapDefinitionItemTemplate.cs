@@ -32,16 +32,16 @@ namespace Maestro.Base.Templates
     {
         public MapDefinitionItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_DEFAULT;
+            Category = Strings.TPL_CATEGORY_DEFAULT;
             Icon = Res.map;
-            Description = Res.TPL_MDF_DESC;
-            Name = Res.TPL_MDF_NAME;
+            Description = Strings.TPL_MDF_DESC;
+            Name = Strings.TPL_MDF_NAME;
             ResourceType = ResourceTypes.MapDefinition.ToString();
         }
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
-            return ObjectFactory.CreateMapDefinition(conn, Properties.Resources.NewMap);
+            return ObjectFactory.CreateMapDefinition(conn, Strings.NewMap);
         }
     }
 }

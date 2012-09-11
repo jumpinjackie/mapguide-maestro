@@ -33,7 +33,7 @@ namespace Maestro.Base.Services.DragDropHandlers
     {
         public string HandlerAction
         {
-            get { return Properties.Resources.MgpHandlerAction; }
+            get { return Strings.MgpHandlerAction; }
         }
 
         string[] extensions = { ".mgp" }; //NOXLATE
@@ -47,7 +47,7 @@ namespace Maestro.Base.Services.DragDropHandlers
         {
             try
             {
-                if (!MessageService.AskQuestion(Properties.Resources.ConfirmLoadPackage, Properties.Resources.Confirm))
+                if (!MessageService.AskQuestion(Strings.ConfirmLoadPackage, Strings.Confirm))
                     return false;
 
                 var wb = Workbench.Instance;

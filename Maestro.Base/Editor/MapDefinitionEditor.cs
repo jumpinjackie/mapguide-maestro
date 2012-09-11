@@ -71,7 +71,7 @@ namespace Maestro.Base.Editor
             {
                 if (mdf.BaseMap.ScaleCount == 0)
                 {
-                    MessageService.ShowMessage(Properties.Resources.NoFiniteDisplayScalesSpecified);
+                    MessageService.ShowMessage(Strings.NoFiniteDisplayScalesSpecified);
                     e.Cancel = true;
                     return;
                 }
@@ -87,7 +87,7 @@ namespace Maestro.Base.Editor
             {
                 if (mdf.BaseMap.HasLayers())
                 {
-                    if (!MessageService.AskQuestion(Properties.Resources.ConfirmBaseMapInvalidation))
+                    if (!MessageService.AskQuestion(Strings.ConfirmBaseMapInvalidation))
                     {
                         e.Cancel = true;
                         return;

@@ -614,7 +614,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                 settings.RunAndWait();
 
                 if (settings.TileSet.Count != 0 && !m_parent.Cancel)
-                    throw new Exception(Properties.Resources.TS_ThreadFailureError);
+                    throw new Exception(Strings.TS_ThreadFailureError);
             }
 
             m_parent.InvokeFinishRendering(this, group, scaleindex);

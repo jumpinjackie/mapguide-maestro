@@ -55,7 +55,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            var item = GenericItemSelectionDialog.SelectItem(Properties.Resources.TitleDirection, Properties.Resources.PromptDirection, _values);
+            var item = GenericItemSelectionDialog.SelectItem(Strings.TitleDirection, Strings.PromptDirection, _values);
             if (item != null)
             {
                 txtDirection.Text = item;

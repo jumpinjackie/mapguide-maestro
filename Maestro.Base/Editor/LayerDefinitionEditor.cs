@@ -85,7 +85,7 @@ namespace Maestro.Base.Editor
             }
             else
             {
-                throw new NotSupportedException(Properties.Resources.LayerSubTypeNotSupported);
+                throw new NotSupportedException(Strings.LayerSubTypeNotSupported);
             }
         }
 
@@ -123,7 +123,7 @@ namespace Maestro.Base.Editor
 
             if (affectedMapDefinitions.Count > 0)
             {
-                if (!MessageService.AskQuestionFormatted(Properties.Resources.Confirm, Properties.Resources.ConfirmBaseMapInvalidationLayerSave, string.Join(Environment.NewLine, affectedMapDefinitions.ToArray()) + Environment.NewLine))
+                if (!MessageService.AskQuestionFormatted(Strings.Confirm, Strings.ConfirmBaseMapInvalidationLayerSave, string.Join(Environment.NewLine, affectedMapDefinitions.ToArray()) + Environment.NewLine))
                 {
                     e.Cancel = true;
                     return;

@@ -212,7 +212,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                 _service.SyncSessionCopy();
                 string result = _fs.TestConnection();
 
-                txtConnectionStatus.Text = string.Format(Properties.Resources.FdoConnectionStatus, result);
+                txtConnectionStatus.Text = string.Format(Strings.FdoConnectionStatus, result);
             }
         }
 
@@ -238,7 +238,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
             string result = _fs.TestConnection();
             if (!result.ToLower().Equals("true")) //NOXLATE
             {
-                MessageBox.Show(string.Format(Properties.Resources.InvalidConnection, result), Properties.Resources.TitleError);
+                MessageBox.Show(string.Format(Strings.InvalidConnection, result), Strings.TitleError);
                 return false;
             }
 
@@ -258,7 +258,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                     }
                     else
                     {
-                        MessageBox.Show(Properties.Resources.NoSchemasInFeatureSource);
+                        MessageBox.Show(Strings.NoSchemasInFeatureSource);
                         return;
                     }
                 }
@@ -319,7 +319,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                 var classNames = _fs.GetClassNames(schemaName);
                 var diag = new FilteredLogicalSchemaDialog(classNames);
                 if (diag.ShowDialog() == DialogResult.Cancel)
-                    throw new ApplicationException(Properties.Resources.TextNoItemSelected);
+                    throw new ApplicationException(Strings.TextNoItemSelected);
 
                 var names = diag.ClassNames;
 
@@ -336,7 +336,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                     }
                     return null;
                 };
-                BusyWaitDialog.Run(Properties.Resources.TextPreparingConfigurationDocument, worker, (obj) => 
+                BusyWaitDialog.Run(Strings.TextPreparingConfigurationDocument, worker, (obj) => 
                 { 
                     //Done
                 });
@@ -360,7 +360,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
             _service.SyncSessionCopy();
             _doc = null;
             BuildDefaultDocument();
-            MessageBox.Show(Properties.Resources.ConfigurationDocumentReset);
+            MessageBox.Show(Strings.ConfigurationDocumentReset);
         }
 
         private void chkUse64Bit_CheckedChanged(object sender, EventArgs e)

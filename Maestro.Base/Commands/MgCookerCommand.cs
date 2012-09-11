@@ -43,8 +43,8 @@ namespace Maestro.Base.Commands
             {
                 using (var dlg = DialogFactory.OpenFile())
                 {
-                    dlg.Title = string.Format(Properties.Resources.LocateExecutable, "MgCooker.exe"); //NOXLATE
-                    dlg.Filter = Properties.Resources.FilterExecutables;
+                    dlg.Title = string.Format(Strings.LocateExecutable, "MgCooker.exe"); //NOXLATE
+                    dlg.Filter = Strings.FilterExecutables;
                     if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         exe = dlg.FileName;

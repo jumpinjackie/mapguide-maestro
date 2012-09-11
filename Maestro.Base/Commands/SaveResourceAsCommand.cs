@@ -50,7 +50,7 @@ namespace Maestro.Base.Commands
                     {
                         if (omgr.IsOpen(picker.ResourceID, conn))
                         {
-                            MessageService.ShowMessage(string.Format(Properties.Resources.CannotSaveToResourceAlreadyOpened, picker.ResourceID));
+                            MessageService.ShowMessage(string.Format(Strings.CannotSaveToResourceAlreadyOpened, picker.ResourceID));
                             return;
                         }
 

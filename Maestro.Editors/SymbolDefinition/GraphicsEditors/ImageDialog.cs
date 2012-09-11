@@ -156,7 +156,7 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
         {
             using (var open = DialogFactory.OpenFile())
             {
-                open.Filter = Properties.Resources.FilterPng;
+                open.Filter = Strings.FilterPng;
                 if (open.ShowDialog() == DialogResult.OK)
                 {
                     byte[] content = File.ReadAllBytes(open.FileName);
@@ -222,7 +222,7 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
 
             if (!_resSvc.ResourceExists(resourceId))
             {
-                MessageBox.Show(Properties.Resources.ResourceDoesntExist);
+                MessageBox.Show(Strings.ResourceDoesntExist);
                 return;
             }
 

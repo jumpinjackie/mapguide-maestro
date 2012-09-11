@@ -75,7 +75,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             var issueSet = new ValidationResultSet();
             if (!HasValidator(item.ResourceType, item.ResourceVersion))
             {
-                issueSet.AddIssue(new ValidationIssue(item, ValidationStatus.Warning, ValidationStatusCode.Warning_General_NoRegisteredValidatorForResource, string.Format(Properties.Resources.ERR_NO_REGISTERED_VALIDATOR, item.ResourceType, item.ResourceVersion)));
+                issueSet.AddIssue(new ValidationIssue(item, ValidationStatus.Warning, ValidationStatusCode.Warning_General_NoRegisteredValidatorForResource, string.Format(Strings.ERR_NO_REGISTERED_VALIDATOR, item.ResourceType, item.ResourceVersion)));
             }
             else
             {
@@ -95,7 +95,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                         string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                         if (ex is NullReferenceException)
                             msg = ex.ToString();
-                        issueSet.AddIssue(new ValidationIssue(item, ValidationStatus.Error, ValidationStatusCode.Error_General_ValidationError, string.Format(Properties.Resources.ErrorValidationGeneric, msg)));
+                        issueSet.AddIssue(new ValidationIssue(item, ValidationStatus.Error, ValidationStatusCode.Error_General_ValidationError, string.Format(Strings.ErrorValidationGeneric, msg)));
                     }
                 }
             }

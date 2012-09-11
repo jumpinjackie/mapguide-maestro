@@ -58,7 +58,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(string.Format(Properties.Resources.ErrorLoadingWmsConfig, ex.Message), Properties.Resources.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(string.Format(Strings.ErrorLoadingWmsConfig, ex.Message), Strings.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     _config = BuildDefaultWmsDocument();
                 }
             }

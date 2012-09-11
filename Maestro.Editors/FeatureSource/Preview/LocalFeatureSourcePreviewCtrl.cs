@@ -128,7 +128,7 @@ namespace Maestro.Editors.FeatureSource.Preview
                 var schemaNode = new TreeNode(s);
                 schemaNode.Tag = new SchemaNodeTag(s);
                 schemaNode.ImageIndex = schemaNode.SelectedImageIndex = IDX_SCHEMA;
-                schemaNode.Nodes.Add(Properties.Resources.TextLoading);
+                schemaNode.Nodes.Add(Strings.TextLoading);
                 trvSchema.Nodes.Add(schemaNode);
             }
         }
@@ -151,7 +151,7 @@ namespace Maestro.Editors.FeatureSource.Preview
             }
             classNode.ImageIndex = classNode.SelectedImageIndex = IDX_CLASS;
 
-            classNode.ToolTipText = string.Format(Properties.Resources.FsPreview_ClassNodeTooltip,
+            classNode.ToolTipText = string.Format(Strings.FsPreview_ClassNodeTooltip,
                 cls.Name,
                 cls.Description,
                 cls.DefaultGeometryPropertyName,
@@ -167,7 +167,7 @@ namespace Maestro.Editors.FeatureSource.Preview
                 {
                     var g = (GeometricPropertyDefinition)prop;
                     propNode.ImageIndex = propNode.SelectedImageIndex = IDX_GEOMETRY;
-                    propNode.ToolTipText = string.Format(Properties.Resources.FsPreview_GeometryPropertyNodeTooltip,
+                    propNode.ToolTipText = string.Format(Strings.FsPreview_GeometryPropertyNodeTooltip,
                         g.Name,
                         g.Description,
                         g.GeometryTypesToString(),
@@ -185,7 +185,7 @@ namespace Maestro.Editors.FeatureSource.Preview
                     else
                         propNode.ImageIndex = propNode.SelectedImageIndex = IDX_PROP;
 
-                    propNode.ToolTipText = string.Format(Properties.Resources.FsPreview_DataPropertyNodeTooltip,
+                    propNode.ToolTipText = string.Format(Strings.FsPreview_DataPropertyNodeTooltip,
                         d.Name,
                         d.Description,
                         d.DataType.ToString(),
@@ -201,7 +201,7 @@ namespace Maestro.Editors.FeatureSource.Preview
                     var r = (RasterPropertyDefinition)prop;
                     propNode.ImageIndex = propNode.SelectedImageIndex = IDX_RASTER;
 
-                    propNode.ToolTipText = string.Format(Properties.Resources.FsPreview_RasterPropertyNodeTooltip,
+                    propNode.ToolTipText = string.Format(Strings.FsPreview_RasterPropertyNodeTooltip,
                         r.Name,
                         r.Description,
                         r.IsNullable,
@@ -258,7 +258,7 @@ namespace Maestro.Editors.FeatureSource.Preview
                 {
                     var pane = new PreviewPane(currentFsId, mode, cls, _fsvc, _caps);
                     var page = new TabPage();
-                    page.Text = Properties.Resources.SQLQuery;
+                    page.Text = Strings.SQLQuery;
                     page.Tag = mode;
                     pane.Dock = DockStyle.Fill;
                     page.Controls.Add(pane);
@@ -271,7 +271,7 @@ namespace Maestro.Editors.FeatureSource.Preview
             {
                 var pane = new PreviewPane(currentFsId, mode, cls, _fsvc, _caps);
                 var page = new TabPage();
-                page.Text = Properties.Resources.StandardQuery + " - " + cls.QualifiedName; //NOXLATE
+                page.Text = Strings.StandardQuery + " - " + cls.QualifiedName; //NOXLATE
                 page.Tag = mode;
                 pane.Dock = DockStyle.Fill;
                 page.Controls.Add(pane);
@@ -376,7 +376,7 @@ namespace Maestro.Editors.FeatureSource.Preview
                     node.Text = clsName;
                     node.Tag = new ClassNodeTag(schTag.SchemaName, clsName);
                     node.ImageIndex = node.SelectedImageIndex = IDX_CLASS;
-                    node.Nodes.Add(Properties.Resources.TextLoading);
+                    node.Nodes.Add(Strings.TextLoading);
 
                     e.Node.Nodes.Add(node);
                 }

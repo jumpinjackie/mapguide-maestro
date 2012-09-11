@@ -1,0 +1,3297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ADF_Flyout_SelectMore" xml:space="preserve">
+    <value>Select More</value>
+  </data>
+  <data name="ADF_Flyout_View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="ADF_Flyout_Zoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="ADF_InvalidWidgetReferenceInContainer" xml:space="preserve">
+    <value>A non-existent widget by the id of {0} is being referenced from a menu/container : {1}</value>
+  </data>
+  <data name="ADF_MapInvalidError" xml:space="preserve">
+    <value>Map with ID {0} does not point to a valid map</value>
+  </data>
+  <data name="ADF_MapMissingError" xml:space="preserve">
+    <value>Fusion application does not specify a map</value>
+  </data>
+  <data name="ADF_MapValidationError" xml:space="preserve">
+    <value>Error validating MapDefinition {0}, message: {1}</value>
+  </data>
+  <data name="ADF_MapWithIncompatibleCommericalCs" xml:space="preserve">
+    <value>The Map Definition {0} has a coordinate system that is not EPSG:3857. This map is in a group containing one or more commerical base layers. The specified Map Definition may not correctly display or line up with the commerical base layers.</value>
+  </data>
+  <data name="ADF_NonUiWidgetAttachedToContainer" xml:space="preserve">
+    <value>A non-UI widget by the id of {0} is residing in the menu/container ({1}). Being a non-UI widget, this may cause rendering problems for that particular container</value>
+  </data>
+  <data name="ADF_ReferencedWidgetInMenuHasNoLabel" xml:space="preserve">
+    <value>A widget by the id of {0} has no label. This may cause display problems in the menu/container ({1}) if there is no icon specified</value>
+  </data>
+  <data name="ADF_ViewOutsideMapExtents" xml:space="preserve">
+    <value>Fusion application specifies a start view that is outside the map's initial extents</value>
+  </data>
+  <data name="ADF_Widget_Buffer_Desc" xml:space="preserve">
+    <value>Create buffers around the selected features</value>
+  </data>
+  <data name="ADF_Widget_Buffer_Label" xml:space="preserve">
+    <value>Buffer</value>
+  </data>
+  <data name="ADF_Widget_Measure_Desc" xml:space="preserve">
+    <value>Measure distances and areas on the map</value>
+  </data>
+  <data name="ADF_Widget_Measure_Label" xml:space="preserve">
+    <value>Measure</value>
+  </data>
+  <data name="ADF_Widget_NextView_Desc" xml:space="preserve">
+    <value>Go to next view</value>
+  </data>
+  <data name="ADF_Widget_NextView_Label" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="ADF_Widget_PreviousView_Desc" xml:space="preserve">
+    <value>Go to previous view</value>
+  </data>
+  <data name="ADF_Widget_PreviousView_Label" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="ADF_Widget_ZoomIn_Desc" xml:space="preserve">
+    <value>Zoom in by a preset increment</value>
+  </data>
+  <data name="ADF_Widget_ZoomIn_Label" xml:space="preserve">
+    <value>Zoom In</value>
+  </data>
+  <data name="ADF_Widget_ZoomOut_Desc" xml:space="preserve">
+    <value>Zoom out by a preset increment</value>
+  </data>
+  <data name="ADF_Widget_ZoomOut_Label" xml:space="preserve">
+    <value>Zoom Out</value>
+  </data>
+  <data name="BaseTemplate240_ApplicationDefinition" xml:space="preserve">
+    <value>&lt;?xml version="1.0"?&gt;
+&lt;ApplicationDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="ApplicationDefinition-1.0.0.xsd"&gt;
+  &lt;TemplateUrl&gt;fusion/templates/mapguide/slate/index.html&lt;/TemplateUrl&gt;
+  &lt;MapSet&gt;
+    &lt;MapGroup id="MgMainMapId"&gt;
+      &lt;Map&gt;
+        &lt;Type&gt;MapGuide&lt;/Type&gt;
+        &lt;SingleTile&gt;true&lt;/SingleTile&gt;
+        &lt;Extension&gt;
+          &lt;ResourceId /&gt;
+          &lt;SelectionAsOverlay&gt;true&lt;/SelectionAsOverlay&gt;
+          &lt;SelectionColor&gt;0x0000FFA0&lt;/SelectionColor&gt;
+        &lt;/Extension&gt;
+      &lt;/Map&gt;
+      &lt;Extension /&gt;
+    &lt;/MapGroup&gt;
+  &lt;/MapSet&gt;
+  &lt;WidgetSet&gt;
+    &lt;Container xsi:type="UiItemContainerType"&gt;
+      &lt;Name&gt;Toolbar&lt;/Name&gt;
+      &lt;Type&gt;Toolbar&lt;/Type&gt;
+      &lt;Position&gt;top&lt;/Position&gt;
+      &lt;Extension /&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;RefreshMap&lt;/Widget&gt;
+      &lt;/Item&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+            &lt;Function&gt;Widget&lt;/Function&gt;
+            &lt;Widget&gt;Maptip&lt;/Widget&gt;
+        &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;SelectRadius&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;SelectPolygon&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ClearSelection&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;BufferPanel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Measure&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;FeatureInfo&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Query&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Theme&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Redline&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Print&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ViewOptions&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;About&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Help&lt;/Widget&gt;
+      &lt;/Item&gt;
+    &lt;/Container&gt;
+    &lt;Container xsi:type="UiItemContainerType"&gt;
+      &lt;Name&gt;ToolbarSecondary&lt;/Name&gt;
+      &lt;Type&gt;Toolbar&lt;/Type&gt;
+      &lt;Position&gt;top&lt;/Position&gt;
+      &lt;Extension /&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Select&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Pan&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Zoom&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomIn&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomOut&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;InitialMapView&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomToSelection&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;PreviousView&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;NextView&lt;/Widget&gt;
+      &lt;/Item&gt;
+    &lt;/Container&gt;
+    &lt;Container xsi:type="UiItemContainerType"&gt;
+      &lt;Name&gt;ToolbarVertical&lt;/Name&gt;
+      &lt;Type&gt;Toolbar&lt;/Type&gt;
+      &lt;Position&gt;left&lt;/Position&gt;
+      &lt;Extension /&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;SelectNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;PanNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomInNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomOutNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;InitialMapViewNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomToSelectionNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;PreviousViewNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;NextViewNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+    &lt;/Container&gt;
+    &lt;Container xsi:type="UiItemContainerType"&gt;
+      &lt;Name&gt;Statusbar&lt;/Name&gt;
+      &lt;Type&gt;Splitterbar&lt;/Type&gt;
+      &lt;Position&gt;bottom&lt;/Position&gt;
+      &lt;Extension /&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;StatusCoords&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;StatusSelection&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;StatusScale&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;StatusViewSize&lt;/Widget&gt;
+      &lt;/Item&gt;
+    &lt;/Container&gt;
+    &lt;Container xsi:type="UiItemContainerType"&gt;
+      &lt;Name&gt;FileMenu&lt;/Name&gt;
+      &lt;Type&gt;Toolbar&lt;/Type&gt;
+      &lt;Position&gt;top&lt;/Position&gt;
+      &lt;Extension /&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;MapMenu&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;BasemapSwitcher&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="FlyoutItemType"&gt;
+        &lt;Function&gt;Flyout&lt;/Function&gt;
+        &lt;Label&gt;View&lt;/Label&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;ShowOverviewMap&lt;/Widget&gt;
+        &lt;/Item&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;ShowTaskWindow&lt;/Widget&gt;
+        &lt;/Item&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;ShowLegendWindow&lt;/Widget&gt;
+        &lt;/Item&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;ShowSelectionWindow&lt;/Widget&gt;
+        &lt;/Item&gt;
+      &lt;/Item&gt;
+    &lt;/Container&gt;
+    &lt;Container xsi:type="UiItemContainerType"&gt;
+      &lt;Name&gt;MapRightClickMenu&lt;/Name&gt;
+      &lt;Type&gt;ContextMenu&lt;/Type&gt;
+      &lt;Position&gt;top&lt;/Position&gt;
+      &lt;Extension /&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;RefreshMap&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Pan&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Zoom&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomIn&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomOut&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="FlyoutItemType"&gt;
+        &lt;Function&gt;Flyout&lt;/Function&gt;
+        &lt;Label&gt;Zoom&lt;/Label&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;InitialMapView&lt;/Widget&gt;
+        &lt;/Item&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;PreviousView&lt;/Widget&gt;
+        &lt;/Item&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;NextView&lt;/Widget&gt;
+        &lt;/Item&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;ZoomToSelection&lt;/Widget&gt;
+        &lt;/Item&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Select&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ClearSelection&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="FlyoutItemType"&gt;
+        &lt;Function&gt;Flyout&lt;/Function&gt;
+        &lt;Label&gt;Select More&lt;/Label&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;SelectRadius&lt;/Widget&gt;
+        &lt;/Item&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;SelectPolygon&lt;/Widget&gt;
+        &lt;/Item&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;SelectWithin&lt;/Widget&gt;
+        &lt;/Item&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;BufferPanel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Measure&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;FeatureInfo&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Query&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Theme&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Redline&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ViewOptions&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Help&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;About&lt;/Widget&gt;
+      &lt;/Item&gt;
+    &lt;/Container&gt;
+    &lt;Container xsi:type="UiItemContainerType"&gt;
+      &lt;Name&gt;TaskMenu&lt;/Name&gt;
+      &lt;Type&gt;ContextMenu&lt;/Type&gt;
+      &lt;Position&gt;top&lt;/Position&gt;
+      &lt;Extension /&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;BufferPanel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Measure&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;FeatureInfo&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Query&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Theme&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Redline&lt;/Widget&gt;
+      &lt;/Item&gt;
+    &lt;/Container&gt;
+    &lt;MapWidget&gt;
+      &lt;Name&gt;Map&lt;/Name&gt;
+      &lt;Type&gt;Map&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;MenuContainer&gt;MapRightClickMenu&lt;/MenuContainer&gt;
+      &lt;/Extension&gt;
+      &lt;MapId&gt;MgMainMapId&lt;/MapId&gt;
+    &lt;/MapWidget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;About&lt;/Name&gt;
+      &lt;Type&gt;About&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;AboutURL&gt;widgets/About/About.html&lt;/AboutURL&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;about&lt;/ImageClass&gt;
+      &lt;Label&gt;About&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to show information about this application&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;ActivityIndicator&lt;/Name&gt;
+      &lt;Type&gt;ActivityIndicator&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;ElementId /&gt;
+      &lt;/Extension&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;BasemapSwitcher&lt;/Name&gt;
+      &lt;Type&gt;BasemapSwitcher&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension /&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;options&lt;/ImageClass&gt;
+      &lt;Label&gt;External Providers&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to change the basemap&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;BufferPanel&lt;/Name&gt;
+      &lt;Type&gt;BufferPanel&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Target&gt;TaskPane&lt;/Target&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;buffer&lt;/ImageClass&gt;
+      &lt;Label&gt;Buffer&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to create a buffer&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ClearSelection&lt;/Name&gt;
+      &lt;Type&gt;ClearSelection&lt;/Type&gt;
+      &lt;Extension /&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;select-clear&lt;/ImageClass&gt;
+      &lt;Label&gt;Clear Selection&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to clear the current selection&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;PreviousView&lt;/Name&gt;
+      &lt;Type&gt;ExtentHistory&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Direction&gt;Previous&lt;/Direction&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;view-back&lt;/ImageClass&gt;
+      &lt;Label&gt;Previous&lt;/Label&gt;
+      &lt;Tooltip&gt;Zoom to previous extents&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;NextView&lt;/Name&gt;
+      &lt;Type&gt;ExtentHistory&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Direction&gt;Next&lt;/Direction&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;view-forward&lt;/ImageClass&gt;
+      &lt;Label&gt;Next&lt;/Label&gt;
+      &lt;Tooltip&gt;Zoom to next extents&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Help&lt;/Name&gt;
+      &lt;Type&gt;Help&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Target&gt;HelpWindow&lt;/Target&gt;
+        &lt;Url&gt;widgets/Help/Help.html&lt;/Url&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;help&lt;/ImageClass&gt;
+      &lt;Label&gt;Help&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to get help&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;InitialMapView&lt;/Name&gt;
+      &lt;Type&gt;InitialMapView&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;ViewType&gt;initial&lt;/ViewType&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;zoom-full&lt;/ImageClass&gt;
+      &lt;Label&gt;Zoom Extents&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to zoom to the full map extents&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;Legend&lt;/Name&gt;
+      &lt;Type&gt;Legend&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;HideInvisibleLayers&gt;true&lt;/HideInvisibleLayers&gt;
+        &lt;ShowRootFolder&gt;false&lt;/ShowRootFolder&gt;
+        &lt;DisabledLayerIcon&gt;images/icons/legend-layer.png&lt;/DisabledLayerIcon&gt;
+        &lt;RootFolderIcon&gt;images/icons/legend-map.png&lt;/RootFolderIcon&gt;
+        &lt;ShowMapFolder&gt;false&lt;/ShowMapFolder&gt;
+        &lt;LayerThemeIcon&gt;images/icons/legend-theme.png&lt;/LayerThemeIcon&gt;
+        &lt;LayerRasterIcon&gt;images/icons/legend-raster.png&lt;/LayerRasterIcon&gt;
+        &lt;LayerInfoIcon&gt;images/icons/tree_layer_info.png&lt;/LayerInfoIcon&gt;
+        &lt;LayerDWFIcon&gt;images/icons/legend-DWF.png&lt;/LayerDWFIcon&gt;
+        &lt;GroupInfoIcon&gt;images/icons/tree_group_info.png&lt;/GroupInfoIcon&gt;
+      &lt;/Extension&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;MapMenu&lt;/Name&gt;
+      &lt;Type&gt;MapMenu&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Folder /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl /&gt;
+      &lt;ImageClass /&gt;
+      &lt;Label&gt;Maps&lt;/Label&gt;
+      &lt;Tooltip&gt;Choose a map theme&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Maptip&lt;/Name&gt;
+      &lt;Type&gt;Maptip&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Tolerance&gt;2&lt;/Tolerance&gt;
+        &lt;Target&gt;MaptipWindow&lt;/Target&gt;
+        &lt;WinFeatures&gt;menubar=no,location=no,resizable=no,status=no&lt;/WinFeatures&gt;
+        &lt;Delay&gt;350&lt;/Delay&gt;
+        &lt;Layer /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl /&gt;
+      &lt;ImageClass /&gt;
+      &lt;Label&gt;Maptip&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to Enable/Disable get information about features from Server&lt;/Tooltip&gt;
+      &lt;StatusText&gt;Click to Enable/Disable get information about features from Server&lt;/StatusText&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Measure&lt;/Name&gt;
+      &lt;Type&gt;Measure&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;DistancePrecision&gt;4&lt;/DistancePrecision&gt;
+        &lt;MeasureTooltipContainer&gt;MeasureContainerBox&lt;/MeasureTooltipContainer&gt;
+        &lt;MeasureTooltipType&gt;static&lt;/MeasureTooltipType&gt;
+        &lt;MeasureTipPositionLeft&gt;15&lt;/MeasureTipPositionLeft&gt;
+        &lt;Units&gt;none&lt;/Units&gt;
+        &lt;LineStyleWidth&gt;2&lt;/LineStyleWidth&gt;
+        &lt;MeasureTipPositionTop&gt;100&lt;/MeasureTipPositionTop&gt;
+        &lt;LineStyleColor&gt;rgba(0,0,255,0.3)&lt;/LineStyleColor&gt;
+        &lt;FillStyle&gt;rgba(0,0,255, 0.3)&lt;/FillStyle&gt;
+        &lt;Target&gt;TaskPane&lt;/Target&gt;
+        &lt;AreaPrecision&gt;4&lt;/AreaPrecision&gt;
+        &lt;Type&gt;Both&lt;/Type&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;measure&lt;/ImageClass&gt;
+      &lt;Label&gt;Measure&lt;/Label&gt;
+      &lt;Tooltip&gt;Measure distances and areas on the map&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;FeatureInfo&lt;/Name&gt;
+      &lt;Type&gt;FeatureInfo&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Target&gt;TaskPane&lt;/Target&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;featureinfo&lt;/ImageClass&gt;
+      &lt;Label&gt;Feature Info&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to display selected feature info&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Query&lt;/Name&gt;
+      &lt;Type&gt;Query&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Target&gt;TaskPane&lt;/Target&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;query&lt;/ImageClass&gt;
+      &lt;Label&gt;Query&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to execute a custom query&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Theme&lt;/Name&gt;
+      &lt;Type&gt;Theme&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Target&gt;TaskPane&lt;/Target&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;theme&lt;/ImageClass&gt;
+      &lt;Label&gt;Theme&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to create a themed layer&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Redline&lt;/Name&gt;
+      &lt;Type&gt;Redline&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;FeatureStyle /&gt;
+        &lt;Target&gt;TaskPane&lt;/Target&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;redline&lt;/ImageClass&gt;
+      &lt;Label&gt;Redline&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to draw redline features&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;Navigator&lt;/Name&gt;
+      &lt;Type&gt;Navigator&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension /&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;OverviewMap&lt;/Name&gt;
+      &lt;Type&gt;OverviewMap&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;MinRatio&gt;32&lt;/MinRatio&gt;
+        &lt;MapId /&gt;
+        &lt;MaxRatio&gt;128&lt;/MaxRatio&gt;
+      &lt;/Extension&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Pan&lt;/Name&gt;
+      &lt;Type&gt;Pan&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension /&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;pan&lt;/ImageClass&gt;
+      &lt;Label&gt;Pan&lt;/Label&gt;
+      &lt;Tooltip&gt;Click and drag to pan the map&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Print&lt;/Name&gt;
+      &lt;Type&gt;Print&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;ShowPrintUI&gt;true&lt;/ShowPrintUI&gt;
+        &lt;ShowNorthArrow&gt;false&lt;/ShowNorthArrow&gt;
+        &lt;PageTitle /&gt;
+        &lt;ImageBaseUrl /&gt;
+        &lt;ShowLegend&gt;false&lt;/ShowLegend&gt;
+        &lt;ShowTitle&gt;false&lt;/ShowTitle&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;file-print&lt;/ImageClass&gt;
+      &lt;Label&gt;Print&lt;/Label&gt;
+      &lt;Tooltip&gt;Print the current map view&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;RefreshMap&lt;/Name&gt;
+      &lt;Type&gt;RefreshMap&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension /&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;view-refresh&lt;/ImageClass&gt;
+      &lt;Label&gt;Refresh&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to redraw the map&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;SaveMap&lt;/Name&gt;
+      &lt;Type&gt;SaveMap&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Format&gt;png&lt;/Format&gt;
+        &lt;Scale /&gt;
+        &lt;ResourceId /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;file-save&lt;/ImageClass&gt;
+      &lt;Label&gt;Save map&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to save the map as an image&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Select&lt;/Name&gt;
+      &lt;Type&gt;Select&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Tolerance&gt;3&lt;/Tolerance&gt;
+        &lt;SelectionType&gt;INTERSECTS&lt;/SelectionType&gt;
+        &lt;QueryActiveLayer&gt;false&lt;/QueryActiveLayer&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;select&lt;/ImageClass&gt;
+      &lt;Label&gt;Select&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to select features&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;SelectionPanel&lt;/Name&gt;
+      &lt;Type&gt;SelectionPanel&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension /&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;SelectPolygon&lt;/Name&gt;
+      &lt;Type&gt;SelectPolygon&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Tolerance&gt;3&lt;/Tolerance&gt;
+        &lt;SelectionType&gt;INTERSECTS&lt;/SelectionType&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;select-polygon&lt;/ImageClass&gt;
+      &lt;Label&gt;Select Polygon&lt;/Label&gt;
+      &lt;Tooltip&gt;Draw a polygon to perform a selection&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;SelectRadius&lt;/Name&gt;
+      &lt;Type&gt;SelectRadius&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Tolerance&gt;3&lt;/Tolerance&gt;
+        &lt;RadiusTooltipType&gt;dynamic&lt;/RadiusTooltipType&gt;
+        &lt;RadiusTooltipContainer /&gt;
+        &lt;SelectionType&gt;INTERSECTS&lt;/SelectionType&gt;
+        &lt;DefaultRadius&gt;20&lt;/DefaultRadius&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;select-radius&lt;/ImageClass&gt;
+      &lt;Label&gt;Select Radius&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to select within a radius&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;SelectWithin&lt;/Name&gt;
+      &lt;Type&gt;SelectWithin&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Target&gt;TaskPane&lt;/Target&gt;
+        &lt;DisableIfSelectionEmpty&gt;true&lt;/DisableIfSelectionEmpty&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;select-features&lt;/ImageClass&gt;
+      &lt;Label&gt;Select within&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to select features within this selection&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;TaskPane&lt;/Name&gt;
+      &lt;Type&gt;TaskPane&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;MenuContainer&gt;TaskMenu&lt;/MenuContainer&gt;
+        &lt;InitialTask /&gt;
+      &lt;/Extension&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ViewOptions&lt;/Name&gt;
+      &lt;Type&gt;ViewOptions&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;DisplayUnits /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;options&lt;/ImageClass&gt;
+      &lt;Label&gt;Options&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to change the units displayed&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Zoom&lt;/Name&gt;
+      &lt;Type&gt;Zoom&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Tolerance&gt;5&lt;/Tolerance&gt;
+        &lt;Factor&gt;2&lt;/Factor&gt;
+        &lt;Direction&gt;in&lt;/Direction&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;zoom-in&lt;/ImageClass&gt;
+      &lt;Label&gt;Zoom Rectangle&lt;/Label&gt;
+      &lt;Tooltip&gt;Click or click and drag on the map to zoom in&lt;/Tooltip&gt;
+      &lt;StatusText&gt;Click or click and drag on the map to zoom in&lt;/StatusText&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ZoomOut&lt;/Name&gt;
+      &lt;Type&gt;ZoomOnClick&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Factor&gt;0.5&lt;/Factor&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;zoom-out-fixed&lt;/ImageClass&gt;
+      &lt;Label&gt;Zoom Out&lt;/Label&gt;
+      &lt;Tooltip&gt;Zoom out to display a larger area&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ZoomIn&lt;/Name&gt;
+      &lt;Type&gt;ZoomOnClick&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Factor&gt;2.0&lt;/Factor&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;zoom-in-fixed&lt;/ImageClass&gt;
+      &lt;Label&gt;Zoom In&lt;/Label&gt;
+      &lt;Tooltip&gt;Zoom in to display more detail&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ZoomToSelection&lt;/Name&gt;
+      &lt;Type&gt;ZoomToSelection&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;MaximumZoomDimension&gt;-1&lt;/MaximumZoomDimension&gt;
+        &lt;ZoomFactor&gt;2&lt;/ZoomFactor&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;select-zoom&lt;/ImageClass&gt;
+      &lt;Label&gt;Zoom Selection&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to zoom to the selection&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;InitialMapViewNoLabel&lt;/Name&gt;
+      &lt;Type&gt;InitialMapView&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;ViewType&gt;initial&lt;/ViewType&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;zoom-full&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Click to zoom to the full map extents&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;NextViewNoLabel&lt;/Name&gt;
+      &lt;Type&gt;ExtentHistory&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Direction&gt;Next&lt;/Direction&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;view-forward&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Zoom to next extents&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;PanNoLabel&lt;/Name&gt;
+      &lt;Type&gt;Pan&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension /&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;pan&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Click and drag to pan the map&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;PreviousViewNoLabel&lt;/Name&gt;
+      &lt;Type&gt;ExtentHistory&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Direction&gt;Previous&lt;/Direction&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;view-back&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Zoom to previous extents&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;SelectNoLabel&lt;/Name&gt;
+      &lt;Type&gt;Select&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Tolerance&gt;3&lt;/Tolerance&gt;
+        &lt;SelectionType&gt;INTERSECTS&lt;/SelectionType&gt;
+        &lt;QueryActiveLayer&gt;false&lt;/QueryActiveLayer&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;select&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Click to select features&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ZoomNoLabel&lt;/Name&gt;
+      &lt;Type&gt;Zoom&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Tolerance&gt;5&lt;/Tolerance&gt;
+        &lt;Factor&gt;2&lt;/Factor&gt;
+        &lt;Direction&gt;in&lt;/Direction&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;zoom-in&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Click or click and drag on the map to zoom in&lt;/Tooltip&gt;
+      &lt;StatusText&gt;Click or click and drag on the map to zoom in&lt;/StatusText&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ZoomInNoLabel&lt;/Name&gt;
+      &lt;Type&gt;ZoomOnClick&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Factor&gt;2.0&lt;/Factor&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;zoom-in-fixed&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Zoom in to display more detail&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ZoomOutNoLabel&lt;/Name&gt;
+      &lt;Type&gt;ZoomOnClick&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Factor&gt;0.5&lt;/Factor&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;zoom-out-fixed&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Zoom out to display a larger area&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ZoomToSelectionNoLabel&lt;/Name&gt;
+      &lt;Type&gt;ZoomToSelection&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;MaximumZoomDimension&gt;-1&lt;/MaximumZoomDimension&gt;
+        &lt;ZoomFactor&gt;2&lt;/ZoomFactor&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;select-zoom&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Click to zoom to the selection&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ShowOverviewMap&lt;/Name&gt;
+      &lt;Type&gt;InvokeScript&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Script&gt;showOverviewMap()&lt;/Script&gt;
+        &lt;Target /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl /&gt;
+      &lt;ImageClass /&gt;
+      &lt;Label&gt;Show Overview Map&lt;/Label&gt;
+      &lt;Tooltip&gt;Display the overview map window&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ShowTaskWindow&lt;/Name&gt;
+      &lt;Type&gt;InvokeScript&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Script&gt;showTaskPane()&lt;/Script&gt;
+        &lt;Target /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl /&gt;
+      &lt;ImageClass /&gt;
+      &lt;Label&gt;Show Task Pane&lt;/Label&gt;
+      &lt;Tooltip&gt;Display the task pane window&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ShowLegendWindow&lt;/Name&gt;
+      &lt;Type&gt;InvokeScript&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Script&gt;showLegend()&lt;/Script&gt;
+        &lt;Target /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl /&gt;
+      &lt;ImageClass /&gt;
+      &lt;Label&gt;Show Legend&lt;/Label&gt;
+      &lt;Tooltip&gt;Display the legend window&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ShowSelectionWindow&lt;/Name&gt;
+      &lt;Type&gt;InvokeScript&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Script&gt;showSelectionPanel()&lt;/Script&gt;
+        &lt;Target /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl /&gt;
+      &lt;ImageClass /&gt;
+      &lt;Label&gt;Show Selection Panel&lt;/Label&gt;
+      &lt;Tooltip&gt;Display the selection window&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;StatusCoords&lt;/Name&gt;
+      &lt;Type&gt;CursorPosition&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Precision&gt;4&lt;/Precision&gt;
+        &lt;Template&gt;x: {x}, y: {y}&lt;/Template&gt;
+        &lt;Units&gt;dd&lt;/Units&gt;
+      &lt;/Extension&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;StatusSelection&lt;/Name&gt;
+      &lt;Type&gt;SelectionInfo&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;EmptyText&gt;No features selected&lt;/EmptyText&gt;
+        &lt;Template&gt;{0} feature(s) selected on {1} layer(s)&lt;/Template&gt;
+      &lt;/Extension&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;StatusScale&lt;/Name&gt;
+      &lt;Type&gt;EditableScale&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Precision&gt;4&lt;/Precision&gt;
+      &lt;/Extension&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;StatusViewSize&lt;/Name&gt;
+      &lt;Type&gt;ViewSize&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Precision&gt;2&lt;/Precision&gt;
+        &lt;Template&gt;{w} x {h} {units}&lt;/Template&gt;
+        &lt;Units&gt;Meters&lt;/Units&gt;
+      &lt;/Extension&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;StatusOverviewMap&lt;/Name&gt;
+      &lt;Type&gt;InvokeScript&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Script&gt;showOverviewMap()&lt;/Script&gt;
+        &lt;Target /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;iconNavigator&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Display the overview map window&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;StatusNavigator&lt;/Name&gt;
+      &lt;Type&gt;InvokeScript&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Script&gt;showOverviewMap()&lt;/Script&gt;
+        &lt;Target /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;iconNavigator&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Display the overview map window&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+  &lt;/WidgetSet&gt;
+  &lt;Extension /&gt;
+&lt;/ApplicationDefinition&gt;</value>
+  </data>
+  <data name="BaseTemplate_ApplicationDefinition" xml:space="preserve">
+    <value>&lt;?xml version="1.0"?&gt;
+&lt;ApplicationDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="ApplicationDefinition-1.0.0.xsd"&gt;
+  &lt;TemplateUrl&gt;fusion/templates/mapguide/slate/index.html&lt;/TemplateUrl&gt;
+  &lt;MapSet&gt;
+    &lt;MapGroup id="MgMainMapId"&gt;
+      &lt;Map&gt;
+        &lt;Type&gt;MapGuide&lt;/Type&gt;
+        &lt;SingleTile&gt;true&lt;/SingleTile&gt;
+        &lt;Extension&gt;
+          &lt;ResourceId /&gt;
+          &lt;SelectionAsOverlay&gt;true&lt;/SelectionAsOverlay&gt;
+          &lt;SelectionColor&gt;0x0000FFA0&lt;/SelectionColor&gt;
+        &lt;/Extension&gt;
+      &lt;/Map&gt;
+      &lt;Extension /&gt;
+    &lt;/MapGroup&gt;
+  &lt;/MapSet&gt;
+  &lt;WidgetSet&gt;
+    &lt;Container xsi:type="UiItemContainerType"&gt;
+      &lt;Name&gt;Toolbar&lt;/Name&gt;
+      &lt;Type&gt;Toolbar&lt;/Type&gt;
+      &lt;Position&gt;top&lt;/Position&gt;
+      &lt;Extension /&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;RefreshMap&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;SelectRadius&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;SelectPolygon&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ClearSelection&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;BufferPanel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Measure&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;FeatureInfo&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Query&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Theme&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Redline&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Print&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ViewOptions&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;About&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Help&lt;/Widget&gt;
+      &lt;/Item&gt;
+    &lt;/Container&gt;
+    &lt;Container xsi:type="UiItemContainerType"&gt;
+      &lt;Name&gt;ToolbarSecondary&lt;/Name&gt;
+      &lt;Type&gt;Toolbar&lt;/Type&gt;
+      &lt;Position&gt;top&lt;/Position&gt;
+      &lt;Extension /&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Select&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Pan&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Zoom&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomIn&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomOut&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;InitialMapView&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomToSelection&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;PreviousView&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;NextView&lt;/Widget&gt;
+      &lt;/Item&gt;
+    &lt;/Container&gt;
+    &lt;Container xsi:type="UiItemContainerType"&gt;
+      &lt;Name&gt;ToolbarVertical&lt;/Name&gt;
+      &lt;Type&gt;Toolbar&lt;/Type&gt;
+      &lt;Position&gt;left&lt;/Position&gt;
+      &lt;Extension /&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;SelectNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;PanNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomInNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomOutNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;InitialMapViewNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomToSelectionNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;PreviousViewNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;NextViewNoLabel&lt;/Widget&gt;
+      &lt;/Item&gt;
+    &lt;/Container&gt;
+    &lt;Container xsi:type="UiItemContainerType"&gt;
+      &lt;Name&gt;Statusbar&lt;/Name&gt;
+      &lt;Type&gt;Splitterbar&lt;/Type&gt;
+      &lt;Position&gt;bottom&lt;/Position&gt;
+      &lt;Extension /&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;StatusCoords&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;StatusSelection&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;StatusScale&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;StatusViewSize&lt;/Widget&gt;
+      &lt;/Item&gt;
+    &lt;/Container&gt;
+    &lt;Container xsi:type="UiItemContainerType"&gt;
+      &lt;Name&gt;FileMenu&lt;/Name&gt;
+      &lt;Type&gt;Toolbar&lt;/Type&gt;
+      &lt;Position&gt;top&lt;/Position&gt;
+      &lt;Extension /&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;MapMenu&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;BasemapSwitcher&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="FlyoutItemType"&gt;
+        &lt;Function&gt;Flyout&lt;/Function&gt;
+        &lt;Label&gt;View&lt;/Label&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;ShowOverviewMap&lt;/Widget&gt;
+        &lt;/Item&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;ShowTaskWindow&lt;/Widget&gt;
+        &lt;/Item&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;ShowLegendWindow&lt;/Widget&gt;
+        &lt;/Item&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;ShowSelectionWindow&lt;/Widget&gt;
+        &lt;/Item&gt;
+      &lt;/Item&gt;
+    &lt;/Container&gt;
+    &lt;Container xsi:type="UiItemContainerType"&gt;
+      &lt;Name&gt;MapRightClickMenu&lt;/Name&gt;
+      &lt;Type&gt;ContextMenu&lt;/Type&gt;
+      &lt;Position&gt;top&lt;/Position&gt;
+      &lt;Extension /&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;RefreshMap&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Pan&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Zoom&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomIn&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ZoomOut&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="FlyoutItemType"&gt;
+        &lt;Function&gt;Flyout&lt;/Function&gt;
+        &lt;Label&gt;Zoom&lt;/Label&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;InitialMapView&lt;/Widget&gt;
+        &lt;/Item&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;PreviousView&lt;/Widget&gt;
+        &lt;/Item&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;NextView&lt;/Widget&gt;
+        &lt;/Item&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;ZoomToSelection&lt;/Widget&gt;
+        &lt;/Item&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Select&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ClearSelection&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="FlyoutItemType"&gt;
+        &lt;Function&gt;Flyout&lt;/Function&gt;
+        &lt;Label&gt;Select More&lt;/Label&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;SelectRadius&lt;/Widget&gt;
+        &lt;/Item&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;SelectPolygon&lt;/Widget&gt;
+        &lt;/Item&gt;
+        &lt;Item xsi:type="WidgetItemType"&gt;
+          &lt;Function&gt;Widget&lt;/Function&gt;
+          &lt;Widget&gt;SelectWithin&lt;/Widget&gt;
+        &lt;/Item&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;BufferPanel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Measure&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;FeatureInfo&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Query&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Theme&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Redline&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="SeparatorItemType"&gt;
+        &lt;Function&gt;Separator&lt;/Function&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;ViewOptions&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Help&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;About&lt;/Widget&gt;
+      &lt;/Item&gt;
+    &lt;/Container&gt;
+    &lt;Container xsi:type="UiItemContainerType"&gt;
+      &lt;Name&gt;TaskMenu&lt;/Name&gt;
+      &lt;Type&gt;ContextMenu&lt;/Type&gt;
+      &lt;Position&gt;top&lt;/Position&gt;
+      &lt;Extension /&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;BufferPanel&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Measure&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;FeatureInfo&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Query&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Theme&lt;/Widget&gt;
+      &lt;/Item&gt;
+      &lt;Item xsi:type="WidgetItemType"&gt;
+        &lt;Function&gt;Widget&lt;/Function&gt;
+        &lt;Widget&gt;Redline&lt;/Widget&gt;
+      &lt;/Item&gt;
+    &lt;/Container&gt;
+    &lt;MapWidget&gt;
+      &lt;Name&gt;Map&lt;/Name&gt;
+      &lt;Type&gt;Map&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;MenuContainer&gt;MapRightClickMenu&lt;/MenuContainer&gt;
+      &lt;/Extension&gt;
+      &lt;MapId&gt;MgMainMapId&lt;/MapId&gt;
+    &lt;/MapWidget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;About&lt;/Name&gt;
+      &lt;Type&gt;About&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;AboutURL&gt;widgets/About/About.html&lt;/AboutURL&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;about&lt;/ImageClass&gt;
+      &lt;Label&gt;About&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to show information about this application&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;ActivityIndicator&lt;/Name&gt;
+      &lt;Type&gt;ActivityIndicator&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;ElementId /&gt;
+      &lt;/Extension&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;BasemapSwitcher&lt;/Name&gt;
+      &lt;Type&gt;BasemapSwitcher&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension /&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;options&lt;/ImageClass&gt;
+      &lt;Label&gt;External Providers&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to change the basemap&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;BufferPanel&lt;/Name&gt;
+      &lt;Type&gt;BufferPanel&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Target&gt;TaskPane&lt;/Target&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;buffer&lt;/ImageClass&gt;
+      &lt;Label&gt;Buffer&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to create a buffer&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ClearSelection&lt;/Name&gt;
+      &lt;Type&gt;ClearSelection&lt;/Type&gt;
+      &lt;Extension /&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;select-clear&lt;/ImageClass&gt;
+      &lt;Label&gt;Clear Selection&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to clear the current selection&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;PreviousView&lt;/Name&gt;
+      &lt;Type&gt;ExtentHistory&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Direction&gt;Previous&lt;/Direction&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;view-back&lt;/ImageClass&gt;
+      &lt;Label&gt;Previous&lt;/Label&gt;
+      &lt;Tooltip&gt;Zoom to previous extents&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;NextView&lt;/Name&gt;
+      &lt;Type&gt;ExtentHistory&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Direction&gt;Next&lt;/Direction&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;view-forward&lt;/ImageClass&gt;
+      &lt;Label&gt;Next&lt;/Label&gt;
+      &lt;Tooltip&gt;Zoom to next extents&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Help&lt;/Name&gt;
+      &lt;Type&gt;Help&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Target&gt;HelpWindow&lt;/Target&gt;
+        &lt;Url&gt;widgets/Help/Help.html&lt;/Url&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;help&lt;/ImageClass&gt;
+      &lt;Label&gt;Help&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to get help&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;InitialMapView&lt;/Name&gt;
+      &lt;Type&gt;InitialMapView&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;ViewType&gt;initial&lt;/ViewType&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;zoom-full&lt;/ImageClass&gt;
+      &lt;Label&gt;Zoom Extents&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to zoom to the full map extents&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;Legend&lt;/Name&gt;
+      &lt;Type&gt;Legend&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;HideInvisibleLayers&gt;true&lt;/HideInvisibleLayers&gt;
+        &lt;ShowRootFolder&gt;false&lt;/ShowRootFolder&gt;
+        &lt;DisabledLayerIcon&gt;images/icons/legend-layer.png&lt;/DisabledLayerIcon&gt;
+        &lt;RootFolderIcon&gt;images/icons/legend-map.png&lt;/RootFolderIcon&gt;
+        &lt;ShowMapFolder&gt;false&lt;/ShowMapFolder&gt;
+        &lt;LayerThemeIcon&gt;images/icons/legend-theme.png&lt;/LayerThemeIcon&gt;
+        &lt;LayerRasterIcon&gt;images/icons/legend-raster.png&lt;/LayerRasterIcon&gt;
+        &lt;LayerInfoIcon&gt;images/icons/tree_layer_info.png&lt;/LayerInfoIcon&gt;
+        &lt;LayerDWFIcon&gt;images/icons/legend-DWF.png&lt;/LayerDWFIcon&gt;
+        &lt;GroupInfoIcon&gt;images/icons/tree_group_info.png&lt;/GroupInfoIcon&gt;
+      &lt;/Extension&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;MapMenu&lt;/Name&gt;
+      &lt;Type&gt;MapMenu&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Folder /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl /&gt;
+      &lt;ImageClass /&gt;
+      &lt;Label&gt;Maps&lt;/Label&gt;
+      &lt;Tooltip&gt;Choose a map theme&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;Maptip&lt;/Name&gt;
+      &lt;Type&gt;Maptip&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Tolerance&gt;2&lt;/Tolerance&gt;
+        &lt;Target&gt;MaptipWindow&lt;/Target&gt;
+        &lt;WinFeatures&gt;menubar=no,location=no,resizable=no,status=no&lt;/WinFeatures&gt;
+        &lt;Delay&gt;350&lt;/Delay&gt;
+        &lt;Layer /&gt;
+      &lt;/Extension&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Measure&lt;/Name&gt;
+      &lt;Type&gt;Measure&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;DistancePrecision&gt;4&lt;/DistancePrecision&gt;
+        &lt;MeasureTooltipContainer&gt;MeasureContainerBox&lt;/MeasureTooltipContainer&gt;
+        &lt;MeasureTooltipType&gt;static&lt;/MeasureTooltipType&gt;
+        &lt;MeasureTipPositionLeft&gt;15&lt;/MeasureTipPositionLeft&gt;
+        &lt;Units&gt;none&lt;/Units&gt;
+        &lt;LineStyleWidth&gt;2&lt;/LineStyleWidth&gt;
+        &lt;MeasureTipPositionTop&gt;100&lt;/MeasureTipPositionTop&gt;
+        &lt;LineStyleColor&gt;rgba(0,0,255,0.3)&lt;/LineStyleColor&gt;
+        &lt;FillStyle&gt;rgba(0,0,255, 0.3)&lt;/FillStyle&gt;
+        &lt;Target&gt;TaskPane&lt;/Target&gt;
+        &lt;AreaPrecision&gt;4&lt;/AreaPrecision&gt;
+        &lt;Type&gt;Both&lt;/Type&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;measure&lt;/ImageClass&gt;
+      &lt;Label&gt;Measure&lt;/Label&gt;
+      &lt;Tooltip&gt;Measure distances and areas on the map&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;FeatureInfo&lt;/Name&gt;
+      &lt;Type&gt;FeatureInfo&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Target&gt;TaskPane&lt;/Target&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;featureinfo&lt;/ImageClass&gt;
+      &lt;Label&gt;Feature Info&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to display selected feature info&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Query&lt;/Name&gt;
+      &lt;Type&gt;Query&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Target&gt;TaskPane&lt;/Target&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;query&lt;/ImageClass&gt;
+      &lt;Label&gt;Query&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to execute a custom query&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Theme&lt;/Name&gt;
+      &lt;Type&gt;Theme&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Target&gt;TaskPane&lt;/Target&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;theme&lt;/ImageClass&gt;
+      &lt;Label&gt;Theme&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to create a themed layer&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Redline&lt;/Name&gt;
+      &lt;Type&gt;Redline&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;FeatureStyle /&gt;
+        &lt;Target&gt;TaskPane&lt;/Target&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;redline&lt;/ImageClass&gt;
+      &lt;Label&gt;Redline&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to draw redline features&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;Navigator&lt;/Name&gt;
+      &lt;Type&gt;Navigator&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension /&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;OverviewMap&lt;/Name&gt;
+      &lt;Type&gt;OverviewMap&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;MinRatio&gt;32&lt;/MinRatio&gt;
+        &lt;MapId /&gt;
+        &lt;MaxRatio&gt;128&lt;/MaxRatio&gt;
+      &lt;/Extension&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Pan&lt;/Name&gt;
+      &lt;Type&gt;Pan&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension /&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;pan&lt;/ImageClass&gt;
+      &lt;Label&gt;Pan&lt;/Label&gt;
+      &lt;Tooltip&gt;Click and drag to pan the map&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Print&lt;/Name&gt;
+      &lt;Type&gt;Print&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;ShowPrintUI&gt;true&lt;/ShowPrintUI&gt;
+        &lt;ShowNorthArrow&gt;false&lt;/ShowNorthArrow&gt;
+        &lt;PageTitle /&gt;
+        &lt;ImageBaseUrl /&gt;
+        &lt;ShowLegend&gt;false&lt;/ShowLegend&gt;
+        &lt;ShowTitle&gt;false&lt;/ShowTitle&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;file-print&lt;/ImageClass&gt;
+      &lt;Label&gt;Print&lt;/Label&gt;
+      &lt;Tooltip&gt;Print the current map view&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;RefreshMap&lt;/Name&gt;
+      &lt;Type&gt;RefreshMap&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension /&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;view-refresh&lt;/ImageClass&gt;
+      &lt;Label&gt;Refresh&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to redraw the map&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;SaveMap&lt;/Name&gt;
+      &lt;Type&gt;SaveMap&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Format&gt;png&lt;/Format&gt;
+        &lt;Scale /&gt;
+        &lt;ResourceId /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;file-save&lt;/ImageClass&gt;
+      &lt;Label&gt;Save map&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to save the map as an image&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Select&lt;/Name&gt;
+      &lt;Type&gt;Select&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Tolerance&gt;3&lt;/Tolerance&gt;
+        &lt;SelectionType&gt;INTERSECTS&lt;/SelectionType&gt;
+        &lt;QueryActiveLayer&gt;false&lt;/QueryActiveLayer&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;select&lt;/ImageClass&gt;
+      &lt;Label&gt;Select&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to select features&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;SelectionPanel&lt;/Name&gt;
+      &lt;Type&gt;SelectionPanel&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension /&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;SelectPolygon&lt;/Name&gt;
+      &lt;Type&gt;SelectPolygon&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Tolerance&gt;3&lt;/Tolerance&gt;
+        &lt;SelectionType&gt;INTERSECTS&lt;/SelectionType&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;select-polygon&lt;/ImageClass&gt;
+      &lt;Label&gt;Select Polygon&lt;/Label&gt;
+      &lt;Tooltip&gt;Draw a polygon to perform a selection&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;SelectRadius&lt;/Name&gt;
+      &lt;Type&gt;SelectRadius&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Tolerance&gt;3&lt;/Tolerance&gt;
+        &lt;RadiusTooltipType&gt;dynamic&lt;/RadiusTooltipType&gt;
+        &lt;RadiusTooltipContainer /&gt;
+        &lt;SelectionType&gt;INTERSECTS&lt;/SelectionType&gt;
+        &lt;DefaultRadius&gt;20&lt;/DefaultRadius&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;select-radius&lt;/ImageClass&gt;
+      &lt;Label&gt;Select Radius&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to select within a radius&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;SelectWithin&lt;/Name&gt;
+      &lt;Type&gt;SelectWithin&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Target&gt;TaskPane&lt;/Target&gt;
+        &lt;DisableIfSelectionEmpty&gt;true&lt;/DisableIfSelectionEmpty&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;select-features&lt;/ImageClass&gt;
+      &lt;Label&gt;Select within&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to select features within this selection&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;TaskPane&lt;/Name&gt;
+      &lt;Type&gt;TaskPane&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;MenuContainer&gt;TaskMenu&lt;/MenuContainer&gt;
+        &lt;InitialTask /&gt;
+      &lt;/Extension&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ViewOptions&lt;/Name&gt;
+      &lt;Type&gt;ViewOptions&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;DisplayUnits /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;options&lt;/ImageClass&gt;
+      &lt;Label&gt;Options&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to change the units displayed&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;Zoom&lt;/Name&gt;
+      &lt;Type&gt;Zoom&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Tolerance&gt;5&lt;/Tolerance&gt;
+        &lt;Factor&gt;2&lt;/Factor&gt;
+        &lt;Direction&gt;in&lt;/Direction&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;zoom-in&lt;/ImageClass&gt;
+      &lt;Label&gt;Zoom Rectangle&lt;/Label&gt;
+      &lt;Tooltip&gt;Click or click and drag on the map to zoom in&lt;/Tooltip&gt;
+      &lt;StatusText&gt;Click or click and drag on the map to zoom in&lt;/StatusText&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ZoomOut&lt;/Name&gt;
+      &lt;Type&gt;ZoomOnClick&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Factor&gt;0.5&lt;/Factor&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;zoom-out-fixed&lt;/ImageClass&gt;
+      &lt;Label&gt;Zoom Out&lt;/Label&gt;
+      &lt;Tooltip&gt;Zoom out to display a larger area&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ZoomIn&lt;/Name&gt;
+      &lt;Type&gt;ZoomOnClick&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Factor&gt;2.0&lt;/Factor&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;zoom-in-fixed&lt;/ImageClass&gt;
+      &lt;Label&gt;Zoom In&lt;/Label&gt;
+      &lt;Tooltip&gt;Zoom in to display more detail&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ZoomToSelection&lt;/Name&gt;
+      &lt;Type&gt;ZoomToSelection&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;MaximumZoomDimension&gt;-1&lt;/MaximumZoomDimension&gt;
+        &lt;ZoomFactor&gt;2&lt;/ZoomFactor&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;select-zoom&lt;/ImageClass&gt;
+      &lt;Label&gt;Zoom Selection&lt;/Label&gt;
+      &lt;Tooltip&gt;Click to zoom to the selection&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;InitialMapViewNoLabel&lt;/Name&gt;
+      &lt;Type&gt;InitialMapView&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;ViewType&gt;initial&lt;/ViewType&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;zoom-full&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Click to zoom to the full map extents&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;NextViewNoLabel&lt;/Name&gt;
+      &lt;Type&gt;ExtentHistory&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Direction&gt;Next&lt;/Direction&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;view-forward&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Zoom to next extents&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;PanNoLabel&lt;/Name&gt;
+      &lt;Type&gt;Pan&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension /&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;pan&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Click and drag to pan the map&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;PreviousViewNoLabel&lt;/Name&gt;
+      &lt;Type&gt;ExtentHistory&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Direction&gt;Previous&lt;/Direction&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;view-back&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Zoom to previous extents&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;SelectNoLabel&lt;/Name&gt;
+      &lt;Type&gt;Select&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Tolerance&gt;3&lt;/Tolerance&gt;
+        &lt;SelectionType&gt;INTERSECTS&lt;/SelectionType&gt;
+        &lt;QueryActiveLayer&gt;false&lt;/QueryActiveLayer&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;select&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Click to select features&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ZoomNoLabel&lt;/Name&gt;
+      &lt;Type&gt;Zoom&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Tolerance&gt;5&lt;/Tolerance&gt;
+        &lt;Factor&gt;2&lt;/Factor&gt;
+        &lt;Direction&gt;in&lt;/Direction&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;zoom-in&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Click or click and drag on the map to zoom in&lt;/Tooltip&gt;
+      &lt;StatusText&gt;Click or click and drag on the map to zoom in&lt;/StatusText&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ZoomInNoLabel&lt;/Name&gt;
+      &lt;Type&gt;ZoomOnClick&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Factor&gt;2.0&lt;/Factor&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;zoom-in-fixed&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Zoom in to display more detail&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ZoomOutNoLabel&lt;/Name&gt;
+      &lt;Type&gt;ZoomOnClick&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Factor&gt;0.5&lt;/Factor&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;zoom-out-fixed&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Zoom out to display a larger area&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ZoomToSelectionNoLabel&lt;/Name&gt;
+      &lt;Type&gt;ZoomToSelection&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;MaximumZoomDimension&gt;-1&lt;/MaximumZoomDimension&gt;
+        &lt;ZoomFactor&gt;2&lt;/ZoomFactor&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;select-zoom&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Click to zoom to the selection&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ShowOverviewMap&lt;/Name&gt;
+      &lt;Type&gt;InvokeScript&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Script&gt;showOverviewMap()&lt;/Script&gt;
+        &lt;Target /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl /&gt;
+      &lt;ImageClass /&gt;
+      &lt;Label&gt;Show Overview Map&lt;/Label&gt;
+      &lt;Tooltip&gt;Display the overview map window&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ShowTaskWindow&lt;/Name&gt;
+      &lt;Type&gt;InvokeScript&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Script&gt;showTaskPane()&lt;/Script&gt;
+        &lt;Target /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl /&gt;
+      &lt;ImageClass /&gt;
+      &lt;Label&gt;Show Task Pane&lt;/Label&gt;
+      &lt;Tooltip&gt;Display the task pane window&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ShowLegendWindow&lt;/Name&gt;
+      &lt;Type&gt;InvokeScript&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Script&gt;showLegend()&lt;/Script&gt;
+        &lt;Target /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl /&gt;
+      &lt;ImageClass /&gt;
+      &lt;Label&gt;Show Legend&lt;/Label&gt;
+      &lt;Tooltip&gt;Display the legend window&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;ShowSelectionWindow&lt;/Name&gt;
+      &lt;Type&gt;InvokeScript&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Script&gt;showSelectionPanel()&lt;/Script&gt;
+        &lt;Target /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl /&gt;
+      &lt;ImageClass /&gt;
+      &lt;Label&gt;Show Selection Panel&lt;/Label&gt;
+      &lt;Tooltip&gt;Display the selection window&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;StatusCoords&lt;/Name&gt;
+      &lt;Type&gt;CursorPosition&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Precision&gt;4&lt;/Precision&gt;
+        &lt;Template&gt;x: {x}, y: {y}&lt;/Template&gt;
+        &lt;Units&gt;dd&lt;/Units&gt;
+      &lt;/Extension&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;StatusSelection&lt;/Name&gt;
+      &lt;Type&gt;SelectionInfo&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;EmptyText&gt;No features selected&lt;/EmptyText&gt;
+        &lt;Template&gt;{0} feature(s) selected on {1} layer(s)&lt;/Template&gt;
+      &lt;/Extension&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;StatusScale&lt;/Name&gt;
+      &lt;Type&gt;EditableScale&lt;/Type&gt;
+      &lt;Extension&gt;
+        &lt;Precision&gt;4&lt;/Precision&gt;
+      &lt;/Extension&gt;
+    &lt;/Widget&gt;
+    &lt;Widget&gt;
+      &lt;Name&gt;StatusViewSize&lt;/Name&gt;
+      &lt;Type&gt;ViewSize&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Precision&gt;2&lt;/Precision&gt;
+        &lt;Template&gt;{w} x {h} {units}&lt;/Template&gt;
+        &lt;Units&gt;Meters&lt;/Units&gt;
+      &lt;/Extension&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;StatusOverviewMap&lt;/Name&gt;
+      &lt;Type&gt;InvokeScript&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Script&gt;showOverviewMap()&lt;/Script&gt;
+        &lt;Target /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;iconNavigator&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Display the overview map window&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+    &lt;Widget xsi:type="UiWidgetType"&gt;
+      &lt;Name&gt;StatusNavigator&lt;/Name&gt;
+      &lt;Type&gt;InvokeScript&lt;/Type&gt;
+      &lt;Location /&gt;
+      &lt;Extension&gt;
+        &lt;Script&gt;showOverviewMap()&lt;/Script&gt;
+        &lt;Target /&gt;
+      &lt;/Extension&gt;
+      &lt;ImageUrl&gt;images/icons.png&lt;/ImageUrl&gt;
+      &lt;ImageClass&gt;iconNavigator&lt;/ImageClass&gt;
+      &lt;Label /&gt;
+      &lt;Tooltip&gt;Display the overview map window&lt;/Tooltip&gt;
+      &lt;StatusText /&gt;
+      &lt;Disabled&gt;false&lt;/Disabled&gt;
+    &lt;/Widget&gt;
+  &lt;/WidgetSet&gt;
+  &lt;Extension /&gt;
+&lt;/ApplicationDefinition&gt;</value>
+  </data>
+  <data name="CannotCreateLoadProcedureSubType" xml:space="preserve">
+    <value>Could not create load procedure of type: </value>
+  </data>
+  <data name="CompositeStyleDisplayString" xml:space="preserve">
+    <value>[Composite Style]</value>
+  </data>
+  <data name="CopiedResource" xml:space="preserve">
+    <value>Copied resource: {0}</value>
+  </data>
+  <data name="CopiedResourceToTarget" xml:space="preserve">
+    <value>Copied: {0} =&gt; {1}</value>
+  </data>
+  <data name="DowngradedResource" xml:space="preserve">
+    <value>Resource {0} downgraded to version {1}</value>
+  </data>
+  <data name="DS_NoCoordinateSpace" xml:space="preserve">
+    <value>No coordinate system specified. The coordinate system if not specified will default to LL84</value>
+  </data>
+  <data name="DS_NoSourceSpecified" xml:space="preserve">
+    <value>No source DWF file specified</value>
+  </data>
+  <data name="DuplicateKeyExceptionMessage" xml:space="preserve">
+    <value>An item with the key value ({0}) already exists in the collection</value>
+  </data>
+  <data name="ErrorArgContainsReservedCharacters" xml:space="preserve">
+    <value>{0} contains reserved characters</value>
+  </data>
+  <data name="ErrorBadDocumentExpectedAttribute" xml:space="preserve">
+    <value>Bad document. Expected attribute: {0}</value>
+  </data>
+  <data name="ErrorBadDocumentExpectedElement" xml:space="preserve">
+    <value>Bad document. Expected element {0}</value>
+  </data>
+  <data name="ErrorBadDocumentInvalidBbox" xml:space="preserve">
+    <value>Bad document. Invalid bounding box</value>
+  </data>
+  <data name="ErrorBadHtmlColor" xml:space="preserve">
+    <value>Bad HTML color: {0}</value>
+  </data>
+  <data name="ErrorBadNullEncodedString" xml:space="preserve">
+    <value>Bad null encoded string</value>
+  </data>
+  <data name="ErrorBinarySerializerBufferTooSmall" xml:space="preserve">
+    <value>Buffer too small</value>
+  </data>
+  <data name="ErrorBinarySerializerCoordinateUnexpectedType" xml:space="preserve">
+    <value>Coordinate expected, but got object: {0}</value>
+  </data>
+  <data name="ErrorBinarySerializerExpectedEndOfStream" xml:space="preserve">
+    <value>The read value was: {0} while &lt;end of stream&gt; was expected</value>
+  </data>
+  <data name="ErrorBinarySerializerGetCharWidth" xml:space="preserve">
+    <value>Failed to get valid string char width</value>
+  </data>
+  <data name="ErrorBinarySerializerInvalidAmountOfCoordinates" xml:space="preserve">
+    <value>Invalid amount of coordinates</value>
+  </data>
+  <data name="ErrorBinarySerializerInvalidCoordinateDimensionCount" xml:space="preserve">
+    <value>Coordinate count reported: {0}, for a single coordinate</value>
+  </data>
+  <data name="ErrorBinarySerializerPrematureEndOfStream" xml:space="preserve">
+    <value>Stream ended prematurely</value>
+  </data>
+  <data name="ErrorBinarySerializerStreamExhausted" xml:space="preserve">
+    <value>Stream exhausted while reading {0} bytes</value>
+  </data>
+  <data name="ErrorBinarySerializerUnexpectedType" xml:space="preserve">
+    <value>Data in stream had type: {0} but type '{1}' was expected</value>
+  </data>
+  <data name="ErrorBinarySerializerUnknownObjectType" xml:space="preserve">
+    <value>Unknown object type: {0}</value>
+  </data>
+  <data name="ErrorBoundingBoxDoesNotHave2Dimensions" xml:space="preserve">
+    <value>Bounding box for map had {0} dimensions. Expected 2 dimensions</value>
+  </data>
+  <data name="ErrorCmsOptionsOnMapGuideMap" xml:space="preserve">
+    <value>Commerical layer options are only available for non-MapGuide maps</value>
+  </data>
+  <data name="ErrorCouldNotDetermineSymbolType" xml:space="preserve">
+    <value>Could not determine symbol type</value>
+  </data>
+  <data name="ErrorCurrentRecordIsEmpty" xml:space="preserve">
+    <value>Current record is empty</value>
+  </data>
+  <data name="ErrorEmptyFeatureSourceId" xml:space="preserve">
+    <value>Empty feature source id</value>
+  </data>
+  <data name="ErrorExprCurrentRowIsEmpty" xml:space="preserve">
+    <value>Unable to evaluate. Current row is empty</value>
+  </data>
+  <data name="ErrorFailedToFindTypeForClrType" xml:space="preserve">
+    <value>Failed to find type for: {0}</value>
+  </data>
+  <data name="ErrorFailedValueConversion" xml:space="preserve">
+    <value>Failed to convert value for {0} from {1} to {2}</value>
+  </data>
+  <data name="ErrorInvalidClassIdentifierBox2d" xml:space="preserve">
+    <value>Invalid class identifier. Expected Box2D</value>
+  </data>
+  <data name="ErrorInvalidGroupObjectId" xml:space="preserve">
+    <value>Group must have object id 12001, but had: {0}</value>
+  </data>
+  <data name="ErrorInvalidMapVersion" xml:space="preserve">
+    <value>Invalid or unsupported map version</value>
+  </data>
+  <data name="ErrorInvalidResourceHeaderRootElement" xml:space="preserve">
+    <value>Header must be either ResourceFolderHeaderType or ResourceDocumentHeaderType</value>
+  </data>
+  <data name="ErrorInvalidResourceIdentifier" xml:space="preserve">
+    <value>Invalid resource identifier</value>
+  </data>
+  <data name="ErrorInvalidResourceIdentifierType" xml:space="preserve">
+    <value>Invalid resource identifier type. Must be Library or Session</value>
+  </data>
+  <data name="ErrorJaggedResultSet" xml:space="preserve">
+    <value>Incoming record must be structurally identical</value>
+  </data>
+  <data name="ErrorKeyAlreadyExists" xml:space="preserve">
+    <value>Key {0} already exists</value>
+  </data>
+  <data name="ErrorLayerHasNoPk" xml:space="preserve">
+    <value>The layer does not have a primary key, and cannot be used for selection</value>
+  </data>
+  <data name="ErrorLayerKeyMismatch" xml:space="preserve">
+    <value>The layers key consists of {0} columns, but only {1} columns were given</value>
+  </data>
+  <data name="ErrorNoClassNameSpecified" xml:space="preserve">
+    <value>No class name specified</value>
+  </data>
+  <data name="ErrorNoCoordinateSystemWktSpecified" xml:space="preserve">
+    <value>No coordinate system WKT specified</value>
+  </data>
+  <data name="ErrorNoDataInResource" xml:space="preserve">
+    <value>No data found in resource: {0}</value>
+  </data>
+  <data name="ErrorNoExtentSpecifiedForStaticType" xml:space="preserve">
+    <value>No extent specified for static extent type</value>
+  </data>
+  <data name="ErrorNoFeatureSourceIdSpecified" xml:space="preserve">
+    <value>No feature source id specified</value>
+  </data>
+  <data name="ErrorNoFileNameSpecified" xml:space="preserve">
+    <value>No file name specified</value>
+  </data>
+  <data name="ErrorNoProviderSpecified" xml:space="preserve">
+    <value>No provider specified</value>
+  </data>
+  <data name="ErrorNoResourceIdAttached" xml:space="preserve">
+    <value>Resource has no resource id attached</value>
+  </data>
+  <data name="ErrorNoSchemaSpecified" xml:space="preserve">
+    <value>No schema specified</value>
+  </data>
+  <data name="ErrorNoSchemaSpecifiedToApply" xml:space="preserve">
+    <value>No schema specified to apply</value>
+  </data>
+  <data name="ErrorNoServerConnectionAttached" xml:space="preserve">
+    <value>No server connection set for object</value>
+  </data>
+  <data name="ErrorNoSpatialContextNameSpecified" xml:space="preserve">
+    <value>No spatial context name specified. This is the name that should be referred to by any spatial context associations in your feature schema</value>
+  </data>
+  <data name="ErrorNotAQualifiedClassName" xml:space="preserve">
+    <value>Not a qualified class name: {0}</value>
+  </data>
+  <data name="ErrorNothingToInsert" xml:space="preserve">
+    <value>Nothing to insert</value>
+  </data>
+  <data name="ErrorNoValuesSpecifiedForUpdating" xml:space="preserve">
+    <value>No values specified for updating</value>
+  </data>
+  <data name="ErrorNullKeyValue" xml:space="preserve">
+    <value>The value for {0} is null, which is not supported as a key</value>
+  </data>
+  <data name="ErrorNullNotAccepted" xml:space="preserve">
+    <value>Null values not accepted</value>
+  </data>
+  <data name="ErrorNullValue" xml:space="preserve">
+    <value>Null Value</value>
+  </data>
+  <data name="ErrorObjectNotICompositeTypeStyle" xml:space="preserve">
+    <value>Value does not implement ICompositeTypeStyle</value>
+  </data>
+  <data name="ErrorObjectSetNullValuesNotPermitted" xml:space="preserve">
+    <value>null values are not permitted. Use SetNull() if you need to specify null values</value>
+  </data>
+  <data name="ErrorOverlayOptionsOnNonMapGuideMap" xml:space="preserve">
+    <value>Overlay options are only applicable to MapGuide maps</value>
+  </data>
+  <data name="ErrorParseExpectedCloser" xml:space="preserve">
+    <value>Expected ')' but encountered '{0}'</value>
+  </data>
+  <data name="ErrorParseExpectedCloserOrComma" xml:space="preserve">
+    <value>Expected ')' or ',' but encountered '{0}'</value>
+  </data>
+  <data name="ErrorParseExpectedEmpty" xml:space="preserve">
+    <value>Expected 'EMPTY' or '(' but encountered '{0}'</value>
+  </data>
+  <data name="ErrorParseExpectedNumber" xml:space="preserve">
+    <value>Expected number but encountered {0}</value>
+  </data>
+  <data name="ErrorParseExpectedNumberEol" xml:space="preserve">
+    <value>Expected number but encountered end of line</value>
+  </data>
+  <data name="ErrorParseExpectedNumberEos" xml:space="preserve">
+    <value>Expected number but encountered end of stream</value>
+  </data>
+  <data name="ErrorParseExpectedNumberGotWord" xml:space="preserve">
+    <value>Expected number but encountered word {0}</value>
+  </data>
+  <data name="ErrorParseExpectedWord" xml:space="preserve">
+    <value>Expected word but encountered number: {0}</value>
+  </data>
+  <data name="ErrorParseGeometryRead" xml:space="preserve">
+    <value>Error reading geometry</value>
+  </data>
+  <data name="ErrorParseUnknownType" xml:space="preserve">
+    <value>Unknown type: {0}</value>
+  </data>
+  <data name="ErrorPropertyNotFound" xml:space="preserve">
+    <value>Property not found: {0}</value>
+  </data>
+  <data name="ErrorProviderAlreadyRegistered" xml:space="preserve">
+    <value>Provider already registered: {0}</value>
+  </data>
+  <data name="ErrorProviderNotRegistered" xml:space="preserve">
+    <value>Provider not registered: {0}</value>
+  </data>
+  <data name="ErrorProviderNotUsableForYourPlatform" xml:space="preserve">
+    <value>The specified provider is not usable in your operating system: {0}</value>
+  </data>
+  <data name="ErrorResourceIdCannotChangeExtensionForFolder" xml:space="preserve">
+    <value>Cannot change extension for a folder</value>
+  </data>
+  <data name="ErrorResourceIdentifierClassIdNotFound" xml:space="preserve">
+    <value>Resource Identifier class id expected, but got: {0}</value>
+  </data>
+  <data name="ErrorResourceIdentifierInvalidChars" xml:space="preserve">
+    <value>The resource name must not contain ':', \"//\" or '.'</value>
+  </data>
+  <data name="ErrorResourceIdentifierNameInvalidChars" xml:space="preserve">
+    <value>The new name must not contain the \"/\" character</value>
+  </data>
+  <data name="ErrorResourceIdInvalidExtension" xml:space="preserve">
+    <value>The supplied extension is invalid</value>
+  </data>
+  <data name="ErrorResourceMustBeUpdatedWithFolderHeader" xml:space="preserve">
+    <value>The resourceId: {0} must be updated with a folder header</value>
+  </data>
+  <data name="ErrorRuntimeMapNotInSessionRepo" xml:space="preserve">
+    <value>Runtime maps must be in the session repository</value>
+  </data>
+  <data name="ErrorSelectedLayerHasNoId" xml:space="preserve">
+    <value>A layer in selection had no id</value>
+  </data>
+  <data name="ErrorSettingVisibilityOfTiledLayer" xml:space="preserve">
+    <value>Setting visibility of tiled map layers is not permitted</value>
+  </data>
+  <data name="ErrorShouldHaveNoLayerDataInMap" xml:space="preserve">
+    <value>On new versions, there should be no layer data in map</value>
+  </data>
+  <data name="ErrorTokenListContainsNullValue" xml:space="preserve">
+    <value>Token list contains a null value</value>
+  </data>
+  <data name="ErrorTypeHasNoSchemaInfo" xml:space="preserve">
+    <value>Type {0} does not contain schema info</value>
+  </data>
+  <data name="ErrorUnexpectedResourceType" xml:space="preserve">
+    <value>Unexpected resource type for {0}. Expected {1}</value>
+  </data>
+  <data name="ErrorUnknownResourceType" xml:space="preserve">
+    <value>The given type is not a known resource type</value>
+  </data>
+  <data name="ErrorUnsupportedPkType" xml:space="preserve">
+    <value>The type {0} is not supported for primary keys</value>
+  </data>
+  <data name="ErrorUnsupporteFdoSchemaXml" xml:space="preserve">
+    <value>Unrecognized element. Only a subset of the FDO logical schema is supported here</value>
+  </data>
+  <data name="ErrorValidationGeneric" xml:space="preserve">
+    <value>Failed in validator: {0}</value>
+  </data>
+  <data name="ErrorValueNotComparable" xml:space="preserve">
+    <value>Value is not comparable</value>
+  </data>
+  <data name="ErrorValueOutOfRange" xml:space="preserve">
+    <value>Value falls outside the range of {0} and  {1}</value>
+  </data>
+  <data name="ERR_BAD_DOCUMENT_NO_ROOT_ATTRIBUTES" xml:space="preserve">
+    <value>Bad Document: Expected attributes at the root level node</value>
+  </data>
+  <data name="ERR_CANNOT_DOWNGRADE_OLDER_RESOURCE" xml:space="preserve">
+    <value>Resource cannot be downgraded. It is already older than the version this converter can downgrade to</value>
+  </data>
+  <data name="ERR_CANNOT_UPGRADE_NEWER_RESOURCE" xml:space="preserve">
+    <value>Resource cannot be upgraded. It is already newer than what this converter can upgrade to</value>
+  </data>
+  <data name="ERR_CLASS_NOT_FOUND" xml:space="preserve">
+    <value>Class not found: {0}</value>
+  </data>
+  <data name="ERR_CONVERTER_ALREADY_REGISTERED" xml:space="preserve">
+    <value>A resource converter for {0} is already registered</value>
+  </data>
+  <data name="ERR_FS_NO_ALIAS" xml:space="preserve">
+    <value>This feature source does not connect an externally aliased file</value>
+  </data>
+  <data name="ERR_FS_NO_EMBEDDED_DATA" xml:space="preserve">
+    <value>This feature source does not connect to an embedded data file</value>
+  </data>
+  <data name="ERR_INIT_IDENTITY_PROPS" xml:space="preserve">
+    <value>Could fetch and initialize identity properties for {1} This is likely a bug in MapGuide {0}{2}</value>
+  </data>
+  <data name="ERR_NOT_RESOURCE_CONTENT_XML" xml:space="preserve">
+    <value>XML content does not match any known resource</value>
+  </data>
+  <data name="ERR_NO_DOWNGRADE_PATH" xml:space="preserve">
+    <value>There is no downgrade path to the desired resource version</value>
+  </data>
+  <data name="ERR_NO_REGISTERED_VALIDATOR" xml:space="preserve">
+    <value>There is no registered validator for {0} v{1}. Validation cannot be performed</value>
+  </data>
+  <data name="ERR_NO_SERIALIZER" xml:space="preserve">
+    <value>Could not find matching serializer for this resource: </value>
+  </data>
+  <data name="ERR_NO_UPGRADE_PATH" xml:space="preserve">
+    <value>There is no upgrade path to the desired resource version</value>
+  </data>
+  <data name="ERR_PROPERTY_VALUE_NOT_OF_TYPE" xml:space="preserve">
+    <value>The specified property {0} is not of type: {1}</value>
+  </data>
+  <data name="ERR_RESOURCE_NOT_ATTACHED" xml:space="preserve">
+    <value>No connection attached to this resource</value>
+  </data>
+  <data name="ERR_SERIALIZER_ALREADY_REGISTERED" xml:space="preserve">
+    <value>A resource serializer has already been registered for {0} v{1}</value>
+  </data>
+  <data name="ERR_SERVICE_NOT_SUPPORTED" xml:space="preserve">
+    <value>Service Type not supported: {0}</value>
+  </data>
+  <data name="FactoryMethodAlreadyRegistered" xml:space="preserve">
+    <value>Factory method already registered for version: </value>
+  </data>
+  <data name="FS_CannotPackageSecuredCredentials" xml:space="preserve">
+    <value>Due to a limitation in the public APIs provided by MapGuide. This Feature Source cannot be packaged by Maestro's packager without discarding the MG_USER_CREDENTIALS element. The workaround is to either re-secure these Feature Sources after loading the Maestro-created package, or to use the official packaging method which will preserve MG_USER_CREDENTIALS in its encrypted state</value>
+  </data>
+  <data name="FS_ConnectionTestFailed" xml:space="preserve">
+    <value>Connection test failed: {0}</value>
+  </data>
+  <data name="FS_DefaultSpatialContextWarning" xml:space="preserve">
+    <value>Spatial context extent appears to be invalid (or is the default extent returned by FDO provider. Meaning it very likely does not truly represent the extent of your data)</value>
+  </data>
+  <data name="FS_EmptyJoinPrefix" xml:space="preserve">
+    <value>The Extended Feature Class ({0}) is using an empty Join Prefix. A join prefix is used to prevent collisions between property names which may exist in both the primary and joined feature classes.</value>
+  </data>
+  <data name="FS_EmptySpatialContextWarning" xml:space="preserve">
+    <value>Empty spatial context extent detected</value>
+  </data>
+  <data name="FS_NoPrimaryKeyOrView" xml:space="preserve">
+    <value>Could not obtain identity properties for {0}. This class either has no identity properties and/or is derived from a view with no uniquely identifiable columns. Attempting to create feature joins from this class may produce unexpected results.</value>
+  </data>
+  <data name="FS_NoSpatialContextWarning" xml:space="preserve">
+    <value>No spatial contexts found. If this feature source is strictly used for Feature Joins, this warning can be safely ignored</value>
+  </data>
+  <data name="FS_PlaintextCredentials" xml:space="preserve">
+    <value>This Feature Source uses plaintext credentials. This would happen if you are using an old version of Maestro (4.0.2 or older). This is not secure as such Feature Sources can be accessed by the Anonymous MapGuide user account. It is strongly advised that such Feature Sources can be re-secured with MapGuide/Infrastructure Studio or with Maestro 4.0.3 (or newer)</value>
+  </data>
+  <data name="FS_PotentialBadJoinPerformance" xml:space="preserve">
+    <value>The Extended Feature Class ({0}) does not satisfy the required parameters for optimal Feature Join performance (both sides sortable, on a single property). Join Performance may not be optimal. Left-side sortable: {1}, Right-side sortable: {2}</value>
+  </data>
+  <data name="FS_PotentialBadJoinPerformance2" xml:space="preserve">
+    <value>The Extended Feature Class ({0}) does not satisfy the required parameters for optimal Feature Join performance (both sides sortable, on a single property). Join Performance may not be optimal.</value>
+  </data>
+  <data name="FS_PrimaryKeyMissingInformation" xml:space="preserve">
+    <value>No primary key defined for class: {0}, features will not be selectable and feature joins on this class may produce unexpected results</value>
+  </data>
+  <data name="FS_PrimaryKeyReadError" xml:space="preserve">
+    <value>Failed to read identity properties: {0}</value>
+  </data>
+  <data name="FS_SchemaReadError" xml:space="preserve">
+    <value>Failed to read schema description: {0}</value>
+  </data>
+  <data name="FS_SchemasMissingWarning" xml:space="preserve">
+    <value>No schemas found in datasource</value>
+  </data>
+  <data name="FS_SecuredCredentialTokensWithoutSecuredCredentialData" xml:space="preserve">
+    <value>Feature source content has the %MG_USERNAME% and %MG_PASSWORD% tokens, but does not have the MG_USER_CREDENTIALS resource data item</value>
+  </data>
+  <data name="FS_SpatialContextReadError" xml:space="preserve">
+    <value>Failed to read spatial context: {0}</value>
+  </data>
+  <data name="FS_ValidationTimeout" xml:space="preserve">
+    <value>Maestro could not fully validate the feature source due to a a mapagent error. Assuming it is because of timeout: {0}</value>
+  </data>
+  <data name="Infinity" xml:space="preserve">
+    <value>Infinity</value>
+  </data>
+  <data name="LDF_CompositeStyleDefinedAlongsideBasicStyle" xml:space="preserve">
+    <value>The scale range {0} to {1} contains a composite style defined alongside a area/point/line style. The composite style takes precedence in such cases meaning the area/point/line style is always ignored</value>
+  </data>
+  <data name="LDF_DrawingSourceError" xml:space="preserve">
+    <value>Failed to load specified Drawing Source</value>
+  </data>
+  <data name="LDF_FeatureSourceLoadError" xml:space="preserve">
+    <value>Failed to load specified Feature Source</value>
+  </data>
+  <data name="LDF_GeometryMissingError" xml:space="preserve">
+    <value>Failed to find geometry column {0} in schema {1} on featuresource {2}</value>
+  </data>
+  <data name="LDF_IrrelevantUsageContext" xml:space="preserve">
+    <value>Referenced Symbol Definition {0} has an irrelevant usage context for this layer because this layer does not have features of type: {1}</value>
+  </data>
+  <data name="LDF_LayerNullError" xml:space="preserve">
+    <value>Layer is missing core information</value>
+  </data>
+  <data name="LDF_MinAndMaxScaleSwappedError" xml:space="preserve">
+    <value>The minimum scale ({0}) is larger than the maximum scale ({1})</value>
+  </data>
+  <data name="LDF_MissingFeatureSourceError" xml:space="preserve">
+    <value>No FeatureSource is assigned to the layer</value>
+  </data>
+  <data name="LDF_MissingGeometryError" xml:space="preserve">
+    <value>No Geometry is assigned to the layer</value>
+  </data>
+  <data name="LDF_MissingScaleRangesError" xml:space="preserve">
+    <value>No scale ranges are defined, no data can be displayed</value>
+  </data>
+  <data name="LDF_MultipleScaleRangesWarning" xml:space="preserve">
+    <value>More than one scale ranges is defined, this is valid, but unsupported by Maestro</value>
+  </data>
+  <data name="LDF_ScaleRangesOverlapInformation" xml:space="preserve">
+    <value>The scale range {0}-{1} overlaps the range {2}-{3}</value>
+  </data>
+  <data name="LDF_SchemaAndColumnReadFailedError" xml:space="preserve">
+    <value>Failed to validate column and schema</value>
+  </data>
+  <data name="LDF_SchemaMissingError" xml:space="preserve">
+    <value>Failed to find schema {0} in featuresource {1}</value>
+  </data>
+  <data name="LDF_SheetLayerNotFound" xml:space="preserve">
+    <value>Referenced sheet layer {0} not found in sheet {1} of referenced Drawing Source</value>
+  </data>
+  <data name="LDF_SheetNotFound" xml:space="preserve">
+    <value>Referenced sheet {0} not found in referenced Drawing Source</value>
+  </data>
+  <data name="LDF_SymbolDefintionReferenceNotFound" xml:space="preserve">
+    <value>The Layer Definition contains a Composite Rule pointing to a non-existent Symbol Definition: {0}</value>
+  </data>
+  <data name="LDF_SymbolParameterOverrideToNonExistentParameter" xml:space="preserve">
+    <value>The Layer Definition specifies a parameter override for {0} that does not exist ({1})</value>
+  </data>
+  <data name="LDF_UnsupportedLayerTypeWarning" xml:space="preserve">
+    <value>The layer has no type, or the type is unsupported by Maestro</value>
+  </data>
+  <data name="LoadProcFactoryMethodAlreadyRegistered" xml:space="preserve">
+    <value>Factory method already registered for load procedure type: </value>
+  </data>
+  <data name="LPROC_ConvertToSdf3NotSupported" xml:space="preserve">
+    <value>Convert to SDF option is not supported by Maestro</value>
+  </data>
+  <data name="LPROC_DWFNotSupported" xml:space="preserve">
+    <value>DWF Load Procedures cannot be executed by Maestro</value>
+  </data>
+  <data name="LPROC_DWGNotSupported" xml:space="preserve">
+    <value>DWG Load Procedures cannot be executed by Maestro</value>
+  </data>
+  <data name="LPROC_GeneralizationNotSupported" xml:space="preserve">
+    <value>Generalization of source data is not supported by Maestro</value>
+  </data>
+  <data name="LPROC_RasterNotSupported" xml:space="preserve">
+    <value>Raster Load Procedures cannot be executed by Maestro</value>
+  </data>
+  <data name="LPROC_Sdf2OptionsNotSupported" xml:space="preserve">
+    <value>SDF 2 Migration options are not supported by Maestro. Ensure your source files are SDF3 files.</value>
+  </data>
+  <data name="LPROC_SourceFileNotFound" xml:space="preserve">
+    <value>Source file not found: {0}</value>
+  </data>
+  <data name="MDF_DataOutsideMapWarning" xml:space="preserve">
+    <value>Data from {0} is not visible in the map's start extent</value>
+  </data>
+  <data name="MDF_DataReprojectionWarning" xml:space="preserve">
+    <value>{0} has a different coordinate system than the map, this will impact performance as the coordinates are transformed while rendering the map. Maestro cannot validate the extent of the data.</value>
+  </data>
+  <data name="MDF_FeatureSourceReadError" xml:space="preserve">
+    <value>Layer {0}'s FeatureSource could not be read: {1}</value>
+  </data>
+  <data name="MDF_GroupHasDefaultLabelInformation" xml:space="preserve">
+    <value>Group {0} has the default legend label</value>
+  </data>
+  <data name="MDF_GroupMissingLabelInformation" xml:space="preserve">
+    <value>Group {0} does not have a legend label</value>
+  </data>
+  <data name="MDF_GroupWithNonExistentGroup" xml:space="preserve">
+    <value>Layer Group ({0}) belongs to a non-existent Layer Group ({1})</value>
+  </data>
+  <data name="MDF_LayerMissingLabelInformation" xml:space="preserve">
+    <value>Layer {0} does not have a legend label</value>
+  </data>
+  <data name="MDF_LayerNameDuplicateWarning" xml:space="preserve">
+    <value>The layer name {0} is used for both "{1}" and "{2}"</value>
+  </data>
+  <data name="MDF_LayerReadError" xml:space="preserve">
+    <value>Layer {0} could not be read: {1}</value>
+  </data>
+  <data name="MDF_LayerWithNonExistentGroup" xml:space="preserve">
+    <value>Layer ({0}) belongs to a non-existent Layer Group ({1})</value>
+  </data>
+  <data name="MDF_LayerWithNullExtent" xml:space="preserve">
+    <value>Map Definition references feature source {0} which has a null extent. Most likely caused by feature source having no actual data inside it</value>
+  </data>
+  <data name="MDF_MissingLayerGeometryColumnError" xml:space="preserve">
+    <value>Layer {0} has no geometry column</value>
+  </data>
+  <data name="MDF_MissingLayerSchemaError" xml:space="preserve">
+    <value>Layer {0} has an invalid Schema</value>
+  </data>
+  <data name="MDF_MissingSpatialContextWarning" xml:space="preserve">
+    <value>{0} has no spatial context (eg. no coordinate system)</value>
+  </data>
+  <data name="MDF_MultipleSpatialContextsInformation" xml:space="preserve">
+    <value>{0} has more than one spatial context, the following test results may be inacurate</value>
+  </data>
+  <data name="MDF_NoCoordinateSystem" xml:space="preserve">
+    <value>Map Definition has no coordinate system</value>
+  </data>
+  <data name="MDF_NoFiniteDisplayScalesSpecified" xml:space="preserve">
+    <value>The Map Definition contains tiled layers but has no finite display scales defined</value>
+  </data>
+  <data name="MDF_RasterReprojectionError" xml:space="preserve">
+    <value>{0} is a raster layer, and in another coordinate system than the map. No data will be displayed by the layer</value>
+  </data>
+  <data name="MDF_ResourceReadError" xml:space="preserve">
+    <value>{0} could not be processed for spatial info: {1}</value>
+  </data>
+  <data name="MDF_UnsupportedLayerTypeWarning" xml:space="preserve">
+    <value>Layer {0} is a type that is unsupported by Maestro</value>
+  </data>
+  <data name="MovedResource" xml:space="preserve">
+    <value>Moved resource: {0}</value>
+  </data>
+  <data name="MovingResource" xml:space="preserve">
+    <value>Moving resource ...</value>
+  </data>
+  <data name="NotAFolder" xml:space="preserve">
+    <value>Not a folder resource id: {0}</value>
+  </data>
+  <data name="NullString" xml:space="preserve">
+    <value>(null)</value>
+  </data>
+  <data name="PrecondFailure" xml:space="preserve">
+    <value>Precondition failure: </value>
+  </data>
+  <data name="PrecondStringEmpty" xml:space="preserve">
+    <value>String is empty: </value>
+  </data>
+  <data name="PrecondValueNull" xml:space="preserve">
+    <value>Value is null: </value>
+  </data>
+  <data name="ProgressCopyingFolder" xml:space="preserve">
+    <value>Copying Folder ...</value>
+  </data>
+  <data name="ProgressFindingFolderRefs" xml:space="preserve">
+    <value>Finding Folder References ...</value>
+  </data>
+  <data name="ProgressMovingFolder" xml:space="preserve">
+    <value>Moving Folder ...</value>
+  </data>
+  <data name="RequiredServiceNotSupported" xml:space="preserve">
+    <value>This connection does not support required service: </value>
+  </data>
+  <data name="SSDF_ImageGraphicReferenceResourceDataNotFound" xml:space="preserve">
+    <value>The simple symbol definition contains an image graphic that references a resource id {0} with a non-existent resource data {1}</value>
+  </data>
+  <data name="SSDF_ImageGraphicReferenceResourceIdNotFound" xml:space="preserve">
+    <value>The simple symbol definition contains an image graphic that references a non-existent resource id</value>
+  </data>
+  <data name="SSDF_NoGeometryUsageContext" xml:space="preserve">
+    <value>The Simple Symbol Definition has no geometry usage contexts specified.</value>
+  </data>
+  <data name="SSDF_SymbolParameterNotUsed" xml:space="preserve">
+    <value>The simple symbol definition contains a symbol parameter {0} that is not referenced anywhere within the definition</value>
+  </data>
+  <data name="TemplateCreated" xml:space="preserve">
+    <value>Created: {0}</value>
+  </data>
+  <data name="TemplateFileNotFound" xml:space="preserve">
+    <value>File not found: {0}</value>
+  </data>
+  <data name="TemplateFileProcessed" xml:space="preserve">
+    <value>File processed: {0}</value>
+  </data>
+  <data name="TemplateLoaded" xml:space="preserve">
+    <value>Loaded: {0}</value>
+  </data>
+  <data name="TemplateSetSpatialContext" xml:space="preserve">
+    <value>Set default spatial context for: {0}</value>
+  </data>
+  <data name="TemplateSuccess" xml:space="preserve">
+    <value>Success: {0}</value>
+  </data>
+  <data name="TemplateUploadedPrj" xml:space="preserve">
+    <value>Uploaded: {0}.prj</value>
+  </data>
+  <data name="TemplateUrlNotFound" xml:space="preserve">
+    <value>Could not find template url for template: </value>
+  </data>
+  <data name="TitlePreview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="TS_ThreadFailureError" xml:space="preserve">
+    <value>All threads crashed, and the tile set was only partially created</value>
+  </data>
+  <data name="UnknownLayerVersion" xml:space="preserve">
+    <value>Unknown layer version: </value>
+  </data>
+  <data name="UnknownMapDefinitionVersion" xml:space="preserve">
+    <value>Unknown Map Definition version: </value>
+  </data>
+  <data name="UnknownSymbolDefVersion" xml:space="preserve">
+    <value>Unknown Symbol Definition version: </value>
+  </data>
+  <data name="UnknownWatermarkDefinitionVersion" xml:space="preserve">
+    <value>Unknown Watermark Definition version: </value>
+  </data>
+  <data name="UnknownWebLayoutVersion" xml:space="preserve">
+    <value>Unknown Web Layout version: </value>
+  </data>
+  <data name="UnsupportedLoadProcedureType" xml:space="preserve">
+    <value>Unsupported Load Procedure Type</value>
+  </data>
+  <data name="WL_Desc_About" xml:space="preserve">
+    <value>Display information about this application</value>
+  </data>
+  <data name="WL_Desc_Buffer" xml:space="preserve">
+    <value>Create buffers around the selected features</value>
+  </data>
+  <data name="WL_Desc_ClearSelection" xml:space="preserve">
+    <value>Clear the current selection</value>
+  </data>
+  <data name="WL_Desc_Copy" xml:space="preserve">
+    <value>Copy current view of map to clipboard</value>
+  </data>
+  <data name="WL_Desc_GetPrintablePage" xml:space="preserve">
+    <value>Get Printer-friendly page</value>
+  </data>
+  <data name="WL_Desc_Help" xml:space="preserve">
+    <value>Launch help for this application</value>
+  </data>
+  <data name="WL_Desc_InitialCenterScale" xml:space="preserve">
+    <value>Zoom to initial map center and scale</value>
+  </data>
+  <data name="WL_Desc_InitialMapView" xml:space="preserve">
+    <value>Fit the extents of the map to the window</value>
+  </data>
+  <data name="WL_Desc_MapTip" xml:space="preserve">
+    <value>Click to enable/disable display of map tooltips</value>
+  </data>
+  <data name="WL_Desc_Measure" xml:space="preserve">
+    <value>Measure distances on the map</value>
+  </data>
+  <data name="WL_Desc_NextView" xml:space="preserve">
+    <value>Go to next view</value>
+  </data>
+  <data name="WL_Desc_Pan" xml:space="preserve">
+    <value>Drag the map to view areas out of range</value>
+  </data>
+  <data name="WL_Desc_PanDown" xml:space="preserve">
+    <value>Pan down by a preset increment</value>
+  </data>
+  <data name="WL_Desc_PanLeft" xml:space="preserve">
+    <value>Pan left by a preset increment</value>
+  </data>
+  <data name="WL_Desc_PanRight" xml:space="preserve">
+    <value>Pan right by a preset increment</value>
+  </data>
+  <data name="WL_Desc_PanUp" xml:space="preserve">
+    <value>Pan up by a preset increment</value>
+  </data>
+  <data name="WL_Desc_PrevView" xml:space="preserve">
+    <value>Go to previous view</value>
+  </data>
+  <data name="WL_Desc_Print" xml:space="preserve">
+    <value>Print with optional layout</value>
+  </data>
+  <data name="WL_Desc_RefreshMap" xml:space="preserve">
+    <value>Refresh map to reload all layers keeping current center and scale</value>
+  </data>
+  <data name="WL_Desc_Select" xml:space="preserve">
+    <value>Select features by clicking and dragging</value>
+  </data>
+  <data name="WL_Desc_SelectPolygon" xml:space="preserve">
+    <value>Click and drag to select all features that fall within</value>
+  </data>
+  <data name="WL_Desc_SelectRadius" xml:space="preserve">
+    <value>Click and drag to select all features inside the circle</value>
+  </data>
+  <data name="WL_Desc_SelectWithin" xml:space="preserve">
+    <value>Select features that fall within currently selected areas</value>
+  </data>
+  <data name="WL_Desc_TaskBack" xml:space="preserve">
+    <value>Return to previous task page</value>
+  </data>
+  <data name="WL_Desc_TaskForward" xml:space="preserve">
+    <value>Forward to next task page</value>
+  </data>
+  <data name="WL_Desc_TaskHome" xml:space="preserve">
+    <value>Return to home task page</value>
+  </data>
+  <data name="WL_Desc_TaskList" xml:space="preserve">
+    <value>View a list of available tasks</value>
+  </data>
+  <data name="WL_Desc_ViewOptions" xml:space="preserve">
+    <value>View Options</value>
+  </data>
+  <data name="WL_Desc_ZoomDynamic" xml:space="preserve">
+    <value>Zoom dynamically by clicking and dragging</value>
+  </data>
+  <data name="WL_Desc_ZoomIn" xml:space="preserve">
+    <value>Zoom in by a preset increment</value>
+  </data>
+  <data name="WL_Desc_ZoomOut" xml:space="preserve">
+    <value>Zoom out by a preset increment</value>
+  </data>
+  <data name="WL_Desc_ZoomRect" xml:space="preserve">
+    <value>Zoom in on an area</value>
+  </data>
+  <data name="WL_Desc_ZoomSelection" xml:space="preserve">
+    <value>Zoom to the extents of selected features</value>
+  </data>
+  <data name="WL_DuplicateCommandName" xml:space="preserve">
+    <value>There web layout has more than one command named: {0}</value>
+  </data>
+  <data name="WL_DuplicateSearchResultColumn" xml:space="preserve">
+    <value>The search command {0} references more than one property named {1}</value>
+  </data>
+  <data name="WL_Label_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="WL_Label_Buffer" xml:space="preserve">
+    <value>Buffer</value>
+  </data>
+  <data name="WL_Label_ClearSelection" xml:space="preserve">
+    <value>Clear Selection</value>
+  </data>
+  <data name="WL_Label_Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="WL_Label_GetPrintablePage" xml:space="preserve">
+    <value>Get Printable Page</value>
+  </data>
+  <data name="WL_Label_Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="WL_Label_InitialCenterScale" xml:space="preserve">
+    <value>Initial Center and Scale</value>
+  </data>
+  <data name="WL_Label_InitialMapView" xml:space="preserve">
+    <value>Initial Map View</value>
+  </data>
+  <data name="WL_Label_Measure" xml:space="preserve">
+    <value>Measure</value>
+  </data>
+  <data name="WL_Label_NextView" xml:space="preserve">
+    <value>Next View</value>
+  </data>
+  <data name="WL_Label_Pan" xml:space="preserve">
+    <value>Pan Mode</value>
+  </data>
+  <data name="WL_Label_PanDown" xml:space="preserve">
+    <value>Pan Down</value>
+  </data>
+  <data name="WL_Label_PanLeft" xml:space="preserve">
+    <value>Pan Left</value>
+  </data>
+  <data name="WL_Label_PanRight" xml:space="preserve">
+    <value>Pan Right</value>
+  </data>
+  <data name="WL_Label_PanUp" xml:space="preserve">
+    <value>Pan Up</value>
+  </data>
+  <data name="WL_Label_PrevView" xml:space="preserve">
+    <value>Previous View</value>
+  </data>
+  <data name="WL_Label_Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="WL_Label_RefreshMap" xml:space="preserve">
+    <value>Refresh Map</value>
+  </data>
+  <data name="WL_Label_Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="WL_Label_SelectMore" xml:space="preserve">
+    <value>Select More</value>
+  </data>
+  <data name="WL_Label_SelectPolygon" xml:space="preserve">
+    <value>Select Polygon</value>
+  </data>
+  <data name="WL_Label_SelectRadius" xml:space="preserve">
+    <value>Select Radius</value>
+  </data>
+  <data name="WL_Label_SelectWithin" xml:space="preserve">
+    <value>Select Within</value>
+  </data>
+  <data name="WL_Label_TaskBack" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="WL_Label_TaskForward" xml:space="preserve">
+    <value>Forward</value>
+  </data>
+  <data name="WL_Label_TaskHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="WL_Label_TaskList" xml:space="preserve">
+    <value>Task List</value>
+  </data>
+  <data name="WL_Label_ViewOptions" xml:space="preserve">
+    <value>View Options</value>
+  </data>
+  <data name="WL_Label_Zoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="WL_Label_ZoomDynamic" xml:space="preserve">
+    <value>Zoom Dynamic</value>
+  </data>
+  <data name="WL_Label_ZoomIn" xml:space="preserve">
+    <value>Zoom In</value>
+  </data>
+  <data name="WL_Label_ZoomOut" xml:space="preserve">
+    <value>Zoom Out</value>
+  </data>
+  <data name="WL_Label_ZoomRect" xml:space="preserve">
+    <value>Zoom Rectangle</value>
+  </data>
+  <data name="WL_Label_ZoomSelection" xml:space="preserve">
+    <value>Zoom Selection</value>
+  </data>
+  <data name="WL_MapValidationError" xml:space="preserve">
+    <value>Error validating MapDefinition {0}, message: {1}</value>
+  </data>
+  <data name="WL_MissingMapError" xml:space="preserve">
+    <value>Layout does not specify a map</value>
+  </data>
+  <data name="WL_NonExistentMenuCommandReference" xml:space="preserve">
+    <value>Context Menu contains a reference to a command that doesn't exist: {0}</value>
+  </data>
+  <data name="WL_NonExistentTaskPaneCommandReference" xml:space="preserve">
+    <value>Task Pane contains a reference to a command that does not exist: {0}</value>
+  </data>
+  <data name="WL_NonExistentToolbarCommandReference" xml:space="preserve">
+    <value>Toolbar contains a reference to a command that does not exist: {0}</value>
+  </data>
+  <data name="WL_StartViewOutsideExtentsWarning" xml:space="preserve">
+    <value>Layout specifies a start view that is outside the map's initial extents</value>
+  </data>
+  <data name="XmlValidationIssueTemplate" xml:space="preserve">
+    <value>Line {0}, Char {1}: {2}</value>
+  </data>
+</root>

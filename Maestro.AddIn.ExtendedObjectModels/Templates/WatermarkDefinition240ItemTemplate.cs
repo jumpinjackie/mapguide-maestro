@@ -35,10 +35,10 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     {
         public WatermarkDefinitionSimple240ItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_MGOS24;
+            Category = Strings.TPL_CATEGORY_MGOS24;
             Icon = Res.water;
-            Description = Res.TPL_WDFS_240_DESC;
-            Name = Res.TPL_WDFS_240_NAME;
+            Description = Strings.TPL_WDFS_240_DESC;
+            Name = Strings.TPL_WDFS_240_NAME;
             ResourceType = ResourceTypes.LayerDefinition.ToString();
         }
 
@@ -60,10 +60,10 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     {
         public WatermarkDefinitionCompound240ItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_MGOS24;
+            Category = Strings.TPL_CATEGORY_MGOS24;
             Icon = Res.water;
-            Description = Res.TPL_WDFC_240_DESC;
-            Name = Res.TPL_WDFC_240_NAME;
+            Description = Strings.TPL_WDFC_240_DESC;
+            Name = Strings.TPL_WDFC_240_NAME;
             ResourceType = ResourceTypes.LayerDefinition.ToString();
         }
 

@@ -52,7 +52,7 @@ namespace Maestro.Base.Commands.SiteExplorer
 
                 if (!current.IsFolder && omgr.IsOpen(current.ResourceId, conn))
                 {
-                    MessageService.ShowMessage(Properties.Resources.CannotRenameAlreadyOpenedResource);
+                    MessageService.ShowMessage(Strings.CannotRenameAlreadyOpenedResource);
                     return;
                 }
 
@@ -74,7 +74,7 @@ namespace Maestro.Base.Commands.SiteExplorer
 
                     if (omgr.IsOpen(newid, conn))
                     {
-                        MessageService.ShowMessage(string.Format(Properties.Resources.CannotRenameToResourceAlreadyOpened, newid));
+                        MessageService.ShowMessage(string.Format(Strings.CannotRenameToResourceAlreadyOpened, newid));
                         return;
                     }
 

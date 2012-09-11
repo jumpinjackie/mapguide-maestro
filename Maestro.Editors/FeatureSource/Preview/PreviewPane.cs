@@ -70,7 +70,7 @@ namespace Maestro.Editors.FeatureSource.Preview
 
             if (ctrl == null)
             {
-                throw new ArgumentException(Properties.Resources.UnknownQueryMode);
+                throw new ArgumentException(Strings.UnknownQueryMode);
             }
 
             ctrl.Content.Dock = DockStyle.Fill;
@@ -178,8 +178,8 @@ namespace Maestro.Editors.FeatureSource.Preview
                 if (e.Cancelled)
                 {
                     grdResults.DataSource = _cancelResult;
-                    lblElapsed.Text = string.Format(Properties.Resources.PreviewQueryElapsed, _cancelDuration.Value.TotalMilliseconds);
-                    lblCount.Text = string.Format(Properties.Resources.PreviewRecordCount, _cancelResult.Rows.Count);
+                    lblElapsed.Text = string.Format(Strings.PreviewQueryElapsed, _cancelDuration.Value.TotalMilliseconds);
+                    lblCount.Text = string.Format(Strings.PreviewRecordCount, _cancelResult.Rows.Count);
                 }
                 else
                 {
@@ -187,8 +187,8 @@ namespace Maestro.Editors.FeatureSource.Preview
                     if (res != null)
                     {
                         grdResults.DataSource = res.Result;
-                        lblElapsed.Text = string.Format(Properties.Resources.PreviewQueryElapsed, res.Duration.TotalMilliseconds);
-                        lblCount.Text = string.Format(Properties.Resources.PreviewRecordCount, res.Result.Rows.Count);
+                        lblElapsed.Text = string.Format(Strings.PreviewQueryElapsed, res.Duration.TotalMilliseconds);
+                        lblCount.Text = string.Format(Strings.PreviewRecordCount, res.Result.Rows.Count);
                     }
                 }
             }

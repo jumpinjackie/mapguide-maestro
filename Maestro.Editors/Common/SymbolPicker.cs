@@ -66,7 +66,7 @@ namespace Maestro.Editors.Common
             : this(conn)
         {
             if (ResourceIdentifier.GetResourceType(symbolLibrary) != OSGeo.MapGuide.MaestroAPI.ResourceTypes.SymbolLibrary)
-                throw new ArgumentException(string.Format(Properties.Resources.ErrorInvalidSymbolLibraryResourceId, symbolLibrary));
+                throw new ArgumentException(string.Format(Strings.ErrorInvalidSymbolLibraryResourceId, symbolLibrary));
 
             txtSymbolLibrary.Text = symbolLibrary;
         }

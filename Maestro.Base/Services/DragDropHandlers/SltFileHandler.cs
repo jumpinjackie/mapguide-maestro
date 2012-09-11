@@ -33,7 +33,7 @@ namespace Maestro.Base.Services.DragDropHandlers
     {
         public string HandlerAction
         {
-            get { return Properties.Resources.SdfHandlerAction; }
+            get { return Strings.SdfHandlerAction; }
         }
 
         string[] extensions = { ".sqlite", ".db", ".slt" }; //NOXLATE

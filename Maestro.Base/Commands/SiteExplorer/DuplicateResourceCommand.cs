@@ -75,7 +75,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                     }
 
                     conn.ResourceService.CopyResource(item.ResourceId, resId, false);
-                    LoggingService.Info(string.Format(Properties.Resources.ResourceDuplicated, item.ResourceId, resId));
+                    LoggingService.Info(string.Format(Strings.ResourceDuplicated, item.ResourceId, resId));
                 }
 
                 exp.RefreshModel(conn.DisplayName, folder.ResourceId);

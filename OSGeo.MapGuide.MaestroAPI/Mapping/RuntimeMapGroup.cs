@@ -253,10 +253,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             if (d.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
             {
                 if (objid != 12001)
-                    throw new Exception(string.Format(Properties.Resources.ErrorInvalidGroupObjectId, objid));
+                    throw new Exception(string.Format(Strings.ErrorInvalidGroupObjectId, objid));
             }
             else if (objid != 19001)
-                throw new Exception(string.Format(Properties.Resources.ErrorInvalidGroupObjectId, objid));
+                throw new Exception(string.Format(Strings.ErrorInvalidGroupObjectId, objid));
 
             this.Name = d.ReadString();
             this.ObjectId = d.ReadString();

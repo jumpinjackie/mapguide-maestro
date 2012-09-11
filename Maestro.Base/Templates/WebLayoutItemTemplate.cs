@@ -32,10 +32,10 @@ namespace Maestro.Base.Templates
     {
         public WebLayoutItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_DEFAULT;
+            Category = Strings.TPL_CATEGORY_DEFAULT;
             Icon = Res.application_browser;
-            Description = Res.TPL_WL_DESC;
-            Name = Res.TPL_WL_NAME;
+            Description = Strings.TPL_WL_DESC;
+            Name = Strings.TPL_WL_NAME;
             ResourceType = ResourceTypes.WebLayout.ToString();
         }
 

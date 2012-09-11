@@ -165,7 +165,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                             if (doc.DocumentElement.Name == "CompoundSymbolDefinition") //NOXLATE
                                 return OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.CompoundSymbolDefinition.Deserialize(xml);
                             else //WTF?
-                                throw new SerializationException(Properties.Resources.ErrorCouldNotDetermineSymbolType);
+                                throw new SerializationException(Strings.ErrorCouldNotDetermineSymbolType);
                         }
                     }
                 });
@@ -197,7 +197,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public static void RegisterResource(ResourceTypeDescriptor desc, ResourceSerializer serializer)
         {
             if (_serializers.ContainsKey(desc))
-                throw new ArgumentException(string.Format(Properties.Resources.ERR_SERIALIZER_ALREADY_REGISTERED, desc.ResourceType, desc.Version), "desc"); //NOXLATE
+                throw new ArgumentException(string.Format(Strings.ERR_SERIALIZER_ALREADY_REGISTERED, desc.ResourceType, desc.Version), "desc"); //NOXLATE
 
             _serializers.Add(desc, serializer);
         }
@@ -262,7 +262,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 var utr = res as UntypedResource;
                 if (utr == null)
-                    throw new SerializationException(Properties.Resources.ERR_NO_SERIALIZER + rd.ToString());
+                    throw new SerializationException(Strings.ERR_NO_SERIALIZER + rd.ToString());
                 return utr.SerializeToStream();
             }
 
@@ -295,13 +295,13 @@ namespace OSGeo.MapGuide.MaestroAPI
             var checker = new ResourceContentVersionChecker(xml);
             var rd = checker.GetVersion();
             if (rd == null)
-                throw new SerializationException(Properties.Resources.ERR_NOT_RESOURCE_CONTENT_XML);
+                throw new SerializationException(Strings.ERR_NOT_RESOURCE_CONTENT_XML);
 
             if (!_serializers.ContainsKey(rd))
             {
                 var rtype = (ResourceTypes)Enum.Parse(typeof(ResourceTypes), rd.ResourceType);
                 return new UntypedResource(xml, rtype, rd.Version);
-                //throw new SerializationException(Properties.Resources.ERR_NO_SERIALIZER + rd.ToString());
+                //throw new SerializationException(Strings.ERR_NO_SERIALIZER + rd.ToString());
             }
 
             return _serializers[rd].Deserialize(xml);

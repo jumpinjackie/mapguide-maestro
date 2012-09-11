@@ -204,7 +204,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             {
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 m_owner.SetLastException(ex);
-                MessageBox.Show(this, string.Format(Properties.Resources.GenericError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.GenericError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

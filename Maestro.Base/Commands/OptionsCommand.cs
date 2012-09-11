@@ -35,7 +35,7 @@ namespace Maestro.Base.Commands
             {
                 if (dlg.ShowDialog(wb) == System.Windows.Forms.DialogResult.OK)
                 {
-                    if (dlg.RestartRequired && MessageService.AskQuestion(Properties.Resources.PrefsRestartRequired))
+                    if (dlg.RestartRequired && MessageService.AskQuestion(Strings.PrefsRestartRequired))
                     {
                         Application.Restart();
                     }

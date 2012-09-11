@@ -58,7 +58,7 @@ namespace Maestro.Base.Commands
                 }
                 else
                 {
-                    MessageService.ShowError(Properties.Resources.ConnectionAlreadyEstablished);
+                    MessageService.ShowError(Strings.ConnectionAlreadyEstablished);
                 }
                 var vmgr = ServiceRegistry.GetService<ViewContentManager>();
             }

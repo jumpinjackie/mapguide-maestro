@@ -147,7 +147,7 @@ namespace OSGeo.MapGuide.ObjectModels
         public static void RegisterCompoundSymbolFactoryMethod(Version ver, CompoundSymbolDefCreatorFunc func)
         {
             if (_compoundSymbolFactories.ContainsKey(ver))
-                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.FactoryMethodAlreadyRegistered + ver);
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Strings.FactoryMethodAlreadyRegistered + ver);
 
             _compoundSymbolFactories[ver] = func;
         }
@@ -160,7 +160,7 @@ namespace OSGeo.MapGuide.ObjectModels
         public static void RegisterSimpleSymbolFactoryMethod(Version ver, SimpleSymbolDefCreatorFunc func)
         {
             if (_simpleSymbolFactories.ContainsKey(ver))
-                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.FactoryMethodAlreadyRegistered + ver);
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Strings.FactoryMethodAlreadyRegistered + ver);
 
             _simpleSymbolFactories[ver] = func;
         }
@@ -173,7 +173,7 @@ namespace OSGeo.MapGuide.ObjectModels
         public static void RegisterLayerFactoryMethod(Version ver, LayerCreatorFunc method)
         {
             if (_layerFactories.ContainsKey(ver))
-                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.FactoryMethodAlreadyRegistered + ver);
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Strings.FactoryMethodAlreadyRegistered + ver);
 
             _layerFactories[ver] = method;
         }
@@ -186,7 +186,7 @@ namespace OSGeo.MapGuide.ObjectModels
         public static void RegisterLoadProcedureFactoryMethod(LoadType type, LoadProcCreatorFunc method)
         {
             if (_loadProcFactories.ContainsKey(type))
-                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.LoadProcFactoryMethodAlreadyRegistered + type);
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Strings.LoadProcFactoryMethodAlreadyRegistered + type);
 
             _loadProcFactories[type] = method;
         }
@@ -199,7 +199,7 @@ namespace OSGeo.MapGuide.ObjectModels
         public static void RegisterWebLayoutFactoryMethod(Version version, WebLayoutCreatorFunc method)
         {
             if (_wlFactories.ContainsKey(version))
-                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.FactoryMethodAlreadyRegistered + version);
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Strings.FactoryMethodAlreadyRegistered + version);
 
             _wlFactories[version] = method;
         }
@@ -212,7 +212,7 @@ namespace OSGeo.MapGuide.ObjectModels
         public static void RegisterMapDefinitionFactoryMethod(Version version, MapDefinitionCreatorFunc method)
         {
             if (_mapDefinitionFactories.ContainsKey(version))
-                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.FactoryMethodAlreadyRegistered + version);
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Strings.FactoryMethodAlreadyRegistered + version);
 
             _mapDefinitionFactories[version] = method;
         }
@@ -225,7 +225,7 @@ namespace OSGeo.MapGuide.ObjectModels
         public static void RegisterWatermarkDefinitionFactoryMethod(Version version, WatermarkCreatorFunc method)
         {
             if (_watermarkFactories.ContainsKey(version))
-                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.FactoryMethodAlreadyRegistered + version);
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Strings.FactoryMethodAlreadyRegistered + version);
 
             _watermarkFactories[version] = method;
         }
@@ -242,7 +242,7 @@ namespace OSGeo.MapGuide.ObjectModels
             Check.NotNull(owner, "owner"); //NOXLATE
 
             if (!_wlFactories.ContainsKey(version))
-                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownWebLayoutVersion + version.ToString());
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Strings.UnknownWebLayoutVersion + version.ToString());
 
             var wl = _wlFactories[version](mapDefinitionId);
             wl.CurrentConnection = owner;
@@ -286,7 +286,7 @@ namespace OSGeo.MapGuide.ObjectModels
             Check.NotNull(owner, "owner"); //NOXLATE
 
             if (!_layerFactories.ContainsKey(version))
-                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownLayerVersion + version.ToString());
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Strings.UnknownLayerVersion + version.ToString());
 
             var layer = _layerFactories[version](type);
             layer.CurrentConnection = owner;
@@ -369,7 +369,7 @@ namespace OSGeo.MapGuide.ObjectModels
             Check.NotNull(owner, "owner"); //NOXLATE
 
             if (!_watermarkFactories.ContainsKey(version))
-                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownWatermarkDefinitionVersion + version.ToString());
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Strings.UnknownWatermarkDefinitionVersion + version.ToString());
 
             var wdf = _watermarkFactories[version](type);
             wdf.CurrentConnection = owner;
@@ -388,7 +388,7 @@ namespace OSGeo.MapGuide.ObjectModels
             Check.NotNull(owner, "owner"); //NOXLATE
 
             if (!_mapDefinitionFactories.ContainsKey(version))
-                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownMapDefinitionVersion + version.ToString());
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Strings.UnknownMapDefinitionVersion + version.ToString());
 
             var mdf = _mapDefinitionFactories[version]();
             mdf.CurrentConnection = owner;
@@ -483,7 +483,7 @@ namespace OSGeo.MapGuide.ObjectModels
             Check.NotNull(owner, "owner"); //NOXLATE
 
             if (!_simpleSymbolFactories.ContainsKey(version))
-                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownSymbolDefVersion + version.ToString());
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Strings.UnknownSymbolDefVersion + version.ToString());
 
             var simp = _simpleSymbolFactories[version]();
             simp.CurrentConnection = owner;
@@ -518,7 +518,7 @@ namespace OSGeo.MapGuide.ObjectModels
             Check.NotNull(owner, "owner"); //NOXLATE
 
             if (!_compoundSymbolFactories.ContainsKey(version))
-                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnknownSymbolDefVersion + version.ToString());
+                throw new ArgumentException(OSGeo.MapGuide.MaestroAPI.Strings.UnknownSymbolDefVersion + version.ToString());
 
             var comp = _compoundSymbolFactories[version]();
             comp.CurrentConnection = owner;
@@ -661,8 +661,8 @@ namespace OSGeo.MapGuide.ObjectModels
             //Zoom In
             var zoomIn = (IUIWidget)appDef.CreateWidget("ZoomIn", widgets.FindWidget(KnownWidgetNames.ZoomOnClick)); //NOXLATE
             zoomIn.SetValue("Factor", "2"); //NOXLATE
-            zoomIn.StatusText = zoomIn.Tooltip = Res.ADF_Widget_ZoomIn_Desc;
-            zoomIn.Label = Res.ADF_Widget_ZoomIn_Label;
+            zoomIn.StatusText = zoomIn.Tooltip = Strings.ADF_Widget_ZoomIn_Desc;
+            zoomIn.Label = Strings.ADF_Widget_ZoomIn_Label;
             zoomIn.ImageUrl = "images/icons.png"; //NOXLATE
             zoomIn.ImageClass = "zoom-in-fixed"; //NOXLATE
             var vZoomIn = CreateVerticalWidget(zoomIn);
@@ -670,8 +670,8 @@ namespace OSGeo.MapGuide.ObjectModels
             //Zoom Out
             var zoomOut = (IUIWidget)appDef.CreateWidget("ZoomOut", widgets.FindWidget(KnownWidgetNames.ZoomOnClick)); //NOXLATE
             zoomOut.SetValue("Factor", "0.5"); //NOXLATE
-            zoomOut.StatusText = zoomOut.Tooltip = Res.ADF_Widget_ZoomOut_Desc;
-            zoomOut.Label = Res.ADF_Widget_ZoomOut_Label;
+            zoomOut.StatusText = zoomOut.Tooltip = Strings.ADF_Widget_ZoomOut_Desc;
+            zoomOut.Label = Strings.ADF_Widget_ZoomOut_Label;
             zoomOut.ImageUrl = "images/icons.png"; //NOXLATE
             zoomOut.ImageClass = "zoom-out-fixed"; //NOXLATE
             var vZoomOut = CreateVerticalWidget(zoomOut);
@@ -679,8 +679,8 @@ namespace OSGeo.MapGuide.ObjectModels
             //Previous View
             var prevView = (IUIWidget)appDef.CreateWidget("PreviousView", widgets.FindWidget(KnownWidgetNames.ExtentHistory)); //NOXLATE
             prevView.SetValue("Direction", "previous"); //NOXLATE
-            prevView.StatusText = prevView.Tooltip = Res.ADF_Widget_PreviousView_Desc;
-            prevView.Label = Res.ADF_Widget_PreviousView_Label;
+            prevView.StatusText = prevView.Tooltip = Strings.ADF_Widget_PreviousView_Desc;
+            prevView.Label = Strings.ADF_Widget_PreviousView_Label;
             prevView.ImageUrl = "images/icons.png"; //NOXLATE
             prevView.ImageClass = "view-back"; //NOXLATE
             var vPrevView = CreateVerticalWidget(prevView);
@@ -688,8 +688,8 @@ namespace OSGeo.MapGuide.ObjectModels
             //Next View
             var nextView = (IUIWidget)appDef.CreateWidget("NextView", widgets.FindWidget(KnownWidgetNames.ExtentHistory)); //NOXLATE
             nextView.SetValue("Direction", "next"); //NOXLATE
-            nextView.StatusText = nextView.Tooltip = Res.ADF_Widget_NextView_Desc;
-            nextView.Label = Res.ADF_Widget_NextView_Label;
+            nextView.StatusText = nextView.Tooltip = Strings.ADF_Widget_NextView_Desc;
+            nextView.Label = Strings.ADF_Widget_NextView_Label;
             nextView.ImageUrl = "images/icons.png"; //NOXLATE
             nextView.ImageClass = "view-forward"; //NOXLATE
             var vNextView = CreateVerticalWidget(nextView);
@@ -697,8 +697,8 @@ namespace OSGeo.MapGuide.ObjectModels
             //Buffer
             var buffer = (IUIWidget)appDef.CreateWidget("tbBuffer", widgets.FindWidget(KnownWidgetNames.BufferPanel)); //NOXLATE
             //buffer.SetValue("Target", "TaskPane"); //NOXLATE
-            buffer.StatusText = buffer.Tooltip = Res.ADF_Widget_Buffer_Desc;
-            buffer.Tooltip = Res.ADF_Widget_Buffer_Label;
+            buffer.StatusText = buffer.Tooltip = Strings.ADF_Widget_Buffer_Desc;
+            buffer.Tooltip = Strings.ADF_Widget_Buffer_Label;
 
             //Measure
             var measure = (IUIWidget)appDef.CreateWidget("Measure", widgets.FindWidget(KnownWidgetNames.Measure)); //NOXLATE
@@ -711,8 +711,8 @@ namespace OSGeo.MapGuide.ObjectModels
             measureParams["Units"] = "meters"; //NOXLATE
             measureParams["Target"] = "TaskPane"; //NOXLATE
             measure.SetAllValues(measureParams);
-            measure.StatusText = buffer.Tooltip = Res.ADF_Widget_Measure_Desc;
-            measure.Tooltip = Res.ADF_Widget_Measure_Label;
+            measure.StatusText = buffer.Tooltip = Strings.ADF_Widget_Measure_Desc;
+            measure.Tooltip = Strings.ADF_Widget_Measure_Label;
 
             //Show Overview
             var showOverview = (IUIWidget)appDef.CreateWidget("showOverview", widgets.FindWidget(KnownWidgetNames.InvokeScript)); //NOXLATE
@@ -843,7 +843,7 @@ namespace OSGeo.MapGuide.ObjectModels
             {
                 menu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.BasemapSwitcher));
             }
-            var viewMenu = appDef.CreateFlyout(Res.ADF_Flyout_View);
+            var viewMenu = appDef.CreateFlyout(Strings.ADF_Flyout_View);
             viewMenu.AddItem(appDef.CreateWidgetReference(showOverview.Name));
             viewMenu.AddItem(appDef.CreateWidgetReference(showTaskPane.Name));
             viewMenu.AddItem(appDef.CreateWidgetReference(showLegend.Name));
@@ -865,13 +865,13 @@ namespace OSGeo.MapGuide.ObjectModels
             mapContextMenu.AddItem(appDef.CreateWidgetReference(zoomIn.Name));
             mapContextMenu.AddItem(appDef.CreateWidgetReference(zoomOut.Name));
             mapContextMenu.AddItem(appDef.CreateSeparator());
-            var zoomMenu = appDef.CreateFlyout(Res.ADF_Flyout_Zoom);
+            var zoomMenu = appDef.CreateFlyout(Strings.ADF_Flyout_Zoom);
 
             mapContextMenu.AddItem(zoomMenu);
             mapContextMenu.AddItem(appDef.CreateSeparator());
             mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Select));
             mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.ClearSelection));
-            var selectMoreMenu = appDef.CreateFlyout(Res.ADF_Flyout_SelectMore);
+            var selectMoreMenu = appDef.CreateFlyout(Strings.ADF_Flyout_SelectMore);
 
             mapContextMenu.AddItem(selectMoreMenu);
             mapContextMenu.AddItem(appDef.CreateSeparator());
@@ -927,9 +927,9 @@ namespace OSGeo.MapGuide.ObjectModels
         internal static IApplicationDefinition DeserializeEmbeddedFlexLayout(IServerConnection owner)
         {
             if (owner.SiteVersion >= VER_240)
-                return (IApplicationDefinition)ResourceTypeRegistry.Deserialize(OSGeo.MapGuide.MaestroAPI.Properties.Resources.BaseTemplate240_ApplicationDefinition);
+                return (IApplicationDefinition)ResourceTypeRegistry.Deserialize(OSGeo.MapGuide.MaestroAPI.Strings.BaseTemplate240_ApplicationDefinition);
             else
-                return (IApplicationDefinition)ResourceTypeRegistry.Deserialize(OSGeo.MapGuide.MaestroAPI.Properties.Resources.BaseTemplate_ApplicationDefinition);
+                return (IApplicationDefinition)ResourceTypeRegistry.Deserialize(OSGeo.MapGuide.MaestroAPI.Strings.BaseTemplate_ApplicationDefinition);
         }
 
         /// <summary>
@@ -943,7 +943,7 @@ namespace OSGeo.MapGuide.ObjectModels
             var appDef = new ApplicationDefinitionType()
             {
                 CurrentConnection = owner,
-                Title = OSGeo.MapGuide.MaestroAPI.Properties.Resources.TitlePreview,
+                Title = OSGeo.MapGuide.MaestroAPI.Strings.TitlePreview,
                 MapSet = new System.ComponentModel.BindingList<MapGroupType>(),
                 WidgetSet = new System.ComponentModel.BindingList<WidgetSetType>()
             };
@@ -1026,7 +1026,7 @@ namespace OSGeo.MapGuide.ObjectModels
         public static ILoadProcedure CreateLoadProcedure(IServerConnection owner, LoadType type)
         {
             if (type == LoadType.Dwg || type == LoadType.Raster)
-                throw new NotSupportedException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.UnsupportedLoadProcedureType);
+                throw new NotSupportedException(OSGeo.MapGuide.MaestroAPI.Strings.UnsupportedLoadProcedureType);
 
             if (_loadProcFactories.ContainsKey(type))
             {
@@ -1035,7 +1035,7 @@ namespace OSGeo.MapGuide.ObjectModels
                 return proc;
             }
 
-            throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Properties.Resources.CannotCreateLoadProcedureSubType + type);
+            throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Strings.CannotCreateLoadProcedureSubType + type);
         }
 
         /// <summary>
@@ -1133,7 +1133,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <summary>
         /// Creates the attribute relation.
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns>Properties.Resources.
         public static IAttributeRelation CreateAttributeRelation()
         {
             IAttributeRelation rel = new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.AttributeRelateType() 

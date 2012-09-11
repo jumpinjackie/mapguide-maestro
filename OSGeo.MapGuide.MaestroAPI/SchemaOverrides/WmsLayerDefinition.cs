@@ -85,11 +85,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             if (node.Name != "Layer") //NOXLATE
-                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "Layer")); //NOXLATE
+                throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "Layer")); //NOXLATE
 
             var n = node.Attributes["name"]; //NOXLATE
             if (n == null)
-                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedAttribute, "name")); //NOXLATE
+                throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedAttribute, "name")); //NOXLATE
 
             var style = node.FirstChild;
             if (style != null)

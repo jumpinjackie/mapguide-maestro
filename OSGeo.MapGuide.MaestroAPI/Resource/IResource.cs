@@ -165,7 +165,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         public static ResourceDataListResourceData[] EnumerateResourceData(this IResource res)
         {
             if (res.CurrentConnection == null)
-                throw new ArgumentException(Properties.Resources.ERR_RESOURCE_NOT_ATTACHED);
+                throw new ArgumentException(Strings.ERR_RESOURCE_NOT_ATTACHED);
 
             return res.CurrentConnection.ResourceService.EnumerateResourceData(res.ResourceID).ResourceData.ToArray();
         }
@@ -179,7 +179,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         public static Stream GetResourceData(this IResource res, string dataName)
         {
             if (res.CurrentConnection == null)
-                throw new ArgumentException(Properties.Resources.ERR_RESOURCE_NOT_ATTACHED);
+                throw new ArgumentException(Strings.ERR_RESOURCE_NOT_ATTACHED);
 
             return res.CurrentConnection.ResourceService.GetResourceData(res.ResourceID, dataName);
         }
@@ -194,7 +194,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         public static void SetResourceData(this IResource res, string dataName, ResourceDataType dataType, Stream inputStream)
         {
             if (res.CurrentConnection == null)
-                throw new ArgumentException(Properties.Resources.ERR_RESOURCE_NOT_ATTACHED);
+                throw new ArgumentException(Strings.ERR_RESOURCE_NOT_ATTACHED);
 
             res.CurrentConnection.ResourceService.SetResourceData(res.ResourceID, dataName, dataType, inputStream);
         }
@@ -207,7 +207,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         public static void DeleteResourceData(this IResource res, string dataName)
         {
             if (res.CurrentConnection == null)
-                throw new ArgumentException(Properties.Resources.ERR_RESOURCE_NOT_ATTACHED);
+                throw new ArgumentException(Strings.ERR_RESOURCE_NOT_ATTACHED);
 
             res.CurrentConnection.ResourceService.DeleteResourceData(res.ResourceID, dataName);
         }

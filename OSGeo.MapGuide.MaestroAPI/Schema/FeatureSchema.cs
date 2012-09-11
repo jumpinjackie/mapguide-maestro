@@ -150,11 +150,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             if (!node.Name.Equals("xs:schema")) //NOXLATE
-                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "xs:schema"));
+                throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "xs:schema"));
 
             var tns = node.Attributes["targetNamespace"];
             if (tns == null)
-                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedAttribute, "targetNamespace"));
+                throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedAttribute, "targetNamespace"));
 
             int lidx = tns.Value.LastIndexOf("/") + 1; //NOXLATE
             this.Name = tns.Value.Substring(lidx);
@@ -169,7 +169,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 {
                     var nn = clsNode.Attributes["name"]; //NOXLATE
                     if (nn == null)
-                        throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedAttribute, "name")); //NOXLATE
+                        throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedAttribute, "name")); //NOXLATE
 
                     string name = Utility.DecodeFDOName(nn.Value.Substring(0, nn.Value.Length - "Type".Length)); //NOXLATE
                     ClassDefinition cls = new ClassDefinition(name, string.Empty); //TODO: Description

@@ -33,10 +33,10 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
     {
         public VectorLayer230ItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_MGOS23;
+            Category = Strings.TPL_CATEGORY_MGOS23;
             Icon = Res.layer;
-            Description = Res.TPL_VLDF_230_DESC;
-            Name = Res.TPL_VLDF_230_NAME;
+            Description = Strings.TPL_VLDF_230_DESC;
+            Name = Strings.TPL_VLDF_230_NAME;
             ResourceType = ResourceTypes.LayerDefinition.ToString();
         }
 

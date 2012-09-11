@@ -34,10 +34,10 @@ namespace Maestro.Base.Templates
     {
         public ShpLoadProcedureItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_DEFAULT;
+            Category = Strings.TPL_CATEGORY_DEFAULT;
             //Icon = Res.document;
-            Description = Res.TPL_LP_SHP_DESC;
-            Name = Res.TPL_LP_SHP_NAME;
+            Description = Strings.TPL_LP_SHP_DESC;
+            Name = Strings.TPL_LP_SHP_NAME;
             ResourceType = ResourceTypes.LoadProcedure.ToString();
         }
 
@@ -46,7 +46,7 @@ namespace Maestro.Base.Templates
             using (var dlg = DialogFactory.OpenFile())
             {
                 dlg.Multiselect = true;
-                dlg.Filter = Properties.Resources.Filter_Shp_Files;
+                dlg.Filter = Strings.Filter_Shp_Files;
                 if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     var proc = ObjectFactory.CreateLoadProcedure(conn, LoadType.Shp, dlg.FileNames);

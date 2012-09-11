@@ -72,11 +72,11 @@ namespace Maestro.Packaging
             dlg.CheckFileExists = true;
             dlg.CheckPathExists = true;
             dlg.DefaultExt = ".mgp"; //NOXLATE
-            dlg.Filter = Properties.Resources.UploadPackageDialogFilter;
+            dlg.Filter = Strings.UploadPackageDialogFilter;
             dlg.FilterIndex = 0;
             dlg.Multiselect = false;
             dlg.ValidateNames = true;
-            dlg.Title = Properties.Resources.UploadPackageDialogTitle;
+            dlg.Title = Strings.UploadPackageDialogTitle;
 
             if (dlg.ShowDialog(owner) == DialogResult.OK)
             {
@@ -166,7 +166,7 @@ namespace Maestro.Packaging
         public static DialogResult UploadPackage(Form owner, IServerConnection connection, string packageFile)
         {
             PackageProgress pkgp = new PackageProgress();
-            pkgp.Text = Properties.Resources.TitleUploading;
+            pkgp.Text = Strings.TitleUploading;
             pkgp.m_invokeArgs = new object[] { packageFile };
             pkgp.m_invokeObj = new PackageBuilder(connection);
             pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("UploadPackage"); //NOXLATE
@@ -185,7 +185,7 @@ namespace Maestro.Packaging
         public static DialogResult UploadPackageNonTransactional(Form owner, IServerConnection connection, string packageFile, UploadPackageResult result)
         {
             PackageProgress pkgp = new PackageProgress();
-            pkgp.Text = Properties.Resources.TitleUploading;
+            pkgp.Text = Strings.TitleUploading;
             pkgp.m_invokeArgs = new object[] { packageFile, result };
             pkgp.m_invokeObj = new PackageBuilder(connection);
             pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("UploadPackageNonTransactional"); //NOXLATE
@@ -250,7 +250,7 @@ namespace Maestro.Packaging
         {
             if (m_thread != null && !m_allowClose && e.CloseReason == CloseReason.UserClosing)
             {
-                if (MessageBox.Show(this, Properties.Resources.CancelConfirmation, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) == DialogResult.Yes)
+                if (MessageBox.Show(this, Strings.CancelConfirmation, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) == DialogResult.Yes)
                 {
                     try { m_thread.Abort(); }
                     catch { }
@@ -289,28 +289,28 @@ namespace Maestro.Packaging
                     HideTotal();
                     if (pg == total)
                     {
-                        OperationLabel.Text = Properties.Resources.ProgressWaitingForServer;
+                        OperationLabel.Text = Strings.ProgressWaitingForServer;
                         CurrentProgress.Style = ProgressBarStyle.Marquee;
                     }
                     else
                     {
-                        OperationLabel.Text = string.Format(Properties.Resources.ProgressUploading, ((double)pg / 1024), ((double)total / 1024));
+                        OperationLabel.Text = string.Format(Strings.ProgressUploading, ((double)pg / 1024), ((double)total / 1024));
                         this.Refresh();
                     }
                 }
                 else if (type == ProgressType.ListingFiles)
                 {
                     HideTotal();
-                    OperationLabel.Text = Properties.Resources.ProgressReadingPackage;
+                    OperationLabel.Text = Strings.ProgressReadingPackage;
                     CurrentProgress.Style = ProgressBarStyle.Marquee;
                 }
                 else if (type == ProgressType.Compressing)
                 {
-                    OperationLabel.Text = Properties.Resources.ProgressCompressing;
+                    OperationLabel.Text = Strings.ProgressCompressing;
                 }
                 else if (type == ProgressType.MovingResources)
                 {
-                    OperationLabel.Text = Properties.Resources.ProgressUpdatingReferences;
+                    OperationLabel.Text = Strings.ProgressUpdatingReferences;
                 }
                 else if (type == ProgressType.PreparingFolder)
                 {
@@ -321,14 +321,14 @@ namespace Maestro.Packaging
                     CurrentProgress.Style = ProgressBarStyle.Continuous;
                     CurrentProgress.Maximum = 100;
                     CurrentProgress.Value = Convert.ToInt32(Math.Min(100.0, pg));
-                    OperationLabel.Text = string.Format(Properties.Resources.ProgressSetResource, resource, pg);
+                    OperationLabel.Text = string.Format(Strings.ProgressSetResource, resource, pg);
                 }
                 else if (type == ProgressType.SetResourceData)
                 {
                     CurrentProgress.Style = ProgressBarStyle.Continuous;
                     CurrentProgress.Maximum = 100;
                     CurrentProgress.Value = Convert.ToInt32(Math.Min(100.0, pg));
-                    OperationLabel.Text = string.Format(Properties.Resources.ProgressSetResourceData, resource, pg);
+                    OperationLabel.Text = string.Format(Strings.ProgressSetResourceData, resource, pg);
                 }
             }
         }

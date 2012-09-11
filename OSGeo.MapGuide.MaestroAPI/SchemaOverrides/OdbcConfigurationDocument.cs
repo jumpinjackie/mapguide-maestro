@@ -141,7 +141,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 
                 var sn = map.Attributes["name"]; //NOXLATE
                 if (sn == null)
-                    throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedAttribute, "name"));
+                    throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedAttribute, "name"));
 
                 foreach (XmlNode clsMap in map.ChildNodes)
                 {

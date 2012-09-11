@@ -69,7 +69,7 @@ namespace Maestro.Editors.LayerDefinition.Raster
 
                 txtVisibleFrom.Text = (_activeRange.MinScale.HasValue ? _activeRange.MinScale.Value : 0).ToString();
                 txtRebuildFactor.Text = _activeRange.RebuildFactor.ToString();
-                cmbVisibleTo.Text = (_activeRange.MaxScale.HasValue ? _activeRange.MaxScale.Value.ToString() : Properties.Resources.Infinity);
+                cmbVisibleTo.Text = (_activeRange.MaxScale.HasValue ? _activeRange.MaxScale.Value.ToString() : Strings.Infinity);
 
                 string fg = _foregroundColor.Color.GetValue();
                 string bg = _backgroundColor.Color.GetValue();

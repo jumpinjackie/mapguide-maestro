@@ -38,7 +38,7 @@ namespace Maestro.Base.Commands
 
             using (var open = DialogFactory.OpenFile())
             {
-                open.Filter = Properties.Resources.Filter_Mgp_Files;
+                open.Filter = Strings.Filter_Mgp_Files;
                 if (open.ShowDialog(wb) == System.Windows.Forms.DialogResult.OK)
                 {
                     var dlg = new PackageEditorDialog(open.FileName, conn);

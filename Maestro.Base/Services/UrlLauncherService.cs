@@ -38,7 +38,7 @@ namespace Maestro.Base.Services
         public override void Initialize()
         {
             base.Initialize();
-            LoggingService.Info(Properties.Resources.Service_Init_Url_Launcher);
+            LoggingService.Info(Strings.Service_Init_Url_Launcher);
         }
 
         /// <summary>

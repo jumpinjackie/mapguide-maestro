@@ -44,13 +44,13 @@ namespace Maestro.Packaging
         public PackageUploadResultDialog(UploadPackageResult result)
             : this()
         {
-            lblFailed.Text = string.Format(Properties.Resources.PackageOperationsFailed, result.Failed.Count);
-            lblSkipped.Text = string.Format(Properties.Resources.PackageOperationsSkipped, result.SkipOperations.Count);
-            lblSucceeded.Text = string.Format(Properties.Resources.PackageOperationsSucceeded, result.Successful.Count);
+            lblFailed.Text = string.Format(Strings.PackageOperationsFailed, result.Failed.Count);
+            lblSkipped.Text = string.Format(Strings.PackageOperationsSkipped, result.SkipOperations.Count);
+            lblSucceeded.Text = string.Format(Strings.PackageOperationsSucceeded, result.Successful.Count);
             //grdFailed.DataSource = result.Failed;
-            grdFailed.Columns.Add("Resource ID", Properties.Resources.HeaderResourceId); //NOXLATE
-            grdFailed.Columns.Add("Operation", Properties.Resources.HeaderOperation); //NOXLATE
-            grdFailed.Columns.Add("Error", Properties.Resources.HeaderError); //NOXLATE
+            grdFailed.Columns.Add("Resource ID", Strings.HeaderResourceId); //NOXLATE
+            grdFailed.Columns.Add("Operation", Strings.HeaderOperation); //NOXLATE
+            grdFailed.Columns.Add("Error", Strings.HeaderError); //NOXLATE
             foreach (var op in result.Failed.Keys)
             {
                 grdFailed.Rows.Add(op.ResourceId, op.OperationName, result.Failed[op].ToString());

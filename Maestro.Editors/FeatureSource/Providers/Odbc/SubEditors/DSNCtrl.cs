@@ -91,7 +91,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             {
                 if (dsn != txtDSN.Text)
                 {
-                    bool reset = MessageBox.Show(Properties.Resources.PromptResetOdbcConfigDocument, Properties.Resources.TitleQuestion, MessageBoxButtons.YesNo) == DialogResult.Yes;
+                    bool reset = MessageBox.Show(Strings.PromptResetOdbcConfigDocument, Strings.TitleQuestion, MessageBoxButtons.YesNo) == DialogResult.Yes;
                     if (reset)
                     {
                         txtDSN.Text = dsn;

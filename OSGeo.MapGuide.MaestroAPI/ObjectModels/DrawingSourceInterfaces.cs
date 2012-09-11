@@ -114,7 +114,7 @@ namespace OSGeo.MapGuide.ObjectModels.DrawingSource
 
             //Need drawing service
             if (Array.IndexOf(source.CurrentConnection.Capabilities.SupportedServices, (int)ServiceType.Drawing) < 0)
-                throw new NotSupportedException(string.Format(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ERR_SERVICE_NOT_SUPPORTED, ServiceType.Drawing.ToString()));
+                throw new NotSupportedException(string.Format(OSGeo.MapGuide.MaestroAPI.Strings.ERR_SERVICE_NOT_SUPPORTED, ServiceType.Drawing.ToString()));
 
             var drawSvc = (IDrawingService)source.CurrentConnection.GetService((int)ServiceType.Drawing);
 

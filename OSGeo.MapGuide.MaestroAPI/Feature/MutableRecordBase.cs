@@ -143,7 +143,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             set
             {
                 if (value == null)
-                    throw new InvalidOperationException(Properties.Resources.ErrorObjectSetNullValuesNotPermitted);
+                    throw new InvalidOperationException(Strings.ErrorObjectSetNullValuesNotPermitted);
 
                 switch (_values[name].Type)
                 {
@@ -215,7 +215,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             var propVal = _values[name] as BooleanValue;
             if (propVal == null)
-                throw new InvalidOperationException(string.Format(Properties.Resources.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Boolean.ToString()));
+                throw new InvalidOperationException(string.Format(Strings.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Boolean.ToString()));
 
             propVal.Value = value;
         }
@@ -229,7 +229,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             var propVal = _values[name] as ByteValue;
             if (propVal == null)
-                throw new InvalidOperationException(string.Format(Properties.Resources.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Byte.ToString()));
+                throw new InvalidOperationException(string.Format(Strings.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Byte.ToString()));
 
             propVal.Value = value;
         }
@@ -243,7 +243,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             var propVal = _values[name] as BlobValue;
             if (propVal == null)
-                throw new InvalidOperationException(string.Format(Properties.Resources.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Blob.ToString()));
+                throw new InvalidOperationException(string.Format(Strings.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Blob.ToString()));
 
             propVal.Value = value;
         }
@@ -257,7 +257,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             var propVal = _values[name] as ClobValue;
             if (propVal == null)
-                throw new InvalidOperationException(string.Format(Properties.Resources.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Clob.ToString()));
+                throw new InvalidOperationException(string.Format(Strings.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Clob.ToString()));
 
             propVal.Value = value;
         }
@@ -271,7 +271,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             var propVal = _values[name] as DoubleValue;
             if (propVal == null)
-                throw new InvalidOperationException(string.Format(Properties.Resources.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Double.ToString()));
+                throw new InvalidOperationException(string.Format(Strings.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Double.ToString()));
 
             propVal.Value = value;
         }
@@ -285,7 +285,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             var propVal = _values[name] as DateTimeValue;
             if (propVal == null)
-                throw new InvalidOperationException(string.Format(Properties.Resources.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.DateTime.ToString()));
+                throw new InvalidOperationException(string.Format(Strings.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.DateTime.ToString()));
 
             propVal.Value = value;
         }
@@ -299,7 +299,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             var propVal = _values[name] as Int16Value;
             if (propVal == null)
-                throw new InvalidOperationException(string.Format(Properties.Resources.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Int16.ToString()));
+                throw new InvalidOperationException(string.Format(Strings.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Int16.ToString()));
 
             propVal.Value = value;
         }
@@ -313,7 +313,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             var propVal = _values[name] as Int32Value;
             if (propVal == null)
-                throw new InvalidOperationException(string.Format(Properties.Resources.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Int32.ToString()));
+                throw new InvalidOperationException(string.Format(Strings.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Int32.ToString()));
 
             propVal.Value = value;
         }
@@ -327,7 +327,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             var propVal = _values[name] as Int64Value;
             if (propVal == null)
-                throw new InvalidOperationException(string.Format(Properties.Resources.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Int64.ToString()));
+                throw new InvalidOperationException(string.Format(Strings.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Int64.ToString()));
 
             propVal.Value = value;
         }
@@ -341,7 +341,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             var propVal = _values[name] as SingleValue;
             if (propVal == null)
-                throw new InvalidOperationException(string.Format(Properties.Resources.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Single.ToString()));
+                throw new InvalidOperationException(string.Format(Strings.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Single.ToString()));
 
             propVal.Value = value;
         }
@@ -355,7 +355,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             var propVal = _values[name] as StringValue;
             if (propVal == null)
-                throw new InvalidOperationException(string.Format(Properties.Resources.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.String.ToString()));
+                throw new InvalidOperationException(string.Format(Strings.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.String.ToString()));
 
             propVal.Value = value;
         }
@@ -369,7 +369,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         {
             var propVal = _values[name] as GeometryValue;
             if (propVal == null)
-                throw new InvalidOperationException(string.Format(Properties.Resources.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Geometry.ToString()));
+                throw new InvalidOperationException(string.Format(Strings.ERR_PROPERTY_VALUE_NOT_OF_TYPE, name, PropertyValueType.Geometry.ToString()));
 
             propVal.Value = value;
         }

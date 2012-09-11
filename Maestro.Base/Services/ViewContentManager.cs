@@ -42,7 +42,7 @@ namespace Maestro.Base.Services
                 _singletonViewContentTypes.Add(type.Name, type);
             }
 
-            LoggingService.Info(Properties.Resources.Service_Init_ViewContent_Manager);
+            LoggingService.Info(Strings.Service_Init_ViewContent_Manager);
         }
 
         protected override WorkbenchBase GetWorkbench()

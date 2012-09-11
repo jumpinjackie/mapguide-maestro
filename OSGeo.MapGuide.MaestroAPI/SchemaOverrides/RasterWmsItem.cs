@@ -239,7 +239,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             if (node.Name != "RasterDefinition") //NOXLATE
-                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "RasterDefinition"));
+                throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "RasterDefinition"));
 
             var fc = node.ParentNode.Attributes["name"].Value; //NOXLATE
             this.FeatureClass = fc.Substring(0, fc.Length - "Type".Length); //NOXLATE

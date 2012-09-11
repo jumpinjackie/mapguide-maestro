@@ -40,15 +40,15 @@ namespace Maestro.Base.Commands.SiteExplorer
 
                 List<string> names = new List<string>()
                 {
-                    Properties.Resources.Folder_Data,
-                    Properties.Resources.Folder_Layers,
-                    Properties.Resources.Folder_Layouts,
-                    Properties.Resources.Folder_Maps,
-                    Properties.Resources.Folder_Symbols
+                    Strings.Folder_Data,
+                    Strings.Folder_Layers,
+                    Strings.Folder_Layouts,
+                    Strings.Folder_Maps,
+                    Strings.Folder_Symbols
                 };
                 if (conn.SiteVersion >= new Version(2, 3))
                 {
-                    names.Add(Properties.Resources.Folder_Watermarks);
+                    names.Add(Strings.Folder_Watermarks);
                 }
                 foreach (var n in names)
                 {

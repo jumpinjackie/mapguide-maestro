@@ -50,7 +50,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                         var ed = openMgr.GetOpenEditor(item.ResourceId, _conn);
                         if (!(ed is XmlEditor))
                         {
-                            MessageService.ShowMessage(Properties.Resources.ResourceAlreadyOpened);
+                            MessageService.ShowMessage(Strings.ResourceAlreadyOpened);
                             return;
                         }
                         else

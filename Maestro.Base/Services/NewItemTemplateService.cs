@@ -56,13 +56,13 @@ namespace Maestro.Base.Services
 
         internal void InitUserTemplates()
         {
-            if (!_templates.ContainsKey(Res.TPL_CATEGORY_USERDEF))
-                _templates[Res.TPL_CATEGORY_USERDEF] = new List<ItemTemplate>();
+            if (!_templates.ContainsKey(Strings.TPL_CATEGORY_USERDEF))
+                _templates[Strings.TPL_CATEGORY_USERDEF] = new List<ItemTemplate>();
 
             UserItemTemplate[] utpls = ScanUserTemplates();
             foreach (var ut in utpls)
             {
-                _templates[Res.TPL_CATEGORY_USERDEF].Add(ut);
+                _templates[Strings.TPL_CATEGORY_USERDEF].Add(ut);
                 LoggingService.Info("Adding user template: " + ut.TemplatePath);
             }
         }

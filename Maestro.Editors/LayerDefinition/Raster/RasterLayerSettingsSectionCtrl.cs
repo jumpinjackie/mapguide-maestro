@@ -138,7 +138,7 @@ namespace Maestro.Editors.LayerDefinition.Raster
             }
             if (list.Count == 0)
             {
-                MessageBox.Show(Properties.Resources.NoRasterClasses);
+                MessageBox.Show(Strings.NoRasterClasses);
                 return;
             }
 

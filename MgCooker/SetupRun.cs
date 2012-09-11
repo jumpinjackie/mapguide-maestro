@@ -185,7 +185,7 @@ namespace MgCooker
                     string webconfig = System.IO.Path.Combine(Application.StartupPath, "webconfig.ini");
                     if (!System.IO.File.Exists(webconfig))
                     {
-                        MessageBox.Show(this, string.Format(Properties.Resources.MissingWebConfigFile, webconfig), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(this, string.Format(Strings.MissingWebConfigFile, webconfig), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
@@ -202,7 +202,7 @@ namespace MgCooker
                     catch (Exception ex)
                     {
                         string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                        MessageBox.Show(this, string.Format(Properties.Resources.ConnectionError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(this, string.Format(Strings.ConnectionError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
@@ -222,7 +222,7 @@ namespace MgCooker
                     catch (Exception ex)
                     {
                         string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                        MessageBox.Show(this, string.Format(Properties.Resources.ConnectionError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(this, string.Format(Strings.ConnectionError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
@@ -262,13 +262,13 @@ namespace MgCooker
                 if (p.ShowDialog(this) != DialogResult.Cancel)
                 {
                     var ts = p.TotalTime;
-                    MessageBox.Show(string.Format(Properties.Resources.TileGenerationCompleted, ((ts.Days * 24) + ts.Hours), ts.Minutes, ts.Seconds));
+                    MessageBox.Show(string.Format(Strings.TileGenerationCompleted, ((ts.Days * 24) + ts.Hours), ts.Minutes, ts.Seconds));
                 }
             }
             catch (Exception ex)
             {
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                MessageBox.Show(this, string.Format(Properties.Resources.InternalError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.InternalError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -314,8 +314,8 @@ namespace MgCooker
         {
             if (System.Environment.OSVersion.Platform == PlatformID.Unix)
                 saveFileDialog1.Filter = 
-                    string.Format(Properties.Resources.FileTypeShellScript + "|{0}", "*.sh") +
-                    string.Format(Properties.Resources.FileTypeAllFiles + "|{0}", "*.*");
+                    string.Format(Strings.FileTypeShellScript + "|{0}", "*.sh") +
+                    string.Format(Strings.FileTypeAllFiles + "|{0}", "*.*");
 
             if (saveFileDialog1.ShowDialog(this) == DialogResult.OK)
             {

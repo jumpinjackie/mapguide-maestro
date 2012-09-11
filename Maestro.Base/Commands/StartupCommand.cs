@@ -39,7 +39,7 @@ namespace Maestro.Base.Commands
         public override void Run()
         {
             ResourceService.RegisterNeutralImages(Properties.Resources.ResourceManager);
-            ResourceService.RegisterNeutralStrings(Properties.Resources.ResourceManager);
+            ResourceService.RegisterNeutralStrings(Strings.ResourceManager);
 
             ResourcePreviewerFactory.RegisterPreviewer("Maestro.Http", new DefaultResourcePreviewer()); //NOXLATE
 

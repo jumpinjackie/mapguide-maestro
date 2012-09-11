@@ -109,7 +109,7 @@ namespace Maestro.Editors.WebLayout.Commands
             var wl = (IWebLayout)_edsvc.GetEditedResource();
             if (wl.Map == null || string.IsNullOrEmpty(wl.Map.ResourceId))
             {
-                MessageBox.Show(Properties.Resources.InvokeUrlNoMapDefined);
+                MessageBox.Show(Strings.InvokeUrlNoMapDefined);
                 return;
             }
 
@@ -119,7 +119,7 @@ namespace Maestro.Editors.WebLayout.Commands
             {
                 layers.Add(lyr.Name);
             }
-            var selLayers = GenericItemSelectionDialog.SelectItems(Properties.Resources.SelectLayer, Properties.Resources.SelectLayer, layers.ToArray());
+            var selLayers = GenericItemSelectionDialog.SelectItems(Strings.SelectLayer, Strings.SelectLayer, layers.ToArray());
             if (selLayers.Length > 0)
             {
                 _cmd.LayerSet.Layer.Clear();

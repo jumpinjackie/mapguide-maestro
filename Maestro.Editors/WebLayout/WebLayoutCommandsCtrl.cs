@@ -161,7 +161,7 @@ namespace Maestro.Editors.WebLayout
         private void invokeURLToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var cmd = _wl.CreateInvokeUrlCommand();
-            cmd.Description = cmd.Label = cmd.Tooltip = Properties.Resources.InvokeUrlCmdDescription;
+            cmd.Description = cmd.Label = cmd.Tooltip = Strings.InvokeUrlCmdDescription;
             _commands.Add(cmd);
             SetSelectedCommand(cmd);
         }
@@ -169,7 +169,7 @@ namespace Maestro.Editors.WebLayout
         private void invokeScriptToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var cmd = _wl.CreateInvokeScriptCommand();
-            cmd.Description = cmd.Label = cmd.Tooltip = Properties.Resources.InvokeScriptCmdDescription;
+            cmd.Description = cmd.Label = cmd.Tooltip = Strings.InvokeScriptCmdDescription;
             _commands.Add(cmd);
             SetSelectedCommand(cmd);
         }
@@ -178,12 +178,12 @@ namespace Maestro.Editors.WebLayout
         {
             if (string.IsNullOrEmpty(_wl.Map.ResourceId))
             {
-                MessageBox.Show(Properties.Resources.SpecifyMapForWebLayout);
+                MessageBox.Show(Strings.SpecifyMapForWebLayout);
                 return;
             }
 
             var cmd = _wl.CreateSearchCommand();
-            cmd.Description = cmd.Label = cmd.Tooltip = Properties.Resources.SearchCmdDescription;
+            cmd.Description = cmd.Label = cmd.Tooltip = Strings.SearchCmdDescription;
             _commands.Add(cmd);
             SetSelectedCommand(cmd);
         }
@@ -234,7 +234,7 @@ namespace Maestro.Editors.WebLayout
                 {
                     if (_wl.IsCommandReferenced(iurl.Name, out regions))
                     {
-                        if (!Ask(Properties.Resources.DeleteCommand, string.Format(Properties.Resources.PromptDeleteCommand, GetAsString(regions, ", "))))
+                        if (!Ask(Strings.DeleteCommand, string.Format(Strings.PromptDeleteCommand, GetAsString(regions, ", "))))
                             return;
                     }
 
@@ -250,7 +250,7 @@ namespace Maestro.Editors.WebLayout
                 {
                     if (_wl.IsCommandReferenced(iscr.Name, out regions))
                     {
-                        if (!Ask(Properties.Resources.DeleteCommand, string.Format(Properties.Resources.PromptDeleteCommand, GetAsString(regions, ", "))))
+                        if (!Ask(Strings.DeleteCommand, string.Format(Strings.PromptDeleteCommand, GetAsString(regions, ", "))))
                             return;
                     }
 
@@ -266,7 +266,7 @@ namespace Maestro.Editors.WebLayout
                 {
                     if (_wl.IsCommandReferenced(srch.Name, out regions))
                     {
-                        if (!Ask(Properties.Resources.DeleteCommand, string.Format(Properties.Resources.PromptDeleteCommand, GetAsString(regions, ", "))))
+                        if (!Ask(Strings.DeleteCommand, string.Format(Strings.PromptDeleteCommand, GetAsString(regions, ", "))))
                             return;
                     }
 
@@ -297,7 +297,7 @@ namespace Maestro.Editors.WebLayout
         {
             if (grdCommands.SelectedRows.Count == 0)
             {
-                MessageBox.Show(Properties.Resources.ExportNoCommandsSelected);
+                MessageBox.Show(Strings.ExportNoCommandsSelected);
                 return;
             }
             else
@@ -317,17 +317,17 @@ namespace Maestro.Editors.WebLayout
 
                 if (selectedCmds.Count == 0)
                 {
-                    MessageBox.Show(Properties.Resources.ExportNoCustomCommandsSelected);
+                    MessageBox.Show(Strings.ExportNoCustomCommandsSelected);
                     return;
                 }
 
                 using (var save = DialogFactory.SaveFile())
                 {
-                    save.Filter = Properties.Resources.FilterXml;
+                    save.Filter = Strings.FilterXml;
                     if (save.ShowDialog() == DialogResult.OK)
                     {
                         _wl.ExportCustomCommands(save.FileName, selectedCmds.ToArray());
-                        MessageBox.Show(string.Format(Properties.Resources.CustomCommandsExported, save.FileName));
+                        MessageBox.Show(string.Format(Strings.CustomCommandsExported, save.FileName));
                     }
                 }
             }
@@ -354,11 +354,11 @@ namespace Maestro.Editors.WebLayout
                                 sb.AppendLine(imported.ToString());
                         }
 
-                        MessageBox.Show(string.Format(Properties.Resources.CustomCommandsImported, cmds.Length, open.FileName, sb.ToString()));
+                        MessageBox.Show(string.Format(Strings.CustomCommandsImported, cmds.Length, open.FileName, sb.ToString()));
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, Properties.Resources.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, Strings.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     finally
                     {

@@ -111,7 +111,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             if (node.Name != "Location") //NOXLATE
-                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "Location")); //NOXLATE
+                throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "Location")); //NOXLATE
 
             var loc = node.Attributes["name"]; //NOXLATE
             this.Location = loc.Value;
@@ -217,20 +217,20 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             if (node.Name != "Feature") //NOXLATE
-                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "Feature"));
+                throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "Feature"));
 
             var band = node.FirstChild;
             var image = band.FirstChild;
             var bounds = image.FirstChild;
 
             if (band.Name != "Band") //NOXLATE
-                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "Band"));
+                throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "Band"));
 
             if (image.Name != "Image") //NOXLATE
-                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "Image"));
+                throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "Image"));
 
             if (bounds.Name != "Bounds") //NOXLATE
-                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "Bounds"));
+                throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "Bounds"));
 
             var fileName = image.Attributes["name"]; //NOXLATE
             this.FileName = fileName.Value;
@@ -241,16 +241,16 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             var maxy = bounds.ChildNodes[3];
 
             if (minx.Name != "MinX") //NOXLATE
-                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "MinX"));
+                throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "MinX"));
 
             if (miny.Name != "MinY") //NOXLATE
-                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "MinY"));
+                throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "MinY"));
 
             if (maxx.Name != "MaxX") //NOXLATE
-                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "MaxX"));
+                throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "MaxX"));
 
             if (maxy.Name != "MaxY") //NOXLATE
-                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "MaxY"));
+                throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "MaxY"));
 
             this.MinX = Convert.ToDouble(minx.InnerText);
             this.MinY = Convert.ToDouble(miny.InnerText);

@@ -38,7 +38,7 @@ namespace Maestro.Base.Commands
             var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
             if (connMgr.GetConnectionNames().Count == 0)
             {
-                MessageBox.Show(Properties.Resources.NoOpenConnections);
+                MessageBox.Show(Strings.NoOpenConnections);
                 return;
             }
 
@@ -51,7 +51,7 @@ namespace Maestro.Base.Commands
                 }
                 else
                 {
-                    MessageBox.Show(Properties.Resources.ResourceNotFound);
+                    MessageBox.Show(Strings.ResourceNotFound);
                 }
             }
         }

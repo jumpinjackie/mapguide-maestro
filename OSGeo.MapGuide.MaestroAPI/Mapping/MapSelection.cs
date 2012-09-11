@@ -266,7 +266,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                             ms.WriteByte(0);
                         }
                         else
-                            throw new Exception(string.Format(Properties.Resources.ErrorUnsupportedPkType, type.ToString()));
+                            throw new Exception(string.Format(Strings.ErrorUnsupportedPkType, type.ToString()));
                     }
 
                     return Convert.ToBase64String(ms.ToArray());
@@ -304,7 +304,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     throw new ArgumentNullException("layer"); //NOXLATE
 
                 if (layer.IdentityProperties.Length == 0 && layer.Parent.StrictSelection)
-                    throw new Exception(Properties.Resources.ErrorLayerHasNoPk);
+                    throw new Exception(Strings.ErrorLayerHasNoPk);
 
                 m_layer = layer;
             }
@@ -333,17 +333,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     throw new ArgumentNullException("values"); //NOXLATE
 
                 if (values.Length != m_layer.IdentityProperties.Length)
-                    throw new Exception(string.Format(Properties.Resources.ErrorLayerKeyMismatch, m_layer.IdentityProperties.Length, values.Length));
+                    throw new Exception(string.Format(Strings.ErrorLayerKeyMismatch, m_layer.IdentityProperties.Length, values.Length));
 
                 object[] tmp = new object[values.Length];
 
                 for (int i = 0; i < values.Length; i++)
                 {
                     if (values[i] == null)
-                        throw new Exception(string.Format(Properties.Resources.ErrorNullKeyValue, m_layer.IdentityProperties[i].Name));
+                        throw new Exception(string.Format(Strings.ErrorNullKeyValue, m_layer.IdentityProperties[i].Name));
                     if (values[i].GetType() != m_layer.IdentityProperties[i].Type)
                         try { tmp[i] = Convert.ChangeType(values[i], m_layer.IdentityProperties[i].Type); }
-                        catch (Exception ex) { throw new Exception(string.Format(Properties.Resources.ErrorFailedValueConversion, m_layer.IdentityProperties[i].Name, values[i].GetType(), m_layer.IdentityProperties[i].Type), ex); }
+                        catch (Exception ex) { throw new Exception(string.Format(Strings.ErrorFailedValueConversion, m_layer.IdentityProperties[i].Name, values[i].GetType(), m_layer.IdentityProperties[i].Type), ex); }
                     else
                         tmp[i] = values[i];
                 }
@@ -547,7 +547,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             foreach (XmlNode n in lst)
             {
                 if (n.Attributes["id"] == null) //NOXLATE
-                    throw new Exception(Properties.Resources.ErrorSelectedLayerHasNoId);
+                    throw new Exception(Strings.ErrorSelectedLayerHasNoId);
                 s.Write(n.Attributes["id"].Value); //NOXLATE
 
                 XmlNodeList cls = n.SelectNodes("Class"); //NOXLATE

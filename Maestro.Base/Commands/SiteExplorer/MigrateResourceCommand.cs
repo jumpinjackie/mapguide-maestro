@@ -50,7 +50,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                     if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         DoMigrate(source, target, dlg.ResourceID, dlg.DependentResources, dlg.OverwriteExisting);
-                        MessageService.ShowMessage(string.Format(Properties.Resources.ResourceMigrated, exp.SelectedItems[0].ResourceId));
+                        MessageService.ShowMessage(string.Format(Strings.ResourceMigrated, exp.SelectedItems[0].ResourceId));
                     }
                 }
             }

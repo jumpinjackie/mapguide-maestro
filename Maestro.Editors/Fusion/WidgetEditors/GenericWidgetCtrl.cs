@@ -127,7 +127,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
                         uiw.Disabled = node.InnerText;
                 }
 
-                MessageBox.Show(Properties.Resources.WidgetUpdated);
+                MessageBox.Show(Strings.WidgetUpdated);
 
                 _xml = _widget.ToXml();
                 txtXmlContent.Text = _xml;

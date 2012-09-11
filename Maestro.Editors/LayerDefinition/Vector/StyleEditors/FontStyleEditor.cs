@@ -69,7 +69,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 if (col.Type == PropertyDefinitionType.Data)
                     propertyCombo.Items.Add(col.Name);
             }
-            propertyCombo.Items.Add(Properties.Resources.ExpressionItem);
+            propertyCombo.Items.Add(Strings.ExpressionItem);
 
             fontCombo.Items.Clear();
             foreach (FontFamily f in new System.Drawing.Text.InstalledFontCollection().Families)
@@ -84,7 +84,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             //
             InitializeComponent();
 
-            using(System.IO.StringReader sr = new System.IO.StringReader(Properties.Resources.GeometryStyleComboDataset))
+            using(System.IO.StringReader sr = new System.IO.StringReader(Strings.GeometryStyleComboDataset))
                 ComboBoxDataSet.ReadXml(sr);
         }
 

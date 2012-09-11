@@ -183,7 +183,7 @@ namespace Maestro.Editors.Common
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(NestedExceptionMessageProcessor.GetFullMessage(ex), Properties.Resources.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(NestedExceptionMessageProcessor.GetFullMessage(ex), Strings.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -207,7 +207,7 @@ namespace Maestro.Editors.Common
         {
             //TODO: Obviously support progress
             BusyWaitDelegate method = () => { DoFileUpload(fileName); return null; };
-            BusyWaitDialog.Run(Properties.Resources.TextUploading, method, (obj) => 
+            BusyWaitDialog.Run(Strings.TextUploading, method, (obj) => 
             {
                 LoadResourceData();
                 OnDataListChanged();
@@ -229,7 +229,7 @@ namespace Maestro.Editors.Common
             var items = this.SelectedItems;
             if (items.Length > 0)
             {
-                if (MessageBox.Show(Properties.Resources.ConfirmDeleteResourceData, Properties.Resources.Confirm, MessageBoxButtons.YesNo) == DialogResult.No)
+                if (MessageBox.Show(Strings.ConfirmDeleteResourceData, Strings.Confirm, MessageBoxButtons.YesNo) == DialogResult.No)
                     return;
 
                 try
@@ -249,7 +249,7 @@ namespace Maestro.Editors.Common
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(NestedExceptionMessageProcessor.GetFullMessage(ex), Properties.Resources.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(NestedExceptionMessageProcessor.GetFullMessage(ex), Strings.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -280,14 +280,14 @@ namespace Maestro.Editors.Common
                                 }
                                 return null;
                             };
-                            BusyWaitDialog.Run(Properties.Resources.TextDownloading, method, (obj) => 
+                            BusyWaitDialog.Run(Strings.TextDownloading, method, (obj) => 
                             {
-                                MessageBox.Show(string.Format(Properties.Resources.FileDownloaded, fn));
+                                MessageBox.Show(string.Format(Strings.FileDownloaded, fn));
                             });
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(NestedExceptionMessageProcessor.GetFullMessage(ex), Properties.Resources.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(NestedExceptionMessageProcessor.GetFullMessage(ex), Strings.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }

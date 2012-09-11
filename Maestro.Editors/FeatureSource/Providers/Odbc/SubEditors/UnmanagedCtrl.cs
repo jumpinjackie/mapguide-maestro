@@ -64,15 +64,15 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             switch (ext)
             {
                 case ".ACCDB": //NOXLATE
-                    return Properties.Resources.OdbcDriverAccess64;
+                    return Strings.OdbcDriverAccess64;
                 case ".MDB": //NOXLATE
-                    return use64Bit ? Properties.Resources.OdbcDriverAccess64 : Properties.Resources.OdbcDriverAccess;
+                    return use64Bit ? Strings.OdbcDriverAccess64 : Strings.OdbcDriverAccess;
                 case ".XLS": //NOXLATE
-                    return use64Bit ? Properties.Resources.OdbcDriverExcel64 : Properties.Resources.OdbcDriverExcel;
+                    return use64Bit ? Strings.OdbcDriverExcel64 : Strings.OdbcDriverExcel;
                 case ".XLSX": //NOXLATE
                 case ".XLSM": //NOXLATE
                 case ".XLSB": //NOXLATE
-                    return Properties.Resources.OdbcDriverExcel64;
+                    return Strings.OdbcDriverExcel64;
             }
             return null;
         }
@@ -125,10 +125,10 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         {
             using (var open = new OpenFileDialog())
             {
-                open.Filter = Properties.Resources.OdbcDriverAccess + "|*.mdb|" + //NOXLATE
-                              Properties.Resources.OdbcDriverAccess64 + "|*.accdb,*.mdb|" +  //NOXLATE
-                              Properties.Resources.OdbcDriverExcel + "|*.xls|" + //NOXLATE
-                              Properties.Resources.OdbcDriverExcel64 + "|*.xlsx,*.xlsm,*.xlsb"; //NOXLATE
+                open.Filter = Strings.OdbcDriverAccess + "|*.mdb|" + //NOXLATE
+                              Strings.OdbcDriverAccess64 + "|*.accdb,*.mdb|" +  //NOXLATE
+                              Strings.OdbcDriverExcel + "|*.xls|" + //NOXLATE
+                              Strings.OdbcDriverExcel64 + "|*.xlsx,*.xlsm,*.xlsb"; //NOXLATE
 
                 if (open.ShowDialog() == DialogResult.OK)
                 {

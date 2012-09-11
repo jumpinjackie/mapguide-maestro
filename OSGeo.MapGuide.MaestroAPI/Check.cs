@@ -93,7 +93,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public static void NotNull<T>(T obj, string arg) where T : class
         {
             if (obj == null)
-                throw new PreconditionException(Properties.Resources.PrecondValueNull + arg);
+                throw new PreconditionException(Strings.PrecondValueNull + arg);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public static void NotEmpty(string value, string arg) 
         {
             if (string.IsNullOrEmpty(value))
-                throw new PreconditionException(Properties.Resources.PrecondStringEmpty + arg);
+                throw new PreconditionException(Strings.PrecondStringEmpty + arg);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public static void Precondition(bool condition, string msg)
         {
             if (!condition)
-                throw new PreconditionException(Properties.Resources.PrecondFailure + msg);
+                throw new PreconditionException(Strings.PrecondFailure + msg);
         }
     }
 }

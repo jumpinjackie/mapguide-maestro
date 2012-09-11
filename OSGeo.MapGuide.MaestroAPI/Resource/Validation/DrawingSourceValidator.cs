@@ -53,10 +53,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 
             IDrawingSource dws = (IDrawingSource)resource;
             if (string.IsNullOrEmpty(dws.SourceName))
-                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_DrawingSource_NoSourceDwf, Properties.Resources.DS_NoSourceSpecified));
+                issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_DrawingSource_NoSourceDwf, Strings.DS_NoSourceSpecified));
 
             if (string.IsNullOrEmpty(dws.CoordinateSpace))
-                issues.Add(new ValidationIssue(resource, ValidationStatus.Information, ValidationStatusCode.Info_DrawingSource_NoCoordinateSpace, Properties.Resources.DS_NoCoordinateSpace));
+                issues.Add(new ValidationIssue(resource, ValidationStatus.Information, ValidationStatusCode.Info_DrawingSource_NoCoordinateSpace, Strings.DS_NoCoordinateSpace));
 
             context.MarkValidated(resource.ResourceID);
 

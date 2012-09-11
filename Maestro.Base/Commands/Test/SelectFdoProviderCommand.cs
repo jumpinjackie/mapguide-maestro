@@ -36,14 +36,14 @@ namespace Maestro.Base.Commands.Test
             var conn = mgr.GetConnection(exp.ConnectionName);
 
             var providers = conn.FeatureService.FeatureProviders;
-            var provider = GenericItemSelectionDialog.SelectItem(Properties.Resources.TitleSelectFdoProvider, Properties.Resources.PromptSelectFdoProvider, providers, "DisplayName", "Name");
+            var provider = GenericItemSelectionDialog.SelectItem(Strings.TitleSelectFdoProvider, Strings.PromptSelectFdoProvider, providers, "DisplayName", "Name");
             if (provider != null)
             {
                 MessageService.ShowMessage(provider.DisplayName);
             }
             else
             {
-                MessageService.ShowMessage(Properties.Resources.Cancelled);
+                MessageService.ShowMessage(Strings.Cancelled);
             }
         }
     }

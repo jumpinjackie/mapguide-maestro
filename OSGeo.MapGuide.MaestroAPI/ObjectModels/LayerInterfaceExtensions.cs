@@ -155,7 +155,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         {
             Check.NotNull(layer, "layer"); //NOXLATE
             if (layer.CurrentConnection == null)
-                throw new System.Exception(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorNoServerConnectionAttached);
+                throw new System.Exception(OSGeo.MapGuide.MaestroAPI.Strings.ErrorNoServerConnectionAttached);
 
             var conn = layer.CurrentConnection;
             switch (layer.SubLayer.LayerType)
@@ -211,7 +211,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
             csWkt = null;
             Check.NotNull(layer, "layer"); //NOXLATE
             if (layer.CurrentConnection == null)
-                throw new System.Exception(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorNoServerConnectionAttached);
+                throw new System.Exception(OSGeo.MapGuide.MaestroAPI.Strings.ErrorNoServerConnectionAttached);
 
             var conn = layer.CurrentConnection;
             switch (layer.SubLayer.LayerType)

@@ -109,7 +109,7 @@ namespace Maestro.Base.UI
                     ex.Message,
                     Environment.NewLine,
                     ex.StackTrace);
-                MessageBox.Show(tmp, Properties.Resources.CompareError);
+                MessageBox.Show(tmp, Strings.CompareError);
                 return;
             }
         }

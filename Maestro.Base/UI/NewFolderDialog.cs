@@ -56,12 +56,12 @@ namespace Maestro.Base.UI
             btnCreate.Enabled = false;
             if (string.IsNullOrEmpty(txtName.Text))
             {
-                errorProvider.SetError(txtName, Properties.Resources.Required);
+                errorProvider.SetError(txtName, Strings.Required);
                 return;
             }
             else if (_folderNames.Contains(txtName.Text))
             {
-                errorProvider.SetError(txtName, Properties.Resources.FolderNameExists);
+                errorProvider.SetError(txtName, Strings.FolderNameExists);
                 return;
             }
 

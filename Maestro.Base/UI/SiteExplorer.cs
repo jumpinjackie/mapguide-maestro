@@ -429,7 +429,7 @@ namespace Maestro.Base.UI
                         //I think it's nice to ask for confirmation
                         if (data.Length > 0)
                         {
-                            if (!MessageService.AskQuestion(Properties.Resources.ConfirmMove))
+                            if (!MessageService.AskQuestion(Strings.ConfirmMove))
                                 return;
                         }
 
@@ -501,7 +501,7 @@ namespace Maestro.Base.UI
                 }
             }
             if (existing.Count > 0)
-                overwrite = MessageService.AskQuestion(string.Format(Properties.Resources.PromptOverwriteOnTargetConnection, existing.Count));
+                overwrite = MessageService.AskQuestion(string.Format(Strings.PromptOverwriteOnTargetConnection, existing.Count));
 
             var wb = Workbench.Instance;
             var dlg = new ProgressDialog();
@@ -719,7 +719,7 @@ namespace Maestro.Base.UI
             if (notMovedToTarget.Count > 0 || notMovedFromSource.Count > 0)
             {
                 MessageService.ShowMessage(string.Format(
-                    Properties.Resources.NotCopiedOrMovedDueToOpenEditors,
+                    Strings.NotCopiedOrMovedDueToOpenEditors,
                     Environment.NewLine + string.Join(Environment.NewLine, notMovedToTarget.ToArray()) + Environment.NewLine,
                     Environment.NewLine + string.Join(Environment.NewLine, notMovedFromSource.ToArray()) + Environment.NewLine));
             }

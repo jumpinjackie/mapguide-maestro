@@ -47,7 +47,7 @@ namespace Maestro.Base.Commands
                     items.Add(item);
                 }
                 clip.Put(items.ToArray());
-                LoggingService.InfoFormatted(Properties.Resources.ItemsCut, items.Count);
+                LoggingService.InfoFormatted(Strings.ItemsCut, items.Count);
             }
         }
 

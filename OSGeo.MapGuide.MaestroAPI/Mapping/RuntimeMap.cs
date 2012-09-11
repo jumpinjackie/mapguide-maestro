@@ -794,7 +794,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             if (d.SiteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
             {
                 if (d.ReadInt32() != MgBinaryVersion)
-                    throw new Exception(Properties.Resources.ErrorInvalidMapVersion);
+                    throw new Exception(Strings.ErrorInvalidMapVersion);
                 this.ResourceID = d.ReadResourceIdentifier();
             }
 
@@ -845,7 +845,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 }
                 int mapLayerCount = d.ReadInt32();
                 if (mapLayerCount != 0)
-                    throw new Exception(Properties.Resources.ErrorShouldHaveNoLayerDataInMap);
+                    throw new Exception(Strings.ErrorShouldHaveNoLayerDataInMap);
             }
             else
             {
@@ -863,13 +863,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             int classid = d.ReadClassId();
             if (d.SiteVersion <= SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP1_1) && classid != 18001)
-                throw new Exception(Properties.Resources.ErrorInvalidClassIdentifierBox2d);
+                throw new Exception(Strings.ErrorInvalidClassIdentifierBox2d);
             if (d.SiteVersion > SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP1_1) && classid != 20001)
-                throw new Exception(Properties.Resources.ErrorInvalidClassIdentifierBox2d);
+                throw new Exception(Strings.ErrorInvalidClassIdentifierBox2d);
 
             int dimensions = d.ReadInt32();
             if (dimensions != 2 && dimensions != 0)
-                throw new Exception(string.Format(Properties.Resources.ErrorBoundingBoxDoesNotHave2Dimensions, dimensions));
+                throw new Exception(string.Format(Strings.ErrorBoundingBoxDoesNotHave2Dimensions, dimensions));
             double x1 = d.ReadDouble();
             double y1 = d.ReadDouble();
 
@@ -1241,7 +1241,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
             ResourceIdentifier.Validate(resourceID, ResourceTypes.RuntimeMap);
             if (!resourceID.StartsWith("Session:" + this.SessionId + "//") || !resourceID.EndsWith(".Map")) //NOXLATE
-                throw new Exception(Properties.Resources.ErrorRuntimeMapNotInSessionRepo);
+                throw new Exception(Strings.ErrorRuntimeMapNotInSessionRepo);
 
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             System.IO.MemoryStream ms2 = null;

@@ -129,7 +129,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 ClassDefinition clsDef = _edsvc.FeatureService.GetClassDefinition(txtFeatureSource.Text, txtFeatureClass.Text);
                 if (clsDef == null)
                 {
-                    MessageBox.Show(string.Format(Properties.Resources.InvalidFeatureSourceNoClasses, txtFeatureSource.Text));
+                    MessageBox.Show(string.Format(Strings.InvalidFeatureSourceNoClasses, txtFeatureSource.Text));
                     txtFeatureSource.Text = string.Empty;
                     return;
                 }

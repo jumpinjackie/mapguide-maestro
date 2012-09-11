@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Menu_Tools_Options" xml:space="preserve">
-    <value>Options</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cross-circle" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -152,9 +149,6 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="Menu_Help" xml:space="preserve">
-    <value>Help</value>
-  </data>
   <data name="document__plus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -169,21 +163,6 @@
         Cqft9kfaXd0n0rukYusHm0bzqg2rntaF4HlNEF7UzLFvJOobrNZZCWgRgmfCg+Uj8S9ue9uJx1fO4gF/
         bZidsgs0CWg2ms3j1U1Nz/SoctZ+N7iMEcP1w9/YIUw7Q/B728HeTjIAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="Service_Init_Url_Launcher" xml:space="preserve">
-    <value>Initialized: URL Launcher</value>
-  </data>
-  <data name="Menu_File_DeleteResource" xml:space="preserve">
-    <value>Delete Resource</value>
-  </data>
-  <data name="Content_Messages" xml:space="preserve">
-    <value>Messages</value>
-  </data>
-  <data name="Menu_Tools" xml:space="preserve">
-    <value>Tools</value>
-  </data>
-  <data name="Menu_Help_About" xml:space="preserve">
-    <value>About</value>
   </data>
   <data name="arrow-180" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -735,9 +714,6 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAADAAwAA8A8AAA==
 </value>
   </data>
-  <data name="Service_Init_Open_Resource_Manager" xml:space="preserve">
-    <value>Initialized: Open Resource Manager</value>
-  </data>
   <data name="plug__arrow" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -753,9 +729,6 @@
         AHJGBL1hElxG9pBrQ/QYNZp5/Uwy+6rWC/sOgKzxrFNB92YSvoOIkdPISWQEESHDyAlkSHR9pS6KrtSH
         7cUbuD5GBHkiQeYRDaJE5Mg5hDz0KHIGOUVkAvP8c4FpLoFzAXL8L0AoE8TVvKFBAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="Menu_Edit_Paste" xml:space="preserve">
-    <value>Paste</value>
   </data>
   <data name="navigation-000-white" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -790,9 +763,6 @@
         CBL/g/dyjRT1G7y5F+bDPK+HAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="Content_SiteExplorer" xml:space="preserve">
-    <value>Site Explorer</value>
-  </data>
   <data name="document_copy" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -821,12 +791,6 @@
         rkJggg==
 </value>
   </data>
-  <data name="Menu_Edit" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="SiteExplorer_Refresh" xml:space="preserve">
-    <value>Refresh</value>
-  </data>
   <data name="plug__plus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -842,21 +806,6 @@
         r4kd4kbb7j4O8Ey0APOiOkP/w4qd+/Z515tZ+A7BEaycmBARp4iTxCA8EjbPfdchrQ3aDxBHmGCWSYj7
         hI7QEEriPME+9FniDCGBsOAt3BY04ZpgkfbUDQb+AzWA+1Qy0hyuAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="Menu_Edit_Cut" xml:space="preserve">
-    <value>Cut</value>
-  </data>
-  <data name="Service_Init_Server_Connection_Manager" xml:space="preserve">
-    <value>Initialized: Server Connection Manager</value>
-  </data>
-  <data name="Menu_File" xml:space="preserve">
-    <value>File</value>
-  </data>
-  <data name="About_VersionLabel" xml:space="preserve">
-    <value>Version: {0}</value>
-  </data>
-  <data name="SiteExplorer_Disconnect" xml:space="preserve">
-    <value>Disconnect</value>
   </data>
   <data name="navigation" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -874,18 +823,6 @@
         wPAEhcayoDDj0dDIpi5VJi9ojbPi/poffoJq6tGMdmiXznpBMN63IXsYpzrIgvOvs5DzT1hIbe8qWFOP
         ZowlIlFI8HoBh41wZCui/Af0EO1yJPgJP5onawv8eSgAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="Menu_File_Quit" xml:space="preserve">
-    <value>Quit</value>
-  </data>
-  <data name="Browser_Loading" xml:space="preserve">
-    <value>Loading</value>
-  </data>
-  <data name="About_ServerVersionLabel" xml:space="preserve">
-    <value>MapGuide Version: {0} ({1})</value>
-  </data>
-  <data name="About_LanguageLabel" xml:space="preserve">
-    <value>Selected language: {0}, OS Language: {1}</value>
   </data>
   <data name="application_task" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1067,9 +1004,6 @@
         dEUlCwsUDOCQdasFE1yCAAA7AAAAAAAAAAAA
 </value>
   </data>
-  <data name="Menu_File_Login" xml:space="preserve">
-    <value>Login</value>
-  </data>
   <data name="navigation-180" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -1086,18 +1020,6 @@
         +kPxye2DskKzN18/L+xu/BFBsMcZ3uEO7mKtFsTS8ybKDsLJ9pHYsisk7sxDEtc0+gva4wzvCMmmpFBi
         Vws4OkikbKRI/wF+CHc5FPwEO0ImlGXCA6EAAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="Menu_File_NewResource" xml:space="preserve">
-    <value>New Resource</value>
-  </data>
-  <data name="Browser_Complete" xml:space="preserve">
-    <value>Done</value>
-  </data>
-  <data name="Menu_Edit_Copy" xml:space="preserve">
-    <value>Copy</value>
-  </data>
-  <data name="Menu_File_Connect" xml:space="preserve">
-    <value>Connect</value>
   </data>
   <data name="arrow-circle-045-left" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1117,9 +1039,6 @@
         +jIrqvARi3+z1wLV6Nm4+vIww2VxE0WsEJGM5n9+AQ62iBPCRjj/gGZcaP4bffAO2z+OFqAAAAAASUVO
         RK5CYII=
 </value>
-  </data>
-  <data name="Content_WebBrowser" xml:space="preserve">
-    <value>Embedded Web Browser</value>
   </data>
   <data name="cross_script" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1241,12 +1160,6 @@
         QbwGkJOpBj4vAADjam5oGtX6AwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="Log_Saved" xml:space="preserve">
-    <value>Message Log saved to {0}</value>
-  </data>
-  <data name="Menu_View_MessageLog" xml:space="preserve">
-    <value>Message Log</value>
-  </data>
   <data name="reports_stack" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -1259,15 +1172,6 @@
         50mWoQP0kvbTPXy7PvmIxB0K6SLbSzZrQew3ncfoFRb2NLBZfuE5nYbr2zcTtcyqs/g7MRrfSGwu17rI
         9opvoFLLrDorAg6RqZatFTKzLFQEOnDd/SObzKjONrX+CySWIL/K0gqeAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="Menu_View" xml:space="preserve">
-    <value>View</value>
-  </data>
-  <data name="Service_Init_ViewContent_Manager" xml:space="preserve">
-    <value>Initialized: View Content Manager</value>
-  </data>
-  <data name="Error_Closeable_Singleton_Content" xml:space="preserve">
-    <value>Singleton view content cannot be closed by users. The AllowUserClose property must return false</value>
   </data>
   <data name="applications_stack" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1454,33 +1358,6 @@
         Ab7ReT9BDLTyAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="SiteExplorer_SelectedFolder_CreatePackage" xml:space="preserve">
-    <value>Package folder</value>
-  </data>
-  <data name="Menu_Package_LoadPackage" xml:space="preserve">
-    <value>Load Package</value>
-  </data>
-  <data name="SiteExplorer_SelectedFolder_Paste" xml:space="preserve">
-    <value>Paste into this folder</value>
-  </data>
-  <data name="SiteExplorer_SelectedItem_Copy" xml:space="preserve">
-    <value>Copy selected item(s)</value>
-  </data>
-  <data name="SiteExplorer_SelectedItem_Cut" xml:space="preserve">
-    <value>Cut selected items(s)</value>
-  </data>
-  <data name="SiteExplorer_SelectedItem_Delete" xml:space="preserve">
-    <value>Delete selected item(s)</value>
-  </data>
-  <data name="SiteExplorer_SelectedItem_Open" xml:space="preserve">
-    <value>Open</value>
-  </data>
-  <data name="SiteExplorer_SelectedItem_Rename" xml:space="preserve">
-    <value>Rename</value>
-  </data>
-  <data name="Content_Welcome" xml:space="preserve">
-    <value>Getting Started</value>
-  </data>
   <data name="cross" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -1493,235 +1370,6 @@
         T87D2JM4jZmwAL8HwdiEyNw0wpMis5hHwRAYACOOyAw1ejCPMxMt6MKiF/T79OHsAd2AWgJYET3JfVjQ
         yd/5G8s+qAWdGU8YAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="Menu_File_CloseActiveDocument" xml:space="preserve">
-    <value>Close Active Document</value>
-  </data>
-  <data name="Menu_File_EditResourceWithXml" xml:space="preserve">
-    <value>Edit Resource with XML Editor</value>
-  </data>
-  <data name="Menu_File_PreviewResource" xml:space="preserve">
-    <value>Preview Resource</value>
-  </data>
-  <data name="Menu_File_ProfileResource" xml:space="preserve">
-    <value>Profile Resource</value>
-  </data>
-  <data name="Menu_File_SaveResource" xml:space="preserve">
-    <value>Save Resource</value>
-  </data>
-  <data name="Menu_File_SaveResourceAs" xml:space="preserve">
-    <value>Save Resource As</value>
-  </data>
-  <data name="Menu_File_ValidateResource" xml:space="preserve">
-    <value>Validate Resource</value>
-  </data>
-  <data name="TPL_ADF_DESC" xml:space="preserve">
-    <value>Create a new Fusion Application Definition (Flexible Layout)</value>
-  </data>
-  <data name="TPL_ADF_NAME" xml:space="preserve">
-    <value>Application Definition</value>
-  </data>
-  <data name="TPL_CATEGORY_DEFAULT" xml:space="preserve">
-    <value>Default</value>
-  </data>
-  <data name="TPL_CATEGORY_USERDEF" xml:space="preserve">
-    <value>User Defined</value>
-  </data>
-  <data name="TPL_DS_DESC" xml:space="preserve">
-    <value>Create a new Drawing Source</value>
-  </data>
-  <data name="TPL_DS_NAME" xml:space="preserve">
-    <value>Drawing Source</value>
-  </data>
-  <data name="TPL_FS_DESC" xml:space="preserve">
-    <value>Create a new Feature Source</value>
-  </data>
-  <data name="TPL_FS_NAME" xml:space="preserve">
-    <value>Feature Source</value>
-  </data>
-  <data name="TPL_VLDF_DESC" xml:space="preserve">
-    <value>Create a new Vector Layer Definition using the v1.0.0 schema</value>
-  </data>
-  <data name="TPL_VLDF_NAME" xml:space="preserve">
-    <value>Vector Layer Definition (v1.0.0)</value>
-  </data>
-  <data name="TPL_LP_SDF_DESC" xml:space="preserve">
-    <value>Create a new SDF Load Procedure</value>
-  </data>
-  <data name="TPL_LP_SDF_NAME" xml:space="preserve">
-    <value>SDF Load Procedure</value>
-  </data>
-  <data name="TPL_LP_SHP_DESC" xml:space="preserve">
-    <value>Create a new SHP Load Procedure</value>
-  </data>
-  <data name="TPL_LP_SHP_NAME" xml:space="preserve">
-    <value>SHP Load Procedure</value>
-  </data>
-  <data name="TPL_MDF_DESC" xml:space="preserve">
-    <value>Create a new Map Definition using the v1.0.0 schema</value>
-  </data>
-  <data name="TPL_MDF_NAME" xml:space="preserve">
-    <value>Map Definition (v1.0.0)</value>
-  </data>
-  <data name="TPL_PL_DESC" xml:space="preserve">
-    <value>Create a new Print Layout</value>
-  </data>
-  <data name="TPL_PL_NAME" xml:space="preserve">
-    <value>Print Layout</value>
-  </data>
-  <data name="TPL_SSD_DESC" xml:space="preserve">
-    <value>Create a new Simple Symbol Definition using the v1.0.0 schema</value>
-  </data>
-  <data name="TPL_SSD_NAME" xml:space="preserve">
-    <value>Simple Symbol Definition (v1.0.0)</value>
-  </data>
-  <data name="TPL_WL_DESC" xml:space="preserve">
-    <value>Create a new Web Layout using the v1.0.0 schema</value>
-  </data>
-  <data name="TPL_WL_NAME" xml:space="preserve">
-    <value>Web Layout (v1.0.0)</value>
-  </data>
-  <data name="SITE_EXPLORER_TOOLTIP_TEMPLATE" xml:space="preserve">
-    <value>Resource Name: {1}{0}Resource Type: {2}{0}Created: {3}{0}Last Modified: {4}{0}Owner: {5}</value>
-  </data>
-  <data name="ResProp_BoundsDecodeError" xml:space="preserve">
-    <value>Failed to decode the current bounds,
-you must re-enter the epsg code in the SRS tag manually.
-Error message: {0}.</value>
-  </data>
-  <data name="ResProp_EpsgMissingWarning" xml:space="preserve">
-    <value>You must manually enter the EPSG code for the generated bounds.</value>
-  </data>
-  <data name="ResProp_InheritedAccess" xml:space="preserve">
-    <value>Inherited</value>
-  </data>
-  <data name="ResProp_MissingBoundsError" xml:space="preserve">
-    <value>Missing bounds tag</value>
-  </data>
-  <data name="ResProp_NoAccess" xml:space="preserve">
-    <value>No access</value>
-  </data>
-  <data name="ResProp_NoSpatialDataError" xml:space="preserve">
-    <value>No spatial data found in FeatureSource</value>
-  </data>
-  <data name="ResProp_NoSpatialDataWithFailuresError" xml:space="preserve">
-    <value>No spatial data found in FeatureSource, one or more queries failed to execute</value>
-  </data>
-  <data name="ResProp_ReadOnlyAccess" xml:space="preserve">
-    <value>Read only</value>
-  </data>
-  <data name="ResProp_ReadWriteAccess" xml:space="preserve">
-    <value>Read/write</value>
-  </data>
-  <data name="ResProp_ReferenceReadError" xml:space="preserve">
-    <value>Failed to read resource references</value>
-  </data>
-  <data name="ResProp_ReferenceReadSpecificError" xml:space="preserve">
-    <value>Failed to read resource references: {0}</value>
-  </data>
-  <data name="ResProp_SaveError" xml:space="preserve">
-    <value>Failed to save the resource properties: {0}</value>
-  </data>
-  <data name="ResProp_WFSBoundsReadError" xml:space="preserve">
-    <value>Failed to obtain the extent for the WFS data.
-Error message: {0}</value>
-  </data>
-  <data name="ResProp_WMSBoundsReadError" xml:space="preserve">
-    <value>Failed to obtain the extent for the WMS data.
-Error message: {0}</value>
-  </data>
-  <data name="BoundsPicker_BoundsDecodeError" xml:space="preserve">
-    <value>Failed to decode the current bounds,
-you may enter new bounds, and these will replace the current.
-Error message: {0}</value>
-  </data>
-  <data name="BoundsPicker_IncompleBoundsError" xml:space="preserve">
-    <value>You have not entered all the required information.</value>
-  </data>
-  <data name="BoundsPicker_InvalidMaxXError" xml:space="preserve">
-    <value>Failed to convert the Max X value</value>
-  </data>
-  <data name="BoundsPicker_InvalidMaxYError" xml:space="preserve">
-    <value>Failed to convert the Max Y value</value>
-  </data>
-  <data name="BoundsPicker_InvalidMinXError" xml:space="preserve">
-    <value>Failed to convert the Min X value</value>
-  </data>
-  <data name="BoundsPicker_InvalidMinYError" xml:space="preserve">
-    <value>Failed to convert the Min Y value</value>
-  </data>
-  <data name="BoundsPicker_MissingBoundsError" xml:space="preserve">
-    <value>Missing bounds tag</value>
-  </data>
-  <data name="BoundsPicker_NumbersInRegionalError" xml:space="preserve">
-    <value>The values you have entered appears to be in local regional format, but are required in US regional format.
-Do you want to convert the values?</value>
-  </data>
-  <data name="BoundsPicker_UseInvalidCoordinatesWarning" xml:space="preserve">
-    <value>The coordinates you have entered appears to be invalid, do you want to use them anyway?</value>
-  </data>
-  <data name="SiteExplorer_SelectedItem_Properties" xml:space="preserve">
-    <value>Properties</value>
-  </data>
-  <data name="EditorRegistered" xml:space="preserve">
-    <value>Registered Editor: {0}</value>
-  </data>
-  <data name="OpenResourceManager_SkipEditorRegistration" xml:space="preserve">
-    <value>Skipping registration of editor: {0} because an existing editor is already registered to handle {1} v{2}</value>
-  </data>
-  <data name="TPL_CSD_DESC" xml:space="preserve">
-    <value>Create a new Compund Symbol Definition using the v1.0.0 schema</value>
-  </data>
-  <data name="TPL_CSD_NAME" xml:space="preserve">
-    <value>Compound Symbol Definition (v1.0.0)</value>
-  </data>
-  <data name="ValidationBuildingList" xml:space="preserve">
-    <value>Building resource list...</value>
-  </data>
-  <data name="ValidationResourceLoadFailed" xml:space="preserve">
-    <value>Failed to load resource: {0}</value>
-  </data>
-  <data name="SiteExplorer_ValidateResources" xml:space="preserve">
-    <value>Validate</value>
-  </data>
-  <data name="ValidationValidating" xml:space="preserve">
-    <value>Validating ...</value>
-  </data>
-  <data name="ValidationFailedError" xml:space="preserve">
-    <value>Failed to save file: {0}</value>
-  </data>
-  <data name="ValidationProgressMessage" xml:space="preserve">
-    <value>Validating resource: {0}</value>
-  </data>
-  <data name="ValidationResultFormat" xml:space="preserve">
-    <value>{0} - {1}: {2}</value>
-  </data>
-  <data name="ValidationNoIssues" xml:space="preserve">
-    <value>No issues found during validation</value>
-  </data>
-  <data name="ResourceAlreadyOpened" xml:space="preserve">
-    <value>This resource is already opened in another editor</value>
-  </data>
-  <data name="SiteExplorer_SelectedItem_OpenWithXmlEditor" xml:space="preserve">
-    <value>Open Resource with XML Editor</value>
-  </data>
-  <data name="SelectFdoProvider" xml:space="preserve">
-    <value>Select FDO Provider</value>
-  </data>
-  <data name="Filter_Sdf_Files" xml:space="preserve">
-    <value>Autodesk SDF (*.sdf)|*.sdf</value>
-  </data>
-  <data name="Filter_Shp_Files" xml:space="preserve">
-    <value>ESRI Shapefile (*.shp)|*.shp</value>
-  </data>
-  <data name="ConfirmDelete" xml:space="preserve">
-    <value>Are you sure you want to delete?</value>
-  </data>
-  <data name="Global.QuestionText" xml:space="preserve">
-    <value>Question</value>
-  </data>
-  <data name="SiteExplorer_NewFolder" xml:space="preserve">
-    <value>New Folder</value>
   </data>
   <data name="folder__plus" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1737,60 +1385,6 @@ Do you want to convert the values?</value>
         EZHnpoz4SytCzbsgtv5uEoEjdKWmXDxAlMd0uto8ZdVoEda7VmN6wJxFGbIheH4bxG48SLcrNtOO3y1p
         +Udxwfacx7rDy2ZKjDmTjj30QE3VVmoRDdP+AgqRc9vLR4PDAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="RenameTo" xml:space="preserve">
-    <value>Rename to</value>
-  </data>
-  <data name="Content_OutboundRequests" xml:space="preserve">
-    <value>Outbound Requests</value>
-  </data>
-  <data name="Filter_Mgp_Files" xml:space="preserve">
-    <value>MapGuide Package File (*.mgp)|*.mgp</value>
-  </data>
-  <data name="Menu_Package" xml:space="preserve">
-    <value>Package</value>
-  </data>
-  <data name="Prefs_General" xml:space="preserve">
-    <value>General</value>
-  </data>
-  <data name="SelectTemplatePath" xml:space="preserve">
-    <value>Select the user template path</value>
-  </data>
-  <data name="ConfirmResetPrefs" xml:space="preserve">
-    <value>You are about to reset all preferences to default values. Are you sure you want to do this?</value>
-  </data>
-  <data name="PrefsRestartRequired" xml:space="preserve">
-    <value>A restart is required for some changes to take effect. Restart now?</value>
-  </data>
-  <data name="ItemsCopied" xml:space="preserve">
-    <value>{0} items copied and placed in clipboard</value>
-  </data>
-  <data name="ItemsCut" xml:space="preserve">
-    <value>{0} items cut and placed in clipboard</value>
-  </data>
-  <data name="NewResource" xml:space="preserve">
-    <value>New Resource</value>
-  </data>
-  <data name="CloseUnsavedResource" xml:space="preserve">
-    <value>This resource {0} has unsaved changes. Close and discard these changes?</value>
-  </data>
-  <data name="FixErrorsBeforeSaving" xml:space="preserve">
-    <value>Validation detected errors in your resource, please fix them before saving this resource</value>
-  </data>
-  <data name="Global.ErrorText" xml:space="preserve">
-    <value>Error</value>
-  </data>
-  <data name="TPL_DLDF_DESC" xml:space="preserve">
-    <value>Create a new Drawing Layer Definition</value>
-  </data>
-  <data name="TPL_DLDF_NAME" xml:space="preserve">
-    <value>Drawing Layer Definition</value>
-  </data>
-  <data name="TPL_RLDF_DESC" xml:space="preserve">
-    <value>Create a new Raster Layer Definition using the v1.0.0 schema</value>
-  </data>
-  <data name="TPL_RLDF_NAME" xml:space="preserve">
-    <value>Raster Layer Definition (v1.0.0)</value>
   </data>
   <data name="box__arrow" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1822,90 +1416,6 @@ Do you want to convert the values?</value>
         fyT2oAVNdAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="Filter_Dwf_Files" xml:space="preserve">
-    <value>Autodesk DWF (*.dwf)|*.dwf</value>
-  </data>
-  <data name="TPL_LP_DWF_DESC" xml:space="preserve">
-    <value>Create a DWF Load Procedure</value>
-  </data>
-  <data name="TPL_LP_DWF_NAME" xml:space="preserve">
-    <value>DWF Load Procedure</value>
-  </data>
-  <data name="ConfirmMove" xml:space="preserve">
-    <value>Are you sure you want to move the following resources?</value>
-  </data>
-  <data name="SdfHandlerAction" xml:space="preserve">
-    <value>Create a SDF Feature Source</value>
-  </data>
-  <data name="ShpHandlerAction" xml:space="preserve">
-    <value>Create a SHP Feature Source</value>
-  </data>
-  <data name="SltHandlerAction" xml:space="preserve">
-    <value>Create a SQLite Feature Source</value>
-  </data>
-  <data name="XmlResHandlerAction" xml:space="preserve">
-    <value>Load this resource into the Site Repository</value>
-  </data>
-  <data name="LayerSubTypeNotSupported" xml:space="preserve">
-    <value>Could not determine the sub-layer type or this type is not currently supported</value>
-  </data>
-  <data name="ConfirmCloseEditors" xml:space="preserve">
-    <value>You have open editors with unsaved changes. Continue anyway?</value>
-  </data>
-  <data name="ConfirmDeleteOpenResource" xml:space="preserve">
-    <value>You are about to delete one or more resources which are currently open in an editor. Close these editors and proceed with delete?</value>
-  </data>
-  <data name="TabClose" xml:space="preserve">
-    <value>Close this tab</value>
-  </data>
-  <data name="TabCloseExceptThis" xml:space="preserve">
-    <value>Close all tabs except this</value>
-  </data>
-  <data name="ItemsMigrated" xml:space="preserve">
-    <value>{0} items migrated</value>
-  </data>
-  <data name="SiteExplorer_CopyMoveToServer" xml:space="preserve">
-    <value>Copy/Move selected items to another server</value>
-  </data>
-  <data name="FilterExecutables" xml:space="preserve">
-    <value>Executables|*.exe</value>
-  </data>
-  <data name="LocalFsPreview" xml:space="preserve">
-    <value>Local Feature Source Preview</value>
-  </data>
-  <data name="MgCooker" xml:space="preserve">
-    <value>MgCooker</value>
-  </data>
-  <data name="LocateExecutable" xml:space="preserve">
-    <value>Locate executable: {0}</value>
-  </data>
-  <data name="ServerMonitor" xml:space="preserve">
-    <value>Server Status Monitor</value>
-  </data>
-  <data name="ResourceMigrated" xml:space="preserve">
-    <value>Resource Migrated: {0}</value>
-  </data>
-  <data name="SiteExplorer_Migrate" xml:space="preserve">
-    <value>Migrate</value>
-  </data>
-  <data name="ClipboardAction" xml:space="preserve">
-    <value>{0} item {1} into {2}</value>
-  </data>
-  <data name="MoveFailure" xml:space="preserve">
-    <value>Failed to move {0} to {1}</value>
-  </data>
-  <data name="NewMap" xml:space="preserve">
-    <value>New Map</value>
-  </data>
-  <data name="PreviewMap" xml:space="preserve">
-    <value>Preview Map</value>
-  </data>
-  <data name="UnpreviewableResourceType" xml:space="preserve">
-    <value>The resource type cannot be previewed</value>
-  </data>
-  <data name="XmlEditor" xml:space="preserve">
-    <value>XML Editor:</value>
-  </data>
   <data name="disks" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -1919,30 +1429,6 @@ Do you want to convert the values?</value>
         SDJiFKZfl+iciTqCCJwIOZCUyy3pVBN2WfRp+6YPyQiAHEi664jz3Nx8VWGXRC+dFc5XJtiF1k7IGGxO
         7kESnpBOv60ujOiM9QpEjfXCxQDEQJIRk7CUtnzBGGAXW+gfW6hPXoP3cZ4AAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="Menu_File_SaveAll" xml:space="preserve">
-    <value>Save All</value>
-  </data>
-  <data name="Menu_File_CloseAll" xml:space="preserve">
-    <value>Close All Documents</value>
-  </data>
-  <data name="Menu_Window" xml:space="preserve">
-    <value>Window</value>
-  </data>
-  <data name="MgpHandlerAction" xml:space="preserve">
-    <value>Load this package file</value>
-  </data>
-  <data name="Confirm" xml:space="preserve">
-    <value>Confirm</value>
-  </data>
-  <data name="ConfirmLoadPackage" xml:space="preserve">
-    <value>Are you sure you want to load this package file?</value>
-  </data>
-  <data name="ProgressUpdatingReferences" xml:space="preserve">
-    <value>Updating References</value>
-  </data>
-  <data name="ResourcesRepointed" xml:space="preserve">
-    <value>{0} resources re-pointed to {1}</value>
   </data>
   <data name="document__arrow" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1958,75 +1444,6 @@ Do you want to convert the values?</value>
         jY7a7ZPGrv4lGYsmcDG8+Jv7MeOpvQUODr+MH3K/0iXfwuw/oGl3lMCQMDITGay0JL9Y9sQ69Rr7nLOp
         PTbfrWaWWvnleEtbm29vR0d4J3ZfGF/addoxJxmm9RfQp5NnTum+ngAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="ResourceNotRepointable" xml:space="preserve">
-    <value>This selected resource is not re-pointable</value>
-  </data>
-  <data name="SiteExplorer_Repoint" xml:space="preserve">
-    <value>Repoint this resource</value>
-  </data>
-  <data name="ConfirmBaseMapInvalidation" xml:space="preserve">
-    <value>This map definition has tiled layers. Saving this map definition will reset the tile cache if these layer existed when you first edited this map. Continue with save?</value>
-  </data>
-  <data name="ConfirmBaseMapInvalidationFeatureSourceSave" xml:space="preserve">
-    <value>This feature source is refrenced by at least one tiled layer in the following maps: {0} Saving this feature source may reset the cached tiles of these maps. Continue with save?</value>
-  </data>
-  <data name="ConfirmBaseMapInvalidationLayerSave" xml:space="preserve">
-    <value>This layer is used as a tiled layer in the following maps: {0} Saving this layer may reset the cached tiles of these maps. Continue with save?</value>
-  </data>
-  <data name="CacheView" xml:space="preserve">
-    <value>View Feature Source Cache</value>
-  </data>
-  <data name="SiteExplorer_MigrateResources" xml:space="preserve">
-    <value>Migrate Resources</value>
-  </data>
-  <data name="DefaultSymbolDescription" xml:space="preserve">
-    <value>A description for this symbol</value>
-  </data>
-  <data name="DefaultSymbolName" xml:space="preserve">
-    <value>MySymbol</value>
-  </data>
-  <data name="Required" xml:space="preserve">
-    <value>Required</value>
-  </data>
-  <data name="FolderNameExists" xml:space="preserve">
-    <value>Folder name already exists</value>
-  </data>
-  <data name="UpdatingOpenReferences" xml:space="preserve">
-    <value>Updating open editors of {0} to {1}</value>
-  </data>
-  <data name="ClosingOpenEditor" xml:space="preserve">
-    <value>Closing open editor of {0}</value>
-  </data>
-  <data name="UpdatedOpenEditor" xml:space="preserve">
-    <value>Open editor updated to {0}</value>
-  </data>
-  <data name="CannotRenameAlreadyOpenedResource" xml:space="preserve">
-    <value>Cannot rename resource as it is already opened by another editor</value>
-  </data>
-  <data name="CannotRenameToResourceAlreadyOpened" xml:space="preserve">
-    <value>Cannot rename resource to {0} as it is already opened by another editor</value>
-  </data>
-  <data name="CannotSaveToResourceAlreadyOpened" xml:space="preserve">
-    <value>Cannot save to {0} as it is already opened by another editor</value>
-  </data>
-  <data name="NotCopiedOrMovedDueToOpenEditors" xml:space="preserve">
-    <value>The following resources were not copied or moved because they would be overwriting resources currently open: {0}The following resources were not moved because they are currently open: {1}</value>
-  </data>
-  <data name="ItemsNotMovedDueToBeingOpen" xml:space="preserve">
-    <value>The following items were not moved due to being already open in an editor: {0}</value>
-  </data>
-  <data name="NoFiniteDisplayScalesSpecified" xml:space="preserve">
-    <value>This Map Definition has tiled layers but has no finite display scales defined. Define some display scales.</value>
-  </data>
-  <data name="SiteAdministrator" xml:space="preserve">
-    <value>Site Administrator</value>
-  </data>
-  <data name="SavedResource" xml:space="preserve">
-    <value>Saved resource content to {0}</value>
-  </data>
-  <data name="SiteExplorer_SaveResource" xml:space="preserve">
-    <value>Save Resource XML</value>
   </data>
   <data name="server__arrow" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2062,9 +1479,6 @@ Do you want to convert the values?</value>
         QAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="SiteExplorer_PurgeFsCache" xml:space="preserve">
-    <value>Purge Cached Schema Information</value>
-  </data>
   <data name="system_monitor" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -2080,117 +1494,6 @@ Do you want to convert the values?</value>
         CnqOiAfEwwNh5+henzL/Bv4BjuUj9lP+EFEAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="SchemaInformationPurged" xml:space="preserve">
-    <value>Schema information for {0} purged</value>
-  </data>
-  <data name="ResourceDuplicated" xml:space="preserve">
-    <value>Resource Duplicated: {0} ( =&gt; {1})</value>
-  </data>
-  <data name="SiteExplorer_DuplicateResources" xml:space="preserve">
-    <value>Duplicate Resources</value>
-  </data>
-  <data name="CloseButtonText" xml:space="preserve">
-    <value>Close</value>
-  </data>
-  <data name="Prof_LayerDefinitionProfilingError" xml:space="preserve">
-    <value>Failed while profiling Layer Definition: {0}{2}============= ERROR DETAILS =========={2}{1}{2} ======== END ERROR DETAILS =============</value>
-  </data>
-  <data name="Prof_LogMessageDone" xml:space="preserve">
-    <value>*** Done ***</value>
-  </data>
-  <data name="Prof_LogMessageFeatureSource" xml:space="preserve">
-    <value>Profiling FeatureSource: {0}</value>
-  </data>
-  <data name="Prof_LogMessageIdentifyFetching" xml:space="preserve">
-    <value>Identity fetching (ms): </value>
-  </data>
-  <data name="Prof_LogMessageLayerDefinition" xml:space="preserve">
-    <value>Profiling LayerDefinition: {0}</value>
-  </data>
-  <data name="Prof_LogMessageMapDefinition" xml:space="preserve">
-    <value>Profiling MapDefinition: {0}</value>
-  </data>
-  <data name="Prof_LogMessageRenderingMap" xml:space="preserve">
-    <value>Full map rendering (ms): </value>
-  </data>
-  <data name="Prof_LogMessageRenderingScales" xml:space="preserve">
-    <value>Rendering scales (ms): </value>
-  </data>
-  <data name="Prof_LogMessageRuntimeLayer" xml:space="preserve">
-    <value>Runtime layer creation (ms): </value>
-  </data>
-  <data name="Prof_LogMessageRuntimeMap" xml:space="preserve">
-    <value>Total for runtime Map Generation (ms): </value>
-  </data>
-  <data name="Prof_LogMessageRuntimeMapTotal" xml:space="preserve">
-    <value>Runtime map generation in one go (ms):</value>
-  </data>
-  <data name="Prof_LogMessageScaleRange" xml:space="preserve">
-    <value>Time to render scale range [{0} : {1}] (ms):  </value>
-  </data>
-  <data name="Prof_LogMessageUnsupportedResourceType" xml:space="preserve">
-    <value>The resource type is not supported for profiling</value>
-  </data>
-  <data name="Prof_MapRenderingError" xml:space="preserve">
-    <value>Failed while profiling MapDefinition rendering: {0}{2}============= ERROR DETAILS =========={2}{1}{2} ======== END ERROR DETAILS =============</value>
-  </data>
-  <data name="Prof_RuntimeMapProfilingError" xml:space="preserve">
-    <value>Failed while profiling MapDefinition runtime {0}{2}============= ERROR DETAILS =========={2}{1}{2} ======== END ERROR DETAILS =============</value>
-  </data>
-  <data name="Prof_MapRenderingImageSize" xml:space="preserve">
-    <value>Rendered image size is: {0}</value>
-  </data>
-  <data name="TPL_USER_DEFINED" xml:space="preserve">
-    <value>User Defined Resource Templates</value>
-  </data>
-  <data name="Prefs_Editor" xml:space="preserve">
-    <value>Editors</value>
-  </data>
-  <data name="Toolbar_EditAsXml" xml:space="preserve">
-    <value>Edit as XML</value>
-  </data>
-  <data name="Toolbar_Preview" xml:space="preserve">
-    <value>Preview</value>
-  </data>
-  <data name="Toolbar_Profile" xml:space="preserve">
-    <value>Profile</value>
-  </data>
-  <data name="Toolbar_Validate" xml:space="preserve">
-    <value>Validate</value>
-  </data>
-  <data name="SkippingResource" xml:space="preserve">
-    <value>Skipping resource: {0}</value>
-  </data>
-  <data name="ReplacedXmlContent" xml:space="preserve">
-    <value>Replaced XML content in: {0}</value>
-  </data>
-  <data name="ResourcesProcessed" xml:space="preserve">
-    <value>{0} resources processed</value>
-  </data>
-  <data name="SiteExplorer_FindReplaceXml" xml:space="preserve">
-    <value>Find and Replace XML content</value>
-  </data>
-  <data name="Menu_File_ValidateEditedResource" xml:space="preserve">
-    <value>Validate Edited Resource</value>
-  </data>
-  <data name="TipNumber" xml:space="preserve">
-    <value>Tip: {0} of {1}</value>
-  </data>
-  <data name="Menu_Help_Totd" xml:space="preserve">
-    <value>Tip of the Day</value>
-  </data>
-  <data name="HelpFileNotFound" xml:space="preserve">
-    <value>Could not find help file</value>
-  </data>
-  <data name="Menu_Help_UserGuide" xml:space="preserve">
-    <value>User Guide</value>
-  </data>
-  <data name="SiteExplorer_ShowSpatialContexts" xml:space="preserve">
-    <value>Show Spatial Contexts</value>
-  </data>
-  <data name="KeepAliveFailed" xml:space="preserve">
-    <value>Failed to keep session alive. This would happen if connectivity to the MapGuide Server has been lost (it has been stopped or restarted). Refresh the Site Explorer to create a new session. Also close any existing editors and re-open them.</value>
-  </data>
   <data name="marker" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -2203,71 +1506,6 @@ Do you want to convert the values?</value>
         OdzHfERUaqysMFQyM/LtYTeQOW0KuR+u634/Q+GR49HeoL9DMXnZI7qp+XwMhTeeYQUmWRwXpnfl4Kv8
         laHiZ4UJYWRYwYgszQgLQaItHIaKXxQswuj/gm+HNTFEuMVJpAAAAABJRU5ErkJggg==
 </value>
-  </data>
-  <data name="Folder_Data" xml:space="preserve">
-    <value>Data</value>
-  </data>
-  <data name="Folder_Layers" xml:space="preserve">
-    <value>Layers</value>
-  </data>
-  <data name="Folder_Layouts" xml:space="preserve">
-    <value>Layouts</value>
-  </data>
-  <data name="Folder_Maps" xml:space="preserve">
-    <value>Maps</value>
-  </data>
-  <data name="Folder_Symbols" xml:space="preserve">
-    <value>Symbols</value>
-  </data>
-  <data name="Folder_Watermarks" xml:space="preserve">
-    <value>Watermarks</value>
-  </data>
-  <data name="SiteExplorer_CreateFolderStructure" xml:space="preserve">
-    <value>Create Standard Folder Structure</value>
-  </data>
-  <data name="ResourceUpgraded" xml:space="preserve">
-    <value>Resource upgraded to schema version {0}.{1}.{2}</value>
-  </data>
-  <data name="Contributors" xml:space="preserve">
-    <value>Programming:
-
-  Jackie Ng (Maestro 2.0+)
-  Kenneth Skovhede (Maestro 1.0 - 2.0)
-	
-Many thanks to the following people for providing patches and actively testing releases to help make Maestro a better quality applicaton for all:
-
-  Jason Birch
-  Crispin Hoult
-  Zac Spitzer
-  Gunter Becker
-  Andrew DeMerchant
-  Gabriele Monfardini
-  Gordon Luckett
-  Hans Milling
-
-Many thanks to the following people who have translated Maestro into other languages:
-
-  José Manuel Cerrejón González (Spanish)
-  Pierre Cardinal (French)
-  Ivan Miličević (Croatian)</value>
-  </data>
-  <data name="SiteExplorer_CopyResourceIds" xml:space="preserve">
-    <value>Copy Resource IDs to clipboard</value>
-  </data>
-  <data name="ConnectionAlreadyEstablished" xml:space="preserve">
-    <value>You have already established such a connection</value>
-  </data>
-  <data name="EditorTitleTemplate" xml:space="preserve">
-    <value>Resource ID: {0}{1}Connection: {2}{1}Resource Version: {3}</value>
-  </data>
-  <data name="DwfHandlerAction" xml:space="preserve">
-    <value>Create a Drawing Source</value>
-  </data>
-  <data name="PromptOverwriteOnTargetConnection" xml:space="preserve">
-    <value>There are {0} already existing resources that have the same name. Do you want to overwrite these resources?</value>
-  </data>
-  <data name="EditPackage" xml:space="preserve">
-    <value>Package Editor</value>
   </data>
   <data name="box__pencil" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2284,12 +1522,6 @@ Many thanks to the following people who have translated Maestro into other langu
         Wf42wec9YsRZRZVFczRo53zYtV30uevE+oaq2fd+A3LlMACdPVtkAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="EditRawHeader" xml:space="preserve">
-    <value>Edit Raw Header XML</value>
-  </data>
-  <data name="ItemsTranslated" xml:space="preserve">
-    <value>{0} items were successfully translated</value>
-  </data>
   <data name="edit_language" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -2301,15 +1533,6 @@ Many thanks to the following people who have translated Maestro into other langu
         tLBgVCvTmXo6rxRveMa8+WKVNrajXLUyf667nQE5zEaNftCwVb26k471U9bfwDdY8a5H6+SIIQAAAABJ
         RU5ErkJggg==
 </value>
-  </data>
-  <data name="Menu_Tools_Translate" xml:space="preserve">
-    <value>Translate</value>
-  </data>
-  <data name="Menu_Tools_Translate_Desc" xml:space="preserve">
-    <value>Translate this Layout</value>
-  </data>
-  <data name="RtMapInspector" xml:space="preserve">
-    <value>Runtime Map Inspector</value>
   </data>
   <data name="edit_diff" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2324,21 +1547,6 @@ Many thanks to the following people who have translated Maestro into other langu
         uSdpuNA2gAWWfswtc2G2uVfSeIZSOyA0rlMVQ/6iMavhDhfW3lU34BrQ40sE/jjhU9KCGb+gjJqc5mdU
         I6nYvfdtIA/88Rv4FezzCS20Bem86KckAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="Menu_Tools_XmlChanges" xml:space="preserve">
-    <value>View Changes</value>
-  </data>
-  <data name="Menu_Tools_XmlChanges_Desc" xml:space="preserve">
-    <value>View XML content changes of current resource</value>
-  </data>
-  <data name="SiteExplorer_TestResourceCompatibility" xml:space="preserve">
-    <value>Test Resource Compatibility</value>
-  </data>
-  <data name="ResourcesCompatibleWithSelectedVersion" xml:space="preserve">
-    <value>All resources selected are compatible with the selected site version {0}.</value>
-  </data>
-  <data name="InvalidResourceId" xml:space="preserve">
-    <value>Invalid Resource ID</value>
   </data>
   <data name="folder_open_document" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2357,15 +1565,6 @@ Many thanks to the following people who have translated Maestro into other langu
         zYbExIqNSUmqv61PSMgXBMhm0EgB1CdgZ9VxkJVJ4AF5YSux+R/ifgP/44T3ShVnvwAAAABJRU5ErkJg
         gg==
 </value>
-  </data>
-  <data name="Menu_File_OpenResource" xml:space="preserve">
-    <value>Open Resource</value>
-  </data>
-  <data name="NoOpenConnections" xml:space="preserve">
-    <value>No Open Connections</value>
-  </data>
-  <data name="ResourceNotFound" xml:space="preserve">
-    <value>Resource not found</value>
   </data>
   <data name="water" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2670,73 +1869,5 @@ Many thanks to the following people who have translated Maestro into other langu
         /wH///8BAAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA
         //8AAP//AAD//w==
 </value>
-  </data>
-  <data name="ErrorUnknownExecutable" xml:space="preserve">
-    <value>Unknown executable specified: {0}</value>
-  </data>
-  <data name="PrgPreSaveValidation" xml:space="preserve">
-    <value>Performing pre-save validation...
-
-You can disable pre-save validation in Maestro options</value>
-  </data>
-  <data name="PrgPreparingResourcePreview" xml:space="preserve">
-    <value>Preparing resource preview</value>
-  </data>
-  <data name="TextReloadNewResource" xml:space="preserve">
-    <value>Sorry, this is a newly created resource. The editor will close instead</value>
-  </data>
-  <data name="StatusActiveConnection" xml:space="preserve">
-    <value>Active Connection: {0}</value>
-  </data>
-  <data name="LiveMapEditor" xml:space="preserve">
-    <value>Live Map Definition Editor</value>
-  </data>
-  <data name="ConnectionDoesNotSupportRequiredInterfaces" xml:space="preserve">
-    <value>The current connection does not support the required interfaces to perform this action</value>
-  </data>
-  <data name="Cancelled" xml:space="preserve">
-    <value>Cancelled</value>
-  </data>
-  <data name="CompareError" xml:space="preserve">
-    <value>Compare Error</value>
-  </data>
-  <data name="PromptSelectFdoProvider" xml:space="preserve">
-    <value>Select an FDO Provider</value>
-  </data>
-  <data name="TitleSelectFdoProvider" xml:space="preserve">
-    <value>Select FDO Provider</value>
-  </data>
-  <data name="Desc_GetExtents" xml:space="preserve">
-    <value>Displays the current map extents</value>
-  </data>
-  <data name="Desc_GetMapKml" xml:space="preserve">
-    <value>Gets the current map as a KML document</value>
-  </data>
-  <data name="Desc_ZoomToScale" xml:space="preserve">
-    <value>Zoom to a specified scale</value>
-  </data>
-  <data name="Label_ExtraTools" xml:space="preserve">
-    <value>Extra Tools</value>
-  </data>
-  <data name="Label_GetExtents" xml:space="preserve">
-    <value>Get Extents</value>
-  </data>
-  <data name="Label_GetMapKml" xml:space="preserve">
-    <value>Get KML</value>
-  </data>
-  <data name="Label_Tools" xml:space="preserve">
-    <value>Tools</value>
-  </data>
-  <data name="Label_ZoomToScale" xml:space="preserve">
-    <value>Zoom to Scale</value>
-  </data>
-  <data name="SiteVersionDoesntSupportWatermarks" xml:space="preserve">
-    <value>The site version of this current connection is not known to support watermarks</value>
-  </data>
-  <data name="VersionUnknown" xml:space="preserve">
-    <value>Unknown version</value>
-  </data>
-  <data name="VersionUnknownOrNotConnected" xml:space="preserve">
-    <value>Unknown version or not connected</value>
   </data>
 </root>

@@ -43,7 +43,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
         {
             InitializeComponent();
             cmbMinScale.Items.Add("0");
-            cmbMaxScale.Items.Add(Properties.Resources.Infinity);
+            cmbMaxScale.Items.Add(Strings.Infinity);
             lstScaleRanges.DataSource = _scales;
         }
 
@@ -139,7 +139,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 {
                     return string.Format("{0} : {1}",
                         this.Item.MinScale.HasValue ? this.Item.MinScale.Value.ToString(CultureInfo.InvariantCulture) : "0",
-                        this.Item.MaxScale.HasValue ? this.Item.MaxScale.Value.ToString(CultureInfo.InvariantCulture) : Properties.Resources.Infinity);
+                        this.Item.MaxScale.HasValue ? this.Item.MaxScale.Value.ToString(CultureInfo.InvariantCulture) : Strings.Infinity);
                 }
             }
 
@@ -285,7 +285,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                         cmbMaxScale.Text = cmbMaxScale.SelectedItem.ToString();
                     }
 
-                    grpScaleRange.Text = string.Format("{0} ({1})", Properties.Resources.ScaleRange, vsc.ScaleDisplayString);
+                    grpScaleRange.Text = string.Format("{0} ({1})", Strings.ScaleRange, vsc.ScaleDisplayString);
                     grpScaleRange.Controls.Clear();
 
                     btnKmlElevation.Enabled = vsc.SupportsElevation;
@@ -335,7 +335,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                     }
                     else
                     {
-                        errorProvider.SetError(cmbMinScale, Properties.Resources.InvalidValueError);
+                        errorProvider.SetError(cmbMinScale, Strings.InvalidValueError);
                     }
                 }
                 OnResourceChanged();
@@ -350,7 +350,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
             var vsc = lstScaleRanges.SelectedItem as VectorScaleRange;
             if (vsc != null)
             {
-                if (cmbMaxScale.Text == Properties.Resources.Infinity)
+                if (cmbMaxScale.Text == Strings.Infinity)
                 {
                     vsc.MaxScale = null;
                 }
@@ -364,7 +364,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                     }
                     else
                     {
-                        errorProvider.SetError(cmbMaxScale, Properties.Resources.InvalidValueError);
+                        errorProvider.SetError(cmbMaxScale, Strings.InvalidValueError);
                     }
                 }
                 OnResourceChanged();

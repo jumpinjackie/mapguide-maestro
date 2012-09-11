@@ -149,7 +149,7 @@ namespace Maestro.Editors.Common
             set
             {
                 if (value && this.SelectFoldersOnly)
-                    throw new InvalidOperationException(Properties.Resources.UnmanagedBrowserMultiSelectionNotAllowed);
+                    throw new InvalidOperationException(Strings.UnmanagedBrowserMultiSelectionNotAllowed);
 
                 lstResources.MultiSelect = value;
             }

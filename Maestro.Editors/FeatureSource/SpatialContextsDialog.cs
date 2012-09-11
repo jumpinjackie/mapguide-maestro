@@ -49,7 +49,7 @@ namespace Maestro.Editors.FeatureSource
         {
             lblFeatureSource.Text = fs.ResourceID;
             grdSpatialContexts.DataSource = fs.GetSpatialInfo(false).SpatialContext;
-            lblCount.Text = string.Format(Properties.Resources.SpatialContextsFound, grdSpatialContexts.Rows.Count);
+            lblCount.Text = string.Format(Strings.SpatialContextsFound, grdSpatialContexts.Rows.Count);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Maestro.Editors.FeatureSource
         {
             lblFeatureSource.Text = fsId;
             grdSpatialContexts.DataSource = featSvc.GetSpatialContextInfo(fsId, false).SpatialContext;
-            lblCount.Text = string.Format(Properties.Resources.SpatialContextsFound, grdSpatialContexts.Rows.Count);
+            lblCount.Text = string.Format(Strings.SpatialContextsFound, grdSpatialContexts.Rows.Count);
         }
 
         private void btnClose_Click(object sender, EventArgs e)

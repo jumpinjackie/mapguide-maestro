@@ -184,7 +184,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
 
         private void btnBrowseBufferUnits_Click(object sender, EventArgs e)
         {
-            var item = GenericItemSelectionDialog.SelectItem(Properties.Resources.TitleBufferUnits, Properties.Resources.PromptSelectBufferUnits, _units);
+            var item = GenericItemSelectionDialog.SelectItem(Strings.TitleBufferUnits, Strings.PromptSelectBufferUnits, _units);
             if (item != null)
             {
                 txtBufferUnits.Text = item;

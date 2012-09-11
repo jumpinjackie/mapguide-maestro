@@ -56,13 +56,13 @@ namespace Maestro.Editors.Fusion
         {
             if (string.IsNullOrEmpty(txtName.Text))
             {
-                MessageBox.Show(string.Format(Properties.Resources.FieldRequired, label2.Text));
+                MessageBox.Show(string.Format(Strings.FieldRequired, label2.Text));
                 return;
             }
 
             if (_appDef.WidgetNameExists(txtName.Text))
             {
-                MessageBox.Show(string.Format(Properties.Resources.WidgetNameExists, txtName.Text));
+                MessageBox.Show(string.Format(Strings.WidgetNameExists, txtName.Text));
                 return;
             }
 

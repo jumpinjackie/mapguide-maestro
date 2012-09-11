@@ -59,7 +59,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                                 {
                                     //"Touching" the feature source is sufficient to invalidate any cached information about it
                                     conn.ResourceService.SetResourceXmlData(resId, st);
-                                    MessageService.ShowMessage(string.Format(Properties.Resources.SchemaInformationPurged, resId));
+                                    MessageService.ShowMessage(string.Format(Strings.SchemaInformationPurged, resId));
                                 }
                             }
                         }

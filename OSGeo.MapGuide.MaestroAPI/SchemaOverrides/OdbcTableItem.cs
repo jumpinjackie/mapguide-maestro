@@ -132,7 +132,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             if (!node.Name.Equals("complexType")) //NOXLATE
-                throw new Exception(string.Format(Properties.Resources.ErrorBadDocumentExpectedElement, "complexType"));
+                throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "complexType"));
 
             var sn = node.ParentNode.Attributes["name"]; //NOXLATE
             this.SchemaName = sn.Value;

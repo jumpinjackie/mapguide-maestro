@@ -32,10 +32,10 @@ namespace Maestro.Base.Templates
     {
         public PrintLayoutItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_DEFAULT;
+            Category = Strings.TPL_CATEGORY_DEFAULT;
             Icon = Res.printer;
-            Description = Res.TPL_PL_DESC;
-            Name = Res.TPL_PL_NAME;
+            Description = Strings.TPL_PL_DESC;
+            Name = Strings.TPL_PL_NAME;
             ResourceType = ResourceTypes.PrintLayout.ToString();
         }
 

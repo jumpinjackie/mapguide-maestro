@@ -32,10 +32,10 @@ namespace Maestro.Base.Templates
     {
         public DrawingSourceItemTemplate()
         {
-            Category = Res.TPL_CATEGORY_DEFAULT;
+            Category = Strings.TPL_CATEGORY_DEFAULT;
             Icon = Res.blueprints;
-            Description = Res.TPL_DS_DESC;
-            Name = Res.TPL_DS_NAME;
+            Description = Strings.TPL_DS_DESC;
+            Name = Strings.TPL_DS_NAME;
             ResourceType = ResourceTypes.DrawingSource.ToString();
         }
 

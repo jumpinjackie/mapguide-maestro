@@ -67,7 +67,7 @@ namespace Maestro.Base.Commands
             {
                 foreach (var item in itemsToPaste)
                 {
-                    LoggingService.InfoFormatted(Properties.Resources.ClipboardAction, item.ClipboardState, item.ResourceId, folder.ResourceId);
+                    LoggingService.InfoFormatted(Strings.ClipboardAction, item.ClipboardState, item.ResourceId, folder.ResourceId);
 
                     //Keep testing until we find a target resource identifier that 
                     //doesn't already exists. Note this would automatically guard against any resources in this folder
@@ -119,7 +119,7 @@ namespace Maestro.Base.Commands
                         //"Shall I break your resources because you're moving" isn't it?
                         var res = conn.ResourceService.MoveResourceWithReferences(item.ResourceId, resId, null, null);
                         if (!res)
-                            LoggingService.InfoFormatted(Properties.Resources.MoveFailure, item.ResourceId, resId);
+                            LoggingService.InfoFormatted(Strings.MoveFailure, item.ResourceId, resId);
                         else
                             folders[item.Parent.ResourceId] = item.Parent.ResourceId;
                     }
@@ -149,7 +149,7 @@ namespace Maestro.Base.Commands
                 exp.ExpandNode(itemsToPaste.First().ConnectionName, refreshFolder);
             }
             if (sourceItemsNotMoved.Count > 0)
-                MessageService.ShowMessage(string.Format(Properties.Resources.ItemsNotMovedDueToBeingOpen, Environment.NewLine + string.Join(Environment.NewLine, sourceItemsNotMoved.ToArray())));
+                MessageService.ShowMessage(string.Format(Strings.ItemsNotMovedDueToBeingOpen, Environment.NewLine + string.Join(Environment.NewLine, sourceItemsNotMoved.ToArray())));
 
             ResetItems(omgr, itemsToPaste, connMgr);
             exp.RefreshModel(conn.DisplayName, folder.ResourceId);

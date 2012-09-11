@@ -134,9 +134,9 @@ namespace Maestro.Base
                             if (p.Value.Length > 0)
                             {
                                 sw.WriteLine(new string('*', 80)); //NOXLATE
-                                sw.WriteLine(string.Format(Properties.Resources.ValidationProgressMessage, p.Key));
+                                sw.WriteLine(string.Format(Strings.ValidationProgressMessage, p.Key));
                                 foreach (ValidationIssue i in p.Value)
-                                    sw.WriteLine(string.Format(Properties.Resources.ValidationResultFormat, i.Status, i.StatusCode, i.Message));
+                                    sw.WriteLine(string.Format(Strings.ValidationResultFormat, i.Status, i.StatusCode, i.Message));
 
                                 sw.WriteLine();
                             }
@@ -147,7 +147,7 @@ namespace Maestro.Base
             catch (Exception ex)
             {
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                MessageBox.Show(this, string.Format(Properties.Resources.ValidationFailedError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, string.Format(Strings.ValidationFailedError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

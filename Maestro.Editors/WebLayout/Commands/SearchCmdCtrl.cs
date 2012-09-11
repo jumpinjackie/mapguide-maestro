@@ -182,7 +182,7 @@ namespace Maestro.Editors.WebLayout.Commands
             }
             else
             {
-                MessageBox.Show(Properties.Resources.SelectLayerFirst);
+                MessageBox.Show(Strings.SelectLayerFirst);
             }
         }
 
@@ -223,7 +223,7 @@ namespace Maestro.Editors.WebLayout.Commands
             {
                 layers.Add(new LayerItem() { Name = l.Name, ResourceId = l.ResourceId });
             }
-            var layer = GenericItemSelectionDialog.SelectItem(Properties.Resources.SelectLayer, Properties.Resources.SelectLayer, layers.ToArray(), "Name", "Name");
+            var layer = GenericItemSelectionDialog.SelectItem(Strings.SelectLayer, Strings.SelectLayer, layers.ToArray(), "Name", "Name");
             if (layer != null)
             {
                 txtLayer.Tag = layer.ResourceId;

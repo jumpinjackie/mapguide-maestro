@@ -100,17 +100,17 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 columns.Add("SchemeType", colnames.IndexOf("schemetype"));
 
                 if (columns["ColorName"] < 0)
-                    throw new Exception(string.Format(Properties.Resources.MissingColumnError, "ColorName"));
+                    throw new Exception(string.Format(Strings.MissingColumnError, "ColorName"));
                 if (columns["Type"] < 0)
-                    throw new Exception(string.Format(Properties.Resources.MissingColumnError, "Type"));
+                    throw new Exception(string.Format(Strings.MissingColumnError, "Type"));
                 if (columns["NumOfColors"] < 0)
-                    throw new Exception(string.Format(Properties.Resources.MissingColumnError, "NumOfColors"));
+                    throw new Exception(string.Format(Strings.MissingColumnError, "NumOfColors"));
                 if (columns["R"] < 0)
-                    throw new Exception(string.Format(Properties.Resources.MissingColumnError, "R"));
+                    throw new Exception(string.Format(Strings.MissingColumnError, "R"));
                 if (columns["G"] < 0)
-                    throw new Exception(string.Format(Properties.Resources.MissingColumnError, "G"));
+                    throw new Exception(string.Format(Strings.MissingColumnError, "G"));
                 if (columns["B"] < 0)
-                    throw new Exception(string.Format(Properties.Resources.MissingColumnError, "B"));
+                    throw new Exception(string.Format(Strings.MissingColumnError, "B"));
 
                 while (!sr.EndOfStream)
                 {
@@ -118,7 +118,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                     List<string> values = TokenizeLine(line, recordDelimiter, textDelimiter);
                     
                     if (values.Count != columns.Count)
-                        throw new Exception(string.Format(Properties.Resources.InvalidFieldCountError, line));
+                        throw new Exception(string.Format(Strings.InvalidFieldCountError, line));
 
                     string colorName = values[columns["ColorName"]];
                     string type = values[columns["Type"]];
@@ -138,15 +138,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                         {
                             values = TokenizeLine(line, recordDelimiter, textDelimiter);
                             if (values.Count != colnames.Count)
-                                throw new Exception(string.Format(Properties.Resources.InvalidRecordCountError, line));
+                                throw new Exception(string.Format(Strings.InvalidRecordCountError, line));
                             
                             byte r, g, b;
                             if (!byte.TryParse(values[columns["R"]], out r))
-                                throw new Exception(string.Format(Properties.Resources.InvalidColorComponent, "R", values[columns["R"]], line));
+                                throw new Exception(string.Format(Strings.InvalidColorComponent, "R", values[columns["R"]], line));
                             if (!byte.TryParse(values[columns["G"]], out g))
-                                throw new Exception(string.Format(Properties.Resources.InvalidColorComponent, "G", values[columns["G"]], line));
+                                throw new Exception(string.Format(Strings.InvalidColorComponent, "G", values[columns["G"]], line));
                             if (!byte.TryParse(values[columns["B"]], out b))
-                                throw new Exception(string.Format(Properties.Resources.InvalidColorComponent, "B", values[columns["B"]], line));
+                                throw new Exception(string.Format(Strings.InvalidColorComponent, "B", values[columns["B"]], line));
 
                             colors.Add(System.Drawing.Color.FromArgb(r, g, b));
                             colorCount--;
@@ -157,7 +157,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                     }
 
                     if (colorCount != 0)
-                        throw new Exception(string.Format(Properties.Resources.ColorCountError, colorCount, line));
+                        throw new Exception(string.Format(Strings.ColorCountError, colorCount, line));
 
                     result.Add(new ColorBrewer(colorName, type, colors));
                 }
@@ -225,11 +225,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 switch (m_type)
                 {
                     case "qual":
-                        return Properties.Resources.QualitativeName;
+                        return Strings.QualitativeName;
                     case "seq":
-                        return Properties.Resources.SequentialName;
+                        return Strings.SequentialName;
                     case "div":
-                        return Properties.Resources.DivergingName;
+                        return Strings.DivergingName;
                     default:
                         return m_type;
                 }

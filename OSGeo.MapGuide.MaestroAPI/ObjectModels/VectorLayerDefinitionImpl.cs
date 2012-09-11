@@ -315,7 +315,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                     foreach (var item in value)
                     {
                         if (!typeof(ICompositeTypeStyle).IsAssignableFrom(item.GetType()))
-                            throw new InvalidOperationException(OSGeo.MapGuide.ObjectModels.LayerDefinition.CommonErrorMessages.ObjectNotICompositeType);
+                            throw new InvalidOperationException(Strings.ErrorObjectNotICompositeTypeStyle);
 
                         this.itemsField.Add(item);
                     }
@@ -355,7 +355,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                     foreach (var item in value)
                     {
                         if (!typeof(ICompositeTypeStyle2).IsAssignableFrom(item.GetType()))
-                            throw new InvalidOperationException(OSGeo.MapGuide.ObjectModels.LayerDefinition.CommonErrorMessages.ObjectNotICompositeType);
+                            throw new InvalidOperationException(Strings.ErrorObjectNotICompositeTypeStyle);
 
                         this.itemsField.Add(item);
                     }
@@ -1574,11 +1574,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             set
             {
                 if (!ResourceIdentifier.Validate(value))
-                    throw new InvalidOperationException(CommonErrorMessages.InvalidResourceIdentifier);
+                    throw new InvalidOperationException(Strings.ErrorInvalidResourceIdentifier);
 
                 var res = new ResourceIdentifier(value);
                 if (res.Extension != ResourceTypes.LayerDefinition.ToString())
-                    throw new InvalidOperationException(string.Format(CommonErrorMessages.UnexpectedResourceType, res.ToString(), ResourceTypes.LayerDefinition));
+                    throw new InvalidOperationException(string.Format(Strings.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.LayerDefinition));
 
                 _resId = value;
                 this.OnPropertyChanged("ResourceID"); //NOXLATE

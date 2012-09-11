@@ -93,7 +93,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             var key = SelectKey(item);
             if (_valuesByKey.ContainsKey(key))
-                throw new DuplicateKeyException(string.Format(Properties.Resources.DuplicateKeyExceptionMessage, key));
+                throw new DuplicateKeyException(string.Format(Strings.DuplicateKeyExceptionMessage, key));
 
             OnBeforeItemAdded(item);
             _values.Insert(index, item);
@@ -196,7 +196,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             var key = SelectKey(item);
             if (_valuesByKey.ContainsKey(key))
-                throw new DuplicateKeyException(string.Format(Properties.Resources.DuplicateKeyExceptionMessage, key));
+                throw new DuplicateKeyException(string.Format(Strings.DuplicateKeyExceptionMessage, key));
 
             OnBeforeItemAdded(item);
             _values.Add(item);
@@ -563,7 +563,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         protected override void OnBeforeItemAdded(RuntimeMapLayer layer)
         {
             if (_layerIdMap.ContainsKey(layer.ObjectId))
-                throw new DuplicateKeyException(string.Format(Properties.Resources.DuplicateKeyExceptionMessage, layer.ObjectId));
+                throw new DuplicateKeyException(string.Format(Strings.DuplicateKeyExceptionMessage, layer.ObjectId));
         }
 
         /// <summary>

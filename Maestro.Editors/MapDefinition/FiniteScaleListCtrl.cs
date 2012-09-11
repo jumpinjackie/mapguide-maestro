@@ -111,13 +111,13 @@ namespace Maestro.Editors.MapDefinition
         {
             if (numScales.Value == 0)
             {
-                MessageBox.Show(this, Properties.Resources.NoScalesToGenerate, Properties.Resources.TitleError, MessageBoxButtons.OK);
+                MessageBox.Show(this, Strings.NoScalesToGenerate, Strings.TitleError, MessageBoxButtons.OK);
                 return;
             }
 
             if (lstDisplayScales.Items.Count > 0)
             {
-                if (MessageBox.Show(this, Properties.Resources.OverwriteDisplayScales, Properties.Resources.Confirm, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                if (MessageBox.Show(this, Strings.OverwriteDisplayScales, Strings.Confirm, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     return;
                 }
@@ -199,7 +199,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnCmsScaleList_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(Properties.Resources.ConfirmGoogleScaleList, Properties.Resources.Confirm, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show(Strings.ConfirmGoogleScaleList, Strings.Confirm, MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 _scales.Clear();
                 foreach (var scale in CMS_SCALE_LIST)

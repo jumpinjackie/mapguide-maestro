@@ -277,7 +277,7 @@ namespace Maestro.Editors.MapDefinition
             {
                 if (_map.BaseMap != null)
                 {
-                    yield return new ScaleItem(Properties.Resources.FiniteDisplayScales, new List<double>(_map.BaseMap.FiniteDisplayScale));
+                    yield return new ScaleItem(Strings.FiniteDisplayScales, new List<double>(_map.BaseMap.FiniteDisplayScale));
                     foreach (var grp in _map.BaseMap.BaseMapLayerGroup)
                     {
                         yield return new BaseLayerGroupItem(grp);
@@ -285,7 +285,7 @@ namespace Maestro.Editors.MapDefinition
                 }
                 else
                 {
-                    yield return new ScaleItem(Properties.Resources.FiniteDisplayScales, new List<double>());
+                    yield return new ScaleItem(Strings.FiniteDisplayScales, new List<double>());
                 }
             }
             else

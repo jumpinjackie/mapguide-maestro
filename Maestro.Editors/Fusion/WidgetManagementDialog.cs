@@ -118,7 +118,7 @@ namespace Maestro.Editors.Fusion
             if (grdWidgets.SelectedRows.Count == 1)
             {
                 var item = (WidgetItem)grdWidgets.SelectedRows[0].DataBoundItem;
-                if (MessageBox.Show(Properties.Resources.PromptDeleteWidgetAndReferences, Properties.Resources.Confirm, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show(Strings.PromptDeleteWidgetAndReferences, Strings.Confirm, MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     _appDef.RemoveWidget(item.Widget.Name, true);
                     _items.Remove(item);

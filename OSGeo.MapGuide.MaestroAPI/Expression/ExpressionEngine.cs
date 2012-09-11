@@ -71,7 +71,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Expression
         internal void UpdateVariables()
         {
             if (_reader.Current == null)
-                throw new InvalidOperationException(Properties.Resources.ErrorCurrentRecordIsEmpty);
+                throw new InvalidOperationException(Strings.ErrorCurrentRecordIsEmpty);
 
             _context.Variables.Clear();
             for (int i = 0; i < _reader.FieldCount; i++)
@@ -109,7 +109,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Expression
                                      .Replace("'", "\""); //NOXLATE
 
             if (_reader.Current == null)
-                throw new InvalidOperationException(Properties.Resources.ErrorExprCurrentRowIsEmpty);
+                throw new InvalidOperationException(Strings.ErrorExprCurrentRowIsEmpty);
 
             try
             {
@@ -143,7 +143,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Expression
                                      .Replace("'", "\""); //NOXLATE
 
             if (_reader.Current == null)
-                throw new InvalidOperationException(Properties.Resources.ErrorExprCurrentRowIsEmpty);
+                throw new InvalidOperationException(Strings.ErrorExprCurrentRowIsEmpty);
 
             var expr = _context.CompileGeneric<T>(exprText);
             return expr.Evaluate();

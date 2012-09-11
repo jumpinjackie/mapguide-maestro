@@ -209,7 +209,7 @@ namespace Maestro.Editors.MapDefinition
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(string.Format(Properties.Resources.CoordinateTransformationFailed, ex.Message));
+                        MessageBox.Show(string.Format(Strings.CoordinateTransformationFailed, ex.Message));
                     }
                 }
             }
@@ -227,7 +227,7 @@ namespace Maestro.Editors.MapDefinition
                 }
                 else
                 {
-                    MessageBox.Show(Properties.Resources.ErrorMapExtentCalculationFailed, Properties.Resources.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Strings.ErrorMapExtentCalculationFailed, Strings.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 

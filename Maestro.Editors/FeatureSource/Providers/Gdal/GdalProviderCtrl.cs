@@ -99,7 +99,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
             //Flush back to session before testing
             _service.SyncSessionCopy();
             string result = _fs.TestConnection();
-            txtStatus.Text = string.Format(Properties.Resources.FdoConnectionStatus, result);
+            txtStatus.Text = string.Format(Strings.FdoConnectionStatus, result);
         }
     }
 }

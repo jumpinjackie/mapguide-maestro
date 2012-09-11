@@ -72,11 +72,11 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             {
                 var inner = new System.Data.Odbc.OdbcConnectionStringBuilder();
                 if (value["ConnectionString"] == null) //NOXLATE
-                    throw new InvalidOperationException(string.Format(Properties.Resources.FdoConnectionStringComponentNotFound, "ConnectionString")); //NOXLATE
+                    throw new InvalidOperationException(string.Format(Strings.FdoConnectionStringComponentNotFound, "ConnectionString")); //NOXLATE
 
                 inner.ConnectionString = value["ConnectionString"]; //NOXLATE
                 if (inner["Dbq"] == null) //NOXLATE
-                    throw new InvalidOperationException(string.Format(Properties.Resources.OdbcConnectionStringComponentNotFound, "Dbq")); //NOXLATE
+                    throw new InvalidOperationException(string.Format(Strings.OdbcConnectionStringComponentNotFound, "Dbq")); //NOXLATE
 
                 string path = inner["Dbq"].ToString(); //NOXLATE
                 if (path.Contains(StringConstants.MgDataFilePath))
@@ -118,15 +118,15 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             switch (ext)
             {
                 case ".ACCDB": //NOXLATE
-                    return Properties.Resources.OdbcDriverAccess64;
+                    return Strings.OdbcDriverAccess64;
                 case ".MDB": //NOXLATE
-                    return use64Bit ? Properties.Resources.OdbcDriverAccess64 : Properties.Resources.OdbcDriverAccess;
+                    return use64Bit ? Strings.OdbcDriverAccess64 : Strings.OdbcDriverAccess;
                 case ".XLS": //NOXLATE
-                    return use64Bit ? Properties.Resources.OdbcDriverExcel64 : Properties.Resources.OdbcDriverExcel;
+                    return use64Bit ? Strings.OdbcDriverExcel64 : Strings.OdbcDriverExcel;
                 case ".XLSX": //NOXLATE
                 case ".XLSM": //NOXLATE
                 case ".XLSB": //NOXLATE
-                    return Properties.Resources.OdbcDriverExcel64;
+                    return Strings.OdbcDriverExcel64;
             }
             return null;
         }

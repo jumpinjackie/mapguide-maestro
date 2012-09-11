@@ -234,7 +234,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
             string [] toRemove = args[3] as string[];
             bool isAlias = (bool)args[4];
 
-            worker.ReportProgress(0, Properties.Resources.UpdatingConfiguration);
+            worker.ReportProgress(0, Strings.UpdatingConfiguration);
 
             int total = toAdd.Length + toRemove.Length;
             int unit = (total / 100);
@@ -265,7 +265,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
                         conf.RemoveLocation(loc);
                 }
                 progress += unit;
-                worker.ReportProgress(progress, string.Format(Properties.Resources.ProcessedItem, remove));
+                worker.ReportProgress(progress, string.Format(Strings.ProcessedItem, remove));
             }
 
             //Then add
@@ -332,7 +332,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
                 result.Added.Add(Path.Combine(dir, raster.FileName));
 
                 progress += unit;
-                worker.ReportProgress(progress, string.Format(Properties.Resources.ProcessedItem, add));
+                worker.ReportProgress(progress, string.Format(Strings.ProcessedItem, add));
             }
 
             //Re-calculate combined extent for spatial context

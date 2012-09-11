@@ -102,7 +102,7 @@ namespace Maestro.Base.Editor
 
             if (affectedMapDefinitions.Count > 0)
             {
-                if (!MessageService.AskQuestionFormatted(Properties.Resources.Confirm, Properties.Resources.ConfirmBaseMapInvalidationFeatureSourceSave, string.Join(Environment.NewLine, affectedMapDefinitions.ToArray()) + Environment.NewLine))
+                if (!MessageService.AskQuestionFormatted(Strings.Confirm, Strings.ConfirmBaseMapInvalidationFeatureSourceSave, string.Join(Environment.NewLine, affectedMapDefinitions.ToArray()) + Environment.NewLine))
                 {
                     e.Cancel = true;
                     return;

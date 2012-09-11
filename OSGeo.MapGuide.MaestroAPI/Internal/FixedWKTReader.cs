@@ -201,21 +201,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             Token token = tokens[index++] as Token;
 
             if (token == null)
-                throw new ArgumentNullException("tokens", Properties.Resources.ErrorTokenListContainsNullValue); //NOXLATE
+                throw new ArgumentNullException("tokens", Strings.ErrorTokenListContainsNullValue); //NOXLATE
             else if (token is EofToken)
-                throw new ParseException(Properties.Resources.ErrorParseExpectedNumberEos);
+                throw new ParseException(Strings.ErrorParseExpectedNumberEos);
             else if (token is EolToken)
-                throw new ParseException(Properties.Resources.ErrorParseExpectedNumberEol);
+                throw new ParseException(Strings.ErrorParseExpectedNumberEol);
             else if (token is FloatToken || token is IntToken)
                 return (double)token.ConvertToType(typeof(double));
             else if (token is WordToken)
-                throw new ParseException(string.Format(Properties.Resources.ErrorParseExpectedNumberGotWord, token.StringValue));
+                throw new ParseException(string.Format(Strings.ErrorParseExpectedNumberGotWord, token.StringValue));
             else if (token.StringValue == "(") //NOXLATE
-                throw new ParseException(string.Format(Properties.Resources.ErrorParseExpectedNumber, '(')); //NOXLATE
+                throw new ParseException(string.Format(Strings.ErrorParseExpectedNumber, '(')); //NOXLATE
             else if (token.StringValue == ")") //NOXLATE
-                throw new ParseException(string.Format(Properties.Resources.ErrorParseExpectedNumber, ')')); //NOXLATE
+                throw new ParseException(string.Format(Strings.ErrorParseExpectedNumber, ')')); //NOXLATE
             else if (token.StringValue == ",") //NOXLATE
-                throw new ParseException(string.Format(Properties.Resources.ErrorParseExpectedNumber, ',')); //NOXLATE
+                throw new ParseException(string.Format(Strings.ErrorParseExpectedNumber, ',')); //NOXLATE
             else
             {
                 Assert.ShouldNeverReachHere();
@@ -256,7 +256,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             }
             if (nextWord.Equals("EMPTY") || nextWord.Equals("(")) //NOXLATE
                 return nextWord;
-            throw new ParseException(string.Format(Properties.Resources.ErrorParseExpectedEmpty, nextWord));
+            throw new ParseException(string.Format(Strings.ErrorParseExpectedEmpty, nextWord));
         }
 
         /// <summary>
@@ -274,7 +274,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             if (nextWord.Equals(",") || nextWord.Equals(")")) //NOXLATE
                 return nextWord;
 
-            throw new ParseException(string.Format(Properties.Resources.ErrorParseExpectedCloserOrComma, nextWord));
+            throw new ParseException(string.Format(Strings.ErrorParseExpectedCloserOrComma, nextWord));
         }
 
         /// <summary>
@@ -291,7 +291,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             string nextWord = GetNextWord(tokens);
             if (nextWord.Equals(")")) //NOXLATE
                 return nextWord;
-            throw new ParseException(string.Format(Properties.Resources.ErrorParseExpectedCloser, nextWord));
+            throw new ParseException(string.Format(Strings.ErrorParseExpectedCloser, nextWord));
         }
 
         /// <summary>
@@ -307,11 +307,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             Token token = tokens[index++] as Token;
 
             if (token is EofToken)
-                throw new ParseException(Properties.Resources.ErrorParseExpectedNumberEos);
+                throw new ParseException(Strings.ErrorParseExpectedNumberEos);
             else if (token is EolToken)
-                throw new ParseException(Properties.Resources.ErrorParseExpectedNumberEol);
+                throw new ParseException(Strings.ErrorParseExpectedNumberEol);
             else if (token is FloatToken || token is IntToken)
-                throw new ParseException(string.Format(Properties.Resources.ErrorParseExpectedWord, token.StringValue));
+                throw new ParseException(string.Format(Strings.ErrorParseExpectedWord, token.StringValue));
             else if (token is WordToken)
                 return token.StringValue.ToUpper();
             else if (token.StringValue == "(") //NOXLATE
@@ -372,10 +372,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
                 returned = ReadMultiPolygonText(tokens);
             else if (type.Equals("GEOMETRYCOLLECTION")) //NOXLATE
                 returned = ReadGeometryCollectionText(tokens);
-            else throw new ParseException(string.Format(Properties.Resources.ErrorParseUnknownType, type));
+            else throw new ParseException(string.Format(Strings.ErrorParseUnknownType, type));
 
             if (returned == null)
-                throw new NullReferenceException(Properties.Resources.ErrorParseGeometryRead);
+                throw new NullReferenceException(Strings.ErrorParseGeometryRead);
 
             if (sridValue != null)
                 returned.SRID = Convert.ToInt32(sridValue);

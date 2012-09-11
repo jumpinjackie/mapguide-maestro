@@ -115,7 +115,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             {
                 if (p.ParameterIdentifier == param.Name)
                 {
-                    MessageBox.Show(Properties.Resources.ParameterOverrideExists);
+                    MessageBox.Show(Strings.ParameterOverrideExists);
                     return;
                 }
             }

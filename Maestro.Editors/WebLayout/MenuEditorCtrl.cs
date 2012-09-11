@@ -265,9 +265,9 @@ namespace Maestro.Editors.WebLayout
         private void addFlyout_Click(object sender, EventArgs e)
         {
             var fly = _wl.CreateFlyout(
-                Properties.Resources.NewFlyout,
-                Properties.Resources.NewFlyout,
-                Properties.Resources.NewFlyout,
+                Strings.NewFlyout,
+                Strings.NewFlyout,
+                Strings.NewFlyout,
                 null, null);
             if (trvMenuItems.SelectedNode != null)
             {
@@ -425,7 +425,7 @@ namespace Maestro.Editors.WebLayout
                 var menu = dropItem as IMenu;
                 if (menu != null)
                 {
-                    if (MessageBox.Show(Properties.Resources.QuestionAddItemToFlyout, "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show(Strings.QuestionAddItemToFlyout, string.Empty, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         menu.AddItem(item);
                     }

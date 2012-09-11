@@ -64,11 +64,11 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0
             set
             {
                 if (!ResourceIdentifier.Validate(value))
-                    throw new InvalidOperationException(OSGeo.MapGuide.ObjectModels.LayerDefinition.CommonErrorMessages.InvalidResourceIdentifier);
+                    throw new InvalidOperationException(Strings.ErrorInvalidResourceIdentifier);
 
                 var res = new ResourceIdentifier(value);
                 if (res.Extension != ResourceTypes.LoadProcedure.ToString())
-                    throw new InvalidOperationException(string.Format(OSGeo.MapGuide.ObjectModels.LayerDefinition.CommonErrorMessages.UnexpectedResourceType, res.ToString(), ResourceTypes.LoadProcedure));
+                    throw new InvalidOperationException(string.Format(Strings.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.LoadProcedure));
 
                 _resId = value;
                 this.OnPropertyChanged("ResourceID"); //NOXLATE

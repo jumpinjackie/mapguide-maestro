@@ -150,11 +150,11 @@ namespace Maestro.Base.Editor
                         return errors;
                     };
                     
-                    BusyWaitDialog.Run(Properties.Resources.PrgPreSaveValidation, del, (result) => {
+                    BusyWaitDialog.Run(Strings.PrgPreSaveValidation, del, (result) => {
                         ValidationIssue[] errors = result as ValidationIssue[];
                         if (errors.Length > 0)
                         {
-                            MessageService.ShowError(Properties.Resources.FixErrorsBeforeSaving);
+                            MessageService.ShowError(Strings.FixErrorsBeforeSaving);
                             ValidationResultsDialog diag = new ValidationResultsDialog(this.Resource.ResourceID, errors);
                             diag.ShowDialog(Workbench.Instance);
                             e.Cancel = true;
@@ -209,13 +209,13 @@ namespace Maestro.Base.Editor
 
         private string GetTooltip(string item)
         {
-            return string.Format(Properties.Resources.EditorTitleTemplate, item, Environment.NewLine, this.Resource.CurrentConnection.DisplayName, this.Resource.ResourceVersion);
+            return string.Format(Strings.EditorTitleTemplate, item, Environment.NewLine, this.Resource.CurrentConnection.DisplayName, this.Resource.ResourceVersion);
         }
 
         private void UpdateTitle()
         {
-            this.Title = this.IsNew ? Properties.Resources.NewResource : ResourceIdentifier.GetName(_svc.ResourceID);
-            this.Description = GetTooltip(this.IsNew ? Properties.Resources.NewResource : _svc.ResourceID);
+            this.Title = this.IsNew ? Strings.NewResource : ResourceIdentifier.GetName(_svc.ResourceID);
+            this.Description = GetTooltip(this.IsNew ? Strings.NewResource : _svc.ResourceID);
         }
 
         const string DIRTY_PREFIX = "* "; //NOXLATE
@@ -352,7 +352,7 @@ namespace Maestro.Base.Editor
                 
                 //This will re-init everything
                 this.EditorService = this.EditorService;
-                MessageBox.Show(string.Format(Properties.Resources.ResourceUpgraded, ver.Major, ver.Minor, ver.Build));
+                MessageBox.Show(string.Format(Strings.ResourceUpgraded, ver.Major, ver.Minor, ver.Build));
                 this.EditorService.MarkDirty(); //It gets re-init with a clean slate, but an in-place upgrade is a dirty operation
             }
         }
@@ -361,7 +361,7 @@ namespace Maestro.Base.Editor
         {
             if (this.EditorService.IsNew)
             {
-                MessageService.ShowMessage(Properties.Resources.TextReloadNewResource);
+                MessageService.ShowMessage(Strings.TextReloadNewResource);
                 this.Close(true);
             }
             else

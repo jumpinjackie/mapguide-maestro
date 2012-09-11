@@ -84,10 +84,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
             if (ndim == 0)
                 ndim = 2;
             else if (ndim > 4)
-                throw new Exception(string.Format(Properties.Resources.ErrorBinarySerializerInvalidCoordinateDimensionCount, dimensions));
+                throw new Exception(string.Format(Strings.ErrorBinarySerializerInvalidCoordinateDimensionCount, dimensions));
 
             if ((coordinates.Length % ndim) != 0)
-                throw new Exception(Properties.Resources.ErrorBinarySerializerInvalidAmountOfCoordinates);
+                throw new Exception(Strings.ErrorBinarySerializerInvalidAmountOfCoordinates);
 
             if (m_siteVersion <= SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP1_1))
                 WriteClassId(18000);

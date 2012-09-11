@@ -46,7 +46,7 @@ namespace Maestro.Editors.Fusion
         public static void RegisterEditor(string name, Type type)
         {
             if (!typeof(IWidgetEditor).IsAssignableFrom(type))
-                throw new InvalidOperationException(Properties.Resources.NoWidgetEditorIface);
+                throw new InvalidOperationException(Strings.NoWidgetEditorIface);
 
             _editorTypes[name] = type;
         }

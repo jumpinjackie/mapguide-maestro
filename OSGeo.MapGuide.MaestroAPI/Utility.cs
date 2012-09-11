@@ -104,7 +104,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return Color.FromArgb(r, g, b);
             }
             else
-                throw new Exception(string.Format(Properties.Resources.ErrorBadHtmlColor, color));
+                throw new Exception(string.Format(Strings.ErrorBadHtmlColor, color));
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return Color.FromArgb(r, g, b);
             }
             else
-                throw new Exception(string.Format(Properties.Resources.ErrorBadHtmlColor, color));
+                throw new Exception(string.Format(Strings.ErrorBadHtmlColor, color));
         }
 
         /// <summary>

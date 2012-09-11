@@ -108,7 +108,7 @@ namespace Maestro.Editors.LayerDefinition
             }
             else
             {
-                MessageBox.Show(string.Format(Properties.Resources.PromptRepairBrokenFeatureSource, _vl.ResourceId));
+                MessageBox.Show(string.Format(Strings.PromptRepairBrokenFeatureSource, _vl.ResourceId));
                 using (var picker = new ResourcePicker(_edsvc.ResourceService, ResourceTypes.FeatureSource, ResourcePickerMode.OpenResource))
                 {
                     if (picker.ShowDialog() == DialogResult.OK)

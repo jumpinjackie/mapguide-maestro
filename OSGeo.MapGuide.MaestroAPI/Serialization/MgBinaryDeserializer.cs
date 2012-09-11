@@ -87,7 +87,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         {
             MgArgumentPacket p = ReadArgumentPacket();
             if (p.ArgumentType != MgArgumentType.String)
-                throw new InvalidCastException(string.Format(Properties.Resources.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "string")); //NOXLATE
+                throw new InvalidCastException(string.Format(Strings.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "string")); //NOXLATE
 
             if (m_siteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
             {
@@ -121,7 +121,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
                     ec = System.Text.Encoding.GetEncoding("UTF-16"); //NOXLATE
                     break;
                 default:
-                    throw new Exception(Properties.Resources.ErrorBinarySerializerGetCharWidth);
+                    throw new Exception(Strings.ErrorBinarySerializerGetCharWidth);
             }
 
             byte[] t = ReadStreamRepeat(MgBinarySerializer.UInt32Len);
@@ -142,9 +142,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
                 return null;
 
             if (m_siteVersion <= SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP1_1) && classId != 12003)
-                throw new Exception(Properties.Resources.ErrorInvalidResourceIdentifier);
+                throw new Exception(Strings.ErrorInvalidResourceIdentifier);
             if (m_siteVersion > SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP1_1) && classId != 11500)
-                throw new Exception(Properties.Resources.ErrorInvalidResourceIdentifier);
+                throw new Exception(Strings.ErrorInvalidResourceIdentifier);
 
             if (m_siteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
                 return ReadInternalString();
@@ -160,7 +160,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         {
             MgArgumentPacket p = ReadArgumentPacket();
             if (p.ArgumentType != MgArgumentType.INT64)
-                throw new InvalidCastException(string.Format(Properties.Resources.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "Int64")); //NOXLATE
+                throw new InvalidCastException(string.Format(Strings.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "Int64")); //NOXLATE
 
             return BitConverter.ToInt64(ReadStream(MgBinarySerializer.UInt64Len), 0);
         }
@@ -173,7 +173,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         {
             MgArgumentPacket p = ReadArgumentPacket();
             if (p.ArgumentType != MgArgumentType.INT32)
-                throw new InvalidCastException(string.Format(Properties.Resources.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "Int32")); //NOXLATE
+                throw new InvalidCastException(string.Format(Strings.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "Int32")); //NOXLATE
 
             return BitConverter.ToInt32(ReadStream(MgBinarySerializer.UInt32Len), 0);
         }
@@ -186,7 +186,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         {
             MgArgumentPacket p = ReadArgumentPacket();
             if (p.ArgumentType != MgArgumentType.INT16)
-                throw new InvalidCastException(string.Format(Properties.Resources.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "Int16")); //NOXLATE
+                throw new InvalidCastException(string.Format(Strings.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "Int16")); //NOXLATE
 
             return BitConverter.ToInt16(ReadStream(MgBinarySerializer.UInt16Len), 0);
         }
@@ -208,7 +208,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         {
             MgArgumentPacket p = ReadArgumentPacket();
             if (p.ArgumentType != MgArgumentType.INT8)
-                throw new InvalidCastException(string.Format(Properties.Resources.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "Int8")); //NOXLATE
+                throw new InvalidCastException(string.Format(Strings.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "Int8")); //NOXLATE
 
             return (byte)m_stream.ReadByte();
         }
@@ -221,7 +221,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         {
             MgArgumentPacket p = ReadArgumentPacket();
             if (p.ArgumentType != MgArgumentType.Float)
-                throw new InvalidCastException(string.Format(Properties.Resources.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "Float")); //NOXLATE
+                throw new InvalidCastException(string.Format(Strings.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "Float")); //NOXLATE
 
             return BitConverter.ToSingle(ReadStream(MgBinarySerializer.FloatLen), 0);
         }
@@ -234,7 +234,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         {
             MgArgumentPacket p = ReadArgumentPacket();
             if (p.ArgumentType != MgArgumentType.Double)
-                throw new InvalidCastException(string.Format(Properties.Resources.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "Double")); //NOXLATE
+                throw new InvalidCastException(string.Format(Strings.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "Double")); //NOXLATE
 
             return BitConverter.ToDouble(ReadStream(MgBinarySerializer.DoubleLen), 0);
         }
@@ -247,16 +247,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         {
             int classid = ReadClassId();
             if (m_siteVersion <= SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP1_1) && classid != 18000)
-                throw new Exception(string.Format(Properties.Resources.ErrorBinarySerializerCoordinateUnexpectedType, classid));
+                throw new Exception(string.Format(Strings.ErrorBinarySerializerCoordinateUnexpectedType, classid));
             if (m_siteVersion > SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP1_1) && classid != 20000)
-                throw new Exception(string.Format(Properties.Resources.ErrorBinarySerializerCoordinateUnexpectedType, classid));
+                throw new Exception(string.Format(Strings.ErrorBinarySerializerCoordinateUnexpectedType, classid));
 
             int count = ReadInt32();
             int dimensions = ReadInt32();
             if (dimensions == 0)
                 dimensions = 2;
             else if (dimensions > 4)
-                throw new Exception(string.Format(Properties.Resources.ErrorBinarySerializerInvalidCoordinateDimensionCount, dimensions));
+                throw new Exception(string.Format(Strings.ErrorBinarySerializerInvalidCoordinateDimensionCount, dimensions));
 
             double[] args = new double[dimensions * count];
             for(int i = 0;i < (dimensions * count); i++)
@@ -273,7 +273,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         {
             MgBinaryStreamArgumentPacket p = ReadBinaryStreamArgumentPacket();
             if (p.ArgumentType != MgArgumentType.Stream)
-                throw new InvalidCastException(string.Format(Properties.Resources.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "Stream")); //NOXLATE
+                throw new InvalidCastException(string.Format(Strings.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "Stream")); //NOXLATE
 
             if (ReadBool())
                 return null;
@@ -300,7 +300,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
                 }
 
                 if (blocksize != 0)
-                    throw new Exception(Properties.Resources.ErrorBinarySerializerPrematureEndOfStream);
+                    throw new Exception(Strings.ErrorBinarySerializerPrematureEndOfStream);
 
             } while (remain > 0);
 
@@ -316,7 +316,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         {
             MgArgumentPacket p = ReadArgumentPacket();
             if (p.ArgumentType != MgArgumentType.ClassId)
-                throw new InvalidCastException(string.Format(Properties.Resources.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "ClassId")); //NOXLATE
+                throw new InvalidCastException(string.Format(Strings.ErrorBinarySerializerUnexpectedType, p.ArgumentType.ToString(), "ClassId")); //NOXLATE
 
             return BitConverter.ToInt32(ReadStream(MgBinarySerializer.UInt32Len), 0);
         }
@@ -328,7 +328,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         {
             int v = BitConverter.ToInt32(ReadStream(MgBinarySerializer.UInt32Len), 0);
             if (v != (int)MgStreamHeaderValues.StreamEnd)
-                throw new Exception(string.Format(Properties.Resources.ErrorBinarySerializerExpectedEndOfStream, v.ToString()));
+                throw new Exception(string.Format(Strings.ErrorBinarySerializerExpectedEndOfStream, v.ToString()));
         }
 
         /// <summary>
@@ -347,7 +347,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
                 case 0:
                     break;
                 default:
-                    throw new Exception(string.Format(Properties.Resources.ErrorBinarySerializerUnknownObjectType, classId));
+                    throw new Exception(string.Format(Strings.ErrorBinarySerializerUnknownObjectType, classId));
             }
             obj.Deserialize(this);
 
@@ -378,7 +378,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
             int _offset = 0;
             
             if (buf.Length < len + offset)
-                throw new OverflowException(Properties.Resources.ErrorBinarySerializerBufferTooSmall);
+                throw new OverflowException(Strings.ErrorBinarySerializerBufferTooSmall);
 
             do
             {
@@ -387,7 +387,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
             } while (r > 0);
 
             if (_offset != len)
-                throw new Exception(string.Format(Properties.Resources.ErrorBinarySerializerStreamExhausted, len));
+                throw new Exception(string.Format(Strings.ErrorBinarySerializerStreamExhausted, len));
         }
 
         /// <summary>

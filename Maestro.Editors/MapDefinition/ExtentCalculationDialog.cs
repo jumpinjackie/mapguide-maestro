@@ -191,7 +191,7 @@ namespace Maestro.Editors.MapDefinition
                 else
                 {
                     res.TransformedResult = e1;
-                    res.Messages = Properties.Resources.NoTransformationRequired;
+                    res.Messages = Strings.NoTransformationRequired;
                 }
 
                 if (e1 != null)
@@ -203,7 +203,7 @@ namespace Maestro.Editors.MapDefinition
                 else
                 {
                     res.Status = TransformStatus.Fail;
-                    res.Messages = string.Format(Properties.Resources.ExtentsTransformationFailed, layer.ResourceID);
+                    res.Messages = string.Format(Strings.ExtentsTransformationFailed, layer.ResourceID);
                 }
 
                 processed++;
@@ -251,7 +251,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void bgCalculation_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            lblMessage.Text = Properties.Resources.ExtentsCalculationCompleted;
+            lblMessage.Text = Strings.ExtentsCalculationCompleted;
             btnAccept.Enabled = btnClose.Enabled = true;
         }
     }

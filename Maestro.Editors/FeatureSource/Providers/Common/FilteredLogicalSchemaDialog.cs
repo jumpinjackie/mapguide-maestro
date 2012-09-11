@@ -61,7 +61,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Common
         {
             if (chkListClassNames.CheckedItems.Count == 0)
             {
-                MessageBox.Show(Properties.Resources.TextNoItemSelected);
+                MessageBox.Show(Strings.TextNoItemSelected);
                 return;
             }
 

@@ -46,7 +46,7 @@ namespace Maestro.Editors.PrintLayout
             //TOOD: Maybe be more graceful? Like allow text entry, but disable browsing buttons?
             if (Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Drawing) < 0)
             {
-                throw new InvalidOperationException(Properties.Resources.RequiredServiceNotSupported + ServiceType.Drawing.ToString());
+                throw new InvalidOperationException(Strings.RequiredServiceNotSupported + ServiceType.Drawing.ToString());
             }
             _conn = conn;
         }
@@ -132,7 +132,7 @@ namespace Maestro.Editors.PrintLayout
         {
             if (string.IsNullOrEmpty(this.SymbolLibraryID))
             {
-                MessageBox.Show(Properties.Resources.SelectSymbolLibraryFirst);
+                MessageBox.Show(Strings.SelectSymbolLibraryFirst);
                 return;
             }
 

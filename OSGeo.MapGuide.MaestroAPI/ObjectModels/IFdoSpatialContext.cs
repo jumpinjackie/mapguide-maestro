@@ -230,7 +230,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             if (!node.Name.Equals("gml:DerivedCRS")) //NOXLATE
-                throw new Exception(string.Format(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorBadDocumentExpectedElement, "gml:DerivedCRS"));
+                throw new Exception(string.Format(OSGeo.MapGuide.MaestroAPI.Strings.ErrorBadDocumentExpectedElement, "gml:DerivedCRS"));
 
             //Start off as dynamic, until we find a bounding box. Then we set it to static
             this.ExtentType = FdoSpatialContextListSpatialContextExtentType.Dynamic;
@@ -279,7 +279,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
                 var urt = ur.InnerText.Split(' '); //NOXLATE
 
                 if (llt.Length != 2 || urt.Length != 2)
-                    throw new Exception(OSGeo.MapGuide.MaestroAPI.Properties.Resources.ErrorBadDocumentInvalidBbox);
+                    throw new Exception(OSGeo.MapGuide.MaestroAPI.Strings.ErrorBadDocumentInvalidBbox);
 
                 this.Extent = new FdoSpatialContextListSpatialContextExtent()
                 {

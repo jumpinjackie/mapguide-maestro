@@ -93,7 +93,7 @@ namespace Maestro.Editors.Diagnostics
             }
             else
             {
-                throw new InvalidOperationException(Properties.Resources.NoSiteService);
+                throw new InvalidOperationException(Strings.NoSiteService);
             }
         }
 
@@ -115,12 +115,12 @@ namespace Maestro.Editors.Diagnostics
 
         private static string ParseMs(string value)
         {
-            return value + " " + Properties.Resources.UnitsMs; //NOXLATE
+            return value + " " + Strings.UnitsMs; //NOXLATE
         }
 
         private static string ParseSeconds(string value)
         {
-            return value + " " + Properties.Resources.UnitsSeconds; //NOXLATE
+            return value + " " + Strings.UnitsSeconds; //NOXLATE
         }
 
         private static string ParseKb(string valueBytes)
@@ -131,7 +131,7 @@ namespace Maestro.Editors.Diagnostics
                                 System.Threading.Thread.CurrentThread.CurrentUICulture, 
                                 out d))
             {
-                return (d / 1000.0).ToString(System.Threading.Thread.CurrentThread.CurrentUICulture) + " " + Properties.Resources.UnitsKb; //NOXLATE
+                return (d / 1000.0).ToString(System.Threading.Thread.CurrentThread.CurrentUICulture) + " " + Strings.UnitsKb; //NOXLATE
             }
             return valueBytes;
         }
@@ -160,7 +160,7 @@ namespace Maestro.Editors.Diagnostics
             lblVirtMemAvail.Text = ParseKb(info.SiteServer.OperatingSystem.AvailableVirtualMemory);
             lblVirtMemTotal.Text = ParseKb(info.SiteServer.OperatingSystem.TotalVirtualMemory);
 
-            lblLastUpdated.Text = Properties.Resources.LastUpdated + DateTime.Now.ToString(System.Threading.Thread.CurrentThread.CurrentUICulture);
+            lblLastUpdated.Text = Strings.LastUpdated + DateTime.Now.ToString(System.Threading.Thread.CurrentThread.CurrentUICulture);
         }
     }
 }

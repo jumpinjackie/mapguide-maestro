@@ -74,15 +74,15 @@ namespace Maestro.Editors.LoadProcedure
 
         private string GetFilter()
         {
-            string filter = Properties.Resources.FilterAll;
+            string filter = Strings.FilterAll;
             if (_lpt.Type == LoadType.Sdf)
-                filter = Properties.Resources.FilterSdf;
+                filter = Strings.FilterSdf;
             else if (_lpt.Type == LoadType.Shp)
-                filter = Properties.Resources.FilterShp;
+                filter = Strings.FilterShp;
             else if (_lpt.Type == LoadType.Dwf)
-                filter = Properties.Resources.FilterDwf;
+                filter = Strings.FilterDwf;
             else if (_lpt.Type == LoadType.Sqlite)
-                filter = Properties.Resources.FilterSqlite;
+                filter = Strings.FilterSqlite;
 
             return filter;
         }

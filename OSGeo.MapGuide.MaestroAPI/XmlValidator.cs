@@ -83,11 +83,11 @@ namespace OSGeo.MapGuide.MaestroAPI
                 var ex = e.Exception;
                 if (e.Severity == XmlSeverityType.Warning)
                 {
-                    this.warnings.Add(string.Format(Properties.Resources.XmlValidationIssueTemplate, ex.LineNumber, ex.LinePosition, ex.Message));
+                    this.warnings.Add(string.Format(Strings.XmlValidationIssueTemplate, ex.LineNumber, ex.LinePosition, ex.Message));
                 }
                 else
                 {
-                    this.errors.Add(string.Format(Properties.Resources.XmlValidationIssueTemplate, ex.LineNumber, ex.LinePosition, ex.Message));
+                    this.errors.Add(string.Format(Strings.XmlValidationIssueTemplate, ex.LineNumber, ex.LinePosition, ex.Message));
                 }
             };
 

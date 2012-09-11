@@ -57,7 +57,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                             //Still open. Must've said no
                             if (omgr.IsOpen(item.ResourceId, conn))
                             {
-                                LoggingService.Info(string.Format(Properties.Resources.SkippingResource, item.ResourceId));
+                                LoggingService.Info(string.Format(Strings.SkippingResource, item.ResourceId));
                                 continue;
                             }
                         }

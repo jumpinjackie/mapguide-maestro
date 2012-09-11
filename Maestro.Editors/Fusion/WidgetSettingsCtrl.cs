@@ -65,7 +65,7 @@ namespace Maestro.Editors.Fusion
             }
             catch
             {
-                throw new NotSupportedException(Properties.Resources.IncompatibleConnection);
+                throw new NotSupportedException(Strings.IncompatibleConnection);
             }
             service.RegisterCustomNotifier(this);
             _flexLayout = (IApplicationDefinition)service.GetEditedResource();
@@ -130,8 +130,8 @@ namespace Maestro.Editors.Fusion
             {
                 string[] widgets = _flexLayout.GetAllReferenceableWidgetNames();
                 string widget = GenericItemSelectionDialog.SelectItem(
-                    Properties.Resources.AddWidgetReference,
-                    Properties.Resources.SelectWidget,
+                    Strings.AddWidgetReference,
+                    Strings.SelectWidget,
                     widgets);
                 if (widget != null)
                 {
@@ -148,8 +148,8 @@ namespace Maestro.Editors.Fusion
                 {
                     string[] widgets = _flexLayout.GetAllReferenceableWidgetNames();
                     string widget = GenericItemSelectionDialog.SelectItem(
-                        Properties.Resources.AddWidgetReference,
-                        Properties.Resources.SelectWidget,
+                        Strings.AddWidgetReference,
+                        Strings.SelectWidget,
                         widgets);
                     if (widget != null)
                     {
@@ -191,7 +191,7 @@ namespace Maestro.Editors.Fusion
             if (cnt != null)
             {
                 //at end
-                var item = _flexLayout.CreateFlyout(Properties.Resources.NewFlyout);
+                var item = _flexLayout.CreateFlyout(Strings.NewFlyout);
                 cnt.Insert(item, cnt.ItemCount);
                 this.SelectedNode.Nodes.Add(CreateNode(item));
             }
@@ -201,7 +201,7 @@ namespace Maestro.Editors.Fusion
                 if (menu != null)
                 {
                     //at end
-                    var item = _flexLayout.CreateFlyout(Properties.Resources.NewFlyout);
+                    var item = _flexLayout.CreateFlyout(Strings.NewFlyout);
                     menu.Insert(item, menu.ItemCount);
                     this.SelectedNode.Nodes.Add(CreateNode(item));
                 }
@@ -233,7 +233,7 @@ namespace Maestro.Editors.Fusion
                 case UiItemFunctionType.Separator:
                     {
                         node.ImageIndex = node.SelectedImageIndex = IDX_SEPARATOR;
-                        node.Text = Properties.Resources.Separator;
+                        node.Text = Strings.Separator;
                         node.Tag = item;
                     }
                     break;

@@ -47,7 +47,7 @@ namespace Maestro.Base.Commands.Test
                     return;
                 }
             }
-            MessageService.ShowMessage(Properties.Resources.Cancelled);
+            MessageService.ShowMessage(Strings.Cancelled);
         }
     }
 }

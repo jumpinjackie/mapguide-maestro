@@ -56,11 +56,11 @@ namespace Maestro.Editors.Generic.XmlEditor
 
         private void UpdateTitleBar()
         {
-            string text = ReplaceMode ? Properties.Resources.TextFindAndReplace : Properties.Resources.TextFind;
+            string text = ReplaceMode ? Strings.TextFindAndReplace : Strings.TextFind;
             if (_editor != null && _editor.FileName != null)
                 text += " - " + Path.GetFileName(_editor.FileName); //NOXLATE
             if (_search.HasScanRegion)
-                text += " " + Properties.Resources.TextSelectionOnly; //NOXLATE
+                text += " " + Strings.TextSelectionOnly; //NOXLATE
             this.Text = text;
         }
 
@@ -115,11 +115,11 @@ namespace Maestro.Editors.Generic.XmlEditor
 
         private void btnFindPrevious_Click(object sender, EventArgs e)
         {
-            FindNext(txtLookFor.Text, false, true, Properties.Resources.TextNotFound);
+            FindNext(txtLookFor.Text, false, true, Strings.TextNotFound);
         }
         private void btnFindNext_Click(object sender, EventArgs e)
         {
-            FindNext(txtLookFor.Text, false, false, Properties.Resources.TextNotFound);
+            FindNext(txtLookFor.Text, false, false, Strings.TextNotFound);
         }
 
         public bool _lastSearchWasBackward = false;
@@ -135,7 +135,7 @@ namespace Maestro.Editors.Generic.XmlEditor
             if (string.IsNullOrEmpty(find))
             {
                 if (!silent)
-                    MessageBox.Show(Properties.Resources.TextNoStringSpecifiedToLookFor);
+                    MessageBox.Show(Strings.TextNoStringSpecifiedToLookFor);
                 return null;
             }
             _lastSearchWasBackward = searchBackward;
@@ -202,7 +202,7 @@ namespace Maestro.Editors.Generic.XmlEditor
                     group.AddMarker(m);
                 }
                 if (count == 0)
-                    MessageBox.Show(Properties.Resources.TextSearchTextNotFound);
+                    MessageBox.Show(Strings.TextSearchTextNotFound);
                 else
                     Close();
             }
@@ -234,7 +234,7 @@ namespace Maestro.Editors.Generic.XmlEditor
             var sm = _editor.ActiveTextAreaControl.SelectionManager;
             if (string.Equals(sm.SelectedText, txtLookFor.Text, StringComparison.OrdinalIgnoreCase))
                 InsertText(txtReplaceWith.Text);
-            FindNext(txtLookFor.Text, false, _lastSearchWasBackward, Properties.Resources.TextNotFound);
+            FindNext(txtLookFor.Text, false, _lastSearchWasBackward, Strings.TextNotFound);
         }
 
         internal int FindAndReplace(string find, string replace)
@@ -271,9 +271,9 @@ namespace Maestro.Editors.Generic.XmlEditor
         {
             int count = FindAndReplace(txtLookFor.Text, txtReplaceWith.Text);
             if (count == 0)
-                MessageBox.Show(Properties.Resources.TextNoOccurrencesFound);
+                MessageBox.Show(Strings.TextNoOccurrencesFound);
             else {
-                MessageBox.Show(string.Format(Properties.Resources.TextOccurrencesReplaced, count));
+                MessageBox.Show(string.Format(Strings.TextOccurrencesReplaced, count));
                 Close();
             }
         }

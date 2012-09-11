@@ -132,7 +132,7 @@ namespace Maestro.Editors.FeatureSource
         {
             if (grdOverrides.Rows.Count > 0)
             {
-                if (MessageBox.Show(Properties.Resources.QuestionResetFsOverrideList, Properties.Resources.TitleQuestion, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show(Strings.QuestionResetFsOverrideList, Strings.TitleQuestion, MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     var sco = new List<ISpatialContextInfo>(_fs.SupplementalSpatialContextInfo);
                     foreach (var s in sco)
