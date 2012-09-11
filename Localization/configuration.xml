@@ -1,20 +1,25 @@
 ﻿<root>
-	<configuration name="OSGeo.MapGuide">
+	<configuration name="Maestro">
 		<assembly name="Maestro" folder="Maestro" namespace="Maestro" />
 		<assembly name="Maestro.AddIn.ExtendedObjectModels" folder="Maestro.AddIn.ExtendedObjectModels" namespace="Maestro.AddIn.ExtendedObjectModels" />
+        <assembly name="Maestro.AddIn.Scripting" folder="Maestro.AddIn.Scripting" namespace="Maestro.AddIn.Scripting" />
+        <assembly name="Maestro.AddInManager" folder="Maestro.AddInManager" namespace="Maestro.AddInAddInManager" />
 		<assembly name="Maestro.Base" folder="Maestro.Base" namespace="Maestro.Base" />
 		<assembly name="Maestro.Editors" folder="Maestro.Editors" namespace="Maestro.Editors" />
 		<assembly name="Maestro.Login" folder="Maestro.Login" namespace="Maestro.Login" />
+        <assembly name="Maestro.MapViewer" folder="Maestro.MapViewer" namespace="Maestro.MapViewer" />
 		<assembly name="Maestro.Packaging" folder="Maestro.Packaging" namespace="Maestro.Packaging" />
 		<assembly name="Maestro.Shared.UI" folder="Maestro.Shared.UI" namespace="Maestro.Shared.UI" />
 		<assembly name="MaestroFsPreview" folder="MaestroFsPreview" namespace="MaestroFsPreview" />
 		<assembly name="MgCooker" folder="MgCooker" namespace="MgCooker" />
 		<assembly name="OSGeo.MapGuide.MaestroAPI" folder="OSGeo.MapGuide.MaestroAPI" namespace="OSGeo.MapGuide.MaestroAPI" />
+        <assembly name="RtMapInspector" folder="RtMapInspector" namespace="RtMapInspector" />
 
-		<!-- <keyfile>..\MaestroAPI\Maestroapi.key</keyfile> -->
+		<keyfile>..\Properties\Maestroapi.key</keyfile>
 		<versionassembly>..\out\Release\Maestro.exe</versionassembly>
 		<sourcefolder>..</sourcefolder>
 		<outputfolder>compiled</outputfolder>
 		<productname>Maestro</productname>
+        <frameworkVersion>4.0</frameworkVersion>
 	</configuration>
 </root>
