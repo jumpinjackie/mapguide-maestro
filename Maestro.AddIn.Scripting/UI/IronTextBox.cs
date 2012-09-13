@@ -39,6 +39,7 @@ using IronPython.Runtime;   //PythonDictionary
 using IronPython.Hosting;   //PythonEngine
 using Microsoft.Scripting;  //ScriptDomainManager
 using Microsoft.Scripting.Hosting;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.AddIn.Scripting.UI
 {
@@ -1318,7 +1319,7 @@ namespace Maestro.AddIn.Scripting.UI
                 //Browse to the file...
                 OpenFileDialog ofd = new OpenFileDialog();
                 ofd.InitialDirectory = Paths.MiscDirs.vs_Projects;
-                ofd.Filter = "Python files (*.py)|*.py|All files (*.*)|*.*"; //NOXLATE
+                ofd.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickPy, "py") + "|" + StringConstants.AllFilesFilter; //NOXLATE
                 ofd.ShowDialog();
 
                 //Ask the user if they would like to append the path
@@ -1373,7 +1374,7 @@ namespace Maestro.AddIn.Scripting.UI
             //Browse to the file...
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.InitialDirectory = Paths.MiscDirs.vs_Projects;
-            ofd.Filter = "Python files (*.py)|*.py|All files (*.*)|*.*"; //NOXLATE
+            ofd.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickPy, "py") + "|" + StringConstants.AllFilesFilter; //NOXLATE
             ofd.ShowDialog();
 
             DoIPExecuteFile(ofd.FileName);
@@ -1406,14 +1407,14 @@ namespace Maestro.AddIn.Scripting.UI
             //Browse to the file...
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.InitialDirectory = Paths.MiscDirs.vs_Projects;
-            ofd.Filter = "Python files (*.py)|*.py|All files (*.*)|*.*"; //NOXLATE
+            ofd.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickPy, "py") + "|" + StringConstants.AllFilesFilter; //NOXLATE
             ofd.ShowDialog();
 
             try
             {
                 string filetext = File.ReadAllText(ofd.FileName);
                 //tabs create a problem when trying to remove comments
-                filetext = filetext.Replace("\t", "    ");
+                filetext = filetext.Replace("\t", "    "); //NOXLATE
 
                 // Create an instance of StreamReader to read from a file.
                 // The using statement also closes the StreamReader.

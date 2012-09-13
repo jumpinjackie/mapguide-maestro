@@ -117,16 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Error_ViewContent_Not_Registered" xml:space="preserve">
-    <value>The specified view content type is not registered in any addin files: {0}</value>
-  </data>
-  <data name="Error_ViewContent_Type_Not_Singleton" xml:space="preserve">
-    <value>The specified view content type is not a singleton: {0}</value>
-  </data>
-  <data name="FileSaved" xml:space="preserve">
-    <value>File saved</value>
-  </data>
-  <data name="PickTxt" xml:space="preserve">
-    <value>Text Files</value>
+  <data name="PickXml" xml:space="preserve">
+    <value>XML Files</value>
   </data>
 </root>

@@ -118,15 +118,15 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             switch (ext)
             {
                 case ".ACCDB": //NOXLATE
-                    return Strings.OdbcDriverAccess64;
+                    return OdbcDriverNames.OdbcDriverAccess64;
                 case ".MDB": //NOXLATE
-                    return use64Bit ? Strings.OdbcDriverAccess64 : Strings.OdbcDriverAccess;
+                    return use64Bit ? OdbcDriverNames.OdbcDriverAccess64 : OdbcDriverNames.OdbcDriverAccess;
                 case ".XLS": //NOXLATE
-                    return use64Bit ? Strings.OdbcDriverExcel64 : Strings.OdbcDriverExcel;
+                    return use64Bit ? OdbcDriverNames.OdbcDriverExcel64 : OdbcDriverNames.OdbcDriverExcel;
                 case ".XLSX": //NOXLATE
                 case ".XLSM": //NOXLATE
                 case ".XLSB": //NOXLATE
-                    return Strings.OdbcDriverExcel64;
+                    return OdbcDriverNames.OdbcDriverExcel64;
             }
             return null;
         }

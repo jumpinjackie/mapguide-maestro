@@ -138,7 +138,7 @@ namespace Maestro.Base.UI.Preferences
             using (var dlg = DialogFactory.OpenFile())
             {
                 dlg.Title = string.Format(Strings.LocateExecutable, "MgCooker.exe"); //NOXLATE
-                dlg.Filter = Strings.FilterExecutables;
+                dlg.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickExe, "exe"); //NOXLATE
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     txtMgCooker.Text = dlg.FileName;
@@ -151,7 +151,7 @@ namespace Maestro.Base.UI.Preferences
             using (var dlg = DialogFactory.OpenFile())
             {
                 dlg.Title = string.Format(Strings.LocateExecutable, "MaestroFsPreview.exe"); //NOXLATE
-                dlg.Filter = Strings.FilterExecutables;
+                dlg.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickExe, "exe"); //NOXLATE
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     txtFsPreview.Text = dlg.FileName;
@@ -164,7 +164,7 @@ namespace Maestro.Base.UI.Preferences
             using (var dlg = DialogFactory.OpenFile())
             {
                 dlg.Title = string.Format(Strings.LocateExecutable, "RtMapInspector.exe"); //NOXLATE
-                dlg.Filter = Strings.FilterExecutables;
+                dlg.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickExe, "exe"); //NOXLATE
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     txtRtMapInspector.Text = dlg.FileName;
@@ -177,7 +177,7 @@ namespace Maestro.Base.UI.Preferences
             using (var dlg = DialogFactory.OpenFile())
             {
                 dlg.Title = string.Format(Strings.LocateExecutable, "Maestro.LiveMapEditor.exe"); //NOXLATE
-                dlg.Filter = Strings.FilterExecutables;
+                dlg.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickExe, "exe"); //NOXLATE
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     txtLiveMapEditor.Text = dlg.FileName;

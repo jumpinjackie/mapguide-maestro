@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Maestro.Shared.UI {
+namespace Maestro.AddIn.GeoRest {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Maestro.Shared.UI {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Maestro.Shared.UI.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Maestro.AddIn.GeoRest.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,38 +61,11 @@ namespace Maestro.Shared.UI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The specified view content type is not registered in any addin files: {0}.
+        ///   Looks up a localized string similar to XML Files.
         /// </summary>
-        internal static string Error_ViewContent_Not_Registered {
+        internal static string PickXml {
             get {
-                return ResourceManager.GetString("Error_ViewContent_Not_Registered", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The specified view content type is not a singleton: {0}.
-        /// </summary>
-        internal static string Error_ViewContent_Type_Not_Singleton {
-            get {
-                return ResourceManager.GetString("Error_ViewContent_Type_Not_Singleton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to File saved.
-        /// </summary>
-        internal static string FileSaved {
-            get {
-                return ResourceManager.GetString("FileSaved", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Text Files.
-        /// </summary>
-        internal static string PickTxt {
-            get {
-                return ResourceManager.GetString("PickTxt", resourceCulture);
+                return ResourceManager.GetString("PickXml", resourceCulture);
             }
         }
     }

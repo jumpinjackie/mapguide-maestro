@@ -43,8 +43,10 @@ namespace MgCooker
         private SetupRun()
         {
             InitializeComponent();
-            MapAgent.Text = "http://localhost/mapguide/mapagent/mapagent.fcgi";
-            Username.Text = "Anonymous";
+            saveFileDialog1.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickBat, "bat") + "|" + //NOXLATE
+                                     OSGeo.MapGuide.MaestroAPI.StringConstants.AllFilesFilter; //NOXLATE
+            MapAgent.Text = "http://localhost/mapguide/mapagent/mapagent.fcgi"; //NOXLATE
+            Username.Text = "Anonymous"; //NOXLATE
         }
 
         internal SetupRun(string userName, string password, IServerConnection connection, string[] maps, Dictionary<string, string> args)

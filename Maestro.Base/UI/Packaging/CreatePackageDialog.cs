@@ -148,7 +148,7 @@ namespace Maestro.Base.UI.Packaging
         {
             using (var dlg = DialogFactory.SaveFile())
             {
-                dlg.Filter = Strings.Filter_Mgp_Files;
+                dlg.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickMgp, "mgp"); //NOXLATE
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     this.OutputFileName = dlg.FileName;

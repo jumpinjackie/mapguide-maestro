@@ -218,7 +218,7 @@ namespace Maestro.AddIn.GeoRest.UI
         {
             using (var save = DialogFactory.SaveFile())
             {
-                save.Filter = Properties.Resources.XmlFilter;
+                save.Filter = string.Format("{0} (*.{1})|*.{1}", Strings.PickXml, "xml"); //NOXLATE
                 if (save.ShowDialog() == DialogResult.OK)
                 {
                     var doc = _service.GetMaestroConfig();

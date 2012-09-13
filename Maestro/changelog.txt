@@ -1,4 +1,9 @@
-﻿- New Validation rules for Fusion and Feature Join performance
+﻿- Streamlined localizable strings
+- Live Map Definition Editor improvements
+   - Add a repository browser view. Layers selected can be added to the current map
+   - Move to a 3 pane interface (ala. AJAX viewer)
+- Use UNIQUE() for fetching distinct values in Expression Editor
+- New Validation rules for Fusion and Feature Join performance
 - Include full stack trace for any general unclassified validation errors triggered by a NullReferenceException
 - Fusion editor fixes
    - OSM support
@@ -8,8 +13,12 @@
    - Missing label in new fusion templates
 - Fusion editor improvements
    - Can view widget info in the Generic Widget XML editor
+- Fix: Have RDBMS Feature Source editor fill a fake password when opening a RDBMS feature source with secured credentials to give appearance of a password filled in.
 - Fix: Theming using first rule as template now preserves transparency
 - Fix: Restore missing checkbox for toggling Tiled Layer Group visibility in a Map Definition
+- Fix: Duplicating vector scale ranges not creating true clones
+- Fix: Prevent Map Definition groups from being dragged and dropped into its child groups/layers
+- Fix: Allow tiled layers to be moved between different tiled layer groups
 
 5.0 Beta 3
 ----------

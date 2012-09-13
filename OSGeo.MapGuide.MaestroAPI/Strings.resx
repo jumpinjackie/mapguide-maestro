@@ -3294,4 +3294,49 @@
   <data name="XmlValidationIssueTemplate" xml:space="preserve">
     <value>Line {0}, Char {1}: {2}</value>
   </data>
+  <data name="GenericFilter" xml:space="preserve">
+    <value>{0} (*.{1})|*.{1}</value>
+  </data>
+  <data name="PickIni" xml:space="preserve">
+    <value>INI Files</value>
+  </data>
+  <data name="PickAll" xml:space="preserve">
+    <value>All Files</value>
+  </data>
+  <data name="PickDwf" xml:space="preserve">
+    <value>Autodesk DWF</value>
+  </data>
+  <data name="PickExe" xml:space="preserve">
+    <value>Executables</value>
+  </data>
+  <data name="PickMgp" xml:space="preserve">
+    <value>MapGuide Package File</value>
+  </data>
+  <data name="PickShp" xml:space="preserve">
+    <value>ESRI Shapefile</value>
+  </data>
+  <data name="PickLog" xml:space="preserve">
+    <value>Log Files</value>
+  </data>
+  <data name="PickBat" xml:space="preserve">
+    <value>Batch Files</value>
+  </data>
+  <data name="PickPng" xml:space="preserve">
+    <value>Portable Network Graphics</value>
+  </data>
+  <data name="PickSdf" xml:space="preserve">
+    <value>Autodesk Spatial Data File</value>
+  </data>
+  <data name="PickSqlite" xml:space="preserve">
+    <value>SQLite Databases</value>
+  </data>
+  <data name="PickXml" xml:space="preserve">
+    <value>XML Files</value>
+  </data>
+  <data name="PickZip" xml:space="preserve">
+    <value>Zip Files</value>
+  </data>
+  <data name="PickPy" xml:space="preserve">
+    <value>Python Scripts</value>
+  </data>
 </root>

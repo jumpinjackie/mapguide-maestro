@@ -256,10 +256,6 @@
   <data name="TitleUploading" xml:space="preserve">
     <value>Uploading Package</value>
   </data>
-  <data name="UploadPackageDialogFilter" xml:space="preserve">
-    <value>MapGuide Packages (*.mgp)|*.mgp|Zip files (*.zip)|*.zip|All files (*.*)|*.*</value>
-    <comment>A filename filter for selecting a MapGuide package</comment>
-  </data>
   <data name="UploadPackageDialogTitle" xml:space="preserve">
     <value>Select the package to upload</value>
     <comment>The title for the file browse dialog when uploading a package</comment>

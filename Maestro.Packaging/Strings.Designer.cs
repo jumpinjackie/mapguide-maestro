@@ -394,15 +394,6 @@ namespace Maestro.Packaging {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to MapGuide Packages (*.mgp)|*.mgp|Zip files (*.zip)|*.zip|All files (*.*)|*.*.
-        /// </summary>
-        internal static string UploadPackageDialogFilter {
-            get {
-                return ResourceManager.GetString("UploadPackageDialogFilter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Select the package to upload.
         /// </summary>
         internal static string UploadPackageDialogTitle {

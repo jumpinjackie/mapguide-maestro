@@ -40,6 +40,7 @@ namespace Maestro.Shared.UI
         public ErrorDialog()
         {
             InitializeComponent();
+            saveFileDialog.Filter = string.Format("{0} (*.{1})|*.{1}", Strings.PickTxt, "txt"); //NOXLATE
         }
 
         private void btnClose_Click(object sender, EventArgs e)

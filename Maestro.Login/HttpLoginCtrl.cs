@@ -189,7 +189,7 @@ namespace Maestro.Login
                         }
                         catch { }
 
-                        MessageBox.Show(this, Strings.FormLogin.RestartForLanguageChange, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(this, Strings.RestartForLanguageChange, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }

@@ -242,7 +242,7 @@ namespace Maestro.Login
 
                         if (_conn.SiteVersion > _conn.MaxTestedVersion && _conn.SiteVersion > ps.ApprovedVersion)
                         {
-                            if (MessageBox.Show(this, Strings.FormLogin.UntestedServerVersion, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) != DialogResult.Yes)
+                            if (MessageBox.Show(this, Strings.UntestedServerVersion, Application.ProductName, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) != DialogResult.Yes)
                                 return;
                         }
 
@@ -303,12 +303,12 @@ namespace Maestro.Login
                 {
                     //We don't care about the outer exception
                     string msg = ex.InnerException.Message;
-                    MessageBox.Show(this, string.Format(Strings.FormLogin.ConnectionFailedError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, string.Format(Strings.ConnectionFailedError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
                     string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    MessageBox.Show(this, string.Format(Strings.FormLogin.ConnectionFailedError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, string.Format(Strings.ConnectionFailedError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

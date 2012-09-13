@@ -64,15 +64,15 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             switch (ext)
             {
                 case ".ACCDB": //NOXLATE
-                    return Strings.OdbcDriverAccess64;
+                    return OdbcDriverNames.OdbcDriverAccess64;
                 case ".MDB": //NOXLATE
-                    return use64Bit ? Strings.OdbcDriverAccess64 : Strings.OdbcDriverAccess;
+                    return use64Bit ? OdbcDriverNames.OdbcDriverAccess64 : OdbcDriverNames.OdbcDriverAccess;
                 case ".XLS": //NOXLATE
-                    return use64Bit ? Strings.OdbcDriverExcel64 : Strings.OdbcDriverExcel;
+                    return use64Bit ? OdbcDriverNames.OdbcDriverExcel64 : OdbcDriverNames.OdbcDriverExcel;
                 case ".XLSX": //NOXLATE
                 case ".XLSM": //NOXLATE
                 case ".XLSB": //NOXLATE
-                    return Strings.OdbcDriverExcel64;
+                    return OdbcDriverNames.OdbcDriverExcel64;
             }
             return null;
         }
@@ -125,10 +125,10 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         {
             using (var open = new OpenFileDialog())
             {
-                open.Filter = Strings.OdbcDriverAccess + "|*.mdb|" + //NOXLATE
-                              Strings.OdbcDriverAccess64 + "|*.accdb,*.mdb|" +  //NOXLATE
-                              Strings.OdbcDriverExcel + "|*.xls|" + //NOXLATE
-                              Strings.OdbcDriverExcel64 + "|*.xlsx,*.xlsm,*.xlsb"; //NOXLATE
+                open.Filter = OdbcDriverNames.OdbcDriverAccess + "|*.mdb|" + //NOXLATE
+                              OdbcDriverNames.OdbcDriverAccess64 + "|*.accdb,*.mdb|" +  //NOXLATE
+                              OdbcDriverNames.OdbcDriverExcel + "|*.xls|" + //NOXLATE
+                              OdbcDriverNames.OdbcDriverExcel64 + "|*.xlsx,*.xlsm,*.xlsb"; //NOXLATE
 
                 if (open.ShowDialog() == DialogResult.OK)
                 {
@@ -157,5 +157,14 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         /// Raised when a resource document reset is required
         /// </summary>
         public event EventHandler RequestDocumentReset;
+    }
+
+    internal class OdbcDriverNames
+    {
+        //These aren't localizable
+        public const string OdbcDriverAccess = "{Microsoft Access Driver (*.mdb)}";
+        public const string OdbcDriverAccess64 = "{Microsoft Access Driver (*.mdb, *.accdb)}";
+        public const string OdbcDriverExcel = "{Microsoft Excel Driver (*.xls)}";
+        public const string OdbcDriverExcel64 = "{Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)}";
     }
 }

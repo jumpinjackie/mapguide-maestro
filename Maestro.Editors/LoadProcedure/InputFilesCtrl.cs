@@ -74,15 +74,15 @@ namespace Maestro.Editors.LoadProcedure
 
         private string GetFilter()
         {
-            string filter = Strings.FilterAll;
+            string filter = OSGeo.MapGuide.MaestroAPI.StringConstants.AllFilesFilter;
             if (_lpt.Type == LoadType.Sdf)
-                filter = Strings.FilterSdf;
+                filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickSdf, "sdf"); //NOXLATE
             else if (_lpt.Type == LoadType.Shp)
-                filter = Strings.FilterShp;
+                filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickShp, "shp"); //NOXLATE
             else if (_lpt.Type == LoadType.Dwf)
-                filter = Strings.FilterDwf;
+                filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickDwf, "dwf"); //NOXLATE
             else if (_lpt.Type == LoadType.Sqlite)
-                filter = Strings.FilterSqlite;
+                filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickSqlite, "sqlite"); //NOXLATE
 
             return filter;
         }

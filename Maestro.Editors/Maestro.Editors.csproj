@@ -1810,6 +1810,7 @@
     <EmbeddedResource Include="Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SymbolDefinition\AdvancedSettingsCtrl.resx">
       <DependentUpon>AdvancedSettingsCtrl.cs</DependentUpon>
@@ -2431,12 +2432,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Packaging\AddResourceEntryDialog.resx">
       <DependentUpon>AddResourceEntryDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Packaging\EditResourceDataEntryDialog.resx">
       <DependentUpon>EditResourceDataEntryDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Packaging\PackageEditorDialog.resx">
       <DependentUpon>PackageEditorDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\areas\Acad_iso02w100.png" />
     <EmbeddedResource Include="Resources\areas\Acad_iso03w100.png" />

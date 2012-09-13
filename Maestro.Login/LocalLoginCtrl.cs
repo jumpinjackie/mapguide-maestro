@@ -48,7 +48,7 @@ namespace Maestro.Login
             {
                 open.InitialDirectory = Application.StartupPath;
                 open.RestoreDirectory = true;
-                open.Filter = "*.ini|*.ini";
+                open.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickIni, "ini"); //NOXLATE
                 if (open.ShowDialog() == DialogResult.OK)
                 {
                     txtPlatformConfig.Text = open.FileName;

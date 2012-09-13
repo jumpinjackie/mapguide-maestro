@@ -569,51 +569,6 @@ namespace Maestro.Base {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Autodesk DWF (*.dwf)|*.dwf.
-        /// </summary>
-        internal static string Filter_Dwf_Files {
-            get {
-                return ResourceManager.GetString("Filter_Dwf_Files", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MapGuide Package File (*.mgp)|*.mgp.
-        /// </summary>
-        internal static string Filter_Mgp_Files {
-            get {
-                return ResourceManager.GetString("Filter_Mgp_Files", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Autodesk SDF (*.sdf)|*.sdf.
-        /// </summary>
-        internal static string Filter_Sdf_Files {
-            get {
-                return ResourceManager.GetString("Filter_Sdf_Files", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ESRI Shapefile (*.shp)|*.shp.
-        /// </summary>
-        internal static string Filter_Shp_Files {
-            get {
-                return ResourceManager.GetString("Filter_Shp_Files", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Executables|*.exe.
-        /// </summary>
-        internal static string FilterExecutables {
-            get {
-                return ResourceManager.GetString("FilterExecutables", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Validation detected errors in your resource, please fix them before saving this resource.
         /// </summary>
         internal static string FixErrorsBeforeSaving {

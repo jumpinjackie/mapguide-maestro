@@ -40,7 +40,7 @@ namespace Maestro.Base.Commands
                 using (var dlg = DialogFactory.OpenFile())
                 {
                     dlg.Title = string.Format(Strings.LocateExecutable, "Maestro.LiveMapEditor.exe"); //NOXLATE
-                    dlg.Filter = Strings.FilterExecutables;
+                    dlg.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickExe, "exe"); //NOXLATE
                     if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         exe = dlg.FileName;

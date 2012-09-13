@@ -2404,27 +2404,6 @@
   <data name="FiletypeZip" xml:space="preserve">
     <value>Zip files ({0})</value>
   </data>
-  <data name="FilterAll" xml:space="preserve">
-    <value>All File Types (*.*)|*.*</value>
-  </data>
-  <data name="FilterDwf" xml:space="preserve">
-    <value>Autodesk DWF (*.dwf)|*.dwf</value>
-  </data>
-  <data name="FilterPng" xml:space="preserve">
-    <value>Portable Network Graphics (*.png)|*.png</value>
-  </data>
-  <data name="FilterSdf" xml:space="preserve">
-    <value>Autodesk SDF (*.sdf)|*.sdf</value>
-  </data>
-  <data name="FilterShp" xml:space="preserve">
-    <value>ESRI Shape File (*.shp)|*.shp</value>
-  </data>
-  <data name="FilterSqlite" xml:space="preserve">
-    <value>SQLite files|*.sqlite;*.db;*.sdx;*.slt</value>
-  </data>
-  <data name="FilterXml" xml:space="preserve">
-    <value>XML Files (.xml)|*.xml</value>
-  </data>
   <data name="FindEmptyString" xml:space="preserve">
     <value>Cannot Find an Empty String</value>
   </data>
@@ -2858,18 +2837,6 @@ Are you sure this is what you want?</value>
   </data>
   <data name="OdbcConnectionStringComponentNotFound" xml:space="preserve">
     <value>The component "{0}" could not be found in the specified ODBC connection string</value>
-  </data>
-  <data name="OdbcDriverAccess" xml:space="preserve">
-    <value>{Microsoft Access Driver (*.mdb)}</value>
-  </data>
-  <data name="OdbcDriverAccess64" xml:space="preserve">
-    <value>{Microsoft Access Driver (*.mdb, *.accdb)}</value>
-  </data>
-  <data name="OdbcDriverExcel" xml:space="preserve">
-    <value>{Microsoft Excel Driver (*.xls)}</value>
-  </data>
-  <data name="OdbcDriverExcel64" xml:space="preserve">
-    <value>{Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)}</value>
   </data>
   <data name="OdbcNoMarkedFile" xml:space="preserve">
     <value>Could not infer ODBC driver. No file specified</value>

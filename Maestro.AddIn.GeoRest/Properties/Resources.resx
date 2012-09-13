@@ -187,7 +187,4 @@
   <data name="MaestroConfigSaved" xml:space="preserve">
     <value>Maestro Config Saved to {0}</value>
   </data>
-  <data name="XmlFilter" xml:space="preserve">
-    <value>XML Files (*.xml)|*.xml</value>
-  </data>
 </root>

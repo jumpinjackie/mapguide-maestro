@@ -123,9 +123,6 @@
   <data name="DefaultSymbolName" xml:space="preserve">
     <value>MySymbol</value>
   </data>
-  <data name="Filter_Sqlite_Files" xml:space="preserve">
-    <value>SQLite Files|*.sqlite;*.db;*.slt;*.sdx</value>
-  </data>
   <data name="TPL_CATEGORY_MGOS12" xml:space="preserve">
     <value>MapGuide Open Source 1.2 / MapGuide Enterprise 2008</value>
   </data>

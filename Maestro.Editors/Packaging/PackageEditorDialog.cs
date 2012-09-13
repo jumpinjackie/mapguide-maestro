@@ -59,6 +59,8 @@ namespace Maestro.Editors.Packaging
         private PackageEditorDialog()
         {
             InitializeComponent();
+            BrowseResourceDataFile.Filter = StringConstants.AllFilesFilter;
+            SaveResourceDataFile.Filter = StringConstants.AllFilesFilter;
         }
 
         private void PackageEditor_Load(object sender, EventArgs e)

@@ -88,7 +88,7 @@ namespace Maestro.Login
                 //WTF does this default to false??? Does MS not realize that changing directories 
                 //via this dialog absolutely screws up file/assembly loading from relative paths?
                 dlg.RestoreDirectory = true;
-                dlg.Filter = "*.ini|*.ini"; //NOXLATE
+                dlg.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickIni, "ini"); //NOXLATE
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     txtWebConfig.Text = dlg.FileName;

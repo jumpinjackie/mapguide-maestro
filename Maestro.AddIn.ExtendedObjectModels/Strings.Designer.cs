@@ -79,15 +79,6 @@ namespace Maestro.AddIn.ExtendedObjectModels {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SQLite Files|*.sqlite;*.db;*.slt;*.sdx.
-        /// </summary>
-        internal static string Filter_Sqlite_Files {
-            get {
-                return ResourceManager.GetString("Filter_Sqlite_Files", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to MapGuide Open Source 1.2 / MapGuide Enterprise 2008.
         /// </summary>
         internal static string TPL_CATEGORY_MGOS12 {

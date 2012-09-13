@@ -693,18 +693,12 @@
   <metadata name="BrowseResourceDataFile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>227, 17</value>
   </metadata>
-  <data name="BrowseResourceDataFile.Filter" xml:space="preserve">
-    <value>All files (*.*)|*.*</value>
-  </data>
   <data name="BrowseResourceDataFile.Title" xml:space="preserve">
     <value>Select a file to add</value>
   </data>
   <metadata name="SaveResourceDataFile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>411, 17</value>
   </metadata>
-  <data name="SaveResourceDataFile.Filter" xml:space="preserve">
-    <value>All files (*.*)|*.*</value>
-  </data>
   <data name="SaveResourceDataFile.Title" xml:space="preserve">
     <value>Select where to save the file</value>
   </data>

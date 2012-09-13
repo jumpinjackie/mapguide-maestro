@@ -1485,6 +1485,15 @@ namespace OSGeo.MapGuide.MaestroAPI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} (*.{1})|*.{1}.
+        /// </summary>
+        public static string GenericFilter {
+            get {
+                return ResourceManager.GetString("GenericFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Infinity.
         /// </summary>
         public static string Infinity {
@@ -1949,6 +1958,132 @@ namespace OSGeo.MapGuide.MaestroAPI {
         public static string NullString {
             get {
                 return ResourceManager.GetString("NullString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All Files.
+        /// </summary>
+        public static string PickAll {
+            get {
+                return ResourceManager.GetString("PickAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Batch Files.
+        /// </summary>
+        public static string PickBat {
+            get {
+                return ResourceManager.GetString("PickBat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autodesk DWF.
+        /// </summary>
+        public static string PickDwf {
+            get {
+                return ResourceManager.GetString("PickDwf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Executables.
+        /// </summary>
+        public static string PickExe {
+            get {
+                return ResourceManager.GetString("PickExe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INI Files.
+        /// </summary>
+        public static string PickIni {
+            get {
+                return ResourceManager.GetString("PickIni", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log Files.
+        /// </summary>
+        public static string PickLog {
+            get {
+                return ResourceManager.GetString("PickLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MapGuide Package File.
+        /// </summary>
+        public static string PickMgp {
+            get {
+                return ResourceManager.GetString("PickMgp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Portable Network Graphics.
+        /// </summary>
+        public static string PickPng {
+            get {
+                return ResourceManager.GetString("PickPng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Python Scripts.
+        /// </summary>
+        public static string PickPy {
+            get {
+                return ResourceManager.GetString("PickPy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autodesk Spatial Data File.
+        /// </summary>
+        public static string PickSdf {
+            get {
+                return ResourceManager.GetString("PickSdf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ESRI Shapefile.
+        /// </summary>
+        public static string PickShp {
+            get {
+                return ResourceManager.GetString("PickShp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SQLite Databases.
+        /// </summary>
+        public static string PickSqlite {
+            get {
+                return ResourceManager.GetString("PickSqlite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to XML Files.
+        /// </summary>
+        public static string PickXml {
+            get {
+                return ResourceManager.GetString("PickXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zip Files.
+        /// </summary>
+        public static string PickZip {
+            get {
+                return ResourceManager.GetString("PickZip", resourceCulture);
             }
         }
         

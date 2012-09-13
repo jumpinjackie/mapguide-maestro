@@ -72,7 +72,9 @@ namespace Maestro.Packaging
             dlg.CheckFileExists = true;
             dlg.CheckPathExists = true;
             dlg.DefaultExt = ".mgp"; //NOXLATE
-            dlg.Filter = Strings.UploadPackageDialogFilter;
+            dlg.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickMgp, "mgp") + "|" + //NOXLATE
+                         string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickZip, "zip") + "|" + //NOXLATE
+                         StringConstants.AllFilesFilter;
             dlg.FilterIndex = 0;
             dlg.Multiselect = false;
             dlg.ValidateNames = true;

@@ -283,8 +283,7 @@ namespace Maestro.Editors {
         ///,,,,5,&quot;E&quot;,56,108,176,
         ///&quot;Accent&quot;,6,&quot;qual&quot;,,1,&quot;A&quot;,127,201,127,
         ///,,,,2,&quot;B&quot;,190,174,212,
-        ///,,,,3,&quot;C&quot;,253,192,134,
-        ///,, [rest of string was truncated]&quot;;.
+        ///,,,,3,&quot;C&quot;, [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ColorBrewer {
             get {
@@ -676,69 +675,6 @@ namespace Maestro.Editors {
         internal static string FiletypeZip {
             get {
                 return ResourceManager.GetString("FiletypeZip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to All File Types (*.*)|*.*.
-        /// </summary>
-        internal static string FilterAll {
-            get {
-                return ResourceManager.GetString("FilterAll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Autodesk DWF (*.dwf)|*.dwf.
-        /// </summary>
-        internal static string FilterDwf {
-            get {
-                return ResourceManager.GetString("FilterDwf", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Portable Network Graphics (*.png)|*.png.
-        /// </summary>
-        internal static string FilterPng {
-            get {
-                return ResourceManager.GetString("FilterPng", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Autodesk SDF (*.sdf)|*.sdf.
-        /// </summary>
-        internal static string FilterSdf {
-            get {
-                return ResourceManager.GetString("FilterSdf", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ESRI Shape File (*.shp)|*.shp.
-        /// </summary>
-        internal static string FilterShp {
-            get {
-                return ResourceManager.GetString("FilterShp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SQLite files|*.sqlite;*.db;*.sdx;*.slt.
-        /// </summary>
-        internal static string FilterSqlite {
-            get {
-                return ResourceManager.GetString("FilterSqlite", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to XML Files (.xml)|*.xml.
-        /// </summary>
-        internal static string FilterXml {
-            get {
-                return ResourceManager.GetString("FilterXml", resourceCulture);
             }
         }
         
@@ -1621,42 +1557,6 @@ namespace Maestro.Editors {
         internal static string OdbcConnectionStringComponentNotFound {
             get {
                 return ResourceManager.GetString("OdbcConnectionStringComponentNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {Microsoft Access Driver (*.mdb)}.
-        /// </summary>
-        internal static string OdbcDriverAccess {
-            get {
-                return ResourceManager.GetString("OdbcDriverAccess", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {Microsoft Access Driver (*.mdb, *.accdb)}.
-        /// </summary>
-        internal static string OdbcDriverAccess64 {
-            get {
-                return ResourceManager.GetString("OdbcDriverAccess64", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {Microsoft Excel Driver (*.xls)}.
-        /// </summary>
-        internal static string OdbcDriverExcel {
-            get {
-                return ResourceManager.GetString("OdbcDriverExcel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)}.
-        /// </summary>
-        internal static string OdbcDriverExcel64 {
-            get {
-                return ResourceManager.GetString("OdbcDriverExcel64", resourceCulture);
             }
         }
         

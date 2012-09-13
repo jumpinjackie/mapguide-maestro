@@ -46,7 +46,7 @@ namespace Maestro.Base.Templates
             using (var dlg = DialogFactory.OpenFile())
             {
                 dlg.Multiselect = true;
-                dlg.Filter = Strings.Filter_Sdf_Files;
+                dlg.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickSdf, "sdf"); //NOXLATE
                 if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     var proc = ObjectFactory.CreateLoadProcedure(conn, LoadType.Sdf, dlg.FileNames);

@@ -323,7 +323,7 @@ namespace Maestro.Editors.WebLayout
 
                 using (var save = DialogFactory.SaveFile())
                 {
-                    save.Filter = Strings.FilterXml;
+                    save.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickXml, "xml"); //NOXLATE
                     if (save.ShowDialog() == DialogResult.OK)
                     {
                         _wl.ExportCustomCommands(save.FileName, selectedCmds.ToArray());
@@ -337,6 +337,7 @@ namespace Maestro.Editors.WebLayout
         {
             using (var open = DialogFactory.OpenFile())
             {
+                open.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickXml, "xml"); //NOXLATE
                 if (open.ShowDialog() == DialogResult.OK)
                 {
                     listChangedDisabled = true;

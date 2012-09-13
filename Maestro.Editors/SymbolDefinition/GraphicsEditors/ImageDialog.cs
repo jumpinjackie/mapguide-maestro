@@ -156,7 +156,7 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
         {
             using (var open = DialogFactory.OpenFile())
             {
-                open.Filter = Strings.FilterPng;
+                open.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickPng, "png"); //NOXLATE
                 if (open.ShowDialog() == DialogResult.OK)
                 {
                     byte[] content = File.ReadAllBytes(open.FileName);
@@ -170,8 +170,8 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
                     using (var ms = new MemoryStream(content))
                     {
                         Image img = Image.FromStream(ms);
-                        symSizeX.Content = "'" + PxToMM(img.Width, 96).ToString(System.Globalization.CultureInfo.InvariantCulture) + "'";
-                        symSizeY.Content = "'" + PxToMM(img.Height, 96).ToString(System.Globalization.CultureInfo.InvariantCulture) + "'";
+                        symSizeX.Content = "'" + PxToMM(img.Width, 96).ToString(System.Globalization.CultureInfo.InvariantCulture) + "'"; //NOXLATE
+                        symSizeY.Content = "'" + PxToMM(img.Height, 96).ToString(System.Globalization.CultureInfo.InvariantCulture) + "'"; //NOXLATE
                     }
                 }
             }

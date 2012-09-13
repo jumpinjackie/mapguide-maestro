@@ -302,21 +302,6 @@ Many thanks to the following people who have translated Maestro into other langu
   <data name="Error_Closeable_Singleton_Content" xml:space="preserve">
     <value>Singleton view content cannot be closed by users. The AllowUserClose property must return false</value>
   </data>
-  <data name="FilterExecutables" xml:space="preserve">
-    <value>Executables|*.exe</value>
-  </data>
-  <data name="Filter_Dwf_Files" xml:space="preserve">
-    <value>Autodesk DWF (*.dwf)|*.dwf</value>
-  </data>
-  <data name="Filter_Mgp_Files" xml:space="preserve">
-    <value>MapGuide Package File (*.mgp)|*.mgp</value>
-  </data>
-  <data name="Filter_Sdf_Files" xml:space="preserve">
-    <value>Autodesk SDF (*.sdf)|*.sdf</value>
-  </data>
-  <data name="Filter_Shp_Files" xml:space="preserve">
-    <value>ESRI Shapefile (*.shp)|*.shp</value>
-  </data>
   <data name="FixErrorsBeforeSaving" xml:space="preserve">
     <value>Validation detected errors in your resource, please fix them before saving this resource</value>
   </data>

@@ -40,6 +40,7 @@ namespace Maestro.Editors.Packaging
         public AddResourceEntryDialog()
         {
             InitializeComponent();
+            BrowseFileDialog.Filter = StringConstants.AllFilesFilter;
         }
 
         private void UseHeader_CheckedChanged(object sender, EventArgs e)

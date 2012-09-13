@@ -68,7 +68,7 @@ namespace Maestro.Base.UI
         {
             using (var save = DialogFactory.SaveFile())
             {
-                save.Filter = "*.log|*.log"; //NOXLATE
+                save.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickLog, "log"); //NOXLATE
                 if (save.ShowDialog() == DialogResult.OK)
                 {
                     File.WriteAllText(save.FileName, txtMessages.Text);

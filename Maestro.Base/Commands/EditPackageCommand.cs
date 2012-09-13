@@ -38,7 +38,7 @@ namespace Maestro.Base.Commands
 
             using (var open = DialogFactory.OpenFile())
             {
-                open.Filter = Strings.Filter_Mgp_Files;
+                open.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickMgp, "mgp"); //NOXLATE
                 if (open.ShowDialog(wb) == System.Windows.Forms.DialogResult.OK)
                 {
                     var dlg = new PackageEditorDialog(open.FileName, conn);

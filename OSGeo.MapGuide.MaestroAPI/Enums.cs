@@ -55,6 +55,17 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// The name of the resource data item containing the secured Feature Source credentials
         /// </summary>
         public const string MgUserCredentialsResourceData = "MG_USER_CREDENTIALS"; //NOXLATE
+
+        /// <summary>
+        /// The file picker filter for all files
+        /// </summary>
+        public static string AllFilesFilter
+        {
+            get
+            {
+                return string.Format(Strings.GenericFilter, Strings.PickAll, "*");
+            }
+        }
     }
 
     /// <summary>
