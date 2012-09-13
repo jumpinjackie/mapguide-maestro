@@ -44,7 +44,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.symPreview = new System.Windows.Forms.PictureBox();
             this.btnRefresh = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -173,7 +172,6 @@
             this.Controls.Add(this.btnClose);
             this.Name = "SymbolInstancesDialog";
             this.splitContainer1.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -145,7 +145,7 @@
             this.grdSpatialContexts.Name = "grdSpatialContexts";
             this.grdSpatialContexts.ReadOnly = true;
             this.grdSpatialContexts.RowHeadersVisible = false;
-            this.grdSpatialContexts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdSpatialContexts_CellContentClick);
+            this.grdSpatialContexts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdSpatialContexts_CellContentClick);
             // 
             // COL_NAME
             // 

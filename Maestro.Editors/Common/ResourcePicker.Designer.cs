@@ -50,7 +50,6 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.resIdComponentPanel = new System.Windows.Forms.Panel();
             this.repoView = new Maestro.Editors.Common.RepositoryView();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -216,7 +215,6 @@
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.resIdComponentPanel.ResumeLayout(false);
             this.resIdComponentPanel.PerformLayout();
