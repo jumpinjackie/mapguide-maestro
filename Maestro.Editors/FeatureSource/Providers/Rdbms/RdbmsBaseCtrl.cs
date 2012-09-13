@@ -55,8 +55,13 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
         private IEditorService _service;
         private IFeatureSource _fs;
 
+        private bool _bChangedUsername = false;
+        private bool _bChangedPassword = false;
+
         public override void Bind(IEditorService service)
         {
+            _bChangedUsername = false;
+            _bChangedPassword = false;
             _service = service;
             _service.BeforeSave += OnBeforeSave;
             _service.BeforePreview += OnBeforePreview;
@@ -71,8 +76,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
             if (!_service.IsNew)
             {
                 txtUsername.Text = _fs.GetEncryptedUsername() ?? _fs.GetConnectionProperty("Username"); //NOXLATE
-                //txtPassword.Text = _fs.GetConnectionProperty("Password");
-                OnResourceChanged();
+                txtPassword.Text = GenerateRandomFakeString();
             }
 
             //Set initial value of data store if possible
@@ -88,6 +92,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
 
             txtUsername.TextChanged += (s, e) =>
             {
+                _bChangedUsername = true;
                 if (string.IsNullOrEmpty(txtUsername.Text))
                     _fs.SetConnectionProperty("Username", null); //NOXLATE
                 else
@@ -96,6 +101,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
             
             txtPassword.TextChanged += (s, e) =>
             {
+                _bChangedPassword = true;
                 if (string.IsNullOrEmpty(txtPassword.Text))
                     _fs.SetConnectionProperty("Password", null); //NOXLATE
                 else
@@ -107,6 +113,23 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
                 _fs.SetConnectionProperty("DataStore", txtDataStore.Text); //NOXLATE
             };
 
+        }
+
+        private string GenerateRandomFakeString()
+        {
+            Random rng = new Random();
+            char[] letters = new char[rng.Next(6, 12)];
+            for (int i = 0; i < letters.Length; i++)
+            {
+                letters[i] = GenerateChar(rng);
+            }
+            return new string(letters);
+        }
+
+        private static char GenerateChar(Random rng)
+        {
+            // 'Z' + 1 because the range is exclusive
+            return (char)(rng.Next('A', 'Z' + 1));
         }
 
         void OnBeforePreview(object sender, EventArgs e)
@@ -128,10 +151,13 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
             {
                 if (username != StringConstants.MgUsernamePlaceholder && password != StringConstants.MgPasswordPlaceholder)
                 {
-                    _fs.SetConnectionProperty("Username", StringConstants.MgUsernamePlaceholder); //NOXLATE
-                    _fs.SetConnectionProperty("Password", StringConstants.MgPasswordPlaceholder); //NOXLATE
-                    _fs.SetEncryptedCredentials(username, password);
-                    _service.SyncSessionCopy();
+                    if (_bChangedUsername || _bChangedPassword)
+                    {
+                        _fs.SetConnectionProperty("Username", StringConstants.MgUsernamePlaceholder); //NOXLATE
+                        _fs.SetConnectionProperty("Password", StringConstants.MgPasswordPlaceholder); //NOXLATE
+                        _fs.SetEncryptedCredentials(username, password);
+                        _service.SyncSessionCopy();
+                    }
                 }
             }
             else if (string.IsNullOrEmpty(username) && string.IsNullOrEmpty(password))
