@@ -275,8 +275,11 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnAddGroup_Click(object sender, EventArgs e)
         {
-            var selGroup = GetSelectedLayerGroupItem() as IMapLayerGroup;
-            var newGroup = CreateNewGroup(selGroup);
+            var selGroup = GetSelectedLayerGroupItem() as GroupItem;
+            IMapLayerGroup parent = null;
+            if (selGroup != null)
+                parent = selGroup.Tag;
+            var newGroup = CreateNewGroup(parent);
 
             _grpLayerModel.Invalidate();
             RestoreGroupSelection(newGroup);
@@ -1040,9 +1043,17 @@ namespace Maestro.Editors.MapDefinition
                     var gi = node.Tag as GroupItem;
                     var li = node.Tag as LayerItem;
                     if (gi != null)
+                    {
+                        if (TargetIsDescendant(nodes, gi))
+                            return;
+
                         parent = gi.Tag;
+                    }
                     else if (li != null)
-                        parent = _map.GetGroupByName(li.Tag.Group);
+                    {
+                        return;
+                        //parent = _map.GetGroupByName(li.Tag.Group);
+                    }
                 }
 
                 int moved = 0;
@@ -1076,6 +1087,27 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
+        private bool TargetIsDescendant(TreeNodeAdv[] nodes, GroupItem target)
+        {
+            foreach (var n in nodes)
+            {
+                var gi = n.Tag as GroupItem;
+                if (gi != null)
+                {
+                    var grp = target.Tag;
+                    while (!string.IsNullOrEmpty(grp.Group))
+                    {
+                        var parent = _map.GetGroupByName(grp.Group);
+                        if (parent == gi.Tag)
+                            return true;
+
+                        grp = parent;
+                    }
+                }        
+            }
+            return false;
+        }
+
         private void trvLayersGroup_DragOver(object sender, DragEventArgs e)
         {
             var data = e.Data.GetData(typeof(TreeNodeAdv[])) as TreeNodeAdv[];
@@ -1094,6 +1126,7 @@ namespace Maestro.Editors.MapDefinition
                 }
                 else
                 {
+
                     e.Effect = DragDropEffects.Move;
                 }
             }
@@ -1293,7 +1326,19 @@ namespace Maestro.Editors.MapDefinition
                             targetGroup = tlg.Tag;
                     }
 
-                    if (sourceLayer != null && targetLayer != null && sourceLayer != targetLayer)
+                    if (sourceLayer != null && targetGroup != null && targetGroup.GetIndex(sourceLayer) < 0) //Dropping to a different base layer group
+                    {
+                        var srcGroup = _map.BaseMap.GetGroupForLayer(sourceLayer);
+                        srcGroup.RemoveBaseMapLayer(sourceLayer);
+                        targetGroup.InsertLayer(0, sourceLayer);
+
+                        _tiledLayerModel.Invalidate();
+
+                        //Keep group expanded
+                        if (tli != null)
+                            RestoreBaseLayerSelection(sourceLayer);
+                    }
+                    else if (sourceLayer != null && targetLayer != null && sourceLayer != targetLayer)
                     {
                         var srcGroup = _map.BaseMap.GetGroupForLayer(sourceLayer);
                         var dstGroup = _map.BaseMap.GetGroupForLayer(targetLayer);
