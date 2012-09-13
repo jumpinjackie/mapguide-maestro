@@ -829,7 +829,7 @@ namespace Maestro.AddIn.Scripting.UI
             engine.Runtime.IO.SetOutput(new IPEStreamWrapper(IPEStreamWrapper.IPEngineResponse), engine.Runtime.IO.InputEncoding);
 
             //Create a temp object to use
-            object tempobject;
+            //object tempobject;
 
             //Begin IronTextBox evaluation if something there....
             if (command != string.Empty)
@@ -923,11 +923,10 @@ namespace Maestro.AddIn.Scripting.UI
                     //Need to do a ReadStatement...
                     try
                     {
-                        bool isMultiLine = false;
-                        int autoIndentSize = 0;
+                        //bool isMultiLine = false;
                         int numberOfBlankLines = 0;
                         object ExecWrapper = null;
-                        bool result;
+                        //bool result;
 
                         string line = command;
                         if (line == null)
@@ -936,15 +935,13 @@ namespace Maestro.AddIn.Scripting.UI
                             {
                                 //Ops.Call(ExecWrapper, new object[] { null });//not needed for IP2?
                             }
-                            result = false;
+                            //result = false;
                         }
 
                         defBuilder.Append(line);
                         defBuilder.Append("\r\n"); //NOXLATE
 
                         bool endOfInput = (line.Length == 0);
-                        bool parsingMultiLineString;
-                        bool parsingMultiLineCmpdStmt;
 
                         //old//s = ParsetheText(consoleTextBox.global_eng.Sys, new CompilerContext(), defBuilder.ToString(), endOfInput, out parsingMultiLineString, out isMultiLine);
                         string[] seperators = new string[] { "\r" }; //NOXLATE
@@ -960,11 +957,11 @@ namespace Maestro.AddIn.Scripting.UI
                         {
                             // Note that splitting a string literal over multiple lines does not 
                             // constitute a multi-line statement.
-                            isMultiLine = true;
+                            //isMultiLine = true;
                         }
 
                         //autoIndentSize = Parser.GetNextAutoIndentSize(defBuilder.ToString(), autoIndentSize);//Not needed in IP2?
-                        result = true;
+                        //result = true;
                     }
                     catch
                     {

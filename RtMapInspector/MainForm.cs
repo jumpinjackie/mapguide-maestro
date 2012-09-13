@@ -430,7 +430,7 @@ namespace RtMapInspector
                 _conn = login.Connection;
                 if (Array.IndexOf(_conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) < 0)
                 {
-                    MessageBox.Show(Properties.Resources.ErrIncompatibleConnection);
+                    MessageBox.Show(Strings.ErrIncompatibleConnection);
                     Application.Exit();
                 }
                 _mappingSvc = (IMappingService)_conn.GetService((int)ServiceType.Mapping);
@@ -458,7 +458,7 @@ namespace RtMapInspector
 
             if (_rtMap == null)
             {
-                MessageBox.Show(Properties.Resources.ErrFailedRuntimeMapOpen);
+                MessageBox.Show(Strings.ErrFailedRuntimeMapOpen);
                 return;
             }
 

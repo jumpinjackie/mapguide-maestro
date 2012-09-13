@@ -104,6 +104,10 @@ namespace OSGeo.MapGuide.MaestroAPI
             RestartSession(true);
         }
 
+        /// <summary>
+        /// Raised when the associated session id has changed. This would happen if the connection detected an expired session
+        /// and built a new session
+        /// </summary>
         public event EventHandler SessionIDChanged;
 
         /// <summary>
@@ -120,6 +124,12 @@ namespace OSGeo.MapGuide.MaestroAPI
             return ret;
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.SessionIDChanged"/> event if the
+        /// old and new session ids do not match
+        /// </summary>
+        /// <param name="oldSessionId"></param>
+        /// <param name="newSessionId"></param>
         protected void CheckAndRaiseSessionChanged(string oldSessionId, string newSessionId)
         {
             if (!string.IsNullOrEmpty(oldSessionId))
@@ -133,6 +143,11 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+        /// <summary>
+        /// Attempts to create a new session
+        /// </summary>
+        /// <param name="throwException"></param>
+        /// <returns></returns>
         protected abstract bool RestartSessionInternal(bool throwException);
 
         #endregion
@@ -171,6 +186,16 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         #region Rendering
 
+        /// <summary>
+        /// Identifies those features that meet the specified spatial selection criteria. This operation is used to implement server-side selection. In addition to a selection set, this operation returns attribute information in case only one feature is selected. 
+        /// </summary>
+        /// <param name="rtMap">The runtime map to identify features</param>
+        /// <param name="maxFeatures">The maximum number of features to return</param>
+        /// <param name="wkt">The WKT of the filter geometry</param>
+        /// <param name="persist">If true will update the selection set for the given map</param>
+        /// <param name="selectionVariant">The type of spatial operator to use for the spatial query</param>
+        /// <param name="extraOptions">Extra querying options</param>
+        /// <returns></returns>
         public abstract string QueryMapFeatures(RuntimeMap rtMap, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions);
 
         /// <summary>
@@ -202,7 +227,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
-        /// <param name="resourceId">The resource id.</param>
+        /// <param name="map">The runtime map instance.</param>
         /// <param name="x">The x.</param>
         /// <param name="y">The y.</param>
         /// <param name="scale">The scale.</param>
@@ -218,7 +243,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
-        /// <param name="resourceId">The resource id.</param>
+        /// <param name="map">The runtime map instance.</param>
         /// <param name="x1">The x1.</param>
         /// <param name="y1">The y1.</param>
         /// <param name="x2">The x2.</param>
@@ -235,7 +260,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
-        /// <param name="resourceId">The resource id.</param>
+        /// <param name="map">The runtime map instance.</param>
         /// <param name="x">The x.</param>
         /// <param name="y">The y.</param>
         /// <param name="scale">The scale.</param>
@@ -252,7 +277,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
-        /// <param name="resourceId">The resource id.</param>
+        /// <param name="map">The runtime map instance.</param>
         /// <param name="x1">The x1.</param>
         /// <param name="y1">The y1.</param>
         /// <param name="x2">The x2.</param>
@@ -270,7 +295,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
-        /// <param name="resourceId">The resource id.</param>
+        /// <param name="map">The runtime map instance.</param>
         /// <param name="x">The x.</param>
         /// <param name="y">The y.</param>
         /// <param name="scale">The scale.</param>
@@ -284,7 +309,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
-        /// <param name="resourceId">The resource id.</param>
+        /// <param name="map">The runtime map instance.</param>
         /// <param name="x1">The x1.</param>
         /// <param name="y1">The y1.</param>
         /// <param name="x2">The x2.</param>

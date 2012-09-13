@@ -153,7 +153,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             OnConnectionChanged();
         }
 
-
+        /// <summary>
+        /// Raised when a resource document reset is required
+        /// </summary>
         public event EventHandler RequestDocumentReset;
     }
 }

@@ -62,6 +62,7 @@ namespace Maestro.Editors.SymbolDefinition
         {
             service.RegisterCustomNotifier(this);
             _sym = (ISimpleSymbolDefinition)service.GetEditedResource();
+            _edSvc = service;
 
             _pu = _sym.PointUsage;
             _lu = _sym.LineUsage;

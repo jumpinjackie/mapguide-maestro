@@ -60,8 +60,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public Type Type { get; set; }
     }
 
+    /// <summary>
+    /// Extension methods for <see cref="T:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer"/>
+    /// </summary>
     public static class Extensions
     {
+        /// <summary>
+        /// Gets the parent group
+        /// </summary>
+        /// <param name="layer"></param>
+        /// <returns></returns>
         public static RuntimeMapGroup GetParentGroup(this RuntimeMapLayer layer)
         {
             Check.NotNull(layer, "layer"); //NOXLATE
@@ -112,6 +120,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         public RuntimeMap Parent { get; private set; }
 
+        /// <summary>
+        /// Initializes this instances from the specified Layer Definition
+        /// </summary>
+        /// <param name="ldf"></param>
         protected void Initialize(ILayerDefinition ldf)
         {
             Check.NotNull(ldf, "ldf"); //NOXLATE
@@ -167,6 +179,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             EnsureOrderedMinMaxScales();
         }
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
+        /// <param name="parent"></param>
         protected internal RuntimeMapLayer(RuntimeMap parent) 
         {
             _scaleRanges = new double[] { 0.0, InfinityScale };
@@ -201,6 +217,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             _disableChangeTracking = false;
         }
 
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="source"></param>
+        /// <param name="ldf"></param>
         protected internal RuntimeMapLayer(RuntimeMap parent, IMapLayer source, ILayerDefinition ldf)
             : this(parent, (IBaseMapLayer)source, ldf)
         {
@@ -212,6 +234,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             _disableChangeTracking = false;
         }
 
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="source"></param>
+        /// <param name="ldf"></param>
         protected internal RuntimeMapLayer(RuntimeMap parent, IBaseMapLayer source, ILayerDefinition ldf) 
             : this(parent, ldf)
         {

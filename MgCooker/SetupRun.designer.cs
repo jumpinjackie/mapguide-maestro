@@ -53,7 +53,6 @@ namespace MgCooker
             this.chkUseDifferentConnection = new System.Windows.Forms.CheckBox();
             this.UseNativeAPI = new System.Windows.Forms.CheckBox();
             this.Password = new System.Windows.Forms.TextBox();
-            this.Username = new System.Windows.Forms.TextBox();
             this.MapAgent = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -74,6 +73,7 @@ namespace MgCooker
             this.MaxColLimit = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.Username = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.BoundsOverride.SuspendLayout();
@@ -259,12 +259,6 @@ namespace MgCooker
             this.toolTip1.SetToolTip(this.Password, resources.GetString("Password.ToolTip"));
             this.Password.UseSystemPasswordChar = true;
             // 
-            // Username
-            // 
-            resources.ApplyResources(this.Username, "Username");
-            this.Username.Name = "Username";
-            this.toolTip1.SetToolTip(this.Username, resources.GetString("Username.ToolTip"));
-            // 
             // MapAgent
             // 
             resources.ApplyResources(this.MapAgent, "MapAgent");
@@ -421,6 +415,12 @@ namespace MgCooker
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
+            // Username
+            // 
+            resources.ApplyResources(this.Username, "Username");
+            this.Username.Name = "Username";
+            this.toolTip1.SetToolTip(this.Username, resources.GetString("Username.ToolTip"));
+            // 
             // SetupRun
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -464,7 +464,6 @@ namespace MgCooker
         private System.Windows.Forms.GroupBox grpDifferentConnection;
         private System.Windows.Forms.CheckBox UseNativeAPI;
         private System.Windows.Forms.TextBox Password;
-        private System.Windows.Forms.TextBox Username;
         private System.Windows.Forms.TextBox MapAgent;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -497,5 +496,6 @@ namespace MgCooker
         private System.Windows.Forms.Button ResetBounds;
         private System.Windows.Forms.Label ModfiedOverrideWarning;
         private System.Windows.Forms.CheckBox chkUseDifferentConnection;
+        private System.Windows.Forms.TextBox Username;
     }
 }

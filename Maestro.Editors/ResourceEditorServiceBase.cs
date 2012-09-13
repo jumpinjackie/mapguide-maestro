@@ -482,8 +482,16 @@ namespace Maestro.Editors
             get { return _conn.Capabilities.SupportedServices; }
         }
 
+        /// <summary>
+        /// Runs the specified process with the given arguments
+        /// </summary>
+        /// <param name="processName"></param>
+        /// <param name="args"></param>
         public abstract void RunProcess(string processName, params string[] args);
 
+        /// <summary>
+        /// Performs processing before a resource preview is generated
+        /// </summary>
         public void PrePreviewProcess()
         {
             SyncSessionCopy();
@@ -492,6 +500,9 @@ namespace Maestro.Editors
                 handler(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Raised when processing is required before a preview is generated
+        /// </summary>
         public event EventHandler BeforePreview;
     }
 }

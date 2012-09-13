@@ -54,6 +54,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             return true;
         }
 
+        /// <summary>
+        /// If the specified old value is different from the new value, the specified setter is invoked
+        /// and a <see cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/> event
+        /// is raised
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="oldValue"></param>
+        /// <param name="newValue"></param>
+        /// <param name="setter"></param>
+        /// <param name="propertyName"></param>
+        /// <returns></returns>
         protected virtual bool ObservableSet<T>(T oldValue, T newValue, Action<T> setter, string propertyName)
         {
             if (EqualityComparer<T>.Default.Equals(oldValue, newValue))

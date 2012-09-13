@@ -30,9 +30,22 @@ using System.Collections;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 {
+    /// <summary>
+    /// Defines a list of difference
+    /// </summary>
     public interface IDiffList
     {
+        /// <summary>
+        /// Gets the number of instances
+        /// </summary>
+        /// <returns></returns>
         int Count();
+
+        /// <summary>
+        /// Gets a diff at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         IComparable GetByIndex(int index);
     }
 
@@ -178,15 +191,32 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
         }
     }
 
-
+    /// <summary>
+    /// Defines the status of a diff result span
+    /// </summary>
     public enum DiffResultSpanStatus
     {
+        /// <summary>
+        /// 
+        /// </summary>
         NoChange,
+        /// <summary>
+        /// 
+        /// </summary>
         Replace,
+        /// <summary>
+        /// 
+        /// </summary>
         DeleteSource,
+        /// <summary>
+        /// 
+        /// </summary>
         AddDestination
     }
 
+    /// <summary>
+    /// Defines a diff result span
+    /// </summary>
     public class DiffResultSpan : IComparable
     {
         private const int BAD_INDEX = -1;
@@ -195,11 +225,33 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
         private int _length;
         private DiffResultSpanStatus _status;
 
+        /// <summary>
+        /// The destination index
+        /// </summary>
         public int DestIndex { get { return _destIndex; } }
+
+        /// <summary>
+        /// The source index
+        /// </summary>
         public int SourceIndex { get { return _sourceIndex; } }
+
+        /// <summary>
+        /// Gets the length of this span
+        /// </summary>
         public int Length { get { return _length; } }
+
+        /// <summary>
+        /// Gets the status of this span
+        /// </summary>
         public DiffResultSpanStatus Status { get { return _status; } }
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
+        /// <param name="status"></param>
+        /// <param name="destIndex"></param>
+        /// <param name="sourceIndex"></param>
+        /// <param name="length"></param>
         protected DiffResultSpan(
             DiffResultSpanStatus status,
             int destIndex,
@@ -212,31 +264,35 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
             _length = length;
         }
 
-        public static DiffResultSpan CreateNoChange(int destIndex, int sourceIndex, int length)
+        internal static DiffResultSpan CreateNoChange(int destIndex, int sourceIndex, int length)
         {
             return new DiffResultSpan(DiffResultSpanStatus.NoChange, destIndex, sourceIndex, length);
         }
 
-        public static DiffResultSpan CreateReplace(int destIndex, int sourceIndex, int length)
+        internal static DiffResultSpan CreateReplace(int destIndex, int sourceIndex, int length)
         {
             return new DiffResultSpan(DiffResultSpanStatus.Replace, destIndex, sourceIndex, length);
         }
 
-        public static DiffResultSpan CreateDeleteSource(int sourceIndex, int length)
+        internal static DiffResultSpan CreateDeleteSource(int sourceIndex, int length)
         {
             return new DiffResultSpan(DiffResultSpanStatus.DeleteSource, BAD_INDEX, sourceIndex, length);
         }
 
-        public static DiffResultSpan CreateAddDestination(int destIndex, int length)
+        internal static DiffResultSpan CreateAddDestination(int destIndex, int length)
         {
             return new DiffResultSpan(DiffResultSpanStatus.AddDestination, destIndex, BAD_INDEX, length);
         }
 
-        public void AddLength(int i)
+        internal void AddLength(int i)
         {
             _length += i;
         }
 
+        /// <summary>
+        /// Returns a string that represents the current object
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return string.Format("{0} (Dest: {1},Source: {2}) {3}", //NOXLATE
@@ -255,13 +311,28 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
         #endregion
     }
 
+    /// <summary>
+    /// Controls the level of perfection required when computing the differences
+    /// </summary>
     public enum DiffEngineLevel
     {
+        /// <summary>
+        /// Fast, but imperfect
+        /// </summary>
         FastImperfect,
+        /// <summary>
+        /// A balanced trade between speed and perfection
+        /// </summary>
         Medium,
+        /// <summary>
+        /// Slow, but perfect
+        /// </summary>
         SlowPerfect
     }
 
+    /// <summary>
+    /// Computes the differences between two sources
+    /// </summary>
     public class DiffEngine
     {
         private IDiffList _source;
@@ -272,6 +343,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 
         private DiffStateList _stateList;
 
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public DiffEngine()
         {
             _source = null;
@@ -426,12 +500,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
             }
         }
 
+        /// <summary>
+        /// Performs the difference computation using the specified level of control
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="destination"></param>
+        /// <param name="level"></param>
+        /// <returns>The total execution time in seconds</returns>
         public double ProcessDiff(IDiffList source, IDiffList destination, DiffEngineLevel level)
         {
             _level = level;
             return ProcessDiff(source, destination);
         }
 
+        /// <summary>
+        /// Performs the difference computation
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="destination"></param>
+        /// <returns>The total execution time in seconds</returns>
         public double ProcessDiff(IDiffList source, IDiffList destination)
         {
             DateTime dt = DateTime.Now;
@@ -502,6 +589,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
             return retval;
         }
 
+        /// <summary>
+        /// Returns the result of the difference computation
+        /// </summary>
+        /// <returns></returns>
         public List<DiffResultSpan> DiffReport()
         {
             var retval = new List<DiffResultSpan>();

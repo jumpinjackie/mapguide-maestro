@@ -34,14 +34,23 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 
 namespace Maestro.Editors.MapDefinition
 {
+    /// <summary>
+    /// A Live Map Definition editor control
+    /// </summary>
     [ToolboxItem(true)]
     public partial class LiveMapDefinitionEditorCtrl : EditorBase
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public LiveMapDefinitionEditorCtrl()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Gets the editor service
+        /// </summary>
         public IEditorService EditorService
         {
             get;
@@ -58,17 +67,32 @@ namespace Maestro.Editors.MapDefinition
             _rtMap.UpdateMapDefinition(_shadowCopy);
         }
 
+        /// <summary>
+        /// Gets the map definiton that's being edited
+        /// </summary>
+        /// <returns></returns>
         public IMapDefinition GetMapDefinition()
         {
             return _shadowCopy;
         }
 
+        /// <summary>
+        /// Gets or sets whether to convert tiled groups to untiled groups
+        /// </summary>
+        /// <remarks>
+        /// This property is a workaround for the fact that the map viewer currently does not support rendering of tiled
+        /// layers. It is recommended to set this property to true, otherwise such layers and groups are not visible on
+        /// the live preview
+        /// </remarks>
         public bool ConvertTiledGroupsToNonTiled
         {
             get { return viewer.ConvertTiledGroupsToNonTiled; }
             set { viewer.ConvertTiledGroupsToNonTiled = value; }
         }
 
+        /// <summary>
+        /// Refreshes the viewer
+        /// </summary>
         public void RefreshMap()
         {
             viewer.RefreshMap();
@@ -78,6 +102,10 @@ namespace Maestro.Editors.MapDefinition
         private IMapDefinition _shadowCopy;
         private IMappingService _mapSvc;
 
+        /// <summary>
+        /// Binds the specified editor service to this editor
+        /// </summary>
+        /// <param name="service"></param>
         public override void Bind(IEditorService service)
         {
             this.EditorService = service;
@@ -138,7 +166,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void repoView_RequestEdit(object sender, EventArgs e)
         {
-            MessageBox.Show("Not implemented yet");
+            MessageBox.Show(Strings.FeatureNotImplemented);
         }
     }
 }

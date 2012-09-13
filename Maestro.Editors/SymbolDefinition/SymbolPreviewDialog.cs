@@ -28,8 +28,14 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.SymbolDefinition
 {
+    /// <summary>
+    /// Displays an image of a symbol definition preview
+    /// </summary>
     public partial class SymbolPreviewDialog : Form
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public SymbolPreviewDialog(Image img)
         {
             InitializeComponent();

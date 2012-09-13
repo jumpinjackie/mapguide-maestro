@@ -220,8 +220,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Describes the specified feature source restricted to only the specified schema and the specified class names
         /// </summary>
-        /// <param name="resourceID"></param>
-        /// <param name="schema"></param>
+        /// <param name="resourceID">The feature source id</param>
+        /// <param name="schema">The schema name</param>
+        /// <param name="classNames">The array of class names to include in the resulting schema</param>
         /// <remarks>
         /// If you only need to list schemas and class names, use the respective <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemas" /> and
         /// <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames" /> methods. Using this API will have a noticeable performance impact on 

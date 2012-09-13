@@ -38,10 +38,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         private IPrecisionModel precisionModel;
         int index;
 
-        bool hasXY = true;
-        bool hasZ = false;
-        bool hasM = false;
-
         /// <summary> 
         /// Creates a <c>WKTReader</c> that creates objects using a basic GeometryFactory.
         /// </summary>
@@ -92,9 +88,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             tokenizer.Tokenize(tokens);     // Read directly all tokens
             index = 0;                      // Reset pointer to start of tokens
 
-            hasXY = true;
-            hasZ = false;
-            hasM = false;
             try
             {
                 return ReadGeometryTaggedText(tokens);
@@ -239,19 +232,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             string nextWord = GetNextWord(tokens);
             if (nextWord.Equals("XYZ")) //NOXLATE
             {
-                hasZ = true;
                 nextWord = GetNextWord(tokens);
             }
             else if (nextWord.Equals("XYM")) //NOXLATE
             {
-                hasM = true;
                 nextWord = GetNextWord(tokens);
             }
             else if (nextWord.Equals("ZM")) //NOXLATE
             {
-                hasXY = false; 
-                hasZ = true; 
-                hasM = true;
                 nextWord = GetNextWord(tokens);
             }
             if (nextWord.Equals("EMPTY") || nextWord.Equals("(")) //NOXLATE

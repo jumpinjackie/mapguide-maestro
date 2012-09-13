@@ -134,6 +134,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             _pos = -1;
         }
 
+        /// <summary>
+        /// Gets the property value type for the property at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public override PropertyValueType GetPropertyType(int index)
         {
             var prop = this.ClassDefinition.Properties[index];
@@ -147,6 +152,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
                 throw new ArgumentException();
         }
 
+        /// <summary>
+        /// Gets the property value type for the property of the specified name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public override PropertyValueType GetPropertyType(string name)
         {
             var prop = this.ClassDefinition.FindProperty(name);

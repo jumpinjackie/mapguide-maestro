@@ -91,13 +91,15 @@ namespace Maestro.Base.Editor
             private set;
         }
 
-        private bool _enableResourceTypeValidation = false;
-
+        /// <summary>
+        /// Sets the XML content and the type of resource this XML content is supposed to represent
+        /// </summary>
+        /// <param name="xml"></param>
+        /// <param name="type"></param>
         public void SetXmlContent(string xml, ResourceTypes type)
         {
             _ed.XmlContent = xml;
             this.ResourceType = type;
-            _enableResourceTypeValidation = true;
         }
 
         private string _lastSnapshot;

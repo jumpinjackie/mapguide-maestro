@@ -32,25 +32,44 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 
 namespace Maestro.Editors.Common
 {
+    /// <summary>
+    /// A control that provides a tree-based view of the repository
+    /// </summary>
     public partial class RepositoryView : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public RepositoryView()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Raises the Load event
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             RepositoryIcons.PopulateImageList(resImageList);
         }
 
+        /// <summary>
+        /// Navigates to the given folder, expanding any parent nodes along the way
+        /// </summary>
+        /// <param name="folderId"></param>
         public void NavigateTo(string folderId)
         {
             if (_model != null)
                 _model.NavigateTo(folderId);
         }
 
+        /// <summary>
+        /// Initializes this view
+        /// </summary>
+        /// <param name="resSvc"></param>
+        /// <param name="bFoldersOnly"></param>
         public void Init(IResourceService resSvc, bool bFoldersOnly)
         {
             if (_model != null)
@@ -71,6 +90,9 @@ namespace Maestro.Editors.Common
 
         private RepositoryFolderTreeModel _model;
 
+        /// <summary>
+        /// Gets the currently selected item
+        /// </summary>
         public IRepositoryItem SelectedItem
         {
             get
@@ -85,12 +107,26 @@ namespace Maestro.Editors.Common
             }
         }
 
+        /// <summary>
+        /// Raised when a repository item is selected
+        /// </summary>
         public event EventHandler ItemSelected;
 
+        /// <summary>
+        /// Adds a resource type to filter on
+        /// </summary>
+        /// <param name="rt"></param>
         public void AddResourceTypeFilter(ResourceTypes rt) { if (_model != null) _model.AddResourceTypeFilter(rt); }
 
+        /// <summary>
+        /// Clears all applied resource type filters
+        /// </summary>
         public void ClearResourceTypeFilters() { if (_model != null) _model.ClearResourceTypeFilters(); }
 
+        /// <summary>
+        /// Gets whether this view has resource type filters applied
+        /// </summary>
+        /// <returns></returns>
         public bool HasFilteredTypes() 
         {
             if (_model != null)
@@ -99,6 +135,10 @@ namespace Maestro.Editors.Common
                 return false;
         }
 
+        /// <summary>
+        /// Refreshes the model of the repostiory from the specified folder id
+        /// </summary>
+        /// <param name="folderId"></param>
         public void RefreshModel(string folderId)
         {
             if (_model != null)

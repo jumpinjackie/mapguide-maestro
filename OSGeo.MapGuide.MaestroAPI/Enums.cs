@@ -21,6 +21,9 @@ using System;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
+    /// <summary>
+    /// Commonly used string constants for MapGuide
+    /// </summary>
     public class StringConstants
     {
         /// <summary>
@@ -33,12 +36,24 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         public const string Thumbnail = "Thumbnail"; //NOXLATE
 
+        /// <summary>
+        /// The username login placeholder token
+        /// </summary>
         public const string MgUsernamePlaceholder = "%MG_USERNAME%"; //NOXLATE
 
+        /// <summary>
+        /// The password login placeholder token
+        /// </summary>
         public const string MgPasswordPlaceholder = "%MG_PASSWORD%"; //NOXLATE
 
+        /// <summary>
+        /// The placeholder token that resolves to the path containing resource data
+        /// </summary>
         public const string MgDataFilePath = "%MG_DATA_FILE_PATH%"; //NOXLATE
 
+        /// <summary>
+        /// The name of the resource data item containing the secured Feature Source credentials
+        /// </summary>
         public const string MgUserCredentialsResourceData = "MG_USER_CREDENTIALS"; //NOXLATE
     }
 

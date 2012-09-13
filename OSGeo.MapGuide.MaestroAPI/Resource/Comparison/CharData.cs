@@ -28,6 +28,7 @@ using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 {
+    /*
     public class CharDataDiffList : IDiffList
     {
         private char[] _charList;
@@ -50,4 +51,5 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 
         #endregion
     }
+     */
 }

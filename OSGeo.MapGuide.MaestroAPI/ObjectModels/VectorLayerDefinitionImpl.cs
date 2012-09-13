@@ -2192,7 +2192,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         {
             get
             {
-                return ExternalStrings.CompositeStyleDisplayString;
+                return Strings.CompositeStyleDisplayString;
             }
         }
 

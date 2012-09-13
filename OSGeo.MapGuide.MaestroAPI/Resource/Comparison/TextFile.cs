@@ -30,18 +30,30 @@ using System.IO;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 {
+    /// <summary>
+    /// Represents a line of text in a diff
+    /// </summary>
     public class TextLine : IComparable
     {
+        /// <summary>
+        /// The line content
+        /// </summary>
         public string Line;
-        public int _hash;
 
-        public TextLine(string str)
+        internal int _hash;
+
+        internal TextLine(string str)
         {
             Line = str.Replace("\t", "    "); //NOXLATE
             _hash = str.GetHashCode();
         }
         #region IComparable Members
 
+        /// <summary>
+        /// Compares this instance against the given instance
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public int CompareTo(object obj)
         {
             return _hash.CompareTo(((TextLine)obj)._hash);
@@ -50,11 +62,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
         #endregion
     }
 
-
+    /// <summary>
+    /// Represents a list of differences
+    /// </summary>
     public class TextFileDiffList : IDiffList
     {
         private List<TextLine> _lines;
 
+        /// <summary>
+        /// Creates a new instance
+        /// </summary>
+        /// <param name="fileName"></param>
         public TextFileDiffList(string fileName)
         {
             _lines = new List<TextLine>();
@@ -70,12 +88,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
             }
         }
         #region IDiffList Members
-
+        /// <summary>
+        /// Gets the number of lines
+        /// </summary>
+        /// <returns></returns>
         public int Count()
         {
             return _lines.Count;
         }
-
+        /// <summary>
+        /// Gets the line at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public IComparable GetByIndex(int index)
         {
             return _lines[index];

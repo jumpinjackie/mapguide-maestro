@@ -317,7 +317,7 @@ namespace Maestro.Editors.Generic.XmlEditor
         }
     }
 
-    public class TextRange : AbstractSegment
+    internal class TextRange : AbstractSegment
     {
         IDocument _document;
         public TextRange(IDocument document, int offset, int length)
@@ -330,7 +330,7 @@ namespace Maestro.Editors.Generic.XmlEditor
 
     /// <summary>This class finds occurrances of a search string in a text 
     /// editor's IDocument... it's like Find box without a GUI.</summary>
-    public class TextEditorSearcher : IDisposable
+    internal class TextEditorSearcher : IDisposable
     {
         IDocument _document;
         public IDocument Document
@@ -420,9 +420,11 @@ namespace Maestro.Editors.Generic.XmlEditor
         /// <summary>Finds next instance of LookFor, according to the search rules 
         /// (MatchCase, MatchWholeWordOnly).</summary>
         /// <param name="beginAtOffset">Offset in Document at which to begin the search</param>
+        /// <param name="searchBackward"></param>
+        /// <param name="loopedAround"></param>
         /// <remarks>If there is a match at beginAtOffset precisely, it will be returned.</remarks>
         /// <returns>Region of document that matches the search string</returns>
-        public TextRange FindNext(int beginAtOffset, bool searchBackward, out bool loopedAround)
+        internal TextRange FindNext(int beginAtOffset, bool searchBackward, out bool loopedAround)
         {
             Debug.Assert(!string.IsNullOrEmpty(_lookFor));
             loopedAround = false;
@@ -512,7 +514,7 @@ namespace Maestro.Editors.Generic.XmlEditor
 
     /// <summary>Bundles a group of markers together so that they can be cleared 
     /// together.</summary>
-    public class HighlightGroup : IDisposable
+    internal class HighlightGroup : IDisposable
     {
         List<TextMarker> _markers = new List<TextMarker>();
         TextEditorControl _editor;

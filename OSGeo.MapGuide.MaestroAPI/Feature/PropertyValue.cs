@@ -199,8 +199,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class ByteValue : ValueTypePropertyValue<byte>
     {
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public ByteValue() : base() { }
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public ByteValue(byte value) : base() { }
 
         /// <summary>
@@ -229,8 +235,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class BooleanValue : ValueTypePropertyValue<bool>
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public BooleanValue() : base() { }
 
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public BooleanValue(bool value) : base(value) { }
 
         /// <summary>
@@ -259,8 +271,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class BlobValue : ReferenceTypePropertyValue<byte[]>
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public BlobValue() : base() { }
 
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public BlobValue(byte[] value) : base(value) { } 
 
         /// <summary>
@@ -297,8 +315,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class ClobValue : ReferenceTypePropertyValue<char[]>
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public ClobValue() : base() { }
 
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public ClobValue(char[] value) : base(value) { }
 
         /// <summary>
@@ -335,8 +359,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class DateTimeValue : ValueTypePropertyValue<DateTime>
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public DateTimeValue() : base() { }
 
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public DateTimeValue(DateTime value) : base(value) { }
 
         /// <summary>
@@ -380,8 +410,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class DoubleValue : ValueTypePropertyValue<double>
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public DoubleValue() : base() { }
 
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public DoubleValue(double value) : base(value) { }
 
         /// <summary>
@@ -410,8 +446,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class FeatureValue : ReferenceTypePropertyValue<IFeature[]>
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public FeatureValue() : base() { }
 
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public FeatureValue(IFeature[] values) : base(values) { }
 
         /// <summary>
@@ -451,8 +493,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class GeometryValue : ReferenceTypePropertyValue<IGeometry>
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public GeometryValue() : base() { }
 
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public GeometryValue(IGeometry value) : base(value) { }
 
         /// <summary>
@@ -492,8 +540,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class Int16Value : ValueTypePropertyValue<short>
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public Int16Value() : base() { }
 
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public Int16Value(short value) : base(value) { }
 
         /// <summary>
@@ -522,8 +576,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class Int32Value : ValueTypePropertyValue<int>
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public Int32Value() : base() { }
 
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public Int32Value(int value) : base(value) { }
 
         /// <summary>
@@ -552,8 +612,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class Int64Value : ValueTypePropertyValue<long>
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public Int64Value() : base() { }
 
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public Int64Value(long value) : base(value) { }
 
         /// <summary>
@@ -582,8 +648,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class RasterValue : ReferenceTypePropertyValue<byte[]>
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public RasterValue() : base() { }
 
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public RasterValue(byte[] value) : base(value) { }
 
         /// <summary>
@@ -620,8 +692,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class SingleValue : ValueTypePropertyValue<float>
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public SingleValue() : base() { }
 
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public SingleValue(float value) : base(value) { }
 
         /// <summary>
@@ -650,8 +728,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class StringValue : ReferenceTypePropertyValue<string>
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public StringValue() : base() { }
 
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public StringValue(string value) : base(value) { }
 
         /// <summary>

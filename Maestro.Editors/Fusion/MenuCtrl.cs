@@ -30,7 +30,7 @@ using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 namespace Maestro.Editors.Fusion
 {
     [ToolboxItem(false)]
-    public partial class MenuCtrl : UserControl
+    internal partial class MenuCtrl : UserControl
     {
         private MenuCtrl()
         {

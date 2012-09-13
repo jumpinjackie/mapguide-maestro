@@ -29,8 +29,14 @@ using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 
 namespace Maestro.Editors.Fusion.WidgetEditors
 {
+    /// <summary>
+    /// Displays information about the widget and describes its extension parameters
+    /// </summary>
     public partial class WidgetInfoDialog : Form
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public WidgetInfoDialog(IWidgetInfo info)
         {
             InitializeComponent();

@@ -287,7 +287,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <summary>
         /// Creates a default advanced placement setting
         /// </summary>
-        /// <param name="limit"></param>
+        /// <param name="scaleLimit"></param>
         /// <returns></returns>
         IAdvancedPlacement CreateDefaultAdvancedPlacement(double scaleLimit);
 
@@ -1749,7 +1749,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// </summary>
     public interface ICompositeTypeStyle : IVectorStyle, IRuleCollection<ICompositeRule>
     {
+        /// <summary>
+        /// Gets a display string for data-binding purposes
+        /// </summary>
         string DisplayString { get; }
+
         /// <summary>
         /// Gets the composite rules.
         /// </summary>

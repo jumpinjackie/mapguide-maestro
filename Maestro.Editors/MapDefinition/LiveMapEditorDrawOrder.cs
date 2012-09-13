@@ -28,10 +28,13 @@ using OSGeo.MapGuide.MaestroAPI.Mapping;
 namespace Maestro.Editors.MapDefinition
 {
     /// <summary>
-    /// Description of LiveMapEditorDrawOrder.
+    /// A Live Map Editor component that displays the layers of the currently edited map by draw order
     /// </summary>
     public partial class LiveMapEditorDrawOrder : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public LiveMapEditorDrawOrder()
         {
             InitializeComponent();
@@ -42,6 +45,9 @@ namespace Maestro.Editors.MapDefinition
         private RuntimeMap _map;
         private IMapViewer _viewer;
         
+        /// <summary>
+        /// Gets or sets the viewer instance
+        /// </summary>
         public IMapViewer Viewer
         {
             get { return _viewer; }
@@ -129,8 +135,14 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
+        /// <summary>
+        /// Raised when a layer's draw order has changed
+        /// </summary>
         public event LayerEventHandler LayerChanged;
 
+        /// <summary>
+        /// Raised when a layer has been removed from this view
+        /// </summary>
         public event LayerEventHandler LayerDeleted;
 
         private void btnUp_Click(object sender, EventArgs e)
@@ -180,5 +192,10 @@ namespace Maestro.Editors.MapDefinition
         }
     }
 
+    /// <summary>
+    /// Represents a method that handles events relating to layer manipulation
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="layer"></param>
     public delegate void LayerEventHandler(object sender, RuntimeMapLayer layer);
 }

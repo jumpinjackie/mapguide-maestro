@@ -58,7 +58,13 @@ COPY /Y "$(SolutionDir)..\Maestro.AddIn.Local\*.dll" "$(ProjectDir)$(OutDir)"
             Assembly.LoadFrom("MGOS22\\OSGeo.MapGuide.MapGuideCommon.dll");
             Assembly.LoadFrom("MGOS22\\OSGeo.MapGuide.Web.dll");
             */
-            NUnit.ConsoleRunner.Runner.Main(args);
+            var runnerArgs = new string[1];
+            if (args.Length == 1)
+                runnerArgs[0] = args[0];
+            else
+                runnerArgs[0] = "MaestroAPITests.dll";
+
+            NUnit.ConsoleRunner.Runner.Main(runnerArgs);
         }
     }
 }

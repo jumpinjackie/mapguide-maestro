@@ -29,6 +29,7 @@ using System.IO;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 {
+    /*
     public class BinaryFileDiffList : IDiffList
     {
         private byte[] _byteList;
@@ -69,4 +70,5 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 
         #endregion
     }
+     */
 }

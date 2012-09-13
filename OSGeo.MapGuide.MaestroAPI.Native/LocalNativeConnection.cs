@@ -54,7 +54,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         private OSGeo.MapGuide.MgSiteConnection m_con;
         private string m_locale;
         private string m_sessionId;
-        private Version m_siteVersion = null;
 
         /// <summary>
         /// The web config file
@@ -175,7 +174,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 ex.Dispose();
                 return base.InferMPU(csWkt, units);
             }
-            catch (Exception ex) //Binding to assembly with pre-refactored CS API?
+            catch (Exception) //Binding to assembly with pre-refactored CS API?
             {
                 return base.InferMPU(csWkt, units);
             }

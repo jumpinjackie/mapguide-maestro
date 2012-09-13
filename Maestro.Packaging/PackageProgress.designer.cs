@@ -113,7 +113,7 @@ namespace Maestro.Packaging
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label OperationLabel;
         private System.Windows.Forms.Button CancelBtn;
-        public System.Windows.Forms.ProgressBar CurrentProgress;
+        private System.Windows.Forms.ProgressBar CurrentProgress;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
     }
 }

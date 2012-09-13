@@ -222,7 +222,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             int r;
             byte[] buf = new byte[1024];
 
-            bool rewound = false;
+            //bool rewound = false;
             if (rewind)
             {
                 if (source.CanSeek)
@@ -230,7 +230,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     try 
                     { 
                         source.Position = 0;
-                        rewound = true;
+                        //rewound = true;
                     }
                     catch { }
                 }
@@ -240,7 +240,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     if (roSource != null && roSource.CanRewind)
                     {
                         roSource.Rewind();
-                        rewound = true;
+                        //rewound = true;
                     }
                 }
 

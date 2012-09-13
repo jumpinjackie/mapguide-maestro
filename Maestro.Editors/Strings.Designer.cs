@@ -608,6 +608,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This feature is not implemented yet.
+        /// </summary>
+        internal static string FeatureNotImplemented {
+            get {
+                return ResourceManager.GetString("FeatureNotImplemented", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This field is required: {0}.
         /// </summary>
         internal static string FieldRequired {

@@ -26,10 +26,14 @@ using GeoAPI.Geometries;
 namespace OSGeo.MapGuide.MaestroAPI.Feature
 {
     /// <summary>
-    /// A mutable record
+    /// A record whose properties can be modified
     /// </summary>
     public class MutableRecordBase : RecordBase, IMutableRecord
     {
+        /// <summary>
+        /// Creates a new instance
+        /// </summary>
+        /// <param name="prototype"></param>
         protected MutableRecordBase(IRecordInitialize prototype)
         {
             _values.Clear();
@@ -43,6 +47,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             }
         }
 
+        /// <summary>
+        /// Creates a clone of the specified <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.PropertyValue"/>
+        /// </summary>
+        /// <param name="propertyValue">The instance to clone</param>
+        /// <returns>The cloned instance</returns>
         protected PropertyValue ClonePropertyValue(PropertyValue propertyValue)
         {
             if (propertyValue.IsNull)
@@ -501,6 +510,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class MutableRecord : MutableRecordBase
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public MutableRecord() : base(null) { }
     }
 }

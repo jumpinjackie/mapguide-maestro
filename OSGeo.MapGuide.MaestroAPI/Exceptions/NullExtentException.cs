@@ -23,6 +23,9 @@ using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI.Exceptions
 {
+    /// <summary>
+    /// Thrown when no result exists for a extent query
+    /// </summary>
     [global::System.Serializable]
     public class NullExtentException : Exception
     {
@@ -33,9 +36,29 @@ namespace OSGeo.MapGuide.MaestroAPI.Exceptions
         //    http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dncscol/html/csharp07192001.asp
         //
 
+        /// <summary>
+        /// Creates a new instance
+        /// </summary>
         public NullExtentException() { }
+
+        /// <summary>
+        /// Creates a new instance
+        /// </summary>
+        /// <param name="message"></param>
         public NullExtentException(string message) : base(message) { }
+
+        /// <summary>
+        /// Creates a new instance
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="inner"></param>
         public NullExtentException(string message, Exception inner) : base(message, inner) { }
+        
+        /// <summary>
+        /// Creates a new instance
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="context"></param>
         protected NullExtentException(
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context)

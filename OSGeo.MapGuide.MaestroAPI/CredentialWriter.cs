@@ -29,6 +29,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 {
     using Resource;
 
+    /// <summary>
+    /// Extension methods for feature sources
+    /// </summary>
     public static class FeatureSourceCredentialExtensions
     {
         /// <summary>

@@ -122,7 +122,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     public abstract class DefaultInsertCommand<TConn> : DefaultFeatureCommand<TConn>, IInsertFeatures where TConn : IServerConnection
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DefaultInsertCommand"/> class.
+        /// Initializes a new instance of the
         /// </summary>
         /// <param name="conn">The conn.</param>
         protected DefaultInsertCommand(TConn conn) : base(conn) { }
@@ -503,12 +503,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
             get;
             set;
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
         public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="mgr"></param>
         public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             throw new NotImplementedException();

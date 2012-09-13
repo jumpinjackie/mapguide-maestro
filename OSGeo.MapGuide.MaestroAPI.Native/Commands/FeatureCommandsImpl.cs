@@ -143,11 +143,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 ((MgDoubleProperty)p).SetValue(record.GetDouble(name));
                             }
                             break;
-                        case MgPropertyType.Feature:
-                            {
-                                throw new NotSupportedException();
-                            }
-                            break;
                         case MgPropertyType.Geometry:
                             {
                                 var agf = GeomConverter.GetAgf(record.GetGeometry(name));
@@ -169,11 +164,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 ((MgInt64Property)p).SetValue(record.GetInt64(name));
                             }
                             break;
-                        case MgPropertyType.Raster:
-                            {
-                                throw new NotSupportedException();
-                            }
-                            break;
                         case MgPropertyType.Single:
                             {
                                 ((MgSingleProperty)p).SetValue(record.GetSingle(name));
@@ -184,6 +174,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 ((MgStringProperty)p).SetValue(record.GetString(name));
                             }
                             break;
+                        default:
+                            throw new NotSupportedException();
                     }
                 }
             }
@@ -241,11 +233,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(propVal);
                             }
                             break;
-                        case PropertyValueType.Feature:
-                            {
-                                throw new NotSupportedException();
-                            }
-                            break;
                         case PropertyValueType.Geometry:
                             {
                                 var propVal = new MgGeometryProperty(name, null);
@@ -274,11 +261,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(propVal);
                             }
                             break;
-                        case PropertyValueType.Raster:
-                            {
-                                throw new NotSupportedException();
-                            }
-                            break;
                         case PropertyValueType.Single:
                             {
                                 var propVal = new MgSingleProperty(name, 0.0f);
@@ -293,6 +275,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(propVal);
                             }
                             break;
+                        default:
+                            throw new NotSupportedException();
                     }
                 }
                 else
@@ -337,11 +321,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(new MgDoubleProperty(name, record.GetDouble(i)));
                             }
                             break;
-                        case PropertyValueType.Feature:
-                            {
-                                throw new NotSupportedException();
-                            }
-                            break;
                         case PropertyValueType.Geometry:
                             {
                                 MgByteReader agf = GeomConverter.GetAgf(record.GetGeometry(i));
@@ -363,11 +342,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(new MgInt64Property(name, record.GetInt64(i)));
                             }
                             break;
-                        case PropertyValueType.Raster:
-                            {
-                                throw new NotSupportedException();
-                            }
-                            break;
                         case PropertyValueType.Single:
                             {
                                 props.Add(new MgSingleProperty(name, record.GetSingle(i)));
@@ -378,6 +352,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(new MgStringProperty(name, record.GetString(i)));
                             }
                             break;
+                        default:
+                            throw new NotSupportedException();
                     }
                 }
             }

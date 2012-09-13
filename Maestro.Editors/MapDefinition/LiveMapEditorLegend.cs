@@ -33,10 +33,13 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 namespace Maestro.Editors.MapDefinition
 {
     /// <summary>
-    /// Description of LiveMapEditorLegend.
+    /// A Live Map Editor component that displays the legend of the currently edited map
     /// </summary>
     public partial class LiveMapEditorLegend : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public LiveMapEditorLegend()
         {
             InitializeComponent();
@@ -50,10 +53,19 @@ namespace Maestro.Editors.MapDefinition
                 h(this, e);
         }
 
+        /// <summary>
+        /// Raised when a node in the legend is deleted
+        /// </summary>
         public event NodeEventHandler NodeDeleted;
 
+        /// <summary>
+        /// Raised when a node in the legend is selected
+        /// </summary>
         public event NodeEventHandler NodeSelected;
         
+        /// <summary>
+        /// Gets or sets the associated map viewer
+        /// </summary>
         public IMapViewer Viewer
         {
             get { return legendCtrl.Viewer; }

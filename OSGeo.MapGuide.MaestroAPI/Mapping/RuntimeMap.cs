@@ -127,6 +127,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
         internal IResourceService ResourceService { get { return this.CurrentConnection.ResourceService; } }
 
+        /// <summary>
+        /// Gets the <see cref="T:OSGeo.MapGuide.MaestroAPI.IServerConnection"/> that is attached to this instance
+        /// </summary>
         public IServerConnection CurrentConnection { get; private set; }
 
         internal Version SiteVersion { get; private set; }
@@ -150,6 +153,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         public const double Z_ORDER_TOP = 100.0;
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
+        /// <param name="conn"></param>
         protected internal RuntimeMap(IServerConnection conn)
         {
             this.StrictSelection = true;
@@ -478,6 +485,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
         }
 
+        /// <summary>
+        /// Sets the view center
+        /// </summary>
+        /// <param name="x">The center X coordinate</param>
+        /// <param name="y">The center Y coordinate</param>
         public virtual void SetViewCenter(double x, double y)
         {
             if (_viewCenter == null)
@@ -1340,7 +1352,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         /// <summary>
-        /// Raises the <see cref="PropertyChanged"/> event
+        /// Raises the <see cref="E:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.PropertyChanged"/> event
         /// </summary>
         /// <param name="propertyName"></param>
         protected override void OnPropertyChanged(string propertyName)
@@ -1494,7 +1506,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="sel"></param>
         /// <param name="format"></param>
-        /// <param name="behavior"></param>
+        /// <param name="keepSelection"></param>
         /// <returns></returns>
         [Obsolete("Use the version of RenderDynamicOverlay that is not marked Obsolete")] //NOXLATE
         public System.IO.Stream RenderDynamicOverlay(MapSelection sel, string format, bool keepSelection)
@@ -1551,6 +1563,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 format);
         }
 
+        /// <summary>
+        /// Convenience method for performing selection based on the given geometry
+        /// </summary>
+        /// <param name="wkt"></param>
+        /// <param name="maxFeatures"></param>
+        /// <param name="persist"></param>
+        /// <param name="selectionVariant"></param>
+        /// <param name="extraOptions"></param>
+        /// <returns></returns>
         public virtual string QueryMapFeatures(string wkt, int maxFeatures, bool persist, string selectionVariant, QueryMapOptions extraOptions)
         {
             if (_mapSvc == null)
@@ -1564,6 +1585,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             return ret;
         }
 
+        /// <summary>
+        /// Convenience method for rendering a layer style icon
+        /// </summary>
+        /// <param name="layerDefinitionID"></param>
+        /// <param name="scale"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <param name="format"></param>
+        /// <param name="geomType"></param>
+        /// <param name="themeCategory"></param>
+        /// <returns></returns>
         public System.Drawing.Image GetLegendImage(string layerDefinitionID, double scale, int width, int height, string format, int geomType, int themeCategory)
         {
             if (_mapSvc == null)

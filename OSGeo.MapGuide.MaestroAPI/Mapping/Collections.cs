@@ -276,7 +276,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// -or-
         /// The number of elements in the source <see cref="T:System.Collections.Generic.ICollection`1"/> is greater than the available space from <paramref name="arrayIndex"/> to the end of the destination <paramref name="array"/>.
         /// -or-
-        /// Type <paramref name="T"/> cannot be cast automatically to the type of the destination <paramref name="array"/>.
+        /// Type <paramref name="TVal"/> cannot be cast automatically to the type of the destination <paramref name="array"/>.
         ///   </exception>
         public void CopyTo(TVal[] array, int arrayIndex)
         {
@@ -360,7 +360,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         ///   </returns>
         ///   
         /// <exception cref="T:System.ArgumentOutOfRangeException">
-        ///   <paramref name="index"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.
+        ///   <paramref name="key"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.
         ///   </exception>
         ///   
         /// <exception cref="T:System.NotSupportedException">

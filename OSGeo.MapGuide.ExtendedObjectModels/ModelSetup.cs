@@ -59,6 +59,13 @@ namespace OSGeo.MapGuide.ExtendedObjectModels
     [CompilerGenerated]
     class NsDoc { }
 
+    /// <summary>
+    /// A helper class that registers validatiors, serializers and factories for resource types beyond the initial version
+    /// of a resource's XML schema. This allows for the consuming application to be able to properly consume all supported
+    /// versions of any resource type in their object-oriented forms. Versions that are not supported or recognised are treated
+    /// as <see cref="T:OSGeo.MapGuide.ObjectModels.UntypedResource"/> instances which are effectively containers of arbitrary
+    /// XML content
+    /// </summary>
     public static class ModelSetup
     {
         /// <summary>
@@ -66,6 +73,9 @@ namespace OSGeo.MapGuide.ExtendedObjectModels
         /// 
         /// Invoke this method as part of your application's startup process before using any other part of the Maestro API
         /// </summary>
+        /// <remarks>
+        /// This only needs to be called once, and should generally be done as part of your application's startup routine
+        /// </remarks>
         public static void Initialize()
         {
             //By default the ObjectFactory, ResourceTypeRegistry and ResourceValidatorSet only

@@ -32,13 +32,24 @@ using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace Maestro.Editors.MapDefinition
 {
+    /// <summary>
+    /// A Live Map Editor component that provides a view into the currently edited map's resource repository
+    /// </summary>
     public partial class LiveMapEditorRepositoryView : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public LiveMapEditorRepositoryView()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Initializes this view
+        /// </summary>
+        /// <param name="resSvc"></param>
+        /// <param name="filteredTypes"></param>
         public void Init(IResourceService resSvc, ResourceTypes[] filteredTypes)
         {
             repoView.Init(resSvc, false);
@@ -66,10 +77,19 @@ namespace Maestro.Editors.MapDefinition
                 h(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Raised when the currently selected item is requested to be added to the currently edited map
+        /// </summary>
         public event EventHandler RequestAddToMap;
 
+        /// <summary>
+        /// Raised when the currently selected item is requested to be edited
+        /// </summary>
         public event EventHandler RequestEdit;
 
+        /// <summary>
+        /// Gets the selected item in the repository
+        /// </summary>
         public IRepositoryItem SelectedItem
         {
             get { return repoView.SelectedItem; }

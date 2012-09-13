@@ -24,22 +24,40 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace OSGeo.MapGuide.MaestroAPI.Feature
 {
+    /// <summary>
+    /// Represents a Feature instance whose properties can be modified
+    /// </summary>
     public class MutableFeatureBase : MutableRecordBase, IMutableFeature
     {
+        /// <summary>
+        /// The class definition
+        /// </summary>
         protected ClassDefinition _clsDef;
 
+        /// <summary>
+        /// Creates a new instance
+        /// </summary>
+        /// <param name="feature"></param>
+        /// <param name="source"></param>
         protected MutableFeatureBase(IRecordInitialize feature, ClassDefinition source)
             : base(feature)
         {
             _clsDef = ClassDefinition.Clone(source);
         }
 
+        /// <summary>
+        /// Creates a new instance
+        /// </summary>
+        /// <param name="feat"></param>
         protected MutableFeatureBase(MutableFeatureBase feat)
             : this(feat, feat.ClassDefinition)
         {
 
         }
 
+        /// <summary>
+        /// Gets the associated class definition
+        /// </summary>
         public ClassDefinition ClassDefinition
         {
             get { return _clsDef; }

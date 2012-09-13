@@ -1480,10 +1480,10 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public virtual FeatureSourceDescription DescribeFeatureSource(string resourceID)
         {
-            bool bFromCache = true;
+            //bool bFromCache = true;
             if (!m_featureSchemaCache.ContainsKey(resourceID))
             {
-                bFromCache = false;
+                //bFromCache = false;
                 var fsd = this.DescribeFeatureSourceInternal(resourceID);
                 try
                 {
@@ -1532,7 +1532,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             string classCacheKey = resourceID + "!" + className; //NOXLATE
             ClassDefinition cls = null;
             bool bStoreInCache = true;
-            bool bFromCache = false;
+            //bool bFromCache = false;
 
             //We don't interrogate the Feature Source Description cache because part of
             //caching a Feature Source Description is to cache all the classes within
@@ -1540,7 +1540,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 cls = m_classDefinitionCache[classCacheKey];
                 bStoreInCache = false;
-                bFromCache = true;
+                //bFromCache = true;
             }
             else
             {

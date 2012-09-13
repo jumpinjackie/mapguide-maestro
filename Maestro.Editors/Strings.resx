@@ -3192,4 +3192,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="XmlEditorCursorTemplate" xml:space="preserve">
     <value>Line {0}, Column {1}</value>
   </data>
+  <data name="FeatureNotImplemented" xml:space="preserve">
+    <value>This feature is not implemented yet</value>
+  </data>
 </root>

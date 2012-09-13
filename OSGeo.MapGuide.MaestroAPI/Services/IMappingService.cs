@@ -188,11 +188,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Renders a dynamic overlay image of the map
         /// </summary>
-        /// <param name="map"></param>
-        /// <param name="selection"></param>
-        /// <param name="format"></param>
-        /// <param name="selectionColor"></param>
-        /// <param name="behaviour"></param>
+        /// <param name="map">The runtime map instance</param>
+        /// <param name="selection">The map selection</param>
+        /// <param name="format">The image format</param>
+        /// <param name="selectionColor">The color of the selection</param>
+        /// <param name="behaviour">The rendering behaviour</param>
         /// <returns></returns>
         /// <exception cref="T:System.NotSupportedException">Thrown if the service is too old to be able to support this API</exception>
         System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, Color selectionColor, int behaviour);
@@ -200,7 +200,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
-        /// <param name="resourceId">The resource id.</param>
+        /// <param name="map">The runtime map instance</param>
         /// <param name="x">The x.</param>
         /// <param name="y">The y.</param>
         /// <param name="scale">The scale.</param>
@@ -212,7 +212,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
-        /// <param name="resourceId">The resource id.</param>
+        /// <param name="map">The runtime map instance.</param>
         /// <param name="x1">The x1.</param>
         /// <param name="y1">The y1.</param>
         /// <param name="x2">The x2.</param>
@@ -226,7 +226,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
-        /// <param name="resourceId">The resource id.</param>
+        /// <param name="map">The runtime map instance.</param>
         /// <param name="x">The x.</param>
         /// <param name="y">The y.</param>
         /// <param name="scale">The scale.</param>
@@ -239,7 +239,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
-        /// <param name="resourceId">The resource id.</param>
+        /// <param name="map">The runtime map instance.</param>
         /// <param name="x1">The x1.</param>
         /// <param name="y1">The y1.</param>
         /// <param name="x2">The x2.</param>
@@ -254,7 +254,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
-        /// <param name="resourceId">The resource id.</param>
+        /// <param name="map">The runtime map instance.</param>
         /// <param name="x">The x.</param>
         /// <param name="y">The y.</param>
         /// <param name="scale">The scale.</param>
@@ -268,7 +268,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
-        /// <param name="resourceId">The resource id.</param>
+        /// <param name="map">The runtime map</param>
         /// <param name="x1">The x1.</param>
         /// <param name="y1">The y1.</param>
         /// <param name="x2">The x2.</param>

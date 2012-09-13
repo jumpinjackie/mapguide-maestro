@@ -43,6 +43,8 @@ namespace MgCooker
         private SetupRun()
         {
             InitializeComponent();
+            MapAgent.Text = "http://localhost/mapguide/mapagent/mapagent.fcgi";
+            Username.Text = "Anonymous";
         }
 
         internal SetupRun(string userName, string password, IServerConnection connection, string[] maps, Dictionary<string, string> args)
@@ -57,62 +59,62 @@ namespace MgCooker
         {
             m_connection = connection;
 
-            grpDifferentConnection.Enabled = chkUseDifferentConnection.Enabled = !m_connection.ProviderName.ToUpper().Equals("MAESTRO.LOCAL");
+            grpDifferentConnection.Enabled = chkUseDifferentConnection.Enabled = !m_connection.ProviderName.ToUpper().Equals("MAESTRO.LOCAL"); //NOXLATE
             m_commandlineargs = args;
             m_coordinateOverrides = new Dictionary<string, IEnvelope>();
 
             //HttpServerConnection hc = connection as HttpServerConnection;
             try
             {
-                var url = connection.GetCustomProperty("BaseUrl");
+                var url = connection.GetCustomProperty("BaseUrl"); //NOXLATE
                 if (url != null)
                     MapAgent.Text = url.ToString();
             }
             catch { }
 
-            if (m_commandlineargs.ContainsKey("mapdefinitions"))
-                m_commandlineargs.Remove("mapdefinitions");
-            if (m_commandlineargs.ContainsKey("scaleindex"))
-                m_commandlineargs.Remove("scaleindex");
-            if (m_commandlineargs.ContainsKey("basegroups"))
-                m_commandlineargs.Remove("basegroups");
+            if (m_commandlineargs.ContainsKey("mapdefinitions")) //NOXLATE
+                m_commandlineargs.Remove("mapdefinitions"); //NOXLATE
+            if (m_commandlineargs.ContainsKey("scaleindex")) //NOXLATE
+                m_commandlineargs.Remove("scaleindex"); //NOXLATE
+            if (m_commandlineargs.ContainsKey("basegroups")) //NOXLATE
+                m_commandlineargs.Remove("basegroups"); //NOXLATE
 
-            if (m_commandlineargs.ContainsKey("mapagent"))
-                MapAgent.Text = m_commandlineargs["mapagent"];
-            if (m_commandlineargs.ContainsKey("username"))
-                Username.Text = m_commandlineargs["username"];
-            if (m_commandlineargs.ContainsKey("password"))
-                Password.Text = m_commandlineargs["password"];
+            if (m_commandlineargs.ContainsKey("mapagent")) //NOXLATE
+                MapAgent.Text = m_commandlineargs["mapagent"]; //NOXLATE
+            if (m_commandlineargs.ContainsKey("username")) //NOXLATE
+                Username.Text = m_commandlineargs["username"]; //NOXLATE
+            if (m_commandlineargs.ContainsKey("password")) //NOXLATE
+                Password.Text = m_commandlineargs["password"]; //NOXLATE
 
-            if (m_commandlineargs.ContainsKey("native-connection"))
+            if (m_commandlineargs.ContainsKey("native-connection")) //NOXLATE
                 UseNativeAPI.Checked = true;
 
-            if (m_commandlineargs.ContainsKey("limitrows"))
+            if (m_commandlineargs.ContainsKey("limitrows")) //NOXLATE
             {
                 int i;
-                if (int.TryParse(m_commandlineargs["limitrows"], out i) && i > 0)
+                if (int.TryParse(m_commandlineargs["limitrows"], out i) && i > 0) //NOXLATE
                 {
                     MaxRowLimit.Value = i;
                     TilesetLimitPanel.Enabled = true;
                 }
             }
 
-            if (m_commandlineargs.ContainsKey("limitcols"))
+            if (m_commandlineargs.ContainsKey("limitcols")) //NOXLATE
             {
                 int i;
-                if (int.TryParse(m_commandlineargs["limitcols"], out i) && i > 0)
+                if (int.TryParse(m_commandlineargs["limitcols"], out i) && i > 0) //NOXLATE
                 {
                     MaxColLimit.Value = i;
                     TilesetLimitPanel.Enabled = true;
                 }
             }
 
-            if (m_commandlineargs.ContainsKey("metersperunit"))
+            if (m_commandlineargs.ContainsKey("metersperunit")) //NOXLATE
             {
                 double d;
                 if (
-                    double.TryParse(m_commandlineargs["metersperunit"], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentUICulture, out d)
-                    || double.TryParse(m_commandlineargs["metersperunit"], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d)
+                    double.TryParse(m_commandlineargs["metersperunit"], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentUICulture, out d) //NOXLATE
+                    || double.TryParse(m_commandlineargs["metersperunit"], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d) //NOXLATE
                     )
                     if (d >= (double)MetersPerUnit.Minimum && d <= (double)MetersPerUnit.Maximum)
                     {
@@ -124,7 +126,7 @@ namespace MgCooker
             if (maps == null || maps.Length == 0 || (maps.Length == 1 && maps[0].Trim().Length == 0))
             {
                 List<string> tmp = new List<string>();
-                foreach (ResourceListResourceDocument doc in m_connection.ResourceService.GetRepositoryResources("Library://", "MapDefinition").Items)
+                foreach (ResourceListResourceDocument doc in m_connection.ResourceService.GetRepositoryResources(StringConstants.RootIdentifier, ResourceTypes.MapDefinition.ToString()).Items)
                     tmp.Add(doc.ResourceId);
                 maps = tmp.ToArray();
             }
@@ -182,7 +184,7 @@ namespace MgCooker
             {
                 if (UseNativeAPI.Checked)
                 {
-                    string webconfig = System.IO.Path.Combine(Application.StartupPath, "webconfig.ini");
+                    string webconfig = System.IO.Path.Combine(Application.StartupPath, "webconfig.ini"); //NOXLATE
                     if (!System.IO.File.Exists(webconfig))
                     {
                         MessageBox.Show(this, string.Format(Strings.MissingWebConfigFile, webconfig), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -193,11 +195,11 @@ namespace MgCooker
                     {
                         var initP = new NameValueCollection();
 
-                        initP["ConfigFile"] = webconfig;
-                        initP["Username"] = Username.Text;
-                        initP["Password"] = Password.Text;
+                        initP["ConfigFile"] = webconfig; //NOXLATE
+                        initP["Username"] = Username.Text; //NOXLATE
+                        initP["Password"] = Password.Text; //NOXLATE
 
-                        con = ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", initP);
+                        con = ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", initP); //NOXLATE
                     }
                     catch (Exception ex)
                     {
@@ -212,12 +214,12 @@ namespace MgCooker
                     {
                         var initP = new NameValueCollection();
 
-                        initP["Url"] = MapAgent.Text;
-                        initP["Username"] = Username.Text;
-                        initP["Password"] = Password.Text;
-                        initP["AllowUntestedVersion"] = "true";
+                        initP["Url"] = MapAgent.Text; //NOXLATE
+                        initP["Username"] = Username.Text; //NOXLATE
+                        initP["Password"] = Password.Text; //NOXLATE
+                        initP["AllowUntestedVersion"] = "true"; //NOXLATE
 
-                        con = ConnectionProviderRegistry.CreateConnection("Maestro.Http", initP);
+                        con = ConnectionProviderRegistry.CreateConnection("Maestro.Http", initP); //NOXLATE
                     }
                     catch (Exception ex)
                     {
@@ -313,58 +315,58 @@ namespace MgCooker
         private void button3_Click(object sender, EventArgs e)
         {
             if (System.Environment.OSVersion.Platform == PlatformID.Unix)
-                saveFileDialog1.Filter = 
-                    string.Format(Strings.FileTypeShellScript + "|{0}", "*.sh") +
-                    string.Format(Strings.FileTypeAllFiles + "|{0}", "*.*");
+                saveFileDialog1.Filter =
+                    string.Format(Strings.FileTypeShellScript + "|{0}", "*.sh") + //NOXLATE
+                    string.Format(Strings.FileTypeAllFiles + "|{0}", "*.*"); //NOXLATE
 
             if (saveFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
                 StringBuilder args = new StringBuilder();
-                args.Append("--mapagent=\"" + MapAgent.Text + "\" ");
-                args.Append("--username=\"" + Username.Text + "\" ");
-                args.Append("--password=\"" + Password.Text + "\" ");
+                args.Append("--mapagent=\"" + MapAgent.Text + "\" "); //NOXLATE
+                args.Append("--username=\"" + Username.Text + "\" "); //NOXLATE
+                args.Append("--password=\"" + Password.Text + "\" "); //NOXLATE
 
                 if (LimitTileset.Checked)
                 {
                     if (MaxRowLimit.Value > 0)
-                        args.Append("--limitrows=\"" + ((int)MaxRowLimit.Value).ToString() + "\" ");
+                        args.Append("--limitrows=\"" + ((int)MaxRowLimit.Value).ToString() + "\" "); //NOXLATE
                     if (MaxColLimit.Value > 0)
-                        args.Append("--limitcols=\"" + ((int)MaxColLimit.Value).ToString() + "\" ");
+                        args.Append("--limitcols=\"" + ((int)MaxColLimit.Value).ToString() + "\" "); //NOXLATE
                 }
 
                 if (UseNativeAPI.Checked)
-                    args.Append("--native-connection ");
+                    args.Append("--native-connection "); //NOXLATE
                 if (UseOfficialMethod.Checked)
-                    args.Append("--metersperunit=" + ((double)MetersPerUnit.Value).ToString(System.Globalization.CultureInfo.InvariantCulture) + " ");
+                    args.Append("--metersperunit=" + ((double)MetersPerUnit.Value).ToString(System.Globalization.CultureInfo.InvariantCulture) + " "); //NOXLATE
 
-                args.Append("--threadcount=" + ((int)ThreadCount.Value).ToString() + " ");
+                args.Append("--threadcount=" + ((int)ThreadCount.Value).ToString() + " "); //NOXLATE
                 if (RandomTileOrder.Checked)
-                    args.Append("--random-tile-order ");
+                    args.Append("--random-tile-order "); //NOXLATE
 
 
                 string executable = System.IO.Path.GetFileName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
                 //Windows has problems with console output from GUI applications...
-                if (System.Environment.OSVersion.Platform != PlatformID.Unix && executable == "MgCooker.exe" && System.IO.File.Exists(System.IO.Path.Combine(Application.StartupPath, "MgCookerCommandline.exe")))
-                    executable = System.IO.Path.Combine(Application.StartupPath, "MgCookerCommandline.exe");
+                if (System.Environment.OSVersion.Platform != PlatformID.Unix && executable == "MgCooker.exe" && System.IO.File.Exists(System.IO.Path.Combine(Application.StartupPath, "MgCookerCommandline.exe"))) //NOXLATE
+                    executable = System.IO.Path.Combine(Application.StartupPath, "MgCookerCommandline.exe"); //NOXLATE
                 else
                     executable = System.IO.Path.Combine(Application.StartupPath, executable);
 
                 string exeName = System.IO.Path.GetFileName(executable);
                 string exePath = System.IO.Path.GetDirectoryName(executable);
 
-                executable = "\"" + executable + "\"";
+                executable = "\"" + executable + "\""; //NOXLATE
 
                 using (System.IO.StreamWriter sw = new System.IO.StreamWriter(saveFileDialog1.FileName))
                 {
                     if (System.Environment.OSVersion.Platform == PlatformID.Unix)
                     {
-                        sw.WriteLine("#!/bin/sh");
-                        executable = "mono " + executable;
+                        sw.WriteLine("#!/bin/sh"); //NOXLATE
+                        executable = "mono " + executable; //NOXLATE
                     }
                     else
                     {
-                        sw.WriteLine("@echo off");
+                        sw.WriteLine("@echo off"); //NOXLATE
                     }
 
                     //If on windows, wrap the exe call in a pushd/popd so that the executable is 
@@ -373,7 +375,7 @@ namespace MgCooker
                     if (System.Environment.OSVersion.Platform != PlatformID.MacOSX ||
                         System.Environment.OSVersion.Platform != PlatformID.Unix)
                     {
-                        sw.WriteLine("pushd \"" + exePath + "\"");
+                        sw.WriteLine("pushd \"" + exePath + "\""); //NOXLATE
                     }
 
                     foreach (Config c in ReadTree())
@@ -387,28 +389,29 @@ namespace MgCooker
                         {
                             sw.Write(executable);
                         }
-                        sw.Write(" batch");
-                        sw.Write(" --mapdefinitions=\"");
+                        sw.Write(" batch"); //NOXLATE
+                        sw.Write(" --mapdefinitions=\""); //NOXLATE
                         sw.Write(c.MapDefinition);
-                        sw.Write("\" --basegroups=\"");
+                        sw.Write("\" --basegroups=\""); //NOXLATE
                         sw.Write(c.Group);
-                        sw.Write("\" --scaleindex=");
+                        sw.Write("\" --scaleindex="); //NOXLATE
                         for (int i = 0; i < c.ScaleIndexes.Length; i++)
                         {
                             if (i != 0)
-                                sw.Write(",");
+                                sw.Write(","); //NOXLATE
                             sw.Write(c.ScaleIndexes[i].ToString());
                         }
-                        sw.Write(" "); // dont forget the space after the list of scaleindexes ticket #1316
+                        // dont forget the space after the list of scaleindexes ticket #1316
+                        sw.Write(" "); //NOXLATE
                         if (c.ExtentOverride != null)
                         {
-                            sw.Write(" --extentoverride=");
+                            sw.Write(" --extentoverride="); //NOXLATE
                             sw.Write(c.ExtentOverride.MinX.ToString(System.Globalization.CultureInfo.InvariantCulture));
-                            sw.Write(",");
+                            sw.Write(","); //NOXLATE
                             sw.Write(c.ExtentOverride.MinY.ToString(System.Globalization.CultureInfo.InvariantCulture));
-                            sw.Write(",");
+                            sw.Write(","); //NOXLATE
                             sw.Write(c.ExtentOverride.MaxX.ToString(System.Globalization.CultureInfo.InvariantCulture));
-                            sw.Write(",");
+                            sw.Write(","); //NOXLATE
                             sw.Write(c.ExtentOverride.MaxY.ToString(System.Globalization.CultureInfo.InvariantCulture));
                         }
 
@@ -419,7 +422,7 @@ namespace MgCooker
                     if (System.Environment.OSVersion.Platform != PlatformID.MacOSX ||
                         System.Environment.OSVersion.Platform != PlatformID.Unix)
                     {
-                        sw.WriteLine("popd");
+                        sw.WriteLine("popd"); //NOXLATE
                     }
                 }
             }

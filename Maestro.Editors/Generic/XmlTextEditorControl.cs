@@ -34,6 +34,9 @@ namespace Maestro.Editors.Generic
     [ToolboxItem(false)]
     public class XmlTextEditorControl : TextEditorControl
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public XmlTextEditorControl()
         { 
         

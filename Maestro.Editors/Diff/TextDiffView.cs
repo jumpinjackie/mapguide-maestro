@@ -34,8 +34,14 @@ using System.Collections;
 
 namespace Maestro.Editors.Diff
 {
+    /// <summary>
+    /// Displays a visual comparison of two bodies of text
+    /// </summary>
     public partial class TextDiffView : Form
     {
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public TextDiffView()
         {
             InitializeComponent();
@@ -43,6 +49,9 @@ namespace Maestro.Editors.Diff
 
         const string NumFormat = "00000";
 
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public TextDiffView(TextFileDiffList source, TextFileDiffList destination, List<DiffResultSpan> DiffLines, double seconds)
             : this()
         {

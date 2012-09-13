@@ -75,6 +75,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         IFeatureReader GetFeatureObject(int index);
     }
 
+    /// <summary>
+    /// Defines a mutable feature record
+    /// </summary>
     public interface IMutableFeature : IMutableRecord
     {
         /// <summary>

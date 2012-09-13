@@ -115,12 +115,24 @@ namespace Maestro.Editors.Common
                     return true;
             }
 
+            /// <summary>
+            /// 
+            /// </summary>
             public event EventHandler<TreeModelEventArgs> NodesChanged;
 
+            /// <summary>
+            /// 
+            /// </summary>
             public event EventHandler<TreeModelEventArgs> NodesInserted;
 
+            /// <summary>
+            /// 
+            /// </summary>
             public event EventHandler<TreeModelEventArgs> NodesRemoved;
 
+            /// <summary>
+            /// 
+            /// </summary>
             public event EventHandler<TreePathEventArgs> StructureChanged;
         }
 

@@ -29,7 +29,7 @@ using OSGeo.MapGuide.MaestroAPI.Mapping;
 
 namespace Maestro.Editors.MapDefinition.Live
 {
-    public partial class NewGroupDialog : Form
+    internal partial class NewGroupDialog : Form
     {
         private RuntimeMap _map;
 

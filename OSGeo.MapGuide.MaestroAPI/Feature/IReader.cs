@@ -352,6 +352,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         PropertyValueType GetPropertyType(int index);
     }
 
+    /// <summary>
+    /// Defines a records whose properties can be modified
+    /// </summary>
     public interface IMutableRecord : IRecord, IRecordInitialize
     {
         /// <summary>
@@ -386,6 +389,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the boolean value of the specified property
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetBoolean(string name, bool value);
 
@@ -393,6 +397,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the byte value of the specified property
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetByte(string name, byte value);
 
@@ -400,6 +405,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the blob value of the specified property
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetBlob(string name, byte[] value);
 
@@ -407,6 +413,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the clob value of the specified property
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetClob(string name, char[] value);
 
@@ -414,6 +421,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the double value of the specified property
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetDouble(string name, double value);
 
@@ -421,6 +429,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the datetime value of the specified property
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetDateTime(string name, DateTime value);
 
@@ -428,6 +437,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the int16 value of the specified property
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetInt16(string name, short value);
 
@@ -435,6 +445,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the int32 value of the specified property
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetInt32(string name, int value);
 
@@ -442,6 +453,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the int64 value of the specified property
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetInt64(string name, long value);
 
@@ -449,6 +461,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the single value of the specified property
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetSingle(string name, float value);
 
@@ -456,6 +469,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the string value of the specified property
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetString(string name, string value);
 
@@ -463,6 +477,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the geometry value of the specified property
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetGeometry(string name, IGeometry value);
 
@@ -470,6 +485,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the boolean value at the specified index
         /// </summary>
         /// <param name="index"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetBoolean(int index, bool value);
 
@@ -477,6 +493,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the byte value at the specified index
         /// </summary>
         /// <param name="index"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetByte(int index, byte value);
 
@@ -484,6 +501,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the blob value at the specified index
         /// </summary>
         /// <param name="index"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetBlob(int index, byte[] value);
 
@@ -491,6 +509,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the clob value at the specified index
         /// </summary>
         /// <param name="index"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetClob(int index, char[] value);
 
@@ -498,6 +517,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the double value at the specified index
         /// </summary>
         /// <param name="index"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetDouble(int index, double value);
 
@@ -505,6 +525,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the datetime value at the specified index
         /// </summary>
         /// <param name="index"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetDateTime(int index, DateTime value);
 
@@ -512,6 +533,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the int16 value at the specified index
         /// </summary>
         /// <param name="index"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetInt16(int index, short value);
 
@@ -519,6 +541,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the int32 value at the specified index
         /// </summary>
         /// <param name="index"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetInt32(int index, int value);
 
@@ -526,6 +549,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the int64 value at the specified index
         /// </summary>
         /// <param name="index"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetInt64(int index, long value);
 
@@ -533,6 +557,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the single value at the specified index
         /// </summary>
         /// <param name="index"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetSingle(int index, float value);
 
@@ -540,6 +565,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the string value at the specified index
         /// </summary>
         /// <param name="index"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetString(int index, string value);
 
@@ -547,6 +573,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// Sets the geometry value at the specified index
         /// </summary>
         /// <param name="index"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         void SetGeometry(int index, IGeometry value);
     }
