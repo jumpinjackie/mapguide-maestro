@@ -195,6 +195,7 @@ namespace Maestro.MapViewer
             this.TooltipFillColor = Color.LightYellow;
             this.TooltipFillTransparency = 200;
             this.MouseWheelDelayRenderInterval = 800;
+            this.TooltipDelayInterval = 1000;
 
             this.ActiveTool = MapActiveTool.None;
             this.DoubleBuffered = true;
@@ -229,6 +230,7 @@ namespace Maestro.MapViewer
             base.MouseHover += OnMapMouseHover;
             base.MouseEnter += OnMouseEnter;
             base.MouseWheel += OnMapMouseWheel;
+            base.MouseLeave += OnMapMouseLeave;
         }
 
         /// <summary>
@@ -298,6 +300,7 @@ namespace Maestro.MapViewer
                 base.MouseDoubleClick -= OnMapMouseDoubleClick;
                 base.MouseHover -= OnMapMouseHover;
                 base.MouseEnter -= OnMouseEnter;
+                base.MouseLeave -= OnMapMouseLeave; 
 
                 if (renderWorker != null)
                 {
@@ -328,6 +331,13 @@ namespace Maestro.MapViewer
         [Category("MapGuide Viewer")]
         [Description("The amount of time (in ms) to wait to re-render after a mouse wheel scroll")]
         public int MouseWheelDelayRenderInterval { get; set; }
+
+        /// <summary> 
+        /// The amount of time (in ms) to wait to re-render after a mouse wheel scroll 
+        /// </summary> 
+        [Category("MapGuide Viewer")]
+        [Description("The amount of time (in ms) to wait to fire off a tooltip request after the mouse pointer becomes stationary")]
+        public int TooltipDelayInterval { get; set; } 
 
         private Color _selColor;
 
@@ -1928,8 +1938,6 @@ namespace Maestro.MapViewer
             return "POLYGON((" + x1 + " " + y1 + ", " + x2 + " " + y1 + ", " + x2 + " " + y2 + ", " + x1 + " " + y2 + ", " + x1 + " " + y1 + "))";
         }
 
-        
-
         private int? _lastTooltipX;
         private int? _lastTooltipY;
 
@@ -1969,15 +1977,16 @@ namespace Maestro.MapViewer
                 });
             try
             {
-                var doc = new XmlDocument();
-                doc.LoadXml(res);
-                return doc.DocumentElement["Tooltip"].InnerText;
+                _tooltipDoc.LoadXml(res);
+                return _tooltipDoc.DocumentElement["Tooltip"].InnerText;
             }
             catch
             {
                 return string.Empty;
             }
         }
+
+        private XmlDocument _tooltipDoc = new XmlDocument();
 
         private static string[] GetAllLayerNames(RuntimeMap map)
         {
@@ -2065,35 +2074,48 @@ namespace Maestro.MapViewer
 
         #region Mouse handlers
 
+        private void OnMapMouseLeave(object sender, EventArgs e)
+        {
+            //Need to do this otherwise a tooltip query is made at the viewer boundary 
+ 		    if (delayTooltipTimer != null && delayTooltipTimer.Enabled) 
+ 		        delayTooltipTimer.Stop(); 
+        }
+
         private void OnMapMouseDown(object sender, MouseEventArgs e)
         {
+            if (IsBusy) return;
             HandleMouseDown(e);
         }
 
         private void OnMapMouseMove(object sender, MouseEventArgs e)
         {
+            if (IsBusy) return;
             HandleMouseMove(e);
         }
         
         private void OnMapMouseUp(object sender, MouseEventArgs e)
         {
+            if (IsBusy) return;
             HandleMouseUp(e);
         }
 
         private void OnMapMouseWheel(object sender, MouseEventArgs e)
         {
+            if (IsBusy) return;
             this.Focus();
             HandleMouseWheel(e);
         }
 
         private void OnMapMouseClick(object sender, MouseEventArgs e)
         {
+            if (IsBusy) return;
             this.Focus();
             HandleMouseClick(e);
         }
 
         private void OnMapMouseDoubleClick(object sender, MouseEventArgs e)
         {
+            if (IsBusy) return;
             this.Focus();
             HandleMouseDoubleClick(e);
         }
@@ -2468,15 +2490,22 @@ namespace Maestro.MapViewer
                    (this.ActiveTool == MapActiveTool.Select || this.ActiveTool == MapActiveTool.Pan) &&
                     this.TooltipsEnabled)
                 {
-#if TRACE
-                    var sw = new Stopwatch();
-                    sw.Start();
-#endif
-                    _activeTooltipText = QueryFirstVisibleTooltip(e.X, e.Y);
-#if TRACE
-                    sw.Stop();
-                    Trace.TraceInformation("QueryFirstVisibleTooltip() executed in {0}ms", sw.ElapsedMilliseconds);
-#endif
+                    if (delayTooltipTimer == null) 
+ 		            { 
+ 		                delayTooltipTimer = new System.Timers.Timer(); 
+ 		                delayTooltipTimer.Enabled = false; 
+ 		                delayTooltipTimer.Elapsed += new System.Timers.ElapsedEventHandler(OnDelayTooltipTimerElapsed); 
+ 		                delayTooltipTimer.Interval = this.TooltipDelayInterval; 
+ 		            } 
+ 		 
+ 		            _delayTooltipQueryPoint = new Point(e.X, e.Y); 
+ 		            delayTooltipTimer.Start(); 
+ 		 
+ 		            if (Math.Abs(e.X - _lastTooltipQueryX) > 2 || Math.Abs(e.Y - _lastTooltipQueryY) > 2) 
+ 		            { 
+ 		                _activeTooltipText = null; 
+ 		                Invalidate(); 
+ 		            } 
                 }
                 else
                 {
@@ -2498,6 +2527,24 @@ namespace Maestro.MapViewer
                 Invalidate();
             }
         }
+
+        void OnDelayTooltipTimerElapsed(object sender, System.Timers.ElapsedEventArgs e) 
+ 		{ 
+ 		    delayTooltipTimer.Stop(); 
+ 		    if (_delayTooltipQueryPoint.HasValue) 
+ 		    { 
+ 		        _activeTooltipText = QueryFirstVisibleTooltip(_delayTooltipQueryPoint.Value.X, _delayTooltipQueryPoint.Value.Y); 
+ 		        _lastTooltipQueryX = _delayTooltipQueryPoint.Value.X; 
+ 		        _lastTooltipQueryY = _delayTooltipQueryPoint.Value.Y; 
+ 		        _delayTooltipQueryPoint = null; 
+ 		        Invalidate(); 
+ 		    } 
+ 		} 
+ 		 
+ 		private int _lastTooltipQueryX; 
+ 		private int _lastTooltipQueryY; 
+ 		private Point? _delayTooltipQueryPoint = null; 
+ 		private System.Timers.Timer delayTooltipTimer = null; 
 
         private void HandleMouseUp(MouseEventArgs e)
         {

@@ -1577,7 +1577,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             if (_mapSvc == null)
                 throw new NotSupportedException();
 
-            var ret = _mapSvc.QueryMapFeatures(this, maxFeatures, wkt, true, selectionVariant, extraOptions);
+            var ret = _mapSvc.QueryMapFeatures(this, maxFeatures, wkt, persist, selectionVariant, extraOptions);
 
             //Need to re-sync the selection as this will probably have been changed
             ReloadSelection();
