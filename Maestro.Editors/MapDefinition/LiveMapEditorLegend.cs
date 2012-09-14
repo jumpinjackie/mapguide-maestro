@@ -29,6 +29,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using Maestro.MapViewer.Model;
 
 namespace Maestro.Editors.MapDefinition
 {
@@ -133,7 +134,7 @@ namespace Maestro.Editors.MapDefinition
                 var node = legendCtrl.SelectedNode;
                 if (node != null)
                 {
-                    var grp = node.Tag as Legend.GroupNodeMetadata;
+                    var grp = node.Tag as GroupNodeMetadata;
                     if (grp != null)
                     {
                         using (var picker = new ResourcePicker(map.CurrentConnection.ResourceService, ResourceTypes.LayerDefinition, ResourcePickerMode.OpenResource))
@@ -164,10 +165,10 @@ namespace Maestro.Editors.MapDefinition
                 var node = legendCtrl.SelectedNode;
                 if (node != null)
                 {
-                    var grp = node.Tag as Legend.GroupNodeMetadata;
+                    var grp = node.Tag as GroupNodeMetadata;
                     if (grp != null)
                     {
-                        var group = map.Groups[grp.Group];
+                        var group = map.Groups[grp.Name];
                         if (group != null)
                         {
                             map.Groups.Remove(group);
@@ -186,8 +187,8 @@ namespace Maestro.Editors.MapDefinition
                 var node = legendCtrl.SelectedNode;
                 if (node != null)
                 {
-                    var lyr = node.Tag as Legend.LayerNodeMetadata;
-                    if (lyr != null && !lyr.IsThemeRule)
+                    var lyr = node.Tag as LayerNodeMetadata;
+                    if (lyr != null)
                     {
                         var layer = map.Layers[lyr.Name];
                         if (layer != null)

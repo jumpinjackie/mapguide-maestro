@@ -60,6 +60,7 @@
     <Compile Include="Legend.Designer.cs">
       <DependentUpon>Legend.cs</DependentUpon>
     </Compile>
+    <Compile Include="LegendPresenter.cs" />
     <Compile Include="MapStatusTracker.cs">
       <SubType>Component</SubType>
     </Compile>

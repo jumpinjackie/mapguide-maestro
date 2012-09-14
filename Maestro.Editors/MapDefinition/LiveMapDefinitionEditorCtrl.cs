@@ -31,6 +31,7 @@ using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using Maestro.MapViewer.Model;
 
 namespace Maestro.Editors.MapDefinition
 {
@@ -123,11 +124,13 @@ namespace Maestro.Editors.MapDefinition
 
         private void legendCtrl_NodeSelected(object sender, TreeNode node)
         {
-            var layer = node.Tag as Maestro.MapViewer.Legend.LayerNodeMetadata;
+            var layer = node.Tag as LayerNodeMetadata;
+            var group = node.Tag as GroupNodeMetadata;
             //Nothing to edit for theme rule nodes
-            if (layer != null && layer.IsThemeRule)
-                return;
-            propGrid.SelectedObject = node.Tag;
+            if (layer == null && group == null)
+                propGrid.SelectedObject = null;
+            else
+                propGrid.SelectedObject = node.Tag;
         }
 
         private void drawOrderCtrl_LayerChanged(object sender, RuntimeMapLayer layer)
@@ -143,7 +146,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void legendCtrl_NodeDeleted(object sender, TreeNode node)
         {
-            var layer = node.Tag as Maestro.MapViewer.Legend.LayerNodeMetadata;
+            var layer = node.Tag as LayerNodeMetadata;
             //Nothing to edit for theme rule nodes
             if (layer != null && layer == propGrid.SelectedObject)
                 propGrid.SelectedObject = null;

@@ -31,12 +31,13 @@ using System.Diagnostics;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using System.Xml;
 using System.IO;
+using Maestro.MapViewer.Model;
 
 namespace Maestro.MapViewer
 {
     public delegate void NodeEventHandler(object sender, TreeNode node);
 
-    public partial class Legend : UserControl
+    public partial class Legend : UserControl, INotifyPropertyChanged
     {
         const string IMG_BROKEN = "lc_broken";
         const string IMG_DWF = "lc_dwf";
@@ -90,6 +91,7 @@ namespace Maestro.MapViewer
         void OnMapLoaded(object sender, EventArgs e)
         {
             _map = _viewer.GetMap();
+            _presenter = new LegendControlPresenter(this, _map);
         }
 
         void OnMapRefreshed(object sender, EventArgs e)
@@ -101,15 +103,17 @@ namespace Maestro.MapViewer
         private Dictionary<string, RuntimeMapGroup> _groups = new Dictionary<string, RuntimeMapGroup>();
         private Dictionary<string, string> _layerDefinitionContents = new Dictionary<string, string>();
 
-        private bool GetVisibilityFlag(RuntimeMapGroup group)
+        internal bool GetVisibilityFlag(RuntimeMapGroup group)
         {
             return this.ShowAllLayersAndGroups;
         }
 
-        private bool GetVisibilityFlag(RuntimeMapLayer layer)
+        internal bool GetVisibilityFlag(RuntimeMapLayer layer)
         {
             return layer.IsVisibleAtScale(_map.ViewScale);
         }
+
+        private LegendControlPresenter _presenter;
 
         /// <summary>
         /// Refreshes this component
@@ -119,174 +123,82 @@ namespace Maestro.MapViewer
             if (_noUpdate)
                 return;
 
-            if (_map == null)
+            if (_presenter == null)
                 return;
 
-            //System.Diagnostics.Trace.TraceInformation("MgLegend.RefreshLegend()");
-            var scale = _map.ViewScale;
-            var groups = _map.Groups;
-            var layers = _map.Layers;
+            if (IsBusy)
+                return;
 
             ResetTreeView();
-
-            _layerDefinitionContents.Clear();
-            _layers.Clear();
-            _groups.Clear();
-
-            IResourceService resSvc = _map.ResourceService;
-
             trvLegend.BeginUpdate();
-            try
+            _legendUpdateStopwatch.Start();
+            this.IsBusy = true;
+            bgLegendUpdate.RunWorkerAsync();
+        }
+
+        private Stopwatch _legendUpdateStopwatch = new Stopwatch();
+
+        private bool _busy = false;
+
+        [Browsable(false)]
+        public bool IsBusy
+        {
+            get { return _busy; }
+            private set
             {
-                //Process groups first
-                List<RuntimeMapGroup> remainingNodes = new List<RuntimeMapGroup>();
-                for (int i = 0; i < groups.Count; i++)
-                {
-                    var group = groups[i];
-                    _groups.Add(group.ObjectId, group);
-                    if (!this.ShowAllLayersAndGroups && !group.ShowInLegend)
-                        continue;
+                if (_busy.Equals(value))
+                    return;
 
-                    //Add ones without parents first.
-                    if (!string.IsNullOrEmpty(group.Group))
-                    {
-                        remainingNodes.Add(group);
-                    }
-                    else
-                    {
-                        var node = CreateGroupNode(group, GetVisibilityFlag(group));
-                        trvLegend.Nodes.Add(node);
-                    }
-
-                    while (remainingNodes.Count > 0)
-                    {
-                        List<RuntimeMapGroup> toRemove = new List<RuntimeMapGroup>();
-                        for (int j = 0; j < remainingNodes.Count; j++)
-                        {
-                            var parentGroupName = remainingNodes[j].Group;
-                            var parentGroup = groups[parentGroupName];
-                            var parentId = parentGroup.ObjectId;
-
-                            var nodes = trvLegend.Nodes.Find(parentId, false);
-                            if (nodes.Length == 1)
-                            {
-                                var node = CreateGroupNode(remainingNodes[j], GetVisibilityFlag(remainingNodes[j]));
-                                nodes[0].Nodes.Add(node);
-                                toRemove.Add(remainingNodes[j]);
-                            }
-                        }
-                        //Whittle down this list
-                        if (toRemove.Count > 0)
-                        {
-                            foreach (var g in toRemove)
-                            {
-                                remainingNodes.Remove(g);
-                            }
-                        }
-                    }
-                }
-
-                //Now process layers
-                for (int i = 0; i < layers.Count; i++)
-                {
-                    var lyr = layers[i];
-                    var ldfId = lyr.LayerDefinitionID;
-
-                    if (!_layerDefinitionContents.ContainsKey(ldfId.ToString()))
-                    {
-                        _layerDefinitionContents[ldfId.ToString()] = string.Empty;
-                    }
-                }
-
-                //TODO: Surely we can optimize this better
-                var keys = new List<string>(_layerDefinitionContents.Keys);
-                foreach (var lid in keys)
-                {
-                    using (var sr = new StreamReader(resSvc.GetResourceXmlData(lid)))
-                    {
-                        _layerDefinitionContents[lid] = sr.ReadToEnd();
-                    }
-                }
-
-                List<RuntimeMapLayer> remainingLayers = new List<RuntimeMapLayer>();
-                for (int i = 0; i < layers.Count; i++)
-                {
-                    var layer = layers[i];
-                    _layers.Add(layer.ObjectId, layer);
-
-                    bool display = layer.ShowInLegend;
-                    bool visible = layer.IsVisibleAtScale(_map.ViewScale);
-                    if (!this.ShowAllLayersAndGroups && !display)
-                        continue;
-
-                    if (!this.ShowAllLayersAndGroups && !visible)
-                        continue;
-
-                    //Add ones without parents first.
-                    if (!string.IsNullOrEmpty(layer.Group))
-                    {
-                        remainingLayers.Add(layer);
-                    }
-                    else
-                    {
-                        var node = CreateLayerNode(layer, GetVisibilityFlag(layer));
-                        if (node != null)
-                        {
-                            trvLegend.Nodes.Add(node);
-                            if (layer.ExpandInLegend)
-                                node.Expand();
-                        }
-                    }
-
-                    while (remainingLayers.Count > 0)
-                    {
-                        List<RuntimeMapLayer> toRemove = new List<RuntimeMapLayer>();
-                        for (int j = 0; j < remainingLayers.Count; j++)
-                        {
-                            var parentGroup = remainingLayers[j].GetParentGroup();
-                            var parentId = parentGroup.ObjectId;
-                            var nodes = trvLegend.Nodes.Find(parentId, false);
-                            if (nodes.Length == 1)
-                            {
-                                var node = CreateLayerNode(remainingLayers[j], GetVisibilityFlag(remainingLayers[j]));
-                                if (node != null)
-                                {
-                                    nodes[0].Nodes.Add(node);
-                                    if (remainingLayers[j].ExpandInLegend)
-                                        node.Expand();
-                                }
-                                toRemove.Add(remainingLayers[j]);
-                            }
-                        }
-                        //Whittle down this list
-                        if (toRemove.Count > 0)
-                        {
-                            foreach (var g in toRemove)
-                            {
-                                remainingLayers.Remove(g);
-                            }
-                        }
-                    }
-                }
-
-                //Now expand any relevant groups
-                for (int i = 0; i < groups.Count; i++)
-                {
-                    var group = groups[i];
-                    if (group.ExpandInLegend)
-                    {
-                        var nodes = trvLegend.Nodes.Find(group.ObjectId, false);
-                        if (nodes.Length == 1)
-                        {
-                            nodes[0].Expand();
-                        }
-                    }
-                }
+                _busy = value;
+                Trace.TraceInformation("Legend IsBusy: {0}", this.IsBusy);
+                OnPropertyChanged("IsBusy");
             }
-            finally
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            var h = this.PropertyChanged;
+            if (h != null)
+                h(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void bgLegendUpdate_DoWork(object sender, DoWorkEventArgs e)
+        {
+            e.Result = _presenter.CreateNodes();
+        }
+
+        private void bgLegendUpdate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.IsBusy = bgLegendUpdate.IsBusy;
+            var nodes = e.Result as TreeNode[];
+            if (nodes != null)
             {
-                trvLegend.EndUpdate();
+                //Attach relevant context menus based on attached metadata
+                foreach (var n in nodes)
+                {
+                    var lm = n.Tag as LegendNodeMetadata;
+                    if (lm != null)
+                    {
+                        if (lm.IsGroup)
+                        {
+                            n.ContextMenuStrip = this.GroupContextMenu;
+                        }
+                        else
+                        {
+                            var lyrm = n.Tag as LayerNodeMetadata;
+                            if (lyrm != null)
+                                n.ContextMenuStrip = this.LayerContextMenu;
+                        }
+                    }
+                }
+                trvLegend.Nodes.AddRange(nodes);
             }
+            trvLegend.EndUpdate();
+            _legendUpdateStopwatch.Stop();
+            Trace.TraceInformation("RefreshLegend: Completed in {0}ms", _legendUpdateStopwatch.ElapsedMilliseconds);
+            _legendUpdateStopwatch.Reset();
         }
 
         public TreeNode SelectedNode { get { return trvLegend.SelectedNode; } }
@@ -297,14 +209,6 @@ namespace Maestro.MapViewer
             {
                 if (node.Nodes.Count > 0)
                     ClearNodes(node.Nodes);
-
-                var layerMeta = node.Tag as LayerNodeMetadata;
-                if (layerMeta != null && layerMeta.ThemeIcon != null)
-                {
-                    layerMeta.Layer = null;
-                    layerMeta.ThemeIcon.Dispose();
-                    layerMeta.ThemeIcon = null;
-                }
             }
             nodes.Clear();
         }
@@ -324,226 +228,6 @@ namespace Maestro.MapViewer
             imgLegend.Images.Add(IMG_OTHER, Properties.Resources.icon_etc);
         }
 
-        private TreeNode CreateLayerNode(RuntimeMapLayer layer, bool visibilityFlag)
-        {
-            var node = new TreeNode();
-            node.Name = layer.ObjectId;
-            node.Text = layer.LegendLabel;
-            node.Checked = layer.Visible;
-            node.ContextMenuStrip = this.LayerContextMenu;
-            var lt = layer.Type;
-            var fsId = layer.FeatureSourceID;
-
-            if (fsId.EndsWith("DrawingSource"))
-            {
-                node.SelectedImageKey = node.ImageKey = IMG_DWF;
-                node.Tag = new LayerNodeMetadata(layer, visibilityFlag);
-                node.ToolTipText = string.Format(Properties.Resources.DrawingLayerTooltip, Environment.NewLine, layer.Name, layer.FeatureSourceID);
-            }
-            else
-            {
-                string layerData = null;
-                var ldfId = layer.LayerDefinitionID;
-                if (_layerDefinitionContents.ContainsKey(ldfId.ToString()))
-                    layerData = _layerDefinitionContents[ldfId.ToString()];
-
-                if (layerData == null)
-                    return null;
-
-                XmlDocument doc = new XmlDocument();
-                doc.LoadXml(layerData);
-                int type = 0;
-                XmlNodeList scaleRanges = doc.GetElementsByTagName("VectorScaleRange");
-                if (scaleRanges.Count == 0)
-                {
-                    scaleRanges = doc.GetElementsByTagName("GridScaleRange");
-                    if (scaleRanges.Count == 0)
-                    {
-                        scaleRanges = doc.GetElementsByTagName("DrawingLayerDefinition");
-                        if (scaleRanges.Count == 0)
-                            return null;
-                        type = 2;
-                    }
-                    else
-                        type = 1;
-                }
-
-                String[] typeStyles = new String[] { "PointTypeStyle", "LineTypeStyle", "AreaTypeStyle", "CompositeTypeStyle" };
-                String[] ruleNames = new String[] { "PointRule", "LineRule", "AreaRule", "CompositeRule" };
-
-                try
-                {
-                    Image layerIcon = _map.GetLegendImage(layer.LayerDefinitionID,
-                                                          _map.ViewScale,
-                                                          16,
-                                                          16,
-                                                          "PNG",
-                                                          -1,
-                                                          -1);
-                    if (layerIcon != null)
-                    {
-                        string id = Guid.NewGuid().ToString();
-                        imgLegend.Images.Add(id, layerIcon);
-                        node.SelectedImageKey = node.ImageKey = id;
-                        node.Tag = new LayerNodeMetadata(layer, visibilityFlag)
-                        {
-                            ThemeIcon = layerIcon
-                        };
-                        node.ToolTipText = string.Format(Properties.Resources.DefaultLayerTooltip, Environment.NewLine, layer.Name, layer.FeatureSourceID, layer.QualifiedClassName);
-                    }
-                    else
-                    {
-                        node.SelectedImageKey = node.ImageKey = IMG_BROKEN;
-                        node.Tag = new LayerNodeMetadata(layer, visibilityFlag)
-                        {
-                            ThemeIcon = imgLegend.Images[IMG_BROKEN]
-                        };
-                    }
-                }
-                catch
-                {
-                    node.SelectedImageKey = node.ImageKey = IMG_BROKEN;
-                    node.Tag = new LayerNodeMetadata(layer, visibilityFlag)
-                    {
-                        ThemeIcon = imgLegend.Images[IMG_BROKEN]
-                    };
-                }
-
-                for (int sc = 0; sc < scaleRanges.Count; sc++)
-                {
-                    XmlElement scaleRange = (XmlElement)scaleRanges[sc];
-                    XmlNodeList minElt = scaleRange.GetElementsByTagName("MinScale");
-                    XmlNodeList maxElt = scaleRange.GetElementsByTagName("MaxScale");
-                    String minScale, maxScale;
-                    minScale = "0";
-                    maxScale = "1000000000000.0";   // as MDF's VectorScaleRange::MAX_MAP_SCALE
-                    if (minElt.Count > 0)
-                        minScale = minElt[0].ChildNodes[0].Value;
-                    if (maxElt.Count > 0)
-                        maxScale = maxElt[0].ChildNodes[0].Value;
-                    
-                    if (type != 0)
-                        break;
-
-                    for (int geomType = 0; geomType < typeStyles.Length; geomType++)
-                    {
-                        int catIndex = 0;
-                        XmlNodeList typeStyle = scaleRange.GetElementsByTagName(typeStyles[geomType]);
-                        for (int st = 0; st < typeStyle.Count; st++)
-                        {
-                            // We will check if this typestyle is going to be shown in the legend
-                            XmlNodeList showInLegend = ((XmlElement)typeStyle[st]).GetElementsByTagName("ShowInLegend");
-                            if (showInLegend.Count > 0)
-                                if (!bool.Parse(showInLegend[0].ChildNodes[0].Value))
-                                    continue;   // This typestyle does not need to be shown in the legend
-
-                            XmlNodeList rules = ((XmlElement)typeStyle[st]).GetElementsByTagName(ruleNames[geomType]);
-                            if (rules.Count > 1)
-                            {
-                                node.SelectedImageKey = node.ImageKey = IMG_THEME;
-                                var layerMeta = node.Tag as LayerNodeMetadata;
-                                if (layerMeta != null)
-                                {
-                                    layerMeta.ThemeIcon = Properties.Resources.lc_theme;
-                                    node.ToolTipText = string.Format(Properties.Resources.ThemedLayerTooltip, Environment.NewLine, layer.Name, layer.FeatureSourceID, layer.QualifiedClassName, rules.Count);
-                                }
-                                if (this.ThemeCompressionLimit > 0 && rules.Count > this.ThemeCompressionLimit)
-                                {
-                                    AddThemeRuleNode(layer, node, geomType, 0, rules, 0, visibilityFlag);
-                                    node.Nodes.Add(CreateCompressedThemeNode(rules.Count - 2, visibilityFlag));
-                                    AddThemeRuleNode(layer, node, geomType, rules.Count - 1, rules, rules.Count - 1, visibilityFlag);
-                                }
-                                else
-                                {
-                                    for (int r = 0; r < rules.Count; r++)
-                                    {
-                                        AddThemeRuleNode(layer, node, geomType, catIndex++, rules, r, visibilityFlag);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            
-            return node;
-        }
-
-        private void AddThemeRuleNode(RuntimeMapLayer layer, TreeNode node, int geomType, int catIndex, XmlNodeList rules, int r, bool visibilityFlag)
-        {
-            XmlElement rule = (XmlElement)rules[r];
-            XmlNodeList label = rule.GetElementsByTagName("LegendLabel");
-            XmlNodeList filter = rule.GetElementsByTagName("Filter");
-
-            String labelText = "";
-            if (label != null && label.Count > 0 && label[0].ChildNodes.Count > 0)
-                labelText = label[0].ChildNodes[0].Value;
-            //String filterText = "";
-            //if (filter != null && filter.Count > 0 && filter[0].ChildNodes.Count > 0)
-            //    filterText = filter[0].ChildNodes[0].Value;
-
-            var child = CreateThemeRuleNode(layer.LayerDefinitionID, _map.ViewScale, labelText, (geomType + 1), catIndex, visibilityFlag);
-            node.Nodes.Add(child);
-        }
-
-        private TreeNode CreateCompressedThemeNode(int count, bool visibilityFlag)
-        {
-            TreeNode node = new TreeNode();
-            node.Text = (count + " other styles");
-            node.ImageKey = node.SelectedImageKey = IMG_OTHER;
-            node.Tag = new LayerNodeMetadata(null, visibilityFlag) {
-                IsBaseLayer = false,
-                ThemeIcon = Properties.Resources.icon_etc,
-                IsThemeRule = true
-            };
-            return node;
-        }
-
-        private TreeNode CreateThemeRuleNode(string layerDefId, double viewScale, string labelText, int geomType, int categoryIndex, bool visibilityFlag)
-        {
-            Image layerIcon = null;
-            try
-            {
-                layerIcon = _map.GetLegendImage(layerDefId,
-                                                      viewScale,
-                                                      16,
-                                                      16,
-                                                      "PNG",
-                                                      geomType,
-                                                      categoryIndex);
-            }
-            catch
-            {
-                layerIcon = Properties.Resources.lc_broken;
-            }
-            TreeNode node = new TreeNode();
-            node.Text = labelText;
-            if (layerIcon != null)
-            {
-                var tag = new LayerNodeMetadata(null, visibilityFlag)
-                {
-                    IsBaseLayer = false,
-                    IsThemeRule = true
-                };
-                string id = Guid.NewGuid().ToString();
-                tag.ThemeIcon = layerIcon;
-                node.Tag = tag;
-            }
-            return node;
-        }
-
-        private TreeNode CreateGroupNode(RuntimeMapGroup group, bool visibilityFlag)
-        {
-            var node = new TreeNode();
-            node.Name = group.ObjectId;
-            node.Text = group.LegendLabel;
-            node.Checked = group.Visible;
-            node.SelectedImageKey = node.ImageKey = IMG_GROUP;
-            node.Tag = new GroupNodeMetadata(group, visibilityFlag);
-            node.ContextMenuStrip = this.GroupContextMenu;
-            return node;
-        }
-
         private double _scale;
 
         /// <summary>
@@ -554,140 +238,6 @@ namespace Maestro.MapViewer
         {
             _scale = scale;
             RefreshLegend();
-        }
-
-        public class LegendNodeMetadata
-        {
-            [Browsable(false)]
-            public bool IsGroup { get; protected set; }
-        }
-
-        public class GroupNodeMetadata : LegendNodeMetadata
-        {
-            [Browsable(false)]
-            internal RuntimeMapGroup WrappedGroupObject { get; set; }
-
-            public GroupNodeMetadata(RuntimeMapGroup group, bool visibilityFlag) 
-            { 
-                base.IsGroup = true;
-                this.WrappedGroupObject = group;
-                this.VisbilityFlag = visibilityFlag;
-            }
-
-            [Browsable(false)]
-            internal bool VisbilityFlag { get; private set; }
-
-            public bool Visible
-            {
-                get { return this.WrappedGroupObject.Visible; }
-                set { this.WrappedGroupObject.Visible = value; }
-            }
-
-            public string Group
-            {
-                get { return this.WrappedGroupObject.Group; }
-                set { this.WrappedGroupObject.Group = value; }
-            }
-
-            public string Name
-            {
-                get { return this.WrappedGroupObject.Name; }
-                set { this.WrappedGroupObject.Name = value; }
-            }
-
-            public bool ShowInLegend
-            {
-                get { return this.WrappedGroupObject.ShowInLegend; }
-                set { this.WrappedGroupObject.ShowInLegend = value; }
-            }
-
-            public string LegendLabel
-            {
-                get { return this.WrappedGroupObject.LegendLabel; }
-                set { this.WrappedGroupObject.LegendLabel = value; }
-            }
-
-            public bool ExpandInLegend
-            {
-                get { return this.WrappedGroupObject.ExpandInLegend; }
-                set { this.WrappedGroupObject.ExpandInLegend = value; }
-            }
-        }
-
-        public class LayerNodeMetadata : LegendNodeMetadata
-        {
-            public LayerNodeMetadata(RuntimeMapLayer layer, bool visibilityFlag) 
-            { 
-                base.IsGroup = false;
-                this.Layer = layer;
-                this.IsSelectable = (layer != null) ? layer.Selectable : false;
-                this.DrawSelectabilityIcon = (layer != null);
-                this.IsThemeRule = false;
-                this.VisibilityFlag = visibilityFlag;
-            }
-
-            [Browsable(false)]
-            internal bool VisibilityFlag { get; private set; }
-
-            [Browsable(false)]
-            internal RuntimeMapLayer Layer { get; set; }
-
-            [Browsable(false)]
-            public bool DrawSelectabilityIcon { get; set; }
-
-            [Browsable(false)]
-            public bool IsSelectable { get; set; }
-
-            [Browsable(false)]
-            public bool IsThemeRule { get; set; }
-
-            [Browsable(false)]
-            public bool IsBaseLayer { get; set; }
-
-            [Browsable(false)]
-            public Image ThemeIcon { get; set; }
-
-            public string Group
-            {
-                get { return this.Layer.Group; }
-                set { this.Layer.Group = value; }
-            }
-
-            public bool Selectable
-            {
-                get { return this.Layer.Selectable; }
-                set { this.Layer.Selectable = this.IsSelectable = value; }
-            }
-
-            public string Name
-            {
-                get { return this.Layer.Name; }
-                set { this.Layer.Name = value; }
-            }
-
-            public bool ShowInLegend
-            {
-                get { return this.Layer.ShowInLegend; }
-                set { this.Layer.ShowInLegend = value; }
-            }
-
-            public string LegendLabel
-            {
-                get { return this.Layer.LegendLabel; }
-                set { this.Layer.LegendLabel = value; }
-            }
-
-            public bool ExpandInLegend
-            {
-                get { return this.Layer.ExpandInLegend; }
-                set { this.Layer.ExpandInLegend = value; }
-            }
-
-            public string LayerDefinition
-            {
-                get { return this.Layer.LayerDefinitionID; }
-                set { this.Layer.LayerDefinitionID = value; }
-            }
         }
 
         private bool HasVisibleParent(RuntimeMapGroup grp)
@@ -795,133 +345,15 @@ namespace Maestro.MapViewer
 
         private bool _noUpdate = false;
 
-        private void OnRequestRefresh()
+        internal void OnRequestRefresh()
         {
             if (this.Viewer != null)
                 this.Viewer.RefreshMap();
         }
 
-        private static bool IsThemeLayerNode(TreeNode node)
-        {
-            var meta = node.Tag as LayerNodeMetadata;
-            if (meta != null)
-                return meta.ThemeIcon != null || meta.IsBaseLayer;
-
-            return false;
-        }
-
-        private static bool IsLayerNode(TreeNode node)
-        {
-            var meta = node.Tag as LayerNodeMetadata;
-            return meta != null;
-        }
-
         private void trvLegend_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
-            if (IsLayerNode(e.Node) && !e.Bounds.IsEmpty)
-            {
-                //TODO: Render +/- for nodes with children (ie. Themed layers)
-                Color backColor, foreColor;
-
-                //For some reason, the default bounds are way off from what you would
-                //expect it to be. So we apply this offset for any text/image draw operations
-                int xoffset = -36;
-                var tag = e.Node.Tag as LayerNodeMetadata;
-
-                bool bDrawSelection = false;
-                if ((e.State & TreeNodeStates.Selected) == TreeNodeStates.Selected)
-                {
-                    backColor = SystemColors.Highlight;
-                    foreColor = SystemColors.HighlightText;
-                    bDrawSelection = true;
-                }
-                else if ((e.State & TreeNodeStates.Hot) == TreeNodeStates.Hot)
-                {
-                    backColor = SystemColors.HotTrack;
-                    foreColor = SystemColors.HighlightText;
-                }
-                else
-                {
-                    backColor = e.Node.BackColor;
-                    foreColor = (tag != null && !tag.VisibilityFlag) ? SystemColors.InactiveCaptionText : Color.Black; //e.Node.ForeColor;
-                }
-
-                var checkBoxOffset = xoffset;
-                var selectabilityOffset = xoffset + 16;
-                var iconOffsetNoSelect = xoffset + 16;
-                if (tag != null && tag.IsThemeRule) //No checkbox for theme rule nodes
-                {
-                    selectabilityOffset = xoffset;
-                    iconOffsetNoSelect = xoffset;
-                }
-                var iconOffset = selectabilityOffset + 20;
-                var textOffset = iconOffset + 20;
-                var textOffsetNoSelect = iconOffsetNoSelect + 20;
-
-                //Uncomment if you need to "see" the bounds of the node
-                //e.Graphics.DrawRectangle(Pens.Black, e.Node.Bounds);
-
-                if (tag != null && !tag.IsThemeRule) //No checkbox for theme rule nodes
-                {
-                    CheckBoxRenderer.DrawCheckBox(
-                        e.Graphics,
-                        new Point(e.Node.Bounds.X + checkBoxOffset, e.Node.Bounds.Y),
-                        e.Node.Checked ? CheckBoxState.CheckedNormal : CheckBoxState.UncheckedNormal);
-                }
-                if (tag != null)
-                {
-                    if (tag.DrawSelectabilityIcon)
-                    {
-                        var icon = tag.IsSelectable ? _selectableIcon : _unselectableIcon;
-                        e.Graphics.DrawImage(icon, e.Node.Bounds.X + selectabilityOffset, e.Node.Bounds.Y);
-                        Trace.TraceInformation("Painted icon at ({0},{1})", e.Node.Bounds.X, e.Node.Bounds.Y);
-                    }
-                    if (tag.ThemeIcon != null)
-                    {
-                        if (tag.DrawSelectabilityIcon)
-                        {
-                            e.Graphics.DrawImage(tag.ThemeIcon, e.Node.Bounds.X + iconOffset, e.Node.Bounds.Y);
-                            Trace.TraceInformation("Painted icon at ({0},{1})", e.Node.Bounds.X, e.Node.Bounds.Y);
-                        }
-                        else
-                        {
-                            e.Graphics.DrawImage(tag.ThemeIcon, e.Node.Bounds.X + iconOffsetNoSelect, e.Node.Bounds.Y);
-                            Trace.TraceInformation("Painted icon at ({0},{1})", e.Node.Bounds.X, e.Node.Bounds.Y);
-                        }
-                    }
-
-                    if (bDrawSelection)
-                    {
-                        var size = e.Graphics.MeasureString(e.Node.Text, trvLegend.Font);
-                        using (var brush = new SolidBrush(backColor))
-                        {
-                            e.Graphics.FillRectangle(brush,
-                                                     e.Node.Bounds.X + (tag.DrawSelectabilityIcon ? textOffset : textOffsetNoSelect),
-                                                     e.Node.Bounds.Y,
-                                                     size.Width,
-                                                     size.Height);
-                        }
-                    }
-
-                    using (SolidBrush brush = new SolidBrush(tag.VisibilityFlag ? foreColor : Color.Gray))
-                    {
-                        e.Graphics.DrawString(e.Node.Text, trvLegend.Font, brush, e.Node.Bounds.X + (tag.DrawSelectabilityIcon ? textOffset : textOffsetNoSelect), e.Node.Bounds.Y);
-                    }
-                }
-                else
-                {
-                    using (SolidBrush brush = new SolidBrush(Color.Black))
-                    {
-                        e.Graphics.DrawString(e.Node.Text, trvLegend.Font, brush, e.Node.Bounds.X + 17.0f + xoffset, e.Node.Bounds.Y);
-                    }
-                }
-
-                e.DrawDefault = false;
-            }
-            else
-            {
-                e.DrawDefault = true;
-            }
+            _presenter.DrawNode(e, trvLegend.ShowPlusMinus, trvLegend.Font);
         }
 
         private ContextMenuStrip _grpContextMenu;
@@ -1050,9 +482,11 @@ namespace Maestro.MapViewer
             if (trvLegend.SelectedNode == null)
                 return null;
 
-            var grp = trvLegend.SelectedNode.Tag as GroupNodeMetadata;
-            if (grp != null)
-                return grp.WrappedGroupObject;
+            var grpMeta = trvLegend.SelectedNode.Tag as GroupNodeMetadata;
+            if (grpMeta != null)
+            {
+                return grpMeta.Group;
+            }
 
             return null;
         }

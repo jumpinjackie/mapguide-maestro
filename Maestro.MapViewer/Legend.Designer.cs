@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.trvLegend = new System.Windows.Forms.TreeView();
             this.imgLegend = new System.Windows.Forms.ImageList(this.components);
+            this.bgLegendUpdate = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // trvLegend
@@ -61,6 +62,11 @@
             this.imgLegend.ImageSize = new System.Drawing.Size(16, 16);
             this.imgLegend.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // bgLegendUpdate
+            // 
+            this.bgLegendUpdate.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgLegendUpdate_DoWork);
+            this.bgLegendUpdate.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgLegendUpdate_RunWorkerCompleted);
+            // 
             // Legend
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -76,5 +82,6 @@
 
         private System.Windows.Forms.TreeView trvLegend;
         private System.Windows.Forms.ImageList imgLegend;
+        private System.ComponentModel.BackgroundWorker bgLegendUpdate;
     }
 }
