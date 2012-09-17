@@ -160,7 +160,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             string path = System.IO.Path.Combine(Application.StartupPath, "ColorBrewer.csv");
             if (!File.Exists(path))
             {
-                string content = Strings.ColorBrewer;
+                string content = Properties.Resources.ColorBrewer;
                 try
                 {
                     File.WriteAllText(path, content);

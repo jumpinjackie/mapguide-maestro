@@ -251,6 +251,30 @@ namespace Maestro.Editors.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;ColorName&quot;,&quot;NumOfColors&quot;,&quot;Type&quot;,&quot;CritVal&quot;,&quot;ColorNum&quot;,&quot;ColorLetter&quot;,&quot;R&quot;,&quot;G&quot;,&quot;B&quot;,&quot;SchemeType&quot;
+        ///&quot;Accent&quot;,3,&quot;qual&quot;,,1,&quot;A&quot;,127,201,127,&quot;Qualitative&quot;
+        ///,,,,2,&quot;B&quot;,190,174,212,
+        ///,,,,3,&quot;C&quot;,253,192,134,
+        ///&quot;Accent&quot;,4,&quot;qual&quot;,,1,&quot;A&quot;,127,201,127,
+        ///,,,,2,&quot;B&quot;,190,174,212,
+        ///,,,,3,&quot;C&quot;,253,192,134,
+        ///,,,,4,&quot;D&quot;,255,255,153,
+        ///&quot;Accent&quot;,5,&quot;qual&quot;,,1,&quot;A&quot;,127,201,127,
+        ///,,,,2,&quot;B&quot;,190,174,212,
+        ///,,,,3,&quot;C&quot;,253,192,134,
+        ///,,,,4,&quot;D&quot;,255,255,153,
+        ///,,,,5,&quot;E&quot;,56,108,176,
+        ///&quot;Accent&quot;,6,&quot;qual&quot;,,1,&quot;A&quot;,127,201,127,
+        ///,,,,2,&quot;B&quot;,190,174,212,
+        ///,,,,3,&quot;C&quot;, [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ColorBrewer {
+            get {
+                return ResourceManager.GetString("ColorBrewer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap control {
