@@ -22,7 +22,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Maestro.Shared.UI
@@ -41,6 +43,7 @@ namespace Maestro.Shared.UI
         private object[] m_args;
         private object m_result;
         private bool m_cancelAborts = false;
+        private CultureInfo m_culture;
 
         private System.Threading.Thread m_worker;
 
@@ -70,10 +73,26 @@ namespace Maestro.Shared.UI
         /// <returns></returns>
         public object RunOperationAsync(Form owner, DoBackgroundWork method, params object[] arguments)
         {
+            return RunOperationAsync(owner, method, true, arguments);
+        }
+
+        /// <summary>
+        /// Runs the operation async.
+        /// </summary>
+        /// <param name="owner">The owner.</param>
+        /// <param name="method">The method.</param>
+        /// <param name="bPreserveThreadCulture">If true, the background thread's culture will be set to the culture of the invoking thread</param>
+        /// <param name="arguments">The arguments.</param>
+        /// <returns></returns>
+        public object RunOperationAsync(Form owner, DoBackgroundWork method, bool bPreserveThreadCulture, params object[] arguments)
+        {
             m_method = method;
             m_args = arguments;
             if (this.Visible)
                 this.Hide();
+
+            if (bPreserveThreadCulture)
+                m_culture = Thread.CurrentThread.CurrentCulture;
 
             if (this.ShowDialog(owner) == DialogResult.OK)
                 return m_result;
@@ -85,6 +104,11 @@ namespace Maestro.Shared.UI
         {
             try
             {
+                if (m_culture != null)
+                {
+                    Thread.CurrentThread.CurrentCulture =
+                        Thread.CurrentThread.CurrentUICulture = m_culture;
+                }
                 m_worker = System.Threading.Thread.CurrentThread;
                 e.Result = m_method(BackgroundWorker, e, m_args);
             }

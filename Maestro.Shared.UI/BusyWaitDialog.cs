@@ -19,6 +19,8 @@
 #endregion
 using System;
 using System.Drawing;
+using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Maestro.Shared.UI
@@ -31,14 +33,16 @@ namespace Maestro.Shared.UI
     public partial class BusyWaitDialog : Form
     {
         private BusyWaitDelegate _action;
+        private CultureInfo _culture;
         
-        internal BusyWaitDialog(BusyWaitDelegate action)
+        internal BusyWaitDialog(BusyWaitDelegate action, CultureInfo culture)
         {
             //
             // The InitializeComponent() call is required for Windows Forms designer support.
             //
             InitializeComponent();
             _action = action;
+            _culture = culture;
         }
         
         protected override void OnLoad(EventArgs e)
@@ -48,15 +52,20 @@ namespace Maestro.Shared.UI
         }
         
         public object ReturnValue { get; private set; }
-        
+
         public static void Run(string message, BusyWaitDelegate action, Action<object> onComplete)
+        {
+            Run(message, action, onComplete, true);
+        }
+
+        public static void Run(string message, BusyWaitDelegate action, Action<object> onComplete, bool bPreserveThreadCulture)
         {
             if (action == null)
                 throw new ArgumentNullException("action"); //NOXLATE
             if (onComplete == null)
                 throw new ArgumentNullException("onComplete"); //NOXLATE
             
-            var frm = new BusyWaitDialog(action);
+            var frm = new BusyWaitDialog(action, bPreserveThreadCulture ? Thread.CurrentThread.CurrentCulture : null);
             frm.lblBusy.Text = message;
             if (frm.ShowDialog() == DialogResult.OK)
             {
@@ -66,6 +75,12 @@ namespace Maestro.Shared.UI
         
         void BgWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
+            if (_culture != null)
+            {
+                Thread.CurrentThread.CurrentCulture =
+                    Thread.CurrentThread.CurrentUICulture =
+                        _culture;
+            }
             e.Result = _action.Invoke();
         }
         
