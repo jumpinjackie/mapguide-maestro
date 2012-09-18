@@ -34,6 +34,7 @@ using Maestro.Login;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
+using Maestro.Editors.Common;
 
 namespace Maestro
 {
@@ -167,7 +168,14 @@ namespace Maestro
             var ex = e.ExceptionObject as Exception;
             if (ex != null)
             {
-                ErrorDialog.Show(ex);
+                if (XmlContentErrorDialog.IsDbXmlError(ex) && XmlContentErrorDialog.HasOriginalXml(ex))
+                {
+                    XmlContentErrorDialog.Show(ex);
+                }
+                else
+                {
+                    ErrorDialog.Show(ex);
+                }
             }
         }
 
@@ -178,7 +186,15 @@ namespace Maestro
 
         static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            ErrorDialog.Show(e.Exception);
+            var ex = e.Exception;
+            if (XmlContentErrorDialog.IsDbXmlError(ex) && XmlContentErrorDialog.HasOriginalXml(ex))
+            {
+                XmlContentErrorDialog.Show(ex);
+            }
+            else
+            {
+                ErrorDialog.Show(ex);
+            }
         }
     }
 

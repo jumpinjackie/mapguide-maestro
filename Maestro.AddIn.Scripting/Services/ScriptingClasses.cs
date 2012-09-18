@@ -27,6 +27,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using Maestro.Base;
 using Maestro.Base.Services;
 using System.IO;
+using Maestro.Editors.Common;
 
 namespace Maestro.AddIn.Scripting.Services
 {
@@ -84,9 +85,16 @@ namespace Maestro.AddIn.Scripting.Services
         /// <param name="xml"></param>
         public void SetResourceXml(IServerConnection conn, string resourceId, string xml)
         {
-            using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
+            try
             {
-                conn.ResourceService.SetResourceXmlData(resourceId, ms);
+                using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
+                {
+                    conn.ResourceService.SetResourceXmlData(resourceId, ms);
+                }
+            }
+            catch (Exception ex)
+            {
+                XmlContentErrorDialog.CheckAndHandle(ex, xml, false);
             }
         }
 

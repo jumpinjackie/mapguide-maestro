@@ -36,6 +36,7 @@ using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using System.Xml.Schema;
 using Maestro.Base.UI.Preferences;
 using Maestro.Base.Services;
+using Maestro.Editors.Common;
 
 namespace Maestro.Base.Editor
 {
@@ -141,7 +142,18 @@ namespace Maestro.Base.Editor
         {
             //Save the current resource to another session copy
             string resId = "Session:" + this.EditorService.SessionID + "//" + Guid.NewGuid() + "." + this.Resource.ResourceType.ToString(); //NOXLATE
-            this.EditorService.ResourceService.SetResourceXmlData(resId, new MemoryStream(Encoding.UTF8.GetBytes(this.XmlContent)));
+            string xml = this.XmlContent;
+            try
+            {
+                using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
+                {
+                    this.EditorService.ResourceService.SetResourceXmlData(resId, ms);
+                }
+            }
+            catch (Exception ex)
+            {
+                XmlContentErrorDialog.CheckAndHandle(ex, xml, false);
+            }
 
             //Copy any resource data
             var previewCopy = this.EditorService.ResourceService.GetResource(resId);
@@ -156,7 +168,18 @@ namespace Maestro.Base.Editor
         public override void SyncSessionCopy()
         {
             //Write our XML changes back into the edited resource copy and re-read
-            _edSvc.ResourceService.SetResourceXmlData(_edSvc.EditedResourceID, new MemoryStream(Encoding.UTF8.GetBytes(this.XmlContent)));
+            string xml = this.XmlContent;
+            try
+            {
+                using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
+                {
+                    _edSvc.ResourceService.SetResourceXmlData(_edSvc.EditedResourceID, ms);
+                }
+            }
+            catch (Exception ex)
+            {
+                XmlContentErrorDialog.CheckAndHandle(ex, xml, false);
+            }
             //base.SyncSessionCopy();
         }
 

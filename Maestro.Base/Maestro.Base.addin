@@ -168,6 +168,9 @@
                 <MenuItem id="Menu_Test_SaveResource"
                           label="Save Resource"
                           class="Maestro.Base.Commands.Test.SaveResourceCommand" />
+                <MenuItem id="Menu_Test_TriggerDbXml"
+                          label="Trigger MgDbXmlException"
+                          class="Maestro.Base.Commands.Test.TriggerDbXmlCommand" />
                 <MenuItem id="Menu_Test_SaveResourceWithFilter"
                           label="Save Resource (with filter)"
                           class="Maestro.Base.Commands.Test.SaveResourceWithFilterCommand" />

@@ -117,6 +117,11 @@
       <Name>Maestro.Base</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj">
+      <Project>{5ad2cdba-952e-4148-98a1-31d2e0d540d5}</Project>
+      <Name>Maestro.Editors</Name>
+      <Private>False</Private>
+    </ProjectReference>
     <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj">
       <Project>{CFD19053-2172-41D3-8460-0FD2123A1E88}</Project>
       <Name>Maestro.Shared.UI</Name>

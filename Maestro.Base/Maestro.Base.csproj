@@ -138,6 +138,7 @@
     <Compile Include="Commands\Test\OpenUnmanagedResourceCommand.cs" />
     <Compile Include="Commands\Test\SelectFdoProviderCommand.cs" />
     <Compile Include="Commands\Test\TestCommands.cs" />
+    <Compile Include="Commands\Test\TriggerDbXmlCommand.cs" />
     <Compile Include="Commands\TipOfTheDayCommand.cs" />
     <Compile Include="Commands\TranslateLayoutCommand.cs" />
     <Compile Include="Commands\UserGuideCommand.cs" />

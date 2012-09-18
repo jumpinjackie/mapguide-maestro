@@ -293,9 +293,16 @@ namespace Maestro.Editors
         /// <param name="xml"></param>
         public void UpdateResourceContent(string xml)
         {
-            using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
+            try
             {
-                _conn.ResourceService.SetResourceXmlData(this.EditedResourceID, ms);
+                using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
+                {
+                    _conn.ResourceService.SetResourceXmlData(this.EditedResourceID, ms);
+                }
+            }
+            catch (Exception ex)
+            {
+                XmlContentErrorDialog.CheckAndHandle(ex, xml, false);
             }
         }
 
@@ -428,7 +435,18 @@ namespace Maestro.Editors
         /// </summary>
         public void SyncSessionCopy()
         {
-            this.ResourceService.SetResourceXmlData(_editCopy.ResourceID, _editCopy.SerializeToStream());
+            string xml = _editCopy.Serialize();
+            try
+            {
+                using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
+                {
+                    this.ResourceService.SetResourceXmlData(_editCopy.ResourceID, ms);
+                }
+            }
+            catch (Exception ex)
+            {
+                XmlContentErrorDialog.CheckAndHandle(ex, xml, false);
+            }
         }
 
         /// <summary>

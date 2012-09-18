@@ -158,6 +158,12 @@
     <Compile Include="Common\UnmanagedFileBrowser.Designer.cs">
       <DependentUpon>UnmanagedFileBrowser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\XmlContentErrorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\XmlContentErrorDialog.Designer.cs">
+      <DependentUpon>XmlContentErrorDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Diagnostics\FdoCacheViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1337,6 +1343,9 @@
     <EmbeddedResource Include="Common\UnmanagedFileBrowser.resx">
       <DependentUpon>UnmanagedFileBrowser.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\XmlContentErrorDialog.resx">
+      <DependentUpon>XmlContentErrorDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Diagnostics\FdoCacheViewer.resx">
       <DependentUpon>FdoCacheViewer.cs</DependentUpon>
