@@ -13,6 +13,7 @@
    - Missing label in new fusion templates
 - Fusion editor improvements
    - Can view widget info in the Generic Widget XML editor
+- Fix: Updating a dynamic group name in a Map Definition did not update child groups
 - Fix: Have RDBMS Feature Source editor fill a fake password when opening a RDBMS feature source with secured credentials to give appearance of a password filled in.
 - Fix: Theming using first rule as template now preserves transparency
 - Fix: Restore missing checkbox for toggling Tiled Layer Group visibility in a Map Definition

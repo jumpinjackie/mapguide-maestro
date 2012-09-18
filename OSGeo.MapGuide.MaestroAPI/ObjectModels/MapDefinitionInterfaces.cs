@@ -458,9 +458,14 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
             Check.NotEmpty(oldGroupName, "oldGroupName"); //NOXLATE
             Check.NotEmpty(newGroupName, "newGroupName"); //NOXLATE
             var layers = map.GetLayersForGroup(oldGroupName);
+            var groups = map.GetGroupsForGroup(oldGroupName);
             foreach (var l in layers)
             {
                 l.Group = newGroupName;
+            }
+            foreach (var g in groups)
+            {
+                g.Group = newGroupName;
             }
         }
 
@@ -590,6 +595,22 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
             {
                 if (name.Equals(layer.Group))
                     yield return layer;
+            }
+        }
+
+        /// <summary>
+        /// Gets all the groups that belong to the specified group
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static IEnumerable<IMapLayerGroup> GetGroupsForGroup(this IMapDefinition map, string name)
+        {
+            Check.NotNull(map, "map"); //NOXLATE
+            foreach (var group in map.MapLayerGroup)
+            {
+                if (name.Equals(group.Group))
+                    yield return group;
             }
         }
 
