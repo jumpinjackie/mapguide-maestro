@@ -228,6 +228,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                     try
                     {
                         IVectorLayerDefinition vl = (IVectorLayerDefinition)m_layer.SubLayer;
+                        if (!string.IsNullOrEmpty(vl.Filter))
+                            filter = vl.Filter;
                         try
                         {
                             //Either UNIQUE() is an undocumented FDO expression function (!!!)
