@@ -30,6 +30,8 @@ using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using Maestro.MapViewer.Model;
+using System.Diagnostics;
+using Maestro.Editors.MapDefinition.Live;
 
 namespace Maestro.Editors.MapDefinition
 {
@@ -199,6 +201,136 @@ namespace Maestro.Editors.MapDefinition
                     }
                 }
             }
+        }
+
+        private void AddLayerDefinition(ResourceDragMessage message, GroupNodeMetadata groupMeta)
+        {
+            if (ResourceIdentifier.GetResourceType(message.ResourceID) == ResourceTypes.LayerDefinition)
+            {
+                var map = this.Viewer.GetMap();
+                var conn = map.CurrentConnection;
+                var mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+                var ldf = (ILayerDefinition)conn.ResourceService.GetResource(message.ResourceID);
+                var rtLayer = mapSvc.CreateMapLayer(map, ldf);
+
+                if (groupMeta != null)
+                    rtLayer.Group = groupMeta.Name;
+
+                map.Layers.Insert(0, rtLayer);
+                this.Viewer.RefreshMap();
+            }
+        }
+
+        public event ItemDragEventHandler ItemDrag;
+
+        internal void HandleDragDrop(DragEventArgs e)
+        {
+            var layer = e.Data.GetData(typeof(LayerDragMessage)) as LayerDragMessage;
+            var group = e.Data.GetData(typeof(GroupDragMessage)) as GroupDragMessage;
+            var res = e.Data.GetData(typeof(ResourceDragMessage)) as ResourceDragMessage;
+            var pt = legendCtrl.PointToClient(new Point(e.X, e.Y));
+            var node = legendCtrl.GetNodeAt(pt.X, pt.Y);
+            if (node != null)
+            {
+                var groupMeta = node.Tag as GroupNodeMetadata;
+                if (groupMeta != null)
+                {
+                    if (layer != null)
+                    {
+                        if (groupMeta.Name != layer.GroupName)
+                        {
+                            MessageBox.Show("Handle layer drop into (" + groupMeta.Name + ")");
+                        }
+                    }
+                    else if (group != null)
+                    {
+                        if (groupMeta.Name != group.GroupName)
+                        {
+                            MessageBox.Show("Handle group drop into (" + groupMeta.Name + ")");
+                        }
+                    }
+                    else if (res != null)
+                    {
+                        if (groupMeta != null)
+                        {
+                            AddLayerDefinition(res, groupMeta);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (layer != null)
+                {
+                    MessageBox.Show("Handle layer drop into root");
+                }
+                else if (group != null)
+                {
+                    MessageBox.Show("Handle group drop into root");
+                }
+                else if (res != null)
+                {
+                    AddLayerDefinition(res, null);
+                }
+            }
+        }
+
+        internal void HandleDragOver(DragEventArgs e)
+        {
+            var layer = e.Data.GetData(typeof(LayerDragMessage)) as LayerDragMessage;
+            var group = e.Data.GetData(typeof(GroupDragMessage)) as GroupDragMessage;
+            var res = e.Data.GetData(typeof(ResourceDragMessage)) as ResourceDragMessage;
+            var pt = legendCtrl.PointToClient(new Point(e.X, e.Y));
+            var node = legendCtrl.GetNodeAt(pt.X, pt.Y);
+            if (node != null)
+            {
+                var groupMeta = node.Tag as GroupNodeMetadata;
+                if (groupMeta != null)
+                {
+                    if (layer != null)
+                    {
+                        if (groupMeta.Name != layer.GroupName)
+                            e.Effect = DragDropEffects.Copy;
+                        else
+                            e.Effect = DragDropEffects.None;
+                    }
+                    else if (group != null)
+                    {
+                        if (groupMeta.Name != group.GroupName)
+                            e.Effect = DragDropEffects.Copy;
+                        else
+                            e.Effect = DragDropEffects.None;
+                    }
+                    else if (res != null)
+                    {
+
+                        if (groupMeta != null)
+                            e.Effect = DragDropEffects.Copy;
+                        else
+                            e.Effect = DragDropEffects.None;
+                    }
+                    else
+                    {
+                        e.Effect = DragDropEffects.None;
+                    }
+                }
+                else 
+                {
+                    e.Effect = DragDropEffects.None;
+                }
+            }
+            else
+            {
+                if (layer != null || group != null || res != null)
+                    e.Effect = DragDropEffects.Copy;
+                else
+                    e.Effect = DragDropEffects.None;
+            }
+        }
+
+        internal void HandleDragEnter(DragEventArgs e)
+        {
+            Trace.TraceInformation("HandleDragEnter(e)");
         }
     }
 }

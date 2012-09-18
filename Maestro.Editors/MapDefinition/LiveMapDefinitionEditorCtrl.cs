@@ -32,6 +32,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using Maestro.MapViewer.Model;
+using Maestro.Editors.MapDefinition.Live;
 
 namespace Maestro.Editors.MapDefinition
 {
@@ -170,6 +171,33 @@ namespace Maestro.Editors.MapDefinition
         private void repoView_RequestEdit(object sender, EventArgs e)
         {
             MessageBox.Show(Strings.FeatureNotImplemented);
+        }
+
+        private void repoView_ItemSelected(object sender, EventArgs e)
+        {
+            viewer.ActiveTool = MapViewer.MapActiveTool.None;
+        }
+
+        private void repoView_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            var item = repoView.SelectedItem;
+            if (item != null && !item.IsFolder)
+                repoView.DoDragDrop(new ResourceDragMessage(item.ResourceId), DragDropEffects.Copy);
+        }
+
+        private void legendCtrl_DragEnter(object sender, DragEventArgs e)
+        {
+            legendCtrl.HandleDragEnter(e);
+        }
+
+        private void legendCtrl_DragOver(object sender, DragEventArgs e)
+        {
+            legendCtrl.HandleDragOver(e);
+        }
+
+        private void legendCtrl_DragDrop(object sender, DragEventArgs e)
+        {
+            legendCtrl.HandleDragDrop(e);
         }
     }
 }

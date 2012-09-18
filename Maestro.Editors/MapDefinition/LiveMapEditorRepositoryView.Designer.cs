@@ -82,6 +82,7 @@
             resources.ApplyResources(this.repoView, "repoView");
             this.repoView.Name = "repoView";
             this.repoView.ItemSelected += new System.EventHandler(this.repoView_ItemSelected);
+            this.repoView.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.repoView_ItemDrag);
             // 
             // LiveMapEditorRepositoryView
             // 

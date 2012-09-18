@@ -966,6 +966,7 @@
     <Compile Include="MapDefinition\Live\NewGroupDialog.Designer.cs">
       <DependentUpon>NewGroupDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="MapDefinition\Live\DragMessages.cs" />
     <Compile Include="MapDefinition\ManualScaleEditor.cs">
       <SubType>Form</SubType>
     </Compile>

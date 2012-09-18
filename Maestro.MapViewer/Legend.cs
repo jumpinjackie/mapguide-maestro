@@ -63,6 +63,8 @@ namespace Maestro.MapViewer
             this.ShowAllLayersAndGroups = false;
         }
 
+        public event ItemDragEventHandler ItemDrag;
+
         /// <summary>
         /// Gets whether to display all layers and groups regardless of display settings
         /// and visibility
@@ -176,29 +178,44 @@ namespace Maestro.MapViewer
             if (nodes != null)
             {
                 //Attach relevant context menus based on attached metadata
-                foreach (var n in nodes)
-                {
-                    var lm = n.Tag as LegendNodeMetadata;
-                    if (lm != null)
-                    {
-                        if (lm.IsGroup)
-                        {
-                            n.ContextMenuStrip = this.GroupContextMenu;
-                        }
-                        else
-                        {
-                            var lyrm = n.Tag as LayerNodeMetadata;
-                            if (lyrm != null)
-                                n.ContextMenuStrip = this.LayerContextMenu;
-                        }
-                    }
-                }
+                AttachContextMenus(nodes);
                 trvLegend.Nodes.AddRange(nodes);
             }
             trvLegend.EndUpdate();
             _legendUpdateStopwatch.Stop();
             Trace.TraceInformation("RefreshLegend: Completed in {0}ms", _legendUpdateStopwatch.ElapsedMilliseconds);
             _legendUpdateStopwatch.Reset();
+        }
+
+        private void AttachContextMenus(IEnumerable<TreeNode> nodes)
+        {
+            foreach (var n in nodes)
+            {
+                var lm = n.Tag as LegendNodeMetadata;
+                if (lm != null)
+                {
+                    if (lm.IsGroup)
+                    {
+                        n.ContextMenuStrip = this.GroupContextMenu;
+                    }
+                    else
+                    {
+                        var lyrm = n.Tag as LayerNodeMetadata;
+                        if (lyrm != null)
+                            n.ContextMenuStrip = this.LayerContextMenu;
+                    }
+                }
+                if (n.Nodes.Count > 0)
+                    AttachContextMenus(AsEnumerable(n.Nodes));
+            }
+        }
+
+        static IEnumerable<TreeNode> AsEnumerable(TreeNodeCollection nodes)
+        {
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                yield return nodes[i];
+            }
         }
 
         public TreeNode SelectedNode { get { return trvLegend.SelectedNode; } }
@@ -514,6 +531,18 @@ namespace Maestro.MapViewer
             {
                 trvLegend.SelectedNode = trvLegend.GetNodeAt(e.X, e.Y);
             }
+        }
+
+        public TreeNode GetNodeAt(int x, int y)
+        {
+            return trvLegend.GetNodeAt(x, y);
+        }
+
+        private void trvLegend_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            var h = this.ItemDrag;
+            if (h != null)
+                h(this, e);
         }
     }
 }

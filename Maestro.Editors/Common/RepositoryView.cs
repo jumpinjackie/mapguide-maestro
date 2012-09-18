@@ -156,5 +156,14 @@ namespace Maestro.Editors.Common
                 }
             }
         }
+
+        public event ItemDragEventHandler ItemDrag;
+
+        private void trvRepository_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            var h = this.ItemDrag;
+            if (h != null)
+                h(this, e);
+        }
     }
 }

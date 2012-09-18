@@ -99,6 +99,9 @@ namespace Maestro.Editors.MapDefinition
             this.lstDrawOrder.Size = new System.Drawing.Size(241, 380);
             this.lstDrawOrder.TabIndex = 1;
             this.lstDrawOrder.SelectedIndexChanged += new System.EventHandler(this.lstDrawOrder_SelectedIndexChanged);
+            this.lstDrawOrder.DragDrop += new System.Windows.Forms.DragEventHandler(this.lstDrawOrder_DragDrop);
+            this.lstDrawOrder.DragEnter += new System.Windows.Forms.DragEventHandler(this.lstDrawOrder_DragEnter);
+            this.lstDrawOrder.DragOver += new System.Windows.Forms.DragEventHandler(this.lstDrawOrder_DragOver);
             // 
             // LiveMapEditorDrawOrder
             // 

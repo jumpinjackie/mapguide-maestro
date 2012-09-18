@@ -1,4 +1,5 @@
-﻿- Streamlined localizable strings
+﻿- New specialized error dialog for XML content errors, that shows the offending XML contnent.
+- Streamlined localizable strings
 - Live Map Definition Editor improvements
    - Add a repository browser view. Layers selected can be added to the current map
    - Move to a 3 pane interface (ala. AJAX viewer)
@@ -13,6 +14,9 @@
    - Missing label in new fusion templates
 - Fusion editor improvements
    - Can view widget info in the Generic Widget XML editor
+- Theme generation now considers active layer filter when generating rules
+- Fix: Dirty state not properly raised for certain Web Layout properties
+- Fix: Node color incorrectly set in Site Explorer for re-activated editors
 - Fix: Updating a dynamic group name in a Map Definition did not update child groups
 - Fix: Have RDBMS Feature Source editor fill a fake password when opening a RDBMS feature source with secured credentials to give appearance of a password filled in.
 - Fix: Theming using first rule as template now preserves transparency

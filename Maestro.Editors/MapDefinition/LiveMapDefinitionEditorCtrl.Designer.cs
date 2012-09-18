@@ -37,6 +37,7 @@
             this.viewer = new Maestro.MapViewer.MapViewer();
             this.TAB_DRAW_ORDER = new System.Windows.Forms.TabPage();
             this.drawOrderCtrl = new Maestro.Editors.MapDefinition.LiveMapEditorDrawOrder();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tabRepo = new System.Windows.Forms.TabControl();
@@ -51,16 +52,18 @@
             this.lblSelected = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblScale = new System.Windows.Forms.ToolStripStatusLabel();
             this.mapStatusTracker = new Maestro.MapViewer.MapStatusTracker();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabLayersAndGroups.SuspendLayout();
             this.TAB_LEGEND.SuspendLayout();
             this.TAB_DRAW_ORDER.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
@@ -103,11 +106,15 @@
             // 
             // legendCtrl
             // 
+            this.legendCtrl.AllowDrop = true;
             resources.ApplyResources(this.legendCtrl, "legendCtrl");
             this.legendCtrl.Name = "legendCtrl";
             this.legendCtrl.Viewer = this.viewer;
             this.legendCtrl.NodeDeleted += new Maestro.MapViewer.NodeEventHandler(this.legendCtrl_NodeDeleted);
             this.legendCtrl.NodeSelected += new Maestro.MapViewer.NodeEventHandler(this.legendCtrl_NodeSelected);
+            this.legendCtrl.DragDrop += new System.Windows.Forms.DragEventHandler(this.legendCtrl_DragDrop);
+            this.legendCtrl.DragEnter += new System.Windows.Forms.DragEventHandler(this.legendCtrl_DragEnter);
+            this.legendCtrl.DragOver += new System.Windows.Forms.DragEventHandler(this.legendCtrl_DragOver);
             // 
             // viewer
             // 
@@ -119,6 +126,7 @@
             this.viewer.Name = "viewer";
             this.viewer.PointPixelBuffer = 2;
             this.viewer.SelectionColor = System.Drawing.Color.Blue;
+            this.viewer.TooltipDelayInterval = 1000;
             this.viewer.ZoomInFactor = 0.5D;
             this.viewer.ZoomOutFactor = 2D;
             // 
@@ -131,11 +139,21 @@
             // 
             // drawOrderCtrl
             // 
+            this.drawOrderCtrl.AllowDrop = true;
             resources.ApplyResources(this.drawOrderCtrl, "drawOrderCtrl");
             this.drawOrderCtrl.Name = "drawOrderCtrl";
             this.drawOrderCtrl.Viewer = this.viewer;
             this.drawOrderCtrl.LayerChanged += new Maestro.Editors.MapDefinition.LayerEventHandler(this.drawOrderCtrl_LayerChanged);
             this.drawOrderCtrl.LayerDeleted += new Maestro.Editors.MapDefinition.LayerEventHandler(this.drawOrderCtrl_LayerDeleted);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "layer.png");
+            this.imageList1.Images.SetKeyName(1, "layers-stack.png");
+            this.imageList1.Images.SetKeyName(2, "property.png");
+            this.imageList1.Images.SetKeyName(3, "folder-tree.png");
             // 
             // splitContainer3
             // 
@@ -184,8 +202,10 @@
             // 
             resources.ApplyResources(this.repoView, "repoView");
             this.repoView.Name = "repoView";
+            this.repoView.ItemSelected += new System.EventHandler(this.repoView_ItemSelected);
             this.repoView.RequestAddToMap += new System.EventHandler(this.repoView_RequestAddToMap);
             this.repoView.RequestEdit += new System.EventHandler(this.repoView_RequestEdit);
+            this.repoView.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.repoView_ItemDrag);
             // 
             // tabProperties
             // 
@@ -245,15 +265,6 @@
             this.mapStatusTracker.SelectedLabel = this.lblSelected;
             this.mapStatusTracker.Viewer = this.viewer;
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "layer.png");
-            this.imageList1.Images.SetKeyName(1, "layers-stack.png");
-            this.imageList1.Images.SetKeyName(2, "property.png");
-            this.imageList1.Images.SetKeyName(3, "folder-tree.png");
-            // 
             // LiveMapDefinitionEditorCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -264,15 +275,18 @@
             resources.ApplyResources(this, "$this");
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tabLayersAndGroups.ResumeLayout(false);
             this.TAB_LEGEND.ResumeLayout(false);
             this.TAB_DRAW_ORDER.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.tabRepo.ResumeLayout(false);
             this.TAB_REPO.ResumeLayout(false);

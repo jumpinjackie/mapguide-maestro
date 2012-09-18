@@ -190,6 +190,21 @@ namespace Maestro.Editors.MapDefinition
                 this.Viewer.RefreshMap();
             }
         }
+
+        private void lstDrawOrder_DragOver(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void lstDrawOrder_DragEnter(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void lstDrawOrder_DragDrop(object sender, DragEventArgs e)
+        {
+
+        }
     }
 
     /// <summary>

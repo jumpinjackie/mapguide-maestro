@@ -78,6 +78,11 @@ namespace Maestro.Editors.MapDefinition
         }
 
         /// <summary>
+        /// Raised when an item is selected
+        /// </summary>
+        public event EventHandler ItemSelected;
+
+        /// <summary>
         /// Raised when the currently selected item is requested to be added to the currently edited map
         /// </summary>
         public event EventHandler RequestAddToMap;
@@ -86,6 +91,11 @@ namespace Maestro.Editors.MapDefinition
         /// Raised when the currently selected item is requested to be edited
         /// </summary>
         public event EventHandler RequestEdit;
+
+        /// <summary>
+        /// Raised when an item is dragged
+        /// </summary>
+        public event ItemDragEventHandler ItemDrag;
 
         /// <summary>
         /// Gets the selected item in the repository
@@ -101,6 +111,9 @@ namespace Maestro.Editors.MapDefinition
             var condition = (item != null && !item.IsFolder && (item.ResourceType == ResourceTypes.LayerDefinition));
             btnAddToMap.Enabled = btnEdit.Enabled = condition;
             btnRefresh.Enabled = !condition;
+            var h = this.ItemSelected;
+            if (h != null)
+                h(this, EventArgs.Empty);
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -115,6 +128,13 @@ namespace Maestro.Editors.MapDefinition
                 var parent = ResourceIdentifier.GetParentFolder(item.ResourceId);
                 repoView.RefreshModel(parent);
             }
+        }
+
+        private void repoView_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            var h = this.ItemDrag;
+            if (h != null)
+                h(this, e);
         }
     }
 }

@@ -39,6 +39,7 @@
             resources.ApplyResources(this.trvRepository, "trvRepository");
             this.trvRepository.ImageList = this.resImageList;
             this.trvRepository.Name = "trvRepository";
+            this.trvRepository.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvRepository_ItemDrag);
             // 
             // resImageList
             // 

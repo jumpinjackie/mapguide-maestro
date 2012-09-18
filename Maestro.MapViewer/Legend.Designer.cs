@@ -52,6 +52,7 @@
             this.trvLegend.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.trvLegend_AfterCollapse);
             this.trvLegend.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.trvLegend_AfterExpand);
             this.trvLegend.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.trvLegend_DrawNode);
+            this.trvLegend.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvLegend_ItemDrag);
             this.trvLegend.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvLegend_AfterSelect);
             this.trvLegend.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvLegend_NodeMouseClick);
             this.trvLegend.MouseDown += new System.Windows.Forms.MouseEventHandler(this.trvLegend_MouseDown);
