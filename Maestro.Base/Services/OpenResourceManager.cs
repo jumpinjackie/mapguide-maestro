@@ -210,7 +210,7 @@ namespace Maestro.Base.Services
                 };
             }
             _openItems[key].Activate();
-            siteExp.FlagNode(conn.DisplayName, res.ResourceID, NodeFlagAction.HighlightOpen);
+            siteExp.FlagNode(conn.DisplayName, res.ResourceID, _openItems[key].IsDirty ? NodeFlagAction.HighlightDirty : NodeFlagAction.HighlightOpen);
             return _openItems[key];
         }
 

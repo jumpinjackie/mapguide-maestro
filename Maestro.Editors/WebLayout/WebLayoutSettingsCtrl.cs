@@ -110,6 +110,8 @@ namespace Maestro.Editors.WebLayout
             _wl.InformationPane.PropertyChanged += OnWebLayoutPropertyChanged;
             _wl.StatusBar.PropertyChanged += OnWebLayoutPropertyChanged;
             _wl.TaskPane.PropertyChanged += OnWebLayoutPropertyChanged;
+            _wl.TaskPane.TaskBar.PropertyChanged += OnWebLayoutPropertyChanged;
+            _wl.ToolBar.PropertyChanged += OnWebLayoutPropertyChanged;
             _wl.ZoomControl.PropertyChanged += OnWebLayoutPropertyChanged;
         }
 
@@ -161,6 +163,8 @@ namespace Maestro.Editors.WebLayout
                     _wl.InformationPane.PropertyChanged -= OnWebLayoutPropertyChanged;
                     _wl.StatusBar.PropertyChanged -= OnWebLayoutPropertyChanged;
                     _wl.TaskPane.PropertyChanged -= OnWebLayoutPropertyChanged;
+                    _wl.TaskPane.TaskBar.PropertyChanged -= OnWebLayoutPropertyChanged;
+                    _wl.ToolBar.PropertyChanged -= OnWebLayoutPropertyChanged;
                     _wl.ZoomControl.PropertyChanged -= OnWebLayoutPropertyChanged;
                 }
 
