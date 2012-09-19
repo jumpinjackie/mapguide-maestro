@@ -35,8 +35,30 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// </summary>
     public class Utility
     {
+        public const string XML_EXCEPTION_KEY = "XmlError"; //NOXLATE
+
+        /// <summary>
+        /// Gets whether the thrown exception is related to DBXML
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <returns></returns>
+        public static bool IsDbXmlError(Exception ex)
+        {
+            return ex.Message.Contains("MgDbXmlException") || ex.Message.Contains("MgXmlParserException"); //NOXLATE
+        }
+
+        /// <summary>
+        /// Gets whether the given exception has original xml content attached
+        /// </summary>
+        /// <param name="ex"></param>
+        /// <returns></returns>
+        public static bool HasOriginalXml(Exception ex)
+        {
+            return ex.Data[XML_EXCEPTION_KEY] != null;
+        }
+
         //Americans NEVER obey nationalization when outputting decimal values, so the rest of the world always have to work around their bugs :(
-        private static System.Globalization.CultureInfo m_enCI = new System.Globalization.CultureInfo("en-US");
+        private static System.Globalization.CultureInfo m_enCI = new System.Globalization.CultureInfo("en-US"); //NOXLATE
 
         /// <summary>
         /// Converts the specified name value collection into a connection string

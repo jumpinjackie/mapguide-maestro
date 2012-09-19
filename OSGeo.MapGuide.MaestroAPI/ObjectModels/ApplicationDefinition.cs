@@ -214,13 +214,13 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
                 {
                     Disabled = "false", //NOXLATE
                     Extension = new CustomContentType() { Any = new XmlElement[0] },
-                    ImageClass = widgetInfo.ImageClass,
-                    ImageUrl = widgetInfo.ImageUrl,
-                    Label = widgetInfo.Label,
+                    ImageClass = widgetInfo.ImageClass ?? string.Empty, //Required to satisfy content model
+                    ImageUrl = widgetInfo.ImageUrl ?? string.Empty, //Required to satisfy content model
+                    Label = widgetInfo.Label ?? string.Empty, //Required to satisfy content model
                     Location = widgetInfo.Location ?? string.Empty, //Required to satisfy content model
                     Name = name,
                     StatusText = widgetInfo.StatusText ?? string.Empty, //Required to satisfy content model
-                    Tooltip = widgetInfo.Tooltip,
+                    Tooltip = widgetInfo.Tooltip ?? string.Empty, //Required to satisfy content model
                     Type = widgetInfo.Type
                 };
             }

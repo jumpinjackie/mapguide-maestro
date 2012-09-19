@@ -1257,7 +1257,16 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="resource">The resource.</param>
         public void SaveResource(OSGeo.MapGuide.MaestroAPI.Resource.IResource resource)
         {
-            SaveResourceAs(resource, resource.ResourceID);
+            try
+            {
+                SaveResourceAs(resource, resource.ResourceID);
+            }
+            catch (Exception ex)
+            {
+                if (Utility.IsDbXmlError(ex))
+                    ex.Data[Utility.XML_EXCEPTION_KEY] = resource.Serialize();
+                throw ex;
+            }
         }
 
         /// <summary>
@@ -1267,8 +1276,17 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="resourceid">The resourceid.</param>
         public void SaveResourceAs(OSGeo.MapGuide.MaestroAPI.Resource.IResource resource, string resourceid)
         {
-            var stream = ResourceTypeRegistry.Serialize(resource);
-            SetResourceXmlData(resourceid, stream);
+            try
+            {
+                var stream = ResourceTypeRegistry.Serialize(resource);
+                SetResourceXmlData(resourceid, stream);
+            }
+            catch (Exception ex)
+            {
+                if (Utility.IsDbXmlError(ex))
+                    ex.Data[Utility.XML_EXCEPTION_KEY] = resource.Serialize();
+                throw ex;
+            }
         }
 
         /// <summary>

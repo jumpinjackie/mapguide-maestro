@@ -36,8 +36,6 @@ namespace Maestro.Editors.Common
     /// </summary>
     public partial class XmlContentErrorDialog : Form
     {
-        const string EXCEPTION_KEY = "XmlError"; //NOXLATE
-
         private XmlContentErrorDialog()
         {
             InitializeComponent();
@@ -54,7 +52,7 @@ namespace Maestro.Editors.Common
         {
             if (IsDbXmlError(ex))
             {
-                ex.Data[EXCEPTION_KEY] = origXml;
+                ex.Data[Utility.XML_EXCEPTION_KEY] = origXml;
                 if (bDisplay)
                     Show(ex);
                 else
@@ -73,7 +71,7 @@ namespace Maestro.Editors.Common
         /// <returns></returns>
         public static bool IsDbXmlError(Exception ex)
         {
-            return ex.Message.Contains("MgDbXmlException") || ex.Message.Contains("MgXmlParserException"); //NOXLATE
+            return Utility.IsDbXmlError(ex);
         }
 
         /// <summary>
@@ -83,7 +81,7 @@ namespace Maestro.Editors.Common
         /// <returns></returns>
         public static bool HasOriginalXml(Exception ex)
         {
-            return ex.Data[EXCEPTION_KEY] != null;
+            return Utility.HasOriginalXml(ex);
         }
 
         private Exception _ex;
@@ -96,8 +94,8 @@ namespace Maestro.Editors.Common
         public static void Show(Exception ex)
         {
             Check.NotNull(ex, "ex"); //NOXLATE
-            Check.NotNull(ex.Data[EXCEPTION_KEY], "ex.Data[EXCEPTION_KEY]"); //NOXLATE
-            string origXmlContent = ex.Data[EXCEPTION_KEY].ToString();
+            Check.NotNull(ex.Data[Utility.XML_EXCEPTION_KEY], "ex.Data[Utility.XML_EXCEPTION_KEY]"); //NOXLATE
+            string origXmlContent = ex.Data[Utility.XML_EXCEPTION_KEY].ToString();
             var diag = new XmlContentErrorDialog();
             diag._ex = ex;
             diag.txtErrorDetails.Text = ex.ToString();

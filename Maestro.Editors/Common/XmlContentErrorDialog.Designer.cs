@@ -47,8 +47,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtErrorDetails);
             resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.txtErrorDetails);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
@@ -60,8 +60,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtXmlContent);
             resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.txtXmlContent);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
