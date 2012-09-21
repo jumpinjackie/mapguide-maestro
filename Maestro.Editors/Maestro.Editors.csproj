@@ -771,6 +771,12 @@
     <Compile Include="LayerDefinition\Vector\Scales\EditorTemplateForm.designer.cs">
       <DependentUpon>EditorTemplateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\ExplodeThemeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\ExplodeThemeDialog.Designer.cs">
+      <DependentUpon>ExplodeThemeDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="LayerDefinition\Vector\Scales\ItemStyle.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1664,6 +1670,9 @@
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\EditorTemplateForm.resx">
       <DependentUpon>EditorTemplateForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\Scales\ExplodeThemeDialog.resx">
+      <DependentUpon>ExplodeThemeDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\ItemStyle.resx">
       <DependentUpon>ItemStyle.cs</DependentUpon>
     </EmbeddedResource>
@@ -2413,6 +2422,7 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\arrow-split.png" />
     <None Include="Resources\folder-horizontal-open.png" />
     <None Include="Resources\water.png" />
     <None Include="Resources\magnifier-left.png" />

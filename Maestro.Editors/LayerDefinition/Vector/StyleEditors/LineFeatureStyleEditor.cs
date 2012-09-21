@@ -645,11 +645,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
         private void compositeLines_CheckedChanged(object sender, System.EventArgs e)
         {
-            if (compositePanel.Visible && !compositeLines.Checked)
-                this.AutoScrollMinSize = new Size(this.AutoScrollMinSize.Width, this.AutoScrollMinSize.Height - compositePanel.Height);
-            else if (!compositePanel.Visible && compositeLines.Checked)
-                this.AutoScrollMinSize = new Size(this.AutoScrollMinSize.Width, this.AutoScrollMinSize.Height + compositePanel.Height);
-
             compositePanel.Visible = compositeLines.Checked;
 
             if (m_inUpdate)

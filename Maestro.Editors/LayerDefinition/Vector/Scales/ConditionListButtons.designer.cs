@@ -40,6 +40,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             this.MoveRuleDownButton = new System.Windows.Forms.Button();
             this.MoveRuleUpButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnExplodeTheme = new System.Windows.Forms.Button();
             this.ShowInLegend = new System.Windows.Forms.CheckBox();
             this.toolTips = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
@@ -50,8 +51,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             resources.ApplyResources(this.conditionList, "conditionList");
             this.conditionList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.conditionList.Name = "conditionList";
-            this.conditionList.Owner = null;
-            this.conditionList.SelectedItem = null;
             this.conditionList.ItemChanged += new System.EventHandler(this.conditionList_ItemChanged);
             // 
             // label1
@@ -115,6 +114,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnExplodeTheme);
             this.panel1.Controls.Add(this.ShowInLegend);
             this.panel1.Controls.Add(this.MoveRuleUpButton);
             this.panel1.Controls.Add(this.MoveRuleDownButton);
@@ -126,6 +126,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             this.panel1.Controls.Add(this.label1);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            // 
+            // btnExplodeTheme
+            // 
+            this.btnExplodeTheme.Image = global::Maestro.Editors.Properties.Resources.arrow_split;
+            resources.ApplyResources(this.btnExplodeTheme, "btnExplodeTheme");
+            this.btnExplodeTheme.Name = "btnExplodeTheme";
+            this.toolTips.SetToolTip(this.btnExplodeTheme, resources.GetString("btnExplodeTheme.ToolTip"));
+            this.btnExplodeTheme.UseVisualStyleBackColor = true;
+            this.btnExplodeTheme.Click += new System.EventHandler(this.btnExplodeTheme_Click);
             // 
             // ShowInLegend
             // 
@@ -164,5 +173,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox ShowInLegend;
         private System.Windows.Forms.ToolTip toolTips;
+        private System.Windows.Forms.Button btnExplodeTheme;
     }
 }

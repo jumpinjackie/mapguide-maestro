@@ -526,6 +526,41 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         }
 
         #endregion
+
+        #region IRuleCollection Members
+        IVectorRule IRuleCollection.GetRuleAt(int index)
+        {
+            return this.AreaRule[index];
+        }
+
+        public int IndexOfRule(IVectorRule rule)
+        {
+            var r = rule as AreaRuleType;
+            if (r != null)
+                return this.AreaRule.IndexOf(r);
+            return -1;
+        }
+
+        public bool MoveUp(IVectorRule rule)
+        {
+            var r = rule as AreaRuleType;
+            if (r != null)
+            {
+                return CollectionUtil.MoveUp(this.AreaRule, r);
+            }
+            return false;
+        }
+
+        public bool MoveDown(IVectorRule rule)
+        {
+            var r = rule as AreaRuleType;
+            if (r != null)
+            {
+                return CollectionUtil.MoveDown(this.AreaRule, r);
+            }
+            return false;
+        }
+        #endregion
     }
 
     internal static class CollectionUtil
@@ -579,7 +614,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         }
 
         [XmlIgnore]
-        ITextSymbol IVectorRule.Label
+        ITextSymbol IBasicVectorRule.Label
         {
             get
             {
@@ -677,13 +712,44 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         }
 
         #endregion
+
+        #region IRuleCollection Members
+        IVectorRule IRuleCollection.GetRuleAt(int index)
+        {
+            return this.PointRule[index];
+        }
+
+        public int IndexOfRule(IVectorRule rule)
+        {
+            var pr = rule as PointRuleType;
+            if (pr != null)
+                return this.PointRule.IndexOf(pr);
+            return -1;
+        }
+
+        public bool MoveUp(IVectorRule rule)
+        {
+            var pr = rule as PointRuleType;
+            if (pr != null)
+                return CollectionUtil.MoveUp(this.PointRule, pr);
+            return false;
+        }
+
+        public bool MoveDown(IVectorRule rule)
+        {
+            var pr = rule as PointRuleType;
+            if (pr != null)
+                return CollectionUtil.MoveDown(this.PointRule, pr);
+            return false;
+        }
+        #endregion
     }
 
 
     partial class PointRuleType : IPointRule
     {
         [XmlIgnore]
-        ITextSymbol IVectorRule.Label
+        ITextSymbol IBasicVectorRule.Label
         {
             get
             {
@@ -803,6 +869,37 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         }
 
         #endregion
+
+        #region IRuleCollection Members
+        IVectorRule IRuleCollection.GetRuleAt(int index)
+        {
+            return this.LineRule[index];
+        }
+
+        public int IndexOfRule(IVectorRule rule)
+        {
+            var lr = rule as LineRuleType;
+            if (lr != null)
+                return this.LineRule.IndexOf(lr);
+            return -1;
+        }
+
+        public bool MoveUp(IVectorRule rule)
+        {
+            var lr = rule as LineRuleType;
+            if (lr != null)
+                return CollectionUtil.MoveUp(this.LineRule, lr);
+            return false;
+        }
+
+        public bool MoveDown(IVectorRule rule)
+        {
+            var lr = rule as LineRuleType;
+            if (lr != null)
+                return CollectionUtil.MoveDown(this.LineRule, lr);
+            return false;
+        }
+        #endregion
     }
 
     partial class LineRuleType : ILineRule
@@ -817,6 +914,12 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                     yield return str;
                 }
             }
+        }
+
+        [XmlIgnore]
+        int ILineRule.StrokeCount
+        {
+            get { return this.Items.Count; }
         }
 
         void ILineRule.SetStrokes(IEnumerable<IStroke> strokes)
@@ -846,7 +949,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         }
 
         [XmlIgnore]
-        ITextSymbol IVectorRule.Label
+        ITextSymbol IBasicVectorRule.Label
         {
             get
             {
@@ -2265,6 +2368,37 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             return false;
         }
 
+        #endregion
+
+        #region IRuleCollection Members
+        public int IndexOfRule(IVectorRule rule)
+        {
+            var cr = rule as CompositeRule;
+            if (cr != null)
+                return this.CompositeRule.IndexOf(cr);
+            return -1;
+        }
+
+        IVectorRule IRuleCollection.GetRuleAt(int index)
+        {
+            return this.CompositeRule[index];
+        }
+
+        public bool MoveUp(IVectorRule rule)
+        {
+            var cr = rule as CompositeRule;
+            if (cr != null)
+                return CollectionUtil.MoveUp(this.CompositeRule, cr);
+            return false;
+        }
+
+        public bool MoveDown(IVectorRule rule)
+        {
+            var cr = rule as CompositeRule;
+            if (cr != null)
+                return CollectionUtil.MoveDown(this.CompositeRule, cr);
+            return false;
+        }
         #endregion
     }
 #endif

@@ -466,6 +466,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exploding Composite Styles is not currently supported.
+        /// </summary>
+        internal static string ErrorExplodingCompositeStyleNotSupported {
+            get {
+                return ResourceManager.GetString("ErrorExplodingCompositeStyleNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not a valid symbol library resource identifier: {0}.
         /// </summary>
         internal static string ErrorInvalidSymbolLibraryResourceId {
@@ -1189,6 +1198,15 @@ namespace Maestro.Editors {
         internal static string InvalidFieldCountError {
             get {
                 return ResourceManager.GetString("InvalidFieldCountError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Layer Name Format. Name must have both {0} and {1} format markers.
+        /// </summary>
+        internal static string InvalidLayerNameFormat {
+            get {
+                return ResourceManager.GetString("InvalidLayerNameFormat", resourceCulture);
             }
         }
         

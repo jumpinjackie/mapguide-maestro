@@ -27,6 +27,10 @@ using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using OSGeo.MapGuide.ObjectModels;
 using System.Xml;
 using GeoAPI.Geometries;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System.Globalization;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -834,5 +838,144 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return el["fdo:" + name]; //NOXLATE
             return element;
         }
+
+        public static void ExplodeThemeIntoFilteredLayers(ExplodeThemeOptions options, LengthyOperationProgressCallBack progress)
+        {
+            var conn = options.Layer.CurrentConnection;
+            var origLayerId = options.Layer.ResourceID;
+            string layerPrefix = options.LayerPrefix;
+
+            var origVl = (IVectorLayerDefinition)options.Layer.SubLayer;
+            var origRange = options.Range;
+            var origStyle = options.ActiveStyle;
+            int processed = 0;
+            for (int i = 0; i < origStyle.RuleCount; i++)
+            {
+                var currentRule = origStyle.GetRuleAt(i);
+
+                var newLayer = ObjectFactory.CreateDefaultLayer(conn, LayerType.Vector, options.Layer.ResourceVersion);
+                var vl = (IVectorLayerDefinition)newLayer.SubLayer;
+                vl.ResourceId = origVl.ResourceId;
+                vl.FeatureName = origVl.FeatureName;
+                vl.Geometry = origVl.Geometry;
+
+                //Set this layer's filter to be that of the current rule
+                vl.Filter = currentRule.Filter;
+
+                //A newly created Layer Definition will only have one scale range
+                var range = vl.GetScaleRangeAt(0);
+                range.MinScale = origRange.MinScale;
+                range.MaxScale = origRange.MaxScale;
+
+                //Composite styles aren't applicable, so remove them if they exist
+                var range2 = range as IVectorScaleRange2;
+                if (range2 != null)
+                    range2.CompositeStyle = null;
+
+                //Invalidate geometry types not of the original style
+                switch (origStyle.StyleType)
+                {
+                    case StyleType.Area:
+                        range.LineStyle = null;
+                        range.PointStyle = null;
+                        IAreaRule ar = range.AreaStyle.GetRuleAt(0);
+                        IAreaRule oar = (IAreaRule)currentRule;
+                        if (oar.AreaSymbolization2D != null)
+                            ar.AreaSymbolization2D = oar.AreaSymbolization2D.Clone();
+                        if (oar.Label != null)
+                            ar.Label = oar.Label.Clone();
+                        break;
+                    case StyleType.Line:
+                        range.AreaStyle = null;
+                        range.PointStyle = null;
+                        ILineRule lr = range.LineStyle.GetRuleAt(0);
+                        ILineRule olr = (ILineRule)currentRule;
+                        if (olr.StrokeCount > 0)
+                        {
+                            foreach (var stroke in olr.Strokes)
+                            {
+                                lr.AddStroke(stroke.Clone());
+                            }
+                        }
+                        if (olr.Label != null)
+                            lr.Label = olr.Label.Clone();
+                        break;
+                    case StyleType.Point:
+                        range.AreaStyle = null;
+                        range.LineStyle = null;
+                        IPointRule pr = range.PointStyle.GetRuleAt(0);
+                        IPointRule opr = (IPointRule)currentRule;
+                        if (opr.Label != null)
+                            pr.Label = opr.Label.Clone();
+                        if (opr.PointSymbolization2D != null)
+                            pr.PointSymbolization2D = opr.PointSymbolization2D.Clone();
+                        break;
+                }
+
+                string newResId = options.FolderId +
+                                  GenerateLayerName(options.LayerNameFormat, layerPrefix, GetScaleRangeStr(options.Range), i, currentRule) +
+                                  ".LayerDefinition";
+
+                conn.ResourceService.SaveResourceAs(newLayer, newResId);
+                processed++;
+                if (progress != null)
+                    progress(null, new LengthyOperationProgressArgs(newResId, (processed / origStyle.RuleCount) * 100));
+            }
+        }
+
+        const string RESERVED_CHARS = "\\:*?\"<>|&'%=/";
+
+        public static string GenerateLayerName(string layerFormat, string layerName, string scaleRange, int i, IVectorRule rule)
+        {
+            StringBuilder sb = new StringBuilder(string.Format(layerFormat, layerName, scaleRange, string.IsNullOrEmpty(rule.LegendLabel) ? ("Rule" + i) : rule.LegendLabel)); //NOXLATE
+            foreach (char c in RESERVED_CHARS.ToCharArray())
+            {
+                sb.Replace(c, '_');
+            }
+            return sb.ToString().Trim();
+        }
+
+        public static string GetScaleRangeStr(IVectorScaleRange parentRange)
+        {
+            return string.Format("{0} to {1}", //NOXLATE
+                parentRange.MinScale.HasValue ? parentRange.MinScale.Value.ToString(CultureInfo.InvariantCulture) : "0", //NOXLATE
+                parentRange.MaxScale.HasValue ? parentRange.MaxScale.Value.ToString(CultureInfo.InvariantCulture) : "Infinity"); //NOXLATE
+        }
+    }
+
+    /// <summary>
+    /// Defines parameter for exploding a theme into filtered layers
+    /// </summary>
+    public class ExplodeThemeOptions
+    {
+        /// <summary>
+        /// The layer definition
+        /// </summary>
+        public ILayerDefinition Layer { get; set; }
+
+        /// <summary>
+        /// The active scale range
+        /// </summary>
+        public IVectorScaleRange Range { get; set; }
+
+        /// <summary>
+        /// The active style
+        /// </summary>
+        public IVectorStyle ActiveStyle { get; set; }
+
+        /// <summary>
+        /// The folder to create the layers in
+        /// </summary>
+        public string FolderId { get; set; }
+
+        /// <summary>
+        /// The layer name format string
+        /// </summary>
+        public string LayerNameFormat { get; set; }
+
+        /// <summary>
+        /// The layer prefix
+        /// </summary>
+        public string LayerPrefix { get; set; }
     }
 }

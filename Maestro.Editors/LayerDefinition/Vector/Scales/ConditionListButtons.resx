@@ -112,20 +112,20 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="conditionList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="conditionList.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="conditionList.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 24</value>
   </data>
@@ -139,7 +139,7 @@
     <value>conditionList</value>
   </data>
   <data name="&gt;&gt;conditionList.Type" xml:space="preserve">
-    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionList, Maestro.Editors, Version=3.0.0.5728, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.LayerDefinition.Vector.Scales.ConditionList, Maestro.Editors, Version=5.0.0.6640, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;conditionList.Parent" xml:space="preserve">
     <value>$this</value>
@@ -166,13 +166,13 @@
     <value>label1</value>
   </data>
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -193,13 +193,13 @@
     <value>label3</value>
   </data>
   <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -220,17 +220,14 @@
     <value>label4</value>
   </data>
   <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label4.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
-  <metadata name="toolTips.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="AddRuleButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -240,6 +237,9 @@
   <data name="AddRuleButton.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
+  <metadata name="toolTips.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <data name="AddRuleButton.ToolTip" xml:space="preserve">
     <value>Add a new rule</value>
   </data>
@@ -247,19 +247,19 @@
     <value>AddRuleButton</value>
   </data>
   <data name="&gt;&gt;AddRuleButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;AddRuleButton.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;AddRuleButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="CopyRuleButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="CopyRuleButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>138, 0</value>
+    <value>144, 0</value>
   </data>
   <data name="CopyRuleButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 24</value>
@@ -274,13 +274,13 @@
     <value>CopyRuleButton</value>
   </data>
   <data name="&gt;&gt;CopyRuleButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CopyRuleButton.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;CopyRuleButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="CreateThemeButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -299,7 +299,7 @@
 </value>
   </data>
   <data name="CreateThemeButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 0</value>
+    <value>80, 0</value>
   </data>
   <data name="CreateThemeButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 24</value>
@@ -314,13 +314,13 @@
     <value>CreateThemeButton</value>
   </data>
   <data name="&gt;&gt;CreateThemeButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;CreateThemeButton.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;CreateThemeButton.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="MoveRuleDownButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -341,13 +341,13 @@
     <value>MoveRuleDownButton</value>
   </data>
   <data name="&gt;&gt;MoveRuleDownButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;MoveRuleDownButton.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;MoveRuleDownButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="MoveRuleUpButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -368,19 +368,46 @@
     <value>MoveRuleUpButton</value>
   </data>
   <data name="&gt;&gt;MoveRuleUpButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;MoveRuleUpButton.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;MoveRuleUpButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
+  </data>
+  <data name="btnExplodeTheme.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnExplodeTheme.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 0</value>
+  </data>
+  <data name="btnExplodeTheme.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 24</value>
+  </data>
+  <data name="btnExplodeTheme.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="btnExplodeTheme.ToolTip" xml:space="preserve">
+    <value>Explode this theme</value>
+  </data>
+  <data name="&gt;&gt;btnExplodeTheme.Name" xml:space="preserve">
+    <value>btnExplodeTheme</value>
+  </data>
+  <data name="&gt;&gt;btnExplodeTheme.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnExplodeTheme.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;btnExplodeTheme.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="ShowInLegend.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="ShowInLegend.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 6</value>
+    <value>194, 7</value>
   </data>
   <data name="ShowInLegend.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 17</value>
@@ -391,9 +418,6 @@
   <data name="ShowInLegend.Text" xml:space="preserve">
     <value>Show In Legend</value>
   </data>
-  <metadata name="toolTips.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="ShowInLegend.ToolTip" xml:space="preserve">
     <value>Check to show in legend (only avalible in LayerDefinition 1.3.0 and above). This can toggle legend visibility without removing your defined style rules</value>
   </data>
@@ -401,13 +425,13 @@
     <value>ShowInLegend</value>
   </data>
   <data name="&gt;&gt;ShowInLegend.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ShowInLegend.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;ShowInLegend.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -425,7 +449,7 @@
     <value>panel1</value>
   </data>
   <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -433,7 +457,7 @@
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
@@ -443,12 +467,12 @@
     <value>toolTips</value>
   </data>
   <data name="&gt;&gt;toolTips.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>ConditionListButtons</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

@@ -30,6 +30,7 @@ using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.ObjectModels;
 using Maestro.Editors.LayerDefinition.Vector.Thematics;
 using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
+using Maestro.Shared.UI;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
@@ -120,7 +121,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             var cm2 = m_comp as ICompositeTypeStyle2;
 
             //Check if we're working with a 1.3.0 schema
-            ShowInLegend.Enabled = (ar2 != null || pt2 != null || ln2 != null || cm2 != null);            
+            ShowInLegend.Enabled = (ar2 != null || pt2 != null || ln2 != null || cm2 != null);
+            btnExplodeTheme.Enabled = (m_comp == null);
         }
 
         public void AddRule()
@@ -300,6 +302,42 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 ln2.ShowInLegend = ShowInLegend.Checked;
                 m_owner.FlagDirty();
             }
+        }
+
+        private void btnExplodeTheme_Click(object sender, EventArgs e)
+        {
+            var ed = m_owner.EditorService;
+            var layer = ed.GetEditedResource() as ILayerDefinition;
+            var style = m_point as IVectorStyle ?? m_line as IVectorStyle ?? m_area as IVectorStyle;
+            var diag = new ExplodeThemeDialog(ed, m_parent, style, layer);
+            if (diag.ShowDialog() == DialogResult.OK)
+            {
+                var options = new ExplodeThemeOptions()
+                {
+                    ActiveStyle = style,
+                    FolderId = diag.CreateInFolder,
+                    Layer = layer,
+                    LayerNameFormat = diag.LayerNameFormat,
+                    LayerPrefix = diag.LayerPrefix,
+                    Range = m_parent
+                };
+
+                var progress = new ProgressDialog();
+                var worker = new BackgroundWorker();
+                worker.WorkerReportsProgress = true;
+                progress.RunOperationAsync(null, ExplodeThemeWorker, options);
+            }
+        }
+
+        private static object ExplodeThemeWorker(BackgroundWorker worker, DoWorkEventArgs e, params object[] args)
+        {
+            var options = (ExplodeThemeOptions)args[0];
+            LengthyOperationProgressCallBack cb = (s, cbArgs) =>
+            {
+                worker.ReportProgress(cbArgs.Progress, cbArgs.StatusMessage);
+            };
+            Utility.ExplodeThemeIntoFilteredLayers(options, cb);
+            return true;
         }
     }
 }

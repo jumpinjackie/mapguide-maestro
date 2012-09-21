@@ -760,7 +760,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// base interface for all style specifications
     /// </summary>
-    public interface IVectorStyle
+    public interface IVectorStyle : IRuleCollection
     {
         /// <summary>
         /// Gets the type of this style specification
@@ -855,8 +855,39 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// Defines a collection of style rules
     /// </summary>
+    public interface IRuleCollection
+    {
+        /// <summary>
+        /// Gets the index of the specified rule
+        /// </summary>
+        /// <param name="rule"></param>
+        /// <returns></returns>
+        IVectorRule GetRuleAt(int index);
+        /// <summary>
+        /// Gets the rule at the specified index
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
+        int IndexOfRule(IVectorRule rule);
+        /// <summary>
+        /// Moves the specified rule up the list
+        /// </summary>
+        /// <param name="rule">The rule.</param>
+        /// <returns></returns>
+        bool MoveUp(IVectorRule rule);
+        /// <summary>
+        /// Moves the specified rule down the list
+        /// </summary>
+        /// <param name="rule">The rule.</param>
+        /// <returns></returns>
+        bool MoveDown(IVectorRule rule);
+    }
+
+    /// <summary>
+    /// Defines a collection of style rules
+    /// </summary>
     /// <typeparam name="TRule">The type of the rule.</typeparam>
-    public interface IRuleCollection<TRule>
+    public interface IRuleCollection<TRule> : IRuleCollection
     {
         /// <summary>
         /// Gets the index of the specified rule
@@ -936,7 +967,13 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// Gets or sets the filter for this rule
         /// </summary>
         string Filter { get; set; }
+    }
 
+    /// <summary>
+    /// Base interface for basic style rules for all geometric types
+    /// </summary>
+    public interface IBasicVectorRule : IVectorRule
+    {
         /// <summary>
         /// Gets or sets the the label
         /// </summary>
@@ -946,7 +983,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// A style rule for the point geometry type
     /// </summary>
-    public interface IPointRule : IVectorRule
+    public interface IPointRule : IBasicVectorRule
     {
         /// <summary>
         /// Gets or sets the symbolization settings for this point rule
@@ -957,8 +994,13 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// A style rule for the line geometry type
     /// </summary>
-    public interface ILineRule : IVectorRule
+    public interface ILineRule : IBasicVectorRule
     {
+        /// <summary>
+        /// Gets the number of strokes in this line rule
+        /// </summary>
+        int StrokeCount { get; }
+
         /// <summary>
         /// Gets the symbolization settings for this line rule
         /// </summary>
@@ -986,7 +1028,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// A style rule for the area/polygon geometry type
     /// </summary>
-    public interface IAreaRule : IVectorRule
+    public interface IAreaRule : IBasicVectorRule
     {
         /// <summary>
         /// Gets or sets the polygon stylization settings 
@@ -1776,20 +1818,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// Represents a composite rule
     /// </summary>
-    public interface ICompositeRule
+    public interface ICompositeRule : IVectorRule
     {
-        /// <summary>
-        /// Gets or sets the legend label.
-        /// </summary>
-        /// <value>The legend label.</value>
-        string LegendLabel { get; set; }
-
-        /// <summary>
-        /// Gets or sets the filter.
-        /// </summary>
-        /// <value>The filter.</value>
-        string Filter { get; set; }
-
         /// <summary>
         /// Gets or sets the composite symbolization.
         /// </summary>
