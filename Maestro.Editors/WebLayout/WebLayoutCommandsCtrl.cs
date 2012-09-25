@@ -38,14 +38,14 @@ namespace Maestro.Editors.WebLayout
         public WebLayoutCommandsCtrl()
         {
             InitializeComponent();
-            _commands = new BindingList<ICommand>();
+            _commands = new BindingList<CommandDecorator>();
             grdCommands.DataSource = _commands;
         }
 
         private IWebLayout _wl;
         private IEditorService _edsvc;
 
-        private BindingList<ICommand> _commands;
+        private BindingList<CommandDecorator> _commands;
 
         public override void Bind(IEditorService service)
         {
@@ -56,7 +56,7 @@ namespace Maestro.Editors.WebLayout
             //Populate command set
             foreach (var cmd in _wl.CommandSet.Commands)
             {
-                _commands.Add(cmd);
+                _commands.Add(new CommandDecorator(cmd));
             }
             _commands.ListChanged += OnCommandSetListChanged;
         }
@@ -79,7 +79,7 @@ namespace Maestro.Editors.WebLayout
             {
                 case ListChangedType.ItemAdded:
                     {
-                        _wl.CommandSet.AddCommand(_commands[e.NewIndex]);
+                        _wl.CommandSet.AddCommand(_commands[e.NewIndex].DecoratedInstance);
                     }
                     break;
             }
@@ -137,7 +137,7 @@ namespace Maestro.Editors.WebLayout
             btnExport.Enabled = customCmds.Length > 0;
         }
 
-        private void SetSelectedCommand(ICommand cmd)
+        private void SetSelectedCommand(CommandDecorator cmd)
         {
             grdCommands.ClearSelection();
             foreach (DataGridViewRow row in grdCommands.Rows)
@@ -162,16 +162,18 @@ namespace Maestro.Editors.WebLayout
         {
             var cmd = _wl.CreateInvokeUrlCommand();
             cmd.Description = cmd.Label = cmd.Tooltip = Strings.InvokeUrlCmdDescription;
-            _commands.Add(cmd);
-            SetSelectedCommand(cmd);
+            var dec = new CommandDecorator(cmd);
+            _commands.Add(dec);
+            SetSelectedCommand(dec);
         }
 
         private void invokeScriptToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var cmd = _wl.CreateInvokeScriptCommand();
             cmd.Description = cmd.Label = cmd.Tooltip = Strings.InvokeScriptCmdDescription;
-            _commands.Add(cmd);
-            SetSelectedCommand(cmd);
+            var dec = new CommandDecorator(cmd);
+            _commands.Add(dec);
+            SetSelectedCommand(dec);
         }
 
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -184,8 +186,9 @@ namespace Maestro.Editors.WebLayout
 
             var cmd = _wl.CreateSearchCommand();
             cmd.Description = cmd.Label = cmd.Tooltip = Strings.SearchCmdDescription;
-            _commands.Add(cmd);
-            SetSelectedCommand(cmd);
+            var dec = new CommandDecorator(cmd);
+            _commands.Add(dec);
+            SetSelectedCommand(dec);
         }
 
         private void grdCommands_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -199,11 +202,16 @@ namespace Maestro.Editors.WebLayout
 
                 var cmdCtrl = new CustomCommandPropertyCtrl();
                 cmdCtrl.Dock = DockStyle.Fill;
-                cmdCtrl.Bind((ICommand)row.DataBoundItem, _edsvc);
 
-                grpCommand.Controls.Add(cmdCtrl);
-
-                EvaluateCommands();
+                //HACK: Mono workaround. It has problems with DataBoundItem
+                var dec = row.DataBoundItem as CommandDecorator;
+                if (dec != null)
+                {
+                    ICommand cmd = dec.DecoratedInstance;
+                    cmdCtrl.Bind(cmd, _edsvc);
+                    grpCommand.Controls.Add(cmdCtrl);
+                    EvaluateCommands();
+                }
             }
         }
 
@@ -225,57 +233,61 @@ namespace Maestro.Editors.WebLayout
         {
             if (grdCommands.SelectedRows.Count == 1)
             {
-                var iurl = grdCommands.SelectedRows[0].DataBoundItem as IInvokeUrlCommand;
-                var iscr = grdCommands.SelectedRows[0].DataBoundItem as IInvokeScriptCommand;
-                var srch = grdCommands.SelectedRows[0].DataBoundItem as ISearchCommand;
-
-                WebLayoutRegion[] regions;
-                if (iurl != null)
+                var cmd = grdCommands.SelectedRows[0].DataBoundItem as CommandDecorator;
+                if (cmd != null)
                 {
-                    if (_wl.IsCommandReferenced(iurl.Name, out regions))
-                    {
-                        if (!Ask(Strings.DeleteCommand, string.Format(Strings.PromptDeleteCommand, GetAsString(regions, ", "))))
-                            return;
-                    }
+                    var iurl = cmd.DecoratedInstance as IInvokeUrlCommand;
+                    var iscr = cmd.DecoratedInstance as IInvokeScriptCommand;
+                    var srch = cmd.DecoratedInstance as ISearchCommand;
 
-                    using (new WaitCursor(this))
+                    WebLayoutRegion[] regions;
+                    if (iurl != null)
                     {
-                        _wl.CommandSet.RemoveCommand(iurl);
-                        _commands.Remove(iurl);
-                        int deleted = _wl.RemoveAllReferences(iurl.Name);
-                        ClearCommandUI();
-                    }
-                }
-                else if (iscr != null)
-                {
-                    if (_wl.IsCommandReferenced(iscr.Name, out regions))
-                    {
-                        if (!Ask(Strings.DeleteCommand, string.Format(Strings.PromptDeleteCommand, GetAsString(regions, ", "))))
-                            return;
-                    }
+                        if (_wl.IsCommandReferenced(iurl.Name, out regions))
+                        {
+                            if (!Ask(Strings.DeleteCommand, string.Format(Strings.PromptDeleteCommand, GetAsString(regions, ", "))))
+                                return;
+                        }
 
-                    using (new WaitCursor(this))
-                    {
-                        _wl.CommandSet.RemoveCommand(iscr);
-                        _commands.Remove(iscr);
-                        _wl.RemoveAllReferences(iscr.Name);
-                        ClearCommandUI();
+                        using (new WaitCursor(this))
+                        {
+                            _wl.CommandSet.RemoveCommand(iurl);
+                            _commands.Remove(cmd);
+                            int deleted = _wl.RemoveAllReferences(iurl.Name);
+                            ClearCommandUI();
+                        }
                     }
-                }
-                else if (srch != null)
-                {
-                    if (_wl.IsCommandReferenced(srch.Name, out regions))
+                    else if (iscr != null)
                     {
-                        if (!Ask(Strings.DeleteCommand, string.Format(Strings.PromptDeleteCommand, GetAsString(regions, ", "))))
-                            return;
-                    }
+                        if (_wl.IsCommandReferenced(iscr.Name, out regions))
+                        {
+                            if (!Ask(Strings.DeleteCommand, string.Format(Strings.PromptDeleteCommand, GetAsString(regions, ", "))))
+                                return;
+                        }
 
-                    using (new WaitCursor(this))
+                        using (new WaitCursor(this))
+                        {
+                            _wl.CommandSet.RemoveCommand(iscr);
+                            _commands.Remove(cmd);
+                            _wl.RemoveAllReferences(iscr.Name);
+                            ClearCommandUI();
+                        }
+                    }
+                    else if (srch != null)
                     {
-                        _wl.CommandSet.RemoveCommand(srch);
-                        _commands.Remove(srch);
-                        _wl.RemoveAllReferences(srch.Name);
-                        ClearCommandUI();
+                        if (_wl.IsCommandReferenced(srch.Name, out regions))
+                        {
+                            if (!Ask(Strings.DeleteCommand, string.Format(Strings.PromptDeleteCommand, GetAsString(regions, ", "))))
+                                return;
+                        }
+
+                        using (new WaitCursor(this))
+                        {
+                            _wl.CommandSet.RemoveCommand(srch);
+                            _commands.Remove(cmd);
+                            _wl.RemoveAllReferences(srch.Name);
+                            ClearCommandUI();
+                        }
                     }
                 }
             }
@@ -305,7 +317,7 @@ namespace Maestro.Editors.WebLayout
                 List<string> selectedCmds = new List<string>();
                 foreach (DataGridViewRow row in grdCommands.SelectedRows)
                 {
-                    var cmd = (ICommand)row.DataBoundItem;
+                    var cmd = ((CommandDecorator)row.DataBoundItem).DecoratedInstance;
                     var cmdType = cmd.GetType();
                     if (typeof(IInvokeScriptCommand).IsAssignableFrom(cmdType))
                         selectedCmds.Add(cmd.Name);
@@ -349,7 +361,7 @@ namespace Maestro.Editors.WebLayout
                         foreach (var imported in cmds)
                         {
                             ICommand cmd = _wl.GetCommandByName(imported.ImportedName);
-                            _commands.Add(cmd);
+                            _commands.Add(new CommandDecorator(cmd));
 
                             if (imported.NameChanged)
                                 sb.AppendLine(imported.ToString());
@@ -373,5 +385,140 @@ namespace Maestro.Editors.WebLayout
         {
             EvaluateCommands();
         }
+    }
+
+    //HACK: Mono workaround for bugs due to binding to a BindingList of interfaces.
+    //So use a concrete decorator class that wraps the internal interface and bind to that
+    //instead
+
+    class CommandDecorator
+    {
+        private ICommand _cmd;
+
+        [Browsable(false)]
+        internal ICommand DecoratedInstance { get { return _cmd; } }
+
+        public CommandDecorator(ICommand cmd) { _cmd = cmd; }
+
+        public string Name
+        {
+            get
+            {
+                return _cmd.Name;
+            }
+            set
+            {
+                if (value != _cmd.Name)
+                {
+                    _cmd.Name = value;
+                    OnPropertyChanged("Name");
+                }
+            }
+        }
+
+        public string Label
+        {
+            get
+            {
+                return _cmd.Label;
+            }
+            set
+            {
+                if (value != _cmd.Label)
+                {
+                    _cmd.Label = value;
+                    OnPropertyChanged("Label");
+                }
+            }
+        }
+
+        public TargetViewerType TargetViewer
+        {
+            get
+            {
+                return _cmd.TargetViewer;
+            }
+            set
+            {
+                if (value != _cmd.TargetViewer)
+                {
+                    _cmd.TargetViewer = value;
+                    OnPropertyChanged("TargetViewer");
+                }
+            }
+        }
+
+        public string Tooltip
+        {
+            get
+            {
+                return _cmd.Tooltip;
+            }
+            set
+            {
+                if (value != _cmd.Tooltip)
+                {
+                    _cmd.Tooltip = value;
+                    OnPropertyChanged("Tooltip");
+                }
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return _cmd.Description;
+            }
+            set
+            {
+                if (value != _cmd.Description)
+                {
+                    _cmd.Description = value;
+                    OnPropertyChanged("Description");
+                }
+            }
+        }
+
+        public string ImageURL
+        {
+            get
+            {
+                return _cmd.ImageURL;
+            }
+            set
+            {
+                if (value != _cmd.ImageURL)
+                {
+                    _cmd.ImageURL = value;
+                    OnPropertyChanged("ImageURL");
+                }
+            }
+        }
+
+        public string DisabledImageURL
+        {
+            get
+            {
+                return _cmd.DisabledImageURL;
+            }
+            set
+            {
+                if (value != _cmd.DisabledImageURL)
+                {
+                    _cmd.DisabledImageURL = value;
+                    OnPropertyChanged("DisabledImageURL");
+                }
+            }
+        }
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            var h = this.PropertyChanged;
+            if (h != null)
+                h(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
