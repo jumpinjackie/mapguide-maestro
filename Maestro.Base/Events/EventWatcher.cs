@@ -110,6 +110,13 @@ namespace Maestro.Base.Events
                                         () => { return new SiteExplorer(); });
 
                 wb.ActiveSiteExplorer.ActiveConnectionChanged += new EventHandler(OnActiveConnectionChanged);
+
+                var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
+                var openMgr = ServiceRegistry.GetService<OpenResourceManager>();
+                var siteExp = wb.ActiveSiteExplorer;
+
+                var nav = new ResourceIdNavigator(connMgr, openMgr, viewMgr, siteExp);
+                wb.AddToolbar("Resource ID Bar", nav.NavigatorToolStrip, ToolbarRegion.Top, true);
             }
 
             wb.ActiveSiteExplorer.RefreshModel(name);

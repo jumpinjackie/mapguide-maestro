@@ -30,6 +30,7 @@ namespace Maestro.Shared.UI
         protected List<IViewContent> _singletonInstances = new List<IViewContent>();
 
         public event EventHandler ViewHidden;
+        public event ViewEventHandler ViewActivated;
 
         protected abstract WorkbenchBase GetWorkbench();
 
@@ -102,6 +103,9 @@ namespace Maestro.Shared.UI
                         if (!cnt.IsAttached)
                             wb.ShowContent(cnt);
                         cnt.Activate();
+                        var h = this.ViewActivated;
+                        if (h != null)
+                            h(this, cnt);
                         //wb.CheckContainerStatus();
                         return;
                     }
@@ -141,6 +145,9 @@ namespace Maestro.Shared.UI
                         if (!cnt.IsAttached)
                             wb.ShowContent(cnt);
                         cnt.Activate();
+                        var h = this.ViewActivated;
+                        if (h != null)
+                            h(this, cnt);
                         //wb.CheckContainerStatus();
                         return (T)cnt;
                     }
@@ -158,4 +165,6 @@ namespace Maestro.Shared.UI
             return obj;
         }
     }
+
+    public delegate void ViewEventHandler(object sender, IViewContent content);
 }

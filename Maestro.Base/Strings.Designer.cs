@@ -560,6 +560,15 @@ namespace Maestro.Base {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Active Connection.
+        /// </summary>
+        internal static string ErrorNoActiveConnection {
+            get {
+                return ResourceManager.GetString("ErrorNoActiveConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknown executable specified: {0}.
         /// </summary>
         internal static string ErrorUnknownExecutable {
@@ -754,6 +763,33 @@ namespace Maestro.Base {
         internal static string Label_GetMapKml {
             get {
                 return ResourceManager.GetString("Label_GetMapKml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go.
+        /// </summary>
+        internal static string Label_Go {
+            get {
+                return ResourceManager.GetString("Label_Go", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open this resource.
+        /// </summary>
+        internal static string Label_OpenResource {
+            get {
+                return ResourceManager.GetString("Label_OpenResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resource ID:.
+        /// </summary>
+        internal static string Label_ResourceID {
+            get {
+                return ResourceManager.GetString("Label_ResourceID", resourceCulture);
             }
         }
         

@@ -396,6 +396,7 @@
       <DependentUpon>ResourceHeaderXmlDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ResourceIconCache.cs" />
+    <Compile Include="UI\ResourceIdNavigator.cs" />
     <Compile Include="UI\ResourcePropertiesDialog.cs">
       <SubType>Form</SubType>
     </Compile>

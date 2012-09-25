@@ -51,7 +51,7 @@ namespace Maestro.Base.Commands
                 wb.Text = "MapGuide Maestro"; //NOXLATE
 
                 var mgr = ServiceRegistry.GetService<ViewContentManager>();
-
+                
                 if (Props.Get(ConfigProperties.ShowMessages, true))
                     mgr.OpenContent<MessageViewer>(ViewRegion.Bottom);
 

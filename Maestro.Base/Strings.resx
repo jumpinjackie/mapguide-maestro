@@ -971,4 +971,16 @@ Error message: {0}</value>
   <data name="XmlResHandlerAction" xml:space="preserve">
     <value>Load this resource into the Site Repository</value>
   </data>
+  <data name="ErrorNoActiveConnection" xml:space="preserve">
+    <value>No Active Connection</value>
+  </data>
+  <data name="Label_Go" xml:space="preserve">
+    <value>Go</value>
+  </data>
+  <data name="Label_ResourceID" xml:space="preserve">
+    <value>Resource ID:</value>
+  </data>
+  <data name="Label_OpenResource" xml:space="preserve">
+    <value>Open this resource</value>
+  </data>
 </root>

@@ -96,7 +96,13 @@ namespace Maestro.Base.UI
                 _currentConnectionName = connName;
                 OnActiveConnectionChanged();
             }
+
+            var h = this.ItemsSelected;
+            if (h != null)
+                h(this, this.SelectedItems);
         }
+
+        public event RepositoryItemEventHandler ItemsSelected;
 
         public string ConnectionName
         {

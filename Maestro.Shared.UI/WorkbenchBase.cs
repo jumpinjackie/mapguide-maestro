@@ -81,8 +81,9 @@ namespace Maestro.Shared.UI
 
             toolbar = _workbenchInitializer.GetMainToolStrip(this);
             toolbar.Stretch = true;
+            toolbar.Tag = BASE_TOOLSTRIP;
 
-            AddToolbar("Base", toolbar, ToolbarRegion.Top, true); //NOXLATE
+            AddToolbar(toolbar.Tag.ToString(), toolbar, ToolbarRegion.Top, true); //NOXLATE
             
             status = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
@@ -94,6 +95,8 @@ namespace Maestro.Shared.UI
             // Use the Idle event to update the status of menu and toolbar items.
             Application.Idle += OnApplicationIdle;
         }
+
+        const string BASE_TOOLSTRIP = "Base"; //NOXLATE
 
         protected virtual void OnViewActivated(object sender, IViewContent content) { }
 
@@ -129,7 +132,7 @@ namespace Maestro.Shared.UI
             switch (region)
             {
                 case ToolbarRegion.Top:
-                    toolStripContainer.TopToolStripPanel.Controls.Add(toolbar);
+                    AddTopToolStrip(toolbar);
                     break;
                 case ToolbarRegion.Bottom:
                     toolStripContainer.BottomToolStripPanel.Controls.Add(toolbar);
@@ -168,7 +171,7 @@ namespace Maestro.Shared.UI
                             toolStripContainer.RightToolStripPanel.Controls.Add(strip);
                             break;
                         case ToolbarRegion.Top:
-                            toolStripContainer.TopToolStripPanel.Controls.Add(strip);
+                            AddTopToolStrip(strip);
                             break;
                     }
                 }
@@ -190,6 +193,39 @@ namespace Maestro.Shared.UI
                             break;
                     }
                 }
+            }
+        }
+
+        //SUPER-DUPER HACK: ToolStrip objects are added in the most unintuitive manner when ordering is a concern
+        //
+        //You'd think first one added will be the top-most tool strip. Nope! Not at all!
+        //So we need this hacky method to ensure the base toolstrip will always be the top-most one
+
+        private void AddTopToolStrip(ToolStrip strip)
+        {
+            var panel = toolStripContainer.TopToolStripPanel;
+            if ((string)strip.Tag == BASE_TOOLSTRIP)
+                panel.Controls.Add(strip);
+            else 
+            {
+                var controls = new List<Control>();
+                panel.SuspendLayout();
+                Control baseTs = null;
+                for (int i = 0; i < panel.Controls.Count; i++)
+                {
+                    if ((string)panel.Controls[i].Tag == BASE_TOOLSTRIP)
+                        baseTs = panel.Controls[i];
+                    else
+                        controls.Add(panel.Controls[i]);
+                }
+                panel.Controls.Clear();
+                foreach (var cnt in controls)
+                {
+                    panel.Controls.Add(cnt);
+                }
+                panel.Controls.Add(baseTs);
+                panel.Controls.Add(strip);
+                panel.ResumeLayout();
             }
         }
 

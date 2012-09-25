@@ -82,7 +82,14 @@ namespace Maestro.Base.UI
         /// Gets the items currently selected
         /// </summary>
         RepositoryItem[] SelectedItems { get; }
+
+        /// <summary>
+        /// Raised when the selected item(s) changes
+        /// </summary>
+        event RepositoryItemEventHandler ItemsSelected;
     }
+
+    public delegate void RepositoryItemEventHandler(object sender, RepositoryItem[] items);
 
     public enum NodeFlagAction
     {

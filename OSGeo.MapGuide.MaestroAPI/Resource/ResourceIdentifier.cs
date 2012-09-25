@@ -457,6 +457,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
                 if (identifier.IndexOf(".") < 0 && !identifier.EndsWith("/")) //NOXLATE
                     return false;
 
+                if (identifier == StringConstants.RootIdentifier)
+                    return true;
+
+                if (IsFolderResource(identifier))
+                    return true;
+
+                var rt = GetResourceType(identifier);
             }
             catch
             {
