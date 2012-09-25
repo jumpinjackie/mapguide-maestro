@@ -1,5 +1,19 @@
-﻿- New specialized error dialog for XML content errors, that shows the offending XML contnent.
+﻿5.0 Beta 4
+----------
+
+- New "address bar" for Resource IDs, allowing for quick navigation and identiifcation of Resource IDs.
+- Layer Definition editor improvements:
+	- Add support for "exploding" themes into individual filtered sub-layers.
+	- Theme generation now considers active layer filter when generating rules
+	- Use GETLEGENDIMAGE for layer style previews
+- Symbol Definitions can now be previewed (via the GETLEGENDIMAGE API)
+- Resource IDs references in the Resource Properties Dialog can now be copied to the clipboard
+- New specialized error dialog for XML content errors, that shows the offending XML contnent.
 - Streamlined localizable strings
+- Add context menu and shortcuts for common operations in Generic XML editor
+- RuntimeMap viewer improvements (ported from mg-desktop):
+   - Delayed tooltip queries
+   - Mouse interaction suppression when viewer is busy
 - Live Map Definition Editor improvements
    - Add a repository browser view. Layers selected can be added to the current map
    - Move to a 3 pane interface (ala. AJAX viewer)
@@ -14,7 +28,8 @@
    - Missing label in new fusion templates
 - Fusion editor improvements
    - Can view widget info in the Generic Widget XML editor
-- Theme generation now considers active layer filter when generating rules
+- Fix: Mono workaround for Web Layout editor
+- Fix: Mono workaround for .net 4.0 generated code involving SplitContainers
 - Fix: Dirty state not properly raised for certain Web Layout properties
 - Fix: Node color incorrectly set in Site Explorer for re-activated editors
 - Fix: Updating a dynamic group name in a Map Definition did not update child groups
@@ -23,7 +38,10 @@
 - Fix: Restore missing checkbox for toggling Tiled Layer Group visibility in a Map Definition
 - Fix: Duplicating vector scale ranges not creating true clones
 - Fix: Prevent Map Definition groups from being dragged and dropped into its child groups/layers
+- Fix: Renaming a Map Definition group did not update any child groups.
 - Fix: Allow tiled layers to be moved between different tiled layer groups
+- Fix: Thread culture not transferred to background workers, resulting in english resources being returned if the background worker is doing localized resource lookups.
+- Fix: Cannot add top-level aliased raster files to a Composite Raster Feature Source
 
 5.0 Beta 3
 ----------
