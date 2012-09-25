@@ -1016,5 +1016,65 @@ namespace Maestro.Base.UI
                 }
             }
         }
+
+        private void referencedCopyResourceIDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CopyInReference();
+        }
+
+        private void referencesCopyResourceIDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CopyOutReference();
+        }
+
+        private void CopyInReference()
+        {
+            if (InReferenceList.SelectedItems.Count != 1)
+                return;
+
+            try
+            {
+                Clipboard.Clear();
+                Clipboard.SetText(InReferenceList.SelectedItems[0].Text);
+            }
+            catch { }
+        }
+
+        private void CopyOutReference()
+        {
+            if (OutReferenceList.SelectedItems.Count != 1)
+                return;
+
+            try
+            {
+                Clipboard.Clear();
+                Clipboard.SetText(OutReferenceList.SelectedItems[0].Text);
+            }
+            catch { }
+        }
+
+        private void OutReferenceList_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.C)
+                CopyOutReference();
+        }
+
+        private void InReferenceList_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.C)
+                CopyInReference();
+        }
+
+        private void ctxReferences_Opening(object sender, CancelEventArgs e)
+        {
+            if (OutReferenceList.SelectedItems.Count != 1)
+                e.Cancel = true;
+        }
+
+        private void ctxReferenced_Opening(object sender, CancelEventArgs e)
+        {
+            if (InReferenceList.SelectedItems.Count != 1)
+                e.Cancel = true;
+        }
     }
 }

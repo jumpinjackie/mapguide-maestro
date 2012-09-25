@@ -30,16 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResourcePropertiesDialog));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.SecurityTab = new System.Windows.Forms.TabPage();
             this.UseInherited = new System.Windows.Forms.CheckBox();
             this.UsersAndGroups = new System.Windows.Forms.ListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.WMSTab = new System.Windows.Forms.TabPage();
             this.WMSClearHeaderButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -92,8 +92,12 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.OutReferences = new System.Windows.Forms.GroupBox();
             this.OutReferenceList = new System.Windows.Forms.ListView();
+            this.ctxReferences = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyResourceIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InReferences = new System.Windows.Forms.GroupBox();
             this.InReferenceList = new System.Windows.Forms.ListView();
+            this.ctxReferenced = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyResourceIDToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.ResourceID = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -119,11 +123,14 @@
             this.CustomTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.ReferenceTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.OutReferences.SuspendLayout();
+            this.ctxReferences.SuspendLayout();
             this.InReferences.SuspendLayout();
+            this.ctxReferenced.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.securityContextMenu.SuspendLayout();
@@ -492,35 +499,35 @@
             // dataGridView1
             // 
             resources.ApplyResources(this.dataGridView1, "dataGridView1");
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemKey,
             this.ItemValue});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Leave += new System.EventHandler(this.dataGridView1_Leave);
             // 
             // ItemKey
@@ -569,12 +576,29 @@
             // 
             // OutReferenceList
             // 
+            this.OutReferenceList.ContextMenuStrip = this.ctxReferences;
             resources.ApplyResources(this.OutReferenceList, "OutReferenceList");
             this.OutReferenceList.FullRowSelect = true;
             this.OutReferenceList.GridLines = true;
+            this.OutReferenceList.MultiSelect = false;
             this.OutReferenceList.Name = "OutReferenceList";
             this.OutReferenceList.UseCompatibleStateImageBehavior = false;
             this.OutReferenceList.View = System.Windows.Forms.View.List;
+            this.OutReferenceList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OutReferenceList_KeyUp);
+            // 
+            // ctxReferences
+            // 
+            this.ctxReferences.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyResourceIDToolStripMenuItem});
+            this.ctxReferences.Name = "ctxReferences";
+            resources.ApplyResources(this.ctxReferences, "ctxReferences");
+            this.ctxReferences.Opening += new System.ComponentModel.CancelEventHandler(this.ctxReferences_Opening);
+            // 
+            // copyResourceIDToolStripMenuItem
+            // 
+            this.copyResourceIDToolStripMenuItem.Name = "copyResourceIDToolStripMenuItem";
+            resources.ApplyResources(this.copyResourceIDToolStripMenuItem, "copyResourceIDToolStripMenuItem");
+            this.copyResourceIDToolStripMenuItem.Click += new System.EventHandler(this.referencesCopyResourceIDToolStripMenuItem_Click);
             // 
             // InReferences
             // 
@@ -585,12 +609,29 @@
             // 
             // InReferenceList
             // 
+            this.InReferenceList.ContextMenuStrip = this.ctxReferenced;
             resources.ApplyResources(this.InReferenceList, "InReferenceList");
             this.InReferenceList.FullRowSelect = true;
             this.InReferenceList.GridLines = true;
+            this.InReferenceList.MultiSelect = false;
             this.InReferenceList.Name = "InReferenceList";
             this.InReferenceList.UseCompatibleStateImageBehavior = false;
             this.InReferenceList.View = System.Windows.Forms.View.List;
+            this.InReferenceList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.InReferenceList_KeyUp);
+            // 
+            // ctxReferenced
+            // 
+            this.ctxReferenced.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyResourceIDToolStripMenuItem1});
+            this.ctxReferenced.Name = "ctxReferenced";
+            resources.ApplyResources(this.ctxReferenced, "ctxReferenced");
+            this.ctxReferenced.Opening += new System.ComponentModel.CancelEventHandler(this.ctxReferenced_Opening);
+            // 
+            // copyResourceIDToolStripMenuItem1
+            // 
+            this.copyResourceIDToolStripMenuItem1.Name = "copyResourceIDToolStripMenuItem1";
+            resources.ApplyResources(this.copyResourceIDToolStripMenuItem1, "copyResourceIDToolStripMenuItem1");
+            this.copyResourceIDToolStripMenuItem1.Click += new System.EventHandler(this.referencedCopyResourceIDToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -709,9 +750,12 @@
             this.ReferenceTab.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.OutReferences.ResumeLayout(false);
+            this.ctxReferences.ResumeLayout(false);
             this.InReferences.ResumeLayout(false);
+            this.ctxReferenced.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -797,5 +841,9 @@
         private System.Windows.Forms.Button btnPrimarySRS;
         private System.Windows.Forms.TextBox txtOtherSRS;
         private System.Windows.Forms.TextBox txtPrimarySRS;
+        private System.Windows.Forms.ContextMenuStrip ctxReferences;
+        private System.Windows.Forms.ToolStripMenuItem copyResourceIDToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip ctxReferenced;
+        private System.Windows.Forms.ToolStripMenuItem copyResourceIDToolStripMenuItem1;
     }
 }
