@@ -54,8 +54,7 @@ namespace Maestro.Packaging
         private volatile System.Threading.Thread m_thread;
 
         private PackageBuilder m_invokeObj = null;
-        private object[] m_invokeArgs = null;
-        private System.Reflection.MethodInfo m_invokeMethod = null;
+        private Func<object> m_method = null;
         private object m_invokeResult = null;
 
         /// <summary>
@@ -148,9 +147,9 @@ namespace Maestro.Packaging
         public static Dictionary<string, ResourceItem> ListPackageContents(Form owner, IServerConnection connection, string packageFile)
         {
             PackageProgress pkgp = new PackageProgress();
-            pkgp.m_invokeArgs = new object[] { packageFile };
-            pkgp.m_invokeObj = new PackageBuilder(connection);
-            pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("ListPackageContents"); //NOXLATE
+            var builder = new PackageBuilder(connection);
+            pkgp.m_invokeObj = builder;
+            pkgp.m_method = () => { return builder.ListPackageContents(packageFile); };
 
             if (pkgp.ShowDialog(owner) == DialogResult.OK)
                 return (Dictionary<string, ResourceItem>)pkgp.m_invokeResult;
@@ -169,9 +168,10 @@ namespace Maestro.Packaging
         {
             PackageProgress pkgp = new PackageProgress();
             pkgp.Text = Strings.TitleUploading;
-            pkgp.m_invokeArgs = new object[] { packageFile };
-            pkgp.m_invokeObj = new PackageBuilder(connection);
-            pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("UploadPackage"); //NOXLATE
+
+            var builder = new PackageBuilder(connection);
+            pkgp.m_invokeObj = builder;
+            pkgp.m_method = () => { builder.UploadPackage(packageFile); return true; };
 
             return pkgp.ShowDialog(owner);
         }
@@ -188,9 +188,10 @@ namespace Maestro.Packaging
         {
             PackageProgress pkgp = new PackageProgress();
             pkgp.Text = Strings.TitleUploading;
-            pkgp.m_invokeArgs = new object[] { packageFile, result };
-            pkgp.m_invokeObj = new PackageBuilder(connection);
-            pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("UploadPackageNonTransactional"); //NOXLATE
+
+            var builder = new PackageBuilder(connection);
+            pkgp.m_invokeObj = builder;
+            pkgp.m_method = () => { builder.UploadPackageNonTransactional(packageFile, result); return true; };
 
             return pkgp.ShowDialog(owner);
         }
@@ -208,9 +209,10 @@ namespace Maestro.Packaging
         public static DialogResult RebuildPackage(Form owner, IServerConnection connection, string sourcePackageFile, List<ResourceItem> items, string targetfile, bool insertEraseCommands)
         {
             PackageProgress pkgp = new PackageProgress();
-            pkgp.m_invokeArgs = new object[] { sourcePackageFile, items, targetfile, insertEraseCommands };
-            pkgp.m_invokeObj = new PackageBuilder(connection);
-            pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("RebuildPackage"); //NOXLATE
+
+            var builder = new PackageBuilder(connection);
+            pkgp.m_invokeObj = builder;
+            pkgp.m_method = () => { builder.RebuildPackage(sourcePackageFile, items, targetfile, insertEraseCommands); return true; };
 
             return pkgp.ShowDialog(owner);
         }
@@ -229,9 +231,32 @@ namespace Maestro.Packaging
         public static DialogResult CreatePackage(Form owner, IServerConnection connection, string folderResourceId, string zipfilename, IEnumerable<ResourceTypes> allowedExtensions, bool removeExistingFiles, string alternateTargetResourceId)
         {
             PackageProgress pkgp = new PackageProgress();
-            pkgp.m_invokeArgs = new object[] {folderResourceId, zipfilename, allowedExtensions, removeExistingFiles, alternateTargetResourceId };
-            pkgp.m_invokeObj = new PackageBuilder(connection);
-            pkgp.m_invokeMethod = pkgp.m_invokeObj.GetType().GetMethod("CreatePackage"); //NOXLATE
+            
+            var builder = new PackageBuilder(connection);
+            pkgp.m_invokeObj = builder;
+            pkgp.m_method = () => { builder.CreatePackage(folderResourceId, zipfilename, allowedExtensions, removeExistingFiles, alternateTargetResourceId); return true; };
+
+            return pkgp.ShowDialog(owner);
+        }
+
+        /// <summary>
+        /// Creates a new package from a server folder
+        /// </summary>
+        /// <param name="owner">The owner form</param>
+        /// <param name="connection">The connection used to retrieve the resources</param>
+        /// <param name="resourceIdList">The array of resource ids to create the package</param>
+        /// <param name="zipfilename">The name of the output package file</param>
+        /// <param name="allowedExtensions">A list of allowed extensions, set to null for all types. The special value &quot;*&quot; matches all unknown extensions.</param>
+        /// <param name="removeExistingFiles">A flag indicating if the package should contain a delete instruction to delete the target area before restore</param>
+        /// <param name="alternateTargetResourceId">The folder path where the package should be restore, set to null or empty string to use the source path</param>
+        /// <returns></returns>
+        public static DialogResult CreatePackage(Form owner, IServerConnection connection, string[] resourceIdList, string zipfilename, IEnumerable<ResourceTypes> allowedExtensions, bool removeExistingFiles, string alternateTargetResourceId)
+        {
+            PackageProgress pkgp = new PackageProgress();
+            
+            var builder = new PackageBuilder(connection);
+            pkgp.m_invokeObj = builder;
+            pkgp.m_method = () => { builder.CreatePackage(resourceIdList, zipfilename, allowedExtensions, removeExistingFiles, alternateTargetResourceId); return true; };
 
             return pkgp.ShowDialog(owner);
         }
@@ -350,7 +375,7 @@ namespace Maestro.Packaging
             try
             {
                 m_thread = System.Threading.Thread.CurrentThread;
-                e.Result = m_invokeMethod.Invoke(m_invokeObj, m_invokeArgs);
+                e.Result = m_method.Invoke();
             }
             catch (System.Threading.ThreadAbortException)
             {

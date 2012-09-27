@@ -18,6 +18,7 @@
 // 
 #endregion
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,6 +28,7 @@ using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI;
 using Maestro.Editors.Generic;
 using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 
 namespace Maestro.Base.UI.Packaging
 {
@@ -35,6 +37,22 @@ namespace Maestro.Base.UI.Packaging
         public CreatePackageDialog()
         {
             InitializeComponent();
+        }
+
+        public enum PackageSource
+        {
+            Folder,
+            ResourceIdList
+        }
+
+        public PackageSource Source
+        {
+            get
+            {
+                if (rdPackageFolder.Checked)
+                    return PackageSource.Folder;
+                return PackageSource.ResourceIdList;
+            }
         }
 
         private IServerConnection _conn;
@@ -58,6 +76,11 @@ namespace Maestro.Base.UI.Packaging
             CheckAll(true);
             chkRestorePath_CheckedChanged(this, EventArgs.Empty);
             CheckSubmitState();
+        }
+
+        public string[] ResourceIds
+        {
+            get { return txtResourceIdList.Lines.ToArray(); }
         }
 
         public string FolderToPackage

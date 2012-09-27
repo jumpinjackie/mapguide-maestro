@@ -42,29 +42,25 @@
             this.chkRemoveTargetFolderOnRestore = new System.Windows.Forms.CheckBox();
             this.BrowseResourcePath = new System.Windows.Forms.Button();
             this.txtResourcePath = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdPackageFolder = new System.Windows.Forms.RadioButton();
+            this.rdResourceList = new System.Windows.Forms.RadioButton();
+            this.txtResourceIdList = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnBrowseRestorePath);
-            this.panel1.Controls.Add(this.lnkAll);
-            this.panel1.Controls.Add(this.BrowseTargetFilename);
-            this.panel1.Controls.Add(this.txtPackageFilename);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.chkAllowedTypes);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtRestorePath);
-            this.panel1.Controls.Add(this.chkRestorePath);
-            this.panel1.Controls.Add(this.chkRemoveTargetFolderOnRestore);
-            this.panel1.Controls.Add(this.BrowseResourcePath);
-            this.panel1.Controls.Add(this.txtResourcePath);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.groupBox1);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
@@ -142,11 +138,6 @@
             this.txtResourcePath.Name = "txtResourcePath";
             this.txtResourcePath.ReadOnly = true;
             // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnCancel);
@@ -169,6 +160,58 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // groupBox1
+            // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.txtPackageFilename);
+            this.groupBox1.Controls.Add(this.btnBrowseRestorePath);
+            this.groupBox1.Controls.Add(this.chkRemoveTargetFolderOnRestore);
+            this.groupBox1.Controls.Add(this.lnkAll);
+            this.groupBox1.Controls.Add(this.chkRestorePath);
+            this.groupBox1.Controls.Add(this.BrowseTargetFilename);
+            this.groupBox1.Controls.Add(this.txtRestorePath);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.chkAllowedTypes);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // rdPackageFolder
+            // 
+            resources.ApplyResources(this.rdPackageFolder, "rdPackageFolder");
+            this.rdPackageFolder.Checked = true;
+            this.rdPackageFolder.Name = "rdPackageFolder";
+            this.rdPackageFolder.TabStop = true;
+            this.rdPackageFolder.UseVisualStyleBackColor = true;
+            // 
+            // rdResourceList
+            // 
+            resources.ApplyResources(this.rdResourceList, "rdResourceList");
+            this.rdResourceList.Name = "rdResourceList";
+            this.rdResourceList.UseVisualStyleBackColor = true;
+            // 
+            // txtResourceIdList
+            // 
+            resources.ApplyResources(this.txtResourceIdList, "txtResourceIdList");
+            this.txtResourceIdList.Name = "txtResourceIdList";
+            // 
+            // groupBox2
+            // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.txtResourcePath);
+            this.groupBox2.Controls.Add(this.txtResourceIdList);
+            this.groupBox2.Controls.Add(this.BrowseResourcePath);
+            this.groupBox2.Controls.Add(this.rdResourceList);
+            this.groupBox2.Controls.Add(this.rdPackageFolder);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
             // CreatePackageDialog
             // 
             this.AcceptButton = this.btnOK;
@@ -180,8 +223,11 @@
             this.Controls.Add(this.panel2);
             this.Name = "CreatePackageDialog";
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -202,8 +248,13 @@
         private System.Windows.Forms.CheckBox chkRemoveTargetFolderOnRestore;
         private System.Windows.Forms.Button BrowseResourcePath;
         private System.Windows.Forms.TextBox txtResourcePath;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel lnkAll;
         private System.Windows.Forms.Button btnBrowseRestorePath;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtResourceIdList;
+        private System.Windows.Forms.RadioButton rdResourceList;
+        private System.Windows.Forms.RadioButton rdPackageFolder;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

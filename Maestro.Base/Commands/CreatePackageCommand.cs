@@ -49,15 +49,28 @@ namespace Maestro.Base.Commands
 
                 if (dlg.ShowDialog(wb) == System.Windows.Forms.DialogResult.OK)
                 {
-                    //Begin!
-                    PackageProgress.CreatePackage(
-                        wb,
-                        conn,
-                        dlg.FolderToPackage,
-                        dlg.OutputFileName,
-                        dlg.SelectedTypes,
-                        dlg.RemoveTargetFolderOnRestore,
-                        dlg.RestorePath);
+                    if (dlg.Source == CreatePackageDialog.PackageSource.Folder)
+                    {
+                        PackageProgress.CreatePackage(
+                            wb,
+                            conn,
+                            dlg.FolderToPackage,
+                            dlg.OutputFileName,
+                            dlg.SelectedTypes,
+                            dlg.RemoveTargetFolderOnRestore,
+                            dlg.RestorePath);
+                    }
+                    else //Resource id list
+                    {
+                        PackageProgress.CreatePackage(
+                            wb,
+                            conn,
+                            dlg.ResourceIds,
+                            dlg.OutputFileName,
+                            dlg.SelectedTypes,
+                            dlg.RemoveTargetFolderOnRestore,
+                            dlg.RestorePath);
+                    }
                 }
             }
         }

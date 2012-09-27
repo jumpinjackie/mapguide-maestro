@@ -1970,7 +1970,7 @@ namespace Maestro.Base {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Package folder.
+        ///   Looks up a localized string similar to Create Package.
         /// </summary>
         internal static string SiteExplorer_SelectedFolder_CreatePackage {
             get {

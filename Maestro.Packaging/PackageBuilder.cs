@@ -18,6 +18,7 @@
 // 
 #endregion
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using OSGeo.MapGuide.ObjectModels.Common;
@@ -337,7 +338,6 @@ namespace Maestro.Packaging
             }
         }
 
-
         /// <summary>
         /// Creates a package
         /// </summary>
@@ -353,37 +353,107 @@ namespace Maestro.Packaging
 
             ResourceList items = m_connection.ResourceService.GetRepositoryResources(folderResourceId);
 
-            var allowed = new List<ResourceTypes>(allowedExtensions);
-            List<ResourceListResourceDocument> files = new List<ResourceListResourceDocument>();
-            List<ResourceListResourceFolder> folders = new List<ResourceListResourceFolder>();
-            Dictionary<string, List<ResourceDataListResourceData>> resourceData = new Dictionary<string, List<ResourceDataListResourceData>>();
+            CreatePackageInternal(folderResourceId, zipfilename, allowedExtensions, removeExistingFiles, alternateTargetResourceId, items.Children.Select(x => x.ResourceId));
+        }
+
+        /// <summary>
+        /// Creates a package
+        /// </summary>
+        /// <param name="resourceIdsToPack">The list of resource ids to include into the package</param>
+        /// <param name="zipfilename">The name of the output file to create</param>
+        /// <param name="allowedExtensions">A list of allowed extensions without leading dot, or null to include all file types. The special item &quot;*&quot; matches all unknown types.</param>
+        /// <param name="removeExistingFiles">A value indicating if a delete operation is included in the package to remove existing files before restoring the package</param>
+        /// <param name="alternateTargetResourceId">An optional target folder resourceId, use null or an empty string to restore the files at the original locations</param>
+        public void CreatePackage(IEnumerable<string> resourceIdsToPack, string zipfilename, IEnumerable<ResourceTypes> allowedExtensions, bool removeExistingFiles, string alternateTargetResourceId)
+        {
+            if (Progress != null)
+                Progress(ProgressType.ReadingFileList, string.Empty, 100, 0);
+
+            var resourceIds = new List<string>(resourceIdsToPack);
+            string folderId = GetCommonParent(resourceIds);
+
+            CreatePackageInternal(folderId, zipfilename, allowedExtensions, removeExistingFiles, alternateTargetResourceId, resourceIds);
+        }
+
+        private static string GetCommonParent(ICollection<string> data)
+        {
+            if (data.Count > 0)
+            {
+                var firstResId = new ResourceIdentifier(data.ElementAt(0));
+                if (data.Count == 1)
+                {
+                    if (firstResId.IsFolder)
+                        return firstResId.ResourceId.ToString();
+                    else
+                        return firstResId.ParentFolder;
+                }
+                else
+                {
+                    int matches = 0;
+                    string[] parts = firstResId.ResourceId.ToString()
+                                               .Substring(StringConstants.RootIdentifier.Length)
+                                               .Split('/'); //NOXLATE
+                    string test = StringConstants.RootIdentifier;
+                    string parent = test;
+                    int partIndex = 0;
+                    //Use first one as a sample to see how far we can go. Keep going until we have
+                    //a parent that doesn't match all of them. The one we recorded before then will
+                    //be the common parent
+                    while (matches == data.Count)
+                    {
+                        parent = test;
+                        partIndex++;
+                        if (partIndex < parts.Length) //Shouldn't happen, but just in case
+                            break;
+
+                        test = test + parts[partIndex];
+                        matches = data.Where(x => x.StartsWith(test)).Count();
+                    }
+                    return parent;
+                }
+            }
+            else
+            {
+                return StringConstants.RootIdentifier;
+            }
+        }
+
+        private void CreatePackageInternal(string folderResourceId, string zipfilename, IEnumerable<ResourceTypes> allowedExtensions, bool removeExistingFiles, string alternateTargetResourceId, IEnumerable<string> resourceIds)
+        {
             ResourcePackageManifest manifest = new ResourcePackageManifest();
             manifest.Description = "MapGuide Package created with Maestro"; //NOXLATE
             manifest.Operations = new ResourcePackageManifestOperations();
             manifest.Operations.Operation = new System.ComponentModel.BindingList<ResourcePackageManifestOperationsOperation>();
-            //System.Collections.Hashtable knownTypes = ((ServerConnectionBase)m_connection).ResourceTypeLookup;
 
-            foreach (object o in items.Items)
+            var allowed = new List<ResourceTypes>(allowedExtensions);
+            var files = new List<string>();
+            var folders = new List<string>();
+            var resourceData = new Dictionary<string, List<ResourceDataListResourceData>>();
+
+            foreach (var resId in resourceIds)
             {
-                if (o as ResourceListResourceDocument != null)
+                if (!ResourceIdentifier.Validate(resId))
+                    continue;
+
+                var r = new ResourceIdentifier(resId);
+                if (r.IsFolder)
                 {
-                    ResourceListResourceDocument doc = o as ResourceListResourceDocument;
-                    var extension = ResourceIdentifier.GetResourceType(doc.ResourceId);
-                    if (allowedExtensions == null || allowed.Count == 0)
-                        files.Add(doc);
-                    else if (m_connection.Capabilities.IsSupportedResourceType(extension) && allowed.Contains(extension))
-                        files.Add(doc);
+                    folders.Add(resId);
                 }
-                else if (o as ResourceListResourceFolder != null)
+                else
                 {
-                    folders.Add(o as ResourceListResourceFolder);
+                    var extension = r.ResourceType;
+                    if (allowedExtensions == null || allowed.Count == 0)
+                        files.Add(resId);
+                    else if (m_connection.Capabilities.IsSupportedResourceType(extension) && allowed.Contains(extension))
+                        files.Add(resId);
                 }
             }
 
             if (Progress != null)
             {
                 Progress(ProgressType.ReadingFileList, folderResourceId, 100, 100);
-                Progress(ProgressType.PreparingFolder, "", files.Count + folders.Count + 1, 0);
+                Progress(ProgressType.PreparingFolder, string.Empty, files.Count + folders.Count + 1, 0);
             }
 
             string temppath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), System.IO.Path.GetRandomFileName());
@@ -396,33 +466,33 @@ namespace Maestro.Packaging
                 System.IO.Directory.CreateDirectory(temppath);
                 int opno = 1;
 
-                foreach (ResourceListResourceFolder folder in folders)
+                foreach (var folder in folders)
                 {
 
                     if (Progress != null)
-                        Progress(ProgressType.PreparingFolder, folder.ResourceId, files.Count + folders.Count + 1, opno);
+                        Progress(ProgressType.PreparingFolder, folder, files.Count + folders.Count + 1, opno);
                     AddFolderResource(manifest, temppath, folder, removeExistingFiles, m_connection, filemap);
                     if (Progress != null)
-                        Progress(ProgressType.PreparingFolder, folder.ResourceId, files.Count + folders.Count + 1, opno++);
+                        Progress(ProgressType.PreparingFolder, folder, files.Count + folders.Count + 1, opno++);
                 }
 
-                foreach (ResourceListResourceDocument doc in files)
+                foreach (var doc in files)
                 {
                     if (Progress != null)
-                        Progress(ProgressType.PreparingFolder, doc.ResourceId, files.Count + folders.Count + 1, opno);
-                    string filebase = CreateFolderForResource(doc.ResourceId, temppath);
+                        Progress(ProgressType.PreparingFolder, doc, files.Count + folders.Count + 1, opno);
+                    string filebase = CreateFolderForResource(doc, temppath);
 
-                    resourceData[doc.ResourceId] = new List<ResourceDataListResourceData>();
-                    ResourceDataList rdl = m_connection.ResourceService.EnumerateResourceData(doc.ResourceId);
+                    resourceData[doc] = new List<ResourceDataListResourceData>();
+                    ResourceDataList rdl = m_connection.ResourceService.EnumerateResourceData(doc);
                     foreach (ResourceDataListResourceData rd in rdl.ResourceData)
-                        resourceData[doc.ResourceId].Add(rd);
+                        resourceData[doc].Add(rd);
 
-                    int itemCount = resourceData[doc.ResourceId].Count + 1;
+                    int itemCount = resourceData[doc].Count + 1;
 
                     filemap.Add(new KeyValuePair<string, string>(filebase + "_CONTENT.xml", System.IO.Path.Combine(temppath, Guid.NewGuid().ToString()))); //NOXLATE
                     using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
                     {
-                        using (var s = m_connection.ResourceService.GetResourceXmlData(doc.ResourceId))
+                        using (var s = m_connection.ResourceService.GetResourceXmlData(doc))
                         {
                             var data = Utility.StreamAsArray(s);
                             fs.Write(data, 0, data.Length);
@@ -437,14 +507,14 @@ namespace Maestro.Packaging
                         System.IO.FileInfo fi = new System.IO.FileInfo(filemap[filemap.Count - 1].Value);
                         using (System.IO.FileStream fs = new System.IO.FileStream(fi.FullName, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
                         {
-                            Utility.CopyStream(m_connection.ResourceService.GetResourceData(doc.ResourceId, rd.Name), fs);
+                            Utility.CopyStream(m_connection.ResourceService.GetResourceData(doc, rd.Name), fs);
                         }
 
                         AddResourceData(manifest, temppath, doc, fi, filemap[filemap.Count - 1].Key, rd, m_connection);
                     }
 
                     if (Progress != null)
-                        Progress(ProgressType.PreparingFolder, doc.ResourceId, files.Count + folders.Count + 1, opno++);
+                        Progress(ProgressType.PreparingFolder, doc, files.Count + folders.Count + 1, opno++);
                 }
 
                 if (Progress != null)
@@ -488,23 +558,13 @@ namespace Maestro.Packaging
             }
         }
 
-        private void AddResourceData(ResourcePackageManifest manifest, string temppath, ResourceListResourceDocument doc, System.IO.FileInfo fi, string resourcePath, ResourceDataListResourceData rd, IServerConnection connection)
+        private void AddResourceData(ResourcePackageManifest manifest, string temppath, string docResourceId, System.IO.FileInfo fi, string resourcePath, ResourceDataListResourceData rd, IServerConnection connection)
         {
             string contentType = "application/octet-stream"; //NOXLATE
 
-            /*
-            try
-            {
-                if (connection as HttpServerConnection != null)
-                    contentType = (connection as HttpServerConnection).LastResponseHeaders[System.Net.HttpResponseHeader.ContentType];
-            }
-            catch
-            {
-            }
-             */
             string name = rd.Name;
             string type = rd.Type.ToString();
-            string resourceId = doc.ResourceId;
+            string resourceId = docResourceId;
             string filename = RelativeName(resourcePath, temppath).Replace('\\', '/'); //NOXLATE
             long size = fi.Length;
 
@@ -549,17 +609,17 @@ namespace Maestro.Packaging
             manifest.Operations.Operation.Add(op);
         }
 
-        private void AddFileResource(ResourcePackageManifest manifest, string temppath, ResourceListResourceDocument doc, string contentfilename, bool eraseFirst, IServerConnection connection, List<KeyValuePair<string, string>> filemap)
+        private void AddFileResource(ResourcePackageManifest manifest, string temppath, string docResourceId, string contentfilename, bool eraseFirst, IServerConnection connection, List<KeyValuePair<string, string>> filemap)
         {
-            string filebase = CreateFolderForResource(doc.ResourceId, temppath);
+            string filebase = CreateFolderForResource(docResourceId, temppath);
 
             filemap.Add(new KeyValuePair<string, string>(filebase + "_HEADER.xml", System.IO.Path.Combine(temppath, Guid.NewGuid().ToString()))); //NOXLATE
             using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
-                connection.ResourceService.SerializeObject(connection.ResourceService.GetResourceHeader(doc.ResourceId), fs);
+                connection.ResourceService.SerializeObject(connection.ResourceService.GetResourceHeader(docResourceId), fs);
 
             string headerpath = RelativeName(filemap[filemap.Count - 1].Key, temppath).Replace('\\', '/'); //NOXLATE
             string contentpath = RelativeName(contentfilename, temppath).Replace('\\', '/'); //NOXLATE
-            AddFileResource(manifest, doc.ResourceId, headerpath, contentpath, eraseFirst);
+            AddFileResource(manifest, docResourceId, headerpath, contentpath, eraseFirst);
         }
 
         private void AddFileResource(ResourcePackageManifest manifest, string resourceId, string headerpath, string contentpath, bool eraseFirst)
@@ -608,20 +668,20 @@ namespace Maestro.Packaging
             manifest.Operations.Operation.Add(op);
         }
 
-        private void AddFolderResource(ResourcePackageManifest manifest, string temppath, ResourceListResourceFolder folder, bool eraseFirst, IServerConnection connection, List<KeyValuePair<string, string>> filemap)
+        private void AddFolderResource(ResourcePackageManifest manifest, string temppath, string folderResId, bool eraseFirst, IServerConnection connection, List<KeyValuePair<string, string>> filemap)
         {
-            string filebase = System.IO.Path.GetDirectoryName(CreateFolderForResource(folder.ResourceId + "dummy.xml", temppath)); //NOXLATE
+            string filebase = System.IO.Path.GetDirectoryName(CreateFolderForResource(folderResId + "dummy.xml", temppath)); //NOXLATE
 
             filemap.Add(new KeyValuePair<string, string>(System.IO.Path.Combine(filebase, "_HEADER.xml"), System.IO.Path.Combine(temppath, Guid.NewGuid().ToString()))); //NOXLATE
             using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
-                connection.ResourceService.SerializeObject(connection.ResourceService.GetFolderHeader(folder.ResourceId), fs);
+                connection.ResourceService.SerializeObject(connection.ResourceService.GetFolderHeader(folderResId), fs);
 
             if (!filebase.EndsWith(System.IO.Path.DirectorySeparatorChar.ToString()))
                 filebase += System.IO.Path.DirectorySeparatorChar;
 
             string headerpath = RelativeName(filebase + "_HEADER.xml", temppath).Replace('\\', '/'); //NOXLATE
 
-            AddFolderResource(manifest, folder.ResourceId, headerpath, eraseFirst);
+            AddFolderResource(manifest, folderResId, headerpath, eraseFirst);
         }
 
 

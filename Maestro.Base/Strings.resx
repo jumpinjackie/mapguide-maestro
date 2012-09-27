@@ -759,7 +759,7 @@ Error message: {0}</value>
     <value>Save Resource XML</value>
   </data>
   <data name="SiteExplorer_SelectedFolder_CreatePackage" xml:space="preserve">
-    <value>Package folder</value>
+    <value>Create Package</value>
   </data>
   <data name="SiteExplorer_SelectedFolder_Paste" xml:space="preserve">
     <value>Paste into this folder</value>
