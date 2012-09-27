@@ -355,6 +355,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
         public override void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback)
         {
+            //FIXME/BOGUS: We should be streaming this in! What if the resource data
+            //was several hundred MBs or 1-2 GBs in size? Hello System.OutOfMemoryException
+            //Other connection implementations are probably doing this too!
+            //
+            //BOGUS: Well we can't exactly plug in a System.IO.Stream to a MgByteSource
+            //either, and we can't extend SWIG proxy classes (not in the way it's currently set up anyways!). 
+            //So the only feasible solution is offload the input stream to a temp file and then create 
+            //an MgByteSource with the fileName ctor overload.
             byte[] data = Utility.StreamAsArray(stream);
             if (callback != null)
                 callback(0, data.Length, data.Length);
