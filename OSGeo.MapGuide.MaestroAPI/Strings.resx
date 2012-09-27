@@ -3339,4 +3339,7 @@
   <data name="PickPy" xml:space="preserve">
     <value>Python Scripts</value>
   </data>
+  <data name="PickTxt" xml:space="preserve">
+    <value>Text Files</value>
+  </data>
 </root>

@@ -983,4 +983,7 @@ Error message: {0}</value>
   <data name="Label_OpenResource" xml:space="preserve">
     <value>Open this resource</value>
   </data>
+  <data name="SiteExplorer_SelectedItem_CompileDependencyList" xml:space="preserve">
+    <value>Compile Full Dependency List</value>
+  </data>
 </root>

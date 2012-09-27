@@ -1,4 +1,6 @@
-﻿5.0 Beta 4
+﻿- New command to compile a full dependency list for a given set of resources
+
+5.0 Beta 4
 ----------
 
 - New "address bar" for Resource IDs, allowing for quick navigation and identiifcation of Resource IDs.
@@ -38,7 +40,6 @@
 - Fix: Restore missing checkbox for toggling Tiled Layer Group visibility in a Map Definition
 - Fix: Duplicating vector scale ranges not creating true clones
 - Fix: Prevent Map Definition groups from being dragged and dropped into its child groups/layers
-- Fix: Renaming a Map Definition group did not update any child groups.
 - Fix: Allow tiled layers to be moved between different tiled layer groups
 - Fix: Thread culture not transferred to background workers, resulting in english resources being returned if the background worker is doing localized resource lookups.
 - Fix: Cannot add top-level aliased raster files to a Composite Raster Feature Source

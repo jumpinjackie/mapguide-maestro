@@ -2070,6 +2070,15 @@ namespace OSGeo.MapGuide.MaestroAPI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Text Files.
+        /// </summary>
+        public static string PickTxt {
+            get {
+                return ResourceManager.GetString("PickTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to XML Files.
         /// </summary>
         public static string PickXml {

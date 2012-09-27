@@ -1988,6 +1988,15 @@ namespace Maestro.Base {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Compile Full Dependency List.
+        /// </summary>
+        internal static string SiteExplorer_SelectedItem_CompileDependencyList {
+            get {
+                return ResourceManager.GetString("SiteExplorer_SelectedItem_CompileDependencyList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy selected item(s).
         /// </summary>
         internal static string SiteExplorer_SelectedItem_Copy {

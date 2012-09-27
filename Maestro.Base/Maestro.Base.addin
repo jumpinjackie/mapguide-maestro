@@ -592,6 +592,9 @@
             <MenuItem id="EditRawDocumentHeader"
                       label="${res:EditRawHeader}"
                       class="Maestro.Base.Commands.SiteExplorer.EditResourceHeaderCommand" />
+            <MenuItem id="CompileDependencyList"
+                      label="${res:SiteExplorer_SelectedItem_CompileDependencyList}"
+                      class="Maestro.Base.Commands.SiteExplorer.CompileFullDependencyListCommand" />
             <MenuItem type="Separator" />
             <MenuItem id="Properties"
                       label="${res:SiteExplorer_SelectedItem_Properties}"

@@ -72,6 +72,7 @@
     <Compile Include="Commands\CacheViewerCommand.cs" />
     <Compile Include="Commands\CloseActiveDocumentCommand.cs" />
     <Compile Include="Commands\CloseAllDocumentsCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\CompileFullDependencyListCommand.cs" />
     <Compile Include="Commands\Conditions\ActiveEditorConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\CloseableDocumentConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\ActiveEditorTypeConditionEvaluator.cs" />
@@ -389,6 +390,12 @@
       <DependentUpon>RepointerDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\RepositoryTreeModel.cs" />
+    <Compile Include="UI\ResourceDependencyListDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ResourceDependencyListDialog.Designer.cs">
+      <DependentUpon>ResourceDependencyListDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ResourceHeaderXmlDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -618,6 +625,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\RepointerDialog.resx">
       <DependentUpon>RepointerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ResourceDependencyListDialog.resx">
+      <DependentUpon>ResourceDependencyListDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ResourceHeaderXmlDialog.resx">
       <DependentUpon>ResourceHeaderXmlDialog.cs</DependentUpon>
