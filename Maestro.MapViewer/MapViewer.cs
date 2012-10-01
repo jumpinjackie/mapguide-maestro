@@ -1418,6 +1418,10 @@ namespace Maestro.MapViewer
 
         internal void RefreshMap(bool raiseEvents)
         {
+            var h = this.MapRefreshing;
+            if (h != null)
+                h(this, EventArgs.Empty);
+
             //This is our refresh action
             RefreshAction action = new RefreshAction(() => 
             {
@@ -1450,7 +1454,16 @@ namespace Maestro.MapViewer
         }
 
         /// <summary>
-        /// Raised when the map has been refreshed
+        /// Raised when the viewer has started refreshing the map. This is to allow
+        /// any actions dependent on map state to update themselves asynchronously 
+        /// without needing to wait for the updated map to be rendered.
+        /// </summary>
+        [Category("MapGuide Viewer")]
+        [Description("Raised when the viewer has started refreshing the map")]
+        public event EventHandler MapRefreshing;
+
+        /// <summary>
+        /// Raised when the map has been refreshed and the updated map image has been rendered
         /// </summary>
         [Category("MapGuide Viewer")]
         [Description("Raised after the viewer has refreshed")]

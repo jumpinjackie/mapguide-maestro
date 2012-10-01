@@ -207,7 +207,14 @@ namespace Maestro.MapViewer
         void RefreshMap();
 
         /// <summary>
-        /// Raised when the map has been refreshed
+        /// Raised when the viewer has started refreshing the map. This is to allow
+        /// any actions dependent on map state to update themselves asynchronously 
+        /// without needing to wait for the updated map to be rendered.
+        /// </summary>
+        event EventHandler MapRefreshing;
+
+        /// <summary>
+        /// Raised when the map has been refreshed and the updated map image has been rendered
         /// </summary>
         event EventHandler MapRefreshed;
 

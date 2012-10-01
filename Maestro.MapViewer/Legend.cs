@@ -82,12 +82,19 @@ namespace Maestro.MapViewer
                 if (_viewer != null && !this.DesignMode)
                 {
                     _map = _viewer.GetMap();
-                    _viewer.MapRefreshed += new EventHandler(OnMapRefreshed);
-                    _viewer.MapLoaded += new EventHandler(OnMapLoaded);
+                    _viewer.PropertyChanged += OnViewerPropertyChanged;
+                    _viewer.MapRefreshing += OnMapRefreshing;
+                    _viewer.MapLoaded += OnMapLoaded;
                     _selectableIcon = Properties.Resources.lc_select;
                     _unselectableIcon = Properties.Resources.lc_unselect;
                 }
             }
+        }
+
+        void OnViewerPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "IsBusy")
+                this.Enabled = !_viewer.IsBusy;
         }
 
         void OnMapLoaded(object sender, EventArgs e)
@@ -96,7 +103,7 @@ namespace Maestro.MapViewer
             _presenter = new LegendControlPresenter(this, _map);
         }
 
-        void OnMapRefreshed(object sender, EventArgs e)
+        void OnMapRefreshing(object sender, EventArgs e)
         {
             this.RefreshLegend();
         }
@@ -128,7 +135,6 @@ namespace Maestro.MapViewer
                 return;
 
             ResetTreeView();
-            trvLegend.BeginUpdate();
             _legendUpdateStopwatch.Start();
             this.IsBusy = true;
             bgLegendUpdate.RunWorkerAsync();
@@ -171,6 +177,8 @@ namespace Maestro.MapViewer
         {
             this.IsBusy = bgLegendUpdate.IsBusy;
             var nodes = e.Result as TreeNode[];
+            trvLegend.BeginUpdate();
+            ClearNodes(trvLegend.Nodes);
             if (nodes != null)
             {
                 //Attach relevant context menus based on attached metadata
@@ -228,7 +236,6 @@ namespace Maestro.MapViewer
 
         private void ResetTreeView()
         {
-            ClearNodes(trvLegend.Nodes);
             imgLegend.Images.Clear();
 
             imgLegend.Images.Add(IMG_BROKEN, Properties.Resources.lc_broken);
