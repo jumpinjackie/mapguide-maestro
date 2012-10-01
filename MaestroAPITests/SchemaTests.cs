@@ -24,6 +24,7 @@ using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.IO;
 using System.Xml;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace MaestroAPITests
 {
@@ -31,7 +32,7 @@ namespace MaestroAPITests
     public class SchemaTests
     {
         //These tests are to verify that we can read FDO XML configuration and schema documents without problems
-
+        
         [Test]
         public void TestMySqlSchema()
         {
@@ -306,6 +307,115 @@ namespace MaestroAPITests
 
             schema.AddClass(cls);
             Assert.AreEqual(schema, cls.Parent);
+        }
+        
+        [Test]
+        public void TestClassNameEncoding()
+        {
+            // Round-trip various invalid XML names. Copied from FDO test suite
+            string name1 = "Abc def";
+            string name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "Abc-x20-def" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+ 
+            name1 = " Abc#defg$$";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_x20-Abc-x23-defg-x24--x24-" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+        
+            name1 = " Abc#defg hij";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_x20-Abc-x23-defg-x20-hij" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+        
+            name1 = "--abc-def---ghi--";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_x2d--abc-def---ghi--" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+        
+            name1 = "--abc-x20-def-x23--x24-ghi--";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_x2d--abc-x2d-x20-def-x2d-x23--x2d-x24-ghi--" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+
+            name1 = "-xab";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_x2d-xab" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+
+            name1 = "&Entity";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_x26-Entity" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+
+            name1 = "11ab";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_x31-1ab" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+
+            name1 = "2_Class";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_x32-_Class" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+
+            name1 = "2%Class";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_x32--x25-Class" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+
+            name1 = "2-Class";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_x32--Class" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+
+            name1 = "2-x2f-Class";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_x32--x2d-x2f-Class" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+
+            name1 = "_x2d-";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_x00-_x2d-" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+
+            name1 = "-x3d-";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_x2d-x3d-" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+
+            name1 = "_x2d-_x3f-";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_x00-_x2d-_x3f-" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+
+            name1 = "__x2d-_x3f-";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "__x2d-_x3f-" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+
+            name1 = "_Class";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_Class" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+
+            name1 = "_5Class";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_5Class" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+
+            name1 = "_-5Class";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_-5Class" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+
+            name1 = "-_x2f-Class";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual( name2, "_x2d-_x2f-Class" );
+            Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
+
+            // Backward compatibility check. Make sure old-style 1st character encodings get decoded.
+            name2 = "-x40-A";
+            Assert.AreEqual( Utility.DecodeFDOName(name2), "@A" );
         }
     }
 }
