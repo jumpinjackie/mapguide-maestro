@@ -635,8 +635,10 @@ namespace OSGeo.MapGuide.MaestroAPI
             for (int i = 0; i < tokens.Length; i++)
             {
                 string token = tokens[i];
+                bool bMatchedToken = false;
                 if (TokenRegex.Match(token, 0).Success)
                 {
+                    bMatchedToken = true;
                     // the token happens to match the encoding pattern. We want to avoid
                     // decoding this sub-string on decode. This is done by encoding the leading
                     // dash.
@@ -647,6 +649,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 }
                 else if (TokenRegex2.Match(token, 0).Success && i == 0)
                 {
+                    bMatchedToken = true;
                     // the token happens to match the encoding pattern for the 1st character. 
                     // We want to avoid decoding this sub-string on decode. 
                     // This is done by prepending a dummy encoding for character 0. This character is 
@@ -665,7 +668,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                             outName.Append("-");
                     }
                 }
-                outName.Append(ReplaceBadChars(token));
+                outName.Append(bMatchedToken ? token : ReplaceBadChars(token));
             }
 
 
@@ -704,7 +707,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             bool bFirstChar = true;
             foreach (char c in token)
             {
-                if (XmlConvert.IsNCNameChar(c))
+                if (Char.IsDigit(c) || IsValidXmlChar(c))
                     sb.Append(c);
                 else
                     sb.AppendFormat("{0}x{1:X}-", bFirstChar ? "_" : "-", Convert.ToInt32(c));
@@ -712,6 +715,19 @@ namespace OSGeo.MapGuide.MaestroAPI
                 bFirstChar = false;
             }
             return sb.ToString();
+        }
+
+        private static bool IsValidXmlChar(char c)
+        {
+            try
+            {
+                XmlConvert.VerifyNCName(c + "");
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
