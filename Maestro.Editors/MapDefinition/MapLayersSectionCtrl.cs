@@ -1044,7 +1044,7 @@ namespace Maestro.Editors.MapDefinition
                     var li = node.Tag as LayerItem;
                     if (gi != null)
                     {
-                        if (TargetIsDescendant(nodes, gi))
+                        if (TargetIsAmongSource(nodes, gi) || TargetIsDescendant(nodes, gi))
                             return;
 
                         parent = gi.Tag;
@@ -1085,6 +1085,17 @@ namespace Maestro.Editors.MapDefinition
                     OnResourceChanged();
                 }
             }
+        }
+
+        private static bool TargetIsAmongSource(TreeNodeAdv[] nodes, GroupItem target)
+        {
+            foreach (var n in nodes)
+            {
+                var gi = n.Tag as GroupItem;
+                if (gi != null && gi == target)
+                    return true;
+            }
+            return false;
         }
 
         private bool TargetIsDescendant(TreeNodeAdv[] nodes, GroupItem target)
