@@ -353,26 +353,50 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new MgReadOnlyStream(fetch);
         }
 
+        const int MAX_INPUT_STREAM_SIZE_MB = 30;
+
         public override void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback)
         {
-            //FIXME/BOGUS: We should be streaming this in! What if the resource data
-            //was several hundred MBs or 1-2 GBs in size? Hello System.OutOfMemoryException
-            //Other connection implementations are probably doing this too!
-            //
-            //BOGUS: Well we can't exactly plug in a System.IO.Stream to a MgByteSource
-            //either, and we can't extend SWIG proxy classes (not in the way it's currently set up anyways!). 
-            //So the only feasible solution is offload the input stream to a temp file and then create 
-            //an MgByteSource with the fileName ctor overload.
-            byte[] data = Utility.StreamAsArray(stream);
-            if (callback != null)
-                callback(0, data.Length, data.Length);
             var res = GetResourceService();
-            MgByteSource source = new MgByteSource(data, data.Length);
-            MgByteReader reader = source.GetReader();
-            res.SetResourceData(new MgResourceIdentifier(resourceid), dataname, datatype.ToString(), reader);
-            LogMethodCall("MgResourceService::SetResourceData", true, resourceid, dataname, datatype.ToString(), "MgByteReader");
-            if (callback != null)
-                callback(data.Length, 0, data.Length);
+            MgByteReader reader = null;
+            string tmpPath = null;
+            //If stream is under our hard-coded limit (and it's seekable, which is how we're able to get that number), use the
+            //overload of MgByteSource that accepts a byte[]. Otherwise dump the stream to a temp file and use the
+            //file name overload (otherwise if our input stream happens to be several GBs, we run risk of
+            //System.OutOfMemoryExceptions being thrown back at us)
+            if (stream.CanSeek && stream.Length < (MAX_INPUT_STREAM_SIZE_MB * 1024 * 1024))
+            {
+                byte[] data = Utility.StreamAsArray(stream);
+                MgByteSource source = new MgByteSource(data, data.Length);
+                reader = source.GetReader();
+            }
+            else
+            {
+                tmpPath = Path.GetTempFileName();
+                using (FileStream fs = File.OpenWrite(tmpPath))
+                {
+                    stream.CopyTo(fs);
+                }
+                MgByteSource source = new MgByteSource(tmpPath);
+                reader = source.GetReader();
+            }
+            try
+            {
+                res.SetResourceData(new MgResourceIdentifier(resourceid), dataname, datatype.ToString(), reader);
+                LogMethodCall("MgResourceService::SetResourceData", true, resourceid, dataname, datatype.ToString(), "MgByteReader");
+            }
+            finally
+            {
+                if (!string.IsNullOrEmpty(tmpPath) && File.Exists(tmpPath))
+                {
+                    //Be a responsible citizen and clean up our temp files when done
+                    try
+                    {
+                        File.Delete(tmpPath);
+                    }
+                    catch { }
+                }
+            }
         }
 
         public override void UploadPackage(string filename, Utility.StreamCopyProgressDelegate callback)
