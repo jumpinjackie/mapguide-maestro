@@ -204,6 +204,9 @@ namespace Maestro.MapViewer
                                 GeometryType = geomType
                             };
 
+                            if (layerMeta.CategoryExists(themeCat))
+                                continue;
+
                             int catIndex = 0;
                             XmlNodeList typeStyle = scaleRange.GetElementsByTagName(typeStyles[geomType]);
                             for (int st = 0; st < typeStyle.Count; st++)
@@ -234,24 +237,30 @@ namespace Maestro.MapViewer
                                         }
                                     }
                                 }
-                                else if (!layerMeta.HasDefaultIconsAt(_map.ViewScale))
+                                else
                                 {
-                                    try
+                                    if (LayerNodeMetadata.ScaleIsApplicable(_map.ViewScale, themeCat))
                                     {
-                                        var img = _map.GetLegendImage(layer.LayerDefinitionID,
-                                                                                _map.ViewScale,
-                                                                                16,
-                                                                                16,
-                                                                                "PNG",
-                                                                                -1,
-                                                                                -1);
-                                        legendCallCount++;
-                                        layerMeta.SetDefaultIcon(themeCat, img);
-                                        node.ToolTipText = string.Format(Properties.Resources.DefaultLayerTooltip, Environment.NewLine, layer.Name, layer.FeatureSourceID, layer.QualifiedClassName);
-                                    }
-                                    catch
-                                    {
-                                        //layerMeta.SetDefaultIcon(themeCat, Properties.Resources.lc_broken);
+                                        if (!layerMeta.HasDefaultIconsAt(_map.ViewScale))
+                                        {
+                                            try
+                                            {
+                                                var img = _map.GetLegendImage(layer.LayerDefinitionID,
+                                                                                        _map.ViewScale,
+                                                                                        16,
+                                                                                        16,
+                                                                                        "PNG",
+                                                                                        -1,
+                                                                                        -1);
+                                                legendCallCount++;
+                                                layerMeta.SetDefaultIcon(themeCat, img);
+                                                node.ToolTipText = string.Format(Properties.Resources.DefaultLayerTooltip, Environment.NewLine, layer.Name, layer.FeatureSourceID, layer.QualifiedClassName);
+                                            }
+                                            catch
+                                            {
+                                                //layerMeta.SetDefaultIcon(themeCat, Properties.Resources.lc_broken);
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -756,6 +765,7 @@ namespace Maestro.MapViewer
             {
                 var grp = _groups[objectId].Group;
                 grp.ExpandInLegend = expand;
+                _map.Save();
             }
         }
 
@@ -765,6 +775,7 @@ namespace Maestro.MapViewer
             {
                 var lyr = _layers[objectId].Layer;
                 lyr.ExpandInLegend = expand;
+                _map.Save();
             }
         }
 
@@ -1086,6 +1097,11 @@ namespace Maestro.MapViewer
                         return true;
                 }
                 return false;
+            }
+
+            internal bool CategoryExists(ThemeCategory themeCat)
+            {
+                return _themeNodes.ContainsKey(themeCat);
             }
         }
     }

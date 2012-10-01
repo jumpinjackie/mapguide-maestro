@@ -101,10 +101,6 @@ namespace Maestro.MapViewer
             this.RefreshLegend();
         }
 
-        private Dictionary<string, RuntimeMapLayer> _layers = new Dictionary<string, RuntimeMapLayer>();
-        private Dictionary<string, RuntimeMapGroup> _groups = new Dictionary<string, RuntimeMapGroup>();
-        private Dictionary<string, string> _layerDefinitionContents = new Dictionary<string, string>();
-
         internal bool GetVisibilityFlag(RuntimeMapGroup group)
         {
             return this.ShowAllLayersAndGroups;
@@ -285,30 +281,14 @@ namespace Maestro.MapViewer
             if (e.Node.Tag == null)
                 return;
 
-            if (((LegendNodeMetadata)e.Node.Tag).IsGroup) //Group
+            var meta = ((LegendNodeMetadata)e.Node.Tag);
+            if (meta.IsGroup) //Group
             {
-                if (_groups.ContainsKey(e.Node.Name))
-                {
-                    var grp = _groups[e.Node.Name];
-                    grp.Visible = e.Node.Checked;
-                    var bVis = HasVisibleParent(grp);
-                    if (bVis)
-                        OnRequestRefresh();
-                }
+                _presenter.SetGroupVisible(meta.ObjectId, e.Node.Checked);
             }
             else //Layer
             {
-                if (_layers.ContainsKey(e.Node.Name))
-                {
-                    var layer = _layers[e.Node.Name];
-                    layer.Visible = e.Node.Checked;
-                    var bVis = HasVisibleParent(layer);
-                    if (bVis)
-                    {
-                        layer.ForceRefresh();
-                        OnRequestRefresh();
-                    }
-                }
+                _presenter.SetLayerVisible(meta.ObjectId, e.Node.Checked);
             }
         }
 
@@ -317,22 +297,14 @@ namespace Maestro.MapViewer
             if (e.Node.Tag == null)
                 return;
 
-            if (((LegendNodeMetadata)e.Node.Tag).IsGroup) //Group
+            var meta = ((LegendNodeMetadata)e.Node.Tag);
+            if (meta.IsGroup) //Group
             {
-                if (_groups.ContainsKey(e.Node.Name))
-                {
-                    _groups[e.Node.Name].ExpandInLegend = true;
-                    _map.Save();
-                }
+                _presenter.SetGroupExpandInLegend(meta.ObjectId, true);
             }
             else //Layer
             {
-                if (_layers.ContainsKey(e.Node.Name))
-                {
-                    var layer = _layers[e.Node.Name];
-                    layer.ExpandInLegend = true;
-                    _map.Save();
-                }
+                _presenter.SetLayerExpandInLegend(meta.ObjectId, true);
             }
         }
 
@@ -341,22 +313,14 @@ namespace Maestro.MapViewer
             if (e.Node.Tag == null)
                 return;
 
-            if (((LegendNodeMetadata)e.Node.Tag).IsGroup) //Group
+            var meta = ((LegendNodeMetadata)e.Node.Tag);
+            if (meta.IsGroup) //Group
             {
-                if (_groups.ContainsKey(e.Node.Name))
-                {
-                    _groups[e.Node.Name].ExpandInLegend = true;
-                    _map.Save();
-                }
+                _presenter.SetGroupExpandInLegend(meta.ObjectId, false);
             }
             else //Layer
             {
-                if (_layers.ContainsKey(e.Node.Name))
-                {
-                    var layer = _layers[e.Node.Name];
-                    layer.ExpandInLegend = true;
-                    _map.Save();
-                }
+                _presenter.SetLayerExpandInLegend(meta.ObjectId, false);
             }
         }
 
