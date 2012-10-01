@@ -31,6 +31,7 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System.Globalization;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -604,7 +605,11 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return string.Format("{0} bytes", size); //NOXLATE
         }
 
-        private static System.Text.RegularExpressions.Regex EncRegExp = new System.Text.RegularExpressions.Regex(@"(\-x([0-9]|[a-e]|[A-E])([0-9]|[a-e]|[A-E])\-)|(\-dot\-)|(\-colon\-)", System.Text.RegularExpressions.RegexOptions.Compiled);
+        private static Regex EncRegExp = new System.Text.RegularExpressions.Regex(@"(\-x[0-2a-fA-F][0-9a-fA-F]\-)|(\-dot\-)|(\-colon\-)", System.Text.RegularExpressions.RegexOptions.Compiled);
+
+        private static Regex TokenRegex = new Regex("^x[0-9a-fA-F][0-9a-fA-F]", RegexOptions.Compiled);
+
+        private static Regex TokenRegex2 = new Regex("^_x[0-9a-fA-F][0-9a-fA-F]", RegexOptions.Compiled);
 
         /// <summary>
         /// FDO encodes a string
@@ -613,51 +618,153 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public static string EncodeFDOName(string name)
         {
-            return name.Replace("\"", "-x22-") //NOXLATE
-                       .Replace("&", "-x26-") //NOXLATE
-                       .Replace("'", "-x27-") //NOXLATE
-                       .Replace("<", "-x3C-") //NOXLATE
-                       .Replace(">", "-x3E-") //NOXLATE
-                       .Replace("~", "-x7E-") //NOXLATE
-                       .Replace(" ", "-x20-"); //NOXLATE
+            //Decode characters not allowed by FDO
+            string lName = name.Replace("-dot-", ".")
+                               .Replace("-colon-", ":");
+
+            //Break the name up by '-' delimiters
+            string[] tokens = lName.Split(new char[] { '-' }, StringSplitOptions.None);
+
+            StringBuilder outName = new StringBuilder();
+
+            // Encode any characters that are not allowed in XML names.
+            // The encoding pattern is "-x%x-" where %x is the character value in hexidecimal.
+            // The dash delimeters were an unfortunate choice since dash cannot be the 1st character
+            // in an XML name. When the 1st character needs to be encoded, it is encoded as "_x%x-" to 
+            // resolve this issue.
+            for (int i = 0; i < tokens.Length; i++)
+            {
+                string token = tokens[i];
+                if (TokenRegex.Match(token, 0).Success)
+                {
+                    // the token happens to match the encoding pattern. We want to avoid
+                    // decoding this sub-string on decode. This is done by encoding the leading
+                    // dash.
+                    if (outName.Length == 0)
+                        outName.Append(string.Format("_x{0:X}-", Convert.ToInt32('-')).ToLower());
+                    else
+                        outName.Append(string.Format("-x{0:X}-", Convert.ToInt32('-')).ToLower());
+                }
+                else if (TokenRegex2.Match(token, 0).Success && i == 0)
+                {
+                    // the token happens to match the encoding pattern for the 1st character. 
+                    // We want to avoid decoding this sub-string on decode. 
+                    // This is done by prepending a dummy encoding for character 0. This character is 
+                    // discarded on decode. 
+                    outName.Append("_x00-");
+                }
+                else
+                {
+                    // The token doesn't match the encoding pattern, just write the dash
+                    // that was discarded by the tokenizer.
+                    if (i > 0)
+                    {
+                        if (outName.Length == 0)
+                            outName.Append("_x2d-"); // 1st character so lead with '_'
+                        else
+                            outName.Append("-");
+                    }
+                }
+                outName.Append(ReplaceBadChars(token));
+            }
+
+
+            char c = outName[0];
+
+            //Perform actual substitutions of bad characters
+            outName = outName.Remove(0, 1);
+
+            //Check if the first character requires a meta-escape character replacement
+            string prefix = c + "";
+            switch (c)
+            {
+                case ' ':
+                    prefix = "_x20-";
+                    break;
+                case '-':
+                    prefix = "_x2d-";
+                    break;
+                case '&':
+                    prefix = "_x26-";
+                    break;
+                default:
+                    if (Char.IsDigit(c))
+                    {
+                        prefix = "_x3" + c + "-";
+                    }
+                    break;
+            }
+            string result = prefix + outName.ToString();
+            return result;
+        }
+
+        private static string ReplaceBadChars(string token)
+        {
+            StringBuilder sb = new StringBuilder();
+            bool bFirstChar = true;
+            foreach (char c in token)
+            {
+                if (XmlConvert.IsNCNameChar(c))
+                    sb.Append(c);
+                else
+                    sb.AppendFormat("{0}x{1:X}-", bFirstChar ? "_" : "-", Convert.ToInt32(c));
+
+                bFirstChar = false;
+            }
+            return sb.ToString();
         }
 
         /// <summary>
         /// Converts FDO encoded characters into their original character.
-        /// Encoded characters have the form -x00-.
         /// </summary>
         /// <param name="name">The FDO encoded string</param>
         /// <returns>The unencoded version of the string</returns>
         public static string DecodeFDOName(string name)
         {
-            System.Text.RegularExpressions.Match m = EncRegExp.Match(name);
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            int previndex = 0;
-
-            while (m != null && m.Success)
+            // The encoding pattern is delimited by '-' so break string up by '-'.
+            string[] tokens = name.Split(new char[] { '-' }, StringSplitOptions.None);
+            bool prevDecode = true;
+            StringBuilder decoded = new StringBuilder();
+            for (int i = 0; i < tokens.Length; i++)
             {
-                string replaceval;
-                if (m.Value == "-dot-") //NOXLATE
-                    replaceval = "."; //NOXLATE
-                else if (m.Value == "-colon-") //NOXLATE
-                    replaceval = ":"; //NOXLATE
+                string token = tokens[i];
+                //This is a special character inserted during the encoding process.
+                //If we find this at the beginning, discard it
+                if (i == 0 && token == "_x00")
+                    continue;
+
+                var m = TokenRegex.Match(token, 0);
+                var m2 = TokenRegex2.Match(token, 0);
+                if (token.Length == 4 && token.StartsWith("_x3") && Char.IsDigit(token[3]))
+                {
+                    decoded.Append(token[3]);
+                    prevDecode = true;
+                }
                 else
-                    replaceval = ((char)int.Parse(m.Value.Substring(2, 2), System.Globalization.NumberStyles.HexNumber)).ToString();
+                {
+                    if ((!prevDecode) && m.Success)
+                    {
+                        string replace = ((char)int.Parse(m.Value.Substring(1, 2), System.Globalization.NumberStyles.HexNumber)).ToString();
+                        decoded.Append(replace);
+                        prevDecode = true;
+                    }
+                    else if ((i == 0) && m2.Success)
+                    {
+                        string replace = ((char)int.Parse(m2.Value.Substring(2, 2), System.Globalization.NumberStyles.HexNumber)).ToString();
+                        decoded.Append(replace);
+                        prevDecode = true;
+                    }
+                    else
+                    {
+                        if (i > 0 && !prevDecode)
+                            decoded.Append("-");
 
-                sb.Append(name.Substring(previndex, m.Index - previndex));
-                sb.Append(replaceval);
-                previndex = m.Index + m.Value.Length;
-
-                m = m.NextMatch();
+                        decoded.Append(token);
+                        prevDecode = false;
+                    }
+                }
             }
-
-            if (sb.Length == 0)
-                return name;
-            else
-            {
-                sb.Append(name.Substring(previndex));
-                return sb.ToString();
-            }
+            return decoded.ToString();
         }
 
 
