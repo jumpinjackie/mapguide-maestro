@@ -636,6 +636,9 @@
                           class="Maestro.Base.Commands.CutCommand" />
             </Condition>
             <MenuItem type="Separator" />
+            <MenuItem id="CompileDependencyList"
+                      label="${res:SiteExplorer_SelectedItem_CompileDependencyList}"
+                      class="Maestro.Base.Commands.SiteExplorer.CompileFullDependencyListCommand" />
             <MenuItem id="CopyMoveMultipleToServer"
                       icon="server__arrow"
                       label="${res:SiteExplorer_CopyMoveToServer}"

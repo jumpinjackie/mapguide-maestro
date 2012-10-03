@@ -80,7 +80,11 @@ namespace Maestro.Base.UI.Packaging
 
         public string[] ResourceIds
         {
-            get { return txtResourceIdList.Lines.ToArray(); }
+            get
+            { 
+                var ids = new HashSet<string>(txtResourceIdList.Lines);
+                return ids.ToArray();
+            }
         }
 
         public string FolderToPackage
