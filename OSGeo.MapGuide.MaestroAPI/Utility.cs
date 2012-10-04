@@ -668,7 +668,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                             outName.Append("-");
                     }
                 }
-                outName.Append(bMatchedToken ? token : ReplaceBadChars(token));
+                outName.Append(bMatchedToken ? token : ReplaceBadChars(token, outName.Length == 0));
             }
 
 
@@ -701,16 +701,16 @@ namespace OSGeo.MapGuide.MaestroAPI
             return result;
         }
 
-        private static string ReplaceBadChars(string token)
+        private static string ReplaceBadChars(string token, bool bFirstInString)
         {
             StringBuilder sb = new StringBuilder();
-            bool bFirstChar = true;
+            bool bFirstChar = bFirstInString;
             foreach (char c in token)
             {
                 if (Char.IsDigit(c) || IsValidXmlChar(c))
                     sb.Append(c);
                 else
-                    sb.AppendFormat("{0}x{1:X}-", bFirstChar ? "_" : "-", Convert.ToInt32(c));
+                    sb.Append(string.Format("{0}x{1:X}-", bFirstChar ? "_" : "-", Convert.ToInt32(c)).ToLower());
 
                 bFirstChar = false;
             }

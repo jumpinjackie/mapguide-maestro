@@ -413,6 +413,11 @@ namespace MaestroAPITests
             Assert.AreEqual( name2, "_x2d-_x2f-Class" );
             Assert.AreEqual( name1, Utility.DecodeFDOName(name2) );
 
+            name1 = "Foo/Bar - snafu";
+            name2 = Utility.EncodeFDOName(name1);
+            Assert.AreEqual(name2, "Foo-x2f-Bar-x20---x20-snafu");
+            Assert.AreEqual(name1, Utility.DecodeFDOName(name2));
+
             // Backward compatibility check. Make sure old-style 1st character encodings get decoded.
             name2 = "-x40-A";
             Assert.AreEqual( Utility.DecodeFDOName(name2), "@A" );
