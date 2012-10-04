@@ -122,7 +122,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             item.BackgroundColor = Color.White;
             item.SpatialContextName = defaultSc.Name;
             item.UseTileCache = false;
-            item.AddLayer(new WmsLayerDefinition(schemaName + ":" + clsName) { Style = "default" }); //NOXLATE
+            item.AddLayer(new WmsLayerDefinition(clsName) { Style = "default" }); //NOXLATE
             return item;
         }
 

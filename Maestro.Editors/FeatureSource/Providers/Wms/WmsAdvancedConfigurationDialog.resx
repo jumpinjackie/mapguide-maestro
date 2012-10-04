@@ -154,7 +154,7 @@
     <value>113, 13</value>
   </data>
   <data name="txtFeatureServer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>493, 20</value>
+    <value>538, 20</value>
   </data>
   <data name="txtFeatureServer.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -171,11 +171,14 @@
   <data name="&gt;&gt;txtFeatureServer.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="grpRaster.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
   <data name="grpRaster.Location" type="System.Drawing.Point, System.Drawing">
     <value>294, 134</value>
   </data>
   <data name="grpRaster.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 259</value>
+    <value>357, 352</value>
   </data>
   <data name="grpRaster.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -199,7 +202,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>450, 399</value>
+    <value>495, 492</value>
   </data>
   <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -226,7 +229,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>531, 399</value>
+    <value>576, 492</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -249,6 +252,9 @@
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
   <data name="lstFeatureClasses.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -256,7 +262,7 @@
     <value>3, 16</value>
   </data>
   <data name="lstFeatureClasses.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 240</value>
+    <value>270, 333</value>
   </data>
   <data name="lstFeatureClasses.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -276,27 +282,6 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="btnAdd.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 22</value>
-  </data>
-  <data name="btnAdd.Text" xml:space="preserve">
-    <value>Add</value>
-  </data>
-  <data name="btnRemove.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnRemove.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 22</value>
-  </data>
-  <data name="btnRemove.Text" xml:space="preserve">
-    <value>Remove</value>
-  </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 16</value>
   </data>
@@ -328,7 +313,7 @@
     <value>12, 134</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>276, 259</value>
+    <value>276, 352</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -348,11 +333,32 @@
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="btnAdd.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 22</value>
+  </data>
+  <data name="btnAdd.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="btnRemove.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnRemove.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 22</value>
+  </data>
+  <data name="btnRemove.Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
   <data name="btnReset.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
   <data name="btnReset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 399</value>
+    <value>12, 492</value>
   </data>
   <data name="btnReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 23</value>
@@ -375,6 +381,9 @@
   <data name="&gt;&gt;btnReset.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
   <metadata name="COL_NAME.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -394,7 +403,7 @@
     <value>3, 16</value>
   </data>
   <data name="grdSpatialContexts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>588, 70</value>
+    <value>633, 70</value>
   </data>
   <data name="grdSpatialContexts.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -415,7 +424,7 @@
     <value>12, 39</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>594, 89</value>
+    <value>639, 89</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -439,7 +448,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>618, 434</value>
+    <value>663, 527</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
