@@ -528,6 +528,9 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="btnCancel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
   <data name="btnCancel.Location" type="System.Drawing.Point, System.Drawing">
     <value>346, 182</value>
   </data>
@@ -551,6 +554,9 @@
   </data>
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="btnOK.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
   </data>
   <data name="btnOK.Location" type="System.Drawing.Point, System.Drawing">
     <value>265, 182</value>

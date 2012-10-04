@@ -69,7 +69,7 @@ namespace Maestro.LiveMapEditor
         {
             if (string.IsNullOrEmpty(txtCoordinateSystem.Text))
             {
-                MessageBox.Show(Properties.Resources.ErrCoordSysRequired);
+                MessageBox.Show(Strings.ErrCoordSysRequired);
                 return false;
             }
             else
@@ -86,7 +86,7 @@ namespace Maestro.LiveMapEditor
                 !double.TryParse(txtUpperX.Text, out urx) ||
                 !double.TryParse(txtUpperY.Text, out ury))
             {
-                MessageBox.Show(Properties.Resources.ErrInvalidExtents);
+                MessageBox.Show(Strings.ErrInvalidExtents);
                 return false;
             }
             else 

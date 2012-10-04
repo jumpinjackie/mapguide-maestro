@@ -289,6 +289,9 @@ namespace Maestro.MapViewer
                 return;
 
             var meta = ((LegendNodeMetadata)e.Node.Tag);
+            if (!meta.Checkable)
+                return;
+
             if (meta.IsGroup) //Group
             {
                 _presenter.SetGroupVisible(meta.ObjectId, e.Node.Checked);
@@ -305,6 +308,9 @@ namespace Maestro.MapViewer
                 return;
 
             var meta = ((LegendNodeMetadata)e.Node.Tag);
+            if (!meta.Checkable) //Shouldn't happen, but just in case
+                return;
+
             if (meta.IsGroup) //Group
             {
                 _presenter.SetGroupExpandInLegend(meta.ObjectId, true);
@@ -420,12 +426,19 @@ namespace Maestro.MapViewer
         {
             trvLegend.SelectedNode = e.Node;
             var meta = e.Node.Tag as LayerNodeMetadata;
+
+
             if (meta != null && meta.DrawSelectabilityIcon)
             {
                 //Toggle layer's selectability if it's within the bounds of the selectability icon
                 var box = new Rectangle(
                     new Point((e.Node.Bounds.Location.X - 36) + 16, e.Node.Bounds.Location.Y), 
                     new Size(16, e.Node.Bounds.Height));
+
+                //Uncheckable items need to move 16px to the left
+                if (!meta.Checkable)
+                    box.Offset(-16, 0);
+
                 if (box.Contains(e.X, e.Y))
                 {
                     var layer = meta.Layer;

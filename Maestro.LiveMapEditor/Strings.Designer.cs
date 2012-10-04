@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Maestro.LiveMapEditor.Properties {
+namespace Maestro.LiveMapEditor {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Maestro.LiveMapEditor.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class Strings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Strings() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Maestro.LiveMapEditor.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Maestro.LiveMapEditor.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Maestro.LiveMapEditor.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,82 +61,65 @@ namespace Maestro.LiveMapEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to New Map.
         /// </summary>
-        internal static System.Drawing.Bitmap application_task {
+        internal static string CaptionNewMap {
             get {
-                object obj = ResourceManager.GetObject("application-task", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("CaptionNewMap", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to You have an existing open map. Save that map first?.
         /// </summary>
-        internal static System.Drawing.Bitmap arrow_circle_double {
+        internal static string ConfirmNewMap {
             get {
-                object obj = ResourceManager.GetObject("arrow-circle-double", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("ConfirmNewMap", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to Coordinate System Required.
         /// </summary>
-        internal static System.Drawing.Bitmap disk {
+        internal static string ErrCoordSysRequired {
             get {
-                object obj = ResourceManager.GetObject("disk", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("ErrCoordSysRequired", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to Extents are invalid or empty.
         /// </summary>
-        internal static System.Drawing.Bitmap disk__arrow {
+        internal static string ErrInvalidExtents {
             get {
-                object obj = ResourceManager.GetObject("disk--arrow", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("ErrInvalidExtents", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to New Map.
         /// </summary>
-        internal static System.Drawing.Bitmap folder_horizontal_open {
+        internal static string NewMap {
             get {
-                object obj = ResourceManager.GetObject("folder-horizontal-open", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("NewMap", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to Because this map has tiled layers, the RenderMap API will be used instead of the normal RenderDynamicOverlay API for map images.
         /// </summary>
-        internal static System.Drawing.Bitmap MaestroAbout {
+        internal static string TiledMapNote {
             get {
-                object obj = ResourceManager.GetObject("MaestroAbout", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("TiledMapNote", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to Tiled Map Support.
         /// </summary>
-        internal static System.Drawing.Bitmap map__plus {
+        internal static string TitleTiledMap {
             get {
-                object obj = ResourceManager.GetObject("map--plus", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap property {
-            get {
-                object obj = ResourceManager.GetObject("property", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("TitleTiledMap", resourceCulture);
             }
         }
     }

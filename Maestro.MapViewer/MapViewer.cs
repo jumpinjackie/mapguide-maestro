@@ -189,6 +189,9 @@ namespace Maestro.MapViewer
             this.MinScale = 10;
             this.MaxScale = 1000000000;
 
+            this.UseRenderMapIfTiledLayersExist = true;
+            this.RespectFiniteDisplayScales = true;
+
             this.DigitizingFillTransparency = 100;
             this.DigitizingOutline = Brushes.Red;
             this.DigitzingFillColor = Color.White;
@@ -1189,6 +1192,27 @@ namespace Maestro.MapViewer
         }
 
         /// <summary>
+        /// Gets whether to use the RenderMap API instead of RenderDynamicOverlay if the map has tiled
+        /// layers. RenderMap includes tiled layers as part of the output image, but will not take advantage
+        /// of any tile caching mechanisms. Setting this property to true nullifies any effect of the 
+        /// <see cref="P:Maestro.MapViewer.MapViewer.ConvertTiledGroupsToNonTiled"/> property
+        /// </summary>
+        [Category("MapGuide Viewer")] //NOXLATE
+        [Description("If true, the viewer will use the RenderMap API instead of RenderDynamicOverlay allowing tiled layers to be rendered to the final image. Setting this property to true nullifies the ConvertTiledGroupsToNonTiled property")] //NOXLATE
+        [DefaultValue(true)]
+        public bool UseRenderMapIfTiledLayersExist { get; set; }
+
+        /// <summary>
+        /// Gets whether to respect the list of finite display scales in a map being viewed if there are any defined.
+        /// If true, all zooms will "snap" to the nearest finite display scale. Otherwise, the viewer will disregard
+        /// this list when zooming in or out.
+        /// </summary>
+        [Category("MapGuide Viewer")] //NOXLATE
+        [Description("If true, all zooms will snap to the nearest finite display scale defined in the map being viewed")] //NOXLATE
+        [DefaultValue(true)]
+        public bool RespectFiniteDisplayScales { get; set; }
+
+        /// <summary>
         /// Raised when the viewer has been initialized
         /// </summary>
         [Category("MapGuide Viewer")]
@@ -1317,6 +1341,10 @@ namespace Maestro.MapViewer
 
         class RenderWorkArgs
         {
+            public RenderWorkArgs() { this.UseRenderMap = false; }
+
+            public bool UseRenderMap { get; set; }
+
             public ViewerRenderingOptions SelectionRenderingOptions { get; set; }
 
             public ViewerRenderingOptions MapRenderingOptions { get; set; }
@@ -1427,6 +1455,7 @@ namespace Maestro.MapViewer
             {
                 var args = new RenderWorkArgs()
                 {
+                    UseRenderMap = this.UseRenderMapIfTiledLayersExist && this.HasTiledLayers,
                     MapRenderingOptions = _overlayRenderOpts,
                     RaiseEvents = raiseEvents
                 };
@@ -1679,13 +1708,16 @@ namespace Maestro.MapViewer
 
         internal void ZoomToView(double x, double y, double scale, bool refresh, bool raiseEvents, bool addToHistoryStack)
         {
+            var newScale = NormalizeScale(scale);
+            if (_map.FiniteDisplayScaleCount > 0 && this.RespectFiniteDisplayScales)
+                newScale = GetNearestFiniteScale(scale);
             if (addToHistoryStack)
             {
                 //If not current view, then any entries from the current view index are no longer needed
                 if (ViewHistoryIndex < _viewHistory.Count - 1)
                     PruneHistoryEntriesFromCurrentView();
 
-                _viewHistory.Add(new MapViewHistoryEntry(x, y, scale));
+                _viewHistory.Add(new MapViewHistoryEntry(x, y, newScale));
                 OnPropertyChanged("ViewHistory");
                 _viewHistoryIndex = _viewHistory.Count - 1;
                 OnPropertyChanged("ViewHistoryIndex");
@@ -1702,7 +1734,7 @@ namespace Maestro.MapViewer
             Trace.TraceInformation("Center is (" + x + ", " + y + ")");
 #endif
             var oldScale = _map.ViewScale;
-            _map.ViewScale = Math.Max(scale, MINIMUM_ZOOM_SCALE);
+            _map.ViewScale = newScale;
 
             if (oldScale != _map.ViewScale)
             {
@@ -1720,6 +1752,36 @@ namespace Maestro.MapViewer
             //Then refresh
             if (refresh)
                 RefreshMap(raiseEvents);
+        }
+
+        private double GetNearestFiniteScale(double scale)
+        {
+            return _map.GetFiniteDisplayScaleAt(GetFiniteScaleIndex(scale));
+        }
+
+        private int GetFiniteScaleIndex(double reqScale)
+        {
+            var index = 0;
+            var scaleCount = _map.FiniteDisplayScaleCount;
+            if (scaleCount > 0)
+            {
+                var bestDiff = Math.Abs(_map.GetFiniteDisplayScaleAt(0) - reqScale);
+                for (var i = 1; i < scaleCount; i++)
+                {
+                    var scaleDiff = Math.Abs(_map.GetFiniteDisplayScaleAt(i) - reqScale);
+                    if (scaleDiff < bestDiff)
+                    {
+                        index = i;
+                        bestDiff = scaleDiff;
+                        if (bestDiff == 0)
+                        {
+                            //perfect match
+                            break;
+                        }
+                    }
+                }
+            }
+            return index;
         }
 
         /// <summary>
@@ -1745,7 +1807,10 @@ namespace Maestro.MapViewer
             var res = new RenderResult() { RaiseEvents = args.RaiseEvents, InvalidateRegardless = args.InvalidateRegardless };
             if (args.MapRenderingOptions != null)
             {
-                res.Image = Image.FromStream(_map.RenderDynamicOverlay(null, args.MapRenderingOptions.Format, args.MapRenderingOptions.Color, args.MapRenderingOptions.Behavior));
+                if (args.UseRenderMap)
+                    res.Image = Image.FromStream(_map.Render(args.MapRenderingOptions.Format));
+                else
+                    res.Image = Image.FromStream(_map.RenderDynamicOverlay(null, args.MapRenderingOptions.Format, args.MapRenderingOptions.Color, args.MapRenderingOptions.Behavior));
             }
             if (args.SelectionRenderingOptions != null)
             {
@@ -2746,5 +2811,36 @@ namespace Maestro.MapViewer
         }
 
         public bool HasLoadedMap { get { return _map != null; } }
+
+        private bool? _hasTiledLayers;
+
+        internal bool HasTiledLayers
+        {
+            get
+            {
+                if (!_hasTiledLayers.HasValue)
+                {
+                    if (_map != null)
+                    {
+                        var groups = _map.Groups;
+                        for (int i = 0; i < groups.Count; i++)
+                        {
+                            if (groups[i].Type == RuntimeMapGroup.kBaseMap)
+                            {
+                                _hasTiledLayers = true;
+                                break;
+                            }
+                        }
+                        if (!_hasTiledLayers.HasValue)
+                            _hasTiledLayers = false;
+                    }
+                    else
+                    {
+                        _hasTiledLayers = false;
+                    }
+                }
+                return _hasTiledLayers.Value;
+            }
+        }
     }
 }

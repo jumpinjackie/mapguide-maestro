@@ -332,6 +332,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         /// <summary>
+        /// Gets the number of finite display scales
+        /// </summary>
+        public int FiniteDisplayScaleCount { get { return _finiteDisplayScales.Length; } }
+
+        /// <summary>
+        /// Gets the finite display scale at the specified index
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public double GetFiniteDisplayScaleAt(int index) { return _finiteDisplayScales[index]; }
+
+        /// <summary>
         /// Gets or sets the map extents.
         /// </summary>
         /// <value>The map extents.</value>

@@ -82,7 +82,7 @@ namespace Maestro.LiveMapEditor
         {
             ClearExistingEditor();
 
-            var mdf = ObjectFactory.CreateMapDefinition(_conn, Properties.Resources.NewMap);
+            var mdf = ObjectFactory.CreateMapDefinition(_conn, Strings.NewMap);
             var diag = new MapSettingsDialog(_conn, mdf);
             if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -97,8 +97,7 @@ namespace Maestro.LiveMapEditor
             {
                 if (mdf.BaseMap.GroupCount > 0)
                 {
-                    if (MessageBox.Show(Properties.Resources.ConfirmTiledGroupConversion, Properties.Resources.ConfirmTiledMap, MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.No)
-                        return;
+                    MessageBox.Show(Strings.TiledMapNote, Strings.TitleTiledMap);
                 }
             }
 
@@ -153,7 +152,7 @@ namespace Maestro.LiveMapEditor
         {
             if (_mapEditor != null)
             {
-                if (MessageBox.Show(Properties.Resources.ConfirmNewMap, Properties.Resources.CaptionNewMap, MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                if (MessageBox.Show(Strings.ConfirmNewMap, Strings.CaptionNewMap, MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
                     DoSave();
                 }
@@ -167,7 +166,7 @@ namespace Maestro.LiveMapEditor
             if (_mapEditor == null)
                 this.Text = _origTitle;
             else
-                this.Text = _origTitle + " - " + (_mapEditor.EditorService.IsNew ? Properties.Resources.CaptionNewMap : _mapEditor.EditorService.ResourceID);
+                this.Text = _origTitle + " - " + (_mapEditor.EditorService.IsNew ? Strings.CaptionNewMap : _mapEditor.EditorService.ResourceID);
         }
 
         private void btnMapProperties_Click(object sender, EventArgs e)

@@ -79,20 +79,6 @@ namespace Maestro.Editors.MapDefinition
         }
 
         /// <summary>
-        /// Gets or sets whether to convert tiled groups to untiled groups
-        /// </summary>
-        /// <remarks>
-        /// This property is a workaround for the fact that the map viewer currently does not support rendering of tiled
-        /// layers. It is recommended to set this property to true, otherwise such layers and groups are not visible on
-        /// the live preview
-        /// </remarks>
-        public bool ConvertTiledGroupsToNonTiled
-        {
-            get { return viewer.ConvertTiledGroupsToNonTiled; }
-            set { viewer.ConvertTiledGroupsToNonTiled = value; }
-        }
-
-        /// <summary>
         /// Refreshes the viewer
         /// </summary>
         public void RefreshMap()

@@ -77,7 +77,10 @@ namespace Maestro.MapViewer
                 for (int i = 0; i < layers.Count; i++)
                 {
                     var layer = layers[i];
-                    _layers[layer.ObjectId] = new LayerNodeMetadata(layer, layer.Selectable);
+                    RuntimeMapGroup group = null;
+                    if (!string.IsNullOrEmpty(layer.Group))
+                        group = _map.Groups[layer.Group];
+                    _layers[layer.ObjectId] = new LayerNodeMetadata(layer, layer.Selectable, (group != null && group.Type == RuntimeMapGroup.kBaseMap));
                 }
             }
         }
@@ -132,7 +135,10 @@ namespace Maestro.MapViewer
                 }
                 else //If not in the dictionary, assume it is a dynamically added layer
                 {
-                    layerMeta = new LayerNodeMetadata(layer, bInitiallySelectable);
+                    RuntimeMapGroup group = null;
+                    if (!string.IsNullOrEmpty(layer.Group))
+                        group = _map.Groups[layer.Group];
+                    layerMeta = new LayerNodeMetadata(layer, bInitiallySelectable, (group != null && group.Type == RuntimeMapGroup.kBaseMap));
                     _layers[layer.ObjectId] = layerMeta;
                 }
                 node.Tag = layerMeta;
@@ -147,7 +153,10 @@ namespace Maestro.MapViewer
                 }
                 else
                 {
-                    layerMeta = new LayerNodeMetadata(layer, layer.Selectable);
+                    RuntimeMapGroup group = null;
+                    if (!string.IsNullOrEmpty(layer.Group))
+                        group = _map.Groups[layer.Group];
+                    layerMeta = new LayerNodeMetadata(layer, layer.Selectable, (group != null && group.Type == RuntimeMapGroup.kBaseMap));
                     _layers[layer.ObjectId] = layerMeta;
                 }
                 if (string.IsNullOrEmpty(layerMeta.LayerDefinitionContent))
@@ -465,7 +474,10 @@ namespace Maestro.MapViewer
                         }
                         else
                         {
-                            meta = new LayerNodeMetadata(lyr, lyr.Selectable);
+                            RuntimeMapGroup group = null;
+                            if (!string.IsNullOrEmpty(lyr.Group))
+                                group = _map.Groups[lyr.Group];
+                            meta = new LayerNodeMetadata(lyr, lyr.Selectable, (group != null && group.Type == RuntimeMapGroup.kBaseMap));
                             _layers[objId] = meta;
                             added++;
                         }
@@ -630,7 +642,7 @@ namespace Maestro.MapViewer
                 var checkBoxOffset = xoffset;
                 var selectabilityOffset = xoffset + 16;
                 var iconOffsetNoSelect = xoffset + 16;
-                if (themeMeta != null) //No checkbox for theme rule nodes
+                if (layerMeta != null && !layerMeta.Checkable) //No checkbox for theme rule nodes
                 {
                     selectabilityOffset = xoffset;
                     iconOffsetNoSelect = xoffset;
@@ -642,7 +654,7 @@ namespace Maestro.MapViewer
                 //Uncomment if you need to "see" the bounds of the node
                 //e.Graphics.DrawRectangle(Pens.Black, e.Node.Bounds);
 
-                if (layerMeta != null) //No checkbox for theme rule nodes
+                if (layerMeta != null && layerMeta.Checkable) //No checkbox for theme rule nodes
                 {
                     if (Application.RenderWithVisualStyles)
                     {
@@ -814,6 +826,8 @@ namespace Maestro.MapViewer
             public bool IsGroup { get; protected set; }
 
             public abstract string ObjectId { get; }
+
+            public bool Checkable { get; protected set; }
         }
 
         [DebuggerDisplay("Name = {GroupName}, Label = {LegendLabel}")]
@@ -827,6 +841,7 @@ namespace Maestro.MapViewer
             {
                 base.IsGroup = true;
                 this.Group = group;
+                this.Checkable = true;
             }
 
             public string LegendLabel { get { return this.Group.LegendLabel; } }
@@ -847,6 +862,7 @@ namespace Maestro.MapViewer
                 this.IsPlaceholder = bPlaceholder;
                 this.ThemeIcon = themeIcon;
                 this.Label = labelText;
+                this.Checkable = false;
             }
 
             public bool IsPlaceholder { get; private set; }
@@ -899,7 +915,7 @@ namespace Maestro.MapViewer
         [DebuggerDisplay("Name = {Layer.Name}, Label = {Layer.LegendLabel}")]
         public class LayerNodeMetadata : LegendNodeMetadata
         {
-            public LayerNodeMetadata(RuntimeMapLayer layer, bool bInitiallySelectable)
+            public LayerNodeMetadata(RuntimeMapLayer layer, bool bInitiallySelectable, bool bTiled)
             {
                 base.IsGroup = false;
                 this.Layer = layer;
@@ -907,6 +923,7 @@ namespace Maestro.MapViewer
                 this.DrawSelectabilityIcon = (layer != null && bInitiallySelectable);
                 this.WasInitiallySelectable = bInitiallySelectable;
                 this.LayerDefinitionContent = null;
+                this.Checkable = !bTiled;
                 _themeNodes = new Dictionary<ThemeCategory, List<LayerThemeNodeMetadata>>();
                 _defaultIcons = new Dictionary<ThemeCategory, Image>();
             }
