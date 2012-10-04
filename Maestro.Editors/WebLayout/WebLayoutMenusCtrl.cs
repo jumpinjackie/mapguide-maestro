@@ -42,7 +42,8 @@ namespace Maestro.Editors.WebLayout
         }
 
         private IWebLayout _wl;
-        private BindingList<ICommand> _cmds = new BindingList<ICommand>();
+        private BindingList<CommandDecorator> _cmds = new BindingList<CommandDecorator>();
+        private Dictionary<string, CommandDecorator> _cmdsByName = new Dictionary<string, CommandDecorator>();
 
         public override void Bind(IEditorService service)
         {
@@ -56,7 +57,9 @@ namespace Maestro.Editors.WebLayout
 
             foreach (var cmd in _wl.CommandSet.Commands)
             {
-                _cmds.Add(cmd);
+                var dec = new CommandDecorator(cmd);
+                _cmds.Add(dec);
+                _cmdsByName[dec.Name] = dec;
             }
             grdCommands.DataSource = _cmds;
         }
@@ -71,12 +74,19 @@ namespace Maestro.Editors.WebLayout
 
         void OnCommandRemoved(ICommand cmd)
         {
-            _cmds.Remove(cmd);
+            if (_cmdsByName.ContainsKey(cmd.Name))
+            {
+                var dec = _cmdsByName[cmd.Name];
+                _cmds.Remove(dec);
+                _cmdsByName.Remove(dec.Name);
+            }
         }
 
         void OnCommandAdded(ICommand cmd)
         {
-            _cmds.Add(cmd);
+            var dec = new CommandDecorator(cmd);
+            _cmds.Add(dec);
+            _cmdsByName[dec.Name] = dec;
         }
 
         private void grdCommands_DragLeave(object sender, EventArgs e)
@@ -89,12 +99,12 @@ namespace Maestro.Editors.WebLayout
 
         private ICommand GetSelectedCommand()
         {
-            ICommand cmd = null;
+            CommandDecorator cmd = null;
             if (grdCommands.SelectedRows.Count == 1)
-                cmd = grdCommands.SelectedRows[0].DataBoundItem as ICommand;
+                cmd = grdCommands.SelectedRows[0].DataBoundItem as CommandDecorator;
             else if (grdCommands.SelectedCells.Count == 1)
-                cmd = grdCommands.Rows[grdCommands.SelectedCells[0].RowIndex].DataBoundItem as ICommand;
-            return cmd;
+                cmd = grdCommands.Rows[grdCommands.SelectedCells[0].RowIndex].DataBoundItem as CommandDecorator;
+            return cmd.DecoratedInstance;
         }
 
         private void grdCommands_CellClick(object sender, DataGridViewCellEventArgs e)

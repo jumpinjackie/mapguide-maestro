@@ -113,17 +113,19 @@ namespace Maestro.Editors.WebLayout
             var cmds = new List<ICommand>();
             foreach (DataGridViewRow row in grdCommands.SelectedRows)
             {
-                if (typeof(IInvokeScriptCommand).IsAssignableFrom(row.DataBoundItem.GetType()))
+                var dec = (CommandDecorator)row.DataBoundItem;
+                var cmd = dec.DecoratedInstance;
+                if (typeof(IInvokeScriptCommand).IsAssignableFrom(cmd.GetType()))
                 {
-                    cmds.Add((ICommand)row.DataBoundItem);
+                    cmds.Add(cmd);
                 }
-                else if (typeof(IInvokeUrlCommand).IsAssignableFrom(row.DataBoundItem.GetType()))
+                else if (typeof(IInvokeUrlCommand).IsAssignableFrom(cmd.GetType()))
                 {
-                    cmds.Add((ICommand)row.DataBoundItem);
+                    cmds.Add(cmd);
                 }
-                else if (typeof(ISearchCommand).IsAssignableFrom(row.DataBoundItem.GetType()))
+                else if (typeof(ISearchCommand).IsAssignableFrom(cmd.GetType()))
                 {
-                    cmds.Add((ICommand)row.DataBoundItem);
+                    cmds.Add(cmd);
                 }
             }
             return cmds.ToArray();
@@ -251,9 +253,9 @@ namespace Maestro.Editors.WebLayout
 
                         using (new WaitCursor(this))
                         {
+                            int deleted = _wl.RemoveAllReferences(iurl.Name);
                             _wl.CommandSet.RemoveCommand(iurl);
                             _commands.Remove(cmd);
-                            int deleted = _wl.RemoveAllReferences(iurl.Name);
                             ClearCommandUI();
                         }
                     }
@@ -267,9 +269,9 @@ namespace Maestro.Editors.WebLayout
 
                         using (new WaitCursor(this))
                         {
+                            _wl.RemoveAllReferences(iscr.Name);
                             _wl.CommandSet.RemoveCommand(iscr);
                             _commands.Remove(cmd);
-                            _wl.RemoveAllReferences(iscr.Name);
                             ClearCommandUI();
                         }
                     }
@@ -283,9 +285,9 @@ namespace Maestro.Editors.WebLayout
 
                         using (new WaitCursor(this))
                         {
+                            _wl.RemoveAllReferences(srch.Name);
                             _wl.CommandSet.RemoveCommand(srch);
                             _commands.Remove(cmd);
-                            _wl.RemoveAllReferences(srch.Name);
                             ClearCommandUI();
                         }
                     }
