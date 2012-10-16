@@ -36,18 +36,26 @@ namespace OSGeo.MapGuide.MaestroAPI
 		private string m_sessionID = null;
 		private string m_locale = null;
 
-		internal RequestBuilder(Uri hosturi, string locale, string sessionid)
+		internal RequestBuilder(Uri hosturi, string locale, string sessionid, bool bIncludeSessionIdInRequests)
 		{
 			m_hosturi = hosturi.AbsoluteUri;
 			m_locale = locale;
 			m_sessionID = sessionid;
             m_userAgent += " v" + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            this.IncludeSessionIdInRequestParams = bIncludeSessionIdInRequests;
 		}
 
 		internal RequestBuilder(Uri hosturi, string locale)
-			: this (hosturi, locale, null)
+			: this (hosturi, locale, null, false)
 		{
 		}
+
+        /// <summary>
+        /// Indicates if the session id should be included as the SESSION request parameter. This needs to be set to true if
+        /// the HTTP connection was initialized with only a session id, otherwise it can be set to false if the connection
+        /// was initialized with a username/password as requests use the already established authenticated credentials.
+        /// </summary>
+        internal bool IncludeSessionIdInRequestParams { get; private set; }
 
 		internal string Locale { get { return m_locale; } }
 
@@ -205,16 +213,24 @@ namespace OSGeo.MapGuide.MaestroAPI
 			set { m_sessionID = value; }
 		}
 
+        private string EncodeParameters(NameValueCollection param, bool bAddSessionId)
+        {
+            if (bAddSessionId && this.IncludeSessionIdInRequestParams && param["SESSION"] == null)
+                param["SESSION"] = m_sessionID;
+
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            foreach (string s in param.Keys)
+            {
+                sb.Append(EncodeParameter(s, param[s]));
+                sb.Append("&");
+            }
+
+            return sb.ToString(0, sb.Length - 1);
+        }
+
 		private string EncodeParameters(NameValueCollection param)
 		{
-			System.Text.StringBuilder sb = new System.Text.StringBuilder();
-			foreach(string s in param.Keys)
-			{
-				sb.Append(EncodeParameter(s, param[s]));
-				sb.Append("&");
-			}
-
-			return sb.ToString(0, sb.Length - 1);
+            return EncodeParameters(param, true);
 		}
 
 		private string EncodeParameter(string name, string value)

@@ -125,6 +125,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             m_con = new MgSiteConnection();
             m_con.Open(mgui);
             m_sessionId = sessionid;
+            DisableAutoSessionRecovery();
         }
 
         private void InitConnection(string configFile, string username, string password, string locale)

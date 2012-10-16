@@ -3342,4 +3342,7 @@
   <data name="PickTxt" xml:space="preserve">
     <value>Text Files</value>
   </data>
+  <data name="ErrorConnectionCannotAutoRestartSession" xml:space="preserve">
+    <value>This connection cannot auto-restart sessions. Most likely because this connection was just initialized with a session id and not with the credentials required to rebuild a new session</value>
+  </data>
 </root>

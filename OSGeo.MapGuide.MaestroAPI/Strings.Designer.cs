@@ -693,6 +693,15 @@ namespace OSGeo.MapGuide.MaestroAPI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This connection cannot auto-restart sessions. Most likely because this connection was just initialized with a session id and not with the credentials required to rebuild a new session.
+        /// </summary>
+        public static string ErrorConnectionCannotAutoRestartSession {
+            get {
+                return ResourceManager.GetString("ErrorConnectionCannotAutoRestartSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not determine symbol type.
         /// </summary>
         public static string ErrorCouldNotDetermineSymbolType {

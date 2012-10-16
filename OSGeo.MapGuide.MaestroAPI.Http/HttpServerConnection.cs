@@ -143,12 +143,13 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         private void InitConnection(Uri hosturl, string sessionid, string locale, bool allowUntestedVersion, string geoRestUrl, string geoRestConfigPath)
         {
+            DisableAutoSessionRecovery();
             if (!string.IsNullOrEmpty(geoRestUrl))
             {
                 _geoRestConn = new GeoRestConnection(geoRestUrl, geoRestConfigPath);
             }
 
-            m_reqBuilder = new RequestBuilder(hosturl, locale, sessionid);
+            m_reqBuilder = new RequestBuilder(hosturl, locale, sessionid, true);
             string req = m_reqBuilder.GetSiteVersion();
             SiteVersion sv = null;
             try
@@ -168,7 +169,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                         if (!tmp.EndsWith("/"))
                             tmp += "/";
                         hosturl = new Uri(tmp + "mapagent/mapagent.fcgi");
-                        m_reqBuilder = new RequestBuilder(hosturl, locale, sessionid);
+                        m_reqBuilder = new RequestBuilder(hosturl, locale, sessionid, true);
                         req = m_reqBuilder.GetSiteVersion();
                         sv = (SiteVersion)DeserializeObject(typeof(SiteVersion), OpenRead(req));
                         ok = true;

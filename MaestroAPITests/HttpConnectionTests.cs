@@ -348,5 +348,29 @@ namespace MaestroAPITests
                                    ResourceDataType.File,
                                    resSvc.GetResourceData(source, dataName));
         }
+        
+        [Test]
+        public void TestCreateFromExistingSession()
+        {
+            var conn = ConnectionUtil.CreateTestHttpConnection();
+            var conn2 = ConnectionProviderRegistry.CreateConnection("Maestro.Http",
+                HttpServerConnection.PARAM_SESSION, conn.SessionID,
+                HttpServerConnection.PARAM_URL, conn.GetCustomProperty(HttpServerConnection.PROP_BASE_URL).ToString(),
+                HttpServerConnection.PARAM_UNTESTED, "true");
+
+            //This connection cannot restart sessions, and cannot be set to restart sessions
+            Assert.False(conn2.AutoRestartSession);
+            Assert.Throws<InvalidOperationException>(() => { conn2.AutoRestartSession = true; });
+
+            //Exercise an API to check the minimum parameters are met
+            try
+            {
+                var result = conn2.ResourceService.GetRepositoryResources();
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.ToString());
+            }
+        }
     }
 }

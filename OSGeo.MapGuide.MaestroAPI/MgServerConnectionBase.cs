@@ -76,6 +76,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             m_username = null;
             m_password = null;
+            _canAutoRestartSession = true;
         }
 
         #region Session Management
@@ -86,7 +87,24 @@ namespace OSGeo.MapGuide.MaestroAPI
         virtual public bool AutoRestartSession
         {
             get { return m_autoRestartSession; }
-            set { m_autoRestartSession = value; }
+            set 
+            {
+                if (value && !_canAutoRestartSession)
+                    throw new InvalidOperationException(Strings.ErrorConnectionCannotAutoRestartSession);
+                m_autoRestartSession = value; 
+            }
+        }
+
+        protected bool _canAutoRestartSession;
+
+        /// <summary>
+        /// Indicates this connection cannot use session recovery, normally due to the fact the connection was initialized
+        /// with just a session id.
+        /// </summary>
+        protected void DisableAutoSessionRecovery()
+        {
+            this.AutoRestartSession = false;
+            _canAutoRestartSession = false;
         }
 
         /// <summary>
