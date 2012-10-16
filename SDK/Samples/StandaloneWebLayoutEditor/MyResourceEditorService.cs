@@ -82,5 +82,10 @@ namespace StandaloneWebLayoutEditor
         {
             throw new NotImplementedException();
         }
+
+        public override void RunProcess(string processName, params string[] args)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

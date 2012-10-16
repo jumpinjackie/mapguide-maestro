@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawMap", "DrawMap\DrawMap.csproj", "{30EA9CAC-7DFA-4434-87F4-0AB226F2D305}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryFeatureSource", "QueryFeatureSource\QueryFeatureSource.csproj", "{7C572B2A-5E77-4AB4-B8AD-1172D3E725EC}"
