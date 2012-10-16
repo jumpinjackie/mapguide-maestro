@@ -84,6 +84,7 @@ namespace SamplesWeb.Tasks
                 RuntimeMapLayer layer = mpSvc.CreateMapLayer(rtMap, layerDef);
 
                 layer.Group = groupName;
+                layer.Name = "Tracks";
                 layer.LegendLabel = "Tracks";
                 layer.ShowInLegend = true;
                 layer.ExpandInLegend = true;
