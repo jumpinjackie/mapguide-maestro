@@ -36,12 +36,14 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="description">The description.</param>
         /// <param name="implType">Type of the impl.</param>
         /// <param name="multiPlatform">if set to <c>true</c> [multi platform].</param>
-        public MaestroApiProviderAttribute(string name, string description, Type implType, bool multiPlatform)
+        /// <param name="bHasGlobalState">Whether this provider has global connection state</param>
+        public MaestroApiProviderAttribute(string name, string description, Type implType, bool multiPlatform, bool bHasGlobalState)
         {
             this.Name = name;
             this.Description = description;
             this.ImplType = implType;
             this.IsMultiPlatform = multiPlatform;
+            this.HasGlobalState = bHasGlobalState;
         }
 
         /// <summary>
@@ -58,6 +60,13 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Indicates whether this implementation can be used on non-windows environments (eg. Mono)
         /// </summary>
         public bool IsMultiPlatform { get; set; }
+
+        /// <summary>
+        /// Indicates whether this provider contains global connection-specific state. For such providers, connections are effectively
+        /// single-instance. This is corner-case property required by a particular provider (Maestro.Local), but may extend to other providers
+        /// in the future
+        /// </summary>
+        public bool HasGlobalState { get; set; }
 
         /// <summary>
         /// The type that implements our main server connection interface

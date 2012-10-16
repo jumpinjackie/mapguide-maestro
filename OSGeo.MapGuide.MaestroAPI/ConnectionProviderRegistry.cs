@@ -49,6 +49,12 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// 	<c>true</c> if this instance is multi platform; otherwise, <c>false</c>.
         /// </value>
         public bool IsMultiPlatform { get; private set; }
+        /// <summary>
+        /// Gets whether this provider has global connection state. This effectively indicates that subsequent connections after the first one
+        /// created for this provider will re-use the same connection information and may/will disregard that values of the connection parameters
+        /// you pass in
+        /// </summary>
+        public bool HasGlobalState { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ConnectionProviderEntry"/> class.
@@ -126,6 +132,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         static Dictionary<string, ConnectionFactoryMethod> _ctors;
         static List<ConnectionProviderEntry> _providers;
+        static Dictionary<string, int> _callCount;
 
         static string _dllRoot;
 
@@ -133,6 +140,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             _ctors = new Dictionary<string, ConnectionFactoryMethod>();
             _providers = new List<ConnectionProviderEntry>();
+            _callCount = new Dictionary<string, int>();
 
             var dir = System.IO.Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
             var path = System.IO.Path.Combine(dir, PROVIDER_CONFIG);
@@ -168,7 +176,8 @@ namespace OSGeo.MapGuide.MaestroAPI
                             IServerConnection conn = (IServerConnection)impl.InvokeMember(null, flags, null, null, new object[] { initParams });
                             return conn;
                         });
-                        _providers.Add(new ConnectionProviderEntry(name, desc, attr[0].IsMultiPlatform));    
+                        _providers.Add(new ConnectionProviderEntry(name, desc, attr[0].IsMultiPlatform));
+                        _callCount[name] = 0;
                     }
                 }
                 catch
@@ -202,6 +211,24 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
+        /// Gets the invocation count for the given provider (the number of times a connection has been created for that provider)
+        /// </summary>
+        /// <remarks>
+        /// This (in conjunction with the <see cref="P:OSGeo.MapGuide.MaestroAPI.ConnectionProviderEntry.HasGlobalState"/> property) can
+        /// be used to programmatically determine if creating a connection for a given provider will respect the connection parameter values
+        /// you pass to it. (0 calls will respect your parameter values. 1 or more will not)
+        /// </remarks>
+        /// <param name="provider"></param>
+        /// <returns>The invocation count for the given provider. -1 if the provider is not registered or does not exist</returns>
+        public static int GetInvocationCount(string provider)
+        {
+            if (_callCount.ContainsKey(provider))
+                return _callCount[provider];
+
+            return -1;
+        }
+
+        /// <summary>
         /// Registers a new connection provider
         /// </summary>
         /// <param name="entry">The provider entry.</param>
@@ -221,6 +248,20 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="provider"></param>
         /// <param name="connectionString"></param>
+        /// <remarks>
+        /// The Maestro.Local provider (that wraps mg-desktop) and Maestro.LocalNative providers (that wraps the official MapGuide API)
+        /// are unique in that it has global connection state. What this means is that subsequent connections after the first one for 
+        /// these providers may re-use existing state for the first connection. The reason for this is that creating this connection 
+        /// internally calls MgdPlatform.Initialize(iniFile) and MapGuideApi.MgInitializeWebTier(iniFile) respectively, that initializes 
+        /// the necessary library parameters in the process space of your application. Creating another connection will call 
+        /// MgdPlatform.Initialize and MapGuideApi.MgInitializeWebTier again, but these methods are by-design only made to be called once 
+        /// as subsequent calls are returned immediately.
+        /// 
+        /// Basically, the connection parameters you pass in are for initializing the provider the first time round. Subsequent calls may not
+        /// (most likely will not) respect the values of your connection parameters. 
+        /// 
+        /// You can programmatically check this via the <see cref="P:OSGeo.MapGuide.MaestroAPI.ConnectionProviderEntry.HasGlobalState"/> property
+        /// </remarks>
         /// <returns></returns>
         public static IServerConnection CreateConnection(string provider, string connectionString)
         {
@@ -235,7 +276,9 @@ namespace OSGeo.MapGuide.MaestroAPI
             ConnectionFactoryMethod method = _ctors[name];
 
             NameValueCollection initParams = ParseConnectionString(connectionString);
-            return method(initParams);
+            IServerConnection result = method(initParams);
+            _callCount[name]++;
+            return result;
         }
 
         /// <summary>
@@ -255,7 +298,9 @@ namespace OSGeo.MapGuide.MaestroAPI
                 throw new NotSupportedException(string.Format(Strings.ErrorProviderNotUsableForYourPlatform, provider));
 
             var method = _ctors[name];
-            return method(connInitParams);
+            IServerConnection result = method(connInitParams);
+            _callCount[name]++;
+            return result;
         }
 
         /// <summary>

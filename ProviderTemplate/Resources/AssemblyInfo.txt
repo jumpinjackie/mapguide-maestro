@@ -1,4 +1,4 @@
-﻿#region Disclaimer / License
+#region Disclaimer / License
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
@@ -26,9 +26,9 @@ using OSGeo.MapGuide.MaestroAPI;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("OSGeo.MapGuide.MaestroAPI.Native")]
-[assembly: AssemblyDescription("MaestroAPI implementation wrapper for Official MapGuide API")]
-[assembly: AssemblyProduct("OSGeo.MapGuide.MaestroAPI.Native")]
+[assembly: AssemblyTitle("OSGeo.MapGuide.MaestroAPI.Native-{0}")]
+[assembly: AssemblyDescription("MaestroAPI implementation wrapper for Official MapGuide API v{0}")]
+[assembly: AssemblyProduct("OSGeo.MapGuide.MaestroAPI.Native-{0}")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -37,7 +37,4 @@ using OSGeo.MapGuide.MaestroAPI;
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("D80991DF-E4D3-43ee-AF2B-C96AD8462C70")]
-
-[assembly: MaestroApiProvider("Maestro.LocalNative", "Maestro wrapper for official MapGuide API", typeof(LocalNativeConnection), true, true)]
+[assembly: MaestroApiProvider("Maestro.LocalNative", "Maestro wrapper for official MapGuide API v{0}", typeof(LocalNativeConnection), true, true)]

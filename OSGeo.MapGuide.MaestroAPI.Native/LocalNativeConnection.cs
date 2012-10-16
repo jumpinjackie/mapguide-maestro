@@ -438,6 +438,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             OnResourceDeleted(resourceID);
 		}
 
+        private Version m_siteVersion;
+
 		public override Version SiteVersion
 		{
 			get
@@ -473,15 +475,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                         }
                     }
                 }
-                catch
+                catch (MgException ex)
                 {
+                    string msg = ex.Message;
+                    ex.Dispose();
+                    throw new MaestroException(ex.Message);
                 }
 
-                //Default
                 if (m_siteVersion == null)
-                {
-                    m_siteVersion = SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2);
-                }
+                    throw new MaestroException("Could not determine MapGuide API version");
+
                 return m_siteVersion;
 #endif
             }
