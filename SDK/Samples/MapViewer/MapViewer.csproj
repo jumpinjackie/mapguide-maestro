@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A1DF0D61-ADBC-4FC9-BE32-54C3C10538E2}</ProjectGuid>
+    <ProjectGuid>{19E838BC-A875-424A-A272-34380D862643}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Maestro.TestViewer</RootNamespace>
-    <AssemblyName>Maestro.TestViewer</AssemblyName>
+    <RootNamespace>MapViewer</RootNamespace>
+    <AssemblyName>MapViewer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -35,6 +35,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Maestro.Editors">
+      <HintPath>..\..\bin\Maestro.Editors.dll</HintPath>
+    </Reference>
+    <Reference Include="Maestro.Login">
+      <HintPath>..\..\bin\Maestro.Login.dll</HintPath>
+    </Reference>
+    <Reference Include="Maestro.MapViewer">
+      <HintPath>..\..\bin\Maestro.MapViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.MapGuide.ExtendedObjectModels">
+      <HintPath>..\..\bin\OSGeo.MapGuide.ExtendedObjectModels.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.MapGuide.MaestroAPI">
+      <HintPath>..\..\bin\OSGeo.MapGuide.MaestroAPI.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,22 +62,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
-      <Link>GlobalAssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\Properties\SignedAssemblyInfo2.cs">
-      <Link>SignedAssemblyInfo2.cs</Link>
-    </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -86,34 +95,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Maestro.Editors\Maestro.Editors.csproj">
-      <Project>{5AD2CDBA-952E-4148-98A1-31D2E0D540D5}</Project>
-      <Name>Maestro.Editors</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Maestro.Login\Maestro.Login.csproj">
-      <Project>{07588440-5F9F-4C30-AA06-9CF30BA6DDE6}</Project>
-      <Name>Maestro.Login</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Maestro.MapViewer\Maestro.MapViewer.csproj">
-      <Project>{4F9658DE-D16F-4B40-B830-BB1E0136DBD7}</Project>
-      <Name>Maestro.MapViewer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OSGeo.MapGuide.ExtendedObjectModels\OSGeo.MapGuide.ExtendedObjectModels.csproj">
-      <Project>{B3A2B816-9F41-4857-A111-09D2DF2550D6}</Project>
-      <Name>OSGeo.MapGuide.ExtendedObjectModels</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Http\OSGeo.MapGuide.MaestroAPI.Http.csproj">
-      <Project>{6EF1E775-444B-4E5F-87FB-D687C43A68D7}</Project>
-      <Name>OSGeo.MapGuide.MaestroAPI.Http</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
-      <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>
-      <Name>OSGeo.MapGuide.MaestroAPI</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\OSGeo.MapGuide.MaestroAPI\ConnectionProviders.xml">
+    <Content Include="..\..\bin\ConnectionProviders.xml">
       <Link>ConnectionProviders.xml</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\bin\OSGeo.MapGuide.MaestroAPI.Http.dll">
+      <Link>OSGeo.MapGuide.MaestroAPI.Http.dll</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

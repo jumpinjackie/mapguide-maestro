@@ -30,3 +30,8 @@ StandaloneWebLayoutEditor
 -------------------------
 
 This sample demonstrates using the Maestro.Editors library allowing you to re-use the resource editor UI components for use outside of MapGuide Maestro
+
+MapViewer
+---------
+
+This sample demonstrates using the Maestro.MapViewer library for an easily embeddable map viewer with most functionality found in the AJAX viewer, but as a pure WinForms library (this is not an embedded WebBrowser that connects to the AJAX viewer)

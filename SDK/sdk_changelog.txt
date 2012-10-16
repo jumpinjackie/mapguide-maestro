@@ -1,3 +1,11 @@
+5.0
+---
+
+- Samples updated for VS2010/.net Framework 4.0 to match updated MaestroAPI requirements.
+
+- New Desktop Sample
+    - MapViewer
+
 4.1
 ---
 
