@@ -79,11 +79,13 @@
     </Compile>
     <Compile Include="CapabilityTests.cs" />
     <Compile Include="ConfigurationTests.cs" />
+    <Compile Include="ConnectionTestBase.cs" />
     <Compile Include="ExpressionTests.cs" />
     <Compile Include="FeatureReaderTests.cs" />
     <Compile Include="GeoRestTests.cs" />
     <Compile Include="HttpConnectionTests.cs" />
     <Compile Include="HttpSiteTests.cs" />
+    <Compile Include="LocalConnectionTests.cs" />
     <Compile Include="LocalNativeFeatureTests.cs" />
     <Compile Include="LocalNativePerformanceTests.cs" />
     <Compile Include="MiscTests.cs" />

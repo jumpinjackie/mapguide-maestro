@@ -24,6 +24,9 @@ using System.Collections.Specialized;
 using ObjCommon = OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Feature;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
+using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.MaestroAPI.Services
 {
@@ -280,5 +283,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// </param>
         /// <returns></returns>
         string[] GetClassNames(string resourceId, string schemaName);
+
+        /// <summary>
+        /// Gets the long transactions for the specified feature source
+        /// </summary>
+        /// <param name="resourceId">The feature source id</param>
+        /// <param name="activeOnly">If true, will only return active long transactions</param>
+        /// <returns></returns>
+        ILongTransactionList GetLongTransactions(string resourceId, bool activeOnly);
+
+        /// <summary>
+        /// Gets the schema mappings for the given FDO provider. These mappings form the basis for a custom configuration document
+        /// for a feature source that supports configuration
+        /// </summary>
+        /// <param name="provider">The FDO provider</param>
+        /// <param name="partialConnString">The connection string</param>
+        /// <returns></returns>
+        ConfigurationDocument GetSchemaMapping(string provider, string partialConnString);
     }
 }

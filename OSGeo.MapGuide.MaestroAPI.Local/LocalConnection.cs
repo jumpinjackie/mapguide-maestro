@@ -35,6 +35,8 @@ using System.Diagnostics;
 using OSGeo.MapGuide.MaestroAPI.Local.Commands;
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 
 namespace OSGeo.MapGuide.MaestroAPI.Local
 {
@@ -1350,5 +1352,96 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
             return xml;
         }
+
+        public override ILongTransactionList GetLongTransactions(string resourceId, bool activeOnly)
+        {
+            var featSvc = GetFeatureService();
+            var resId = new MgResourceIdentifier(resourceId);
+            var rdr = featSvc.GetLongTransactions(resId, activeOnly);
+            return new LocalLongTransactionList(rdr);
+        }
+
+        public override ConfigurationDocument GetSchemaMapping(string provider, string partialConnString)
+        {
+            var featSvc = GetFeatureService();
+            GetByteReaderMethod fetch = () =>
+            {
+                return featSvc.GetSchemaMapping(provider, partialConnString);
+            };
+            using (var stream = new MgReadOnlyStream(fetch))
+            {
+                return ConfigurationDocument.Load(stream);
+            }
+        }
     }
+
+    class LocalLongTransaction : ILongTransaction
+    {
+        public LocalLongTransaction(MgLongTransactionReader rdr)
+        {
+            this.Name = rdr.Name;
+            this.Description = rdr.Description;
+            this.Owner = rdr.Owner;
+            this.CreationDate = rdr.CreationDate.ToString();
+            this.IsActive = rdr.IsActive();
+            this.IsFrozen = rdr.IsFrozen();
+        }
+
+        public string Name
+        {
+            get;
+            private set;
+        }
+
+        public string Description
+        {
+            get;
+            private set;
+        }
+
+        public string Owner
+        {
+            get;
+            private set;
+        }
+
+        public string CreationDate
+        {
+            get;
+            private set;
+        }
+
+        public bool IsActive
+        {
+            get;
+            private set;
+        }
+
+        public bool IsFrozen
+        {
+            get;
+            private set;
+        }
+    }
+
+    class LocalLongTransactionList : ILongTransactionList
+    {
+        private List<LocalLongTransaction> _transactions;
+
+        public LocalLongTransactionList(MgLongTransactionReader rdr)
+        {
+            _transactions = new List<LocalLongTransaction>();
+            while (rdr.ReadNext())
+            {
+                _transactions.Add(new LocalLongTransaction(rdr));
+            }
+            rdr.Close();
+        }
+
+        public IEnumerable<ILongTransaction> Transactions
+        {
+            get { return _transactions; }
+        }
+    }
+
 }

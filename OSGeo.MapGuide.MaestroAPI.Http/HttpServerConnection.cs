@@ -43,6 +43,8 @@ using OSGeo.MapGuide.MaestroAPI.Http.Commands;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using System.Drawing;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -1748,6 +1750,18 @@ namespace OSGeo.MapGuide.MaestroAPI
 			//TODO: Cache?
 			FdoProviderCapabilities o = (FdoProviderCapabilities)DeserializeObject(typeof(FdoProviderCapabilities), this.OpenRead(req));
 			return o;
+        }
+
+        public override ILongTransactionList GetLongTransactions(string resourceId, bool activeOnly)
+        {
+            string req = m_reqBuilder.GetLongTransactions(resourceId, activeOnly);
+            return DeserializeObject<FdoLongTransactionList>(this.OpenRead(req));
+        }
+
+        public override ConfigurationDocument GetSchemaMapping(string provider, string partialConnString)
+        {
+            string req = m_reqBuilder.GetSchemaMapping(provider, partialConnString);
+            return ConfigurationDocument.Load(this.OpenRead(req));
         }
 
         public override bool MoveFolderWithReferences(string oldpath, string newpath, LengthyOperationCallBack callback, LengthyOperationProgressCallBack progress)

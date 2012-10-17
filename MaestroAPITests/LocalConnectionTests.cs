@@ -36,11 +36,11 @@ using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 namespace MaestroAPITests
 {
     [TestFixture(Ignore = TestControl.IgnoreLocalNativeFeatureTests)]
-    public class LocalNativeFeatureTests : ConnectionTestBase
+    public class LocalConnectionTests : ConnectionTestBase
     {
         protected override IServerConnection CreateTestConnection()
         {
-            return ConnectionUtil.CreateTestLocalNativeConnection();
+            return ConnectionUtil.CreateTestLocalConnection();
         }
 
         [Test]
@@ -56,21 +56,15 @@ namespace MaestroAPITests
         }
 
         [Test]
-        public override void TestCreateFromExistingSession()
-        {
-            base.TestCreateFromExistingSession();
-        }
-
-        [Test]
         public void TestFeatureSourceCaching()
         {
-            base.TestFeatureSourceCaching("LocalNativeFeatureSourceCaching");
+            base.TestFeatureSourceCaching("LocalFeatureSourceCaching");
         }
 
         [Test]
         public void TestClassDefinitionCaching()
         {
-            base.TestClassDefinitionCaching("LocalNativeClassCaching");
+            base.TestClassDefinitionCaching("LocalClassCaching");
         }
 
         [Test]
@@ -111,8 +105,7 @@ namespace MaestroAPITests
 
         public override IServerConnection CreateFromExistingSession(IServerConnection orig)
         {
-            return ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative",
-                "SessionId", orig.SessionID);
+            throw new NotImplementedException();
         }
     }
 }

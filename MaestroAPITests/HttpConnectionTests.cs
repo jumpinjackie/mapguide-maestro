@@ -27,170 +27,65 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 using System.IO;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 
 namespace MaestroAPITests
 {
     [TestFixture(Ignore = TestControl.IgnoreHttpConnectionTests)]
-    public class HttpConnectionTests
+    public class HttpConnectionTests : ConnectionTestBase
     {
         //[Test]
-        public void TestEncryptedFeatureSourceCredentials()
+        public override void TestEncryptedFeatureSourceCredentials()
         {
-            //Sensitive data redacted, nevertheless you can test and verify this by filling in the
-            //blanks here and uncommenting the above [Test] attribute. If the test passes, credential encryption is working
-            string server       = "";
-            string database     = "";
-            string actualUser   = "";
-            string actualPass   = "";
-            string bogusUser    = "foo";
-            string bogusPass    = "bar";
-
-            var conn = ConnectionUtil.CreateTestHttpConnection();
-            string fsId = "Library://UnitTests/EncryptedCredentials.FeatureSource";
-            var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLServerSpatial");
-            fs.SetConnectionProperty("Username", "%MG_USERNAME%");
-            fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
-            fs.SetConnectionProperty("Service", server);
-            fs.SetConnectionProperty("DataStore", database);
-            fs.ResourceID = fsId;
-            conn.ResourceService.SaveResource(fs);
-
-            using (var ms = CredentialWriter.Write(actualUser, actualPass))
-            {
-                conn.ResourceService.SetResourceData(fsId, "MG_USER_CREDENTIALS", ResourceDataType.String, ms);
-            }
-
-            string result = conn.FeatureService.TestConnection(fsId);
-            Assert.AreEqual("TRUE", result.ToUpper());
-
-            //Test convenience method
-            fsId = "Library://UnitTests/EncryptedCredentials2.FeatureSource";
-            fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLServerSpatial");
-            fs.SetConnectionProperty("Username", "%MG_USERNAME%");
-            fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
-            fs.SetConnectionProperty("Service", server);
-            fs.SetConnectionProperty("DataStore", database);
-            fs.ResourceID = fsId;
-            conn.ResourceService.SaveResource(fs);
-            fs.SetEncryptedCredentials(actualUser, actualPass);
-
-            result = conn.FeatureService.TestConnection(fsId);
-            Assert.AreEqual("TRUE", result.ToUpper());
-            Assert.AreEqual(actualUser, fs.GetEncryptedUsername());
-
-            //Do not set encrypted credentials
-            fsId = "Library://UnitTests/EncryptedCredentials3.FeatureSource";
-            fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLServerSpatial");
-            fs.SetConnectionProperty("Username", "%MG_USERNAME%");
-            fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
-            fs.SetConnectionProperty("Service", server);
-            fs.SetConnectionProperty("DataStore", database);
-            fs.ResourceID = fsId;
-            conn.ResourceService.SaveResource(fs);
-
-            try
-            {
-                result = conn.FeatureService.TestConnection(fsId);
-                Assert.AreEqual("FALSE", result.ToUpper());
-            }
-            catch //Exception or false I can't remember, as long as the result is not "true"
-            {
-
-            }
-
-            //Encrypt credentials, but use bogus username/password
-            fsId = "Library://UnitTests/EncryptedCredentials4.FeatureSource";
-            fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLServerSpatial");
-            fs.SetConnectionProperty("Username", "%MG_USERNAME%");
-            fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
-            fs.SetConnectionProperty("Service", server);
-            fs.SetConnectionProperty("DataStore", database);
-            fs.ResourceID = fsId;
-            conn.ResourceService.SaveResource(fs);
-            fs.SetEncryptedCredentials(bogusUser, bogusPass);
-
-            try
-            {
-                result = conn.FeatureService.TestConnection(fsId);
-                Assert.AreEqual("FALSE", result.ToUpper());
-            }
-            catch
-            {
-                //Exception or false I can't remember, as long as the result is not "true"
-            }
-            Assert.AreEqual(bogusUser, fs.GetEncryptedUsername());
+            base.TestEncryptedFeatureSourceCredentials();
         }
 
         [Test]
         public void TestFeatureSourceCaching()
         {
-            var conn = ConnectionUtil.CreateTestHttpConnection();
-            string fsId = "Library://UnitTests/HttpCaching.FeatureSource";
-            if (!conn.ResourceService.ResourceExists(fsId))
-            {
-                var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF");
-                fs.SetConnectionProperty("File", "%MG_DATA_FILE_PATH%Sheboygan_Parcels.sdf");
-                fs.ResourceID = fsId;
-                conn.ResourceService.SaveResourceAs(fs, fsId);
-                using (var stream = File.OpenRead("TestData/FeatureService/SDF/Sheboygan_Parcels.sdf"))
-                {
-                    fs.SetResourceData("Sheboygan_Parcels.sdf", ResourceDataType.File, stream);
-                }
-                Assert.True(Convert.ToBoolean(conn.FeatureService.TestConnection(fsId)));
-            }
-            var pc = (PlatformConnectionBase)conn;
-            pc.ResetFeatureSourceSchemaCache();
-
-            Assert.AreEqual(0, pc.CachedClassDefinitions);
-            Assert.AreEqual(0, pc.CachedFeatureSources);
-
-            var fsd = conn.FeatureService.DescribeFeatureSource(fsId);
-
-            Assert.AreEqual(1, pc.CachedFeatureSources);
-            Assert.AreEqual(1, pc.CachedClassDefinitions);
-
-            var fsd2 = conn.FeatureService.DescribeFeatureSource(fsId);
-
-            Assert.AreEqual(1, pc.CachedFeatureSources);
-            Assert.AreEqual(1, pc.CachedClassDefinitions);
-            //Each cached instance returned is a clone
-            Assert.False(object.ReferenceEquals(fsd, fsd2));
+            base.TestFeatureSourceCaching("HttpCaching");
         }
 
         [Test]
         public void TestClassDefinitionCaching()
         {
-            var conn = ConnectionUtil.CreateTestHttpConnection();
-            string fsId = "Library://UnitTests/HttpCaching.FeatureSource";
-            if (!conn.ResourceService.ResourceExists(fsId))
-            {
-                var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF");
-                fs.SetConnectionProperty("File", "%MG_DATA_FILE_PATH%Sheboygan_Parcels.sdf");
-                conn.ResourceService.SaveResourceAs(fs, fsId);
-                fs.ResourceID = fsId;
-                using (var stream = File.OpenRead("TestData/FeatureService/SDF/Sheboygan_Parcels.sdf"))
-                {
-                    fs.SetResourceData("Sheboygan_Parcels.sdf", ResourceDataType.File, stream);
-                }
-                Assert.True(Convert.ToBoolean(conn.FeatureService.TestConnection(fsId)));
-            }
-            var pc = (PlatformConnectionBase)conn;
-            pc.ResetFeatureSourceSchemaCache();
+            base.TestClassDefinitionCaching("HttpCaching");
+        }
 
-            Assert.AreEqual(0, pc.CachedClassDefinitions);
-            Assert.AreEqual(0, pc.CachedFeatureSources);
+        [Test]
+        public override void TestTouch()
+        {
+            base.TestTouch();
+        }
 
-            var cls = conn.FeatureService.GetClassDefinition(fsId, "SHP_Schema:Parcels");
+        [Test]
+        public override void TestAnyStreamInput()
+        {
+            base.TestAnyStreamInput();
+        }
+        
+        [Test]
+        public override void TestCreateFromExistingSession()
+        {
+            base.TestCreateFromExistingSession();
+        }
 
-            Assert.AreEqual(0, pc.CachedFeatureSources);
-            Assert.AreEqual(1, pc.CachedClassDefinitions);
+        [Test]
+        public override void TestSchemaMapping()
+        {
+            base.TestSchemaMapping();
+        }
 
-            var cls2 = conn.FeatureService.GetClassDefinition(fsId, "SHP_Schema:Parcels");
+        protected override IServerConnection CreateTestConnection()
+        {
+            return ConnectionUtil.CreateTestHttpConnection();
+        }
 
-            Assert.AreEqual(0, pc.CachedFeatureSources);
-            Assert.AreEqual(1, pc.CachedClassDefinitions);
-            //Each cached instance returned is a clone
-            Assert.False(object.ReferenceEquals(cls, cls2));
+        public override IServerConnection CreateFromExistingSession(IServerConnection orig)
+        {
+            return ConnectionProviderRegistry.CreateConnection("Maestro.Http",
+                HttpServerConnection.PARAM_URL, orig.GetCustomProperty(HttpServerConnection.PROP_BASE_URL).ToString(),
+                HttpServerConnection.PARAM_SESSION, orig.SessionID);
         }
 
         [Test]
@@ -198,7 +93,7 @@ namespace MaestroAPITests
         {
             //Purpose: Unit test to guard against regression as a result of updating/replacing NTS
 
-            var conn = ConnectionUtil.CreateTestHttpConnection();
+            var conn = CreateTestConnection();
             var srcWkt = "GEOGCS[\"WGS84 Lat/Long's, Degrees, -180 ==> +180\",DATUM[\"D_WGS_1984\",SPHEROID[\"World_Geodetic_System_of_1984\",6378137,298.257222932867]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.017453292519943295]]";
             var dstCs = conn.CoordinateSystemCatalog.FindCoordSys("WGS84.PseudoMercator");
             var dstWkt = dstCs.WKT;
@@ -217,24 +112,6 @@ namespace MaestroAPITests
             trans.Transform(-87.6955215108997, 43.7975200004803, out tx2, out ty2);
             Assert.AreEqual(-9762220.79944393, tx2, 0.0000001);
             Assert.AreEqual(5434161.22418638, ty2, 0.0000001);
-        }
-
-        [Test]
-        public void TestConnectionString()
-        {
-            System.Data.Common.DbConnectionStringBuilder builder = new System.Data.Common.DbConnectionStringBuilder();
-            builder["Foo"] = "sdfjkg";
-            builder["Bar"] = "skgjuksdf";
-            builder["Snafu"] = "asjdgjh;sdgj"; //Note the ; in the value
-            builder["Whatever"] = "asjd=gjh;sdgj"; //Note the ; and = in the value
-
-            var values = ConnectionProviderRegistry.ParseConnectionString(builder.ToString());
-            Assert.AreEqual(values.Count, 4);
-
-            Assert.AreEqual(builder["Foo"].ToString(), values["Foo"]);
-            Assert.AreEqual(builder["Bar"].ToString(), values["Bar"]);
-            Assert.AreEqual(builder["Snafu"].ToString(), values["Snafu"]);
-            Assert.AreEqual(builder["Whatever"].ToString(), values["Whatever"]);
         }
 
         [Test]
@@ -271,7 +148,7 @@ namespace MaestroAPITests
                 isvc.SetCustomProperty(HttpServerConnection.PROP_BASE_URL, "http://mylocalhost/mapguide");
                 Assert.Fail("Should've thrown exception");
             }
-            catch { } 
+            catch { }
         }
 
         [Test]
@@ -309,67 +186,6 @@ namespace MaestroAPITests
                 {
                     Assert.Fail("Supported service type mismatch");
                 }
-            }
-        }
-
-        [Test]
-        public void TestTouch()
-        {
-            var conn = ConnectionUtil.CreateTestHttpConnection();
-            var resSvc = conn.ResourceService;
-            if (!resSvc.ResourceExists("Library://UnitTests/Data/HydrographicPolygons.FeatureSource"))
-                resSvc.SetResourceXmlData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.fs"));
-
-            resSvc.Touch("Library://UnitTests/Data/HydrographicPolygons.FeatureSource");
-        }
-
-        [Test]
-        public void TestAnyStreamInput()
-        {
-            string source = "Library://UnitTests/Data/HydrographicPolygons.FeatureSource";
-            string target = "Library://UnitTests/Data/TestAnyStreamInput.FeatureSource";
-
-            var conn = ConnectionUtil.CreateTestHttpConnection();
-            var resSvc = conn.ResourceService;
-            if (!resSvc.ResourceExists(source))
-                resSvc.SetResourceXmlData(source, File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.fs"));
-
-            resSvc.SetResourceXmlData(target, resSvc.GetResourceXmlData(source));
-
-            string dataName = "UT_HydrographicPolygons.sdf";
-            var resDataList = resSvc.EnumerateResourceData(source);
-            if (resDataList.ResourceData.Count == 1)
-                dataName = resDataList.ResourceData[0].Name;
-            else
-                resSvc.SetResourceData(source, dataName, ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.sdf"));
-
-            resSvc.SetResourceData(target,
-                                   dataName,
-                                   ResourceDataType.File,
-                                   resSvc.GetResourceData(source, dataName));
-        }
-        
-        [Test]
-        public void TestCreateFromExistingSession()
-        {
-            var conn = ConnectionUtil.CreateTestHttpConnection();
-            var conn2 = ConnectionProviderRegistry.CreateConnection("Maestro.Http",
-                HttpServerConnection.PARAM_SESSION, conn.SessionID,
-                HttpServerConnection.PARAM_URL, conn.GetCustomProperty(HttpServerConnection.PROP_BASE_URL).ToString(),
-                HttpServerConnection.PARAM_UNTESTED, "true");
-
-            //This connection cannot restart sessions, and cannot be set to restart sessions
-            Assert.False(conn2.AutoRestartSession);
-            Assert.Throws<InvalidOperationException>(() => { conn2.AutoRestartSession = true; });
-
-            //Exercise an API to check the minimum parameters are met
-            try
-            {
-                var result = conn2.ResourceService.GetRepositoryResources();
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail(ex.ToString());
             }
         }
     }

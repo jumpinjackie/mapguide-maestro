@@ -36,6 +36,24 @@ namespace MaestroAPITests
     public class ObjectTests
     {
         [Test]
+        public void TestConnectionString()
+        {
+            System.Data.Common.DbConnectionStringBuilder builder = new System.Data.Common.DbConnectionStringBuilder();
+            builder["Foo"] = "sdfjkg";
+            builder["Bar"] = "skgjuksdf";
+            builder["Snafu"] = "asjdgjh;sdgj"; //Note the ; in the value
+            builder["Whatever"] = "asjd=gjh;sdgj"; //Note the ; and = in the value
+
+            var values = ConnectionProviderRegistry.ParseConnectionString(builder.ToString());
+            Assert.AreEqual(values.Count, 4);
+
+            Assert.AreEqual(builder["Foo"].ToString(), values["Foo"]);
+            Assert.AreEqual(builder["Bar"].ToString(), values["Bar"]);
+            Assert.AreEqual(builder["Snafu"].ToString(), values["Snafu"]);
+            Assert.AreEqual(builder["Whatever"].ToString(), values["Whatever"]);
+        }
+
+        [Test]
         public void TestArgParser()
         {
             string[] args = new string[] { "-foo", "-bar:snafu", "-whatever:" };

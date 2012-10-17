@@ -236,6 +236,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         {
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(xml);
+            return LoadInternal(doc);
+        }
+
+        private static ConfigurationDocument LoadInternal(XmlDocument doc)
+        {
             var mgr = new XmlNamespaceManager(doc.NameTable);
             mgr.AddNamespace("xs", XmlNamespaces.XS); //NOXLATE
             mgr.AddNamespace("xsi", XmlNamespaces.XSI); //NOXLATE
@@ -278,6 +283,18 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Creates a configuration document from the specified stream.
+        /// </summary>
+        /// <param name="stream">The stream.</param>
+        /// <returns>The configuration document</returns>
+        public static ConfigurationDocument Load(System.IO.Stream stream)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(stream);
+            return LoadInternal(doc);
         }
     }
 }

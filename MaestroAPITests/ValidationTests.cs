@@ -406,6 +406,17 @@ namespace MaestroAPITests
             {
                 throw new NotImplementedException();
             }
+
+
+            public OSGeo.MapGuide.ObjectModels.Common.ILongTransactionList GetLongTransactions(string resourceId, bool activeOnly)
+            {
+                throw new NotImplementedException();
+            }
+
+            public OSGeo.MapGuide.MaestroAPI.SchemaOverrides.ConfigurationDocument GetSchemaMapping(string provider, string partialConnString)
+            {
+                throw new NotImplementedException();
+            }
         }
         #endregion
 

@@ -83,7 +83,7 @@
       <Name>MaestroAPITests</Name>
     </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Local\OSGeo.MapGuide.MaestroAPI.Local.csproj">
-      <Project>{3DDF6501-0148-474C-8674-7C7DA49C7F02}</Project>
+      <Project>{3ddf6501-0148-474c-8674-7c7da49c7f02}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI.Local</Name>
     </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">

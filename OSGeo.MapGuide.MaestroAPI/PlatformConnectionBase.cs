@@ -40,6 +40,8 @@ using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using GeoAPI.Geometries;
+using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -1785,6 +1787,23 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="schemaName">Name of the schema.</param>
         /// <returns></returns>
         public abstract string[] GetClassNames(string resourceId, string schemaName);
+
+        /// <summary>
+        /// Gets the long transactions for the specified feature source
+        /// </summary>
+        /// <param name="resourceId">The feature source id</param>
+        /// <param name="activeOnly">If true, will only return active long transactions</param>
+        /// <returns></returns>
+        public abstract ILongTransactionList GetLongTransactions(string resourceId, bool activeOnly);
+
+        /// <summary>
+        /// Gets the schema mappings for the given FDO provider. These mappings form the basis for a custom configuration document
+        /// for a feature source that supports configuration
+        /// </summary>
+        /// <param name="provider">The FDO provider</param>
+        /// <param name="partialConnString">The connection string</param>
+        /// <returns></returns>
+        public abstract ConfigurationDocument GetSchemaMapping(string provider, string partialConnString);
 
         #endregion
 

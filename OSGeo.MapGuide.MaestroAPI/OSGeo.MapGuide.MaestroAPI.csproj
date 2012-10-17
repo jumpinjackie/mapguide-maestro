@@ -250,6 +250,7 @@
     <Compile Include="NsDoc.cs" />
     <Compile Include="ObjectModels\CommonTypes.cs" />
     <Compile Include="ObjectModels\IFdoSpatialContext.cs" />
+    <Compile Include="ObjectModels\LongTransaction.cs" />
     <Compile Include="ObjectModels\NsDoc.cs" />
     <Compile Include="ObjectModels\SymbolDefFactory.cs" />
     <Compile Include="ObjectModels\WatermarkCollectionUtil.cs" />

@@ -1712,5 +1712,29 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             return m_hosturi + "?" + EncodeParameters(param);
         }
+
+        internal string GetLongTransactions(string resourceId, bool activeOnly)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "GETLONGTRANSACTIONS");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("RESOURCEID", resourceId);
+            param.Add("ACTIVEONLY", activeOnly ? "1" : "0");
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
+        internal string GetSchemaMapping(string provider, string partialConnString)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "GETSCHEMAMAPPING");
+            param.Add("VERSION", "1.0.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("PROVIDER", provider);
+            param.Add("CONNECTIONSTRING", partialConnString);
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
     }
 }
