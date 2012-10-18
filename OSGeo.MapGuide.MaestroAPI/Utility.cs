@@ -615,6 +615,14 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// FDO encodes a string
         /// </summary>
         /// <param name="name"></param>
+        /// <remarks>
+        /// <para>
+        /// FDO names must always be encoded when writing back to attributes in XML configuration documents as it may contain reserved characters that would render the final XML attribute content invalid.
+        /// </para>
+        /// <para>
+        /// Consequently, such names must always be decoded when reading from XML configuration documents otherwise these escape characters may still be present after reading
+        /// </para>
+        /// </remarks>
         /// <returns></returns>
         public static string EncodeFDOName(string name)
         {
@@ -734,6 +742,14 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Converts FDO encoded characters into their original character.
         /// </summary>
         /// <param name="name">The FDO encoded string</param>
+        /// <remarks>
+        /// <para>
+        /// FDO names must always be encoded when writing back to attributes in XML configuration documents as it may contain reserved characters that would render the final XML attribute content invalid.
+        /// </para>
+        /// <para>
+        /// Consequently, such names must always be decoded when reading from XML configuration documents otherwise these escape characters may still be present after reading
+        /// </para>
+        /// </remarks>
         /// <returns>The unencoded version of the string</returns>
         public static string DecodeFDOName(string name)
         {

@@ -61,13 +61,20 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <summary>
         /// Initializes a new instance of the <see cref="RasterWmsItem"/> class.
         /// </summary>
+        /// <param name="schemaName">Name of the schema</param>
         /// <param name="className">Name of the class.</param>
         /// <param name="rasterPropertyName">Name of the raster property.</param>
-        public RasterWmsItem(string className, string rasterPropertyName)
+        public RasterWmsItem(string schemaName, string className, string rasterPropertyName)
         {
+            this.SchemaName = schemaName;
             this.FeatureClass = className;
             this.RasterPropertyName = rasterPropertyName;
         }
+
+        /// <summary>
+        /// Gets the name of the FDO logical schema this particular override applies to
+        /// </summary>
+        public string SchemaName { get; internal set; }
 
         /// <summary>
         /// Gets or sets the feature class.
@@ -242,7 +249,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                 throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "RasterDefinition"));
 
             var fc = node.ParentNode.Attributes["name"].Value; //NOXLATE
-            this.FeatureClass = fc.Substring(0, fc.Length - "Type".Length); //NOXLATE
+            this.FeatureClass = Utility.DecodeFDOName(fc.Substring(0, fc.Length - "Type".Length)); //NOXLATE
             this.RasterPropertyName = node.Attributes["name"].Value; //NOXLATE
 
             var format = node["Format"]; //NOXLATE

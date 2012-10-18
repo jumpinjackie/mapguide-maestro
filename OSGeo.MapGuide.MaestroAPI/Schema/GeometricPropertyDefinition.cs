@@ -272,7 +272,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             var en = Utility.EncodeFDOName(this.Name);
 
             var geom = doc.CreateElement("xs", "element", XmlNamespaces.XS); //NOXLATE
-            //TODO: This may have been decoded. Should it be re-encoded?
+            
             geom.SetAttribute("name", en); //NOXLATE
             geom.SetAttribute("type", "gml:AbstractGeometryType"); //NOXLATE
             geom.SetAttribute("hasMeasure", XmlNamespaces.FDO, this.HasMeasure.ToString().ToLower()); //NOXLATE
@@ -281,6 +281,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             geom.SetAttribute("geometricTypes", XmlNamespaces.FDO, GeometricTypesToString()); //NOXLATE
             geom.SetAttribute("geometryTypes", XmlNamespaces.FDO, GeometryTypesToString()); //NOXLATE
             geom.SetAttribute("geometryReadOnly", XmlNamespaces.FDO, this.IsReadOnly.ToString().ToLower()); //NOXLATE
+
+            //Write description node
+            var anno = doc.CreateElement("xs", "annotation", XmlNamespaces.XS); //NOXLATE
+            var docN = doc.CreateElement("xs", "documentation", XmlNamespaces.XS); //NOXLATE
+            docN.InnerText = this.Description;
+            geom.AppendChild(anno);
+            anno.AppendChild(docN);
 
             currentNode.AppendChild(geom);
         }

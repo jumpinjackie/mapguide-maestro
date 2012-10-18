@@ -367,6 +367,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to In some cases, the actual WMS layer name would be generated in the FDO class description. Swap FDO logical class names with their descriptions?.
+        /// </summary>
+        internal static string ConfirmWmsLogicalClassSwap {
+            get {
+                return ResourceManager.GetString("ConfirmWmsLogicalClassSwap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The content file does not exist.
         /// </summary>
         internal static string ContentFileMissing {

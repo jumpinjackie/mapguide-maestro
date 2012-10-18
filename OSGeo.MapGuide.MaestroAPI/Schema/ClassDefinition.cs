@@ -307,6 +307,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 ctype.SetAttribute("hasGeometry", XmlNamespaces.FDO, "false"); //NOXLATE
             }
 
+            //Write description node
+            var anno = doc.CreateElement("xs", "annotation", XmlNamespaces.XS); //NOXLATE
+            var docN = doc.CreateElement("xs", "documentation", XmlNamespaces.XS); //NOXLATE
+            docN.InnerText = this.Description;
+            ctype.AppendChild(anno);
+            anno.AppendChild(docN);
+
             var cnt = doc.CreateElement("xs", "complexContent", XmlNamespaces.XS); //NOXLATE
             ctype.AppendChild(cnt);
 
@@ -342,6 +349,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             var abn = node.Attributes["abstract"]; //NOXLATE
             if (abn != null)
                 this.IsAbstract = Convert.ToBoolean(abn.Value);
+
+            //Description
+            var docNode = node.SelectSingleNode("xs:annotation/xs:documentation", mgr); //NOXLATE
+            if (docNode != null)
+                this.Description = docNode.InnerText;
 
             //Process properties
             XmlNodeList propNodes = node.SelectNodes("xs:complexContent/xs:extension/xs:sequence/xs:element", mgr); //NOXLATE

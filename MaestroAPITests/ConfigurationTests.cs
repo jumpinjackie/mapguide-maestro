@@ -165,15 +165,15 @@ namespace MaestroAPITests
         {
             var conf = new WmsConfigurationDocument();
 
-            var schema = new FeatureSchema("WMS", "");
-            var cls = new ClassDefinition("NASAWMSGlobalPan", "");
-            cls.AddProperty(new DataPropertyDefinition("Id", "")
+            var schema = new FeatureSchema("WMS", "WMS Test Schema");
+            var cls = new ClassDefinition("NASAWMSGlobalPan", "WMS Test Class");
+            cls.AddProperty(new DataPropertyDefinition("Id", "ID Property")
             {
                 DataType = DataPropertyType.String,
                 Length = 256,
                 IsNullable = false
             }, true);
-            cls.AddProperty(new RasterPropertyDefinition("Image", "")
+            cls.AddProperty(new RasterPropertyDefinition("Image", "Raster Property")
             {
                 DefaultImageXSize = 800,
                 DefaultImageYSize = 800
@@ -182,7 +182,7 @@ namespace MaestroAPITests
             schema.AddClass(cls);
             conf.AddSchema(schema);
 
-            var item = new RasterWmsItem(cls.Name, "Image");
+            var item = new RasterWmsItem(schema.Name, cls.Name, "Image");
             item.ImageFormat = RasterWmsItem.WmsImageFormat.PNG;
             item.IsTransparent = true;
             item.BackgroundColor = ColorTranslator.FromHtml("#FFFFFF");
@@ -208,6 +208,22 @@ namespace MaestroAPITests
             Assert.AreEqual(1, conf.RasterOverrides.Length);
 
             var ritem = conf.RasterOverrides[0];
+            cls = conf.GetClass("WMS", "NASAWMSGlobalPan");
+
+            Assert.NotNull(cls);
+            Assert.NotNull(cls.Parent);
+            Assert.AreEqual("WMS", cls.Parent.Name);
+            Assert.AreEqual("WMS Test Schema", cls.Parent.Description);
+            Assert.AreEqual("NASAWMSGlobalPan", cls.Name);
+            Assert.AreEqual("WMS Test Class", cls.Description);
+            var prop = cls.FindProperty("Id");
+            Assert.NotNull(prop);
+            Assert.AreEqual("Id", prop.Name);
+            Assert.AreEqual("ID Property", prop.Description);
+            prop = cls.FindProperty("Image");
+            Assert.NotNull(prop);
+            Assert.AreEqual("Image", prop.Name);
+            Assert.AreEqual("Raster Property", prop.Description);
 
             Assert.AreEqual(item.ImageFormat, ritem.ImageFormat);
             Assert.AreEqual(item.IsTransparent, ritem.IsTransparent);

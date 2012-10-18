@@ -134,6 +134,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             schema.SetAttribute("elementFormDefault", "qualified"); //NOXLATE
             schema.SetAttribute("attributeFormDefault", "unqualified"); //NOXLATE
 
+            //Write description node
+            var anno = doc.CreateElement("xs", "annotation", XmlNamespaces.XS); //NOXLATE
+            var docN = doc.CreateElement("xs", "documentation", XmlNamespaces.XS); //NOXLATE
+            docN.InnerText = this.Description;
+            schema.AppendChild(anno);
+            anno.AppendChild(docN);
+
             foreach (var cls in this.Classes)
             {
                 cls.WriteXml(doc, schema);
@@ -151,6 +158,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         {
             if (!node.Name.Equals("xs:schema")) //NOXLATE
                 throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "xs:schema"));
+
+            //Description
+            var docNode = node.SelectSingleNode("xs:annotation/xs:documentation", mgr); //NOXLATE
+            if (docNode != null)
+                this.Description = docNode.InnerText;
 
             var tns = node.Attributes["targetNamespace"];
             if (tns == null)

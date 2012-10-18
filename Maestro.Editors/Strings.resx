@@ -1452,4 +1452,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="InvalidLayerNameFormat" xml:space="preserve">
     <value>Invalid Layer Name Format. Name must have both {0} and {1} format markers</value>
   </data>
+  <data name="ConfirmWmsLogicalClassSwap" xml:space="preserve">
+    <value>In some cases, the actual WMS layer name would be generated in the FDO class description. Swap FDO logical class names with their descriptions?</value>
+  </data>
 </root>

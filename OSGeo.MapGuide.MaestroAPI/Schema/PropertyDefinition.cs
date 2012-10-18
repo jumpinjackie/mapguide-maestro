@@ -214,6 +214,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             string name = Utility.DecodeFDOName(nn.Value);
             string desc = string.Empty;
 
+            //Description
+            var docNode = node.SelectSingleNode("xs:annotation/xs:documentation", mgr); //NOXLATE
+            if (docNode != null)
+                desc = docNode.InnerText;
+
             if (node.Attributes["type"] != null && node.Attributes["type"].Value == "gml:AbstractGeometryType") //NOXLATE
             {
                 prop = new GeometricPropertyDefinition(name, desc);

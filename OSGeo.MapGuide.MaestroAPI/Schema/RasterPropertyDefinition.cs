@@ -83,12 +83,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             var en = Utility.EncodeFDOName(this.Name);
 
             var geom = doc.CreateElement("xs", "element", XmlNamespaces.XS); //NOXLATE
-            //TODO: This may have been decoded. Should it be re-encoded?
+            
             geom.SetAttribute("name", en); //NOXLATE
             geom.SetAttribute("type", "fdo:RasterPropertyType"); //NOXLATE
             geom.SetAttribute("defaultImageXSize", XmlNamespaces.FDO, this.DefaultImageXSize.ToString()); //NOXLATE
             geom.SetAttribute("defaultImageYSize", XmlNamespaces.FDO, this.DefaultImageYSize.ToString()); //NOXLATE
             geom.SetAttribute("srsName", XmlNamespaces.FDO, this.SpatialContextAssociation); //NOXLATE
+
+            //Write description node
+            var anno = doc.CreateElement("xs", "annotation", XmlNamespaces.XS); //NOXLATE
+            var docN = doc.CreateElement("xs", "documentation", XmlNamespaces.XS); //NOXLATE
+            docN.InnerText = this.Description;
+            geom.AppendChild(anno);
+            anno.AppendChild(docN);
 
             currentNode.AppendChild(geom);
         }

@@ -44,10 +44,18 @@
             this.grdSpatialContexts = new System.Windows.Forms.DataGridView();
             this.COL_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.COL_CS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grpLogicalClass = new System.Windows.Forms.GroupBox();
+            this.lnkSwap = new System.Windows.Forms.LinkLabel();
+            this.txtClassDescription = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtClassName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnSwapAll = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdSpatialContexts)).BeginInit();
+            this.grpLogicalClass.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -162,12 +170,61 @@
             this.COL_CS.Name = "COL_CS";
             this.COL_CS.ReadOnly = true;
             // 
+            // grpLogicalClass
+            // 
+            resources.ApplyResources(this.grpLogicalClass, "grpLogicalClass");
+            this.grpLogicalClass.Controls.Add(this.lnkSwap);
+            this.grpLogicalClass.Controls.Add(this.txtClassDescription);
+            this.grpLogicalClass.Controls.Add(this.label3);
+            this.grpLogicalClass.Controls.Add(this.txtClassName);
+            this.grpLogicalClass.Controls.Add(this.label2);
+            this.grpLogicalClass.Name = "grpLogicalClass";
+            this.grpLogicalClass.TabStop = false;
+            // 
+            // lnkSwap
+            // 
+            resources.ApplyResources(this.lnkSwap, "lnkSwap");
+            this.lnkSwap.Name = "lnkSwap";
+            this.lnkSwap.TabStop = true;
+            this.lnkSwap.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkSwap_LinkClicked);
+            // 
+            // txtClassDescription
+            // 
+            resources.ApplyResources(this.txtClassDescription, "txtClassDescription");
+            this.txtClassDescription.Name = "txtClassDescription";
+            this.txtClassDescription.TextChanged += new System.EventHandler(this.txtClassDescription_TextChanged);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // txtClassName
+            // 
+            resources.ApplyResources(this.txtClassName, "txtClassName");
+            this.txtClassName.Name = "txtClassName";
+            this.txtClassName.TextChanged += new System.EventHandler(this.txtClassName_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // btnSwapAll
+            // 
+            resources.ApplyResources(this.btnSwapAll, "btnSwapAll");
+            this.btnSwapAll.Name = "btnSwapAll";
+            this.btnSwapAll.UseVisualStyleBackColor = true;
+            this.btnSwapAll.Click += new System.EventHandler(this.btnSwapAll_Click);
+            // 
             // WmsAdvancedConfigurationDialog
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.btnSwapAll);
+            this.Controls.Add(this.grpLogicalClass);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.groupBox2);
@@ -183,6 +240,8 @@
             this.toolStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdSpatialContexts)).EndInit();
+            this.grpLogicalClass.ResumeLayout(false);
+            this.grpLogicalClass.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,5 +264,12 @@
         private System.Windows.Forms.DataGridView grdSpatialContexts;
         private System.Windows.Forms.DataGridViewTextBoxColumn COL_NAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn COL_CS;
+        private System.Windows.Forms.GroupBox grpLogicalClass;
+        private System.Windows.Forms.TextBox txtClassDescription;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtClassName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.LinkLabel lnkSwap;
+        private System.Windows.Forms.Button btnSwapAll;
     }
 }
