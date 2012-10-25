@@ -38,6 +38,9 @@ using Maestro.Base.Services;
 
 namespace Maestro.Base.Editor
 {
+    /// <summary>
+    /// The base class of all editor views
+    /// </summary>
     public partial class EditorContentBase : ViewContentBase, IEditorViewContent
     {
         public EditorContentBase()
@@ -45,12 +48,18 @@ namespace Maestro.Base.Editor
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Gets whether the edited resource can be upgraded
+        /// </summary>
         public bool CanUpgrade
         {
             get { return upgradePanel.Visible; }
             private set { upgradePanel.Visible = value; }
         }
 
+        /// <summary>
+        /// Gets whether the editor requires to be reloaded. Usually triggered if the session of the underlying connection has expired
+        /// </summary>
         [DefaultValue(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool RequiresReload
@@ -61,6 +70,9 @@ namespace Maestro.Base.Editor
 
         private IEditorService _svc;
 
+        /// <summary>
+        /// Gets or sets the editor service instance
+        /// </summary>
         public IEditorService EditorService
         {
             get
@@ -121,6 +133,9 @@ namespace Maestro.Base.Editor
             }
         }
 
+        /// <summary>
+        /// Gets the edited resource
+        /// </summary>
         public IResource Resource { get { return this.EditorService.GetEditedResource(); } }
 
         /// <summary>
@@ -178,6 +193,9 @@ namespace Maestro.Base.Editor
             }
         }
 
+        /// <summary>
+        /// Gets whether this view can only be housed within the document region
+        /// </summary>
         public override bool IsExclusiveToDocumentRegion
         {
             get
@@ -244,12 +262,15 @@ namespace Maestro.Base.Editor
         /// and XML edit of this resource). Thus subclasses must take this scenario into
         /// account when implementing
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="service"></param>
         protected virtual void Bind(IEditorService service) 
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Gets whether this resource can be previewed
+        /// </summary>
         public virtual bool CanBePreviewed
         {
             get
@@ -268,10 +289,16 @@ namespace Maestro.Base.Editor
             }
         }
 
+        /// <summary>
+        /// Raised when the resource's dirty state has changed
+        /// </summary>
         public event EventHandler DirtyStateChanged;
 
         private bool _dirty;
 
+        /// <summary>
+        /// Gets whether this resource is dirty (ie. has unsaved changes)
+        /// </summary>
         public bool IsDirty
         {
             get { return _dirty; }
@@ -284,26 +311,41 @@ namespace Maestro.Base.Editor
             }
         }
 
+        /// <summary>
+        /// Gets whether this resource is a new un-saved resource
+        /// </summary>
         public bool IsNew
         {
             get { return _svc != null ? _svc.IsNew : true; } //Mono
         }
 
+        /// <summary>
+        /// Gets whether this resource can be previewed
+        /// </summary>
         public virtual bool CanProfile
         {
             get { return false; }
         }
 
+        /// <summary>
+        /// Gets whether this resource can be validated
+        /// </summary>
         public virtual bool CanBeValidated
         {
             get { return true; }
         }
 
+        /// <summary>
+        /// Gets whether this resource can be edited in its raw XML form
+        /// </summary>
         public virtual bool CanEditAsXml
         {
             get { return true; }
         }
 
+        /// <summary>
+        /// Previews this resource
+        /// </summary>
         public virtual void Preview()
         {
             var conn = this.Resource.CurrentConnection;
@@ -313,17 +355,27 @@ namespace Maestro.Base.Editor
                 previewer.Preview(this.Resource, this.EditorService);
         }
 
+        /// <summary>
+        /// Synchronizes the in-memory resource object back to its session-based resource id
+        /// </summary>
         public virtual void SyncSessionCopy()
         {
             this.EditorService.SyncSessionCopy();
         }
 
+        /// <summary>
+        /// Gets whether to discard unsaved changes when closed
+        /// </summary>
         public bool DiscardChangesOnClose
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Closes this view
+        /// </summary>
+        /// <param name="discardChanges"></param>
         public virtual void Close(bool discardChanges)
         {
             this.DiscardChangesOnClose = discardChanges;

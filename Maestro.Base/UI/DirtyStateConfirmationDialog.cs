@@ -35,7 +35,7 @@ using Maestro.Base.Util;
 
 namespace Maestro.Base.UI
 {
-    public partial class DirtyStateConfirmationDialog : Form
+    internal partial class DirtyStateConfirmationDialog : Form
     {
         private DirtyStateConfirmationDialog()
         {

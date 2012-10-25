@@ -26,7 +26,7 @@ using Maestro.Base.Services;
 
 namespace Maestro.Base.Commands.Test
 {
-    public class OpenUnmanagedResourceCommand : AbstractMenuCommand
+    internal class OpenUnmanagedResourceCommand : AbstractMenuCommand
     {
         public override void Run()
         {
@@ -47,7 +47,7 @@ namespace Maestro.Base.Commands.Test
         }
     }
 
-    public class OpenUnmanagedResourceMultipleCommand : AbstractMenuCommand
+    internal class OpenUnmanagedResourceMultipleCommand : AbstractMenuCommand
     {
         public override void Run()
         {

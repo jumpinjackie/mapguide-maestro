@@ -32,7 +32,7 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 
 namespace Maestro.Base.UI.Packaging
 {
-    public partial class CreatePackageDialog : Form
+    internal partial class CreatePackageDialog : Form
     {
         public CreatePackageDialog()
         {

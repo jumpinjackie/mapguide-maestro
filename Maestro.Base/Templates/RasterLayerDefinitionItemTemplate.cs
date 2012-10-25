@@ -29,7 +29,7 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
 namespace Maestro.Base.Templates
 {
-    public class RasterLayerDefinitionItemTemplate : ItemTemplate
+    internal class RasterLayerDefinitionItemTemplate : ItemTemplate
     {
         public RasterLayerDefinitionItemTemplate()
         {

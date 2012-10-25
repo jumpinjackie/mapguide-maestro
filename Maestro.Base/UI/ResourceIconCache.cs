@@ -27,17 +27,39 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 
 namespace Maestro.Base.UI
 {
+    /// <summary>
+    /// Defines a cache of icons for resource types
+    /// </summary>
     public interface IResourceIconCache
     {
+        /// <summary>
+        /// Gets the small resource icon list
+        /// </summary>
         ImageList SmallImageList { get; }
 
+        /// <summary>
+        /// Gets the large resource icon list
+        /// </summary>
         ImageList LargeImageList { get; }
 
+        /// <summary>
+        /// Gets the specified image list key for the given resource
+        /// </summary>
+        /// <param name="resourceId"></param>
+        /// <returns></returns>
         string GetImageKeyFromResourceID(string resourceId);
 
+        /// <summary>
+        /// Gets the specified image list index for the given resource
+        /// </summary>
+        /// <param name="resourceId"></param>
+        /// <returns></returns>
         int GetImageIndexFromResourceID(string resourceId);
     }
 
+    /// <summary>
+    /// A cache of icons for resource types
+    /// </summary>
     public class ResourceIconCache : IResourceIconCache
     {
         private ImageList _small;
@@ -51,6 +73,10 @@ namespace Maestro.Base.UI
 
         const string UNKNOWN = "UNKNOWN"; //NOXLATE
 
+        /// <summary>
+        /// Creates the default image lists
+        /// </summary>
+        /// <returns></returns>
         public static ResourceIconCache CreateDefault()
         {
             var icons = new ResourceIconCache();
@@ -81,6 +107,11 @@ namespace Maestro.Base.UI
             return icons;
         }
 
+        /// <summary>
+        /// Gets the specified image list key for the given resource
+        /// </summary>
+        /// <param name="resourceId"></param>
+        /// <returns></returns>
         public string GetImageKeyFromResourceID(string resourceId)
         {
             var rt = ResourceIdentifier.GetResourceType(resourceId);
@@ -101,6 +132,11 @@ namespace Maestro.Base.UI
             }
         }
 
+        /// <summary>
+        /// Gets the specified image list index for the given resource
+        /// </summary>
+        /// <param name="resourceId"></param>
+        /// <returns></returns>
         public int GetImageIndexFromResourceID(string resourceId)
         {
             int idx = _small.Images.IndexOfKey(ResourceIdentifier.GetResourceType(resourceId).ToString());
@@ -111,11 +147,17 @@ namespace Maestro.Base.UI
             return idx;
         }
 
+        /// <summary>
+        /// Gets the small resource icon list
+        /// </summary>
         public ImageList SmallImageList
         {
             get { return _small;  }
         }
 
+        /// <summary>
+        /// Gets the large resource icon list
+        /// </summary>
         public ImageList LargeImageList
         {
             get { return _large; }

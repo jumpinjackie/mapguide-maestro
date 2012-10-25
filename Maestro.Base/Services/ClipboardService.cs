@@ -34,6 +34,9 @@ namespace Maestro.Base.Services
     /// </summary>
     public class ClipboardService : ServiceBase
     {
+        /// <summary>
+        /// Initializes this service
+        /// </summary>
         public override void Initialize()
         {
             base.Initialize();
@@ -41,6 +44,10 @@ namespace Maestro.Base.Services
 
         private object _item;
 
+        /// <summary>
+        /// Gets whether the clipboard currently has any content
+        /// </summary>
+        /// <returns></returns>
         public bool HasContent()
         {
             lock (_clipLock)
@@ -49,6 +56,10 @@ namespace Maestro.Base.Services
             }
         }
 
+        /// <summary>
+        /// Puts the given item into the clipboard
+        /// </summary>
+        /// <param name="item"></param>
         public void Put(object item)
         {
             Check.NotNull(item, "item");
@@ -58,6 +69,10 @@ namespace Maestro.Base.Services
             }
         }
 
+        /// <summary>
+        /// Gets the current item from the clipboard
+        /// </summary>
+        /// <returns></returns>
         public object Get()
         {
             if (!HasContent())

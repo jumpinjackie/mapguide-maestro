@@ -62,7 +62,10 @@ namespace Maestro.MapViewer
             this.ThemeCompressionLimit = 25;
             this.ShowAllLayersAndGroups = false;
         }
-
+        
+        /// <summary>
+        /// Raised when item dragging occurs
+        /// </summary>
         public event ItemDragEventHandler ItemDrag;
 
         /// <summary>
@@ -73,6 +76,9 @@ namespace Maestro.MapViewer
 
         private IMapViewer _viewer;
 
+        /// <summary>
+        /// Gets or sets the viewer instance
+        /// </summary>
         public IMapViewer Viewer
         {
             get { return _viewer; }
@@ -143,7 +149,10 @@ namespace Maestro.MapViewer
         private Stopwatch _legendUpdateStopwatch = new Stopwatch();
 
         private bool _busy = false;
-
+        
+        /// <summary>
+        /// Gets whether the viewer is currently busy
+        /// </summary>
         [Browsable(false)]
         public bool IsBusy
         {
@@ -492,12 +501,18 @@ namespace Maestro.MapViewer
             return null;
         }
 
+        /// <summary>
+        /// Gets or sets whether to show node tooltips
+        /// </summary>
         public bool ShowTooltips
         {
             get { return trvLegend.ShowNodeToolTips; }
             set { trvLegend.ShowNodeToolTips = value; }
         }
 
+        /// <summary>
+        /// Raised when a legend node is selected
+        /// </summary>
         public event NodeEventHandler NodeSelected;
 
         private void trvLegend_AfterSelect(object sender, TreeViewEventArgs e)
@@ -507,6 +522,9 @@ namespace Maestro.MapViewer
                 h(this, e.Node);
         }
 
+        /// <summary>
+        /// Gets whether a right-click on a node selects it
+        /// </summary>
         public bool SelectOnRightClick { get; set; }
 
         private void trvLegend_MouseDown(object sender, MouseEventArgs e)
@@ -517,6 +535,12 @@ namespace Maestro.MapViewer
             }
         }
 
+        /// <summary>
+        /// Gets the matching node at the specified coordinates
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public TreeNode GetNodeAt(int x, int y)
         {
             return trvLegend.GetNodeAt(x, y);

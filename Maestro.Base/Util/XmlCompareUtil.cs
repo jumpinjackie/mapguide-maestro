@@ -27,7 +27,7 @@ using System.IO;
 
 namespace Maestro.Base.Util
 {
-    public class XmlCompareUtil
+    internal class XmlCompareUtil
     {
         /// <summary>
         /// Prepares the source and target resource content for XML comparison

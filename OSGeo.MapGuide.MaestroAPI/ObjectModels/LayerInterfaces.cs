@@ -858,15 +858,15 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     public interface IRuleCollection
     {
         /// <summary>
-        /// Gets the index of the specified rule
+        /// Gets the rule at the specified index
         /// </summary>
-        /// <param name="rule"></param>
+        /// <param name="index"></param>
         /// <returns></returns>
         IVectorRule GetRuleAt(int index);
         /// <summary>
-        /// Gets the rule at the specified index
+        /// Gets the index of the specified rule
         /// </summary>
-        /// <param name="index">The index.</param>
+        /// <param name="rule">The rule.</param>
         /// <returns></returns>
         int IndexOfRule(IVectorRule rule);
         /// <summary>

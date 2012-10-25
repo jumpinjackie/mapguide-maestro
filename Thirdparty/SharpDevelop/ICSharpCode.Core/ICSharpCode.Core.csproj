@@ -42,7 +42,8 @@
     <OutputPath>bin\Release\</OutputPath>
     <WarningLevel>4</WarningLevel>
     <DebugType>None</DebugType>
-    <DocumentationFile>bin\Release\ICSharpCode.Core.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
     <RegisterForComInterop>False</RegisterForComInterop>
@@ -138,10 +139,6 @@
     <Compile Include="Src\AddInTree\AddIn\DefaultDoozers\ToolBarItem\ITextBoxCommand.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Src\Services\LoggingService" />
-    <Folder Include="Src\Services\AnalyticsMonitor" />
-    <Folder Include="Src\Services\RegistryService" />
-    <Folder Include="Src\Services\ResourceService" />
     <Content Include="..\..\..\..\data\schemas\AddIn.xsd">
       <Link>Src\AddInTree\AddIn\AddIn.xsd</Link>
     </Content>

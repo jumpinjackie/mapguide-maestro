@@ -95,6 +95,9 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+        /// <summary>
+        /// Determines whether session auto-recover is possible
+        /// </summary>
         protected bool _canAutoRestartSession;
 
         /// <summary>

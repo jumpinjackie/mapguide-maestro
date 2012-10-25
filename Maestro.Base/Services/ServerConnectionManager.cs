@@ -27,9 +27,22 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Base.Services
 {
+    /// <summary>
+    /// Defines a method for connection-related events
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="name"></param>
     public delegate void ServerConnectionEventHandler(object sender, string name);
+    /// <summary>
+    /// Defines a method that handles connection pre-removal
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     public delegate void ServerConnectionRemovingEventHandler(object sender, ServerConnectionRemovingEventArgs e);
 
+    /// <summary>
+    /// Defines a cancelable event for a connection that is about to be closed
+    /// </summary>
     public class ServerConnectionRemovingEventArgs : CancelEventArgs
     {
         public ServerConnectionRemovingEventArgs(string name)
@@ -41,25 +54,51 @@ namespace Maestro.Base.Services
         public string ConnectionName { get; set; }
     }
 
+    /// <summary>
+    /// Manages <see cref="T:OSGeo.MapGuide.MaestroAPI.IServerConnection"/> instances
+    /// </summary>
     public class ServerConnectionManager : ServiceBase
     {
+        /// <summary>
+        /// Raised when a connection has been added
+        /// </summary>
         public event ServerConnectionEventHandler ConnectionAdded;
+
+        /// <summary>
+        /// Raised when a connection is about to be removed. Subscribers can cancel this event if required
+        /// </summary>
         public event ServerConnectionRemovingEventHandler ConnectionRemoving;
+
+        /// <summary>
+        /// Raised when a connection has been removed
+        /// </summary>
         public event ServerConnectionEventHandler ConnectionRemoved;
 
         private Dictionary<string, IServerConnection> _connections = new Dictionary<string, IServerConnection>();
 
+        /// <summary>
+        /// Gets the names of all currently open connections
+        /// </summary>
+        /// <returns></returns>
         public ICollection<string> GetConnectionNames()
         {
             return _connections.Keys;
         }
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public override void Initialize()
         {
             base.Initialize();
             LoggingService.Info(Strings.Service_Init_Server_Connection_Manager);
         }
-
+        
+        /// <summary>
+        /// Gets the connection by its registered name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public IServerConnection GetConnection(string name)
         {
             if (_connections.ContainsKey(name))
@@ -68,6 +107,11 @@ namespace Maestro.Base.Services
             return null;
         }
 
+        /// <summary>
+        /// Registers a connection by a given name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="conn"></param>
         public void AddConnection(string name, IServerConnection conn)
         {
             _connections.Add(name, conn);
@@ -76,6 +120,11 @@ namespace Maestro.Base.Services
                 handler(this, name);
         }
 
+        /// <summary>
+        /// Removes a connection by its given name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public IServerConnection RemoveConnection(string name)
         {
             if (_connections.ContainsKey(name))

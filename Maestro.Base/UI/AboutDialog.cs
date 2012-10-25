@@ -44,7 +44,7 @@ namespace Maestro.Base.UI
             this.Icon = Properties.Resources.MapGuide_Maestro;
         }
 
-        public AboutDialog(IServerConnection connection)
+        internal AboutDialog(IServerConnection connection)
             : this()
         {
             m_connection = connection;

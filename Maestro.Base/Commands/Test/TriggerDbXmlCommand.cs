@@ -28,7 +28,7 @@ using System.Text;
 
 namespace Maestro.Base.Commands.Test
 {
-    public class TriggerDbXmlCommand : AbstractMenuCommand
+    internal class TriggerDbXmlCommand : AbstractMenuCommand
     {
         public override void Run()
         {

@@ -26,7 +26,7 @@ using System.Threading;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tile
 {
-    public class RenderThreads
+    internal class RenderThreads
     {
         private class EventPassing
         {
@@ -296,11 +296,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <summary>
         /// Renders a single tile
         /// </summary>
+        /// <param name="ev"></param>
+        /// <param name="tileSvc"></param>
         /// <param name="row">The row index of the tile</param>
         /// <param name="col">The column index of the tile</param>
         /// <param name="scaleindex">The scale index of the tile</param>
         /// <param name="group">The name of the baselayer group</param>
-        public void RenderTile(EventWaitHandle ev, ITileService tileSvc, long row, long col, int scaleindex, string group)
+        private void RenderTile(EventWaitHandle ev, ITileService tileSvc, long row, long col, int scaleindex, string group)
         {
             ev.Reset();
             lock (SyncLock)

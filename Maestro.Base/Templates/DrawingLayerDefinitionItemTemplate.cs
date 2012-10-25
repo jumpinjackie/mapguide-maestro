@@ -30,7 +30,7 @@ using OSGeo.MapGuide.MaestroAPI.Services;
 
 namespace Maestro.Base.Templates
 {
-    public class DrawingLayerDefinitionItemTemplate : ItemTemplate
+    internal class DrawingLayerDefinitionItemTemplate : ItemTemplate
     {
         public DrawingLayerDefinitionItemTemplate()
         {

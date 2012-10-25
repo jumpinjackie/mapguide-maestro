@@ -29,17 +29,34 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Base.Services
 {
+    /// <summary>
+    /// Manages resoure editor views. This is recommeded over using the <see cref="T:Maestro.Base.Services.ViewContentManager"/> as this has built-in
+    /// logic for handling cases such as:
+    /// <list type="bullet">
+    /// <item><description>Creating or activating an editor instance based on whether one has already been open or not</description></item>
+    /// <item><description>Handling unsupported resource types and/or versions</description></item>
+    /// </list>
+    /// </summary>
     public class OpenResourceManager : ServiceBase
     {
         private Dictionary<string, IEditorViewContent> _openItems;
 
         private Dictionary<ResourceTypeDescriptor, IEditorFactory> _factories;
 
+        /// <summary>
+        /// Gets the open editor instances
+        /// </summary>
         public IEditorViewContent[] OpenEditors
         {
             get { return new List<IEditorViewContent>(_openItems.Values).ToArray(); }
         }
 
+        /// <summary>
+        /// Closes the editor instances for the given resource id
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="resourceId"></param>
+        /// <param name="discardChanges"></param>
         public void CloseEditors(IServerConnection conn, string resourceId, bool discardChanges)
         {
             string key = ComputeResourceKey(resourceId, conn);
@@ -50,6 +67,12 @@ namespace Maestro.Base.Services
             }
         }
 
+        /// <summary>
+        /// Closes the editor instances for resources not of the specified id
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="resourceId"></param>
+        /// <param name="discardChanges"></param>
         public void CloseEditorsExceptFor(IServerConnection conn, string resourceId, bool discardChanges)
         {
             string key = ComputeResourceKey(resourceId, conn);
@@ -63,6 +86,9 @@ namespace Maestro.Base.Services
             }
         }
 
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public override void Initialize()
         {
             base.Initialize();
@@ -125,12 +151,12 @@ namespace Maestro.Base.Services
             }
         }
 
-        public static string ComputeResourceKey(string resId, IServerConnection conn)
+        internal static string ComputeResourceKey(string resId, IServerConnection conn)
         {
             return conn.DisplayName + "|" + resId; //NOXLATE
         }
 
-        public static string ComputeResourceKey(IResource res, IServerConnection conn)
+        internal static string ComputeResourceKey(IResource res, IServerConnection conn)
         {
             return conn.DisplayName + "|" + res.ResourceID; //NOXLATE
         }
@@ -138,12 +164,13 @@ namespace Maestro.Base.Services
         /// <summary>
         /// Opens the specified resource using its assigned editor. If the resource is already
         /// open, the the existing editor view is activated instead. If the resource has no assigned
-        /// editor or <see cref="useXmlEditor"/> is true, the resource will be opened in the default
+        /// editor or <param name="useXmlEditor"/> is true, the resource will be opened in the default
         /// XML editor.
         /// </summary>
         /// <param name="res"></param>
         /// <param name="conn"></param>
         /// <param name="useXmlEditor"></param>
+        /// <param name="siteExp"></param>
         public IEditorViewContent Open(IResource res, IServerConnection conn, bool useXmlEditor, ISiteExplorer siteExp)
         {
             string key = ComputeResourceKey(res, conn);
@@ -217,7 +244,7 @@ namespace Maestro.Base.Services
         /// <summary>
         /// Opens the specified resource using its assigned editor. If the resource is already
         /// open, the the existing editor view is activated instead. If the resource has no assigned
-        /// editor or <see cref="useXmlEditor"/> is true, the resource will be opened in the default
+        /// editor or <param name="useXmlEditor"/> is true, the resource will be opened in the default
         /// XML editor.
         /// </summary>
         /// <param name="resourceId"></param>

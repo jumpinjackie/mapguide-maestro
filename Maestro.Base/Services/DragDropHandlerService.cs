@@ -26,7 +26,7 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Base.Services
 {
-    public class DragDropHandlerService : ServiceBase
+    internal class DragDropHandlerService : ServiceBase
     {
         public override void Initialize()
         {

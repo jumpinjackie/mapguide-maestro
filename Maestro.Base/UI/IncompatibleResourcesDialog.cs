@@ -28,7 +28,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Base.UI
 {
-    public partial class IncompatibleResourcesDialog : Form
+    internal partial class IncompatibleResourcesDialog : Form
     {
         private IncompatibleResourcesDialog()
         {

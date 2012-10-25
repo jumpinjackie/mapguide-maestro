@@ -358,6 +358,11 @@ namespace Maestro.Editors.Generic
             _findForm.ShowFor(editor, true);
         }
 
+        /// <summary>
+        /// Find and replace all instances of the specified token with its replacement token
+        /// </summary>
+        /// <param name="find"></param>
+        /// <param name="replace"></param>
         public void FindAndReplace(string find, string replace)
         {
             _findForm.ShowFor(txtXmlContent, true, false); //This is just to initialize it just in case

@@ -33,13 +33,29 @@ using Maestro.Editors.SymbolDefinition;
 
 namespace Maestro.Base.Services
 {
+    /// <summary>
+    /// Defines an interface for previewing resources
+    /// </summary>
     public interface IResourcePreviewer
     {
+        /// <summary>
+        /// Gets whether the specified resource can be previewed
+        /// </summary>
+        /// <param name="res"></param>
+        /// <returns></returns>
         bool IsPreviewable(IResource res);
 
+        /// <summary>
+        /// Previews the specified resource
+        /// </summary>
+        /// <param name="res">The resource to be previewed</param>
+        /// <param name="edSvc">The editor service</param>
         void Preview(IResource res, IEditorService edSvc);
     }
 
+    /// <summary>
+    /// The default resource previewer implementation
+    /// </summary>
     public class DefaultResourcePreviewer : IResourcePreviewer
     {
         abstract class PreviewResult
@@ -57,6 +73,11 @@ namespace Maestro.Base.Services
             public Image ImagePreview { get; set; }
         }
 
+        /// <summary>
+        /// Previews the specified resource
+        /// </summary>
+        /// <param name="res">The resource to be previewed</param>
+        /// <param name="edSvc">The editor service</param>
         public void Preview(IResource res, IEditorService edSvc)
         {
             //TODO: Prompt for symbol parameters if there are any, as these can affect the rendered output
@@ -131,6 +152,11 @@ namespace Maestro.Base.Services
             });
         }
 
+        /// <summary>
+        /// Gets whether the specified resource can be previewed
+        /// </summary>
+        /// <param name="res"></param>
+        /// <returns></returns>
         public bool IsPreviewable(IResource res)
         {
             var rt = res.ResourceType;
@@ -149,20 +175,38 @@ namespace Maestro.Base.Services
         }
     }
 
+    /// <summary>
+    /// A simple <see cref="T:Maestro.Base.Service.IResourcePreviewer"/> resolution container
+    /// </summary>
     public static class ResourcePreviewerFactory
     {
         static Dictionary<string, IResourcePreviewer> _previewers = new Dictionary<string, IResourcePreviewer>();
 
+        /// <summary>
+        /// Registers the given <see cref="T:Maestro.Base.Service.IResourcePreviewer"/> for a given connection provider
+        /// </summary>
+        /// <param name="provider">The name of the connection provider</param>
+        /// <param name="previewer">The previewer implementation</param>
         public static void RegisterPreviewer(string provider, IResourcePreviewer previewer)
         {
             _previewers[provider.ToUpper()] = previewer;
         }
 
+        /// <summary>
+        /// Gets whether a previewer has been registered for the given connection provider
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <returns></returns>
         public static bool HasPreviewer(string provider)
         {
             return _previewers.ContainsKey(provider.ToUpper());
         }
 
+        /// <summary>
+        /// Gets the registered previewer for the specified connection provider
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <returns></returns>
         public static IResourcePreviewer GetPreviewer(string provider)
         {
             if (HasPreviewer(provider))

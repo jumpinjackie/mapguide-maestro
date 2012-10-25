@@ -32,7 +32,7 @@ using System.Threading;
 
 namespace Maestro.Base.UI
 {
-    public partial class TipOfTheDayDialog : Form
+    internal partial class TipOfTheDayDialog : Form
     {
         private static bool _firstTime = true;
 

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Base.UI.Preferences
 {
-    public partial class EditorPreferencesCtrl : UserControl, IPreferenceSheet
+    internal partial class EditorPreferencesCtrl : UserControl, IPreferenceSheet
     {
         public EditorPreferencesCtrl()
         {

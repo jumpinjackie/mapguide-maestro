@@ -55,8 +55,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new LocalConnection(initParams);
         }
 
-        static bool _init = false;
-
         private MgServiceFactory _fact;
 
         protected LocalConnection(NameValueCollection initParams) : base()
@@ -68,7 +66,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             var sw = new Stopwatch();
             sw.Start();
             MgPlatform.Initialize(_configFile);
-            _init = true;
             sw.Stop();
             Trace.TraceInformation("MapGuide Platform initialized in {0}ms", sw.ElapsedMilliseconds);
         }

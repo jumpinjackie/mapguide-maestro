@@ -40,6 +40,9 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// </summary>
     public class Utility
     {
+        /// <summary>
+        /// The exception data key that hints that an <see cref="T:System.Exception"/> thrown is related to XML content errors
+        /// </summary>
         public const string XML_EXCEPTION_KEY = "XmlError"; //NOXLATE
 
         /// <summary>
@@ -978,6 +981,11 @@ namespace OSGeo.MapGuide.MaestroAPI
             return element;
         }
 
+        /// <summary>
+        /// Explodes a themed layer into filtered sub-layers where each sub-layer is filtered on the individual theme rule's filter
+        /// </summary>
+        /// <param name="options"></param>
+        /// <param name="progress"></param>
         public static void ExplodeThemeIntoFilteredLayers(ExplodeThemeOptions options, LengthyOperationProgressCallBack progress)
         {
             var conn = options.Layer.CurrentConnection;
@@ -1064,6 +1072,15 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         const string RESERVED_CHARS = "\\:*?\"<>|&'%=/";
 
+        /// <summary>
+        /// Generates a unique layer name for a given vector rule
+        /// </summary>
+        /// <param name="layerFormat"></param>
+        /// <param name="layerName"></param>
+        /// <param name="scaleRange"></param>
+        /// <param name="i"></param>
+        /// <param name="rule"></param>
+        /// <returns></returns>
         public static string GenerateLayerName(string layerFormat, string layerName, string scaleRange, int i, IVectorRule rule)
         {
             StringBuilder sb = new StringBuilder(string.Format(layerFormat, layerName, scaleRange, string.IsNullOrEmpty(rule.LegendLabel) ? ("Rule" + i) : rule.LegendLabel)); //NOXLATE
@@ -1074,6 +1091,11 @@ namespace OSGeo.MapGuide.MaestroAPI
             return sb.ToString().Trim();
         }
 
+        /// <summary>
+        /// String-ifies a scale range
+        /// </summary>
+        /// <param name="parentRange"></param>
+        /// <returns></returns>
         public static string GetScaleRangeStr(IVectorScaleRange parentRange)
         {
             return string.Format("{0} to {1}", //NOXLATE

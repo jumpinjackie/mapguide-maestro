@@ -33,7 +33,7 @@ using Maestro.Editors.Generic;
 
 namespace Maestro.Base.UI
 {
-    public partial class OpenResourceIdDialog : Form
+    internal partial class OpenResourceIdDialog : Form
     {
         private OpenResourceIdDialog()
         {

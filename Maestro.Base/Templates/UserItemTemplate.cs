@@ -28,7 +28,7 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 
 namespace Maestro.Base.Templates
 {
-    public class UserItemTemplate : ItemTemplate
+    internal class UserItemTemplate : ItemTemplate
     {
         private IResource _res;
 

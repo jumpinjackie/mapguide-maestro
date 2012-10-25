@@ -28,7 +28,7 @@ using System.Diagnostics;
 
 namespace Maestro.Base.Commands
 {
-    public class RtMapInspectorCommand : AbstractMenuCommand
+    internal class RtMapInspectorCommand : AbstractMenuCommand
     {
         public override void Run()
         {

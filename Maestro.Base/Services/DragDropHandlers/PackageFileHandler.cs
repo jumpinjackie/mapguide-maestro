@@ -29,7 +29,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Base.Services.DragDropHandlers
 {
-    public class PackageFileHandler : IDragDropHandler
+    internal class PackageFileHandler : IDragDropHandler
     {
         public string HandlerAction
         {

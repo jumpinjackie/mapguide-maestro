@@ -29,7 +29,7 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Base.UI
 {
-    public partial class TestResourceCompatibilityDialog : Form
+    internal partial class TestResourceCompatibilityDialog : Form
     {
         public TestResourceCompatibilityDialog()
         {

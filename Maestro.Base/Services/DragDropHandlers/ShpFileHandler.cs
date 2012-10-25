@@ -29,7 +29,7 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Base.Services.DragDropHandlers
 {
-    public class ShpFileHandler : IDragDropHandler
+    internal class ShpFileHandler : IDragDropHandler
     {
         public string HandlerAction
         {

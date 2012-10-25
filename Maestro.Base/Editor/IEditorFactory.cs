@@ -24,6 +24,9 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 
 namespace Maestro.Base.Editor
 {
+    /// <summary>
+    /// Defines an interface for creating editor views for a given resource
+    /// </summary>
     public interface IEditorFactory
     {
         /// <summary>

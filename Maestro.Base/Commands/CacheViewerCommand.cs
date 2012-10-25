@@ -28,7 +28,7 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Base.Commands
 {
-    public class CacheViewerCommand : AbstractMenuCommand
+    internal class CacheViewerCommand : AbstractMenuCommand
     {
         public override void Run()
         {

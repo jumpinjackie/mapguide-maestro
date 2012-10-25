@@ -28,7 +28,7 @@ using OSGeo.MapGuide.ObjectModels;
 
 namespace Maestro.Base.Templates
 {
-    public class WebLayoutItemTemplate : ItemTemplate
+    internal class WebLayoutItemTemplate : ItemTemplate
     {
         public WebLayoutItemTemplate()
         {

@@ -31,7 +31,7 @@ using System.IO;
 
 namespace Maestro.Base.UI.Preferences
 {
-    public partial class GeneralPreferencesCtrl : UserControl, IPreferenceSheet
+    internal partial class GeneralPreferencesCtrl : UserControl, IPreferenceSheet
     {
         public GeneralPreferencesCtrl()
         {

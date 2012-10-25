@@ -54,6 +54,9 @@ namespace OSGeo.MapGuide.ObjectModels.Common
 
     partial class FdoLongTransactionList : ILongTransactionList
     {
+        /// <summary>
+        /// Gets the long transactions in this list
+        /// </summary>
         public IEnumerable<ILongTransaction> Transactions
         {
             get 

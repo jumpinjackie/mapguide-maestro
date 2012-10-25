@@ -26,7 +26,7 @@ using Maestro.Base.Services;
 
 namespace Maestro.Base.Commands.Test
 {
-    public class OpenCoordinateSystemPickerCommand : AbstractMenuCommand
+    internal class OpenCoordinateSystemPickerCommand : AbstractMenuCommand
     {
         public override void Run()
         {

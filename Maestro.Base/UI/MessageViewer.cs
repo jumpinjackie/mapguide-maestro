@@ -30,10 +30,10 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Base.UI
 {
-    public partial class MessageViewer : SingletonViewContent
+    internal partial class MessageViewer : SingletonViewContent
     {
         /// <summary>
-        /// Internal use only. Do not invoke directly. Use <see cref="ViewContentManager"/> for that
+        /// Internal use only. Do not invoke directly. Use <see cref="T:Maestro.Base.Services.ViewContentManager"/> for that
         /// </summary>
         public MessageViewer()
         {

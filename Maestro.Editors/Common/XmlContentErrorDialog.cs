@@ -47,6 +47,7 @@ namespace Maestro.Editors.Common
         /// display the error dialog, or attach the 
         /// </summary>
         /// <param name="ex"></param>
+        /// <param name="origXml"></param>
         /// <param name="bDisplay"></param>
         public static void CheckAndHandle(Exception ex, string origXml, bool bDisplay)
         {
@@ -90,7 +91,6 @@ namespace Maestro.Editors.Common
         /// Displays this dialog
         /// </summary>
         /// <param name="ex"></param>
-        /// <param name="origXmlContent"></param>
         public static void Show(Exception ex)
         {
             Check.NotNull(ex, "ex"); //NOXLATE

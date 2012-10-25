@@ -26,6 +26,9 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Base.UI
 {
+    /// <summary>
+    /// Represents the Site Explorer
+    /// </summary>
     public interface ISiteExplorer : IViewContent
     {
         /// <summary>
@@ -51,29 +54,34 @@ namespace Maestro.Base.UI
         /// <summary>
         /// Refreshes the tree model
         /// </summary>
+        /// <param name="connectionName">The name of the connection</param>
         void RefreshModel(string connectionName);
 
         /// <summary>
         /// Refreshes the tree model from the specified resource id 
         /// </summary>
+        /// <param name="connectionName">The name of the connection</param>
         /// <param name="resId"></param>
         void RefreshModel(string connectionName, string resId);
 
         /// <summary>
         /// Expands the node indicated by the specified id
         /// </summary>
+        /// <param name="connectionName">The name of the connection</param>
         /// <param name="folderId"></param>
         void ExpandNode(string connectionName, string folderId);
 
         /// <summary>
         /// Selects the node indicated by the specified id
         /// </summary>
+        /// <param name="connectionName">The name of the connection</param>
         /// <param name="resourceId"></param>
         void SelectNode(string connectionName, string resourceId);
 
         /// <summary>
         /// Flags the node indicated by the specified action
         /// </summary>
+        /// <param name="connectionName">The name of the connection</param>
         /// <param name="resourceId"></param>
         /// <param name="action"></param>
         void FlagNode(string connectionName, string resourceId, NodeFlagAction action);
@@ -89,8 +97,16 @@ namespace Maestro.Base.UI
         event RepositoryItemEventHandler ItemsSelected;
     }
 
+    /// <summary>
+    /// Defines a method to handle item selection in the Site Explorer
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="items"></param>
     public delegate void RepositoryItemEventHandler(object sender, RepositoryItem[] items);
 
+    /// <summary>
+    /// Defines a set of possible actions that can be performed on nodes in the Site Explorer
+    /// </summary>
     public enum NodeFlagAction
     {
         /*

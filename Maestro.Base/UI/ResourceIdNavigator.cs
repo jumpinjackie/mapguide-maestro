@@ -30,7 +30,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Base.UI
 {
-    public class ResourceIdNavigator
+    internal class ResourceIdNavigator
     {
         // How this tool strip is visually laid out
         //

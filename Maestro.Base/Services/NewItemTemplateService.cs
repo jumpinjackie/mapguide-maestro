@@ -32,7 +32,10 @@ namespace Maestro.Base.Services
     using System.IO;
     using Maestro.Shared.UI;
 
-    public class NewItemTemplateService : ServiceBase
+    /// <summary>
+    /// An application-level service for creating new resources from a set of pre-defined templates
+    /// </summary>
+    internal class NewItemTemplateService : ServiceBase
     {
         private Dictionary<string, List<ItemTemplate>> _templates;
 
@@ -91,12 +94,19 @@ namespace Maestro.Base.Services
             return tpls.ToArray();
         }
 
+        /// <summary>
+        /// Gets an array of all template categories
+        /// </summary>
+        /// <returns></returns>
         public string[] GetCategories()
         {
             List<string> values = new List<string>(_templates.Keys);
             return values.ToArray();
         }
 
+        /// <summary>
+        /// Represents a set of templates
+        /// </summary>
         public class TemplateSet
         {
             private Dictionary<string, List<ItemTemplate>> _templates;
@@ -117,14 +127,29 @@ namespace Maestro.Base.Services
                 }
             }
 
+            /// <summary>
+            /// Gets the categories for the template set
+            /// </summary>
+            /// <returns></returns>
             public IEnumerable<string> GetCategories() { return _templates.Keys; }
 
+            /// <summary>
+            /// Gets the templates for the specified category
+            /// </summary>
+            /// <param name="category"></param>
+            /// <returns></returns>
             public IEnumerable<ItemTemplate> GetTemplatesForCategory(string category)
             {
                 return _templates[category];
             }
         }
 
+        /// <summary>
+        /// Gets the set of templates that matches the given categories and site version
+        /// </summary>
+        /// <param name="categories">An array of template categories</param>
+        /// <param name="siteVersion"></param>
+        /// <returns></returns>
         public TemplateSet GetItemTemplates(string[] categories, Version siteVersion)
         {
             List<ItemTemplate> templates = new List<ItemTemplate>();

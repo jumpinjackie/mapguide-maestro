@@ -30,7 +30,7 @@ using Maestro.Editors.Generic;
 
 namespace Maestro.Base.Templates
 {
-    public class ApplicationDefinitionItemTemplate : ItemTemplate
+    internal class ApplicationDefinitionItemTemplate : ItemTemplate
     {
         public ApplicationDefinitionItemTemplate()
         {

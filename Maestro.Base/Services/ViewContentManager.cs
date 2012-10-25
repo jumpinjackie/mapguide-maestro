@@ -26,8 +26,14 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Base.Services
 {
+    /// <summary>
+    /// Manages view content
+    /// </summary>
     public class ViewContentManager : ViewContentManagerBase
     {
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public override void Initialize()
         {
             _singletonInstances = new List<IViewContent>();
@@ -45,6 +51,10 @@ namespace Maestro.Base.Services
             LoggingService.Info(Strings.Service_Init_ViewContent_Manager);
         }
 
+        /// <summary>
+        /// Gets the workbench implementation
+        /// </summary>
+        /// <returns></returns>
         protected override WorkbenchBase GetWorkbench()
         {
             return Workbench.Instance;

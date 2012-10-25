@@ -26,7 +26,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Base.Commands
 {
-    public class EditAsXmlCommand : AbstractMenuCommand
+    internal class EditAsXmlCommand : AbstractMenuCommand
     {
         public override void Run()
         {

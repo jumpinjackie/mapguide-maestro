@@ -28,7 +28,7 @@ using Maestro.Editors.Common;
 
 namespace Maestro.Base.Commands.Test
 {
-    public class OpenSymbolBrowserCommand : AbstractMenuCommand
+    internal class OpenSymbolBrowserCommand : AbstractMenuCommand
     {
         public override void Run()
         {

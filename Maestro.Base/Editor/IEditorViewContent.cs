@@ -27,6 +27,9 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Base.Editor
 {
+    /// <summary>
+    /// Defines an interface for editor view content
+    /// </summary>
     public interface IEditorViewContent : IViewContent
     {
         /// <summary>

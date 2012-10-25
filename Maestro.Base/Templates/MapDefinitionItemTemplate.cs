@@ -28,7 +28,7 @@ using Res = Maestro.Base.Properties.Resources;
 
 namespace Maestro.Base.Templates
 {
-    public class MapDefinitionItemTemplate : ItemTemplate
+    internal class MapDefinitionItemTemplate : ItemTemplate
     {
         public MapDefinitionItemTemplate()
         {

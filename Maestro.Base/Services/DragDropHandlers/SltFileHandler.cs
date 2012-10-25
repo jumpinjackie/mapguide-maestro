@@ -29,7 +29,7 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Base.Services.DragDropHandlers
 {
-    public class SltFileHandler : IDragDropHandler
+    internal class SltFileHandler : IDragDropHandler
     {
         public string HandlerAction
         {

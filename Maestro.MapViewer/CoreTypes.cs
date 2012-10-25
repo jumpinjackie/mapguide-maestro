@@ -70,19 +70,31 @@ namespace Maestro.MapViewer
     /// <param name="ury">The Y coordinate of the rectangle's upper right point</param>
     public delegate void RectangleDigitizationCallback(double llx, double lly, double urx, double ury);
 
+    /// <summary>
+    /// Represents an entry in the view history stack
+    /// </summary>
     public class MapViewHistoryEntry
     {
-        public MapViewHistoryEntry(double x, double y, double scale)
+        internal MapViewHistoryEntry(double x, double y, double scale)
         {
             this.X = x;
             this.Y = y;
             this.Scale = scale;
         }
 
+        /// <summary>
+        /// Gets the X coordinate
+        /// </summary>
         public double X { get; private set; }
 
+        /// <summary>
+        /// Gets the Y coordinate
+        /// </summary>
         public double Y { get; private set; }
 
+        /// <summary>
+        /// Gets the view scale
+        /// </summary>
         public double Scale { get; private set; }
     }
 
@@ -180,7 +192,7 @@ namespace Maestro.MapViewer
     /// </summary>
     public class ViewerRenderingOptions
     {
-        public ViewerRenderingOptions(string format, int behavior, Color color)
+        internal ViewerRenderingOptions(string format, int behavior, Color color)
         {
             this.Format = format;
             this.Behavior = behavior;

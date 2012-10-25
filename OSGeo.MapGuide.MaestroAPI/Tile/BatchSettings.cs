@@ -249,12 +249,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         {
         }
 
+        /// <summary>
+        /// Constructs a new batch setup
+        /// </summary>
+        /// <param name="connection"></param>
         public BatchSettings(IServerConnection connection)
         {
             m_connection = connection;
             m_maps = new List<BatchMap>();
         }
 
+        /// <summary>
+        /// Constructs a new batch setup
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="maps"></param>
         public BatchSettings(IServerConnection connection, params string[] maps)
         {
             m_connection = connection;
@@ -263,6 +272,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             AddMapDefinitions(maps);
         }
 
+        /// <summary>
+        /// Adds the specified map definition ids
+        /// </summary>
+        /// <param name="maps"></param>
         public void AddMapDefinitions(string[] maps)
         {
             if (maps == null || maps.Length == 0 || (maps.Length == 1 && maps[0].Trim().Length == 0))
@@ -281,24 +294,40 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             }
         }
 
+        /// <summary>
+        /// Sets the list of scale indexes
+        /// </summary>
+        /// <param name="scaleindexes"></param>
         public void SetScales(int[] scaleindexes)
         {
             foreach (BatchMap bm in m_maps)
                 bm.SetScales(scaleindexes);
         }
 
+        /// <summary>
+        /// Sets the list of groups
+        /// </summary>
+        /// <param name="groups"></param>
         public void SetGroups(string[] groups)
         {
             foreach (BatchMap bm in m_maps)
                 bm.SetGroups(groups);
         }
 
+        /// <summary>
+        /// Limits the number of rows
+        /// </summary>
+        /// <param name="limit"></param>
         public void LimitRows(long limit)
         {
             foreach (BatchMap bm in m_maps)
                 bm.LimitRows(limit);
         }
 
+        /// <summary>
+        /// Limits the number of columns
+        /// </summary>
+        /// <param name="limit"></param>
         public void LimitCols(long limit)
         {
             foreach (BatchMap bm in m_maps)
@@ -414,7 +443,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// </summary>
         public int ColTileOffset { get { return m_colTileOffset; } }
 
-        //The map's scales may have been modified, this array is a map of the new values
+        /// <summary>
+        /// The map's scales may have been modified, this array is a map of the new values
+        /// </summary>
         public int[] ScaleIndexMap { get { return m_scaleindexmap; } }
 
         /// <summary>
@@ -440,7 +471,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             }
         }
 
-        public void CalculateDimensions()
+        internal void CalculateDimensions()
         {
             int[] tmp = new int[this.Map.BaseMap.ScaleCount];
             for (int i = 0; i < tmp.Length; i++)
@@ -449,7 +480,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             SetScales(tmp);
         }
 
-        public void CalculateDimensionsInternal()
+        internal void CalculateDimensionsInternal()
         {
             if (m_mapdefinition.BaseMap.ScaleCount == 0)
             {
@@ -520,6 +551,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             }
         }
 
+        /// <summary>
+        /// Sets the list of groups
+        /// </summary>
+        /// <param name="groups"></param>
         public void SetGroups(string[] groups)
         {
             List<string> g = new List<string>();
@@ -530,6 +565,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             m_groups = g.ToArray();
         }
 
+        /// <summary>
+        /// Sets the list of scale indexes
+        /// </summary>
+        /// <param name="scaleindexes"></param>
         public void SetScales(int[] scaleindexes)
         {
             //TODO: Re-read scales from mapdef?
@@ -555,18 +594,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                 m_scaleindexmap[i] = keys[i];
         }
 
-        public void LimitCols(long limit)
+        internal void LimitCols(long limit)
         {
             foreach (long[] d in m_dimensions)
                 d[1] = Math.Min(limit, d[1]);
         }
 
-        public void LimitRows(long limit)
+        internal void LimitRows(long limit)
         {
             foreach (long[] d in m_dimensions)
                 d[0] = Math.Min(limit, d[0]);
         }
 
+        /// <summary>
+        /// Gets the total number of tiles to be rendered
+        /// </summary>
         public long TotalTiles
         {
             get
@@ -693,25 +735,79 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         public BatchSettings Parent { get { return m_parent; } }
     }
 
+    /// <summary>
+    /// Parameters for a tiling run
+    /// </summary>
     public class TileSettings
     {
+        /// <summary>
+        /// The meters per unit
+        /// </summary>
         public double MetersPerUnit = 1;
+
+        /// <summary>
+        /// The display DPI
+        /// </summary>
         public double DPI = 96;
+
+        /// <summary>
+        /// The tile width
+        /// </summary>
         public int TileWidth = 300;
+
+        /// <summary>
+        /// The tile height
+        /// </summary>
         public int TileHeight = 300;
+
+        /// <summary>
+        /// The number of times to retry
+        /// </summary>
         public int RetryCount = 5;
+
+        /// <summary>
+        /// The display resolution width
+        /// </summary>
         public int DisplayResolutionWidth = 1920;
+
+        /// <summary>
+        /// The display resolution height
+        /// </summary>
         public int DisplayResolutionHeight = 1280;
+
+        /// <summary>
+        /// Gets or sets whether to use the official method of tile generation. Requires an accurate meters per unit value to work
+        /// </summary>
         public bool UseOfficialMethod = false;
+
+        /// <summary>
+        /// Gets or sets whether to randomize the tile generation sequence
+        /// </summary>
         public bool RandomizeTileSequence = false;
         private int m_threadCount = 1;
+
+        /// <summary>
+        /// Gets or sets the thread count
+        /// </summary>
         public int ThreadCount
         {
             get { return m_threadCount; }
             set { m_threadCount = Math.Max(1, value); }
         }
 
+        /// <summary>
+        /// The render method
+        /// </summary>
         public RenderMethodDelegate RenderMethod;
+
+        /// <summary>
+        /// Defines a tile render method
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="group"></param>
+        /// <param name="col"></param>
+        /// <param name="row"></param>
+        /// <param name="scale"></param>
         public delegate void RenderMethodDelegate(string map, string group, int col, int row, int scale);
     }
 }

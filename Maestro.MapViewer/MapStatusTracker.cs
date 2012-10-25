@@ -26,6 +26,9 @@ using System.Windows.Forms;
 
 namespace Maestro.MapViewer
 {
+    /// <summary>
+    /// A helper component to auto-wire common viewer events to related UI components
+    /// </summary>
     public class MapStatusTracker : Component
     {
         private IMapViewer _viewer;
@@ -43,10 +46,19 @@ namespace Maestro.MapViewer
             }
         }
 
+        /// <summary>
+        /// Gets the "items selected" label
+        /// </summary>
         public ToolStripLabel SelectedLabel { get; set; }
 
+        /// <summary>
+        /// Gets the "scale" label
+        /// </summary>
         public ToolStripLabel ScaleLabel { get; set; }
 
+        /// <summary>
+        /// Gets the "mouse coordinates" label
+        /// </summary>
         public ToolStripLabel CoordinatesLabel { get; set; }
 
         private void WireViewer(IMapViewer viewer)

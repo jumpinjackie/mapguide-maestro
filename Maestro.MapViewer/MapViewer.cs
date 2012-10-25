@@ -591,7 +591,10 @@ namespace Maestro.MapViewer
                 }
             }
         }
-
+        
+        /// <summary>
+        /// Gets or sets the amount of pixels to buffer out by when doing point-based selections with the select tool
+        /// </summary>
         [Category("MapGuide Viewer")]
         [Description("The amount of pixels to buffer out by when doing point-based selections with the Select tool")]
         public int PointPixelBuffer { get; set; }
@@ -951,36 +954,65 @@ namespace Maestro.MapViewer
             _rectangleCustomDigitizationPrompt = customPrompt;
         }
 
+        /// <summary>
+        /// Starts circle digitization
+        /// </summary>
+        /// <param name="callback"></param>
         public void DigitizeCircle(CircleDigitizationCallback callback)
         {
             DigitizeCircle(callback, null);
         }
 
+        /// <summary>
+        /// Starts digitize line
+        /// </summary>
+        /// <param name="callback"></param>
         public void DigitizeLine(LineDigitizationCallback callback)
         {
             DigitizeLine(callback, null);
         }
 
+        /// <summary>
+        /// Starts point digitization
+        /// </summary>
+        /// <param name="callback"></param>
         public void DigitizePoint(PointDigitizationCallback callback)
         {
             DigitizePoint(callback, null);
         }
 
+        /// <summary>
+        /// Starts polygon digitization
+        /// </summary>
+        /// <param name="callback"></param>
         public void DigitizePolygon(PolygonDigitizationCallback callback)
         {
             DigitizePolygon(callback, null);
         }
 
+        /// <summary>
+        /// Starts line string digitization
+        /// </summary>
+        /// <param name="callback"></param>
         public void DigitizeLineString(LineStringDigitizationCallback callback)
         {
             DigitizeLineString(callback, (string)null);
         }
 
+        /// <summary>
+        /// Starts line string digitization
+        /// </summary>
+        /// <param name="callback"></param>
+        /// <param name="segmentDigitized"></param>
         public void DigitizeLineString(LineStringDigitizationCallback callback, LineDigitizationCallback segmentDigitized)
         {
             DigitizeLineString(callback, segmentDigitized, null);
         }
 
+        /// <summary>
+        /// Starts rectangle digitization
+        /// </summary>
+        /// <param name="callback"></param>
         public void DigitizeRectangle(RectangleDigitizationCallback callback)
         {
             DigitizeRectangle(callback, null);
@@ -1095,6 +1127,10 @@ namespace Maestro.MapViewer
             return new ViewerRenderingOptions("PNG", (1 | 4), Color.FromArgb(red, green, blue));
         }
 
+        /// <summary>
+        /// Load the viewer with the given runtime map
+        /// </summary>
+        /// <param name="map"></param>
         public void LoadMap(RuntimeMap map)
         {
             _map = map;
@@ -1180,7 +1216,7 @@ namespace Maestro.MapViewer
 
         /// <summary>
         /// Gets or sets a value indicating whether tiled groups are converted to normal groups. Must be set before
-        /// a map is loaded via the <see cref="Init"/> method
+        /// a map is loaded
         /// </summary>
         [Category("MapGuide Viewer")]
         [Description("If true, the map being viewed will have all its tiled groups converted to non-tiled groups. Tiled groups are not supported by this viewer and are not rendered")]
@@ -1267,7 +1303,7 @@ namespace Maestro.MapViewer
         public void ClearSelection()
         {
             //_provider.ClearSelection(_selection);
-            _selection.LoadXml("");
+            _selection.LoadXml(string.Empty);
             _map.Save();
 
             if (_selectionImage != null)
@@ -2093,6 +2129,10 @@ namespace Maestro.MapViewer
             return IsRasterClass(cls);
         }
 
+        /// <summary>
+        /// Gets the current buffered image
+        /// </summary>
+        /// <returns></returns>
         public System.Drawing.Image GetCurrentImage()
         {
             var bmp = new Bitmap(this.Width, this.Height);
@@ -2810,6 +2850,9 @@ namespace Maestro.MapViewer
                 handler(this, new PropertyChangedEventArgs(name));
         }
 
+        /// <summary>
+        /// Gets whether this viewer has a loaded map
+        /// </summary>
         public bool HasLoadedMap { get { return _map != null; } }
 
         private bool? _hasTiledLayers;

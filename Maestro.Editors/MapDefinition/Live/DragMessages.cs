@@ -24,14 +24,14 @@ using System.Text;
 
 namespace Maestro.Editors.MapDefinition.Live
 {
-    public class ResourceDragMessage
+    internal class ResourceDragMessage
     {
         public ResourceDragMessage(string resId) { this.ResourceID = resId; }
 
         public string ResourceID { get; private set; }
     }
 
-    public class LayerDragMessage
+    internal class LayerDragMessage
     {
         public LayerDragMessage(string groupName, string layerName)
         {
@@ -44,7 +44,7 @@ namespace Maestro.Editors.MapDefinition.Live
         public string LayerName { get; private set; }
     }
 
-    public class GroupDragMessage
+    internal class GroupDragMessage
     {
         public GroupDragMessage(string groupName)
         {

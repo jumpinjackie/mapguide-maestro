@@ -28,13 +28,26 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Base.Services
 {
+    /// <summary>
+    /// Defines an interface for launching URLs
+    /// </summary>
     public interface IUrlLauncherService
     {
+        /// <summary>
+        /// Opens the specified url using the system default web browser
+        /// </summary>
+        /// <param name="url"></param>
         void OpenUrl(string url);
     }
 
+    /// <summary>
+    /// An application-level service for launching URLs
+    /// </summary>
     public class UrlLauncherService : ServiceBase, IUrlLauncherService
     {
+        /// <summary>
+        /// Initializes this instance
+        /// </summary>
         public override void Initialize()
         {
             base.Initialize();

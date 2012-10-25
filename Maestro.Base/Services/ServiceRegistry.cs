@@ -26,12 +26,19 @@ using Maestro.Base.Events;
 
 namespace Maestro.Base.Services
 {
+    /// <summary>
+    /// A utility class to access application-level services
+    /// </summary>
     public static class ServiceRegistry
     {
         private static List<ServiceBase> _services;
 
         private static bool _init = false;
 
+        /// <summary>
+        /// Initializes from the AddIn registry
+        /// </summary>
+        /// <param name="callback"></param>
         public static void Initialize(Action callback)
         {
             if (_init)
@@ -49,6 +56,11 @@ namespace Maestro.Base.Services
                 callback();
         }
 
+        /// <summary>
+        /// Gets the application-level service
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static T GetService<T>() where T : ServiceBase
         {
             foreach (var svc in _services)

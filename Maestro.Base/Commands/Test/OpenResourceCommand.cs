@@ -26,7 +26,7 @@ using Maestro.Editors.Generic;
 
 namespace Maestro.Base.Commands.Test
 {
-    public class OpenResourceCommand : AbstractMenuCommand
+    internal class OpenResourceCommand : AbstractMenuCommand
     {
         public override void Run()
         {
@@ -47,7 +47,7 @@ namespace Maestro.Base.Commands.Test
         }
     }
 
-    public class OpenResourceFromStartingPointCommand : AbstractMenuCommand
+    internal class OpenResourceFromStartingPointCommand : AbstractMenuCommand
     {
         public override void Run()
         {
@@ -69,7 +69,7 @@ namespace Maestro.Base.Commands.Test
         }
     }
 
-    public class OpenFolderCommand : AbstractMenuCommand
+    internal class OpenFolderCommand : AbstractMenuCommand
     {
         public override void Run()
         {
@@ -91,7 +91,7 @@ namespace Maestro.Base.Commands.Test
     }
 
 
-    public class OpenResourceWithFilterCommand : AbstractMenuCommand
+    internal class OpenResourceWithFilterCommand : AbstractMenuCommand
     {
         public override void Run()
         {

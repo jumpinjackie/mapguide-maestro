@@ -27,13 +27,25 @@ using Maestro.Base.Services;
 
 namespace Maestro.Base
 {
+    /// <summary>
+    /// Initializes the main window
+    /// </summary>
     public class WorkbenchInitializer : IWorkbenchInitializer
     {
+        /// <summary>
+        /// Gets the main window icon
+        /// </summary>
+        /// <returns></returns>
         public System.Drawing.Icon GetIcon()
         {
             return Properties.Resources.MapGuide_Maestro;
         }
 
+        /// <summary>
+        /// Updates the status of the menu items
+        /// </summary>
+        /// <param name="menu"></param>
+        /// <param name="toolstrips"></param>
         public void UpdateMenuItemStatus(MenuStrip menu, IEnumerable<ToolStrip> toolstrips)
         {
             foreach (ToolStripItem item in menu.Items)
@@ -52,6 +64,11 @@ namespace Maestro.Base
             }
         }
 
+        /// <summary>
+        /// Gets the main menu
+        /// </summary>
+        /// <param name="workbench"></param>
+        /// <returns></returns>
         public MenuStrip GetMainMenu(WorkbenchBase workbench)
         {
             var menu = new System.Windows.Forms.MenuStrip();
@@ -59,16 +76,29 @@ namespace Maestro.Base
             return menu;
         }
 
+        /// <summary>
+        /// Gets the main toolstrip
+        /// </summary>
+        /// <param name="workbench"></param>
+        /// <returns></returns>
         public ToolStrip GetMainToolStrip(WorkbenchBase workbench)
         {
             return ToolbarService.CreateToolStrip(workbench, "/Maestro/Shell/Toolbars/Main"); //NOXLATE
         }
 
+        /// <summary>
+        /// Gets the view content manager
+        /// </summary>
+        /// <returns></returns>
         public IViewContentManager GetViewContentManager()
         {
             return ServiceRegistry.GetService<ViewContentManager>();
         }
 
+        /// <summary>
+        /// Gets the close icon for documents
+        /// </summary>
+        /// <returns></returns>
         public System.Drawing.Image GetDocumentCloseIcon()
         {
             return Properties.Resources.cross_small;

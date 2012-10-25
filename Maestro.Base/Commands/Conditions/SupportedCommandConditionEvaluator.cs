@@ -26,7 +26,7 @@ using OSGeo.MapGuide.MaestroAPI.Commands;
 
 namespace Maestro.Base.Commands.Conditions
 {
-    public class SupportedCommandConditionEvaluator : IConditionEvaluator
+    internal class SupportedCommandConditionEvaluator : IConditionEvaluator
     {
         public bool IsValid(object caller, Condition condition)
         {

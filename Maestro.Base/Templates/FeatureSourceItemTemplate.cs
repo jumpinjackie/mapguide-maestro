@@ -29,7 +29,7 @@ using Maestro.Editors.Common;
 
 namespace Maestro.Base.Templates
 {
-    public class FeatureSourceItemTemplate : ItemTemplate
+    internal class FeatureSourceItemTemplate : ItemTemplate
     {
         public FeatureSourceItemTemplate()
         {

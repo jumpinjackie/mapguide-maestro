@@ -30,7 +30,7 @@ using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 
 namespace Maestro.Base.Templates
 {
-    public class SdfLoadProcedureItemTemplate : ItemTemplate
+    internal class SdfLoadProcedureItemTemplate : ItemTemplate
     {
         public SdfLoadProcedureItemTemplate()
         {

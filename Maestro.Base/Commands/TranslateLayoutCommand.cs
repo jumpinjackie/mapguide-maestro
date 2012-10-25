@@ -28,7 +28,7 @@ using Maestro.Base.Editor;
 
 namespace Maestro.Base.Commands
 {
-    public class TranslateLayoutCommand : AbstractMenuCommand
+    internal class TranslateLayoutCommand : AbstractMenuCommand
     {
         public override void Run()
         {

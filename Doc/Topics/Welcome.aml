@@ -7,20 +7,34 @@
     </summary>
     -->
     <introduction>
-      <para>
-      This is the reference documentation for the MapGuide Maestro API. The API consists of:
-	  </para>
-	 <list class="bullet">
-		   <listItem><para>The Maestro API core (OSGeo.MapGuide.MaestroAPI.dll)</para></listItem>
-		   <listItem><para>The Maestro Extended Object Model Helper (OSGeo.MapGuide.ExtendedObjectModels.dll)</para></listItem>
-		   <listItem><para>The Maestro Editor UI library (Maestro.Editors.dll)</para></listItem>
-		   <listItem><para>The Maestro Packaging library (Maestro.Packaging.dll)</para></listItem>
-		   <listItem><para>The Maestro Login UI library (Maestro.Login.dll)</para></listItem>
-		   <listItem><para>The Maestro Shared UI library (Maestro.Shared.UI.dll)</para></listItem>
-		</list>
-      <para>
-      Also included in this documentation is the Developer's Guide to help you <link xlink:href="0395ae33-fb9f-46cf-bf1e-528a4ec3d948">Get Started</link>
-      </para>
+        <para>
+        This is the reference documentation for the MapGuide Maestro API. The API consists of:
+        </para>
+        <list class="bullet">
+           <listItem><para>The Maestro API core (OSGeo.MapGuide.MaestroAPI.dll)</para></listItem>
+           <listItem><para>The Maestro Extended Object Model Helper (OSGeo.MapGuide.ExtendedObjectModels.dll)</para></listItem>
+        </list>
+        <para>
+        For building GUI applications, you can tap into the Maestro UI components, which consist of:
+        </para>
+        <list class="bullet">
+           <listItem><para>The Maestro Editor UI library (Maestro.Editors.dll)</para></listItem>
+           <listItem><para>The Maestro Packaging library (Maestro.Packaging.dll)</para></listItem>
+           <listItem><para>The Maestro Login UI library (Maestro.Login.dll)</para></listItem>
+           <listItem><para>The Maestro Shared UI library (Maestro.Shared.UI.dll)</para></listItem>
+           <listItem><para>The Maestro Map Viewer library (Maestro.MapViewer.dll)</para></listItem>
+        </list>
+        <para>
+        For extending the MapGuide Maestro application, you can use the AddIn API, which consists of:
+        </para>
+        <list class="bullet">
+            <listItem><para>SharpDevelop Core (ICSharpCode.Core.dll)</para></listItem>
+            <listItem><para>SharpDevelop WinForms (ICSharpCode.Core.WinForms.dll)</para></listItem>
+            <listItem><para>The Maestro Base AddIn (Maestro.Base.dll)</para></listItem>
+        </list>
+        <para>
+        Also included in this documentation is the Developer's Guide to help you <link xlink:href="0395ae33-fb9f-46cf-bf1e-528a4ec3d948">Get Started</link>
+        </para>
     </introduction>
     <!-- <inThisSection>Optional description of content in this section</inThisSection> -->
     <!-- <reference>Optional reference section</reference> -->

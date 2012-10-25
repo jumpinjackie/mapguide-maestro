@@ -85,6 +85,9 @@ namespace Maestro.Base.Editor
                 _ed.InitResourceData(_edSvc);
         }
 
+        /// <summary>
+        /// Gets the type of the edited resource
+        /// </summary>
         public ResourceTypes ResourceType
         {
             get;

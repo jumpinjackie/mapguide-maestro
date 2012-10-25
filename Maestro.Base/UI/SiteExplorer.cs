@@ -40,7 +40,10 @@ using OSGeo.MapGuide.MaestroAPI.CrossConnection;
 
 namespace Maestro.Base.UI
 {
-    public partial class SiteExplorer : ViewContentBase, ISiteExplorer
+    /// <summary>
+    /// The site explorer
+    /// </summary>
+    internal partial class SiteExplorer : ViewContentBase, ISiteExplorer
     {
         /// <summary>
         /// Internal use only. Do not invoke directly. Use <see cref="ViewContentManager"/> for that

@@ -28,7 +28,7 @@ using OSGeo.MapGuide.ObjectModels;
 
 namespace Maestro.Base.Templates
 {
-    public class SimpleSymbolDefinitionItemTemplate : ItemTemplate
+    internal class SimpleSymbolDefinitionItemTemplate : ItemTemplate
     {
         public SimpleSymbolDefinitionItemTemplate()
         {
@@ -53,7 +53,7 @@ namespace Maestro.Base.Templates
         }
     }
 
-    public class CompoundSymbolDefinitionItemTemplate : ItemTemplate
+    internal class CompoundSymbolDefinitionItemTemplate : ItemTemplate
     {
         public CompoundSymbolDefinitionItemTemplate()
         {

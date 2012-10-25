@@ -35,7 +35,7 @@ namespace Maestro.Base.UI
 {
     //FIXME: Exceptions thrown in Mono centered around a non-existent image
 
-    public partial class NewResourceDialog : Form
+    internal partial class NewResourceDialog : Form
     {
         private static bool _subsequentRun = false;
         private static List<string> _lastSelectedCategoies = new List<string>();

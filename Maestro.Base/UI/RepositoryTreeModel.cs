@@ -40,7 +40,7 @@ namespace Maestro.Base.UI
 
         private bool _notify = false;
 
-        public RepositoryItem(string connectionName, IRepositoryItem item)
+        internal RepositoryItem(string connectionName, IRepositoryItem item)
         {
             _name = string.Empty;
             _children = new Dictionary<string, RepositoryItem>();
@@ -104,6 +104,11 @@ namespace Maestro.Base.UI
             _notify = true;
         }
 
+        /// <summary>
+        /// Gets whether the specified child item (name) exists
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public bool Contains(string name)
         {
             return _children.ContainsKey(name);
@@ -120,17 +125,26 @@ namespace Maestro.Base.UI
             set;
         }
 
+        /// <summary>
+        /// Gets the parent of this item
+        /// </summary>
         public RepositoryItem Parent
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Gets the children of this item
+        /// </summary>
         public IEnumerable<RepositoryItem> Children
         {
             get { return _children.Values; }
         }
 
+        /// <summary>
+        /// Gets the qualified name of this item
+        /// </summary>
         public string NameQualified
         {
             get 
@@ -160,6 +174,10 @@ namespace Maestro.Base.UI
             }
         }
 
+        /// <summary>
+        /// Adds the specified item as a child item
+        /// </summary>
+        /// <param name="item"></param>
         public void AddChild(RepositoryItem item)
         {
             item.Parent = this;
@@ -167,6 +185,10 @@ namespace Maestro.Base.UI
             NotifyStructureChanged(this);
         }
 
+        /// <summary>
+        /// Removes the child item
+        /// </summary>
+        /// <param name="item"></param>
         public void RemoveChild(RepositoryItem item)
         {
             if (_children.ContainsKey(item.NameQualified) && item.Parent == this)
@@ -196,17 +218,26 @@ namespace Maestro.Base.UI
             }
         }
 
+        /// <summary>
+        /// Gets whether this item is a root node
+        /// </summary>
         public bool IsRoot
         {
             get { return this.ResourceId == StringConstants.RootIdentifier; }
         }
 
+        /// <summary>
+        /// Gets the resource id
+        /// </summary>
         public string ResourceId
         {
             get;
             internal set;
         }
 
+        /// <summary>
+        /// Gets the name of the associated connection
+        /// </summary>
         public string ConnectionName
         {
             get;
@@ -215,6 +246,9 @@ namespace Maestro.Base.UI
 
         private string _name;
 
+        /// <summary>
+        /// Gets the name of this resource
+        /// </summary>
         public string Name
         {
             get { return _name; }
@@ -267,6 +301,9 @@ namespace Maestro.Base.UI
             }
         }
 
+        /// <summary>
+        /// Gets the resource type
+        /// </summary>
         public string ResourceType
         {
             get;
@@ -275,33 +312,48 @@ namespace Maestro.Base.UI
 
         private string _owner;
 
+        /// <summary>
+        /// Gets or sets the resource owner
+        /// </summary>
         public string Owner
         {
             get { return _owner; }
-            set
+            internal set
             {
                 _owner = value;
                 NotifyNodesChanged();
             }
         }
 
+        /// <summary>
+        /// Gets the date this resource was created
+        /// </summary>
         public DateTime CreatedDate
         {
             get;
             internal set;
         }
 
+        /// <summary>
+        /// Gets the modified date of this resource
+        /// </summary>
         public DateTime ModifiedDate
         {
             get;
             internal set;
         }
 
+        /// <summary>
+        /// Gets whether this item is a folder
+        /// </summary>
         public bool IsFolder
         {
             get { return this.ResourceId.EndsWith("/"); } //NOXLATE
         }
 
+        /// <summary>
+        /// Gets the icon for this item
+        /// </summary>
         public Image Icon
         {
             get;
@@ -339,15 +391,30 @@ namespace Maestro.Base.UI
             }
         }
 
+        /// <summary>
+        /// Defines valid clipboard actions for Site Explorer 
+        /// </summary>
         public enum ClipboardAction
         {
+            /// <summary>
+            /// The node was copied
+            /// </summary>
             Copy,
+            /// <summary>
+            /// The node was cut
+            /// </summary>
             Cut,
+            /// <summary>
+            /// No clipboard action applied
+            /// </summary>
             None
         }
 
         private ClipboardAction _action = ClipboardAction.None;
         
+        /// <summary>
+        /// Gets the clipboard state of this item
+        /// </summary>
         public ClipboardAction ClipboardState
         {
             get { return _action; }
@@ -367,8 +434,17 @@ namespace Maestro.Base.UI
         }
     }
 
+    /// <summary>
+    /// Provides tooltips for resources in the Site Explorer
+    /// </summary>
     public class RepositoryItemToolTipProvider : IToolTipProvider
     {
+        /// <summary>
+        /// Gets the tooltip
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="nodeControl"></param>
+        /// <returns></returns>
         public string GetToolTip(TreeNodeAdv node, Aga.Controls.Tree.NodeControls.NodeControl nodeControl)
         {
             RepositoryItem item = node.Tag as RepositoryItem;
@@ -392,7 +468,7 @@ namespace Maestro.Base.UI
         private OpenResourceManager _openResMgr;
         private ClipboardService _clip;
 
-        public RepositoryTreeModel(ServerConnectionManager connManager, TreeViewAdv tree, OpenResourceManager openResMgr, ClipboardService clip)
+        internal RepositoryTreeModel(ServerConnectionManager connManager, TreeViewAdv tree, OpenResourceManager openResMgr, ClipboardService clip)
         {
             _connManager = connManager;
             _tree = tree;
@@ -443,6 +519,11 @@ namespace Maestro.Base.UI
 
         private Dictionary<string, RepositoryItem> _rootNodes = new Dictionary<string, RepositoryItem>();
 
+        /// <summary>
+        /// Gets the child nodes in the given tree path
+        /// </summary>
+        /// <param name="treePath"></param>
+        /// <returns></returns>
         public override System.Collections.IEnumerable GetChildren(TreePath treePath)
         {
             if (treePath.IsEmpty())
@@ -527,6 +608,9 @@ namespace Maestro.Base.UI
             }
         }
 
+        /// <summary>
+        /// Refreshes this model
+        /// </summary>
         public override void Refresh()
         {
             //We have to override this because the base impl does not 
@@ -544,6 +628,11 @@ namespace Maestro.Base.UI
             OnStructureChanged(new TreePathEventArgs());
         }
 
+        /// <summary>
+        /// Gets whether the specified tree path is a path to a leaf node
+        /// </summary>
+        /// <param name="treePath"></param>
+        /// <returns></returns>
         public override bool IsLeaf(TreePath treePath)
         {
             return !((RepositoryItem)treePath.LastNode).IsFolder;

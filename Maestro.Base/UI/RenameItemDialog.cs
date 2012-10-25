@@ -28,7 +28,7 @@ using Maestro.Base.Services;
 
 namespace Maestro.Base.UI
 {
-    public partial class RenameItemDialog : Form
+    internal partial class RenameItemDialog : Form
     {
         private RenameItemDialog()
         {

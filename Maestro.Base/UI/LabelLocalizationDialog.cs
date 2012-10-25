@@ -29,7 +29,7 @@ using ICSharpCode.Core;
 
 namespace Maestro.Base.UI
 {
-    public partial class LabelLocalizationDialog : Form
+    internal partial class LabelLocalizationDialog : Form
     {
         private LabelLocalizationDialog()
         {
@@ -88,7 +88,7 @@ namespace Maestro.Base.UI
         }
     }
 
-    public class LocalizableElement : INotifyPropertyChanged
+    internal class LocalizableElement : INotifyPropertyChanged
     {
         private List<XmlNode> _element;
 

@@ -31,7 +31,7 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Base.Events
 {
-    public static class EventWatcher
+    internal static class EventWatcher
     {
         private static Timer _keepAliveTimer;
 

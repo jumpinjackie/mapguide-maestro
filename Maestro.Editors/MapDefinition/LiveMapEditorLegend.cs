@@ -221,6 +221,9 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
+        /// <summary>
+        /// Raised when a drag occurs
+        /// </summary>
         public event ItemDragEventHandler ItemDrag;
 
         internal void HandleDragDrop(DragEventArgs e)

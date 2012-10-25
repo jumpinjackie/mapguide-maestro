@@ -43,8 +43,6 @@ namespace Maestro.Editors.FeatureSource.Extensions
             grdJoinKeys.DataSource = _propertyJoins;
         }
 
-        private bool _init = false;
-
         private IAttributeRelation _rel;
 
         private string _primaryFeatureSource;
@@ -63,7 +61,6 @@ namespace Maestro.Editors.FeatureSource.Extensions
             _primaryFeatureSource = primaryFeatureSource;
             _primaryClass = primaryClass;
 
-            _init = true;
             grdJoinKeys.AutoGenerateColumns = false;
             _rel = rel;
         }
@@ -208,7 +205,6 @@ namespace Maestro.Editors.FeatureSource.Extensions
 
         protected override void OnLoad(EventArgs e)
         {
-            _init = false;
             base.OnLoad(e);
         }
 

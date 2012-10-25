@@ -30,7 +30,7 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
 namespace Maestro.Base.Templates
 {
-    public class VectorLayerDefinitionItemTemplate : ItemTemplate
+    internal class VectorLayerDefinitionItemTemplate : ItemTemplate
     {
         public VectorLayerDefinitionItemTemplate()
         {

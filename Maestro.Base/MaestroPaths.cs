@@ -26,8 +26,14 @@ using System.IO;
 
 namespace Maestro.Base
 {
+    /// <summary>
+    /// Contains path information
+    /// </summary>
     public class MaestroPaths
     {
+        /// <summary>
+        /// The name of the application
+        /// </summary>
         public static string AppName
         {
             get

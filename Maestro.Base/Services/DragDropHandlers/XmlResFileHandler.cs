@@ -29,7 +29,7 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Base.Services.DragDropHandlers
 {
-    public class XmlResFileHandler : IDragDropHandler
+    internal class XmlResFileHandler : IDragDropHandler
     {
         public string HandlerAction
         {

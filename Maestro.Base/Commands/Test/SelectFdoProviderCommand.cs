@@ -26,7 +26,7 @@ using Maestro.Editors.Common;
 
 namespace Maestro.Base.Commands.Test
 {
-    public class SelectFdoProviderCommand : AbstractMenuCommand
+    internal class SelectFdoProviderCommand : AbstractMenuCommand
     {
         public override void Run()
         {

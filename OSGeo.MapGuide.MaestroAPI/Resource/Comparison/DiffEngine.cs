@@ -302,7 +302,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
                 _length.ToString());
         }
         #region IComparable Members
-
+        /// <summary>
+        /// Compares this instance against the specified object
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public int CompareTo(object obj)
         {
             return _destIndex.CompareTo(((DiffResultSpan)obj)._destIndex);

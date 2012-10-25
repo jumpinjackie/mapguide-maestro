@@ -31,7 +31,7 @@ using OSGeo.MapGuide.MaestroAPI.Services;
 
 namespace Maestro.Base.UI
 {
-    public partial class RepointerDialog : Form
+    internal partial class RepointerDialog : Form
     {
         private RepointerDialog()
         {

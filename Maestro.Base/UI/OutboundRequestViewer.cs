@@ -32,7 +32,7 @@ using Maestro.Base.UI.Preferences;
 
 namespace Maestro.Base.UI
 {
-    public partial class OutboundRequestViewer : SingletonViewContent
+    internal partial class OutboundRequestViewer : SingletonViewContent
     {
         public OutboundRequestViewer()
         {

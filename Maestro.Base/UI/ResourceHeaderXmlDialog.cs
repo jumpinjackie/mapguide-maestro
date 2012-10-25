@@ -32,7 +32,10 @@ using OSGeo.MapGuide.MaestroAPI.Services;
 
 namespace Maestro.Base.UI
 {
-    public partial class ResourceHeaderXmlDialog : Form
+    /// <summary>
+    /// A dialog for editing a resource's header content
+    /// </summary>
+    internal partial class ResourceHeaderXmlDialog : Form
     {
         private ResourceHeaderXmlDialog()
         {

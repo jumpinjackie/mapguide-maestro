@@ -29,7 +29,7 @@ using System.Diagnostics;
 
 namespace Maestro.Base.Commands
 {
-    public class LiveMapEditorCommand : AbstractMenuCommand
+    internal class LiveMapEditorCommand : AbstractMenuCommand
     {
         public override void Run()
         {

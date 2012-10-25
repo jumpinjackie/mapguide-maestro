@@ -29,7 +29,7 @@ using OSGeo.MapGuide.MaestroAPI.Exceptions;
 
 namespace Maestro.Base.UI
 {
-    public partial class BoundsPicker : Form
+    internal partial class BoundsPicker : Form
     {
         private string m_bounds;
         public string SRSBounds

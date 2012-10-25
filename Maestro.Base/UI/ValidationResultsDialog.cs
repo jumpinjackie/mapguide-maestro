@@ -31,10 +31,18 @@ using OSGeo.MapGuide.MaestroAPI.Exceptions;
 
 namespace Maestro.Base
 {
+    /// <summary>
+    /// A dialog for displaying validation results
+    /// </summary>
     public partial class ValidationResultsDialog : Form
     {
         private List<KeyValuePair<string, ValidationIssue[]>> m_issues = new List<KeyValuePair<string, ValidationIssue[]>>();
 
+        /// <summary>
+        /// Creates a new instance
+        /// </summary>
+        /// <param name="resourceId"></param>
+        /// <param name="issues"></param>
         public ValidationResultsDialog(string resourceId, ValidationIssue[] issues)
             : this(
                 new List<KeyValuePair<string, ValidationIssue[]>>(
@@ -45,6 +53,10 @@ namespace Maestro.Base
             )
         { }
 
+        /// <summary>
+        /// Creates a new instance
+        /// </summary>
+        /// <param name="issues"></param>
         public ValidationResultsDialog(List<KeyValuePair<string, ValidationIssue[]>> issues)
             : this()
         {

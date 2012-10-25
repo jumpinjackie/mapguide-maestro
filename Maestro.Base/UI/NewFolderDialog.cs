@@ -27,7 +27,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Base.UI
 {
-    public partial class NewFolderDialog : Form
+    internal partial class NewFolderDialog : Form
     {
         private List<string> _folderNames;
 

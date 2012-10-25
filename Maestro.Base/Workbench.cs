@@ -86,6 +86,9 @@ namespace Maestro.Base
             }
         }
 
+        /// <summary>
+        /// Gets the active editor view
+        /// </summary>
         public IEditorViewContent ActiveEditor
         {
             get { return this.ActiveDocumentView as IEditorViewContent; }

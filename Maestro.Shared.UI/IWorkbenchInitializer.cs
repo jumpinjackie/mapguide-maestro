@@ -25,15 +25,43 @@ using System.Windows.Forms;
 
 namespace Maestro.Shared.UI
 {
+    /// <summary>
+    /// Initializes the main window
+    /// </summary>
     public interface IWorkbenchInitializer
     {
+        /// <summary>
+        /// Gets the main window icon
+        /// </summary>
+        /// <returns></returns>
         Icon GetIcon();
+        /// <summary>
+        /// Gets the main menu
+        /// </summary>
+        /// <param name="workbench"></param>
+        /// <returns></returns>
         MenuStrip GetMainMenu(WorkbenchBase workbench);
+        /// <summary>
+        /// Gets the main toolstrip
+        /// </summary>
+        /// <param name="workbench"></param>
+        /// <returns></returns>
         ToolStrip GetMainToolStrip(WorkbenchBase workbench);
+        /// <summary>
+        /// Updates the status of the menu items
+        /// </summary>
+        /// <param name="menu"></param>
+        /// <param name="toolstrips"></param>
         void UpdateMenuItemStatus(MenuStrip menu, IEnumerable<ToolStrip> toolstrips);
-
+        /// <summary>
+        /// Gets the view content manager
+        /// </summary>
+        /// <returns></returns>
         IViewContentManager GetViewContentManager();
-
+        /// <summary>
+        /// Gets the close icon for documents
+        /// </summary>
+        /// <returns></returns>
         Image GetDocumentCloseIcon();
     }
 }

@@ -28,16 +28,34 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Base.Templates
 {
+    /// <summary>
+    /// The base class of new resource item template
+    /// </summary>
     public abstract class ItemTemplate : IComparable<ItemTemplate>
     {
-        public string Name { get; set; }
+        /// <summary>
+        /// Gets or sets the name of this template
+        /// </summary>
+        public string Name { get; protected set; }
 
-        public string Description { get; set; }
+        /// <summary>
+        /// Gets or sets the description of this template
+        /// </summary>
+        public string Description { get; protected set; }
 
+        /// <summary>
+        /// Gets the category this template belongs in
+        /// </summary>
         public string Category { get; protected set; }
 
+        /// <summary>
+        /// Gets the resource type of this template
+        /// </summary>
         public string ResourceType { get; protected set; }
 
+        /// <summary>
+        /// Gets the icon for this template
+        /// </summary>
         public Image Icon { get; protected set; }
 
         /// <summary>
@@ -59,6 +77,11 @@ namespace Maestro.Base.Templates
         /// <returns>a new resource, null if the user cancelled during this process</returns>
         public abstract IResource CreateItem(string startFolder, IServerConnection conn);
 
+        /// <summary>
+        /// Compares this template against the specified template
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public int CompareTo(ItemTemplate other)
         {
             return this.Name.CompareTo(other.Name);
