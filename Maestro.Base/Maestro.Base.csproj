@@ -43,6 +43,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -51,6 +53,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\out\Release\Maestro.Base.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -707,6 +710,16 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if not exist "$(TargetDir)..\..\SDK\addin-bin" md "$(TargetDir)..\..\SDK\addin-bin"
+copy /Y "$(TargetDir)$(TargetName)$(TargetExt)" "$(TargetDir)..\..\SDK\addin-bin\"
+if exist "$(TargetDir)$(TargetName).xml" copy /Y "$(TargetDir)$(TargetName).xml" "$(TargetDir)..\..\SDK\addin-bin\"
+if exist "$(TargetDir)$(TargetName).pdb" copy /Y "$(TargetDir)$(TargetName).pdb" "$(TargetDir)..\..\SDK\addin-bin\"
+copy /Y "$(TargetDir)ICSharpCode.Core.dll" "$(TargetDir)..\..\SDK\addin-bin\"
+if exist "$(TargetDir)ICSharpCode.Core.pdb" copy /Y "$(TargetDir)ICSharpCode.Core.pdb" "$(TargetDir)..\..\SDK\addin-bin\"
+copy /Y "$(TargetDir)ICSharpCode.Core.WinForms.dll" "$(TargetDir)..\..\SDK\addin-bin\"
+if exist "$(TargetDir)ICSharpCode.Core.WinForms.pdb" copy /Y "$(TargetDir)ICSharpCode.Core.WinForms.pdb" "$(TargetDir)..\..\SDK\addin-bin\"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

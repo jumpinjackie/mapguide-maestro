@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{14855B2E-56F6-48C9-B982-E2A8CE29DECC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HelloAddIn</RootNamespace>
+    <AssemblyName>HelloAddIn</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\HelloAddIn\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\HelloAddIn\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ICSharpCode.Core">
+      <HintPath>..\..\addin-bin\ICSharpCode.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.Core.WinForms">
+      <HintPath>..\..\addin-bin\ICSharpCode.Core.WinForms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Maestro.Base">
+      <HintPath>..\..\addin-bin\Maestro.Base.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Maestro.Shared.UI">
+      <HintPath>..\..\bin\Maestro.Shared.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="OSGeo.MapGuide.MaestroAPI">
+      <HintPath>..\..\bin\OSGeo.MapGuide.MaestroAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\InvokeExampleServiceCommand.cs" />
+    <Compile Include="Commands\NewDocumentCommand.cs" />
+    <Compile Include="Commands\SelectedDocumentCommand.cs" />
+    <Compile Include="Commands\SelectedDocumentsCommand.cs" />
+    <Compile Include="Commands\SelectedFolderCommand.cs" />
+    <Compile Include="Commands\SelectedFoldersCommand.cs" />
+    <Compile Include="Commands\SelectedMixedCommand.cs" />
+    <Compile Include="Commands\StartupCommand.cs" />
+    <Compile Include="DocumentView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DocumentView.Designer.cs">
+      <DependentUpon>DocumentView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ExampleService.cs" />
+    <Compile Include="SidePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SidePanel.Designer.cs">
+      <DependentUpon>SidePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DocumentView.resx">
+      <DependentUpon>DocumentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SidePanel.resx">
+      <DependentUpon>SidePanel.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Manifest.addin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Readme.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

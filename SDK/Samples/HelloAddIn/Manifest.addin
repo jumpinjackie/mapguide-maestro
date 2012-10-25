@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Manifest.addin
+
+This is the addin manifest that SharpDevelop Core will look for in each addin directory. This contains important information about the
+addin and how various aspects of the addin will integrate into the main Maestro application.
+
+-->
+<AddIn name="HelloAddIn"
+       author="Jackie Ng"
+       url="http://trac.osgeo.org/mapguide/wiki/maestro"
+       description="Maestro Sample Add-In">
+
+    <Manifest>
+        <!-- Change this to match the name of your assembly -->
+        <Identity name="HelloAddIn" />
+    </Manifest>
+
+    <Runtime>
+        <Import assembly=":Maestro.Base" />
+        <!-- Change this to match the output assembly name of your add-in (with dll extension) -->
+        <Import assembly="HelloAddIn.dll" />
+    </Runtime>
+
+    <!--
+    Maestro Add-In anatomy
+    
+    Maestro exposes a whole series of extension points, these extension points are indicated by the <Path>
+    element.
+    
+    When Maestro loads all the add-ins it can find, it creates a merged AddIn registry of all these extension
+    points and their merged contents. Any class registered here can be instantiated by the AddIn registry.
+    
+    Classes that are registered must use the fully qualified name.
+    
+    Maestro offers the following extension points:
+    
+     /Maestro/ApplicationServices
+        - Register application-level service classes
+        
+     /Maestro/Shell/MainMenu
+        - Register commands to be merged into Maestro's main menu
+        
+     /Maestro/Shell/SingleViewContent
+        - Register single-instance view classes
+        
+     /Maestro/Shell/Toolbars/Main
+        - Register commands to be merged into Maestro's main toolbar
+        
+     /Maestro/Shell/SiteExplorer/Toolbar
+        - Register commands to be merged into the Site Explorer's toolbar
+        
+     /Maestro/Shell/SiteExplorer/SelectedFolder
+        - Register commands to be merged into the Site Explorer context menu for a selected folder. These are usually commands that operate on a single folder selected in the site explorer
+        
+     /Maestro/Shell/SiteExplorer/SelectedFolders
+        - Register commands to be merged into the Site Explorer context menu for selected folders. These are usually commands that operate on multiple folders selected in the site explorer
+        
+     /Maestro/Shell/SiteExplorer/SelectedDocument
+        - Register commands to be merged into the Site Explorer context menu for a selected document. These are usually commands that operate on a single document selected in the site explorer
+        
+     /Maestro/Shell/SiteExplorer/SelectedDocuments
+        - Register commands to be merged into the Site Explorer context menu for selected documents. These are usually commands that operate on multiple documents selected in the site explorer
+        
+     /Maestro/Shell/SiteExplorer/SelectedMixedResources
+        - Register commands to be merged into the Site Explorer context menu for multiple selected itmes. These are usually commands that operate on a multiple selected items in the site explorer
+        
+     /Workspace/Tools
+        - Register commands to be registered under Maestro's "Tools" menu
+        
+     /Workspace/Autostart
+        - Register commands to be executed on application startup (after add-ins have been loaded)
+        
+    Other add-ins may offer their own extension points, which you will have to consult their respective documentation
+    
+    WARNING: You must get the class names correct here. If you change them due to things like refactoring, you must update the matching names here, otherwise
+    the SharpDevelop Core will raise a warning about this (which is a good thing in a sense)
+    -->
+    
+    <!-- 
+    Application-level services 
+    
+    Register any application-level services here. Such classes must inherit from Maestro.Shared.UI.ServiceBase
+    Maestro will auto-instantiate any classes here to be available for consumption via the ServiceRegistry utility
+    class
+    -->
+    <Path name="/Maestro/ApplicationServices">
+        <Class id="ExampleService" class="HelloAddIn.Services.ExampleService" />
+    </Path>
+
+    <!-- 
+    Singleton view content classes
+    
+    Register any single-instance view content here. Such classes must inherit from Maestro.Shared.UI.SingletonViewContent
+    -->
+    <Path name="/Maestro/Shell/SingleViewContent">
+        <Class id="SidePanel" class="HelloAddIn.SidePanel" />
+    </Path>
+
+    <!-- 
+    Auto-start commands
+    
+    Register any command classes which will be executed on application startup (after all add-ins have been loaded). Such classes
+    must inherit from ICSharpCode.Core.AbstractCommand
+    -->
+    <Path name="/Workspace/Autostart">
+        <Class id="Startup" class="HelloAddIn.Commands.StartupCommand" />
+    </Path>
+
+    <!--
+    Maestro main menu
+    
+    Items declared here will be merged into Maestro's main menu, any sub menus will be merged as well
+    -->
+    <Path name="/Maestro/Shell/MainMenu">
+        <!-- This declares a top-level sub-menu labelled "Hello AddIn" -->
+        <MenuItem id="Menu_Hello"
+                  type="Menu"
+                  label="Hello AddIn">
+            <MenuItem id="Test"
+                      label="Invoke Example Service Command"
+                      class="HelloAddIn.Commands.InvokeExampleServiceCommand" />
+            <MenuItem id="NewDocument"
+                      label="New Document Command"
+                      class="HelloAddIn.Commands.NewDocumentCommand" />
+        </MenuItem>
+    </Path>
+
+    <!-- Site Explorer Context Menu (single document selected) -->
+    <Path name="/Maestro/Shell/SiteExplorer/SelectedDocument">
+        <MenuItem id="SelectedDocument"
+                  label="Selected Document Command"
+                  class="HelloAddIn.Commands.SelectedDocumentCommand" />
+    </Path>
+
+    <!-- Site Explorer Context Menu (multiple documents selected) -->
+    <Path name="/Maestro/Shell/SiteExplorer/SelectedDocuments">
+        <MenuItem id="SelectedDocuments"
+                  label="Selected Documents Command"
+                  class="HelloAddIn.Commands.SelectedDocumentsCommand" />
+    </Path>
+
+    <!-- Site Explorer Context Menu (single folder selected) -->
+    <Path name="/Maestro/Shell/SiteExplorer/SelectedFolder">
+        <MenuItem id="SelectedFolder"
+                  label="Selected Folder Command"
+                  class="HelloAddIn.Commands.SelectedFolderCommand" />
+    </Path>
+
+    <!-- Site Explorer Context Menu (multiple folders selected) -->
+    <Path name="/Maestro/Shell/SiteExplorer/SelectedFolders">
+        <MenuItem id="SelectedFolders"
+                  label="Selected Folders Command"
+                  class="HelloAddIn.Commands.SelectedFoldersCommand" />
+    </Path>
+
+    <!-- Site Explorer Context Menu (multiple items selected) -->
+    <Path name="/Maestro/Shell/SiteExplorer/SelectedMixedResources">
+        <MenuItem id="SelectedMixed"
+                  label="Selected Mixed Command"
+                  class="HelloAddIn.Commands.SelectedMixedCommand" />
+    </Path>
+</AddIn>
