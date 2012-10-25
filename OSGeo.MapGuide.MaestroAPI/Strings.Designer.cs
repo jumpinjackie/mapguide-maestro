@@ -1620,7 +1620,7 @@ namespace OSGeo.MapGuide.MaestroAPI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to validate column and schema.
+        ///   Looks up a localized string similar to Failed to validate column and schema: {0}.
         /// </summary>
         public static string LDF_SchemaAndColumnReadFailedError {
             get {

@@ -2869,7 +2869,7 @@
     <value>The scale range {0}-{1} overlaps the range {2}-{3}</value>
   </data>
   <data name="LDF_SchemaAndColumnReadFailedError" xml:space="preserve">
-    <value>Failed to validate column and schema</value>
+    <value>Failed to validate column and schema: {0}</value>
   </data>
   <data name="LDF_SchemaMissingError" xml:space="preserve">
     <value>Failed to find schema {0} in featuresource {1}</value>

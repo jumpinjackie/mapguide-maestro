@@ -141,9 +141,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                         else if (!foundGeometry)
                             issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_GeometryNotFound, string.Format(Strings.LDF_GeometryMissingError, geometry, qualClassName, fs.ResourceID)));
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        issues.Add(new ValidationIssue(fs, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_Generic, string.Format(Strings.LDF_SchemaAndColumnReadFailedError)));
+                        issues.Add(new ValidationIssue(fs, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_Generic, string.Format(Strings.LDF_SchemaAndColumnReadFailedError, ex.ToString())));
                     }
 
                     if (recurse)
