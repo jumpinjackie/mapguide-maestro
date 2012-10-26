@@ -42,7 +42,7 @@ namespace Maestro.Base.Commands
             ResourceService.RegisterNeutralStrings(Strings.ResourceManager);
 
             ResourcePreviewerFactory.RegisterPreviewer("Maestro.Http", new DefaultResourcePreviewer()); //NOXLATE
-
+            
             Workbench.WorkbenchInitialized += (sender, e) =>
             {
                 ServiceRegistry.GetService<NewItemTemplateService>().InitUserTemplates();

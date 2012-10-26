@@ -262,40 +262,40 @@
     <value>105, 0</value>
   </metadata>
   <data name="cutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>143, 22</value>
   </data>
   <data name="cutToolStripMenuItem.Text" xml:space="preserve">
     <value>Cut</value>
   </data>
   <data name="copyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>143, 22</value>
   </data>
   <data name="copyToolStripMenuItem.Text" xml:space="preserve">
     <value>Copy</value>
   </data>
   <data name="pasteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>143, 22</value>
   </data>
   <data name="pasteToolStripMenuItem.Text" xml:space="preserve">
     <value>Paste</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 6</value>
+    <value>140, 6</value>
   </data>
   <data name="findToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>143, 22</value>
   </data>
   <data name="findToolStripMenuItem.Text" xml:space="preserve">
     <value>Find</value>
   </data>
   <data name="findReplaceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>143, 22</value>
   </data>
   <data name="findReplaceToolStripMenuItem.Text" xml:space="preserve">
     <value>Find/Replace</value>
   </data>
   <data name="ctxXmlEditor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 142</value>
+    <value>144, 120</value>
   </data>
   <data name="&gt;&gt;ctxXmlEditor.Name" xml:space="preserve">
     <value>ctxXmlEditor</value>
@@ -319,7 +319,7 @@
     <value>txtXmlContent</value>
   </data>
   <data name="&gt;&gt;txtXmlContent.Type" xml:space="preserve">
-    <value>ICSharpCode.TextEditor.TextEditorControl, ICSharpCode.TextEditor, Version=4.2.0.8783, Culture=neutral, PublicKeyToken=4d61825e8dd49f1a</value>
+    <value>Maestro.Editors.Generic.XmlTextEditorControl, Maestro.Editors, Version=5.0.0.6640, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;txtXmlContent.Parent" xml:space="preserve">
     <value>$this</value>

@@ -45,7 +45,7 @@
             this.btnFindAndReplace = new System.Windows.Forms.ToolStripButton();
             this.resDataCtrl = new Maestro.Editors.Generic.ResourceDataPanel();
             this.nodeNumericUpDown1 = new Aga.Controls.Tree.NodeControls.NodeNumericUpDown();
-            this.txtXmlContent = new XmlTextEditorControl();
+            this.txtXmlContent = new Maestro.Editors.Generic.XmlTextEditorControl();
             this.ctxXmlEditor = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -194,6 +194,7 @@
             resources.ApplyResources(this.txtXmlContent, "txtXmlContent");
             this.txtXmlContent.IsReadOnly = false;
             this.txtXmlContent.Name = "txtXmlContent";
+            this.txtXmlContent.TextChanged += new System.EventHandler(this.txtXmlContent_TextChanged);
             // 
             // ctxXmlEditor
             // 

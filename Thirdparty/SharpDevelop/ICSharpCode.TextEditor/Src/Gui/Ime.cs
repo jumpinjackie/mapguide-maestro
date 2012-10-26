@@ -39,7 +39,7 @@ namespace ICSharpCode.TextEditor
 				return font;
 			}
 			set {
-				if (!value.Equals(font)) {
+				if (!Font.Equals(value, font)) {
 					font = value;
 					lf = null;
 					SetIMEWindowFont(value);

@@ -653,6 +653,9 @@
     <Compile Include="Fusion\WidgetSettingsCtrl.Designer.cs">
       <DependentUpon>WidgetSettingsCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generic\XmlEditor\XmlEditorOptions.cs" />
+    <Compile Include="Generic\XmlEditor\XmlFoldingStrategy.cs" />
+    <Compile Include="Generic\XmlEditor\XmlFormattingStrategy.cs" />
     <Compile Include="Generic\XmlTextEditorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

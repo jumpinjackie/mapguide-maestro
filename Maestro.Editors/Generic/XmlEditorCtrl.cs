@@ -34,6 +34,7 @@ using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels;
 using ICSharpCode.TextEditor.Actions;
+using Maestro.Editors.Generic.XmlEditor;
 
 namespace Maestro.Editors.Generic
 {
@@ -87,12 +88,13 @@ namespace Maestro.Editors.Generic
             InitializeComponent();
             txtXmlContent.RegisterAction(Keys.Control | Keys.F, new FindAction(this));
             txtXmlContent.RegisterAction(Keys.Control | Keys.H, new FindAndReplaceAction(this));
-            txtXmlContent.SetHighlighting("XML"); //NOXLATE
-            txtXmlContent.EnableFolding = true;
-            txtXmlContent.ShowInvalidLines = true;
-            txtXmlContent.ShowSpaces = true;
-            txtXmlContent.ShowTabs = true;
-            txtXmlContent.LineViewerStyle = LineViewerStyle.FullRow;
+
+            var props = TextEditorProperties.CreateDefault(txtXmlContent.Font);
+            props.LineViewerStyle = LineViewerStyle.FullRow;
+            props.ShowInvalidLines = true;
+
+            txtXmlContent.ApplySettings(props);
+
             txtXmlContent.TextChanged += new EventHandler(OnTextContentChanged);
         }
         
@@ -209,7 +211,7 @@ namespace Maestro.Editors.Generic
         {
             UpdateTextPosition();
             EvaluateCommands();
-
+            txtXmlContent.UpdateFolding();
             if (_ready) 
                 OnResourceChanged();
         }
