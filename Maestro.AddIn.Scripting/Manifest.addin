@@ -23,11 +23,6 @@
         <Class id="IPyPrefs" class="Maestro.AddIn.Scripting.UI.IronPythonPreferences" />
     </Path>
 
-    <!-- Application-level services -->
-    <Path name="/Maestro/ApplicationServices">
-        <Class id="ScriptingService" class="Maestro.AddIn.Scripting.Services.ScriptingService" />
-    </Path>
-
     <!-- Singleton view content -->
     <Path name="/Maestro/Shell/SingleViewContent">
         <Class id="IronPythonRepl" class="Maestro.AddIn.Scripting.UI.IronPythonRepl" />

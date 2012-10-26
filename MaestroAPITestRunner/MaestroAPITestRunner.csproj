@@ -93,37 +93,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="MGOS22\webconfig.ini">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Platform.ini">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\SDK\bin\bin.x86.MGOS2.2.0\OSGeo.MapGuide.MaestroAPI.Native32-2.2.0.dll">
-      <Link>MGOS22\OSGeo.MapGuide.MaestroAPI.Native32-2.2.0.dll</Link>
-    </Content>
-    <Content Include="..\Thirdparty\MGOS_2_2_0_x86\OSGeo.MapGuide.Foundation.dll">
-      <Link>MGOS22\OSGeo.MapGuide.Foundation.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Thirdparty\MGOS_2_2_0_x86\OSGeo.MapGuide.Geometry.dll">
-      <Link>MGOS22\OSGeo.MapGuide.Geometry.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Thirdparty\MGOS_2_2_0_x86\OSGeo.MapGuide.MapGuideCommon.dll">
-      <Link>MGOS22\OSGeo.MapGuide.MapGuideCommon.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Thirdparty\MGOS_2_2_0_x86\OSGeo.MapGuide.PlatformBase.dll">
-      <Link>MGOS22\OSGeo.MapGuide.PlatformBase.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\Thirdparty\MGOS_2_2_0_x86\OSGeo.MapGuide.Web.dll">
-      <Link>MGOS22\OSGeo.MapGuide.Web.dll</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="ConnectionProviders.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

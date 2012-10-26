@@ -1,23 +1,4 @@
-﻿#region Disclaimer / License
-// Copyright (C) 2012, Jackie Ng
-// http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
-// This library is free software; you can redistribute it and/or
-// modify it under the terms of the GNU Lesser General Public
-// License as published by the Free Software Foundation; either
-// version 2.1 of the License, or (at your option) any later version.
-// 
-// This library is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-// Lesser General Public License for more details.
-// 
-// You should have received a copy of the GNU Lesser General Public
-// License along with this library; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -29,25 +10,31 @@ using Maestro.Shared.UI;
 
 namespace Maestro.AddIn.Scripting.UI
 {
+    using Lang.Python;
+
     public partial class IronPythonRepl : SingletonViewContent
     {
-        private IronTextBoxControl _console;
+        private TextEditor textEditor;
+        private PythonConsoleHost host;
 
         public IronPythonRepl()
         {
             InitializeComponent();
-            _console = new IronTextBoxControl();
-            _console.Prompt = ">>>"; //NOXLATE
-            _console.Dock = DockStyle.Fill;
-            this.Controls.Add(_console);
+            textEditorControl.CreateControl();
+
+            //TODO: Setup python syntax highlighting
 
             this.Title = this.Description = Strings.Title_IronPython_Console;
+            this.Disposed += OnDisposed;
+
+            textEditor = new TextEditor(textEditorControl);
+            host = new PythonConsoleHost(textEditor);
+            host.Run();	
         }
 
-        protected override void OnLoad(EventArgs e)
+        void OnDisposed(object sender, EventArgs e)
         {
-            _console.WriteText("help" + Environment.NewLine); //NOXLATE
-            _console.SimEnter();
+            host.Dispose();
         }
 
         public override ViewRegion DefaultRegion

@@ -28,6 +28,7 @@ using Maestro.Base;
 using Maestro.Base.Services;
 using System.IO;
 using Maestro.Editors.Common;
+using Microsoft.Scripting.Hosting.Shell;
 
 namespace Maestro.AddIn.Scripting.Services
 {

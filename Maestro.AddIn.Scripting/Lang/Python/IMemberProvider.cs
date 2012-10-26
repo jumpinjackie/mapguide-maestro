@@ -2,6 +2,18 @@
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
+// Original code from SharpDevelop 3.2.1 licensed under the same terms (LGPL 2.1)
+// Copyright 2002-2010 by
+//
+//  AlphaSierraPapa, Christoph Wille
+//  Vordernberger Strasse 27/8
+//  A-8700 Leoben
+//  Austria
+//
+//  email: office@alphasierrapapa.com
+//  court of jurisdiction: Landesgericht Leoben
+//
+// 
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
@@ -19,21 +31,18 @@
 #endregion
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 
-namespace Maestro.AddIn.Scripting.UI
+namespace Maestro.AddIn.Scripting.Lang.Python
 {
-    public partial class TextWindow : Form
+    /// <summary>
+    /// Returns member names or global names for the python console command line.
+    /// </summary>
+    public interface IMemberProvider
     {
-        public TextWindow(string text)
-        {
-            InitializeComponent();
-            txtBox.Text = text;
-        }
+        IList<string> GetMemberNames(string name);
+
+        IList<string> GetGlobals(string name);
     }
 }

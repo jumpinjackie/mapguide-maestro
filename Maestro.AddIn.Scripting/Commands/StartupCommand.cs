@@ -9,6 +9,7 @@ using Maestro.Shared.UI;
 using Maestro.Base.Services;
 using Props = ICSharpCode.Core.PropertyService;
 using Maestro.Base.UI.Preferences;
+using ICSharpCode.TextEditor.Document;
 
 namespace Maestro.AddIn.Scripting.Commands
 {
