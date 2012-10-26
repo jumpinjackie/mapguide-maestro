@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\out\Debug\AddIns\Scripting\Maestro.AddIn.Scripting.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -83,6 +84,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ScriptingConfigProperties.cs" />
     <Compile Include="Services\ScriptingClasses.cs" />
     <Compile Include="Strings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -106,8 +108,8 @@
     <Content Include="Manifest.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\cross-script.png" />
     <None Include="Resources\block.png" />
-    <None Include="Resources\Python.xshd" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Maestro.Base\Maestro.Base.csproj">
@@ -156,7 +158,11 @@
       <DependentUpon>IronPythonRepl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /S /Y /I "$(SolutionDir)..\Thirdparty\IronPython-2.7.1\Lib" "$(SolutionDir)$(OutDir)Lib"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

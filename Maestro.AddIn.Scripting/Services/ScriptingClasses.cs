@@ -29,9 +29,32 @@ using Maestro.Base.Services;
 using System.IO;
 using Maestro.Editors.Common;
 using Microsoft.Scripting.Hosting.Shell;
+using Microsoft.Scripting.Runtime;
+using Microsoft.Scripting.Hosting;
+using Maestro.AddIn.Scripting.UI;
 
 namespace Maestro.AddIn.Scripting.Services
 {
+    public static class ScriptHostSetup
+    {
+        internal static void SetupGlobalScope(ScriptEngine engine, LanguageContext context)
+        {
+            var global = context.GetScope(null);
+            context.ScopeSetVariable(global, ScriptGlobals.HostApp, new HostApplication());
+        }
+    }
+
+    /// <summary>
+    /// Python built-ins injected into the Maestro IronPython REPL
+    /// </summary>
+    public static class ScriptGlobals
+    {
+        /// <summary>
+        /// The Host Application
+        /// </summary>
+        public const string HostApp = "app"; //NOXLATE
+    }
+
     /// <summary>
     /// A simplified helper class that is exposed to python scripts to provide
     /// convenience functionality or to workaround concepts that don't cleanly
@@ -137,6 +160,35 @@ namespace Maestro.AddIn.Scripting.Services
         public void ShowError(Exception ex)
         {
             ErrorDialog.Show(ex);
+        }
+
+        /// <summary>
+        /// Opens the default editor for the specified resource
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="resourceId"></param>
+        public void OpenEditor(IServerConnection conn, string resourceId)
+        {
+            Action action = () =>
+            {
+                var siteExp = this.MainWindow.ActiveSiteExplorer;
+                var omgr = ServiceRegistry.GetService<OpenResourceManager>();
+                omgr.Open(resourceId, conn, false, siteExp);
+            };
+            if (this.MainWindow.InvokeRequired)
+                this.MainWindow.Invoke(action);
+            else
+                action();
+        }
+
+        /// <summary>
+        /// Invokes the specified method on the UI thread. Methods that interact with the UI or create UI components
+        /// must be done on this thread
+        /// </summary>
+        /// <param name="method"></param>
+        public void UIInvoke(Delegate method)
+        {
+            this.MainWindow.Invoke(method);
         }
     }
 }

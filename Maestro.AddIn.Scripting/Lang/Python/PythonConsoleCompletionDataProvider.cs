@@ -42,7 +42,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
     /// <summary>
     /// Provides code completion for the Python Console window.
     /// </summary>
-    public class PythonConsoleCompletionDataProvider : ICompletionDataProvider
+    internal class PythonConsoleCompletionDataProvider : ICompletionDataProvider
     {
         IMemberProvider memberProvider;
 
@@ -68,7 +68,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         public ICompletionData[] GenerateCompletionData(string line)
         {
             List<DefaultCompletionData> items = new List<DefaultCompletionData>();
-
+            //TODO: Breaks down on compound python expressions
             string name = GetName(line);
             if (!String.IsNullOrEmpty(name))
             {

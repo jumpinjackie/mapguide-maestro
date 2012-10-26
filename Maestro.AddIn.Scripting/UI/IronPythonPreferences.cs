@@ -30,7 +30,7 @@ using Maestro.Base.UI.Preferences;
 
 namespace Maestro.AddIn.Scripting.UI
 {
-    public partial class IronPythonPreferences : UserControl, IPreferenceSheet
+    internal partial class IronPythonPreferences : UserControl, IPreferenceSheet
     {
         public IronPythonPreferences()
         {
@@ -41,8 +41,10 @@ namespace Maestro.AddIn.Scripting.UI
         {
             base.OnLoad(e);
 
-            var bShow = Props.Get(ShowIronPythonConsole, true);
+            var bShow = Props.Get(ScriptingConfigProperties.ShowIronPythonConsole, ScriptingConfigProperties.DefaultShowIronPythonConsole);
             chkShowOnStartup.Checked = bShow;
+
+            txtModulePaths.Text = Props.Get(ScriptingConfigProperties.IronPythonModulePath, ScriptingConfigProperties.DefaultIronPythonModulePath);
         }
 
         public string Title
@@ -55,13 +57,16 @@ namespace Maestro.AddIn.Scripting.UI
             get { return this; }
         }
 
-        public const string ShowIronPythonConsole = "Scripting.ShowIronPythonConsole";//to support newline for textbox use
+        
 
         public bool ApplyChanges()
         {
             bool restart = false;
 
-            if (Apply(ShowIronPythonConsole, chkShowOnStartup.Checked))
+            if (Apply(ScriptingConfigProperties.ShowIronPythonConsole, chkShowOnStartup.Checked))
+                restart = true;
+
+            if (Apply(ScriptingConfigProperties.IronPythonModulePath, txtModulePaths.Text))
                 restart = true;
 
             return restart;
@@ -78,7 +83,8 @@ namespace Maestro.AddIn.Scripting.UI
 
         public void ApplyDefaults()
         {
-            Props.Set(ShowIronPythonConsole, true);
+            Props.Set(ScriptingConfigProperties.ShowIronPythonConsole, ScriptingConfigProperties.DefaultShowIronPythonConsole);
+            Props.Set(ScriptingConfigProperties.IronPythonModulePath, ScriptingConfigProperties.DefaultIronPythonModulePath);
         }
     }
 }

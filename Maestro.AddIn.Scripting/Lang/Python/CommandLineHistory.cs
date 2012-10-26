@@ -39,7 +39,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
     /// <summary>
     /// Stores the command line history for the PythonConsole.
     /// </summary>
-    public class CommandLineHistory
+    internal class CommandLineHistory
     {
         List<string> lines = new List<string>();
         int position;

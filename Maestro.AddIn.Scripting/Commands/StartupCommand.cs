@@ -23,7 +23,7 @@ namespace Maestro.AddIn.Scripting.Commands
             Workbench.WorkbenchInitialized += (sender, e) =>
             {
                 var mgr = ServiceRegistry.GetService<ViewContentManager>();
-                if (Props.Get(IronPythonPreferences.ShowIronPythonConsole, true))
+                if (Props.Get(ScriptingConfigProperties.ShowIronPythonConsole, ScriptingConfigProperties.DefaultShowIronPythonConsole))
                     mgr.OpenContent<IronPythonRepl>(ViewRegion.Bottom);
             };
         }

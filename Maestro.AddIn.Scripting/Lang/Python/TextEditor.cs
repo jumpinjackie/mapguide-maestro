@@ -40,7 +40,7 @@ using System.Text;
 
 namespace Maestro.AddIn.Scripting.Lang.Python
 {
-    public class TextEditor : ITextEditor
+    internal class TextEditor : ITextEditor
     {
         delegate string GetLineInvoker(int index);
         delegate void WriteInvoker(string text, Color color);

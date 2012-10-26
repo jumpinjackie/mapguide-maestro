@@ -29,10 +29,13 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 #endregion
+using ICSharpCode.Core;
 using IronPython.Hosting;
 using IronPython.Runtime;
 using Maestro.AddIn.Scripting.Services;
+using Maestro.AddIn.Scripting.UI;
 using Microsoft.Scripting.Hosting;
+using Microsoft.Scripting.Hosting.Providers;
 using Microsoft.Scripting.Hosting.Shell;
 using System;
 using System.Collections.Generic;
@@ -45,11 +48,13 @@ namespace Maestro.AddIn.Scripting.Lang.Python
     /// <summary>
     /// Hosts the python console.
     /// </summary>
-    public class PythonConsoleHost : ConsoleHost, IDisposable
+    internal class PythonConsoleHost : ConsoleHost, IDisposable
     {
         Thread thread;
         ITextEditor textEditor;
         PythonConsole pythonConsole;
+
+        public PythonConsole Console { get { return pythonConsole; } }
 
         public PythonConsoleHost(ITextEditor textEditor)
         {
@@ -93,6 +98,35 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             return new PythonOptionsParser();
         }
 
+        protected override ScriptRuntimeSetup CreateRuntimeSetup()
+        {
+            ScriptRuntimeSetup srs = ScriptRuntimeSetup.ReadConfiguration();
+            var paths = PropertyService.Get(ScriptingConfigProperties.IronPythonModulePath, ScriptingConfigProperties.DefaultIronPythonModulePath).Split(';');
+            if (srs.LanguageSetups.Count > 0)
+            {
+                foreach (var langSetup in srs.LanguageSetups)
+                {
+                    if (langSetup.FileExtensions.Contains(".py")) //NOXLATE
+                    {
+                        langSetup.Options["SearchPaths"] = paths; //NOXLATE
+                    }
+                }
+            }
+            else
+            {
+                srs.Options["SearchPaths"] = paths; //NOXLATE
+            }
+            return srs;
+        }
+
+        protected override void ExecuteInternal()
+        {
+            var pc = HostingHelpers.GetLanguageContext(Engine) as PythonContext;
+            pc.SetModuleState(typeof(ScriptEngine), Engine);
+            ScriptHostSetup.SetupGlobalScope(Engine, pc);
+            base.ExecuteInternal();
+        }
+
         /// <remarks>
         /// After the engine is created the standard output is replaced with our custom Stream class so we
         /// can redirect the stdout to the text editor window.
@@ -103,9 +137,6 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         {
             SetOutput(new PythonOutputStream(textEditor));
             pythonConsole = new PythonConsole(textEditor, commandLine);
-
-            engine.Runtime.Globals.SetVariable("app", new HostApplication());
-
             return pythonConsole;
         }
 

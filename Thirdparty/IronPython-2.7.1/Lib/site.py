@@ -552,7 +552,8 @@ def main():
         setBEGINLIBPATH()
     setquit()
     setcopyright()
-    sethelper()
+    # This interfers with IronPython's helper, so it's disabled
+    #sethelper()
     aliasmbcs()
     setencoding()
     execsitecustomize()

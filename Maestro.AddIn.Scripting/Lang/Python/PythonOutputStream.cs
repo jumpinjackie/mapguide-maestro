@@ -37,7 +37,7 @@ using System.Text;
 
 namespace Maestro.AddIn.Scripting.Lang.Python
 {
-    public class PythonOutputStream : Stream
+    internal class PythonOutputStream : Stream
     {
         ITextEditor textEditor;
 

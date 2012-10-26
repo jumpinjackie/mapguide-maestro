@@ -41,7 +41,7 @@ using System.Windows.Forms;
 
 namespace Maestro.AddIn.Scripting.Lang.Python
 {
-    public class PythonConsole : IConsole, IDisposable, IMemberProvider
+    internal class PythonConsole : IConsole, IDisposable, IMemberProvider
     {
         ITextEditor textEditor;
         int lineReceivedEventIndex = 0; // The index into the waitHandles array where the lineReceivedEvent is stored.
@@ -52,6 +52,8 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         List<string> previousLines = new List<string>();
         CommandLine commandLine;
         CommandLineHistory commandLineHistory = new CommandLineHistory();
+
+        public CommandLine CommandLine { get { return this.commandLine; } }
 
         public PythonConsole(ITextEditor textEditor, CommandLine commandLine)
         {
@@ -77,12 +79,16 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         {
             get
             {
+            #if DEBUG
                 Console.WriteLine("PythonConsole.Output get");
+            #endif
                 return null;
             }
             set
             {
+            #if DEBUG
                 Console.WriteLine("PythonConsole.Output set");
+            #endif
             }
         }
 
@@ -90,12 +96,16 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         {
             get
             {
+            #if DEBUG
                 Console.WriteLine("PythonConsole.ErrorOutput get");
+            #endif
                 return null;
             }
             set
             {
+            #if DEBUG
                 Console.WriteLine("PythonConsole.ErrorOutput get");
+            #endif
             }
         }
 
@@ -118,8 +128,9 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// </summary>
         public string ReadLine(int autoIndentSize)
         {
+        #if DEBUG
             Console.WriteLine("PythonConsole.ReadLine(): autoIndentSize: " + autoIndentSize);
-
+        #endif
             string indent = String.Empty;
             if (autoIndentSize > 0)
             {
@@ -130,7 +141,9 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             string line = ReadLineFromTextEditor();
             if (line != null)
             {
+            #if DEBUG
                 Console.WriteLine("ReadLine: " + indent + line);
+            #endif
                 return indent + line;
             }
             return null;
@@ -141,8 +154,9 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// </summary>
         public void Write(string text, Style style)
         {
+        #if DEBUG
             Console.WriteLine("PythonConsole.Write(text, style): " + text);
-
+        #endif
             textEditor.Write(text);
 
             if (style == Style.Prompt)

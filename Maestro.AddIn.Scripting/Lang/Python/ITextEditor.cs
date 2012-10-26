@@ -45,7 +45,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
     /// all the methods will be called on another thread not the main UI thread and will therefore need to
     /// be invoked.
     /// </summary>
-    public interface ITextEditor
+    internal interface ITextEditor
     {
         /// <summary>
         /// Fired when a key is pressed but before any text has been added to the text editor.

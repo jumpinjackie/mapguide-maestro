@@ -29,30 +29,58 @@
         private void InitializeComponent()
         {
             this.textEditorControl = new ICSharpCode.TextEditor.TextEditorControl();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnClear = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textEditorControl
             // 
             this.textEditorControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textEditorControl.IsReadOnly = false;
-            this.textEditorControl.Location = new System.Drawing.Point(0, 0);
+            this.textEditorControl.Location = new System.Drawing.Point(0, 25);
             this.textEditorControl.Name = "textEditorControl";
-            this.textEditorControl.Size = new System.Drawing.Size(594, 299);
+            this.textEditorControl.Size = new System.Drawing.Size(594, 274);
             this.textEditorControl.TabIndex = 0;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnClear});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(594, 25);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Image = global::Maestro.AddIn.Scripting.Properties.Resources.cross_script;
+            this.btnClear.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(54, 22);
+            this.btnClear.Text = "Clear";
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // IronPythonRepl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.textEditorControl);
+            this.Controls.Add(this.toolStrip1);
             this.Name = "IronPythonRepl";
             this.Size = new System.Drawing.Size(594, 299);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private ICSharpCode.TextEditor.TextEditorControl textEditorControl;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton btnClear;
     }
 }

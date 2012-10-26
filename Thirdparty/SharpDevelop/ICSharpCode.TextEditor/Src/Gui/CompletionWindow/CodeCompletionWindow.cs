@@ -29,7 +29,13 @@ namespace ICSharpCode.TextEditor.Gui.CompletionWindow
 		int endOffset;
 		DeclarationViewWindow declarationViewWindow = null;
 		Rectangle workingScreen;
-		
+
+        public Font CompletionItemFont
+        {
+            get { return codeCompletionListView.Font; }
+            set { codeCompletionListView.Font = value; }
+        }
+
 		public static CodeCompletionWindow ShowCompletionWindow(Form parent, TextEditorControl control, string fileName, ICompletionDataProvider completionDataProvider, char firstChar)
 		{
 			return ShowCompletionWindow(parent, control, fileName, completionDataProvider, firstChar, true, true);
@@ -64,6 +70,7 @@ namespace ICSharpCode.TextEditor.Gui.CompletionWindow
 			}
 			
 			codeCompletionListView = new CodeCompletionListView(completionData);
+            codeCompletionListView.Font = new System.Drawing.Font(FontFamily.GenericMonospace, codeCompletionListView.Font.Size);
 			codeCompletionListView.ImageList = completionDataProvider.ImageList;
 			codeCompletionListView.Dock = DockStyle.Fill;
 			codeCompletionListView.SelectedItemChanged += new EventHandler(CodeCompletionListViewSelectedItemChanged);

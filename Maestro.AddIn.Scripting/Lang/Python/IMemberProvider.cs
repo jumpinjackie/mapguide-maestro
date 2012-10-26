@@ -39,7 +39,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
     /// <summary>
     /// Returns member names or global names for the python console command line.
     /// </summary>
-    public interface IMemberProvider
+    internal interface IMemberProvider
     {
         IList<string> GetMemberNames(string name);
 

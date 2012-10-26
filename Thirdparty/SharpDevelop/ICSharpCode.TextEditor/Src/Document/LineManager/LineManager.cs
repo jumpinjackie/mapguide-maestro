@@ -323,7 +323,7 @@ namespace ICSharpCode.TextEditor.Document
 							}
 						}
 						#if DATACONSISTENCYTEST
-						Debug.Assert(false, "Found lone \\r, data consistency problems?");
+						//Debug.Assert(false, "Found lone \\r, data consistency problems?");
 						#endif
 						goto case '\n';
 					case '\n':

@@ -71,12 +71,12 @@ namespace Maestro.AddIn.Scripting.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static byte[] Python {
+        internal static System.Drawing.Bitmap cross_script {
             get {
-                object obj = ResourceManager.GetObject("Python", resourceCulture);
-                return ((byte[])(obj));
+                object obj = ResourceManager.GetObject("cross-script", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
