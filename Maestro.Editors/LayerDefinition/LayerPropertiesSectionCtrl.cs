@@ -191,6 +191,10 @@ namespace Maestro.Editors.LayerDefinition
                     _props.Add(pair);
                     _vl.AddPropertyMapping(pair);
                 }
+                else
+                {
+                    nsp.Value = displayName;
+                }
             }
             else //Turned off
             {
@@ -208,7 +212,7 @@ namespace Maestro.Editors.LayerDefinition
             if (e.RowIndex >= 0)
             {
                 var row = grdProperties.Rows[e.RowIndex];
-                if (e.ColumnIndex == 0) //checkbox
+                if (e.ColumnIndex == 0 || e.ColumnIndex == 2) //checkbox
                 {
                     OnPropertyMappingChanged((bool)row.Cells[0].Value, row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString());
                 }
