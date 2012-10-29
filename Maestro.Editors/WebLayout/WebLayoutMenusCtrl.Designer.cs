@@ -107,12 +107,15 @@
             // 
             // grdCommands
             // 
+            this.grdCommands.AllowUserToAddRows = false;
+            this.grdCommands.AllowUserToDeleteRows = false;
             resources.ApplyResources(this.grdCommands, "grdCommands");
             this.grdCommands.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdCommands.Name = "grdCommands";
+            this.grdCommands.ReadOnly = true;
             this.grdCommands.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCommands_CellClick);
-            this.grdCommands.DragLeave += new System.EventHandler(this.grdCommands_DragLeave);
             this.grdCommands.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdCommands_CellClick);
+            this.grdCommands.DragLeave += new System.EventHandler(this.grdCommands_DragLeave);
             // 
             // groupBox1
             // 
@@ -193,9 +196,8 @@
             // WebLayoutMenusCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "Menus and Toolbars";
-            this.Name = "WebLayoutMenusCtrl";
             resources.ApplyResources(this, "$this");
+            this.Name = "WebLayoutMenusCtrl";
             this.contentPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdCommands)).EndInit();
             this.groupBox1.ResumeLayout(false);

@@ -116,6 +116,10 @@ namespace Maestro.Editors.WebLayout
                 grdCommands.Rows[cell.RowIndex].Selected = true;
                 btnAddFromCmdSet.Enabled = true;
             }
+            else if (grdCommands.SelectedRows.Count == 1)
+            {
+                btnAddFromCmdSet.Enabled = true;
+            }
             else
             {
                 btnAddFromCmdSet.Enabled = false;
