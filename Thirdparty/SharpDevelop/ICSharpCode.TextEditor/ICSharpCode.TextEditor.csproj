@@ -201,6 +201,7 @@
     <EmbeddedResource Include="Resources\Coco-Mode.xshd" />
     <EmbeddedResource Include="Resources\CSharp-Mode.xshd" />
     <EmbeddedResource Include="Resources\HTML-Mode.xshd" />
+    <EmbeddedResource Include="Resources\FDO.xshd" />
     <None Include="Resources\ICSharpCode.TextEditor.snk" />
     <EmbeddedResource Include="Resources\TextEditorControl.bmp" />
     <EmbeddedResource Include="Resources\Java-Mode.xshd" />
@@ -223,6 +224,7 @@
     <Compile Include="Src\Util\WeakCollection.cs" />
     <EmbeddedResource Include="Resources\Patch-Mode.xshd" />
     <EmbeddedResource Include="Resources\Python.xshd" />
+    <EmbeddedResource Include="Resources\SQL.xshd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

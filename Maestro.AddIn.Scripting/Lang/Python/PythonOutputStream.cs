@@ -34,6 +34,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Maestro.Editors.Common;
 
 namespace Maestro.AddIn.Scripting.Lang.Python
 {

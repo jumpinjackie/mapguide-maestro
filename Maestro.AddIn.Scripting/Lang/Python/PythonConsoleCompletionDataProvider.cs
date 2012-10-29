@@ -69,12 +69,13 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         public ICompletionData[] GenerateCompletionData(string line)
         {
             List<DefaultCompletionData> items = new List<DefaultCompletionData>();
-            //TODO: Breaks down on compound python expressions
             string name = GetName(line);
             if (!String.IsNullOrEmpty(name))
             {
                 try
                 {
+                    //TODO: It would be nice if we could get extra information besides the name. I'm not sure
+                    //if the DLR hosting API can give us anymore information
                     foreach (string member in memberProvider.GetMemberNames(name))
                     {
                         items.Add(new DefaultCompletionData(member, String.Empty, 0)); //ClassBrowserIconService.MethodIndex));
@@ -90,7 +91,10 @@ namespace Maestro.AddIn.Scripting.Lang.Python
 
         string GetName(string text)
         {
-            int startIndex = text.LastIndexOfAny(new char[] { ' ', '+', '(' });
+            //Assume compacted expressions, meaning we need to take into account operators and non-whitespace tokens
+            //TODO: Still imperfect. A dot after a function expression brings up nothing. But a dot after a named variable will
+            //trigger auto-complete most of the time
+            int startIndex = text.LastIndexOfAny(new char[] { ' ', '+', '/', '*', '-', '%', '=', '>', '<', '&', '|', '^', '~', '(', ')' });
             string res = text.Substring(startIndex + 1);
             Debug.WriteLine("Evaluating python auto-complete options for: " + res);
             return res;

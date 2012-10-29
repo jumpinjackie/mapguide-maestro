@@ -1,0 +1,145 @@
+﻿<?xml version = "1.0"?>
+
+<SyntaxDefinition name = "FDO" extensions = ".fdq">
+
+  <Environment>
+    <Default      color = "SystemColors.WindowText" bgcolor="SystemColors.Window"/>
+    <VRuler       color = "Blue"/>
+    <Selection    bgcolor = "LightBlue"/>
+    <LineNumbers  color = "Teal" bgcolor = "SystemColors.Window"/>
+    <InvalidLines color = "Red"/>
+    <EOLMarkers   color = "White"/>
+    <SpaceMarkers color = "#E0E0E5"/>
+    <TabMarkers   color = "#E0E0E5"/>
+    <CaretMarker  color = "Yellow"/>
+    <FoldLine     color = "#808080" bgcolor="Black"/>
+    <FoldMarker   color = "#808080" bgcolor="White"/>
+  </Environment>
+
+  <Properties>
+    <Property name="LineComment" value="--"/>
+  </Properties>
+
+  <Digits name = "Digits" bold = "false" italic = "false" color = "DarkBlue"/>
+
+  <RuleSets>
+    <RuleSet ignorecase = "true">
+
+      <Delimiters>=!&gt;&lt;+-/*%&amp;|^~.}{,;][?:()</Delimiters>
+
+      <Span name ="String" bold ="false" italic ="false" color ="Sienna" stopateol ="false">
+        <Begin>&quot;</Begin>
+        <End>&quot;</End>
+      </Span>
+
+      <Span name = "Character" bold = "false" italic = "false" color = "Sienna" stopateol = "true">
+        <Begin>&apos;</Begin>
+        <End>&apos;</End>
+      </Span>
+
+      <KeyWords name ="Punctuation" bold="false" italic = "false" color = "DarkSlateGray">
+        <Key word = "(" />
+        <Key word = ")" />
+      </KeyWords>
+
+      <KeyWords name ="Operators" bold="false" italic = "false" color = "DarkSlateGray">
+        <Key word = "+" />
+        <Key word = "-" />
+        <Key word = "*" />
+        <Key word = "/" />
+        <Key word = "&lt;" />
+        <Key word = "&gt;" />
+        <Key word = "=" />
+        <Key word = "&lt;=" />
+        <Key word = "&gt;=" />
+        <Key word = "like" />
+        <Key word = "and" />
+        <Key word = "or" />
+      </KeyWords>
+
+      <KeyWords name ="Functions" bold="false" italic = "false" color = "DarkRed">
+        <!-- Aggregate -->
+        <Key word = "avg" />
+        <Key word = "count" />
+        <Key word = "max" />
+        <Key word = "median" />
+        <Key word = "min" />
+        <Key word = "spatialextents" />
+        <Key word = "stddev" />
+        <Key word = "sum" />
+        <!-- Conversion -->
+        <Key word = "nullvalue" />
+        <Key word = "todate" />
+        <Key word = "todouble" />
+        <Key word = "tofloat" />
+        <Key word = "toint32" />
+        <Key word = "toint64" />
+        <Key word = "tostring" />
+        <!-- Date -->
+        <Key word = "addmonths" />
+        <Key word = "currentdate" />
+        <Key word = "extract" />
+        <Key word = "extracttodouble" />
+        <Key word = "extracttoint" />
+        <Key word = "monthsbetween" />
+        <!-- Geometry -->
+        <Key word = "area2d" />
+        <Key word = "length2d" />
+        <Key word = "m" />
+        <Key word = "x" />
+        <Key word = "y" />
+        <Key word = "z" />
+        <!-- Math -->
+        <Key word = "abs" />
+        <Key word = "acos" />
+        <Key word = "asin" />
+        <Key word = "atan" />
+        <Key word = "atan2" />
+        <Key word = "cos" />
+        <Key word = "exp" />
+        <Key word = "ln" />
+        <Key word = "log" />
+        <Key word = "mod" />
+        <Key word = "power" />
+        <Key word = "remainder" />
+        <Key word = "sin" />
+        <Key word = "sqrt" />
+        <Key word = "tan" />
+        <!-- Numeric -->
+        <Key word = "ceil" />
+        <Key word = "floor" />
+        <Key word = "round" />
+        <Key word = "sign" />
+        <Key word = "trunc" />
+        <!-- String -->
+        <Key word = "concat" />
+        <Key word = "instr" />
+        <Key word = "length" />
+        <Key word = "lower" />
+        <Key word = "lpad" />
+        <Key word = "ltrim" />
+        <Key word = "rpad" />
+        <Key word = "rtrim" />
+        <Key word = "soundex" />
+        <Key word = "substr" />
+        <Key word = "translate" />
+        <Key word = "trim" />
+        <Key word = "upper" />
+        <!-- Stylization -->
+        <Key word = "argb" />
+        <Key word = "decap" />
+        <Key word = "featureclass" />
+        <Key word = "featureid" />
+        <Key word = "if" />
+        <Key word = "layerid" />
+        <Key word = "lookup" />
+        <Key word = "mapname" />
+        <Key word = "range" />
+        <Key word = "session" />
+        <Key word = "urlencode" />
+        <!-- Other -->
+        <Key word = "geomfromtext" />
+      </KeyWords>
+    </RuleSet>
+  </RuleSets>
+</SyntaxDefinition>

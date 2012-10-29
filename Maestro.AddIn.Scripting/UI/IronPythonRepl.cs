@@ -9,10 +9,12 @@ using System.Windows.Forms;
 using Maestro.Shared.UI;
 using ICSharpCode.TextEditor.Document;
 using System.IO;
+using Microsoft.Scripting.Hosting.Shell;
 
 namespace Maestro.AddIn.Scripting.UI
 {
     using Lang.Python;
+    using Maestro.Editors.Common;
 
     internal partial class IronPythonRepl : SingletonViewContent
     {
@@ -24,6 +26,7 @@ namespace Maestro.AddIn.Scripting.UI
             InitializeComponent();
             textEditorControl.CreateControl();
 
+            textEditorControl.ShowLineNumbers = false;
             textEditorControl.ShowVRuler = false;
             textEditorControl.ShowHRuler = false;
 
@@ -52,14 +55,35 @@ namespace Maestro.AddIn.Scripting.UI
             }
         }
 
+        private static void NewPrompt(IConsole con)
+        {
+            //HACK: Should be a way to get this from IronPython
+            con.Write(">>> ", Microsoft.Scripting.Hosting.Shell.Style.Prompt);
+        }
+
         private void btnClear_Click(object sender, EventArgs e)
         {
             textEditorControl.Text = string.Empty;
             var con = host.Console;
             var cmdline = con.CommandLine;
-            //HACK: Should be a way to get this from IronPython
-            con.Write(">>> ", Microsoft.Scripting.Hosting.Shell.Style.Prompt);
+            NewPrompt(con);
             textEditorControl.Refresh();
+        }
+
+        private void btnLoadFile_Click(object sender, EventArgs e)
+        {
+            using (var picker = DialogFactory.OpenFile())
+            {
+                picker.Filter = "*.py|*.py"; //NOXLATE
+                if (picker.ShowDialog() == DialogResult.OK)
+                {
+                    var con = host.Console;
+                    var cmdline = con.CommandLine;
+                    con.WriteLine();
+                    cmdline.ScriptScope.Engine.ExecuteFile(picker.FileName);
+                    NewPrompt(con);
+                }
+            }
         }
     }
 }

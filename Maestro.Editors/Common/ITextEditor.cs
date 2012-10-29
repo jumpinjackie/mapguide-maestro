@@ -38,14 +38,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace Maestro.AddIn.Scripting.Lang.Python
+namespace Maestro.Editors.Common
 {
     /// <summary>
-    /// The interface that the text editor used by the PythonConsole needs to be implement. Note that
+    /// A text editor controller interface that supports auto-completion. Note that
     /// all the methods will be called on another thread not the main UI thread and will therefore need to
     /// be invoked.
     /// </summary>
-    internal interface ITextEditor
+    public interface ITextEditor
     {
         /// <summary>
         /// Fired when a key is pressed but before any text has been added to the text editor.

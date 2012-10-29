@@ -105,6 +105,7 @@
     <Compile Include="Common\ExpressionEditor.designer.cs">
       <DependentUpon>ExpressionEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\Expression\FdoExpressionCompletionDataProvider.cs" />
     <Compile Include="Common\FindReplaceDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +127,7 @@
     <Compile Include="Common\GenericItemSelectionDialog.Designer.cs">
       <DependentUpon>GenericItemSelectionDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\ITextEditor.cs" />
     <Compile Include="Common\NsDoc.cs" />
     <Compile Include="Common\RepositoryTreeModel.cs" />
     <Compile Include="Common\RepositoryView.cs">
@@ -152,6 +154,7 @@
     <Compile Include="Common\SymbolPicker.Designer.cs">
       <DependentUpon>SymbolPicker.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\TextEditor.cs" />
     <Compile Include="Common\UnmanagedFileBrowser.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -33,7 +33,6 @@ namespace Maestro.Editors.Common
             this.OKBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblHint = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnProperties = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnFunctions = new System.Windows.Forms.ToolStripDropDownButton();
@@ -45,8 +44,8 @@ namespace Maestro.Editors.Common
             this.ColumnValue = new System.Windows.Forms.ToolStripComboBox();
             this.LookupValues = new System.Windows.Forms.ToolStripButton();
             this.ColumnName = new System.Windows.Forms.ToolStripComboBox();
-            this.ExpressionText = new System.Windows.Forms.TextBox();
             this._autoCompleteTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.ExpressionText = new ICSharpCode.TextEditor.TextEditorControl();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -67,16 +66,10 @@ namespace Maestro.Editors.Common
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.lblHint);
             this.panel1.Controls.Add(this.CancelBtn);
             this.panel1.Controls.Add(this.OKBtn);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            // 
-            // lblHint
-            // 
-            resources.ApplyResources(this.lblHint, "lblHint");
-            this.lblHint.Name = "lblHint";
             // 
             // toolStrip1
             // 
@@ -167,10 +160,10 @@ namespace Maestro.Editors.Common
             // ExpressionText
             // 
             resources.ApplyResources(this.ExpressionText, "ExpressionText");
-            this.ExpressionText.HideSelection = false;
+            this.ExpressionText.IsReadOnly = false;
             this.ExpressionText.Name = "ExpressionText";
-            this.ExpressionText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ExpressionText_KeyDown);
-            this.ExpressionText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ExpressionText_KeyUp);
+            this.ExpressionText.ShowLineNumbers = false;
+            this.ExpressionText.ShowVRuler = false;
             // 
             // ExpressionEditor
             // 
@@ -182,7 +175,6 @@ namespace Maestro.Editors.Common
             this.Controls.Add(this.panel1);
             this.Name = "ExpressionEditor";
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -196,18 +188,17 @@ namespace Maestro.Editors.Common
         private System.Windows.Forms.Button CancelBtn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.TextBox ExpressionText;
         private System.Windows.Forms.ToolStripDropDownButton btnFilter;
         private System.Windows.Forms.ToolStripMenuItem btnCondition;
         private System.Windows.Forms.ToolStripMenuItem btnSpatial;
         private System.Windows.Forms.ToolStripMenuItem btnDistance;
         private System.Windows.Forms.ToolTip _autoCompleteTooltip;
-        private System.Windows.Forms.Label lblHint;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripComboBox ColumnName;
         private System.Windows.Forms.ToolStripButton LookupValues;
         private System.Windows.Forms.ToolStripComboBox ColumnValue;
         private System.Windows.Forms.ToolStripDropDownButton btnProperties;
         private System.Windows.Forms.ToolStripDropDownButton btnFunctions;
+        private ICSharpCode.TextEditor.TextEditorControl ExpressionText;
     }
 }

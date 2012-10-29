@@ -30,6 +30,7 @@
 // 
 #endregion
 using ICSharpCode.TextEditor.Document;
+using Maestro.Editors.Common;
 using Microsoft.Scripting.Hosting.Shell;
 using System;
 using System.Collections.Generic;

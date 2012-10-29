@@ -34,6 +34,7 @@ using IronPython.Hosting;
 using IronPython.Runtime;
 using Maestro.AddIn.Scripting.Services;
 using Maestro.AddIn.Scripting.UI;
+using Maestro.Editors.Common;
 using Microsoft.Scripting.Hosting;
 using Microsoft.Scripting.Hosting.Providers;
 using Microsoft.Scripting.Hosting.Shell;

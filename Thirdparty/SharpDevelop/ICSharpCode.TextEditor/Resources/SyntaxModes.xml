@@ -26,8 +26,12 @@
 	<Mode file       = "HTML-Mode.xshd"
 	      name       = "HTML"
 	      extensions = ".htm;.html"/>
-	
-	<Mode file       = "Java-Mode.xshd"
+
+  <Mode file       = "FDO.xshd"
+	      name       = "FDO"
+	      extensions = ".fdq"/>
+
+  <Mode file       = "Java-Mode.xshd"
 	      name       = "Java"
 	      extensions = ".java"/>
 	
@@ -46,6 +50,10 @@
   <Mode file       = "Python.xshd"
 	      name       = "Python"
 	      extensions = ".py"/>
+
+  <Mode file       = "SQL.xshd"
+	      name       = "SQL"
+	      extensions = ".sql"/>
 	
 	<Mode file       = "Tex-Mode.xshd"
 	      name       = "TeX"

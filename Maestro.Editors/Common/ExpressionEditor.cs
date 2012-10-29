@@ -30,6 +30,8 @@ using OSGeo.MapGuide.ObjectModels.Capabilities;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using Maestro.Editors.Common.Expression;
+using ICSharpCode.TextEditor.Gui.CompletionWindow;
 
 namespace Maestro.Editors.Common
 {
@@ -77,9 +79,10 @@ namespace Maestro.Editors.Common
     public partial class ExpressionEditor : Form
     {
         private ClassDefinition _cls;
-        
         private IFeatureService _featSvc;
         private string m_featureSource = null;
+        private FdoProviderCapabilities _caps;
+        private ITextEditor _editor;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ExpressionEditor"/> class.
@@ -87,7 +90,18 @@ namespace Maestro.Editors.Common
         public ExpressionEditor()
         {
             InitializeComponent();
-            InitAutoComplete();
+            ExpressionText.SetHighlighting("FDO");
+            _editor = new TextEditor(ExpressionText);
+            _editor.KeyPress += OnEditorKeyPress;
+        }
+
+        bool OnEditorKeyPress(char ch)
+        {
+            if (Char.IsLetter(ch))
+            {
+                ShowAutoComplete(ch);
+            }
+            return false;
         }
 
         /// <summary>
@@ -115,8 +129,8 @@ namespace Maestro.Editors.Common
                 _cls = cls;
                 _featSvc = featSvc;
                 m_featureSource = featuresSourceId;
+                _caps = caps;
 
-                //TODO: Perhaps add column type and indication of primary key
                 SortedList<string, PropertyDefinition> sortedCols = new SortedList<string, PropertyDefinition>();
                 foreach (var col in _cls.Properties)
                 {
@@ -144,10 +158,6 @@ namespace Maestro.Editors.Common
                 if (ColumnName.Items.Count > 0)
                     ColumnName.SelectedIndex = 0;
 
-                LoadCompletableProperties(_cls.Properties);
-
-                //TODO: Figure out how to translate the enums into something usefull
-
                 //Functions
                 SortedList<string, FdoProviderCapabilitiesExpressionFunctionDefinition> sortedFuncs = new SortedList<string, FdoProviderCapabilitiesExpressionFunctionDefinition>();
                 foreach (FdoProviderCapabilitiesExpressionFunctionDefinition func in caps.Expression.FunctionDefinitionList)
@@ -157,7 +167,7 @@ namespace Maestro.Editors.Common
 
                 if (attachStylizationFunctions)
                 {
-                    foreach (var func in GetStylizationFunctions())
+                    foreach (var func in Utility.GetStylizationFunctions())
                     {
                         sortedFuncs.Add(func.Name, func);
                     }
@@ -170,22 +180,20 @@ namespace Maestro.Editors.Common
                     btn.Name = name;
                     btn.Text = name;
                     btn.ToolTipText = func.Description;
+
                     string fmt = "{0}({1})"; //NOXLATE
                     List<string> args = new List<string>();
                     foreach (FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition argDef in func.ArgumentDefinitionList)
                     {
                         args.Add(argDef.Name.Trim());
                     }
-                    string expr = string.Format(fmt, name, string.Join(", ", args.ToArray()));
+                    string expr = string.Format(fmt, name, FdoExpressionCompletionDataProvider.StringifyFunctionArgs(args));
                     btn.Click += delegate
                     {
                         InsertText(expr);
                     };
                     btnFunctions.DropDown.Items.Add(btn);
                 }
-                LoadCompletableFunctions(caps.Expression.FunctionDefinitionList);
-                if (attachStylizationFunctions)
-                    LoadCompletableFunctions(GetStylizationFunctions());
 
                 //Spatial Operators
                 foreach (FdoProviderCapabilitiesFilterOperation op in caps.Filter.Spatial)
@@ -195,7 +203,7 @@ namespace Maestro.Editors.Common
                     btn.Name = btn.Text = btn.ToolTipText = op.ToString();
                     btn.Click += delegate
                     {
-                        InsertFilter(name);
+                        InsertSpatialFilter(name);
                     };
                     btnSpatial.DropDown.Items.Add(btn);
                 }
@@ -208,7 +216,7 @@ namespace Maestro.Editors.Common
                     btn.Name = btn.Text = btn.ToolTipText = op.ToString();
                     btn.Click += delegate
                     {
-                        InsertFilter(name);
+                        InsertSpatialFilter(name);
                     };
                     btnDistance.DropDown.Items.Add(btn);
                 }
@@ -221,273 +229,13 @@ namespace Maestro.Editors.Common
                     btn.Name = btn.Text = btn.ToolTipText = op.ToString();
                     btn.Click += delegate
                     {
-                        InsertFilter(name);
+                        InsertSpatialFilter(name);
                     };
                     btnCondition.DropDown.Items.Add(btn);
                 }
-
-                /*try
-                {
-                    /*FdoProviderCapabilities cap = m_connection.GetProviderCapabilities(m_providername);
-                    foreach (FdoProviderCapabilitiesFilterType cmd in cap.Filter.Condition)
-                        FunctionCombo.Items.Add(cmd.ToString());
-
-                    FunctionLabel.Enabled = FunctionCombo.Enabled = true;
-                }
-                catch
-                {
-                    FunctionLabel.Enabled = FunctionCombo.Enabled = false;
-                }*/
             }
             catch
             {
-            }
-
-        }
-
-        private IEnumerable<FdoProviderCapabilitiesExpressionFunctionDefinition> GetStylizationFunctions()
-        {
-            //ARGB
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
-                {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "aValue", //NOXLATE
-                        Description = Strings.Func_ARGB_AValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "rValue", //NOXLATE
-                        Description = Strings.Func_ARGB_RValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "gValue", //NOXLATE
-                        Description = Strings.Func_ARGB_GValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "bValue", //NOXLATE
-                        Description = Strings.Func_ARGB_BValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
-                    },
-                },
-                Description = Strings.Func_ARGB_Description,
-                Name = "ARGB", //NOXLATE
-                ReturnType = "Int32" //NOXLATE
-            };
-            //DECAP
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
-                {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "strValue", //NOXLATE
-                        Description = Strings.Func_DECAP_StringValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    }
-                },
-                Description = Strings.Func_DECAP_Description,
-                Name = "DECAP", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //FEATURECLASS
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
-                Description = Strings.Func_FEATURECLASS_Description,
-                Name = "FEATURECLASS", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //FEATUREID
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
-                Description = Strings.Func_FEATUREID_Description,
-                Name = "FEATUREID", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //IF
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
-                {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "condition", //NOXLATE
-                        Description = Strings.Func_IF_ConditionDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "trueValue", //NOXLATE
-                        Description = Strings.Func_IF_TrueValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "falseValue", //NOXLATE
-                        Description = Strings.Func_IF_FalseValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    }
-                },
-                Description = Strings.Func_IF_Description,
-                Name = "IF", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //LAYERID
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
-                Description = Strings.Func_LAYERID_Description,
-                Name = "LAYERID", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //LOOKUP
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
-                {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "expression", //NOXLATE
-                        Description = Strings.Func_LOOKUP_ExpressionDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "defaultValue", //NOXLATE
-                        Description = Strings.Func_LOOKUP_DefaultValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "index", //NOXLATE
-                        Description = Strings.Func_LOOKUP_IndexDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "value", //NOXLATE
-                        Description = Strings.Func_LOOKUP_ValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    }
-                },
-                Description = Strings.Func_LOOKUP_Description,
-                Name = "LOOKUP", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //MAPNAME
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
-                Description = Strings.Func_MAPNAME_Description,
-                Name = "MAPNAME", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //RANGE
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
-                {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "expression", //NOXLATE
-                        Description = Strings.Func_RANGE_ExpressionDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "rangeMin", //NOXLATE
-                        Description = Strings.Func_RANGE_MinDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "rangeMax", //NOXLATE
-                        Description = Strings.Func_RANGE_MaxDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "defaultValue", //NOXLATE
-                        Description = Strings.Func_RANGE_DefaultValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "value", //NOXLATE
-                        Description = Strings.Func_RANGE_ValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    }
-                },
-                Description = Strings.Func_RANGE_Description,
-                Name = "RANGE", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //SESSION
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
-                Description = Strings.Func_SESSION_Description,
-                Name = "SESSION", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //URLENCODE
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
-                {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
-                    {
-                        Name = "strValue", //NOXLATE
-                        Description = Strings.Func_URLENCODE_StringValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    }
-                },
-                Description = Strings.Func_URLENCODE_Description,
-                Name = "URLENCODE", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-        }
-
-        private void InsertText(string exprText)
-        {
-            int index = ExpressionText.SelectionStart;
-            if (ExpressionText.SelectionLength > 0)
-            {
-                ExpressionText.SelectedText = exprText;
-                ExpressionText.SelectionStart = index;
-            }
-            else
-            {
-                if (index > 0)
-                {
-                    string text = ExpressionText.Text;
-                    ExpressionText.Text = text.Insert(index, exprText);
-                    ExpressionText.SelectionStart = index;
-                }
-                else
-                {
-                    ExpressionText.Text = exprText;
-                    ExpressionText.SelectionStart = index;
-                }
-            }
-        }
-
-        private void InsertFilter(string op)
-        {
-            if (!string.IsNullOrEmpty(op))
-            {
-                string filterTemplate = Strings.GeomFilterTemplate;
-                string exprText = string.Format(filterTemplate, op);
-                InsertText(exprText);
             }
         }
 
@@ -497,467 +245,27 @@ namespace Maestro.Editors.Common
             this.Close();
         }
 
-        private SortedList<string, AutoCompleteItem> _autoCompleteItems = new SortedList<string, AutoCompleteItem>();
-        private ImageListBox _autoBox;
+        private CodeCompletionWindow completionWindow;
 
-        enum AutoCompleteItemType : int
+        private void ShowAutoComplete(char ch)
         {
-            Property = 0,
-            Function = 1,
-        }
-
-        /// <summary>
-        /// Base auto-complete item
-        /// </summary>
-        abstract class AutoCompleteItem
-        {
-            public abstract AutoCompleteItemType Type { get; }
-
-            public abstract string Name { get; }
-
-            public abstract string ToolTipText { get; }
-
-            public abstract string AutoCompleteText { get; }
-        }
-
-        /// <summary>
-        /// Property auto-complete item
-        /// </summary>
-        class PropertyItem : AutoCompleteItem
-        {
-            private PropertyDefinition _propDef;
-
-            public PropertyItem(PropertyDefinition pd)
+            var provider = new FdoExpressionCompletionDataProvider(_cls, _caps);
+            completionWindow = CodeCompletionWindow.ShowCompletionWindow(ExpressionText.ParentForm, ExpressionText, String.Empty, provider, ch);
+            if (completionWindow != null)
             {
-                _propDef = pd;
-            }
-
-            public override AutoCompleteItemType Type
-            {
-                get { return AutoCompleteItemType.Property; }
-            }
-
-            public override string Name
-            {
-                get { return _propDef.Name; }
-            }
-
-            private string _ttText;
-
-            public override string ToolTipText
-            {
-                get
-                {
-                    if (string.IsNullOrEmpty(_ttText))
-                    {
-                        _ttText = string.Format(Strings.PropertyTooltip, _propDef.Name, _propDef.Type.ToString());
-                    }
-                    return _ttText;
-                }
-            }
-
-            public override string AutoCompleteText
-            {
-                get { return this.Name; }
+                completionWindow.Width = 250;
+                completionWindow.Closed += CompletionWindowClosed;
             }
         }
 
-        /// <summary>
-        /// Function auto-complete item
-        /// </summary>
-        class FunctionItem : AutoCompleteItem
+        void CompletionWindowClosed(object source, EventArgs e)
         {
-            private FdoProviderCapabilitiesExpressionFunctionDefinition _func;
-
-            public FunctionItem(FdoProviderCapabilitiesExpressionFunctionDefinition fd)
+            if (completionWindow != null)
             {
-                _func = fd;
+                completionWindow.Closed -= CompletionWindowClosed;
+                completionWindow.Dispose();
+                completionWindow = null;
             }
-
-            public override AutoCompleteItemType Type
-            {
-                get { return AutoCompleteItemType.Function; }
-            }
-
-            public override string Name
-            {
-                get { return _func.Name; }
-            }
-
-            private string _ttText;
-
-            public override string ToolTipText
-            {
-                get
-                {
-                    if (string.IsNullOrEmpty(_ttText))
-                        _ttText = string.Format(Strings.FunctionTooltip, GetReturnTypeString(), _func.Name, GetArgumentString(), _func.Description);
-
-                    return _ttText;
-                }
-            }
-
-            private string _argStr;
-
-            private string GetArgumentString()
-            {
-                if (string.IsNullOrEmpty(_argStr))
-                {
-                    List<string> tokens = new List<string>();
-                    foreach (FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition argDef in _func.ArgumentDefinitionList)
-                    {
-                        tokens.Add("[" + argDef.Name.Trim() + "]"); //NOXLATE
-                    }
-                    _argStr = string.Join(", ", tokens.ToArray()); //NOXLATE
-                }
-                return _argStr;
-            }
-
-            private string GetReturnTypeString()
-            {
-                return _func.ReturnType;
-            }
-
-            public override string AutoCompleteText
-            {
-                get
-                {
-                    return this.Name + "(" + GetArgumentString() + ")"; //NOXLATE
-                }
-            }
-        }
-
-        private void InitAutoComplete()
-        {
-            _autoBox = new ImageListBox();
-            _autoBox.Visible = false;
-            _autoBox.ImageList = new ImageList();
-            _autoBox.ImageList.Images.Add(Properties.Resources.property);  //Property
-            _autoBox.ImageList.Images.Add(Properties.Resources.block); //Function
-            _autoBox.DoubleClick += new EventHandler(OnAutoCompleteDoubleClick);
-            _autoBox.SelectedIndexChanged += new EventHandler(OnAutoCompleteSelectedIndexChanged);
-            _autoBox.KeyDown += new KeyEventHandler(OnAutoCompleteKeyDown);
-            _autoBox.KeyUp += new KeyEventHandler(OnAutoCompleteKeyUp);
-            _autoBox.ValueMember = "Name"; //NOXLATE
-            _autoBox.Font = new Font(FontFamily.GenericMonospace, 10.0f);
-            ExpressionText.Controls.Add(_autoBox);
-        }
-
-        void OnAutoCompleteKeyDown(object sender, KeyEventArgs e)
-        {
-            ExpressionText.Focus();
-        }
-
-        void OnAutoCompleteKeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Return || e.KeyCode == Keys.Enter)
-            {
-                PutAutoCompleteSuggestion();
-                _autoBox.Hide();
-                _autoCompleteTooltip.Hide(this);
-            }
-        }
-
-        void OnAutoCompleteSelectedIndexChanged(object sender, EventArgs e)
-        {
-            ExpressionText.Focus();
-            if (_autoBox.Visible && _autoBox.SelectedIndex >= 0 && _autoBox.Items.Count > 0)
-            {
-                string tt = ((_autoBox.SelectedItem as ImageListBoxItem).Tag as AutoCompleteItem).ToolTipText;
-                Point pt = GetCaretPoint();
-                pt.X += _autoBox.Width + 10;
-                pt.Y += 65;
-
-                _autoCompleteTooltip.Show(tt, this, pt.X, pt.Y);
-            }
-        }
-
-        void OnAutoCompleteDoubleClick(object sender, EventArgs e)
-        {
-            PutAutoCompleteSuggestion();
-            _autoBox.Hide();
-            _autoCompleteTooltip.Hide(this);
-        }
-
-        private void MoveAutoCompleteSelectionDown()
-        {
-            if (_autoBox.SelectedIndex < 0)
-            {
-                _autoBox.SelectedIndex = 0;
-            }
-            else
-            {
-                int idx = _autoBox.SelectedIndex;
-                if ((idx + 1) <= _autoBox.Items.Count - 1)
-                {
-                    _autoBox.SelectedIndex = idx + 1;
-                }
-            }
-        }
-
-        private void MoveAutoCompleteSelectionUp()
-        {
-            if (_autoBox.SelectedIndex < 0)
-            {
-                _autoBox.SelectedIndex = 0;
-            }
-            else
-            {
-                int idx = _autoBox.SelectedIndex;
-                if ((idx - 1) >= 0)
-                {
-                    _autoBox.SelectedIndex = idx - 1;
-                }
-            }
-        }
-
-        private void LoadCompletableProperties(IEnumerable<PropertyDefinition> cols)
-        {
-            foreach (var col in cols)
-            {
-                _autoCompleteItems[col.Name] = new PropertyItem(col);
-            }
-        }
-
-        private void LoadCompletableFunctions(IEnumerable<FdoProviderCapabilitiesExpressionFunctionDefinition> funcs)
-        {
-            foreach (FdoProviderCapabilitiesExpressionFunctionDefinition func in funcs)
-            {
-                _autoCompleteItems[func.Name] = new FunctionItem(func);
-            }
-        }
-
-        private void PutAutoCompleteSuggestion()
-        {
-            if (_autoBox.SelectedItems.Count == 1)
-            {
-                int pos = ExpressionText.SelectionStart;
-                string context;
-                char? c = GetContextBuffer(out context);
-
-                AutoCompleteItem aci = (_autoBox.SelectedItem as ImageListBoxItem).Tag as AutoCompleteItem;
-
-                string fullText = aci.AutoCompleteText;
-
-                int start = pos - context.Length;
-                int newPos = start + fullText.Length;
-                int selLength = -1;
-
-                //if it's a function, highlight the parameter (or the first parameter if there is multiple arguments
-                if (aci.Type == AutoCompleteItemType.Function)
-                {
-                    newPos = start + aci.Name.Length + 1; //Position the caret just after the opening bracket
-
-                    //Has at least two arguments
-                    int idx = fullText.IndexOf(","); //NOXLATE
-                    if (idx > 0)
-                        selLength = idx - aci.Name.Length - 1;
-                    else
-                        selLength = fullText.IndexOf(")") - fullText.IndexOf("(") - 1; //NOXLATE
-                }
-
-                string prefix = ExpressionText.Text.Substring(0, start);
-                string suffix = ExpressionText.Text.Substring(pos, ExpressionText.Text.Length - pos);
-
-                ExpressionText.Text = prefix + fullText + suffix;
-                ExpressionText.SelectionStart = newPos;
-                if (selLength > 0)
-                {
-                    ExpressionText.SelectionLength = selLength;
-                }
-                ExpressionText.ScrollToCaret();
-            }
-        }
-
-        private Point GetCaretPoint()
-        {
-            Point pt = ExpressionText.GetPositionFromCharIndex(ExpressionText.SelectionStart);
-            pt.Y += (int)Math.Ceiling(ExpressionText.Font.GetHeight()) + 2;
-            pt.X += 2; // for Courier, may need a better method
-            return pt;
-        }
-
-        private char? GetContextBuffer(out string buffer)
-        {
-            buffer = string.Empty;
-            int caretPos = ExpressionText.SelectionStart;
-            int currentPos = caretPos;
-            char? res = null;
-            if (caretPos > 0)
-            {
-                //Walk backwards
-                caretPos--;
-                char c = ExpressionText.Text[caretPos];
-                while (Char.IsLetterOrDigit(c))
-                {
-                    caretPos--;
-
-                    if (caretPos < 0)
-                        break;
-
-                    c = ExpressionText.Text[caretPos];
-                }
-
-                if (caretPos > 0)
-                {
-                    res = ExpressionText.Text[caretPos];
-                }
-                buffer = ExpressionText.Text.Substring(caretPos + 1, currentPos - caretPos - 1);
-            }
-            return res;
-        }
-
-        private void HandleKeyDown(KeyEventArgs e)
-        {
-            Keys code = e.KeyCode;
-            if (code == Keys.Escape)
-            {
-                if (_autoBox.Visible)
-                {
-                    e.SuppressKeyPress = true;
-                    _autoBox.Hide();
-                    _autoCompleteTooltip.Hide(this);
-                }
-            }
-            else if (code == Keys.Enter || code == Keys.Return)
-            {
-                if (_autoBox.Visible && _autoBox.SelectedItems.Count == 1)
-                {
-                    e.SuppressKeyPress = true;
-                    PutAutoCompleteSuggestion();
-                    _autoBox.Hide();
-                    _autoCompleteTooltip.Hide(this);
-                }
-            }
-        }
-
-        private void HandleKeyUp(KeyEventArgs e)
-        {
-            Keys code = e.KeyCode;
-            if (code == Keys.Oemcomma || code == Keys.OemOpenBrackets)
-            {
-                Complete(string.Empty);
-            }
-            else if (code == Keys.OemQuotes)
-            {
-                if (e.Modifiers == Keys.Shift)  // "
-                    InsertText("\""); //NOXLATE
-                else                            // '
-                    InsertText("'"); //NOXLATE
-
-            }
-            else if (code == Keys.D9 && e.Modifiers == Keys.Shift) // (
-            {
-                InsertText(")"); //NOXLATE
-            }
-            else if (code == Keys.Up || code == Keys.Down)
-            {
-                if (_autoBox.Visible)
-                {
-                    if (code == Keys.Up)
-                    {
-                        MoveAutoCompleteSelectionUp();
-                    }
-                    else
-                    {
-                        MoveAutoCompleteSelectionDown();
-                    }
-                }
-            }
-            else if (code == Keys.Back)
-            {
-                string context;
-                char? c = GetContextBuffer(out context);
-                if (!string.IsNullOrEmpty(context))
-                {
-                    Complete(context);
-                }
-                else
-                {
-                    if (_autoBox.Visible)
-                    {
-                        _autoBox.Hide();
-                        _autoCompleteTooltip.Hide(this);
-                    }
-                }
-            }
-            else if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.Right)
-            {
-                string context;
-                char? c = GetContextBuffer(out context);
-                Complete(context);
-            }
-            else
-            {
-                if (e.Modifiers == Keys.None)
-                {
-                    bool alpha = (code >= Keys.A && code <= Keys.Z);
-                    bool numeric = (code >= Keys.D0 && code <= Keys.D9) || (code >= Keys.NumPad0 && code <= Keys.NumPad9);
-                    if (alpha || numeric)
-                    {
-                        string context;
-                        char? c = GetContextBuffer(out context);
-                        Complete(context);
-                    }
-                }
-            }
-        }
-
-        private List<AutoCompleteItem> GetItemsStartingWith(string text)
-        {
-            List<AutoCompleteItem> ati = new List<AutoCompleteItem>();
-            foreach (string key in _autoCompleteItems.Keys)
-            {
-                if (key.ToLower().StartsWith(text.Trim().ToLower()))
-                {
-                    ati.Add(_autoCompleteItems[key]);
-                }
-            }
-            return ati;
-        }
-
-        private void Complete(string text)
-        {
-            List<AutoCompleteItem> items = GetItemsStartingWith(text);
-            _autoBox.Items.Clear();
-
-            int width = 0;
-            foreach (AutoCompleteItem it in items)
-            {
-                ImageListBoxItem litem = new ImageListBoxItem();
-                litem.Text = it.Name;
-                litem.ImageIndex = (int)it.Type;
-                litem.Tag = it;
-
-                _autoBox.Items.Add(litem);
-                int length = TextRenderer.MeasureText(it.Name, _autoBox.Font).Width + 30; //For icon size
-                if (length > width)
-                    width = length;
-            }
-            _autoBox.Width = width;
-
-            if (!_autoBox.Visible)
-            {
-                if (_autoBox.Items.Count > 0)
-                {
-                    _autoBox.BringToFront();
-                    _autoBox.Show();
-                }
-            }
-
-            Point pt = GetCaretPoint();
-
-            _autoBox.Location = pt;
-        }
-
-        private void ExpressionText_KeyDown(object sender, KeyEventArgs e)
-        {
-            HandleKeyDown(e);
-        }
-
-        private void ExpressionText_KeyUp(object sender, KeyEventArgs e)
-        {
-            HandleKeyUp(e);
         }
 
         private void ColumnName_Click(object sender, EventArgs e)
@@ -1107,102 +415,15 @@ namespace Maestro.Editors.Common
                 }
             }
         }
+
+        private void InsertSpatialFilter(string text)
+        {
+            InsertText("[geometry] " + text + " GeomFromText('geometry wkt')");
+        }
+
+        private void InsertText(string text)
+        {
+            ExpressionText.ActiveTextAreaControl.TextArea.InsertString(text);
+        }
     }
-
-    // ImageListBoxItem class 
-    internal class ImageListBoxItem
-    {
-        private string _myText;
-        private int _myImageIndex;
-        // properties 
-        public string Text
-        {
-            get { return _myText; }
-            set { _myText = value; }
-        }
-        public int ImageIndex
-        {
-            get { return _myImageIndex; }
-            set { _myImageIndex = value; }
-        }
-        //constructor
-        public ImageListBoxItem(string text, int index)
-        {
-            _myText = text;
-            _myImageIndex = index;
-        }
-        public ImageListBoxItem(string text) : this(text, -1) { }
-        public ImageListBoxItem() : this("") { } //NOXLATE
-
-        private object _tag;
-
-        public object Tag
-        {
-            get { return _tag; }
-            set { _tag = value; }
-        }
-
-        public override string ToString()
-        {
-            return _myText;
-        }
-    }//End of ImageListBoxItem class
-
-    // ImageListBox class 
-    //
-    // Based on GListBox
-    //
-    // http://www.codeproject.com/KB/combobox/glistbox.aspx
-
-    internal class ImageListBox : ListBox
-    {
-        private ImageList _myImageList;
-        public ImageList ImageList
-        {
-            get { return _myImageList; }
-            set { _myImageList = value; }
-        }
-        public ImageListBox()
-        {
-            // Set owner draw mode
-            this.DrawMode = DrawMode.OwnerDrawFixed;
-        }
-        protected override void OnDrawItem(System.Windows.Forms.DrawItemEventArgs e)
-        {
-            e.DrawBackground();
-            e.DrawFocusRectangle();
-            ImageListBoxItem item;
-            Rectangle bounds = e.Bounds;
-            Size imageSize = _myImageList.ImageSize;
-            try
-            {
-                item = (ImageListBoxItem)Items[e.Index];
-                if (item.ImageIndex != -1)
-                {
-                    _myImageList.Draw(e.Graphics, bounds.Left, bounds.Top, item.ImageIndex);
-                    e.Graphics.DrawString(item.Text, e.Font, new SolidBrush(e.ForeColor),
-                        bounds.Left + imageSize.Width, bounds.Top);
-                }
-                else
-                {
-                    e.Graphics.DrawString(item.Text, e.Font, new SolidBrush(e.ForeColor),
-                        bounds.Left, bounds.Top);
-                }
-            }
-            catch
-            {
-                if (e.Index != -1)
-                {
-                    e.Graphics.DrawString(Items[e.Index].ToString(), e.Font,
-                        new SolidBrush(e.ForeColor), bounds.Left, bounds.Top);
-                }
-                else
-                {
-                    e.Graphics.DrawString(Text, e.Font, new SolidBrush(e.ForeColor),
-                        bounds.Left, bounds.Top);
-                }
-            }
-            base.OnDrawItem(e);
-        }
-    }//End of ImageListBox class
 }

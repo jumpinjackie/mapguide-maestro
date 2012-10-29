@@ -38,9 +38,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace Maestro.AddIn.Scripting.Lang.Python
+namespace Maestro.Editors.Common
 {
-    internal class TextEditor : ITextEditor
+    public class TextEditor : ITextEditor
     {
         delegate string GetLineInvoker(int index);
         delegate void WriteInvoker(string text, Color color);
