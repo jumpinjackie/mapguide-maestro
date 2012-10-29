@@ -225,6 +225,7 @@ namespace Maestro.Editors.MapDefinition
             var item = new GroupPropertiesCtrl(group.Tag);
             item.GroupChanged += (s, evt) => { OnResourceChanged(); };
             item.Dock = DockStyle.Fill;
+            _activeLayer = null;
             propertiesPanel.Controls.Add(item);
         }
 
@@ -236,6 +237,7 @@ namespace Maestro.Editors.MapDefinition
             var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService);
             item.LayerChanged += (s, evt) => { OnResourceChanged(); };
             item.Dock = DockStyle.Fill;
+            _activeLayer = layer.Tag;
             propertiesPanel.Controls.Add(item);
         }
 
@@ -258,6 +260,8 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
+        private IMapLayer _activeLayer;
+
         private void OnDrawOrderLayerItemSelected(LayerItem layer)
         {
             btnDLMoveLayerBottom.Enabled =
@@ -270,6 +274,7 @@ namespace Maestro.Editors.MapDefinition
             var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService);
             item.LayerChanged += (s, evt) => { OnResourceChanged(); };
             item.Dock = DockStyle.Fill;
+            _activeLayer = layer.Tag;
             propertiesPanel.Controls.Add(item);
         }
 
@@ -917,6 +922,7 @@ namespace Maestro.Editors.MapDefinition
             var item = new GroupPropertiesCtrl(group.Tag);
             item.GroupChanged += (s, evt) => { OnResourceChanged(); };
             item.Dock = DockStyle.Fill;
+            _activeLayer = null;
             propertiesPanel.Controls.Add(item);
         }
 
@@ -931,6 +937,7 @@ namespace Maestro.Editors.MapDefinition
             var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService);
             item.LayerChanged += (s, evt) => { OnResourceChanged(); };
             item.Dock = DockStyle.Fill;
+            _activeLayer = null;
             propertiesPanel.Controls.Add(item);
         }
 
@@ -1443,6 +1450,25 @@ namespace Maestro.Editors.MapDefinition
             _edSvc.RunProcess("MgCooker",
                               "--mapagent=" + conn.GetCustomProperty("BaseUrl"),
                               "--mapdefinitions=" + _edSvc.ResourceID);
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_activeLayer != null)
+            {
+                switch (tabControl1.SelectedIndex)
+                {
+                    case 0: //Logical
+                        RestoreLayerSelection(_activeLayer);
+                        break;
+                    case 1: //Draw Order
+                        RestoreDrawOrderSelection(_activeLayer);
+                        break;
+                    default:
+                        _activeLayer = null;
+                        break;
+                }
+            }
         }
     }
 }
