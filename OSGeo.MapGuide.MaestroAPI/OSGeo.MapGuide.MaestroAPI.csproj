@@ -259,6 +259,7 @@
     <Compile Include="Resource\Comparison\CharData.cs" />
     <Compile Include="Resource\Comparison\DiffEngine.cs" />
     <Compile Include="Resource\Comparison\TextFile.cs" />
+    <Compile Include="Resource\Conversion\ImageSymbolConverter.cs" />
     <Compile Include="Resource\Conversion\NsDoc.cs" />
     <Compile Include="Resource\NsDoc.cs" />
     <Compile Include="Resource\Validation\BaseMapDefinitionValidator.cs" />

@@ -1102,6 +1102,17 @@ namespace OSGeo.MapGuide.MaestroAPI
                 parentRange.MinScale.HasValue ? parentRange.MinScale.Value.ToString(CultureInfo.InvariantCulture) : "0", //NOXLATE
                 parentRange.MaxScale.HasValue ? parentRange.MaxScale.Value.ToString(CultureInfo.InvariantCulture) : "Infinity"); //NOXLATE
         }
+
+        /// <summary>
+        /// Surrounds the given string with single-quotes. Mainly used for FDO expressions where string literals are required as un-quoted
+        /// strings will trigger the FDO expression engine.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string FdoStringifiyLiteral(string str)
+        {
+            return "'" + str + "'"; //NOXLATE
+        }
     }
 
     /// <summary>

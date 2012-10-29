@@ -31,6 +31,7 @@ using Obj = OSGeo.MapGuide.ObjectModels.Common;
 using Maestro.Editors.Generic;
 using System.IO;
 using OSGeo.MapGuide.ObjectModels.DrawingSource;
+using OSGeo.MapGuide.MaestroAPI.Resource.Conversion;
 
 namespace Maestro.Editors.Common
 {
@@ -104,7 +105,7 @@ namespace Maestro.Editors.Common
             //But these types of symbols are deprecated anyway, so we can live with it, because people
             //shouldn't be using these anymore (and thus this method by extension)
 
-            var ds = PrepareSymbolDrawingSource(conn, symbolLibId);
+            var ds = ImageSymbolConverter.PrepareSymbolDrawingSource(conn, symbolLibId);
 
             //Now we should be able to query it via Drawing Service APIs
             var drawSvc = (IDrawingService)conn.GetService((int)ServiceType.Drawing);
@@ -135,7 +136,7 @@ namespace Maestro.Editors.Common
 
         private void LoadSymbols(string symResId)
         {
-            var ds = PrepareSymbolDrawingSource(_conn, symResId);
+            var ds = ImageSymbolConverter.PrepareSymbolDrawingSource(_conn, symResId);
             //Now we should be able to query it via Drawing Service APIs
             var drawSvc = (IDrawingService)_conn.GetService((int)ServiceType.Drawing);
 
@@ -178,33 +179,6 @@ namespace Maestro.Editors.Common
             {
                 lstSymbols.Items.Add(sym);
             }
-        }
-
-        private static IDrawingSource PrepareSymbolDrawingSource(IServerConnection conn, string symResId)
-        {
-            //Extract the symbols.dwf resource data and copy to a session based drawing source
-            var dwf = conn.ResourceService.GetResourceData(symResId, "symbols.dwf"); //NOXLATE
-            if (!dwf.CanSeek)
-            {
-                //House in MemoryStream
-                var ms = new MemoryStream();
-                Utility.CopyStream(dwf, ms);
-                ms.Position = 0L;
-
-                //Replace old stream with new
-                dwf.Dispose();
-                dwf = ms;
-            }
-            var ds = OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateDrawingSource(conn);
-            ds.SourceName = "symbols.dwf"; //NOXLATE
-            ds.ResourceID = "Session:" + conn.SessionID + "//" + Guid.NewGuid() + ".DrawingSource"; //NOXLATE
-            conn.ResourceService.SaveResource(ds);
-
-            using (dwf)
-            {
-                conn.ResourceService.SetResourceData(ds.ResourceID, "symbols.dwf", OSGeo.MapGuide.ObjectModels.Common.ResourceDataType.File, dwf); //NOXLATE
-            }
-            return ds;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
