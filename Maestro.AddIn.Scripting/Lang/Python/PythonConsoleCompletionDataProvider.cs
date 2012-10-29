@@ -34,6 +34,7 @@ using ICSharpCode.TextEditor.Document;
 using ICSharpCode.TextEditor.Gui.CompletionWindow;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -89,8 +90,10 @@ namespace Maestro.AddIn.Scripting.Lang.Python
 
         string GetName(string text)
         {
-            int startIndex = text.LastIndexOf(' ');
-            return text.Substring(startIndex + 1);
+            int startIndex = text.LastIndexOfAny(new char[] { ' ', '+', '(' });
+            string res = text.Substring(startIndex + 1);
+            Debug.WriteLine("Evaluating python auto-complete options for: " + res);
+            return res;
         }
 
         /// <summary>

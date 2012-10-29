@@ -32,9 +32,13 @@ using Microsoft.Scripting.Hosting.Shell;
 using Microsoft.Scripting.Runtime;
 using Microsoft.Scripting.Hosting;
 using Maestro.AddIn.Scripting.UI;
+using Maestro.Editors.Generic;
 
 namespace Maestro.AddIn.Scripting.Services
 {
+    /// <summary>
+    /// Helper class to inject the HostApplication object into the engine's global scope
+    /// </summary>
     public static class ScriptHostSetup
     {
         internal static void SetupGlobalScope(ScriptEngine engine, LanguageContext context)
@@ -160,6 +164,98 @@ namespace Maestro.AddIn.Scripting.Services
         public void ShowError(Exception ex)
         {
             ErrorDialog.Show(ex);
+        }
+
+        /// <summary>
+        /// Displays a resource picker for opening
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="resourceType"></param>
+        /// <returns></returns>
+        public string PickResourceOpen(IServerConnection conn, string resourceType)
+        {
+            Func<string> picker = () =>
+            {
+                using (var diag = new ResourcePicker(conn.ResourceService, (ResourceTypes)Enum.Parse(typeof(ResourceTypes), resourceType), ResourcePickerMode.OpenResource))
+                {
+                    if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        return diag.ResourceID;
+                    }
+                }
+                return null;
+            };
+            if (this.MainWindow.InvokeRequired)
+            {
+                var result = this.MainWindow.Invoke(picker);
+                if (result != null)
+                    return result.ToString();
+                else
+                    return null;
+            }
+            else
+                return picker();
+        }
+
+        /// <summary>
+        /// Displays a resource picker for saving
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="resourceType"></param>
+        /// <returns></returns>
+        public string PickResourceSave(IServerConnection conn, string resourceType)
+        {
+            Func<string> picker = () =>
+            {
+                using (var diag = new ResourcePicker(conn.ResourceService, (ResourceTypes)Enum.Parse(typeof(ResourceTypes), resourceType), ResourcePickerMode.SaveResource))
+                {
+                    if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        return diag.ResourceID;
+                    }
+                }
+                return null;
+            };
+            if (this.MainWindow.InvokeRequired)
+            {
+                var result = this.MainWindow.Invoke(picker);
+                if (result != null)
+                    return result.ToString();
+                else
+                    return null;
+            }
+            else
+                return picker();
+        }
+
+        /// <summary>
+        /// Prompts a dialog to select a folder
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <returns></returns>
+        public string PickFolder(IServerConnection conn)
+        {
+            Func<string> picker = () =>
+            {
+                using (var diag = new ResourcePicker(conn.ResourceService, ResourcePickerMode.OpenFolder))
+                {
+                    if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        return diag.ResourceID;
+                    }
+                }
+                return null;
+            };
+            if (this.MainWindow.InvokeRequired)
+            {
+                var result = this.MainWindow.Invoke(picker);
+                if (result != null)
+                    return result.ToString();
+                else
+                    return null;
+            }
+            else
+                return picker();
         }
 
         /// <summary>
