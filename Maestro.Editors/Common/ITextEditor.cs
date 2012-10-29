@@ -81,6 +81,11 @@ namespace Maestro.Editors.Common
         void Write(string text, Color backgroundColor);
 
         /// <summary>
+        /// Inserts text at the current cursor location with the specified colour.
+        /// </summary>
+        void Write(string text, Color backgroundColor, Color foregroundColor);
+
+        /// <summary>
         /// Replaces the text at the specified index on the current line with the specified text.
         /// </summary>
         void Replace(int index, int length, string text);

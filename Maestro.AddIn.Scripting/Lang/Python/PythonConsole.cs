@@ -34,6 +34,7 @@ using Maestro.Editors.Common;
 using Microsoft.Scripting.Hosting.Shell;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -158,7 +159,12 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         #if DEBUG
             Console.WriteLine("PythonConsole.Write(text, style): " + text);
         #endif
-            textEditor.Write(text);
+            if (style == Style.Error)
+                textEditor.Write(text, Color.Red, Color.White);
+            else if (style == Style.Warning)
+                textEditor.Write(text, Color.Yellow, Color.Black);
+            else
+                textEditor.Write(text);
 
             if (style == Style.Prompt)
             {

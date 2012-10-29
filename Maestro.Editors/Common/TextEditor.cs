@@ -43,7 +43,7 @@ namespace Maestro.Editors.Common
     public class TextEditor : ITextEditor
     {
         delegate string GetLineInvoker(int index);
-        delegate void WriteInvoker(string text, Color color);
+        delegate void WriteInvoker(string text, Color color, Color fore);
 
         TextEditorControl textEditorControl;
         TextArea textArea;
@@ -84,15 +84,20 @@ namespace Maestro.Editors.Common
 
         public void Write(string text)
         {
-            Write(text, Color.Empty);
+            Write(text, Color.Empty, default(Color));
         }
 
         public void Write(string text, Color backgroundColour)
         {
+            Write(text, backgroundColour, default(Color));
+        }
+
+        public void Write(string text, Color backgroundColour, Color foregroundColor)
+        {
             if (textEditorControl.InvokeRequired)
             {
                 WriteInvoker invoker = new WriteInvoker(Write);
-                textEditorControl.Invoke(invoker, new object[] { text, backgroundColour });
+                textEditorControl.Invoke(invoker, new object[] { text, backgroundColour, foregroundColor });
             }
             else
             {
@@ -101,7 +106,7 @@ namespace Maestro.Editors.Common
 
                 if (!backgroundColour.IsEmpty)
                 {
-                    TextMarker marker = new TextMarker(offset, text.Length, TextMarkerType.SolidBlock, backgroundColour);
+                    TextMarker marker = new TextMarker(offset, text.Length, TextMarkerType.SolidBlock, backgroundColour, foregroundColor);
                     textEditorControl.Document.MarkerStrategy.AddMarker(marker);
                     textEditorControl.Refresh();
                 }
