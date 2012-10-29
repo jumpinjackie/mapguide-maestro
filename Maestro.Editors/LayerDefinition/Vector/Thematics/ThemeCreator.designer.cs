@@ -43,6 +43,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.GroupPanel = new System.Windows.Forms.Panel();
             this.RuleCountPanel = new System.Windows.Forms.Panel();
             this.DisplayGroup = new System.Windows.Forms.GroupBox();
+            this.btnFlipColorBrewer = new System.Windows.Forms.Button();
             this.ColorBrewerPanel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.ColorBrewerDataType = new System.Windows.Forms.ComboBox();
@@ -176,6 +177,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             // DisplayGroup
             // 
             resources.ApplyResources(this.DisplayGroup, "DisplayGroup");
+            this.DisplayGroup.Controls.Add(this.btnFlipColorBrewer);
             this.DisplayGroup.Controls.Add(this.ColorBrewerPanel);
             this.DisplayGroup.Controls.Add(this.ColorBrewerLabel);
             this.DisplayGroup.Controls.Add(this.panel2);
@@ -183,6 +185,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.DisplayGroup.Controls.Add(this.GradientColors);
             this.DisplayGroup.Name = "DisplayGroup";
             this.DisplayGroup.TabStop = false;
+            // 
+            // btnFlipColorBrewer
+            // 
+            resources.ApplyResources(this.btnFlipColorBrewer, "btnFlipColorBrewer");
+            this.btnFlipColorBrewer.Name = "btnFlipColorBrewer";
+            this.btnFlipColorBrewer.UseVisualStyleBackColor = true;
+            this.btnFlipColorBrewer.Click += new System.EventHandler(this.btnFlipColorBrewer_Click);
             // 
             // ColorBrewerPanel
             // 
@@ -364,5 +373,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         private System.Windows.Forms.ComboBox ColorBrewerDataType;
         private System.Windows.Forms.LinkLabel ColorBrewerLabel;
         private System.Windows.Forms.CheckBox chkUseFirstRuleAsTemplate;
+        private System.Windows.Forms.Button btnFlipColorBrewer;
     }
 }

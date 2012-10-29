@@ -295,5 +295,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                     return m_set.ToString();
             }
         }
+
+        internal void Flip()
+        {
+            this.Colors.Reverse();
+        }
     }
 }

@@ -697,11 +697,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 
         private void GradientColors_CheckedChanged(object sender, EventArgs e)
         {
+            btnFlipColorBrewer.Enabled = false;
             RefreshPreview();
         }
 
         private void ColorBrewerColors_CheckedChanged(object sender, EventArgs e)
         {
+            btnFlipColorBrewer.Enabled = true;
             RefreshPreview();
         }
 
@@ -911,6 +913,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 
         private void ColorBrewerDataType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            LoadColorBrewerOptions();
+        }
+
+        private void LoadColorBrewerOptions()
+        {
             string prevSet = ColorBrewerColorSet.Text;
             ColorBrewerColorSet.Items.Clear();
 
@@ -934,5 +941,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             m_editor.OpenUrl("http://colorbrewer.org/");
         }
 
+        private void btnFlipColorBrewer_Click(object sender, EventArgs e)
+        {
+            foreach (var cb in m_colorBrewer)
+            {
+                cb.Flip();
+            }
+            LoadColorBrewerOptions();
+        }
     }
 }
