@@ -61,6 +61,24 @@ namespace Maestro.AddIn.Scripting {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Open Editor found for: {0}.
+        /// </summary>
+        internal static string Error_NoOpenEditor {
+            get {
+                return ResourceManager.GetString("Error_NoOpenEditor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Previewer found for connection provider: {0}.
+        /// </summary>
+        internal static string Error_NoPreviewer {
+            get {
+                return ResourceManager.GetString("Error_NoPreviewer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to IronPython Console.
         /// </summary>
         internal static string Title_IronPython_Console {

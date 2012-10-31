@@ -37,6 +37,8 @@ namespace Maestro.Base.UI.Preferences
 
             var path = Props.Get(ConfigProperties.XsdSchemaPath, ConfigProperties.DefaultXsdSchemaPath);
             txtXsdPath.Text = path;
+
+            txtPreviewLocale.Text = Props.Get(ConfigProperties.PreviewLocale, ConfigProperties.DefaultPreviewLocale);
         }
 
         public string Title
@@ -54,6 +56,7 @@ namespace Maestro.Base.UI.Preferences
             bool restart = false;
 
             Apply(ConfigProperties.ValidateOnSave, chkValidateOnSave.Checked);
+            Apply(ConfigProperties.PreviewLocale, txtPreviewLocale.Text);
 
             //These changes require restart
             if (Apply(ConfigProperties.XsdSchemaPath, txtXsdPath.Text))

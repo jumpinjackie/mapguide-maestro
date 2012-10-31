@@ -33,6 +33,7 @@ using Microsoft.Scripting.Runtime;
 using Microsoft.Scripting.Hosting;
 using Maestro.AddIn.Scripting.UI;
 using Maestro.Editors.Generic;
+using Maestro.Base.Editor;
 
 namespace Maestro.AddIn.Scripting.Services
 {
@@ -270,6 +271,46 @@ namespace Maestro.AddIn.Scripting.Services
                 var siteExp = this.MainWindow.ActiveSiteExplorer;
                 var omgr = ServiceRegistry.GetService<OpenResourceManager>();
                 omgr.Open(resourceId, conn, false, siteExp);
+            };
+            if (this.MainWindow.InvokeRequired)
+                this.MainWindow.Invoke(action);
+            else
+                action();
+        }
+
+        /// <summary>
+        /// Launches a preview of the given open resource
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="resourceId"></param>
+        /// <param name="locale"></param>
+        public void PreviewResource(IServerConnection conn, string resourceId, string locale)
+        {
+            Action action = () =>
+            {
+                var siteExp = this.MainWindow.ActiveSiteExplorer;
+                var omgr = ServiceRegistry.GetService<OpenResourceManager>();
+                IEditorViewContent openEd = null;
+                foreach (var ed in omgr.OpenEditors)
+                {
+                    if (ed.Resource.CurrentConnection == conn && ed.EditorService.ResourceID == resourceId)
+                    {
+                        openEd = ed;
+                        break;
+                    }
+                }
+                if (openEd != null)
+                {
+                    var previewer = ResourcePreviewerFactory.GetPreviewer(conn.ProviderName);
+                    if (previewer != null)
+                        previewer.Preview(openEd.Resource, openEd.EditorService, locale);
+                    else
+                        throw new Exception(string.Format(Strings.Error_NoPreviewer, conn.ProviderName));
+                }
+                else
+                {
+                    throw new Exception(string.Format(Strings.Error_NoOpenEditor, resourceId));
+                }
             };
             if (this.MainWindow.InvokeRequired)
                 this.MainWindow.Invoke(action);

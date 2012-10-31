@@ -36,6 +36,7 @@ namespace Maestro.Editors.SymbolDefinition
         {
             _inner = edSvc;
             _symDef = symDef;
+            this.PreviewLocale = "en"; //NOXLATE
         }
 
         public bool SupportsCommand(CommandType cmdType)
@@ -234,5 +235,11 @@ namespace Maestro.Editors.SymbolDefinition
         }
 
         public event EventHandler BeforePreview;
+
+        public string PreviewLocale
+        {
+            get;
+            set;
+        }
     }
 }

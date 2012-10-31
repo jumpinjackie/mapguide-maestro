@@ -33,6 +33,11 @@ namespace Maestro.Base.UI.Preferences
     public static class ConfigProperties
     {
         /// <summary>
+        /// The locale to preview in
+        /// </summary>
+        public const string PreviewLocale = "General.PreviewLocale"; //NOXLATE
+
+        /// <summary>
         /// The type of viewer to preview
         /// </summary>
         public const string PreviewViewerType = "General.PreviewViewerType"; //NOXLATE
@@ -105,6 +110,7 @@ namespace Maestro.Base.UI.Preferences
 
         internal static void ApplyEditorDefaults()
         {
+            Props.Set(ConfigProperties.PreviewLocale, DefaultPreviewLocale);
             Props.Set(ConfigProperties.ValidateOnSave, DefaultValidateOnSave);
             Props.Set(ConfigProperties.XsdSchemaPath, DefaultXsdSchemaPath);
         }
@@ -123,6 +129,8 @@ namespace Maestro.Base.UI.Preferences
             Props.Set(ConfigProperties.ShowTipOfTheDay, DefaultShowTipOfTheDay);
             Props.Set(ConfigProperties.LiveMapEditorPath, DefaultLiveMapEditorPath);
         }
+
+        public static string DefaultPreviewLocale { get { return "en"; } } //NOXLATE
 
         /// <summary>
         /// Default setting for "Show tip of the day"

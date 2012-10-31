@@ -93,6 +93,7 @@ namespace Maestro.Base.Editor
                 }
 
                 _svc = value;
+                _svc.PreviewLocale = PropertyService.Get(ConfigProperties.PreviewLocale, ConfigProperties.DefaultPreviewLocale);
                 _svc.DirtyStateChanged += OnDirtyStateChanged;
                 _svc.Saved += OnSaved;
                 _svc.BeforeSave += OnBeforeSave;
@@ -352,7 +353,7 @@ namespace Maestro.Base.Editor
             _svc.PrePreviewProcess();
             var previewer = ResourcePreviewerFactory.GetPreviewer(conn.ProviderName);
             if (previewer != null)
-                previewer.Preview(this.Resource, this.EditorService);
+                previewer.Preview(this.Resource, this.EditorService, _svc.PreviewLocale);
         }
 
         /// <summary>

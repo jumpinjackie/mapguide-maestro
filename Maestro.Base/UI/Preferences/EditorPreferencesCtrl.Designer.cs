@@ -32,16 +32,20 @@
             this.chkValidateOnSave = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnBrowseXsdPath = new System.Windows.Forms.Button();
-            this.txtXsdPath = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtXsdPath = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtPreviewLocale = new System.Windows.Forms.TextBox();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.chkValidateOnSave);
             this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
@@ -63,8 +67,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.btnBrowseXsdPath);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtXsdPath);
@@ -87,16 +91,6 @@
             this.btnBrowseXsdPath.UseVisualStyleBackColor = true;
             this.btnBrowseXsdPath.Click += new System.EventHandler(this.btnBrowseXsdPath_Click);
             // 
-            // txtXsdPath
-            // 
-            this.txtXsdPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtXsdPath.Location = new System.Drawing.Point(112, 24);
-            this.txtXsdPath.Name = "txtXsdPath";
-            this.txtXsdPath.ReadOnly = true;
-            this.txtXsdPath.Size = new System.Drawing.Size(249, 20);
-            this.txtXsdPath.TabIndex = 13;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -107,10 +101,50 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "Xml Schema Path";
             // 
+            // txtXsdPath
+            // 
+            this.txtXsdPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtXsdPath.Location = new System.Drawing.Point(112, 24);
+            this.txtXsdPath.Name = "txtXsdPath";
+            this.txtXsdPath.ReadOnly = true;
+            this.txtXsdPath.Size = new System.Drawing.Size(249, 20);
+            this.txtXsdPath.TabIndex = 13;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.txtPreviewLocale);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Location = new System.Drawing.Point(4, 132);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(398, 60);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Localization";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(166, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Preview using the following locale";
+            // 
+            // txtPreviewLocale
+            // 
+            this.txtPreviewLocale.Location = new System.Drawing.Point(187, 22);
+            this.txtPreviewLocale.Name = "txtPreviewLocale";
+            this.txtPreviewLocale.Size = new System.Drawing.Size(47, 20);
+            this.txtPreviewLocale.TabIndex = 1;
+            // 
             // EditorPreferencesCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
             this.Name = "EditorPreferencesCtrl";
@@ -119,6 +153,8 @@
             this.groupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -131,5 +167,8 @@
         private System.Windows.Forms.Button btnBrowseXsdPath;
         private System.Windows.Forms.TextBox txtXsdPath;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtPreviewLocale;
+        private System.Windows.Forms.Label label1;
     }
 }

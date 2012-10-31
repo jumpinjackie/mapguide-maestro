@@ -28,6 +28,8 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using Maestro.Editors;
 
 namespace Maestro.AddIn.Local.Services
 {
@@ -41,7 +43,17 @@ namespace Maestro.AddIn.Local.Services
                     rt == ResourceTypes.WatermarkDefinition);
         }
 
-        public void Preview(OSGeo.MapGuide.MaestroAPI.Resource.IResource res, Maestro.Editors.IEditorService edSvc)
+        /// <summary>
+        /// Previews the specified resource
+        /// </summary>
+        /// <param name="res">The resource to be previewed</param>
+        /// <param name="edSvc">The editor service</param>
+        public void Preview(IResource res, IEditorService edSvc)
+        {
+            Preview(res, edSvc, edSvc.PreviewLocale);
+        }
+
+        public void Preview(IResource res, IEditorService edSvc, string locale)
         {
             IMapDefinition mapDef = null;
             var conn = res.CurrentConnection;

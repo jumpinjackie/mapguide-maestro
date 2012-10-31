@@ -128,7 +128,7 @@ namespace Maestro.Editors.WebLayout
 
                 if (!_edsvc.IsNew)
                 {
-                    txtAjaxViewerUrl.Text = baseUrl + "mapviewerajax/?WEBLAYOUT=" + _edsvc.ResourceID;
+                    txtAjaxViewerUrl.Text = baseUrl + "mapviewerajax/?WEBLAYOUT=" + _edsvc.ResourceID + "&LOCALE=" + _edsvc.PreviewLocale;
                     btnShowInBrowser.Enabled = true;
                 }
                 else

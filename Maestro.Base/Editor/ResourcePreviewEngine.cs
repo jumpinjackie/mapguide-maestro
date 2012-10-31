@@ -45,7 +45,12 @@ namespace Maestro.Base.Editor
             _edSvc = edSvc;
         }
 
-        private string GenerateFeatureSourcePreviewUrl(IResource res)
+        static string GetLocale(string locale)
+        {
+            return string.IsNullOrEmpty(locale) ? "en" : locale; //NOXLATE
+        }
+
+        private string GenerateFeatureSourcePreviewUrl(IResource res, string locale)
         {
             string url = _rootUrl;
             if (!url.EndsWith("/")) //NOXLATE
@@ -53,12 +58,12 @@ namespace Maestro.Base.Editor
 
             var resId = res.ResourceID;
             var sessionId = _edSvc.SessionID;
-            url += "schemareport/describeschema.php?viewer=basic&schemaName=&className=&resId=" + resId + "&sessionId=" + sessionId; //NOXLATE
+            url += "schemareport/describeschema.php?viewer=basic&schemaName=&className=&resId=" + resId + "&sessionId=" + sessionId + "&locale=" + GetLocale(locale); //NOXLATE
 
             return url;
         }
 
-        private string GenerateLayerPreviewUrl(IResource res)
+        private string GenerateLayerPreviewUrl(IResource res, string locale)
         {
             string url = _rootUrl;
             if (!url.EndsWith("/")) //NOXLATE
@@ -97,7 +102,7 @@ namespace Maestro.Base.Editor
                 var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".WebLayout"; //NOXLATE
 
                 conn.ResourceService.SaveResourceAs(wl, resId);
-                url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionId; //NOXLATE
+                url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionId + "&LOCALE=" + GetLocale(locale); //NOXLATE
             }
             else
             {
@@ -174,7 +179,7 @@ namespace Maestro.Base.Editor
             wl.ToolBar.AddItem(menu);
         }
 
-        private string GenerateWatermarkPreviewUrl(IWatermarkDefinition wmd)
+        private string GenerateWatermarkPreviewUrl(IWatermarkDefinition wmd, string locale)
         {
             //We demand a 2.3.0 Map Definition or higher
             if (wmd.CurrentConnection.SiteVersion < new Version(2, 3))
@@ -184,10 +189,10 @@ namespace Maestro.Base.Editor
             map.CoordinateSystem = @"LOCAL_CS[""*XY-M*"", LOCAL_DATUM[""*X-Y*"", 10000], UNIT[""Meter"", 1], AXIS[""X"", EAST], AXIS[""Y"", NORTH]]"; //NOXLATE
             map.Extents = ObjectFactory.CreateEnvelope(-1000000, -1000000, 1000000, 1000000);
             map.AddWatermark(wmd);
-            return GenerateMapPreviewUrl(map);
+            return GenerateMapPreviewUrl(map, locale);
         }
 
-        private string GenerateMapPreviewUrl(IResource res)
+        private string GenerateMapPreviewUrl(IResource res, string locale)
         {
             string url = _rootUrl;
             if (!url.EndsWith("/")) //NOXLATE
@@ -211,7 +216,7 @@ namespace Maestro.Base.Editor
                 var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".WebLayout"; //NOXLATE
 
                 conn.ResourceService.SaveResourceAs(wl, resId);
-                url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionId; //NOXLATE
+                url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionId + "&LOCALE=" + GetLocale(locale); //NOXLATE
             }
             else
             {
@@ -228,7 +233,7 @@ namespace Maestro.Base.Editor
             return url;
         }
 
-        private string GenerateWebLayoutPreviewUrl(IResource res)
+        private string GenerateWebLayoutPreviewUrl(IResource res, string locale)
         {
             string url = _rootUrl;
             if (!url.EndsWith("/")) //NOXLATE
@@ -240,12 +245,12 @@ namespace Maestro.Base.Editor
             var conn = wl.CurrentConnection;
 
             conn.ResourceService.SaveResourceAs(wl, resId);
-            url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionId; //NOXLATE
+            url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionId + "&LOCALE=" + GetLocale(locale); //NOXLATE
 
             return url;
         }
 
-        private string GenerateFlexLayoutPreviewUrl(IResource res)
+        private string GenerateFlexLayoutPreviewUrl(IResource res, string locale)
         {
             string url = _rootUrl;
             if (!url.EndsWith("/")) //NOXLATE
@@ -258,26 +263,26 @@ namespace Maestro.Base.Editor
             var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".ApplicationDefinition"; //NOXLATE
             
             conn.ResourceService.SaveResourceAs(appDef, resId);
-            url += appDef.TemplateUrl + "?Session=" + sessionId + "&ApplicationDefinition=" + resId; //NOXLATE
+            url += appDef.TemplateUrl + "?Session=" + sessionId + "&ApplicationDefinition=" + resId + "&locale=" + GetLocale(locale); //NOXLATE
             return url;
         }
 
-        public string GeneratePreviewUrl(IResource res)
+        public string GeneratePreviewUrl(IResource res, string locale)
         {
             switch (res.ResourceType)
             {
                 case ResourceTypes.FeatureSource:
-                    return GenerateFeatureSourcePreviewUrl(res);
+                    return GenerateFeatureSourcePreviewUrl(res, locale);
                 case ResourceTypes.ApplicationDefinition:
-                    return GenerateFlexLayoutPreviewUrl(res);
+                    return GenerateFlexLayoutPreviewUrl(res, locale);
                 case ResourceTypes.LayerDefinition:
-                    return GenerateLayerPreviewUrl(res);
+                    return GenerateLayerPreviewUrl(res, locale);
                 case ResourceTypes.MapDefinition:
-                    return GenerateMapPreviewUrl(res);
+                    return GenerateMapPreviewUrl(res, locale);
                 case ResourceTypes.WebLayout:
-                    return GenerateWebLayoutPreviewUrl(res);
+                    return GenerateWebLayoutPreviewUrl(res, locale);
                 case ResourceTypes.WatermarkDefinition:
-                    return GenerateWatermarkPreviewUrl((IWatermarkDefinition)res);
+                    return GenerateWatermarkPreviewUrl((IWatermarkDefinition)res, locale);
                 default:
                     throw new InvalidOperationException(Strings.UnpreviewableResourceType);
             }

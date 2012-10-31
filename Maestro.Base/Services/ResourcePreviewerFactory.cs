@@ -51,6 +51,18 @@ namespace Maestro.Base.Services
         /// <param name="res">The resource to be previewed</param>
         /// <param name="edSvc">The editor service</param>
         void Preview(IResource res, IEditorService edSvc);
+
+        /// <summary>
+        /// Previews the specified resource using the given locale
+        /// </summary>
+        /// <param name="res">The resource to be previewed</param>
+        /// <param name="edSvc">The editor service</param>
+        /// <param name="locale">The locale</param>
+        /// <remarks>
+        /// The locale parameter should be treated as a hint. The underlying <see cref="T:OSGeo.MapGuide.MaestroAPI.IServerConnection"/> implementation
+        /// may not actually respect this value.
+        /// </remarks>
+        void Preview(IResource res, IEditorService edSvc, string locale);
     }
 
     /// <summary>
@@ -79,6 +91,16 @@ namespace Maestro.Base.Services
         /// <param name="res">The resource to be previewed</param>
         /// <param name="edSvc">The editor service</param>
         public void Preview(IResource res, IEditorService edSvc)
+        {
+            Preview(res, edSvc, edSvc.PreviewLocale);
+        }
+
+        /// <summary>
+        /// Previews the specified resource
+        /// </summary>
+        /// <param name="res">The resource to be previewed</param>
+        /// <param name="edSvc">The editor service</param>
+        public void Preview(IResource res, IEditorService edSvc, string locale)
         {
             //TODO: Prompt for symbol parameters if there are any, as these can affect the rendered output
             //and it is a nice way to test symbol parameters wrt to rendering
@@ -133,7 +155,7 @@ namespace Maestro.Base.Services
                 else
                 {
                     //Now feed it to the preview engine
-                    var url = new ResourcePreviewEngine(mapguideRootUrl, edSvc).GeneratePreviewUrl(previewCopy);
+                    var url = new ResourcePreviewEngine(mapguideRootUrl, edSvc).GeneratePreviewUrl(previewCopy, locale);
                     return new UrlPreviewResult() { Url = url };
                 }
             }, (result) => {

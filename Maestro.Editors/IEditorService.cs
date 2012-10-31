@@ -38,6 +38,10 @@ namespace Maestro.Editors
     public interface IEditorService
     {
         /// <summary>
+        /// Gets the locale for previewing
+        /// </summary>
+        string PreviewLocale { get; set; }
+        /// <summary>
         /// Indicates if a specified custom command is supported and can be created
         /// </summary>
         /// <param name="cmdType"></param>

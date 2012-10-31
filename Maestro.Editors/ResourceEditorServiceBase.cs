@@ -55,6 +55,16 @@ namespace Maestro.Editors
             this.IsNew = ResourceIdentifier.IsSessionBased(resourceID);
             this.ResourceID = resourceID;
             _conn = conn;
+            this.PreviewLocale = "en"; //NOXLATE
+        }
+
+        /// <summary>
+        /// Gets the locale to use for previewing
+        /// </summary>
+        public virtual string PreviewLocale
+        {
+            get;
+            set;
         }
 
         /// <summary>
