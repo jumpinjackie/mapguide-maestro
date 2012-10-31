@@ -227,8 +227,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>The invocation count for the given provider. -1 if the provider is not registered or does not exist</returns>
         public static int GetInvocationCount(string provider)
         {
-            if (_callCount.ContainsKey(provider))
-                return _callCount[provider];
+            if (_callCount.ContainsKey(provider.ToUpper()))
+                return _callCount[provider.ToUpper()];
 
             return -1;
         }

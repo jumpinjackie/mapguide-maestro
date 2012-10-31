@@ -42,6 +42,8 @@ namespace Maestro.Login
             InitializeComponent();
         }
 
+        internal static string LastIniPath { get; set; }
+
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             using (var open = DialogFactory.OpenFile())
@@ -51,7 +53,7 @@ namespace Maestro.Login
                 open.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickIni, "ini"); //NOXLATE
                 if (open.ShowDialog() == DialogResult.OK)
                 {
-                    txtPlatformConfig.Text = open.FileName;
+                    LastIniPath = txtPlatformConfig.Text = open.FileName;
                     UpdateLoginStatus();
                 }
             }

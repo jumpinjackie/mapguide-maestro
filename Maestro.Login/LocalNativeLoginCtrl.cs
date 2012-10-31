@@ -42,6 +42,8 @@ namespace Maestro.Login
             DisabledOk(this, EventArgs.Empty);
         }
 
+        internal static string LastIniPath { get; set; }
+
         #region ILoginCtrl Members
 
         public string Username
@@ -91,7 +93,7 @@ namespace Maestro.Login
                 dlg.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickIni, "ini"); //NOXLATE
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    txtWebConfig.Text = dlg.FileName;
+                    LastIniPath = txtWebConfig.Text = dlg.FileName;
                 }
             }
         }

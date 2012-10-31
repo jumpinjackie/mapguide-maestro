@@ -45,7 +45,8 @@ namespace Maestro.Login
         private HttpLoginCtrl _http;
         private LocalNativeLoginCtrl _localNative;
         private LocalLoginCtrl _local;
-        
+        private LocalNativeStubCtrl _localNativeStub;
+        private LocalStubCtrl _localStub;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginDialog"/> class.
@@ -56,21 +57,31 @@ namespace Maestro.Login
             _http = new HttpLoginCtrl() { Dock = DockStyle.Fill };
             _localNative = new LocalNativeLoginCtrl() { Dock = DockStyle.Fill };
             _local = new LocalLoginCtrl() { Dock = DockStyle.Fill };
+            _localNativeStub = new LocalNativeStubCtrl() { Dock = DockStyle.Fill };
+            _localStub = new LocalStubCtrl() { Dock = DockStyle.Fill };
             _controls = new ILoginCtrl[] 
             {
                 _http,
                 _localNative,
-                _local 
+                _local,
+                _localNativeStub,
+                _localStub
             };
             _controls[0].EnableOk += OnEnableOk;
             _controls[1].EnableOk += OnEnableOk;
             _controls[2].EnableOk += OnEnableOk;
+            _controls[3].EnableOk += OnEnableOk;
+            _controls[4].EnableOk += OnEnableOk;
             _controls[0].CheckSavedPassword += (sender, e) => { chkSavePassword.Checked = true; };
             _controls[1].CheckSavedPassword += (sender, e) => { chkSavePassword.Checked = true; };
             _controls[2].CheckSavedPassword += (sender, e) => { chkSavePassword.Checked = true; };
+            _controls[3].CheckSavedPassword += (sender, e) => { chkSavePassword.Checked = true; };
+            _controls[4].CheckSavedPassword += (sender, e) => { chkSavePassword.Checked = true; };
             _controls[0].DisabledOk += OnDisableOk;
             _controls[1].DisabledOk += OnDisableOk;
             _controls[2].DisabledOk += OnDisableOk;
+            _controls[3].DisabledOk += OnDisableOk;
+            _controls[4].DisabledOk += OnDisableOk;
         }
 
         /// <summary>
@@ -278,7 +289,7 @@ namespace Maestro.Login
                     else if (_selectedIndex == 1) //Native
                     {
                         System.Data.Common.DbConnectionStringBuilder builder = new System.Data.Common.DbConnectionStringBuilder();
-                        builder["ConfigFile"] = _localNative.WebConfigPath; //NOXLATE
+                        builder["ConfigFile"] = LocalNativeLoginCtrl.LastIniPath; //NOXLATE
                         builder["Username"] = _localNative.Username; //NOXLATE
                         builder["Password"] = _localNative.Password; //NOXLATE
                         builder["Locale"] = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName; //NOXLATE
@@ -287,7 +298,7 @@ namespace Maestro.Login
                     else //Local
                     {
                         NameValueCollection param = new NameValueCollection();
-                        param["ConfigFile"] = _local.PlatformConfigPath; //NOXLATE
+                        param["ConfigFile"] = LocalLoginCtrl.LastIniPath; //NOXLATE
                         _conn = ConnectionProviderRegistry.CreateConnection("Maestro.Local", param); //NOXLATE
                     }
 
@@ -316,14 +327,40 @@ namespace Maestro.Login
         private void UpdateLoginControl()
         {
             if (rdHttp.Checked)
+            {
                 _selectedIndex = 0;
+                SetLoginControl((Control)_controls[_selectedIndex]);
+                _controls[_selectedIndex].UpdateLoginStatus();
+            }
             else if (rdTcpIp.Checked)
-                _selectedIndex = 1;
+            {
+                if (ConnectionProviderRegistry.GetInvocationCount("Maestro.LocalNative") == 0)
+                {
+                    _selectedIndex = 1;
+                }
+                else
+                {
+                    _selectedIndex = 3;
+                    _localNativeStub.SetLastIniPath(LocalNativeLoginCtrl.LastIniPath);
+                }
+                SetLoginControl((Control)_controls[_selectedIndex]);
+                _controls[_selectedIndex].UpdateLoginStatus();
+            }
             else
+            {
                 _selectedIndex = 2;
-
-            SetLoginControl((Control)_controls[_selectedIndex]);
-            _controls[_selectedIndex].UpdateLoginStatus();
+                if (ConnectionProviderRegistry.GetInvocationCount("Maestro.Local") == 0)
+                {
+                    _selectedIndex = 2;
+                }
+                else
+                {
+                    _selectedIndex = 4;
+                    _localStub.SetLastIniPath(LocalLoginCtrl.LastIniPath);
+                }
+                SetLoginControl((Control)_controls[_selectedIndex]);
+                _controls[_selectedIndex].UpdateLoginStatus();
+            }
         }
     }
 }
