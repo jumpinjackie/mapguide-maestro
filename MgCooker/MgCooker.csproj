@@ -53,14 +53,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Maestro.Login, Version=3.0.0.5475, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\Maestro.Login.dll</HintPath>
-    </Reference>
-    <Reference Include="OSGeo.MapGuide.MaestroAPI, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SDK\bin\OSGeo.MapGuide.MaestroAPI.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -146,9 +138,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Maestro.Login\Maestro.Login.csproj">
+      <Project>{07588440-5f9f-4c30-aa06-9cf30ba6dde6}</Project>
+      <Name>Maestro.Login</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.ExtendedObjectModels\OSGeo.MapGuide.ExtendedObjectModels.csproj">
-      <Project>{B3A2B816-9F41-4857-A111-09D2DF2550D6}</Project>
+      <Project>{b3a2b816-9f41-4857-a111-09d2df2550d6}</Project>
       <Name>OSGeo.MapGuide.ExtendedObjectModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
+      <Project>{80fa3158-8b5f-48d1-a393-0378afe48a7e}</Project>
+      <Name>OSGeo.MapGuide.MaestroAPI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

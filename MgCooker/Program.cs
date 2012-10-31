@@ -156,18 +156,27 @@ namespace MgCooker
             {
                 if (largs.IndexOf("/commandline") < 0 && largs.IndexOf("commandline") < 0)
                 {
-                    var frm = new LoginDialog();
-                    if (frm.ShowDialog() != System.Windows.Forms.DialogResult.OK)
-                        return;
+                    if (opts.ContainsKey("provider") && opts.ContainsKey("connection-params"))
+                    {
+                        var initP = ConnectionProviderRegistry.ParseConnectionString(opts["connection-params"]);
+                        connection = ConnectionProviderRegistry.CreateConnection(opts["provider"], initP);
+                        sr = new SetupRun(connection, maps, opts);
+                    }
+                    else
+                    {
+                        var frm = new LoginDialog();
+                        if (frm.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                            return;
 
-                    connection = frm.Connection;
+                        connection = frm.Connection;
+                        sr = new SetupRun(frm.Username, frm.Password, connection, maps, opts);
+                    }
                     try
                     {
                         mapagent = connection.GetCustomProperty("BaseUrl").ToString();
                     }
                     catch { }
-
-                    sr = new SetupRun(frm.Username, frm.Password, connection, maps, opts);
+                    
                 }
             }
 
@@ -183,6 +192,12 @@ namespace MgCooker
                     initP["AllowUntestedVersion"] = "true";
 
                     connection = ConnectionProviderRegistry.CreateConnection("Maestro.Http", initP);
+                }
+                else if (opts.ContainsKey("provider") && opts.ContainsKey("connection-params"))
+                {
+                    initP = ConnectionProviderRegistry.ParseConnectionString(opts["connection-params"]);
+
+                    connection = ConnectionProviderRegistry.CreateConnection(opts["provider"], initP);
                 }
                 else
                 {

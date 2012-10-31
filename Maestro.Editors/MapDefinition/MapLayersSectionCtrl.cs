@@ -1444,11 +1444,9 @@ namespace Maestro.Editors.MapDefinition
                 return;
             }
 
-            //HACK: This will ask for login again because we don't store username/password and MgCooker does not
-            //support initialization from a session id yet. But at least MgCooker will launch with the correct
-            //map definition loaded
             _edSvc.RunProcess("MgCooker",
-                              "--mapagent=" + conn.GetCustomProperty("BaseUrl"),
+                              "--provider=Maestro.Http",
+                              "--connection-params=\"Url=" + conn.GetCustomProperty("BaseUrl").ToString() + ";SessionId=" + conn.SessionID + "\"",
                               "--mapdefinitions=" + _edSvc.ResourceID);
         }
 

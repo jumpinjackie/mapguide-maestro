@@ -187,7 +187,12 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        internal static NameValueCollection ParseConnectionString(string connectionString)
+        /// <summary>
+        /// Parses the given Maestro connection string into a <see cref="T:System.Collections.Specialized.NameValueCollection"/>
+        /// </summary>
+        /// <param name="connectionString"></param>
+        /// <returns></returns>
+        public static NameValueCollection ParseConnectionString(string connectionString)
         {
             var builder = new DbConnectionStringBuilder();
             builder.ConnectionString = connectionString;
