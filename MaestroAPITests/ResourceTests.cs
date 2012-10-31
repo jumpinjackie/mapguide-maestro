@@ -693,6 +693,177 @@ namespace MaestroAPITests
             }
         }
 
+        private static void SetupMapDefinitionForTest(IMapDefinition mdf)
+        {
+            mdf.AddGroup("Group1");
+            mdf.AddLayer("Group1", "Parcels", "Library://UnitTests/Layers/Parcels.LayerDefinition");
+            mdf.AddLayer("Group1", "Rail", "Library://UnitTests/Layers/Rail.LayerDefinition");
+            mdf.AddGroup("Group2");
+        }
+
+        [Test]
+        public void TestMapDefinitionLayerInsert()
+        {
+            var conn = _mocks.NewMock<IServerConnection>();
+            var mdf = ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), "TestMapDefinitionLayerInsert");
+            SetupMapDefinitionForTest(mdf);
+            int layerCount = mdf.GetLayerCount();
+
+            Assert.Throws<PreconditionException>(() => { mdf.InsertLayer(-1, null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"); });
+            Assert.Throws<PreconditionException>(() => { mdf.InsertLayer(layerCount + 1, null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"); });
+            Assert.Throws<PreconditionException>(() => { mdf.InsertLayer(0, null, "", ""); });
+            Assert.Throws<PreconditionException>(() => { mdf.InsertLayer(0, null, null, ""); });
+            Assert.Throws<PreconditionException>(() => { mdf.InsertLayer(0, null, "", null); });
+            Assert.Throws<PreconditionException>(() => { mdf.InsertLayer(0, null, null, null); });
+            Assert.Throws<PreconditionException>(() => { mdf.InsertLayer(0, null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.FeatureSource"); });
+            Assert.Throws<PreconditionException>(() => { mdf.InsertLayer(0, null, "Hydro", "Garbage"); });
+
+            IMapLayer layer = mdf.InsertLayer(0, null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
+            Assert.AreEqual(0, mdf.GetIndex(layer));
+            Assert.True(layer == mdf.GetLayerByName("Hydro"));
+
+            layerCount = mdf.GetLayerCount();
+            IMapLayer layer1 = mdf.InsertLayer(layerCount, null, "Hydro2", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
+            Assert.AreEqual(layerCount, mdf.GetIndex(layer1));
+            Assert.True(layer1 == mdf.GetLayerByName("Hydro2"));
+        }
+
+        [Test]
+        public void TestMapDefinitionLayerAdd()
+        {
+            var conn = _mocks.NewMock<IServerConnection>();
+            var mdf = ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), "TestMapDefinitionLayerAdd");
+            SetupMapDefinitionForTest(mdf);
+            int layerCount = mdf.GetLayerCount();
+
+            Assert.Throws<PreconditionException>(() => { mdf.AddLayer("IDontExist", "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"); });
+            Assert.Throws<PreconditionException>(() => { mdf.AddLayer(null, "", ""); });
+            Assert.Throws<PreconditionException>(() => { mdf.AddLayer(null, null, ""); });
+            Assert.Throws<PreconditionException>(() => { mdf.AddLayer(null, "", null); });
+            Assert.Throws<PreconditionException>(() => { mdf.AddLayer(null, null, null); });
+            Assert.Throws<PreconditionException>(() => { mdf.AddLayer(null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.FeatureSource"); });
+            Assert.Throws<PreconditionException>(() => { mdf.AddLayer(null, "Hydro", "Garbage"); });
+
+            IMapLayer layer = mdf.AddLayer(null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
+            Assert.AreEqual(0, mdf.GetIndex(layer));
+            Assert.True(layer == mdf.GetLayerByName("Hydro"));
+            Assert.AreEqual(layerCount + 1, mdf.GetLayerCount());
+        }
+
+        [Test]
+        public void TestMapDefinitionLayerRemove()
+        {
+            var conn = _mocks.NewMock<IServerConnection>();
+            var mdf = ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), "TestMapDefinitionLayerRemove");
+            SetupMapDefinitionForTest(mdf);
+            int layerCount = mdf.GetLayerCount();
+
+            IMapLayer layer = mdf.AddLayer(null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
+            Assert.AreEqual(0, mdf.GetIndex(layer));
+            Assert.True(layer == mdf.GetLayerByName("Hydro"));
+            Assert.AreEqual(layerCount + 1, mdf.GetLayerCount());
+
+            mdf.RemoveLayer(layer);
+            Assert.True(mdf.GetIndex(layer) < 0);
+            Assert.AreEqual(layerCount, mdf.GetLayerCount());
+        }
+
+        [Test]
+        public void TestMapDefinitionLayerReordering()
+        {
+            var conn = _mocks.NewMock<IServerConnection>();
+            var mdf = ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), "TestMapDefinitionLayerReordering");
+            SetupMapDefinitionForTest(mdf);
+            int layerCount = mdf.GetLayerCount();
+
+            Assert.Throws<PreconditionException>(() => { mdf.MoveDown(null); });
+            Assert.Throws<PreconditionException>(() => { mdf.MoveUp(null); });
+            Assert.Throws<PreconditionException>(() => { mdf.SetTopDrawOrder(null); });
+            Assert.Throws<PreconditionException>(() => { mdf.SetBottomDrawOrder(null); });
+
+            IMapLayer layer = mdf.AddLayer(null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
+            Assert.AreEqual(0, mdf.GetIndex(layer));
+            Assert.True(layer == mdf.GetLayerByName("Hydro"));
+            Assert.AreEqual(layerCount + 1, mdf.GetLayerCount());
+
+            int value = mdf.MoveUp(layer);
+            Assert.AreEqual(0, value); //Already at top
+            value = mdf.MoveDown(layer);
+            Assert.AreEqual(1, value);
+            mdf.SetBottomDrawOrder(layer);
+            value = mdf.GetIndex(layer);
+            Assert.AreEqual(mdf.GetLayerCount() - 1, value);
+            value = mdf.MoveDown(layer);
+            Assert.AreEqual(mdf.GetLayerCount() - 1, value); //Already at bottom
+            value = mdf.MoveUp(layer);
+            Assert.AreEqual(mdf.GetLayerCount() - 2, value);
+            mdf.SetTopDrawOrder(layer);
+            value = mdf.GetIndex(layer);
+            Assert.AreEqual(0, value);
+        }
+
+        [Test]
+        public void TestMapDefinitionGroupAdd()
+        {
+            var conn = _mocks.NewMock<IServerConnection>();
+            var mdf = ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), "TestMapDefinitionGroupAdd");
+            SetupMapDefinitionForTest(mdf);
+            int layerCount = mdf.GetLayerCount();
+            int groupCount = mdf.GetGroupCount();
+
+            Assert.Throws<PreconditionException>(() => { mdf.AddGroup(null); });
+            Assert.Throws<PreconditionException>(() => { mdf.AddGroup(""); });
+            Assert.Throws<PreconditionException>(() => { mdf.AddGroup("Group1"); });
+
+            IMapLayerGroup group = mdf.AddGroup("Test");
+            Assert.AreEqual(groupCount + 1, mdf.GetGroupCount());
+            Assert.NotNull(mdf.GetGroupByName("Test"));
+            Assert.True(group == mdf.GetGroupByName("Test"));
+        }
+
+        [Test]
+        public void TestMapDefinitionGroupRemove()
+        {
+            var conn = _mocks.NewMock<IServerConnection>();
+            var mdf = ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), "TestMapDefinitionGroupRemove");
+            SetupMapDefinitionForTest(mdf);
+            int layerCount = mdf.GetLayerCount();
+            int groupCount = mdf.GetGroupCount();
+
+            IMapLayerGroup group = mdf.AddGroup("Test");
+            Assert.AreEqual(groupCount + 1, mdf.GetGroupCount());
+            Assert.NotNull(mdf.GetGroupByName("Test"));
+            Assert.True(group == mdf.GetGroupByName("Test"));
+
+            mdf.RemoveGroup(group);
+            Assert.AreEqual(groupCount, mdf.GetGroupCount());
+            Assert.Null(mdf.GetGroupByName("Test"));
+        }
+
+        [Test]
+        public void TestMapDefinitionGroupReordering()
+        {
+            var conn = _mocks.NewMock<IServerConnection>();
+            var mdf = ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), "TestMapDefinitionGroupReordering");
+            SetupMapDefinitionForTest(mdf);
+            int groupCount = mdf.GetGroupCount();
+
+            Assert.Throws<PreconditionException>(() => { mdf.MoveDown(null); });
+            Assert.Throws<PreconditionException>(() => { mdf.MoveUp(null); });
+            Assert.Throws<PreconditionException>(() => { mdf.SetTopDrawOrder(null); });
+            Assert.Throws<PreconditionException>(() => { mdf.SetBottomDrawOrder(null); });
+
+            IMapLayerGroup group = mdf.AddGroup("Test");
+            Assert.AreEqual(groupCount, mdf.GetIndex(group));
+            Assert.True(group == mdf.GetGroupByName("Test"));
+            Assert.AreEqual(groupCount + 1, mdf.GetGroupCount());
+
+            int value = mdf.MoveUpGroup(group);
+            Assert.AreEqual(groupCount - 1, value); //Already at top
+            value = mdf.MoveDownGroup(group);
+            Assert.AreEqual(groupCount, value);
+        }
+
         [Test]
         public void TestMapDefinitionConversions()
         {

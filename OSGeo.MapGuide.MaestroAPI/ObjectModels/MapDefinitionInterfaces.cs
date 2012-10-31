@@ -123,10 +123,24 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         IEnumerable<IMapLayer> MapLayer { get; }
 
         /// <summary>
+        /// Inserts a layer into this map at the specified index in the map's layer collection
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="groupName"></param>
+        /// <param name="layerName"></param>
+        /// <param name="layerDefinitionId"></param>
+        /// <returns></returns>
+        IMapLayer InsertLayer(int index, string groupName, string layerName, string layerDefinitionId);
+
+        /// <summary>
         /// Adds a layer to this map. If this is the first layer to be added, the coordinate system 
         /// of this map and its extents will be set to the coordinate system and extents of this layer
         /// if this has not been set already.
         /// </summary>
+        /// <remarks>
+        /// The layer is added to the beginning of the list. That is, if you called <see cref="M:OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition.GetIndex(OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer)"/>
+        /// on your newly added layer, it will return 0. From a display perspective, your newly added layer will be at the top of the map's draw order when you create a runtime map from this map definition
+        /// </remarks>
         /// <param name="groupName"></param>
         /// <param name="layerName"></param>
         /// <param name="resourceId"></param>
@@ -162,14 +176,14 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         /// Moves the layer up the draw order
         /// </summary>
         /// <param name="layer">The layer.</param>
-        /// <returns></returns>
+        /// <returns>The new index of the moved layer. -1 is returned if the layer does not belong to the map</returns>
         int MoveUp(IMapLayer layer);
 
         /// <summary>
         /// Moves the layer down the draw order.
         /// </summary>
         /// <param name="layer">The layer.</param>
-        /// <returns></returns>
+        /// <returns>The new index of the moved layer. -1 is returned if the layer does not belong to the map</returns>
         int MoveDown(IMapLayer layer);
 
         /// <summary>
@@ -179,7 +193,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         IEnumerable<IMapLayerGroup> MapLayerGroup { get; }
 
         /// <summary>
-        /// Adds the group.
+        /// Adds the group. The group will be added to the end of the list
         /// </summary>
         /// <param name="groupName">Name of the group.</param>
         /// <returns></returns>
@@ -221,12 +235,14 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         /// Moves a Map Group down the presentation order
         /// </summary>
         /// <param name="group"></param>
+        /// <returns>The new index of the moved group. -1 is returned if the group does not belong to the map</returns>
         int MoveDownGroup(IMapLayerGroup group);
 
         /// <summary>
         /// Moves a Map Group up the presentation order
         /// </summary>
         /// <param name="group"></param>
+        /// <returns>The new index of the moved group. -1 is returned if the group does not belong to the map</returns>
         int MoveUpGroup(IMapLayerGroup group);
 
         /// <summary>

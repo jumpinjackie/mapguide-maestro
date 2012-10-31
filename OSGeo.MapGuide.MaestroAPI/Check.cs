@@ -117,5 +117,25 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (!condition)
                 throw new PreconditionException(Strings.PrecondFailure + msg);
         }
+
+        /// <summary>
+        /// Check that the given integer is between the specified range
+        /// </summary>
+        /// <param name="value">The value to check</param>
+        /// <param name="min">The lower bound</param>
+        /// <param name="max">The upper bound</param>
+        /// <param name="bInclusive">Determines whether the range is inclusive. If false, the range is exclusive</param>
+        /// <param name="msg">The message to include for precondition failure</param>
+        public static void IntBetween(int value, int min, int max, bool bInclusive, string msg)
+        {
+            bool bInRange = false;
+            if (bInclusive)
+                bInRange = (value >= min && value <= max);
+            else
+                bInRange = (value > min && value < max);
+
+            if (!bInRange)
+                throw new PreconditionException(Strings.PrecondFailure + msg);
+        }
     }
 }

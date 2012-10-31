@@ -50,7 +50,8 @@ namespace MaestroAPITests
 
             conn.ResourceService.SetResourceXmlData("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.ldf"));
 
-            mdf.AddLayer("foo", "bar", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
+            var layer = mdf.AddLayer(null, "bar", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
+            layer.Group = "foo"; //AddLayer no longer lets us put in bogus group names
             context = new ResourceValidationContext(conn.ResourceService, conn.FeatureService);
             issues = ResourceValidatorSet.Validate(context, mdf, false);
             Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Error_MapDefinition_LayerWithNonExistentGroup));
