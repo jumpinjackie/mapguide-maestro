@@ -139,6 +139,11 @@ namespace Maestro.Base.Editor
         /// </summary>
         public IResource Resource { get { return this.EditorService.GetEditedResource(); } }
 
+        private void OpenAffectedResource(IResource res)
+        {
+            _svc.OpenResource(res.ResourceID);
+        }
+
         /// <summary>
         /// Performs any pre-save validation logic. The base implementation performs
         /// a <see cref="ResourceValidatorSet"/> validation (non-casccading) on the 
@@ -171,7 +176,7 @@ namespace Maestro.Base.Editor
                         if (errors.Length > 0)
                         {
                             MessageService.ShowError(Strings.FixErrorsBeforeSaving);
-                            ValidationResultsDialog diag = new ValidationResultsDialog(this.Resource.ResourceID, errors);
+                            ValidationResultsDialog diag = new ValidationResultsDialog(this.Resource.ResourceID, errors, OpenAffectedResource);
                             diag.ShowDialog(Workbench.Instance);
                             e.Cancel = true;
                         }

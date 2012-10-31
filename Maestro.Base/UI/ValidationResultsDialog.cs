@@ -38,18 +38,31 @@ namespace Maestro.Base
     {
         private List<KeyValuePair<string, ValidationIssue[]>> m_issues = new List<KeyValuePair<string, ValidationIssue[]>>();
 
+        private Action<IResource> _openAction;
+
         /// <summary>
         /// Creates a new instance
         /// </summary>
         /// <param name="resourceId"></param>
         /// <param name="issues"></param>
         public ValidationResultsDialog(string resourceId, ValidationIssue[] issues)
+            : this(resourceId, issues, null)
+        { }
+
+        /// <summary>
+        /// Creates a new instance
+        /// </summary>
+        /// <param name="resourceId"></param>
+        /// <param name="issues"></param>
+        /// <param name="openAction"></param>
+        public ValidationResultsDialog(string resourceId, ValidationIssue[] issues, Action<IResource> openAction)
             : this(
                 new List<KeyValuePair<string, ValidationIssue[]>>(
                     new KeyValuePair<string, ValidationIssue[]>[] { 
                         new KeyValuePair<string, ValidationIssue[]>(resourceId, issues) 
                     }
-                )
+                ),
+                openAction
             )
         { }
 
@@ -58,15 +71,29 @@ namespace Maestro.Base
         /// </summary>
         /// <param name="issues"></param>
         public ValidationResultsDialog(List<KeyValuePair<string, ValidationIssue[]>> issues)
+            : this(issues, null)
+        {
+
+        }
+
+        /// <summary>
+        /// Creates a new instance
+        /// </summary>
+        /// <param name="issues"></param>
+        /// <param name="openAction"></param>
+        public ValidationResultsDialog(List<KeyValuePair<string, ValidationIssue[]>> issues, Action<IResource> openAction)
             : this()
         {
             m_issues = issues;
             PopulateIssues();
+            _openAction = openAction;
+            btnOpen.Visible = (_openAction != null);
+            btnOpen.Enabled = false;
         }
 
         private void PopulateIssues()
         {
-            listView1.Items.Clear();
+            lstIssues.Items.Clear();
             foreach (KeyValuePair<string, ValidationIssue[]> e in m_issues)
             {
                 IEnumerable<ValidationIssue> items = null;
@@ -116,9 +143,10 @@ namespace Maestro.Base
                             lvi.ImageIndex = -1;
                             break;
                     }
+                    lvi.Tag = issue;
                     lvi.SubItems.Add(issue.Message);
                     lvi.SubItems.Add(issue.StatusCode.ToString());
-                    listView1.Items.Add(lvi);
+                    lstIssues.Items.Add(lvi);
                 }
             }
         }
@@ -166,6 +194,20 @@ namespace Maestro.Base
         private void OnResultFilterCheckedChanged(object sender, EventArgs e)
         {
             PopulateIssues();
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            if (_openAction != null && lstIssues.SelectedItems.Count == 1)
+            {
+                _openAction(((ValidationIssue)lstIssues.SelectedItems[0].Tag).Resource);
+            }
+        }
+
+        private void lstIssues_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnOpen.Enabled = (lstIssues.SelectedItems.Count == 1);
+            btnOpen.Visible = (_openAction != null);
         }
     }
 }

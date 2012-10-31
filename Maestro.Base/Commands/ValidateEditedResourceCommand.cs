@@ -91,6 +91,16 @@ namespace Maestro.Base.Commands
             return set.GetAllIssues();
         }
 
+        private static void OpenAffectedResource(IResource res)
+        {
+            var wb = Workbench.Instance;
+            var siteExp = wb.ActiveSiteExplorer;
+            var omgr = ServiceRegistry.GetService<OpenResourceManager>();
+            var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
+            var conn = connMgr.GetConnection(siteExp.ConnectionName);
+            omgr.Open(res, conn, false, siteExp);
+        }
+
         protected static void CollectAndDisplayIssues(ValidationIssue[] issues)
         {
             if (issues != null)
@@ -118,7 +128,7 @@ namespace Maestro.Base.Commands
                                 kvp.Value.ToArray()));
                     }
 
-                    var resDlg = new ValidationResultsDialog(groupedIssues);
+                    var resDlg = new ValidationResultsDialog(groupedIssues, OpenAffectedResource);
                     resDlg.Show();
                 }
                 else

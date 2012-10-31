@@ -36,17 +36,19 @@
             this.chkErrors = new System.Windows.Forms.CheckBox();
             this.SaveReportBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lstIssues = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnOpen = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnOpen);
             this.panel1.Controls.Add(this.chkNotices);
             this.panel1.Controls.Add(this.chkWarnings);
             this.panel1.Controls.Add(this.chkErrors);
@@ -97,18 +99,20 @@
             this.CancelBtn.UseVisualStyleBackColor = true;
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
-            // listView1
+            // lstIssues
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lstIssues.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
-            resources.ApplyResources(this.listView1, "listView1");
-            this.listView1.GridLines = true;
-            this.listView1.Name = "listView1";
-            this.listView1.SmallImageList = this.imageList1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            resources.ApplyResources(this.lstIssues, "lstIssues");
+            this.lstIssues.GridLines = true;
+            this.lstIssues.MultiSelect = false;
+            this.lstIssues.Name = "lstIssues";
+            this.lstIssues.SmallImageList = this.imageList1;
+            this.lstIssues.UseCompatibleStateImageBehavior = false;
+            this.lstIssues.View = System.Windows.Forms.View.Details;
+            this.lstIssues.SelectedIndexChanged += new System.EventHandler(this.lstIssues_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -117,6 +121,10 @@
             // columnHeader2
             // 
             resources.ApplyResources(this.columnHeader2, "columnHeader2");
+            // 
+            // columnHeader3
+            // 
+            resources.ApplyResources(this.columnHeader3, "columnHeader3");
             // 
             // imageList1
             // 
@@ -131,16 +139,19 @@
             this.saveFileDialog.DefaultExt = "txt";
             resources.ApplyResources(this.saveFileDialog, "saveFileDialog");
             // 
-            // columnHeader3
+            // btnOpen
             // 
-            resources.ApplyResources(this.columnHeader3, "columnHeader3");
+            resources.ApplyResources(this.btnOpen, "btnOpen");
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // ValidationResultsDialog
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.CancelBtn;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.lstIssues);
             this.Controls.Add(this.panel1);
             this.Name = "ValidationResultsDialog";
             this.ShowIcon = false;
@@ -154,7 +165,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button CancelBtn;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lstIssues;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ImageList imageList1;
@@ -164,5 +175,6 @@
         private System.Windows.Forms.CheckBox chkWarnings;
         private System.Windows.Forms.CheckBox chkErrors;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Button btnOpen;
     }
 }
