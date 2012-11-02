@@ -30,6 +30,12 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using Maestro.Editors.SymbolDefinition;
+using ICSharpCode.Core;
+using Maestro.Base.UI.Preferences;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
+using Maestro.Base.UI;
+using OSGeo.MapGuide.MaestroAPI.Mapping;
 
 namespace Maestro.Base.Services
 {
@@ -63,6 +69,106 @@ namespace Maestro.Base.Services
         /// may not actually respect this value.
         /// </remarks>
         void Preview(IResource res, IEditorService edSvc, string locale);
+    }
+
+    public class LocalMapPreviewer : IResourcePreviewer
+    {
+        private IResourcePreviewer _inner;
+
+        public LocalMapPreviewer(IResourcePreviewer inner)
+        {
+            _inner = inner;
+        }
+
+        public bool UseLocal
+        {
+            get { return PropertyService.Get(ConfigProperties.UseLocalPreview, ConfigProperties.DefaultUseLocalPreview); }
+        }
+
+        public bool IsPreviewable(IResource res)
+        {
+            if (this.UseLocal)
+            {
+                if (IsLocalPreviewableType(res))
+                {
+                    return true;
+                }
+            }
+            return _inner.IsPreviewable(res);
+        }
+
+        private static bool IsLocalPreviewableType(IResource res)
+        {
+            return res.ResourceType == ResourceTypes.LayerDefinition ||
+                   res.ResourceType == ResourceTypes.MapDefinition ||
+                   res.ResourceType == ResourceTypes.WatermarkDefinition;
+        }
+
+        public void Preview(IResource res, IEditorService edSvc)
+        {
+            Preview(res, edSvc, null);
+        }
+
+        static bool SupportsMappingService(IServerConnection conn)
+        {
+            return Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0;
+        }
+
+        public void Preview(IResource res, IEditorService edSvc, string locale)
+        {
+            IServerConnection conn = res.CurrentConnection;
+            if (this.UseLocal && IsLocalPreviewableType(res) && SupportsMappingService(conn))
+            {
+                BusyWaitDialog.Run(Strings.PrgPreparingResourcePreview, () => { 
+                    IMappingService mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+                    IMapDefinition previewMdf = null;
+                    switch (res.ResourceType)
+                    { 
+                        case ResourceTypes.LayerDefinition:
+                            {
+                                ILayerDefinition ldf = (ILayerDefinition)res;
+                                string layerName = string.Empty;
+                                if (edSvc.IsNew)
+                                    layerName = ResourceIdentifier.GetName(ldf.SubLayer.ResourceId);
+                                else
+                                    layerName = ResourceIdentifier.GetName(edSvc.ResourceID);
+                                previewMdf = ResourcePreviewEngine.CreateLayerPreviewMapDefinition(ldf, edSvc.SessionID, layerName, conn);
+                            }
+                            break;
+                        case ResourceTypes.WatermarkDefinition:
+                            {
+                                previewMdf = ResourcePreviewEngine.CreateWatermarkPreviewMapDefinition((IWatermarkDefinition)res);
+                            }
+                            break;
+                        case ResourceTypes.MapDefinition:
+                            {
+                                previewMdf = (IMapDefinition)res;
+                            }
+                            break;
+                    }
+                    if (previewMdf != null)
+                        return mapSvc.CreateMap(previewMdf);
+                    else
+                        return null;
+                }, (obj) => {
+                    if (obj != null)
+                    {
+                        var rtMap = (RuntimeMap)obj;
+                        var launcher = ServiceRegistry.GetService<UrlLauncherService>();
+                        var diag = new MapPreviewDialog(rtMap, launcher, (edSvc.IsNew) ? null : edSvc.ResourceID);
+                        diag.Show(null);
+                    }
+                    else //Fallback, shouldn't happen
+                    {
+                        _inner.Preview(res, edSvc, locale);
+                    }
+                });
+            }
+            else
+            {
+                _inner.Preview(res, edSvc, locale);
+            }
+        }
     }
 
     /// <summary>
@@ -211,7 +317,7 @@ namespace Maestro.Base.Services
         /// <param name="previewer">The previewer implementation</param>
         public static void RegisterPreviewer(string provider, IResourcePreviewer previewer)
         {
-            _previewers[provider.ToUpper()] = previewer;
+            _previewers[provider.ToUpper()] = new LocalMapPreviewer(previewer);
         }
 
         /// <summary>
@@ -222,6 +328,21 @@ namespace Maestro.Base.Services
         public static bool HasPreviewer(string provider)
         {
             return _previewers.ContainsKey(provider.ToUpper());
+        }
+        
+        /// <summary>
+        /// Gets whether the given resource type is previewable for the given connection provider
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <param name="resource"></param>
+        /// <returns></returns>
+        public static bool IsPreviewable(string provider, IResource resource)
+        {
+            var preview = GetPreviewer(provider);
+            if (preview != null)
+                return preview.IsPreviewable(resource);
+
+            return false;
         }
 
         /// <summary>

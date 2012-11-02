@@ -28,6 +28,7 @@ using OSGeo.MapGuide.MaestroAPI.Services;
 using ICSharpCode.Core;
 using System.Windows.Forms;
 using Maestro.Shared.UI;
+using Maestro.Base.UI.Preferences;
 
 namespace Maestro.Base.Events
 {

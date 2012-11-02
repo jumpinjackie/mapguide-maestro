@@ -1133,12 +1133,22 @@ namespace Maestro.MapViewer
         /// <param name="map"></param>
         public void LoadMap(RuntimeMap map)
         {
-            _map = map;
-            _map.StrictSelection = false;
-            InitViewerFromMap();
+            LoadMap(map, null);
         }
 
-        private void InitViewerFromMap()
+        /// <summary>
+        /// Load the viewer with the given runtime map
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="initialScale"></param>
+        public void LoadMap(RuntimeMap map, double? initialScale)
+        {
+            _map = map;
+            _map.StrictSelection = false;
+            InitViewerFromMap(initialScale);
+        }
+
+        private void InitViewerFromMap(double? initialScale)
         {
             this.BackColor = _map.BackgroundColor;
             _map.DisplayWidth = this.Width;
@@ -1193,21 +1203,25 @@ namespace Maestro.MapViewer
             if (handler != null)
                 handler(this, EventArgs.Empty);
 
-            InitialMapView();
+            if (initialScale.HasValue)
+                ZoomToScale(initialScale.Value);
+            else
+                InitialMapView();
         }
 
-        internal double MetersPerUnit
+        /// <summary>
+        /// Utility method to calculate the zoom scale for the give map
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="mcsW"></param>
+        /// <param name="mcsH"></param>
+        /// <param name="devW"></param>
+        /// <param name="devH"></param>
+        /// <returns></returns>
+        public static double CalculateScale(RuntimeMap map, double mcsW, double mcsH, int devW, int devH)
         {
-            get
-            {
-                return _map.MetersPerUnit;
-            }
-        }
-
-        private double CalculateScale(double mcsW, double mcsH, int devW, int devH)
-        {
-            var mpu = this.MetersPerUnit;
-            var mpp = GetMetersPerPixel(_map.DisplayDpi);
+            var mpu = map.MetersPerUnit;
+            var mpp = GetMetersPerPixel(map.DisplayDpi);
             if (devH * mcsW > devW * mcsH)
                 return mcsW * mpu / (devW * mpp); //width-limited
             else
@@ -1612,7 +1626,7 @@ namespace Maestro.MapViewer
         /// </summary>
         public void ZoomExtents()
         {
-            var scale = CalculateScale((_orgX2 - _orgX1), (_orgY1 - _orgY2), this.Width, this.Height);
+            var scale = CalculateScale(_map, (_orgX2 - _orgX1), (_orgY1 - _orgY2), this.Width, this.Height);
             ZoomToView(_orgX1 + ((_orgX2 - _orgX1) / 2), _orgY2 + ((_orgY1 - _orgY2) / 2), scale, true);
         }
 
@@ -1625,7 +1639,7 @@ namespace Maestro.MapViewer
         /// <param name="ury"></param>
         public void ZoomToExtents(double llx, double lly, double urx, double ury)
         {
-            var scale = CalculateScale((urx - llx), (ury - lly), this.Width, this.Height);
+            var scale = CalculateScale(_map, (urx - llx), (ury - lly), this.Width, this.Height);
             ZoomToView(llx + ((urx - llx) / 2), ury + ((lly - ury) / 2), scale, true);
         }
 
@@ -1658,7 +1672,7 @@ namespace Maestro.MapViewer
         private void UpdateExtents()
         {
             //Update current extents
-            double mpu = this.MetersPerUnit;
+            double mpu = _map.MetersPerUnit;
             double scale = _map.ViewScale;
             double mpp = GetMetersPerPixel(_map.DisplayDpi);
             var coord = _map.ViewCenter;
@@ -1670,6 +1684,14 @@ namespace Maestro.MapViewer
             _extY1 = coord.Y + mcsHeight / 2;
             _extX2 = coord.X + mcsWidth / 2;
             _extY2 = coord.Y - mcsHeight / 2;
+        }
+        
+        public void GetViewExtent(out double minX, out double minY, out double maxX, out double maxY)
+        {
+            minX = _extX1;
+            minY = _extY1;
+            maxX = _extX2;
+            maxY = _extY2;
         }
 
         private bool PruneHistoryEntriesFromCurrentView()
@@ -1946,7 +1968,7 @@ namespace Maestro.MapViewer
 
         private void InitialMapView(bool refreshMap)
         {
-            var scale = CalculateScale((_orgX2 - _orgX1), (_orgY1 - _orgY2), this.Width, this.Height);
+            var scale = CalculateScale(_map, (_orgX2 - _orgX1), (_orgY1 - _orgY2), this.Width, this.Height);
             ZoomToView(_orgX1 + ((_orgX2 - _orgX1) / 2), _orgY2 + ((_orgY1 - _orgY2) / 2), scale, refreshMap);
         }
 
@@ -2321,9 +2343,9 @@ namespace Maestro.MapViewer
             double screenZoomCenterY = e.Y - (e.Y - this.Height / 2) / zoomChange;
             delayRenderViewCenter = ScreenToMapUnits(screenZoomCenterX, screenZoomCenterY);
 
-            var mpu = this.MetersPerUnit;
+            var mpu = _map.MetersPerUnit;
             var mpp = GetMetersPerPixel(_map.DisplayDpi);
-            var w = (_extX2 - _extX1) * this.MetersPerUnit / (delayRenderScale * mpp);
+            var w = (_extX2 - _extX1) * _map.MetersPerUnit / (delayRenderScale * mpp);
             if (w > 20000)
             {
                 w = 20000;

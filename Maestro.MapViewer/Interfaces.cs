@@ -362,6 +362,15 @@ namespace Maestro.MapViewer
         /// Gets the view history stack. The first item being the earliest and the last item being the most recent.
         /// </summary>
         ReadOnlyCollection<MapViewHistoryEntry> ViewHistory { get; }
+
+        /// <summary>
+        /// Gets the current view extent in the map's coordinates
+        /// </summary>
+        /// <param name="minX"></param>
+        /// <param name="minY"></param>
+        /// <param name="maxX"></param>
+        /// <param name="maxY"></param>
+        void GetViewExtent(out double minX, out double minY, out double maxX, out double maxY);
     }
 
     /// <summary>

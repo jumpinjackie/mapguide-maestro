@@ -318,6 +318,12 @@
     <Compile Include="UI\LabelLocalizationDialog.Designer.cs">
       <DependentUpon>LabelLocalizationDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\MapPreviewDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MapPreviewDialog.Designer.cs">
+      <DependentUpon>MapPreviewDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\MessageViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -591,6 +597,9 @@
     <EmbeddedResource Include="UI\LabelLocalizationDialog.resx">
       <DependentUpon>LabelLocalizationDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\MapPreviewDialog.resx">
+      <DependentUpon>MapPreviewDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\MessageViewer.resx">
       <DependentUpon>MessageViewer.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -661,6 +670,10 @@
     <ProjectReference Include="..\Maestro.Login\Maestro.Login.csproj">
       <Project>{07588440-5F9F-4C30-AA06-9CF30BA6DDE6}</Project>
       <Name>Maestro.Login</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maestro.MapViewer\Maestro.MapViewer.csproj">
+      <Project>{4F9658DE-D16F-4B40-B830-BB1E0136DBD7}</Project>
+      <Name>Maestro.MapViewer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Maestro.Packaging\Maestro.Packaging.csproj">
       <Project>{0EA33E36-9C33-4D60-B378-B87FADAA0F40}</Project>

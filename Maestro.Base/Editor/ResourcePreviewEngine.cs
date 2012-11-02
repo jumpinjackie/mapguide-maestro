@@ -73,28 +73,18 @@ namespace Maestro.Base.Editor
             var sessionId = _edSvc.SessionID;
             var conn = res.CurrentConnection;
 
-            //Create temp map definition to house our current layer
-            var mdfId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".MapDefinition"; //NOXLATE
-            string csWkt;
-            var extent = ldf.GetSpatialExtent(true, out csWkt);
-
-            //TODO: Based on the visible scales in this layer, size this extents accordingly
-            var mdf = ObjectFactory.CreateMapDefinition(conn, Strings.PreviewMap, csWkt, extent);
-
-            var layer = mdf.AddLayer(null, ResourceIdentifier.GetName(_edSvc.ResourceID), ldf.ResourceID);
-
+            string layerName = string.Empty;
             //Use feature source as name/label if new and unsaved
             if (_edSvc.IsNew)
-                layer.Name = layer.LegendLabel = ResourceIdentifier.GetName(ldf.SubLayer.ResourceId);
+                layerName = ResourceIdentifier.GetName(ldf.SubLayer.ResourceId);
             else
-                layer.Name = layer.LegendLabel = ResourceIdentifier.GetName(_edSvc.ResourceID);
+                layerName = ResourceIdentifier.GetName(_edSvc.ResourceID);
 
-            conn.ResourceService.SaveResourceAs(mdf, mdfId);
-
+            var mdf = CreateLayerPreviewMapDefinition(ldf, sessionId, layerName, conn);
             if (PropertyService.Get(ConfigProperties.PreviewViewerType, "AJAX").Equals("AJAX")) //NOXLATE
             {
                 //Create temp web layout to house this map
-                var wl = ObjectFactory.CreateWebLayout(_edSvc.GetEditedResource().CurrentConnection, new Version(1, 0, 0), mdfId);
+                var wl = ObjectFactory.CreateWebLayout(_edSvc.GetEditedResource().CurrentConnection, new Version(1, 0, 0), mdf.ResourceID);
 
                 //Add a custom zoom command (to assist previews of layers that aren't [0, infinity] scale)
                 AttachPreviewCommands(wl);
@@ -117,6 +107,22 @@ namespace Maestro.Base.Editor
             }
 
             return url;
+        }
+
+        internal static IMapDefinition CreateLayerPreviewMapDefinition(ILayerDefinition ldf, string sessionId, string layerName, IServerConnection conn)
+        {
+            //Create temp map definition to house our current layer
+            var mdfId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".MapDefinition"; //NOXLATE
+            string csWkt;
+            var extent = ldf.GetSpatialExtent(true, out csWkt);
+
+            //TODO: Based on the visible scales in this layer, size this extents accordingly
+            var mdf = ObjectFactory.CreateMapDefinition(conn, Strings.PreviewMap, csWkt, extent);
+
+            var layer = mdf.AddLayer(null, layerName, ldf.ResourceID);
+            conn.ResourceService.SaveResourceAs(mdf, mdfId);
+            mdf.ResourceID = mdfId;
+            return mdf;
         }
 
         private static void AttachPreviewCommands(IWebLayout wl)
@@ -185,11 +191,17 @@ namespace Maestro.Base.Editor
             if (wmd.CurrentConnection.SiteVersion < new Version(2, 3))
                 throw new InvalidOperationException(Strings.SiteVersionDoesntSupportWatermarks);
 
+            IMapDefinition2 map = CreateWatermarkPreviewMapDefinition(wmd);
+            return GenerateMapPreviewUrl(map, locale);
+        }
+
+        internal static IMapDefinition2 CreateWatermarkPreviewMapDefinition(IWatermarkDefinition wmd)
+        {
             IMapDefinition2 map = (IMapDefinition2)ObjectFactory.CreateMapDefinition(wmd.CurrentConnection, wmd.SupportedMapDefinitionVersion, "Watermark Definition Preview"); //NOXLATE
             map.CoordinateSystem = @"LOCAL_CS[""*XY-M*"", LOCAL_DATUM[""*X-Y*"", 10000], UNIT[""Meter"", 1], AXIS[""X"", EAST], AXIS[""Y"", NORTH]]"; //NOXLATE
             map.Extents = ObjectFactory.CreateEnvelope(-1000000, -1000000, 1000000, 1000000);
             map.AddWatermark(wmd);
-            return GenerateMapPreviewUrl(map, locale);
+            return map;
         }
 
         private string GenerateMapPreviewUrl(IResource res, string locale)

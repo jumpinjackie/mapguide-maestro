@@ -35,6 +35,9 @@ namespace Maestro.Base.UI.Preferences
             var validate = Props.Get(ConfigProperties.ValidateOnSave, ConfigProperties.DefaultValidateOnSave);
             chkValidateOnSave.Checked = validate;
 
+            var useLocal = Props.Get(ConfigProperties.UseLocalPreview, ConfigProperties.DefaultUseLocalPreview);
+            chkUseLocalPreview.Checked = useLocal;
+
             var path = Props.Get(ConfigProperties.XsdSchemaPath, ConfigProperties.DefaultXsdSchemaPath);
             txtXsdPath.Text = path;
 
@@ -56,6 +59,7 @@ namespace Maestro.Base.UI.Preferences
             bool restart = false;
 
             Apply(ConfigProperties.ValidateOnSave, chkValidateOnSave.Checked);
+            Apply(ConfigProperties.UseLocalPreview, chkUseLocalPreview.Checked);
             Apply(ConfigProperties.PreviewLocale, txtPreviewLocale.Text);
 
             //These changes require restart

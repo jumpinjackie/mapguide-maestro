@@ -35,8 +35,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtXsdPath = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtPreviewLocale = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chkUseLocalPreview = new System.Windows.Forms.CheckBox();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -46,13 +47,14 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.chkUseLocalPreview);
             this.groupBox4.Controls.Add(this.chkValidateOnSave);
             this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(399, 50);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Editing";
+            this.groupBox4.Text = "General";
             // 
             // chkValidateOnSave
             // 
@@ -60,9 +62,9 @@
             this.chkValidateOnSave.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.chkValidateOnSave.Location = new System.Drawing.Point(19, 19);
             this.chkValidateOnSave.Name = "chkValidateOnSave";
-            this.chkValidateOnSave.Size = new System.Drawing.Size(163, 17);
+            this.chkValidateOnSave.Size = new System.Drawing.Size(109, 17);
             this.chkValidateOnSave.TabIndex = 2;
-            this.chkValidateOnSave.Text = "Validate Resources On Save";
+            this.chkValidateOnSave.Text = "Validate On Save";
             this.chkValidateOnSave.UseVisualStyleBackColor = true;
             // 
             // groupBox1
@@ -124,6 +126,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Localization";
             // 
+            // txtPreviewLocale
+            // 
+            this.txtPreviewLocale.Location = new System.Drawing.Point(187, 22);
+            this.txtPreviewLocale.Name = "txtPreviewLocale";
+            this.txtPreviewLocale.Size = new System.Drawing.Size(47, 20);
+            this.txtPreviewLocale.TabIndex = 1;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -133,12 +142,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Preview using the following locale";
             // 
-            // txtPreviewLocale
+            // chkUseLocalPreview
             // 
-            this.txtPreviewLocale.Location = new System.Drawing.Point(187, 22);
-            this.txtPreviewLocale.Name = "txtPreviewLocale";
-            this.txtPreviewLocale.Size = new System.Drawing.Size(47, 20);
-            this.txtPreviewLocale.TabIndex = 1;
+            this.chkUseLocalPreview.AutoSize = true;
+            this.chkUseLocalPreview.Location = new System.Drawing.Point(134, 19);
+            this.chkUseLocalPreview.Name = "chkUseLocalPreview";
+            this.chkUseLocalPreview.Size = new System.Drawing.Size(257, 17);
+            this.chkUseLocalPreview.TabIndex = 3;
+            this.chkUseLocalPreview.Text = "Preview with local map viewer (where applicable)";
+            this.chkUseLocalPreview.UseVisualStyleBackColor = true;
             // 
             // EditorPreferencesCtrl
             // 
@@ -170,5 +182,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtPreviewLocale;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox chkUseLocalPreview;
     }
 }

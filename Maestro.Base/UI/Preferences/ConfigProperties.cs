@@ -93,6 +93,11 @@ namespace Maestro.Base.UI.Preferences
         public const string XsdSchemaPath = "Editor.XsdSchemaPath"; //NOXLATE
 
         /// <summary>
+        /// Use the local preview using Maestro's Map Viewer component
+        /// </summary>
+        public const string UseLocalPreview = "Editor.UseLocalPreview"; //NOXLATE
+
+        /// <summary>
         /// Show the tip of the day on startup
         /// </summary>
         public const string ShowTipOfTheDay = "General.ShowTipOfTheDay"; //NOXLATE
@@ -113,6 +118,7 @@ namespace Maestro.Base.UI.Preferences
             Props.Set(ConfigProperties.PreviewLocale, DefaultPreviewLocale);
             Props.Set(ConfigProperties.ValidateOnSave, DefaultValidateOnSave);
             Props.Set(ConfigProperties.XsdSchemaPath, DefaultXsdSchemaPath);
+            Props.Set(ConfigProperties.UseLocalPreview, DefaultUseLocalPreview);
         }
 
         internal static void ApplyGeneralDefaults()
@@ -156,6 +162,11 @@ namespace Maestro.Base.UI.Preferences
         /// Default path to Maestro.LiveMapEditor.exe
         /// </summary>
         public static string DefaultLiveMapEditorPath { get { return Path.Combine(FileUtility.ApplicationRootPath, "Maestro.LiveMapEditor.exe"); } } //NOXLATE
+
+        /// <summary>
+        /// Default setting for using local previews
+        /// </summary>
+        public static bool DefaultUseLocalPreview { get { return true; } }
 
         /// <summary>
         /// Default color for open resources in the Site Explorer

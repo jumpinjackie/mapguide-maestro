@@ -285,11 +285,7 @@ namespace Maestro.Base.Editor
                 if (res != null)
                 {
                     var type = res.CurrentConnection.ProviderName;
-                    var previewer = ResourcePreviewerFactory.GetPreviewer(type);
-                    if (previewer != null)
-                    {
-                        return previewer.IsPreviewable(res);
-                    }
+                    return ResourcePreviewerFactory.IsPreviewable(type, res);
                 }
                 return false;
             }
