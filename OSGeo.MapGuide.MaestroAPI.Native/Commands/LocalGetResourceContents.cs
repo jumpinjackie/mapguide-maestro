@@ -39,7 +39,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
         public LocalGetResourceContents(LocalConnection conn)
         {
             this.Parent = conn;
-            var fact = new MgServiceFactory();
+            var fact = new MgdServiceFactory();
             _resSvc = (MgResourceService)fact.CreateService(MgServiceType.ResourceService);
         }
 #else 

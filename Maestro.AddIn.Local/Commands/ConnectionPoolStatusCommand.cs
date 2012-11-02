@@ -30,7 +30,7 @@ namespace Maestro.AddIn.Local.Commands
     {
         public override void Run()
         {
-            MgServiceFactory fact = new MgServiceFactory();
+            var fact = new MgdServiceFactory();
             MgdFeatureService featSvc = (MgdFeatureService)fact.CreateService(MgServiceType.FeatureService);
 
             MgByteReader br = featSvc.QueryCacheInfo();

@@ -53,7 +53,7 @@ namespace Maestro.AddIn.Local.Commands
         {
             try
             {
-                MgPlatform.Terminate();
+                MgdPlatform.Terminate();
             }
             catch (MgException ex)
             {

@@ -55,17 +55,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new LocalConnection(initParams);
         }
 
-        private MgServiceFactory _fact;
+        private MgdServiceFactory _fact;
 
         protected LocalConnection(NameValueCollection initParams) : base()
         {
-            _fact = new MgServiceFactory();
+            _fact = new MgdServiceFactory();
             _sessionId = Guid.NewGuid().ToString();
             _configFile = initParams[PARAM_CONFIG];
 
             var sw = new Stopwatch();
             sw.Start();
-            MgPlatform.Initialize(_configFile);
+            MgdPlatform.Initialize(_configFile);
             sw.Stop();
             Trace.TraceInformation("MapGuide Platform initialized in {0}ms", sw.ElapsedMilliseconds);
         }
@@ -1186,7 +1186,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             {
                 var implMap = impl.GetWrappedInstance();
                 var sel = Convert(implMap, selection);
-                var opts = new MgRenderingOptions(format, behaviour, new MgColor(selectionColor));
+                var opts = new MgdRenderingOptions(format, behaviour, new MgColor(selectionColor));
                 return renderSvc.RenderDynamicOverlay(implMap, sel, opts);
             };
             return new MgReadOnlyStream(fetch);
