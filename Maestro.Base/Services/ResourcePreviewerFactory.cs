@@ -119,11 +119,12 @@ namespace Maestro.Base.Services
             IServerConnection conn = res.CurrentConnection;
             if (this.UseLocal && IsLocalPreviewableType(res) && SupportsMappingService(conn))
             {
-                BusyWaitDialog.Run(Strings.PrgPreparingResourcePreview, () => { 
+                BusyWaitDelegate worker = () =>
+                {
                     IMappingService mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
                     IMapDefinition previewMdf = null;
                     switch (res.ResourceType)
-                    { 
+                    {
                         case ResourceTypes.LayerDefinition:
                             {
                                 ILayerDefinition ldf = (ILayerDefinition)res;
@@ -150,7 +151,9 @@ namespace Maestro.Base.Services
                         return mapSvc.CreateMap(previewMdf);
                     else
                         return null;
-                }, (obj) => {
+                };
+                Action<object> onComplete = (obj) =>
+                {
                     if (obj != null)
                     {
                         var rtMap = (RuntimeMap)obj;
@@ -162,7 +165,8 @@ namespace Maestro.Base.Services
                     {
                         _inner.Preview(res, edSvc, locale);
                     }
-                });
+                };
+                BusyWaitDialog.Run(Strings.PrgPreparingResourcePreview, worker, onComplete);
             }
             else
             {
@@ -212,7 +216,7 @@ namespace Maestro.Base.Services
             //and it is a nice way to test symbol parameters wrt to rendering
 
             IServerConnection conn = res.CurrentConnection;
-            BusyWaitDialog.Run(Strings.PrgPreparingResourcePreview, () => {
+            BusyWaitDelegate worker = () => {
                 string mapguideRootUrl = (string)conn.GetCustomProperty("BaseUrl"); //NOXLATE
                 //Save the current resource to another session copy
                 string resId = "Session:" + edSvc.SessionID + "//" + res.ResourceType.ToString() + "Preview" + Guid.NewGuid() + "." + res.ResourceType.ToString(); //NOXLATE
@@ -264,7 +268,8 @@ namespace Maestro.Base.Services
                     var url = new ResourcePreviewEngine(mapguideRootUrl, edSvc).GeneratePreviewUrl(previewCopy, locale);
                     return new UrlPreviewResult() { Url = url };
                 }
-            }, (result) => {
+            };
+            Action<object> onComplete = (result) => {
                 var urlResult = result as UrlPreviewResult;
                 var imgResult = result as ImagePreviewResult;
                 if (urlResult != null)
@@ -277,7 +282,8 @@ namespace Maestro.Base.Services
                 {
                     new SymbolPreviewDialog(imgResult.ImagePreview).Show(null);
                 }
-            });
+            };
+            BusyWaitDialog.Run(Strings.PrgPreparingResourcePreview, worker, onComplete);
         }
 
         /// <summary>

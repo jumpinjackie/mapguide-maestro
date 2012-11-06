@@ -22,10 +22,20 @@ namespace Maestro.AddIn.Scripting.Commands
 
             Workbench.WorkbenchInitialized += (sender, e) =>
             {
+                var wb = Workbench.Instance;
+                wb.FormClosed += OnWorkbenchClosed;
                 var mgr = ServiceRegistry.GetService<ViewContentManager>();
                 if (Props.Get(ScriptingConfigProperties.ShowIronPythonConsole, ScriptingConfigProperties.DefaultShowIronPythonConsole))
-                    mgr.OpenContent<IronPythonRepl>(ViewRegion.Bottom);
+                    _repl = mgr.OpenContent<IronPythonRepl>(ViewRegion.Bottom);
             };
+        }
+
+        private IronPythonRepl _repl;
+
+        void OnWorkbenchClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
+        {
+            if (_repl != null)
+                _repl.Shutdown();
         }
     }
 }

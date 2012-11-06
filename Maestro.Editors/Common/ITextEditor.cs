@@ -126,6 +126,13 @@ namespace Maestro.Editors.Common
         void ShowCompletionWindow(ICompletionDataProvider completionDataProvider);
 
         /// <summary>
+        /// Shows the code completion window
+        /// </summary>
+        /// <param name="completionDataProvider"></param>
+        /// <param name="enteredChar">The character just entered</param>
+        void ShowCompletionWindow(ICompletionDataProvider completionDataProvider, char enteredChar);
+
+        /// <summary>
         /// Indicates whether the completion window is currently being displayed.
         /// </summary>
         bool IsCompletionWindowDisplayed { get; }
@@ -134,5 +141,17 @@ namespace Maestro.Editors.Common
         /// Makes the current text content read only. Text can be entered at the end.
         /// </summary>
         void MakeCurrentContentReadOnly();
+
+        /// <summary>
+        /// Perform custom key press handling
+        /// </summary>
+        /// <param name="keyData"></param>
+        bool ProcessKeyPress(System.Windows.Forms.Keys keyData);
+
+        /// <summary>
+        /// Sets the parent control for this editor
+        /// </summary>
+        /// <param name="frm"></param>
+        void SetParent(System.Windows.Forms.Control ctrl); 
     }
 }

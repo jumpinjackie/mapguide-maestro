@@ -73,9 +73,7 @@ namespace ICSharpCode.TextEditor
 			
 			primaryTextArea  = new TextAreaControl(this);
 			activeTextAreaControl = primaryTextArea;
-			primaryTextArea.TextArea.GotFocus += delegate {
-				SetActiveTextAreaControl(primaryTextArea);
-			};
+            primaryTextArea.TextArea.GotFocus += OnTextAreaGotFocus;
 			primaryTextArea.Dock = DockStyle.Fill;
 			textAreaPanel.Controls.Add(primaryTextArea);
 			InitializeTextAreaControl(primaryTextArea);
@@ -84,6 +82,11 @@ namespace ICSharpCode.TextEditor
 			Document.UpdateCommited += new EventHandler(CommitUpdateRequested);
 			OptionsChanged();
 		}
+
+        void OnTextAreaGotFocus(object sender, EventArgs e)
+        {
+            SetActiveTextAreaControl(primaryTextArea);
+        }
 		
 		protected virtual void InitializeTextAreaControl(TextAreaControl newControl)
 		{

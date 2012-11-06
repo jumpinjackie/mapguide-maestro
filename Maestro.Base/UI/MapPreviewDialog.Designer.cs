@@ -54,11 +54,9 @@
             this.txtMinX = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
@@ -89,7 +87,6 @@
             this.mapViewer.SelectionColor = System.Drawing.Color.Blue;
             this.mapViewer.Size = new System.Drawing.Size(381, 515);
             this.mapViewer.TabIndex = 0;
-            this.mapViewer.Text = "mapViewer1";
             this.mapViewer.TooltipDelayInterval = 1000;
             this.mapViewer.ZoomInFactor = 0.5D;
             this.mapViewer.ZoomOutFactor = 2D;
@@ -353,11 +350,9 @@
             this.statusStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.grpOtherTools.ResumeLayout(false);

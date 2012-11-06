@@ -34,21 +34,10 @@ using Microsoft.Scripting.Hosting;
 using Maestro.AddIn.Scripting.UI;
 using Maestro.Editors.Generic;
 using Maestro.Base.Editor;
+using Microsoft.Scripting.Hosting.Providers;
 
 namespace Maestro.AddIn.Scripting.Services
 {
-    /// <summary>
-    /// Helper class to inject the HostApplication object into the engine's global scope
-    /// </summary>
-    public static class ScriptHostSetup
-    {
-        internal static void SetupGlobalScope(ScriptEngine engine, LanguageContext context)
-        {
-            var global = context.GetScope(null);
-            context.ScopeSetVariable(global, ScriptGlobals.HostApp, new HostApplication());
-        }
-    }
-
     /// <summary>
     /// Python built-ins injected into the Maestro IronPython REPL
     /// </summary>

@@ -100,6 +100,7 @@
     <Compile Include="Src\Document\TextBufferStrategy\GapTextBufferStrategy.cs" />
     <Compile Include="Src\Document\TextBufferStrategy\ITextBufferStrategy.cs" />
     <Compile Include="Src\Document\TextBufferStrategy\StringTextBufferStrategy.cs" />
+    <Compile Include="Src\PlatformUtil.cs" />
     <Compile Include="Src\Util\AugmentableRedBlackTree.cs" />
     <Compile Include="Src\Util\CheckedList.cs" />
     <Compile Include="Src\Util\LoggingService.cs" />

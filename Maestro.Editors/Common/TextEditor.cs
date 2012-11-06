@@ -32,27 +32,27 @@
 using ICSharpCode.TextEditor;
 using ICSharpCode.TextEditor.Document;
 using ICSharpCode.TextEditor.Gui.CompletionWindow;
+using OSGeo.MapGuide.MaestroAPI;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.Common
 {
-    public class TextEditor : ITextEditor
+    public abstract class TextEditorBase : ITextEditor
     {
         delegate string GetLineInvoker(int index);
         delegate void WriteInvoker(string text, Color color, Color fore);
 
-        TextEditorControl textEditorControl;
-        TextArea textArea;
-        Color customLineColour = Color.LightGray;
-        TextMarker readOnlyMarker;
+        protected TextEditorControl textEditorControl;
+        protected TextArea textArea;
+        protected Color customLineColour = Color.LightGray;
+        protected TextMarker readOnlyMarker;
 
-        CodeCompletionWindow completionWindow;
-
-        public TextEditor(TextEditorControl textEditorControl)
+        protected TextEditorBase(TextEditorControl textEditorControl)
         {
             this.textEditorControl = textEditorControl;
             this.textArea = textEditorControl.ActiveTextAreaControl.TextArea;
@@ -65,7 +65,7 @@ namespace Maestro.Editors.Common
             set { SetIndentStyle(value); }
         }
 
-        public event KeyEventHandler KeyPress
+        public event ICSharpCode.TextEditor.KeyEventHandler KeyPress
         {
             add { textArea.KeyEventHandler += value; }
             remove { textArea.KeyEventHandler -= value; }
@@ -201,19 +201,16 @@ namespace Maestro.Editors.Common
             doc.UndoStack.ClearAll();
         }
 
-        public void ShowCompletionWindow(ICompletionDataProvider completionDataProvider)
+        public virtual void ShowCompletionWindow(ICompletionDataProvider completionDataProvider)
         {
-            completionWindow = CodeCompletionWindow.ShowCompletionWindow(textEditorControl.ParentForm, textEditorControl, String.Empty, completionDataProvider, ' ');
-            if (completionWindow != null)
-            {
-                completionWindow.Width = 250;
-                completionWindow.Closed += CompletionWindowClosed;
-            }
+            ShowCompletionWindow(completionDataProvider, ' ');
         }
 
-        public bool IsCompletionWindowDisplayed
+        public abstract void ShowCompletionWindow(ICompletionDataProvider completionDataProvider, char firstChar);
+
+        public abstract bool IsCompletionWindowDisplayed
         {
-            get { return completionWindow != null; }
+            get;
         }
 
         /// <summary>
@@ -234,6 +231,153 @@ namespace Maestro.Editors.Common
             else
             {
                 textEditorControl.IndentStyle = style;
+            }
+        }
+
+        public virtual bool ProcessKeyPress(Keys keyData)
+        {
+            return false;
+        }
+
+        public virtual void SetParent(Control frm) { } 
+    }
+
+    public static class TextEditorFactory
+    {
+        public static ITextEditor CreateEditor(TextEditorControl textEditor)
+        {
+            if (Platform.IsRunningOnMono)
+                return new MonoCompatibleTextEditor(textEditor);
+            else
+                return new DefaultTextEditor(textEditor);
+        }
+    }
+
+    /// <summary>
+    /// A text editor controller using Mono-friendly auto-completion
+    /// </summary>
+    internal class MonoCompatibleTextEditor : TextEditorBase
+    {
+        private AutoCompletionListBox _autoBox;
+        private ToolTip _autoCompleteTooltip;
+
+        internal MonoCompatibleTextEditor(TextEditorControl textEditor)
+            : base(textEditor)
+        {
+            _autoBox = new AutoCompletionListBox();
+            _autoCompleteTooltip = new ToolTip();
+        }
+
+        private Control _parent;
+
+        public override void SetParent(Control ctrl)
+        {
+            _parent = ctrl;
+            _parent.Controls.Add(_autoBox);
+        }
+
+        public override bool IsCompletionWindowDisplayed
+        {
+            get { return _autoBox.IsShown; }
+        }
+
+        public override void ShowCompletionWindow(ICompletionDataProvider completionDataProvider, char firstChar)
+        {
+            //Not ready for beta 5. Remove after release of beta 5.
+            return;
+
+            var context = new AutoCompletionListBox.AutoCompleteContext()
+            {
+                AutoCompleteTooltip = _autoCompleteTooltip,
+                CompletionProvider = completionDataProvider,
+                Editor = textEditorControl,
+                FirstChar = firstChar,
+                GetCaretPoint = GetCaretPoint,
+                InsertionOffset = textEditorControl.ActiveTextAreaControl.Caret.Offset
+            };
+            _autoBox.SetCompletionItems(textEditorControl.ParentForm, context, string.Empty);
+        }
+
+        private Point GetCaretPoint()
+        {
+            var pt = textArea.Caret.ScreenPosition;
+            var cpt = textEditorControl.PointToScreen(pt);
+            int dx = 15; //Shift a bit 
+            int dy = 0;
+
+            //Adjust the postion to accomodate as much space for the auto-complete box as much as possible
+            if (_parent != null)
+            {
+                if (_autoBox.Height > _parent.Height)
+                    dy = -pt.Y;
+            }
+
+            pt.Offset(dx, dy);
+            return pt;
+        }
+
+        static bool IsAlphanumeric(Keys key)
+        {
+            return (key >= Keys.D0 && key <= Keys.Z);
+        }
+
+        public override bool ProcessKeyPress(Keys keyData)
+        {
+            bool bProcessed = false;
+            if (IsCompletionWindowDisplayed)
+            {
+                if (IsAlphanumeric(keyData))
+                {
+                    _autoBox.AdvanceInsertionOffset();
+                    return false;
+                }
+
+                switch (keyData)
+                {
+                    case Keys.Up:
+                        _autoBox.MoveAutoCompleteSelectionUp();
+                        bProcessed = true;
+                        break;
+                    case Keys.Down:
+                        _autoBox.MoveAutoCompleteSelectionDown();
+                        bProcessed = true;
+                        break;
+                    case Keys.Enter:
+                        _autoBox.HandleEnterKey();
+                        bProcessed = true;
+                        break;
+                    case Keys.Escape:
+                        _autoBox.HideBox();
+                        break;
+                }
+            }
+            return bProcessed;
+        }
+    }
+
+    /// <summary>
+    /// Default text editor, using the ICSharpCode.TextEditor auto-completion facilities
+    /// </summary>
+    internal class DefaultTextEditor : TextEditorBase
+    {
+        CodeCompletionWindow completionWindow;
+
+        internal DefaultTextEditor(TextEditorControl textEditor)
+            : base(textEditor)
+        { }
+
+        public override bool IsCompletionWindowDisplayed
+        {
+            get { return completionWindow != null; }
+        }
+
+        public override void ShowCompletionWindow(ICompletionDataProvider completionDataProvider, char ch)
+        {
+            completionWindow = CodeCompletionWindow.ShowCompletionWindow(textEditorControl.ParentForm, textEditorControl, String.Empty, completionDataProvider, ch);
+            if (completionWindow != null)
+            {
+                completionWindow.Width = 250;
+                completionWindow.Closed += CompletionWindowClosed;
             }
         }
 

@@ -30,6 +30,7 @@
 // 
 #endregion
 using ICSharpCode.TextEditor.Document;
+using Maestro.AddIn.Scripting.Services;
 using Maestro.Editors.Common;
 using Microsoft.Scripting.Hosting.Shell;
 using System;
@@ -151,6 +152,8 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             return null;
         }
 
+        private bool bHostAppInitialized = false;
+
         /// <summary>
         /// Writes text to the console.
         /// </summary>
@@ -170,6 +173,13 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             {
                 promptLength = text.Length;
                 textEditor.MakeCurrentContentReadOnly();
+            }
+
+            //HACK: This seems to be the safest point which to inject our Host Application
+            if (!bHostAppInitialized && this.commandLine.ScriptScope != null)
+            {
+                this.commandLine.ScriptScope.SetVariable(ScriptGlobals.HostApp, new HostApplication());
+                bHostAppInitialized = true;
             }
         }
 
@@ -273,6 +283,9 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// </summary>
         bool ProcessDialogKeyPress(Keys keyData)
         {
+            if (textEditor.ProcessKeyPress(keyData))
+                return true;
+
             if (textEditor.IsCompletionWindowDisplayed)
             {
                 return false;

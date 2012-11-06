@@ -124,7 +124,6 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         {
             var pc = HostingHelpers.GetLanguageContext(Engine) as PythonContext;
             pc.SetModuleState(typeof(ScriptEngine), Engine);
-            ScriptHostSetup.SetupGlobalScope(Engine, pc);
             base.ExecuteInternal();
         }
 

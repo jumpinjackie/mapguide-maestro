@@ -17,7 +17,7 @@ namespace ICSharpCode.TextEditor.Document
 		
 		void CheckThread()
 		{
-			if (System.Threading.Thread.CurrentThread.ManagedThreadId != creatorThread)
+            if (!PlatformUtil.IsRunningOnMono && System.Threading.Thread.CurrentThread.ManagedThreadId != creatorThread)
 				throw new InvalidOperationException("GapTextBufferStategy is not thread-safe!");
 		}
 		#endif

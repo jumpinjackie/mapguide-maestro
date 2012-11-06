@@ -35,44 +35,6 @@ using ICSharpCode.TextEditor.Gui.CompletionWindow;
 
 namespace Maestro.Editors.Common
 {
-    /*
-     * Intellisense overview:
-     * 
-     * The intellisense of this expression editor consists of the following parts:
-     *  - An ImageListBox which is filled with auto-complete suggestions
-     *  - A System.Windows.Forms.ToolTip which is shown when an auto-complete choice is highlighted (but not selected)
-     * 
-     * In order to invoke intellisense, we listen for the KeyUp and KeyDown events
-     * on the textbox to determine what actions to take. Some actions include:
-     * 
-     * Key Up:
-     *  - Comma: Show auto-complete with all suggestions
-     *  - Quotes (Single or Double): Insert an extra quote of that type
-     *  - Up/Down: Move the auto-complete selection up/down one item if the auto-complete box is visible.
-     *  - Backspace: Invoke auto-complete with suggestions if there is a context buffer, otherwise hide auto-complete.
-     *  - Alt + Right: Invoke auto-complete with all suggestions
-     *  - Alphanumeric (no modifiers): Invoke auto-complete with suggestions
-     * 
-     * Key Down:
-     *  - Escape: Hide auto-complete
-     *  - Enter: Hide auto-complete
-     * 
-     * As part of the loading process, a full list of auto-complete items (functions/properties) is constructed (sorted by name)
-     * Everytime intellisense is invoked, this list is queried for possible suggestions.
-     * 
-     * In order to determine what items to suggest, the editor builds a context buffer from the current position of the caret
-     * in the textbox. The context buffer algorithm is as follows:
-     * 
-     *  1 - Start from caret position
-     *  2 - Can we move back one char?
-     *    2.1 - Get this char.
-     *    2.2 - If alpha numeric, goto 2.
-     *  3 - Get the string that represents the uninterrupted alphanumeric string sequence that ends at the caret position
-     *  4 - Get the list of completable items that starts with this alphanumeric string
-     *  5 - Add these items to the auto-complete box.
-     *  6 - Show the auto-complete box
-     */
-
     /// <summary>
     /// An expression editor dialog
     /// </summary>
@@ -83,7 +45,7 @@ namespace Maestro.Editors.Common
         private string m_featureSource = null;
         private FdoProviderCapabilities _caps;
         private ITextEditor _editor;
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="ExpressionEditor"/> class.
         /// </summary>
@@ -91,17 +53,16 @@ namespace Maestro.Editors.Common
         {
             InitializeComponent();
             ExpressionText.SetHighlighting("FDO");
-            _editor = new TextEditor(ExpressionText);
+            _editor = TextEditorFactory.CreateEditor(ExpressionText);
             _editor.KeyPress += OnEditorKeyPress;
+            _editor.DialogKeyPress += OnEditorDialogKeyPress;
+            _contextualBuffer = new StringBuilder();
         }
 
-        bool OnEditorKeyPress(char ch)
+        protected override void OnLoad(EventArgs e)
         {
-            if (Char.IsLetter(ch))
-            {
-                ShowAutoComplete(ch);
-            }
-            return false;
+            _editor.SetParent(ExpressionText);
+            base.OnLoad(e);
         }
 
         /// <summary>
@@ -245,27 +206,53 @@ namespace Maestro.Editors.Common
             this.Close();
         }
 
-        private CodeCompletionWindow completionWindow;
+        bool OnEditorDialogKeyPress(Keys keyData)
+        {
+            if (_editor.ProcessKeyPress(keyData))
+                return true;
+
+            if (keyData == Keys.Back)
+                StripKey();
+
+            return false;
+        }
+
+        bool OnEditorKeyPress(char ch)
+        {
+            if (Char.IsLetter(ch))
+            {
+                ShowAutoComplete(ch);
+            }
+            return false;
+        }
+
+        private StringBuilder _contextualBuffer;
+
+        private void StripKey()
+        {
+            if (_contextualBuffer.Length == 0)
+            {
+                //this.HideBox();
+            }
+            else
+            {
+                _contextualBuffer.Remove(_contextualBuffer.Length - 1, 1);
+                System.Diagnostics.Debug.WriteLine("Contextual buffer: " + _contextualBuffer);
+                //if (_contextualBuffer.Length == 0)
+                    //this.HideBox();
+            }
+        }
+
+        internal void AppendKey(Keys keyData)
+        {
+            _contextualBuffer.Append(Convert.ToChar((int)keyData));
+            System.Diagnostics.Debug.WriteLine("Contextual buffer: " + _contextualBuffer);
+        }
 
         private void ShowAutoComplete(char ch)
         {
             var provider = new FdoExpressionCompletionDataProvider(_cls, _caps);
-            completionWindow = CodeCompletionWindow.ShowCompletionWindow(ExpressionText.ParentForm, ExpressionText, String.Empty, provider, ch);
-            if (completionWindow != null)
-            {
-                completionWindow.Width = 250;
-                completionWindow.Closed += CompletionWindowClosed;
-            }
-        }
-
-        void CompletionWindowClosed(object source, EventArgs e)
-        {
-            if (completionWindow != null)
-            {
-                completionWindow.Closed -= CompletionWindowClosed;
-                completionWindow.Dispose();
-                completionWindow = null;
-            }
+            _editor.ShowCompletionWindow(provider, ch);
         }
 
         private void ColumnName_Click(object sender, EventArgs e)

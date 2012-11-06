@@ -147,6 +147,7 @@
     <EmbeddedResource Include="Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ApplicationDefinition-1.0.0.xsd">
       <Link>Schemas\ApplicationDefinition-1.0.0.xsd</Link>

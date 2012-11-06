@@ -177,11 +177,17 @@ namespace Maestro.Editors.Common.Expression
                     }
                     foreach (var member in GetMatchingFdoConditions(name))
                     {
-                        items.Add(new FdoCompletionData(name, member.Name, member.Description, member.AppendText, member.AppendText.Length - 1, 2));
+                        if (string.IsNullOrEmpty(member.AppendText))
+                            items.Add(new FdoCompletionData(name, member.Name, member.Description, 2));
+                        else
+                            items.Add(new FdoCompletionData(name, member.Name, member.Description, member.AppendText, member.AppendText.Length - 1, 2));
                     }
                     foreach (var member in GetMatchingFdoOperators(name))
                     {
-                        items.Add(new FdoCompletionData(name, member.Name, member.Description, member.AppendText, 0, 2));
+                        if (string.IsNullOrEmpty(member.AppendText))
+                            items.Add(new FdoCompletionData(name, member.Name, member.Description, 2));
+                        else
+                            items.Add(new FdoCompletionData(name, member.Name, member.Description, member.AppendText, 0, 2));
                     }
                     items.Sort((a, b) => { return a.Text.CompareTo(b.Text); });
                 }

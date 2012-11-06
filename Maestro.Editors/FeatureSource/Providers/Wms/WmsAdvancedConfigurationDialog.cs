@@ -278,7 +278,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
                         var sc = new FdoSpatialContextListSpatialContext()
                         {
                             Name = "EPSG:4326", //NOXLATE
-                            Description = "Maestro-generated spatialc context", //NOXLATE
+                            Description = "Maestro-generated spatial context", //NOXLATE
                             CoordinateSystemName = "EPSG:4326", //NOXLATE
                             CoordinateSystemWkt = "GEOGCS[\"LL84\",DATUM[\"WGS84\",SPHEROID[\"WGS84\",6378137.000,298.25722293]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.01745329251994]]", //NOXLATE
                             Extent = new FdoSpatialContextListSpatialContextExtent()
