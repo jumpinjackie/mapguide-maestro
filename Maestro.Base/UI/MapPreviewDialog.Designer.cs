@@ -53,6 +53,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtMinX = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtCoordinateSystem = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -197,16 +199,16 @@
             this.grpOtherTools.Controls.Add(this.lnkZoomToScale);
             this.grpOtherTools.Controls.Add(this.numZoomToScale);
             this.grpOtherTools.Controls.Add(this.label5);
-            this.grpOtherTools.Location = new System.Drawing.Point(16, 222);
+            this.grpOtherTools.Location = new System.Drawing.Point(16, 367);
             this.grpOtherTools.Name = "grpOtherTools";
-            this.grpOtherTools.Size = new System.Drawing.Size(165, 260);
+            this.grpOtherTools.Size = new System.Drawing.Size(165, 115);
             this.grpOtherTools.TabIndex = 1;
             this.grpOtherTools.TabStop = false;
             this.grpOtherTools.Text = "Other Tools";
             // 
             // btnGetMapKml
             // 
-            this.btnGetMapKml.Location = new System.Drawing.Point(10, 108);
+            this.btnGetMapKml.Location = new System.Drawing.Point(10, 74);
             this.btnGetMapKml.Name = "btnGetMapKml";
             this.btnGetMapKml.Size = new System.Drawing.Size(94, 23);
             this.btnGetMapKml.TabIndex = 4;
@@ -245,6 +247,8 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.txtCoordinateSystem);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtMaxY);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtMaxX);
@@ -255,7 +259,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(16, 10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(165, 205);
+            this.groupBox1.Size = new System.Drawing.Size(165, 351);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Current Extents";
@@ -336,6 +340,27 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Min X";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 190);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(95, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Coordinate System";
+            // 
+            // txtCoordinateSystem
+            // 
+            this.txtCoordinateSystem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCoordinateSystem.Location = new System.Drawing.Point(10, 207);
+            this.txtCoordinateSystem.Multiline = true;
+            this.txtCoordinateSystem.Name = "txtCoordinateSystem";
+            this.txtCoordinateSystem.ReadOnly = true;
+            this.txtCoordinateSystem.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtCoordinateSystem.Size = new System.Drawing.Size(135, 123);
+            this.txtCoordinateSystem.TabIndex = 9;
+            // 
             // MapPreviewDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,5 +417,7 @@
         private System.Windows.Forms.TextBox txtMinX;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnGetMapKml;
+        private System.Windows.Forms.TextBox txtCoordinateSystem;
+        private System.Windows.Forms.Label label6;
     }
 }

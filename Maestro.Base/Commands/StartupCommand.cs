@@ -42,6 +42,9 @@ namespace Maestro.Base.Commands
             ResourceService.RegisterNeutralStrings(Strings.ResourceManager);
 
             ResourcePreviewerFactory.RegisterPreviewer("Maestro.Http", new DefaultResourcePreviewer()); //NOXLATE
+            //A stub previewer does nothing, but will use local map previews for applicable resources if the configuration
+            //property is set
+            ResourcePreviewerFactory.RegisterPreviewer("Maestro.LocalNative", new StubPreviewer()); //NOXLATE
             
             Workbench.WorkbenchInitialized += (sender, e) =>
             {

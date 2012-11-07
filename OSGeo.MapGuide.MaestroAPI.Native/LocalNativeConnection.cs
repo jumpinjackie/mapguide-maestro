@@ -170,7 +170,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             {
                 MgCoordinateSystemFactory csFact = new MgCoordinateSystemFactory();
                 MgCoordinateSystem cs = csFact.Create(csWkt);
-                return cs.ConvertMetersToCoordinateSystemUnits(units);
+                return cs.ConvertCoordinateSystemUnitsToMeters(units);
             }
             catch (MgException ex) //Not implemented due to wrapping Proj.4?
             {

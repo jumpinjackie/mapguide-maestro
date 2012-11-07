@@ -45,6 +45,7 @@ namespace Maestro.Base.UI
             if (!string.IsNullOrEmpty(resourceId))
                 this.Text += " - " + resourceId;
 
+            txtCoordinateSystem.Text = map.CoordinateSystem;
             numZoomToScale.Minimum = 1;
             numZoomToScale.Maximum = Int32.MaxValue;
             _launcher = urlLauncher;

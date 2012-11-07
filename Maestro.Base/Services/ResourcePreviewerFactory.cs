@@ -71,6 +71,25 @@ namespace Maestro.Base.Services
         void Preview(IResource res, IEditorService edSvc, string locale);
     }
 
+    internal class StubPreviewer : IResourcePreviewer
+    {
+        public bool IsPreviewable(IResource res)
+        {
+            return false;
+        }
+
+        public void Preview(IResource res, IEditorService edSvc)
+        {
+            
+        }
+
+        public void Preview(IResource res, IEditorService edSvc, string locale)
+        {
+            
+        }
+    }
+
+
     public class LocalMapPreviewer : IResourcePreviewer
     {
         private IResourcePreviewer _inner;
