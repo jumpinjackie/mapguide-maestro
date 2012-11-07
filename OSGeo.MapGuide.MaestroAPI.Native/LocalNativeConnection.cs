@@ -1421,6 +1421,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             {
                 xml = sr.ReadToEnd();
             }
+
+            //We only want the FeatureSet element
+            var doc = new System.Xml.XmlDocument();
+            doc.LoadXml(xml);
+            xml = doc.DocumentElement["FeatureSet"].OuterXml;
+
             MgSelection sel = new MgSelection(map, xml);
             sel.Save(res, mapname);
 
