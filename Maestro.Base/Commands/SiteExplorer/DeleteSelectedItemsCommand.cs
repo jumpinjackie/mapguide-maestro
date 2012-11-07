@@ -47,7 +47,8 @@ namespace Maestro.Base.Commands.SiteExplorer
                 {
                     //Ascertain the parent connection that requires refresh post-delete
                     string connName = items.First().ConnectionName;
-                    if (MessageService.AskQuestion(Strings.ConfirmDelete))
+                    var dependentResourceIds = CollectDependentResources(items, svc);
+                    if (Confirm(dependentResourceIds))
                     {
                         if (ConfirmDeleteOpenResources(items, omgr.OpenEditors))
                         {
@@ -84,6 +85,45 @@ namespace Maestro.Base.Commands.SiteExplorer
                     else
                         exp.RefreshModel(connName, parent);
                 }
+            }
+        }
+
+        private Maestro.Editors.RepositoryHandle[] CollectDependentResources(RepositoryItem[] items, ServerConnectionManager connMgr)
+        {
+            var ids = new List<Maestro.Editors.RepositoryHandle>();
+            foreach (var it in items)
+            {
+                var conn = connMgr.GetConnection(it.ConnectionName);
+                if (it.IsFolder)
+                {
+                    ids.Add(new Editors.RepositoryHandle(new ResourceIdentifier(it.ResourceId), conn));
+                    break;
+                }
+
+                try
+                {
+                    var references = conn.ResourceService.EnumerateResourceReferences(it.ResourceId);
+                    ids.AddRange(references.ResourceId.Select(x => new Maestro.Editors.RepositoryHandle(new ResourceIdentifier(x), conn)));
+                }
+                catch //Back-referencing may not be supported
+                {
+                }
+            }
+            return ids.ToArray();
+        }
+
+        private bool Confirm(IEnumerable<Maestro.Editors.RepositoryHandle> dependentResourceIds)
+        {
+            if (dependentResourceIds.Count() > 0)
+            {
+                if (dependentResourceIds.Any(x => x.ResourceId.IsFolder))
+                    return MessageService.AskQuestion(Strings.ConfirmDeleteFolders);
+                else
+                    return ConfirmDeleteResourcesDialog.AskQuestion(dependentResourceIds);
+            }
+            else
+            {
+                return MessageService.AskQuestion(Strings.ConfirmDelete);
             }
         }
 

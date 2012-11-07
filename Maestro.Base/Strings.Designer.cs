@@ -334,6 +334,15 @@ namespace Maestro.Base {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You about to delete one or more folders which may contain dependent resources. Are you sure you want to proceed with delete?.
+        /// </summary>
+        internal static string ConfirmDeleteFolders {
+            get {
+                return ResourceManager.GetString("ConfirmDeleteFolders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are about to delete one or more resources which are currently open in an editor. Close these editors and proceed with delete?.
         /// </summary>
         internal static string ConfirmDeleteOpenResource {

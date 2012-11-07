@@ -986,4 +986,7 @@ Error message: {0}</value>
   <data name="SiteExplorer_SelectedItem_CompileDependencyList" xml:space="preserve">
     <value>Compile Full Dependency List</value>
   </data>
+  <data name="ConfirmDeleteFolders" xml:space="preserve">
+    <value>You about to delete one or more folders which may contain dependent resources. Are you sure you want to proceed with delete?</value>
+  </data>
 </root>
