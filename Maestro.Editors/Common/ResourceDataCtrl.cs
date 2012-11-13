@@ -207,7 +207,7 @@ namespace Maestro.Editors.Common
         {
             //TODO: Obviously support progress
             BusyWaitDelegate method = () => { DoFileUpload(fileName); return null; };
-            BusyWaitDialog.Run(Strings.TextUploading, method, (obj) => 
+            BusyWaitDialog.Run(Strings.TextUploading, method, (obj, ex) => 
             {
                 LoadResourceData();
                 OnDataListChanged();
@@ -280,8 +280,10 @@ namespace Maestro.Editors.Common
                                 }
                                 return null;
                             };
-                            BusyWaitDialog.Run(Strings.TextDownloading, method, (obj) => 
+                            BusyWaitDialog.Run(Strings.TextDownloading, method, (obj, ex) => 
                             {
+                                if (ex != null)
+                                    throw ex;
                                 MessageBox.Show(string.Format(Strings.FileDownloaded, fn));
                             });
                         }

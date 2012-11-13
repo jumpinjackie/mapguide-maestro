@@ -55,6 +55,7 @@ namespace Maestro.Shared.UI
             _toolstripRegions = new Dictionary<string, ToolbarRegion>();
 
             this.Icon = _workbenchInitializer.GetIcon();
+            this.WindowState = init.StartMaximized ? FormWindowState.Maximized : FormWindowState.Normal;
 
             contentPanel = new DockPanel();
             contentPanel.DocumentStyle = DocumentStyle.DockingWindow;

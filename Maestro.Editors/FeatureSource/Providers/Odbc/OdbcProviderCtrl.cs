@@ -336,8 +336,10 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                     }
                     return null;
                 };
-                BusyWaitDialog.Run(Strings.TextPreparingConfigurationDocument, worker, (obj) => 
-                { 
+                BusyWaitDialog.Run(Strings.TextPreparingConfigurationDocument, worker, (obj, ex) => 
+                {
+                    if (ex != null)
+                        throw ex;
                     //Done
                 });
             }

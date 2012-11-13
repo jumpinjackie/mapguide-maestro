@@ -26,6 +26,7 @@ using ICSharpCode.Core;
 using OSGeo.MapGuide.ObjectModels;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels.DrawingSource;
 
 namespace Maestro.Base.Services.DragDropHandlers
 {
@@ -70,6 +71,10 @@ namespace Maestro.Base.Services.DragDropHandlers
                 {
                     ds.SetResourceData(fileName, OSGeo.MapGuide.ObjectModels.Common.ResourceDataType.File, stream);
                 }
+
+                ds.RegenerateSheetList();
+                conn.ResourceService.SaveResource(ds); //Need to re-save for the next call to work
+                ds.UpdateExtents();
 
                 return true;
             }

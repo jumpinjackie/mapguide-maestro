@@ -32,6 +32,10 @@ namespace Maestro.Base
     /// </summary>
     public class WorkbenchInitializer : IWorkbenchInitializer
     {
+        public WorkbenchInitializer(bool bStartMaximized) { this.StartMaximized = bStartMaximized; }
+
+        public bool StartMaximized { get; private set; }
+
         /// <summary>
         /// Gets the main window icon
         /// </summary>

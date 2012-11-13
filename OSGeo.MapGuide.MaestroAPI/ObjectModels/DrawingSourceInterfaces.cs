@@ -104,12 +104,39 @@ namespace OSGeo.MapGuide.ObjectModels.DrawingSource
     public static class DrawingSourceExtensions
     {
         /// <summary>
+        /// Regenerates the sheet list in this drawing source.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns>True if sheets were regenerated. False otherwise</returns>
+        public static bool RegenerateSheetList(this IDrawingSource source)
+        {
+            Check.NotNull(source, "source");
+            Check.NotNull(source.CurrentConnection, "source.CurrentConection"); //NOXLATE
+            Check.NotEmpty(source.ResourceID, "source.ResourceID"); //NOXLATE
+
+            IDrawingService dwSvc = (IDrawingService)source.CurrentConnection.GetService((int)ServiceType.Drawing);
+            var sheets = dwSvc.EnumerateDrawingSections(source.ResourceID);
+            bool bRegen = sheets.Section.Count > 0;
+            source.RemoveAllSheets();
+            if (bRegen)
+            {
+                foreach (var sht in sheets.Section)
+                {
+                    source.AddSheet(source.CreateSheet(sht.Name, 0, 0, 0, 0));
+
+                }
+            }
+            return bRegen;
+        }
+
+        /// <summary>
         /// Updates the extents of all sheets based on their respective AutoCAD Viewport Data in the embedded PIA resource
         /// </summary>
         /// <param name="source"></param>
         public static void UpdateExtents(this IDrawingSource source)
         {
             Check.NotNull(source, "source"); //NOXLATE
+            Check.NotNull(source.CurrentConnection, "source.CurrentConection"); //NOXLATE
             Check.NotEmpty(source.ResourceID, "source.ResourceID"); //NOXLATE
 
             //Need drawing service

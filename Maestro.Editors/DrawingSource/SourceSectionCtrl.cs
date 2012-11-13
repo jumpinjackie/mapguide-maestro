@@ -82,12 +82,7 @@ namespace Maestro.Editors.DrawingSource
                 _edSvc.SyncSessionCopy();
 
                 //Re-populate sheets
-                IDrawingService dwSvc = (IDrawingService)_dws.CurrentConnection.GetService((int)ServiceType.Drawing);
-                var sheets = dwSvc.EnumerateDrawingSections(_dws.ResourceID);
-                foreach (var sht in sheets.Section)
-                {
-                    _dws.AddSheet(_dws.CreateSheet(sht.Name, 0, 0, 0, 0));
-                }
+                _dws.RegenerateSheetList();
 
                 _edSvc.SyncSessionCopy();
                 //Re-calc extents

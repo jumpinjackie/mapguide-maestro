@@ -171,7 +171,10 @@ namespace Maestro.Base.Editor
                         return errors;
                     };
                     
-                    BusyWaitDialog.Run(Strings.PrgPreSaveValidation, del, (result) => {
+                    BusyWaitDialog.Run(Strings.PrgPreSaveValidation, del, (result, ex) => {
+                        if (ex != null)
+                            throw ex;
+
                         ValidationIssue[] errors = result as ValidationIssue[];
                         if (errors.Length > 0)
                         {

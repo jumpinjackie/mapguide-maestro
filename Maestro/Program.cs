@@ -140,7 +140,9 @@ namespace Maestro
             // Workbench is our class from the base project, this method creates an instance
             // of the main form.
             ServiceRegistry.Initialize(() => {
-                Workbench.InitializeWorkbench(new WorkbenchInitializer());
+                //DIRTY DIRTY HACK: I'm getting tired of Mono workarounds. But background resource
+                //preview preparation has a chance of clogging up if the main window is initially maximized
+                Workbench.InitializeWorkbench(new WorkbenchInitializer(!Platform.IsRunningOnMono));
                 try
                 {
                     LoggingService.Info("Running application..."); //NOXLATE

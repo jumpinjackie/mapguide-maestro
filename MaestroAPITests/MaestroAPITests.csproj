@@ -574,6 +574,7 @@
     <Content Include="UserTestData\odbc_example_config2.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="UserTestData\SpaceShip.xml" />
     <Content Include="UserTestData\wms_config_example1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

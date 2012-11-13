@@ -52,13 +52,14 @@ namespace Maestro.Shared.UI
         }
         
         public object ReturnValue { get; private set; }
+        public Exception Error { get; private set; }
 
-        public static void Run(string message, BusyWaitDelegate action, Action<object> onComplete)
+        public static void Run(string message, BusyWaitDelegate action, Action<object, Exception> onComplete)
         {
             Run(message, action, onComplete, true);
         }
 
-        public static void Run(string message, BusyWaitDelegate action, Action<object> onComplete, bool bPreserveThreadCulture)
+        public static void Run(string message, BusyWaitDelegate action, Action<object, Exception> onComplete, bool bPreserveThreadCulture)
         {
             if (action == null)
                 throw new ArgumentNullException("action"); //NOXLATE
@@ -69,7 +70,7 @@ namespace Maestro.Shared.UI
             frm.lblBusy.Text = message;
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                onComplete.Invoke(frm.ReturnValue);
+                onComplete.Invoke(frm.ReturnValue, frm.Error);
             }
         }
         
@@ -88,7 +89,7 @@ namespace Maestro.Shared.UI
         {
             if (e.Error != null)
             {
-                ErrorDialog.Show(e.Error);
+                this.Error = e.Error;
             }
             else
             {

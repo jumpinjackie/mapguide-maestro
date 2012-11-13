@@ -171,8 +171,11 @@ namespace Maestro.Base.Services
                     else
                         return null;
                 };
-                Action<object> onComplete = (obj) =>
+                Action<object, Exception> onComplete = (obj, ex) =>
                 {
+                    if (ex != null)
+                        throw ex;
+
                     if (obj != null)
                     {
                         var rtMap = (RuntimeMap)obj;
@@ -288,7 +291,7 @@ namespace Maestro.Base.Services
                     return new UrlPreviewResult() { Url = url };
                 }
             };
-            Action<object> onComplete = (result) => {
+            Action<object, Exception> onComplete = (result, ex) => {
                 var urlResult = result as UrlPreviewResult;
                 var imgResult = result as ImagePreviewResult;
                 if (urlResult != null)

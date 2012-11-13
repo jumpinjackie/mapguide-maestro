@@ -590,22 +590,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                 this.Parent.ResourceService.SetResourceData(dsId, dataName, ResourceDataType.File, System.IO.File.OpenRead(file));
                                 cb(this, new LengthyOperationProgressArgs(string.Format(Strings.TemplateLoaded, file), current));
 
-                                var dwSvc = (IDrawingService)Parent.GetService((int)ServiceType.Drawing);
-                                var list = dwSvc.EnumerateDrawingSections(dsId);
-                                if (list.Section.Count > 0)
-                                {
-                                    foreach(var sect in list.Section)
-                                    {
-                                        var sht = ds.CreateSheet(sect.Name, 0, 0, 0, 0);
-                                        ds.AddSheet(sht);
-                                    }
-
-                                    this.Parent.ResourceService.SaveResource(ds);
-
-                                    ds.UpdateExtents();
-                                    
-                                    this.Parent.ResourceService.SaveResource(ds);
-                                }
+                                ds.RegenerateSheetList();
+                                this.Parent.ResourceService.SaveResource(ds);
+                                ds.UpdateExtents();
+                                this.Parent.ResourceService.SaveResource(ds);
                             }
                             else
                             {

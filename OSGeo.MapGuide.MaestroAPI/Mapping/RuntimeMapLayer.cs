@@ -168,6 +168,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     }
                 }
             }
+            else if (ldf.SubLayer.LayerType == LayerType.Drawing)
+            {
+                _featureSourceId = ldf.SubLayer.ResourceId;
+            }
 
             _expandInLegend = false;
             this.Name = ResourceIdentifier.GetName(ldf.ResourceID);
@@ -578,13 +582,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets the schema name
         /// </summary>
+        /// <remarks>
+        /// For drawing layers, the schema name will always be empty
+        /// </remarks>
         public string SchemaName
         {
             get
             {
-                var tokens = this.QualifiedClassName.Split(':'); //NOXLATE
-                if (tokens.Length == 2)
-                    return tokens[0];
+                if (!this.FeatureSourceID.EndsWith("DrawingSource")) //NOXLATE
+                {
+                    var tokens = this.QualifiedClassName.Split(':'); //NOXLATE
+                    if (tokens.Length == 2)
+                        return tokens[0];
+                }
                 return string.Empty;
             }
         }

@@ -39,6 +39,7 @@ namespace MaestroAPITests
     using System.Drawing;
     using OSGeo.MapGuide.ExtendedObjectModels;
     using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+    using OSGeo.MapGuide.ObjectModels.DrawingSource;
 
     [SetUpFixture]
     public class TestBootstrap
@@ -101,6 +102,9 @@ namespace MaestroAPITests
             resSvc.SetResourceData("Library://UnitTests/Data/HydrographicPolygons.FeatureSource", "UT_HydrographicPolygons.sdf", ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.sdf"));
             resSvc.SetResourceData("Library://UnitTests/Data/Rail.FeatureSource", "UT_Rail.sdf", ResourceDataType.File, File.OpenRead("TestData/MappingService/UT_Rail.sdf"));
             resSvc.SetResourceData("Library://UnitTests/Data/Parcels.FeatureSource", "UT_Parcels.sdf", ResourceDataType.File, File.OpenRead("TestData/TileService/UT_Parcels.sdf"));
+
+            resSvc.SetResourceXmlData("Library://UnitTests/Data/SpaceShip.DrawingSource", File.OpenRead("TestData/DrawingService/SpaceShipDrawingSource.xml"));
+            resSvc.SetResourceData("Library://UnitTests/Data/SpaceShip.DrawingSource", "SpaceShip.dwf", ResourceDataType.File, File.OpenRead("TestData/DrawingService/SpaceShip.dwf"));
         }
 
         [TestFixtureTearDown]
@@ -1021,6 +1025,40 @@ namespace MaestroAPITests
             RuntimeMap mymap = mapSvc.OpenMap("Session:" + conn.SessionID + "//" + rtm.Name + ".Map");
         }
 
+        public virtual void TestMapAddDwfLayer()
+        {
+            IServerConnection conn = CreateTestConnection();
+            IMappingService mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+            string mapdefinition = "Library://UnitTests/Maps/SheboyganTiled.MapDefinition";
+            IMapDefinition mdef = (IMapDefinition)conn.ResourceService.GetResource(mapdefinition);
+            RuntimeMap rtm = mapSvc.CreateMap(mdef); // Create new runtime map
+
+            var ds = (IDrawingSource)conn.ResourceService.GetResource("Library://UnitTests/Data/SpaceShip.DrawingSource");
+            //The DWF in question can't be interrogated for extents, so flub it
+            string sheetName = string.Empty;
+            foreach (var sheet in ds.Sheet)
+            {
+                sheet.Extent = ObjectFactory.CreateEnvelope(-100000, -100000, 100000, 100000);
+                if (string.IsNullOrEmpty(sheetName))
+                    sheetName = sheet.Name;
+            }
+            conn.ResourceService.SaveResource(ds);
+            var ldf = ObjectFactory.CreateDefaultLayer(conn, LayerType.Drawing);
+            var dl = (IDrawingLayerDefinition)ldf.SubLayer;
+            dl.ResourceId = ds.ResourceID;
+            dl.Sheet = sheetName;
+            ldf.ResourceID = "Session:" + conn.SessionID + "//TestDrawing.LayerDefinition";
+            conn.ResourceService.SaveResource(ldf);
+
+            //Add our dwf layer
+            var rtLayer = mapSvc.CreateMapLayer(rtm, ldf);
+            rtm.Layers.Add(rtLayer);
+
+            rtm.Save();
+            Assert.IsFalse(rtm.IsDirty);
+            RuntimeMap mymap = mapSvc.OpenMap("Session:" + conn.SessionID + "//" + rtm.Name + ".Map");
+        }
+
         public virtual void TestResourceEvents()
         {
             bool deleteCalled = false;
@@ -1197,6 +1235,12 @@ namespace MaestroAPITests
         {
             base.TestMapManipulation5();
         }
+
+        [Test]
+        public override void TestMapAddDwfLayer()
+        {
+            base.TestMapAddDwfLayer();
+        }
     }
 
     [TestFixture(Ignore = TestControl.IgnoreLocalNativeRuntimeMapTests)]
@@ -1276,6 +1320,12 @@ namespace MaestroAPITests
         public override void TestLargeMapCreatePerformance()
         {
             base.TestLargeMapCreatePerformance();
+        }
+
+        [Test]
+        public override void TestMapAddDwfLayer()
+        {
+            base.TestMapAddDwfLayer();
         }
     }
 

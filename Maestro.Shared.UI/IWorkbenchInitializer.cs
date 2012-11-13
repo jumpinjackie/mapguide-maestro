@@ -31,6 +31,10 @@ namespace Maestro.Shared.UI
     public interface IWorkbenchInitializer
     {
         /// <summary>
+        /// Gets whether to start the workbench maximized
+        /// </summary>
+        bool StartMaximized { get; }
+        /// <summary>
         /// Gets the main window icon
         /// </summary>
         /// <returns></returns>
