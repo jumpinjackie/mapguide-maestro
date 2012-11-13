@@ -199,7 +199,17 @@ namespace WeifenLuo.WinFormsUI.Docking
                     RefreshChanges();
 
                 if (m_activeContent != null)
+                {
                     TabStripControl.EnsureTabVisible(m_activeContent);
+                    //Needed for Mono, because Win32 hooks that would trigger update of active document
+                    //aren't called in Mono for obvious reasons. The Suspend/Resume pair will trigger 
+                    //setting of the active document
+                    if (Win32Helper.IsRunningOnMono())
+                    {
+                        DockPanel.SuspendLayout(true);
+                        DockPanel.ResumeLayout(true, true);
+                    }
+                }
             }
         }
 
