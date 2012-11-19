@@ -808,6 +808,267 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alpha value.
+        /// </summary>
+        internal static string Func_ARGB_AValueDescription {
+            get {
+                return ResourceManager.GetString("Func_ARGB_AValueDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blue value.
+        /// </summary>
+        internal static string Func_ARGB_BValueDescription {
+            get {
+                return ResourceManager.GetString("Func_ARGB_BValueDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color generation function.
+        /// </summary>
+        internal static string Func_ARGB_Description {
+            get {
+                return ResourceManager.GetString("Func_ARGB_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Green value.
+        /// </summary>
+        internal static string Func_ARGB_GValueDescription {
+            get {
+                return ResourceManager.GetString("Func_ARGB_GValueDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Red value.
+        /// </summary>
+        internal static string Func_ARGB_RValueDescription {
+            get {
+                return ResourceManager.GetString("Func_ARGB_RValueDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to String formatting function.
+        /// </summary>
+        internal static string Func_DECAP_Description {
+            get {
+                return ResourceManager.GetString("Func_DECAP_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to String to format.
+        /// </summary>
+        internal static string Func_DECAP_StringValueDescription {
+            get {
+                return ResourceManager.GetString("Func_DECAP_StringValueDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Returns the active feature class name.
+        /// </summary>
+        internal static string Func_FEATURECLASS_Description {
+            get {
+                return ResourceManager.GetString("Func_FEATURECLASS_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Returns the active feature Id.
+        /// </summary>
+        internal static string Func_FEATUREID_Description {
+            get {
+                return ResourceManager.GetString("Func_FEATUREID_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Boolean expression (filter) encapsulated in a string.
+        /// </summary>
+        internal static string Func_IF_ConditionDescription {
+            get {
+                return ResourceManager.GetString("Func_IF_ConditionDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If evaluator for style theming.
+        /// </summary>
+        internal static string Func_IF_Description {
+            get {
+                return ResourceManager.GetString("Func_IF_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Returned if condition is false.
+        /// </summary>
+        internal static string Func_IF_FalseValueDescription {
+            get {
+                return ResourceManager.GetString("Func_IF_FalseValueDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Returned if condition is true.
+        /// </summary>
+        internal static string Func_IF_TrueValueDescription {
+            get {
+                return ResourceManager.GetString("Func_IF_TrueValueDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Returns the active layer Id.
+        /// </summary>
+        internal static string Func_LAYERID_Description {
+            get {
+                return ResourceManager.GetString("Func_LAYERID_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default value returned if expression does not evaluate to any of the keys.
+        /// </summary>
+        internal static string Func_LOOKUP_DefaultValueDescription {
+            get {
+                return ResourceManager.GetString("Func_LOOKUP_DefaultValueDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lookup table for style theming.
+        /// </summary>
+        internal static string Func_LOOKUP_Description {
+            get {
+                return ResourceManager.GetString("Func_LOOKUP_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key expression.
+        /// </summary>
+        internal static string Func_LOOKUP_ExpressionDescription {
+            get {
+                return ResourceManager.GetString("Func_LOOKUP_ExpressionDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lookup index that can be matched by the key expression.
+        /// </summary>
+        internal static string Func_LOOKUP_IndexDescription {
+            get {
+                return ResourceManager.GetString("Func_LOOKUP_IndexDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value that is returned when the key expression matches the associated index.
+        /// </summary>
+        internal static string Func_LOOKUP_ValueDescription {
+            get {
+                return ResourceManager.GetString("Func_LOOKUP_ValueDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Returns the active map name.
+        /// </summary>
+        internal static string Func_MAPNAME_Description {
+            get {
+                return ResourceManager.GetString("Func_MAPNAME_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default value returned if expression does not fall into any of the ranges.
+        /// </summary>
+        internal static string Func_RANGE_DefaultValueDescription {
+            get {
+                return ResourceManager.GetString("Func_RANGE_DefaultValueDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Range table for style theming.
+        /// </summary>
+        internal static string Func_RANGE_Description {
+            get {
+                return ResourceManager.GetString("Func_RANGE_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key expression.
+        /// </summary>
+        internal static string Func_RANGE_ExpressionDescription {
+            get {
+                return ResourceManager.GetString("Func_RANGE_ExpressionDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exclusive maximum of range that can be matched by the key expression.
+        /// </summary>
+        internal static string Func_RANGE_MaxDescription {
+            get {
+                return ResourceManager.GetString("Func_RANGE_MaxDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inclusive minimum of range that can be matched by the key expression.
+        /// </summary>
+        internal static string Func_RANGE_MinDescription {
+            get {
+                return ResourceManager.GetString("Func_RANGE_MinDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value that is returned when the key expression matches the associated range.
+        /// </summary>
+        internal static string Func_RANGE_ValueDescription {
+            get {
+                return ResourceManager.GetString("Func_RANGE_ValueDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Returns the active session.
+        /// </summary>
+        internal static string Func_SESSION_Description {
+            get {
+                return ResourceManager.GetString("Func_SESSION_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to String encoding function.
+        /// </summary>
+        internal static string Func_URLENCODE_Description {
+            get {
+                return ResourceManager.GetString("Func_URLENCODE_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to String to URL encode.
+        /// </summary>
+        internal static string Func_URLENCODE_StringValueDescription {
+            get {
+                return ResourceManager.GetString("Func_URLENCODE_StringValueDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Function: {1}({2})
         ///Description: {3}
         ///Returns: {0}.

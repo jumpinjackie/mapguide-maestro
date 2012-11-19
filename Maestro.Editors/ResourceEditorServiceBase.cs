@@ -83,7 +83,7 @@ namespace Maestro.Editors
         /// <returns></returns>
         public string EditExpression(string currentExpr, ClassDefinition classDef, string providerName, string featureSourceId, bool attachStylizationFunctions)
         {
-            var ed = new ExpressionEditor();
+            var ed = FdoExpressionEditorFactory.Create(); new ExpressionEditor();
             var caps = this.FeatureService.GetProviderCapabilities(providerName);
             ed.Initialize(this.FeatureService, caps, classDef, featureSourceId, attachStylizationFunctions);
             ed.Expression = currentExpr;

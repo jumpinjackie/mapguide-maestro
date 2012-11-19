@@ -38,7 +38,7 @@ namespace Maestro.Editors.Common
     /// <summary>
     /// An expression editor dialog
     /// </summary>
-    public partial class ExpressionEditor : Form
+    public partial class ExpressionEditor : Form, IExpressionEditor
     {
         private ClassDefinition _cls;
         private IFeatureService _featSvc;
@@ -49,7 +49,7 @@ namespace Maestro.Editors.Common
         /// <summary>
         /// Initializes a new instance of the <see cref="ExpressionEditor"/> class.
         /// </summary>
-        public ExpressionEditor()
+        internal ExpressionEditor()
         {
             InitializeComponent();
             ExpressionText.SetHighlighting("FDO");

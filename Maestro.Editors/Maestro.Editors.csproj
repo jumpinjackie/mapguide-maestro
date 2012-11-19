@@ -121,6 +121,7 @@
     <Compile Include="Common\GenericInputDialog.Designer.cs">
       <DependentUpon>GenericInputDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\IExpressionEditor.cs" />
     <Compile Include="Common\ImageStylePicker.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -131,6 +132,12 @@
       <DependentUpon>GenericItemSelectionDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\ITextEditor.cs" />
+    <Compile Include="Common\MonoCompatibleExpressionEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\MonoCompatibleExpressionEditor.Designer.cs">
+      <DependentUpon>MonoCompatibleExpressionEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\NsDoc.cs" />
     <Compile Include="Common\RepositoryTreeModel.cs" />
     <Compile Include="Common\RepositoryView.cs">
@@ -1340,6 +1347,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Common\GenericItemSelectionDialog.resx">
       <DependentUpon>GenericItemSelectionDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\MonoCompatibleExpressionEditor.resx">
+      <DependentUpon>MonoCompatibleExpressionEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Common\RepositoryView.resx">
       <DependentUpon>RepositoryView.cs</DependentUpon>
