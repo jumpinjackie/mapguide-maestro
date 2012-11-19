@@ -7,7 +7,7 @@
 - New and improved IronPython REPL console. Due to threading issues in Mono, the zip distribution does not include this add-in.
 - IronPython AddIn now includes the python standard library
 - Added XML element code folding support in the Generic XML editor
-- Added support for FDO Expression syntax highlighting. Auto-complete is currently disabled for Mono.
+- New Expression Editor with support for FDO Expression syntax highlighting. Mono uses the old Expression Editor implementation.
 - LocalNative connection provider fixes
 - Deleting resources with dependencies will now display a specialized confirmation dialog showing such dependencies
 - Added support for creating packages with a list of resource ids, instead of just choosing a folder
@@ -17,6 +17,8 @@
 - Added support for generating locale-specific resource previews
 - Added support for flipping the order of ColorBrewer color ramps when generating themes
 - Added support for opening affected resources from the Validation Results dialog
+- Fix: Active Document not properly reflected in Mono
+- Fix: Un-intuitive cross-connection copying logic
 - Fix: Make SetResourceData in Local/LocalNative providers more memory-efficient (apparent when loading packages with large data files)
 - Fix: Login Dialog safeguards for Local and LocalNative providers as it is not possible to create subsequent connections with different ini files.
 - Fix: Mono crashes in Web Layout editor
