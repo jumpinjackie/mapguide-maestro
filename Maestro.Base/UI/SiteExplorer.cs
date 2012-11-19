@@ -452,7 +452,107 @@ namespace Maestro.Base.UI
                     }
                     else
                     {
-                        CopyResourcesToFolder(data, connectionName, folderId);
+                        /*
+                         * Consider the following layout:
+                         * 
+                         * ConnectionA (Root):
+                         *      Samples
+                         *          Sheboygan
+                         *              Data
+                         *                  *.FeatureSource
+                         *              Layers
+                         *                  *.LayerDefinition
+                         *              Maps
+                         *                  *.MapDefinition
+                         * 
+                         * ConnectionB (Root):
+                         *      Foo
+                         *      Bar
+                         *          Snafu
+                         * 
+                         * These are the possible scenarios and outcomes:
+                         * 
+                         * Case 1 - Copy folder Samples/Sheboygan/Data into ConnectionB root:
+                         * 
+                         * Expect:
+                         * 
+                         * ConnectionB (Root):
+                         *     Data
+                         *          *.FeatureSource
+                         *     Foo
+                         *     Bar
+                         *          Snafu
+                         * 
+                         * Case 2 - Copy Samples/Sheboygan/Data/*.FeatureSource into ConnectionB root:
+                         * 
+                         * Expect:
+                         * 
+                         * ConnectionB (Root):
+                         *     *.FeatureSource
+                         *     Foo
+                         *     Bar
+                         *          Snafu
+                         *          
+                         * Case 3 - Copy Samples/Sheboygan/Data/*.FeatureSource into Connection B/Foo:
+                         * 
+                         * Expect:
+                         * 
+                         * ConnectionB (Root):
+                         *      Foo
+                         *          *.FeatureSource
+                         *      Bar
+                         *          Snafu
+                         *          
+                         * Case 4 - Copy Samples/Sheboygan/Data into Connection B/Foo:
+                         * 
+                         * Expect:
+                         * 
+                         * ConnectionB (Root):
+                         *      Foo
+                         *          Data
+                         *              *.FeatureSource
+                         *      Bar
+                         *          Snafu
+                         *          
+                         * Case 5 - Copy Samples/Sheboygan/Data into Connection B/Bar/Snafu:
+                         * 
+                         * Expect:
+                         * 
+                         * ConnectionB (Root):
+                         *      Foo
+                         *      Bar
+                         *          Snafu
+                         *              Data
+                         *                  *.FeatureSource
+                         * 
+                         * Case 6 - Copy Samples/Sheboygan/Data/*.FeatureSource into Connection B/Bar/Snafu:
+                         * 
+                         * ConnectionB (Root):
+                         *      Foo
+                         *      Bar
+                         *          Snafu
+                         *              *.FeatureSource
+                         * 
+                         */
+
+
+                        if (data.All(x => x.ResourceId.IsFolder))
+                        {
+                            if (data.Length > 1)
+                            {
+                                //folderId = GetCommonParent(data);
+                                CopyResourcesToFolder(data, connectionName, folderId);
+                            }
+                            else
+                            {
+                                folderId += data.First().ResourceId.Name + "/";
+                                CopyResourcesToFolder(data, connectionName, folderId);
+                            }
+                        }
+                        else
+                        {
+                            CopyResourcesToFolder(data, connectionName, folderId);
+                        }
                     }
                 }
             }
@@ -476,20 +576,6 @@ namespace Maestro.Base.UI
                 else
                     sourceIds.Add(resId);
 
-            }
-
-            /*
-            //If we're dropping to the root, the common parent becomes our 
-            //target root
-            if (folderId == StringConstants.RootIdentifier)
-                folderId = rootSourceParent;
-            */
-            //If common parent is not root, we want the name of the folder to append
-            //to our target
-            if (rootSourceParent != StringConstants.RootIdentifier)
-            {
-                ResourceIdentifier resId = new ResourceIdentifier(rootSourceParent);
-                folderId = folderId + resId.Name + "/"; //NOXLATE
             }
 
             var targets = new List<string>();
@@ -553,15 +639,19 @@ namespace Maestro.Base.UI
                     //Use first one as a sample to see how far we can go. Keep going until we have
                     //a parent that doesn't match all of them. The one we recorded before then will
                     //be the common parent
-                    while (matches == data.Length)
+                    while (true)
                     {
-                        parent = test;
                         partIndex++;
-                        if (partIndex < parts.Length) //Shouldn't happen, but just in case
+                        if (partIndex > parts.Length) //Shouldn't happen, but just in case
                             break;
 
-                        test = test + parts[partIndex];
-                        matches = data.Where(x => x.ResourceId.ResourceId.StartsWith(test)).Count(); 
+                        parent = test;
+
+                        test = test + parts[partIndex - 1] + "/";
+                        matches = data.Where(x => x.ResourceId.ResourceId.StartsWith(test)).Count();
+
+                        if (matches > 0 && matches != data.Length)
+                            break;
                     }
                     return parent;
                 }
