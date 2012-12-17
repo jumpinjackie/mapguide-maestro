@@ -996,7 +996,7 @@ namespace Maestro.Base.UI
                     var cs = picker.SelectedCoordSys;
                     if (!string.IsNullOrEmpty(cs.EPSG))
                     {
-                        txtPrimarySRS.Text = cs.EPSG;
+                        txtPrimarySRS.Text = "EPSG:" + cs.EPSG; //NOXLATE
                     }
                 }
             }
@@ -1011,7 +1011,7 @@ namespace Maestro.Base.UI
                     var cs = picker.SelectedCoordSys;
                     if (!string.IsNullOrEmpty(cs.EPSG))
                     {
-                        txtOtherSRS.Text = cs.EPSG;
+                        txtOtherSRS.Text = "EPSG:" + cs.EPSG; //NOXLATE
                     }
                 }
             }
