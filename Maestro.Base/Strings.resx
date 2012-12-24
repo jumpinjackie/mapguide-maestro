@@ -354,7 +354,7 @@ Many thanks to the following people who have translated Maestro into other langu
     <value>{0} items were successfully translated</value>
   </data>
   <data name="KeepAliveFailed" xml:space="preserve">
-    <value>Failed to keep session alive. This would happen if connectivity to the MapGuide Server has been lost (it has been stopped or restarted). Refresh the Site Explorer to create a new session. Also close any existing editors and re-open them.</value>
+    <value>Failed to keep session ({0}) alive. This would happen if connectivity to the MapGuide Server has been lost (it has been stopped or restarted). Refresh the Site Explorer to create a new session. Also close any existing editors and re-open them.</value>
   </data>
   <data name="Label_ExtraTools" xml:space="preserve">
     <value>Extra Tools</value>

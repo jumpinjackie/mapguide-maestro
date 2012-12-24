@@ -740,7 +740,7 @@ namespace Maestro.Base {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to keep session alive. This would happen if connectivity to the MapGuide Server has been lost (it has been stopped or restarted). Refresh the Site Explorer to create a new session. Also close any existing editors and re-open them..
+        ///   Looks up a localized string similar to Failed to keep session ({0}) alive. This would happen if connectivity to the MapGuide Server has been lost (it has been stopped or restarted). Refresh the Site Explorer to create a new session. Also close any existing editors and re-open them..
         /// </summary>
         internal static string KeepAliveFailed {
             get {

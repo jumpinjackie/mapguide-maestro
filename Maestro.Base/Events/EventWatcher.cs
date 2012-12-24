@@ -78,7 +78,7 @@ namespace Maestro.Base.Events
                         try
                         {
                             smShowingError = true;
-                            MessageService.ShowError(Strings.KeepAliveFailed);
+                            MessageService.ShowError(string.Format(Strings.KeepAliveFailed, sessionId));
                         }
                         finally
                         {
