@@ -115,6 +115,8 @@ namespace Maestro.Base.Editor
             var mdfId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".MapDefinition"; //NOXLATE
             string csWkt;
             var extent = ldf.GetSpatialExtent(true, out csWkt);
+            if (extent == null)
+                throw new ApplicationException(Strings.FailedToCalculateFeatureSourceExtents);
 
             //TODO: Based on the visible scales in this layer, size this extents accordingly
             var mdf = ObjectFactory.CreateMapDefinition(conn, Strings.PreviewMap, csWkt, extent);

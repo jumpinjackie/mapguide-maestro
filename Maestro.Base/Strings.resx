@@ -989,4 +989,7 @@ Error message: {0}</value>
   <data name="ConfirmDeleteFolders" xml:space="preserve">
     <value>You about to delete one or more folders which may contain dependent resources. Are you sure you want to proceed with delete?</value>
   </data>
+  <data name="FailedToCalculateFeatureSourceExtents" xml:space="preserve">
+    <value>Could not calculate the extents of the Feature Source. Preview is not possible</value>
+  </data>
 </root>

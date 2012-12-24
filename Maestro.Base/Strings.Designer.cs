@@ -587,6 +587,15 @@ namespace Maestro.Base {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not calculate the extents of the Feature Source. Preview is not possible.
+        /// </summary>
+        internal static string FailedToCalculateFeatureSourceExtents {
+            get {
+                return ResourceManager.GetString("FailedToCalculateFeatureSourceExtents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Validation detected errors in your resource, please fix them before saving this resource.
         /// </summary>
         internal static string FixErrorsBeforeSaving {
