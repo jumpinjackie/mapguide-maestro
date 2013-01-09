@@ -942,10 +942,20 @@ namespace Maestro.Base.UI
             List<string> l2 = ((object[])e.Result)[1] as List<string>;
 
             foreach (string s in l2)
+            {
+                if (string.IsNullOrEmpty(s))
+                    continue;
+
                 OutReferenceList.Items.Add(s, m_icons.GetImageIndexFromResourceID(s));
+            }
 
             foreach (string s in l1)
+            {
+                if (string.IsNullOrEmpty(s))
+                    continue;
+
                 InReferenceList.Items.Add(s, m_icons.GetImageIndexFromResourceID(s));
+            }
 
             m_hasLoadedRefs = true;
         }
