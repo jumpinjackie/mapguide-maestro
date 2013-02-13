@@ -38,5 +38,14 @@ namespace MaestroAPITests
             reader.Read(wkt1);
             reader.Read(wkt2);
         }
+
+        [Test]
+        public void TestParseXyzmWkt()
+        {
+            var wkt1 = "POINT XYZM (1 2 3 4)";
+
+            var reader = new FixedWKTReader();
+            reader.Read(wkt1);
+        }
     }
 }

@@ -152,6 +152,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             coord.Y = GetNextNumber(tokens);
             if (IsNumberNext(tokens))
                 coord.Z = GetNextNumber(tokens);
+            if (IsNumberNext(tokens))
+                coord.M = GetNextNumber(tokens);
 
             if (skipExtraParenthesis &&
                 extraParenthesisFound &&
@@ -235,6 +237,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
                 nextWord = GetNextWord(tokens);
             }
             else if (nextWord.Equals("XYM")) //NOXLATE
+            {
+                nextWord = GetNextWord(tokens);
+            }
+            else if (nextWord.Equals("XYZM")) //NOXLATE
             {
                 nextWord = GetNextWord(tokens);
             }
