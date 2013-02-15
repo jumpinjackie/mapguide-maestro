@@ -35,11 +35,15 @@
             this.btnTest = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtStatus = new System.Windows.Forms.TextBox();
+            this.lblResamplingMethod = new System.Windows.Forms.Label();
+            this.cmbResamplingMethod = new System.Windows.Forms.ComboBox();
             this.contentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // contentPanel
             // 
+            this.contentPanel.Controls.Add(this.cmbResamplingMethod);
+            this.contentPanel.Controls.Add(this.lblResamplingMethod);
             this.contentPanel.Controls.Add(this.txtStatus);
             this.contentPanel.Controls.Add(this.label1);
             this.contentPanel.Controls.Add(this.btnTest);
@@ -88,12 +92,24 @@
             this.txtStatus.Name = "txtStatus";
             this.txtStatus.ReadOnly = true;
             // 
+            // lblResamplingMethod
+            // 
+            resources.ApplyResources(this.lblResamplingMethod, "lblResamplingMethod");
+            this.lblResamplingMethod.Name = "lblResamplingMethod";
+            // 
+            // cmbResamplingMethod
+            // 
+            resources.ApplyResources(this.cmbResamplingMethod, "cmbResamplingMethod");
+            this.cmbResamplingMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbResamplingMethod.FormattingEnabled = true;
+            this.cmbResamplingMethod.Name = "cmbResamplingMethod";
+            this.cmbResamplingMethod.SelectedIndexChanged += new System.EventHandler(this.cmbResamplingMethod_SelectedIndexChanged);
+            // 
             // GdalProviderCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "GDAL Feature Source";
-            this.Name = "GdalProviderCtrl";
             resources.ApplyResources(this, "$this");
+            this.Name = "GdalProviderCtrl";
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -108,5 +124,7 @@
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtStatus;
+        private System.Windows.Forms.ComboBox cmbResamplingMethod;
+        private System.Windows.Forms.Label lblResamplingMethod;
     }
 }

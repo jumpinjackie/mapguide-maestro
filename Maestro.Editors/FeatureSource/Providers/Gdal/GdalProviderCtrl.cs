@@ -49,13 +49,37 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
 
         private bool _init = false;
 
+        private bool _bSupportsResample = false;
+
         public override void Bind(IEditorService service)
         {
             try
             {
                 _init = true;
+                _bSupportsResample = false;
                 _service = service;
                 _fs = (IFeatureSource)_service.GetEditedResource();
+
+                var provInfo = _service.FeatureService.GetFeatureProvider("OSGeo.Gdal");
+                foreach (var prop in provInfo.ConnectionProperties)
+                {
+                    if (prop.Name == "ResamplingMethod")
+                    {
+                        lblResamplingMethod.Visible =
+                            cmbResamplingMethod.Visible =
+                                cmbResamplingMethod.Enabled = true;
+
+                        cmbResamplingMethod.DataSource = new List<string>(prop.Value);
+                        var method = _fs.GetConnectionProperty("ResamplingMethod");
+                        if (!string.IsNullOrEmpty(method))
+                            cmbResamplingMethod.SelectedItem = method;
+                        else
+                            cmbResamplingMethod.SelectedIndex = 0;
+                        _bSupportsResample = true;
+                        break;
+                    }
+                }
+
                 _sing.Bind(service);
                 _comp.Bind(service);
                 if (!string.IsNullOrEmpty(_fs.GetConfigurationContent()))
@@ -100,6 +124,15 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
             _service.SyncSessionCopy();
             string result = _fs.TestConnection();
             txtStatus.Text = string.Format(Strings.FdoConnectionStatus, result);
+        }
+
+        private void cmbResamplingMethod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!_bSupportsResample)
+                return;
+
+            if (cmbResamplingMethod.SelectedItem != null)
+                _fs.SetConnectionProperty("ResamplingMethod", cmbResamplingMethod.SelectedItem.ToString());
         }
     }
 }
