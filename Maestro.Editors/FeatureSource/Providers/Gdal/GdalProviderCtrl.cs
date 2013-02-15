@@ -60,17 +60,17 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
                 _service = service;
                 _fs = (IFeatureSource)_service.GetEditedResource();
 
-                var provInfo = _service.FeatureService.GetFeatureProvider("OSGeo.Gdal");
+                var provInfo = _service.FeatureService.GetFeatureProvider("OSGeo.Gdal"); //NOXLATE
                 foreach (var prop in provInfo.ConnectionProperties)
                 {
-                    if (prop.Name == "ResamplingMethod")
+                    if (prop.Name == "ResamplingMethod") //NOXLATE
                     {
                         lblResamplingMethod.Visible =
                             cmbResamplingMethod.Visible =
                                 cmbResamplingMethod.Enabled = true;
 
                         cmbResamplingMethod.DataSource = new List<string>(prop.Value);
-                        var method = _fs.GetConnectionProperty("ResamplingMethod");
+                        var method = _fs.GetConnectionProperty("ResamplingMethod"); //NOXLATE
                         if (!string.IsNullOrEmpty(method))
                             cmbResamplingMethod.SelectedItem = method;
                         else
