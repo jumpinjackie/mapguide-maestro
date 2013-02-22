@@ -1120,6 +1120,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             rtGroup.LegendLabel = group.LegendLabel;
             rtGroup.Visible = group.Visible;
 
+            var implMap = impl.GetWrappedInstance();
+            var groups = implMap.GetLayerGroups();
+            if (!string.IsNullOrEmpty(group.Group))
+            {
+                int idx = groups.IndexOf(group.Group);
+                if (idx >= 0)
+                {
+                    var parentGrp = groups.GetItem(idx);
+                    rtGroup.Group = parentGrp;
+                }
+            }
+
             return new LocalRuntimeMapGroup(impl, rtGroup);
         }
 

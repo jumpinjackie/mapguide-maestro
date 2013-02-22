@@ -68,6 +68,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             _disableChangeTracking = true;
 
+            this.Group = group.Group;
             this.ExpandInLegend = group.ExpandInLegend;
             this.LegendLabel = group.LegendLabel;
             this.ShowInLegend = group.ShowInLegend;

@@ -324,7 +324,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                 var grp = _impl.Group;
                 if (grp != null)
                     return grp.Name;
-                return null;
+                return string.Empty;
             }
             set
             {

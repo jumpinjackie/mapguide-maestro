@@ -115,6 +115,28 @@ namespace MaestroAPITests
 
         protected abstract IServerConnection CreateTestConnection();
 
+        public virtual void TestGroupAssignment()
+        {
+            var resSvc = _conn.ResourceService;
+            var mdf = resSvc.GetResource("Library://UnitTests/Maps/Sheboygan.MapDefinition") as IMapDefinition;
+            Assert.NotNull(mdf);
+            var gdf1 = mdf.AddGroup("Group1");
+            var gdf2 = mdf.AddGroup("Group2");
+            gdf2.Group = gdf1.Name;
+            resSvc.SaveResourceAs(mdf, "Session:" + _conn.SessionID + "//TestGroupAssignment.MapDefinition");
+            mdf.ResourceID = "Session:" + _conn.SessionID + "//TestGroupAssignment.MapDefinition";
+
+            var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
+            Assert.NotNull(mapSvc);
+
+            var map = mapSvc.CreateMap("Session:" + _conn.SessionID + "//TestGroupAssignment.Map", mdf, 1.0);
+            foreach(var grp in mdf.MapLayerGroup)
+            {
+                var rtGrp = mapSvc.CreateMapGroup(map, grp);
+                Assert.AreEqual(rtGrp.Group, grp.Group);
+            }
+        }
+
         public virtual void TestExtentSerialization()
         {
             var resSvc = _conn.ResourceService;
@@ -1159,6 +1181,12 @@ namespace MaestroAPITests
         }
 
         [Test]
+        public override void TestGroupAssignment()
+        {
+            base.TestGroupAssignment();
+        }
+
+        [Test]
         public override void TestExtentSerialization()
         {
             base.TestExtentSerialization();
@@ -1257,6 +1285,12 @@ namespace MaestroAPITests
         }
 
         [Test]
+        public override void TestGroupAssignment()
+        {
+            base.TestGroupAssignment();
+        }
+
+        [Test]
         public override void TestExtentSerialization()
         {
             base.TestExtentSerialization();
@@ -1348,6 +1382,12 @@ namespace MaestroAPITests
             {
                 return false;
             }
+        }
+
+        [Test]
+        public override void TestGroupAssignment()
+        {
+            base.TestGroupAssignment();
         }
 
         /*
