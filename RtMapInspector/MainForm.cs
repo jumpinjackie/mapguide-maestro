@@ -509,7 +509,8 @@ namespace RtMapInspector
                 trvLayersAndGroups.Nodes.Add(node);
                 foreach (var group in _rtMap.Groups)
                 {
-                    node.Nodes.Add(CreateGroupNode(group));
+                    if (group.Group == String.Empty)
+                        node.Nodes.Add(CreateGroupNode(group));
                 }
             }
             finally
