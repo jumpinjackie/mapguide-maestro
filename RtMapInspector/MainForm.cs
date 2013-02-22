@@ -492,7 +492,7 @@ namespace RtMapInspector
 
         private TreeNode CreateLayerNode(RuntimeMapLayer layer)
         {
-            var node = new TreeNode(layer.LegendLabel);
+            var node = new TreeNode((layer.LegendLabel != String.Empty) ? layer.LegendLabel : String.Format("[{0}]", layer.Name));
             node.Tag = new LayerDecorator(layer);
             node.ImageIndex = node.SelectedImageIndex = layer.Visible ? IDX_LAYER : IDX_LAYER_HIDDEN;
             return node;
