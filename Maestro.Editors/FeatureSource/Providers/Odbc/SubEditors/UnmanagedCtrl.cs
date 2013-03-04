@@ -166,5 +166,11 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         public const string OdbcDriverAccess64 = "{Microsoft Access Driver (*.mdb, *.accdb)}";
         public const string OdbcDriverExcel = "{Microsoft Excel Driver (*.xls)}";
         public const string OdbcDriverExcel64 = "{Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)}";
+
+        internal static bool Uses64BitDriver(string odbcConnStr)
+        {
+            return odbcConnStr.Contains(OdbcDriverNames.OdbcDriverAccess64) ||
+                   odbcConnStr.Contains(OdbcDriverNames.OdbcDriverExcel64);
+        }
     }
 }

@@ -95,6 +95,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                 //See if it is file-basd
                 if (odbcStr.Contains("Dbq=")) //NOXLATE
                 {
+                    //Check driver bitness
+                    chkUse64Bit.Checked = OdbcDriverNames.Uses64BitDriver(odbcStr);
+
                     if (odbcStr.Contains("%MG_DATA_FILE_PATH%")) //NOXLATE
                     {
                         cmbMethod.SelectedItem = OdbcConnectionMethod.ManagedFile;
@@ -367,6 +370,8 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
 
         private void chkUse64Bit_CheckedChanged(object sender, EventArgs e)
         {
+            if (_init) return;
+
             OdbcConnectionMethod method = (OdbcConnectionMethod)cmbMethod.SelectedItem;
             if (method == OdbcConnectionMethod.ManagedFile || method == OdbcConnectionMethod.Unmanaged)
             {
