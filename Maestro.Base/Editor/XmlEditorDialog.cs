@@ -59,6 +59,8 @@ namespace Maestro.Base.Editor
         public XmlEditorDialog(IEditorService edsvc)
             : this()
         {
+            //NRE happens if we copy without setting a font first
+            _ed.TextFont = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             _edSvc = edsvc;
             _edSvc.RegisterCustomNotifier(this);
             this.Disposed += new EventHandler(OnDisposed);
