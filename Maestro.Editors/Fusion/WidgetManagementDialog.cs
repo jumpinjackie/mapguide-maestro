@@ -42,6 +42,8 @@ namespace Maestro.Editors.Fusion
 
             public string Label { get; set; }
 
+            public bool IsDockable { get; set; }
+
             public IWidget Widget { get; set; }
         }
 
@@ -86,8 +88,11 @@ namespace Maestro.Editors.Fusion
             {
                 Name = widget.Name,
                 Type = widget.Type,
-                Widget = widget
+                Widget = widget,
+                IsDockable = true
             };
+
+            item.IsDockable = _context.IsWidgetDockable(widget.Type);
 
             widget.PropertyChanged += (s, e) =>
             {

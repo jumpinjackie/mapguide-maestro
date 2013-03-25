@@ -106,5 +106,39 @@ namespace Maestro.Editors.Fusion
             }
             return null;
         }
+
+        internal string[] GetDockableWidgetNames(IApplicationDefinition appDef)
+        {
+            //Key the dockable types
+            var dict = new Dictionary<string, IWidgetInfo>();
+            foreach (var winfo in GetAllWidgets())
+            {
+                if (winfo.StandardUi)
+                {
+                    dict[winfo.Type] = winfo;
+                }
+            }
+
+            var result = new List<string>();
+            foreach (var wset in appDef.WidgetSets)
+            {
+                foreach (var wgt in wset.Widgets)
+                {
+                    if (dict.ContainsKey(wgt.Type))
+                        result.Add(wgt.Name);
+                }
+            }
+            return result.ToArray();
+        }
+
+        internal bool IsWidgetDockable(string widgetType)
+        {
+            foreach (var winfo in _widgetSet.WidgetInfo)
+            {
+                if (winfo.Type == widgetType)
+                    return winfo.StandardUi;
+            }
+            return false;
+        }
     }
 }

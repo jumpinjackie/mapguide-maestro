@@ -25,6 +25,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
+using OSGeo.MapGuide.MaestroAPI.Services;
 
 namespace Maestro.Editors.Fusion
 {
@@ -38,6 +39,8 @@ namespace Maestro.Editors.Fusion
 
         private IWidgetItem _widgetRef;
         private IApplicationDefinition _flexLayout;
+        private IFusionService _fsvc;
+        private FlexibleLayoutEditorContext _context;
         private bool _init = true;
 
         public WidgetReferenceCtrl(IWidgetItem item, IEditorService edsvc)
@@ -45,7 +48,9 @@ namespace Maestro.Editors.Fusion
         {
             _widgetRef = item;
             _flexLayout = (IApplicationDefinition)edsvc.GetEditedResource();
-            cmbWidgetRefs.DataSource = _flexLayout.GetAllReferenceableWidgetNames();
+            _fsvc = (IFusionService)edsvc.GetService((int)ServiceType.Fusion);
+            _context = new FlexibleLayoutEditorContext(_fsvc);
+            cmbWidgetRefs.DataSource = _context.GetDockableWidgetNames(_flexLayout);
 
             cmbWidgetRefs.SelectedItem = item.Widget;
             _init = false;

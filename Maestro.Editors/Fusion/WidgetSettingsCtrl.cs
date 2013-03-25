@@ -128,7 +128,7 @@ namespace Maestro.Editors.Fusion
             var cnt = this.SelectedContainer;
             if (cnt != null)
             {
-                string[] widgets = _flexLayout.GetAllReferenceableWidgetNames();
+                string[] widgets = _context.GetDockableWidgetNames(_flexLayout);
                 string widget = GenericItemSelectionDialog.SelectItem(
                     Strings.AddWidgetReference,
                     Strings.SelectWidget,
@@ -146,7 +146,7 @@ namespace Maestro.Editors.Fusion
                 var menu = this.SelectedNode.Tag as IMenu;
                 if (menu != null)
                 {
-                    string[] widgets = _flexLayout.GetAllReferenceableWidgetNames();
+                    string[] widgets = _context.GetDockableWidgetNames(_flexLayout);
                     string widget = GenericItemSelectionDialog.SelectItem(
                         Strings.AddWidgetReference,
                         Strings.SelectWidget,

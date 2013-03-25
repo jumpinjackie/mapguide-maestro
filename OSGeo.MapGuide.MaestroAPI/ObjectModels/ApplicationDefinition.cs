@@ -55,21 +55,6 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
 
         private static readonly Version RES_VERSION = new Version(1, 0, 0);
 
-        public string[] GetAllReferenceableWidgetNames()
-        {
-            List<string> names = new List<string>();
-
-            foreach (var ws in this.WidgetSets)
-            {
-                foreach (var wgt in ws.Widgets)
-                {
-                    names.Add(wgt.Name);
-                }
-            }
-
-            return names.ToArray();
-        }
-
         public IMapWidget CreateMapWidget(string mapId, string contextMenuId)
         {
             var map = new MapWidgetType()

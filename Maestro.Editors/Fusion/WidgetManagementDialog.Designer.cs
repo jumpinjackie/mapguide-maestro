@@ -31,13 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WidgetManagementDialog));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grdWidgets = new System.Windows.Forms.DataGridView();
-            this.COL_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.COL_TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnClose = new System.Windows.Forms.Button();
+            this.COL_DOCKABLE = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.COL_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.COL_TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblNonDockableNote = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdWidgets)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -57,6 +59,7 @@
             this.grdWidgets.AllowUserToDeleteRows = false;
             this.grdWidgets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdWidgets.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.COL_DOCKABLE,
             this.COL_NAME,
             this.COL_TYPE});
             resources.ApplyResources(this.grdWidgets, "grdWidgets");
@@ -66,21 +69,6 @@
             this.grdWidgets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdWidgets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdWidgets_CellClick);
             this.grdWidgets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdWidgets_CellClick);
-            // 
-            // COL_NAME
-            // 
-            this.COL_NAME.DataPropertyName = "Name";
-            resources.ApplyResources(this.COL_NAME, "COL_NAME");
-            this.COL_NAME.Name = "COL_NAME";
-            this.COL_NAME.ReadOnly = true;
-            // 
-            // COL_TYPE
-            // 
-            this.COL_TYPE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.COL_TYPE.DataPropertyName = "Type";
-            resources.ApplyResources(this.COL_TYPE, "COL_TYPE");
-            this.COL_TYPE.Name = "COL_TYPE";
-            this.COL_TYPE.ReadOnly = true;
             // 
             // toolStrip1
             // 
@@ -117,11 +105,39 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // COL_DOCKABLE
+            // 
+            this.COL_DOCKABLE.DataPropertyName = "IsDockable";
+            resources.ApplyResources(this.COL_DOCKABLE, "COL_DOCKABLE");
+            this.COL_DOCKABLE.Name = "COL_DOCKABLE";
+            this.COL_DOCKABLE.ReadOnly = true;
+            // 
+            // COL_NAME
+            // 
+            this.COL_NAME.DataPropertyName = "Name";
+            resources.ApplyResources(this.COL_NAME, "COL_NAME");
+            this.COL_NAME.Name = "COL_NAME";
+            this.COL_NAME.ReadOnly = true;
+            // 
+            // COL_TYPE
+            // 
+            this.COL_TYPE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.COL_TYPE.DataPropertyName = "Type";
+            resources.ApplyResources(this.COL_TYPE, "COL_TYPE");
+            this.COL_TYPE.Name = "COL_TYPE";
+            this.COL_TYPE.ReadOnly = true;
+            // 
+            // lblNonDockableNote
+            // 
+            resources.ApplyResources(this.lblNonDockableNote, "lblNonDockableNote");
+            this.lblNonDockableNote.Name = "lblNonDockableNote";
+            // 
             // WidgetManagementDialog
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.lblNonDockableNote);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -132,6 +148,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -144,8 +161,10 @@
         private System.Windows.Forms.ToolStripButton btnAdd;
         private System.Windows.Forms.ToolStripButton btnDelete;
         private System.Windows.Forms.DataGridView grdWidgets;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn COL_DOCKABLE;
         private System.Windows.Forms.DataGridViewTextBoxColumn COL_NAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn COL_TYPE;
+        private System.Windows.Forms.Label lblNonDockableNote;
 
     }
 }

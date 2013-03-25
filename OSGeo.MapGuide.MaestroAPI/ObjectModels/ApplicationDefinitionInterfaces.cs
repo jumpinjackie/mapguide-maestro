@@ -527,12 +527,6 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         IUIItemContainer CreateContainer(string name, IApplicationDefinitionContainerInfo containerInfo);
 
         /// <summary>
-        /// Gets an array of the names of widgets that can be referenced from a toolbar or menu
-        /// </summary>
-        /// <returns></returns>
-        string[] GetAllReferenceableWidgetNames();
-
-        /// <summary>
         /// Creates a map widget
         /// </summary>
         /// <param name="mapId"></param>
