@@ -387,7 +387,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <returns></returns>
         public static ResourceTypes GetResourceType(string identifier)
         {
-            return (ResourceTypes)Enum.Parse(typeof(ResourceTypes), GetExtension(identifier));
+            var ext = GetExtension(identifier);
+            if (ext == "Map") //NOXLATE
+                return ResourceTypes.RuntimeMap;
+            else
+                return (ResourceTypes)Enum.Parse(typeof(ResourceTypes), ext);
         }
 
         /// <summary>
