@@ -361,13 +361,13 @@ namespace Maestro.MapViewer
 
         public TreeNode[] CreateNodes()
         {
-            List<TreeNode> output = new List<TreeNode>();
-            var nodesById = new Dictionary<string, TreeNode>();
-
+            List<TreeNode> topLevelNodes = new List<TreeNode>();
             var scale = _map.ViewScale;
             if (scale < 10.0)
-                return output.ToArray();
+                return topLevelNodes.ToArray();
 
+            var nodesById = new Dictionary<string, TreeNode>();
+            var groupsById = new Dictionary<string, TreeNode>();
             var groups = _map.Groups;
             var layers = _map.Layers;
 
@@ -381,7 +381,7 @@ namespace Maestro.MapViewer
                 if (!_legend.ShowAllLayersAndGroups && !group.ShowInLegend)
                     continue;
 
-                //Add ones without parents first.
+                //Add ones without parents first. Queue up child groups
                 if (!string.IsNullOrEmpty(group.Group))
                 {
                     remainingNodes.Add(group);
@@ -389,13 +389,16 @@ namespace Maestro.MapViewer
                 else
                 {
                     var node = CreateGroupNode(group);
-                    output.Add(node);
+                    topLevelNodes.Add(node);
                     nodesById.Add(group.ObjectId, node);
+                    groupsById.Add(group.ObjectId, node);
                 }
 
+                //Process child groups
                 while (remainingNodes.Count > 0)
                 {
                     List<RuntimeMapGroup> toRemove = new List<RuntimeMapGroup>();
+                    //Establish parent-child relationships for any child groups here
                     for (int j = 0; j < remainingNodes.Count; j++)
                     {
                         var grpName = remainingNodes[j].Group;
@@ -404,6 +407,12 @@ namespace Maestro.MapViewer
                         {
                             var node = CreateGroupNode(remainingNodes[j]);
                             nodesById[parentGroup.ObjectId].Nodes.Add(node);
+
+                            //Got to add this group node too, otherwise we could infinite
+                            //loop looking for a parent that's not registered
+                            nodesById.Add(group.ObjectId, node);
+                            groupsById.Add(group.ObjectId, node);
+
                             toRemove.Add(remainingNodes[j]);
                         }
                     }
@@ -487,8 +496,13 @@ namespace Maestro.MapViewer
                 Trace.TraceInformation("CreateNodes: {0} layer contents added, {1} layer contents updated", added, updated);
             }
 
+            //Now create our layer nodes
             List<RuntimeMapLayer> remainingLayers = new List<RuntimeMapLayer>();
-            for (int i = 0; i < layers.Count; i++)
+            //NOTE: We're taking a page out of the Fusion playbook of reverse iterating the layer
+            //collection and prepending the nodes, as this control suffered the same problem as the
+            //Legend widget in Fusion. Doing it this way eliminates the need for doing an extra pass to fix
+            //the layer/group ordering, which may make an impact on really chunky maps.
+            for (int i = layers.Count - 1; i >= 0; i--)
             {
                 var layer = layers[i];
 
@@ -500,7 +514,7 @@ namespace Maestro.MapViewer
                 if (!_legend.ShowAllLayersAndGroups && !visible)
                     continue;
 
-                //Add ones without parents first.
+                //Add ones without parents first. Queue up parented layers
                 if (!string.IsNullOrEmpty(layer.Group))
                 {
                     remainingLayers.Add(layer);
@@ -510,17 +524,18 @@ namespace Maestro.MapViewer
                     var node = CreateLayerNode(layer);
                     if (node != null)
                     {
-                        output.Add(node);
+                        topLevelNodes.Insert(0, node);
                         nodesById.Add(layer.ObjectId, node);
                         if (layer.ExpandInLegend)
                             node.Expand();
                     }
                 }
 
+                //Process parented layers
                 while (remainingLayers.Count > 0)
                 {
                     List<RuntimeMapLayer> toRemove = new List<RuntimeMapLayer>();
-                    for (int j = 0; j < remainingLayers.Count; j++)
+                    for (int j = remainingLayers.Count - 1; j >= 0; j--)
                     {
                         var grpName = remainingLayers[j].Group;
                         var parentGroup = _map.Groups[grpName];
@@ -529,7 +544,7 @@ namespace Maestro.MapViewer
                             var node = CreateLayerNode(remainingLayers[j]);
                             if (node != null)
                             {
-                                nodesById[parentGroup.ObjectId].Nodes.Add(node);
+                                nodesById[parentGroup.ObjectId].Nodes.Insert(0, node);
                                 if (remainingLayers[j].ExpandInLegend)
                                     node.Expand();
                             }
@@ -561,7 +576,7 @@ namespace Maestro.MapViewer
                 }
             }
             Trace.TraceInformation("{0} calls made to GenerateLegendImage", legendCallCount);
-            return output.ToArray();
+            return topLevelNodes.ToArray();
         }
 
         private static bool IsThemeLayerNode(TreeNode node)
