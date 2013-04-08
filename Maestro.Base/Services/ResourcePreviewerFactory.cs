@@ -292,17 +292,24 @@ namespace Maestro.Base.Services
                 }
             };
             Action<object, Exception> onComplete = (result, ex) => {
-                var urlResult = result as UrlPreviewResult;
-                var imgResult = result as ImagePreviewResult;
-                if (urlResult != null)
+                if (ex != null)
                 {
-                    var url = urlResult.Url;
-                    var launcher = ServiceRegistry.GetService<UrlLauncherService>();
-                    launcher.OpenUrl(url);
+                    ErrorDialog.Show(ex);
                 }
-                else if (imgResult != null)
+                else
                 {
-                    new SymbolPreviewDialog(imgResult.ImagePreview).Show(null);
+                    var urlResult = result as UrlPreviewResult;
+                    var imgResult = result as ImagePreviewResult;
+                    if (urlResult != null)
+                    {
+                        var url = urlResult.Url;
+                        var launcher = ServiceRegistry.GetService<UrlLauncherService>();
+                        launcher.OpenUrl(url);
+                    }
+                    else if (imgResult != null)
+                    {
+                        new SymbolPreviewDialog(imgResult.ImagePreview).Show(null);
+                    }
                 }
             };
             BusyWaitDialog.Run(Strings.PrgPreparingResourcePreview, worker, onComplete);

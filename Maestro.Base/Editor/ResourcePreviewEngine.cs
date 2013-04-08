@@ -255,10 +255,9 @@ namespace Maestro.Base.Editor
 
             var sessionId = _edSvc.SessionID;
             var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".WebLayout"; //NOXLATE
-            var wl = (IWebLayout)res;
-            var conn = wl.CurrentConnection;
+            var conn = res.CurrentConnection;
 
-            conn.ResourceService.SaveResourceAs(wl, resId);
+            conn.ResourceService.SaveResourceAs(res, resId);
             url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionId + "&LOCALE=" + GetLocale(locale); //NOXLATE
 
             return url;
