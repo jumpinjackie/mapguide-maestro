@@ -646,7 +646,22 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
 
         string IWidget.ToXml()
         {
-            return this.Serialize();
+            string xml = this.Serialize();
+            //HACK: It currently escapes me why we're getting junk whitespace for extension elements
+            //but this will clean them out.
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(xml);
+            var settings = new XmlWriterSettings()
+            {
+                Indent = true
+            };
+            using (var stringWriter = new System.IO.StringWriter())
+            using (var xmlTextWriter = XmlWriter.Create(stringWriter, settings))
+            {
+                doc.WriteTo(xmlTextWriter);
+                xmlTextWriter.Flush();
+                return stringWriter.GetStringBuilder().ToString();
+            }
         }
     }
 

@@ -38,6 +38,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
         public GenericWidgetCtrl()
         {
             InitializeComponent();
+            txtXmlContent.SetHighlighting("XML"); //NOXLATE
         }
 
         private string _xml;

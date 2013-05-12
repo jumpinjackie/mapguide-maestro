@@ -147,42 +147,6 @@
     <value>3</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="txtXmlContent.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="txtXmlContent.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Courier New, 9pt</value>
-  </data>
-  <data name="txtXmlContent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 27</value>
-  </data>
-  <data name="txtXmlContent.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="txtXmlContent.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
-    <value>Both</value>
-  </data>
-  <data name="txtXmlContent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>397, 347</value>
-  </data>
-  <data name="txtXmlContent.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="txtXmlContent.WordWrap" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;txtXmlContent.Name" xml:space="preserve">
-    <value>txtXmlContent</value>
-  </data>
-  <data name="&gt;&gt;txtXmlContent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtXmlContent.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;txtXmlContent.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="btnSave.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
@@ -211,7 +175,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="btnWidgetInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -241,6 +205,30 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnWidgetInfo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="txtXmlContent.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="txtXmlContent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 27</value>
+  </data>
+  <data name="txtXmlContent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>396, 347</value>
+  </data>
+  <data name="txtXmlContent.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;txtXmlContent.Name" xml:space="preserve">
+    <value>txtXmlContent</value>
+  </data>
+  <data name="&gt;&gt;txtXmlContent.Type" xml:space="preserve">
+    <value>ICSharpCode.TextEditor.TextEditorControl, ICSharpCode.TextEditor, Version=4.2.0.8783, Culture=neutral, PublicKeyToken=4d61825e8dd49f1a</value>
+  </data>
+  <data name="&gt;&gt;txtXmlContent.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;txtXmlContent.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
