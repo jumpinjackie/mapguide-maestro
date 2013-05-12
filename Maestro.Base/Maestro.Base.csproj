@@ -98,6 +98,7 @@
     <Compile Include="Commands\LiveMapEditorCommand.cs" />
     <Compile Include="Commands\OpenResourceIdCommand.cs" />
     <Compile Include="Commands\RtMapInspectorCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\CreateLayersFromFeatureSourceCommand.cs" />
     <Compile Include="Commands\SiteExplorer\EditResourceHeaderCommand.cs" />
     <Compile Include="Commands\LoadPackageCommand.cs" />
     <Compile Include="Commands\LocalFeatureSourcePreviewCommand.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Commands\SiteExplorer\ResourcePropertiesCommand.cs" />
     <Compile Include="Commands\SiteExplorer\SetupFolderStructureCommand.cs" />
     <Compile Include="Commands\SiteExplorer\ShowSpatialContextsCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\TestFeatureSourceCommand.cs" />
     <Compile Include="Commands\SiteExplorer\ValidateCommand.cs" />
     <Compile Include="Commands\StartupCommand.cs" />
     <Compile Include="Commands\SiteExplorer\TestResourceCompatibilityCommand.cs" />

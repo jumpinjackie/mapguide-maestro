@@ -1461,4 +1461,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="Func_URLENCODE_StringValueDescription" xml:space="preserve">
     <value>String to URL encode</value>
   </data>
+  <data name="LoadingFeatureClasses" xml:space="preserve">
+    <value>Loading Feature Classes</value>
+  </data>
 </root>

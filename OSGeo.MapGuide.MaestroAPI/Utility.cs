@@ -112,6 +112,17 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
+        /// Checks if the given result is a successful test connection result
+        /// </summary>
+        /// <param name="sResult"></param>
+        /// <returns></returns>
+        public static bool IsSuccessfulConnectionTestResult(string sResult)
+        {
+            //LocalNativeConnection returns this string, so I'm assuming this is the "success" result
+            return (sResult == "No errors" || sResult.ToLower() == "true"); //NOXLATE
+        }
+
+        /// <summary>
         /// Parses a color in HTML notation (ea. #ffaabbff)
         /// </summary>
         /// <param name="color">The HTML representation of the color</param>
@@ -1073,6 +1084,83 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         const string RESERVED_CHARS = "\\:*?\"<>|&'%=/";
+
+        /// <summary>
+        /// Creates a default Layer Definition from the given Class Definition
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="fsId"></param>
+        /// <param name="clsDef"></param>
+        /// <param name="targetFolder"></param>
+        /// <returns></returns>
+        public static string CreateDefaultLayer(IServerConnection conn, string fsId, ClassDefinition clsDef, string targetFolder)
+        {
+            GeometricPropertyDefinition geom = null;
+            //Try designated
+            if (!string.IsNullOrEmpty(clsDef.DefaultGeometryPropertyName))
+            {
+                geom = clsDef.FindProperty(clsDef.DefaultGeometryPropertyName) as GeometricPropertyDefinition;
+            }
+            //Try first geom property
+            if (geom == null)
+            {
+                foreach (PropertyDefinition pd in clsDef.Properties)
+                {
+                    if (pd.Type == PropertyDefinitionType.Geometry)
+                    {
+                        geom = (GeometricPropertyDefinition)pd;
+                        break;
+                    }
+                }
+            }
+            //Can't proceed without a geometry
+            if (geom == null)
+                return null;
+
+            //Compute target resource id
+            var prefix = targetFolder;
+            if (!prefix.EndsWith("/")) //NOXLATE
+                prefix += "/";
+            var lyrId = prefix + clsDef.Name + ".LayerDefinition"; //NOXLATE
+
+            int counter = 0;
+            while (conn.ResourceService.ResourceExists(lyrId))
+            {
+                counter++;
+                lyrId = prefix + clsDef.Name + "(" + counter + ").LayerDefinition"; //NOXLATE
+            }
+
+            var ld = ObjectFactory.CreateDefaultLayer(conn, LayerType.Vector, new Version(1, 0, 0));
+
+            //Assign default properties
+            ld.ResourceID = lyrId;
+            var vld = ld.SubLayer as IVectorLayerDefinition;
+            vld.ResourceId = fsId;
+            vld.FeatureName = clsDef.QualifiedName;
+            vld.Geometry = geom.Name;
+
+            //Infer geometry storage support and remove unsupported styles
+            var scale = vld.GetScaleRangeAt(0);
+            var geomTypes = geom.GetIndividualGeometricTypes();
+            var remove = new List<string>();
+            if (Array.IndexOf(geomTypes, FeatureGeometricType.Point) < 0)
+            {
+                remove.Add(FeatureGeometricType.Point.ToString().ToLower());
+            }
+            if (Array.IndexOf(geomTypes, FeatureGeometricType.Curve) < 0)
+            {
+                remove.Add(FeatureGeometricType.Curve.ToString().ToLower());
+            }
+            if (Array.IndexOf(geomTypes, FeatureGeometricType.Surface) < 0)
+            {
+                remove.Add(FeatureGeometricType.Surface.ToString().ToLower());
+            }
+
+            scale.RemoveStyles(remove);
+            conn.ResourceService.SaveResource(ld);
+
+            return lyrId;
+        }
 
         /// <summary>
         /// Generates a unique layer name for a given vector rule

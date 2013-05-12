@@ -549,6 +549,13 @@
                           class="Maestro.Base.Commands.SiteExplorer.PurgeFeatureSourceCacheCommand" />
             </Condition>
             <Condition action="Disable" name="ResourceType" types="FeatureSource">
+                <MenuItem id="TestFeatureSource"
+                          label="${res:SiteExplorer_TestFeatureSource}"
+                          icon="tick"
+                          class="Maestro.Base.Commands.SiteExplorer.TestFeatureSourceCommand" />
+                <MenuItem id="CreateLayersFromFeatureSource"
+                          label="${res:SiteExplorer_CreateLayersFromFeatureSource}"
+                          class="Maestro.Base.Commands.SiteExplorer.CreateLayersFromFeatureSourceCommand" />
                 <MenuItem id="ShowSpatialContexts"
                           label="${res:SiteExplorer_ShowSpatialContexts}"
                           class="Maestro.Base.Commands.SiteExplorer.ShowSpatialContextsCommand" />

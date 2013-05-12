@@ -328,8 +328,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                             //Step 3: Test to make sure we're all good so far
                             string result = this.Parent.FeatureService.TestConnection(fsId);
 
-                            //LocalNativeConnection returns this string, so I'm assuming this is the "success" result
-                            if (result == "No errors" || result.ToLower() == "true") //NOXLATE
+                            if (Utility.IsSuccessfulConnectionTestResult(result))
                             {
                                 //Step 4: Test to see if default cs needs to be specified
                                 FdoSpatialContextList spatialContexts = this.Parent.FeatureService.GetSpatialContextInfo(fsId, false);

@@ -992,4 +992,16 @@ Error message: {0}</value>
   <data name="FailedToCalculateFeatureSourceExtents" xml:space="preserve">
     <value>Could not calculate the extents of the Feature Source. Preview is not possible</value>
   </data>
+  <data name="SiteExplorer_CreateLayersFromFeatureSource" xml:space="preserve">
+    <value>Create Layers from Feature Source</value>
+  </data>
+  <data name="SiteExplorer_TestFeatureSource" xml:space="preserve">
+    <value>Test Feature Source Connection</value>
+  </data>
+  <data name="ConnectionTestFailed" xml:space="preserve">
+    <value>Connection Test Failed: {0}</value>
+  </data>
+  <data name="ConnectionTestOk" xml:space="preserve">
+    <value>Connection Test OK</value>
+  </data>
 </root>
