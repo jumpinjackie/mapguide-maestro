@@ -45,6 +45,7 @@ using OSGeo.MapGuide.MaestroAPI.Feature;
 using System.Drawing;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
+using System.Diagnostics;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -455,50 +456,174 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 		public override void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback)
 		{
+            //Protect against session expired
+            if (this.m_autoRestartSession && m_username != null && m_password != null)
+                this.DownloadData(m_reqBuilder.GetSiteVersion());
 
-#if DEBUG_LASTMESSAGE
-			using (System.IO.Stream s = System.IO.File.Open("lastSaveData.bin", System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
-				Utility.CopyStream(stream, s);
-#endif
-			if (stream.CanSeek)
-				stream.Position = 0;
+            //Use the old code path if stream is under 50MB (implying seekable too)
+            if (stream.CanSeek && stream.Length < 50 * 1024 * 1024)
+            {
+    #if DEBUG_LASTMESSAGE
+			    using (System.IO.Stream s = System.IO.File.Open("lastSaveData.bin", System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
+				    Utility.CopyStream(stream, s);
+    #endif
+                    if (stream.CanSeek)
+                        stream.Position = 0;
 
-			System.IO.MemoryStream outStream = new System.IO.MemoryStream();
-#if DEBUG_LASTMESSAGE
-			try 
-			{
-#endif
-				System.Net.WebRequest req = m_reqBuilder.SetResourceData(resourceid, dataname, datatype, outStream, stream, callback);
-                req.Credentials = _cred;
-				outStream.Position = 0;
-				
-				//Protect against session expired
-				if (this.m_autoRestartSession && m_username != null && m_password != null)
-					this.DownloadData(m_reqBuilder.GetSiteVersion());
+                    System.IO.MemoryStream outStream = new System.IO.MemoryStream();
+    #if DEBUG_LASTMESSAGE
+			    try 
+			    {
+    #endif
+                    System.Net.WebRequest req = m_reqBuilder.SetResourceData(resourceid, dataname, datatype, outStream, stream, callback);
+                    req.Credentials = _cred;
+                    outStream.Position = 0;
 
-				//TODO: We need a progress bar for the upload....
-				req.Timeout = 1000 * 60 * 15;
-				using(System.IO.Stream rs = req.GetRequestStream())
-				{
-					Utility.CopyStream(outStream, rs);
-					rs.Flush();
-				}
-				using (System.IO.Stream resp = req.GetResponse().GetResponseStream())
-				{
-					//Do nothing... there is no return value
-				}
-#if DEBUG_LASTMESSAGE
-			} 
-			catch 
-			{
-				using (System.IO.Stream s = System.IO.File.OpenWrite("lastPost.txt"))
-					Utility.CopyStream(outStream, s);
+                    //TODO: We need a progress bar for the upload....
+                    req.Timeout = 1000 * 60 * 15;
+                    using (System.IO.Stream rs = req.GetRequestStream())
+                    {
+                        Utility.CopyStream(outStream, rs);
+                        rs.Flush();
+                    }
+                    using (System.IO.Stream resp = req.GetResponse().GetResponseStream())
+                    {
+                        //Do nothing... there is no return value
+                    }
+    #if DEBUG_LASTMESSAGE
+			    } 
+			    catch 
+			    {
+				    using (System.IO.Stream s = System.IO.File.OpenWrite("lastPost.txt"))
+					    Utility.CopyStream(outStream, s);
 
-				throw;
-			}
-#endif
-					
+				    throw;
+			    }
+    #endif
+            }
+            else
+            {
+                //Dump to temp file
+                string tmp = Path.GetTempFileName();
+                try
+                {
+                    using (var fw = File.OpenWrite(tmp))
+                    {
+                        Utility.CopyStream(stream, fw);
+                    }
+                    var fi = new FileInfo(tmp);
+                    NameValueCollection nvc = m_reqBuilder.SetResourceDataParams(resourceid, dataname, datatype);
+                    nvc.Add("DATALENGTH", fi.Length.ToString());
+                    HttpUploadFile(m_reqBuilder.HostURI, tmp, "DATA", "application/octet-stream", nvc, callback);
+                }
+                finally
+                {
+                    if (File.Exists(tmp))
+                    {
+                        try
+                        {
+                            File.Delete(tmp);
+                            Debug.WriteLine("Deleted: " + tmp);
+                        }
+                        catch { }
+                    }
+                }
+            }
 		}
+        
+        //Source: http://stackoverflow.com/questions/566462/upload-files-with-httpwebrequest-multipart-form-data
+        private void HttpUploadFile(string url, string file, string paramName, string contentType, NameValueCollection nvc, Utility.StreamCopyProgressDelegate callback)
+        {
+            Debug.WriteLine(string.Format("Uploading {0} to {1}", file, url));
+            string boundary = "---------------------------" + DateTime.Now.Ticks.ToString("x");
+            string formdataTemplate = "Content-Disposition: form-data; name=\"{0}\"\r\n\r\n{1}";
+            string headerTemplate = "Content-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\nContent-Type: {2}\r\n\r\n";
+
+            byte[] boundarybytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");
+            byte[] trailer = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "--\r\n");
+
+            HttpWebRequest wr = (HttpWebRequest)WebRequest.Create(url);
+            wr.ContentType = "multipart/form-data; boundary=" + boundary;
+            wr.Method = "POST";
+            //DO NOT BUFFER. Otherwise this will still OOM on really large files
+            wr.AllowWriteStreamBuffering = false;
+            wr.KeepAlive = true;
+            wr.Credentials = _cred;
+
+            //Pre-compute request body size
+            {
+                long contentLength = 0L;
+                foreach (string key in nvc.Keys)
+                {
+                    string formitem = string.Format(formdataTemplate, key, nvc[key]);
+                    byte[] formitembytes = System.Text.Encoding.ASCII.GetBytes(formitem);
+                    contentLength += formitembytes.Length;
+                    contentLength += boundarybytes.Length;
+                }
+                contentLength += boundarybytes.Length;
+                string header = string.Format(headerTemplate, paramName, file, contentType);
+                byte[] headerbytes = System.Text.Encoding.ASCII.GetBytes(header);
+                contentLength += headerbytes.Length;
+                var fi = new FileInfo(file);
+                contentLength += fi.Length;
+                contentLength += trailer.Length;
+
+                wr.ContentLength = contentLength;
+            }
+
+            using (Stream rs = wr.GetRequestStream())
+            {
+                foreach (string key in nvc.Keys)
+                {
+                    rs.Write(boundarybytes, 0, boundarybytes.Length);
+                    string formitem = string.Format(formdataTemplate, key, nvc[key]);
+                    byte[] formitembytes = System.Text.Encoding.ASCII.GetBytes(formitem);
+                    rs.Write(formitembytes, 0, formitembytes.Length);
+                }
+                rs.Write(boundarybytes, 0, boundarybytes.Length);
+
+                string header = string.Format(headerTemplate, paramName, file, contentType);
+                byte[] headerbytes = System.Text.Encoding.ASCII.GetBytes(header);
+                rs.Write(headerbytes, 0, headerbytes.Length);
+
+                FileStream fileStream = new FileStream(file, FileMode.Open, FileAccess.Read);
+                /*
+                byte[] buffer = new byte[4096];
+                int bytesRead = 0;
+                while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) != 0)
+                {
+                    rs.Write(buffer, 0, bytesRead);
+                }
+                */
+                Utility.CopyStream(fileStream, rs, callback, 1024);
+                fileStream.Close();
+
+                rs.Write(trailer, 0, trailer.Length);
+                rs.Close();
+
+                WebResponse wresp = null;
+                try
+                {
+                    wresp = wr.GetResponse();
+                    Stream stream2 = wresp.GetResponseStream();
+                    StreamReader reader2 = new StreamReader(stream2);
+                    Debug.WriteLine(string.Format("File uploaded, server response is: {0}", reader2.ReadToEnd()));
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("Error uploading file", ex);
+                    if (wresp != null)
+                    {
+                        wresp.Close();
+                        wresp = null;
+                    }
+                }
+                finally
+                {
+                    wr = null;
+                }
+            }
+        }
 
         public override void SetResourceXmlData(string resourceid, System.IO.Stream content, System.IO.Stream header)
         {
