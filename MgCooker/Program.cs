@@ -225,16 +225,6 @@ namespace MgCooker
             
 
             BatchSettings bx = new BatchSettings(connection);
-            if (!string.IsNullOrEmpty(scaleindex))
-            {
-                List<int> scales = new List<int>();
-                int tmp;
-                foreach (string s in scaleindex.Split(','))
-                    if (int.TryParse(s, out tmp))
-                        scales.Add(tmp);
-                bx.SetScales(scales.ToArray());
-            }
-
             if (!string.IsNullOrEmpty(basegroups))
             {
                 List<string> groups = new List<string>();
@@ -280,6 +270,16 @@ namespace MgCooker
 
             //Now that all global parameters are set, we can now add the map definitions
             bx.AddMapDefinitions(maps);
+
+            if (!string.IsNullOrEmpty(scaleindex))
+            {
+                List<int> scales = new List<int>();
+                int tmp;
+                foreach (string s in scaleindex.Split(','))
+                    if (int.TryParse(s, out tmp))
+                        scales.Add(tmp);
+                bx.SetScales(scales.ToArray());
+            }
 
             if (overrideExtents != null)
                 foreach (BatchMap bm in bx.Maps)

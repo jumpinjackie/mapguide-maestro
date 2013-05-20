@@ -10,6 +10,7 @@
     - Indicate which widgets are dockable
 	- Filter out un-dockable widgets when prompting the user for the widget to attach to a toolbar/container
  - Support for new Resampling Method paramter in GDAL Feature Source editor
+ - Fix: Custom scale indexes passed in from command-line ignored by MgCooker
  - Fix: Dependency list compilation failure on Flexible Layout documents
  - Fix: OutOfMemoryException on HTTP SETRESOURCEDATA calls involving really large files
  - Fix: Exceptions during resource preview generation not being shown
