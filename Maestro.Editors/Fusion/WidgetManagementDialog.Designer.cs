@@ -31,18 +31,28 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WidgetManagementDialog));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grdWidgets = new System.Windows.Forms.DataGridView();
+            this.COL_DOCKABLE = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.COL_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.COL_TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.COL_DOCKABLE = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.COL_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.COL_TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblNonDockableNote = new System.Windows.Forms.Label();
+            this.tabWidgets = new System.Windows.Forms.TabControl();
+            this.TAB_MAP_WIDGET = new System.Windows.Forms.TabPage();
+            this.txtMapWidgetXml = new ICSharpCode.TextEditor.TextEditorControl();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.btnSaveMapWidgetXml = new System.Windows.Forms.ToolStripButton();
+            this.TAB_OTHER_WIDGETS = new System.Windows.Forms.TabPage();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdWidgets)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            this.tabWidgets.SuspendLayout();
+            this.TAB_MAP_WIDGET.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
+            this.TAB_OTHER_WIDGETS.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -69,6 +79,28 @@
             this.grdWidgets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdWidgets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdWidgets_CellClick);
             this.grdWidgets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdWidgets_CellClick);
+            // 
+            // COL_DOCKABLE
+            // 
+            this.COL_DOCKABLE.DataPropertyName = "IsDockable";
+            resources.ApplyResources(this.COL_DOCKABLE, "COL_DOCKABLE");
+            this.COL_DOCKABLE.Name = "COL_DOCKABLE";
+            this.COL_DOCKABLE.ReadOnly = true;
+            // 
+            // COL_NAME
+            // 
+            this.COL_NAME.DataPropertyName = "Name";
+            resources.ApplyResources(this.COL_NAME, "COL_NAME");
+            this.COL_NAME.Name = "COL_NAME";
+            this.COL_NAME.ReadOnly = true;
+            // 
+            // COL_TYPE
+            // 
+            this.COL_TYPE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.COL_TYPE.DataPropertyName = "Type";
+            resources.ApplyResources(this.COL_TYPE, "COL_TYPE");
+            this.COL_TYPE.Name = "COL_TYPE";
+            this.COL_TYPE.ReadOnly = true;
             // 
             // toolStrip1
             // 
@@ -105,48 +137,78 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // COL_DOCKABLE
-            // 
-            this.COL_DOCKABLE.DataPropertyName = "IsDockable";
-            resources.ApplyResources(this.COL_DOCKABLE, "COL_DOCKABLE");
-            this.COL_DOCKABLE.Name = "COL_DOCKABLE";
-            this.COL_DOCKABLE.ReadOnly = true;
-            // 
-            // COL_NAME
-            // 
-            this.COL_NAME.DataPropertyName = "Name";
-            resources.ApplyResources(this.COL_NAME, "COL_NAME");
-            this.COL_NAME.Name = "COL_NAME";
-            this.COL_NAME.ReadOnly = true;
-            // 
-            // COL_TYPE
-            // 
-            this.COL_TYPE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.COL_TYPE.DataPropertyName = "Type";
-            resources.ApplyResources(this.COL_TYPE, "COL_TYPE");
-            this.COL_TYPE.Name = "COL_TYPE";
-            this.COL_TYPE.ReadOnly = true;
-            // 
             // lblNonDockableNote
             // 
             resources.ApplyResources(this.lblNonDockableNote, "lblNonDockableNote");
             this.lblNonDockableNote.Name = "lblNonDockableNote";
+            // 
+            // tabWidgets
+            // 
+            resources.ApplyResources(this.tabWidgets, "tabWidgets");
+            this.tabWidgets.Controls.Add(this.TAB_MAP_WIDGET);
+            this.tabWidgets.Controls.Add(this.TAB_OTHER_WIDGETS);
+            this.tabWidgets.Name = "tabWidgets";
+            this.tabWidgets.SelectedIndex = 0;
+            this.tabWidgets.SelectedIndexChanged += new System.EventHandler(this.tabWidgets_SelectedIndexChanged);
+            this.tabWidgets.TabIndexChanged += new System.EventHandler(this.tabWidgets_TabIndexChanged);
+            // 
+            // TAB_MAP_WIDGET
+            // 
+            this.TAB_MAP_WIDGET.Controls.Add(this.txtMapWidgetXml);
+            this.TAB_MAP_WIDGET.Controls.Add(this.toolStrip2);
+            resources.ApplyResources(this.TAB_MAP_WIDGET, "TAB_MAP_WIDGET");
+            this.TAB_MAP_WIDGET.Name = "TAB_MAP_WIDGET";
+            this.TAB_MAP_WIDGET.UseVisualStyleBackColor = true;
+            // 
+            // txtMapWidgetXml
+            // 
+            resources.ApplyResources(this.txtMapWidgetXml, "txtMapWidgetXml");
+            this.txtMapWidgetXml.IsReadOnly = false;
+            this.txtMapWidgetXml.Name = "txtMapWidgetXml";
+            this.txtMapWidgetXml.TextChanged += new System.EventHandler(this.txtMapWidgetXml_TextChanged);
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnSaveMapWidgetXml});
+            resources.ApplyResources(this.toolStrip2, "toolStrip2");
+            this.toolStrip2.Name = "toolStrip2";
+            // 
+            // btnSaveMapWidgetXml
+            // 
+            resources.ApplyResources(this.btnSaveMapWidgetXml, "btnSaveMapWidgetXml");
+            this.btnSaveMapWidgetXml.Image = global::Maestro.Editors.Properties.Resources.disk;
+            this.btnSaveMapWidgetXml.Name = "btnSaveMapWidgetXml";
+            this.btnSaveMapWidgetXml.Click += new System.EventHandler(this.btnSaveMapWidgetXml_Click);
+            // 
+            // TAB_OTHER_WIDGETS
+            // 
+            this.TAB_OTHER_WIDGETS.Controls.Add(this.groupBox1);
+            this.TAB_OTHER_WIDGETS.Controls.Add(this.groupBox2);
+            resources.ApplyResources(this.TAB_OTHER_WIDGETS, "TAB_OTHER_WIDGETS");
+            this.TAB_OTHER_WIDGETS.Name = "TAB_OTHER_WIDGETS";
+            this.TAB_OTHER_WIDGETS.UseVisualStyleBackColor = true;
             // 
             // WidgetManagementDialog
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.tabWidgets);
             this.Controls.Add(this.lblNonDockableNote);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Name = "WidgetManagementDialog";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdWidgets)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.tabWidgets.ResumeLayout(false);
+            this.TAB_MAP_WIDGET.ResumeLayout(false);
+            this.TAB_MAP_WIDGET.PerformLayout();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
+            this.TAB_OTHER_WIDGETS.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,6 +227,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn COL_NAME;
         private System.Windows.Forms.DataGridViewTextBoxColumn COL_TYPE;
         private System.Windows.Forms.Label lblNonDockableNote;
+        private System.Windows.Forms.TabControl tabWidgets;
+        private System.Windows.Forms.TabPage TAB_MAP_WIDGET;
+        private System.Windows.Forms.TabPage TAB_OTHER_WIDGETS;
+        private ICSharpCode.TextEditor.TextEditorControl txtMapWidgetXml;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripButton btnSaveMapWidgetXml;
 
     }
 }

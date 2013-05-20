@@ -25,6 +25,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
+using System.Xml;
 
 namespace Maestro.Editors.Fusion
 {
@@ -59,14 +60,25 @@ namespace Maestro.Editors.Fusion
             _context = context;
             _edsvc = edsvc;
             grdWidgets.DataSource = _items;
-
+            txtMapWidgetXml.SetHighlighting("XML"); //NOXLATE
             var wset = appDef.GetFirstWidgetSet();
+            SetupMapWidget(wset.MapWidget);
             foreach (var wgt in wset.Widgets)
             {
                 AddWidgetItem(wgt);
             }
 
             this.Disposed += new EventHandler(OnDisposed);
+        }
+
+        private IMapWidget _mapWidget;
+        private string _initMapXml;
+
+        private void SetupMapWidget(IMapWidget mapWidget)
+        {
+            _mapWidget = mapWidget;
+            _initMapXml = _mapWidget.ToXml();
+            txtMapWidgetXml.Text = _initMapXml;
         }
 
         void OnDisposed(object sender, EventArgs e)
@@ -163,6 +175,100 @@ namespace Maestro.Editors.Fusion
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void tabWidgets_TabIndexChanged(object sender, EventArgs e)
+        {
+            lblNonDockableNote.Visible = (tabWidgets.SelectedIndex == 1);
+        }
+
+        private void txtMapWidgetXml_TextChanged(object sender, EventArgs e)
+        {
+            btnSaveMapWidgetXml.Enabled = !(txtMapWidgetXml.Text.Equals(_initMapXml));
+        }
+
+        private void btnSaveMapWidgetXml_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(txtMapWidgetXml.Text);
+
+                //Base widget properties
+                XmlNode node = doc.SelectSingleNode("//WidgetType/Name"); //NOXLATE
+                if (node != null)
+                    _mapWidget.Name = node.InnerText;
+
+                node = doc.SelectSingleNode("//WidgetType/Type"); //NOXLATE
+                if (node != null)
+                    _mapWidget.Type = node.InnerText;
+
+                node = doc.SelectSingleNode("//WidgetType/Location"); //NOXLATE
+                if (node != null)
+                    _mapWidget.Location = node.InnerText;
+
+                node = doc.SelectSingleNode("//WidgetType/MapId"); //NOXLATE
+                if (node != null)
+                    _mapWidget.MapId = node.InnerText;
+
+                //Extension elements
+                node = doc.SelectSingleNode("//WidgetType/Extension"); //NOXLATE
+                if (node != null)
+                {
+                    List<XmlElement> elements = new List<XmlElement>();
+                    //foreach (XmlNode child in node.ChildNodes)
+                    for (int i = 0; i < node.ChildNodes.Count; i++)
+                    {
+                        var el = doc.CreateElement(node.ChildNodes[i].Name);
+                        el.InnerXml = node.ChildNodes[i].InnerXml;
+                        elements.Add(el);
+                    }
+                    _mapWidget.Extension.Content = elements.ToArray();
+                }
+
+                //If a UI widget, set its properties
+                var uiw = _mapWidget as IUIWidget;
+                if (uiw != null)
+                {
+                    node = doc.SelectSingleNode("//WidgetType/StatusItem"); //NOXLATE
+                    if (node != null)
+                        uiw.StatusText = node.InnerText;
+
+                    node = doc.SelectSingleNode("//WidgetType/ImageUrl"); //NOXLATE
+                    if (node != null)
+                        uiw.ImageUrl = node.InnerText;
+
+                    node = doc.SelectSingleNode("//WidgetType/ImageClass"); //NOXLATE
+                    if (node != null)
+                        uiw.ImageClass = node.InnerText;
+
+                    node = doc.SelectSingleNode("//WidgetType/Tooltip"); //NOXLATE
+                    if (node != null)
+                        uiw.Tooltip = node.InnerText;
+
+                    node = doc.SelectSingleNode("//WidgetType/Label"); //NOXLATE
+                    if (node != null)
+                        uiw.Label = node.InnerText;
+
+                    node = doc.SelectSingleNode("//WidgetType/Disabled"); //NOXLATE
+                    if (node != null)
+                        uiw.Disabled = node.InnerText;
+                }
+
+                MessageBox.Show(Strings.WidgetUpdated);
+
+                _initMapXml = _mapWidget.ToXml();
+                txtMapWidgetXml.Text = _initMapXml;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void tabWidgets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblNonDockableNote.Visible = (tabWidgets.SelectedIndex == 1);
         }
     }
 }

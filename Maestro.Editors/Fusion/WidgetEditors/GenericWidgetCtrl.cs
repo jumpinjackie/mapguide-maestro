@@ -123,7 +123,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
                     if (node != null)
                         uiw.Label = node.InnerText;
 
-                    node = doc.SelectSingleNode("//Widget/Disabled"); //NOXLATE
+                    node = doc.SelectSingleNode("//WidgetType/Disabled"); //NOXLATE
                     if (node != null)
                         uiw.Disabled = node.InnerText;
                 }
