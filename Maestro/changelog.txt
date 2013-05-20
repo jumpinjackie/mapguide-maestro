@@ -1,4 +1,30 @@
-﻿5.0 Beta 5
+﻿5.0 RC1
+-------
+ - New context menu command to create default layers from a Feature Source
+ - New context menu command to test a Feature Source connection
+ - All specialized Fusion widget editors removed. All widget editing is through XML
+ - Fusion editor enhancements:
+    - Using ICSharpCode.TextEditor for all XML editing functionality
+	- Fix errant whitespace in widget XML
+    - Basic XML editor support for the Map Widget
+    - Indicate which widgets are dockable
+	- Filter out un-dockable widgets when prompting the user for the widget to attach to a toolbar/container
+ - Support for new Resampling Method paramter in GDAL Feature Source editor
+ - Fix: Dependency list compilation failure on Flexible Layout documents
+ - Fix: OutOfMemoryException on HTTP SETRESOURCEDATA calls involving really large files
+ - Fix: Exceptions during resource preview generation not being shown
+ - Fix: Support WebLayout previews for versions not recognized/supported by Maestro
+ - Fix: Infinite loop in MapViewer legend due to nested group structure
+ - Fix: Layer/Group presentation order in MapViewer legend
+ - Fix: XML editor crash on Ctrl+C due to un-assigned font
+ - Fix: 64-bit ODBC driver flag not set if ODBC connection string references a known 64-bit driver
+ - Fix: Group parentage not being assigned when creating a RuntimeMap
+ - Fix: No legend label for layers not visible in the legend in RtMapInspector
+ - Fix: Display of nested groups in RtMapInspector
+ - Fix: Cannot parse geometry WKT with Z or M coordinates
+ - Fix: "EPSG:" not prepended to epsg codes in WFS metadata tab
+
+5.0 Beta 5
 ----------
 
 - First 5.0 release with a matching SDK. Consult the SDK changelog for overview of changes
