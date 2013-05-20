@@ -136,18 +136,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 _featureSourceId = vl.ResourceId;
                 _filter = vl.Filter;
                 InitIdentityProperties(vl);
+                InitScaleRanges(vl);
                 _hasTooltips = !string.IsNullOrEmpty(vl.ToolTip);
-                if (vl.HasVectorScaleRanges())
-                {
-                    int vsrCount = vl.GetScaleRangeCount();
-                    _scaleRanges = new double[vsrCount * 2];
-                    for (int i = 0; i < vsrCount; i++)
-                    {
-                        var vsr = vl.GetScaleRangeAt(i);
-                        _scaleRanges[i * 2] = vsr.MinScale.HasValue ? vsr.MinScale.Value : 0;
-                        _scaleRanges[i * 2 + 1] = vsr.MaxScale.HasValue ? vsr.MaxScale.Value : InfinityScale;
-                    }
-                }
             }
             else if (ldf.SubLayer.LayerType == LayerType.Raster)
             {
@@ -155,22 +145,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 _qualifiedClassName = rl.FeatureName;
                 _geometryPropertyName = rl.Geometry;
                 _featureSourceId = rl.ResourceId;
-
-                if (rl.GridScaleRangeCount > 0)
-                {
-                    _scaleRanges = new double[rl.GridScaleRangeCount * 2];
-                    int i = 0;
-                    foreach (var gsr in rl.GridScaleRange)
-                    {
-                        _scaleRanges[i * 2] = gsr.MinScale.HasValue ? gsr.MinScale.Value : 0;
-                        _scaleRanges[i * 2 + 1] = gsr.MaxScale.HasValue ? gsr.MaxScale.Value : InfinityScale;
-                        i++;
-                    }
-                }
+                InitScaleRanges(rl);
             }
             else if (ldf.SubLayer.LayerType == LayerType.Drawing)
             {
                 _featureSourceId = ldf.SubLayer.ResourceId;
+                var dl = ((IDrawingLayerDefinition)ldf.SubLayer);
+                _scaleRanges = new double[] 
+                {
+                    dl.MinScale,
+                    dl.MaxScale 
+                };
+                EnsureOrderedMinMaxScales();
             }
 
             _expandInLegend = false;
@@ -179,8 +165,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             _selectable = true;
             _showInLegend = true;
             _visible = true;
-
-            EnsureOrderedMinMaxScales();
         }
 
         /// <summary>
@@ -208,6 +192,44 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             _disableChangeTracking = true;
             Initialize(ldf);
             _disableChangeTracking = false;
+        }
+
+        private void InitScaleRanges(IRasterLayerDefinition rl)
+        {
+            List<double> scales = new List<double>();
+            foreach (var gsr in rl.GridScaleRange)
+            {
+                if (gsr.MinScale.HasValue)
+                    scales.Add(gsr.MinScale.Value);
+                else
+                    scales.Add(0.0);
+
+                if (gsr.MaxScale.HasValue)
+                    scales.Add(gsr.MaxScale.Value);
+                else
+                    scales.Add(InfinityScale);
+            }
+            _scaleRanges = scales.ToArray();
+            EnsureOrderedMinMaxScales();
+        }
+
+        private void InitScaleRanges(IVectorLayerDefinition vl)
+        {
+            List<double> scales = new List<double>();
+            foreach (var vsr in vl.VectorScaleRange)
+            {
+                if (vsr.MinScale.HasValue)
+                    scales.Add(vsr.MinScale.Value);
+                else
+                    scales.Add(0.0);
+
+                if (vsr.MaxScale.HasValue)
+                    scales.Add(vsr.MaxScale.Value);
+                else
+                    scales.Add(InfinityScale);
+            }
+            _scaleRanges = scales.ToArray();
+            EnsureOrderedMinMaxScales();
         }
 
         /// <summary>

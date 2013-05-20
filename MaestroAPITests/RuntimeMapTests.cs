@@ -173,6 +173,12 @@ namespace MaestroAPITests
             var map2 = mapSvc.CreateMap("Session:" + _conn.SessionID + "//TestCreate2.Map", "Library://UnitTests/Maps/Sheboygan.MapDefinition", 1.0);
             //var map3 = mapSvc.CreateMap("Library://UnitTests/Maps/Sheboygan.MapDefinition", 1.0);
 
+            Assert.NotNull(map.Layers["Parcels"]);
+            var parcelsLayers = map.Layers["Parcels"];
+            Assert.AreEqual(1, parcelsLayers.ScaleRanges.Length);
+            Assert.AreEqual(0.0, parcelsLayers.ScaleRanges[0].MinScale);
+            Assert.AreEqual(13000.0, parcelsLayers.ScaleRanges[0].MaxScale);
+
             Assert.NotNull(map);
             Assert.NotNull(map2);
             //Assert.NotNull(map3);
@@ -259,6 +265,11 @@ namespace MaestroAPITests
 
             //Tweak some settings
             var parcels = map2.Layers["Parcels"];
+            //Check these values still came through
+            Assert.AreEqual(1, parcels.ScaleRanges.Length);
+            Assert.AreEqual(0.0, parcels.ScaleRanges[0].MinScale);
+            Assert.AreEqual(13000.0, parcels.ScaleRanges[0].MaxScale);
+
             var rail = map2.Layers["Rail"];
             Assert.NotNull(parcels);
 
