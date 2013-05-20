@@ -59,7 +59,8 @@ namespace Maestro.Base.Commands.SiteExplorer
                 doc.Load(s);
 
                 var matches = Utility.GetResourceIdPointers(doc);
-                return matches.Select(x => x.Value);
+                //Need to weed out any empty results.
+                return matches.Select(x => x.Value).Where(x => !string.IsNullOrEmpty(x));
             }
         }
 
