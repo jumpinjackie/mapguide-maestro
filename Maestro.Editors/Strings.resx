@@ -1464,4 +1464,46 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="LoadingFeatureClasses" xml:space="preserve">
     <value>Loading Feature Classes</value>
   </data>
+  <data name="Desc_GetExtents" xml:space="preserve">
+    <value>Displays the current map extents</value>
+  </data>
+  <data name="Desc_GetMapKml" xml:space="preserve">
+    <value>Gets the current map as a KML document</value>
+  </data>
+  <data name="Desc_ZoomToScale" xml:space="preserve">
+    <value>Zoom to a specified scale</value>
+  </data>
+  <data name="FailedToCalculateFeatureSourceExtents" xml:space="preserve">
+    <value>Could not calculate the extents of the Feature Source. Preview is not possible</value>
+  </data>
+  <data name="Label_ExtraTools" xml:space="preserve">
+    <value>Extra Tools</value>
+  </data>
+  <data name="Label_GetExtents" xml:space="preserve">
+    <value>Get Extents</value>
+  </data>
+  <data name="Label_GetMapKml" xml:space="preserve">
+    <value>Get KML</value>
+  </data>
+  <data name="Label_Tools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="Label_ZoomToScale" xml:space="preserve">
+    <value>Zoom to Scale</value>
+  </data>
+  <data name="PreviewMap" xml:space="preserve">
+    <value>Preview Map</value>
+  </data>
+  <data name="PrgPreparingResourcePreview" xml:space="preserve">
+    <value>Preparing resource preview</value>
+  </data>
+  <data name="SiteVersionDoesntSupportWatermarks" xml:space="preserve">
+    <value>The site version of this current connection is not known to support watermarks</value>
+  </data>
+  <data name="UnpreviewableResourceType" xml:space="preserve">
+    <value>The resource type cannot be previewed</value>
+  </data>
+  <data name="NoRegisteredPreviewerForProvider" xml:space="preserve">
+    <value>No registered previewer for connection: {0}</value>
+  </data>
 </root>

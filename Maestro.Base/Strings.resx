@@ -272,15 +272,6 @@ Many thanks to the following people who have translated Maestro into other langu
   <data name="DefaultSymbolName" xml:space="preserve">
     <value>MySymbol</value>
   </data>
-  <data name="Desc_GetExtents" xml:space="preserve">
-    <value>Displays the current map extents</value>
-  </data>
-  <data name="Desc_GetMapKml" xml:space="preserve">
-    <value>Gets the current map as a KML document</value>
-  </data>
-  <data name="Desc_ZoomToScale" xml:space="preserve">
-    <value>Zoom to a specified scale</value>
-  </data>
   <data name="DwfHandlerAction" xml:space="preserve">
     <value>Create a Drawing Source</value>
   </data>
@@ -355,21 +346,6 @@ Many thanks to the following people who have translated Maestro into other langu
   </data>
   <data name="KeepAliveFailed" xml:space="preserve">
     <value>Failed to keep session ({0}) alive. This would happen if connectivity to the MapGuide Server has been lost (it has been stopped or restarted). Refresh the Site Explorer to create a new session. Also close any existing editors and re-open them.</value>
-  </data>
-  <data name="Label_ExtraTools" xml:space="preserve">
-    <value>Extra Tools</value>
-  </data>
-  <data name="Label_GetExtents" xml:space="preserve">
-    <value>Get Extents</value>
-  </data>
-  <data name="Label_GetMapKml" xml:space="preserve">
-    <value>Get KML</value>
-  </data>
-  <data name="Label_Tools" xml:space="preserve">
-    <value>Tools</value>
-  </data>
-  <data name="Label_ZoomToScale" xml:space="preserve">
-    <value>Zoom to Scale</value>
   </data>
   <data name="LayerSubTypeNotSupported" xml:space="preserve">
     <value>Could not determine the sub-layer type or this type is not currently supported</value>
@@ -529,12 +505,6 @@ Many thanks to the following people who have translated Maestro into other langu
   </data>
   <data name="Prefs_General" xml:space="preserve">
     <value>General</value>
-  </data>
-  <data name="PreviewMap" xml:space="preserve">
-    <value>Preview Map</value>
-  </data>
-  <data name="PrgPreparingResourcePreview" xml:space="preserve">
-    <value>Preparing resource preview</value>
   </data>
   <data name="PrgPreSaveValidation" xml:space="preserve">
     <value>Performing pre-save validation...
@@ -794,9 +764,6 @@ Error message: {0}</value>
   <data name="SiteExplorer_ValidateResources" xml:space="preserve">
     <value>Validate</value>
   </data>
-  <data name="SiteVersionDoesntSupportWatermarks" xml:space="preserve">
-    <value>The site version of this current connection is not known to support watermarks</value>
-  </data>
   <data name="SITE_EXPLORER_TOOLTIP_TEMPLATE" xml:space="preserve">
     <value>Resource Name: {1}{0}Resource Type: {2}{0}Created: {3}{0}Last Modified: {4}{0}Owner: {5}</value>
   </data>
@@ -929,9 +896,6 @@ Error message: {0}</value>
   <data name="TPL_WL_NAME" xml:space="preserve">
     <value>Web Layout (v1.0.0)</value>
   </data>
-  <data name="UnpreviewableResourceType" xml:space="preserve">
-    <value>The resource type cannot be previewed</value>
-  </data>
   <data name="UpdatedOpenEditor" xml:space="preserve">
     <value>Open editor updated to {0}</value>
   </data>
@@ -974,23 +938,11 @@ Error message: {0}</value>
   <data name="ErrorNoActiveConnection" xml:space="preserve">
     <value>No Active Connection</value>
   </data>
-  <data name="Label_Go" xml:space="preserve">
-    <value>Go</value>
-  </data>
-  <data name="Label_ResourceID" xml:space="preserve">
-    <value>Resource ID:</value>
-  </data>
-  <data name="Label_OpenResource" xml:space="preserve">
-    <value>Open this resource</value>
-  </data>
   <data name="SiteExplorer_SelectedItem_CompileDependencyList" xml:space="preserve">
     <value>Compile Full Dependency List</value>
   </data>
   <data name="ConfirmDeleteFolders" xml:space="preserve">
     <value>You about to delete one or more folders which may contain dependent resources. Are you sure you want to proceed with delete?</value>
-  </data>
-  <data name="FailedToCalculateFeatureSourceExtents" xml:space="preserve">
-    <value>Could not calculate the extents of the Feature Source. Preview is not possible</value>
   </data>
   <data name="SiteExplorer_CreateLayersFromFeatureSource" xml:space="preserve">
     <value>Create Layers from Feature Source</value>
@@ -1003,5 +955,14 @@ Error message: {0}</value>
   </data>
   <data name="ConnectionTestOk" xml:space="preserve">
     <value>Connection Test OK</value>
+  </data>
+  <data name="Label_Go" xml:space="preserve">
+    <value>Go</value>
+  </data>
+  <data name="Label_OpenResource" xml:space="preserve">
+    <value>Open this resource</value>
+  </data>
+  <data name="Label_ResourceID" xml:space="preserve">
+    <value>Resource ID:</value>
   </data>
 </root>

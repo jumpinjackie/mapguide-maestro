@@ -70,14 +70,15 @@ namespace Maestro.Editors.Common
         /// </summary>
         /// <param name="resSvc"></param>
         /// <param name="bFoldersOnly"></param>
-        public void Init(IResourceService resSvc, bool bFoldersOnly)
+        /// <param name="bOmitEmptyFolders"></param>
+        public void Init(IResourceService resSvc, bool bFoldersOnly, bool bOmitEmptyFolders)
         {
             if (_model != null)
             {
                 _model.ItemSelected -= OnItemSelectedInternal;
             }
 
-            _model = new RepositoryFolderTreeModel(resSvc, trvRepository, bFoldersOnly);
+            _model = new RepositoryFolderTreeModel(resSvc, trvRepository, bFoldersOnly, bOmitEmptyFolders);
             _model.ItemSelected += OnItemSelectedInternal; 
         }
 

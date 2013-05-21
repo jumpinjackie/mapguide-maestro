@@ -29,6 +29,7 @@ using ICSharpCode.Core;
 using System.Windows.Forms;
 using Maestro.Shared.UI;
 using Maestro.Base.UI.Preferences;
+using Maestro.Editors.Preview;
 
 namespace Maestro.Base.Events
 {
@@ -43,12 +44,28 @@ namespace Maestro.Base.Events
             _keepAliveTimer.Tick += OnKeepAliveTimerElapsed;
             var svc = ServiceRegistry.GetService<ServerConnectionManager>();
             Debug.Assert(svc != null);
+            PropertyService.PropertyChanged += OnAppPropertyChanged;
 
             svc.ConnectionAdded += new ServerConnectionEventHandler(OnConnectionAdded);
             svc.ConnectionRemoved += new ServerConnectionEventHandler(OnConnectionRemoved);
 
             LoggingService.Info("Starting session keep-alive timer"); //NOXLATE
             _keepAliveTimer.Start();
+        }
+
+        private static void OnAppPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case ConfigProperties.UseLocalPreview:
+                    PreviewSettings.UseLocalPreview = Convert.ToBoolean(e.NewValue);
+                    LoggingService.Info("Use Local Preview setting is now: " + PreviewSettings.UseLocalPreview); //NOXLATE
+                    break;
+                case ConfigProperties.PreviewViewerType:
+                    PreviewSettings.UseAjaxViewer = (e.NewValue.ToString() == "AJAX"); //NOXLATE
+                    LoggingService.Info("Use AJAX Viewer setting is now: " + PreviewSettings.UseAjaxViewer);
+                    break;
+            }
         }
 
         static bool smShowingError = false;

@@ -30,6 +30,7 @@ using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using Maestro.Editors;
+using Maestro.Editors.Preview;
 
 namespace Maestro.AddIn.Local.Services
 {

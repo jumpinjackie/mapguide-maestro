@@ -43,20 +43,27 @@ namespace Maestro.Editors.MapDefinition
         public LiveMapEditorRepositoryView()
         {
             InitializeComponent();
+            _editableTypes = new HashSet<ResourceTypes>();
         }
+
+        private HashSet<ResourceTypes> _editableTypes;
 
         /// <summary>
         /// Initializes this view
         /// </summary>
-        /// <param name="resSvc"></param>
-        /// <param name="filteredTypes"></param>
-        public void Init(IResourceService resSvc, ResourceTypes[] filteredTypes)
+        /// <param name="resSvc">The resource service</param>
+        /// <param name="visibleType">An array of resource types that will be visible</param>
+        /// <param name="editableTypes">An array of resource types that are editable when selected</param>
+        public void Init(IResourceService resSvc, ResourceTypes[] visibleType, ResourceTypes[] editableTypes)
         {
-            repoView.Init(resSvc, false);
+            _editableTypes.Clear();
+            foreach (var rt in editableTypes)
+                _editableTypes.Add(rt);
+            repoView.Init(resSvc, false, true);
             repoView.ClearResourceTypeFilters();
-            if (filteredTypes != null)
+            if (visibleType != null)
             {
-                foreach (var rt in filteredTypes)
+                foreach (var rt in visibleType)
                 {
                     repoView.AddResourceTypeFilter(rt);
                 }
@@ -108,12 +115,18 @@ namespace Maestro.Editors.MapDefinition
         private void repoView_ItemSelected(object sender, EventArgs e)
         {
             var item = repoView.SelectedItem;
-            var condition = (item != null && !item.IsFolder && (item.ResourceType == ResourceTypes.LayerDefinition));
-            btnAddToMap.Enabled = btnEdit.Enabled = condition;
+            var condition = (item != null && !item.IsFolder);
+            btnAddToMap.Enabled = condition && (item.ResourceType == ResourceTypes.LayerDefinition);
+            btnEdit.Enabled = condition && IsEditableType(item.ResourceType);
             btnRefresh.Enabled = !condition;
             var h = this.ItemSelected;
             if (h != null)
                 h(this, EventArgs.Empty);
+        }
+
+        private bool IsEditableType(ResourceTypes rt)
+        {
+            return _editableTypes.Contains(rt);
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

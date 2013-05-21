@@ -32,6 +32,7 @@ using Maestro.Editors.Common;
 using Maestro.Base.UI;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+using Maestro.Editors.Preview;
 
 namespace Maestro.Base.Editor
 {

@@ -1,5 +1,5 @@
 ﻿#region Disclaimer / License
-// Copyright (C) 2010, Jackie Ng
+// Copyright (C) 2013, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
 // This library is free software; you can redistribute it and/or
@@ -17,24 +17,22 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 #endregion
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
+using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using Maestro.Editors;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using Maestro.Base.UI.Preferences;
-using ICSharpCode.Core;
-using OSGeo.MapGuide.ObjectModels.MapDefinition;
-using OSGeo.MapGuide.ObjectModels.WebLayout;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
-using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 
-namespace Maestro.Base.Editor
+namespace Maestro.Editors.Preview
 {
-    internal class ResourcePreviewEngine
+    public class ResourcePreviewEngine
     {
         private string _rootUrl;
         private IEditorService _edSvc;
@@ -81,7 +79,8 @@ namespace Maestro.Base.Editor
                 layerName = ResourceIdentifier.GetName(_edSvc.ResourceID);
 
             var mdf = CreateLayerPreviewMapDefinition(ldf, sessionId, layerName, conn);
-            if (PropertyService.Get(ConfigProperties.PreviewViewerType, "AJAX").Equals("AJAX")) //NOXLATE
+            //if (PropertyService.Get(ConfigProperties.PreviewViewerType, "AJAX").Equals("AJAX")) //NOXLATE
+            if (PreviewSettings.UseAjaxViewer)
             {
                 //Create temp web layout to house this map
                 var wl = ObjectFactory.CreateWebLayout(_edSvc.GetEditedResource().CurrentConnection, new Version(1, 0, 0), mdf.ResourceID);
@@ -177,7 +176,7 @@ namespace Maestro.Base.Editor
             cmd3.ImageURL = "../stdicons/icon_invokescript.gif"; //NOXLATE
 
             wl.CommandSet.AddCommand(cmd3);
-            
+
             var zoomScale = wl.CreateCommandItem(cmd.Name);
             var menu = wl.CreateFlyout(Strings.Label_Tools, Strings.Label_Tools, Strings.Label_ExtraTools, string.Empty, string.Empty,
                 wl.CreateCommandItem("ZoomScale"), //NOXLATE
@@ -219,7 +218,8 @@ namespace Maestro.Base.Editor
             var conn = mdf.CurrentConnection;
             conn.ResourceService.SaveResourceAs(mdf, mdfId);
 
-            if (PropertyService.Get(ConfigProperties.PreviewViewerType, "AJAX").Equals("AJAX")) //NOXLATE
+            //if (PropertyService.Get(ConfigProperties.PreviewViewerType, "AJAX").Equals("AJAX")) //NOXLATE
+            if (PreviewSettings.UseAjaxViewer)
             {
                 //Create temp web layout to house this map
                 var wl = ObjectFactory.CreateWebLayout(_edSvc.GetEditedResource().CurrentConnection, new Version(1, 0, 0), mdfId);
@@ -274,7 +274,7 @@ namespace Maestro.Base.Editor
             var appDef = (IApplicationDefinition)res;
             var conn = appDef.CurrentConnection;
             var resId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".ApplicationDefinition"; //NOXLATE
-            
+
             conn.ResourceService.SaveResourceAs(appDef, resId);
             url += appDef.TemplateUrl + "?Session=" + sessionId + "&ApplicationDefinition=" + resId + "&locale=" + GetLocale(locale); //NOXLATE
             return url;

@@ -23,11 +23,21 @@ using System.Linq;
 using System.Windows.Forms;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.ExtendedObjectModels;
+using Maestro.Editors.Preview;
+using System.Diagnostics;
 
 namespace Maestro.LiveMapEditor
 {
     static class Program
     {
+        class OurUrlLauncher : IUrlLauncherService
+        {
+            public void OpenUrl(string url)
+            {
+                Process.Start(url);
+            }
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -38,6 +48,13 @@ namespace Maestro.LiveMapEditor
             Application.EnableVisualStyles();
             Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
             Application.SetCompatibleTextRenderingDefault(false);
+
+            //Register previewers
+            var urlLauncher = new OurUrlLauncher();
+            ResourcePreviewerFactory.RegisterPreviewer("Maestro.Http", new LocalMapPreviewer(new DefaultResourcePreviewer(urlLauncher), urlLauncher)); //NOXLATE
+            //A stub previewer does nothing, but will use local map previews for applicable resources if the configuration
+            //property is set
+            ResourcePreviewerFactory.RegisterPreviewer("Maestro.LocalNative", new LocalMapPreviewer(new StubPreviewer(), urlLauncher)); //NOXLATE
 
             var login = new Login.LoginDialog();
             if (login.ShowDialog() == DialogResult.OK)

@@ -1,4 +1,4 @@
-﻿namespace Maestro.Base.UI
+﻿namespace Maestro.Editors.Preview
 {
     partial class MapPreviewDialog
     {

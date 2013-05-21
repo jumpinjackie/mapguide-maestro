@@ -1,5 +1,5 @@
 ﻿#region Disclaimer / License
-// Copyright (C) 2010, Jackie Ng
+// Copyright (C) 2013, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
 // This library is free software; you can redistribute it and/or
@@ -17,39 +17,33 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 #endregion
+using OSGeo.MapGuide.MaestroAPI.Resource;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using ICSharpCode.Core;
-using System.Diagnostics;
-using Maestro.Base.UI;
-using OSGeo.MapGuide.MaestroAPI;
-using Maestro.Shared.UI;
-using Maestro.Editors.Preview;
 
-namespace Maestro.Base.Services
+namespace Maestro.Editors.Preview
 {
     /// <summary>
-    /// An application-level service for launching URLs
+    /// A previewer that does nothing. Primarily used to connect to a <see cref="T:Maestro.Editors.Preview.LocalMapPreviewer"/> when
+    /// a non-local preview method does not exist
     /// </summary>
-    public class UrlLauncherService : ServiceBase, IUrlLauncherService
+    public class StubPreviewer : IResourcePreviewer
     {
-        /// <summary>
-        /// Initializes this instance
-        /// </summary>
-        public override void Initialize()
+        public bool IsPreviewable(IResource res)
         {
-            base.Initialize();
-            LoggingService.Info(Strings.Service_Init_Url_Launcher);
+            return false;
         }
 
-        /// <summary>
-        /// Opens the specified url using the system default web browser
-        /// </summary>
-        /// <param name="url">The url to open</param>
-        public void OpenUrl(string url)
+        public void Preview(IResource res, IEditorService edSvc)
         {
-            Process.Start(url);
+
+        }
+
+        public void Preview(IResource res, IEditorService edSvc, string locale)
+        {
+
         }
     }
 }

@@ -27,6 +27,7 @@ using System.IO;
 using Maestro.Base.Services;
 using Maestro.AddIn.Local.Services;
 using OSGeo.MapGuide;
+using Maestro.Editors.Preview;
 
 namespace Maestro.AddIn.Local.Commands
 {

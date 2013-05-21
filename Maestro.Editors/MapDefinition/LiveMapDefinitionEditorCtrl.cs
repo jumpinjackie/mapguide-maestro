@@ -90,6 +90,11 @@ namespace Maestro.Editors.MapDefinition
         private IMapDefinition _shadowCopy;
         private IMappingService _mapSvc;
 
+        public RuntimeMap Map
+        {
+            get { return _rtMap; }
+        }
+
         /// <summary>
         /// Binds the specified editor service to this editor
         /// </summary>
@@ -103,7 +108,11 @@ namespace Maestro.Editors.MapDefinition
             _mapSvc = (IMappingService)_shadowCopy.CurrentConnection.GetService((int)ServiceType.Mapping);
             _rtMap = _mapSvc.CreateMap(_shadowCopy);
             repoView.Init(service.ResourceService, new ResourceTypes[] {
-                ResourceTypes.LayerDefinition
+                ResourceTypes.LayerDefinition,
+                ResourceTypes.FeatureSource
+            }, new ResourceTypes[] {
+                ResourceTypes.LayerDefinition,
+                ResourceTypes.FeatureSource
             });
 
             viewer.LoadMap(_rtMap);
@@ -156,7 +165,10 @@ namespace Maestro.Editors.MapDefinition
 
         private void repoView_RequestEdit(object sender, EventArgs e)
         {
-            MessageBox.Show(Strings.FeatureNotImplemented);
+            var res = repoView.SelectedItem;
+
+            var ed = new Maestro.Editors.Common.EditorWindow(_shadowCopy.CurrentConnection, res.ResourceId);
+            ed.ShowDialog();
         }
 
         private void repoView_ItemSelected(object sender, EventArgs e)
@@ -166,6 +178,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void repoView_ItemDrag(object sender, ItemDragEventArgs e)
         {
+            viewer.ActiveTool = MapViewer.MapActiveTool.None;
             var item = repoView.SelectedItem;
             if (item != null && !item.IsFolder)
                 repoView.DoDragDrop(new ResourceDragMessage(item.ResourceId), DragDropEffects.Copy);
@@ -184,6 +197,11 @@ namespace Maestro.Editors.MapDefinition
         private void legendCtrl_DragDrop(object sender, DragEventArgs e)
         {
             legendCtrl.HandleDragDrop(e);
+        }
+
+        private void legendCtrl_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            legendCtrl.HandleItemDrag(e);
         }
     }
 }

@@ -37,6 +37,7 @@ using System.Xml.Schema;
 using Maestro.Base.UI.Preferences;
 using Maestro.Base.Services;
 using Maestro.Editors.Common;
+using Maestro.Editors.Preview;
 
 namespace Maestro.Base.Editor
 {

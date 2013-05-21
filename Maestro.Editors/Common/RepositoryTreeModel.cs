@@ -100,15 +100,20 @@ namespace Maestro.Editors.Common
             _tree.Cursor = Cursors.Default;
         }
 
+        private bool _bOmitEmptyFolders;
+
         private bool _bFoldersOnly;
 
         public bool FoldersOnly { get { return _bFoldersOnly; } }
 
-        public RepositoryFolderTreeModel(IResourceService resSvc, TreeView tree, bool bFoldersOnly)
+        public bool OmitEmptyFolders { get { return _bOmitEmptyFolders; } }
+
+        public RepositoryFolderTreeModel(IResourceService resSvc, TreeView tree, bool bFoldersOnly, bool bOmitEmptyFolders)
         {
             _resSvc = resSvc;
             _tree = tree;
             _bFoldersOnly = bFoldersOnly;
+            _bOmitEmptyFolders = bOmitEmptyFolders;
 
             _tree.AfterExpand += new TreeViewEventHandler(OnNodeAfterExpand);
             _tree.AfterSelect += new TreeViewEventHandler(OnNodeAfterSelect);
@@ -189,6 +194,9 @@ namespace Maestro.Editors.Common
             SortedList<string, RepositoryModelItem> docs = new SortedList<string, RepositoryModelItem>();
             foreach (var item in list.Children)
             {
+                if (item.IsFolder && !item.HasChildren && this.OmitEmptyFolders)
+                    continue;
+
                 if (item.IsFolder)
                     folders.Add(item.ResourceId, new RepositoryModelItem(item));
                 else if (!HasFilteredTypes() || (HasFilteredTypes() && IsFilteredType(item.ResourceType)))

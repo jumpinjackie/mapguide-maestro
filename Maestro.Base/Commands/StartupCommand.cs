@@ -31,6 +31,7 @@ using Props = ICSharpCode.Core.PropertyService;
 using Maestro.Base.UI.Preferences;
 using System.Windows.Forms;
 using Maestro.Shared.UI;
+using Maestro.Editors.Preview;
 
 namespace Maestro.Base.Commands
 {
@@ -40,14 +41,18 @@ namespace Maestro.Base.Commands
         {
             ResourceService.RegisterNeutralImages(Properties.Resources.ResourceManager);
             ResourceService.RegisterNeutralStrings(Strings.ResourceManager);
-
-            ResourcePreviewerFactory.RegisterPreviewer("Maestro.Http", new DefaultResourcePreviewer()); //NOXLATE
-            //A stub previewer does nothing, but will use local map previews for applicable resources if the configuration
-            //property is set
-            ResourcePreviewerFactory.RegisterPreviewer("Maestro.LocalNative", new StubPreviewer()); //NOXLATE
             
             Workbench.WorkbenchInitialized += (sender, e) =>
             {
+                PreviewSettings.UseAjaxViewer = PropertyService.Get(ConfigProperties.PreviewViewerType, "AJAX") == "AJAX"; //NOXLATE
+                PreviewSettings.UseLocalPreview = PropertyService.Get(ConfigProperties.UseLocalPreview, ConfigProperties.DefaultUseLocalPreview);
+
+                var urlLauncher = ServiceRegistry.GetService<UrlLauncherService>();
+                ResourcePreviewerFactory.RegisterPreviewer("Maestro.Http", new LocalMapPreviewer(new DefaultResourcePreviewer(urlLauncher), urlLauncher)); //NOXLATE
+                //A stub previewer does nothing, but will use local map previews for applicable resources if the configuration
+                //property is set
+                ResourcePreviewerFactory.RegisterPreviewer("Maestro.LocalNative", new LocalMapPreviewer(new StubPreviewer(), urlLauncher)); //NOXLATE
+
                 ServiceRegistry.GetService<NewItemTemplateService>().InitUserTemplates();
                 var wb = Workbench.Instance;
                 wb.FormClosing += new System.Windows.Forms.FormClosingEventHandler(OnWorkbenchClosing);

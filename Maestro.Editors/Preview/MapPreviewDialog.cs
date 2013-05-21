@@ -1,5 +1,5 @@
 ﻿#region Disclaimer / License
-// Copyright (C) 2012, Jackie Ng
+// Copyright (C) 2013, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
 // This library is free software; you can redistribute it and/or
@@ -17,7 +17,6 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 #endregion
-using Maestro.Base.Services;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
 using System;
@@ -30,7 +29,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Maestro.Base.UI
+namespace Maestro.Editors.Preview
 {
     internal partial class MapPreviewDialog : Form
     {

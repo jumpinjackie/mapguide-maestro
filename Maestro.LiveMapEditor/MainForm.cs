@@ -124,8 +124,9 @@ namespace Maestro.LiveMapEditor
 
         private void DoSave()
         {
-            _mapEditor.SyncMap();
-            _mapEditor.EditorService.Save();
+            _mapEditor.SyncMap();                       //RuntimeMap to IMapDefinition
+            _mapEditor.EditorService.SyncSessionCopy(); //IMapDefinition to session-copy
+            _mapEditor.EditorService.Save();            //Session-copy to original resource
             EvaluateCommandStates();
         }
 
@@ -135,8 +136,9 @@ namespace Maestro.LiveMapEditor
             {
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    _mapEditor.SyncMap();
-                    _mapEditor.EditorService.SaveAs(picker.ResourceID);
+                    _mapEditor.SyncMap();                               //RuntimeMap to IMapDefinition
+                    _mapEditor.EditorService.SyncSessionCopy();         //IMapDefinition to session-copy
+                    _mapEditor.EditorService.SaveAs(picker.ResourceID); //Session-copy to specified resource
                 }
             }
             EvaluateCommandStates();
@@ -182,6 +184,21 @@ namespace Maestro.LiveMapEditor
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new AboutDialog().ShowDialog();
+        }
+
+        private void runtimeMapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var form = new Form())
+            {
+                form.Text = "Runtime Map";
+                var propGrid = new PropertyGrid();
+                propGrid.Dock = DockStyle.Fill;
+                form.Controls.Add(propGrid);
+
+                propGrid.SelectedObject = _mapEditor.Map;
+
+                form.ShowDialog();
+            }
         }
     }
 }

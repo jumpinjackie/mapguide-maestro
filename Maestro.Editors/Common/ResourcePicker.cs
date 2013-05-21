@@ -79,7 +79,7 @@ namespace Maestro.Editors.Generic
             : this()
         {
             _resSvc = resSvc;
-            repoView.Init(resSvc, true);
+            repoView.Init(resSvc, true, false);
             repoView.ItemSelected += OnFolderSelected;
             this.UseFilter = true;
             this.Mode = mode;

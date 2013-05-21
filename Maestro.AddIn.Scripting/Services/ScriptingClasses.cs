@@ -35,6 +35,7 @@ using Maestro.AddIn.Scripting.UI;
 using Maestro.Editors.Generic;
 using Maestro.Base.Editor;
 using Microsoft.Scripting.Hosting.Providers;
+using Maestro.Editors.Preview;
 
 namespace Maestro.AddIn.Scripting.Services
 {

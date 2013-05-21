@@ -32,7 +32,7 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 namespace Maestro.Editors
 {
     /// <summary>
-    /// A base class for providing editor services
+    /// A base class for providing editor services for a given resource being edited
     /// </summary>
     public abstract class ResourceEditorServiceBase : IEditorService
     {
@@ -50,6 +50,17 @@ namespace Maestro.Editors
         /// </summary>
         /// <param name="resourceID">The resource ID.</param>
         /// <param name="conn">The conn.</param>
+        /// <remarks>
+        /// The editor service does not do live edits of the resource you pass in to this constructor
+        /// 
+        /// When an editor is modifying a resource, it is not modifying the resource you specify here. It is instead modifying a
+        /// session-based copy of the resource that is created internally by the editor service. On a save action (a call to 
+        /// <see cref="M:Maestro.Editors.ResourceEditorServiceBase.Save"/>), the session-based copy is copied back into the resource 
+        /// id you specified, overwriting its contents and data files.
+        /// 
+        /// This provides an extra level of safety against unintentional edits, as such edits will only apply to the session-copy, only
+        /// being committed back to the resource id you specified on an explicit save action.
+        /// </remarks>
         protected ResourceEditorServiceBase(string resourceID, IServerConnection conn)
         {
             this.IsNew = ResourceIdentifier.IsSessionBased(resourceID);

@@ -224,7 +224,11 @@ namespace Maestro.Editors.MapDefinition
         /// <summary>
         /// Raised when a drag occurs
         /// </summary>
-        public event ItemDragEventHandler ItemDrag;
+        public event ItemDragEventHandler ItemDrag
+        {
+            add { legendCtrl.ItemDrag += value; }
+            remove { legendCtrl.ItemDrag -= value; }
+        }
 
         internal void HandleDragDrop(DragEventArgs e)
         {
@@ -242,14 +246,22 @@ namespace Maestro.Editors.MapDefinition
                     {
                         if (groupMeta.Name != layer.GroupName)
                         {
-                            MessageBox.Show("Handle layer drop into (" + groupMeta.Name + ")");
+                            var map = this.Viewer.GetMap();
+                            var layerObj = map.Layers[layer.LayerName];
+                            layerObj.Group = groupMeta.Name;
+                            map.Save();
+                            this.legendCtrl.RefreshLegend(); //No viewer refresh. Group structure changes do not affect draw order
                         }
                     }
                     else if (group != null)
                     {
                         if (groupMeta.Name != group.GroupName)
                         {
-                            MessageBox.Show("Handle group drop into (" + groupMeta.Name + ")");
+                            var map = this.Viewer.GetMap();
+                            var groupObj = map.Groups[group.GroupName];
+                            groupObj.Group = groupMeta.Name;
+                            map.Save();
+                            this.legendCtrl.RefreshLegend(); //No viewer refresh. Group structure changes do not affect draw order
                         }
                     }
                     else if (res != null)
@@ -265,11 +277,19 @@ namespace Maestro.Editors.MapDefinition
             {
                 if (layer != null)
                 {
-                    MessageBox.Show("Handle layer drop into root");
+                    var map = this.Viewer.GetMap();
+                    var layerObj = map.Layers[layer.LayerName];
+                    layerObj.Group = string.Empty;
+                    map.Save();
+                    this.legendCtrl.RefreshLegend(); //No viewer refresh. Group structure changes do not affect draw order
                 }
                 else if (group != null)
                 {
-                    MessageBox.Show("Handle group drop into root");
+                    var map = this.Viewer.GetMap();
+                    var groupObj = map.Groups[group.GroupName];
+                    groupObj.Group = string.Empty;
+                    map.Save();
+                    this.legendCtrl.RefreshLegend(); //No viewer refresh. Group structure changes do not affect draw order
                 }
                 else if (res != null)
                 {
@@ -334,6 +354,24 @@ namespace Maestro.Editors.MapDefinition
         internal void HandleDragEnter(DragEventArgs e)
         {
             Trace.TraceInformation("HandleDragEnter(e)");
+        }
+
+        internal void HandleItemDrag(ItemDragEventArgs e)
+        {
+            var node = e.Item as TreeNode;
+            if (node != null)
+            {
+                var layerMeta = node.Tag as LayerNodeMetadata;
+                var groupMeta = node.Tag as GroupNodeMetadata;
+                if (layerMeta != null)
+                {
+                    this.DoDragDrop(new LayerDragMessage(layerMeta.ParentGroupName, layerMeta.Name), DragDropEffects.Copy);
+                }
+                else if (groupMeta != null)
+                {
+                    this.DoDragDrop(new GroupDragMessage(groupMeta.Name), DragDropEffects.Copy);
+                }
+            }
         }
     }
 }

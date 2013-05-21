@@ -102,6 +102,12 @@
     <Compile Include="Common\EditorBindableCollapsiblePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Common\EditorWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\EditorWindow.Designer.cs">
+      <DependentUpon>EditorWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\ExpressionEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -916,6 +922,20 @@
     <Compile Include="Packaging\PackageEditorDialog.designer.cs">
       <DependentUpon>PackageEditorDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Preview\DefaultResourcePreviewer.cs" />
+    <Compile Include="Preview\IResourcePreviewer.cs" />
+    <Compile Include="Preview\IUrlLauncherService.cs" />
+    <Compile Include="Preview\LocalMapPreviewer.cs" />
+    <Compile Include="Preview\MapPreviewDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Preview\MapPreviewDialog.Designer.cs">
+      <DependentUpon>MapPreviewDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preview\PreviewSettings.cs" />
+    <Compile Include="Preview\ResourcePreviewEngine.cs" />
+    <Compile Include="Preview\ResourcePreviewFactory.cs" />
+    <Compile Include="Preview\StubPreviewer.cs" />
     <Compile Include="PrintLayout\LogoDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1198,6 +1218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Common\EditorBindableCollapsiblePanel.resx">
       <DependentUpon>EditorBindableCollapsiblePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\EditorWindow.resx">
+      <DependentUpon>EditorWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Common\ExpressionEditor.resx">
       <DependentUpon>ExpressionEditor.cs</DependentUpon>
@@ -1618,6 +1641,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migration\MigrateDialog.resx">
       <DependentUpon>MigrateDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preview\MapPreviewDialog.resx">
+      <DependentUpon>MapPreviewDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintLayout\LogoDialog.resx">
       <DependentUpon>LogoDialog.cs</DependentUpon>
@@ -2242,6 +2268,7 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\document-search-result.png" />
     <None Include="Resources\arrow-split.png" />
     <None Include="Resources\folder-horizontal-open.png" />
     <None Include="Resources\water.png" />

@@ -208,7 +208,6 @@
       <DependentUpon>PrintLayoutEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="Editor\ResourceEditorService.cs" />
-    <Compile Include="Editor\ResourcePreviewEngine.cs" />
     <Compile Include="Editor\SymbolDefinitionEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -263,7 +262,6 @@
     <Compile Include="Services\IDragDropHandler.cs" />
     <Compile Include="Services\NewItemTemplateService.cs" />
     <Compile Include="Services\OpenResourceManager.cs" />
-    <Compile Include="Services\ResourcePreviewerFactory.cs" />
     <Compile Include="Services\ServerConnectionManager.cs" />
     <Compile Include="Services\ServiceRegistry.cs" />
     <Compile Include="Services\UrlLauncherService.cs" />
@@ -325,12 +323,6 @@
     </Compile>
     <Compile Include="UI\LabelLocalizationDialog.Designer.cs">
       <DependentUpon>LabelLocalizationDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\MapPreviewDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\MapPreviewDialog.Designer.cs">
-      <DependentUpon>MapPreviewDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\MessageViewer.cs">
       <SubType>UserControl</SubType>
@@ -607,9 +599,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LabelLocalizationDialog.resx">
       <DependentUpon>LabelLocalizationDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\MapPreviewDialog.resx">
-      <DependentUpon>MapPreviewDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MessageViewer.resx">
       <DependentUpon>MessageViewer.cs</DependentUpon>
