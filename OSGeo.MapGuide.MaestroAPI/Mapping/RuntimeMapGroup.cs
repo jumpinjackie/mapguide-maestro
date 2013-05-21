@@ -281,7 +281,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             switch (propertyName)
             {
                 case "Group": //NOXLATE
-                    this.Parent.OnGroupParentChanged(this, this.ObjectId);
+                    var name = this.Group;
+                    if (this.Parent.Groups[name] != null)
+                        this.Parent.OnGroupParentChanged(this, this.Parent.Groups[name].ObjectId);
+                    else
+                        this.Parent.OnGroupParentChanged(this, string.Empty);
                     break;
                 case "Visible": //NOXLATE
                     this.Parent.OnGroupVisibilityChanged(this, this.Visible ? "1" : "0"); //NOXLATE

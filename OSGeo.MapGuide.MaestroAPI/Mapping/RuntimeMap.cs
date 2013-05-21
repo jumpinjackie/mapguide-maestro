@@ -799,7 +799,49 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         protected void SerializeLayerData(MgBinarySerializer s)
         {
             s.Write((int)this.Groups.Count);
-            foreach (var g in this.Groups)
+            //Workaround a deserialization quirk in the MgMap. It deserializes groups sequentially
+            //without first checking if a parented group exists before doing the parent association
+            //
+            //We workaround this by re-ordering the groups, so that unparented groups are serialized first
+            var groups = new List<RuntimeMapGroup>();
+            var remaining = new List<RuntimeMapGroup>();
+            var processed = new Dictionary<string, RuntimeMapGroup>();
+            foreach (var grp in this.Groups)
+            {
+                if (string.IsNullOrEmpty(grp.Group)) //Un-parented
+                {
+                    groups.Add(grp);
+                    processed.Add(grp.Name, grp);
+                }
+                else
+                {
+                    remaining.Add(grp);
+                }
+            }
+            var indices = new List<int>();
+            //Whittle down this list until all parents are resolved
+            while (remaining.Count > 0)
+            {
+                indices.Clear();
+                //Collect the indices which can be added to the final list
+                for (int i = 0; i < remaining.Count; i++)
+                {
+                    var grp = remaining[i];
+                    if (processed.ContainsKey(grp.Group)) //Parent of a group already processed
+                        indices.Add(i);
+                }
+                //Reverse iterate so that higher indices are removed first
+                for (int i = indices.Count - 1; i >= 0; i--)
+                {
+                    var index = indices[i];
+                    var grp = remaining[index];
+                    remaining.RemoveAt(index);
+                    groups.Add(grp);
+                    processed.Add(grp.Name, grp);
+                }
+            }
+
+            foreach (var g in groups)
                 g.Serialize(s);
 
             s.Write(this.Layers.Count);
@@ -1294,6 +1336,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     this.ResourceService.SetResourceData(resourceID, "LayerGroupData", ResourceDataType.Stream, ms2); //NOXLATE
 
                 SaveSelectionXml(resourceID);
+                //Our changes have been persisted. Wipe our change list
+                ClearChanges();
                 this.IsDirty = false;
             }
             finally
@@ -1359,6 +1403,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
             var change = new Change(type, param);
             changes.Changes.Add(change);
+
+            Debug.WriteLine("Tracked change for " + (isLayer ? "Layer " : "Group ") + objectId + " (type: " + type + ", value: " + param + ")");
 
             this.IsDirty = true;
         }
