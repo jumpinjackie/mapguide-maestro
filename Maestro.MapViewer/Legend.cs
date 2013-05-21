@@ -100,7 +100,13 @@ namespace Maestro.MapViewer
         void OnViewerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "IsBusy")
-                this.Enabled = !_viewer.IsBusy;
+            {
+                Action<bool> set = (value) => { this.Enabled = value; };
+                if (this.InvokeRequired)
+                    this.Invoke(set, !_viewer.IsBusy);
+                else
+                    set(!_viewer.IsBusy);
+            }
         }
 
         void OnMapLoaded(object sender, EventArgs e)

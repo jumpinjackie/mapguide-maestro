@@ -393,36 +393,36 @@ namespace Maestro.MapViewer
                     nodesById.Add(group.ObjectId, node);
                     groupsById.Add(group.ObjectId, node);
                 }
+            }
 
-                //Process child groups
-                while (remainingNodes.Count > 0)
+            //Process child groups
+            while (remainingNodes.Count > 0)
+            {
+                List<RuntimeMapGroup> toRemove = new List<RuntimeMapGroup>();
+                //Establish parent-child relationships for any child groups here
+                for (int j = 0; j < remainingNodes.Count; j++)
                 {
-                    List<RuntimeMapGroup> toRemove = new List<RuntimeMapGroup>();
-                    //Establish parent-child relationships for any child groups here
-                    for (int j = 0; j < remainingNodes.Count; j++)
+                    var grpName = remainingNodes[j].Group;
+                    var parentGroup = _map.Groups[grpName];
+                    if (parentGroup != null && nodesById.ContainsKey(parentGroup.ObjectId))
                     {
-                        var grpName = remainingNodes[j].Group;
-                        var parentGroup = _map.Groups[grpName];
-                        if (parentGroup != null && nodesById.ContainsKey(parentGroup.ObjectId))
-                        {
-                            var node = CreateGroupNode(remainingNodes[j]);
-                            nodesById[parentGroup.ObjectId].Nodes.Add(node);
+                        var node = CreateGroupNode(remainingNodes[j]);
+                        nodesById[parentGroup.ObjectId].Nodes.Add(node);
+                        var grpId = remainingNodes[j].ObjectId;
+                        //Got to add this group node too, otherwise we could infinite
+                        //loop looking for a parent that's not registered
+                        nodesById.Add(grpId, node);
+                        groupsById.Add(grpId, node);
 
-                            //Got to add this group node too, otherwise we could infinite
-                            //loop looking for a parent that's not registered
-                            nodesById.Add(group.ObjectId, node);
-                            groupsById.Add(group.ObjectId, node);
-
-                            toRemove.Add(remainingNodes[j]);
-                        }
+                        toRemove.Add(remainingNodes[j]);
                     }
-                    //Whittle down this list
-                    if (toRemove.Count > 0)
+                }
+                //Whittle down this list
+                if (toRemove.Count > 0)
+                {
+                    foreach (var g in toRemove)
                     {
-                        foreach (var g in toRemove)
-                        {
-                            remainingNodes.Remove(g);
-                        }
+                        remainingNodes.Remove(g);
                     }
                 }
             }
@@ -880,6 +880,8 @@ namespace Maestro.MapViewer
 
             public string LegendLabel { get { return this.Group.LegendLabel; } }
 
+            public string ParentGroupName { get { return this.Group.Group; } }
+
             public string Name { get { return this.Group.Name; } }
 
             public override string ObjectId
@@ -988,6 +990,11 @@ namespace Maestro.MapViewer
                 _themeNodes = new Dictionary<ThemeCategory, List<LayerThemeNodeMetadata>>();
                 _defaultIcons = new Dictionary<ThemeCategory, Image>();
             }
+
+            /// <summary>
+            /// Gets the parent group name
+            /// </summary>
+            public string ParentGroupName { get { return this.Layer.Group; } }
 
             /// <summary>
             /// Gets the name
