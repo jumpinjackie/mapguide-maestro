@@ -978,6 +978,11 @@ namespace Maestro.MapViewer
         [DebuggerDisplay("Name = {Layer.Name}, Label = {Layer.LegendLabel}")]
         public class LayerNodeMetadata : LegendNodeMetadata
         {
+            public LayerNodeMetadata(RuntimeMapLayer layer)
+                : this(layer, layer.Selectable, layer.Type == RuntimeMapLayer.kBaseMap)
+            {
+            }
+
             internal LayerNodeMetadata(RuntimeMapLayer layer, bool bInitiallySelectable, bool bTiled)
             {
                 base.IsGroup = false;

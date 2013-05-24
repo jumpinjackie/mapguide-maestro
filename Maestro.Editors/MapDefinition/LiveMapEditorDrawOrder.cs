@@ -24,6 +24,11 @@ using System.Linq;
 using System.Windows.Forms;
 using Maestro.MapViewer;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
+using Maestro.Editors.MapDefinition.Live;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
 namespace Maestro.Editors.MapDefinition
 {
@@ -129,16 +134,21 @@ namespace Maestro.Editors.MapDefinition
             if (layer != null)
             {
                 btnUp.Enabled = btnDown.Enabled = btnDelete.Enabled = true;
-                var h = this.LayerChanged;
-                if (h != null)
-                    h(this, layer);
+                OnLayerSelected(layer);
             }
         }
 
+        private void OnLayerSelected(RuntimeMapLayer layer)
+        {
+            var h = this.LayerSelected;
+            if (h != null)
+                h(this, layer);
+        }
+
         /// <summary>
-        /// Raised when a layer's draw order has changed
+        /// Raised when a layer has been selected
         /// </summary>
-        public event LayerEventHandler LayerChanged;
+        public event LayerEventHandler LayerSelected;
 
         /// <summary>
         /// Raised when a layer has been removed from this view
@@ -159,6 +169,10 @@ namespace Maestro.Editors.MapDefinition
                 else
                     return;
                 _map.Layers.SetNewIndex(idx, layer);
+                if (lstDrawOrder.SelectedIndex != idx)
+                    lstDrawOrder.SelectedIndex = idx;
+                else
+                    OnLayerSelected(layer);
                 this.Viewer.RefreshMap();
             }
         }
@@ -177,6 +191,10 @@ namespace Maestro.Editors.MapDefinition
                 else
                     return;
                 _map.Layers.SetNewIndex(idx, layer);
+                if (lstDrawOrder.SelectedIndex != idx)
+                    lstDrawOrder.SelectedIndex = idx;
+                else
+                    OnLayerSelected(layer);
                 this.Viewer.RefreshMap();
             }
         }
@@ -193,7 +211,12 @@ namespace Maestro.Editors.MapDefinition
 
         private void lstDrawOrder_DragOver(object sender, DragEventArgs e)
         {
-
+            var res = e.Data.GetData(typeof(ResourceDragMessage)) as ResourceDragMessage;
+            var layer = e.Data.GetData(typeof(RuntimeMapLayer)) as RuntimeMapLayer;
+            if (layer != null)
+                e.Effect = DragDropEffects.Move;
+            else if (res != null && ResourceIdentifier.GetResourceType(res.ResourceID) == ResourceTypes.LayerDefinition)
+                e.Effect = DragDropEffects.Copy;
         }
 
         private void lstDrawOrder_DragEnter(object sender, DragEventArgs e)
@@ -203,7 +226,41 @@ namespace Maestro.Editors.MapDefinition
 
         private void lstDrawOrder_DragDrop(object sender, DragEventArgs e)
         {
+            var pt = lstDrawOrder.PointToClient(new Point(e.X, e.Y));
+            var index = lstDrawOrder.IndexFromPoint(pt);
+            if (index < 0)
+                index = lstDrawOrder.Items.Count - 1;
 
+            var res = e.Data.GetData(typeof(ResourceDragMessage)) as ResourceDragMessage;
+            var layer = e.Data.GetData(typeof(RuntimeMapLayer)) as RuntimeMapLayer;
+            if (layer != null)
+            {
+                _map.Layers.SetNewIndex(index, layer);
+                if (lstDrawOrder.SelectedIndex != index)
+                    lstDrawOrder.SelectedIndex = index;
+                else
+                    OnLayerSelected(layer);
+                this.Viewer.RefreshMap();
+            }
+            else if (res != null && ResourceIdentifier.GetResourceType(res.ResourceID) == ResourceTypes.LayerDefinition)
+            {
+                var conn = _map.CurrentConnection;
+                var mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+                layer = mapSvc.CreateMapLayer(_map, (ILayerDefinition)conn.ResourceService.GetResource(res.ResourceID));
+                _map.Layers.Insert(0, layer);
+                if (lstDrawOrder.SelectedIndex != 0)
+                    lstDrawOrder.SelectedIndex = 0;
+                else
+                    OnLayerSelected(layer);
+                this.Viewer.RefreshMap();
+            }
+        }
+
+        private void lstDrawOrder_MouseDown(object sender, MouseEventArgs e)
+        {
+            var item = lstDrawOrder.SelectedItem as RuntimeMapLayer;
+            if (item != null)
+                lstDrawOrder.DoDragDrop(item, DragDropEffects.Move);
         }
     }
 

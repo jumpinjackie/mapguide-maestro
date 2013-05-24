@@ -91,6 +91,7 @@ namespace Maestro.Editors.MapDefinition
             // 
             // lstDrawOrder
             // 
+            this.lstDrawOrder.AllowDrop = true;
             this.lstDrawOrder.DisplayMember = "DisplayString";
             this.lstDrawOrder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstDrawOrder.FormattingEnabled = true;
@@ -102,6 +103,7 @@ namespace Maestro.Editors.MapDefinition
             this.lstDrawOrder.DragDrop += new System.Windows.Forms.DragEventHandler(this.lstDrawOrder_DragDrop);
             this.lstDrawOrder.DragEnter += new System.Windows.Forms.DragEventHandler(this.lstDrawOrder_DragEnter);
             this.lstDrawOrder.DragOver += new System.Windows.Forms.DragEventHandler(this.lstDrawOrder_DragOver);
+            this.lstDrawOrder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lstDrawOrder_MouseDown);
             // 
             // LiveMapEditorDrawOrder
             // 

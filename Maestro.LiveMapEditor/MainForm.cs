@@ -86,6 +86,9 @@ namespace Maestro.LiveMapEditor
             var diag = new MapSettingsDialog(_conn, mdf);
             if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                //Start off in the session, so the editor service knows this is a new resource
+                mdf.ResourceID = "Session:" + _conn.SessionID + "//NewMap.MapDefinition";
+                _conn.ResourceService.SaveResource(mdf);
                 LoadMapDefinitionForEditing(mdf);
             }
             EvaluateCommandStates();
@@ -124,10 +127,17 @@ namespace Maestro.LiveMapEditor
 
         private void DoSave()
         {
-            _mapEditor.SyncMap();                       //RuntimeMap to IMapDefinition
-            _mapEditor.EditorService.SyncSessionCopy(); //IMapDefinition to session-copy
-            _mapEditor.EditorService.Save();            //Session-copy to original resource
-            EvaluateCommandStates();
+            if (_mapEditor.EditorService.IsNew)
+            {
+                DoSaveAs();
+            }
+            else
+            {
+                _mapEditor.SyncMap();                       //RuntimeMap to IMapDefinition
+                _mapEditor.EditorService.SyncSessionCopy(); //IMapDefinition to session-copy
+                _mapEditor.EditorService.Save();            //Session-copy to original resource
+                EvaluateCommandStates();
+            }
         }
 
         private void DoSaveAs()

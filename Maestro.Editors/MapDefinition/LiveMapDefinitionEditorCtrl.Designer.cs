@@ -144,7 +144,7 @@
             resources.ApplyResources(this.drawOrderCtrl, "drawOrderCtrl");
             this.drawOrderCtrl.Name = "drawOrderCtrl";
             this.drawOrderCtrl.Viewer = this.viewer;
-            this.drawOrderCtrl.LayerChanged += new Maestro.Editors.MapDefinition.LayerEventHandler(this.drawOrderCtrl_LayerChanged);
+            this.drawOrderCtrl.LayerSelected += new Maestro.Editors.MapDefinition.LayerEventHandler(this.drawOrderCtrl_LayerSelected);
             this.drawOrderCtrl.LayerDeleted += new Maestro.Editors.MapDefinition.LayerEventHandler(this.drawOrderCtrl_LayerDeleted);
             // 
             // imageList1

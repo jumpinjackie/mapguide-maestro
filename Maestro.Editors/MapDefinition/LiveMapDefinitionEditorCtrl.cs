@@ -129,9 +129,9 @@ namespace Maestro.Editors.MapDefinition
                 propGrid.SelectedObject = node.Tag;
         }
 
-        private void drawOrderCtrl_LayerChanged(object sender, RuntimeMapLayer layer)
+        private void drawOrderCtrl_LayerSelected(object sender, RuntimeMapLayer layer)
         {
-            propGrid.SelectedObject = layer;
+            propGrid.SelectedObject = new LayerNodeMetadata(layer);
         }
 
         private void drawOrderCtrl_LayerDeleted(object sender, RuntimeMapLayer layer)
