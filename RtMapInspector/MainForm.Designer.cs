@@ -47,12 +47,15 @@
             this.trvSelection = new System.Windows.Forms.TreeView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.properties = new System.Windows.Forms.PropertyGrid();
+            this.TAB_DRAW_ORDER = new System.Windows.Forms.TabPage();
+            this.lstDrawOrder = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TAB_LAYERS.SuspendLayout();
             this.TAB_SELECTION.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.TAB_DRAW_ORDER.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -120,6 +123,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.TAB_LAYERS);
+            this.tabControl1.Controls.Add(this.TAB_DRAW_ORDER);
             this.tabControl1.Controls.Add(this.TAB_SELECTION);
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
@@ -174,6 +178,20 @@
             resources.ApplyResources(this.properties, "properties");
             this.properties.Name = "properties";
             // 
+            // TAB_DRAW_ORDER
+            // 
+            this.TAB_DRAW_ORDER.Controls.Add(this.lstDrawOrder);
+            resources.ApplyResources(this.TAB_DRAW_ORDER, "TAB_DRAW_ORDER");
+            this.TAB_DRAW_ORDER.Name = "TAB_DRAW_ORDER";
+            this.TAB_DRAW_ORDER.UseVisualStyleBackColor = true;
+            // 
+            // lstDrawOrder
+            // 
+            resources.ApplyResources(this.lstDrawOrder, "lstDrawOrder");
+            this.lstDrawOrder.FormattingEnabled = true;
+            this.lstDrawOrder.Name = "lstDrawOrder";
+            this.lstDrawOrder.SelectedIndexChanged += new System.EventHandler(this.lstDrawOrder_SelectedIndexChanged);
+            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -189,6 +207,7 @@
             this.TAB_LAYERS.ResumeLayout(false);
             this.TAB_SELECTION.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.TAB_DRAW_ORDER.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -212,6 +231,8 @@
         private System.Windows.Forms.TreeView trvLayersAndGroups;
         private System.Windows.Forms.TabPage TAB_SELECTION;
         private System.Windows.Forms.TreeView trvSelection;
+        private System.Windows.Forms.TabPage TAB_DRAW_ORDER;
+        private System.Windows.Forms.ListBox lstDrawOrder;
     }
 }
 

@@ -397,6 +397,24 @@ namespace RtMapInspector
             }
         }
 
+        class DrawOrderDisplayItem
+        {
+            public string Label { get; private set; }
+
+            public LayerDecorator Decorator { get; private set; }
+
+            public DrawOrderDisplayItem(RuntimeMapLayer layer)
+            {
+                this.Label = layer.Name + " (" + layer.LegendLabel + ")";
+                this.Decorator = new LayerDecorator(layer);
+            }
+
+            public override string ToString()
+            {
+                return this.Label;
+            }
+        }
+
         class ScaleRangeCollection : List<string>
         {
             public ScaleRangeCollection(RuntimeMapLayer.ScaleRange[] ranges)
@@ -446,6 +464,7 @@ namespace RtMapInspector
             _rtMap = null;
             properties.SelectedObject = null;
             trvLayersAndGroups.Nodes.Clear();
+            lstDrawOrder.Items.Clear();
             trvSelection.Nodes.Clear();
             if (rdMapName.Checked)
             {
@@ -462,7 +481,7 @@ namespace RtMapInspector
                 return;
             }
 
-            InitTreeView();
+            InitTabs();
         }
 
         const int IDX_GROUP = 0;
@@ -498,7 +517,7 @@ namespace RtMapInspector
             return node;
         }
 
-        private void InitTreeView()
+        private void InitTabs()
         {
             try
             {
@@ -516,6 +535,19 @@ namespace RtMapInspector
             finally
             {
                 trvLayersAndGroups.EndUpdate();
+            }
+
+            try
+            {
+                lstDrawOrder.BeginUpdate();
+                foreach (var layer in _rtMap.Layers)
+                {
+                    lstDrawOrder.Items.Add(new DrawOrderDisplayItem(layer));
+                }
+            }
+            finally
+            {
+                lstDrawOrder.EndUpdate();
             }
 
             var sel = _rtMap.Selection;
@@ -557,6 +589,13 @@ namespace RtMapInspector
         private void trvLayersAndGroups_AfterSelect(object sender, TreeViewEventArgs e)
         {
             properties.SelectedObject = e.Node.Tag;
+        }
+
+        private void lstDrawOrder_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var item = lstDrawOrder.SelectedItem as DrawOrderDisplayItem;
+            if (item != null)
+                properties.SelectedObject = item.Decorator;
         }
     }
 }
