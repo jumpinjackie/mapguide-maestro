@@ -75,7 +75,7 @@ namespace Maestro.Base.Commands
                 {
                     foreach (var ri in rs)
                     {
-                        var conn = connMgr.GetConnection(r.ConnectionName);
+                        var conn = connMgr.GetConnection(ri.ConnectionName);
                         ri.Reset();
                         if (omgr.IsOpen(ri.ResourceId, conn))
                         {
