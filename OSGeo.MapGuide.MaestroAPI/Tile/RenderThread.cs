@@ -59,11 +59,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         private object SyncLock;
         private AutoResetEvent Event;
         private int CompleteFlag;
-        private BatchSettings Parent;
+        private TilingRunCollection Parent;
         private int Scale;
         private string Group;
         private string MapDefinition;
-        private BatchMap Invoker;
+        private MapTilingConfiguration Invoker;
 
         private bool Randomize;
         private int Rows;
@@ -73,7 +73,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
 
         private bool FillerComplete = false;
 
-        public RenderThreads(BatchMap invoker, BatchSettings parent, int scale, string group, string mapdef, int rows, int cols, int rowOffset, int colOffset, bool randomize)
+        public RenderThreads(MapTilingConfiguration invoker, TilingRunCollection parent, int scale, string group, string mapdef, int rows, int cols, int rowOffset, int colOffset, bool randomize)
         {
             TileSet = new Queue<KeyValuePair<int, int>>();
             SyncLock = new object();

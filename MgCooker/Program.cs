@@ -224,7 +224,7 @@ namespace MgCooker
             }
             
 
-            BatchSettings bx = new BatchSettings(connection);
+            TilingRunCollection bx = new TilingRunCollection(connection);
             
             int x;
 
@@ -284,7 +284,7 @@ namespace MgCooker
             }
 
             if (overrideExtents != null)
-                foreach (BatchMap bm in bx.Maps)
+                foreach (MapTilingConfiguration bm in bx.Maps)
                     bm.MaxExtent = overrideExtents;
 
             if (largs.IndexOf("/commandline") < 0 && largs.IndexOf("commandline") < 0)
@@ -312,20 +312,20 @@ namespace MgCooker
             }
         }
 
-        static void bx_FailedRenderingTile(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref Exception exception)
+        static void bx_FailedRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref Exception exception)
         {
             exceptionList.Add(exception);
             exception = null;
         }
 
-        static void DisplayProgress(BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
+        static void DisplayProgress(MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             if (hasConsole)
                 Console.Clear();
             Console.WriteLine(string.Format(Strings.ConsoleUpdateTime.Replace("\\t", "\t"), DateTime.Now));
             Console.WriteLine(string.Format(Strings.ConsoleCurrentMap.Replace("\\t", "\t"), map.ResourceId, mapCount, map.Parent.Maps.Count));
-            Console.WriteLine(string.Format(Strings.ConsoleCurrentGroup.Replace("\\t", "\t"), group, groupCount, map.Map.BaseMap.GroupCount));
-            Console.WriteLine(string.Format(Strings.ConsoleCurrentScale.Replace("\\t", "\t"), map.Map.BaseMap.GetScaleAt(Array.IndexOf<int>(map.ScaleIndexMap, scaleindex)), Array.IndexOf<int>(map.ScaleIndexMap, scaleindex) + 1, map.Map.BaseMap.ScaleCount));
+            Console.WriteLine(string.Format(Strings.ConsoleCurrentGroup.Replace("\\t", "\t"), group, groupCount, map.MapDefinition.BaseMap.GroupCount));
+            Console.WriteLine(string.Format(Strings.ConsoleCurrentScale.Replace("\\t", "\t"), map.MapDefinition.BaseMap.GetScaleAt(Array.IndexOf<int>(map.ScaleIndexMap, scaleindex)), Array.IndexOf<int>(map.ScaleIndexMap, scaleindex) + 1, map.MapDefinition.BaseMap.ScaleCount));
             Console.WriteLine(string.Format(Strings.ConsoleCurrentTile.Replace("\\t", "\t"), tileCount, totalTiles));
             Console.WriteLine();
             Console.WriteLine(string.Format(Strings.ConsoleGroupDuration.Replace("\\t", "\t"), DateTime.Now - beginGroup));
@@ -339,14 +339,14 @@ namespace MgCooker
         }
 
 
-        static void bx_FinishRenderingGroup(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
+        static void bx_FinishRenderingGroup(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             TimeSpan duration = DateTime.Now - beginGroup;
             if (m_logableProgress)
                 Console.WriteLine(string.Format(Strings.ConsoleOperationFinishGroup, DateTime.Now, group, duration));
         }
 
-        static void bx_BeginRenderingGroup(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
+        static void bx_BeginRenderingGroup(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             groupCount++;
             beginGroup = DateTime.Now;
@@ -359,7 +359,7 @@ namespace MgCooker
             totalTiles = map.TotalTiles;
         }
 
-        static void bx_FinishRenderingTile(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
+        static void bx_FinishRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             tileRuns.Add(DateTime.Now - beginTile);
             tileCount++;
@@ -391,26 +391,26 @@ namespace MgCooker
             }
         }
 
-        static void bx_BeginRenderingTile(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
+        static void bx_BeginRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             beginTile = DateTime.Now;
         }
 
-        static void bx_FinishRenderingScale(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
+        static void bx_FinishRenderingScale(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             TimeSpan duration = DateTime.Now - beginScale;
             if (m_logableProgress)
-                Console.WriteLine(string.Format(Strings.ConsoleOperationFinishScale, DateTime.Now, map.Map.BaseMap.GetScaleAt(scaleindex), duration));
+                Console.WriteLine(string.Format(Strings.ConsoleOperationFinishScale, DateTime.Now, map.MapDefinition.BaseMap.GetScaleAt(scaleindex), duration));
         }
 
-        static void bx_BeginRenderingScale(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
+        static void bx_BeginRenderingScale(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             beginScale = DateTime.Now;
             if (m_logableProgress)
-                Console.WriteLine(string.Format(Strings.ConsoleOperationBeginScale, beginMap, map.Map.BaseMap.GetScaleAt(scaleindex), scaleindex, map.Resolutions));
+                Console.WriteLine(string.Format(Strings.ConsoleOperationBeginScale, beginMap, map.MapDefinition.BaseMap.GetScaleAt(scaleindex), scaleindex, map.Resolutions));
         }
 
-        static void bx_FinishRenderingMap(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
+        static void bx_FinishRenderingMap(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             groupCount = 0;
             TimeSpan duration = DateTime.Now - beginMap;
@@ -418,7 +418,7 @@ namespace MgCooker
                 Console.WriteLine(string.Format(Strings.ConsoleOperationFinishMap, DateTime.Now, map.ResourceId, duration));
         }
 
-        static void bx_BeginRenderingMap(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
+        static void bx_BeginRenderingMap(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             mapCount++;
             beginMap = DateTime.Now;

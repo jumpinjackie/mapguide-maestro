@@ -30,7 +30,7 @@ namespace MgCooker
 {
     public partial class Progress : Form
     {
-        private BatchSettings m_bx;
+        private TilingRunCollection m_bx;
         private List<TimeSpan> m_tileRuns;
         private long m_tileCount;
         private DateTime m_lastUpdate;
@@ -50,7 +50,7 @@ namespace MgCooker
             InitializeComponent();
         }
 
-        public Progress(BatchSettings bx)
+        public Progress(TilingRunCollection bx)
             : this()
         {
             m_bx = bx;
@@ -65,13 +65,13 @@ namespace MgCooker
             m_tileRuns = new List<TimeSpan>();
 
             m_grandTotalTiles = 0;
-            foreach (BatchMap bm in m_bx.Maps)
+            foreach (MapTilingConfiguration bm in m_bx.Maps)
                 m_grandTotalTiles += bm.TotalTiles;
 
             m_grandBegin = DateTime.Now;
         }
 
-        void bx_FailedRenderingTile(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref Exception exception)
+        void bx_FailedRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref Exception exception)
         {
             m_failCount++;
             exception = null; //Eat it
@@ -93,7 +93,7 @@ namespace MgCooker
             this.Close();
         }
 
-        void bx_FinishRenderingMaps(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
+        void bx_FinishRenderingMaps(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             if (this.InvokeRequired)
                 this.Invoke(new System.Threading.ThreadStart(DoClose));
@@ -101,7 +101,7 @@ namespace MgCooker
                 DoClose();
         }
 
-        void bx_FinishRenderingTile(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
+        void bx_FinishRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             m_tileRuns.Add(DateTime.Now - m_beginTile);
             m_tileCount++;
@@ -130,9 +130,9 @@ namespace MgCooker
             }
         }
 
-        private delegate void DisplayProgressDelegate(BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel);
+        private delegate void DisplayProgressDelegate(MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel);
 
-        private void DisplayProgress(BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private void DisplayProgress(MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             if (m_cancel)
                 cancel = true;
@@ -163,22 +163,22 @@ namespace MgCooker
         }
 
 
-        void bx_BeginRenderingTile(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
+        void bx_BeginRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             m_beginTile = DateTime.Now;
         }
 
-        void bx_BeginRenderingScale(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
+        void bx_BeginRenderingScale(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
         }
 
-        void bx_BeginRenderingGroup(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
+        void bx_BeginRenderingGroup(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             m_totalTiles = map.TotalTiles;
             m_tileCount = 0;
         }
 
-        void bx_BeginRenderingMap(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel)
+        void bx_BeginRenderingMap(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             m_tileCount = 0;
         }

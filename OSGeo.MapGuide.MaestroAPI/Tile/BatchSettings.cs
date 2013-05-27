@@ -36,7 +36,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// <param name="column">The column being processed</param>
     /// <param name="cancel">A control flag to stop the tile rendering</param>
     /// <param name="state">The state that invoked the callback</param>
-    public delegate void ProgressCallback(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref bool cancel);
+    public delegate void ProgressCallback(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel);
 
     /// <summary>
     /// This delegate is used to monitor progress on tile rendering
@@ -48,7 +48,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// <param name="column">The column being processed</param>
     /// <param name="state">The state that invoked the callback</param>
     /// <param name="exception">The exception from the last attempt, set this to null to ignore the exception</param>
-    public delegate void ErrorCallback(CallbackStates state, BatchMap map, string group, int scaleindex, int row, int column, ref Exception exception);
+    public delegate void ErrorCallback(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref Exception exception);
 
     /// <summary>
     /// These are the avalible states for callbacks
@@ -104,7 +104,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// <summary>
     /// Class to hold settings for a batch run of tile building
     /// </summary>
-    public class BatchSettings
+    public class TilingRunCollection
     {
         /// <summary>
         /// A reference to the connection
@@ -113,11 +113,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <summary>
         /// The list of maps
         /// </summary>
-        private List<BatchMap> m_maps;
+        private List<MapTilingConfiguration> m_maps;
         /// <summary>
         /// A default set of tile settings
         /// </summary>
-        private TileSettings m_tileSettings = new TileSettings();
+        private TileRunParameters m_tileSettings = new TileRunParameters();
 
         /// <summary>
         /// A flag that indicates the rendering should stop
@@ -175,59 +175,59 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// </summary>
         public event ErrorCallback FailedRenderingTile;
 
-        internal void InvokeBeginRendering(BatchMap batchMap)
+        internal void InvokeBeginRendering(MapTilingConfiguration batchMap)
         {
             if (this.BeginRenderingMap != null)
                 this.BeginRenderingMap(CallbackStates.StartRenderMap, batchMap, null, -1, -1, -1, ref m_cancel);
             PauseEvent.WaitOne();
         }
 
-        internal void InvokeFinishRendering(BatchMap batchMap)
+        internal void InvokeFinishRendering(MapTilingConfiguration batchMap)
         {
             if (this.FinishRenderingMap != null)
                 this.FinishRenderingMap(CallbackStates.FinishRenderMap, batchMap, null, -1, -1, -1, ref m_cancel);
         }
 
-        internal void InvokeBeginRendering(BatchMap batchMap, string group)
+        internal void InvokeBeginRendering(MapTilingConfiguration batchMap, string group)
         {
             if (this.BeginRenderingGroup != null)
                 this.BeginRenderingGroup(CallbackStates.StartRenderGroup, batchMap, group, -1, -1, -1, ref m_cancel);
             PauseEvent.WaitOne();
         }
 
-        internal void InvokeFinishRendering(BatchMap batchMap, string group)
+        internal void InvokeFinishRendering(MapTilingConfiguration batchMap, string group)
         {
             if (this.FinishRenderingGroup != null)
                 this.FinishRenderingGroup(CallbackStates.FinishRenderGroup, batchMap, group, -1, -1, -1, ref m_cancel);
         }
 
-        internal void InvokeBeginRendering(BatchMap batchMap, string group, int scaleindex)
+        internal void InvokeBeginRendering(MapTilingConfiguration batchMap, string group, int scaleindex)
         {
             if (this.BeginRenderingScale != null)
                 this.BeginRenderingScale(CallbackStates.StartRenderScale, batchMap, group, scaleindex, -1, -1, ref m_cancel);
             PauseEvent.WaitOne();
         }
 
-        internal void InvokeFinishRendering(BatchMap batchMap, string group, int scaleindex)
+        internal void InvokeFinishRendering(MapTilingConfiguration batchMap, string group, int scaleindex)
         {
             if (this.FinishRenderingScale != null)
                 this.FinishRenderingScale(CallbackStates.FinishRenderScale, batchMap, group, scaleindex, -1, -1, ref m_cancel);
         }
 
-        internal void InvokeBeginRendering(BatchMap batchMap, string group, int scaleindex, int row, int col)
+        internal void InvokeBeginRendering(MapTilingConfiguration batchMap, string group, int scaleindex, int row, int col)
         {
             if (this.BeginRenderingTile != null)
                 this.BeginRenderingTile(CallbackStates.StartRenderTile, batchMap, group, scaleindex, row, col, ref m_cancel);
             PauseEvent.WaitOne();
         }
 
-        internal void InvokeFinishRendering(BatchMap batchMap, string group, int scaleindex, int row, int col)
+        internal void InvokeFinishRendering(MapTilingConfiguration batchMap, string group, int scaleindex, int row, int col)
         {
             if (this.FinishRenderingTile != null)
                 this.FinishRenderingTile(CallbackStates.FinishRenderTile, batchMap, group, scaleindex, row, col, ref m_cancel);
         }
 
-        internal Exception InvokeError(BatchMap batchMap, string group, int scaleindex, int row, int col, ref Exception exception)
+        internal Exception InvokeError(MapTilingConfiguration batchMap, string group, int scaleindex, int row, int col, ref Exception exception)
         {
             if (this.FailedRenderingTile != null)
                 this.FailedRenderingTile(CallbackStates.FailedRenderingTile, batchMap, group, scaleindex, row, col, ref exception);
@@ -244,7 +244,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <param name="username">The username to connect with</param>
         /// <param name="password">The password to connect with</param>
         /// <param name="maps">A list of maps to process, leave empty to process all layers</param>
-        public BatchSettings(string mapagent, string username, string password, params string[] maps)
+        public TilingRunCollection(string mapagent, string username, string password, params string[] maps)
             : this(ConnectionProviderRegistry.CreateConnection("Maestro.Http", "Url", mapagent, "Username", username, "Password", password, "AllowUntestedVersions", "true"), maps) //NOXLATE
         {
         }
@@ -253,10 +253,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// Constructs a new batch setup
         /// </summary>
         /// <param name="connection"></param>
-        public BatchSettings(IServerConnection connection)
+        public TilingRunCollection(IServerConnection connection)
         {
             m_connection = connection;
-            m_maps = new List<BatchMap>();
+            m_maps = new List<MapTilingConfiguration>();
         }
 
         /// <summary>
@@ -264,10 +264,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// </summary>
         /// <param name="connection"></param>
         /// <param name="maps"></param>
-        public BatchSettings(IServerConnection connection, params string[] maps)
+        public TilingRunCollection(IServerConnection connection, params string[] maps)
         {
             m_connection = connection;
-            m_maps = new List<BatchMap>();
+            m_maps = new List<MapTilingConfiguration>();
 
             AddMapDefinitions(maps);
         }
@@ -288,7 +288,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
 
             foreach (string s in maps)
             {
-                BatchMap bm = new BatchMap(this, s);
+                MapTilingConfiguration bm = new MapTilingConfiguration(this, s);
                 if (bm.Resolutions > 0)
                     m_maps.Add(bm);
             }
@@ -300,7 +300,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <param name="scaleindexes"></param>
         public void SetScales(int[] scaleindexes)
         {
-            foreach (BatchMap bm in m_maps)
+            foreach (MapTilingConfiguration bm in m_maps)
                 bm.SetScales(scaleindexes);
         }
 
@@ -310,7 +310,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <param name="groups"></param>
         public void SetGroups(string[] groups)
         {
-            foreach (BatchMap bm in m_maps)
+            foreach (MapTilingConfiguration bm in m_maps)
                 bm.SetGroups(groups);
         }
 
@@ -320,7 +320,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <param name="limit"></param>
         public void LimitRows(long limit)
         {
-            foreach (BatchMap bm in m_maps)
+            foreach (MapTilingConfiguration bm in m_maps)
                 bm.LimitRows(limit);
         }
 
@@ -330,7 +330,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <param name="limit"></param>
         public void LimitCols(long limit)
         {
-            foreach (BatchMap bm in m_maps)
+            foreach (MapTilingConfiguration bm in m_maps)
                 bm.LimitCols(limit);
         }
 
@@ -344,7 +344,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             if (this.BeginRenderingMaps != null)
                 this.BeginRenderingMaps(CallbackStates.StartRenderAllMaps, null, null, -1, -1, -1, ref m_cancel);
 
-            foreach (BatchMap bm in this.Maps)
+            foreach (MapTilingConfiguration bm in this.Maps)
                 if (m_cancel)
                     break;
                 else
@@ -359,14 +359,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// </summary>
         public IServerConnection Connection { get { return m_connection; } }
         /// <summary>
-        /// The list of maps to proccess
+        /// The list of map configurations to proccess
         /// </summary>
-        public List<BatchMap> Maps { get { return m_maps; } }
+        public List<MapTilingConfiguration> Maps { get { return m_maps; } }
 
         /// <summary>
         /// The tile settings
         /// </summary>
-        public TileSettings Config { get { return m_tileSettings; } }
+        public TileRunParameters Config { get { return m_tileSettings; } }
 
         /// <summary>
         /// Gets a flag indicating if the rendering process is cancelled
@@ -377,12 +377,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// <summary>
     /// Class that represents a single map to build tiles for
     /// </summary>
-    public class BatchMap
+    public class MapTilingConfiguration
     {
         /// <summary>
         /// A reference to the parent, and thus the connection
         /// </summary>
-        private BatchSettings m_parent;
+        private TilingRunCollection m_parent;
         /// <summary>
         /// The map read from MapGuide
         /// </summary>
@@ -453,7 +453,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// </summary>
         /// <param name="parent">The parent entry</param>
         /// <param name="map">The resource id for the mapdefinition</param>
-        public BatchMap(BatchSettings parent, string map)
+        public MapTilingConfiguration(TilingRunCollection parent, string map)
         {
             m_parent = parent;
             m_mapdefinition = (IMapDefinition)parent.Connection.ResourceService.GetResource(map);
@@ -473,7 +473,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
 
         internal void CalculateDimensions()
         {
-            int[] tmp = new int[this.Map.BaseMap.ScaleCount];
+            int[] tmp = new int[this.MapDefinition.BaseMap.ScaleCount];
             for (int i = 0; i < tmp.Length; i++)
                 tmp[i] = i;
 
@@ -508,6 +508,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                 {
                     //This is the algorithm proposed by the MapGuide team:
                     //http://www.nabble.com/Pre-Genererate--tiles-for-the-entire-map-at-all-pre-defined-zoom-scales-to6074037.html#a6078663
+                    //
+                    //Method description inline (in case nabble link disappears):
+                    //
+                    // The upper left corner of the extents of the map corresponds to tile (0,0). Then tile (1,0) is to the right of that and tile (0,1) is under tile (0,0).
+                    // So assuming you know the extents of your map, you can calculate how many tiles it spans at the given scale, using the following
+                    //
+                    // number of tiles x = map width in meters  / ( 0.079375 * map_scale)
+                    // number of tiles y = map height in meters / ( 0.079375 * map_scale)
+                    //
+                    // where 0.079375 = [inch to meter] / image DPI * tile size = 0.0254 / 96 * 300.
+                    //
+                    // This assumes you know the scale factor that converts your map width and height to meters. You can get this from the coordinate system of the map if you don't know it, but it's much easier to just plug in the number into this equation.
+                    // 
+                    // Also have in mind that you can also request tiles beyond the map extent (for example tile (-1, -1), however, there is probably no point to cache them unless you have valid data outside your initial map extents.
                     
                     //The tile extent in meters
                     double tileWidth  =((INCH_TO_METER / m_parent.Config.DPI * m_parent.Config.TileWidth) * (scale));
@@ -727,18 +741,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <summary>
         /// Gets the MapDefintion
         /// </summary>
-        public IMapDefinition Map { get { return m_mapdefinition; } }
+        public IMapDefinition MapDefinition { get { return m_mapdefinition; } }
 
         /// <summary>
-        /// Gets a reference to the parent
+        /// Gets a reference to the parent tiling run collection
         /// </summary>
-        public BatchSettings Parent { get { return m_parent; } }
+        public TilingRunCollection Parent { get { return m_parent; } }
     }
 
     /// <summary>
-    /// Parameters for a tiling run
+    /// Defines global parameters for a tiling run
     /// </summary>
-    public class TileSettings
+    public class TileRunParameters
     {
         /// <summary>
         /// The meters per unit

@@ -233,7 +233,7 @@ namespace MgCooker
             }
             try
             {
-                BatchSettings bx = new BatchSettings(con);
+                TilingRunCollection bx = new TilingRunCollection(con);
 
                 if (LimitTileset.Checked)
                 {
@@ -254,7 +254,7 @@ namespace MgCooker
 
                 foreach (Config c in ReadTree())
                 {
-                    BatchMap bm = new BatchMap(bx, c.MapDefinition);
+                    MapTilingConfiguration bm = new MapTilingConfiguration(bx, c.MapDefinition);
                     bm.SetGroups(new string[] { c.Group });
                     bm.SetScales(c.ScaleIndexes);
                     if (c.ExtentOverride != null)
