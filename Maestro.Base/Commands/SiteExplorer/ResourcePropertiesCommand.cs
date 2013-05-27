@@ -37,7 +37,7 @@ namespace Maestro.Base.Commands.SiteExplorer
 
             if (!IsValid(conn))
             {
-                MessageService.ShowError(Strings.ConnectionDoesNotSupportRequiredInterfaces);
+                MessageService.ShowError(string.Format(Strings.ConnectionDoesNotSupportRequiredInterfaces, conn.ProviderName));
                 return;
             }
 

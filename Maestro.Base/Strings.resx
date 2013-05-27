@@ -226,7 +226,7 @@ Do you want to convert the values?</value>
     <value>You have already established such a connection</value>
   </data>
   <data name="ConnectionDoesNotSupportRequiredInterfaces" xml:space="preserve">
-    <value>The current connection does not support the required interfaces to perform this action</value>
+    <value>The current connection ({0}) does not support the required interfaces to display properties of this resource</value>
   </data>
   <data name="Content_Messages" xml:space="preserve">
     <value>Messages</value>

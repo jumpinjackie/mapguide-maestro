@@ -388,7 +388,7 @@ namespace Maestro.Base {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The current connection does not support the required interfaces to perform this action.
+        ///   Looks up a localized string similar to The current connection ({0}) does not support the required interfaces to display properties of this resource.
         /// </summary>
         internal static string ConnectionDoesNotSupportRequiredInterfaces {
             get {
