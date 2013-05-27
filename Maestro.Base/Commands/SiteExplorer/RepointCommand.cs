@@ -30,6 +30,11 @@ using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
+using Maestro.Editors.Common;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
+using System.Xml;
+using System.IO;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -51,13 +56,11 @@ namespace Maestro.Base.Commands.SiteExplorer
             {
                 var selected = exp.SelectedItems[0];
                 var resId = new ResourceIdentifier(selected.ResourceId);
-                if (resId.ResourceType == OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition)
+                if (resId.ResourceType != ResourceTypes.WebLayout &&
+                    resId.ResourceType != ResourceTypes.ApplicationDefinition &&
+                    resId.ResourceType != ResourceTypes.LoadProcedure)
                 {
-                    DoRepointLayer(wb, conn, resId);
-                }
-                else if (resId.ResourceType == OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition)
-                {
-                    DoRepointMap(wb, conn, resId);
+                    DoRepointResource(wb, conn, resId);
                 }
                 else
                 {
@@ -71,13 +74,13 @@ namespace Maestro.Base.Commands.SiteExplorer
             return conn.Capabilities.SupportsResourceReferences;
         }
 
-        private void DoRepointMap(Workbench wb, OSGeo.MapGuide.MaestroAPI.IServerConnection conn, ResourceIdentifier resId)
+        private static void DoRepointResource(Workbench wb, IServerConnection conn, ResourceIdentifier resId)
         {
             var diag = new RepointerDialog(resId, conn.ResourceService);
             if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                string srcMap = diag.Source;
-                string dstMap = diag.Target;
+                string srcId = diag.Source;
+                string dstId = diag.Target;
 
                 var deps = diag.Dependents;
 
@@ -88,124 +91,29 @@ namespace Maestro.Base.Commands.SiteExplorer
                     wk.ReportProgress(0, Strings.ProgressUpdatingReferences);
                     foreach (var dep in deps)
                     {
-                        //Only web and flexible layouts depend on maps
-                        var rt = ResourceIdentifier.GetResourceType(dep);
-                        Debug.Assert(rt == ResourceTypes.WebLayout || rt == ResourceTypes.ApplicationDefinition);
-
-                        bool changed = false;
-
-                        IResource res = null;
-                        if (rt == ResourceTypes.WebLayout)
+                        using (var stream = conn.ResourceService.GetResourceXmlData(dep))
                         {
-                            IWebLayout wl = (IWebLayout)conn.ResourceService.GetResource(dep);
-                            if (wl.Map.ResourceId.Equals(srcMap))
+                            XmlDocument doc = new XmlDocument();
+                            doc.Load(stream);
+                            bool changed = Utility.ReplaceResourceIds(doc, srcId, dstId);
+                            if (changed)
                             {
-                                wl.Map.ResourceId = dstMap;
-                                changed = true;
-                                res = wl;
-                            }
-                        }
-                        else //Flexible layout
-                        {
-                            IApplicationDefinition appDef = (IApplicationDefinition)conn.ResourceService.GetResource(dep);
-                            foreach (var mg in appDef.MapSet.MapGroups)
-                            {
-                                foreach (var map in mg.Map)
+                                using (var ms = new MemoryStream())
                                 {
-                                    if (map.Type.Equals("MapGuide")) //NOXLATE
-                                    {
-                                        string mdfId = map.GetMapDefinition();
-                                        if (mdfId.Equals(srcMap))
-                                        {
-                                            map.SetMapDefinition(dstMap);
-                                            changed = true;
-                                            res = appDef;
-                                        }
-                                    }
+                                    doc.Save(ms);
+                                    ms.Position = 0L; //Rewind
+                                    conn.ResourceService.SetResourceXmlData(dep, ms);
                                 }
+                                updated++;
+                                wk.ReportProgress((updated / total) * 100);
                             }
-                        }
-
-                        //If it wasn't changed why did the resource service
-                        //list this map as a dependent resource?
-                        if (changed)
-                        {
-                            Debug.Assert(res != null);
-                            conn.ResourceService.SaveResource(res);
-                            updated++;
-
-                            wk.ReportProgress((updated / total) * 100);
                         }
                     }
                     return updated;
                 };
                 var prd = new ProgressDialog();
                 int result = (int)prd.RunOperationAsync(wb, worker);
-                MessageService.ShowMessage(string.Format(Strings.ResourcesRepointed, result, dstMap));
-            }
-        }
-
-        private static void DoRepointLayer(Workbench wb, OSGeo.MapGuide.MaestroAPI.IServerConnection conn, ResourceIdentifier resId)
-        {
-            var diag = new RepointerDialog(resId, conn.ResourceService);
-            if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                string srcLayer = diag.Source;
-                string targetLayer = diag.Target;
-
-                var deps = diag.Dependents;
-
-                ProgressDialog.DoBackgroundWork worker = (wk, e, args) =>
-                {
-                    int updated = 0;
-                    int total = deps.Count;
-                    wk.ReportProgress(0, Strings.ProgressUpdatingReferences);
-                    foreach (var dep in deps)
-                    {
-                        //Only maps depend on layers
-                        Debug.Assert(ResourceIdentifier.GetResourceType(dep) == OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition);
-
-                        IMapDefinition mdf = (IMapDefinition)conn.ResourceService.GetResource(dep);
-                        bool changed = false;
-                        //Find all references to source and replace with target
-                        foreach (var layer in mdf.MapLayer)
-                        {
-                            if (layer.ResourceId.Equals(srcLayer))
-                            {
-                                layer.ResourceId = targetLayer;
-                                changed = true;
-                            }
-                        }
-                        if (mdf.BaseMap != null)
-                        {
-                            foreach (var group in mdf.BaseMap.BaseMapLayerGroup)
-                            {
-                                foreach (var layer in group.BaseMapLayer)
-                                {
-                                    if (layer.ResourceId.Equals(srcLayer))
-                                    {
-                                        layer.ResourceId = targetLayer;
-                                        changed = true;
-                                    }
-                                }
-                            }
-                        }
-
-                        //If it wasn't changed why did the resource service
-                        //list this map as a dependent resource?
-                        if (changed)
-                        {
-                            conn.ResourceService.SaveResource(mdf);
-                            updated++;
-
-                            wk.ReportProgress((updated / total) * 100);
-                        }
-                    }
-                    return updated;
-                };
-                var prd = new ProgressDialog();
-                int result = (int)prd.RunOperationAsync(wb, worker);
-                MessageService.ShowMessage(string.Format(Strings.ResourcesRepointed, result, targetLayer));
+                MessageService.ShowMessage(string.Format(Strings.ResourcesRepointed, result, dstId));
             }
         }
     }

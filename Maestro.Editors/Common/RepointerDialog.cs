@@ -29,9 +29,16 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI.Services;
 
-namespace Maestro.Base.UI
+namespace Maestro.Editors.Common
 {
-    internal partial class RepointerDialog : Form
+    /// <summary>
+    /// A dialog that prompts the user to re-point the dependent resources of a given resource
+    /// to a new resource of the user's choosing.
+    /// 
+    /// This dialog does not perform the re-pointer logic. This dialog simply captures the parameters
+    /// required for a re-pointer operation.
+    /// </summary>
+    public partial class RepointerDialog : Form
     {
         private RepointerDialog()
         {
@@ -40,6 +47,11 @@ namespace Maestro.Base.UI
 
         private IResourceService _resSvc;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="resId">The given resource, whose dependencies we want to re-point</param>
+        /// <param name="resSvc">The resource service</param>
         public RepointerDialog(ResourceIdentifier resId, IResourceService resSvc)
             : this()
         {
@@ -52,13 +64,22 @@ namespace Maestro.Base.UI
             lstAffectedResources.DataSource = dependents.ResourceId;
         }
 
+        /// <summary>
+        /// Returns a list of resource ids which are the dependent resources of the specified resource
+        /// </summary>
         public ICollection<string> Dependents { get { return (ICollection<string>)lstAffectedResources.DataSource; } }
 
+        /// <summary>
+        /// Gets the specified resource id
+        /// </summary>
         public string Source { get { return txtSource.Text; } }
 
+        /// <summary>
+        /// Gets the target resource id we want to re-point 
+        /// </summary>
         public string Target { get { return txtTarget.Text; } }
 
-        public ResourceTypes ResourceType
+        internal ResourceTypes ResourceType
         {
             get;
             private set;
@@ -78,10 +99,13 @@ namespace Maestro.Base.UI
         {
             using (var picker = new ResourcePicker(_resSvc, this.ResourceType, ResourcePickerMode.OpenResource))
             {
+                if (string.IsNullOrEmpty(LastSelectedFolder.FolderId))
+                    picker.SetStartingPoint(ResourceIdentifier.GetParentFolder(this.Source));
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
                     txtTarget.Text = picker.ResourceID;
-                    btnOK.Enabled = !string.IsNullOrEmpty(txtSource.Text) && !string.IsNullOrEmpty(txtTarget.Text);
+                    btnOK.Enabled = !string.IsNullOrEmpty(txtSource.Text) && !string.IsNullOrEmpty(txtTarget.Text) &&
+                                    lstAffectedResources.Items.Count > 0 && txtSource.Text != txtTarget.Text;
                 }
             }
         }

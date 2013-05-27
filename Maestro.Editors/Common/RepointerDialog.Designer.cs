@@ -1,4 +1,4 @@
-﻿namespace Maestro.Base.UI
+﻿namespace Maestro.Editors.Common
 {
     partial class RepointerDialog
     {

@@ -1419,6 +1419,33 @@ namespace OSGeo.MapGuide.MaestroAPI
                 ReturnType = "String" //NOXLATE
             };
         }
+
+        /// <summary>
+        /// Replaces all references of the given resource id
+        /// </summary>
+        /// <param name="doc">A resource document</param>
+        /// <param name="srcId">The resource id to replace</param>
+        /// <param name="dstId">The resource id to replace with</param>
+        /// <returns>true if a replacement was made. false if no replacements were made</returns>
+        public static bool ReplaceResourceIds(XmlDocument doc, string srcId, string dstId)
+        {
+            Check.NotEmpty(srcId, "srcId"); //NOXLATE
+            Check.NotEmpty(dstId, "dstId"); //NOXLATE
+            bool changed = false;
+            //There's an unwritten spec that all elements that refer to a Resource ID are named "ResourceId".
+            //This is why this method can be relied upon to cover all resource id references.
+            var resIdNodes = Utility.GetResourceIdPointers(doc);
+            for (int i = 0; i < resIdNodes.Count; i++)
+            {
+                var kvp = resIdNodes[i];
+                if (kvp.Value.Equals(srcId))
+                {
+                    kvp.Key.InnerXml = dstId;
+                    changed = true;
+                }
+            }
+            return changed;
+        }
     }
 
     /// <summary>
