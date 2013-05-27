@@ -1,8 +1,18 @@
 ﻿5.0 RC1
 -------
+ - Re-pointer command now supports all resource types with downstream dependencies.
+ - Added support for viewing layer draw order in RtMapInspector
  - New context menu command to create default layers from a Feature Source
  - New context menu command to test a Feature Source connection
  - All specialized Fusion widget editors removed. All widget editing is through XML
+ - Live Map Definition Editor enhancements:
+    - Layers can be added to a map by drag/drop Layer Definitions from the repository view.
+	- Layers can be re-ordered in "Draw Order" view
+	- Layers/Groups can be re-organized in Legend view
+	- Map Settings dialog can now support:
+		- Extent computation based on current layers
+		- Extent computation based on current viewer extents
+	- Assorted bug fixes.
  - Fusion editor enhancements:
     - Using ICSharpCode.TextEditor for all XML editing functionality
 	- Fix errant whitespace in widget XML
@@ -10,6 +20,8 @@
     - Indicate which widgets are dockable
 	- Filter out un-dockable widgets when prompting the user for the widget to attach to a toolbar/container
  - Support for new Resampling Method paramter in GDAL Feature Source editor
+ - Fix: MgCooker command-line ignoring basegroup parameter
+ - Fix: NullReferenceException when using cut command on an item in the Site Explorer
  - Fix: Custom scale indexes passed in from command-line ignored by MgCooker
  - Fix: Dependency list compilation failure on Flexible Layout documents
  - Fix: OutOfMemoryException on HTTP SETRESOURCEDATA calls involving really large files
