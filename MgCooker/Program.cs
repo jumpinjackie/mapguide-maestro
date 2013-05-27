@@ -225,21 +225,7 @@ namespace MgCooker
             
 
             BatchSettings bx = new BatchSettings(connection);
-            if (!string.IsNullOrEmpty(basegroups))
-            {
-                List<string> groups = new List<string>();
-                foreach (string s in basegroups.Split(','))
-                {
-                    string f = s;
-                    if (f.StartsWith("\""))
-                        f = f.Substring(1);
-                    if (f.EndsWith("\""))
-                        f = f.Substring(0, f.Length - 1);
-                    groups.Add(f);
-                }
-                bx.SetGroups(groups.ToArray());
-            }
-
+            
             int x;
 
             if (!string.IsNullOrEmpty(limitCols) && int.TryParse(limitCols, out x))
@@ -270,6 +256,22 @@ namespace MgCooker
 
             //Now that all global parameters are set, we can now add the map definitions
             bx.AddMapDefinitions(maps);
+
+            //basegroups must be set in each mapdefinition 
+            if (!string.IsNullOrEmpty(basegroups))
+            {
+                List<string> groups = new List<string>();
+                foreach (string s in basegroups.Split(','))
+                {
+                    string f = s;
+                    if (f.StartsWith("\""))
+                        f = f.Substring(1);
+                    if (f.EndsWith("\""))
+                        f = f.Substring(0, f.Length - 1);
+                    groups.Add(f);
+                }
+                bx.SetGroups(groups.ToArray());
+            }
 
             if (!string.IsNullOrEmpty(scaleindex))
             {
