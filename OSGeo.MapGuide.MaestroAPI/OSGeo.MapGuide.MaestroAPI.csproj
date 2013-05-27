@@ -247,6 +247,7 @@
     <Compile Include="IO\NsDoc.cs" />
     <Compile Include="Mapping\Collections.cs" />
     <Compile Include="Mapping\NsDoc.cs" />
+    <Compile Include="CsHelper.cs" />
     <Compile Include="NsDoc.cs" />
     <Compile Include="ObjectModels\CommonTypes.cs" />
     <Compile Include="ObjectModels\IFdoSpatialContext.cs" />

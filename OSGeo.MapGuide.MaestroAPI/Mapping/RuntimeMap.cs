@@ -132,6 +132,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         public IServerConnection CurrentConnection { get; private set; }
 
+        /// <summary>
+        /// If set to true. The first layer added to this map will automatically compute the map's extents and coordinate system
+        /// based on the first layer.
+        /// </summary>
+        public bool ComputeCoordSysAndExtentsOnFirstLayerAdded { get; set; }
+
         internal Version SiteVersion { get; private set; }
 
         /// <summary>
@@ -159,6 +165,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="conn"></param>
         protected internal RuntimeMap(IServerConnection conn)
         {
+            this.ComputeCoordSysAndExtentsOnFirstLayerAdded = false;
             this.StrictSelection = true;
             this.IsDirty = false;
             _disableChangeTracking = true;
@@ -1482,8 +1489,44 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             TrackChange(layer.ObjectId, true, Change.ChangeType.removed, string.Empty);
         }
 
+        /// <summary>
+        /// Raised when <see cref="P:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ComputeCoordSysAndExtentsOnFirstLayerAdded"/> is true
+        /// and the first layer was added the map extents and coordinate system were successfully computed from that layer
+        /// </summary>
+        public event EventHandler CoordSysAndExtentsChangedFromFirstLayer;
+
         internal void OnLayerAdded(RuntimeMapLayer layer)
         {
+            if (this.ComputeCoordSysAndExtentsOnFirstLayerAdded && this.Layers.Count == 1)
+            {
+                Debug.WriteLine("Computing map extents and CS based on first layer added");
+                try
+                {
+                    ILayerDefinition layerDef = (ILayerDefinition)this.ResourceService.GetResource(layer.LayerDefinitionID);
+                    string wkt;
+                    IEnvelope env = layerDef.GetSpatialExtent(true, out wkt);
+
+                    this.MapExtent = env;
+                    this.CoordinateSystem = wkt;
+                    if (CsHelper.DefaultCalculator != null)
+                    {
+                        this.MetersPerUnit = CsHelper.DefaultCalculator.Calculate(wkt, 1.0);
+                    }
+                    else
+                    {
+                        var calc = this.CurrentConnection.GetCalculator();
+                        this.MetersPerUnit = calc.Calculate(wkt, 1.0);
+                    }
+                    Debug.WriteLine("Computed map extents and CS");
+                    var h = this.CoordSysAndExtentsChangedFromFirstLayer;
+                    if (h != null)
+                        h(this, EventArgs.Empty);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("Uh-Oh: " + ex.ToString());
+                }
+            }
             //Fix the draw order of this layer that was added
             
             //???
@@ -1678,6 +1721,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             newMdf.RemoveBaseMap();
 
             var baseGroups = new List<RuntimeMapGroup>();
+
+            newMdf.CoordinateSystem = this.CoordinateSystem;
+            newMdf.Extents = this.MapExtent;
 
             //Add dynamic groups
             for (int i = this.Groups.Count - 1; i >= 0; i--)

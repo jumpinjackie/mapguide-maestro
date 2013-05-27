@@ -1885,6 +1885,26 @@ namespace OSGeo.MapGuide.MaestroAPI
             catch { return 1.0; }
         }
 
+        class DefaultCalculator : IMpuCalculator
+        {
+            private PlatformConnectionBase _conn;
+
+            public DefaultCalculator(PlatformConnectionBase conn)
+            {
+                _conn = conn;
+            }
+
+            public double Calculate(string csWkt, double units)
+            {
+                return _conn.InferMPU(csWkt, units);
+            }
+        }
+
+        public virtual IMpuCalculator GetCalculator()
+        {
+            return new DefaultCalculator(this);
+        }
+
         /// <summary>
         /// Creates the map group.
         /// </summary>
@@ -1996,7 +2016,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         public RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId)
         {
             var mdf = (IMapDefinition)GetResource(baseMapDefinitionId);
-            var mpu = InferMPU(mdf.CoordinateSystem, 1.0);
+            double mpu = 1.0;
+            if (CsHelper.DefaultCalculator != null)
+                mpu = CsHelper.DefaultCalculator.Calculate(mdf.CoordinateSystem, 1.0);
+            else
+                mpu = InferMPU(mdf.CoordinateSystem, 1.0);
             return CreateMap(runtimeMapResourceId, mdf, mpu);
         }
 
@@ -2054,7 +2078,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf)
         {
-            var mpu = InferMPU(mdf.CoordinateSystem, 1.0);
+            double mpu = 1.0;
+            if (CsHelper.DefaultCalculator != null)
+                mpu = CsHelper.DefaultCalculator.Calculate(mdf.CoordinateSystem, 1.0);
+            else
+                mpu = InferMPU(mdf.CoordinateSystem, 1.0);
             return CreateMap(runtimeMapResourceId, mdf, mpu);
         }
 

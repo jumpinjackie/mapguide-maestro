@@ -33,6 +33,7 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using Maestro.MapViewer.Model;
 using Maestro.Editors.MapDefinition.Live;
+using Maestro.MapViewer;
 
 namespace Maestro.Editors.MapDefinition
 {
@@ -86,6 +87,11 @@ namespace Maestro.Editors.MapDefinition
             viewer.RefreshMap();
         }
 
+        /// <summary>
+        /// Gets the viewer
+        /// </summary>
+        public IMapViewer Viewer { get { return viewer; } }
+
         private RuntimeMap _rtMap;
         private IMapDefinition _shadowCopy;
         private IMappingService _mapSvc;
@@ -115,6 +121,16 @@ namespace Maestro.Editors.MapDefinition
                 ResourceTypes.FeatureSource
             });
 
+            ReloadViewer();
+        }
+
+        public void RebuildRuntimeMap()
+        {
+            _rtMap = _mapSvc.CreateMap(_shadowCopy);
+        }
+
+        public void ReloadViewer()
+        {
             viewer.LoadMap(_rtMap);
         }
 

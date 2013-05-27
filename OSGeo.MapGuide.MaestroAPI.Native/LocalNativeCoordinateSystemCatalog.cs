@@ -30,7 +30,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         private string m_coordLib = null;
         internal OSGeo.MapGuide.MgCoordinateSystemFactory m_cf;
 
-        internal LocalNativeCoordinateSystemCatalog()
+        public LocalNativeCoordinateSystemCatalog()
         {
             m_cf = new MgCoordinateSystemFactory();
         }

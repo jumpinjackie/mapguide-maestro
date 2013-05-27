@@ -26,6 +26,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using Maestro.Editors.Generic;
 using Maestro.Editors.MapDefinition;
 using OSGeo.MapGuide.ObjectModels;
@@ -83,8 +84,8 @@ namespace Maestro.LiveMapEditor
             ClearExistingEditor();
 
             var mdf = ObjectFactory.CreateMapDefinition(_conn, Strings.NewMap);
-            var diag = new MapSettingsDialog(_conn, mdf);
-            if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            var diag = new MapSettingsDialog(_conn, mdf, null);
+            //if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 //Start off in the session, so the editor service knows this is a new resource
                 mdf.ResourceID = "Session:" + _conn.SessionID + "//NewMap.MapDefinition";
@@ -96,6 +97,8 @@ namespace Maestro.LiveMapEditor
 
         private void LoadMapDefinitionForEditing(IMapDefinition mdf)
         {
+            CleanupExistingMap();
+
             if (mdf.BaseMap != null)
             {
                 if (mdf.BaseMap.GroupCount > 0)
@@ -106,8 +109,29 @@ namespace Maestro.LiveMapEditor
 
             _mapEditor = new LiveMapDefinitionEditorCtrl();
             _mapEditor.Bind(new ResourceEditorService(mdf.ResourceID, _conn));
+            _mapEditor.Map.ComputeCoordSysAndExtentsOnFirstLayerAdded = _mapEditor.EditorService.IsNew;
+            if (_mapEditor.EditorService.IsNew)
+            {
+                _mapEditor.Map.CoordSysAndExtentsChangedFromFirstLayer += OnMapCoordSysAndExtentsChangedFromFirstLayer;
+            }
             _mapEditor.Dock = DockStyle.Fill;
             rootPanel.Controls.Add(_mapEditor);
+        }
+
+        private void CleanupExistingMap()
+        {
+            if (_mapEditor != null)
+            {
+                if (_mapEditor.Map != null)
+                {
+                    _mapEditor.Map.CoordSysAndExtentsChangedFromFirstLayer -= OnMapCoordSysAndExtentsChangedFromFirstLayer;
+                }
+            }
+        }
+
+        void OnMapCoordSysAndExtentsChangedFromFirstLayer(object sender, EventArgs e)
+        {
+            _mapEditor.ReloadViewer();
         }
 
         private void DoOpen()
@@ -187,8 +211,18 @@ namespace Maestro.LiveMapEditor
                 return;
 
             _mapEditor.SyncMap();
-            var diag = new MapSettingsDialog(_conn, _mapEditor.GetMapDefinition());
-            diag.ShowDialog();
+            var diag = new MapSettingsDialog(_conn, _mapEditor.GetMapDefinition(), _mapEditor.Viewer);
+            if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                CleanupExistingMap();
+                _mapEditor.RebuildRuntimeMap();
+                _mapEditor.Map.ComputeCoordSysAndExtentsOnFirstLayerAdded = _mapEditor.EditorService.IsNew;
+                if (_mapEditor.EditorService.IsNew)
+                {
+                    _mapEditor.Map.CoordSysAndExtentsChangedFromFirstLayer += OnMapCoordSysAndExtentsChangedFromFirstLayer;
+                }
+                _mapEditor.ReloadViewer();
+            }
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)

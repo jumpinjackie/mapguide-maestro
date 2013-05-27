@@ -129,11 +129,17 @@
   <data name="ErrInvalidExtents" xml:space="preserve">
     <value>Extents are invalid or empty</value>
   </data>
+  <data name="ErrorMapExtentCalculationFailed" xml:space="preserve">
+    <value>Could not transform extents of any layer in this Map Definition. You will have to specify the extents manually.</value>
+  </data>
   <data name="NewMap" xml:space="preserve">
     <value>New Map</value>
   </data>
   <data name="TiledMapNote" xml:space="preserve">
     <value>Because this map has tiled layers, the RenderMap API will be used instead of the normal RenderDynamicOverlay API for map images</value>
+  </data>
+  <data name="TitleError" xml:space="preserve">
+    <value>Error</value>
   </data>
   <data name="TitleTiledMap" xml:space="preserve">
     <value>Tiled Map Support</value>

@@ -55,18 +55,24 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// you pass in
         /// </summary>
         public bool HasGlobalState { get; private set; }
+        /// <summary>
+        /// Gets the path of the assembly containing the provider implementation
+        /// </summary>
+        public string AssemblyPath { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ConnectionProviderEntry"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="desc">The desc.</param>
+        /// <param name="asmPath">The assembly path</param>
         /// <param name="multiPlatform">if set to <c>true</c> [multi platform].</param>
-        public ConnectionProviderEntry(string name, string desc, bool multiPlatform)
+        internal ConnectionProviderEntry(string name, string desc, string asmPath, bool multiPlatform)
         {
             this.Name = name;
             this.Description = desc;
             this.IsMultiPlatform = multiPlatform;
+            this.AssemblyPath = asmPath;
         }
     }
 
@@ -176,7 +182,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                             IServerConnection conn = (IServerConnection)impl.InvokeMember(null, flags, null, null, new object[] { initParams });
                             return conn;
                         });
-                        _providers.Add(new ConnectionProviderEntry(name, desc, attr[0].IsMultiPlatform));
+                        _providers.Add(new ConnectionProviderEntry(name, desc, dll, attr[0].IsMultiPlatform));
                         _callCount[name] = 0;
                     }
                 }
@@ -335,11 +341,12 @@ namespace OSGeo.MapGuide.MaestroAPI
             return CreateConnection(provider, initP);
         }
 
-        private static ConnectionProviderEntry FindProvider(string provider)
+        public static ConnectionProviderEntry FindProvider(string provider)
         {
+            string cmp = provider.ToUpper();
             foreach (var prv in _providers)
             {
-                if (prv.Name == provider)
+                if (prv.Name == cmp)
                     return prv;
             }
 

@@ -1688,10 +1688,11 @@ namespace Maestro.MapViewer
         
         public void GetViewExtent(out double minX, out double minY, out double maxX, out double maxY)
         {
+            //NOTE: Something strange about the AJAX viewer code we grafted this from. Y2 is not the max Y, Y1 is the max Y.
             minX = _extX1;
-            minY = _extY1;
+            minY = _extY2;
             maxX = _extX2;
-            maxY = _extY2;
+            maxY = _extY1;
         }
 
         private bool PruneHistoryEntriesFromCurrentView()

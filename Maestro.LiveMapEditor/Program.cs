@@ -25,6 +25,9 @@ using Maestro.Shared.UI;
 using OSGeo.MapGuide.ExtendedObjectModels;
 using Maestro.Editors.Preview;
 using System.Diagnostics;
+using System.Reflection;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 
 namespace Maestro.LiveMapEditor
 {
@@ -56,10 +59,48 @@ namespace Maestro.LiveMapEditor
             //property is set
             ResourcePreviewerFactory.RegisterPreviewer("Maestro.LocalNative", new LocalMapPreviewer(new StubPreviewer(), urlLauncher)); //NOXLATE
 
+            //Can't use this code, it requires a call to MgdPlatform.Initialize which we can't call indirectly :(
+            /*
+            //Try to tap into mg-desktop coordinate system services if possible
+            try
+            {
+                var provEntry = ConnectionProviderRegistry.FindProvider("Maestro.Local"); //NOXLATE
+                if (provEntry != null)
+                {
+                    string path = provEntry.AssemblyPath;
+                    Assembly asm = Assembly.LoadFrom(path); //NOXLATE
+                    if (asm != null)
+                    {
+                        Type mpuType = asm.GetType("OSGeo.MapGuide.MaestroAPI.Native.LocalNativeMpuCalculator"); //NOXLATE
+                        Type catType = asm.GetType("OSGeo.MapGuide.MaestroAPI.Native.LocalNativeCoordinateSystemCatalog"); //NOXLATE
+
+                        if (mpuType != null && catType != null)
+                        {
+                            IMpuCalculator calc = (IMpuCalculator)Activator.CreateInstance(mpuType);
+                            ICoordinateSystemCatalog csCatalog = (ICoordinateSystemCatalog)Activator.CreateInstance(catType);
+
+                            CsHelper.DefaultCalculator = calc;
+                            CsHelper.DefaultCatalog = csCatalog;
+                            Debug.WriteLine("Using mg-desktop coordinate system services where possible");
+                        }
+                    }
+                }
+                else
+                {
+                    Debug.WriteLine("No mg-desktop coordinate system services to tap into. Using default services");
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+             */
+
             var login = new Login.LoginDialog();
             if (login.ShowDialog() == DialogResult.OK)
             {
                 var conn = login.Connection;
+
                 //TODO: Validate connection capabilities
                 Application.Run(new MainForm(conn));
             }

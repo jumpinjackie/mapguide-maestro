@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapSettingsDialog));
-            this.cmbBackgroundColor = new Maestro.Editors.Common.ColorComboBox();
             this.btnPickCs = new System.Windows.Forms.Button();
             this.txtCoordinateSystem = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -47,14 +46,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.btnSetZoom = new System.Windows.Forms.Button();
+            this.btnUseCurrentView = new System.Windows.Forms.Button();
+            this.cmbBackgroundColor = new Maestro.Editors.Common.ColorComboBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // cmbBackgroundColor
-            // 
-            this.cmbBackgroundColor.FormattingEnabled = true;
-            resources.ApplyResources(this.cmbBackgroundColor, "cmbBackgroundColor");
-            this.cmbBackgroundColor.Name = "cmbBackgroundColor";
             // 
             // btnPickCs
             // 
@@ -166,11 +162,32 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // btnSetZoom
+            // 
+            resources.ApplyResources(this.btnSetZoom, "btnSetZoom");
+            this.btnSetZoom.Name = "btnSetZoom";
+            this.btnSetZoom.Click += new System.EventHandler(this.btnSetZoom_Click);
+            // 
+            // btnUseCurrentView
+            // 
+            resources.ApplyResources(this.btnUseCurrentView, "btnUseCurrentView");
+            this.btnUseCurrentView.Name = "btnUseCurrentView";
+            this.btnUseCurrentView.UseVisualStyleBackColor = true;
+            this.btnUseCurrentView.Click += new System.EventHandler(this.btnUseCurrentView_Click);
+            // 
+            // cmbBackgroundColor
+            // 
+            this.cmbBackgroundColor.FormattingEnabled = true;
+            resources.ApplyResources(this.cmbBackgroundColor, "cmbBackgroundColor");
+            this.cmbBackgroundColor.Name = "cmbBackgroundColor";
+            // 
             // MapSettingsDialog
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ControlBox = false;
+            this.Controls.Add(this.btnUseCurrentView);
+            this.Controls.Add(this.btnSetZoom);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.cmbBackgroundColor);
@@ -207,6 +224,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.Button btnSetZoom;
+        private System.Windows.Forms.Button btnUseCurrentView;
 
     }
 }

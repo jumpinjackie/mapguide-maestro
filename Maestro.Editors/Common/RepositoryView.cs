@@ -43,7 +43,13 @@ namespace Maestro.Editors.Common
         public RepositoryView()
         {
             InitializeComponent();
+            this.SelectOnDrag = false;
         }
+
+        /// <summary>
+        /// Determines whether a node that is dragged causes it to be selected
+        /// </summary>
+        public bool SelectOnDrag { get; set; }
 
         /// <summary>
         /// Raises the Load event
@@ -162,6 +168,15 @@ namespace Maestro.Editors.Common
 
         private void trvRepository_ItemDrag(object sender, ItemDragEventArgs e)
         {
+            var node = e.Item as TreeNode;
+            if (node != null)
+            {
+                if (node != trvRepository.SelectedNode && this.SelectOnDrag)
+                {
+                    trvRepository.SelectedNode = node;
+                }
+            }
+
             var h = this.ItemDrag;
             if (h != null)
                 h(this, e);

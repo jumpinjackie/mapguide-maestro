@@ -164,25 +164,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 			}
 		}
 
-        protected override double InferMPU(string csWkt, double units)
-        {
-            try
-            {
-                MgCoordinateSystemFactory csFact = new MgCoordinateSystemFactory();
-                MgCoordinateSystem cs = csFact.Create(csWkt);
-                return cs.ConvertCoordinateSystemUnitsToMeters(units);
-            }
-            catch (MgException ex) //Not implemented due to wrapping Proj.4?
-            {
-                ex.Dispose();
-                return base.InferMPU(csWkt, units);
-            }
-            catch (Exception) //Binding to assembly with pre-refactored CS API?
-            {
-                return base.InferMPU(csWkt, units);
-            }
-        }
-
         private void LogMethodCall(string method, bool success, params object[] values)
         {
             string[] strValues = new string[values.Length];
@@ -491,6 +472,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 #endif
             }
 		}
+
+        private LocalNativeMpuCalculator m_calc;
+
+        public override IMpuCalculator GetCalculator()
+        {
+            if (null == m_calc)
+                m_calc = new LocalNativeMpuCalculator();
+            return m_calc;
+        }
 
 
         private ICoordinateSystemCatalog m_coordsys = null;

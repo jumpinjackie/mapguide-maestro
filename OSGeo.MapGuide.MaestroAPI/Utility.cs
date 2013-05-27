@@ -943,7 +943,15 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             try
             {
-                var trans = new DefaultSimpleTransform(srcCsWkt, dstCsWkt);
+                ISimpleTransform trans = null;
+                if (CsHelper.DefaultCatalog != null)
+                {
+                    trans = CsHelper.DefaultCatalog.CreateTransform(srcCsWkt, dstCsWkt);
+                }
+                else
+                {
+                    trans = new DefaultSimpleTransform(srcCsWkt, dstCsWkt);
+                }
 
                 var oldExt = env;
 
@@ -1421,9 +1429,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
-        /// Replaces all references of the given resource id
+        /// Replaces all references of the given resource id.
         /// </summary>
-        /// <param name="doc">A resource document</param>
+        /// <param name="doc">A resource document. Any replacements will modify the XmlDocument that is passed in</param>
         /// <param name="srcId">The resource id to replace</param>
         /// <param name="dstId">The resource id to replace with</param>
         /// <returns>true if a replacement was made. false if no replacements were made</returns>

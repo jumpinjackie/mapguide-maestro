@@ -96,17 +96,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             get { return PROVIDER_NAME; }
         }
 
-        public static ConnectionProviderEntry ProviderInfo
-        {
-            get
-            {
-                return new ConnectionProviderEntry(
-                    PROVIDER_NAME,
-                    "Connection using the MapGuide Desktop API", //LOCALIZEME
-                    false);
-            }
-        }
-
         public override System.Collections.Specialized.NameValueCollection CloneParameters
         {
             get 
@@ -951,6 +940,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             throw new UnsupportedServiceTypeException(st);
         }
 
+        private LocalNativeMpuCalculator m_calc;
+
+        public override IMpuCalculator GetCalculator()
+        {
+            if (null == m_calc)
+                m_calc = new LocalNativeMpuCalculator();
+            return m_calc;
+        }
+
         private ICoordinateSystemCatalog m_coordsys = null;
 
         public OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog CoordinateSystemCatalog
@@ -1070,11 +1068,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                 ex.Dispose();
                 throw exMgd;
             }
-        }
-
-        protected override double InferMPU(string csWkt, double units)
-        {
-            return base.InferMPU(csWkt, units);
         }
 
         public override Mapping.RuntimeMap OpenMap(string runtimeMapResourceId)

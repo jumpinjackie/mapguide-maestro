@@ -25,6 +25,19 @@ using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 
 namespace OSGeo.MapGuide.MaestroAPI.Native
 {
+    public class LocalNativeMpuCalculator : IMpuCalculator
+    {
+        private MgCoordinateSystemFactory _csFact;
+
+        public LocalNativeMpuCalculator() { _csFact = new MgCoordinateSystemFactory(); }
+
+        public double Calculate(string csWkt, double units)
+        {
+            MgCoordinateSystem cs = _csFact.Create(csWkt);
+            return cs.ConvertCoordinateSystemUnitsToMeters(units);
+        }
+    }
+
     public class LocalNativeCoordinateSystemDefinition : CoordinateSystemDefinitionBase
     {
         internal LocalNativeCoordinateSystemDefinition() : base() { }

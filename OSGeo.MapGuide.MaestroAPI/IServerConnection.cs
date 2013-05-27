@@ -204,6 +204,12 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Raised when a outbound request has been dispatched
         /// </summary>
         event RequestEventHandler RequestDispatched;
+
+        /// <summary>
+        /// Returns a meters-per-unit calculator
+        /// </summary>
+        /// <returns></returns>
+        IMpuCalculator GetCalculator();
     }
 
     /// <summary>

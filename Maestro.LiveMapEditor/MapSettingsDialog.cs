@@ -30,6 +30,8 @@ using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System.Globalization;
 using OSGeo.MapGuide.ObjectModels;
 using Maestro.Editors.Common;
+using Maestro.Editors.MapDefinition;
+using Maestro.MapViewer;
 
 namespace Maestro.LiveMapEditor
 {
@@ -37,11 +39,13 @@ namespace Maestro.LiveMapEditor
     {
         private IMapDefinition _mdf;
         private IServerConnection _conn;
+        private IMapViewer _viewer;
 
-        public MapSettingsDialog(IServerConnection conn, IMapDefinition mdf)
+        public MapSettingsDialog(IServerConnection conn, IMapDefinition mdf, IMapViewer viewer)
         {
             InitializeComponent();
             _conn = conn;
+            _viewer = viewer;
             txtCoordinateSystem.Text = mdf.CoordinateSystem;
             var ext = mdf.Extents;
             txtLowerX.Text = ext.MinX.ToString(CultureInfo.InvariantCulture);
@@ -51,6 +55,7 @@ namespace Maestro.LiveMapEditor
             cmbBackgroundColor.ResetColors();
             cmbBackgroundColor.CurrentColor = mdf.BackgroundColor;
             _mdf = mdf;
+            btnUseCurrentView.Visible = (_viewer != null);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -67,6 +72,7 @@ namespace Maestro.LiveMapEditor
 
         private bool ValidateSettings()
         {
+            /*
             if (string.IsNullOrEmpty(txtCoordinateSystem.Text))
             {
                 MessageBox.Show(Strings.ErrCoordSysRequired);
@@ -75,7 +81,9 @@ namespace Maestro.LiveMapEditor
             else
             {
                 _mdf.CoordinateSystem = txtCoordinateSystem.Text;
-            }
+            }*/
+
+            _mdf.CoordinateSystem = txtCoordinateSystem.Text;
 
             double llx;
             double lly;
@@ -94,6 +102,8 @@ namespace Maestro.LiveMapEditor
                 _mdf.Extents = ObjectFactory.CreateEnvelope(llx, lly, urx, ury);
             }
 
+            _mdf.BackgroundColor = cmbBackgroundColor.CurrentColor;
+
             return true;
         }
 
@@ -106,6 +116,45 @@ namespace Maestro.LiveMapEditor
                     var cs = picker.SelectedCoordSys;
                     txtCoordinateSystem.Text = cs.WKT;
                 }
+            }
+        }
+
+        private void btnSetZoom_Click(object sender, EventArgs e)
+        {
+            var diag = new ExtentCalculationDialog(_mdf);
+            if (diag.ShowDialog() == DialogResult.OK)
+            {
+                var env = diag.Extents;
+                if (env != null)
+                {
+                    _mdf.SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);
+                    txtLowerX.Text = env.MinX.ToString(CultureInfo.InvariantCulture);
+                    txtLowerY.Text = env.MinY.ToString(CultureInfo.InvariantCulture);
+                    txtUpperX.Text = env.MaxX.ToString(CultureInfo.InvariantCulture);
+                    txtUpperY.Text = env.MaxY.ToString(CultureInfo.InvariantCulture);
+                }
+                else
+                {
+                    MessageBox.Show(Strings.ErrorMapExtentCalculationFailed, Strings.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnUseCurrentView_Click(object sender, EventArgs e)
+        {
+            if (_viewer != null)
+            {
+                double minX;
+                double minY;
+                double maxX;
+                double maxY;
+                _viewer.GetViewExtent(out minX, out minY, out maxX, out maxY);
+                var ext = ObjectFactory.CreateEnvelope(minX, minY, maxX, maxY);
+                _mdf.Extents = ext;
+                txtLowerX.Text = ext.MinX.ToString(CultureInfo.InvariantCulture);
+                txtLowerY.Text = ext.MinY.ToString(CultureInfo.InvariantCulture);
+                txtUpperX.Text = ext.MaxX.ToString(CultureInfo.InvariantCulture);
+                txtUpperY.Text = ext.MaxY.ToString(CultureInfo.InvariantCulture);
             }
         }
     }

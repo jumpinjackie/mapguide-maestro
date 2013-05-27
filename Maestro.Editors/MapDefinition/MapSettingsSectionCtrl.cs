@@ -230,7 +230,6 @@ namespace Maestro.Editors.MapDefinition
                     MessageBox.Show(Strings.ErrorMapExtentCalculationFailed, Strings.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
     }
 }
