@@ -31,6 +31,10 @@ using Maestro.Editors.Generic;
 using Maestro.Editors.MapDefinition;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.MaestroAPI.Mapping;
+using System.Diagnostics;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace Maestro.LiveMapEditor
 {
@@ -45,6 +49,9 @@ namespace Maestro.LiveMapEditor
             InitializeComponent();
             _conn = conn;
             _origTitle = this.Text;
+#if DEBUG
+            debugToolStripMenuItem.Visible = true;
+#endif
         }
 
         protected override void OnLoad(EventArgs e)
@@ -95,6 +102,8 @@ namespace Maestro.LiveMapEditor
             EvaluateCommandStates();
         }
 
+        private bool _bComputeLayerCsAndExtentOnFirstLayerAdded = false;
+
         private void LoadMapDefinitionForEditing(IMapDefinition mdf)
         {
             CleanupExistingMap();
@@ -109,13 +118,67 @@ namespace Maestro.LiveMapEditor
 
             _mapEditor = new LiveMapDefinitionEditorCtrl();
             _mapEditor.Bind(new ResourceEditorService(mdf.ResourceID, _conn));
-            _mapEditor.Map.ComputeCoordSysAndExtentsOnFirstLayerAdded = _mapEditor.EditorService.IsNew;
-            if (_mapEditor.EditorService.IsNew)
-            {
-                _mapEditor.Map.CoordSysAndExtentsChangedFromFirstLayer += OnMapCoordSysAndExtentsChangedFromFirstLayer;
-            }
+            _bComputeLayerCsAndExtentOnFirstLayerAdded = _mapEditor.EditorService.IsNew;
+            _mapEditor.Map.LayerAdded += OnMapLayerAdded;
             _mapEditor.Dock = DockStyle.Fill;
             rootPanel.Controls.Add(_mapEditor);
+        }
+
+        private static bool SupportsMutableMapProperties(RuntimeMap runtimeMap)
+        {
+            return runtimeMap.SupportsMutableBackgroundColor &&
+                   runtimeMap.SupportsMutableCoordinateSystem &&
+                   runtimeMap.SupportsMutableExtents &&
+                   runtimeMap.SupportsMutableMetersPerUnit;
+        }
+
+        void OnMapLayerAdded(object sender, RuntimeMapLayer layer)
+        {
+            if (_bComputeLayerCsAndExtentOnFirstLayerAdded && _mapEditor.Map.Layers.Count == 1)
+            {
+                Debug.WriteLine("Computing map extents and CS based on first layer added");
+                try
+                {
+                    ILayerDefinition layerDef = (ILayerDefinition)_conn.ResourceService.GetResource(layer.LayerDefinitionID);
+                    string wkt;
+                    IEnvelope env = layerDef.GetSpatialExtent(true, out wkt);
+                    if (SupportsMutableMapProperties(_mapEditor.Map))
+                    {
+                        _mapEditor.Map.MapExtent = env;
+                        _mapEditor.Map.CoordinateSystem = wkt;
+                        if (CsHelper.DefaultCalculator != null)
+                        {
+                            _mapEditor.Map.MetersPerUnit = CsHelper.DefaultCalculator.Calculate(wkt, 1.0);
+                        }
+                        else
+                        {
+                            var calc = _mapEditor.Map.CurrentConnection.GetCalculator();
+                            _mapEditor.Map.MetersPerUnit = calc.Calculate(wkt, 1.0);
+                        }
+                        _mapEditor.ReloadViewer();
+                    }
+                    else
+                    {
+                        //We have to tear down the current runtime map, update the shadow copy
+                        //map definition and then rebuild a new runtime map
+                        _mapEditor.SyncMap();
+                        IMapDefinition mdf = _mapEditor.GetMapDefinition();
+                        mdf.Extents = env;
+                        mdf.CoordinateSystem = wkt;
+                        CleanupExistingMap();
+                        //If local, we'd be rebuilding off of the resource ID and not its in-memory
+                        //object representation so flush
+                        _mapEditor.EditorService.SyncSessionCopy();
+                        _mapEditor.RebuildRuntimeMap();
+                        _mapEditor.ReloadViewer();
+                    }
+                    Debug.WriteLine("Computed map extents and CS");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("Uh-Oh: " + ex.ToString());
+                }
+            }
         }
 
         private void CleanupExistingMap()
@@ -124,7 +187,7 @@ namespace Maestro.LiveMapEditor
             {
                 if (_mapEditor.Map != null)
                 {
-                    _mapEditor.Map.CoordSysAndExtentsChangedFromFirstLayer -= OnMapCoordSysAndExtentsChangedFromFirstLayer;
+                    _mapEditor.Map.LayerAdded -= OnMapLayerAdded;
                 }
             }
         }
@@ -215,12 +278,10 @@ namespace Maestro.LiveMapEditor
             if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CleanupExistingMap();
+                _mapEditor.EditorService.SyncSessionCopy();
                 _mapEditor.RebuildRuntimeMap();
-                _mapEditor.Map.ComputeCoordSysAndExtentsOnFirstLayerAdded = _mapEditor.EditorService.IsNew;
-                if (_mapEditor.EditorService.IsNew)
-                {
-                    _mapEditor.Map.CoordSysAndExtentsChangedFromFirstLayer += OnMapCoordSysAndExtentsChangedFromFirstLayer;
-                }
+                _bComputeLayerCsAndExtentOnFirstLayerAdded = _mapEditor.EditorService.IsNew;
+                _mapEditor.Map.LayerAdded += OnMapLayerAdded;
                 _mapEditor.ReloadViewer();
             }
         }

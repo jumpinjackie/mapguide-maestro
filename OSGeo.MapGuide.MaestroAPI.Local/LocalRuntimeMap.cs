@@ -48,6 +48,38 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             _disableChangeTracking = false;
         }
 
+        public override bool SupportsMutableBackgroundColor
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public override bool SupportsMutableExtents
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public override bool SupportsMutableCoordinateSystem
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public override bool SupportsMutableMetersPerUnit
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         private void InitializeLayersAndGroups()
         {
             this.Layers.Clear();
@@ -177,7 +209,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
                 return ObjectFactory.CreateEnvelope(envLL.X, envLL.Y, envUR.X, envUR.Y);
             }
-            protected set
+            set
             {
                 if (_disableChangeTracking) return; //Still initializing
                 throw new NotSupportedException();
@@ -190,6 +222,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             {
                 return _impl.GetMetersPerUnit();
             }
+            set { throw new NotImplementedException(); }
         }
 
         public override string ObjectId

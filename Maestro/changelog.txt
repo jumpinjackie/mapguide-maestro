@@ -1,5 +1,6 @@
 ﻿5.0 RC1
 -------
+ - mg-desktop binary update (2.5.0.7449)
  - Re-pointer command now supports all resource types with downstream dependencies.
  - Added support for viewing layer draw order in RtMapInspector
  - New context menu command to create default layers from a Feature Source

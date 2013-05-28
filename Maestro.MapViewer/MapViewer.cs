@@ -2868,9 +2868,16 @@ namespace Maestro.MapViewer
         /// <param name="name">The name.</param>
         protected void OnPropertyChanged(string name)
         {
-            var handler = this.PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(name));
+            Action action = () =>
+            {
+                var handler = this.PropertyChanged;
+                if (handler != null)
+                    handler(this, new PropertyChangedEventArgs(name));
+            };
+            if (this.InvokeRequired)
+                this.Invoke(action);
+            else
+                action();
         }
 
         /// <summary>

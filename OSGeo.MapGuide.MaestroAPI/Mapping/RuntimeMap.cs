@@ -132,12 +132,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         public IServerConnection CurrentConnection { get; private set; }
 
-        /// <summary>
-        /// If set to true. The first layer added to this map will automatically compute the map's extents and coordinate system
-        /// based on the first layer.
-        /// </summary>
-        public bool ComputeCoordSysAndExtentsOnFirstLayerAdded { get; set; }
-
         internal Version SiteVersion { get; private set; }
 
         /// <summary>
@@ -160,12 +154,31 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public const double Z_ORDER_TOP = 100.0;
 
         /// <summary>
+        /// Gets whether extents of this map can be modified at runtime
+        /// </summary>
+        public virtual bool SupportsMutableExtents { get { return true; } }
+
+        /// <summary>
+        /// Gets whether the coordinate system of this map can be modified at runtime
+        /// </summary>
+        public virtual bool SupportsMutableCoordinateSystem { get { return true; } }
+
+        /// <summary>
+        /// Gets whether the background color of this map can be modified at runtime
+        /// </summary>
+        public virtual bool SupportsMutableBackgroundColor { get { return true; } }
+
+        /// <summary>
+        /// Gets whether the meters-per-unit value of this map can be modified at runtime
+        /// </summary>
+        public virtual bool SupportsMutableMetersPerUnit { get { return true; } }
+
+        /// <summary>
         /// Initializes this instance
         /// </summary>
         /// <param name="conn"></param>
         protected internal RuntimeMap(IServerConnection conn)
         {
-            this.ComputeCoordSysAndExtentsOnFirstLayerAdded = false;
             this.StrictSelection = true;
             this.IsDirty = false;
             _disableChangeTracking = true;
@@ -267,7 +280,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             //batch. Eliminating lots of chatter for really large maps.
             if (_getRes != null)
             {
-                Trace.TraceInformation("[RuntimeMap.ctor]: Batching layer requests"); //NOXLATE
+                Debug.WriteLine("[RuntimeMap.ctor]: Batching layer requests"); //NOXLATE
                 var res = _getRes.Execute(GetLayerIds(mdf));
                 //Pre-populate layer def cache so GetLayerDefinition() returns these
                 //instead of making a new request
@@ -277,7 +290,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     if (layer != null)
                         layerDefinitionCache.Add(key, layer);
                 }
-                Trace.TraceInformation("[RuntimeMap.ctor]: {0} layers pre-cached", layerDefinitionCache.Count); //NOXLATE
+                Debug.WriteLine("[RuntimeMap.ctor]: {0} layers pre-cached", layerDefinitionCache.Count); //NOXLATE
             }
 
             //Load map layers
@@ -351,13 +364,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public double GetFiniteDisplayScaleAt(int index) { return _finiteDisplayScales[index]; }
 
         /// <summary>
-        /// Gets or sets the map extents.
+        /// Gets or sets the map extents. Inspect the <see cref="P:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableMapExtents"/>
+        /// to determine if setting the map extents is allowed
         /// </summary>
+        /// <exception cref="T:System.NotSupportedException">Thrown if the operation is not supported</exception>
         /// <value>The map extents.</value>
         public virtual IEnvelope MapExtent
         {
             get;
-            protected set;
+            set;
         }
         
         /// <summary>
@@ -564,13 +579,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         protected string _mapSrs;
 
         /// <summary>
-        /// Gets or sets the coordinate system in WKT format
+        /// Gets or sets the coordinate system in WKT format. Check the <see cref="P:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableCoordinateSystem"/>
+        /// to see if setting the coordinate system WKT is allowed.
         /// </summary>
+        /// <exception cref="T:System.NotSupportedException">Thrown if the operation is not supported</exception>
         /// <value>The coordinate system in WKT format.</value>
         public virtual string CoordinateSystem
         {
             get { return _mapSrs; }
-            internal set { SetField(ref _mapSrs, value, "CoordinateSystem"); } //NOXLATE
+            set { SetField(ref _mapSrs, value, "CoordinateSystem"); } //NOXLATE
         }
 
         /// <summary>
@@ -579,8 +596,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         protected System.Drawing.Color _bgColor;
 
         /// <summary>
-        /// Gets or sets the color of the background.
+        /// Gets or sets the color of the background. Check the <see cref="P:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableBackgroundColor"/>
+        /// to see if setting the background color is allowed.
         /// </summary>
+        /// <exception cref="T:System.NotSupportedException">Thrown if the operation is not supported</exception>
         /// <value>The color of the background.</value>
         public virtual System.Drawing.Color BackgroundColor
         {
@@ -622,13 +641,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         /// <summary>
-        /// Gets the meters per unit value.
+        /// Gets the meters per unit value. Check the <see cref="P:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableMetersPerUnit"/>
+        /// to see if setting the meters per unit value is allowed.
         /// </summary>
+        /// <exception cref="T:System.NotSupportedException">Thrown if the operation is not supported</exception>
         /// <value>The meters per unit.</value>
         public virtual double MetersPerUnit
         {
             get;
-            internal set;
+            set;
         }
 
         /// <summary>
@@ -1490,43 +1511,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         /// <summary>
-        /// Raised when <see cref="P:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.ComputeCoordSysAndExtentsOnFirstLayerAdded"/> is true
-        /// and the first layer was added the map extents and coordinate system were successfully computed from that layer
+        /// Raise when a layer is added to the map
         /// </summary>
-        public event EventHandler CoordSysAndExtentsChangedFromFirstLayer;
+        public event LayerEventHandler LayerAdded;
 
         internal void OnLayerAdded(RuntimeMapLayer layer)
         {
-            if (this.ComputeCoordSysAndExtentsOnFirstLayerAdded && this.Layers.Count == 1)
-            {
-                Debug.WriteLine("Computing map extents and CS based on first layer added");
-                try
-                {
-                    ILayerDefinition layerDef = (ILayerDefinition)this.ResourceService.GetResource(layer.LayerDefinitionID);
-                    string wkt;
-                    IEnvelope env = layerDef.GetSpatialExtent(true, out wkt);
-
-                    this.MapExtent = env;
-                    this.CoordinateSystem = wkt;
-                    if (CsHelper.DefaultCalculator != null)
-                    {
-                        this.MetersPerUnit = CsHelper.DefaultCalculator.Calculate(wkt, 1.0);
-                    }
-                    else
-                    {
-                        var calc = this.CurrentConnection.GetCalculator();
-                        this.MetersPerUnit = calc.Calculate(wkt, 1.0);
-                    }
-                    Debug.WriteLine("Computed map extents and CS");
-                    var h = this.CoordSysAndExtentsChangedFromFirstLayer;
-                    if (h != null)
-                        h(this, EventArgs.Empty);
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine("Uh-Oh: " + ex.ToString());
-                }
-            }
+            var h = this.LayerAdded;
+            if (h != null)
+                h(this, layer);
             //Fix the draw order of this layer that was added
             
             //???
@@ -1829,4 +1822,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             return newMdf;
         }
     }
+
+    public delegate void LayerEventHandler(object sender, RuntimeMapLayer layer);
 }

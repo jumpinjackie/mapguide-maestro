@@ -213,6 +213,13 @@ namespace Maestro.Editors.MapDefinition
                 var ldf = (ILayerDefinition)conn.ResourceService.GetResource(message.ResourceID);
                 var rtLayer = mapSvc.CreateMapLayer(map, ldf);
 
+                //Set some desired properties if not already set
+                if (string.IsNullOrEmpty(rtLayer.LegendLabel))
+                    rtLayer.LegendLabel = rtLayer.Name;
+                rtLayer.ShowInLegend = true;
+                rtLayer.ExpandInLegend = true;
+                rtLayer.Selectable = true;
+
                 if (groupMeta != null)
                     rtLayer.Group = groupMeta.Name;
 
