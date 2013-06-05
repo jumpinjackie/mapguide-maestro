@@ -40,6 +40,21 @@ namespace Maestro.Editors.LayerDefinition
             _vl = _parent.SubLayer as IVectorLayerDefinition;
             Debug.Assert(_vl != null);
 
+            if (service.IsNew)
+            {
+                //Let's try to auto-assign a feature class
+                string[] classNames = _edsvc.FeatureService.GetClassNames(_vl.ResourceId, null);
+                if (classNames.Length == 1) //Only one class in this Feature Source
+                {
+                    var clsDef = _edsvc.FeatureService.GetClassDefinition(_vl.ResourceId, classNames[0]);
+                    if (!string.IsNullOrEmpty(clsDef.DefaultGeometryPropertyName)) //It has a default geometry
+                    {
+                        _vl.FeatureName = classNames[0];
+                        _vl.Geometry = clsDef.DefaultGeometryPropertyName;
+                    }
+                }
+            }
+
             _props = new List<INameStringPair>(_vl.PropertyMapping);
             //Modifying the visibility constitutes a change in the resource
             //_props.ListChanged += OnPropertyListChanged;
