@@ -171,6 +171,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private void EditButton_Click(object sender, EventArgs e)
         {
             UserControl uc = null;
+            if (m_owner.SelectedClass == null)
+            {
+                MessageBox.Show(Strings.NoFeatureClassAssigned);
+                return;
+            }
             ILayerStylePreviewable prev = new LayerStylePreviewable(m_owner.EditorService.EditedResourceID,
                                                                     this.PreviewScale,
                                                                     80,

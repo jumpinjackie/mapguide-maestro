@@ -180,7 +180,17 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
                 ILayerDefinition layer = (ILayerDefinition)m_owner.Editor.GetEditedResource();
                 IVectorLayerDefinition vl = (IVectorLayerDefinition)layer.SubLayer;
+                if (string.IsNullOrEmpty(vl.FeatureName))
+                {
+                    MessageBox.Show(Strings.NoFeatureClassAssigned);
+                    return;
+                }
                 var cls = m_owner.Editor.FeatureService.GetClassDefinition(vl.ResourceId, vl.FeatureName);
+                if (cls == null)
+                {
+                    MessageBox.Show(string.Format(Strings.FeatureClassNotFound, vl.FeatureName));
+                    return;
+                }
                 ThemeCreator dlg = new ThemeCreator(
                     m_owner.Editor, 
                     layer,

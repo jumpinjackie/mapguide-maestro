@@ -1506,4 +1506,10 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="NoRegisteredPreviewerForProvider" xml:space="preserve">
     <value>No registered previewer for connection: {0}</value>
   </data>
+  <data name="FeatureClassNotFound" xml:space="preserve">
+    <value>Feature Class not found: {0}</value>
+  </data>
+  <data name="NoFeatureClassAssigned" xml:space="preserve">
+    <value>No Feature Class assigned</value>
+  </data>
 </root>

@@ -646,6 +646,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Feature Class not found: {0}.
+        /// </summary>
+        internal static string FeatureClassNotFound {
+            get {
+                return ResourceManager.GetString("FeatureClassNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This feature is not implemented yet.
         /// </summary>
         internal static string FeatureNotImplemented {
@@ -1540,6 +1549,15 @@ namespace Maestro.Editors {
         internal static string NoColumnValuesError {
             get {
                 return ResourceManager.GetString("NoColumnValuesError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Feature Class assigned.
+        /// </summary>
+        internal static string NoFeatureClassAssigned {
+            get {
+                return ResourceManager.GetString("NoFeatureClassAssigned", resourceCulture);
             }
         }
         
