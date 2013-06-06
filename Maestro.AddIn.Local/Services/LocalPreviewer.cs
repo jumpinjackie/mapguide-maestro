@@ -64,6 +64,8 @@ namespace Maestro.AddIn.Local.Services
                 var ldf = (ILayerDefinition)res;
                 string wkt;
                 var env = ldf.GetSpatialExtent(true, out wkt);
+                if (env == null)
+                    throw new ApplicationException(Strings.CouldNotComputeExtentsForPreview);
                 mapDef = ObjectFactory.CreateMapDefinition(conn, "Preview");
                 mapDef.CoordinateSystem = wkt;
                 mapDef.SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);

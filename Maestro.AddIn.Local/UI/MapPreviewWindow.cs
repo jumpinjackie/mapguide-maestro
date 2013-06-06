@@ -62,7 +62,7 @@ namespace Maestro.AddIn.Local.UI
                     var grp = groups.GetItem(i);
                     if (grp.LayerGroupType == MgLayerGroupType.BaseMap)
                     {
-                        MessageBox.Show(Properties.Resources.TiledLayerSupportWarning);
+                        MessageBox.Show(Strings.TiledLayerSupportWarning);
                         break;
                     }
                 }
