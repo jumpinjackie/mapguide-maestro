@@ -53,8 +53,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         {
             if (_reader != null)
             {
-                _reader.Close();
-                _reader.Dispose();
+                try
+                {
+                    _reader.Close();
+                    _reader.Dispose();
+                }
+                catch (MgException ex)
+                {
+                    ex.Dispose();
+                }
                 _reader = null;
             }
         }
@@ -64,12 +71,26 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             Close();
             if (_agfRw != null)
             {
-                _agfRw.Dispose();
+                try
+                {
+                    _agfRw.Dispose();
+                }
+                catch (MgException ex)
+                {
+                    ex.Dispose();
+                }
                 _agfRw = null;
             }
             if (_wktRw != null)
             {
-                _wktRw.Dispose();
+                try
+                {
+                    _wktRw.Dispose();
+                }
+                catch (MgException ex)
+                {
+                    ex.Dispose();
+                }
                 _wktRw = null;
             }
             base.Dispose();

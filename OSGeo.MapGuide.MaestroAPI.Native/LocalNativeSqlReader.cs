@@ -51,12 +51,26 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             Close();
             if (_agfRw != null)
             {
-                _agfRw.Dispose();
+                try
+                {
+                    _agfRw.Dispose();
+                }
+                catch (MgException ex)
+                {
+                    ex.Dispose();
+                }
                 _agfRw = null;
             }
             if (_wktRw != null)
             {
-                _wktRw.Dispose();
+                try
+                {
+                    _wktRw.Dispose();
+                }
+                catch (MgException ex)
+                {
+                    ex.Dispose();
+                }
                 _wktRw = null;
             }
             base.Dispose();
@@ -82,7 +96,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 
         public override void Close()
         {
-            _reader.Close();
+            try
+            {
+                _reader.Close();
+            }
+            catch (MgException ex)
+            {
+                ex.Dispose();
+            }
         }
 
         public override string GetName(int index)
