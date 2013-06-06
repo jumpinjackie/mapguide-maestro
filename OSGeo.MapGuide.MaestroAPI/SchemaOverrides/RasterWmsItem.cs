@@ -191,13 +191,13 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                             mimeType.InnerText = "image/gif"; //NOXLATE
                             break;
                         case WmsImageFormat.JPG:
-                            mimeType.InnerText = "image/jpg"; //NOXLATE
+                            mimeType.InnerText = "image/jpeg"; //NOXLATE
                             break;
                         case WmsImageFormat.PNG:
                             mimeType.InnerText = "image/png"; //NOXLATE
                             break;
                         case WmsImageFormat.TIF:
-                            mimeType.InnerText = "image/tif"; //NOXLATE
+                            mimeType.InnerText = "image/tiff"; //NOXLATE
                             break;
                     }
                 }
