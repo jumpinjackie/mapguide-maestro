@@ -530,34 +530,42 @@ namespace Maestro.MapViewer
                             node.Expand();
                     }
                 }
+            }
 
-                //Process parented layers
-                while (remainingLayers.Count > 0)
+            //Process parented layers
+            while (remainingLayers.Count > 0)
+            {
+                List<RuntimeMapLayer> toRemove = new List<RuntimeMapLayer>();
+                for (int j = remainingLayers.Count - 1; j >= 0; j--)
                 {
-                    List<RuntimeMapLayer> toRemove = new List<RuntimeMapLayer>();
-                    for (int j = remainingLayers.Count - 1; j >= 0; j--)
+                    var grpName = remainingLayers[j].Group;
+                    var parentGroup = _map.Groups[grpName];
+                    if (parentGroup != null)
                     {
-                        var grpName = remainingLayers[j].Group;
-                        var parentGroup = _map.Groups[grpName];
-                        if (parentGroup != null && nodesById.ContainsKey(parentGroup.ObjectId))
+                        if (nodesById.ContainsKey(parentGroup.ObjectId))
                         {
                             var node = CreateLayerNode(remainingLayers[j]);
                             if (node != null)
                             {
-                                nodesById[parentGroup.ObjectId].Nodes.Insert(0, node);
+                                nodesById[parentGroup.ObjectId].Nodes.Add(node); //.Insert(0, node);
                                 if (remainingLayers[j].ExpandInLegend)
                                     node.Expand();
                             }
                             toRemove.Add(remainingLayers[j]);
                         }
-                    }
-                    //Whittle down this list
-                    if (toRemove.Count > 0)
-                    {
-                        foreach (var g in toRemove)
+                        else //Group may not even be set to show in legend. Check for this
                         {
-                            remainingLayers.Remove(g);
+                            if (!parentGroup.ShowInLegend)
+                                toRemove.Add(remainingLayers[j]);
                         }
+                    }
+                }
+                //Whittle down this list
+                if (toRemove.Count > 0)
+                {
+                    foreach (var g in toRemove)
+                    {
+                        remainingLayers.Remove(g);
                     }
                 }
             }
