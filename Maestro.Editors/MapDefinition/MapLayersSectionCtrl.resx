@@ -243,28 +243,28 @@
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
   </data>
-  <data name="btnMoveGroupUp.Enabled" type="System.Boolean, mscorlib">
+  <data name="btnMoveLayerOrGroupUp.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="btnMoveGroupUp.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="btnMoveLayerOrGroupUp.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="btnMoveGroupUp.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnMoveLayerOrGroupUp.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
-  <data name="btnMoveGroupUp.Text" xml:space="preserve">
+  <data name="btnMoveLayerOrGroupUp.Text" xml:space="preserve">
     <value>Move the selected group up the logical order</value>
   </data>
-  <data name="btnMoveGroupDown.Enabled" type="System.Boolean, mscorlib">
+  <data name="btnMoveLayerOrGroupDown.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="btnMoveGroupDown.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="btnMoveLayerOrGroupDown.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="btnMoveGroupDown.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnMoveLayerOrGroupDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
-  <data name="btnMoveGroupDown.Text" xml:space="preserve">
+  <data name="btnMoveLayerOrGroupDown.Text" xml:space="preserve">
     <value>Move the selected group down the logical order</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
@@ -612,18 +612,18 @@
   <data name="btnInvokeMgCooker.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
+        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
 </value>
   </data>
   <data name="btnInvokeMgCooker.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -782,16 +782,16 @@
   <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnMoveGroupUp.Name" xml:space="preserve">
-    <value>btnMoveGroupUp</value>
+  <data name="&gt;&gt;btnMoveLayerOrGroupUp.Name" xml:space="preserve">
+    <value>btnMoveLayerOrGroupUp</value>
   </data>
-  <data name="&gt;&gt;btnMoveGroupUp.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnMoveLayerOrGroupUp.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnMoveGroupDown.Name" xml:space="preserve">
-    <value>btnMoveGroupDown</value>
+  <data name="&gt;&gt;btnMoveLayerOrGroupDown.Name" xml:space="preserve">
+    <value>btnMoveLayerOrGroupDown</value>
   </data>
-  <data name="&gt;&gt;btnMoveGroupDown.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnMoveLayerOrGroupDown.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator7.Name" xml:space="preserve">

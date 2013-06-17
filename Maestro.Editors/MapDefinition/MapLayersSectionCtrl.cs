@@ -199,8 +199,8 @@ namespace Maestro.Editors.MapDefinition
 
                 btnGRPRemoveLayer.Enabled = false;
                 btnRemoveGroup.Enabled = false;
-                btnMoveGroupUp.Enabled = false;
-                btnMoveGroupDown.Enabled = false;
+                btnMoveLayerOrGroupUp.Enabled = false;
+                btnMoveLayerOrGroupDown.Enabled = false;
                 btnConvertLayerGroupToBaseGroup.Enabled = false;
 
                 if (layer != null)
@@ -217,8 +217,8 @@ namespace Maestro.Editors.MapDefinition
         private void OnDynamicGroupItemSelected(GroupItem group)
         {
             btnRemoveGroup.Enabled = true;
-            btnMoveGroupUp.Enabled = true;
-            btnMoveGroupDown.Enabled = true;
+            btnMoveLayerOrGroupUp.Enabled = true;
+            btnMoveLayerOrGroupDown.Enabled = true;
             btnConvertLayerGroupToBaseGroup.Enabled = true;
 
             propertiesPanel.Controls.Clear();
@@ -232,6 +232,8 @@ namespace Maestro.Editors.MapDefinition
         private void OnDynamicLayerItemSelected(LayerItem layer)
         {
             btnGRPRemoveLayer.Enabled = true;
+            btnMoveLayerOrGroupUp.Enabled = true;   //TODO: Disable if layer is top of its group
+            btnMoveLayerOrGroupDown.Enabled = true; //TODO: Disable if layer is bottom of its group
 
             propertiesPanel.Controls.Clear();
             var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService);
@@ -830,9 +832,53 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        private void btnMoveGroupUp_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Gets the index of the layer above the current layer index of the same group
+        /// </summary>
+        /// <param name="mdf"></param>
+        /// <param name="layerIndex"></param>
+        /// <param name="group"></param>
+        /// <returns>The index of the layer below the current layer. Returns -1 if the current layer index is the top-most layer of the group</returns>
+        private static int GetIndexOfLayerAbove(IMapDefinition mdf, int layerIndex, string group)
         {
-            var group = GetSelectedLayerGroupItem() as GroupItem;
+            if (layerIndex > 0)
+            {
+                var list = new List<IMapLayer>(mdf.MapLayer);
+                for (int i = layerIndex - 1; i >= 0; i--)
+                {
+                    if (list[i].Group == group)
+                        return i;
+                }
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// Gets the index of the layer below the current layer index of the same group
+        /// </summary>
+        /// <param name="mdf"></param>
+        /// <param name="layerIndex"></param>
+        /// <param name="group"></param>
+        /// <returns>The index of the layer below the current layer. Returns -1 if the current layer index is the bottom-most layer of the group</returns>
+        private static int GetIndexOfLayerBelow(IMapDefinition mdf, int layerIndex, string group)
+        {
+            if (layerIndex < mdf.GetLayerCount() - 1)
+            {
+                var list = new List<IMapLayer>(mdf.MapLayer);
+                for (int i = layerIndex + 1; i < mdf.GetLayerCount(); i++)
+                {
+                    if (list[i].Group == group)
+                        return i;
+                }
+            }
+            return -1;
+        }
+
+        private void btnMoveLayerOrGroupUp_Click(object sender, EventArgs e)
+        {
+            object item = GetSelectedLayerGroupItem(); 
+            var group = item as GroupItem;
+            var layer = item as LayerItem;
             if (group != null)
             {
                 var mdf = group.Tag.Parent;
@@ -842,11 +888,33 @@ namespace Maestro.Editors.MapDefinition
 
                 RestoreGroupSelection(group);
             }
+            else if (layer != null)
+            {
+                var mdf = _map;
+                var oLayer = layer.Tag;
+                var layerIdx = mdf.GetIndex(oLayer);
+                var newIndex = GetIndexOfLayerAbove(mdf, layerIdx, oLayer.Group);
+                if (newIndex >= 0)
+                {
+                    mdf.RemoveLayer(oLayer);
+                    mdf.InsertLayer(newIndex, oLayer);
+
+                    _grpLayerModel.Invalidate();
+                    _doLayerModel.Invalidate();     //This affects draw order too
+                    RestoreLayerSelection(oLayer);
+                }
+                else
+                {
+                    MessageBox.Show(Strings.LayerAlreadyAtTopOfGroup);
+                }
+            }
         }
 
-        private void btnMoveGroupDown_Click(object sender, EventArgs e)
+        private void btnMoveLayerOrGroupDown_Click(object sender, EventArgs e)
         {
-            var group = GetSelectedLayerGroupItem() as GroupItem;
+            object item = GetSelectedLayerGroupItem();
+            var group = item as GroupItem;
+            var layer = item as LayerItem;
             if (group != null)
             {
                 var mdf = group.Tag.Parent;
@@ -855,6 +923,26 @@ namespace Maestro.Editors.MapDefinition
                 _grpLayerModel.Invalidate();
 
                 RestoreGroupSelection(group);
+            }
+            else if (layer != null)
+            {
+                var mdf = _map;
+                var oLayer = layer.Tag;
+                var layerIdx = mdf.GetIndex(oLayer);
+                var newIndex = GetIndexOfLayerBelow(mdf, layerIdx, oLayer.Group);
+                if (newIndex >= 0)
+                {
+                    mdf.RemoveLayer(oLayer);
+                    mdf.InsertLayer(newIndex, oLayer);
+
+                    _grpLayerModel.Invalidate();
+                    _doLayerModel.Invalidate();     //This affects draw order too
+                    RestoreLayerSelection(oLayer);
+                }
+                else
+                {
+                    MessageBox.Show(Strings.LayerAlreadyAtBottomOfGroup);
+                }
             }
         }
 

@@ -218,7 +218,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
         /// <param name="layer"></param>
         void IMapDefinition.InsertLayer(int idx, IMapLayer layer)
         {
-            Check.IntBetween(idx, 0, this.MapLayer.Count, true, "idx"); //NOXLATE
+            Check.IntBetween(idx, 0, this.MapLayer.Count, true, "idx (" + idx + ") between [" + 0 + "," + this.MapLayer.Count + "]"); //NOXLATE
             Check.NotNull(layer, "layer"); //NOXLATE
             var li = layer as MapLayerType;
             if (li != null)
@@ -344,7 +344,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
 
         public IMapLayer InsertLayer(int index, string groupName, string layerName, string layerDefinitionId)
         {
-            Check.IntBetween(index, 0, this.MapLayer.Count, true, "index");
+            Check.IntBetween(index, 0, this.MapLayer.Count, true, "index (" + index + ") between [" + 0 + "," + this.MapLayer.Count + "]");
             Check.NotEmpty(layerName, "layerName"); //NOXLATE
             Check.NotEmpty(layerDefinitionId, "layerDefinitionId"); //NOXLATE
             Check.Precondition(ResourceIdentifier.Validate(layerDefinitionId), "ResourceIdentifier.Validate(layerDefinitionId)"); //NOXLATE

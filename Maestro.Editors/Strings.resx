@@ -1512,4 +1512,10 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="NoFeatureClassAssigned" xml:space="preserve">
     <value>No Feature Class assigned</value>
   </data>
+  <data name="LayerAlreadyAtBottomOfGroup" xml:space="preserve">
+    <value>The selected layer is already at the bottom of its group</value>
+  </data>
+  <data name="LayerAlreadyAtTopOfGroup" xml:space="preserve">
+    <value>The selected layer is already at the top of its group</value>
+  </data>
 </root>

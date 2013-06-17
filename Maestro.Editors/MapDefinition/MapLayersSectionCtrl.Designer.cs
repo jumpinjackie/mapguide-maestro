@@ -41,8 +41,8 @@
             this.btnGRPAddLayer = new System.Windows.Forms.ToolStripButton();
             this.btnGRPRemoveLayer = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnMoveGroupUp = new System.Windows.Forms.ToolStripButton();
-            this.btnMoveGroupDown = new System.Windows.Forms.ToolStripButton();
+            this.btnMoveLayerOrGroupUp = new System.Windows.Forms.ToolStripButton();
+            this.btnMoveLayerOrGroupDown = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.btnConvertLayerGroupToBaseGroup = new System.Windows.Forms.ToolStripButton();
             this.TAB_DRAWING_ORDER = new System.Windows.Forms.TabPage();
@@ -155,8 +155,8 @@
             this.btnGRPAddLayer,
             this.btnGRPRemoveLayer,
             this.toolStripSeparator3,
-            this.btnMoveGroupUp,
-            this.btnMoveGroupDown,
+            this.btnMoveLayerOrGroupUp,
+            this.btnMoveLayerOrGroupDown,
             this.toolStripSeparator7,
             this.btnConvertLayerGroupToBaseGroup});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
@@ -204,21 +204,21 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
-            // btnMoveGroupUp
+            // btnMoveLayerOrGroupUp
             // 
-            this.btnMoveGroupUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.btnMoveGroupUp, "btnMoveGroupUp");
-            this.btnMoveGroupUp.Image = global::Maestro.Editors.Properties.Resources.arrow_090;
-            this.btnMoveGroupUp.Name = "btnMoveGroupUp";
-            this.btnMoveGroupUp.Click += new System.EventHandler(this.btnMoveGroupUp_Click);
+            this.btnMoveLayerOrGroupUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.btnMoveLayerOrGroupUp, "btnMoveLayerOrGroupUp");
+            this.btnMoveLayerOrGroupUp.Image = global::Maestro.Editors.Properties.Resources.arrow_090;
+            this.btnMoveLayerOrGroupUp.Name = "btnMoveLayerOrGroupUp";
+            this.btnMoveLayerOrGroupUp.Click += new System.EventHandler(this.btnMoveLayerOrGroupUp_Click);
             // 
-            // btnMoveGroupDown
+            // btnMoveLayerOrGroupDown
             // 
-            this.btnMoveGroupDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.btnMoveGroupDown, "btnMoveGroupDown");
-            this.btnMoveGroupDown.Image = global::Maestro.Editors.Properties.Resources.arrow_270;
-            this.btnMoveGroupDown.Name = "btnMoveGroupDown";
-            this.btnMoveGroupDown.Click += new System.EventHandler(this.btnMoveGroupDown_Click);
+            this.btnMoveLayerOrGroupDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.btnMoveLayerOrGroupDown, "btnMoveLayerOrGroupDown");
+            this.btnMoveLayerOrGroupDown.Image = global::Maestro.Editors.Properties.Resources.arrow_270;
+            this.btnMoveLayerOrGroupDown.Name = "btnMoveLayerOrGroupDown";
+            this.btnMoveLayerOrGroupDown.Click += new System.EventHandler(this.btnMoveLayerOrGroupDown_Click);
             // 
             // toolStripSeparator7
             // 
@@ -563,8 +563,8 @@
         private Aga.Controls.Tree.TreeViewAdv trvBaseLayers;
         private Aga.Controls.Tree.NodeControls.NodeIcon nodeIcon1;
         private Aga.Controls.Tree.NodeControls.NodeTextBox nodeTextBox1;
-        private System.Windows.Forms.ToolStripButton btnMoveGroupUp;
-        private System.Windows.Forms.ToolStripButton btnMoveGroupDown;
+        private System.Windows.Forms.ToolStripButton btnMoveLayerOrGroupUp;
+        private System.Windows.Forms.ToolStripButton btnMoveLayerOrGroupDown;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripButton btnBaseLayerGroupToRegular;
