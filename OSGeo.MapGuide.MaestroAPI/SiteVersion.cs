@@ -98,6 +98,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// MapGuide Open Source 2.4.0
         /// </summary>
         MapGuideOS2_4,
+        Aims2013_SP1,
+        MapGuideOS2_5,
+        Aims2014
 	}
 
     /// <summary>
@@ -127,7 +130,10 @@ namespace OSGeo.MapGuide.MaestroAPI
             new Version(2,2,0,6001),    //MGE 2011 Update 1
             new Version(2,2,0,5703),    //MGOS 2.2.0
             new Version(2,3,0,4202),    //AIMS 2012
-            new Version(2,4,0,7096)     //MGOS 2.4.0
+            new Version(2,4,0,7096),    //MGOS 2.4.0
+            new Version(2,4,0,5901),    //AIMS 2013 SP1
+            new Version(2,5,0,7449),    //MGOS 2.5.0
+            new Version(2,5,1,7601)     //AIMS 2014
 		};
 
         /// <summary>
