@@ -25,6 +25,8 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections.Specialized;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
 {
@@ -36,9 +38,12 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             InitializeComponent();
         }
 
+        private IEditorService _service;
+
         public override void Bind(IEditorService service)
         {
-            service.RegisterCustomNotifier(this);
+            _service = service;
+            _service.RegisterCustomNotifier(this);
         }
 
         void OnConnectionChanged()
@@ -75,5 +80,33 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         }
 
         public event EventHandler RequestDocumentReset;
+
+        private void lnkApplyCredentials_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string connStr = txtConnStr.Text;
+            if (connStr.Contains(StringConstants.MgUsernamePlaceholder) &&
+                connStr.Contains(StringConstants.MgPasswordPlaceholder))
+            {
+                using (var diag = new SetCredentialsDialog(StringConstants.MgUsernamePlaceholder, StringConstants.MgPasswordPlaceholder))
+                {
+                    if (diag.ShowDialog() == DialogResult.OK)
+                    {
+                        var fs = (IFeatureSource)_service.GetEditedResource();
+                        fs.SetEncryptedCredentials(diag.Username, diag.Password);
+                        //Bit of a hack as parent does a 64-bit driver check to determine
+                        //which NameValueCollection to return from the child, but we can
+                        //get away with this because the same NameValueCollection is returned
+                        //for both
+                        fs.ApplyConnectionProperties(this.ConnectionProperties);
+                        _service.SyncSessionCopy();
+                        MessageBox.Show("Credentials applied");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(Strings.OdbcConnStrMissingMgPlaceholders);
+            }
+        }
     }
 }

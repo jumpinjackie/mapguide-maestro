@@ -1518,4 +1518,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="LayerAlreadyAtTopOfGroup" xml:space="preserve">
     <value>The selected layer is already at the top of its group</value>
   </data>
+  <data name="OdbcConnStrMissingMgPlaceholders" xml:space="preserve">
+    <value>The ODBC connection string requires a %MG_USERNAME% and %MG_PASSWORD% placeholder tokens present</value>
+  </data>
 </root>

@@ -38,6 +38,15 @@ namespace Maestro.Editors.FeatureSource.Providers
             _propertyNames = propertyNames;
         }
 
+        public SetCredentialsDialog(string userProp, string passProp)
+        {
+            InitializeComponent();
+            txtUserProperty.Text = userProp;
+            txtPasswordProperty.Text = passProp;
+            btnUserProperty.Visible = false;
+            btnPasswordProperty.Visible = false;
+        }
+
         public string UserProperty { get { return txtUserProperty.Text; } }
 
         public string PasswordProperty { get { return txtPasswordProperty.Text; } }

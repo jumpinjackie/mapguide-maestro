@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectionStringCtrl));
             this.label1 = new System.Windows.Forms.Label();
             this.txtConnStr = new System.Windows.Forms.TextBox();
+            this.lnkApplyCredentials = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -43,10 +44,18 @@
             resources.ApplyResources(this.txtConnStr, "txtConnStr");
             this.txtConnStr.Name = "txtConnStr";
             // 
+            // lnkApplyCredentials
+            // 
+            resources.ApplyResources(this.lnkApplyCredentials, "lnkApplyCredentials");
+            this.lnkApplyCredentials.Name = "lnkApplyCredentials";
+            this.lnkApplyCredentials.TabStop = true;
+            this.lnkApplyCredentials.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkApplyCredentials_LinkClicked);
+            // 
             // ConnectionStringCtrl
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lnkApplyCredentials);
             this.Controls.Add(this.txtConnStr);
             this.Controls.Add(this.label1);
             this.Name = "ConnectionStringCtrl";
@@ -59,5 +68,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtConnStr;
+        private System.Windows.Forms.LinkLabel lnkApplyCredentials;
     }
 }
