@@ -456,7 +456,7 @@ namespace Maestro.Editors
         /// </summary>
         public void SyncSessionCopy()
         {
-            string xml = _editCopy.Serialize();
+            string xml = ResourceTypeRegistry.SerializeAsString(_editCopy);
             try
             {
                 using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
