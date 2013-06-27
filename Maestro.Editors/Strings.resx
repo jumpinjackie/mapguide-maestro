@@ -1521,4 +1521,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="OdbcConnStrMissingMgPlaceholders" xml:space="preserve">
     <value>The ODBC connection string requires a %MG_USERNAME% and %MG_PASSWORD% placeholder tokens present</value>
   </data>
+  <data name="GroupAlreadyExists" xml:space="preserve">
+    <value>A group named "{0}" already exists. Choose a different name</value>
+  </data>
 </root>

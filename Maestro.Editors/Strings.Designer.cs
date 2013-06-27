@@ -1175,6 +1175,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A group named &quot;{0}&quot; already exists. Choose a different name.
+        /// </summary>
+        internal static string GroupAlreadyExists {
+            get {
+                return ResourceManager.GetString("GroupAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The header file does not exist.
         /// </summary>
         internal static string HeaderFileMissing {

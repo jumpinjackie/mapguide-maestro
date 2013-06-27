@@ -38,43 +38,69 @@ namespace Maestro.Editors.MapDefinition
         }
 
         public event EventHandler GroupChanged;
+        private IMapDefinition _mdf;
+        private IMapLegendElementBase _el;
 
-        public GroupPropertiesCtrl(IMapLayerGroup group)
+        private bool _init = false;
+
+        public GroupPropertiesCtrl(IMapDefinition map, IMapLayerGroup group)
             : this()
         {
-            group.PropertyChanged += new PropertyChangedEventHandler(OnGroupChanged);
-
-            //TextBoxBinder.BindText(txtName, group, "Name");
-            IMapDefinition mdf = group.Parent;
-            string currentName = group.Name;
-            txtName.Text = currentName;
-            txtName.TextChanged += (s, e) =>
+            _init = true;
+            try
             {
-                string newName = txtName.Text;
-                group.Name = newName;
-                mdf.UpdateDynamicGroupName(currentName, newName);
-                System.Diagnostics.Debug.WriteLine(string.Format("Updated group name {0} -> {1}", currentName, newName));
-                currentName = newName;
-            };
+                _mdf = map;
+                _el = group;
+                group.PropertyChanged += new PropertyChangedEventHandler(OnGroupChanged);
+                string currentName = group.Name;
+                txtName.Text = currentName;
+                //TextBoxBinder.BindText(txtName, group, "Name");
+                /*
+                IMapDefinition mdf = group.Parent;
+                string currentName = group.Name;
+                txtName.Text = currentName;
+                txtName.TextChanged += (s, e) =>
+                {
+                    string newName = txtName.Text;
+                    group.Name = newName;
+                    mdf.UpdateDynamicGroupName(currentName, newName);
+                    System.Diagnostics.Debug.WriteLine(string.Format("Updated group name {0} -> {1}", currentName, newName));
+                    currentName = newName;
+                };*/
 
-            TextBoxBinder.BindText(txtLegendLabel, group, "LegendLabel");
+                TextBoxBinder.BindText(txtLegendLabel, group, "LegendLabel");
 
-            CheckBoxBinder.BindChecked(chkExpanded, group, "ExpandInLegend");
-            CheckBoxBinder.BindChecked(chkLegendVisible, group, "ShowInLegend");
-            CheckBoxBinder.BindChecked(chkVisible, group, "Visible");
+                CheckBoxBinder.BindChecked(chkExpanded, group, "ExpandInLegend");
+                CheckBoxBinder.BindChecked(chkLegendVisible, group, "ShowInLegend");
+                CheckBoxBinder.BindChecked(chkVisible, group, "Visible");
+            }
+            finally
+            {
+                _init = false;
+            }
         }
 
-        public GroupPropertiesCtrl(IBaseMapGroup group)
+        public GroupPropertiesCtrl(IMapDefinition map, IBaseMapGroup group)
             : this()
         {
-            group.PropertyChanged += new PropertyChangedEventHandler(OnGroupChanged);
+            _init = true;
+            try
+            {
+                _mdf = map;
+                _el = group;
+                group.PropertyChanged += new PropertyChangedEventHandler(OnGroupChanged);
 
-            TextBoxBinder.BindText(txtName, group, "Name");
-            TextBoxBinder.BindText(txtLegendLabel, group, "LegendLabel");
+                //TextBoxBinder.BindText(txtName, group, "Name");
+                TextBoxBinder.BindText(txtLegendLabel, group, "LegendLabel");
 
-            CheckBoxBinder.BindChecked(chkExpanded, group, "ExpandInLegend");
-            CheckBoxBinder.BindChecked(chkLegendVisible, group, "ShowInLegend");
-            CheckBoxBinder.BindChecked(chkVisible, group, "Visible");
+                CheckBoxBinder.BindChecked(chkExpanded, group, "ExpandInLegend");
+                CheckBoxBinder.BindChecked(chkLegendVisible, group, "ShowInLegend");
+                CheckBoxBinder.BindChecked(chkVisible, group, "Visible");
+            }
+            finally
+            {
+                _init = false;
+            }
         }
 
         void OnGroupChanged(object sender, PropertyChangedEventArgs e)
@@ -82,6 +108,47 @@ namespace Maestro.Editors.MapDefinition
             var handler = this.GroupChanged;
             if (handler != null)
                 handler(this, EventArgs.Empty);
+        }
+
+        static int GetGroupCount(IMapDefinition map, string name)
+        {
+            int count = 0;
+            foreach (var grp in map.MapLayerGroup)
+            {
+                if (grp.Name == name)
+                    count++;
+            }
+            if (map.BaseMap != null)
+            {
+                foreach (var grp in map.BaseMap.BaseMapLayerGroup)
+                {
+                    if (grp.Name == name)
+                        count++;
+                }
+            }
+            System.Diagnostics.Debug.WriteLine("{0} groups with the name: {1}", count, name);
+            return count;
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+            if (_init)
+                return;
+
+            string newName = txtName.Text;
+            //Before we apply to model, check if another one of the same name exists
+            if (GetGroupCount(_mdf, newName) == 0)
+            {
+                errorProvider.Clear();
+                string currentName = _el.Name;
+                _el.Name = newName;
+                _mdf.UpdateDynamicGroupName(currentName, newName);
+                System.Diagnostics.Debug.WriteLine(string.Format("Updated group name {0} -> {1}", currentName, newName));
+            }
+            else
+            {
+                errorProvider.SetError(txtName, string.Format(Strings.GroupAlreadyExists, newName));
+            }
         }
     }
 }

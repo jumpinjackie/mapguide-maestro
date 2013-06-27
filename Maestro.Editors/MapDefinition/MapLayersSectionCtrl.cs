@@ -222,7 +222,7 @@ namespace Maestro.Editors.MapDefinition
             btnConvertLayerGroupToBaseGroup.Enabled = true;
 
             propertiesPanel.Controls.Clear();
-            var item = new GroupPropertiesCtrl(group.Tag);
+            var item = new GroupPropertiesCtrl(_map, group.Tag);
             item.GroupChanged += (s, evt) => { OnResourceChanged(); };
             item.Dock = DockStyle.Fill;
             _activeLayer = null;
@@ -1007,7 +1007,7 @@ namespace Maestro.Editors.MapDefinition
             btnBaseLayerGroupToRegular.Enabled = true;
 
             propertiesPanel.Controls.Clear();
-            var item = new GroupPropertiesCtrl(group.Tag);
+            var item = new GroupPropertiesCtrl(_map, group.Tag);
             item.GroupChanged += (s, evt) => { OnResourceChanged(); };
             item.Dock = DockStyle.Fill;
             _activeLayer = null;
