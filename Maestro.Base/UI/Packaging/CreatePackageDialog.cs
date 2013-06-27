@@ -214,9 +214,11 @@ namespace Maestro.Base.UI.Packaging
         void CheckSubmitState()
         {
             btnOK.Enabled =
-                txtResourcePath.Text.Length > 0 &&
-                txtPackageFilename.Text.Length > 0 &&
-                SelectedTypes.Length > 0;
+                SelectedTypes.Length > 0 &&
+                (
+                    (this.Source == PackageSource.Folder && txtResourcePath.Text.Length > 0) ||
+                    (this.Source == PackageSource.ResourceIdList && txtPackageFilename.Text.Length > 0)
+                );
         }
 
         private void btnBrowseRestorePath_Click(object sender, EventArgs e)
