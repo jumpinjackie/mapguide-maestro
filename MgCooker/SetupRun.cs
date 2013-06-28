@@ -30,6 +30,7 @@ using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using System.Collections.Specialized;
 using OSGeo.MapGuide.MaestroAPI.Tile;
+using OSGeo.MapGuide.ObjectModels;
 
 namespace MgCooker
 {
@@ -64,6 +65,7 @@ namespace MgCooker
             grpDifferentConnection.Enabled = chkUseDifferentConnection.Enabled = !m_connection.ProviderName.ToUpper().Equals("MAESTRO.LOCAL"); //NOXLATE
             m_commandlineargs = args;
             m_coordinateOverrides = new Dictionary<string, IEnvelope>();
+            IEnvelope overrideExtents = null;
 
             //HttpServerConnection hc = connection as HttpServerConnection;
             try
@@ -76,11 +78,6 @@ namespace MgCooker
 
             if (m_commandlineargs.ContainsKey("mapdefinitions")) //NOXLATE
                 m_commandlineargs.Remove("mapdefinitions"); //NOXLATE
-            if (m_commandlineargs.ContainsKey("scaleindex")) //NOXLATE
-                m_commandlineargs.Remove("scaleindex"); //NOXLATE
-            if (m_commandlineargs.ContainsKey("basegroups")) //NOXLATE
-                m_commandlineargs.Remove("basegroups"); //NOXLATE
-
             if (m_commandlineargs.ContainsKey("mapagent")) //NOXLATE
                 MapAgent.Text = m_commandlineargs["mapagent"]; //NOXLATE
             if (m_commandlineargs.ContainsKey("username")) //NOXLATE
@@ -111,6 +108,28 @@ namespace MgCooker
                 }
             }
 
+            if (m_commandlineargs.ContainsKey("extentoverride")) //NOXLATE
+            {
+                 string[] parts = m_commandlineargs["extentoverride"].Split(',');
+                if (parts.Length == 4)
+                {
+                    double minx;
+                    double miny;
+                    double maxx;
+                    double maxy;
+                    if (
+                        double.TryParse(parts[0], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out minx) &&
+                        double.TryParse(parts[1], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out miny) &&
+                        double.TryParse(parts[2], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out maxx) &&
+                        double.TryParse(parts[3], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out maxy)
+                        )
+                    {
+                        overrideExtents = ObjectFactory.CreateEnvelope(minx, miny, maxx, maxy);
+                    }
+                }
+
+            }
+
             if (m_commandlineargs.ContainsKey("metersperunit")) //NOXLATE
             {
                 double d;
@@ -133,6 +152,24 @@ namespace MgCooker
                 maps = tmp.ToArray();
             }
 
+            
+            var basegroupsSelected = new List<string>();
+            if (m_commandlineargs.ContainsKey("basegroups"))//NOXLATE
+            {
+                basegroupsSelected = new List<string>(m_commandlineargs["basegroups"].Split(','));//NOXLATE
+                m_commandlineargs.Remove("basegroups"); //NOXLATE
+            }
+
+            var scalesSelected = new List<int>();
+            if (m_commandlineargs.ContainsKey("scaleindex")) //NOXLATE
+            {
+                foreach (string scaleIndex in m_commandlineargs["scaleindex"].Split(','))//NOXLATE
+                {
+                    scalesSelected.Add(int.Parse(scaleIndex));
+                }
+                m_commandlineargs.Remove("scaleindex"); //NOXLATE
+            }
+
             MapTree.Nodes.Clear();
             foreach (string m in maps)
             {
@@ -146,27 +183,43 @@ namespace MgCooker
                     baseMap.HasGroups())
                 {
                     TreeNode mn = MapTree.Nodes.Add(m);
-                    //mn.Checked = true;
+                    
                     mn.ImageIndex = mn.SelectedImageIndex = 0;
                     mn.Tag = mdef;
                     foreach (var g in baseMap.BaseMapLayerGroup)
                     {
                         TreeNode gn = mn.Nodes.Add(g.Name);
                         gn.Tag = g;
-                        //gn.Checked = true;
+                        if (basegroupsSelected.Contains(g.Name))
+                        {
+                            mn.Checked = true;
+                            gn.Checked = true;
+                            if (overrideExtents != null && !m_coordinateOverrides.ContainsKey(m))
+                            {
+                                m_coordinateOverrides.Add(m, overrideExtents);
+                            }
+                        }
+                        
                         gn.ImageIndex = gn.SelectedImageIndex = 1;
 
+                        int counter = 0;
                         foreach (double d in baseMap.FiniteDisplayScale)
                         {
                             TreeNode sn = gn.Nodes.Add(d.ToString(System.Globalization.CultureInfo.CurrentUICulture));
-                            //sn.Checked = true;
+                            if (gn.Checked && scalesSelected.Contains(counter))
+                            {
+                                sn.Checked = true;
+                                
+                            }
                             sn.ImageIndex = sn.SelectedImageIndex = 3;
+                            counter++;
                         }
                     }
 
                     mn.Expand();
                 }
             }
+            MapTree_AfterSelect(null, null);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -256,9 +309,8 @@ namespace MgCooker
                 {
                     MapTilingConfiguration bm = new MapTilingConfiguration(bx, c.MapDefinition);
                     bm.SetGroups(new string[] { c.Group });
-                    bm.SetScales(c.ScaleIndexes);
-                    if (c.ExtentOverride != null)
-                        bm.MaxExtent = c.ExtentOverride;
+                    bm.SetScalesAndExtend(c.ScaleIndexes,c.ExtentOverride);
+                   
                     bx.Maps.Add(bm);
                 }
 
@@ -323,34 +375,36 @@ namespace MgCooker
 
             if (saveFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
-                StringBuilder args = new StringBuilder();
-                args.Append("--mapagent=\"" + MapAgent.Text + "\" "); //NOXLATE
-                args.Append("--username=\"" + Username.Text + "\" "); //NOXLATE
-                args.Append("--password=\"" + Password.Text + "\" "); //NOXLATE
+                //Common args for all map defintions to be tiled
+                List<string> args = new List<string>();
+                args.Add("--mapagent=\"" + MapAgent.Text + "\""); //NOXLATE
+                args.Add("--username=\"" + Username.Text + "\""); //NOXLATE
+                args.Add("--password=\"" + Password.Text + "\""); //NOXLATE
 
                 if (LimitTileset.Checked)
                 {
                     if (MaxRowLimit.Value > 0)
-                        args.Append("--limitrows=\"" + ((int)MaxRowLimit.Value).ToString() + "\" "); //NOXLATE
+                        args.Add("--limitrows=\"" + ((int)MaxRowLimit.Value).ToString() + "\""); //NOXLATE
                     if (MaxColLimit.Value > 0)
-                        args.Append("--limitcols=\"" + ((int)MaxColLimit.Value).ToString() + "\" "); //NOXLATE
+                        args.Add("--limitcols=\"" + ((int)MaxColLimit.Value).ToString() + "\""); //NOXLATE
                 }
 
                 if (UseNativeAPI.Checked)
-                    args.Append("--native-connection "); //NOXLATE
+                    args.Add("--native-connection"); //NOXLATE
                 if (UseOfficialMethod.Checked)
-                    args.Append("--metersperunit=" + ((double)MetersPerUnit.Value).ToString(System.Globalization.CultureInfo.InvariantCulture) + " "); //NOXLATE
+                    args.Add("--metersperunit=" + ((double)MetersPerUnit.Value).ToString(System.Globalization.CultureInfo.InvariantCulture)); //NOXLATE
 
-                args.Append("--threadcount=" + ((int)ThreadCount.Value).ToString() + " "); //NOXLATE
+                args.Add("--threadcount=" + ((int)ThreadCount.Value).ToString()); //NOXLATE
                 if (RandomTileOrder.Checked)
-                    args.Append("--random-tile-order "); //NOXLATE
+                    args.Add("--random-tile-order"); //NOXLATE
 
 
                 string executable = System.IO.Path.GetFileName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                string cmdExecutable = "MgCookerCmd.exe"; //NOXLATE
 
                 //Windows has problems with console output from GUI applications...
-                if (System.Environment.OSVersion.Platform != PlatformID.Unix && executable == "MgCooker.exe" && System.IO.File.Exists(System.IO.Path.Combine(Application.StartupPath, "MgCookerCommandline.exe"))) //NOXLATE
-                    executable = System.IO.Path.Combine(Application.StartupPath, "MgCookerCommandline.exe"); //NOXLATE
+                if (System.Environment.OSVersion.Platform != PlatformID.Unix && executable == "MgCooker.exe" && System.IO.File.Exists(System.IO.Path.Combine(Application.StartupPath, cmdExecutable))) //NOXLATE
+                    executable = System.IO.Path.Combine(Application.StartupPath, cmdExecutable); //NOXLATE
                 else
                     executable = System.IO.Path.Combine(Application.StartupPath, executable);
 
@@ -382,42 +436,59 @@ namespace MgCooker
 
                     foreach (Config c in ReadTree())
                     {
+                        //Map-specific args
+                        List<string> argsMap = new List<string>();
                         if (System.Environment.OSVersion.Platform != PlatformID.MacOSX ||
                             System.Environment.OSVersion.Platform != PlatformID.Unix)
                         {
-                            sw.Write(exeName);
+                            argsMap.Add(exeName);
                         }
                         else
                         {
-                            sw.Write(executable);
+                            argsMap.Add(executable);
                         }
-                        sw.Write(" batch"); //NOXLATE
-                        sw.Write(" --mapdefinitions=\""); //NOXLATE
-                        sw.Write(c.MapDefinition);
-                        sw.Write("\" --basegroups=\""); //NOXLATE
-                        sw.Write(c.Group);
-                        sw.Write("\" --scaleindex="); //NOXLATE
+
+                        argsMap.Add("batch"); //NOXLATE
+                        argsMap.Add("--mapdefinitions=\"" + c.MapDefinition + "\"");
+                        argsMap.Add("--basegroups=\"" + c.Group + "\"");
+                        StringBuilder si = new StringBuilder("--scaleindex="); //NOXLATE
                         for (int i = 0; i < c.ScaleIndexes.Length; i++)
                         {
                             if (i != 0)
-                                sw.Write(","); //NOXLATE
-                            sw.Write(c.ScaleIndexes[i].ToString());
+                                si.Append(","); //NOXLATE
+                            si.Append(c.ScaleIndexes[i].ToString());
                         }
-                        // dont forget the space after the list of scaleindexes ticket #1316
-                        sw.Write(" "); //NOXLATE
+                        argsMap.Add(si.ToString());
+
                         if (c.ExtentOverride != null)
                         {
-                            sw.Write(" --extentoverride="); //NOXLATE
-                            sw.Write(c.ExtentOverride.MinX.ToString(System.Globalization.CultureInfo.InvariantCulture));
-                            sw.Write(","); //NOXLATE
-                            sw.Write(c.ExtentOverride.MinY.ToString(System.Globalization.CultureInfo.InvariantCulture));
-                            sw.Write(","); //NOXLATE
-                            sw.Write(c.ExtentOverride.MaxX.ToString(System.Globalization.CultureInfo.InvariantCulture));
-                            sw.Write(","); //NOXLATE
-                            sw.Write(c.ExtentOverride.MaxY.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                            StringBuilder ov = new StringBuilder("--extentoverride="); //NOXLATE
+                            ov.Append(c.ExtentOverride.MinX.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                            ov.Append(","); //NOXLATE
+                            ov.Append(c.ExtentOverride.MinY.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                            ov.Append(","); //NOXLATE
+                            ov.Append(c.ExtentOverride.MaxX.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                            ov.Append(","); //NOXLATE
+                            ov.Append(c.ExtentOverride.MaxY.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                            argsMap.Add(ov.ToString());
                         }
 
-                        sw.Write(args.ToString());
+                        string[] argsFinal = new string[args.Count + argsMap.Count];
+                        int a = 0;
+                        //Map-specific args first (as this contains the executable name)
+                        foreach (string arg in argsMap)
+                        {
+                            argsFinal[a] = arg;
+                            a++;
+                        }
+                        //Then the common args
+                        foreach (string arg in args)
+                        {
+                            argsFinal[a] = arg;
+                            a++;
+                        }
+
+                        sw.Write(string.Join(" ", argsFinal));
                         sw.WriteLine();
                     }
 
@@ -491,7 +562,7 @@ namespace MgCooker
             if (m_isUpdating)
                 return;
 
-            if (MapTree.SelectedNode == null || !UseOfficialMethod.Checked)
+            if (MapTree.SelectedNode == null)
             {
                 BoundsOverride.Enabled = false;
                 BoundsOverride.Tag = null;

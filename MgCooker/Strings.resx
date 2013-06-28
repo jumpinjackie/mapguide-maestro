@@ -155,7 +155,7 @@ Please be patient.</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleOperationBeginGroup" xml:space="preserve">
-    <value>{0}: Rendering group {1} ({3} of {4})</value>
+    <value>{0}: Rendering group {1} ({2} of {3})</value>
     <comment>Text displayed in the console to report progress</comment>
   </data>
   <data name="ConsoleOperationBeginMap" xml:space="preserve">

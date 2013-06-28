@@ -67,6 +67,8 @@ namespace MgCooker
             //scaleindex=0,1,2,3,4,5
             //basegroups="x","y"
             //extentoverride=minx,miny,maxx,maxy
+
+            Boolean batchMode = false;
             
             string mapagent = "http://localhost/mapguide";
             string username = "Anonymous";
@@ -137,13 +139,20 @@ namespace MgCooker
             }
 
 
+            if (largs.IndexOf("batch") >= 0 || largs.IndexOf("/batch") >= 0 || largs.IndexOf("commandline") >= 0 || largs.IndexOf("/commandline") >= 0)
+            {
+                batchMode = true;
+            }
+
             try
             {
                 Console.Clear();
+                m_logableProgress = true;
             }
             catch
             {
                 hasConsole = false;
+                m_logableProgress = false;
             }
 
 
@@ -154,7 +163,7 @@ namespace MgCooker
             SetupRun sr = null;
             if (!opts.ContainsKey("username") || (!opts.ContainsKey("mapagent")))
             {
-                if (largs.IndexOf("/commandline") < 0 && largs.IndexOf("commandline") < 0)
+                if (!batchMode)
                 {
                     if (opts.ContainsKey("provider") && opts.ContainsKey("connection-params"))
                     {
@@ -212,9 +221,9 @@ namespace MgCooker
                 }
             }
 
-            
 
-            if (largs.IndexOf("batch") < 0 && largs.IndexOf("/batch") < 0)
+
+            if (!batchMode)
             {
                 if (sr == null)
                     sr = new SetupRun(connection, maps, opts);
@@ -273,7 +282,17 @@ namespace MgCooker
                 bx.SetGroups(groups.ToArray());
             }
 
-            if (!string.IsNullOrEmpty(scaleindex))
+            if (overrideExtents != null)
+            {
+                List<int> scales = new List<int>();
+                int tmp;
+                foreach (string s in scaleindex.Split(','))
+                    if (int.TryParse(s, out tmp))
+                        scales.Add(tmp);
+                foreach (MapTilingConfiguration bm in bx.Maps)
+                    bm.SetScalesAndExtend(scales.ToArray(), overrideExtents);
+            } 
+            else if (!string.IsNullOrEmpty(scaleindex))
             {
                 List<int> scales = new List<int>();
                 int tmp;
@@ -283,11 +302,9 @@ namespace MgCooker
                 bx.SetScales(scales.ToArray());
             }
 
-            if (overrideExtents != null)
-                foreach (MapTilingConfiguration bm in bx.Maps)
-                    bm.MaxExtent = overrideExtents;
+            
 
-            if (largs.IndexOf("/commandline") < 0 && largs.IndexOf("commandline") < 0)
+            if (!batchMode)
             {
                 Progress pg = new Progress(bx);
                 pg.ShowDialog();

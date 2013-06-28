@@ -423,25 +423,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// </summary>
         public string[] Groups { get { return m_groups; } }
 
-        /// <summary>
-        /// The number of tiles to offset the row counter with
-        /// </summary>
-        private int m_rowTileOffset = 0;
-
-        /// <summary>
-        /// The number of tiles to offset the col counter with
-        /// </summary>
-        private int m_colTileOffset = 0;
-
-        /// <summary>
-        /// The tile offset for row indexes for tiles
-        /// </summary>
-        public int RowTileOffset { get { return m_rowTileOffset; } }
-
-        /// <summary>
-        /// The tile offset for col indexes for tiles
-        /// </summary>
-        public int ColTileOffset { get { return m_colTileOffset; } }
+       
 
         /// <summary>
         /// The map's scales may have been modified, this array is a map of the new values
@@ -501,7 +483,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             m_dimensions = new long[this.Resolutions][];
             for (int i = this.Resolutions - 1; i >= 0; i--)
             {
-                long rows, cols;
+                long rows, cols, rowTileOffset = 0 , colTileOffset = 0;
                 double scale = m_mapdefinition.BaseMap.GetScaleAt(i);
                 
                 if (m_parent.Config.UseOfficialMethod)
@@ -535,9 +517,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                     {
                         //The extent is overridden, so we need to adjust the start offsets
                         double offsetX = MaxExtent.MinX - m_mapdefinition.Extents.MinX;
-                        double offsetY = MaxExtent.MinY - m_mapdefinition.Extents.MinY;
-                        m_rowTileOffset = (int)Math.Ceiling(offsetY / tileHeight);
-                        m_colTileOffset = (int)Math.Ceiling(offsetX / tileWidth);
+                        double offsetY = m_mapdefinition.Extents.MaxY - MaxExtent.MaxY ;
+                        rowTileOffset = (int)Math.Floor(offsetY / tileHeight);
+                        colTileOffset = (int)Math.Floor(offsetX / tileWidth);
+
+                        double offsetMaxX = MaxExtent.MaxX - m_mapdefinition.Extents.MinX;
+                        double offsetMinY = m_mapdefinition.Extents.MaxY - MaxExtent.MinY;
+                        int rowMinTileOffset = (int)Math.Floor(offsetMinY / tileHeight);
+                        int colMaxTileOffset = (int)Math.Floor(offsetMaxX / tileWidth);
+
+                        cols += (colMaxTileOffset - colTileOffset);
+                        rows += (rowMinTileOffset - rowTileOffset);
                     }
                 }
                 else
@@ -561,7 +551,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                 }
 
 
-                m_dimensions[i] = new long[] {rows, cols};
+                m_dimensions[i] = new long[] { rows, cols, rowTileOffset , colTileOffset};
             }
         }
 
@@ -578,6 +568,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
 
             m_groups = g.ToArray();
         }
+
+
+        /// <summary>
+        /// Sets the list of scale indexes and sets the maximum extent to the given envelope
+        /// </summary>
+        /// <param name="scales"></param>
+        /// <param name="envelope"></param>
+        public void SetScalesAndExtend(int[] scales, IEnvelope envelope)
+        {
+            this.m_maxExtent = envelope;
+            SetScales(scales);
+        }
+
 
         /// <summary>
         /// Sets the list of scale indexes
@@ -662,10 +665,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             {
                 int rows = (int)m_dimensions[scaleindex][0];
                 int cols = (int)m_dimensions[scaleindex][1];
+                int rowTileOffset = (int)m_dimensions[scaleindex][2];
+                int colTileOffset = (int)m_dimensions[scaleindex][3];
 
                 //If the MaxExtents are different from the actual bounds, we need a start offset offset
 
-                RenderThreads settings = new RenderThreads(this, m_parent, m_scaleindexmap[scaleindex], group, m_mapdefinition.ResourceID, rows, cols, m_rowTileOffset, m_colTileOffset, m_parent.Config.RandomizeTileSequence);
+                RenderThreads settings = new RenderThreads(this, m_parent, m_scaleindexmap[scaleindex], group, m_mapdefinition.ResourceID, rows, cols, rowTileOffset, colTileOffset, m_parent.Config.RandomizeTileSequence);
                 
                 settings.RunAndWait();
 
@@ -747,6 +752,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// Gets a reference to the parent tiling run collection
         /// </summary>
         public TilingRunCollection Parent { get { return m_parent; } }
+
+       
     }
 
     /// <summary>
