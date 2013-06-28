@@ -1,4 +1,21 @@
-﻿5.0 RC1
+﻿5.0 RC2
+-------
+ - Updated known site version list
+ - Added %MG_USERNAME% and %MG_PASSWORD% placeholder token support for the ODBC Feature Source editor under RawConnectionString mode
+ - Remove redundant MRT files in Coordinate System Dictionaries
+ - Feature Class / Geometry is auto-assigned when creating a new Layer Definition if there is only one Feature Class / Geometry in the Feature Source
+ - Layers in the "Layers and Groups" tab of the Map Definition editor can be re-ordered within the group. This has the effect of modifying the draw order of these layers with respect to other layers from the same group
+ - Fix: Infinite looping still happening in Maestro MapViewer legend component
+ - Fix: "OK" button not enabled in Create Package dialog under certain conditions
+ - Fix: XML content error in Layer Definition editor due to unwanted attributes inserted into inline SymbolDefinition elements
+ - Fix: Guard against duplicate names when creating a new Extended Feature Class in the Feature Source editor
+ - Fix: Guard against layers being auto-associated to another group with the same name when editing a group's name in the Layer Definition editor
+ - Fix: MgCooker not running in batch mode (patch by dcreado)
+ - Fix: MgCooker requesting wrong tiles from server when using override bounds (patch by dcreado)
+ - Fix: Bad spacing and executable name in MgCooker batch file generation
+ - Fix: Bad console progress format string in MgCooker command-line mode
+
+5.0 RC1
 -------
  - mg-desktop binary update (2.5.0.7449)
  - Re-pointer command now supports all resource types with downstream dependencies.
@@ -8,18 +25,18 @@
  - All specialized Fusion widget editors removed. All widget editing is through XML
  - Live Map Definition Editor enhancements:
     - Layers can be added to a map by drag/drop Layer Definitions from the repository view.
-	- Layers can be re-ordered in "Draw Order" view
-	- Layers/Groups can be re-organized in Legend view
-	- Map Settings dialog can now support:
-		- Extent computation based on current layers
-		- Extent computation based on current viewer extents
-	- Assorted bug fixes.
+    - Layers can be re-ordered in "Draw Order" view
+    - Layers/Groups can be re-organized in Legend view
+    - Map Settings dialog can now support:
+        - Extent computation based on current layers
+        - Extent computation based on current viewer extents
+    - Assorted bug fixes.
  - Fusion editor enhancements:
     - Using ICSharpCode.TextEditor for all XML editing functionality
-	- Fix errant whitespace in widget XML
+    - Fix errant whitespace in widget XML
     - Basic XML editor support for the Map Widget
     - Indicate which widgets are dockable
-	- Filter out un-dockable widgets when prompting the user for the widget to attach to a toolbar/container
+    - Filter out un-dockable widgets when prompting the user for the widget to attach to a toolbar/container
  - Support for new Resampling Method paramter in GDAL Feature Source editor
  - Fix: MgCooker command-line ignoring basegroup parameter
  - Fix: NullReferenceException when using cut command on an item in the Site Explorer
