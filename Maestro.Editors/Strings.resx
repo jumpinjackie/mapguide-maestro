@@ -1524,4 +1524,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="GroupAlreadyExists" xml:space="preserve">
     <value>A group named "{0}" already exists. Choose a different name</value>
   </data>
+  <data name="ExtendedFeatureClassAlreadyExists" xml:space="preserve">
+    <value>An extended feature class named ({0}) already exist. Please choose a different name</value>
+  </data>
 </root>

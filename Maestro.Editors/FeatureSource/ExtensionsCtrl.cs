@@ -312,7 +312,7 @@ namespace Maestro.Editors.FeatureSource
             var calc = e.Node.Tag as ICalculatedProperty;
             if (ext != null)
             {
-                var ctl = new ExtendedClassSettings(GetAllClassNames(), ext);
+                var ctl = new ExtendedClassSettings(_fs, GetAllClassNames(), ext);
                 ctl.Dock = DockStyle.Fill;
                 //If editing to something valid, update the toolbar
                 ctl.ResourceChanged += (s, evt) =>

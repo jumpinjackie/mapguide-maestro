@@ -592,6 +592,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An extended feature class named ({0}) already exist. Please choose a different name.
+        /// </summary>
+        internal static string ExtendedFeatureClassAlreadyExists {
+            get {
+                return ResourceManager.GetString("ExtendedFeatureClassAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Map extents calculation completed. Click Accept to use the calculated extents..
         /// </summary>
         internal static string ExtentsCalculationCompleted {

@@ -39,25 +39,24 @@ namespace Maestro.Editors.FeatureSource.Extensions
             InitializeComponent();
         }
 
-        public ExtendedClassSettings(IEnumerable<string> qualifiedClassNames, IFeatureSourceExtension ext)
+        private IFeatureSourceExtension _ext;
+        private IFeatureSource _fs;
+
+        public ExtendedClassSettings(IFeatureSource fs, IEnumerable<string> qualifiedClassNames, IFeatureSourceExtension ext)
             : this()
         {
+            _fs = fs;
+            _ext = ext;
             var names = new List<string>(qualifiedClassNames);
             cmbBaseClass.DataSource = names;
             ext.PropertyChanged += (sender, e) => { OnResourceChanged(); };
 
             //HACK
-            if (string.IsNullOrEmpty(ext.FeatureClass))
-                ext.FeatureClass = names[0];
+            if (string.IsNullOrEmpty(_ext.FeatureClass))
+                _ext.FeatureClass = names[0];
 
-            TextBoxBinder.BindText(txtExtendedName, ext, "Name"); //NOXLATE
             ComboBoxBinder.BindSelectedIndexChanged(cmbBaseClass, "SelectedItem", ext, "FeatureClass"); //NOXLATE
         }
-
-        //private void txtExtendedName_TextChanged(object sender, EventArgs e)
-        //{
-        //    txtExtendedName.DataBindings[0].WriteValue();
-        //}
 
         public void Bind(IEditorService service)
         {
@@ -72,5 +71,31 @@ namespace Maestro.Editors.FeatureSource.Extensions
         }
 
         public event EventHandler ResourceChanged;
+
+        private int GetExtensionCount(string name)
+        {
+            int count = 0;
+            foreach (var ext in _fs.Extension)
+            {
+                if (ext.Name == name)
+                    count++;
+            }
+            return count;
+        }
+
+        private void txtExtendedName_TextChanged(object sender, EventArgs e)
+        {
+            //Before we apply, check if the new name matches any existing feature classes
+            string newName = txtExtendedName.Text;
+            if (GetExtensionCount(newName) > 0)
+            {
+                errorProvider.SetError(txtExtendedName, string.Format(Strings.ExtendedFeatureClassAlreadyExists, newName));
+            }
+            else
+            {
+                errorProvider.Clear();
+                _ext.Name = txtExtendedName.Text;
+            }
+        }
     }
 }

@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExtendedClassSettings));
             this.label1 = new System.Windows.Forms.Label();
             this.txtExtendedName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbBaseClass = new System.Windows.Forms.ComboBox();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -44,6 +47,7 @@
             // 
             resources.ApplyResources(this.txtExtendedName, "txtExtendedName");
             this.txtExtendedName.Name = "txtExtendedName";
+            this.txtExtendedName.TextChanged += new System.EventHandler(this.txtExtendedName_TextChanged);
             // 
             // label2
             // 
@@ -57,6 +61,10 @@
             this.cmbBaseClass.FormattingEnabled = true;
             this.cmbBaseClass.Name = "cmbBaseClass";
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // ExtendedClassSettings
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -66,6 +74,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ExtendedClassSettings";
             resources.ApplyResources(this, "$this");
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -77,5 +86,6 @@
         private System.Windows.Forms.TextBox txtExtendedName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbBaseClass;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
