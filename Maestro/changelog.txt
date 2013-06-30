@@ -5,6 +5,7 @@
  - Remove redundant MRT files in Coordinate System Dictionaries
  - Feature Class / Geometry is auto-assigned when creating a new Layer Definition if there is only one Feature Class / Geometry in the Feature Source
  - Layers in the "Layers and Groups" tab of the Map Definition editor can be re-ordered within the group. This has the effect of modifying the draw order of these layers with respect to other layers from the same group
+ - Fix: "Resampling Method" in GDAL Feature Source editor should not be mandatory
  - Fix: Infinite looping still happening in Maestro MapViewer legend component
  - Fix: "OK" button not enabled in Create Package dialog under certain conditions
  - Fix: XML content error in Layer Definition editor due to unwanted attributes inserted into inline SymbolDefinition elements
