@@ -59,26 +59,34 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
                 _bSupportsResample = false;
                 _service = service;
                 _fs = (IFeatureSource)_service.GetEditedResource();
-
+                
                 var provInfo = _service.FeatureService.GetFeatureProvider("OSGeo.Gdal"); //NOXLATE
                 foreach (var prop in provInfo.ConnectionProperties)
                 {
                     if (prop.Name == "ResamplingMethod") //NOXLATE
                     {
-                        lblResamplingMethod.Visible =
+                        chkResamplingMethod.Visible =
                             cmbResamplingMethod.Visible =
                                 cmbResamplingMethod.Enabled = true;
 
                         cmbResamplingMethod.DataSource = new List<string>(prop.Value);
                         var method = _fs.GetConnectionProperty("ResamplingMethod"); //NOXLATE
                         if (!string.IsNullOrEmpty(method))
+                        {
+                            chkResamplingMethod.Checked = true;
                             cmbResamplingMethod.SelectedItem = method;
+                        }
                         else
+                        {
                             cmbResamplingMethod.SelectedIndex = 0;
+                            chkResamplingMethod.Checked = false;
+                        }
                         _bSupportsResample = true;
                         break;
                     }
                 }
+
+                cmbResamplingMethod.Enabled = chkResamplingMethod.Checked;
 
                 _sing.Bind(service);
                 _comp.Bind(service);
@@ -128,11 +136,28 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
 
         private void cmbResamplingMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!_bSupportsResample)
+            if (_init || !_bSupportsResample || !chkResamplingMethod.Checked)
                 return;
 
             if (cmbResamplingMethod.SelectedItem != null)
-                _fs.SetConnectionProperty("ResamplingMethod", cmbResamplingMethod.SelectedItem.ToString());
+                _fs.SetConnectionProperty("ResamplingMethod", cmbResamplingMethod.SelectedItem.ToString()); //NOXLATE
+        }
+
+        private void chkResamplingMethod_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_init)
+                return;
+
+            cmbResamplingMethod.Enabled = chkResamplingMethod.Checked;
+            if (chkResamplingMethod.Checked)
+            {
+                if (cmbResamplingMethod.SelectedItem != null)
+                    _fs.SetConnectionProperty("ResamplingMethod", cmbResamplingMethod.SelectedItem.ToString()); //NOXLATE
+            }
+            else
+            {
+                _fs.SetConnectionProperty("ResamplingMethod", null); //NOXLATE
+            }
         }
     }
 }
