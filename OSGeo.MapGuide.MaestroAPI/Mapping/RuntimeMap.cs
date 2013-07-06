@@ -1621,7 +1621,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="selection"></param>
         /// <param name="format"></param>
         /// <param name="selectionColor"></param>
-        /// <param name="behaviour"></param>
+        /// <param name="behaviour">A bitmask for the rendering behaviour (1 = Render Selection, 2 = Render Layers, 4 = Keep Selection, 8 = Render Base Layers)</param>
         /// <returns></returns>
         public System.IO.Stream RenderDynamicOverlay(MapSelection selection, string format, Color selectionColor, int behaviour)
         {

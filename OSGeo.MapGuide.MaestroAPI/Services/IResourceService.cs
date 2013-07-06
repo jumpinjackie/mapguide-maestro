@@ -180,19 +180,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// Sets the resource data of a specified resource
         /// </summary>
         /// <remarks>For the HTTP implementation of this API, the input stream must be seekable</remarks>
-        /// <param name="resourceid"></param>
-        /// <param name="dataname"></param>
-        /// <param name="datatype"></param>
+        /// <param name="resourceID"></param>
+        /// <param name="dataName"></param>
+        /// <param name="dataType"></param>
         /// <param name="stream"></param>
         /// <param name="callback"></param>
-        void SetResourceData(string resourceid, string dataname, ObjCommon.ResourceDataType datatype, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback);
+        void SetResourceData(string resourceID, string dataName, ObjCommon.ResourceDataType dataType, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback);
 
         /// <summary>
         /// Sets the raw XML data of the specified resource
         /// </summary>
-        /// <param name="resourceid"></param>
+        /// <param name="resourceID"></param>
         /// <param name="stream"></param>
-        void SetResourceXmlData(string resourceid, System.IO.Stream stream);
+        void SetResourceXmlData(string resourceID, System.IO.Stream stream);
 
         /// <summary>
         /// Sets the header for the specified folder
@@ -211,9 +211,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Updates the repository
         /// </summary>
-        /// <param name="resourceId"></param>
+        /// <param name="resourceID"></param>
         /// <param name="header"></param>
-        void UpdateRepository(string resourceId, ObjCommon.ResourceFolderHeaderType header);
+        void UpdateRepository(string resourceID, ObjCommon.ResourceFolderHeaderType header);
 
         /// <summary>
         /// Deletes the specified attached resource data
@@ -238,54 +238,54 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Gets a listing of all resources dependent on the specified resource
         /// </summary>
-        /// <param name="resourceid"></param>
+        /// <param name="resourceID"></param>
         /// <returns></returns>
-        ObjCommon.ResourceReferenceList EnumerateResourceReferences(string resourceid);
+        ObjCommon.ResourceReferenceList EnumerateResourceReferences(string resourceID);
 
         /// <summary>
         /// Copies the specified resource to the specified path
         /// </summary>
-        /// <param name="oldpath"></param>
-        /// <param name="newpath"></param>
+        /// <param name="oldResourceID"></param>
+        /// <param name="newResourceID"></param>
         /// <param name="overwrite"></param>
-        void CopyResource(string oldpath, string newpath, bool overwrite);
+        void CopyResource(string oldResourceID, string newResourceID, bool overwrite);
 
         /// <summary>
         /// Moves the specified resources to the specified path
         /// </summary>
-        /// <param name="oldpath"></param>
-        /// <param name="newpath"></param>
+        /// <param name="oldResourceID"></param>
+        /// <param name="newResourceID"></param>
         /// <param name="overwrite"></param>
-        void MoveResource(string oldpath, string newpath, bool overwrite);
+        void MoveResource(string oldResourceID, string newResourceID, bool overwrite);
         
         /// <summary>
         /// Moves the specified resources to the specified path. Any resources referencing this resource
         /// are updated to reference the resource's new location
         /// </summary>
-        /// <param name="oldpath"></param>
-        /// <param name="newpath"></param>
+        /// <param name="oldResourceID"></param>
+        /// <param name="newResourceID"></param>
         /// <param name="callback"></param>
         /// <param name="progress"></param>
         /// <returns></returns>
-        bool MoveResourceWithReferences(string oldpath, string newpath, LengthyOperationCallBack callback, LengthyOperationProgressCallBack progress);
+        bool MoveResourceWithReferences(string oldResourceID, string newResourceID, LengthyOperationCallBack callback, LengthyOperationProgressCallBack progress);
         
         /// <summary>
         /// Copies the specified folder to the specified path. Any resources referencing this folder 
         /// are updated to reference the resources's new location
         /// </summary>
-        /// <param name="oldpath"></param>
-        /// <param name="newpath"></param>
+        /// <param name="oldResourceID"></param>
+        /// <param name="newResourceID"></param>
         /// <param name="callback"></param>
         /// <param name="progress"></param>
         /// <returns></returns>
-        bool CopyFolderWithReferences(string oldpath, string newpath, LengthyOperationCallBack callback, LengthyOperationProgressCallBack progress);
+        bool CopyFolderWithReferences(string oldResourceID, string newResourceID, LengthyOperationCallBack callback, LengthyOperationProgressCallBack progress);
 
         /// <summary>
         /// Gets whether the specified resource id exists
         /// </summary>
-        /// <param name="resourceid"></param>
+        /// <param name="resourceID"></param>
         /// <returns></returns>
-        bool ResourceExists(string resourceid);
+        bool ResourceExists(string resourceID);
         
         /// <summary>
         /// Saves an object into the repository
@@ -296,29 +296,29 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// Saves an object into the repository using the specified resource id.
         /// </summary>
         /// <remarks>
-        /// The <paramref name="resourceid"/> parameter only instructs this method where to save the resource to. It does
+        /// The <paramref name="resourceID"/> parameter only instructs this method where to save the resource to. It does
         /// not modify the <see cref="P:IResource.ResourceID"/> property of the input resource does not get
         /// updated as a result of this operation.
         /// </remarks>
         /// <param name="resource">The object to save</param>
-        /// <param name="resourceid">The resourceId to save the object as</param>
-        void SaveResourceAs(IResource resource, string resourceid);
+        /// <param name="resourceID">The resourceId to save the object as</param>
+        void SaveResourceAs(IResource resource, string resourceID);
 
         /// <summary>
         /// Enumerates all unmanaged folders, meaning alias'ed folders
         /// </summary>
-        /// <param name="type">The type of data to return</param>
+        /// <param name="startpath">The path to retrieve the data from</param>
         /// <param name="filter">A filter applied to the items</param>
         /// <param name="recursive">True if the list should contains recursive results</param>
-        /// <param name="startpath">The path to retrieve the data from</param>
+        /// <param name="type">The type of data to return</param>
         /// <returns>A list of unmanaged data</returns>
         ObjCommon.UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type);
 
         /// <summary>
         /// Upload a MapGuide Package file to the server
         /// </summary>
-        /// <param name="filename">Name of the file to upload</param>
+        /// <param name="fileName">Name of the file to upload</param>
         /// <param name="callback">A callback argument used to display progress. May be null.</param>
-        void UploadPackage(string filename, Utility.StreamCopyProgressDelegate callback);
+        void UploadPackage(string fileName, Utility.StreamCopyProgressDelegate callback);
     }
 }

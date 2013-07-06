@@ -94,6 +94,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Creates a new runtime map instance from an existing map definition.
         /// </summary>
+        /// <remarks>
+        /// Calculation of meters-per-unit may differ between implementations. This may have an adverse
+        /// effect on things such as rendering and measuring depending on the underlying implementation
+        /// 
+        /// If you are certain of the meters-per-unit value required, use the overloaded method that 
+        /// accepts a metersPerUnit parameter.
+        /// </remarks>
+        /// <example>
+        /// This example shows how to create a new runtime map instance
+        /// <code>
+        /// <![CDATA[
+        /// IServerConnection conn;
+        /// ...
+        /// IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+        /// IMapDefinition mapDef = (IMapDefinition)conn.ResourceService.GetResource("Library://Path/To/My.MapDefinition");
+        /// RuntimeMap map = mappingSvc.CreateMap(mapDef);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <param name="mapDef"></param>
         /// <returns></returns>
         RuntimeMap CreateMap(IMapDefinition mapDef);
@@ -102,6 +121,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// Creates a new runtime map instance from an existing map definition. Meters per unit
         /// is calculated from the Coordinate System WKT of the map definition.
         /// </summary>
+        /// <example>
+        /// This example shows how to create a new runtime map instance
+        /// <code>
+        /// <![CDATA[
+        /// IServerConnection conn;
+        /// ...
+        /// IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+        /// IMapDefinition mapDef = (IMapDefinition)conn.ResourceService.GetResource("Library://Path/To/My.MapDefinition");
+        /// double metersPerUnit = 1.0;
+        /// RuntimeMap map = mappingSvc.CreateMap(mapDef, metersPerUnit);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <param name="mapDef"></param>
         /// <param name="metersPerUnit"></param>
         /// <returns></returns>
@@ -118,6 +150,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// If you are certain of the meters-per-unit value required, use the overloaded method that 
         /// accepts a metersPerUnit parameter.
         /// </remarks>
+        /// <example>
+        /// This example shows how to create a new runtime map instance
+        /// <code>
+        /// <![CDATA[
+        /// IServerConnection conn;
+        /// ...
+        /// IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+        /// string mapName = "MyMap";
+        /// string rtMapId = "Session:" + conn.SessionID + "//" + mapName + ".Map";
+        /// string baseMapDefId = "Library://Path/To/My.MapDefinition";
+        /// RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <param name="runtimeMapResourceId"></param>
         /// <param name="baseMapDefinitionId"></param>
         /// <returns></returns>
@@ -126,6 +172,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Creates a new runtime map instance from an existing map definition
         /// </summary>
+        /// <example>
+        /// This example shows how to create a new runtime map instance
+        /// <code>
+        /// <![CDATA[
+        /// IServerConnection conn;
+        /// ...
+        /// IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+        /// string mapName = "MyMap";
+        /// string rtMapId = "Session:" + conn.SessionID + "//" + mapName + ".Map";
+        /// string baseMapDefId = "Library://Path/To/My.MapDefinition";
+        /// double metersPerUnit = 1.0;
+        /// RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <param name="runtimeMapResourceId"></param>
         /// <param name="baseMapDefinitionId"></param>
         /// <param name="metersPerUnit"></param>
@@ -143,6 +204,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// If you are certain of the meters-per-unit value required, use the overloaded method that 
         /// accepts a metersPerUnit parameter.
         /// </remarks>
+        /// <example>
+        /// This example shows how to create a new runtime map instance
+        /// <code>
+        /// <![CDATA[
+        /// IServerConnection conn;
+        /// ...
+        /// IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+        /// string mapName = "MyMap";
+        /// string rtMapId = "Session:" + conn.SessionID + "//" + mapName + ".Map";
+        /// IMapDefinition mdf = (IMapDefinition)conn.ResourceService.GetResource("Library://Path/To/My.MapDefinition");
+        /// RuntimeMap map = mappingSvc.CreateMap(rtMapId, mdf);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <param name="runtimeMapResourceId"></param>
         /// <param name="mdf"></param>
         /// <returns></returns>
@@ -151,6 +226,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Creates a new runtime map instance from an existing map definition
         /// </summary>
+        /// <example>
+        /// This example shows how to create a new runtime map instance
+        /// <code>
+        /// <![CDATA[
+        /// IServerConnection conn;
+        /// ...
+        /// IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+        /// double metersPerUnit = 1.0;
+        /// string mapName = "MyMap";
+        /// string rtMapId = "Session:" + conn.SessionID + "//" + mapName + ".Map";
+        /// IMapDefinition mdf = (IMapDefinition)conn.ResourceService.GetResource("Library://Path/To/My.MapDefinition");
+        /// RuntimeMap map = mappingSvc.CreateMap(rtMapId, mdf, metersPerUnit);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <param name="runtimeMapResourceId"></param>
         /// <param name="mdf"></param>
         /// <param name="metersPerUnit"></param>
@@ -160,6 +250,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Opens an existing runtime map instance
         /// </summary>
+        /// <example>
+        /// This example shows how to open a RuntimeMap instance from a resource id
+        /// <code>
+        /// <![CDATA[
+        /// IServerConnection conn;
+        /// ...
+        /// IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+        /// string mapName = "MyMap";
+        /// string rtMapId = "Session:" + conn.SessionID + "//" + mapName + ".Map";
+        /// RuntimeMap map = mappingSvc.OpenMap(rtMapId);
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <param name="runtimeMapResourceId"></param>
         /// <returns></returns>
         RuntimeMap OpenMap(string runtimeMapResourceId);
@@ -188,15 +291,38 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Renders a dynamic overlay image of the map
         /// </summary>
+        /// <remarks>
+        /// The render base layers bitmask behaviour (8) is only supported from MapGuide Open Source 2.5 onwards
+        /// </remarks>
+        /// <example>
+        /// This example shows how to create a render a dynamic overlay image from a map and load it into a System.Drawing.Image
+        /// <code>
+        /// <![CDATA[
+        /// IServerConnection conn;
+        /// ...
+        /// IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+        /// string mapName = "MyMap";
+        /// string rtMapId = "Session:" + conn.SessionID + "//" + mapName + ".Map";
+        /// RuntimeMap map = mappingSvc.OpenMap(rtMapId);
+        /// string format = "PNG";
+        /// Color selectionColor = Color.Blue;
+        /// int behaviour = 1 | 2 | 4;
+        /// using(Stream stream = mappingSvc.RenderDynamicOverlay(map, map.Selection, format, selectionColor, behaviour))
+        /// {
+        ///     Image img = Image.FromStream(stream);
+        /// }
+        /// ]]>
+        /// </code>
+        /// </example>
         /// <param name="map">The runtime map instance</param>
         /// <param name="selection">The map selection</param>
         /// <param name="format">The image format</param>
         /// <param name="selectionColor">The color of the selection</param>
-        /// <param name="behaviour">The rendering behaviour</param>
+        /// <param name="behaviour">A bitmask for the rendering behaviour (1 = Render Selection, 2 = Render Layers, 4 = Keep Selection, 8 = Render Base Layers)</param>
         /// <returns></returns>
         /// <exception cref="T:System.NotSupportedException">Thrown if the service is too old to be able to support this API</exception>
         System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, Color selectionColor, int behaviour);
-
+        
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
@@ -303,7 +429,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type);
 
         /// <summary>
-        ///Renders a minature bitmap of the layers style
+        /// Renders a minature bitmap of the layers style
         /// </summary>
         /// <param name="scale">The scale for the bitmap to match</param>
         /// <param name="layerdefinition">The layer definition resource id</param>
@@ -316,14 +442,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format);
 
         /// <summary>
-        /// Identifies features that meet the specified spatial selection criteria. These features can be persisted as selected features in a map. QueryMapFeatures returns an XML document describing the set of selected features. If a single feature is selected, the XML contains the tooltip, hyperlink, and properties of the feature.
+        /// Identifies features that meet the specified spatial selection criteria. These features can be persisted as selected features in a map. 
+        /// This operation is generally used to implement selection/tooltip functionality for a client-side map viewer. 
+        /// QueryMapFeatures returns an XML document describing the set of selected features.
+        /// If a single feature is selected, the XML contains the tooltip, hyperlink, and properties of the feature.
         /// </summary>
-        /// <param name="map"></param>
-        /// <param name="maxFeatures"></param>
-        /// <param name="wkt"></param>
-        /// <param name="persist"></param>
-        /// <param name="selectionVariant"></param>
-        /// <param name="extraOptions"></param>
+        /// <param name="map">The RuntimeMap instance</param>
+        /// <param name="maxFeatures">The maximum number of features to return</param>
+        /// <param name="wkt">The WKT of the filter geometry, specifying the selection area</param>
+        /// <param name="persist">Indicates whether the selection should be persisted as part of the map</param>
+        /// <param name="selectionVariant">The spatial operator to use against the selection geometry</param>
+        /// <param name="extraOptions">Extra options for controlling selection criteria</param>
         /// <returns></returns>
         string QueryMapFeatures(RuntimeMap map, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions);
     }

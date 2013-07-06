@@ -93,112 +93,116 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Executes a SQL query
         /// </summary>
-        /// <param name="featureSourceID"></param>
-        /// <param name="sql"></param>
-        /// <returns></returns>
+        /// <remarks>
+        /// No validation is done on the SQL query string. The calling application should validate the SQL string to ensure
+        /// that it does not contain any malicious operations.
+        /// </remarks>
+        /// <param name="featureSourceID">The Feature Source ID</param>
+        /// <param name="sql">The SQL query string</param>
+        /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IReader"/> containing the results of the query</returns>
         IReader ExecuteSqlQuery(string featureSourceID, string sql);
 
         /// <summary>
         /// Executes a feature query on the specified feature source
         /// </summary>
-        /// <param name="resourceID"></param>
-        /// <param name="className"></param>
-        /// <param name="filter"></param>
-        /// <returns></returns>
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="className">The feature class name</param>
+        /// <param name="filter">The FDO filter string that determines what features will be returned</param>
+        /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader"/> containing the results of the query</returns>
         IFeatureReader QueryFeatureSource(string resourceID, string className, string filter);
 
         /// <summary>
         /// Executes a feature query on the specified feature source
         /// </summary>
-        /// <param name="resourceID"></param>
-        /// <param name="className"></param>
-        /// <returns></returns>
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="className">The feature class name</param>
+        /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader"/> containing the results of the query</returns>
         IFeatureReader QueryFeatureSource(string resourceID, string className);
 
         /// <summary>
         /// Executes a feature query on the specified feature source
         /// </summary>
-        /// <param name="resourceID"></param>
-        /// <param name="className"></param>
-        /// <param name="filter"></param>
-        /// <param name="propertyNames"></param>
-        /// <returns></returns>
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="className">The feature class name</param>
+        /// <param name="filter">The FDO filter string that determines what features will be returned</param>
+        /// <param name="propertyNames">A list of properties that are to be returned in the query result</param>
+        /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader"/> containing the results of the query</returns>
         IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames);
 
         /// <summary>
         /// Executes a feature query on the specified feature source
         /// </summary>
-        /// <param name="resourceID"></param>
-        /// <param name="schema"></param>
-        /// <param name="query"></param>
-        /// <param name="columns"></param>
-        /// <param name="computedProperties"></param>
-        /// <returns></returns>
-        IFeatureReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns, NameValueCollection computedProperties);
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="className">The feature class name</param>
+        /// <param name="filter">The FDO filter string that determines what features will be returned</param>
+        /// <param name="propertyNames">A list of properties that are to be returned in the query result</param>
+        /// <param name="computedProperties">A list of name/value pairs that contain the alias (name) for an FDO expression (value)</param>
+        /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader"/> containing the results of the query</returns>
+        IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames, NameValueCollection computedProperties);
 
         /// <summary>
         /// Executes an aggregate query on the specified feature source
         /// </summary>
-        /// <param name="resourceID"></param>
-        /// <param name="schema"></param>
-        /// <param name="filter"></param>
-        /// <returns></returns>
-        IReader AggregateQueryFeatureSource(string resourceID, string schema, string filter);
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="className">The feature class name</param>
+        /// <param name="filter">The FDO filter string that determines what features will be returned</param>
+        /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IReader"/> containing the results of the query</returns>
+        IReader AggregateQueryFeatureSource(string resourceID, string className, string filter);
 
         /// <summary>
         /// Executes an aggregate query on the specified feature source
         /// </summary>
-        /// <param name="resourceID"></param>
-        /// <param name="schema"></param>
-        /// <param name="filter"></param>
-        /// <param name="columns"></param>
-        /// <returns></returns>
-        IReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, string[] columns);
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="className">The feature class name</param>
+        /// <param name="filter">The FDO filter string that determines what features will be returned</param>
+        /// <param name="propertyNames">An array of property names to include in the result</param>
+        /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IReader"/> containing the results of the query</returns>
+        IReader AggregateQueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames);
 
         /// <summary>
         /// Executes an aggregate query on the specified feature source
         /// </summary>
-        /// <param name="resourceID"></param>
-        /// <param name="schema"></param>
-        /// <param name="filter"></param>
-        /// <param name="aggregateFunctions"></param>
-        /// <returns></returns>
-        IReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, NameValueCollection aggregateFunctions);
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="className">The feature class name</param>
+        /// <param name="filter">The FDO filter string that determines what features will be returned</param>
+        /// <param name="aggregateFunctions">A list of name/value pairs that contain the alias (name) for an FDO aggregate expression (value)</param>
+        /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IReader"/> containing the results of the query</returns>
+        IReader AggregateQueryFeatureSource(string resourceID, string className, string filter, NameValueCollection aggregateFunctions);
 
         /// <summary>
         /// Gets the geometric extent of the specified feature source
         /// </summary>
-        /// <param name="resourceID"></param>
-        /// <param name="schema"></param>
-        /// <param name="geometry"></param>
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="className">The feature class name</param>
+        /// <param name="geometryPropertyName">The geometry property to get the geometric extent of</param>
         /// <returns></returns>
-        ObjCommon.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry);
+        ObjCommon.IEnvelope GetSpatialExtent(string resourceID, string className, string geometryPropertyName);
 
         /// <summary>
         /// Gets the geometric extent of the specified feature source
         /// </summary>
-        /// <param name="resourceID"></param>
-        /// <param name="schema"></param>
-        /// <param name="geometry"></param>
-        /// <param name="filter"></param>
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="className">The feature class name</param>
+        /// <param name="geometryPropertyName">The geometry property to get the geometric extent of</param>
+        /// <param name="filter">The FDO filter string that determines what features will be returned</param>
         /// <returns></returns>
-        ObjCommon.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, string filter);
+        ObjCommon.IEnvelope GetSpatialExtent(string resourceID, string className, string geometryPropertyName, string filter);
 
         /// <summary>
         /// Gets the geometric extent of the specified feature source
         /// </summary>
-        /// <param name="resourceID"></param>
-        /// <param name="schema"></param>
-        /// <param name="geometry"></param>
-        /// <param name="allowFallbackToContextInformation"></param>
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="className">The feature class name</param>
+        /// <param name="geometryPropertyName">The geometry property to get the geometric extent of</param>
+        /// <param name="allowFallbackToContextInformation">If true, the geometric extent of the feature class's spatial context will be used in the event that computing the extents fails</param>
         /// <exception cref="T:OSGeo.MapGuide.MaestroAPI.Exceptions.NullExtentException">Thrown if the geometric extent is null</exception>
         /// <returns></returns>
-        ObjCommon.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, bool allowFallbackToContextInformation);
+        ObjCommon.IEnvelope GetSpatialExtent(string resourceID, string className, string geometryPropertyName, bool allowFallbackToContextInformation);
 
         /// <summary>
         /// Describes the specified feature source
         /// </summary>
-        /// <param name="resourceID"></param>
+        /// <param name="resourceID">The Feature Source ID</param>
         /// <remarks>
         /// If you only need to list schemas and class names, use the respective <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemas" /> and
         /// <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames" /> methods. Using this API will have a noticeable performance impact on 
@@ -210,8 +214,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Describes the specified feature source
         /// </summary>
-        /// <param name="resourceID"></param>
-        /// <param name="schema"></param>
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="schema">The name of the schema to describe</param>
         /// <remarks>
         /// If you only need to list schemas and class names, use the respective <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemas" /> and
         /// <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames" /> methods. Using this API will have a noticeable performance impact on 
@@ -237,7 +241,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Gets the specified class definition
         /// </summary>
-        /// <param name="resourceID"></param>
+        /// <param name="resourceID">The Feature Source ID</param>
         /// <param name="className">The feature class name. You can pass a qualified class name to be explicit about which class definition you are after</param>
         /// <returns></returns>
         ClassDefinition GetClassDefinition(string resourceID, string className);
@@ -245,15 +249,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Get the spatial context information for the specified feature source
         /// </summary>
-        /// <param name="resourceID"></param>
-        /// <param name="activeOnly"></param>
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="activeOnly">If true, will only return the active spatial context</param>
         /// <returns></returns>
         ObjCommon.FdoSpatialContextList GetSpatialContextInfo(string resourceID, bool activeOnly);
 
         /// <summary>
         /// Gets the names of the identity properties from a feature
         /// </summary>
-        /// <param name="resourceID">The resourceID for the FeatureSource</param>
+        /// <param name="resourceID">The Feature Source ID</param>
         /// <param name="classname">The classname of the feature, including schema</param>
         /// <returns>A string array with the found identities</returns>
         string[] GetIdentityProperties(string resourceID, string classname);
@@ -261,36 +265,36 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Enumerates all the data stores and if they are FDO enabled for the specified provider and partial connection string
         /// </summary>
-        /// <param name="providerName"></param>
-        /// <param name="partialConnString"></param>
+        /// <param name="providerName">The FDO provider name</param>
+        /// <param name="partialConnString">The partial connection string. Certain providers require a partial conection string in order to be able to enumerate data stores</param>
         /// <returns></returns>
         OSGeo.MapGuide.ObjectModels.Common.DataStoreList EnumerateDataStores(string providerName, string partialConnString);
 
         /// <summary>
         /// Gets an array of schema names from the specified feature source
         /// </summary>
-        /// <param name="resourceId"></param>
+        /// <param name="resourceID">The Feature Source ID</param>
         /// <returns></returns>
-        string[] GetSchemas(string resourceId);
+        string[] GetSchemas(string resourceID);
 
         /// <summary>
         /// Gets an array of qualified feature class names from the specified feature source
         /// </summary>
-        /// <param name="resourceId">The feature source id</param>
+        /// <param name="resourceID">The feature source id</param>
         /// <param name="schemaName">
         /// The name of the schema whose class names are to be returned. If null, class names from all schemas in the feature source
         /// are returned
         /// </param>
         /// <returns></returns>
-        string[] GetClassNames(string resourceId, string schemaName);
+        string[] GetClassNames(string resourceID, string schemaName);
 
         /// <summary>
         /// Gets the long transactions for the specified feature source
         /// </summary>
-        /// <param name="resourceId">The feature source id</param>
+        /// <param name="resourceID">The Feature Source ID</param>
         /// <param name="activeOnly">If true, will only return active long transactions</param>
         /// <returns></returns>
-        ILongTransactionList GetLongTransactions(string resourceId, bool activeOnly);
+        ILongTransactionList GetLongTransactions(string resourceID, bool activeOnly);
 
         /// <summary>
         /// Gets the schema mappings for the given FDO provider. These mappings form the basis for a custom configuration document

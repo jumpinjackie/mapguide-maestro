@@ -42,13 +42,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <summary>
         /// Reads a tile from MapGuide
         /// </summary>
-        /// <param name="mapdefinition">A map with baselayergroups</param>
-        /// <param name="baselayergroup">The name of a baselayergroup</param>
-        /// <param name="col">The column index of the tile</param>
+        /// <param name="mapDefinition">A map with baselayergroups</param>
+        /// <param name="baseLayerGroup">The name of a baselayergroup</param>
+        /// <param name="column">The column index of the tile</param>
         /// <param name="row">The row index of the tile</param>
-        /// <param name="scaleindex">The scale index for the tile set</param>
+        /// <param name="scaleIndex">The scale index for the tile set</param>
         /// <param name="format">The format to return the tile in, either JPG, GIF, PNG or PNG8</param>
         /// <returns>An image stream</returns>
-        System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format);
+        System.IO.Stream GetTile(string mapDefinition, string baseLayerGroup, int column, int row, int scaleIndex, string format);
     }
 }
