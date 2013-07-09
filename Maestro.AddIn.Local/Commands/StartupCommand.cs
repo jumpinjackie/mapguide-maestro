@@ -36,7 +36,7 @@ namespace Maestro.AddIn.Local.Commands
         public override void Run()
         {
             ResourceService.RegisterNeutralImages(Properties.Resources.ResourceManager);
-            ResourceService.RegisterNeutralStrings(Properties.Resources.ResourceManager);
+            ResourceService.RegisterNeutralStrings(Strings.ResourceManager);
 
             if (!Platform.IsRunningOnMono)
             {
