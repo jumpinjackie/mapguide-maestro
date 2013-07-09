@@ -365,7 +365,13 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
             _service.SyncSessionCopy();
             _doc = null;
             BuildDefaultDocument();
-            MessageBox.Show(Strings.ConfigurationDocumentReset);
+
+            if (null != _doc)
+            {
+                _fs.ConfigurationDocument = "config.xml";
+                _fs.SetConfigurationContent(_doc.ToXml());
+                MessageBox.Show(Strings.ConfigurationDocumentReset);
+            }
         }
 
         private void chkUse64Bit_CheckedChanged(object sender, EventArgs e)
