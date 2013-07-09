@@ -3,7 +3,7 @@
 The Local Connection Mode
 =========================
 
-The Local Connection Mode is a new feature of Maestro 4.0 that allows you to work with a resource repository that is local on your machine.
+The Local Connection Mode is a new feature of Maestro that allows you to work with a resource repository that is local on your machine.
 
 The Local Connection Mode is designed for the following user scenarios:
 

@@ -132,10 +132,21 @@ Selecting a widget reference allows to you point to the correct widget in the wi
 Widget Management
 ^^^^^^^^^^^^^^^^^
 
-The **Widget Management** dialog allows you to add and configure widgets in the widget set. Widgets in the widget set can then be referenced in the **Widgets** section of the editor.
+The **Widget Management** dialog allows you to configure the main map widget and to add/configure other widgets in the widget set. 
+
+Widgets in the widget set can then be referenced in the **Widgets** section of the editor.
+
+.. figure:: images/fl_widget_config_map.png
+
+ *Widget Management Dialog (map widget)*
 
 .. figure:: images/fl_widget_config.png
 
- *Widget Management Dialog*
+ *Widget Management Dialog (other widgets)*
  
-Most widgets have a specialized editor to configure widget parameters. For those that don't a generic XML editor is available as a fallback mechanism.
+All widgets are edited via XML. Widget behaviour is customised by editing the `<Extension>` element of the widget XML. If you are not sure what elements are allowed in the widget's extension
+element, you can click the **Widget Info** button, which will list all the available extension properties for this widget
+
+.. figure:: images/fl_widget_info.png
+
+ *Widget Info Dialog (for Redline widget)*

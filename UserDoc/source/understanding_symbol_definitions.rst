@@ -90,3 +90,10 @@ The Simple Symbol Definitions you combine can be either:
  * An inline Simple Symbol Definition
 
 Inline Simple Symbol Definitions use the same Simple Symbol Definition editor, embedded within the existing Compound Symbol Definition Editor.
+
+Previewing
+----------
+
+Both Simple and Compound Symbol Definition editors support previewing, by clicking the **Preview** button in the main toolbar while the editor is the active tab. 
+
+This generates an enlarged version of the icon that you would normally see for this layer if it was displayed in the AJAX or Fusion viewer legend.

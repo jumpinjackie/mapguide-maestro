@@ -20,7 +20,7 @@ Features unique to MapGuide Studio / Autodesk Infrastructure Studio
  * MapGuide Studio supports loading of DWG files and raster images. Due to licensing and/or the need to be multi-platform, Maestro does not (and probably will never) support these features.
  * MapGuide Studio supports creating and editing Symbol Libraries. Maestro cannot edit Symbol Libraries, however it has read support for these resources and Maestro supports symbol selection from Symbol Libraries.
  * MapGuide Studio supports the "Convert to SDF" and generalization options of Load Procedures.
- * Autodesk Infrastructure Studio (2013 onwards) supports publishing DWG files directly with no conversion.
+ * Autodesk Infrastructure Studio (2013 onwards) supports publishing DWG files directly with no conversion and full visual fidelity.
  * Autodesk Infrastructure Studio supports creating connections to Industry Model (Topobase) data sources.
 
 Features unique to MapGuide Maestro
@@ -32,6 +32,7 @@ Features unique to MapGuide Maestro
  * Maestro has a small installation footprint compared to MapGuide Studio.
  * Maestro allows you to edit any resource in its XML form. The XML editor is used as a fallback measure if Maestro encounters unsupported or unrecognised resources.
  * Maestro supports all known resource versions. Maestro will *never* silently upgrade your resources to the latest version.
+ * Maestro's functionality can be extended by users, either through dedicated extension APIs or through the built-in IronPython scripting engine.
  * Maestro supports custom resource templates
  * Maestro supports the creation and loading of MapGuide Packages (MGP) without needing to use the Site Administrator web application.
  * Maestro has a more active development cycle.

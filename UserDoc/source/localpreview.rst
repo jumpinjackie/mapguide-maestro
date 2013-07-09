@@ -1,3 +1,5 @@
+.. _local-fs-preview:
+
 Using Local Feature Source Preview 
 ==================================
 

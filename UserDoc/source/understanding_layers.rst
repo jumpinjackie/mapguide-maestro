@@ -108,6 +108,9 @@ This dialog provides all the options for generating a theme, which can be based 
 Each generated rule wil use a color from a specified color ramp. The color ramp can be gradient-based or use
 ColorBrewer thematics.
 
+An option is also available that allows you to use the first rule of your current style as the "prototype" from which your theme rules will be created
+from, avoiding the need to manually re-style each individual theme rule after generation.
+
 Once you have specified the theme settings and clicked **OK**, the matching rules will be generated and will replace
 or be appended to your existing set of style rules for this scale range.
 
@@ -120,6 +123,10 @@ Clicking the **...** button beside the previewed point style on the rule editor 
 
  *The Point Style dialog*
  
+.. figure:: images/ldf_vector_point_rule_pt2.png
+
+ *The Point Style dialog (fill/border settings)*
+ 
 There are many options here, but this guide will only cover the main ones.
 
 Point features can be drawn as symbols or as text labels. The **Display Points** checkbox governs this behavior. Ticking it will
@@ -129,8 +136,10 @@ parameters can either be numbers or numerical FDO expressions.
 For point symbology, you can choose a pre-defined list of symbols under the **Symbol** dropdown. The very last option 
 in that dropdown (`Symbol`) allows you to pick a custom symbol from an existing **Symbol Library** resource.
 
-Note that the generated preview at the bottom of the dialog is not perfect and does not exactly reflect the style settings
-you have defined. Use the **Preview** command in the main toolbar to view this Layer in your system default web browser. Here
+Note that the generated preview at the bottom of the dialog is an approximation and does not exactly reflect the style settings you have defined. This preview would
+be the same image if you were to look at this layer's icon in the AJAX or Fusion viewer legend.
+
+If you want an exact representation, use the **Preview** command in the main toolbar to view this Layer in your system default web browser. Here
 you can better verify your point style settings are correct.
 
 Line Style Rules
@@ -197,8 +206,9 @@ The inline symbol definitions use the same editors as the normal symbol definiti
  
 .. note::
 
-    Unlike Point/Line/Area styles, the preview is blank because rendering composite symbolization preview is not currently supported. The only
-    means of previewing your composite symbolization settings is trial and error with the current edited layer defintion.
+    Unlike Point/Line/Area styles, the top-level preview is blank because rendering composite symbolization preview is not currently supported. However
+    the **Symbol Instances Dialog** does offer basic previewing support. What you see in the symbol preview is simply an enlarged version of the icon that
+    you would see for this layer if it was displayed in the AJAX or Fusion viewer legend.
 
 Label Settings
 ^^^^^^^^^^^^^^

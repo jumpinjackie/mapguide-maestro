@@ -48,7 +48,7 @@ Make a Map
 ----------
 
 For this step, create a **Map Definition** and bring in the **Layer Definitions** you have created. Organise these layers into groups (optional) and sort them by drawing 
-order with rasters and polygon layers at the bottom, followed by line layerse, then followed by point layers. You don't need to specifically follow this draw order, but
+order with rasters and polygon layers at the bottom, followed by line layers, then followed by point layers. You don't need to specifically follow this draw order, but
 it's a generally useful rule to follow.
 
 For layers that change very rarely, you can set them as tiled layers. Tiled layers are rendered once as tiles and stored into a Tile Cache. Subsequent requests for the

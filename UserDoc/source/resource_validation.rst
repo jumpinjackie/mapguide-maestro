@@ -1,3 +1,5 @@
+.. _resource-validation:
+
 Resource Validation
 ===================
 
