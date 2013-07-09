@@ -52,7 +52,18 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
-            return ObjectFactory.CreateWebLayout(conn, new Version(1, 1, 0), string.Empty);
+            //This is to just ensure we have a functional WebLayout when it's created
+            using (var picker = new ResourcePicker(conn.ResourceService, ResourceTypes.MapDefinition, ResourcePickerMode.OpenResource))
+            {
+                picker.SetStartingPoint(startPoint);
+                if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    var wl = ObjectFactory.CreateWebLayout(conn, new Version(1, 1, 0), string.Empty);
+                    wl.Map.ResourceId = picker.ResourceID;
+                    return wl;
+                }
+            }
+            return null;
         }
     }
 }
