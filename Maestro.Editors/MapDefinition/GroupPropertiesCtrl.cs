@@ -90,7 +90,7 @@ namespace Maestro.Editors.MapDefinition
                 _el = group;
                 group.PropertyChanged += new PropertyChangedEventHandler(OnGroupChanged);
 
-                //TextBoxBinder.BindText(txtName, group, "Name");
+                txtName.Text = group.Name;
                 TextBoxBinder.BindText(txtLegendLabel, group, "LegendLabel");
 
                 CheckBoxBinder.BindChecked(chkExpanded, group, "ExpandInLegend");
