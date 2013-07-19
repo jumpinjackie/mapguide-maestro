@@ -172,9 +172,26 @@ namespace Maestro.Editors.Common
                         m_wktCoordSys.WKT = WKTText.Text;
                     }
                 }
+                else
+                {
+                    if (MessageBox.Show(Strings.ConfirmNonMapGuideSupportedCsWkt, Strings.NonMapGuideSupportedCsWkt, MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        m_wktCoordSys = _cat.CreateEmptyCoordinateSystem();
+                        m_wktCoordSys.Code = null;
+                        m_wktCoordSys.Description = null;
+                        m_wktCoordSys.WKT = WKTText.Text;
+                    }
+                }
             }
             catch
             {
+                if (MessageBox.Show(Strings.ConfirmNonMapGuideSupportedCsWkt, Strings.NonMapGuideSupportedCsWkt, MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    m_wktCoordSys = _cat.CreateEmptyCoordinateSystem();
+                    m_wktCoordSys.Code = null;
+                    m_wktCoordSys.Description = null;
+                    m_wktCoordSys.WKT = WKTText.Text;
+                }
             }
             UpdateOKButton();
         }
@@ -189,6 +206,7 @@ namespace Maestro.Editors.Common
             }
             catch
             {
+                
             }
             UpdateOKButton();
         }

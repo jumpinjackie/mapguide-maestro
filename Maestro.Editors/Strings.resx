@@ -1527,4 +1527,10 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="ExtendedFeatureClassAlreadyExists" xml:space="preserve">
     <value>An extended feature class named ({0}) already exist. Please choose a different name</value>
   </data>
+  <data name="ConfirmNonMapGuideSupportedCsWkt" xml:space="preserve">
+    <value>The WKT you entered is not recognised by MapGuide's Coordinate System Library. Use it anyway?</value>
+  </data>
+  <data name="NonMapGuideSupportedCsWkt" xml:space="preserve">
+    <value>Non-supported WKT</value>
+  </data>
 </root>
