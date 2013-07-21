@@ -22,7 +22,7 @@ To connect to your local repository, select the **Connect Locally** option.
 
 .. figure:: images/connect_local.png
 
- * Connecting to the local repository *
+    *Connecting to the local repository*
 
 For the **Platform Configuration File**, select the **Platform.ini** file in the Maestro installation directory. Then click **OK** to connect to your local repository.
 

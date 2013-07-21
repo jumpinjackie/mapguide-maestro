@@ -1,3 +1,5 @@
+.. _user-interface:
+
 The Maestro User Interface
 ==========================
 
@@ -24,7 +26,11 @@ that it makes to the MapGuide Server. You can see these logged messages and requ
 
 The **IronPython Console** provides the user with an interactive REPL console, by which the user can run and evaluate snippets of IronPython code. The full Maestro API is
 exposed to the console, allowing the user to script and automate the application through IronPython code. IronPython is a dialect of Python geared towards integration with
-the .net Framework. For more information about IronPython, see `IronPython.net <http://ironpython.net/>`_
+the .net Framework. For more information about this feature, see :ref:`scripting-and-automating-maestro`. For more information about IronPython, see `IronPython.net <http://ironpython.net/>`_
+
+.. note::
+
+    The IronPython Console feature is only available on Windows and is only bundled with the Windows installer package of Maestro
 
 The **Resource ID bar** functions like an address bar in a web browser. Entering a Resource ID in the **Resource ID bar** and clicking `Go` will allow you to directly open
 the specified resource for editing. Similarly, selecting an open editor tab will show you the Resource ID of the resource being edited. This is a feature that power users

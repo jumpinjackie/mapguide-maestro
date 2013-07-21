@@ -36,6 +36,7 @@ Contents:
    mgcooker
    localpreview
    local_connection_mode
+   scripting_and_automating_maestro
    other_tools
    other_resources
 
