@@ -29,7 +29,9 @@ The IronPython Console exposes a top-level global object named `app`, which repr
  * Convenience methods to fetch/set resource XML content by their resource id
  * A UI-thread invoker for running UI interaction code from a background thread
 
-The `IServerConnection` interface represents the top-level interface of the Maestro API and is the gateway into most of the functionality that is offered by the Maestro API
+The `IServerConnection` interface represents the top-level interface of the Maestro API and is the gateway into most of the functionality that is offered by the Maestro API.
+
+Each root node (connection) in the **Site Explorer** represents an `IServerConnection` instance. The Host Application gives you the ability to retrieve such instances in order to be able to work with resources under that connection instance.
 
 For more information about the `IServerConnection` interface, consult the Maestro API documentation which is included with the `Maestro SDK <http://trac.osgeo.org/mapguide/wiki/maestro/Downloads>`_
 
