@@ -2,6 +2,9 @@
 ---
  - New WebLayout now auto-prompts for Map Definition like its Fusion counterpart
  - User documentation content updates
+ - XML documentation files included with installation (previously only included with dlls in SDK)
+ - Coordinate System picker now supports entry of arbitrary WKT strings
+ - Fix: Base layer Group field not set when one is selected in Map Definition editor
  - Fix: ODBC configuraton reset is not saved
  - Fix: Avoid divide by zero cases in text editor component
 
