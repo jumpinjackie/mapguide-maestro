@@ -197,6 +197,13 @@ Section
     File "${INST_OUTPUT_MAESTRO}\ConnectionProviders.xml"
     File "${INST_OUTPUT_MAESTRO}\FsEditorMap.xml"
     File "${INST_OUTPUT_MAESTRO}\OdbcDriverMap.xml"
+    File "${INST_OUTPUT_MAESTRO}\Maestro.Base.xml"
+    File "${INST_OUTPUT_MAESTRO}\Maestro.Editors.xml"
+    File "${INST_OUTPUT_MAESTRO}\Maestro.Login.xml"
+    File "${INST_OUTPUT_MAESTRO}\Maestro.MapViewer.xml"
+    File "${INST_OUTPUT_MAESTRO}\Maestro.Packaging.xml"
+    File "${INST_OUTPUT_MAESTRO}\Maestro.Shared.UI.xml"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.xml"
     
     # libraries
     File "${INST_OUTPUT_MAESTRO}\Aga.Controls.dll"
@@ -237,7 +244,7 @@ Section
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0.dll"
     File "${INST_OUTPUT_MAESTRO}\WeifenLuo.WinFormsUI.Docking.dll"
     
-    # pdbs, we'll leave them in for the beta period duration
+    # pdbs for greater context in exception stack traces
     File "${INST_OUTPUT_MAESTRO}\Aga.Controls.pdb"
     File "${INST_OUTPUT_MAESTRO}\Maestro.pdb"
     File "${INST_OUTPUT_MAESTRO}\MaestroFsPreview.pdb"
