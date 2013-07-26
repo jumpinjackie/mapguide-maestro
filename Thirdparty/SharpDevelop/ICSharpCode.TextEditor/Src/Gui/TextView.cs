@@ -700,8 +700,6 @@ namespace ICSharpCode.TextEditor
 			int lineOffset = line.Offset;
 			int tabIndent = Document.TextEditorProperties.TabIndent;
 			int guessedColumn = 0;
-			if (tabIndent == 0)
-				return guessedColumn;
 			for (int i = 0; i < logicalColumn; ++i) {
 				char ch;
 				if (i >= line.Length) {
@@ -711,8 +709,11 @@ namespace ICSharpCode.TextEditor
 				}
 				switch (ch) {
 					case '\t':
-						guessedColumn += tabIndent;
-						guessedColumn = (guessedColumn / tabIndent) * tabIndent;
+                        if (tabIndent != 0)
+                        {
+                            guessedColumn += tabIndent;
+                            guessedColumn = (guessedColumn / tabIndent) * tabIndent;
+                        }
 						break;
 					default:
 						++guessedColumn;
@@ -832,9 +833,7 @@ namespace ICSharpCode.TextEditor
 			List<TextWord> words = line.Words;
 			if (words == null) return 0;
 			int wordOffset = 0;
-			if (tabIndent == 0 || WideSpaceWidth == 0)
-				return wordOffset;
-
+			
 			for (int i = 0; i < words.Count; i++) {
 				TextWord word = words[i];
 				if (wordOffset >= end) {
@@ -850,6 +849,8 @@ namespace ICSharpCode.TextEditor
 							break;
 						case TextWordType.Tab:
 							// go to next tab position
+                            if (tabIndent == 0 || WideSpaceWidth == 0)
+                                return wordOffset;
 							drawingPos = (int)((drawingPos + MinTabWidth) / tabIndent / WideSpaceWidth) * tabIndent * WideSpaceWidth;
 							newDrawingPos = drawingPos + tabIndent * WideSpaceWidth;
 							if (newDrawingPos >= targetVisualPosX)
