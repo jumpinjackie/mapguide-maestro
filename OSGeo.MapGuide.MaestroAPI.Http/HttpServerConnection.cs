@@ -1987,24 +1987,31 @@ namespace OSGeo.MapGuide.MaestroAPI
                 var fsd = new FeatureSourceDescription(s);
                 //We can't just assume first class item is the one, as ones that do not take
                 //class name hints will return the full schema
-                var schema = fsd.Schemas[0];
-                if (schema.Classes.Count > 1)
+                var schema = fsd.GetSchema(schemaName);
+                if (schema != null)
                 {
-                    //Since we have the full schema anyway, let's cache these other classes
-                    ClassDefinition ret = null;
-                    foreach (var cls in schema.Classes)
+                    if (schema.Classes.Count > 1)
                     {
-                        string key = resourceId + "!" + cls.QualifiedName;
-                        m_classDefinitionCache[key] = cls;
+                        //Since we have the full schema anyway, let's cache these other classes
+                        ClassDefinition ret = null;
+                        foreach (var cls in schema.Classes)
+                        {
+                            string key = resourceId + "!" + cls.QualifiedName;
+                            m_classDefinitionCache[key] = cls;
 
-                        if (cls.Name == className)
-                            ret = cls;
+                            if (cls.Name == className)
+                                ret = cls;
+                        }
+                        return ret;
                     }
-                    return ret;
+                    else
+                    {
+                        return schema.GetClass(className);
+                    }
                 }
                 else
                 {
-                    return schema.GetClass(className);
+                    return null;
                 }
             }
         }
