@@ -41,7 +41,7 @@ namespace Maestro.Base.Templates
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
-            return ObjectFactory.CreateMapDefinition(conn, Strings.NewMap);
+            return ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), Strings.NewMap);
         }
     }
 }
