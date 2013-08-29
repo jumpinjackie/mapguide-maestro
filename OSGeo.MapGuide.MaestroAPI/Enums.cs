@@ -125,6 +125,10 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// A watermark
         /// </summary>
         WatermarkDefinition,
+        /// <summary>
+        /// A selection for a runtime map
+        /// </summary>
+        Selection
 	}
 
     /// <summary>
