@@ -413,7 +413,7 @@ namespace Maestro.Editors.MapDefinition
                     layerCount++;
                 }
                 //Detach the base layer group
-                _map.BaseMap.RemoveBaseLayerGroup(group.Tag);
+                _map.RemoveBaseLayerGroup(group.Tag, true);
                 MessageBox.Show(string.Format(Strings.BaseLayerGroupConvertedToLayerGroup, group.Tag.Name, groupName));
                 this.RefreshModels();
                 tabControl1.SelectedIndex = 0; //Switch to Layer Groups
@@ -705,7 +705,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void RemoveSelectedTiledLayerItem(BaseLayerGroupItem group)
         {
-            _map.BaseMap.RemoveBaseLayerGroup(group.Tag);
+            _map.RemoveBaseLayerGroup(group.Tag, true);
             propertiesPanel.Controls.Clear();
             _tiledLayerModel.Invalidate();
         }

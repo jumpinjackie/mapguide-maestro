@@ -463,6 +463,92 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
     public static class MapDefinitionExtensions
     {
         /// <summary>
+        /// Adds the specified finite display scale to the Map Definition
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="scale"></param>
+        public static void AddFiniteDisplayScale(this IMapDefinition map, double scale)
+        {
+            Check.NotNull(map, "map"); //NOXLATE
+
+            if (map.BaseMap != null)
+                map.InitBaseMap();
+
+            map.BaseMap.AddFiniteDisplayScale(scale);
+        }
+
+        /// <summary>
+        /// Removes the specified finite display scale from the Map Definition
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="scale"></param>
+        /// <param name="bDetachIfEmpty"></param>
+        public static void RemoveFiniteDisplayScale(this IMapDefinition map, double scale, bool bDetachIfEmpty)
+        {
+            Check.NotNull(map, "map"); //NOXLATE
+
+            if (map.BaseMap == null)
+                return;
+
+            map.BaseMap.RemoveFiniteDisplayScale(scale);
+            if (map.BaseMap.GroupCount == 0 && map.BaseMap.ScaleCount == 0 && bDetachIfEmpty)
+                map.RemoveBaseMap();
+        }
+
+        /// <summary>
+        /// Removes all finite display scales from the Map Definition
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="bDetachIfEmpty"></param>
+        public static void RemoveAllFiniteDisplayScales(this IMapDefinition map, bool bDetachIfEmpty)
+        {
+            Check.NotNull(map, "map"); //NOXLATE
+
+            if (map.BaseMap == null)
+                return;
+
+            map.BaseMap.RemoveAllScales();
+            if (map.BaseMap.GroupCount == 0 && map.BaseMap.ScaleCount == 0 && bDetachIfEmpty)
+                map.RemoveBaseMap();
+        }
+
+        /// <summary>
+        /// Adds the specified base layer group to the map definition
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static IBaseMapGroup AddBaseLayerGroup(this IMapDefinition map, string name)
+        {
+            Check.NotNull(map, "map"); //NOXLATE
+            Check.NotEmpty(name, "name"); //NOXLATE
+
+            if (map.BaseMap == null)
+                map.InitBaseMap();
+
+            return map.BaseMap.AddBaseLayerGroup(name);
+        }
+
+        /// <summary>
+        /// Removes the given base layer group from the Map Definition
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="group"></param>
+        public static void RemoveBaseLayerGroup(this IMapDefinition map, IBaseMapGroup group, bool bDetachIfEmpty)
+        {
+            Check.NotNull(map, "map"); //NOXLATE
+            if (null == group)
+                return;
+
+            if (map.BaseMap == null)
+                return;
+
+            map.BaseMap.RemoveBaseLayerGroup(group);
+            if (map.BaseMap.GroupCount == 0 && map.BaseMap.GroupCount == 0 && bDetachIfEmpty)
+                map.RemoveBaseMap();
+        }
+
+        /// <summary>
         /// Updates the group name references of all layers belonging to a particular group
         /// </summary>
         /// <param name="map">The map.</param>

@@ -88,22 +88,21 @@ namespace Maestro.Editors.MapDefinition
         private void ClearScales()
         {
             _map.InitBaseMap();
-            _map.BaseMap.RemoveAllScales();
+            _map.RemoveAllFiniteDisplayScales(true);
             _edSvc.MarkDirty();
         }
 
         private void RemoveScaleFromMap(double scale)
         {
             _scales.Remove(scale);
-            _map.InitBaseMap();
-            _map.BaseMap.RemoveFiniteDisplayScale(scale);
+            _map.RemoveFiniteDisplayScale(scale, true);
             _edSvc.MarkDirty();
         }
 
         private void AddScaleToMap(double scale)
         {
             _map.InitBaseMap();
-            _map.BaseMap.AddFiniteDisplayScale(scale);
+            _map.AddFiniteDisplayScale(scale);
             _edSvc.MarkDirty();
         }
 
