@@ -167,12 +167,16 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             if (ItemDeleted != null)
+            {
                 if (m_prt != null)
                     ItemDeleted(m_prt, null);
                 else if (m_lrt != null)
                     ItemDeleted(m_lrt, null);
                 else if (m_art != null)
                     ItemDeleted(m_art, null);
+                else if (m_comp != null)
+                    ItemDeleted(m_comp, null);
+            }
         }
 
         private void RuleCondition_TextChanged(object sender, EventArgs e)
@@ -186,6 +190,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 m_lrt.Filter = RuleCondition.Text;
             else if (m_art != null)
                 m_art.Filter = RuleCondition.Text;
+            else if (m_comp != null)
+                m_comp.Filter = RuleCondition.Text;
 
             SignalChanged();
         }
