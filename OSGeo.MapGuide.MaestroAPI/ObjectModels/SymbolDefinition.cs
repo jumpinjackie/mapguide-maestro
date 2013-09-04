@@ -694,6 +694,15 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         {
             _vschema = null;
             versionField = null;
+            foreach (var sm in this.SimpleSymbol)
+            {
+                var ssym = sm.Item as ISimpleSymbolDefinition;
+                var csym = sm.Item as ICompoundSymbolDefinition;
+                if (ssym != null)
+                    ssym.RemoveSchemaAttributes();
+                else if (csym != null)
+                    csym.RemoveSchemaAttributes();
+            }
         }
 
         public static CompoundSymbolDefinition CreateDefault()
