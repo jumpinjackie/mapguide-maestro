@@ -43,6 +43,7 @@
             this.lblCursorPos = new System.Windows.Forms.ToolStripLabel();
             this.btnFind = new System.Windows.Forms.ToolStripButton();
             this.btnFindAndReplace = new System.Windows.Forms.ToolStripButton();
+            this.btnReRead = new System.Windows.Forms.ToolStripButton();
             this.resDataCtrl = new Maestro.Editors.Generic.ResourceDataPanel();
             this.nodeNumericUpDown1 = new Aga.Controls.Tree.NodeControls.NodeNumericUpDown();
             this.txtXmlContent = new Maestro.Editors.Generic.XmlTextEditorControl();
@@ -71,7 +72,8 @@
             this.toolStripSeparator3,
             this.lblCursorPos,
             this.btnFind,
-            this.btnFindAndReplace});
+            this.btnFindAndReplace,
+            this.btnReRead});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -157,6 +159,13 @@
             resources.ApplyResources(this.btnFindAndReplace, "btnFindAndReplace");
             this.btnFindAndReplace.Name = "btnFindAndReplace";
             this.btnFindAndReplace.Click += new System.EventHandler(this.btnFindAndReplace_Click);
+            // 
+            // btnReRead
+            // 
+            this.btnReRead.Image = global::Maestro.Editors.Properties.Resources.arrow_circle_135;
+            resources.ApplyResources(this.btnReRead, "btnReRead");
+            this.btnReRead.Name = "btnReRead";
+            this.btnReRead.Click += new System.EventHandler(this.btnReRead_Click);
             // 
             // resDataCtrl
             // 
@@ -284,5 +293,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem findToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findReplaceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton btnReRead;
     }
 }

@@ -43,10 +43,12 @@
             this.editor.BackgroundColor = System.Drawing.SystemColors.Window;
             resources.ApplyResources(this.editor, "editor");
             this.editor.Name = "editor";
+            this.editor.SupportsReReadFromSource = true;
             this.editor.TextColor = System.Drawing.SystemColors.WindowText;
             this.editor.TextFont = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editor.Validator = null;
             this.editor.XmlContent = "";
+            this.editor.RequestReloadFromSource += new System.EventHandler(this.editor_RequestReloadFromSource);
             // 
             // XmlEditor
             // 

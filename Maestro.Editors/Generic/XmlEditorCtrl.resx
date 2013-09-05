@@ -205,6 +205,18 @@
   <data name="btnFindAndReplace.Text" xml:space="preserve">
     <value>Find/Replace</value>
   </data>
+  <data name="btnReRead.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="btnReRead.Size" type="System.Drawing.Size, System.Drawing">
+    <value>133, 22</value>
+  </data>
+  <data name="btnReRead.Text" xml:space="preserve">
+    <value>Reload From Source</value>
+  </data>
+  <data name="btnReRead.ToolTipText" xml:space="preserve">
+    <value>Re-loads the XML content from the source resource ID</value>
+  </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -403,6 +415,12 @@
     <value>btnFindAndReplace</value>
   </data>
   <data name="&gt;&gt;btnFindAndReplace.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnReRead.Name" xml:space="preserve">
+    <value>btnReRead</value>
+  </data>
+  <data name="&gt;&gt;btnReRead.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;nodeNumericUpDown1.Name" xml:space="preserve">

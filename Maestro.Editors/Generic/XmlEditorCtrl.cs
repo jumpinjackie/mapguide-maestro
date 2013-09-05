@@ -404,6 +404,32 @@ namespace Maestro.Editors.Generic
         {
             DoFindReplace();
         }
+
+        /// <summary>
+        /// Gets or sets whether this editor can support reloading XML content
+        /// from a source resource. If true, subscribe to the 
+        /// <see cref="E:Maestro.Editors.Generic.XmlEditorCtrl.RequestReloadFromSource"/> 
+        /// event to handle this particular action
+        /// </summary>
+        public bool SupportsReReadFromSource
+        {
+            get { return btnReRead.Enabled; }
+            set { btnReRead.Enabled = value; }
+        }
+
+        /// <summary>
+        /// Raised if the user wishes to reload the XML content from source. To handle this
+        /// action, read the XML content from the requested source resource and load it into
+        /// this editor
+        /// </summary>
+        public event EventHandler RequestReloadFromSource;
+
+        private void btnReRead_Click(object sender, EventArgs e)
+        {
+            var h = this.RequestReloadFromSource;
+            if (h != null)
+                h(this, EventArgs.Empty);
+        }
     }
     
     /// <summary>

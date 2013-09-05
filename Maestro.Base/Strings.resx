@@ -965,4 +965,10 @@ Error message: {0}</value>
   <data name="Label_ResourceID" xml:space="preserve">
     <value>Resource ID:</value>
   </data>
+  <data name="ConfirmReloadXmlFromSource" xml:space="preserve">
+    <value>Are you sure you want to reload the XML from source? This will discard any un-saved changes you have made.</value>
+  </data>
+  <data name="XmlReloadedFromSource" xml:space="preserve">
+    <value>XML content reloaded from source</value>
+  </data>
 </root>

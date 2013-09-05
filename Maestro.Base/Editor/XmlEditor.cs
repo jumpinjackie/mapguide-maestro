@@ -196,5 +196,22 @@ namespace Maestro.Base.Editor
                 return Properties.Resources.icon_xmleditor;
             }
         }
+
+        private void editor_RequestReloadFromSource(object sender, EventArgs e)
+        {
+            if (MessageService.AskQuestion(Strings.ConfirmReloadXmlFromSource))
+            {
+                var resId = this.EditorService.ResourceID;
+                using (var stream = this.EditorService.ResourceService.GetResourceXmlData(resId))
+                {
+                    using (var sr = new StreamReader(stream))
+                    {
+                        var xml = sr.ReadToEnd();
+                        editor.XmlContent = xml;
+                        MessageService.ShowMessage(Strings.XmlReloadedFromSource);
+                    }
+                }
+            }
+        }
     }
 }
