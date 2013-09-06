@@ -97,6 +97,12 @@ namespace Maestro.Editors.Generic
 
             txtXmlContent.TextChanged += new EventHandler(OnTextContentChanged);
         }
+
+        public void LoadAutoCompletionData(string xsdPath)
+        {
+            txtXmlContent.SchemaCompletionDataItems = Maestro.Editors.Generic.XmlEditor.AutoCompletion.XmlSchemaManager.Instance.SchemaCompletionDataItems;
+            txtXmlContent.DefaultSchemaCompletionData = new XmlEditor.AutoCompletion.XmlSchemaCompletionData(xsdPath);
+        }
         
         private string _origText;
         

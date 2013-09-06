@@ -70,6 +70,8 @@ namespace Maestro.Base.Editor
 
             _edSvc = service;
             _edSvc.RegisterCustomNotifier(editor);
+            var path = Path.Combine(this.XsdPath, _edSvc.GetEditedResource().ValidatingSchema);
+            editor.LoadAutoCompletionData(path);
             editor.Bind(_edSvc);
             editor.ReadyForEditing(); //This turns on event broadcasting
             this.Title = Strings.XmlEditor + " " + ResourceIdentifier.GetName(this.EditorService.ResourceID); //NOXLATE

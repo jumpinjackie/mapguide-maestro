@@ -545,6 +545,17 @@
     <Compile Include="Fusion\WidgetSettingsCtrl.Designer.cs">
       <DependentUpon>WidgetSettingsCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generic\XmlEditor\AutoCompletion\QualifiedName.cs" />
+    <Compile Include="Generic\XmlEditor\AutoCompletion\QualifiedNameCollection.cs" />
+    <Compile Include="Generic\XmlEditor\AutoCompletion\XmlCompletionData.cs" />
+    <Compile Include="Generic\XmlEditor\AutoCompletion\XmlCompletionDataCollection.cs" />
+    <Compile Include="Generic\XmlEditor\AutoCompletion\XmlCompletionDataProvider.cs" />
+    <Compile Include="Generic\XmlEditor\AutoCompletion\XmlElementPath.cs" />
+    <Compile Include="Generic\XmlEditor\AutoCompletion\XmlParser.cs" />
+    <Compile Include="Generic\XmlEditor\AutoCompletion\XmlSchemaAssociation.cs" />
+    <Compile Include="Generic\XmlEditor\AutoCompletion\XmlSchemaCompletionData.cs" />
+    <Compile Include="Generic\XmlEditor\AutoCompletion\XmlSchemaCompletionDataCollection.cs" />
+    <Compile Include="Generic\XmlEditor\AutoCompletion\XmlSchemaManager.cs" />
     <Compile Include="Generic\XmlEditor\XmlEditorOptions.cs" />
     <Compile Include="Generic\XmlEditor\XmlFoldingStrategy.cs" />
     <Compile Include="Generic\XmlEditor\XmlFormattingStrategy.cs" />
