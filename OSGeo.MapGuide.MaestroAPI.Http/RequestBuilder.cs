@@ -1752,5 +1752,38 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             return m_hosturi + "?" + EncodeParameters(param);
         }
+
+        internal string DescribeRuntimeMap(string mapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "DESCRIBERUNTIMEMAP");
+            param.Add("VERSION", "2.6.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("MAPNAME", mapName);
+            param.Add("REQUESTEDFEATURES", requestedFeatures.ToString());
+            param.Add("ICONSPERSCALERANGE", iconsPerScaleRange.ToString());
+            param.Add("ICONFORMAT", iconFormat.ToString());
+            param.Add("ICONWIDTH", iconWidth.ToString());
+            param.Add("ICONHEIGHT", iconHeight.ToString());
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
+
+        internal string CreateRuntimeMap(string mapDefinition, string targetMapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight)
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "CREATERUNTIMEMAP");
+            param.Add("VERSION", "2.6.0");
+            param.Add("SESSION", m_sessionID);
+            param.Add("MAPDEFINITION", mapDefinition);
+            param.Add("TARGETMAPNAME", targetMapName);
+            param.Add("REQUESTEDFEATURES", requestedFeatures.ToString());
+            param.Add("ICONSPERSCALERANGE", iconsPerScaleRange.ToString());
+            param.Add("ICONFORMAT", iconFormat.ToString());
+            param.Add("ICONWIDTH", iconWidth.ToString());
+            param.Add("ICONHEIGHT", iconHeight.ToString());
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
     }
 }

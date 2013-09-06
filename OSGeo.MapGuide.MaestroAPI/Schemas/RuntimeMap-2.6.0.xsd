@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="RuntimeMap">
+    <xs:annotation>
+      <xs:documentation>Describes information about a Runtime Map, so that client applications can interact with it</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="SiteVersion" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>The MapGuide Site Version</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Name" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>The name of the runtime map. This is the value required for any mapagent operation that require a MAPNAME parameter</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="MapDefinition" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>The resource id of the Map Definition from which this runtime map was created from</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="BackgroundColor" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>The map's background color in ARGB hex string format</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="DisplayDpi" type="xs:integer">
+          <xs:annotation>
+            <xs:documentation>The number of dots per inch of the map display</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="IconMimeType" type="xs:string" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>The mime type of all inline icons</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="CoordinateSystem" type="CoordinateSystemType" />
+        <xs:element name="Extents" type="Envelope" />
+        <xs:element name="Group" type="RuntimeMapGroup" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="Layer" type="RuntimeMapLayer" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="FiniteDisplayScale" type="xs:double" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="CoordinateSystemType">
+    <xs:annotation>
+      <xs:documentation>Describes the coordinate system of the runtime map</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Wkt" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The WKT string of the coordinate system</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MentorCode" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The CS-Map code of the coordinate system</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EpsgCode" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The EPSG code of the coordinate system</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MetersPerUnit" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>The meters-per-unit value of the coordinate system</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RuntimeMapGroup">
+    <xs:annotation>
+      <xs:documentation>Describes a group of Runtime Map Layers</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the group</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Type" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>The type of this group. Can be tiled or dynamic. Uses the value of MgLayerGroupType</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LegendLabel" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The group's legend label</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ObjectId" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The group's unique id. Use this value for turning on/off this group in a GETDYNAMICMAPOVERLAYIMAGE request</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ParentId" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The group's parent group id. Use this value for determining parent-child relationships when building a layer/group hierarchy</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DisplayInLegend" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Indicates whether this group should be displayed in the legend</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExpandInLegend" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Indicates whether this group should be initially expanded in the legend</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Visible" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Indicates whether this group is potentially visible. Note that this may be true even though the group is not visible. This will occur if one of the groups this group is organized within is not visible.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ActuallyVisible" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Indicates the actual visibility of the group. The visibility depends on the visible property of the group, and the visible property of each group this group is organized within.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RuntimeMapLayer">
+    <xs:annotation>
+      <xs:documentation>Describes a runtime instance of a Layer Definition</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the layer</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Type" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>The type of this layer. Can be tiled or dynamic. Uses the value of MgLayerType</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LegendLabel" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The layer's legend label</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ObjectId" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The layer's unique id. Use this value for turning on/off this layer in a GETDYNAMICMAPOVERLAYIMAGE request</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ParentId" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The layer's parent group id. Use this value for determining parent-child relationships when building a layer/group hierarchy</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DisplayInLegend" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Indicates whether this layer should be displayed in the legend</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExpandInLegend" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Indicates whether this layer should be initially expanded (if layer is themed) in the legend</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Visible" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Indicates whether this layer is potentially visible. Note that this may be true even though the layer is not visible. This will occur if the visible flag of one of the groups this layer is organized within is not visible or when the current viewScale property of the map is outside the scale ranges defined for this layer.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ActuallyVisible" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>Indicates the actual visibility of the layer. The visibility depends on the visible property of the group, and the visible property of each group this group is organized within.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="LayerDefinition" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The Layer Definition from which this runtime layer was created from</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FeatureSource" type="FeatureSourceInfo" minOccurs="0" />
+      <xs:element name="ScaleRange" type="ScaleRangeInfo" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FeatureSourceInfo">
+    <xs:annotation>
+      <xs:documentation>Describe the Feature Source information for a runtime layer</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ResourceId" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The Feature Source resource id</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ClassName" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The qualified FDO class name</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Geometry" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The name of the default Geometry property</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ScaleRangeInfo">
+    <xs:annotation>
+      <xs:documentation>Describes a scale range of the runtime layer</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MinScale" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>The minimum scale of this scale range</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="MaxScale" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>The maximum scale of this scale range</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FeatureStyle" type="FeatureStyleInfo" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>The feature style for a given geometry type.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FeatureStyleInfo">
+    <xs:annotation>
+      <xs:documentation>Defines the style rules for a given geometry type</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Type" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>The geometry type that this rule is applicable to (1=point, 2=line, 3=area, 4=composite)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Rule" type="RuleInfo" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RuleInfo">
+    <xs:annotation>
+      <xs:documentation>Describes a stylization rule in a layer's scale range</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="LegendLabel" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The legend label for this rule</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Filter" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The FDO filter that features must match in order for them to be stylized using this particular rule</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Icon" type="xs:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Defines the icon for this rule. The icon's image content is in base64 format</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Envelope">
+    <xs:annotation>
+      <xs:documentation>Specifies an envelope (a rectangle) using two corner points.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="LowerLeftCoordinate">
+        <xs:annotation>
+          <xs:documentation>Specifies the lower left corner of the envelope.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="X" type="xs:string"/>
+            <xs:element name="Y" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="UpperRightCoordinate">
+        <xs:annotation>
+          <xs:documentation>Specifies the upper right corner of the envelope.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="X" type="xs:string"/>
+            <xs:element name="Y" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

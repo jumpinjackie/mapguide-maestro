@@ -40,6 +40,8 @@ namespace MaestroAPITests
     using OSGeo.MapGuide.ExtendedObjectModels;
     using OSGeo.MapGuide.ObjectModels.LayerDefinition;
     using OSGeo.MapGuide.ObjectModels.DrawingSource;
+    using OSGeo.MapGuide.MaestroAPI.Commands;
+    using MapModel = OSGeo.MapGuide.ObjectModels.RuntimeMap;
 
     [SetUpFixture]
     public class TestBootstrap
@@ -1279,6 +1281,288 @@ namespace MaestroAPITests
         public override void TestMapAddDwfLayer()
         {
             base.TestMapAddDwfLayer();
+        }
+
+        [Test]
+        public void TestCreateRuntimeMapRequest()
+        {
+            if (_conn.SiteVersion < new Version(2, 6))
+            {
+                Assert.Ignore("Skipping test (TestCreateRuntimeMapRequest). MapGuide is older than 2.6");
+                return;
+            }
+
+            int[] cmds = _conn.Capabilities.SupportedCommands;
+            Assert.True(Array.IndexOf(cmds, (int)CommandType.CreateRuntimeMap) >= 0);
+
+            //Barebones
+            ICreateRuntimeMap create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
+
+            MapModel.IRuntimeMapInfo rtInfo = create.Execute();
+            Assert.NotNull(rtInfo.CoordinateSystem);
+            Assert.IsNullOrEmpty(rtInfo.IconMimeType);
+            Assert.NotNull(rtInfo.Extents);
+            Assert.NotNull(rtInfo.Layers);
+            Assert.True(rtInfo.Layers.Count == 0);
+            Assert.NotNull(rtInfo.Groups);
+            Assert.True(rtInfo.Groups.Count == 0);
+            
+            //Barebones with tiled
+            create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create.MapDefinition = "Library://UnitTests/Maps/SheboyganTiled.MapDefinition";
+
+            rtInfo = create.Execute();
+            Assert.NotNull(rtInfo.CoordinateSystem);
+            Assert.IsNullOrEmpty(rtInfo.IconMimeType);
+            Assert.NotNull(rtInfo.Extents);
+            Assert.NotNull(rtInfo.Layers);
+            Assert.True(rtInfo.Layers.Count == 0);
+            Assert.NotNull(rtInfo.Groups);
+            Assert.True(rtInfo.Groups.Count > 0);
+            Assert.NotNull(rtInfo.FiniteDisplayScales);
+            Assert.True(rtInfo.FiniteDisplayScales.Length > 0);
+
+            //With Layer/Group structure
+            create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
+            create.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups);
+
+            rtInfo = create.Execute();
+            Assert.NotNull(rtInfo.CoordinateSystem);
+            Assert.IsNullOrEmpty(rtInfo.IconMimeType);
+            Assert.NotNull(rtInfo.Extents);
+            Assert.NotNull(rtInfo.Layers);
+            Assert.True(rtInfo.Layers.Count > 0);
+            foreach (var layer in rtInfo.Layers)
+            {
+                Assert.Null(layer.FeatureSource);
+                Assert.True(layer.ScaleRanges.Count > 0);
+            }
+            Assert.NotNull(rtInfo.Groups);
+            Assert.True(rtInfo.Groups.Count == 0);
+
+            //With Layer/Group structure and inline icons
+            create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
+            create.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons);
+
+            rtInfo = create.Execute();
+            Assert.NotNull(rtInfo.CoordinateSystem);
+            Assert.IsNotNullOrEmpty(rtInfo.IconMimeType);
+            Assert.NotNull(rtInfo.Extents);
+            Assert.NotNull(rtInfo.Layers);
+            Assert.True(rtInfo.Layers.Count > 0);
+            foreach (var layer in rtInfo.Layers)
+            {
+                Assert.Null(layer.FeatureSource);
+                Assert.True(layer.ScaleRanges.Count > 0);
+                foreach (var sr in layer.ScaleRanges)
+                {
+                    Assert.NotNull(sr.FeatureStyle);
+                    Assert.True(sr.FeatureStyle.Count > 0);
+                    foreach (var feat in sr.FeatureStyle)
+                    {
+                        Assert.NotNull(feat.Rules);
+                        Assert.True(feat.Rules.Count > 0);
+
+                        foreach (var rule in feat.Rules)
+                        {
+                            Assert.IsNotNullOrEmpty(rule.IconBase64);
+                        }
+                    }
+                }
+            }
+            Assert.NotNull(rtInfo.Groups);
+            Assert.True(rtInfo.Groups.Count == 0);
+
+            //Kitchen sink
+            create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
+            create.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons | RuntimeMapRequestedFeatures.FeatureSourceInformation);
+
+            rtInfo = create.Execute();
+            Assert.NotNull(rtInfo.CoordinateSystem);
+            Assert.IsNotNullOrEmpty(rtInfo.IconMimeType);
+            Assert.NotNull(rtInfo.Extents);
+            Assert.NotNull(rtInfo.Layers);
+            Assert.True(rtInfo.Layers.Count > 0);
+            foreach (var layer in rtInfo.Layers)
+            {
+                Assert.NotNull(layer.FeatureSource);
+                Assert.IsNotNullOrEmpty(layer.FeatureSource.ClassName);
+                Assert.IsNotNullOrEmpty(layer.FeatureSource.Geometry);
+                Assert.IsNotNullOrEmpty(layer.FeatureSource.ResourceID);
+                Assert.True(layer.ScaleRanges.Count > 0);
+                foreach (var sr in layer.ScaleRanges)
+                {
+                    Assert.NotNull(sr.FeatureStyle);
+                    Assert.True(sr.FeatureStyle.Count > 0);
+                    foreach (var feat in sr.FeatureStyle)
+                    {
+                        Assert.NotNull(feat.Rules);
+                        Assert.True(feat.Rules.Count > 0);
+
+                        foreach (var rule in feat.Rules)
+                        {
+                            Assert.IsNotNullOrEmpty(rule.IconBase64);
+                        }
+                    }
+                }
+            }
+            Assert.NotNull(rtInfo.Groups);
+            Assert.True(rtInfo.Groups.Count == 0);
+        }
+
+        [Test]
+        public void TestDescribeRuntimeMapRequest()
+        {
+            if (_conn.SiteVersion < new Version(2, 6))
+            {
+                Assert.Ignore("Skipping test (TestCreateRuntimeMapRequest). MapGuide is older than 2.6");
+                return;
+            }
+
+            int[] cmds = _conn.Capabilities.SupportedCommands;
+            Assert.True(Array.IndexOf(cmds, (int)CommandType.CreateRuntimeMap) >= 0);
+
+            //Barebones
+            ICreateRuntimeMap create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
+
+            MapModel.IRuntimeMapInfo map = create.Execute();
+            IDescribeRuntimeMap describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
+            describe.Name = map.Name;
+            MapModel.IRuntimeMapInfo rtInfo = describe.Execute();
+
+            Assert.NotNull(rtInfo.CoordinateSystem);
+            Assert.IsNullOrEmpty(rtInfo.IconMimeType);
+            Assert.NotNull(rtInfo.Extents);
+            Assert.NotNull(rtInfo.Layers);
+            Assert.True(rtInfo.Layers.Count == 0);
+            Assert.NotNull(rtInfo.Groups);
+            Assert.True(rtInfo.Groups.Count == 0);
+
+            //Barebones with tiled
+            create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create.MapDefinition = "Library://UnitTests/Maps/SheboyganTiled.MapDefinition";
+
+            map = create.Execute();
+            describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
+            describe.Name = map.Name;
+            rtInfo = describe.Execute();
+
+            Assert.NotNull(rtInfo.CoordinateSystem);
+            Assert.IsNullOrEmpty(rtInfo.IconMimeType);
+            Assert.NotNull(rtInfo.Extents);
+            Assert.NotNull(rtInfo.Layers);
+            Assert.True(rtInfo.Layers.Count == 0);
+            Assert.NotNull(rtInfo.Groups);
+            Assert.True(rtInfo.Groups.Count > 0);
+            Assert.NotNull(rtInfo.FiniteDisplayScales);
+            Assert.True(rtInfo.FiniteDisplayScales.Length > 0);
+
+            //With Layer/Group structure
+            create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
+
+            map = create.Execute();
+            describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
+            describe.Name = map.Name;
+            describe.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups);
+            rtInfo = describe.Execute();
+
+            Assert.NotNull(rtInfo.CoordinateSystem);
+            Assert.IsNullOrEmpty(rtInfo.IconMimeType);
+            Assert.NotNull(rtInfo.Extents);
+            Assert.NotNull(rtInfo.Layers);
+            Assert.True(rtInfo.Layers.Count > 0);
+            foreach (var layer in rtInfo.Layers)
+            {
+                Assert.Null(layer.FeatureSource);
+                Assert.True(layer.ScaleRanges.Count > 0);
+            }
+            Assert.NotNull(rtInfo.Groups);
+            Assert.True(rtInfo.Groups.Count == 0);
+
+            //With Layer/Group structure and inline icons
+            create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
+
+            map = create.Execute();
+            describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
+            describe.Name = map.Name;
+            describe.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons);
+            rtInfo = describe.Execute();
+
+            Assert.NotNull(rtInfo.CoordinateSystem);
+            Assert.IsNotNullOrEmpty(rtInfo.IconMimeType);
+            Assert.NotNull(rtInfo.Extents);
+            Assert.NotNull(rtInfo.Layers);
+            Assert.True(rtInfo.Layers.Count > 0);
+            foreach (var layer in rtInfo.Layers)
+            {
+                Assert.Null(layer.FeatureSource);
+                Assert.True(layer.ScaleRanges.Count > 0);
+                foreach (var sr in layer.ScaleRanges)
+                {
+                    Assert.NotNull(sr.FeatureStyle);
+                    Assert.True(sr.FeatureStyle.Count > 0);
+                    foreach (var feat in sr.FeatureStyle)
+                    {
+                        Assert.NotNull(feat.Rules);
+                        Assert.True(feat.Rules.Count > 0);
+
+                        foreach (var rule in feat.Rules)
+                        {
+                            Assert.IsNotNullOrEmpty(rule.IconBase64);
+                        }
+                    }
+                }
+            }
+            Assert.NotNull(rtInfo.Groups);
+            Assert.True(rtInfo.Groups.Count == 0);
+
+            //Kitchen sink
+            create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+            create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
+            
+            map = create.Execute();
+            describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
+            describe.Name = map.Name;
+            describe.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons | RuntimeMapRequestedFeatures.FeatureSourceInformation);
+            rtInfo = describe.Execute();
+
+            Assert.NotNull(rtInfo.CoordinateSystem);
+            Assert.IsNotNullOrEmpty(rtInfo.IconMimeType);
+            Assert.NotNull(rtInfo.Extents);
+            Assert.NotNull(rtInfo.Layers);
+            Assert.True(rtInfo.Layers.Count > 0);
+            foreach (var layer in rtInfo.Layers)
+            {
+                Assert.NotNull(layer.FeatureSource);
+                Assert.IsNotNullOrEmpty(layer.FeatureSource.ClassName);
+                Assert.IsNotNullOrEmpty(layer.FeatureSource.Geometry);
+                Assert.IsNotNullOrEmpty(layer.FeatureSource.ResourceID);
+                Assert.True(layer.ScaleRanges.Count > 0);
+                foreach (var sr in layer.ScaleRanges)
+                {
+                    Assert.NotNull(sr.FeatureStyle);
+                    Assert.True(sr.FeatureStyle.Count > 0);
+                    foreach (var feat in sr.FeatureStyle)
+                    {
+                        Assert.NotNull(feat.Rules);
+                        Assert.True(feat.Rules.Count > 0);
+
+                        foreach (var rule in feat.Rules)
+                        {
+                            Assert.IsNotNullOrEmpty(rule.IconBase64);
+                        }
+                    }
+                }
+            }
+            Assert.NotNull(rtInfo.Groups);
+            Assert.True(rtInfo.Groups.Count == 0);
         }
     }
 

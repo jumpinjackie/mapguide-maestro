@@ -148,6 +148,9 @@
     <Compile Include="..\Generated\Role-1.0.0.designer.cs">
       <Link>ObjectModels\Role-1.0.0.designer.cs</Link>
     </Compile>
+    <Compile Include="..\Generated\RuntimeMap-2.6.0.cs">
+      <Link>ObjectModels\RuntimeMap-2.6.0.cs</Link>
+    </Compile>
     <Compile Include="..\Generated\SelectAggregate-1.0.0.designer.cs">
       <Link>ObjectModels\SelectAggregate-1.0.0.designer.cs</Link>
     </Compile>
@@ -196,6 +199,8 @@
     <Compile Include="ArgumentParser.cs" />
     <Compile Include="BindingListExtensions.cs" />
     <Compile Include="Capability\NsDoc.cs" />
+    <Compile Include="Commands\CreateRuntimeMap.cs" />
+    <Compile Include="Commands\DescribeRuntimeMap.cs" />
     <Compile Include="Commands\FeatureManipulationCommandImpl.cs" />
     <Compile Include="Commands\FeatureManipulationCommands.cs" />
     <Compile Include="Commands\IGetFdoCacheInfo.cs" />
@@ -253,6 +258,8 @@
     <Compile Include="ObjectModels\IFdoSpatialContext.cs" />
     <Compile Include="ObjectModels\LongTransaction.cs" />
     <Compile Include="ObjectModels\NsDoc.cs" />
+    <Compile Include="ObjectModels\RuntimeMapImpl.cs" />
+    <Compile Include="ObjectModels\RuntimeMapInterfaces.cs" />
     <Compile Include="ObjectModels\SymbolDefFactory.cs" />
     <Compile Include="ObjectModels\WatermarkCollectionUtil.cs" />
     <Compile Include="ObjectModels\WatermarkInterfaces.cs" />
@@ -518,7 +525,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ConnectionProviders.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ObjectModels\readme.txt" />
     <None Include="Resources\BaseTemplate.ApplicationDefinition1.xml" />

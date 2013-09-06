@@ -1,5 +1,5 @@
 ﻿#region Disclaimer / License
-// Copyright (C) 2010, Jackie Ng
+// Copyright (C) 2013, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
 // This library is free software; you can redistribute it and/or
@@ -17,52 +17,53 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 #endregion
+using OSGeo.MapGuide.ObjectModels.RuntimeMap;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI.Commands
 {
     /// <summary>
-    /// Defines the custom command types
+    /// Describes the structure of an existing runtime map
     /// </summary>
-    public enum CommandType : int
+    public interface IDescribeRuntimeMap : ICommand
     {
         /// <summary>
-        /// Gets a collection of resource content in a single batch
+        /// The name of the runtime map to describe the structure of
         /// </summary>
-        GetResourceContents,
+        string Name { get; set; }
+
         /// <summary>
-        /// Applies a feature schema to a feature source
+        /// A bitmask specifying what pieces of information to include in the CREATERUNTIMEMAP response
         /// </summary>
-        ApplySchema,
+        int RequestedFeatures { get; set; }
+
         /// <summary>
-        /// Inserts a feature into a feature source
+        /// The number of icons to render inline (as base64 images) per scale range in each layer of the map
         /// </summary>
-        InsertFeature,
+        int IconsPerScaleRange { get; set; }
+
         /// <summary>
-        /// Updates features in a feature source
+        /// The icon image format (default: PNG)
         /// </summary>
-        UpdateFeatures,
+        string IconFormat { get; set; }
+
         /// <summary>
-        /// Deletes features from a feature source
+        /// The width of each inline icon that will be rendered (default: 16)
         /// </summary>
-        DeleteFeatures,
+        int IconWidth { get; set; }
+
         /// <summary>
-        /// Creates a data store on a feature source
+        /// The height of each inline icon that will be rendered (default: 16)
         /// </summary>
-        CreateDataStore,
+        int IconHeight { get; set; }
+
         /// <summary>
-        /// Retrieves information about cached FDO connections
+        /// Executes the request and returns the structure of the runtime map
         /// </summary>
-        GetFdoCacheInfo,
-        /// <summary>
-        /// Creates a new Runtime Map and describe its structure
-        /// </summary>
-        CreateRuntimeMap,
-        /// <summary>
-        /// Describes the structure of an existing runtime map
-        /// </summary>
-        DescribeRuntimeMap
+        /// <returns>The structure of the runtime map</returns>
+        IRuntimeMapInfo Execute();
     }
 }

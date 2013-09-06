@@ -51,7 +51,7 @@ namespace MaestroAPITests
 
     public class ConnectionUtil
     {
-        public static string Port { get { return ""; } }
+        public static string Port { get { return "8018"; } }
 
         public static IServerConnection CreateTestLocalNativeConnection()
         {

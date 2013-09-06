@@ -75,6 +75,8 @@
       <Link>SignedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Commands\GeoRestCommands.cs" />
+    <Compile Include="Commands\HttpCreateRuntimeMap.cs" />
+    <Compile Include="Commands\HttpDescribeRuntimeMap.cs" />
     <Compile Include="Commands\HttpGetFdoCacheInfo.cs" />
     <Compile Include="GeoRestConnection.cs" />
     <Compile Include="HttpCapabilities.cs" />

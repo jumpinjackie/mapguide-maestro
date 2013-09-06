@@ -2042,6 +2042,10 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return new HttpGetResourceContents(this);
             else if (ct == CommandType.GetFdoCacheInfo)
                 return new HttpGetFdoCacheInfo(this);
+            else if (ct == CommandType.CreateRuntimeMap)
+                return new HttpCreateRuntimeMap(this);
+            else if (ct == CommandType.DescribeRuntimeMap)
+                return new HttpDescribeRuntimeMap(this);
             return base.CreateCommand(cmdType);
         }
 
@@ -2052,6 +2056,26 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 var info = this.DeserializeObject<FdoCacheInfo>(s);
 
+                return info;
+            }
+        }
+
+        internal ObjectModels.RuntimeMap.IRuntimeMapInfo DescribeRuntimeMap(string mapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight)
+        {
+            var req = m_reqBuilder.DescribeRuntimeMap(mapName, requestedFeatures, iconsPerScaleRange, iconFormat, iconWidth, iconHeight);
+            using (var s = this.OpenRead(req))
+            {
+                var info = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.RuntimeMap.RuntimeMap>(s);
+                return info;
+            }
+        }
+
+        internal ObjectModels.RuntimeMap.IRuntimeMapInfo CreateRuntimeMap(string mapDefinition, string targetMapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight)
+        {
+            var req = m_reqBuilder.CreateRuntimeMap(mapDefinition, targetMapName, requestedFeatures, iconsPerScaleRange, iconFormat, iconWidth, iconHeight);
+            using (var s = this.OpenRead(req))
+            {
+                var info = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.RuntimeMap.RuntimeMap>(s);
                 return info;
             }
         }

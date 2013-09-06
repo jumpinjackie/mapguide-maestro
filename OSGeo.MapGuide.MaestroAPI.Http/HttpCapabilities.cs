@@ -41,28 +41,32 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
         {
             get 
             {
+                List<int> cmds = new List<int>();
                 var gconn = _implConn.GeoRestConnection;
                 if (gconn != null && gconn.Configuration.FeatureSources.Count > 0)
                 {
-                    return new int[] 
-                    {
-                        (int)CommandType.GetResourceContents,
-                        (int)CommandType.GetFdoCacheInfo,
+                    cmds.Add((int)CommandType.GetResourceContents);
+                    cmds.Add((int)CommandType.GetFdoCacheInfo);
                         //GeoREST allows us to support these
                         //(int)CommandType.DeleteFeatures,
-                        (int)CommandType.InsertFeature,
+                    cmds.Add((int)CommandType.InsertFeature);
                         //(int)CommandType.UpdateFeatures
-                    };
                 }
                 else
                 {
                     //TODO: Work out what this can/can't do
-                    return new int[] 
+                    cmds.Add((int)CommandType.GetResourceContents);
+                    cmds.Add((int)CommandType.GetFdoCacheInfo);
+
+                    //Create/Describe Runtime Map available with 2.6
+                    if (_implConn.SiteVersion >= new Version(2, 6))
                     {
-                        (int)CommandType.GetResourceContents,
-                        (int)CommandType.GetFdoCacheInfo
-                    };
+                        cmds.Add((int)CommandType.CreateRuntimeMap);
+                        cmds.Add((int)CommandType.DescribeRuntimeMap);
+                    }
                 }
+
+                return cmds.ToArray();
             }
         }
 
