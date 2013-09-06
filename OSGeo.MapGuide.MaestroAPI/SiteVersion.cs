@@ -98,9 +98,26 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// MapGuide Open Source 2.4.0
         /// </summary>
         MapGuideOS2_4,
+        /// <summary>
+        /// Autodesk Infrastructure Map Server 2013 SP1
+        /// </summary>
         Aims2013_SP1,
+        /// <summary>
+        /// MapGuide Open Source 2.5.0
+        /// </summary>
         MapGuideOS2_5,
-        Aims2014
+        /// <summary>
+        /// Autodesk Infrastructure Map Server 2014
+        /// </summary>
+        Aims2014,
+        /// <summary>
+        /// MapGuide Open Source 2.4.1
+        /// </summary>
+        MapGuideOS2_4_1,
+        /// <summary>
+        /// MapGuide Open Source 2.5.1
+        /// </summary>
+        MapGuideOS2_5_1,
 	}
 
     /// <summary>
@@ -133,7 +150,9 @@ namespace OSGeo.MapGuide.MaestroAPI
             new Version(2,4,0,7096),    //MGOS 2.4.0
             new Version(2,4,0,5901),    //AIMS 2013 SP1
             new Version(2,5,0,7449),    //MGOS 2.5.0
-            new Version(2,5,1,7601)     //AIMS 2014
+            new Version(2,5,1,7601),    //AIMS 2014
+            new Version(2,4,1,7767),    //MGOS 2.4.1
+            new Version(2,5,1,7768)     //MGOS 2.5.1
 		};
 
         /// <summary>
