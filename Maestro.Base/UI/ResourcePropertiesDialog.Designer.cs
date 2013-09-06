@@ -169,6 +169,7 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
+            this.UsersAndGroups.ContextMenuStrip = this.securityContextMenu;
             this.UsersAndGroups.FullRowSelect = true;
             this.UsersAndGroups.Name = "UsersAndGroups";
             this.UsersAndGroups.UseCompatibleStateImageBehavior = false;
@@ -701,26 +702,31 @@
             this.inheritedAccessRightsToolStripMenuItem});
             this.securityContextMenu.Name = "securityContextMenu";
             resources.ApplyResources(this.securityContextMenu, "securityContextMenu");
+            this.securityContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.securityContextMenu_Opening);
             // 
             // readWriteAccessToolStripMenuItem
             // 
             this.readWriteAccessToolStripMenuItem.Name = "readWriteAccessToolStripMenuItem";
             resources.ApplyResources(this.readWriteAccessToolStripMenuItem, "readWriteAccessToolStripMenuItem");
+            this.readWriteAccessToolStripMenuItem.Click += new System.EventHandler(this.readWriteAccessToolStripMenuItem_Click);
             // 
             // readOnlyAccessToolStripMenuItem
             // 
             this.readOnlyAccessToolStripMenuItem.Name = "readOnlyAccessToolStripMenuItem";
             resources.ApplyResources(this.readOnlyAccessToolStripMenuItem, "readOnlyAccessToolStripMenuItem");
+            this.readOnlyAccessToolStripMenuItem.Click += new System.EventHandler(this.readOnlyAccessToolStripMenuItem_Click);
             // 
             // denyAccessToolStripMenuItem
             // 
             this.denyAccessToolStripMenuItem.Name = "denyAccessToolStripMenuItem";
             resources.ApplyResources(this.denyAccessToolStripMenuItem, "denyAccessToolStripMenuItem");
+            this.denyAccessToolStripMenuItem.Click += new System.EventHandler(this.denyAccessToolStripMenuItem_Click);
             // 
             // inheritedAccessRightsToolStripMenuItem
             // 
             this.inheritedAccessRightsToolStripMenuItem.Name = "inheritedAccessRightsToolStripMenuItem";
             resources.ApplyResources(this.inheritedAccessRightsToolStripMenuItem, "inheritedAccessRightsToolStripMenuItem");
+            this.inheritedAccessRightsToolStripMenuItem.Click += new System.EventHandler(this.inheritedAccessRightsToolStripMenuItem_Click);
             // 
             // ResourcePropertiesDialog
             // 
