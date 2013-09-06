@@ -148,8 +148,8 @@
     <Compile Include="..\Generated\Role-1.0.0.designer.cs">
       <Link>ObjectModels\Role-1.0.0.designer.cs</Link>
     </Compile>
-    <Compile Include="..\Generated\RuntimeMap-2.6.0.cs">
-      <Link>ObjectModels\RuntimeMap-2.6.0.cs</Link>
+    <Compile Include="..\Generated\RuntimeMap-2.6.0.designer.cs">
+      <Link>ObjectModels\RuntimeMap-2.6.0.designer.cs</Link>
     </Compile>
     <Compile Include="..\Generated\SelectAggregate-1.0.0.designer.cs">
       <Link>ObjectModels\SelectAggregate-1.0.0.designer.cs</Link>
