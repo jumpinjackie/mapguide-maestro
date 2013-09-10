@@ -237,6 +237,10 @@
       <Link>Schemas\LayerDefinition-2.3.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LayerDefinition-2.4.0.xsd">
+      <Link>Schemas\LayerDefinition-2.4.0.xsd</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\LoadProcedure-1.0.0.xsd">
       <Link>Schemas\LoadProcedure-1.0.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -303,6 +307,10 @@
     </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\Role-1.0.0.xsd">
       <Link>Schemas\Role-1.0.0.xsd</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\RuntimeMap-2.6.0.xsd">
+      <Link>Schemas\RuntimeMap-2.6.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SelectAggregate-1.0.0.xsd">
