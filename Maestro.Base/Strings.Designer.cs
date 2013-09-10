@@ -749,11 +749,20 @@ namespace Maestro.Base {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Go.
+        ///   Looks up a localized string similar to Open.
         /// </summary>
-        internal static string Label_Go {
+        internal static string Label_Open {
             get {
-                return ResourceManager.GetString("Label_Go", resourceCulture);
+                return ResourceManager.GetString("Label_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open as XML.
+        /// </summary>
+        internal static string Label_OpenAsXml {
+            get {
+                return ResourceManager.GetString("Label_OpenAsXml", resourceCulture);
             }
         }
         
@@ -763,6 +772,15 @@ namespace Maestro.Base {
         internal static string Label_OpenResource {
             get {
                 return ResourceManager.GetString("Label_OpenResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open this resource with the Generic XML editor.
+        /// </summary>
+        internal static string Label_OpenResourceAsXml {
+            get {
+                return ResourceManager.GetString("Label_OpenResourceAsXml", resourceCulture);
             }
         }
         

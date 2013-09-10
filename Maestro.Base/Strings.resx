@@ -956,8 +956,8 @@ Error message: {0}</value>
   <data name="ConnectionTestOk" xml:space="preserve">
     <value>Connection Test OK</value>
   </data>
-  <data name="Label_Go" xml:space="preserve">
-    <value>Go</value>
+  <data name="Label_Open" xml:space="preserve">
+    <value>Open</value>
   </data>
   <data name="Label_OpenResource" xml:space="preserve">
     <value>Open this resource</value>
@@ -970,5 +970,11 @@ Error message: {0}</value>
   </data>
   <data name="XmlReloadedFromSource" xml:space="preserve">
     <value>XML content reloaded from source</value>
+  </data>
+  <data name="Label_OpenAsXml" xml:space="preserve">
+    <value>Open as XML</value>
+  </data>
+  <data name="Label_OpenResourceAsXml" xml:space="preserve">
+    <value>Open this resource with the Generic XML editor</value>
   </data>
 </root>

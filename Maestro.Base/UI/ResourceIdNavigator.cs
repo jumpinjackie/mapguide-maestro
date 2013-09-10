@@ -44,6 +44,7 @@ namespace Maestro.Base.UI
         private ToolStripLabel _atLabel;
         private ToolStripComboBox _cmbActiveConnections;
         private ToolStripButton _btnGo;
+        private ToolStripButton _btnOpenAsXml;
 
         private ServerConnectionManager _connMgr;
         private OpenResourceManager _omgr;
@@ -84,12 +85,19 @@ namespace Maestro.Base.UI
             _cmbActiveConnections.ComboBox.SelectedIndexChanged += OnActiveConnectionChanged;
             _cmbActiveConnections.ComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            _btnGo = new ToolStripButton(Strings.Label_Go);
+            _btnGo = new ToolStripButton(Strings.Label_Open);
             _btnGo.Image = Properties.Resources.arrow;
             _btnGo.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
             _btnGo.TextImageRelation = TextImageRelation.TextBeforeImage;
             _btnGo.ToolTipText = Strings.Label_OpenResource;
             _btnGo.Click += btnGo_Click;
+
+            _btnOpenAsXml = new ToolStripButton(Strings.Label_OpenAsXml);
+            _btnOpenAsXml.Image = Properties.Resources.arrow;
+            _btnOpenAsXml.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+            _btnOpenAsXml.TextImageRelation = TextImageRelation.TextBeforeImage;
+            _btnOpenAsXml.ToolTipText = Strings.Label_OpenResourceAsXml;
+            _btnOpenAsXml.Click += btnOpenAsXml_Click;
 
             UpdateConnectionList();
             UpdateNavigationState();
@@ -100,7 +108,8 @@ namespace Maestro.Base.UI
                 _cmbResourceId,
                 _atLabel,
                 _cmbActiveConnections,
-                _btnGo
+                _btnGo,
+                _btnOpenAsXml
             });
         }
 
@@ -139,9 +148,9 @@ namespace Maestro.Base.UI
 
         void OnResourceIdKeyUp(object sender, KeyEventArgs e)
         {
-            if (_btnGo.Enabled && (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return))
+            if (_btnGo.Enabled && _btnOpenAsXml.Enabled && (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return))
             {
-                DoNavigate();
+                DoNavigate(false);
             }
         }
 
@@ -171,7 +180,7 @@ namespace Maestro.Base.UI
 
         private void UpdateNavigationState()
         {
-            _btnGo.Enabled = ResourceIdentifier.Validate(_cmbResourceId.Text) && !ResourceIdentifier.IsFolderResource(_cmbResourceId.Text);
+            _btnGo.Enabled = _btnOpenAsXml.Enabled = ResourceIdentifier.Validate(_cmbResourceId.Text) && !ResourceIdentifier.IsFolderResource(_cmbResourceId.Text);
         }
 
         void OnConnectionRemoved(object sender, string name)
@@ -186,10 +195,15 @@ namespace Maestro.Base.UI
 
         void btnGo_Click(object sender, EventArgs e)
         {
-            DoNavigate();
+            DoNavigate(false);
         }
 
-        private void DoNavigate()
+        void btnOpenAsXml_Click(object sender, EventArgs e)
+        {
+            DoNavigate(true);
+        }
+
+        private void DoNavigate(bool useXmlEditor)
         {
             var conn = GetActiveConnection();
             if (conn != null)
@@ -208,7 +222,7 @@ namespace Maestro.Base.UI
                     }
                     else
                     {
-                        _omgr.Open(resId, conn, false, _siteExp);
+                        _omgr.Open(resId, conn, useXmlEditor, _siteExp);
                     }
                 }
             }
@@ -230,7 +244,7 @@ namespace Maestro.Base.UI
         private void UpdateConnectionList()
         {
             var connNames = _connMgr.GetConnectionNames();
-            _btnGo.Enabled = connNames.Count > 0;
+            _btnGo.Enabled = _btnOpenAsXml.Enabled = connNames.Count > 0;
             _cmbActiveConnections.ComboBox.Items.Clear();
             if (connNames.Count > 0)
             {
