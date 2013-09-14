@@ -1,4 +1,17 @@
-﻿5.0
+﻿ - Initial support for XML element auto-completion
+ - Initial API support for CREATERUNTIMEMAP and DESCRIBERUNTIMEMAP operations in MapGuide 2.6
+ - Resource ID "address bar" now has two buttons: One to open the resource using the designated editor and one to open using the Generic XML editor
+ - Fix: Missing context menu for granting/denying user/group access to a given resource in the Site Explorer
+ - Fix: Strange cursor behaviour in Generic XML editor
+ - Fix: New Map Definitions always being created as v2.4.0
+ - Fix: Missing Selection from ResourceType enum
+ - Fix: NullReferenceException on Layer Definition Editor when pointing to a multi-schema Feature Source
+ - Fix: Inline SymbolDefinition element in a Layer Definition saved with version and xsi:noNamespaceSchemaLocation attributes
+ - Fix: Infinte loop when compiling a dependency list that includes one or more self-referencing resources
+ - Fix: BaseMapDefinition XML element not cleanly detached when deleting last finite display scale or base layer group in Map Definition editor
+ - Fix: Modified composite rule filters not saved when Layer Definition is saved
+
+5.0
 ---
  - New WebLayout now auto-prompts for Map Definition like its Fusion counterpart
  - User documentation content updates
