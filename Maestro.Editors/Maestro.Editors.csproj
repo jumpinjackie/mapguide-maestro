@@ -2288,6 +2288,7 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\document-code.png" />
     <None Include="Resources\document-search-result.png" />
     <None Include="Resources\arrow-split.png" />
     <None Include="Resources\folder-horizontal-open.png" />

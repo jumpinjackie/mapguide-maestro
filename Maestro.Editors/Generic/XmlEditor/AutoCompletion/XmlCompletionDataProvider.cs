@@ -55,26 +55,19 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             this.defaultNamespacePrefix = defaultNamespacePrefix;
             DefaultIndex = 0;
         }
-
-        public class XmlCompletionDataImageList
-        {
-            XmlCompletionDataImageList()
-            {
-            }
-
-            public static ImageList GetImageList()
-            {
-                ImageList imageList = new ImageList();
-
-                return imageList;
-            }
-        }
+        
+        static ImageList smImageList;
 
         public ImageList ImageList
         {
             get
             {
-                return XmlCompletionDataImageList.GetImageList();
+                if (smImageList == null)
+                {
+                    smImageList = new ImageList();
+                    smImageList.Images.Add(Properties.Resources.document_code);
+                }
+                return smImageList;
             }
         }
 
