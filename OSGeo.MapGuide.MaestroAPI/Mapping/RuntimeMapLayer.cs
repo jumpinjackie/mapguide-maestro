@@ -735,6 +735,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     tmp[i] = BitConverter.ToInt64(data, index);
                     index += MgBinarySerializer.UInt64Len;
                 }
+                else if (type == typeof(double))
+                {
+                    tmp[i] = BitConverter.ToDouble(data, index);
+                    index += MgBinarySerializer.DoubleLen;
+                }
                 else if (type == typeof(string))
                 {
                     int pos = index;

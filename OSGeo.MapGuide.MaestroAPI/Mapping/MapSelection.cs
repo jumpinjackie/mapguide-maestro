@@ -259,6 +259,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                             byte[] x = BitConverter.GetBytes((long)tmp[i]);
                             ms.Write(x, 0, x.Length);
                         }
+                        else if (type == typeof(double))
+                        {
+                            byte[] x = BitConverter.GetBytes((double)tmp[i]);
+                            ms.Write(x, 0, x.Length);
+                        }
                         else if (type == typeof(string))
                         {
                             byte[] x = System.Text.Encoding.UTF8.GetBytes((string)tmp[i]);
