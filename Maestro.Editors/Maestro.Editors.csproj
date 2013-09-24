@@ -695,6 +695,12 @@
     <Compile Include="LayerDefinition\Vector\Scales\SymbolInstanceEditors\ReferenceCtrl.Designer.cs">
       <DependentUpon>ReferenceCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\SymbolInstancePropertiesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\SymbolInstancePropertiesDialog.Designer.cs">
+      <DependentUpon>SymbolInstancePropertiesDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="LayerDefinition\Vector\Scales\SymbolInstancesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1541,6 +1547,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\SymbolInstanceEditors\ReferenceCtrl.resx">
       <DependentUpon>ReferenceCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\Scales\SymbolInstancePropertiesDialog.resx">
+      <DependentUpon>SymbolInstancePropertiesDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\SymbolInstancesDialog.resx">
       <DependentUpon>SymbolInstancesDialog.cs</DependentUpon>

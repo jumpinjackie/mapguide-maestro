@@ -1,6 +1,8 @@
-﻿ - Initial support for XML element auto-completion
+﻿ - Added missing support for editing symbol instance properties
+ - Initial support for XML element auto-completion
  - Initial API support for CREATERUNTIMEMAP and DESCRIBERUNTIMEMAP operations in MapGuide 2.6
  - Resource ID "address bar" now has two buttons: One to open the resource using the designated editor and one to open using the Generic XML editor
+ - Fix: Double identity properties not supported in MaestroAPI selection
  - Fix: Missing context menu for granting/denying user/group access to a given resource in the Site Explorer
  - Fix: Strange cursor behaviour in Generic XML editor
  - Fix: New Map Definitions always being created as v2.4.0

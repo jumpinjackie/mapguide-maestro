@@ -44,6 +44,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.symPreview = new System.Windows.Forms.PictureBox();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnEditInstanceProperties = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -162,16 +164,25 @@
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // btnEditInstanceProperties
+            // 
+            resources.ApplyResources(this.btnEditInstanceProperties, "btnEditInstanceProperties");
+            this.btnEditInstanceProperties.Name = "btnEditInstanceProperties";
+            this.btnEditInstanceProperties.UseVisualStyleBackColor = true;
+            this.btnEditInstanceProperties.Click += new System.EventHandler(this.btnEditInstanceProperties_Click);
+            // 
             // SymbolInstancesDialog
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.btnEditInstanceProperties);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.btnClose);
             this.Name = "SymbolInstancesDialog";
             this.splitContainer1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -199,5 +210,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox symPreview;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnEditInstanceProperties;
     }
 }

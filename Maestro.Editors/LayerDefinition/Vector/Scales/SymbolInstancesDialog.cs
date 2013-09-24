@@ -195,12 +195,31 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 c.Dock = DockStyle.Fill;
                 splitContainer1.Panel2.Controls.Clear();
                 splitContainer1.Panel2.Controls.Add(c);
+                btnEditInstanceProperties.Enabled = true;
+            }
+            else
+            {
+                btnEditInstanceProperties.Enabled = false;
             }
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             UpdatePreviewImage();
+        }
+
+        private void btnEditInstanceProperties_Click(object sender, EventArgs e)
+        {
+            if (lstInstances.SelectedItems.Count == 1)
+            {
+                var it = lstInstances.SelectedItems[0];
+                ISymbolInstance symRef = (ISymbolInstance)it.Tag;
+
+                using (var diag = new SymbolInstancePropertiesDialog(symRef, _edSvc, _cls, _featureSourceId, _provider))
+                {
+                    diag.ShowDialog();
+                }
+            }
         }
     }
 }

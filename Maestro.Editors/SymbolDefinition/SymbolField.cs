@@ -141,6 +141,40 @@ namespace Maestro.Editors.SymbolDefinition
             }
         }
 
+        /// <summary>
+        /// Gets or sets the enum type. Only set this if the underlying symbol property is an enum type
+        /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Type EnumType
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// Sets this field to explicitly take enum values for input
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        public void SetEnumMode<TEnum>()
+        {
+            this.EnumType = typeof(TEnum);
+            this.Items = GetItems<TEnum>(false);
+            combo.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        /// <summary>
+        /// Sets this field for boolean input
+        /// </summary>
+        public void SetBooleanMode()
+        {
+            this.EnumType = null;
+            this.Items = new string[]
+            {
+                true.ToString().ToLower(),
+                false.ToString().ToLower()
+            };
+        }
+
         private void OnContentChanged()
         {
             if (_isBinding)
@@ -156,9 +190,20 @@ namespace Maestro.Editors.SymbolDefinition
                 {
                     _suppressUI = true;
                     if (string.IsNullOrEmpty(this.Content))
+                    {
                         _boundProperty.SetValue(_boundObject, null, null);
+                    }
                     else
-                        _boundProperty.SetValue(_boundObject, this.Content, null);
+                    {
+                        if (this.EnumType != null)
+                        {
+                            _boundProperty.SetValue(_boundObject, Enum.Parse(this.EnumType, this.Content), null);
+                        }
+                        else
+                        {
+                            _boundProperty.SetValue(_boundObject, this.Content, null);
+                        }
+                    }
                 }
                 finally
                 {
@@ -219,19 +264,40 @@ namespace Maestro.Editors.SymbolDefinition
         public DataType2[] SupportedEnhancedDataTypes { get; set; }
 
         /// <summary>
-        /// Gets the items.
+        /// Gets the items
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public static string[] GetItems<T>()
         {
+            return GetItems<T>(true);
+        }
+
+        /// <summary>
+        /// Gets the items.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static string[] GetItems<T>(bool quote)
+        {
             var values = Enum.GetValues(typeof(T));
             var items = new string[values.Length];
             int i = 0;
-            foreach(var val in values)
+            if (quote)
             {
-                items[i] = "'" + val + "'";
-                i++;
+                foreach (var val in values)
+                {
+                    items[i] = "'" + val + "'";
+                    i++;
+                }
+            }
+            else
+            {
+                foreach (var val in values)
+                {
+                    items[i] = val + "";
+                    i++;
+                }
             }
             return items;
         }

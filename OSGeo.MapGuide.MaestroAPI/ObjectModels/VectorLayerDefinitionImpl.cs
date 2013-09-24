@@ -1989,7 +1989,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             {
 #if LDF_110
                 return new Version(1, 0, 0);
-#elif LDF_120 || LDF_230
+#elif LDF_120 || LDF_130 || LDF_230
                 return new Version(1, 1, 0);
 #elif LDF_240
                 return new Version(2, 4, 0);
@@ -2112,6 +2112,10 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
     }
 
     partial class SymbolInstance : ISymbolInstance
+#if LDF_100 || LDF_110
+#else
+                                 , ISymbolInstance2
+#endif
     {
         [XmlIgnore]
         IParameterOverrideCollection ISymbolInstance.ParameterOverrides
