@@ -110,6 +110,16 @@ namespace Maestro.Editors.Preview
                             }
                             break;
                     }
+
+                    if (string.IsNullOrEmpty(previewMdf.ResourceID))
+                    {
+                        var sessionId = edSvc.SessionID;
+                        var mdfId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".MapDefinition"; //NOXLATE
+
+                        conn.ResourceService.SaveResourceAs(previewMdf, mdfId);
+                        previewMdf.ResourceID = mdfId;
+                    }
+
                     if (previewMdf != null)
                         return mapSvc.CreateMap(previewMdf);
                     else
