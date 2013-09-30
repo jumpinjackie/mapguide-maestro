@@ -644,7 +644,8 @@ namespace OSGeo.MapGuide.MaestroAPI
                         if (nx.NodeType == System.Xml.XmlNodeType.Element)
                             lst.Enqueue(nx);
 
-                    if (n.Name == "ResourceId") //NOXLATE
+                    //Anything not "ResourceId" is from the LoadProcedure
+                    if (n.Name == "ResourceId" || n.Name == "SpatialDataSourcesPath" || n.Name == "LayersPath" || n.Name == "RootPath" || n.Name == "MapsPath" || n.Name == "SymbolLibrariesPath") //NOXLATE
                     {
                         string current = n.InnerXml;
                         if (folderupdates && current.StartsWith(oldresourcepath))
@@ -654,7 +655,9 @@ namespace OSGeo.MapGuide.MaestroAPI
                     }
 
                     foreach (System.Xml.XmlAttribute a in n.Attributes)
-                        if (a.Name == "ResourceId") //NOXLATE
+                    {
+                        //Anything not "ResourceId" is from the LoadProcedure
+                        if (a.Name == "ResourceId" || n.Name == "SpatialDataSourcesPath" || n.Name == "LayersPath" || n.Name == "RootPath" || n.Name == "MapsPath" || n.Name == "SymbolLibrariesPath") //NOXLATE
                         {
                             string current = a.Value;
                             if (folderupdates && current.StartsWith(oldresourcepath))
@@ -662,6 +665,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                             else if (current == oldresourcepath)
                                 n.Value = newresourcepath;
                         }
+                    }
                 }
 
                 //There can be no objects in an xml document or node, so just return immediately
