@@ -1,17 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro", "Maestro.csproj", "{E0C36475-2B70-4F6D-ACE0-8943167806DC}"
-	ProjectSection(ProjectDependencies) = postProject
-		{B3A2B816-9F41-4857-A111-09D2DF2550D6} = {B3A2B816-9F41-4857-A111-09D2DF2550D6}
-		{8787FF3F-552F-46BE-B9D7-548B6162B079} = {8787FF3F-552F-46BE-B9D7-548B6162B079}
-		{2419F940-BFB7-4F3F-B5DA-1052EB4706E5} = {2419F940-BFB7-4F3F-B5DA-1052EB4706E5}
-		{9CC51643-37D6-4B8F-A0EA-E7606AA561EB} = {9CC51643-37D6-4B8F-A0EA-E7606AA561EB}
-		{19A769B5-7CFA-4E9F-90D8-BF4A17F918C4} = {19A769B5-7CFA-4E9F-90D8-BF4A17F918C4}
-		{3591C5BB-2B87-4FB4-AD87-9C8176DF9835} = {3591C5BB-2B87-4FB4-AD87-9C8176DF9835}
-		{32BA7DF6-1AFA-441D-9231-5624C5920706} = {32BA7DF6-1AFA-441D-9231-5624C5920706}
-	EndProjectSection
-EndProject
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICSharpCode.Core", "..\Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj", "{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICSharpCode.Core.WinForms", "..\Thirdparty\SharpDevelop\ICSharpCode.Core.WinForms\ICSharpCode.Core.WinForms.csproj", "{857CA1A3-FC88-4BE0-AB6A-D1EE772AB288}"
@@ -158,16 +147,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderTemplate", "..\Prov
 		{6EF1E775-444B-4E5F-87FB-D687C43A68D7} = {6EF1E775-444B-4E5F-87FB-D687C43A68D7}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro", "Maestro.csproj", "{E0C36475-2B70-4F6D-ACE0-8943167806DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E0C36475-2B70-4F6D-ACE0-8943167806DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E0C36475-2B70-4F6D-ACE0-8943167806DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E0C36475-2B70-4F6D-ACE0-8943167806DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E0C36475-2B70-4F6D-ACE0-8943167806DC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -356,6 +343,10 @@ Global
 		{EDDBBE17-E9A9-43FB-99FE-38DD8E10607A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDDBBE17-E9A9-43FB-99FE-38DD8E10607A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDDBBE17-E9A9-43FB-99FE-38DD8E10607A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0C36475-2B70-4F6D-ACE0-8943167806DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0C36475-2B70-4F6D-ACE0-8943167806DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0C36475-2B70-4F6D-ACE0-8943167806DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0C36475-2B70-4F6D-ACE0-8943167806DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
