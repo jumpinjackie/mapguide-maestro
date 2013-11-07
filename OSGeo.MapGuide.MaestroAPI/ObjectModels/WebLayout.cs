@@ -407,7 +407,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
             wl.CreateBasicCommand(Strings.WL_Label_InitialCenterScale,
                                Strings.WL_Label_InitialCenterScale,
                                Strings.WL_Desc_InitialCenterScale,
-                               "icon_restorecenter.gif",
+                               "icon_restorecenter",
                                TargetViewerType.All,
                                BasicCommandActionType.RestoreView));
             wl.CommandSet.AddCommand(
