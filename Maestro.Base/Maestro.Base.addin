@@ -400,10 +400,12 @@
                          class="Maestro.Base.Commands.NewItemCommand" />
             <ToolbarItem type="Separator" />
             <Condition action="Disable" name="SelectedItem">
+              <Condition action="Disable" name="IsNotRoot">
                 <ToolbarItem id="DeleteItem"
                              icon="cross_script"
                              tooltip="${res:SiteExplorer_SelectedItem_Delete}"
                              class="Maestro.Base.Commands.SiteExplorer.DeleteSelectedItemsCommand" />
+              </Condition>
             </Condition>
             <ToolbarItem id="SiteExplorer_Refresh"
                          icon="arrow-circle-045-left"
