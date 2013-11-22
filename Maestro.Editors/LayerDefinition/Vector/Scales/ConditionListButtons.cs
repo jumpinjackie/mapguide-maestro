@@ -296,6 +296,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             var ar2 = m_area as IAreaVectorStyle2;
             var pt2 = m_point as IPointVectorStyle2;
             var ln2 = m_line as ILineVectorStyle2;
+            var cs2 = m_comp as ICompositeTypeStyle2;
 
             if (ar2 != null)
             {
@@ -310,6 +311,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             else if (ln2 != null)
             {
                 ln2.ShowInLegend = ShowInLegend.Checked;
+                m_owner.FlagDirty();
+            }
+            else if (cs2 != null)
+            {
+                cs2.ShowInLegend = ShowInLegend.Checked;
                 m_owner.FlagDirty();
             }
         }
