@@ -261,6 +261,10 @@
       <Link>Schemas\MapDefinition-2.3.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\MapDefinition-2.4.0.xsd">
+      <Link>Schemas\MapDefinition-2.4.0.xsd</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\PlatformCommon-1.0.0.xsd">
       <Link>Schemas\PlatformCommon-1.0.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -361,6 +365,10 @@
       <Link>Schemas\SymbolDefinition-1.1.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SymbolDefinition-2.4.0.xsd">
+      <Link>Schemas\SymbolDefinition-2.4.0.xsd</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SymbolLibrary-1.0.0.xsd">
       <Link>Schemas\SymbolLibrary-1.0.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -383,6 +391,10 @@
     </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WatermarkDefinition-2.3.0.xsd">
       <Link>Schemas\WatermarkDefinition-2.3.0.xsd</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WatermarkDefinition-2.4.0.xsd">
+      <Link>Schemas\WatermarkDefinition-2.4.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WebLayout-1.0.0.xsd">

@@ -194,6 +194,16 @@ namespace OSGeo.MapGuide.MaestroAPI
                         if (wmd != null)
                             xsds.Add("WatermarkDefinition-2.3.0.xsd", wmd); //NOXLATE
                     }
+                    else if (version.StartsWith("2.4.0")) //NOXLATE
+                    {
+                        var sym = GetXsd(xsdPath, "SymbolDefinition-2.4.0.xsd"); //NOXLATE
+                        if (sym != null)
+                            xsds.Add("SymbolDefinition-2.4.0.xsd", sym); //NOXLATE
+
+                        var wmd = GetXsd(xsdPath, "WatermarkDefinition-2.4.0.xsd"); //NOXLATE
+                        if (wmd != null)
+                            xsds.Add("WatermarkDefinition-2.4.0.xsd", wmd); //NOXLATE
+                    }
                 }
 
                 if (res.ResourceType == ResourceTypes.WatermarkDefinition)
@@ -204,6 +214,12 @@ namespace OSGeo.MapGuide.MaestroAPI
                         var sym = GetXsd(xsdPath, "SymbolDefinition-1.1.0.xsd"); //NOXLATE
                         if (sym != null)
                             xsds.Add("SymbolDefinition-1.1.0.xsd", sym); //NOXLATE
+                    }
+                    else if (version.StartsWith("2.4.0"))
+                    {
+                        var sym = GetXsd(xsdPath, "SymbolDefinition-2.4.0.xsd"); //NOXLATE
+                        if (sym != null)
+                            xsds.Add("SymbolDefinition-2.4.0.xsd", sym); //NOXLATE
                     }
                 }
 
@@ -219,6 +235,16 @@ namespace OSGeo.MapGuide.MaestroAPI
                         var wmd = GetXsd(xsdPath, "WatermarkDefinition-2.3.0.xsd"); //NOXLATE
                         if (wmd != null)
                             xsds.Add("WatermarkDefinition-2.3.0.xsd", wmd); //NOXLATE
+                    }
+                    else if (version.StartsWith("2.4.0"))
+                    {
+                        var sym = GetXsd(xsdPath, "SymbolDefinition-2.4.0.xsd"); //NOXLATE
+                        if (sym != null)
+                            xsds.Add("SymbolDefinition-2.4.0.xsd", sym); //NOXLATE
+
+                        var wmd = GetXsd(xsdPath, "WatermarkDefinition-2.4.0.xsd"); //NOXLATE
+                        if (wmd != null)
+                            xsds.Add("WatermarkDefinition-2.4.0.xsd", wmd); //NOXLATE
                     }
                 }
 
