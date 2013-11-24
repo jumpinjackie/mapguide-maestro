@@ -29,6 +29,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using Maestro.Editors.Generic;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using System.IO;
 
 namespace Maestro.Base.UI.Packaging
 {
@@ -230,6 +231,27 @@ namespace Maestro.Base.UI.Packaging
                     this.FolderToPackage = picker.ResourceID;
                 }
             }
+        }
+
+        private void btnReadFromFile_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string[] lines = File.ReadAllLines(openFileDialog.FileName)
+                                     .Where(s => ResourceIdentifier.Validate(s))
+                                     .ToArray();
+                txtResourceIdList.Lines = lines;
+            }
+        }
+
+        private void rdResourceList_CheckedChanged(object sender, EventArgs e)
+        {
+            btnReadFromFile.Enabled = rdResourceList.Checked;
+        }
+
+        private void rdPackageFolder_CheckedChanged(object sender, EventArgs e)
+        {
+            btnReadFromFile.Enabled = rdResourceList.Checked;
         }
     }
 }
