@@ -41,11 +41,13 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnGo = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnGo);
             this.groupBox1.Controls.Add(this.btnBrowse);
             this.groupBox1.Controls.Add(this.txtResourceId);
             this.groupBox1.Controls.Add(this.label3);
@@ -123,6 +125,14 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
+            // btnGo
+            // 
+            resources.ApplyResources(this.btnGo, "btnGo");
+            this.btnGo.Image = global::Maestro.Editors.Properties.Resources.arrow;
+            this.btnGo.Name = "btnGo";
+            this.btnGo.UseVisualStyleBackColor = true;
+            this.btnGo.Click += new System.EventHandler(this.btnGo_Click);
+            // 
             // LayerPropertiesCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -149,5 +159,6 @@
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.TextBox txtResourceId;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnGo;
     }
 }

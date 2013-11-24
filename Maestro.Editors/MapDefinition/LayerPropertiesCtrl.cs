@@ -29,6 +29,7 @@ using Maestro.Shared.UI;
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 
 namespace Maestro.Editors.MapDefinition
 {
@@ -42,11 +43,14 @@ namespace Maestro.Editors.MapDefinition
 
         public event EventHandler LayerChanged;
         private IResourceService _resSvc;
+        private IEditorService _edSvc;
 
-        public LayerPropertiesCtrl(IMapLayer layer, IResourceService resSvc) : this()
+        public LayerPropertiesCtrl(IMapLayer layer, IResourceService resSvc, IEditorService edSvc)
+            : this()
         {
             layer.PropertyChanged += new PropertyChangedEventHandler(OnLayerChanged);
             _resSvc = resSvc;
+            _edSvc = edSvc;
 
             TextBoxBinder.BindText(txtResourceId, layer, "ResourceId");
             TextBoxBinder.BindText(txtName, layer, "Name");
@@ -58,11 +62,12 @@ namespace Maestro.Editors.MapDefinition
             CheckBoxBinder.BindChecked(chkSelectable, layer, "Selectable");
         }
 
-        public LayerPropertiesCtrl(IBaseMapLayer layer, IResourceService resSvc)
+        public LayerPropertiesCtrl(IBaseMapLayer layer, IResourceService resSvc, IEditorService edSvc)
             : this()
         {
             layer.PropertyChanged += new PropertyChangedEventHandler(OnLayerChanged);
             _resSvc = resSvc;
+            _edSvc = edSvc;
 
             TextBoxBinder.BindText(txtResourceId, layer, "ResourceId");
             TextBoxBinder.BindText(txtName, layer, "Name");
@@ -92,6 +97,12 @@ namespace Maestro.Editors.MapDefinition
                     txtResourceId.Text = picker.ResourceID;
                 }
             }
+        }
+
+        private void btnGo_Click(object sender, EventArgs e)
+        {
+            if (ResourceIdentifier.Validate(txtResourceId.Text))
+                _edSvc.OpenResource(txtResourceId.Text);
         }
     }
 }

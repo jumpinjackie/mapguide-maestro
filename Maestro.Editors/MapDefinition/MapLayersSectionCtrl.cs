@@ -236,7 +236,7 @@ namespace Maestro.Editors.MapDefinition
             btnMoveLayerOrGroupDown.Enabled = true; //TODO: Disable if layer is bottom of its group
 
             propertiesPanel.Controls.Clear();
-            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService);
+            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService, _edSvc);
             item.LayerChanged += (s, evt) => { OnResourceChanged(); };
             item.Dock = DockStyle.Fill;
             _activeLayer = layer.Tag;
@@ -273,7 +273,7 @@ namespace Maestro.Editors.MapDefinition
             btnDLRemoveLayer.Enabled = true;
 
             propertiesPanel.Controls.Clear();
-            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService);
+            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService, _edSvc);
             item.LayerChanged += (s, evt) => { OnResourceChanged(); };
             item.Dock = DockStyle.Fill;
             _activeLayer = layer.Tag;
@@ -1022,7 +1022,7 @@ namespace Maestro.Editors.MapDefinition
             btnBaseLayerGroupToRegular.Enabled = false;
 
             propertiesPanel.Controls.Clear();
-            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService);
+            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService, _edSvc);
             item.LayerChanged += (s, evt) => { OnResourceChanged(); };
             item.Dock = DockStyle.Fill;
             _activeLayer = null;
