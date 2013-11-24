@@ -94,8 +94,16 @@ namespace Maestro.Base
             get { return this.ActiveDocumentView as IEditorViewContent; }
         }
 
+        /// <summary>
+        /// Raised when the active document has changed
+        /// </summary>
+        public event EventHandler ActiveDocumentChanged;
+
         protected override void OnViewActivated(object sender, IViewContent content)
         {
+            var h = this.ActiveDocumentChanged;
+            if (h != null)
+                h(this, EventArgs.Empty);
         }
 
         public Workbench(IWorkbenchInitializer init) : base(init) { }

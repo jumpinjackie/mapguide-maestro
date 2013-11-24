@@ -58,6 +58,7 @@ namespace Maestro.Shared.UI
             this.WindowState = init.StartMaximized ? FormWindowState.Maximized : FormWindowState.Normal;
 
             contentPanel = new DockPanel();
+            contentPanel.ActiveDocumentChanged += OnActiveDocumentChanged;
             contentPanel.DocumentStyle = DocumentStyle.DockingWindow;
             contentPanel.ShowDocumentIcon = true;
             contentPanel.Dock = DockStyle.Fill;
@@ -95,6 +96,17 @@ namespace Maestro.Shared.UI
 
             // Use the Idle event to update the status of menu and toolbar items.
             Application.Idle += OnApplicationIdle;
+        }
+
+        void OnActiveDocumentChanged(object sender, EventArgs e)
+        {
+            var doc = contentPanel.ActiveDocument as DockContent;
+            if (doc != null)
+            {
+                var vc = doc.Tag as IViewContent;
+                if (vc != null)
+                    OnViewActivated(this, vc);
+            }
         }
 
         const string BASE_TOOLSTRIP = "Base"; //NOXLATE

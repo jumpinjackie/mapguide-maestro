@@ -64,6 +64,22 @@ namespace Maestro.Base.UI
             var clip = ServiceRegistry.GetService<ClipboardService>();
             _model = new RepositoryTreeModel(_connManager, trvResources, omgr, clip);
             trvResources.Model = _model;
+
+            Workbench wb = Workbench.Instance;
+            wb.ActiveDocumentChanged += OnActiveDocumentChanged;
+        }
+
+        void OnActiveDocumentChanged(object sender, EventArgs e)
+        {
+            Workbench wb = Workbench.Instance;
+            var ed = wb.ActiveEditor;
+            if (ed != null)
+            {
+                if (ed.Resource != null && ed.EditorService != null)
+                {
+                    FocusOnNode(ed.Resource.CurrentConnection.DisplayName, ed.EditorService.ResourceID);
+                }
+            }
         }
 
         void OnIdle(object sender, EventArgs e)
@@ -334,6 +350,19 @@ namespace Maestro.Base.UI
                 if (node != null)
                 {
                     trvResources.SelectedNode = node;
+                }
+            }
+        }
+
+        public void FocusOnNode(string connectionName, string resourceId)
+        {
+            var path = _model.GetPathFromResourceId(connectionName, resourceId);
+            if (path != null)
+            {
+                var node = trvResources.FindNode(path, true);
+                if (node != null)
+                {
+                    trvResources.ScrollTo(node);
                 }
             }
         }
