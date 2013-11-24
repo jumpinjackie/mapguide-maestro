@@ -36,6 +36,7 @@ using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using Maestro.Editors.Common;
+using Maestro.Base.Services;
 
 namespace Maestro.Base.UI
 {
@@ -88,13 +89,18 @@ namespace Maestro.Base.UI
         /// </summary>
         public string OpenResource { get { return m_openResource; } }
 
-        public ResourcePropertiesDialog(IResourceIconCache icons, IServerConnection connection, string resourceId)
+        private OpenResourceManager _openMgr;
+        private ISiteExplorer _siteExp;
+
+        public ResourcePropertiesDialog(IResourceIconCache icons, IServerConnection connection, string resourceId, OpenResourceManager openMgr, ISiteExplorer siteExp)
             : this()
         {
             m_connection = connection;
             m_resourceId = resourceId;
             ResourceID.Text = resourceId;
             m_icons = icons;
+            _openMgr = openMgr;
+            _siteExp = siteExp;
 
             InReferenceList.SmallImageList = OutReferenceList.SmallImageList = icons.SmallImageList;
         }
@@ -1085,6 +1091,34 @@ namespace Maestro.Base.UI
         {
             if (InReferenceList.SelectedItems.Count != 1)
                 e.Cancel = true;
+        }
+
+        private void OutReferenceList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnReferencesOpenSelected.Enabled = (OutReferenceList.SelectedItems.Count > 0);
+            btnReferencedByOpenSelected.Enabled = (InReferenceList.SelectedItems.Count > 0);
+        }
+
+        private void InReferenceList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnReferencedByOpenSelected.Enabled = (InReferenceList.SelectedItems.Count > 0);
+            btnReferencesOpenSelected.Enabled = (OutReferenceList.SelectedItems.Count > 0);
+        }
+
+        private void btnReferencesOpenSelected_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in OutReferenceList.SelectedItems)
+            {
+                _openMgr.Open(item.Text, m_connection, false, _siteExp);
+            }
+        }
+
+        private void btnReferencedByOpenSelected_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in InReferenceList.SelectedItems)
+            {
+                _openMgr.Open(item.Text, m_connection, false, _siteExp);
+            }
         }
     }
 }

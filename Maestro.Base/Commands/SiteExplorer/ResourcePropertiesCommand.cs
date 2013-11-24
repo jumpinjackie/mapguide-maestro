@@ -44,8 +44,10 @@ namespace Maestro.Base.Commands.SiteExplorer
             //Can only show properties of one selected item
             if (items.Length == 1)
             {
+                var openMgr = ServiceRegistry.GetService<OpenResourceManager>();
+
                 var icons = ResourceIconCache.CreateDefault();
-                var dlg = new ResourcePropertiesDialog(icons, conn, items[0].ResourceId);
+                var dlg = new ResourcePropertiesDialog(icons, conn, items[0].ResourceId, openMgr, wb.ActiveSiteExplorer);
                 dlg.ShowDialog(wb);
             }
         }

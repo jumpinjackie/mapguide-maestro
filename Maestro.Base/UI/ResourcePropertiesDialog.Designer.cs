@@ -40,6 +40,11 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.securityContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.readWriteAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.readOnlyAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.denyAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.inheritedAccessRightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WMSTab = new System.Windows.Forms.TabPage();
             this.WMSClearHeaderButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -106,14 +111,14 @@
             this.OKBtn = new System.Windows.Forms.Button();
             this.ReferenceWorker = new System.ComponentModel.BackgroundWorker();
             this.UserAndGroupImages = new System.Windows.Forms.ImageList(this.components);
-            this.securityContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.readWriteAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.readOnlyAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.denyAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inheritedAccessRightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.btnReferencesOpenSelected = new System.Windows.Forms.ToolStripButton();
+            this.btnReferencedByOpenSelected = new System.Windows.Forms.ToolStripButton();
             this.tabControl1.SuspendLayout();
             this.SecurityTab.SuspendLayout();
+            this.securityContextMenu.SuspendLayout();
             this.WMSTab.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -123,6 +128,7 @@
             this.CustomTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.ReferenceTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -132,7 +138,8 @@
             this.ctxReferenced.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.securityContextMenu.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -186,6 +193,41 @@
             // columnHeader3
             // 
             resources.ApplyResources(this.columnHeader3, "columnHeader3");
+            // 
+            // securityContextMenu
+            // 
+            this.securityContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.readWriteAccessToolStripMenuItem,
+            this.readOnlyAccessToolStripMenuItem,
+            this.denyAccessToolStripMenuItem,
+            this.inheritedAccessRightsToolStripMenuItem});
+            this.securityContextMenu.Name = "securityContextMenu";
+            resources.ApplyResources(this.securityContextMenu, "securityContextMenu");
+            this.securityContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.securityContextMenu_Opening);
+            // 
+            // readWriteAccessToolStripMenuItem
+            // 
+            this.readWriteAccessToolStripMenuItem.Name = "readWriteAccessToolStripMenuItem";
+            resources.ApplyResources(this.readWriteAccessToolStripMenuItem, "readWriteAccessToolStripMenuItem");
+            this.readWriteAccessToolStripMenuItem.Click += new System.EventHandler(this.readWriteAccessToolStripMenuItem_Click);
+            // 
+            // readOnlyAccessToolStripMenuItem
+            // 
+            this.readOnlyAccessToolStripMenuItem.Name = "readOnlyAccessToolStripMenuItem";
+            resources.ApplyResources(this.readOnlyAccessToolStripMenuItem, "readOnlyAccessToolStripMenuItem");
+            this.readOnlyAccessToolStripMenuItem.Click += new System.EventHandler(this.readOnlyAccessToolStripMenuItem_Click);
+            // 
+            // denyAccessToolStripMenuItem
+            // 
+            this.denyAccessToolStripMenuItem.Name = "denyAccessToolStripMenuItem";
+            resources.ApplyResources(this.denyAccessToolStripMenuItem, "denyAccessToolStripMenuItem");
+            this.denyAccessToolStripMenuItem.Click += new System.EventHandler(this.denyAccessToolStripMenuItem_Click);
+            // 
+            // inheritedAccessRightsToolStripMenuItem
+            // 
+            this.inheritedAccessRightsToolStripMenuItem.Name = "inheritedAccessRightsToolStripMenuItem";
+            resources.ApplyResources(this.inheritedAccessRightsToolStripMenuItem, "inheritedAccessRightsToolStripMenuItem");
+            this.inheritedAccessRightsToolStripMenuItem.Click += new System.EventHandler(this.inheritedAccessRightsToolStripMenuItem_Click);
             // 
             // WMSTab
             // 
@@ -570,6 +612,7 @@
             // OutReferences
             // 
             this.OutReferences.Controls.Add(this.OutReferenceList);
+            this.OutReferences.Controls.Add(this.toolStrip1);
             resources.ApplyResources(this.OutReferences, "OutReferences");
             this.OutReferences.Name = "OutReferences";
             this.OutReferences.TabStop = false;
@@ -580,10 +623,10 @@
             resources.ApplyResources(this.OutReferenceList, "OutReferenceList");
             this.OutReferenceList.FullRowSelect = true;
             this.OutReferenceList.GridLines = true;
-            this.OutReferenceList.MultiSelect = false;
             this.OutReferenceList.Name = "OutReferenceList";
             this.OutReferenceList.UseCompatibleStateImageBehavior = false;
             this.OutReferenceList.View = System.Windows.Forms.View.List;
+            this.OutReferenceList.SelectedIndexChanged += new System.EventHandler(this.OutReferenceList_SelectedIndexChanged);
             this.OutReferenceList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OutReferenceList_KeyUp);
             // 
             // ctxReferences
@@ -603,6 +646,7 @@
             // InReferences
             // 
             this.InReferences.Controls.Add(this.InReferenceList);
+            this.InReferences.Controls.Add(this.toolStrip2);
             resources.ApplyResources(this.InReferences, "InReferences");
             this.InReferences.Name = "InReferences";
             this.InReferences.TabStop = false;
@@ -613,10 +657,10 @@
             resources.ApplyResources(this.InReferenceList, "InReferenceList");
             this.InReferenceList.FullRowSelect = true;
             this.InReferenceList.GridLines = true;
-            this.InReferenceList.MultiSelect = false;
             this.InReferenceList.Name = "InReferenceList";
             this.InReferenceList.UseCompatibleStateImageBehavior = false;
             this.InReferenceList.View = System.Windows.Forms.View.List;
+            this.InReferenceList.SelectedIndexChanged += new System.EventHandler(this.InReferenceList_SelectedIndexChanged);
             this.InReferenceList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.InReferenceList_KeyUp);
             // 
             // ctxReferenced
@@ -693,40 +737,33 @@
             this.UserAndGroupImages.Images.SetKeyName(6, "InheritedUser.ico");
             this.UserAndGroupImages.Images.SetKeyName(7, "InheritedGroup.ico");
             // 
-            // securityContextMenu
+            // toolStrip1
             // 
-            this.securityContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.readWriteAccessToolStripMenuItem,
-            this.readOnlyAccessToolStripMenuItem,
-            this.denyAccessToolStripMenuItem,
-            this.inheritedAccessRightsToolStripMenuItem});
-            this.securityContextMenu.Name = "securityContextMenu";
-            resources.ApplyResources(this.securityContextMenu, "securityContextMenu");
-            this.securityContextMenu.Opening += new System.ComponentModel.CancelEventHandler(this.securityContextMenu_Opening);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnReferencesOpenSelected});
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
+            this.toolStrip1.Name = "toolStrip1";
             // 
-            // readWriteAccessToolStripMenuItem
+            // toolStrip2
             // 
-            this.readWriteAccessToolStripMenuItem.Name = "readWriteAccessToolStripMenuItem";
-            resources.ApplyResources(this.readWriteAccessToolStripMenuItem, "readWriteAccessToolStripMenuItem");
-            this.readWriteAccessToolStripMenuItem.Click += new System.EventHandler(this.readWriteAccessToolStripMenuItem_Click);
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnReferencedByOpenSelected});
+            resources.ApplyResources(this.toolStrip2, "toolStrip2");
+            this.toolStrip2.Name = "toolStrip2";
             // 
-            // readOnlyAccessToolStripMenuItem
+            // btnReferencesOpenSelected
             // 
-            this.readOnlyAccessToolStripMenuItem.Name = "readOnlyAccessToolStripMenuItem";
-            resources.ApplyResources(this.readOnlyAccessToolStripMenuItem, "readOnlyAccessToolStripMenuItem");
-            this.readOnlyAccessToolStripMenuItem.Click += new System.EventHandler(this.readOnlyAccessToolStripMenuItem_Click);
+            resources.ApplyResources(this.btnReferencesOpenSelected, "btnReferencesOpenSelected");
+            this.btnReferencesOpenSelected.Image = global::Maestro.Base.Properties.Resources.folder_open_document;
+            this.btnReferencesOpenSelected.Name = "btnReferencesOpenSelected";
+            this.btnReferencesOpenSelected.Click += new System.EventHandler(this.btnReferencesOpenSelected_Click);
             // 
-            // denyAccessToolStripMenuItem
+            // btnReferencedByOpenSelected
             // 
-            this.denyAccessToolStripMenuItem.Name = "denyAccessToolStripMenuItem";
-            resources.ApplyResources(this.denyAccessToolStripMenuItem, "denyAccessToolStripMenuItem");
-            this.denyAccessToolStripMenuItem.Click += new System.EventHandler(this.denyAccessToolStripMenuItem_Click);
-            // 
-            // inheritedAccessRightsToolStripMenuItem
-            // 
-            this.inheritedAccessRightsToolStripMenuItem.Name = "inheritedAccessRightsToolStripMenuItem";
-            resources.ApplyResources(this.inheritedAccessRightsToolStripMenuItem, "inheritedAccessRightsToolStripMenuItem");
-            this.inheritedAccessRightsToolStripMenuItem.Click += new System.EventHandler(this.inheritedAccessRightsToolStripMenuItem_Click);
+            resources.ApplyResources(this.btnReferencedByOpenSelected, "btnReferencedByOpenSelected");
+            this.btnReferencedByOpenSelected.Image = global::Maestro.Base.Properties.Resources.folder_open_document;
+            this.btnReferencedByOpenSelected.Name = "btnReferencedByOpenSelected";
+            this.btnReferencedByOpenSelected.Click += new System.EventHandler(this.btnReferencedByOpenSelected_Click);
             // 
             // ResourcePropertiesDialog
             // 
@@ -740,6 +777,7 @@
             this.tabControl1.ResumeLayout(false);
             this.SecurityTab.ResumeLayout(false);
             this.SecurityTab.PerformLayout();
+            this.securityContextMenu.ResumeLayout(false);
             this.WMSTab.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -755,15 +793,21 @@
             this.ReferenceTab.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.OutReferences.ResumeLayout(false);
+            this.OutReferences.PerformLayout();
             this.ctxReferences.ResumeLayout(false);
             this.InReferences.ResumeLayout(false);
+            this.InReferences.PerformLayout();
             this.ctxReferenced.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.securityContextMenu.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -849,5 +893,9 @@
         private System.Windows.Forms.ToolStripMenuItem copyResourceIDToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip ctxReferenced;
         private System.Windows.Forms.ToolStripMenuItem copyResourceIDToolStripMenuItem1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton btnReferencesOpenSelected;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripButton btnReferencedByOpenSelected;
     }
 }
