@@ -138,7 +138,15 @@ namespace Maestro.Base.Editor
         /// <summary>
         /// Gets the edited resource
         /// </summary>
-        public IResource Resource { get { return this.EditorService.GetEditedResource(); } }
+        public IResource Resource 
+        { 
+            get 
+            {
+                if (this.EditorService == null)
+                    return null;
+                return this.EditorService.GetEditedResource(); 
+            } 
+        }
 
         private void OpenAffectedResource(IResource res)
         {
