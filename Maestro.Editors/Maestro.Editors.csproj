@@ -830,6 +830,12 @@
     <Compile Include="LoadProcedure\SqliteTransformationCtrl.Designer.cs">
       <DependentUpon>SqliteTransformationCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="MapDefinition\CommonPropertyCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MapDefinition\CommonPropertyCtrl.Designer.cs">
+      <DependentUpon>CommonPropertyCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MapDefinition\ExtentCalculationDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1623,6 +1629,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoadProcedure\SqliteTransformationCtrl.resx">
       <DependentUpon>SqliteTransformationCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapDefinition\CommonPropertyCtrl.resx">
+      <DependentUpon>CommonPropertyCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MapDefinition\FiniteScaleListCtrl.resx">
       <DependentUpon>FiniteScaleListCtrl.cs</DependentUpon>

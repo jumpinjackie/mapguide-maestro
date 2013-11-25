@@ -55,11 +55,6 @@ namespace Maestro.Editors.MapDefinition
             TextBoxBinder.BindText(txtResourceId, layer, "ResourceId");
             TextBoxBinder.BindText(txtName, layer, "Name");
             TextBoxBinder.BindText(txtLegendLabel, layer, "LegendLabel");
-
-            CheckBoxBinder.BindChecked(chkExpanded, layer, "ExpandInLegend");
-            CheckBoxBinder.BindChecked(chkLegendVisible, layer, "ShowInLegend");
-            CheckBoxBinder.BindChecked(chkVisible, layer, "Visible");
-            CheckBoxBinder.BindChecked(chkSelectable, layer, "Selectable");
         }
 
         public LayerPropertiesCtrl(IBaseMapLayer layer, IResourceService resSvc, IEditorService edSvc)
@@ -72,12 +67,6 @@ namespace Maestro.Editors.MapDefinition
             TextBoxBinder.BindText(txtResourceId, layer, "ResourceId");
             TextBoxBinder.BindText(txtName, layer, "Name");
             TextBoxBinder.BindText(txtLegendLabel, layer, "LegendLabel");
-
-            CheckBoxBinder.BindChecked(chkExpanded, layer, "ExpandInLegend");
-            CheckBoxBinder.BindChecked(chkLegendVisible, layer, "ShowInLegend");
-            //CheckBoxBinder.BindChecked(chkVisible, layer, "Visible");
-            chkVisible.Visible = false;
-            CheckBoxBinder.BindChecked(chkSelectable, layer, "Selectable");
         }
 
         void OnLayerChanged(object sender, PropertyChangedEventArgs e)

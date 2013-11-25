@@ -189,31 +189,6 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        private void trvLayersGroup_MouseClick(object sender, MouseEventArgs e)
-        {
-            TreeNodeAdv node = trvLayersGroup.GetNodeAt(new Point(e.X, e.Y));
-            if (node != null)
-            {
-                var layer = node.Tag as LayerItem;
-                var group = node.Tag as GroupItem;
-
-                btnGRPRemoveLayer.Enabled = false;
-                btnRemoveGroup.Enabled = false;
-                btnMoveLayerOrGroupUp.Enabled = false;
-                btnMoveLayerOrGroupDown.Enabled = false;
-                btnConvertLayerGroupToBaseGroup.Enabled = false;
-
-                if (layer != null)
-                {
-                    OnDynamicLayerItemSelected(layer);
-                }
-                else if (group != null)
-                {
-                    OnDynamicGroupItemSelected(group);
-                }
-            }
-        }
-
         private void OnDynamicGroupItemSelected(GroupItem group)
         {
             btnRemoveGroup.Enabled = true;
@@ -222,12 +197,290 @@ namespace Maestro.Editors.MapDefinition
             btnConvertLayerGroupToBaseGroup.Enabled = true;
 
             propertiesPanel.Controls.Clear();
-            var item = new GroupPropertiesCtrl(_map, group.Tag);
-            item.GroupChanged += (s, evt) => { OnResourceChanged(); };
-            item.Dock = DockStyle.Fill;
+            //var item = new GroupPropertiesCtrl(_map, group.Tag);
+            //item.GroupChanged += (s, evt) => { OnResourceChanged(); };
+            //item.Dock = DockStyle.Fill;
+            var item = CreateGroupControl(group);
             _activeLayer = null;
             propertiesPanel.Controls.Add(item);
         }
+
+        class LocalizedDisplayNameAttribute : DisplayNameAttribute
+        {
+            private readonly string resourceName;
+            public LocalizedDisplayNameAttribute(string resourceName)
+                : base()
+            {
+                this.resourceName = resourceName;
+            }
+
+            public override string DisplayName
+            {
+                get
+                {
+                    return Strings.ResourceManager.GetString(
+                        this.resourceName,
+                        Strings.Culture);
+                }
+            }
+        }
+
+        #region Designer Attributes
+
+        class BaseLayerItemDesigner
+        {
+            private BaseLayerItem _layer;
+
+            public BaseLayerItemDesigner(BaseLayerItem layer)
+            {
+                _layer = layer;
+            }
+
+            [LocalizedDisplayName("MdfEditorSelectable")]
+            public bool Selectable
+            {
+                get { return _layer.Tag.Selectable; }
+                set { _layer.Tag.Selectable = value; }
+            }
+
+            [LocalizedDisplayName("MdfEditorShowInLegend")]
+            public bool ShowInLegend
+            {
+                get { return _layer.Tag.ShowInLegend; }
+                set { _layer.Tag.ShowInLegend = value; }
+            }
+
+            [LocalizedDisplayName("MdfEditorExpandInLegend")]
+            public bool ExpandInLegend
+            {
+                get { return _layer.Tag.ExpandInLegend; }
+                set { _layer.Tag.ExpandInLegend = value; }
+            }
+        }
+
+        class BaseGroupItemDesigner
+        {
+            private BaseLayerGroupItem _group;
+
+            public BaseGroupItemDesigner(BaseLayerGroupItem group)
+            {
+                _group = group;
+            }
+
+            [LocalizedDisplayName("MdfEditorVisible")]
+            public bool Visible
+            {
+                get { return _group.Tag.Visible; }
+                set { _group.Tag.Visible = value; }
+            }
+
+            [LocalizedDisplayName("MdfEditorShowInLegend")]
+            public bool ShowInLegend
+            {
+                get { return _group.Tag.ShowInLegend; }
+                set { _group.Tag.ShowInLegend = value; }
+            }
+
+            [LocalizedDisplayName("MdfEditorExpandInLegend")]
+            public bool ExpandInLegend
+            {
+                get { return _group.Tag.ExpandInLegend; }
+                set { _group.Tag.ExpandInLegend = value; }
+            }
+        }
+
+        class LayerItemDesigner
+        {
+            private LayerItem _layer;
+
+            public LayerItemDesigner(LayerItem layer)
+            {
+                _layer = layer;
+            }
+
+            [LocalizedDisplayName("MdfEditorSelectable")]
+            public bool Selectable
+            {
+                get { return _layer.Tag.Selectable; }
+                set { _layer.Tag.Selectable = value; }
+            }
+
+            [LocalizedDisplayName("MdfEditorVisible")]
+            public bool Visible
+            {
+                get { return _layer.Tag.Visible; }
+                set { _layer.Tag.Visible = value; }
+            }
+
+            [LocalizedDisplayName("MdfEditorShowInLegend")]
+            public bool ShowInLegend
+            {
+                get { return _layer.Tag.ShowInLegend; }
+                set { _layer.Tag.ShowInLegend = value; }
+            }
+
+            [LocalizedDisplayName("MdfEditorExpandInLegend")]
+            public bool ExpandInLegend
+            {
+                get { return _layer.Tag.ExpandInLegend; }
+                set { _layer.Tag.ExpandInLegend = value; }
+            }
+        }
+
+        class GroupItemDesigner
+        {
+            private GroupItem _group;
+
+            public GroupItemDesigner(GroupItem group)
+            {
+                _group = group;
+            }
+
+            [LocalizedDisplayName("MdfEditorVisible")]
+            public bool Visible
+            {
+                get { return _group.Tag.Visible; }
+                set { _group.Tag.Visible = value; }
+            }
+
+            [LocalizedDisplayName("MdfEditorShowInLegend")]
+            public bool ShowInLegend
+            {
+                get { return _group.Tag.ShowInLegend; }
+                set { _group.Tag.ShowInLegend = value; }
+            }
+
+            [LocalizedDisplayName("MdfEditorExpandInLegend")]
+            public bool ExpandInLegend
+            {
+                get { return _group.Tag.ExpandInLegend; }
+                set { _group.Tag.ExpandInLegend = value; }
+            }
+        }
+
+        #endregion
+
+        private Control CreateGroupControl(GroupItem group)
+        {
+            Control ctrl = new Control();
+
+            CommonPropertyCtrl commCtrl = new CommonPropertyCtrl();
+            commCtrl.Dock = DockStyle.Fill;
+
+            commCtrl.SelectedObject = new GroupItemDesigner(group);
+
+            var item = new GroupPropertiesCtrl(_map, group.Tag);
+            item.GroupChanged += (s, evt) => { OnResourceChanged(); };
+            item.Dock = DockStyle.Top;
+
+            ctrl.Controls.Add(commCtrl);
+            ctrl.Controls.Add(item);
+            
+            ctrl.Dock = DockStyle.Fill;
+
+            return ctrl;
+        }
+
+        #region Control Factories
+
+        private Control CreateMultiControl(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
+        {
+            CommonPropertyCtrl commCtrl = new CommonPropertyCtrl();
+            commCtrl.Dock = DockStyle.Fill;
+
+            List<object> values = new List<object>();
+            for (int i = 0; i < nodes.Count; i++ )
+            {
+                var grp = nodes[i].Tag as GroupItem;
+                var lyr = nodes[i].Tag as LayerItem;
+                var bgrp = nodes[i].Tag as BaseLayerGroupItem;
+                var blyr = nodes[i].Tag as BaseLayerItem;
+                if (grp != null)
+                {
+                    values.Add(new GroupItemDesigner(grp));
+                }
+                else if (lyr != null)
+                {
+                    values.Add(new LayerItemDesigner(lyr));
+                }
+                else if (bgrp != null)
+                {
+                    values.Add(new BaseGroupItemDesigner(bgrp));
+                }
+                else if (blyr != null)
+                {
+                    values.Add(new BaseLayerItemDesigner(blyr));
+                }
+            }
+
+            commCtrl.SelectedObjects = values.ToArray();
+            return commCtrl;
+        }
+
+        private Control CreateBaseGroupControl(BaseLayerGroupItem group)
+        {
+            Control ctrl = new Control();
+
+            CommonPropertyCtrl commCtrl = new CommonPropertyCtrl();
+            commCtrl.Dock = DockStyle.Fill;
+
+            commCtrl.SelectedObject = new BaseGroupItemDesigner(group);
+
+            var item = new GroupPropertiesCtrl(_map, group.Tag);
+            item.GroupChanged += (s, evt) => { OnResourceChanged(); };
+            item.Dock = DockStyle.Top;
+
+            ctrl.Controls.Add(commCtrl);
+            ctrl.Controls.Add(item);
+
+            ctrl.Dock = DockStyle.Fill;
+
+            return ctrl;
+        }
+
+        private Control CreateBaseLayerControl(BaseLayerItem layer)
+        {
+            Control ctrl = new Control();
+
+            CommonPropertyCtrl commCtrl = new CommonPropertyCtrl();
+            commCtrl.Dock = DockStyle.Fill;
+
+            commCtrl.SelectedObject = new BaseLayerItemDesigner(layer);
+
+            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService, _edSvc);
+            item.LayerChanged += (s, evt) => { OnResourceChanged(); };
+            item.Dock = DockStyle.Top;
+
+            ctrl.Controls.Add(commCtrl);
+            ctrl.Controls.Add(item);
+
+            ctrl.Dock = DockStyle.Fill;
+
+            return ctrl;
+        }
+
+        private Control CreateLayerControl(LayerItem layer)
+        {
+            Control ctrl = new Control();
+
+            CommonPropertyCtrl commCtrl = new CommonPropertyCtrl();
+            commCtrl.Dock = DockStyle.Fill;
+
+            commCtrl.SelectedObject = new LayerItemDesigner(layer);
+
+            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService, _edSvc);
+            item.LayerChanged += (s, evt) => { OnResourceChanged(); };
+            item.Dock = DockStyle.Top;
+
+            ctrl.Controls.Add(commCtrl);
+            ctrl.Controls.Add(item);
+
+            ctrl.Dock = DockStyle.Fill;
+
+            return ctrl;
+        }
+
+        #endregion
 
         private void OnDynamicLayerItemSelected(LayerItem layer)
         {
@@ -236,30 +489,34 @@ namespace Maestro.Editors.MapDefinition
             btnMoveLayerOrGroupDown.Enabled = true; //TODO: Disable if layer is bottom of its group
 
             propertiesPanel.Controls.Clear();
-            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService, _edSvc);
-            item.LayerChanged += (s, evt) => { OnResourceChanged(); };
-            item.Dock = DockStyle.Fill;
+
+            var item = CreateLayerControl(layer);
             _activeLayer = layer.Tag;
             propertiesPanel.Controls.Add(item);
         }
 
-        private void trvLayerDrawingOrder_MouseClick(object sender, MouseEventArgs e)
+        private void OnMultipleItemsSelected(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
         {
-            TreeNodeAdv node = trvLayerDrawingOrder.GetNodeAt(new Point(e.X, e.Y));
-            if (node != null)
-            {
-                var layer = node.Tag as LayerItem;
-                btnDLMoveLayerBottom.Enabled =
-                btnDLMoveLayerDown.Enabled =
-                btnDLMoveLayerTop.Enabled =
-                btnDLMoveLayerUp.Enabled =
-                btnDLRemoveLayer.Enabled = false;
+            //Disable all toolbar buttons
+            btnGRPRemoveLayer.Enabled = 
+            btnMoveLayerOrGroupUp.Enabled = 
+            btnMoveLayerOrGroupDown.Enabled = false;
 
-                if (layer != null)
-                {
-                    OnDrawOrderLayerItemSelected(layer);
-                }
-            }
+            btnDLMoveLayerBottom.Enabled =
+            btnDLMoveLayerDown.Enabled =
+            btnDLMoveLayerTop.Enabled =
+            btnDLMoveLayerUp.Enabled =
+            btnDLRemoveLayer.Enabled = false;
+
+            btnAddBaseLayer.Enabled = 
+            btnRemoveBaseLayerGroup.Enabled = 
+            btnBaseLayerGroupToRegular.Enabled = false;
+
+            propertiesPanel.Controls.Clear();
+
+            var item = CreateMultiControl(nodes);
+            _activeLayer = null;
+            propertiesPanel.Controls.Add(item);
         }
 
         private IMapLayer _activeLayer;
@@ -273,9 +530,8 @@ namespace Maestro.Editors.MapDefinition
             btnDLRemoveLayer.Enabled = true;
 
             propertiesPanel.Controls.Clear();
-            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService, _edSvc);
-            item.LayerChanged += (s, evt) => { OnResourceChanged(); };
-            item.Dock = DockStyle.Fill;
+
+            var item = CreateLayerControl(layer);
             _activeLayer = layer.Tag;
             propertiesPanel.Controls.Add(item);
         }
@@ -961,36 +1217,6 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        private void trvBaseLayers_MouseClick(object sender, MouseEventArgs e)
-        {
-            TreeNodeAdv node = trvBaseLayers.GetNodeAt(new Point(e.X, e.Y));
-            if (node != null)
-            {
-                var layer = node.Tag as BaseLayerItem;
-                var group = node.Tag as BaseLayerGroupItem;
-                var scale = node.Tag as ScaleItem;
-
-                btnRemoveBaseLayerGroup.Enabled = false;
-                btnRemoveBaseLayer.Enabled = false;
-                btnMoveBaseLayerDown.Enabled = false;
-                btnMoveBaseLayerUp.Enabled = false;
-                btnAddBaseLayer.Enabled = false;
-
-                if (layer != null)
-                {
-                    OnBaseLayerItemSelected(layer);
-                }
-                else if (group != null)
-                {
-                    OnBaseLayerGroupItemSelected(group);
-                }
-                else if (scale != null)
-                {
-                    OnFiniteScaleListSelected();
-                }
-            }
-        }
-
         private void OnFiniteScaleListSelected()
         {
             propertiesPanel.Controls.Clear();
@@ -1007,9 +1233,10 @@ namespace Maestro.Editors.MapDefinition
             btnBaseLayerGroupToRegular.Enabled = true;
 
             propertiesPanel.Controls.Clear();
-            var item = new GroupPropertiesCtrl(_map, group.Tag);
-            item.GroupChanged += (s, evt) => { OnResourceChanged(); };
-            item.Dock = DockStyle.Fill;
+            //var item = new GroupPropertiesCtrl(_map, group.Tag);
+            //item.GroupChanged += (s, evt) => { OnResourceChanged(); };
+            //item.Dock = DockStyle.Fill;
+            var item = CreateBaseGroupControl(group);
             _activeLayer = null;
             propertiesPanel.Controls.Add(item);
         }
@@ -1022,9 +1249,10 @@ namespace Maestro.Editors.MapDefinition
             btnBaseLayerGroupToRegular.Enabled = false;
 
             propertiesPanel.Controls.Clear();
-            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService, _edSvc);
-            item.LayerChanged += (s, evt) => { OnResourceChanged(); };
-            item.Dock = DockStyle.Fill;
+            //var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService, _edSvc);
+            //item.LayerChanged += (s, evt) => { OnResourceChanged(); };
+            //item.Dock = DockStyle.Fill;
+            var item = CreateBaseLayerControl(layer);
             _activeLayer = null;
             propertiesPanel.Controls.Add(item);
         }
@@ -1554,6 +1782,101 @@ namespace Maestro.Editors.MapDefinition
                         _activeLayer = null;
                         break;
                 }
+            }
+        }
+
+        private void trvBaseLayers_SelectionChanged(object sender, EventArgs e)
+        {
+            if (trvBaseLayers.SelectedNodes.Count == 1)
+            {
+                TreeNodeAdv node = trvBaseLayers.SelectedNodes[0];
+                if (node != null)
+                {
+                    var layer = node.Tag as BaseLayerItem;
+                    var group = node.Tag as BaseLayerGroupItem;
+                    var scale = node.Tag as ScaleItem;
+
+                    btnRemoveBaseLayerGroup.Enabled = false;
+                    btnRemoveBaseLayer.Enabled = false;
+                    btnMoveBaseLayerDown.Enabled = false;
+                    btnMoveBaseLayerUp.Enabled = false;
+                    btnAddBaseLayer.Enabled = false;
+
+                    if (layer != null)
+                    {
+                        OnBaseLayerItemSelected(layer);
+                    }
+                    else if (group != null)
+                    {
+                        OnBaseLayerGroupItemSelected(group);
+                    }
+                    else if (scale != null)
+                    {
+                        OnFiniteScaleListSelected();
+                    }
+                }
+            }
+            else if (trvBaseLayers.SelectedNodes.Count > 1)
+            {
+                OnMultipleItemsSelected(trvBaseLayers.SelectedNodes);
+            }
+        }
+
+        private void trvLayerDrawingOrder_SelectionChanged(object sender, EventArgs e)
+        {
+            if (trvLayerDrawingOrder.SelectedNodes.Count == 1)
+            {
+                TreeNodeAdv node = trvLayerDrawingOrder.SelectedNodes[0];
+                if (node != null)
+                {
+                    var layer = node.Tag as LayerItem;
+                    btnDLMoveLayerBottom.Enabled =
+                    btnDLMoveLayerDown.Enabled =
+                    btnDLMoveLayerTop.Enabled =
+                    btnDLMoveLayerUp.Enabled =
+                    btnDLRemoveLayer.Enabled = false;
+
+                    if (layer != null)
+                    {
+                        OnDrawOrderLayerItemSelected(layer);
+                    }
+                }
+            }
+            else if (trvLayerDrawingOrder.SelectedNodes.Count > 1)
+            {
+                OnMultipleItemsSelected(trvLayerDrawingOrder.SelectedNodes);
+            }
+        }
+
+        private void trvLayersGroup_SelectionChanged(object sender, EventArgs e)
+        {
+            if (trvLayersGroup.SelectedNodes.Count == 1)
+            {
+                TreeNodeAdv node = trvLayersGroup.SelectedNodes[0];
+                if (node != null)
+                {
+                    var layer = node.Tag as LayerItem;
+                    var group = node.Tag as GroupItem;
+
+                    btnGRPRemoveLayer.Enabled = false;
+                    btnRemoveGroup.Enabled = false;
+                    btnMoveLayerOrGroupUp.Enabled = false;
+                    btnMoveLayerOrGroupDown.Enabled = false;
+                    btnConvertLayerGroupToBaseGroup.Enabled = false;
+
+                    if (layer != null)
+                    {
+                        OnDynamicLayerItemSelected(layer);
+                    }
+                    else if (group != null)
+                    {
+                        OnDynamicGroupItemSelected(group);
+                    }
+                }
+            }
+            else if (trvLayersGroup.SelectedNodes.Count > 1)
+            {
+                OnMultipleItemsSelected(trvLayersGroup.SelectedNodes);
             }
         }
     }

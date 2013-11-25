@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GroupPropertiesCtrl));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chkExpanded = new System.Windows.Forms.CheckBox();
-            this.chkLegendVisible = new System.Windows.Forms.CheckBox();
-            this.chkVisible = new System.Windows.Forms.CheckBox();
             this.txtLegendLabel = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,9 +42,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.chkExpanded);
-            this.groupBox1.Controls.Add(this.chkLegendVisible);
-            this.groupBox1.Controls.Add(this.chkVisible);
             this.groupBox1.Controls.Add(this.txtLegendLabel);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.label2);
@@ -55,24 +49,6 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
-            // 
-            // chkExpanded
-            // 
-            resources.ApplyResources(this.chkExpanded, "chkExpanded");
-            this.chkExpanded.Name = "chkExpanded";
-            this.chkExpanded.UseVisualStyleBackColor = true;
-            // 
-            // chkLegendVisible
-            // 
-            resources.ApplyResources(this.chkLegendVisible, "chkLegendVisible");
-            this.chkLegendVisible.Name = "chkLegendVisible";
-            this.chkLegendVisible.UseVisualStyleBackColor = true;
-            // 
-            // chkVisible
-            // 
-            resources.ApplyResources(this.chkVisible, "chkVisible");
-            this.chkVisible.Name = "chkVisible";
-            this.chkVisible.UseVisualStyleBackColor = true;
             // 
             // txtLegendLabel
             // 
@@ -115,9 +91,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox chkExpanded;
-        private System.Windows.Forms.CheckBox chkLegendVisible;
-        private System.Windows.Forms.CheckBox chkVisible;
         private System.Windows.Forms.TextBox txtLegendLabel;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;

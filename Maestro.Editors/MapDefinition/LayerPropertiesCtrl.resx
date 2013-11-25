@@ -225,114 +225,6 @@
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="chkSelectable.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkSelectable.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 129</value>
-  </data>
-  <data name="chkSelectable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 17</value>
-  </data>
-  <data name="chkSelectable.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="chkSelectable.Text" xml:space="preserve">
-    <value>Features on the layer are selectable (if visible)</value>
-  </data>
-  <data name="&gt;&gt;chkSelectable.Name" xml:space="preserve">
-    <value>chkSelectable</value>
-  </data>
-  <data name="&gt;&gt;chkSelectable.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkSelectable.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;chkSelectable.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="chkExpanded.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkExpanded.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 176</value>
-  </data>
-  <data name="chkExpanded.Size" type="System.Drawing.Size, System.Drawing">
-    <value>228, 17</value>
-  </data>
-  <data name="chkExpanded.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="chkExpanded.Text" xml:space="preserve">
-    <value>Layer is expanded in the legend (if themed)</value>
-  </data>
-  <data name="&gt;&gt;chkExpanded.Name" xml:space="preserve">
-    <value>chkExpanded</value>
-  </data>
-  <data name="&gt;&gt;chkExpanded.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkExpanded.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;chkExpanded.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="chkLegendVisible.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkLegendVisible.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 152</value>
-  </data>
-  <data name="chkLegendVisible.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 17</value>
-  </data>
-  <data name="chkLegendVisible.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="chkLegendVisible.Text" xml:space="preserve">
-    <value>Layer is shown in the map legend</value>
-  </data>
-  <data name="&gt;&gt;chkLegendVisible.Name" xml:space="preserve">
-    <value>chkLegendVisible</value>
-  </data>
-  <data name="&gt;&gt;chkLegendVisible.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkLegendVisible.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;chkLegendVisible.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="chkVisible.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkVisible.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 106</value>
-  </data>
-  <data name="chkVisible.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 17</value>
-  </data>
-  <data name="chkVisible.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="chkVisible.Text" xml:space="preserve">
-    <value>Layer is visible at startup</value>
-  </data>
-  <data name="&gt;&gt;chkVisible.Name" xml:space="preserve">
-    <value>chkVisible</value>
-  </data>
-  <data name="&gt;&gt;chkVisible.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkVisible.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;chkVisible.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="txtLegendLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -355,7 +247,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;txtLegendLabel.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>4</value>
   </data>
   <data name="txtName.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -379,7 +271,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;txtName.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>5</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -406,7 +298,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>6</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -433,7 +325,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>7</value>
   </data>
   <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -442,7 +334,7 @@
     <value>0, 0</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>417, 217</value>
+    <value>417, 103</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -466,7 +358,7 @@
     <value>True</value>
   </metadata>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>417, 217</value>
+    <value>417, 103</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>LayerPropertiesCtrl</value>

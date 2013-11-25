@@ -69,10 +69,6 @@ namespace Maestro.Editors.MapDefinition
                 };*/
 
                 TextBoxBinder.BindText(txtLegendLabel, group, "LegendLabel");
-
-                CheckBoxBinder.BindChecked(chkExpanded, group, "ExpandInLegend");
-                CheckBoxBinder.BindChecked(chkLegendVisible, group, "ShowInLegend");
-                CheckBoxBinder.BindChecked(chkVisible, group, "Visible");
             }
             finally
             {
@@ -92,10 +88,6 @@ namespace Maestro.Editors.MapDefinition
 
                 txtName.Text = group.Name;
                 TextBoxBinder.BindText(txtLegendLabel, group, "LegendLabel");
-
-                CheckBoxBinder.BindChecked(chkExpanded, group, "ExpandInLegend");
-                CheckBoxBinder.BindChecked(chkLegendVisible, group, "ShowInLegend");
-                CheckBoxBinder.BindChecked(chkVisible, group, "Visible");
             }
             finally
             {

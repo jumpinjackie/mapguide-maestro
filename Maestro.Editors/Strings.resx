@@ -1533,4 +1533,16 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="NonMapGuideSupportedCsWkt" xml:space="preserve">
     <value>Non-supported WKT</value>
   </data>
+  <data name="MdfEditorExpandInLegend" xml:space="preserve">
+    <value>Expand In Legend</value>
+  </data>
+  <data name="MdfEditorSelectable" xml:space="preserve">
+    <value>Selectable</value>
+  </data>
+  <data name="MdfEditorShowInLegend" xml:space="preserve">
+    <value>Show In Legend</value>
+  </data>
+  <data name="MdfEditorVisible" xml:space="preserve">
+    <value>Visible</value>
+  </data>
 </root>
