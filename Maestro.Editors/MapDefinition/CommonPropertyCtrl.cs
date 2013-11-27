@@ -49,7 +49,7 @@ namespace Maestro.Editors.MapDefinition
         {
             if (count > 1)
             {
-                grpProperties.Text += " (" + count + ")";
+                grpProperties.Text += " (" + string.Format(Strings.SelectedItemCount, count) + ")";
             }
             else
             {
