@@ -105,12 +105,16 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Creates a command of the specified type
         /// </summary>
-        /// <param name="commandType"></param>
+        /// <remarks>
+        /// Some commands may not be supported by the connection. You can find out if the connection supports a particular command through the <see cref="P:OSGeo.MapGuide.MaestroAPI.IServerConnection.Capabilities"/>
+        /// </remarks>
+        /// <param name="commandType">The type of command to create. See <see cref="T:OSGeo.MapGuide.MaestroAPI.Commands.CommandType"/> for allowed values</param>
         /// <returns></returns>
         ICommand CreateCommand(int commandType);
 
         /// <summary>
-        /// Gets the capabilities for this connection
+        /// Gets the capabilities for this connection. The capabilities describes
+        /// what commands and services are supported by this connection
         /// </summary>
         IConnectionCapabilities Capabilities { get; }
 
@@ -132,7 +136,10 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Gets the service based on the given type
         /// </summary>
-        /// <param name="serviceType"></param>
+        /// <remarks>
+        /// Some commands may not be supported by the connection. You can find out if the connection supports a particular command through the <see cref="P:OSGeo.MapGuide.MaestroAPI.IServerConnection.Capabilities"/>
+        /// </remarks>
+        /// <param name="serviceType">The type of service to create. See <see cref="T:OSGeo.MapGuide.MaestroAPI.Services.ServiceType"/> for allowed values</param>
         /// <returns></returns>
         IService GetService(int serviceType);
 

@@ -112,10 +112,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     ///         {
     ///             int read = 0;
     ///             do
-    /// 		    {
-    /// 			    read = source.Read(buf, 0, buf.Length);
-    /// 			    target.Write(buf, 0, read);
-    /// 		    } while (read > 0);
+    ///             {
+    ///                 read = source.Read(buf, 0, buf.Length);
+    ///                 target.Write(buf, 0, read);
+    ///             } while (read > 0);
     ///         }
     ///     }
     /// 

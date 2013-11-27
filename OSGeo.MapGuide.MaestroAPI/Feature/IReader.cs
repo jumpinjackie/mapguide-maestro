@@ -355,6 +355,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// <summary>
     /// Defines a records whose properties can be modified
     /// </summary>
+    /// <remarks>
+    /// The default implementation of this interface is <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.MutableRecord"/>
+    /// </remarks>
     public interface IMutableRecord : IRecord, IRecordInitialize
     {
         /// <summary>
