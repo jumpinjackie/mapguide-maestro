@@ -23,6 +23,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Text;
+using System.Linq;
 using System.Windows.Forms;
 using Maestro.Shared.UI;
 using Aga.Controls.Tree;
@@ -191,6 +192,8 @@ namespace Maestro.Editors.MapDefinition
 
         private void OnDynamicGroupItemSelected(GroupItem group)
         {
+            btnAddGroup.Enabled = true;
+            btnGRPAddLayer.Enabled = true;
             btnRemoveGroup.Enabled = true;
             btnMoveLayerOrGroupUp.Enabled = true;
             btnMoveLayerOrGroupDown.Enabled = true;
@@ -484,6 +487,8 @@ namespace Maestro.Editors.MapDefinition
 
         private void OnDynamicLayerItemSelected(LayerItem layer)
         {
+            btnAddGroup.Enabled = false;
+            btnGRPAddLayer.Enabled = false;
             btnGRPRemoveLayer.Enabled = true;
             btnMoveLayerOrGroupUp.Enabled = true;   //TODO: Disable if layer is top of its group
             btnMoveLayerOrGroupDown.Enabled = true; //TODO: Disable if layer is bottom of its group
@@ -495,22 +500,76 @@ namespace Maestro.Editors.MapDefinition
             propertiesPanel.Controls.Add(item);
         }
 
+        static bool AllLayers(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
+        {
+            foreach(var node in nodes)
+            {
+                var layer = node.Tag as LayerItem;
+                if (layer == null)
+                    return false;
+            }
+            return true;
+        }
+
+        static bool AllBaseLayers(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
+        {
+            foreach (var node in nodes)
+            {
+                var layer = node.Tag as BaseLayerItem;
+                if (layer == null)
+                    return false;
+            }
+            return true;
+        }
+
+        static bool AllGroups(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
+        {
+            foreach (var node in nodes)
+            {
+                var group = node.Tag as GroupItem;
+                if (group == null)
+                    return false;
+            }
+            return true;
+        }
+
+        static bool AllBaseGroups(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
+        {
+            foreach (var node in nodes)
+            {
+                var group = node.Tag as BaseLayerGroupItem;
+                if (group == null)
+                    return false;
+            }
+            return true;
+        }
+
         private void OnMultipleItemsSelected(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
         {
-            //Disable all toolbar buttons
-            btnGRPRemoveLayer.Enabled = 
-            btnMoveLayerOrGroupUp.Enabled = 
+            bool bAllLayers = AllLayers(nodes);
+            bool bAllGroups = AllGroups(nodes);
+            bool bAllBaseLayers = AllBaseLayers(nodes);
+            bool bAllBaseGroups = AllBaseGroups(nodes);
+
+            btnAddGroup.Enabled = false;
+            btnRemoveGroup.Enabled = bAllGroups;
+            btnConvertLayerGroupToBaseGroup.Enabled = bAllGroups;
+            btnGRPAddLayer.Enabled = false;
+            btnGRPRemoveLayer.Enabled = bAllLayers;
+            btnMoveLayerOrGroupUp.Enabled = false;
             btnMoveLayerOrGroupDown.Enabled = false;
 
-            btnDLMoveLayerBottom.Enabled =
-            btnDLMoveLayerDown.Enabled =
-            btnDLMoveLayerTop.Enabled =
-            btnDLMoveLayerUp.Enabled =
+            btnDLMoveLayerBottom.Enabled = false;
+            btnDLMoveLayerDown.Enabled = false;
+            btnDLMoveLayerTop.Enabled = false;
+            btnDLMoveLayerUp.Enabled = false;
             btnDLRemoveLayer.Enabled = false;
 
-            btnAddBaseLayer.Enabled = 
-            btnRemoveBaseLayerGroup.Enabled = 
-            btnBaseLayerGroupToRegular.Enabled = false;
+            btnNewBaseLayerGroup.Enabled = false;
+            btnAddBaseLayer.Enabled = false;
+            btnRemoveBaseLayer.Enabled = bAllBaseLayers;
+            btnRemoveBaseLayerGroup.Enabled = bAllBaseGroups;
+            btnBaseLayerGroupToRegular.Enabled = bAllBaseGroups;
 
             propertiesPanel.Controls.Clear();
 
@@ -550,11 +609,27 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnRemoveGroup_Click(object sender, EventArgs e)
         {
-            var group = GetSelectedLayerGroupItem() as GroupItem;
-            if (group != null)
+            var remove = new List<GroupItem>();
+            foreach (var item in GetSelectedLayerGroupItems())
             {
-                RemoveSelectedLayerGroupItem(group);
+                var group = item as GroupItem;
+                if (group != null)
+                {
+                    remove.Add(group);
+                }
             }
+            RemoveSelectedLayerGroupItems(remove);
+        }
+
+        private void RemoveSelectedLayerGroupItems(IEnumerable<GroupItem> groups)
+        {
+            foreach (var group in groups)
+            {
+                _map.RemoveLayerGroupAndChildLayers(group.Tag.Name);
+            }
+            propertiesPanel.Controls.Clear();
+            _grpLayerModel.Invalidate();
+            _doLayerModel.Invalidate();
         }
 
         private void RemoveSelectedLayerGroupItem(GroupItem group)
@@ -583,10 +658,13 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnGRPRemoveLayer_Click(object sender, EventArgs e)
         {
-            var layer = GetSelectedLayerGroupItem() as LayerItem;
-            if (layer != null)
+            foreach (var item in GetSelectedLayerGroupItems())
             {
-                RemoveSelectedLayerGroupItem(layer);
+                var layer = item as LayerItem;
+                if (layer != null)
+                {
+                    RemoveSelectedLayerGroupItem(layer);
+                }
             }
         }
 
@@ -599,39 +677,47 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnConvertLayerGroupToBaseGroup_Click(object sender, EventArgs e)
         {
-            var group = GetSelectedLayerGroupItem() as GroupItem;
-            if (group != null)
+            List<string> messages = new List<string>();
+            foreach (var item in GetSelectedLayerGroupItems())
             {
-                var layGroup = group.Tag;
-                var layers = _map.GetLayersForGroup(layGroup.Name);
-
-                if (_map.BaseMap == null)
-                    _map.InitBaseMap();
-
-                int counter = 1;
-                string groupName = layGroup.Name;
-                var blg = _map.BaseMap.GetGroup(groupName);
-                while (blg != null)
+                var group = item as GroupItem;
+                if (group != null)
                 {
-                    groupName = layGroup.Name + " (" + counter + ")";
-                    counter++;
+                    var layGroup = group.Tag;
+                    var layers = _map.GetLayersForGroup(layGroup.Name);
 
-                    blg = _map.BaseMap.GetGroup(groupName);
+                    if (_map.BaseMap == null)
+                        _map.InitBaseMap();
+
+                    int counter = 1;
+                    string groupName = layGroup.Name;
+                    var blg = _map.BaseMap.GetGroup(groupName);
+                    while (blg != null)
+                    {
+                        groupName = layGroup.Name + " (" + counter + ")";
+                        counter++;
+
+                        blg = _map.BaseMap.GetGroup(groupName);
+                    }
+                    blg = _map.BaseMap.AddBaseLayerGroup(groupName);
+                    blg.LegendLabel = layGroup.LegendLabel;
+
+                    foreach (var layer in layers)
+                    {
+                        var bl = blg.AddLayer(layer.Name, layer.ResourceId);
+                        bl.LegendLabel = layer.LegendLabel;
+                        bl.Selectable = layer.Selectable;
+                        bl.ShowInLegend = layer.ShowInLegend;
+                        bl.ExpandInLegend = layer.ExpandInLegend;
+                    }
+
+                    _map.RemoveLayerGroupAndChildLayers(layGroup.Name);
+                    messages.Add(string.Format(Strings.LayerGroupConvertedToBaseLayerGroup, layGroup.Name, groupName));
                 }
-                blg = _map.BaseMap.AddBaseLayerGroup(groupName);
-                blg.LegendLabel = layGroup.LegendLabel;
-
-                foreach (var layer in layers)
-                {
-                    var bl = blg.AddLayer(layer.Name, layer.ResourceId);
-                    bl.LegendLabel = layer.LegendLabel;
-                    bl.Selectable = layer.Selectable;
-                    bl.ShowInLegend = layer.ShowInLegend;
-                    bl.ExpandInLegend = layer.ExpandInLegend;
-                }
-
-                _map.RemoveLayerGroupAndChildLayers(layGroup.Name);
-                MessageBox.Show(string.Format(Strings.LayerGroupConvertedToBaseLayerGroup, layGroup.Name, groupName));
+            }
+            if (messages.Count > 0)
+            {
+                MessageBox.Show(string.Join(Environment.NewLine, messages.ToArray()));
                 this.RefreshModels();
                 tabControl1.SelectedIndex = 2; //Switch to Base Layer Groups
             }
@@ -639,38 +725,46 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnBaseGroupToRegular_Click(object sender, EventArgs e)
         {
-            var group = GetSelectedTiledLayerItem() as BaseLayerGroupItem;
-            if (group != null)
+            var messages = new List<string>();
+            foreach (var item in GetSelectedTiledLayerItems())
             {
-                int counter = 0;
-                string groupName = group.Tag.Name;
-                while (_map.GetGroupByName(groupName) != null)
+                var group = item as BaseLayerGroupItem;
+                if (group != null)
                 {
-                    counter++;
-                    groupName = group.Tag.Name + "(" + counter + ")";
-                }
-                _map.AddGroup(groupName);
-                int layerCount = _map.GetLayerCount();
-                foreach (var layer in group.Tag.BaseMapLayer)
-                {
-                    //We an avoid a duplicate name check because the Map Definition should already ensure uniqueness
-                    //among existing layers
-                    var dlayer = _map.AddLayer(groupName, layer.Name, layer.ResourceId);
-                    dlayer.ExpandInLegend = layer.ExpandInLegend;
-                    dlayer.LegendLabel = layer.LegendLabel;
-                    dlayer.Selectable = layer.Selectable;
-                    dlayer.ShowInLegend = layer.ShowInLegend;
+                    int counter = 0;
+                    string groupName = group.Tag.Name;
+                    while (_map.GetGroupByName(groupName) != null)
+                    {
+                        counter++;
+                        groupName = group.Tag.Name + "(" + counter + ")";
+                    }
+                    _map.AddGroup(groupName);
+                    int layerCount = _map.GetLayerCount();
+                    foreach (var layer in group.Tag.BaseMapLayer)
+                    {
+                        //We an avoid a duplicate name check because the Map Definition should already ensure uniqueness
+                        //among existing layers
+                        var dlayer = _map.AddLayer(groupName, layer.Name, layer.ResourceId);
+                        dlayer.ExpandInLegend = layer.ExpandInLegend;
+                        dlayer.LegendLabel = layer.LegendLabel;
+                        dlayer.Selectable = layer.Selectable;
+                        dlayer.ShowInLegend = layer.ShowInLegend;
 
-                    //HACK-ish, but we need to relocate this
-                    _map.RemoveLayer(dlayer);
+                        //HACK-ish, but we need to relocate this
+                        _map.RemoveLayer(dlayer);
 
-                    //Add to bottom
-                    _map.InsertLayer(layerCount, dlayer);
-                    layerCount++;
+                        //Add to bottom
+                        _map.InsertLayer(layerCount, dlayer);
+                        layerCount++;
+                    }
+                    //Detach the base layer group
+                    _map.RemoveBaseLayerGroup(group.Tag, true);
+                    messages.Add(string.Format(Strings.BaseLayerGroupConvertedToLayerGroup, group.Tag.Name, groupName));
                 }
-                //Detach the base layer group
-                _map.RemoveBaseLayerGroup(group.Tag, true);
-                MessageBox.Show(string.Format(Strings.BaseLayerGroupConvertedToLayerGroup, group.Tag.Name, groupName));
+            }
+            if (messages.Count > 0)
+            {
+                MessageBox.Show(string.Join(Environment.NewLine, messages.ToArray()));
                 this.RefreshModels();
                 tabControl1.SelectedIndex = 0; //Switch to Layer Groups
             }
@@ -935,11 +1029,15 @@ namespace Maestro.Editors.MapDefinition
             return null;
         }
 
-        private void btnNewBaseLayerGroup_Click(object sender, EventArgs e)
+        private IEnumerable<object> GetSelectedLayerGroupItems()
         {
-            _map.InitBaseMap();
-            var grp = _map.BaseMap.AddBaseLayerGroup(GenerateBaseGroupName(_map));
-            _tiledLayerModel.Invalidate();
+            var result = new List<object>();
+            var nodes = trvLayersGroup.SelectedNodes;
+            if (nodes != null)
+            {
+                result.AddRange(nodes.Select(x => x.Tag));
+            }
+            return result;
         }
 
         private object GetSelectedTiledLayerItem()
@@ -950,13 +1048,46 @@ namespace Maestro.Editors.MapDefinition
                 return null;
         }
 
+        private IEnumerable<object> GetSelectedTiledLayerItems()
+        {
+            var result = new List<object>();
+            var nodes = trvBaseLayers.SelectedNodes;
+            if (nodes != null)
+            {
+                result.AddRange(nodes.Select(x => x.Tag));
+            }
+            return result;
+        }
+
+        private void btnNewBaseLayerGroup_Click(object sender, EventArgs e)
+        {
+            _map.InitBaseMap();
+            var grp = _map.BaseMap.AddBaseLayerGroup(GenerateBaseGroupName(_map));
+            _tiledLayerModel.Invalidate();
+        }
+
         private void btnRemoveBaseLayerGroup_Click(object sender, EventArgs e)
         {
-            var group = GetSelectedTiledLayerItem() as BaseLayerGroupItem;
-            if (group != null)
+            var remove = new List<BaseLayerGroupItem>();
+            foreach (var item in GetSelectedTiledLayerItems())
             {
-                RemoveSelectedTiledLayerItem(group);
+                var group = item as BaseLayerGroupItem;
+                if (group != null)
+                {
+                    remove.Add(group);
+                }
             }
+            RemoveSelectedTiledLayerItems(remove);
+        }
+
+        private void RemoveSelectedTiledLayerItems(IEnumerable<BaseLayerGroupItem> groups)
+        {
+            foreach (var group in groups)
+            {
+                _map.RemoveBaseLayerGroup(group.Tag, true);
+            }
+            propertiesPanel.Controls.Clear();
+            _tiledLayerModel.Invalidate();
         }
 
         private void RemoveSelectedTiledLayerItem(BaseLayerGroupItem group)
@@ -1058,10 +1189,13 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnRemoveBaseLayer_Click(object sender, EventArgs e)
         {
-            var layer = GetSelectedTiledLayerItem() as BaseLayerItem;
-            if (layer != null)
+            foreach (var item in GetSelectedTiledLayerItems())
             {
-                RemoveSelectedTiledLayerItem(layer);
+                var layer = item as BaseLayerItem;
+                if (layer != null)
+                {
+                    RemoveSelectedTiledLayerItem(layer);
+                }
             }
         }
 
