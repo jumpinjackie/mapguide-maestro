@@ -74,7 +74,8 @@ namespace Maestro.AddIn.Scripting.UI
 
         private bool Apply<T>(string key, T newValue)
         {
-            if (Props.Get(key).Equals((object)newValue))
+            //2nd condition is for booleans
+            if (Props.Get(key).Equals((object)newValue) || Props.Get(key).ToString().Equals(newValue.ToString()))
                 return false;
 
             Props.Set(key, newValue);
