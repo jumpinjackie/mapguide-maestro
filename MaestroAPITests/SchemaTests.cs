@@ -28,9 +28,16 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace MaestroAPITests
 {
-    [TestFixture(Ignore = TestControl.IgnoreSchemaTests)]
+    [TestFixture]
     public class SchemaTests
     {
+        [TestFixtureSetUp]
+        public void Setup()
+        {
+            if (TestControl.IgnoreSchemaTests)
+                Assert.Ignore("Skipping SchemaTests because TestControl.IgnoreSchemaTests = true");
+        }
+
         //These tests are to verify that we can read FDO XML configuration and schema documents without problems
         
         [Test]

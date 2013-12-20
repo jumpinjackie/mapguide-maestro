@@ -39,9 +39,16 @@ namespace MaestroAPITests
     // 2 | snafu  | (null)
     // 2 | (null) | (null)
 
-    [TestFixture(Ignore = TestControl.IgnoreExpressionTests)]
+    [TestFixture]
     public class ExpressionTests
     {
+        [TestFixtureSetUp]
+        public void Setup()
+        {
+            if (TestControl.IgnoreExpressionTests)
+                Assert.Ignore("Skipping ExpressionTests because TestControl.IgnoreExpressionTests = true");
+        }
+
         [Test]
         public void TestMismatch()
         {

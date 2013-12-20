@@ -25,9 +25,16 @@ using OSGeo.MapGuide.MaestroAPI.Internal;
 
 namespace MaestroAPITests
 {
-    [TestFixture(Ignore = TestControl.IgnoreMiscTests)]
+    [TestFixture]
     public class MiscTests
     {
+        [TestFixtureSetUp]
+        public void Setup()
+        {
+            if (TestControl.IgnoreMiscTests)
+                Assert.Ignore("Skipping MiscTests because TestControl.IgnoreMiscTests = true");
+        }
+
         [Test]
         public void TestParse3dWkt()
         {

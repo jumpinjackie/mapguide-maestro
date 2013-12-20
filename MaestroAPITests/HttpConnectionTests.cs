@@ -31,9 +31,16 @@ using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 
 namespace MaestroAPITests
 {
-    [TestFixture(Ignore = TestControl.IgnoreHttpConnectionTests)]
+    [TestFixture]
     public class HttpConnectionTests : ConnectionTestBase
     {
+        [TestFixtureSetUp]
+        public void Setup()
+        {
+            if (TestControl.IgnoreHttpConnectionTests)
+                Assert.Ignore("Skipping HttpConnectionTests because TestControl.IgnoreHttpConnectionTests = true");
+        }
+
         //[Test]
         public override void TestEncryptedFeatureSourceCredentials()
         {

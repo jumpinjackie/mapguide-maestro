@@ -29,9 +29,16 @@ using System.IO;
 
 namespace MaestroAPITests
 {
-    [TestFixture(Ignore = TestControl.IgnoreHttpSiteTests)]
+    [TestFixture]
     public class HttpSiteTests
     {
+        [TestFixtureSetUp]
+        public void Setup()
+        {
+            if (TestControl.IgnoreHttpSiteTests)
+                Assert.Ignore("Skipping HttpSiteTests because TestControl.IgnoreHttpSiteTests = true");
+        }
+
         private IServerConnection CreateTestConnection()
         {
             return ConnectionUtil.CreateTestHttpConnection();

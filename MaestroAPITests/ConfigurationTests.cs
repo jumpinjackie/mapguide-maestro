@@ -29,9 +29,16 @@ using System.Drawing;
 
 namespace MaestroAPITests
 {
-    [TestFixture(Ignore = TestControl.IgnoreConfigurationTests)]
+    [TestFixture]
     public class ConfigurationTests
     {
+        [TestFixtureSetUp]
+        public void Setup()
+        {
+            if (TestControl.IgnoreConfigurationTests)
+                Assert.Ignore("Skipping ConfigurationTests because TestControl.IgnoreConfigurationTests = true");
+        }
+
         [Test]
         public void TestOdbcLoad()
         {

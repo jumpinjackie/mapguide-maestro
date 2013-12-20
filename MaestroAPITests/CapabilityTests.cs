@@ -29,9 +29,16 @@ using OSGeo.MapGuide.MaestroAPI.Exceptions;
 
 namespace MaestroAPITests
 {
-    [TestFixture(Ignore = TestControl.IgnoreCapabilityTests)]
+    [TestFixture]
     public class CapabilityTests
     {
+        [TestFixtureSetUp]
+        public void Setup()
+        {
+            if (TestControl.IgnoreCapabilityTests)
+                Assert.Ignore("Skipping CapabilityTests because TestControl.IgnoreCapabilityTests = true");
+        }
+
         private Mockery _mocks;
 
         [Test]

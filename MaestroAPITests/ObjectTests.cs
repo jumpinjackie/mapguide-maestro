@@ -32,9 +32,16 @@ namespace MaestroAPITests
     /// 
     /// Also tests for various classes (not belonging to any particular group) reside here
     /// </summary>
-    [TestFixture(Ignore = TestControl.IgnoreObjectTests)]
+    [TestFixture]
     public class ObjectTests
     {
+        [TestFixtureSetUp]
+        public void Setup()
+        {
+            if (TestControl.IgnoreObjectTests)
+                Assert.Ignore("Skipping ObjectTests because TestControl.IgnoreObjectTests = true");
+        }
+
         [Test]
         public void TestConnectionString()
         {

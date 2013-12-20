@@ -36,9 +36,16 @@ using System.Xml;
 
 namespace MaestroAPITests
 {
-    [TestFixture(Ignore = TestControl.IgnoreValidationTests)]
+    [TestFixture]
     public class ValidationTests
     {
+        [TestFixtureSetUp]
+        public void Setup()
+        {
+            if (TestControl.IgnoreValidationTests)
+                Assert.Ignore("Skipping ValidationTests because TestControl.IgnoreValidationTests = true");
+        }
+
         [Test]
         public void TestUniqueIssues()
         {

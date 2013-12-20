@@ -24,6 +24,7 @@ using System.Text;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using MaestroAPITests;
 
 namespace MaestroAPITestRunner
 {
@@ -63,7 +64,7 @@ COPY /Y "$(SolutionDir)..\Maestro.AddIn.Local\*.dll" "$(ProjectDir)$(OutDir)"
                 runnerArgs[0] = args[0];
             else
                 runnerArgs[0] = "MaestroAPITests.dll";
-
+            
             NUnit.ConsoleRunner.Runner.Main(runnerArgs);
         }
     }

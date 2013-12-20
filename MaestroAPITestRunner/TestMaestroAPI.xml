@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TestConfiguration>
+  <TestSettings>
+    <LocalNativeConfigFile>MGOS22\webconfig.ini</LocalNativeConfigFile>
+    <LocalNativeUsername>Administrator</LocalNativeUsername>
+    <LocalNativePassword>admin</LocalNativePassword>
+    <LocalConfigFile>Platform.ini</LocalConfigFile>
+    <HttpUrl>http://localhost/mapguide/mapagent/mapagent.fcgi</HttpUrl>
+    <HttpUsername>Administrator</HttpUsername>
+    <HttpPassword>admin</HttpPassword>
+    <GeoRestUrl>http://localhost:99/</GeoRestUrl>
+    <GeoRestConfig>UserTestData\GeoRestConfig.xml</GeoRestConfig>
+  </TestSettings>
+  <TestControl>
+    <IgnoreConfigurationTests>false</IgnoreConfigurationTests>
+    <IgnoreCapabilityTests>false</IgnoreCapabilityTests>
+    <IgnoreExpressionTests>false</IgnoreExpressionTests>
+    <IgnoreFeatureReaderTests>false</IgnoreFeatureReaderTests>
+    <IgnoreHttpConnectionTests>false</IgnoreHttpConnectionTests>
+    <IgnoreHttpSiteTests>false</IgnoreHttpSiteTests>
+    <IgnoreObjectTests>false</IgnoreObjectTests>
+    <IgnoreResourceTests>false</IgnoreResourceTests>
+    <IgnoreHttpRuntimeMapTests>false</IgnoreHttpRuntimeMapTests>
+    <IgnoreLocalRuntimeMapTests>false</IgnoreLocalRuntimeMapTests>
+    <IgnoreLocalNativeRuntimeMapTests>true</IgnoreLocalNativeRuntimeMapTests>
+    <IgnoreLocalNativePerformanceTests>true</IgnoreLocalNativePerformanceTests>
+    <IgnoreLocalNativeFeatureTests>true</IgnoreLocalNativeFeatureTests>
+    <IgnoreGeoRestTests>true</IgnoreGeoRestTests>
+    <IgnoreLocalFeatureTests>false</IgnoreLocalFeatureTests>
+    <IgnoreSchemaTests>false</IgnoreSchemaTests>
+    <IgnoreSerializationTests>false</IgnoreSerializationTests>
+    <IgnoreValidationTests>false</IgnoreValidationTests>
+    <IgnoreMiscTests>false</IgnoreMiscTests>
+  </TestControl>
+</TestConfiguration>

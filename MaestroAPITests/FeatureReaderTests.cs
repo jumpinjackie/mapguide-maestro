@@ -28,9 +28,16 @@ using OSGeo.MapGuide.MaestroAPI.Http;
 
 namespace MaestroAPITests
 {
-    [TestFixture(Ignore = TestControl.IgnoreFeatureReaderTests)]
+    [TestFixture]
     public class FeatureReaderTests
     {
+        [TestFixtureSetUp]
+        public void Setup()
+        {
+            if (TestControl.IgnoreFeatureReaderTests)
+                Assert.Ignore("Skipping FeatureReaderTests because TestControl.IgnoreFeatureReaderTests = true");
+        }
+
         [Test]
         public void TestXmlFeatureNullValues()
         {

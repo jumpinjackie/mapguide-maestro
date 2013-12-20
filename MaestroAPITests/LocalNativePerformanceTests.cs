@@ -25,9 +25,16 @@ using System.Diagnostics;
 
 namespace MaestroAPITests
 {
-    [TestFixture(Ignore = TestControl.IgnoreLocalNativePerformanceTests)]
+    [TestFixture]
     public class LocalNativePerformanceTests
     {
+        [TestFixtureSetUp]
+        public void Setup()
+        {
+            if (TestControl.IgnoreLocalNativePerformanceTests)
+                Assert.Ignore("Skipping LocalNativePerformanceTests because TestControl.IgnoreLocalNativePerformanceTests = true");
+        }
+
         [Test]
         public void TestCase1914()
         {

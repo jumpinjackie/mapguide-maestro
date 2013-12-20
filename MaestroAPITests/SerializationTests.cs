@@ -27,9 +27,16 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace MaestroAPITests
 {
-    [TestFixture(Ignore = TestControl.IgnoreSerializationTests)]
+    [TestFixture]
     public class SerializationTests
     {
+        [TestFixtureSetUp]
+        public void Setup()
+        {
+            if (TestControl.IgnoreSerializationTests)
+                Assert.Ignore("Skipping SerializationTests because TestControl.IgnoreSerializationTests = true");
+        }
+
         [Test]
         public void TestPreMg22FdoCapabilities()
         {

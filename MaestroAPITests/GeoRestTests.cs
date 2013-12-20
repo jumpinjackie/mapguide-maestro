@@ -28,9 +28,16 @@ using OSGeo.MapGuide.MaestroAPI.Internal;
 
 namespace MaestroAPITests
 {
-    [TestFixture(Ignore = TestControl.IgnoreGeoRestTests)]
+    [TestFixture]
     public class GeoRestTests
     {
+        [TestFixtureSetUp]
+        public void Setup()
+        {
+            if (TestControl.IgnoreGeoRestTests)
+                Assert.Ignore("Skipping GeoRestTests because TestControl.IgnoreGeoRestTests = true");
+        }
+
         [Test]
         public void TestInsert()
         {

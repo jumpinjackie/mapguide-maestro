@@ -35,9 +35,16 @@ using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 
 namespace MaestroAPITests
 {
-    [TestFixture(Ignore = TestControl.IgnoreLocalNativeFeatureTests)]
+    [TestFixture]
     public class LocalConnectionTests : ConnectionTestBase
     {
+        [TestFixtureSetUp]
+        public void Setup()
+        {
+            if (TestControl.IgnoreLocalFeatureTests)
+                Assert.Ignore("Skipping LocalConnectionTests because TestControl.IgnoreLocalFeatureTests = true");
+        }
+
         protected override IServerConnection CreateTestConnection()
         {
             return ConnectionUtil.CreateTestLocalConnection();

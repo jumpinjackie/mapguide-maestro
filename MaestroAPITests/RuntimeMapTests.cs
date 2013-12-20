@@ -54,6 +54,9 @@ namespace MaestroAPITests
         {
             if (!_registered)
             {
+                TestEnvironment.Initialize("TestMaestroAPI.xml");
+                TestEnvironment.PrintSummary();
+
                 ResourceValidatorLoader.LoadStockValidators();
                 ModelSetup.Initialize();
                 _registered = true;
@@ -70,17 +73,31 @@ namespace MaestroAPITests
     {
         protected IServerConnection _conn;
 
+        protected virtual bool ShouldIgnore(out string reason)
+        {
+            reason = string.Empty;
+            return false;
+        }
+
         [TestFixtureSetUp]
         public void TestFixtureSetup()
         {
-            try
+            string reason;
+            if (this.ShouldIgnore(out reason))
             {
-                _conn = CreateTestConnection();
-                SetupTestData();
+                Assert.Ignore(reason);
             }
-            catch (Exception)
+            else
             {
-                throw;
+                try
+                {
+                    _conn = CreateTestConnection();
+                    SetupTestData();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
         }
 
@@ -1180,9 +1197,18 @@ namespace MaestroAPITests
         }
     }
 
-    [TestFixture(Ignore = TestControl.IgnoreHttpRuntimeMapTests)]
+    [TestFixture]
     public class HttpRuntimeMapTests : RuntimeMapTests
     {
+        protected override bool ShouldIgnore(out string reason)
+        {
+            reason = string.Empty;
+            if (TestControl.IgnoreHttpRuntimeMapTests)
+                reason = "Skipping HttpRuntimeMapTests because TestControl.IgnoreHttpRuntimeMapTests = true";
+
+            return TestControl.IgnoreHttpRuntimeMapTests;
+        }
+
         protected override IServerConnection CreateTestConnection()
         {
             return ConnectionUtil.CreateTestHttpConnection();
@@ -1566,9 +1592,18 @@ namespace MaestroAPITests
         }
     }
 
-    [TestFixture(Ignore = TestControl.IgnoreLocalNativeRuntimeMapTests)]
+    [TestFixture]
     public class LocalNativeRuntimeMapTests : RuntimeMapTests
     {
+        protected override bool ShouldIgnore(out string reason)
+        {
+            reason = string.Empty;
+            if (TestControl.IgnoreLocalNativeRuntimeMapTests)
+                reason = "Skipping LocalNativeRuntimeMapTests because TestControl.IgnoreLocalNativeRuntimeMapTests = true";
+
+            return TestControl.IgnoreLocalNativeRuntimeMapTests;
+        }
+
         protected override IServerConnection CreateTestConnection()
         {
             return ConnectionUtil.CreateTestLocalNativeConnection();
@@ -1658,9 +1693,18 @@ namespace MaestroAPITests
         }
     }
 
-    [TestFixture(Ignore = TestControl.IgnoreLocalRuntimeMapTests)]
+    [TestFixture]
     public class LocalRuntimeMapTests : RuntimeMapTests
     {
+        protected override bool ShouldIgnore(out string reason)
+        {
+            reason = string.Empty;
+            if (TestControl.IgnoreLocalRuntimeMapTests)
+                reason = "Skipping LocalRuntimeMapTests because TestControl.IgnoreLocalRuntimeMapTests = true";
+
+            return TestControl.IgnoreLocalRuntimeMapTests;
+        }
+
         protected override IServerConnection CreateTestConnection()
         {
             return ConnectionUtil.CreateTestLocalConnection();
