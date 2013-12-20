@@ -92,6 +92,33 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IMapLayer source);
 
         /// <summary>
+        /// Creates a new runtime map layer from the specified Layer Definition
+        /// </summary>
+        /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
+        /// <param name="ldf">The layer definition</param>
+        /// <param name="suppressErrors">If false, this method will throw an exception if the layer cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</param>
+        /// <returns></returns>
+        RuntimeMapLayer CreateMapLayer(RuntimeMap parent, ILayerDefinition ldf, bool suppressErrors);
+
+        /// <summary>
+        /// Creates a new runtime map layer from the specified <see cref="T:OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer"/> instance
+        /// </summary>
+        /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
+        /// <param name="source">The map definition layer</param>
+        /// <param name="suppressErrors">If false, this method will throw an exception if the layer cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</param>
+        /// <returns></returns>
+        RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IBaseMapLayer source, bool suppressErrors);
+
+        /// <summary>
+        /// Creates a new runtime map layer from the specified <see cref="T:OSGeo.MapGuide.ObjectModels.MapDefinition.IMapLayer"/> instance
+        /// </summary>
+        /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
+        /// <param name="source">The map definition layer</param>
+        /// <param name="suppressErrors">If false, this method will throw an exception if the layer cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</param>
+        /// <returns></returns>
+        RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IMapLayer source, bool suppressErrors);
+
+        /// <summary>
         /// Creates a new runtime map instance from an existing map definition.
         /// </summary>
         /// <remarks>
@@ -118,6 +145,34 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         RuntimeMap CreateMap(IMapDefinition mapDef);
 
         /// <summary>
+        /// Creates a new runtime map instance from an existing map definition.
+        /// </summary>
+        /// <remarks>
+        /// Calculation of meters-per-unit may differ between implementations. This may have an adverse
+        /// effect on things such as rendering and measuring depending on the underlying implementation
+        /// 
+        /// If you are certain of the meters-per-unit value required, use the overloaded method that 
+        /// accepts a metersPerUnit parameter.
+        /// </remarks>
+        /// <example>
+        /// This example shows how to create a new runtime map instance
+        /// <code>
+        /// <![CDATA[
+        /// IServerConnection conn;
+        /// ...
+        /// IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+        /// IMapDefinition mapDef = (IMapDefinition)conn.ResourceService.GetResource("Library://Path/To/My.MapDefinition");
+        /// bool suppressErrors = true;
+        /// RuntimeMap map = mappingSvc.CreateMap(mapDef, suppressErrors);
+        /// ]]>
+        /// </code>
+        /// </example>
+        /// <param name="mapDef"></param>
+        /// <param name="suppressErrors">If false, this method will throw an exception on the first layer that cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</param>
+        /// <returns></returns>
+        RuntimeMap CreateMap(IMapDefinition mapDef, bool suppressErrors);
+
+        /// <summary>
         /// Creates a new runtime map instance from an existing map definition. Meters per unit
         /// is calculated from the Coordinate System WKT of the map definition.
         /// </summary>
@@ -138,6 +193,30 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="metersPerUnit"></param>
         /// <returns></returns>
         RuntimeMap CreateMap(IMapDefinition mapDef, double metersPerUnit);
+
+        /// <summary>
+        /// Creates a new runtime map instance from an existing map definition. Meters per unit
+        /// is calculated from the Coordinate System WKT of the map definition.
+        /// </summary>
+        /// <example>
+        /// This example shows how to create a new runtime map instance
+        /// <code>
+        /// <![CDATA[
+        /// IServerConnection conn;
+        /// ...
+        /// IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+        /// IMapDefinition mapDef = (IMapDefinition)conn.ResourceService.GetResource("Library://Path/To/My.MapDefinition");
+        /// double metersPerUnit = 1.0;
+        /// bool suppressErrors = true;
+        /// RuntimeMap map = mappingSvc.CreateMap(mapDef, metersPerUnit, suppressErrors);
+        /// ]]>
+        /// </code>
+        /// </example>
+        /// <param name="mapDef"></param>
+        /// <param name="metersPerUnit"></param>
+        /// <param name="suppressErrors">If false, this method will throw an exception on the first layer that cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</param>
+        /// <returns></returns>
+        RuntimeMap CreateMap(IMapDefinition mapDef, double metersPerUnit, bool suppressErrors);
 
         /// <summary>
         /// Creates a new runtime map instance from an existing map definition. Meters per unit
@@ -170,6 +249,38 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId);
 
         /// <summary>
+        /// Creates a new runtime map instance from an existing map definition. Meters per unit
+        /// is calculated from the Coordinate System WKT of the map definition.
+        /// </summary>
+        /// <remarks>
+        /// Calculation of meters-per-unit may differ between implementations. This may have an adverse
+        /// effect on things such as rendering and measuring depending on the underlying implementation
+        /// 
+        /// If you are certain of the meters-per-unit value required, use the overloaded method that 
+        /// accepts a metersPerUnit parameter.
+        /// </remarks>
+        /// <example>
+        /// This example shows how to create a new runtime map instance
+        /// <code>
+        /// <![CDATA[
+        /// IServerConnection conn;
+        /// ...
+        /// IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+        /// string mapName = "MyMap";
+        /// string rtMapId = "Session:" + conn.SessionID + "//" + mapName + ".Map";
+        /// string baseMapDefId = "Library://Path/To/My.MapDefinition";
+        /// bool suppressErrors = true;
+        /// RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, suppressErrors);
+        /// ]]>
+        /// </code>
+        /// </example>
+        /// <param name="runtimeMapResourceId"></param>
+        /// <param name="baseMapDefinitionId"></param>
+        /// <param name="suppressErrors">If false, this method will throw an exception on the first layer that cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</param>
+        /// <returns></returns>
+        RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId, bool suppressErrors);
+
+        /// <summary>
         /// Creates a new runtime map instance from an existing map definition
         /// </summary>
         /// <example>
@@ -183,7 +294,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// string rtMapId = "Session:" + conn.SessionID + "//" + mapName + ".Map";
         /// string baseMapDefId = "Library://Path/To/My.MapDefinition";
         /// double metersPerUnit = 1.0;
-        /// RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId);
+        /// RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit);
         /// ]]>
         /// </code>
         /// </example>
@@ -192,6 +303,32 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="metersPerUnit"></param>
         /// <returns></returns>
         RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId, double metersPerUnit);
+
+        /// <summary>
+        /// Creates a new runtime map instance from an existing map definition
+        /// </summary>
+        /// <example>
+        /// This example shows how to create a new runtime map instance
+        /// <code>
+        /// <![CDATA[
+        /// IServerConnection conn;
+        /// ...
+        /// IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+        /// string mapName = "MyMap";
+        /// string rtMapId = "Session:" + conn.SessionID + "//" + mapName + ".Map";
+        /// string baseMapDefId = "Library://Path/To/My.MapDefinition";
+        /// double metersPerUnit = 1.0;
+        /// bool suppressErrors = true;
+        /// RuntimeMap map = mappingSvc.CreateMap(rtMapId, baseMapDefId, metersPerUnit, suppressErrors);
+        /// ]]>
+        /// </code>
+        /// </example>
+        /// <param name="runtimeMapResourceId"></param>
+        /// <param name="baseMapDefinitionId"></param>
+        /// <param name="metersPerUnit"></param>
+        /// <param name="suppressErrors">If false, this method will throw an exception on the first layer that cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</param>
+        /// <returns></returns>
+        RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId, double metersPerUnit, bool suppressErrors);
 
         /// <summary>
         /// Creates a new runtime map instance from an existing map definition. Meters per unit
@@ -224,6 +361,38 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf);
 
         /// <summary>
+        /// Creates a new runtime map instance from an existing map definition. Meters per unit
+        /// is calculated from the Coordinate System WKT of the map definition.
+        /// </summary>
+        /// <remarks>
+        /// Calculation of meters-per-unit may differ between implementations. This may have an adverse
+        /// effect on things such as rendering and measuring depending on the underlying implementation
+        /// 
+        /// If you are certain of the meters-per-unit value required, use the overloaded method that 
+        /// accepts a metersPerUnit parameter.
+        /// </remarks>
+        /// <example>
+        /// This example shows how to create a new runtime map instance
+        /// <code>
+        /// <![CDATA[
+        /// IServerConnection conn;
+        /// ...
+        /// IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+        /// string mapName = "MyMap";
+        /// string rtMapId = "Session:" + conn.SessionID + "//" + mapName + ".Map";
+        /// IMapDefinition mdf = (IMapDefinition)conn.ResourceService.GetResource("Library://Path/To/My.MapDefinition");
+        /// bool suppressErrors = true;
+        /// RuntimeMap map = mappingSvc.CreateMap(rtMapId, mdf, suppressErrors);
+        /// ]]>
+        /// </code>
+        /// </example>
+        /// <param name="runtimeMapResourceId"></param>
+        /// <param name="mdf"></param>
+        /// <param name="suppressErrors">If false, this method will throw an exception on the first layer that cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</param>
+        /// <returns></returns>
+        RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, bool suppressErrors);
+
+        /// <summary>
         /// Creates a new runtime map instance from an existing map definition
         /// </summary>
         /// <example>
@@ -246,6 +415,32 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="metersPerUnit"></param>
         /// <returns></returns>
         RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, double metersPerUnit);
+
+        /// <summary>
+        /// Creates a new runtime map instance from an existing map definition
+        /// </summary>
+        /// <example>
+        /// This example shows how to create a new runtime map instance
+        /// <code>
+        /// <![CDATA[
+        /// IServerConnection conn;
+        /// ...
+        /// IMappingService mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+        /// double metersPerUnit = 1.0;
+        /// string mapName = "MyMap";
+        /// string rtMapId = "Session:" + conn.SessionID + "//" + mapName + ".Map";
+        /// IMapDefinition mdf = (IMapDefinition)conn.ResourceService.GetResource("Library://Path/To/My.MapDefinition");
+        /// bool suppressErrors = true;
+        /// RuntimeMap map = mappingSvc.CreateMap(rtMapId, mdf, metersPerUnit, suppressErrors);
+        /// ]]>
+        /// </code>
+        /// </example>
+        /// <param name="runtimeMapResourceId"></param>
+        /// <param name="mdf"></param>
+        /// <param name="metersPerUnit"></param>
+        /// <param name="suppressErrors">If false, this method will throw an exception on the first layer that cannot be initialized. Otherwise, any exceptions that occur during layer initialization are suppressed</param>
+        /// <returns></returns>
+        RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, double metersPerUnit, bool suppressErrors);
 
         /// <summary>
         /// Opens an existing runtime map instance

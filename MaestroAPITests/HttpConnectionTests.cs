@@ -76,6 +76,18 @@ namespace MaestroAPITests
             base.TestSchemaMapping();
         }
 
+        [Test]
+        public override void TestCreateRuntimeMapWithInvalidLayersErrorsDisabled()
+        {
+            base.TestCreateRuntimeMapWithInvalidLayersErrorsDisabled();
+        }
+
+        [Test]
+        public override void TestCreateRuntimeMapWithInvalidLayersErrorsEnabled()
+        {
+            base.TestCreateRuntimeMapWithInvalidLayersErrorsEnabled();
+        }
+
         protected override IServerConnection CreateTestConnection()
         {
             return ConnectionUtil.CreateTestHttpConnection();

@@ -25,6 +25,8 @@ using OSGeo.MapGuide.MaestroAPI;
 namespace MaestroAPITests
 {
     //Use this to toggle individual test suites
+    //
+    //TODO: To support parameterization, these settings should all be read from a text file
 
     public class TestControl
     {
@@ -51,7 +53,7 @@ namespace MaestroAPITests
 
     public class ConnectionUtil
     {
-        public static string Port { get { return "8018"; } }
+        public static string Port { get { return "80"; } }
 
         public static IServerConnection CreateTestLocalNativeConnection()
         {

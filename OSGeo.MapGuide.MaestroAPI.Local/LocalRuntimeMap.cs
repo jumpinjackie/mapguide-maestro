@@ -40,11 +40,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         private MgdMap _impl;
         private LocalConnection _conn;
 
-        public LocalRuntimeMap(LocalConnection conn, MgdMap map) : base(conn)
+        public LocalRuntimeMap(LocalConnection conn, MgdMap map, bool suppressErrors) : base(conn)
         { 
             _impl = map;
             _conn = conn;
-            InitializeLayersAndGroups();
+            InitializeLayersAndGroups(suppressErrors);
             _disableChangeTracking = false;
         }
 
@@ -80,7 +80,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
         }
 
-        private void InitializeLayersAndGroups()
+        private void InitializeLayersAndGroups(bool suppressErrors)
         {
             this.Layers.Clear();
             this.Groups.Clear();
@@ -97,7 +97,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             //Then layers
             for (int i = 0; i < layers.GetCount(); i++)
             {
-                this.Layers.Add(new LocalRuntimeMapLayer(this, layers.GetItem(i), _conn));
+                this.Layers.Add(new LocalRuntimeMapLayer(this, layers.GetItem(i), _conn, suppressErrors));
             }
         }
 
@@ -470,13 +470,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         private LocalRuntimeMap _parent;
         private MgLayerBase _impl;
 
-        internal LocalRuntimeMapLayer(LocalRuntimeMap parent, MgLayerBase layer, IResourceService resSvc) : base(parent)
+        internal LocalRuntimeMapLayer(LocalRuntimeMap parent, MgLayerBase layer, IResourceService resSvc, bool suppressErrors) : base(parent)
         {
             _parent = parent;
             _impl = layer;
             var ldfId = layer.GetLayerDefinition();
             var ldf = (ILayerDefinition)resSvc.GetResource(ldfId.ToString());
-            Initialize(ldf);
+            Initialize(ldf, suppressErrors);
             _disableChangeTracking = false;
         }
 

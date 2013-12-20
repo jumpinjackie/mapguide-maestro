@@ -103,6 +103,18 @@ namespace MaestroAPITests
             base.TestSchemaMapping();
         }
 
+        [Test]
+        public override void TestCreateRuntimeMapWithInvalidLayersErrorsDisabled()
+        {
+            base.TestCreateRuntimeMapWithInvalidLayersErrorsDisabled();
+        }
+
+        [Test]
+        public override void TestCreateRuntimeMapWithInvalidLayersErrorsEnabled()
+        {
+            base.TestCreateRuntimeMapWithInvalidLayersErrorsEnabled();
+        }
+
         public override IServerConnection CreateFromExistingSession(IServerConnection orig)
         {
             throw new NotImplementedException();

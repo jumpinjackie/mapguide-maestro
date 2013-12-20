@@ -124,7 +124,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Initializes this instances from the specified Layer Definition
         /// </summary>
         /// <param name="ldf"></param>
-        protected void Initialize(ILayerDefinition ldf)
+        protected void Initialize(ILayerDefinition ldf, bool suppressErrors)
         {
             Check.NotNull(ldf, "ldf"); //NOXLATE
             this.LayerDefinitionID = ldf.ResourceID;
@@ -135,7 +135,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 _geometryPropertyName = vl.Geometry;
                 _featureSourceId = vl.ResourceId;
                 _filter = vl.Filter;
-                InitIdentityProperties(vl);
+                InitIdentityProperties(vl, suppressErrors);
                 InitScaleRanges(vl);
                 _hasTooltips = !string.IsNullOrEmpty(vl.ToolTip);
             }
@@ -185,12 +185,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Initializes a new instance of the <see cref="RuntimeMapLayer"/> class.
         /// </summary>
         /// <param name="parent">The parent.</param>
-        /// <param name="ldf">The LDF.</param>
-        protected internal RuntimeMapLayer(RuntimeMap parent, ILayerDefinition ldf)
+        /// <param name="ldf">The Layer Definition.</param>
+        /// <param name="suppressErrors">If true, any errors while creating the layer are suppressed. The nature of the error may result in un-selectable layers</param>
+        protected internal RuntimeMapLayer(RuntimeMap parent, ILayerDefinition ldf, bool suppressErrors)
             : this(parent)
         {
             _disableChangeTracking = true;
-            Initialize(ldf);
+            Initialize(ldf, suppressErrors);
             _disableChangeTracking = false;
         }
 
@@ -237,8 +238,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="parent">The parent.</param>
         /// <param name="source">The source.</param>
-        protected internal RuntimeMapLayer(RuntimeMap parent, IMapLayer source)
-            : this(parent, source, (ILayerDefinition)parent.CurrentConnection.ResourceService.GetResource(source.ResourceId))
+        /// <param name="suppressErrors"></param>
+        protected internal RuntimeMapLayer(RuntimeMap parent, IMapLayer source, bool suppressErrors)
+            : this(parent, source, (ILayerDefinition)parent.CurrentConnection.ResourceService.GetResource(source.ResourceId), suppressErrors)
         {
             _disableChangeTracking = false;
         }
@@ -249,8 +251,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="parent"></param>
         /// <param name="source"></param>
         /// <param name="ldf"></param>
-        protected internal RuntimeMapLayer(RuntimeMap parent, IMapLayer source, ILayerDefinition ldf)
-            : this(parent, (IBaseMapLayer)source, ldf)
+        /// <param name="suppressErrors"></param>
+        protected internal RuntimeMapLayer(RuntimeMap parent, IMapLayer source, ILayerDefinition ldf, bool suppressErrors)
+            : this(parent, (IBaseMapLayer)source, ldf, suppressErrors)
         {
             _disableChangeTracking = true;
 
@@ -266,8 +269,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="parent"></param>
         /// <param name="source"></param>
         /// <param name="ldf"></param>
-        protected internal RuntimeMapLayer(RuntimeMap parent, IBaseMapLayer source, ILayerDefinition ldf) 
-            : this(parent, ldf)
+        /// <param name="suppressErrors"></param>
+        protected internal RuntimeMapLayer(RuntimeMap parent, IBaseMapLayer source, ILayerDefinition ldf, bool suppressErrors) 
+            : this(parent, ldf, suppressErrors)
         {
             Check.NotNull(source, "source"); //NOXLATE
             Check.NotNull(ldf, "ldf"); //NOXLATE
@@ -302,7 +306,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         public ScaleRange[] ScaleRanges { get; private set; }
 
-        private void InitIdentityProperties(IVectorLayerDefinition vl)
+        private void InitIdentityProperties(IVectorLayerDefinition vl, bool suppressErrors)
         {
             try
             {
@@ -325,6 +329,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             catch (Exception ex) //Has to be a bug in MapGuide or in the FDO provider
             {
+                //If not suppressing, rethrow with original stack trace
+                if (!suppressErrors)
+                    throw;
+
                 this.IdentityProperties = new PropertyInfo[0];
                 Trace.TraceWarning(string.Format(Strings.ERR_INIT_IDENTITY_PROPS, Environment.NewLine, this.Name, ex.ToString()));
             }

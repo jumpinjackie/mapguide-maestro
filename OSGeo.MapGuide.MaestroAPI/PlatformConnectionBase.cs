@@ -1954,7 +1954,20 @@ namespace OSGeo.MapGuide.MaestroAPI
         public virtual RuntimeMapLayer CreateMapLayer(RuntimeMap parent, ILayerDefinition ldf)
         {
             //TODO: Review when we decide to split the implementations
-            return new RuntimeMapLayer(parent, ldf);
+            return CreateMapLayer(parent, ldf, true);
+        }
+
+        /// <summary>
+        /// Creates a new runtime map layer from the specified Layer Definition
+        /// </summary>
+        /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
+        /// <param name="ldf">The layer definition</param>
+        /// <param name="suppressErrors"></param>
+        /// <returns></returns>
+        public virtual RuntimeMapLayer CreateMapLayer(RuntimeMap parent, ILayerDefinition ldf, bool suppressErrors)
+        {
+            //TODO: Review when we decide to split the implementations
+            return new RuntimeMapLayer(parent, ldf, suppressErrors);
         }
 
         /// <summary>
@@ -1965,8 +1978,20 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IBaseMapLayer source)
         {
+            return CreateMapLayer(parent, source, true);
+        }
+
+        /// <summary>
+        /// Creates a new runtime map layer from the specified <see cref="T:OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer"/> instance
+        /// </summary>
+        /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
+        /// <param name="source">The map definition layer</param>
+        /// <param name="suppressErrors"></param>
+        /// <returns></returns>
+        public RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IBaseMapLayer source, bool suppressErrors)
+        {
             ILayerDefinition layerDef = (ILayerDefinition)GetResource(source.ResourceId);
-            var rtLayer = CreateMapLayer(parent, layerDef);
+            var rtLayer = CreateMapLayer(parent, layerDef, suppressErrors);
 
             //These may not match, so set them here
             rtLayer.ExpandInLegend = source.ExpandInLegend;
@@ -1988,8 +2013,20 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IMapLayer source)
         {
+            return CreateMapLayer(parent, source);
+        }
+
+        /// <summary>
+        /// Creates a new runtime map layer from the specified <see cref="T:OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer"/> instance
+        /// </summary>
+        /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
+        /// <param name="source">The map definition layer</param>
+        /// <param name="suppressErrors"></param>
+        /// <returns></returns>
+        public RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IMapLayer source, bool suppressErrors)
+        {
             ILayerDefinition layerDef = (ILayerDefinition)GetResource(source.ResourceId);
-            var rtLayer = CreateMapLayer(parent, layerDef);
+            var rtLayer = CreateMapLayer(parent, layerDef, suppressErrors);
 
             //These may not match, so set them here
             rtLayer.ExpandInLegend = source.ExpandInLegend;
@@ -2019,13 +2056,33 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId)
         {
+            return CreateMap(runtimeMapResourceId, baseMapDefinitionId, true);
+        }
+
+        /// <summary>
+        /// Creates a new runtime map instance from an existing map definition. Meters per unit
+        /// is calculated from the Coordinate System WKT of the map definition.
+        /// </summary>
+        /// <remarks>
+        /// Calculation of meters-per-unit may differ between implementations. This may have an adverse
+        /// effect on things such as rendering and measuring depending on the underlying implementation
+        /// 
+        /// If you are certain of the meters-per-unit value required, use the overloaded method that 
+        /// accepts a metersPerUnit parameter.
+        /// </remarks>
+        /// <param name="runtimeMapResourceId"></param>
+        /// <param name="baseMapDefinitionId"></param>
+        /// <param name="suppressErrors"></param>
+        /// <returns></returns>
+        public RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId, bool suppressErrors)
+        {
             var mdf = (IMapDefinition)GetResource(baseMapDefinitionId);
             double mpu = 1.0;
             if (CsHelper.DefaultCalculator != null)
                 mpu = CsHelper.DefaultCalculator.Calculate(mdf.CoordinateSystem, 1.0);
             else
                 mpu = InferMPU(mdf.CoordinateSystem, 1.0);
-            return CreateMap(runtimeMapResourceId, mdf, mpu);
+            return CreateMap(runtimeMapResourceId, mdf, mpu, suppressErrors);
         }
 
         /// <summary>
@@ -2037,8 +2094,21 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public virtual RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId, double metersPerUnit)
         {
+            return CreateMap(runtimeMapResourceId, baseMapDefinitionId, metersPerUnit, true);
+        }
+
+        /// <summary>
+        /// Creates a new runtime map instance from an existing map definition
+        /// </summary>
+        /// <param name="runtimeMapResourceId"></param>
+        /// <param name="baseMapDefinitionId"></param>
+        /// <param name="metersPerUnit"></param>
+        /// <param name="suppressErrors"></param>
+        /// <returns></returns>
+        public virtual RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId, double metersPerUnit, bool suppressErrors)
+        {
             var mdf = (IMapDefinition)GetResource(baseMapDefinitionId);
-            return CreateMap(runtimeMapResourceId, mdf, metersPerUnit);
+            return CreateMap(runtimeMapResourceId, mdf, metersPerUnit, suppressErrors);
         }
 
         /// <summary>
@@ -2049,8 +2119,20 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public RuntimeMap CreateMap(IMapDefinition mdf)
         {
+            return CreateMap(mdf, true);
+        }
+
+        /// <summary>
+        /// Creates a new runtime map instance from an existing map definition.  The runtime map resource id is calculated from the 
+        /// current session id and the name component of the Map Definition resource id
+        /// </summary>
+        /// <param name="mdf"></param>
+        /// <param name="suppressErrors"></param>
+        /// <returns></returns>
+        public RuntimeMap CreateMap(IMapDefinition mdf, bool suppressErrors)
+        {
             var rid = new ResourceIdentifier(ResourceIdentifier.GetName(mdf.ResourceID), ResourceTypes.RuntimeMap, this.SessionID);
-            return CreateMap(rid.ToString(), mdf);
+            return CreateMap(rid.ToString(), mdf, suppressErrors);
         }
 
         /// <summary>
@@ -2062,8 +2144,21 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public RuntimeMap CreateMap(IMapDefinition mdf, double metersPerUnit)
         {
+            return CreateMap(mdf, metersPerUnit, true);
+        }
+
+        /// <summary>
+        /// Creates a new runtime map instance from an existing map definition. The runtime map resource id is calculated from the
+        /// current session id and the name component of the Map Definition resource id
+        /// </summary>
+        /// <param name="mdf">The map definition.</param>
+        /// <param name="metersPerUnit">The meters per unit.</param>
+        /// <param name="suppressErrors"></param>
+        /// <returns></returns>
+        public RuntimeMap CreateMap(IMapDefinition mdf, double metersPerUnit, bool suppressErrors)
+        {
             var rid = new ResourceIdentifier(ResourceIdentifier.GetName(mdf.ResourceID), ResourceTypes.RuntimeMap, this.SessionID);
-            return CreateMap(rid.ToString(), mdf, metersPerUnit);
+            return CreateMap(rid.ToString(), mdf, metersPerUnit, suppressErrors);
         }
 
         /// <summary>
@@ -2082,12 +2177,32 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf)
         {
+            return CreateMap(runtimeMapResourceId, mdf, true);
+        }
+
+        /// <summary>
+        /// Creates a new runtime map instance from an existing map definition. Meters per unit
+        /// is calculated from the Coordinate System WKT of the map definition.
+        /// </summary>
+        /// <remarks>
+        /// Calculation of meters-per-unit may differ between implementations. This may have an adverse
+        /// effect on things such as rendering and measuring depending on the underlying implementation
+        /// 
+        /// If you are certain of the meters-per-unit value required, use the overloaded method that 
+        /// accepts a metersPerUnit parameter.
+        /// </remarks>
+        /// <param name="runtimeMapResourceId"></param>
+        /// <param name="mdf"></param>
+        /// <param name="suppressErrors"></param>
+        /// <returns></returns>
+        public RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, bool suppressErrors)
+        {
             double mpu = 1.0;
             if (CsHelper.DefaultCalculator != null)
                 mpu = CsHelper.DefaultCalculator.Calculate(mdf.CoordinateSystem, 1.0);
             else
                 mpu = InferMPU(mdf.CoordinateSystem, 1.0);
-            return CreateMap(runtimeMapResourceId, mdf, mpu);
+            return CreateMap(runtimeMapResourceId, mdf, mpu, suppressErrors);
         }
 
         /// <summary>
@@ -2096,10 +2211,24 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="runtimeMapResourceId"></param>
         /// <param name="mdf"></param>
         /// <param name="metersPerUnit"></param>
+        /// <param name="suppressErrors"></param>
         /// <returns></returns>
         public virtual RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, double metersPerUnit)
         {
-            var map = new RuntimeMap(mdf, metersPerUnit);
+            return CreateMap(runtimeMapResourceId, mdf, metersPerUnit, true);
+        }
+
+        /// <summary>
+        /// Creates a new runtime map instance from an existing map definition
+        /// </summary>
+        /// <param name="runtimeMapResourceId"></param>
+        /// <param name="mdf"></param>
+        /// <param name="metersPerUnit"></param>
+        /// <param name="suppressErrors"></param>
+        /// <returns></returns>
+        public virtual RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, double metersPerUnit, bool suppressErrors)
+        {
+            var map = new RuntimeMap(mdf, metersPerUnit, suppressErrors);
             map.ResourceID = runtimeMapResourceId;
             map.IsDirty = false;
             return map;

@@ -263,7 +263,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="mdf">The map definition to create this map from.</param>
         /// <param name="metersPerUnit">The meters per unit value</param>
-        internal RuntimeMap(IMapDefinition mdf, double metersPerUnit)
+        internal RuntimeMap(IMapDefinition mdf, double metersPerUnit, bool suppressErrors)
             : this(mdf.CurrentConnection)
         {
             this.MetersPerUnit = metersPerUnit;
@@ -296,7 +296,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             //Load map layers
             foreach (var layer in mdf.MapLayer)
             {
-                var rtl = _mapSvc.CreateMapLayer(this, layer);
+                var rtl = _mapSvc.CreateMapLayer(this, layer, suppressErrors);
                 this.Layers.Add(rtl);
             }
 
@@ -1214,7 +1214,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public RuntimeMapLayer CreateLayer(string layerDefinitionId, RuntimeMapGroup group)
         {
             ILayerDefinition ldf = GetLayerDefinition(layerDefinitionId);
-            var layer = new RuntimeMapLayer(this, ldf);
+            var layer = new RuntimeMapLayer(this, ldf, true);
             if (group != null)
                 layer.Group = group.Name;
             return layer;

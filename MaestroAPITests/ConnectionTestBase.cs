@@ -17,32 +17,21 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 #endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
 using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using System.IO;
-using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
-using NUnit.Framework;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
-using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.ObjectModels.Common;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
-using OSGeo.MapGuide.MaestroAPI.Internal;
 using OSGeo.MapGuide.MaestroAPI.Feature;
+using OSGeo.MapGuide.MaestroAPI.Internal;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using System;
+using System.IO;
 
 namespace MaestroAPITests
 {
@@ -526,10 +515,64 @@ namespace MaestroAPITests
 
         public virtual void TestSchemaMapping()
         {
-            var conn = ConnectionUtil.CreateTestHttpConnection();
+            var conn = CreateTestConnection();
             var doc1 = conn.FeatureService.GetSchemaMapping("OSGeo.WMS", "FeatureServer=http://wms.jpl.nasa.gov/wms.cgi");
             Assert.NotNull(doc1);
             Assert.True(doc1 is WmsConfigurationDocument);
+        }
+
+        public virtual void TestCreateRuntimeMapWithInvalidLayersErrorsEnabled()
+        {
+            var conn = CreateTestConnection();
+            var resSvc = conn.ResourceService;
+            resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganWithInvalidLayers.MapDefinition", File.OpenRead("UserTestData/TestMapWithInvalidLayers.xml"));
+            resSvc.SetResourceXmlData("Library://UnitTests/Layers/InvalidLayer.LayerDefinition", File.OpenRead("UserTestData/InvalidLayer.xml"));
+
+            if (Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) < 0)
+            {
+                Assert.Ignore("Connection does not support the Mapping Service");
+            }
+            else
+            {
+                var mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+                var mdf = (IMapDefinition)resSvc.GetResource("Library://UnitTests/Maps/SheboyganWithInvalidLayers.MapDefinition");
+                try
+                {
+                    mapSvc.CreateMap(mdf, false);
+                    Assert.Fail("CreateMap should've thrown an exception with suppressErrors = false");
+                }
+                catch (Exception ex)
+                {
+                    Assert.True(true, ex.ToString());
+                }
+            }
+        }
+
+        public virtual void TestCreateRuntimeMapWithInvalidLayersErrorsDisabled()
+        {
+            var conn = CreateTestConnection();
+            var resSvc = conn.ResourceService;
+            resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganWithInvalidLayers.MapDefinition", File.OpenRead("UserTestData/TestMapWithInvalidLayers.xml"));
+            resSvc.SetResourceXmlData("Library://UnitTests/Layers/InvalidLayer.LayerDefinition", File.OpenRead("UserTestData/InvalidLayer.xml"));
+
+            if (Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) < 0)
+            {
+                Assert.Ignore("Connection does not support the Mapping Service");
+            }
+            else
+            {
+                var mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+                var mdf = (IMapDefinition)resSvc.GetResource("Library://UnitTests/Maps/SheboyganWithInvalidLayers.MapDefinition");
+                try
+                {
+                    mapSvc.CreateMap(mdf, true);
+                    Assert.True(true);
+                }
+                catch (Exception ex)
+                {
+                    Assert.Fail("CreateMap with suppressErrors = true should not have thrown an exception: " + ex.ToString());
+                }
+            }
         }
     }
 }

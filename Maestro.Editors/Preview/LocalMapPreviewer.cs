@@ -121,7 +121,7 @@ namespace Maestro.Editors.Preview
                     }
 
                     if (previewMdf != null)
-                        return mapSvc.CreateMap(previewMdf);
+                        return mapSvc.CreateMap(previewMdf, false);
                     else
                         return null;
                 };

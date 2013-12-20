@@ -1075,11 +1075,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             throw new NotSupportedException();
         }
 
-        public override Mapping.RuntimeMap CreateMap(string runtimeMapResourceId, ObjectModels.MapDefinition.IMapDefinition mdf, double metersPerUnit)
+        public override Mapping.RuntimeMap CreateMap(string runtimeMapResourceId, ObjectModels.MapDefinition.IMapDefinition mdf, double metersPerUnit, bool suppressErrors)
         {
             var mdfId = new MgResourceIdentifier(mdf.ResourceID);
             var implMap = new MgdMap(mdfId);
-            var map = new LocalRuntimeMap(this, implMap);
+            var map = new LocalRuntimeMap(this, implMap, suppressErrors);
             map.ResourceID = runtimeMapResourceId;
             map.ResetDirtyState();
             return map;
@@ -1138,7 +1138,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new LocalRuntimeMapGroup(impl, group);
         }
 
-        public override Mapping.RuntimeMapLayer CreateMapLayer(Mapping.RuntimeMap parent, ObjectModels.LayerDefinition.ILayerDefinition ldf)
+        public override Mapping.RuntimeMapLayer CreateMapLayer(Mapping.RuntimeMap parent, ObjectModels.LayerDefinition.ILayerDefinition ldf, bool suppressErrors)
         {
             var impl = parent as LocalRuntimeMap;
             if (impl == null)
@@ -1146,7 +1146,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
             var ldfId = new MgResourceIdentifier(ldf.ResourceID);
             var layer = new MgdLayer(ldfId, GetResourceService());
-            return new LocalRuntimeMapLayer(impl, layer, this);
+            return new LocalRuntimeMapLayer(impl, layer, this, suppressErrors);
         }
 
         public Stream RenderDynamicOverlay(Mapping.RuntimeMap map, Mapping.MapSelection selection, string format)
