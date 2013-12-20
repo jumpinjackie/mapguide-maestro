@@ -89,15 +89,8 @@ namespace MaestroAPITests
             }
             else
             {
-                try
-                {
-                    _conn = CreateTestConnection();
-                    SetupTestData();
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
+                _conn = CreateTestConnection();
+                SetupTestData();
             }
         }
 

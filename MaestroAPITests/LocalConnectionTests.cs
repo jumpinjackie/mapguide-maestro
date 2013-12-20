@@ -38,11 +38,13 @@ namespace MaestroAPITests
     [TestFixture]
     public class LocalConnectionTests : ConnectionTestBase
     {
-        [TestFixtureSetUp]
-        public void Setup()
+        protected override bool ShouldIgnore(out string reason)
         {
+            reason = string.Empty;
             if (TestControl.IgnoreLocalFeatureTests)
-                Assert.Ignore("Skipping LocalConnectionTests because TestControl.IgnoreLocalFeatureTests = true");
+                reason = "Skipping LocalConnectionTests because TestControl.IgnoreLocalFeatureTests = true";
+
+            return TestControl.IgnoreLocalFeatureTests;
         }
 
         protected override IServerConnection CreateTestConnection()

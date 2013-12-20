@@ -34,11 +34,13 @@ namespace MaestroAPITests
     [TestFixture]
     public class HttpConnectionTests : ConnectionTestBase
     {
-        [TestFixtureSetUp]
-        public void Setup()
+        protected override bool ShouldIgnore(out string reason)
         {
+            reason = string.Empty;
             if (TestControl.IgnoreHttpConnectionTests)
-                Assert.Ignore("Skipping HttpConnectionTests because TestControl.IgnoreHttpConnectionTests = true");
+                reason = "Skipping HttpConnectionTests because TestControl.IgnoreHttpConnectionTests = true";
+
+            return TestControl.IgnoreLocalNativeFeatureTests;
         }
 
         //[Test]
