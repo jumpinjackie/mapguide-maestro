@@ -561,6 +561,13 @@ namespace MaestroAPITests
             }
         }
 
+        public virtual void TestResourceExists()
+        {
+            var conn = CreateTestConnection();
+            Assert.True(conn.ResourceService.ResourceExists("Library://UnitTests/Maps/Sheboygan.MapDefinition"));
+            Assert.False(conn.ResourceService.ResourceExists("Library://UnitTests/IDontExist.MapDefinition"));
+        }
+
         public virtual void TestSchemaMapping()
         {
             var conn = CreateTestConnection();

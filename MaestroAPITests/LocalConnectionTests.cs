@@ -70,6 +70,12 @@ namespace MaestroAPITests
         }
 
         [Test]
+        public void TestResourceExists()
+        {
+            base.TestResourceExists();
+        }
+
+        [Test]
         public void TestFeatureSourceCaching()
         {
             base.TestFeatureSourceCaching("LocalFeatureSourceCaching");
