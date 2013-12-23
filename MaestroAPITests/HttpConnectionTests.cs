@@ -43,6 +43,11 @@ namespace MaestroAPITests
             return TestControl.IgnoreLocalNativeFeatureTests;
         }
 
+        protected override string GetTestPrefix()
+        {
+            return "Http";
+        }
+
         //[Test]
         public override void TestEncryptedFeatureSourceCredentials()
         {

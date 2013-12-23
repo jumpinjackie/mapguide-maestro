@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{50C12B5C-387C-4007-A1D1-CB181CB474CC}</ProjectGuid>
+    <ProjectGuid>{AA5EF530-B95C-4C8F-BE9F-52C225613DF9}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MaestroAPITestRunner</RootNamespace>
-    <AssemblyName>MaestroAPITestRunner</AssemblyName>
+    <AssemblyName>MaestroAPITestRunner64</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
@@ -19,6 +19,7 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -31,7 +32,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -44,7 +44,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -53,7 +53,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
@@ -106,7 +106,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ConnectionProviders.SDK.xml" />
     <Content Include="ConnectionProviders.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -141,28 +140,11 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>echo Performing post-build for Test Runner in $(ConfigurationName)
+    <PostBuildEvent>echo Performing post-build for 64-bit Test Runner in $(ConfigurationName)
 IF "$(ConfigurationName)" == "Release" (
 IF NOT EXIST "$(SolutionDir)..\SDK\Test" MKDIR "$(SolutionDir)..\SDK\Test"
 echo Copy binaries to SDK output dir
-echo XCOPY /S /Y /I "$(TargetDir)*.*" "$(SolutionDir)..\SDK\Test"
-XCOPY /S /Y /I "$(TargetDir)*.*" "$(SolutionDir)..\SDK\Test"
-echo Copy SDK test configuration
-echo COPY /Y "$(ProjectDir)TestMaestroAPI.LocalNative.xml" "$(SolutionDir)..\SDK\Test\TestMaestroAPI.xml"
-COPY /Y "$(ProjectDir)TestMaestroAPI.LocalNative.xml" "$(SolutionDir)..\SDK\Test\TestMaestroAPI.xml"
-echo COPY /Y "$(ProjectDir)ConnectionProviders.SDK.xml" "$(SolutionDir)..\SDK\Test\ConnectionProviders.xml"
-COPY /Y "$(ProjectDir)ConnectionProviders.SDK.xml" "$(SolutionDir)..\SDK\Test\ConnectionProviders.xml"
-) ELSE (
-echo Copy CS-Map Dictionaries
-IF NOT EXIST "$(OutDir)Dictionaries" XCOPY /S /Y /I "$(SolutionDir)..\Maestro.AddIn.Local\Dictionaries\*.*" "$(ProjectDir)$(OutDir)Dictionaries"
-echo Copy FDO dlls
-IF NOT EXIST "$(OutDir)FDO" XCOPY /S /Y /I "$(SolutionDir)..\Maestro.AddIn.Local\FDO\*.*" "$(ProjectDir)$(OutDir)FDO"
-echo Copy MapGuide XML schemas
-IF NOT EXIST "$(OutDir)Schemas" XCOPY /S /Y /I "$(SolutionDir)..\OSGeo.MapGuide.MaestroAPI\Schemas\*.*" "$(ProjectDir)$(OutDir)Schemas"
-echo Copy mg-desktop string bundle
-IF NOT EXIST "$(OutDir)Resources" XCOPY /S /Y /I "$(SolutionDir)..\Maestro.AddIn.Local\Resources\*.res" "$(ProjectDir)$(OutDir)Resources"
-echo Copy Maestro API Local connection dlls
-COPY /Y "$(SolutionDir)..\OSGeo.MapGuide.MaestroAPI.Local\bin\$(ConfigurationName)\OSGeo.MapGuide.MaestroAPI.Local.*" "$(ProjectDir)$(OutDir)"
-COPY /Y "$(SolutionDir)..\Maestro.AddIn.Local\*.dll" "$(ProjectDir)$(OutDir)" )</PostBuildEvent>
+echo XCOPY /S /Y /I "$(TargetDir)$(TargetName).*" "$(SolutionDir)..\SDK\Test"
+XCOPY /S /Y /I "$(TargetDir)$(TargetName).*" "$(SolutionDir)..\SDK\Test" )</PostBuildEvent>
   </PropertyGroup>
 </Project>

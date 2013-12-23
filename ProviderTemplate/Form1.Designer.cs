@@ -32,24 +32,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtFxDir = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtTestOutputDir = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.btnFxDir = new System.Windows.Forms.Button();
             this.btnMgDir = new System.Windows.Forms.Button();
-            this.btnTestDir = new System.Windows.Forms.Button();
-            this.chkUnitTests = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.rdPost22 = new System.Windows.Forms.RadioButton();
             this.rdPre22 = new System.Windows.Forms.RadioButton();
-            this.grpUnitTests = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtMessages = new System.Windows.Forms.TextBox();
             this.btnBuild = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.worker = new System.ComponentModel.BackgroundWorker();
             this.txtMgVersion = new System.Windows.Forms.TextBox();
-            this.grpUnitTests.SuspendLayout();
+            this.chkDebug = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,24 +86,6 @@
             this.label4.TabIndex = 6;
             this.label4.Text = ".net 4.0 Framework directory (csc.exe)";
             // 
-            // txtTestOutputDir
-            // 
-            this.txtTestOutputDir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTestOutputDir.Location = new System.Drawing.Point(15, 41);
-            this.txtTestOutputDir.Name = "txtTestOutputDir";
-            this.txtTestOutputDir.Size = new System.Drawing.Size(489, 20);
-            this.txtTestOutputDir.TabIndex = 9;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 25);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Test output directory";
-            // 
             // btnFxDir
             // 
             this.btnFxDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -130,28 +107,6 @@
             this.btnMgDir.Text = "...";
             this.btnMgDir.UseVisualStyleBackColor = true;
             this.btnMgDir.Click += new System.EventHandler(this.btnMgDir_Click);
-            // 
-            // btnTestDir
-            // 
-            this.btnTestDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTestDir.Location = new System.Drawing.Point(510, 39);
-            this.btnTestDir.Name = "btnTestDir";
-            this.btnTestDir.Size = new System.Drawing.Size(26, 23);
-            this.btnTestDir.TabIndex = 14;
-            this.btnTestDir.Text = "...";
-            this.btnTestDir.UseVisualStyleBackColor = true;
-            this.btnTestDir.Click += new System.EventHandler(this.btnTestDir_Click);
-            // 
-            // chkUnitTests
-            // 
-            this.chkUnitTests.AutoSize = true;
-            this.chkUnitTests.Location = new System.Drawing.Point(18, 162);
-            this.chkUnitTests.Name = "chkUnitTests";
-            this.chkUnitTests.Size = new System.Drawing.Size(100, 17);
-            this.chkUnitTests.TabIndex = 15;
-            this.chkUnitTests.Text = "Build Unit Tests";
-            this.chkUnitTests.UseVisualStyleBackColor = true;
-            this.chkUnitTests.CheckedChanged += new System.EventHandler(this.chkUnitTests_CheckedChanged);
             // 
             // label6
             // 
@@ -193,28 +148,15 @@
             this.rdPre22.Text = "Pre-2.2 (MapGuideDotNetApi.dll)";
             this.rdPre22.UseVisualStyleBackColor = true;
             // 
-            // grpUnitTests
-            // 
-            this.grpUnitTests.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpUnitTests.Controls.Add(this.txtTestOutputDir);
-            this.grpUnitTests.Controls.Add(this.label5);
-            this.grpUnitTests.Controls.Add(this.btnTestDir);
-            this.grpUnitTests.Location = new System.Drawing.Point(12, 185);
-            this.grpUnitTests.Name = "grpUnitTests";
-            this.grpUnitTests.Size = new System.Drawing.Size(554, 77);
-            this.grpUnitTests.TabIndex = 21;
-            this.grpUnitTests.TabStop = false;
-            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.txtMessages);
-            this.groupBox2.Location = new System.Drawing.Point(12, 268);
+            this.groupBox2.Location = new System.Drawing.Point(12, 185);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(554, 256);
+            this.groupBox2.Size = new System.Drawing.Size(554, 189);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Messages";
@@ -227,13 +169,13 @@
             this.txtMessages.Name = "txtMessages";
             this.txtMessages.ReadOnly = true;
             this.txtMessages.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtMessages.Size = new System.Drawing.Size(548, 237);
+            this.txtMessages.Size = new System.Drawing.Size(548, 170);
             this.txtMessages.TabIndex = 0;
             // 
             // btnBuild
             // 
             this.btnBuild.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuild.Location = new System.Drawing.Point(491, 530);
+            this.btnBuild.Location = new System.Drawing.Point(491, 380);
             this.btnBuild.Name = "btnBuild";
             this.btnBuild.Size = new System.Drawing.Size(75, 23);
             this.btnBuild.TabIndex = 23;
@@ -254,16 +196,25 @@
             this.txtMgVersion.TabIndex = 24;
             this.txtMgVersion.Text = "2.4.0";
             // 
+            // chkDebug
+            // 
+            this.chkDebug.AutoSize = true;
+            this.chkDebug.Location = new System.Drawing.Point(12, 162);
+            this.chkDebug.Name = "chkDebug";
+            this.chkDebug.Size = new System.Drawing.Size(84, 17);
+            this.chkDebug.TabIndex = 25;
+            this.chkDebug.Text = "Build Debug";
+            this.chkDebug.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(578, 565);
+            this.ClientSize = new System.Drawing.Size(578, 415);
+            this.Controls.Add(this.chkDebug);
             this.Controls.Add(this.txtMgVersion);
             this.Controls.Add(this.btnBuild);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.grpUnitTests);
-            this.Controls.Add(this.chkUnitTests);
             this.Controls.Add(this.rdPre22);
             this.Controls.Add(this.rdPost22);
             this.Controls.Add(this.label7);
@@ -276,8 +227,6 @@
             this.Controls.Add(this.label2);
             this.Name = "Form1";
             this.Text = "Maestro LocalNative provider builder";
-            this.grpUnitTests.ResumeLayout(false);
-            this.grpUnitTests.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -291,23 +240,19 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtFxDir;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtTestOutputDir;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnFxDir;
         private System.Windows.Forms.Button btnMgDir;
-        private System.Windows.Forms.Button btnTestDir;
-        private System.Windows.Forms.CheckBox chkUnitTests;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RadioButton rdPost22;
         private System.Windows.Forms.RadioButton rdPre22;
-        private System.Windows.Forms.GroupBox grpUnitTests;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtMessages;
         private System.Windows.Forms.Button btnBuild;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.ComponentModel.BackgroundWorker worker;
         private System.Windows.Forms.TextBox txtMgVersion;
+        private System.Windows.Forms.CheckBox chkDebug;
     }
 }
 

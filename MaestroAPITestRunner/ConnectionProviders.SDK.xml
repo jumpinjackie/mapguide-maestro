@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ConnectionProviderRegistry>
+    <ConnectionProvider>
+        <Name>Maestro.Http</Name>
+        <Description>Connection using the mapagent http API</Description>
+        <Assembly>OSGeo.MapGuide.MaestroAPI.Http.dll</Assembly>
+        <Type>OSGeo.MapGuide.MaestroAPI.HttpServerConnection</Type>
+    </ConnectionProvider>
+    <!--
+    <ConnectionProvider>
+        <Name>Maestro.LocalNative</Name>
+        <Description>Connection using the MapGuide Web API</Description>
+        <Assembly>OSGeo.MapGuide.MaestroAPI.Native32-2.2.0.dll</Assembly>
+        <Type>OSGeo.MapGuide.MaestroAPI.LocalNativeConnection</Type>
+    </ConnectionProvider>
+    -->
+</ConnectionProviderRegistry>

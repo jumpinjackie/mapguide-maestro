@@ -19,12 +19,6 @@ namespace ProviderTemplate
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            grpUnitTests.Enabled = chkUnitTests.Checked;
-            base.OnLoad(e);
-        }
-
         private void btnFxDir_Click(object sender, EventArgs e)
         {
             if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -37,17 +31,6 @@ namespace ProviderTemplate
                 txtMgDir.Text = folderBrowserDialog.SelectedPath;
         }
 
-        private void btnTestDir_Click(object sender, EventArgs e)
-        {
-            if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                txtTestOutputDir.Text = folderBrowserDialog.SelectedPath;
-        }
-
-        private void chkUnitTests_CheckedChanged(object sender, EventArgs e)
-        {
-            grpUnitTests.Enabled = chkUnitTests.Checked;
-        }
-
         private void btnBuild_Click(object sender, EventArgs e)
         {
             btnBuild.Enabled = false;
@@ -56,8 +39,7 @@ namespace ProviderTemplate
                 MgDir = txtMgDir.Text,
                 MgVersion = txtMgVersion.Text,
                 RefMapGuideDotNetApi = rdPre22.Checked,
-                BuildUnitTests = chkUnitTests.Checked,
-                TestDir = txtTestOutputDir.Text
+                DebugMode = chkDebug.Checked
             });
         }
 
@@ -76,8 +58,7 @@ namespace ProviderTemplate
             public string MgDir;
             public string MgVersion;
             public bool RefMapGuideDotNetApi;
-            public bool BuildUnitTests;
-            public string TestDir;
+            public bool DebugMode;
         }
 
         private void worker_DoWork(object sender, DoWorkEventArgs e)
@@ -178,9 +159,17 @@ namespace ProviderTemplate
             string asmName = "OSGeo.MapGuide.MaestroAPI.Native-" + ba.MgVersion + ".dll";
             AppendMessage("http://xkcd.com/303/ - " + asmName);
             var args = new List<string>();
-            args.Add("/debug+");
-            args.Add("/debug:pdbonly");
-            args.Add("/optimize+");
+            if (ba.DebugMode)
+            {
+                args.Add("/debug+");
+                args.Add("/debug:full");
+            }
+            else
+            {
+                args.Add("/debug-");
+                args.Add("/debug:pdbonly");
+                args.Add("/optimize+");
+            }
             args.Add("/target:library");
             //args.Add("/platform:x86");
             args.Add("/keyfile:\"" + keyfile + "\"");

@@ -25,7 +25,6 @@ Run the tool and fill in the following options
  - The MapGuide .net assemblies directory (the path to mapviewernet/bin of your MGOS/AIMS installation)
  - The MapGuide version (x.y.z). This is used to name the final provider assembly
  - Assembly type. Basically this tells us what we're referencing. Either the 5 OSGeo assemblies (2.2 and newer) or MapGuideDotNetApi.dll (2.1 and older)
- - NOT IMPLEMENTED: Enable unit tests + Unit test output directory
 
 Once you have filled in the required options, click build and wait a few moments. Assuming you extracted the Maestro SDK to C:\MaestroSDK:
 
@@ -43,7 +42,17 @@ with settings from C:\foo\webconfig.ini
 This is an uncommon use-case (actually more common with Maestro proper, due to its multi-connection support) since most of the time 
 your application will most likely be working against a specific version of MapGuide, but it is something to keep in mind.
 
-Building and running the Unit Tests
------------------------------------
+Testing your LocalNative provider
+---------------------------------
 
-TBD
+It is recommended to run the unit tests for your LocalNative provider to ensure it is functional. This SDK includes a test runner with test data
+that you can exercise your LocalNative provider with.
+
+To test your LocalNative provider, do the following:
+
+ 1. Build the LocalNative provider using this tool
+ 2. Copy the LocalNative provider and supporting binaries to the test runner directory
+ 3. Edit ConnectionProviders.xml and include your LocalNative provider
+ 4. Run MaestroAPITestRunner.exe (if you built a LocalNative provider from 64-bit assemblies, run MaestroAPITestRunner64.exe). If the test 
+    runner reports 0 test failures, your LocalNative provider has passed basic validation of our test suite. If there are any test failures, 
+    please report such issues on Trac and indicate the version of MapGuide you built your LocalNative provider from

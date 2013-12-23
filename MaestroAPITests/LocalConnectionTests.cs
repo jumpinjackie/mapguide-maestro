@@ -47,6 +47,11 @@ namespace MaestroAPITests
             return TestControl.IgnoreLocalFeatureTests;
         }
 
+        protected override string GetTestPrefix()
+        {
+            return "Local";
+        }
+
         protected override IServerConnection CreateTestConnection()
         {
             return ConnectionUtil.CreateTestLocalConnection();

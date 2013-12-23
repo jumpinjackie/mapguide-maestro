@@ -1160,7 +1160,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         protected override ClassDefinition GetClassDefinitionInternal(string resourceId, string schemaName, string className)
         {
             var fsvc = (MgFeatureService)this.Connection.CreateService(MgServiceType.FeatureService);
-            var cls = fsvc.GetClassDefinition(new MgResourceIdentifier(resourceId), schemaName, className);
+            var cls = fsvc.GetClassDefinition(new MgResourceIdentifier(resourceId ?? ""), schemaName ?? "", className ?? "");
             var klass = Native.Utility.ConvertClassDefinition(cls);
             var parent = new FeatureSchema(schemaName, "");
             parent.AddClass(klass);

@@ -57,6 +57,8 @@ namespace MaestroAPITests
             return false;
         }
 
+        protected abstract string GetTestPrefix();
+
         private void SetupTestData()
         {
             var conn = CreateTestConnection();
@@ -251,7 +253,7 @@ namespace MaestroAPITests
         public virtual void TestInsertFeatures()
         {
             var conn = CreateTestConnection();
-            var fsId = "Library://UnitTests/Data/TestInsertFeatures.FeatureSource";
+            var fsId = "Library://UnitTests/Data/Test" + GetTestPrefix() + "InsertFeatures.FeatureSource";
             ClassDefinition cls = null;
             FeatureSchema schema = null;
             CreateTestDataStore(conn, fsId, ref schema, ref cls);
@@ -310,7 +312,7 @@ namespace MaestroAPITests
         public virtual void TestUpdateFeatures()
         {
             var conn = CreateTestConnection();
-            var fsId = "Library://UnitTests/Data/TestUpdateFeatures.FeatureSource";
+            var fsId = "Library://UnitTests/Data/Test" + GetTestPrefix() + "UpdateFeatures.FeatureSource";
             ClassDefinition cls = null;
             FeatureSchema schema = null;
             PopulateTestDataStore(conn, fsId, ref schema, ref cls);
@@ -329,7 +331,7 @@ namespace MaestroAPITests
         public virtual void TestDeleteFeatures()
         {
             var conn = CreateTestConnection();
-            var fsId = "Library://UnitTests/Data/TestDeleteFeatures.FeatureSource";
+            var fsId = "Library://UnitTests/Data/Test" + GetTestPrefix() + "DeleteFeatures.FeatureSource";
             ClassDefinition cls = null;
             FeatureSchema schema = null;
             PopulateTestDataStore(conn, fsId, ref schema, ref cls);
@@ -353,7 +355,7 @@ namespace MaestroAPITests
         public virtual void TestCreateDataStore()
         {
             var conn = CreateTestConnection();
-            var fsId = "Library://UnitTests/Data/TestCreateDataStore.FeatureSource";
+            var fsId = "Library://UnitTests/Data/Test" + GetTestPrefix() + "CreateDataStore.FeatureSource";
             ClassDefinition cls = null;
             FeatureSchema schema = null;
             CreateTestDataStore(conn, fsId, ref schema, ref cls);
@@ -376,7 +378,7 @@ namespace MaestroAPITests
 
         public virtual void TestApplySchema()
         {
-            var fsId = "Library://UnitTests/Data/TestMaestroLocalApplySchema.FeatureSource";
+            var fsId = "Library://UnitTests/Data/TestMaestro" + GetTestPrefix() + "ApplySchema.FeatureSource";
             var conn = CreateTestConnection();
             if (conn.ResourceService.ResourceExists(fsId))
                 conn.ResourceService.DeleteResource(fsId);
@@ -427,7 +429,7 @@ namespace MaestroAPITests
             string bogusPass = "bar";
 
             var conn = ConnectionUtil.CreateTestHttpConnection();
-            string fsId = "Library://UnitTests/EncryptedCredentials.FeatureSource";
+            string fsId = "Library://UnitTests/" + GetTestPrefix() + "EncryptedCredentials.FeatureSource";
             var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLServerSpatial");
             fs.SetConnectionProperty("Username", "%MG_USERNAME%");
             fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
@@ -445,7 +447,7 @@ namespace MaestroAPITests
             Assert.AreEqual("TRUE", result.ToUpper());
 
             //Test convenience method
-            fsId = "Library://UnitTests/EncryptedCredentials2.FeatureSource";
+            fsId = "Library://UnitTests/" + GetTestPrefix() + "EncryptedCredentials2.FeatureSource";
             fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLServerSpatial");
             fs.SetConnectionProperty("Username", "%MG_USERNAME%");
             fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
@@ -460,7 +462,7 @@ namespace MaestroAPITests
             Assert.AreEqual(actualUser, fs.GetEncryptedUsername());
 
             //Do not set encrypted credentials
-            fsId = "Library://UnitTests/EncryptedCredentials3.FeatureSource";
+            fsId = "Library://UnitTests/" + GetTestPrefix() + "EncryptedCredentials3.FeatureSource";
             fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLServerSpatial");
             fs.SetConnectionProperty("Username", "%MG_USERNAME%");
             fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
@@ -480,7 +482,7 @@ namespace MaestroAPITests
             }
 
             //Encrypt credentials, but use bogus username/password
-            fsId = "Library://UnitTests/EncryptedCredentials4.FeatureSource";
+            fsId = "Library://UnitTests/" + GetTestPrefix() + "EncryptedCredentials4.FeatureSource";
             fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLServerSpatial");
             fs.SetConnectionProperty("Username", "%MG_USERNAME%");
             fs.SetConnectionProperty("Password", "%MG_PASSWORD%");

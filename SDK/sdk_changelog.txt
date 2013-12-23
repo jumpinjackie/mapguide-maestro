@@ -1,3 +1,10 @@
+5.1
+---
+
+- Maestro API test runner and test data added to SDK
+- ProviderTemplate tool updated to support building the LocalNative provider in debug mode. Updated readme.txt with instructions on how to validate
+  your built provider with the included Maestro API test runner
+
 5.0
 ---
 
