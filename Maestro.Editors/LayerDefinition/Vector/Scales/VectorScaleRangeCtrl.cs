@@ -111,7 +111,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     if (_cts.Count == 0)
                         _cts.Add(parent.Factory.CreateDefaultCompositeStyle());
 
-                    compList.Load(vsr2, _cts);
+                    compList.LoadStyles(vsr2, _cts);
                 }
                 else
                 {

@@ -27,8 +27,16 @@ using System.Windows.Forms;
 using Maestro.Editors.LoadProcedure;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 
+#pragma warning disable 1591
+
 namespace Maestro.Base.Editor
 {
+    /// <summary>
+    /// A specialized editor for Load Procedure resources.
+    /// </summary>
+    /// <remarks>
+    /// Although public, this class is undocumented and reserved for internal use by built-in Maestro AddIns
+    /// </remarks>
     public partial class LoadProcedureEditor : EditorContentBase
     {
         public LoadProcedureEditor()

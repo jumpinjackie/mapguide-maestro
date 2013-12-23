@@ -33,7 +33,7 @@ namespace Maestro.MapViewer
     public class DefaultToolbar : ToolStrip, IDefaultToolbar
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MgDefaultToolbar"/> class.
+        /// Initializes a new instance of the <see cref="DefaultToolbar"/> class.
         /// </summary>
         public DefaultToolbar()
             : base()
@@ -362,7 +362,7 @@ namespace Maestro.MapViewer
     }
 
     /// <summary>
-    /// Determines the behaviour of the zoom out command in the <see cref="MgDefaultToolbar"/>
+    /// Determines the behaviour of the zoom out command in the <see cref="DefaultToolbar"/>
     /// </summary>
     public enum ZoomOutMode
     {

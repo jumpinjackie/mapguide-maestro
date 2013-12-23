@@ -289,18 +289,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         }
 
         /// <summary>
-        /// Gets or sets the feature source id.
-        /// </summary>
-        /// <value>
-        /// The feature source id.
-        /// </value>
-        public string FeatureSourceId
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         /// Executes this instance.
         /// </summary>
         public void Execute()

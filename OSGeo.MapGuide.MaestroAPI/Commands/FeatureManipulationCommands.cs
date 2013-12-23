@@ -180,8 +180,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     /// Defines a command that inserts a series of features into a Feature Source
     /// </summary>
     /// <remarks>
+    /// <para>
     /// This command is only supported on certain implementations of <see cref="T:OSGeo.MapGuide.MaestroAPI.IServerConnection"/>
     /// You can find out if the connection supports this command through the <see cref="P:OSGeo.MapGuide.MaestroAPI.IServerConnection.Capabilities"/>
+    /// </para>
+    /// <para>
+    /// Nothing implements this interface at the moment
+    /// </para>
     /// </remarks>
     public interface IBatchInsertFeatures : IFeatureCommand
     {

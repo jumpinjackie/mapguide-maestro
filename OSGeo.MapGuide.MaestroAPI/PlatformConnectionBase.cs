@@ -1904,6 +1904,10 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
+        /// <summary>
+        /// Gets the MPU calculator
+        /// </summary>
+        /// <returns></returns>
         public virtual IMpuCalculator GetCalculator()
         {
             return new DefaultCalculator(this);
@@ -2211,7 +2215,6 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="runtimeMapResourceId"></param>
         /// <param name="mdf"></param>
         /// <param name="metersPerUnit"></param>
-        /// <param name="suppressErrors"></param>
         /// <returns></returns>
         public virtual RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, double metersPerUnit)
         {

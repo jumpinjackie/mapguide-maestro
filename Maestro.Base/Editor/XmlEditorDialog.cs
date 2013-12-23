@@ -33,8 +33,16 @@ using System.Xml.Schema;
 using Maestro.Base.UI.Preferences;
 using ICSharpCode.Core;
 
+#pragma warning disable 1591
+
 namespace Maestro.Base.Editor
 {
+    /// <summary>
+    /// A generic XML editor for any resource, housed within a dialog
+    /// </summary>
+    /// <remarks>
+    /// Although public, this class is undocumented and reserved for internal use by built-in Maestro AddIns
+    /// </remarks>
     public partial class XmlEditorDialog : Form, INotifyResourceChanged
     {
         private XmlEditorCtrl _ed;

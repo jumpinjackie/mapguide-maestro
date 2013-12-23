@@ -48,10 +48,14 @@ namespace Maestro.Editors.Common
         /// </summary>
         string Expression { get; set; }
 
+        /// <summary>
+        /// Shows the form as a modal dialog box
+        /// </summary>
+        /// <returns></returns>
         System.Windows.Forms.DialogResult ShowDialog();
     }
 
-    public static class FdoExpressionEditorFactory
+    internal static class FdoExpressionEditorFactory
     {
         public static IExpressionEditor Create()
         {

@@ -41,8 +41,14 @@ namespace Maestro.Shared.UI
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Gets whether this instance is a modal window
+        /// </summary>
         public virtual bool IsModalWindow { get { return false; } }
 
+        /// <summary>
+        /// Gets whether this instance can only be docked to the document region
+        /// </summary>
         public virtual bool IsExclusiveToDocumentRegion { get { return false; } }
 
         private string _title;
@@ -70,6 +76,10 @@ namespace Maestro.Shared.UI
 
         private Form _parent;
 
+        /// <summary>
+        /// Sets the parent form for this instance
+        /// </summary>
+        /// <param name="form"></param>
         public void SetParentForm(Form form)
         {
             if (_parent != null)

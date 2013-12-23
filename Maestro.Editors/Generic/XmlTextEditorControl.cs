@@ -51,6 +51,10 @@ namespace Maestro.Editors.Generic
             Document.FoldingManager.FoldingStrategy = new XmlFoldingStrategy();
         }
 
+        /// <summary>
+        /// Applies the given text editor properties
+        /// </summary>
+        /// <param name="props"></param>
         public void ApplySettings(ITextEditorProperties props)
         {
             this.TextEditorProperties = props;
@@ -87,6 +91,10 @@ namespace Maestro.Editors.Generic
 
         #region XML auto-completion stuff
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newControl"></param>
         protected override void InitializeTextAreaControl(TextAreaControl newControl)
         {
             base.InitializeTextAreaControl(newControl);
@@ -117,7 +125,7 @@ namespace Maestro.Editors.Generic
         /// allows us to share the completion data amongst multiple
         /// xml editor controls.
         /// </remarks>
-        public XmlSchemaCompletionDataCollection SchemaCompletionDataItems
+        internal XmlSchemaCompletionDataCollection SchemaCompletionDataItems
         {
             get
             {
@@ -133,7 +141,7 @@ namespace Maestro.Editors.Generic
         /// Gets or sets the default schema completion data associated with this
         /// view.
         /// </summary>
-        public XmlSchemaCompletionData DefaultSchemaCompletionData
+        internal XmlSchemaCompletionData DefaultSchemaCompletionData
         {
             get
             {
@@ -289,7 +297,7 @@ namespace Maestro.Editors.Generic
         /// CodeCompletionWindow.CaretOffsetChanged:
         /// <code>[[!CDATA[	int offset = control.ActiveTextAreaControl.Caret.Offset;
         ///
-        ///	if (offset < startOffset || offset > endOffset) {
+        ///	if (offset &lt; startOffset || offset &gt; endOffset) {
         ///		Close();
         ///	} else {
         ///		codeCompletionListView.SelectItemWithStart(control.Document.GetText(startOffset, offset - startOffset));
@@ -355,7 +363,7 @@ namespace Maestro.Editors.Generic
         #endregion
     }
 
-    public class TextEditorProperties : ITextEditorProperties
+    internal class TextEditorProperties : ITextEditorProperties
     {
         public bool CaretLine
         {

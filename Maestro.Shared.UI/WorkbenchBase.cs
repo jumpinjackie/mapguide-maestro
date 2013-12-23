@@ -28,6 +28,9 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace Maestro.Shared.UI
 {
+    /// <summary>
+    /// The Workbench base class
+    /// </summary>
     public partial class WorkbenchBase : Form
     {
         MenuStrip menu;
@@ -48,6 +51,10 @@ namespace Maestro.Shared.UI
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the WorkbenchBase class
+        /// </summary>
+        /// <param name="init"></param>
         protected WorkbenchBase(IWorkbenchInitializer init) : this()
         {
             _workbenchInitializer = init;
@@ -111,6 +118,11 @@ namespace Maestro.Shared.UI
 
         const string BASE_TOOLSTRIP = "Base"; //NOXLATE
 
+        /// <summary>
+        /// Called when a view content has been activated
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="content"></param>
         protected virtual void OnViewActivated(object sender, IViewContent content) { }
 
         private Dictionary<string, ToolStrip> _toolstrips;

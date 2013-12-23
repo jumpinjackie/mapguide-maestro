@@ -34,8 +34,16 @@ using OSGeo.MapGuide.ObjectModels;
 using Maestro.Base.UI.Preferences;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 
+#pragma warning disable 1591
+
 namespace Maestro.Base.Editor
 {
+    /// <summary>
+    /// A specialized editor for Layer Definition resources.
+    /// </summary>
+    /// <remarks>
+    /// Although public, this class is undocumented and reserved for internal use by built-in Maestro AddIns
+    /// </remarks>
     public partial class LayerDefinitionEditor : EditorContentBase
     {
         public LayerDefinitionEditor()

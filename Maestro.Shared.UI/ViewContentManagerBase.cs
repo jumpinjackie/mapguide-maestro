@@ -24,14 +24,35 @@ using Maestro.Shared.UI;
 
 namespace Maestro.Shared.UI
 {
+    /// <summary>
+    /// The base class for managing View Content instances
+    /// </summary>
     public abstract class ViewContentManagerBase : ServiceBase, IViewContentManager
     {
+        /// <summary>
+        /// A dictionary of single-instance view content types
+        /// </summary>
         protected Dictionary<string, Type> _singletonViewContentTypes = new Dictionary<string, Type>();
+
+        /// <summary>
+        /// A list of single-instance view content
+        /// </summary>
         protected List<IViewContent> _singletonInstances = new List<IViewContent>();
 
+        /// <summary>
+        /// Raised when a view is hidden
+        /// </summary>
         public event EventHandler ViewHidden;
+
+        /// <summary>
+        /// Raised when a view is activated
+        /// </summary>
         public event ViewEventHandler ViewActivated;
 
+        /// <summary>
+        /// Gets the workbench
+        /// </summary>
+        /// <returns></returns>
         protected abstract WorkbenchBase GetWorkbench();
 
         /// <summary>
@@ -43,6 +64,11 @@ namespace Maestro.Shared.UI
             base.Initialize();
         }
 
+        /// <summary>
+        /// Gets whether the given single-instance view content type has already been created
+        /// </summary>
+        /// <typeparam name="T">The type implementing the <see cref="T:Maestro.Shared.UI.IViewContent"/> interface</typeparam>
+        /// <returns></returns>
         public bool IsCreated<T>() where T : IViewContent
         {
             var type = typeof(T);
@@ -63,6 +89,10 @@ namespace Maestro.Shared.UI
             }
         }
 
+        /// <summary>
+        /// Hides the given single-instance view content
+        /// </summary>
+        /// <typeparam name="T">The type implementing the <see cref="T:Maestro.Shared.UI.IViewContent"/> interface</typeparam>
         public void HideContent<T>() where T : IViewContent
         {
             var type = typeof(T);
@@ -90,6 +120,10 @@ namespace Maestro.Shared.UI
             }
         }
 
+        /// <summary>
+        /// Displays the given single-instance view content
+        /// </summary>
+        /// <typeparam name="T">The type implementing the <see cref="T:Maestro.Shared.UI.IViewContent"/> interface</typeparam>
         public void ShowContent<T>() where T : IViewContent
         {
             var type = typeof(T);
@@ -117,21 +151,51 @@ namespace Maestro.Shared.UI
             }
         }
 
+        /// <summary>
+        /// Creates and/or opens the given view content in the specified region
+        /// </summary>
+        /// <typeparam name="T">The type implementing the <see cref="T:Maestro.Shared.UI.IViewContent"/> interface</typeparam>
+        /// <param name="region">The desired region to show the view content in</param>
+        /// <param name="method">A method that will create the required view content the view content has not been created yet</param>
+        /// <returns></returns>
         public T OpenContent<T>(ViewRegion region, CreateFunc<T> method) where T : IViewContent
         {
             return OpenContent<T>(null, null, region, method);
         }
 
+        /// <summary>
+        /// Creates and/or opens the given view content in the specified region
+        /// </summary>
+        /// <typeparam name="T">The type implementing the <see cref="T:Maestro.Shared.UI.IViewContent"/> interface</typeparam>
+        /// <param name="region">The desired region to show the view content in</param>
+        /// <returns></returns>
         public T OpenContent<T>(ViewRegion region) where T : IViewContent
         {
             return OpenContent<T>(null, null, region);
         }
 
+        /// <summary>
+        /// Creates and/or opens the given view content in the specified region
+        /// </summary>
+        /// <typeparam name="T">The type implementing the <see cref="T:Maestro.Shared.UI.IViewContent"/> interface</typeparam>
+        /// <param name="title"></param>
+        /// <param name="description"></param>
+        /// <param name="region">The desired region to show the view content in</param>
+        /// <returns></returns>
         public T OpenContent<T>(string title, string description, ViewRegion region) where T : IViewContent
         {
             return OpenContent<T>(title, description, region, () => { return (T)Activator.CreateInstance(typeof(T), true); });
         }
 
+        /// <summary>
+        /// Creates and/or opens the given view content in the specified region
+        /// </summary>
+        /// <typeparam name="T">The type implementing the <see cref="T:Maestro.Shared.UI.IViewContent"/> interface</typeparam>
+        /// <param name="title"></param>
+        /// <param name="description"></param>
+        /// <param name="region">The desired region to show the view content in</param>
+        /// <param name="method">A method that will create the required view content the view content has not been created yet</param>
+        /// <returns></returns>
         public T OpenContent<T>(string title, string description, ViewRegion region, CreateFunc<T> method) where T : IViewContent
         {
             var type = typeof(T);
@@ -166,5 +230,10 @@ namespace Maestro.Shared.UI
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="content"></param>
     public delegate void ViewEventHandler(object sender, IViewContent content);
 }

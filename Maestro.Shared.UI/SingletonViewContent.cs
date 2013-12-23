@@ -27,13 +27,22 @@ using System.Windows.Forms;
 
 namespace Maestro.Shared.UI
 {
+    /// <summary>
+    /// Represnents a single-instnace view content
+    /// </summary>
     public partial class SingletonViewContent : ViewContentBase
     {
+        /// <summary>
+        /// Initializes a new instance of the SingletonViewContent class
+        /// </summary>
         public SingletonViewContent()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Gets whether the user can close this instance manually
+        /// </summary>
         public override bool AllowUserClose
         {
             get
@@ -42,11 +51,17 @@ namespace Maestro.Shared.UI
             }
         }
 
+        /// <summary>
+        /// Does nothing.
+        /// </summary>
         public override void Close()
         {
             //Do nothing. Singletons aren't closeable
         }
 
+        /// <summary>
+        /// Gets the default view region
+        /// </summary>
         public override ViewRegion DefaultRegion
         {
             get

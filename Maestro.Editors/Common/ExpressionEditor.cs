@@ -59,6 +59,10 @@ namespace Maestro.Editors.Common
             _contextualBuffer = new StringBuilder();
         }
 
+        /// <summary>
+        /// Raises the System.Windows.Forms.Form.Load event.
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {
             _editor.SetParent(ExpressionText);

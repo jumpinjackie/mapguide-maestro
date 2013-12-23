@@ -151,7 +151,7 @@ namespace Maestro.Editors.Common
         /// <summary>
         /// Sets the parent control for this editor
         /// </summary>
-        /// <param name="frm"></param>
+        /// <param name="ctrl"></param>
         void SetParent(System.Windows.Forms.Control ctrl); 
     }
 }

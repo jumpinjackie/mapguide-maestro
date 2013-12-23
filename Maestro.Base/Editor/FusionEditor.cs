@@ -28,8 +28,16 @@ using Maestro.Editors;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using Maestro.Editors.Fusion;
 
+#pragma warning disable 1591
+
 namespace Maestro.Base.Editor
 {
+    /// <summary>
+    /// A specialized editor for Application Definition (Flexible Layout) resources.
+    /// </summary>
+    /// <remarks>
+    /// Although public, this class is undocumented and reserved for internal use by built-in Maestro AddIns
+    /// </remarks>
     public partial class FusionEditor: EditorContentBase
     {
         public FusionEditor()

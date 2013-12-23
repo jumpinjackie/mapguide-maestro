@@ -23,12 +23,24 @@ using System.Text;
 
 namespace Maestro.Shared.UI
 {
+    /// <summary>
+    /// The base class of all application services
+    /// </summary>
     public abstract class ServiceBase
     {
+        /// <summary>
+        /// Initializes this service
+        /// </summary>
         public virtual void Initialize() { }
 
+        /// <summary>
+        /// Load this service
+        /// </summary>
         public virtual void Load() { }
 
+        /// <summary>
+        /// Instructs this service to save any data before the application shuts down
+        /// </summary>
         public virtual void Save() { }
     }
 }

@@ -164,7 +164,7 @@ namespace Maestro.Base.Services
         /// <summary>
         /// Opens the specified resource using its assigned editor. If the resource is already
         /// open, the the existing editor view is activated instead. If the resource has no assigned
-        /// editor or <param name="useXmlEditor"/> is true, the resource will be opened in the default
+        /// editor or useXmlEditor is true, the resource will be opened in the default
         /// XML editor.
         /// </summary>
         /// <param name="res"></param>
@@ -244,12 +244,13 @@ namespace Maestro.Base.Services
         /// <summary>
         /// Opens the specified resource using its assigned editor. If the resource is already
         /// open, the the existing editor view is activated instead. If the resource has no assigned
-        /// editor or <param name="useXmlEditor"/> is true, the resource will be opened in the default
+        /// editor or useXmlEditor is true, the resource will be opened in the default
         /// XML editor.
         /// </summary>
         /// <param name="resourceId"></param>
         /// <param name="conn"></param>
         /// <param name="useXmlEditor"></param>
+        /// <param name="siteExp"></param>
         public IEditorViewContent Open(string resourceId, IServerConnection conn, bool useXmlEditor, ISiteExplorer siteExp)
         {
             IResource res = null;

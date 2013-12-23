@@ -30,7 +30,7 @@ namespace Maestro.Base.Editor
     /// <summary>
     /// A placeholder control for resource sub-types that cannot be edited with a specialized editor
     /// </summary>
-    public partial class UnsupportedEditorControl : UserControl
+    internal partial class UnsupportedEditorControl : UserControl
     {
         public UnsupportedEditorControl()
         {

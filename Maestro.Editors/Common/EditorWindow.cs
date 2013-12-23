@@ -110,6 +110,11 @@ namespace Maestro.Editors.Common
         //infrastructure and not available in this standalone library
         private Generic.XmlEditorCtrl _ed;
 
+        /// <summary>
+        /// Initializes a new instance of the EditorWindow class
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="resourceId"></param>
         public EditorWindow(IServerConnection conn, string resourceId)
             : this()
         {

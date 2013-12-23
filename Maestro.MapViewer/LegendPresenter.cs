@@ -886,12 +886,24 @@ namespace Maestro.MapViewer
                 this.Checkable = true;
             }
 
+            /// <summary>
+            /// Gets the legend label
+            /// </summary>
             public string LegendLabel { get { return this.Group.LegendLabel; } }
 
+            /// <summary>
+            /// Gets the name of the parent group
+            /// </summary>
             public string ParentGroupName { get { return this.Group.Group; } }
 
+            /// <summary>
+            /// Gets the name of this group
+            /// </summary>
             public string Name { get { return this.Group.Name; } }
 
+            /// <summary>
+            /// Gets the unique id of this group
+            /// </summary>
             public override string ObjectId
             {
                 get { return this.Group.ObjectId; }
@@ -912,12 +924,24 @@ namespace Maestro.MapViewer
                 this.Checkable = false;
             }
 
+            /// <summary>
+            /// Gets whether this node is a placeholder
+            /// </summary>
             public bool IsPlaceholder { get; private set; }
-
+            
+            /// <summary>
+            /// Gets the icon for this theme node
+            /// </summary>
             public Image ThemeIcon { get; set; }
 
+            /// <summary>
+            /// Gets the label for this theme node
+            /// </summary>
             public string Label { get; private set; }
 
+            /// <summary>
+            /// Gets the unique id for this node
+            /// </summary>
             public override string ObjectId
             {
                 get { return string.Empty; }
@@ -986,6 +1010,10 @@ namespace Maestro.MapViewer
         [DebuggerDisplay("Name = {Layer.Name}, Label = {Layer.LegendLabel}")]
         public class LayerNodeMetadata : LegendNodeMetadata
         {
+            /// <summary>
+            /// Initializes a new instance of the LayerNodeMetadata class
+            /// </summary>
+            /// <param name="layer"></param>
             public LayerNodeMetadata(RuntimeMapLayer layer)
                 : this(layer, layer.Selectable, layer.Type == RuntimeMapLayer.kBaseMap)
             {
@@ -1099,12 +1127,21 @@ namespace Maestro.MapViewer
 
             internal bool DrawSelectabilityIcon { get; set; }
 
+            /// <summary>
+            /// Gets or sets whether the layer is selectable
+            /// </summary>
             public bool IsSelectable { get; set; }
 
             internal bool WasInitiallySelectable { get; private set; }
 
+            /// <summary>
+            /// Gets or sets whether the layer is a base (tiled) layer
+            /// </summary>
             public bool IsBaseLayer { get; set; }
 
+            /// <summary>
+            /// Gets or sets the Layer Definition XML content
+            /// </summary>
             public string LayerDefinitionContent { get; set; }
 
             private Dictionary<ThemeCategory, List<LayerThemeNodeMetadata>> _themeNodes;

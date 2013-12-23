@@ -25,6 +25,10 @@ using System.Windows.Forms;
 
 namespace Maestro.Shared.UI
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
     public delegate object BusyWaitDelegate();
     
     /// <summary>
@@ -45,20 +49,44 @@ namespace Maestro.Shared.UI
             _culture = culture;
         }
         
+        /// <summary>
+        /// Raises the System.Windows.Forms.Form.Load event.
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
             bgWorker.RunWorkerAsync();
         }
         
+        /// <summary>
+        /// Gets the return value of the completed background worker (if any)
+        /// </summary>
         public object ReturnValue { get; private set; }
+
+        /// <summary>
+        /// Gets the error thrown by the completed background worker (if any)
+        /// </summary>
         public Exception Error { get; private set; }
 
+        /// <summary>
+        /// Opens a modal dialog to execute the given delegate in a background worker
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="action"></param>
+        /// <param name="onComplete"></param>
         public static void Run(string message, BusyWaitDelegate action, Action<object, Exception> onComplete)
         {
             Run(message, action, onComplete, true);
         }
 
+        /// <summary>
+        /// Opens a modal dialog to execute the given delegate in a background worker
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="action"></param>
+        /// <param name="onComplete"></param>
+        /// <param name="bPreserveThreadCulture"></param>
         public static void Run(string message, BusyWaitDelegate action, Action<object, Exception> onComplete, bool bPreserveThreadCulture)
         {
             if (action == null)

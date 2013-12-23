@@ -47,7 +47,7 @@ namespace Maestro.Editors.Generic.XmlEditor
     /// This class currently inserts the closing tags to typed openening tags
     /// and does smart indentation for xml files.
     /// </summary>
-    public class XmlFormattingStrategy : DefaultFormattingStrategy
+    internal class XmlFormattingStrategy : DefaultFormattingStrategy
     {
         public override void FormatLine(TextArea textArea, int lineNr, int caretOffset, char charTyped) // used for comment tag formater/inserter
         {

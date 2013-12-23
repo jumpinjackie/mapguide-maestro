@@ -28,7 +28,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Login
 {
-    public partial class LocalNativeStubCtrl : UserControl, ILoginCtrl
+    internal partial class LocalNativeStubCtrl : UserControl, ILoginCtrl
     {
         public LocalNativeStubCtrl()
         {

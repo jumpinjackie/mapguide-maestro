@@ -39,6 +39,9 @@ using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.MapViewer
 {
+    /// <summary>
+    /// An interactive map viewer control
+    /// </summary>
     [ToolboxItem(true)]
     public class MapViewer : Control, IMapViewer
     {
@@ -1686,6 +1689,13 @@ namespace Maestro.MapViewer
             _extY2 = coord.Y - mcsHeight / 2;
         }
         
+        /// <summary>
+        /// Gets the current view extent
+        /// </summary>
+        /// <param name="minX"></param>
+        /// <param name="minY"></param>
+        /// <param name="maxX"></param>
+        /// <param name="maxY"></param>
         public void GetViewExtent(out double minX, out double minY, out double maxX, out double maxY)
         {
             //NOTE: Something strange about the AJAX viewer code we grafted this from. Y2 is not the max Y, Y1 is the max Y.
@@ -2207,6 +2217,10 @@ namespace Maestro.MapViewer
             };
         }
 
+        /// <summary>
+        /// Raises the System.Windows.Forms.Control.Resize event
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnResize(EventArgs e)
         {
             OnControlResized(this, e);

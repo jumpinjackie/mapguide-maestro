@@ -38,7 +38,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
     /// <summary>
     /// Represents an association between an xml schema and a file extension.
     /// </summary>
-    public class XmlSchemaAssociation //: IXmlConvertable
+    internal class XmlSchemaAssociation //: IXmlConvertable
     {
         string namespaceUri = String.Empty;
         string extension = String.Empty;

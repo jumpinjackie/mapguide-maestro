@@ -42,7 +42,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.Common
 {
-    public abstract class TextEditorBase : ITextEditor
+    internal abstract class TextEditorBase : ITextEditor
     {
         delegate string GetLineInvoker(int index);
         delegate void WriteInvoker(string text, Color color, Color fore);
@@ -242,8 +242,16 @@ namespace Maestro.Editors.Common
         public virtual void SetParent(Control frm) { } 
     }
 
+    /// <summary>
+    /// Resolves the appropriate ITextEditor instance for the given text editor
+    /// </summary>
     public static class TextEditorFactory
     {
+        /// <summary>
+        /// Creates the appropriate ITextEditor instance for the given text editor
+        /// </summary>
+        /// <param name="textEditor">The text editor instance</param>
+        /// <returns></returns>
         public static ITextEditor CreateEditor(TextEditorControl textEditor)
         {
             if (Platform.IsRunningOnMono)
@@ -285,7 +293,7 @@ namespace Maestro.Editors.Common
         {
             //Not ready for beta 5. Remove after release of beta 5.
             return;
-
+            /*
             var context = new AutoCompletionListBox.AutoCompleteContext()
             {
                 AutoCompleteTooltip = _autoCompleteTooltip,
@@ -296,6 +304,7 @@ namespace Maestro.Editors.Common
                 InsertionOffset = textEditorControl.ActiveTextAreaControl.Caret.Offset
             };
             _autoBox.SetCompletionItems(textEditorControl.ParentForm, context, string.Empty);
+             */
         }
 
         private Point GetCaretPoint()

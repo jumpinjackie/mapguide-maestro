@@ -41,7 +41,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
     /// Keeps track of all the schemas that the Xml Editor is aware
     /// of.
     /// </summary>
-    public class XmlSchemaManager
+    internal class XmlSchemaManager
     {
         public const string XmlSchemaNamespace = "http://www.w3.org/2001/XMLSchema";
 
@@ -82,7 +82,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Gets the schemas that SharpDevelop knows about.
         /// </summary>
-        public XmlSchemaCompletionDataCollection SchemaCompletionDataItems
+        internal XmlSchemaCompletionDataCollection SchemaCompletionDataItems
         {
             get
             {
@@ -94,7 +94,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// Gets the schema completion data that is associated with the
         /// specified file extension.
         /// </summary>
-        public XmlSchemaCompletionData GetSchemaCompletionData(string extension)
+        internal XmlSchemaCompletionData GetSchemaCompletionData(string extension)
         {
             XmlSchemaCompletionData data = null;
 

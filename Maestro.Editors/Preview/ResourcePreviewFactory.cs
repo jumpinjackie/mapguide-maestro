@@ -37,7 +37,6 @@ namespace Maestro.Editors.Preview
         /// </summary>
         /// <param name="provider">The name of the connection provider</param>
         /// <param name="previewer">The previewer implementation</param>
-        /// <param name="launcher">The URL launcher</param>
         public static void RegisterPreviewer(string provider, IResourcePreviewer previewer)
         {
             _previewers[provider.ToUpper()] = previewer;

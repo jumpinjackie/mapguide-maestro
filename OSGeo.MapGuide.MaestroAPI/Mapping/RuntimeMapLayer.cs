@@ -124,6 +124,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Initializes this instances from the specified Layer Definition
         /// </summary>
         /// <param name="ldf"></param>
+        /// <param name="suppressErrors"></param>
         protected void Initialize(ILayerDefinition ldf, bool suppressErrors)
         {
             Check.NotNull(ldf, "ldf"); //NOXLATE

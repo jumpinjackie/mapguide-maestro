@@ -31,6 +31,10 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.FeatureSource
 {
+    /// <summary>
+    /// A dialog that allows for the easy creation of Layer Definitions with default styles from one or more selected
+    /// feature classes in the given feature source
+    /// </summary>
     public partial class CreateLayersFromFeatureSourceDialog : Form
     {
         private CreateLayersFromFeatureSourceDialog()
@@ -40,6 +44,11 @@ namespace Maestro.Editors.FeatureSource
 
         private IServerConnection _conn;
 
+        /// <summary>
+        /// Initializes a new instance of the CreateLayersFromFeatureSourceDialog class
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="featureSource"></param>
         public CreateLayersFromFeatureSourceDialog(IServerConnection conn, string featureSource)
             : this()
         {
@@ -47,6 +56,10 @@ namespace Maestro.Editors.FeatureSource
             txtFeatureSource.Text = featureSource;
         }
 
+        /// <summary>
+        /// Raises the System.Windows.Forms.Form.Load event.
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {
             LoadFeatureClassesAsync();
@@ -81,16 +94,25 @@ namespace Maestro.Editors.FeatureSource
                                 lstFeatureClasses.SelectedItems.Count > 0;
         }
 
+        /// <summary>
+        /// Gets the selected Feature Source
+        /// </summary>
         public string FeatureSource
         {
             get { return txtFeatureSource.Text; }
         }
 
+        /// <summary>
+        /// Gets the selected target folder where default Layer Definitions will be created
+        /// </summary>
         public string TargetFolder
         {
             get { return txtCreateTargetFolder.Text; }
         }
-
+        
+        /// <summary>
+        /// Gets the selected feature classes to create default Layer Definition documents for
+        /// </summary>
         public string[] FeatureClasses
         {
             get

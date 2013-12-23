@@ -33,6 +33,9 @@ namespace Maestro.MapViewer
     {
         private IMapViewer _viewer;
 
+        /// <summary>
+        /// Gets the viewer that is being wired
+        /// </summary>
         public IMapViewer Viewer
         {
             get { return _viewer; }

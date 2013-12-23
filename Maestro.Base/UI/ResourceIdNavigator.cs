@@ -129,8 +129,6 @@ namespace Maestro.Base.UI
             }
         }
 
-        private bool bNoRaiseEvents = false;
-
         void OnViewActivated(object sender, Shared.UI.IViewContent content)
         {
             var ed = content as IEditorViewContent;

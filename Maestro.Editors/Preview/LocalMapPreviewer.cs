@@ -32,22 +32,38 @@ using System.Text;
 
 namespace Maestro.Editors.Preview
 {
+    /// <summary>
+    /// A resource previewer that uses the built-in map viewer component
+    /// </summary>
     public class LocalMapPreviewer : IResourcePreviewer
     {
         private IResourcePreviewer _inner;
         private IUrlLauncherService _launcher;
         
+        /// <summary>
+        /// Initializes a new instance of the LocalMapPreviewer class
+        /// </summary>
+        /// <param name="inner">The inner resource previewer</param>
+        /// <param name="launcher">The URL launcher service</param>
         public LocalMapPreviewer(IResourcePreviewer inner, IUrlLauncherService launcher)
         {
             _inner = inner;
             _launcher = launcher;
         }
 
+        /// <summary>
+        /// Gets whether to use the built-in map viewer for previewing
+        /// </summary>
         public bool UseLocal
         {
             get { return PreviewSettings.UseLocalPreview; }
         }
 
+        /// <summary>
+        /// Gets whether the given resource is previewable with this previewer
+        /// </summary>
+        /// <param name="res"></param>
+        /// <returns></returns>
         public bool IsPreviewable(IResource res)
         {
             if (this.UseLocal)
@@ -67,6 +83,11 @@ namespace Maestro.Editors.Preview
                    res.ResourceType == ResourceTypes.WatermarkDefinition;
         }
 
+        /// <summary>
+        /// Previews the given resource
+        /// </summary>
+        /// <param name="res"></param>
+        /// <param name="edSvc"></param>
         public void Preview(IResource res, IEditorService edSvc)
         {
             Preview(res, edSvc, null);
@@ -77,6 +98,12 @@ namespace Maestro.Editors.Preview
             return Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0;
         }
 
+        /// <summary>
+        /// Previews the given resource
+        /// </summary>
+        /// <param name="res"></param>
+        /// <param name="edSvc"></param>
+        /// <param name="locale"></param>
         public void Preview(IResource res, IEditorService edSvc, string locale)
         {
             IServerConnection conn = res.CurrentConnection;

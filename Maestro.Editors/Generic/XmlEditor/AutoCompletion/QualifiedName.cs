@@ -45,7 +45,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
     /// class just adds this extra information alongside the 
     /// <see cref="XmlQualifiedName"/>.
     /// </remarks>
-    public class QualifiedName
+    internal class QualifiedName
     {
         XmlQualifiedName xmlQualifiedName = XmlQualifiedName.Empty;
         string prefix = String.Empty;
@@ -111,6 +111,10 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return equals;
         }
 
+        /// <summary>
+        /// Returns the hash code for the QualifiedName
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return xmlQualifiedName.GetHashCode();

@@ -53,7 +53,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         /// </summary>
         /// <param name="parent">The parent.</param>
         /// <param name="styles">The styles.</param>
-        public void Load(IVectorScaleRange2 parent, BindingList<ICompositeTypeStyle> styles)
+        public void LoadStyles(IVectorScaleRange2 parent, BindingList<ICompositeTypeStyle> styles)
         {
             _parent = parent;
             foreach (var ctrl in _controls.Values)

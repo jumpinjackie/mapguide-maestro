@@ -114,6 +114,11 @@ namespace Maestro.Base.UI
             return _children.ContainsKey(name);
         }
 
+        /// <summary>
+        /// Gets the child RepositoryItem by its name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public RepositoryItem this[string name]
         {
             get { return _children[name]; }

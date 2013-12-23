@@ -96,6 +96,9 @@ namespace Maestro.Editors.MapDefinition
         private IMapDefinition _shadowCopy;
         private IMappingService _mapSvc;
 
+        /// <summary>
+        /// Gets the runtime map being edited
+        /// </summary>
         public RuntimeMap Map
         {
             get { return _rtMap; }
@@ -124,11 +127,17 @@ namespace Maestro.Editors.MapDefinition
             ReloadViewer();
         }
 
+        /// <summary>
+        /// Rebuilds the current Runtime Map
+        /// </summary>
         public void RebuildRuntimeMap()
         {
             _rtMap = _mapSvc.CreateMap(_shadowCopy);
         }
 
+        /// <summary>
+        /// Reloads the current viewer
+        /// </summary>
         public void ReloadViewer()
         {
             viewer.LoadMap(_rtMap);

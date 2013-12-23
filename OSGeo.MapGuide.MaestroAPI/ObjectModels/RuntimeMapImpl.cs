@@ -323,6 +323,9 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
 
         RuleInfoCollection _roRules;
 
+        /// <summary>
+        /// Gets the rules in this feature style
+        /// </summary>
         public IRuleInfoCollection Rules
         {
             get 

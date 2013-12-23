@@ -39,8 +39,16 @@ using Maestro.Base.Services;
 using Maestro.Editors.Common;
 using Maestro.Editors.Preview;
 
+#pragma warning disable 1591
+
 namespace Maestro.Base.Editor
 {
+    /// <summary>
+    /// A generic XML editor for any resource.
+    /// </summary>
+    /// <remarks>
+    /// Although public, this class is undocumented and reserved for internal use by built-in Maestro AddIns
+    /// </remarks>
     public partial class XmlEditor : EditorContentBase
     {
         public XmlEditor()

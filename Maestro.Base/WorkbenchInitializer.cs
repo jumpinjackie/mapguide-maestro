@@ -32,8 +32,15 @@ namespace Maestro.Base
     /// </summary>
     public class WorkbenchInitializer : IWorkbenchInitializer
     {
+        /// <summary>
+        /// Initializes a new instance of the WorkbenchInitializer class
+        /// </summary>
+        /// <param name="bStartMaximized"></param>
         public WorkbenchInitializer(bool bStartMaximized) { this.StartMaximized = bStartMaximized; }
 
+        /// <summary>
+        /// Gets whether the workbench will start fully maximized
+        /// </summary>
         public bool StartMaximized { get; private set; }
 
         /// <summary>

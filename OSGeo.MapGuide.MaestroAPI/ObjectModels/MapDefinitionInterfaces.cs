@@ -534,6 +534,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         /// </summary>
         /// <param name="map"></param>
         /// <param name="group"></param>
+        /// <param name="bDetachIfEmpty"></param>
         public static void RemoveBaseLayerGroup(this IMapDefinition map, IBaseMapGroup group, bool bDetachIfEmpty)
         {
             Check.NotNull(map, "map"); //NOXLATE

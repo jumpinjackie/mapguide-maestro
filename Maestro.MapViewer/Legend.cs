@@ -35,8 +35,16 @@ using Maestro.MapViewer.Model;
 
 namespace Maestro.MapViewer
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="node"></param>
     public delegate void NodeEventHandler(object sender, TreeNode node);
 
+    /// <summary>
+    /// A control that displays a legend for a map and provides interactive layer toggling capabilities
+    /// </summary>
     public partial class Legend : UserControl, INotifyPropertyChanged
     {
         const string IMG_BROKEN = "lc_broken";
@@ -174,6 +182,9 @@ namespace Maestro.MapViewer
             }
         }
 
+        /// <summary>
+        /// Raised when a control property has changed
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)
@@ -237,6 +248,9 @@ namespace Maestro.MapViewer
             }
         }
 
+        /// <summary>
+        /// Gets the selected node of the legend control
+        /// </summary>
         public TreeNode SelectedNode { get { return trvLegend.SelectedNode; } }
 
         private static void ClearNodes(TreeNodeCollection nodes)

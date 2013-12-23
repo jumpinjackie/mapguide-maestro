@@ -30,6 +30,9 @@ using Maestro.Base.UI;
 
 namespace Maestro.Base
 {
+    /// <summary>
+    /// The top level application window
+    /// </summary>
     public partial class Workbench : WorkbenchBase
     {
         static Workbench instance;
@@ -99,6 +102,11 @@ namespace Maestro.Base
         /// </summary>
         public event EventHandler ActiveDocumentChanged;
 
+        /// <summary>
+        /// Raises the ActiveDocumentChanged event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="content"></param>
         protected override void OnViewActivated(object sender, IViewContent content)
         {
             var h = this.ActiveDocumentChanged;
@@ -106,6 +114,10 @@ namespace Maestro.Base
                 h(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the Workbench class
+        /// </summary>
+        /// <param name="init">The workbench initializer</param>
         public Workbench(IWorkbenchInitializer init) : base(init) { }
     }
 }

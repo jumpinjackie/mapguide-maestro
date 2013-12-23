@@ -26,8 +26,16 @@ using System.Text;
 using System.Windows.Forms;
 using Maestro.Editors.PrintLayout;
 
+#pragma warning disable 1591
+
 namespace Maestro.Base.Editor
 {
+    /// <summary>
+    /// A specialized editor for Print Layout resources.
+    /// </summary>
+    /// <remarks>
+    /// Although public, this class is undocumented and reserved for internal use by built-in Maestro AddIns
+    /// </remarks>
     public partial class PrintLayoutEditor : EditorContentBase
     {
         public PrintLayoutEditor()

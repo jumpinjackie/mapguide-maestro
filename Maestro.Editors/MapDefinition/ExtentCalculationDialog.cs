@@ -161,7 +161,6 @@ namespace Maestro.Editors.MapDefinition
             }
 
             Check.NotNull(layers, "layers");
-            IEnvelope env = null;
             int processed = 0;
 
             //Begin

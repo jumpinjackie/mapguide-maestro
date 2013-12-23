@@ -40,6 +40,9 @@ using Maestro.Base.Services;
 
 namespace Maestro.Base.UI
 {
+    /// <summary>
+    /// A dialog that displays various properties of a given resource
+    /// </summary>
     public partial class ResourcePropertiesDialog : Form
     {
         private ResourcePropertiesDialog()
@@ -92,6 +95,14 @@ namespace Maestro.Base.UI
         private OpenResourceManager _openMgr;
         private ISiteExplorer _siteExp;
 
+        /// <summary>
+        /// Initializes a new instance of the ResourcePropertiesDialog class
+        /// </summary>
+        /// <param name="icons"></param>
+        /// <param name="connection"></param>
+        /// <param name="resourceId"></param>
+        /// <param name="openMgr"></param>
+        /// <param name="siteExp"></param>
         public ResourcePropertiesDialog(IResourceIconCache icons, IServerConnection connection, string resourceId, OpenResourceManager openMgr, ISiteExplorer siteExp)
             : this()
         {
@@ -105,6 +116,10 @@ namespace Maestro.Base.UI
             InReferenceList.SmallImageList = OutReferenceList.SmallImageList = icons.SmallImageList;
         }
 
+        /// <summary>
+        /// Raises the System.Windows.Forms.Form.Load event
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {
             Dictionary<string, ListViewItem> ul = new Dictionary<string, ListViewItem>();

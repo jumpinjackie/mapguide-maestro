@@ -31,16 +31,36 @@ namespace Maestro.Editors.Preview
     /// </summary>
     public class StubPreviewer : IResourcePreviewer
     {
+        /// <summary>
+        /// Gets whether the specified resource can be previewed
+        /// </summary>
+        /// <param name="res"></param>
+        /// <returns></returns>
         public bool IsPreviewable(IResource res)
         {
             return false;
         }
 
+        /// <summary>
+        /// Previews the specified resource
+        /// </summary>
+        /// <param name="res">The resource to be previewed</param>
+        /// <param name="edSvc">The editor service</param>
         public void Preview(IResource res, IEditorService edSvc)
         {
 
         }
 
+        /// <summary>
+        /// Previews the specified resource using the given locale
+        /// </summary>
+        /// <param name="res">The resource to be previewed</param>
+        /// <param name="edSvc">The editor service</param>
+        /// <param name="locale">The locale</param>
+        /// <remarks>
+        /// The locale parameter should be treated as a hint. The underlying <see cref="T:OSGeo.MapGuide.MaestroAPI.IServerConnection"/> implementation
+        /// may not actually respect this value.
+        /// </remarks>
         public void Preview(IResource res, IEditorService edSvc, string locale)
         {
 

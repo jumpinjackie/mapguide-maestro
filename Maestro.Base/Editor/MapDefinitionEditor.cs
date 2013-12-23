@@ -30,8 +30,16 @@ using ICSharpCode.Core;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using Maestro.Editors.MapDefinition;
 
+#pragma warning disable 1591
+
 namespace Maestro.Base.Editor
 {
+    /// <summary>
+    /// A specialized editor for Map Definition resources.
+    /// </summary>
+    /// <remarks>
+    /// Although public, this class is undocumented and reserved for internal use by built-in Maestro AddIns
+    /// </remarks>
     public partial class MapDefinitionEditor : EditorContentBase
     {
         public MapDefinitionEditor()

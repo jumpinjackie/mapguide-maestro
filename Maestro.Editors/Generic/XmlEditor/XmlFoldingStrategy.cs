@@ -51,6 +51,13 @@ namespace Maestro.Editors.Generic.XmlEditor
         string name = String.Empty;
         string foldText = String.Empty;
 
+        /// <summary>
+        /// Initializes a new instance of the XmlFoldStart class
+        /// </summary>
+        /// <param name="prefix"></param>
+        /// <param name="name"></param>
+        /// <param name="line"></param>
+        /// <param name="col"></param>
         public XmlFoldStart(string prefix, string name, int line, int col)
         {
             this.line = line;
@@ -127,6 +134,9 @@ namespace Maestro.Editors.Generic.XmlEditor
         /// </summary>
         bool showAttributesWhenFolded = false;
 
+        /// <summary>
+        /// Initializes a new instance of the XmlFoldingStrategy class
+        /// </summary>
         public XmlFoldingStrategy()
         {
         }

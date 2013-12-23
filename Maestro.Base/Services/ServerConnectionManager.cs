@@ -45,12 +45,19 @@ namespace Maestro.Base.Services
     /// </summary>
     public class ServerConnectionRemovingEventArgs : CancelEventArgs
     {
+        /// <summary>
+        /// Initializes a new instance of the ServerConnectionRemovingEventArgs class
+        /// </summary>
+        /// <param name="name"></param>
         public ServerConnectionRemovingEventArgs(string name)
         {
             this.ConnectionName = name;
             base.Cancel = false;
         }
 
+        /// <summary>
+        /// Gets the name of the connection that is about to be closed
+        /// </summary>
         public string ConnectionName { get; set; }
     }
 

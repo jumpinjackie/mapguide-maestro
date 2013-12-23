@@ -30,8 +30,16 @@ using ICSharpCode.Core;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using Maestro.Editors.FeatureSource;
 
+#pragma warning disable 1591
+
 namespace Maestro.Base.Editor
 {
+    /// <summary>
+    /// A specialized editor for Feature Source resources.
+    /// </summary>
+    /// <remarks>
+    /// Although public, this class is undocumented and reserved for internal use by built-in Maestro AddIns
+    /// </remarks>
     public partial class FeatureSourceEditor : EditorContentBase
     {
         public FeatureSourceEditor()

@@ -263,6 +263,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="mdf">The map definition to create this map from.</param>
         /// <param name="metersPerUnit">The meters per unit value</param>
+        /// <param name="suppressErrors"></param>
         internal RuntimeMap(IMapDefinition mdf, double metersPerUnit, bool suppressErrors)
             : this(mdf.CurrentConnection)
         {
@@ -1823,5 +1824,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="layer"></param>
     public delegate void LayerEventHandler(object sender, RuntimeMapLayer layer);
 }

@@ -894,6 +894,8 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// </summary>
         /// <remarks>If the index outside the start tag then an empty path
         /// is returned.</remarks>
+        /// <param name="index"></param>
+        /// <param name="xml"></param>
         /// <param name="namespaces">Returns the namespaces that are
         /// exist in the xml.</param>
         static XmlElementPath GetActiveElementStartPath(string xml, int index, QualifiedNameCollection namespaces)

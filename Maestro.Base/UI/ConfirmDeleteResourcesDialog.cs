@@ -28,6 +28,10 @@ using System.Windows.Forms;
 
 namespace Maestro.Base.UI
 {
+    /// <summary>
+    /// A dialog that is used to provide a detailed confirmation prompt when deleting a resource
+    /// with dependent resources.
+    /// </summary>
     public partial class ConfirmDeleteResourcesDialog : Form
     {
         private ConfirmDeleteResourcesDialog()
@@ -35,6 +39,10 @@ namespace Maestro.Base.UI
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the ConfirmDeleteResourcesDialog class
+        /// </summary>
+        /// <param name="dependents"></param>
         public ConfirmDeleteResourcesDialog(IEnumerable<Editors.RepositoryHandle> dependents)
             : this()
         {

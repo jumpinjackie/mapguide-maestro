@@ -36,7 +36,7 @@ using Maestro.Editors.Preview;
 
 namespace Maestro.Base.Editor
 {
-    public class ResourceEditorService : ResourceEditorServiceBase
+    internal class ResourceEditorService : ResourceEditorServiceBase
     {
         private IUrlLauncherService _launcher;
         private ISiteExplorer _siteExp;

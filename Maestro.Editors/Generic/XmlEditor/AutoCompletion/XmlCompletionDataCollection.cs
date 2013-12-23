@@ -100,7 +100,6 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// </remarks>
         /// <param name='val'>The <see cref='XmlCompletionData'/> to add.</param>
         /// <returns>The index at which the new element was inserted.</returns>
-        /// <seealso cref='XmlCompletionDataCollection.AddRange'/>
         public int Add(XmlCompletionData val)
         {
             int index = -1;
@@ -195,11 +194,11 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         ///   <para><paramref name='array'/> is multidimensional.</para>
         ///   <para>-or-</para>
         ///   <para>The number of elements in the <see cref='XmlCompletionDataCollection'/> is greater than
-        ///         the available space between <paramref name='arrayIndex'/> and the end of
+        ///         the available space between <paramref name='index'/> and the end of
         ///         <paramref name='array'/>.</para>
         /// </exception>
         /// <exception cref='ArgumentNullException'><paramref name='array'/> is <see langword='null'/>. </exception>
-        /// <exception cref='ArgumentOutOfRangeException'><paramref name='arrayIndex'/> is less than <paramref name='array'/>'s lowbound. </exception>
+        /// <exception cref='ArgumentOutOfRangeException'><paramref name='index'/> is less than <paramref name='array'/>'s lowbound. </exception>
         /// <seealso cref='Array'/>
         public void CopyTo(XmlCompletionData[] array, int index)
         {
@@ -224,7 +223,6 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         ///   The index of the <see cref='XmlCompletionData'/> of <paramref name='val'/> in the 
         ///   <see cref='XmlCompletionDataCollection'/>, if found; otherwise, -1.
         /// </returns>
-        /// <seealso cref='XmlCompletionDataCollection.Contains'/>
         public int IndexOf(XmlCompletionData val)
         {
             return List.IndexOf(val);

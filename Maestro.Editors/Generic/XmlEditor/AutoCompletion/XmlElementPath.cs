@@ -39,7 +39,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
     /// Represents the path to an xml element starting from the root of the
     /// document.
     /// </summary>
-    public class XmlElementPath
+    internal class XmlElementPath
     {
         QualifiedNameCollection elements = new QualifiedNameCollection();
 

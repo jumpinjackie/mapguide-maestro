@@ -28,8 +28,16 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 using Maestro.Editors;
 using Maestro.Editors.WatermarkDefinition;
 
+#pragma warning disable 1591
+
 namespace Maestro.Base.Editor
 {
+    /// <summary>
+    /// A specialized editor for Watermark Definition resources.
+    /// </summary>
+    /// <remarks>
+    /// Although public, this class is undocumented and reserved for internal use by built-in Maestro AddIns
+    /// </remarks>
     public partial class WatermarkDefinitionEditor : EditorContentBase
     {
         public WatermarkDefinitionEditor()

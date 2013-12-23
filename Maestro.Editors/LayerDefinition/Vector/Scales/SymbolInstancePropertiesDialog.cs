@@ -32,7 +32,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
-    public partial class SymbolInstancePropertiesDialog : Form
+    internal partial class SymbolInstancePropertiesDialog : Form
     {
         private SymbolInstancePropertiesDialog()
         {

@@ -40,7 +40,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
     ///   A collection that stores <see cref='QualifiedName'/> objects.
     /// </summary>
     [Serializable()]
-    public class QualifiedNameCollection : CollectionBase
+    internal class QualifiedNameCollection : CollectionBase
     {
 
         /// <summary>
@@ -96,7 +96,6 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// </summary>
         /// <param name='val'>The <see cref='QualifiedName'/> to add.</param>
         /// <returns>The index at which the new element was inserted.</returns>
-        /// <seealso cref='QualifiedNameCollection.AddRange'/>
         public int Add(QualifiedName val)
         {
             return List.Add(val);
@@ -157,11 +156,11 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         ///   <para><paramref name='array'/> is multidimensional.</para>
         ///   <para>-or-</para>
         ///   <para>The number of elements in the <see cref='QualifiedNameCollection'/> is greater than
-        ///         the available space between <paramref name='arrayIndex'/> and the end of
+        ///         the available space between <paramref name='index'/> and the end of
         ///         <paramref name='array'/>.</para>
         /// </exception>
         /// <exception cref='ArgumentNullException'><paramref name='array'/> is <see langword='null'/>. </exception>
-        /// <exception cref='ArgumentOutOfRangeException'><paramref name='arrayIndex'/> is less than <paramref name='array'/>'s lowbound. </exception>
+        /// <exception cref='ArgumentOutOfRangeException'><paramref name='index'/> is less than <paramref name='array'/>'s lowbound. </exception>
         /// <seealso cref='Array'/>
         public void CopyTo(QualifiedName[] array, int index)
         {

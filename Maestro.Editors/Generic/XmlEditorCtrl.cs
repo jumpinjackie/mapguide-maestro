@@ -98,6 +98,10 @@ namespace Maestro.Editors.Generic
             txtXmlContent.TextChanged += new EventHandler(OnTextContentChanged);
         }
 
+        /// <summary>
+        /// Initializes auto-completion data from the given XML Schema path
+        /// </summary>
+        /// <param name="xsdPath"></param>
         public void LoadAutoCompletionData(string xsdPath)
         {
             txtXmlContent.SchemaCompletionDataItems = Maestro.Editors.Generic.XmlEditor.AutoCompletion.XmlSchemaManager.Instance.SchemaCompletionDataItems;

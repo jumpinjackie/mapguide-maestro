@@ -39,7 +39,7 @@ using Maestro.Editors.FeatureSource;
 
 namespace Maestro.Base.Editor
 {
-    public partial class FsEditorOptionPanel : EditorBindableCollapsiblePanel
+    internal partial class FsEditorOptionPanel : EditorBindableCollapsiblePanel
     {
         public FsEditorOptionPanel()
         {

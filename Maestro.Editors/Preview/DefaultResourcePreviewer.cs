@@ -39,6 +39,10 @@ namespace Maestro.Editors.Preview
     {
         private IUrlLauncherService _launcher;
 
+        /// <summary>
+        /// Initializes a new instance of the DefaultResourcePreviewer class
+        /// </summary>
+        /// <param name="launcher"></param>
         public DefaultResourcePreviewer(IUrlLauncherService launcher)
         {
             _launcher = launcher;

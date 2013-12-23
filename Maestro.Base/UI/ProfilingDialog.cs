@@ -38,6 +38,9 @@ using ICSharpCode.Core;
 
 namespace Maestro.Base.UI
 {
+    /// <summary>
+    /// A dialog that profiles a given resource for performance
+    /// </summary>
     public partial class ProfilingDialog : Form
     {
         private IServerConnection m_connection;
@@ -46,6 +49,12 @@ namespace Maestro.Base.UI
 
         private RuntimeMap m_tempmap;
 
+        /// <summary>
+        /// Initializes a new instance of the ProfilingDialog class
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="resourceId"></param>
+        /// <param name="connection"></param>
         public ProfilingDialog(IResource item, string resourceId, IServerConnection connection)
             : this()
         {

@@ -32,11 +32,19 @@ using System.Text;
 
 namespace Maestro.Editors.Preview
 {
+    /// <summary>
+    /// Performs any necessary setup required to preview a given resource in a web browser
+    /// </summary>
     public class ResourcePreviewEngine
     {
         private string _rootUrl;
         private IEditorService _edSvc;
 
+        /// <summary>
+        /// Initializes a new instance of the ResourcePreviewEngine class
+        /// </summary>
+        /// <param name="rootUrl"></param>
+        /// <param name="edSvc"></param>
         public ResourcePreviewEngine(string rootUrl, IEditorService edSvc)
         {
             _rootUrl = rootUrl;
@@ -280,6 +288,12 @@ namespace Maestro.Editors.Preview
             return url;
         }
 
+        /// <summary>
+        /// Generates the appropriate viewer URL to preview the given resource under the given locale
+        /// </summary>
+        /// <param name="res"></param>
+        /// <param name="locale"></param>
+        /// <returns></returns>
         public string GeneratePreviewUrl(IResource res, string locale)
         {
             switch (res.ResourceType)

@@ -136,6 +136,9 @@ namespace Maestro.Base.UI.Preferences
             Props.Set(ConfigProperties.LiveMapEditorPath, DefaultLiveMapEditorPath);
         }
 
+        /// <summary>
+        /// Default locale setting for web-based resource previews
+        /// </summary>
         public static string DefaultPreviewLocale { get { return "en"; } } //NOXLATE
 
         /// <summary>

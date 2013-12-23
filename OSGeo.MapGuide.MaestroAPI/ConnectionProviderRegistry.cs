@@ -341,6 +341,11 @@ namespace OSGeo.MapGuide.MaestroAPI
             return CreateConnection(provider, initP);
         }
 
+        /// <summary>
+        /// Gets the entry for the given connection provider name
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <returns></returns>
         public static ConnectionProviderEntry FindProvider(string provider)
         {
             string cmp = provider.ToUpper();

@@ -48,7 +48,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
     /// this schema redefines the xml namespace, even though this is
     /// allowed by the w3.org specification.
     /// </remarks>
-    public class XmlSchemaCompletionData
+    internal class XmlSchemaCompletionData
     {
         string namespaceUri = String.Empty;
         XmlSchema schema;

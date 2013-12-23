@@ -36,16 +36,22 @@ using System.Text;
 
 namespace Maestro.Editors.Generic.XmlEditor
 {
+    /// <summary>
+    /// Options for the generic XML editor
+    /// </summary>
     public class XmlEditorOptions
     {
         static XmlEditorOptions()
         {
-            ShowSchemaAnnotation = true;
+            //ShowSchemaAnnotation = true;
             ShowAttributesWhenFolded = true;
         }
 
-        public static bool ShowSchemaAnnotation { get; set; }
+        //public static bool ShowSchemaAnnotation { get; set; }
 
+        /// <summary>
+        /// Gets whether to show XML element attributes when the element is folded
+        /// </summary>
         public static bool ShowAttributesWhenFolded { get; set; }
     }
 }

@@ -42,6 +42,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
         private string _symbolLibId;
         private IServerConnection _conn;
 
+        /// <summary>
+        /// Initializes a new instance of the ImageSymbolConverter class
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="symbolLibId"></param>
         public ImageSymbolConverter(IServerConnection conn, string symbolLibId)
         {
             Check.NotNull(conn, "conn"); //NOXLATE
@@ -145,6 +150,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
             return Math.Round(res, 1);
         }
 
+        /// <summary>
+        /// Extracts the DWF symbol data store from the given symbol library to a new session-based drawing source
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="symResId"></param>
+        /// <returns></returns>
         public static IDrawingSource PrepareSymbolDrawingSource(IServerConnection conn, string symResId)
         {
             //Extract the symbols.dwf resource data and copy to a session based drawing source
