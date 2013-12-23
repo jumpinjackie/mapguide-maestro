@@ -54,8 +54,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ciloci.Flee">
+      <HintPath>..\Thirdparty\Flee\lib\Ciloci.Flee.dll</HintPath>
+    </Reference>
+    <Reference Include="NetTopologySuite.Merged">
+      <HintPath>..\Thirdparty\NTS\NetTopologySuite.Merged.dll</HintPath>
+    </Reference>
     <Reference Include="nunit-console-runner, Version=2.5.5.10112, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Thirdparty\NUnit\bin\net-2.0\lib\nunit-console-runner.dll</HintPath>
@@ -85,6 +92,7 @@
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Local\OSGeo.MapGuide.MaestroAPI.Local.csproj">
       <Project>{3ddf6501-0148-474c-8674-7c7da49c7f02}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI.Local</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
       <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>
@@ -101,6 +109,7 @@
     <Content Include="ConnectionProviders.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestMaestroAPI.LocalNative.xml" />
     <Content Include="TestMaestroAPI.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -131,11 +140,25 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>IF EXIST "$(ProjectDir)Setup" XCOPY /Y /I "$(ProjectDir)Setup\*.*" "$(ProjectDir)$(OutDir)"
+    <PostBuildEvent>echo Performing post-build for Test Runner in $(ConfigurationName)
+IF "$(ConfigurationName)" == "Release" (
+IF NOT EXIST "$(SolutionDir)..\SDK\Test" MKDIR "$(SolutionDir)..\SDK\Test"
+echo Copy binaries to SDK output dir
+echo XCOPY /S /Y /I "$(TargetDir)*.*" "$(SolutionDir)..\SDK\Test"
+XCOPY /S /Y /I "$(TargetDir)*.*" "$(SolutionDir)..\SDK\Test"
+echo Copy SDK test configuration
+COPY /Y "$(ProjectDir)TestMaestroAPI.LocalNative.xml" "$(SolutionDir)..\SDK\Test\TestMaestroAPI.xml"
+) ELSE (
+echo Copy CS-Map Dictionaries
 IF NOT EXIST "$(OutDir)Dictionaries" XCOPY /S /Y /I "$(SolutionDir)..\Maestro.AddIn.Local\Dictionaries\*.*" "$(ProjectDir)$(OutDir)Dictionaries"
+echo Copy FDO dlls
 IF NOT EXIST "$(OutDir)FDO" XCOPY /S /Y /I "$(SolutionDir)..\Maestro.AddIn.Local\FDO\*.*" "$(ProjectDir)$(OutDir)FDO"
+echo Copy MapGuide XML schemas
 IF NOT EXIST "$(OutDir)Schemas" XCOPY /S /Y /I "$(SolutionDir)..\OSGeo.MapGuide.MaestroAPI\Schemas\*.*" "$(ProjectDir)$(OutDir)Schemas"
+echo Copy mg-desktop string bundle
 IF NOT EXIST "$(OutDir)Resources" XCOPY /S /Y /I "$(SolutionDir)..\Maestro.AddIn.Local\Resources\*.res" "$(ProjectDir)$(OutDir)Resources"
-COPY /Y "$(SolutionDir)..\Maestro.AddIn.Local\*.dll" "$(ProjectDir)$(OutDir)"</PostBuildEvent>
+echo Copy Maestro API Local connection dlls
+COPY /Y "$(SolutionDir)..\OSGeo.MapGuide.MaestroAPI.Local\bin\$(ConfigurationName)\OSGeo.MapGuide.MaestroAPI.Local.*" "$(ProjectDir)$(OutDir)"
+COPY /Y "$(SolutionDir)..\Maestro.AddIn.Local\*.dll" "$(ProjectDir)$(OutDir)" )</PostBuildEvent>
   </PropertyGroup>
 </Project>

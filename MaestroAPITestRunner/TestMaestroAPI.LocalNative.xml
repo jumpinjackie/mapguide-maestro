@@ -2,7 +2,8 @@
 <!--
 Maestro API test configuration file
 
-Configured for exercising everything in the Maestro API except for LocalNative connection providers and GeoREST
+Configured for exercising the LocalNative provider created by the ProviderTemplate tool and everything else in the Maestro API
+except for Local Connection and GeoREST support
 -->
 <TestConfiguration>
   <TestSettings>
@@ -61,17 +62,13 @@ Configured for exercising everything in the Maestro API except for LocalNative c
     <IgnoreHttpConnectionTests>false</IgnoreHttpConnectionTests>
     <IgnoreHttpSiteTests>false</IgnoreHttpSiteTests>
     <IgnoreHttpRuntimeMapTests>false</IgnoreHttpRuntimeMapTests>
+    <!-- Local Connection tests are disabled because the SDK Test Runner does not bundle mg-desktop and supporting libraries/datafiles -->
+    <IgnoreLocalRuntimeMapTests>true</IgnoreLocalRuntimeMapTests>
+    <IgnoreLocalFeatureTests>true</IgnoreLocalFeatureTests>
     <!-- Functionality that uses the Local connection provider -->
-    <IgnoreLocalRuntimeMapTests>false</IgnoreLocalRuntimeMapTests>
-    <IgnoreLocalFeatureTests>false</IgnoreLocalFeatureTests>
-    <!-- 
-    Local Native connection provider tests are disabled as the standard test profile does not cover
-    this functionality. The Test Runner configuration in the Maestro SDK enables such tests, while
-    disabling the Local Connection ones (because it doesn't include mg-desktop and supporting libs/datafiles)
-    -->
-    <IgnoreLocalNativeRuntimeMapTests>true</IgnoreLocalNativeRuntimeMapTests>
-    <IgnoreLocalNativePerformanceTests>true</IgnoreLocalNativePerformanceTests>
-    <IgnoreLocalNativeFeatureTests>true</IgnoreLocalNativeFeatureTests>
+    <IgnoreLocalNativeRuntimeMapTests>false</IgnoreLocalNativeRuntimeMapTests>
+    <IgnoreLocalNativePerformanceTests>false</IgnoreLocalNativePerformanceTests>
+    <IgnoreLocalNativeFeatureTests>false</IgnoreLocalNativeFeatureTests>
     <!-- GeoREST disabled because not every MapGuide installation has it installed -->
     <IgnoreGeoRestTests>true</IgnoreGeoRestTests>
   </TestControl>
