@@ -487,7 +487,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void OnDynamicLayerItemSelected(LayerItem layer)
         {
-            btnAddGroup.Enabled = false;
+            btnAddGroup.Enabled = true;             //This has to be true otherwise it never gets enabled again if the map has no existing groups
             btnGRPAddLayer.Enabled = false;
             btnGRPRemoveLayer.Enabled = true;
             btnMoveLayerOrGroupUp.Enabled = true;   //TODO: Disable if layer is top of its group
