@@ -30,11 +30,13 @@
         {
             this.grpProperties = new System.Windows.Forms.GroupBox();
             this.propGrid = new System.Windows.Forms.PropertyGrid();
+            this.lnkCount = new System.Windows.Forms.LinkLabel();
             this.grpProperties.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpProperties
             // 
+            this.grpProperties.Controls.Add(this.lnkCount);
             this.grpProperties.Controls.Add(this.propGrid);
             this.grpProperties.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpProperties.Location = new System.Drawing.Point(0, 0);
@@ -54,6 +56,15 @@
             this.propGrid.TabIndex = 0;
             this.propGrid.ToolbarVisible = false;
             // 
+            // lnkCount
+            // 
+            this.lnkCount.AutoSize = true;
+            this.lnkCount.Location = new System.Drawing.Point(106, 0);
+            this.lnkCount.Name = "lnkCount";
+            this.lnkCount.Size = new System.Drawing.Size(0, 13);
+            this.lnkCount.TabIndex = 1;
+            this.lnkCount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkCount_LinkClicked);
+            // 
             // CommonPropertyCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -62,6 +73,7 @@
             this.Name = "CommonPropertyCtrl";
             this.Size = new System.Drawing.Size(245, 261);
             this.grpProperties.ResumeLayout(false);
+            this.grpProperties.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -70,5 +82,6 @@
 
         private System.Windows.Forms.GroupBox grpProperties;
         private System.Windows.Forms.PropertyGrid propGrid;
+        private System.Windows.Forms.LinkLabel lnkCount;
     }
 }

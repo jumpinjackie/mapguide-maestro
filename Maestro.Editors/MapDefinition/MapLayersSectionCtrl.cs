@@ -230,7 +230,7 @@ namespace Maestro.Editors.MapDefinition
 
         #region Designer Attributes
 
-        class BaseLayerItemDesigner
+        internal class BaseLayerItemDesigner
         {
             private BaseLayerItem _layer;
 
@@ -238,6 +238,9 @@ namespace Maestro.Editors.MapDefinition
             {
                 _layer = layer;
             }
+
+            [Browsable(false)]
+            internal BaseLayerItem Item { get { return _layer; } }
 
             [LocalizedDisplayName("MdfEditorSelectable")]
             public bool Selectable
@@ -261,7 +264,7 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        class BaseGroupItemDesigner
+        internal class BaseGroupItemDesigner
         {
             private BaseLayerGroupItem _group;
 
@@ -269,6 +272,9 @@ namespace Maestro.Editors.MapDefinition
             {
                 _group = group;
             }
+
+            [Browsable(false)]
+            internal BaseLayerGroupItem Item { get { return _group; } }
 
             [LocalizedDisplayName("MdfEditorVisible")]
             public bool Visible
@@ -292,7 +298,7 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        class LayerItemDesigner
+        internal class LayerItemDesigner
         {
             private LayerItem _layer;
 
@@ -300,6 +306,9 @@ namespace Maestro.Editors.MapDefinition
             {
                 _layer = layer;
             }
+
+            [Browsable(false)]
+            internal LayerItem Item { get { return _layer; } }
 
             [LocalizedDisplayName("MdfEditorSelectable")]
             public bool Selectable
@@ -330,7 +339,7 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        class GroupItemDesigner
+        internal class GroupItemDesigner
         {
             private GroupItem _group;
 
@@ -338,6 +347,9 @@ namespace Maestro.Editors.MapDefinition
             {
                 _group = group;
             }
+
+            [Browsable(false)]
+            internal GroupItem Item { get { return _group; } }
 
             [LocalizedDisplayName("MdfEditorVisible")]
             public bool Visible

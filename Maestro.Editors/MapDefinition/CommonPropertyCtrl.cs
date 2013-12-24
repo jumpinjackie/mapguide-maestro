@@ -49,13 +49,11 @@ namespace Maestro.Editors.MapDefinition
         {
             if (count > 1)
             {
-                grpProperties.Text += " (" + string.Format(Strings.SelectedItemCount, count) + ")";
+                lnkCount.Text = "(" + string.Format(Strings.SelectedItemCount, count) + ")";
             }
             else
             {
-                int lidx = grpProperties.Text.LastIndexOf("(");
-                if (lidx >= 0)
-                    grpProperties.Text = grpProperties.Text.Substring(0, lidx);
+                lnkCount.Text = "";
             }
         }
 
@@ -66,6 +64,14 @@ namespace Maestro.Editors.MapDefinition
             { 
                 propGrid.SelectedObjects = value;
                 SetCount(value.Length);
+            }
+        }
+
+        private void lnkCount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (propGrid.SelectedObjects != null && propGrid.SelectedObjects.Length > 0)
+            {
+                new SelectedItemsDialog(propGrid.SelectedObjects).ShowDialog();
             }
         }
     }

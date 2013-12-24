@@ -918,6 +918,12 @@
     <Compile Include="MapDefinition\MapTreeModels.cs" />
     <Compile Include="MapDefinition\NsDoc.cs" />
     <Compile Include="MapDefinition\ScaleListGenerator.cs" />
+    <Compile Include="MapDefinition\SelectedItemsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapDefinition\SelectedItemsDialog.Designer.cs">
+      <DependentUpon>SelectedItemsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migration\CopyMoveToServerDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1673,6 +1679,9 @@
     <EmbeddedResource Include="MapDefinition\MapSettingsSectionCtrl.resx">
       <DependentUpon>MapSettingsSectionCtrl.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapDefinition\SelectedItemsDialog.resx">
+      <DependentUpon>SelectedItemsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migration\CopyMoveToServerDialog.resx">
       <DependentUpon>CopyMoveToServerDialog.cs</DependentUpon>
