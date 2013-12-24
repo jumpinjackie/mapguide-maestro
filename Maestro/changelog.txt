@@ -1,4 +1,7 @@
-﻿ - Map Definition Editor now uses a PropertyGrid for editing layer/group properties
+﻿ 5.1
+ ---
+
+ - Map Definition Editor now uses a PropertyGrid for editing layer/group properties
  - Map Definition Editor can now batch edit properties of multiple selected groups/layers
  - Added missing support for editing symbol instance properties
  - Initial support for XML element auto-completion
@@ -10,6 +13,8 @@
  - The resource of an active editor will now auto-focus on the Site Explorer
  - Added support for proxy servers
  - Runtime Map creation for resource previews now fail hard, allowing for immediate error diagnosis instead of waiting of all layers to be processed
+ - Fix: Port legend control fixes from mg-desktop
+ - Fix: Watermark editor not being properly initialized from the underlying Watermark model
  - Fix: Some options (which do not require a restart) always prompting a restart when applied
  - Fix: "Show In Legend" checkbox in Layer Definition editor does nothing for CompositeTypeStyle elements
  - Fix: Error XML validating v2.4.0 Layer Definition documents
