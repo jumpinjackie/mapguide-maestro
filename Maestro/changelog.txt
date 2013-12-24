@@ -1,6 +1,7 @@
 ﻿ 5.1
  ---
 
+ - mg-desktop updated to 2.5.2.7949
  - Map Definition Editor now uses a PropertyGrid for editing layer/group properties
  - Map Definition Editor can now batch edit properties of multiple selected groups/layers
  - Added missing support for editing symbol instance properties
