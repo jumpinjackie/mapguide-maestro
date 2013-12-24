@@ -59,15 +59,8 @@
       	such, usage of the RuntimeMap in the Maestro API is restricted to the following versions of MapGuide (includes point releases and service packs):
       	</para>
 		<list class="bullet">
-		  <listItem><para>MapGuide Open Source 1.2</para></listItem>
-		  <listItem><para>MapGuide Open Source 2.0</para></listItem>
-		  <listItem><para>MapGuide Open Source 2.1</para></listItem>
-		  <listItem><para>MapGuide Open Source 2.2</para></listItem>
-		  <listItem><para>Autodesk MapGuide Enterprise 2008</para></listItem>
-		  <listItem><para>Autodesk MapGuide Enterprise 2009</para></listItem>
-		  <listItem><para>Autodesk MapGuide Enterprise 2010</para></listItem>
-		  <listItem><para>Autodesk MapGuide Enterprise 2011</para></listItem>
-		  <listItem><para>Autodesk Infrastructure Map Server 2012</para></listItem>
+		  <listItem><para>MapGuide Open Source 1.2 and newer</para></listItem>
+		  <listItem><para>Autodesk MapGuide Enterprise / Infrastructure Map Serve 2008 and newer</para></listItem>
 		</list>
 		<para>
 		If you are not using a version of MapGuide that is on this list, there is no guarantee the RuntimeMap will work as expected.

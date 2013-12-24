@@ -49,7 +49,7 @@
 		  	<para>Maestro.Local: A Local implementation (that wraps the <externalLink>
 <linkText>mg-desktop</linkText>
 <linkAlternateText>mg-desktop homepage</linkAlternateText>
-<linkUri>http://mg-desktop.googlecode.com</linkUri>
+<linkUri>http://trac.osgeo.org/mapguide/wiki/mg-desktop</linkUri>
 <linkTarget>_blank</linkTarget>
 </externalLink>
  API)	</para>
@@ -59,9 +59,10 @@
 		Additional implementations can be registered in the ConnectionProviders.xml file
 		</para>
 		<para>
-		The Local Native implementation files is included with this SDK, but requires the official
+		The LocalNative implementation source code is included with this SDK, but requires the official
 	    MapGuide API binaries to be also added to your application's directory. As a result this
-	    provider is disabled in the ConnectionProviders.xml file
+	    provider is disabled in the ConnectionProviders.xml file by default. The SDK includes a tool
+	    to help you build this LocalNative provider. <link xlink:href="d9dae2b2-3191-4a14-a9ee-024d23ef3a76">Click here for more info.</link>
 		</para>
 		<para>
 		The Local implementation is not included with the SDK. The windows version of Maestro

@@ -20,26 +20,27 @@
     <FrameworkVersion>.NET 4.0.30319</FrameworkVersion>
     <HelpTitle>MapGuide Maestro API Documentation</HelpTitle>
     <IndentHtml>True</IndentHtml>
-    <PresentationStyle>vs2005</PresentationStyle>
+    <PresentationStyle>vs2010</PresentationStyle>
     <SandcastlePath>
     </SandcastlePath>
     <DocumentationSources>
       <DocumentationSource sourceFile="..\SDK\addin-bin\Maestro.Base.dll" />
-<DocumentationSource sourceFile="..\SDK\addin-bin\Maestro.Base.xml" />
-<DocumentationSource sourceFile="..\SDK\bin\Maestro.Editors.dll" />
-<DocumentationSource sourceFile="..\SDK\bin\Maestro.Editors.xml" />
-<DocumentationSource sourceFile="..\SDK\bin\Maestro.Login.dll" />
-<DocumentationSource sourceFile="..\SDK\bin\Maestro.Login.xml" />
-<DocumentationSource sourceFile="..\SDK\bin\Maestro.Packaging.dll" />
-<DocumentationSource sourceFile="..\SDK\bin\Maestro.Packaging.xml" />
-<DocumentationSource sourceFile="..\SDK\bin\Maestro.Shared.UI.dll" />
-<DocumentationSource sourceFile="..\SDK\bin\Maestro.Shared.UI.xml" />
-<DocumentationSource sourceFile="..\SDK\bin\Maestro.MapViewer.dll" />
-<DocumentationSource sourceFile="..\SDK\bin\Maestro.MapViewer.xml" />
-<DocumentationSource sourceFile="..\SDK\bin\OSGeo.MapGuide.ExtendedObjectModels.dll" />
-<DocumentationSource sourceFile="..\SDK\bin\OSGeo.MapGuide.ExtendedObjectModels.xml" />
-<DocumentationSource sourceFile="..\SDK\bin\OSGeo.MapGuide.MaestroAPI.dll" />
-<DocumentationSource sourceFile="..\SDK\bin\OSGeo.MapGuide.MaestroAPI.xml" /></DocumentationSources>
+      <DocumentationSource sourceFile="..\SDK\addin-bin\Maestro.Base.xml" />
+      <DocumentationSource sourceFile="..\SDK\bin\Maestro.Editors.dll" />
+      <DocumentationSource sourceFile="..\SDK\bin\Maestro.Editors.xml" />
+      <DocumentationSource sourceFile="..\SDK\bin\Maestro.Login.dll" />
+      <DocumentationSource sourceFile="..\SDK\bin\Maestro.Login.xml" />
+      <DocumentationSource sourceFile="..\SDK\bin\Maestro.Packaging.dll" />
+      <DocumentationSource sourceFile="..\SDK\bin\Maestro.Packaging.xml" />
+      <DocumentationSource sourceFile="..\SDK\bin\Maestro.Shared.UI.dll" />
+      <DocumentationSource sourceFile="..\SDK\bin\Maestro.Shared.UI.xml" />
+      <DocumentationSource sourceFile="..\SDK\bin\Maestro.MapViewer.dll" />
+      <DocumentationSource sourceFile="..\SDK\bin\Maestro.MapViewer.xml" />
+      <DocumentationSource sourceFile="..\SDK\bin\OSGeo.MapGuide.ExtendedObjectModels.dll" />
+      <DocumentationSource sourceFile="..\SDK\bin\OSGeo.MapGuide.ExtendedObjectModels.xml" />
+      <DocumentationSource sourceFile="..\SDK\bin\OSGeo.MapGuide.MaestroAPI.dll" />
+      <DocumentationSource sourceFile="..\SDK\bin\OSGeo.MapGuide.MaestroAPI.xml" />
+    </DocumentationSources>
     <VisibleItems>Attributes, InheritedMembers, Protected, SealedProtected</VisibleItems>
     <ApiFilter>
       <Filter entryType="Namespace" fullName="Aga.Controls" isExposed="False" />
@@ -65,7 +66,7 @@
     <HtmlSdkLinkType>None</HtmlSdkLinkType>
     <MSHelp2SdkLinkType>None</MSHelp2SdkLinkType>
     <MSHelpViewerSdkLinkType>None</MSHelpViewerSdkLinkType>
-    <CopyrightText>%28c%29 2012, Jackie Ng</CopyrightText>
+    <CopyrightText>%28c%29 2013, Jackie Ng</CopyrightText>
     <SyntaxFilters>CSharp, VisualBasic, CPlusPlus, FSharp, AspNet</SyntaxFilters>
     <RootNamespaceContainer>True</RootNamespaceContainer>
     <Preliminary>False</Preliminary>
@@ -74,6 +75,7 @@
 The main namespaces of the Maestro API are listed below
 &amp;lt%3b/summary&amp;gt%3b</ProjectSummary>
     <RootNamespaceTitle>API Reference</RootNamespaceTitle>
+    <IncludeFavorites>True</IncludeFavorites>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional
@@ -98,6 +100,9 @@ The main namespaces of the Maestro API are listed below
     <ContentLayout Include="Layout.content" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Topics\TestingProvider.aml" />
+    <None Include="Topics\HowtoUseProviderTemplate.aml" />
+    <None Include="Topics\AboutProviderTemplate.aml" />
     <None Include="Topics\ClassDiagram.aml" />
     <None Include="Topics\Component_Login.aml" />
     <None Include="Topics\GettingStarted.aml" />

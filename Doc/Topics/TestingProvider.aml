@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="f9e844cf-632e-4e2e-873c-b17de9875cc4" revisionNumber="1">
+  <developerHowToDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+    <introduction>
+      <para>To ensure the LocalNative provider assembly you built works, you should run the assembly with the Maestro API test runner</para>
+    </introduction>
+    <!-- Optional procedures followed by optional code example but must have
+         at least one procedure or code example -->
+    <procedure>
+      <title>Testing the LocalNative provider</title>
+      <steps class="ordered">
+        <step>
+          <content>
+            <para>Copy the LocalNative provider assembly and its supportng dlls to the <legacyBold>Test</legacyBold> directory of the SDK</para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+            Edit the ConnectionProviders.xml file to include an entry for your LocalNative provider assembly. The name of the provider must
+            be <legacyBold>Maestro.LocalNative</legacyBold> and the type must be <legacyBold>OSGeo.MapGuide.MaestroAPI.LocalNativeConnection</legacyBold>
+            </para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>
+            If you built the LocalNative provider against the 32-bit MapGuide .net assemblies, run <legacyBold>MaestroAPITestRunner.exe</legacyBold> to run the test suite
+            </para>
+            <para>
+            If you built the LocalNative provider against the 64-bit MapGuide .net assemblies, run <legacyBold>MaestroAPITestRunner64.exe</legacyBold> to run the test suite
+            </para>
+            <para>
+            If the test runner reports 0 test failures, your LocalNative provider has passed validation.
+            </para>
+          </content>
+        </step>
+      </steps>
+      <!-- <conclusion>Optional conclusion</conclusion> -->
+    </procedure>
+    <!-- <codeExample>Optional code example</codeExample> -->
+    <!-- <buildInstructions>Optional instructions for building a
+         code example.</buildInstructions> -->
+    <!-- <robustProgramming>Optional discussion of error handling and other
+         issues related to writing solid code.</robustProgramming> -->
+    <!-- <security>Optional discussion of security issues.</security> -->
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID">Link text</link>
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on CodePlex</linkText>
+          <linkAlternateText>Go to CodePlex</linkAlternateText>
+          <linkUri>http://shfb.codeplex.com</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerHowToDocument>
+</topic>
