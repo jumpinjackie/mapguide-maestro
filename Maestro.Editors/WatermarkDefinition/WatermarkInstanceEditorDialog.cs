@@ -33,10 +33,10 @@ namespace Maestro.Editors.WatermarkDefinition
     {
         private WatermarkInstanceEditor _ed;
 
-        public WatermarkInstanceEditorDialog(IResourceService resSvc, IWatermark watermark)
+        public WatermarkInstanceEditorDialog(IEditorService service, IWatermark watermark)
         {
             InitializeComponent();
-            _ed = new WatermarkInstanceEditor(resSvc, watermark);
+            _ed = new WatermarkInstanceEditor(service, watermark);
             _ed.Dock = DockStyle.Fill;
             panel1.Controls.Add(_ed);
         }

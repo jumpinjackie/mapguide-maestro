@@ -62,7 +62,7 @@ namespace Maestro.Editors.LayerDefinition
                 this.Controls.Remove(layerProperties);
                 this.Controls.Remove(layerStyles);
 
-                var wm = new WatermarkCollectionEditorCtrl(service.ResourceService, sl2);
+                var wm = new WatermarkCollectionEditorCtrl(service, sl2);
                 wm.Dock = DockStyle.Top;
 
                 this.Controls.Add(wm);

@@ -32,13 +32,15 @@ namespace Maestro.Editors.WatermarkDefinition
     internal partial class TilePositionEditor : UserControl
     {
         private ITilePosition _pos;
+        private IEditorService _edSvc;
 
         private bool _init = false;
 
-        public TilePositionEditor(ITilePosition pos)
+        public TilePositionEditor(ITilePosition pos, IEditorService service)
         {
             InitializeComponent();
             _pos = pos;
+            _edSvc = service;
 
             try
             {
@@ -72,6 +74,7 @@ namespace Maestro.Editors.WatermarkDefinition
                 return;
 
             _pos.TileWidth = Convert.ToDouble(numTileWidth.Value);
+            _edSvc.MarkDirty();
         }
 
         private void numTileHeight_ValueChanged(object sender, EventArgs e)
@@ -80,6 +83,7 @@ namespace Maestro.Editors.WatermarkDefinition
                 return;
 
             _pos.TileHeight = Convert.ToDouble(numTileHeight.Value);
+            _edSvc.MarkDirty();
         }
 
         private void numHorizontalOffset_ValueChanged(object sender, EventArgs e)
@@ -88,6 +92,7 @@ namespace Maestro.Editors.WatermarkDefinition
                 return;
 
             _pos.HorizontalPosition.Offset = Convert.ToDouble(numHorizontalOffset.Value);
+            _edSvc.MarkDirty();
         }
 
         private void cmbHorizontalUnits_SelectedIndexChanged(object sender, EventArgs e)
@@ -96,6 +101,7 @@ namespace Maestro.Editors.WatermarkDefinition
                 return;
 
             _pos.HorizontalPosition.Unit = (UnitType)cmbHorizontalUnits.SelectedItem;
+            _edSvc.MarkDirty();
         }
 
         private void cmbHorizontalAlignment_SelectedIndexChanged(object sender, EventArgs e)
@@ -104,6 +110,7 @@ namespace Maestro.Editors.WatermarkDefinition
                 return;
 
             _pos.HorizontalPosition.Alignment = (HorizontalAlignmentType)cmbHorizontalAlignment.SelectedItem;
+            _edSvc.MarkDirty();
         }
 
         private void numVerticalOffset_ValueChanged(object sender, EventArgs e)
@@ -112,6 +119,7 @@ namespace Maestro.Editors.WatermarkDefinition
                 return;
 
             _pos.VerticalPosition.Offset = Convert.ToDouble(numVerticalOffset.Value);
+            _edSvc.MarkDirty();
         }
 
         private void cmbVerticalUnits_SelectedIndexChanged(object sender, EventArgs e)
@@ -120,6 +128,7 @@ namespace Maestro.Editors.WatermarkDefinition
                 return;
 
             _pos.VerticalPosition.Unit = (UnitType)cmbVerticalUnits.SelectedItem;
+            _edSvc.MarkDirty();
         }
 
         private void cmbVerticalAlignment_SelectedIndexChanged(object sender, EventArgs e)
@@ -128,6 +137,7 @@ namespace Maestro.Editors.WatermarkDefinition
                 return;
 
             _pos.VerticalPosition.Alignment = (VerticalAlignmentType)cmbVerticalAlignment.SelectedItem;
+            _edSvc.MarkDirty();
         }
     }
 }

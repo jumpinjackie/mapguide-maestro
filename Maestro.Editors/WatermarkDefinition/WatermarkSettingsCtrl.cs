@@ -41,10 +41,12 @@ namespace Maestro.Editors.WatermarkDefinition
         private IWatermarkDefinition _wm;
         private ITilePosition _tile;
         private IXYPosition _xy;
+        private IEditorService _edSvc;
 
         public override void Bind(IEditorService service)
         {
-            service.RegisterCustomNotifier(this);
+            _edSvc = service;
+            _edSvc.RegisterCustomNotifier(this);
             _wm = (IWatermarkDefinition)service.GetEditedResource();
 
             NumericBinder.BindValueChanged(numRotation, _wm.Appearance, "Rotation");
@@ -72,9 +74,9 @@ namespace Maestro.Editors.WatermarkDefinition
             grpPositionSettings.Controls.Clear();
             Control c = null;
             if (rdTile.Checked)
-                c = new TilePositionEditor(_tile);
+                c = new TilePositionEditor(_tile, _edSvc);
             else if (rdXY.Checked)
-                c = new XYPositionEditor(_xy);
+                c = new XYPositionEditor(_xy, _edSvc);
 
             if (c != null)
             {

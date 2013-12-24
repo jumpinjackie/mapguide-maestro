@@ -36,7 +36,7 @@ namespace Maestro.Editors.WatermarkDefinition
     internal partial class WatermarkInstanceEditor : UserControl
     {
         private IWatermark _watermark;
-        private IResourceService _resSvc;
+        private IEditorService _edSvc;
 
         private IWatermarkAppearance _ovAppearance;
         private ITilePosition _ovTilePosition;
@@ -44,11 +44,11 @@ namespace Maestro.Editors.WatermarkDefinition
 
         private bool _init = false;
 
-        public WatermarkInstanceEditor(IResourceService resSvc, IWatermark watermark)
+        public WatermarkInstanceEditor(IEditorService service, IWatermark watermark)
         {
             InitializeComponent();
+            _edSvc = service;
             _watermark = watermark;
-            _resSvc = resSvc;
             
             try
             {
@@ -110,11 +110,11 @@ namespace Maestro.Editors.WatermarkDefinition
             Control c = null;
             if (rdOvPosXY.Checked) 
             {
-                c = new XYPositionEditor(_ovXyPosition);
+                c = new XYPositionEditor(_ovXyPosition, _edSvc);
             }
             else if (rdOvTilePos.Checked)
             {
-                c = new TilePositionEditor(_ovTilePosition);
+                c = new TilePositionEditor(_ovTilePosition, _edSvc);
             }
 
             if (c != null)
@@ -126,7 +126,7 @@ namespace Maestro.Editors.WatermarkDefinition
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_resSvc, ResourceTypes.WatermarkDefinition, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.WatermarkDefinition, ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {

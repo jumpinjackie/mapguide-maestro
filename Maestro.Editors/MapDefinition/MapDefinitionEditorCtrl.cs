@@ -66,7 +66,7 @@ namespace Maestro.Editors.MapDefinition
                 this.Controls.Remove(mapSettingsCtrl);
                 this.Controls.Remove(mapLayersCtrl);
 
-                var wm = new WatermarkCollectionEditorCtrl(service.ResourceService, mp2);
+                var wm = new WatermarkCollectionEditorCtrl(service, mp2);
                 wm.Dock = DockStyle.Fill;
 
                 this.Controls.Add(wm);

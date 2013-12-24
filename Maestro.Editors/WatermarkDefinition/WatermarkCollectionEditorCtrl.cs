@@ -40,14 +40,14 @@ namespace Maestro.Editors.WatermarkDefinition
 
         private BindingList<IWatermark> _list;
 
-        private IResourceService _resSvc;
+        private IEditorService _edSvc;
 
-        public WatermarkCollectionEditorCtrl(IResourceService resSvc, IWatermarkCollection watermarks)
+        public WatermarkCollectionEditorCtrl(IEditorService service, IWatermarkCollection watermarks)
         {
             InitializeComponent();
             grdWatermarks.AutoGenerateColumns = false;
             _watermarks = watermarks;
-            _resSvc = resSvc;
+            _edSvc = service;
             _list = new BindingList<IWatermark>();
             foreach (var wm in _watermarks.Watermarks)
             {
@@ -58,15 +58,15 @@ namespace Maestro.Editors.WatermarkDefinition
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_resSvc, ResourceTypes.WatermarkDefinition, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.WatermarkDefinition, ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
                     LastSelectedFolder.FolderId = picker.SelectedFolder;
-                    var wdf = (IWatermarkDefinition)_resSvc.GetResource(picker.ResourceID);
+                    var wdf = (IWatermarkDefinition)_edSvc.ResourceService.GetResource(picker.ResourceID);
                     //var wm = wdf.CreateInstance();
                     var wm = _watermarks.AddWatermark(wdf);
-                    var diag = new WatermarkInstanceEditorDialog(_resSvc, wm);
+                    var diag = new WatermarkInstanceEditorDialog(_edSvc, wm);
                     if (diag.ShowDialog() == DialogResult.OK)
                     {
                         _list.Add(wm);
@@ -86,7 +86,7 @@ namespace Maestro.Editors.WatermarkDefinition
                 var wm = grdWatermarks.SelectedRows[0].DataBoundItem as IWatermark;
                 if (wm != null)
                 {
-                    var diag = new WatermarkInstanceEditorDialog(_resSvc, wm);
+                    var diag = new WatermarkInstanceEditorDialog(_edSvc, wm);
                     diag.ShowDialog();
                 }
             }
