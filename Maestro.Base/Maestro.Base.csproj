@@ -117,6 +117,7 @@
     <Compile Include="Commands\SiteExplorer\CopyResourceIdCommand.cs" />
     <Compile Include="Commands\SiteExplorer\DuplicateResourceCommand.cs" />
     <Compile Include="Commands\SiteExplorer\FindReplaceXmlContentCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\GetLayerSpatialContextCommand.cs" />
     <Compile Include="Commands\SiteExplorer\PurgeFeatureSourceCacheCommand.cs" />
     <Compile Include="Commands\SiteExplorer\SaveResourceContentToDiskCommand.cs" />
     <Compile Include="Commands\ServerMonitorCommand.cs" />

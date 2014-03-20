@@ -977,4 +977,19 @@ Error message: {0}</value>
   <data name="Label_OpenResourceAsXml" xml:space="preserve">
     <value>Open this resource with the Generic XML editor</value>
   </data>
+  <data name="RetrievingSpatialContextForLayer" xml:space="preserve">
+    <value>Retrieving Spatial Context for Layer</value>
+  </data>
+  <data name="GeometryPropertyNotFound" xml:space="preserve">
+    <value>Geometry property not found: {0}</value>
+  </data>
+  <data name="NonApplicableLayerType" xml:space="preserve">
+    <value>Non-applicable layer type: {0}</value>
+  </data>
+  <data name="RasterPropertyNotFound" xml:space="preserve">
+    <value>Raster property not found: {0}</value>
+  </data>
+  <data name="SiteExplorer_GetLayerSpatialContext" xml:space="preserve">
+    <value>Get Layer's Spatial Context</value>
+  </data>
 </root>

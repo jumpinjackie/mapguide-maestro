@@ -462,6 +462,12 @@
     <Compile Include="FeatureSource\Providers\Wms\WmsProviderCtrl.Designer.cs">
       <DependentUpon>WmsProviderCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="FeatureSource\SpatialContextInfoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeatureSource\SpatialContextInfoDialog.Designer.cs">
+      <DependentUpon>SpatialContextInfoDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="FeatureSource\SpatialContextsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1447,6 +1453,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FeatureSource\Providers\Wms\WmsProviderCtrl.resx">
       <DependentUpon>WmsProviderCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeatureSource\SpatialContextInfoDialog.resx">
+      <DependentUpon>SpatialContextInfoDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FeatureSource\SpatialContextsDialog.resx">
       <DependentUpon>SpatialContextsDialog.cs</DependentUpon>

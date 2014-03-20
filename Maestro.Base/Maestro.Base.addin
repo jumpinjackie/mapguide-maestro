@@ -544,6 +544,11 @@
                       label="${res:SiteExplorer_FindReplaceXml}"
                       class="Maestro.Base.Commands.SiteExplorer.FindReplaceXmlContentCommand" />
             <MenuItem type="Separator" />
+            <Condition action="Disable" name="ResourceType" types="LayerDefinition">
+              <MenuItem id="GetLayerSpatialContext"
+                        label="${res:SiteExplorer_GetLayerSpatialContext}"
+                        class="Maestro.Base.Commands.SiteExplorer.GetLayerSpatialContextCommand" />
+            </Condition>
             <Condition action="Disable" name="ResourceType" types="FeatureSource,LayerDefinition">
                 <MenuItem id="PurgeFsCache"
                           label="${res:SiteExplorer_PurgeFsCache}"
