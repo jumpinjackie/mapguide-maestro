@@ -120,6 +120,11 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
             grpTextFrame.Enabled = chkTextFrame.Checked;
             if (_init)
                 return;
+
+            if (chkTextFrame.Checked)
+                _text.Frame = _frame;
+            else
+                _text.Frame = null;
         }
 
         private void btnContent_Click(object sender, EventArgs e)
