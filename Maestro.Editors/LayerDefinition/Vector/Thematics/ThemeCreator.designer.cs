@@ -39,8 +39,22 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.RuleCount = new System.Windows.Forms.NumericUpDown();
             this.AggregateCombo = new System.Windows.Forms.ComboBox();
             this.DataGroup = new System.Windows.Forms.GroupBox();
-            this.chkUseFirstRuleAsTemplate = new System.Windows.Forms.CheckBox();
+            this.rdValuesFromLookup = new System.Windows.Forms.RadioButton();
+            this.rdValuesFromClass = new System.Windows.Forms.RadioButton();
+            this.grpValuesFromLookup = new System.Windows.Forms.GroupBox();
+            this.btnUpdateThemeParameters = new System.Windows.Forms.Button();
+            this.btnBrowseFeatureSource = new System.Windows.Forms.Button();
+            this.cmbValueProperty = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cmbKeyProperty = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbFeatureClass = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtFeatureSource = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.grpValuesFromClass = new System.Windows.Forms.GroupBox();
             this.GroupPanel = new System.Windows.Forms.Panel();
+            this.chkUseFirstRuleAsTemplate = new System.Windows.Forms.CheckBox();
             this.RuleCountPanel = new System.Windows.Forms.Panel();
             this.DisplayGroup = new System.Windows.Forms.GroupBox();
             this.btnFlipColorBrewer = new System.Windows.Forms.Button();
@@ -60,9 +74,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.ButtonPanel = new System.Windows.Forms.Panel();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.OKBtn = new System.Windows.Forms.Button();
+            this.grpThemeGeneration = new System.Windows.Forms.GroupBox();
             this.colorComboBox1 = new Maestro.Editors.Common.ColorComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.RuleCount)).BeginInit();
             this.DataGroup.SuspendLayout();
+            this.grpValuesFromLookup.SuspendLayout();
+            this.grpValuesFromClass.SuspendLayout();
             this.GroupPanel.SuspendLayout();
             this.RuleCountPanel.SuspendLayout();
             this.DisplayGroup.SuspendLayout();
@@ -71,6 +88,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.PreviewGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PreviewPicture)).BeginInit();
             this.ButtonPanel.SuspendLayout();
+            this.grpThemeGeneration.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -142,15 +160,123 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             // DataGroup
             // 
             resources.ApplyResources(this.DataGroup, "DataGroup");
-            this.DataGroup.Controls.Add(this.chkUseFirstRuleAsTemplate);
-            this.DataGroup.Controls.Add(this.GroupPanel);
-            this.DataGroup.Controls.Add(this.RuleCountPanel);
+            this.DataGroup.Controls.Add(this.rdValuesFromLookup);
+            this.DataGroup.Controls.Add(this.rdValuesFromClass);
             this.DataGroup.Controls.Add(this.ColumnCombo);
-            this.DataGroup.Controls.Add(this.AppendRules);
-            this.DataGroup.Controls.Add(this.OverwriteRules);
             this.DataGroup.Controls.Add(this.label1);
+            this.DataGroup.Controls.Add(this.grpValuesFromLookup);
+            this.DataGroup.Controls.Add(this.grpValuesFromClass);
             this.DataGroup.Name = "DataGroup";
             this.DataGroup.TabStop = false;
+            // 
+            // rdValuesFromLookup
+            // 
+            resources.ApplyResources(this.rdValuesFromLookup, "rdValuesFromLookup");
+            this.rdValuesFromLookup.Name = "rdValuesFromLookup";
+            this.rdValuesFromLookup.UseVisualStyleBackColor = true;
+            this.rdValuesFromLookup.CheckedChanged += new System.EventHandler(this.rdValuesFromLookup_CheckedChanged);
+            // 
+            // rdValuesFromClass
+            // 
+            resources.ApplyResources(this.rdValuesFromClass, "rdValuesFromClass");
+            this.rdValuesFromClass.Checked = true;
+            this.rdValuesFromClass.Name = "rdValuesFromClass";
+            this.rdValuesFromClass.TabStop = true;
+            this.rdValuesFromClass.UseVisualStyleBackColor = true;
+            this.rdValuesFromClass.CheckedChanged += new System.EventHandler(this.rdValuesFromClass_CheckedChanged);
+            // 
+            // grpValuesFromLookup
+            // 
+            resources.ApplyResources(this.grpValuesFromLookup, "grpValuesFromLookup");
+            this.grpValuesFromLookup.Controls.Add(this.btnUpdateThemeParameters);
+            this.grpValuesFromLookup.Controls.Add(this.btnBrowseFeatureSource);
+            this.grpValuesFromLookup.Controls.Add(this.cmbValueProperty);
+            this.grpValuesFromLookup.Controls.Add(this.label8);
+            this.grpValuesFromLookup.Controls.Add(this.cmbKeyProperty);
+            this.grpValuesFromLookup.Controls.Add(this.label7);
+            this.grpValuesFromLookup.Controls.Add(this.cmbFeatureClass);
+            this.grpValuesFromLookup.Controls.Add(this.label6);
+            this.grpValuesFromLookup.Controls.Add(this.txtFeatureSource);
+            this.grpValuesFromLookup.Controls.Add(this.label5);
+            this.grpValuesFromLookup.Name = "grpValuesFromLookup";
+            this.grpValuesFromLookup.TabStop = false;
+            // 
+            // btnUpdateThemeParameters
+            // 
+            resources.ApplyResources(this.btnUpdateThemeParameters, "btnUpdateThemeParameters");
+            this.btnUpdateThemeParameters.Name = "btnUpdateThemeParameters";
+            this.btnUpdateThemeParameters.UseVisualStyleBackColor = true;
+            this.btnUpdateThemeParameters.Click += new System.EventHandler(this.btnUpdateThemeParameters_Click);
+            // 
+            // btnBrowseFeatureSource
+            // 
+            resources.ApplyResources(this.btnBrowseFeatureSource, "btnBrowseFeatureSource");
+            this.btnBrowseFeatureSource.Name = "btnBrowseFeatureSource";
+            this.btnBrowseFeatureSource.UseVisualStyleBackColor = true;
+            this.btnBrowseFeatureSource.Click += new System.EventHandler(this.btnBrowseFeatureSource_Click);
+            // 
+            // cmbValueProperty
+            // 
+            resources.ApplyResources(this.cmbValueProperty, "cmbValueProperty");
+            this.cmbValueProperty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbValueProperty.FormattingEnabled = true;
+            this.cmbValueProperty.Name = "cmbValueProperty";
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
+            // cmbKeyProperty
+            // 
+            resources.ApplyResources(this.cmbKeyProperty, "cmbKeyProperty");
+            this.cmbKeyProperty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbKeyProperty.FormattingEnabled = true;
+            this.cmbKeyProperty.Name = "cmbKeyProperty";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // cmbFeatureClass
+            // 
+            resources.ApplyResources(this.cmbFeatureClass, "cmbFeatureClass");
+            this.cmbFeatureClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFeatureClass.FormattingEnabled = true;
+            this.cmbFeatureClass.Name = "cmbFeatureClass";
+            this.cmbFeatureClass.SelectedIndexChanged += new System.EventHandler(this.cmbFeatureClass_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // txtFeatureSource
+            // 
+            resources.ApplyResources(this.txtFeatureSource, "txtFeatureSource");
+            this.txtFeatureSource.Name = "txtFeatureSource";
+            this.txtFeatureSource.ReadOnly = true;
+            this.txtFeatureSource.TextChanged += new System.EventHandler(this.txtFeatureSource_TextChanged);
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // grpValuesFromClass
+            // 
+            resources.ApplyResources(this.grpValuesFromClass, "grpValuesFromClass");
+            this.grpValuesFromClass.Controls.Add(this.GroupPanel);
+            this.grpValuesFromClass.Name = "grpValuesFromClass";
+            this.grpValuesFromClass.TabStop = false;
+            // 
+            // GroupPanel
+            // 
+            resources.ApplyResources(this.GroupPanel, "GroupPanel");
+            this.GroupPanel.Controls.Add(this.AggregateLabel);
+            this.GroupPanel.Controls.Add(this.AggregateCombo);
+            this.GroupPanel.Name = "GroupPanel";
             // 
             // chkUseFirstRuleAsTemplate
             // 
@@ -159,13 +285,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.chkUseFirstRuleAsTemplate.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkUseFirstRuleAsTemplate.Name = "chkUseFirstRuleAsTemplate";
             this.chkUseFirstRuleAsTemplate.UseVisualStyleBackColor = true;
-            // 
-            // GroupPanel
-            // 
-            this.GroupPanel.Controls.Add(this.AggregateLabel);
-            this.GroupPanel.Controls.Add(this.AggregateCombo);
-            resources.ApplyResources(this.GroupPanel, "GroupPanel");
-            this.GroupPanel.Name = "GroupPanel";
             // 
             // RuleCountPanel
             // 
@@ -306,6 +425,16 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.OKBtn.UseVisualStyleBackColor = true;
             this.OKBtn.Click += new System.EventHandler(this.OKBtn_Click);
             // 
+            // grpThemeGeneration
+            // 
+            resources.ApplyResources(this.grpThemeGeneration, "grpThemeGeneration");
+            this.grpThemeGeneration.Controls.Add(this.RuleCountPanel);
+            this.grpThemeGeneration.Controls.Add(this.OverwriteRules);
+            this.grpThemeGeneration.Controls.Add(this.AppendRules);
+            this.grpThemeGeneration.Controls.Add(this.chkUseFirstRuleAsTemplate);
+            this.grpThemeGeneration.Name = "grpThemeGeneration";
+            this.grpThemeGeneration.TabStop = false;
+            // 
             // colorComboBox1
             // 
             resources.ApplyResources(this.colorComboBox1, "colorComboBox1");
@@ -315,6 +444,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.ControlBox = false;
+            this.Controls.Add(this.grpThemeGeneration);
             this.Controls.Add(this.ButtonPanel);
             this.Controls.Add(this.PreviewGroup);
             this.Controls.Add(this.DisplayGroup);
@@ -324,6 +455,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             ((System.ComponentModel.ISupportInitialize)(this.RuleCount)).EndInit();
             this.DataGroup.ResumeLayout(false);
             this.DataGroup.PerformLayout();
+            this.grpValuesFromLookup.ResumeLayout(false);
+            this.grpValuesFromLookup.PerformLayout();
+            this.grpValuesFromClass.ResumeLayout(false);
             this.GroupPanel.ResumeLayout(false);
             this.GroupPanel.PerformLayout();
             this.RuleCountPanel.ResumeLayout(false);
@@ -337,6 +471,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.PreviewGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PreviewPicture)).EndInit();
             this.ButtonPanel.ResumeLayout(false);
+            this.grpThemeGeneration.ResumeLayout(false);
+            this.grpThemeGeneration.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -374,5 +510,20 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         private System.Windows.Forms.LinkLabel ColorBrewerLabel;
         private System.Windows.Forms.CheckBox chkUseFirstRuleAsTemplate;
         private System.Windows.Forms.Button btnFlipColorBrewer;
+        private System.Windows.Forms.GroupBox grpValuesFromLookup;
+        private System.Windows.Forms.GroupBox grpValuesFromClass;
+        private System.Windows.Forms.Button btnBrowseFeatureSource;
+        private System.Windows.Forms.ComboBox cmbValueProperty;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cmbKeyProperty;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cmbFeatureClass;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtFeatureSource;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton rdValuesFromLookup;
+        private System.Windows.Forms.RadioButton rdValuesFromClass;
+        private System.Windows.Forms.GroupBox grpThemeGeneration;
+        private System.Windows.Forms.Button btnUpdateThemeParameters;
     }
 }

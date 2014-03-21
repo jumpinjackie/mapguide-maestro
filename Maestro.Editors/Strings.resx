@@ -1548,4 +1548,10 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="SelectedItemCount" xml:space="preserve">
     <value>{0} selected items</value>
   </data>
+  <data name="ComputingThemeParameters" xml:space="preserve">
+    <value>Computing Theme Parameters ...</value>
+  </data>
+  <data name="ThemePrimaryKeyPropertyNotSelected" xml:space="preserve">
+    <value>Property not selected. Please select the Property which connects to the selected Key Property in the external class</value>
+  </data>
 </root>

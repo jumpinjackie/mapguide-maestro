@@ -35,6 +35,8 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using Ldf = OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.Collections.Specialized;
+using Maestro.Editors.Generic;
+using Maestro.Shared.UI;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 {
@@ -42,14 +44,25 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
     {
         private const int PREVIEW_ITEM_BOX_WIDTH = 20;
         private const int PREVIEW_ITEM_BOX_SPACING = 10;
+        const int MAX_NUMERIC_THEME_RULES = 100000;
+        const int MAX_INDIVIDUAL_THEME_RULES = 100;
+        const int THEME_RULE_WARNING_LIMIT = 1000;
 
         private static List<ColorBrewer> m_colorBrewer;
 
         private IEditorService m_editor;
         private ILayerDefinition m_layer;
-        private ClassDefinition m_schema;
+        private ClassDefinition m_featureClass;
         private Dictionary<object, long> m_values;
         private DataPropertyType m_dataType;
+
+        class LookupPair
+        {
+            public object Key;
+            public object Value;
+        }
+
+        private List<LookupPair> m_lookupValues;
         
         private object m_ruleCollection;
 
@@ -83,7 +96,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         {
             m_editor = editor;
             m_layer = layer;
-            m_schema = schema;
+            m_featureClass = schema;
             m_ruleCollection = ruleCollection;
 
             _factory = (ILayerElementFactory)editor.GetEditedResource();
@@ -149,6 +162,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 
             if (m_colorBrewer == null)
                 m_colorBrewer = ColorBrewer.ParseCSV(GetCsvPath());
+
+            UpdateThemeChoice();
         }
 
         private string GetCsvPath()
@@ -183,25 +198,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             ColumnCombo.Items.Add(Strings.SelectColumnPlaceholder);
             ColumnCombo.SelectedIndex = 0;
 
-            foreach (var col in m_schema.Properties)
+            foreach (var col in m_featureClass.Properties)
             {
                 if (col.Type == PropertyDefinitionType.Data)
                     ColumnCombo.Items.Add(col.Name);
             }
         }
 
-        private void ColumnCombo_SelectedIndexChanged(object sender, EventArgs e)
+        private void UpdateUIForClassSelection()
         {
             if (ColumnCombo.SelectedIndex == 0)
             {
-                //Dummy item selected, just disable the form
-                RuleCountPanel.Enabled =
-                GroupPanel.Enabled =
-                DisplayGroup.Enabled =
-                PreviewGroup.Enabled =
-                OKBtn.Enabled =
-                    false;
-
+                DisableThemeOptions();
             }
             else
             {
@@ -212,8 +220,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 
                 m_values = new Dictionary<object, long>();
 
-                PropertyDefinition col = m_schema.FindProperty(ColumnCombo.Text);
-                
+                PropertyDefinition col = m_featureClass.FindProperty(ColumnCombo.Text);
+
                 //Not really possible
                 if (col == null)
                     throw new Exception(Strings.InvalidColumnNameError);
@@ -237,14 +245,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                             //flag in the SELECTAGGREGATES operation that's exposed over HTTP. Either
                             //case, try this method first.
                             using (var rd = m_editor.FeatureService.AggregateQueryFeatureSource(
-                                                    vl.ResourceId, 
-                                                    m_schema.QualifiedName, 
-                                                    filter, 
+                                                    vl.ResourceId,
+                                                    m_featureClass.QualifiedName,
+                                                    filter,
                                                     new NameValueCollection() {
                                                         { "value", "UNIQUE(\"" + col.Name + "\")" } 
                                                     }))
                             {
-                                while (rd.ReadNext() && m_values.Count < 100000) //No more than 100.000 records in memory
+                                while (rd.ReadNext() && m_values.Count < MAX_NUMERIC_THEME_RULES) //No more than 100.000 records in memory
                                 {
                                     if (!rd.IsNull("value"))
                                     {
@@ -260,10 +268,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                         }
                         catch
                         {
-                            
-                            using (var rd = m_editor.FeatureService.QueryFeatureSource(vl.ResourceId, m_schema.QualifiedName, filter, new string[] { col.Name }))
+
+                            using (var rd = m_editor.FeatureService.QueryFeatureSource(vl.ResourceId, m_featureClass.QualifiedName, filter, new string[] { col.Name }))
                             {
-                                while (rd.ReadNext() && m_values.Count < 100000) //No more than 100.000 records in memory
+                                while (rd.ReadNext() && m_values.Count < MAX_NUMERIC_THEME_RULES) //No more than 100.000 records in memory
                                 {
                                     if (!rd.IsNull(col.Name))
                                     {
@@ -312,8 +320,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 
                     if (dp.IsNumericType())
                     {
-                        if (m_values.Count >= 100000)
-                            MessageBox.Show(this, string.Format(Strings.TooMuchDataWarning, 100000), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (m_values.Count >= MAX_NUMERIC_THEME_RULES)
+                            MessageBox.Show(this, string.Format(Strings.TooMuchDataWarning, MAX_NUMERIC_THEME_RULES), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         GroupPanel.Enabled = true;
                         RuleCountPanel.Enabled = true;
@@ -322,7 +330,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                         if (m_values.Count <= 9)
                         {
                             AggregateCombo.SelectedIndex = AggregateCombo.Items.Count - 1;
-                            AggregateCombo_SelectedIndexChanged(sender, e);
+                            AggregateCombo_SelectedIndexChanged(this, EventArgs.Empty);
 
                             RefreshColorBrewerSet();
                         }
@@ -341,15 +349,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                     }
                     else //String type
                     {
-                        if (m_values.Count > 100)
+                        if (m_values.Count > MAX_INDIVIDUAL_THEME_RULES)
                         {
-                            MessageBox.Show(this, string.Format(Strings.TooManyValuesError, 100), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show(this, string.Format(Strings.TooManyValuesError, MAX_INDIVIDUAL_THEME_RULES), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             ColumnCombo.SelectedIndex = 0;
                             return;
                         }
 
-                        RuleCountPanel.Enabled = 
-                        GroupPanel.Enabled = 
+                        RuleCountPanel.Enabled =
+                        GroupPanel.Enabled =
                             false;
 
                         RuleCount.Minimum = 0;
@@ -368,6 +376,36 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 
                 RefreshColorBrewerSet();
                 RefreshPreview();
+            }
+        }
+
+        private void DisableThemeOptions()
+        {
+            //Dummy item selected, just disable the form
+            RuleCountPanel.Enabled =
+            GroupPanel.Enabled =
+            DisplayGroup.Enabled =
+            PreviewGroup.Enabled =
+            OKBtn.Enabled =
+                false;
+        }
+
+        private void ColumnCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ColumnCombo.SelectedIndex == 0)
+            {
+                DisableThemeOptions();
+            }
+            else
+            {
+                if (rdValuesFromClass.Checked)
+                {
+                    UpdateUIForClassSelection();
+                }
+                else if (rdValuesFromLookup.Checked)
+                {
+                    UpdateUIForExternalLookup();
+                }
             }
         }
 
@@ -412,135 +450,172 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             Color[] colors = BuildColorSet(false);
             List<RuleItem> result = new List<RuleItem>();
 
-            if (AggregateCombo.SelectedIndex == 0 || AggregateCombo.SelectedIndex == 1 || AggregateCombo.SelectedIndex == 2)
+            if (rdValuesFromClass.Checked)
             {
-                double min = double.MaxValue;
-                double max = double.MinValue;
-                double mean = 0;
-                long count = 0;
-                foreach (KeyValuePair<object, long> entry in m_values)
+                if (AggregateCombo.SelectedIndex == 0 || AggregateCombo.SelectedIndex == 1 || AggregateCombo.SelectedIndex == 2)
                 {
-                    double value = Convert.ToDouble(entry.Key);
-                    min = Math.Min(value, min);
-                    max = Math.Max(value, max);
-                    mean += value * entry.Value;
-                    count += entry.Value;
-                }
-
-                mean /= count;
-
-                if (AggregateCombo.SelectedIndex == 0) //Equal
-                {
-                    double chunksize = (max - min) / colors.Length;
-                    result.Add(new RuleItem(
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" <= {1}", ColumnCombo.Text, FormatValue(chunksize + min)),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.LessThanLabel, FormatValue(chunksize + min)), 
-                        colors[0]));
-
-                    for (int i = 1; i < colors.Length - 1; i++)
-                        result.Add(new RuleItem(
-                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1} AND \"{0}\" <= {2}", ColumnCombo.Text, FormatValue(min + (i * chunksize)), FormatValue(min + ((i + 1) * chunksize))),
-                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.BetweenLabel, FormatValue(min + (i * chunksize)), FormatValue(min + ((i + 1) * chunksize))),
-                            colors[i]));
-
-                    result.Add(new RuleItem(
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1}", ColumnCombo.Text, FormatValue(max - chunksize)),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.MoreThanLabel, FormatValue(max - chunksize)), 
-                        colors[colors.Length - 1]));
-                }
-                else if (AggregateCombo.SelectedIndex == 1) //Standard Deviation
-                {
-                    double dev = 0;
+                    double min = double.MaxValue;
+                    double max = double.MinValue;
+                    double mean = 0;
+                    long count = 0;
                     foreach (KeyValuePair<object, long> entry in m_values)
-                        dev += ((Convert.ToDouble(entry.Key) - mean) * (Convert.ToDouble(entry.Key) - mean)) * entry.Value;
-
-                    dev /= count;
-                    dev = Math.Sqrt(dev);
-
-                    double span = (dev * (colors.Length / 2));
-                    double lower = mean < span ? span - mean : mean - span;
-
-                    if (colors.Length % 2 == 1)
-                        lower += dev / 2; //The middle item goes half an alpha to each side
-
-                    result.Add(new RuleItem(
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" < {1}", ColumnCombo.Text, FormatValue(lower + dev)),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.LessThanLabel, FormatValue(lower + dev)),
-                        colors[0]));
-
-                    for (int i = 1; i < colors.Length - 1; i++)
-                        result.Add(new RuleItem(
-                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" >= {1} AND \"{0}\" < {2}", ColumnCombo.Text, FormatValue(lower + (i * dev)), FormatValue(lower + ((i + 1) * dev))),
-                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.BetweenLabel, FormatValue(lower + (i * dev)), FormatValue(lower + ((i + 1) * dev))),
-                            colors[i]));
-
-                    result.Add(new RuleItem(
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" >= {1}", ColumnCombo.Text, FormatValue(lower + (dev * (colors.Length - 1)))),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.MoreThanLabel, FormatValue(lower + (dev * (colors.Length - 1)))),
-                        colors[colors.Length - 1]));
-
-                }
-                else if (AggregateCombo.SelectedIndex == 2) //Quantile
-                {
-                    SortedDictionary<double, long> sort = new SortedDictionary<double, long>();
-                    foreach (KeyValuePair<object, long> entry in m_values)
-                        sort.Add(Convert.ToDouble(entry.Key), entry.Value);
-
-                    double step = (1.0 / colors.Length) * count;
-                    List<double> separators = new List<double>();
-                    for(int i = 1; i < colors.Length; i++)
                     {
-                        long limit = (long)Math.Round(step * i);
-                        long cc = 0;
-                        double item = double.NaN;
-
-                        foreach(KeyValuePair<double, long> entry in sort)
-                        {
-                            item = entry.Key;
-                            cc += entry.Value;
-                            if (cc >= limit)
-                                break;
-                        }
-
-                        separators.Add(item);
+                        double value = Convert.ToDouble(entry.Key);
+                        min = Math.Min(value, min);
+                        max = Math.Max(value, max);
+                        mean += value * entry.Value;
+                        count += entry.Value;
                     }
 
-                    result.Add(new RuleItem(
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" <= {1}", ColumnCombo.Text, FormatValue(separators[0])),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.LessThanLabel, FormatValue(separators[0])),
-                        colors[0]));
+                    mean /= count;
 
-                    for (int i = 1; i < colors.Length - 1; i++)
+                    if (AggregateCombo.SelectedIndex == 0) //Equal
+                    {
+                        double chunksize = (max - min) / colors.Length;
                         result.Add(new RuleItem(
-                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1} AND \"{0}\" <= {2}", ColumnCombo.Text, FormatValue(separators[i - 1]), FormatValue(separators[i])),
-                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.BetweenLabel, FormatValue(separators[i - 1]), FormatValue(separators[i])),
-                            colors[i]));
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" <= {1}", ColumnCombo.Text, FormatValue(chunksize + min)),
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.LessThanLabel, FormatValue(chunksize + min)),
+                            colors[0]));
 
-                    result.Add(new RuleItem(
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1}", ColumnCombo.Text, FormatValue(separators[separators.Count - 1])),
-                        string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.MoreThanLabel, FormatValue(separators[separators.Count - 1])),
-                        colors[colors.Length - 1]));
+                        for (int i = 1; i < colors.Length - 1; i++)
+                            result.Add(new RuleItem(
+                                string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1} AND \"{0}\" <= {2}", ColumnCombo.Text, FormatValue(min + (i * chunksize)), FormatValue(min + ((i + 1) * chunksize))),
+                                string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.BetweenLabel, FormatValue(min + (i * chunksize)), FormatValue(min + ((i + 1) * chunksize))),
+                                colors[i]));
+
+                        result.Add(new RuleItem(
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1}", ColumnCombo.Text, FormatValue(max - chunksize)),
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.MoreThanLabel, FormatValue(max - chunksize)),
+                            colors[colors.Length - 1]));
+                    }
+                    else if (AggregateCombo.SelectedIndex == 1) //Standard Deviation
+                    {
+                        double dev = 0;
+                        foreach (KeyValuePair<object, long> entry in m_values)
+                            dev += ((Convert.ToDouble(entry.Key) - mean) * (Convert.ToDouble(entry.Key) - mean)) * entry.Value;
+
+                        dev /= count;
+                        dev = Math.Sqrt(dev);
+
+                        double span = (dev * (colors.Length / 2));
+                        double lower = mean < span ? span - mean : mean - span;
+
+                        if (colors.Length % 2 == 1)
+                            lower += dev / 2; //The middle item goes half an alpha to each side
+
+                        result.Add(new RuleItem(
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" < {1}", ColumnCombo.Text, FormatValue(lower + dev)),
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.LessThanLabel, FormatValue(lower + dev)),
+                            colors[0]));
+
+                        for (int i = 1; i < colors.Length - 1; i++)
+                            result.Add(new RuleItem(
+                                string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" >= {1} AND \"{0}\" < {2}", ColumnCombo.Text, FormatValue(lower + (i * dev)), FormatValue(lower + ((i + 1) * dev))),
+                                string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.BetweenLabel, FormatValue(lower + (i * dev)), FormatValue(lower + ((i + 1) * dev))),
+                                colors[i]));
+
+                        result.Add(new RuleItem(
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" >= {1}", ColumnCombo.Text, FormatValue(lower + (dev * (colors.Length - 1)))),
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.MoreThanLabel, FormatValue(lower + (dev * (colors.Length - 1)))),
+                            colors[colors.Length - 1]));
+
+                    }
+                    else if (AggregateCombo.SelectedIndex == 2) //Quantile
+                    {
+                        SortedDictionary<double, long> sort = new SortedDictionary<double, long>();
+                        foreach (KeyValuePair<object, long> entry in m_values)
+                            sort.Add(Convert.ToDouble(entry.Key), entry.Value);
+
+                        double step = (1.0 / colors.Length) * count;
+                        List<double> separators = new List<double>();
+                        for (int i = 1; i < colors.Length; i++)
+                        {
+                            long limit = (long)Math.Round(step * i);
+                            long cc = 0;
+                            double item = double.NaN;
+
+                            foreach (KeyValuePair<double, long> entry in sort)
+                            {
+                                item = entry.Key;
+                                cc += entry.Value;
+                                if (cc >= limit)
+                                    break;
+                            }
+
+                            separators.Add(item);
+                        }
+
+                        result.Add(new RuleItem(
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" <= {1}", ColumnCombo.Text, FormatValue(separators[0])),
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.LessThanLabel, FormatValue(separators[0])),
+                            colors[0]));
+
+                        for (int i = 1; i < colors.Length - 1; i++)
+                            result.Add(new RuleItem(
+                                string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1} AND \"{0}\" <= {2}", ColumnCombo.Text, FormatValue(separators[i - 1]), FormatValue(separators[i])),
+                                string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.BetweenLabel, FormatValue(separators[i - 1]), FormatValue(separators[i])),
+                                colors[i]));
+
+                        result.Add(new RuleItem(
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" > {1}", ColumnCombo.Text, FormatValue(separators[separators.Count - 1])),
+                            string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.MoreThanLabel, FormatValue(separators[separators.Count - 1])),
+                            colors[colors.Length - 1]));
+                    }
+                }
+                else if (AggregateCombo.SelectedIndex == 3) //Individual
+                {
+                    List<object> items = new List<object>(m_values.Keys);
+                    items.Sort(); //Handles types correctly
+
+                    for (int i = 0; i < colors.Length; i++)
+                        if (items[i] is string)
+                            result.Add(new RuleItem(
+                                string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" = '{1}'", ColumnCombo.Text, items[i]),
+                                string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}", items[i]),
+                                colors[i]));
+                        else
+                            result.Add(new RuleItem(
+                                string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" = {1}", ColumnCombo.Text, items[i]),
+                                string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}", items[i]),
+                                colors[i]));
+
                 }
             }
-            else if (AggregateCombo.SelectedIndex == 3) //Individual
+            else if (rdValuesFromLookup.Checked)
             {
-                List<object> items = new List<object>(m_values.Keys);
-                items.Sort(); //Handles types correctly
+                //We use the type of the primary property and not the secondary key property
+                //as the filter will be generated against the primary property
+                PropertyDefinition keyProp = m_featureClass.FindProperty(ColumnCombo.Text);
+                bool isStringKeyProp = false;
+                if (keyProp.Type == PropertyDefinitionType.Data)
+                {
+                    DataPropertyDefinition dp = (DataPropertyDefinition)keyProp;
+                    isStringKeyProp = (dp.DataType == DataPropertyType.String);
+                }
 
                 for (int i = 0; i < colors.Length; i++)
-                    if (items[i] is string)
-                        result.Add(new RuleItem(
-                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" = '{1}'", ColumnCombo.Text, items[i]),
-                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}", items[i]), 
-                            colors[i]));
+                {
+                    var pair = m_lookupValues[i];
+                    if (isStringKeyProp)
+                    {
+                        result.Add(
+                            new RuleItem(
+                                string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" = '{1}'", ColumnCombo.Text, pair.Key),
+                                pair.Value.ToString(),
+                                colors[i]
+                            ));
+                    }
                     else
-                        result.Add(new RuleItem(
-                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" = {1}", ColumnCombo.Text, items[i]),
-                            string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}", items[i]), 
-                            colors[i])); 
-
+                    {
+                        result.Add(
+                            new RuleItem(
+                                string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" = {1}", ColumnCombo.Text, pair.Key),
+                                pair.Value.ToString(),
+                                colors[i]
+                            ));
+                    }
+                }
             }
-
 
             return result;
         }
@@ -624,7 +699,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         /// <returns>A list of colors matching the user selection</returns>
         private Color[] BuildColorSet(bool forPreview)
         {
-            Color[] res = new Color[forPreview ? Math.Min((int)RuleCount.Value, 100) : (AggregateCombo.SelectedIndex == AggregateCombo.Items.Count - 1 ? m_values.Count : (int)RuleCount.Value)];
+            Color[] res = null;
+            if (rdValuesFromClass.Checked)
+                res = new Color[forPreview ? Math.Min((int)RuleCount.Value, MAX_INDIVIDUAL_THEME_RULES) : (AggregateCombo.SelectedIndex == AggregateCombo.Items.Count - 1 ? m_values.Count : (int)RuleCount.Value)];
+            else if (rdValuesFromLookup.Checked)
+                res = new Color[forPreview ? Math.Min((int)RuleCount.Value, MAX_INDIVIDUAL_THEME_RULES) : (AggregateCombo.SelectedIndex == AggregateCombo.Items.Count - 1 ? m_lookupValues.Count : (int)RuleCount.Value)];
 
             if (GradientColors.Checked)
             {
@@ -669,9 +748,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         {
             if (AggregateCombo.SelectedIndex == AggregateCombo.Items.Count - 1)
             {
-                if (m_values.Count > 100)
+                if (m_values.Count > MAX_INDIVIDUAL_THEME_RULES)
                 {
-                    MessageBox.Show(this, string.Format(Strings.TooManyIndiviualValuesError, 100), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(this, string.Format(Strings.TooManyIndiviualValuesError, MAX_INDIVIDUAL_THEME_RULES), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     AggregateCombo.SelectedIndex = 0;
                     return;
                 }
@@ -760,7 +839,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             {
                 List<RuleItem> rules = CalculateRuleSet();
 
-                if (rules.Count > 1000)
+                if (rules.Count > THEME_RULE_WARNING_LIMIT)
                 {
                     if (MessageBox.Show(this, Strings.TooManyRulesWarning, Application.ProductName, MessageBoxButtons.YesNoCancel) != DialogResult.Yes)
                         return;
@@ -948,6 +1027,174 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 cb.Flip();
             }
             LoadColorBrewerOptions();
+        }
+
+        private void UpdateThemeChoice()
+        {
+            GroupPanel.Enabled = rdValuesFromClass.Checked;
+            grpValuesFromLookup.Enabled = rdValuesFromLookup.Checked;
+        }
+
+        private void rdValuesFromClass_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateThemeChoice();
+            if (rdValuesFromClass.Checked)
+                UpdateUIForClassSelection();
+        }
+
+        private void rdValuesFromLookup_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateThemeChoice();
+            if (rdValuesFromLookup.Checked)
+                UpdateUIForExternalLookup();
+        }
+
+        private void UpdateUIForExternalLookup()
+        {
+            DisableThemeOptions();
+        }
+
+        private void btnBrowseFeatureSource_Click(object sender, EventArgs e)
+        {
+            using (var picker = new ResourcePicker(m_editor.ResourceService, ResourceTypes.FeatureSource, ResourcePickerMode.OpenResource))
+            {
+                if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    txtFeatureSource.Text = picker.ResourceID;
+                }
+            }
+        }
+
+        private void ClearExternalClassDropdowns()
+        {
+            cmbFeatureClass.DataSource = null;
+            cmbKeyProperty.DataSource = null;
+            cmbValueProperty.DataSource = null;
+            btnUpdateThemeParameters.Enabled = false;
+        }
+
+        private void txtFeatureSource_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtFeatureSource.Text))
+            {
+                var names = m_editor.FeatureService.GetClassNames(txtFeatureSource.Text, null);
+                if (names.Length > 0)
+                {
+                    cmbFeatureClass.DataSource = names;
+                    cmbFeatureClass.SelectedIndex = 0;
+                }
+                else
+                {
+                    ClearExternalClassDropdowns();
+                }
+            }
+            else
+            {
+                ClearExternalClassDropdowns();
+            }
+        }
+
+        private void cmbFeatureClass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbFeatureClass.SelectedItem != null)
+            {
+                var className = cmbFeatureClass.SelectedItem.ToString();
+                var clsDef = m_editor.FeatureService.GetClassDefinition(txtFeatureSource.Text, className);
+
+                var keyPropNames = new List<string>();
+                var valuePropNames = new List<string>();
+
+                foreach (var prop in clsDef.Properties)
+                {
+                    keyPropNames.Add(prop.Name);
+                    valuePropNames.Add(prop.Name);
+                }
+
+                cmbKeyProperty.DataSource = keyPropNames;
+                cmbValueProperty.DataSource = valuePropNames;
+
+                cmbKeyProperty.SelectedIndex = 0;
+                cmbValueProperty.SelectedIndex = 0;
+                btnUpdateThemeParameters.Enabled = true;
+            }
+            else
+            {
+                btnUpdateThemeParameters.Enabled = false;
+            }
+        }
+
+        private void btnUpdateThemeParameters_Click(object sender, EventArgs e)
+        {
+            string fsId = txtFeatureSource.Text;
+            string className = cmbFeatureClass.SelectedItem.ToString();
+            string key = cmbKeyProperty.SelectedItem.ToString();
+            string value = cmbValueProperty.SelectedItem.ToString();
+
+            BusyWaitDialog.Run(Strings.ComputingThemeParameters, 
+            () => { //Worker method
+                List<LookupPair> res = new List<LookupPair>();
+                using (var reader = m_editor.FeatureService.QueryFeatureSource(fsId, className, null, new string[] { key, value }))
+                {
+                    while(reader.ReadNext())
+                    {
+                        if (!reader.IsNull(key) && !reader.IsNull(value))
+                        {
+                            res.Add(new LookupPair()
+                            {
+                                Key = reader[key].ToString(),
+                                Value = reader[value].ToString()
+                            });
+                        }
+                    }
+                    reader.Close();
+                }
+                return res;
+            },
+            (res, ex) => { //Worker completion
+                if (ex != null)
+                {
+                    ErrorDialog.Show(ex);
+                }
+                else
+                {
+                    m_lookupValues = (List<LookupPair>)res;
+
+                    if (m_lookupValues.Count > MAX_INDIVIDUAL_THEME_RULES)
+                    {
+                        MessageBox.Show(this, string.Format(Strings.TooManyValuesError, MAX_INDIVIDUAL_THEME_RULES), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ColumnCombo.SelectedIndex = 0;
+                        return;
+                    }
+
+                    RuleCountPanel.Enabled =
+                    GroupPanel.Enabled =
+                        false;
+
+                    RuleCount.Minimum = 0;
+
+                    //Select "Individual"
+                    RuleCount.Value = m_lookupValues.Count;
+                    GradientColors.Checked = true;
+
+                    DisplayGroup.Enabled =
+                    PreviewGroup.Enabled =
+                    OKBtn.Enabled =
+                        true;
+
+                    RefreshColorBrewerSet();
+                    RefreshPreview();
+
+                    if (ColumnCombo.SelectedIndex == 0)
+                    {
+                        MessageBox.Show(Strings.ThemePrimaryKeyPropertyNotSelected);
+                        OKBtn.Enabled = false;
+                    }
+                    else
+                    {
+                        OKBtn.Enabled = true;
+                    }
+                }
+            });
         }
     }
 }
