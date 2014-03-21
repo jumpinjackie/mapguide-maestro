@@ -42,6 +42,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.rdValuesFromLookup = new System.Windows.Forms.RadioButton();
             this.rdValuesFromClass = new System.Windows.Forms.RadioButton();
             this.grpValuesFromLookup = new System.Windows.Forms.GroupBox();
+            this.btnFilter = new System.Windows.Forms.Button();
+            this.txtFilter = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.btnUpdateThemeParameters = new System.Windows.Forms.Button();
             this.btnBrowseFeatureSource = new System.Windows.Forms.Button();
             this.cmbValueProperty = new System.Windows.Forms.ComboBox();
@@ -76,9 +79,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.OKBtn = new System.Windows.Forms.Button();
             this.grpThemeGeneration = new System.Windows.Forms.GroupBox();
             this.colorComboBox1 = new Maestro.Editors.Common.ColorComboBox();
-            this.btnFilter = new System.Windows.Forms.Button();
-            this.txtFilter = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.RuleCount)).BeginInit();
             this.DataGroup.SuspendLayout();
             this.grpValuesFromLookup.SuspendLayout();
@@ -206,6 +206,24 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.grpValuesFromLookup.Controls.Add(this.label5);
             this.grpValuesFromLookup.Name = "grpValuesFromLookup";
             this.grpValuesFromLookup.TabStop = false;
+            // 
+            // btnFilter
+            // 
+            resources.ApplyResources(this.btnFilter, "btnFilter");
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            // 
+            // txtFilter
+            // 
+            resources.ApplyResources(this.txtFilter, "txtFilter");
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.ReadOnly = true;
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
             // 
             // btnUpdateThemeParameters
             // 
@@ -445,24 +463,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             // 
             resources.ApplyResources(this.colorComboBox1, "colorComboBox1");
             this.colorComboBox1.Name = "colorComboBox1";
-            // 
-            // btnFilter
-            // 
-            resources.ApplyResources(this.btnFilter, "btnFilter");
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
-            // 
-            // txtFilter
-            // 
-            resources.ApplyResources(this.txtFilter, "txtFilter");
-            this.txtFilter.Name = "txtFilter";
-            this.txtFilter.ReadOnly = true;
-            // 
-            // label9
-            // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
             // 
             // ThemeCreator
             // 
