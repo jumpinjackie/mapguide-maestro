@@ -38,6 +38,9 @@ namespace Maestro.Base.UI.Preferences
             var useLocal = Props.Get(ConfigProperties.UseLocalPreview, ConfigProperties.DefaultUseLocalPreview);
             chkUseLocalPreview.Checked = useLocal;
 
+            var addWmd = Props.Get(ConfigProperties.AddDebugWatermark, ConfigProperties.DefaultAddDebugWatermark);
+            chkAddDebugWatermark.Checked = addWmd;
+
             var path = Props.Get(ConfigProperties.XsdSchemaPath, ConfigProperties.DefaultXsdSchemaPath);
             txtXsdPath.Text = path;
 
@@ -60,6 +63,7 @@ namespace Maestro.Base.UI.Preferences
 
             Apply(ConfigProperties.ValidateOnSave, chkValidateOnSave.Checked);
             Apply(ConfigProperties.UseLocalPreview, chkUseLocalPreview.Checked);
+            Apply(ConfigProperties.AddDebugWatermark, chkAddDebugWatermark.Checked);
             Apply(ConfigProperties.PreviewLocale, txtPreviewLocale.Text);
 
             //These changes require restart

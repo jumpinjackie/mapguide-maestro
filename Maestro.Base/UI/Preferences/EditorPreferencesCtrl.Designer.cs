@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.chkUseLocalPreview = new System.Windows.Forms.CheckBox();
             this.chkValidateOnSave = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnBrowseXsdPath = new System.Windows.Forms.Button();
@@ -37,7 +38,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtPreviewLocale = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.chkUseLocalPreview = new System.Windows.Forms.CheckBox();
+            this.chkAddDebugWatermark = new System.Windows.Forms.CheckBox();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -47,14 +48,25 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.chkAddDebugWatermark);
             this.groupBox4.Controls.Add(this.chkUseLocalPreview);
             this.groupBox4.Controls.Add(this.chkValidateOnSave);
             this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(399, 50);
+            this.groupBox4.Size = new System.Drawing.Size(399, 78);
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "General";
+            // 
+            // chkUseLocalPreview
+            // 
+            this.chkUseLocalPreview.AutoSize = true;
+            this.chkUseLocalPreview.Location = new System.Drawing.Point(134, 19);
+            this.chkUseLocalPreview.Name = "chkUseLocalPreview";
+            this.chkUseLocalPreview.Size = new System.Drawing.Size(257, 17);
+            this.chkUseLocalPreview.TabIndex = 3;
+            this.chkUseLocalPreview.Text = "Preview with local map viewer (where applicable)";
+            this.chkUseLocalPreview.UseVisualStyleBackColor = true;
             // 
             // chkValidateOnSave
             // 
@@ -74,7 +86,7 @@
             this.groupBox1.Controls.Add(this.btnBrowseXsdPath);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtXsdPath);
-            this.groupBox1.Location = new System.Drawing.Point(4, 60);
+            this.groupBox1.Location = new System.Drawing.Point(3, 87);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(398, 66);
             this.groupBox1.TabIndex = 11;
@@ -119,7 +131,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.txtPreviewLocale);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(4, 132);
+            this.groupBox2.Location = new System.Drawing.Point(3, 159);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(398, 60);
             this.groupBox2.TabIndex = 12;
@@ -142,15 +154,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Preview using the following locale";
             // 
-            // chkUseLocalPreview
+            // chkAddDebugWatermark
             // 
-            this.chkUseLocalPreview.AutoSize = true;
-            this.chkUseLocalPreview.Location = new System.Drawing.Point(134, 19);
-            this.chkUseLocalPreview.Name = "chkUseLocalPreview";
-            this.chkUseLocalPreview.Size = new System.Drawing.Size(257, 17);
-            this.chkUseLocalPreview.TabIndex = 3;
-            this.chkUseLocalPreview.Text = "Preview with local map viewer (where applicable)";
-            this.chkUseLocalPreview.UseVisualStyleBackColor = true;
+            this.chkAddDebugWatermark.AutoSize = true;
+            this.chkAddDebugWatermark.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.chkAddDebugWatermark.Location = new System.Drawing.Point(19, 42);
+            this.chkAddDebugWatermark.Name = "chkAddDebugWatermark";
+            this.chkAddDebugWatermark.Size = new System.Drawing.Size(290, 17);
+            this.chkAddDebugWatermark.TabIndex = 4;
+            this.chkAddDebugWatermark.Text = "Add Debug Watermark for generated resource previews";
+            this.chkAddDebugWatermark.UseVisualStyleBackColor = true;
             // 
             // EditorPreferencesCtrl
             // 
@@ -183,5 +196,6 @@
         private System.Windows.Forms.TextBox txtPreviewLocale;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkUseLocalPreview;
+        private System.Windows.Forms.CheckBox chkAddDebugWatermark;
     }
 }

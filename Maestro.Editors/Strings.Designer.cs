@@ -439,6 +439,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MapGuide Debugging Information\n==============================\n\nMap Extents Min: ({0}, {1})\nMap Extents Max: ({2}, {3})\nMap Coordinate System: \n{4}.
+        /// </summary>
+        internal static string DebugWatermarkMessage {
+            get {
+                return ResourceManager.GetString("DebugWatermarkMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete Command.
         /// </summary>
         internal static string DeleteCommand {

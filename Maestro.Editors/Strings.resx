@@ -1554,4 +1554,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="ThemePrimaryKeyPropertyNotSelected" xml:space="preserve">
     <value>Property not selected. Please select the Property which connects to the selected Key Property in the external class</value>
   </data>
+  <data name="DebugWatermarkMessage" xml:space="preserve">
+    <value>MapGuide Debugging Information\n==============================\n\nMap Extents Min: ({0}, {1})\nMap Extents Max: ({2}, {3})\nMap Coordinate System: \n{4}</value>
+  </data>
 </root>

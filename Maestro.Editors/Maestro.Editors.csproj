@@ -2324,6 +2324,7 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\TextWatermark.txt" />
     <None Include="Resources\document-code.png" />
     <None Include="Resources\document-search-result.png" />
     <None Include="Resources\arrow-split.png" />

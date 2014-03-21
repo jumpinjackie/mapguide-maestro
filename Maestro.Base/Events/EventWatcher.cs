@@ -61,6 +61,10 @@ namespace Maestro.Base.Events
                     PreviewSettings.UseLocalPreview = Convert.ToBoolean(e.NewValue);
                     LoggingService.Info("Use Local Preview setting is now: " + PreviewSettings.UseLocalPreview); //NOXLATE
                     break;
+                case ConfigProperties.AddDebugWatermark:
+                    PreviewSettings.AddDebugWatermark = Convert.ToBoolean(e.NewValue);
+                    LoggingService.Info("Add Debug Watermark setting is now: " + PreviewSettings.AddDebugWatermark); //NOXLATE
+                    break;
                 case ConfigProperties.PreviewViewerType:
                     PreviewSettings.UseAjaxViewer = (e.NewValue.ToString() == "AJAX"); //NOXLATE
                     LoggingService.Info("Use AJAX Viewer setting is now: " + PreviewSettings.UseAjaxViewer);

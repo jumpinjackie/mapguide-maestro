@@ -2043,7 +2043,7 @@
   <data name="MgCooker" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsAAAA7AAWrWiQkAAAHrSURBVDhPjZHvS1phFMf9T3qxl4MaxDKSoiKKIqEaBAlC
+        YQUAAAAJcEhZcwAADr8AAA6/ATgFUyQAAAHrSURBVDhPjZHvS1phFMf9T3qxl4MaxDKSoiKKIqEaBAlC
         Rg2KfBWhL9peOCiK2F0abSs2xFWk3n4JdhVMS2tdhv246CazreiHa4OCeit4v/N5vA5He2oHvpyH+5zz
         Od/zXBUrZha/on/SS2Wbl6B8/r+omhiBIbCImuVx1PMVKJ9rQq/zFB/cyftBmld9aPZYUfS6Ba2CExqX
         EVWBQzwMyjCsXd0N6OR4OrHGWZudWok27zsYJRlaUUapx49Hbhv0wy42pGx0QLFcCWPQjunDNEyxDHRR
@@ -4426,5 +4426,8 @@
   </data>
   <data name="document_code" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\document-code.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TextWatermark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TextWatermark.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

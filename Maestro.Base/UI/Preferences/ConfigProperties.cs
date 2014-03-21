@@ -98,6 +98,11 @@ namespace Maestro.Base.UI.Preferences
         public const string UseLocalPreview = "Editor.UseLocalPreview"; //NOXLATE
 
         /// <summary>
+        /// Add a debug watermark for any Map Definition generated for a resource preview
+        /// </summary>
+        public const string AddDebugWatermark = "Editor.AddDebugWatermark"; //NOXLATE
+
+        /// <summary>
         /// Show the tip of the day on startup
         /// </summary>
         public const string ShowTipOfTheDay = "General.ShowTipOfTheDay"; //NOXLATE
@@ -170,6 +175,11 @@ namespace Maestro.Base.UI.Preferences
         /// Default setting for using local previews
         /// </summary>
         public static bool DefaultUseLocalPreview { get { return true; } }
+        
+        /// <summary>
+        /// Default setting for adding debug watermarks
+        /// </summary>
+        public static bool DefaultAddDebugWatermark { get { return true; } }
 
         /// <summary>
         /// Default color for open resources in the Site Explorer

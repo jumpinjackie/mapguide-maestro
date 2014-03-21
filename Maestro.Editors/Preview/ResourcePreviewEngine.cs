@@ -27,6 +27,7 @@ using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -116,6 +117,33 @@ namespace Maestro.Editors.Preview
             return url;
         }
 
+        static string CreateDebugWatermark(IMapDefinition2 mdf, IServerConnection conn)
+        {
+            //Tidy up the CS WKT so that it can display nicely in a watermark
+            StringBuilder cleanCs = new StringBuilder(mdf.CoordinateSystem);
+            cleanCs.Replace("[", "[\n");
+            cleanCs.Replace("],", "],\n");
+
+            string message = string.Format(Strings.DebugWatermarkMessage,
+                mdf.Extents.MinX,
+                mdf.Extents.MinY,
+                mdf.Extents.MaxX,
+                mdf.Extents.MaxY,
+                cleanCs.ToString());
+            string watermarkXml = string.Format(Properties.Resources.TextWatermark, message);
+            string resId = "Session:" + conn.SessionID + "//Debug.WatermarkDefinition";
+            using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(watermarkXml)))
+            {
+                conn.ResourceService.SetResourceXmlData(resId, ms);
+            }
+
+            //Add watermark to Map Definition
+            var wmd = (IWatermarkDefinition)conn.ResourceService.GetResource(resId);
+            mdf.AddWatermark(wmd);
+
+            return resId;
+        }
+
         internal static IMapDefinition CreateLayerPreviewMapDefinition(ILayerDefinition ldf, string sessionId, string layerName, IServerConnection conn)
         {
             //Create temp map definition to house our current layer
@@ -127,7 +155,10 @@ namespace Maestro.Editors.Preview
 
             //TODO: Based on the visible scales in this layer, size this extents accordingly
             var mdf = ObjectFactory.CreateMapDefinition(conn, Strings.PreviewMap, csWkt, extent);
-
+            IMapDefinition2 mdf2 = mdf as IMapDefinition2;
+            if (mdf2 != null && PreviewSettings.AddDebugWatermark)
+                CreateDebugWatermark(mdf2, conn);
+            
             var layer = mdf.AddLayer(null, layerName, ldf.ResourceID);
             conn.ResourceService.SaveResourceAs(mdf, mdfId);
             mdf.ResourceID = mdfId;
@@ -224,6 +255,9 @@ namespace Maestro.Editors.Preview
             var mdf = (IMapDefinition)res;
 
             var conn = mdf.CurrentConnection;
+            IMapDefinition2 mdf2 = mdf as IMapDefinition2;
+            if (mdf2 != null && PreviewSettings.AddDebugWatermark)
+                CreateDebugWatermark(mdf2, conn);
             conn.ResourceService.SaveResourceAs(mdf, mdfId);
 
             //if (PropertyService.Get(ConfigProperties.PreviewViewerType, "AJAX").Equals("AJAX")) //NOXLATE

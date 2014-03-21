@@ -33,7 +33,14 @@ namespace Maestro.Editors.Preview
         {
             UseAjaxViewer = true;
             UseLocalPreview = true;
+            AddDebugWatermark = true;
         }
+
+        /// <summary>
+        /// Determines if a watermark will be added to the generated Map Definition which
+        /// displays additional debugging information
+        /// </summary>
+        public static bool AddDebugWatermark { get; set; }
 
         /// <summary>
         /// Determines if a local map viewer should be used over launching a viewer URL
