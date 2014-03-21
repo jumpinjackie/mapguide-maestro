@@ -37,6 +37,7 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.Collections.Specialized;
 using Maestro.Editors.Generic;
 using Maestro.Shared.UI;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 {
@@ -1129,11 +1130,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             string className = cmbFeatureClass.SelectedItem.ToString();
             string key = cmbKeyProperty.SelectedItem.ToString();
             string value = cmbValueProperty.SelectedItem.ToString();
+            string filter = null;
+            if (!string.IsNullOrEmpty(txtFilter.Text))
+                filter = txtFilter.Text;
 
             BusyWaitDialog.Run(Strings.ComputingThemeParameters, 
             () => { //Worker method
                 List<LookupPair> res = new List<LookupPair>();
-                using (var reader = m_editor.FeatureService.QueryFeatureSource(fsId, className, null, new string[] { key, value }))
+                using (var reader = m_editor.FeatureService.QueryFeatureSource(fsId, className, filter, new string[] { key, value }))
                 {
                     while(reader.ReadNext())
                     {
@@ -1195,6 +1199,17 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                     }
                 }
             });
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            string fsId = txtFeatureSource.Text;
+            string className = cmbFeatureClass.SelectedItem.ToString();
+            IFeatureSource fs = (IFeatureSource)m_editor.ResourceService.GetResource(fsId);
+            ClassDefinition clsDef = m_editor.FeatureService.GetClassDefinition(fsId, className);
+            string expr = m_editor.EditExpression(txtFilter.Text, clsDef, fs.Provider, fsId, false);
+            if (expr != null)
+                txtFilter.Text = expr;
         }
     }
 }
