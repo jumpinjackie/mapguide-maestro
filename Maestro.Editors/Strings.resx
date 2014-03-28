@@ -1557,4 +1557,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="DebugWatermarkMessage" xml:space="preserve">
     <value>MapGuide Debugging Information\n==============================\n\nMap Extents Min: ({0}, {1})\nMap Extents Max: ({2}, {3})\nMap Coordinate System: \n{4}</value>
   </data>
+  <data name="DebugWatermarkMessageLayer" xml:space="preserve">
+    <value>MapGuide Debugging Information\n==============================\n\nMap Extents Min: ({0}, {1})\nMap Extents Max: ({2}, {3})\nMap Coordinate System: \n{4}\nLayer Spatial Context: {5}</value>
+  </data>
 </root>

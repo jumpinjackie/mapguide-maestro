@@ -195,6 +195,68 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
             return string.Empty;
         }
 
+        static IFdoSpatialContext FindSpatialContext(FdoSpatialContextList spatialContexts, string scName)
+        {
+            foreach (IFdoSpatialContext sc in spatialContexts.SpatialContext)
+            {
+                if (sc.Name == scName)
+                    return sc;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Returns the associated spatial context for this Layer Definition
+        /// </summary>
+        /// <param name="layer"></param>
+        /// <returns></returns>
+        public static IFdoSpatialContext GetSpatialContext(this ILayerDefinition layer)
+        {
+            Check.NotNull(layer, "layer"); //NOXLATE
+            if (layer.CurrentConnection == null)
+                throw new System.Exception(OSGeo.MapGuide.MaestroAPI.Strings.ErrorNoServerConnectionAttached);
+
+            var conn = layer.CurrentConnection;
+            var ltype = layer.SubLayer.LayerType;
+            if (ltype == LayerType.Vector ||
+                ltype == LayerType.Raster)
+            {
+                var sContexts = conn.FeatureService.GetSpatialContextInfo(layer.SubLayer.ResourceId, false);
+                if (ltype == LayerType.Vector)
+                {
+                    IVectorLayerDefinition vl = (IVectorLayerDefinition)layer.SubLayer;
+                    var clsDef = conn.FeatureService.GetClassDefinition(vl.ResourceId, vl.FeatureName);
+                    var geom = clsDef.FindProperty(vl.Geometry) as GeometricPropertyDefinition;
+                    if (geom != null)
+                    {
+                        var sc = FindSpatialContext(sContexts, geom.SpatialContextAssociation);
+                        return sc;
+                    }
+                    return null;
+                }
+                else if (ltype == LayerType.Raster)
+                {
+                    IRasterLayerDefinition rl = (IRasterLayerDefinition)layer.SubLayer;
+                    var clsDef = conn.FeatureService.GetClassDefinition(rl.ResourceId, rl.FeatureName);
+                    var geom = clsDef.FindProperty(rl.Geometry) as RasterPropertyDefinition;
+                    if (geom != null)
+                    {
+                        var sc = FindSpatialContext(sContexts, geom.SpatialContextAssociation);
+                        return sc;
+                    }
+                    return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         /// <summary>
         /// Returns the spatial extent of the data.
         /// This is calculated by asking the underlying featuresource for the minimum rectangle that
@@ -222,14 +284,13 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
                         IFdoSpatialContext activeSc = null;
                         try
                         {
-                            var scList = conn.FeatureService.GetSpatialContextInfo(layer.SubLayer.ResourceId, true);
-                            if (scList.SpatialContext.Count > 0)
+                            activeSc = layer.GetSpatialContext();
+                            if (activeSc != null)
                             {
-                                activeSc = scList.SpatialContext[0];
+                                //TODO: Check if ones like SQL Server will return the WKT, otherwise we'll need to bring in the
+                                //CS catalog to do CS code to WKT conversion.
+                                csWkt = activeSc.CoordinateSystemWkt;
                             }
-                            //TODO: Check if ones like SQL Server will return the WKT, otherwise we'll need to bring in the
-                            //CS catalog to do CS code to WKT conversion.
-                            csWkt = activeSc.CoordinateSystemWkt;
 
                             //This can fail if SpatialExtents() aggregate function is not supported
                             env = conn.FeatureService.GetSpatialExtent(layer.SubLayer.ResourceId, ((IVectorLayerDefinition)layer.SubLayer).FeatureName, ((IVectorLayerDefinition)layer.SubLayer).Geometry);

@@ -72,31 +72,21 @@ namespace Maestro.Base.Commands.SiteExplorer
                                     if (ltype == LayerType.Vector ||
                                         ltype == LayerType.Raster)
                                     {
-                                        var sContexts = conn.FeatureService.GetSpatialContextInfo(ldf.SubLayer.ResourceId, false);
-                                        if (ltype == LayerType.Vector)
+                                        var sc = ldf.GetSpatialContext();
+                                        if (sc == null)
                                         {
-                                            IVectorLayerDefinition vl = (IVectorLayerDefinition)ldf.SubLayer;
-                                            var clsDef = conn.FeatureService.GetClassDefinition(vl.ResourceId, vl.FeatureName);
-                                            var geom = clsDef.FindProperty(vl.Geometry) as GeometricPropertyDefinition;
-                                            if (geom != null)
+                                            if (ltype == LayerType.Vector)
                                             {
-                                                var sc = FindSpatialContext(sContexts, geom.SpatialContextAssociation);
-                                                return sc;
+                                                IVectorLayerDefinition vl = (IVectorLayerDefinition)ldf.SubLayer;
+                                                throw new SpatialContextNotFoundException(string.Format(Strings.GeometryPropertyNotFound, vl.Geometry));
                                             }
-                                            throw new SpatialContextNotFoundException(string.Format(Strings.GeometryPropertyNotFound, vl.Geometry));
-                                        }
-                                        else if (ltype == LayerType.Raster)
-                                        {
-                                            IRasterLayerDefinition rl = (IRasterLayerDefinition)ldf.SubLayer;
-                                            var clsDef = conn.FeatureService.GetClassDefinition(rl.ResourceId, rl.FeatureName);
-                                            var geom = clsDef.FindProperty(rl.Geometry) as RasterPropertyDefinition;
-                                            if (geom != null)
+                                            else //Raster
                                             {
-                                                var sc = FindSpatialContext(sContexts, geom.SpatialContextAssociation);
-                                                return sc;
+                                                IRasterLayerDefinition rl = (IRasterLayerDefinition)ldf.SubLayer;
+                                                throw new SpatialContextNotFoundException(string.Format(Strings.RasterPropertyNotFound, rl.Geometry));
                                             }
-                                            throw new SpatialContextNotFoundException(string.Format(Strings.RasterPropertyNotFound, rl.Geometry));
                                         }
+                                        return sc;
                                     }
                                     else
                                     {
@@ -107,7 +97,6 @@ namespace Maestro.Base.Commands.SiteExplorer
                                 {
                                     throw new SpatialContextNotFoundException(string.Format(Strings.NonApplicableLayerType, ldf.SubLayer.LayerType));
                                 }
-                                return null;
                             }, (res, ex) => {
                                 if (ex != null)
                                 {
