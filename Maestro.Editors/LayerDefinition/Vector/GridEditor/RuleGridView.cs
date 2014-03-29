@@ -45,6 +45,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         {
             _init = true;
             InitializeComponent();
+            this.ThemeIndexOffest = 0;
         }
 
         private void InitGrid(bool bComposite)
@@ -76,6 +77,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 UpdateRulePreviewAsync(rule);
             }
 
+            CheckThemeExplodeStatus();
+        }
+
+        private void CheckThemeExplodeStatus()
+        {
             btnExplodeTheme.Enabled = (grdRules.Rows.Count > 1);
         }
 
@@ -109,6 +115,23 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 _init = true;
                 _edSvc = edSvc;
                 _style = style;
+                var p2 = style as IPointVectorStyle2;
+                var l2 = style as ILineVectorStyle2;
+                var a2 = style as IAreaVectorStyle2;
+                var c2 = style as ICompositeTypeStyle2;
+                btnShowInLegend.Visible = !(p2 == null && l2 == null && a2 == null && c2 == null);
+                if (btnShowInLegend.Visible)
+                {
+                    if (p2 != null)
+                        btnShowInLegend.Checked = p2.ShowInLegend;
+                    else if (l2 != null)
+                        btnShowInLegend.Checked = l2.ShowInLegend;
+                    else if (a2 != null)
+                        btnShowInLegend.Checked = a2.ShowInLegend;
+                    else if (c2 != null)
+                        btnShowInLegend.Checked = c2.ShowInLegend;
+                }
+
                 InitGrid(style is ICompositeTypeStyle);
                 _editedLayer = (ILayerDefinition)_edSvc.GetEditedResource();
                 _parentScaleRange = parentRange;
@@ -154,6 +177,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                             }
                         }
                         break;
+                    case StyleType.Composite:
+                        {
+                            for (int i = 0; i < style.RuleCount; i++)
+                            {
+                                ICompositeRule cr = (ICompositeRule)style.GetRuleAt(i);
+                                _rules.Add(new CompositeRuleModel(cr, i));
+                            }
+                        }
+                        break;
                 }
             }
             else
@@ -165,10 +197,24 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            if (_rules.Count > 0)
+            if (!this.DesignMode)
             {
-                GenerateStylePreviewsForVisibleRows(false);
+                if (_rules.Count > 0)
+                {
+                    GenerateStylePreviewsForVisibleRows(false);
+                }
             }
+        }
+
+        /// <summary>
+        /// Gets or sets the theme index offset. Apply a theme offset if you have a layer with multiple styles and 
+        /// your are editing any style beyond the first one. The offset should be the total number of rules before
+        /// the style being edited
+        /// </summary>
+        public int ThemeIndexOffest
+        {
+            get;
+            set;
         }
 
         private IEnumerable<DataGridViewRow> GetVisibleRuleRows()
@@ -238,13 +284,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             var editedRes = _edSvc.GetEditedResource();
             var conn = editedRes.CurrentConnection;
             var mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+            var themeOffset = this.ThemeIndexOffest;
 
             BusyWaitDialog.Run(Strings.UpdatingStylePreviews, () =>
             { //Background thread worker
                 var icons = new Dictionary<int, Image>();
                 foreach (var rule in visibleRules)
                 {
-                    var img = mapSvc.GetLegendImage(scale, layerId, rule.Index, styleType.Value, 50, 16, "PNG");
+                    var img = mapSvc.GetLegendImage(scale, layerId, themeOffset + rule.Index, styleType.Value, 50, 16, "PNG");
                     icons[rule.Index] = img;
                 }
                 return icons;
@@ -424,6 +471,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             PointRuleModel pr = rule as PointRuleModel;
             LineRuleModel lr = rule as LineRuleModel;
             AreaRuleModel ar = rule as AreaRuleModel;
+            CompositeRuleModel cr = rule as CompositeRuleModel;
 
             UserControl uc = null;
             /*
@@ -540,6 +588,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                     ar.SetSymbolizationStyle(m_origArea);
                 };
                 afse.SetEditCommit(editCommit);
+            }
+            else if (cr != null)
+            {
+                var diag = new SymbolInstancesDialog(_edSvc, cr.GetSymbolizationStyle(), GetLayerClass(), GetLayerProvider(), vl.ResourceId, prev);
+                diag.ShowDialog();
+                //HACK: Assume edits made
+                _edSvc.HasChanged();
+                return;
             }
 
             if (uc != null)
@@ -732,6 +788,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 {
                     _init = true;
                     ReSyncRules(_style);
+                    CheckThemeExplodeStatus();
                     _edSvc.SyncSessionCopy();
                     GenerateStylePreviewsForVisibleRows(false);
                 }
@@ -774,6 +831,22 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             };
             Utility.ExplodeThemeIntoFilteredLayers(options, cb);
             return true;
+        }
+
+        private void btnShowInLegend_Click(object sender, EventArgs e)
+        {
+            var p2 = _style as IPointVectorStyle2;
+            var l2 = _style as ILineVectorStyle2;
+            var a2 = _style as IAreaVectorStyle2;
+            var c2 = _style as ICompositeTypeStyle2;
+            if (p2 != null)
+                p2.ShowInLegend = btnShowInLegend.Checked;
+            else if (l2 != null)
+                l2.ShowInLegend = btnShowInLegend.Checked;
+            else if (a2 != null)
+                a2.ShowInLegend = btnShowInLegend.Checked;
+            else if (c2 != null)
+                c2.ShowInLegend = btnShowInLegend.Checked;
         }
     }
 }

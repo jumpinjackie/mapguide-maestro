@@ -32,32 +32,32 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VectorScaleRangeGrid));
             this.geomStyleIcons = new System.Windows.Forms.ImageList(this.components);
             this.TAB_LINES = new System.Windows.Forms.TabPage();
-            this.lineRuleGrid = new Maestro.Editors.LayerDefinition.Vector.GridEditor.RuleGridView();
             this.TAB_AREAS = new System.Windows.Forms.TabPage();
-            this.areaRuleGrid = new Maestro.Editors.LayerDefinition.Vector.GridEditor.RuleGridView();
             this.TAB_POINTS = new System.Windows.Forms.TabPage();
-            this.pointRuleGrid = new Maestro.Editors.LayerDefinition.Vector.GridEditor.RuleGridView();
             this.TAB_COMPOSITE = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lstStyles = new System.Windows.Forms.ListBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnAdd = new System.Windows.Forms.ToolStripButton();
+            this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.tabGeomStyles = new System.Windows.Forms.TabControl();
             this.label1 = new System.Windows.Forms.Label();
             this.chkComposite = new System.Windows.Forms.CheckBox();
             this.chkArea = new System.Windows.Forms.CheckBox();
             this.chkLine = new System.Windows.Forms.CheckBox();
             this.chkPoints = new System.Windows.Forms.CheckBox();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.lstStyles = new System.Windows.Forms.ListBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnAdd = new System.Windows.Forms.ToolStripButton();
-            this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.pointRuleGrid = new Maestro.Editors.LayerDefinition.Vector.GridEditor.RuleGridView();
+            this.lineRuleGrid = new Maestro.Editors.LayerDefinition.Vector.GridEditor.RuleGridView();
+            this.areaRuleGrid = new Maestro.Editors.LayerDefinition.Vector.GridEditor.RuleGridView();
             this.TAB_LINES.SuspendLayout();
             this.TAB_AREAS.SuspendLayout();
             this.TAB_POINTS.SuspendLayout();
             this.TAB_COMPOSITE.SuspendLayout();
-            this.tabGeomStyles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.tabGeomStyles.SuspendLayout();
             this.SuspendLayout();
             // 
             // geomStyleIcons
@@ -67,12 +67,13 @@
             this.geomStyleIcons.Images.SetKeyName(0, "layer-small.png");
             this.geomStyleIcons.Images.SetKeyName(1, "layer-shape-line.png");
             this.geomStyleIcons.Images.SetKeyName(2, "layer-shape-polygon.png");
-            this.geomStyleIcons.Images.SetKeyName(3, "images-stack.png");
+            this.geomStyleIcons.Images.SetKeyName(3, "layer-vector.png");
             // 
             // TAB_LINES
             // 
             this.TAB_LINES.AutoScroll = true;
             this.TAB_LINES.Controls.Add(this.lineRuleGrid);
+            this.TAB_LINES.ImageIndex = 1;
             this.TAB_LINES.Location = new System.Drawing.Point(4, 23);
             this.TAB_LINES.Name = "TAB_LINES";
             this.TAB_LINES.Padding = new System.Windows.Forms.Padding(3);
@@ -81,18 +82,11 @@
             this.TAB_LINES.Text = "Lines";
             this.TAB_LINES.UseVisualStyleBackColor = true;
             // 
-            // lineRuleGrid
-            // 
-            this.lineRuleGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lineRuleGrid.Location = new System.Drawing.Point(3, 3);
-            this.lineRuleGrid.Name = "lineRuleGrid";
-            this.lineRuleGrid.Size = new System.Drawing.Size(673, 384);
-            this.lineRuleGrid.TabIndex = 0;
-            // 
             // TAB_AREAS
             // 
             this.TAB_AREAS.AutoScroll = true;
             this.TAB_AREAS.Controls.Add(this.areaRuleGrid);
+            this.TAB_AREAS.ImageIndex = 2;
             this.TAB_AREAS.Location = new System.Drawing.Point(4, 23);
             this.TAB_AREAS.Name = "TAB_AREAS";
             this.TAB_AREAS.Padding = new System.Windows.Forms.Padding(3);
@@ -101,18 +95,11 @@
             this.TAB_AREAS.Text = "Areas";
             this.TAB_AREAS.UseVisualStyleBackColor = true;
             // 
-            // areaRuleGrid
-            // 
-            this.areaRuleGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.areaRuleGrid.Location = new System.Drawing.Point(3, 3);
-            this.areaRuleGrid.Name = "areaRuleGrid";
-            this.areaRuleGrid.Size = new System.Drawing.Size(673, 384);
-            this.areaRuleGrid.TabIndex = 0;
-            // 
             // TAB_POINTS
             // 
             this.TAB_POINTS.AutoScroll = true;
             this.TAB_POINTS.Controls.Add(this.pointRuleGrid);
+            this.TAB_POINTS.ImageIndex = 0;
             this.TAB_POINTS.Location = new System.Drawing.Point(4, 23);
             this.TAB_POINTS.Name = "TAB_POINTS";
             this.TAB_POINTS.Padding = new System.Windows.Forms.Padding(3);
@@ -121,18 +108,11 @@
             this.TAB_POINTS.Text = "Points";
             this.TAB_POINTS.UseVisualStyleBackColor = true;
             // 
-            // pointRuleGrid
-            // 
-            this.pointRuleGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pointRuleGrid.Location = new System.Drawing.Point(3, 3);
-            this.pointRuleGrid.Name = "pointRuleGrid";
-            this.pointRuleGrid.Size = new System.Drawing.Size(673, 384);
-            this.pointRuleGrid.TabIndex = 0;
-            // 
             // TAB_COMPOSITE
             // 
             this.TAB_COMPOSITE.AutoScroll = true;
             this.TAB_COMPOSITE.Controls.Add(this.splitContainer1);
+            this.TAB_COMPOSITE.ImageIndex = 3;
             this.TAB_COMPOSITE.Location = new System.Drawing.Point(4, 23);
             this.TAB_COMPOSITE.Name = "TAB_COMPOSITE";
             this.TAB_COMPOSITE.Padding = new System.Windows.Forms.Padding(3);
@@ -140,6 +120,64 @@
             this.TAB_COMPOSITE.TabIndex = 3;
             this.TAB_COMPOSITE.Text = "Composite";
             this.TAB_COMPOSITE.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.lstStyles);
+            this.splitContainer1.Panel1.Controls.Add(this.toolStrip1);
+            this.splitContainer1.Size = new System.Drawing.Size(673, 384);
+            this.splitContainer1.SplitterDistance = 161;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // lstStyles
+            // 
+            this.lstStyles.DisplayMember = "DisplayString";
+            this.lstStyles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstStyles.FormattingEnabled = true;
+            this.lstStyles.Location = new System.Drawing.Point(0, 25);
+            this.lstStyles.Name = "lstStyles";
+            this.lstStyles.Size = new System.Drawing.Size(161, 359);
+            this.lstStyles.TabIndex = 3;
+            this.lstStyles.SelectedIndexChanged += new System.EventHandler(this.lstStyles_SelectedIndexChanged);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnAdd,
+            this.btnDelete});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(161, 25);
+            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Image = global::Maestro.Editors.Properties.Resources.plus_circle;
+            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(49, 22);
+            this.btnAdd.Text = "Add";
+            this.btnAdd.ToolTipText = "Add a Composite Style";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Image = global::Maestro.Editors.Properties.Resources.cross_script;
+            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(60, 22);
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.ToolTipText = "Delete this Composite Style";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // tabGeomStyles
             // 
@@ -215,59 +253,32 @@
             this.chkPoints.UseVisualStyleBackColor = true;
             this.chkPoints.CheckedChanged += new System.EventHandler(this.chkPoints_CheckedChanged);
             // 
-            // splitContainer1
+            // pointRuleGrid
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer1.Name = "splitContainer1";
+            this.pointRuleGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pointRuleGrid.Location = new System.Drawing.Point(3, 3);
+            this.pointRuleGrid.Name = "pointRuleGrid";
+            this.pointRuleGrid.Size = new System.Drawing.Size(673, 384);
+            this.pointRuleGrid.TabIndex = 0;
+            this.pointRuleGrid.ThemeIndexOffest = 0;
             // 
-            // splitContainer1.Panel1
+            // lineRuleGrid
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.lstStyles);
-            this.splitContainer1.Panel1.Controls.Add(this.toolStrip1);
-            this.splitContainer1.Size = new System.Drawing.Size(673, 384);
-            this.splitContainer1.SplitterDistance = 161;
-            this.splitContainer1.TabIndex = 0;
+            this.lineRuleGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lineRuleGrid.Location = new System.Drawing.Point(3, 3);
+            this.lineRuleGrid.Name = "lineRuleGrid";
+            this.lineRuleGrid.Size = new System.Drawing.Size(673, 384);
+            this.lineRuleGrid.TabIndex = 0;
+            this.lineRuleGrid.ThemeIndexOffest = 0;
             // 
-            // lstStyles
+            // areaRuleGrid
             // 
-            this.lstStyles.DisplayMember = "DisplayString";
-            this.lstStyles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstStyles.FormattingEnabled = true;
-            this.lstStyles.Location = new System.Drawing.Point(0, 25);
-            this.lstStyles.Name = "lstStyles";
-            this.lstStyles.Size = new System.Drawing.Size(161, 359);
-            this.lstStyles.TabIndex = 3;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnAdd,
-            this.btnDelete});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(161, 25);
-            this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Image = global::Maestro.Editors.Properties.Resources.plus_circle;
-            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(49, 22);
-            this.btnAdd.Text = "Add";
-            this.btnAdd.ToolTipText = "Add a Composite Style";
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Enabled = false;
-            this.btnDelete.Image = global::Maestro.Editors.Properties.Resources.cross_script;
-            this.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(60, 22);
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.ToolTipText = "Delete this Composite Style";
+            this.areaRuleGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.areaRuleGrid.Location = new System.Drawing.Point(3, 3);
+            this.areaRuleGrid.Name = "areaRuleGrid";
+            this.areaRuleGrid.Size = new System.Drawing.Size(673, 384);
+            this.areaRuleGrid.TabIndex = 0;
+            this.areaRuleGrid.ThemeIndexOffest = 0;
             // 
             // VectorScaleRangeGrid
             // 
@@ -285,13 +296,13 @@
             this.TAB_AREAS.ResumeLayout(false);
             this.TAB_POINTS.ResumeLayout(false);
             this.TAB_COMPOSITE.ResumeLayout(false);
-            this.tabGeomStyles.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.tabGeomStyles.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -483,5 +483,23 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
             Check.NotNull(style, "style"); //NOXLATE
             style.DefaultColor = Utility.SerializeHTMLColor(c, true);
         }
+
+        /// <summary>
+        /// Removes all rules from a composite style
+        /// </summary>
+        /// <param name="style"></param>
+        public static void RemoveAllRules(this ICompositeTypeStyle style)
+        {
+            Check.NotNull(style, "style"); //NOXLATE
+
+            var remove = new List<ICompositeRule>();
+            foreach (var r in style.CompositeRule)
+                remove.Add(r);
+
+            foreach (var r in remove)
+            {
+                style.RemoveCompositeRule(r);
+            }
+        }
     }
 }

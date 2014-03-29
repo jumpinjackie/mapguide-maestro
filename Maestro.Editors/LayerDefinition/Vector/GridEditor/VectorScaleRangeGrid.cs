@@ -26,6 +26,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System.Diagnostics;
 
 namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
 {
@@ -34,6 +35,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         private VectorScaleRangeGrid()
         {
             InitializeComponent();
+            _compositeRuleGrids = new Dictionary<ICompositeTypeStyle, RuleGridView>();
         }
 
         private bool _init = false;
@@ -42,7 +44,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         private IPointVectorStyle _pts;
         private ILineVectorStyle _lts;
         private IAreaVectorStyle _ats;
-        private List<ICompositeTypeStyle> _cts;
+        private BindingList<ICompositeTypeStyle> _cts;
+        private ILayerDefinition _editedLayer;
 
         public VectorScaleRangeGrid(IVectorScaleRange vsr, VectorLayerStyleSectionCtrl parent)
             : this()
@@ -51,6 +54,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             {
                 _init = true;
                 _parent = parent;
+                _editedLayer = (ILayerDefinition)_parent.EditorService.GetEditedResource();
                 _vsr = vsr;
                 _pts = _vsr.PointStyle;
                 _lts = _vsr.LineStyle;
@@ -59,11 +63,23 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 chkPoints.Checked = (_pts != null);
                 chkLine.Checked = (_lts != null);
                 chkArea.Checked = (_ats != null);
+
                 var vsr2 = _vsr as IVectorScaleRange2;
                 if (vsr2 != null)
                 {
-                    _cts = new List<ICompositeTypeStyle>(vsr2.CompositeStyle);
-                    chkComposite.Checked = (vsr2.CompositeStyleCount > 0);
+                    _cts = new BindingList<ICompositeTypeStyle>();
+                    if (chkArea.Checked || chkLine.Checked || chkArea.Checked)
+                    {
+                        chkComposite.Checked = false;
+                    }
+                    else
+                    {
+                        foreach (var r in vsr2.CompositeStyle)
+                        {
+                            _cts.Add(r);
+                        }
+                        chkComposite.Checked = (vsr2.CompositeStyleCount > 0);
+                    }
                 }
                 else
                 {
@@ -152,6 +168,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         private void chkComposite_CheckedChanged(object sender, EventArgs e)
         {
             if (_init) return;
+
+            SetCompositeUI();
         }
 
         private void SetCompositeUI()
@@ -160,6 +178,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             if (vsr2 == null) return;
             SetCompositeTabVisibility(chkComposite.Checked);
             vsr2.CompositeStyle = (chkComposite.Checked) ? _cts : null;
+
+            lstStyles.DataSource = (chkComposite.Checked) ? _cts : null;
 
             if (!_init)
                 _parent.RaiseResourceChanged();
@@ -208,6 +228,72 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 if (idx >= 0)
                     tabGeomStyles.TabPages.RemoveAt(idx);
             }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var vsr2 = _vsr as IVectorScaleRange2;
+            if (vsr2 != null)
+            {
+                _cts.Add(_editedLayer.CreateDefaultCompositeStyle());
+                vsr2.CompositeStyle = _cts;
+                _parent.RaiseResourceChanged();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            var vsr2 = _vsr as IVectorScaleRange2;
+            if (vsr2 != null)
+            {
+                var style = lstStyles.SelectedItem as ICompositeTypeStyle;
+                if (style != null)
+                {
+                    _cts.Remove(style);
+                    vsr2.CompositeStyle = _cts;
+                    splitContainer1.Panel2.Controls.Clear();
+                    _parent.RaiseResourceChanged();
+                }
+            }
+        }
+
+        private Dictionary<ICompositeTypeStyle, RuleGridView> _compositeRuleGrids;
+
+        private void lstStyles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnDelete.Enabled = false;
+            var style = lstStyles.SelectedItem as ICompositeTypeStyle;
+            if (style != null)
+            {
+                btnDelete.Enabled = true;
+                if (!_compositeRuleGrids.ContainsKey(style))
+                {
+                    var grid = new RuleGridView();
+
+                    if (lstStyles.SelectedIndex >= 0)
+                    {
+                        int offset = 0;
+                        for (int i = 0; i < lstStyles.SelectedIndex; i++)
+                        {
+                            offset += _cts[i].RuleCount;
+                        }
+                        grid.ThemeIndexOffest = offset;
+                    }
+
+                    grid.Init(_parent.EditorService, _vsr, style);
+                    _compositeRuleGrids[style] = grid;
+                }
+
+                SetActiveControl(_compositeRuleGrids[style]);
+            }
+        }
+
+        private void SetActiveControl(RuleGridView activeGrid)
+        {
+            Debug.WriteLine(string.Format("Set active composite rule grid to: {0}", activeGrid.GetHashCode()));
+            splitContainer1.Panel2.Controls.Clear();
+            activeGrid.Dock = DockStyle.Fill;
+            splitContainer1.Panel2.Controls.Add(activeGrid);
         }
     }
 }

@@ -100,7 +100,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         }
     }
 
-    partial class LayerDefinition : ILayerElementFactory
+    partial class LayerDefinition : ILayerElementFactory, ILayerElementFactory2
     {
         public static ILayerDefinition CreateDefault(LayerType type)
         {
@@ -434,6 +434,16 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             return new URLDataType();
 #else
             throw new NotImplementedException();
+#endif
+        }
+
+        public ICompositeSymbolization CloneCompositeSymbolization(ICompositeSymbolization sym)
+        {
+#if LDF_100
+            throw new NotImplementedException();
+#else
+            var csym = (CompositeSymbolization)sym;
+            return csym.Clone();
 #endif
         }
     }

@@ -36,10 +36,9 @@
             this.btnCreateTheme = new System.Windows.Forms.ToolStripButton();
             this.btnExplodeTheme = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnShowInLegend = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnRefreshStylePreviews = new System.Windows.Forms.ToolStripButton();
             this.btnAutoRefresh = new System.Windows.Forms.ToolStripButton();
+            this.btnShowInLegend = new System.Windows.Forms.ToolStripButton();
             this.grdRules = new System.Windows.Forms.DataGridView();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdRules)).BeginInit();
@@ -54,10 +53,9 @@
             this.btnCreateTheme,
             this.btnExplodeTheme,
             this.toolStripSeparator1,
-            this.btnShowInLegend,
-            this.toolStripSeparator3,
             this.btnRefreshStylePreviews,
-            this.btnAutoRefresh});
+            this.btnAutoRefresh,
+            this.btnShowInLegend});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(785, 25);
@@ -115,23 +113,6 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // btnShowInLegend
-            // 
-            this.btnShowInLegend.Checked = true;
-            this.btnShowInLegend.CheckOnClick = true;
-            this.btnShowInLegend.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.btnShowInLegend.Image = global::Maestro.Editors.Properties.Resources.document_tree;
-            this.btnShowInLegend.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnShowInLegend.Name = "btnShowInLegend";
-            this.btnShowInLegend.Size = new System.Drawing.Size(111, 22);
-            this.btnShowInLegend.Text = "Show In Legend";
-            this.btnShowInLegend.ToolTipText = "These rules will be shown in the legend if checked";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
             // btnRefreshStylePreviews
             // 
             this.btnRefreshStylePreviews.Image = global::Maestro.Editors.Properties.Resources.arrow_circle_135;
@@ -151,6 +132,19 @@
             this.btnAutoRefresh.Text = "Auto-Refresh";
             this.btnAutoRefresh.ToolTipText = "Style previews for currently visible rules will be automatically updated as you s" +
     "croll the grid. Otherwise, you have to manually refresh these previews";
+            // 
+            // btnShowInLegend
+            // 
+            this.btnShowInLegend.Checked = true;
+            this.btnShowInLegend.CheckOnClick = true;
+            this.btnShowInLegend.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.btnShowInLegend.Image = global::Maestro.Editors.Properties.Resources.document_tree;
+            this.btnShowInLegend.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnShowInLegend.Name = "btnShowInLegend";
+            this.btnShowInLegend.Size = new System.Drawing.Size(111, 22);
+            this.btnShowInLegend.Text = "Show In Legend";
+            this.btnShowInLegend.ToolTipText = "These rules will be shown in the legend if checked";
+            this.btnShowInLegend.Click += new System.EventHandler(this.btnShowInLegend_Click);
             // 
             // grdRules
             // 
@@ -193,7 +187,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnShowInLegend;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton btnRefreshStylePreviews;
         private System.Windows.Forms.ToolStripButton btnAutoRefresh;
     }

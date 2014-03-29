@@ -1563,4 +1563,10 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="UpdatingStylePreviews" xml:space="preserve">
     <value>Updating Style Previews</value>
   </data>
+  <data name="CannotCreateThemeFromCompoundSymbolInstance" xml:space="preserve">
+    <value>Creating themes from a Composite Rule with a Compound Symbol is not supported</value>
+  </data>
+  <data name="CompositeThemeRequiresFirstRuleAsTemplate" xml:space="preserve">
+    <value>Generating a theme for a composite style, requires a composite rule</value>
+  </data>
 </root>

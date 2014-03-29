@@ -38,6 +38,9 @@ using System.Collections.Specialized;
 using Maestro.Editors.Generic;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using System.Diagnostics;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 {
@@ -90,7 +93,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             NUMERIC_TYPES = new Type[] { typeof(byte), typeof(int), typeof(float), typeof(double) };
         }
 
-        private ILayerElementFactory _factory;
+        private ILayerElementFactory2 _factory;
 
         public ThemeCreator(IEditorService editor, ILayerDefinition layer, ClassDefinition schema, object ruleCollection)
             : this()
@@ -100,7 +103,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             m_featureClass = schema;
             m_ruleCollection = ruleCollection;
 
-            _factory = (ILayerElementFactory)editor.GetEditedResource();
+            _factory = (ILayerElementFactory2)editor.GetEditedResource();
 
             ColorBrewerColorSet.SetCustomRender(new CustomCombo.RenderCustomItem(DrawColorSetPreview));
         }
@@ -834,6 +837,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             return arule;
         }
 
+        private ICompositeRule CreateCompositeRule(ICompositeRule template, ILayerElementFactory2 factory)
+        {
+            var crule = factory.CreateDefaultCompositeRule();
+            if (template.CompositeSymbolization != null)
+                crule.CompositeSymbolization = factory.CloneCompositeSymbolization(template.CompositeSymbolization);
+            return crule;
+        }
+
         private void OKBtn_Click(object sender, EventArgs e)
         {
             try
@@ -846,118 +857,26 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                         return;
                 }
 
-                if (m_ruleCollection is IPointVectorStyle)
+                IPointVectorStyle pts = m_ruleCollection as IPointVectorStyle;
+                ILineVectorStyle lts = m_ruleCollection as ILineVectorStyle;
+                IAreaVectorStyle ats = m_ruleCollection as IAreaVectorStyle;
+                ICompositeTypeStyle cts = m_ruleCollection as ICompositeTypeStyle;
+
+                if (pts != null)
                 {
-                    IPointVectorStyle col = m_ruleCollection as IPointVectorStyle;
-
-                    string fillAlpha = "";
-                    IPointRule template = null;
-                    if (chkUseFirstRuleAsTemplate.Checked && col.RuleCount > 0)
-                    {
-                        template = col.GetRuleAt(0);
-                        var sym = template.PointSymbolization2D.Symbol;
-                        if (sym.Type == PointSymbolType.Mark)
-                        {
-                            string htmlColor = ((IMarkSymbol)sym).Fill.ForegroundColor;
-                            if (htmlColor.Length == 8)
-                                fillAlpha = htmlColor.Substring(0, 2);
-                        }
-                        else if (sym.Type == PointSymbolType.Font)
-                        {
-                            string htmlColor = ((IFontSymbol)sym).ForegroundColor;
-                            if (htmlColor.Length == 8)
-                                fillAlpha = htmlColor.Substring(0, 2);
-                        }
-                    }
-
-                    if (OverwriteRules.Checked)
-                        col.RemoveAllRules();
-
-                    foreach (RuleItem entry in rules)
-                    {
-                        IPointRule r = (template != null) ? CreatePointRule(template, _factory) : _factory.CreateDefaultPointRule();
-                        r.Filter = entry.Filter;
-                        r.LegendLabel = entry.Label;
-                        var sym = r.PointSymbolization2D.Symbol;
-                        if (sym.Type == PointSymbolType.Mark)
-                        {
-                            ((IMarkSymbol)sym).Fill.ForegroundColor = fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
-                        }
-                        else if (sym.Type == PointSymbolType.Font)
-                        {
-                            ((IFontSymbol)sym).ForegroundColor = fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
-                        }
-                        col.AddRule(r);
-                    }
+                    GeneratePointThemeRules(rules, pts);
                 }
-                else if (m_ruleCollection is ILineVectorStyle)
+                else if (lts != null)
                 {
-                    ILineVectorStyle col = m_ruleCollection as ILineVectorStyle;
-
-                    string bordAlpha = "";
-                    ILineRule template = null;
-                    if (chkUseFirstRuleAsTemplate.Checked && col.RuleCount > 0)
-                    {
-                        template = col.GetRuleAt(0);
-
-                        //TODO: Composite lines? Which "alpha" value wins there?
-                        foreach (var st in template.Strokes)
-                        {
-                            if (st.Color.Length == 8) 
-                            {
-                                bordAlpha = st.Color.Substring(0, 2);
-                                break;
-                            }
-                        }
-                    }
-
-                    if (OverwriteRules.Checked)
-                        col.RemoveAllRules();
-
-                    foreach (RuleItem entry in rules)
-                    {
-                        var l = (template != null) ? CreateLineRule(template, _factory) : _factory.CreateDefaultLineRule();
-                        l.Filter = entry.Filter;
-                        l.LegendLabel = entry.Label;
-                        foreach (var st in l.Strokes)
-                        {
-                            st.Color = bordAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(bordAlpha));
-                        }
-                        col.AddRule(l);
-                    }
+                    GenerateLineThemeRules(rules, lts);
                 }
-                else if (m_ruleCollection is IAreaVectorStyle)
+                else if (ats != null)
                 {
-                    IAreaVectorStyle col = m_ruleCollection as IAreaVectorStyle;
-
-                    string fillAlpha = "";
-                    IAreaRule template = null;
-                    if (chkUseFirstRuleAsTemplate.Checked && col.RuleCount > 0)
-                    {
-                        template = col.GetRuleAt(0);
-
-                        if (template.AreaSymbolization2D != null)
-                        {
-                            if (template.AreaSymbolization2D.Fill != null)
-                            {
-                                if (template.AreaSymbolization2D.Fill.ForegroundColor.Length == 8)
-                                    fillAlpha = template.AreaSymbolization2D.Fill.ForegroundColor.Substring(0, 2);
-                            }
-                        }
-                    }
-
-                    if (OverwriteRules.Checked)
-                        col.RemoveAllRules();
-
-                    foreach (RuleItem entry in rules)
-                    {
-                        var r = (template != null) ? CreateAreaRule(template, _factory) : _factory.CreateDefaultAreaRule();
-                        r.Filter = entry.Filter;
-                        r.LegendLabel = entry.Label;
-                        r.AreaSymbolization2D.Fill.ForegroundColor = fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
-
-                        col.AddRule(r);
-                    }
+                    GenerateAreaThemeRules(rules, ats);
+                }
+                else if (cts != null)
+                {
+                    GenerateCompositeThemeRules(rules, cts);
                 }
 
                 this.DialogResult = DialogResult.OK;
@@ -968,6 +887,332 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 //m_editor.SetLastException(ex);
                 MessageBox.Show(this, string.Format(Strings.GenericError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            }
+        }
+
+        private static ISymbolDefinitionBase GetSymbolFromReference(IResourceService resSvc, ISymbolInstanceReference symRef)
+        {
+            switch(symRef.Type)
+            {
+                case SymbolInstanceType.Inline:
+                    return ((ISymbolInstanceReferenceInline)symRef).SymbolDefinition;
+                case SymbolInstanceType.Reference:
+                    return (ISymbolDefinitionBase)resSvc.GetResource(((ISymbolInstanceReferenceLibrary)symRef).ResourceId);
+            }
+            return null;
+        }
+
+        enum FillColorSource
+        {
+            PathFillColor,
+            SymbolParameterDefaultValue,
+            SymbolParameterOverride
+        }
+
+        private void GenerateCompositeThemeRules(List<RuleItem> rules, ICompositeTypeStyle col)
+        {
+            if (!chkUseFirstRuleAsTemplate.Checked || col.RuleCount == 0)
+            {
+                MessageBox.Show(Strings.CompositeThemeRequiresFirstRuleAsTemplate);
+                return;
+            }
+
+            FillColorSource? source = null;
+            string fillAlpha = "";
+            ICompositeRule template = null;
+            if (chkUseFirstRuleAsTemplate.Checked && col.RuleCount > 0)
+            {
+                template = col.GetRuleAt(0);
+                if (template.CompositeSymbolization != null)
+                {
+                    foreach (ISymbolInstance symInst in template.CompositeSymbolization.SymbolInstance)
+                    {
+                        if (source.HasValue)
+                            break;
+
+                        var symRef = GetSymbolFromReference(m_editor.ResourceService, symInst.Reference);
+                        var simpleSym = symRef as ISimpleSymbolDefinition;
+                        if (simpleSym == null)
+                            throw new NotSupportedException(Strings.CannotCreateThemeFromCompoundSymbolInstance);
+
+                        var symName = simpleSym.Name;
+                        //Find the first path graphic with a fill color
+                        foreach (var graphic in simpleSym.Graphics)
+                        {
+                            if (source.HasValue)
+                                break;
+
+                            if (graphic.Type == GraphicElementType.Path)
+                            {
+                                IPathGraphic path = (IPathGraphic)graphic;
+                                if (path.FillColor != null)
+                                {
+                                    var hexIdx = path.FillColor.IndexOf("0x");
+                                    if (hexIdx >= 0 && hexIdx + 4 < path.FillColor.Length)
+                                    {
+                                        fillAlpha = path.FillColor.Substring(hexIdx + 2, 2);
+                                        source = FillColorSource.PathFillColor;
+                                    }
+                                    else
+                                    {
+                                        string color = path.FillColor;
+                                        //Is this a parameter?
+                                        if (color.StartsWith("%") && color.EndsWith("%"))
+                                        {
+                                            string paramName = color.Substring(1, color.Length - 2);
+                                            if (simpleSym.ParameterDefinition != null)
+                                            {
+                                                foreach (var paramDef in simpleSym.ParameterDefinition.Parameter)
+                                                {
+                                                    if (source.HasValue)
+                                                        break;
+
+                                                    if (paramDef.Name == paramName)
+                                                    {
+                                                        hexIdx = paramDef.DefaultValue.IndexOf("0x");
+                                                        if (hexIdx >= 0 && hexIdx + 4 < paramDef.DefaultValue.Length) 
+                                                        {
+                                                            fillAlpha = paramDef.DefaultValue.Substring(hexIdx + 2, 2);
+                                                            source = FillColorSource.SymbolParameterDefaultValue;
+                                                        }
+                                                        //But wait ... Is there an override for this too?
+
+                                                        var ov = symInst.ParameterOverrides;
+                                                        if (ov != null)
+                                                        {
+                                                            foreach (var pov in ov.Override)
+                                                            {
+                                                                if (pov.SymbolName == symName && pov.ParameterIdentifier == paramName)
+                                                                {
+                                                                    hexIdx = pov.ParameterValue.IndexOf("0x");
+                                                                    if (hexIdx >= 0 && hexIdx + 4 < pov.ParameterValue.Length)
+                                                                    {
+                                                                        fillAlpha = pov.ParameterValue.Substring(hexIdx + 2, 2);
+                                                                        source = FillColorSource.SymbolParameterOverride;
+                                                                        break;
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (OverwriteRules.Checked)
+            {
+                col.RemoveAllRules();
+            }
+
+            foreach (RuleItem entry in rules)
+            {
+                var r = (template != null) ? CreateCompositeRule(template, _factory) : _factory.CreateDefaultCompositeRule();
+                r.Filter = entry.Filter;
+                r.LegendLabel = entry.Label;
+                if (r.CompositeSymbolization != null)
+                {
+                    bool bSetFill = false;
+                    foreach (ISymbolInstance symInst in r.CompositeSymbolization.SymbolInstance)
+                    {
+                        if (bSetFill)
+                            break;
+
+                        var symRef = GetSymbolFromReference(m_editor.ResourceService, symInst.Reference);
+                        var simpleSym = symRef as ISimpleSymbolDefinition;
+                        if (simpleSym == null)
+                            throw new NotSupportedException(Strings.CannotCreateThemeFromCompoundSymbolInstance);
+
+                        var symName = simpleSym.Name;
+                        //Find the first path graphic with a fill color
+                        foreach (var graphic in simpleSym.Graphics)
+                        {
+                            if (bSetFill)
+                                break;
+
+                            if (graphic.Type == GraphicElementType.Path)
+                            {
+                                IPathGraphic path = (IPathGraphic)graphic;
+                                if (path.FillColor != null)
+                                {
+                                    string color = path.FillColor;
+                                    if (source.Value == FillColorSource.PathFillColor)
+                                    {
+                                        path.FillColor = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
+                                        Debug.WriteLine(string.Format("Set fill color to {0} for symbol instance {1}", path.FillColor, symInst.GetHashCode()));
+                                        bSetFill = true;
+                                        break;
+                                    }
+                                    //Is this a parameter?
+                                    if (color.StartsWith("%") && color.EndsWith("%"))
+                                    {
+                                        string paramName = color.Substring(1, color.Length - 2);
+                                        if (simpleSym.ParameterDefinition != null)
+                                        {
+                                            foreach (var paramDef in simpleSym.ParameterDefinition.Parameter)
+                                            {
+                                                if (bSetFill)
+                                                    break;
+
+                                                if (paramDef.Name == paramName)
+                                                {
+                                                    if (source.Value == FillColorSource.SymbolParameterDefaultValue)
+                                                    {
+                                                        paramDef.DefaultValue = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
+                                                        Debug.WriteLine(string.Format("Set fill color default parameter value to {0} for symbol instance {1}", paramDef.DefaultValue, symInst.GetHashCode()));
+                                                        bSetFill = true;
+                                                        break;
+                                                    }
+
+                                                    //But wait ... Is there an override for this too?
+                                                    var ov = symInst.ParameterOverrides;
+                                                    if (ov != null)
+                                                    {
+                                                        foreach (var pov in ov.Override)
+                                                        {
+                                                            if (bSetFill)
+                                                                break;
+
+                                                            if (pov.SymbolName == symName && pov.ParameterIdentifier == paramName)
+                                                            {
+                                                                //fillAlpha = pov.ParameterValue;
+                                                                if (source == FillColorSource.SymbolParameterOverride)
+                                                                {
+                                                                    pov.ParameterValue = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
+                                                                    Debug.WriteLine(string.Format("Set fill color parameter override value to {0} for symbol instance {1}", pov.ParameterValue, symInst.GetHashCode()));
+                                                                    bSetFill = true;
+                                                                    break;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                col.AddCompositeRule(r);
+            }
+        }
+
+        private void GeneratePointThemeRules(List<RuleItem> rules, IPointVectorStyle col)
+        {
+            string fillAlpha = "";
+            IPointRule template = null;
+            if (chkUseFirstRuleAsTemplate.Checked && col.RuleCount > 0)
+            {
+                template = col.GetRuleAt(0);
+                var sym = template.PointSymbolization2D.Symbol;
+                if (sym.Type == PointSymbolType.Mark)
+                {
+                    string htmlColor = ((IMarkSymbol)sym).Fill.ForegroundColor;
+                    if (htmlColor.Length == 8)
+                        fillAlpha = htmlColor.Substring(0, 2);
+                }
+                else if (sym.Type == PointSymbolType.Font)
+                {
+                    string htmlColor = ((IFontSymbol)sym).ForegroundColor;
+                    if (htmlColor.Length == 8)
+                        fillAlpha = htmlColor.Substring(0, 2);
+                }
+            }
+
+            if (OverwriteRules.Checked)
+                col.RemoveAllRules();
+
+            foreach (RuleItem entry in rules)
+            {
+                IPointRule r = (template != null) ? CreatePointRule(template, _factory) : _factory.CreateDefaultPointRule();
+                r.Filter = entry.Filter;
+                r.LegendLabel = entry.Label;
+                var sym = r.PointSymbolization2D.Symbol;
+                if (sym.Type == PointSymbolType.Mark)
+                {
+                    ((IMarkSymbol)sym).Fill.ForegroundColor = fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
+                }
+                else if (sym.Type == PointSymbolType.Font)
+                {
+                    ((IFontSymbol)sym).ForegroundColor = fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
+                }
+                col.AddRule(r);
+            }
+        }
+
+        private void GenerateLineThemeRules(List<RuleItem> rules, ILineVectorStyle col)
+        {
+            string bordAlpha = "";
+            ILineRule template = null;
+            if (chkUseFirstRuleAsTemplate.Checked && col.RuleCount > 0)
+            {
+                template = col.GetRuleAt(0);
+
+                //TODO: Composite lines? Which "alpha" value wins there?
+                foreach (var st in template.Strokes)
+                {
+                    if (st.Color.Length == 8)
+                    {
+                        bordAlpha = st.Color.Substring(0, 2);
+                        break;
+                    }
+                }
+            }
+
+            if (OverwriteRules.Checked)
+                col.RemoveAllRules();
+
+            foreach (RuleItem entry in rules)
+            {
+                var l = (template != null) ? CreateLineRule(template, _factory) : _factory.CreateDefaultLineRule();
+                l.Filter = entry.Filter;
+                l.LegendLabel = entry.Label;
+                foreach (var st in l.Strokes)
+                {
+                    st.Color = bordAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(bordAlpha));
+                }
+                col.AddRule(l);
+            }
+        }
+
+        private void GenerateAreaThemeRules(List<RuleItem> rules, IAreaVectorStyle col)
+        {
+            string fillAlpha = "";
+            IAreaRule template = null;
+            if (chkUseFirstRuleAsTemplate.Checked && col.RuleCount > 0)
+            {
+                template = col.GetRuleAt(0);
+
+                if (template.AreaSymbolization2D != null)
+                {
+                    if (template.AreaSymbolization2D.Fill != null)
+                    {
+                        if (template.AreaSymbolization2D.Fill.ForegroundColor.Length == 8)
+                            fillAlpha = template.AreaSymbolization2D.Fill.ForegroundColor.Substring(0, 2);
+                    }
+                }
+            }
+
+            if (OverwriteRules.Checked)
+                col.RemoveAllRules();
+
+            foreach (RuleItem entry in rules)
+            {
+                var r = (template != null) ? CreateAreaRule(template, _factory) : _factory.CreateDefaultAreaRule();
+                r.Filter = entry.Filter;
+                r.LegendLabel = entry.Label;
+                r.AreaSymbolization2D.Fill.ForegroundColor = fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
+
+                col.AddRule(r);
             }
         }
 

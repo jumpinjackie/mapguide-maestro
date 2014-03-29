@@ -124,6 +124,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating themes from a Composite Rule with a Compound Symbol is not supported.
+        /// </summary>
+        internal static string CannotCreateThemeFromCompoundSymbolInstance {
+            get {
+                return ResourceManager.GetString("CannotCreateThemeFromCompoundSymbolInstance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ensure the Geometry box is checked.
         /// </summary>
         internal static string CheckGeometryFirst {
@@ -327,6 +336,15 @@ namespace Maestro.Editors {
         internal static string CommandTypesDataset {
             get {
                 return ResourceManager.GetString("CommandTypesDataset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generating a theme for a composite style, requires a composite rule.
+        /// </summary>
+        internal static string CompositeThemeRequiresFirstRuleAsTemplate {
+            get {
+                return ResourceManager.GetString("CompositeThemeRequiresFirstRuleAsTemplate", resourceCulture);
             }
         }
         

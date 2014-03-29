@@ -365,6 +365,20 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     }
 
     /// <summary>
+    /// Factory interface to assist in creating common layer definition elements. Supports additional cases
+    /// for Advanced Stylization
+    /// </summary>
+    public interface ILayerElementFactory2 : ILayerElementFactory
+    {
+        /// <summary>
+        /// Clones the given symbolization
+        /// </summary>
+        /// <param name="sym"></param>
+        /// <returns></returns>
+        ICompositeSymbolization CloneCompositeSymbolization(ICompositeSymbolization sym);
+    }
+
+    /// <summary>
     /// Top-level interface of the layer definition
     /// </summary>
     public interface ILayerDefinition : IResource, ILayerElementFactory
@@ -707,8 +721,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     }
 
     /// <summary>
-    /// The stylization to be applied to the vector features for a given scale range. Supports elevation
-    /// and extrusion settings.
+    /// The stylization to be applied to the vector features for a given scale range. Supports elevation, extrusion settings
+    /// and Advanced Stylization through composite styles
     /// 
     /// Supported by Layer Definition 1.1.0 and higher
     /// </summary>
