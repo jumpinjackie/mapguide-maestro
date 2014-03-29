@@ -30,6 +30,7 @@ using System.Windows.Forms;
 using Maestro.Shared.UI;
 using Maestro.Base.UI.Preferences;
 using Maestro.Editors.Preview;
+using Maestro.Editors.LayerDefinition;
 
 namespace Maestro.Base.Events
 {
@@ -68,6 +69,10 @@ namespace Maestro.Base.Events
                 case ConfigProperties.PreviewViewerType:
                     PreviewSettings.UseAjaxViewer = (e.NewValue.ToString() == "AJAX"); //NOXLATE
                     LoggingService.Info("Use AJAX Viewer setting is now: " + PreviewSettings.UseAjaxViewer);
+                    break;
+                case ConfigProperties.UseGridStyleEditor:
+                    LayerEditorSettings.UseGridEditor = Convert.ToBoolean(e.NewValue);
+                    LoggingService.Info("Use Grid Style Editor is now: " + LayerEditorSettings.UseGridEditor);
                     break;
             }
         }

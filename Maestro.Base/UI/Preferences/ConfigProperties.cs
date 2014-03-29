@@ -112,6 +112,11 @@ namespace Maestro.Base.UI.Preferences
         /// </summary>
         public const string LiveMapEditorPath = "General.LiveMapEditorPath"; //NOXLATE
 
+        /// <summary>
+        /// Indicates whether to use the new grid-based style editor or the classic control-based style editor
+        /// </summary>
+        public const string UseGridStyleEditor = "Editor.UseGridStyleEditor";
+
         internal static void ApplyDefaults()
         {
             ApplyGeneralDefaults();
@@ -124,6 +129,7 @@ namespace Maestro.Base.UI.Preferences
             Props.Set(ConfigProperties.ValidateOnSave, DefaultValidateOnSave);
             Props.Set(ConfigProperties.XsdSchemaPath, DefaultXsdSchemaPath);
             Props.Set(ConfigProperties.UseLocalPreview, DefaultUseLocalPreview);
+            Props.Set(ConfigProperties.UseGridStyleEditor, DefaultUseGridStyleEditor);
         }
 
         internal static void ApplyGeneralDefaults()
@@ -180,6 +186,11 @@ namespace Maestro.Base.UI.Preferences
         /// Default setting for adding debug watermarks
         /// </summary>
         public static bool DefaultAddDebugWatermark { get { return true; } }
+
+        /// <summary>
+        /// Default setting for using grid style editor
+        /// </summary>
+        public static bool DefaultUseGridStyleEditor { get { return true; } }
 
         /// <summary>
         /// Default color for open resources in the Site Explorer

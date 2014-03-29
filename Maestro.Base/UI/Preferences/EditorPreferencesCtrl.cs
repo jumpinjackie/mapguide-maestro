@@ -44,6 +44,9 @@ namespace Maestro.Base.UI.Preferences
             var path = Props.Get(ConfigProperties.XsdSchemaPath, ConfigProperties.DefaultXsdSchemaPath);
             txtXsdPath.Text = path;
 
+            var useGrid = Props.Get(ConfigProperties.UseGridStyleEditor, ConfigProperties.DefaultUseGridStyleEditor);
+            chkUseGridBasedStyleEditor.Checked = useGrid;
+
             txtPreviewLocale.Text = Props.Get(ConfigProperties.PreviewLocale, ConfigProperties.DefaultPreviewLocale);
         }
 
@@ -65,6 +68,7 @@ namespace Maestro.Base.UI.Preferences
             Apply(ConfigProperties.UseLocalPreview, chkUseLocalPreview.Checked);
             Apply(ConfigProperties.AddDebugWatermark, chkAddDebugWatermark.Checked);
             Apply(ConfigProperties.PreviewLocale, txtPreviewLocale.Text);
+            Apply(ConfigProperties.UseGridStyleEditor, chkUseGridBasedStyleEditor.Checked);
 
             //These changes require restart
             if (Apply(ConfigProperties.XsdSchemaPath, txtXsdPath.Text))

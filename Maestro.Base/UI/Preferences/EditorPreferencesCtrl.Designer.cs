@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.chkAddDebugWatermark = new System.Windows.Forms.CheckBox();
             this.chkUseLocalPreview = new System.Windows.Forms.CheckBox();
             this.chkValidateOnSave = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -38,10 +39,12 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtPreviewLocale = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.chkAddDebugWatermark = new System.Windows.Forms.CheckBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chkUseGridBasedStyleEditor = new System.Windows.Forms.CheckBox();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox4
@@ -57,6 +60,17 @@
             this.groupBox4.TabIndex = 10;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "General";
+            // 
+            // chkAddDebugWatermark
+            // 
+            this.chkAddDebugWatermark.AutoSize = true;
+            this.chkAddDebugWatermark.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.chkAddDebugWatermark.Location = new System.Drawing.Point(19, 42);
+            this.chkAddDebugWatermark.Name = "chkAddDebugWatermark";
+            this.chkAddDebugWatermark.Size = new System.Drawing.Size(290, 17);
+            this.chkAddDebugWatermark.TabIndex = 4;
+            this.chkAddDebugWatermark.Text = "Add Debug Watermark for generated resource previews";
+            this.chkAddDebugWatermark.UseVisualStyleBackColor = true;
             // 
             // chkUseLocalPreview
             // 
@@ -154,21 +168,33 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Preview using the following locale";
             // 
-            // chkAddDebugWatermark
+            // groupBox3
             // 
-            this.chkAddDebugWatermark.AutoSize = true;
-            this.chkAddDebugWatermark.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.chkAddDebugWatermark.Location = new System.Drawing.Point(19, 42);
-            this.chkAddDebugWatermark.Name = "chkAddDebugWatermark";
-            this.chkAddDebugWatermark.Size = new System.Drawing.Size(290, 17);
-            this.chkAddDebugWatermark.TabIndex = 4;
-            this.chkAddDebugWatermark.Text = "Add Debug Watermark for generated resource previews";
-            this.chkAddDebugWatermark.UseVisualStyleBackColor = true;
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.chkUseGridBasedStyleEditor);
+            this.groupBox3.Location = new System.Drawing.Point(3, 223);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(398, 51);
+            this.groupBox3.TabIndex = 13;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Layer Editor";
+            // 
+            // chkGridBaseStyleEditor
+            // 
+            this.chkUseGridBasedStyleEditor.AutoSize = true;
+            this.chkUseGridBasedStyleEditor.Location = new System.Drawing.Point(18, 19);
+            this.chkUseGridBasedStyleEditor.Name = "chkGridBaseStyleEditor";
+            this.chkUseGridBasedStyleEditor.Size = new System.Drawing.Size(152, 17);
+            this.chkUseGridBasedStyleEditor.TabIndex = 0;
+            this.chkUseGridBasedStyleEditor.Text = "Use Grid-based style editor";
+            this.chkUseGridBasedStyleEditor.UseVisualStyleBackColor = true;
             // 
             // EditorPreferencesCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
@@ -180,6 +206,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -197,5 +225,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkUseLocalPreview;
         private System.Windows.Forms.CheckBox chkAddDebugWatermark;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox chkUseGridBasedStyleEditor;
     }
 }
