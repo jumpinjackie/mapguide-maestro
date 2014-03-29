@@ -334,7 +334,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     //TODO: Fix this
                     MessageBox.Show(this, Strings.SymbolTypeNotSupported, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                previewPicture.Refresh();
+                UpdatePreviewResult();
             } 
             finally
             {
@@ -506,7 +506,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.HeightText.Items.AddRange(new object[] {
             resources.GetString("HeightText.Items")});
             this.HeightText.Name = "HeightText";
-            this.HeightText.SelectedIndexChanged += new System.EventHandler(this.HeigthText_SelectedIndexChanged);
+            this.HeightText.SelectedIndexChanged += new System.EventHandler(this.HeightText_SelectedIndexChanged);
             this.HeightText.TextChanged += new System.EventHandler(this.HeightText_TextChanged);
             // 
             // WidthText
@@ -964,7 +964,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         {
             using (new WaitCursor(this))
             {
-                UpdateDisplay();
                 m_editor.SyncSessionCopy();
                 _previewImg = _mappingSvc.GetLegendImage(_preview.Scale, _preview.LayerDefinition, _preview.ThemeCategory, 1, previewPicture.Width, previewPicture.Height, _preview.ImageFormat);
                 previewPicture.Invalidate();
@@ -1099,7 +1098,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
             }
 
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1115,7 +1114,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 ((IFontSymbol)m_item.Symbol).SizeContext = (SizeContextType)Enum.Parse((typeof(SizeContextType)), (string)SizeContext.SelectedValue);
             else if (m_item.Symbol.Type == PointSymbolType.W2D)
                 ((IW2DSymbol)m_item.Symbol).SizeContext = (SizeContextType)Enum.Parse((typeof(SizeContextType)), (string)SizeContext.SelectedValue);
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1127,7 +1126,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font || m_item.Symbol.Type == PointSymbolType.W2D)
                 m_item.Symbol.Unit = (LengthUnitType)Enum.Parse(typeof(LengthUnitType), (string)SizeUnits.SelectedValue);
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1147,6 +1146,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     owner.SelectedIndex = -1;
 
                 owner.Text = text;
+                UpdatePreviewResult();
             }
             finally
             {
@@ -1179,7 +1179,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             }
         }
 
-        private void HeigthText_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void HeightText_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (m_inUpdate)
                 return;
@@ -1218,7 +1218,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 else
                     m_item.Symbol.InsertionPointX = ReferenceX.Text;
             }
-            previewPicture.Refresh();		
+            UpdatePreviewResult();		
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1236,7 +1236,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 else
                     m_item.Symbol.InsertionPointY = "0.5";
             }
-            previewPicture.Refresh();		
+            UpdatePreviewResult();		
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1269,6 +1269,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     m_item.Symbol.Rotation = (string)RotationBox.SelectedValue;
 
                 //RotationBox.SelectedIndex = -1;
+                UpdatePreviewResult();
             }
 
         }
@@ -1279,15 +1280,17 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
 
             if (m_item.Symbol.Type == PointSymbolType.Mark)
+            {
                 if (fillStyleEditor.displayFill.Checked)
-                    ((IMarkSymbol) m_item.Symbol).Fill = previousFill == null ? _factory.CreateDefaultFill() : previousFill;
+                    ((IMarkSymbol)m_item.Symbol).Fill = previousFill == null ? _factory.CreateDefaultFill() : previousFill;
                 else
                 {
                     if (((IMarkSymbol)m_item.Symbol).Fill != null)
                         previousFill = ((IMarkSymbol)m_item.Symbol).Fill;
                     ((IMarkSymbol)m_item.Symbol).Fill = null;
                 }
-            previewPicture.Refresh();
+            }
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1298,15 +1301,17 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
 
             if (m_item.Symbol.Type == PointSymbolType.Mark)
+            {
                 if (lineStyleEditor.displayLine.Checked)
-                    ((IMarkSymbol) m_item.Symbol).Edge = previousEdge == null ? _factory.CreateDefaultStroke() : previousEdge;
+                    ((IMarkSymbol)m_item.Symbol).Edge = previousEdge == null ? _factory.CreateDefaultStroke() : previousEdge;
                 else
                 {
                     if (((IMarkSymbol)m_item.Symbol).Edge != null)
                         previousEdge = ((IMarkSymbol)m_item.Symbol).Edge;
                     ((IMarkSymbol)m_item.Symbol).Edge = null;
                 }
-            previewPicture.Refresh();
+            }
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1318,7 +1323,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             if (m_item.Symbol.Type == PointSymbolType.Mark)
                 ((IMarkSymbol) m_item.Symbol).Fill.FillPattern = fillStyleEditor.fillCombo.Text;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1330,7 +1335,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             if (m_item.Symbol.Type == PointSymbolType.Mark)
                 ((IMarkSymbol)m_item.Symbol).Fill.ForegroundColor = fillStyleEditor.foregroundColor.ColorExpression;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1342,7 +1347,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             if (m_item.Symbol.Type == PointSymbolType.Mark)
                 ((IMarkSymbol)m_item.Symbol).Fill.BackgroundColor = fillStyleEditor.backgroundColor.ColorExpression;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1356,7 +1361,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             //TODO: Validate
             if (m_item.Symbol.Type == PointSymbolType.Mark)
                 ((IMarkSymbol)m_item.Symbol).Edge.Thickness = lineStyleEditor.thicknessCombo.Text;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1366,20 +1371,20 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (m_inUpdate || lineStyleEditor.thicknessCombo.SelectedIndex != lineStyleEditor.thicknessCombo.Items.Count - 1)
                 return;
 
-                string current = null;
-                if (m_item.Symbol.Type == PointSymbolType.Mark)
-                    current = ((IMarkSymbol)m_item.Symbol).Edge.Thickness;
+            string current = null;
+            if (m_item.Symbol.Type == PointSymbolType.Mark)
+                current = ((IMarkSymbol)m_item.Symbol).Edge.Thickness;
 
-                string expr = null;
-                if (current != null)
-                {
-                    expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource, true);
-                    if (!string.IsNullOrEmpty(expr))
-                        current = expr;
-                }
+            string expr = null;
+            if (current != null)
+            {
+                expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource, true);
+                if (!string.IsNullOrEmpty(expr))
+                    current = expr;
+            }
 
-                //This is required as we cannot update the text from within the SelectedIndexChanged event :(
-                BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), lineStyleEditor.thicknessCombo, current, expr != null);
+            //This is required as we cannot update the text from within the SelectedIndexChanged event :(
+            BeginInvoke(new UpdateComboTextFromSelectChangedDelegate(UpdateComboTextFromSelectChanged), lineStyleEditor.thicknessCombo, current, expr != null);
         }
 
         private void colorCombo_CurrentColorChanged(object sender, EventArgs e)
@@ -1389,7 +1394,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             if (m_item.Symbol.Type == PointSymbolType.Mark)
                 ((IMarkSymbol)m_item.Symbol).Edge.Color = lineStyleEditor.colorCombo.ColorExpression;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1401,7 +1406,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             if (m_item.Symbol.Type == PointSymbolType.Mark)
                 ((IMarkSymbol)m_item.Symbol).Edge.LineStyle = lineStyleEditor.fillCombo.Text;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1414,7 +1419,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (m_item.Symbol.Type == PointSymbolType.Font)
                 ((IFontSymbol)m_item.Symbol).ForegroundColor = Utility.SerializeHTMLColor(colorFontForeground.CurrentColor, true);
 
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1444,7 +1449,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             for (char c = 'A'; c < 'Z'; c++)
                 comboBoxCharacter.Items.Add(c);
 
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1460,7 +1465,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             ((IFontSymbol)m_item.Symbol).Character = comboBoxCharacter.Text;
 
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1501,6 +1506,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 DisplayPoints.Tag = m_item;
                 this.Item = null;
             }
+            UpdatePreviewResult();
         }
 
         static string DoubleToString(double? value)
@@ -1525,7 +1531,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             //TODO: Validate
             if (m_item.Symbol.Type == PointSymbolType.Mark || m_item.Symbol.Type == PointSymbolType.Font || m_item.Symbol.Type == PointSymbolType.W2D)
                 m_item.Symbol.SizeX = WidthText.Text;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1542,7 +1548,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 m_item.Symbol.SizeY = HeightText.Text;
             else if (m_item.Symbol.Type == PointSymbolType.W2D)
                 m_item.Symbol.SizeY = HeightText.Text;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1559,7 +1565,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 m_item.Symbol.Rotation = RotationBox.Text;
             else if (m_item.Symbol.Type == PointSymbolType.W2D)
                 m_item.Symbol.Rotation = RotationBox.Text;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1583,7 +1589,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 fs.Bold = FontBoldButton.Checked;
             }
 
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1599,7 +1605,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 fs.Italic = FontItalicButton.Checked;
             }
 
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1615,7 +1621,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 fs.Underlined = FontUnderlineButton.Checked;
             }
 
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1651,6 +1657,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 if (sym.FillColor != null)
                     cmbW2DFillColor.CurrentColor = Utility.ParseHTMLColor(sym.FillColor);
             }
+            UpdatePreviewResult();
         }
 
         private void chkW2DLineColor_CheckedChanged(object sender, EventArgs e)
@@ -1672,6 +1679,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 if (sym.LineColor != null)
                     cmbW2DLineColor.CurrentColor = Utility.ParseHTMLColor(sym.LineColor);
             }
+            UpdatePreviewResult();
         }
 
         private void chkW2DTextColor_CheckedChanged(object sender, EventArgs e)
@@ -1693,6 +1701,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 if (sym.TextColor != null)
                     cmbW2DTextColor.CurrentColor = Utility.ParseHTMLColor(sym.TextColor);
             }
+            UpdatePreviewResult();
         }
 
         private void cmbW2DFillColor_SelectedIndexChanged(object sender, EventArgs e)
@@ -1709,7 +1718,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             sym.FillColor = Utility.SerializeHTMLColor(cmbW2DFillColor.CurrentColor, true);
 
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1728,7 +1737,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             sym.LineColor = Utility.SerializeHTMLColor(cmbW2DLineColor.CurrentColor, true);
 
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1747,7 +1756,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             sym.TextColor = Utility.SerializeHTMLColor(cmbW2DTextColor.CurrentColor, true);
 
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1756,24 +1765,38 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         {
             string expr = m_editor.EditExpression(fillStyleEditor.backgroundColor.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)
+            {
                 fillStyleEditor.backgroundColor.ColorExpression = expr;
+                UpdatePreviewResult();
+            }
         }
         
         void FillStyleEditor_ForegroundRequiresExpression(object sender, EventArgs e)
         {
             string expr = m_editor.EditExpression(fillStyleEditor.foregroundColor.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)
+            {
                 fillStyleEditor.foregroundColor.ColorExpression = expr;
+                UpdatePreviewResult();
+            }
         }
         
         void LineStyleEditor_RequiresExpressionEditor(object sender, EventArgs e)
         {
             string expr = m_editor.EditExpression(lineStyleEditor.colorCombo.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)
+            {
                 lineStyleEditor.colorCombo.ColorExpression = expr;
+                UpdatePreviewResult();
+            }
         }
 
         private void lnkRefresh_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            UpdatePreviewResult();
+        }
+
+        private void UpdatePreviewResult()
         {
             if (_editCommit != null)
                 _editCommit.Invoke();
@@ -1790,9 +1813,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            if (_editCommit != null)
-                _editCommit.Invoke();
-            UpdatePreviewImage();
+            UpdatePreviewResult();
         }
     }
 }

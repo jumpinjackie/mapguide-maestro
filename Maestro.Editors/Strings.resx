@@ -623,7 +623,7 @@
     <value>Edit Watermark Instance</value>
   </data>
   <data name="EmptyText" xml:space="preserve">
-    <value>None</value>
+    <value>(none)</value>
   </data>
   <data name="ErrNotAFolder" xml:space="preserve">
     <value>Not a folder</value>
@@ -1559,5 +1559,8 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   </data>
   <data name="DebugWatermarkMessageLayer" xml:space="preserve">
     <value>MapGuide Debugging Information\n==============================\n\nMap Extents Min: ({0}, {1})\nMap Extents Max: ({2}, {3})\nMap Coordinate System: \n{4}\nLayer Spatial Context: {5}</value>
+  </data>
+  <data name="UpdatingStylePreviews" xml:space="preserve">
+    <value>Updating Style Previews</value>
   </data>
 </root>

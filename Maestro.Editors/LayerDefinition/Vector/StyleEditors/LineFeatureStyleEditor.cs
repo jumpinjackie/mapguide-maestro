@@ -157,7 +157,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 }
 
                 UpdateDisplayForSelected();
-
             }
             finally
             {
@@ -207,7 +206,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     else
                         sizeContextCombo.Enabled = false;
                 }
-                previewPicture.Refresh();
+                UpdatePreviewResult();
             } 
             finally
             {
@@ -534,7 +533,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (st2 != null)
             {
                 st2.SizeContext = (SizeContextType)Enum.Parse(typeof(SizeContextType), (string)sizeContextCombo.SelectedValue);
-                previewPicture.Refresh();
+                UpdatePreviewResult();
                 lineStyles.Refresh();
                 if (Changed != null)
                     Changed(this, new EventArgs());
@@ -546,7 +545,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (m_inUpdate || this.CurrentStrokeType == null)
                 return;
             this.CurrentStrokeType.Unit = (LengthUnitType)Enum.Parse(typeof(LengthUnitType), (string)sizeUnitsCombo.SelectedValue);
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             lineStyles.Refresh();
             if (Changed != null)
                 Changed(this, new EventArgs());
@@ -569,7 +568,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             //TODO: Validate
             this.CurrentStrokeType.Thickness = lineStyleEditor.thicknessCombo.Text;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -593,7 +592,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (m_inUpdate || this.CurrentStrokeType == null)
                 return;
             this.CurrentStrokeType.Color = lineStyleEditor.colorCombo.ColorExpression;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             lineStyles.Refresh();
             if (Changed != null)
                 Changed(this, new EventArgs());
@@ -606,7 +605,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             if (lineStyleEditor.fillCombo.SelectedItem as ImageStylePicker.NamedImage != null)
                 this.CurrentStrokeType.LineStyle = (lineStyleEditor.fillCombo.SelectedItem as ImageStylePicker.NamedImage).Name;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             lineStyles.Refresh();
             if (Changed != null)
                 Changed(this, new EventArgs());
@@ -627,6 +626,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 {
                     applyLineStyle.Tag = m_item;
                     m_item = new BindingList<IStroke>();
+                    UpdatePreviewResult();
                 }
                 else
                 {
@@ -736,6 +736,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     owner.SelectedIndex = -1;
 
                 owner.Text = text;
+                UpdatePreviewResult();
             }
             finally
             {
@@ -748,10 +749,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         {
             string expr = m_editor.EditExpression(lineStyleEditor.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)
+            {
                 lineStyleEditor.ColorExpression = expr;
+                UpdatePreviewResult();
+            }
         }
 
         private void lnkRefresh_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            UpdatePreviewResult();
+        }
+
+        private void UpdatePreviewResult()
         {
             if (_editCommit != null)
                 _editCommit.Invoke();
@@ -768,9 +777,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            if (_editCommit != null)
-                _editCommit.Invoke();
-            UpdatePreviewImage();
+            UpdatePreviewResult();
         }
     }
 }

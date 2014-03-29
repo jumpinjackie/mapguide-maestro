@@ -614,6 +614,7 @@
     <Compile Include="LayerDefinition\Drawing\DrawingLayerSettingsCtrl.Designer.cs">
       <DependentUpon>DrawingLayerSettingsCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="LayerDefinition\LayerEditorSettings.cs" />
     <Compile Include="LayerDefinition\LayerPropertiesSectionCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -652,6 +653,19 @@
       <DependentUpon>VectorLayerEditorCtrl.cs</DependentUpon>
     </Compile>
     <Compile Include="LayerDefinition\Vector\FeaturePreviewRender.cs" />
+    <Compile Include="LayerDefinition\Vector\GridEditor\RuleGridView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\GridEditor\RuleGridView.Designer.cs">
+      <DependentUpon>RuleGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\GridEditor\RuleModel.cs" />
+    <Compile Include="LayerDefinition\Vector\GridEditor\VectorScaleRangeGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\GridEditor\VectorScaleRangeGrid.Designer.cs">
+      <DependentUpon>VectorScaleRangeGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="LayerDefinition\Vector\ILayerStylePreviewable.cs" />
     <Compile Include="LayerDefinition\Vector\Scales\CompositeStyleListCtrl.cs">
       <SubType>UserControl</SubType>
@@ -1546,6 +1560,12 @@
       <DependentUpon>VectorLayerEditorCtrl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\GridEditor\RuleGridView.resx">
+      <DependentUpon>RuleGridView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\GridEditor\VectorScaleRangeGrid.resx">
+      <DependentUpon>VectorScaleRangeGrid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\Condition.resx">
       <DependentUpon>Condition.cs</DependentUpon>
     </EmbeddedResource>
@@ -2324,6 +2344,8 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\theme.png" />
+    <None Include="Resources\document-tree.png" />
     <None Include="Resources\TextWatermark.txt" />
     <None Include="Resources\document-code.png" />
     <None Include="Resources\document-search-result.png" />

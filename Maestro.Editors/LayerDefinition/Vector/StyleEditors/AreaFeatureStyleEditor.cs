@@ -156,7 +156,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     lineStyleEditor.thicknessCombo.Text = m_item.Stroke.Thickness;
                 }
 
-                previewPicture.Refresh();
+                UpdatePreviewResult();
             } 
             finally
             {
@@ -207,7 +207,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
 
             m_item.Fill.FillPattern = fillStyleEditor.fillCombo.Text;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -225,7 +225,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     previousFill = m_item.Fill;
                 m_item.Fill = null;
             }
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -236,7 +236,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
 
             m_item.Fill.ForegroundColor = fillStyleEditor.foregroundColor.ColorExpression;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -247,7 +247,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
 
             m_item.Fill.BackgroundColor = fillStyleEditor.backgroundColor.ColorExpression;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -265,7 +265,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     previousStroke = m_item.Stroke;
                 m_item.Stroke = null;
             }
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -276,7 +276,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
 
             m_item.Stroke.Color = lineStyleEditor.colorCombo.ColorExpression;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -288,7 +288,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             //TODO: Validate
             m_item.Stroke.LineStyle = lineStyleEditor.fillCombo.Text;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -300,7 +300,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
             //TODO: Validate
             m_item.Stroke.Thickness = lineStyleEditor.thicknessCombo.Text;
-            previewPicture.Refresh();
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -348,6 +348,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     owner.SelectedIndex = -1;
 
                 owner.Text = text;
+                UpdatePreviewResult();
             }
             finally
             {
@@ -363,7 +364,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
 
             if (s2 != null)
+            {
                 s2.SizeContext = (SizeContextType)Enum.Parse(typeof(SizeContextType), (string)sizeContextCombo.SelectedValue);
+                UpdatePreviewResult();
+            }
         }
 
         private void sizeUnitsCombo_SelectedIndexChanged(object sender, EventArgs e)
@@ -372,30 +376,45 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
 
             m_item.Stroke.Unit = (LengthUnitType)Enum.Parse(typeof(LengthUnitType), (string)sizeUnitsCombo.SelectedValue);
+            UpdatePreviewResult();
         }
 
         private void fillStyleEditor_BackgroundRequiresExpression(object sender, EventArgs e)
         {
             string expr = m_editor.EditExpression(fillStyleEditor.backgroundColor.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)
+            {
                 fillStyleEditor.backgroundColor.ColorExpression = expr;
+                UpdatePreviewResult();
+            }
         }
 
         private void fillStyleEditor_ForegroundRequiresExpression(object sender, EventArgs e)
         {
             string expr = m_editor.EditExpression(fillStyleEditor.foregroundColor.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)
+            {
                 fillStyleEditor.foregroundColor.ColorExpression = expr;
+                UpdatePreviewResult();
+            }
         }
         
         void LineStyleEditor_RequiresExpressionEditor(object sender, EventArgs e)
         {
             string expr = m_editor.EditExpression(lineStyleEditor.colorCombo.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)
+            {
                 lineStyleEditor.colorCombo.ColorExpression = expr;
+                UpdatePreviewResult();
+            }
         }
 
         private void lnkRefresh_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            UpdatePreviewResult();
+        }
+
+        private void UpdatePreviewResult()
         {
             if (_editCommit != null)
                 _editCommit.Invoke();
@@ -405,9 +424,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            if (_editCommit != null)
-                _editCommit.Invoke();
-            UpdatePreviewImage();
+            UpdatePreviewResult();
         }
 
         private Action _editCommit;

@@ -520,7 +520,7 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to None.
+        ///   Looks up a localized string similar to (none).
         /// </summary>
         internal static string EmptyText {
             get {
@@ -2763,6 +2763,15 @@ namespace Maestro.Editors {
         internal static string UpdatingConfiguration {
             get {
                 return ResourceManager.GetString("UpdatingConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating Style Previews.
+        /// </summary>
+        internal static string UpdatingStylePreviews {
+            get {
+                return ResourceManager.GetString("UpdatingStylePreviews", resourceCulture);
             }
         }
         

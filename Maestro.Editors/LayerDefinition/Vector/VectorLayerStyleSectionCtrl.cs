@@ -32,6 +32,7 @@ using Maestro.Editors.Common;
 using System.Globalization;
 using Maestro.Editors.LayerDefinition.Vector.Scales;
 using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
+using Maestro.Editors.LayerDefinition.Vector.GridEditor;
 
 namespace Maestro.Editors.LayerDefinition.Vector
 {
@@ -61,6 +62,8 @@ namespace Maestro.Editors.LayerDefinition.Vector
             BindScaleList(_vl.VectorScaleRange);
             EvaluateCommands();
         }
+
+        internal IEditorService EditorService { get { return _edsvc; } }
 
         public VectorLayerEditorCtrl Owner { get; internal set; }
 
@@ -252,9 +255,9 @@ namespace Maestro.Editors.LayerDefinition.Vector
             btnSort.Enabled = _vl.HasVectorScaleRanges();
         }
 
-        private Dictionary<VectorScaleRange, VectorScaleRangeCtrl> _rangeCtrls = new Dictionary<VectorScaleRange, VectorScaleRangeCtrl>();
+        private Dictionary<VectorScaleRange, Control> _rangeCtrls = new Dictionary<VectorScaleRange, Control>();
 
-        private VectorScaleRangeCtrl _activeScaleRangeCtrl;
+        private Control _activeScaleRangeCtrl;
 
         private void lstScaleRanges_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -290,10 +293,13 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
                     btnKmlElevation.Enabled = vsc.SupportsElevation;
 
-                    VectorScaleRangeCtrl ctrl = null;
+                    Control ctrl = null;
                     if (!_rangeCtrls.ContainsKey(vsc))
                     {
-                        ctrl = new VectorScaleRangeCtrl(vsc.Item, this);
+                        if (LayerEditorSettings.UseGridEditor)
+                            ctrl = new VectorScaleRangeGrid(vsc.Item, this);
+                        else
+                            ctrl = new VectorScaleRangeCtrl(vsc.Item, this);
                         ctrl.Dock = DockStyle.Fill;
                         _rangeCtrls[vsc] = ctrl;
                     }
@@ -381,6 +387,16 @@ namespace Maestro.Editors.LayerDefinition.Vector
                     OnResourceChanged();
                 }
             }
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

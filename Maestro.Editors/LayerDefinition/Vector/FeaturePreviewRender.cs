@@ -173,6 +173,17 @@ namespace Maestro.Editors.LayerDefinition.Vector
             }
         }
 
+        public static Image RenderNullLabel(int width, int height)
+        {
+            Image img = new Bitmap(width, height);
+            using (Graphics g = Graphics.FromImage(img))
+            {
+                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+                g.DrawString(Strings.EmptyText, new Font("Arial", 10.0f, FontStyle.Regular), Brushes.Black, new RectangleF(new PointF(0, 0), new SizeF(width, height)));
+            }
+            return img;
+        }
+
         public static void RenderPreviewFont(Graphics g, Rectangle size, ITextSymbol item)
         {
             Font font;
@@ -184,7 +195,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
             if (item == null || item.FontName == null)
             {
-                font = new Font("Arial", 12); //NOXLATE
+                font = new Font("Arial", 10.0f, FontStyle.Regular); //NOXLATE
                 foreground = Color.Black;
                 background = Color.White;
                 text = Strings.EmptyText;
