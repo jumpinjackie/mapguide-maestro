@@ -40,6 +40,8 @@
             this.btnAutoRefresh = new System.Windows.Forms.ToolStripButton();
             this.btnShowInLegend = new System.Windows.Forms.ToolStripButton();
             this.grdRules = new System.Windows.Forms.DataGridView();
+            this.btnDisplayAsText = new System.Windows.Forms.ToolStripButton();
+            this.btnAllowOverpost = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdRules)).BeginInit();
             this.SuspendLayout();
@@ -55,7 +57,9 @@
             this.toolStripSeparator1,
             this.btnRefreshStylePreviews,
             this.btnAutoRefresh,
-            this.btnShowInLegend});
+            this.btnShowInLegend,
+            this.btnDisplayAsText,
+            this.btnAllowOverpost});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(785, 25);
@@ -118,8 +122,8 @@
             this.btnRefreshStylePreviews.Image = global::Maestro.Editors.Properties.Resources.arrow_circle_135;
             this.btnRefreshStylePreviews.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefreshStylePreviews.Name = "btnRefreshStylePreviews";
-            this.btnRefreshStylePreviews.Size = new System.Drawing.Size(143, 22);
-            this.btnRefreshStylePreviews.Text = "Refresh Style Previews";
+            this.btnRefreshStylePreviews.Size = new System.Drawing.Size(115, 22);
+            this.btnRefreshStylePreviews.Text = "Refresh Previews";
             this.btnRefreshStylePreviews.Click += new System.EventHandler(this.btnRefreshStylePreviews_Click);
             // 
             // btnAutoRefresh
@@ -160,6 +164,26 @@
             this.grdRules.Scroll += new System.Windows.Forms.ScrollEventHandler(this.grdRules_Scroll);
             this.grdRules.SelectionChanged += new System.EventHandler(this.grdRules_SelectionChanged);
             // 
+            // btnDisplayAsText
+            // 
+            this.btnDisplayAsText.CheckOnClick = true;
+            this.btnDisplayAsText.Image = global::Maestro.Editors.Properties.Resources.tick;
+            this.btnDisplayAsText.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDisplayAsText.Name = "btnDisplayAsText";
+            this.btnDisplayAsText.Size = new System.Drawing.Size(106, 22);
+            this.btnDisplayAsText.Text = "Display As Text";
+            this.btnDisplayAsText.Click += new System.EventHandler(this.btnDisplayAsText_Click);
+            // 
+            // btnAllowOverpost
+            // 
+            this.btnAllowOverpost.CheckOnClick = true;
+            this.btnAllowOverpost.Image = global::Maestro.Editors.Properties.Resources.tick;
+            this.btnAllowOverpost.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAllowOverpost.Name = "btnAllowOverpost";
+            this.btnAllowOverpost.Size = new System.Drawing.Size(108, 20);
+            this.btnAllowOverpost.Text = "Allow Overpost";
+            this.btnAllowOverpost.Click += new System.EventHandler(this.btnAllowOverpost_Click);
+            // 
             // RuleGridView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,5 +213,7 @@
         private System.Windows.Forms.ToolStripButton btnShowInLegend;
         private System.Windows.Forms.ToolStripButton btnRefreshStylePreviews;
         private System.Windows.Forms.ToolStripButton btnAutoRefresh;
+        private System.Windows.Forms.ToolStripButton btnDisplayAsText;
+        private System.Windows.Forms.ToolStripButton btnAllowOverpost;
     }
 }

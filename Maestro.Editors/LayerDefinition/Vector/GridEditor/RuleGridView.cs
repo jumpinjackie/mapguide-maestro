@@ -132,6 +132,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                         btnShowInLegend.Checked = c2.ShowInLegend;
                 }
 
+                var pts = style as IPointVectorStyle;
+                if (pts != null)
+                {
+                    btnAllowOverpost.Checked = pts.AllowOverpost;
+                    btnDisplayAsText.Checked = pts.DisplayAsText;
+                }
+                else
+                {
+                    btnAllowOverpost.Visible =
+                        btnDisplayAsText.Visible = false;
+                }
+
                 InitGrid(style is ICompositeTypeStyle);
                 _editedLayer = (ILayerDefinition)_edSvc.GetEditedResource();
                 _parentScaleRange = parentRange;
@@ -847,6 +859,20 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 a2.ShowInLegend = btnShowInLegend.Checked;
             else if (c2 != null)
                 c2.ShowInLegend = btnShowInLegend.Checked;
+        }
+
+        private void btnDisplayAsText_Click(object sender, EventArgs e)
+        {
+            var pts = _style as IPointVectorStyle;
+            if (pts != null)
+                pts.DisplayAsText = btnDisplayAsText.Checked;
+        }
+
+        private void btnAllowOverpost_Click(object sender, EventArgs e)
+        {
+            var pts = _style as IPointVectorStyle;
+            if (pts != null)
+                pts.AllowOverpost = btnAllowOverpost.Checked;
         }
     }
 }

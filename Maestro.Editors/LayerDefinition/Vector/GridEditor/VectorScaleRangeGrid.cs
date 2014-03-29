@@ -269,19 +269,19 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 if (!_compositeRuleGrids.ContainsKey(style))
                 {
                     var grid = new RuleGridView();
-
-                    if (lstStyles.SelectedIndex >= 0)
-                    {
-                        int offset = 0;
-                        for (int i = 0; i < lstStyles.SelectedIndex; i++)
-                        {
-                            offset += _cts[i].RuleCount;
-                        }
-                        grid.ThemeIndexOffest = offset;
-                    }
-
                     grid.Init(_parent.EditorService, _vsr, style);
                     _compositeRuleGrids[style] = grid;
+                }
+
+                //Update offset
+                if (lstStyles.SelectedIndex >= 0)
+                {
+                    int offset = 0;
+                    for (int i = 0; i < lstStyles.SelectedIndex; i++)
+                    {
+                        offset += _cts[i].RuleCount;
+                    }
+                    _compositeRuleGrids[style].ThemeIndexOffest = offset;
                 }
 
                 SetActiveControl(_compositeRuleGrids[style]);
