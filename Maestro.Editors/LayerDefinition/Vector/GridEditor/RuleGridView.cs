@@ -678,6 +678,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 diag.ShowDialog();
                 //HACK: Assume edits made
                 _edSvc.HasChanged();
+                UpdateRulePreviewAsync(cr);
                 return;
             }
 
@@ -963,7 +964,40 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         {
             if (grdRules.SelectedRows.Count == 1)
             {
-
+                ILabeledRuleModel lrm = grdRules.SelectedRows[0].DataBoundItem as ILabeledRuleModel;
+                IRuleModel rm = grdRules.SelectedRows[0].DataBoundItem as IRuleModel;
+                //Test the labeled rule first as it can be both
+                if (lrm != null)
+                {
+                    Debug.Assert(_style.StyleType != StyleType.Composite);
+                    //HACK: Only Maestro knows that all impls of ILayerDefinition also implements ILayerElementFactory2
+                    ILabeledRuleModel clone = lrm.CloneLabeledRuleModel((ILayerElementFactory2)_editedLayer);
+                    switch (_style.StyleType)
+                    {
+                        case StyleType.Point:
+                            ((IPointVectorStyle)_style).AddRule((IPointRule)clone.UnwrapRule());
+                            clone.SetIndex(_style.RuleCount - 1);
+                            break;
+                        case StyleType.Line:
+                            ((ILineVectorStyle)_style).AddRule((ILineRule)clone.UnwrapRule());
+                            clone.SetIndex(_style.RuleCount - 1);
+                            break;
+                        case StyleType.Area:
+                            ((IAreaVectorStyle)_style).AddRule((IAreaRule)clone.UnwrapRule());
+                            clone.SetIndex(_style.RuleCount - 1);
+                            break;
+                    }
+                    _rules.Add(clone);
+                }
+                else if (rm != null)
+                {
+                    Debug.Assert(_style.StyleType == StyleType.Composite);
+                    //HACK: Only Maestro knows that all impls of ILayerDefinition also implements ILayerElementFactory2
+                    IRuleModel clone = rm.CloneRuleModel((ILayerElementFactory2)_editedLayer);
+                    ((ICompositeTypeStyle)_style).AddCompositeRule((ICompositeRule)clone.UnwrapRule());
+                    clone.SetIndex(_style.RuleCount - 1);
+                    _rules.Add(clone);
+                }
             }
         }
     }

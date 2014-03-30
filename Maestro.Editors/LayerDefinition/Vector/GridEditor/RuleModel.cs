@@ -39,6 +39,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         void SwapIndicesWith(IRuleModel model);
         void SetIndex(int index);
         object UnwrapRule();
+
+        IRuleModel CloneRuleModel(ILayerElementFactory2 factory);
     }
 
     internal interface ILabeledRuleModel : INotifyPropertyChanged
@@ -52,6 +54,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         void SwapIndicesWith(ILabeledRuleModel model);
         void SetIndex(int index);
         object UnwrapRule();
+
+        ILabeledRuleModel CloneLabeledRuleModel(ILayerElementFactory2 factory);
     }
 
     internal abstract class RuleModel : IRuleModel
@@ -95,6 +99,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         }
 
         public abstract object UnwrapRule();
+
+        public abstract IRuleModel CloneRuleModel(ILayerElementFactory2 factory);
     }
 
     internal abstract class BasicVectorRuleModel<TRuleType, TSymbolizationStyleType> : RuleModel, ILabeledRuleModel where TRuleType : IBasicVectorRule
@@ -234,6 +240,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             this.Index = m.Index;
             m.Index = temp;
         }
+
+        public override IRuleModel CloneRuleModel(ILayerElementFactory2 factory)
+        {
+            throw new NotImplementedException();
+        }
+
+        public abstract ILabeledRuleModel CloneLabeledRuleModel(ILayerElementFactory2 factory);
     }
 
     internal class PointRuleModel : BasicVectorRuleModel<IPointRule, IPointSymbolization2D>
@@ -253,6 +266,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         {
             _rule.PointSymbolization2D = style;
             this.HasStyle = (style != null);
+        }
+
+        public override ILabeledRuleModel CloneLabeledRuleModel(ILayerElementFactory2 factory)
+        {
+            var clone = factory.CreateDefaultPointRule();
+            clone.Filter = _rule.Filter;
+            clone.LegendLabel = _rule.LegendLabel;
+            if (_rule.Label != null)
+                clone.Label = _rule.Label.Clone();
+            if (_rule.PointSymbolization2D != null)
+                clone.PointSymbolization2D = _rule.PointSymbolization2D.Clone();
+            return new PointRuleModel(clone, -1);
         }
     }
 
@@ -346,6 +371,25 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         {
             return new BasicLineSymbolizationAdapter(_rule);
         }
+
+        public override ILabeledRuleModel CloneLabeledRuleModel(ILayerElementFactory2 factory)
+        {
+            var clone = factory.CreateDefaultLineRule();
+            clone.Filter = _rule.Filter;
+            clone.LegendLabel = _rule.LegendLabel;
+            if (_rule.Label != null)
+                clone.Label = _rule.Label.Clone();
+            if (_rule.Strokes != null && _rule.StrokeCount > 0)
+            {
+                var strokes = new List<IStroke>();
+                foreach (var st in _rule.Strokes)
+                {
+                    strokes.Add(st.Clone());
+                }
+                clone.SetStrokes(strokes);
+            }
+            return new LineRuleModel(clone, -1);
+        }
     }
 
     internal class AreaRuleModel : BasicVectorRuleModel<IAreaRule, IAreaSymbolizationFill>
@@ -365,6 +409,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         {
             _rule.AreaSymbolization2D = style;
             this.HasStyle = (style != null);
+        }
+
+        public override ILabeledRuleModel CloneLabeledRuleModel(ILayerElementFactory2 factory)
+        {
+            var clone = factory.CreateDefaultAreaRule();
+            clone.Filter = _rule.Filter;
+            clone.LegendLabel = _rule.LegendLabel;
+            if (_rule.Label != null)
+                clone.Label = _rule.Label.Clone();
+            if (_rule.AreaSymbolization2D != null)
+                clone.AreaSymbolization2D = _rule.AreaSymbolization2D.Clone();
+            return new AreaRuleModel(clone, -1);
         }
     }
     
@@ -443,6 +499,16 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                     OnPropertyChanged("Style");
                 }
             }
+        }
+
+        public override IRuleModel CloneRuleModel(ILayerElementFactory2 factory)
+        {
+            var clone = factory.CreateDefaultCompositeRule();
+            clone.Filter = _rule.Filter;
+            clone.LegendLabel = _rule.LegendLabel;
+            if (_rule.CompositeSymbolization != null)
+                clone.CompositeSymbolization = factory.CloneCompositeSymbolization(_rule.CompositeSymbolization);
+            return new CompositeRuleModel(clone, -1);
         }
     }
 }
