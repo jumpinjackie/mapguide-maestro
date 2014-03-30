@@ -905,8 +905,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         enum FillColorSource
         {
             PathFillColor,
-            SymbolParameterDefaultValue,
-            SymbolParameterOverride
+            SymbolParameterFillColorDefaultValue,
+            SymbolParameterFillColorOverride,
+            PathLineColor,
+            SymbolParameterLineColorDefaultValue,
+            SymbolParameterLineColorOverride
         }
 
         private void GenerateCompositeThemeRules(List<RuleItem> rules, ICompositeTypeStyle col)
@@ -928,84 +931,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 template = col.GetRuleAt(0);
                 if (template.CompositeSymbolization != null)
                 {
-                    foreach (ISymbolInstance symInst in template.CompositeSymbolization.SymbolInstance)
-                    {
-                        if (source.HasValue)
-                            break;
-
-                        var symRef = GetSymbolFromReference(m_editor.ResourceService, symInst.Reference);
-                        var simpleSym = symRef as ISimpleSymbolDefinition;
-                        if (simpleSym == null)
-                            throw new NotSupportedException(Strings.CannotCreateThemeFromCompoundSymbolInstance);
-
-                        var symName = simpleSym.Name;
-                        //Find the first path graphic with a fill color
-                        foreach (var graphic in simpleSym.Graphics)
-                        {
-                            if (source.HasValue)
-                                break;
-
-                            if (graphic.Type == GraphicElementType.Path)
-                            {
-                                IPathGraphic path = (IPathGraphic)graphic;
-                                if (path.FillColor != null)
-                                {
-                                    var hexIdx = path.FillColor.IndexOf("0x");
-                                    if (hexIdx >= 0 && hexIdx + 4 < path.FillColor.Length)
-                                    {
-                                        fillAlpha = path.FillColor.Substring(hexIdx + 2, 2);
-                                        source = FillColorSource.PathFillColor;
-                                    }
-                                    else
-                                    {
-                                        string color = path.FillColor;
-                                        //Is this a parameter?
-                                        if (color.StartsWith("%") && color.EndsWith("%"))
-                                        {
-                                            string paramName = color.Substring(1, color.Length - 2);
-                                            if (simpleSym.ParameterDefinition != null)
-                                            {
-                                                foreach (var paramDef in simpleSym.ParameterDefinition.Parameter)
-                                                {
-                                                    if (source.HasValue)
-                                                        break;
-
-                                                    if (paramDef.Name == paramName)
-                                                    {
-                                                        hexIdx = paramDef.DefaultValue.IndexOf("0x");
-                                                        if (hexIdx >= 0 && hexIdx + 4 < paramDef.DefaultValue.Length) 
-                                                        {
-                                                            fillAlpha = paramDef.DefaultValue.Substring(hexIdx + 2, 2);
-                                                            source = FillColorSource.SymbolParameterDefaultValue;
-                                                        }
-                                                        //But wait ... Is there an override for this too?
-
-                                                        var ov = symInst.ParameterOverrides;
-                                                        if (ov != null)
-                                                        {
-                                                            foreach (var pov in ov.Override)
-                                                            {
-                                                                if (pov.SymbolName == symName && pov.ParameterIdentifier == paramName)
-                                                                {
-                                                                    hexIdx = pov.ParameterValue.IndexOf("0x");
-                                                                    if (hexIdx >= 0 && hexIdx + 4 < pov.ParameterValue.Length)
-                                                                    {
-                                                                        fillAlpha = pov.ParameterValue.Substring(hexIdx + 2, 2);
-                                                                        source = FillColorSource.SymbolParameterOverride;
-                                                                        break;
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    IdentifyColorSource(template, ref source, ref fillAlpha);
                 }
             }
 
@@ -1022,37 +948,285 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 r.LegendLabel = entry.Label;
                 if (r.CompositeSymbolization != null)
                 {
-                    bool bSetFill = false;
-                    foreach (ISymbolInstance symInst in r.CompositeSymbolization.SymbolInstance)
+                    SetColorForCompositeRule(source, fillAlpha, entry, r);
+                }
+
+                col.AddCompositeRule(r);
+            }
+        }
+
+        private void SetColorForCompositeRule(FillColorSource? source, string fillAlpha, RuleItem entry, ICompositeRule r)
+        {
+            // NOTE: Same naivete as IdentifyColorSource(). Refer to that method for all the gory details
+
+            bool bSetFill = false;
+            foreach (ISymbolInstance symInst in r.CompositeSymbolization.SymbolInstance)
+            {
+                if (bSetFill)
+                    break;
+
+                var symRef = GetSymbolFromReference(m_editor.ResourceService, symInst.Reference);
+                var simpleSym = symRef as ISimpleSymbolDefinition;
+                if (simpleSym == null)
+                    throw new NotSupportedException(Strings.CannotCreateThemeFromCompoundSymbolInstance);
+
+                var symName = simpleSym.Name;
+                //Find the first path graphic with a fill color
+                foreach (var graphic in simpleSym.Graphics)
+                {
+                    if (bSetFill)
+                        break;
+
+                    if (graphic.Type == GraphicElementType.Path)
                     {
-                        if (bSetFill)
+                        IPathGraphic path = (IPathGraphic)graphic;
+                        if (path.FillColor != null)
+                        {
+                            string color = path.FillColor;
+                            if (source.Value == FillColorSource.PathFillColor)
+                            {
+                                path.FillColor = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
+                                Debug.WriteLine(string.Format("Set fill color to {0} for symbol instance {1} of symbolization {2} in rule {3}", path.FillColor, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
+                                bSetFill = true;
+                                break;
+                            }
+                            //Is this a parameter?
+                            if (color.StartsWith("%") && color.EndsWith("%"))
+                            {
+                                string paramName = color.Substring(1, color.Length - 2);
+                                if (simpleSym.ParameterDefinition != null)
+                                {
+                                    foreach (var paramDef in simpleSym.ParameterDefinition.Parameter)
+                                    {
+                                        if (bSetFill)
+                                            break;
+
+                                        if (paramDef.Name == paramName)
+                                        {
+                                            if (source.Value == FillColorSource.SymbolParameterFillColorDefaultValue)
+                                            {
+                                                paramDef.DefaultValue = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
+                                                Debug.WriteLine(string.Format("Set fill color default parameter value to {0} for symbol instance {1} of symbolization {2} in rule {3}", paramDef.DefaultValue, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
+                                                bSetFill = true;
+                                                break;
+                                            }
+
+                                            //But wait ... Is there an override for this too?
+                                            var ov = symInst.ParameterOverrides;
+                                            if (ov != null)
+                                            {
+                                                foreach (var pov in ov.Override)
+                                                {
+                                                    if (bSetFill)
+                                                        break;
+
+                                                    if (pov.SymbolName == symName && pov.ParameterIdentifier == paramName)
+                                                    {
+                                                        if (source.Value == FillColorSource.SymbolParameterFillColorOverride)
+                                                        {
+                                                            pov.ParameterValue = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
+                                                            Debug.WriteLine(string.Format("Set fill color parameter override value to {0} for symbol instance {1} of symbolization {2} in rule {3}", pov.ParameterValue, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
+                                                            bSetFill = true;
+                                                            break;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else if (path.LineColor != null && simpleSym.LineUsage != null)
+                        {
+                            string color = path.LineColor;
+                            if (source.Value == FillColorSource.PathLineColor)
+                            {
+                                path.LineColor = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
+                                Debug.WriteLine(string.Format("Set line color to {0} for symbol instance {1} of symbolization {2} in rule {3}", path.FillColor, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
+                                bSetFill = true;
+                                break;
+                            }
+                            //Is this a parameter?
+                            if (color.StartsWith("%") && color.EndsWith("%"))
+                            {
+                                string paramName = color.Substring(1, color.Length - 2);
+                                if (simpleSym.ParameterDefinition != null)
+                                {
+                                    foreach (var paramDef in simpleSym.ParameterDefinition.Parameter)
+                                    {
+                                        if (bSetFill)
+                                            break;
+
+                                        if (paramDef.Name == paramName)
+                                        {
+                                            if (source.Value == FillColorSource.SymbolParameterLineColorDefaultValue)
+                                            {
+                                                paramDef.DefaultValue = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
+                                                Debug.WriteLine(string.Format("Set line color default parameter value to {0} for symbol instance {1} of symbolization {2} in rule {3}", paramDef.DefaultValue, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
+                                                bSetFill = true;
+                                                break;
+                                            }
+
+                                            //But wait ... Is there an override for this too?
+                                            var ov = symInst.ParameterOverrides;
+                                            if (ov != null)
+                                            {
+                                                foreach (var pov in ov.Override)
+                                                {
+                                                    if (bSetFill)
+                                                        break;
+
+                                                    if (pov.SymbolName == symName && pov.ParameterIdentifier == paramName)
+                                                    {
+                                                        if (source.Value == FillColorSource.SymbolParameterLineColorOverride)
+                                                        {
+                                                            pov.ParameterValue = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
+                                                            Debug.WriteLine(string.Format("Set line color parameter override value to {0} for symbol instance {1} of symbolization {2} in rule {3}", pov.ParameterValue, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
+                                                            bSetFill = true;
+                                                            break;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void IdentifyColorSource(ICompositeRule template, ref FillColorSource? source, ref string fillAlpha)
+        {
+            // FIXME: This is very naive. It will identify the first color it finds and runs with it.
+            // It doesn't take into consideration things such as usage contexts, which we currently only care about on 
+            // the 2nd pass when we still can't identify a color and presumably we're dealing with a composite symbolization 
+            // with line usage (where fill colors won't exist most of the time). Thematics should be fine on the most basic
+            // of composite symbolization cases, but I expect this process to break down hardcore on the most elaborate of 
+            // composite symbolization cases. Still, some thematic support is better than none.
+
+            // So anyways, 1st pass: Assume point/area and identify the first fill color we find
+            foreach (ISymbolInstance symInst in template.CompositeSymbolization.SymbolInstance)
+            {
+                if (source.HasValue)
+                    break;
+
+                var symRef = GetSymbolFromReference(m_editor.ResourceService, symInst.Reference);
+                var simpleSym = symRef as ISimpleSymbolDefinition;
+                if (simpleSym == null)
+                    throw new NotSupportedException(Strings.CannotCreateThemeFromCompoundSymbolInstance);
+
+                var symName = simpleSym.Name;
+                //Find the first path graphic with a fill color
+                foreach (var graphic in simpleSym.Graphics)
+                {
+                    if (source.HasValue)
+                        break;
+
+                    if (graphic.Type == GraphicElementType.Path)
+                    {
+                        IPathGraphic path = (IPathGraphic)graphic;
+                        if (path.FillColor != null)
+                        {
+                            var hexIdx = path.FillColor.IndexOf("0x");
+                            if (hexIdx >= 0 && hexIdx + 4 < path.FillColor.Length)
+                            {
+                                fillAlpha = path.FillColor.Substring(hexIdx + 2, 2);
+                                source = FillColorSource.PathFillColor;
+                            }
+                            else
+                            {
+                                string color = path.FillColor;
+                                //Is this a parameter?
+                                if (color.StartsWith("%") && color.EndsWith("%"))
+                                {
+                                    string paramName = color.Substring(1, color.Length - 2);
+                                    if (simpleSym.ParameterDefinition != null)
+                                    {
+                                        foreach (var paramDef in simpleSym.ParameterDefinition.Parameter)
+                                        {
+                                            if (source.HasValue)
+                                                break;
+
+                                            if (paramDef.Name == paramName)
+                                            {
+                                                hexIdx = paramDef.DefaultValue.IndexOf("0x");
+                                                if (hexIdx >= 0 && hexIdx + 4 < paramDef.DefaultValue.Length)
+                                                {
+                                                    fillAlpha = paramDef.DefaultValue.Substring(hexIdx + 2, 2);
+                                                    source = FillColorSource.SymbolParameterFillColorDefaultValue;
+                                                }
+                                                //But wait ... Is there an override for this too?
+
+                                                var ov = symInst.ParameterOverrides;
+                                                if (ov != null)
+                                                {
+                                                    foreach (var pov in ov.Override)
+                                                    {
+                                                        if (pov.SymbolName == symName && pov.ParameterIdentifier == paramName)
+                                                        {
+                                                            hexIdx = pov.ParameterValue.IndexOf("0x");
+                                                            if (hexIdx >= 0 && hexIdx + 4 < pov.ParameterValue.Length)
+                                                            {
+                                                                fillAlpha = pov.ParameterValue.Substring(hexIdx + 2, 2);
+                                                                source = FillColorSource.SymbolParameterFillColorOverride;
+                                                                break;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (!source.HasValue)
+            {
+                //Still no source? Time for a 2nd pass, this time find the first line color where the symbol instance has a line usage
+                //context
+                foreach (ISymbolInstance symInst in template.CompositeSymbolization.SymbolInstance)
+                {
+                    if (source.HasValue)
+                        break;
+
+                    var symRef = GetSymbolFromReference(m_editor.ResourceService, symInst.Reference);
+                    var simpleSym = symRef as ISimpleSymbolDefinition;
+                    if (simpleSym == null)
+                        throw new NotSupportedException(Strings.CannotCreateThemeFromCompoundSymbolInstance);
+
+                    var symName = simpleSym.Name;
+                    //Find the first path graphic with a fill color
+                    foreach (var graphic in simpleSym.Graphics)
+                    {
+                        if (source.HasValue)
                             break;
 
-                        var symRef = GetSymbolFromReference(m_editor.ResourceService, symInst.Reference);
-                        var simpleSym = symRef as ISimpleSymbolDefinition;
-                        if (simpleSym == null)
-                            throw new NotSupportedException(Strings.CannotCreateThemeFromCompoundSymbolInstance);
-
-                        var symName = simpleSym.Name;
-                        //Find the first path graphic with a fill color
-                        foreach (var graphic in simpleSym.Graphics)
+                        if (graphic.Type == GraphicElementType.Path)
                         {
-                            if (bSetFill)
-                                break;
-
-                            if (graphic.Type == GraphicElementType.Path)
+                            IPathGraphic path = (IPathGraphic)graphic;
+                            if (path.LineColor != null)
                             {
-                                IPathGraphic path = (IPathGraphic)graphic;
-                                if (path.FillColor != null)
+                                //Bail on this symbol if it has no line usage context
+                                if (simpleSym.LineUsage == null)
+                                    continue;
+
+                                var hexIdx = path.LineColor.IndexOf("0x");
+                                if (hexIdx >= 0 && hexIdx + 4 < path.LineColor.Length)
                                 {
-                                    string color = path.FillColor;
-                                    if (source.Value == FillColorSource.PathFillColor)
-                                    {
-                                        path.FillColor = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
-                                        Debug.WriteLine(string.Format("Set fill color to {0} for symbol instance {1} of symbolization {2} in rule {3}", path.FillColor, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
-                                        bSetFill = true;
-                                        break;
-                                    }
+                                    fillAlpha = path.LineColor.Substring(hexIdx + 2, 2);
+                                    source = FillColorSource.PathLineColor;
+                                }
+                                else
+                                {
+                                    string color = path.LineColor;
                                     //Is this a parameter?
                                     if (color.StartsWith("%") && color.EndsWith("%"))
                                     {
@@ -1061,36 +1235,31 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                                         {
                                             foreach (var paramDef in simpleSym.ParameterDefinition.Parameter)
                                             {
-                                                if (bSetFill)
+                                                if (source.HasValue)
                                                     break;
 
                                                 if (paramDef.Name == paramName)
                                                 {
-                                                    if (source.Value == FillColorSource.SymbolParameterDefaultValue)
+                                                    hexIdx = paramDef.DefaultValue.IndexOf("0x");
+                                                    if (hexIdx >= 0 && hexIdx + 4 < paramDef.DefaultValue.Length)
                                                     {
-                                                        paramDef.DefaultValue = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
-                                                        Debug.WriteLine(string.Format("Set fill color default parameter value to {0} for symbol instance {1} of symbolization {2} in rule {3}", paramDef.DefaultValue, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
-                                                        bSetFill = true;
-                                                        break;
+                                                        fillAlpha = paramDef.DefaultValue.Substring(hexIdx + 2, 2);
+                                                        source = FillColorSource.SymbolParameterLineColorDefaultValue;
                                                     }
-
                                                     //But wait ... Is there an override for this too?
+
                                                     var ov = symInst.ParameterOverrides;
                                                     if (ov != null)
                                                     {
                                                         foreach (var pov in ov.Override)
                                                         {
-                                                            if (bSetFill)
-                                                                break;
-
                                                             if (pov.SymbolName == symName && pov.ParameterIdentifier == paramName)
                                                             {
-                                                                //fillAlpha = pov.ParameterValue;
-                                                                if (source == FillColorSource.SymbolParameterOverride)
+                                                                hexIdx = pov.ParameterValue.IndexOf("0x");
+                                                                if (hexIdx >= 0 && hexIdx + 4 < pov.ParameterValue.Length)
                                                                 {
-                                                                    pov.ParameterValue = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
-                                                                    Debug.WriteLine(string.Format("Set fill color parameter override value to {0} for symbol instance {1} of symbolization {2} in rule {3}", pov.ParameterValue, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
-                                                                    bSetFill = true;
+                                                                    fillAlpha = pov.ParameterValue.Substring(hexIdx + 2, 2);
+                                                                    source = FillColorSource.SymbolParameterLineColorOverride;
                                                                     break;
                                                                 }
                                                             }
@@ -1105,8 +1274,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                         }
                     }
                 }
-
-                col.AddCompositeRule(r);
             }
         }
 
