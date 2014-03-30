@@ -33,15 +33,18 @@
             this.btnAddRule = new System.Windows.Forms.ToolStripButton();
             this.btnDeleteRule = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnUp = new System.Windows.Forms.ToolStripButton();
+            this.btnDown = new System.Windows.Forms.ToolStripButton();
+            this.btnDuplicateRule = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCreateTheme = new System.Windows.Forms.ToolStripButton();
             this.btnExplodeTheme = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnRefreshStylePreviews = new System.Windows.Forms.ToolStripButton();
-            this.btnAutoRefresh = new System.Windows.Forms.ToolStripButton();
             this.btnShowInLegend = new System.Windows.Forms.ToolStripButton();
-            this.grdRules = new System.Windows.Forms.DataGridView();
             this.btnDisplayAsText = new System.Windows.Forms.ToolStripButton();
             this.btnAllowOverpost = new System.Windows.Forms.ToolStripButton();
+            this.grdRules = new System.Windows.Forms.DataGridView();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdRules)).BeginInit();
             this.SuspendLayout();
@@ -52,11 +55,14 @@
             this.btnAddRule,
             this.btnDeleteRule,
             this.toolStripSeparator2,
+            this.btnUp,
+            this.btnDown,
+            this.btnDuplicateRule,
+            this.toolStripSeparator3,
             this.btnCreateTheme,
             this.btnExplodeTheme,
             this.toolStripSeparator1,
             this.btnRefreshStylePreviews,
-            this.btnAutoRefresh,
             this.btnShowInLegend,
             this.btnDisplayAsText,
             this.btnAllowOverpost});
@@ -68,21 +74,23 @@
             // 
             // btnAddRule
             // 
-            this.btnAddRule.Image = global::Maestro.Editors.Properties.Resources.plus_circle;
+            this.btnAddRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnAddRule.Image = global::Maestro.Editors.Properties.Resources.plus;
             this.btnAddRule.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAddRule.Name = "btnAddRule";
-            this.btnAddRule.Size = new System.Drawing.Size(75, 22);
-            this.btnAddRule.Text = "Add Rule";
+            this.btnAddRule.Size = new System.Drawing.Size(23, 22);
+            this.btnAddRule.Text = "Add";
             this.btnAddRule.Click += new System.EventHandler(this.btnAddRule_Click);
             // 
             // btnDeleteRule
             // 
+            this.btnDeleteRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnDeleteRule.Enabled = false;
-            this.btnDeleteRule.Image = global::Maestro.Editors.Properties.Resources.minus_circle;
+            this.btnDeleteRule.Image = global::Maestro.Editors.Properties.Resources.cross_script;
             this.btnDeleteRule.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnDeleteRule.Name = "btnDeleteRule";
-            this.btnDeleteRule.Size = new System.Drawing.Size(91, 22);
-            this.btnDeleteRule.Text = "Delete Rules";
+            this.btnDeleteRule.Size = new System.Drawing.Size(23, 22);
+            this.btnDeleteRule.Text = "Delete";
             this.btnDeleteRule.ToolTipText = "Delete selected rules";
             this.btnDeleteRule.Click += new System.EventHandler(this.btnDeleteRule_Click);
             // 
@@ -90,6 +98,45 @@
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnUp
+            // 
+            this.btnUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnUp.Enabled = false;
+            this.btnUp.Image = global::Maestro.Editors.Properties.Resources.arrow_090;
+            this.btnUp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Size = new System.Drawing.Size(23, 22);
+            this.btnUp.Text = "Move Up";
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
+            // 
+            // btnDown
+            // 
+            this.btnDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDown.Enabled = false;
+            this.btnDown.Image = global::Maestro.Editors.Properties.Resources.arrow_270;
+            this.btnDown.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(23, 22);
+            this.btnDown.Text = "Move Down";
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+            // 
+            // btnDuplicateRule
+            // 
+            this.btnDuplicateRule.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnDuplicateRule.Enabled = false;
+            this.btnDuplicateRule.Image = global::Maestro.Editors.Properties.Resources.document_copy;
+            this.btnDuplicateRule.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDuplicateRule.Name = "btnDuplicateRule";
+            this.btnDuplicateRule.Size = new System.Drawing.Size(23, 22);
+            this.btnDuplicateRule.Text = "Duplicate";
+            this.btnDuplicateRule.ToolTipText = "Duplicate Selected Rule";
+            this.btnDuplicateRule.Click += new System.EventHandler(this.btnDuplicateRule_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // btnCreateTheme
             // 
@@ -126,17 +173,6 @@
             this.btnRefreshStylePreviews.Text = "Refresh Previews";
             this.btnRefreshStylePreviews.Click += new System.EventHandler(this.btnRefreshStylePreviews_Click);
             // 
-            // btnAutoRefresh
-            // 
-            this.btnAutoRefresh.CheckOnClick = true;
-            this.btnAutoRefresh.Image = global::Maestro.Editors.Properties.Resources.tick;
-            this.btnAutoRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAutoRefresh.Name = "btnAutoRefresh";
-            this.btnAutoRefresh.Size = new System.Drawing.Size(97, 22);
-            this.btnAutoRefresh.Text = "Auto-Refresh";
-            this.btnAutoRefresh.ToolTipText = "Style previews for currently visible rules will be automatically updated as you s" +
-    "croll the grid. Otherwise, you have to manually refresh these previews";
-            // 
             // btnShowInLegend
             // 
             this.btnShowInLegend.Checked = true;
@@ -149,20 +185,6 @@
             this.btnShowInLegend.Text = "Show In Legend";
             this.btnShowInLegend.ToolTipText = "These rules will be shown in the legend if checked";
             this.btnShowInLegend.Click += new System.EventHandler(this.btnShowInLegend_Click);
-            // 
-            // grdRules
-            // 
-            this.grdRules.AllowUserToAddRows = false;
-            this.grdRules.AllowUserToDeleteRows = false;
-            this.grdRules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdRules.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdRules.Location = new System.Drawing.Point(0, 25);
-            this.grdRules.Name = "grdRules";
-            this.grdRules.Size = new System.Drawing.Size(785, 392);
-            this.grdRules.TabIndex = 1;
-            this.grdRules.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdRules_CellClick);
-            this.grdRules.Scroll += new System.Windows.Forms.ScrollEventHandler(this.grdRules_Scroll);
-            this.grdRules.SelectionChanged += new System.EventHandler(this.grdRules_SelectionChanged);
             // 
             // btnDisplayAsText
             // 
@@ -180,9 +202,22 @@
             this.btnAllowOverpost.Image = global::Maestro.Editors.Properties.Resources.tick;
             this.btnAllowOverpost.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAllowOverpost.Name = "btnAllowOverpost";
-            this.btnAllowOverpost.Size = new System.Drawing.Size(108, 20);
+            this.btnAllowOverpost.Size = new System.Drawing.Size(108, 22);
             this.btnAllowOverpost.Text = "Allow Overpost";
             this.btnAllowOverpost.Click += new System.EventHandler(this.btnAllowOverpost_Click);
+            // 
+            // grdRules
+            // 
+            this.grdRules.AllowUserToAddRows = false;
+            this.grdRules.AllowUserToDeleteRows = false;
+            this.grdRules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdRules.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdRules.Location = new System.Drawing.Point(0, 25);
+            this.grdRules.Name = "grdRules";
+            this.grdRules.Size = new System.Drawing.Size(785, 392);
+            this.grdRules.TabIndex = 1;
+            this.grdRules.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdRules_CellClick);
+            this.grdRules.SelectionChanged += new System.EventHandler(this.grdRules_SelectionChanged);
             // 
             // RuleGridView
             // 
@@ -212,8 +247,11 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnShowInLegend;
         private System.Windows.Forms.ToolStripButton btnRefreshStylePreviews;
-        private System.Windows.Forms.ToolStripButton btnAutoRefresh;
         private System.Windows.Forms.ToolStripButton btnDisplayAsText;
         private System.Windows.Forms.ToolStripButton btnAllowOverpost;
+        private System.Windows.Forms.ToolStripButton btnUp;
+        private System.Windows.Forms.ToolStripButton btnDown;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton btnDuplicateRule;
     }
 }

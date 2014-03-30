@@ -917,6 +917,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 return;
             }
 
+            //TODO: Composite styles for lines probably don't have fill colors, as such theme rule generation
+            //probably won't work for line styles atm
+
             FillColorSource? source = null;
             string fillAlpha = "";
             ICompositeRule template = null;
@@ -1014,6 +1017,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             foreach (RuleItem entry in rules)
             {
                 var r = (template != null) ? CreateCompositeRule(template, _factory) : _factory.CreateDefaultCompositeRule();
+                Debug.WriteLine("Made rule {0}", r.GetHashCode());
                 r.Filter = entry.Filter;
                 r.LegendLabel = entry.Label;
                 if (r.CompositeSymbolization != null)
@@ -1045,7 +1049,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                                     if (source.Value == FillColorSource.PathFillColor)
                                     {
                                         path.FillColor = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
-                                        Debug.WriteLine(string.Format("Set fill color to {0} for symbol instance {1}", path.FillColor, symInst.GetHashCode()));
+                                        Debug.WriteLine(string.Format("Set fill color to {0} for symbol instance {1} of symbolization {2} in rule {3}", path.FillColor, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
                                         bSetFill = true;
                                         break;
                                     }
@@ -1065,7 +1069,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                                                     if (source.Value == FillColorSource.SymbolParameterDefaultValue)
                                                     {
                                                         paramDef.DefaultValue = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
-                                                        Debug.WriteLine(string.Format("Set fill color default parameter value to {0} for symbol instance {1}", paramDef.DefaultValue, symInst.GetHashCode()));
+                                                        Debug.WriteLine(string.Format("Set fill color default parameter value to {0} for symbol instance {1} of symbolization {2} in rule {3}", paramDef.DefaultValue, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
                                                         bSetFill = true;
                                                         break;
                                                     }
@@ -1085,7 +1089,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                                                                 if (source == FillColorSource.SymbolParameterOverride)
                                                                 {
                                                                     pov.ParameterValue = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
-                                                                    Debug.WriteLine(string.Format("Set fill color parameter override value to {0} for symbol instance {1}", pov.ParameterValue, symInst.GetHashCode()));
+                                                                    Debug.WriteLine(string.Format("Set fill color parameter override value to {0} for symbol instance {1} of symbolization {2} in rule {3}", pov.ParameterValue, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
                                                                     bSetFill = true;
                                                                     break;
                                                                 }

@@ -2344,6 +2344,7 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\plus.png" />
     <None Include="Resources\theme.png" />
     <None Include="Resources\document-tree.png" />
     <None Include="Resources\TextWatermark.txt" />

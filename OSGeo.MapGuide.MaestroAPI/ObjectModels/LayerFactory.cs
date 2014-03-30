@@ -443,7 +443,19 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             throw new NotImplementedException();
 #else
             var csym = (CompositeSymbolization)sym;
-            return csym.Clone();
+            //Use quick and dirty XML in'n'out cloning to ensure no existing child references are
+            //carried over
+            var clone = CompositeSymbolization.Deserialize(csym.Serialize());
+            /*
+            foreach (var oldInst in csym.SymbolInstance)
+            {
+                System.Diagnostics.Debug.WriteLine("old symbol instance: {0}", oldInst.GetHashCode());
+            }
+            foreach (var newInst in clone.SymbolInstance)
+            {
+                System.Diagnostics.Debug.WriteLine("new symbol instance: {0}", newInst.GetHashCode());
+            }*/
+            return clone;
 #endif
         }
     }

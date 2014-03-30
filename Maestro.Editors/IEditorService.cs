@@ -228,7 +228,9 @@ namespace Maestro.Editors
 
         /// <summary>
         /// Synchronises changes in the in-memory resource back to the session repository. This is usually called
-        /// before validation of the edited resource begins.
+        /// before validation of the edited resource begins. Call this method if you require changes in your in-memory
+        /// resources to be flushed back to the session repository so that future API calls on this resource are working
+        /// with up-to-date information
         /// </summary>
         void SyncSessionCopy();
 

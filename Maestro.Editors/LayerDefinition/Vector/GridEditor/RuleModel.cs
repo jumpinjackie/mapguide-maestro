@@ -27,7 +27,7 @@ using System.Text;
 
 namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
 {
-    public interface IRuleModel : INotifyPropertyChanged
+    internal interface IRuleModel : INotifyPropertyChanged
     {
         [Browsable(false)]
         int Index { get; }
@@ -36,9 +36,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         Image Style { get; }
 
         void SetRuleStylePreview(Image image);
+        void SwapIndicesWith(IRuleModel model);
+        void SetIndex(int index);
+        object UnwrapRule();
     }
 
-    public interface ILabeledRuleModel : INotifyPropertyChanged
+    internal interface ILabeledRuleModel : INotifyPropertyChanged
     {
         [Browsable(false)]
         int Index { get; }
@@ -46,6 +49,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         string LegendLabel { get; set; }
         Image Style { get; }
         Image Label { get; }
+        void SwapIndicesWith(ILabeledRuleModel model);
+        void SetIndex(int index);
+        object UnwrapRule();
     }
 
     internal abstract class RuleModel : IRuleModel
@@ -58,6 +64,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         public abstract string LegendLabel { get; set; }
 
         public abstract Image Style { get; protected set; }
+
+        public void SetIndex(int index) { this.Index = index; }
 
         [Browsable(false)]
         public bool HasStyle { get; protected set; }
@@ -77,16 +85,32 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public void SwapIndicesWith(IRuleModel model)
+        {
+            var m = (RuleModel)model;
+            var temp = m.Index;
+            this.Index = m.Index;
+            m.Index = temp;
+        }
+
+        public abstract object UnwrapRule();
     }
 
-    internal abstract class BasicVectorRuleModelBase<TRuleType, TSymbolizationStyleType> : RuleModel, ILabeledRuleModel where TRuleType : IVectorRule
+    internal abstract class BasicVectorRuleModel<TRuleType, TSymbolizationStyleType> : RuleModel, ILabeledRuleModel where TRuleType : IBasicVectorRule
     {
         protected TRuleType _rule;
 
-        protected BasicVectorRuleModelBase(TRuleType rule, int index)
+        protected BasicVectorRuleModel(TRuleType rule, int index)
         {
             _rule = rule;
             this.Index = index;
+            UpdateLabelPreview(_rule.Label);
+        }
+
+        public override object UnwrapRule()
+        {
+            return _rule;
         }
 
         public override string Filter
@@ -191,15 +215,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         public abstract TSymbolizationStyleType GetSymbolizationStyle();
 
         public abstract void SetSymbolizationStyle(TSymbolizationStyleType style);
-    }
-
-    internal abstract class BasicVectorRuleModel<TRuleType, TSymbolizationStyleType> : BasicVectorRuleModelBase<TRuleType, TSymbolizationStyleType> where TRuleType : IBasicVectorRule
-    {
-        protected BasicVectorRuleModel(TRuleType rule, int index) 
-            : base(rule, index)
-        {
-            UpdateLabelPreview(_rule.Label);
-        }
 
         public ITextSymbol GetLabelStyle()
         {
@@ -210,6 +225,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         {
             _rule.Label = style;
             UpdateLabelPreview(style);
+        }
+
+        public void SwapIndicesWith(ILabeledRuleModel model)
+        {
+            var m = (BasicVectorRuleModel<TRuleType, TSymbolizationStyleType>)model;
+            var temp = m.Index;
+            this.Index = m.Index;
+            m.Index = temp;
         }
     }
 
@@ -354,6 +377,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             _rule = rule;
             this.Index = index;
             this.HasStyle = (_rule.CompositeSymbolization != null);
+        }
+
+        public override object UnwrapRule()
+        {
+            return _rule;
         }
 
         public ICompositeSymbolization GetSymbolizationStyle()

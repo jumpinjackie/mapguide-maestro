@@ -93,8 +93,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             switch(e.ListChangedType)
             {
                 case ListChangedType.ItemChanged:
-                    if (e.PropertyDescriptor.Name != "Style" && e.PropertyDescriptor.Name != "Label")
-                        _edSvc.HasChanged();
+                    if (e.PropertyDescriptor != null)
+                    {
+                        if (e.PropertyDescriptor.Name != "Style" && e.PropertyDescriptor.Name != "Label" && e.PropertyDescriptor.Name != "Index")
+                        {
+                            _edSvc.HasChanged();
+                        }
+                    }
                     break;
                 case ListChangedType.ItemMoved:
                     break;
@@ -147,7 +152,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 InitGrid(style is ICompositeTypeStyle);
                 _editedLayer = (ILayerDefinition)_edSvc.GetEditedResource();
                 _parentScaleRange = parentRange;
-                ReSyncRules(style);
+                ReSyncRulesToBindingList(style);
             }
             finally
             {
@@ -155,7 +160,69 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             }
         }
 
-        private void ReSyncRules(IVectorStyle style)
+        private void ReSyncBindingListToRules(IVectorStyle style)
+        {
+            if (style != null)
+            {
+                switch (style.StyleType)
+                {
+                    case StyleType.Point:
+                        {
+                            IPointVectorStyle pts = style as IPointVectorStyle;
+                            pts.RemoveAllRules();
+                            for (int i = 0; i < _rules.Count; i++)
+                            {
+                                ILabeledRuleModel rule = (ILabeledRuleModel)_rules[i];
+                                IPointRule pr = (IPointRule)rule.UnwrapRule();
+                                pts.AddRule(pr);
+                                rule.SetIndex(i);
+                            }
+                        }
+                        break;
+                    case StyleType.Line:
+                        {
+                            ILineVectorStyle lts = style as ILineVectorStyle;
+                            lts.RemoveAllRules();
+                            for (int i = 0; i < _rules.Count; i++)
+                            {
+                                ILabeledRuleModel rule = (ILabeledRuleModel)_rules[i];
+                                ILineRule lr = (ILineRule)rule.UnwrapRule();
+                                lts.AddRule(lr);
+                                rule.SetIndex(i);
+                            }
+                        }
+                        break;
+                    case StyleType.Area:
+                        {
+                            IAreaVectorStyle ats = style as IAreaVectorStyle;
+                            ats.RemoveAllRules();
+                            for (int i = 0; i < _rules.Count; i++)
+                            {
+                                ILabeledRuleModel rule = (ILabeledRuleModel)_rules[i];
+                                IAreaRule ar = (IAreaRule)rule.UnwrapRule();
+                                ats.AddRule(ar);
+                                rule.SetIndex(i);
+                            }
+                        }
+                        break;
+                    case StyleType.Composite:
+                        {
+                            ICompositeTypeStyle cts = style as ICompositeTypeStyle;
+                            cts.RemoveAllRules();
+                            for (int i = 0; i < _rules.Count; i++)
+                            {
+                                IRuleModel rule = (IRuleModel)_rules[i];
+                                ICompositeRule cr = (ICompositeRule)rule.UnwrapRule();
+                                cts.AddCompositeRule(cr);
+                                rule.SetIndex(i);
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+
+        private void ReSyncRulesToBindingList(IVectorStyle style)
         {
             _rules.Clear();
             if (style != null)
@@ -304,6 +371,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 foreach (var rule in visibleRules)
                 {
                     var img = mapSvc.GetLegendImage(scale, layerId, themeOffset + rule.Index, styleType.Value, 50, 16, "PNG");
+                    Debug.WriteLine("Requested theme icon (index: " + (themeOffset + rule.Index) + ", type: " + styleType.Value + ")");
                     icons[rule.Index] = img;
                 }
                 return icons;
@@ -318,14 +386,17 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                     if (res != null)
                     {
                         var icons = (Dictionary<int, Image>)res;
+                        int updated = 0;
                         //We're back on the GUI thread now
                         foreach (var rule in visibleRules)
                         {
                             if (icons.ContainsKey(rule.Index))
                             {
                                 rule.SetRuleStylePreview(icons[rule.Index]);
+                                updated++;
                             }
                         }
+                        Debug.WriteLine("Updated style previews for " + updated + " rules");
                     }
                 }
             });
@@ -726,51 +797,19 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 try
                 {
                     _init = true;
-                    remove.Sort((a, b) =>
-                    {
-                        return a.Index.CompareTo(b.Index);
-                    });
                     //Remove in reverse order
-                    for (int i = remove.Count - 1; i >= 0; i--)
+                    foreach(var r in remove)
                     {
-                        switch (_style.StyleType)
-                        {
-                            case StyleType.Point:
-                                {
-                                    var pts = ((IPointVectorStyle)_style);
-                                    var pr = pts.GetRuleAt(remove[i].Index);
-                                    pts.RemoveRule(pr);
-                                }
-                                break;
-                            case StyleType.Line:
-                                {
-                                    var lts = ((ILineVectorStyle)_style);
-                                    var lr = lts.GetRuleAt(remove[i].Index);
-                                    lts.RemoveRule(lr);
-                                }
-                                break;
-                            case StyleType.Area:
-                                {
-                                    var ats = ((IAreaVectorStyle)_style);
-                                    var ar = ats.GetRuleAt(remove[i].Index);
-                                    ats.RemoveRule(ar);
-                                }
-                                break;
-                            case StyleType.Composite:
-                                {
-                                    var cts = ((ICompositeTypeStyle)_style);
-                                    var cr = cts.GetRuleAt(remove[i].Index);
-                                    cts.RemoveCompositeRule(cr);
-                                }
-                                break;
-                        }
+                        _rules.Remove(r);
                     }
                 }
                 finally 
                 {
-                    //TODO: Yes, we're going thermonuclear, simply because the RuleModel's indexes may be out of sync as a result
-                    //of removing rules, so we have to be sure these indexes are correct
-                    ReSyncRules(_style);
+                    //Yes, we're going thermonuclear, simply because the BindingList's ordering may be out of sync with the underlying
+                    //model as a result of removing rules. Since the BindingList is currently the point of truth (we just made changes to it), 
+                    //the underlying model has to be updated to match
+                    ReSyncBindingListToRules(_style);
+                    _edSvc.SyncSessionCopy();
                     _init = false;
                     GenerateStylePreviewsForVisibleRows(false);
                     _edSvc.HasChanged();
@@ -778,17 +817,21 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             }
         }
 
-        private void grdRules_Scroll(object sender, ScrollEventArgs e)
-        {
-            if (btnAutoRefresh.Checked)
-            {
-                GenerateStylePreviewsForVisibleRows(true);
-            }
-        }
-
         private void grdRules_SelectionChanged(object sender, EventArgs e)
         {
             btnDeleteRule.Enabled = (grdRules.SelectedRows.Count > 0);
+            if (grdRules.SelectedRows.Count == 1)
+            {
+                btnUp.Enabled = grdRules.SelectedRows[0].Index > 0;
+                btnDown.Enabled = grdRules.SelectedRows[0].Index < grdRules.Rows.Count - 1;
+                btnDuplicateRule.Enabled = true;
+            }
+            else
+            {
+                btnUp.Enabled =
+                    btnDown.Enabled =
+                        btnDuplicateRule.Enabled = false;
+            }
         }
 
         private void btnCreateTheme_Click(object sender, EventArgs e)
@@ -799,7 +842,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 try
                 {
                     _init = true;
-                    ReSyncRules(_style);
+                    ReSyncRulesToBindingList(_style);
                     CheckThemeExplodeStatus();
                     _edSvc.SyncSessionCopy();
                     GenerateStylePreviewsForVisibleRows(false);
@@ -873,6 +916,55 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             var pts = _style as IPointVectorStyle;
             if (pts != null)
                 pts.AllowOverpost = btnAllowOverpost.Checked;
+        }
+
+        private void Swap<T>(BindingList<T> list, int first, int second)
+        {
+            T temp = list[first];
+            list[first] = list[second];
+            list[second] = temp;
+        }
+
+        private void btnUp_Click(object sender, EventArgs e)
+        {
+            if (grdRules.SelectedRows.Count == 1)
+            {
+                int first = grdRules.SelectedRows[0].Index - 1;
+                int second = first + 1;
+                IRuleModel rfirst = (IRuleModel)_rules[first];
+                IRuleModel rsecond = (IRuleModel)_rules[second];
+                _rules[first] = _rules[second];
+                _rules[second] = rfirst;
+                grdRules.Rows[first].Selected = true;
+                grdRules.Rows[second].Selected = false;
+                rfirst.SwapIndicesWith(rsecond);
+                ReSyncBindingListToRules(_style);
+            }
+        }
+
+        private void btnDown_Click(object sender, EventArgs e)
+        {
+            if (grdRules.SelectedRows.Count == 1)
+            {
+                int first = grdRules.SelectedRows[0].Index;
+                int second = first + 1;
+                IRuleModel rfirst = (IRuleModel)_rules[first];
+                IRuleModel rsecond = (IRuleModel)_rules[second];
+                _rules[first] = _rules[second];
+                _rules[second] = rfirst;
+                grdRules.Rows[first].Selected = false;
+                grdRules.Rows[second].Selected = true;
+                rfirst.SwapIndicesWith(rsecond);
+                ReSyncBindingListToRules(_style);
+            }
+        }
+
+        private void btnDuplicateRule_Click(object sender, EventArgs e)
+        {
+            if (grdRules.SelectedRows.Count == 1)
+            {
+
+            }
         }
     }
 }
