@@ -201,9 +201,14 @@ namespace Maestro.MapViewer
 
         private void bgLegendUpdate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            //Whatever's housing this component has already bailed so let's bail too
+            if (trvLegend.IsDisposed)
+                return;
+
             this.IsBusy = bgLegendUpdate.IsBusy;
             var nodes = e.Result as TreeNode[];
             trvLegend.BeginUpdate();
+
             ClearNodes(trvLegend.Nodes);
             if (nodes != null)
             {
