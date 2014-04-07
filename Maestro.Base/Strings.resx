@@ -992,4 +992,7 @@ Error message: {0}</value>
   <data name="SiteExplorer_GetLayerSpatialContext" xml:space="preserve">
     <value>Get Layer's Spatial Context</value>
   </data>
+  <data name="SiteExplorer_SelectedItem_ExtractImageSymbols" xml:space="preserve">
+    <value>Extract symbols to Symbol Definitions</value>
+  </data>
 </root>

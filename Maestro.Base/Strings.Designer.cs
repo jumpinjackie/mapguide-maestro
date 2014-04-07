@@ -2042,6 +2042,15 @@ namespace Maestro.Base {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extract symbols to Symbol Definitions.
+        /// </summary>
+        internal static string SiteExplorer_SelectedItem_ExtractImageSymbols {
+            get {
+                return ResourceManager.GetString("SiteExplorer_SelectedItem_ExtractImageSymbols", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open.
         /// </summary>
         internal static string SiteExplorer_SelectedItem_Open {

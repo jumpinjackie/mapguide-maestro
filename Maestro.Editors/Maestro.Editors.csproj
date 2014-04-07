@@ -1054,6 +1054,12 @@
     <Compile Include="SymbolDefinition\CompoundSymbolDefinitionEditorCtrl.Designer.cs">
       <DependentUpon>CompoundSymbolDefinitionEditorCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="SymbolDefinition\ExtractSymbolLibraryDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SymbolDefinition\ExtractSymbolLibraryDialog.Designer.cs">
+      <DependentUpon>ExtractSymbolLibraryDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SymbolDefinition\GeneralSettingsCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1758,6 +1764,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SymbolDefinition\CompoundSymbolDefinitionEditorCtrl.resx">
       <DependentUpon>CompoundSymbolDefinitionEditorCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SymbolDefinition\ExtractSymbolLibraryDialog.resx">
+      <DependentUpon>ExtractSymbolLibraryDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SymbolDefinition\GeneralSettingsCtrl.resx">
       <DependentUpon>GeneralSettingsCtrl.cs</DependentUpon>

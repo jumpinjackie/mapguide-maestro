@@ -611,6 +611,11 @@
             <MenuItem id="CompileDependencyList"
                       label="${res:SiteExplorer_SelectedItem_CompileDependencyList}"
                       class="Maestro.Base.Commands.SiteExplorer.CompileFullDependencyListCommand" />
+            <Condition action="Disable" name="ResourceType" types="SymbolLibrary">
+                <MenuItem id="ExtractImageSymbols"
+                          label="${res:SiteExplorer_SelectedItem_ExtractImageSymbols}"
+                          class="Maestro.Base.Commands.SiteExplorer.ExtractSymbolsCommand" />
+            </Condition>
             <MenuItem type="Separator" />
             <MenuItem id="Properties"
                       label="${res:SiteExplorer_SelectedItem_Properties}"
