@@ -562,6 +562,9 @@
     <Content Include="UserTestData\1896.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="UserTestData\TestDuplicateLayerIds.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="UserTestData\GeoRestConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

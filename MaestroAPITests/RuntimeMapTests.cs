@@ -102,6 +102,7 @@ namespace MaestroAPITests
 
             resSvc.SetResourceXmlData("Library://UnitTests/Maps/Sheboygan.MapDefinition", File.OpenRead("TestData/MappingService/UT_Sheboygan.mdf"));
             resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganTiled.MapDefinition", File.OpenRead("UserTestData/TestTiledMap.xml"));
+            resSvc.SetResourceXmlData("Library://UnitTests/Maps/DuplicateLayerIds.MapDefinition", File.OpenRead("UserTestData/TestDuplicateLayerIds.xml"));
 
             resSvc.SetResourceXmlData("Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition", File.OpenRead("TestData/MappingService/UT_HydrographicPolygons.ldf"));
             resSvc.SetResourceXmlData("Library://UnitTests/Layers/Rail.LayerDefinition", File.OpenRead("TestData/MappingService/UT_Rail.ldf"));
@@ -1129,6 +1130,22 @@ namespace MaestroAPITests
             Assert.IsTrue(insertCalled);
         }
 
+        public virtual void TestCaseDuplicateLayerIds()
+        {
+            try
+            {
+                IServerConnection conn = CreateTestConnection();
+                IMappingService mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+                string mapdefinition = "Library://UnitTests/Maps/DuplicateLayerIds.MapDefinition";
+                IMapDefinition mdef = (IMapDefinition)conn.ResourceService.GetResource(mapdefinition);
+                RuntimeMap rtm = mapSvc.CreateMap(mdef); // Create new runtime map
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.ToString());
+            }
+        }
+
         public virtual void TestLargeMapCreatePerformance()
         {
             TestMapCreate(50, 10);
@@ -1300,6 +1317,12 @@ namespace MaestroAPITests
         public override void TestMapAddDwfLayer()
         {
             base.TestMapAddDwfLayer();
+        }
+
+        [Test]
+        public override void TestCaseDuplicateLayerIds()
+        {
+            base.TestCaseDuplicateLayerIds();
         }
 
         [Test]
@@ -1684,6 +1707,12 @@ namespace MaestroAPITests
         {
             base.TestMapAddDwfLayer();
         }
+
+        [Test]
+        public override void TestCaseDuplicateLayerIds()
+        {
+            base.TestCaseDuplicateLayerIds();
+        }
     }
 
     [TestFixture]
@@ -1781,6 +1810,12 @@ namespace MaestroAPITests
         public override void TestMapManipulation3()
         {
             base.TestMapManipulation3();
+        }
+
+        [Test]
+        public override void TestCaseDuplicateLayerIds()
+        {
+            base.TestCaseDuplicateLayerIds();
         }
 
         /*

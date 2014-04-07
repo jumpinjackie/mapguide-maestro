@@ -19,19 +19,17 @@
 #endregion
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.ObjectModels.MapDefinition;
-using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.MaestroAPI.Serialization;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using System.ComponentModel;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System.Diagnostics;
-using OSGeo.MapGuide.MaestroAPI.Commands;
-using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using System.Drawing;
+using System.Linq;
+using OSGeo.MapGuide.MaestroAPI.Commands;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI.Serialization;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
@@ -282,7 +280,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             if (_getRes != null)
             {
                 Debug.WriteLine("[RuntimeMap.ctor]: Batching layer requests"); //NOXLATE
-                var res = _getRes.Execute(GetLayerIds(mdf));
+                var res = _getRes.Execute(GetLayerIds(mdf).Distinct());
                 //Pre-populate layer def cache so GetLayerDefinition() returns these
                 //instead of making a new request
                 foreach (var key in res.Keys)
