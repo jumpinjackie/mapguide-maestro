@@ -47,7 +47,14 @@ namespace MaestroAPITests
             }
             else
             {
-                SetupTestData();
+                try
+                {
+                    SetupTestData();
+                }
+                catch (Exception ex)
+                {
+                    Assert.Fail(ex.ToString());
+                }
             }
         }
 
@@ -571,7 +578,7 @@ namespace MaestroAPITests
         public virtual void TestSchemaMapping()
         {
             var conn = CreateTestConnection();
-            var doc1 = conn.FeatureService.GetSchemaMapping("OSGeo.WMS", "FeatureServer=http://wms.jpl.nasa.gov/wms.cgi");
+            var doc1 = conn.FeatureService.GetSchemaMapping("OSGeo.WMS", "FeatureServer=http://mapconnect.ga.gov.au/wmsconnector/com.esri.wms.Esrimap?Servicename=GDA94_MapConnect_SDE_250kmap_WMS");
             Assert.NotNull(doc1);
             Assert.True(doc1 is WmsConfigurationDocument);
         }
