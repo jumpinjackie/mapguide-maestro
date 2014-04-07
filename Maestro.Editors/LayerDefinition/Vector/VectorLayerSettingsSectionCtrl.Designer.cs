@@ -125,12 +125,14 @@
             resources.ApplyResources(this.txtGeometry, "txtGeometry");
             this.txtGeometry.Name = "txtGeometry";
             this.txtGeometry.ReadOnly = true;
+            this.txtGeometry.TextChanged += new System.EventHandler(this.txtGeometry_TextChanged);
             // 
             // txtFeatureClass
             // 
             resources.ApplyResources(this.txtFeatureClass, "txtFeatureClass");
             this.txtFeatureClass.Name = "txtFeatureClass";
             this.txtFeatureClass.ReadOnly = true;
+            this.txtFeatureClass.TextChanged += new System.EventHandler(this.txtFeatureClass_TextChanged);
             // 
             // grpLayerSettings
             // 

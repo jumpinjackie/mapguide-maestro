@@ -64,26 +64,17 @@ namespace Maestro.Editors.LayerDefinition
 
         protected override void UnsubscribeEventHandlers()
         {
-            //if (_props != null)
-            //    _props.ListChanged -= OnPropertyListChanged;
-
             if (_vl != null)
                 _vl.PropertyChanged -= OnVectorLayerPropertyChanged;
 
             base.UnsubscribeEventHandlers();
         }
 
-        //void OnPropertyListChanged(object sender, ListChangedEventArgs e)
-        //{
-        //    OnResourceChanged();
-        //}
-
         void OnVectorLayerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             //Feature Source changed 
             if (e.PropertyName == "ResourceId") //NOXLATE
             {
-                _vl.RemoveAllScaleRanges();
                 PopulatePropertyList();
             }
         }

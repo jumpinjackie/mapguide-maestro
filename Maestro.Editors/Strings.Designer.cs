@@ -1508,6 +1508,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have changed the Feature Class for this layer. Styles made for the previous Feature Class may no longer be applicable to this Feature Class. You should review such style settings (eg. Settings involving FDO expressions) to see if anything needs to be changed..
+        /// </summary>
+        internal static string LayerChangedFeatureClass {
+            get {
+                return ResourceManager.GetString("LayerChangedFeatureClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Layer Group ({0}) successfully converted to Base Layer Group ({1}).
         /// </summary>
         internal static string LayerGroupConvertedToBaseLayerGroup {

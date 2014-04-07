@@ -64,10 +64,16 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 _vl = res.SubLayer as IVectorLayerDefinition;
                 Debug.Assert(_vl != null);
 
-                TextBoxBinder.BindText(txtFeatureSource, _vl, "ResourceId");
+                //TextBoxBinder.BindText(txtFeatureSource, _vl, "ResourceId");
+                //TextBoxBinder.BindText(txtFeatureClass, _vl, "FeatureName");
+                //TextBoxBinder.BindText(txtGeometry, _vl, "Geometry");
+                txtFeatureClass.Text = _vl.FeatureName;
+                txtGeometry.Text = _vl.Geometry;
+                if (string.IsNullOrEmpty(txtFeatureClass.Text) || string.IsNullOrEmpty(txtGeometry.Text))
+                    TryFillUIFromNewFeatureSource(_vl.ResourceId);
+                else
+                    txtFeatureSource.Text = _vl.ResourceId;
 
-                TextBoxBinder.BindText(txtFeatureClass, _vl, "FeatureName");
-                TextBoxBinder.BindText(txtGeometry, _vl, "Geometry");
                 //TextBoxBinder.BindText(txtFilter, _vl, "Filter");
                 txtFilter.Text = _vl.Filter;
 
@@ -120,6 +126,9 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
         private void txtFeatureSource_TextChanged(object sender, EventArgs e)
         {
+            if (_init)
+                return;
+
             if (string.IsNullOrEmpty(txtFeatureSource.Text))
                 return;
 
@@ -137,6 +146,18 @@ namespace Maestro.Editors.LayerDefinition.Vector
             }
         }
 
+        private void txtFeatureClass_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFeatureClass.Text != _vl.FeatureName)
+                _vl.FeatureName = txtFeatureClass.Text;
+        }
+
+        private void txtGeometry_TextChanged(object sender, EventArgs e)
+        {
+            if (txtGeometry.Text != _vl.Geometry)
+                _vl.Geometry = txtGeometry.Text;
+        }
+
         internal event EventHandler FeatureClassChanged;
 
         private void OnFeatureClassChanged()
@@ -144,6 +165,12 @@ namespace Maestro.Editors.LayerDefinition.Vector
             var handler = this.FeatureClassChanged;
             if (handler != null)
                 handler(this, EventArgs.Empty);
+
+            if (_lastClassName != _selectedClass.QualifiedName && _lastClassName != null)
+            {
+                MessageBox.Show(Strings.LayerChangedFeatureClass);
+            }
+            _lastClassName = _selectedClass.QualifiedName;
         }
 
         private void btnBrowseFeatureSource_Click(object sender, EventArgs e)
@@ -153,11 +180,43 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
                     LastSelectedFolder.FolderId = picker.SelectedFolder;
-                    txtFeatureSource.Text = picker.ResourceID;
-                    //Invalidate
-                    _cachedFs = null;
-                    OnResourceChanged(); //Maybe same feature class, different feature source
+                    string fsId = picker.ResourceID;
+                    if (fsId != txtFeatureSource.Text)
+                    {
+                        TryFillUIFromNewFeatureSource(fsId);
+                        OnResourceChanged(); //Maybe same feature class, different feature source
+                    }
                 }
+            }
+        }
+
+        private void TryFillUIFromNewFeatureSource(string fsId)
+        {
+            try
+            {
+                _init = true;
+                //Before setting the Feature Source, invalidate related parts too
+                txtFeatureClass.Text = string.Empty;
+                txtGeometry.Text = string.Empty;
+
+                //But if this is a single-class FS, let's try to auto-fill this stuff
+                string[] names = _edsvc.FeatureService.GetClassNames(fsId, null);
+                if (names.Length == 1)
+                    txtFeatureClass.Text = names[0];
+
+                txtFeatureSource.Text = fsId;
+                _vl.ResourceId = fsId;
+                if (names.Length == 1)
+                {
+                    ClassDefinition clsDef = _edsvc.FeatureService.GetClassDefinition(fsId, names[0]);
+                    SetFeatureClass(clsDef);
+                }
+            }
+            finally
+            {
+                //Invalidate
+                _cachedFs = null;
+                _init = false;
             }
         }
 
@@ -235,6 +294,8 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 SetFeatureClass(cls);
             }
         }
+
+        private string _lastClassName = null;
 
         private void SetFeatureClass(ClassDefinition item)
         {

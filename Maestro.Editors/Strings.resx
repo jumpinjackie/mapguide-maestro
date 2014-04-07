@@ -1569,4 +1569,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="CompositeThemeRequiresFirstRuleAsTemplate" xml:space="preserve">
     <value>Generating a theme for a composite style, requires a composite rule</value>
   </data>
+  <data name="LayerChangedFeatureClass" xml:space="preserve">
+    <value>You have changed the Feature Class for this layer. Styles made for the previous Feature Class may no longer be applicable to this Feature Class. You should review such style settings (eg. Settings involving FDO expressions) to see if anything needs to be changed.</value>
+  </data>
 </root>
