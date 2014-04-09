@@ -64,7 +64,7 @@ namespace Maestro.Editors.LayerDefinition.Raster
             TextBoxBinder.BindText(txtFeatureSource, _rl, "ResourceId"); //NOXLATE
             TextBoxBinder.BindText(txtFeatureClass, _rl, "FeatureName"); //NOXLATE
             TextBoxBinder.BindText(txtGeometry, _rl, "Geometry"); //NOXLATE
-            _rl.PropertyChanged += OnRasterLayerPropertyChanged;
+            _rl.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnRasterLayerPropertyChanged, (eh) => _rl.PropertyChanged -= eh);
         }
 
         void OnRasterLayerPropertyChanged(object sender, PropertyChangedEventArgs e)

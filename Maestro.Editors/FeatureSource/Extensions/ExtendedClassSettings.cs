@@ -49,13 +49,18 @@ namespace Maestro.Editors.FeatureSource.Extensions
             _ext = ext;
             var names = new List<string>(qualifiedClassNames);
             cmbBaseClass.DataSource = names;
-            ext.PropertyChanged += (sender, e) => { OnResourceChanged(); };
+            ext.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnExtensionPropertyChanged, (eh) => ext.PropertyChanged -= eh);
 
             //HACK
             if (string.IsNullOrEmpty(_ext.FeatureClass))
                 _ext.FeatureClass = names[0];
 
             ComboBoxBinder.BindSelectedIndexChanged(cmbBaseClass, "SelectedItem", ext, "FeatureClass"); //NOXLATE
+        }
+
+        void OnExtensionPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            OnResourceChanged();
         }
 
         public void Bind(IEditorService service)

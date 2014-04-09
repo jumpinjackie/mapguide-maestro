@@ -27,6 +27,7 @@ using System.Windows.Forms;
 using Maestro.Shared.UI;
 using Maestro.Editors.Common;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.LoadProcedure
 {
@@ -58,7 +59,7 @@ namespace Maestro.Editors.LoadProcedure
             TextBoxBinder.BindText(txtLayerRoot, _fProc, "LayersPath");
             TextBoxBinder.BindText(txtLayerFolderName, _fProc, "LayersFolder");
 
-            _fProc.PropertyChanged += OnLoadProcedurePropertyChanged;
+            _fProc.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnLoadProcedurePropertyChanged, (eh) => _fProc.PropertyChanged -= eh);
         }
 
         protected override void UnsubscribeEventHandlers()

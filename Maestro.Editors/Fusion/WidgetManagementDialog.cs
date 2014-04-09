@@ -26,6 +26,7 @@ using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using System.Xml;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.Fusion
 {
@@ -106,11 +107,12 @@ namespace Maestro.Editors.Fusion
 
             item.IsDockable = _context.IsWidgetDockable(widget.Type);
 
-            widget.PropertyChanged += (s, e) =>
+            PropertyChangedEventHandler widgetChange = (s, e) =>
             {
                 if (e.PropertyName == "Name") //NOXLATE
                     item.Name = widget.Name;
             };
+            widget.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(widgetChange, (eh) => widget.PropertyChanged -= eh);
 
             _items.Add(item);
         }

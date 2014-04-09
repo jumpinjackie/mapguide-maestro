@@ -48,7 +48,7 @@ namespace Maestro.Editors.MapDefinition
         public LayerPropertiesCtrl(IMapLayer layer, IResourceService resSvc, IEditorService edSvc)
             : this()
         {
-            layer.PropertyChanged += new PropertyChangedEventHandler(OnLayerChanged);
+            layer.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnLayerChanged, (eh) => layer.PropertyChanged -= eh);
             _resSvc = resSvc;
             _edSvc = edSvc;
 
@@ -60,7 +60,7 @@ namespace Maestro.Editors.MapDefinition
         public LayerPropertiesCtrl(IBaseMapLayer layer, IResourceService resSvc, IEditorService edSvc)
             : this()
         {
-            layer.PropertyChanged += new PropertyChangedEventHandler(OnLayerChanged);
+            layer.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnLayerChanged, (eh) => layer.PropertyChanged -= eh);
             _resSvc = resSvc;
             _edSvc = edSvc;
 

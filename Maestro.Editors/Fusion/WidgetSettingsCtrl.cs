@@ -220,7 +220,7 @@ namespace Maestro.Editors.Fusion
                         node.Text = ((IFlyoutItem)item).Label;
                         node.Tag = item;
 
-                        item.PropertyChanged += (s, evt) =>
+                        PropertyChangedEventHandler itemChange = (s, evt) =>
                         {
                             if (evt.PropertyName == "Label") //NOXLATE
                             {
@@ -228,6 +228,7 @@ namespace Maestro.Editors.Fusion
                                 OnResourceChanged();
                             }
                         };
+                        item.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(itemChange, (eh) => item.PropertyChanged -= eh);
                     }
                     break;
                 case UiItemFunctionType.Separator:
@@ -243,7 +244,7 @@ namespace Maestro.Editors.Fusion
                         node.Text = ((IWidgetItem)item).Widget;
                         node.Tag = item;
 
-                        item.PropertyChanged += (s, evt) =>
+                        PropertyChangedEventHandler itemChange = (s, evt) =>
                         {
                             if (evt.PropertyName == "Widget") //NOXLATE
                             {
@@ -251,6 +252,7 @@ namespace Maestro.Editors.Fusion
                                 OnResourceChanged();
                             }
                         };
+                        item.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(itemChange, (eh) => item.PropertyChanged -= eh);
                     }
                     break;
             }

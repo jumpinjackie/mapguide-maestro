@@ -53,7 +53,7 @@ namespace Maestro.Base.Editor
         internal void ReReadSessionResource()
         {
             _editCopy = _conn.ResourceService.GetResource(this.EditedResourceID);
-            _editCopy.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(OnResourcePropertyChanged);
+            _editCopy.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnResourcePropertyChanged, (eh) => _editCopy.PropertyChanged -= eh);
         }
 
         public override void OpenUrl(string url)

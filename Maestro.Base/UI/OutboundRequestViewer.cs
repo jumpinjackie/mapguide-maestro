@@ -46,7 +46,7 @@ namespace Maestro.Base.UI
                 var connMgr = ServiceRegistry.GetService<ServerConnectionManager>();
                 connMgr.ConnectionAdded += (s, args) =>
                 {
-                    var conn = connMgr.GetConnection(args);
+                    var conn = connMgr.GetConnection(args.ConnectionName);
                     conn.RequestDispatched += OnRequestDispatched;
                 };
                 connMgr.ConnectionRemoving += (s, ce) =>

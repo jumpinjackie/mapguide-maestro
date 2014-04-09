@@ -56,10 +56,8 @@ namespace Maestro.Editors.LayerDefinition
             }
 
             _props = new List<INameStringPair>(_vl.PropertyMapping);
-            //Modifying the visibility constitutes a change in the resource
-            //_props.ListChanged += OnPropertyListChanged;
             PopulatePropertyList();
-            _vl.PropertyChanged += OnVectorLayerPropertyChanged;
+            _vl.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnVectorLayerPropertyChanged, (eh) => _vl.PropertyChanged -= eh);
         }
 
         protected override void UnsubscribeEventHandlers()

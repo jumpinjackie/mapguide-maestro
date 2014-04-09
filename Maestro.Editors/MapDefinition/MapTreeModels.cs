@@ -24,6 +24,7 @@ using Aga.Controls.Tree;
 using System.Drawing;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System.ComponentModel;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.MapDefinition
 {
@@ -56,7 +57,7 @@ namespace Maestro.Editors.MapDefinition
         public LayerItem(IMapLayer layer)
             : base(layer.Name, Properties.Resources.layer, layer)
         {
-            layer.PropertyChanged += OnPropertyChanged;
+            layer.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnPropertyChanged, (eh) => layer.PropertyChanged -= eh);
         }
 
         void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -73,7 +74,7 @@ namespace Maestro.Editors.MapDefinition
         public GroupItem(IMapLayerGroup grp)
             : base(grp.Name, Properties.Resources.folder_horizontal, grp)
         {
-            grp.PropertyChanged += OnPropertyChanged;
+            grp.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnPropertyChanged, (eh) => grp.PropertyChanged -= eh);
         }
 
         void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -90,7 +91,7 @@ namespace Maestro.Editors.MapDefinition
         public BaseLayerItem(IBaseMapLayer layer, IBaseMapGroup parent)
             : base(layer.Name, Properties.Resources.layer, layer)
         {
-            layer.PropertyChanged += OnPropertyChanged;
+            layer.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnPropertyChanged, (eh) => layer.PropertyChanged -= eh);
             this.Parent = parent;
         }
 
@@ -114,7 +115,7 @@ namespace Maestro.Editors.MapDefinition
         public BaseLayerGroupItem(IBaseMapGroup group)
             : base(group.Name, Properties.Resources.folder_horizontal, group)
         {
-            group.PropertyChanged += OnPropertyChanged;
+            group.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnPropertyChanged, (eh) => group.PropertyChanged -= eh); ;
         }
 
         void OnPropertyChanged(object sender, PropertyChangedEventArgs e)

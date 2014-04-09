@@ -66,7 +66,8 @@ namespace Maestro.Editors.WebLayout.Commands
             _cmd = searchCommandType;
 
             _wl = (IWebLayout)_edsvc.GetEditedResource();
-            _wl.Map.PropertyChanged += OnWebLayoutPropertyChanged;
+            var wlMap = _wl.Map;
+            wlMap.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnWebLayoutPropertyChanged, (eh) => wlMap.PropertyChanged -= eh);
 
             LoadLayers();
 

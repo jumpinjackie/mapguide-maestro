@@ -26,6 +26,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using Maestro.Base.Editor;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using Maestro.Shared.UI;
+using System.ComponentModel;
 
 namespace Maestro.Base.Services
 {
@@ -190,7 +191,7 @@ namespace Maestro.Base.Services
                 var editorSvc = new ResourceEditorService(res.ResourceID, conn, launcher, siteExp, this);
                 ed.EditorService = editorSvc;
                 _openItems[key] = ed;
-                ed.ViewContentClosing += (sender, e) =>
+                CancelEventHandler vcClosing = (sender, e) =>
                 {
                     if (ed.IsDirty && !ed.DiscardChangesOnClose)
                     {
@@ -213,13 +214,15 @@ namespace Maestro.Base.Services
                         }
                     }
                 };
-                ed.ViewContentClosed += (sender, e) =>
+                ed.ViewContentClosing += WeakEventHandler.Wrap<CancelEventHandler>(vcClosing, (eh) => ed.ViewContentClosing -= eh);
+                EventHandler vcClosed = (sender, e) =>
                 {
                     //Recompute the resource key as that may have changed by a save as operation
                     _openItems.Remove(ComputeResourceKey(((EditorContentBase)sender).EditorService.ResourceID, conn));
                     siteExp.FlagNode(conn.DisplayName, ed.EditorService.ResourceID, NodeFlagAction.None);
                 };
-                ed.EditorService.Saved += (sender, e) =>
+                ed.ViewContentClosed += WeakEventHandler.Wrap(vcClosed, (eh) => ed.ViewContentClosed -= eh);
+                EventHandler edSaved = (sender, e) =>
                 {
                     //If saved from new resource, the resource id would be session based
                     //So we need to update this to the new resource id as defined by the
@@ -231,10 +234,12 @@ namespace Maestro.Base.Services
                         _openItems[ComputeResourceKey(ed.EditorService.ResourceID, conn)] = ed2;
                     }
                 };
-                ed.DirtyStateChanged += (sender, e) =>
+                ed.EditorService.Saved += WeakEventHandler.Wrap(edSaved, (eh) => ed.EditorService.Saved -= eh);
+                EventHandler dirty = (sender, e) =>
                 {
                     siteExp.FlagNode(conn.DisplayName, res.ResourceID, ed.IsDirty ? NodeFlagAction.HighlightDirty : NodeFlagAction.HighlightOpen);
                 };
+                ed.DirtyStateChanged += WeakEventHandler.Wrap(dirty, (eh) => ed.DirtyStateChanged -= eh);
             }
             _openItems[key].Activate();
             siteExp.FlagNode(conn.DisplayName, res.ResourceID, _openItems[key].IsDirty ? NodeFlagAction.HighlightDirty : NodeFlagAction.HighlightOpen);

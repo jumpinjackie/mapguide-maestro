@@ -97,12 +97,22 @@ namespace Maestro.Base.UI
         event RepositoryItemEventHandler ItemsSelected;
     }
 
+    public class RepositoryItemEventArgs : EventArgs
+    {
+        public RepositoryItemEventArgs(RepositoryItem[] items)
+        {
+            this.Items = items;
+        }
+
+        public RepositoryItem[] Items { get; private set; }
+    }
+
     /// <summary>
     /// Defines a method to handle item selection in the Site Explorer
     /// </summary>
     /// <param name="sender"></param>
-    /// <param name="items"></param>
-    public delegate void RepositoryItemEventHandler(object sender, RepositoryItem[] items);
+    /// <param name="e"></param>
+    public delegate void RepositoryItemEventHandler(object sender, RepositoryItemEventArgs e);
 
     /// <summary>
     /// Defines a set of possible actions that can be performed on nodes in the Site Explorer

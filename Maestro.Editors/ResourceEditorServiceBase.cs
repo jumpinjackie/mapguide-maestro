@@ -122,7 +122,7 @@ namespace Maestro.Editors
                 _conn.ResourceService.CopyResource(this.ResourceID, copy, true);
 
                 _editCopy = _conn.ResourceService.GetResource(copy);
-                _editCopy.PropertyChanged += new System.ComponentModel.PropertyChangedEventHandler(OnResourcePropertyChanged);
+                _editCopy.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnResourcePropertyChanged, (eh) => _editCopy.PropertyChanged -= eh);
             }
             return _editCopy;
         }

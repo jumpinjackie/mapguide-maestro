@@ -27,6 +27,7 @@ using System.Windows.Forms;
 using Aga.Controls.Tree;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System.Diagnostics;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.WebLayout
 {
@@ -155,7 +156,7 @@ namespace Maestro.Editors.WebLayout
                     mi.Text = cmd.Name;
             };
             _customCommandListeners[mi] = handler;
-            cmd.PropertyChanged += handler;
+            cmd.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(handler, (eh) => cmd.PropertyChanged -= eh);
             mi.Tag = cmd;
             tsi.DropDown.Items.Add(mi);
         }
@@ -210,7 +211,7 @@ namespace Maestro.Editors.WebLayout
                         trvMenuItems.Refresh();
                     }
                 };
-                cmd.PropertyChanged += handler;
+                cmd.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(handler, (eh) => cmd.PropertyChanged -= eh);
 
                 if (trvMenuItems.SelectedNode != null)
                 {

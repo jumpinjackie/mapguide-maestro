@@ -139,7 +139,7 @@ namespace Maestro.Shared.UI
                         cnt.Activate();
                         var h = this.ViewActivated;
                         if (h != null)
-                            h(this, cnt);
+                            h(this, new ViewEventArgs(cnt));
                         //wb.CheckContainerStatus();
                         return;
                     }
@@ -211,7 +211,7 @@ namespace Maestro.Shared.UI
                         cnt.Activate();
                         var h = this.ViewActivated;
                         if (h != null)
-                            h(this, cnt);
+                            h(this, new ViewEventArgs(cnt));
                         //wb.CheckContainerStatus();
                         return (T)cnt;
                     }
@@ -230,10 +230,20 @@ namespace Maestro.Shared.UI
         }
     }
 
+    public class ViewEventArgs : EventArgs 
+    {
+        public ViewEventArgs(IViewContent content)
+        {
+            this.View = content;
+        }
+
+        public IViewContent View { get; private set; }
+    }
+
     /// <summary>
     /// 
     /// </summary>
     /// <param name="sender"></param>
-    /// <param name="content"></param>
-    public delegate void ViewEventHandler(object sender, IViewContent content);
+    /// <param name="e"></param>
+    public delegate void ViewEventHandler(object sender, ViewEventArgs e);
 }

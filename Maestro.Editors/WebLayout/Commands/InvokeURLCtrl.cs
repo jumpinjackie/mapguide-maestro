@@ -28,6 +28,7 @@ using OSGeo.MapGuide.ObjectModels.WebLayout;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using Maestro.Editors.Common;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.WebLayout.Commands
 {
@@ -69,7 +70,7 @@ namespace Maestro.Editors.WebLayout.Commands
             _params.AddingNew += OnAddingNew;
             lstLayers.DataSource = invokeUrlCommandType.LayerSet.Layer;
 
-            invokeUrlCommandType.PropertyChanged += OnCommandPropertyChanged;
+            invokeUrlCommandType.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnCommandPropertyChanged, (eh) => invokeUrlCommandType.PropertyChanged -= eh);
             _cmd = invokeUrlCommandType;
         }
 

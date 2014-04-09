@@ -100,13 +100,14 @@ namespace Maestro.Base.Editor
 
                 _svc = value;
                 _svc.PreviewLocale = PropertyService.Get(ConfigProperties.PreviewLocale, ConfigProperties.DefaultPreviewLocale);
-                _svc.DirtyStateChanged += OnDirtyStateChanged;
-                _svc.Saved += OnSaved;
-                _svc.BeforeSave += OnBeforeSave;
+                _svc.DirtyStateChanged += WeakEventHandler.Wrap(OnDirtyStateChanged, (eh) => _svc.DirtyStateChanged -= eh);
+                _svc.Saved += WeakEventHandler.Wrap(OnSaved, (eh) => _svc.Saved -= eh);
+                _svc.BeforeSave += WeakEventHandler.Wrap<CancelEventHandler>(OnBeforeSave, (eh) => _svc.BeforeSave -= eh);
 
                 {
                     var res = _svc.GetEditedResource();
-                    res.CurrentConnection.SessionIDChanged += OnSessionIdChanged;
+                    var conn = res.CurrentConnection;
+                    conn.SessionIDChanged += WeakEventHandler.Wrap(OnSessionIdChanged, (eh) => conn.SessionIDChanged -= eh);
                 }
 
                 UpdateTitle();

@@ -20,6 +20,7 @@
 using ICSharpCode.Core;
 using Maestro.Base.Editor;
 using Maestro.Base.Services;
+using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using System;
@@ -57,32 +58,32 @@ namespace Maestro.Base.UI
                                    ISiteExplorer siteExp)
         {
             _connMgr = connMgr;
-            _connMgr.ConnectionAdded += OnConnectionAdded;
-            _connMgr.ConnectionRemoved += OnConnectionRemoved;
+            _connMgr.ConnectionAdded += WeakEventHandler.Wrap<ServerConnectionEventHandler>(OnConnectionAdded, (eh) => _connMgr.ConnectionAdded -= eh);
+            _connMgr.ConnectionRemoved += WeakEventHandler.Wrap<ServerConnectionEventHandler>(OnConnectionRemoved, (eh) => _connMgr.ConnectionRemoved -= eh);
 
             _omgr = omgr;
             _viewMgr = viewMgr;
-            _viewMgr.ViewActivated += OnViewActivated;
+            _viewMgr.ViewActivated += WeakEventHandler.Wrap<Maestro.Shared.UI.ViewEventHandler>(OnViewActivated, (eh) => _viewMgr.ViewActivated -= eh);
 
             _siteExp = siteExp;
-            _siteExp.ItemsSelected += OnSiteExplorerItemsSelected;
+            _siteExp.ItemsSelected += WeakEventHandler.Wrap<RepositoryItemEventHandler>(OnSiteExplorerItemsSelected, (eh) => _siteExp.ItemsSelected -= eh);
 
             _strip = new ToolStrip();
-            _strip.Layout += OnToolStripLayout;
+            _strip.Layout += WeakEventHandler.Wrap<LayoutEventHandler>(OnToolStripLayout, (eh) => _strip.Layout -= eh);
             _strip.Stretch = true;
 
             _resIdLabel = new ToolStripLabel(Strings.Label_ResourceID);
             _cmbResourceId = new ToolStripComboBox();
             _cmbResourceId.AutoSize = false;
             _cmbResourceId.Width = 250;
-            _cmbResourceId.TextChanged += OnResourceIdChanged;
-            _cmbResourceId.KeyUp += OnResourceIdKeyUp;
+            _cmbResourceId.TextChanged += WeakEventHandler.Wrap(OnResourceIdChanged, (eh) => _cmbResourceId.TextChanged -= eh);
+            _cmbResourceId.KeyUp += WeakEventHandler.Wrap<KeyEventHandler>(OnResourceIdKeyUp, (eh) => _cmbResourceId.KeyUp -= eh);
 
             _atLabel = new ToolStripLabel("@"); //NOXLATE
             _cmbActiveConnections = new ToolStripComboBox();
             _cmbActiveConnections.AutoSize = false;
             _cmbActiveConnections.Width = 250;
-            _cmbActiveConnections.ComboBox.SelectedIndexChanged += OnActiveConnectionChanged;
+            _cmbActiveConnections.ComboBox.SelectedIndexChanged += WeakEventHandler.Wrap(OnActiveConnectionChanged, (eh) => _cmbActiveConnections.ComboBox.SelectedIndexChanged -= eh);
             _cmbActiveConnections.ComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
 
             _btnGo = new ToolStripButton(Strings.Label_Open);
@@ -90,14 +91,14 @@ namespace Maestro.Base.UI
             _btnGo.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
             _btnGo.TextImageRelation = TextImageRelation.TextBeforeImage;
             _btnGo.ToolTipText = Strings.Label_OpenResource;
-            _btnGo.Click += btnGo_Click;
+            _btnGo.Click += WeakEventHandler.Wrap(btnGo_Click, (eh) => _btnGo.Click -= eh);
 
             _btnOpenAsXml = new ToolStripButton(Strings.Label_OpenAsXml);
             _btnOpenAsXml.Image = Properties.Resources.arrow;
             _btnOpenAsXml.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
             _btnOpenAsXml.TextImageRelation = TextImageRelation.TextBeforeImage;
             _btnOpenAsXml.ToolTipText = Strings.Label_OpenResourceAsXml;
-            _btnOpenAsXml.Click += btnOpenAsXml_Click;
+            _btnOpenAsXml.Click += WeakEventHandler.Wrap(btnOpenAsXml_Click, (eh) => _btnOpenAsXml.Click -= eh);
 
             UpdateConnectionList();
             UpdateNavigationState();
@@ -113,25 +114,25 @@ namespace Maestro.Base.UI
             });
         }
 
-        void OnSiteExplorerItemsSelected(object sender, RepositoryItem[] items)
+        void OnSiteExplorerItemsSelected(object sender, RepositoryItemEventArgs e)
         {
-            if (items == null)
+            if (e.Items == null)
                 return;
 
-            if (items.Length != 1)
+            if (e.Items.Length != 1)
                 return;
 
-            var idx = _cmbActiveConnections.Items.IndexOf(items[0].ConnectionName);
+            var idx = _cmbActiveConnections.Items.IndexOf(e.Items[0].ConnectionName);
             if (idx >= 0)
             {
-                _cmbResourceId.Text = items[0].ResourceId;
+                _cmbResourceId.Text = e.Items[0].ResourceId;
                 _cmbActiveConnections.SelectedIndex = idx;
             }
         }
 
-        void OnViewActivated(object sender, Shared.UI.IViewContent content)
+        void OnViewActivated(object sender, ViewEventArgs e)
         {
-            var ed = content as IEditorViewContent;
+            var ed = e.View as IEditorViewContent;
             if (ed != null && !ed.IsNew)
             {
                 var conn = ed.Resource.CurrentConnection;
@@ -181,12 +182,12 @@ namespace Maestro.Base.UI
             _btnGo.Enabled = _btnOpenAsXml.Enabled = ResourceIdentifier.Validate(_cmbResourceId.Text) && !ResourceIdentifier.IsFolderResource(_cmbResourceId.Text);
         }
 
-        void OnConnectionRemoved(object sender, string name)
+        void OnConnectionRemoved(object sender, ServerConnectionEventArgs e)
         {
             UpdateConnectionList();
         }
 
-        void OnConnectionAdded(object sender, string name)
+        void OnConnectionAdded(object sender, ServerConnectionEventArgs e)
         {
             UpdateConnectionList();
         }

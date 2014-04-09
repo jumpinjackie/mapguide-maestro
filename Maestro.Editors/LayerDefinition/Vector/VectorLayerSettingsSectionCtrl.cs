@@ -85,7 +85,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 txtTooltip.Text = _vl.ToolTip;
 
                 //This is not the root object so no change listeners have been subscribed
-                _vl.PropertyChanged += OnVectorLayerPropertyChanged;
+                _vl.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnVectorLayerPropertyChanged, (eh) => _vl.PropertyChanged -= eh);
             }
             finally
             {

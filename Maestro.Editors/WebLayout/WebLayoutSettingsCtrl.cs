@@ -103,16 +103,24 @@ namespace Maestro.Editors.WebLayout
             TextBoxBinder.BindText(numInfoPaneWidth, _wl.InformationPane, "Width");
             TextBoxBinder.BindText(numTaskPaneWidth, _wl.TaskPane, "Width");
 
-            _wl.PropertyChanged += OnWebLayoutPropertyChanged;
-            _view.PropertyChanged += OnWebLayoutPropertyChanged;
-            _wl.Map.PropertyChanged += OnWebLayoutPropertyChanged;
-            _wl.ContextMenu.PropertyChanged += OnWebLayoutPropertyChanged;
-            _wl.InformationPane.PropertyChanged += OnWebLayoutPropertyChanged;
-            _wl.StatusBar.PropertyChanged += OnWebLayoutPropertyChanged;
-            _wl.TaskPane.PropertyChanged += OnWebLayoutPropertyChanged;
-            _wl.TaskPane.TaskBar.PropertyChanged += OnWebLayoutPropertyChanged;
-            _wl.ToolBar.PropertyChanged += OnWebLayoutPropertyChanged;
-            _wl.ZoomControl.PropertyChanged += OnWebLayoutPropertyChanged;
+            _wl.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnWebLayoutPropertyChanged, (eh) => _wl.PropertyChanged -= eh);
+            _view.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnWebLayoutPropertyChanged, (eh) => _view.PropertyChanged -= eh);
+            var wlMap = _wl.Map;
+            wlMap.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnWebLayoutPropertyChanged, (eh) => wlMap.PropertyChanged -= eh);
+            var ctx = _wl.ContextMenu;
+            ctx.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnWebLayoutPropertyChanged, (eh) => ctx.PropertyChanged -= eh);
+            var info = _wl.InformationPane;
+            info.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnWebLayoutPropertyChanged, (eh) => info.PropertyChanged -= eh);
+            var stat = _wl.StatusBar;
+            stat.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnWebLayoutPropertyChanged, (eh) => stat.PropertyChanged -= eh);
+            var tpane = _wl.TaskPane;
+            tpane.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnWebLayoutPropertyChanged, (eh) => tpane.PropertyChanged -= eh);
+            var tbar = tpane.TaskBar;
+            tbar.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnWebLayoutPropertyChanged, (eh) => tbar.PropertyChanged -= eh);
+            var toolbar = _wl.ToolBar;
+            toolbar.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnWebLayoutPropertyChanged, (eh) => toolbar.PropertyChanged -= eh);
+            var zoom = _wl.ZoomControl;
+            zoom.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnWebLayoutPropertyChanged, (eh) => zoom.PropertyChanged -= eh);
         }
 
         private void GeneratePreviewUrl()

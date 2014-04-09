@@ -28,6 +28,7 @@ using Maestro.Shared.UI;
 using System.Diagnostics;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using Maestro.Editors.Generic;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.LayerDefinition.Drawing
 {
@@ -102,7 +103,12 @@ namespace Maestro.Editors.LayerDefinition.Drawing
             TextBoxBinder.BindText(txtMaxScale, maxBinding);
 
             //This is not the root object so no change listeners have been subscribed
-            _dlayer.PropertyChanged += (sender, e) => { OnResourceChanged(); };
+            _dlayer.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnDrawingLayerPropertyChanged, (eh) => _dlayer.PropertyChanged -= eh);
+        }
+
+        void OnDrawingLayerPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            OnResourceChanged();
         }
 
         private void PopulateSheets()

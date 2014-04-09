@@ -26,6 +26,7 @@ using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Editors.MapDefinition
 {
@@ -51,7 +52,7 @@ namespace Maestro.Editors.MapDefinition
             {
                 _mdf = map;
                 _el = group;
-                group.PropertyChanged += new PropertyChangedEventHandler(OnGroupChanged);
+                group.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnGroupChanged, (eh) => group.PropertyChanged -= eh);
                 string currentName = group.Name;
                 txtName.Text = currentName;
                 //TextBoxBinder.BindText(txtName, group, "Name");
@@ -84,7 +85,7 @@ namespace Maestro.Editors.MapDefinition
             {
                 _mdf = map;
                 _el = group;
-                group.PropertyChanged += new PropertyChangedEventHandler(OnGroupChanged);
+                group.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnGroupChanged, (eh) => group.PropertyChanged -= eh);
 
                 txtName.Text = group.Name;
                 TextBoxBinder.BindText(txtLegendLabel, group, "LegendLabel");

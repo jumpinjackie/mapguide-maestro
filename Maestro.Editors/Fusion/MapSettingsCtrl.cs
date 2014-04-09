@@ -78,11 +78,12 @@ namespace Maestro.Editors.Fusion
             item.ImageIndex = 0;
             item.Text = item.Name = group.id;
             item.Tag = group;
-            group.PropertyChanged += (s, e) =>
+            PropertyChangedEventHandler groupChange = (s, e) =>
             {
                 if (e.PropertyName == "id") //NOXLATE
                     item.Text = group.id;
             };
+            group.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(groupChange, (eh) => group.PropertyChanged -= eh);
             lstMaps.Items.Add(item);
         }
 

@@ -108,11 +108,13 @@ namespace Maestro.Editors.SymbolDefinition
             {
                 var inline = (ISimpleSymbolInlineReference)symRef;
                 li.Text = inline.SimpleSymbolDefinition.Name;
-                inline.SimpleSymbolDefinition.PropertyChanged += (s, e) =>
+                PropertyChangedEventHandler symChange = (s, e) =>
                 {
                     if (e.PropertyName == "Name" && li != null)
                         li.Text = inline.SimpleSymbolDefinition.Name;
                 };
+                var simpleSym = inline.SimpleSymbolDefinition;
+                simpleSym.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(symChange, (eh) => simpleSym.PropertyChanged -= eh);
                 li.ImageIndex = 0;
                 li.Tag = symRef;
                 lstSymbols.Items.Add(li);

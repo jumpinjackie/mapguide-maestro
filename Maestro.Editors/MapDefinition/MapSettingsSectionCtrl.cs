@@ -86,7 +86,7 @@ namespace Maestro.Editors.MapDefinition
             {
                 _map.BackgroundColor = cmbBackgroundColor.CurrentColor;
             };
-            _map.PropertyChanged += (sender, e) =>
+            PropertyChangedEventHandler mapChanged = (sender, e) =>
             {
                 if (e.PropertyName == "BackgroundColor")
                 {
@@ -97,6 +97,7 @@ namespace Maestro.Editors.MapDefinition
                     UpdateExtentsFromMap();
                 }
             };
+            _map.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(mapChanged, (eh) => _map.PropertyChanged -= eh);
 
             txtLowerX.Text = _map.Extents.MinX.ToString(CultureInfo.InvariantCulture);
             txtLowerY.Text = _map.Extents.MinY.ToString(CultureInfo.InvariantCulture);
@@ -155,11 +156,13 @@ namespace Maestro.Editors.MapDefinition
                     _map.Extents.MaxY = d;
             };
 
-            _map.Extents.PropertyChanged += (sender, e) => 
+            PropertyChangedEventHandler extChange = (sender, e) => 
             {
                 UpdateExtentsFromMap();
                 OnResourceChanged(); 
             };
+            var ext = _map.Extents;
+            ext.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(extChange, (eh) => ext.PropertyChanged -= eh);
         }
 
         private void UpdateExtentsFromMap()

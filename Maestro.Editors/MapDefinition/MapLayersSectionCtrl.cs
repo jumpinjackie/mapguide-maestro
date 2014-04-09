@@ -47,9 +47,9 @@ namespace Maestro.Editors.MapDefinition
         public MapLayersSectionCtrl()
         {
             InitializeComponent();
-            trvBaseLayers.KeyUp += new KeyEventHandler(trvBaseLayers_KeyUp);
-            trvLayerDrawingOrder.KeyUp += new KeyEventHandler(trvLayerDrawingOrder_KeyUp);
-            trvLayersGroup.KeyUp += new KeyEventHandler(trvLayersGroup_KeyUp);
+            trvBaseLayers.KeyUp += WeakEventHandler.Wrap<KeyEventHandler>(trvBaseLayers_KeyUp, (eh) => trvBaseLayers.KeyUp -= eh);
+            trvLayerDrawingOrder.KeyUp += WeakEventHandler.Wrap<KeyEventHandler>(trvLayerDrawingOrder_KeyUp, (eh) => trvLayerDrawingOrder.KeyUp -= eh);
+            trvLayersGroup.KeyUp += WeakEventHandler.Wrap<KeyEventHandler>(trvLayersGroup_KeyUp, (eh) => trvLayersGroup.KeyUp -= eh);
         }
 
         void trvLayersGroup_KeyUp(object sender, KeyEventArgs e)
@@ -200,9 +200,6 @@ namespace Maestro.Editors.MapDefinition
             btnConvertLayerGroupToBaseGroup.Enabled = true;
 
             propertiesPanel.Controls.Clear();
-            //var item = new GroupPropertiesCtrl(_map, group.Tag);
-            //item.GroupChanged += (s, evt) => { OnResourceChanged(); };
-            //item.Dock = DockStyle.Fill;
             var item = CreateGroupControl(group);
             _activeLayer = null;
             propertiesPanel.Controls.Add(item);
@@ -385,7 +382,8 @@ namespace Maestro.Editors.MapDefinition
             commCtrl.SelectedObject = new GroupItemDesigner(group);
 
             var item = new GroupPropertiesCtrl(_map, group.Tag);
-            item.GroupChanged += (s, evt) => { OnResourceChanged(); };
+            //item.GroupChanged += (s, evt) => { OnResourceChanged(); };
+            item.GroupChanged += WeakEventHandler.Wrap((s, evt) => OnResourceChanged(), (eh) => item.GroupChanged -= eh);
             item.Dock = DockStyle.Top;
 
             ctrl.Controls.Add(commCtrl);
@@ -442,7 +440,8 @@ namespace Maestro.Editors.MapDefinition
             commCtrl.SelectedObject = new BaseGroupItemDesigner(group);
 
             var item = new GroupPropertiesCtrl(_map, group.Tag);
-            item.GroupChanged += (s, evt) => { OnResourceChanged(); };
+            //item.GroupChanged += (s, evt) => { OnResourceChanged(); };
+            item.GroupChanged += WeakEventHandler.Wrap((s, evt) => OnResourceChanged(), (eh) => item.GroupChanged -= eh);
             item.Dock = DockStyle.Top;
 
             ctrl.Controls.Add(commCtrl);
@@ -463,7 +462,8 @@ namespace Maestro.Editors.MapDefinition
             commCtrl.SelectedObject = new BaseLayerItemDesigner(layer);
 
             var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService, _edSvc);
-            item.LayerChanged += (s, evt) => { OnResourceChanged(); };
+            //item.LayerChanged += (s, evt) => { OnResourceChanged(); };
+            item.LayerChanged += WeakEventHandler.Wrap((s, evt) => OnResourceChanged(), (eh) => item.LayerChanged -= eh);
             item.Dock = DockStyle.Top;
 
             ctrl.Controls.Add(commCtrl);
@@ -484,7 +484,8 @@ namespace Maestro.Editors.MapDefinition
             commCtrl.SelectedObject = new LayerItemDesigner(layer);
 
             var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService, _edSvc);
-            item.LayerChanged += (s, evt) => { OnResourceChanged(); };
+            //item.LayerChanged += (s, evt) => { OnResourceChanged(); };
+            item.LayerChanged += WeakEventHandler.Wrap((s, evt) => OnResourceChanged(), (eh) => item.LayerChanged -= eh);
             item.Dock = DockStyle.Top;
 
             ctrl.Controls.Add(commCtrl);

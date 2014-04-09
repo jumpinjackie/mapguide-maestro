@@ -407,6 +407,7 @@
     <Compile Include="Tile\RenderThread.cs" />
     <Compile Include="Utf8XmlWriter.cs" />
     <Compile Include="Utility.cs" />
+    <Compile Include="WeakEventHandler.cs" />
     <Compile Include="XmlValidator.cs" />
   </ItemGroup>
   <ItemGroup>

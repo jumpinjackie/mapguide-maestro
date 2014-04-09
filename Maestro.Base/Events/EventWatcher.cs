@@ -115,7 +115,7 @@ namespace Maestro.Base.Events
             }
         }
 
-        static void OnConnectionRemoved(object sender, string name)
+        static void OnConnectionRemoved(object sender, ServerConnectionEventArgs e)
         {
             Workbench wb = Workbench.Instance;
             Debug.Assert(wb.ActiveSiteExplorer != null);
@@ -124,7 +124,7 @@ namespace Maestro.Base.Events
             //Debug.Assert(wb.ActiveSiteExplorer.ConnectionName == name);
         }
 
-        static void OnConnectionAdded(object sender, string name)
+        static void OnConnectionAdded(object sender, ServerConnectionEventArgs e)
         {
             var wb = Workbench.Instance;
             if (wb.ActiveSiteExplorer == null)
@@ -146,11 +146,11 @@ namespace Maestro.Base.Events
                 wb.AddToolbar("Resource ID Bar", nav.NavigatorToolStrip, ToolbarRegion.Top, true);
             }
 
-            wb.ActiveSiteExplorer.RefreshModel(name);
+            wb.ActiveSiteExplorer.RefreshModel(e.ConnectionName);
             
 
             var svc = ServiceRegistry.GetService<ServerConnectionManager>();
-            var conn = svc.GetConnection(name);
+            var conn = svc.GetConnection(e.ConnectionName);
 
             LoggingService.Info("There are now " + svc.GetConnectionNames().Count + " active connections"); //NOXLATE
         }

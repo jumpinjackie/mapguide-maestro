@@ -53,7 +53,7 @@ namespace Maestro.Base.UI
             InitializeComponent();
             Application.Idle += new EventHandler(OnIdle);
             ndResource.ToolTipProvider = new RepositoryItemToolTipProvider();
-            ndResource.DrawText += new EventHandler<Aga.Controls.Tree.NodeControls.DrawEventArgs>(OnNodeDrawText);
+            ndResource.DrawText += WeakEventHandler.Wrap<EventHandler<Aga.Controls.Tree.NodeControls.DrawEventArgs>>(OnNodeDrawText, (eh) => ndResource.DrawText -= eh);
 
             var ts = ToolbarService.CreateToolStripItems("/Maestro/Shell/SiteExplorer/Toolbar", this, true); //NOXLATE
             tsSiteExplorer.Items.AddRange(ts);
@@ -66,7 +66,7 @@ namespace Maestro.Base.UI
             trvResources.Model = _model;
 
             Workbench wb = Workbench.Instance;
-            wb.ActiveDocumentChanged += OnActiveDocumentChanged;
+            wb.ActiveDocumentChanged += WeakEventHandler.Wrap(OnActiveDocumentChanged, (eh) => wb.ActiveDocumentChanged -= eh);
         }
 
         void OnActiveDocumentChanged(object sender, EventArgs e)
@@ -118,7 +118,7 @@ namespace Maestro.Base.UI
 
             var h = this.ItemsSelected;
             if (h != null)
-                h(this, this.SelectedItems);
+                h(this, new RepositoryItemEventArgs(this.SelectedItems));
         }
 
         public event RepositoryItemEventHandler ItemsSelected;

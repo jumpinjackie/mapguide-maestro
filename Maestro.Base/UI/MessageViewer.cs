@@ -27,6 +27,7 @@ using System.Windows.Forms;
 using ICSharpCode.Core;
 using System.IO;
 using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
 
 namespace Maestro.Base.UI
 {
@@ -46,11 +47,11 @@ namespace Maestro.Base.UI
             base.OnLoad(e);
             
             var btw = BroadcastTextWriter.Instance;
-            btw.LogMessage += new LogBroadcastEventHandler(OnLogMessage);
+            btw.LogMessage += WeakEventHandler.Wrap<LogBroadcastEventHandler>(OnLogMessage, (eh) => btw.LogMessage -= eh);
             btw.FlushMessages();
         }
 
-        void OnLogMessage(object sender, LogMessage msg)
+        void OnLogMessage(object sender, LogMessageEventArgs msg)
         {
             if (!txtMessages.IsDisposed)
             {

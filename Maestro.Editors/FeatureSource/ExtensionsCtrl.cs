@@ -69,7 +69,7 @@ namespace Maestro.Editors.FeatureSource
                     node.Text = ext.Name;
                     node.ToolTipText = string.Format(Strings.ExtendedClassTooltip, ext.FeatureClass);
 
-                    ext.PropertyChanged += (s, evt) =>
+                    PropertyChangedEventHandler extPropChange = (s, evt) =>
                     {
                         if (evt.PropertyName == "Name") //NOXLATE
                         {
@@ -80,6 +80,7 @@ namespace Maestro.Editors.FeatureSource
                             node.ToolTipText = string.Format(Strings.ExtendedClassTooltip, ext.FeatureClass);
                         }
                     };
+                    ext.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(extPropChange, (eh) => ext.PropertyChanged -= eh);
 
                     trvExtensions.Nodes.Add(node);
 
@@ -94,7 +95,7 @@ namespace Maestro.Editors.FeatureSource
                             cNode.Text = calc.Name;
                             cNode.ToolTipText = calc.Expression;
 
-                            calc.PropertyChanged += (s, evt) =>
+                            PropertyChangedEventHandler calcChange = (s, evt) =>
                             {
                                 if (evt.PropertyName == "Name") //NOXLATE
                                 {
@@ -105,6 +106,7 @@ namespace Maestro.Editors.FeatureSource
                                     cNode.ToolTipText = calc.Expression;
                                 }
                             };
+                            calc.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(calcChange, (eh) => calc.PropertyChanged -= eh);
 
                             node.Nodes.Add(cNode);
                         }
@@ -119,13 +121,14 @@ namespace Maestro.Editors.FeatureSource
 
                             jNode.Text = join.Name;
 
-                            join.PropertyChanged += (s, evt) =>
+                            PropertyChangedEventHandler joinChange = (s, evt) =>
                             {
                                 if (evt.PropertyName == "Name") //NOXLATE
                                 {
                                     jNode.Text = join.Name;
                                 }
                             };
+                            join.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(joinChange, (eh) => join.PropertyChanged -= eh);
 
                             node.Nodes.Add(jNode);
                         }
@@ -158,7 +161,7 @@ namespace Maestro.Editors.FeatureSource
             TreeNode node = new TreeNode();
             node.Tag = ext;
             node.ImageIndex = node.SelectedImageIndex = IDX_EXTENSION;
-            ext.PropertyChanged += (s, evt) =>
+            PropertyChangedEventHandler extChange = (s, evt) =>
             {
                 if (evt.PropertyName == "Name") //NOXLATE
                 {
@@ -169,6 +172,7 @@ namespace Maestro.Editors.FeatureSource
                     node.ToolTipText = string.Format(Strings.ExtendedClassTooltip, ext.FeatureClass);
                 }
             };
+            ext.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(extChange, (eh) => ext.PropertyChanged -= eh);
 
             _fs.AddExtension(ext);
             OnResourceChanged();
@@ -195,7 +199,7 @@ namespace Maestro.Editors.FeatureSource
                     var cNode = new TreeNode();
                     cNode.ImageIndex = cNode.SelectedImageIndex = IDX_CALC;
                     cNode.Tag = calc;
-                    calc.PropertyChanged += (s, evt) =>
+                    PropertyChangedEventHandler calcChange = (s, evt) =>
                     {
                         if (evt.PropertyName == "Name") //NOXLATE
                         {
@@ -206,6 +210,7 @@ namespace Maestro.Editors.FeatureSource
                             cNode.ToolTipText = calc.Expression;
                         }
                     };
+                    calc.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(calcChange, (eh) => calc.PropertyChanged -= eh);
 
                     node.Nodes.Add(cNode);
                     node.Expand();
@@ -236,13 +241,14 @@ namespace Maestro.Editors.FeatureSource
                     var jNode = new TreeNode();
                     jNode.Tag = join;
                     jNode.ImageIndex = jNode.SelectedImageIndex = IDX_JOIN;
-                    join.PropertyChanged += (s, evt) =>
+                    PropertyChangedEventHandler joinChange = (s, evt) =>
                     {
                         if (evt.PropertyName == "Name") //NOXLATE
                         {
                             jNode.Text = join.Name;
                         }
                     };
+                    join.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(joinChange, (eh) => join.PropertyChanged -= eh);
 
                     node.Nodes.Add(jNode);
                     node.Expand();

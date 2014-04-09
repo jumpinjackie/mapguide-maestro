@@ -348,7 +348,7 @@ namespace Maestro.Editors.SymbolDefinition
                 var inp = _boundObject as INotifyPropertyChanged;
                 if (inp != null)
                 {
-                    inp.PropertyChanged += OnBoundObjectPropertyChanged;
+                    inp.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnBoundObjectPropertyChanged, (eh) => inp.PropertyChanged -= eh);
                 }
             }
             finally

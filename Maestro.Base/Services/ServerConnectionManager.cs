@@ -31,8 +31,8 @@ namespace Maestro.Base.Services
     /// Defines a method for connection-related events
     /// </summary>
     /// <param name="sender"></param>
-    /// <param name="name"></param>
-    public delegate void ServerConnectionEventHandler(object sender, string name);
+    /// <param name="e"></param>
+    public delegate void ServerConnectionEventHandler(object sender, ServerConnectionEventArgs e);
     /// <summary>
     /// Defines a method that handles connection pre-removal
     /// </summary>
@@ -53,6 +53,23 @@ namespace Maestro.Base.Services
         {
             this.ConnectionName = name;
             base.Cancel = false;
+        }
+
+        /// <summary>
+        /// Gets the name of the connection that is about to be closed
+        /// </summary>
+        public string ConnectionName { get; set; }
+    }
+
+    public class ServerConnectionEventArgs : EventArgs
+    {
+        /// <summary>
+        /// Initializes a new instance of the ServerConnectionEventArgs class
+        /// </summary>
+        /// <param name="name"></param>
+        public ServerConnectionEventArgs(string name)
+        {
+            this.ConnectionName = name;
         }
 
         /// <summary>
@@ -124,7 +141,7 @@ namespace Maestro.Base.Services
             _connections.Add(name, conn);
             var handler = this.ConnectionAdded;
             if (handler != null)
-                handler(this, name);
+                handler(this, new ServerConnectionEventArgs(name));
         }
 
         /// <summary>
@@ -149,7 +166,7 @@ namespace Maestro.Base.Services
 
                 var removed = this.ConnectionRemoved;
                 if (removed != null)
-                    removed(this, name);
+                    removed(this, new ServerConnectionEventArgs(name));
                 return conn;
             }
             return null;

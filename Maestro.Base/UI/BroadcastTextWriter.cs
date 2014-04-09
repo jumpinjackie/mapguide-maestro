@@ -29,7 +29,7 @@ namespace Maestro.Base.UI
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="msg"></param>
-    public delegate void LogBroadcastEventHandler(object sender, LogMessage msg);
+    public delegate void LogBroadcastEventHandler(object sender, LogMessageEventArgs msg);
 
     /// <summary>
     /// A TextWriter that broadcasts all messages written to it
@@ -60,7 +60,7 @@ namespace Maestro.Base.UI
         /// </summary>
         public event LogBroadcastEventHandler LogMessage;
 
-        private List<LogMessage> _buffered = new List<LogMessage>();
+        private List<LogMessageEventArgs> _buffered = new List<LogMessageEventArgs>();
 
         /// <summary>
         /// Flushes any buffered messages
@@ -105,7 +105,7 @@ namespace Maestro.Base.UI
         /// <param name="value"></param>
         public override void Write(string value)
         {
-            var message = new LogMessage() { LogDate = DateTime.Now, Message = value };
+            var message = new LogMessageEventArgs() { LogDate = DateTime.Now, Message = value };
             var handler = this.LogMessage;
             if (handler != null)
             {
@@ -153,7 +153,7 @@ namespace Maestro.Base.UI
     /// <summary>
     /// An application log message
     /// </summary>
-    public class LogMessage
+    public class LogMessageEventArgs : EventArgs
     {
         /// <summary>
         /// Gets or sets the log date

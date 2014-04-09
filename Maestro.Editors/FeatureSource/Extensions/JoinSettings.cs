@@ -171,13 +171,18 @@ namespace Maestro.Editors.FeatureSource.Extensions
                     break;
             }
 
-            _rel.PropertyChanged += (sender, e) => { OnResourceChanged(); };
+            _rel.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnRelationPropertyChanged, (eh) => _rel.PropertyChanged -= eh);
 
             foreach (var join in _rel.RelateProperty)
             {
                 _propertyJoins.Add(join);
             }
             _propertyJoins.ListChanged += new ListChangedEventHandler(OnPropertyJoinListChanged);
+        }
+
+        void OnRelationPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            OnResourceChanged();
         }
 
         private void OnResourceChanged()
