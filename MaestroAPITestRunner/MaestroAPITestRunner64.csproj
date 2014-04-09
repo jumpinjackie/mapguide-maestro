@@ -34,6 +34,8 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\Maestro\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,14 +60,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ciloci.Flee">
-      <HintPath>..\Thirdparty\Flee\lib\Ciloci.Flee.dll</HintPath>
+      <HintPath>..\Maestro\packages\fleesharp.0.9.27-pre\lib\net40\Ciloci.Flee.dll</HintPath>
     </Reference>
     <Reference Include="NetTopologySuite.Merged">
       <HintPath>..\Thirdparty\NTS\NetTopologySuite.Merged.dll</HintPath>
     </Reference>
     <Reference Include="nunit-console-runner, Version=2.5.5.10112, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Thirdparty\NUnit\bin\net-2.0\lib\nunit-console-runner.dll</HintPath>
+      <HintPath>..\Maestro\packages\NUnit.Runners.2.6.3\tools\lib\nunit-console-runner.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -101,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Platform.ini">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -147,4 +150,11 @@ echo Copy binaries to SDK output dir
 echo XCOPY /S /Y /I "$(TargetDir)$(TargetName).*" "$(SolutionDir)..\SDK\Test"
 XCOPY /S /Y /I "$(TargetDir)$(TargetName).*" "$(SolutionDir)..\SDK\Test" )</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
 </Project>

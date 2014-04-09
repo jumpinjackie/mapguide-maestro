@@ -1,5 +1,14 @@
-﻿ 5.1
- ---
+﻿ - New grid-based style editor. All layers will use this editor unless you un-tick "Use grid-based style editor" in the options
+ - Basic support for theming composite styles (only from the grid-based style editor)
+ - All style editors now auto-refresh their style previews
+ - Previews of certain resources will now have optional debug watermarks attached which include information about the generated Map Definition (useful for Layer previews to determine if it has correct CS and bounds)
+ - Added support for generating individual themes by values from an external class definition (eg. A lookup table)
+ - Added support for retreving information about a Layer Definition's referenced Spatial Context
+ - Fix: Text Frame settings not applying for a Text element in a Symbol Definition
+ - Fix: Wrong spatial context used when creating a preview for a layer that points to a multi spatial context Feature Source
+
+5.1
+---
 
  - mg-desktop updated to 2.5.2.7949
  - Map Definition Editor now uses a PropertyGrid for editing layer/group properties

@@ -107,6 +107,7 @@
     <Content Include="Manifest.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="app.config" />
     <None Include="Resources\control.png" />
     <None Include="Resources\cross-script.png" />
     <None Include="Resources\block.png" />

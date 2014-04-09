@@ -383,6 +383,7 @@
     <Content Include="OSGeo.MapGuide.Desktop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="app.config" />
     <None Include="Resources\arrow-090.png" />
     <None Include="Resources\arrow-180.png" />
     <None Include="Resources\arrow.png" />

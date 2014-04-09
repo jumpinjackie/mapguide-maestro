@@ -57,15 +57,12 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ciloci.Flee">
-      <HintPath>..\Thirdparty\Flee\lib\Ciloci.Flee.dll</HintPath>
-    </Reference>
     <Reference Include="NetTopologySuite.Merged">
       <HintPath>..\Thirdparty\NTS\NetTopologySuite.Merged.dll</HintPath>
     </Reference>
     <Reference Include="nunit-console-runner, Version=2.5.5.10112, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Thirdparty\NUnit\bin\net-2.0\lib\nunit-console-runner.dll</HintPath>
+      <HintPath>..\Maestro\packages\NUnit.Runners.2.6.3\tools\lib\nunit-console-runner.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
