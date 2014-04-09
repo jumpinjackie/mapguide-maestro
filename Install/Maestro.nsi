@@ -245,7 +245,7 @@ Section
     File "${INST_OUTPUT_MAESTRO}\WeifenLuo.WinFormsUI.Docking.dll"
     
     # pdbs for greater context in exception stack traces
-    File "${INST_OUTPUT_MAESTRO}\Aga.Controls.pdb"
+    #File "${INST_OUTPUT_MAESTRO}\Aga.Controls.pdb"
     File "${INST_OUTPUT_MAESTRO}\Maestro.pdb"
     File "${INST_OUTPUT_MAESTRO}\MaestroFsPreview.pdb"
     File "${INST_OUTPUT_MAESTRO}\MgCooker.pdb"
