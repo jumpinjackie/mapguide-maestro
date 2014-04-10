@@ -198,6 +198,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         Warning_MapDefinition_FeatureSourceWithNullExtent,
 
         /// <summary>
+        /// The Map Definition contains an unselectable layer as that layer's class definition has no identity properties
+        /// </summary>
+        Warning_MapDefinition_UnselectableLayer,
+
+        /// <summary>
         /// The specified initial view parameters lie outside the referenced Map Definition's extents. Usually means you will see nothing when the Fusion viewer loads.
         /// </summary>
         Warning_Fusion_InitialViewOutsideMapExtents = 3401,

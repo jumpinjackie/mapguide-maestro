@@ -3432,4 +3432,7 @@
   <data name="Func_URLENCODE_StringValueDescription" xml:space="preserve">
     <value>String to URL encode</value>
   </data>
+  <data name="MDF_UnselectableLayer" xml:space="preserve">
+    <value>Layer {0} is marked as selectable but its feature class {1} in ({2}) has no identity properties. This layer will not be selectable.</value>
+  </data>
 </root>

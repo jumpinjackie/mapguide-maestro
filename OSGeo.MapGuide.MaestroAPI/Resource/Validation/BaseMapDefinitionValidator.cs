@@ -150,7 +150,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                     {
                         issues.AddRange(ResourceValidatorSet.Validate(context, layer, recurse));
                     }
-
+                    
                     IVectorLayerDefinition vl = null;
                     if (layer.SubLayer.LayerType == LayerType.Vector)
                         vl = (IVectorLayerDefinition)layer.SubLayer;
@@ -160,8 +160,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                         try
                         {
                             IFeatureSource fs = (IFeatureSource)context.GetResource(vl.ResourceId);
-                            //The layer recurses on the FeatureSource
-                            //issues.AddRange(Validation.Validate(fs, true));
+                            if (l.Selectable)
+                            {
+                                //Test selectability requirement
+                                string[] idProps = fs.GetIdentityProperties(vl.FeatureName);
+                                if (idProps == null || idProps.Length == 0)
+                                {
+                                    issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_MapDefinition_UnselectableLayer, string.Format(Strings.MDF_UnselectableLayer, l.Name, vl.FeatureName, fs.ResourceID)));
+                                }
+                            }
 
                             try
                             {
