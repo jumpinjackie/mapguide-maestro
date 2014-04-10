@@ -86,7 +86,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 try
                 {
                     fs = (IFeatureSource)context.GetResource(ldef.SubLayer.ResourceId);
-                    issues.AddRange(ResourceValidatorSet.Validate(context, fs, recurse));
                 }
                 catch (Exception)
                 {
