@@ -208,25 +208,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 }
             }
 
-            var classNames = featSvc.GetClassNames(feature.ResourceID, null);
-            foreach (var className in classNames)
-            {
-                try 
-                {
-                    string[] idProps = featSvc.GetIdentityProperties(feature.ResourceID, className);
-                    if (idProps.Length == 0)
-                        issues.Add(new ValidationIssue(feature, ValidationStatus.Information, ValidationStatusCode.Info_FeatureSource_NoPrimaryKey, string.Format(Strings.FS_PrimaryKeyMissingInformation, className)));
-                }
-                catch (Exception ex)
-                {
-                    string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    //#1403 workaround
-                    if (msg.Contains("MgClassNotFound")) //NOXLATE
-                        issues.Add(new ValidationIssue(feature, ValidationStatus.Information, ValidationStatusCode.Info_FeatureSource_NoPrimaryKey, string.Format(Strings.FS_PrimaryKeyMissingInformation, className)));
-                    else
-                        issues.Add(new ValidationIssue(feature, ValidationStatus.Error, ValidationStatusCode.Error_FeatureSource_SchemaReadError, string.Format(Strings.FS_SchemaReadError, msg)));
-                }
-            }
             context.MarkValidated(resource.ResourceID);
 
             return issues.ToArray();
