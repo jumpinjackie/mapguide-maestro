@@ -47,6 +47,8 @@
             this.ColumnName = new System.Windows.Forms.ToolStripComboBox();
             this.ExpressionText = new System.Windows.Forms.TextBox();
             this._autoCompleteTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnTools = new System.Windows.Forms.ToolStripDropDownButton();
+            this.insertThemeExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -88,7 +90,8 @@
             this.toolStripSeparator1,
             this.ColumnValue,
             this.LookupValues,
-            this.ColumnName});
+            this.ColumnName,
+            this.btnTools});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -172,6 +175,20 @@
             this.ExpressionText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ExpressionText_KeyDown);
             this.ExpressionText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ExpressionText_KeyUp);
             // 
+            // btnTools
+            // 
+            this.btnTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.insertThemeExpressionToolStripMenuItem});
+            this.btnTools.Image = global::Maestro.Editors.Properties.Resources.gear;
+            resources.ApplyResources(this.btnTools, "btnTools");
+            this.btnTools.Name = "btnTools";
+            // 
+            // insertThemeExpressionToolStripMenuItem
+            // 
+            this.insertThemeExpressionToolStripMenuItem.Name = "insertThemeExpressionToolStripMenuItem";
+            resources.ApplyResources(this.insertThemeExpressionToolStripMenuItem, "insertThemeExpressionToolStripMenuItem");
+            this.insertThemeExpressionToolStripMenuItem.Click += new System.EventHandler(this.insertThemeExpressionToolStripMenuItem_Click);
+            // 
             // MonoCompatibleExpressionEditor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -209,5 +226,7 @@
         private System.Windows.Forms.ToolStripComboBox ColumnValue;
         private System.Windows.Forms.ToolStripDropDownButton btnProperties;
         private System.Windows.Forms.ToolStripDropDownButton btnFunctions;
+        private System.Windows.Forms.ToolStripDropDownButton btnTools;
+        private System.Windows.Forms.ToolStripMenuItem insertThemeExpressionToolStripMenuItem;
     }
 }

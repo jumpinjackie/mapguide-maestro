@@ -45,15 +45,15 @@ namespace Maestro.Editors.FeatureSource.Preview
             InitializeComponent();
         }
 
-        private IFeatureService _fsvc;
+        private IEditorService _edSvc;
 
         /// <summary>
         /// Initializes this instance
         /// </summary>
-        /// <param name="featureService">The feature service.</param>
-        public void Init(IFeatureService featureService)
+        /// <param name="editorService">The feature service.</param>
+        public void Init(IEditorService editorService)
         {
-            _fsvc = featureService;
+            _edSvc = editorService;
         }
 
         const int IDX_SCHEMA = 0;
@@ -122,7 +122,7 @@ namespace Maestro.Editors.FeatureSource.Preview
             ClearPreviewPanes();
             trvSchema.Nodes.Clear();
 
-            string[] schemaNames = _fsvc.GetSchemas(currentFsId);
+            string[] schemaNames = _edSvc.FeatureService.GetSchemas(currentFsId);
             foreach (var s in schemaNames)
             {
                 var schemaNode = new TreeNode(s);
@@ -256,7 +256,7 @@ namespace Maestro.Editors.FeatureSource.Preview
             {
                 if (!hasSql)
                 {
-                    var pane = new PreviewPane(currentFsId, mode, cls, _fsvc, _caps);
+                    var pane = new PreviewPane(currentFsId, mode, cls, _edSvc, _caps);
                     var page = new TabPage();
                     page.Text = Strings.SQLQuery;
                     page.Tag = mode;
@@ -269,7 +269,7 @@ namespace Maestro.Editors.FeatureSource.Preview
             }
             else
             {
-                var pane = new PreviewPane(currentFsId, mode, cls, _fsvc, _caps);
+                var pane = new PreviewPane(currentFsId, mode, cls, _edSvc, _caps);
                 var page = new TabPage();
                 page.Text = Strings.StandardQuery + " - " + cls.QualifiedName; //NOXLATE
                 page.Tag = mode;
@@ -368,7 +368,7 @@ namespace Maestro.Editors.FeatureSource.Preview
 
                 e.Node.Nodes.Clear();
 
-                var classNames = _fsvc.GetClassNames(currentFsId, schTag.SchemaName);
+                var classNames = _edSvc.FeatureService.GetClassNames(currentFsId, schTag.SchemaName);
                 foreach (var qClsName in classNames)
                 {
                     var clsName = qClsName.Split(':')[1]; //NOXLATE
@@ -388,7 +388,7 @@ namespace Maestro.Editors.FeatureSource.Preview
                 if (clsTag.Loaded)
                     return;
 
-                var cls = _fsvc.GetClassDefinition(currentFsId, clsTag.QualifiedName);
+                var cls = _edSvc.FeatureService.GetClassDefinition(currentFsId, clsTag.QualifiedName);
                 clsTag.Class = cls;
                 UpdateClassNode(e.Node, cls);
             }

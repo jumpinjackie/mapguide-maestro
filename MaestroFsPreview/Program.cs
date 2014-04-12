@@ -22,11 +22,53 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI;
 using Maestro.Login;
+using Maestro.Editors;
+using System.Diagnostics;
 
 namespace MaestroFsPreview
 {
     static class Program
     {
+        class EditorServiceImpl : ResourceEditorServiceBase
+        {
+            public EditorServiceImpl(IServerConnection conn)
+                : base("Session://", conn)
+            {
+
+            }
+
+            public override void OpenResource(string resourceId)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override void OpenUrl(string url)
+            {
+                Process.Start(url);
+            }
+
+            public override void RequestRefresh(string folderId)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override void RequestRefresh()
+            {
+                throw new NotImplementedException();
+            }
+
+            public override void RunProcess(string processName, params string[] args)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override string SelectUnmanagedData(string startPath, System.Collections.Specialized.NameValueCollection fileTypes)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -56,7 +98,7 @@ namespace MaestroFsPreview
             if (conn == null)
                 return;
 
-            Application.Run(new MainForm(conn.FeatureService, conn.ResourceService));
+            Application.Run(new MainForm(new EditorServiceImpl(conn)));
         }
     }
 }

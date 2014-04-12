@@ -2594,11 +2594,29 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only individual values is supported when generating a theme expression.
+        /// </summary>
+        internal static string ThemeExpressionOnlySupportsIndividualValues {
+            get {
+                return ResourceManager.GetString("ThemeExpressionOnlySupportsIndividualValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Property not selected. Please select the Property which connects to the selected Key Property in the external class.
         /// </summary>
         internal static string ThemePrimaryKeyPropertyNotSelected {
             get {
                 return ResourceManager.GetString("ThemePrimaryKeyPropertyNotSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The layer being themed is not a vector layer.
+        /// </summary>
+        internal static string ThemingNotAVectorLayer {
+            get {
+                return ResourceManager.GetString("ThemingNotAVectorLayer", resourceCulture);
             }
         }
         

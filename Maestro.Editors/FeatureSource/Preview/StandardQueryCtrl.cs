@@ -42,7 +42,7 @@ namespace Maestro.Editors.FeatureSource.Preview
             InitializeComponent();
         }
 
-        private IFeatureService _featSvc;
+        private IEditorService _edSvc;
         private string _fsId;
         private ClassDefinition _cls;
         private FdoProviderCapabilities _caps;
@@ -51,14 +51,14 @@ namespace Maestro.Editors.FeatureSource.Preview
         /// Initializes a new instance of the <see cref="StandardQueryCtrl"/> class.
         /// </summary>
         /// <param name="fsId">The fs id.</param>
-        /// <param name="featSvc">The feat SVC.</param>
+        /// <param name="edSvc">The editor service.</param>
         /// <param name="cls">The CLS.</param>
         /// <param name="caps">The caps.</param>
-        public StandardQueryCtrl(string fsId, IFeatureService featSvc, ClassDefinition cls, FdoProviderCapabilities caps)
+        public StandardQueryCtrl(string fsId, IEditorService edSvc, ClassDefinition cls, FdoProviderCapabilities caps)
             : this()
         {
             _fsId = fsId;
-            _featSvc = featSvc;
+            _edSvc = edSvc;
             _cls = cls;
             _caps = caps;
             foreach (var prop in cls.Properties)
@@ -73,7 +73,7 @@ namespace Maestro.Editors.FeatureSource.Preview
         /// <returns></returns>
         public IReader ExecuteQuery()
         {
-            return _featSvc.QueryFeatureSource(_fsId, _cls.QualifiedName, txtFilter.Text, GetProperties(), GetComputedColumns());
+            return _edSvc.FeatureService.QueryFeatureSource(_fsId, _cls.QualifiedName, txtFilter.Text, GetProperties(), GetComputedColumns());
         }
 
         private NameValueCollection GetComputedColumns()
@@ -109,7 +109,7 @@ namespace Maestro.Editors.FeatureSource.Preview
         private void txtFilter_Click(object sender, EventArgs e)
         {
             var ed = FdoExpressionEditorFactory.Create(); //new ExpressionEditor();
-            ed.Initialize(_featSvc, _caps, _cls, _fsId, false);
+            ed.Initialize(_edSvc, _caps, _cls, _fsId, false);
             ed.Expression = txtFilter.Text;
             if (ed.ShowDialog() == DialogResult.OK)
             {
@@ -136,7 +136,7 @@ namespace Maestro.Editors.FeatureSource.Preview
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var ed = FdoExpressionEditorFactory.Create();// new ExpressionEditor();
-            ed.Initialize(_featSvc, _caps, _cls, _fsId, false);
+            ed.Initialize(_edSvc, _caps, _cls, _fsId, false);
             if (ed.ShowDialog() == DialogResult.OK)
             {
                 grdExpressions.Rows.Add(GenerateAlias(), ed.Expression);

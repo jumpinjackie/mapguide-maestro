@@ -28,6 +28,7 @@ using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using Maestro.Editors;
 
 namespace MaestroFsPreview
 {
@@ -38,20 +39,18 @@ namespace MaestroFsPreview
             InitializeComponent();
         }
 
-        public MainForm(IFeatureService featSvc, IResourceService resSvc)
+        public MainForm(IEditorService edSvc)
             : this()
         {
-            this.featSvc = featSvc;
-            this.resSvc = resSvc;
-            localFsPreviewCtrl.Init(featSvc);
+            _edSvc = edSvc;
+            localFsPreviewCtrl.Init(edSvc);
         }
 
-        private IFeatureService featSvc;
-        private IResourceService resSvc;
+        private IEditorService _edSvc;
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(resSvc, ResourceTypes.FeatureSource, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.FeatureSource, ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
@@ -74,8 +73,8 @@ namespace MaestroFsPreview
 
         private void InitPreview()
         {
-            _fs = (IFeatureSource)resSvc.GetResource(this.FeatureSourceID);
-            var caps = featSvc.GetProviderCapabilities(_fs.Provider);
+            _fs = (IFeatureSource)_edSvc.ResourceService.GetResource(this.FeatureSourceID);
+            var caps = _edSvc.FeatureService.GetProviderCapabilities(_fs.Provider);
             localFsPreviewCtrl.SupportsSQL = caps.Connection.SupportsSQL;
             localFsPreviewCtrl.ReloadTree(this.FeatureSourceID, caps);
         }

@@ -169,7 +169,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         {
             try
             {
-                object owner = null;
+                IVectorStyle owner = null;
 
                 if (m_point != null)
                     owner = m_point;

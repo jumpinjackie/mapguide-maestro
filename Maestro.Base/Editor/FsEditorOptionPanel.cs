@@ -81,7 +81,7 @@ namespace Maestro.Base.Editor
         {
             //TODO: We really want to do this as an external process
 
-            var dlg = new MaestroFsPreview.MainForm(_fsvc, _rsvc);
+            var dlg = new MaestroFsPreview.MainForm(_edsvc);
             dlg.FeatureSourceID = _fs.ResourceID;
             dlg.ShowDialog();
 

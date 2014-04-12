@@ -96,7 +96,7 @@ namespace Maestro.Editors
         {
             var ed = FdoExpressionEditorFactory.Create(); new ExpressionEditor();
             var caps = this.FeatureService.GetProviderCapabilities(providerName);
-            ed.Initialize(this.FeatureService, caps, classDef, featureSourceId, attachStylizationFunctions);
+            ed.Initialize(this, caps, classDef, featureSourceId, attachStylizationFunctions);
             ed.Expression = currentExpr;
             if (ed.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {

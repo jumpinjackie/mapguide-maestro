@@ -47,23 +47,23 @@ namespace Maestro.Editors.FeatureSource.Preview
         private IFeatureService _featSvc;
         private string _fsId;
 
-        public PreviewPane(string fsId, QueryMode mode, ClassDefinition cls, IFeatureService featSvc, FdoProviderCapabilities caps)
+        public PreviewPane(string fsId, QueryMode mode, ClassDefinition cls, IEditorService edSvc, FdoProviderCapabilities caps)
             : this()
         {
             _fsId = fsId;
             _mode = mode;
             _cls = cls;
-            _featSvc = featSvc;
+            _featSvc = edSvc.FeatureService;
 
             IQueryControl ctrl = null;
             switch (_mode)
             {
                 case QueryMode.SQL:
-                    ctrl = new SqlQueryCtrl(fsId, featSvc);
+                    ctrl = new SqlQueryCtrl(fsId, edSvc);
                     _inner = ctrl;
                     break;
                 case QueryMode.Standard:
-                    ctrl = new StandardQueryCtrl(fsId, featSvc, cls, caps);
+                    ctrl = new StandardQueryCtrl(fsId, edSvc, cls, caps);
                     _inner = ctrl;
                     break;
             }

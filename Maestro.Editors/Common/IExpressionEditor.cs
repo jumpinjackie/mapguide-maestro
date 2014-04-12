@@ -31,17 +31,17 @@ namespace Maestro.Editors.Common
     /// <summary>
     /// The expression editor interface
     /// </summary>
-    public interface IExpressionEditor
+    internal interface IExpressionEditor
     {
         /// <summary>
         /// Initializes the expression editor
         /// </summary>
-        /// <param name="featSvc"></param>
+        /// <param name="edSvc"></param>
         /// <param name="caps"></param>
         /// <param name="cls"></param>
         /// <param name="featuresSourceId"></param>
         /// <param name="attachStylizationFunctions"></param>
-        void Initialize(IFeatureService featSvc, FdoProviderCapabilities caps, ClassDefinition cls, string featuresSourceId, bool attachStylizationFunctions);
+        void Initialize(IEditorService edSvc, FdoProviderCapabilities caps, ClassDefinition cls, string featuresSourceId, bool attachStylizationFunctions);
 
         /// <summary>
         /// Gets or sets the FDO expression
@@ -53,6 +53,14 @@ namespace Maestro.Editors.Common
         /// </summary>
         /// <returns></returns>
         System.Windows.Forms.DialogResult ShowDialog();
+    }
+
+    /// <summary>
+    /// An interface for inserting text
+    /// </summary>
+    public interface ITextInserter
+    {
+        void InsertText(string text);
     }
 
     internal static class FdoExpressionEditorFactory

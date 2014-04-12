@@ -37,19 +37,19 @@ namespace Maestro.Editors.FeatureSource.Preview
             InitializeComponent();
         }
 
-        private IFeatureService _featSvc;
+        private IEditorService _edSvc;
         private string _fsId;
 
-        public SqlQueryCtrl(string fsId, IFeatureService featSvc)
+        public SqlQueryCtrl(string fsId, IEditorService edSvc)
             : this()
         {
             _fsId = fsId;
-            _featSvc = featSvc;
+            _edSvc = edSvc;
         }
 
         public IReader ExecuteQuery()
         {
-            return _featSvc.ExecuteSqlQuery(_fsId, txtSql.Text);
+            return _edSvc.FeatureService.ExecuteSqlQuery(_fsId, txtSql.Text);
         }
 
         public Control Content

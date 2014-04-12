@@ -1572,4 +1572,10 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="LayerChangedFeatureClass" xml:space="preserve">
     <value>You have changed the Feature Class for this layer. Styles made for the previous Feature Class may no longer be applicable to this Feature Class. You should review such style settings (eg. Settings involving FDO expressions) to see if anything needs to be changed.</value>
   </data>
+  <data name="ThemeExpressionOnlySupportsIndividualValues" xml:space="preserve">
+    <value>Only individual values is supported when generating a theme expression</value>
+  </data>
+  <data name="ThemingNotAVectorLayer" xml:space="preserve">
+    <value>The layer being themed is not a vector layer</value>
+  </data>
 </root>

@@ -51,6 +51,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         const int MAX_NUMERIC_THEME_RULES = 100000;
         const int MAX_INDIVIDUAL_THEME_RULES = 100;
         const int THEME_RULE_WARNING_LIMIT = 1000;
+        const int THEME_RULE_EXPRESSION_WARNING_LIMIT = 20;
 
         private static List<ColorBrewer> m_colorBrewer;
 
@@ -67,8 +68,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         }
 
         private List<LookupPair> m_lookupValues;
-        
-        private object m_ruleCollection;
+
+        private IVectorStyle m_ruleCollection;
 
         private static readonly Type[] NUMERIC_TYPES = null;
 
@@ -86,6 +87,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 this.Label = Label;
                 this.Color = Color;
             }
+
+            public string IndividualValue;
         }
 
         static ThemeCreator ()
@@ -95,15 +98,39 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 
         private ILayerElementFactory2 _factory;
 
-        public ThemeCreator(IEditorService editor, ILayerDefinition layer, ClassDefinition schema, object ruleCollection)
+        enum ThemeSource
+        {
+            LayerDefinition,
+            ExpressionEditor
+        }
+
+        private ThemeSource _themeSource;
+        private ITextInserter _inserter;
+
+        public ThemeCreator(IEditorService editor, ILayerDefinition layer, ClassDefinition classDef, IVectorStyle style)
             : this()
         {
             m_editor = editor;
             m_layer = layer;
-            m_featureClass = schema;
-            m_ruleCollection = ruleCollection;
-
+            m_featureClass = classDef;
+            m_ruleCollection = style;
+            _themeSource = ThemeSource.LayerDefinition;
             _factory = (ILayerElementFactory2)editor.GetEditedResource();
+
+            ColorBrewerColorSet.SetCustomRender(new CustomCombo.RenderCustomItem(DrawColorSetPreview));
+        }
+
+        public ThemeCreator(IEditorService editor, ClassDefinition classDef, ITextInserter inserter)
+            : this()
+        {
+            m_editor = editor;
+            m_featureClass = classDef;
+            _themeSource = ThemeSource.ExpressionEditor;
+            _inserter = inserter;
+
+            rdValuesFromLookup.Enabled = false;
+            grpValuesFromLookup.Enabled = false;
+            rdValuesFromClass.Checked = true;
 
             ColorBrewerColorSet.SetCustomRender(new CustomCombo.RenderCustomItem(DrawColorSetPreview));
         }
@@ -233,15 +260,34 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 string filter = null; //Attempt raw reading initially
                 Exception rawEx = null; //Original exception
                 bool retry = true;
-
+                string fsId = null;
                 while (retry)
                 {
                     retry = false;
                     try
                     {
-                        IVectorLayerDefinition vl = (IVectorLayerDefinition)m_layer.SubLayer;
-                        if (!string.IsNullOrEmpty(vl.Filter))
-                            filter = vl.Filter;
+                        //If the theming source is layer, get its filter
+                        if (_themeSource == ThemeSource.LayerDefinition)
+                        {
+                            IVectorLayerDefinition vl = (IVectorLayerDefinition)m_layer.SubLayer;
+                            fsId = vl.ResourceId;
+                            if (!string.IsNullOrEmpty(vl.Filter))
+                                filter = vl.Filter;
+                        }
+                        else
+                        {
+                            //In stylization context, the edited resource has to be a layer definition
+                            var ldf = (ILayerDefinition)m_editor.GetEditedResource();
+                            var vl = ldf.SubLayer as IVectorLayerDefinition;
+                            if (vl == null)
+                            {
+                                MessageBox.Show(Strings.ThemingNotAVectorLayer);
+                                return;
+                            }
+                            fsId = vl.ResourceId;
+                            if (!string.IsNullOrEmpty(vl.Filter))
+                                filter = vl.Filter;
+                        }
                         try
                         {
                             //Either UNIQUE() is an undocumented FDO expression function (!!!)
@@ -249,7 +295,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                             //flag in the SELECTAGGREGATES operation that's exposed over HTTP. Either
                             //case, try this method first.
                             using (var rd = m_editor.FeatureService.AggregateQueryFeatureSource(
-                                                    vl.ResourceId,
+                                                    fsId,
                                                     m_featureClass.QualifiedName,
                                                     filter,
                                                     new NameValueCollection() {
@@ -273,7 +319,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                         catch
                         {
 
-                            using (var rd = m_editor.FeatureService.QueryFeatureSource(vl.ResourceId, m_featureClass.QualifiedName, filter, new string[] { col.Name }))
+                            using (var rd = m_editor.FeatureService.QueryFeatureSource(fsId, m_featureClass.QualifiedName, filter, new string[] { col.Name }))
                             {
                                 while (rd.ReadNext() && m_values.Count < MAX_NUMERIC_THEME_RULES) //No more than 100.000 records in memory
                                 {
@@ -572,17 +618,27 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                     items.Sort(); //Handles types correctly
 
                     for (int i = 0; i < colors.Length; i++)
+                    {
+                        RuleItem r = null;
                         if (items[i] is string)
-                            result.Add(new RuleItem(
+                        {
+                            r = new RuleItem(
                                 string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" = '{1}'", ColumnCombo.Text, items[i]),
                                 string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}", items[i]),
-                                colors[i]));
+                                colors[i]);
+                            r.IndividualValue = "'" + items[i].ToString() + "'";
+                            result.Add(r);
+                        }
                         else
-                            result.Add(new RuleItem(
+                        {
+                            r = new RuleItem(
                                 string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" = {1}", ColumnCombo.Text, items[i]),
                                 string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}", items[i]),
-                                colors[i]));
-
+                                colors[i]);
+                            r.IndividualValue = items[i].ToString();
+                            result.Add(r);
+                        }
+                    }
                 }
             }
             else if (rdValuesFromLookup.Checked)
@@ -850,35 +906,61 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             try
             {
                 List<RuleItem> rules = CalculateRuleSet();
-
-                if (rules.Count > THEME_RULE_WARNING_LIMIT)
+                int limit = _themeSource == ThemeSource.LayerDefinition ? THEME_RULE_WARNING_LIMIT : THEME_RULE_EXPRESSION_WARNING_LIMIT;
+                if (rules.Count > limit)
                 {
                     if (MessageBox.Show(this, Strings.TooManyRulesWarning, Application.ProductName, MessageBoxButtons.YesNoCancel) != DialogResult.Yes)
                         return;
                 }
+                if (_themeSource == ThemeSource.LayerDefinition)
+                {
+                    IPointVectorStyle pts = m_ruleCollection as IPointVectorStyle;
+                    ILineVectorStyle lts = m_ruleCollection as ILineVectorStyle;
+                    IAreaVectorStyle ats = m_ruleCollection as IAreaVectorStyle;
+                    ICompositeTypeStyle cts = m_ruleCollection as ICompositeTypeStyle;
 
-                IPointVectorStyle pts = m_ruleCollection as IPointVectorStyle;
-                ILineVectorStyle lts = m_ruleCollection as ILineVectorStyle;
-                IAreaVectorStyle ats = m_ruleCollection as IAreaVectorStyle;
-                ICompositeTypeStyle cts = m_ruleCollection as ICompositeTypeStyle;
+                    if (pts != null)
+                    {
+                        GeneratePointThemeRules(rules, pts);
+                    }
+                    else if (lts != null)
+                    {
+                        GenerateLineThemeRules(rules, lts);
+                    }
+                    else if (ats != null)
+                    {
+                        GenerateAreaThemeRules(rules, ats);
+                    }
+                    else if (cts != null)
+                    {
+                        GenerateCompositeThemeRules(rules, cts);
+                    }
+                }
+                else
+                {
+                    if (AggregateCombo.SelectedIndex != 3)
+                    {
+                        MessageBox.Show(Strings.ThemeExpressionOnlySupportsIndividualValues);
+                        return;
+                    }
 
-                if (pts != null)
-                {
-                    GeneratePointThemeRules(rules, pts);
+                    List<string> strings = new List<string>();
+                    RuleItem defaultRule = null;
+                    foreach (var rule in rules)
+                    {
+                        if (rule.IndividualValue == "''")
+                            defaultRule = rule;
+                        else
+                            strings.Add(string.Format("{0}, ARGB({1}, {2}, {3}, {4})", rule.IndividualValue, rule.Color.A, rule.Color.R, rule.Color.G, rule.Color.B));
+                    }
+                    _inserter.InsertText(string.Format("LOOKUP({0}, ARGB({1}, {2}, {3}, {4}), {5})",
+                        ColumnCombo.Text,
+                        defaultRule.Color.A,
+                        defaultRule.Color.R,
+                        defaultRule.Color.G,
+                        defaultRule.Color.B,
+                        string.Join(", ", strings.ToArray())));
                 }
-                else if (lts != null)
-                {
-                    GenerateLineThemeRules(rules, lts);
-                }
-                else if (ats != null)
-                {
-                    GenerateAreaThemeRules(rules, ats);
-                }
-                else if (cts != null)
-                {
-                    GenerateCompositeThemeRules(rules, cts);
-                }
-
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

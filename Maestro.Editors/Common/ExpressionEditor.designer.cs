@@ -46,6 +46,8 @@ namespace Maestro.Editors.Common
             this.ColumnName = new System.Windows.Forms.ToolStripComboBox();
             this._autoCompleteTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.ExpressionText = new ICSharpCode.TextEditor.TextEditorControl();
+            this.btnTools = new System.Windows.Forms.ToolStripDropDownButton();
+            this.insertThemeExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -81,7 +83,8 @@ namespace Maestro.Editors.Common
             this.toolStripSeparator1,
             this.ColumnValue,
             this.LookupValues,
-            this.ColumnName});
+            this.ColumnName,
+            this.btnTools});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -165,6 +168,20 @@ namespace Maestro.Editors.Common
             this.ExpressionText.ShowLineNumbers = false;
             this.ExpressionText.ShowVRuler = false;
             // 
+            // btnTools
+            // 
+            this.btnTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.insertThemeExpressionToolStripMenuItem});
+            this.btnTools.Image = global::Maestro.Editors.Properties.Resources.gear;
+            resources.ApplyResources(this.btnTools, "btnTools");
+            this.btnTools.Name = "btnTools";
+            // 
+            // insertThemeExpressionToolStripMenuItem
+            // 
+            this.insertThemeExpressionToolStripMenuItem.Name = "insertThemeExpressionToolStripMenuItem";
+            resources.ApplyResources(this.insertThemeExpressionToolStripMenuItem, "insertThemeExpressionToolStripMenuItem");
+            this.insertThemeExpressionToolStripMenuItem.Click += new System.EventHandler(this.insertThemeExpressionToolStripMenuItem_Click);
+            // 
             // ExpressionEditor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -200,5 +217,7 @@ namespace Maestro.Editors.Common
         private System.Windows.Forms.ToolStripDropDownButton btnProperties;
         private System.Windows.Forms.ToolStripDropDownButton btnFunctions;
         private ICSharpCode.TextEditor.TextEditorControl ExpressionText;
+        private System.Windows.Forms.ToolStripDropDownButton btnTools;
+        private System.Windows.Forms.ToolStripMenuItem insertThemeExpressionToolStripMenuItem;
     }
 }

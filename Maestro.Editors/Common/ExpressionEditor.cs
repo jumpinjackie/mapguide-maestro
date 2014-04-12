@@ -32,16 +32,17 @@ using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using Maestro.Editors.Common.Expression;
 using ICSharpCode.TextEditor.Gui.CompletionWindow;
+using Maestro.Editors.LayerDefinition.Vector.Thematics;
 
 namespace Maestro.Editors.Common
 {
     /// <summary>
     /// An expression editor dialog
     /// </summary>
-    public partial class ExpressionEditor : Form, IExpressionEditor
+    public partial class ExpressionEditor : Form, IExpressionEditor, ITextInserter
     {
         private ClassDefinition _cls;
-        private IFeatureService _featSvc;
+        private IEditorService _edSvc;
         private string m_featureSource = null;
         private FdoProviderCapabilities _caps;
         private ITextEditor _editor;
@@ -82,19 +83,21 @@ namespace Maestro.Editors.Common
         /// <summary>
         /// Initializes the dialog.
         /// </summary>
-        /// <param name="featSvc">The feature service.</param>
+        /// <param name="edSvc">The editor service.</param>
         /// <param name="caps">The provider capabilities.</param>
         /// <param name="cls">The class definition.</param>
-        /// <param name="featuresSourceId">The features source id.</param>
+        /// <param name="featuresSourceId">The FeatureSource id.</param>
         /// <param name="attachStylizationFunctions">if set to <c>true</c> stylization functions are also attached</param>
-        public void Initialize(IFeatureService featSvc, FdoProviderCapabilities caps, ClassDefinition cls, string featuresSourceId, bool attachStylizationFunctions)
+        public void Initialize(IEditorService edSvc, FdoProviderCapabilities caps, ClassDefinition cls, string featuresSourceId, bool attachStylizationFunctions)
         {
             try
             {
                 _cls = cls;
-                _featSvc = featSvc;
+                _edSvc = edSvc;
                 m_featureSource = featuresSourceId;
                 _caps = caps;
+
+                insertThemeExpressionToolStripMenuItem.Enabled = attachStylizationFunctions;
 
                 SortedList<string, PropertyDefinition> sortedCols = new SortedList<string, PropertyDefinition>();
                 foreach (var col in _cls.Properties)
@@ -282,7 +285,7 @@ namespace Maestro.Editors.Common
                 ColumnValue.Tag = null;
                 try
                 {
-                    using (var rdr = _featSvc.AggregateQueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new System.Collections.Specialized.NameValueCollection() { 
+                    using (var rdr = _edSvc.FeatureService.AggregateQueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new System.Collections.Specialized.NameValueCollection() { 
                             { "UNIQ_VALS", expr } //NOXLATE
                         }))
                     {
@@ -327,7 +330,7 @@ namespace Maestro.Editors.Common
                         try
                         {
                             retry = false;
-                            using (var rd = _featSvc.QueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new string[] { ColumnName.Text }))
+                            using (var rd = _edSvc.FeatureService.QueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new string[] { ColumnName.Text }))
                             {
                                 while (rd.ReadNext())
                                 {
@@ -415,6 +418,19 @@ namespace Maestro.Editors.Common
         private void InsertText(string text)
         {
             ExpressionText.ActiveTextAreaControl.TextArea.InsertString(text);
+        }
+
+        private void insertThemeExpressionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var theme = new ThemeCreator(_edSvc, _cls, this))
+            {
+                theme.ShowDialog();
+            }
+        }
+
+        void ITextInserter.InsertText(string text)
+        {
+            this.InsertText(text);
         }
     }
 }
