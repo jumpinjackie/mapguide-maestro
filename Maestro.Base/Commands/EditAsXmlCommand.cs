@@ -23,6 +23,7 @@ using System.Text;
 using ICSharpCode.Core;
 using Maestro.Base.Editor;
 using System.Windows.Forms;
+using Maestro.Editors.Generic;
 
 namespace Maestro.Base.Commands
 {

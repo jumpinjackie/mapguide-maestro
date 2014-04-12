@@ -34,7 +34,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lstInstances = new System.Windows.Forms.ListView();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.imgPreviews = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAdd = new System.Windows.Forms.ToolStripDropDownButton();
             this.referenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,11 +45,14 @@
             this.symPreview = new System.Windows.Forms.PictureBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnEditInstanceProperties = new System.Windows.Forms.Button();
+            this.btnEditAsXml = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.symPreview)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
@@ -81,19 +84,20 @@
             // lstInstances
             // 
             resources.ApplyResources(this.lstInstances, "lstInstances");
-            this.lstInstances.LargeImageList = this.imageList1;
+            this.lstInstances.LargeImageList = this.imgPreviews;
+            this.lstInstances.MultiSelect = false;
             this.lstInstances.Name = "lstInstances";
-            this.lstInstances.SmallImageList = this.imageList1;
+            this.lstInstances.ShowGroups = false;
+            this.lstInstances.SmallImageList = this.imgPreviews;
             this.lstInstances.UseCompatibleStateImageBehavior = false;
             this.lstInstances.View = System.Windows.Forms.View.List;
             this.lstInstances.SelectedIndexChanged += new System.EventHandler(this.lstInstances_SelectedIndexChanged);
             // 
-            // imageList1
+            // imgPreviews
             // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "arrow.png");
-            this.imageList1.Images.SetKeyName(1, "marker.png");
+            this.imgPreviews.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            resources.ApplyResources(this.imgPreviews, "imgPreviews");
+            this.imgPreviews.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // toolStrip1
             // 
@@ -169,11 +173,19 @@
             this.btnEditInstanceProperties.UseVisualStyleBackColor = true;
             this.btnEditInstanceProperties.Click += new System.EventHandler(this.btnEditInstanceProperties_Click);
             // 
+            // btnEditAsXml
+            // 
+            resources.ApplyResources(this.btnEditAsXml, "btnEditAsXml");
+            this.btnEditAsXml.Name = "btnEditAsXml";
+            this.btnEditAsXml.UseVisualStyleBackColor = true;
+            this.btnEditAsXml.Click += new System.EventHandler(this.btnEditAsXml_Click);
+            // 
             // SymbolInstancesDialog
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
             this.ControlBox = false;
+            this.Controls.Add(this.btnEditAsXml);
             this.Controls.Add(this.btnEditInstanceProperties);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.splitContainer1);
@@ -204,10 +216,11 @@
         private System.Windows.Forms.ToolStripMenuItem inlineSimpleSymbolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inlineCompoundSymbolToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton btnDelete;
-        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ImageList imgPreviews;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox symPreview;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnEditInstanceProperties;
+        private System.Windows.Forms.Button btnEditAsXml;
     }
 }

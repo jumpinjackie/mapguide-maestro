@@ -36,6 +36,7 @@ using System.IO;
 using System.Diagnostics;
 using OSGeo.MapGuide.MaestroAPI;
 using Maestro.Editors.FeatureSource;
+using Maestro.Editors.Generic;
 
 namespace Maestro.Base.Editor
 {

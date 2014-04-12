@@ -34,6 +34,8 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using Maestro.Shared.UI;
+using Maestro.Editors.Preview;
+using System.IO;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
@@ -113,10 +115,72 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             this.Close();
         }
 
+        private void RenderPreview(ISymbolInstance symInst, ListViewItem item)
+        {
+            string previewKey = null;
+            if (!string.IsNullOrEmpty(item.ImageKey))
+                previewKey = item.ImageKey;
+            else
+                previewKey = Guid.NewGuid().ToString();
+
+            if (imgPreviews.Images.ContainsKey(previewKey))
+            {
+                Image img = imgPreviews.Images[previewKey];
+                imgPreviews.Images.RemoveByKey(previewKey);
+                img.Dispose();
+            }
+
+            var conn = _edSvc.GetEditedResource().CurrentConnection;
+            ISymbolDefinitionBase previewSymbol = null;
+            string resId = "Session:" + conn.SessionID + "//" + Guid.NewGuid().ToString() + ".SymbolDefinition";
+            switch (symInst.Reference.Type)
+            {
+                case SymbolInstanceType.Inline:
+                    previewSymbol = (ISymbolDefinitionBase)((ISymbolInstanceReferenceInline)symInst.Reference).SymbolDefinition.Clone();
+                    //Inline symbol definitions will have schema and version stripped. We need to add them back
+                    previewSymbol.SetSchemaAttributes();
+                    previewSymbol.ResourceID = resId;
+                    using (var stream = ApplyOverrides(previewSymbol, symInst.ParameterOverrides))
+                    {
+                        conn.ResourceService.SetResourceXmlData(resId, stream);
+                    }
+                    previewSymbol = (ISymbolDefinitionBase)conn.ResourceService.GetResource(resId);
+                    break;
+                case SymbolInstanceType.Reference:
+                    previewSymbol = (ISymbolDefinitionBase)conn.ResourceService.GetResource(((ISymbolInstanceReferenceLibrary)symInst.Reference).ResourceId);
+                    previewSymbol = (ISymbolDefinitionBase)previewSymbol.Clone();
+                    previewSymbol.ResourceID = resId;
+                    using (var stream = ApplyOverrides(previewSymbol, symInst.ParameterOverrides))
+                    {
+                        conn.ResourceService.SetResourceXmlData(resId, stream);
+                    }
+                    previewSymbol = (ISymbolDefinitionBase)conn.ResourceService.GetResource(resId);
+                    break;
+            }
+            var res = DefaultResourcePreviewer.GenerateSymbolDefinitionPreview(conn, previewSymbol, imgPreviews.ImageSize.Width, imgPreviews.ImageSize.Height);
+            imgPreviews.Images.Add(previewKey, res.ImagePreview);
+            item.ImageKey = previewKey;
+        }
+
+        private static Stream ApplyOverrides(ISymbolDefinitionBase previewSymbol, IParameterOverrideCollection parameterOverrideCollection)
+        {
+            foreach (var ov in parameterOverrideCollection.Override)
+            {
+                foreach (var pdef in previewSymbol.GetParameters())
+                {
+                    if (pdef.Name == ov.ParameterIdentifier)
+                    {
+                        pdef.DefaultValue = ov.ParameterValue;
+                        break;
+                    }
+                }
+            }
+            return ResourceTypeRegistry.Serialize(previewSymbol);
+        }
+
         private void AddInstance(ISymbolInstance symRef, bool add)
         {
             var li = new ListViewItem();
-            li.ImageIndex = (symRef.Reference.Type == SymbolInstanceType.Reference) ? 0 : 1;
             li.Tag = symRef;
             if (li.ImageIndex == 0)
                 li.Text = ((ISymbolInstanceReferenceLibrary)symRef.Reference).ResourceId;
@@ -127,6 +191,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             if (add)
                 _comp.AddSymbolInstance(symRef);
             li.Selected = (lstInstances.Items.Count == 1);
+            RenderPreview(symRef, li);
         }
 
         private void referenceToolStripMenuItem_Click(object sender, EventArgs e)
@@ -205,7 +270,25 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            UpdatePreviewImage();
+            RefreshPreviews(true, true);
+        }
+
+        private void RefreshPreviews(bool refreshMain, bool refreshComponents)
+        {
+            if (refreshMain)
+            {
+                UpdatePreviewImage();
+            }
+
+            if (refreshComponents)
+            {
+                foreach (ListViewItem li in lstInstances.Items)
+                {
+                    var symRef = (ISymbolInstance)li.Tag;
+                    RenderPreview(symRef, li);
+                }
+                lstInstances.Invalidate();
+            }
         }
 
         private void btnEditInstanceProperties_Click(object sender, EventArgs e)
@@ -218,6 +301,24 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 using (var diag = new SymbolInstancePropertiesDialog(symRef, _edSvc, _cls, _featureSourceId, _provider))
                 {
                     diag.ShowDialog();
+                }
+            }
+        }
+
+        private void btnEditAsXml_Click(object sender, EventArgs e)
+        {
+            string xml = _comp.ToXml();
+            XmlEditorDialog diag = new XmlEditorDialog();
+            diag.XmlContent = xml;
+            if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                _comp.UpdateFromXml(diag.XmlContent);
+                RefreshPreviews(true, false);
+                lstInstances.Clear();
+                imgPreviews.Images.Clear();
+                foreach (var sym in _comp.SymbolInstance)
+                {
+                    AddInstance(sym, false);
                 }
             }
         }

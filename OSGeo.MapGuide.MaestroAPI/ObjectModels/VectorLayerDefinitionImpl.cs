@@ -2047,6 +2047,21 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             }
         }
 
+        public string ToXml()
+        {
+            return this.Serialize();
+        }
+
+        public void UpdateFromXml(string xml)
+        {
+            var compsym = CompositeSymbolization.Deserialize(xml);
+            this.SymbolInstance.Clear();
+            foreach (var sym in compsym.SymbolInstance)
+            {
+                this.AddSymbolInstance(sym);
+            }
+        }
+
         public void AddSymbolInstance(ISymbolInstance inst)
         {
             var sym = inst as SymbolInstance;

@@ -44,12 +44,14 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
     {
         public abstract void RemoveSchemaAttributes();
 
+        public abstract void SetSchemaAttributes();
+
 #if SYM_DEF_240
-        private static readonly Version RES_VERSION = new Version(2, 4, 0);
+        protected static readonly Version RES_VERSION = new Version(2, 4, 0);
 #elif SYM_DEF_110
-        private static readonly Version RES_VERSION = new Version(1, 1, 0);
+        protected static readonly Version RES_VERSION = new Version(1, 1, 0);
 #else
-        private static readonly Version RES_VERSION = new Version(1, 0, 0);
+        protected static readonly Version RES_VERSION = new Version(1, 0, 0);
 #endif
 
         [XmlIgnore]
@@ -107,10 +109,13 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
 #if SYM_DEF_240
         protected string _vschema = "SymbolDefinition-2.4.0.xsd"; //NOXLATE
+        public const string SCHEMA_NAME = "SymbolDefinition-2.4.0.xsd"; //NOXLATE
 #elif SYM_DEF_110
         protected string _vschema = "SymbolDefinition-1.1.0.xsd"; //NOXLATE
+        public const string SCHEMA_NAME = "SymbolDefinition-1.1.0.xsd"; //NOXLATE
 #else
         protected string _vschema = "SymbolDefinition-1.0.0.xsd"; //NOXLATE
+        public const string SCHEMA_NAME = "SymbolDefinition-1.0.0.xsd"; //NOXLATE
 #endif
 
         [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")] //NOXLATE
@@ -136,6 +141,12 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         {
             _vschema = null;
             versionField = null;
+        }
+
+        public override void SetSchemaAttributes()
+        {
+            _vschema = SCHEMA_NAME;
+            versionField = RES_VERSION.Major + "." + RES_VERSION.Minor + "." + RES_VERSION.Build;
         }
 
         public static SimpleSymbolDefinition CreateDefault()
@@ -703,6 +714,12 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
                 else if (csym != null)
                     csym.RemoveSchemaAttributes();
             }
+        }
+
+        public override void SetSchemaAttributes()
+        {
+            _vschema = SCHEMA_NAME;
+            versionField = RES_VERSION.Major + "." + RES_VERSION.Minor + "." + RES_VERSION.Build;
         }
 
         public static CompoundSymbolDefinition CreateDefault()

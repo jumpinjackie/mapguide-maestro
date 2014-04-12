@@ -1,4 +1,4 @@
-﻿namespace Maestro.Base.Editor
+﻿namespace Maestro.Editors.Generic
 {
     partial class XmlEditorDialog
     {

@@ -1884,6 +1884,10 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="compDef"></param>
         /// <returns></returns>
         ISymbolInstance CreateInlineCompoundSymbol(ICompoundSymbolDefinition compDef);
+
+        string ToXml();
+
+        void UpdateFromXml(string xml);
     }
 
     /// <summary>

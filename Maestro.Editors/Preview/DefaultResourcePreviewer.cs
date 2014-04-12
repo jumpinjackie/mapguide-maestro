@@ -48,17 +48,17 @@ namespace Maestro.Editors.Preview
             _launcher = launcher;
         }
 
-        abstract class PreviewResult
+        internal abstract class PreviewResult
         {
 
         }
 
-        class UrlPreviewResult : PreviewResult
+        internal class UrlPreviewResult : PreviewResult
         {
             public string Url { get; set; }
         }
 
-        class ImagePreviewResult : PreviewResult
+        internal class ImagePreviewResult : PreviewResult
         {
             public Image ImagePreview { get; set; }
         }
@@ -95,41 +95,8 @@ namespace Maestro.Editors.Preview
                 var previewCopy = edSvc.ResourceService.GetResource(resId);
 
                 if (previewCopy.ResourceType == ResourceTypes.SymbolDefinition && conn.SiteVersion >= new Version(2, 0))
-                {
-                    //For Symbol Definition previews, we make a placeholder Layer Definition with the 
-                    ILayerDefinition layerDef = ObjectFactory.CreateDefaultLayer(conn, LayerType.Vector);
-                    IVectorLayerDefinition2 vl = layerDef.SubLayer as IVectorLayerDefinition2;
-                    if (vl != null)
-                    {
-                        //HACK-ish: We are flubbing a completely invalid Layer Definition under normal circumstances, 
-                        //but one that has the minimum required content model to generate an appropriate GETLEGENDIMAGE preview for
-                        vl.FeatureName = string.Empty;
-                        vl.ResourceId = string.Empty;
-                        vl.Geometry = string.Empty;
-                        vl.ToolTip = string.Empty;
-                        var vsr = vl.GetScaleRangeAt(0) as IVectorScaleRange2;
-                        if (vsr != null)
-                        {
-                            vsr.AreaStyle = null;
-                            vsr.LineStyle = null;
-                            vsr.PointStyle = null;
-                            var cs = layerDef.CreateDefaultCompositeStyle();
-                            var cr = cs.GetRuleAt(0);
-                            var csym = cr.CompositeSymbolization;
-                            var si = csym.CreateSymbolReference(previewCopy.ResourceID);
-                            csym.AddSymbolInstance(si);
-                            vsr.CompositeStyle = new List<ICompositeTypeStyle>() { cs };
-
-                            var ldfId = "Session:" + edSvc.SessionID + "//" + res.ResourceType.ToString() + "Preview" + Guid.NewGuid() + ".LayerDefinition"; //NOXLATE
-                            edSvc.ResourceService.SaveResourceAs(layerDef, ldfId);
-
-                            var mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
-                            var img = mappingSvc.GetLegendImage(42, ldfId, 0, 4, 100, 100, "PNG"); //NOXLATE
-                            return new ImagePreviewResult() { ImagePreview = img };
-                        }
-                    }
-
-                    return null;
+                {   
+                    return GenerateSymbolDefinitionPreview(conn, previewCopy, 100, 100);
                 }
                 else
                 {
@@ -160,6 +127,43 @@ namespace Maestro.Editors.Preview
                 }
             };
             BusyWaitDialog.Run(Strings.PrgPreparingResourcePreview, worker, onComplete);
+        }
+
+        internal static ImagePreviewResult GenerateSymbolDefinitionPreview(IServerConnection conn, IResource previewCopy, int width, int height)
+        {
+            //For Symbol Definition previews, we make a placeholder Layer Definition with the 
+            ILayerDefinition layerDef = ObjectFactory.CreateDefaultLayer(conn, LayerType.Vector);
+            IVectorLayerDefinition2 vl = layerDef.SubLayer as IVectorLayerDefinition2;
+            if (vl != null)
+            {
+                //HACK-ish: We are flubbing a completely invalid Layer Definition under normal circumstances, 
+                //but one that has the minimum required content model to generate an appropriate GETLEGENDIMAGE preview for
+                vl.FeatureName = string.Empty;
+                vl.ResourceId = string.Empty;
+                vl.Geometry = string.Empty;
+                vl.ToolTip = string.Empty;
+                var vsr = vl.GetScaleRangeAt(0) as IVectorScaleRange2;
+                if (vsr != null)
+                {
+                    vsr.AreaStyle = null;
+                    vsr.LineStyle = null;
+                    vsr.PointStyle = null;
+                    var cs = layerDef.CreateDefaultCompositeStyle();
+                    var cr = cs.GetRuleAt(0);
+                    var csym = cr.CompositeSymbolization;
+                    var si = csym.CreateSymbolReference(previewCopy.ResourceID);
+                    csym.AddSymbolInstance(si);
+                    vsr.CompositeStyle = new List<ICompositeTypeStyle>() { cs };
+
+                    var ldfId = "Session:" + conn.SessionID + "//SymbolDefinitionPreview" + Guid.NewGuid() + ".LayerDefinition"; //NOXLATE
+                    conn.ResourceService.SaveResourceAs(layerDef, ldfId);
+
+                    var mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
+                    var img = mappingSvc.GetLegendImage(42, ldfId, 0, 4, width, height, "PNG"); //NOXLATE
+                    return new ImagePreviewResult() { ImagePreview = img };
+                }
+            }
+            return null;
         }
 
         /// <summary>

@@ -240,6 +240,11 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// Purges the schema and version attributes when serializing back to XML
         /// </summary>
         void RemoveSchemaAttributes();
+
+        /// <summary>
+        /// Sets the schema and version attributes
+        /// </summary>
+        void SetSchemaAttributes();
     }
 
     /// <summary>

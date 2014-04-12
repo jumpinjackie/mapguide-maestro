@@ -246,12 +246,6 @@
     <Compile Include="Editor\XmlEditor.Designer.cs">
       <DependentUpon>XmlEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Editor\XmlEditorDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Editor\XmlEditorDialog.Designer.cs">
-      <DependentUpon>XmlEditorDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="Events\EventWatcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -570,9 +564,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editor\XmlEditor.resx">
       <DependentUpon>XmlEditor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Editor\XmlEditorDialog.resx">
-      <DependentUpon>XmlEditorDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

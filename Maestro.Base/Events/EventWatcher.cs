@@ -31,6 +31,7 @@ using Maestro.Shared.UI;
 using Maestro.Base.UI.Preferences;
 using Maestro.Editors.Preview;
 using Maestro.Editors.LayerDefinition;
+using Maestro.Editors.Generic;
 
 namespace Maestro.Base.Events
 {
@@ -73,6 +74,10 @@ namespace Maestro.Base.Events
                 case ConfigProperties.UseGridStyleEditor:
                     LayerEditorSettings.UseGridEditor = Convert.ToBoolean(e.NewValue);
                     LoggingService.Info("Use Grid Style Editor is now: " + LayerEditorSettings.UseGridEditor);
+                    break;
+                case ConfigProperties.XsdSchemaPath:
+                    XmlEditorSettings.XsdPath = e.NewValue.ToString();
+                    LoggingService.Info("XSD path is now: " + XmlEditorSettings.XsdPath);
                     break;
             }
         }

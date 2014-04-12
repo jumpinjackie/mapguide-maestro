@@ -30,12 +30,10 @@ using OSGeo.MapGuide.MaestroAPI;
 using System.Xml;
 using Maestro.Editors;
 using System.Xml.Schema;
-using Maestro.Base.UI.Preferences;
-using ICSharpCode.Core;
 
 #pragma warning disable 1591
 
-namespace Maestro.Base.Editor
+namespace Maestro.Editors.Generic
 {
     /// <summary>
     /// A generic XML editor for any resource, housed within a dialog
@@ -55,7 +53,7 @@ namespace Maestro.Base.Editor
             _ed.Validator = new XmlValidationCallback(ValidateXml);
             _ed.Dock = DockStyle.Fill;
             contentPanel.Controls.Add(_ed);
-            this.XsdPath = PropertyService.Get(ConfigProperties.XsdSchemaPath, ConfigProperties.DefaultXsdSchemaPath);
+            this.XsdPath = XmlEditorSettings.XsdPath;
         }
 
         public string XsdPath
