@@ -34,6 +34,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\Maestro\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,35 +57,23 @@
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OSGeo.MapGuide.Desktop, Version=2.4.0.6897, Culture=neutral, PublicKeyToken=e75f9fd7cf82dc3f, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\OSGeo.MapGuide.Desktop.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="OSGeo.MapGuide.Desktop">
+      <HintPath>..\Maestro\packages\mg-desktop-net40-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.Desktop.dll</HintPath>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.Foundation, Version=1.0.0.1, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\OSGeo.MapGuide.Foundation.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="OSGeo.MapGuide.Foundation">
+      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.Foundation.dll</HintPath>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.Geometry, Version=1.0.0.1, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\OSGeo.MapGuide.Geometry.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="OSGeo.MapGuide.Geometry">
+      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.Geometry.dll</HintPath>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.PlatformBase, Version=1.0.0.1, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\OSGeo.MapGuide.PlatformBase.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="OSGeo.MapGuide.PlatformBase">
+      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.PlatformBase.dll</HintPath>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.Viewer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\OSGeo.MapGuide.Viewer.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="OSGeo.MapGuide.Viewer">
+      <HintPath>..\Maestro\packages\mg-desktop-viewer-net40-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.Viewer.dll</HintPath>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.Viewer.Desktop, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\OSGeo.MapGuide.Viewer.Desktop.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="OSGeo.MapGuide.Viewer.Desktop">
+      <HintPath>..\Maestro\packages\mg-desktop-viewer-net40-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.Viewer.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -163,9 +153,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ACE.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Dictionaries\Canada\ReadMe.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -187,203 +174,12 @@
     <Content Include="Dictionaries\version.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="FDO\ArcSDEMessage.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\ArcSDEProvider.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\ArcSDEProvider91.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\ArcSDEProvider92.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\boost_date_time-vc100-mt-1_42.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\boost_thread-vc100-mt-1_42.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\ExpressionEngine.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\Fdo.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\FDOCommon.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\FDOGeometry.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\FDOMessage.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\FDOSpatial.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\gdal19.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\GRFPMessage.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\GRFPOverrides.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\GRFPProvider.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\KingOracleMessage.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\KingOracleOverrides.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\KingOracleProvider.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\MySqlOverrides.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\MySQLProvider.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\OdbcOverrides.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\ODBCProvider.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\OGRProvider.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\OWS.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\PostgreSQLOverrides.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\PostgreSQLProvider.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\providers.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\RdbmsMsg.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\RdbmsOverrides.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\SDFMessage.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\SDFProvider.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\SHPMessage.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\SHPOverrides.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\SHPProvider.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\SmMessage.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\SQLiteProvider.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\SQLServerSpatialOverrides.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\SQLServerSpatialProvider.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\WFSMessage.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\WFSProvider.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\WMSMessage.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\WMSOverrides.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\WMSProvider.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\Xalan-C_1_11.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\XalanMessages_1_11.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FDO\xerces-c_3_1.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="FoundationUnmanagedApi.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="gd.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="GeometryUnmanagedApi.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="GEOS.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Manifest.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="MapGuideDesktopUnmanagedApi.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="MgDesktop.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="MgFoundation.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="MgGeometry.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="MgGwsCommon.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="MgGwsQueryEngine.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="MgGwsResource.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="MgMdfModel.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="MgMdfParser.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="MgPlatformBase.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="MgRenderers.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="MgStylization.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="OSGeo.MapGuide.Desktop.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Resources\arrow-090.png" />
     <None Include="Resources\arrow-180.png" />
     <None Include="Resources\arrow.png" />
@@ -397,27 +193,6 @@
     <None Include="Resources\arrow-225.png" />
     <None Include="Resources\arrow-135.png" />
     <None Include="Resources\arrow-045.png" />
-    <Content Include="OSGeo.MapGuide.Foundation.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="OSGeo.MapGuide.Geometry.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="OSGeo.MapGuide.PlatformBase.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="OSGeo.MapGuide.Viewer.Desktop.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="OSGeo.MapGuide.Viewer.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="PlatformBaseUnmanagedApi.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="xerces-c_3_1mg.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="Dictionaries\Australia\Agd66\A66National%2813.09.01%29.gsb">
@@ -909,18 +684,6 @@
     <None Include="Dictionaries\Usa\Vertcon\VERTCONW.94">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="FDO\com\fdosys_sys.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="FDO\com\fdo_sys.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="FDO\com\fdo_sys_idx.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\mapguide_en.res">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -968,5 +731,17 @@
   -->
   <PropertyGroup>
     <PreBuildEvent>"$(ProjectDir)CS_Comp.exe" /b "$(ProjectDir)Dictionaries" "$(ProjectDir)Dictionaries"</PreBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+xcopy /s /y "$(SolutionDir)packages\mapguide-api-base-x86.2.5.2.7949\mapguide-api-base\*.*" "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)packages\mg-desktop-net40-x86.2.5.2.7949\mg-desktop\*.*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
 </Project>

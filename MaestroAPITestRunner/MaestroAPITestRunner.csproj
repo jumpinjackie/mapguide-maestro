@@ -34,6 +34,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\Maestro\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,12 +59,27 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ciloci.Flee">
+      <HintPath>..\Maestro\packages\fleesharp.0.9.27-pre\lib\net40\Ciloci.Flee.dll</HintPath>
+    </Reference>
     <Reference Include="NetTopologySuite.Merged">
       <HintPath>..\Thirdparty\NTS\NetTopologySuite.Merged.dll</HintPath>
     </Reference>
     <Reference Include="nunit-console-runner, Version=2.5.5.10112, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Maestro\packages\NUnit.Runners.2.6.3\tools\lib\nunit-console-runner.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.MapGuide.Desktop">
+      <HintPath>..\Maestro\packages\mg-desktop-net40-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.MapGuide.Foundation">
+      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.Foundation.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.MapGuide.Geometry">
+      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.Geometry.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.MapGuide.PlatformBase">
+      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.PlatformBase.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -98,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Platform.ini">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -160,6 +178,15 @@ echo Copy mg-desktop string bundle
 IF NOT EXIST "$(OutDir)Resources" XCOPY /S /Y /I "$(SolutionDir)..\Maestro.AddIn.Local\Resources\*.res" "$(ProjectDir)$(OutDir)Resources"
 echo Copy Maestro API Local connection dlls
 COPY /Y "$(SolutionDir)..\OSGeo.MapGuide.MaestroAPI.Local\bin\$(ConfigurationName)\OSGeo.MapGuide.MaestroAPI.Local.*" "$(ProjectDir)$(OutDir)"
-COPY /Y "$(SolutionDir)..\Maestro.AddIn.Local\*.dll" "$(ProjectDir)$(OutDir)" )</PostBuildEvent>
+COPY /Y "$(SolutionDir)..\Maestro.AddIn.Local\*.dll" "$(ProjectDir)$(OutDir)" )
+xcopy /s /y "$(SolutionDir)packages\mapguide-api-base-x86.2.5.2.7949\mapguide-api-base\*.*" "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)packages\mg-desktop-net40-x86.2.5.2.7949\mg-desktop\*.*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
 </Project>
