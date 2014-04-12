@@ -51,6 +51,13 @@ namespace Maestro.Base.Events
             svc.ConnectionAdded += new ServerConnectionEventHandler(OnConnectionAdded);
             svc.ConnectionRemoved += new ServerConnectionEventHandler(OnConnectionRemoved);
 
+            //Apply initial settings
+            PreviewSettings.UseLocalPreview = PropertyService.Get(ConfigProperties.UseLocalPreview, ConfigProperties.DefaultUseLocalPreview);
+            PreviewSettings.AddDebugWatermark = PropertyService.Get(ConfigProperties.AddDebugWatermark, ConfigProperties.DefaultAddDebugWatermark);
+            PreviewSettings.UseAjaxViewer = PropertyService.Get(ConfigProperties.PreviewViewerType, ConfigProperties.DefaultPreviewViewerType) == "AJAX";
+            LayerEditorSettings.UseGridEditor = PropertyService.Get(ConfigProperties.UseGridStyleEditor, ConfigProperties.DefaultUseGridStyleEditor);
+            XmlEditorSettings.XsdPath = PropertyService.Get(ConfigProperties.XsdSchemaPath, ConfigProperties.DefaultXsdSchemaPath);
+
             LoggingService.Info("Starting session keep-alive timer"); //NOXLATE
             _keepAliveTimer.Start();
         }
