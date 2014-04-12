@@ -106,7 +106,6 @@
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Local\OSGeo.MapGuide.MaestroAPI.Local.csproj">
       <Project>{3ddf6501-0148-474c-8674-7c7da49c7f02}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI.Local</Name>
-      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
       <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>
@@ -168,17 +167,11 @@ COPY /Y "$(ProjectDir)TestMaestroAPI.LocalNative.xml" "$(SolutionDir)..\SDK\Test
 echo COPY /Y "$(ProjectDir)ConnectionProviders.SDK.xml" "$(SolutionDir)..\SDK\Test\ConnectionProviders.xml"
 COPY /Y "$(ProjectDir)ConnectionProviders.SDK.xml" "$(SolutionDir)..\SDK\Test\ConnectionProviders.xml"
 ) ELSE (
-echo Copy CS-Map Dictionaries
-IF NOT EXIST "$(OutDir)Dictionaries" XCOPY /S /Y /I "$(SolutionDir)..\Maestro.AddIn.Local\Dictionaries\*.*" "$(ProjectDir)$(OutDir)Dictionaries"
-echo Copy FDO dlls
-IF NOT EXIST "$(OutDir)FDO" XCOPY /S /Y /I "$(SolutionDir)..\Maestro.AddIn.Local\FDO\*.*" "$(ProjectDir)$(OutDir)FDO"
-echo Copy MapGuide XML schemas
-IF NOT EXIST "$(OutDir)Schemas" XCOPY /S /Y /I "$(SolutionDir)..\OSGeo.MapGuide.MaestroAPI\Schemas\*.*" "$(ProjectDir)$(OutDir)Schemas"
-echo Copy mg-desktop string bundle
-IF NOT EXIST "$(OutDir)Resources" XCOPY /S /Y /I "$(SolutionDir)..\Maestro.AddIn.Local\Resources\*.res" "$(ProjectDir)$(OutDir)Resources"
 echo Copy Maestro API Local connection dlls
 COPY /Y "$(SolutionDir)..\OSGeo.MapGuide.MaestroAPI.Local\bin\$(ConfigurationName)\OSGeo.MapGuide.MaestroAPI.Local.*" "$(ProjectDir)$(OutDir)"
 COPY /Y "$(SolutionDir)..\Maestro.AddIn.Local\*.dll" "$(ProjectDir)$(OutDir)" )
+echo Copy CS-Map Dictionaries
+IF NOT EXIST "$(OutDir)Dictionaries" XCOPY /S /Y /I "$(SolutionDir)..\Maestro.AddIn.Local\Dictionaries\*.*" "$(ProjectDir)$(OutDir)Dictionaries"
 xcopy /s /y "$(SolutionDir)packages\mapguide-api-base-x86.2.5.2.7949\mapguide-api-base\*.*" "$(TargetDir)"
 xcopy /s /y "$(SolutionDir)packages\mg-desktop-net40-x86.2.5.2.7949\mg-desktop\*.*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
