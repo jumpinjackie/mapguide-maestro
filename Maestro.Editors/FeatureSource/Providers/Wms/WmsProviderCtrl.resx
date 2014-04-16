@@ -112,23 +112,23 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnAdvanced.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnAdvanced.Location" type="System.Drawing.Point, System.Drawing">
     <value>428, 68</value>
   </data>
   <data name="btnAdvanced.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 23</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnAdvanced.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
   </data>
@@ -139,7 +139,7 @@
     <value>btnAdvanced</value>
   </data>
   <data name="&gt;&gt;btnAdvanced.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnAdvanced.Parent" xml:space="preserve">
     <value>contentPanel</value>
@@ -169,7 +169,7 @@
     <value>txtStatus</value>
   </data>
   <data name="&gt;&gt;txtStatus.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtStatus.Parent" xml:space="preserve">
     <value>contentPanel</value>
@@ -196,7 +196,7 @@
     <value>btnTest</value>
   </data>
   <data name="&gt;&gt;btnTest.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnTest.Parent" xml:space="preserve">
     <value>contentPanel</value>
@@ -223,7 +223,7 @@
     <value>txtPassword</value>
   </data>
   <data name="&gt;&gt;txtPassword.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtPassword.Parent" xml:space="preserve">
     <value>contentPanel</value>
@@ -247,7 +247,7 @@
     <value>txtUsername</value>
   </data>
   <data name="&gt;&gt;txtUsername.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtUsername.Parent" xml:space="preserve">
     <value>contentPanel</value>
@@ -271,7 +271,7 @@
     <value>txtFeatureServer</value>
   </data>
   <data name="&gt;&gt;txtFeatureServer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;txtFeatureServer.Parent" xml:space="preserve">
     <value>contentPanel</value>
@@ -298,7 +298,7 @@
     <value>label3</value>
   </data>
   <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>contentPanel</value>
@@ -325,7 +325,7 @@
     <value>label2</value>
   </data>
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>contentPanel</value>
@@ -352,7 +352,7 @@
     <value>label1</value>
   </data>
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>contentPanel</value>
@@ -367,7 +367,7 @@
     <value>contentPanel</value>
   </data>
   <data name="&gt;&gt;contentPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;contentPanel.Parent" xml:space="preserve">
     <value>$this</value>
@@ -375,16 +375,52 @@
   <data name="&gt;&gt;contentPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="errorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.HeaderText" xml:space="preserve">
+    <value>WMS Feature Source</value>
+  </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>586, 192</value>
+  </data>
+  <data name="&gt;&gt;errorProvider.Name" xml:space="preserve">
+    <value>errorProvider</value>
+  </data>
+  <data name="&gt;&gt;errorProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>WmsProviderCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=3.0.0.5610, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=5.1.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+  </data>
+  <data name="errorProvider.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAAAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAADAAAACwAAABMAAAAZAAAAGwAAABsAAAAbAAAAGwAAABsAAAAbAAAAGwAAABsAAAAZAAAAFQAA
+        AAsAAAADAIaclwCFm8kAhZvJAIWbyQCFm8kAhZvJAIWbyQCFm8kAhZvJAIWbyQCFm8kAhZvJAIWbyQCF
+        m8kAhZvJAIaclwCPpp0cwNLnKd3s/ybc6/8l3Ov/Jdzr/yXc6/947vb/eO72/yXc6/8l3Ov/Jdzr/yXc
+        6/8l3Ov/F7/R5wCPpp0BmbAlCKK4wTba5v0r2eb/K9nm/yvZ5v8r2eb/AAAA/wAAAP8r2eb/K9nm/yvZ
+        5v8r2eb/Kdfk/QWht8EBmbAl////AQGdtXUuv8/bO9nh/zHW3v8x1t7/Mdbe/wAAAP8AAAD/Mdbe/zHW
+        3v8x1t7/Mdbe/xm7y9sBnbV1////Af///wEBoLgVB6S7s2Pb5vc91Nr/OdPX/znT1/+C6ez/guns/znT
+        1/8509f/OdPX/zXP1fcEo7qzAaC4Ff///wH///8B////AQGju103v9LRcOHt/0zV3P9A0NL/AAAA/wAA
+        AP8/0NH/P9DR/0XS1P8etsbRAaO7Xf///wH///8B////Af///wEBpb4JAqe/o3ff6+9p3u//Ydvp/y8v
+        L/8YGBj/R8vU/0bK0v9MzNTvAqe/owGlvgn///8B////Af///wH///8B////AQGpwkUsvNHFh+j0/2nf
+        8P9gYGD/YGBg/2nf8P985fP/JbrQxQGpwkX///8B////Af///wH///8B////Af///wEBq8MDAazEkXjf
+        6+V35PP/bGxs/2xsbP915PP/bNvp5QGsxJEBq8MD////Af///wH///8B////Af///wH///8B////AQGu
+        xy8fu9C7nPD6/XZ2dv92dnb/lu/5/R260LsBrscv////Af///wH///8B////Af///wH///8B////Af//
+        /wH///8BAbDJe3Dd6duM7fv/i+37/2zc6dsBsMl7////Af///wH///8B////Af///wH///8B////Af//
+        /wH///8B////AQGyyx0SuM+vrPX8+ar1/PkRuM+vAbLLHf///wH///8B////Af///wH///8B////Af//
+        /wH///8B////Af///wH///8BAbPMZWDX5dFf1+XRAbPMZf///wH///8B////Af///wH///8B////Af//
+        /wH///8B////Af///wH///8B////AQGzzA8Bs8yrAbPMqwGzzA////8B////Af///wH///8B////Af//
+        /wH///8B////Af///wH///8B////Af///wH///8B////Af///wH///8B////Af///wH///8B////Af//
+        /wH///8BAAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA
+        //8AAP//AAD//w==
+</value>
   </data>
 </root>

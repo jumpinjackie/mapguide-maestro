@@ -57,6 +57,10 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
                 txtFeatureServer.Text = _fs.GetConnectionProperty("FeatureServer"); //NOXLATE
                 txtUsername.Text = _fs.GetConnectionProperty("Username"); //NOXLATE
                 txtPassword.Text = _fs.GetConnectionProperty("Password"); //NOXLATE
+
+                //A new WMS Feature Source will have no configuration document
+                if (service.IsNew)
+                    errorProvider.SetError(btnAdvanced, Strings.WarningUnconfiguredWmsFeatureSource);
             }
             finally
             {

@@ -97,15 +97,6 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Building configuration document for WMS Feature Source.
-        /// </summary>
-        internal static string AutoConfiguringFeatureSource {
-            get {
-                return ResourceManager.GetString("AutoConfiguringFeatureSource", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Base Layer Group.
         /// </summary>
         internal static string BaseLayerGroup {
@@ -2844,6 +2835,15 @@ namespace Maestro.Editors {
         internal static string WarningMapExtentCalculation {
             get {
                 return ResourceManager.GetString("WarningMapExtentCalculation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your WMS Feature Source is not configured. An un-configured WMS Feature Source may not properly read layer information from your WMS Server. Click &quot;Advanced&quot; after testing your connection to build a default document..
+        /// </summary>
+        internal static string WarningUnconfiguredWmsFeatureSource {
+            get {
+                return ResourceManager.GetString("WarningUnconfiguredWmsFeatureSource", resourceCulture);
             }
         }
         

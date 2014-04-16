@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WmsProviderCtrl));
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -38,7 +39,9 @@
             this.txtStatus = new System.Windows.Forms.TextBox();
             this.btnTest = new System.Windows.Forms.Button();
             this.btnAdvanced = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.contentPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // contentPanel
@@ -107,14 +110,19 @@
             this.btnAdvanced.UseVisualStyleBackColor = true;
             this.btnAdvanced.Click += new System.EventHandler(this.btnAdvanced_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            resources.ApplyResources(this.errorProvider, "errorProvider");
+            // 
             // WmsProviderCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "WMS Feature Source";
-            this.Name = "WmsProviderCtrl";
             resources.ApplyResources(this, "$this");
+            this.Name = "WmsProviderCtrl";
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -130,6 +138,7 @@
         private System.Windows.Forms.Button btnAdvanced;
         private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.ErrorProvider errorProvider;
 
     }
 }

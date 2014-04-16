@@ -1578,7 +1578,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="ThemingNotAVectorLayer" xml:space="preserve">
     <value>The layer being themed is not a vector layer</value>
   </data>
-  <data name="AutoConfiguringFeatureSource" xml:space="preserve">
-    <value>Building configuration document for WMS Feature Source</value>
+  <data name="WarningUnconfiguredWmsFeatureSource" xml:space="preserve">
+    <value>Your WMS Feature Source is not configured. An un-configured WMS Feature Source may not properly read layer information from your WMS Server. Click "Advanced" after testing your connection to build a default document.</value>
   </data>
 </root>
