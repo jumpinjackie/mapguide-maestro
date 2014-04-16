@@ -23,7 +23,7 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Open Source Geospatial Foundation")]
-[assembly: AssemblyCopyright("Copyright (c) 2012, Jackie Ng")]
+[assembly: AssemblyCopyright("Copyright (c) 2014, Jackie Ng")]
 
 // Version information for an assembly consists of the following four values:
 //

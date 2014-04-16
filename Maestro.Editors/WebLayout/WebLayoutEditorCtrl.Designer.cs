@@ -32,6 +32,7 @@
             this.webLayoutSettingsCtrl = new Maestro.Editors.WebLayout.WebLayoutSettingsCtrl();
             this.webLayoutMenusCtrl = new Maestro.Editors.WebLayout.WebLayoutMenusCtrl();
             this.webLayoutCommandsCtrl = new Maestro.Editors.WebLayout.WebLayoutCommandsCtrl();
+            this.webLayout3SettingsCtrl = new Maestro.Editors.WebLayout.WebLayout3SettingsCtrl();
             this.SuspendLayout();
             // 
             // webLayoutSettingsCtrl
@@ -40,7 +41,6 @@
             resources.ApplyResources(this.webLayoutSettingsCtrl, "webLayoutSettingsCtrl");
             this.webLayoutSettingsCtrl.HeaderBackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.webLayoutSettingsCtrl.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.webLayoutSettingsCtrl.HeaderText = "General Settings";
             this.webLayoutSettingsCtrl.Name = "webLayoutSettingsCtrl";
             // 
             // webLayoutMenusCtrl
@@ -49,7 +49,6 @@
             resources.ApplyResources(this.webLayoutMenusCtrl, "webLayoutMenusCtrl");
             this.webLayoutMenusCtrl.HeaderBackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.webLayoutMenusCtrl.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.webLayoutMenusCtrl.HeaderText = "Menus and Toolbars";
             this.webLayoutMenusCtrl.Name = "webLayoutMenusCtrl";
             // 
             // webLayoutCommandsCtrl
@@ -58,8 +57,15 @@
             resources.ApplyResources(this.webLayoutCommandsCtrl, "webLayoutCommandsCtrl");
             this.webLayoutCommandsCtrl.HeaderBackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.webLayoutCommandsCtrl.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.webLayoutCommandsCtrl.HeaderText = "Commands";
             this.webLayoutCommandsCtrl.Name = "webLayoutCommandsCtrl";
+            // 
+            // webLayout3SettingsCtrl
+            // 
+            this.webLayout3SettingsCtrl.ContentBackgroundColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.webLayout3SettingsCtrl, "webLayout3SettingsCtrl");
+            this.webLayout3SettingsCtrl.HeaderBackgroundColor = System.Drawing.Color.LightSteelBlue;
+            this.webLayout3SettingsCtrl.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.webLayout3SettingsCtrl.Name = "webLayout3SettingsCtrl";
             // 
             // WebLayoutEditorCtrl
             // 
@@ -67,6 +73,7 @@
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.webLayoutCommandsCtrl);
             this.Controls.Add(this.webLayoutMenusCtrl);
+            this.Controls.Add(this.webLayout3SettingsCtrl);
             this.Controls.Add(this.webLayoutSettingsCtrl);
             this.Name = "WebLayoutEditorCtrl";
             this.ResumeLayout(false);
@@ -78,6 +85,7 @@
         private WebLayoutSettingsCtrl webLayoutSettingsCtrl;
         private WebLayoutMenusCtrl webLayoutMenusCtrl;
         private WebLayoutCommandsCtrl webLayoutCommandsCtrl;
+        private WebLayout3SettingsCtrl webLayout3SettingsCtrl;
 
     }
 }

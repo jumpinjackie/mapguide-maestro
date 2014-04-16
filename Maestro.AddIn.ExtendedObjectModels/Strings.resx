@@ -139,7 +139,10 @@
     <value>MapGuide Open Source 2.3 / Autodesk Infrastructure Map Server 2012</value>
   </data>
   <data name="TPL_CATEGORY_MGOS24" xml:space="preserve">
-    <value>Autodesk Infrastructure Map Server 2013</value>
+    <value>MapGuide Open Source 2.4 / Autodesk Infrastructure Map Server 2013</value>
+  </data>
+  <data name="TPL_CATEGORY_MGOS26" xml:space="preserve">
+    <value>MapGuide Open Source 2.6 / Autodesk Infrastructure Map Server 2015</value>
   </data>
   <data name="TPL_CSD_240_DESC" xml:space="preserve">
     <value>Create a new Compound Symbol Definition using the v2.4.0 schema</value>
@@ -248,5 +251,11 @@
   </data>
   <data name="TPL_WL_240_NAME" xml:space="preserve">
     <value>Web Layout (v2.4.0)</value>
+  </data>
+  <data name="TPL_WL_260_DESC" xml:space="preserve">
+    <value>Create a new Web Layout using the v2.6.0 schema</value>
+  </data>
+  <data name="TPL_WL_260_NAME" xml:space="preserve">
+    <value>Web Layout (v2.6.0)</value>
   </data>
 </root>

@@ -55,6 +55,21 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
         }
     }
 
+    internal class WebLayout260EditorFactory : IEditorFactory
+    {
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+
+        public WebLayout260EditorFactory()
+        {
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, "2.6.0"); //NOXLATE
+        }
+
+        public IEditorViewContent Create()
+        {
+            return new WebLayoutEditor();
+        }
+    }
+
     internal class LayerDefinition110EditorFactory : IEditorFactory
     {
         public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }

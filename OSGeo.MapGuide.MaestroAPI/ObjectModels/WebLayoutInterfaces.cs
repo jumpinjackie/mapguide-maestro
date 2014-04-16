@@ -503,6 +503,37 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
     }
 
     /// <summary>
+    /// Web Layout from v2.6.0 schema
+    /// </summary>
+    public interface IWebLayout3 : IWebLayout2
+    {
+        /// <summary>
+        /// Gets or sets the selection color
+        /// </summary>
+        string SelectionColor { get; set; }
+
+        /// <summary>
+        /// Gets or sets the point selection buffer pixel tolerance
+        /// </summary>
+        int PointSelectionBuffer { get; set; }
+
+        /// <summary>
+        /// Gets or sets the map image format
+        /// </summary>
+        string MapImageFormat { get; set; }
+
+        /// <summary>
+        /// Gets or sets the selection image format
+        /// </summary>
+        string SelectionImageFormat { get; set; }
+
+        /// <summary>
+        /// Gets or sets the startup script code
+        /// </summary>
+        string StartupScript { get; set; }
+    }
+
+    /// <summary>
     /// The map referenced in this web layout
     /// </summary>
     public interface IMap : INotifyPropertyChanged

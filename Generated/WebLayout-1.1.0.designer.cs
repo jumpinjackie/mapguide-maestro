@@ -5,7 +5,9 @@
 //    <NameSpace>OSGeo.MapGuide.ObjectModels.WebLayout</NameSpace><Collection>BindingList</Collection><codeType>CSharp</codeType><EnableDataBinding>True</EnableDataBinding><EnableLasyLoading>False</EnableLasyLoading><HidePrivateFieldInIDE>True</HidePrivateFieldInIDE><EnableSummaryComment>True</EnableSummaryComment><IncludeSerializeMethod>True</IncludeSerializeMethod><UseBaseClass>False</UseBaseClass><GenerateCloneMethod>True</GenerateCloneMethod><GenerateDataContracts>False</GenerateDataContracts><CodeBaseTag>Net20</CodeBaseTag><SerializeMethodName>Serialize</SerializeMethodName><DeserializeMethodName>Deserialize</DeserializeMethodName><SaveToFileMethodName>SaveToFile</SaveToFileMethodName><LoadFromFileMethodName>LoadFromFile</LoadFromFileMethodName><GenerateXMLAttributes>True</GenerateXMLAttributes><AutomaticProperties>False</AutomaticProperties><DisableDebug>False</DisableDebug><CustomUsings></CustomUsings><ExcludeIncludedTypes>False</ExcludeIncludedTypes><EnableInitializeFields>False</EnableInitializeFields>
 //  </auto-generated>
 // ------------------------------------------------------------------------------
-#if WL240
+#if WL260
+namespace OSGeo.MapGuide.ObjectModels.WebLayout_2_6_0 {
+#elif WL240
 namespace OSGeo.MapGuide.ObjectModels.WebLayout_2_4_0 {
 #else
 namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0 {
@@ -34,7 +36,24 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0 {
         
         [EditorBrowsable(EditorBrowsableState.Never)]
         private bool enablePingServerField;
-        
+
+#if WL260
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        private string selectionColorField;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        private int pointSelectionBufferField;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        private string mapImageFormatField;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        private string selectionImageFormatField;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        private string startupScriptField;
+#endif
+
         [EditorBrowsable(EditorBrowsableState.Never)]
         private ToolBarType toolBarField;
         
@@ -105,6 +124,120 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0 {
                 }
             }
         }
+
+#if WL260
+        public string SelectionColor
+        {
+            get
+            {
+                return this.selectionColorField;
+            }
+            set
+            {
+                if (this.selectionColorField != null)
+                {
+                    if ((selectionColorField.Equals(value) != true))
+                    {
+                        this.selectionColorField = value;
+                        this.OnPropertyChanged("SelectionColor");
+                    }
+                }
+                else
+                {
+                    this.selectionColorField = value;
+                    this.OnPropertyChanged("SelectionColor");
+                }
+            }
+        }
+
+        public int PointSelectionBuffer
+        {
+            get
+            {
+                return this.pointSelectionBufferField;
+            }
+            set
+            {
+                if ((pointSelectionBufferField.Equals(value) != true))
+                {
+                    this.pointSelectionBufferField = value;
+                    this.OnPropertyChanged("PointSelectionBuffer");
+                }
+            }
+        }
+
+        public string MapImageFormat
+        {
+            get
+            {
+                return this.mapImageFormatField;
+            }
+            set
+            {
+                if (this.mapImageFormatField != null)
+                {
+                    if ((mapImageFormatField.Equals(value) != true))
+                    {
+                        this.mapImageFormatField = value;
+                        this.OnPropertyChanged("MapImageFormat");
+                    }
+                }
+                else
+                {
+                    this.mapImageFormatField = value;
+                    this.OnPropertyChanged("MapImageFormat");
+                }
+            }
+        }
+
+        public string SelectionImageFormat
+        {
+            get
+            {
+                return this.selectionImageFormatField;
+            }
+            set
+            {
+                if (this.selectionImageFormatField != null)
+                {
+                    if ((selectionImageFormatField.Equals(value) != true))
+                    {
+                        this.selectionImageFormatField = value;
+                        this.OnPropertyChanged("SelectionImageFormat");
+                    }
+                }
+                else
+                {
+                    this.selectionImageFormatField = value;
+                    this.OnPropertyChanged("SelectionImageFormat");
+                }
+            }
+        }
+
+        public string StartupScript
+        {
+            get
+            {
+                return this.startupScriptField;
+            }
+            set
+            {
+                if (this.startupScriptField != null)
+                {
+                    if ((startupScriptField.Equals(value) != true))
+                    {
+                        this.startupScriptField = value;
+                        this.OnPropertyChanged("StartupScript");
+                    }
+                }
+                else
+                {
+                    this.startupScriptField = value;
+                    this.OnPropertyChanged("StartupScript");
+                }
+            }
+        }
+#endif
         
         public ToolBarType ToolBar {
             get {

@@ -23,7 +23,9 @@ using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 
-#if WL240
+#if WL260
+namespace OSGeo.MapGuide.ObjectModels.WebLayout_2_6_0
+#elif WL240
 namespace OSGeo.MapGuide.ObjectModels.WebLayout_2_4_0
 #else
 namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0
@@ -33,7 +35,9 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0
     {
         public override ResourceTypeDescriptor SupportedResourceAndVersion
         {
-#if WL240
+#if WL260
+            get { return new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, "2.6.0"); }
+#elif WL240
             get { return new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, "2.4.0"); }
 #else
             get { return new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, "1.1.0"); }

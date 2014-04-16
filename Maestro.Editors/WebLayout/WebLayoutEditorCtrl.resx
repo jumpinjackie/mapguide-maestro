@@ -112,23 +112,26 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="webLayoutSettingsCtrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="webLayoutSettingsCtrl.HeaderText" xml:space="preserve">
+    <value>General Settings</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="webLayoutSettingsCtrl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="webLayoutSettingsCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>524, 455</value>
+    <value>490, 455</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="webLayoutSettingsCtrl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -136,22 +139,25 @@
     <value>webLayoutSettingsCtrl</value>
   </data>
   <data name="&gt;&gt;webLayoutSettingsCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.WebLayout.WebLayoutSettingsCtrl, Maestro.Editors, Version=3.0.0.5334, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.WebLayout.WebLayoutSettingsCtrl, Maestro.Editors, Version=5.1.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;webLayoutSettingsCtrl.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;webLayoutSettingsCtrl.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="webLayoutMenusCtrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="webLayoutMenusCtrl.HeaderText" xml:space="preserve">
+    <value>Menus and Toolbars</value>
+  </data>
   <data name="webLayoutMenusCtrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 455</value>
+    <value>0, 705</value>
   </data>
   <data name="webLayoutMenusCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>524, 289</value>
+    <value>490, 289</value>
   </data>
   <data name="webLayoutMenusCtrl.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -160,7 +166,7 @@
     <value>webLayoutMenusCtrl</value>
   </data>
   <data name="&gt;&gt;webLayoutMenusCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.WebLayout.WebLayoutMenusCtrl, Maestro.Editors, Version=3.0.0.5334, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.WebLayout.WebLayoutMenusCtrl, Maestro.Editors, Version=5.1.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;webLayoutMenusCtrl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -171,11 +177,14 @@
   <data name="webLayoutCommandsCtrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="webLayoutCommandsCtrl.HeaderText" xml:space="preserve">
+    <value>Commands</value>
+  </data>
   <data name="webLayoutCommandsCtrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 744</value>
+    <value>0, 994</value>
   </data>
   <data name="webLayoutCommandsCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>524, 449</value>
+    <value>490, 449</value>
   </data>
   <data name="webLayoutCommandsCtrl.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -184,7 +193,7 @@
     <value>webLayoutCommandsCtrl</value>
   </data>
   <data name="&gt;&gt;webLayoutCommandsCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.WebLayout.WebLayoutCommandsCtrl, Maestro.Editors, Version=3.0.0.5334, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.WebLayout.WebLayoutCommandsCtrl, Maestro.Editors, Version=5.1.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;webLayoutCommandsCtrl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -192,19 +201,46 @@
   <data name="&gt;&gt;webLayoutCommandsCtrl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="webLayout3SettingsCtrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="webLayout3SettingsCtrl.HeaderText" xml:space="preserve">
+    <value>Advanced Settings</value>
+  </data>
+  <data name="webLayout3SettingsCtrl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 455</value>
+  </data>
+  <data name="webLayout3SettingsCtrl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>490, 250</value>
+  </data>
+  <data name="webLayout3SettingsCtrl.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;webLayout3SettingsCtrl.Name" xml:space="preserve">
+    <value>webLayout3SettingsCtrl</value>
+  </data>
+  <data name="&gt;&gt;webLayout3SettingsCtrl.Type" xml:space="preserve">
+    <value>Maestro.Editors.WebLayout.WebLayout3SettingsCtrl, Maestro.Editors, Version=5.1.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+  </data>
+  <data name="&gt;&gt;webLayout3SettingsCtrl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;webLayout3SettingsCtrl.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>524, 500</value>
+    <value>490, 500</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>WebLayoutEditorCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.EditorBase, Maestro.Editors, Version=3.0.0.5334, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.EditorBase, Maestro.Editors, Version=5.1.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
 </root>

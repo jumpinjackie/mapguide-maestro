@@ -29,7 +29,9 @@ using System.IO;
 
 #pragma warning disable 1591, 0114, 0108
 
-#if WL240
+#if WL260
+namespace OSGeo.MapGuide.ObjectModels.WebLayout_2_6_0
+#elif WL240
 namespace OSGeo.MapGuide.ObjectModels.WebLayout_2_4_0
 #elif WL110
 namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0
@@ -42,13 +44,23 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
         public static IWebLayout CreateDefault(string mapDefinitionId)
         {
             IWebLayout wl = WebLayoutType.CreateDefault(mapDefinitionId);
-#if WL240
+#if WL240 || WL260
             //NOTE: This separator is needed because the AJAX viewer currently assumes the maptip
             //command to be at a certain position (!!!). The seperator ensures the command is at
             //the right position
             wl.ToolBar.AddItem(wl.CreateSeparator());
             wl.CommandSet.AddCommand(wl.CreateBasicCommand("Maptip", Strings.WL_Desc_MapTip, Strings.WL_Desc_MapTip, "icon_maptip", TargetViewerType.All, BasicCommandActionType.MapTip)); //NOXLATE
             wl.ToolBar.AddItem(wl.CreateCommandItem(BasicCommandActionType.MapTip.ToString()));
+            IWebLayout2 wl2 = (IWebLayout2)wl;
+            wl2.EnablePingServer = true;
+#endif
+
+#if WL260
+            IWebLayout3 wl3 = (IWebLayout3)wl;
+            wl3.SelectionColor = "0000FFFF";
+            wl3.PointSelectionBuffer = 2;
+            wl3.MapImageFormat = "PNG";
+            wl3.SelectionImageFormat = "PNG";
 #endif
             return wl;
         }
@@ -75,7 +87,9 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
     {
         internal WebLayoutType() { }
 
-#if WL240
+#if WL260
+        private static readonly Version RES_VERSION = new Version(2, 6, 0);
+#elif WL240
         private static readonly Version RES_VERSION = new Version(2, 4, 0);
 #elif WL110
         private static readonly Version RES_VERSION = new Version(1, 1, 0);
@@ -139,7 +153,9 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
         [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")] //NOXLATE
         public string ValidatingSchema
         {
-#if WL240
+#if WL260
+            get { return "WebLayout-2.6.0.xsd"; } //NOXLATE
+#elif WL240
             get { return "WebLayout-2.4.0.xsd"; } //NOXLATE
 #elif WL110
             get { return "WebLayout-1.1.0.xsd"; } //NOXLATE

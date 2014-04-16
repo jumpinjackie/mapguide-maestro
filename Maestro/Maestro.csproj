@@ -275,6 +275,10 @@
       <Link>Schemas\PrintLayout-1.0.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\ProfileResult-2.4.0.xsd">
+      <Link>Schemas\ProfileResult-2.4.0.xsd</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\RepositoryContent-1.0.0.xsd">
       <Link>Schemas\RepositoryContent-1.0.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -405,6 +409,10 @@
     </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WebLayout-1.1.0.xsd">
       <Link>Schemas\WebLayout-1.1.0.xsd</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WebLayout-2.6.0.xsd">
+      <Link>Schemas\WebLayout-2.6.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="App.config" />

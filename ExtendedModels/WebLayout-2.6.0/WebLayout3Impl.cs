@@ -1,5 +1,5 @@
 ﻿#region Disclaimer / License
-// Copyright (C) 2010, Jackie Ng
+// Copyright (C) 2014, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
 // This library is free software; you can redistribute it and/or
@@ -17,31 +17,13 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 #endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 
 #if WL260
 namespace OSGeo.MapGuide.ObjectModels.WebLayout_2_6_0
-#elif WL240
-namespace OSGeo.MapGuide.ObjectModels.WebLayout_2_4_0
-#else
-namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0
-#endif
 {
-    partial class WebLayoutType : IWebLayout2
+    partial class WebLayoutType : IWebLayout3
     {
-        bool IWebLayout2.EnablePingServer
-        {
-            get
-            {
-                return this.EnablePingServer;
-            }
-            set
-            {
-                this.EnablePingServer = value;
-            }
-        }
     }
 }
+#endif

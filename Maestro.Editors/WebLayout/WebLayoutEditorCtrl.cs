@@ -25,6 +25,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using Maestro.Shared.UI;
+using OSGeo.MapGuide.ObjectModels.WebLayout;
 
 namespace Maestro.Editors.WebLayout
 {
@@ -52,6 +53,16 @@ namespace Maestro.Editors.WebLayout
             webLayoutSettingsCtrl.Bind(service);
             webLayoutMenusCtrl.Bind(service);
             webLayoutCommandsCtrl.Bind(service);
+            var wl3 = service.GetEditedResource() as IWebLayout3;
+            if (wl3 != null)
+            {
+                webLayout3SettingsCtrl.Bind(service);
+            }
+            else
+            {
+                this.Controls.Remove(webLayout3SettingsCtrl);
+                webLayout3SettingsCtrl.Dispose();
+            }
         }
     }
 }

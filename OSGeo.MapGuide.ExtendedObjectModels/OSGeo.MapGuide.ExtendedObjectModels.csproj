@@ -128,6 +128,10 @@
       <Project>{BEC17FD3-2ADB-4154-934D-494313C588EE}</Project>
       <Name>OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ExtendedModels\WebLayout-2.6.0\OSGeo.MapGuide.ObjectModels.WebLayout-2.6.0.csproj">
+      <Project>{829d2a4e-7dbc-48ad-9cf9-12acfbf943a6}</Project>
+      <Name>OSGeo.MapGuide.ObjectModels.WebLayout-2.6.0</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
       <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI</Name>

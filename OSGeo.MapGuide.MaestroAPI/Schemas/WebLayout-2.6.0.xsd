@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="WebLayout" type="WebLayoutType"/>
+  <xs:complexType name="WebLayoutType">
+    <xs:sequence>
+      <xs:element name="Title" type="xs:string"/>
+      <xs:element name="Map" type="MapType"/>
+      <xs:element name="EnablePingServer" type="xs:boolean" minOccurs="0" />
+      <xs:element name="SelectionColor" type="xs:string" minOccurs="0" />
+      <xs:element name="PointSelectionBuffer" type="xs:integer" minOccurs="0" />
+      <xs:element name="MapImageFormat" type="xs:string" minOccurs="0" />
+      <xs:element name="SelectionImageFormat" type="xs:string" minOccurs="0" />
+      <xs:element name="StartupScript" type="xs:string" minOccurs="0" />
+      <xs:element name="ToolBar" type="ToolBarType"/>
+      <xs:element name="InformationPane" type="InformationPaneType"/>
+      <xs:element name="ContextMenu" type="ContextMenuType"/>
+      <xs:element name="TaskPane" type="TaskPaneType"/>
+      <xs:element name="StatusBar" type="StatusBarType"/>
+      <xs:element name="ZoomControl" type="ZoomControlType"/>
+      <xs:element name="CommandSet" type="CommandSetType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResourceReferenceType">
+    <xs:sequence>
+      <xs:element name="ResourceId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MapType">
+    <xs:complexContent>
+      <xs:extension base="ResourceReferenceType">
+        <xs:sequence>
+          <xs:element name="InitialView" type="MapViewType" minOccurs="0"/>
+          <xs:element name="HyperlinkTarget" type="TargetType"/>
+          <xs:element name="HyperlinkTargetFrame" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WebLayoutControlType">
+    <xs:sequence>
+      <xs:element name="Visible" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WebLayoutResizableControlType">
+    <xs:complexContent>
+      <xs:extension base="WebLayoutControlType">
+        <xs:sequence>
+          <xs:element name="Width" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ToolBarType">
+    <xs:complexContent>
+      <xs:extension base="WebLayoutControlType">
+        <xs:sequence>
+          <xs:element name="Button" type="UIItemType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ContextMenuType">
+    <xs:complexContent>
+      <xs:extension base="WebLayoutControlType">
+        <xs:sequence>
+          <xs:element name="MenuItem" type="UIItemType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="StatusBarType">
+    <xs:complexContent>
+      <xs:extension base="WebLayoutControlType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ZoomControlType">
+    <xs:complexContent>
+      <xs:extension base="WebLayoutControlType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="InformationPaneType">
+    <xs:complexContent>
+      <xs:extension base="WebLayoutResizableControlType">
+        <xs:sequence>
+          <xs:element name="LegendVisible" type="xs:boolean"/>
+          <xs:element name="PropertiesVisible" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TaskPaneType">
+    <xs:complexContent>
+      <xs:extension base="WebLayoutResizableControlType">
+        <xs:sequence>
+          <xs:element name="TaskBar" type="TaskBarType"/>
+          <xs:element name="InitialTask" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TaskButtonType">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Tooltip" type="xs:string" minOccurs="0"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+      <xs:element name="ImageURL" type="xs:string" minOccurs="0"/>
+      <xs:element name="DisabledImageURL" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="TaskBarType">
+    <xs:complexContent>
+      <xs:extension base="WebLayoutControlType">
+        <xs:sequence>
+          <xs:element name="Home" type="TaskButtonType"/>
+          <xs:element name="Forward" type="TaskButtonType"/>
+          <xs:element name="Back" type="TaskButtonType"/>
+          <xs:element name="Tasks" type="TaskButtonType"/>
+          <xs:element name="MenuButton" type="UIItemType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CommandSetType">
+    <xs:sequence>
+      <xs:element name="Command" type="CommandType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MapViewType">
+    <xs:sequence>
+      <xs:element name="CenterX" type="xs:double"/>
+      <xs:element name="CenterY" type="xs:double"/>
+      <xs:element name="Scale" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UIItemType">
+    <xs:sequence>
+      <xs:element name="Function" type="UIItemFunctionType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="UIItemFunctionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Separator"/>
+      <xs:enumeration value="Command"/>
+      <xs:enumeration value="Flyout"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="FlyoutItemType">
+    <xs:complexContent>
+      <xs:extension base="UIItemType">
+        <xs:sequence>
+          <xs:element name="Label" type="xs:string"/>
+          <xs:element name="Tooltip" type="xs:string" minOccurs="0"/>
+          <xs:element name="Description" type="xs:string" minOccurs="0"/>
+          <xs:element name="ImageURL" type="xs:string" minOccurs="0"/>
+          <xs:element name="DisabledImageURL" type="xs:string" minOccurs="0"/>
+          <xs:element name="SubItem" type="UIItemType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SeparatorItemType">
+    <xs:complexContent>
+      <xs:extension base="UIItemType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CommandItemType">
+    <xs:complexContent>
+      <xs:extension base="UIItemType">
+        <xs:sequence>
+          <xs:element name="Command" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="CommandType" abstract="true">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Label" type="xs:string"/>
+      <xs:element name="Tooltip" type="xs:string" minOccurs="0"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+      <xs:element name="ImageURL" type="xs:string" minOccurs="0"/>
+      <xs:element name="DisabledImageURL" type="xs:string" minOccurs="0"/>
+      <xs:element name="TargetViewer" type="TargetViewerType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="BasicCommandActionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Pan"/>
+      <xs:enumeration value="PanUp"/>
+      <xs:enumeration value="PanDown"/>
+      <xs:enumeration value="PanRight"/>
+      <xs:enumeration value="PanLeft"/>
+      <xs:enumeration value="Zoom"/>
+      <xs:enumeration value="ZoomIn"/>
+      <xs:enumeration value="ZoomOut"/>
+      <xs:enumeration value="ZoomRectangle"/>
+      <xs:enumeration value="ZoomToSelection"/>
+      <xs:enumeration value="FitToWindow"/>
+      <xs:enumeration value="PreviousView"/>
+      <xs:enumeration value="NextView"/>
+      <xs:enumeration value="RestoreView"/>
+      <xs:enumeration value="Select"/>
+      <xs:enumeration value="SelectRadius"/>
+      <xs:enumeration value="SelectPolygon"/>
+      <xs:enumeration value="ClearSelection"/>
+      <xs:enumeration value="Refresh"/>
+      <xs:enumeration value="CopyMap"/>
+      <xs:enumeration value="About"/>
+      <xs:enumeration value="MapTip"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="BasicCommandType">
+    <xs:complexContent>
+      <xs:extension base="CommandType">
+        <xs:sequence>
+          <xs:element name="Action" type="BasicCommandActionType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="TargetViewerType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Dwf"/>
+      <xs:enumeration value="Ajax"/>
+      <xs:enumeration value="All"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="CustomCommandType" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="CommandType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TargetedCommandType" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="CustomCommandType">
+        <xs:sequence>
+          <xs:element name="Target" type="TargetType"/>
+          <xs:element name="TargetFrame" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="TargetType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TaskPane"/>
+      <xs:enumeration value="NewWindow"/>
+      <xs:enumeration value="SpecifiedFrame"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="SearchCommandType">
+    <xs:complexContent>
+      <xs:extension base="TargetedCommandType">
+        <xs:sequence>
+          <xs:element name="Layer" type="xs:string"/>
+          <xs:element name="Prompt" type="xs:string"/>
+          <xs:element name="ResultColumns" type="ResultColumnSetType"/>
+          <xs:element name="Filter" type="xs:string" minOccurs="0"/>
+          <xs:element name="MatchLimit" type="xs:integer"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="InvokeURLCommandType">
+    <xs:complexContent>
+      <xs:extension base="TargetedCommandType">
+        <xs:sequence>
+          <xs:element name="URL" type="xs:string"/>
+          <xs:element name="LayerSet" type="LayerSetType" minOccurs="0"/>
+          <xs:element name="AdditionalParameter" type="ParameterPairType" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="DisableIfSelectionEmpty" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="BufferCommandType">
+    <xs:complexContent>
+      <xs:extension base="TargetedCommandType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SelectWithinCommandType">
+    <xs:complexContent>
+      <xs:extension base="TargetedCommandType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PrintCommandType">
+    <xs:complexContent>
+      <xs:extension base="CustomCommandType">
+        <xs:sequence>
+          <xs:element name="PrintLayout" type="ResourceReferenceType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GetPrintablePageCommandType">
+    <xs:complexContent>
+      <xs:extension base="TargetedCommandType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MeasureCommandType">
+    <xs:complexContent>
+      <xs:extension base="TargetedCommandType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ViewOptionsCommandType">
+    <xs:complexContent>
+      <xs:extension base="TargetedCommandType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="HelpCommandType">
+    <xs:complexContent>
+      <xs:extension base="TargetedCommandType">
+        <xs:sequence>
+          <xs:element name="URL" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="InvokeScriptCommandType">
+    <xs:complexContent>
+      <xs:extension base="CustomCommandType">
+        <xs:sequence>
+          <xs:element name="Script" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ParameterPairType">
+    <xs:sequence>
+      <xs:element name="Key" type="xs:string"/>
+      <xs:element name="Value" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LayerSetType">
+    <xs:sequence>
+      <xs:element name="Layer" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResultColumnType">
+    <xs:sequence>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Property" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResultColumnSetType">
+    <xs:sequence>
+      <xs:element name="Column" type="ResultColumnType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

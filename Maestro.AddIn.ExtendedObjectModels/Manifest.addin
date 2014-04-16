@@ -22,6 +22,7 @@
         <Class id="LayerDefinitionEditor130" class="Maestro.AddIn.ExtendedObjectModels.Editor.LayerDefinition130EditorFactory" />
         <Class id="WebLayoutEditor110" class="Maestro.AddIn.ExtendedObjectModels.Editor.WebLayout110EditorFactory" />
         <Class id="WebLayoutEditor240" class="Maestro.AddIn.ExtendedObjectModels.Editor.WebLayout240EditorFactory" />
+        <Class id="WebLayoutEditor260" class="Maestro.AddIn.ExtendedObjectModels.Editor.WebLayout260EditorFactory" />
         <Class id="LayerDefinitionEditor230" class="Maestro.AddIn.ExtendedObjectModels.Editor.LayerDefinition230EditorFactory" />
         <Class id="LayerDefinitionEditor240" class="Maestro.AddIn.ExtendedObjectModels.Editor.LayerDefinition240EditorFactory" />
         <Class id="MapDefinition230" class="Maestro.AddIn.ExtendedObjectModels.Editor.MapDefinition230EditorFactory" />
@@ -53,6 +54,7 @@
         <Class id="SQLiteLoadProcedure" class="Maestro.AddIn.ExtendedObjectModels.Templates.SQLiteLoadProcedureItemTemplate" />
         <Class id="WebLayout110" class="Maestro.AddIn.ExtendedObjectModels.Templates.WebLayout110ItemTemplate" />
         <Class id="WebLayout240" class="Maestro.AddIn.ExtendedObjectModels.Templates.WebLayout240ItemTemplate" />
+        <Class id="WebLayout260" class="Maestro.AddIn.ExtendedObjectModels.Templates.WebLayout260ItemTemplate" />
     </Path>
 
     <!-- Auto-start commands -->

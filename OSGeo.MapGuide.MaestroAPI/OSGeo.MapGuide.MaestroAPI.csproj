@@ -456,6 +456,8 @@
     </None>
     <None Include="Schemas\LayerDefinition-1.3.0.xsd">
     </None>
+    <None Include="Schemas\LayerDefinition-2.3.0.xsd" />
+    <None Include="Schemas\LayerDefinition-2.4.0.xsd" />
     <None Include="Schemas\LoadProcedure-1.0.0.xsd">
     </None>
     <None Include="Schemas\LoadProcedure-1.1.0.xsd">
@@ -464,10 +466,13 @@
     </None>
     <None Include="Schemas\MapDefinition-1.0.0.xsd">
     </None>
+    <None Include="Schemas\MapDefinition-2.3.0.xsd" />
+    <None Include="Schemas\MapDefinition-2.4.0.xsd" />
     <None Include="Schemas\PlatformCommon-1.0.0.xsd">
     </None>
     <None Include="Schemas\PrintLayout-1.0.0.xsd">
     </None>
+    <None Include="Schemas\ProfileResult-2.4.0.xsd" />
     <None Include="Schemas\RepositoryContent-1.0.0.xsd">
     </None>
     <None Include="Schemas\RepositoryList-1.0.0.xsd">
@@ -488,6 +493,7 @@
     </None>
     <None Include="Schemas\Role-1.0.0.xsd">
     </None>
+    <None Include="Schemas\RuntimeMap-2.6.0.xsd" />
     <None Include="Schemas\SelectAggregate-1.0.0.xsd">
     </None>
     <None Include="Schemas\Server-1.0.0.xsd">
@@ -512,6 +518,7 @@
     </None>
     <None Include="Schemas\SymbolDefinition-1.1.0.xsd">
     </None>
+    <None Include="Schemas\SymbolDefinition-2.4.0.xsd" />
     <None Include="Schemas\SymbolLibrary-1.0.0.xsd">
     </None>
     <None Include="Schemas\Types-1.0.0.xsd">
@@ -522,10 +529,14 @@
     </None>
     <None Include="Schemas\UserList-1.0.0.xsd">
     </None>
+    <None Include="Schemas\WatermarkDefinition-2.3.0.xsd" />
+    <None Include="Schemas\WatermarkDefinition-2.4.0.xsd" />
     <None Include="Schemas\WebLayout-1.0.0.xsd">
     </None>
     <None Include="Schemas\WebLayout-1.1.0.xsd">
     </None>
+    <None Include="Schemas\WebLayout-2.4.0.xsd" />
+    <None Include="Schemas\WebLayout-2.6.0.xsd" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ConnectionProviders.xml">

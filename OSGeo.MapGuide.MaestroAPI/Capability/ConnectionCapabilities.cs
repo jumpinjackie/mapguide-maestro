@@ -147,6 +147,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         /// <returns></returns>
         protected virtual Version GetMaxWebLayoutVersion()
         {
+            if (_parent.SiteVersion >= new Version(2, 6))
+                return new Version(2, 6, 0);
             if (_parent.SiteVersion >= new Version(2, 4))
                 return new Version(2, 4, 0);
             if (_parent.SiteVersion >= new Version(2, 2))
