@@ -259,109 +259,13 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             try
             {
                 _config = (WmsConfigurationDocument)_service.FeatureService.GetSchemaMapping("OSGeo.WMS", _fs.ConnectionString); //NOXLATE
-                //BOGUS: This was not as sufficient as I originally thought, nevertheless this contains
-                //information that would not exist if we constructed the document the old fashioned way.
-                string defaultScName = string.Empty;
-                if (_config.SpatialContexts.Length > 0)
-                {
-                    defaultScName = _config.SpatialContexts[0].Name;
-                }
-                else
-                {
-                    var list = _fs.GetSpatialInfo(false);
-                    if (list.SpatialContext.Count > 0)
-                    {
-                        defaultScName = list.SpatialContext[0].Name;
-                    }
-                    else //Really? What kind of WMS service are you????
-                    {
-                        var sc = new FdoSpatialContextListSpatialContext()
-                        {
-                            Name = "EPSG:4326", //NOXLATE
-                            Description = "Maestro-generated spatial context", //NOXLATE
-                            CoordinateSystemName = "EPSG:4326", //NOXLATE
-                            CoordinateSystemWkt = "GEOGCS[\"LL84\",DATUM[\"WGS84\",SPHEROID[\"WGS84\",6378137.000,298.25722293]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.01745329251994]]", //NOXLATE
-                            Extent = new FdoSpatialContextListSpatialContextExtent()
-                            {
-                                LowerLeftCoordinate = new FdoSpatialContextListSpatialContextExtentLowerLeftCoordinate()
-                                {
-                                    X = "-180.0", //NOXLATE
-                                    Y = "-90.0" //NOXLATE
-                                },
-                                UpperRightCoordinate = new FdoSpatialContextListSpatialContextExtentUpperRightCoordinate()
-                                {
-                                    X = "180.0", //NOXLATE
-                                    Y = "90.0" //NOXLATE
-                                }
-                            },
-                            ExtentType = FdoSpatialContextListSpatialContextExtentType.Static,
-                            IsActive = true,
-                            XYTolerance = 0.0001,
-                            ZTolerance = 0.0001,
-                        };
-                        _config.AddSpatialContext(sc);
-                        defaultScName = sc.Name;
-                    }
-                }
-
-                EnsureRasterProperties(defaultScName);
+                string defaultScName = _config.GetDefaultSpatialContext(_fs);
+                _config.EnsureRasterProperties(defaultScName);
                 _config.EnsureConsistency();
             }
             catch
             {
                 _config = BuildDefaultWmsDocument();
-            }
-        }
-
-        private void EnsureRasterProperties(string defaultScName)
-        {
-            foreach (var schema in _config.Schemas)
-            {
-                foreach (var cls in schema.Classes)
-                {
-                    //Add identity property if none found
-                    if (cls.IdentityProperties.Count == 0)
-                    {
-                        cls.AddProperty(new DataPropertyDefinition("Id", string.Empty) //NOXLATE
-                        {
-                            DataType = DataPropertyType.String,
-                            Length = 256,
-                            IsNullable = false
-                        }, true);
-                    }
-                    //Add raster property if there's only one property (the identity property we either just added or found)
-                    if (cls.Properties.Count == 1)
-                    {
-                        cls.AddProperty(new RasterPropertyDefinition("Image", string.Empty) //NOXLATE
-                        {
-                            DefaultImageXSize = 1024,
-                            DefaultImageYSize = 1024,
-                            SpatialContextAssociation = defaultScName
-                        });
-                    }
-                    else
-                    {
-                        bool bFoundRaster = false;
-                        //Try to find this raster property
-                        foreach (var prop in cls.Properties)
-                        {
-                            if (prop.Type == OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinitionType.Raster)
-                            {
-                                bFoundRaster = true;
-                                break;
-                            }
-                        }
-                        if (!bFoundRaster)
-                        {
-                            cls.AddProperty(new RasterPropertyDefinition("Image", string.Empty) //NOXLATE
-                            {
-                                DefaultImageXSize = 1024,
-                                DefaultImageYSize = 1024,
-                                SpatialContextAssociation = defaultScName
-                            });
-                        }
-                    }
-                }
             }
         }
 

@@ -29,6 +29,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 
 namespace Maestro.Editors.FeatureSource.Providers.Wms
 {

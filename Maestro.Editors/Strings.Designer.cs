@@ -97,6 +97,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Building configuration document for WMS Feature Source.
+        /// </summary>
+        internal static string AutoConfiguringFeatureSource {
+            get {
+                return ResourceManager.GetString("AutoConfiguringFeatureSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Base Layer Group.
         /// </summary>
         internal static string BaseLayerGroup {

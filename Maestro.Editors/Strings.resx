@@ -1578,4 +1578,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="ThemingNotAVectorLayer" xml:space="preserve">
     <value>The layer being themed is not a vector layer</value>
   </data>
+  <data name="AutoConfiguringFeatureSource" xml:space="preserve">
+    <value>Building configuration document for WMS Feature Source</value>
+  </data>
 </root>
