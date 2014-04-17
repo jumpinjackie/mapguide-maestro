@@ -930,5 +930,383 @@ namespace MaestroAPITests
                 Assert.IsTrue(caps.IsSupportedResourceType(rt), rt.ToString());
             }
         }
+
+        [Test]
+        public void TestHttpCapabilities240()
+        {
+            _mocks = new Mockery();
+            var conn = _mocks.NewMock<IServerConnection>();
+            Stub.On(conn).GetProperty("SiteVersion").Will(Return.Value(new Version(2, 4)));
+
+            var caps = new HttpCapabilities(conn);
+
+            foreach (ResourceTypes type in Enum.GetValues(typeof(ResourceTypes)))
+            {
+                switch (type)
+                {
+                    case ResourceTypes.ApplicationDefinition:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(1, 0, 0));
+                        }
+                        break;
+                    case ResourceTypes.DrawingSource:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(1, 0, 0));
+                        }
+                        break;
+                    case ResourceTypes.FeatureSource:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(1, 0, 0));
+                        }
+                        break;
+                    case ResourceTypes.LayerDefinition:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 4, 0));
+                        }
+                        break;
+                    case ResourceTypes.LoadProcedure:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 2, 0));
+                        }
+                        break;
+                    case ResourceTypes.MapDefinition:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 4, 0));
+                        }
+                        break;
+                    case ResourceTypes.PrintLayout:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(1, 0, 0));
+                        }
+                        break;
+                    case ResourceTypes.SymbolLibrary:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(1, 0, 0));
+                        }
+                        break;
+                    case ResourceTypes.SymbolDefinition:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 4, 0));
+                        }
+                        break;
+                    case ResourceTypes.WatermarkDefinition:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 4, 0));
+                        }
+                        break;
+                    case ResourceTypes.WebLayout:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 4, 0));
+                        }
+                        break;
+                }
+            }
+            Assert.IsTrue(caps.SupportsResourcePreviews);
+            int[] services = caps.SupportedServices;
+            foreach (ServiceType st in Enum.GetValues(typeof(ServiceType)))
+            {
+                switch (st)
+                {
+                    case ServiceType.Drawing:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                    case ServiceType.Feature:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                    case ServiceType.Fusion:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                    case ServiceType.Mapping:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                    case ServiceType.Resource:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                    case ServiceType.Tile:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                }
+            }
+
+            foreach (ResourceTypes rt in Enum.GetValues(typeof(ResourceTypes)))
+            {
+                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt.ToString());
+            }
+        }
+
+        [Test]
+        public void TestHttpCapabilities250()
+        {
+            _mocks = new Mockery();
+            var conn = _mocks.NewMock<IServerConnection>();
+            Stub.On(conn).GetProperty("SiteVersion").Will(Return.Value(new Version(2, 5)));
+
+            var caps = new HttpCapabilities(conn);
+
+            foreach (ResourceTypes type in Enum.GetValues(typeof(ResourceTypes)))
+            {
+                switch (type)
+                {
+                    case ResourceTypes.ApplicationDefinition:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(1, 0, 0));
+                        }
+                        break;
+                    case ResourceTypes.DrawingSource:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(1, 0, 0));
+                        }
+                        break;
+                    case ResourceTypes.FeatureSource:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(1, 0, 0));
+                        }
+                        break;
+                    case ResourceTypes.LayerDefinition:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 4, 0));
+                        }
+                        break;
+                    case ResourceTypes.LoadProcedure:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 2, 0));
+                        }
+                        break;
+                    case ResourceTypes.MapDefinition:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 4, 0));
+                        }
+                        break;
+                    case ResourceTypes.PrintLayout:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(1, 0, 0));
+                        }
+                        break;
+                    case ResourceTypes.SymbolLibrary:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(1, 0, 0));
+                        }
+                        break;
+                    case ResourceTypes.SymbolDefinition:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 4, 0));
+                        }
+                        break;
+                    case ResourceTypes.WatermarkDefinition:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 4, 0));
+                        }
+                        break;
+                    case ResourceTypes.WebLayout:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 4, 0));
+                        }
+                        break;
+                }
+            }
+            Assert.IsTrue(caps.SupportsResourcePreviews);
+            int[] services = caps.SupportedServices;
+            foreach (ServiceType st in Enum.GetValues(typeof(ServiceType)))
+            {
+                switch (st)
+                {
+                    case ServiceType.Drawing:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                    case ServiceType.Feature:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                    case ServiceType.Fusion:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                    case ServiceType.Mapping:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                    case ServiceType.Resource:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                    case ServiceType.Tile:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                }
+            }
+
+            foreach (ResourceTypes rt in Enum.GetValues(typeof(ResourceTypes)))
+            {
+                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt.ToString());
+            }
+        }
+
+        [Test]
+        public void TestHttpCapabilities260()
+        {
+            _mocks = new Mockery();
+            var conn = _mocks.NewMock<IServerConnection>();
+            Stub.On(conn).GetProperty("SiteVersion").Will(Return.Value(new Version(2, 6)));
+
+            var caps = new HttpCapabilities(conn);
+
+            foreach (ResourceTypes type in Enum.GetValues(typeof(ResourceTypes)))
+            {
+                switch (type)
+                {
+                    case ResourceTypes.ApplicationDefinition:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(1, 0, 0));
+                        }
+                        break;
+                    case ResourceTypes.DrawingSource:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(1, 0, 0));
+                        }
+                        break;
+                    case ResourceTypes.FeatureSource:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(1, 0, 0));
+                        }
+                        break;
+                    case ResourceTypes.LayerDefinition:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 4, 0));
+                        }
+                        break;
+                    case ResourceTypes.LoadProcedure:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 2, 0));
+                        }
+                        break;
+                    case ResourceTypes.MapDefinition:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 4, 0));
+                        }
+                        break;
+                    case ResourceTypes.PrintLayout:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(1, 0, 0));
+                        }
+                        break;
+                    case ResourceTypes.SymbolLibrary:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(1, 0, 0));
+                        }
+                        break;
+                    case ResourceTypes.SymbolDefinition:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 4, 0));
+                        }
+                        break;
+                    case ResourceTypes.WatermarkDefinition:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 4, 0));
+                        }
+                        break;
+                    case ResourceTypes.WebLayout:
+                        {
+                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            Assert.AreEqual(version, new Version(2, 6, 0));
+                        }
+                        break;
+                }
+            }
+            Assert.IsTrue(caps.SupportsResourcePreviews);
+            int[] services = caps.SupportedServices;
+            foreach (ServiceType st in Enum.GetValues(typeof(ServiceType)))
+            {
+                switch (st)
+                {
+                    case ServiceType.Drawing:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                    case ServiceType.Feature:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                    case ServiceType.Fusion:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                    case ServiceType.Mapping:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                    case ServiceType.Resource:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                    case ServiceType.Tile:
+                        {
+                            Assert.IsTrue(Array.IndexOf<int>(services, (int)st) >= 0);
+                        }
+                        break;
+                }
+            }
+
+            foreach (ResourceTypes rt in Enum.GetValues(typeof(ResourceTypes)))
+            {
+                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt.ToString());
+            }
+        }
     }
 }
