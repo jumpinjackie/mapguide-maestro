@@ -91,7 +91,6 @@
     <Compile Include="XmlFeatureReader.cs" />
     <Compile Include="XmlReaderBase.cs" />
     <Compile Include="XmlRecord.cs" />
-    <Compile Include="XmlSqlResultReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">

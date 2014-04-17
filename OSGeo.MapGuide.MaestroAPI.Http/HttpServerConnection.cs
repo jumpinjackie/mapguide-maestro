@@ -714,10 +714,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public IReader ExecuteSqlQuery(string featureSourceID, string sql)
         {
-            ResourceIdentifier.Validate(featureSourceID, ResourceTypes.FeatureSource);
-            string req = m_reqBuilder.ExecuteSqlQuery(featureSourceID, sql);
-
-            return new XmlSqlResultReader(this.OpenRead(req));
+            throw new NotSupportedException();
         }
 
 		public IFeatureReader QueryFeatureSource(string resourceID, string schema, string query)
@@ -763,9 +760,9 @@ namespace OSGeo.MapGuide.MaestroAPI
                 LogResponse(resp);
 
                 if (aggregate)
-                    return new XmlDataReader(resp.GetResponseStream());
+                    return new XmlDataReader(resp);
                 else
-                    return new XmlFeatureReader(resp.GetResponseStream());
+                    return new XmlFeatureReader(resp);
             }
             catch (Exception ex)
             {

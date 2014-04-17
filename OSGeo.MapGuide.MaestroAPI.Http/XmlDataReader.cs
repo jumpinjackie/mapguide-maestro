@@ -24,12 +24,15 @@ using System.Xml;
 using System.IO;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using System.Net;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http
 {
     public class XmlDataReader : XmlReaderBase
     {
-        public XmlDataReader(Stream source) : base(source) { }
+        internal XmlDataReader(Stream stream) : base(stream) { }
+
+        public XmlDataReader(HttpWebResponse resp) : base(resp) { }
 
         public override ReaderType ReaderType
         {

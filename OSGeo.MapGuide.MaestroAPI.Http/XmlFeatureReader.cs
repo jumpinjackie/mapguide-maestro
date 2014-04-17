@@ -26,13 +26,16 @@ using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Http;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.Diagnostics;
+using System.Net;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http
 {
     public class XmlFeatureReader : XmlReaderBase, IFeatureReader
     {
-        public XmlFeatureReader(Stream source)
-            : base(source)
+        internal XmlFeatureReader(Stream stream) : base(stream) { }
+
+        public XmlFeatureReader(HttpWebResponse resp)
+            : base(resp)
         { }
 
         public IFeatureReader GetFeatureObject(string name)

@@ -25,6 +25,7 @@ using System.IO;
 using System.Xml;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Internal;
+using System.Net;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http
 {
@@ -34,6 +35,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
     {
         protected FixedWKTReader _wktReader;
         protected XmlTextReader _reader;
+        protected HttpWebResponse _resp; //Must be disposed of by subclass when done
 
         protected XmlProperty[] _properties;
         protected Dictionary<string, XmlProperty> _propertyMap;
@@ -60,9 +62,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
 
         protected abstract string ValuesRowPropertyValueElement { get; }
 
-        public XmlReaderBase(Stream source) 
+        protected XmlReaderBase(Stream stream)
         {
-            _reader = new XmlTextReader(source);
+            InitCommon(stream);
+        }
+
+        public XmlReaderBase(HttpWebResponse resp) 
+        {
+            _resp = resp;
+            InitCommon(_resp.GetResponseStream());
+        }
+
+        private void InitCommon(Stream stream)
+        {
+            _reader = new XmlTextReader(stream);
             _wktReader = new FixedWKTReader();
             _reader.WhitespaceHandling = WhitespaceHandling.Significant;
             _propertyMap = new Dictionary<string, XmlProperty>();
@@ -138,6 +151,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
                 if (_reader.Name == this.ValuesRootElement)
                     _reader = null; //No features :(
             }
+        }
+
+        public override void Close()
+        {
+            if (_resp != null)
+                _resp.Close();
+            base.Close();
+        }
+
+        public override void Dispose()
+        {
+            if (_resp != null)
+            {
+                ((IDisposable)_resp).Dispose();
+                _resp = null;
+            }
+            base.Dispose();
         }
 
         public override PropertyValueType GetPropertyType(string name)
