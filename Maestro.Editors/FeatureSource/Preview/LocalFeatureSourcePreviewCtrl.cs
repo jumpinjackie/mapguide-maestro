@@ -29,6 +29,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using Maestro.Shared.UI;
 
 namespace Maestro.Editors.FeatureSource.Preview
 {
@@ -122,15 +123,26 @@ namespace Maestro.Editors.FeatureSource.Preview
             ClearPreviewPanes();
             trvSchema.Nodes.Clear();
 
-            string[] schemaNames = _edSvc.FeatureService.GetSchemas(currentFsId);
-            foreach (var s in schemaNames)
-            {
-                var schemaNode = new TreeNode(s);
-                schemaNode.Tag = new SchemaNodeTag(s);
-                schemaNode.ImageIndex = schemaNode.SelectedImageIndex = IDX_SCHEMA;
-                schemaNode.Nodes.Add(Strings.TextLoading);
-                trvSchema.Nodes.Add(schemaNode);
-            }
+            BusyWaitDialog.Run(Strings.FetchingSchemaNames, () => {
+                return _edSvc.FeatureService.GetSchemas(currentFsId);
+            }, (res, ex) => {
+                if (ex != null)
+                {
+                    ErrorDialog.Show(ex);
+                }
+                else
+                {
+                    string[] schemaNames = (string[])res;
+                    foreach (var s in schemaNames)
+                    {
+                        var schemaNode = new TreeNode(s);
+                        schemaNode.Tag = new SchemaNodeTag(s);
+                        schemaNode.ImageIndex = schemaNode.SelectedImageIndex = IDX_SCHEMA;
+                        schemaNode.Nodes.Add(Strings.TextLoading);
+                        trvSchema.Nodes.Add(schemaNode);
+                    }
+                }
+            });
         }
 
         private static void UpdateClassNode(TreeNode classNode, ClassDefinition cls)
@@ -368,29 +380,53 @@ namespace Maestro.Editors.FeatureSource.Preview
 
                 e.Node.Nodes.Clear();
 
-                var classNames = _edSvc.FeatureService.GetClassNames(currentFsId, schTag.SchemaName);
-                foreach (var qClsName in classNames)
-                {
-                    var clsName = qClsName.Split(':')[1]; //NOXLATE
-                    var node = new TreeNode(clsName);
-                    node.Text = clsName;
-                    node.Tag = new ClassNodeTag(schTag.SchemaName, clsName);
-                    node.ImageIndex = node.SelectedImageIndex = IDX_CLASS;
-                    node.Nodes.Add(Strings.TextLoading);
+                string schemaName = schTag.SchemaName;
+                BusyWaitDialog.Run(Strings.FetchingClassNames, () => {
+                    return _edSvc.FeatureService.GetClassNames(currentFsId, schemaName);
+                }, (res, ex) => {
+                    if (ex != null)
+                    {
+                        ErrorDialog.Show(ex);
+                    }
+                    else
+                    {
+                        var classNames = (string[])res;
+                        foreach (var qClsName in classNames)
+                        {
+                            var clsName = qClsName.Split(':')[1]; //NOXLATE
+                            var node = new TreeNode(clsName);
+                            node.Text = clsName;
+                            node.Tag = new ClassNodeTag(schTag.SchemaName, clsName);
+                            node.ImageIndex = node.SelectedImageIndex = IDX_CLASS;
+                            node.Nodes.Add(Strings.TextLoading);
 
-                    e.Node.Nodes.Add(node);
-                }
+                            e.Node.Nodes.Add(node);
+                        }
 
-                schTag.Loaded = true;
+                        schTag.Loaded = true;
+                    }
+                });
             }
             else if (clsTag != null)
             {
                 if (clsTag.Loaded)
                     return;
 
-                var cls = _edSvc.FeatureService.GetClassDefinition(currentFsId, clsTag.QualifiedName);
-                clsTag.Class = cls;
-                UpdateClassNode(e.Node, cls);
+                string classNameQualified = clsTag.QualifiedName;
+                BusyWaitDialog.Run(Strings.FetchingClassDefinition, () => {
+                    return _edSvc.FeatureService.GetClassDefinition(currentFsId, classNameQualified);
+                }, (res, ex) => {
+                    if (ex != null)
+                    {
+                        ErrorDialog.Show(ex);
+                    }
+                    else
+                    {
+                        var cls = (ClassDefinition)res;
+                        clsTag.Class = cls;
+                        UpdateClassNode(e.Node, cls);
+                    }
+                });
             }
         }
     }

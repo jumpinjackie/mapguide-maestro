@@ -1581,4 +1581,13 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="WarningUnconfiguredWmsFeatureSource" xml:space="preserve">
     <value>Your WMS Feature Source is not configured. An un-configured WMS Feature Source may not properly read layer information from your WMS Server. Click "Advanced" after testing your connection to build a default document.</value>
   </data>
+  <data name="FetchingClassDefinition" xml:space="preserve">
+    <value>Fetching Class Definition</value>
+  </data>
+  <data name="FetchingClassNames" xml:space="preserve">
+    <value>Fetching Class Names</value>
+  </data>
+  <data name="FetchingSchemaNames" xml:space="preserve">
+    <value>Fetching Schema Names</value>
+  </data>
 </root>

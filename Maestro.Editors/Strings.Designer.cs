@@ -727,6 +727,33 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fetching Class Definition.
+        /// </summary>
+        internal static string FetchingClassDefinition {
+            get {
+                return ResourceManager.GetString("FetchingClassDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fetching Class Names.
+        /// </summary>
+        internal static string FetchingClassNames {
+            get {
+                return ResourceManager.GetString("FetchingClassNames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fetching Schema Names.
+        /// </summary>
+        internal static string FetchingSchemaNames {
+            get {
+                return ResourceManager.GetString("FetchingSchemaNames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This field is required: {0}.
         /// </summary>
         internal static string FieldRequired {
