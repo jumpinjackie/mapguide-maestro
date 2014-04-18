@@ -124,6 +124,7 @@
     <Content Include="ConnectionProviders.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="sdk_excludes.txt" />
     <Content Include="TestMaestroAPI.LocalNative.xml" />
     <Content Include="TestMaestroAPI.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -159,8 +160,12 @@
 IF "$(ConfigurationName)" == "Release" (
 IF NOT EXIST "$(SolutionDir)..\SDK\Test" MKDIR "$(SolutionDir)..\SDK\Test"
 echo Copy binaries to SDK output dir
-echo XCOPY /S /Y /I "$(TargetDir)*.*" "$(SolutionDir)..\SDK\Test"
-XCOPY /S /Y /I "$(TargetDir)*.*" "$(SolutionDir)..\SDK\Test"
+echo XCOPY /S /Y /I "$(TargetDir)TestData\*.*" "$(SolutionDir)..\SDK\Test\TestData"
+XCOPY /S /Y /I "$(TargetDir)TestData\*.*" "$(SolutionDir)..\SDK\Test\TestData"
+echo XCOPY /S /Y /I "$(TargetDir)UserTestData\*.*" "$(SolutionDir)..\SDK\Test\UserTestData"
+XCOPY /S /Y /I "$(TargetDir)UserTestData\*.*" "$(SolutionDir)..\SDK\Test\UserTestData"
+echo XCOPY /Y /I "$(TargetDir)*.*" "$(SolutionDir)..\SDK\Test" /EXCLUDE:$(ProjectDir)sdk_excludes.txt
+XCOPY /Y /I "$(TargetDir)*.*" "$(SolutionDir)..\SDK\Test" /EXCLUDE:$(ProjectDir)sdk_excludes.txt
 echo Copy SDK test configuration
 echo COPY /Y "$(ProjectDir)TestMaestroAPI.LocalNative.xml" "$(SolutionDir)..\SDK\Test\TestMaestroAPI.xml"
 COPY /Y "$(ProjectDir)TestMaestroAPI.LocalNative.xml" "$(SolutionDir)..\SDK\Test\TestMaestroAPI.xml"
