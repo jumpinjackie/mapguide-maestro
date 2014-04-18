@@ -720,22 +720,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new LocalNativeSqlReader(reader);
         }
 
-        public IFeatureReader QueryFeatureSource(string resourceID, string schema, string query)
-        {
-            return QueryFeatureSource(resourceID, schema, query, null);
-        }
-
-        public IFeatureReader QueryFeatureSource(string resourceID, string schema)
-        {
-            return QueryFeatureSource(resourceID, schema, null, null);
-        }
-
-        public IFeatureReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns)
-        {
-            return QueryFeatureSource(resourceID, schema, query, columns, null);
-        }
-
-        public IFeatureReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns, NameValueCollection computedProperties)
+        public override IFeatureReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns, NameValueCollection computedProperties)
         {
             var fes = GetFeatureService();
             MgFeatureQueryOptions mgf = new MgFeatureQueryOptions();

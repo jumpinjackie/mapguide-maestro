@@ -424,6 +424,12 @@ namespace MaestroAPITests
             {
                 throw new NotImplementedException();
             }
+
+
+            public OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames, System.Collections.Specialized.NameValueCollection computedProperties, int limit)
+            {
+                throw new NotImplementedException();
+            }
         }
         #endregion
 

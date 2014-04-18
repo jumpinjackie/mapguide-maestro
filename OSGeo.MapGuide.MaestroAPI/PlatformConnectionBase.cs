@@ -1809,6 +1809,72 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public abstract ConfigurationDocument GetSchemaMapping(string provider, string partialConnString);
 
+        /// <summary>
+        /// Executes a feature query on the specified feature source
+        /// </summary>
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="className">The feature class name</param>
+        /// <param name="filter">The FDO filter string that determines what features will be returned</param>
+        /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader"/> containing the results of the query</returns>
+        public IFeatureReader QueryFeatureSource(string resourceID, string className, string filter)
+        {
+            return QueryFeatureSource(resourceID, className, filter, null);
+        }
+
+        /// <summary>
+        /// Executes a feature query on the specified feature source
+        /// </summary>
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="className">The feature class name</param>
+        /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader"/> containing the results of the query</returns>
+        public IFeatureReader QueryFeatureSource(string resourceID, string className)
+        {
+            return QueryFeatureSource(resourceID, className, null, null);
+        }
+
+        /// <summary>
+        /// Executes a feature query on the specified feature source
+        /// </summary>
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="className">The feature class name</param>
+        /// <param name="filter">The FDO filter string that determines what features will be returned</param>
+        /// <param name="propertyNames">A list of properties that are to be returned in the query result</param>
+        /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader"/> containing the results of the query</returns>
+        public IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames)
+        {
+            return QueryFeatureSource(resourceID, className, filter, propertyNames, null);
+        }
+
+        /// <summary>
+        /// Executes a feature query on the specified feature source
+        /// </summary>
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="className">The feature class name</param>
+        /// <param name="filter">The FDO filter string that determines what features will be returned</param>
+        /// <param name="propertyNames">A list of properties that are to be returned in the query result</param>
+        /// <param name="computedProperties">A list of name/value pairs that contain the alias (name) for an FDO expression (value)</param>
+        /// <param name="limit">Limits the number of features returned in the reader. -1 for all features</param>
+        /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader"/> containing the results of the query</returns>
+        public virtual IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames, NameValueCollection computedProperties, int limit)
+        {
+            var reader = this.QueryFeatureSource(resourceID, className, filter, propertyNames, computedProperties);
+            if (limit < 0)
+                return reader;
+            else
+                return new LimitingFeatureReader(reader, limit);
+        }
+
+        /// <summary>
+        /// Executes a feature query on the specified feature source
+        /// </summary>
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="className">The feature class name</param>
+        /// <param name="filter">The FDO filter string that determines what features will be returned</param>
+        /// <param name="propertyNames">A list of properties that are to be returned in the query result</param>
+        /// <param name="computedProperties">A list of name/value pairs that contain the alias (name) for an FDO expression (value)</param>
+        /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader"/> containing the results of the query</returns>
+        public abstract IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames, NameValueCollection computedProperties);
+
         #endregion
 
         #region Feature/Capability Discovery

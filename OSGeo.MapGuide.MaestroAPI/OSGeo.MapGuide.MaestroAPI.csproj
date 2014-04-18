@@ -244,6 +244,7 @@
     <Compile Include="Feature\FeatureReaderBase.cs" />
     <Compile Include="Feature\IFeatureReader.cs" />
     <Compile Include="Feature\IReader.cs" />
+    <Compile Include="Feature\LimitingFeatureReader.cs" />
     <Compile Include="Feature\MutableFeatureBase.cs" />
     <Compile Include="Feature\MutableRecordBase.cs" />
     <Compile Include="Feature\NsDoc.cs" />

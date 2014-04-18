@@ -70,7 +70,7 @@ namespace MaestroAPITests
         }
 
         [Test]
-        public void TestResourceExists()
+        public override void TestResourceExists()
         {
             base.TestResourceExists();
         }
@@ -91,6 +91,12 @@ namespace MaestroAPITests
         public override void TestApplySchema()
         {
             base.TestApplySchema();
+        }
+
+        [Test]
+        public override void TestQueryLimits()
+        {
+            base.TestQueryLimits();
         }
 
         [Test]

@@ -141,6 +141,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames, NameValueCollection computedProperties);
 
         /// <summary>
+        /// Executes a feature query on the specified feature source
+        /// </summary>
+        /// <param name="resourceID">The Feature Source ID</param>
+        /// <param name="className">The feature class name</param>
+        /// <param name="filter">The FDO filter string that determines what features will be returned</param>
+        /// <param name="propertyNames">A list of properties that are to be returned in the query result</param>
+        /// <param name="computedProperties">A list of name/value pairs that contain the alias (name) for an FDO expression (value)</param>
+        /// <param name="limit">Limits the number of features returned in the reader. -1 for all features</param>
+        /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader"/> containing the results of the query</returns>
+        IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames, NameValueCollection computedProperties, int limit);
+
+        /// <summary>
         /// Executes an aggregate query on the specified feature source
         /// </summary>
         /// <param name="resourceID">The Feature Source ID</param>

@@ -717,22 +717,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             throw new NotSupportedException();
         }
 
-		public IFeatureReader QueryFeatureSource(string resourceID, string schema, string query)
-		{
-			return QueryFeatureSource(resourceID, schema, query, null);
-		}
-
-		public IFeatureReader QueryFeatureSource(string resourceID, string schema)
-		{
-			return QueryFeatureSource(resourceID, schema, null, null);
-		}
-
-		public IFeatureReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns)
-		{
-            return QueryFeatureSource(resourceID, schema, query, columns, null);
-		}
-
-        public IFeatureReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns, NameValueCollection computedProperties)
+        public override IFeatureReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns, NameValueCollection computedProperties)
         {
             return (IFeatureReader)QueryFeatureSourceCore(false, resourceID, schema, query, columns, computedProperties);
         }

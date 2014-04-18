@@ -423,7 +423,25 @@ namespace MaestroAPITests
             }
         }
 
-        //[Test]
+        public virtual void TestQueryLimits()
+        {
+            var conn = CreateTestConnection();
+            for (int i = 0; i < 10; i++)
+            {
+                int limit = (i + 1) * 2;
+                using (var reader = conn.FeatureService.QueryFeatureSource("Library://UnitTests/Data/Parcels.FeatureSource", "SHP_Schema:Parcels", null, null, null, limit))
+                {
+                    var count = 0;
+                    while (reader.ReadNext())
+                    {
+                        count++;
+                    }
+                    reader.Close();
+                    Assert.AreEqual(count, limit, "Expected to have read " + limit + " features. Read " + count + " features instead");
+                }
+            }
+        }
+
         public virtual void TestEncryptedFeatureSourceCredentials()
         {
             //Sensitive data redacted, nevertheless you can test and verify this by filling in the
