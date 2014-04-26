@@ -34,33 +34,42 @@ namespace Maestro.Base.Commands
     {
         public override void Run()
         {
-            var login = new LoginDialog();
-            login.Owner = Workbench.Instance;
-            if (login.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            RunInternal(false);
+        }
+
+        internal static void RunInternal(bool showTipOfTheDay)
+        {
+            using (var login = new LoginDialog())
             {
-                var conn = login.Connection;
-
-                //TODO: Determine if this is a http connection. If not,
-                //wrap it in an IServerConnection decorator that will do all the
-                //request dispatch broadcasting. This will solve trac #1505 and will
-                //work for any future non-http implementations
-
-                var mgr = ServiceRegistry.GetService<ServerConnectionManager>();
-                Debug.Assert(mgr != null);
-
-                // Connection display names should be unique. A duplicate means we are connecting to the same MG server
-
-                LoggingService.Info("Connection created: " + conn.DisplayName); //NOXLATE
-                if (mgr.GetConnection(conn.DisplayName) == null)
+                login.Owner = Workbench.Instance;
+                var result = login.ShowDialog();
+                if (showTipOfTheDay)
+                    TipOfTheDayDialog.FirstTimeOpen();
+                if (result == System.Windows.Forms.DialogResult.OK)
                 {
-                    mgr.AddConnection(conn.DisplayName, conn);
-                    Workbench.Instance.ActiveSiteExplorer.FullRefresh();
+                    var conn = login.Connection;
+
+                    //TODO: Determine if this is a http connection. If not,
+                    //wrap it in an IServerConnection decorator that will do all the
+                    //request dispatch broadcasting. This will solve trac #1505 and will
+                    //work for any future non-http implementations
+
+                    var mgr = ServiceRegistry.GetService<ServerConnectionManager>();
+                    Debug.Assert(mgr != null);
+
+                    // Connection display names should be unique. A duplicate means we are connecting to the same MG server
+
+                    LoggingService.Info("Connection created: " + conn.DisplayName); //NOXLATE
+                    if (mgr.GetConnection(conn.DisplayName) == null)
+                    {
+                        mgr.AddConnection(conn.DisplayName, conn);
+                        Workbench.Instance.ActiveSiteExplorer.FullRefresh();
+                    }
+                    else
+                    {
+                        MessageService.ShowError(Strings.ConnectionAlreadyEstablished);
+                    }
                 }
-                else
-                {
-                    MessageService.ShowError(Strings.ConnectionAlreadyEstablished);
-                }
-                var vmgr = ServiceRegistry.GetService<ViewContentManager>();
             }
         }
     }

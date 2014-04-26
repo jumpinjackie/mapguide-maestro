@@ -66,8 +66,7 @@ namespace Maestro.Base.Commands
                 if (Props.Get(ConfigProperties.ShowOutboundRequests, true))
                     mgr.OpenContent<OutboundRequestViewer>(ViewRegion.Bottom);
 
-                TipOfTheDayDialog.FirstTimeOpen();
-                new LoginCommand().Run();
+                LoginCommand.RunInternal(true);
             };
         }
 
