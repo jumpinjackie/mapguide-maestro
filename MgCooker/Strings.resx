@@ -122,6 +122,12 @@
 Please be patient.</value>
     <comment>A message that is displayed when the user clicks quit more than once</comment>
   </data>
+  <data name="CalculatingMpu" xml:space="preserve">
+    <value>Calculating meters-per-unit</value>
+  </data>
+  <data name="CannotCalculateMpuForMultipleMaps" xml:space="preserve">
+    <value>Cannot calculate meters-per-unit when multiple maps are selected</value>
+  </data>
   <data name="ConnectionError" xml:space="preserve">
     <value>Unable to connect: {0}</value>
     <comment>An error message that is displayed, when the initial connection fails</comment>
@@ -194,6 +200,9 @@ Please be patient.</value>
     <value>Tile {0:###,###,###,###} of {1:###,###,###,###} {2}</value>
     <comment>Label that displays the current tile and the total number of tiles and number of failed tiles, eg: tile 1 of 100 (5 failed tiles)</comment>
   </data>
+  <data name="FailedToCalculateMpu" xml:space="preserve">
+    <value>Failed to calculate MPU. Output was: {0}</value>
+  </data>
   <data name="FileTypeAllFiles" xml:space="preserve">
     <value>All files ({0})</value>
     <comment>The name displayed for the *.* filetype when the user is prompted to save a file</comment>
@@ -214,6 +223,12 @@ Please be patient.</value>
     <value>The file {0} was not found, unable to use the Native connection method.
 Either copy in the file, or do not use the Native connection method</value>
     <comment>A message displayed when the webconfig.ini file is missing</comment>
+  </data>
+  <data name="NoMapSelected" xml:space="preserve">
+    <value>No Map Definition selected</value>
+  </data>
+  <data name="NoMethodToCalculateMpu" xml:space="preserve">
+    <value>Could not determine any method to calculate meters per unit</value>
   </data>
   <data name="PauseMessage" xml:space="preserve">
     <value>MgCooker is now paused, click OK to resume rendering</value>

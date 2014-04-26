@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI;
@@ -31,6 +32,12 @@ using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using System.Collections.Specialized;
 using OSGeo.MapGuide.MaestroAPI.Tile;
 using OSGeo.MapGuide.ObjectModels;
+using System.IO;
+using System.Reflection;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.MaestroAPI.Commands;
+using System.Diagnostics;
+using Maestro.Shared.UI;
 
 namespace MgCooker
 {
@@ -331,10 +338,11 @@ namespace MgCooker
         private List<Config> ReadTree()
         {
             List<Config> lst = new List<Config>();
-            foreach(TreeNode mn in MapTree.Nodes)
+            foreach (TreeNode mn in MapTree.Nodes)
+            {
                 if (mn.Checked)
                 {
-                    foreach(TreeNode gn in mn.Nodes)
+                    foreach (TreeNode gn in mn.Nodes)
                         if (gn.Checked)
                         {
                             List<int> ix = new List<int>();
@@ -346,6 +354,7 @@ namespace MgCooker
                                 lst.Add(new Config(mn.Text, gn.Text, ix.ToArray(), (m_coordinateOverrides.ContainsKey(mn.Text) ? m_coordinateOverrides[mn.Text] : null)));
                         }
                 }
+            }
 
             return lst;
         }
@@ -536,16 +545,6 @@ namespace MgCooker
             }
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown5_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void LimitTileset_CheckedChanged(object sender, EventArgs e)
         {
             TilesetLimitPanel.Enabled = LimitTileset.Checked;
@@ -553,7 +552,7 @@ namespace MgCooker
 
         private void UseOfficialMethod_CheckedChanged(object sender, EventArgs e)
         {
-            OfficialMethodPanel.Enabled = UseOfficialMethod.Checked;
+            OfficialMethodPanel.Enabled = lnkCalcMpu.Enabled = UseOfficialMethod.Checked;
             MapTree_AfterSelect(null, null);
         }
 
@@ -637,6 +636,90 @@ namespace MgCooker
                 m_coordinateOverrides[root.Text].MaxX = d;
             if (double.TryParse(txtUpperY.Text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentUICulture, out d))
                 m_coordinateOverrides[root.Text].MaxY = d;
+        }
+
+        private void lnkCalcMpu_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var configs = ReadTree();
+            var mapDefs = configs.Select(x => x.MapDefinition).Distinct().ToArray();
+
+            if (mapDefs.Length == 0)
+            {
+                MessageBox.Show(Strings.NoMapSelected);
+            }
+            else if (mapDefs.Length == 1)
+            {
+                TryCalcMpu(mapDefs[0]);
+            }
+            else
+            {
+                MessageBox.Show(Strings.CannotCalculateMpuForMultipleMaps);
+            }
+        }
+
+        private void TryCalcMpu(string mapDef)
+        {
+            BusyWaitDialog.Run(Strings.CalculatingMpu, () => {
+                var currentPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
+                var mpuCalc = Path.Combine(currentPath, "AddIns/Local/MpuCalc.exe");
+                if (!File.Exists(mpuCalc))
+                {
+                    int[] cmdTypes = m_connection.Capabilities.SupportedCommands;
+                    if (Array.IndexOf(cmdTypes, (int)OSGeo.MapGuide.MaestroAPI.Commands.CommandType.CreateRuntimeMap) < 0)
+                    {
+                        return Strings.NoMethodToCalculateMpu;
+                    }
+                    else
+                    {
+                        ICreateRuntimeMap create = (ICreateRuntimeMap)m_connection.CreateCommand((int)OSGeo.MapGuide.MaestroAPI.Commands.CommandType.CreateRuntimeMap);
+                        create.MapDefinition = mapDef;
+                        create.RequestedFeatures = (int)RuntimeMapRequestedFeatures.None;
+                        var info = create.Execute();
+                        return Convert.ToDecimal(info.CoordinateSystem.MetersPerUnit);
+                    }
+                }
+                else
+                {
+                    IMapDefinition mdf = (IMapDefinition)m_connection.ResourceService.GetResource(mapDef);
+                    var proc = new Process
+                    {
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = mpuCalc,
+                            Arguments = mdf.CoordinateSystem,
+                            UseShellExecute = false,
+                            RedirectStandardOutput = true,
+                            CreateNoWindow = true
+                        }
+                    };
+                    proc.Start();
+                    StringBuilder sb = new StringBuilder();
+                    while (!proc.StandardOutput.EndOfStream)
+                    {
+                        string line = proc.StandardOutput.ReadLine();
+                        // do something with line
+                        sb.AppendLine(line);
+                    }
+                    string output = sb.ToString();
+                    double mpu;
+                    if (double.TryParse(output, out mpu))
+                        return Convert.ToDecimal(mpu);
+                    else
+                        return string.Format(Strings.FailedToCalculateMpu, output);
+                }
+            }, (res, ex) => {
+                if (ex != null)
+                {
+                    ErrorDialog.Show(ex);
+                }
+                else
+                {
+                    if (res is decimal)
+                        MetersPerUnit.Value = (decimal)res;
+                    else
+                        MessageBox.Show(res.ToString());
+                }
+            });
         }
     }
 }

@@ -158,6 +158,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{24093F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.WebLayout-2.6.0", "..\ExtendedModels\WebLayout-2.6.0\OSGeo.MapGuide.ObjectModels.WebLayout-2.6.0.csproj", "{829D2A4E-7DBC-48AD-9CF9-12ACFBF943A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpuCalc", "..\MpuCalc\MpuCalc.csproj", "{43B01C27-E0D2-439B-83ED-8C814ED1526A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -352,6 +354,10 @@ Global
 		{829D2A4E-7DBC-48AD-9CF9-12ACFBF943A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{829D2A4E-7DBC-48AD-9CF9-12ACFBF943A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{829D2A4E-7DBC-48AD-9CF9-12ACFBF943A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43B01C27-E0D2-439B-83ED-8C814ED1526A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43B01C27-E0D2-439B-83ED-8C814ED1526A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43B01C27-E0D2-439B-83ED-8C814ED1526A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43B01C27-E0D2-439B-83ED-8C814ED1526A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

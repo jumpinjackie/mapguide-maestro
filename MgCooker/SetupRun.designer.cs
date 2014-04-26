@@ -74,6 +74,7 @@ namespace MgCooker
             this.MaxColLimit = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lnkCalcMpu = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.BoundsOverride.SuspendLayout();
@@ -331,6 +332,7 @@ namespace MgCooker
             // groupBox2
             // 
             resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.lnkCalcMpu);
             this.groupBox2.Controls.Add(this.OfficialMethodPanel);
             this.groupBox2.Controls.Add(this.LimitTileset);
             this.groupBox2.Controls.Add(this.UseOfficialMethod);
@@ -366,13 +368,11 @@ namespace MgCooker
             0,
             0,
             0});
-            this.MetersPerUnit.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
             // 
             // label8
             // 
             resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // LimitTileset
             // 
@@ -420,6 +420,13 @@ namespace MgCooker
             // 
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
+            // 
+            // lnkCalcMpu
+            // 
+            resources.ApplyResources(this.lnkCalcMpu, "lnkCalcMpu");
+            this.lnkCalcMpu.Name = "lnkCalcMpu";
+            this.lnkCalcMpu.TabStop = true;
+            this.lnkCalcMpu.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkCalcMpu_LinkClicked);
             // 
             // SetupRun
             // 
@@ -497,5 +504,6 @@ namespace MgCooker
         private System.Windows.Forms.Label ModfiedOverrideWarning;
         private System.Windows.Forms.CheckBox chkUseDifferentConnection;
         private System.Windows.Forms.TextBox Username;
+        private System.Windows.Forms.LinkLabel lnkCalcMpu;
     }
 }
