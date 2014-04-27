@@ -242,6 +242,7 @@ Section
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.4.0.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WebLayout-1.1.0.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0.dll"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WebLayout-2.6.0.dll"
     File "${INST_OUTPUT_MAESTRO}\WeifenLuo.WinFormsUI.Docking.dll"
     
     # pdbs for greater context in exception stack traces
@@ -274,6 +275,7 @@ Section
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.4.0.pdb"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WebLayout-1.1.0.pdb"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0.pdb"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.WebLayout-2.6.0.pdb"
     File "${INST_OUTPUT_MAESTRO}\RtMapInspector.pdb"
 
     # main executables
