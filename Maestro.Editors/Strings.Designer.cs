@@ -2189,6 +2189,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Required.
+        /// </summary>
+        internal static string Required {
+            get {
+                return ResourceManager.GetString("Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This connection does not support required service: .
         /// </summary>
         internal static string RequiredServiceNotSupported {
@@ -2320,6 +2329,15 @@ namespace Maestro.Editors {
         internal static string SelectProperty {
             get {
                 return ResourceManager.GetString("SelectProperty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose a resource for &quot;Selected Resource&quot; first.
+        /// </summary>
+        internal static string SelectSourceResource {
+            get {
+                return ResourceManager.GetString("SelectSourceResource", resourceCulture);
             }
         }
         

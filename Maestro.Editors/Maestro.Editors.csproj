@@ -208,6 +208,12 @@
     <Compile Include="Diagnostics\ServerStatusMonitor.designer.cs">
       <DependentUpon>ServerStatusMonitor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Diff\CompareResourceDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diff\CompareResourceDialog.Designer.cs">
+      <DependentUpon>CompareResourceDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Diff\TextDiffView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1352,6 +1358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Diagnostics\ServerStatusMonitor.resx">
       <DependentUpon>ServerStatusMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diff\CompareResourceDialog.resx">
+      <DependentUpon>CompareResourceDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Diff\TextDiffView.resx">
       <DependentUpon>TextDiffView.cs</DependentUpon>

@@ -55,8 +55,6 @@ namespace Maestro.Editors.Diff
         public TextDiffView(TextFileDiffList source, TextFileDiffList destination, List<DiffResultSpan> DiffLines, double seconds)
             : this()
         {
-            ListViewItem lviS;
-            ListViewItem lviD;
             int cnt = 1;
             int i;
 
@@ -67,15 +65,14 @@ namespace Maestro.Editors.Diff
                     case DiffResultSpanStatus.DeleteSource:
                         for (i = 0; i < drs.Length; i++)
                         {
-                            lviS = new ListViewItem(cnt.ToString(NumFormat));
-                            lviD = new ListViewItem(cnt.ToString(NumFormat));
-                            lviS.BackColor = Color.Red;
-                            lviS.SubItems.Add(((TextLine)source.GetByIndex(drs.SourceIndex + i)).Line);
-                            lviD.BackColor = Color.LightGray;
-                            lviD.SubItems.Add(string.Empty);
-
-                            lvSource.Items.Add(lviS);
-                            lvDestination.Items.Add(lviD);
+                            var lvi = new ListViewItem(cnt.ToString(NumFormat));
+                            lvi.UseItemStyleForSubItems = false;
+                            var sline = lvi.SubItems.Add(((TextLine)source.GetByIndex(drs.SourceIndex + i)).Line);
+                            sline.BackColor = Color.Red;
+                            var dlineNo = lvi.SubItems.Add(cnt.ToString(NumFormat));
+                            var dline = lvi.SubItems.Add(string.Empty);
+                            dline.BackColor = Color.LightGray;
+                            lvSource.Items.Add(lvi);
                             cnt++;
                         }
 
@@ -83,15 +80,14 @@ namespace Maestro.Editors.Diff
                     case DiffResultSpanStatus.NoChange:
                         for (i = 0; i < drs.Length; i++)
                         {
-                            lviS = new ListViewItem(cnt.ToString(NumFormat));
-                            lviD = new ListViewItem(cnt.ToString(NumFormat));
-                            lviS.BackColor = Color.White;
-                            lviS.SubItems.Add(((TextLine)source.GetByIndex(drs.SourceIndex + i)).Line);
-                            lviD.BackColor = Color.White;
-                            lviD.SubItems.Add(((TextLine)destination.GetByIndex(drs.DestIndex + i)).Line);
-
-                            lvSource.Items.Add(lviS);
-                            lvDestination.Items.Add(lviD);
+                            var lvi = new ListViewItem(cnt.ToString(NumFormat));
+                            lvi.UseItemStyleForSubItems = false;
+                            var sline = lvi.SubItems.Add(((TextLine)source.GetByIndex(drs.SourceIndex + i)).Line);
+                            sline.BackColor = Color.White;
+                            var dlineNo = lvi.SubItems.Add(cnt.ToString(NumFormat));
+                            var dline = lvi.SubItems.Add(((TextLine)destination.GetByIndex(drs.DestIndex + i)).Line);
+                            dline.BackColor = Color.White;
+                            lvSource.Items.Add(lvi);
                             cnt++;
                         }
 
@@ -99,15 +95,14 @@ namespace Maestro.Editors.Diff
                     case DiffResultSpanStatus.AddDestination:
                         for (i = 0; i < drs.Length; i++)
                         {
-                            lviS = new ListViewItem(cnt.ToString(NumFormat));
-                            lviD = new ListViewItem(cnt.ToString(NumFormat));
-                            lviS.BackColor = Color.LightGray;
-                            lviS.SubItems.Add(string.Empty);
-                            lviD.BackColor = Color.LightGreen;
-                            lviD.SubItems.Add(((TextLine)destination.GetByIndex(drs.DestIndex + i)).Line);
-
-                            lvSource.Items.Add(lviS);
-                            lvDestination.Items.Add(lviD);
+                            var lvi = new ListViewItem(cnt.ToString(NumFormat));
+                            lvi.UseItemStyleForSubItems = false;
+                            var sline = lvi.SubItems.Add(string.Empty);
+                            sline.BackColor = Color.LightGray;
+                            var dlineNo = lvi.SubItems.Add(cnt.ToString(NumFormat));
+                            var dline = lvi.SubItems.Add(((TextLine)destination.GetByIndex(drs.DestIndex + i)).Line);
+                            dline.BackColor = Color.LightGreen;
+                            lvSource.Items.Add(lvi);
                             cnt++;
                         }
 
@@ -115,15 +110,14 @@ namespace Maestro.Editors.Diff
                     case DiffResultSpanStatus.Replace:
                         for (i = 0; i < drs.Length; i++)
                         {
-                            lviS = new ListViewItem(cnt.ToString(NumFormat));
-                            lviD = new ListViewItem(cnt.ToString(NumFormat));
-                            lviS.BackColor = Color.Red;
-                            lviS.SubItems.Add(((TextLine)source.GetByIndex(drs.SourceIndex + i)).Line);
-                            lviD.BackColor = Color.LightGreen;
-                            lviD.SubItems.Add(((TextLine)destination.GetByIndex(drs.DestIndex + i)).Line);
-
-                            lvSource.Items.Add(lviS);
-                            lvDestination.Items.Add(lviD);
+                            var lvi = new ListViewItem(cnt.ToString(NumFormat));
+                            lvi.UseItemStyleForSubItems = false;
+                            var sline = lvi.SubItems.Add(((TextLine)source.GetByIndex(drs.SourceIndex + i)).Line);
+                            sline.BackColor = Color.Red;
+                            var dlineNo = lvi.SubItems.Add(cnt.ToString(NumFormat));
+                            var dline = lvi.SubItems.Add(((TextLine)destination.GetByIndex(drs.DestIndex + i)).Line);
+                            dline.BackColor = Color.LightGreen;
+                            lvSource.Items.Add(lvi);
                             cnt++;
                         }
 
@@ -133,57 +127,37 @@ namespace Maestro.Editors.Diff
             }
         }
 
-        private void lvSource_Resize(object sender, System.EventArgs e)
+        public void SetLabels(string left, string right)
         {
-            if (lvSource.Width > 100)
-            {
-                lvSource.Columns[1].Width = -2;
-            }
+            lblLeft.Text = left;
+            lblRight.Text = right;
         }
 
-        private void lvDestination_Resize(object sender, System.EventArgs e)
+        private void lvSource_Resize(object sender, System.EventArgs e)
         {
-            if (lvDestination.Width > 100)
+            try
             {
-                lvDestination.Columns[1].Width = -2;
+                lvSource.SuspendLayout();
+                int width = (int)((lvSource.Width - lvSource.Columns[0].Width - lvSource.Columns[2].Width) / 2);
+
+                lvSource.Columns[1].Width = width;
+                lvSource.Columns[3].Width = width;
+            }
+            finally
+            {
+                lvSource.ResumeLayout();
             }
         }
 
         private void Results_Resize(object sender, System.EventArgs e)
         {
             int w = this.ClientRectangle.Width / 2;
-            lvSource.Location = new Point(0, 0);
-            lvSource.Width = w;
-            lvSource.Height = this.ClientRectangle.Height;
-
-            lvDestination.Location = new Point(w + 1, 0);
-            lvDestination.Width = this.ClientRectangle.Width - (w + 1);
-            lvDestination.Height = this.ClientRectangle.Height;
+            lblRight.Location = new Point(w + 1, lblRight.Location.Y);
         }
 
         private void Results_Load(object sender, System.EventArgs e)
         {
             Results_Resize(sender, e);
-        }
-
-        private void lvSource_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            if (lvSource.SelectedItems.Count > 0)
-            {
-                ListViewItem lvi = lvDestination.Items[lvSource.SelectedItems[0].Index];
-                lvi.Selected = true;
-                lvi.EnsureVisible();
-            }
-        }
-
-        private void lvDestination_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            if (lvDestination.SelectedItems.Count > 0)
-            {
-                ListViewItem lvi = lvSource.Items[lvDestination.SelectedItems[0].Index];
-                lvi.Selected = true;
-                lvi.EnsureVisible();
-            }
         }
     }
 }

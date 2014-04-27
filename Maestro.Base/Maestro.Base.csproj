@@ -81,6 +81,7 @@
     <Compile Include="Commands\CacheViewerCommand.cs" />
     <Compile Include="Commands\CloseActiveDocumentCommand.cs" />
     <Compile Include="Commands\CloseAllDocumentsCommand.cs" />
+    <Compile Include="Commands\SiteExplorer\CompareResourceCommand.cs" />
     <Compile Include="Commands\SiteExplorer\CompileFullDependencyListCommand.cs" />
     <Compile Include="Commands\Conditions\ActiveEditorConditionEvaluator.cs" />
     <Compile Include="Commands\Conditions\CloseableDocumentConditionEvaluator.cs" />

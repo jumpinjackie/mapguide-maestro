@@ -543,6 +543,10 @@
             <MenuItem id="FindReplaceXml"
                       label="${res:SiteExplorer_FindReplaceXml}"
                       class="Maestro.Base.Commands.SiteExplorer.FindReplaceXmlContentCommand" />
+            <MenuItem id="CompareResource"
+                      icon="edit_diff"
+                      label="${res:SiteExplorer_CompareResource}"
+                      class="Maestro.Base.Commands.SiteExplorer.CompareResourceCommand" />
             <MenuItem type="Separator" />
             <Condition action="Disable" name="ResourceType" types="LayerDefinition">
               <MenuItem id="GetLayerSpatialContext"

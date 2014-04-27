@@ -75,7 +75,7 @@ namespace Maestro.Base.Commands
 
                 var rep = de.DiffReport();
                 TextDiffView dlg = new TextDiffView(sLF, dLF, rep, time);
-                dlg.Text += " - " + edSvc.ResourceID; //NOXLATE
+                dlg.SetLabels(edSvc.ResourceID, Strings.EditedResource);
                 dlg.ShowDialog();
                 dlg.Dispose();
             }

@@ -995,4 +995,10 @@ Error message: {0}</value>
   <data name="SiteExplorer_SelectedItem_ExtractImageSymbols" xml:space="preserve">
     <value>Extract symbols to Symbol Definitions</value>
   </data>
+  <data name="SiteExplorer_CompareResource" xml:space="preserve">
+    <value>Compare this resource with another</value>
+  </data>
+  <data name="EditedResource" xml:space="preserve">
+    <value>Currently Edited Resource</value>
+  </data>
 </root>

@@ -1590,4 +1590,10 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="FetchingSchemaNames" xml:space="preserve">
     <value>Fetching Schema Names</value>
   </data>
+  <data name="Required" xml:space="preserve">
+    <value>Required</value>
+  </data>
+  <data name="SelectSourceResource" xml:space="preserve">
+    <value>Choose a resource for "Selected Resource" first</value>
+  </data>
 </root>

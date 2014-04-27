@@ -524,6 +524,15 @@ namespace Maestro.Base {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Currently Edited Resource.
+        /// </summary>
+        internal static string EditedResource {
+            get {
+                return ResourceManager.GetString("EditedResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Registered Editor: {0}.
         /// </summary>
         internal static string EditorRegistered {
@@ -1849,6 +1858,15 @@ namespace Maestro.Base {
         internal static string SiteAdministrator {
             get {
                 return ResourceManager.GetString("SiteAdministrator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compare this resource with another.
+        /// </summary>
+        internal static string SiteExplorer_CompareResource {
+            get {
+                return ResourceManager.GetString("SiteExplorer_CompareResource", resourceCulture);
             }
         }
         

@@ -30,7 +30,7 @@ using OSGeo.MapGuide.ObjectModels.WebLayout;
 
 namespace Maestro.Editors.WebLayout
 {
-    [ToolboxItem(true)]
+    [ToolboxItem(false)]
     internal partial class WebLayout3SettingsCtrl : EditorBindableCollapsiblePanel
     {
         private IWebLayout3 _wl;
