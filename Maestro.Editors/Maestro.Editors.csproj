@@ -214,6 +214,7 @@
     <Compile Include="Diff\TextDiffView.Designer.cs">
       <DependentUpon>TextDiffView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Diff\XmlCompareUtil.cs" />
     <Compile Include="DrawingSource\DrawingSourceEditorCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -74,6 +74,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
         /// </summary>
         /// <param name="fileName"></param>
         public TextFileDiffList(string fileName)
+            : this(fileName, false)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new instance
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="deleteFile"></param>
+        public TextFileDiffList(string fileName, bool deleteFile)
         {
             _lines = new List<TextLine>();
             using (StreamReader sr = new StreamReader(fileName))
@@ -85,6 +95,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
                 {
                     _lines.Add(new TextLine(line));
                 }
+            }
+            if (deleteFile)
+            {
+                try
+                {
+                    File.Delete(fileName);
+                }
+                catch { }
             }
         }
         #region IDiffList Members

@@ -441,7 +441,6 @@
       <DependentUpon>ValidationResultsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="MaestroPaths.cs" />
-    <Compile Include="Util\XmlCompareUtil.cs" />
     <Compile Include="Workbench.cs">
       <SubType>Form</SubType>
     </Compile>

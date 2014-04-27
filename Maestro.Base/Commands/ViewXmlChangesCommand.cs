@@ -28,7 +28,6 @@ using Maestro.Editors.Diff;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI.Resource.Comparison;
 using System.Xml;
-using Maestro.Base.Util;
 
 namespace Maestro.Base.Commands
 {
@@ -49,13 +48,11 @@ namespace Maestro.Base.Commands
             try
             {
                 edSvc.SyncSessionCopy();
-                XmlCompareUtil.PrepareForComparison(edSvc.ResourceService,
-                                                    edSvc.ResourceID,
-                                                    edSvc.EditedResourceID,
-                                                    out sourceFile,
-                                                    out targetFile);
-                sLF = new TextFileDiffList(sourceFile);
-                dLF = new TextFileDiffList(targetFile);
+                var set = XmlCompareUtil.PrepareForComparison(edSvc.ResourceService,
+                                                              edSvc.ResourceID,
+                                                              edSvc.EditedResourceID);
+                sLF = set.Source;
+                dLF = set.Target;
             }
             catch (Exception ex)
             {

@@ -1,5 +1,5 @@
 ﻿#region Disclaimer / License
-// Copyright (C) 2012, Jackie Ng
+// Copyright (C) 2014, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 // 
 // This library is free software; you can redistribute it and/or
@@ -17,17 +17,31 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 #endregion
+using OSGeo.MapGuide.MaestroAPI.Resource.Comparison;
+using OSGeo.MapGuide.MaestroAPI.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Services;
 using System.Xml;
-using System.IO;
 
-namespace Maestro.Base.Util
+namespace Maestro.Editors.Diff
 {
-    internal class XmlCompareUtil
+    public class XmlComparisonSet
+    {
+        internal XmlComparisonSet(TextFileDiffList source, TextFileDiffList target)
+        {
+            this.Source = source;
+            this.Target = target;
+        }
+
+        public TextFileDiffList Source { get; private set; }
+
+        public TextFileDiffList Target { get; private set; }
+    }
+
+    public class XmlCompareUtil
     {
         /// <summary>
         /// Prepares the source and target resource content for XML comparison
@@ -35,15 +49,13 @@ namespace Maestro.Base.Util
         /// <param name="resSvc"></param>
         /// <param name="sourceId"></param>
         /// <param name="targetId"></param>
-        /// <param name="sourceFile"></param>
-        /// <param name="targetFile"></param>
-        public static void PrepareForComparison(IResourceService resSvc, string sourceId, string targetId, out string sourceFile, out string targetFile)
+        public static XmlComparisonSet PrepareForComparison(IResourceService resSvc, string sourceId, string targetId)
         {
             //Route both source and target XML content through
             //XmlDocument objects to ensure issues like whitespacing do
             //not throw us off
-            sourceFile = Path.GetTempFileName();
-            targetFile = Path.GetTempFileName();
+            var sourceFile = Path.GetTempFileName();
+            var targetFile = Path.GetTempFileName();
             using (var sourceStream = resSvc.GetResourceXmlData(sourceId))
             using (var targetStream = resSvc.GetResourceXmlData(targetId))
             {
@@ -59,6 +71,10 @@ namespace Maestro.Base.Util
                     sourceDoc.Save(fs);
                     targetDoc.Save(ft);
                 }
+
+                return new XmlComparisonSet(
+                    new TextFileDiffList(sourceFile, true),
+                    new TextFileDiffList(targetFile, true));
             }
         }
     }

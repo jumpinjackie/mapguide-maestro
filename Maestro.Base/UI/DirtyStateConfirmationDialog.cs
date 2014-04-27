@@ -31,7 +31,6 @@ using System.Collections;
 using Maestro.Editors.Diff;
 using Maestro.Shared.UI;
 using System.IO;
-using Maestro.Base.Util;
 
 namespace Maestro.Base.UI
 {
@@ -70,13 +69,11 @@ namespace Maestro.Base.UI
             try
             {
                 _edSvc.SyncSessionCopy();
-                XmlCompareUtil.PrepareForComparison(_edSvc.ResourceService,
-                                                    _edSvc.ResourceID,
-                                                    _edSvc.EditedResourceID,
-                                                    out sourceFile,
-                                                    out targetFile);
-                sLF = new TextFileDiffList(sourceFile);
-                dLF = new TextFileDiffList(targetFile);
+                var set = XmlCompareUtil.PrepareForComparison(_edSvc.ResourceService,
+                                                              _edSvc.ResourceID,
+                                                              _edSvc.EditedResourceID);
+                sLF = set.Source;
+                dLF = set.Target;
             }
             catch (Exception ex)
             {
