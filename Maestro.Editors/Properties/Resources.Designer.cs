@@ -557,6 +557,16 @@ namespace Maestro.Editors.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap folder_tree {
+            get {
+                object obj = ResourceManager.GetObject("folder-tree", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap function {
             get {
                 object obj = ResourceManager.GetObject("function", resourceCulture);

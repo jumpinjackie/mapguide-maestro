@@ -31,6 +31,8 @@ using OSGeo.MapGuide.ObjectModels.Common;
 using System.Security.AccessControl;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using Maestro.Editors.Common;
+using Maestro.Editors.Preview;
+using Maestro.Shared.UI;
 
 namespace Maestro.Editors.Generic
 {
@@ -325,6 +327,13 @@ namespace Maestro.Editors.Generic
                     PopulateDocumentList(list);
                 }
             }
+            btnPreview.Enabled = false;
+            lblPreviewNotAvailable.Visible = true;
+            if (picPreview.Image != null)
+            {
+                picPreview.Image.Dispose();
+                picPreview.Image = null;
+            }
         }
 
         private void PopulateDocumentList(ResourceList list)
@@ -369,7 +378,20 @@ namespace Maestro.Editors.Generic
                 {
                     txtName.Text = ResourceIdentifier.GetName(doc.ResourceId);
                 }
+                bool bPreviewable = IsPreviewable(doc);
+                btnPreview.Enabled = bPreviewable;
+                lblPreviewNotAvailable.Visible = !bPreviewable;
+                if (picPreview.Image != null)
+                {
+                    picPreview.Image.Dispose();
+                    picPreview.Image = null;
+                }
             }
+        }
+
+        private bool IsPreviewable(ResourceListResourceDocument doc)
+        {
+            return doc.ResourceType == ResourceTypes.SymbolDefinition;
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
@@ -400,6 +422,61 @@ namespace Maestro.Editors.Generic
                     btnOK.PerformClick();
                 }
             }
+        }
+
+        private void btnUpOneLevel_Click(object sender, EventArgs e)
+        {
+            var item = repoView.SelectedItem;
+            if (item != null)
+            {
+                string folderId = ResourceIdentifier.GetParentFolder(item.ResourceId);
+                if (folderId != item.ResourceId)
+                {
+                    repoView.NavigateTo(folderId);
+                    UpdateDocumentList();
+                }
+            }
+        }
+
+        private void btnRoot_Click(object sender, EventArgs e)
+        {
+            repoView.NavigateTo("Library://");
+            UpdateDocumentList();
+        }
+
+        private void btnPreview_Click(object sender, EventArgs e)
+        {
+            if (lstResources.SelectedItems.Count == 1)
+            {
+                var item = lstResources.SelectedItems[0];
+                var doc = item.Tag as ResourceListResourceDocument;
+                System.Diagnostics.Debug.Assert(doc != null);
+                System.Diagnostics.Debug.Assert(IsPreviewable(doc));
+
+                RenderPreview(doc);
+            }
+        }
+
+        private void RenderPreview(ResourceListResourceDocument doc)
+        {
+            BusyWaitDialog.Run(Strings.PrgPreparingResourcePreview, () => {
+                var res = _resSvc.GetResource(doc.ResourceId);
+                return DefaultResourcePreviewer.GenerateSymbolDefinitionPreview(res.CurrentConnection, res, picPreview.Width, picPreview.Height);
+            }, (res, ex) => {
+                if (ex != null)
+                {
+                    ErrorDialog.Show(ex);
+                }
+                else
+                {
+                    picPreview.Image = ((DefaultResourcePreviewer.ImagePreviewResult)res).ImagePreview;
+                }
+            });
+        }
+
+        private void btnRefreshFolderView_Click(object sender, EventArgs e)
+        {
+            UpdateDocumentList();
         }
     }
 

@@ -43,16 +43,27 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnRoot = new System.Windows.Forms.Button();
+            this.repoView = new Maestro.Editors.Common.RepositoryView();
+            this.btnUpOneLevel = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblPreviewNotAvailable = new System.Windows.Forms.Label();
+            this.picPreview = new System.Windows.Forms.PictureBox();
+            this.btnPreview = new System.Windows.Forms.Button();
             this.folderImageList = new System.Windows.Forms.ImageList(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.txtFolder = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.resIdComponentPanel = new System.Windows.Forms.Panel();
-            this.repoView = new Maestro.Editors.Common.RepositoryView();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.btnRefreshFolderView = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPreview)).BeginInit();
             this.resIdComponentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -140,17 +151,76 @@
             // splitContainer1
             // 
             resources.ApplyResources(this.splitContainer1, "splitContainer1");
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnRoot);
             this.splitContainer1.Panel1.Controls.Add(this.repoView);
+            this.splitContainer1.Panel1.Controls.Add(this.btnUpOneLevel);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.btnRefreshFolderView);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel2.Controls.Add(this.lstResources);
             this.splitContainer1.Panel2.Controls.Add(this.label4);
+            // 
+            // btnRoot
+            // 
+            resources.ApplyResources(this.btnRoot, "btnRoot");
+            this.btnRoot.Image = global::Maestro.Editors.Properties.Resources.folder_tree;
+            this.btnRoot.Name = "btnRoot";
+            this.toolTip.SetToolTip(this.btnRoot, resources.GetString("btnRoot.ToolTip"));
+            this.btnRoot.UseVisualStyleBackColor = true;
+            this.btnRoot.Click += new System.EventHandler(this.btnRoot_Click);
+            // 
+            // repoView
+            // 
+            resources.ApplyResources(this.repoView, "repoView");
+            this.repoView.Name = "repoView";
+            this.repoView.SelectOnDrag = false;
+            // 
+            // btnUpOneLevel
+            // 
+            resources.ApplyResources(this.btnUpOneLevel, "btnUpOneLevel");
+            this.btnUpOneLevel.Image = global::Maestro.Editors.Properties.Resources.arrow_090;
+            this.btnUpOneLevel.Name = "btnUpOneLevel";
+            this.toolTip.SetToolTip(this.btnUpOneLevel, resources.GetString("btnUpOneLevel.ToolTip"));
+            this.btnUpOneLevel.UseVisualStyleBackColor = true;
+            this.btnUpOneLevel.Click += new System.EventHandler(this.btnUpOneLevel_Click);
+            // 
+            // groupBox1
+            // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.lblPreviewNotAvailable);
+            this.groupBox1.Controls.Add(this.picPreview);
+            this.groupBox1.Controls.Add(this.btnPreview);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // lblPreviewNotAvailable
+            // 
+            this.lblPreviewNotAvailable.ForeColor = System.Drawing.Color.Red;
+            resources.ApplyResources(this.lblPreviewNotAvailable, "lblPreviewNotAvailable");
+            this.lblPreviewNotAvailable.Name = "lblPreviewNotAvailable";
+            // 
+            // picPreview
+            // 
+            resources.ApplyResources(this.picPreview, "picPreview");
+            this.picPreview.Name = "picPreview";
+            this.picPreview.TabStop = false;
+            // 
+            // btnPreview
+            // 
+            resources.ApplyResources(this.btnPreview, "btnPreview");
+            this.btnPreview.Image = global::Maestro.Editors.Properties.Resources.magnifier;
+            this.btnPreview.Name = "btnPreview";
+            this.toolTip.SetToolTip(this.btnPreview, resources.GetString("btnPreview.ToolTip"));
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // folderImageList
             // 
@@ -190,10 +260,14 @@
             this.resIdComponentPanel.Controls.Add(this.txtFolder);
             this.resIdComponentPanel.Name = "resIdComponentPanel";
             // 
-            // repoView
+            // btnRefreshFolderView
             // 
-            resources.ApplyResources(this.repoView, "repoView");
-            this.repoView.Name = "repoView";
+            resources.ApplyResources(this.btnRefreshFolderView, "btnRefreshFolderView");
+            this.btnRefreshFolderView.Image = global::Maestro.Editors.Properties.Resources.arrow_circle_135;
+            this.btnRefreshFolderView.Name = "btnRefreshFolderView";
+            this.toolTip.SetToolTip(this.btnRefreshFolderView, resources.GetString("btnRefreshFolderView.ToolTip"));
+            this.btnRefreshFolderView.UseVisualStyleBackColor = true;
+            this.btnRefreshFolderView.Click += new System.EventHandler(this.btnRefreshFolderView_Click);
             // 
             // ResourcePicker
             // 
@@ -215,7 +289,10 @@
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picPreview)).EndInit();
             this.resIdComponentPanel.ResumeLayout(false);
             this.resIdComponentPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -245,5 +322,13 @@
         private System.Windows.Forms.Panel resIdComponentPanel;
         private System.Windows.Forms.ImageList folderImageList;
         private Common.RepositoryView repoView;
+        private System.Windows.Forms.Button btnRoot;
+        private System.Windows.Forms.Button btnUpOneLevel;
+        private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox picPreview;
+        private System.Windows.Forms.Button btnPreview;
+        private System.Windows.Forms.Label lblPreviewNotAvailable;
+        private System.Windows.Forms.Button btnRefreshFolderView;
     }
 }
