@@ -70,7 +70,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
         public XmlReaderBase(HttpWebResponse resp) 
         {
             _resp = resp;
-            InitCommon(_resp.GetResponseStream());
+            try
+            {
+                InitCommon(_resp.GetResponseStream());
+            }
+            catch
+            {
+                //Clean up the response before bubbling up the exception
+                this.Dispose();
+                throw;
+            }
         }
 
         private void InitCommon(Stream stream)
