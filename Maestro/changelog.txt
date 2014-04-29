@@ -1,9 +1,29 @@
-﻿ - New grid-based style editor. All layers will use this editor unless you un-tick "Use grid-based style editor" in the options
+﻿6.0a1
+-----
+
+ - New grid-based style editor. All layers will use this editor unless you un-tick "Use grid-based style editor" in the options
  - Basic support for theming composite styles (only from the grid-based style editor)
  - All style editors now auto-refresh their style previews
  - Previews of certain resources will now have optional debug watermarks attached which include information about the generated Map Definition (useful for Layer previews to determine if it has correct CS and bounds)
+ - Enhanced Resource Picker
+    - Added shortcuts to refresh current folder and easy parent/root folder access
+    - Added ability to preview Symbol Definitions inline
+ - Previews now auto-refreshed in Layer Style Editor dialogs
+ - Removed SQL query support from the HTTP connection provider
+ - Flag bad Feature Source, Feature Class and Geometry fields in the editor when opening a bad Layer Definition
+ - Improved schema, class loading responsiveness for Feature Source Preview
+ - Improved XML diff dialog with synchronized source/target views
+ - When creating a new WMS Feature Source, the "Advanced" button will be called out after a successful connection test suggesting to the user that they should create a default configuration document.
+ - Added support for viewing differences between 2 different resourecs
+ - Added support for Web Layout v2.6.0
+ - Added support for generating LOOKUP() theme FDO expressions
  - Added support for generating individual themes by values from an external class definition (eg. A lookup table)
  - Added support for retreving information about a Layer Definition's referenced Spatial Context
+ - Added extra validation checks for Map Definitions
+ - Added support creating image-based Symbol Definitions from a Symbol Library
+ - Added support for automatically calculating meters-per-unit value in MgCooker
+ - Fix: Inefficient Layer Definition validation
+ - Fix: Inability to switch Feature Sources in Layer Definition editor
  - Fix: Text Frame settings not applying for a Text element in a Symbol Definition
  - Fix: Wrong spatial context used when creating a preview for a layer that points to a multi spatial context Feature Source
 
