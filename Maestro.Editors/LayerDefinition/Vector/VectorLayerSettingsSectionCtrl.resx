@@ -150,6 +150,21 @@
   <data name="grpLayerSettings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
+  <data name="btnEditTooltip.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnEditTooltip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 66</value>
+  </data>
+  <data name="btnEditTooltip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 23</value>
+  </data>
+  <data name="btnEditTooltip.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="btnEditTooltip.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
   <data name="&gt;&gt;btnEditTooltip.Name" xml:space="preserve">
     <value>btnEditTooltip</value>
   </data>
@@ -161,6 +176,21 @@
   </data>
   <data name="&gt;&gt;btnEditTooltip.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="btnEditHyperlink.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnEditHyperlink.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 42</value>
+  </data>
+  <data name="btnEditHyperlink.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 23</value>
+  </data>
+  <data name="btnEditHyperlink.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="btnEditHyperlink.Text" xml:space="preserve">
+    <value>...</value>
   </data>
   <data name="&gt;&gt;btnEditHyperlink.Name" xml:space="preserve">
     <value>btnEditHyperlink</value>
@@ -174,6 +204,21 @@
   <data name="&gt;&gt;btnEditHyperlink.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="btnEditFilter.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnEditFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>377, 17</value>
+  </data>
+  <data name="btnEditFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 23</value>
+  </data>
+  <data name="btnEditFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="btnEditFilter.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
   <data name="&gt;&gt;btnEditFilter.Name" xml:space="preserve">
     <value>btnEditFilter</value>
   </data>
@@ -185,6 +230,18 @@
   </data>
   <data name="&gt;&gt;btnEditFilter.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="txtTooltip.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="txtTooltip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 68</value>
+  </data>
+  <data name="txtTooltip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 20</value>
+  </data>
+  <data name="txtTooltip.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="&gt;&gt;txtTooltip.Name" xml:space="preserve">
     <value>txtTooltip</value>
@@ -198,6 +255,18 @@
   <data name="&gt;&gt;txtTooltip.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="txtHyperlink.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="txtHyperlink.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 44</value>
+  </data>
+  <data name="txtHyperlink.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 20</value>
+  </data>
+  <data name="txtHyperlink.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
   <data name="&gt;&gt;txtHyperlink.Name" xml:space="preserve">
     <value>txtHyperlink</value>
   </data>
@@ -209,6 +278,18 @@
   </data>
   <data name="&gt;&gt;txtHyperlink.ZOrder" xml:space="preserve">
     <value>4</value>
+  </data>
+  <data name="txtFilter.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="txtFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 19</value>
+  </data>
+  <data name="txtFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 20</value>
+  </data>
+  <data name="txtFilter.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;txtFilter.Name" xml:space="preserve">
     <value>txtFilter</value>
@@ -222,6 +303,21 @@
   <data name="&gt;&gt;txtFilter.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 71</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 13</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Tooltip</value>
+  </data>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
   </data>
@@ -234,6 +330,21 @@
   <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 47</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 13</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Hyperlink</value>
+  </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
   </data>
@@ -245,6 +356,21 @@
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>7</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 22</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>29, 13</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Filter</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -400,7 +526,7 @@
     <value>121, 44</value>
   </data>
   <data name="txtGeometry.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 20</value>
+    <value>240, 20</value>
   </data>
   <data name="txtGeometry.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -424,7 +550,7 @@
     <value>121, 19</value>
   </data>
   <data name="txtFeatureClass.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 20</value>
+    <value>240, 20</value>
   </data>
   <data name="txtFeatureClass.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -558,240 +684,9 @@
   <data name="&gt;&gt;contentPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="btnEditTooltip.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="btnEditTooltip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 66</value>
-  </data>
-  <data name="btnEditTooltip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 23</value>
-  </data>
-  <data name="btnEditTooltip.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="btnEditTooltip.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="&gt;&gt;btnEditTooltip.Name" xml:space="preserve">
-    <value>btnEditTooltip</value>
-  </data>
-  <data name="&gt;&gt;btnEditTooltip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnEditTooltip.Parent" xml:space="preserve">
-    <value>grpLayerSettings</value>
-  </data>
-  <data name="&gt;&gt;btnEditTooltip.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="btnEditHyperlink.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="btnEditHyperlink.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 42</value>
-  </data>
-  <data name="btnEditHyperlink.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 23</value>
-  </data>
-  <data name="btnEditHyperlink.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="btnEditHyperlink.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="&gt;&gt;btnEditHyperlink.Name" xml:space="preserve">
-    <value>btnEditHyperlink</value>
-  </data>
-  <data name="&gt;&gt;btnEditHyperlink.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnEditHyperlink.Parent" xml:space="preserve">
-    <value>grpLayerSettings</value>
-  </data>
-  <data name="&gt;&gt;btnEditHyperlink.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnEditFilter.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="btnEditFilter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>377, 17</value>
-  </data>
-  <data name="btnEditFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 23</value>
-  </data>
-  <data name="btnEditFilter.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="btnEditFilter.Text" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="&gt;&gt;btnEditFilter.Name" xml:space="preserve">
-    <value>btnEditFilter</value>
-  </data>
-  <data name="&gt;&gt;btnEditFilter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnEditFilter.Parent" xml:space="preserve">
-    <value>grpLayerSettings</value>
-  </data>
-  <data name="&gt;&gt;btnEditFilter.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="txtTooltip.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="txtTooltip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 68</value>
-  </data>
-  <data name="txtTooltip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 20</value>
-  </data>
-  <data name="txtTooltip.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;txtTooltip.Name" xml:space="preserve">
-    <value>txtTooltip</value>
-  </data>
-  <data name="&gt;&gt;txtTooltip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtTooltip.Parent" xml:space="preserve">
-    <value>grpLayerSettings</value>
-  </data>
-  <data name="&gt;&gt;txtTooltip.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="txtHyperlink.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="txtHyperlink.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 44</value>
-  </data>
-  <data name="txtHyperlink.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 20</value>
-  </data>
-  <data name="txtHyperlink.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;txtHyperlink.Name" xml:space="preserve">
-    <value>txtHyperlink</value>
-  </data>
-  <data name="&gt;&gt;txtHyperlink.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtHyperlink.Parent" xml:space="preserve">
-    <value>grpLayerSettings</value>
-  </data>
-  <data name="&gt;&gt;txtHyperlink.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="txtFilter.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="txtFilter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>121, 19</value>
-  </data>
-  <data name="txtFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 20</value>
-  </data>
-  <data name="txtFilter.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;txtFilter.Name" xml:space="preserve">
-    <value>txtFilter</value>
-  </data>
-  <data name="&gt;&gt;txtFilter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;txtFilter.Parent" xml:space="preserve">
-    <value>grpLayerSettings</value>
-  </data>
-  <data name="&gt;&gt;txtFilter.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 71</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 13</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Tooltip</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>grpLayerSettings</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 47</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 13</value>
-  </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Hyperlink</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>grpLayerSettings</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>15, 22</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 13</value>
-  </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Filter</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>grpLayerSettings</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
+  <metadata name="errorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -801,10 +696,16 @@
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>449, 267</value>
   </data>
+  <data name="&gt;&gt;errorProvider.Name" xml:space="preserve">
+    <value>errorProvider</value>
+  </data>
+  <data name="&gt;&gt;errorProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ErrorProvider, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>VectorLayerSettingsSectionCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=5.1.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
 </root>

@@ -545,6 +545,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// If the Layer Definition does not support composite symbolization, null is returned
         /// </summary>
         Version SymbolDefinitionVersion { get; }
+
+        /// <summary>
+        /// Removes all property mappings
+        /// </summary>
+        void ClearPropertyMappings();
     }
 
     /// <summary>

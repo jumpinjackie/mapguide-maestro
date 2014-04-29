@@ -35,7 +35,6 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace Maestro.Editors.LayerDefinition.Vector
 {
-    //[ToolboxItem(true)]
     [ToolboxItem(false)]
     internal partial class VectorLayerSettingsSectionCtrl : EditorBindableCollapsiblePanel
     {
@@ -64,24 +63,101 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 _vl = res.SubLayer as IVectorLayerDefinition;
                 Debug.Assert(_vl != null);
 
-                //TextBoxBinder.BindText(txtFeatureSource, _vl, "ResourceId");
-                //TextBoxBinder.BindText(txtFeatureClass, _vl, "FeatureName");
-                //TextBoxBinder.BindText(txtGeometry, _vl, "Geometry");
                 txtFeatureClass.Text = _vl.FeatureName;
                 txtGeometry.Text = _vl.Geometry;
-                if (string.IsNullOrEmpty(txtFeatureClass.Text) || string.IsNullOrEmpty(txtGeometry.Text))
-                    TryFillUIFromNewFeatureSource(_vl.ResourceId);
-                else
-                    txtFeatureSource.Text = _vl.ResourceId;
+                ResetErrorState();
 
-                //TextBoxBinder.BindText(txtFilter, _vl, "Filter");
+                if (string.IsNullOrEmpty(txtFeatureClass.Text) || string.IsNullOrEmpty(txtGeometry.Text))
+                {
+                    TryFillUIFromNewFeatureSource(_vl.ResourceId);
+                    if (!_edsvc.ResourceService.ResourceExists(_vl.ResourceId))
+                    {
+                        errorProvider.SetError(txtFeatureSource, Strings.LayerEditorFeatureSourceNotFound);
+                        MessageBox.Show(Strings.LayerEditorHasErrors);
+                    }
+                }
+                else
+                {
+                    bool bShowErrorMessage = false;
+                    txtFeatureSource.Text = _vl.ResourceId;
+                    string featureClass = txtFeatureClass.Text;
+                    string geometry = txtGeometry.Text;
+                    BusyWaitDialog.Run(null, () => {
+                        var errors = new List<string>();
+                        if (!_edsvc.ResourceService.ResourceExists(_vl.ResourceId))
+                        {
+                            errors.Add(Strings.LayerEditorFeatureSourceNotFound);
+                        }
+                        if (!string.IsNullOrEmpty(featureClass))
+                        {
+                            ClassDefinition clsDef = null;
+                            try
+                            {
+                                clsDef = _edsvc.FeatureService.GetClassDefinition(_vl.ResourceId, featureClass);
+                            }
+                            catch
+                            {
+                                errors.Add(Strings.LayerEditorFeatureClassNotFound);
+                                //These property mappings will probably be bunk if this is the case, so clear them
+                                _vl.ClearPropertyMappings();
+                            }
+
+                            if (clsDef != null)
+                            {
+                                GeometricPropertyDefinition geom = clsDef.FindProperty(geometry) as GeometricPropertyDefinition;
+                                if (geom == null)
+                                {
+                                    errors.Add(Strings.LayerEditorGeometryNotFound);
+                                }
+                            }
+                            else
+                            {
+                                //This is probably true
+                                errors.Add(Strings.LayerEditorGeometryNotFound);
+                            }
+                        }
+                        return errors;
+                    }, (result, ex) => {
+                        if (ex != null)
+                        {
+                            ErrorDialog.Show(ex);
+                        }
+                        else
+                        {
+                            var list = (List<string>)result;
+                            foreach (var err in list)
+                            {
+                                if (err == Strings.LayerEditorGeometryNotFound)
+                                {
+                                    errorProvider.SetError(txtGeometry, err);
+                                    bShowErrorMessage = true;
+                                }
+                                else if (err == Strings.LayerEditorFeatureSourceNotFound)
+                                {
+                                    errorProvider.SetError(txtFeatureSource, err);
+                                    //Don't show error message here if this is the only error as the user
+                                    //will get a repair feature source prompt down the road
+                                }
+                                else if (err == Strings.LayerEditorFeatureClassNotFound)
+                                {
+                                    errorProvider.SetError(txtFeatureClass, err);
+                                    bShowErrorMessage = true;
+                                }
+                            }
+                            if (bShowErrorMessage)
+                            {
+                                MessageBox.Show(Strings.LayerEditorHasErrors);
+                            }
+                        }
+                    });   
+                }
+
                 txtFilter.Text = _vl.Filter;
 
                 //Loose bind this one because 2.4 changes this behaviour making it
                 //unsuitable for databinding via TextBoxBinder
                 txtHyperlink.Text = _vl.Url;
 
-                //TextBoxBinder.BindText(txtTooltip, _vl, "ToolTip");
                 txtTooltip.Text = _vl.ToolTip;
 
                 //This is not the root object so no change listeners have been subscribed
@@ -93,6 +169,13 @@ namespace Maestro.Editors.LayerDefinition.Vector
             }
         }
 
+        private void ResetErrorState()
+        {
+            errorProvider.SetError(txtFeatureClass, null);
+            errorProvider.SetError(txtGeometry, null);
+            errorProvider.SetError(txtFeatureSource, null);
+        }
+
         protected override void OnLoad(EventArgs e)
         {
             if (this.DesignMode)
@@ -100,8 +183,13 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
             //Init cached schemas and selected class
             if (!string.IsNullOrEmpty(txtFeatureClass.Text))
-            {                
-                var cls = _edsvc.FeatureService.GetClassDefinition(txtFeatureSource.Text, txtFeatureClass.Text);
+            {
+                ClassDefinition cls = null;
+                try
+                {
+                    cls = _edsvc.FeatureService.GetClassDefinition(txtFeatureSource.Text, txtFeatureClass.Text);
+                }
+                catch { }
                 if (cls != null)
                 {
                     _selectedClass = cls;
@@ -149,13 +237,19 @@ namespace Maestro.Editors.LayerDefinition.Vector
         private void txtFeatureClass_TextChanged(object sender, EventArgs e)
         {
             if (txtFeatureClass.Text != _vl.FeatureName)
+            {
                 _vl.FeatureName = txtFeatureClass.Text;
+                errorProvider.SetError(txtFeatureClass, null);
+            }
         }
 
         private void txtGeometry_TextChanged(object sender, EventArgs e)
         {
             if (txtGeometry.Text != _vl.Geometry)
+            {
                 _vl.Geometry = txtGeometry.Text;
+                errorProvider.SetError(txtGeometry, null);
+            }
         }
 
         internal event EventHandler FeatureClassChanged;
@@ -300,6 +394,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
         private void SetFeatureClass(ClassDefinition item)
         {
             txtFeatureClass.Text = item.QualifiedName;
+            errorProvider.SetError(txtFeatureClass, null);
             _selectedClass = item;
 
             //See if geometry needs invalidation
@@ -328,6 +423,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
             if (geoms.Count == 1)
                 txtGeometry.Text = geoms[0].Name;
 
+            errorProvider.SetError(txtGeometry, null);
             OnFeatureClassChanged();
         }
 
@@ -386,6 +482,12 @@ namespace Maestro.Editors.LayerDefinition.Vector
         private void btnGoToFeatureSource_Click(object sender, EventArgs e)
         {
             _edsvc.OpenResource(txtFeatureSource.Text);
+        }
+
+        internal void SetFeatureSource(string fsId)
+        {
+            txtFeatureSource.Text = fsId;
+            errorProvider.SetError(txtFeatureSource, null);
         }
     }
 }

@@ -2013,6 +2013,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             }
         }
 #endif
+
+        void IVectorLayerDefinition.ClearPropertyMappings()
+        {
+            propertyMappingField.Clear();
+        }
     }
     #region Composite Symbolization
 #if !LDF_100

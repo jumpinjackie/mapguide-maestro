@@ -54,6 +54,9 @@ namespace Maestro.Editors.LayerDefinition
             layerProperties.Bind(service);
             layerStyles.Bind(service);
 
+            //A prompt to repair the feature source may have changed this, so update it.
+            resSettings.SetFeatureSource(_vl.ResourceId);
+
             //Add watermark component if supported
             var sl2 = _vl as ISubLayerDefinition2;
             if (sl2 != null)

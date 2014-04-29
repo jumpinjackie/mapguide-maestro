@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VectorLayerSettingsSectionCtrl));
             this.label1 = new System.Windows.Forms.Label();
             this.txtFeatureSource = new System.Windows.Forms.TextBox();
@@ -50,9 +51,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnGoToFeatureSource = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.contentPanel.SuspendLayout();
             this.grpFeatureClass.SuspendLayout();
             this.grpLayerSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // contentPanel
@@ -211,6 +214,10 @@
             this.btnGoToFeatureSource.UseVisualStyleBackColor = true;
             this.btnGoToFeatureSource.Click += new System.EventHandler(this.btnGoToFeatureSource_Click);
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // VectorLayerSettingsSectionCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -222,6 +229,7 @@
             this.grpFeatureClass.PerformLayout();
             this.grpLayerSettings.ResumeLayout(false);
             this.grpLayerSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -249,5 +257,6 @@
         private System.Windows.Forms.TextBox txtGeometry;
         private System.Windows.Forms.TextBox txtFeatureClass;
         private System.Windows.Forms.Button btnGoToFeatureSource;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

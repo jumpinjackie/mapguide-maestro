@@ -1544,6 +1544,42 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Feature Class Not Found.
+        /// </summary>
+        internal static string LayerEditorFeatureClassNotFound {
+            get {
+                return ResourceManager.GetString("LayerEditorFeatureClassNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Feature Source Not Found.
+        /// </summary>
+        internal static string LayerEditorFeatureSourceNotFound {
+            get {
+                return ResourceManager.GetString("LayerEditorFeatureSourceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geometry Property Not Found.
+        /// </summary>
+        internal static string LayerEditorGeometryNotFound {
+            get {
+                return ResourceManager.GetString("LayerEditorGeometryNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Found errors in the Layer Definition. Please check any errors flagged in the editor..
+        /// </summary>
+        internal static string LayerEditorHasErrors {
+            get {
+                return ResourceManager.GetString("LayerEditorHasErrors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Layer Group ({0}) successfully converted to Base Layer Group ({1}).
         /// </summary>
         internal static string LayerGroupConvertedToBaseLayerGroup {

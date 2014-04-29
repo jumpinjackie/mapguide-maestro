@@ -11,6 +11,7 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using Maestro.Editors.Common;
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace Maestro.Editors.LayerDefinition
 {
@@ -86,7 +87,15 @@ namespace Maestro.Editors.LayerDefinition
 
             if (_edsvc.ResourceService.ResourceExists(_vl.ResourceId))
             {
-                var cls = _edsvc.FeatureService.GetClassDefinition(_vl.ResourceId, _vl.FeatureName);
+                ClassDefinition cls = null;
+                try
+                {
+                    cls = _edsvc.FeatureService.GetClassDefinition(_vl.ResourceId, _vl.FeatureName);
+                }
+                catch
+                {
+                    //Do nothing, layer settings control does this check and should flag the feature class field as something requiring attention
+                }
                 if (cls != null)
                 {
                     grdProperties.Rows.Clear();

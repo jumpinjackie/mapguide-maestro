@@ -1596,4 +1596,16 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="SelectSourceResource" xml:space="preserve">
     <value>Choose a resource for "Selected Resource" first</value>
   </data>
+  <data name="LayerEditorFeatureClassNotFound" xml:space="preserve">
+    <value>Feature Class Not Found</value>
+  </data>
+  <data name="LayerEditorFeatureSourceNotFound" xml:space="preserve">
+    <value>Feature Source Not Found</value>
+  </data>
+  <data name="LayerEditorGeometryNotFound" xml:space="preserve">
+    <value>Geometry Property Not Found</value>
+  </data>
+  <data name="LayerEditorHasErrors" xml:space="preserve">
+    <value>Found errors in the Layer Definition. Please check any errors flagged in the editor.</value>
+  </data>
 </root>
