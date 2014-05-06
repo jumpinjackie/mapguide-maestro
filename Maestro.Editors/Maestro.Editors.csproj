@@ -120,7 +120,19 @@
     <Compile Include="Common\ExpressionEditor.designer.cs">
       <DependentUpon>ExpressionEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\Expression\LookupExpressionBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\Expression\LookupExpressionBuilder.Designer.cs">
+      <DependentUpon>LookupExpressionBuilder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\Expression\FdoExpressionCompletionDataProvider.cs" />
+    <Compile Include="Common\Expression\RangeExpressionBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\Expression\RangeExpressionBuilder.Designer.cs">
+      <DependentUpon>RangeExpressionBuilder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\FindReplaceDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1312,6 +1324,12 @@
     <EmbeddedResource Include="Common\ExpressionEditor.resx">
       <DependentUpon>ExpressionEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\Expression\LookupExpressionBuilder.resx">
+      <DependentUpon>LookupExpressionBuilder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\Expression\RangeExpressionBuilder.resx">
+      <DependentUpon>RangeExpressionBuilder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Common\FindReplaceDialog.resx">
       <DependentUpon>FindReplaceDialog.cs</DependentUpon>

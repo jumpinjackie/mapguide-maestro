@@ -97,7 +97,7 @@ namespace Maestro.Editors.Common
                 m_featureSource = featuresSourceId;
                 _caps = caps;
 
-                insertThemeExpressionToolStripMenuItem.Enabled = attachStylizationFunctions;
+                btnTools.Enabled = attachStylizationFunctions;
 
                 SortedList<string, PropertyDefinition> sortedCols = new SortedList<string, PropertyDefinition>();
                 foreach (var col in _cls.Properties)
@@ -431,6 +431,62 @@ namespace Maestro.Editors.Common
         void ITextInserter.InsertText(string text)
         {
             this.InsertText(text);
+        }
+
+        private void insertARGBColorExpressionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var picker = new ColorDialog())
+            {
+                if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                { 
+                    var c = picker.Color;
+                    this.InsertText(string.Format("ARGB({0}, {1}, {2}, {3})", c.A, c.R, c.G, c.B));
+                }
+            }
+        }
+
+        private void insertHTMLCOLORExpressionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var picker = new ColorDialog())
+            {
+                if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    var c = picker.Color;
+                    this.InsertText(string.Format("HTMLCOLOR({0}, {1}, {2})", c.R, c.G, c.B));
+                }
+            }
+        }
+
+        private void buildAndInsertLOOKUPExpressionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<string> propNames = new List<string>();
+            foreach (var prop in _cls.Properties)
+            {
+                propNames.Add(prop.Name);
+            }
+            using (var picker = new LookupExpressionBuilder(propNames.ToArray()))
+            {
+                if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    this.InsertText(picker.GetExpression());
+                }
+            }
+        }
+
+        private void buildAndInsertRANGEExpressionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<string> propNames = new List<string>();
+            foreach (var prop in _cls.Properties)
+            {
+                propNames.Add(prop.Name);
+            }
+            using (var picker = new RangeExpressionBuilder(propNames.ToArray()))
+            {
+                if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    this.InsertText(picker.GetExpression());
+                }
+            }
         }
     }
 }

@@ -45,10 +45,14 @@
             this.ColumnValue = new System.Windows.Forms.ToolStripComboBox();
             this.LookupValues = new System.Windows.Forms.ToolStripButton();
             this.ColumnName = new System.Windows.Forms.ToolStripComboBox();
-            this.ExpressionText = new System.Windows.Forms.TextBox();
-            this._autoCompleteTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.btnTools = new System.Windows.Forms.ToolStripDropDownButton();
             this.insertThemeExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExpressionText = new System.Windows.Forms.TextBox();
+            this._autoCompleteTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.insertARGBColorExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.insertHTMLCOLORExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buildAndInsertLOOKUPExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buildAndInsertRANGEExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -167,18 +171,14 @@
             this.ColumnName.SelectedIndexChanged += new System.EventHandler(this.ColumnName_SelectedIndexChanged);
             this.ColumnName.Click += new System.EventHandler(this.ColumnName_Click);
             // 
-            // ExpressionText
-            // 
-            resources.ApplyResources(this.ExpressionText, "ExpressionText");
-            this.ExpressionText.HideSelection = false;
-            this.ExpressionText.Name = "ExpressionText";
-            this.ExpressionText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ExpressionText_KeyDown);
-            this.ExpressionText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ExpressionText_KeyUp);
-            // 
             // btnTools
             // 
             this.btnTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.insertThemeExpressionToolStripMenuItem});
+            this.insertThemeExpressionToolStripMenuItem,
+            this.insertARGBColorExpressionToolStripMenuItem,
+            this.insertHTMLCOLORExpressionToolStripMenuItem,
+            this.buildAndInsertLOOKUPExpressionToolStripMenuItem,
+            this.buildAndInsertRANGEExpressionToolStripMenuItem});
             this.btnTools.Image = global::Maestro.Editors.Properties.Resources.gear;
             resources.ApplyResources(this.btnTools, "btnTools");
             this.btnTools.Name = "btnTools";
@@ -188,6 +188,38 @@
             this.insertThemeExpressionToolStripMenuItem.Name = "insertThemeExpressionToolStripMenuItem";
             resources.ApplyResources(this.insertThemeExpressionToolStripMenuItem, "insertThemeExpressionToolStripMenuItem");
             this.insertThemeExpressionToolStripMenuItem.Click += new System.EventHandler(this.insertThemeExpressionToolStripMenuItem_Click);
+            // 
+            // ExpressionText
+            // 
+            resources.ApplyResources(this.ExpressionText, "ExpressionText");
+            this.ExpressionText.HideSelection = false;
+            this.ExpressionText.Name = "ExpressionText";
+            this.ExpressionText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ExpressionText_KeyDown);
+            this.ExpressionText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ExpressionText_KeyUp);
+            // 
+            // insertARGBColorExpressionToolStripMenuItem
+            // 
+            this.insertARGBColorExpressionToolStripMenuItem.Name = "insertARGBColorExpressionToolStripMenuItem";
+            resources.ApplyResources(this.insertARGBColorExpressionToolStripMenuItem, "insertARGBColorExpressionToolStripMenuItem");
+            this.insertARGBColorExpressionToolStripMenuItem.Click += new System.EventHandler(this.insertARGBColorExpressionToolStripMenuItem_Click);
+            // 
+            // insertHTMLCOLORExpressionToolStripMenuItem
+            // 
+            this.insertHTMLCOLORExpressionToolStripMenuItem.Name = "insertHTMLCOLORExpressionToolStripMenuItem";
+            resources.ApplyResources(this.insertHTMLCOLORExpressionToolStripMenuItem, "insertHTMLCOLORExpressionToolStripMenuItem");
+            this.insertHTMLCOLORExpressionToolStripMenuItem.Click += new System.EventHandler(this.insertHTMLCOLORExpressionToolStripMenuItem_Click);
+            // 
+            // buildAndInsertLOOKUPExpressionToolStripMenuItem
+            // 
+            this.buildAndInsertLOOKUPExpressionToolStripMenuItem.Name = "buildAndInsertLOOKUPExpressionToolStripMenuItem";
+            resources.ApplyResources(this.buildAndInsertLOOKUPExpressionToolStripMenuItem, "buildAndInsertLOOKUPExpressionToolStripMenuItem");
+            this.buildAndInsertLOOKUPExpressionToolStripMenuItem.Click += new System.EventHandler(this.buildAndInsertLOOKUPExpressionToolStripMenuItem_Click);
+            // 
+            // buildAndInsertRANGEExpressionToolStripMenuItem
+            // 
+            this.buildAndInsertRANGEExpressionToolStripMenuItem.Name = "buildAndInsertRANGEExpressionToolStripMenuItem";
+            resources.ApplyResources(this.buildAndInsertRANGEExpressionToolStripMenuItem, "buildAndInsertRANGEExpressionToolStripMenuItem");
+            this.buildAndInsertRANGEExpressionToolStripMenuItem.Click += new System.EventHandler(this.buildAndInsertRANGEExpressionToolStripMenuItem_Click);
             // 
             // MonoCompatibleExpressionEditor
             // 
@@ -228,5 +260,9 @@
         private System.Windows.Forms.ToolStripDropDownButton btnFunctions;
         private System.Windows.Forms.ToolStripDropDownButton btnTools;
         private System.Windows.Forms.ToolStripMenuItem insertThemeExpressionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem insertARGBColorExpressionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem insertHTMLCOLORExpressionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem buildAndInsertLOOKUPExpressionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem buildAndInsertRANGEExpressionToolStripMenuItem;
     }
 }

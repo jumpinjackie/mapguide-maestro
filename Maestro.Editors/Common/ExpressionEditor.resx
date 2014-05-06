@@ -256,10 +256,34 @@
     <value>Select the column to read values from</value>
   </data>
   <data name="insertThemeExpressionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>201, 22</value>
+    <value>307, 22</value>
   </data>
   <data name="insertThemeExpressionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Insert Theme Expression</value>
+    <value>Insert Theme Expression (via Theme Builder)</value>
+  </data>
+  <data name="insertARGBColorExpressionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 22</value>
+  </data>
+  <data name="insertARGBColorExpressionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Insert ARGB color expression</value>
+  </data>
+  <data name="insertHTMLCOLORExpressionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 22</value>
+  </data>
+  <data name="insertHTMLCOLORExpressionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Insert HTMLCOLOR expression</value>
+  </data>
+  <data name="buildAndInsertLOOKUPExpressionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 22</value>
+  </data>
+  <data name="buildAndInsertLOOKUPExpressionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Build and Insert LOOKUP expression</value>
+  </data>
+  <data name="buildAndInsertRANGEExpressionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>307, 22</value>
+  </data>
+  <data name="buildAndInsertRANGEExpressionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Build and Insert RANGE expression</value>
   </data>
   <data name="btnTools.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -295,19 +319,19 @@
     <value>1</value>
   </data>
   <data name="btnCondition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>127, 22</value>
   </data>
   <data name="btnCondition.Text" xml:space="preserve">
     <value>Condition</value>
   </data>
   <data name="btnSpatial.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>127, 22</value>
   </data>
   <data name="btnSpatial.Text" xml:space="preserve">
     <value>Spatial</value>
   </data>
   <data name="btnDistance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
+    <value>127, 22</value>
   </data>
   <data name="btnDistance.Text" xml:space="preserve">
     <value>Distance</value>
@@ -414,12 +438,6 @@
   <data name="&gt;&gt;ColumnName.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;_autoCompleteTooltip.Name" xml:space="preserve">
-    <value>_autoCompleteTooltip</value>
-  </data>
-  <data name="&gt;&gt;_autoCompleteTooltip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;btnTools.Name" xml:space="preserve">
     <value>btnTools</value>
   </data>
@@ -430,6 +448,36 @@
     <value>insertThemeExpressionToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;insertThemeExpressionToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;_autoCompleteTooltip.Name" xml:space="preserve">
+    <value>_autoCompleteTooltip</value>
+  </data>
+  <data name="&gt;&gt;_autoCompleteTooltip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;insertARGBColorExpressionToolStripMenuItem.Name" xml:space="preserve">
+    <value>insertARGBColorExpressionToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;insertARGBColorExpressionToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;insertHTMLCOLORExpressionToolStripMenuItem.Name" xml:space="preserve">
+    <value>insertHTMLCOLORExpressionToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;insertHTMLCOLORExpressionToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buildAndInsertLOOKUPExpressionToolStripMenuItem.Name" xml:space="preserve">
+    <value>buildAndInsertLOOKUPExpressionToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;buildAndInsertLOOKUPExpressionToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buildAndInsertRANGEExpressionToolStripMenuItem.Name" xml:space="preserve">
+    <value>buildAndInsertRANGEExpressionToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;buildAndInsertRANGEExpressionToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
