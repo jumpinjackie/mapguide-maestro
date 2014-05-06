@@ -409,7 +409,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
 
         private void grdRules_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex >= 0) {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0) {
                 var rule = (RuleModel)grdRules.Rows[e.RowIndex].DataBoundItem;
                 var cell = grdRules.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 var col = cell.OwningColumn;
