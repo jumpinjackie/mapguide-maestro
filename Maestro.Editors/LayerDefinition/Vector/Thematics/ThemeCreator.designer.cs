@@ -60,15 +60,16 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.chkUseFirstRuleAsTemplate = new System.Windows.Forms.CheckBox();
             this.RuleCountPanel = new System.Windows.Forms.Panel();
             this.DisplayGroup = new System.Windows.Forms.GroupBox();
+            this.grpBorderColor = new System.Windows.Forms.GroupBox();
+            this.numDarkenBorderPc = new System.Windows.Forms.NumericUpDown();
+            this.rdDarkenBorder = new System.Windows.Forms.RadioButton();
+            this.rdPredefinedBorderColor = new System.Windows.Forms.RadioButton();
             this.btnFlipColorBrewer = new System.Windows.Forms.Button();
             this.ColorBrewerPanel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.ColorBrewerDataType = new System.Windows.Forms.ComboBox();
-            this.ColorBrewerColorSet = new Maestro.Editors.Common.CustomCombo();
             this.ColorBrewerLabel = new System.Windows.Forms.LinkLabel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.GradientToColor = new Maestro.Editors.Common.ColorComboBox();
-            this.GradientFromColor = new Maestro.Editors.Common.ColorComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.ColorBrewerColors = new System.Windows.Forms.RadioButton();
             this.GradientColors = new System.Windows.Forms.RadioButton();
@@ -78,6 +79,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.CancelBtn = new System.Windows.Forms.Button();
             this.OKBtn = new System.Windows.Forms.Button();
             this.grpThemeGeneration = new System.Windows.Forms.GroupBox();
+            this.cmbBorderColor = new Maestro.Editors.Common.ColorComboBox();
+            this.ColorBrewerColorSet = new Maestro.Editors.Common.CustomCombo();
+            this.GradientToColor = new Maestro.Editors.Common.ColorComboBox();
+            this.GradientFromColor = new Maestro.Editors.Common.ColorComboBox();
             this.colorComboBox1 = new Maestro.Editors.Common.ColorComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.RuleCount)).BeginInit();
             this.DataGroup.SuspendLayout();
@@ -86,6 +91,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.GroupPanel.SuspendLayout();
             this.RuleCountPanel.SuspendLayout();
             this.DisplayGroup.SuspendLayout();
+            this.grpBorderColor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDarkenBorderPc)).BeginInit();
             this.ColorBrewerPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.PreviewGroup.SuspendLayout();
@@ -320,6 +327,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             // DisplayGroup
             // 
             resources.ApplyResources(this.DisplayGroup, "DisplayGroup");
+            this.DisplayGroup.Controls.Add(this.grpBorderColor);
             this.DisplayGroup.Controls.Add(this.btnFlipColorBrewer);
             this.DisplayGroup.Controls.Add(this.ColorBrewerPanel);
             this.DisplayGroup.Controls.Add(this.ColorBrewerLabel);
@@ -328,6 +336,43 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.DisplayGroup.Controls.Add(this.GradientColors);
             this.DisplayGroup.Name = "DisplayGroup";
             this.DisplayGroup.TabStop = false;
+            // 
+            // grpBorderColor
+            // 
+            this.grpBorderColor.Controls.Add(this.numDarkenBorderPc);
+            this.grpBorderColor.Controls.Add(this.cmbBorderColor);
+            this.grpBorderColor.Controls.Add(this.rdDarkenBorder);
+            this.grpBorderColor.Controls.Add(this.rdPredefinedBorderColor);
+            resources.ApplyResources(this.grpBorderColor, "grpBorderColor");
+            this.grpBorderColor.Name = "grpBorderColor";
+            this.grpBorderColor.TabStop = false;
+            // 
+            // numDarkenBorderPc
+            // 
+            resources.ApplyResources(this.numDarkenBorderPc, "numDarkenBorderPc");
+            this.numDarkenBorderPc.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numDarkenBorderPc.Name = "numDarkenBorderPc";
+            this.numDarkenBorderPc.ValueChanged += new System.EventHandler(this.numDarkenBorderPc_ValueChanged);
+            // 
+            // rdDarkenBorder
+            // 
+            resources.ApplyResources(this.rdDarkenBorder, "rdDarkenBorder");
+            this.rdDarkenBorder.Name = "rdDarkenBorder";
+            this.rdDarkenBorder.UseVisualStyleBackColor = true;
+            this.rdDarkenBorder.CheckedChanged += new System.EventHandler(this.rdDarkenBorder_CheckedChanged);
+            // 
+            // rdPredefinedBorderColor
+            // 
+            resources.ApplyResources(this.rdPredefinedBorderColor, "rdPredefinedBorderColor");
+            this.rdPredefinedBorderColor.Checked = true;
+            this.rdPredefinedBorderColor.Name = "rdPredefinedBorderColor";
+            this.rdPredefinedBorderColor.TabStop = true;
+            this.rdPredefinedBorderColor.UseVisualStyleBackColor = true;
+            this.rdPredefinedBorderColor.CheckedChanged += new System.EventHandler(this.rdPredefinedBorderColor_CheckedChanged);
             // 
             // btnFlipColorBrewer
             // 
@@ -357,14 +402,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.ColorBrewerDataType.Name = "ColorBrewerDataType";
             this.ColorBrewerDataType.SelectedIndexChanged += new System.EventHandler(this.ColorBrewerDataType_SelectedIndexChanged);
             // 
-            // ColorBrewerColorSet
-            // 
-            this.ColorBrewerColorSet.DropDownWidth = 150;
-            this.ColorBrewerColorSet.FormattingEnabled = true;
-            resources.ApplyResources(this.ColorBrewerColorSet, "ColorBrewerColorSet");
-            this.ColorBrewerColorSet.Name = "ColorBrewerColorSet";
-            this.ColorBrewerColorSet.SelectedIndexChanged += new System.EventHandler(this.ColorBrewerColorSet_SelectedIndexChanged);
-            // 
             // ColorBrewerLabel
             // 
             resources.ApplyResources(this.ColorBrewerLabel, "ColorBrewerLabel");
@@ -379,20 +416,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.panel2.Controls.Add(this.label4);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            // 
-            // GradientToColor
-            // 
-            this.GradientToColor.FormattingEnabled = true;
-            resources.ApplyResources(this.GradientToColor, "GradientToColor");
-            this.GradientToColor.Name = "GradientToColor";
-            this.GradientToColor.SelectedIndexChanged += new System.EventHandler(this.GradientToColor_SelectedIndexChanged);
-            // 
-            // GradientFromColor
-            // 
-            this.GradientFromColor.FormattingEnabled = true;
-            resources.ApplyResources(this.GradientFromColor, "GradientFromColor");
-            this.GradientFromColor.Name = "GradientFromColor";
-            this.GradientFromColor.SelectedIndexChanged += new System.EventHandler(this.GradientFromColor_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -459,6 +482,35 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.grpThemeGeneration.Name = "grpThemeGeneration";
             this.grpThemeGeneration.TabStop = false;
             // 
+            // cmbBorderColor
+            // 
+            this.cmbBorderColor.FormattingEnabled = true;
+            resources.ApplyResources(this.cmbBorderColor, "cmbBorderColor");
+            this.cmbBorderColor.Name = "cmbBorderColor";
+            this.cmbBorderColor.SelectedIndexChanged += new System.EventHandler(this.cmbBorderColor_SelectedIndexChanged);
+            // 
+            // ColorBrewerColorSet
+            // 
+            this.ColorBrewerColorSet.DropDownWidth = 150;
+            this.ColorBrewerColorSet.FormattingEnabled = true;
+            resources.ApplyResources(this.ColorBrewerColorSet, "ColorBrewerColorSet");
+            this.ColorBrewerColorSet.Name = "ColorBrewerColorSet";
+            this.ColorBrewerColorSet.SelectedIndexChanged += new System.EventHandler(this.ColorBrewerColorSet_SelectedIndexChanged);
+            // 
+            // GradientToColor
+            // 
+            this.GradientToColor.FormattingEnabled = true;
+            resources.ApplyResources(this.GradientToColor, "GradientToColor");
+            this.GradientToColor.Name = "GradientToColor";
+            this.GradientToColor.SelectedIndexChanged += new System.EventHandler(this.GradientToColor_SelectedIndexChanged);
+            // 
+            // GradientFromColor
+            // 
+            this.GradientFromColor.FormattingEnabled = true;
+            resources.ApplyResources(this.GradientFromColor, "GradientFromColor");
+            this.GradientFromColor.Name = "GradientFromColor";
+            this.GradientFromColor.SelectedIndexChanged += new System.EventHandler(this.GradientFromColor_SelectedIndexChanged);
+            // 
             // colorComboBox1
             // 
             resources.ApplyResources(this.colorComboBox1, "colorComboBox1");
@@ -488,6 +540,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             this.RuleCountPanel.PerformLayout();
             this.DisplayGroup.ResumeLayout(false);
             this.DisplayGroup.PerformLayout();
+            this.grpBorderColor.ResumeLayout(false);
+            this.grpBorderColor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numDarkenBorderPc)).EndInit();
             this.ColorBrewerPanel.ResumeLayout(false);
             this.ColorBrewerPanel.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -552,5 +607,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.TextBox txtFilter;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.GroupBox grpBorderColor;
+        private System.Windows.Forms.NumericUpDown numDarkenBorderPc;
+        private ColorComboBox cmbBorderColor;
+        private System.Windows.Forms.RadioButton rdDarkenBorder;
+        private System.Windows.Forms.RadioButton rdPredefinedBorderColor;
     }
 }

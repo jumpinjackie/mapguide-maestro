@@ -190,6 +190,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 
             GradientFromColor.ResetColors();
             GradientToColor.ResetColors();
+            cmbBorderColor.ResetColors();
+            cmbBorderColor.CurrentColor = Color.Black;
 
             if (m_colorBrewer == null)
                 m_colorBrewer = ColorBrewer.ParseCSV(GetCsvPath());
@@ -248,6 +250,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 PreviewGroup.Enabled =
                 OKBtn.Enabled =
                     true;
+
+                IPointVectorStyle pts = m_ruleCollection as IPointVectorStyle;
+                ILineVectorStyle lts = m_ruleCollection as ILineVectorStyle;
+                IAreaVectorStyle ats = m_ruleCollection as IAreaVectorStyle;
+                ICompositeTypeStyle cts = m_ruleCollection as ICompositeTypeStyle;
+
+                //Border color not applicable for line or composite styles
+                if (lts != null || cts != null)
+                    grpBorderColor.Enabled = false;
 
                 m_values = new Dictionary<object, long>();
 
@@ -730,14 +741,22 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                     int topy = bmp.Height / 4;
                     int height = topy * 2;
 
-
                     foreach (Color? c in colors)
                     {
                         if (!c.HasValue)
                             g.DrawString("...", new Font(FontFamily.GenericSansSerif, 12), Brushes.Black, x, topy);
                         else
                         {
-                            g.DrawRectangle(Pens.Black, x, topy, PREVIEW_ITEM_BOX_WIDTH, height);
+                            Pen p = null;
+                            if (rdPredefinedBorderColor.Checked)
+                                p = new Pen(cmbBorderColor.CurrentColor);
+                            else if (rdDarkenBorder.Checked)
+                                p = new Pen(Utility.ChangeColorBrightness(c.Value, (float)((float)numDarkenBorderPc.Value / 100.0f)));
+
+                            if (p == null)
+                                p = Pens.Black;
+
+                            g.DrawRectangle(p, x, topy, PREVIEW_ITEM_BOX_WIDTH, height);
                             using (Brush b = new SolidBrush(c.Value))
                                 g.FillRectangle(b, x, topy, PREVIEW_ITEM_BOX_WIDTH, height);
                         }
@@ -1392,7 +1411,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 var sym = r.PointSymbolization2D.Symbol;
                 if (sym.Type == PointSymbolType.Mark)
                 {
-                    ((IMarkSymbol)sym).Fill.ForegroundColor = fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
+                    var mark = ((IMarkSymbol)sym);
+                    mark.Fill.ForegroundColor = fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
+                    ApplyBorderColor(entry, mark.Edge);
                 }
                 else if (sym.Type == PointSymbolType.Font)
                 {
@@ -1464,9 +1485,20 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 r.Filter = entry.Filter;
                 r.LegendLabel = entry.Label;
                 r.AreaSymbolization2D.Fill.ForegroundColor = fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
-
+                if (r.AreaSymbolization2D.Stroke != null)
+                {
+                    ApplyBorderColor(entry, r.AreaSymbolization2D.Stroke);
+                }
                 col.AddRule(r);
             }
+        }
+
+        private void ApplyBorderColor(RuleItem entry, IStroke border)
+        {
+            if (rdPredefinedBorderColor.Checked)
+                border.Color = Utility.SerializeHTMLColor(cmbBorderColor.CurrentColor, true);
+            else if (rdDarkenBorder.Checked)
+                border.Color = Utility.SerializeHTMLColor(Utility.ChangeColorBrightness(entry.Color, (float)(Convert.ToSingle(numDarkenBorderPc.Value) / 100.0f)), true);
         }
 
         private void CancelBtn_Click(object sender, EventArgs e)
@@ -1708,6 +1740,26 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             string expr = m_editor.EditExpression(txtFilter.Text, clsDef, fs.Provider, fsId, false);
             if (expr != null)
                 txtFilter.Text = expr;
+        }
+
+        private void rdPredefinedBorderColor_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshPreview();
+        }
+
+        private void rdDarkenBorder_CheckedChanged(object sender, EventArgs e)
+        {
+            RefreshPreview();
+        }
+
+        private void cmbBorderColor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshPreview();
+        }
+
+        private void numDarkenBorderPc_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshPreview();
         }
     }
 }

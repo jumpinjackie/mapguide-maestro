@@ -277,7 +277,7 @@
     <value>111, 19</value>
   </data>
   <data name="ColumnCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 21</value>
+    <value>245, 21</value>
   </data>
   <data name="ColumnCombo.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -301,7 +301,7 @@
     <value>96, 0</value>
   </data>
   <data name="RuleCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 20</value>
+    <value>258, 20</value>
   </data>
   <data name="RuleCount.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -337,7 +337,7 @@
     <value>97, 0</value>
   </data>
   <data name="AggregateCombo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 21</value>
+    <value>245, 21</value>
   </data>
   <data name="AggregateCombo.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -356,6 +356,78 @@
   </data>
   <data name="DataGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;rdValuesFromLookup.Name" xml:space="preserve">
+    <value>rdValuesFromLookup</value>
+  </data>
+  <data name="&gt;&gt;rdValuesFromLookup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rdValuesFromLookup.Parent" xml:space="preserve">
+    <value>DataGroup</value>
+  </data>
+  <data name="&gt;&gt;rdValuesFromLookup.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;rdValuesFromClass.Name" xml:space="preserve">
+    <value>rdValuesFromClass</value>
+  </data>
+  <data name="&gt;&gt;rdValuesFromClass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rdValuesFromClass.Parent" xml:space="preserve">
+    <value>DataGroup</value>
+  </data>
+  <data name="&gt;&gt;rdValuesFromClass.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;grpValuesFromLookup.Name" xml:space="preserve">
+    <value>grpValuesFromLookup</value>
+  </data>
+  <data name="&gt;&gt;grpValuesFromLookup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpValuesFromLookup.Parent" xml:space="preserve">
+    <value>DataGroup</value>
+  </data>
+  <data name="&gt;&gt;grpValuesFromLookup.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;grpValuesFromClass.Name" xml:space="preserve">
+    <value>grpValuesFromClass</value>
+  </data>
+  <data name="&gt;&gt;grpValuesFromClass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpValuesFromClass.Parent" xml:space="preserve">
+    <value>DataGroup</value>
+  </data>
+  <data name="&gt;&gt;grpValuesFromClass.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="DataGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 8</value>
+  </data>
+  <data name="DataGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 277</value>
+  </data>
+  <data name="DataGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="DataGroup.Text" xml:space="preserve">
+    <value>Data setup</value>
+  </data>
+  <data name="&gt;&gt;DataGroup.Name" xml:space="preserve">
+    <value>DataGroup</value>
+  </data>
+  <data name="&gt;&gt;DataGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DataGroup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DataGroup.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="rdValuesFromLookup.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -420,6 +492,183 @@
   <data name="grpValuesFromLookup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
+  <data name="&gt;&gt;btnFilter.Name" xml:space="preserve">
+    <value>btnFilter</value>
+  </data>
+  <data name="&gt;&gt;btnFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnFilter.Parent" xml:space="preserve">
+    <value>grpValuesFromLookup</value>
+  </data>
+  <data name="&gt;&gt;btnFilter.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtFilter.Name" xml:space="preserve">
+    <value>txtFilter</value>
+  </data>
+  <data name="&gt;&gt;txtFilter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFilter.Parent" xml:space="preserve">
+    <value>grpValuesFromLookup</value>
+  </data>
+  <data name="&gt;&gt;txtFilter.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>grpValuesFromLookup</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnUpdateThemeParameters.Name" xml:space="preserve">
+    <value>btnUpdateThemeParameters</value>
+  </data>
+  <data name="&gt;&gt;btnUpdateThemeParameters.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnUpdateThemeParameters.Parent" xml:space="preserve">
+    <value>grpValuesFromLookup</value>
+  </data>
+  <data name="&gt;&gt;btnUpdateThemeParameters.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseFeatureSource.Name" xml:space="preserve">
+    <value>btnBrowseFeatureSource</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseFeatureSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseFeatureSource.Parent" xml:space="preserve">
+    <value>grpValuesFromLookup</value>
+  </data>
+  <data name="&gt;&gt;btnBrowseFeatureSource.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;cmbValueProperty.Name" xml:space="preserve">
+    <value>cmbValueProperty</value>
+  </data>
+  <data name="&gt;&gt;cmbValueProperty.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbValueProperty.Parent" xml:space="preserve">
+    <value>grpValuesFromLookup</value>
+  </data>
+  <data name="&gt;&gt;cmbValueProperty.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>grpValuesFromLookup</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;cmbKeyProperty.Name" xml:space="preserve">
+    <value>cmbKeyProperty</value>
+  </data>
+  <data name="&gt;&gt;cmbKeyProperty.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbKeyProperty.Parent" xml:space="preserve">
+    <value>grpValuesFromLookup</value>
+  </data>
+  <data name="&gt;&gt;cmbKeyProperty.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>grpValuesFromLookup</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;cmbFeatureClass.Name" xml:space="preserve">
+    <value>cmbFeatureClass</value>
+  </data>
+  <data name="&gt;&gt;cmbFeatureClass.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cmbFeatureClass.Parent" xml:space="preserve">
+    <value>grpValuesFromLookup</value>
+  </data>
+  <data name="&gt;&gt;cmbFeatureClass.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>grpValuesFromLookup</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;txtFeatureSource.Name" xml:space="preserve">
+    <value>txtFeatureSource</value>
+  </data>
+  <data name="&gt;&gt;txtFeatureSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtFeatureSource.Parent" xml:space="preserve">
+    <value>grpValuesFromLookup</value>
+  </data>
+  <data name="&gt;&gt;txtFeatureSource.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>grpValuesFromLookup</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="grpValuesFromLookup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 114</value>
+  </data>
+  <data name="grpValuesFromLookup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>355, 154</value>
+  </data>
+  <data name="grpValuesFromLookup.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;grpValuesFromLookup.Name" xml:space="preserve">
+    <value>grpValuesFromLookup</value>
+  </data>
+  <data name="&gt;&gt;grpValuesFromLookup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpValuesFromLookup.Parent" xml:space="preserve">
+    <value>DataGroup</value>
+  </data>
+  <data name="&gt;&gt;grpValuesFromLookup.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="btnFilter.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -427,7 +676,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnFilter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>278, 122</value>
+    <value>325, 122</value>
   </data>
   <data name="btnFilter.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 23</value>
@@ -457,7 +706,7 @@
     <value>103, 124</value>
   </data>
   <data name="txtFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 20</value>
+    <value>216, 20</value>
   </data>
   <data name="txtFilter.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -510,8 +759,11 @@
   <data name="btnUpdateThemeParameters.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="btnUpdateThemeParameters.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnUpdateThemeParameters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>246, 70</value>
+    <value>293, 70</value>
   </data>
   <data name="btnUpdateThemeParameters.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 48</value>
@@ -541,7 +793,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnBrowseFeatureSource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>278, 15</value>
+    <value>325, 15</value>
   </data>
   <data name="btnBrowseFeatureSource.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 23</value>
@@ -571,7 +823,7 @@
     <value>103, 97</value>
   </data>
   <data name="cmbValueProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 21</value>
+    <value>184, 21</value>
   </data>
   <data name="cmbValueProperty.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -625,7 +877,7 @@
     <value>103, 70</value>
   </data>
   <data name="cmbKeyProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 21</value>
+    <value>184, 21</value>
   </data>
   <data name="cmbKeyProperty.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -679,7 +931,7 @@
     <value>103, 43</value>
   </data>
   <data name="cmbFeatureClass.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 21</value>
+    <value>247, 21</value>
   </data>
   <data name="cmbFeatureClass.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -733,7 +985,7 @@
     <value>103, 17</value>
   </data>
   <data name="txtFeatureSource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 20</value>
+    <value>216, 20</value>
   </data>
   <data name="txtFeatureSource.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -780,41 +1032,8 @@
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
-  <data name="grpValuesFromLookup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 114</value>
-  </data>
-  <data name="grpValuesFromLookup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>308, 154</value>
-  </data>
-  <data name="grpValuesFromLookup.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;grpValuesFromLookup.Name" xml:space="preserve">
-    <value>grpValuesFromLookup</value>
-  </data>
-  <data name="&gt;&gt;grpValuesFromLookup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpValuesFromLookup.Parent" xml:space="preserve">
-    <value>DataGroup</value>
-  </data>
-  <data name="&gt;&gt;grpValuesFromLookup.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="grpValuesFromClass.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
-  </data>
-  <data name="GroupPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="GroupPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 19</value>
-  </data>
-  <data name="GroupPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 24</value>
-  </data>
-  <data name="GroupPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
   </data>
   <data name="&gt;&gt;GroupPanel.Name" xml:space="preserve">
     <value>GroupPanel</value>
@@ -832,7 +1051,7 @@
     <value>10, 56</value>
   </data>
   <data name="grpValuesFromClass.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 52</value>
+    <value>354, 52</value>
   </data>
   <data name="grpValuesFromClass.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -849,29 +1068,29 @@
   <data name="&gt;&gt;grpValuesFromClass.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="DataGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 8</value>
+  <data name="GroupPanel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
-  <data name="DataGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 277</value>
+  <data name="GroupPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 19</value>
   </data>
-  <data name="DataGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+  <data name="GroupPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>342, 24</value>
   </data>
-  <data name="DataGroup.Text" xml:space="preserve">
-    <value>Data setup</value>
+  <data name="GroupPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
-  <data name="&gt;&gt;DataGroup.Name" xml:space="preserve">
-    <value>DataGroup</value>
+  <data name="&gt;&gt;GroupPanel.Name" xml:space="preserve">
+    <value>GroupPanel</value>
   </data>
-  <data name="&gt;&gt;DataGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;GroupPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;DataGroup.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;GroupPanel.Parent" xml:space="preserve">
+    <value>grpValuesFromClass</value>
   </data>
-  <data name="&gt;&gt;DataGroup.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;GroupPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="chkUseFirstRuleAsTemplate.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -883,7 +1102,7 @@
     <value>158, 49</value>
   </data>
   <data name="chkUseFirstRuleAsTemplate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 48</value>
+    <value>212, 48</value>
   </data>
   <data name="chkUseFirstRuleAsTemplate.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -910,7 +1129,7 @@
     <value>10, 19</value>
   </data>
   <data name="RuleCountPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 24</value>
+    <value>354, 24</value>
   </data>
   <data name="RuleCountPanel.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -930,6 +1149,132 @@
   <data name="DisplayGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
+  <data name="numDarkenBorderPc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>281, 42</value>
+  </data>
+  <data name="numDarkenBorderPc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 20</value>
+  </data>
+  <data name="numDarkenBorderPc.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;numDarkenBorderPc.Name" xml:space="preserve">
+    <value>numDarkenBorderPc</value>
+  </data>
+  <data name="&gt;&gt;numDarkenBorderPc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numDarkenBorderPc.Parent" xml:space="preserve">
+    <value>grpBorderColor</value>
+  </data>
+  <data name="&gt;&gt;numDarkenBorderPc.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cmbBorderColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>281, 18</value>
+  </data>
+  <data name="cmbBorderColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 21</value>
+  </data>
+  <data name="cmbBorderColor.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;cmbBorderColor.Name" xml:space="preserve">
+    <value>cmbBorderColor</value>
+  </data>
+  <data name="&gt;&gt;cmbBorderColor.Type" xml:space="preserve">
+    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+  </data>
+  <data name="&gt;&gt;cmbBorderColor.Parent" xml:space="preserve">
+    <value>grpBorderColor</value>
+  </data>
+  <data name="&gt;&gt;cmbBorderColor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="rdDarkenBorder.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rdDarkenBorder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rdDarkenBorder.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 42</value>
+  </data>
+  <data name="rdDarkenBorder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 17</value>
+  </data>
+  <data name="rdDarkenBorder.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="rdDarkenBorder.Text" xml:space="preserve">
+    <value>Adjust theme color (&lt;0: Darker, &gt;0: Brighter)</value>
+  </data>
+  <data name="&gt;&gt;rdDarkenBorder.Name" xml:space="preserve">
+    <value>rdDarkenBorder</value>
+  </data>
+  <data name="&gt;&gt;rdDarkenBorder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rdDarkenBorder.Parent" xml:space="preserve">
+    <value>grpBorderColor</value>
+  </data>
+  <data name="&gt;&gt;rdDarkenBorder.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="rdPredefinedBorderColor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rdPredefinedBorderColor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rdPredefinedBorderColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 19</value>
+  </data>
+  <data name="rdPredefinedBorderColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 17</value>
+  </data>
+  <data name="rdPredefinedBorderColor.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="rdPredefinedBorderColor.Text" xml:space="preserve">
+    <value>Use pre-defined color</value>
+  </data>
+  <data name="&gt;&gt;rdPredefinedBorderColor.Name" xml:space="preserve">
+    <value>rdPredefinedBorderColor</value>
+  </data>
+  <data name="&gt;&gt;rdPredefinedBorderColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rdPredefinedBorderColor.Parent" xml:space="preserve">
+    <value>grpBorderColor</value>
+  </data>
+  <data name="&gt;&gt;rdPredefinedBorderColor.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="grpBorderColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 78</value>
+  </data>
+  <data name="grpBorderColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>354, 71</value>
+  </data>
+  <data name="grpBorderColor.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="grpBorderColor.Text" xml:space="preserve">
+    <value>Border Color (Not applicable for Line or Composite Rules)</value>
+  </data>
+  <data name="&gt;&gt;grpBorderColor.Name" xml:space="preserve">
+    <value>grpBorderColor</value>
+  </data>
+  <data name="&gt;&gt;grpBorderColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpBorderColor.Parent" xml:space="preserve">
+    <value>DisplayGroup</value>
+  </data>
+  <data name="&gt;&gt;grpBorderColor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="btnFlipColorBrewer.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -937,16 +1282,16 @@
     <value>NoControl</value>
   </data>
   <data name="btnFlipColorBrewer.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 78</value>
+    <value>316, 46</value>
   </data>
   <data name="btnFlipColorBrewer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 23</value>
+    <value>48, 23</value>
   </data>
   <data name="btnFlipColorBrewer.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <data name="btnFlipColorBrewer.Text" xml:space="preserve">
-    <value>Flip ColorBrewer Colors</value>
+    <value>Flip</value>
   </data>
   <data name="&gt;&gt;btnFlipColorBrewer.Name" xml:space="preserve">
     <value>btnFlipColorBrewer</value>
@@ -958,7 +1303,232 @@
     <value>DisplayGroup</value>
   </data>
   <data name="&gt;&gt;btnFlipColorBrewer.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>ColorBrewerPanel</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerDataType.Name" xml:space="preserve">
+    <value>ColorBrewerDataType</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerDataType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerDataType.Parent" xml:space="preserve">
+    <value>ColorBrewerPanel</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerDataType.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerColorSet.Name" xml:space="preserve">
+    <value>ColorBrewerColorSet</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerColorSet.Type" xml:space="preserve">
+    <value>Maestro.Editors.Common.CustomCombo, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerColorSet.Parent" xml:space="preserve">
+    <value>ColorBrewerPanel</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerColorSet.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ColorBrewerPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 48</value>
+  </data>
+  <data name="ColorBrewerPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 24</value>
+  </data>
+  <data name="ColorBrewerPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerPanel.Name" xml:space="preserve">
+    <value>ColorBrewerPanel</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerPanel.Parent" xml:space="preserve">
+    <value>DisplayGroup</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerPanel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="ColorBrewerLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ColorBrewerLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ColorBrewerLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 48</value>
+  </data>
+  <data name="ColorBrewerLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 13</value>
+  </data>
+  <data name="ColorBrewerLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="ColorBrewerLabel.Text" xml:space="preserve">
+    <value>ColorBrewer</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerLabel.Name" xml:space="preserve">
+    <value>ColorBrewerLabel</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerLabel.Parent" xml:space="preserve">
+    <value>DisplayGroup</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;GradientToColor.Name" xml:space="preserve">
+    <value>GradientToColor</value>
+  </data>
+  <data name="&gt;&gt;GradientToColor.Type" xml:space="preserve">
+    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+  </data>
+  <data name="&gt;&gt;GradientToColor.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;GradientToColor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;GradientFromColor.Name" xml:space="preserve">
+    <value>GradientFromColor</value>
+  </data>
+  <data name="&gt;&gt;GradientFromColor.Type" xml:space="preserve">
+    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+  </data>
+  <data name="&gt;&gt;GradientFromColor.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;GradientFromColor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 24</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 24</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>DisplayGroup</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="ColorBrewerColors.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="ColorBrewerColors.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ColorBrewerColors.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 48</value>
+  </data>
+  <data name="ColorBrewerColors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>14, 13</value>
+  </data>
+  <data name="ColorBrewerColors.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerColors.Name" xml:space="preserve">
+    <value>ColorBrewerColors</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerColors.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerColors.Parent" xml:space="preserve">
+    <value>DisplayGroup</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerColors.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="GradientColors.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="GradientColors.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="GradientColors.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 24</value>
+  </data>
+  <data name="GradientColors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 17</value>
+  </data>
+  <data name="GradientColors.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="GradientColors.Text" xml:space="preserve">
+    <value>Gradient</value>
+  </data>
+  <data name="&gt;&gt;GradientColors.Name" xml:space="preserve">
+    <value>GradientColors</value>
+  </data>
+  <data name="&gt;&gt;GradientColors.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GradientColors.Parent" xml:space="preserve">
+    <value>DisplayGroup</value>
+  </data>
+  <data name="&gt;&gt;GradientColors.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="DisplayGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 400</value>
+  </data>
+  <data name="DisplayGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>377, 158</value>
+  </data>
+  <data name="DisplayGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="DisplayGroup.Text" xml:space="preserve">
+    <value>Display setup</value>
+  </data>
+  <data name="&gt;&gt;DisplayGroup.Name" xml:space="preserve">
+    <value>DisplayGroup</value>
+  </data>
+  <data name="&gt;&gt;DisplayGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DisplayGroup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;DisplayGroup.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1011,120 +1581,6 @@
   <data name="&gt;&gt;ColorBrewerDataType.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="ColorBrewerColorSet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 0</value>
-  </data>
-  <data name="ColorBrewerColorSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
-  </data>
-  <data name="ColorBrewerColorSet.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;ColorBrewerColorSet.Name" xml:space="preserve">
-    <value>ColorBrewerColorSet</value>
-  </data>
-  <data name="&gt;&gt;ColorBrewerColorSet.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.CustomCombo, Maestro.Editors, Version=5.1.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
-  </data>
-  <data name="&gt;&gt;ColorBrewerColorSet.Parent" xml:space="preserve">
-    <value>ColorBrewerPanel</value>
-  </data>
-  <data name="&gt;&gt;ColorBrewerColorSet.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="ColorBrewerPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 48</value>
-  </data>
-  <data name="ColorBrewerPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 24</value>
-  </data>
-  <data name="ColorBrewerPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;ColorBrewerPanel.Name" xml:space="preserve">
-    <value>ColorBrewerPanel</value>
-  </data>
-  <data name="&gt;&gt;ColorBrewerPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColorBrewerPanel.Parent" xml:space="preserve">
-    <value>DisplayGroup</value>
-  </data>
-  <data name="&gt;&gt;ColorBrewerPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="ColorBrewerLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ColorBrewerLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ColorBrewerLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 48</value>
-  </data>
-  <data name="ColorBrewerLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 13</value>
-  </data>
-  <data name="ColorBrewerLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="ColorBrewerLabel.Text" xml:space="preserve">
-    <value>ColorBrewer</value>
-  </data>
-  <data name="&gt;&gt;ColorBrewerLabel.Name" xml:space="preserve">
-    <value>ColorBrewerLabel</value>
-  </data>
-  <data name="&gt;&gt;ColorBrewerLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColorBrewerLabel.Parent" xml:space="preserve">
-    <value>DisplayGroup</value>
-  </data>
-  <data name="&gt;&gt;ColorBrewerLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="GradientToColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 0</value>
-  </data>
-  <data name="GradientToColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
-  </data>
-  <data name="GradientToColor.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;GradientToColor.Name" xml:space="preserve">
-    <value>GradientToColor</value>
-  </data>
-  <data name="&gt;&gt;GradientToColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=5.1.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
-  </data>
-  <data name="&gt;&gt;GradientToColor.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;GradientToColor.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="GradientFromColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="GradientFromColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 21</value>
-  </data>
-  <data name="GradientFromColor.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;GradientFromColor.Name" xml:space="preserve">
-    <value>GradientFromColor</value>
-  </data>
-  <data name="&gt;&gt;GradientFromColor.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=5.1.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
-  </data>
-  <data name="&gt;&gt;GradientFromColor.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;GradientFromColor.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1155,125 +1611,8 @@
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 24</value>
-  </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 24</value>
-  </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
-    <value>DisplayGroup</value>
-  </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="ColorBrewerColors.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="ColorBrewerColors.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ColorBrewerColors.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 48</value>
-  </data>
-  <data name="ColorBrewerColors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>14, 13</value>
-  </data>
-  <data name="ColorBrewerColors.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;ColorBrewerColors.Name" xml:space="preserve">
-    <value>ColorBrewerColors</value>
-  </data>
-  <data name="&gt;&gt;ColorBrewerColors.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ColorBrewerColors.Parent" xml:space="preserve">
-    <value>DisplayGroup</value>
-  </data>
-  <data name="&gt;&gt;ColorBrewerColors.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="GradientColors.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="GradientColors.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="GradientColors.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 24</value>
-  </data>
-  <data name="GradientColors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 17</value>
-  </data>
-  <data name="GradientColors.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="GradientColors.Text" xml:space="preserve">
-    <value>Gradient</value>
-  </data>
-  <data name="&gt;&gt;GradientColors.Name" xml:space="preserve">
-    <value>GradientColors</value>
-  </data>
-  <data name="&gt;&gt;GradientColors.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GradientColors.Parent" xml:space="preserve">
-    <value>DisplayGroup</value>
-  </data>
-  <data name="&gt;&gt;GradientColors.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="DisplayGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 400</value>
-  </data>
-  <data name="DisplayGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 112</value>
-  </data>
-  <data name="DisplayGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="DisplayGroup.Text" xml:space="preserve">
-    <value>Display setup</value>
-  </data>
-  <data name="&gt;&gt;DisplayGroup.Name" xml:space="preserve">
-    <value>DisplayGroup</value>
-  </data>
-  <data name="&gt;&gt;DisplayGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;DisplayGroup.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;DisplayGroup.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="PreviewGroup.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
-  </data>
-  <data name="PreviewPicture.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="PreviewPicture.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="PreviewPicture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 16</value>
-  </data>
-  <data name="PreviewPicture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>309, 24</value>
-  </data>
-  <data name="PreviewPicture.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;PreviewPicture.Name" xml:space="preserve">
     <value>PreviewPicture</value>
@@ -1288,10 +1627,10 @@
     <value>0</value>
   </data>
   <data name="PreviewGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 518</value>
+    <value>8, 564</value>
   </data>
   <data name="PreviewGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 48</value>
+    <value>377, 48</value>
   </data>
   <data name="PreviewGroup.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -1311,6 +1650,81 @@
   <data name="&gt;&gt;PreviewGroup.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="PreviewPicture.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="PreviewPicture.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="PreviewPicture.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 16</value>
+  </data>
+  <data name="PreviewPicture.Size" type="System.Drawing.Size, System.Drawing">
+    <value>356, 24</value>
+  </data>
+  <data name="PreviewPicture.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;PreviewPicture.Name" xml:space="preserve">
+    <value>PreviewPicture</value>
+  </data>
+  <data name="&gt;&gt;PreviewPicture.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PreviewPicture.Parent" xml:space="preserve">
+    <value>PreviewGroup</value>
+  </data>
+  <data name="&gt;&gt;PreviewPicture.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;CancelBtn.Name" xml:space="preserve">
+    <value>CancelBtn</value>
+  </data>
+  <data name="&gt;&gt;CancelBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CancelBtn.Parent" xml:space="preserve">
+    <value>ButtonPanel</value>
+  </data>
+  <data name="&gt;&gt;CancelBtn.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;OKBtn.Name" xml:space="preserve">
+    <value>OKBtn</value>
+  </data>
+  <data name="&gt;&gt;OKBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OKBtn.Parent" xml:space="preserve">
+    <value>ButtonPanel</value>
+  </data>
+  <data name="&gt;&gt;OKBtn.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ButtonPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="ButtonPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 617</value>
+  </data>
+  <data name="ButtonPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 36</value>
+  </data>
+  <data name="ButtonPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;ButtonPanel.Name" xml:space="preserve">
+    <value>ButtonPanel</value>
+  </data>
+  <data name="&gt;&gt;ButtonPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ButtonPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ButtonPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="CancelBtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -1318,7 +1732,7 @@
     <value>NoControl</value>
   </data>
   <data name="CancelBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>181, 7</value>
+    <value>205, 7</value>
   </data>
   <data name="CancelBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -1348,7 +1762,7 @@
     <value>NoControl</value>
   </data>
   <data name="OKBtn.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 8</value>
+    <value>117, 8</value>
   </data>
   <data name="OKBtn.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -1371,30 +1785,6 @@
   <data name="&gt;&gt;OKBtn.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="ButtonPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="ButtonPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 575</value>
-  </data>
-  <data name="ButtonPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>343, 36</value>
-  </data>
-  <data name="ButtonPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;ButtonPanel.Name" xml:space="preserve">
-    <value>ButtonPanel</value>
-  </data>
-  <data name="&gt;&gt;ButtonPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ButtonPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;ButtonPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="grpThemeGeneration.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -1402,7 +1792,7 @@
     <value>8, 291</value>
   </data>
   <data name="grpThemeGeneration.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 103</value>
+    <value>377, 103</value>
   </data>
   <data name="grpThemeGeneration.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -1422,6 +1812,69 @@
   <data name="&gt;&gt;grpThemeGeneration.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="ColorBrewerColorSet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 0</value>
+  </data>
+  <data name="ColorBrewerColorSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="ColorBrewerColorSet.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerColorSet.Name" xml:space="preserve">
+    <value>ColorBrewerColorSet</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerColorSet.Type" xml:space="preserve">
+    <value>Maestro.Editors.Common.CustomCombo, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerColorSet.Parent" xml:space="preserve">
+    <value>ColorBrewerPanel</value>
+  </data>
+  <data name="&gt;&gt;ColorBrewerColorSet.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="GradientToColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 0</value>
+  </data>
+  <data name="GradientToColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="GradientToColor.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;GradientToColor.Name" xml:space="preserve">
+    <value>GradientToColor</value>
+  </data>
+  <data name="&gt;&gt;GradientToColor.Type" xml:space="preserve">
+    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+  </data>
+  <data name="&gt;&gt;GradientToColor.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;GradientToColor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="GradientFromColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="GradientFromColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 21</value>
+  </data>
+  <data name="GradientFromColor.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;GradientFromColor.Name" xml:space="preserve">
+    <value>GradientFromColor</value>
+  </data>
+  <data name="&gt;&gt;GradientFromColor.Type" xml:space="preserve">
+    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+  </data>
+  <data name="&gt;&gt;GradientFromColor.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;GradientFromColor.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="colorComboBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -1435,13 +1888,13 @@
     <value>colorComboBox1</value>
   </data>
   <data name="&gt;&gt;colorComboBox1.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=5.1.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.Common.ColorComboBox, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>343, 611</value>
+    <value>390, 653</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
