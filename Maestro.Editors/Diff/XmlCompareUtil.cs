@@ -17,6 +17,8 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 #endregion
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Resource.Comparison;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using System;
@@ -56,14 +58,21 @@ namespace Maestro.Editors.Diff
             //not throw us off
             var sourceFile = Path.GetTempFileName();
             var targetFile = Path.GetTempFileName();
-            using (var sourceStream = resSvc.GetResourceXmlData(sourceId))
-            using (var targetStream = resSvc.GetResourceXmlData(targetId))
-            {
-                var sourceDoc = new XmlDocument();
-                var targetDoc = new XmlDocument();
 
+            IResource source = resSvc.GetResource(sourceId);
+            IResource target = resSvc.GetResource(targetId);
+
+            var sourceDoc = new XmlDocument();
+            var targetDoc = new XmlDocument();
+
+            using (var sourceStream = ResourceTypeRegistry.Serialize(source))
+            using (var targetStream = ResourceTypeRegistry.Serialize(target))
+            {
                 sourceDoc.Load(sourceStream);
                 targetDoc.Load(targetStream);
+
+                sourceDoc.Normalize();
+                targetDoc.Normalize();
 
                 using (var fs = File.OpenWrite(sourceFile))
                 using (var ft = File.OpenWrite(targetFile))

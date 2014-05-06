@@ -34,6 +34,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
 using System.ComponentModel;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -485,6 +487,30 @@ namespace OSGeo.MapGuide.MaestroAPI
                 s.Position = 0;
                 s.Read(buf, 0, buf.Length);
                 return buf;
+            }
+        }
+
+        /// <summary>
+        /// Serializes the given object as a UTF-8 encoded XML string. Any BOM is stripped from the XML string
+        /// </summary>
+        /// <param name="serializer"></param>
+        /// <param name="o"></param>
+        /// <returns></returns>
+        public static string NormalizedSerialize(XmlSerializer serializer, object o)
+        {
+            using (var ms = new MemoryStream())
+            {
+                using (var xw = new Utf8XmlWriter(ms))
+                {
+                    serializer.Serialize(xw, o);
+                    using (var ms2 = RemoveUTF8BOM(ms))
+                    {
+                        using (var sr = new StreamReader(ms2))
+                        {
+                            return sr.ReadToEnd();
+                        }
+                    }
+                }
             }
         }
 

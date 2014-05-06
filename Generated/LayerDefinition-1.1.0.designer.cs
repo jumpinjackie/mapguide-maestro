@@ -81,23 +81,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_1_0
         /// </summary>
         /// <returns>string XML value</returns>
         public virtual string Serialize() {
-            System.IO.StreamReader streamReader = null;
-            System.IO.MemoryStream memoryStream = null;
-            try {
-                memoryStream = new System.IO.MemoryStream();
-                Serializer.Serialize(memoryStream, this);
-                memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
-                streamReader = new System.IO.StreamReader(memoryStream);
-                return streamReader.ReadToEnd();
-            }
-            finally {
-                if ((streamReader != null)) {
-                    streamReader.Dispose();
-                }
-                if ((memoryStream != null)) {
-                    memoryStream.Dispose();
-                }
-            }
+            return OSGeo.MapGuide.MaestroAPI.Utility.NormalizedSerialize(Serializer, this);
         }
         
         /// <summary>
