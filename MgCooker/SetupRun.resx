@@ -275,54 +275,54 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAB6
-        DAAAAk1TRnQBSQFMAgEBBAEAAXQBAAF0AQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        DAAAAk1TRnQBSQFMAgEBBAEAAYQBAAGEAQABEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABIAMAAQEBAAEgBgABIP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8AKgADHAEoAyQBNgMk
         ATYDJAE2AyQBNgMkATYDJAE2AyQBNgMkATYDJAE2AyQBNgMkATYDGwEmHAADFgEeAVsCWAHGAx0BKgMC
-        AQOgAAP9Af8D/QH/A/0B/wP9Af8D/QH/A/0B/wP9Af8D/QH/A/0B/wP9Af8D/QH/A/0B/wMbASYcAAGC
-        Am0B9wH0AeYB4QH/Ab0BtgG1Af0BiAGAAX8B+QFNAkwBkQMRAReYAAP9Af8B9QHoAeQB/wH0AeUB4AH/
+        AQOgAAP9Af8D/QH/A/0B/wP9Af8D/QH/A/0B/wP9Af8D/QH/A/0B/wP9Af8D/QH/A/0B/wMbASYcAAGA
+        Am0B9wH0AeYB4QH/AbsBtAGzAf0BhgF9AXoB+QFNAkwBkQMRAReYAAP9Af8B9QHoAeQB/wH0AeUB4AH/
         AfIB4gHdAf8B8QHgAdkB/wHwAd0B1gH/Ae8B2wHTAf8B7gHZAdEB/wHuAdgB0AH/Ae4B2AHQAf8B7gHY
         AdAB/wP9Af8DGwEmGAABLAIrAUMB9QHoAeMB/wH0AeYB4QH/AfMB5AHfAf8B8gHjAd0B/wHyAeEB2wH/
-        AZ4BjQGJAfoBYwJaAfABNgI1AVgDCwEPDAADHQEqAx0BKiAAAwUBBwMdASoDHQEqTAAD/QH/AfcB7QHp
-        Af8B9gHqAeYB/wH0AecB4wH/Ad0BtQGwAf8BvQFmAWEB/wG+AWoBZQH/AeMBwgG8Af8B7wHaAdIB/wHu
-        AdgB0AH/Ae4B2AHQAf8D/QH/AxsBJhgAAYICdgH4AfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/AfIB4wHd
-        Af8B8gHhAdsB/wHxAd8B2QH/AfAB3QHXAf8B7wHcAdUB/wGSAX0BewH6AVkCVwHCCwAB/ygAAzABTAMA
-        Af9MAAP9Af8B+AHwAe0B/wHtAdcB0gH/AbkBiQFkAf8BVAGTASQB/wHqAbEBLAH/AegBrgEjAf8B6wHB
-        AVcB/wGxAU4BSQH/Ae4B2QHSAf8B7gHZAdIB/wP9Af8DGwEmFAADQAFwAfUB6QHlAf8B9QHoAeMB/wH0
+        AZoBhwGDAfoBXwJaAfABNgI1AVgDCwEPDAADHQEqAx0BKiAAAwUBBwMdASoDHQEqTAAD/QH/AfcB7QHp
+        Af8B9gHqAeYB/wH0AecB4wH/Ad0BtQGwAf8BvQFkAV8B/wG+AWgBYwH/AeMBwgG8Af8B7wHaAdIB/wHu
+        AdgB0AH/Ae4B2AHQAf8D/QH/AxsBJhgAAX4CdAH4AfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/AfIB4wHd
+        Af8B8gHhAdsB/wHxAd8B2QH/AfAB3QHXAf8B7wHcAdUB/wGMAXsBeQH6AVkCVwHCCwAB/ygAAzABTAMA
+        Af9MAAP9Af8B+AHwAe0B/wHtAdcB0gH/AbkBiQFiAf8BUgGTASIB/wHqAbEBKgH/AegBrgEhAf8B6wHB
+        AVUB/wGxAUwBRwH/Ae4B2QHSAf8B7gHZAdIB/wP9Af8DGwEmFAADQAFwAfUB6QHlAf8B9QHoAeMB/wH0
         AeYB4QH/AfMB5AHfAf8B8gHjAd0B/wHyAeEB2wH/AfEB3wHZAf8B8AHdAdcB/wHvAdwB1QH/Ae8B2gHT
         Af8DOAFcCwAB/wgAAUYCRQF/AwAEAQECA0UBfQQAAygBPAMlATcEAAMvAUoDAAH/DAADEQEXA1gB0QMA
-        Af8DKAE8EAADOAFcAwAB/xgAA/0B/wH2AeoB5gH/AegBvwGcAf8B+wHLAVcB/wExAa0BPgH/AUkBnQEf
-        Af8B/gHEATcB/wH+Ab4BIgH/AfYBtgEYAf8BlwFnAUQB/wHwAd0B1gH/A/0B/wMbASYUAAGNAnwB+AH1
+        Af8DKAE8EAADOAFcAwAB/xgAA/0B/wH2AeoB5gH/AegBvwGcAf8B+wHLAVUB/wEvAa0BPAH/AUcBnQEd
+        Af8B/gHEATUB/wH+Ab4BIAH/AfYBtgEWAf8BlwFlAUIB/wHwAd0B1gH/A/0B/wMbASYUAAGHAnoB+AH1
         AekB5QH/AfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/AfIB4wHdAf8B8gHhAdsB/wHxAd8B2QH/AfAB3QHX
-        Af8B7wHcAdUB/wFuAmIB9gMEAQYLAAH/CwAB/wNFAX0DSAGFAwAB/wcAAf8DAAH/BAADLwFKAwAB/xAA
-        A0IBdAMAAf8UAAMNAREDWgHVGAAD/QH/AbkBVAE/Af8B+gHOAWMB/wGkAbYBSwH/ATEBrQE/Af8BMAGt
-        AT4B/wHJAb8BTQH/Af4BxAE2Af8B/gHAAScB/wEvAaUBNgH/AbwBZgFjAf8D/QH/AxsBJhAAA1ABngH2
+        Af8B7wHcAdUB/wFoAmIB9gMEAQYLAAH/CwAB/wNFAX0DSAGFAwAB/wcAAf8DAAH/BAADLwFKAwAB/xAA
+        A0IBdAMAAf8UAAMNAREDWgHVGAAD/QH/AbkBUgE9Af8B+gHOAWEB/wGkAbYBSQH/AS8BrQE9Af8BLgGt
+        ATwB/wHJAb8BSwH/Af4BxAE0Af8B/gHAASUB/wEtAaUBNAH/AbwBZAFhAf8D/QH/AxsBJhAAA1ABngH2
         AesB5wH/AfUB6QHlAf8B9QHoAeMB/wH0AeYB4QH/AfMB5AHfAf8B8gHjAd0B/wHyAeEB2wH/AfEB3wHZ
-        Af8B8AHdAdcB/wGzAakBowH8AygBPA8AAf8oAAMvAUoDAAH/EAADQgF0AwAB/zQAA/0B/wHqAcMBoQH/
-        Af0B1gGEAf8BmwG2AVEB/wEvAZ8BJAH/AfEB2AGRAf8B/QHRAWcB/wGcAbABOAH/ATEBrQE/Af8BMQGt
-        AT8B/wGYAWIBQQH/A/0B/wMbASYQAAGLAYQBgwH3AfYB6wHnAf8B9QHpAeUB/wH1AegB4wH/AfQB5gHh
-        Af8B8wHkAd8B/wHyAeMB3QH/AfIB4QHbAf8B8QHfAdkB/wHwAd0B1wH/AWMCWQHrAwEBAg8AAf8oAAMv
-        AUoDAAH/EAADQgF0AwAB/xQAAwIBAwNRAaEYAAP9Af8B+gHiAbkB/wEyAZoBGwH/AtQBmwH/Af0B4wG1
-        Af8B/QHdAZ0B/wH9AdQBcAH/AeQByAFVAf8BMAGsAT0B/wFHAZwBHAH/AZ4BigFSAf8D/QH/AxsBJgwA
+        Af8B8AHdAdcB/wGvAaMBnQH8AygBPA8AAf8oAAMvAUoDAAH/EAADQgF0AwAB/zQAA/0B/wHqAcMBoQH/
+        Af0B1gGEAf8BmwG2AU8B/wEtAZ8BIgH/AfEB2AGRAf8B/QHRAWUB/wGcAbABNgH/AS8BrQE9Af8BLwGt
+        AT0B/wGYAWABPwH/A/0B/wMbASYQAAGIAYIBgQH3AfYB6wHnAf8B9QHpAeUB/wH1AegB4wH/AfQB5gHh
+        Af8B8wHkAd8B/wHyAeMB3QH/AfIB4QHbAf8B8QHfAdkB/wHwAd0B1wH/AWECWQHrAwEBAg8AAf8oAAMv
+        AUoDAAH/EAADQgF0AwAB/xQAAwIBAwNRAaEYAAP9Af8B+gHiAbkB/wEwAZoBGQH/AtQBmwH/Af0B4wG1
+        Af8B/QHdAZ0B/wH9AdQBbgH/AeQByAFTAf8BLgGsATsB/wFFAZwBGgH/AZ4BigFQAf8D/QH/AxsBJgwA
         AVwCWQHJAfcB7QHpAf8B9gHrAecB/wH1AekB5QH/AfUB6AHjAf8B9AHmAeEB/wHzAeQB3wH/AfIB4wHd
-        Af8B8gHhAdsB/wHxAd8B2QH/AaABkAGMAfoDGwEmEwAB/ygAAy8BSgMAAf8QAANCAXQDAAH/FAADPgFr
-        AwAB/xgAA/0B/wFkAZABLAH/ATEBrQE/Af8BMQGtAT8B/wGvAcEBawH/Af0B2wGVAf8B/QHTAWsB/wH+
-        AcoBSQH/ATkBmgEbAf8BLwGXARYB/wGcAWQBQgH/A/0B/wMbASYIAAMEAQUBogGYAZYB+gH3Ae0B6QH/
+        Af8B8gHhAdsB/wHxAd8B2QH/AZwBigGGAfoDGwEmEwAB/ygAAy8BSgMAAf8QAANCAXQDAAH/FAADPgFr
+        AwAB/xgAA/0B/wFiAZABKgH/AS8BrQE9Af8BLwGtAT0B/wGvAcEBaQH/Af0B2wGVAf8B/QHTAWkB/wH+
+        AcoBRwH/ATcBmgEZAf8BLQGXARQB/wGcAWIBQAH/A/0B/wMbASYIAAMEAQUBngGSAZAB+gH3Ae0B6QH/
         AfYB6wHnAf8B9QHpAeUB/wH1AegB4wH/AfQB5gHhAf8B8wHkAd8B/wHyAeMB3QH/AfIB4QHbAf8B8QHf
-        AdkB/wFdAlkB0hcAAf8oAAMvAUoDAAH/EAADQgF2AwAB/zQAA/0B/wG+AWYBRgH/ATEBrQE/Af8BMAGj
-        AS0B/wEwAa0BPgH/AcABwgFeAf8B/gHOAVkB/wH+AcYBOwH/AVABlAENAf8BwgG6AT0B/wHFAYEBbwH/
+        AdkB/wFdAlkB0hcAAf8oAAMvAUoDAAH/EAADQgF2AwAB/zQAA/0B/wG+AWQBRAH/AS8BrQE9Af8BLgGj
+        ASsB/wEuAa0BPAH/AcABwgFcAf8B/gHOAVcB/wH+AcYBOQH/AU4BlAELAf8BwgG6ATsB/wHFAYEBbQH/
         A/0B/wMbASYIAAFkAlwB5wH4Ae4B6wH/AfcB7QHpAf8B9gHrAecB/wH1AekB5QH/AfUB6AHjAf8B9AHm
-        AeEB/wHzAeQB3wH/AfIB4wHdAf8B8gHhAdsB/wGRAX4BfQH4AxMBGhcAAf8oAAMvAUoDAAH/DAADCAEL
-        A1oB3gMAAf80AAP9Af8B9wHtAekB/wFsAZABMAH/AacBtQFFAf8BMQGTAQ8B/wGqAbcBRwH/AUQBngEg
-        Af8B8gHCATgB/wH+Ab0BHQH/AcUBbwFbAf8B+QHxAe4B/wP9Af8DGwEmBAADEgEZAaMCmgH6AfgB7gHr
+        AeEB/wHzAeQB3wH/AfIB4wHdAf8B8gHhAdsB/wGLAXwBewH4AxMBGhcAAf8oAAMvAUoDAAH/DAADCAEL
+        A1oB3gMAAf80AAP9Af8B9wHtAekB/wFqAZABLgH/AacBtQFDAf8BLwGTAQ0B/wGqAbcBRQH/AUIBngEe
+        Af8B8gHCATYB/wH+Ab0BGwH/AcUBbQFZAf8B+QHxAe4B/wP9Af8DGwEmBAADEgEZAZ8ClQH6AfgB7gHr
         Af8B9wHtAekB/wH2AesB5wH/AfUB6QHlAf8B9QHoAeMB/wH0AeYB4QH/AfMB5AHfAf8B8gHjAd0B/wHy
         AeEB2wH/A1QBrxgAA1cB3wFJAkgBhyAAAwsBDwNVAbcDVwHfTAAD/QH/AfkB8QHuAf8B8gHhAdsB/wGt
-        AYYBTAH/Ae4B2AGLAf8BRQGeASAB/wEwAa0BPgH/ATYBlAESAf8BuwFZAUUB/wH4AfAB7QH/AfkB8QHu
-        Af8D/QH/AxsBJggAAwEBAgFSAlEBpwGMAoUB+QH2AesB5wH/AfUB6QHlAf8B9QHoAeMB/wH0AeYB4QH/
-        AfMB5AHfAf8B8gHjAd0B/wGNAXsBeQH4Aw4BE5gAA/0B/wH5AfEB7gH/AfkB8QHuAf8B+QHxAe4B/wHs
+        AYYBSgH/Ae4B2AGLAf8BQwGeAR4B/wEuAa0BPAH/ATQBlAEQAf8BuwFXAUMB/wH4AfAB7QH/AfkB8QHu
+        Af8D/QH/AxsBJggAAwEBAgFSAlEBpwGKAoMB+QH2AesB5wH/AfUB6QHlAf8B9QHoAeMB/wH0AeYB4QH/
+        AfMB5AHfAf8B8gHjAd0B/wGHAXkBdwH4Aw4BE5gAA/0B/wH5AfEB7gH/AfkB8QHuAf8B+QHxAe4B/wHs
         AdIByQH/AdIBlQGCAf8B1AGaAYkB/wHyAeEB3AH/AfkB8QHuAf8B+QHxAe4B/wH5AfEB7gH/A/0B/wMb
-        ASYUAAMdASkBYQJaAeQBkAGJAYgB+QH0AeYB4QH/AfMB5AHfAf8B8gHjAd0B/wFJAkgBiJwAA/0B/wH6
+        ASYUAAMdASkBYQJaAeQBjQGHAYYB+QH0AeYB4QH/AfMB5AHfAf8B8gHjAd0B/wFJAkgBiJwAA/0B/wH6
         AfYB9AH/AfoB9gH0Af8B+gH2AfQB/wH6AfYB9AH/AfoB9gH0Af8B+gH2AfQB/wH6AfYB9AH/AfoB9gH0
-        Af8B+gH2AfQB/wH6AfYB9AH/A/0B/wMbASYgAAM+AWsBhAJ2AfoBggJ1AfgDBwEKnAABpQKgAf8BpAGg
+        Af8B+gH2AfQB/wH6AfYB9AH/A/0B/wMbASYgAAM+AWsBfgJ0AfoBfgJzAfgDBwEKnAABpQKgAf8BpAGg
         AZ8B/wGkAp8B/wGjAp4B/wGiAp0B/wGhApwB/wGgApsB/wGfApoB/wGdApkB/wGcAZgBlwH/AZsClgH/
         AZkClQH/yAABQgFNAT4HAAE+AwABKAMAAUADAAEgAwABAQEAAQEGAAEBFgAD/4EAAcABAQH8AT8E/wHA
         AQEB/AEPBP8BwAEBAfgBAQHPAfEC/wHAAQEB+AEAAd8B+QL/AcABAQHwAQAB2AFJAcMBzwHAAQEB8AEA
@@ -360,78 +360,6 @@
   </metadata>
   <data name="saveFileDialog.Title" xml:space="preserve">
     <value>Select file to save script to</value>
-  </data>
-  <data name="&gt;&gt;BoundsOverride.Name" xml:space="preserve">
-    <value>BoundsOverride</value>
-  </data>
-  <data name="&gt;&gt;BoundsOverride.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BoundsOverride.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;BoundsOverride.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;grpDifferentConnection.Name" xml:space="preserve">
-    <value>grpDifferentConnection</value>
-  </data>
-  <data name="&gt;&gt;grpDifferentConnection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpDifferentConnection.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;grpDifferentConnection.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;grpThreading.Name" xml:space="preserve">
-    <value>grpThreading</value>
-  </data>
-  <data name="&gt;&gt;grpThreading.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpThreading.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;grpThreading.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;grpTileSettings.Name" xml:space="preserve">
-    <value>grpTileSettings</value>
-  </data>
-  <data name="&gt;&gt;grpTileSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpTileSettings.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;grpTileSettings.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>293, 0</value>
-  </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>272, 537</value>
-  </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="BoundsOverride.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -560,7 +488,7 @@
     <value>False</value>
   </data>
   <data name="BoundsOverride.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 424</value>
+    <value>12, 411</value>
   </data>
   <data name="BoundsOverride.Size" type="System.Drawing.Size, System.Drawing">
     <value>248, 120</value>
@@ -582,6 +510,351 @@
   </data>
   <data name="&gt;&gt;BoundsOverride.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>250, 17</value>
+  </metadata>
+  <data name="grpGlobalSettings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="&gt;&gt;txtConnectionString.Name" xml:space="preserve">
+    <value>txtConnectionString</value>
+  </data>
+  <data name="&gt;&gt;txtConnectionString.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtConnectionString.Parent" xml:space="preserve">
+    <value>grpGlobalSettings</value>
+  </data>
+  <data name="&gt;&gt;txtConnectionString.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtProvider.Name" xml:space="preserve">
+    <value>txtProvider</value>
+  </data>
+  <data name="&gt;&gt;txtProvider.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtProvider.Parent" xml:space="preserve">
+    <value>grpGlobalSettings</value>
+  </data>
+  <data name="&gt;&gt;txtProvider.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;grpThreading.Name" xml:space="preserve">
+    <value>grpThreading</value>
+  </data>
+  <data name="&gt;&gt;grpThreading.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpThreading.Parent" xml:space="preserve">
+    <value>grpGlobalSettings</value>
+  </data>
+  <data name="&gt;&gt;grpThreading.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>grpGlobalSettings</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>grpGlobalSettings</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="grpGlobalSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 8</value>
+  </data>
+  <data name="grpGlobalSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 223</value>
+  </data>
+  <data name="grpGlobalSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="grpGlobalSettings.Text" xml:space="preserve">
+    <value>Global Settings</value>
+  </data>
+  <data name="grpGlobalSettings.ToolTip" xml:space="preserve">
+    <value>Global settings for this tile run set</value>
+  </data>
+  <data name="&gt;&gt;grpGlobalSettings.Name" xml:space="preserve">
+    <value>grpGlobalSettings</value>
+  </data>
+  <data name="&gt;&gt;grpGlobalSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpGlobalSettings.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;grpGlobalSettings.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="grpTileSettings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="lnkCalcMpu.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="lnkCalcMpu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 134</value>
+  </data>
+  <data name="lnkCalcMpu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 13</value>
+  </data>
+  <data name="lnkCalcMpu.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="lnkCalcMpu.Text" xml:space="preserve">
+    <value>Calculate meters-per-unit</value>
+  </data>
+  <data name="&gt;&gt;lnkCalcMpu.Name" xml:space="preserve">
+    <value>lnkCalcMpu</value>
+  </data>
+  <data name="&gt;&gt;lnkCalcMpu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lnkCalcMpu.Parent" xml:space="preserve">
+    <value>grpTileSettings</value>
+  </data>
+  <data name="&gt;&gt;lnkCalcMpu.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="MetersPerUnit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>104, 0</value>
+  </data>
+  <data name="MetersPerUnit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 20</value>
+  </data>
+  <data name="MetersPerUnit.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="MetersPerUnit.ToolTip" xml:space="preserve">
+    <value>The number of meters pr. map unit</value>
+  </data>
+  <data name="&gt;&gt;MetersPerUnit.Name" xml:space="preserve">
+    <value>MetersPerUnit</value>
+  </data>
+  <data name="&gt;&gt;MetersPerUnit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MetersPerUnit.Parent" xml:space="preserve">
+    <value>OfficialMethodPanel</value>
+  </data>
+  <data name="&gt;&gt;MetersPerUnit.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 0</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 13</value>
+  </data>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Meters pr. unit</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>OfficialMethodPanel</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="OfficialMethodPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 97</value>
+  </data>
+  <data name="OfficialMethodPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 24</value>
+  </data>
+  <data name="OfficialMethodPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;OfficialMethodPanel.Name" xml:space="preserve">
+    <value>OfficialMethodPanel</value>
+  </data>
+  <data name="&gt;&gt;OfficialMethodPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;OfficialMethodPanel.Parent" xml:space="preserve">
+    <value>grpTileSettings</value>
+  </data>
+  <data name="&gt;&gt;OfficialMethodPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LimitTileset.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LimitTileset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 19</value>
+  </data>
+  <data name="LimitTileset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 17</value>
+  </data>
+  <data name="LimitTileset.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="LimitTileset.Text" xml:space="preserve">
+    <value>Limit number of tiles</value>
+  </data>
+  <data name="LimitTileset.ToolTip" xml:space="preserve">
+    <value>Set a limit on the number of tiles generated, note that this may prevent all tiles from being created</value>
+  </data>
+  <data name="&gt;&gt;LimitTileset.Name" xml:space="preserve">
+    <value>LimitTileset</value>
+  </data>
+  <data name="&gt;&gt;LimitTileset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LimitTileset.Parent" xml:space="preserve">
+    <value>grpTileSettings</value>
+  </data>
+  <data name="&gt;&gt;LimitTileset.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;MaxRowLimit.Name" xml:space="preserve">
+    <value>MaxRowLimit</value>
+  </data>
+  <data name="&gt;&gt;MaxRowLimit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MaxRowLimit.Parent" xml:space="preserve">
+    <value>TilesetLimitPanel</value>
+  </data>
+  <data name="&gt;&gt;MaxRowLimit.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>TilesetLimitPanel</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;MaxColLimit.Name" xml:space="preserve">
+    <value>MaxColLimit</value>
+  </data>
+  <data name="&gt;&gt;MaxColLimit.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MaxColLimit.Parent" xml:space="preserve">
+    <value>TilesetLimitPanel</value>
+  </data>
+  <data name="&gt;&gt;MaxColLimit.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>TilesetLimitPanel</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="TilesetLimitPanel.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="TilesetLimitPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 43</value>
+  </data>
+  <data name="TilesetLimitPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 48</value>
+  </data>
+  <data name="TilesetLimitPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;TilesetLimitPanel.Name" xml:space="preserve">
+    <value>TilesetLimitPanel</value>
+  </data>
+  <data name="&gt;&gt;TilesetLimitPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TilesetLimitPanel.Parent" xml:space="preserve">
+    <value>grpTileSettings</value>
+  </data>
+  <data name="&gt;&gt;TilesetLimitPanel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="grpTileSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 237</value>
+  </data>
+  <data name="grpTileSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 168</value>
+  </data>
+  <data name="grpTileSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="grpTileSettings.Text" xml:space="preserve">
+    <value>Tile Settings</value>
+  </data>
+  <data name="&gt;&gt;grpTileSettings.Name" xml:space="preserve">
+    <value>grpTileSettings</value>
+  </data>
+  <data name="&gt;&gt;grpTileSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;grpTileSettings.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;grpTileSettings.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>293, 0</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>272, 537</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="ModfiedOverrideWarning.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -638,7 +911,7 @@
     <value>1</value>
   </data>
   <data name="txtUpperY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>144, 56</value>
+    <value>144, 50</value>
   </data>
   <data name="txtUpperY.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 20</value>
@@ -659,7 +932,7 @@
     <value>2</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 56</value>
+    <value>120, 50</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
@@ -683,7 +956,7 @@
     <value>3</value>
   </data>
   <data name="txtUpperX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>32, 56</value>
+    <value>32, 50</value>
   </data>
   <data name="txtUpperX.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 20</value>
@@ -704,7 +977,7 @@
     <value>4</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 56</value>
+    <value>8, 50</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
@@ -817,338 +1090,53 @@
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="grpDifferentConnection.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
+  <data name="txtConnectionString.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 87</value>
   </data>
-  <data name="&gt;&gt;chkUseDifferentConnection.Name" xml:space="preserve">
-    <value>chkUseDifferentConnection</value>
+  <data name="txtConnectionString.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;chkUseDifferentConnection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="txtConnectionString.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>Vertical</value>
   </data>
-  <data name="&gt;&gt;chkUseDifferentConnection.Parent" xml:space="preserve">
-    <value>grpDifferentConnection</value>
+  <data name="txtConnectionString.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 44</value>
   </data>
-  <data name="&gt;&gt;chkUseDifferentConnection.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;UseNativeAPI.Name" xml:space="preserve">
-    <value>UseNativeAPI</value>
-  </data>
-  <data name="&gt;&gt;UseNativeAPI.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;UseNativeAPI.Parent" xml:space="preserve">
-    <value>grpDifferentConnection</value>
-  </data>
-  <data name="&gt;&gt;UseNativeAPI.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;Password.Name" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="&gt;&gt;Password.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Password.Parent" xml:space="preserve">
-    <value>grpDifferentConnection</value>
-  </data>
-  <data name="&gt;&gt;Password.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;Username.Name" xml:space="preserve">
-    <value>Username</value>
-  </data>
-  <data name="&gt;&gt;Username.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Username.Parent" xml:space="preserve">
-    <value>grpDifferentConnection</value>
-  </data>
-  <data name="&gt;&gt;Username.ZOrder" xml:space="preserve">
+  <data name="txtConnectionString.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;MapAgent.Name" xml:space="preserve">
-    <value>MapAgent</value>
+  <data name="&gt;&gt;txtConnectionString.Name" xml:space="preserve">
+    <value>txtConnectionString</value>
   </data>
-  <data name="&gt;&gt;MapAgent.Type" xml:space="preserve">
+  <data name="&gt;&gt;txtConnectionString.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MapAgent.Parent" xml:space="preserve">
-    <value>grpDifferentConnection</value>
+  <data name="&gt;&gt;txtConnectionString.Parent" xml:space="preserve">
+    <value>grpGlobalSettings</value>
   </data>
-  <data name="&gt;&gt;MapAgent.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>grpDifferentConnection</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>grpDifferentConnection</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>grpDifferentConnection</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="grpDifferentConnection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 8</value>
-  </data>
-  <data name="grpDifferentConnection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 128</value>
-  </data>
-  <data name="grpDifferentConnection.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;grpDifferentConnection.Name" xml:space="preserve">
-    <value>grpDifferentConnection</value>
-  </data>
-  <data name="&gt;&gt;grpDifferentConnection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpDifferentConnection.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;grpDifferentConnection.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="chkUseDifferentConnection.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="chkUseDifferentConnection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 0</value>
-  </data>
-  <data name="chkUseDifferentConnection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 17</value>
-  </data>
-  <data name="chkUseDifferentConnection.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="chkUseDifferentConnection.Text" xml:space="preserve">
-    <value>Use different connection</value>
-  </data>
-  <data name="&gt;&gt;chkUseDifferentConnection.Name" xml:space="preserve">
-    <value>chkUseDifferentConnection</value>
-  </data>
-  <data name="&gt;&gt;chkUseDifferentConnection.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;chkUseDifferentConnection.Parent" xml:space="preserve">
-    <value>grpDifferentConnection</value>
-  </data>
-  <data name="&gt;&gt;chkUseDifferentConnection.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;txtConnectionString.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>250, 17</value>
-  </metadata>
-  <data name="UseNativeAPI.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="txtProvider.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 42</value>
   </data>
-  <data name="UseNativeAPI.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 104</value>
+  <data name="txtProvider.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 20</value>
   </data>
-  <data name="UseNativeAPI.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 17</value>
-  </data>
-  <data name="UseNativeAPI.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="UseNativeAPI.Text" xml:space="preserve">
-    <value>Connect using native API</value>
-  </data>
-  <data name="UseNativeAPI.ToolTip" xml:space="preserve">
-    <value>Using the Native API is potentially faster, but requires binary files, open ports and a webconfig.ini file</value>
-  </data>
-  <data name="&gt;&gt;UseNativeAPI.Name" xml:space="preserve">
-    <value>UseNativeAPI</value>
-  </data>
-  <data name="&gt;&gt;UseNativeAPI.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;UseNativeAPI.Parent" xml:space="preserve">
-    <value>grpDifferentConnection</value>
-  </data>
-  <data name="&gt;&gt;UseNativeAPI.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="Password.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 72</value>
-  </data>
-  <data name="Password.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 20</value>
-  </data>
-  <data name="Password.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="Password.ToolTip" xml:space="preserve">
-    <value>Password used to connect to the server</value>
-  </data>
-  <data name="&gt;&gt;Password.Name" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="&gt;&gt;Password.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Password.Parent" xml:space="preserve">
-    <value>grpDifferentConnection</value>
-  </data>
-  <data name="&gt;&gt;Password.ZOrder" xml:space="preserve">
+  <data name="txtProvider.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="Username.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 48</value>
+  <data name="&gt;&gt;txtProvider.Name" xml:space="preserve">
+    <value>txtProvider</value>
   </data>
-  <data name="Username.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 20</value>
-  </data>
-  <data name="Username.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="Username.ToolTip" xml:space="preserve">
-    <value>Username used to connect to the server</value>
-  </data>
-  <data name="&gt;&gt;Username.Name" xml:space="preserve">
-    <value>Username</value>
-  </data>
-  <data name="&gt;&gt;Username.Type" xml:space="preserve">
+  <data name="&gt;&gt;txtProvider.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Username.Parent" xml:space="preserve">
-    <value>grpDifferentConnection</value>
+  <data name="&gt;&gt;txtProvider.Parent" xml:space="preserve">
+    <value>grpGlobalSettings</value>
   </data>
-  <data name="&gt;&gt;Username.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="MapAgent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 24</value>
-  </data>
-  <data name="MapAgent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 20</value>
-  </data>
-  <data name="MapAgent.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="MapAgent.ToolTip" xml:space="preserve">
-    <value>Enter the URL for the MapAgent</value>
-  </data>
-  <data name="&gt;&gt;MapAgent.Name" xml:space="preserve">
-    <value>MapAgent</value>
-  </data>
-  <data name="&gt;&gt;MapAgent.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MapAgent.Parent" xml:space="preserve">
-    <value>grpDifferentConnection</value>
-  </data>
-  <data name="&gt;&gt;MapAgent.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 72</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 13</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Password</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>grpDifferentConnection</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 48</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;txtProvider.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Username</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>grpDifferentConnection</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 24</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 13</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>MapAgent</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>grpDifferentConnection</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>7</value>
   </data>
   <data name="grpThreading.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1190,10 +1178,10 @@
     <value>2</value>
   </data>
   <data name="grpThreading.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 328</value>
+    <value>11, 137</value>
   </data>
   <data name="grpThreading.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 80</value>
+    <value>226, 80</value>
   </data>
   <data name="grpThreading.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1208,16 +1196,19 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;grpThreading.Parent" xml:space="preserve">
-    <value>panel2</value>
+    <value>grpGlobalSettings</value>
   </data>
   <data name="&gt;&gt;grpThreading.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>250, 17</value>
+  </metadata>
   <data name="RandomTileOrder.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="RandomTileOrder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 48</value>
+    <value>16, 50</value>
   </data>
   <data name="RandomTileOrder.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 17</value>
@@ -1247,7 +1238,7 @@
     <value>128, 24</value>
   </data>
   <data name="ThreadCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 20</value>
+    <value>88, 20</value>
   </data>
   <data name="ThreadCount.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1271,7 +1262,7 @@
     <value>True</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 24</value>
+    <value>13, 26</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 13</value>
@@ -1294,352 +1285,58 @@
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="grpTileSettings.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;lnkCalcMpu.Name" xml:space="preserve">
-    <value>lnkCalcMpu</value>
-  </data>
-  <data name="&gt;&gt;lnkCalcMpu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lnkCalcMpu.Parent" xml:space="preserve">
-    <value>grpTileSettings</value>
-  </data>
-  <data name="&gt;&gt;lnkCalcMpu.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;OfficialMethodPanel.Name" xml:space="preserve">
-    <value>OfficialMethodPanel</value>
-  </data>
-  <data name="&gt;&gt;OfficialMethodPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;OfficialMethodPanel.Parent" xml:space="preserve">
-    <value>grpTileSettings</value>
-  </data>
-  <data name="&gt;&gt;OfficialMethodPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;LimitTileset.Name" xml:space="preserve">
-    <value>LimitTileset</value>
-  </data>
-  <data name="&gt;&gt;LimitTileset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LimitTileset.Parent" xml:space="preserve">
-    <value>grpTileSettings</value>
-  </data>
-  <data name="&gt;&gt;LimitTileset.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;UseOfficialMethod.Name" xml:space="preserve">
-    <value>UseOfficialMethod</value>
-  </data>
-  <data name="&gt;&gt;UseOfficialMethod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;UseOfficialMethod.Parent" xml:space="preserve">
-    <value>grpTileSettings</value>
-  </data>
-  <data name="&gt;&gt;UseOfficialMethod.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;TilesetLimitPanel.Name" xml:space="preserve">
-    <value>TilesetLimitPanel</value>
-  </data>
-  <data name="&gt;&gt;TilesetLimitPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TilesetLimitPanel.Parent" xml:space="preserve">
-    <value>grpTileSettings</value>
-  </data>
-  <data name="&gt;&gt;TilesetLimitPanel.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="grpTileSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 144</value>
-  </data>
-  <data name="grpTileSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 168</value>
-  </data>
-  <data name="grpTileSettings.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="grpTileSettings.Text" xml:space="preserve">
-    <value>Tile Settings</value>
-  </data>
-  <data name="&gt;&gt;grpTileSettings.Name" xml:space="preserve">
-    <value>grpTileSettings</value>
-  </data>
-  <data name="&gt;&gt;grpTileSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;grpTileSettings.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;grpTileSettings.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="lnkCalcMpu.AutoSize" type="System.Boolean, mscorlib">
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="lnkCalcMpu.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 71</value>
   </data>
-  <data name="lnkCalcMpu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>141, 105</value>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 13</value>
   </data>
-  <data name="lnkCalcMpu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 13</value>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="lnkCalcMpu.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Connection String</value>
   </data>
-  <data name="lnkCalcMpu.Text" xml:space="preserve">
-    <value>Calculate</value>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
   </data>
-  <data name="&gt;&gt;lnkCalcMpu.Name" xml:space="preserve">
-    <value>lnkCalcMpu</value>
-  </data>
-  <data name="&gt;&gt;lnkCalcMpu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lnkCalcMpu.Parent" xml:space="preserve">
-    <value>grpTileSettings</value>
-  </data>
-  <data name="&gt;&gt;lnkCalcMpu.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;MetersPerUnit.Name" xml:space="preserve">
-    <value>MetersPerUnit</value>
-  </data>
-  <data name="&gt;&gt;MetersPerUnit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MetersPerUnit.Parent" xml:space="preserve">
-    <value>OfficialMethodPanel</value>
-  </data>
-  <data name="&gt;&gt;MetersPerUnit.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>OfficialMethodPanel</value>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>grpGlobalSettings</value>
   </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="OfficialMethodPanel.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="OfficialMethodPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 128</value>
-  </data>
-  <data name="OfficialMethodPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 24</value>
-  </data>
-  <data name="OfficialMethodPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;OfficialMethodPanel.Name" xml:space="preserve">
-    <value>OfficialMethodPanel</value>
-  </data>
-  <data name="&gt;&gt;OfficialMethodPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;OfficialMethodPanel.Parent" xml:space="preserve">
-    <value>grpTileSettings</value>
-  </data>
-  <data name="&gt;&gt;OfficialMethodPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="MetersPerUnit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 0</value>
-  </data>
-  <data name="MetersPerUnit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 20</value>
-  </data>
-  <data name="MetersPerUnit.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="MetersPerUnit.ToolTip" xml:space="preserve">
-    <value>The number of meters pr. map unit</value>
-  </data>
-  <data name="&gt;&gt;MetersPerUnit.Name" xml:space="preserve">
-    <value>MetersPerUnit</value>
-  </data>
-  <data name="&gt;&gt;MetersPerUnit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MetersPerUnit.Parent" xml:space="preserve">
-    <value>OfficialMethodPanel</value>
-  </data>
-  <data name="&gt;&gt;MetersPerUnit.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 0</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 13</value>
-  </data>
-  <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Meters pr. unit</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>OfficialMethodPanel</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="LimitTileset.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="LimitTileset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 24</value>
-  </data>
-  <data name="LimitTileset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 17</value>
-  </data>
-  <data name="LimitTileset.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="LimitTileset.Text" xml:space="preserve">
-    <value>Limit number of tiles</value>
-  </data>
-  <data name="LimitTileset.ToolTip" xml:space="preserve">
-    <value>Set a limit on the number of tiles generated, note that this may prevent all tiles from being created</value>
-  </data>
-  <data name="&gt;&gt;LimitTileset.Name" xml:space="preserve">
-    <value>LimitTileset</value>
-  </data>
-  <data name="&gt;&gt;LimitTileset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LimitTileset.Parent" xml:space="preserve">
-    <value>grpTileSettings</value>
-  </data>
-  <data name="&gt;&gt;LimitTileset.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="UseOfficialMethod.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="UseOfficialMethod.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 104</value>
-  </data>
-  <data name="UseOfficialMethod.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 17</value>
-  </data>
-  <data name="UseOfficialMethod.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="UseOfficialMethod.Text" xml:space="preserve">
-    <value>Use official method</value>
-  </data>
-  <data name="UseOfficialMethod.ToolTip" xml:space="preserve">
-    <value>The official method is the most accurate, but requires that the meters per map unit is entered</value>
-  </data>
-  <data name="&gt;&gt;UseOfficialMethod.Name" xml:space="preserve">
-    <value>UseOfficialMethod</value>
-  </data>
-  <data name="&gt;&gt;UseOfficialMethod.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;UseOfficialMethod.Parent" xml:space="preserve">
-    <value>grpTileSettings</value>
-  </data>
-  <data name="&gt;&gt;UseOfficialMethod.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;MaxRowLimit.Name" xml:space="preserve">
-    <value>MaxRowLimit</value>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;MaxRowLimit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 26</value>
   </data>
-  <data name="&gt;&gt;MaxRowLimit.Parent" xml:space="preserve">
-    <value>TilesetLimitPanel</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 13</value>
   </data>
-  <data name="&gt;&gt;MaxRowLimit.ZOrder" xml:space="preserve">
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Provider</value>
   </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>TilesetLimitPanel</value>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>grpGlobalSettings</value>
   </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;MaxColLimit.Name" xml:space="preserve">
-    <value>MaxColLimit</value>
-  </data>
-  <data name="&gt;&gt;MaxColLimit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MaxColLimit.Parent" xml:space="preserve">
-    <value>TilesetLimitPanel</value>
-  </data>
-  <data name="&gt;&gt;MaxColLimit.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>TilesetLimitPanel</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="TilesetLimitPanel.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="TilesetLimitPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 48</value>
-  </data>
-  <data name="TilesetLimitPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 48</value>
-  </data>
-  <data name="TilesetLimitPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;TilesetLimitPanel.Name" xml:space="preserve">
-    <value>TilesetLimitPanel</value>
-  </data>
-  <data name="&gt;&gt;TilesetLimitPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TilesetLimitPanel.Parent" xml:space="preserve">
-    <value>grpTileSettings</value>
-  </data>
-  <data name="&gt;&gt;TilesetLimitPanel.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="MaxRowLimit.Location" type="System.Drawing.Point, System.Drawing">
@@ -1744,7 +1441,7 @@
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>250, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -2274,10 +1971,10 @@
   <data name="&gt;&gt;saveFileDialog.Type" xml:space="preserve">
     <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolTip1.Name" xml:space="preserve">
-    <value>toolTip1</value>
+  <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
+    <value>toolTip</value>
   </data>
-  <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

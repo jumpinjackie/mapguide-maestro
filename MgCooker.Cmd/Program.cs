@@ -31,6 +31,7 @@ namespace MgCooker.Cmd
             //Append the "/commandline" switch
             List<string> tmp = new List<string>(args);
             tmp.Add("/commandline");
+            System.Diagnostics.Debugger.Break();
             MgCooker.Program.Main(tmp.ToArray());
         }
     }

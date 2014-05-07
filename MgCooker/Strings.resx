@@ -211,6 +211,9 @@ Please be patient.</value>
     <value>Shell Script ({0})</value>
     <comment>The name displayed for the *.sh filetype when the user is prompted to save a file</comment>
   </data>
+  <data name="ImperfectMpuCalculation" xml:space="preserve">
+    <value>WARNING: An imperfect method was used to calculate this number. This value may not be correct.</value>
+  </data>
   <data name="InsufficientTimePassed" xml:space="preserve">
     <value>&lt; Inaccurate measure of remaining time &gt;</value>
     <comment>Text displayed when it is not possible to predict the remaning time</comment>
@@ -218,6 +221,9 @@ Please be patient.</value>
   <data name="InternalError" xml:space="preserve">
     <value>An internal error occured: {0}</value>
     <comment>An error message that is displayed if an internal error occurs</comment>
+  </data>
+  <data name="MissingRequiredConnectionParameters" xml:space="preserve">
+    <value>Missing required connection parameters "{0}" and "{1}"</value>
   </data>
   <data name="MissingWebConfigFile" xml:space="preserve">
     <value>The file {0} was not found, unable to use the Native connection method.

@@ -485,69 +485,49 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             {
                 long rows, cols, rowTileOffset = 0 , colTileOffset = 0;
                 double scale = m_mapdefinition.BaseMap.GetScaleAt(i);
-                
-                if (m_parent.Config.UseOfficialMethod)
+
+                // This is the official method, and the only one MgCooker will ever use
+
+                // This is the algorithm proposed by the MapGuide team:
+                // http://www.nabble.com/Pre-Genererate--tiles-for-the-entire-map-at-all-pre-defined-zoom-scales-to6074037.html#a6078663
+                //
+                // Method description inline (in case nabble link disappears):
+                //
+                // The upper left corner of the extents of the map corresponds to tile (0,0). Then tile (1,0) is to the right of that and tile (0,1) is under tile (0,0).
+                // So assuming you know the extents of your map, you can calculate how many tiles it spans at the given scale, using the following
+                //
+                // number of tiles x = map width in meters  / ( 0.079375 * map_scale)
+                // number of tiles y = map height in meters / ( 0.079375 * map_scale)
+                //
+                // where 0.079375 = [inch to meter] / image DPI * tile size = 0.0254 / 96 * 300.
+                //
+                // This assumes you know the scale factor that converts your map width and height to meters. You can get this from the coordinate system of the map if you don't know it, but it's much easier to just plug in the number into this equation.
+                // 
+                // Also have in mind that you can also request tiles beyond the map extent (for example tile (-1, -1), however, there is probably no point to cache them unless you have valid data outside your initial map extents.
+
+                //The tile extent in meters
+                double tileWidth = ((INCH_TO_METER / m_parent.Config.DPI * m_parent.Config.TileWidth) * (scale));
+                double tileHeight = ((INCH_TO_METER / m_parent.Config.DPI * m_parent.Config.TileHeight) * (scale));
+
+                //Using this algorithm, yields a negative number of columns/rows, if the max scale is larger than the max extent of the map.
+                rows = Math.Max(1, (int)Math.Ceiling((height_in_meters / tileHeight)));
+                cols = Math.Max(1, (int)Math.Ceiling((width_in_meters / tileWidth)));
+
+                if (m_maxExtent != null)
                 {
-                    //This is the algorithm proposed by the MapGuide team:
-                    //http://www.nabble.com/Pre-Genererate--tiles-for-the-entire-map-at-all-pre-defined-zoom-scales-to6074037.html#a6078663
-                    //
-                    //Method description inline (in case nabble link disappears):
-                    //
-                    // The upper left corner of the extents of the map corresponds to tile (0,0). Then tile (1,0) is to the right of that and tile (0,1) is under tile (0,0).
-                    // So assuming you know the extents of your map, you can calculate how many tiles it spans at the given scale, using the following
-                    //
-                    // number of tiles x = map width in meters  / ( 0.079375 * map_scale)
-                    // number of tiles y = map height in meters / ( 0.079375 * map_scale)
-                    //
-                    // where 0.079375 = [inch to meter] / image DPI * tile size = 0.0254 / 96 * 300.
-                    //
-                    // This assumes you know the scale factor that converts your map width and height to meters. You can get this from the coordinate system of the map if you don't know it, but it's much easier to just plug in the number into this equation.
-                    // 
-                    // Also have in mind that you can also request tiles beyond the map extent (for example tile (-1, -1), however, there is probably no point to cache them unless you have valid data outside your initial map extents.
-                    
-                    //The tile extent in meters
-                    double tileWidth  =((INCH_TO_METER / m_parent.Config.DPI * m_parent.Config.TileWidth) * (scale));
-                    double tileHeight = ((INCH_TO_METER / m_parent.Config.DPI * m_parent.Config.TileHeight) * (scale));
+                    //The extent is overridden, so we need to adjust the start offsets
+                    double offsetX = MaxExtent.MinX - m_mapdefinition.Extents.MinX;
+                    double offsetY = m_mapdefinition.Extents.MaxY - MaxExtent.MaxY;
+                    rowTileOffset = (int)Math.Floor(offsetY / tileHeight);
+                    colTileOffset = (int)Math.Floor(offsetX / tileWidth);
 
-                    //Using this algorithm, yields a negative number of columns/rows, if the max scale is larger than the max extent of the map.
-                    rows = Math.Max(1, (int)Math.Ceiling((height_in_meters / tileHeight)));
-                    cols = Math.Max(1, (int)Math.Ceiling((width_in_meters / tileWidth)));
+                    double offsetMaxX = MaxExtent.MaxX - m_mapdefinition.Extents.MinX;
+                    double offsetMinY = m_mapdefinition.Extents.MaxY - MaxExtent.MinY;
+                    int rowMinTileOffset = (int)Math.Floor(offsetMinY / tileHeight);
+                    int colMaxTileOffset = (int)Math.Floor(offsetMaxX / tileWidth);
 
-                    if (m_maxExtent != null)
-                    {
-                        //The extent is overridden, so we need to adjust the start offsets
-                        double offsetX = MaxExtent.MinX - m_mapdefinition.Extents.MinX;
-                        double offsetY = m_mapdefinition.Extents.MaxY - MaxExtent.MaxY ;
-                        rowTileOffset = (int)Math.Floor(offsetY / tileHeight);
-                        colTileOffset = (int)Math.Floor(offsetX / tileWidth);
-
-                        double offsetMaxX = MaxExtent.MaxX - m_mapdefinition.Extents.MinX;
-                        double offsetMinY = m_mapdefinition.Extents.MaxY - MaxExtent.MinY;
-                        int rowMinTileOffset = (int)Math.Floor(offsetMinY / tileHeight);
-                        int colMaxTileOffset = (int)Math.Floor(offsetMaxX / tileWidth);
-
-                        cols += (colMaxTileOffset - colTileOffset);
-                        rows += (rowMinTileOffset - rowTileOffset);
-                    }
-                }
-                else
-                {
-                    //This method assumes that the max scale is displayed on a screen with resolution 1920x1280.
-                    //This display width/height is then multiplied up to calculate the pixelwidth of all subsequent
-                    //scale ranges. Eg. if max scale range is 1:200, then scale range 1:100 is twice the size,
-                    //meaning the full map at 1:100 fills 3840x2560 pixels.
-                    //The width/height is then used to calculate the number of rows and columns of 300x300 pixel tiles.
-                    
-                    //The purpose of this method is to enabled tile generation without access to
-                    //coordinate system properties
-
-                    long pw = (long)(m_parent.Config.DisplayResolutionWidth * (1 / (scale / maxscale)));
-                    long ph = (long)(m_parent.Config.DisplayResolutionHeight * (1 / (scale / maxscale)));
-
-                    rows = (ph + (m_parent.Config.TileHeight - 1)) / m_parent.Config.TileHeight;
-                    cols = (pw + (m_parent.Config.TileWidth - 1)) / m_parent.Config.TileWidth;
-                    rows += rows % 2;
-                    cols += cols % 2;
+                    cols += (colMaxTileOffset - colTileOffset);
+                    rows += (rowMinTileOffset - rowTileOffset);
                 }
 
 
@@ -805,21 +785,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// The number of times to retry
         /// </summary>
         public int RetryCount = 5;
-
-        /// <summary>
-        /// The display resolution width
-        /// </summary>
-        public int DisplayResolutionWidth = 1920;
-
-        /// <summary>
-        /// The display resolution height
-        /// </summary>
-        public int DisplayResolutionHeight = 1280;
-
-        /// <summary>
-        /// Gets or sets whether to use the official method of tile generation. Requires an accurate meters per unit value to work
-        /// </summary>
-        public bool UseOfficialMethod = false;
 
         /// <summary>
         /// Gets or sets whether to randomize the tile generation sequence

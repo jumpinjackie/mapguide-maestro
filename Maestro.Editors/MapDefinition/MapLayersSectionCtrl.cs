@@ -32,6 +32,7 @@ using Maestro.Editors.Common;
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI.Tile;
 
 namespace Maestro.Editors.MapDefinition
 {
@@ -1908,9 +1909,9 @@ namespace Maestro.Editors.MapDefinition
             }
 
             _edSvc.RunProcess("MgCooker",
-                              "--provider=Maestro.Http",
-                              "--connection-params=\"Url=" + conn.GetCustomProperty("BaseUrl").ToString() + ";SessionId=" + conn.SessionID + "\"",
-                              "--mapdefinitions=" + _edSvc.ResourceID);
+                              "--" + TileRunParameters.PROVIDER + "=Maestro.Http",
+                              "--" + TileRunParameters.CONNECTIONPARAMS + "=\"Url=" + conn.GetCustomProperty("BaseUrl").ToString() + ";SessionId=" + conn.SessionID + "\"",
+                              "--" + TileRunParameters.MAPDEFINITIONS + "=" + _edSvc.ResourceID);
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)

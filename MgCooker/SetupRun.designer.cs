@@ -49,36 +49,31 @@ namespace MgCooker
             this.label10 = new System.Windows.Forms.Label();
             this.txtLowerX = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.grpDifferentConnection = new System.Windows.Forms.GroupBox();
-            this.chkUseDifferentConnection = new System.Windows.Forms.CheckBox();
-            this.UseNativeAPI = new System.Windows.Forms.CheckBox();
-            this.Password = new System.Windows.Forms.TextBox();
-            this.Username = new System.Windows.Forms.TextBox();
-            this.MapAgent = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.grpGlobalSettings = new System.Windows.Forms.GroupBox();
+            this.txtConnectionString = new System.Windows.Forms.TextBox();
+            this.txtProvider = new System.Windows.Forms.TextBox();
             this.grpThreading = new System.Windows.Forms.GroupBox();
             this.RandomTileOrder = new System.Windows.Forms.CheckBox();
             this.ThreadCount = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.grpTileSettings = new System.Windows.Forms.GroupBox();
             this.lnkCalcMpu = new System.Windows.Forms.LinkLabel();
             this.OfficialMethodPanel = new System.Windows.Forms.Panel();
             this.MetersPerUnit = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.LimitTileset = new System.Windows.Forms.CheckBox();
-            this.UseOfficialMethod = new System.Windows.Forms.CheckBox();
             this.TilesetLimitPanel = new System.Windows.Forms.Panel();
             this.MaxRowLimit = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.MaxColLimit = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.BoundsOverride.SuspendLayout();
-            this.grpDifferentConnection.SuspendLayout();
+            this.grpGlobalSettings.SuspendLayout();
             this.grpThreading.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ThreadCount)).BeginInit();
             this.grpTileSettings.SuspendLayout();
@@ -143,8 +138,7 @@ namespace MgCooker
             // panel2
             // 
             this.panel2.Controls.Add(this.BoundsOverride);
-            this.panel2.Controls.Add(this.grpDifferentConnection);
-            this.panel2.Controls.Add(this.grpThreading);
+            this.panel2.Controls.Add(this.grpGlobalSettings);
             this.panel2.Controls.Add(this.grpTileSettings);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
@@ -168,6 +162,7 @@ namespace MgCooker
             // ModfiedOverrideWarning
             // 
             resources.ApplyResources(this.ModfiedOverrideWarning, "ModfiedOverrideWarning");
+            this.ModfiedOverrideWarning.ForeColor = System.Drawing.Color.DarkRed;
             this.ModfiedOverrideWarning.Name = "ModfiedOverrideWarning";
             // 
             // ResetBounds
@@ -225,66 +220,27 @@ namespace MgCooker
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
             // 
-            // grpDifferentConnection
+            // grpGlobalSettings
             // 
-            resources.ApplyResources(this.grpDifferentConnection, "grpDifferentConnection");
-            this.grpDifferentConnection.Controls.Add(this.chkUseDifferentConnection);
-            this.grpDifferentConnection.Controls.Add(this.UseNativeAPI);
-            this.grpDifferentConnection.Controls.Add(this.Password);
-            this.grpDifferentConnection.Controls.Add(this.Username);
-            this.grpDifferentConnection.Controls.Add(this.MapAgent);
-            this.grpDifferentConnection.Controls.Add(this.label3);
-            this.grpDifferentConnection.Controls.Add(this.label2);
-            this.grpDifferentConnection.Controls.Add(this.label1);
-            this.grpDifferentConnection.Name = "grpDifferentConnection";
-            this.grpDifferentConnection.TabStop = false;
+            resources.ApplyResources(this.grpGlobalSettings, "grpGlobalSettings");
+            this.grpGlobalSettings.Controls.Add(this.txtConnectionString);
+            this.grpGlobalSettings.Controls.Add(this.txtProvider);
+            this.grpGlobalSettings.Controls.Add(this.grpThreading);
+            this.grpGlobalSettings.Controls.Add(this.label2);
+            this.grpGlobalSettings.Controls.Add(this.label1);
+            this.grpGlobalSettings.Name = "grpGlobalSettings";
+            this.grpGlobalSettings.TabStop = false;
+            this.toolTip.SetToolTip(this.grpGlobalSettings, resources.GetString("grpGlobalSettings.ToolTip"));
             // 
-            // chkUseDifferentConnection
+            // txtConnectionString
             // 
-            resources.ApplyResources(this.chkUseDifferentConnection, "chkUseDifferentConnection");
-            this.chkUseDifferentConnection.Name = "chkUseDifferentConnection";
-            this.chkUseDifferentConnection.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.txtConnectionString, "txtConnectionString");
+            this.txtConnectionString.Name = "txtConnectionString";
             // 
-            // UseNativeAPI
+            // txtProvider
             // 
-            resources.ApplyResources(this.UseNativeAPI, "UseNativeAPI");
-            this.UseNativeAPI.Name = "UseNativeAPI";
-            this.toolTip1.SetToolTip(this.UseNativeAPI, resources.GetString("UseNativeAPI.ToolTip"));
-            this.UseNativeAPI.UseVisualStyleBackColor = true;
-            // 
-            // Password
-            // 
-            resources.ApplyResources(this.Password, "Password");
-            this.Password.Name = "Password";
-            this.toolTip1.SetToolTip(this.Password, resources.GetString("Password.ToolTip"));
-            this.Password.UseSystemPasswordChar = true;
-            // 
-            // Username
-            // 
-            resources.ApplyResources(this.Username, "Username");
-            this.Username.Name = "Username";
-            this.toolTip1.SetToolTip(this.Username, resources.GetString("Username.ToolTip"));
-            // 
-            // MapAgent
-            // 
-            resources.ApplyResources(this.MapAgent, "MapAgent");
-            this.MapAgent.Name = "MapAgent";
-            this.toolTip1.SetToolTip(this.MapAgent, resources.GetString("MapAgent.ToolTip"));
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.Name = "label3";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.txtProvider, "txtProvider");
+            this.txtProvider.Name = "txtProvider";
             // 
             // grpThreading
             // 
@@ -299,7 +255,7 @@ namespace MgCooker
             // 
             resources.ApplyResources(this.RandomTileOrder, "RandomTileOrder");
             this.RandomTileOrder.Name = "RandomTileOrder";
-            this.toolTip1.SetToolTip(this.RandomTileOrder, resources.GetString("RandomTileOrder.ToolTip"));
+            this.toolTip.SetToolTip(this.RandomTileOrder, resources.GetString("RandomTileOrder.ToolTip"));
             this.RandomTileOrder.UseVisualStyleBackColor = true;
             // 
             // ThreadCount
@@ -316,7 +272,7 @@ namespace MgCooker
             0,
             0});
             this.ThreadCount.Name = "ThreadCount";
-            this.toolTip1.SetToolTip(this.ThreadCount, resources.GetString("ThreadCount.ToolTip"));
+            this.toolTip.SetToolTip(this.ThreadCount, resources.GetString("ThreadCount.ToolTip"));
             this.ThreadCount.Value = new decimal(new int[] {
             1,
             0,
@@ -328,13 +284,22 @@ namespace MgCooker
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
             // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
             // grpTileSettings
             // 
             resources.ApplyResources(this.grpTileSettings, "grpTileSettings");
             this.grpTileSettings.Controls.Add(this.lnkCalcMpu);
             this.grpTileSettings.Controls.Add(this.OfficialMethodPanel);
             this.grpTileSettings.Controls.Add(this.LimitTileset);
-            this.grpTileSettings.Controls.Add(this.UseOfficialMethod);
             this.grpTileSettings.Controls.Add(this.TilesetLimitPanel);
             this.grpTileSettings.Name = "grpTileSettings";
             this.grpTileSettings.TabStop = false;
@@ -368,7 +333,7 @@ namespace MgCooker
             0,
             0});
             this.MetersPerUnit.Name = "MetersPerUnit";
-            this.toolTip1.SetToolTip(this.MetersPerUnit, resources.GetString("MetersPerUnit.ToolTip"));
+            this.toolTip.SetToolTip(this.MetersPerUnit, resources.GetString("MetersPerUnit.ToolTip"));
             this.MetersPerUnit.Value = new decimal(new int[] {
             1,
             0,
@@ -384,17 +349,9 @@ namespace MgCooker
             // 
             resources.ApplyResources(this.LimitTileset, "LimitTileset");
             this.LimitTileset.Name = "LimitTileset";
-            this.toolTip1.SetToolTip(this.LimitTileset, resources.GetString("LimitTileset.ToolTip"));
+            this.toolTip.SetToolTip(this.LimitTileset, resources.GetString("LimitTileset.ToolTip"));
             this.LimitTileset.UseVisualStyleBackColor = true;
             this.LimitTileset.CheckedChanged += new System.EventHandler(this.LimitTileset_CheckedChanged);
-            // 
-            // UseOfficialMethod
-            // 
-            resources.ApplyResources(this.UseOfficialMethod, "UseOfficialMethod");
-            this.UseOfficialMethod.Name = "UseOfficialMethod";
-            this.toolTip1.SetToolTip(this.UseOfficialMethod, resources.GetString("UseOfficialMethod.ToolTip"));
-            this.UseOfficialMethod.UseVisualStyleBackColor = true;
-            this.UseOfficialMethod.CheckedChanged += new System.EventHandler(this.UseOfficialMethod_CheckedChanged);
             // 
             // TilesetLimitPanel
             // 
@@ -409,7 +366,7 @@ namespace MgCooker
             // 
             resources.ApplyResources(this.MaxRowLimit, "MaxRowLimit");
             this.MaxRowLimit.Name = "MaxRowLimit";
-            this.toolTip1.SetToolTip(this.MaxRowLimit, resources.GetString("MaxRowLimit.ToolTip"));
+            this.toolTip.SetToolTip(this.MaxRowLimit, resources.GetString("MaxRowLimit.ToolTip"));
             // 
             // label6
             // 
@@ -420,7 +377,7 @@ namespace MgCooker
             // 
             resources.ApplyResources(this.MaxColLimit, "MaxColLimit");
             this.MaxColLimit.Name = "MaxColLimit";
-            this.toolTip1.SetToolTip(this.MaxColLimit, resources.GetString("MaxColLimit.ToolTip"));
+            this.toolTip.SetToolTip(this.MaxColLimit, resources.GetString("MaxColLimit.ToolTip"));
             // 
             // label7
             // 
@@ -439,8 +396,8 @@ namespace MgCooker
             this.panel2.ResumeLayout(false);
             this.BoundsOverride.ResumeLayout(false);
             this.BoundsOverride.PerformLayout();
-            this.grpDifferentConnection.ResumeLayout(false);
-            this.grpDifferentConnection.PerformLayout();
+            this.grpGlobalSettings.ResumeLayout(false);
+            this.grpGlobalSettings.PerformLayout();
             this.grpThreading.ResumeLayout(false);
             this.grpThreading.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ThreadCount)).EndInit();
@@ -467,19 +424,12 @@ namespace MgCooker
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.GroupBox grpDifferentConnection;
-        private System.Windows.Forms.CheckBox UseNativeAPI;
-        private System.Windows.Forms.TextBox Password;
-        private System.Windows.Forms.TextBox MapAgent;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox grpGlobalSettings;
         private System.Windows.Forms.GroupBox grpThreading;
         private System.Windows.Forms.NumericUpDown ThreadCount;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox grpTileSettings;
         private System.Windows.Forms.CheckBox LimitTileset;
-        private System.Windows.Forms.CheckBox UseOfficialMethod;
         private System.Windows.Forms.NumericUpDown MetersPerUnit;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown MaxColLimit;
@@ -488,7 +438,7 @@ namespace MgCooker
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel OfficialMethodPanel;
         private System.Windows.Forms.Panel TilesetLimitPanel;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.CheckBox RandomTileOrder;
         private System.Windows.Forms.GroupBox BoundsOverride;
         private System.Windows.Forms.TextBox txtUpperY;
@@ -501,8 +451,10 @@ namespace MgCooker
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button ResetBounds;
         private System.Windows.Forms.Label ModfiedOverrideWarning;
-        private System.Windows.Forms.CheckBox chkUseDifferentConnection;
-        private System.Windows.Forms.TextBox Username;
         private System.Windows.Forms.LinkLabel lnkCalcMpu;
+        private System.Windows.Forms.TextBox txtConnectionString;
+        private System.Windows.Forms.TextBox txtProvider;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

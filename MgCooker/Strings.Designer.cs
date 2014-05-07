@@ -278,6 +278,15 @@ namespace MgCooker {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to WARNING: An imperfect method was used to calculate this number. This value may not be correct..
+        /// </summary>
+        internal static string ImperfectMpuCalculation {
+            get {
+                return ResourceManager.GetString("ImperfectMpuCalculation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt; Inaccurate measure of remaining time &gt;.
         /// </summary>
         internal static string InsufficientTimePassed {
@@ -292,6 +301,15 @@ namespace MgCooker {
         internal static string InternalError {
             get {
                 return ResourceManager.GetString("InternalError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing required connection parameters &quot;{0}&quot; and &quot;{1}&quot;.
+        /// </summary>
+        internal static string MissingRequiredConnectionParameters {
+            get {
+                return ResourceManager.GetString("MissingRequiredConnectionParameters", resourceCulture);
             }
         }
         

@@ -70,9 +70,6 @@ namespace MgCooker
 
             Boolean cmdLineMode = false;
             
-            string mapagent = "http://localhost/mapguide";
-            string username = "Anonymous";
-            string password = "";
             string mapdefinitions = "";
             string scaleindex = "";
             string basegroups = "";
@@ -90,12 +87,6 @@ namespace MgCooker
             
             List<string> largs = new List<string>(args);
             Dictionary<string, string> opts = CommandLineParser.ExtractOptions(largs);
-            if (opts.ContainsKey(TileRunParameters.MAPAGENT))
-                mapagent = opts[TileRunParameters.MAPAGENT];
-            if (opts.ContainsKey(TileRunParameters.USERNAME))
-                username = opts[TileRunParameters.USERNAME];
-            if (opts.ContainsKey(TileRunParameters.PASSWORD))
-                password = opts[TileRunParameters.PASSWORD];
             if (opts.ContainsKey(TileRunParameters.MAPDEFINITIONS))
                 mapdefinitions = opts[TileRunParameters.MAPDEFINITIONS];
             if (opts.ContainsKey(TileRunParameters.SCALEINDEX))
@@ -160,64 +151,35 @@ namespace MgCooker
 
             string[] maps = mapdefinitions.Split(',');
 
-            SetupRun sr = null;
-            if (!opts.ContainsKey(TileRunParameters.USERNAME) || (!opts.ContainsKey(TileRunParameters.MAPAGENT)))
+            if (opts.ContainsKey(TileRunParameters.PROVIDER) && opts.ContainsKey(TileRunParameters.CONNECTIONPARAMS))
             {
-                if (!cmdLineMode)
+                var initP = ConnectionProviderRegistry.ParseConnectionString(opts[TileRunParameters.CONNECTIONPARAMS]);
+                connection = ConnectionProviderRegistry.CreateConnection(opts[TileRunParameters.PROVIDER], initP);
+            }
+            else
+            {
+                if (cmdLineMode)
                 {
-                    if (opts.ContainsKey(TileRunParameters.PROVIDER) && opts.ContainsKey(TileRunParameters.CONNECTIONPARAMS))
-                    {
-                        var initP = ConnectionProviderRegistry.ParseConnectionString(opts[TileRunParameters.CONNECTIONPARAMS]);
-                        connection = ConnectionProviderRegistry.CreateConnection(opts[TileRunParameters.PROVIDER], initP);
-                        sr = new SetupRun(connection, maps, opts);
-                    }
-                    else
-                    {
-                        var frm = new LoginDialog();
-                        if (frm.ShowDialog() != System.Windows.Forms.DialogResult.OK)
-                            return;
-
-                        connection = frm.Connection;
-                        sr = new SetupRun(frm.Username, frm.Password, connection, maps, opts);
-                    }
-                    try
-                    {
-                        mapagent = connection.GetCustomProperty("BaseUrl").ToString();
-                    }
-                    catch { }
-                    
+                    throw new ArgumentException(string.Format(Strings.MissingRequiredConnectionParameters, TileRunParameters.PROVIDER, TileRunParameters.CONNECTIONPARAMS));
                 }
+
+                var frm = new LoginDialog();
+                if (frm.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                    return;
+
+                connection = frm.Connection;
             }
 
             if (connection == null)
             {
-                var initP = new NameValueCollection();
-                if (!opts.ContainsKey(TileRunParameters.NATIVECONNECTION))
+                if (opts.ContainsKey(TileRunParameters.PROVIDER) && opts.ContainsKey(TileRunParameters.CONNECTIONPARAMS))
                 {
-                    initP["Url"] = mapagent;
-                    initP["Username"] = username;
-                    initP["Password"] = password;
-                    initP["Locale"] = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-                    initP["AllowUntestedVersion"] = "true";
-
-                    connection = ConnectionProviderRegistry.CreateConnection("Maestro.Http", initP);
-                }
-                else if (opts.ContainsKey(TileRunParameters.PROVIDER) && opts.ContainsKey(TileRunParameters.CONNECTIONPARAMS))
-                {
-                    initP = ConnectionProviderRegistry.ParseConnectionString(opts[TileRunParameters.CONNECTIONPARAMS]);
-
+                    var initP = ConnectionProviderRegistry.ParseConnectionString(opts[TileRunParameters.CONNECTIONPARAMS]);
                     connection = ConnectionProviderRegistry.CreateConnection(opts[TileRunParameters.PROVIDER], initP);
                 }
                 else
                 {
-                    string serverconfig = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "webconfig.ini");
-
-                    initP["ConfigFile"] = serverconfig;
-                    initP["Username"] = username;
-                    initP["Password"] = password;
-                    initP["Locale"] = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
-
-                    connection = ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", initP);
+                    throw new ArgumentException(string.Format(Strings.MissingRequiredConnectionParameters, TileRunParameters.PROVIDER, TileRunParameters.CONNECTIONPARAMS));
                 }
             }
 
@@ -225,11 +187,11 @@ namespace MgCooker
 
             if (!cmdLineMode)
             {
-                if (sr == null)
-                    sr = new SetupRun(connection, maps, opts);
-
-                sr.ShowDialog();
-                return;
+                using (var sr = new SetupRun(connection, maps, opts))
+                {
+                    sr.ShowDialog();
+                    return;
+                }
             }
             
 
@@ -254,7 +216,6 @@ namespace MgCooker
             if (!string.IsNullOrEmpty(metersPerUnit) && double.TryParse(metersPerUnit, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentCulture, out d))
             {
                 bx.Config.MetersPerUnit = d;
-                bx.Config.UseOfficialMethod = true;
             }
 
             if (opts.ContainsKey(TileRunParameters.RANDOMTILEORDER))

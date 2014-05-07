@@ -53,15 +53,6 @@ namespace MgCooker
             InitializeComponent();
             saveFileDialog.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickBat, "bat") + "|" + //NOXLATE
                                      OSGeo.MapGuide.MaestroAPI.StringConstants.AllFilesFilter; //NOXLATE
-            MapAgent.Text = "http://localhost/mapguide/mapagent/mapagent.fcgi"; //NOXLATE
-            Username.Text = "Anonymous"; //NOXLATE
-        }
-
-        internal SetupRun(string userName, string password, IServerConnection connection, string[] maps, Dictionary<string, string> args)
-            : this(connection, maps, args)
-        {
-            Username.Text = userName;
-            Password.Text = password;
         }
 
         public SetupRun(IServerConnection connection, string[] maps, Dictionary<string, string> args)
@@ -69,32 +60,23 @@ namespace MgCooker
         {
             m_connection = connection;
 
-            grpDifferentConnection.Enabled = chkUseDifferentConnection.Enabled = !m_connection.ProviderName.ToUpper().Equals("MAESTRO.LOCAL"); //NOXLATE
             m_commandlineargs = args;
             m_coordinateOverrides = new Dictionary<string, IEnvelope>();
             IEnvelope overrideExtents = null;
 
-            //HttpServerConnection hc = connection as HttpServerConnection;
-            try
-            {
-                var url = connection.GetCustomProperty("BaseUrl"); //NOXLATE
-                if (url != null)
-                    MapAgent.Text = url.ToString();
-            }
-            catch { }
-
             if (m_commandlineargs.ContainsKey(TileRunParameters.MAPDEFINITIONS)) //NOXLATE
                 m_commandlineargs.Remove(TileRunParameters.MAPDEFINITIONS); //NOXLATE
-            if (m_commandlineargs.ContainsKey(TileRunParameters.MAPAGENT)) //NOXLATE
-                MapAgent.Text = m_commandlineargs[TileRunParameters.MAPAGENT]; //NOXLATE
-            if (m_commandlineargs.ContainsKey(TileRunParameters.USERNAME)) //NOXLATE
-                Username.Text = m_commandlineargs[TileRunParameters.USERNAME]; //NOXLATE
-            if (m_commandlineargs.ContainsKey(TileRunParameters.PASSWORD)) //NOXLATE
-                Password.Text = m_commandlineargs[TileRunParameters.PASSWORD]; //NOXLATE
 
-            if (m_commandlineargs.ContainsKey(TileRunParameters.NATIVECONNECTION)) //NOXLATE
-                UseNativeAPI.Checked = true;
-
+            if (m_commandlineargs.ContainsKey(TileRunParameters.PROVIDER) && m_commandlineargs.ContainsKey(TileRunParameters.CONNECTIONPARAMS))
+            {
+                txtProvider.Text = m_commandlineargs[TileRunParameters.PROVIDER];
+                txtConnectionString.Text = m_commandlineargs[TileRunParameters.CONNECTIONPARAMS];
+            }
+            else
+            {
+                txtProvider.Text = connection.ProviderName;
+                txtConnectionString.Text = Utility.ToConnectionString(connection.CloneParameters);
+            }
             if (m_commandlineargs.ContainsKey(TileRunParameters.LIMITROWS)) //NOXLATE
             {
                 int i;
@@ -146,7 +128,6 @@ namespace MgCooker
                     )
                     if (d >= (double)MetersPerUnit.Minimum && d <= (double)MetersPerUnit.Maximum)
                     {
-                        UseOfficialMethod.Checked = true;
                         MetersPerUnit.Value = (decimal)d;
                     }
             }
@@ -237,55 +218,6 @@ namespace MgCooker
         private void btnBuild_Click(object sender, EventArgs e)
         {
             IServerConnection con = m_connection;
-            if (chkUseDifferentConnection.Checked)
-            {
-                if (UseNativeAPI.Checked)
-                {
-                    string webconfig = System.IO.Path.Combine(Application.StartupPath, "webconfig.ini"); //NOXLATE
-                    if (!System.IO.File.Exists(webconfig))
-                    {
-                        MessageBox.Show(this, string.Format(Strings.MissingWebConfigFile, webconfig), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    try
-                    {
-                        var initP = new NameValueCollection();
-
-                        initP["ConfigFile"] = webconfig; //NOXLATE
-                        initP["Username"] = Username.Text; //NOXLATE
-                        initP["Password"] = Password.Text; //NOXLATE
-
-                        con = ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", initP); //NOXLATE
-                    }
-                    catch (Exception ex)
-                    {
-                        string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                        MessageBox.Show(this, string.Format(Strings.ConnectionError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-                else
-                {
-                    try
-                    {
-                        var initP = new NameValueCollection();
-
-                        initP["Url"] = MapAgent.Text; //NOXLATE
-                        initP["Username"] = Username.Text; //NOXLATE
-                        initP["Password"] = Password.Text; //NOXLATE
-                        initP["AllowUntestedVersion"] = "true"; //NOXLATE
-
-                        con = ConnectionProviderRegistry.CreateConnection("Maestro.Http", initP); //NOXLATE
-                    }
-                    catch (Exception ex)
-                    {
-                        string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                        MessageBox.Show(this, string.Format(Strings.ConnectionError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-            }
             try
             {
                 TilingRunCollection bx = new TilingRunCollection(con);
@@ -298,11 +230,7 @@ namespace MgCooker
                         bx.LimitCols((int)MaxColLimit.Value);
                 }
 
-                if (UseOfficialMethod.Checked)
-                {
-                    bx.Config.MetersPerUnit = (double)MetersPerUnit.Value;
-                    bx.Config.UseOfficialMethod = true;
-                }
+                bx.Config.MetersPerUnit = (double)MetersPerUnit.Value;
 
                 bx.Config.ThreadCount = (int)ThreadCount.Value;
                 bx.Config.RandomizeTileSequence = RandomTileOrder.Checked;
@@ -381,9 +309,9 @@ namespace MgCooker
             {
                 //Common args for all map defintions to be tiled
                 List<string> args = new List<string>();
-                args.Add("--" + TileRunParameters.MAPAGENT + "=\"" + MapAgent.Text + "\""); //NOXLATE
-                args.Add("--" + TileRunParameters.USERNAME + "=\"" + Username.Text + "\""); //NOXLATE
-                args.Add("--" + TileRunParameters.PASSWORD + "=\"" + Password.Text + "\""); //NOXLATE
+
+                args.Add("--" + TileRunParameters.PROVIDER + "=\"" + txtProvider.Text + "\""); //NOXLATE
+                args.Add("--" + TileRunParameters.CONNECTIONPARAMS + "=\"" + txtConnectionString.Text + "\""); //NOXLATE
 
                 if (LimitTileset.Checked)
                 {
@@ -393,10 +321,7 @@ namespace MgCooker
                         args.Add("--" + TileRunParameters.LIMITCOLS + "=\"" + ((int)MaxColLimit.Value).ToString() + "\""); //NOXLATE
                 }
 
-                if (UseNativeAPI.Checked)
-                    args.Add("--" + TileRunParameters.NATIVECONNECTION + ""); //NOXLATE
-                if (UseOfficialMethod.Checked)
-                    args.Add("--" + TileRunParameters.METERSPERUNIT + "=" + ((double)MetersPerUnit.Value).ToString(System.Globalization.CultureInfo.InvariantCulture)); //NOXLATE
+                args.Add("--" + TileRunParameters.METERSPERUNIT + "=" + ((double)MetersPerUnit.Value).ToString(System.Globalization.CultureInfo.InvariantCulture)); //NOXLATE
 
                 args.Add("--" + TileRunParameters.THREADCOUNT + "=" + ((int)ThreadCount.Value).ToString()); //NOXLATE
                 if (RandomTileOrder.Checked)
@@ -545,12 +470,6 @@ namespace MgCooker
             TilesetLimitPanel.Enabled = LimitTileset.Checked;
         }
 
-        private void UseOfficialMethod_CheckedChanged(object sender, EventArgs e)
-        {
-            OfficialMethodPanel.Enabled = lnkCalcMpu.Enabled = UseOfficialMethod.Checked;
-            MapTree_AfterSelect(null, null);
-        }
-
         private void MapTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (m_isUpdating)
@@ -652,6 +571,19 @@ namespace MgCooker
             }
         }
 
+        enum MpuMethod
+        {
+            CreateRuntimeMap,
+            MpuCalcExe,
+            BuiltIn
+        }
+
+        class MpuCalcResult
+        {
+            public MpuMethod Method;
+            public decimal Result;
+        }
+
         private void TryCalcMpu(string mapDef)
         {
             BusyWaitDialog.Run(Strings.CalculatingMpu, () => {
@@ -662,7 +594,13 @@ namespace MgCooker
                     int[] cmdTypes = m_connection.Capabilities.SupportedCommands;
                     if (Array.IndexOf(cmdTypes, (int)OSGeo.MapGuide.MaestroAPI.Commands.CommandType.CreateRuntimeMap) < 0)
                     {
-                        return Strings.NoMethodToCalculateMpu;
+                        IMapDefinition mdf = (IMapDefinition)m_connection.ResourceService.GetResource(mapDef);
+                        var calc = m_connection.GetCalculator();
+                        return new MpuCalcResult()
+                        {
+                            Method = MpuMethod.BuiltIn,
+                            Result = Convert.ToDecimal(calc.Calculate(mdf.CoordinateSystem, 1.0))
+                        };
                     }
                     else
                     {
@@ -670,7 +608,11 @@ namespace MgCooker
                         create.MapDefinition = mapDef;
                         create.RequestedFeatures = (int)RuntimeMapRequestedFeatures.None;
                         var info = create.Execute();
-                        return Convert.ToDecimal(info.CoordinateSystem.MetersPerUnit);
+                        return new MpuCalcResult()
+                        {
+                            Method = MpuMethod.CreateRuntimeMap,
+                            Result = Convert.ToDecimal(info.CoordinateSystem.MetersPerUnit)
+                        };
                     }
                 }
                 else
@@ -698,7 +640,7 @@ namespace MgCooker
                     string output = sb.ToString();
                     double mpu;
                     if (double.TryParse(output, out mpu))
-                        return Convert.ToDecimal(mpu);
+                        return new MpuCalcResult() { Method = MpuMethod.MpuCalcExe, Result = Convert.ToDecimal(mpu) };
                     else
                         return string.Format(Strings.FailedToCalculateMpu, output);
                 }
@@ -709,10 +651,19 @@ namespace MgCooker
                 }
                 else
                 {
-                    if (res is decimal)
-                        MetersPerUnit.Value = (decimal)res;
+                    var mres = res as MpuCalcResult;
+                    if (mres != null)
+                    {
+                        MetersPerUnit.Value = mres.Result;
+                        if (mres.Method == MpuMethod.BuiltIn)
+                        {
+                            MessageBox.Show(Strings.ImperfectMpuCalculation);
+                        }
+                    }
                     else
+                    {
                         MessageBox.Show(res.ToString());
+                    }
                 }
             });
         }
