@@ -47,7 +47,7 @@ namespace Maestro.Base.Commands
             string targetFile = null;
             try
             {
-                edSvc.SyncSessionCopy();
+                ed.SyncSessionCopy();
                 var set = XmlCompareUtil.PrepareForComparison(edSvc.ResourceService,
                                                               edSvc.ResourceID,
                                                               edSvc.EditedResourceID);
