@@ -48,7 +48,7 @@ namespace MgCooker
         private static long mapCount;
         private static long groupCount;
 
-        private static bool m_logableProgress = false;
+        private static bool m_loggableProgress = false;
 
         private static bool hasConsole = true;
 
@@ -138,12 +138,12 @@ namespace MgCooker
             try
             {
                 Console.Clear();
-                m_logableProgress = true;
+                m_loggableProgress = true;
             }
             catch
             {
                 hasConsole = false;
-                m_logableProgress = false;
+                m_loggableProgress = false;
             }
 
 
@@ -151,6 +151,8 @@ namespace MgCooker
 
             string[] maps = mapdefinitions.Split(',');
 
+            string username = string.Empty;
+            string password = string.Empty;
             if (opts.ContainsKey(TileRunParameters.PROVIDER) && opts.ContainsKey(TileRunParameters.CONNECTIONPARAMS))
             {
                 var initP = ConnectionProviderRegistry.ParseConnectionString(opts[TileRunParameters.CONNECTIONPARAMS]);
@@ -166,6 +168,9 @@ namespace MgCooker
                 var frm = new LoginDialog();
                 if (frm.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                     return;
+
+                username = frm.Username;
+                password = frm.Password;
 
                 connection = frm.Connection;
             }
@@ -187,7 +192,13 @@ namespace MgCooker
 
             if (!cmdLineMode)
             {
-                using (var sr = new SetupRun(connection, maps, opts))
+                SetupRun sr = null;
+                if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
+                    sr = new SetupRun(username, password, connection, maps, opts);
+                else
+                    sr = new SetupRun(connection, maps, opts);
+
+                using (sr)
                 {
                     sr.ShowDialog();
                     return;
@@ -320,7 +331,7 @@ namespace MgCooker
         static void bx_FinishRenderingGroup(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             TimeSpan duration = DateTime.Now - beginGroup;
-            if (m_logableProgress)
+            if (m_loggableProgress)
                 Console.WriteLine(string.Format(Strings.ConsoleOperationFinishGroup, DateTime.Now, group, duration));
         }
 
@@ -329,7 +340,7 @@ namespace MgCooker
             groupCount++;
             beginGroup = DateTime.Now;
 
-            if (m_logableProgress)
+            if (m_loggableProgress)
                 Console.WriteLine(string.Format(Strings.ConsoleOperationBeginGroup, beginGroup, group, 1, 1));
 
             tileRuns = new List<TimeSpan>();
@@ -360,9 +371,8 @@ namespace MgCooker
 
                 tileRuns.Clear();
                 lastUpdate = DateTime.Now;
-
-
-                if (m_logableProgress)
+                
+                if (m_loggableProgress)
                     Console.WriteLine(string.Format(Strings.ConsoleOperationFinishTile, tileCount, totalTiles, group, duration));
                 else
                     DisplayProgress(map, group, scaleindex, row, column, ref cancel);
@@ -377,14 +387,14 @@ namespace MgCooker
         static void bx_FinishRenderingScale(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             TimeSpan duration = DateTime.Now - beginScale;
-            if (m_logableProgress)
+            if (m_loggableProgress)
                 Console.WriteLine(string.Format(Strings.ConsoleOperationFinishScale, DateTime.Now, map.MapDefinition.BaseMap.GetScaleAt(scaleindex), duration));
         }
 
         static void bx_BeginRenderingScale(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             beginScale = DateTime.Now;
-            if (m_logableProgress)
+            if (m_loggableProgress)
                 Console.WriteLine(string.Format(Strings.ConsoleOperationBeginScale, beginMap, map.MapDefinition.BaseMap.GetScaleAt(scaleindex), scaleindex, map.Resolutions));
         }
 
@@ -392,7 +402,7 @@ namespace MgCooker
         {
             groupCount = 0;
             TimeSpan duration = DateTime.Now - beginMap;
-            if (m_logableProgress)
+            if (m_loggableProgress)
                 Console.WriteLine(string.Format(Strings.ConsoleOperationFinishMap, DateTime.Now, map.ResourceId, duration));
         }
 
@@ -400,7 +410,7 @@ namespace MgCooker
         {
             mapCount++;
             beginMap = DateTime.Now;
-            if (m_logableProgress)
+            if (m_loggableProgress)
                 Console.WriteLine(string.Format(Strings.ConsoleOperationBeginMap, beginMap, map.ResourceId));
         }
     }

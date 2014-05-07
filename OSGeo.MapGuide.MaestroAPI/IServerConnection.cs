@@ -65,6 +65,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Gets a collection of name-value parameters required to create another copy
         /// of this connection via the <see cref="T:OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry"/>
         /// </summary>
+        /// <remarks>Each invocation returns a new instance</remarks>
         /// <returns></returns>
         NameValueCollection CloneParameters { get; }
 

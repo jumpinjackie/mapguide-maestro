@@ -44,8 +44,8 @@ namespace MgCooker
     public partial class SetupRun : Form
     {
         private IServerConnection m_connection;
-        private Dictionary<string, string> m_commandlineargs;
-        private Dictionary<string, IEnvelope> m_coordinateOverrides;
+        private IDictionary<string, string> m_commandlineargs;
+        private IDictionary<string, IEnvelope> m_coordinateOverrides;
         private bool m_isUpdating = false;
 
         private SetupRun()
@@ -55,7 +55,19 @@ namespace MgCooker
                                      OSGeo.MapGuide.MaestroAPI.StringConstants.AllFilesFilter; //NOXLATE
         }
 
-        public SetupRun(IServerConnection connection, string[] maps, Dictionary<string, string> args)
+        internal SetupRun(string username, string password, IServerConnection connection, string[] maps, IDictionary<string, string> args)
+            : this(connection, maps, args)
+        {
+            var cloneP = connection.CloneParameters;
+            //HACK: Provider-specific information, but there isn't too many providers for this to be a problem
+            if (cloneP["SessionId"] != null)
+                cloneP.Remove("SessionId");
+            cloneP["Username"] = username;
+            cloneP["Password"] = password;
+            txtConnectionString.Text = Utility.ToConnectionString(cloneP);
+        }
+
+        public SetupRun(IServerConnection connection, string[] maps, IDictionary<string, string> args)
             : this()
         {
             m_connection = connection;

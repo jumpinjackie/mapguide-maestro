@@ -45,9 +45,12 @@ namespace MgCooker
         private bool m_allowClose = true;
         private long m_failCount = 0;
 
+        private string m_origTitle;
+
         private Progress()
         {
             InitializeComponent();
+            m_origTitle = this.Text;
         }
 
         public Progress(TilingRunCollection bx)
@@ -146,6 +149,8 @@ namespace MgCooker
                 tilePG.Value = (int)Math.Max(Math.Min((m_tileCount / (double)m_totalTiles) * (tilePG.Maximum - tilePG.Minimum), tilePG.Maximum), tilePG.Minimum);
                 totalPG.Value = (int)Math.Max(Math.Min((m_grandTotalTileCount / (double)m_grandTotalTiles) * (totalPG.Maximum - totalPG.Minimum), totalPG.Maximum), totalPG.Minimum);
 
+                this.Text = m_origTitle + " - (" + (int)(((double)m_grandTotalTileCount / (double)m_grandTotalTiles) * 100.0) +"%)";
+
                 if (m_failCount == 0)
                     tileCounter.Text = string.Format(Strings.CurrentTileCounter, m_grandTotalTileCount, m_grandTotalTiles, "");
                 else
@@ -156,7 +161,7 @@ namespace MgCooker
                 TimeSpan remain = finish - DateTime.Now;
 
                 if (finish < DateTime.Now)
-                   finishEstimate.Text = Strings.InsufficientTimePassed;
+                    finishEstimate.Text = Strings.InsufficientTimePassed;
                 else
                     finishEstimate.Text = string.Format(Strings.RemainingTime, finish.ToShortTimeString(), string.Format("{0}:{1}:{2}", (int)Math.Floor(remain.TotalHours), remain.Minutes.ToString("00"), remain.Seconds.ToString("00")));
             }
