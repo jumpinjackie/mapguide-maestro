@@ -83,32 +83,32 @@ namespace MgCooker
             }
             catch { }
 
-            if (m_commandlineargs.ContainsKey("mapdefinitions")) //NOXLATE
-                m_commandlineargs.Remove("mapdefinitions"); //NOXLATE
-            if (m_commandlineargs.ContainsKey("mapagent")) //NOXLATE
-                MapAgent.Text = m_commandlineargs["mapagent"]; //NOXLATE
-            if (m_commandlineargs.ContainsKey("username")) //NOXLATE
-                Username.Text = m_commandlineargs["username"]; //NOXLATE
-            if (m_commandlineargs.ContainsKey("password")) //NOXLATE
-                Password.Text = m_commandlineargs["password"]; //NOXLATE
+            if (m_commandlineargs.ContainsKey(TileRunParameters.MAPDEFINITIONS)) //NOXLATE
+                m_commandlineargs.Remove(TileRunParameters.MAPDEFINITIONS); //NOXLATE
+            if (m_commandlineargs.ContainsKey(TileRunParameters.MAPAGENT)) //NOXLATE
+                MapAgent.Text = m_commandlineargs[TileRunParameters.MAPAGENT]; //NOXLATE
+            if (m_commandlineargs.ContainsKey(TileRunParameters.USERNAME)) //NOXLATE
+                Username.Text = m_commandlineargs[TileRunParameters.USERNAME]; //NOXLATE
+            if (m_commandlineargs.ContainsKey(TileRunParameters.PASSWORD)) //NOXLATE
+                Password.Text = m_commandlineargs[TileRunParameters.PASSWORD]; //NOXLATE
 
-            if (m_commandlineargs.ContainsKey("native-connection")) //NOXLATE
+            if (m_commandlineargs.ContainsKey(TileRunParameters.NATIVECONNECTION)) //NOXLATE
                 UseNativeAPI.Checked = true;
 
-            if (m_commandlineargs.ContainsKey("limitrows")) //NOXLATE
+            if (m_commandlineargs.ContainsKey(TileRunParameters.LIMITROWS)) //NOXLATE
             {
                 int i;
-                if (int.TryParse(m_commandlineargs["limitrows"], out i) && i > 0) //NOXLATE
+                if (int.TryParse(m_commandlineargs[TileRunParameters.LIMITROWS], out i) && i > 0) //NOXLATE
                 {
                     MaxRowLimit.Value = i;
                     TilesetLimitPanel.Enabled = true;
                 }
             }
 
-            if (m_commandlineargs.ContainsKey("limitcols")) //NOXLATE
+            if (m_commandlineargs.ContainsKey(TileRunParameters.LIMITCOLS)) //NOXLATE
             {
                 int i;
-                if (int.TryParse(m_commandlineargs["limitcols"], out i) && i > 0) //NOXLATE
+                if (int.TryParse(m_commandlineargs[TileRunParameters.LIMITCOLS], out i) && i > 0) //NOXLATE
                 {
                     MaxColLimit.Value = i;
                     TilesetLimitPanel.Enabled = true;
@@ -137,12 +137,12 @@ namespace MgCooker
 
             }
 
-            if (m_commandlineargs.ContainsKey("metersperunit")) //NOXLATE
+            if (m_commandlineargs.ContainsKey(TileRunParameters.METERSPERUNIT)) //NOXLATE
             {
                 double d;
                 if (
-                    double.TryParse(m_commandlineargs["metersperunit"], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentUICulture, out d) //NOXLATE
-                    || double.TryParse(m_commandlineargs["metersperunit"], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d) //NOXLATE
+                    double.TryParse(m_commandlineargs[TileRunParameters.METERSPERUNIT], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentUICulture, out d) //NOXLATE
+                    || double.TryParse(m_commandlineargs[TileRunParameters.METERSPERUNIT], System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out d) //NOXLATE
                     )
                     if (d >= (double)MetersPerUnit.Minimum && d <= (double)MetersPerUnit.Maximum)
                     {
@@ -161,20 +161,20 @@ namespace MgCooker
 
             
             var basegroupsSelected = new List<string>();
-            if (m_commandlineargs.ContainsKey("basegroups"))//NOXLATE
+            if (m_commandlineargs.ContainsKey(TileRunParameters.BASEGROUPS))//NOXLATE
             {
-                basegroupsSelected = new List<string>(m_commandlineargs["basegroups"].Split(','));//NOXLATE
-                m_commandlineargs.Remove("basegroups"); //NOXLATE
+                basegroupsSelected = new List<string>(m_commandlineargs[TileRunParameters.BASEGROUPS].Split(','));//NOXLATE
+                m_commandlineargs.Remove(TileRunParameters.BASEGROUPS); //NOXLATE
             }
 
             var scalesSelected = new List<int>();
-            if (m_commandlineargs.ContainsKey("scaleindex")) //NOXLATE
+            if (m_commandlineargs.ContainsKey(TileRunParameters.SCALEINDEX)) //NOXLATE
             {
-                foreach (string scaleIndex in m_commandlineargs["scaleindex"].Split(','))//NOXLATE
+                foreach (string scaleIndex in m_commandlineargs[TileRunParameters.SCALEINDEX].Split(','))//NOXLATE
                 {
                     scalesSelected.Add(int.Parse(scaleIndex));
                 }
-                m_commandlineargs.Remove("scaleindex"); //NOXLATE
+                m_commandlineargs.Remove(TileRunParameters.SCALEINDEX); //NOXLATE
             }
 
             MapTree.Nodes.Clear();
@@ -386,26 +386,26 @@ namespace MgCooker
             {
                 //Common args for all map defintions to be tiled
                 List<string> args = new List<string>();
-                args.Add("--mapagent=\"" + MapAgent.Text + "\""); //NOXLATE
-                args.Add("--username=\"" + Username.Text + "\""); //NOXLATE
-                args.Add("--password=\"" + Password.Text + "\""); //NOXLATE
+                args.Add("--" + TileRunParameters.MAPAGENT + "=\"" + MapAgent.Text + "\""); //NOXLATE
+                args.Add("--" + TileRunParameters.USERNAME + "=\"" + Username.Text + "\""); //NOXLATE
+                args.Add("--" + TileRunParameters.PASSWORD + "=\"" + Password.Text + "\""); //NOXLATE
 
                 if (LimitTileset.Checked)
                 {
                     if (MaxRowLimit.Value > 0)
-                        args.Add("--limitrows=\"" + ((int)MaxRowLimit.Value).ToString() + "\""); //NOXLATE
+                        args.Add("--" + TileRunParameters.LIMITROWS + "=\"" + ((int)MaxRowLimit.Value).ToString() + "\""); //NOXLATE
                     if (MaxColLimit.Value > 0)
-                        args.Add("--limitcols=\"" + ((int)MaxColLimit.Value).ToString() + "\""); //NOXLATE
+                        args.Add("--" + TileRunParameters.LIMITCOLS + "=\"" + ((int)MaxColLimit.Value).ToString() + "\""); //NOXLATE
                 }
 
                 if (UseNativeAPI.Checked)
-                    args.Add("--native-connection"); //NOXLATE
+                    args.Add("--" + TileRunParameters.NATIVECONNECTION + ""); //NOXLATE
                 if (UseOfficialMethod.Checked)
-                    args.Add("--metersperunit=" + ((double)MetersPerUnit.Value).ToString(System.Globalization.CultureInfo.InvariantCulture)); //NOXLATE
+                    args.Add("--" + TileRunParameters.METERSPERUNIT + "=" + ((double)MetersPerUnit.Value).ToString(System.Globalization.CultureInfo.InvariantCulture)); //NOXLATE
 
-                args.Add("--threadcount=" + ((int)ThreadCount.Value).ToString()); //NOXLATE
+                args.Add("--" + TileRunParameters.THREADCOUNT + "=" + ((int)ThreadCount.Value).ToString()); //NOXLATE
                 if (RandomTileOrder.Checked)
-                    args.Add("--random-tile-order"); //NOXLATE
+                    args.Add("--" + TileRunParameters.RANDOMTILEORDER + ""); //NOXLATE
 
 
                 string executable = System.IO.Path.GetFileName(System.Reflection.Assembly.GetExecutingAssembly().Location);
@@ -458,9 +458,9 @@ namespace MgCooker
                         }
 
                         argsMap.Add("batch"); //NOXLATE
-                        argsMap.Add("--mapdefinitions=\"" + c.MapDefinition + "\"");
-                        argsMap.Add("--basegroups=\"" + c.Group + "\"");
-                        StringBuilder si = new StringBuilder("--scaleindex="); //NOXLATE
+                        argsMap.Add("--" + TileRunParameters.MAPDEFINITIONS + "=\"" + c.MapDefinition + "\"");
+                        argsMap.Add("--" + TileRunParameters.BASEGROUPS + "=\"" + c.Group + "\"");
+                        StringBuilder si = new StringBuilder("--" + TileRunParameters.SCALEINDEX + "="); //NOXLATE
                         for (int i = 0; i < c.ScaleIndexes.Length; i++)
                         {
                             if (i != 0)
@@ -471,7 +471,7 @@ namespace MgCooker
 
                         if (c.ExtentOverride != null)
                         {
-                            StringBuilder ov = new StringBuilder("--extentoverride="); //NOXLATE
+                            StringBuilder ov = new StringBuilder("--" + TileRunParameters.EXTENTOVERRIDE + "="); //NOXLATE
                             ov.Append(c.ExtentOverride.MinX.ToString(System.Globalization.CultureInfo.InvariantCulture));
                             ov.Append(","); //NOXLATE
                             ov.Append(c.ExtentOverride.MinY.ToString(System.Globalization.CultureInfo.InvariantCulture));
