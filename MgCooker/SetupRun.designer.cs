@@ -31,12 +31,12 @@ namespace MgCooker
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SetupRun));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSaveScript = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnBuild = new System.Windows.Forms.Button();
             this.MapTree = new System.Windows.Forms.TreeView();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.imageList = new System.Windows.Forms.ImageList(this.components);
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.panel2 = new System.Windows.Forms.Panel();
             this.BoundsOverride = new System.Windows.Forms.GroupBox();
             this.ModfiedOverrideWarning = new System.Windows.Forms.Label();
@@ -58,11 +58,12 @@ namespace MgCooker
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.grpThreading = new System.Windows.Forms.GroupBox();
             this.RandomTileOrder = new System.Windows.Forms.CheckBox();
             this.ThreadCount = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grpTileSettings = new System.Windows.Forms.GroupBox();
+            this.lnkCalcMpu = new System.Windows.Forms.LinkLabel();
             this.OfficialMethodPanel = new System.Windows.Forms.Panel();
             this.MetersPerUnit = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
@@ -74,14 +75,13 @@ namespace MgCooker
             this.MaxColLimit = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.lnkCalcMpu = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.BoundsOverride.SuspendLayout();
             this.grpDifferentConnection.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.grpThreading.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ThreadCount)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            this.grpTileSettings.SuspendLayout();
             this.OfficialMethodPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MetersPerUnit)).BeginInit();
             this.TilesetLimitPanel.SuspendLayout();
@@ -91,62 +91,61 @@ namespace MgCooker
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnSaveScript);
+            this.panel1.Controls.Add(this.btnClose);
+            this.panel1.Controls.Add(this.btnBuild);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // button3
+            // btnSaveScript
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            resources.ApplyResources(this.btnSaveScript, "btnSaveScript");
+            this.btnSaveScript.Name = "btnSaveScript";
+            this.btnSaveScript.UseVisualStyleBackColor = true;
+            this.btnSaveScript.Click += new System.EventHandler(this.btnSaveScript_Click);
             // 
-            // button2
+            // btnClose
             // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            resources.ApplyResources(this.btnClose, "btnClose");
+            this.btnClose.Name = "btnClose";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // button1
+            // btnBuild
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            resources.ApplyResources(this.btnBuild, "btnBuild");
+            this.btnBuild.Name = "btnBuild";
+            this.btnBuild.UseVisualStyleBackColor = true;
+            this.btnBuild.Click += new System.EventHandler(this.btnBuild_Click);
             // 
             // MapTree
             // 
             this.MapTree.CheckBoxes = true;
             resources.ApplyResources(this.MapTree, "MapTree");
-            this.MapTree.ImageList = this.imageList1;
+            this.MapTree.ImageList = this.imageList;
             this.MapTree.Name = "MapTree";
             this.MapTree.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
             this.MapTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MapTree_AfterSelect);
             // 
-            // imageList1
+            // imageList
             // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "Map.ico");
-            this.imageList1.Images.SetKeyName(1, "Layer.ico");
-            this.imageList1.Images.SetKeyName(2, "Range.ico");
-            this.imageList1.Images.SetKeyName(3, "Scale.ico");
+            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
+            this.imageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList.Images.SetKeyName(0, "Map.ico");
+            this.imageList.Images.SetKeyName(1, "Layer.ico");
+            this.imageList.Images.SetKeyName(2, "Range.ico");
+            this.imageList.Images.SetKeyName(3, "Scale.ico");
             // 
-            // saveFileDialog1
+            // saveFileDialog
             // 
-            resources.ApplyResources(this.saveFileDialog1, "saveFileDialog1");
+            resources.ApplyResources(this.saveFileDialog, "saveFileDialog");
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.BoundsOverride);
             this.panel2.Controls.Add(this.grpDifferentConnection);
-            this.panel2.Controls.Add(this.groupBox3);
-            this.panel2.Controls.Add(this.groupBox2);
+            this.panel2.Controls.Add(this.grpThreading);
+            this.panel2.Controls.Add(this.grpTileSettings);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
@@ -287,14 +286,14 @@ namespace MgCooker
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // groupBox3
+            // grpThreading
             // 
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Controls.Add(this.RandomTileOrder);
-            this.groupBox3.Controls.Add(this.ThreadCount);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
+            resources.ApplyResources(this.grpThreading, "grpThreading");
+            this.grpThreading.Controls.Add(this.RandomTileOrder);
+            this.grpThreading.Controls.Add(this.ThreadCount);
+            this.grpThreading.Controls.Add(this.label9);
+            this.grpThreading.Name = "grpThreading";
+            this.grpThreading.TabStop = false;
             // 
             // RandomTileOrder
             // 
@@ -329,16 +328,23 @@ namespace MgCooker
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
             // 
-            // groupBox2
+            // grpTileSettings
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Controls.Add(this.lnkCalcMpu);
-            this.groupBox2.Controls.Add(this.OfficialMethodPanel);
-            this.groupBox2.Controls.Add(this.LimitTileset);
-            this.groupBox2.Controls.Add(this.UseOfficialMethod);
-            this.groupBox2.Controls.Add(this.TilesetLimitPanel);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
+            resources.ApplyResources(this.grpTileSettings, "grpTileSettings");
+            this.grpTileSettings.Controls.Add(this.lnkCalcMpu);
+            this.grpTileSettings.Controls.Add(this.OfficialMethodPanel);
+            this.grpTileSettings.Controls.Add(this.LimitTileset);
+            this.grpTileSettings.Controls.Add(this.UseOfficialMethod);
+            this.grpTileSettings.Controls.Add(this.TilesetLimitPanel);
+            this.grpTileSettings.Name = "grpTileSettings";
+            this.grpTileSettings.TabStop = false;
+            // 
+            // lnkCalcMpu
+            // 
+            resources.ApplyResources(this.lnkCalcMpu, "lnkCalcMpu");
+            this.lnkCalcMpu.Name = "lnkCalcMpu";
+            this.lnkCalcMpu.TabStop = true;
+            this.lnkCalcMpu.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkCalcMpu_LinkClicked);
             // 
             // OfficialMethodPanel
             // 
@@ -421,13 +427,6 @@ namespace MgCooker
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
             // 
-            // lnkCalcMpu
-            // 
-            resources.ApplyResources(this.lnkCalcMpu, "lnkCalcMpu");
-            this.lnkCalcMpu.Name = "lnkCalcMpu";
-            this.lnkCalcMpu.TabStop = true;
-            this.lnkCalcMpu.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkCalcMpu_LinkClicked);
-            // 
             // SetupRun
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -442,11 +441,11 @@ namespace MgCooker
             this.BoundsOverride.PerformLayout();
             this.grpDifferentConnection.ResumeLayout(false);
             this.grpDifferentConnection.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.grpThreading.ResumeLayout(false);
+            this.grpThreading.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ThreadCount)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.grpTileSettings.ResumeLayout(false);
+            this.grpTileSettings.PerformLayout();
             this.OfficialMethodPanel.ResumeLayout(false);
             this.OfficialMethodPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MetersPerUnit)).EndInit();
@@ -461,12 +460,12 @@ namespace MgCooker
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnBuild;
         private System.Windows.Forms.TreeView MapTree;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Button btnSaveScript;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox grpDifferentConnection;
         private System.Windows.Forms.CheckBox UseNativeAPI;
@@ -475,10 +474,10 @@ namespace MgCooker
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox grpThreading;
         private System.Windows.Forms.NumericUpDown ThreadCount;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grpTileSettings;
         private System.Windows.Forms.CheckBox LimitTileset;
         private System.Windows.Forms.CheckBox UseOfficialMethod;
         private System.Windows.Forms.NumericUpDown MetersPerUnit;

@@ -51,7 +51,7 @@ namespace MgCooker
         private SetupRun()
         {
             InitializeComponent();
-            saveFileDialog1.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickBat, "bat") + "|" + //NOXLATE
+            saveFileDialog.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickBat, "bat") + "|" + //NOXLATE
                                      OSGeo.MapGuide.MaestroAPI.StringConstants.AllFilesFilter; //NOXLATE
             MapAgent.Text = "http://localhost/mapguide/mapagent/mapagent.fcgi"; //NOXLATE
             Username.Text = "Anonymous"; //NOXLATE
@@ -229,17 +229,12 @@ namespace MgCooker
             MapTree_AfterSelect(null, null);
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnBuild_Click(object sender, EventArgs e)
         {
             IServerConnection con = m_connection;
             if (chkUseDifferentConnection.Checked)
@@ -375,14 +370,14 @@ namespace MgCooker
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnSaveScript_Click(object sender, EventArgs e)
         {
             if (System.Environment.OSVersion.Platform == PlatformID.Unix)
-                saveFileDialog1.Filter =
+                saveFileDialog.Filter =
                     string.Format(Strings.FileTypeShellScript + "|{0}", "*.sh") + //NOXLATE
                     string.Format(Strings.FileTypeAllFiles + "|{0}", "*.*"); //NOXLATE
 
-            if (saveFileDialog1.ShowDialog(this) == DialogResult.OK)
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 //Common args for all map defintions to be tiled
                 List<string> args = new List<string>();
@@ -422,7 +417,7 @@ namespace MgCooker
 
                 executable = "\"" + executable + "\""; //NOXLATE
 
-                using (System.IO.StreamWriter sw = new System.IO.StreamWriter(saveFileDialog1.FileName))
+                using (System.IO.StreamWriter sw = new System.IO.StreamWriter(saveFileDialog.FileName))
                 {
                     if (System.Environment.OSVersion.Platform == PlatformID.Unix)
                     {
