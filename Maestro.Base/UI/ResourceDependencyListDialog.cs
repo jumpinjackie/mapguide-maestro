@@ -37,13 +37,19 @@ namespace Maestro.Base.UI
             InitializeComponent();
         }
 
-        private IList<string> _items;
+        private IList<string> _uplist;
+        private IList<string> _downlist;
+        private IList<string> _selResources;
 
-        public ResourceDependencyListDialog(IList<string> items)
+        public ResourceDependencyListDialog(IList<string> selResources, IList<string> downlist, IList<string> uplist)
             : this()
         {
-            _items = items;
-            lstDependencies.DataSource = _items;
+            _uplist = uplist;
+            _downlist = downlist;
+            _selResources = selResources;
+            lstSelectedResources.DataSource = _selResources;
+            lstUpstreamDependencies.DataSource = _uplist;
+            lstDownstreamDependencies.DataSource = _downlist;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -51,14 +57,32 @@ namespace Maestro.Base.UI
             this.Close();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnSaveUpList_Click(object sender, EventArgs e)
         {
             using (var save = DialogFactory.SaveFile())
             {
                 save.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickTxt, "txt"); //NOXLATE
                 if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    System.IO.File.WriteAllLines(save.FileName, _items);
+                    if (chkIncludeSelected.Checked)
+                        System.IO.File.WriteAllLines(save.FileName, _selResources.Concat(_uplist));
+                    else
+                        System.IO.File.WriteAllLines(save.FileName, _uplist);
+                }
+            }
+        }
+
+        private void btnSaveDownList_Click(object sender, EventArgs e)
+        {
+            using (var save = DialogFactory.SaveFile())
+            {
+                save.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickTxt, "txt"); //NOXLATE
+                if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    if (chkIncludeSelected.Checked)
+                        System.IO.File.WriteAllLines(save.FileName, _selResources.Concat(_downlist));
+                    else
+                        System.IO.File.WriteAllLines(save.FileName, _downlist);
                 }
             }
         }

@@ -44,14 +44,17 @@ namespace Maestro.Base.Commands.SiteExplorer
 
             var items = siteExp.SelectedItems;
             var prg = new ProgressDialog();
-            var results = (ICollection<string>)prg.RunOperationAsync(wb, DoBackgroundWorker, items, conn);
+            var results = (DependencySet)prg.RunOperationAsync(wb, DoBackgroundWorker, items, conn);
 
-            var list = new List<string>(results);
-            list.Sort();
-            new ResourceDependencyListDialog(list).Show(wb);
+            var downlist = new List<string>(results.DownstreamDependencies);
+            downlist.Sort();
+            var uplist = new List<string>(results.UpstreamDependencies);
+            uplist.Sort();
+            var selResources = new List<string>(results.SelectedResources);
+            new ResourceDependencyListDialog(selResources, downlist, uplist).Show(wb);
         }
 
-        private static IEnumerable<string> GetDirectDependents(string resId, IResourceService resSvc)
+        private static IEnumerable<string> GetDirectUpstreamDependents(string resId, IResourceService resSvc)
         {
             using (var s = resSvc.GetResourceXmlData(resId))
             {
@@ -64,13 +67,37 @@ namespace Maestro.Base.Commands.SiteExplorer
             }
         }
 
-        private static void ProcessDependencies(ICollection<string> results, string resourceId, IResourceService resSvc)
+        private static void ProcessUpstreamDependencies(ICollection<string> results, string resourceId, IResourceService resSvc)
         {
-            foreach (var resId in GetDirectDependents(resourceId, resSvc))
+            foreach (var resId in GetDirectUpstreamDependents(resourceId, resSvc))
             {
                 results.Add(resId);
-                ProcessDependencies(results, resId, resSvc);
+                ProcessUpstreamDependencies(results, resId, resSvc);
             }
+        }
+
+        private static void ProcessDownstreamDependencies(ICollection<string> results, string resourceId, IResourceService resSvc)
+        {
+            var downRefs = resSvc.EnumerateResourceReferences(resourceId);
+            foreach (var resId in downRefs.ResourceId)
+            {
+                results.Add(resId);
+                ProcessDownstreamDependencies(results, resId, resSvc);
+            }
+        }
+
+        class DependencySet
+        {
+            public DependencySet(ICollection<string> selResources, ICollection<string> downRefs, ICollection<string> upRefs)
+            {
+                this.SelectedResources = selResources;
+                this.DownstreamDependencies = downRefs;
+                this.UpstreamDependencies = upRefs;
+            }
+
+            public ICollection<string> SelectedResources { get; private set; }
+            public ICollection<string> DownstreamDependencies { get; private set; }
+            public ICollection<string> UpstreamDependencies { get; private set; }
         }
 
         private static object DoBackgroundWorker(BackgroundWorker wrk, DoWorkEventArgs e, params object[] args)
@@ -83,15 +110,18 @@ namespace Maestro.Base.Commands.SiteExplorer
                 wrk.ReportProgress(pe.Progress, o);
             };
             
-            var result = new HashSet<string>();
+            var upRefs = new HashSet<string>();
+            var downRefs = new HashSet<string>();
+            var selResources = new HashSet<string>();
 
             foreach (var ri in items)
             {
-                result.Add(ri.ResourceId);
-                ProcessDependencies(result, ri.ResourceId, conn.ResourceService);
+                selResources.Add(ri.ResourceId);
+                ProcessUpstreamDependencies(upRefs, ri.ResourceId, conn.ResourceService);
+                ProcessDownstreamDependencies(downRefs, ri.ResourceId, conn.ResourceService);
             }
 
-            return result;
+            return new DependencySet(selResources, downRefs, upRefs);
         }
     }
 }
