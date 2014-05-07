@@ -115,9 +115,9 @@ namespace MgCooker
                 }
             }
 
-            if (m_commandlineargs.ContainsKey("extentoverride")) //NOXLATE
+            if (m_commandlineargs.ContainsKey(TileRunParameters.EXTENTOVERRIDE)) //NOXLATE
             {
-                 string[] parts = m_commandlineargs["extentoverride"].Split(',');
+                 string[] parts = m_commandlineargs[TileRunParameters.EXTENTOVERRIDE].Split(',');
                 if (parts.Length == 4)
                 {
                     double minx;

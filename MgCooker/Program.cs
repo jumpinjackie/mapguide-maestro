@@ -68,7 +68,7 @@ namespace MgCooker
             //basegroups="x","y"
             //extentoverride=minx,miny,maxx,maxy
 
-            Boolean batchMode = false;
+            Boolean cmdLineMode = false;
             
             string mapagent = "http://localhost/mapguide";
             string username = "Anonymous";
@@ -141,7 +141,7 @@ namespace MgCooker
 
             if (largs.IndexOf("batch") >= 0 || largs.IndexOf("/batch") >= 0 || largs.IndexOf("commandline") >= 0 || largs.IndexOf("/commandline") >= 0)
             {
-                batchMode = true;
+                cmdLineMode = true;
             }
 
             try
@@ -163,7 +163,7 @@ namespace MgCooker
             SetupRun sr = null;
             if (!opts.ContainsKey(TileRunParameters.USERNAME) || (!opts.ContainsKey(TileRunParameters.MAPAGENT)))
             {
-                if (!batchMode)
+                if (!cmdLineMode)
                 {
                     if (opts.ContainsKey(TileRunParameters.PROVIDER) && opts.ContainsKey(TileRunParameters.CONNECTIONPARAMS))
                     {
@@ -223,7 +223,7 @@ namespace MgCooker
 
 
 
-            if (!batchMode)
+            if (!cmdLineMode)
             {
                 if (sr == null)
                     sr = new SetupRun(connection, maps, opts);
@@ -304,7 +304,7 @@ namespace MgCooker
 
             
 
-            if (!batchMode)
+            if (!cmdLineMode)
             {
                 Progress pg = new Progress(bx);
                 pg.ShowDialog();
