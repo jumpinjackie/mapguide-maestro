@@ -90,36 +90,36 @@ namespace MgCooker
             
             List<string> largs = new List<string>(args);
             Dictionary<string, string> opts = CommandLineParser.ExtractOptions(largs);
-            if (opts.ContainsKey("mapagent"))
-                mapagent = opts["mapagent"];
-            if (opts.ContainsKey("username"))
-                username = opts["username"];
-            if (opts.ContainsKey("password"))
-                password = opts["password"];
-            if (opts.ContainsKey("mapdefinitions"))
-                mapdefinitions = opts["mapdefinitions"];
-            if (opts.ContainsKey("scaleindex"))
-                scaleindex = opts["scaleindex"];
-            if (opts.ContainsKey("basegroups"))
-                basegroups = opts["basegroups"];
+            if (opts.ContainsKey(TileRunParameters.MAPAGENT))
+                mapagent = opts[TileRunParameters.MAPAGENT];
+            if (opts.ContainsKey(TileRunParameters.USERNAME))
+                username = opts[TileRunParameters.USERNAME];
+            if (opts.ContainsKey(TileRunParameters.PASSWORD))
+                password = opts[TileRunParameters.PASSWORD];
+            if (opts.ContainsKey(TileRunParameters.MAPDEFINITIONS))
+                mapdefinitions = opts[TileRunParameters.MAPDEFINITIONS];
+            if (opts.ContainsKey(TileRunParameters.SCALEINDEX))
+                scaleindex = opts[TileRunParameters.SCALEINDEX];
+            if (opts.ContainsKey(TileRunParameters.BASEGROUPS))
+                basegroups = opts[TileRunParameters.BASEGROUPS];
 
-            if (opts.ContainsKey("limitrows"))
-                limitRows = opts["limitrows"];
-            if (opts.ContainsKey("limitcols"))
-                limitCols = opts["limitcols"];
+            if (opts.ContainsKey(TileRunParameters.LIMITROWS))
+                limitRows = opts[TileRunParameters.LIMITROWS];
+            if (opts.ContainsKey(TileRunParameters.LIMITCOLS))
+                limitCols = opts[TileRunParameters.LIMITCOLS];
 
-            if (opts.ContainsKey("tilewidth"))
-                tileWidth = opts["tilewidth"];
-            if (opts.ContainsKey("tileheight"))
-                tileHeight = opts["tileheight"];
+            if (opts.ContainsKey(TileRunParameters.TILEWIDTH))
+                tileWidth = opts[TileRunParameters.TILEWIDTH];
+            if (opts.ContainsKey(TileRunParameters.TILEHEIGHT))
+                tileHeight = opts[TileRunParameters.TILEHEIGHT];
 
-            if (opts.ContainsKey("DPI"))
-                DPI = opts["DPI"];
-            if (opts.ContainsKey("metersperunit"))
-                metersPerUnit = opts["metersperunit"];
-            if (opts.ContainsKey("extentoverride"))
+            if (opts.ContainsKey(TileRunParameters.DOTSPERINCH))
+                DPI = opts[TileRunParameters.DOTSPERINCH];
+            if (opts.ContainsKey(TileRunParameters.METERSPERUNIT))
+                metersPerUnit = opts[TileRunParameters.METERSPERUNIT];
+            if (opts.ContainsKey(TileRunParameters.EXTENTOVERRIDE))
             {
-                string[] parts = opts["extentoverride"].Split(',');
+                string[] parts = opts[TileRunParameters.EXTENTOVERRIDE].Split(',');
                 if (parts.Length == 4)
                 {
                     double minx;
@@ -161,14 +161,14 @@ namespace MgCooker
             string[] maps = mapdefinitions.Split(',');
 
             SetupRun sr = null;
-            if (!opts.ContainsKey("username") || (!opts.ContainsKey("mapagent")))
+            if (!opts.ContainsKey(TileRunParameters.USERNAME) || (!opts.ContainsKey(TileRunParameters.MAPAGENT)))
             {
                 if (!batchMode)
                 {
-                    if (opts.ContainsKey("provider") && opts.ContainsKey("connection-params"))
+                    if (opts.ContainsKey(TileRunParameters.PROVIDER) && opts.ContainsKey(TileRunParameters.CONNECTIONPARAMS))
                     {
-                        var initP = ConnectionProviderRegistry.ParseConnectionString(opts["connection-params"]);
-                        connection = ConnectionProviderRegistry.CreateConnection(opts["provider"], initP);
+                        var initP = ConnectionProviderRegistry.ParseConnectionString(opts[TileRunParameters.CONNECTIONPARAMS]);
+                        connection = ConnectionProviderRegistry.CreateConnection(opts[TileRunParameters.PROVIDER], initP);
                         sr = new SetupRun(connection, maps, opts);
                     }
                     else
@@ -192,7 +192,7 @@ namespace MgCooker
             if (connection == null)
             {
                 var initP = new NameValueCollection();
-                if (!opts.ContainsKey("native-connection"))
+                if (!opts.ContainsKey(TileRunParameters.NATIVECONNECTION))
                 {
                     initP["Url"] = mapagent;
                     initP["Username"] = username;
@@ -202,11 +202,11 @@ namespace MgCooker
 
                     connection = ConnectionProviderRegistry.CreateConnection("Maestro.Http", initP);
                 }
-                else if (opts.ContainsKey("provider") && opts.ContainsKey("connection-params"))
+                else if (opts.ContainsKey(TileRunParameters.PROVIDER) && opts.ContainsKey(TileRunParameters.CONNECTIONPARAMS))
                 {
-                    initP = ConnectionProviderRegistry.ParseConnectionString(opts["connection-params"]);
+                    initP = ConnectionProviderRegistry.ParseConnectionString(opts[TileRunParameters.CONNECTIONPARAMS]);
 
-                    connection = ConnectionProviderRegistry.CreateConnection(opts["provider"], initP);
+                    connection = ConnectionProviderRegistry.CreateConnection(opts[TileRunParameters.PROVIDER], initP);
                 }
                 else
                 {
@@ -257,10 +257,10 @@ namespace MgCooker
                 bx.Config.UseOfficialMethod = true;
             }
 
-            if (opts.ContainsKey("random-tile-order"))
+            if (opts.ContainsKey(TileRunParameters.RANDOMTILEORDER))
                 bx.Config.RandomizeTileSequence = true;
 
-            if (opts.ContainsKey("threadcount") && int.TryParse(opts["threadcount"], out x) && x > 0)
+            if (opts.ContainsKey(TileRunParameters.THREADCOUNT) && int.TryParse(opts[TileRunParameters.THREADCOUNT], out x) && x > 0)
                 bx.Config.ThreadCount = x;
 
             //Now that all global parameters are set, we can now add the map definitions

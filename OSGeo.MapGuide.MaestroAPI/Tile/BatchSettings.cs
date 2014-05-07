@@ -761,6 +761,26 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
     /// </summary>
     public class TileRunParameters
     {
+        public const string MAPAGENT = "mapagent"; //NOXLATE
+        public const string USERNAME = "username"; //NOXLATE
+        public const string PASSWORD = "password"; //NOXLATE
+        public const string NATIVECONNECTION = "native-connection"; //NOXLATE
+
+        public const string MAPDEFINITIONS = "mapdefinitions"; //NOXLATE
+        public const string LIMITROWS = "limitrows"; //NOXLATE
+        public const string LIMITCOLS = "limitcols"; //NOXLATE
+        public const string EXTENTOVERRIDE = "extentoverride"; //NOXLATE
+        public const string METERSPERUNIT = "metersperunit"; //NOXLATE
+        public const string BASEGROUPS = "basegroups"; //NOXLATE
+        public const string SCALEINDEX = "scaleindex"; //NOXLATE
+        public const string PROVIDER = "provider"; //NOXLATE
+        public const string CONNECTIONPARAMS = "connection-params"; //NOXLATE
+        public const string TILEWIDTH = "tilewidth"; //NOXLATE
+        public const string TILEHEIGHT = "tileheight"; //NOXLATE
+        public const string DOTSPERINCH = "DPI"; //NOXLATE
+        public const string RANDOMTILEORDER = "random-tile-order"; //NOXLATE
+        public const string THREADCOUNT = "threadcount"; //NOXLATE
+
         /// <summary>
         /// The meters per unit
         /// </summary>
