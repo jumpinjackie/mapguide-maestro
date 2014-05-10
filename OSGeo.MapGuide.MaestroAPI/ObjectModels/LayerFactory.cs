@@ -100,7 +100,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         }
     }
 
-    partial class LayerDefinition : ILayerElementFactory, ILayerElementFactory2
+    partial class LayerDefinition : ILayerElementFactory
     {
         public static ILayerDefinition CreateDefault(LayerType type)
         {

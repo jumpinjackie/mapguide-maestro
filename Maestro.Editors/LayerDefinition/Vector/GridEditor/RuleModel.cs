@@ -40,7 +40,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         void SetIndex(int index);
         object UnwrapRule();
 
-        IRuleModel CloneRuleModel(ILayerElementFactory2 factory);
+        IRuleModel CloneRuleModel(ILayerElementFactory factory);
     }
 
     internal interface ILabeledRuleModel : INotifyPropertyChanged
@@ -55,7 +55,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         void SetIndex(int index);
         object UnwrapRule();
 
-        ILabeledRuleModel CloneLabeledRuleModel(ILayerElementFactory2 factory);
+        ILabeledRuleModel CloneLabeledRuleModel(ILayerElementFactory factory);
     }
 
     internal abstract class RuleModel : IRuleModel
@@ -100,7 +100,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
 
         public abstract object UnwrapRule();
 
-        public abstract IRuleModel CloneRuleModel(ILayerElementFactory2 factory);
+        public abstract IRuleModel CloneRuleModel(ILayerElementFactory factory);
     }
 
     internal abstract class BasicVectorRuleModel<TRuleType, TSymbolizationStyleType> : RuleModel, ILabeledRuleModel where TRuleType : IBasicVectorRule
@@ -241,12 +241,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             m.Index = temp;
         }
 
-        public override IRuleModel CloneRuleModel(ILayerElementFactory2 factory)
+        public override IRuleModel CloneRuleModel(ILayerElementFactory factory)
         {
             throw new NotImplementedException();
         }
 
-        public abstract ILabeledRuleModel CloneLabeledRuleModel(ILayerElementFactory2 factory);
+        public abstract ILabeledRuleModel CloneLabeledRuleModel(ILayerElementFactory factory);
     }
 
     internal class PointRuleModel : BasicVectorRuleModel<IPointRule, IPointSymbolization2D>
@@ -268,7 +268,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             this.HasStyle = (style != null);
         }
 
-        public override ILabeledRuleModel CloneLabeledRuleModel(ILayerElementFactory2 factory)
+        public override ILabeledRuleModel CloneLabeledRuleModel(ILayerElementFactory factory)
         {
             var clone = factory.CreateDefaultPointRule();
             clone.Filter = _rule.Filter;
@@ -372,7 +372,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             return new BasicLineSymbolizationAdapter(_rule);
         }
 
-        public override ILabeledRuleModel CloneLabeledRuleModel(ILayerElementFactory2 factory)
+        public override ILabeledRuleModel CloneLabeledRuleModel(ILayerElementFactory factory)
         {
             var clone = factory.CreateDefaultLineRule();
             clone.Filter = _rule.Filter;
@@ -411,7 +411,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             this.HasStyle = (style != null);
         }
 
-        public override ILabeledRuleModel CloneLabeledRuleModel(ILayerElementFactory2 factory)
+        public override ILabeledRuleModel CloneLabeledRuleModel(ILayerElementFactory factory)
         {
             var clone = factory.CreateDefaultAreaRule();
             clone.Filter = _rule.Filter;
@@ -501,7 +501,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             }
         }
 
-        public override IRuleModel CloneRuleModel(ILayerElementFactory2 factory)
+        public override IRuleModel CloneRuleModel(ILayerElementFactory factory)
         {
             var clone = factory.CreateDefaultCompositeRule();
             clone.Filter = _rule.Filter;

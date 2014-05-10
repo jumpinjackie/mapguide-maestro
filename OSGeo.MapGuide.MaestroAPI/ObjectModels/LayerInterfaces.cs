@@ -362,14 +362,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// </summary>
         /// <returns></returns>
         IAreaSymbolizationFill CreateDefaultAreaSymbolizationFill();
-    }
 
-    /// <summary>
-    /// Factory interface to assist in creating common layer definition elements. Supports additional cases
-    /// for Advanced Stylization
-    /// </summary>
-    public interface ILayerElementFactory2 : ILayerElementFactory
-    {
         /// <summary>
         /// Clones the given symbolization
         /// </summary>

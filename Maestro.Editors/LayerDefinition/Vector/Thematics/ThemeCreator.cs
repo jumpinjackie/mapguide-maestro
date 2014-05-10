@@ -96,7 +96,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             NUMERIC_TYPES = new Type[] { typeof(byte), typeof(int), typeof(float), typeof(double) };
         }
 
-        private ILayerElementFactory2 _factory;
+        private ILayerElementFactory _factory;
 
         enum ThemeSource
         {
@@ -115,7 +115,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             m_featureClass = classDef;
             m_ruleCollection = style;
             _themeSource = ThemeSource.LayerDefinition;
-            _factory = (ILayerElementFactory2)editor.GetEditedResource();
+            _factory = (ILayerElementFactory)editor.GetEditedResource();
 
             ColorBrewerColorSet.SetCustomRender(new CustomCombo.RenderCustomItem(DrawColorSetPreview));
         }
@@ -912,7 +912,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             return arule;
         }
 
-        private ICompositeRule CreateCompositeRule(ICompositeRule template, ILayerElementFactory2 factory)
+        private ICompositeRule CreateCompositeRule(ICompositeRule template, ILayerElementFactory factory)
         {
             var crule = factory.CreateDefaultCompositeRule();
             if (template.CompositeSymbolization != null)

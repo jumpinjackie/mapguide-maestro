@@ -971,7 +971,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 {
                     Debug.Assert(_style.StyleType != StyleType.Composite);
                     //HACK: Only Maestro knows that all impls of ILayerDefinition also implements ILayerElementFactory2
-                    ILabeledRuleModel clone = lrm.CloneLabeledRuleModel((ILayerElementFactory2)_editedLayer);
+                    ILabeledRuleModel clone = lrm.CloneLabeledRuleModel(_editedLayer);
                     switch (_style.StyleType)
                     {
                         case StyleType.Point:
@@ -993,7 +993,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 {
                     Debug.Assert(_style.StyleType == StyleType.Composite);
                     //HACK: Only Maestro knows that all impls of ILayerDefinition also implements ILayerElementFactory2
-                    IRuleModel clone = rm.CloneRuleModel((ILayerElementFactory2)_editedLayer);
+                    IRuleModel clone = rm.CloneRuleModel(_editedLayer);
                     ((ICompositeTypeStyle)_style).AddCompositeRule((ICompositeRule)clone.UnwrapRule());
                     clone.SetIndex(_style.RuleCount - 1);
                     _rules.Add(clone);
