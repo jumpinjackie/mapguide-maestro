@@ -177,6 +177,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     owner = m_line;
                 else if (m_area != null)
                     owner = m_area;
+                else if (m_comp != null)
+                    owner = m_comp;
+
+                if (owner is ICompositeTypeStyle)
+                {
+                    MessageBox.Show(Strings.CannotCreateThemeForCompositeStyleClassicEditor);
+                    return;
+                }
 
                 ILayerDefinition layer = (ILayerDefinition)m_owner.Editor.GetEditedResource();
                 IVectorLayerDefinition vl = (IVectorLayerDefinition)layer.SubLayer;
@@ -354,6 +362,11 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             };
             Utility.ExplodeThemeIntoFilteredLayers(options, cb);
             return true;
+        }
+
+        internal void SetThemeOffset(int offset)
+        {
+            conditionList.SetThemeOffset(offset);
         }
     }
 }

@@ -124,6 +124,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Theming composite styles with this editor is not supported.
+        /// </summary>
+        internal static string CannotCreateThemeForCompositeStyleClassicEditor {
+            get {
+                return ResourceManager.GetString("CannotCreateThemeForCompositeStyleClassicEditor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating themes from a Composite Rule with a Compound Symbol is not supported.
         /// </summary>
         internal static string CannotCreateThemeFromCompoundSymbolInstance {

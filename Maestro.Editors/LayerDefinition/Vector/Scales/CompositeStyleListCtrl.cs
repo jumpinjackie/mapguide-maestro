@@ -95,6 +95,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                         _controls[style].AddRule();
                 }
 
+                //Update offset
+                if (lstStyles.SelectedIndex >= 0)
+                {
+                    int offset = 0;
+                    for (int i = 0; i < lstStyles.SelectedIndex; i++)
+                    {
+                        var cs = (ICompositeTypeStyle)lstStyles.Items[i];
+                        offset += cs.RuleCount;
+                    }
+                    _controls[style].SetThemeOffset(offset);
+                }
+
                 SetActiveControl(_controls[style]);
             }
         }

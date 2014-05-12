@@ -262,5 +262,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             this.Focus();
         }
 
+
+        internal void SetThemeOffset(int offset)
+        {
+            FeatureStyle.SetThemeOffset(offset);
+        }
     }
 }

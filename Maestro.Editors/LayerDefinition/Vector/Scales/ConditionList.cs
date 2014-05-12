@@ -400,5 +400,16 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             return minHeight;
         }
 
+
+        internal void SetThemeOffset(int offset)
+        {
+            foreach (var c in this.Controls)
+            {
+                var cond = c as Condition;
+                if (cond == null)
+                    continue;
+                cond.SetThemeOffset(offset);
+            }
+        }
     }
 }

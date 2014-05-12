@@ -181,7 +181,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                                                                     80,
                                                                     40,
                                                                     "PNG", //NOXLATE
-                                                                    this.ThemeCategory);
+                                                                    _themeOffset + this.ThemeCategory);
 
             //TODO: This is obviously a mess and could do with some future cleanup, but the idea here should be
             //easy to understand. Each primitive basic style (that's not a label) has 3 actions.
@@ -408,6 +408,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             catch { }
 
             EditButton_Click(sender, e);
+        }
+
+        private int _themeOffset = 0;
+
+        internal void SetThemeOffset(int offset)
+        {
+            _themeOffset = offset;
         }
     }
 }
