@@ -409,7 +409,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 #endif
         }
 
-
         public ICompositeTypeStyle CreateDefaultCompositeStyle()
         {
 #if LDF_100

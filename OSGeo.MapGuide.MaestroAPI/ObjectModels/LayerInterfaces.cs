@@ -342,12 +342,14 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <summary>
         /// Creates the default composite rule.
         /// </summary>
+        /// <remarks>This method does not create any composite symbolizations. This is up for the calling method to provide</remarks>
         /// <returns></returns>
         ICompositeRule CreateDefaultCompositeRule();
 
         /// <summary>
-        /// Creates the default composite style.
+        /// Creates a default composite style.
         /// </summary>
+        /// <remarks>This method does not create any composite symbolizations. This is up for the calling method to provide</remarks>
         /// <returns></returns>
         ICompositeTypeStyle CreateDefaultCompositeStyle();
 
@@ -1883,9 +1885,22 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <returns></returns>
         ISymbolInstance CreateInlineCompoundSymbol(ICompoundSymbolDefinition compDef);
 
+        /// <summary>
+        /// Returns the current symbolization as XML
+        /// </summary>
+        /// <returns></returns>
         string ToXml();
 
+        /// <summary>
+        /// Updates this symbolization with the given XML. The given XML must be composite symbolization XML
+        /// </summary>
+        /// <param name="xml"></param>
         void UpdateFromXml(string xml);
+
+        /// <summary>
+        /// Removes all symbol instances
+        /// </summary>
+        void RemoveAllSymbolInstances();
     }
 
     /// <summary>

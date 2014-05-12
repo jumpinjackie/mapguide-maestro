@@ -32,13 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VectorScaleRangeGrid));
             this.geomStyleIcons = new System.Windows.Forms.ImageList(this.components);
             this.TAB_LINES = new System.Windows.Forms.TabPage();
+            this.lineRuleGrid = new Maestro.Editors.LayerDefinition.Vector.GridEditor.RuleGridView();
             this.TAB_AREAS = new System.Windows.Forms.TabPage();
+            this.areaRuleGrid = new Maestro.Editors.LayerDefinition.Vector.GridEditor.RuleGridView();
             this.TAB_POINTS = new System.Windows.Forms.TabPage();
+            this.pointRuleGrid = new Maestro.Editors.LayerDefinition.Vector.GridEditor.RuleGridView();
             this.TAB_COMPOSITE = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lstStyles = new System.Windows.Forms.ListBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.tabGeomStyles = new System.Windows.Forms.TabControl();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,13 +48,15 @@
             this.chkArea = new System.Windows.Forms.CheckBox();
             this.chkLine = new System.Windows.Forms.CheckBox();
             this.chkPoints = new System.Windows.Forms.CheckBox();
-            this.pointRuleGrid = new Maestro.Editors.LayerDefinition.Vector.GridEditor.RuleGridView();
-            this.lineRuleGrid = new Maestro.Editors.LayerDefinition.Vector.GridEditor.RuleGridView();
-            this.areaRuleGrid = new Maestro.Editors.LayerDefinition.Vector.GridEditor.RuleGridView();
+            this.btnAdd = new System.Windows.Forms.ToolStripDropDownButton();
+            this.pointCompositeStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lineCompositeStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.areaPolygonCompositeStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TAB_LINES.SuspendLayout();
             this.TAB_AREAS.SuspendLayout();
             this.TAB_POINTS.SuspendLayout();
             this.TAB_COMPOSITE.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -81,6 +85,15 @@
             this.TAB_LINES.Text = "Lines";
             this.TAB_LINES.UseVisualStyleBackColor = true;
             // 
+            // lineRuleGrid
+            // 
+            this.lineRuleGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lineRuleGrid.Location = new System.Drawing.Point(3, 3);
+            this.lineRuleGrid.Name = "lineRuleGrid";
+            this.lineRuleGrid.Size = new System.Drawing.Size(673, 384);
+            this.lineRuleGrid.TabIndex = 0;
+            this.lineRuleGrid.ThemeIndexOffest = 0;
+            // 
             // TAB_AREAS
             // 
             this.TAB_AREAS.AutoScroll = true;
@@ -94,6 +107,15 @@
             this.TAB_AREAS.Text = "Areas";
             this.TAB_AREAS.UseVisualStyleBackColor = true;
             // 
+            // areaRuleGrid
+            // 
+            this.areaRuleGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.areaRuleGrid.Location = new System.Drawing.Point(3, 3);
+            this.areaRuleGrid.Name = "areaRuleGrid";
+            this.areaRuleGrid.Size = new System.Drawing.Size(673, 384);
+            this.areaRuleGrid.TabIndex = 0;
+            this.areaRuleGrid.ThemeIndexOffest = 0;
+            // 
             // TAB_POINTS
             // 
             this.TAB_POINTS.AutoScroll = true;
@@ -106,6 +128,15 @@
             this.TAB_POINTS.TabIndex = 0;
             this.TAB_POINTS.Text = "Points";
             this.TAB_POINTS.UseVisualStyleBackColor = true;
+            // 
+            // pointRuleGrid
+            // 
+            this.pointRuleGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pointRuleGrid.Location = new System.Drawing.Point(3, 3);
+            this.pointRuleGrid.Name = "pointRuleGrid";
+            this.pointRuleGrid.Size = new System.Drawing.Size(673, 384);
+            this.pointRuleGrid.TabIndex = 0;
+            this.pointRuleGrid.ThemeIndexOffest = 0;
             // 
             // TAB_COMPOSITE
             // 
@@ -156,16 +187,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(161, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Image = global::Maestro.Editors.Properties.Resources.plus_circle;
-            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(49, 22);
-            this.btnAdd.Text = "Add";
-            this.btnAdd.ToolTipText = "Add a Composite Style";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnDelete
             // 
@@ -252,32 +273,42 @@
             this.chkPoints.UseVisualStyleBackColor = true;
             this.chkPoints.CheckedChanged += new System.EventHandler(this.chkPoints_CheckedChanged);
             // 
-            // pointRuleGrid
+            // btnAdd
             // 
-            this.pointRuleGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pointRuleGrid.Location = new System.Drawing.Point(3, 3);
-            this.pointRuleGrid.Name = "pointRuleGrid";
-            this.pointRuleGrid.Size = new System.Drawing.Size(673, 384);
-            this.pointRuleGrid.TabIndex = 0;
-            this.pointRuleGrid.ThemeIndexOffest = 0;
+            this.btnAdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pointCompositeStyleToolStripMenuItem,
+            this.lineCompositeStyleToolStripMenuItem,
+            this.areaPolygonCompositeStyleToolStripMenuItem});
+            this.btnAdd.Image = global::Maestro.Editors.Properties.Resources.plus_circle;
+            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(58, 22);
+            this.btnAdd.Text = "Add";
+            this.btnAdd.ToolTipText = "Add a Composite Style";
             // 
-            // lineRuleGrid
+            // pointCompositeStyleToolStripMenuItem
             // 
-            this.lineRuleGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lineRuleGrid.Location = new System.Drawing.Point(3, 3);
-            this.lineRuleGrid.Name = "lineRuleGrid";
-            this.lineRuleGrid.Size = new System.Drawing.Size(673, 384);
-            this.lineRuleGrid.TabIndex = 0;
-            this.lineRuleGrid.ThemeIndexOffest = 0;
+            this.pointCompositeStyleToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.layer_select_point;
+            this.pointCompositeStyleToolStripMenuItem.Name = "pointCompositeStyleToolStripMenuItem";
+            this.pointCompositeStyleToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.pointCompositeStyleToolStripMenuItem.Text = "Point Composite Style";
+            this.pointCompositeStyleToolStripMenuItem.Click += new System.EventHandler(this.pointCompositeStyleToolStripMenuItem_Click);
             // 
-            // areaRuleGrid
+            // lineCompositeStyleToolStripMenuItem
             // 
-            this.areaRuleGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.areaRuleGrid.Location = new System.Drawing.Point(3, 3);
-            this.areaRuleGrid.Name = "areaRuleGrid";
-            this.areaRuleGrid.Size = new System.Drawing.Size(673, 384);
-            this.areaRuleGrid.TabIndex = 0;
-            this.areaRuleGrid.ThemeIndexOffest = 0;
+            this.lineCompositeStyleToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.layer_shape_line;
+            this.lineCompositeStyleToolStripMenuItem.Name = "lineCompositeStyleToolStripMenuItem";
+            this.lineCompositeStyleToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.lineCompositeStyleToolStripMenuItem.Text = "Line Composite Style";
+            this.lineCompositeStyleToolStripMenuItem.Click += new System.EventHandler(this.lineCompositeStyleToolStripMenuItem_Click);
+            // 
+            // areaPolygonCompositeStyleToolStripMenuItem
+            // 
+            this.areaPolygonCompositeStyleToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.layer_shape_polygon;
+            this.areaPolygonCompositeStyleToolStripMenuItem.Name = "areaPolygonCompositeStyleToolStripMenuItem";
+            this.areaPolygonCompositeStyleToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.areaPolygonCompositeStyleToolStripMenuItem.Text = "Area (Polygon) Composite Style";
+            this.areaPolygonCompositeStyleToolStripMenuItem.Click += new System.EventHandler(this.areaPolygonCompositeStyleToolStripMenuItem_Click);
             // 
             // VectorScaleRangeGrid
             // 
@@ -297,6 +328,7 @@
             this.TAB_COMPOSITE.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -325,7 +357,10 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ListBox lstStyles;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton btnAdd;
         private System.Windows.Forms.ToolStripButton btnDelete;
+        private System.Windows.Forms.ToolStripDropDownButton btnAdd;
+        private System.Windows.Forms.ToolStripMenuItem pointCompositeStyleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lineCompositeStyleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem areaPolygonCompositeStyleToolStripMenuItem;
     }
 }

@@ -19,6 +19,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
@@ -27,6 +28,7 @@ using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.DrawingSource;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
 {
@@ -500,6 +502,276 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
             {
                 style.RemoveCompositeRule(r);
             }
+        }
+
+        /// <summary>
+        /// Defines a parameter for a simple symbol definition
+        /// </summary>
+        /// <param name="simpleSym"></param>
+        /// <param name="identifier"></param>
+        /// <param name="defaultValue"></param>
+        /// <param name="displayName"></param>
+        /// <param name="description"></param>
+        /// <param name="dataType"></param>
+        /// <returns>The defined parameter</returns>
+        public static IParameter DefineParameter(this ISimpleSymbolDefinition simpleSym, string identifier, string defaultValue, string displayName, string description, string dataType)
+        {
+            Check.NotNull(simpleSym, "simpleSym");
+            var p = simpleSym.CreateParameter();
+            p.Identifier = identifier;
+            p.DefaultValue = defaultValue;
+            p.DisplayName = displayName;
+            p.Description = description;
+            p.DataType = dataType;
+            simpleSym.ParameterDefinition.AddParameter(p);
+            return p;
+        }
+
+        /// <summary>
+        /// Adds a parameter override
+        /// </summary>
+        /// <param name="overrides"></param>
+        /// <param name="symbolName"></param>
+        /// <param name="paramName"></param>
+        /// <param name="paramValue"></param>
+        /// <returns>The added parameter override</returns>
+        public static IParameterOverride AddOverride(this IParameterOverrideCollection overrides, string symbolName, string paramName, string paramValue)
+        {
+            Check.NotNull(overrides, "overrides");
+            var ov = overrides.CreateParameterOverride(symbolName, paramName);
+            ov.ParameterValue = paramValue;
+            overrides.AddOverride(ov);
+            return ov;
+        }
+
+        /// <summary>
+        /// Creates a default point composite rule
+        /// </summary>
+        /// <param name="fact"></param>
+        /// <returns></returns>
+        public static ICompositeRule CreateDefaultPointCompositeRule(this ILayerElementFactory fact)
+        {
+            Check.NotNull(fact, "fact");
+            var rule = fact.CreateDefaultCompositeRule();
+            //Clear out existing instances
+            rule.CompositeSymbolization.RemoveAllSymbolInstances();
+            
+            var ldf = (ILayerDefinition)fact;
+            var vl  = (IVectorLayerDefinition)ldf.SubLayer;
+
+            string symbolName = "Square"; //NOXLATE
+
+            var ssym = ObjectFactory.CreateSimpleSymbol(ldf.CurrentConnection, 
+                                                        vl.SymbolDefinitionVersion, 
+                                                        symbolName,
+                                                        "Default Point Symbol"); //NOXLATE
+
+            var square = ssym.CreatePathGraphics();
+            square.Geometry = "M -1.0,-1.0 L 1.0,-1.0 L 1.0,1.0 L -1.0,1.0 L -1.0,-1.0"; //NOXLATE
+            square.FillColor = "%FILLCOLOR%"; //NOXLATE
+            square.LineColor = "%LINECOLOR%"; //NOXLATE
+            square.LineWeight = "%LINEWEIGHT%"; //NOXLATE
+            ssym.AddGraphics(square);
+            
+            ssym.PointUsage = ssym.CreatePointUsage();
+            ssym.PointUsage.Angle = "%ROTATION%"; //NOXLATE
+
+            ssym.DefineParameter("FILLCOLOR", "0xffffffff", "&amp;Fill Color", "Fill Color", "FillColor"); //NOXLATE
+            ssym.DefineParameter("LINECOLOR", "0xff000000", "Line &amp;Color", "Line Color", "LineColor"); //NOXLATE
+            ssym.DefineParameter("LINEWEIGHT", "0.0", "Line &amp; Thickness", "Line Thickness", "LineWeight"); //NOXLATE
+            ssym.DefineParameter("ROTATION", "0.0", "Line &amp; Thickness", "Line Thickness", "Angle"); //NOXLATE
+
+            var instance = rule.CompositeSymbolization.CreateInlineSimpleSymbol(ssym);
+            var overrides = instance.ParameterOverrides;
+
+            overrides.AddOverride(symbolName, "FILLCOLOR", "0xffffffff"); //NOXLATE
+            overrides.AddOverride(symbolName, "LINECOLOR", "0xff000000"); //NOXLATE
+            overrides.AddOverride(symbolName, "LINEWEIGHT", "0.0"); //NOXLATE
+            overrides.AddOverride(symbolName, "ROTATION", "0.0"); //NOXLATE
+
+            instance.AddToExclusionRegion = "true"; //NOXLATE
+            var inst2 = instance as ISymbolInstance2;
+            if (inst2 != null)
+            {
+                inst2.UsageContext = UsageContextType.Point;
+                inst2.GeometryContext = GeometryContextType.Point;
+            }
+
+            rule.CompositeSymbolization.AddSymbolInstance(instance);
+            return rule;
+        }
+
+        /// <summary>
+        /// Creates a default line composite rule
+        /// </summary>
+        /// <param name="fact"></param>
+        /// <returns></returns>
+        public static ICompositeRule CreateDefaultLineCompositeRule(this ILayerElementFactory fact)
+        {
+            Check.NotNull(fact, "fact");
+            var rule = fact.CreateDefaultCompositeRule();
+            //Clear out existing instances
+            rule.CompositeSymbolization.RemoveAllSymbolInstances();
+
+            var ldf = (ILayerDefinition)fact;
+            var vl = (IVectorLayerDefinition)ldf.SubLayer;
+
+            string symbolName = "Solid Line"; //NOXLATE
+
+            var ssym = ObjectFactory.CreateSimpleSymbol(ldf.CurrentConnection,
+                                                        vl.SymbolDefinitionVersion,
+                                                        symbolName,
+                                                        "Default Line Symbol"); //NOXLATE
+
+            var line = ssym.CreatePathGraphics();
+            line.Geometry = "M 0.0,0.0 L 1.0,0.0"; //NOXLATE
+            line.LineColor = "%LINECOLOR%"; //NOXLATE
+            line.LineWeight = "%LINEWEIGHT%"; //NOXLATE
+            line.LineWeightScalable = "true"; //NOXLATE
+            ssym.AddGraphics(line);
+
+            ssym.LineUsage = ssym.CreateLineUsage();
+            ssym.LineUsage.Repeat = "1.0";
+
+            ssym.DefineParameter("LINECOLOR", "0xff000000", "Line &amp;Color", "Line Color", "LineColor"); //NOXLATE
+            ssym.DefineParameter("LINEWEIGHT", "0.0", "Line &amp; Thickness", "Line Thickness", "LineWeight"); //NOXLATE
+
+            var instance = rule.CompositeSymbolization.CreateInlineSimpleSymbol(ssym);
+            var overrides = instance.ParameterOverrides;
+
+            overrides.AddOverride(symbolName, "LINECOLOR", "0xff000000"); //NOXLATE
+            overrides.AddOverride(symbolName, "LINEWEIGHT", "0.0"); //NOXLATE
+
+            var inst2 = instance as ISymbolInstance2;
+            if (inst2 != null)
+            {
+                inst2.UsageContext = UsageContextType.Line;
+                inst2.GeometryContext = GeometryContextType.LineString;
+            }
+
+            rule.CompositeSymbolization.AddSymbolInstance(instance);
+            return rule;
+        }
+
+        /// <summary>
+        /// Creates a default area composite rule
+        /// </summary>
+        /// <param name="fact"></param>
+        /// <returns></returns>
+        public static ICompositeRule CreateDefaultAreaCompositeRule(this ILayerElementFactory fact)
+        {
+            Check.NotNull(fact, "fact");
+            var rule = fact.CreateDefaultCompositeRule();
+            //Clear out existing instances
+            rule.CompositeSymbolization.RemoveAllSymbolInstances();
+
+            var ldf = (ILayerDefinition)fact;
+            var vl = (IVectorLayerDefinition)ldf.SubLayer;
+
+            string fillSymbolName = "Solid Fill"; //NOXLATE
+            var fillSym = ObjectFactory.CreateSimpleSymbol(ldf.CurrentConnection,
+                                                           vl.SymbolDefinitionVersion,
+                                                           fillSymbolName,
+                                                           "Default Area Symbol"); //NOXLATE
+
+            var fill = fillSym.CreatePathGraphics();
+            fill.Geometry = "M 0.0,0.0 h 100.0 v 100.0 h -100.0 z";
+            fill.FillColor = "%FILLCOLOR%";
+            fillSym.AddGraphics(fill);
+
+            fillSym.AreaUsage = fillSym.CreateAreaUsage();
+            fillSym.AreaUsage.RepeatX = "100.0"; //NOXLATE
+            fillSym.AreaUsage.RepeatY = "100.0"; //NOXLATE
+
+            fillSym.DefineParameter("FILLCOLOR", "0xffbfbfbf", "&amp;Fill Color", "Fill Color", "FillColor"); //NOXLATE
+
+            var fillInstance = rule.CompositeSymbolization.CreateInlineSimpleSymbol(fillSym);
+            var fillOverrides = fillInstance.ParameterOverrides;
+
+            var fillInst2 = fillInstance as ISymbolInstance2;
+            if (fillInst2 != null)
+            {
+                fillInst2.GeometryContext = GeometryContextType.Polygon;
+            }
+
+            fillOverrides.AddOverride(fillSymbolName, "FILLCOLOR", "0xffbfbfbf");
+
+            string lineSymbolName = "Solid Line"; //NOXLATE
+            var lineSym = ObjectFactory.CreateSimpleSymbol(ldf.CurrentConnection,
+                                                           vl.SymbolDefinitionVersion,
+                                                           lineSymbolName,
+                                                           "Default Line Symbol"); //NOXLATE
+
+            var line = lineSym.CreatePathGraphics();
+            line.Geometry = "M 0.0,0.0 L 1.0,0.0"; //NOXLATE
+            line.LineColor = "%LINECOLOR%"; //NOXLATE
+            line.LineWeight = "%LINEWEIGHT%"; //NOXLATE
+            line.LineWeightScalable = "false"; //NOXLATE
+            lineSym.AddGraphics(line);
+
+            lineSym.LineUsage = lineSym.CreateLineUsage();
+            lineSym.LineUsage.Repeat = "1.0";
+
+            lineSym.DefineParameter("LINECOLOR", "0xff000000", "Line &amp;Color", "Line Color", "LineColor"); //NOXLATE
+            lineSym.DefineParameter("LINEWEIGHT", "0.0", "Line &amp; Thickness", "Line Thickness", "LineWeight"); //NOXLATE
+
+            var lineInstance = rule.CompositeSymbolization.CreateInlineSimpleSymbol(lineSym);
+            var lineOverrides = lineInstance.ParameterOverrides;
+
+            lineOverrides.AddOverride(lineSymbolName, "LINECOLOR", "0xff000000"); //NOXLATE
+            lineOverrides.AddOverride(lineSymbolName, "LINEWEIGHT", "0.0"); //NOXLATE
+
+            var lineInst2 = lineInstance as ISymbolInstance2;
+            if (lineInst2 != null)
+            {
+                lineInst2.GeometryContext = GeometryContextType.Polygon;
+            }
+
+            rule.CompositeSymbolization.AddSymbolInstance(fillInstance);
+            rule.CompositeSymbolization.AddSymbolInstance(lineInstance);
+            return rule;
+        }
+
+        /// <summary>
+        /// Creates a default point composite style
+        /// </summary>
+        /// <param name="fact"></param>
+        /// <returns></returns>
+        public static ICompositeTypeStyle CreateDefaultPointCompositeStyle(this ILayerElementFactory fact)
+        {
+            Check.NotNull(fact, "fact");
+            var style = fact.CreateDefaultCompositeStyle();
+            style.RemoveAllRules();
+            style.AddCompositeRule(fact.CreateDefaultPointCompositeRule());
+            return style;
+        }
+
+        /// <summary>
+        /// Creates a default line composite style
+        /// </summary>
+        /// <param name="fact"></param>
+        /// <returns></returns>
+        public static ICompositeTypeStyle CreateDefaultLineCompositeStyle(this ILayerElementFactory fact)
+        {
+            Check.NotNull(fact, "fact");
+            var style = fact.CreateDefaultCompositeStyle();
+            style.RemoveAllRules();
+            style.AddCompositeRule(fact.CreateDefaultLineCompositeRule());
+            return style;
+        }
+
+        /// <summary>
+        /// Creates a default area composite style
+        /// </summary>
+        /// <param name="fact"></param>
+        /// <returns></returns>
+        public static ICompositeTypeStyle CreateDefaultAreaCompositeStyle(this ILayerElementFactory fact)
+        {
+            Check.NotNull(fact, "fact");
+            var style = fact.CreateDefaultCompositeStyle();
+            style.RemoveAllRules();
+            style.AddCompositeRule(fact.CreateDefaultAreaCompositeRule());
+            return style;
         }
     }
 }

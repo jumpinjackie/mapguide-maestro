@@ -1527,9 +1527,39 @@ namespace Maestro.Editors.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap layer_select_point {
+            get {
+                object obj = ResourceManager.GetObject("layer-select-point", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap layer_shape_curve {
             get {
                 object obj = ResourceManager.GetObject("layer-shape-curve", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap layer_shape_line {
+            get {
+                object obj = ResourceManager.GetObject("layer-shape-line", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap layer_shape_polygon {
+            get {
+                object obj = ResourceManager.GetObject("layer-shape-polygon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

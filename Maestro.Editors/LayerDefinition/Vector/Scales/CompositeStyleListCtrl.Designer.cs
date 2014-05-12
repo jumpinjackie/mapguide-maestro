@@ -32,8 +32,12 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lstStyles = new System.Windows.Forms.ListBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnAdd = new System.Windows.Forms.ToolStripButton();
+            this.btnAdd = new System.Windows.Forms.ToolStripDropDownButton();
+            this.pointCompositeStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lineCompositeStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.areaPolygonCompositeStyleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -68,10 +72,34 @@
             // 
             // btnAdd
             // 
+            this.btnAdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pointCompositeStyleToolStripMenuItem,
+            this.lineCompositeStyleToolStripMenuItem,
+            this.areaPolygonCompositeStyleToolStripMenuItem});
             this.btnAdd.Image = global::Maestro.Editors.Properties.Resources.plus_circle;
             resources.ApplyResources(this.btnAdd, "btnAdd");
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // pointCompositeStyleToolStripMenuItem
+            // 
+            this.pointCompositeStyleToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.layer_select_point;
+            this.pointCompositeStyleToolStripMenuItem.Name = "pointCompositeStyleToolStripMenuItem";
+            resources.ApplyResources(this.pointCompositeStyleToolStripMenuItem, "pointCompositeStyleToolStripMenuItem");
+            this.pointCompositeStyleToolStripMenuItem.Click += new System.EventHandler(this.pointCompositeStyleToolStripMenuItem_Click);
+            // 
+            // lineCompositeStyleToolStripMenuItem
+            // 
+            this.lineCompositeStyleToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.layer_shape_line;
+            this.lineCompositeStyleToolStripMenuItem.Name = "lineCompositeStyleToolStripMenuItem";
+            resources.ApplyResources(this.lineCompositeStyleToolStripMenuItem, "lineCompositeStyleToolStripMenuItem");
+            this.lineCompositeStyleToolStripMenuItem.Click += new System.EventHandler(this.lineCompositeStyleToolStripMenuItem_Click);
+            // 
+            // areaPolygonCompositeStyleToolStripMenuItem
+            // 
+            this.areaPolygonCompositeStyleToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.layer_shape_polygon;
+            this.areaPolygonCompositeStyleToolStripMenuItem.Name = "areaPolygonCompositeStyleToolStripMenuItem";
+            resources.ApplyResources(this.areaPolygonCompositeStyleToolStripMenuItem, "areaPolygonCompositeStyleToolStripMenuItem");
+            this.areaPolygonCompositeStyleToolStripMenuItem.Click += new System.EventHandler(this.areaPolygonCompositeStyleToolStripMenuItem_Click);
             // 
             // btnDelete
             // 
@@ -88,6 +116,7 @@
             this.Name = "CompositeStyleListCtrl";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -100,7 +129,10 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ListBox lstStyles;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton btnAdd;
         private System.Windows.Forms.ToolStripButton btnDelete;
+        private System.Windows.Forms.ToolStripDropDownButton btnAdd;
+        private System.Windows.Forms.ToolStripMenuItem pointCompositeStyleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lineCompositeStyleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem areaPolygonCompositeStyleToolStripMenuItem;
     }
 }

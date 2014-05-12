@@ -153,11 +153,29 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>0, 0</value>
   </metadata>
+  <data name="pointCompositeStyleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 22</value>
+  </data>
+  <data name="pointCompositeStyleToolStripMenuItem.Text" xml:space="preserve">
+    <value>Point Composite Style</value>
+  </data>
+  <data name="lineCompositeStyleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 22</value>
+  </data>
+  <data name="lineCompositeStyleToolStripMenuItem.Text" xml:space="preserve">
+    <value>Line Composite Style</value>
+  </data>
+  <data name="areaPolygonCompositeStyleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 22</value>
+  </data>
+  <data name="areaPolygonCompositeStyleToolStripMenuItem.Text" xml:space="preserve">
+    <value>Area (Polygon) Composite Style</value>
+  </data>
   <data name="btnAdd.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
   <data name="btnAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 22</value>
+    <value>58, 22</value>
   </data>
   <data name="btnAdd.Text" xml:space="preserve">
     <value>Add</value>
@@ -262,7 +280,25 @@
     <value>btnAdd</value>
   </data>
   <data name="&gt;&gt;btnAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.ToolStripDropDownButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pointCompositeStyleToolStripMenuItem.Name" xml:space="preserve">
+    <value>pointCompositeStyleToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;pointCompositeStyleToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lineCompositeStyleToolStripMenuItem.Name" xml:space="preserve">
+    <value>lineCompositeStyleToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;lineCompositeStyleToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;areaPolygonCompositeStyleToolStripMenuItem.Name" xml:space="preserve">
+    <value>areaPolygonCompositeStyleToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;areaPolygonCompositeStyleToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnDelete.Name" xml:space="preserve">
     <value>btnDelete</value>

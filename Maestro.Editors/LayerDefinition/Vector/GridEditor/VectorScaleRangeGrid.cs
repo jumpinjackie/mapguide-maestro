@@ -295,5 +295,38 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             activeGrid.Dock = DockStyle.Fill;
             splitContainer1.Panel2.Controls.Add(activeGrid);
         }
+
+        private void pointCompositeStyleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var vsr2 = _vsr as IVectorScaleRange2;
+            if (vsr2 != null)
+            {
+                _cts.Add(_editedLayer.CreateDefaultPointCompositeStyle());
+                vsr2.CompositeStyle = _cts;
+                _parent.RaiseResourceChanged();
+            }
+        }
+
+        private void lineCompositeStyleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var vsr2 = _vsr as IVectorScaleRange2;
+            if (vsr2 != null)
+            {
+                _cts.Add(_editedLayer.CreateDefaultLineCompositeStyle());
+                vsr2.CompositeStyle = _cts;
+                _parent.RaiseResourceChanged();
+            }
+        }
+
+        private void areaPolygonCompositeStyleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var vsr2 = _vsr as IVectorScaleRange2;
+            if (vsr2 != null)
+            {
+                _cts.Add(_editedLayer.CreateDefaultAreaCompositeStyle());
+                vsr2.CompositeStyle = _cts;
+                _parent.RaiseResourceChanged();
+            }
+        }
     }
 }

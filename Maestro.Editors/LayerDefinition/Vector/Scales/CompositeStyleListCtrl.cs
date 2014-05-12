@@ -106,13 +106,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             splitContainer1.Panel2.Controls.Add(conditionListButtons);
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            _styles.Add(this.Factory.CreateDefaultCompositeStyle());
-            _parent.CompositeStyle = _styles;
-            this.Owner.RaiseResourceChanged();
-        }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             var style = lstStyles.SelectedItem as ICompositeTypeStyle;
@@ -123,6 +116,27 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 splitContainer1.Panel2.Controls.Clear();
                 this.Owner.RaiseResourceChanged();
             }
+        }
+
+        private void pointCompositeStyleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _styles.Add(this.Factory.CreateDefaultPointCompositeStyle());
+            _parent.CompositeStyle = _styles;
+            this.Owner.RaiseResourceChanged();
+        }
+
+        private void lineCompositeStyleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _styles.Add(this.Factory.CreateDefaultLineCompositeStyle());
+            _parent.CompositeStyle = _styles;
+            this.Owner.RaiseResourceChanged();
+        }
+
+        private void areaPolygonCompositeStyleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _styles.Add(this.Factory.CreateDefaultAreaCompositeStyle());
+            _parent.CompositeStyle = _styles;
+            this.Owner.RaiseResourceChanged();
         }
     }
 }

@@ -2081,6 +2081,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 this.SymbolInstance.Remove(sym);
         }
 
+        public void RemoveAllSymbolInstances()
+        {
+            this.SymbolInstance.Clear();
+        }
+
         public ISymbolInstance CreateSymbolReference(string resourceId)
         {
             return new SymbolInstance()
