@@ -571,7 +571,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                                                                     80,
                                                                     40,
                                                                     "PNG", //NOXLATE
-                                                                    rule.Index);
+                                                                    this.ThemeIndexOffest + rule.Index);
 
             //TODO: This is obviously a mess and could do with some future cleanup, but the idea here should be
             //easy to understand. Each primitive basic style (that's not a label) has 3 actions.
