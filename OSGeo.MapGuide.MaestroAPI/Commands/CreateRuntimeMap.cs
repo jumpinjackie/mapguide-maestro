@@ -26,7 +26,7 @@ using System.Text;
 namespace OSGeo.MapGuide.MaestroAPI.Commands
 {
     /// <summary>
-    /// Create a runtime map from the 
+    /// A command that creates a runtime map from the given Map Definition
     /// </summary>
     public interface ICreateRuntimeMap : ICommand
     {

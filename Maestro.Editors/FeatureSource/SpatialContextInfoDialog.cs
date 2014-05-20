@@ -30,6 +30,9 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.FeatureSource
 {
+    /// <summary>
+    /// A dialog that displays spatial context information
+    /// </summary>
     public partial class SpatialContextInfoDialog : Form
     {
         private SpatialContextInfoDialog()
@@ -37,6 +40,10 @@ namespace Maestro.Editors.FeatureSource
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Creates a new instance of SpatialContextInfoDialog
+        /// </summary>
+        /// <param name="sc">The spatial context to display</param>
         public SpatialContextInfoDialog(IFdoSpatialContext sc) 
             : this()
         {

@@ -677,26 +677,26 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     }
 
     /// <summary>
-    /// A parameter definition
+    /// Represents a set of parameter definitions
     /// </summary>
     public interface IParameterDefinition
     {
         /// <summary>
-        /// Gets the parameters.
+        /// Gets the parameters in this collection
         /// </summary>
         /// <value>The parameters.</value>
         IEnumerable<IParameter> Parameter { get; }
 
         /// <summary>
-        /// Adds the parameter.
+        /// Adds a parameter to this collection
         /// </summary>
-        /// <param name="param">The param.</param>
+        /// <param name="param">The parameter.</param>
         void AddParameter(IParameter param);
 
         /// <summary>
-        /// Removes the parameter.
+        /// Removes the given parameter from this collection
         /// </summary>
-        /// <param name="param">The param.</param>
+        /// <param name="param">The parameter.</param>
         void RemoveParameter(IParameter param);
     }
 

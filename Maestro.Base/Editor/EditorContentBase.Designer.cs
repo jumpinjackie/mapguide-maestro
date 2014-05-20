@@ -104,6 +104,9 @@
         private System.Windows.Forms.Panel upgradePanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnUpgrade;
+        /// <summary>
+        /// The panel body
+        /// </summary>
         protected System.Windows.Forms.Panel panelBody;
         private System.Windows.Forms.Panel sessionRestartPanel;
         private System.Windows.Forms.Label label2;

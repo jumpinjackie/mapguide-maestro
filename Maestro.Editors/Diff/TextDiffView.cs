@@ -127,6 +127,11 @@ namespace Maestro.Editors.Diff
             }
         }
 
+        /// <summary>
+        /// Sets the labels of the left and right sides of the comparison
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
         public void SetLabels(string left, string right)
         {
             lblLeft.Text = left;

@@ -24,8 +24,14 @@ using System.Text;
 
 namespace Maestro.Editors.Generic
 {
+    /// <summary>
+    /// Global XML editor settings
+    /// </summary>
     public static class XmlEditorSettings
     {
+        /// <summary>
+        /// The XML schema path
+        /// </summary>
         public static string XsdPath { get; set; }
     }
 }

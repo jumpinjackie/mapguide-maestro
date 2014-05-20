@@ -6722,13 +6722,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0 {
                 return this.lowChannelField;
             }
             set {
-                if ((this.lowChannelField != null)) {
-                    if ((lowChannelField.Equals(value) != true)) {
-                        this.lowChannelField = value;
-                        this.OnPropertyChanged("LowChannel");
-                    }
-                }
-                else {
+                if ((lowChannelField.Equals(value) != true))
+                {
                     this.lowChannelField = value;
                     this.OnPropertyChanged("LowChannel");
                 }
@@ -6741,13 +6736,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0 {
                 return this.highChannelField;
             }
             set {
-                if ((this.highChannelField != null)) {
-                    if ((highChannelField.Equals(value) != true)) {
-                        this.highChannelField = value;
-                        this.OnPropertyChanged("HighChannel");
-                    }
-                }
-                else {
+                if ((highChannelField.Equals(value) != true))
+                {
                     this.highChannelField = value;
                     this.OnPropertyChanged("HighChannel");
                 }

@@ -78,6 +78,7 @@ namespace Maestro.Editors.Preview
         /// </summary>
         /// <param name="res">The resource to be previewed</param>
         /// <param name="edSvc">The editor service</param>
+        /// <param name="locale">The locale to use if launching a viewer-based preview</param>
         public void Preview(IResource res, IEditorService edSvc, string locale)
         {
             //TODO: Prompt for symbol parameters if there are any, as these can affect the rendered output

@@ -164,6 +164,9 @@ namespace Maestro.Editors.Common
             }
         }
 
+        /// <summary>
+        /// Raised when an item is dragged
+        /// </summary>
         public event ItemDragEventHandler ItemDrag;
 
         private void trvRepository_ItemDrag(object sender, ItemDragEventArgs e)

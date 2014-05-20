@@ -97,13 +97,23 @@ namespace Maestro.Base.UI
         event RepositoryItemEventHandler ItemsSelected;
     }
 
+    /// <summary>
+    /// An EventArgs that carries RepositoryItem instances
+    /// </summary>
     public class RepositoryItemEventArgs : EventArgs
     {
+        /// <summary>
+        /// Creates a new instance of RepositoryItemEventArgs
+        /// </summary>
+        /// <param name="items"></param>
         public RepositoryItemEventArgs(RepositoryItem[] items)
         {
             this.Items = items;
         }
 
+        /// <summary>
+        /// Gets the affected site explorer items
+        /// </summary>
         public RepositoryItem[] Items { get; private set; }
     }
 

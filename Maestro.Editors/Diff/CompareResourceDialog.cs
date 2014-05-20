@@ -33,6 +33,9 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.Diff
 {
+    /// <summary>
+    /// A dialog that lets the user pick two resources for XML content comparison
+    /// </summary>
     public partial class CompareResourceDialog : Form
     {
         private CompareResourceDialog()
@@ -42,18 +45,28 @@ namespace Maestro.Editors.Diff
 
         private IResourceService _resSvc;
 
+        /// <summary>
+        /// Creates a new instance of CompareResourceDialog
+        /// </summary>
+        /// <param name="resSvc">The resource service</param>
         public CompareResourceDialog(IResourceService resSvc)
             : this()
         {
             _resSvc = resSvc;
         }
 
+        /// <summary>
+        /// Gets the source resource
+        /// </summary>
         public string Source
         {
             get { return txtSource.Text; }
             set { txtSource.Text = value; }
         }
 
+        /// <summary>
+        /// Gets the target resource
+        /// </summary>
         public string Target
         {
             get { return txtTarget.Text; }

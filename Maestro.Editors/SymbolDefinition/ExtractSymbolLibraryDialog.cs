@@ -32,6 +32,10 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.SymbolDefinition
 {
+    /// <summary>
+    /// A dialog that allows a user to select a list of symbols to extract from a
+    /// SymbolLibrary into image-based Symbol Definition resources
+    /// </summary>
     public partial class ExtractSymbolLibraryDialog : Form
     {
         private ExtractSymbolLibraryDialog()
@@ -41,12 +45,21 @@ namespace Maestro.Editors.SymbolDefinition
 
         private IServerConnection _conn;
 
+        /// <summary>
+        /// Creates a new instance of ExtractSymbolLibraryDialog
+        /// </summary>
+        /// <param name="conn">The connection</param>
         public ExtractSymbolLibraryDialog(IServerConnection conn)
             : this()
         {
             _conn = conn;
         }
 
+        /// <summary>
+        /// Creates a new instance of ExtractSymbolLibraryDialog
+        /// </summary>
+        /// <param name="conn">The connection</param>
+        /// <param name="symbolLibId">The symbol library resource id</param>
         public ExtractSymbolLibraryDialog(IServerConnection conn, string symbolLibId)
             : this(conn)
         {

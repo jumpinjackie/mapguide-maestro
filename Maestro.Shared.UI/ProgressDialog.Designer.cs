@@ -83,6 +83,6 @@ namespace Maestro.Shared.UI
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.ComponentModel.BackgroundWorker BackgroundWorker;
         private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Button CancelBtn;
+        private System.Windows.Forms.Button CancelBtn;
     }
 }

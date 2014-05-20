@@ -61,6 +61,9 @@ namespace Maestro.Base.Services
         public string ConnectionName { get; set; }
     }
 
+    /// <summary>
+    /// An EventArgs that carries the name of a connection
+    /// </summary>
     public class ServerConnectionEventArgs : EventArgs
     {
         /// <summary>

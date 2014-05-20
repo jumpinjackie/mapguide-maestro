@@ -25,7 +25,12 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 namespace Maestro.Base.Editor
 {
     /// <summary>
-    /// Defines an interface for creating editor views for a given resource
+    /// Defines an interface for creating editor views for a given resource.
+    /// 
+    /// Implementations of this interface that are registered under the /Maestro/Editors path in
+    /// any addin manifest will be automatically loaded by Maestro and be registered to handle
+    /// the opening of any resource whose type and version matches the 
+    /// <see cref="P:Maestro.Base.Editor.IEditorFactory.ResourceTypeAndVersion"/> property
     /// </summary>
     public interface IEditorFactory
     {

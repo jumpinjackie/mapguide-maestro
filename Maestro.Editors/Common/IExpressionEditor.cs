@@ -60,6 +60,11 @@ namespace Maestro.Editors.Common
     /// </summary>
     public interface ITextInserter
     {
+        /// <summary>
+        /// Inserts the specified text. The implementation determines the position/cursor where the
+        /// given text will be inserted at
+        /// </summary>
+        /// <param name="text"></param>
         void InsertText(string text);
     }
 

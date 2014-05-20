@@ -230,13 +230,23 @@ namespace Maestro.Shared.UI
         }
     }
 
+    /// <summary>
+    /// An EventArgs that carries a view instance
+    /// </summary>
     public class ViewEventArgs : EventArgs 
     {
+        /// <summary>
+        /// Creates a new instance of ViewEventArgs
+        /// </summary>
+        /// <param name="content"></param>
         public ViewEventArgs(IViewContent content)
         {
             this.View = content;
         }
 
+        /// <summary>
+        /// The attached view instance
+        /// </summary>
         public IViewContent View { get; private set; }
     }
 

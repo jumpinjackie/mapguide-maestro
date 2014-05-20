@@ -30,6 +30,9 @@ using System.Xml;
 
 namespace Maestro.Editors.Diff
 {
+    /// <summary>
+    /// Represents an XML comparison between a source and target
+    /// </summary>
     public class XmlComparisonSet
     {
         internal XmlComparisonSet(TextFileDiffList source, TextFileDiffList target)
@@ -38,19 +41,28 @@ namespace Maestro.Editors.Diff
             this.Target = target;
         }
 
+        /// <summary>
+        /// Gets the difference list for the source
+        /// </summary>
         public TextFileDiffList Source { get; private set; }
 
+        /// <summary>
+        /// Gets the difference list for the target
+        /// </summary>
         public TextFileDiffList Target { get; private set; }
     }
 
+    /// <summary>
+    /// A helper utility that performs the necessary preparation of two resoures for XML comparison
+    /// </summary>
     public class XmlCompareUtil
     {
         /// <summary>
         /// Prepares the source and target resource content for XML comparison
         /// </summary>
-        /// <param name="resSvc"></param>
-        /// <param name="sourceId"></param>
-        /// <param name="targetId"></param>
+        /// <param name="resSvc">The resource service</param>
+        /// <param name="sourceId">The source resource ID</param>
+        /// <param name="targetId">The target resource ID</param>
         public static XmlComparisonSet PrepareForComparison(IResourceService resSvc, string sourceId, string targetId)
         {
             //Route both source and target XML content through
