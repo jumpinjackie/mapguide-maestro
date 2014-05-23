@@ -19,6 +19,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.MaestroAPI.Resource;
@@ -137,6 +138,18 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     /// </summary>
     public static class SymbolDefExtensions
     {
+        /// <summary>
+        /// Gets the parameter definition for the given identifer
+        /// </summary>
+        /// <param name="sym"></param>
+        /// <param name="identifier"></param>
+        /// <returns></returns>
+        public static IParameter GetParameter(this ISymbolDefinitionBase sym, string identifier)
+        {
+            Check.NotNull(sym, "sym");
+            return sym.GetParameters().FirstOrDefault(x => x.Identifier == identifier);
+        }
+
         /// <summary>
         /// Gets the parameters.
         /// </summary>

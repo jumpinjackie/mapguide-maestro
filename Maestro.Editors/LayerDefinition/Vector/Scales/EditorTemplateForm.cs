@@ -32,7 +32,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         public EditorTemplateForm()
         {
             InitializeComponent();
+            this.ManualSizeManagement = false;
         }
+
+        public bool ManualSizeManagement { get; set; }
 
         public void RefreshSize()
         {
@@ -46,12 +49,19 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private void EditorTemplateForm_Load(object sender, EventArgs e)
         {
-            RefreshSize();
+            if (!this.ManualSizeManagement)
+                RefreshSize();
         }
 
         private void OKBtn_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void CancelBtn_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Close();
         }
     }

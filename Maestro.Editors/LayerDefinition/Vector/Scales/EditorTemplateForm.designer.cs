@@ -49,6 +49,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // OKBtn
             // 
@@ -64,9 +65,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             // 
             // EditorTemplateForm
             // 
-            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.CancelBtn;
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.ItemPanel);
             this.Controls.Add(this.ButtonPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;

@@ -50,10 +50,54 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private IMappingService _mappingSvc;
         private ILayerStylePreviewable _preview;
+        private BindingList<ParameterModel> _params = new BindingList<ParameterModel>();
+
+        class ParameterModel : INotifyPropertyChanged
+        {
+            private IParameterOverride _ov;
+            private IParameter _pdef;
+
+            public ParameterModel(IParameterOverride ov, IParameter pdef)
+            {
+                _ov = ov;
+                _pdef = pdef;
+            }
+
+            [Browsable(false)]
+            public IParameterOverride Override { get { return _ov; } }
+
+            [Browsable(false)]
+            public IParameter Definition { get { return _pdef; } }
+
+            public string Name { get { return _pdef.DisplayName; } }
+
+            public string Type { get { return _pdef.DataType; } }
+
+            public string Value
+            {
+                get
+                {
+                    return _ov.ParameterValue;
+                }
+                set
+                {
+                    if (value != _ov.ParameterValue)
+                    {
+                        _ov.ParameterValue = value;
+                        var h = this.PropertyChanged;
+                        if (h != null)
+                            h(this, new PropertyChangedEventArgs("Value"));
+                    }
+                }
+            }
+
+            public event PropertyChangedEventHandler PropertyChanged;
+        }
 
         public SymbolInstancesDialog(IEditorService edSvc, ICompositeSymbolization comp, ClassDefinition cls, string provider, string featureSourceId, ILayerStylePreviewable prev)
         {
             InitializeComponent();
+            grdOverrides.DataSource = _params;
             _edSvc = edSvc;
             _comp = comp;
 
@@ -182,10 +226,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         {
             var li = new ListViewItem();
             li.Tag = symRef;
+
+            var sym = GetSymbolDefinition(symRef);
             if (li.ImageIndex == 0)
-                li.Text = ((ISymbolInstanceReferenceLibrary)symRef.Reference).ResourceId;
+                li.Text = sym.Name + " (" + ((ISymbolInstanceReferenceLibrary)symRef.Reference).ResourceId + ")";
             else
-                li.Text = Strings.InlineSymbolDefinition;
+                li.Text = sym.Name + " (" + Strings.InlineSymbolDefinition + ")";
 
             lstInstances.Items.Add(li);
             if (add)
@@ -196,7 +242,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private void referenceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            splitContainer1.Panel2.Controls.Clear();
             using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.SymbolDefinition, ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
@@ -255,17 +300,43 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             {
                 var it = lstInstances.SelectedItems[0];
                 ISymbolInstance symRef = (ISymbolInstance)it.Tag;
-                var c = new SymbolInstanceSettingsCtrl();
-                c.SetContent(symRef, _edSvc, _cls, _provider, _featureSourceId);
-                c.Dock = DockStyle.Fill;
-                splitContainer1.Panel2.Controls.Clear();
-                splitContainer1.Panel2.Controls.Add(c);
+                _params.Clear();
+
+                ISymbolDefinitionBase sym = GetSymbolDefinition(symRef);
+
+                //Add existing overrides
+                foreach (var p in symRef.ParameterOverrides.Override)
+                {
+                    IParameter pdef = sym.GetParameter(p.ParameterIdentifier);
+                    var model = new ParameterModel(p, pdef);
+                    _params.Add(model);
+                }
+                //Now add available parameters
+                PopulateAvailableParameters(symRef, sym);
+
                 btnEditInstanceProperties.Enabled = true;
+                btnEditComponent.Enabled = true;
             }
             else
             {
                 btnEditInstanceProperties.Enabled = false;
+                btnEditComponent.Enabled = false;
             }
+        }
+
+        private ISymbolDefinitionBase GetSymbolDefinition(ISymbolInstance symRef)
+        {
+            ISymbolDefinitionBase sym = null;
+            if (symRef.Reference.Type == SymbolInstanceType.Reference)
+            {
+                sym = (ISymbolDefinitionBase)_edSvc.ResourceService.GetResource(((ISymbolInstanceReferenceLibrary)symRef.Reference).ResourceId);
+            }
+            else if (symRef.Reference.Type == SymbolInstanceType.Inline)
+            {
+                var inline = (ISymbolInstanceReferenceInline)symRef.Reference;
+                sym = inline.SymbolDefinition;
+            }
+            return sym;
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -321,6 +392,239 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     AddInstance(sym, false);
                 }
             }
+        }
+
+        private void lnkRefresh_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            RefreshPreviews(true, true);
+        }
+
+        private void btnEditComponent_Click(object sender, EventArgs e)
+        {
+            var it = lstInstances.SelectedItems[0];
+            ISymbolInstance symRef = (ISymbolInstance)it.Tag;
+            var c = CreateSymbolDefinitionEditor(symRef, _edSvc.ResourceService);
+            c.Dock = DockStyle.Fill;
+            using (var ed = new EditorTemplateForm())
+            {
+                ed.Text = Strings.EditSymbolDefinition;
+                ed.ItemPanel.Controls.Add(c);
+                ed.ManualSizeManagement = true;
+                ed.Width = 800;
+                ed.Height = 600;
+                if (ed.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    _edSvc.HasChanged();
+                }
+            }
+        }
+
+        private void PopulateAvailableParameters(ISymbolInstance symRef, ISymbolDefinitionBase symbol)
+        {
+            btnAddProperty.DropDown.Items.Clear();
+            PopulateParameterList(symRef, symbol);
+        }
+
+        private void PopulateParameterList(ISymbolInstance symRef, ISymbolDefinitionBase sym)
+        {
+            foreach (var p in sym.GetParameters())
+            {
+                var param = p;
+                var btn = new ToolStripButton(p.Name, null, (s, e) =>
+                {
+                    AddParameterOverride(symRef, sym, param);
+                });
+                btn.ToolTipText = p.Description;
+                btnAddProperty.DropDown.Items.Insert(0, btn);
+            }
+            btnAddProperty.DropDown.Items.Add(toolStripSeparator1);
+            btnAddProperty.DropDown.Items.Add(refreshToolStripMenuItem);
+        }
+
+        private void AddParameterOverride(ISymbolInstance symRef, ISymbolDefinitionBase sym, IParameter param)
+        {
+            foreach (var p in _params)
+            {
+                if (p.Override.ParameterIdentifier == param.Name)
+                {
+                    MessageBox.Show(Strings.ParameterOverrideExists);
+                    return;
+                }
+            }
+
+            var ov = symRef.ParameterOverrides.CreateParameterOverride(sym.Name, param.Name);
+            ov.SymbolName = sym.Name;
+            ov.ParameterValue = param.DefaultValue;
+
+            var model = new ParameterModel(ov, param);
+            _params.Add(model);
+            symRef.ParameterOverrides.AddOverride(ov);
+            _edSvc.HasChanged();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (grdOverrides.SelectedRows.Count == 1)
+            {
+                var ov = (ParameterModel)grdOverrides.SelectedRows[0].DataBoundItem;
+                string expr = _edSvc.EditExpression(ov.Value, _cls, _provider, _featureSourceId, true);
+                if (expr != null)
+                {
+                    ov.Value = expr;
+                    _edSvc.HasChanged();
+                }
+            }
+        }
+
+        private void btnDeleteProperty_Click(object sender, EventArgs e)
+        {
+            if (grdOverrides.SelectedRows.Count == 1 && lstInstances.SelectedItems.Count == 1)
+            {
+                var it = lstInstances.SelectedItems[0];
+                ISymbolInstance symRef = (ISymbolInstance)it.Tag;
+                var ov = (ParameterModel)grdOverrides.SelectedRows[0].DataBoundItem;
+                _params.Remove(ov);
+                symRef.ParameterOverrides.RemoveOverride(ov.Override);
+                _edSvc.HasChanged();
+            }
+        }
+
+        private void btnPropertyInfo_Click(object sender, EventArgs e)
+        {
+            if (grdOverrides.SelectedRows.Count == 1)
+            {
+                var ov = (ParameterModel)grdOverrides.SelectedRows[0].DataBoundItem;
+                string text = string.Format(Strings.PropertyInfo,
+                    Environment.NewLine,
+                    ov.Definition.Name,
+                    ov.Definition.Identifier,
+                    ov.Definition.Description,
+                    ov.Definition.DataType,
+                    ov.Definition.DefaultValue);
+                MessageBox.Show(text);
+            }
+        }
+
+        private void refreshToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lstInstances.SelectedItems.Count == 1)
+            {
+                var it = lstInstances.SelectedItems[0];
+                ISymbolInstance symRef = (ISymbolInstance)it.Tag;
+                PopulateAvailableParameters(symRef, GetSymbolDefinition(symRef));
+            }
+        }
+
+        private void grdOverrides_SelectionChanged(object sender, EventArgs e)
+        {
+            btnPropertyInfo.Enabled = btnEditProperty.Enabled = btnDeleteProperty.Enabled = (grdOverrides.SelectedRows.Count == 1);
+        }
+
+        private Control CreateSymbolDefinitionEditor(ISymbolInstance symRef, IResourceService resSvc)
+        {
+            Check.NotNull(symRef, "symRef"); //NOXLATE
+            if (symRef.Reference.Type == SymbolInstanceType.Reference)
+            {
+                return new ReferenceCtrl((ISymbolInstanceReferenceLibrary)symRef.Reference, resSvc);
+            }
+            else
+            {
+                var inline = (ISymbolInstanceReferenceInline)symRef.Reference;
+                var symEditor = new SymbolEditorService(_edSvc, inline.SymbolDefinition);
+                if (inline.SymbolDefinition.Type == SymbolDefinitionType.Simple)
+                {
+                    var sed = new SimpleSymbolDefinitionEditorCtrl();
+                    sed.Bind(symEditor);
+                    return sed;
+                }
+                else
+                {
+                    var sed = new CompoundSymbolDefinitionEditorCtrl();
+                    sed.Bind(symEditor);
+                    return sed;
+                }
+            }
+        }
+
+        private void solidFillToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var res = (ILayerDefinition)_edSvc.GetEditedResource();
+            var vl = (IVectorLayerDefinition)res.SubLayer;
+            if (vl.SymbolDefinitionVersion == null)
+                throw new InvalidOperationException(Strings.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
+            var ssym = ObjectFactory.CreateSimpleSolidFill(_edSvc.GetEditedResource().CurrentConnection,
+                                                           vl.SymbolDefinitionVersion);
+
+            var instance = _comp.CreateInlineSimpleSymbol(ssym);
+            AddInstance(instance, true);
+        }
+
+        private void lineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var res = (ILayerDefinition)_edSvc.GetEditedResource();
+            var vl = (IVectorLayerDefinition)res.SubLayer;
+            if (vl.SymbolDefinitionVersion == null)
+                throw new InvalidOperationException(Strings.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
+            var ssym = ObjectFactory.CreateSimpleSolidLine(_edSvc.GetEditedResource().CurrentConnection,
+                                                           vl.SymbolDefinitionVersion);
+
+            var instance = _comp.CreateInlineSimpleSymbol(ssym);
+            AddInstance(instance, true);
+        }
+
+        private void textLabelPointToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var res = (ILayerDefinition)_edSvc.GetEditedResource();
+            var vl = (IVectorLayerDefinition)res.SubLayer;
+            if (vl.SymbolDefinitionVersion == null)
+                throw new InvalidOperationException(Strings.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
+            var ssym = ObjectFactory.CreateSimpleLabel(_edSvc.GetEditedResource().CurrentConnection,
+                                                       vl.SymbolDefinitionVersion, 
+                                                       GeometryContextType.Point);
+
+            var instance = _comp.CreateInlineSimpleSymbol(ssym);
+            AddInstance(instance, true);
+        }
+
+        private void textLabelLineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var res = (ILayerDefinition)_edSvc.GetEditedResource();
+            var vl = (IVectorLayerDefinition)res.SubLayer;
+            if (vl.SymbolDefinitionVersion == null)
+                throw new InvalidOperationException(Strings.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
+            var ssym = ObjectFactory.CreateSimpleLabel(_edSvc.GetEditedResource().CurrentConnection,
+                                                       vl.SymbolDefinitionVersion,
+                                                       GeometryContextType.LineString);
+
+            var instance = _comp.CreateInlineSimpleSymbol(ssym);
+            AddInstance(instance, true);
+        }
+
+        private void textLabelPolygonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var res = (ILayerDefinition)_edSvc.GetEditedResource();
+            var vl = (IVectorLayerDefinition)res.SubLayer;
+            if (vl.SymbolDefinitionVersion == null)
+                throw new InvalidOperationException(Strings.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
+            var ssym = ObjectFactory.CreateSimpleLabel(_edSvc.GetEditedResource().CurrentConnection,
+                                                       vl.SymbolDefinitionVersion,
+                                                       GeometryContextType.Polygon);
+
+            var instance = _comp.CreateInlineSimpleSymbol(ssym);
+            AddInstance(instance, true);
+        }
+
+        private void pointToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var res = (ILayerDefinition)_edSvc.GetEditedResource();
+            var vl = (IVectorLayerDefinition)res.SubLayer;
+            if (vl.SymbolDefinitionVersion == null)
+                throw new InvalidOperationException(Strings.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
+            var ssym = ObjectFactory.CreateSimplePoint(_edSvc.GetEditedResource().CurrentConnection,
+                                                       vl.SymbolDefinitionVersion);
+
+            var instance = _comp.CreateInlineSimpleSymbol(ssym);
+            AddInstance(instance, true);
         }
     }
 }

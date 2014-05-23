@@ -538,6 +538,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Symbol Definition.
+        /// </summary>
+        internal static string EditSymbolDefinition {
+            get {
+                return ResourceManager.GetString("EditSymbolDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Watermark Instance.
         /// </summary>
         internal static string EditWatermarkInstance {
@@ -2172,6 +2181,15 @@ namespace Maestro.Editors {
         internal static string PropEnumNoValues {
             get {
                 return ResourceManager.GetString("PropEnumNoValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name: {1}{0}Identifier: {2}{0}Description: {3}{0}Type: {4}{0}Default Value: {5}.
+        /// </summary>
+        internal static string PropertyInfo {
+            get {
+                return ResourceManager.GetString("PropertyInfo", resourceCulture);
             }
         }
         

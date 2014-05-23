@@ -1611,4 +1611,10 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="CannotCreateThemeForCompositeStyleClassicEditor" xml:space="preserve">
     <value>Theming composite styles with this editor is not supported</value>
   </data>
+  <data name="EditSymbolDefinition" xml:space="preserve">
+    <value>Edit Symbol Definition</value>
+  </data>
+  <data name="PropertyInfo" xml:space="preserve">
+    <value>Name: {1}{0}Identifier: {2}{0}Description: {3}{0}Type: {4}{0}Default Value: {5}</value>
+  </data>
 </root>

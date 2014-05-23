@@ -471,6 +471,218 @@ namespace OSGeo.MapGuide.ObjectModels
         }
 
         /// <summary>
+        /// Creates a simple label symbol
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="version"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static ISimpleSymbolDefinition CreateSimpleLabel(IServerConnection owner, Version version, GeometryContextType type)
+        {
+            var sym = CreateSimpleSymbol(owner, version, "MTEXT", "Default MTEXT Symbol");
+            var text = sym.CreateTextGraphics();
+            text.Content = "%CONTENT%";
+            text.FontName = "%FONTNAME%";
+            text.Bold = "%BOLD%";
+            text.Italic = "%ITALIC%";
+            text.Underlined = "%UNDERLINED%";
+            var text2 = text as ITextGraphic2;
+            if (text2 != null)
+            {
+                text2.Overlined = "%OVERLINED%";
+            }
+            text.Height = "%FONTHEIGHT%";
+            text.PositionX = "%StyleEditorGenerated_TextPositionX_0%";
+            text.PositionY = "%StyleEditorGenerated_TextPositionY_0%";
+            text.HorizontalAlignment = "%HORIZONTALALIGNMENT%";
+            text.VerticalAlignment = "%VERTICALALIGNMENT%";
+            text.Justification = "%JUSTIFICATION%";
+            text.LineSpacing = "%LINESPACING%";
+            text.TextColor = "%TEXTCOLOR%";
+            text.GhostColor = "%GHOSTCOLOR%";
+            var frame = sym.CreateFrame();
+            frame.LineColor = "%FRAMELINECOLOR%";
+            frame.FillColor = "%FRAMEFILLCOLOR%";
+            frame.OffsetX = 0.0;
+            frame.OffsetY = 0.0;
+            text.Frame = frame;
+            if (text2 != null)
+            {
+                text2.Markup = "'MTEXT'";
+            }
+
+            sym.AddGraphics(text);
+            switch (type)
+            {
+                case GeometryContextType.LineString:
+                    {
+                        var usage = sym.CreateLineUsage();
+                        usage.AngleControl = "'FromAngle'";
+                        usage.Angle = "%ROTATION%";
+                        usage.Repeat = "1.0";
+                        sym.LineUsage = usage;
+                    }
+                    break;
+                case GeometryContextType.Polygon:
+                    {
+                        var usage = sym.CreateAreaUsage();
+                        usage.Angle = "%ROTATION%";
+                        usage.RepeatX = "100.0";
+                        usage.RepeatY = "100.0";
+                        sym.AreaUsage = usage;
+                    }
+                    break;
+                case GeometryContextType.Point:
+                    {
+                        var usage = sym.CreatePointUsage();
+                        usage.Angle = "%ANGLE%";
+                        sym.PointUsage = usage;
+                    }
+                    break;
+            }
+
+            sym.DefineParameter("CONTENT", "'text'", "T&amp;ext", "Text", "Content");
+            sym.DefineParameter("FONTNAME", "'Arial'", "&amp;Font Name", "Font Name", "FontName");
+            sym.DefineParameter("FONTHEIGHT", "4.0", "Font &amp;Size", "Font Size", "FontHeight");
+            sym.DefineParameter("BOLD", "false", "Bold", "Bold", "Bold");
+            sym.DefineParameter("ITALIC", "false", "Italic", "Italic", "Italic");
+            sym.DefineParameter("UNDERLINED", "false", "Underlined", "Underlined", "Underlined");
+            if (text2 != null)
+            {
+                sym.DefineParameter("OVERLINED", "false", "Overlined", "Overlined", "Overlined");
+            }
+            sym.DefineParameter("JUSTIFICATION", "'FromAlignment'", "Justification", "Justification", "Justification");
+            sym.DefineParameter("LINESPACING", "1.05", "Line Spacing", "Line Spacing", "LineSpacing");
+            sym.DefineParameter("GHOSTCOLOR", "", "Ghost Color", "Ghost Color", "GhostColor");
+            sym.DefineParameter("FRAMELINECOLOR", "", "Frame Line Color", "Frame Line Color", "FrameLineColor");
+            sym.DefineParameter("FRAMEFILLCOLOR", "", "Frame Fill Color", "Frame Fill Color", "FrameFillColor");
+            sym.DefineParameter("TEXTCOLOR", "0xff000000", "Text Color", "Text Color", "TextColor");
+            sym.DefineParameter("VERTICALALIGNMENT", "'Halfline'", "&amp;Vertical Alignment", "Vertical Alignment", "VerticalAlignment");
+            sym.DefineParameter("ROTATION", "0.0", "&amp;Rotation", "Rotation", "Angle");
+            sym.DefineParameter("HORIZONTALALIGNMENT", "'Center'", "Hori&amp;zontal Alignment", "Horizontal Alignment", "HorizontalAlignment");
+            sym.DefineParameter("StyleEditorGenerated_TextPositionX_0", "0.0", "PositionX", "PositionX", "Real");
+            sym.DefineParameter("StyleEditorGenerated_TextPositionY_0", "0.0", "PositionY", "PositionY", "Real");
+
+            return sym;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="version"></param>
+        /// <returns></returns>
+        public static ISimpleSymbolDefinition CreateSimplePoint(IServerConnection owner, Version version)
+        {
+            var sym = CreateSimpleSymbol(owner, version, "Square", "Default Point Symbol");
+            var path = sym.CreatePathGraphics();
+            path.Geometry = "M -1.0,-1.0 L 1.0,-1.0 L 1.0,1.0 L -1.0,1.0 L -1.0,-1.0";
+            IPathGraphic2 path2 = path as IPathGraphic2;
+            if (path2 != null)
+            {
+                path2.ScaleX = "%StyleEditorGenerated_ScaleX_0%";
+                path2.ScaleY = "%StyleEditorGenerated_ScaleY_0%";
+            }
+            path.FillColor = "%FILLCOLOR%";
+            path.LineColor = "%LINECOLOR%";
+            path.LineWeight = "%LINEWEIGHT%";
+            path.LineCap = "%StyleEditorGenerated_LineCap_0%";
+            path.LineJoin = "%StyleEditorGenerated_LineJoin_0%";
+
+            var usage = sym.CreatePointUsage();
+            usage.Angle = "%ROTATION%";
+            sym.PointUsage = usage;
+
+            sym.DefineParameter("FILLCOLOR", "0xffffffff", "&amp;Fill Color", "Fill Color", "FillColor");
+            sym.DefineParameter("LINECOLOR", "0xff000000", "Line &amp;Color", "Line Color", "LineColor");
+            sym.DefineParameter("LINEWEIGHT", "0.0", "Line &amp;Thickness", "Line Thickness", "LineWeight");
+            sym.DefineParameter("ROTATION", "0.0", "&amp;Rotation", "Rotation", "Angle");
+            if (path2 != null)
+            {
+                sym.DefineParameter("StyleEditorGenerated_ScaleX_0", "1.0", "Path ScaleX", "Path ScaleX", "Real");
+                sym.DefineParameter("StyleEditorGenerated_ScaleY_0", "1.0", "Path ScaleY", "Path ScaleY", "Real");
+            }
+            sym.DefineParameter("StyleEditorGenerated_LineCap_0", "'Round'", "Line Cap", "The cap type to use at the ends of each segment in the path outline.  This must evaluate to one of: None, Round (default), Triangle, or Square.", "String");
+            sym.DefineParameter("StyleEditorGenerated_LineJoin_0", "'Round'", "Line Join", "The join type to use at each vertex in the path outline.  This must evaluate to one of: None, Bevel, Round (default), or Miter.", "String");
+            return sym;
+        }
+
+        /// <summary>
+        /// Creates a simple solid line symbol
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="version"></param>
+        /// <returns></returns>
+        public static ISimpleSymbolDefinition CreateSimpleSolidLine(IServerConnection owner, Version version)
+        {
+            var sym = CreateSimpleSymbol(owner, version, "Solid Line", "Default Line Symbol");
+            var path = sym.CreatePathGraphics();
+            path.Geometry = "M 0.0,0.0 L 1.0,0.0";
+            path.LineColor = "%LINECOLOR%";
+            path.LineWeight = "%LINEWEIGHT%";
+            path.LineCap = "%StyleEditorGenerated_LineCap_0%";
+            path.LineJoin = "%StyleEditorGenerated_LineJoin_0%";
+            IPathGraphic2 path2 = path as IPathGraphic2;
+            if (path2 != null)
+            {
+                path2.ScaleX = "%StyleEditorGenerated_ScaleX_0%";
+                path2.ScaleY = "%StyleEditorGenerated_ScaleY_0%";
+            }
+            sym.AddGraphics(path);
+            var lineUsage = sym.CreateLineUsage();
+            lineUsage.Repeat = "1.0";
+            sym.LineUsage = lineUsage;
+
+            sym.DefineParameter("LINECOLOR", "0xff000000", "Line &amp;Color", "Line Color", "LineColor");
+            sym.DefineParameter("LINEWEIGHT", "0.0", "Line &amp;Thickness", "Line Thickness", "LineWeight");
+            if (path2 != null)
+            {
+                sym.DefineParameter("StyleEditorGenerated_ScaleX_0", "1.0", "Path ScaleX", "Path ScaleX", "Real");
+                sym.DefineParameter("StyleEditorGenerated_ScaleY_0", "1.0", "Path ScaleY", "Path ScaleY", "Real");
+            }
+            sym.DefineParameter("StyleEditorGenerated_LineCap_0", "'Round'", "Line Cap", "The cap type to use at the ends of each segment in the path outline.  This must evaluate to one of: None, Round (default), Triangle, or Square.", "String");
+            sym.DefineParameter("StyleEditorGenerated_LineJoin_0", "'Round'", "Line Join", "The join type to use at each vertex in the path outline.  This must evaluate to one of: None, Bevel, Round (default), or Miter.", "String");
+            return sym;
+        }
+
+        /// <summary>
+        /// Creates a simple solid fill symbol
+        /// </summary>
+        /// <param name="owner"></param>
+        /// <param name="version"></param>
+        /// <returns></returns>
+        public static ISimpleSymbolDefinition CreateSimpleSolidFill(IServerConnection owner, Version version)
+        {
+            var sym = CreateSimpleSymbol(owner, version, "Solid Fill", "Default Area Symbol");
+            var path = sym.CreatePathGraphics();
+            path.Geometry = "M 0.0,0.0 h 100.0 v 100.0 h -100.0 z";
+            path.FillColor = "%FILLCOLOR%";
+            path.LineCap = "%StyleEditorGenerated_LineCap_0%";
+            path.LineJoin = "%StyleEditorGenerated_LineJoin_0%";
+            IPathGraphic2 path2 = path as IPathGraphic2;
+            if (path2 != null)
+            {
+                path2.ScaleX = "%StyleEditorGenerated_ScaleX_0%";
+                path2.ScaleY = "%StyleEditorGenerated_ScaleY_0%";
+            }
+            sym.AddGraphics(path);
+            var areaUsage = sym.CreateAreaUsage();
+            areaUsage.RepeatX = "100.0";
+            areaUsage.RepeatY = "100.0";
+            sym.AreaUsage = areaUsage;
+
+            sym.DefineParameter("FILLCOLOR", "0xffbfbfbf", "&amp;Fill Color", "Fill Color", "FillColor");
+            if (path2 != null)
+            {
+                sym.DefineParameter("StyleEditorGenerated_ScaleX_0", "1.0", "Path ScaleX", "Path ScaleX", "Real");
+                sym.DefineParameter("StyleEditorGenerated_ScaleY_0", "1.0", "Path ScaleY", "Path ScaleY", "Real");
+            }
+            sym.DefineParameter("StyleEditorGenerated_LineCap_0", "'Round'", "Line Cap", "The cap type to use at the ends of each segment in the path outline.  This must evaluate to one of: None, Round (default), Triangle, or Square.", "String");
+            sym.DefineParameter("StyleEditorGenerated_LineJoin_0", "'Round'", "Line Join", "The join type to use at each vertex in the path outline.  This must evaluate to one of: None, Bevel, Round (default), or Miter.", "String");
+            return sym;
+        }
+
+        /// <summary>
         /// Creates a simple symbol definition.
         /// </summary>
         /// <param name="owner">The owner.</param>

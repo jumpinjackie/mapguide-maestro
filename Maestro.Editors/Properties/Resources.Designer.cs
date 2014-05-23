@@ -1497,6 +1497,16 @@ namespace Maestro.Editors.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap information {
+            get {
+                object obj = ResourceManager.GetObject("information", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap layer {
             get {
                 object obj = ResourceManager.GetObject("layer", resourceCulture);
@@ -1527,9 +1537,29 @@ namespace Maestro.Editors.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap layer_select {
+            get {
+                object obj = ResourceManager.GetObject("layer-select", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap layer_select_point {
             get {
                 object obj = ResourceManager.GetObject("layer-select-point", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap layer_shape {
+            get {
+                object obj = ResourceManager.GetObject("layer-shape", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1560,6 +1590,16 @@ namespace Maestro.Editors.Properties {
         internal static System.Drawing.Bitmap layer_shape_polygon {
             get {
                 object obj = ResourceManager.GetObject("layer-shape-polygon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap layer_small {
+            get {
+                object obj = ResourceManager.GetObject("layer-small", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

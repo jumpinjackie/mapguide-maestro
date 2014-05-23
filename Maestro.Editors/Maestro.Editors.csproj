@@ -759,12 +759,6 @@
     <Compile Include="LayerDefinition\Vector\Scales\SymbolInstancesDialog.Designer.cs">
       <DependentUpon>SymbolInstancesDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="LayerDefinition\Vector\Scales\SymbolInstanceSettingsCtrl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="LayerDefinition\Vector\Scales\SymbolInstanceSettingsCtrl.Designer.cs">
-      <DependentUpon>SymbolInstanceSettingsCtrl.cs</DependentUpon>
-    </Compile>
     <Compile Include="LayerDefinition\Vector\Scales\VectorScaleRangeCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1651,9 +1645,6 @@
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\SymbolInstancesDialog.resx">
       <DependentUpon>SymbolInstancesDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LayerDefinition\Vector\Scales\SymbolInstanceSettingsCtrl.resx">
-      <DependentUpon>SymbolInstanceSettingsCtrl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\VectorScaleRangeCtrl.resx">
       <DependentUpon>VectorScaleRangeCtrl.cs</DependentUpon>
     </EmbeddedResource>
@@ -2403,6 +2394,10 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\layer-small.png" />
+    <None Include="Resources\layer-select.png" />
+    <None Include="Resources\layer-shape.png" />
+    <None Include="Resources\information.png" />
     <None Include="Resources\layer-shape-polygon.png" />
     <None Include="Resources\layer-shape-line.png" />
     <None Include="Resources\layer-select-point.png" />
