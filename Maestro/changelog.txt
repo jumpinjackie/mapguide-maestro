@@ -1,4 +1,16 @@
-﻿6.0a1
+﻿ - MgCooker changes
+    - Removed non-official tile generation method
+    - Removed username/password/native connection options in UI. Replaced with provider/connection string
+ - Added support for adding default point/line/area composite styles in Layer Definition Editor
+ - Added support for including downward dependencies in the "Compile Full Dependency List" command
+ - Added specialized builder support for LOOKUP() and RANGE() expression functions in Expression Editor
+ - Added support for customizing border colors when theming
+ - Improve the usability of the Composite Symbolization dialog
+ - Fix: Negative index exception in grid-based editor when selecting row header
+ - Fix: XML diff false positives
+ - Fix: Wrong previews in Composite Symbolization dialog when multiple composite styles defined
+
+6.0a1
 -----
 
  - New grid-based style editor. All layers will use this editor unless you un-tick "Use grid-based style editor" in the options
