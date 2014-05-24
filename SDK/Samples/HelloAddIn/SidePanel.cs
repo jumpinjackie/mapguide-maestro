@@ -33,13 +33,13 @@ namespace HelloAddIn
         {
             base.OnLoad(e);
             _siteExplorer = Workbench.Instance.ActiveSiteExplorer;
-            _siteExplorer.ItemsSelected += new RepositoryItemEventHandler(OnItemsSelected);
+            _siteExplorer.ItemsSelected += OnItemsSelected;
             CheckButtonState(new RepositoryItem[0]);
         }
 
-        void OnItemsSelected(object sender, RepositoryItem[] items)
+        void OnItemsSelected(object sender, RepositoryItemEventArgs e)
         {
-            CheckButtonState(items);
+            CheckButtonState(e.Items);
         }
 
         private void CheckButtonState(RepositoryItem[] items)

@@ -67,12 +67,18 @@ namespace QueryFeatureSource
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            ClearGrid();
+        }
+
+        private void ClearGrid()
+        {
             grdResults.Rows.Clear();
             grdResults.Columns.Clear();
         }
 
         private void btnQuery_Click(object sender, EventArgs e)
         {
+            ClearGrid();
             //This method does the actual query
             IFeatureReader reader = null;
 

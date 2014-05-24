@@ -56,7 +56,7 @@ There are many ways to package and deploy your add-in:
 
 Method #1 is okay as long as <your maestro directory> is not under Program Files as this directory is extremely locked down in Windows Vista and newer (due to UAC). If you installed Maestro via the Windows installer, then this is not a viable method of deployment. Uninstallation is a case of deleting this addin directory
 
-Method #2 is the preferred method as such addins will be installed to a safe location that is UAC compatible (addins are generally installed to: %APPDATA%\Maestro-5.0)
+Method #2 is the preferred method as such addins will be installed to a safe location that is UAC compatible (addins are generally installed to: %APPDATA%\Maestro-6.0)
 
 AddIn installations and uninstallations via Maestro's AddIn Manager require a restart to take effect
 
