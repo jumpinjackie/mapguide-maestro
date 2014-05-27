@@ -181,6 +181,34 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
+        /// Parses a color in HTML notation (ea. #ffaabbff)
+        /// </summary>
+        /// <param name="color">The HTML representation of the color</param>
+        /// <returns>The .Net color structure that matches the color</returns>
+        public static Color ParseHTMLColorARGB(string color)
+        {
+            if (color.Length == 8)
+            {
+                int a = int.Parse(color.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+                int r = int.Parse(color.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+                int g = int.Parse(color.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+                int b = int.Parse(color.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
+
+                return Color.FromArgb(a, r, g, b);
+            }
+            else if (color.Length == 6)
+            {
+                int r = int.Parse(color.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+                int g = int.Parse(color.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+                int b = int.Parse(color.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+
+                return Color.FromArgb(r, g, b);
+            }
+            else
+                throw new Exception(string.Format(Strings.ErrorBadHtmlColor, color));
+        }
+
+        /// <summary>
         /// Returns the HTML ARGB representation of an .Net color structure
         /// </summary>
         /// <param name="color">The color to encode</param>
@@ -211,6 +239,23 @@ namespace OSGeo.MapGuide.MaestroAPI
             res += color.B.ToString("x02"); //NOXLATE
             if (includeAlpha)
                 res += color.A.ToString("x02"); //NOXLATE
+            return res;
+        }
+
+        /// <summary>
+        /// Returns the HTML ARGB representation of an .Net color structure
+        /// </summary>
+        /// <param name="color">The color to encode</param>
+        /// <param name="includeAlpha">A flag indicating if the color structures alpha value should be included</param>
+        /// <returns>The HTML representation of the color structure</returns>
+        public static string SerializeHTMLColorARGB(Color color, bool includeAlpha)
+        {
+            string res = string.Empty;
+            if (includeAlpha)
+                res += color.A.ToString("x02"); //NOXLATE
+            res += color.R.ToString("x02"); //NOXLATE
+            res += color.G.ToString("x02"); //NOXLATE
+            res += color.B.ToString("x02"); //NOXLATE
             return res;
         }
 

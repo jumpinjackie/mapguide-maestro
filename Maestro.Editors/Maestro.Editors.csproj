@@ -759,6 +759,18 @@
     <Compile Include="LayerDefinition\Vector\Scales\SymbolInstancesDialog.Designer.cs">
       <DependentUpon>SymbolInstancesDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\SymbolParamEditors\BooleanEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\SymbolParamEditors\BooleanEditor.Designer.cs">
+      <DependentUpon>BooleanEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\SymbolParamEditors\NumberEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LayerDefinition\Vector\Scales\SymbolParamEditors\NumberEditor.Designer.cs">
+      <DependentUpon>NumberEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="LayerDefinition\Vector\Scales\VectorScaleRangeCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1645,6 +1657,12 @@
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\SymbolInstancesDialog.resx">
       <DependentUpon>SymbolInstancesDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\Scales\SymbolParamEditors\BooleanEditor.resx">
+      <DependentUpon>BooleanEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LayerDefinition\Vector\Scales\SymbolParamEditors\NumberEditor.resx">
+      <DependentUpon>NumberEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LayerDefinition\Vector\Scales\VectorScaleRangeCtrl.resx">
       <DependentUpon>VectorScaleRangeCtrl.cs</DependentUpon>
     </EmbeddedResource>
@@ -2394,6 +2412,7 @@
     <Content Include="OdbcDriverMap.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\application-form.png" />
     <None Include="Resources\layer-small.png" />
     <None Include="Resources\layer-select.png" />
     <None Include="Resources\layer-shape.png" />

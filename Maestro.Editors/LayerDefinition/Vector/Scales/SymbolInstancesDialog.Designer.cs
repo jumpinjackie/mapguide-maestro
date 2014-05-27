@@ -41,14 +41,15 @@
             this.inlineSymbolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.solidFillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.inlineSimpleSymbolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textLabelPointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textLabelLineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textLabelPolygonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.inlineSimpleSymbolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnEditInstanceProperties = new System.Windows.Forms.ToolStripButton();
             this.btnEditComponent = new System.Windows.Forms.ToolStripButton();
             this.grpProperties = new System.Windows.Forms.GroupBox();
             this.grdOverrides = new System.Windows.Forms.DataGridView();
@@ -56,14 +57,15 @@
             this.btnAddProperty = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnEditProperty = new System.Windows.Forms.ToolStripButton();
+            this.btnEditProperty = new System.Windows.Forms.ToolStripDropDownButton();
+            this.viaEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viaExpressionEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDeleteProperty = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnPropertyInfo = new System.Windows.Forms.ToolStripButton();
             this.grpPreview = new System.Windows.Forms.GroupBox();
             this.lnkRefresh = new System.Windows.Forms.LinkLabel();
             this.symPreview = new System.Windows.Forms.PictureBox();
-            this.btnEditInstanceProperties = new System.Windows.Forms.Button();
             this.btnEditAsXml = new System.Windows.Forms.Button();
             this.grpComponents.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -113,6 +115,7 @@
             this.btnAdd,
             this.btnDelete,
             this.toolStripSeparator2,
+            this.btnEditInstanceProperties,
             this.btnEditComponent});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
@@ -170,17 +173,12 @@
             resources.ApplyResources(this.lineToolStripMenuItem, "lineToolStripMenuItem");
             this.lineToolStripMenuItem.Click += new System.EventHandler(this.lineToolStripMenuItem_Click);
             // 
-            // toolStripSeparator4
+            // pointToolStripMenuItem
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
-            // 
-            // inlineSimpleSymbolToolStripMenuItem
-            // 
-            this.inlineSimpleSymbolToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.marker;
-            this.inlineSimpleSymbolToolStripMenuItem.Name = "inlineSimpleSymbolToolStripMenuItem";
-            resources.ApplyResources(this.inlineSimpleSymbolToolStripMenuItem, "inlineSimpleSymbolToolStripMenuItem");
-            this.inlineSimpleSymbolToolStripMenuItem.Click += new System.EventHandler(this.inlineSimpleSymbolToolStripMenuItem_Click);
+            this.pointToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.layer_small;
+            this.pointToolStripMenuItem.Name = "pointToolStripMenuItem";
+            resources.ApplyResources(this.pointToolStripMenuItem, "pointToolStripMenuItem");
+            this.pointToolStripMenuItem.Click += new System.EventHandler(this.pointToolStripMenuItem_Click);
             // 
             // textLabelPointToolStripMenuItem
             // 
@@ -203,12 +201,17 @@
             resources.ApplyResources(this.textLabelPolygonToolStripMenuItem, "textLabelPolygonToolStripMenuItem");
             this.textLabelPolygonToolStripMenuItem.Click += new System.EventHandler(this.textLabelPolygonToolStripMenuItem_Click);
             // 
-            // pointToolStripMenuItem
+            // toolStripSeparator4
             // 
-            this.pointToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.layer_small;
-            this.pointToolStripMenuItem.Name = "pointToolStripMenuItem";
-            resources.ApplyResources(this.pointToolStripMenuItem, "pointToolStripMenuItem");
-            this.pointToolStripMenuItem.Click += new System.EventHandler(this.pointToolStripMenuItem_Click);
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
+            // 
+            // inlineSimpleSymbolToolStripMenuItem
+            // 
+            this.inlineSimpleSymbolToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.marker;
+            this.inlineSimpleSymbolToolStripMenuItem.Name = "inlineSimpleSymbolToolStripMenuItem";
+            resources.ApplyResources(this.inlineSimpleSymbolToolStripMenuItem, "inlineSimpleSymbolToolStripMenuItem");
+            this.inlineSimpleSymbolToolStripMenuItem.Click += new System.EventHandler(this.inlineSimpleSymbolToolStripMenuItem_Click);
             // 
             // btnDelete
             // 
@@ -221,6 +224,13 @@
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            // 
+            // btnEditInstanceProperties
+            // 
+            resources.ApplyResources(this.btnEditInstanceProperties, "btnEditInstanceProperties");
+            this.btnEditInstanceProperties.Image = global::Maestro.Editors.Properties.Resources.document__pencil;
+            this.btnEditInstanceProperties.Name = "btnEditInstanceProperties";
+            this.btnEditInstanceProperties.Click += new System.EventHandler(this.btnEditInstanceProperties_Click);
             // 
             // btnEditComponent
             // 
@@ -243,6 +253,7 @@
             this.grdOverrides.AllowUserToDeleteRows = false;
             this.grdOverrides.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             resources.ApplyResources(this.grdOverrides, "grdOverrides");
+            this.grdOverrides.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.grdOverrides.Name = "grdOverrides";
             this.grdOverrides.SelectionChanged += new System.EventHandler(this.grdOverrides_SelectionChanged);
             // 
@@ -279,10 +290,26 @@
             // 
             // btnEditProperty
             // 
+            this.btnEditProperty.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viaEditorToolStripMenuItem,
+            this.viaExpressionEditorToolStripMenuItem});
             resources.ApplyResources(this.btnEditProperty, "btnEditProperty");
             this.btnEditProperty.Image = global::Maestro.Editors.Properties.Resources.document__pencil;
             this.btnEditProperty.Name = "btnEditProperty";
-            this.btnEditProperty.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // viaEditorToolStripMenuItem
+            // 
+            this.viaEditorToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.application_form;
+            this.viaEditorToolStripMenuItem.Name = "viaEditorToolStripMenuItem";
+            resources.ApplyResources(this.viaEditorToolStripMenuItem, "viaEditorToolStripMenuItem");
+            this.viaEditorToolStripMenuItem.Click += new System.EventHandler(this.viaEditorToolStripMenuItem_Click);
+            // 
+            // viaExpressionEditorToolStripMenuItem
+            // 
+            this.viaExpressionEditorToolStripMenuItem.Image = global::Maestro.Editors.Properties.Resources.sum;
+            this.viaExpressionEditorToolStripMenuItem.Name = "viaExpressionEditorToolStripMenuItem";
+            resources.ApplyResources(this.viaExpressionEditorToolStripMenuItem, "viaExpressionEditorToolStripMenuItem");
+            this.viaExpressionEditorToolStripMenuItem.Click += new System.EventHandler(this.viaExpressionEditorToolStripMenuItem_Click);
             // 
             // btnDeleteProperty
             // 
@@ -325,13 +352,6 @@
             this.symPreview.TabStop = false;
             this.symPreview.Paint += new System.Windows.Forms.PaintEventHandler(this.previewPicture_Paint);
             // 
-            // btnEditInstanceProperties
-            // 
-            resources.ApplyResources(this.btnEditInstanceProperties, "btnEditInstanceProperties");
-            this.btnEditInstanceProperties.Name = "btnEditInstanceProperties";
-            this.btnEditInstanceProperties.UseVisualStyleBackColor = true;
-            this.btnEditInstanceProperties.Click += new System.EventHandler(this.btnEditInstanceProperties_Click);
-            // 
             // btnEditAsXml
             // 
             resources.ApplyResources(this.btnEditAsXml, "btnEditAsXml");
@@ -347,7 +367,6 @@
             this.Controls.Add(this.grpProperties);
             this.Controls.Add(this.grpPreview);
             this.Controls.Add(this.btnEditAsXml);
-            this.Controls.Add(this.btnEditInstanceProperties);
             this.Controls.Add(this.grpComponents);
             this.Controls.Add(this.btnClose);
             this.Name = "SymbolInstancesDialog";
@@ -380,7 +399,6 @@
         private System.Windows.Forms.ImageList imgPreviews;
         private System.Windows.Forms.GroupBox grpPreview;
         private System.Windows.Forms.PictureBox symPreview;
-        private System.Windows.Forms.Button btnEditInstanceProperties;
         private System.Windows.Forms.Button btnEditAsXml;
         private System.Windows.Forms.LinkLabel lnkRefresh;
         private System.Windows.Forms.GroupBox grpProperties;
@@ -389,7 +407,6 @@
         private System.Windows.Forms.ToolStripDropDownButton btnAddProperty;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton btnEditProperty;
         private System.Windows.Forms.ToolStripButton btnDeleteProperty;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnEditComponent;
@@ -404,5 +421,9 @@
         private System.Windows.Forms.ToolStripMenuItem textLabelLineToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem textLabelPolygonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pointToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton btnEditInstanceProperties;
+        private System.Windows.Forms.ToolStripDropDownButton btnEditProperty;
+        private System.Windows.Forms.ToolStripMenuItem viaEditorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viaExpressionEditorToolStripMenuItem;
     }
 }

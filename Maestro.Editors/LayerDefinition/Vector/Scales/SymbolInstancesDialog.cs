@@ -36,6 +36,9 @@ using OSGeo.MapGuide.MaestroAPI.Services;
 using Maestro.Shared.UI;
 using Maestro.Editors.Preview;
 using System.IO;
+using Maestro.Editors.LayerDefinition.Vector.Scales.SymbolParamEditors;
+using System.Globalization;
+using Maestro.Editors.Common;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
@@ -57,10 +60,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             private IParameterOverride _ov;
             private IParameter _pdef;
 
+            private string _name;
+
             public ParameterModel(IParameterOverride ov, IParameter pdef)
             {
                 _ov = ov;
                 _pdef = pdef;
+                _name = pdef.DisplayName.Replace("&amp;", "");
             }
 
             [Browsable(false)]
@@ -69,7 +75,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             [Browsable(false)]
             public IParameter Definition { get { return _pdef; } }
 
-            public string Name { get { return _pdef.DisplayName; } }
+            public string Name { get { return _name; } }
 
             public string Type { get { return _pdef.DataType; } }
 
@@ -430,7 +436,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             foreach (var p in sym.GetParameters())
             {
                 var param = p;
-                var btn = new ToolStripButton(p.Name, null, (s, e) =>
+                var btn = new ToolStripButton(p.DisplayName.Replace("&amp;", "&"), null, (s, e) =>
                 {
                     AddParameterOverride(symRef, sym, param);
                 });
@@ -462,7 +468,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             _edSvc.HasChanged();
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void viaExpressionEditorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (grdOverrides.SelectedRows.Count == 1)
             {
@@ -474,6 +480,154 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     _edSvc.HasChanged();
                 }
             }
+        }
+
+        private void viaEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (grdOverrides.SelectedRows.Count == 1 && lstInstances.SelectedItems.Count == 1)
+            {
+                var it = lstInstances.SelectedItems[0];
+                ISymbolInstance symRef = (ISymbolInstance)it.Tag;
+                var ov = (ParameterModel)grdOverrides.SelectedRows[0].DataBoundItem;
+                Func<string> editAction = GetParameterEditorAction(ov.Type, ov.Value);
+                if (editAction != null)
+                {
+                    string expr = editAction();
+                    if (expr != null)
+                    {
+                        ov.Value = expr;
+                        _edSvc.HasChanged();
+                    }
+                }
+                else //Fallback to Expression Editor
+                {
+                    string expr = _edSvc.EditExpression(ov.Value, _cls, _provider, _featureSourceId, true);
+                    if (expr != null)
+                    {
+                        ov.Value = expr;
+                        _edSvc.HasChanged();
+                    }
+                }
+            }
+        }
+
+        private Func<string> GetParameterEditorAction(string paramType, string currentValue)
+        {
+            DataType2 dt2;
+            if (Enum.TryParse(paramType, out dt2))
+            {
+                switch (dt2)
+                {
+                    case DataType2.Boolean:
+                    case DataType2.Bold:
+                    case DataType2.Italic:
+                    case DataType2.Overlined:
+                    case DataType2.Underlined:
+                        return () =>
+                        {
+                            using (var ed = new BooleanEditor())
+                            {
+                                bool b = default(bool);
+                                bool.TryParse(currentValue, out b);
+                                ed.SetDataType(dt2, b);
+                                if (ed.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                                {
+                                    return ed.Result ? "true" : "false"; //NOXLATE
+                                }
+                            }
+                            return null;
+                        };
+                    case DataType2.Integer:
+                    case DataType2.Real:
+                    case DataType2.Angle:
+                    case DataType2.EndOffset:
+                    case DataType2.FontHeight:
+                    case DataType2.LineSpacing:
+                    case DataType2.LineWeight:
+                    case DataType2.ObliqueAngle:
+                    case DataType2.RepeatX:
+                    case DataType2.RepeatY:
+                    case DataType2.TrackSpacing:
+                    case DataType2.StartOffset:
+                        return () =>
+                        {
+                            using (var ed = new NumberEditor())
+                            {
+                                decimal d = default(decimal);
+                                decimal.TryParse(currentValue, out d);
+                                ed.SetDataType(dt2, d);
+                                if (ed.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                                {
+                                    decimal result = ed.Value;
+                                    if (dt2 == DataType2.Integer)
+                                        return Convert.ToInt32(result).ToString(CultureInfo.InvariantCulture);
+                                    else
+                                        return Convert.ToDouble(result).ToString(CultureInfo.InvariantCulture);
+                                }
+                            }
+                            return null;
+                        };
+                    case DataType2.Color:
+                    case DataType2.FillColor:
+                    case DataType2.FrameFillColor:
+                    case DataType2.FrameLineColor:
+                    case DataType2.GhostColor:
+                    case DataType2.LineColor:
+                    case DataType2.TextColor:
+                        {
+                            return () =>
+                            {
+                                using (var picker = new ColorPickerDialog())
+                                {
+                                    try
+                                    {
+                                        picker.SelectedColor = Utility.ParseHTMLColorARGB((currentValue ?? "").Replace("0x", ""));
+                                    }
+                                    catch { }
+                                    if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                                    {
+                                        return "0x" + Utility.SerializeHTMLColorARGB(picker.SelectedColor, true);
+                                    }
+                                }
+                                return null;
+                            };
+                        }
+                    case DataType2.Justification:
+                        {
+                            var values = Enum.GetValues(typeof(OSGeo.MapGuide.ObjectModels.SymbolDefinition.Justification));
+                            return GetEnumPicker(dt2, values);
+                        }
+                    case DataType2.HorizontalAlignment:
+                        {
+                            var values = Enum.GetValues(typeof(OSGeo.MapGuide.ObjectModels.SymbolDefinition.HorizontalAlignment));
+                            return GetEnumPicker(dt2, values);
+                        }
+                    case DataType2.VerticalAlignment:
+                        {
+                            var values = Enum.GetValues(typeof(OSGeo.MapGuide.ObjectModels.SymbolDefinition.VerticalAlignment));
+                            return GetEnumPicker(dt2, values);
+                        }
+                }
+            }
+            return null;
+        }
+
+        private Func<string> GetEnumPicker(DataType2 dt2, Array values)
+        {
+            return () =>
+            {
+                var list = new List<string>();
+                foreach (object val in values)
+                {
+                    list.Add(val.ToString());
+                }
+                var item = Maestro.Editors.Common.GenericItemSelectionDialog.SelectItem(null, dt2.ToString(), list.ToArray());
+                if (item != null)
+                {
+                    return "'" + item + "'";
+                }
+                return null;
+            };
         }
 
         private void btnDeleteProperty_Click(object sender, EventArgs e)

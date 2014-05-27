@@ -6,6 +6,14 @@
  - Added specialized builder support for LOOKUP() and RANGE() expression functions in Expression Editor
  - Added support for customizing border colors when theming
  - Improve the usability of the Composite Symbolization dialog
+	- Moved the inline Symbol Definition editor off to a separate dialog
+	- Symbol name now shown along side type for each component symbol in Symbolization Components list
+	- New button to show more information about a selected symbol parameter
+	- "Edit Instance Properties" button moved into Symbolization Components list toolbar
+	- Editing symbol parameter values can now be done via
+		- Editing the cell
+		- Using a specialized editor (that falls back to the Expression Editor if no specialized editor is found)
+		- Using the Expression Editor
  - Fix: Negative index exception in grid-based editor when selecting row header
  - Fix: XML diff false positives
  - Fix: Wrong previews in Composite Symbolization dialog when multiple composite styles defined
