@@ -33,11 +33,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// </summary>
         /// <param name="resType">Type of the res.</param>
         /// <param name="ver">The ver.</param>
-        public ResourceTypeDescriptor(ResourceTypes resType, string ver)
-            : this(resType.ToString(), ver) 
-        { }
-
-        private ResourceTypeDescriptor(string resType, string ver)
+        public ResourceTypeDescriptor(string resType, string ver)
         {
             Check.NotEmpty(resType, "resType"); //NOXLATE
             Check.NotEmpty(ver, "ver"); //NOXLATE

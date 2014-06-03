@@ -38,11 +38,6 @@ namespace Maestro.Base.Services.DragDropHandlers
 
         private string[] extensions = { ".shp" }; //NOXLATE
 
-        public string[] FileExtensions
-        {
-            get { return extensions; }
-        }
-
         public bool HandleDrop(IServerConnection conn, string file, string folderId)
         {
             try
@@ -94,6 +89,11 @@ namespace Maestro.Base.Services.DragDropHandlers
                 ErrorDialog.Show(ex);
                 return false;
             }
+        }
+
+        public bool CanHandleFileExtension(string fileExtension)
+        {
+            return HandlerUtil.ExtensionInList(extensions, fileExtension);
         }
     }
 }

@@ -55,7 +55,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         public bool HasChildren { get { return false; } } //Documents don't have child resources
 
         [XmlIgnore]
-        public ResourceTypes ResourceType { get { return ResourceIdentifier.GetResourceType(this.ResourceId); } }
+        public string ResourceType { get { return ResourceIdentifier.GetResourceTypeAsString(this.ResourceId); } }
 
         [XmlIgnore]
         public bool IsFolder { get { return false; } }
@@ -79,7 +79,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         public bool HasChildren { get { return int.Parse(this.NumberOfDocuments) > 0 || int.Parse(this.NumberOfFolders) > 0; } }
 
         [XmlIgnore]
-        public ResourceTypes ResourceType { get { return ResourceTypes.Folder; } }
+        public string ResourceType { get { return ResourceTypes.Folder.ToString(); } }
 
         [XmlIgnore]
         public bool IsFolder { get { return true; } }

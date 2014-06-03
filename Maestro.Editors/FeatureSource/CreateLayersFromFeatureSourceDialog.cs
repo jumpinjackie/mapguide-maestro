@@ -139,7 +139,7 @@ namespace Maestro.Editors.FeatureSource
 
         private void btnFeatureSource_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_conn.ResourceService, ResourceTypes.FeatureSource, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_conn.ResourceService, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {

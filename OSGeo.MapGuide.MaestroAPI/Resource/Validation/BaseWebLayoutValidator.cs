@@ -54,7 +54,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             if (context.IsAlreadyValidated(resource.ResourceID))
                 return null;
 
-            if (resource.ResourceType != OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout)
+            if (resource.ResourceType != OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout.ToString())
                 return null;
 
             List<ValidationIssue> issues = new List<ValidationIssue>();

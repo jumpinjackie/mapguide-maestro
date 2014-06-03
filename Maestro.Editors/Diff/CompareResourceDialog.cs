@@ -139,7 +139,7 @@ namespace Maestro.Editors.Diff
                 return;
             }
 
-            ResourceTypes resType = ResourceIdentifier.GetResourceType(this.Source);
+            var resType = ResourceIdentifier.GetResourceTypeAsString(this.Source);
 
             using (var picker = new ResourcePicker(_resSvc, resType, ResourcePickerMode.OpenResource))
             {

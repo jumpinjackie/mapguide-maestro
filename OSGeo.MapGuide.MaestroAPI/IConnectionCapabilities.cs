@@ -34,7 +34,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="resourceType"></param>
         /// <returns></returns>
-        Version GetMaxSupportedResourceVersion(ResourceTypes resourceType);
+        Version GetMaxSupportedResourceVersion(string resourceType);
 
         /// <summary>
         /// Indicates whether the current connection can be used between multiple threads

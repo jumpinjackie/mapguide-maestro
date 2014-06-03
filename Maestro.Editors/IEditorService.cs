@@ -92,7 +92,7 @@ namespace Maestro.Editors
         /// </summary>
         /// <param name="resType"></param>
         /// <returns></returns>
-        string SelectResource(ResourceTypes resType);
+        string SelectResource(string resType);
 
         /// <summary>
         /// Invokes a prompt to select a folder

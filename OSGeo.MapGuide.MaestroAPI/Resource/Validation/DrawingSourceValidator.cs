@@ -46,7 +46,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             if (context.IsAlreadyValidated(resource.ResourceID))
                 return null;
 
-            if (resource.ResourceType != ResourceTypes.DrawingSource)
+            if (resource.ResourceType != ResourceTypes.DrawingSource.ToString())
                 return null;
 
             var issues = new List<ValidationIssue>();
@@ -69,7 +69,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <value></value>
         public ResourceTypeDescriptor SupportedResourceAndVersion
         {
-            get { return new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.DrawingSource, "1.0.0"); } //NOXLATE
+            get { return new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.DrawingSource.ToString(), "1.0.0"); } //NOXLATE
         }
     }
 }

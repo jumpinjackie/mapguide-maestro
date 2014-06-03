@@ -44,7 +44,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <returns></returns>
         public ValidationIssue[] Validate(ResourceValidationContext context, IResource resource, bool recurse)
         {
-            if (resource.ResourceType != OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition)
+            if (resource.ResourceType != OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition.ToString())
                 return null;
 
             //TODO: Other items to check for
@@ -198,7 +198,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <value></value>
         public ResourceTypeDescriptor SupportedResourceAndVersion
         {
-            get { return new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition, "1.0.0"); }
+            get { return new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition.ToString(), "1.0.0"); }
         }
     }
 }

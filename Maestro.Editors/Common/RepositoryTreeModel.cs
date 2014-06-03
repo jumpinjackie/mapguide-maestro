@@ -213,15 +213,15 @@ namespace Maestro.Editors.Common
             }
         }
 
-        private HashSet<ResourceTypes> _filteredTypes = new HashSet<ResourceTypes>();
+        private HashSet<string> _filteredTypes = new HashSet<string>();
 
-        public void AddResourceTypeFilter(ResourceTypes rt) { _filteredTypes.Add(rt); }
+        public void AddResourceTypeFilter(string rt) { _filteredTypes.Add(rt); }
 
         public void ClearResourceTypeFilters() { _filteredTypes.Clear(); }
 
         public bool HasFilteredTypes() { return _filteredTypes.Count > 0; }
 
-        public bool IsFilteredType(ResourceTypes rt) { return _filteredTypes.Contains(rt); }
+        public bool IsFilteredType(string rt) { return _filteredTypes.Contains(rt); }
 
         public System.Collections.IEnumerable GetChildren(RepositoryModelItem item)
         {

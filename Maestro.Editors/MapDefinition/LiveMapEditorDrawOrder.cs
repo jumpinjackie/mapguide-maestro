@@ -215,7 +215,7 @@ namespace Maestro.Editors.MapDefinition
             var layer = e.Data.GetData(typeof(RuntimeMapLayer)) as RuntimeMapLayer;
             if (layer != null)
                 e.Effect = DragDropEffects.Move;
-            else if (res != null && ResourceIdentifier.GetResourceType(res.ResourceID) == ResourceTypes.LayerDefinition)
+            else if (res != null && ResourceIdentifier.GetResourceTypeAsString(res.ResourceID) == ResourceTypes.LayerDefinition.ToString())
                 e.Effect = DragDropEffects.Copy;
         }
 
@@ -242,7 +242,7 @@ namespace Maestro.Editors.MapDefinition
                     OnLayerSelected(layer);
                 this.Viewer.RefreshMap();
             }
-            else if (res != null && ResourceIdentifier.GetResourceType(res.ResourceID) == ResourceTypes.LayerDefinition)
+            else if (res != null && ResourceIdentifier.GetResourceTypeAsString(res.ResourceID) == ResourceTypes.LayerDefinition.ToString())
             {
                 var conn = _map.CurrentConnection;
                 var mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);

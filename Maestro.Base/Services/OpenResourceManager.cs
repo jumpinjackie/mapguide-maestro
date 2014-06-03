@@ -121,7 +121,7 @@ namespace Maestro.Base.Services
                 return null;
         }
 
-        private IEditorFactory GetRegisteredEditor(ResourceTypes type, string version)
+        private IEditorFactory GetRegisteredEditor(string type, string version)
         {
             var rtd = new ResourceTypeDescriptor(type, version);
             return GetRegisteredEditor(rtd);

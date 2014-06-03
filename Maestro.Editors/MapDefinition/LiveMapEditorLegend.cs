@@ -111,7 +111,7 @@ namespace Maestro.Editors.MapDefinition
             var map = this.Viewer.GetMap();
             if (map != null)
             {
-                using (var picker = new ResourcePicker(map.CurrentConnection.ResourceService, ResourceTypes.LayerDefinition, ResourcePickerMode.OpenResource))
+                using (var picker = new ResourcePicker(map.CurrentConnection.ResourceService, ResourceTypes.LayerDefinition.ToString(), ResourcePickerMode.OpenResource))
                 {
                     if (picker.ShowDialog() == DialogResult.OK)
                     {
@@ -139,7 +139,7 @@ namespace Maestro.Editors.MapDefinition
                     var grp = node.Tag as GroupNodeMetadata;
                     if (grp != null)
                     {
-                        using (var picker = new ResourcePicker(map.CurrentConnection.ResourceService, ResourceTypes.LayerDefinition, ResourcePickerMode.OpenResource))
+                        using (var picker = new ResourcePicker(map.CurrentConnection.ResourceService, ResourceTypes.LayerDefinition.ToString(), ResourcePickerMode.OpenResource))
                         {
                             if (picker.ShowDialog() == DialogResult.OK)
                             {
@@ -205,7 +205,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void AddLayerDefinition(ResourceDragMessage message, GroupNodeMetadata groupMeta)
         {
-            if (ResourceIdentifier.GetResourceType(message.ResourceID) == ResourceTypes.LayerDefinition)
+            if (ResourceIdentifier.GetResourceTypeAsString(message.ResourceID) == ResourceTypes.LayerDefinition.ToString())
             {
                 var map = this.Viewer.GetMap();
                 var conn = map.CurrentConnection;

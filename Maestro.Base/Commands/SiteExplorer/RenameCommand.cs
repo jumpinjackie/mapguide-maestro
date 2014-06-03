@@ -25,6 +25,7 @@ using Maestro.Base.Services;
 using Maestro.Base.UI;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 
 namespace Maestro.Base.Commands.SiteExplorer
 {
@@ -118,8 +119,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                     
 
                     //Need to refresh the model because it still is called by the old name
-                    var rid = new OSGeo.MapGuide.MaestroAPI.Resource.ResourceIdentifier(oldid);
-                    var folder = rid.ParentFolder;
+                    var folder = ResourceIdentifier.GetParentFolder(oldid, false);
                     exp.RefreshModel(conn.DisplayName, folder);
                 }
             }

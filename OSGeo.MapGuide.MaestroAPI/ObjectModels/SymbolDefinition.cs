@@ -85,11 +85,11 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         }
 
         [XmlIgnore]
-        public ResourceTypes ResourceType
+        public string ResourceType
         {
             get
             {
-                return ResourceTypes.SymbolDefinition;
+                return ResourceTypes.SymbolDefinition.ToString();
             }
         }
 

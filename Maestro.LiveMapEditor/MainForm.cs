@@ -201,7 +201,7 @@ namespace Maestro.LiveMapEditor
         {
             ClearExistingEditor();
 
-            using (var picker = new ResourcePicker(_conn.ResourceService, ResourceTypes.MapDefinition, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_conn.ResourceService, ResourceTypes.MapDefinition.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -229,7 +229,7 @@ namespace Maestro.LiveMapEditor
 
         private void DoSaveAs()
         {
-            using (var picker = new ResourcePicker(_conn.ResourceService, ResourceTypes.MapDefinition, ResourcePickerMode.SaveResource))
+            using (var picker = new ResourcePicker(_conn.ResourceService, ResourceTypes.MapDefinition.ToString(), ResourcePickerMode.SaveResource))
             {
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {

@@ -70,7 +70,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             if (context.IsAlreadyValidated(resource.ResourceID))
                 return null;
 
-            if (resource.ResourceType != ResourceTypes.MapDefinition)
+            if (resource.ResourceType != ResourceTypes.MapDefinition.ToString())
                 return null;
 
             List<ValidationIssue> issues = new List<ValidationIssue>();

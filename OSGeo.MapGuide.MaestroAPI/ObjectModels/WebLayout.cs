@@ -128,11 +128,11 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
         }
 
         [XmlIgnore]
-        public ResourceTypes ResourceType
+        public string ResourceType
         {
             get
             {
-                return ResourceTypes.WebLayout;
+                return ResourceTypes.WebLayout.ToString();
             }
         }
 

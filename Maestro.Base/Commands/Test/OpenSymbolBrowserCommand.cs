@@ -37,7 +37,7 @@ namespace Maestro.Base.Commands.Test
             var mgr = ServiceRegistry.GetService<ServerConnectionManager>();
             var conn = mgr.GetConnection(exp.ConnectionName);
 
-            var picker = new ResourcePicker(conn.ResourceService, ResourceTypes.SymbolLibrary, ResourcePickerMode.OpenResource);
+            var picker = new ResourcePicker(conn.ResourceService, ResourceTypes.SymbolLibrary.ToString(), ResourcePickerMode.OpenResource);
             if (picker.ShowDialog(wb) == System.Windows.Forms.DialogResult.OK)
             {
                 var browser = new SymbolPicker(picker.ResourceID, conn);

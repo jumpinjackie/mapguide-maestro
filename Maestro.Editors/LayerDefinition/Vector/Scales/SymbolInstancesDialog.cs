@@ -248,7 +248,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private void referenceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.SymbolDefinition, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.SymbolDefinition.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {

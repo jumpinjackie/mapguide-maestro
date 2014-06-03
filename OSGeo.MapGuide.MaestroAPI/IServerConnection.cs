@@ -257,7 +257,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="conn">The conn.</param>
         /// <param name="resType">Type of the res.</param>
         /// <returns></returns>
-        public static string GenerateSessionResourceId(this IServerConnection conn, ResourceTypes resType)
+        public static string GenerateSessionResourceId(this IServerConnection conn, string resType)
         {
             Guid id = Guid.NewGuid();
             return conn.GenerateSessionResourceId(id.ToString(), resType);
@@ -270,9 +270,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="name">The name.</param>
         /// <param name="resType">Type of the res.</param>
         /// <returns></returns>
-        public static string GenerateSessionResourceId(this IServerConnection conn, string name, ResourceTypes resType)
+        public static string GenerateSessionResourceId(this IServerConnection conn, string name, string resType)
         {
-            return "Session:" + conn.SessionID + "//" + name + "." + resType.ToString(); //NOXLATE
+            return "Session:" + conn.SessionID + "//" + name + "." + resType; //NOXLATE
         }
     }
 }

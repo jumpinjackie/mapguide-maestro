@@ -48,8 +48,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales.SymbolInstanceEditors
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_resSvc, 
-                                                   ResourceTypes.SymbolDefinition, 
+            using (var picker = new ResourcePicker(_resSvc,
+                                                   ResourceTypes.SymbolDefinition.ToString(), 
                                                    ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)

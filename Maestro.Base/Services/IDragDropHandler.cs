@@ -35,9 +35,11 @@ namespace Maestro.Base.Services
         string HandlerAction { get; }
 
         /// <summary>
-        /// Gets the file extensions this handler can handle
+        /// Gets whether this handler can handle the given file extension
         /// </summary>
-        string[] FileExtensions { get; }
+        /// <param name="fileExtension"></param>
+        /// <returns></returns>
+        bool CanHandleFileExtension(string fileExtension);
 
         /// <summary>
         /// Handles the file drop
@@ -47,5 +49,13 @@ namespace Maestro.Base.Services
         /// <param name="folderId">The site explorer folder this drop was performed</param>
         /// <returns>true if the drop was successfully handled</returns>
         bool HandleDrop(IServerConnection conn, string file, string folderId);
+    }
+
+    internal class HandlerUtil
+    {
+        public static bool ExtensionInList(string[] extensions, string fileExtension)
+        {
+            return Array.FindIndex(extensions, t => t.IndexOf(fileExtension, StringComparison.InvariantCultureIgnoreCase) >= 0) >= 0;
+        }
     }
 }

@@ -203,8 +203,8 @@ namespace Maestro.Editors.LayerDefinition.Drawing
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_service.ResourceService, 
-                                                   OSGeo.MapGuide.MaestroAPI.ResourceTypes.DrawingSource, 
+            using (var picker = new ResourcePicker(_service.ResourceService,
+                                                   OSGeo.MapGuide.MaestroAPI.ResourceTypes.DrawingSource.ToString(), 
                                                    ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)

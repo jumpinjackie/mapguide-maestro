@@ -38,11 +38,6 @@ namespace Maestro.Base.Services.DragDropHandlers
 
         string[] extensions = { ".mgp" }; //NOXLATE
 
-        public string[] FileExtensions
-        {
-            get { return extensions; }
-        }
-
         public bool HandleDrop(IServerConnection conn, string file, string folderId)
         {
             try
@@ -74,6 +69,11 @@ namespace Maestro.Base.Services.DragDropHandlers
                 ErrorDialog.Show(ex);
                 return false;
             }
+        }
+
+        public bool CanHandleFileExtension(string fileExtension)
+        {
+            return Array.IndexOf(extensions, fileExtension) >= 0;
         }
     }
 }

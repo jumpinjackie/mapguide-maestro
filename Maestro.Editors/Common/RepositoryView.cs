@@ -123,7 +123,7 @@ namespace Maestro.Editors.Common
         /// Adds a resource type to filter on
         /// </summary>
         /// <param name="rt"></param>
-        public void AddResourceTypeFilter(ResourceTypes rt) { if (_model != null) _model.AddResourceTypeFilter(rt); }
+        public void AddResourceTypeFilter(string rt) { if (_model != null) _model.AddResourceTypeFilter(rt); }
 
         /// <summary>
         /// Clears all applied resource type filters

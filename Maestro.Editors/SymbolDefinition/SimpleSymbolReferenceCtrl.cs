@@ -60,7 +60,7 @@ namespace Maestro.Editors.SymbolDefinition
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             using (var picker = new ResourcePicker(_resSvc,
-                                                   ResourceTypes.SymbolDefinition,
+                                                   ResourceTypes.SymbolDefinition.ToString(),
                                                    ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)

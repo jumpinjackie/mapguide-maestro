@@ -85,7 +85,7 @@ namespace Maestro.Editors.FeatureSource.Extensions
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            string resId = _edSvc.SelectResource(OSGeo.MapGuide.MaestroAPI.ResourceTypes.FeatureSource);
+            string resId = _edSvc.SelectResource(OSGeo.MapGuide.MaestroAPI.ResourceTypes.FeatureSource.ToString());
             if (!string.IsNullOrEmpty(resId))
             {
                 txtFeatureSource.Text = resId;

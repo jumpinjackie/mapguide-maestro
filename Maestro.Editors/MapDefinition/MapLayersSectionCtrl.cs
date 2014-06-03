@@ -656,7 +656,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnGRPAddLayer_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.LayerDefinition, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.LayerDefinition.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
@@ -786,7 +786,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnDLAddLayer_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.LayerDefinition, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.LayerDefinition.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
@@ -1113,7 +1113,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnAddBaseLayer_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.LayerDefinition, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.LayerDefinition.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
@@ -1441,7 +1441,7 @@ namespace Maestro.Editors.MapDefinition
             }
 
             //But only of the Layer Definition kind
-            if (rids.Length == 1 && rids[0].ResourceId.ResourceType != ResourceTypes.LayerDefinition)
+            if (rids.Length == 1 && rids[0].ResourceId.ResourceType != ResourceTypes.LayerDefinition.ToString())
             {
                 e.Effect = DragDropEffects.None;
                 return;
@@ -1450,7 +1450,7 @@ namespace Maestro.Editors.MapDefinition
             //Even in multiples
             foreach (var r in rids)
             {
-                if (r.ResourceId.ResourceType != ResourceTypes.LayerDefinition)
+                if (r.ResourceId.ResourceType != ResourceTypes.LayerDefinition.ToString())
                 {
                     e.Effect = DragDropEffects.None;
                     return;
@@ -1488,7 +1488,7 @@ namespace Maestro.Editors.MapDefinition
                 int added = 0;
                 foreach (var rid in rids)
                 {
-                    if (rid.ResourceId.ResourceType == ResourceTypes.LayerDefinition)
+                    if (rid.ResourceId.ResourceType == ResourceTypes.LayerDefinition.ToString())
                     {
                         var name = GenerateLayerName(rid.ResourceId.ToString(), _map);
                         var layer = _map.AddLayer(parent == null ? null : parent.Name, name, rid.ResourceId.ToString());
@@ -1654,7 +1654,7 @@ namespace Maestro.Editors.MapDefinition
                 int added = 0;
                 foreach (var rid in rids)
                 {
-                    if (rid.ResourceId.ResourceType == ResourceTypes.LayerDefinition)
+                    if (rid.ResourceId.ResourceType == ResourceTypes.LayerDefinition.ToString())
                     {
                         var name = GenerateLayerName(rid.ResourceId.ToString(), _map);
                         //var layer = _map.AddLayer(parent == null ? null : parent.Name, name, rid.ToString());
@@ -1776,7 +1776,7 @@ namespace Maestro.Editors.MapDefinition
 
                 foreach (var rid in rids)
                 {
-                    if (rid.ResourceId.ResourceType == ResourceTypes.LayerDefinition)
+                    if (rid.ResourceId.ResourceType == ResourceTypes.LayerDefinition.ToString())
                     {
                         group.AddLayer(GenerateBaseLayerName(rid.ResourceId.ToString(), _map.BaseMap), rid.ResourceId.ToString());
                         added++;

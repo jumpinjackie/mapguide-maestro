@@ -372,34 +372,34 @@ namespace Maestro.Editors.Preview
         {
             switch (res.ResourceType)
             {
-                case ResourceTypes.FeatureSource:
+                case "FeatureSource":
                     return GenerateFeatureSourcePreviewUrl(res, locale);
-                case ResourceTypes.ApplicationDefinition:
+                case "ApplicationDefinition":
                     return GenerateFlexLayoutPreviewUrl(res, locale);
-                case ResourceTypes.LayerDefinition:
+                case "LayerDefinition":
                     return GenerateLayerPreviewUrl(res, locale);
-                case ResourceTypes.MapDefinition:
+                case "MapDefinition":
                     return GenerateMapPreviewUrl(res, locale);
-                case ResourceTypes.WebLayout:
+                case "WebLayout":
                     return GenerateWebLayoutPreviewUrl(res, locale);
-                case ResourceTypes.WatermarkDefinition:
+                case "WatermarkDefinition":
                     return GenerateWatermarkPreviewUrl((IWatermarkDefinition)res, locale);
                 default:
                     throw new InvalidOperationException(Strings.UnpreviewableResourceType);
             }
         }
 
-        private static ResourceTypes[] PREVIEWABLE_RESOURCE_TYPES = new ResourceTypes[] 
+        private static string[] PREVIEWABLE_RESOURCE_TYPES = new string[] 
         {
-            ResourceTypes.FeatureSource,
-            ResourceTypes.ApplicationDefinition,
-            ResourceTypes.LayerDefinition,
-            ResourceTypes.MapDefinition,
-            ResourceTypes.WebLayout,
-            ResourceTypes.WatermarkDefinition
+            ResourceTypes.FeatureSource.ToString(),
+            ResourceTypes.ApplicationDefinition.ToString(),
+            ResourceTypes.LayerDefinition.ToString(),
+            ResourceTypes.MapDefinition.ToString(),
+            ResourceTypes.WebLayout.ToString(),
+            ResourceTypes.WatermarkDefinition.ToString()
         };
 
-        internal static bool IsPreviewableType(OSGeo.MapGuide.MaestroAPI.ResourceTypes rt)
+        internal static bool IsPreviewableType(string rt)
         {
             return Array.IndexOf(PREVIEWABLE_RESOURCE_TYPES, rt) >= 0;
         }

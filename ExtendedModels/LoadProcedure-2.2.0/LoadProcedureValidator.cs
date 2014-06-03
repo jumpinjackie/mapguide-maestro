@@ -29,7 +29,7 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure_2_2_0
     {
         public override ResourceTypeDescriptor SupportedResourceAndVersion
         {
-            get { return new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LoadProcedure, "2.2.0"); }
+            get { return new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LoadProcedure.ToString(), "2.2.0"); }
         }
     }
 }

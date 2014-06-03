@@ -33,14 +33,14 @@ namespace OSGeo.MapGuide.ObjectModels
     /// </summary>
     public class UntypedResource : IResource
     {
-        internal UntypedResource(string xml, ResourceTypes resourceType, string version)
+        internal UntypedResource(string xml, string resourceType, string version)
         {
             this.XmlContent = xml;
             this.ResourceType = resourceType;
             this.ResourceVersion = new Version(version);
         }
 
-        internal UntypedResource(string xml, ResourceTypes resourceType, Version version)
+        internal UntypedResource(string xml, string resourceType, Version version)
         {
             this.XmlContent = xml;
             this.ResourceType = resourceType;
@@ -77,7 +77,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <summary>
         /// Gets the resource type
         /// </summary>
-        public ResourceTypes ResourceType
+        public string ResourceType
         {
             get;
             private set;

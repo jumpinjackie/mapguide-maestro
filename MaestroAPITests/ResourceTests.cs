@@ -68,7 +68,7 @@ namespace MaestroAPITests
             Stub.On(conn).GetProperty("Capabilities").Will(Return.Value(caps));
             foreach (var rt in Enum.GetValues(typeof(ResourceTypes)))
             {
-                Stub.On(caps).Method("GetMaxSupportedResourceVersion").With(rt).Will(Return.Value(new Version(1, 0, 0)));
+                Stub.On(caps).Method("GetMaxSupportedResourceVersion").With(rt.ToString()).Will(Return.Value(new Version(1, 0, 0)));
             }
 
             var app = ObjectFactory.DeserializeEmbeddedFlexLayout(conn);
@@ -117,7 +117,7 @@ namespace MaestroAPITests
             Stub.On(conn).GetProperty("Capabilities").Will(Return.Value(caps));
             foreach (var rt in Enum.GetValues(typeof(ResourceTypes)))
             {
-                Stub.On(caps).Method("GetMaxSupportedResourceVersion").With(rt).Will(Return.Value(new Version(1, 0, 0)));
+                Stub.On(caps).Method("GetMaxSupportedResourceVersion").With(rt.ToString()).Will(Return.Value(new Version(1, 0, 0)));
             }
 
             //Verify that only valid resource identifiers can be assigned to certain resource types.
@@ -573,40 +573,40 @@ namespace MaestroAPITests
         [Test]
         public void TestResourceTypeDescriptor()
         {
-            var rtd = new ResourceTypeDescriptor(ResourceTypes.ApplicationDefinition, "1.0.0");
+            var rtd = new ResourceTypeDescriptor(ResourceTypes.ApplicationDefinition.ToString(), "1.0.0");
             Assert.AreEqual(rtd.XsdName, "ApplicationDefinition-1.0.0.xsd");
 
-            rtd = new ResourceTypeDescriptor(ResourceTypes.DrawingSource, "1.0.0");
+            rtd = new ResourceTypeDescriptor(ResourceTypes.DrawingSource.ToString(), "1.0.0");
             Assert.AreEqual(rtd.XsdName, "DrawingSource-1.0.0.xsd");
 
-            rtd = new ResourceTypeDescriptor(ResourceTypes.FeatureSource, "1.0.0");
+            rtd = new ResourceTypeDescriptor(ResourceTypes.FeatureSource.ToString(), "1.0.0");
             Assert.AreEqual(rtd.XsdName, "FeatureSource-1.0.0.xsd");
 
-            rtd = new ResourceTypeDescriptor(ResourceTypes.LayerDefinition, "1.0.0");
+            rtd = new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), "1.0.0");
             Assert.AreEqual(rtd.XsdName, "LayerDefinition-1.0.0.xsd");
 
-            rtd = new ResourceTypeDescriptor(ResourceTypes.LayerDefinition, "1.1.0");
+            rtd = new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), "1.1.0");
             Assert.AreEqual(rtd.XsdName, "LayerDefinition-1.1.0.xsd");
 
-            rtd = new ResourceTypeDescriptor(ResourceTypes.LoadProcedure, "1.0.0");
+            rtd = new ResourceTypeDescriptor(ResourceTypes.LoadProcedure.ToString(), "1.0.0");
             Assert.AreEqual(rtd.XsdName, "LoadProcedure-1.0.0.xsd");
 
-            rtd = new ResourceTypeDescriptor(ResourceTypes.MapDefinition, "1.0.0");
+            rtd = new ResourceTypeDescriptor(ResourceTypes.MapDefinition.ToString(), "1.0.0");
             Assert.AreEqual(rtd.XsdName, "MapDefinition-1.0.0.xsd");
 
-            rtd = new ResourceTypeDescriptor(ResourceTypes.DrawingSource, "1.0.0");
+            rtd = new ResourceTypeDescriptor(ResourceTypes.DrawingSource.ToString(), "1.0.0");
             Assert.AreEqual(rtd.XsdName, "DrawingSource-1.0.0.xsd");
 
-            rtd = new ResourceTypeDescriptor(ResourceTypes.PrintLayout, "1.0.0");
+            rtd = new ResourceTypeDescriptor(ResourceTypes.PrintLayout.ToString(), "1.0.0");
             Assert.AreEqual(rtd.XsdName, "PrintLayout-1.0.0.xsd");
 
-            rtd = new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition, "1.0.0");
+            rtd = new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition.ToString(), "1.0.0");
             Assert.AreEqual(rtd.XsdName, "SymbolDefinition-1.0.0.xsd");
 
-            rtd = new ResourceTypeDescriptor(ResourceTypes.SymbolLibrary, "1.0.0");
+            rtd = new ResourceTypeDescriptor(ResourceTypes.SymbolLibrary.ToString(), "1.0.0");
             Assert.AreEqual(rtd.XsdName, "SymbolLibrary-1.0.0.xsd");
 
-            rtd = new ResourceTypeDescriptor(ResourceTypes.WebLayout, "1.0.0");
+            rtd = new ResourceTypeDescriptor(ResourceTypes.WebLayout.ToString(), "1.0.0");
             Assert.AreEqual(rtd.XsdName, "WebLayout-1.0.0.xsd");
         }
 
@@ -1085,7 +1085,7 @@ namespace MaestroAPITests
             Stub.On(conn).GetProperty("Capabilities").Will(Return.Value(caps));
             foreach (var rt in Enum.GetValues(typeof(ResourceTypes)))
             {
-                Stub.On(caps).Method("GetMaxSupportedResourceVersion").With(rt).Will(Return.Value(new Version(1, 0, 0)));
+                Stub.On(caps).Method("GetMaxSupportedResourceVersion").With(rt.ToString()).Will(Return.Value(new Version(1, 0, 0)));
             }
 
             IMapDefinition mdf = ObjectFactory.CreateMapDefinition(conn, "Test");

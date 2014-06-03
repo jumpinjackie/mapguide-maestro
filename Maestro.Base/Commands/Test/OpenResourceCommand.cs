@@ -100,7 +100,7 @@ namespace Maestro.Base.Commands.Test
             var mgr = ServiceRegistry.GetService<ServerConnectionManager>();
             var conn = mgr.GetConnection(exp.ConnectionName);
 
-            var picker = new ResourcePicker(conn.ResourceService, OSGeo.MapGuide.MaestroAPI.ResourceTypes.FeatureSource, ResourcePickerMode.OpenResource);
+            var picker = new ResourcePicker(conn.ResourceService, OSGeo.MapGuide.MaestroAPI.ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource);
             if (picker.ShowDialog(wb) == System.Windows.Forms.DialogResult.OK)
             {
                 MessageService.ShowMessage(picker.ResourceID);

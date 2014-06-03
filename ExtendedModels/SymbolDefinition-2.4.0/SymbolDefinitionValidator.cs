@@ -30,7 +30,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0
     {
         public override ResourceTypeDescriptor SupportedResourceAndVersion
         {
-            get { return new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition, "2.4.0"); }
+            get { return new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition.ToString(), "2.4.0"); }
         }
     }
 }

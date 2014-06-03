@@ -29,7 +29,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_2_3_0
     {
         public override OSGeo.MapGuide.MaestroAPI.Resource.ResourceTypeDescriptor SupportedResourceAndVersion
         {
-            get { return new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition, "2.3.0"); }
+            get { return new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition.ToString(), "2.3.0"); }
         }
     }
 }

@@ -99,7 +99,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
                     version = xsd.Substring(start + 1, xsd.Length - end);
                     string typeStr = xsd.Substring(0, start);
 
-                    return new ResourceTypeDescriptor((ResourceTypes)Enum.Parse(typeof(ResourceTypes), typeStr), version);
+                    return new ResourceTypeDescriptor(typeStr, version);
 
                 }
                 finally

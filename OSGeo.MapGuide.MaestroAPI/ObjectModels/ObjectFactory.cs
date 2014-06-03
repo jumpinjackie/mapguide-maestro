@@ -258,7 +258,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static IWebLayout CreateWebLayout(IServerConnection owner, string mapDefinitionId)
         {
-            var ver = owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.WebLayout);
+            var ver = owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.WebLayout.ToString());
             return CreateWebLayout(owner, ver, mapDefinitionId);
         }
 
@@ -270,7 +270,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static ILayerDefinition CreateDefaultLayer(IServerConnection owner, LayerType type)
         {
-            var ver = owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.LayerDefinition);
+            var ver = owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.LayerDefinition.ToString());
             return CreateDefaultLayer(owner, type, ver);
         }
 
@@ -354,7 +354,7 @@ namespace OSGeo.MapGuide.ObjectModels
         public static IWatermarkDefinition CreateWatermark(IServerConnection owner, SymbolDefinitionType type)
         {
             Check.NotNull(owner, "owner"); //NOXLATE
-            return CreateWatermark(owner, type, owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.WatermarkDefinition));
+            return CreateWatermark(owner, type, owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.WatermarkDefinition.ToString()));
         }
 
         /// <summary>
@@ -438,7 +438,7 @@ namespace OSGeo.MapGuide.ObjectModels
         {
             Check.NotNull(owner, "owner"); //NOXLATE
 
-            return CreateMapDefinition(owner, owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition), name);
+            return CreateMapDefinition(owner, owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition.ToString()), name);
         }
 
         /// <summary>
@@ -452,7 +452,7 @@ namespace OSGeo.MapGuide.ObjectModels
         {
             Check.NotNull(owner, "owner"); //NOXLATE
 
-            return CreateMapDefinition(owner, owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition), name, coordinateSystemWkt);
+            return CreateMapDefinition(owner, owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition.ToString()), name, coordinateSystemWkt);
         }
 
         /// <summary>
@@ -467,7 +467,7 @@ namespace OSGeo.MapGuide.ObjectModels
         {
             Check.NotNull(owner, "owner"); //NOXLATE
 
-            return CreateMapDefinition(owner, owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition), name, coordinateSystemWkt, env);
+            return CreateMapDefinition(owner, owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition.ToString()), name, coordinateSystemWkt, env);
         }
 
         /// <summary>
@@ -713,7 +713,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static ISimpleSymbolDefinition CreateSimpleSymbol(IServerConnection owner, string name, string description)
         {
-            var ver = owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.SymbolDefinition);
+            var ver = owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.SymbolDefinition.ToString());
             return CreateSimpleSymbol(owner, ver, name, description);
         }
 
@@ -748,7 +748,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static ICompoundSymbolDefinition CreateCompoundSymbol(IServerConnection owner, string name, string description)
         {
-            var ver = owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.SymbolDefinition);
+            var ver = owner.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.SymbolDefinition.ToString());
             return CreateCompoundSymbol(owner, ver, name, description);
         }
 

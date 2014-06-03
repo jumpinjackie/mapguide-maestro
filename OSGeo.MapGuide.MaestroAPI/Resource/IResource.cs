@@ -55,7 +55,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// Gets the type of the resource.
         /// </summary>
         /// <value>The type of the resource.</value>
-        ResourceTypes ResourceType { get; }
+        string ResourceType { get; }
 
         /// <summary>
         /// Serializes this instance to XML and returns the XML content. It is not recommended to call this method directly

@@ -39,21 +39,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Exceptions
         /// <summary>
         /// Initializes a new instance of the <see cref="UnsupportedResourceTypeException"/> class.
         /// </summary>
-        /// <param name="rt">The rt.</param>
-        public UnsupportedResourceTypeException(ResourceTypes rt) { this.ResourceType = rt; }
+        /// <param name="rt">The resource type.</param>
+        public UnsupportedResourceTypeException(string rt) { this.ResourceType = rt; }
         /// <summary>
         /// Initializes a new instance of the <see cref="UnsupportedResourceTypeException"/> class.
         /// </summary>
-        /// <param name="rt">The rt.</param>
+        /// <param name="rt">The resource type.</param>
         /// <param name="message">The message.</param>
-        public UnsupportedResourceTypeException(ResourceTypes rt, string message) : base(message) { this.ResourceType = rt; }
+        public UnsupportedResourceTypeException(string rt, string message) : base(message) { this.ResourceType = rt; }
         /// <summary>
         /// Initializes a new instance of the <see cref="UnsupportedResourceTypeException"/> class.
         /// </summary>
-        /// <param name="rt">The rt.</param>
+        /// <param name="rt">The resource type.</param>
         /// <param name="message">The message.</param>
         /// <param name="inner">The inner.</param>
-        public UnsupportedResourceTypeException(ResourceTypes rt, string message, Exception inner) : base(message, inner) { this.ResourceType = rt; }
+        public UnsupportedResourceTypeException(string rt, string message, Exception inner) : base(message, inner) { this.ResourceType = rt; }
         /// <summary>
         /// Initializes a new instance of the <see cref="UnsupportedResourceTypeException"/> class.
         /// </summary>
@@ -74,6 +74,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Exceptions
         /// Gets or sets the type of the resource.
         /// </summary>
         /// <value>The type of the resource.</value>
-        public ResourceTypes ResourceType { get; private set; }
+        public string ResourceType { get; private set; }
     }
 }

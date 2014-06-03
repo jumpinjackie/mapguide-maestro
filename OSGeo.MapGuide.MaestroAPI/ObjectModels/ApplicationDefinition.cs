@@ -147,11 +147,11 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         }
 
         [XmlIgnore]
-        public ResourceTypes ResourceType
+        public string ResourceType
         {
             get
             {
-                return ResourceTypes.ApplicationDefinition;
+                return ResourceTypes.ApplicationDefinition.ToString();
             }
         }
 

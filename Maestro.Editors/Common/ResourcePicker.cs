@@ -41,25 +41,25 @@ namespace Maestro.Editors.Generic
     /// </summary>
     public partial class ResourcePicker : Form
     {
-        private ResourceTypes[] _resTypes;
+        private string[] _resTypes;
 
         private ResourcePicker()
         {
             InitializeComponent();
-            _resTypes = new ResourceTypes[] 
+            _resTypes = new string[] 
             {
-                ResourceTypes.ApplicationDefinition,
-                ResourceTypes.DrawingSource,
-                ResourceTypes.FeatureSource,
-                ResourceTypes.Folder,
-                ResourceTypes.LayerDefinition,
-                ResourceTypes.LoadProcedure,
-                ResourceTypes.MapDefinition,
-                ResourceTypes.PrintLayout,
-                ResourceTypes.SymbolDefinition,
-                ResourceTypes.SymbolLibrary,
-                ResourceTypes.WebLayout,
-                ResourceTypes.WatermarkDefinition
+                ResourceTypes.ApplicationDefinition.ToString(),
+                ResourceTypes.DrawingSource.ToString(),
+                ResourceTypes.FeatureSource.ToString(),
+                ResourceTypes.Folder.ToString(),
+                ResourceTypes.LayerDefinition.ToString(),
+                ResourceTypes.LoadProcedure.ToString(),
+                ResourceTypes.MapDefinition.ToString(),
+                ResourceTypes.PrintLayout.ToString(),
+                ResourceTypes.SymbolDefinition.ToString(),
+                ResourceTypes.SymbolLibrary.ToString(),
+                ResourceTypes.WebLayout.ToString(),
+                ResourceTypes.WatermarkDefinition.ToString()
             };
             cmbResourceFilter.DataSource = _resTypes;
             RepositoryIcons.PopulateImageList(resImageList);
@@ -157,16 +157,16 @@ namespace Maestro.Editors.Generic
         /// You cannot select folders in this mode. Attempting to set <see cref="SelectFoldersOnly"/> to
         /// true will throw an <see cref="InvalidOperationException"/>
         /// </summary>
-        /// <param name="resSvc">The res SVC.</param>
-        /// <param name="resFilter">The res filter.</param>
+        /// <param name="resSvc">The resource service.</param>
+        /// <param name="resTypeFilter">The resource type to filter on.</param>
         /// <param name="mode">The mode.</param>
-        public ResourcePicker(IResourceService resSvc, ResourceTypes resFilter, ResourcePickerMode mode)
+        public ResourcePicker(IResourceService resSvc, string resTypeFilter, ResourcePickerMode mode)
             : this(resSvc, mode)
         {
             if (mode == ResourcePickerMode.OpenFolder)
                 throw new InvalidOperationException(string.Format(Strings.ModeNotAllowed, mode));
 
-            this.Filter = resFilter;
+            this.Filter = resTypeFilter;
             this.UseFilter = true;
 
             _resourceMode = true;
@@ -178,12 +178,12 @@ namespace Maestro.Editors.Generic
         /// is locked to that particular resource type, otherwise all resource type can be
         /// selected
         /// </summary>
-        public ResourceTypes Filter
+        public string Filter
         {
-            get { return (ResourceTypes)cmbResourceFilter.SelectedItem; }
+            get { return cmbResourceFilter.SelectedItem.ToString(); }
             set
             {
-                if (Array.IndexOf<ResourceTypes>(_resTypes, value) < 0)
+                if (Array.IndexOf<string>(_resTypes, value) < 0)
                     throw new InvalidOperationException("Cannot use specified resource type as filter: " + value); //LOCALIZE
 
                 cmbResourceFilter.SelectedItem = value;
@@ -288,7 +288,7 @@ namespace Maestro.Editors.Generic
                     }
                     else
                     {
-                        if (ResourceIdentifier.GetResourceType(txtResourceId.Text) != (ResourceTypes)cmbResourceFilter.SelectedItem)
+                        if (ResourceIdentifier.GetResourceTypeAsString(txtResourceId.Text) != cmbResourceFilter.SelectedItem.ToString())
                         {
                             MessageBox.Show(Strings.InvalidResourceIdNotSpecifiedType);
                             return;
@@ -356,7 +356,7 @@ namespace Maestro.Editors.Generic
 
                 try
                 {
-                    var rt = ResourceIdentifier.GetResourceType(doc.ResourceId);
+                    var rt = ResourceIdentifier.GetResourceTypeAsString(doc.ResourceId);
                     li.ImageIndex = RepositoryIcons.GetImageIndexForResourceType(rt);
                 }
                 catch
@@ -391,7 +391,7 @@ namespace Maestro.Editors.Generic
 
         private bool IsPreviewable(ResourceListResourceDocument doc)
         {
-            return doc.ResourceType == ResourceTypes.SymbolDefinition;
+            return doc.ResourceType == ResourceTypes.SymbolDefinition.ToString();
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)

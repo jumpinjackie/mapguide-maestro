@@ -76,7 +76,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                     var resId = ids.GetItem(i);
                     using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(result.GetItem(i))))
                     {
-                        ResourceTypes resType = ResourceIdentifier.GetResourceType(resId);
+                        var resType = ResourceIdentifier.GetResourceTypeAsString(resId);
 
                         IResource r = ResourceTypeRegistry.Deserialize(resType, ms);
                         r.CurrentConnection = this.Parent;

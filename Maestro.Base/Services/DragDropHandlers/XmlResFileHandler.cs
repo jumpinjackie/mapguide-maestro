@@ -36,21 +36,6 @@ namespace Maestro.Base.Services.DragDropHandlers
             get { return Strings.XmlResHandlerAction; }
         }
 
-        private string[] extensions = { ".xml", //NOXLATE
-                                        ".FeatureSource", //NOXLATE 
-                                        ".LayerDefinition", //NOXLATE
-                                        ".MapDefinition", //NOXLATE
-                                        ".WebLayout", //NOXLATE
-                                        ".SymbolDefinition", //NOXLATE
-                                        ".ApplicationDefinition", //NOXLATE
-                                        ".PrintLayout", //NOXLATE
-                                      };
-
-        public string[] FileExtensions
-        {
-            get { return extensions; }
-        }
-
         public bool HandleDrop(IServerConnection conn, string file, string folderId)
         {
             try
@@ -58,22 +43,37 @@ namespace Maestro.Base.Services.DragDropHandlers
                 var wb = Workbench.Instance;
                 var exp = wb.ActiveSiteExplorer;
 
-                //The easiest way to tell if this XML file is legit
-                var res = ResourceTypeRegistry.Deserialize(File.ReadAllText(file));
-
+                string xml = File.ReadAllText(file);
                 int counter = 0;
                 string name = Path.GetFileNameWithoutExtension(file);
-                string resId = folderId + name + "." + res.ResourceType.ToString(); //NOXLATE
-
-                while (conn.ResourceService.ResourceExists(resId))
+                
+                try
                 {
-                    counter++;
-                    resId = folderId + name + " (" + counter + ")." + res.ResourceType.ToString(); //NOXLATE
+                    //The easiest way to tell if this XML file is legit
+                    var res = ResourceTypeRegistry.Deserialize(xml);
+                    string resId = folderId + name + "." + res.ResourceType.ToString(); //NOXLATE
+                    while (conn.ResourceService.ResourceExists(resId))
+                    {
+                        counter++;
+                        resId = folderId + name + " (" + counter + ")." + res.ResourceType.ToString(); //NOXLATE
+                    }
+                    res.ResourceID = resId;
+                    conn.ResourceService.SaveResource(res);
                 }
-
-                res.ResourceID = resId;
-                conn.ResourceService.SaveResource(res);
-
+                catch //We may be working with an unknown resource type or schema version here so try blind before bailing
+                {
+                    string resType = Path.GetExtension(file);
+                    string resId = folderId + name + "." + resType; //NOXLATE
+                    while (conn.ResourceService.ResourceExists(resId))
+                    {
+                        counter++;
+                        resId = folderId + name + " (" + counter + ")." + resType; //NOXLATE
+                    }
+                    using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
+                    {
+                        conn.ResourceService.SetResourceXmlData(resId, ms);
+                    }
+                }
                 return true;   
             }
             catch (Exception ex)
@@ -81,6 +81,11 @@ namespace Maestro.Base.Services.DragDropHandlers
                 ErrorDialog.Show(ex);
                 return false;
             }
+        }
+
+        public bool CanHandleFileExtension(string fileExtension)
+        {
+            return true;
         }
     }
 }

@@ -123,7 +123,7 @@ namespace Maestro.Editors.Common
             _svc = new DefaultResourceEditorService(resourceId, conn);
             _svc.DirtyStateChanged += OnDirtyStateChanged;
             _ed.Dock = DockStyle.Fill;
-            btnPreview.Enabled = ResourcePreviewEngine.IsPreviewableType(ResourceIdentifier.GetResourceType(resourceId));
+            btnPreview.Enabled = ResourcePreviewEngine.IsPreviewableType(ResourceIdentifier.GetResourceTypeAsString(resourceId));
             this.Controls.Add(_ed);
             _ed.Bind(_svc);
             _ed.ReadyForEditing();

@@ -116,12 +116,12 @@ namespace Maestro.Editors.MapDefinition
             _shadowCopy = (IMapDefinition)service.GetEditedResource();
             _mapSvc = (IMappingService)_shadowCopy.CurrentConnection.GetService((int)ServiceType.Mapping);
             _rtMap = _mapSvc.CreateMap(_shadowCopy);
-            repoView.Init(service.ResourceService, new ResourceTypes[] {
-                ResourceTypes.LayerDefinition,
-                ResourceTypes.FeatureSource
-            }, new ResourceTypes[] {
-                ResourceTypes.LayerDefinition,
-                ResourceTypes.FeatureSource
+            repoView.Init(service.ResourceService, new string[] {
+                ResourceTypes.LayerDefinition.ToString(),
+                ResourceTypes.FeatureSource.ToString()
+            }, new string[] {
+                ResourceTypes.LayerDefinition.ToString(),
+                ResourceTypes.FeatureSource.ToString()
             });
 
             ReloadViewer();
@@ -176,7 +176,7 @@ namespace Maestro.Editors.MapDefinition
         private void repoView_RequestAddToMap(object sender, EventArgs e)
         {
             var item = repoView.SelectedItem;
-            if (item != null && item.ResourceType == ResourceTypes.LayerDefinition)
+            if (item != null && item.ResourceType == ResourceTypes.LayerDefinition.ToString())
             {
                 var layer = _mapSvc.CreateMapLayer(_rtMap, ((ILayerDefinition)this.EditorService.ResourceService.GetResource(item.ResourceId)));
                 layer.Name = LiveMapEditorLegend.GenerateUniqueName(ResourceIdentifier.GetName(item.ResourceId), _rtMap.Layers);

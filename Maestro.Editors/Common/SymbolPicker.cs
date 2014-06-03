@@ -66,7 +66,7 @@ namespace Maestro.Editors.Common
         public SymbolPicker(string symbolLibrary, IServerConnection conn)
             : this(conn)
         {
-            if (ResourceIdentifier.GetResourceType(symbolLibrary) != OSGeo.MapGuide.MaestroAPI.ResourceTypes.SymbolLibrary)
+            if (ResourceIdentifier.GetResourceTypeAsString(symbolLibrary) != OSGeo.MapGuide.MaestroAPI.ResourceTypes.SymbolLibrary.ToString())
                 throw new ArgumentException(string.Format(Strings.ErrorInvalidSymbolLibraryResourceId, symbolLibrary));
 
             txtSymbolLibrary.Text = symbolLibrary;
@@ -227,7 +227,7 @@ namespace Maestro.Editors.Common
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_conn.ResourceService, ResourceTypes.SymbolLibrary, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_conn.ResourceService, ResourceTypes.SymbolLibrary.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {

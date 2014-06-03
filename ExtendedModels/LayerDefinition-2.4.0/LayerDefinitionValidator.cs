@@ -31,7 +31,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_4_0
     {
         public override ResourceTypeDescriptor SupportedResourceAndVersion
         {
-            get { return new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition, "2.4.0"); }
+            get { return new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition.ToString(), "2.4.0"); }
         }
     }
 }

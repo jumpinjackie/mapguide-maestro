@@ -224,7 +224,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="resourceType">Type of the resource.</param>
         /// <param name="stream">The stream.</param>
         /// <returns></returns>
-        public static IResource Deserialize(ResourceTypes resourceType, Stream stream)
+        public static IResource Deserialize(string resourceType, Stream stream)
         {
             //UGLY: We have to peek inside the stream to determine the version number
             
@@ -299,9 +299,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             if (!_serializers.ContainsKey(rd))
             {
-                var rtype = (ResourceTypes)Enum.Parse(typeof(ResourceTypes), rd.ResourceType);
-                return new UntypedResource(xml, rtype, rd.Version);
-                //throw new SerializationException(Strings.ERR_NO_SERIALIZER + rd.ToString());
+                return new UntypedResource(xml, rd.ResourceType, rd.Version);
             }
 
             return _serializers[rd].Deserialize(xml);

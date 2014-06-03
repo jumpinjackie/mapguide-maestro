@@ -79,7 +79,7 @@ namespace Maestro.Editors.Common
         /// </summary>
         public string Target { get { return txtTarget.Text; } }
 
-        internal ResourceTypes ResourceType
+        internal string ResourceType
         {
             get;
             private set;

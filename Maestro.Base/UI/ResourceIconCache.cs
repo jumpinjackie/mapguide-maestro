@@ -114,18 +114,18 @@ namespace Maestro.Base.UI
         /// <returns></returns>
         public string GetImageKeyFromResourceID(string resourceId)
         {
-            var rt = ResourceIdentifier.GetResourceType(resourceId);
+            var rt = ResourceIdentifier.GetResourceTypeAsString(resourceId);
             switch (rt)
             {
-                case ResourceTypes.DrawingSource:
-                case ResourceTypes.FeatureSource:
-                case ResourceTypes.Folder:
-                case ResourceTypes.LayerDefinition:
-                case ResourceTypes.MapDefinition:
-                case ResourceTypes.WebLayout:
-                case ResourceTypes.ApplicationDefinition:
-                case ResourceTypes.SymbolLibrary:
-                case ResourceTypes.PrintLayout:
+                case "DrawingSource":
+                case "FeatureSource":
+                case "Folder":
+                case "LayerDefinition":
+                case "MapDefinition":
+                case "WebLayout":
+                case "ApplicationDefinition":
+                case "SymbolLibrary":
+                case "PrintLayout":
                     return rt.ToString();
                 default:
                     return UNKNOWN;
@@ -139,7 +139,7 @@ namespace Maestro.Base.UI
         /// <returns></returns>
         public int GetImageIndexFromResourceID(string resourceId)
         {
-            int idx = _small.Images.IndexOfKey(ResourceIdentifier.GetResourceType(resourceId).ToString());
+            int idx = _small.Images.IndexOfKey(ResourceIdentifier.GetResourceTypeAsString(resourceId));
 
             if (idx < 0)
                 return _small.Images.IndexOfKey(UNKNOWN);

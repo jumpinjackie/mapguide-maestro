@@ -46,7 +46,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         /// Gets the type of the resource.
         /// </summary>
         /// <value>The type of the resource.</value>
-        ResourceTypes ResourceType { get; }
+        string ResourceType { get; }
 
         /// <summary>
         /// Gets a value indicating whether this instance is folder.

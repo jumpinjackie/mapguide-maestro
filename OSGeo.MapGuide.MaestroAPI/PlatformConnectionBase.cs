@@ -401,7 +401,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         virtual public IResource GetResource(string resourceID)
         {
             var stream = GetResourceXmlData(resourceID);
-            var rt = ResourceIdentifier.GetResourceType(resourceID);
+            var rt = ResourceIdentifier.GetResourceTypeAsString(resourceID);
 
             IResource o = ResourceTypeRegistry.Deserialize(rt, stream);
             o.CurrentConnection = GetInterface();

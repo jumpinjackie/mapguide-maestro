@@ -110,7 +110,7 @@ namespace Maestro.Base.Editor
             foreach (var r in refs.ResourceId)
             {
                 var resId = new ResourceIdentifier(r);
-                if (resId.ResourceType == OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition)
+                if (resId.ResourceType == OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition.ToString())
                 {
                     var mdf = (IMapDefinition)_edsvc.ResourceService.GetResource(r);
                     if (mdf.BaseMap != null)

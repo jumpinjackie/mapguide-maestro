@@ -42,7 +42,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <value></value>
         public override ResourceTypeDescriptor SupportedResourceAndVersion
         {
-            get { return new ResourceTypeDescriptor(ResourceTypes.MapDefinition, "1.0.0"); }
+            get { return new ResourceTypeDescriptor(ResourceTypes.MapDefinition.ToString(), "1.0.0"); }
         }
     }
 }

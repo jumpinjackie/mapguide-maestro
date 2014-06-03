@@ -131,7 +131,7 @@ namespace Maestro.Editors.Packaging
                 {
                     TreeNode n = cur.Nodes.Add(parts[parts.Length - 1]);
                     n.Tag = ri;
-                    n.ImageIndex = n.SelectedImageIndex = RepositoryIcons.GetImageIndexForResourceType(ResourceIdentifier.GetResourceType(ri.ResourcePath));
+                    n.ImageIndex = n.SelectedImageIndex = RepositoryIcons.GetImageIndexForResourceType(ResourceIdentifier.GetResourceTypeAsString(ri.ResourcePath));
                 }
                 else
                     cur.Tag = ri;
@@ -385,7 +385,7 @@ namespace Maestro.Editors.Packaging
             var dlg = new AddResourceEntryDialog();
             if (dlg.ShowDialog(this) == DialogResult.OK)
             {
-                int imageindex = RepositoryIcons.GetImageIndexForResourceType((ResourceTypes)Enum.Parse(typeof(ResourceTypes), Path.GetExtension(dlg.ResourceName).Replace(".", "")));
+                int imageindex = RepositoryIcons.GetImageIndexForResourceType(Path.GetExtension(dlg.ResourceName).Replace(".", ""));
                 TreeNode n = new TreeNode(dlg.ResourceName, imageindex, imageindex);
                 ResourceItem i = new ResourceItem("", dlg.HeaderFilepath, dlg.ContentFilepath);
                 i.EntryType = EntryTypeEnum.Added;

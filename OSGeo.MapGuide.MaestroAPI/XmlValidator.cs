@@ -173,7 +173,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 if (pc != null)
                     xsds.Add("PlatformCommon-1.0.0.xsd", pc); //NOXLATE
 
-                if (res.ResourceType == ResourceTypes.LayerDefinition)
+                if (res.ResourceType == ResourceTypes.LayerDefinition.ToString())
                 {
                     string version = res.ResourceVersion.ToString();
                     if (version.StartsWith("1.1.0")) //NOXLATE
@@ -206,7 +206,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     }
                 }
 
-                if (res.ResourceType == ResourceTypes.WatermarkDefinition)
+                if (res.ResourceType == ResourceTypes.WatermarkDefinition.ToString())
                 {
                     string version = res.ResourceVersion.ToString();
                     if (version.StartsWith("2.3.0")) //NOXLATE
@@ -223,7 +223,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     }
                 }
 
-                if (res.ResourceType == ResourceTypes.MapDefinition)
+                if (res.ResourceType == ResourceTypes.MapDefinition.ToString())
                 {
                     string version = res.ResourceVersion.ToString();
                     if (version.StartsWith("2.3.0"))

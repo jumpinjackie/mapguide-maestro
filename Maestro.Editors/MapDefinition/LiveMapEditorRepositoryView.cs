@@ -43,10 +43,10 @@ namespace Maestro.Editors.MapDefinition
         public LiveMapEditorRepositoryView()
         {
             InitializeComponent();
-            _editableTypes = new HashSet<ResourceTypes>();
+            _editableTypes = new HashSet<string>();
         }
 
-        private HashSet<ResourceTypes> _editableTypes;
+        private HashSet<string> _editableTypes;
 
         /// <summary>
         /// Initializes this view
@@ -54,7 +54,7 @@ namespace Maestro.Editors.MapDefinition
         /// <param name="resSvc">The resource service</param>
         /// <param name="visibleType">An array of resource types that will be visible</param>
         /// <param name="editableTypes">An array of resource types that are editable when selected</param>
-        public void Init(IResourceService resSvc, ResourceTypes[] visibleType, ResourceTypes[] editableTypes)
+        public void Init(IResourceService resSvc, string[] visibleType, string[] editableTypes)
         {
             _editableTypes.Clear();
             foreach (var rt in editableTypes)
@@ -116,7 +116,7 @@ namespace Maestro.Editors.MapDefinition
         {
             var item = repoView.SelectedItem;
             var condition = (item != null && !item.IsFolder);
-            btnAddToMap.Enabled = condition && (item.ResourceType == ResourceTypes.LayerDefinition);
+            btnAddToMap.Enabled = condition && (item.ResourceType == ResourceTypes.LayerDefinition.ToString());
             btnEdit.Enabled = condition && IsEditableType(item.ResourceType);
             btnRefresh.Enabled = !condition;
             var h = this.ItemSelected;
@@ -124,7 +124,7 @@ namespace Maestro.Editors.MapDefinition
                 h(this, EventArgs.Empty);
         }
 
-        private bool IsEditableType(ResourceTypes rt)
+        private bool IsEditableType(string rt)
         {
             return _editableTypes.Contains(rt);
         }

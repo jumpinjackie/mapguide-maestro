@@ -80,7 +80,7 @@ namespace Maestro.Editors.SymbolDefinition
 
         private void btnSource_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_conn.ResourceService, ResourceTypes.SymbolLibrary, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_conn.ResourceService, ResourceTypes.SymbolLibrary.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {

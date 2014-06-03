@@ -95,7 +95,7 @@ namespace Maestro.Editors.Preview
                 edSvc.ResourceService.CopyResource(res.ResourceID, resId, true);
                 var previewCopy = edSvc.ResourceService.GetResource(resId);
 
-                if (previewCopy.ResourceType == ResourceTypes.SymbolDefinition && conn.SiteVersion >= new Version(2, 0))
+                if (previewCopy.ResourceType == ResourceTypes.SymbolDefinition.ToString() && conn.SiteVersion >= new Version(2, 0))
                 {   
                     return GenerateSymbolDefinitionPreview(conn, previewCopy, 100, 100);
                 }
@@ -177,7 +177,7 @@ namespace Maestro.Editors.Preview
             var rt = res.ResourceType;
             if (res.CurrentConnection.Capabilities.SupportsResourcePreviews)
             {
-                if (rt == ResourceTypes.SymbolDefinition)
+                if (rt == ResourceTypes.SymbolDefinition.ToString())
                 {
                     return res.CurrentConnection.SiteVersion >= new Version(2, 0) && Array.IndexOf(res.CurrentConnection.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0;
                 }

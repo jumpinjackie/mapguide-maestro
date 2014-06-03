@@ -49,33 +49,33 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         /// </summary>
         /// <param name="resourceType"></param>
         /// <returns></returns>
-        public virtual Version GetMaxSupportedResourceVersion(ResourceTypes resourceType)
+        public virtual Version GetMaxSupportedResourceVersion(string resourceType)
         {
             Version ver = new Version(1, 0, 0);
             switch (resourceType)
             {
-                case ResourceTypes.ApplicationDefinition:
+                case "ApplicationDefinition":
                     if (!SupportsFusion())
-                        throw new UnsupportedResourceTypeException(ResourceTypes.ApplicationDefinition);
+                        throw new UnsupportedResourceTypeException("ApplicationDefinition");
                     break;
-                case ResourceTypes.WatermarkDefinition:
+                case "WatermarkDefinition":
                     ver = GetMaxWatermarkDefinitionVersion();
                     break;
-                case ResourceTypes.MapDefinition:
+                case "MapDefinition":
                     ver = GetMaxMapDefinitionVersion();
                     break;
-                case ResourceTypes.LayerDefinition:
+                case "LayerDefinition":
                     ver = GetMaxLayerDefinitionVersion();
                     break;
-                case ResourceTypes.LoadProcedure:
+                case "LoadProcedure":
                     ver = GetMaxLoadProcedureVersion();
                     break;
-                case ResourceTypes.WebLayout:
+                case "WebLayout":
                     ver = GetMaxWebLayoutVersion();
                     break;
-                case ResourceTypes.SymbolDefinition:
+                case "SymbolDefinition":
                     if (!SupportsAdvancedSymbols())
-                        throw new UnsupportedResourceTypeException(ResourceTypes.SymbolDefinition);
+                        throw new UnsupportedResourceTypeException("SymbolDefinition");
                     else
                         ver = GetMaxSymbolDefinitionVersion();
                     break;

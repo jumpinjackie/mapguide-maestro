@@ -31,7 +31,7 @@ namespace Maestro.Base.Services
         public override void Initialize()
         {
             base.Initialize();
-            _handlers = new Dictionary<string, List<IDragDropHandler>>();
+            _handlers = new List<IDragDropHandler>();
 
             //Find and register drag and drop handlers
             List<IDragDropHandler> handlers = AddInTree.BuildItems<IDragDropHandler>("/Maestro/DragDropHandlers", this); //NOXLATE
@@ -44,7 +44,7 @@ namespace Maestro.Base.Services
             }
         }
 
-        private Dictionary<string, List<IDragDropHandler>> _handlers;
+        private List<IDragDropHandler> _handlers;
 
         /// <summary>
         /// Registers a drag and drop handler.
@@ -52,14 +52,7 @@ namespace Maestro.Base.Services
         /// <param name="handler">The handler.</param>
         public void RegisterHandler(IDragDropHandler handler)
         {
-            foreach (string fileExt in handler.FileExtensions)
-            {
-                string ext = fileExt.ToUpper();
-                if (!_handlers.ContainsKey(ext))
-                    _handlers[ext] = new List<IDragDropHandler>();
-
-                _handlers[ext].Add(handler);
-            }
+            _handlers.Add(handler);
         }
 
         /// <summary>
@@ -69,20 +62,14 @@ namespace Maestro.Base.Services
         /// <returns>A list of registered handlers</returns>
         public IList<IDragDropHandler> GetHandlersForFile(string file)
         {
-            string ext = Path.GetExtension(file).ToUpper();
-            if (_handlers.ContainsKey(ext))
-                return _handlers[ext];
-
-            return new List<IDragDropHandler>();
-        }
-
-        /// <summary>
-        /// Gets the list of file extensions being handled
-        /// </summary>
-        /// <returns></returns>
-        public ICollection<string> GetHandledExtensions()
-        {
-            return _handlers.Keys;
+            var matches = new List<IDragDropHandler>();
+            foreach (var h in _handlers)
+            {
+                string ext = Path.GetExtension(file).ToUpper();
+                if (h.CanHandleFileExtension(ext))
+                    matches.Add(h);
+            }
+            return matches;
         }
     }
 }

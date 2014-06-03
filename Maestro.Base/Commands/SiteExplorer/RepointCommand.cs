@@ -56,9 +56,9 @@ namespace Maestro.Base.Commands.SiteExplorer
             {
                 var selected = exp.SelectedItems[0];
                 var resId = new ResourceIdentifier(selected.ResourceId);
-                if (resId.ResourceType != ResourceTypes.WebLayout &&
-                    resId.ResourceType != ResourceTypes.ApplicationDefinition &&
-                    resId.ResourceType != ResourceTypes.LoadProcedure)
+                if (resId.ResourceType != ResourceTypes.WebLayout.ToString() &&
+                    resId.ResourceType != ResourceTypes.ApplicationDefinition.ToString() &&
+                    resId.ResourceType != ResourceTypes.LoadProcedure.ToString())
                 {
                     DoRepointResource(wb, conn, resId);
                 }

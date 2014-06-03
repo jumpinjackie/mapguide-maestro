@@ -96,7 +96,7 @@ namespace Maestro.Editors.Generic
         /// <summary>
         /// Gets the type of the edited resource
         /// </summary>
-        public ResourceTypes ResourceType
+        public string ResourceType
         {
             get;
             private set;
@@ -107,7 +107,7 @@ namespace Maestro.Editors.Generic
         /// </summary>
         /// <param name="xml"></param>
         /// <param name="type"></param>
-        public void SetXmlContent(string xml, ResourceTypes type)
+        public void SetXmlContent(string xml, string type)
         {
             _ed.XmlContent = xml;
             this.ResourceType = type;

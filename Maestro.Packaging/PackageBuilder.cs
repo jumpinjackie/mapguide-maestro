@@ -425,7 +425,11 @@ namespace Maestro.Packaging
             manifest.Operations = new ResourcePackageManifestOperations();
             manifest.Operations.Operation = new System.ComponentModel.BindingList<ResourcePackageManifestOperationsOperation>();
 
-            var allowed = new List<ResourceTypes>(allowedExtensions);
+            var allowed = new List<string>();
+            foreach (var rt in allowedExtensions)
+            {
+                allowed.Add(rt.ToString());
+            }
             var files = new List<string>();
             var folders = new List<string>();
             var resourceData = new Dictionary<string, List<ResourceDataListResourceData>>();

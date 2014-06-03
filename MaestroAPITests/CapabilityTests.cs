@@ -58,54 +58,54 @@ namespace MaestroAPITests
                         {
                             try
                             {
-                                caps.GetMaxSupportedResourceVersion(type);
+                                caps.GetMaxSupportedResourceVersion(type.ToString());
                                 Assert.Fail("MGOS 1.0.0 doesn't support fusion!");
                             }
                             catch (UnsupportedResourceTypeException ex) 
                             {
-                                Assert.AreEqual(ex.ResourceType, ResourceTypes.ApplicationDefinition);
+                                Assert.AreEqual(ex.ResourceType, ResourceTypes.ApplicationDefinition.ToString());
                             }
                         }
                         break;
                     case ResourceTypes.DrawingSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.FeatureSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.LayerDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.LoadProcedure:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.MapDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.PrintLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolLibrary:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
@@ -113,18 +113,18 @@ namespace MaestroAPITests
                         {
                             try
                             {
-                                caps.GetMaxSupportedResourceVersion(type);
+                                caps.GetMaxSupportedResourceVersion(type.ToString());
                                 Assert.Fail("MGOS 1.0.0 doesn't support advanced symbology!");
                             }
                             catch (UnsupportedResourceTypeException ex) 
                             {
-                                Assert.AreEqual(ex.ResourceType, ResourceTypes.SymbolDefinition);
+                                Assert.AreEqual(ex.ResourceType, ResourceTypes.SymbolDefinition.ToString());
                             }
                         }
                         break;
                     case ResourceTypes.WebLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
@@ -195,54 +195,54 @@ namespace MaestroAPITests
                         {
                             try
                             {
-                                caps.GetMaxSupportedResourceVersion(type);
+                                caps.GetMaxSupportedResourceVersion(type.ToString());
                                 Assert.Fail("MGOS 1.1.0 doesn't support fusion!");
                             }
                             catch (UnsupportedResourceTypeException ex) 
                             {
-                                Assert.AreEqual(ex.ResourceType, ResourceTypes.ApplicationDefinition);
+                                Assert.AreEqual(ex.ResourceType, ResourceTypes.ApplicationDefinition.ToString());
                             }
                         }
                         break;
                     case ResourceTypes.DrawingSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.FeatureSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.LayerDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.LoadProcedure:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.MapDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.PrintLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolLibrary:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
@@ -250,18 +250,18 @@ namespace MaestroAPITests
                         {
                             try
                             {
-                                caps.GetMaxSupportedResourceVersion(type);
+                                caps.GetMaxSupportedResourceVersion(type.ToString());
                                 Assert.Fail("MGOS 1.1.0 doesn't support advanced symbology!");
                             }
                             catch (UnsupportedResourceTypeException ex) 
                             {
-                                Assert.AreEqual(ex.ResourceType, ResourceTypes.SymbolDefinition);
+                                Assert.AreEqual(ex.ResourceType, ResourceTypes.SymbolDefinition.ToString());
                             }
                         }
                         break;
                     case ResourceTypes.WebLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
@@ -332,66 +332,66 @@ namespace MaestroAPITests
                         {
                             try
                             {
-                                caps.GetMaxSupportedResourceVersion(type);
+                                caps.GetMaxSupportedResourceVersion(type.ToString());
                                 Assert.Fail("MGOS 1.2.0 doesn't support fusion!");
                             }
                             catch (UnsupportedResourceTypeException ex) 
                             {
-                                Assert.AreEqual(ex.ResourceType, ResourceTypes.ApplicationDefinition);
+                                Assert.AreEqual(ex.ResourceType, ResourceTypes.ApplicationDefinition.ToString());
                             }
                         }
                         break;
                     case ResourceTypes.DrawingSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.FeatureSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.LayerDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 1, 0));
                         }
                         break;
                     case ResourceTypes.LoadProcedure:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.MapDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.PrintLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolLibrary:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.WebLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
@@ -460,61 +460,61 @@ namespace MaestroAPITests
                 {
                     case ResourceTypes.ApplicationDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.DrawingSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.FeatureSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.LayerDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 2, 0));
                         }
                         break;
                     case ResourceTypes.LoadProcedure:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 1, 0));
                         }
                         break;
                     case ResourceTypes.MapDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.PrintLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolLibrary:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 1, 0));
                         }
                         break;
                     case ResourceTypes.WebLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
@@ -580,61 +580,61 @@ namespace MaestroAPITests
                 {
                     case ResourceTypes.ApplicationDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.DrawingSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.FeatureSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.LayerDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 3, 0));
                         }
                         break;
                     case ResourceTypes.LoadProcedure:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 1, 0));
                         }
                         break;
                     case ResourceTypes.MapDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.PrintLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolLibrary:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 1, 0));
                         }
                         break;
                     case ResourceTypes.WebLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
@@ -700,61 +700,61 @@ namespace MaestroAPITests
                 {
                     case ResourceTypes.ApplicationDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.DrawingSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.FeatureSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.LayerDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 3, 0));
                         }
                         break;
                     case ResourceTypes.LoadProcedure:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 2, 0));
                         }
                         break;
                     case ResourceTypes.MapDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.PrintLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolLibrary:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 1, 0));
                         }
                         break;
                     case ResourceTypes.WebLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 1, 0));
                         }
                         break;
@@ -820,67 +820,67 @@ namespace MaestroAPITests
                 {
                     case ResourceTypes.ApplicationDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.DrawingSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.FeatureSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.LayerDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 3, 0));
                         }
                         break;
                     case ResourceTypes.LoadProcedure:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 2, 0));
                         }
                         break;
                     case ResourceTypes.MapDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 3, 0));
                         }
                         break;
                     case ResourceTypes.PrintLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolLibrary:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 1, 0));
                         }
                         break;
                     case ResourceTypes.WatermarkDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 3, 0));
                         }
                         break;
                     case ResourceTypes.WebLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 1, 0));
                         }
                         break;
@@ -946,67 +946,67 @@ namespace MaestroAPITests
                 {
                     case ResourceTypes.ApplicationDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.DrawingSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.FeatureSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.LayerDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 4, 0));
                         }
                         break;
                     case ResourceTypes.LoadProcedure:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 2, 0));
                         }
                         break;
                     case ResourceTypes.MapDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 4, 0));
                         }
                         break;
                     case ResourceTypes.PrintLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolLibrary:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 4, 0));
                         }
                         break;
                     case ResourceTypes.WatermarkDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 4, 0));
                         }
                         break;
                     case ResourceTypes.WebLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 4, 0));
                         }
                         break;
@@ -1072,67 +1072,67 @@ namespace MaestroAPITests
                 {
                     case ResourceTypes.ApplicationDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.DrawingSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.FeatureSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.LayerDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 4, 0));
                         }
                         break;
                     case ResourceTypes.LoadProcedure:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 2, 0));
                         }
                         break;
                     case ResourceTypes.MapDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 4, 0));
                         }
                         break;
                     case ResourceTypes.PrintLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolLibrary:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 4, 0));
                         }
                         break;
                     case ResourceTypes.WatermarkDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 4, 0));
                         }
                         break;
                     case ResourceTypes.WebLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 4, 0));
                         }
                         break;
@@ -1198,67 +1198,67 @@ namespace MaestroAPITests
                 {
                     case ResourceTypes.ApplicationDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.DrawingSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.FeatureSource:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.LayerDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 4, 0));
                         }
                         break;
                     case ResourceTypes.LoadProcedure:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 2, 0));
                         }
                         break;
                     case ResourceTypes.MapDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 4, 0));
                         }
                         break;
                     case ResourceTypes.PrintLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolLibrary:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(1, 0, 0));
                         }
                         break;
                     case ResourceTypes.SymbolDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 4, 0));
                         }
                         break;
                     case ResourceTypes.WatermarkDefinition:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 4, 0));
                         }
                         break;
                     case ResourceTypes.WebLayout:
                         {
-                            var version = caps.GetMaxSupportedResourceVersion(type);
+                            var version = caps.GetMaxSupportedResourceVersion(type.ToString());
                             Assert.AreEqual(version, new Version(2, 6, 0));
                         }
                         break;

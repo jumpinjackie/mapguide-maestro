@@ -67,11 +67,11 @@ namespace OSGeo.MapGuide.ObjectModels.DrawingSource_1_0_0
         }
 
         [XmlIgnore]
-        public ResourceTypes ResourceType
+        public string ResourceType
         {
             get
             {
-                return ResourceTypes.DrawingSource;
+                return ResourceTypes.DrawingSource.ToString();
             }
         }
 

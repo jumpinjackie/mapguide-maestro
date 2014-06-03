@@ -105,7 +105,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
             if (!ResourceIdentifier.Validate(this.ResourceID))
                 throw new ArgumentException("Invalid resource id: " + this.ResourceID);
 
-            if (ResourceIdentifier.GetResourceType(this.ResourceID) != ResourceTypes.LoadProcedure)
+            if (ResourceIdentifier.GetResourceTypeAsString(this.ResourceID) != ResourceTypes.LoadProcedure.ToString())
                 throw new ArgumentException("Not a load procedure resource id: " + this.ResourceID);
 
             ILoadProcedure proc = (ILoadProcedure)this.Parent.ResourceService.GetResource(resourceID);

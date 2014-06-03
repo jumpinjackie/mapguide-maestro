@@ -78,7 +78,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_resSvc, ResourceTypes.LayerDefinition, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_resSvc, ResourceTypes.LayerDefinition.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {

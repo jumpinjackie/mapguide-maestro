@@ -1689,11 +1689,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         }
 
         [XmlIgnore]
-        public ResourceTypes ResourceType
+        public string ResourceType
         {
             get
             {
-                return ResourceTypes.LayerDefinition;
+                return ResourceTypes.LayerDefinition.ToString();
             }
         }
 

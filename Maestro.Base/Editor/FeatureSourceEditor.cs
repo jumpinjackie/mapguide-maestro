@@ -81,13 +81,13 @@ namespace Maestro.Base.Editor
             foreach (var r in refs.ResourceId)
             {
                 ResourceIdentifier rid = new ResourceIdentifier(r);
-                if (rid.ResourceType == OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition)
+                if (rid.ResourceType == OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition.ToString())
                 {
                     var lrefs = _edsvc.ResourceService.EnumerateResourceReferences(r);
                     foreach (var lr in lrefs.ResourceId)
                     {
                         ResourceIdentifier rid2 = new ResourceIdentifier(lr);
-                        if (rid2.ResourceType == OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition)
+                        if (rid2.ResourceType == OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition.ToString())
                         {
                             var mdf = (IMapDefinition)_edsvc.ResourceService.GetResource(lr);
                             if (mdf.BaseMap != null)

@@ -96,7 +96,7 @@ namespace Maestro.Editors.SymbolDefinition
             return _inner.SelectAnyResource();
         }
 
-        public string SelectResource(ResourceTypes resType)
+        public string SelectResource(string resType)
         {
             return _inner.SelectResource(resType);
         }

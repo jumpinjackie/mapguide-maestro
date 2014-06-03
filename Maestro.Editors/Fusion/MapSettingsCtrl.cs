@@ -179,7 +179,7 @@ namespace Maestro.Editors.Fusion
 
         private void btnAddMap_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_edsvc.ResourceService, ResourceTypes.MapDefinition, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edsvc.ResourceService, ResourceTypes.MapDefinition.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
@@ -237,7 +237,7 @@ namespace Maestro.Editors.Fusion
 
                 foreach (var r in rids)
                 {
-                    if (r.ResourceType != ResourceTypes.MapDefinition)
+                    if (r.ResourceType != ResourceTypes.MapDefinition.ToString())
                         continue;
 
                     AddMapDefinition(r.ToString(), r.Name);

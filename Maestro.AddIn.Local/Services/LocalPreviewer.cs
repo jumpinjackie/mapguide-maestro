@@ -39,9 +39,9 @@ namespace Maestro.AddIn.Local.Services
         public bool IsPreviewable(OSGeo.MapGuide.MaestroAPI.Resource.IResource res)
         {
             var rt = res.ResourceType;
-            return (rt == ResourceTypes.LayerDefinition ||
-                    rt == ResourceTypes.MapDefinition ||
-                    rt == ResourceTypes.WatermarkDefinition);
+            return (rt == ResourceTypes.LayerDefinition.ToString() ||
+                    rt == ResourceTypes.MapDefinition.ToString() ||
+                    rt == ResourceTypes.WatermarkDefinition.ToString());
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Maestro.AddIn.Local.Services
             IMapDefinition mapDef = null;
             var conn = res.CurrentConnection;
 
-            if (res.ResourceType == ResourceTypes.LayerDefinition)
+            if (res.ResourceType == ResourceTypes.LayerDefinition.ToString())
             {
                 var ldf = (ILayerDefinition)res;
                 string wkt;
@@ -73,11 +73,11 @@ namespace Maestro.AddIn.Local.Services
                 edSvc.ResourceService.SetResourceXmlData(resId, ResourceTypeRegistry.Serialize(res));
                 mapDef.AddLayer(null, "PreviewLayer", resId);
             }
-            else if (res.ResourceType == ResourceTypes.MapDefinition)
+            else if (res.ResourceType == ResourceTypes.MapDefinition.ToString())
             {
                 mapDef = (IMapDefinition)res;
             }
-            else if (res.ResourceType == ResourceTypes.WatermarkDefinition)
+            else if (res.ResourceType == ResourceTypes.WatermarkDefinition.ToString())
             {
                 string resId = "Session:" + edSvc.SessionID + "//" + Guid.NewGuid() + "." + res.ResourceType.ToString();
                 edSvc.ResourceService.SetResourceXmlData(resId, ResourceTypeRegistry.Serialize(res));

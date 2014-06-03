@@ -91,11 +91,11 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0
 #endif
 
         [XmlIgnore]
-        public ResourceTypes ResourceType
+        public string ResourceType
         {
             get
             {
-                return ResourceTypes.WatermarkDefinition;
+                return ResourceTypes.WatermarkDefinition.ToString();
             }
         }
 

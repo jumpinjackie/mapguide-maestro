@@ -110,7 +110,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <returns>
         /// 	<c>true</c> if the specified resource types has validator; otherwise, <c>false</c>.
         /// </returns>
-        public static bool HasValidator(ResourceTypes resourceTypes, Version version)
+        public static bool HasValidator(string resourceTypes, Version version)
         {
             bool found = false;
             var find = new ResourceTypeDescriptor(resourceTypes, version.ToString());

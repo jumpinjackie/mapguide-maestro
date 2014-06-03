@@ -424,15 +424,15 @@ namespace Maestro.Base.UI
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (m_item.ResourceType == ResourceTypes.FeatureSource)
+            if (m_item.ResourceType == ResourceTypes.FeatureSource.ToString())
             {
                 ProfileFeatureSource(m_item as IFeatureSource);
             }
-            else if (m_item.ResourceType == ResourceTypes.LayerDefinition)
+            else if (m_item.ResourceType == ResourceTypes.LayerDefinition.ToString())
             {
                 ProfileLayerDefinition(m_item as ILayerDefinition);
             }
-            else if (m_item.ResourceType == ResourceTypes.MapDefinition)
+            else if (m_item.ResourceType == ResourceTypes.MapDefinition.ToString())
             {
                 ProfileMapDefinition(m_item as IMapDefinition);
             }

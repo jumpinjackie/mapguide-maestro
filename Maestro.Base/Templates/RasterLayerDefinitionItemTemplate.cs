@@ -51,7 +51,7 @@ namespace Maestro.Base.Templates
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
-            using (var picker = new ResourcePicker(conn.ResourceService, ResourceTypes.FeatureSource, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(conn.ResourceService, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
             {
                 picker.SetStartingPoint(startPoint);
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)

@@ -68,11 +68,11 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
         }
 
         [XmlIgnore]
-        public ResourceTypes ResourceType
+        public string ResourceType
         {
             get
             {
-                return ResourceTypes.FeatureSource;
+                return ResourceTypes.FeatureSource.ToString();
             }
         }
 

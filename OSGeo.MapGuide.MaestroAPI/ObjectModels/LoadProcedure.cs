@@ -76,11 +76,11 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0
         }
 
         [XmlIgnore]
-        public ResourceTypes ResourceType
+        public string ResourceType
         {
             get
             {
-                return ResourceTypes.LoadProcedure;
+                return ResourceTypes.LoadProcedure.ToString();
             }
         }
 

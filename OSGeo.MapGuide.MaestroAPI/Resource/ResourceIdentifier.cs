@@ -205,9 +205,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <summary>
         /// Gets the resource type
         /// </summary>
-        public ResourceTypes ResourceType
+        public string ResourceType
         {
-            get { return GetResourceType(m_id); }
+            get { return GetResourceTypeAsString(m_id); }
         }
 
         /// <summary>
@@ -381,11 +381,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         }
 
         /// <summary>
-        /// Gets the type of the resource.
+        /// Gets the type of this resource.
+        /// </summary>
+        /// <remarks>Use this method over <see cref="M:OSGeo.MapGuide.MaestroAPI.Resource.ResourceIdentifier.GetResourceType"/> if the Maestro API may not be aware of the new resource type</remarks>
+        /// <param name="identifier"></param>
+        /// <returns></returns>
+        public static string GetResourceTypeAsString(string identifier)
+        {
+            return GetExtension(identifier);
+        }
+
+        /// <summary>
+        /// Gets the known type of the resource.
         /// </summary>
         /// <param name="identifier">The identifier.</param>
         /// <returns></returns>
-        public static ResourceTypes GetResourceType(string identifier)
+        private static ResourceTypes GetResourceType(string identifier)
         {
             var ext = GetExtension(identifier);
             if (ext == "Map") //NOXLATE
@@ -452,8 +463,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// Determines if a resource identifier is valid
         /// </summary>
         /// <param name="identifier">The identifier to validate</param>
+        /// <param name="strict">If true, will check if the type of the resource id is one that is supported by Maestro</param>
         /// <returns>A value indicating if the identifier is valid</returns>
-        public static bool Validate(string identifier)
+        public static bool Validate(string identifier, bool strict = true)
         {
             try
             {
@@ -467,7 +479,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
                 if (IsFolderResource(identifier))
                     return true;
 
-                var rt = GetResourceType(identifier);
+                if (strict)
+                {
+                    var rt = GetResourceType(identifier);
+                }
             }
             catch
             {
@@ -565,10 +580,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// Gets the parent folder.
         /// </summary>
         /// <param name="identifier">The identifier.</param>
+        /// <param name="strict">If true, the type of the identifier must be one that is supported by Maestro</param>
         /// <returns></returns>
-        public static string GetParentFolder(string identifier)
+        public static string GetParentFolder(string identifier, bool strict = true)
         {
-            if (!Validate(identifier))
+            if (!Validate(identifier, strict))
                 throw new Exception(Strings.ErrorInvalidResourceIdentifier);
             identifier = Normalize(identifier);
 

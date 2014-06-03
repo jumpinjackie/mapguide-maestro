@@ -51,7 +51,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
         {
             Check.NotNull(conn, "conn"); //NOXLATE
             Check.NotEmpty(symbolLibId, "symbolLibId"); //NOXLATE
-            Check.Precondition(ResourceIdentifier.GetResourceType(symbolLibId) == ResourceTypes.SymbolLibrary, "ResourceIdentifier.GetResourceType(symbolLibId) == ResourceTypes.SymbolLibrary"); //NOXLATE
+            Check.Precondition(ResourceIdentifier.GetResourceTypeAsString(symbolLibId) == ResourceTypes.SymbolLibrary.ToString(), "ResourceIdentifier.GetResourceTypeAsString(symbolLibId) == ResourceTypes.SymbolLibrary.ToString()"); //NOXLATE
             Check.Precondition(Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Drawing) >= 0, "Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Drawing) >= 0"); //NOXLATE
             _symbolLibId = symbolLibId;
             _conn = conn;

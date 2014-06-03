@@ -78,9 +78,9 @@ namespace Maestro.Editors.Preview
 
         private static bool IsLocalPreviewableType(IResource res)
         {
-            return res.ResourceType == ResourceTypes.LayerDefinition ||
-                   res.ResourceType == ResourceTypes.MapDefinition ||
-                   res.ResourceType == ResourceTypes.WatermarkDefinition;
+            return res.ResourceType == ResourceTypes.LayerDefinition.ToString() ||
+                   res.ResourceType == ResourceTypes.MapDefinition.ToString() ||
+                   res.ResourceType == ResourceTypes.WatermarkDefinition.ToString();
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Maestro.Editors.Preview
                     IMapDefinition previewMdf = null;
                     switch (res.ResourceType)
                     {
-                        case ResourceTypes.LayerDefinition:
+                        case "LayerDefinition":
                             {
                                 ILayerDefinition ldf = (ILayerDefinition)res;
                                 string layerName = string.Empty;
@@ -126,12 +126,12 @@ namespace Maestro.Editors.Preview
                                 previewMdf = ResourcePreviewEngine.CreateLayerPreviewMapDefinition(ldf, edSvc.SessionID, layerName, conn);
                             }
                             break;
-                        case ResourceTypes.WatermarkDefinition:
+                        case "WatermarkDefinition":
                             {
                                 previewMdf = ResourcePreviewEngine.CreateWatermarkPreviewMapDefinition((IWatermarkDefinition)res);
                             }
                             break;
-                        case ResourceTypes.MapDefinition:
+                        case "MapDefinition":
                             {
                                 previewMdf = (IMapDefinition)res;
                             }

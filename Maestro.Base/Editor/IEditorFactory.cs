@@ -52,7 +52,7 @@ namespace Maestro.Base.Editor
 
         public FusionEditorFactory()
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition, "1.0.0"); //NOXLATE
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition.ToString(), "1.0.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -67,7 +67,7 @@ namespace Maestro.Base.Editor
 
         public DrawingSourceEditorFactory() 
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.DrawingSource, "1.0.0"); //NOXLATE
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.DrawingSource.ToString(), "1.0.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -82,7 +82,7 @@ namespace Maestro.Base.Editor
 
         public FeatureSourceEditorFactory() 
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.FeatureSource, "1.0.0"); //NOXLATE
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.FeatureSource.ToString(), "1.0.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -97,7 +97,7 @@ namespace Maestro.Base.Editor
 
         public LayerDefinitionEditorFactory() 
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition, "1.0.0"); //NOXLATE
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition.ToString(), "1.0.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -112,7 +112,7 @@ namespace Maestro.Base.Editor
 
         public LoadProcedureEditorFactory() 
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LoadProcedure, "1.0.0"); //NOXLATE
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LoadProcedure.ToString(), "1.0.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -127,7 +127,7 @@ namespace Maestro.Base.Editor
 
         public MapDefinitionEditorFactory() 
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition, "1.0.0"); //NOXLATE
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition.ToString(), "1.0.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -142,7 +142,7 @@ namespace Maestro.Base.Editor
 
         public PrintLayoutEditorFactory() 
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.PrintLayout, "1.0.0"); //NOXLATE
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.PrintLayout.ToString(), "1.0.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -157,7 +157,7 @@ namespace Maestro.Base.Editor
         
         public SymbolDefinitionEditorFactory() 
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.SymbolDefinition, "1.0.0"); //NOXLATE
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.SymbolDefinition.ToString(), "1.0.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()
@@ -172,7 +172,7 @@ namespace Maestro.Base.Editor
 
         public WebLayoutEditorFactory() 
         {
-            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout, "1.0.0"); //NOXLATE
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout.ToString(), "1.0.0"); //NOXLATE
         }
 
         public IEditorViewContent Create()

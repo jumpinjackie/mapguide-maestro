@@ -51,7 +51,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             if (context.IsAlreadyValidated(resource.ResourceID))
                 return null;
 
-            if (resource.ResourceType != ResourceTypes.FeatureSource)
+            if (resource.ResourceType != ResourceTypes.FeatureSource.ToString())
                 return null;
 
             List<ValidationIssue> issues = new List<ValidationIssue>();
@@ -219,7 +219,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <value></value>
         public ResourceTypeDescriptor SupportedResourceAndVersion
         {
-            get { return new ResourceTypeDescriptor(ResourceTypes.FeatureSource, "1.0.0"); } //NOXLATE
+            get { return new ResourceTypeDescriptor(ResourceTypes.FeatureSource.ToString(), "1.0.0"); } //NOXLATE
         }
     }
 }

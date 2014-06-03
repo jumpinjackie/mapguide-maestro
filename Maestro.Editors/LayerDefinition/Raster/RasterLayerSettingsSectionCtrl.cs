@@ -105,7 +105,7 @@ namespace Maestro.Editors.LayerDefinition.Raster
 
         private void btnBrowseFeatureSource_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_edsvc.ResourceService, ResourceTypes.FeatureSource, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edsvc.ResourceService, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {

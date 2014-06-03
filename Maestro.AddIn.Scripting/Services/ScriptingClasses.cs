@@ -167,7 +167,7 @@ namespace Maestro.AddIn.Scripting.Services
         {
             Func<string> picker = () =>
             {
-                using (var diag = new ResourcePicker(conn.ResourceService, (ResourceTypes)Enum.Parse(typeof(ResourceTypes), resourceType), ResourcePickerMode.OpenResource))
+                using (var diag = new ResourcePicker(conn.ResourceService, resourceType, ResourcePickerMode.OpenResource))
                 {
                     if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
@@ -198,7 +198,7 @@ namespace Maestro.AddIn.Scripting.Services
         {
             Func<string> picker = () =>
             {
-                using (var diag = new ResourcePicker(conn.ResourceService, (ResourceTypes)Enum.Parse(typeof(ResourceTypes), resourceType), ResourcePickerMode.SaveResource))
+                using (var diag = new ResourcePicker(conn.ResourceService, resourceType, ResourcePickerMode.SaveResource))
                 {
                     if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {

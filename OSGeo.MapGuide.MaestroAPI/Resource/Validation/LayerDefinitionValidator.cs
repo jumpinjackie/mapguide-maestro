@@ -38,7 +38,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <value>The supported resource and version.</value>
         public override ResourceTypeDescriptor SupportedResourceAndVersion
         {
-            get { return new ResourceTypeDescriptor(ResourceTypes.LayerDefinition, "1.0.0"); }
+            get { return new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), "1.0.0"); }
         }
     }
 }

@@ -47,7 +47,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             if (context.IsAlreadyValidated(resource.ResourceID))
                 return null;
 
-            if (resource.ResourceType != OSGeo.MapGuide.MaestroAPI.ResourceTypes.LoadProcedure)
+            if (resource.ResourceType != OSGeo.MapGuide.MaestroAPI.ResourceTypes.LoadProcedure.ToString())
                 return null;
 
             if (resource.ResourceVersion != new Version(1, 0, 0))

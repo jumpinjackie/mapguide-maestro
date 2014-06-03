@@ -55,7 +55,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             if (context.IsAlreadyValidated(resource.ResourceID))
                 return null;
 
-            if (resource.ResourceType != ResourceTypes.PrintLayout)
+            if (resource.ResourceType != ResourceTypes.PrintLayout.ToString())
                 return null;
 
             //TODO: What problems could there possibly be?

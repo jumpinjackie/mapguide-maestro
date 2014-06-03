@@ -50,7 +50,7 @@ namespace Maestro.Base.UI
             this.ModifiedDate = item.ModifiedDate;
             this.Owner = item.Owner;
             this.ResourceId = item.ResourceId;
-            this.ResourceType = item.ResourceType.ToString();
+            this.ResourceType = item.ResourceType;
             this.Name = item.Name; //set name last because update logic requires other properties be set already
             
 
@@ -62,37 +62,37 @@ namespace Maestro.Base.UI
             {
                 switch (item.ResourceType)
                 {
-                    case ResourceTypes.DrawingSource:
+                    case "DrawingSource":
                         this.Icon = Properties.Resources.blueprints;
                         break;
-                    case ResourceTypes.FeatureSource:
+                    case "FeatureSource":
                         this.Icon = Properties.Resources.database_share;
                         break;
-                    case ResourceTypes.Folder:
+                    case "Folder":
                         this.Icon = Properties.Resources.folder_horizontal;
                         break;
-                    case ResourceTypes.LayerDefinition:
+                    case "LayerDefinition":
                         this.Icon = Properties.Resources.layer;
                         break;
-                    case ResourceTypes.MapDefinition:
+                    case "MapDefinition":
                         this.Icon = Properties.Resources.map;
                         break;
-                    case ResourceTypes.WebLayout:
+                    case "WebLayout":
                         this.Icon = Properties.Resources.application_browser;
                         break;
-                    case ResourceTypes.ApplicationDefinition:
+                    case "ApplicationDefinition":
                         this.Icon = Properties.Resources.applications_stack;
                         break;
-                    case ResourceTypes.SymbolLibrary:
+                    case "SymbolLibrary":
                         this.Icon = Properties.Resources.images_stack;
                         break;
-                    case ResourceTypes.PrintLayout:
+                    case "PrintLayout":
                         this.Icon = Properties.Resources.printer;
                         break;
-                    case ResourceTypes.SymbolDefinition:
+                    case "SymbolDefinition":
                         this.Icon = Properties.Resources.marker;
                         break;
-                    case ResourceTypes.WatermarkDefinition:
+                    case "WatermarkDefinition":
                         this.Icon = Properties.Resources.water;
                         break;
                     default:
@@ -266,7 +266,7 @@ namespace Maestro.Base.UI
                     if (IsRoot)
                         return;
 
-                    string parentid = ResourceIdentifier.GetParentFolder(this.ResourceId);
+                    string parentid = ResourceIdentifier.GetParentFolder(this.ResourceId, false);
                     this.ResourceId = parentid + this.NameQualified + ((IsFolder) ? "/" : string.Empty); //NOXLATE
                     NotifyNodesChanged();
                 }
@@ -682,7 +682,7 @@ namespace Maestro.Base.UI
             if (!ResourceIdentifier.IsFolderResource(resId))
             {
                 //Fix extension to last component
-                components[components.Length - 1] = components[components.Length - 1] + "." + ResourceIdentifier.GetResourceType(resId).ToString();
+                components[components.Length - 1] = components[components.Length - 1] + "." + ResourceIdentifier.GetResourceTypeAsString(resId);
             }
             RepositoryItem current = rootNode;
             for (int i = 0; i < components.Length; i++)

@@ -117,7 +117,7 @@ namespace Maestro.Editors
         {
             if (_editCopy == null)
             {
-                string copy = _conn.GenerateSessionResourceId(ResourceIdentifier.GetResourceType(this.ResourceID));
+                string copy = _conn.GenerateSessionResourceId(ResourceIdentifier.GetResourceTypeAsString(this.ResourceID));
 
                 _conn.ResourceService.CopyResource(this.ResourceID, copy, true);
 
@@ -204,7 +204,7 @@ namespace Maestro.Editors
         /// </summary>
         /// <param name="resType"></param>
         /// <returns></returns>
-        public string SelectResource(OSGeo.MapGuide.MaestroAPI.ResourceTypes resType)
+        public string SelectResource(string resType)
         {
             var picker = new ResourcePicker(_conn.ResourceService, resType, ResourcePickerMode.OpenResource);
             if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)

@@ -66,11 +66,11 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolLibrary_1_0_0
         }
 
         [XmlIgnore]
-        public ResourceTypes ResourceType
+        public string ResourceType
         {
             get
             {
-                return ResourceTypes.SymbolLibrary;
+                return ResourceTypes.SymbolLibrary.ToString();
             }
         }
 

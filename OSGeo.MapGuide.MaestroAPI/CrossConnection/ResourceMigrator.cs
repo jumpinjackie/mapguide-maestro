@@ -212,7 +212,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
             int progress = 0;
             foreach (var resId in resourceIds)
             {
-                string targetId = folderId + ResourceIdentifier.GetName(resId) + "." + ResourceIdentifier.GetResourceType(resId); //NOXLATE
+                string targetId = folderId + ResourceIdentifier.GetName(resId) + "." + ResourceIdentifier.GetResourceTypeAsString(resId); //NOXLATE
                 string message = string.Empty;
                 IResource res = _source.ResourceService.GetResource(resId);
 
@@ -294,7 +294,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
             int progress = 0;
             foreach (var resId in resourceIds)
             {
-                string targetId = folderId + ResourceIdentifier.GetName(resId) + "." + ResourceIdentifier.GetResourceType(resId); //NOXLATE
+                string targetId = folderId + ResourceIdentifier.GetName(resId) + "." + ResourceIdentifier.GetResourceTypeAsString(resId); //NOXLATE
                 string message = string.Empty;
                 IResource res = _source.ResourceService.GetResource(resId);
 

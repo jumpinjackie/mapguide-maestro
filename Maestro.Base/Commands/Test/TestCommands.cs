@@ -57,7 +57,7 @@ namespace Maestro.Base.Commands.Test
             var mgr = ServiceRegistry.GetService<ServerConnectionManager>();
             var conn = mgr.GetConnection(exp.ConnectionName);
 
-            var picker = new ResourcePicker(conn.ResourceService, ResourceTypes.FeatureSource, ResourcePickerMode.SaveResource);
+            var picker = new ResourcePicker(conn.ResourceService, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.SaveResource);
             if (picker.ShowDialog(wb) == System.Windows.Forms.DialogResult.OK)
             {
                 MessageService.ShowMessage(picker.ResourceID);

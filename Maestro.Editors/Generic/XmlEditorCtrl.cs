@@ -104,8 +104,11 @@ namespace Maestro.Editors.Generic
         /// <param name="xsdPath"></param>
         public void LoadAutoCompletionData(string xsdPath)
         {
-            txtXmlContent.SchemaCompletionDataItems = Maestro.Editors.Generic.XmlEditor.AutoCompletion.XmlSchemaManager.Instance.SchemaCompletionDataItems;
-            txtXmlContent.DefaultSchemaCompletionData = new XmlEditor.AutoCompletion.XmlSchemaCompletionData(xsdPath);
+            if (File.Exists(xsdPath))
+            {
+                txtXmlContent.SchemaCompletionDataItems = Maestro.Editors.Generic.XmlEditor.AutoCompletion.XmlSchemaManager.Instance.SchemaCompletionDataItems;
+                txtXmlContent.DefaultSchemaCompletionData = new XmlEditor.AutoCompletion.XmlSchemaCompletionData(xsdPath);
+            }
         }
         
         private string _origText;

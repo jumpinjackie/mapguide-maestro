@@ -1587,7 +1587,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 
         private void btnBrowseFeatureSource_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(m_editor.ResourceService, ResourceTypes.FeatureSource, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(m_editor.ResourceService, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {

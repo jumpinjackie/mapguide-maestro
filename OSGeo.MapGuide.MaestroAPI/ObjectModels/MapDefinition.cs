@@ -166,11 +166,11 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
         }
 
         [XmlIgnore]
-        public virtual ResourceTypes ResourceType
+        public virtual string ResourceType
         {
             get
             {
-                return ResourceTypes.MapDefinition;
+                return ResourceTypes.MapDefinition.ToString();
             }
         }
 
@@ -278,7 +278,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
             Check.NotEmpty(layerName, "layerName"); //NOXLATE
             Check.NotEmpty(layerDefinitionId, "layerDefinitionId"); //NOXLATE
             Check.Precondition(ResourceIdentifier.Validate(layerDefinitionId), "ResourceIdentifier.Validate(layerDefinitionId)"); //NOXLATE
-            Check.Precondition(ResourceIdentifier.GetResourceType(layerDefinitionId) == ResourceTypes.LayerDefinition, "ResourceIdentifier.GetResourceType(layerDefinitionId) == ResourceTypes.LayerDefinition"); //NOXLATE
+            Check.Precondition(ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString(), "ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString()"); //NOXLATE
             if (!string.IsNullOrEmpty(groupName))
             {
                 Check.Precondition(this.GetGroupByName(groupName) != null, "There should be an existing group for <groupName>"); //NOXLATE
@@ -348,7 +348,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
             Check.NotEmpty(layerName, "layerName"); //NOXLATE
             Check.NotEmpty(layerDefinitionId, "layerDefinitionId"); //NOXLATE
             Check.Precondition(ResourceIdentifier.Validate(layerDefinitionId), "ResourceIdentifier.Validate(layerDefinitionId)"); //NOXLATE
-            Check.Precondition(ResourceIdentifier.GetResourceType(layerDefinitionId) == ResourceTypes.LayerDefinition, "ResourceIdentifier.GetResourceType(layerDefinitionId) == ResourceTypes.LayerDefinition"); //NOXLATE
+            Check.Precondition(ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString(), "ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString()"); //NOXLATE
             if (!string.IsNullOrEmpty(groupName))
             {
                 Check.NotNull(this.GetGroupByName(groupName), "Group for <groupName>"); //NOXLATE
@@ -374,7 +374,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
             Check.NotEmpty(layerName, "layerName"); //NOXLATE
             Check.NotEmpty(layerDefinitionId, "layerDefinitionId"); //NOXLATE
             Check.Precondition(ResourceIdentifier.Validate(layerDefinitionId), "ResourceIdentifier.Validate(layerDefinitionId)"); //NOXLATE
-            Check.Precondition(ResourceIdentifier.GetResourceType(layerDefinitionId) == ResourceTypes.LayerDefinition, "ResourceIdentifier.GetResourceType(layerDefinitionId) == ResourceTypes.LayerDefinition"); //NOXLATE
+            Check.Precondition(ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString(), "ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString()"); //NOXLATE
             if (!string.IsNullOrEmpty(groupName))
             {
                 Check.NotNull(this.GetGroupByName(groupName), "Group for <groupName>"); //NOXLATE

@@ -93,33 +93,33 @@ namespace Maestro.Editors
         /// </summary>
         /// <param name="resType">Type of the resource.</param>
         /// <returns></returns>
-        public static int GetImageIndexForResourceType(ResourceTypes resType)
+        public static int GetImageIndexForResourceType(string resType)
         {
             switch (resType)
             {
-                case ResourceTypes.ApplicationDefinition:
+                case "ApplicationDefinition":
                     return RES_APPLICATIONDEFINITION;
-                case ResourceTypes.DrawingSource:
+                case "DrawingSource":
                     return RES_DRAWINGSOURCE;
-                case ResourceTypes.FeatureSource:
+                case "FeatureSource":
                     return RES_FEATURESOURCE;
-                case ResourceTypes.Folder:
+                case "Folder":
                     return RES_FOLDER;
-                case ResourceTypes.LayerDefinition:
+                case "LayerDefinition":
                     return RES_LAYERDEFINITION;
-                case ResourceTypes.LoadProcedure:
+                case "LoadProcedure":
                     return RES_LOADPROCEDURE;
-                case ResourceTypes.MapDefinition:
+                case "MapDefinition":
                     return RES_MAPDEFINITION;
-                case ResourceTypes.PrintLayout:
+                case "PrintLayout":
                     return RES_PRINTLAYOUT;
-                case ResourceTypes.SymbolDefinition:
+                case "SymbolDefinition":
                     return RES_SYMBOLDEFINITION;
-                case ResourceTypes.SymbolLibrary:
+                case "SymbolLibrary":
                     return RES_SYMBOLLIBRARY;
-                case ResourceTypes.WatermarkDefinition:
+                case "WatermarkDefinition":
                     return RES_WATERMARK;
-                case ResourceTypes.WebLayout:
+                case "WebLayout":
                     return RES_WEBLAYOUT;
                 default:
                     throw new ArgumentException();

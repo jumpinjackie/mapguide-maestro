@@ -128,7 +128,7 @@ namespace Maestro.Editors.SymbolDefinition
         private void symbolReferenceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var picker = new ResourcePicker(_edSvc.ResourceService,
-                                                   ResourceTypes.SymbolDefinition,
+                                                   ResourceTypes.SymbolDefinition.ToString(),
                                                    ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)

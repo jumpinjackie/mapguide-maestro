@@ -47,7 +47,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             if (context.IsAlreadyValidated(resource.ResourceID))
                 return null;
 
-            if (resource.ResourceType != ResourceTypes.SymbolDefinition)
+            if (resource.ResourceType != ResourceTypes.SymbolDefinition.ToString())
                 return null;
 
             var issues = new List<ValidationIssue>();
