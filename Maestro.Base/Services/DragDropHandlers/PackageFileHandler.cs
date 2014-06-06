@@ -71,9 +71,14 @@ namespace Maestro.Base.Services.DragDropHandlers
             }
         }
 
+        public override string ToString()
+        {
+            return Strings.MgpHandlerAction;
+        }
+
         public bool CanHandleFileExtension(string fileExtension)
         {
-            return Array.IndexOf(extensions, fileExtension) >= 0;
+            return HandlerUtil.ExtensionInList(extensions, fileExtension);
         }
     }
 }

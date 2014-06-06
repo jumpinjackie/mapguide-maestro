@@ -1781,6 +1781,24 @@ namespace Maestro.Base {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select File Handler.
+        /// </summary>
+        internal static string SelectFileHandler {
+            get {
+                return ResourceManager.GetString("SelectFileHandler", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select File Handler to handle this action.
+        /// </summary>
+        internal static string SelectFileHandlerDesc {
+            get {
+                return ResourceManager.GetString("SelectFileHandlerDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select the user template path.
         /// </summary>
         internal static string SelectTemplatePath {

@@ -73,6 +73,11 @@ namespace Maestro.Base.Services.DragDropHandlers
             }
         }
 
+        public override string ToString()
+        {
+            return Strings.SdfHandlerAction;
+        }
+
         public bool CanHandleFileExtension(string fileExtension)
         {
             return HandlerUtil.ExtensionInList(extensions, fileExtension);

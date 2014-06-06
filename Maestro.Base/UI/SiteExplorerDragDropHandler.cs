@@ -20,11 +20,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using System.Windows.Forms;
 using Maestro.Base.Services;
 using Maestro.Shared.UI;
 using Aga.Controls.Tree;
 using OSGeo.MapGuide.MaestroAPI;
+using Maestro.Editors.Common;
 
 namespace Maestro.Base.UI
 {
@@ -96,6 +98,15 @@ namespace Maestro.Base.UI
                     if (handlers.Count > 1)
                     {
                         //Resolve which handler to use
+                        var handler = GenericItemSelectionDialog.SelectItem<IDragDropHandler>(Strings.SelectFileHandler, Strings.SelectFileHandlerDesc, handlers.ToArray());
+                        if (handler != null)
+                        {
+                            using (new WaitCursor(Workbench.Instance))
+                            {
+                                if (handler.HandleDrop(conn, file, folderId))
+                                    refresh = true;
+                            }
+                        }
                     }
                 }
             }

@@ -63,9 +63,9 @@ namespace Maestro.Base.Services
         public IList<IDragDropHandler> GetHandlersForFile(string file)
         {
             var matches = new List<IDragDropHandler>();
+            string ext = Path.GetExtension(file).ToUpper();
             foreach (var h in _handlers)
             {
-                string ext = Path.GetExtension(file).ToUpper();
                 if (h.CanHandleFileExtension(ext))
                     matches.Add(h);
             }

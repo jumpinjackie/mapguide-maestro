@@ -91,6 +91,11 @@ namespace Maestro.Base.Services.DragDropHandlers
             }
         }
 
+        public override string ToString()
+        {
+            return Strings.ShpHandlerAction;
+        }
+
         public bool CanHandleFileExtension(string fileExtension)
         {
             return HandlerUtil.ExtensionInList(extensions, fileExtension);

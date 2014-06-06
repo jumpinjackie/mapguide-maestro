@@ -44,6 +44,31 @@ namespace Maestro.Editors.Common
         /// <param name="title"></param>
         /// <param name="prompt"></param>
         /// <param name="items"></param>
+        /// <returns></returns>
+        public static T SelectItem<T>(string title, string prompt, T[] items) where T : class
+        {
+            var dlg = new GenericItemSelectionDialog();
+            if (!string.IsNullOrEmpty(title))
+                dlg.Text = title;
+            if (!string.IsNullOrEmpty(prompt))
+                dlg.lblPrompt.Text = prompt;
+
+            dlg.lstItems.DataSource = items;
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                return (T)dlg.lstItems.SelectedItem;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Displays a dialog to select an item from an array of items
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="title"></param>
+        /// <param name="prompt"></param>
+        /// <param name="items"></param>
         /// <param name="displayMember"></param>
         /// <param name="valueMember"></param>
         /// <returns></returns>
@@ -104,30 +129,6 @@ namespace Maestro.Editors.Common
                 return values.ToArray();
             }
             return new T[0];
-        }
-
-        /// <summary>
-        /// Displays a dialog to select a string from an array of strings
-        /// </summary>
-        /// <param name="title"></param>
-        /// <param name="prompt"></param>
-        /// <param name="items"></param>
-        /// <returns></returns>
-        public static string SelectItem(string title, string prompt, string[] items)
-        {
-            var dlg = new GenericItemSelectionDialog();
-            if (!string.IsNullOrEmpty(title))
-                dlg.Text = title;
-            if (!string.IsNullOrEmpty(prompt))
-                dlg.lblPrompt.Text = prompt;
-
-            dlg.lstItems.DataSource = items;
-
-            if (dlg.ShowDialog() == DialogResult.OK)
-            {
-                return dlg.lstItems.SelectedItem.ToString();
-            }
-            return null;
         }
 
         /// <summary>

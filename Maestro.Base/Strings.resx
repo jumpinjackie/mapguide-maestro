@@ -1001,4 +1001,10 @@ Error message: {0}</value>
   <data name="EditedResource" xml:space="preserve">
     <value>Currently Edited Resource</value>
   </data>
+  <data name="SelectFileHandler" xml:space="preserve">
+    <value>Select File Handler</value>
+  </data>
+  <data name="SelectFileHandlerDesc" xml:space="preserve">
+    <value>Select File Handler to handle this action</value>
+  </data>
 </root>
