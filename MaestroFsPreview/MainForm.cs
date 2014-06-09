@@ -50,7 +50,7 @@ namespace MaestroFsPreview
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edSvc.CurrentConnection, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
@@ -73,8 +73,9 @@ namespace MaestroFsPreview
 
         private void InitPreview()
         {
-            _fs = (IFeatureSource)_edSvc.ResourceService.GetResource(this.FeatureSourceID);
-            var caps = _edSvc.FeatureService.GetProviderCapabilities(_fs.Provider);
+            var conn = _edSvc.CurrentConnection;
+            _fs = (IFeatureSource)conn.ResourceService.GetResource(this.FeatureSourceID);
+            var caps = conn.FeatureService.GetProviderCapabilities(_fs.Provider);
             localFsPreviewCtrl.SupportsSQL = caps.Connection.SupportsSQL;
             localFsPreviewCtrl.ReloadTree(this.FeatureSourceID, caps);
         }

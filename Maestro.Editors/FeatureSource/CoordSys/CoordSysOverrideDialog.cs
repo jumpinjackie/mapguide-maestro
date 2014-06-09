@@ -56,7 +56,7 @@ namespace Maestro.Editors.FeatureSource.CoordSys
             : this()
         {
             _ed = ed;
-            var list = _ed.FeatureService.GetSpatialContextInfo(_ed.EditedResourceID, false);
+            var list = _ed.CurrentConnection.FeatureService.GetSpatialContextInfo(_ed.EditedResourceID, false);
             foreach (var sc in list.SpatialContext)
             {
                 cmbName.Items.Add(sc.Name);

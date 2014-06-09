@@ -77,19 +77,20 @@ namespace Maestro.Base.Editor
         protected override void OnBeforeSave(object sender, CancelEventArgs e)
         {
             List<string> affectedMapDefinitions = new List<string>();
-            var refs = _edsvc.ResourceService.EnumerateResourceReferences(_edsvc.ResourceID);
+            var resSvc = _edsvc.CurrentConnection.ResourceService;
+            var refs = resSvc.EnumerateResourceReferences(_edsvc.ResourceID);
             foreach (var r in refs.ResourceId)
             {
                 ResourceIdentifier rid = new ResourceIdentifier(r);
                 if (rid.ResourceType == OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition.ToString())
                 {
-                    var lrefs = _edsvc.ResourceService.EnumerateResourceReferences(r);
+                    var lrefs = resSvc.EnumerateResourceReferences(r);
                     foreach (var lr in lrefs.ResourceId)
                     {
                         ResourceIdentifier rid2 = new ResourceIdentifier(lr);
                         if (rid2.ResourceType == OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition.ToString())
                         {
-                            var mdf = (IMapDefinition)_edsvc.ResourceService.GetResource(lr);
+                            var mdf = (IMapDefinition)resSvc.GetResource(lr);
                             if (mdf.BaseMap != null)
                             {
                                 foreach (var blg in mdf.BaseMap.BaseMapLayerGroup)

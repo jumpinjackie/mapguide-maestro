@@ -76,7 +76,7 @@ namespace Maestro.Base.Commands.SiteExplorer
 
         private static void DoRepointResource(Workbench wb, IServerConnection conn, ResourceIdentifier resId)
         {
-            var diag = new RepointerDialog(resId, conn.ResourceService);
+            var diag = new RepointerDialog(resId, conn);
             if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string srcId = diag.Source;

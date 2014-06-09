@@ -48,7 +48,7 @@ namespace Maestro.Base.Commands
             try
             {
                 ed.SyncSessionCopy();
-                var set = XmlCompareUtil.PrepareForComparison(edSvc.ResourceService,
+                var set = XmlCompareUtil.PrepareForComparison(edSvc.CurrentConnection.ResourceService,
                                                               edSvc.ResourceID,
                                                               edSvc.EditedResourceID);
                 sLF = set.Source;

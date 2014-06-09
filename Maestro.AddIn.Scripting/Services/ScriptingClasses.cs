@@ -167,7 +167,7 @@ namespace Maestro.AddIn.Scripting.Services
         {
             Func<string> picker = () =>
             {
-                using (var diag = new ResourcePicker(conn.ResourceService, resourceType, ResourcePickerMode.OpenResource))
+                using (var diag = new ResourcePicker(conn, resourceType, ResourcePickerMode.OpenResource))
                 {
                     if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
@@ -198,7 +198,7 @@ namespace Maestro.AddIn.Scripting.Services
         {
             Func<string> picker = () =>
             {
-                using (var diag = new ResourcePicker(conn.ResourceService, resourceType, ResourcePickerMode.SaveResource))
+                using (var diag = new ResourcePicker(conn, resourceType, ResourcePickerMode.SaveResource))
                 {
                     if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
@@ -228,7 +228,7 @@ namespace Maestro.AddIn.Scripting.Services
         {
             Func<string> picker = () =>
             {
-                using (var diag = new ResourcePicker(conn.ResourceService, ResourcePickerMode.OpenFolder))
+                using (var diag = new ResourcePicker(conn, ResourcePickerMode.OpenFolder))
                 {
                     if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {

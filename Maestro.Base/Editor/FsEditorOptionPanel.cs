@@ -58,9 +58,9 @@ namespace Maestro.Base.Editor
             //Only available on MGOS 2.2 and above
             this.LocalPreviewEnabled = service.SiteVersion >= new Version(2, 2);
             _fs = (IFeatureSource)service.GetEditedResource();
-            _caps = service.FeatureService.GetProviderCapabilities(_fs.Provider);
-            _fsvc = service.FeatureService;
-            _rsvc = service.ResourceService;
+            _fsvc = service.CurrentConnection.FeatureService;
+            _caps = _fsvc.GetProviderCapabilities(_fs.Provider);
+            _rsvc = service.CurrentConnection.ResourceService;
             _edsvc = service;
             _edsvc.RegisterCustomNotifier(this);
             this.ConfigEnabled = _caps.Connection.SupportsConfiguration;

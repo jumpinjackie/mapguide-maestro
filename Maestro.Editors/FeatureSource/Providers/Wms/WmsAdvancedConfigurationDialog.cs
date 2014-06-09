@@ -258,7 +258,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
         {
             try
             {
-                _config = (WmsConfigurationDocument)_service.FeatureService.GetSchemaMapping("OSGeo.WMS", _fs.ConnectionString); //NOXLATE
+                _config = (WmsConfigurationDocument)_service.CurrentConnection.FeatureService.GetSchemaMapping("OSGeo.WMS", _fs.ConnectionString); //NOXLATE
                 string defaultScName = _config.GetDefaultSpatialContext(_fs);
                 _config.EnsureRasterProperties(defaultScName);
                 _config.EnsureConsistency();

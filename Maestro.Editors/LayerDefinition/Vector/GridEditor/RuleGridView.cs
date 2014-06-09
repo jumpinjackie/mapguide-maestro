@@ -724,7 +724,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             if (_layerClass == null) 
             {
                 IVectorLayerDefinition vl = (IVectorLayerDefinition)_editedLayer.SubLayer;
-                _layerClass = _edSvc.FeatureService.GetClassDefinition(vl.ResourceId, vl.FeatureName);
+                _layerClass = _edSvc.CurrentConnection.FeatureService.GetClassDefinition(vl.ResourceId, vl.FeatureName);
             }
             return _layerClass;
         }
@@ -742,7 +742,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             if (_providerName == null)
             {
                 IVectorLayerDefinition vl = (IVectorLayerDefinition)_editedLayer.SubLayer;
-                IFeatureSource fs = (IFeatureSource)_edSvc.ResourceService.GetResource(vl.ResourceId);
+                IFeatureSource fs = (IFeatureSource)_edSvc.CurrentConnection.ResourceService.GetResource(vl.ResourceId);
                 _providerName = fs.Provider;
             }
             return _providerName;

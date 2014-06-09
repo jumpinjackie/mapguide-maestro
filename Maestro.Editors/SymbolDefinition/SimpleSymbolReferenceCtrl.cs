@@ -35,15 +35,15 @@ namespace Maestro.Editors.SymbolDefinition
     [ToolboxItem(false)]
     internal partial class SimpleSymbolReferenceCtrl : UserControl
     {
-        private IResourceService _resSvc;
+        private IEditorService _edSvc;
         private IResourceIdReference _symRef;
 
         private bool _init = false;
 
-        public SimpleSymbolReferenceCtrl(IResourceService resSvc, IResourceIdReference symRef)
+        public SimpleSymbolReferenceCtrl(IEditorService edSvc, IResourceIdReference symRef)
         {
             InitializeComponent();
-            _resSvc = resSvc;
+            _edSvc = edSvc;
             _symRef = symRef;
 
             try
@@ -59,7 +59,7 @@ namespace Maestro.Editors.SymbolDefinition
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_resSvc,
+            using (var picker = new ResourcePicker(_edSvc.CurrentConnection,
                                                    ResourceTypes.SymbolDefinition.ToString(),
                                                    ResourcePickerMode.OpenResource))
             {

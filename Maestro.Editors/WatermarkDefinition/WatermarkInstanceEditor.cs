@@ -126,7 +126,7 @@ namespace Maestro.Editors.WatermarkDefinition
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.WatermarkDefinition.ToString(), ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edSvc.CurrentConnection, ResourceTypes.WatermarkDefinition.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {

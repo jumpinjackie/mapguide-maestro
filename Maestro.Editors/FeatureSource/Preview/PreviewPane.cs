@@ -53,7 +53,7 @@ namespace Maestro.Editors.FeatureSource.Preview
             _fsId = fsId;
             _mode = mode;
             _cls = cls;
-            _featSvc = edSvc.FeatureService;
+            _featSvc = edSvc.CurrentConnection.FeatureService;
 
             IQueryControl ctrl = null;
             switch (_mode)

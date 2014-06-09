@@ -41,7 +41,7 @@ namespace Maestro.Base.Commands
             
             if (ed != null)
             {
-                using (var picker = new ResourcePicker(conn.ResourceService, ed.Resource.ResourceType, ResourcePickerMode.SaveResource))
+                using (var picker = new ResourcePicker(conn, ed.Resource.ResourceType, ResourcePickerMode.SaveResource))
                 {
                     if (!string.IsNullOrEmpty(ed.EditorService.SuggestedSaveFolder))
                         picker.SetStartingPoint(ed.EditorService.SuggestedSaveFolder);

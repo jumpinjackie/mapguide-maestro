@@ -124,7 +124,7 @@ namespace Maestro.Editors.FeatureSource.Preview
             trvSchema.Nodes.Clear();
 
             BusyWaitDialog.Run(Strings.FetchingSchemaNames, () => {
-                return _edSvc.FeatureService.GetSchemas(currentFsId);
+                return _edSvc.CurrentConnection.FeatureService.GetSchemas(currentFsId);
             }, (res, ex) => {
                 if (ex != null)
                 {
@@ -382,7 +382,7 @@ namespace Maestro.Editors.FeatureSource.Preview
 
                 string schemaName = schTag.SchemaName;
                 BusyWaitDialog.Run(Strings.FetchingClassNames, () => {
-                    return _edSvc.FeatureService.GetClassNames(currentFsId, schemaName);
+                    return _edSvc.CurrentConnection.FeatureService.GetClassNames(currentFsId, schemaName);
                 }, (res, ex) => {
                     if (ex != null)
                     {
@@ -414,7 +414,7 @@ namespace Maestro.Editors.FeatureSource.Preview
 
                 string classNameQualified = clsTag.QualifiedName;
                 BusyWaitDialog.Run(Strings.FetchingClassDefinition, () => {
-                    return _edSvc.FeatureService.GetClassDefinition(currentFsId, classNameQualified);
+                    return _edSvc.CurrentConnection.FeatureService.GetClassDefinition(currentFsId, classNameQualified);
                 }, (res, ex) => {
                     if (ex != null)
                     {

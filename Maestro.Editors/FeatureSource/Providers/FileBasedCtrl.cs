@@ -72,7 +72,7 @@ namespace Maestro.Editors.FeatureSource.Providers
 
         private void btnBrowseAlias_Click(object sender, EventArgs e)
         {
-            using (var picker = new UnmanagedFileBrowser(_service.ResourceService))
+            using (var picker = new UnmanagedFileBrowser(_service.CurrentConnection.ResourceService))
             {
                 picker.Extensions = GetUnmanagedFileExtensions();
                 picker.SelectFoldersOnly = false;
@@ -85,7 +85,7 @@ namespace Maestro.Editors.FeatureSource.Providers
 
         private void btnBrowseAliasFolder_Click(object sender, EventArgs e)
         {
-            using (var picker = new UnmanagedFileBrowser(_service.ResourceService))
+            using (var picker = new UnmanagedFileBrowser(_service.CurrentConnection.ResourceService))
             {
                 picker.SelectFoldersOnly = true;
                 if (picker.ShowDialog() == DialogResult.OK)

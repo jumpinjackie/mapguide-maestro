@@ -47,7 +47,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         {
             service.RegisterCustomNotifier(this);
             _fs = (IFeatureSource)service.GetEditedResource();
-            _dsnNames = service.FeatureService.GetConnectionPropertyValues("OSGeo.ODBC", "DataSourceName", string.Empty); //NOXLATE
+            _dsnNames = service.CurrentConnection.FeatureService.GetConnectionPropertyValues("OSGeo.ODBC", "DataSourceName", string.Empty); //NOXLATE
         }
 
         void OnConnectionChanged()

@@ -127,7 +127,7 @@ namespace Maestro.Editors.SymbolDefinition
 
         private void symbolReferenceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_edSvc.ResourceService,
+            using (var picker = new ResourcePicker(_edSvc.CurrentConnection,
                                                    ResourceTypes.SymbolDefinition.ToString(),
                                                    ResourcePickerMode.OpenResource))
             {
@@ -168,7 +168,7 @@ namespace Maestro.Editors.SymbolDefinition
                     }
                     else if (symRef.Type == SimpleSymbolReferenceType.Library)
                     {
-                        var ctrl = new SimpleSymbolReferenceCtrl(_edSvc.ResourceService, (ISimpleSymbolLibraryReference)symRef);
+                        var ctrl = new SimpleSymbolReferenceCtrl(_edSvc, (ISimpleSymbolLibraryReference)symRef);
                         ctrl.Dock = DockStyle.Fill;
                         splitContainer1.Panel2.Controls.Add(ctrl);
                     }

@@ -87,7 +87,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_editor.ResourceService, ResourcePickerMode.OpenFolder))
+            using (var picker = new ResourcePicker(_editor.CurrentConnection, ResourcePickerMode.OpenFolder))
             {
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {

@@ -106,13 +106,14 @@ namespace Maestro.Base.Editor
             }
 
             List<string> affectedMapDefinitions = new List<string>();
-            var refs = _edsvc.ResourceService.EnumerateResourceReferences(_edsvc.ResourceID);
+            var resSvc = _edsvc.CurrentConnection.ResourceService;
+            var refs = resSvc.EnumerateResourceReferences(_edsvc.ResourceID);
             foreach (var r in refs.ResourceId)
             {
                 var resId = new ResourceIdentifier(r);
                 if (resId.ResourceType == OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition.ToString())
                 {
-                    var mdf = (IMapDefinition)_edsvc.ResourceService.GetResource(r);
+                    var mdf = (IMapDefinition)resSvc.GetResource(r);
                     if (mdf.BaseMap != null)
                     {
                         foreach (var blg in mdf.BaseMap.BaseMapLayerGroup)

@@ -91,9 +91,10 @@ namespace Maestro.Editors.Preview
                 //Save the current resource to another session copy
                 string resId = "Session:" + edSvc.SessionID + "//" + res.ResourceType.ToString() + "Preview" + Guid.NewGuid() + "." + res.ResourceType.ToString(); //NOXLATE
 
-                edSvc.ResourceService.SaveResourceAs(res, resId);
-                edSvc.ResourceService.CopyResource(res.ResourceID, resId, true);
-                var previewCopy = edSvc.ResourceService.GetResource(resId);
+                var resSvc = edSvc.CurrentConnection.ResourceService;
+                resSvc.SaveResourceAs(res, resId);
+                resSvc.CopyResource(res.ResourceID, resId, true);
+                var previewCopy = resSvc.GetResource(resId);
 
                 if (previewCopy.ResourceType == ResourceTypes.SymbolDefinition.ToString() && conn.SiteVersion >= new Version(2, 0))
                 {   

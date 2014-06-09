@@ -123,7 +123,7 @@ namespace Maestro.Editors.Migration
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_source.ResourceService, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_source, ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {

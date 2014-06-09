@@ -109,7 +109,8 @@ namespace Maestro.Base.Editor
                 try
                 {
                     var res = ResourceTypeRegistry.Deserialize(editor.XmlContent);
-                    var context = new ResourceValidationContext(_edSvc.ResourceService, _edSvc.FeatureService);
+                    var conn = _edSvc.CurrentConnection;
+                    var context = new ResourceValidationContext(conn.ResourceService, conn.FeatureService);
                     //We don't care about dependents, we just want to validate *this* resource
                     var resIssues = ResourceValidatorSet.Validate(context, res, false);
                     set.AddIssues(resIssues);
@@ -154,11 +155,12 @@ namespace Maestro.Base.Editor
             //Save the current resource to another session copy
             string resId = "Session:" + this.EditorService.SessionID + "//" + Guid.NewGuid() + "." + this.Resource.ResourceType.ToString(); //NOXLATE
             string xml = this.XmlContent;
+            var resSvc = this.EditorService.CurrentConnection.ResourceService;
             try
             {
                 using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
                 {
-                    this.EditorService.ResourceService.SetResourceXmlData(resId, ms);
+                    resSvc.SetResourceXmlData(resId, ms);
                 }
             }
             catch (Exception ex)
@@ -167,7 +169,7 @@ namespace Maestro.Base.Editor
             }
 
             //Copy any resource data
-            var previewCopy = this.EditorService.ResourceService.GetResource(resId);
+            var previewCopy = resSvc.GetResource(resId);
             this.Resource.CopyResourceDataTo(previewCopy);
 
             var conn = previewCopy.CurrentConnection;
@@ -184,7 +186,7 @@ namespace Maestro.Base.Editor
             {
                 using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
                 {
-                    _edSvc.ResourceService.SetResourceXmlData(_edSvc.EditedResourceID, ms);
+                    _edSvc.CurrentConnection.ResourceService.SetResourceXmlData(_edSvc.EditedResourceID, ms);
                 }
             }
             catch (Exception ex)
@@ -212,7 +214,7 @@ namespace Maestro.Base.Editor
             if (MessageService.AskQuestion(Strings.ConfirmReloadXmlFromSource))
             {
                 var resId = this.EditorService.ResourceID;
-                using (var stream = this.EditorService.ResourceService.GetResourceXmlData(resId))
+                using (var stream = this.EditorService.CurrentConnection.ResourceService.GetResourceXmlData(resId))
                 {
                     using (var sr = new StreamReader(stream))
                     {

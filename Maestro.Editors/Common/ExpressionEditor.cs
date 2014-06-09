@@ -285,7 +285,7 @@ namespace Maestro.Editors.Common
                 ColumnValue.Tag = null;
                 try
                 {
-                    using (var rdr = _edSvc.FeatureService.AggregateQueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new System.Collections.Specialized.NameValueCollection() { 
+                    using (var rdr = _edSvc.CurrentConnection.FeatureService.AggregateQueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new System.Collections.Specialized.NameValueCollection() { 
                             { "UNIQ_VALS", expr } //NOXLATE
                         }))
                     {
@@ -330,7 +330,7 @@ namespace Maestro.Editors.Common
                         try
                         {
                             retry = false;
-                            using (var rd = _edSvc.FeatureService.QueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new string[] { ColumnName.Text }))
+                            using (var rd = _edSvc.CurrentConnection.FeatureService.QueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new string[] { ColumnName.Text }))
                             {
                                 while (rd.ReadNext())
                                 {

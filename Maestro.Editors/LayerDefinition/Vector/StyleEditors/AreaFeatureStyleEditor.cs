@@ -64,7 +64,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_schema = schema;
 
             _factory = (ILayerElementFactory)editor.GetEditedResource();
-            var fs = (IFeatureSource)m_editor.ResourceService.GetResource(featureSource);
+            var fs = (IFeatureSource)m_editor.CurrentConnection.ResourceService.GetResource(featureSource);
 
             m_providername = fs.Provider;
             m_featureSource = featureSource;

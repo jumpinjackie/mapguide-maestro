@@ -42,17 +42,17 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
         private IImageReference _imageRef;
         private IInlineImage _imageInline;
         private EditorBindableCollapsiblePanel _ed;
-        private IResourceService _resSvc;
+        private IServerConnection _conn;
 
         private bool _init = false;
 
-        public ImageDialog(EditorBindableCollapsiblePanel parent, IResourceService resSvc, ISimpleSymbolDefinition ssd, IImageGraphic image)
+        public ImageDialog(EditorBindableCollapsiblePanel parent, IServerConnection conn, ISimpleSymbolDefinition ssd, IImageGraphic image)
         {
             InitializeComponent();
             _ed = parent;
             _ssd = ssd;
             _image = image;
-            _resSvc = resSvc;
+            _conn = conn;
             try
             {
                 _init = true;
@@ -204,7 +204,7 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_resSvc, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_conn, ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
@@ -220,13 +220,13 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
             if (string.IsNullOrEmpty(resourceId))
                 resourceId = _ssd.ResourceID;
 
-            if (!_resSvc.ResourceExists(resourceId))
+            if (!_conn.ResourceService.ResourceExists(resourceId))
             {
                 MessageBox.Show(Strings.ResourceDoesntExist);
                 return;
             }
 
-            var resData = _resSvc.EnumerateResourceData(resourceId);
+            var resData = _conn.ResourceService.EnumerateResourceData(resourceId);
             var items = new List<string>();
             foreach (var rd in resData.ResourceData)
             {

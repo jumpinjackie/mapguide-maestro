@@ -42,14 +42,12 @@ namespace Maestro.Editors.MapDefinition
         }
 
         public event EventHandler LayerChanged;
-        private IResourceService _resSvc;
         private IEditorService _edSvc;
 
-        public LayerPropertiesCtrl(IMapLayer layer, IResourceService resSvc, IEditorService edSvc)
+        public LayerPropertiesCtrl(IMapLayer layer, IEditorService edSvc)
             : this()
         {
             layer.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnLayerChanged, (eh) => layer.PropertyChanged -= eh);
-            _resSvc = resSvc;
             _edSvc = edSvc;
 
             TextBoxBinder.BindText(txtResourceId, layer, "ResourceId");
@@ -57,11 +55,10 @@ namespace Maestro.Editors.MapDefinition
             TextBoxBinder.BindText(txtLegendLabel, layer, "LegendLabel");
         }
 
-        public LayerPropertiesCtrl(IBaseMapLayer layer, IResourceService resSvc, IEditorService edSvc)
+        public LayerPropertiesCtrl(IBaseMapLayer layer, IEditorService edSvc)
             : this()
         {
             layer.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnLayerChanged, (eh) => layer.PropertyChanged -= eh);
-            _resSvc = resSvc;
             _edSvc = edSvc;
 
             TextBoxBinder.BindText(txtResourceId, layer, "ResourceId");
@@ -78,7 +75,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_resSvc, ResourceTypes.LayerDefinition.ToString(), ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edSvc.CurrentConnection, ResourceTypes.LayerDefinition.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {

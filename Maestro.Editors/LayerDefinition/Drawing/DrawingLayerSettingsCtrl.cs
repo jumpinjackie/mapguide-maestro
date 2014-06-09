@@ -29,6 +29,7 @@ using System.Diagnostics;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Services;
 
 namespace Maestro.Editors.LayerDefinition.Drawing
 {
@@ -114,7 +115,8 @@ namespace Maestro.Editors.LayerDefinition.Drawing
         private void PopulateSheets()
         {
             _sheets.Clear();
-            var sheets = _service.DrawingService.EnumerateDrawingSections(_dlayer.ResourceId);
+            var drawSvc = (IDrawingService)_service.CurrentConnection.GetService((int)ServiceType.Drawing);
+            var sheets = drawSvc.EnumerateDrawingSections(_dlayer.ResourceId);
             foreach (var sht in sheets.Section)
             {
                 _sheets.Add(sht);
@@ -134,7 +136,8 @@ namespace Maestro.Editors.LayerDefinition.Drawing
         {
             chkListDwfLayers.Items.Clear();
 
-            var layers = _service.DrawingService.EnumerateDrawingLayers(_dlayer.ResourceId, _dlayer.Sheet);
+            var drawSvc = (IDrawingService)_service.CurrentConnection.GetService((int)ServiceType.Drawing);
+            var layers = drawSvc.EnumerateDrawingLayers(_dlayer.ResourceId, _dlayer.Sheet);
             if (string.IsNullOrEmpty(_dlayer.LayerFilter)) //All layers
             {
                 foreach (var lyr in layers)
@@ -203,7 +206,7 @@ namespace Maestro.Editors.LayerDefinition.Drawing
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_service.ResourceService,
+            using (var picker = new ResourcePicker(_service.CurrentConnection,
                                                    OSGeo.MapGuide.MaestroAPI.ResourceTypes.DrawingSource.ToString(), 
                                                    ResourcePickerMode.OpenResource))
             {

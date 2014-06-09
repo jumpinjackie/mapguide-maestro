@@ -39,7 +39,7 @@ namespace Maestro.Base.Commands.SiteExplorer
             var items = siteExp.SelectedItems;
             if (items.Length == 1)
             {
-                using (var diag = new CompareResourceDialog(conn.ResourceService))
+                using (var diag = new CompareResourceDialog(conn))
                 {
                     diag.Source = items[0].ResourceId;
                     diag.ShowDialog();

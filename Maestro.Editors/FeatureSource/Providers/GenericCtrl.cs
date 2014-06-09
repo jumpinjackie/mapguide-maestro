@@ -80,7 +80,7 @@ namespace Maestro.Editors.FeatureSource.Providers
         {
             grdConnectionParameters.Rows.Clear();
             grdConnectionParameters.Columns.Clear();
-            var prov = _service.FeatureService.GetFeatureProvider(_fs.Provider);
+            var prov = _service.CurrentConnection.FeatureService.GetFeatureProvider(_fs.Provider);
 
             var colName = new DataGridViewColumn();
             colName.Name = "COL_NAME"; //NOXLATE
@@ -191,16 +191,17 @@ namespace Maestro.Editors.FeatureSource.Providers
             var param = GetConnectionParameters();
 
             var cloneFs = (IFeatureSource)_fs.Clone();
-            _service.ResourceService.SaveResourceAs(cloneFs, "Session:" + _service.SessionID + "//" + Guid.NewGuid().ToString() + ".FeatureSource"); //NOXLATE
+            var resSvc = _service.CurrentConnection.ResourceService;
+            resSvc.SaveResourceAs(cloneFs, "Session:" + _service.SessionID + "//" + Guid.NewGuid().ToString() + ".FeatureSource"); //NOXLATE
             
             cloneFs.ClearConnectionProperties();
             foreach (var key in param.AllKeys)
             {
                 cloneFs.SetConnectionProperty(key, param[key]);
             }
-            _service.ResourceService.SaveResource(cloneFs);
+            resSvc.SaveResource(cloneFs);
 
-            string msg = _service.FeatureService.TestConnection(cloneFs.ResourceID);
+            string msg = _service.CurrentConnection.FeatureService.TestConnection(cloneFs.ResourceID);
 
             if (string.IsNullOrEmpty(msg))
                 msg = Strings.TestConnectionNoErrors;
@@ -228,7 +229,7 @@ namespace Maestro.Editors.FeatureSource.Providers
                     }
                     else
                     {
-                        values.AddRange(_service.FeatureService.GetConnectionPropertyValues(txtProvider.Text, prop, GetPartialConnectionString()));
+                        values.AddRange(_service.CurrentConnection.FeatureService.GetConnectionPropertyValues(txtProvider.Text, prop, GetPartialConnectionString()));
                     }
                 }
             }
@@ -264,7 +265,7 @@ namespace Maestro.Editors.FeatureSource.Providers
                 var p = cell.Tag as OSGeo.MapGuide.ObjectModels.Common.FeatureProviderRegistryFeatureProviderConnectionProperty;
                 if (p != null && p.Enumerable)
                 {
-                    var list = _service.FeatureService.EnumerateDataStores(txtProvider.Text, GetPartialConnectionString());
+                    var list = _service.CurrentConnection.FeatureService.EnumerateDataStores(txtProvider.Text, GetPartialConnectionString());
                     foreach(var ds in list.DataStore)
                     {
                         values.Add(ds.Name);
@@ -320,7 +321,7 @@ namespace Maestro.Editors.FeatureSource.Providers
 
             var cell = grdConnectionParameters.SelectedCells[0];
 
-            using (var dlg = new UnmanagedFileBrowser(_service.ResourceService))
+            using (var dlg = new UnmanagedFileBrowser(_service.CurrentConnection.ResourceService))
             {
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
@@ -336,7 +337,7 @@ namespace Maestro.Editors.FeatureSource.Providers
 
             var cell = grdConnectionParameters.SelectedCells[0];
 
-            using (var dlg = new UnmanagedFileBrowser(_service.ResourceService))
+            using (var dlg = new UnmanagedFileBrowser(_service.CurrentConnection.ResourceService))
             {
                 dlg.SelectFoldersOnly = true;
                 if (dlg.ShowDialog() == DialogResult.OK)
@@ -379,7 +380,7 @@ namespace Maestro.Editors.FeatureSource.Providers
 
         private void lnkSetCredentials_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var prov = _service.FeatureService.GetFeatureProvider(_fs.Provider);
+            var prov = _service.CurrentConnection.FeatureService.GetFeatureProvider(_fs.Provider);
             var connProps = new List<string>();
             foreach (var p in prov.ConnectionProperties)
             {

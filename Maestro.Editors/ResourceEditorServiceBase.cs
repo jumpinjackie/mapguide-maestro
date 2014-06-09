@@ -95,7 +95,7 @@ namespace Maestro.Editors
         public string EditExpression(string currentExpr, ClassDefinition classDef, string providerName, string featureSourceId, bool attachStylizationFunctions)
         {
             var ed = FdoExpressionEditorFactory.Create(); new ExpressionEditor();
-            var caps = this.FeatureService.GetProviderCapabilities(providerName);
+            var caps = _conn.FeatureService.GetProviderCapabilities(providerName);
             ed.Initialize(this, caps, classDef, featureSourceId, attachStylizationFunctions);
             ed.Expression = currentExpr;
             if (ed.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -103,6 +103,11 @@ namespace Maestro.Editors
                 return ed.Expression;
             }
             return null;
+        }
+
+        public IServerConnection CurrentConnection
+        {
+            get { return _conn; }
         }
 
         /// <summary>
@@ -191,7 +196,7 @@ namespace Maestro.Editors
         /// <returns></returns>
         public string SelectAnyResource()
         {
-            var picker = new ResourcePicker(_conn.ResourceService, ResourcePickerMode.OpenResource);
+            var picker = new ResourcePicker(_conn, ResourcePickerMode.OpenResource);
             if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 return picker.ResourceID;
@@ -206,7 +211,7 @@ namespace Maestro.Editors
         /// <returns></returns>
         public string SelectResource(string resType)
         {
-            var picker = new ResourcePicker(_conn.ResourceService, resType, ResourcePickerMode.OpenResource);
+            var picker = new ResourcePicker(_conn, resType, ResourcePickerMode.OpenResource);
             if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 return picker.ResourceID;
@@ -220,7 +225,7 @@ namespace Maestro.Editors
         /// <returns></returns>
         public string SelectFolder()
         {
-            var picker = new ResourcePicker(_conn.ResourceService, ResourcePickerMode.OpenFolder);
+            var picker = new ResourcePicker(_conn, ResourcePickerMode.OpenFolder);
             if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 return picker.ResourceID;
@@ -347,22 +352,6 @@ namespace Maestro.Editors
         public event System.ComponentModel.CancelEventHandler BeforeSave;
 
         /// <summary>
-        /// Gets the associated feature service
-        /// </summary>
-        public IFeatureService FeatureService
-        {
-            get { return _conn.FeatureService; }
-        }
-
-        /// <summary>
-        /// Gets the associated resource service
-        /// </summary>
-        public IResourceService ResourceService
-        {
-            get { return _conn.ResourceService; }
-        }
-
-        /// <summary>
         /// Invokes a prompt to select the coordinate system
         /// </summary>
         /// <returns></returns>
@@ -374,15 +363,6 @@ namespace Maestro.Editors
                 return dlg.SelectedCoordSys.WKT;
             }
             return string.Empty;
-        }
-
-
-        /// <summary>
-        /// Gets the associated drawing service
-        /// </summary>
-        public IDrawingService DrawingService
-        {
-            get { return (IDrawingService)_conn.GetService((int)ServiceType.Drawing); }
         }
 
         /// <summary>
@@ -402,26 +382,6 @@ namespace Maestro.Editors
         public string SessionID
         {
             get { return _conn.SessionID; }
-        }
-
-        /// <summary>
-        /// Indicates if a specified custom command is supported and can be created
-        /// </summary>
-        /// <param name="cmdType"></param>
-        /// <returns></returns>
-        public bool SupportsCommand(OSGeo.MapGuide.MaestroAPI.Commands.CommandType cmdType)
-        {
-            return Array.IndexOf(_conn.Capabilities.SupportedCommands, (int)cmdType) >= 0;
-        }
-
-        /// <summary>
-        /// Create a custom command
-        /// </summary>
-        /// <param name="cmdType"></param>
-        /// <returns></returns>
-        public OSGeo.MapGuide.MaestroAPI.Commands.ICommand CreateCommand(OSGeo.MapGuide.MaestroAPI.Commands.CommandType cmdType)
-        {
-            return _conn.CreateCommand((int)cmdType);
         }
 
         /// <summary>
@@ -461,7 +421,7 @@ namespace Maestro.Editors
             {
                 using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
                 {
-                    this.ResourceService.SetResourceXmlData(_editCopy.ResourceID, ms);
+                    _conn.ResourceService.SetResourceXmlData(_editCopy.ResourceID, ms);
                 }
             }
             catch (Exception ex)

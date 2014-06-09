@@ -50,7 +50,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
 
         public override OSGeo.MapGuide.MaestroAPI.Resource.IResource CreateItem(string startPoint, OSGeo.MapGuide.MaestroAPI.IServerConnection conn)
         {
-            using (var picker = new ResourcePicker(conn.ResourceService, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(conn, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
             {
                 picker.SetStartingPoint(startPoint);
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)

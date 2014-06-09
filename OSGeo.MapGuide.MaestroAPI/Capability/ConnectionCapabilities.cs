@@ -19,6 +19,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
@@ -30,6 +31,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
     /// </summary>
     public abstract class ConnectionCapabilities : IConnectionCapabilities
     {
+        /// <summary>
+        /// Resource types supported on *all* versions of MapGuide
+        /// </summary>
+        static string [] _defaultResTypes = new string[] 
+        {
+            //ResourceTypes.RuntimeMap.ToString(),
+            //ResourceTypes.Selection.ToString(),
+            //ResourceTypes.Folder.ToString(),
+
+            ResourceTypes.DrawingSource.ToString(),
+            ResourceTypes.FeatureSource.ToString(),
+            ResourceTypes.LayerDefinition.ToString(),
+            ResourceTypes.LoadProcedure.ToString(),
+            ResourceTypes.MapDefinition.ToString(),
+            ResourceTypes.PrintLayout.ToString(),
+            ResourceTypes.SymbolLibrary.ToString(),
+            ResourceTypes.WebLayout.ToString()
+        };
+
         /// <summary>
         /// The parent connection
         /// </summary>
@@ -259,27 +279,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         public virtual bool IsSupportedResourceType(string resourceType)
         {
             Check.NotEmpty(resourceType, "resourceType"); //NOXLATE
-            var ver = _parent.SiteVersion;
-            var rt = (ResourceTypes)Enum.Parse(typeof(ResourceTypes), resourceType);
-            switch (rt)
-            {
-                case ResourceTypes.ApplicationDefinition: //Introduced in 2.0.0
-                    return (ver >= new Version(2, 0));
-                case ResourceTypes.SymbolDefinition: //Introduced in 1.2.0
-                    return (ver >= new Version(1, 2));
-            }
 
-            return true;
-        }
-
-        /// <summary>
-        /// Indicates if this current connection supports the specified resource type
-        /// </summary>
-        /// <param name="resType"></param>
-        /// <returns></returns>
-        public bool IsSupportedResourceType(ResourceTypes resType)
-        {
-            return IsSupportedResourceType(resType.ToString());
+            return Array.IndexOf(this.SupportedResourceTypes, resourceType) >= 0;
         }
 
         /// <summary>
@@ -320,6 +321,28 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         public virtual bool SupportsResourceHeaders
         {
             get { return true; }
+        }
+
+        /// <summary>
+        /// Gets the array of supported resource types
+        /// </summary>
+        public string[] SupportedResourceTypes
+        {
+            get 
+            {
+                var ver = _parent.SiteVersion;
+                var types = new HashSet<string>(_defaultResTypes);
+
+                if (ver >= new Version(1, 2))
+                    types.Add(ResourceTypes.SymbolDefinition.ToString());
+                if (ver >= new Version(2, 0))
+                    types.Add(ResourceTypes.ApplicationDefinition.ToString());
+                if (ver >= new Version(2, 3))
+                    types.Add(ResourceTypes.WatermarkDefinition.ToString());
+
+                //When new types are introduced to MapGuide and we wish to add such support, put the new types here
+                return types.OrderBy(x => x).ToArray();
+            }
         }
     }
 }

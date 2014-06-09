@@ -43,7 +43,7 @@ namespace Maestro.Base.Templates
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
             //This is to just ensure we have a functional WebLayout when it's created
-            using (var picker = new ResourcePicker(conn.ResourceService, ResourceTypes.MapDefinition.ToString(), ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(conn, ResourceTypes.MapDefinition.ToString(), ResourcePickerMode.OpenResource))
             {
                 picker.SetStartingPoint(startPoint);
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)

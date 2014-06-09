@@ -117,7 +117,7 @@ namespace Maestro.Editors.PrintLayout
 
         private void btnBrowseSymbolLibrary_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_conn.ResourceService, ResourceTypes.SymbolLibrary.ToString(), ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_conn, ResourceTypes.SymbolLibrary.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {

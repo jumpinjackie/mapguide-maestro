@@ -462,7 +462,7 @@ namespace Maestro.Editors.MapDefinition
 
             commCtrl.SelectedObject = new BaseLayerItemDesigner(layer);
 
-            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService, _edSvc);
+            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc);
             //item.LayerChanged += (s, evt) => { OnResourceChanged(); };
             item.LayerChanged += WeakEventHandler.Wrap((s, evt) => OnResourceChanged(), (eh) => item.LayerChanged -= eh);
             item.Dock = DockStyle.Top;
@@ -484,7 +484,7 @@ namespace Maestro.Editors.MapDefinition
 
             commCtrl.SelectedObject = new LayerItemDesigner(layer);
 
-            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService, _edSvc);
+            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc);
             //item.LayerChanged += (s, evt) => { OnResourceChanged(); };
             item.LayerChanged += WeakEventHandler.Wrap((s, evt) => OnResourceChanged(), (eh) => item.LayerChanged -= eh);
             item.Dock = DockStyle.Top;
@@ -656,7 +656,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnGRPAddLayer_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.LayerDefinition.ToString(), ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edSvc.CurrentConnection, ResourceTypes.LayerDefinition.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
@@ -786,7 +786,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnDLAddLayer_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.LayerDefinition.ToString(), ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edSvc.CurrentConnection, ResourceTypes.LayerDefinition.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
@@ -1113,7 +1113,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnAddBaseLayer_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.LayerDefinition.ToString(), ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edSvc.CurrentConnection, ResourceTypes.LayerDefinition.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {

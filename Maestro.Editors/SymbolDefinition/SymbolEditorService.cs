@@ -39,29 +39,9 @@ namespace Maestro.Editors.SymbolDefinition
             this.PreviewLocale = "en"; //NOXLATE
         }
 
-        public bool SupportsCommand(CommandType cmdType)
+        public IServerConnection CurrentConnection
         {
-            return _inner.SupportsCommand(cmdType);
-        }
-
-        public ICommand CreateCommand(CommandType cmdType)
-        {
-            return _inner.CreateCommand(cmdType);
-        }
-
-        public IFeatureService FeatureService
-        {
-            get { return _inner.FeatureService; }
-        }
-
-        public IResourceService ResourceService
-        {
-            get { return _inner.ResourceService; }
-        }
-
-        public IDrawingService DrawingService
-        {
-            get { return _inner.DrawingService; }
+            get { return _inner.CurrentConnection; }
         }
 
         public string SessionID

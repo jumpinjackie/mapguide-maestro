@@ -49,7 +49,7 @@ namespace Maestro.Editors.FeatureSource.Preview
 
         public IReader ExecuteQuery()
         {
-            return _edSvc.FeatureService.ExecuteSqlQuery(_fsId, txtSql.Text);
+            return _edSvc.CurrentConnection.FeatureService.ExecuteSqlQuery(_fsId, txtSql.Text);
         }
 
         public Control Content

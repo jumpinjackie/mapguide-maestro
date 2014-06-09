@@ -248,7 +248,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private void referenceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.SymbolDefinition.ToString(), ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edSvc.CurrentConnection, ResourceTypes.SymbolDefinition.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
@@ -335,7 +335,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             ISymbolDefinitionBase sym = null;
             if (symRef.Reference.Type == SymbolInstanceType.Reference)
             {
-                sym = (ISymbolDefinitionBase)_edSvc.ResourceService.GetResource(((ISymbolInstanceReferenceLibrary)symRef.Reference).ResourceId);
+                sym = (ISymbolDefinitionBase)_edSvc.CurrentConnection.ResourceService.GetResource(((ISymbolInstanceReferenceLibrary)symRef.Reference).ResourceId);
             }
             else if (symRef.Reference.Type == SymbolInstanceType.Inline)
             {
@@ -409,7 +409,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         {
             var it = lstInstances.SelectedItems[0];
             ISymbolInstance symRef = (ISymbolInstance)it.Tag;
-            var c = CreateSymbolDefinitionEditor(symRef, _edSvc.ResourceService);
+            var c = CreateSymbolDefinitionEditor(symRef);
             c.Dock = DockStyle.Fill;
             using (var ed = new EditorTemplateForm())
             {
@@ -674,12 +674,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             btnPropertyInfo.Enabled = btnEditProperty.Enabled = btnDeleteProperty.Enabled = (grdOverrides.SelectedRows.Count == 1);
         }
 
-        private Control CreateSymbolDefinitionEditor(ISymbolInstance symRef, IResourceService resSvc)
+        private Control CreateSymbolDefinitionEditor(ISymbolInstance symRef)
         {
             Check.NotNull(symRef, "symRef"); //NOXLATE
             if (symRef.Reference.Type == SymbolInstanceType.Reference)
             {
-                return new ReferenceCtrl((ISymbolInstanceReferenceLibrary)symRef.Reference, resSvc);
+                return new ReferenceCtrl((ISymbolInstanceReferenceLibrary)symRef.Reference, _edSvc);
             }
             else
             {

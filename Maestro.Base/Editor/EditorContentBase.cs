@@ -235,7 +235,8 @@ namespace Maestro.Base.Editor
         /// </summary>
         protected virtual ICollection<ValidationIssue> ValidateEditedResource() 
         {
-            var context = new ResourceValidationContext(_svc.ResourceService, _svc.FeatureService);
+            var conn = _svc.CurrentConnection;
+            var context = new ResourceValidationContext(conn.ResourceService, conn.FeatureService);
             //Don't recurse as we only want to validate the current resource
             var issues = ResourceValidatorSet.Validate(context, this.Resource, false);
             var set = new ValidationResultSet(issues);

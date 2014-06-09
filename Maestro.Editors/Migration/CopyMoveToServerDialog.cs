@@ -71,7 +71,7 @@ namespace Maestro.Editors.Migration
 
         private void btnAddResource_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_source.ResourceService, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_source, ResourcePickerMode.OpenResource))
             {
                 if (!string.IsNullOrEmpty(_lastSourceFolder))
                     picker.SetStartingPoint(_lastSourceFolder);
@@ -90,7 +90,7 @@ namespace Maestro.Editors.Migration
 
         private void btnAddFolder_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_source.ResourceService, ResourcePickerMode.OpenFolder))
+            using (var picker = new ResourcePicker(_source, ResourcePickerMode.OpenFolder))
             {
                 if (!string.IsNullOrEmpty(_lastSourceFolder))
                     picker.SetStartingPoint(_lastSourceFolder);
@@ -194,7 +194,7 @@ namespace Maestro.Editors.Migration
 
         private void btnBrowseTarget_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_target.ResourceService, ResourcePickerMode.OpenFolder))
+            using (var picker = new ResourcePicker(_target, ResourcePickerMode.OpenFolder))
             {
                 if (!string.IsNullOrEmpty(_lastTargetFolder))
                     picker.SetStartingPoint(_lastTargetFolder);

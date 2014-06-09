@@ -86,7 +86,7 @@ namespace Maestro.Editors.LayerDefinition.Raster
         protected override void OnLoad(EventArgs e)
         {
             if (_cachedDesc == null)
-                _cachedDesc = _edsvc.FeatureService.DescribeFeatureSource(txtFeatureSource.Text);
+                _cachedDesc = _edsvc.CurrentConnection.FeatureService.DescribeFeatureSource(txtFeatureSource.Text);
 
             //Init cached schemas and selected class
             if (!string.IsNullOrEmpty(txtFeatureClass.Text))
@@ -105,7 +105,7 @@ namespace Maestro.Editors.LayerDefinition.Raster
 
         private void btnBrowseFeatureSource_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_edsvc.ResourceService, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edsvc.CurrentConnection, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
@@ -219,7 +219,7 @@ namespace Maestro.Editors.LayerDefinition.Raster
         private IFeatureSource GetFeatureSource()
         {
             if (_cachedFs == null)
-                _cachedFs = (IFeatureSource)_edsvc.ResourceService.GetResource(txtFeatureSource.Text);
+                _cachedFs = (IFeatureSource)_edsvc.CurrentConnection.ResourceService.GetResource(txtFeatureSource.Text);
 
             return _cachedFs;
         }

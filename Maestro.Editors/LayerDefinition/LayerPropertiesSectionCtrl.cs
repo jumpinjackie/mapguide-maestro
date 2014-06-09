@@ -44,10 +44,10 @@ namespace Maestro.Editors.LayerDefinition
             if (service.IsNew)
             {
                 //Let's try to auto-assign a feature class
-                string[] classNames = _edsvc.FeatureService.GetClassNames(_vl.ResourceId, null);
+                string[] classNames = _edsvc.CurrentConnection.FeatureService.GetClassNames(_vl.ResourceId, null);
                 if (classNames.Length == 1) //Only one class in this Feature Source
                 {
-                    var clsDef = _edsvc.FeatureService.GetClassDefinition(_vl.ResourceId, classNames[0]);
+                    var clsDef = _edsvc.CurrentConnection.FeatureService.GetClassDefinition(_vl.ResourceId, classNames[0]);
                     if (!string.IsNullOrEmpty(clsDef.DefaultGeometryPropertyName)) //It has a default geometry
                     {
                         _vl.FeatureName = classNames[0];
@@ -85,12 +85,12 @@ namespace Maestro.Editors.LayerDefinition
             if (_vl == null || string.IsNullOrEmpty(_vl.FeatureName))
                 return;
 
-            if (_edsvc.ResourceService.ResourceExists(_vl.ResourceId))
+            if (_edsvc.CurrentConnection.ResourceService.ResourceExists(_vl.ResourceId))
             {
                 ClassDefinition cls = null;
                 try
                 {
-                    cls = _edsvc.FeatureService.GetClassDefinition(_vl.ResourceId, _vl.FeatureName);
+                    cls = _edsvc.CurrentConnection.FeatureService.GetClassDefinition(_vl.ResourceId, _vl.FeatureName);
                 }
                 catch
                 {
@@ -122,7 +122,7 @@ namespace Maestro.Editors.LayerDefinition
             else
             {
                 MessageBox.Show(string.Format(Strings.PromptRepairBrokenFeatureSource, _vl.ResourceId));
-                using (var picker = new ResourcePicker(_edsvc.ResourceService, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
+                using (var picker = new ResourcePicker(_edsvc.CurrentConnection, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
                 {
                     if (picker.ShowDialog() == DialogResult.OK)
                     {

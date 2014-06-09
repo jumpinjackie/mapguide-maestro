@@ -43,7 +43,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         public override void Bind(IEditorService service)
         {
             service.RegisterCustomNotifier(this);
-            _resSvc = service.ResourceService;
+            _resSvc = service.CurrentConnection.ResourceService;
         }
 
         public Control Content

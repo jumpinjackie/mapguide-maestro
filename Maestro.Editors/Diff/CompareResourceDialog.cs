@@ -43,16 +43,16 @@ namespace Maestro.Editors.Diff
             InitializeComponent();
         }
 
-        private IResourceService _resSvc;
+        private IServerConnection _conn;
 
         /// <summary>
         /// Creates a new instance of CompareResourceDialog
         /// </summary>
         /// <param name="resSvc">The resource service</param>
-        public CompareResourceDialog(IResourceService resSvc)
+        public CompareResourceDialog(IServerConnection conn)
             : this()
         {
-            _resSvc = resSvc;
+            _conn = conn;
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Maestro.Editors.Diff
 
             if (bValid)
             {
-                var set = XmlCompareUtil.PrepareForComparison(_resSvc,
+                var set = XmlCompareUtil.PrepareForComparison(_conn.ResourceService,
                                                               this.Source,
                                                               this.Target);
 
@@ -122,7 +122,7 @@ namespace Maestro.Editors.Diff
 
         private void btnSource_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_resSvc, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_conn, ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -141,7 +141,7 @@ namespace Maestro.Editors.Diff
 
             var resType = ResourceIdentifier.GetResourceTypeAsString(this.Source);
 
-            using (var picker = new ResourcePicker(_resSvc, resType, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_conn, resType, ResourcePickerMode.OpenResource))
             {
                 picker.SetStartingPoint(ResourceIdentifier.GetParentFolder(this.Source));
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)

@@ -305,7 +305,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                             //Or it is FDO expression sugar to work around the fact there is no distinct
                             //flag in the SELECTAGGREGATES operation that's exposed over HTTP. Either
                             //case, try this method first.
-                            using (var rd = m_editor.FeatureService.AggregateQueryFeatureSource(
+                            using (var rd = m_editor.CurrentConnection.FeatureService.AggregateQueryFeatureSource(
                                                     fsId,
                                                     m_featureClass.QualifiedName,
                                                     filter,
@@ -330,7 +330,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                         catch
                         {
 
-                            using (var rd = m_editor.FeatureService.QueryFeatureSource(fsId, m_featureClass.QualifiedName, filter, new string[] { col.Name }))
+                            using (var rd = m_editor.CurrentConnection.FeatureService.QueryFeatureSource(fsId, m_featureClass.QualifiedName, filter, new string[] { col.Name }))
                             {
                                 while (rd.ReadNext() && m_values.Count < MAX_NUMERIC_THEME_RULES) //No more than 100.000 records in memory
                                 {
@@ -1066,7 +1066,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 if (bSetFill)
                     break;
 
-                var symRef = GetSymbolFromReference(m_editor.ResourceService, symInst.Reference);
+                var symRef = GetSymbolFromReference(m_editor.CurrentConnection.ResourceService, symInst.Reference);
                 var simpleSym = symRef as ISimpleSymbolDefinition;
                 if (simpleSym == null)
                     throw new NotSupportedException(Strings.CannotCreateThemeFromCompoundSymbolInstance);
@@ -1215,7 +1215,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 if (source.HasValue)
                     break;
 
-                var symRef = GetSymbolFromReference(m_editor.ResourceService, symInst.Reference);
+                var symRef = GetSymbolFromReference(m_editor.CurrentConnection.ResourceService, symInst.Reference);
                 var simpleSym = symRef as ISimpleSymbolDefinition;
                 if (simpleSym == null)
                     throw new NotSupportedException(Strings.CannotCreateThemeFromCompoundSymbolInstance);
@@ -1298,7 +1298,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                     if (source.HasValue)
                         break;
 
-                    var symRef = GetSymbolFromReference(m_editor.ResourceService, symInst.Reference);
+                    var symRef = GetSymbolFromReference(m_editor.CurrentConnection.ResourceService, symInst.Reference);
                     var simpleSym = symRef as ISimpleSymbolDefinition;
                     if (simpleSym == null)
                         throw new NotSupportedException(Strings.CannotCreateThemeFromCompoundSymbolInstance);
@@ -1587,7 +1587,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 
         private void btnBrowseFeatureSource_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(m_editor.ResourceService, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(m_editor.CurrentConnection, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -1608,7 +1608,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         {
             if (!string.IsNullOrEmpty(txtFeatureSource.Text))
             {
-                var names = m_editor.FeatureService.GetClassNames(txtFeatureSource.Text, null);
+                var names = m_editor.CurrentConnection.FeatureService.GetClassNames(txtFeatureSource.Text, null);
                 if (names.Length > 0)
                 {
                     cmbFeatureClass.DataSource = names;
@@ -1630,7 +1630,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             if (cmbFeatureClass.SelectedItem != null)
             {
                 var className = cmbFeatureClass.SelectedItem.ToString();
-                var clsDef = m_editor.FeatureService.GetClassDefinition(txtFeatureSource.Text, className);
+                var clsDef = m_editor.CurrentConnection.FeatureService.GetClassDefinition(txtFeatureSource.Text, className);
 
                 var keyPropNames = new List<string>();
                 var valuePropNames = new List<string>();
@@ -1667,7 +1667,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             BusyWaitDialog.Run(Strings.ComputingThemeParameters, 
             () => { //Worker method
                 List<LookupPair> res = new List<LookupPair>();
-                using (var reader = m_editor.FeatureService.QueryFeatureSource(fsId, className, filter, new string[] { key, value }))
+                using (var reader = m_editor.CurrentConnection.FeatureService.QueryFeatureSource(fsId, className, filter, new string[] { key, value }))
                 {
                     while(reader.ReadNext())
                     {
@@ -1735,8 +1735,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         {
             string fsId = txtFeatureSource.Text;
             string className = cmbFeatureClass.SelectedItem.ToString();
-            IFeatureSource fs = (IFeatureSource)m_editor.ResourceService.GetResource(fsId);
-            ClassDefinition clsDef = m_editor.FeatureService.GetClassDefinition(fsId, className);
+            var conn = m_editor.CurrentConnection;
+            IFeatureSource fs = (IFeatureSource)conn.ResourceService.GetResource(fsId);
+            ClassDefinition clsDef = conn.FeatureService.GetClassDefinition(fsId, className);
             string expr = m_editor.EditExpression(txtFilter.Text, clsDef, fs.Provider, fsId, false);
             if (expr != null)
                 txtFilter.Text = expr;

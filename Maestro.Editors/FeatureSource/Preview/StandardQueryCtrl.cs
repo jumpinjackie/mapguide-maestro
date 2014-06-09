@@ -73,7 +73,7 @@ namespace Maestro.Editors.FeatureSource.Preview
         /// <returns></returns>
         public IReader ExecuteQuery()
         {
-            return _edSvc.FeatureService.QueryFeatureSource(_fsId, _cls.QualifiedName, txtFilter.Text, GetProperties(), GetComputedColumns());
+            return _edSvc.CurrentConnection.FeatureService.QueryFeatureSource(_fsId, _cls.QualifiedName, txtFilter.Text, GetProperties(), GetComputedColumns());
         }
 
         private NameValueCollection GetComputedColumns()

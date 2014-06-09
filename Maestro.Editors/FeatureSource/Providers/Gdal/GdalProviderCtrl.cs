@@ -60,7 +60,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
                 _service = service;
                 _fs = (IFeatureSource)_service.GetEditedResource();
                 
-                var provInfo = _service.FeatureService.GetFeatureProvider("OSGeo.Gdal"); //NOXLATE
+                var provInfo = _service.CurrentConnection.FeatureService.GetFeatureProvider("OSGeo.Gdal"); //NOXLATE
                 foreach (var prop in provInfo.ConnectionProperties)
                 {
                     if (prop.Name == "ResamplingMethod") //NOXLATE

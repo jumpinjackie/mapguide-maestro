@@ -35,20 +35,20 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales.SymbolInstanceEditors
     [ToolboxItem(false)]
     internal partial class ReferenceCtrl : UserControl
     {
-        private IResourceService _resSvc;
+        private IEditorService _edSvc;
         private ISymbolInstanceReferenceLibrary _libRef;
 
-        public ReferenceCtrl(ISymbolInstanceReferenceLibrary libRef, IResourceService resSvc)
+        public ReferenceCtrl(ISymbolInstanceReferenceLibrary libRef, IEditorService edSvc)
         {
             InitializeComponent();
             _libRef = libRef;
-            _resSvc = resSvc;
+            _edSvc = edSvc;
             TextBoxBinder.BindText(txtResourceId, _libRef, "ResourceId");
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_resSvc,
+            using (var picker = new ResourcePicker(_edSvc.CurrentConnection,
                                                    ResourceTypes.SymbolDefinition.ToString(), 
                                                    ResourcePickerMode.OpenResource))
             {

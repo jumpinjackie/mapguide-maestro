@@ -153,7 +153,7 @@ namespace Maestro.Editors.WebLayout.Commands
 
         private void LoadLayers()
         {
-            var map = (IMapDefinition)_edsvc.ResourceService.GetResource(_wl.Map.ResourceId);
+            var map = (IMapDefinition)_edsvc.CurrentConnection.ResourceService.GetResource(_wl.Map.ResourceId);
 
             _layers = new List<IMapLayer>(map.MapLayer);
         }
@@ -170,10 +170,11 @@ namespace Maestro.Editors.WebLayout.Commands
         {
             if (txtLayer.Tag != null)
             {
-                var ldf = (ILayerDefinition)_edsvc.ResourceService.GetResource(txtLayer.Tag.ToString());
+                var resSvc = _edsvc.CurrentConnection.ResourceService;
+                var ldf = (ILayerDefinition)resSvc.GetResource(txtLayer.Tag.ToString());
                 var vl = (IVectorLayerDefinition)ldf.SubLayer;
 
-                var fs = (IFeatureSource)_edsvc.ResourceService.GetResource(vl.ResourceId);
+                var fs = (IFeatureSource)resSvc.GetResource(vl.ResourceId);
 
                 string expr = _edsvc.EditExpression(txtFilter.Text, _cls, fs.Provider, vl.ResourceId, false);
                 if (expr != null)
@@ -193,10 +194,11 @@ namespace Maestro.Editors.WebLayout.Commands
             {
                 _columns.Clear();
 
-                var ldf = (ILayerDefinition)_edsvc.ResourceService.GetResource(txtLayer.Tag.ToString());
+                var conn = _edsvc.CurrentConnection;
+                var ldf = (ILayerDefinition)conn.ResourceService.GetResource(txtLayer.Tag.ToString());
                 var vl = (IVectorLayerDefinition)ldf.SubLayer;
 
-                _cls = _edsvc.FeatureService.GetClassDefinition(vl.ResourceId, vl.FeatureName);
+                _cls = conn.FeatureService.GetClassDefinition(vl.ResourceId, vl.FeatureName);
 
                 COL_PROPERTY.DisplayMember = "Name";
                 COL_PROPERTY.DataSource = _cls.Properties;

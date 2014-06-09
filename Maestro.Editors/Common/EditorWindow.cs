@@ -182,7 +182,7 @@ namespace Maestro.Editors.Common
             {
                 using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
                 {
-                    _svc.ResourceService.SetResourceXmlData(_svc.EditedResourceID, ms);
+                    _svc.CurrentConnection.ResourceService.SetResourceXmlData(_svc.EditedResourceID, ms);
                 }
                 return true;
             }

@@ -94,7 +94,7 @@ namespace Maestro.Editors.LayerDefinition
 
         internal string EditExpression(string expr, bool attachStylizationFunctions)
         {
-            var fs = (IFeatureSource)_edsvc.ResourceService.GetResource(_vl.ResourceId);
+            var fs = (IFeatureSource)_edsvc.CurrentConnection.ResourceService.GetResource(_vl.ResourceId);
 
             return _edsvc.EditExpression(expr, fs.GetClass(_vl.FeatureName), fs.Provider, _vl.ResourceId, attachStylizationFunctions);
         }
@@ -118,7 +118,7 @@ namespace Maestro.Editors.LayerDefinition
 
         internal string GetFdoProvider()
         {
-            var fs = (IFeatureSource)_edsvc.ResourceService.GetResource(_vl.ResourceId);
+            var fs = (IFeatureSource)_edsvc.CurrentConnection.ResourceService.GetResource(_vl.ResourceId);
             return fs.Provider;
         }
 

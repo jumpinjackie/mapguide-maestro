@@ -89,10 +89,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         bool IsSupportedResourceType(string resType);
 
         /// <summary>
-        /// Indicates if this current connection supports the specified resource type
+        /// Gets the array of supported resource types
         /// </summary>
-        /// <param name="resType"></param>
-        /// <returns></returns>
-        bool IsSupportedResourceType(ResourceTypes resType);
+        string[] SupportedResourceTypes { get; }
     }
 }

@@ -193,7 +193,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     MessageBox.Show(Strings.NoFeatureClassAssigned);
                     return;
                 }
-                var cls = m_owner.Editor.FeatureService.GetClassDefinition(vl.ResourceId, vl.FeatureName);
+                var cls = m_owner.Editor.CurrentConnection.FeatureService.GetClassDefinition(vl.ResourceId, vl.FeatureName);
                 if (cls == null)
                 {
                     MessageBox.Show(string.Format(Strings.FeatureClassNotFound, vl.FeatureName));

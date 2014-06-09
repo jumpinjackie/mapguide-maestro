@@ -228,7 +228,7 @@ namespace Maestro.Editors.WebLayout
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_edsvc.ResourceService, ResourceTypes.MapDefinition.ToString(), ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edsvc.CurrentConnection, ResourceTypes.MapDefinition.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {

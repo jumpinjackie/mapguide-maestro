@@ -70,7 +70,7 @@ namespace Maestro.AddIn.Local.Services
                 mapDef.CoordinateSystem = wkt;
                 mapDef.SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);
                 string resId = "Session:" + edSvc.SessionID + "//" + Guid.NewGuid() + "." + res.ResourceType.ToString();
-                edSvc.ResourceService.SetResourceXmlData(resId, ResourceTypeRegistry.Serialize(res));
+                conn.ResourceService.SetResourceXmlData(resId, ResourceTypeRegistry.Serialize(res));
                 mapDef.AddLayer(null, "PreviewLayer", resId);
             }
             else if (res.ResourceType == ResourceTypes.MapDefinition.ToString())
@@ -80,7 +80,7 @@ namespace Maestro.AddIn.Local.Services
             else if (res.ResourceType == ResourceTypes.WatermarkDefinition.ToString())
             {
                 string resId = "Session:" + edSvc.SessionID + "//" + Guid.NewGuid() + "." + res.ResourceType.ToString();
-                edSvc.ResourceService.SetResourceXmlData(resId, ResourceTypeRegistry.Serialize(res));
+                conn.ResourceService.SetResourceXmlData(resId, ResourceTypeRegistry.Serialize(res));
 
                 var csFact = new MgCoordinateSystemFactory();
                 var arbXY = csFact.ConvertCoordinateSystemCodeToWkt("XY-M");
@@ -92,7 +92,7 @@ namespace Maestro.AddIn.Local.Services
             }
 
             var mapResId = new MgResourceIdentifier("Session:" + edSvc.SessionID + "//" + mapDef.ResourceType.ToString() + "Preview" + Guid.NewGuid() + "." + mapDef.ResourceType.ToString());
-            edSvc.ResourceService.SetResourceXmlData(mapResId.ToString(), ResourceTypeRegistry.Serialize(mapDef));
+            conn.ResourceService.SetResourceXmlData(mapResId.ToString(), ResourceTypeRegistry.Serialize(mapDef));
 
             //MgdMap map = new MgdMap(mapResId);
 

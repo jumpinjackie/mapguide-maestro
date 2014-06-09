@@ -169,13 +169,13 @@ namespace MaestroAPITests
                 }
             }
 
-            foreach (ResourceTypes rt in Enum.GetValues(typeof(ResourceTypes)))
+            foreach (string rt in caps.SupportedResourceTypes)
             {
-                if (rt != ResourceTypes.ApplicationDefinition && rt != ResourceTypes.SymbolDefinition)
-                    Assert.IsTrue(caps.IsSupportedResourceType(rt), rt.ToString());
-                else
-                    Assert.IsFalse(caps.IsSupportedResourceType(rt), rt.ToString());
+                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt);
             }
+            Assert.IsFalse(caps.IsSupportedResourceType(ResourceTypes.ApplicationDefinition.ToString()), ResourceTypes.ApplicationDefinition.ToString());
+            Assert.IsFalse(caps.IsSupportedResourceType(ResourceTypes.SymbolDefinition.ToString()), ResourceTypes.SymbolDefinition.ToString());
+            Assert.IsFalse(caps.IsSupportedResourceType(ResourceTypes.WatermarkDefinition.ToString()), ResourceTypes.WatermarkDefinition.ToString());
         }
 
         [Test]
@@ -306,13 +306,13 @@ namespace MaestroAPITests
                 }
             }
 
-            foreach (ResourceTypes rt in Enum.GetValues(typeof(ResourceTypes)))
+            foreach (string rt in caps.SupportedResourceTypes)
             {
-                if (rt != ResourceTypes.ApplicationDefinition && rt != ResourceTypes.SymbolDefinition)
-                    Assert.IsTrue(caps.IsSupportedResourceType(rt), rt.ToString());
-                else
-                    Assert.IsFalse(caps.IsSupportedResourceType(rt), rt.ToString());
+                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt);
             }
+            Assert.IsFalse(caps.IsSupportedResourceType(ResourceTypes.ApplicationDefinition.ToString()), ResourceTypes.ApplicationDefinition.ToString());
+            Assert.IsFalse(caps.IsSupportedResourceType(ResourceTypes.SymbolDefinition.ToString()), ResourceTypes.SymbolDefinition.ToString());
+            Assert.IsFalse(caps.IsSupportedResourceType(ResourceTypes.WatermarkDefinition.ToString()), ResourceTypes.WatermarkDefinition.ToString());
         }
 
         [Test]
@@ -436,13 +436,12 @@ namespace MaestroAPITests
                 }
             }
 
-            foreach (ResourceTypes rt in Enum.GetValues(typeof(ResourceTypes)))
+            foreach (string rt in caps.SupportedResourceTypes)
             {
-                if (rt != ResourceTypes.ApplicationDefinition)
-                    Assert.IsTrue(caps.IsSupportedResourceType(rt), rt.ToString());
-                else
-                    Assert.IsFalse(caps.IsSupportedResourceType(rt), rt.ToString());
+                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt);
             }
+            Assert.IsFalse(caps.IsSupportedResourceType(ResourceTypes.ApplicationDefinition.ToString()), ResourceTypes.ApplicationDefinition.ToString());
+            Assert.IsFalse(caps.IsSupportedResourceType(ResourceTypes.WatermarkDefinition.ToString()), ResourceTypes.WatermarkDefinition.ToString());
         }
 
         [Test]
@@ -559,10 +558,11 @@ namespace MaestroAPITests
                 }
             }
 
-            foreach (ResourceTypes rt in Enum.GetValues(typeof(ResourceTypes)))
+            foreach (string rt in caps.SupportedResourceTypes)
             {
-                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt.ToString());
+                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt);
             }
+            Assert.IsFalse(caps.IsSupportedResourceType(ResourceTypes.WatermarkDefinition.ToString()), ResourceTypes.WatermarkDefinition.ToString());
         }
 
         [Test]
@@ -679,10 +679,11 @@ namespace MaestroAPITests
                 }
             }
 
-            foreach (ResourceTypes rt in Enum.GetValues(typeof(ResourceTypes)))
+            foreach (string rt in caps.SupportedResourceTypes)
             {
-                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt.ToString());
+                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt);
             }
+            Assert.IsFalse(caps.IsSupportedResourceType(ResourceTypes.WatermarkDefinition.ToString()), ResourceTypes.WatermarkDefinition.ToString());
         }
 
         [Test]
@@ -799,10 +800,11 @@ namespace MaestroAPITests
                 }
             }
 
-            foreach (ResourceTypes rt in Enum.GetValues(typeof(ResourceTypes)))
+            foreach (string rt in caps.SupportedResourceTypes)
             {
-                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt.ToString());
+                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt);
             }
+            Assert.IsFalse(caps.IsSupportedResourceType(ResourceTypes.WatermarkDefinition.ToString()), ResourceTypes.WatermarkDefinition.ToString());
         }
 
         [Test]
@@ -925,9 +927,9 @@ namespace MaestroAPITests
                 }
             }
 
-            foreach (ResourceTypes rt in Enum.GetValues(typeof(ResourceTypes)))
+            foreach (string rt in caps.SupportedResourceTypes)
             {
-                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt.ToString());
+                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt);
             }
         }
 
@@ -1051,9 +1053,9 @@ namespace MaestroAPITests
                 }
             }
 
-            foreach (ResourceTypes rt in Enum.GetValues(typeof(ResourceTypes)))
+            foreach (string rt in caps.SupportedResourceTypes)
             {
-                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt.ToString());
+                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt);
             }
         }
 
@@ -1177,9 +1179,9 @@ namespace MaestroAPITests
                 }
             }
 
-            foreach (ResourceTypes rt in Enum.GetValues(typeof(ResourceTypes)))
+            foreach (string rt in caps.SupportedResourceTypes)
             {
-                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt.ToString());
+                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt);
             }
         }
 
@@ -1303,9 +1305,9 @@ namespace MaestroAPITests
                 }
             }
 
-            foreach (ResourceTypes rt in Enum.GetValues(typeof(ResourceTypes)))
+            foreach (string rt in caps.SupportedResourceTypes)
             {
-                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt.ToString());
+                Assert.IsTrue(caps.IsSupportedResourceType(rt), rt);
             }
         }
     }

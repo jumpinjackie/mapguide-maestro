@@ -149,7 +149,7 @@ namespace Maestro.Editors.Common
 
         private void LoadResourceData()
         {
-            var list = _edSvc.ResourceService.EnumerateResourceData(_edSvc.EditedResourceID);
+            var list = _edSvc.CurrentConnection.ResourceService.EnumerateResourceData(_edSvc.EditedResourceID);
             _data = list.ResourceData;
 
             BindResourceList();

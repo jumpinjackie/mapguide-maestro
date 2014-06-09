@@ -45,21 +45,21 @@ namespace Maestro.Editors.Common
             InitializeComponent();
         }
 
-        private IResourceService _resSvc;
+        private IServerConnection _conn;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="resId">The given resource, whose dependencies we want to re-point</param>
-        /// <param name="resSvc">The resource service</param>
-        public RepointerDialog(ResourceIdentifier resId, IResourceService resSvc)
+        /// <param name="edSvc">The editor service</param>
+        public RepointerDialog(ResourceIdentifier resId, IServerConnection conn)
             : this()
         {
-            _resSvc = resSvc;
+            _conn = conn;
             txtSource.Text = resId.ToString();
             this.ResourceType = resId.ResourceType;
 
-            var dependents = resSvc.EnumerateResourceReferences(resId.ToString());
+            var dependents = conn.ResourceService.EnumerateResourceReferences(resId.ToString());
 
             lstAffectedResources.DataSource = dependents.ResourceId;
         }
@@ -97,7 +97,7 @@ namespace Maestro.Editors.Common
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_resSvc, this.ResourceType, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_conn, this.ResourceType, ResourcePickerMode.OpenResource))
             {
                 if (string.IsNullOrEmpty(LastSelectedFolder.FolderId))
                     picker.SetStartingPoint(ResourceIdentifier.GetParentFolder(this.Source));

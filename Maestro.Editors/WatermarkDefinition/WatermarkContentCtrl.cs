@@ -130,7 +130,7 @@ namespace Maestro.Editors.WatermarkDefinition
 
         private void btnEditImage_Click(object sender, EventArgs e)
         {
-            var diag = new ImageDialog(this, _edSvc.ResourceService, _sym, _image);
+            var diag = new ImageDialog(this, _edSvc.CurrentConnection, _sym, _image);
             diag.ShowDialog(this);
             OnResourceChanged();
         }

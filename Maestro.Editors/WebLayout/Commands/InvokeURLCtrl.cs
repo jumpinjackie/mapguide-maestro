@@ -114,7 +114,7 @@ namespace Maestro.Editors.WebLayout.Commands
                 return;
             }
 
-            var mdf = (IMapDefinition)_edsvc.ResourceService.GetResource(wl.Map.ResourceId);
+            var mdf = (IMapDefinition)_edsvc.CurrentConnection.ResourceService.GetResource(wl.Map.ResourceId);
             List<string> layers = new List<string>();
             foreach (var lyr in mdf.MapLayer)
             {

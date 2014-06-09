@@ -69,7 +69,7 @@ namespace Maestro.Base.UI.Packaging
             var caps = _conn.Capabilities;
             foreach (var rt in SiteResourceType.All())
             {
-                if (caps.IsSupportedResourceType(rt))
+                if (caps.IsSupportedResourceType(rt.ToString()))
                 {
                     chkAllowedTypes.Items.Add(rt, true);
                 }
@@ -163,7 +163,7 @@ namespace Maestro.Base.UI.Packaging
 
         private void BrowseResourcePath_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_conn.ResourceService, ResourcePickerMode.OpenFolder))
+            using (var picker = new ResourcePicker(_conn, ResourcePickerMode.OpenFolder))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
@@ -224,7 +224,7 @@ namespace Maestro.Base.UI.Packaging
 
         private void btnBrowseRestorePath_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_conn.ResourceService, ResourcePickerMode.OpenFolder))
+            using (var picker = new ResourcePicker(_conn, ResourcePickerMode.OpenFolder))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {

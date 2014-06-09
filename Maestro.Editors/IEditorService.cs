@@ -42,29 +42,9 @@ namespace Maestro.Editors
         /// </summary>
         string PreviewLocale { get; set; }
         /// <summary>
-        /// Indicates if a specified custom command is supported and can be created
+        /// Gets the connection instance associated with this editor service
         /// </summary>
-        /// <param name="cmdType"></param>
-        /// <returns></returns>
-        bool SupportsCommand(CommandType cmdType);
-        /// <summary>
-        /// Create a custom command
-        /// </summary>
-        /// <param name="cmdType"></param>
-        /// <returns></returns>
-        ICommand CreateCommand(CommandType cmdType);
-        /// <summary>
-        /// Gets the associated feature service
-        /// </summary>
-        IFeatureService FeatureService { get; }
-        /// <summary>
-        /// Gets the associated resource service
-        /// </summary>
-        IResourceService ResourceService { get; }
-        /// <summary>
-        /// Gets the associated drawing service
-        /// </summary>
-        IDrawingService DrawingService { get; }
+        IServerConnection CurrentConnection { get; }
         /// <summary>
         /// Gets the session id
         /// </summary>

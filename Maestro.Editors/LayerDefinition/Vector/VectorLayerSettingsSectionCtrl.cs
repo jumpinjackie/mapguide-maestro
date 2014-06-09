@@ -70,7 +70,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 if (string.IsNullOrEmpty(txtFeatureClass.Text) || string.IsNullOrEmpty(txtGeometry.Text))
                 {
                     TryFillUIFromNewFeatureSource(_vl.ResourceId);
-                    if (!_edsvc.ResourceService.ResourceExists(_vl.ResourceId))
+                    if (!_edsvc.CurrentConnection.ResourceService.ResourceExists(_vl.ResourceId))
                     {
                         errorProvider.SetError(txtFeatureSource, Strings.LayerEditorFeatureSourceNotFound);
                         MessageBox.Show(Strings.LayerEditorHasErrors);
@@ -84,7 +84,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                     string geometry = txtGeometry.Text;
                     BusyWaitDialog.Run(null, () => {
                         var errors = new List<string>();
-                        if (!_edsvc.ResourceService.ResourceExists(_vl.ResourceId))
+                        if (!_edsvc.CurrentConnection.ResourceService.ResourceExists(_vl.ResourceId))
                         {
                             errors.Add(Strings.LayerEditorFeatureSourceNotFound);
                         }
@@ -93,7 +93,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                             ClassDefinition clsDef = null;
                             try
                             {
-                                clsDef = _edsvc.FeatureService.GetClassDefinition(_vl.ResourceId, featureClass);
+                                clsDef = _edsvc.CurrentConnection.FeatureService.GetClassDefinition(_vl.ResourceId, featureClass);
                             }
                             catch
                             {
@@ -187,7 +187,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 ClassDefinition cls = null;
                 try
                 {
-                    cls = _edsvc.FeatureService.GetClassDefinition(txtFeatureSource.Text, txtFeatureClass.Text);
+                    cls = _edsvc.CurrentConnection.FeatureService.GetClassDefinition(txtFeatureSource.Text, txtFeatureClass.Text);
                 }
                 catch { }
                 if (cls != null)
@@ -223,7 +223,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
             if (!string.IsNullOrEmpty(txtFeatureClass.Text))
             {
                 //This feature source must have at least one class definition with a geometry property
-                ClassDefinition clsDef = _edsvc.FeatureService.GetClassDefinition(txtFeatureSource.Text, txtFeatureClass.Text);
+                ClassDefinition clsDef = _edsvc.CurrentConnection.FeatureService.GetClassDefinition(txtFeatureSource.Text, txtFeatureClass.Text);
                 if (clsDef == null)
                 {
                     MessageBox.Show(string.Format(Strings.InvalidFeatureSourceNoClasses, txtFeatureSource.Text));
@@ -269,7 +269,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
         private void btnBrowseFeatureSource_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_edsvc.ResourceService, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edsvc.CurrentConnection, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
@@ -294,7 +294,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 txtGeometry.Text = string.Empty;
 
                 //But if this is a single-class FS, let's try to auto-fill this stuff
-                string[] names = _edsvc.FeatureService.GetClassNames(fsId, null);
+                string[] names = _edsvc.CurrentConnection.FeatureService.GetClassNames(fsId, null);
                 if (names.Length == 1)
                     txtFeatureClass.Text = names[0];
 
@@ -302,7 +302,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 _vl.ResourceId = fsId;
                 if (names.Length == 1)
                 {
-                    ClassDefinition clsDef = _edsvc.FeatureService.GetClassDefinition(fsId, names[0]);
+                    ClassDefinition clsDef = _edsvc.CurrentConnection.FeatureService.GetClassDefinition(fsId, names[0]);
                     SetFeatureClass(clsDef);
                 }
             }
@@ -331,7 +331,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
         private IFeatureSource GetFeatureSource()
         {
             if (_cachedFs == null)
-                _cachedFs = (IFeatureSource)_edsvc.ResourceService.GetResource(txtFeatureSource.Text);
+                _cachedFs = (IFeatureSource)_edsvc.CurrentConnection.ResourceService.GetResource(txtFeatureSource.Text);
 
             return _cachedFs;
         }
@@ -380,11 +380,12 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
         private void btnBrowseSchema_Click(object sender, EventArgs e)
         {
-            var list = _edsvc.FeatureService.GetClassNames(txtFeatureSource.Text, null);
+            var featSvc = _edsvc.CurrentConnection.FeatureService;
+            var list = featSvc.GetClassNames(txtFeatureSource.Text, null);
             var item = GenericItemSelectionDialog.SelectItem(null, null, list);
             if (item != null)
             {
-                var cls = _edsvc.FeatureService.GetClassDefinition(txtFeatureSource.Text, item);
+                var cls = featSvc.GetClassDefinition(txtFeatureSource.Text, item);
                 SetFeatureClass(cls);
             }
         }

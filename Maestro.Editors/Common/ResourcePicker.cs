@@ -46,22 +46,6 @@ namespace Maestro.Editors.Generic
         private ResourcePicker()
         {
             InitializeComponent();
-            _resTypes = new string[] 
-            {
-                ResourceTypes.ApplicationDefinition.ToString(),
-                ResourceTypes.DrawingSource.ToString(),
-                ResourceTypes.FeatureSource.ToString(),
-                ResourceTypes.Folder.ToString(),
-                ResourceTypes.LayerDefinition.ToString(),
-                ResourceTypes.LoadProcedure.ToString(),
-                ResourceTypes.MapDefinition.ToString(),
-                ResourceTypes.PrintLayout.ToString(),
-                ResourceTypes.SymbolDefinition.ToString(),
-                ResourceTypes.SymbolLibrary.ToString(),
-                ResourceTypes.WebLayout.ToString(),
-                ResourceTypes.WatermarkDefinition.ToString()
-            };
-            cmbResourceFilter.DataSource = _resTypes;
             RepositoryIcons.PopulateImageList(resImageList);
             RepositoryIcons.PopulateImageList(folderImageList);
         }
@@ -75,17 +59,79 @@ namespace Maestro.Editors.Generic
         /// folder selection is desired, set <see cref="SelectFoldersOnly"/> to true before
         /// showing the dialog
         /// </summary>
-        /// <param name="resSvc">The res SVC.</param>
-        /// <param name="mode">The mode.</param>
-        public ResourcePicker(IResourceService resSvc, ResourcePickerMode mode)
+        /// <remarks>
+        /// The list of allowed resource types will be inferred from the capabilities of the given connection instance
+        /// </remarks>
+        /// <param name="conn">The server connection</param>
+        /// <param name="mode">The mode that the resource picker will be used in</param>
+        public ResourcePicker(IServerConnection conn, ResourcePickerMode mode)
+            : this(conn.ResourceService, mode, conn.Capabilities.SupportedResourceTypes)
+        { }
+
+        /// <summary>
+        /// Constructs a new instance. Use this overload to select any resource type. If only
+        /// folder selection is desired, set <see cref="SelectFoldersOnly"/> to true before
+        /// showing the dialog
+        /// </summary>
+        /// <remarks>
+        /// Use this overload if you need to present a resource picker with resource types not currently known or supported
+        /// by the Maestro API
+        /// </remarks>
+        /// <param name="resSvc">The resource service</param>
+        /// <param name="mode">The mode that the resource picker will be used in</param>
+        /// <param name="allowedResourceTypes">The array of allowed resource types</param>
+        public ResourcePicker(IResourceService resSvc, ResourcePickerMode mode, string[] allowedResourceTypes)
             : this()
         {
             _resSvc = resSvc;
-            repoView.Init(resSvc, true, false);
+            _resTypes = allowedResourceTypes;
+            cmbResourceFilter.DataSource = _resTypes;
+            repoView.Init(_resSvc, true, false);
             repoView.ItemSelected += OnFolderSelected;
             this.UseFilter = true;
             this.Mode = mode;
             SetStartingPoint(LastSelectedFolder.FolderId);
+        }
+
+        /// <summary>
+        /// Constructs a new instance. Use this overload to select any resource type. If only
+        /// folder selection is desired, set <see cref="SelectFoldersOnly"/> to true before
+        /// showing the dialog
+        /// </summary>
+        /// <remarks>
+        /// The list of allowed resource types will be inferred from the capabilities of the given connection instance
+        /// </remarks>
+        /// <param name="conn">The server connection</param>
+        /// <param name="resTypeFilter">The resource type to filter on</param>
+        /// <param name="mode">The mode that the resource picker will be used in</param>
+        public ResourcePicker(IServerConnection conn, string resTypeFilter, ResourcePickerMode mode)
+            : this(conn.ResourceService, resTypeFilter, mode, conn.Capabilities.SupportedResourceTypes)
+        { }
+
+        /// <summary>
+        /// Constructs a new instance. Use this overload to select only resources of a specific type.
+        /// You cannot select folders in this mode. Attempting to set <see cref="SelectFoldersOnly"/> to
+        /// true will throw an <see cref="InvalidOperationException"/>
+        /// </summary>
+        /// <remarks>
+        /// Use this overload if you need to present a resource picker with resource types not currently known or supported
+        /// by the Maestro API
+        /// </remarks>
+        /// <param name="resSvc">The resource service.</param>
+        /// <param name="resTypeFilter">The resource type to filter on</param>
+        /// <param name="mode">The mode that the resource picker will be used in</param>
+        /// <param name="allowedResourceTypes">The array of allowed resource types</param>
+        public ResourcePicker(IResourceService resSvc, string resTypeFilter, ResourcePickerMode mode, string[] allowedResourceTypes)
+            : this(resSvc, mode, allowedResourceTypes)
+        {
+            if (mode == ResourcePickerMode.OpenFolder)
+                throw new InvalidOperationException(string.Format(Strings.ModeNotAllowed, mode));
+
+            this.Filter = resTypeFilter;
+            this.UseFilter = true;
+
+            _resourceMode = true;
+            cmbResourceFilter.Enabled = false;
         }
 
         void OnFolderSelected(object sender, EventArgs e)
@@ -150,27 +196,6 @@ namespace Maestro.Editors.Generic
                         break;
                 }
             }
-        }
-
-        /// <summary>
-        /// Constructs a new instance. Use this overload to select only resources of a specific type.
-        /// You cannot select folders in this mode. Attempting to set <see cref="SelectFoldersOnly"/> to
-        /// true will throw an <see cref="InvalidOperationException"/>
-        /// </summary>
-        /// <param name="resSvc">The resource service.</param>
-        /// <param name="resTypeFilter">The resource type to filter on.</param>
-        /// <param name="mode">The mode.</param>
-        public ResourcePicker(IResourceService resSvc, string resTypeFilter, ResourcePickerMode mode)
-            : this(resSvc, mode)
-        {
-            if (mode == ResourcePickerMode.OpenFolder)
-                throw new InvalidOperationException(string.Format(Strings.ModeNotAllowed, mode));
-
-            this.Filter = resTypeFilter;
-            this.UseFilter = true;
-
-            _resourceMode = true;
-            cmbResourceFilter.Enabled = false;
         }
 
         /// <summary>

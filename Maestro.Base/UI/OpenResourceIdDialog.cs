@@ -87,7 +87,7 @@ namespace Maestro.Base.UI
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(SelectedConnection.ResourceService, ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(SelectedConnection, ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {

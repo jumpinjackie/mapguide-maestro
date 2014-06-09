@@ -89,7 +89,7 @@ namespace Maestro.Editors.FeatureSource.Extensions
             if (!string.IsNullOrEmpty(resId))
             {
                 txtFeatureSource.Text = resId;
-                _secondaryClasses = _edSvc.FeatureService.GetClassNames(txtFeatureSource.Text, null);
+                _secondaryClasses = _edSvc.CurrentConnection.FeatureService.GetClassNames(txtFeatureSource.Text, null);
                 //Invalidate existing secondary class
                 txtSecondaryClass.Text = string.Empty;
                 _secondaryClass = null;
@@ -135,7 +135,7 @@ namespace Maestro.Editors.FeatureSource.Extensions
             //Init selected classes
             if (!string.IsNullOrEmpty(_rel.ResourceId))
             {
-                _secondaryClasses = _edSvc.FeatureService.GetClassNames(_rel.ResourceId, null);
+                _secondaryClasses = _edSvc.CurrentConnection.FeatureService.GetClassNames(_rel.ResourceId, null);
 
                 if (!string.IsNullOrEmpty(_rel.AttributeClass))
                 {
@@ -236,8 +236,9 @@ namespace Maestro.Editors.FeatureSource.Extensions
         {
             if (_primaryClass != null && _secondaryClass != null)
             {
-                var pc = _edSvc.FeatureService.GetClassDefinition(_primaryFeatureSource, _primaryClass);
-                var sc = _edSvc.FeatureService.GetClassDefinition(_rel.ResourceId, _secondaryClass);
+                var featSvc = _edSvc.CurrentConnection.FeatureService;
+                var pc = featSvc.GetClassDefinition(_primaryFeatureSource, _primaryClass);
+                var sc = featSvc.GetClassDefinition(_rel.ResourceId, _secondaryClass);
                 
                 var dlg = new SelectJoinKeyDialog(pc, sc);
                 if (dlg.ShowDialog() == DialogResult.OK)

@@ -222,7 +222,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
         {
             try
             {
-                var dstore = _service.FeatureService.EnumerateDataStores(this.Provider, GetPartialConnectionStringForDataStoreEnumeration());
+                var dstore = _service.CurrentConnection.FeatureService.EnumerateDataStores(this.Provider, GetPartialConnectionStringForDataStoreEnumeration());
                 var values = ConvertToArray(dstore);
                 string item = GenericItemSelectionDialog.SelectItem(Strings.TextSelectDataStore, Strings.TextSelectDataStore, values);
                 if (item != null)

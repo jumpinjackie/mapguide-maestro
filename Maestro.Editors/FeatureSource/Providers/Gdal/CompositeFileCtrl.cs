@@ -375,7 +375,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
 
         private void browseAliasedFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var picker = new UnmanagedFileBrowser(_service.ResourceService))
+            using (var picker = new UnmanagedFileBrowser(_service.CurrentConnection.ResourceService))
             {
                 picker.AllowMultipleSelection = true;
                 if (picker.ShowDialog() == DialogResult.OK)
@@ -387,7 +387,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
 
         private void browseAliasedFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var picker = new UnmanagedFileBrowser(_service.ResourceService))
+            using (var picker = new UnmanagedFileBrowser(_service.CurrentConnection.ResourceService))
             {
                 picker.AllowMultipleSelection = false;
                 picker.SelectFoldersOnly = true;
@@ -400,7 +400,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
                         folder = folder.Replace("%MG_DATA_PATH_ALIAS[", "[") //NOXLATE
                                        .Replace("]%", "]"); //NOXLATE
                     }
-                    var list = _service.ResourceService.EnumerateUnmanagedData(folder, string.Empty, false, UnmanagedDataTypes.Files);
+                    var list = _service.CurrentConnection.ResourceService.EnumerateUnmanagedData(folder, string.Empty, false, UnmanagedDataTypes.Files);
                     var extensions = new List<string>(new string[] { 
                         ".png", //NOXLATE
                         ".jpg", //NOXLATE

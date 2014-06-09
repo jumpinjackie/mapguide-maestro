@@ -58,12 +58,12 @@ namespace Maestro.Editors.WatermarkDefinition
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            using (var picker = new ResourcePicker(_edSvc.ResourceService, ResourceTypes.WatermarkDefinition.ToString(), ResourcePickerMode.OpenResource))
+            using (var picker = new ResourcePicker(_edSvc.CurrentConnection, ResourceTypes.WatermarkDefinition.ToString(), ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
                 {
                     LastSelectedFolder.FolderId = picker.SelectedFolder;
-                    var wdf = (IWatermarkDefinition)_edSvc.ResourceService.GetResource(picker.ResourceID);
+                    var wdf = (IWatermarkDefinition)_edSvc.CurrentConnection.ResourceService.GetResource(picker.ResourceID);
                     //var wm = wdf.CreateInstance();
                     var wm = _watermarks.AddWatermark(wdf);
                     var diag = new WatermarkInstanceEditorDialog(_edSvc, wm);
