@@ -71,7 +71,7 @@ namespace MapViewer
             //The ResourcePicker class, functions like a file dialog allowing the user
             //to easily select a given resource. In our case, we want the user to select
             //a Map Definition
-            using (var picker = new ResourcePicker(_conn.ResourceService,
+            using (var picker = new ResourcePicker(_conn,
                                                    ResourceTypes.MapDefinition.ToString(),
                                                    ResourcePickerMode.OpenResource))
             {
