@@ -97,7 +97,7 @@ namespace DwfInspector
             //to easily select a given resource. In our case, we want the user to select
             //a Drawing Source
             using (var picker = new ResourcePicker(_conn.ResourceService,
-                                                   ResourceTypes.DrawingSource,
+                                                   ResourceTypes.DrawingSource.ToString(),
                                                    ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)

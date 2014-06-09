@@ -81,7 +81,7 @@ namespace StandaloneWebLayoutEditor
             //to easily select a given resource. In our case, we want the user to select
             //a Feature Source
             using (var picker = new ResourcePicker(_conn.ResourceService,
-                                                   ResourceTypes.WebLayout,
+                                                   ResourceTypes.WebLayout.ToString(),
                                                    ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)

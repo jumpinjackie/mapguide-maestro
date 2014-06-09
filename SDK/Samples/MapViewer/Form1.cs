@@ -72,7 +72,7 @@ namespace MapViewer
             //to easily select a given resource. In our case, we want the user to select
             //a Map Definition
             using (var picker = new ResourcePicker(_conn.ResourceService,
-                                                   ResourceTypes.MapDefinition,
+                                                   ResourceTypes.MapDefinition.ToString(),
                                                    ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)
