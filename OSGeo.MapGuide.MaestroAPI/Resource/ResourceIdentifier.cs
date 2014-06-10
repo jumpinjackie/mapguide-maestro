@@ -253,7 +253,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// </summary>
         public string ParentFolder
         {
-            get { return ResourceIdentifier.GetParentFolder(m_id); }
+            get { return ResourceIdentifier.GetParentFolder(m_id, true /* Because it was initialized with a ResourceTypes enum */); }
         }
 
         #region Static handlers
@@ -580,9 +580,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// Gets the parent folder.
         /// </summary>
         /// <param name="identifier">The identifier.</param>
+        /// <returns></returns>
+        public static string GetParentFolder(string identifier)
+        {
+            return GetParentFolder(identifier, false);
+        }
+
+        /// <summary>
+        /// Gets the parent folder.
+        /// </summary>
+        /// <param name="identifier">The identifier.</param>
         /// <param name="strict">If true, the type of the identifier must be one that is supported by Maestro</param>
         /// <returns></returns>
-        public static string GetParentFolder(string identifier, bool strict = true)
+        internal static string GetParentFolder(string identifier, bool strict)
         {
             if (!Validate(identifier, strict))
                 throw new Exception(Strings.ErrorInvalidResourceIdentifier);

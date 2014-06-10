@@ -119,7 +119,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                     
 
                     //Need to refresh the model because it still is called by the old name
-                    var folder = ResourceIdentifier.GetParentFolder(oldid, false);
+                    var folder = ResourceIdentifier.GetParentFolder(oldid);
                     exp.RefreshModel(conn.DisplayName, folder);
                 }
             }

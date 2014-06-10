@@ -266,7 +266,7 @@ namespace Maestro.Base.UI
                     if (IsRoot)
                         return;
 
-                    string parentid = ResourceIdentifier.GetParentFolder(this.ResourceId, false);
+                    string parentid = ResourceIdentifier.GetParentFolder(this.ResourceId);
                     this.ResourceId = parentid + this.NameQualified + ((IsFolder) ? "/" : string.Empty); //NOXLATE
                     NotifyNodesChanged();
                 }
