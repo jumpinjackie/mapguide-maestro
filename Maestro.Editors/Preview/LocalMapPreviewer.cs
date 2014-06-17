@@ -78,9 +78,10 @@ namespace Maestro.Editors.Preview
 
         private static bool IsLocalPreviewableType(IResource res)
         {
-            return res.ResourceType == ResourceTypes.LayerDefinition.ToString() ||
+            return (res.ResourceType == ResourceTypes.LayerDefinition.ToString() ||
                    res.ResourceType == ResourceTypes.MapDefinition.ToString() ||
-                   res.ResourceType == ResourceTypes.WatermarkDefinition.ToString();
+                   res.ResourceType == ResourceTypes.WatermarkDefinition.ToString()) &&
+                   !(res is OSGeo.MapGuide.ObjectModels.UntypedResource);
         }
 
         /// <summary>

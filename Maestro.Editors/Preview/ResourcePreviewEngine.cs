@@ -292,14 +292,15 @@ namespace Maestro.Editors.Preview
 
             var sessionId = _edSvc.SessionID;
             var mdfId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".MapDefinition"; //NOXLATE
-            var mdf = (IMapDefinition)res;
-
-            var conn = mdf.CurrentConnection;
-            IMapDefinition2 mdf2 = mdf as IMapDefinition2;
-            if (mdf2 != null && PreviewSettings.AddDebugWatermark)
-                CreateDebugWatermark(mdf2, conn, null);
-            conn.ResourceService.SaveResourceAs(mdf, mdfId);
-
+            var conn = res.CurrentConnection;
+            var mdf = res as IMapDefinition;
+            if (mdf != null)
+            {
+                IMapDefinition2 mdf2 = mdf as IMapDefinition2;
+                if (mdf2 != null && PreviewSettings.AddDebugWatermark)
+                    CreateDebugWatermark(mdf2, conn, null);
+            }
+            conn.ResourceService.SaveResourceAs(res, mdfId);
             //if (PropertyService.Get(ConfigProperties.PreviewViewerType, "AJAX").Equals("AJAX")) //NOXLATE
             if (PreviewSettings.UseAjaxViewer)
             {

@@ -178,13 +178,26 @@ namespace Maestro.Editors.Preview
             var rt = res.ResourceType;
             if (res.CurrentConnection.Capabilities.SupportsResourcePreviews)
             {
+                bool bKnownResourceType = !(res is UntypedResource);
                 if (rt == ResourceTypes.SymbolDefinition.ToString())
                 {
-                    return res.CurrentConnection.SiteVersion >= new Version(2, 0) && Array.IndexOf(res.CurrentConnection.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0;
+                    return bKnownResourceType && res.CurrentConnection.SiteVersion >= new Version(2, 0) && Array.IndexOf(res.CurrentConnection.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0;
                 }
                 else
                 {
-                    return ResourcePreviewEngine.IsPreviewableType(rt);
+                    bool bPreviewable = ResourcePreviewEngine.IsPreviewableType(rt);
+                    //A Map Definition can be saved directly and referenced by a Web Layout
+                    //An Web Layout and Application Definition can be saved directly and
+                    //passed straight to the AJAX/Fusion viewers.
+                    //
+                    //So even if they're UntypedResource instances, they're still "previewable" for the purpose
+                    //of this test
+                    if (res.ResourceType != ResourceTypes.MapDefinition.ToString() &&
+                        res.ResourceType != ResourceTypes.WebLayout.ToString() &&
+                        res.ResourceType != ResourceTypes.ApplicationDefinition.ToString())
+                        return bKnownResourceType && bPreviewable;
+                    else
+                        return bPreviewable;
                 }
             }
             return false;
