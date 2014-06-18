@@ -490,7 +490,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         IFlyoutItem CreateFlyout(string label);
 
         /// <summary>
-        /// Adds the new map group to the current map set
+        /// Adds the new map group to the current map set with a default MapGuide child map
         /// </summary>
         /// <param name="id"></param>
         /// <param name="singleTile"></param>
@@ -499,7 +499,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         IMapGroup AddMapGroup(string id, bool singleTile, string mapDefinitionId);
 
         /// <summary>
-        /// Adds a new map group to the specified map set
+        /// Adds a new map group to the specified map set with a default MapGuide child map
         /// </summary>
         /// <param name="id"></param>
         /// <param name="singleTile"></param>
@@ -1118,7 +1118,11 @@ public class ArbitraryWidgetValue : WidgetValue
 
         IMapView CreateInitialView(double x, double y, double scale);
 
+        IMap CreateMapGuideEntry(string mapDefinition);
+
         IMap CreateCmsMapEntry(string type, bool singleTile, string name, string olType);
+
+        IMap CreateGenericEntry();
     }
 
     public interface IMap : INotifyPropertyChanged, IExtensibleElement
@@ -1134,6 +1138,10 @@ public class ArbitraryWidgetValue : WidgetValue
         ICmsMapOptions CmsMapOptions { get; set; }
 
         ICmsMapOptions CreateOptions(string name, string type);
+
+        string AsXml();
+
+        void FromXml(string xml);
     }
 
     public interface IMapGuideOverlayOptions

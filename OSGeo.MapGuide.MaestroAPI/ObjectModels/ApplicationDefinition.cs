@@ -697,6 +697,45 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
 
     partial class MapGroupType : IMapGroup
     {
+        IMap IMapGroup.CreateMapGuideEntry(string mapDefinition)
+        {
+            var map = new MapType()
+            {
+                Type = "MapGuide", //NOXLATE
+                SingleTile = "true",
+                Extension = new CustomContentType()
+                {
+                    Any = new XmlElement[1]
+                }
+            };
+            map.Extension.Any[0] = AppDefDocument.Instance.CreateElement("ResourceId"); //NOXLATE
+            map.Extension.Any[0].InnerText = mapDefinition;
+            return map;
+        }
+
+        IMap IMapGroup.CreateGenericEntry()
+        {
+            var el = AppDefDocument.Instance.CreateElement("Options"); //NOXLATE
+            var n = AppDefDocument.Instance.CreateElement("name"); //NOXLATE
+            var t = AppDefDocument.Instance.CreateElement("type"); //NOXLATE
+
+            n.InnerText = string.Empty;
+            t.InnerText = string.Empty;
+            el.AppendChild(n);
+            el.AppendChild(t);
+
+            var map = new MapType()
+            {
+                Type = "", //NOXLATE
+                SingleTile = "false", //NOXLATE
+                Extension = new CustomContentType()
+                {
+                    Any = new XmlElement[] { el }
+                }
+            };
+            return map;
+        }
+
         IMap IMapGroup.CreateCmsMapEntry(string type, bool singleTile, string name, string olType)
         {
             var el = AppDefDocument.Instance.CreateElement("Options"); //NOXLATE
@@ -817,6 +856,19 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
 
     partial class MapType : IMap
     {
+        string IMap.AsXml()
+        {
+            return this.Serialize();
+        }
+
+        void IMap.FromXml(string xml)
+        {
+            var mt = MapType.Deserialize(xml);
+            this.Extension = mt.Extension;
+            this.SingleTile = mt.SingleTile;
+            this.Type = mt.Type;
+        }
+
         [XmlIgnore]
         IExtension IExtensibleElement.Extension
         {
@@ -843,13 +895,13 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             }
         }
 
-        public ICmsMapOptions CreateOptions(string name, string type)
+        ICmsMapOptions IMap.CreateOptions(string name, string type)
         {
             return new MapOptions() { Name = name, Type = type };
         }
 
         [XmlIgnore]
-        public ICmsMapOptions CmsMapOptions
+        ICmsMapOptions IMap.CmsMapOptions
         {
             get
             {
@@ -945,7 +997,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         }
 
         [XmlIgnore]
-        public IMapGuideOverlayOptions OverlayOptions
+        IMapGuideOverlayOptions IMap.OverlayOptions
         {
             /*
             From Fusion Wiki:
@@ -977,7 +1029,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
                                 var p = els[i]["projection"]; //NOXLATE
 
                                 if (n != null && t != null)
-                                    return CreateOverlayOptions(Convert.ToBoolean(n.InnerText), Convert.ToBoolean(t.InnerText), p.InnerText);
+                                    return ((IMap)this).CreateOverlayOptions(Convert.ToBoolean(n.InnerText), Convert.ToBoolean(t.InnerText), p.InnerText);
                             }
                             catch
                             {
@@ -1059,7 +1111,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             }
         }
 
-        public IMapGuideOverlayOptions CreateOverlayOptions(bool isBaseLayer, bool useOverlay, string projection)
+        IMapGuideOverlayOptions IMap.CreateOverlayOptions(bool isBaseLayer, bool useOverlay, string projection)
         {
             return new MapGuideOverlayOptions() { IsBaseLayer = isBaseLayer, UseOverlay = useOverlay, Projection = projection };
         }

@@ -178,6 +178,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generic Layer.
+        /// </summary>
+        internal static string CmsGeneric {
+            get {
+                return ResourceManager.GetString("CmsGeneric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Google Hybrid.
         /// </summary>
         internal static string CmsGoogleHybrid {
@@ -1956,6 +1965,15 @@ namespace Maestro.Editors {
         internal static string OperationCompleted {
             get {
                 return ResourceManager.GetString("OperationCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Options synced back to document.
+        /// </summary>
+        internal static string OptionsSyncedToDocument {
+            get {
+                return ResourceManager.GetString("OptionsSyncedToDocument", resourceCulture);
             }
         }
         

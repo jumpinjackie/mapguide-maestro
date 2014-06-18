@@ -519,6 +519,25 @@
     <Compile Include="Fusion\MapCtrl.Designer.cs">
       <DependentUpon>MapCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fusion\MapEditors\CommercialMapEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\MapEditors\CommercialMapEditor.Designer.cs">
+      <DependentUpon>CommercialMapEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\MapEditors\EditorFactory.cs" />
+    <Compile Include="Fusion\MapEditors\GenericEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\MapEditors\GenericEditor.Designer.cs">
+      <DependentUpon>GenericEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fusion\MapEditors\MapGuideEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fusion\MapEditors\MapGuideEditor.Designer.cs">
+      <DependentUpon>MapGuideEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fusion\MapSettingsCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1542,6 +1561,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fusion\MapCtrl.resx">
       <DependentUpon>MapCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\MapEditors\CommercialMapEditor.resx">
+      <DependentUpon>CommercialMapEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\MapEditors\GenericEditor.resx">
+      <DependentUpon>GenericEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fusion\MapEditors\MapGuideEditor.resx">
+      <DependentUpon>MapGuideEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fusion\MapSettingsCtrl.resx">
       <DependentUpon>MapSettingsCtrl.cs</DependentUpon>

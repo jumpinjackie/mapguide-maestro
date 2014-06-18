@@ -1617,4 +1617,10 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="PropertyInfo" xml:space="preserve">
     <value>Name: {1}{0}Identifier: {2}{0}Description: {3}{0}Type: {4}{0}Default Value: {5}</value>
   </data>
+  <data name="CmsGeneric" xml:space="preserve">
+    <value>Generic Layer</value>
+  </data>
+  <data name="OptionsSyncedToDocument" xml:space="preserve">
+    <value>Options synced back to document</value>
+  </data>
 </root>
