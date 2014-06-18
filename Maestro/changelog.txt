@@ -1,4 +1,16 @@
-﻿ - MgCooker changes
+﻿ - Drag/Drop now properly handles cases where multiple handlers could handle a given file drop
+ - Future-proofing
+	- Maestro can now work with unknown resource types
+	- Map Definitions, Web Layouts and Application Definitions of unknown schema versions can be previewed
+	- Files of unknown extensions will be loaded as XML content when drag/dropped in the Site Explorer
+ - Fusion editor changes
+    - Map Group editor re-designed to better reflect its logical structure in the Map Definition
+	- New Generic XML editor option allowing for custom layer types to be added
+
+6.0a2
+-----
+
+ - MgCooker changes
     - Removed non-official tile generation method
     - Removed username/password/native connection options in UI. Replaced with provider/connection string
  - Added support for adding default point/line/area composite styles in Layer Definition Editor
