@@ -101,13 +101,19 @@ namespace Maestro.Editors.Fusion
             _edSvc.RegisterCustomNotifier(this);
             _models = new BindingList<MapModel>();
             lstMaps.DataSource = _models;
-            foreach (var m in group.Map.Select(x => new MapModel(x)))
-            {
-                _models.Add(m);
-            }
+            UpdateMapList();
             txtMapId.Text = _widget.MapId;
 
             LoadMapOptions();
+        }
+
+        private void UpdateMapList()
+        {
+            _models.Clear();
+            foreach (var m in _group.Map.Select(x => new MapModel(x)))
+            {
+                _models.Add(m);
+            }
         }
 
         private void LoadMapOptions()
@@ -117,9 +123,45 @@ namespace Maestro.Editors.Fusion
                 var ed = option;
                 btnNewMap.DropDown.Items.Add(ed.Name, null, (s, e) =>
                 {
+                    bool bAddedCommercialLayer = false;
                     var map = ed.Action();
+                    if (map.Type == EditorFactory.Type_Google)
+                    {
+                        _appDef.SetValue("GoogleScript", EditorFactory.GOOGLE_URL);
+                        bAddedCommercialLayer = true;
+                    }
+                    else if (map.Type == EditorFactory.Type_Bing)
+                    {
+                        _appDef.SetValue("VirtualEarthScript", EditorFactory.BING_URL);
+                        bAddedCommercialLayer = true;
+                    }
+                    else if (map.Type == EditorFactory.Type_OSM)
+                    {
+                        _appDef.SetValue("OpenStreetMapScript", EditorFactory.OSM_URL);
+                        bAddedCommercialLayer = true;
+                    }
                     _group.AddMap(map);
                     _models.Add(new MapModel(map));
+                    if (bAddedCommercialLayer)
+                    {
+                        foreach (var m in _group.Map)
+                        {
+                            if (m.Type == EditorFactory.Type_MapGuide)
+                            {
+                                m.OverlayOptions = m.CreateOverlayOptions(false, true, "EPSG:900913"); //NOXLATE
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (var m in _group.Map)
+                        {
+                            if (m.Type == EditorFactory.Type_MapGuide)
+                            {
+                                m.OverlayOptions = null;
+                            }
+                        }
+                    }
                 });
             }
         }
@@ -146,10 +188,58 @@ namespace Maestro.Editors.Fusion
             var map = lstMaps.SelectedItem as MapModel;
             if (map != null)
             {
+                btnRemoveMap.Enabled = btnMapUp.Enabled = btnMapDown.Enabled = true;
+
                 grpChildMap.Controls.Clear();
                 var control = EditorFactory.GetEditor(_edSvc, _group, map.Map);
                 control.Dock = DockStyle.Fill;
                 grpChildMap.Controls.Add(control);
+            }
+            else
+            {
+                btnRemoveMap.Enabled = btnMapUp.Enabled = btnMapDown.Enabled = false;
+            }
+        }
+
+        private void btnRemoveMap_Click(object sender, EventArgs e)
+        {
+            var map = lstMaps.SelectedItem as MapModel;
+            if (map != null)
+            {
+                _models.Remove(map);
+                _group.RemoveMap(map.Map);
+            }
+        }
+
+        private void btnMapUp_Click(object sender, EventArgs e)
+        {
+            var map = lstMaps.SelectedItem as MapModel;
+            if (map != null)
+            {
+                int idx = _models.IndexOf(map);
+                if (_group.MoveUp(map.Map))
+                {
+                    idx--;
+                    UpdateMapList();
+                    if (idx >= 0 && idx < lstMaps.Items.Count - 1)
+                        lstMaps.SelectedIndex = idx;
+                }
+            }
+        }
+
+        private void btnMapDown_Click(object sender, EventArgs e)
+        {
+            var map = lstMaps.SelectedItem as MapModel;
+            if (map != null)
+            {
+                int idx = _models.IndexOf(map);
+                if (_group.MoveDown(map.Map))
+                {
+                    idx++;
+                    UpdateMapList();
+                    if (idx >= 0 && idx < lstMaps.Items.Count - 1)
+                        lstMaps.SelectedIndex = idx;
+                }
             }
         }
     }

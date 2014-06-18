@@ -1123,6 +1123,10 @@ public class ArbitraryWidgetValue : WidgetValue
         IMap CreateCmsMapEntry(string type, bool singleTile, string name, string olType);
 
         IMap CreateGenericEntry();
+
+        bool MoveUp(IMap map);
+
+        bool MoveDown(IMap map);
     }
 
     public interface IMap : INotifyPropertyChanged, IExtensibleElement

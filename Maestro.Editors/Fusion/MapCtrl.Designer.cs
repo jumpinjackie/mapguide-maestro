@@ -104,6 +104,7 @@
             resources.ApplyResources(this.btnRemoveMap, "btnRemoveMap");
             this.btnRemoveMap.Image = global::Maestro.Editors.Properties.Resources.map__minus;
             this.btnRemoveMap.Name = "btnRemoveMap";
+            this.btnRemoveMap.Click += new System.EventHandler(this.btnRemoveMap_Click);
             // 
             // toolStripSeparator1
             // 
@@ -116,6 +117,7 @@
             resources.ApplyResources(this.btnMapUp, "btnMapUp");
             this.btnMapUp.Image = global::Maestro.Editors.Properties.Resources.arrow_090;
             this.btnMapUp.Name = "btnMapUp";
+            this.btnMapUp.Click += new System.EventHandler(this.btnMapUp_Click);
             // 
             // btnMapDown
             // 
@@ -123,6 +125,7 @@
             resources.ApplyResources(this.btnMapDown, "btnMapDown");
             this.btnMapDown.Image = global::Maestro.Editors.Properties.Resources.arrow_270;
             this.btnMapDown.Name = "btnMapDown";
+            this.btnMapDown.Click += new System.EventHandler(this.btnMapDown_Click);
             // 
             // grpChildMap
             // 

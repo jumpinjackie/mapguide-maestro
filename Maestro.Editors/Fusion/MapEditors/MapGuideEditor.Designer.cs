@@ -50,7 +50,7 @@
             // 
             this.chkSelectionAsOverlay.AutoSize = true;
             this.chkSelectionAsOverlay.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.chkSelectionAsOverlay.Location = new System.Drawing.Point(311, 107);
+            this.chkSelectionAsOverlay.Location = new System.Drawing.Point(317, 107);
             this.chkSelectionAsOverlay.Name = "chkSelectionAsOverlay";
             this.chkSelectionAsOverlay.Size = new System.Drawing.Size(124, 17);
             this.chkSelectionAsOverlay.TabIndex = 19;
@@ -218,7 +218,7 @@
             this.Controls.Add(this.txtMapDefinition);
             this.Controls.Add(this.btnBrowseMdf);
             this.Name = "MapGuideEditor";
-            this.Size = new System.Drawing.Size(460, 142);
+            this.Size = new System.Drawing.Size(460, 138);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

@@ -697,6 +697,40 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
 
     partial class MapGroupType : IMapGroup
     {
+        bool IMapGroup.MoveUp(IMap map)
+        {
+            var mt = map as MapType;
+            if (mt != null)
+            {
+                var idx = this.mapField.IndexOf(mt);
+                if (idx > 0)
+                {
+                    this.mapField.RemoveAt(idx);
+                    idx--;
+                    this.mapField.Insert(idx, mt);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        bool IMapGroup.MoveDown(IMap map)
+        {
+            var mt = map as MapType;
+            if (mt != null)
+            {
+                var idx = this.mapField.IndexOf(mt);
+                if (idx < this.mapField.Count - 1)
+                {
+                    this.mapField.RemoveAt(idx);
+                    idx++;
+                    this.mapField.Insert(idx, mt);
+                    return true;
+                }
+            }
+            return false;
+        }
+
         IMap IMapGroup.CreateMapGuideEntry(string mapDefinition)
         {
             var map = new MapType()

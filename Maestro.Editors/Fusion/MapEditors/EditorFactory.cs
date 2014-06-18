@@ -37,19 +37,19 @@ namespace Maestro.Editors.Fusion.MapEditors
         const string BING_AERIAL = "Aerial"; //NOXLATE
         const string BING_HYBRID = "Hybrid"; //NOXLATE
 
-        const string Type_Google = "Google"; //NOXLATE
-        const string Type_Bing = "VirtualEarth"; //NOXLATE
-        const string Type_OSM = "OpenStreetMap"; //NOXLATE
-        const string Type_MapGuide = "MapGuide"; //NOXLATE
+        internal const string Type_Google = "Google"; //NOXLATE
+        internal const string Type_Bing = "VirtualEarth"; //NOXLATE
+        internal const string Type_OSM = "OpenStreetMap"; //NOXLATE
+        internal const string Type_MapGuide = "MapGuide"; //NOXLATE
         const string Type_Generic = "Generic"; //NOXLATE
 
         const string OSM_MAP_MAPNIK = "Mapnik"; //NOXLATE
         const string OSM_MAP_TRANSPORTMAP = "TransportMap"; //NOXLATE
         const string OSM_MAP_CYCLEMAP = "CycleMap"; //NOXLATE
 
-        const string OSM_URL = "http://www.openstreetmap.org/openlayers/OpenStreetMap.js"; //NOXLATE
-        const string GOOGLE_URL = "http://maps.google.com/maps/api/js?sensor=false"; //NOXLATE
-        const string BING_URL = "http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.2"; //NOXLATE
+        internal const string OSM_URL = "http://www.openstreetmap.org/openlayers/OpenStreetMap.js"; //NOXLATE
+        internal const string GOOGLE_URL = "http://maps.google.com/maps/api/js?sensor=false"; //NOXLATE
+        internal const string BING_URL = "http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.2"; //NOXLATE
 
         internal static Control GetEditor(IEditorService edSvc, IMapGroup group, IMap map)
         {
