@@ -526,8 +526,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                     int rowMinTileOffset = (int)Math.Floor(offsetMinY / tileHeight);
                     int colMaxTileOffset = (int)Math.Floor(offsetMaxX / tileWidth);
 
-                    cols += (colMaxTileOffset - colTileOffset);
-                    rows += (rowMinTileOffset - rowTileOffset);
+                    //GT 03/08/2014 - the right number of columns/rows it's the the end tile (maxtileoffset, ex 12) - the start tile (coltileoffset, ex 11) +1
+                    //i.e. 12-11+1=2 so 2 columns
+                    cols = (colMaxTileOffset - colTileOffset) + 1;
+                    rows = (rowMinTileOffset - rowTileOffset) + 1; 
                 }
 
 
