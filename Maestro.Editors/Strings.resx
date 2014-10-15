@@ -877,6 +877,14 @@ Returns: {0}</value>
     &lt;Value&gt;'Center'&lt;/Value&gt;
   &lt;/Horizontal&gt;
   &lt;Horizontal&gt;
+    &lt;Display&gt;Left&lt;/Display&gt;
+    &lt;Value&gt;'Left'&lt;/Value&gt;
+  &lt;/Horizontal&gt;
+  &lt;Horizontal&gt;
+    &lt;Display&gt;Right&lt;/Display&gt;
+    &lt;Value&gt;'Right'&lt;/Value&gt;
+  &lt;/Horizontal&gt;
+  &lt;Horizontal&gt;
     &lt;Display&gt;Expression...&lt;/Display&gt;
     &lt;Value&gt;Expression...&lt;/Value&gt;
   &lt;/Horizontal&gt;
