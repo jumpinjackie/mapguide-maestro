@@ -789,6 +789,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
 
         private void btnDeleteRule_Click(object sender, EventArgs e)
         {
+            //Minimum content model dictates that we must have at least one rule
+            if (grdRules.Rows.Count == 1)
+                return;
+
             List<RuleModel> remove = new List<RuleModel>();
             foreach (DataGridViewRow row in grdRules.SelectedRows)
                 remove.Add((RuleModel)row.DataBoundItem);
@@ -820,7 +824,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
 
         private void grdRules_SelectionChanged(object sender, EventArgs e)
         {
-            btnDeleteRule.Enabled = (grdRules.SelectedRows.Count > 0);
+            if (grdRules.Rows.Count <= 1)
+            {
+                //Minimum content model rules dictate that we must have at least one rule
+                btnDeleteRule.Enabled = false;
+            }
+            else
+            {
+                btnDeleteRule.Enabled = (grdRules.SelectedRows.Count > 0);
+            }
             if (grdRules.SelectedRows.Count == 1)
             {
                 btnUp.Enabled = grdRules.SelectedRows[0].Index > 0;
