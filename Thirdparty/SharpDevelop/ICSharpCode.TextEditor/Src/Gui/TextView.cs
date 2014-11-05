@@ -498,7 +498,7 @@ namespace ICSharpCode.TextEditor
 						DrawSpaceMarker(g, wordForeColor, physicalXPos, lineRectangle.Y);
 					}
 					physicalXPos += SpaceWidth;
-				} else if (currentWord.Type == TextWordType.Tab) {
+				} else if (currentWord.Type == TextWordType.Tab && TextEditorProperties.TabIndent > 0) {
 					
 					physicalColumn += TextEditorProperties.TabIndent;
 					physicalColumn = (physicalColumn / TextEditorProperties.TabIndent) * TextEditorProperties.TabIndent;
