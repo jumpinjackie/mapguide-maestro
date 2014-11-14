@@ -25,16 +25,16 @@ using System.Collections.Generic;
 namespace OSGeo.MapGuide.MaestroAPI
 {
     using CoordinateSystem;
-	/// <summary>
-	/// Interface to MapGuide coordinate system functions.
-	/// Only works with server > 1.2, since the coordinate mapping is not avalible through Http on older versions
-	/// </summary>
+    /// <summary>
+    /// Interface to MapGuide coordinate system functions.
+    /// Only works with server > 1.2, since the coordinate mapping is not avalible through Http on older versions
+    /// </summary>
     public class HttpCoordinateSystemDefinition : CoordinateSystem.CoordinateSystemDefinitionBase
-	{
+    {
         internal HttpCoordinateSystemDefinition() : base() { }
 
         internal HttpCoordinateSystemDefinition(CoordinateSystemCategory parent, XmlNode topnode) : base(parent)
-		{
+        {
             foreach (XmlNode node in topnode.ChildNodes)
             {
                 switch (node["Name"].InnerText.ToLower())
@@ -65,6 +65,6 @@ namespace OSGeo.MapGuide.MaestroAPI
                         break;
                 }
             }
-		}
-	}
+        }
+    }
 }
