@@ -17,41 +17,37 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 #endregion
-using System;
-using System.Net;
-using System.Xml;
-using System.Collections.Specialized;
-using System.Collections;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.ObjectModels.Common;
-using System.ComponentModel;
-using OSGeo.MapGuide.ObjectModels.MapDefinition;
-using OSGeo.MapGuide.MaestroAPI.Mapping;
-using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using OSGeo.MapGuide.MaestroAPI.Commands;
-using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
-using OSGeo.MapGuide.MaestroAPI.Serialization;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
-using OSGeo.MapGuide.MaestroAPI.Http;
-using System.IO;
-using OSGeo.MapGuide.ObjectModels.Capabilities;
-using System.Text;
-using System.Collections.Generic;
-using OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0;
-using OSGeo.MapGuide.MaestroAPI.Http.Commands;
-using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Feature;
-using System.Drawing;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.MaestroAPI.Http;
+using OSGeo.MapGuide.MaestroAPI.Http.Commands;
+using OSGeo.MapGuide.MaestroAPI.Mapping;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
+using OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0;
+using OSGeo.MapGuide.ObjectModels.Capabilities;
+using OSGeo.MapGuide.ObjectModels.Common;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Net;
+using System.Text;
+using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
-	/// <summary>
-	/// Primary http based connection to the MapGuide Server
-	/// </summary>
+    /// <summary>
+    /// Primary http based connection to the MapGuide Server
+    /// </summary>
     public class HttpServerConnection : MgServerConnectionBase, 
                                         IServerConnection, 
                                         IDisposable, 
@@ -62,21 +58,21 @@ namespace OSGeo.MapGuide.MaestroAPI
                                         IDrawingService,
                                         IFusionService,
                                         ISiteService
-	{
-		private RequestBuilder m_reqBuilder;   
-		
-		//These only change after server reboot, so it is probably safe to cache them
-		private FeatureProviderRegistry m_featureProviders = null; //SHARED
-		private Hashtable m_cachedProviderCapabilities = null; //SHARED
-		private Version m_siteVersion; //SHARED
+    {
+        private RequestBuilder m_reqBuilder;   
+        
+        //These only change after server reboot, so it is probably safe to cache them
+        private FeatureProviderRegistry m_featureProviders = null; //SHARED
+        private Hashtable m_cachedProviderCapabilities = null; //SHARED
+        private Version m_siteVersion; //SHARED
 
         private bool mAnonymousUser = false;
 
-		internal HttpServerConnection()
-			: base()
-		{
-			m_cachedProviderCapabilities = new Hashtable();
-		}
+        internal HttpServerConnection()
+            : base()
+        {
+            m_cachedProviderCapabilities = new Hashtable();
+        }
 
         internal HttpServerConnection(RequestBuilder builder)
             : this()
@@ -263,38 +259,36 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        [Obsolete("This will be removed in the future. Use ConnectionProviderRegistry.CreateConnection() instead")]
-		public HttpServerConnection(Uri hosturl, string sessionid, string locale, bool allowUntestedVersion)
-			: this()
-		{
+        internal HttpServerConnection(Uri hosturl, string sessionid, string locale, bool allowUntestedVersion)
+            : this()
+        {
             InitConnection(hosturl, sessionid, locale, allowUntestedVersion, null, null);
-		}
+        }
 
-        [Obsolete("This will be removed in the future. Use ConnectionProviderRegistry.CreateConnection() instead")]
-		public HttpServerConnection(Uri hosturl, string username, string password, string locale, bool allowUntestedVersion)
-			: this()
-		{
+        internal HttpServerConnection(Uri hosturl, string username, string password, string locale, bool allowUntestedVersion)
+            : this()
+        {
             InitConnection(hosturl, username, password, locale, allowUntestedVersion, null, null);
-		}
+        }
 
-		public override string SessionID
-		{
-			get { return m_reqBuilder.SessionID; }
-		}
+        public override string SessionID
+        {
+            get { return m_reqBuilder.SessionID; }
+        }
 
-		public override ResourceList GetRepositoryResources(string startingpoint, string type, int depth, bool computeChildren)
-		{
-			string req = m_reqBuilder.EnumerateResources(startingpoint, depth, type, computeChildren);
-			
-			//TODO: Cache?
-			return (ResourceList)DeserializeObject(typeof(ResourceList), this.OpenRead(req));
-		}
+        public override ResourceList GetRepositoryResources(string startingpoint, string type, int depth, bool computeChildren)
+        {
+            string req = m_reqBuilder.EnumerateResources(startingpoint, depth, type, computeChildren);
+            
+            //TODO: Cache?
+            return (ResourceList)DeserializeObject(typeof(ResourceList), this.OpenRead(req));
+        }
 
         public override FeatureProviderRegistryFeatureProvider[] FeatureProviders
-		{
-			get
-			{
-				string req = m_reqBuilder.GetFeatureProviders();
+        {
+            get
+            {
+                string req = m_reqBuilder.GetFeatureProviders();
                 
                 lock (SyncRoot)
                 {
@@ -310,11 +304,11 @@ namespace OSGeo.MapGuide.MaestroAPI
                     i++;
                 }
                 return providers;
-			}
-		}
+            }
+        }
 
-		public override string TestConnection(string featuresource)
-		{
+        public override string TestConnection(string featuresource)
+        {
             string req = m_reqBuilder.TestConnection(featuresource);
             string result = string.Empty;
             try
@@ -373,10 +367,10 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
 
             return result;
-		}
+        }
 
-		public string TestConnection(string providername, NameValueCollection parameters)
-		{
+        public string TestConnection(string providername, NameValueCollection parameters)
+        {
             string req = m_reqBuilder.TestConnection(providername, parameters);
             //System.IO.MemoryStream msx = new System.IO.MemoryStream();
             //System.Net.WebRequest reqp = m_reqBuilder.TestConnectionPost(providername, parameters, msx);
@@ -428,34 +422,34 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
 
             return string.Empty;
-		}
+        }
 
         public override System.IO.Stream GetResourceData(string resourceID, string dataname)
-		{
-			string req = m_reqBuilder.GetResourceData(resourceID, dataname);
+        {
+            string req = m_reqBuilder.GetResourceData(resourceID, dataname);
             return this.OpenRead(req);
             /*
-			System.IO.MemoryStream ms = new System.IO.MemoryStream();
-			Utility.CopyStream(this.OpenRead(req), ms);
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            Utility.CopyStream(this.OpenRead(req), ms);
 
 #if DEBUG_LASTMESSAGE
-			using (System.IO.Stream s = System.IO.File.Open("lastSave.xml", System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
-				Utility.CopyStream(ms, s);
+            using (System.IO.Stream s = System.IO.File.Open("lastSave.xml", System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                Utility.CopyStream(ms, s);
 #endif
-			ms.Position = 0;
-			return ms;
+            ms.Position = 0;
+            return ms;
              */
-		}
+        }
 
-		public override Stream GetResourceXmlData(string resourceID)
-		{
-			ResourceIdentifier.Validate(resourceID, ResourceTypes.FeatureSource);
-			string req = m_reqBuilder.GetResourceContent(resourceID);
+        public override Stream GetResourceXmlData(string resourceID)
+        {
+            ResourceIdentifier.Validate(resourceID, ResourceTypes.FeatureSource);
+            string req = m_reqBuilder.GetResourceContent(resourceID);
             return this.OpenRead(req);
-		}
+        }
 
-		public override void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback)
-		{
+        public override void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback)
+        {
             //Protect against session expired
             if (this.m_autoRestartSession && m_username != null && m_password != null)
                 this.DownloadData(m_reqBuilder.GetSiteVersion());
@@ -464,16 +458,16 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (stream.CanSeek && stream.Length < 50 * 1024 * 1024)
             {
     #if DEBUG_LASTMESSAGE
-			    using (System.IO.Stream s = System.IO.File.Open("lastSaveData.bin", System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
-				    Utility.CopyStream(stream, s);
+                using (System.IO.Stream s = System.IO.File.Open("lastSaveData.bin", System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
+                    Utility.CopyStream(stream, s);
     #endif
                     if (stream.CanSeek)
                         stream.Position = 0;
 
                     System.IO.MemoryStream outStream = new System.IO.MemoryStream();
     #if DEBUG_LASTMESSAGE
-			    try 
-			    {
+                try 
+                {
     #endif
                     System.Net.WebRequest req = m_reqBuilder.SetResourceData(resourceid, dataname, datatype, outStream, stream, callback);
                     req.Credentials = _cred;
@@ -491,14 +485,14 @@ namespace OSGeo.MapGuide.MaestroAPI
                         //Do nothing... there is no return value
                     }
     #if DEBUG_LASTMESSAGE
-			    } 
-			    catch 
-			    {
-				    using (System.IO.Stream s = System.IO.File.OpenWrite("lastPost.txt"))
-					    Utility.CopyStream(outStream, s);
+                } 
+                catch 
+                {
+                    using (System.IO.Stream s = System.IO.File.OpenWrite("lastPost.txt"))
+                        Utility.CopyStream(outStream, s);
 
-				    throw;
-			    }
+                    throw;
+                }
     #endif
             }
             else
@@ -529,7 +523,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     }
                 }
             }
-		}
+        }
         
         //Source: http://stackoverflow.com/questions/566462/upload-files-with-httpwebrequest-multipart-form-data
         private void HttpUploadFile(string url, string file, string paramName, string contentType, NameValueCollection nvc, Utility.StreamCopyProgressDelegate callback)
@@ -631,8 +625,8 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             System.IO.MemoryStream outStream = new System.IO.MemoryStream();
 #if DEBUG_LASTMESSAGE
-			try 
-			{
+            try 
+            {
 #endif
             //Protect against session expired
             if (this.m_autoRestartSession && m_username != null && m_password != null)
@@ -672,16 +666,16 @@ namespace OSGeo.MapGuide.MaestroAPI
                     throw;
             }
 #if DEBUG_LASTMESSAGE
-			} 
-			catch 
-			{
-				if (outStream.CanSeek)
-					outStream.Position = 0;
-				using (System.IO.Stream s = System.IO.File.OpenWrite("lastPost.txt"))
-					Utility.CopyStream(outStream, s);
+            } 
+            catch 
+            {
+                if (outStream.CanSeek)
+                    outStream.Position = 0;
+                using (System.IO.Stream s = System.IO.File.OpenWrite("lastPost.txt"))
+                    Utility.CopyStream(outStream, s);
 
-				throw;
-			}
+                throw;
+            }
 #endif
 
             if (exists)
@@ -784,7 +778,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         protected override FeatureSourceDescription DescribeFeatureSourceInternal(string resourceID)
-		{
+        {
             ResourceIdentifier.Validate(resourceID, ResourceTypes.FeatureSource);
             string req = m_reqBuilder.DescribeSchema(resourceID);
 
@@ -813,7 +807,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     throw;
 
             }
-		}
+        }
 
         public override FeatureSchema DescribeFeatureSourcePartial(string resourceID, string schema, string[] classNames)
         {
@@ -846,8 +840,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-		public override FeatureSchema DescribeFeatureSource(string resourceID, string schema)
-		{
+        public override FeatureSchema DescribeFeatureSource(string resourceID, string schema)
+        {
             ResourceIdentifier.Validate(resourceID, ResourceTypes.FeatureSource);
             string req = m_reqBuilder.DescribeSchema(resourceID, schema);
 
@@ -876,37 +870,37 @@ namespace OSGeo.MapGuide.MaestroAPI
                 else
                     throw;
             }
-		}
+        }
 
         public void DeleteResourceData(string resourceID, string dataname)
-		{
-			string req = m_reqBuilder.DeleteResourceData(resourceID, dataname);
+        {
+            string req = m_reqBuilder.DeleteResourceData(resourceID, dataname);
 
-			using (System.IO.Stream resp = this.OpenRead(req))
-				resp.ReadByte();
-			//Do nothing... there is no return value
-		}
+            using (System.IO.Stream resp = this.OpenRead(req))
+                resp.ReadByte();
+            //Do nothing... there is no return value
+        }
 
-		public ResourceDataList EnumerateResourceData(string resourceID)
-		{
-			string req = m_reqBuilder.EnumerateResourceData(resourceID);
+        public ResourceDataList EnumerateResourceData(string resourceID)
+        {
+            string req = m_reqBuilder.EnumerateResourceData(resourceID);
 
-			using (System.IO.Stream resp = this.OpenRead(req))
-				return (ResourceDataList)DeserializeObject(typeof(ResourceDataList), resp);
-		}
+            using (System.IO.Stream resp = this.OpenRead(req))
+                return (ResourceDataList)DeserializeObject(typeof(ResourceDataList), resp);
+        }
 
-		public override void DeleteResource(string resourceID)
-		{
-			string req = m_reqBuilder.DeleteResource(resourceID);
+        public override void DeleteResource(string resourceID)
+        {
+            string req = m_reqBuilder.DeleteResource(resourceID);
 
-			using (System.IO.Stream resp = this.OpenRead(req))
-				resp.ReadByte();
-				//Do nothing... there is no return value
+            using (System.IO.Stream resp = this.OpenRead(req))
+                resp.ReadByte();
+                //Do nothing... there is no return value
 
             OnResourceDeleted(resourceID);
-		}
+        }
 
-		
+        
 
         public override Version SiteVersion
         {
@@ -929,72 +923,72 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         private ICoordinateSystemCatalog m_coordsys = null;
-		//TODO: Figure out a strategy for cache invalidation 
-		//TODO: Figure out if this can work with MapGuide EP 1.0 (just exclude it?)
-		public ICoordinateSystemCatalog CoordinateSystemCatalog 
-		{ 
-			get 
-			{ 
-				if (this.SiteVersion < OSGeo.MapGuide.MaestroAPI.SiteVersions.GetVersion(OSGeo.MapGuide.MaestroAPI.KnownSiteVersions.MapGuideOS1_1))
-					return null;
-				else
-				{	
-					if (m_coordsys == null)
-						m_coordsys = new HttpCoordinateSystemCatalog(this, m_reqBuilder);
-					return m_coordsys;
-				}
-			} 
-		}
+        //TODO: Figure out a strategy for cache invalidation 
+        //TODO: Figure out if this can work with MapGuide EP 1.0 (just exclude it?)
+        public ICoordinateSystemCatalog CoordinateSystemCatalog 
+        { 
+            get 
+            { 
+                if (this.SiteVersion < OSGeo.MapGuide.MaestroAPI.SiteVersions.GetVersion(OSGeo.MapGuide.MaestroAPI.KnownSiteVersions.MapGuideOS1_1))
+                    return null;
+                else
+                {	
+                    if (m_coordsys == null)
+                        m_coordsys = new HttpCoordinateSystemCatalog(this, m_reqBuilder);
+                    return m_coordsys;
+                }
+            } 
+        }
 
-		public System.IO.Stream ExecuteOperation(System.Collections.Specialized.NameValueCollection param)
-		{
-			return this.OpenRead(m_reqBuilder.BuildRequest(param));
-		}
+        public System.IO.Stream ExecuteOperation(System.Collections.Specialized.NameValueCollection param)
+        {
+            return this.OpenRead(m_reqBuilder.BuildRequest(param));
+        }
 
-		/// <summary>
-		/// Returns the Uri for the mapagent
-		/// </summary>
-		public string ServerURI { get { return m_reqBuilder.HostURI; } }
-
-
-		/// <summary>
-		/// Gets a string that can be used to identify the server by a user
-		/// </summary>
-		public string DisplayName
-		{
-			get 
-			{
-				string s = m_reqBuilder.HostURI;
-				if (s.ToLower().EndsWith("/mapagent/mapagent.fcgi"))
-					s = s.Substring(0, s.Length - "/mapagent/mapagent.fcgi".Length);
-				else if (s.ToLower().EndsWith("/mapagent/mapagent.exe"))
-					s = s.Substring(0, s.Length - "/mapagent/mapagent.exe".Length);
-
-				/*if (m_wc.Credentials as NetworkCredential != null)
-					s += " [" + (m_wc.Credentials as NetworkCredential).UserName + "]"; */
-
-				return s + " (v" + this.SiteVersion.ToString() + ")";
-			}
-		}
-
-		public override ResourceReferenceList EnumerateResourceReferences(string resourceid)
-		{
-			string req = m_reqBuilder.EnumerateResourceReferences(resourceid);
-
-			using (System.IO.Stream resp = this.OpenRead(req))
-				return (ResourceReferenceList)DeserializeObject(typeof(ResourceReferenceList), resp);
-		}
+        /// <summary>
+        /// Returns the Uri for the mapagent
+        /// </summary>
+        public string ServerURI { get { return m_reqBuilder.HostURI; } }
 
 
-		public override void CopyResource(string oldpath, string newpath, bool overwrite)
-		{
+        /// <summary>
+        /// Gets a string that can be used to identify the server by a user
+        /// </summary>
+        public string DisplayName
+        {
+            get 
+            {
+                string s = m_reqBuilder.HostURI;
+                if (s.ToLower().EndsWith("/mapagent/mapagent.fcgi"))
+                    s = s.Substring(0, s.Length - "/mapagent/mapagent.fcgi".Length);
+                else if (s.ToLower().EndsWith("/mapagent/mapagent.exe"))
+                    s = s.Substring(0, s.Length - "/mapagent/mapagent.exe".Length);
+
+                /*if (m_wc.Credentials as NetworkCredential != null)
+                    s += " [" + (m_wc.Credentials as NetworkCredential).UserName + "]"; */
+
+                return s + " (v" + this.SiteVersion.ToString() + ")";
+            }
+        }
+
+        public override ResourceReferenceList EnumerateResourceReferences(string resourceid)
+        {
+            string req = m_reqBuilder.EnumerateResourceReferences(resourceid);
+
+            using (System.IO.Stream resp = this.OpenRead(req))
+                return (ResourceReferenceList)DeserializeObject(typeof(ResourceReferenceList), resp);
+        }
+
+
+        public override void CopyResource(string oldpath, string newpath, bool overwrite)
+        {
             bool exists = ResourceExists(newpath);
 
-			string req = m_reqBuilder.CopyResource(oldpath, newpath, overwrite);
+            string req = m_reqBuilder.CopyResource(oldpath, newpath, overwrite);
 
-			using (System.IO.Stream resp = this.OpenRead(req))
-				resp.ReadByte();
-			//Do nothing... there is no return value
+            using (System.IO.Stream resp = this.OpenRead(req))
+                resp.ReadByte();
+            //Do nothing... there is no return value
 
             if (exists)
                 OnResourceUpdated(newpath);
@@ -1004,63 +998,63 @@ namespace OSGeo.MapGuide.MaestroAPI
             //HACK: the COPYRESOURCE call does not update timestamps of the target
             //if it already exists.
             Touch(newpath);
-		}
+        }
 
-		public override void CopyFolder(string oldpath, string newpath, bool overwrite)
-		{
-			oldpath = FixAndValidateFolderPath(oldpath);
-			newpath = FixAndValidateFolderPath(newpath);
+        public override void CopyFolder(string oldpath, string newpath, bool overwrite)
+        {
+            oldpath = FixAndValidateFolderPath(oldpath);
+            newpath = FixAndValidateFolderPath(newpath);
 
             bool exists = ResourceExists(newpath);
 
-			string req = m_reqBuilder.CopyResource(oldpath, newpath, overwrite);
+            string req = m_reqBuilder.CopyResource(oldpath, newpath, overwrite);
 
-			using (System.IO.Stream resp = this.OpenRead(req))
-				resp.ReadByte();
-			//Do nothing... there is no return value
+            using (System.IO.Stream resp = this.OpenRead(req))
+                resp.ReadByte();
+            //Do nothing... there is no return value
 
             if (exists)
                 OnResourceUpdated(newpath);
             else
                 OnResourceAdded(newpath);
-		}
+        }
 
-		public override void MoveResource(string oldpath, string newpath, bool overwrite)
-		{
+        public override void MoveResource(string oldpath, string newpath, bool overwrite)
+        {
             bool exists = ResourceExists(newpath);
 
-			string req = m_reqBuilder.MoveResource(oldpath, newpath, overwrite);
+            string req = m_reqBuilder.MoveResource(oldpath, newpath, overwrite);
 
-			using (System.IO.Stream resp = this.OpenRead(req))
-				resp.ReadByte();
-			//Do nothing... there is no return value
+            using (System.IO.Stream resp = this.OpenRead(req))
+                resp.ReadByte();
+            //Do nothing... there is no return value
 
             OnResourceDeleted(oldpath);
             if (exists)
                 OnResourceUpdated(newpath);
             else
                 OnResourceAdded(newpath);
-		}
+        }
 
-		public override void MoveFolder(string oldpath, string newpath, bool overwrite)
-		{
-			oldpath = FixAndValidateFolderPath(oldpath);
-			newpath = FixAndValidateFolderPath(newpath);
+        public override void MoveFolder(string oldpath, string newpath, bool overwrite)
+        {
+            oldpath = FixAndValidateFolderPath(oldpath);
+            newpath = FixAndValidateFolderPath(newpath);
 
             bool exists = ResourceExists(newpath);
 
-			string req = m_reqBuilder.MoveResource(oldpath, newpath, overwrite);
+            string req = m_reqBuilder.MoveResource(oldpath, newpath, overwrite);
 
-			using (System.IO.Stream resp = this.OpenRead(req))
-				resp.ReadByte();
-			//Do nothing... there is no return value
+            using (System.IO.Stream resp = this.OpenRead(req))
+                resp.ReadByte();
+            //Do nothing... there is no return value
 
             OnResourceDeleted(oldpath);
             if (exists)
                 OnResourceUpdated(newpath);
             else
                 OnResourceAdded(newpath);
-		}
+        }
 
         public override System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, Color selectionColor, int behavior)
         {
@@ -1103,37 +1097,37 @@ namespace OSGeo.MapGuide.MaestroAPI
             return this.OpenRead(req);
         }
 
-		public override System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
-		{
+        public override System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
+        {
             var resourceId = map.ResourceID;
             ResourceIdentifier.Validate(resourceId, ResourceTypes.RuntimeMap);
-			string mapname = resourceId.Substring(resourceId.IndexOf("//") + 2);
-			mapname = mapname.Substring(0, mapname.LastIndexOf("."));
+            string mapname = resourceId.Substring(resourceId.IndexOf("//") + 2);
+            mapname = mapname.Substring(0, mapname.LastIndexOf("."));
 #if DEBUG
-			string s = m_reqBuilder.GetMapImageUrl(mapname, format, null, x, y, scale, dpi, width, height, clip, null, null, null, null);
-			return new System.IO.MemoryStream(this.DownloadData(s));
+            string s = m_reqBuilder.GetMapImageUrl(mapname, format, null, x, y, scale, dpi, width, height, clip, null, null, null, null);
+            return new System.IO.MemoryStream(this.DownloadData(s));
 #else
-			System.IO.MemoryStream ms = new System.IO.MemoryStream();
-			System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, format, null, x, y, scale, dpi, width, height, clip, null, null, null, null, ms);
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, format, null, x, y, scale, dpi, width, height, clip, null, null, null, null, ms);
             
             //Maksim reported that the rendering times out frequently, so now we wait 5 minutes
             req.Timeout = 5 * 60 * 1000;
 
-			using(System.IO.Stream rs = req.GetRequestStream())
-			{
-				Utility.CopyStream(ms, rs);
-				rs.Flush();
-				var resp = req.GetResponse();
+            using(System.IO.Stream rs = req.GetRequestStream())
+            {
+                Utility.CopyStream(ms, rs);
+                rs.Flush();
+                var resp = req.GetResponse();
 
                 var hwr = resp as HttpWebResponse;
                 if (hwr != null)
                     LogResponse(hwr);
 
                 return resp.GetResponseStream();
-			}
+            }
 
 #endif
-		}
+        }
 
         public override System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
         {
@@ -1145,16 +1139,16 @@ namespace OSGeo.MapGuide.MaestroAPI
             string s = m_reqBuilder.GetMapImageUrl(mapname, format, null, x1, y1, x2, y2, dpi, width, height, clip, null, null, null, null);
             return new System.IO.MemoryStream(this.DownloadData(s));
 #else
-			System.IO.MemoryStream ms = new System.IO.MemoryStream();
-			System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, format, null, x1, y1, x2, y2, dpi, width, height, clip, null, null, null, null, ms);
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, format, null, x1, y1, x2, y2, dpi, width, height, clip, null, null, null, null, ms);
             
             //Maksim reported that the rendering times out frequently, so now we wait 5 minutes
             req.Timeout = 5 * 60 * 1000;
 
-			using(System.IO.Stream rs = req.GetRequestStream())
-			{
-				Utility.CopyStream(ms, rs);
-				rs.Flush();
+            using(System.IO.Stream rs = req.GetRequestStream())
+            {
+                Utility.CopyStream(ms, rs);
+                rs.Flush();
                 var resp = req.GetResponse();
                 var hwr = resp as HttpWebResponse;
 
@@ -1162,150 +1156,150 @@ namespace OSGeo.MapGuide.MaestroAPI
                     LogResponse(hwr);
     
                 return resp.GetResponseStream();
-			}
+            }
 
 #endif
         }
 
-		public override bool IsSessionExpiredException(Exception ex)
-		{
-			if (ex != null && ex.GetType() == typeof(System.Net.WebException))
-			{
-				System.Net.WebException wex = (System.Net.WebException)ex;
-				if (wex.Message.ToLower().IndexOf("session expired") >= 0 || wex.Message.ToLower().IndexOf("session not found") >= 0 || wex.Message.ToLower().IndexOf("mgsessionexpiredexception") >= 0)
-					return true;
-			}
-			return false;
-		}
+        public override bool IsSessionExpiredException(Exception ex)
+        {
+            if (ex != null && ex.GetType() == typeof(System.Net.WebException))
+            {
+                System.Net.WebException wex = (System.Net.WebException)ex;
+                if (wex.Message.ToLower().IndexOf("session expired") >= 0 || wex.Message.ToLower().IndexOf("session not found") >= 0 || wex.Message.ToLower().IndexOf("mgsessionexpiredexception") >= 0)
+                    return true;
+            }
+            return false;
+        }
 
-		/// <summary>
-		/// Returns the avalible application templates on the server
-		/// </summary>
-		/// <returns>The avalible application templates on the server</returns>
-		public IApplicationDefinitionTemplateInfoSet GetApplicationTemplates()
-		{
-			//TODO: Caching these should be safe
+        /// <summary>
+        /// Returns the avalible application templates on the server
+        /// </summary>
+        /// <returns>The avalible application templates on the server</returns>
+        public IApplicationDefinitionTemplateInfoSet GetApplicationTemplates()
+        {
+            //TODO: Caching these should be safe
             return (IApplicationDefinitionTemplateInfoSet)base.DeserializeObject(typeof(ApplicationDefinitionTemplateInfoSet), this.OpenRead(m_reqBuilder.EnumerateApplicationTemplates()));
-		}
+        }
 
-		/// <summary>
-		/// Returns the avalible application widgets on the server
-		/// </summary>
-		/// <returns>The avalible application widgets on the server</returns>
-		public IApplicationDefinitionWidgetInfoSet GetApplicationWidgets()
-		{
-			//TODO: Caching these should be safe
+        /// <summary>
+        /// Returns the avalible application widgets on the server
+        /// </summary>
+        /// <returns>The avalible application widgets on the server</returns>
+        public IApplicationDefinitionWidgetInfoSet GetApplicationWidgets()
+        {
+            //TODO: Caching these should be safe
             return (IApplicationDefinitionWidgetInfoSet)base.DeserializeObject(typeof(ApplicationDefinitionWidgetInfoSet), this.OpenRead(m_reqBuilder.EnumerateApplicationWidgets()));
-		}
+        }
 
-		/// <summary>
-		/// Returns the avalible widget containers on the server
-		/// </summary>
-		/// <returns>The avalible widget containers on the server</returns>
+        /// <summary>
+        /// Returns the avalible widget containers on the server
+        /// </summary>
+        /// <returns>The avalible widget containers on the server</returns>
         public IApplicationDefinitionContainerInfoSet GetApplicationContainers()
-		{
-			//TODO: Caching these should be safe
-			return (IApplicationDefinitionContainerInfoSet)base.DeserializeObject(typeof(ApplicationDefinitionContainerInfoSet), this.OpenRead(m_reqBuilder.EnumerateApplicationContainers()));
-		}
+        {
+            //TODO: Caching these should be safe
+            return (IApplicationDefinitionContainerInfoSet)base.DeserializeObject(typeof(ApplicationDefinitionContainerInfoSet), this.OpenRead(m_reqBuilder.EnumerateApplicationContainers()));
+        }
 
-		/// <summary>
-		/// Returns the spatial info for a given featuresource
-		/// </summary>
-		/// <param name="resourceID">The ID of the resource to query</param>
-		/// <param name="activeOnly">Query only active items</param>
-		/// <returns>A list of spatial contexts</returns>
-		public override FdoSpatialContextList GetSpatialContextInfo(string resourceID, bool activeOnly)
-		{
-			string req = m_reqBuilder.GetSpatialContextInfo(resourceID, activeOnly);
+        /// <summary>
+        /// Returns the spatial info for a given featuresource
+        /// </summary>
+        /// <param name="resourceID">The ID of the resource to query</param>
+        /// <param name="activeOnly">Query only active items</param>
+        /// <returns>A list of spatial contexts</returns>
+        public override FdoSpatialContextList GetSpatialContextInfo(string resourceID, bool activeOnly)
+        {
+            string req = m_reqBuilder.GetSpatialContextInfo(resourceID, activeOnly);
 
-			FdoSpatialContextList o = (FdoSpatialContextList)DeserializeObject(typeof(FdoSpatialContextList), this.OpenRead(req));
-			return o;
-		}
+            FdoSpatialContextList o = (FdoSpatialContextList)DeserializeObject(typeof(FdoSpatialContextList), this.OpenRead(req));
+            return o;
+        }
 
-		/// <summary>
-		/// Gets the names of the identity properties from a feature
-		/// </summary>
-		/// <param name="resourceID">The resourceID for the FeatureSource</param>
-		/// <param name="classname">The classname of the feature, including schema</param>
-		/// <returns>A string array with the found identities</returns>
-		public override string[] GetIdentityProperties(string resourceID, string classname)
-		{
-			string[] parts = classname.Split(':');
-			string req;
-			if (parts.Length == 2)
-				req = m_reqBuilder.GetIdentityProperties(resourceID, parts[0], parts[1]);
-			else if (parts.Length == 1)
-				req = m_reqBuilder.GetIdentityProperties(resourceID, null, parts[0]);
-			else
-				throw new Exception("Unable to parse classname into class and schema: " + classname);
+        /// <summary>
+        /// Gets the names of the identity properties from a feature
+        /// </summary>
+        /// <param name="resourceID">The resourceID for the FeatureSource</param>
+        /// <param name="classname">The classname of the feature, including schema</param>
+        /// <returns>A string array with the found identities</returns>
+        public override string[] GetIdentityProperties(string resourceID, string classname)
+        {
+            string[] parts = classname.Split(':');
+            string req;
+            if (parts.Length == 2)
+                req = m_reqBuilder.GetIdentityProperties(resourceID, parts[0], parts[1]);
+            else if (parts.Length == 1)
+                req = m_reqBuilder.GetIdentityProperties(resourceID, null, parts[0]);
+            else
+                throw new Exception("Unable to parse classname into class and schema: " + classname);
 
 
-			XmlDocument doc = new XmlDocument();
-			doc.Load(this.OpenRead(req));
-			XmlNodeList lst = doc.SelectNodes("/PropertyDefinitions/PropertyDefinition/Name");
-			string[] ids = new string[lst.Count];
-			for(int i = 0; i < lst.Count; i++)
-				ids[i] = lst[i].InnerText;
+            XmlDocument doc = new XmlDocument();
+            doc.Load(this.OpenRead(req));
+            XmlNodeList lst = doc.SelectNodes("/PropertyDefinitions/PropertyDefinition/Name");
+            string[] ids = new string[lst.Count];
+            for(int i = 0; i < lst.Count; i++)
+                ids[i] = lst[i].InnerText;
 
-			return ids;
-		}
+            return ids;
+        }
 
         private readonly object SyncRoot = new object();
 
-		/// <summary>
-		/// Restarts the server session, and creates a new session ID
-		/// </summary>
-		/// <param name="throwException">If set to true, the call throws an exception if the call failed</param>
-		/// <returns>True if the creation succeed, false otherwise</returns>
-		protected override bool RestartSessionInternal(bool throwException)
-		{
-			if (m_username == null || m_password == null)
-				if (throwException)
-					throw new Exception("Cannot recreate session, because connection was not opened with username and password");
-				else
-					return false;
+        /// <summary>
+        /// Restarts the server session, and creates a new session ID
+        /// </summary>
+        /// <param name="throwException">If set to true, the call throws an exception if the call failed</param>
+        /// <returns>True if the creation succeed, false otherwise</returns>
+        protected override bool RestartSessionInternal(bool throwException)
+        {
+            if (m_username == null || m_password == null)
+                if (throwException)
+                    throw new Exception("Cannot recreate session, because connection was not opened with username and password");
+                else
+                    return false;
 
-			Uri hosturl = new Uri(m_reqBuilder.HostURI);
-			string locale = m_reqBuilder.Locale;
+            Uri hosturl = new Uri(m_reqBuilder.HostURI);
+            string locale = m_reqBuilder.Locale;
             string oldSessionId = m_reqBuilder.SessionID;
 
-			try
-			{
-				RequestBuilder reqb = new RequestBuilder(hosturl, locale);
-				WebClient wc = new WebClient();
-				wc.Credentials = new NetworkCredential(m_username, m_password);
-				string req = reqb.CreateSession();
+            try
+            {
+                RequestBuilder reqb = new RequestBuilder(hosturl, locale);
+                WebClient wc = new WebClient();
+                wc.Credentials = new NetworkCredential(m_username, m_password);
+                string req = reqb.CreateSession();
 
-				try
-				{
-					reqb.SessionID = System.Text.Encoding.Default.GetString(wc.DownloadData(req));
+                try
+                {
+                    reqb.SessionID = System.Text.Encoding.Default.GetString(wc.DownloadData(req));
                     if (reqb.SessionID.IndexOf("<") >= 0)
                         throw new Exception("Invalid server token recieved: " + reqb.SessionID);
                     else
                         CheckAndRaiseSessionChanged(oldSessionId, reqb.SessionID);
-				}
-				catch (Exception ex)
-				{
-					reqb.SessionID = null;
-					bool ok = false;
-					try
-					{
-						//Retry, and append missing path, if applicable
-						if (!hosturl.ToString().EndsWith("/mapagent/mapagent.fcgi"))
-						{
-							string tmp = hosturl.ToString();
-							if (!tmp.EndsWith("/"))
-								tmp += "/";
-							hosturl = new Uri(tmp + "mapagent/mapagent.fcgi");
-							reqb = new RequestBuilder(hosturl, locale);
-							req = reqb.CreateSession();
-							reqb.SessionID = System.Text.Encoding.Default.GetString(wc.DownloadData(req));
+                }
+                catch (Exception ex)
+                {
+                    reqb.SessionID = null;
+                    bool ok = false;
+                    try
+                    {
+                        //Retry, and append missing path, if applicable
+                        if (!hosturl.ToString().EndsWith("/mapagent/mapagent.fcgi"))
+                        {
+                            string tmp = hosturl.ToString();
+                            if (!tmp.EndsWith("/"))
+                                tmp += "/";
+                            hosturl = new Uri(tmp + "mapagent/mapagent.fcgi");
+                            reqb = new RequestBuilder(hosturl, locale);
+                            req = reqb.CreateSession();
+                            reqb.SessionID = System.Text.Encoding.Default.GetString(wc.DownloadData(req));
                             if (reqb.SessionID.IndexOf("<") >= 0)
                                 throw new Exception("Invalid server token recieved: " + reqb.SessionID);
-							ok = true;
-						}
-					}
-					catch {}
+                            ok = true;
+                        }
+                    }
+                    catch {}
 
                     if (!ok)
                     {
@@ -1323,9 +1317,9 @@ namespace OSGeo.MapGuide.MaestroAPI
                     {
                         CheckAndRaiseSessionChanged(oldSessionId, reqb.SessionID);
                     }
-				}
+                }
 
-				//Reset cached items
+                //Reset cached items
                 lock (SyncRoot)
                 {
                     m_siteVersion = new Version(((SiteVersion)DeserializeObject(typeof(SiteVersion), wc.OpenRead(reqb.GetSiteVersion()))).Version);
@@ -1335,27 +1329,27 @@ namespace OSGeo.MapGuide.MaestroAPI
                     m_reqBuilder = reqb;
                 }
                
-				return true;
-			}
-			catch
-			{
-				if (throwException)
-					throw;
-				else
-					return false;
-			}
-		}
+                return true;
+            }
+            catch
+            {
+                if (throwException)
+                    throw;
+                else
+                    return false;
+            }
+        }
 
-		/// <summary>
-		/// Downloads data as a byte array. Wrapper function that automatically recreates the session if it has expired.
-		/// </summary>
-		/// <param name="req">The request URI</param>
-		/// <returns>The data at the given location</returns>
-		internal byte[] DownloadData(string req)
-		{
-			string prev_session = m_reqBuilder.SessionID;
-			try
-			{
+        /// <summary>
+        /// Downloads data as a byte array. Wrapper function that automatically recreates the session if it has expired.
+        /// </summary>
+        /// <param name="req">The request URI</param>
+        /// <returns>The data at the given location</returns>
+        internal byte[] DownloadData(string req)
+        {
+            string prev_session = m_reqBuilder.SessionID;
+            try
+            {
                 var httpreq = HttpWebRequest.Create(req);
                 var httpresp = (HttpWebResponse)httpreq.GetResponse();
                 LogResponse(httpresp);
@@ -1367,9 +1361,9 @@ namespace OSGeo.MapGuide.MaestroAPI
                         return ms.GetBuffer();
                     }
                 }
-			}
-			catch (Exception ex)
-			{
+            }
+            catch (Exception ex)
+            {
                 if (typeof(WebException).IsAssignableFrom(ex.GetType()))
                     LogFailedRequest((WebException)ex);
 
@@ -1398,28 +1392,28 @@ namespace OSGeo.MapGuide.MaestroAPI
                         }
                     }
                 }
-			}
-		}
+            }
+        }
 
-		/// <summary>
-		/// Opens a stream for reading. Wrapper function that automatically recreates the session if it has expired.
-		/// </summary>
-		/// <param name="req">The request URI</param>
-		/// <returns>The data at the given location</returns>
-		internal System.IO.Stream OpenRead(string req)
-		{
-			string prev_session = m_reqBuilder.SessionID;
-			try
-			{
+        /// <summary>
+        /// Opens a stream for reading. Wrapper function that automatically recreates the session if it has expired.
+        /// </summary>
+        /// <param name="req">The request URI</param>
+        /// <returns>The data at the given location</returns>
+        internal System.IO.Stream OpenRead(string req)
+        {
+            string prev_session = m_reqBuilder.SessionID;
+            try
+            {
                 var httpreq = HttpWebRequest.Create(req);
                 if (_cred != null)
                     httpreq.Credentials = _cred;
                 var httpresp = (HttpWebResponse)httpreq.GetResponse();
                 LogResponse(httpresp);
                 return httpresp.GetResponseStream();
-			}
-			catch (Exception ex)
-			{
+            }
+            catch (Exception ex)
+            {
                 if (typeof(WebException).IsAssignableFrom(ex.GetType()))
                     LogFailedRequest((WebException)ex);
 
@@ -1443,46 +1437,46 @@ namespace OSGeo.MapGuide.MaestroAPI
                     var httpresp = httpreq.GetResponse();
                     return httpresp.GetResponseStream();
                 }
-			}
-		}
+            }
+        }
 
-		/// <summary>
-		/// Enumerates all unmanaged folders, meaning alias'ed folders
-		/// </summary>
-		/// <param name="type">The type of data to return</param>
-		/// <param name="filter">A filter applied to the items</param>
-		/// <param name="recursive">True if the list should contains recursive results</param>
-		/// <param name="startpath">The path to retrieve the data from</param>
-		/// <returns>A list of unmanaged data</returns>
-		public override UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type)
-		{
-			string req = m_reqBuilder.EnumerateUnmanagedData(startpath, filter, recursive, type);
-			System.IO.MemoryStream ms = new System.IO.MemoryStream();
-			using(System.IO.Stream s = this.OpenRead(req))
-				Utility.CopyStream(s, ms);
-			ms.Position = 0;
-			return (UnmanagedDataList)DeserializeObject(typeof(UnmanagedDataList), ms);
-		}
+        /// <summary>
+        /// Enumerates all unmanaged folders, meaning alias'ed folders
+        /// </summary>
+        /// <param name="type">The type of data to return</param>
+        /// <param name="filter">A filter applied to the items</param>
+        /// <param name="recursive">True if the list should contains recursive results</param>
+        /// <param name="startpath">The path to retrieve the data from</param>
+        /// <returns>A list of unmanaged data</returns>
+        public override UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type)
+        {
+            string req = m_reqBuilder.EnumerateUnmanagedData(startpath, filter, recursive, type);
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            using(System.IO.Stream s = this.OpenRead(req))
+                Utility.CopyStream(s, ms);
+            ms.Position = 0;
+            return (UnmanagedDataList)DeserializeObject(typeof(UnmanagedDataList), ms);
+        }
 
-		/// <summary>
-		/// Gets the base url, ea.: http://localhost/mapguide/
-		/// </summary>
-		public string BaseURL 
-		{ 
-			get 
-			{ 
-				string baseurl = this.ServerURI;
-				if (baseurl.ToLower().EndsWith("/mapagent.fcgi"))
-					baseurl = baseurl.Substring(0, baseurl.Length - "mapagent.fcgi".Length);
-			
-				if (baseurl.ToLower().EndsWith("/mapagent/"))
-					baseurl = baseurl.Substring(0, baseurl.Length - "mapagent/".Length);
-				else if (baseurl.ToLower().EndsWith("/mapagent"))
-					baseurl = baseurl.Substring(0, baseurl.Length - "mapagent".Length);
+        /// <summary>
+        /// Gets the base url, ea.: http://localhost/mapguide/
+        /// </summary>
+        public string BaseURL 
+        { 
+            get 
+            { 
+                string baseurl = this.ServerURI;
+                if (baseurl.ToLower().EndsWith("/mapagent.fcgi"))
+                    baseurl = baseurl.Substring(0, baseurl.Length - "mapagent.fcgi".Length);
+            
+                if (baseurl.ToLower().EndsWith("/mapagent/"))
+                    baseurl = baseurl.Substring(0, baseurl.Length - "mapagent/".Length);
+                else if (baseurl.ToLower().EndsWith("/mapagent"))
+                    baseurl = baseurl.Substring(0, baseurl.Length - "mapagent".Length);
 
-				return baseurl;
-			} 
-		}
+                return baseurl;
+            } 
+        }
 
         /// <summary>
         /// Renders a minature bitmap of the layers style
@@ -1564,7 +1558,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public override object GetFolderOrResourceHeader(string resourceID)
         {
             string req = m_reqBuilder.GetResourceHeader(resourceID);
-			using(System.IO.Stream s = this.OpenRead(req))
+            using(System.IO.Stream s = this.OpenRead(req))
             if (ResourceIdentifier.IsFolderResource(resourceID))
                 return this.DeserializeObject<ResourceFolderHeaderType>(s);
             else
@@ -1849,14 +1843,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_cachedProviderCapabilities == null)
                 m_cachedProviderCapabilities = new Hashtable();
 
-			if (m_cachedProviderCapabilities.ContainsKey(provider))
-				return (FdoProviderCapabilities)m_cachedProviderCapabilities[provider];
+            if (m_cachedProviderCapabilities.ContainsKey(provider))
+                return (FdoProviderCapabilities)m_cachedProviderCapabilities[provider];
 
-			string req = m_reqBuilder.GetProviderCapabilities(provider);
+            string req = m_reqBuilder.GetProviderCapabilities(provider);
 
-			//TODO: Cache?
-			FdoProviderCapabilities o = (FdoProviderCapabilities)DeserializeObject(typeof(FdoProviderCapabilities), this.OpenRead(req));
-			return o;
+            //TODO: Cache?
+            FdoProviderCapabilities o = (FdoProviderCapabilities)DeserializeObject(typeof(FdoProviderCapabilities), this.OpenRead(req));
+            return o;
         }
 
         public override ILongTransactionList GetLongTransactions(string resourceId, bool activeOnly)
