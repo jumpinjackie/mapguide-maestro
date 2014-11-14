@@ -38,9 +38,6 @@ namespace MaestroAPITests
         public static string HttpUsername = "Administrator";
         public static string HttpPassword = "admin";
 
-        public static string GeoRestUrl = "http://localhost:99/";
-        public static string GeoRestConfig = "UserTestData\\GeoRestConfig.xml";
-
         public static void Initialize(string initFile)
         {
             if (File.Exists(initFile))
@@ -65,10 +62,6 @@ namespace MaestroAPITests
                         TestEnvironment.HttpUsername = settings["HttpUsername"].InnerText;
                     if (settings["HttpPassword"] != null)
                         TestEnvironment.HttpPassword = settings["HttpPassword"].InnerText;
-                    if (settings["GeoRestUrl"] != null)
-                        TestEnvironment.GeoRestUrl = settings["GeoRestUrl"].InnerText;
-                    if (settings["GeoRestConfig"] != null)
-                        TestEnvironment.GeoRestConfig = settings["GeoRestConfig"].InnerText;
                 }
                 var control = doc.SelectSingleNode("//TestConfiguration/TestControl");
                 if (control != null)
@@ -99,8 +92,6 @@ namespace MaestroAPITests
                         TestControl.IgnoreLocalNativePerformanceTests = control["IgnoreLocalNativePerformanceTests"].InnerText == "true";
                     if (control["IgnoreLocalNativeFeatureTests"] != null)
                         TestControl.IgnoreLocalNativeFeatureTests = control["IgnoreLocalNativeFeatureTests"].InnerText == "true";
-                    if (control["IgnoreGeoRestTests"] != null)
-                        TestControl.IgnoreGeoRestTests = control["IgnoreGeoRestTests"].InnerText == "true";
                     if (control["IgnoreLocalFeatureTests"] != null)
                         TestControl.IgnoreLocalFeatureTests = control["IgnoreLocalFeatureTests"].InnerText == "true";
                     if (control["IgnoreSchemaTests"] != null)
@@ -125,8 +116,6 @@ namespace MaestroAPITests
             Console.WriteLine("HttpUrl                              = {0}", TestEnvironment.HttpUrl);
             Console.WriteLine("HttpUsername                         = {0}", TestEnvironment.HttpUsername);
             Console.WriteLine("HttpPassword                         = {0}", TestEnvironment.HttpPassword);
-            Console.WriteLine("GeoRestUrl                           = {0}", TestEnvironment.GeoRestUrl);
-            Console.WriteLine("GeoRestConfig                        = {0}", TestEnvironment.GeoRestConfig);
             Console.WriteLine("********************** Test Control **************************");
             Console.WriteLine("IgnoreConfigurationTests             = {0}", TestControl.IgnoreConfigurationTests);
             Console.WriteLine("IgnoreCapabilityTests                = {0}", TestControl.IgnoreCapabilityTests);
@@ -141,7 +130,6 @@ namespace MaestroAPITests
             Console.WriteLine("IgnoreLocalNativeRuntimeMapTests     = {0}", TestControl.IgnoreLocalNativeRuntimeMapTests);
             Console.WriteLine("IgnoreLocalNativePerformanceTests    = {0}", TestControl.IgnoreLocalNativePerformanceTests);
             Console.WriteLine("IgnoreLocalNativeFeatureTests        = {0}", TestControl.IgnoreLocalNativeFeatureTests);
-            Console.WriteLine("IgnoreGeoRestTests                   = {0}", TestControl.IgnoreGeoRestTests);
             Console.WriteLine("IgnoreLocalFeatureTests              = {0}", TestControl.IgnoreLocalFeatureTests);
             Console.WriteLine("IgnoreSchemaTests                    = {0}", TestControl.IgnoreSchemaTests);
             Console.WriteLine("IgnoreSerializationTests             = {0}", TestControl.IgnoreSerializationTests);
@@ -165,7 +153,6 @@ namespace MaestroAPITests
         public static bool IgnoreLocalNativeRuntimeMapTests = true;
         public static bool IgnoreLocalNativePerformanceTests = true;
         public static bool IgnoreLocalNativeFeatureTests = true;
-        public static bool IgnoreGeoRestTests = true;
         public static bool IgnoreLocalFeatureTests = false;
         public static bool IgnoreSchemaTests = false;
         public static bool IgnoreSerializationTests = false;
@@ -186,16 +173,6 @@ namespace MaestroAPITests
         public static IServerConnection CreateTestLocalConnection()
         {
             return ConnectionProviderRegistry.CreateConnection("Maestro.Local", "ConfigFile", TestEnvironment.LocalConfigFile);
-        }
-
-        public static IServerConnection CreateTestHttpConnectionWithGeoRest()
-        {
-            return ConnectionProviderRegistry.CreateConnection("Maestro.Http",
-                "Url", TestEnvironment.HttpUrl,
-                "Username", TestEnvironment.HttpUsername,
-                "Password", TestEnvironment.HttpPassword,
-                "GeoRestUrl", TestEnvironment.GeoRestUrl,
-                "GeoRestConfigPath", TestEnvironment.GeoRestConfig);
         }
 
         public static IServerConnection CreateTestHttpConnection()

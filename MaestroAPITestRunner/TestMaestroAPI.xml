@@ -36,14 +36,6 @@ Configured for exercising everything in the Maestro API except for LocalNative c
     The password for the MapGuide user account for running the HTTP provider tests under
     -->
     <HttpPassword>admin</HttpPassword>
-    <!--
-    The URL for the GeoREST endpoint for running the HTTP provider tests with GeoREST support
-    -->
-    <GeoRestUrl>http://localhost:99/</GeoRestUrl>
-    <!--
-    The path to the GeoREST test configuration file, needed by this GeoREST test suite
-    -->
-    <GeoRestConfig>UserTestData\GeoRestConfig.xml</GeoRestConfig>
   </TestSettings>
   <TestControl>
     <!-- Core API -->
@@ -72,7 +64,5 @@ Configured for exercising everything in the Maestro API except for LocalNative c
     <IgnoreLocalNativeRuntimeMapTests>true</IgnoreLocalNativeRuntimeMapTests>
     <IgnoreLocalNativePerformanceTests>true</IgnoreLocalNativePerformanceTests>
     <IgnoreLocalNativeFeatureTests>true</IgnoreLocalNativeFeatureTests>
-    <!-- GeoREST disabled because not every MapGuide installation has it installed -->
-    <IgnoreGeoRestTests>true</IgnoreGeoRestTests>
   </TestControl>
 </TestConfiguration>
