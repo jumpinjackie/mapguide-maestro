@@ -279,7 +279,7 @@ namespace MaestroAPITests
 
         class MockFeatureService : IFeatureService
         {
-            public OSGeo.MapGuide.ObjectModels.Capabilities.FdoProviderCapabilities GetProviderCapabilities(string provider)
+            public OSGeo.MapGuide.ObjectModels.Capabilities.IFdoProviderCapabilities GetProviderCapabilities(string provider)
             {
                 throw new NotImplementedException();
             }

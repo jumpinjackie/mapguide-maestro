@@ -6,6 +6,12 @@
         <Assembly>OSGeo.MapGuide.MaestroAPI.Http.dll</Assembly>
         <Type>OSGeo.MapGuide.MaestroAPI.HttpServerConnection</Type>
     </ConnectionProvider>
+    <ConnectionProvider>
+        <Name>Maestro.Rest</Name>
+        <Description>Connection using the mapguide-rest API</Description>
+        <Assembly>OSGeo.MapGuide.MaestroAPI.Rest.dll</Assembly>
+        <Type>OSGeo.MapGuide.MaestroAPI.RestConnection</Type>
+    </ConnectionProvider>
     <!-- 
     If you want to use the Maestro.LocalNative provider, register the desired
     LocalNative provider assembly here.

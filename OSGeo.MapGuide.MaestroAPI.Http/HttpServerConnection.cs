@@ -32,6 +32,7 @@ using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
 using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.RuntimeMap;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -63,7 +64,6 @@ namespace OSGeo.MapGuide.MaestroAPI
         
         //These only change after server reboot, so it is probably safe to cache them
         private FeatureProviderRegistry m_featureProviders = null; //SHARED
-        private Hashtable m_cachedProviderCapabilities = null; //SHARED
         private Version m_siteVersion; //SHARED
 
         private bool mAnonymousUser = false;
@@ -71,7 +71,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         internal HttpServerConnection()
             : base()
         {
-            m_cachedProviderCapabilities = new Hashtable();
+            
         }
 
         internal HttpServerConnection(RequestBuilder builder)
@@ -1020,7 +1020,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 OnResourceAdded(newpath);
         }
 
-        public override System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, Color selectionColor, int behavior)
+        public override System.IO.Stream RenderDynamicOverlay(Mapping.RuntimeMap map, MapSelection selection, string format, Color selectionColor, int behavior)
         {
             //This API was introduced in MGOS 2.1 so this won't work with older versions
             if (this.SiteVersion < new Version(2, 1, 0))
@@ -1032,7 +1032,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             return this.OpenRead(req);
         }
 
-        public override System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, bool keepSelection)
+        public override System.IO.Stream RenderDynamicOverlay(Mapping.RuntimeMap map, MapSelection selection, string format, bool keepSelection)
         {
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             System.Net.WebRequest req = m_reqBuilder.GetDynamicMapOverlayImage(map.Name, (selection == null ? string.Empty : selection.ToXml()), format, ms);
@@ -1053,7 +1053,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        public Stream RenderMapLegend(RuntimeMap map, int width, int height, System.Drawing.Color backgroundColor, string format)
+        public Stream RenderMapLegend(Mapping.RuntimeMap map, int width, int height, System.Drawing.Color backgroundColor, string format)
         {
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             string req = m_reqBuilder.RenderMapLegend(map.Name, width, height, ColorTranslator.ToHtml(backgroundColor), format);
@@ -1061,7 +1061,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             return this.OpenRead(req);
         }
 
-        public override System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
+        public override System.IO.Stream RenderRuntimeMap(Mapping.RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
         {
             var resourceId = map.ResourceID;
             ResourceIdentifier.Validate(resourceId, ResourceTypes.RuntimeMap);
@@ -1093,7 +1093,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 #endif
         }
 
-        public override System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
+        public override System.IO.Stream RenderRuntimeMap(Mapping.RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
         {
             var resourceId = map.ResourceID;
             ResourceIdentifier.Validate(resourceId, ResourceTypes.RuntimeMap);
@@ -1289,7 +1289,6 @@ namespace OSGeo.MapGuide.MaestroAPI
                     m_siteVersion = new Version(((SiteVersion)DeserializeObject(typeof(SiteVersion), wc.OpenRead(reqb.GetSiteVersion()))).Version);
 
                     m_featureProviders = null;
-                    m_cachedProviderCapabilities = null;
                     m_reqBuilder = reqb;
                 }
                
@@ -1595,9 +1594,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 if (m_featureProviders != null)
                     m_featureProviders = null;
-
-                if (m_cachedProviderCapabilities != null)
-                    m_cachedProviderCapabilities = null;
             }
         }
 
@@ -1802,18 +1798,11 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        public FdoProviderCapabilities GetProviderCapabilities(string provider)
+        public IFdoProviderCapabilities GetProviderCapabilities(string provider)
         {
-            if (m_cachedProviderCapabilities == null)
-                m_cachedProviderCapabilities = new Hashtable();
-
-            if (m_cachedProviderCapabilities.ContainsKey(provider))
-                return (FdoProviderCapabilities)m_cachedProviderCapabilities[provider];
-
             string req = m_reqBuilder.GetProviderCapabilities(provider);
 
-            //TODO: Cache?
-            FdoProviderCapabilities o = (FdoProviderCapabilities)DeserializeObject(typeof(FdoProviderCapabilities), this.OpenRead(req));
+            var o = DeserializeObject<OSGeo.MapGuide.ObjectModels.Capabilities_1_1_0.FdoProviderCapabilities>(this.OpenRead(req));
             return o;
         }
 
@@ -1880,7 +1869,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        public override string QueryMapFeatures(RuntimeMap map, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)
+        public override string QueryMapFeatures(Mapping.RuntimeMap map, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)
         {
             string runtimeMapName = map.Name;
             //The request may execeed the url limit of the server, when large geometries
@@ -1998,7 +1987,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        internal ObjectModels.RuntimeMap.IRuntimeMapInfo DescribeRuntimeMap(string mapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight)
+        internal IRuntimeMapInfo DescribeRuntimeMap(string mapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight)
         {
             var req = m_reqBuilder.DescribeRuntimeMap(mapName, requestedFeatures, iconsPerScaleRange, iconFormat, iconWidth, iconHeight);
             using (var s = this.OpenRead(req))
@@ -2008,7 +1997,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        internal ObjectModels.RuntimeMap.IRuntimeMapInfo CreateRuntimeMap(string mapDefinition, string targetMapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight)
+        internal IRuntimeMapInfo CreateRuntimeMap(string mapDefinition, string targetMapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight)
         {
             var req = m_reqBuilder.CreateRuntimeMap(mapDefinition, targetMapName, requestedFeatures, iconsPerScaleRange, iconFormat, iconWidth, iconHeight);
             using (var s = this.OpenRead(req))

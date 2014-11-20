@@ -47,7 +47,11 @@ namespace OSGeo.MapGuide.ObjectModels.Common
             };
         }
 
-        internal ResourceDocumentHeaderType() { }
+        /// <summary>
+        /// For internal use only. Made public to satisfy serialization requirements. Use <see cref="M:OSGeo.MapGuide.ObjectModels.ResourceDocumentHeaderType.CreateDefault"/> to
+        /// create new instances
+        /// </summary>
+        public ResourceDocumentHeaderType() { }
 
         //Required for saving/updating
 
@@ -69,7 +73,11 @@ namespace OSGeo.MapGuide.ObjectModels.Common
             };
         }
 
-        internal ResourceFolderHeaderType() { }
+        /// <summary>
+        /// For internal use only. Made public to satisfy serialization requirements. Use <see cref="M:OSGeo.MapGuide.ObjectModels.ResourceDocumentHeaderType.CreateDefault"/> to
+        /// create new instances
+        /// </summary>
+        public ResourceFolderHeaderType() { }
 
         //Required for saving/updating
 

@@ -47,7 +47,7 @@ namespace Maestro.Editors.FeatureSource.Preview
         private IFeatureService _featSvc;
         private string _fsId;
 
-        public PreviewPane(string fsId, QueryMode mode, ClassDefinition cls, IEditorService edSvc, FdoProviderCapabilities caps)
+        public PreviewPane(string fsId, QueryMode mode, ClassDefinition cls, IEditorService edSvc, IFdoProviderCapabilities caps)
             : this()
         {
             _fsId = fsId;

@@ -26,6 +26,7 @@ using System.Drawing;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.MaestroAPI.Local
 {
@@ -127,7 +128,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
         }
 
-        public override ObjectModels.Common.IEnvelope DataExtent
+        public override IEnvelope DataExtent
         {
             get
             {
@@ -199,7 +200,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
         }
 
-        public override ObjectModels.Common.IEnvelope MapExtent
+        public override IEnvelope MapExtent
         {
             get
             {
@@ -233,7 +234,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
         }
 
-        public override ObjectModels.Common.IPoint2D ViewCenter
+        public override IPoint2D ViewCenter
         {
             get
             {

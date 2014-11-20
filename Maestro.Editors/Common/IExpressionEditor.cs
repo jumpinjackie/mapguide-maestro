@@ -41,7 +41,7 @@ namespace Maestro.Editors.Common
         /// <param name="cls"></param>
         /// <param name="featuresSourceId"></param>
         /// <param name="attachStylizationFunctions"></param>
-        void Initialize(IEditorService edSvc, FdoProviderCapabilities caps, ClassDefinition cls, string featuresSourceId, bool attachStylizationFunctions);
+        void Initialize(IEditorService edSvc, IFdoProviderCapabilities caps, ClassDefinition cls, string featuresSourceId, bool attachStylizationFunctions);
 
         /// <summary>
         /// Gets or sets the FDO expression

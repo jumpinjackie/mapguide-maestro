@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI;
@@ -44,7 +45,7 @@ namespace Maestro.Editors.Common
         private ClassDefinition _cls;
         private IEditorService _edSvc;
         private string m_featureSource = null;
-        private FdoProviderCapabilities _caps;
+        private IFdoProviderCapabilities _caps;
         private ITextEditor _editor;
         
         /// <summary>
@@ -88,7 +89,7 @@ namespace Maestro.Editors.Common
         /// <param name="cls">The class definition.</param>
         /// <param name="featuresSourceId">The FeatureSource id.</param>
         /// <param name="attachStylizationFunctions">if set to <c>true</c> stylization functions are also attached</param>
-        public void Initialize(IEditorService edSvc, FdoProviderCapabilities caps, ClassDefinition cls, string featuresSourceId, bool attachStylizationFunctions)
+        public void Initialize(IEditorService edSvc, IFdoProviderCapabilities caps, ClassDefinition cls, string featuresSourceId, bool attachStylizationFunctions)
         {
             try
             {
@@ -126,84 +127,125 @@ namespace Maestro.Editors.Common
                 if (ColumnName.Items.Count > 0)
                     ColumnName.SelectedIndex = 0;
 
-                //Functions
-                SortedList<string, FdoProviderCapabilitiesExpressionFunctionDefinition> sortedFuncs = new SortedList<string, FdoProviderCapabilitiesExpressionFunctionDefinition>();
-                foreach (FdoProviderCapabilitiesExpressionFunctionDefinition func in caps.Expression.FunctionDefinitionList)
+                LoadFunctions(caps, attachStylizationFunctions);
+            }
+            catch
+            {
+            }
+        }
+
+        internal static IFdoFunctionDefintionSignature[] MakeUniqueSignatures(IFdoFunctionDefintion func)
+        {
+            var dict = new Dictionary<string, IFdoFunctionDefintionSignature>();
+            foreach (var sig in func.Signatures)
+            {
+                string fmt = "{0}({1})"; //NOXLATE
+                List<string> args = new List<string>();
+                foreach (var argDef in sig.Arguments)
+                {
+                    args.Add(argDef.Name.Trim());
+                }
+                string expr = string.Format(fmt, func.Name, FdoExpressionCompletionDataProvider.StringifyFunctionArgs(args));
+                if (!dict.ContainsKey(expr))
+                    dict[expr] = sig;
+            }
+            return dict.Values.ToArray();
+        }
+
+        private void LoadFunctions(IFdoProviderCapabilities caps, bool attachStylizationFunctions)
+        {
+            //Functions
+            var sortedFuncs = new SortedList<string, IFdoFunctionDefintion>();
+            foreach (var func in caps.Expression.SupportedFunctions)
+            {
+                sortedFuncs.Add(func.Name, func);
+            }
+
+            if (attachStylizationFunctions)
+            {
+                foreach (var func in Utility.GetStylizationFunctions())
                 {
                     sortedFuncs.Add(func.Name, func);
                 }
+            }
 
-                if (attachStylizationFunctions)
+            foreach (var func in sortedFuncs.Values)
+            {
+                string name = func.Name;
+                string desc = func.Description;
+
+                ToolStripItemCollection parent = btnFunctions.DropDown.Items;
+                var sigs = MakeUniqueSignatures(func);
+                if (sigs.Length > 1)
                 {
-                    foreach (var func in Utility.GetStylizationFunctions())
-                    {
-                        sortedFuncs.Add(func.Name, func);
-                    }
+                    ToolStripMenuItem btn = new ToolStripMenuItem();
+                    btn.Name = string.Format(Strings.MultiSigFunction, name, sigs.Length);
+                    btn.Text = string.Format(Strings.MultiSigFunction, name, sigs.Length);
+                    btn.ToolTipText = desc;
+
+                    btnFunctions.DropDown.Items.Add(btn);
+                    parent = btn.DropDown.Items;
                 }
 
-                foreach (FdoProviderCapabilitiesExpressionFunctionDefinition func in sortedFuncs.Values)
+                foreach (var sig in sigs)
                 {
-                    string name = func.Name;
-                    ToolStripButton btn = new ToolStripButton();
+                    ToolStripMenuItem btn = new ToolStripMenuItem();
                     btn.Name = name;
-                    btn.Text = name;
-                    btn.ToolTipText = func.Description;
+                    btn.ToolTipText = desc;
 
                     string fmt = "{0}({1})"; //NOXLATE
                     List<string> args = new List<string>();
-                    foreach (FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition argDef in func.ArgumentDefinitionList)
+                    foreach (var argDef in sig.Arguments)
                     {
                         args.Add(argDef.Name.Trim());
                     }
                     string expr = string.Format(fmt, name, FdoExpressionCompletionDataProvider.StringifyFunctionArgs(args));
-                    btn.Click += delegate
+                    btn.Text = expr;
+                    btn.Click += (s, e) =>
                     {
                         InsertText(expr);
                     };
-                    btnFunctions.DropDown.Items.Add(btn);
-                }
-
-                //Spatial Operators
-                foreach (FdoProviderCapabilitiesFilterOperation op in caps.Filter.Spatial)
-                {
-                    string name = op.ToString().ToUpper();
-                    ToolStripButton btn = new ToolStripButton();
-                    btn.Name = btn.Text = btn.ToolTipText = op.ToString();
-                    btn.Click += delegate
-                    {
-                        InsertSpatialFilter(name);
-                    };
-                    btnSpatial.DropDown.Items.Add(btn);
-                }
-
-                //Distance Operators
-                foreach (FdoProviderCapabilitiesFilterOperation1 op in caps.Filter.Distance)
-                {
-                    string name = op.ToString().ToUpper();
-                    ToolStripButton btn = new ToolStripButton();
-                    btn.Name = btn.Text = btn.ToolTipText = op.ToString();
-                    btn.Click += delegate
-                    {
-                        InsertSpatialFilter(name);
-                    };
-                    btnDistance.DropDown.Items.Add(btn);
-                }
-
-                //Conditional Operators
-                foreach (FdoProviderCapabilitiesFilterOperation op in caps.Filter.Condition)
-                {
-                    string name = op.ToString().ToUpper();
-                    ToolStripButton btn = new ToolStripButton();
-                    btn.Name = btn.Text = btn.ToolTipText = op.ToString();
-                    btn.Click += delegate
-                    {
-                        InsertSpatialFilter(name);
-                    };
-                    btnCondition.DropDown.Items.Add(btn);
+                    parent.Add(btn);
                 }
             }
-            catch
+
+            //Spatial Operators
+            foreach (var op in caps.Filter.SpatialOperations)
             {
+                string name = op.ToUpper();
+                ToolStripButton btn = new ToolStripButton();
+                btn.Name = btn.Text = btn.ToolTipText = op;
+                btn.Click += (s, e) =>
+                {
+                    InsertSpatialFilter(name);
+                };
+                btnSpatial.DropDown.Items.Add(btn);
+            }
+
+            //Distance Operators
+            foreach (var op in caps.Filter.DistanceOperations)
+            {
+                string name = op.ToUpper();
+                ToolStripButton btn = new ToolStripButton();
+                btn.Name = btn.Text = btn.ToolTipText = op;
+                btn.Click += (s, e) =>
+                {
+                    InsertSpatialFilter(name);
+                };
+                btnDistance.DropDown.Items.Add(btn);
+            }
+
+            //Conditional Operators
+            foreach (var op in caps.Filter.ConditionTypes)
+            {
+                string name = op.ToUpper();
+                ToolStripButton btn = new ToolStripButton();
+                btn.Name = btn.Text = btn.ToolTipText = op;
+                btn.Click += (s, e) =>
+                {
+                    InsertSpatialFilter(name);
+                };
+                btnCondition.DropDown.Items.Add(btn);
             }
         }
 

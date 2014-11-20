@@ -36,6 +36,7 @@
             this.rdTcpIp = new System.Windows.Forms.RadioButton();
             this.loginPanel = new System.Windows.Forms.Panel();
             this.rdLocal = new System.Windows.Forms.RadioButton();
+            this.rdRest = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // chkSavePassword
@@ -85,10 +86,19 @@
             this.rdLocal.UseVisualStyleBackColor = true;
             this.rdLocal.CheckedChanged += new System.EventHandler(this.rdLocal_CheckedChanged);
             // 
+            // rdRest
+            // 
+            resources.ApplyResources(this.rdRest, "rdRest");
+            this.rdRest.Name = "rdRest";
+            this.rdRest.TabStop = true;
+            this.rdRest.UseVisualStyleBackColor = true;
+            this.rdRest.CheckedChanged += new System.EventHandler(this.rdRest_CheckedChanged);
+            // 
             // LoginDialog
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.rdRest);
             this.Controls.Add(this.rdLocal);
             this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.rdTcpIp);
@@ -114,5 +124,6 @@
         private System.Windows.Forms.RadioButton rdTcpIp;
         private System.Windows.Forms.Panel loginPanel;
         private System.Windows.Forms.RadioButton rdLocal;
+        private System.Windows.Forms.RadioButton rdRest;
     }
 }

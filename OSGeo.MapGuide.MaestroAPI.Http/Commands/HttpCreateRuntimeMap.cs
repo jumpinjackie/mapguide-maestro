@@ -18,6 +18,7 @@
 // 
 #endregion
 using OSGeo.MapGuide.MaestroAPI.Commands;
+using OSGeo.MapGuide.ObjectModels.RuntimeMap;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,7 +89,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http.Commands
             get { return _conn; }
         }
 
-        public ObjectModels.RuntimeMap.IRuntimeMapInfo Execute()
+        public IRuntimeMapInfo Execute()
         {
             return _conn.CreateRuntimeMap(
                 this.MapDefinition,

@@ -43,9 +43,9 @@ namespace Maestro.Editors.Common.Expression
     internal class FdoExpressionCompletionDataProvider : ICompletionDataProvider
     {
         private ClassDefinition _klass;
-        private FdoProviderCapabilities _caps;
+        private IFdoProviderCapabilities _caps;
 
-        public FdoExpressionCompletionDataProvider(ClassDefinition cls, FdoProviderCapabilities caps)
+        public FdoExpressionCompletionDataProvider(ClassDefinition cls, IFdoProviderCapabilities caps)
         {
             _klass = cls;
             _caps = caps;
@@ -182,13 +182,17 @@ namespace Maestro.Editors.Common.Expression
                 {
                     foreach (var func in GetMatchingFdoFunctions(name))
                     {
-                        var member = CreateFdoFunctionDescriptor(func);
-                        int highlightLength = 0;
-                        if (func.ArgumentDefinitionList.Count > 0)
+                        foreach (var sign in func.Signatures)
                         {
-                            highlightLength = func.ArgumentDefinitionList[0].Name.Length + 2; // [ and ]
+                            var member = CreateFdoFunctionSignatureDescriptor(func, sign);
+                            int highlightLength = 0;
+                            var args = sign.Arguments;
+                            if (args.Length > 0)
+                            {
+                                highlightLength = args[0].Name.Length + 2; // [ and ]
+                            }
+                            items.Add(new FdoCompletionData(name, member.Name, member.Description, member.AppendText, highlightLength, 0));
                         }
-                        items.Add(new FdoCompletionData(name, member.Name, member.Description, member.AppendText, highlightLength, 0));
                     }
                     foreach (var member in GetMatchingClassProperties(name))
                     {
@@ -225,9 +229,9 @@ namespace Maestro.Editors.Common.Expression
             public string AppendText;
         }
 
-        private IEnumerable<FdoProviderCapabilitiesExpressionFunctionDefinition> GetMatchingFdoFunctions(string name)
+        private IEnumerable<IFdoFunctionDefintion> GetMatchingFdoFunctions(string name)
         {
-            foreach (var func in _caps.Expression.FunctionDefinitionList.Concat(Utility.GetStylizationFunctions()))
+            foreach (var func in _caps.Expression.SupportedFunctions.Concat(Utility.GetStylizationFunctions()))
             {
                 if (func.Name.StartsWith(name))
                     yield return func;
@@ -236,7 +240,7 @@ namespace Maestro.Editors.Common.Expression
 
         private IEnumerable<Descriptor> GetMatchingFdoConditions(string name)
         {
-            foreach (var cond in _caps.Filter.Condition)
+            foreach (var cond in _caps.Filter.ConditionTypes)
             {
                 if (cond.ToString().ToUpper().StartsWith(name))
                 {
@@ -247,9 +251,9 @@ namespace Maestro.Editors.Common.Expression
             }
         }
 
-        private Descriptor CreateFdoConditionDescriptor(FdoProviderCapabilitiesFilterType cond)
+        private Descriptor CreateFdoConditionDescriptor(string cond)
         {
-            if (cond == FdoProviderCapabilitiesFilterType.Null)
+            if (cond == "Null") //NOXLATE
             {
                 return new Descriptor()
                 {
@@ -257,7 +261,7 @@ namespace Maestro.Editors.Common.Expression
                     Description = "[property] NULL" //NOXLATE
                 };
             }
-            else if (cond == FdoProviderCapabilitiesFilterType.In)
+            else if (cond == "In") //NOXLATE
             {
                 return new Descriptor()
                 {
@@ -266,7 +270,7 @@ namespace Maestro.Editors.Common.Expression
                     AppendText = " ([value1], [value2])" //NOXLATE
                 };
             }
-            else if (cond == FdoProviderCapabilitiesFilterType.Like)
+            else if (cond == "Like") //NOXLATE
             {
                 return new Descriptor()
                 {
@@ -300,15 +304,15 @@ namespace Maestro.Editors.Common.Expression
 
         private IEnumerable<Descriptor> GetMatchingFdoOperators(string name)
         {
-            foreach (var op in _caps.Filter.Distance)
+            foreach (var op in _caps.Filter.DistanceOperations)
             {
-                var opName = op.ToString().ToUpper();
+                var opName = op.ToUpper();
                 if (opName.StartsWith(name))
                     yield return CreateBinaryDistanceOperator(opName);
             }
-            foreach (var op in _caps.Filter.Spatial)
+            foreach (var op in _caps.Filter.SpatialOperations)
             {
-                var opName = op.ToString().ToUpper();
+                var opName = op.ToUpper();
                 if (opName.StartsWith(name))
                     yield return CreateBinarySpatialOperator(opName);
             }
@@ -323,21 +327,39 @@ namespace Maestro.Editors.Common.Expression
             }
         }
 
-        private Descriptor CreateFdoFunctionDescriptor(FdoProviderCapabilitiesExpressionFunctionDefinition func)
+        private Descriptor CreateFdoFunctionSignatureDescriptor(IFdoFunctionDefintion func, IFdoFunctionDefintionSignature sig)
         {
             var desc = new Descriptor();
-            desc.Name = func.Name;
             string fmt = "{0}({1})"; //NOXLATE
             List<string> args = new List<string>();
-            foreach (FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition argDef in func.ArgumentDefinitionList)
+            foreach (var argDef in sig.Arguments)
             {
                 args.Add(argDef.Name.Trim());
             }
             string argsStr = StringifyFunctionArgs(args);
+            string argDesc = DescribeSignature(sig);
             string expr = string.Format(fmt, func.Name, argsStr); //NOXLATE
-            desc.Description = string.Format(Strings.ExprEditorFunctionDesc, expr, func.Description, func.ReturnType, Environment.NewLine);
-            desc.AppendText = "(" + argsStr + ")";
+            desc.Name = expr;
+            desc.Description = string.Format(Strings.ExprEditorFunctionDesc, expr, func.Description, argDesc, sig.ReturnType, Environment.NewLine);
+            desc.AppendText = "";
             return desc;
+        }
+
+        internal static string DescribeSignature(IFdoFunctionDefintionSignature sig)
+        {
+            string argDesc = Strings.None;
+            var args = sig.Arguments;
+            if (args.Length > 0)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append(Environment.NewLine);
+                foreach (var argDef in sig.Arguments)
+                {
+                    sb.AppendFormat("  [{0}] - {1}{2}", argDef.Name, argDef.Description, Environment.NewLine);
+                }
+                argDesc = sb.ToString();
+            }
+            return argDesc;
         }
 
         internal static string StringifyFunctionArgs(List<string> args)

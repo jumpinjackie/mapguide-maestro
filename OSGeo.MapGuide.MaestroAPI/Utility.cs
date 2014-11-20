@@ -1287,7 +1287,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Returns the list of known FDO stylization expression functions
         /// </summary>
         /// <returns></returns>
-        public static IEnumerable<FdoProviderCapabilitiesExpressionFunctionDefinition> GetStylizationFunctions()
+        public static IEnumerable<IFdoFunctionDefintion> GetStylizationFunctions()
         {
             //ARGB
             yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()

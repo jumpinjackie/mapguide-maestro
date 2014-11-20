@@ -48,7 +48,7 @@ namespace Maestro.Base.Editor
         }
 
         private IFeatureSource _fs;
-        private FdoProviderCapabilities _caps;
+        private IFdoProviderCapabilities _caps;
         private IFeatureService _fsvc;
         private IResourceService _rsvc;
         private IEditorService _edsvc;

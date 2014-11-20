@@ -23,6 +23,7 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using System.IO;
+using ObjCommon = OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 
 namespace OSGeo.MapGuide.MaestroAPI
@@ -48,7 +49,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 throw new ArgumentException(Strings.ErrorNoResourceIdAttached);
             using (var stream = CredentialWriter.Write(username, password))
             {
-                fs.SetResourceData(StringConstants.MgUserCredentialsResourceData, ObjectModels.Common.ResourceDataType.String, stream);
+                fs.SetResourceData(StringConstants.MgUserCredentialsResourceData, ObjCommon.ResourceDataType.String, stream);
             }
         }
 

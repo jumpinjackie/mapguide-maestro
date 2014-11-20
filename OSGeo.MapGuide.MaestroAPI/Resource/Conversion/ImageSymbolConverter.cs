@@ -19,6 +19,7 @@
 #endregion
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
+using ObjCommon = OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.DrawingSource;
 using OSGeo.MapGuide.ObjectModels.SymbolLibrary;
 using System;
@@ -128,7 +129,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
             }
         }
 
-        private void ExtractSymbol(string targetFolder, IDrawingService drawSvc, IDrawingSource ds, ObjectModels.Common.DrawingSectionListSection sect, ObjectModels.Common.DrawingSectionResourceListSectionResource res)
+        private void ExtractSymbol(string targetFolder, IDrawingService drawSvc, IDrawingSource ds, ObjCommon.DrawingSectionListSection sect, ObjCommon.DrawingSectionResourceListSectionResource res)
         {
             using (var rs = drawSvc.GetSectionResource(ds.ResourceID, res.Href))
             {
@@ -168,7 +169,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
                     {
                         img.Save(ms, ImageFormat.Png);
                         ms.Position = 0L; //Rewind
-                        _conn.ResourceService.SetResourceData(targetId, dataName, ObjectModels.Common.ResourceDataType.File, ms);
+                        _conn.ResourceService.SetResourceData(targetId, dataName, ObjCommon.ResourceDataType.File, ms);
                     }
 
                     Trace.TraceInformation("Extracted symbol: " + targetId);
@@ -222,7 +223,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
 
             using (dwf)
             {
-                conn.ResourceService.SetResourceData(ds.ResourceID, "symbols.dwf", OSGeo.MapGuide.ObjectModels.Common.ResourceDataType.File, dwf); //NOXLATE
+                conn.ResourceService.SetResourceData(ds.ResourceID, "symbols.dwf", ObjCommon.ResourceDataType.File, dwf); //NOXLATE
             }
             return ds;
         }

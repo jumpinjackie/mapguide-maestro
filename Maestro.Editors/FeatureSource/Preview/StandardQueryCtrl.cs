@@ -45,7 +45,7 @@ namespace Maestro.Editors.FeatureSource.Preview
         private IEditorService _edSvc;
         private string _fsId;
         private ClassDefinition _cls;
-        private FdoProviderCapabilities _caps;
+        private IFdoProviderCapabilities _caps;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StandardQueryCtrl"/> class.
@@ -54,7 +54,7 @@ namespace Maestro.Editors.FeatureSource.Preview
         /// <param name="edSvc">The editor service.</param>
         /// <param name="cls">The CLS.</param>
         /// <param name="caps">The caps.</param>
-        public StandardQueryCtrl(string fsId, IEditorService edSvc, ClassDefinition cls, FdoProviderCapabilities caps)
+        public StandardQueryCtrl(string fsId, IEditorService edSvc, ClassDefinition cls, IFdoProviderCapabilities caps)
             : this()
         {
             _fsId = fsId;

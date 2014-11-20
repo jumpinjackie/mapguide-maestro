@@ -26,7 +26,6 @@ using System.Collections.Specialized;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
-using OSGeo.MapGuide.ObjectModels.Capabilities;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.IO;
@@ -37,6 +36,9 @@ using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.Capabilities;
 
 namespace OSGeo.MapGuide.MaestroAPI.Local
 {
@@ -675,10 +677,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             throw new CustomPropertyNotFoundException();
         }
 
-        public FdoProviderCapabilities GetProviderCapabilities(string provider)
+        public IFdoProviderCapabilities GetProviderCapabilities(string provider)
         {
             var fes = GetFeatureService();
-            var res = (FdoProviderCapabilities)base.DeserializeObject(typeof(FdoProviderCapabilities), new MgReadOnlyStream(() => fes.GetCapabilities(provider)));
+            var res = (IFdoProviderCapabilities)base.DeserializeObject(typeof(OSGeo.MapGuide.ObjectModels.Capabilities_1_1_0.FdoProviderCapabilities), new MgReadOnlyStream(() => fes.GetCapabilities(provider)));
             LogMethodCall("MgFeatureService::GetProviderCapabilities", true, provider);
             return res;
         }
@@ -1060,7 +1062,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             throw new NotSupportedException();
         }
 
-        public override Mapping.RuntimeMap CreateMap(string runtimeMapResourceId, ObjectModels.MapDefinition.IMapDefinition mdf, double metersPerUnit, bool suppressErrors)
+        public override Mapping.RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, double metersPerUnit, bool suppressErrors)
         {
             var mdfId = new MgResourceIdentifier(mdf.ResourceID);
             var implMap = new MgdMap(mdfId);
@@ -1070,7 +1072,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return map;
         }
 
-        public override Mapping.RuntimeMapGroup CreateMapGroup(Mapping.RuntimeMap parent, ObjectModels.MapDefinition.IBaseMapGroup group)
+        public override Mapping.RuntimeMapGroup CreateMapGroup(Mapping.RuntimeMap parent, IBaseMapGroup group)
         {
             var impl = parent as LocalRuntimeMap;
             if (impl == null)
@@ -1086,7 +1088,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new LocalRuntimeMapGroup(impl, rtGroup);
         }
 
-        public override Mapping.RuntimeMapGroup CreateMapGroup(Mapping.RuntimeMap parent, ObjectModels.MapDefinition.IMapLayerGroup group)
+        public override Mapping.RuntimeMapGroup CreateMapGroup(Mapping.RuntimeMap parent, IMapLayerGroup group)
         {
             var impl = parent as LocalRuntimeMap;
             if (impl == null)
@@ -1123,7 +1125,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new LocalRuntimeMapGroup(impl, group);
         }
 
-        public override Mapping.RuntimeMapLayer CreateMapLayer(Mapping.RuntimeMap parent, ObjectModels.LayerDefinition.ILayerDefinition ldf, bool suppressErrors)
+        public override Mapping.RuntimeMapLayer CreateMapLayer(Mapping.RuntimeMap parent, ILayerDefinition ldf, bool suppressErrors)
         {
             var impl = parent as LocalRuntimeMap;
             if (impl == null)

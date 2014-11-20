@@ -1380,7 +1380,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
     <value>Property: {0}{2}Type: {1}</value>
   </data>
   <data name="ExprEditorFunctionDesc" xml:space="preserve">
-    <value>{0}{3}{1}{3}Returns: {2}</value>
+    <value>{0}{4}Description:{1}{4}Arguments:{2}{4}Returns: {3}</value>
   </data>
   <data name="Func_ARGB_AValueDescription" xml:space="preserve">
     <value>Alpha value</value>
@@ -1630,5 +1630,11 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   </data>
   <data name="OptionsSyncedToDocument" xml:space="preserve">
     <value>Options synced back to document</value>
+  </data>
+  <data name="MultiSigFunction" xml:space="preserve">
+    <value>{0} ({1} signatures)</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
   </data>
 </root>

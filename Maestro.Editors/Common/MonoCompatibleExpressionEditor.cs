@@ -110,7 +110,7 @@ namespace Maestro.Editors.Common
         /// <param name="cls">The class definition.</param>
         /// <param name="featuresSourceId">The features source id.</param>
         /// <param name="attachStylizationFunctions">If true, Stylization FDO functions will be included</param>
-        public void Initialize(IEditorService edSvc, FdoProviderCapabilities caps, ClassDefinition cls, string featuresSourceId, bool attachStylizationFunctions)
+        public void Initialize(IEditorService edSvc, IFdoProviderCapabilities caps, ClassDefinition cls, string featuresSourceId, bool attachStylizationFunctions)
         {
             try
             {
@@ -153,8 +153,8 @@ namespace Maestro.Editors.Common
                 //TODO: Figure out how to translate the enums into something usefull
 
                 //Functions
-                SortedList<string, FdoProviderCapabilitiesExpressionFunctionDefinition> sortedFuncs = new SortedList<string, FdoProviderCapabilitiesExpressionFunctionDefinition>();
-                foreach (FdoProviderCapabilitiesExpressionFunctionDefinition func in caps.Expression.FunctionDefinitionList)
+                var sortedFuncs = new SortedList<string, IFdoFunctionDefintion>();
+                foreach (var func in caps.Expression.SupportedFunctions)
                 {
                     sortedFuncs.Add(func.Name, func);
                 }
@@ -167,36 +167,55 @@ namespace Maestro.Editors.Common
                     }
                 }
 
-                foreach (FdoProviderCapabilitiesExpressionFunctionDefinition func in sortedFuncs.Values)
+                foreach (var func in sortedFuncs.Values)
                 {
                     string name = func.Name;
-                    ToolStripButton btn = new ToolStripButton();
-                    btn.Name = name;
-                    btn.Text = name;
-                    btn.ToolTipText = func.Description;
-                    string fmt = "{0}({1})";
-                    List<string> args = new List<string>();
-                    foreach (FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition argDef in func.ArgumentDefinitionList)
+                    string desc = func.Description;
+
+                    ToolStripItemCollection parent = btnFunctions.DropDown.Items;
+                    var sigs = ExpressionEditor.MakeUniqueSignatures(func);
+                    if (sigs.Length > 1)
                     {
-                        args.Add(argDef.Name.Trim());
+                        ToolStripMenuItem btn = new ToolStripMenuItem();
+                        btn.Name = string.Format(Strings.MultiSigFunction, name, sigs.Length);
+                        btn.Text = string.Format(Strings.MultiSigFunction, name, sigs.Length);
+                        btn.ToolTipText = desc;
+
+                        btnFunctions.DropDown.Items.Add(btn);
+                        parent = btn.DropDown.Items;
                     }
-                    string expr = string.Format(fmt, name, string.Join(", ", args.ToArray()));
-                    btn.Click += delegate
+
+                    foreach (var sig in sigs)
                     {
-                        InsertText(expr);
-                    };
-                    btnFunctions.DropDown.Items.Add(btn);
+                        ToolStripMenuItem btn = new ToolStripMenuItem();
+                        btn.Name = name;
+                        btn.ToolTipText = desc;
+
+                        string fmt = "{0}({1})"; //NOXLATE
+                        List<string> args = new List<string>();
+                        foreach (var argDef in sig.Arguments)
+                        {
+                            args.Add(argDef.Name.Trim());
+                        }
+                        string expr = string.Format(fmt, name, FdoExpressionCompletionDataProvider.StringifyFunctionArgs(args));
+                        btn.Text = expr + " : " + sig.ReturnType;
+                        btn.Click += (s, e) =>
+                        {
+                            InsertText(expr);
+                        };
+                        parent.Add(btn);
+                    }
                 }
-                LoadCompletableFunctions(caps.Expression.FunctionDefinitionList);
+                LoadCompletableFunctions(caps.Expression.SupportedFunctions);
                 if (attachStylizationFunctions)
                     LoadCompletableFunctions(GetStylizationFunctions());
 
                 //Spatial Operators
-                foreach (FdoProviderCapabilitiesFilterOperation op in caps.Filter.Spatial)
+                foreach (var op in caps.Filter.SpatialOperations)
                 {
-                    string name = op.ToString().ToUpper();
+                    string name = op.ToUpper();
                     ToolStripButton btn = new ToolStripButton();
-                    btn.Name = btn.Text = btn.ToolTipText = op.ToString();
+                    btn.Name = btn.Text = btn.ToolTipText = op;
                     btn.Click += delegate
                     {
                         InsertFilter(name);
@@ -205,11 +224,11 @@ namespace Maestro.Editors.Common
                 }
 
                 //Distance Operators
-                foreach (FdoProviderCapabilitiesFilterOperation1 op in caps.Filter.Distance)
+                foreach (var op in caps.Filter.DistanceOperations)
                 {
-                    string name = op.ToString().ToUpper();
+                    string name = op.ToUpper();
                     ToolStripButton btn = new ToolStripButton();
-                    btn.Name = btn.Text = btn.ToolTipText = op.ToString();
+                    btn.Name = btn.Text = btn.ToolTipText = op;
                     btn.Click += delegate
                     {
                         InsertFilter(name);
@@ -218,11 +237,11 @@ namespace Maestro.Editors.Common
                 }
 
                 //Conditional Operators
-                foreach (FdoProviderCapabilitiesFilterOperation op in caps.Filter.Condition)
+                foreach (var op in caps.Filter.ConditionTypes)
                 {
-                    string name = op.ToString().ToUpper();
+                    string name = op.ToUpper();
                     ToolStripButton btn = new ToolStripButton();
-                    btn.Name = btn.Text = btn.ToolTipText = op.ToString();
+                    btn.Name = btn.Text = btn.ToolTipText = op;
                     btn.Click += delegate
                     {
                         InsertFilter(name);
@@ -500,7 +519,7 @@ namespace Maestro.Editors.Common
             this.Close();
         }
 
-        private SortedList<string, AutoCompleteItem> _autoCompleteItems = new SortedList<string, AutoCompleteItem>();
+        private SortedList<string, List<AutoCompleteItem>> _autoCompleteItems = new SortedList<string, List<AutoCompleteItem>>();
         private ImageListBox _autoBox;
 
         enum AutoCompleteItemType : int
@@ -570,11 +589,21 @@ namespace Maestro.Editors.Common
         /// </summary>
         class FunctionItem : AutoCompleteItem
         {
-            private FdoProviderCapabilitiesExpressionFunctionDefinition _func;
+            private IFdoFunctionDefintion _func;
+            private IFdoFunctionDefintionSignature _sig;
 
-            public FunctionItem(FdoProviderCapabilitiesExpressionFunctionDefinition fd)
+            private string _insertExpr;
+
+            private FunctionItem(IFdoFunctionDefintion fd, IFdoFunctionDefintionSignature sig)
             {
                 _func = fd;
+                _sig = sig;
+            }
+
+            public FunctionItem(IFdoFunctionDefintion fd, IFdoFunctionDefintionSignature sig, string insertExpr)
+                : this(fd, sig)
+            {
+                _insertExpr = insertExpr;
             }
 
             public override AutoCompleteItemType Type
@@ -584,7 +613,7 @@ namespace Maestro.Editors.Common
 
             public override string Name
             {
-                get { return _func.Name; }
+                get { return _insertExpr; } // _func.Name; }
             }
 
             private string _ttText;
@@ -594,7 +623,11 @@ namespace Maestro.Editors.Common
                 get
                 {
                     if (string.IsNullOrEmpty(_ttText))
-                        _ttText = string.Format(Strings.FunctionTooltip, GetReturnTypeString(), _func.Name, GetArgumentString(), _func.Description);
+                    {
+                        string argDesc = FdoExpressionCompletionDataProvider.DescribeSignature(_sig);
+                        _ttText = string.Format(Strings.ExprEditorFunctionDesc, _insertExpr, _func.Description, argDesc, _sig.ReturnType, Environment.NewLine);
+                    }
+                        //_ttText = string.Format(Strings.FunctionTooltip, GetReturnTypeString(), _func.Name, GetArgumentString(), _func.Description);
 
                     return _ttText;
                 }
@@ -607,7 +640,7 @@ namespace Maestro.Editors.Common
                 if (string.IsNullOrEmpty(_argStr))
                 {
                     List<string> tokens = new List<string>();
-                    foreach (FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition argDef in _func.ArgumentDefinitionList)
+                    foreach (var argDef in _sig.Arguments)
                     {
                         tokens.Add("[" + argDef.Name.Trim() + "]");
                     }
@@ -618,14 +651,14 @@ namespace Maestro.Editors.Common
 
             private string GetReturnTypeString()
             {
-                return _func.ReturnType;
+                return _sig.ReturnType;
             }
 
             public override string AutoCompleteText
             {
                 get
                 {
-                    return this.Name + "(" + GetArgumentString() + ")";
+                    return _insertExpr; //return this.Name + "(" + GetArgumentString() + ")";
                 }
             }
         }
@@ -718,15 +751,30 @@ namespace Maestro.Editors.Common
         {
             foreach (var col in cols)
             {
-                _autoCompleteItems[col.Name] = new PropertyItem(col);
+                if (!_autoCompleteItems.ContainsKey(col.Name))
+                    _autoCompleteItems[col.Name] = new List<AutoCompleteItem>();
+                _autoCompleteItems[col.Name].Add(new PropertyItem(col));
             }
         }
 
-        private void LoadCompletableFunctions(IEnumerable<FdoProviderCapabilitiesExpressionFunctionDefinition> funcs)
+        private void LoadCompletableFunctions(IEnumerable<IFdoFunctionDefintion> funcs)
         {
-            foreach (FdoProviderCapabilitiesExpressionFunctionDefinition func in funcs)
+            foreach (var func in funcs)
             {
-                _autoCompleteItems[func.Name] = new FunctionItem(func);
+                var sigs = ExpressionEditor.MakeUniqueSignatures(func);
+                foreach (var sig in sigs)
+                {
+                    string fmt = "{0}({1})"; //NOXLATE
+                    List<string> args = new List<string>();
+                    foreach (var argDef in sig.Arguments)
+                    {
+                        args.Add(argDef.Name.Trim());
+                    }
+                    string expr = string.Format(fmt, func.Name, FdoExpressionCompletionDataProvider.StringifyFunctionArgs(args));
+                    if (!_autoCompleteItems.ContainsKey(func.Name))
+                        _autoCompleteItems[func.Name] = new List<AutoCompleteItem>();
+                    _autoCompleteItems[func.Name].Add(new FunctionItem(func, sig, expr));
+                }
             }
         }
 
@@ -822,6 +870,13 @@ namespace Maestro.Editors.Common
                     _autoCompleteTooltip.Hide(this);
                 }
             }
+            else if (code == Keys.Up || code == Keys.Down)
+            {
+                if (_autoBox.Visible)
+                {
+                    e.SuppressKeyPress = true;
+                }
+            }
             else if (code == Keys.Enter || code == Keys.Return)
             {
                 if (_autoBox.Visible && _autoBox.SelectedItems.Count == 1)
@@ -896,7 +951,7 @@ namespace Maestro.Editors.Common
                 {
                     bool alpha = (code >= Keys.A && code <= Keys.Z);
                     bool numeric = (code >= Keys.D0 && code <= Keys.D9) || (code >= Keys.NumPad0 && code <= Keys.NumPad9);
-                    if (alpha || numeric)
+                    if (alpha || numeric || e.KeyData == Keys.ShiftKey)
                     {
                         string context;
                         char? c = GetContextBuffer(out context);
@@ -913,7 +968,7 @@ namespace Maestro.Editors.Common
             {
                 if (key.ToLower().StartsWith(text.Trim().ToLower()))
                 {
-                    ati.Add(_autoCompleteItems[key]);
+                    ati.AddRange(_autoCompleteItems[key]);
                 }
             }
             return ati;

@@ -637,7 +637,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             NameValueCollection param = new NameValueCollection();
             param.Add("OPERATION", "GETPROVIDERCAPABILITIES");
-            param.Add("VERSION", "1.0.0");
+            param.Add("VERSION", "2.0.0");
             param.Add("SESSION", m_sessionID);
             param.Add("FORMAT", "text/xml");
             param.Add("CLIENTAGENT", m_userAgent);

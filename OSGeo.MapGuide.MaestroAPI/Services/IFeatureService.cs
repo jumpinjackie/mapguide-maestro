@@ -45,7 +45,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// </summary>
         /// <param name="provider"></param>
         /// <returns></returns>
-        OSGeo.MapGuide.ObjectModels.Capabilities.FdoProviderCapabilities GetProviderCapabilities(string provider);
+        OSGeo.MapGuide.ObjectModels.Capabilities.IFdoProviderCapabilities GetProviderCapabilities(string provider);
 
         /// <summary>
         /// Gets an array of all registered providers

@@ -23,6 +23,7 @@ using System.Text;
 using GeoAPI.CoordinateSystems;
 using ProjNet.CoordinateSystems;
 using GeoAPI.Geometries;
+using ObjCommon = OSGeo.MapGuide.ObjectModels.Common;
 using GisSharpBlog.NetTopologySuite.Geometries;
 
 namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
@@ -89,7 +90,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <param name="bbox">The map bounding box</param>
         /// <param name="size">The size of the image</param>
         /// <returns>The scale</returns>
-        public double CalculateScale(ObjectModels.Common.IEnvelope bbox, System.Drawing.Size size)
+        public double CalculateScale(ObjCommon.IEnvelope bbox, System.Drawing.Size size)
         {
             Check.NotNull(bbox, "bbox");
             return CalculateScale(new Envelope(bbox.MinX, bbox.MaxX, bbox.MinY, bbox.MaxY), size);
@@ -110,7 +111,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <param name="scale">The scale to fit</param>
         /// <param name="size">The size to fit to</param>
         /// <returns>A bounding box with the correct ratio</returns>
-        public ObjectModels.Common.IEnvelope AdjustBoundingBox(ObjectModels.Common.IEnvelope bbox, double scale, System.Drawing.Size size)
+        public ObjCommon.IEnvelope AdjustBoundingBox(ObjCommon.IEnvelope bbox, double scale, System.Drawing.Size size)
         {
             Check.NotNull(bbox, "bbox");
             var env = AdjustBoundingBox(new Envelope(bbox.MinX, bbox.MaxX, bbox.MinY, bbox.MaxY), scale, size);

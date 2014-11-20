@@ -646,7 +646,7 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0}{3}{1}{3}Returns: {2}.
+        ///   Looks up a localized string similar to {0}{4}Description:{1}{4}Arguments:{2}{4}Returns: {3}.
         /// </summary>
         internal static string ExprEditorFunctionDesc {
             get {
@@ -1724,6 +1724,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} ({1} signatures).
+        /// </summary>
+        internal static string MultiSigFunction {
+            get {
+                return ResourceManager.GetString("MultiSigFunction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Flyout.
         /// </summary>
         internal static string NewFlyout {
@@ -1792,6 +1801,15 @@ namespace Maestro.Editors {
         internal static string NoFolderSelected {
             get {
                 return ResourceManager.GetString("NoFolderSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        internal static string None {
+            get {
+                return ResourceManager.GetString("None", resourceCulture);
             }
         }
         

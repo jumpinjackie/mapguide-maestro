@@ -76,7 +76,7 @@ namespace Maestro.Editors.FeatureSource.Preview
             set;
         }
 
-        private FdoProviderCapabilities _caps;
+        private IFdoProviderCapabilities _caps;
 
         class SchemaNodeTag
         {
@@ -116,7 +116,7 @@ namespace Maestro.Editors.FeatureSource.Preview
         /// </summary>
         /// <param name="fsId">The fs id.</param>
         /// <param name="caps">The caps.</param>
-        public void ReloadTree(string fsId, FdoProviderCapabilities caps)
+        public void ReloadTree(string fsId, IFdoProviderCapabilities caps)
         {
             currentFsId = fsId;
             _caps = caps;

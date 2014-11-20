@@ -157,12 +157,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         }
 
         public override string SessionID
-		{
-			get
-			{
-				return m_sessionId;
-			}
-		}
+        {
+            get
+            {
+                return m_sessionId;
+            }
+        }
 
         private void LogMethodCall(string method, bool success, params object[] values)
         {
@@ -172,10 +172,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             OnRequestDispatched(method + "(" + string.Join(", ", strValues) + ") " + ((success) ? "Success" : "Failure"));
         }
 
-		public override ResourceList GetRepositoryResources(string startingpoint, string type, int depth, bool computeChildren)
-		{
-			if (type == null)
-				type = "";
+        public override ResourceList GetRepositoryResources(string startingpoint, string type, int depth, bool computeChildren)
+        {
+            if (type == null)
+                type = "";
             MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
             GetByteReaderMethod fetch = () => 
             { 
@@ -184,13 +184,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             };
             LogMethodCall("MgResourceService::EnumerateResources", true, startingpoint, depth.ToString(), type, computeChildren.ToString());
             return (ResourceList)base.DeserializeObject<ResourceList>(new MgReadOnlyStream(fetch));
-		}
+        }
 
-		public override FeatureProviderRegistryFeatureProvider[] FeatureProviders
-		{
-			get
-			{
-				MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+        public override FeatureProviderRegistryFeatureProvider[] FeatureProviders
+        {
+            get
+            {
+                MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
                 GetByteReaderMethod fetch = () => 
                 {
                     return fes.GetFeatureProviders();
@@ -198,47 +198,47 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 LogMethodCall("MgFeatureService::GetFeatureProviders", true);
                 var reg = base.DeserializeObject<FeatureProviderRegistry>(new MgReadOnlyStream(fetch));
                 return reg.FeatureProvider.ToArray();
-			}
-		}
+            }
+        }
 
-		public string TestConnection(string providername, System.Collections.Specialized.NameValueCollection parameters)
-		{
-			MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
-			System.Text.StringBuilder sb = new System.Text.StringBuilder();
-			if (parameters != null)
-			{
-				foreach(System.Collections.DictionaryEntry de in parameters)
-					sb.Append((string)de.Key + "=" + (string)de.Value + "\t");
-				if (sb.Length > 0)
-					sb.Length--;
-			}
-			var res = fes.TestConnection(providername, sb.ToString()) ? "True" : "Unspecified errors";
+        public string TestConnection(string providername, System.Collections.Specialized.NameValueCollection parameters)
+        {
+            MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            if (parameters != null)
+            {
+                foreach(System.Collections.DictionaryEntry de in parameters)
+                    sb.Append((string)de.Key + "=" + (string)de.Value + "\t");
+                if (sb.Length > 0)
+                    sb.Length--;
+            }
+            var res = fes.TestConnection(providername, sb.ToString()) ? "True" : "Unspecified errors";
             LogMethodCall("MgFeatureService::TestConnection", true, providername, sb.ToString());
             return res;
-		}
+        }
 
-		public override string TestConnection(string featuresource)
-		{
-			MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
-			var res = fes.TestConnection(new MgResourceIdentifier(featuresource)) ? "True" : "Unspecified errors";
+        public override string TestConnection(string featuresource)
+        {
+            MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+            var res = fes.TestConnection(new MgResourceIdentifier(featuresource)) ? "True" : "Unspecified errors";
             LogMethodCall("MgFeatureService::TestConnection", true, featuresource);
             return res;
-		}
+        }
 
-		public FdoProviderCapabilities GetProviderCapabilities(string provider)
-		{
-			MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+        public IFdoProviderCapabilities GetProviderCapabilities(string provider)
+        {
+            MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
             GetByteReaderMethod fetch = () => 
             {
                 return fes.GetCapabilities(provider);
             };
             LogMethodCall("MgFeatureService::GetProviderCapabilities", true, provider);
-            return base.DeserializeObject<FdoProviderCapabilities>(new MgReadOnlyStream(fetch));
-		}
+            return base.DeserializeObject<OSGeo.MapGuide.ObjectModels.Capabilities_1_1_0.FdoProviderCapabilities>(new MgReadOnlyStream(fetch));
+        }
 
-		public override System.IO.Stream GetResourceData(string resourceID, string dataname)
-		{
-			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+        public override System.IO.Stream GetResourceData(string resourceID, string dataname)
+        {
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
             GetByteReaderMethod fetch = () => 
             {
                 MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
@@ -246,11 +246,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             };
             LogMethodCall("MgResourceService::GetResourceData", true, resourceID, dataname);
             return new MgReadOnlyStream(fetch);
-		}
+        }
 
-		public override Stream GetResourceXmlData(string resourceID)
-		{
-			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+        public override Stream GetResourceXmlData(string resourceID)
+        {
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
             GetByteReaderMethod fetch = () => 
             {
                 MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
@@ -258,13 +258,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             };
             LogMethodCall("MgResourceService::GetResourceContent", true, resourceID);
             return new MgReadOnlyStream(fetch);
-		}
+        }
 
-		public override void SetResourceXmlData(string resourceid, System.IO.Stream content, System.IO.Stream header)
-		{
+        public override void SetResourceXmlData(string resourceid, System.IO.Stream content, System.IO.Stream header)
+        {
             bool exists = ResourceExists(resourceid);
 
-			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
 
             byte[] bufHeader = header == null ? new byte[0] : Utility.StreamAsArray(header);
             byte[] bufContent = content == null ? new byte[0] : Utility.StreamAsArray(content);
@@ -276,7 +276,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 OnResourceUpdated(resourceid);
             else
                 OnResourceAdded(resourceid);
-		}
+        }
 
         public IReader ExecuteSqlQuery(string featureSourceID, string sql)
         {
@@ -286,16 +286,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return new LocalNativeSqlReader(reader);
         }
 
-		public override IFeatureReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns, System.Collections.Specialized.NameValueCollection computedProperties)
-		{
-			MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
-			MgFeatureQueryOptions mgf = new MgFeatureQueryOptions();
-			if (query != null)
-				mgf.SetFilter(query);
+        public override IFeatureReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns, System.Collections.Specialized.NameValueCollection computedProperties)
+        {
+            MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+            MgFeatureQueryOptions mgf = new MgFeatureQueryOptions();
+            if (query != null)
+                mgf.SetFilter(query);
 
-			if (columns != null && columns.Length != 0)
-				foreach(string s in columns)
-					mgf.AddFeatureProperty(s);
+            if (columns != null && columns.Length != 0)
+                foreach(string s in columns)
+                    mgf.AddFeatureProperty(s);
 
             if (computedProperties != null && computedProperties.Count > 0)
                 foreach (string s in computedProperties.Keys)
@@ -305,8 +305,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 
             LogMethodCall("MgFeatureService::SelectFeatures", true, resourceID, schema, "MgFeatureQueryOptions");
 
-   			return new LocalNativeFeatureReader(mr);
-		}
+            return new LocalNativeFeatureReader(mr);
+        }
 
         private IReader AggregateQueryFeatureSourceCore(string resourceID, string schema, string query, string[] columns, System.Collections.Specialized.NameValueCollection computedProperties)
         {
@@ -341,14 +341,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         }
 
         protected override FeatureSourceDescription DescribeFeatureSourceInternal(string resourceID)
-		{
-			MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
-			System.IO.MemoryStream ms = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceID), "")));
+        {
+            MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+            System.IO.MemoryStream ms = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceID), "")));
 
             LogMethodCall("MgFeatureService::DescribeSchemaAsXml", true, resourceID, "");
 
-			return new FeatureSourceDescription(ms);
-		}
+            return new FeatureSourceDescription(ms);
+        }
 
         public override FeatureSchema DescribeFeatureSourcePartial(string resourceID, string schema, string[] classNames)
         {
@@ -365,28 +365,28 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         }
 
         public override FeatureSchema DescribeFeatureSource(string resourceID, string schema)
-		{
-			MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+        {
+            MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
             if (schema != null && schema.IndexOf(":") > 0)
                 schema = schema.Split(':')[0];
-			System.IO.MemoryStream ms = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceID), schema)));
+            System.IO.MemoryStream ms = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceID), schema)));
 
             LogMethodCall("MgFeatureService::DescribeSchemaAsXml", true, resourceID, schema);
 
             return new FeatureSourceDescription(ms).Schemas[0];
-		}
+        }
         
-		public void DeleteResourceData(string resourceID, string dataname)
-		{
-			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
-			res.DeleteResourceData(new MgResourceIdentifier(resourceID), dataname);
+        public void DeleteResourceData(string resourceID, string dataname)
+        {
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            res.DeleteResourceData(new MgResourceIdentifier(resourceID), dataname);
 
             LogMethodCall("MgResourceService::DeleteResourceData", true, resourceID, dataname);
-		}
+        }
 
-		public ResourceDataList EnumerateResourceData(string resourceID)
-		{
-			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+        public ResourceDataList EnumerateResourceData(string resourceID)
+        {
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
             GetByteReaderMethod fetch = () => 
             {
                 MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
@@ -394,24 +394,24 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             };
             LogMethodCall("MgResourceService::EnumerateResourceData", true, resourceID);
             return base.DeserializeObject<ResourceDataList>(new MgReadOnlyStream(fetch));
-		}
+        }
 
-		public override void DeleteResource(string resourceID)
-		{
-			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
-			res.DeleteResource(new MgResourceIdentifier(resourceID));
+        public override void DeleteResource(string resourceID)
+        {
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            res.DeleteResource(new MgResourceIdentifier(resourceID));
 
             LogMethodCall("MgResourceService::DeleteResource", true, resourceID);
 
             OnResourceDeleted(resourceID);
-		}
+        }
 
         private Version m_siteVersion;
 
-		public override Version SiteVersion
-		{
-			get
-			{
+        public override Version SiteVersion
+        {
+            get
+            {
 #if MG220
                 return SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_2);
 #elif MG210
@@ -456,7 +456,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 return m_siteVersion;
 #endif
             }
-		}
+        }
 
         private LocalNativeMpuCalculator m_calc;
 
@@ -472,7 +472,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         //TODO: Figure out a strategy for cache invalidation 
         
         public ICoordinateSystemCatalog CoordinateSystemCatalog
-		{
+        {
             get
             {
                 if (this.SiteVersion < OSGeo.MapGuide.MaestroAPI.SiteVersions.GetVersion(OSGeo.MapGuide.MaestroAPI.KnownSiteVersions.MapGuideOS1_2))
@@ -486,17 +486,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             }
         }
 
-		public string DisplayName
-		{
-			get
-			{
-				return this.Connection.GetSite().GetCurrentSiteAddress();
-			}
-		}
+        public string DisplayName
+        {
+            get
+            {
+                return this.Connection.GetSite().GetCurrentSiteAddress();
+            }
+        }
 
-		public override ResourceReferenceList EnumerateResourceReferences(string resourceid)
-		{
-			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+        public override ResourceReferenceList EnumerateResourceReferences(string resourceid)
+        {
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
             GetByteReaderMethod fetch = () => 
             {
                 MgResourceIdentifier resId = new MgResourceIdentifier(resourceid);
@@ -504,14 +504,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             };
             LogMethodCall("MgResourceService::EnumerateReferences", true, resourceid);
             return base.DeserializeObject<ResourceReferenceList>(new MgReadOnlyStream(fetch));
-		}
+        }
 
-		public override void CopyResource(string oldpath, string newpath, bool overwrite)
-		{
+        public override void CopyResource(string oldpath, string newpath, bool overwrite)
+        {
             bool exists = ResourceExists(newpath);
 
-			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
-			res.CopyResource(new MgResourceIdentifier(oldpath), new MgResourceIdentifier(newpath), overwrite);
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            res.CopyResource(new MgResourceIdentifier(oldpath), new MgResourceIdentifier(newpath), overwrite);
 
             LogMethodCall("MgResourceService::CopyResource", true, oldpath, newpath, overwrite.ToString());
 
@@ -519,19 +519,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 OnResourceUpdated(newpath);
             else
                 OnResourceAdded(newpath);
-		}
+        }
 
-		public override void CopyFolder(string oldpath, string newpath, bool overwrite)
-		{
+        public override void CopyFolder(string oldpath, string newpath, bool overwrite)
+        {
             bool exists = ResourceExists(newpath);
 
-			if (!oldpath.EndsWith("/"))
-				oldpath += "/";
-			if (!newpath.EndsWith("/"))
-				newpath += "/";
+            if (!oldpath.EndsWith("/"))
+                oldpath += "/";
+            if (!newpath.EndsWith("/"))
+                newpath += "/";
 
-			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
-			res.CopyResource(new MgResourceIdentifier(oldpath), new MgResourceIdentifier(newpath), overwrite);
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            res.CopyResource(new MgResourceIdentifier(oldpath), new MgResourceIdentifier(newpath), overwrite);
             
             LogMethodCall("MgResourceService::CopyResource", true, oldpath, newpath, overwrite.ToString());
 
@@ -539,14 +539,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 OnResourceUpdated(newpath);
             else
                 OnResourceAdded(newpath);
-		}
+        }
 
-		public override void MoveResource(string oldpath, string newpath, bool overwrite)
-		{
+        public override void MoveResource(string oldpath, string newpath, bool overwrite)
+        {
             bool exists = ResourceExists(newpath);
 
-			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
-			res.MoveResource(new MgResourceIdentifier(oldpath), new MgResourceIdentifier(newpath), overwrite);
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            res.MoveResource(new MgResourceIdentifier(oldpath), new MgResourceIdentifier(newpath), overwrite);
 
             LogMethodCall("MgResourceService::MoveResource", true, oldpath, newpath, overwrite.ToString());
 
@@ -555,19 +555,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 OnResourceUpdated(newpath);
             else
                 OnResourceAdded(newpath);
-		}
+        }
 
-		public override void MoveFolder(string oldpath, string newpath, bool overwrite)
-		{
+        public override void MoveFolder(string oldpath, string newpath, bool overwrite)
+        {
             bool exists = ResourceExists(newpath);
 
-			if (!oldpath.EndsWith("/"))
-				oldpath += "/";
-			if (!newpath.EndsWith("/"))
-				newpath += "/";
+            if (!oldpath.EndsWith("/"))
+                oldpath += "/";
+            if (!newpath.EndsWith("/"))
+                newpath += "/";
 
-			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
-			res.MoveResource(new MgResourceIdentifier(oldpath), new MgResourceIdentifier(newpath), overwrite);
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            res.MoveResource(new MgResourceIdentifier(oldpath), new MgResourceIdentifier(newpath), overwrite);
 
             LogMethodCall("MgResourceService::MoveResource", true, oldpath, newpath, overwrite.ToString());
 
@@ -576,30 +576,30 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 OnResourceUpdated(newpath);
             else
                 OnResourceAdded(newpath);
-		}
+        }
 
         public override System.IO.Stream RenderRuntimeMap(RuntimeMap rtmap, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
-		{
+        {
             var resourceId = rtmap.ResourceID;
-			MgRenderingService rnd = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
-			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
-			MgGeometryFactory gf = new MgGeometryFactory();
+            MgRenderingService rnd = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            MgGeometryFactory gf = new MgGeometryFactory();
 
-			string mapname = new ResourceIdentifier(resourceId).Path;
+            string mapname = new ResourceIdentifier(resourceId).Path;
 
             GetByteReaderMethod fetch = () => 
             {
                 MgMap map = new MgMap();
-			    map.Open(res, mapname);
-			    MgSelection sel = new MgSelection(map);
+                map.Open(res, mapname);
+                MgSelection sel = new MgSelection(map);
                 //The color accepted by MgColor has alpha as the last value, but the returned has alpha first
-			    MgColor color = new MgColor(Utility.ParseHTMLColor(map.GetBackgroundColor()));
+                MgColor color = new MgColor(Utility.ParseHTMLColor(map.GetBackgroundColor()));
                 MgCoordinate coord = gf.CreateCoordinateXY(x, y);
                 return rnd.RenderMap(map, sel, coord, scale, width, height, color, format, true);
             };
             LogMethodCall("MgRenderingService::RenderMap", true, "MgMap", "MgSelection", "MgPoint("+ x + "," + y + ")", scale.ToString(), width.ToString(), height.ToString(), "MgColor", format, true.ToString());
             return new MgReadOnlyStream(fetch);
-		}
+        }
 
         public override System.IO.Stream RenderRuntimeMap(RuntimeMap rtmap, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
         {
@@ -684,21 +684,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return new MgReadOnlyStream(fetch);
         }
 
-		public override bool IsSessionExpiredException(Exception ex)
-		{
-			return ex != null && ex.GetType() == typeof(OSGeo.MapGuide.MgSessionExpiredException) ||  ex.GetType() == typeof(OSGeo.MapGuide.MgSessionNotFoundException);
-		}
+        public override bool IsSessionExpiredException(Exception ex)
+        {
+            return ex != null && ex.GetType() == typeof(OSGeo.MapGuide.MgSessionExpiredException) ||  ex.GetType() == typeof(OSGeo.MapGuide.MgSessionNotFoundException);
+        }
 
-		/// <summary>
-		/// Returns the spatial info for a given featuresource
-		/// </summary>
-		/// <param name="resourceID">The ID of the resource to query</param>
-		/// <param name="activeOnly">Query only active items</param>
-		/// <returns>A list of spatial contexts</returns>
-		public override FdoSpatialContextList GetSpatialContextInfo(string resourceID, bool activeOnly)
-		{
-			MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
-			MgSpatialContextReader rd = fes.GetSpatialContexts(new MgResourceIdentifier(resourceID), activeOnly);
+        /// <summary>
+        /// Returns the spatial info for a given featuresource
+        /// </summary>
+        /// <param name="resourceID">The ID of the resource to query</param>
+        /// <param name="activeOnly">Query only active items</param>
+        /// <returns>A list of spatial contexts</returns>
+        public override FdoSpatialContextList GetSpatialContextInfo(string resourceID, bool activeOnly)
+        {
+            MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+            MgSpatialContextReader rd = fes.GetSpatialContexts(new MgResourceIdentifier(resourceID), activeOnly);
 
             GetByteReaderMethod fetch = () => 
             {
@@ -706,24 +706,24 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             };
             LogMethodCall("MgFeatureService::GetSpatialContexts", true, resourceID, activeOnly.ToString());
             return base.DeserializeObject<FdoSpatialContextList>(new MgReadOnlyStream(fetch));
-		}
+        }
 
-		/// <summary>
-		/// Gets the names of the identity properties from a feature
-		/// </summary>
-		/// <param name="resourceID">The resourceID for the FeatureSource</param>
-		/// <param name="classname">The classname of the feature, including schema</param>
-		/// <returns>A string array with the found identities</returns>
-		public override string[] GetIdentityProperties(string resourceID, string classname)
-		{
-			MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
-			string[] parts = classname.Split(':');
+        /// <summary>
+        /// Gets the names of the identity properties from a feature
+        /// </summary>
+        /// <param name="resourceID">The resourceID for the FeatureSource</param>
+        /// <param name="classname">The classname of the feature, including schema</param>
+        /// <returns>A string array with the found identities</returns>
+        public override string[] GetIdentityProperties(string resourceID, string classname)
+        {
+            MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
+            string[] parts = classname.Split(':');
             MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
-			
-		    if (parts.Length == 1)
-				parts = new string[] { classname };
-			else if (parts.Length != 2)
-				throw new Exception("Unable to parse classname into class and schema: " + classname);
+            
+            if (parts.Length == 1)
+                parts = new string[] { classname };
+            else if (parts.Length != 2)
+                throw new Exception("Unable to parse classname into class and schema: " + classname);
 
             MgClassDefinition cls = fes.GetClassDefinition(resId, parts[0], parts[1]);
             if (cls == null)
@@ -737,57 +737,57 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 res[i] = (props[i] as MgProperty).Name;
 
             return res;
-		}
+        }
 
-		/// <summary>
-		/// Restarts the server session, and creates a new session ID
-		/// </summary>
-		/// <param name="throwException">If set to true, the call throws an exception if the call failed</param>
-		/// <returns>True if the creation succeed, false otherwise</returns>
-		protected override bool RestartSessionInternal(bool throwException)
-		{
-			if (m_username == null || m_password == null)
-				if (throwException)
-					throw new Exception("Cannot recreate session, because connection was not opened with username and password");
-				else
-					return false;
+        /// <summary>
+        /// Restarts the server session, and creates a new session ID
+        /// </summary>
+        /// <param name="throwException">If set to true, the call throws an exception if the call failed</param>
+        /// <returns>True if the creation succeed, false otherwise</returns>
+        protected override bool RestartSessionInternal(bool throwException)
+        {
+            if (m_username == null || m_password == null)
+                if (throwException)
+                    throw new Exception("Cannot recreate session, because connection was not opened with username and password");
+                else
+                    return false;
 
-			try
-			{
-				MgUserInformation mgui = new MgUserInformation(m_username, m_password);
-				if (m_locale != null)
-					mgui.SetLocale(m_locale);
-				else
-					mgui.SetLocale("en");
-				MgSiteConnection con = new MgSiteConnection(); 
-				con.Open(mgui);
-				string s = con.GetSite().CreateSession();
-				if (s == null || s.Trim().Length == 0)
-					throw new Exception("Failed to retrieve new session identifier");
+            try
+            {
+                MgUserInformation mgui = new MgUserInformation(m_username, m_password);
+                if (m_locale != null)
+                    mgui.SetLocale(m_locale);
+                else
+                    mgui.SetLocale("en");
+                MgSiteConnection con = new MgSiteConnection(); 
+                con.Open(mgui);
+                string s = con.GetSite().CreateSession();
+                if (s == null || s.Trim().Length == 0)
+                    throw new Exception("Failed to retrieve new session identifier");
 
-				m_sessionId = s;
-				m_con = con;
-				return true;
-			}
-			catch
-			{
-				if (throwException)
-					throw;
-				else
-					return false;
-			}
-		}
+                m_sessionId = s;
+                m_con = con;
+                return true;
+            }
+            catch
+            {
+                if (throwException)
+                    throw;
+                else
+                    return false;
+            }
+        }
 
-		/// <summary>
-		/// Enumerates all unmanaged folders, meaning alias'ed folders
-		/// </summary>
-		/// <param name="type">The type of data to return</param>
-		/// <param name="filter">A filter applied to the items</param>
-		/// <param name="recursive">True if the list should contains recursive results</param>
-		/// <param name="startpath">The path to retrieve the data from</param>
-		/// <returns>A list of unmanaged data</returns>
-		public override UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type)
-		{
+        /// <summary>
+        /// Enumerates all unmanaged folders, meaning alias'ed folders
+        /// </summary>
+        /// <param name="type">The type of data to return</param>
+        /// <param name="filter">A filter applied to the items</param>
+        /// <param name="recursive">True if the list should contains recursive results</param>
+        /// <param name="startpath">The path to retrieve the data from</param>
+        /// <returns>A list of unmanaged data</returns>
+        public override UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type)
+        {
             MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
             GetByteReaderMethod fetch = () => 
             {
@@ -795,7 +795,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             };
             LogMethodCall("MgResourceService::EnumerateUnmanagedData", true, startpath, recursive, type.ToString(), filter);
             return base.DeserializeObject<UnmanagedDataList>(new MgReadOnlyStream(fetch));
-		}
+        }
 
         public override void UpdateRepository(string resourceId, ResourceFolderHeaderType header)
         {
@@ -818,7 +818,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 
         public override object GetFolderOrResourceHeader(string resourceID)
         {
-			MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
+            MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
             GetByteReaderMethod fetch = () => 
             {
                 MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);

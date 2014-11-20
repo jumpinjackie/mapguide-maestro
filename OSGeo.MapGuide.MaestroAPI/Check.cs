@@ -17,6 +17,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // 
 #endregion
+using OSGeo.MapGuide.MaestroAPI.Resource;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -136,6 +137,17 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             if (!bInRange)
                 throw new PreconditionException(Strings.PrecondFailure + msg);
+        }
+
+        /// <summary>
+        /// Check that the given argument is a folder resource id
+        /// </summary>
+        /// <param name="folderid">The folder resource id to check</param>
+        /// <param name="name">The argument name</param>
+        public static void IsFolderArgument(string folderid, string name)
+        {
+            if (!ResourceIdentifier.IsFolderResource(folderid))
+                throw new ArgumentException(string.Format(Strings.NotAFolder, folderid), name);
         }
     }
 }

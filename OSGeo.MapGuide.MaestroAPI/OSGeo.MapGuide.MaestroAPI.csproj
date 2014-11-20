@@ -102,6 +102,9 @@
     <Compile Include="..\Generated\FdoProviderCapabilities-1.0.0.designer.cs">
       <Link>ObjectModels\FdoProviderCapabilities-1.0.0.designer.cs</Link>
     </Compile>
+    <Compile Include="..\Generated\FdoProviderCapabilities-1.1.0.designer.cs">
+      <Link>ObjectModels\FdoProviderCapabilities-1.1.0.designer.cs</Link>
+    </Compile>
     <Compile Include="..\Generated\FdoSpatialContextList-1.0.0.designer.cs">
       <Link>ObjectModels\FdoSpatialContextList-1.0.0.designer.cs</Link>
     </Compile>
@@ -258,6 +261,7 @@
     <Compile Include="CsHelper.cs" />
     <Compile Include="NsDoc.cs" />
     <Compile Include="ObjectModels\CommonTypes.cs" />
+    <Compile Include="ObjectModels\FdoCapabilities.cs" />
     <Compile Include="ObjectModels\IFdoSpatialContext.cs" />
     <Compile Include="ObjectModels\LongTransaction.cs" />
     <Compile Include="ObjectModels\NsDoc.cs" />

@@ -47,6 +47,7 @@ namespace Maestro.Login
         private LocalLoginCtrl _local;
         private LocalNativeStubCtrl _localNativeStub;
         private LocalStubCtrl _localStub;
+        private RestLoginCtrl _rest;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginDialog"/> class.
@@ -59,29 +60,34 @@ namespace Maestro.Login
             _local = new LocalLoginCtrl() { Dock = DockStyle.Fill };
             _localNativeStub = new LocalNativeStubCtrl() { Dock = DockStyle.Fill };
             _localStub = new LocalStubCtrl() { Dock = DockStyle.Fill };
+            _rest = new RestLoginCtrl() { Dock = DockStyle.Fill };
             _controls = new ILoginCtrl[] 
             {
                 _http,
                 _localNative,
                 _local,
                 _localNativeStub,
-                _localStub
+                _localStub,
+                _rest
             };
             _controls[0].EnableOk += OnEnableOk;
             _controls[1].EnableOk += OnEnableOk;
             _controls[2].EnableOk += OnEnableOk;
             _controls[3].EnableOk += OnEnableOk;
             _controls[4].EnableOk += OnEnableOk;
+            _controls[5].EnableOk += OnEnableOk;
             _controls[0].CheckSavedPassword += (sender, e) => { chkSavePassword.Checked = true; };
             _controls[1].CheckSavedPassword += (sender, e) => { chkSavePassword.Checked = true; };
             _controls[2].CheckSavedPassword += (sender, e) => { chkSavePassword.Checked = true; };
             _controls[3].CheckSavedPassword += (sender, e) => { chkSavePassword.Checked = true; };
             _controls[4].CheckSavedPassword += (sender, e) => { chkSavePassword.Checked = true; };
+            _controls[5].CheckSavedPassword += (sender, e) => { chkSavePassword.Checked = true; };
             _controls[0].DisabledOk += OnDisableOk;
             _controls[1].DisabledOk += OnDisableOk;
             _controls[2].DisabledOk += OnDisableOk;
             _controls[3].DisabledOk += OnDisableOk;
             _controls[4].DisabledOk += OnDisableOk;
+            _controls[5].DisabledOk += OnDisableOk;
         }
 
         /// <summary>
@@ -205,6 +211,11 @@ namespace Maestro.Login
             UpdateLoginControl();
         }
 
+        private void rdRest_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateLoginControl();
+        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
@@ -295,6 +306,15 @@ namespace Maestro.Login
                         builder["Locale"] = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName; //NOXLATE
                         _conn = ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative", builder.ToString()); //NOXLATE
                     }
+                    else if (_selectedIndex == 5) //REST
+                    {
+                        System.Data.Common.DbConnectionStringBuilder builder = new System.Data.Common.DbConnectionStringBuilder();
+                        builder["Url"] = _rest.Endpoint;
+                        builder["Username"] = _rest.Username; //NOXLATE
+                        builder["Password"] = _rest.Password; //NOXLATE
+                        builder["Locale"] = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName; //NOXLATE
+                        _conn = ConnectionProviderRegistry.CreateConnection("Maestro.Rest", builder.ToString()); //NOXLATE
+                    }
                     else //Local
                     {
                         NameValueCollection param = new NameValueCollection();
@@ -329,6 +349,12 @@ namespace Maestro.Login
             if (rdHttp.Checked)
             {
                 _selectedIndex = 0;
+                SetLoginControl((Control)_controls[_selectedIndex]);
+                _controls[_selectedIndex].UpdateLoginStatus();
+            }
+            else if (rdRest.Checked)
+            {
+                _selectedIndex = 5;
                 SetLoginControl((Control)_controls[_selectedIndex]);
                 _controls[_selectedIndex].UpdateLoginStatus();
             }
