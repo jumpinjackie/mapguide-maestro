@@ -129,7 +129,7 @@ namespace Maestro.Editors.Preview
                             break;
                         case "WatermarkDefinition":
                             {
-                                previewMdf = ResourcePreviewEngine.CreateWatermarkPreviewMapDefinition((IWatermarkDefinition)res);
+                                previewMdf = Utility.CreateWatermarkPreviewMapDefinition((IWatermarkDefinition)res);
                             }
                             break;
                         case "MapDefinition":

@@ -511,33 +511,6 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Displays the current map extents.
-        /// </summary>
-        internal static string Desc_GetExtents {
-            get {
-                return ResourceManager.GetString("Desc_GetExtents", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Gets the current map as a KML document.
-        /// </summary>
-        internal static string Desc_GetMapKml {
-            get {
-                return ResourceManager.GetString("Desc_GetMapKml", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zoom to a specified scale.
-        /// </summary>
-        internal static string Desc_ZoomToScale {
-            get {
-                return ResourceManager.GetString("Desc_ZoomToScale", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Diverging.
         /// </summary>
         internal static string DivergingName {
@@ -1486,51 +1459,6 @@ namespace Maestro.Editors {
         internal static string InvokeUrlNoMapDefined {
             get {
                 return ResourceManager.GetString("InvokeUrlNoMapDefined", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Extra Tools.
-        /// </summary>
-        internal static string Label_ExtraTools {
-            get {
-                return ResourceManager.GetString("Label_ExtraTools", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Get Extents.
-        /// </summary>
-        internal static string Label_GetExtents {
-            get {
-                return ResourceManager.GetString("Label_GetExtents", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Get KML.
-        /// </summary>
-        internal static string Label_GetMapKml {
-            get {
-                return ResourceManager.GetString("Label_GetMapKml", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tools.
-        /// </summary>
-        internal static string Label_Tools {
-            get {
-                return ResourceManager.GetString("Label_Tools", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zoom to Scale.
-        /// </summary>
-        internal static string Label_ZoomToScale {
-            get {
-                return ResourceManager.GetString("Label_ZoomToScale", resourceCulture);
             }
         }
         
@@ -2925,15 +2853,6 @@ namespace Maestro.Editors {
         internal static string UnmanagedBrowserMultiSelectionNotAllowed {
             get {
                 return ResourceManager.GetString("UnmanagedBrowserMultiSelectionNotAllowed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The resource type cannot be previewed.
-        /// </summary>
-        internal static string UnpreviewableResourceType {
-            get {
-                return ResourceManager.GetString("UnpreviewableResourceType", resourceCulture);
             }
         }
         

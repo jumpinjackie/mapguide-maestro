@@ -103,7 +103,7 @@ namespace Maestro.Editors.Preview
                 else
                 {
                     //Now feed it to the preview engine
-                    var url = new ResourcePreviewEngine(mapguideRootUrl, edSvc).GeneratePreviewUrl(previewCopy, locale);
+                    var url = new ResourcePreviewEngine(edSvc).GeneratePreviewUrl(previewCopy, locale);
                     return new UrlPreviewResult() { Url = url };
                 }
             };
@@ -185,7 +185,8 @@ namespace Maestro.Editors.Preview
                 }
                 else
                 {
-                    bool bPreviewable = ResourcePreviewEngine.IsPreviewableType(rt);
+                    var previewer = res.CurrentConnection.GetPreviewUrlGenerator();
+                    bool bPreviewable = (previewer != null && previewer.IsPreviewableType(rt));
                     //A Map Definition can be saved directly and referenced by a Web Layout
                     //An Web Layout and Application Definition can be saved directly and
                     //passed straight to the AJAX/Fusion viewers.

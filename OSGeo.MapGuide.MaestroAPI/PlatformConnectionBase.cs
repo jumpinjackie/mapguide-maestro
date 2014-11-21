@@ -243,6 +243,12 @@ namespace OSGeo.MapGuide.MaestroAPI
         #endregion
 
         /// <summary>
+        /// Gets the preview URL generator.
+        /// </summary>
+        /// <returns>The preview URL generator. Returns null if this connection does not support browser-based resource previews</returns>
+        public virtual OSGeo.MapGuide.MaestroAPI.Resource.Preview.IResourcePreviewUrlGenerator GetPreviewUrlGenerator() { return null; }
+
+        /// <summary>
         /// Gets the name of the provider of this implementation
         /// </summary>
         public abstract string ProviderName { get; }

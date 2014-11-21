@@ -3435,4 +3435,7 @@
   <data name="MDF_UnselectableLayer" xml:space="preserve">
     <value>Layer {0} is marked as selectable but its feature class {1} in ({2}) has no identity properties. This layer will not be selectable.</value>
   </data>
+  <data name="UnpreviewableResourceType" xml:space="preserve">
+    <value>The resource type cannot be previewed</value>
+  </data>
 </root>

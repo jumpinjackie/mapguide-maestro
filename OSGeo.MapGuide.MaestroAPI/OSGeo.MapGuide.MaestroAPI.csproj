@@ -277,6 +277,8 @@
     <Compile Include="Resource\Conversion\ImageSymbolConverter.cs" />
     <Compile Include="Resource\Conversion\NsDoc.cs" />
     <Compile Include="Resource\NsDoc.cs" />
+    <Compile Include="Resource\Preview\IResourcePreviewUrlGenerator.cs" />
+    <Compile Include="Resource\Preview\ResourcePreviewUrlGenerator.cs" />
     <Compile Include="Resource\Validation\BaseMapDefinitionValidator.cs" />
     <Compile Include="Resource\Validation\BaseSymbolDefinitionValidator.cs" />
     <Compile Include="Resource\Validation\NsDoc.cs" />

@@ -2006,5 +2006,10 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return info;
             }
         }
+
+        public override Resource.Preview.IResourcePreviewUrlGenerator GetPreviewUrlGenerator()
+        {
+            return new HttpResourcePreviewUrlGenerator(m_reqBuilder.HostURI);
+        }
     }
 }

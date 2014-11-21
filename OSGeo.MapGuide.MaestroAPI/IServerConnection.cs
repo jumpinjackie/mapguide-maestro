@@ -57,6 +57,13 @@ namespace OSGeo.MapGuide.MaestroAPI
     public interface IServerConnection
     {
         /// <summary>
+        /// Gets the preview URL generator.
+        /// </summary>
+        /// <remarks>Each call will return a new instance</remarks>
+        /// <returns>The preview URL generator. Returns null if this connection does not support browser-based resource previews</returns>
+        Resource.Preview.IResourcePreviewUrlGenerator GetPreviewUrlGenerator();
+
+        /// <summary>
         /// Gets the name of the provider of this implementation
         /// </summary>
         string ProviderName { get; }

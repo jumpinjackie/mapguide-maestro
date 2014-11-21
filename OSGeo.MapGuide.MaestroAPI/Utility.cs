@@ -36,6 +36,8 @@ using OSGeo.MapGuide.ObjectModels.Capabilities;
 using System.ComponentModel;
 using System.Xml.Serialization;
 using System.IO;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -1497,6 +1499,47 @@ namespace OSGeo.MapGuide.MaestroAPI
                 Name = "URLENCODE", //NOXLATE
                 ReturnType = "String" //NOXLATE
             };
+        }
+
+        /// <summary>
+        /// Gets the name of the active spatial context used by the given layer definition
+        /// </summary>
+        /// <param name="ldf"></param>
+        /// <returns></returns>
+        public static string GetLayerSpatialContext(ILayerDefinition ldf)
+        {
+            var conn = ldf.CurrentConnection;
+            var rl = ldf.SubLayer as IRasterLayerDefinition;
+            var vl = ldf.SubLayer as IVectorLayerDefinition;
+            if (vl != null)
+            {
+                var cls = conn.FeatureService.GetClassDefinition(vl.ResourceId, vl.FeatureName);
+                var gp = cls.FindProperty(vl.Geometry) as GeometricPropertyDefinition;
+                if (gp != null)
+                    return gp.SpatialContextAssociation;
+            }
+            else if (rl != null)
+            {
+                var cls = conn.FeatureService.GetClassDefinition(rl.ResourceId, rl.FeatureName);
+                var rp = cls.FindProperty(rl.Geometry) as RasterPropertyDefinition;
+                if (rp != null)
+                    return rp.SpatialContextAssociation;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Creates a preview map definition for the given watermark
+        /// </summary>
+        /// <param name="wmd"></param>
+        /// <returns></returns>
+        public static IMapDefinition2 CreateWatermarkPreviewMapDefinition(IWatermarkDefinition wmd)
+        {
+            IMapDefinition2 map = (IMapDefinition2)ObjectFactory.CreateMapDefinition(wmd.CurrentConnection, wmd.SupportedMapDefinitionVersion, "Watermark Definition Preview"); //NOXLATE
+            map.CoordinateSystem = @"LOCAL_CS[""*XY-M*"", LOCAL_DATUM[""*X-Y*"", 10000], UNIT[""Meter"", 1], AXIS[""X"", EAST], AXIS[""Y"", NORTH]]"; //NOXLATE
+            map.Extents = ObjectFactory.CreateEnvelope(-1000000, -1000000, 1000000, 1000000);
+            map.AddWatermark(wmd);
+            return map;
         }
 
         /// <summary>

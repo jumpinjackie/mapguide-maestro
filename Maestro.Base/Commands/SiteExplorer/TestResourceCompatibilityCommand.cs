@@ -307,5 +307,10 @@ namespace Maestro.Base.Commands.SiteExplorer
         {
             throw new NotImplementedException();
         }
+
+        public OSGeo.MapGuide.MaestroAPI.Resource.Preview.IResourcePreviewUrlGenerator GetPreviewUrlGenerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
