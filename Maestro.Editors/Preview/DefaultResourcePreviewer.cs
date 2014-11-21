@@ -87,7 +87,6 @@ namespace Maestro.Editors.Preview
             IServerConnection conn = res.CurrentConnection;
             BusyWaitDelegate worker = () =>
             {
-                string mapguideRootUrl = (string)conn.GetCustomProperty("BaseUrl"); //NOXLATE
                 //Save the current resource to another session copy
                 string resId = "Session:" + edSvc.SessionID + "//" + res.ResourceType.ToString() + "Preview" + Guid.NewGuid() + "." + res.ResourceType.ToString(); //NOXLATE
 

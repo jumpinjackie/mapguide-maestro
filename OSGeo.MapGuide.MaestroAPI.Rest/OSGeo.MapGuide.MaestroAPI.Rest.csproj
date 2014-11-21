@@ -49,6 +49,7 @@
     <Compile Include="RestCoordinateSystemCategory.cs" />
     <Compile Include="RestCoordinateSystemDefinition.cs" />
     <Compile Include="RestException.cs" />
+    <Compile Include="RestResourcePreviewUrlGenerator.cs" />
     <Compile Include="Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

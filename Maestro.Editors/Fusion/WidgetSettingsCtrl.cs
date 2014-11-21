@@ -58,10 +58,13 @@ namespace Maestro.Editors.Fusion
                 _edsvc = service;
                 _fsvc = (IFusionService)_edsvc.GetService((int)ServiceType.Fusion);
                 _context = new FlexibleLayoutEditorContext(_fsvc);
-                _baseUrl = service.GetCustomProperty("BaseUrl").ToString(); //NOXLATE
+                if (service.CurrentConnection.ProviderName.ToUpper() == "MAESTRO.HTTP")
+                {
+                    _baseUrl = service.GetCustomProperty("BaseUrl").ToString(); //NOXLATE
 
-                if (!_baseUrl.EndsWith("/")) //NOXLATE
-                    _baseUrl += "/"; //NOXLATE
+                    if (!_baseUrl.EndsWith("/")) //NOXLATE
+                        _baseUrl += "/"; //NOXLATE
+                }
             }
             catch
             {

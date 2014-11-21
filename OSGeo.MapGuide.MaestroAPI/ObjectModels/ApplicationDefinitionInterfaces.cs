@@ -584,6 +584,18 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
     public static class ExtensionMethods
     {
         /// <summary>
+        /// Gets the name of the fusion template
+        /// </summary>
+        /// <param name="appDef"></param>
+        /// <returns></returns>
+        public static string GetTemplateName(this IApplicationDefinition appDef)
+        {
+            string[] tokens = appDef.TemplateUrl.Split('/');
+            // fusion/templates/mapguide/{templateName}/index.html
+            return tokens[tokens.Length - 2];
+        }
+
+        /// <summary>
         /// Gets whether a widget with the specified name already exists
         /// </summary>
         /// <param name="appDef"></param>

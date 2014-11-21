@@ -39,13 +39,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Rest
     public class RestConnection : MgServerConnectionBase,
                                   IServerConnection,
                                   IFeatureService,
-                                  IResourceService
+                                  IResourceService,
+                                  IMappingService,
+                                  IFusionService
     {
         public const string PARAM_URL = "Url";
         public const string PARAM_USERNAME = "Username";
         public const string PARAM_PASSWORD = "Password";
 
         private string _restRootUrl;
+
+        internal string RestRootUrl { get { return _restRootUrl; } }
 
         internal RestClient MakeClient()
         {
@@ -1034,6 +1038,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Rest
             });
         }
 
+        public Stream RenderMapLegend(Mapping.RuntimeMap map, int width, int height, System.Drawing.Color backgroundColor, string format)
+        {
+            return FetchRuntimeMapRepresentationAsStream(map, "/legendimage.{type}", (req) =>
+            {
+                req.AddUrlSegment("type", format.ToLower());
+
+                req.AddParameter("width", width);
+                req.AddParameter("height", height);
+            });
+        }
+
         public override Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format)
         {
             return FetchResourceRepresentationAsStream(mapdefinition, "/tile.{type}/{groupName}/{scale}/{col}/{row}", (req) =>
@@ -1055,6 +1070,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Rest
                     return this;
                 case ServiceType.Resource:
                     return this;
+                case ServiceType.Mapping:
+                    return this;
+                case ServiceType.Fusion:
+                    return this;
                 default:
                     throw new ArgumentException(string.Format(Strings.InvalidOrUnsupportedServiceType, serviceType), "serviceType");
             }
@@ -1071,6 +1090,38 @@ namespace OSGeo.MapGuide.MaestroAPI.Rest
             {
                 return _restRootUrl + " (v" + this.SiteVersion.ToString() + ")";
             }
+        }
+
+        public override Resource.Preview.IResourcePreviewUrlGenerator GetPreviewUrlGenerator()
+        {
+            return new RestResourcePreviewUrlGenerator(this);
+        }
+
+        public ObjectModels.ApplicationDefinition.IApplicationDefinitionTemplateInfoSet GetApplicationTemplates()
+        {
+            var client = MakeClient();
+            var req = MakeRequest("services/fusiontemplates.xml");
+            var resp = ExecuteRequest<OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0.ApplicationDefinitionTemplateInfoSet>(client, req);
+            ValidateResponse(resp);
+            return GetData(resp);
+        }
+
+        public ObjectModels.ApplicationDefinition.IApplicationDefinitionWidgetInfoSet GetApplicationWidgets()
+        {
+            var client = MakeClient();
+            var req = MakeRequest("services/fusionwidgets.xml");
+            var resp = ExecuteRequest<OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0.ApplicationDefinitionWidgetInfoSet>(client, req);
+            ValidateResponse(resp);
+            return GetData(resp);
+        }
+
+        public ObjectModels.ApplicationDefinition.IApplicationDefinitionContainerInfoSet GetApplicationContainers()
+        {
+            var client = MakeClient();
+            var req = MakeRequest("services/fusioncontainers.xml");
+            var resp = ExecuteRequest<OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0.ApplicationDefinitionContainerInfoSet>(client, req);
+            ValidateResponse(resp);
+            return GetData(resp);
         }
     }
 }

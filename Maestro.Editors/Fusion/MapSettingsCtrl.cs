@@ -53,10 +53,13 @@ namespace Maestro.Editors.Fusion
             try
             {
                 _fsvc = (IFusionService)service.GetService((int)ServiceType.Fusion);
-                _baseUrl = service.GetCustomProperty("BaseUrl").ToString(); //NOXLATE
+                if (service.CurrentConnection.ProviderName.ToUpper() == "MAESTRO.HTTP")
+                {
+                    _baseUrl = service.GetCustomProperty("BaseUrl").ToString(); //NOXLATE
 
-                if (!_baseUrl.EndsWith("/")) //NOXLATE
-                    _baseUrl += "/"; //NOXLATE
+                    if (!_baseUrl.EndsWith("/")) //NOXLATE
+                        _baseUrl += "/"; //NOXLATE
+                }
             }
             catch
             {

@@ -49,6 +49,7 @@ namespace Maestro.Base.Commands
 
                 var urlLauncher = ServiceRegistry.GetService<UrlLauncherService>();
                 ResourcePreviewerFactory.RegisterPreviewer("Maestro.Http", new LocalMapPreviewer(new DefaultResourcePreviewer(urlLauncher), urlLauncher)); //NOXLATE
+                ResourcePreviewerFactory.RegisterPreviewer("Maestro.Rest", new LocalMapPreviewer(new DefaultResourcePreviewer(urlLauncher), urlLauncher)); //NOXLATE
                 //A stub previewer does nothing, but will use local map previews for applicable resources if the configuration
                 //property is set
                 ResourcePreviewerFactory.RegisterPreviewer("Maestro.LocalNative", new LocalMapPreviewer(new StubPreviewer(), urlLauncher)); //NOXLATE
