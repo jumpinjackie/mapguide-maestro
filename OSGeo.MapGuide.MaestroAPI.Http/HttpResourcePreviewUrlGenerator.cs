@@ -49,7 +49,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
                 throw new InvalidOperationException(Strings.SiteVersionDoesntSupportWatermarks);
 
             IMapDefinition2 map = Utility.CreateWatermarkPreviewMapDefinition(wmd);
-            return GenerateMapPreviewUrl(map, locale, isNew, sessionID);
+            return _GenerateMapPreviewUrl(map, locale, isNew, sessionID, false);
         }
 
         protected string GetRootUrl()
@@ -79,7 +79,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             return url;
         }
 
-        protected override string GenerateMapPreviewUrl(Resource.IResource res, string locale, bool isNew, string sessionID)
+        private string _GenerateMapPreviewUrl(Resource.IResource res, string locale, bool isNew, string sessionID, bool addDebugWatermark)
         {
             string url = GetRootUrl();
 
@@ -89,7 +89,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             if (mdf != null)
             {
                 IMapDefinition2 mdf2 = mdf as IMapDefinition2;
-                if (mdf2 != null && this.AddDebugWatermark)
+                if (mdf2 != null && addDebugWatermark)
                     CreateDebugWatermark(mdf2, conn, null);
             }
             conn.ResourceService.SaveResourceAs(res, mdfId);
@@ -120,6 +120,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             }
 
             return url;
+        }
+
+        protected override string GenerateMapPreviewUrl(Resource.IResource res, string locale, bool isNew, string sessionID)
+        {
+            return _GenerateMapPreviewUrl(res, locale, isNew, sessionID, this.AddDebugWatermark);
         }
 
         private IMapDefinition CreateLayerPreviewMapDefinition(ILayerDefinition ldf, string sessionId, string layerName, IServerConnection conn)
