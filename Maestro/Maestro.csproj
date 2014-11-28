@@ -472,10 +472,6 @@
       <Project>{F4420153-9DF3-4407-AD65-E8ABED2B6E25}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI.Native32-2.2.0</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Rest\OSGeo.MapGuide.MaestroAPI.Rest.csproj">
-      <Project>{f112d03d-797b-4e31-ace5-ebb412eb08bd}</Project>
-      <Name>OSGeo.MapGuide.MaestroAPI.Rest</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core.WinForms\ICSharpCode.Core.WinForms.csproj">
       <Project>{857CA1A3-FC88-4BE0-AB6A-D1EE772AB288}</Project>
       <Name>ICSharpCode.Core.WinForms</Name>
