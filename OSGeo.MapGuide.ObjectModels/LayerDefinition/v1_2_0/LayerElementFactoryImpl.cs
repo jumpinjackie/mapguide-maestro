@@ -20,7 +20,7 @@
 
 #endregion Disclaimer / License
 
-#define LDF_100
+#define LDF_120
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System;
 using System.Collections.Generic;
@@ -32,8 +32,10 @@ using System.Text;
 #pragma warning disable 1591, 0114, 0108
 
 #if LDF_110
+
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_1_0
 #elif LDF_120
+
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_2_0
 #elif LDF_130
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_3_0

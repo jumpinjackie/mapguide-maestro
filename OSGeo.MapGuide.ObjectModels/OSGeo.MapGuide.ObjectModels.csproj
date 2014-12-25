@@ -18,9 +18,10 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;LDF_100</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\OSGeo.MapGuide.ObjectModels.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -96,6 +98,12 @@
     <Compile Include="..\Generated\MapDefinition-1.0.0.designer.cs">
       <Link>MapDefinition\v1_0_0\MapDefinition-1.0.0.designer.cs</Link>
     </Compile>
+    <Compile Include="..\Generated\MapDefinition-2.3.0.designer.cs">
+      <Link>MapDefinition\v2_3_0\MapDefinition-2.3.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\MapDefinition-2.4.0.designer.cs">
+      <Link>MapDefinition\v2_4_0\MapDefinition-2.4.0.designer.cs</Link>
+    </Compile>
     <Compile Include="..\Generated\PrintLayout-1.0.0.designer.cs">
       <Link>PrintLayout\v1.0.0\PrintLayout-1.0.0.designer.cs</Link>
     </Compile>
@@ -135,6 +143,15 @@
     <Compile Include="..\Generated\WebLayout-1.0.0.designer.cs">
       <Link>WebLayout\v1_0_0\WebLayout-1.0.0.designer.cs</Link>
     </Compile>
+    <Compile Include="..\Generated\WebLayout-1.1.0.designer.cs">
+      <Link>WebLayout\v1_1_0\WebLayout-1.1.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\WebLayout-2.4.0.designer.cs">
+      <Link>WebLayout\v2_4_0\WebLayout-2.4.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\WebLayout-2.6.0.designer.cs">
+      <Link>WebLayout\v2_6_0\WebLayout-2.6.0.designer.cs</Link>
+    </Compile>
     <Compile Include="ApplicationDefinition\v1_0_0\ApplicationDefinitionImpl.cs" />
     <Compile Include="ApplicationDefinition\v1_0_0\ApplicationDefinitionInfoImpl.cs" />
     <Compile Include="ApplicationDefinition\ApplicationDefinitionInterfaces.cs" />
@@ -164,11 +181,32 @@
     <Compile Include="LayerDefinition\LayerDefinitionInterfaces.cs" />
     <Compile Include="LayerDefinition\v1_0_0\LayerElementFactoryImpl.cs" />
     <Compile Include="LayerDefinition\v1_0_0\VectorLayerDefinitionImpl.cs" />
+    <Compile Include="LayerDefinition\v1_1_0\GridLayerDefinitionImpl.cs" />
+    <Compile Include="LayerDefinition\v1_1_0\LayerElementFactoryImpl.cs" />
+    <Compile Include="LayerDefinition\v1_1_0\VectorLayerDefinitionImpl.cs" />
+    <Compile Include="LayerDefinition\v1_2_0\GridLayerDefinitionImpl.cs" />
+    <Compile Include="LayerDefinition\v1_2_0\LayerElementFactoryImpl.cs" />
+    <Compile Include="LayerDefinition\v1_2_0\VectorLayerDefinitionImpl.cs" />
+    <Compile Include="LayerDefinition\v1_3_0\GridLayerDefinitionImpl.cs" />
+    <Compile Include="LayerDefinition\v1_3_0\LayerElementFactoryImpl.cs" />
+    <Compile Include="LayerDefinition\v1_3_0\VectorLayerDefinitionImpl.cs" />
+    <Compile Include="LayerDefinition\v2_3_0\GridLayerDefinitionImpl.cs" />
+    <Compile Include="LayerDefinition\v2_3_0\LayerElementFactoryImpl.cs" />
+    <Compile Include="LayerDefinition\v2_3_0\VectorLayerDefinitionImpl.cs" />
+    <Compile Include="LayerDefinition\v2_4_0\GridLayerDefinitionImpl.cs" />
+    <Compile Include="LayerDefinition\v2_4_0\LayerElementFactoryImpl.cs" />
+    <Compile Include="LayerDefinition\v2_4_0\VectorLayerDefinitionImpl.cs" />
     <Compile Include="LoadProcedure\v1_0_0\LoadProcedureImpl.cs" />
     <Compile Include="LoadProcedure\v1_0_0\LoadProcedureFactoryImpl.cs" />
     <Compile Include="LoadProcedure\LoadProcedureInterfaces.cs" />
+    <Compile Include="LoadProcedure\v1_1_0\LoadProcedureFactoryImpl.cs" />
+    <Compile Include="LoadProcedure\v1_1_0\LoadProcedureImpl.cs" />
+    <Compile Include="LoadProcedure\v2_4_0\LoadProcedureFactoryImpl.cs" />
+    <Compile Include="LoadProcedure\v2_4_0\LoadProcedureImpl.cs" />
     <Compile Include="MapDefinition\v1_0_0\MapDefinitionImpl.cs" />
     <Compile Include="MapDefinition\MapDefinitionInterfaces.cs" />
+    <Compile Include="MapDefinition\v2_3_0\MapDefinitionImpl.cs" />
+    <Compile Include="MapDefinition\v2_4_0\MapDefinitionImpl.cs" />
     <Compile Include="ObjectFactory.cs" />
     <Compile Include="PrintLayout\v1.0.0\PrintLayoutImpl.cs" />
     <Compile Include="PrintLayout\PrintLayoutInterfaces.cs" />
@@ -185,12 +223,20 @@
     </Compile>
     <Compile Include="SymbolDefinition\v1_0_0\SymbolDefinitionImpl.cs" />
     <Compile Include="SymbolDefinition\SymbolDefinitionInterfaces.cs" />
+    <Compile Include="SymbolDefinition\v1_1_0\SymbolDefinitionImpl.cs" />
+    <Compile Include="SymbolDefinition\v2_4_0\SymbolDefinitionImpl.cs" />
     <Compile Include="SymbolLibrary\v1.0.0\SymbolLibraryImpl.cs" />
     <Compile Include="SymbolLibrary\SymbolLibraryInterfaces.cs" />
     <Compile Include="UntypedResource.cs" />
     <Compile Include="Utility.cs" />
+    <Compile Include="WatermarkDefinition\v2_3_0\WatermarkDefinitionImpl.cs" />
+    <Compile Include="WatermarkDefinition\v2_4_0\WatermarkDefinitionImpl.cs" />
+    <Compile Include="WatermarkDefinition\WatermarkCollectionUtil.cs" />
     <Compile Include="WatermarkDefinition\WatermarkDefinitionInterfaces.cs" />
     <Compile Include="WebLayout\v1_0_0\WebLayoutImpl.cs" />
+    <Compile Include="WebLayout\v1_1_0\WebLayoutImpl.cs" />
+    <Compile Include="WebLayout\v2_4_0\WebLayoutImpl.cs" />
+    <Compile Include="WebLayout\v2_6_0\WebLayoutImpl.cs" />
     <Compile Include="WebLayout\WebLayoutInterfaces.cs" />
     <Compile Include="XmlNamespaces.cs" />
   </ItemGroup>

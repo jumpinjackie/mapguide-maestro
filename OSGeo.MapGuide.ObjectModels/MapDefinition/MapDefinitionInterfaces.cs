@@ -31,41 +31,16 @@ using System.Text;
 
 namespace OSGeo.MapGuide.ObjectModels.MapDefinition
 {
-    public delegate void GetSpatialExtentsEventHandler(object sender, GetSpatialExtentsEventArgs e);
-
-    public class GetSpatialExtentsEventArgs
+    public class LayerExtent
     {
-        public GetSpatialExtentsEventArgs(string mapCoordSys)
-        {
-            this.MapCoordinateSystem = mapCoordSys;
-        }
+        public IEnvelope Extent { get; set; }
 
-        /// <summary>
-        /// Gets the extents of the requested layer in the Map's coordinate system. Handlers of this event should
-        /// set this property
-        /// </summary>
-        public IEnvelope Extents { get; set; }
-
-        /// <summary>
-        /// Gets or sets the coordinate system of the requested layer
-        /// </summary>
         public string LayerCoordinateSystem { get; set; }
+    }
 
-        /// <summary>
-        /// Gets whether a handler has set the requested information
-        /// </summary>
-        public bool IsSet
-        {
-            get
-            {
-                return this.Extents != null && !string.IsNullOrEmpty(this.LayerCoordinateSystem);
-            }
-        }
-
-        /// <summary>
-        /// Gets the Map Definition coordinate system
-        /// </summary>
-        public string MapCoordinateSystem { get; private set; }
+    public interface ILayerExtentCalculator
+    {
+        LayerExtent GetLayerExtent(string resourceID, string mapCoordSys);
     }
 
     /// <summary>
@@ -162,10 +137,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         /// <value>The map layers.</value>
         IEnumerable<IMapLayer> MapLayer { get; }
 
-        /// <summary>
-        /// Raised when a map layer is added
-        /// </summary>
-        event GetSpatialExtentsEventHandler RequestLayerExtents;
+        ILayerExtentCalculator ExtentCalculator { get; set; }
 
         /// <summary>
         /// Inserts a layer into this map at the specified index in the map's layer collection

@@ -20,7 +20,7 @@
 
 #endregion Disclaimer / License
 
-#define LDF_100
+#define LDF_230
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,8 +37,10 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_1_0
 
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_2_0
 #elif LDF_130
+
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_3_0
 #elif LDF_230
+
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v2_3_0
 #elif LDF_240
 
@@ -50,6 +52,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
 {
     using OSGeo.MapGuide.ObjectModels.LayerDefinition;
     using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+    using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
     using System.Xml.Serialization;
 
     abstract partial class BaseLayerDefinitionType : ISubLayerDefinition

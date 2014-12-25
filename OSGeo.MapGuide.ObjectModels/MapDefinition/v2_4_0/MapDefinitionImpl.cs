@@ -20,9 +20,10 @@
 
 #endregion Disclaimer / License
 
-#define MDF_100
+#define MDF_240
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,6 +36,7 @@ using System.Xml.Serialization;
 #pragma warning disable 1591, 0114, 0108
 
 #if MDF_240
+
 namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v2_4_0
 #elif MDF_230
 
@@ -91,9 +93,9 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
                 MapLayer = new System.ComponentModel.BindingList<MapLayerType>(),
                 MapLayerGroup = new System.ComponentModel.BindingList<MapLayerGroupType>(),
 #if MDF_240
-                Watermarks = new BindingList<OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0.WatermarkType>()
+                Watermarks = new BindingList<OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_4_0.WatermarkType>()
 #elif MDF_230
-                Watermarks = new BindingList<OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType>()
+                Watermarks = new BindingList<OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_3_0.WatermarkType>()
 #endif
             };
         }

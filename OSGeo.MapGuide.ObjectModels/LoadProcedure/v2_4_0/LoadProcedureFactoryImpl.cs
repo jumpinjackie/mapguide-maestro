@@ -20,7 +20,7 @@
 
 #endregion Disclaimer / License
 
-#define LP100
+#define LP220
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,6 +32,7 @@ using System.Text;
 #if LP110
 namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_1_0
 #elif LP220
+
 namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v2_2_0
 #else
 

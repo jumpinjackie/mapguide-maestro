@@ -20,7 +20,7 @@
 
 #endregion Disclaimer / License
 
-#define LP100
+#define LP220
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +32,7 @@ using System.Xml.Serialization;
 #if LP110
 namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_1_0
 #elif LP220
+
 namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v2_2_0
 #else
 
@@ -248,6 +249,7 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0
     }
 
 #if LP220
+
     partial class SQLiteLoadProcedureType : ISqliteLoadProcedure
     {
         [XmlIgnore]
@@ -256,5 +258,6 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0
             get { return LoadType.Sqlite; }
         }
     }
+
 #endif
 }

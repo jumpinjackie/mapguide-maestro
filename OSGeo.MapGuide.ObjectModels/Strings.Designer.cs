@@ -61,6 +61,24 @@ namespace OSGeo.MapGuide.ObjectModels {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not create load procedure of type: .
+        /// </summary>
+        internal static string CannotCreateLoadProcedureSubType {
+            get {
+                return ResourceManager.GetString("CannotCreateLoadProcedureSubType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [Composite Style].
+        /// </summary>
+        internal static string CompositeStyleDisplayString {
+            get {
+                return ResourceManager.GetString("CompositeStyleDisplayString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This feature source does not connect an externally aliased file.
         /// </summary>
         internal static string ERR_FS_NO_ALIAS {
@@ -178,6 +196,15 @@ namespace OSGeo.MapGuide.ObjectModels {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Value does not implement ICompositeTypeStyle.
+        /// </summary>
+        internal static string ErrorObjectNotICompositeTypeStyle {
+            get {
+                return ResourceManager.GetString("ErrorObjectNotICompositeTypeStyle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overlay options are only applicable to MapGuide maps.
         /// </summary>
         internal static string ErrorOverlayOptionsOnNonMapGuideMap {
@@ -241,6 +268,24 @@ namespace OSGeo.MapGuide.ObjectModels {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Factory method already registered for version: .
+        /// </summary>
+        internal static string FactoryMethodAlreadyRegistered {
+            get {
+                return ResourceManager.GetString("FactoryMethodAlreadyRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Factory method already registered for load procedure type: .
+        /// </summary>
+        internal static string LoadProcFactoryMethodAlreadyRegistered {
+            get {
+                return ResourceManager.GetString("LoadProcFactoryMethodAlreadyRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not a folder resource id: {0}.
         /// </summary>
         internal static string NotAFolder {
@@ -273,6 +318,60 @@ namespace OSGeo.MapGuide.ObjectModels {
         internal static string PrecondValueNull {
             get {
                 return ResourceManager.GetString("PrecondValueNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown layer version: .
+        /// </summary>
+        internal static string UnknownLayerVersion {
+            get {
+                return ResourceManager.GetString("UnknownLayerVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown Map Definition version: .
+        /// </summary>
+        internal static string UnknownMapDefinitionVersion {
+            get {
+                return ResourceManager.GetString("UnknownMapDefinitionVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown Symbol Definition version: .
+        /// </summary>
+        internal static string UnknownSymbolDefVersion {
+            get {
+                return ResourceManager.GetString("UnknownSymbolDefVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown Watermark Definition version: .
+        /// </summary>
+        internal static string UnknownWatermarkDefinitionVersion {
+            get {
+                return ResourceManager.GetString("UnknownWatermarkDefinitionVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown Web Layout version: .
+        /// </summary>
+        internal static string UnknownWebLayoutVersion {
+            get {
+                return ResourceManager.GetString("UnknownWebLayoutVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unsupported Load Procedure Type.
+        /// </summary>
+        internal static string UnsupportedLoadProcedureType {
+            get {
+                return ResourceManager.GetString("UnsupportedLoadProcedureType", resourceCulture);
             }
         }
         

@@ -20,7 +20,7 @@
 
 #endregion Disclaimer / License
 
-#define LDF_100
+#define LDF_120
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+#define SYM_DEF_240
 using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 using System.Collections.Generic;
@@ -34,8 +35,10 @@ using System.Xml.Serialization;
 #pragma warning disable 1591, 0114, 0108
 
 #if SYM_DEF_240
+
 namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0
 #elif SYM_DEF_110
+
 namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0
 #else
 
@@ -382,6 +385,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0
     }
 
 #if SYM_DEF_240 || SYM_DEF_110
+
     partial class Text : ITextGraphic2
 #else
 
@@ -524,7 +528,8 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0
         }
 
 #if SYM_DEF_110 || SYM_DEF_240
-        static ExpressionDataType GetExpressionType(DataType2 dt)
+
+        private static ExpressionDataType GetExpressionType(DataType2 dt)
         {
             switch (dt)
             {
@@ -609,7 +614,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0
                 case DataType2.String:
                     return ExpressionDataType.Sym_String;
 
-                case DataType2 .TextColor:
+                case DataType2.TextColor:
                     return ExpressionDataType.Sym_TextColor;
 
                 case DataType2.TrackSpacing:
@@ -623,6 +628,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0
             }
             throw new ArgumentException();
         }
+
 #else
 
         private static ExpressionDataType GetExpressionType(DataType dt)
@@ -714,7 +720,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0
 
     partial class Path : IPathGraphic
 #if SYM_DEF_240
-        , IPathGraphic2
+, IPathGraphic2
 #endif
     {
         [XmlIgnore]

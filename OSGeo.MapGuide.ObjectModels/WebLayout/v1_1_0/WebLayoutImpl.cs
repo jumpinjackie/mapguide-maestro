@@ -20,7 +20,7 @@
 
 #endregion Disclaimer / License
 
-#define WL100
+#define WL110
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,6 +36,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v2_6_0
 #elif WL240
 namespace OSGeo.MapGuide.ObjectModels.WebLayout.v2_4_0
 #elif WL110
+
 namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_1_0
 #else
 

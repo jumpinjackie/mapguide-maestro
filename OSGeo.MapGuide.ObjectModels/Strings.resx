@@ -390,4 +390,37 @@
   <data name="WL_Label_ZoomSelection" xml:space="preserve">
     <value>Zoom Selection</value>
   </data>
+  <data name="ErrorObjectNotICompositeTypeStyle" xml:space="preserve">
+    <value>Value does not implement ICompositeTypeStyle</value>
+  </data>
+  <data name="CompositeStyleDisplayString" xml:space="preserve">
+    <value>[Composite Style]</value>
+  </data>
+  <data name="FactoryMethodAlreadyRegistered" xml:space="preserve">
+    <value>Factory method already registered for version: </value>
+  </data>
+  <data name="LoadProcFactoryMethodAlreadyRegistered" xml:space="preserve">
+    <value>Factory method already registered for load procedure type: </value>
+  </data>
+  <data name="CannotCreateLoadProcedureSubType" xml:space="preserve">
+    <value>Could not create load procedure of type: </value>
+  </data>
+  <data name="UnknownLayerVersion" xml:space="preserve">
+    <value>Unknown layer version: </value>
+  </data>
+  <data name="UnknownMapDefinitionVersion" xml:space="preserve">
+    <value>Unknown Map Definition version: </value>
+  </data>
+  <data name="UnknownSymbolDefVersion" xml:space="preserve">
+    <value>Unknown Symbol Definition version: </value>
+  </data>
+  <data name="UnknownWatermarkDefinitionVersion" xml:space="preserve">
+    <value>Unknown Watermark Definition version: </value>
+  </data>
+  <data name="UnknownWebLayoutVersion" xml:space="preserve">
+    <value>Unknown Web Layout version: </value>
+  </data>
+  <data name="UnsupportedLoadProcedureType" xml:space="preserve">
+    <value>Unsupported Load Procedure Type</value>
+  </data>
 </root>
