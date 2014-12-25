@@ -277,6 +277,27 @@ namespace OSGeo.MapGuide.ObjectModels
         #region Factory registration
 
         /// <summary>
+        /// Registers a resource serializer
+        /// </summary>
+        /// <param name="desc">The desc.</param>
+        /// <param name="serializer">The serializer.</param>
+        public static void RegisterResource(ResourceTypeDescriptor desc, ResourceSerializer serializer)
+        {
+            ResourceTypeRegistry.RegisterResource(desc, serializer);
+        }
+
+        /// <summary>
+        /// Registers a resource serializer
+        /// </summary>
+        /// <param name="resourceType">The resource type descriptor.</param>
+        /// <param name="serializeMethod">The serialize method.</param>
+        /// <param name="deserializeMethod">The deserialize method.</param>
+        public static void RegisterResourceSerializer(ResourceTypeDescriptor resourceType, ResourceSerializationCallback serializer, ResourceDeserializationCallback deserializer)
+        {
+            ResourceTypeRegistry.RegisterResource(resourceType, serializer, deserializer);
+        }
+
+        /// <summary>
         /// Registers the compound symbol factory method
         /// </summary>
         /// <param name="ver"></param>

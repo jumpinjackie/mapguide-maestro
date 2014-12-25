@@ -65,7 +65,7 @@ namespace OSGeo.MapGuide.ObjectModels
     /// A registry of serializers allowing automatic serialization/deserialization of any XML
     /// content based on its version and resource type.
     /// </summary>
-    public static class ResourceTypeRegistry
+    internal static class ResourceTypeRegistry
     {
         private static Dictionary<ResourceTypeDescriptor, ResourceSerializer> _serializers;
 
