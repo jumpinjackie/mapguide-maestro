@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
-using Maestro.Shared.UI;
-using System.Diagnostics;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using Maestro.Editors.Common;
+﻿using Maestro.Editors.Common;
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.LayerDefinition
 {
@@ -69,9 +65,9 @@ namespace Maestro.Editors.LayerDefinition
             base.UnsubscribeEventHandlers();
         }
 
-        void OnVectorLayerPropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void OnVectorLayerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            //Feature Source changed 
+            //Feature Source changed
             if (e.PropertyName == "ResourceId") //NOXLATE
             {
                 PopulatePropertyList();
@@ -242,7 +238,7 @@ namespace Maestro.Editors.LayerDefinition
             return clone;
         }
 
-        static bool IsMapped(DataGridViewRow row)
+        private static bool IsMapped(DataGridViewRow row)
         {
             return row.Cells[0].Value != null && Convert.ToBoolean(row.Cells[0].Value);
         }
@@ -260,7 +256,7 @@ namespace Maestro.Editors.LayerDefinition
                     var swap = grdProperties.Rows[idx];
                     grdProperties.Rows.RemoveAt(rowIdx);
                     grdProperties.Rows.RemoveAt(idx);
-                    
+
                     var rowClone = CloneRow(row);
                     var swapClone = CloneRow(swap);
                     grdProperties.Rows.Insert(idx, rowClone);

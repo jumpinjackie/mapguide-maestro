@@ -1,24 +1,26 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
-using System.Drawing;
 using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
@@ -26,11 +28,11 @@ using System.Windows.Forms;
 namespace Maestro.Shared.UI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <returns></returns>
     public delegate object BusyWaitDelegate();
-    
+
     /// <summary>
     /// A generic dialog for some potentially long task that cannot be measured
     /// </summary>
@@ -38,7 +40,7 @@ namespace Maestro.Shared.UI
     {
         private BusyWaitDelegate _action;
         private CultureInfo _culture;
-        
+
         internal BusyWaitDialog(BusyWaitDelegate action, CultureInfo culture)
         {
             //
@@ -48,7 +50,7 @@ namespace Maestro.Shared.UI
             _action = action;
             _culture = culture;
         }
-        
+
         /// <summary>
         /// Raises the System.Windows.Forms.Form.Load event.
         /// </summary>
@@ -58,7 +60,7 @@ namespace Maestro.Shared.UI
             base.OnLoad(e);
             bgWorker.RunWorkerAsync();
         }
-        
+
         /// <summary>
         /// Gets the return value of the completed background worker (if any)
         /// </summary>
@@ -93,7 +95,7 @@ namespace Maestro.Shared.UI
                 throw new ArgumentNullException("action"); //NOXLATE
             if (onComplete == null)
                 throw new ArgumentNullException("onComplete"); //NOXLATE
-            
+
             var frm = new BusyWaitDialog(action, bPreserveThreadCulture ? Thread.CurrentThread.CurrentCulture : null);
             frm.lblBusy.Text = message;
             if (frm.ShowDialog() == DialogResult.OK)
@@ -101,8 +103,8 @@ namespace Maestro.Shared.UI
                 onComplete.Invoke(frm.ReturnValue, frm.Error);
             }
         }
-        
-        void BgWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+
+        private void BgWorker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             if (_culture != null)
             {
@@ -112,8 +114,8 @@ namespace Maestro.Shared.UI
             }
             e.Result = _action.Invoke();
         }
-        
-        void BgWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+
+        private void BgWorker_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             if (e.Error != null)
             {
@@ -123,7 +125,7 @@ namespace Maestro.Shared.UI
             {
                 this.ReturnValue = e.Result;
             }
-            
+
             this.DialogResult = DialogResult.OK;
         }
     }

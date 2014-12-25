@@ -1,32 +1,32 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Mapping;
-using System.Drawing;
-using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System;
+using System.Drawing;
 
 namespace OSGeo.MapGuide.MaestroAPI.Local
 {
@@ -41,8 +41,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         private MgdMap _impl;
         private LocalConnection _conn;
 
-        public LocalRuntimeMap(LocalConnection conn, MgdMap map, bool suppressErrors) : base(conn)
-        { 
+        public LocalRuntimeMap(LocalConnection conn, MgdMap map, bool suppressErrors)
+            : base(conn)
+        {
             _impl = map;
             _conn = conn;
             InitializeLayersAndGroups(suppressErrors);
@@ -94,7 +95,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             {
                 this.Groups.Add(new LocalRuntimeMapGroup(this, groups.GetItem(i)));
             }
-            
+
             //Then layers
             for (int i = 0; i < layers.GetCount(); i++)
             {
@@ -310,20 +311,28 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             this.IsDirty = false;
         }
 
-        public MgdMap GetWrappedInstance() { return _impl; }
+        public MgdMap GetWrappedInstance()
+        {
+            return _impl;
+        }
 
         public override void Deserialize(Serialization.MgBinaryDeserializer d)
         {
-            
         }
 
         public override void Serialize(Serialization.MgBinarySerializer s)
         {
-            
         }
 
-        internal void ResetDirtyState() { this.IsDirty = false; }
-        internal void MakeDirty() { this.IsDirty = true; }
+        internal void ResetDirtyState()
+        {
+            this.IsDirty = false;
+        }
+
+        internal void MakeDirty()
+        {
+            this.IsDirty = true;
+        }
     }
 
     internal class LocalRuntimeMapGroup : RuntimeMapGroup
@@ -331,7 +340,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         private LocalRuntimeMap _parent;
         private MgLayerGroup _impl;
 
-        public LocalRuntimeMapGroup(LocalRuntimeMap parent, MgLayerGroup group) : base(parent, "")
+        public LocalRuntimeMapGroup(LocalRuntimeMap parent, MgLayerGroup group)
+            : base(parent, "")
         {
             _parent = parent;
             _impl = group;
@@ -453,16 +463,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
         }
 
-        internal MgLayerGroup GetWrappedInstance() { return _impl; }
+        internal MgLayerGroup GetWrappedInstance()
+        {
+            return _impl;
+        }
 
         public override void Deserialize(Serialization.MgBinaryDeserializer d)
         {
-            
         }
 
         public override void Serialize(Serialization.MgBinarySerializer s)
         {
-            
         }
     }
 
@@ -471,7 +482,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         private LocalRuntimeMap _parent;
         private MgLayerBase _impl;
 
-        internal LocalRuntimeMapLayer(LocalRuntimeMap parent, MgLayerBase layer, IResourceService resSvc, bool suppressErrors) : base(parent)
+        internal LocalRuntimeMapLayer(LocalRuntimeMap parent, MgLayerBase layer, IResourceService resSvc, bool suppressErrors)
+            : base(parent)
         {
             _parent = parent;
             _impl = layer;
@@ -660,16 +672,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
         }
 
-        internal MgLayerBase GetWrappedInstance() { return _impl; }
+        internal MgLayerBase GetWrappedInstance()
+        {
+            return _impl;
+        }
 
         public override void Serialize(Serialization.MgBinarySerializer s)
         {
-            
         }
 
         public override void Deserialize(Serialization.MgBinaryDeserializer d)
         {
-            
         }
     }
 }

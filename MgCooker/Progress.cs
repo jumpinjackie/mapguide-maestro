@@ -1,30 +1,29 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI.Tile;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI.Tile;
 
 namespace MgCooker
 {
@@ -74,7 +73,7 @@ namespace MgCooker
             m_grandBegin = DateTime.Now;
         }
 
-        void bx_FailedRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref Exception exception)
+        private void bx_FailedRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref Exception exception)
         {
             m_failCount++;
             exception = null; //Eat it
@@ -96,7 +95,7 @@ namespace MgCooker
             this.Close();
         }
 
-        void bx_FinishRenderingMaps(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private void bx_FinishRenderingMaps(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             if (this.InvokeRequired)
                 this.Invoke(new System.Threading.ThreadStart(DoClose));
@@ -104,7 +103,7 @@ namespace MgCooker
                 DoClose();
         }
 
-        void bx_FinishRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private void bx_FinishRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             m_tileRuns.Add(DateTime.Now - m_beginTile);
             m_tileCount++;
@@ -149,7 +148,7 @@ namespace MgCooker
                 tilePG.Value = (int)Math.Max(Math.Min((m_tileCount / (double)m_totalTiles) * (tilePG.Maximum - tilePG.Minimum), tilePG.Maximum), tilePG.Minimum);
                 totalPG.Value = (int)Math.Max(Math.Min((m_grandTotalTileCount / (double)m_grandTotalTiles) * (totalPG.Maximum - totalPG.Minimum), totalPG.Maximum), totalPG.Minimum);
 
-                this.Text = m_origTitle + " - (" + (int)(((double)m_grandTotalTileCount / (double)m_grandTotalTiles) * 100.0) +"%)";
+                this.Text = m_origTitle + " - (" + (int)(((double)m_grandTotalTileCount / (double)m_grandTotalTiles) * 100.0) + "%)";
 
                 if (m_failCount == 0)
                     tileCounter.Text = string.Format(Strings.CurrentTileCounter, m_grandTotalTileCount, m_grandTotalTiles, "");
@@ -167,23 +166,22 @@ namespace MgCooker
             }
         }
 
-
-        void bx_BeginRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private void bx_BeginRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             m_beginTile = DateTime.Now;
         }
 
-        void bx_BeginRenderingScale(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private void bx_BeginRenderingScale(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
         }
 
-        void bx_BeginRenderingGroup(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private void bx_BeginRenderingGroup(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             m_totalTiles = map.TotalTiles;
             m_tileCount = 0;
         }
 
-        void bx_BeginRenderingMap(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private void bx_BeginRenderingMap(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             m_tileCount = 0;
         }
@@ -225,6 +223,5 @@ namespace MgCooker
             MessageBox.Show(this, Strings.PauseMessage, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
             m_bx.PauseEvent.Set();
         }
-
     }
 }

@@ -1,27 +1,28 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ComponentModel;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Maestro.MapViewer
@@ -168,7 +169,7 @@ namespace Maestro.MapViewer
 
         internal ToolStripButton ZoomIn { get; private set; }
 
-        void OnZoomIn(object sender, EventArgs e)
+        private void OnZoomIn(object sender, EventArgs e)
         {
             if (_viewer == null)
                 return;
@@ -178,7 +179,7 @@ namespace Maestro.MapViewer
 
         internal ToolStripButton ZoomOut { get; private set; }
 
-        void OnZoomOut(object sender, EventArgs e)
+        private void OnZoomOut(object sender, EventArgs e)
         {
             if (_viewer == null)
                 return;
@@ -198,7 +199,7 @@ namespace Maestro.MapViewer
 
         internal ToolStripButton ZoomExtents { get; private set; }
 
-        void OnZoomExtents(object sender, EventArgs e)
+        private void OnZoomExtents(object sender, EventArgs e)
         {
             if (_viewer == null)
                 return;
@@ -208,7 +209,7 @@ namespace Maestro.MapViewer
 
         internal ToolStripButton SelectTool { get; private set; }
 
-        void OnSelect(object sender, EventArgs e)
+        private void OnSelect(object sender, EventArgs e)
         {
             if (_viewer == null)
                 return;
@@ -218,7 +219,7 @@ namespace Maestro.MapViewer
 
         internal ToolStripButton Pan { get; private set; }
 
-        void OnPan(object sender, EventArgs e)
+        private void OnPan(object sender, EventArgs e)
         {
             if (_viewer == null)
                 return;
@@ -228,7 +229,7 @@ namespace Maestro.MapViewer
 
         internal ToolStripButton ClearSelection { get; private set; }
 
-        void OnClearSelection(object sender, EventArgs e)
+        private void OnClearSelection(object sender, EventArgs e)
         {
             if (_viewer == null)
                 return;
@@ -238,7 +239,7 @@ namespace Maestro.MapViewer
 
         internal ToolStripButton SelectRadius { get; private set; }
 
-        void OnSelectRadius(object sender, EventArgs e)
+        private void OnSelectRadius(object sender, EventArgs e)
         {
             if (_viewer == null)
                 return;
@@ -251,7 +252,7 @@ namespace Maestro.MapViewer
 
         internal ToolStripButton SelectPolygon { get; private set; }
 
-        void OnSelectPolygon(object sender, EventArgs e)
+        private void OnSelectPolygon(object sender, EventArgs e)
         {
             if (_viewer == null)
                 return;
@@ -272,7 +273,7 @@ namespace Maestro.MapViewer
 
         internal ToolStripButton RefreshMap { get; private set; }
 
-        void OnRefreshMap(object sender, EventArgs e)
+        private void OnRefreshMap(object sender, EventArgs e)
         {
             if (_viewer == null)
                 return;
@@ -282,7 +283,7 @@ namespace Maestro.MapViewer
 
         internal ToolStripButton ToggleTooltips { get; private set; }
 
-        void OnToggleTooltips(object sender, EventArgs e)
+        private void OnToggleTooltips(object sender, EventArgs e)
         {
             if (_viewer == null)
                 return;
@@ -293,7 +294,7 @@ namespace Maestro.MapViewer
 
         internal ToolStripButton CopyMap { get; private set; }
 
-        void OnCopyMap(object sender, EventArgs e)
+        private void OnCopyMap(object sender, EventArgs e)
         {
             if (_viewer == null)
                 return;
@@ -350,12 +351,12 @@ namespace Maestro.MapViewer
             }
         }
 
-        static string MakeWktPolygon(double x1, double y1, double x2, double y2)
+        private static string MakeWktPolygon(double x1, double y1, double x2, double y2)
         {
             return "POLYGON((" + x1 + " " + y1 + ", " + x2 + " " + y1 + ", " + x2 + " " + y2 + ", " + x1 + " " + y2 + ", " + x1 + " " + y1 + "))";
         }
 
-        static string MakeWktCircle(double x, double y, double r)
+        private static string MakeWktCircle(double x, double y, double r)
         {
             return "CURVEPOLYGON ((" + (x - r) + " " + y + " (CIRCULARARCSEGMENT (" + x + " " + (y - r) + ", " + (x + r) + " " + y + "), CIRCULARARCSEGMENT (" + x + " " + (y + r) + ", " + (x - r) + " " + y + "))))";
         }
@@ -370,6 +371,7 @@ namespace Maestro.MapViewer
         /// The user must click on the map to zoom out from that selected point
         /// </summary>
         ClickToZoom,
+
         /// <summary>
         /// The map automatically zooms out on command invocation
         /// </summary>

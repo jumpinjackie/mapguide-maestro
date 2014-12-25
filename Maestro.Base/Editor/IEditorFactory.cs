@@ -1,35 +1,35 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Resource;
 
 namespace Maestro.Base.Editor
 {
     /// <summary>
     /// Defines an interface for creating editor views for a given resource.
-    /// 
+    ///
     /// Implementations of this interface that are registered under the /Maestro/Editors path in
     /// any addin manifest will be automatically loaded by Maestro and be registered to handle
-    /// the opening of any resource whose type and version matches the 
+    /// the opening of any resource whose type and version matches the
     /// <see cref="P:Maestro.Base.Editor.IEditorFactory.ResourceTypeAndVersion"/> property
     /// </summary>
     public interface IEditorFactory
@@ -65,7 +65,7 @@ namespace Maestro.Base.Editor
     {
         public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
 
-        public DrawingSourceEditorFactory() 
+        public DrawingSourceEditorFactory()
         {
             this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.DrawingSource.ToString(), "1.0.0"); //NOXLATE
         }
@@ -80,7 +80,7 @@ namespace Maestro.Base.Editor
     {
         public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
 
-        public FeatureSourceEditorFactory() 
+        public FeatureSourceEditorFactory()
         {
             this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.FeatureSource.ToString(), "1.0.0"); //NOXLATE
         }
@@ -95,7 +95,7 @@ namespace Maestro.Base.Editor
     {
         public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
 
-        public LayerDefinitionEditorFactory() 
+        public LayerDefinitionEditorFactory()
         {
             this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition.ToString(), "1.0.0"); //NOXLATE
         }
@@ -110,7 +110,7 @@ namespace Maestro.Base.Editor
     {
         public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
 
-        public LoadProcedureEditorFactory() 
+        public LoadProcedureEditorFactory()
         {
             this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.LoadProcedure.ToString(), "1.0.0"); //NOXLATE
         }
@@ -125,7 +125,7 @@ namespace Maestro.Base.Editor
     {
         public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
 
-        public MapDefinitionEditorFactory() 
+        public MapDefinitionEditorFactory()
         {
             this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition.ToString(), "1.0.0"); //NOXLATE
         }
@@ -140,7 +140,7 @@ namespace Maestro.Base.Editor
     {
         public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
 
-        public PrintLayoutEditorFactory() 
+        public PrintLayoutEditorFactory()
         {
             this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.PrintLayout.ToString(), "1.0.0"); //NOXLATE
         }
@@ -154,8 +154,8 @@ namespace Maestro.Base.Editor
     internal class SymbolDefinitionEditorFactory : IEditorFactory
     {
         public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
-        
-        public SymbolDefinitionEditorFactory() 
+
+        public SymbolDefinitionEditorFactory()
         {
             this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.SymbolDefinition.ToString(), "1.0.0"); //NOXLATE
         }
@@ -170,7 +170,7 @@ namespace Maestro.Base.Editor
     {
         public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
 
-        public WebLayoutEditorFactory() 
+        public WebLayoutEditorFactory()
         {
             this.ResourceTypeAndVersion = new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout.ToString(), "1.0.0"); //NOXLATE
         }

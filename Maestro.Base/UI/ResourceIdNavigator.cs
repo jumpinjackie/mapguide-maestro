@@ -1,22 +1,25 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using ICSharpCode.Core;
 using Maestro.Base.Editor;
 using Maestro.Base.Services;
@@ -24,9 +27,6 @@ using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Maestro.Base.UI
@@ -52,8 +52,8 @@ namespace Maestro.Base.UI
         private ISiteExplorer _siteExp;
         private ViewContentManager _viewMgr;
 
-        public ResourceIdNavigator(ServerConnectionManager connMgr, 
-                                   OpenResourceManager omgr, 
+        public ResourceIdNavigator(ServerConnectionManager connMgr,
+                                   OpenResourceManager omgr,
                                    ViewContentManager viewMgr,
                                    ISiteExplorer siteExp)
         {
@@ -103,8 +103,8 @@ namespace Maestro.Base.UI
             UpdateConnectionList();
             UpdateNavigationState();
 
-            _strip.Items.AddRange(new ToolStripItem[] 
-            { 
+            _strip.Items.AddRange(new ToolStripItem[]
+            {
                 _resIdLabel,
                 _cmbResourceId,
                 _atLabel,
@@ -114,7 +114,7 @@ namespace Maestro.Base.UI
             });
         }
 
-        void OnSiteExplorerItemsSelected(object sender, RepositoryItemEventArgs e)
+        private void OnSiteExplorerItemsSelected(object sender, RepositoryItemEventArgs e)
         {
             if (e.Items == null)
                 return;
@@ -130,7 +130,7 @@ namespace Maestro.Base.UI
             }
         }
 
-        void OnViewActivated(object sender, ViewEventArgs e)
+        private void OnViewActivated(object sender, ViewEventArgs e)
         {
             var ed = e.View as IEditorViewContent;
             if (ed != null && !ed.IsNew)
@@ -145,7 +145,7 @@ namespace Maestro.Base.UI
             }
         }
 
-        void OnResourceIdKeyUp(object sender, KeyEventArgs e)
+        private void OnResourceIdKeyUp(object sender, KeyEventArgs e)
         {
             if (_btnGo.Enabled && _btnOpenAsXml.Enabled && (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return))
             {
@@ -153,12 +153,12 @@ namespace Maestro.Base.UI
             }
         }
 
-        void OnActiveConnectionChanged(object sender, EventArgs e)
+        private void OnActiveConnectionChanged(object sender, EventArgs e)
         {
             _cmbActiveConnections.ToolTipText = (string)_cmbActiveConnections.SelectedItem ?? string.Empty;
         }
 
-        void OnToolStripLayout(object sender, LayoutEventArgs e)
+        private void OnToolStripLayout(object sender, LayoutEventArgs e)
         {
             int width = _strip.DisplayRectangle.Width;
             foreach (ToolStripItem tsi in _strip.Items)
@@ -172,7 +172,7 @@ namespace Maestro.Base.UI
             _cmbResourceId.Width = Math.Max(0, width - _cmbResourceId.Margin.Horizontal);
         }
 
-        void OnResourceIdChanged(object sender, EventArgs e)
+        private void OnResourceIdChanged(object sender, EventArgs e)
         {
             UpdateNavigationState();
         }
@@ -182,22 +182,22 @@ namespace Maestro.Base.UI
             _btnGo.Enabled = _btnOpenAsXml.Enabled = ResourceIdentifier.Validate(_cmbResourceId.Text) && !ResourceIdentifier.IsFolderResource(_cmbResourceId.Text);
         }
 
-        void OnConnectionRemoved(object sender, ServerConnectionEventArgs e)
+        private void OnConnectionRemoved(object sender, ServerConnectionEventArgs e)
         {
             UpdateConnectionList();
         }
 
-        void OnConnectionAdded(object sender, ServerConnectionEventArgs e)
+        private void OnConnectionAdded(object sender, ServerConnectionEventArgs e)
         {
             UpdateConnectionList();
         }
 
-        void btnGo_Click(object sender, EventArgs e)
+        private void btnGo_Click(object sender, EventArgs e)
         {
             DoNavigate(false);
         }
 
-        void btnOpenAsXml_Click(object sender, EventArgs e)
+        private void btnOpenAsXml_Click(object sender, EventArgs e)
         {
             DoNavigate(true);
         }

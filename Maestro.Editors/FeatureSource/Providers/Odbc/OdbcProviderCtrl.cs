@@ -1,48 +1,46 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using Maestro.Editors.Common;
+using Maestro.Editors.FeatureSource.Providers.Common;
+using Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor;
+using Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors;
+using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Linq;
 using System.Windows.Forms;
-using Maestro.Editors.Common;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors;
-using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using System.Xml;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor;
-using Maestro.Editors.FeatureSource.Providers.Common;
-using Maestro.Shared.UI;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc
 {
     [ToolboxItem(false)]
     internal partial class OdbcProviderCtrl : EditorBindableCollapsiblePanel
     {
-        enum OdbcConnectionMethod
+        private enum OdbcConnectionMethod
         {
             ManagedFile,
             Unmanaged,
@@ -59,9 +57,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
         private IEditorService _service;
         private IFeatureSource _fs;
 
-        bool Use64BitDriver { get { return chkUse64Bit.Visible && chkUse64Bit.Checked; } }
+        private bool Use64BitDriver { get { return chkUse64Bit.Visible && chkUse64Bit.Checked; } }
 
-        void InternalConnectionChanged(object sender, EventArgs e)
+        private void InternalConnectionChanged(object sender, EventArgs e)
         {
             btnTest.Enabled = true;
             var props = (Use64BitDriver) ? this.ChildEditor.Get64BitConnectionProperties() : this.ChildEditor.ConnectionProperties;
@@ -74,7 +72,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                 OnResourceChanged();
         }
 
-        void RequestedDocumentReset(object sender, EventArgs e)
+        private void RequestedDocumentReset(object sender, EventArgs e)
         {
             DoDocumentReset();
         }
@@ -152,15 +150,19 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                 case OdbcConnectionMethod.DSN:
                     childEditor = new DSNCtrl();
                     break;
+
                 case OdbcConnectionMethod.KnownDriver:
                     childEditor = new KnownDriversCtrl();
                     break;
+
                 case OdbcConnectionMethod.ManagedFile:
                     childEditor = new ManagedCtrl();
                     break;
+
                 case OdbcConnectionMethod.RawConnectionString:
                     childEditor = new ConnectionStringCtrl();
                     break;
+
                 case OdbcConnectionMethod.Unmanaged:
                     childEditor = new UnmanagedCtrl();
                     break;
@@ -330,7 +332,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                 {
                     classNames = names.Select(x => x.Contains(":") ? x.Split(':')[1] : x).ToArray(); //NOXLATE
                     var schema = _fs.CurrentConnection.FeatureService.DescribeFeatureSourcePartial(_fs.ResourceID, schemaName, classNames);
-                    
+
                     _doc.AddSchema(schema); //Only one schema is supported by ODBC so this is ok
                     var scList = _fs.GetSpatialInfo(false);
                     foreach (var sc in scList.SpatialContext)
@@ -339,7 +341,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                     }
                     return null;
                 };
-                BusyWaitDialog.Run(Strings.TextPreparingConfigurationDocument, worker, (obj, ex) => 
+                BusyWaitDialog.Run(Strings.TextPreparingConfigurationDocument, worker, (obj, ex) =>
                 {
                     if (ex != null)
                         throw ex;

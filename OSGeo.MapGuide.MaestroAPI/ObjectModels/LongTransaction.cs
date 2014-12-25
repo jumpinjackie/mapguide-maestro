@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.ObjectModels.Common
 {
@@ -59,15 +56,14 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         /// </summary>
         public IEnumerable<ILongTransaction> Transactions
         {
-            get 
+            get
             {
-                return this.LongTransaction;            
+                return this.LongTransaction;
             }
         }
     }
 
     partial class FdoLongTransactionListLongTransaction : ILongTransaction
     {
-
     }
 }

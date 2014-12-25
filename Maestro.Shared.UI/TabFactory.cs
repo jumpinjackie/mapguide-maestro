@@ -1,25 +1,27 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Maestro.Shared.UI
@@ -27,6 +29,7 @@ namespace Maestro.Shared.UI
     internal class HiddenTab
     {
         public TabControl Parent { get; set; }
+
         public TabPage Tab { get; set; }
     }
 
@@ -34,7 +37,7 @@ namespace Maestro.Shared.UI
     /// Platform check helper class. Use this class to determine if this assembly is executing
     /// under the Mono Runtime environment.
     /// </summary>
-    static class Platform
+    internal static class Platform
     {
         static Platform()
         {
@@ -61,7 +64,7 @@ namespace Maestro.Shared.UI
     // - Using the SelectedTab property of TabControl
     // - Using the SelectedIndex property of TabControl and fetching the relevant tab from its TabPages collection
     //
-    // Mono (2.4) has a buggy implementation of TabControl and will do crazy things if you use the SelectedTab property. 
+    // Mono (2.4) has a buggy implementation of TabControl and will do crazy things if you use the SelectedTab property.
     // So if you're ever hacking code that involves setting or getting a selected tab, NEVER USE THE SelectedTab PROPERTY!
 
     internal static class TabFactory
@@ -72,13 +75,13 @@ namespace Maestro.Shared.UI
         {
             TabPage page = new TabPage();
             page.ImageKey = imgKey;
-            page.Text = content.Title; 
+            page.Text = content.Title;
             page.ToolTipText = content.Description;
             page.Tag = content;
 
-            content.TitleChanged += (sender, e) => 
+            content.TitleChanged += (sender, e) =>
             {
-                page.Text = content.Title; 
+                page.Text = content.Title;
             };
             content.DescriptionChanged += (sender, e) =>
             {
@@ -112,7 +115,6 @@ namespace Maestro.Shared.UI
                     }
                 }
             };
-
 
             content.ViewContentClosed += (sender, e) =>
             {

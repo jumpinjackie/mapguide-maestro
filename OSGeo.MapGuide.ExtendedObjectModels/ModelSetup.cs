@@ -1,64 +1,58 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Runtime.CompilerServices;
+//
 
-using OSGeo.MapGuide.MaestroAPI.Resource;
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI;
-
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
+using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.LoadProcedure;
+using System;
+using System.Runtime.CompilerServices;
 using Ldf110 = OSGeo.MapGuide.ObjectModels.LayerDefinition_1_1_0;
 using Ldf120 = OSGeo.MapGuide.ObjectModels.LayerDefinition_1_2_0;
 using Ldf130 = OSGeo.MapGuide.ObjectModels.LayerDefinition_1_3_0;
 using Ldf230 = OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0;
 using Ldf240 = OSGeo.MapGuide.ObjectModels.LayerDefinition_2_4_0;
-
 using Lp110 = OSGeo.MapGuide.ObjectModels.LoadProcedure_1_1_0;
 using Lp220 = OSGeo.MapGuide.ObjectModels.LoadProcedure_2_2_0;
+using Mdf230 = OSGeo.MapGuide.ObjectModels.MapDefinition_2_3_0;
+using Mdf240 = OSGeo.MapGuide.ObjectModels.MapDefinition_2_4_0;
+using Sym110 = OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0;
+using Sym240 = OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0;
+using Wdf230 = OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0;
+using Wdf240 = OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0;
 using WL110 = OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0;
 using WL240 = OSGeo.MapGuide.ObjectModels.WebLayout_2_4_0;
 using WL260 = OSGeo.MapGuide.ObjectModels.WebLayout_2_6_0;
-
-using Sym110 = OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0;
-using Sym240 = OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0;
-
-using Mdf230 = OSGeo.MapGuide.ObjectModels.MapDefinition_2_3_0;
-using Mdf240 = OSGeo.MapGuide.ObjectModels.MapDefinition_2_4_0;
-
-using Wdf230 = OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0;
-using Wdf240 = OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0;
-
-using OSGeo.MapGuide.ObjectModels.LoadProcedure;
-using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
-using OSGeo.MapGuide.ObjectModels;
 
 namespace OSGeo.MapGuide.ExtendedObjectModels
 {
     /// <summary>
     /// <c>OSGeo.MapGuide.ExtendedObjectModels</c> provides the <see cref="ModelSetup"/> utility class, which
-    /// provides a convenient method of registering all known resources with schema versions greater than v1.0.0 
-    /// 
+    /// provides a convenient method of registering all known resources with schema versions greater than v1.0.0
+    ///
     /// </summary>
     [CompilerGenerated]
-    class NsDoc { }
+    internal class NsDoc { }
 
     /// <summary>
     /// A helper class that registers validatiors, serializers and factories for resource types beyond the initial version
@@ -71,7 +65,7 @@ namespace OSGeo.MapGuide.ExtendedObjectModels
     {
         /// <summary>
         /// Registers validators, serializers and instance factories of all known extended resource data types.
-        /// 
+        ///
         /// Invoke this method as part of your application's startup process before using any other part of the Maestro API
         /// </summary>
         /// <remarks>

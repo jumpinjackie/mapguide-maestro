@@ -1,31 +1,33 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI.Feature;
+using OSGeo.MapGuide.MaestroAPI.Internal;
+using OSGeo.MapGuide.MaestroAPI.Schema;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Feature;
 using System.IO;
-using System.Xml;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using OSGeo.MapGuide.MaestroAPI.Internal;
 using System.Net;
+using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http
 {
@@ -67,7 +69,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             InitCommon(stream);
         }
 
-        public XmlReaderBase(HttpWebResponse resp) 
+        public XmlReaderBase(HttpWebResponse resp)
         {
             _resp = resp;
             try
@@ -138,8 +140,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
                 if (_reader.Name != this.DefinitionChildTypeElement)
                     throw new Exception("Bad document. Expected element: " + this.DefinitionChildTypeElement);
                 string type = _reader.ReadInnerXml();
-
-               
             }*/
 
             _properties = properties.ToArray();
@@ -206,34 +206,46 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
                 case "bool":
                 case "boolean":
                     return PropertyValueType.Boolean;
+
                 case "blob":
                     return PropertyValueType.Blob;
+
                 case "byte":
                     return PropertyValueType.Byte;
+
                 case "clob":
                     return PropertyValueType.Clob;
+
                 case "double":
                 case "decimal":
                     return PropertyValueType.Double;
+
                 case "date":
                 case "datetime":
                     return PropertyValueType.DateTime;
+
                 case "geometry":
                     return PropertyValueType.Geometry;
+
                 case "int":
                 case "int32":
                 case "integer":
                     return PropertyValueType.Int32;
+
                 case "int16":
                     return PropertyValueType.Int16;
+
                 case "int64":
                 case "long":
                     return PropertyValueType.Int64;
+
                 case "raster":
                     return PropertyValueType.Raster;
+
                 case "float":
                 case "single":
                     return PropertyValueType.Single;
+
                 case "string":
                     return PropertyValueType.String;
             }
@@ -255,7 +267,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
 
                 _recDoc.LoadXml(_reader.ReadOuterXml());
                 var rec = new XmlRecord(_properties, _wktReader, _recDoc[this.ValuesRowElement].SelectNodes(this.ValuesRowPropertyElement), this.ValuesRowPropertyNameElement, this.ValuesRowPropertyValueElement);
-                
+
                 return rec;
             }
         }

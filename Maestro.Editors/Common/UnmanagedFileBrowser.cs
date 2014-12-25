@@ -1,33 +1,33 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using Aga.Controls.Tree;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using Aga.Controls.Tree;
-using OSGeo.MapGuide.ObjectModels.Common;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.Common
 {
@@ -36,16 +36,19 @@ namespace Maestro.Editors.Common
     /// </summary>
     public partial class UnmanagedFileBrowser : Form
     {
-        abstract class ModelBase<T>
+        private abstract class ModelBase<T>
         {
-            public ModelBase(T item) { this.Tag = item; }
+            public ModelBase(T item)
+            {
+                this.Tag = item;
+            }
 
             public T Tag { get; private set; }
         }
 
-        class FolderModel : ModelBase<UnmanagedDataListUnmanagedDataFolder>
+        private class FolderModel : ModelBase<UnmanagedDataListUnmanagedDataFolder>
         {
-            public FolderModel(UnmanagedDataListUnmanagedDataFolder folder) 
+            public FolderModel(UnmanagedDataListUnmanagedDataFolder folder)
                 : base(folder)
             {
                 this.Name = folder.FolderName;
@@ -59,7 +62,7 @@ namespace Maestro.Editors.Common
             public Image Icon { get { return Properties.Resources.folder_horizontal; } }
         }
 
-        class FolderTreeModel : ITreeModel
+        private class FolderTreeModel : ITreeModel
         {
             private IResourceService _resSvc;
 
@@ -83,7 +86,7 @@ namespace Maestro.Editors.Common
                         }
                     }
                 }
-                else 
+                else
                 {
                     var mdl = treePath.LastNode as FolderModel;
                     if (mdl != null)
@@ -116,22 +119,22 @@ namespace Maestro.Editors.Common
             }
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             public event EventHandler<TreeModelEventArgs> NodesChanged;
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             public event EventHandler<TreeModelEventArgs> NodesInserted;
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             public event EventHandler<TreeModelEventArgs> NodesRemoved;
 
             /// <summary>
-            /// 
+            ///
             /// </summary>
             public event EventHandler<TreePathEventArgs> StructureChanged;
         }
@@ -211,7 +214,7 @@ namespace Maestro.Editors.Common
         /// <value>The selected item.</value>
         public string SelectedItem
         {
-            get 
+            get
             {
                 return SelectedItems[0];
             }
@@ -294,17 +297,22 @@ namespace Maestro.Editors.Common
             {
                 case "EXE": //NOXLATE
                     return IDX_FILE_EXE;
+
                 case "DOC": //NOXLATE
                 case "DOCX": //NOXLATE
                     return IDX_FILE_DOC;
+
                 case "MDB": //NOXLATE
                 case "ACCDB": //NOXLATE
                     return IDX_FILE_MDB;
+
                 case "XLS": //NOXLATE
                 case "XLSX": //NOXLATE
                     return IDX_FILE_XLS;
+
                 case "CSV": //NOXLATE
                     return IDX_FILE_CSV;
+
                 case "MOV": //NOXLATE
                 case "MPG": //NOXLATE
                 case "AVI": //NOXLATE
@@ -313,9 +321,11 @@ namespace Maestro.Editors.Common
                 case "ASF": //NOXLATE
                 case "FLV": //NOXLATE
                     return IDX_FILE_MOVIE;
+
                 case "HTM": //NOXLATE
                 case "HTML": //NOXLATE
                     return IDX_FILE_HTML;
+
                 case "PNG": //NOXLATE
                 case "JPG": //NOXLATE
                 case "GIF": //NOXLATE
@@ -323,15 +333,20 @@ namespace Maestro.Editors.Common
                 case "BMP": //NOXLATE
                 case "TGA": //NOXLATE
                     return IDX_FILE_IMAGE;
+
                 case "PDF": //NOXLATE
                     return IDX_FILE_PDF;
+
                 case "PHP": //NOXLATE
                     return IDX_FILE_PHP;
+
                 case "PPT": //NOXLATE
                 case "PPTX": //NOXLATE
                     return IDX_FILE_PPT;
+
                 case "TXT": //NOXLATE
                     return IDX_FILE_TXT;
+
                 case "ZIP": //NOXLATE
                 case "RAR": //NOXLATE
                 case "ACE": //NOXLATE
@@ -340,28 +355,30 @@ namespace Maestro.Editors.Common
                 case "TAR": //NOXLATE
                 case "BZ2": //NOXLATE
                     return IDX_FILE_ARCHIVE;
+
                 case "XML": //NOXLATE
                     return IDX_FILE_XML;
+
                 default:
                     return IDX_FILE_UNKNOWN;
             }
         }
 
-        const int IDX_FILE_UNKNOWN = 0;
-        const int IDX_FILE_EXE = 1;
-        const int IDX_FILE_DOC = 2;
-        const int IDX_FILE_MDB = 3;
-        const int IDX_FILE_XLS = 4;
-        const int IDX_FILE_CSV = 5;
-        const int IDX_FILE_MOVIE = 6;
-        const int IDX_FILE_HTML = 7;
-        const int IDX_FILE_IMAGE = 8;
-        const int IDX_FILE_PDF = 9;
-        const int IDX_FILE_PHP = 10;
-        const int IDX_FILE_PPT = 11;
-        const int IDX_FILE_TXT = 12;
-        const int IDX_FILE_ARCHIVE = 13;
-        const int IDX_FILE_XML = 14;
+        private const int IDX_FILE_UNKNOWN = 0;
+        private const int IDX_FILE_EXE = 1;
+        private const int IDX_FILE_DOC = 2;
+        private const int IDX_FILE_MDB = 3;
+        private const int IDX_FILE_XLS = 4;
+        private const int IDX_FILE_CSV = 5;
+        private const int IDX_FILE_MOVIE = 6;
+        private const int IDX_FILE_HTML = 7;
+        private const int IDX_FILE_IMAGE = 8;
+        private const int IDX_FILE_PDF = 9;
+        private const int IDX_FILE_PHP = 10;
+        private const int IDX_FILE_PPT = 11;
+        private const int IDX_FILE_TXT = 12;
+        private const int IDX_FILE_ARCHIVE = 13;
+        private const int IDX_FILE_XML = 14;
 
         private void lstResources_SelectedIndexChanged(object sender, EventArgs e)
         {

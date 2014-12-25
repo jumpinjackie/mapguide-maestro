@@ -1,34 +1,35 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using Maestro.Login;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Mapping;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI.Mapping;
-using OSGeo.MapGuide.MaestroAPI;
-using Maestro.Login;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace RtMapInspector
 {
@@ -45,7 +46,7 @@ namespace RtMapInspector
 
         #region Design-time property wrappers
 
-        class PointDecorator
+        private class PointDecorator
         {
             private string _str;
 
@@ -60,7 +61,7 @@ namespace RtMapInspector
             }
         }
 
-        class BoxDecorator
+        private class BoxDecorator
         {
             private string _str;
 
@@ -75,7 +76,7 @@ namespace RtMapInspector
             }
         }
 
-        class MapDecorator
+        private class MapDecorator
         {
             private RuntimeMap _map;
 
@@ -168,7 +169,7 @@ namespace RtMapInspector
             }
         }
 
-        class GroupDecorator
+        private class GroupDecorator
         {
             private RuntimeMapGroup _group;
 
@@ -240,7 +241,7 @@ namespace RtMapInspector
             }
         }
 
-        class LayerDecorator
+        private class LayerDecorator
         {
             private RuntimeMapLayer _layer;
 
@@ -319,7 +320,7 @@ namespace RtMapInspector
             public string LegendLabel
             {
                 get { return _layer.LegendLabel; }
-                set { _layer.LegendLabel = value; } 
+                set { _layer.LegendLabel = value; }
             }
 
             [Category("Layer Properties")]
@@ -397,7 +398,7 @@ namespace RtMapInspector
             }
         }
 
-        class DrawOrderDisplayItem
+        private class DrawOrderDisplayItem
         {
             public string Label { get; private set; }
 
@@ -415,18 +416,18 @@ namespace RtMapInspector
             }
         }
 
-        class ScaleRangeCollection : List<string>
+        private class ScaleRangeCollection : List<string>
         {
             public ScaleRangeCollection(RuntimeMapLayer.ScaleRange[] ranges)
             {
-                foreach(var s in ranges )
+                foreach (var s in ranges)
                 {
                     Add(s.MinScale + " : " + s.MaxScale);
                 }
             }
         }
 
-        class IdentityPropertyCollection : List<string>
+        private class IdentityPropertyCollection : List<string>
         {
             public IdentityPropertyCollection(PropertyInfo[] props)
             {
@@ -437,7 +438,7 @@ namespace RtMapInspector
             }
         }
 
-        #endregion
+        #endregion Design-time property wrappers
 
         protected override void OnLoad(EventArgs e)
         {
@@ -484,11 +485,11 @@ namespace RtMapInspector
             InitTabs();
         }
 
-        const int IDX_GROUP = 0;
-        const int IDX_GROUP_HIDDEN = 1;
-        const int IDX_LAYER = 2;
-        const int IDX_LAYER_HIDDEN = 3;
-        const int IDX_MAP = 4;
+        private const int IDX_GROUP = 0;
+        private const int IDX_GROUP_HIDDEN = 1;
+        private const int IDX_LAYER = 2;
+        private const int IDX_LAYER_HIDDEN = 3;
+        private const int IDX_MAP = 4;
 
         private TreeNode CreateGroupNode(RuntimeMapGroup group)
         {
@@ -576,7 +577,7 @@ namespace RtMapInspector
             }
         }
 
-        static string Stringify(object[] values)
+        private static string Stringify(object[] values)
         {
             string[] list = new string[values.Length];
             for (int i = 0; i < values.Length; i++)

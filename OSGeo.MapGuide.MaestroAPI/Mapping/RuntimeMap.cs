@@ -1,27 +1,25 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Serialization;
@@ -30,6 +28,11 @@ using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
@@ -42,7 +45,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     /// <para>
     /// If you want to use this instance with the Rendering Service APIs, it is important to set the correct
     /// meters per unit value before calling the <see cref="T:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.Save"/> method, as an incorrect meters
-    /// per unit value will produce incorrect images. 
+    /// per unit value will produce incorrect images.
     /// </para>
     /// <para>
     /// Also note that to improve the creation performance, certain implementations of <see cref="T:OSGeo.MapGuide.MaestroAPI.IServerConnection"/>
@@ -62,20 +65,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     /// <example>
     /// How to create a <see cref="RuntimeMap"/> with the correct meters per unit value using the MgCoordinateSystem API
     /// <code>
-    /// 
-    ///     IServerConnection conn = ConnectionProviderRegistry.CreateConnection("Maestro.Http", 
+    ///
+    ///     IServerConnection conn = ConnectionProviderRegistry.CreateConnection("Maestro.Http",
     ///         "Username", "Administrator",
     ///         "Password", "admin",
     ///         "Url", "http://localhost/mapguide/mapagent/mapagent.fcgi");
-    ///         
+    ///
     ///     //Create the Mapping Service. Some implementations of IServerConnection may not support this service, so
     ///     //its best to inspect the capability object of this connection to determine if this service type is supported
     ///     IMappingService mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
-    /// 
+    ///
     ///     //Get our map definition
     ///     ResourceIdentifier resId = new ResourceIdentifier("Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition");
     ///     IMapDefinition mdf = (IMapDefinition)conn.ResourceService.GetResource(resId.ToString());
-    ///     
+    ///
     ///     //Calculate the meters per unit value, this requires the official MapGuide API. Otherwise, you need
     ///     //to know this value up-front in order to render images with this instance
     ///     double metersPerUnit = 1.0;
@@ -85,23 +88,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     ///         MgCoordinateSystem cs = factory.Create(mdf.CoordinateSystem);
     ///         metersPerUnit = cs.ConvertCoordinateSystemUnitsToMeters(1.0);
     ///     }
-    ///     
+    ///
     ///     //Generate our runtime map resource id. This must be session-based
     ///     ResourceIdentifier rtMapId = new ResourceIdentifier(resId.Name, ResourceTypes.RuntimeMap, conn.SessionID);
-    ///     
+    ///
     ///     //Create the runtime map using our meters per unit value
     ///     RuntimeMap map = mapSvc.CreateRuntimeMap(rtMapId, mdf, metersPerUnit);
-    ///     
+    ///
     ///     //Set some display parameters for this map
     ///     map.ViewScale = 75000;
     ///     map.DisplayWidth = 1024;
     ///     map.DisplayHeight = 1024;
     ///     map.DisplayDpi = 96;
-    /// 
-    ///     //We have to save it first before we can render from it or use any other API that requires this 
+    ///
+    ///     //We have to save it first before we can render from it or use any other API that requires this
     ///     //current map state. Remember to call Save() everytime you change the state of the map
     ///     map.Save();
-    ///     
+    ///
     ///     //Now we can render a map
     ///     using(Stream stream = mapSvc.RenderDynamicOverlay(map, null, "PNG"))
     ///     {
@@ -116,7 +119,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     ///             } while (read > 0);
     ///         }
     ///     }
-    /// 
+    ///
     /// </code>
     /// </example>
     public class RuntimeMap : MapObservable
@@ -136,6 +139,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// The mapping service
         /// </summary>
         protected IMappingService _mapSvc;
+
         /// <summary>
         /// The GetResourceContents command
         /// </summary>
@@ -200,7 +204,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.Groups = new RuntimeMapGroupCollection(this);
         }
 
-        static IEnumerable<string> GetLayerIds(IMapDefinition mdf)
+        private static IEnumerable<string> GetLayerIds(IMapDefinition mdf)
         {
             foreach (var layer in mdf.MapLayer)
             {
@@ -229,7 +233,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.DisplayHeight = height;
 
             var ext = this.MapExtent;
-            
+
             var orgX1 = ext.MinX;
             var orgY2 = ext.MinY;
             var orgX2 = ext.MaxX;
@@ -360,7 +364,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public double GetFiniteDisplayScaleAt(int index) { return _finiteDisplayScales[index]; }
+        public double GetFiniteDisplayScaleAt(int index)
+        {
+            return _finiteDisplayScales[index];
+        }
 
         /// <summary>
         /// Gets or sets the map extents. Inspect the <see cref="P:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableMapExtents"/>
@@ -373,7 +380,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             get;
             set;
         }
-        
+
         /// <summary>
         /// The data extent
         /// </summary>
@@ -615,14 +622,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         private string _resId;
 
         /// <summary>
-        /// Gets or sets the resource ID. When setting, if the name of this map has 
+        /// Gets or sets the resource ID. When setting, if the name of this map has
         /// not been specified already, the name will be set based on this resource id
         /// </summary>
         /// <value>The resource ID.</value>
         public string ResourceID
         {
             get { return _resId; }
-            set 
+            set
             {
                 SetField(ref _resId, value, "ResourceID"); //NOXLATE
                 if (this.Name == null)
@@ -732,7 +739,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
         }
 
-        enum WatermarkUsageType
+        private enum WatermarkUsageType
         {
             WMS = 1,
             Viewer = 2
@@ -770,6 +777,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             };
 
             public ChangeType Type { get; private set; }
+
             public string Params { get; private set; }
 
             public Change()
@@ -786,7 +794,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         internal class ChangeList
         {
             public string ObjectId { get; private set; }
+
             public bool IsLayer { get; private set; }
+
             public List<Change> Changes { get; private set; }
 
             public ChangeList()
@@ -890,7 +900,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     throw new Exception(Strings.ErrorInvalidMapVersion);
                 this.ResourceID = d.ReadResourceIdentifier();
             }
-
 
             this.Name = d.ReadString();
             this.ObjectId = d.ReadString();
@@ -996,7 +1005,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 {
                     c = changes[objid];
                 }
-                
+
                 int changeCount = d.ReadInt32();
                 while (changeCount-- > 0)
                 {
@@ -1004,7 +1013,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     int ctype = d.ReadInt32();
                     c.Changes.Add(new Change((Change.ChangeType)ctype, d.ReadString()));
                 }
-                
             }
             return changes;
         }
@@ -1056,10 +1064,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 {
                     _selection = new MapSelection(this);
                     var bLoadedSelection = ReloadSelection();
-                    
+
                     if (!bLoadedSelection)
                     {
-                    
                     }
                 }
                 return _selection;
@@ -1271,7 +1278,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.Groups.Remove(group);
         }
 
-
         /// <summary>
         /// Gets the layers of the specified group
         /// </summary>
@@ -1424,7 +1430,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             {
                 changes = new ChangeList(objectId, isLayer);
                 m_changeList.Add(objectId, changes);
-                
             }
             changes = m_changeList[objectId];
 
@@ -1520,7 +1525,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             if (h != null)
                 h(this, layer);
             //Fix the draw order of this layer that was added
-            
+
             //???
 
             TrackChange(layer.ObjectId, true, Change.ChangeType.added, string.Empty);
@@ -1558,9 +1563,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             TrackChange(layer.ObjectId, true, Change.ChangeType.definitionChanged, string.Empty);
         }
 
-        #endregion
+        #endregion change tracking
 
         #region convenience methods
+
         /// <summary>
         /// Convenience method for rendering a bitmap of the current map
         /// </summary>
@@ -1572,13 +1578,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 throw new NotSupportedException();
 
             return _mapSvc.RenderRuntimeMap(
-                this, 
-                this.ViewCenter.X, 
-                this.ViewCenter.Y, 
-                this.ViewScale, 
-                this.DisplayWidth, 
-                this.DisplayHeight, 
-                this.DisplayDpi, 
+                this,
+                this.ViewCenter.X,
+                this.ViewCenter.Y,
+                this.ViewScale,
+                this.DisplayWidth,
+                this.DisplayHeight,
+                this.DisplayDpi,
                 format);
         }
 
@@ -1593,7 +1599,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             return RenderDynamicOverlay(this.Selection, format, keepSelection);
         }
-        
+
         /// <summary>
         /// Convenience method for rendering a dynamic overlay of the current map
         /// </summary>
@@ -1697,7 +1703,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             return _mapSvc.GetLegendImage(scale, layerDefinitionID, themeCategory, geomType, width, height, format);
         }
 
-        #endregion
+        #endregion convenience methods
 
         internal bool StrictSelection { get; set; }
 
@@ -1817,7 +1823,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
 
             UpdateMapDefinition(newMdf);
-           
+
             return newMdf;
         }
 
@@ -1828,7 +1834,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="layer"></param>

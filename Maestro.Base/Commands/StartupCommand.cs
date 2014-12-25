@@ -1,37 +1,32 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using ICSharpCode.Core;
-using System.Reflection;
 using Maestro.Base.Services;
-using Maestro.Base.Events;
 using Maestro.Base.UI;
-using Maestro.Base.Editor;
-using OSGeo.MapGuide.ObjectModels.WebLayout;
-using Props = ICSharpCode.Core.PropertyService;
 using Maestro.Base.UI.Preferences;
-using System.Windows.Forms;
-using Maestro.Shared.UI;
 using Maestro.Editors.Preview;
+using Maestro.Shared.UI;
+using Props = ICSharpCode.Core.PropertyService;
 
 namespace Maestro.Base.Commands
 {
@@ -41,7 +36,7 @@ namespace Maestro.Base.Commands
         {
             ResourceService.RegisterNeutralImages(Properties.Resources.ResourceManager);
             ResourceService.RegisterNeutralStrings(Strings.ResourceManager);
-            
+
             Workbench.WorkbenchInitialized += (sender, e) =>
             {
                 PreviewSettings.UseAjaxViewer = PropertyService.Get(ConfigProperties.PreviewViewerType, "AJAX") == "AJAX"; //NOXLATE
@@ -60,7 +55,7 @@ namespace Maestro.Base.Commands
                 wb.Text = "MapGuide Maestro"; //NOXLATE
 
                 var mgr = ServiceRegistry.GetService<ViewContentManager>();
-                
+
                 if (Props.Get(ConfigProperties.ShowMessages, true))
                     mgr.OpenContent<MessageViewer>(ViewRegion.Bottom);
 
@@ -71,9 +66,9 @@ namespace Maestro.Base.Commands
             };
         }
 
-        void OnWorkbenchClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        private void OnWorkbenchClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
-            e.Cancel = Maestro.Base.Commands.SiteExplorer.DisconnectCommand.CancelDisconnect();   
+            e.Cancel = Maestro.Base.Commands.SiteExplorer.DisconnectCommand.CancelDisconnect();
         }
     }
 }

@@ -1,40 +1,39 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using ICSharpCode.Core;
+using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Mapping;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI.Mapping;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.MapDefinition;
-using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using OSGeo.MapGuide.MaestroAPI.Exceptions;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using Maestro.Shared.UI;
-using ICSharpCode.Core;
 
 namespace Maestro.Base.UI
 {
@@ -116,7 +115,6 @@ namespace Maestro.Base.UI
             }
         }
 
-
         private void ProfileLayerDefinition(ILayerDefinition ldef)
         {
             //TODO: This was a line-by-line port from 2.x to match the 3.x APIs
@@ -146,7 +144,7 @@ namespace Maestro.Base.UI
                         return;
 
                     var mpsvc = (IMappingService)m_connection.GetService((int)ServiceType.Mapping);
-                    
+
                     var map = mpsvc.CreateMap(mdef);
                     using (new Timer(Strings.Prof_LogMessageIdentifyFetching, backgroundWorker))
                     {
@@ -209,7 +207,7 @@ namespace Maestro.Base.UI
                                     mdf.CoordinateSystem = lst.SpatialContext[0].CoordinateSystemWkt;
                                     if (string.IsNullOrEmpty(m_tempmap.CoordinateSystem))
                                         mdf.CoordinateSystem = @"LOCAL_CS[""*XY-M*"", LOCAL_DATUM[""*X-Y*"", 10000], UNIT[""Meter"", 1], AXIS[""X"", EAST], AXIS[""Y"", NORTH]]"; //NOXLATE
-                                    
+
                                     double llx = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.X, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture);
                                     double lly = double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.Y, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture); ;
                                     double urx = double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.X, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture); ;
@@ -219,7 +217,7 @@ namespace Maestro.Base.UI
                                 }
 
                                 SetTempLayer(mdf, tmp1);
-                                
+
                                 var mpsvc = (IMappingService)m_connection.GetService((int)ServiceType.Mapping);
                                 //We cannot flub this anymore. AIMS 2012 demands the Map Definition id specified checks out
                                 mdf.ResourceID = "Session:" + m_connection.SessionID + "//ProfileTest.MapDefinition"; //NOXLATE
@@ -250,7 +248,6 @@ namespace Maestro.Base.UI
                                 catch { }
                             }
                         }
-
                     }
                 }
             }
@@ -374,7 +371,7 @@ namespace Maestro.Base.UI
             }
         }
 
-        private class Timer : IDisposable 
+        private class Timer : IDisposable
         {
             private string m_text;
             private bool m_isDisposed;
@@ -403,7 +400,7 @@ namespace Maestro.Base.UI
                 }
             }
 
-            #endregion
+            #endregion IDisposable Members
         }
 
         private void Profiling_Load(object sender, EventArgs e)
@@ -481,6 +478,5 @@ namespace Maestro.Base.UI
                 }
             }
         }
-
     }
 }

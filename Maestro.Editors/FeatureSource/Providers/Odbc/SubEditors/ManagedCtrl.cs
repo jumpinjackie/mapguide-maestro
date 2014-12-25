@@ -1,31 +1,30 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI;
+using System;
 using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
 {
@@ -39,12 +38,12 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             resDataCtrl.ResourceDataUploaded += new Maestro.Editors.Common.ResourceDataCtrl.ResourceUploadEventHandler(OnResourceDataAdded);
         }
 
-        void OnResourceDataAdded(string dataName, string origPath)
+        private void OnResourceDataAdded(string dataName, string origPath)
         {
             OnResourceChanged();
         }
 
-        void OnResourceDataMarked(object sender, string dataName)
+        private void OnResourceDataMarked(object sender, string dataName)
         {
             OnConnectionChanged();
         }
@@ -55,7 +54,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             resDataCtrl.Init(service);
         }
 
-        void OnConnectionChanged()
+        private void OnConnectionChanged()
         {
             var handler = this.ConnectionChanged;
             if (handler != null)
@@ -119,10 +118,13 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
             {
                 case ".ACCDB": //NOXLATE
                     return OdbcDriverNames.OdbcDriverAccess64;
+
                 case ".MDB": //NOXLATE
                     return use64Bit ? OdbcDriverNames.OdbcDriverAccess64 : OdbcDriverNames.OdbcDriverAccess;
+
                 case ".XLS": //NOXLATE
                     return use64Bit ? OdbcDriverNames.OdbcDriverExcel64 : OdbcDriverNames.OdbcDriverExcel;
+
                 case ".XLSX": //NOXLATE
                 case ".XLSM": //NOXLATE
                 case ".XLSB": //NOXLATE
@@ -135,7 +137,6 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         {
             get { return this; }
         }
-
 
         public event EventHandler RequestDocumentReset;
     }

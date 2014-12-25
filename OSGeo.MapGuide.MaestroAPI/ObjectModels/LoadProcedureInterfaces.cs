@@ -1,28 +1,29 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using System.ComponentModel;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
 {
@@ -51,22 +52,27 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
         /// A Load Procedure for SDF 3.0 files
         /// </summary>
         Sdf,
+
         /// <summary>
         /// A Load Procedure for SHP files
         /// </summary>
         Shp,
+
         /// <summary>
         /// A Load Procedure for DWF files
         /// </summary>
         Dwf,
+
         /// <summary>
         /// A Load Procedure for Raster files (not supported by Maestro)
         /// </summary>
         Raster,
+
         /// <summary>
         /// A Load Procedure for DWG files (not supported by Maestro)
         /// </summary>
         Dwg,
+
         /// <summary>
         /// A Load Procedure for SQLite files
         /// </summary>
@@ -90,7 +96,6 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
     /// </summary>
     public interface IDwgLoadProcedure : IBaseLoadProcedure
     {
-
     }
 
     /// <summary>
@@ -98,13 +103,12 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
     /// </summary>
     public interface IRasterLoadProcedure : IBaseLoadProcedure
     {
-
     }
 
     /// <summary>
-    /// Base type of all load procedures. All Load Procedures at the minimum require 
+    /// Base type of all load procedures. All Load Procedures at the minimum require
     /// the following information:
-    /// 
+    ///
     /// <list type="number">
     ///     <item>
     ///         <description>A list of source files.</description>
@@ -119,9 +123,9 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
     ///         <description>The folder where layers will be created [optional. dependent on #3]</description>
     ///     </item>
     /// </list>
-    /// 
+    ///
     /// Once initialized, load procedures can be executed via <see cref="M:OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.ExecuteLoadProcedure(OSGeo.MapGuide.ObjectModels.LoadProcedure.ILoadProcedure,OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack,System.Boolean)"/> method
-    /// 
+    ///
     /// Because Load Procedures are also resources, they can be saved into the library repository via the <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SaveResource(OSGeo.MapGuide.MaestroAPI.Resource.IResource)"/> method
     /// and retrieved from the repository via the <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResource(System.String)"/> method
     /// </summary>
@@ -270,7 +274,6 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
     /// </summary>
     public interface IDwfLoadProcedure : IBaseLoadProcedure
     {
-
     }
 
     /// <summary>

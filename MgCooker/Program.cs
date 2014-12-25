@@ -1,33 +1,34 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using Duplicati.CommandLine;
 using Maestro.Login;
-using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.MaestroAPI;
-using System.Collections.Specialized;
-using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ExtendedObjectModels;
+using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Tile;
+using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.Common;
+using System;
+using System.Collections.Generic;
 
 namespace MgCooker
 {
@@ -44,7 +45,7 @@ namespace MgCooker
         private static long tileCount;
         private static long totalTiles;
         private static TimeSpan prevDuration;
-        
+
         private static long mapCount;
         private static long groupCount;
 
@@ -69,7 +70,7 @@ namespace MgCooker
             //extentoverride=minx,miny,maxx,maxy
 
             Boolean cmdLineMode = false;
-            
+
             string mapdefinitions = "";
             string scaleindex = "";
             string basegroups = "";
@@ -84,7 +85,7 @@ namespace MgCooker
             string metersPerUnit = "";
 
             IEnvelope overrideExtents = null;
-            
+
             List<string> largs = new List<string>(args);
             Dictionary<string, string> opts = CommandLineParser.ExtractOptions(largs);
             if (opts.ContainsKey(TileRunParameters.MAPDEFINITIONS))
@@ -129,7 +130,6 @@ namespace MgCooker
                 }
             }
 
-
             if (largs.IndexOf("batch") >= 0 || largs.IndexOf("/batch") >= 0 || largs.IndexOf("commandline") >= 0 || largs.IndexOf("/commandline") >= 0)
             {
                 cmdLineMode = true;
@@ -145,7 +145,6 @@ namespace MgCooker
                 hasConsole = false;
                 m_loggableProgress = false;
             }
-
 
             IServerConnection connection = null;
 
@@ -188,8 +187,6 @@ namespace MgCooker
                 }
             }
 
-
-
             if (!cmdLineMode)
             {
                 SetupRun sr = null;
@@ -204,10 +201,9 @@ namespace MgCooker
                     return;
                 }
             }
-            
 
             TilingRunCollection bx = new TilingRunCollection(connection);
-            
+
             int x;
 
             if (!string.IsNullOrEmpty(limitCols) && int.TryParse(limitCols, out x))
@@ -222,7 +218,7 @@ namespace MgCooker
 
             if (!string.IsNullOrEmpty(DPI) && int.TryParse(DPI, out x))
                 bx.Config.DPI = x;
-            
+
             double d;
             if (!string.IsNullOrEmpty(metersPerUnit) && double.TryParse(metersPerUnit, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentCulture, out d))
             {
@@ -238,7 +234,7 @@ namespace MgCooker
             //Now that all global parameters are set, we can now add the map definitions
             bx.AddMapDefinitions(maps);
 
-            //basegroups must be set in each mapdefinition 
+            //basegroups must be set in each mapdefinition
             if (!string.IsNullOrEmpty(basegroups))
             {
                 List<string> groups = new List<string>();
@@ -263,7 +259,7 @@ namespace MgCooker
                         scales.Add(tmp);
                 foreach (MapTilingConfiguration bm in bx.Maps)
                     bm.SetScalesAndExtend(scales.ToArray(), overrideExtents);
-            } 
+            }
             else if (!string.IsNullOrEmpty(scaleindex))
             {
                 List<int> scales = new List<int>();
@@ -273,8 +269,6 @@ namespace MgCooker
                         scales.Add(tmp);
                 bx.SetScales(scales.ToArray());
             }
-
-            
 
             if (!cmdLineMode)
             {
@@ -301,13 +295,13 @@ namespace MgCooker
             }
         }
 
-        static void bx_FailedRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref Exception exception)
+        private static void bx_FailedRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref Exception exception)
         {
             exceptionList.Add(exception);
             exception = null;
         }
 
-        static void DisplayProgress(MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private static void DisplayProgress(MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             if (hasConsole)
                 Console.Clear();
@@ -327,15 +321,14 @@ namespace MgCooker
             }
         }
 
-
-        static void bx_FinishRenderingGroup(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private static void bx_FinishRenderingGroup(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             TimeSpan duration = DateTime.Now - beginGroup;
             if (m_loggableProgress)
                 Console.WriteLine(string.Format(Strings.ConsoleOperationFinishGroup, DateTime.Now, group, duration));
         }
 
-        static void bx_BeginRenderingGroup(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private static void bx_BeginRenderingGroup(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             groupCount++;
             beginGroup = DateTime.Now;
@@ -348,7 +341,7 @@ namespace MgCooker
             totalTiles = map.TotalTiles;
         }
 
-        static void bx_FinishRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private static void bx_FinishRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             tileRuns.Add(DateTime.Now - beginTile);
             tileCount++;
@@ -371,7 +364,7 @@ namespace MgCooker
 
                 tileRuns.Clear();
                 lastUpdate = DateTime.Now;
-                
+
                 if (m_loggableProgress)
                     Console.WriteLine(string.Format(Strings.ConsoleOperationFinishTile, tileCount, totalTiles, group, duration));
                 else
@@ -379,26 +372,26 @@ namespace MgCooker
             }
         }
 
-        static void bx_BeginRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private static void bx_BeginRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             beginTile = DateTime.Now;
         }
 
-        static void bx_FinishRenderingScale(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private static void bx_FinishRenderingScale(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             TimeSpan duration = DateTime.Now - beginScale;
             if (m_loggableProgress)
                 Console.WriteLine(string.Format(Strings.ConsoleOperationFinishScale, DateTime.Now, map.MapDefinition.BaseMap.GetScaleAt(scaleindex), duration));
         }
 
-        static void bx_BeginRenderingScale(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private static void bx_BeginRenderingScale(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             beginScale = DateTime.Now;
             if (m_loggableProgress)
                 Console.WriteLine(string.Format(Strings.ConsoleOperationBeginScale, beginMap, map.MapDefinition.BaseMap.GetScaleAt(scaleindex), scaleindex, map.Resolutions));
         }
 
-        static void bx_FinishRenderingMap(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private static void bx_FinishRenderingMap(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             groupCount = 0;
             TimeSpan duration = DateTime.Now - beginMap;
@@ -406,7 +399,7 @@ namespace MgCooker
                 Console.WriteLine(string.Format(Strings.ConsoleOperationFinishMap, DateTime.Now, map.ResourceId, duration));
         }
 
-        static void bx_BeginRenderingMap(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private static void bx_BeginRenderingMap(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             mapCount++;
             beginMap = DateTime.Now;

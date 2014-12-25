@@ -1,29 +1,31 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.Common
 {
-
     /// <summary>
     /// A combo box customised for selection of colors
     /// </summary>
@@ -71,7 +73,7 @@ namespace Maestro.Editors.Common
         /// Gets or sets a value indicating whether [allow transparent].
         /// </summary>
         /// <value><c>true</c> if [allow transparent]; otherwise, <c>false</c>.</value>
-        [ System.ComponentModel.Browsable(false), System.ComponentModel.ReadOnly(true) ]
+        [System.ComponentModel.Browsable(false), System.ComponentModel.ReadOnly(true)]
         public bool AllowTransparent
         {
             get { return m_allowTransparent; }
@@ -82,12 +84,12 @@ namespace Maestro.Editors.Common
         /// Gets or sets a value indicating whether [transparent selected].
         /// </summary>
         /// <value><c>true</c> if [transparent selected]; otherwise, <c>false</c>.</value>
-        [ System.ComponentModel.Browsable(false), System.ComponentModel.ReadOnly(true) ]
+        [System.ComponentModel.Browsable(false), System.ComponentModel.ReadOnly(true)]
         public bool TransparentSelected
         {
             get { return this.SelectedItem == SpecialCell.Transparent; }
-            set 
-            { 
+            set
+            {
                 if (value)
                     this.SelectedItem = SpecialCell.Transparent;
                 else
@@ -99,10 +101,10 @@ namespace Maestro.Editors.Common
         /// Gets or sets the color of the current.
         /// </summary>
         /// <value>The color of the current.</value>
-        [ System.ComponentModel.Browsable(false), System.ComponentModel.ReadOnly(true) ]
+        [System.ComponentModel.Browsable(false), System.ComponentModel.ReadOnly(true)]
         public Color CurrentColor
         {
-            get 
+            get
             {
                 if (this.SelectedItem == null)
                     return m_currentColor.Color;
@@ -123,7 +125,6 @@ namespace Maestro.Editors.Common
                     this.SelectedItem = m_currentColor;
                 }
             }
-    
         }
 
         /// <summary>
@@ -146,10 +147,8 @@ namespace Maestro.Editors.Common
                     base.OnMeasureItem(e);
             }
             else
-                base.OnMeasureItem (e);
+                base.OnMeasureItem(e);
         }
-
-
 
         /// <summary>
         /// Raises the <see cref="E:System.Windows.Forms.ComboBox.SelectedIndexChanged"/> event.
@@ -176,14 +175,13 @@ namespace Maestro.Editors.Common
                 }
             }
             else
-                m_currentColor.Color = this.CurrentColor; 
-            base.OnSelectedIndexChanged (e);
+                m_currentColor.Color = this.CurrentColor;
+            base.OnSelectedIndexChanged(e);
         }
-
 
         private const int MARGIN = 2;
 
-        private readonly Color[] KnownColors = 
+        private readonly Color[] KnownColors =
         {
             Color.Black,
             Color.White,
@@ -210,10 +208,10 @@ namespace Maestro.Editors.Common
         /// <returns>
         /// A <see cref="T:System.Windows.Forms.ComboBox.ObjectCollection"/> representing the items in the <see cref="T:System.Windows.Forms.ComboBox"/>.
         /// </returns>
-        [ System.ComponentModel.Browsable(false), System.ComponentModel.ReadOnly(true) ]
+        [System.ComponentModel.Browsable(false), System.ComponentModel.ReadOnly(true)]
         public new ComboBox.ObjectCollection Items
         {
-            get 
+            get
             {
                 return base.Items;
             }
@@ -230,6 +228,7 @@ namespace Maestro.Editors.Common
 
             private CellTypes m_cellType;
             private Color m_color;
+
             public SpecialCell(CellTypes celltype)
             {
                 m_cellType = celltype;
@@ -255,12 +254,11 @@ namespace Maestro.Editors.Common
                 else if (m_cellType == CellTypes.Transparent)
                     return Strings.TransparentName;
                 else
-                    return base.ToString ();
+                    return base.ToString();
             }
 
             public static readonly SpecialCell MoreColors = new SpecialCell(CellTypes.MoreColors);
             public static readonly SpecialCell Transparent = new SpecialCell(CellTypes.Transparent);
-
         }
 
         private bool ColorComboRender(DrawItemEventArgs e, object value)
@@ -288,7 +286,6 @@ namespace Maestro.Editors.Common
                 color = Color.FromArgb(median, median, median);
             }
 
-
             e.DrawBackground();
 
             Rectangle r = new Rectangle(e.Bounds.X + MARGIN, e.Bounds.Y + MARGIN, e.Bounds.Width - MARGIN * 2, e.Bounds.Height - MARGIN * 2);
@@ -298,7 +295,7 @@ namespace Maestro.Editors.Common
 
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
                 e.DrawFocusRectangle();
-            
+
             return true;
         }
 
@@ -308,7 +305,7 @@ namespace Maestro.Editors.Common
         /// <value>The color picker.</value>
         public ColorDialog ColorPicker
         {
-            get 
+            get
             {
                 if (m_colorPicker == null)
                 {
@@ -317,7 +314,7 @@ namespace Maestro.Editors.Common
 
                     m_colorPicker = m_sharedColorPicker;
                 }
-                return m_colorPicker; 
+                return m_colorPicker;
             }
             set { m_colorPicker = value; }
         }

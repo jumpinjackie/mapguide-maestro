@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using OSGeo.MapGuide.MaestroAPI;
+﻿using Maestro.Editors.WatermarkDefinition;
 using OSGeo.MapGuide.MaestroAPI.Schema;
-using Maestro.Editors.WatermarkDefinition;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.LayerDefinition
 {
@@ -28,7 +22,7 @@ namespace Maestro.Editors.LayerDefinition
             layerStyles.Owner = this;
         }
 
-        void OnFeatureClassChanged(object sender, EventArgs e)
+        private void OnFeatureClassChanged(object sender, EventArgs e)
         {
             layerProperties.PopulatePropertyList();
         }
@@ -101,7 +95,6 @@ namespace Maestro.Editors.LayerDefinition
 
         internal void UpdateDisplay()
         {
-            
         }
 
         internal void HasChanged()
@@ -111,10 +104,12 @@ namespace Maestro.Editors.LayerDefinition
 
         internal void SetLastException(Exception ex)
         {
-            
         }
 
-        internal void FlagDirty() { OnResourceChanged(); }
+        internal void FlagDirty()
+        {
+            OnResourceChanged();
+        }
 
         internal string GetFdoProvider()
         {

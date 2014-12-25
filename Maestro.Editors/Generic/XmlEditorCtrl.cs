@@ -1,45 +1,39 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Text;
-using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Schema;
+//
 
+#endregion Disclaimer / License
+
+using ICSharpCode.TextEditor.Actions;
 using ICSharpCode.TextEditor.Document;
 using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Exceptions;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.ObjectModels;
-using ICSharpCode.TextEditor.Actions;
-using Maestro.Editors.Generic.XmlEditor;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+using System.Xml;
 
 namespace Maestro.Editors.Generic
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public delegate void XmlValidationCallback(out string[] errors, out string[] warnings);
 
@@ -51,7 +45,7 @@ namespace Maestro.Editors.Generic
     /// </summary>
     public partial class XmlEditorCtrl : EditorBase, INotifyResourceChanged
     {
-        class FindAction : AbstractEditAction
+        private class FindAction : AbstractEditAction
         {
             private XmlEditorCtrl _parent;
 
@@ -66,11 +60,14 @@ namespace Maestro.Editors.Generic
             }
         }
 
-        class FindAndReplaceAction : AbstractEditAction
+        private class FindAndReplaceAction : AbstractEditAction
         {
             private XmlEditorCtrl _parent;
 
-            public FindAndReplaceAction(XmlEditorCtrl parent) { _parent = parent; }
+            public FindAndReplaceAction(XmlEditorCtrl parent)
+            {
+                _parent = parent;
+            }
 
             public override void Execute(ICSharpCode.TextEditor.TextArea textArea)
             {
@@ -110,9 +107,9 @@ namespace Maestro.Editors.Generic
                 txtXmlContent.DefaultSchemaCompletionData = new XmlEditor.AutoCompletion.XmlSchemaCompletionData(xsdPath);
             }
         }
-        
+
         private string _origText;
-        
+
         private void OnTextContentChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(_origText) && !txtXmlContent.Text.Equals(_origText))
@@ -120,7 +117,7 @@ namespace Maestro.Editors.Generic
                 OnResourceChanged();
                 EvaluateCommands();
             }
-                
+
             if (string.IsNullOrEmpty(_origText))
                 _origText = txtXmlContent.Text;
         }
@@ -203,9 +200,9 @@ namespace Maestro.Editors.Generic
         public string XmlContent
         {
             get { return txtXmlContent.Text; }
-            set 
+            set
             {
-                _origText = null;            
+                _origText = null;
                 txtXmlContent.Text = value;
                 FormatText();
             }
@@ -234,7 +231,7 @@ namespace Maestro.Editors.Generic
             UpdateTextPosition();
             EvaluateCommands();
             txtXmlContent.UpdateFolding();
-            if (_ready) 
+            if (_ready)
                 OnResourceChanged();
         }
 
@@ -420,8 +417,8 @@ namespace Maestro.Editors.Generic
 
         /// <summary>
         /// Gets or sets whether this editor can support reloading XML content
-        /// from a source resource. If true, subscribe to the 
-        /// <see cref="E:Maestro.Editors.Generic.XmlEditorCtrl.RequestReloadFromSource"/> 
+        /// from a source resource. If true, subscribe to the
+        /// <see cref="E:Maestro.Editors.Generic.XmlEditorCtrl.RequestReloadFromSource"/>
         /// event to handle this particular action
         /// </summary>
         public bool SupportsReReadFromSource
@@ -444,18 +441,18 @@ namespace Maestro.Editors.Generic
                 h(this, EventArgs.Empty);
         }
     }
-    
+
     /// <summary>
     /// Holds information about the start of a fold in an xml string.
     /// </summary>
     internal class XmlFoldStart
     {
-        int line = 0;
-        int col = 0;
-        string prefix = String.Empty;
-        string name = String.Empty;
-        string foldText = String.Empty;
-        
+        private int line = 0;
+        private int col = 0;
+        private string prefix = String.Empty;
+        private string name = String.Empty;
+        private string foldText = String.Empty;
+
         public XmlFoldStart(string prefix, string name, int line, int col)
         {
             this.line = line;
@@ -463,47 +460,59 @@ namespace Maestro.Editors.Generic
             this.prefix = prefix;
             this.name = name;
         }
-        
+
         /// <summary>
         /// The line where the fold should start.  Lines start from 0.
         /// </summary>
-        public int Line {
-            get {
+        public int Line
+        {
+            get
+            {
                 return line;
             }
         }
-        
+
         /// <summary>
         /// The column where the fold should start.  Columns start from 0.
         /// </summary>
-        public int Column {
-            get {
+        public int Column
+        {
+            get
+            {
                 return col;
             }
-        }	
-        
+        }
+
         /// <summary>
         /// The name of the xml item with its prefix if it has one.
         /// </summary>
-        public string Name {
-            get {
-                if (prefix.Length > 0) {
+        public string Name
+        {
+            get
+            {
+                if (prefix.Length > 0)
+                {
                     return String.Concat(prefix, ":", name); //NOXLATE
-                } else {
+                }
+                else
+                {
                     return name;
                 }
             }
         }
-        
+
         /// <summary>
         /// The text to be displayed when the item is folded.
         /// </summary>
-        public string FoldText {
-            get {
+        public string FoldText
+        {
+            get
+            {
                 return foldText;
             }
-            
-            set {
+
+            set
+            {
                 foldText = value;
             }
         }

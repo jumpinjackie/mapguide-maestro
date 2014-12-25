@@ -1,29 +1,29 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+//
+
+#endregion Disclaimer / License
 
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
@@ -38,6 +38,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// The internal list of value
         /// </summary>
         protected List<TVal> _values;
+
         /// <summary>
         /// The internal dictionary of values keyed by its key
         /// </summary>
@@ -85,7 +86,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///   <paramref name="index"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.
         ///   </exception>
-        ///   
+        ///
         /// <exception cref="T:System.NotSupportedException">
         /// The <see cref="T:System.Collections.Generic.IList`1"/> is read-only.
         ///   </exception>
@@ -109,7 +110,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///   <paramref name="index"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.
         ///   </exception>
-        ///   
+        ///
         /// <exception cref="T:System.NotSupportedException">
         /// The <see cref="T:System.Collections.Generic.IList`1"/> is read-only.
         ///   </exception>
@@ -135,11 +136,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns>
         /// The element at the specified index.
         ///   </returns>
-        ///   
+        ///
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///   <paramref name="index"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.
         ///   </exception>
-        ///   
+        ///
         /// <exception cref="T:System.NotSupportedException">
         /// The property is set and the <see cref="T:System.Collections.Generic.IList`1"/> is read-only.
         ///   </exception>
@@ -214,7 +215,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public virtual void Clear()
         {
             bool hasRemovedAnItem = false;
-            try 
+            try
             {
                 bSuppressCollectionChanged = true;
                 //We don't call Clear() directly because we need to propagate removal of each
@@ -237,7 +238,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     _valuesByKey.Clear();
                 }
             }
-            finally {
+            finally
+            {
                 bSuppressCollectionChanged = false;
                 if (hasRemovedAnItem)
                     OnCollectionChanged();
@@ -264,11 +266,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <exception cref="T:System.ArgumentNullException">
         ///   <paramref name="array"/> is null.
         ///   </exception>
-        ///   
+        ///
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///   <paramref name="arrayIndex"/> is less than 0.
         ///   </exception>
-        ///   
+        ///
         /// <exception cref="T:System.ArgumentException">
         ///   <paramref name="array"/> is multidimensional.
         /// -or-
@@ -358,31 +360,31 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns>
         /// The element at the specified index.
         ///   </returns>
-        ///   
+        ///
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///   <paramref name="key"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.
         ///   </exception>
-        ///   
+        ///
         /// <exception cref="T:System.NotSupportedException">
         /// The property is set and the <see cref="T:System.Collections.Generic.IList`1"/> is read-only.
         ///   </exception>
         public TVal this[TKey key]
         {
             get { return _valuesByKey.ContainsKey(key) ? _valuesByKey[key] : null; }
-            set 
-            { 
+            set
+            {
                 _valuesByKey[key] = value;
                 OnCollectionChanged();
             }
         }
-        
+
         /// <summary>
         /// Raised when the collection has been modified
         /// </summary>
         public event EventHandler CollectionChanged;
-        
+
         private bool bSuppressCollectionChanged = false;
-        
+
         /// <summary>
         /// Raises the <see cref="CollectionChanged" /> event
         /// </summary>
@@ -390,7 +392,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             if (bSuppressCollectionChanged)
                 return;
-        
+
             var h = this.CollectionChanged;
             if (h != null)
                 h(this, EventArgs.Empty);
@@ -400,13 +402,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Called before an item is added
         /// </summary>
         /// <param name="item">The item.</param>
-        protected virtual void OnBeforeItemAdded(TVal item) { }
+        protected virtual void OnBeforeItemAdded(TVal item)
+        {
+        }
 
         /// <summary>
         /// Called before an item is removed
         /// </summary>
         /// <param name="item">The item.</param>
-        protected virtual void OnBeforeItemRemove(TVal item) { }
+        protected virtual void OnBeforeItemRemove(TVal item)
+        {
+        }
 
         /// <summary>
         /// Called after an item has been added
@@ -546,7 +552,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///   <paramref name="index"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.
         ///   </exception>
-        ///   
+        ///
         /// <exception cref="T:System.NotSupportedException">
         /// The <see cref="T:System.Collections.Generic.IList`1"/> is read-only.
         ///   </exception>
@@ -613,11 +619,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns>
         /// The element at the specified index.
         ///   </returns>
-        ///   
+        ///
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///   <paramref name="index"/> is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"/>.
         ///   </exception>
-        ///   
+        ///
         /// <exception cref="T:System.NotSupportedException">
         /// The property is set and the <see cref="T:System.Collections.Generic.IList`1"/> is read-only.
         ///   </exception>

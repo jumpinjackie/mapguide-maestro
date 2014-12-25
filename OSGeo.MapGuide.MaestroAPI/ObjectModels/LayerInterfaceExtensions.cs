@@ -1,34 +1,35 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.DrawingSource;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System.Drawing;
-using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.ObjectModels.DrawingSource;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
 {
@@ -171,6 +172,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
                             return scList.SpatialContext[0].CoordinateSystemWkt;
                     }
                     break;
+
                 case LayerType.Vector:
                     {
                         var vl = (IVectorLayerDefinition)layer.SubLayer;
@@ -180,6 +182,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
                             return scList.SpatialContext[0].CoordinateSystemWkt;
                     }
                     break;
+
                 case LayerType.Drawing:
                     {
                         int[] services = conn.Capabilities.SupportedServices;
@@ -197,7 +200,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
             return string.Empty;
         }
 
-        static IFdoSpatialContext FindSpatialContext(FdoSpatialContextList spatialContexts, string scName)
+        private static IFdoSpatialContext FindSpatialContext(FdoSpatialContextList spatialContexts, string scName)
         {
             foreach (IFdoSpatialContext sc in spatialContexts.SpatialContext)
             {
@@ -298,7 +301,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
                             env = conn.FeatureService.GetSpatialExtent(layer.SubLayer.ResourceId, ((IVectorLayerDefinition)layer.SubLayer).FeatureName, ((IVectorLayerDefinition)layer.SubLayer).Geometry);
                             return env;
                         }
-                        catch 
+                        catch
                         {
                             //Which in that case, default to extents of active spatial context
                             if (activeSc != null && activeSc.Extent != null)
@@ -555,14 +558,14 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
             var rule = fact.CreateDefaultCompositeRule();
             //Clear out existing instances
             rule.CompositeSymbolization.RemoveAllSymbolInstances();
-            
+
             var ldf = (ILayerDefinition)fact;
-            var vl  = (IVectorLayerDefinition)ldf.SubLayer;
+            var vl = (IVectorLayerDefinition)ldf.SubLayer;
 
             string symbolName = "Square"; //NOXLATE
 
-            var ssym = ObjectFactory.CreateSimpleSymbol(ldf.CurrentConnection, 
-                                                        vl.SymbolDefinitionVersion, 
+            var ssym = ObjectFactory.CreateSimpleSymbol(ldf.CurrentConnection,
+                                                        vl.SymbolDefinitionVersion,
                                                         symbolName,
                                                         "Default Point Symbol"); //NOXLATE
 
@@ -572,7 +575,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
             square.LineColor = "%LINECOLOR%"; //NOXLATE
             square.LineWeight = "%LINEWEIGHT%"; //NOXLATE
             ssym.AddGraphics(square);
-            
+
             ssym.PointUsage = ssym.CreatePointUsage();
             ssym.PointUsage.Angle = "%ROTATION%"; //NOXLATE
 

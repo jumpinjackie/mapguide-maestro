@@ -1,28 +1,30 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
 
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 using System.Collections.Specialized;
-using OSGeo.MapGuide.ObjectModels.Common;
-using System.Globalization;
 using System.Drawing;
+using System.Globalization;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -46,7 +48,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         internal RequestBuilder(Uri hosturi, string locale)
-            : this (hosturi, locale, null, false)
+            : this(hosturi, locale, null, false)
         {
         }
 
@@ -98,7 +100,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
             return m_hosturi + "?" + EncodeParameters(param);
-
         }
 
         internal string EnumerateResources(string startingpoint, int depth, string type, bool computeChildren)
@@ -154,7 +155,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             param.Add("PROVIDER", providername);
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            foreach(string k in parameters)
+            foreach (string k in parameters)
             {
                 sb.Append(k);
                 sb.Append("=");
@@ -174,7 +175,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             return req;
         }
 
-
         internal string TestConnection(string providername, NameValueCollection parameters)
         {
             if (m_sessionID == null)
@@ -191,7 +191,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             param.Add("PROVIDER", providername);
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            foreach(string k in parameters)
+            foreach (string k in parameters)
             {
                 sb.Append(k);
                 sb.Append("=");
@@ -237,7 +237,6 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             return System.Web.HttpUtility.UrlEncode(name) + "=" + System.Web.HttpUtility.UrlEncode(value);
         }
-
 
         public string GetMapDWF(string id)
         {
@@ -317,7 +316,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
-
         public string DeleteResourceData(string id, string name)
         {
             if (m_sessionID == null)
@@ -337,7 +335,6 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             return m_hosturi + "?" + EncodeParameters(param);
         }
-
 
         public string GetResourceHeader(string id)
         {
@@ -379,7 +376,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         private void EncodeFormParameters(string boundary, NameValueCollection param, System.IO.Stream responseStream)
         {
-            foreach(string s in param.Keys)
+            foreach (string s in param.Keys)
             {
                 string val = param[s];
                 if (string.IsNullOrEmpty(val))
@@ -412,12 +409,12 @@ namespace OSGeo.MapGuide.MaestroAPI
                 contenttype = "\r\nContent-Type: application/octet-stream";
             }
 
-            byte[] headers = System.Text.Encoding.UTF8.GetBytes(string.Concat(new String[] { "Content-Disposition: form-data; name=\"" + name + "\";" + filename , "\"", contenttype, "\r\n\r\n"}));
+            byte[] headers = System.Text.Encoding.UTF8.GetBytes(string.Concat(new String[] { "Content-Disposition: form-data; name=\"" + name + "\";" + filename, "\"", contenttype, "\r\n\r\n" }));
             responseStream.Write(headers, 0, headers.Length);
 
             Utility.CopyStream(dataStream, responseStream, callback, 0);
 
-            byte[] footer =  System.Text.Encoding.UTF8.GetBytes("\r\n--" + boundary + "\r\n");
+            byte[] footer = System.Text.Encoding.UTF8.GetBytes("\r\n--" + boundary + "\r\n");
             responseStream.Write(footer, 0, footer.Length);
         }
 
@@ -441,7 +438,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             EncodeFormParameters(boundary, param, outStream);
             if (content != null)
-                AppendFormContent("CONTENT", "content.xml", boundary, outStream, content, null);					
+                AppendFormContent("CONTENT", "content.xml", boundary, outStream, content, null);
             if (header != null)
                 AppendFormContent("HEADER", "header.xml", boundary, outStream, header, null);
 
@@ -492,7 +489,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             System.Net.WebRequest req = PrepareFormContent(outStream, out boundary);
 
             EncodeFormParameters(boundary, param, outStream);
-            AppendFormContent("DATA", "content.bin", boundary, outStream, content, callback);					
+            AppendFormContent("DATA", "content.bin", boundary, outStream, content, callback);
 
             req.ContentLength = outStream.Length;
             return req;
@@ -511,7 +508,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             param.Add("RESOURCEID", resourceId);
             param.Add("CLASSNAME", classname);
-            
+
             //Using the very standard TAB character for column seperation
             //  ... nice if your data has "," or ";" in the column names :)
             if (columns != null)
@@ -557,7 +554,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             param.Add("RESOURCEID", resourceId);
             param.Add("CLASSNAME", classname);
-            
+
             //Using the very standard TAB character for column seperation
             //  ... nice if your data has "," or ";" in the column names :)
             if (columns != null)
@@ -568,7 +565,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 System.Collections.Generic.List<string> keys = new System.Collections.Generic.List<string>();
                 System.Collections.Generic.List<string> values = new System.Collections.Generic.List<string>();
 
-                foreach(string s in computedProperties.Keys)
+                foreach (string s in computedProperties.Keys)
                 {
                     keys.Add(s);
                     values.Add(computedProperties[s]);
@@ -613,7 +610,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             param.Add("RESOURCEID", resourceId);
             param.Add("SCHEMA", schema);
-            
+
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
@@ -649,7 +646,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
-
         public string EnumerateCategories()
         {
             NameValueCollection param = new NameValueCollection();
@@ -663,7 +659,6 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             return m_hosturi + "?" + EncodeParameters(param);
         }
-
 
         public string EnumerateCoordinateSystems(string category)
         {
@@ -697,7 +692,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
-
         public string ConvertCoordinateSystemCodeToWkt(string code)
         {
             NameValueCollection param = new NameValueCollection();
@@ -713,7 +707,6 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             return m_hosturi + "?" + EncodeParameters(param);
         }
-
 
         public string ConvertWktToEpsgCode(string wkt)
         {
@@ -859,7 +852,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             if (selectionXml != null && selectionXml.Length != 0)
                 param.Add("SELECTION", selectionXml);
-            
+
             param.Add("SETVIEWCENTERX", Utility.SerializeDigit(centerX));
             param.Add("SETVIEWCENTERY", Utility.SerializeDigit(centerY));
             param.Add("SETVIEWSCALE", Utility.SerializeDigit(scale));
@@ -928,7 +921,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             return req;
         }
-        
+
         public string BuildRequest(NameValueCollection param)
         {
             return m_hosturi + "?" + EncodeParameters(param);
@@ -941,13 +934,12 @@ namespace OSGeo.MapGuide.MaestroAPI
             param.Add("VERSION", "1.0.0");
             param.Add("SESSION", m_sessionID);
             param.Add("MAPNAME", mapname);
-            
+
             if (format != null && format.Length != 0)
                 param.Add("FORMAT", format);
 
             if (selectionXml != null && selectionXml.Length != 0)
                 param.Add("SELECTION", selectionXml);
-            
 
             param.Add("SETVIEWCENTERX", Utility.SerializeDigit(centerX));
             param.Add("SETVIEWCENTERY", Utility.SerializeDigit(centerY));
@@ -986,7 +978,6 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             if (selectionXml != null && selectionXml.Length != 0)
                 param.Add("SELECTION", selectionXml);
-
 
             param.Add("SETDATAEXTENT", Utility.SerializeDigit(x1) + ", " + Utility.SerializeDigit(y1) + ", " + Utility.SerializeDigit(x2) + ", " + Utility.SerializeDigit(y2));
             param.Add("SETDISPLAYDPI", dpi.ToString());
@@ -1080,7 +1071,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
-            
+
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
@@ -1095,7 +1086,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
-            
+
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
@@ -1110,7 +1101,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
-            
+
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
@@ -1127,7 +1118,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
-            
+
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
@@ -1147,7 +1138,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
-            
+
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
@@ -1173,7 +1164,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             if (m_locale != null)
                 param.Add("LOCALE", m_locale);
-            
+
             return m_hosturi + "?" + EncodeParameters(param);
         }
 

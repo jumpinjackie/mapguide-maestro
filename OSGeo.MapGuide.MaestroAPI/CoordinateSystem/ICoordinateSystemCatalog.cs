@@ -1,23 +1,25 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
+//
+
+#endregion Disclaimer / License
+
 namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 {
     /// <summary>
@@ -36,12 +38,12 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
     /// CoordinateSystemDefinitionBase dstCs = csCatalog.FindCoordSys("WGS84.PseudoMercator");
     /// //Create the transform using the WKTs of the source and target coordinate system definitions
     /// ISimpleTransform trans = csCatalog.CreateTransform(srcCs.WKT, dstCs.WKT);
-    /// 
+    ///
     /// double x = -71.061342;
     /// double y = 42.355892;
     /// double tx;
     /// double ty;
-    /// 
+    ///
     /// trans.Transform(x, y, out tx, out ty);
     /// //tx and ty will contain the transformed coordinates
     /// ]]>
@@ -86,7 +88,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// Gets an array of all coordinate systems in this catalog
         /// </summary>
         CoordinateSystemDefinitionBase[] Coordsys { get; }
-        
+
         /// <summary>
         /// Gets an array of all coordinate systems in the specified category
         /// </summary>
@@ -100,7 +102,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <param name="coordcode"></param>
         /// <returns></returns>
         CoordinateSystemDefinitionBase FindCoordSys(string coordcode);
-        
+
         /// <summary>
         /// Gets an empty coordinate system
         /// </summary>
@@ -113,12 +115,12 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <param name="wkt"></param>
         /// <returns></returns>
         bool IsValid(string wkt);
-        
+
         /// <summary>
         /// Gets the name of the coordinate system library
         /// </summary>
         string LibraryName { get; }
-        
+
         /// <summary>
         /// Gets whether the coordinate system catalog has been loaded
         /// </summary>

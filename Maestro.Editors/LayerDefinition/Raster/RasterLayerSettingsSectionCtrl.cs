@@ -1,44 +1,44 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
+//
+
+#endregion Disclaimer / License
+
 using Maestro.Editors.Common;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using System.Diagnostics;
 using Maestro.Editors.Generic;
+using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using Maestro.Shared.UI;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.LayerDefinition.Raster
 {
     //NOTE: Unlike the Vector Layer editor, we have to do a full schema walk here because
     //we need to filter out non-raster feature classes, something that the existing GetSchemas()
     //and GetClassNames() cannot do for us.
-    
+
     [ToolboxItem(false)]
     internal partial class RasterLayerSettingsSectionCtrl : EditorBindableCollapsiblePanel
     {
@@ -67,7 +67,7 @@ namespace Maestro.Editors.LayerDefinition.Raster
             _rl.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnRasterLayerPropertyChanged, (eh) => _rl.PropertyChanged -= eh);
         }
 
-        void OnRasterLayerPropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void OnRasterLayerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             OnResourceChanged();
         }

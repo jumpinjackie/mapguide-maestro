@@ -1,42 +1,42 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using Aga.Controls.Tree;
+using ICSharpCode.Core;
+using ICSharpCode.Core.WinForms;
+using Maestro.Base.Commands;
+using Maestro.Base.Commands.SiteExplorer;
+using Maestro.Base.Services;
+using Maestro.Base.UI.Preferences;
+using Maestro.Editors;
+using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.CrossConnection;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
-using ICSharpCode.Core.WinForms;
-using Aga.Controls.Tree;
-using Maestro.Base.Services;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using ICSharpCode.Core;
-using Maestro.Base.UI.Preferences;
-using Maestro.Shared.UI;
-using Maestro.Base.Commands.SiteExplorer;
-using Maestro.Base.Commands;
 using System.Linq;
-using Maestro.Editors;
-using OSGeo.MapGuide.MaestroAPI.CrossConnection;
+using System.Windows.Forms;
 
 namespace Maestro.Base.UI
 {
@@ -69,7 +69,7 @@ namespace Maestro.Base.UI
             wb.ActiveDocumentChanged += WeakEventHandler.Wrap(OnActiveDocumentChanged, (eh) => wb.ActiveDocumentChanged -= eh);
         }
 
-        void OnActiveDocumentChanged(object sender, EventArgs e)
+        private void OnActiveDocumentChanged(object sender, EventArgs e)
         {
             Workbench wb = Workbench.Instance;
             var ed = wb.ActiveEditor;
@@ -82,7 +82,7 @@ namespace Maestro.Base.UI
             }
         }
 
-        void OnIdle(object sender, EventArgs e)
+        private void OnIdle(object sender, EventArgs e)
         {
             foreach (var item in tsSiteExplorer.Items)
             {
@@ -151,7 +151,6 @@ namespace Maestro.Base.UI
 
         protected override void OnLoad(EventArgs e)
         {
-            
         }
 
         public override bool AllowUserClose
@@ -173,7 +172,7 @@ namespace Maestro.Base.UI
         public void FullRefresh()
         {
             _model.FullRefresh();
-            foreach(var node in trvResources.Root.Children)
+            foreach (var node in trvResources.Root.Children)
             {
                 node.Expand();
             }
@@ -194,7 +193,7 @@ namespace Maestro.Base.UI
 
                 //If this node is not initially expanded, we get NRE on refresh
                 ExpandNode(connectionName, resId);
-                
+
                 var path = _model.GetPathFromResourceId(connectionName, resId);
                 while (path == null)
                 {
@@ -277,10 +276,9 @@ namespace Maestro.Base.UI
             }
         }
 
-
         public RepositoryItem[] SelectedItems
         {
-            get 
+            get
             {
                 List<RepositoryItem> items = new List<RepositoryItem>();
                 if (trvResources.SelectedNodes.Count > 0)
@@ -323,7 +321,6 @@ namespace Maestro.Base.UI
                 this.Cursor = Cursors.Default;
             }
         }
-
 
         public void ExpandNode(string connectionName, string folderId)
         {
@@ -385,9 +382,11 @@ namespace Maestro.Base.UI
                         case NodeFlagAction.HighlightDirty:
                             item.IsDirty = true;
                             break;
+
                         case NodeFlagAction.HighlightOpen:
                             item.IsOpen = true;
                             break;
+
                         case NodeFlagAction.None:
                             item.Reset();
                             break;
@@ -397,7 +396,7 @@ namespace Maestro.Base.UI
             }
         }
 
-        void OnNodeDrawText(object sender, Aga.Controls.Tree.NodeControls.DrawEventArgs e)
+        private void OnNodeDrawText(object sender, Aga.Controls.Tree.NodeControls.DrawEventArgs e)
         {
             if (e.Node.Tag == null)
                 return;
@@ -430,7 +429,6 @@ namespace Maestro.Base.UI
                     var ri = (RepositoryItem)n.Tag;
                     conn = _connManager.GetConnection(ri.ConnectionName);
                     rids.Add(new RepositoryHandle(new ResourceIdentifier(ri.ResourceId), conn));
-
                 }
                 trvResources.DoDragDrop(rids.ToArray(), DragDropEffects.All);
             }
@@ -483,7 +481,7 @@ namespace Maestro.Base.UI
                     {
                         /*
                          * Consider the following layout:
-                         * 
+                         *
                          * ConnectionA (Root):
                          *      Samples
                          *          Sheboygan
@@ -493,77 +491,76 @@ namespace Maestro.Base.UI
                          *                  *.LayerDefinition
                          *              Maps
                          *                  *.MapDefinition
-                         * 
+                         *
                          * ConnectionB (Root):
                          *      Foo
                          *      Bar
                          *          Snafu
-                         * 
+                         *
                          * These are the possible scenarios and outcomes:
-                         * 
+                         *
                          * Case 1 - Copy folder Samples/Sheboygan/Data into ConnectionB root:
-                         * 
+                         *
                          * Expect:
-                         * 
+                         *
                          * ConnectionB (Root):
                          *     Data
                          *          *.FeatureSource
                          *     Foo
                          *     Bar
                          *          Snafu
-                         * 
+                         *
                          * Case 2 - Copy Samples/Sheboygan/Data/*.FeatureSource into ConnectionB root:
-                         * 
+                         *
                          * Expect:
-                         * 
+                         *
                          * ConnectionB (Root):
                          *     *.FeatureSource
                          *     Foo
                          *     Bar
                          *          Snafu
-                         *          
+                         *
                          * Case 3 - Copy Samples/Sheboygan/Data/*.FeatureSource into Connection B/Foo:
-                         * 
+                         *
                          * Expect:
-                         * 
+                         *
                          * ConnectionB (Root):
                          *      Foo
                          *          *.FeatureSource
                          *      Bar
                          *          Snafu
-                         *          
+                         *
                          * Case 4 - Copy Samples/Sheboygan/Data into Connection B/Foo:
-                         * 
+                         *
                          * Expect:
-                         * 
+                         *
                          * ConnectionB (Root):
                          *      Foo
                          *          Data
                          *              *.FeatureSource
                          *      Bar
                          *          Snafu
-                         *          
+                         *
                          * Case 5 - Copy Samples/Sheboygan/Data into Connection B/Bar/Snafu:
-                         * 
+                         *
                          * Expect:
-                         * 
+                         *
                          * ConnectionB (Root):
                          *      Foo
                          *      Bar
                          *          Snafu
                          *              Data
                          *                  *.FeatureSource
-                         * 
+                         *
                          * Case 6 - Copy Samples/Sheboygan/Data/*.FeatureSource into Connection B/Bar/Snafu:
-                         * 
+                         *
                          * ConnectionB (Root):
                          *      Foo
                          *      Bar
                          *          Snafu
                          *              *.FeatureSource
-                         * 
+                         *
                          */
-
 
                         if (data.All(x => x.ResourceId.IsFolder))
                         {
@@ -604,7 +601,6 @@ namespace Maestro.Base.UI
                     sourceIds.AddRange(GetFullResourceList(sourceConn, resId));
                 else
                     sourceIds.Add(resId);
-
             }
 
             var targets = new List<string>();
@@ -642,7 +638,7 @@ namespace Maestro.Base.UI
             var result = (string[])dlg.RunOperationAsync(wb, worker);
             RefreshModel(targetConn.DisplayName, folderId);
             ExpandNode(targetConn.DisplayName, folderId);
-            return result; 
+            return result;
         }
 
         internal static string GetCommonParent(RepositoryHandle[] data)
@@ -781,7 +777,7 @@ namespace Maestro.Base.UI
             // (eg. Create a Feature Source from a dragged SDF file)
         }
 
-        private string [] MoveResourcesWithinConnection(string connectionName, ICollection<string> resIds, string folderId)
+        private string[] MoveResourcesWithinConnection(string connectionName, ICollection<string> resIds, string folderId)
         {
             var wb = Workbench.Instance;
             var notMovedToTarget = new List<string>();
@@ -871,7 +867,7 @@ namespace Maestro.Base.UI
         {
             //Note: Even though the attached context menu has the shortcuts specified
             //for Cut/Copy/Paste, I'm guessing the TreeViewAdv control is muffling the
-            //event. Nevertheless this handler's got it covered and keeping those 
+            //event. Nevertheless this handler's got it covered and keeping those
             //shortcuts there is useful as a visual reference, even if they don't work
             //the original way.
 
@@ -884,9 +880,11 @@ namespace Maestro.Base.UI
                     case Keys.C:
                         new CopyCommand().Run();
                         break;
+
                     case Keys.X:
                         new CutCommand().Run();
                         break;
+
                     case Keys.V:
                         new PasteCommand().Run();
                         break;

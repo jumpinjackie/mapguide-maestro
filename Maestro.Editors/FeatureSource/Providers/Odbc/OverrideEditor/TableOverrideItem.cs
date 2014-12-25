@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.ComponentModel;
-using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
 {

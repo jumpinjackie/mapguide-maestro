@@ -1,37 +1,36 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Maestro.Base.Services;
-using System.Diagnostics;
-using Maestro.Base.UI;
-using Maestro.Editors.Diagnostics;
-using OSGeo.MapGuide.MaestroAPI.Services;
+//
+
+#endregion Disclaimer / License
+
 using ICSharpCode.Core;
-using System.Windows.Forms;
-using Maestro.Shared.UI;
+using Maestro.Base.Services;
+using Maestro.Base.UI;
 using Maestro.Base.UI.Preferences;
-using Maestro.Editors.Preview;
-using Maestro.Editors.LayerDefinition;
 using Maestro.Editors.Generic;
+using Maestro.Editors.LayerDefinition;
+using Maestro.Editors.Preview;
+using Maestro.Shared.UI;
+using System;
+using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Maestro.Base.Events
 {
@@ -70,18 +69,22 @@ namespace Maestro.Base.Events
                     PreviewSettings.UseLocalPreview = Convert.ToBoolean(e.NewValue);
                     LoggingService.Info("Use Local Preview setting is now: " + PreviewSettings.UseLocalPreview); //NOXLATE
                     break;
+
                 case ConfigProperties.AddDebugWatermark:
                     PreviewSettings.AddDebugWatermark = Convert.ToBoolean(e.NewValue);
                     LoggingService.Info("Add Debug Watermark setting is now: " + PreviewSettings.AddDebugWatermark); //NOXLATE
                     break;
+
                 case ConfigProperties.PreviewViewerType:
                     PreviewSettings.UseAjaxViewer = (e.NewValue.ToString() == "AJAX"); //NOXLATE
                     LoggingService.Info("Use AJAX Viewer setting is now: " + PreviewSettings.UseAjaxViewer);
                     break;
+
                 case ConfigProperties.UseGridStyleEditor:
                     LayerEditorSettings.UseGridEditor = Convert.ToBoolean(e.NewValue);
                     LoggingService.Info("Use Grid Style Editor is now: " + LayerEditorSettings.UseGridEditor);
                     break;
+
                 case ConfigProperties.XsdSchemaPath:
                     XmlEditorSettings.XsdPath = e.NewValue.ToString();
                     LoggingService.Info("XSD path is now: " + XmlEditorSettings.XsdPath);
@@ -89,9 +92,9 @@ namespace Maestro.Base.Events
             }
         }
 
-        static bool smShowingError = false;
+        private static bool smShowingError = false;
 
-        static void OnKeepAliveTimerElapsed(object sender, EventArgs e)
+        private static void OnKeepAliveTimerElapsed(object sender, EventArgs e)
         {
             var svc = ServiceRegistry.GetService<ServerConnectionManager>();
             foreach (var name in svc.GetConnectionNames())
@@ -127,7 +130,7 @@ namespace Maestro.Base.Events
             }
         }
 
-        static void OnConnectionRemoved(object sender, ServerConnectionEventArgs e)
+        private static void OnConnectionRemoved(object sender, ServerConnectionEventArgs e)
         {
             Workbench wb = Workbench.Instance;
             Debug.Assert(wb.ActiveSiteExplorer != null);
@@ -136,16 +139,16 @@ namespace Maestro.Base.Events
             //Debug.Assert(wb.ActiveSiteExplorer.ConnectionName == name);
         }
 
-        static void OnConnectionAdded(object sender, ServerConnectionEventArgs e)
+        private static void OnConnectionAdded(object sender, ServerConnectionEventArgs e)
         {
             var wb = Workbench.Instance;
             if (wb.ActiveSiteExplorer == null)
             {
                 var viewMgr = ServiceRegistry.GetService<ViewContentManager>();
 
-                wb.ActiveSiteExplorer = viewMgr.OpenContent(Strings.Content_SiteExplorer, 
-                                        Strings.Content_SiteExplorer, 
-                                        ViewRegion.Left, 
+                wb.ActiveSiteExplorer = viewMgr.OpenContent(Strings.Content_SiteExplorer,
+                                        Strings.Content_SiteExplorer,
+                                        ViewRegion.Left,
                                         () => { return new SiteExplorer(); });
 
                 wb.ActiveSiteExplorer.ActiveConnectionChanged += new EventHandler(OnActiveConnectionChanged);
@@ -159,7 +162,6 @@ namespace Maestro.Base.Events
             }
 
             wb.ActiveSiteExplorer.RefreshModel(e.ConnectionName);
-            
 
             var svc = ServiceRegistry.GetService<ServerConnectionManager>();
             var conn = svc.GetConnection(e.ConnectionName);
@@ -167,7 +169,7 @@ namespace Maestro.Base.Events
             LoggingService.Info("There are now " + svc.GetConnectionNames().Count + " active connections"); //NOXLATE
         }
 
-        static void OnActiveConnectionChanged(object sender, EventArgs e)
+        private static void OnActiveConnectionChanged(object sender, EventArgs e)
         {
             var wb = Workbench.Instance;
             var exp = wb.ActiveSiteExplorer;

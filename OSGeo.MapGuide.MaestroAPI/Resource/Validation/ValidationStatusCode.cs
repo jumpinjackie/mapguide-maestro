@@ -1,25 +1,24 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {
@@ -35,6 +34,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         Dummy = 0,
 
         #region information
+
         /// <summary>
         /// No primary key found in feature source. Does affect layer selection if a layer is based on this feature source
         /// </summary>
@@ -49,19 +49,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// A layer group has no label. Results in no text when displayed in the viewer legend
         /// </summary>
         Info_MapDefinition_GroupMissingLabelInformation = 1101,
-        
+
         /// <summary>
         /// A layer group has a default label assigned to it.
         /// </summary>
         Info_MapDefinition_GroupHasDefaultLabel,
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Info_MapDefinition_MultipleSpatialContexts,
 
         /// <summary>
-        /// One or more scale ranges overlap. Can affect presentation of data. 
+        /// One or more scale ranges overlap. Can affect presentation of data.
         /// </summary>
         Info_LayerDefinition_ScaleRangeOverlap = 1201,
 
@@ -69,9 +69,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// A referenced symbol definition contains irrelevant usage contexts for this particular layer
         /// </summary>
         Info_LayerDefinition_IrrelevantUsageContext,
-        #endregion
+
+        #endregion information
 
         #region warnings
+
         /// <summary>
         /// Placeholder validation warning
         /// </summary>
@@ -86,7 +88,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// Feature Source has no spatial context. Affects re-projection if referencing layer is housed in a Map Definition
         /// </summary>
         Warning_FeatureSource_NoSpatialContext = 3101,
-        
+
         /// <summary>
         /// Feature Source has an empty spatial context
         /// </summary>
@@ -116,10 +118,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// in its encrypted state
         /// </summary>
         Warning_FeatureSource_Cannot_Package_Secured_Credentials,
-        
+
         /// <summary>
         /// A Feature Source whose provider contains username/password connection parameters contains login credentials in plaintext. This is not secure
-        /// as such Feature Sources can be accessed by the Anonymous MapGuide user account. It is strongly advised that such Feature Sources can be 
+        /// as such Feature Sources can be accessed by the Anonymous MapGuide user account. It is strongly advised that such Feature Sources can be
         /// re-secured with MapGuide/Infrastructure Studio or with Maestro 4.0.3 (or newer)
         /// </summary>
         Warning_FeatureSource_Plaintext_Credentials,
@@ -131,7 +133,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         Warning_FeatureSource_EmptyJoinPrefix,
 
         /// <summary>
-        /// An Extended Feature Class does not specify 
+        /// An Extended Feature Class does not specify
         /// </summary>
         Warning_FeatureSource_Potential_Bad_Join_Performance,
 
@@ -233,7 +235,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         Warning_LayerDefinition_MultipleGridScaleRanges,
 
         /// <summary>
-        /// A scale range was found in a Layer Definition which has a composite style defined along side a point, line or area style. In such cases, the 
+        /// A scale range was found in a Layer Definition which has a composite style defined along side a point, line or area style. In such cases, the
         /// composite style will always take precedence and the point/line/area style will have no effect
         /// </summary>
         Warning_LayerDefinition_CompositeStyleDefinedAlongsideBasicStyle,
@@ -253,9 +255,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// anywhere within the definition
         /// </summary>
         Warning_SymbolDefinition_SymbolParameterNotUsed = 3701,
-        #endregion
+
+        #endregion warnings
 
         #region errors
+
         /// <summary>
         /// General validation error that couldn't be categorized
         /// </summary>
@@ -286,7 +290,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// No finite display scales defined for a map definition that contains tiled layers.
         /// </summary>
         Error_MapDefinition_NoFiniteDisplayScales = 5201,
-        
+
         /// <summary>
         /// A raster layer in a Map Definition has a different coordinate system from the one that is declared in the
         /// Map Definition and the MapGuide Server we're connecting to does not support the raster re-projection feature (MGOS 2.0 or earlier)
@@ -312,7 +316,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// A layer belongs to a layer group that doesn't exist
         /// </summary>
         Error_MapDefinition_LayerWithNonExistentGroup,
-        
+
         /// <summary>
         /// A layer group belongs to a layer group that doesn't exist
         /// </summary>
@@ -469,6 +473,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// a non-existent resource data item
         /// </summary>
         Error_SymbolDefinition_ImageGraphicReferenceResourceDataNotFound,
-        #endregion
+
+        #endregion errors
     }
 }

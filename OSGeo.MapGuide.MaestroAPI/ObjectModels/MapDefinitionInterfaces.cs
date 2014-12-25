@@ -1,31 +1,32 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels.Common;
-using System.Drawing;
-using System.ComponentModel;
-using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
 
 namespace OSGeo.MapGuide.ObjectModels.MapDefinition
 {
@@ -64,6 +65,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         /// based on that layer's added extents. Default is false
         /// </summary>
         bool SetExtentsFromFirstAddedLayer { get; set; }
+
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
@@ -133,7 +135,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         IMapLayer InsertLayer(int index, string groupName, string layerName, string layerDefinitionId);
 
         /// <summary>
-        /// Adds a layer to this map. If this is the first layer to be added, the coordinate system 
+        /// Adds a layer to this map. If this is the first layer to be added, the coordinate system
         /// of this map and its extents will be set to the coordinate system and extents of this layer
         /// if this has not been set already.
         /// </summary>
@@ -148,7 +150,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         IMapLayer AddLayer(string groupName, string layerName, string resourceId);
 
         /// <summary>
-        /// Adds a layer to this map. If this is the first layer to be added, the coordinate system 
+        /// Adds a layer to this map. If this is the first layer to be added, the coordinate system
         /// of this map and its extents will be set to the coordinate system and extents of this layer
         /// if this has not been set already.
         /// </summary>
@@ -261,7 +263,6 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
     /// </summary>
     public interface IMapDefinition2 : IMapDefinition, IWatermarkCollection
     {
-        
     }
 
     /// <summary>

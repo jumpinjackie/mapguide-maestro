@@ -1,7 +1,8 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2013, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // Original code from SharpDevelop 3.2.1 licensed under the same terms (LGPL 2.1)
 // Copyright 2002-2010 by
 //
@@ -17,35 +18,34 @@
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using ICSharpCode.TextEditor;
 using ICSharpCode.TextEditor.Gui.CompletionWindow;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
 {
     /// <summary>
-    /// Holds the text for  namespace, child element or attribute 
+    /// Holds the text for  namespace, child element or attribute
     /// autocomplete (intellisense).
     /// </summary>
     internal class XmlCompletionData : ICompletionData
     {
-        string text;
-        DataType dataType = DataType.XmlElement;
-        string description = String.Empty;
+        private string text;
+        private DataType dataType = DataType.XmlElement;
+        private string description = String.Empty;
 
         /// <summary>
         /// The type of text held in this object.

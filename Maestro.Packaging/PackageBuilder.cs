@@ -1,34 +1,35 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.ObjectModels.Common;
+//
+
+#endregion Disclaimer / License
+
+using ICSharpCode.SharpZipLib.Zip;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using ICSharpCode.SharpZipLib.Zip;
-using System.Xml;
+using OSGeo.MapGuide.ObjectModels.Common;
+using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
+using System.Linq;
+using System.Xml;
 
 namespace Maestro.Packaging
 {
@@ -41,34 +42,42 @@ namespace Maestro.Packaging
         /// The file list is being fetched from MapGuide
         /// </summary>
         ReadingFileList,
+
         /// <summary>
         /// Files are downloaded in temporary folder
         /// </summary>
         PreparingFolder,
+
         /// <summary>
         /// Resource references are updated to use the new folder
         /// </summary>
         MovingResources,
+
         /// <summary>
         /// The files are being compressed
         /// </summary>
         Compressing,
+
         /// <summary>
         /// The package opertion has completed
         /// </summary>
         Done,
+
         /// <summary>
         /// The package is being uploaded
         /// </summary>
         Uploading,
+
         /// <summary>
         /// Extracting filenames from package
         /// </summary>
         ListingFiles,
+
         /// <summary>
         /// Setting resource content
         /// </summary>
         SetResource,
+
         /// <summary>
         /// Setting resource data
         /// </summary>
@@ -84,10 +93,12 @@ namespace Maestro.Packaging
         /// The item already exists in the package
         /// </summary>
         Regular,
+
         /// <summary>
         /// The item is deleted from the package
         /// </summary>
         Deleted,
+
         /// <summary>
         /// The item is added to the package
         /// </summary>
@@ -142,7 +153,7 @@ namespace Maestro.Packaging
         {
             if (Progress != null)
                 Progress(ProgressType.Uploading, sourceFile, 100, 0);
-            
+
             m_lastPg = -1;
             m_connection.ResourceService.UploadPackage(sourceFile, new Utility.StreamCopyProgressDelegate(ProgressCallback_Upload));
 
@@ -151,7 +162,7 @@ namespace Maestro.Packaging
         }
 
         /// <summary>
-        /// Uploads a package to the server in a non-transactional fashion. Resources which fail to load are added to the specified list of 
+        /// Uploads a package to the server in a non-transactional fashion. Resources which fail to load are added to the specified list of
         /// failed resources. The upload is non-transactional in the sense that it can partially fail. Failed operations are logged.
         /// </summary>
         /// <param name="sourceFile">The source package file</param>
@@ -173,12 +184,12 @@ namespace Maestro.Packaging
 
             double step = 0.0;
             progress(ProgressType.ListingFiles, sourceFile, 100, step);
-            
+
             //Process overview:
             //
             // 1. Extract the package to a temp directory
             // 2. Read the package manifest
-            // 3. For each resource id in the manifest, if it is in the list of resource ids to skip 
+            // 3. For each resource id in the manifest, if it is in the list of resource ids to skip
             //    then skip it. Otherwise process the directive that uses this id.
 
             ZipFile package = new ZipFile(sourceFile);
@@ -257,6 +268,7 @@ namespace Maestro.Packaging
                             }
                         }
                         break;
+
                     case "SETRESOURCEDATA": //NOXLATE
                         {
                             SetResourceDataPackageOperation sop = (SetResourceDataPackageOperation)op;
@@ -311,6 +323,7 @@ namespace Maestro.Packaging
                         op = new SetResourcePackageOperation(resourceId, p["CONTENT"], p["HEADER"]); //NOXLATE
                     }
                     break;
+
                 case "SETRESOURCEDATA": //NOXLATE
                     {
                         ResourceDataType rdt;
@@ -472,7 +485,6 @@ namespace Maestro.Packaging
 
                 foreach (var folder in folders)
                 {
-
                     if (Progress != null)
                         Progress(ProgressType.PreparingFolder, folder, files.Count + folders.Count + 1, opno);
                     AddFolderResource(manifest, temppath, folder, removeExistingFiles, m_connection, filemap);
@@ -537,7 +549,6 @@ namespace Maestro.Packaging
                 using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
                     m_connection.ResourceService.SerializeObject(manifest, fs);
 
-
                 if (Progress != null)
                     Progress(ProgressType.MovingResources, zipfilename, filemap.Count, 0);
 
@@ -548,7 +559,6 @@ namespace Maestro.Packaging
                     Progress(ProgressType.MovingResources, zipfilename, filemap.Count, filemap.Count);
                     Progress(ProgressType.Done, "", filemap.Count, filemap.Count);
                 }
-
             }
             finally
             {
@@ -687,7 +697,6 @@ namespace Maestro.Packaging
 
             AddFolderResource(manifest, folderResId, headerpath, eraseFirst);
         }
-
 
         private void AddFolderResource(ResourcePackageManifest manifest, string resourceId, string headerpath, bool eraseFirst)
         {
@@ -861,7 +870,6 @@ namespace Maestro.Packaging
             }
         }
 
-
         private const string DEFAULT_HEADER =
             "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
             "<ResourceFolderHeader xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"ResourceFolderHeader-1.0.0.xsd\">\n" +
@@ -869,7 +877,6 @@ namespace Maestro.Packaging
             "		<Inherited>true</Inherited>\n" +
             "	</Security>\n" +
             "</ResourceFolderHeader>"; //NOXLATE
-
 
         private string MapResourcePathToFolder(string tempfolder, string resourcename)
         {
@@ -981,7 +988,6 @@ namespace Maestro.Packaging
                                 using (System.IO.FileStream fs = new System.IO.FileStream(filemap[filemap.Count - 1].Value, System.IO.FileMode.CreateNew, System.IO.FileAccess.Write, System.IO.FileShare.None))
                                     Utility.CopyStream(zipfile.GetInputStream(index), fs);
                             }
-
                         }
 
                         ri.Headerpath = headerpath;
@@ -994,7 +1000,7 @@ namespace Maestro.Packaging
                             {
                                 var tempFilePath = System.IO.Path.Combine(tempfolder, ri.GenerateUniqueName());
                                 filemap.Add(new KeyValuePair<string, string>(targetpath, tempFilePath));
-                                if (File.Exists(rdi.Filename)) 
+                                if (File.Exists(rdi.Filename))
                                     File.Copy(rdi.Filename, tempFilePath);
                             }
                             else
@@ -1216,7 +1222,10 @@ namespace Maestro.Packaging
         /// Initializes a new instance of the <see cref="PackageOperation"/> class.
         /// </summary>
         /// <param name="resId">The res id.</param>
-        protected PackageOperation(string resId) { this.ResourceId = resId; }
+        protected PackageOperation(string resId)
+        {
+            this.ResourceId = resId;
+        }
     }
 
     /// <summary>
@@ -1283,7 +1292,7 @@ namespace Maestro.Packaging
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
         /// </returns>
         public override int GetHashCode()
         {
@@ -1377,7 +1386,7 @@ namespace Maestro.Packaging
         /// Returns a hash code for this instance.
         /// </summary>
         /// <returns>
-        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
         /// </returns>
         public override int GetHashCode()
         {

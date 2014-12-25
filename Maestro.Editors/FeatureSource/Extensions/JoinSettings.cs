@@ -1,35 +1,33 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using Maestro.Editors.Common;
+using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using Maestro.Shared.UI;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.MaestroAPI;
-using Maestro.Editors.Common;
-using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace Maestro.Editors.FeatureSource.Extensions
 {
@@ -65,13 +63,14 @@ namespace Maestro.Editors.FeatureSource.Extensions
             _rel = rel;
         }
 
-        void OnPropertyJoinListChanged(object sender, ListChangedEventArgs e)
+        private void OnPropertyJoinListChanged(object sender, ListChangedEventArgs e)
         {
             switch (e.ListChangedType)
-            { 
+            {
                 case ListChangedType.ItemAdded:
                     _rel.AddRelateProperty(_propertyJoins[e.NewIndex]);
                     break;
+
                 case ListChangedType.Reset:
                     _rel.RemoveAllRelateProperties();
                     break;
@@ -160,12 +159,15 @@ namespace Maestro.Editors.FeatureSource.Extensions
                 case RelateTypeEnum.Association:
                     rdAssociation.Checked = true;
                     break;
+
                 case RelateTypeEnum.Inner:
                     rdInner.Checked = true;
                     break;
+
                 case RelateTypeEnum.LeftOuter:
                     rdLeftOuter.Checked = true;
                     break;
+
                 case RelateTypeEnum.RightOuter:
                     rdRightOuter.Checked = true;
                     break;
@@ -180,7 +182,7 @@ namespace Maestro.Editors.FeatureSource.Extensions
             _propertyJoins.ListChanged += new ListChangedEventHandler(OnPropertyJoinListChanged);
         }
 
-        void OnRelationPropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void OnRelationPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             OnResourceChanged();
         }
@@ -239,7 +241,7 @@ namespace Maestro.Editors.FeatureSource.Extensions
                 var featSvc = _edSvc.CurrentConnection.FeatureService;
                 var pc = featSvc.GetClassDefinition(_primaryFeatureSource, _primaryClass);
                 var sc = featSvc.GetClassDefinition(_rel.ResourceId, _secondaryClass);
-                
+
                 var dlg = new SelectJoinKeyDialog(pc, sc);
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {

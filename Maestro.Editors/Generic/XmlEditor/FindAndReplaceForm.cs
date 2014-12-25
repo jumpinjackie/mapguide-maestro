@@ -1,33 +1,33 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using ICSharpCode.TextEditor;
+using ICSharpCode.TextEditor.Document;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using ICSharpCode.TextEditor.Document;
-using ICSharpCode.TextEditor;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.Generic.XmlEditor
 {
@@ -43,11 +43,14 @@ namespace Maestro.Editors.Generic.XmlEditor
             _search = new TextEditorSearcher();
         }
 
-        TextEditorSearcher _search;
-        TextEditorControl _editor;
-        TextEditorControl Editor { 
-            get { return _editor; } 
-            set { 
+        private TextEditorSearcher _search;
+        private TextEditorControl _editor;
+
+        private TextEditorControl Editor
+        {
+            get { return _editor; }
+            set
+            {
                 _editor = value;
                 _search.Document = _editor.Document;
                 UpdateTitleBar();
@@ -70,27 +73,30 @@ namespace Maestro.Editors.Generic.XmlEditor
 
             _search.ClearScanRegion();
             var sm = editor.ActiveTextAreaControl.SelectionManager;
-            if (sm.HasSomethingSelected && sm.SelectionCollection.Count == 1) {
+            if (sm.HasSomethingSelected && sm.SelectionCollection.Count == 1)
+            {
                 var sel = sm.SelectionCollection[0];
                 if (sel.StartPosition.Line == sel.EndPosition.Line)
                     txtLookFor.Text = sm.SelectedText;
                 else
                     _search.SetScanRegion(sel);
-            } else {
+            }
+            else
+            {
                 // Get the current word that the caret is on
                 Caret caret = editor.ActiveTextAreaControl.Caret;
                 int start = TextUtilities.FindWordStart(editor.Document, caret.Offset);
                 int endAt = TextUtilities.FindWordEnd(editor.Document, caret.Offset);
                 txtLookFor.Text = editor.Document.GetText(start, endAt - start);
             }
-            
+
             ReplaceMode = replaceMode;
 
             if (show)
             {
                 this.Owner = (Form)editor.TopLevelControl;
                 this.Show();
-            
+
                 txtLookFor.SelectAll();
                 txtLookFor.Focus();
             }
@@ -104,7 +110,8 @@ namespace Maestro.Editors.Generic.XmlEditor
         public bool ReplaceMode
         {
             get { return txtReplaceWith.Visible; }
-            set {
+            set
+            {
                 btnReplace.Visible = btnReplaceAll.Visible = value;
                 lblReplaceWith.Visible = txtReplaceWith.Visible = value;
                 btnHighlightAll.Visible = !value;
@@ -117,6 +124,7 @@ namespace Maestro.Editors.Generic.XmlEditor
         {
             FindNext(txtLookFor.Text, false, true, Strings.TextNotFound);
         }
+
         private void btnFindNext_Click(object sender, EventArgs e)
         {
             FindNext(txtLookFor.Text, false, false, Strings.TextNotFound);
@@ -145,7 +153,8 @@ namespace Maestro.Editors.Generic.XmlEditor
 
             var caret = _editor.ActiveTextAreaControl.Caret;
             if (viaF3 && _search.HasScanRegion && !caret.Offset.
-                IsInRange(_search.BeginOffset, _search.EndOffset)) {
+                IsInRange(_search.BeginOffset, _search.EndOffset))
+            {
                 // user moved outside of the originally selected region
                 _search.ClearScanRegion();
                 UpdateTitleBar();
@@ -166,13 +175,13 @@ namespace Maestro.Editors.Generic.XmlEditor
             TextLocation p2 = _editor.Document.OffsetToPosition(range.Offset + range.Length);
             _editor.ActiveTextAreaControl.SelectionManager.SetSelection(p1, p2);
             _editor.ActiveTextAreaControl.ScrollTo(p1.Line, p1.Column);
-            // Also move the caret to the end of the selection, because when the user 
+            // Also move the caret to the end of the selection, because when the user
             // presses F3, the caret is where we start searching next time.
-            _editor.ActiveTextAreaControl.Caret.Position = 
+            _editor.ActiveTextAreaControl.Caret.Position =
                 _editor.Document.OffsetToPosition(range.Offset + range.Length);
         }
 
-        Dictionary<TextEditorControl, HighlightGroup> _highlightGroups = new Dictionary<TextEditorControl, HighlightGroup>();
+        private Dictionary<TextEditorControl, HighlightGroup> _highlightGroups = new Dictionary<TextEditorControl, HighlightGroup>();
 
         private void btnHighlightAll_Click(object sender, EventArgs e)
         {
@@ -183,21 +192,23 @@ namespace Maestro.Editors.Generic.XmlEditor
             if (string.IsNullOrEmpty(LookFor))
                 // Clear highlights
                 group.ClearMarkers();
-            else {
+            else
+            {
                 _search.LookFor = txtLookFor.Text;
                 _search.MatchCase = chkMatchCase.Checked;
                 _search.MatchWholeWordOnly = chkMatchWholeWord.Checked;
 
                 bool looped = false;
                 int offset = 0, count = 0;
-                for(;;) {
+                for (; ; )
+                {
                     TextRange range = _search.FindNext(offset, false, out looped);
                     if (range == null || looped)
                         break;
                     offset = range.Offset + range.Length;
                     count++;
 
-                    var m = new TextMarker(range.Offset, range.Length, 
+                    var m = new TextMarker(range.Offset, range.Length,
                             TextMarkerType.SolidBlock, Color.Yellow, Color.Black);
                     group.AddMarker(m);
                 }
@@ -207,17 +218,17 @@ namespace Maestro.Editors.Generic.XmlEditor
                     Close();
             }
         }
-        
+
         private void FindAndReplaceForm_FormClosing(object sender, FormClosingEventArgs e)
         {	// Prevent dispose, as this form can be re-used
             if (e.CloseReason != CloseReason.FormOwnerClosing)
             {
                 if (this.Owner != null)
                     this.Owner.Select(); // prevent another app from being activated instead
-                
+
                 e.Cancel = true;
                 Hide();
-                
+
                 // Discard search region
                 _search.ClearScanRegion();
                 _editor.Refresh(); // must repaint manually
@@ -242,7 +253,7 @@ namespace Maestro.Editors.Generic.XmlEditor
             int count = 0;
             // BUG FIX: if the replacement string contains the original search string
             // (e.g. replace "red" with "very red") we must avoid looping around and
-            // replacing forever! To fix, start replacing at beginning of region (by 
+            // replacing forever! To fix, start replacing at beginning of region (by
             // moving the caret) and stop as soon as we loop around.
             _editor.ActiveTextAreaControl.Caret.Position =
                 _editor.Document.OffsetToPosition(_search.BeginOffset);
@@ -272,7 +283,8 @@ namespace Maestro.Editors.Generic.XmlEditor
             int count = FindAndReplace(txtLookFor.Text, txtReplaceWith.Text);
             if (count == 0)
                 MessageBox.Show(Strings.TextNoOccurrencesFound);
-            else {
+            else
+            {
                 MessageBox.Show(string.Format(Strings.TextOccurrencesReplaced, count));
                 Close();
             }
@@ -282,13 +294,17 @@ namespace Maestro.Editors.Generic.XmlEditor
         {
             var textArea = _editor.ActiveTextAreaControl.TextArea;
             textArea.Document.UndoStack.StartUndoGroup();
-            try {
-                if (textArea.SelectionManager.HasSomethingSelected) {
+            try
+            {
+                if (textArea.SelectionManager.HasSomethingSelected)
+                {
                     textArea.Caret.Position = textArea.SelectionManager.SelectionCollection[0].StartPosition;
                     textArea.SelectionManager.RemoveSelectedText();
                 }
                 textArea.InsertString(text);
-            } finally {
+            }
+            finally
+            {
                 textArea.Document.UndoStack.EndUndoGroup();
             }
         }
@@ -303,10 +319,12 @@ namespace Maestro.Editors.Generic.XmlEditor
             Debug.Assert(lo <= hi);
             return x < lo ? lo : (x > hi ? hi : x);
         }
+
         public static bool IsInRange(this int x, int lo, int hi)
         {
             return x >= lo && x <= hi;
         }
+
         public static Color HalfMix(this Color one, Color two)
         {
             return Color.FromArgb(
@@ -319,7 +337,8 @@ namespace Maestro.Editors.Generic.XmlEditor
 
     internal class TextRange : AbstractSegment
     {
-        IDocument _document;
+        private IDocument _document;
+
         public TextRange(IDocument document, int offset, int length)
         {
             _document = document;
@@ -328,51 +347,58 @@ namespace Maestro.Editors.Generic.XmlEditor
         }
     }
 
-    /// <summary>This class finds occurrances of a search string in a text 
+    /// <summary>This class finds occurrances of a search string in a text
     /// editor's IDocument... it's like Find box without a GUI.</summary>
     internal class TextEditorSearcher : IDisposable
     {
-        IDocument _document;
+        private IDocument _document;
+
         public IDocument Document
         {
-            get { return _document; } 
-            set { 
-                if (_document != value) {
+            get { return _document; }
+            set
+            {
+                if (_document != value)
+                {
                     ClearScanRegion();
                     _document = value;
                 }
             }
         }
 
-        // I would have used the TextAnchor class to represent the beginning and 
-        // end of the region to scan while automatically adjusting to changes in 
-        // the document--but for some reason it is sealed and its constructor is 
-        // internal. Instead I use a TextMarker, which is perhaps even better as 
-        // it gives me the opportunity to highlight the region. Note that all the 
-        // markers and coloring information is associated with the text document, 
-        // not the editor control, so TextEditorSearcher doesn't need a reference 
+        // I would have used the TextAnchor class to represent the beginning and
+        // end of the region to scan while automatically adjusting to changes in
+        // the document--but for some reason it is sealed and its constructor is
+        // internal. Instead I use a TextMarker, which is perhaps even better as
+        // it gives me the opportunity to highlight the region. Note that all the
+        // markers and coloring information is associated with the text document,
+        // not the editor control, so TextEditorSearcher doesn't need a reference
         // to the TextEditorControl. After adding the marker to the document, we
         // must remember to remove it when it is no longer needed.
-        TextMarker _region = null;
-        /// <summary>Sets the region to search. The region is updated 
+        private TextMarker _region = null;
+
+        /// <summary>Sets the region to search. The region is updated
         /// automatically as the document changes.</summary>
         public void SetScanRegion(ISelection sel)
         {
             SetScanRegion(sel.Offset, sel.Length);
         }
-        /// <summary>Sets the region to search. The region is updated 
+
+        /// <summary>Sets the region to search. The region is updated
         /// automatically as the document changes.</summary>
         public void SetScanRegion(int offset, int length)
         {
             var bkgColor = _document.HighlightingStrategy.GetColorFor("Default").BackgroundColor; //NOXLATE
-            _region = new TextMarker(offset, length, TextMarkerType.SolidBlock, 
-                bkgColor.HalfMix(Color.FromArgb(160,160,160)));
+            _region = new TextMarker(offset, length, TextMarkerType.SolidBlock,
+                bkgColor.HalfMix(Color.FromArgb(160, 160, 160)));
             _document.MarkerStrategy.AddMarker(_region);
         }
+
         public bool HasScanRegion
         {
             get { return _region != null; }
         }
+
         public void ClearScanRegion()
         {
             if (_region != null)
@@ -381,23 +407,34 @@ namespace Maestro.Editors.Generic.XmlEditor
                 _region = null;
             }
         }
-        public void Dispose() { ClearScanRegion(); GC.SuppressFinalize(this); }
-        ~TextEditorSearcher() { Dispose(); }
-        
+
+        public void Dispose()
+        {
+            ClearScanRegion(); GC.SuppressFinalize(this);
+        }
+
+        ~TextEditorSearcher()
+        {
+            Dispose();
+        }
+
         /// <summary>Begins the start offset for searching</summary>
         public int BeginOffset
         {
-            get {
+            get
+            {
                 if (_region != null)
                     return _region.Offset;
                 else
                     return 0;
             }
         }
+
         /// <summary>Begins the end offset for searching</summary>
         public int EndOffset
         {
-            get {
+            get
+            {
                 if (_region != null)
                     return _region.EndOffset;
                 else
@@ -409,15 +446,16 @@ namespace Maestro.Editors.Generic.XmlEditor
 
         public bool MatchWholeWordOnly;
 
-        string _lookFor;
-        string _lookFor2; // uppercase in case-insensitive mode
+        private string _lookFor;
+        private string _lookFor2; // uppercase in case-insensitive mode
+
         public string LookFor
         {
             get { return _lookFor; }
             set { _lookFor = value; }
         }
 
-        /// <summary>Finds next instance of LookFor, according to the search rules 
+        /// <summary>Finds next instance of LookFor, according to the search rules
         /// (MatchCase, MatchWholeWordOnly).</summary>
         /// <param name="beginAtOffset">Offset in Document at which to begin the search</param>
         /// <param name="searchBackward"></param>
@@ -433,17 +471,22 @@ namespace Maestro.Editors.Generic.XmlEditor
             int curOffs = beginAtOffset.InRange(startAt, endAt);
 
             _lookFor2 = MatchCase ? _lookFor : _lookFor.ToUpperInvariant();
-            
+
             TextRange result;
-            if (searchBackward) {
+            if (searchBackward)
+            {
                 result = FindNextIn(startAt, curOffs, true);
-                if (result == null) {
+                if (result == null)
+                {
                     loopedAround = true;
                     result = FindNextIn(curOffs, endAt, true);
                 }
-            } else {
+            }
+            else
+            {
                 result = FindNextIn(curOffs, endAt, false);
-                if (result == null) {
+                if (result == null)
+                {
                     loopedAround = true;
                     result = FindNextIn(startAt, curOffs, false);
                 }
@@ -472,13 +515,17 @@ namespace Maestro.Editors.Generic.XmlEditor
             char lookForCh = _lookFor2[0];
             if (searchBackward)
             {
-                for (int offset = offset2; offset >= offset1; offset--) {
+                for (int offset = offset2; offset >= offset1; offset--)
+                {
                     if (matchFirstCh(lookForCh, _document.GetCharAt(offset))
                         && matchWord(offset))
                         return new TextRange(_document, offset, _lookFor.Length);
                 }
-            } else {
-                for (int offset = offset1; offset <= offset2; offset++) {
+            }
+            else
+            {
+                for (int offset = offset1; offset <= offset2; offset++)
+                {
                     if (matchFirstCh(lookForCh, _document.GetCharAt(offset))
                         && matchWord(offset))
                         return new TextRange(_document, offset, _lookFor.Length);
@@ -486,6 +533,7 @@ namespace Maestro.Editors.Generic.XmlEditor
             }
             return null;
         }
+
         private bool IsWholeWordMatch(int offset)
         {
             if (IsWordBoundary(offset) && IsWordBoundary(offset + _lookFor.Length))
@@ -493,16 +541,19 @@ namespace Maestro.Editors.Generic.XmlEditor
             else
                 return false;
         }
+
         private bool IsWordBoundary(int offset)
         {
             return offset <= 0 || offset >= _document.TextLength ||
                 !IsAlphaNumeric(offset - 1) || !IsAlphaNumeric(offset);
         }
+
         private bool IsAlphaNumeric(int offset)
         {
             char c = _document.GetCharAt(offset);
             return Char.IsLetterOrDigit(c) || c == '_'; //NOXLATE
         }
+
         private bool IsPartWordMatch(int offset)
         {
             string substr = _document.GetText(offset, _lookFor.Length);
@@ -512,23 +563,26 @@ namespace Maestro.Editors.Generic.XmlEditor
         }
     }
 
-    /// <summary>Bundles a group of markers together so that they can be cleared 
+    /// <summary>Bundles a group of markers together so that they can be cleared
     /// together.</summary>
     internal class HighlightGroup : IDisposable
     {
-        List<TextMarker> _markers = new List<TextMarker>();
-        TextEditorControl _editor;
-        IDocument _document;
+        private List<TextMarker> _markers = new List<TextMarker>();
+        private TextEditorControl _editor;
+        private IDocument _document;
+
         public HighlightGroup(TextEditorControl editor)
         {
             _editor = editor;
             _document = editor.Document;
         }
+
         public void AddMarker(TextMarker marker)
         {
             _markers.Add(marker);
             _document.MarkerStrategy.AddMarker(marker);
         }
+
         public void ClearMarkers()
         {
             foreach (TextMarker m in _markers)
@@ -536,8 +590,16 @@ namespace Maestro.Editors.Generic.XmlEditor
             _markers.Clear();
             _editor.Refresh();
         }
-        public void Dispose() { ClearMarkers(); GC.SuppressFinalize(this); }
-        ~HighlightGroup() { Dispose(); }
+
+        public void Dispose()
+        {
+            ClearMarkers(); GC.SuppressFinalize(this);
+        }
+
+        ~HighlightGroup()
+        {
+            Dispose();
+        }
 
         public IList<TextMarker> Markers { get { return _markers.AsReadOnly(); } }
     }

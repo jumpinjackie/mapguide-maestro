@@ -1,7 +1,8 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2013, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // Original code from SharpDevelop 3.2.1 licensed under the same terms (LGPL 2.1)
 // Copyright 2002-2010 by
 //
@@ -17,21 +18,22 @@
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -53,10 +55,10 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// Helper class.  Holds the namespace URI and the prefix currently
         /// in use for this namespace.
         /// </summary>
-        class NamespaceURI
+        private class NamespaceURI
         {
-            string namespaceURI = String.Empty;
-            string prefix = String.Empty;
+            private string namespaceURI = String.Empty;
+            private string prefix = String.Empty;
 
             public NamespaceURI()
             {
@@ -97,9 +99,9 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             }
         }
 
-        static readonly char[] whitespaceCharacters = new char[] { ' ', '\n', '\t', '\r' };
+        private static readonly char[] whitespaceCharacters = new char[] { ' ', '\n', '\t', '\r' };
 
-        XmlParser()
+        private XmlParser()
         {
         }
 
@@ -168,7 +170,6 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             int currentIndex = index;
             for (int i = 0; i < index; ++i)
             {
-
                 char currentChar = xml[currentIndex];
 
                 if (Char.IsWhiteSpace(currentChar))
@@ -498,7 +499,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <returns>
         /// Returns the text up to and including the start tag &lt; character.
         /// </returns>
-        static string GetActiveElementStartText(string xml, int index)
+        private static string GetActiveElementStartText(string xml, int index)
         {
             int elementStartIndex = GetActiveElementStartIndex(xml, index);
             if (elementStartIndex >= 0)
@@ -523,7 +524,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// -1 if no start tag character is found or a end tag
         /// &gt; character is found first.
         /// </returns>
-        static int GetActiveElementStartIndex(string xml, int index)
+        private static int GetActiveElementStartIndex(string xml, int index)
         {
             int elementStartIndex = -1;
 
@@ -531,7 +532,6 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
 
             for (int i = 0; i < index; ++i)
             {
-
                 char currentChar = xml[currentIndex];
                 if (currentChar == '<')
                 {
@@ -557,13 +557,12 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// -1 if no end tag character is found or a start tag
         /// character is found first.
         /// </returns>
-        static int GetActiveElementEndIndex(string xml, int index)
+        private static int GetActiveElementEndIndex(string xml, int index)
         {
             int elementEndIndex = index;
 
             for (int i = index; i < xml.Length; ++i)
             {
-
                 char currentChar = xml[i];
                 if (currentChar == '>')
                 {
@@ -585,7 +584,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// </summary>
         /// <param name="xml">This string must start at the
         /// element we are interested in.</param>
-        static QualifiedName GetElementName(string xml)
+        private static QualifiedName GetElementName(string xml)
         {
             string name = String.Empty;
 
@@ -610,7 +609,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// </summary>
         /// <param name="xml">This string must start at the
         /// element we are interested in.</param>
-        static NamespaceURI GetElementNamespace(string xml)
+        private static NamespaceURI GetElementNamespace(string xml)
         {
             NamespaceURI namespaceURI = new NamespaceURI();
 
@@ -630,7 +629,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return namespaceURI;
         }
 
-        static string ReverseString(string text)
+        private static string ReverseString(string text)
         {
             StringBuilder reversedString = new StringBuilder(text);
 
@@ -652,7 +651,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <param name="index">The current index.</param>
         /// <returns>The index unchanged if the index is smaller than the
         /// length of the string; otherwise it returns length - 1.</returns>
-        static int GetCorrectedIndex(int length, int index)
+        private static int GetCorrectedIndex(int length, int index)
         {
             if (index >= length)
             {
@@ -664,7 +663,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Gets the active element path given the element text.
         /// </summary>
-        static XmlElementPath GetActiveElementStartPath(string xml, int index, string elementText, QualifiedNameCollection namespaces)
+        private static XmlElementPath GetActiveElementStartPath(string xml, int index, string elementText, QualifiedNameCollection namespaces)
         {
             QualifiedName elementName = GetElementName(elementText);
             if (elementName == null)
@@ -698,7 +697,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return path;
         }
 
-        static string GetAttributeName(string xml, int index, bool ignoreWhitespace, bool ignoreQuote, bool ignoreEqualsSign)
+        private static string GetAttributeName(string xml, int index, bool ignoreWhitespace, bool ignoreQuote, bool ignoreEqualsSign)
         {
             string name = String.Empty;
 
@@ -711,7 +710,6 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
 
             for (int i = 0; i <= index; ++i)
             {
-
                 char currentChar = xml[currentIndex];
 
                 if (IsXmlNameChar(currentChar))
@@ -779,7 +777,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Gets the element name at the specified index.
         /// </summary>
-        static string GetElementNameAtIndex(string xml, int index)
+        private static string GetElementNameAtIndex(string xml, int index)
         {
             int elementStartIndex = GetActiveElementStartIndex(xml, index);
             if (elementStartIndex >= 0 && elementStartIndex < index)
@@ -800,7 +798,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Returns a name and its prefix.
         /// </summary>
-        static QualifiedName GetQualifiedName(string name)
+        private static QualifiedName GetQualifiedName(string name)
         {
             if (name.Length == 0)
             {
@@ -826,7 +824,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// method does not compact the path so it will include all elements
         /// including those in another namespace in the path.
         /// </summary>
-        static XmlElementPath GetFullParentElementPath(string xml, QualifiedNameCollection namespaces)
+        private static XmlElementPath GetFullParentElementPath(string xml, QualifiedNameCollection namespaces)
         {
             XmlElementPath path = new XmlElementPath();
             IDictionary<string, string> namespacesInScope = null;
@@ -848,6 +846,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
                                         path.Elements.Add(elementName);
                                     }
                                     break;
+
                                 case XmlNodeType.EndElement:
                                     path.Elements.RemoveLast();
                                     break;
@@ -876,7 +875,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Finds the namespace for the specified prefix.
         /// </summary>
-        static string GetNamespaceForPrefix(QualifiedNameCollection namespaces, string prefix)
+        private static string GetNamespaceForPrefix(QualifiedNameCollection namespaces, string prefix)
         {
             foreach (QualifiedName name in namespaces)
             {
@@ -898,7 +897,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <param name="xml"></param>
         /// <param name="namespaces">Returns the namespaces that are
         /// exist in the xml.</param>
-        static XmlElementPath GetActiveElementStartPath(string xml, int index, QualifiedNameCollection namespaces)
+        private static XmlElementPath GetActiveElementStartPath(string xml, int index, QualifiedNameCollection namespaces)
         {
             XmlElementPath path = new XmlElementPath();
             string elementText = GetActiveElementStartText(xml, index);
@@ -917,7 +916,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// </summary>
         /// <remarks>If the index outside the start tag then an empty path
         /// is returned.</remarks>
-        static XmlElementPath GetActiveElementStartPathAtIndex(string xml, int index, QualifiedNameCollection namespaces)
+        private static XmlElementPath GetActiveElementStartPathAtIndex(string xml, int index, QualifiedNameCollection namespaces)
         {
             // Find first non xml element name character to the right of the index.
             index = GetCorrectedIndex(xml.Length, index);

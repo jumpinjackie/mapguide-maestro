@@ -1,12 +1,11 @@
 ﻿// Copyright (c) AlphaSierraPapa for the SharpDevelop Team (for details please see \doc\copyright.txt)
 // This code is distributed under the GNU LGPL (for details please see \doc\license.txt)
 
+using ICSharpCode.Core;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-
-using ICSharpCode.Core;
 
 namespace ICSharpCode.AddInManager
 {
@@ -14,82 +13,91 @@ namespace ICSharpCode.AddInManager
 
     public class AboutForm : System.Windows.Forms.Form
     {
-        Font boldFont;
-        
+        private Font boldFont;
+
         public AboutForm(AddIn addIn)
         {
             //
             // The InitializeComponent() call is required for Windows Forms designer support.
             //
             InitializeComponent();
-            
+
             boldFont = new Font(Font, FontStyle.Bold);
-            
+
             List<string> titles = new List<string>();
             List<string> values = new List<string>();
-            
+
             this.Text = addIn.Name;
             closeButton.Text = ResourceService.GetString("Global.CloseButtonText"); //NOXLATE
-            
+
             titles.Add(Str.TitleAddInFile);
             values.Add(addIn.Name);
-            
-            if (addIn.Manifest.PrimaryVersion != null && addIn.Manifest.PrimaryVersion.ToString() != "0.0.0.0") {
+
+            if (addIn.Manifest.PrimaryVersion != null && addIn.Manifest.PrimaryVersion.ToString() != "0.0.0.0")
+            {
                 titles.Add(Str.TitleVersion);
                 values.Add(addIn.Manifest.PrimaryVersion.ToString());
             }
-            
-            if (addIn.Properties["author"].Length > 0) {
+
+            if (addIn.Properties["author"].Length > 0)
+            {
                 titles.Add(Str.TitleAuthor);
                 values.Add(addIn.Properties["author"]);
             }
-            
-            if (addIn.Properties["copyright"].Length > 0) {
-                if (!addIn.Properties["copyright"].StartsWith("prj:")) {
+
+            if (addIn.Properties["copyright"].Length > 0)
+            {
+                if (!addIn.Properties["copyright"].StartsWith("prj:"))
+                {
                     titles.Add(Str.TitleCopyright);
                     values.Add(addIn.Properties["copyright"]);
                 }
             }
-            
-            if (addIn.Properties["license"].Length > 0) {
+
+            if (addIn.Properties["license"].Length > 0)
+            {
                 titles.Add(Str.TitleLicense);
                 values.Add(addIn.Properties["license"]);
             }
-            
-            if (addIn.Properties["url"].Length > 0) {
+
+            if (addIn.Properties["url"].Length > 0)
+            {
                 titles.Add(Str.TitleWebsite);
                 values.Add(addIn.Properties["url"]);
             }
-            
-            if (addIn.Properties["description"].Length > 0) {
+
+            if (addIn.Properties["description"].Length > 0)
+            {
                 titles.Add(Str.TitleDescription);
                 values.Add(addIn.Properties["description"]);
             }
-            
+
             titles.Add(Str.TitleAddInFile);
             values.Add(FileUtility.NormalizePath(addIn.FileName));
-            
+
             titles.Add(Str.TitleInternalName);
             values.Add(addIn.Manifest.PrimaryIdentity);
-            
+
             table.RowCount = titles.Count + 1;
             table.RowStyles.Clear();
-            for (int i = 0; i < titles.Count; i++) {
+            for (int i = 0; i < titles.Count; i++)
+            {
                 table.RowStyles.Add(new RowStyle(SizeType.AutoSize));
                 AddRow(titles[i], values[i], i);
             }
         }
-        
+
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
-            if (disposing) {
+            if (disposing)
+            {
                 if (boldFont != null)
                     boldFont.Dispose();
             }
         }
-        
-        void AddRow(string desc, string val, int rowIndex)
+
+        private void AddRow(string desc, string val, int rowIndex)
         {
             Label descLabel = new Label();
             descLabel.AutoSize = true;
@@ -97,32 +105,40 @@ namespace ICSharpCode.AddInManager
             descLabel.Font = boldFont;
             descLabel.Text = StringParser.Parse(desc) + ":"; //NOXLATE
             table.Controls.Add(descLabel, 0, rowIndex);
-            
+
             Label valLabel;
             string link = GetLink(val);
-            if (link != null) {
+            if (link != null)
+            {
                 LinkLabel linkLabel = new LinkLabel();
-                linkLabel.LinkClicked += delegate {
-                    try {
+                linkLabel.LinkClicked += delegate
+                {
+                    try
+                    {
                         System.Diagnostics.Process.Start(link);
-                    } catch (Exception ex) {
+                    }
+                    catch (Exception ex)
+                    {
                         MessageService.ShowMessage(ex.ToString());
                     }
                 };
                 valLabel = linkLabel;
-            } else {
+            }
+            else
+            {
                 valLabel = new Label();
             }
             valLabel.AutoSize = true;
             valLabel.Text = val;
             table.Controls.Add(valLabel, 1, rowIndex);
         }
-        
-        string GetLink(string text)
+
+        private string GetLink(string text)
         {
             if (text == null)
                 return null;
-            switch (text) {
+            switch (text)
+            {
                 case "GNU General Public License": //NOXLATE
                 case "GPL": //NOXLATE
                     return "http://www.gnu.org/licenses/gpl.html"; //NOXLATE
@@ -137,8 +153,9 @@ namespace ICSharpCode.AddInManager
                     return null;
             }
         }
-        
+
         #region Windows Forms Designer generated code
+
         /// <summary>
         /// This method is required for Windows Forms designer support.
         /// Do not change the method contents inside the source code editor. The Forms designer might
@@ -152,18 +169,18 @@ namespace ICSharpCode.AddInManager
             bottomPanel = new System.Windows.Forms.Panel();
             bottomPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // bottomPanel
-            // 
+            //
             bottomPanel.Controls.Add(this.closeButton);
             bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             bottomPanel.Location = new System.Drawing.Point(0, 233);
             bottomPanel.Name = "bottomPanel";
             bottomPanel.Size = new System.Drawing.Size(351, 35);
             bottomPanel.TabIndex = 0;
-            // 
+            //
             // closeButton
-            // 
+            //
             this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.closeButton.Location = new System.Drawing.Point(264, 6);
             this.closeButton.Name = "closeButton";
@@ -173,9 +190,9 @@ namespace ICSharpCode.AddInManager
             this.closeButton.UseCompatibleTextRendering = true;
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.CloseButtonClick);
-            // 
+            //
             // table
-            // 
+            //
             this.table.ColumnCount = 2;
             this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.table.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -187,9 +204,9 @@ namespace ICSharpCode.AddInManager
             this.table.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.table.Size = new System.Drawing.Size(351, 225);
             this.table.TabIndex = 1;
-            // 
+            //
             // AboutForm
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
@@ -206,11 +223,13 @@ namespace ICSharpCode.AddInManager
             bottomPanel.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.TableLayoutPanel table;
-        #endregion
-        
-        void CloseButtonClick(object sender, EventArgs e)
+
+        #endregion Windows Forms Designer generated code
+
+        private void CloseButtonClick(object sender, EventArgs e)
         {
             Close();
         }

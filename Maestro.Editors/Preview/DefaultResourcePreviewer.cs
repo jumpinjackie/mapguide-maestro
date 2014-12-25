@@ -1,22 +1,25 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2013, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using Maestro.Editors.SymbolDefinition;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
@@ -27,8 +30,6 @@ using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace Maestro.Editors.Preview
 {
@@ -50,7 +51,6 @@ namespace Maestro.Editors.Preview
 
         internal abstract class PreviewResult
         {
-
         }
 
         internal class UrlPreviewResult : PreviewResult
@@ -96,7 +96,7 @@ namespace Maestro.Editors.Preview
                 var previewCopy = resSvc.GetResource(resId);
 
                 if (previewCopy.ResourceType == ResourceTypes.SymbolDefinition.ToString() && conn.SiteVersion >= new Version(2, 0))
-                {   
+                {
                     return GenerateSymbolDefinitionPreview(conn, previewCopy, 100, 100);
                 }
                 else
@@ -132,12 +132,12 @@ namespace Maestro.Editors.Preview
 
         internal static ImagePreviewResult GenerateSymbolDefinitionPreview(IServerConnection conn, IResource previewCopy, int width, int height)
         {
-            //For Symbol Definition previews, we make a placeholder Layer Definition with the 
+            //For Symbol Definition previews, we make a placeholder Layer Definition with the
             ILayerDefinition layerDef = ObjectFactory.CreateDefaultLayer(conn, LayerType.Vector);
             IVectorLayerDefinition2 vl = layerDef.SubLayer as IVectorLayerDefinition2;
             if (vl != null)
             {
-                //HACK-ish: We are flubbing a completely invalid Layer Definition under normal circumstances, 
+                //HACK-ish: We are flubbing a completely invalid Layer Definition under normal circumstances,
                 //but one that has the minimum required content model to generate an appropriate GETLEGENDIMAGE preview for
                 vl.FeatureName = string.Empty;
                 vl.ResourceId = string.Empty;

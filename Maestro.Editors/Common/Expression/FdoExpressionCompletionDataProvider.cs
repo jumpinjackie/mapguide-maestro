@@ -1,22 +1,25 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2013, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using ICSharpCode.TextEditor;
 using ICSharpCode.TextEditor.Document;
 using ICSharpCode.TextEditor.Gui.CompletionWindow;
@@ -127,7 +130,7 @@ namespace Maestro.Editors.Common.Expression
         /// <summary>
         /// Gets the line of text up to the cursor position.
         /// </summary>
-        string GetLineText(TextArea textArea)
+        private string GetLineText(TextArea textArea)
         {
             LineSegment lineSegment = textArea.Document.GetLineSegmentForOffset(textArea.Caret.Offset);
             return textArea.Document.GetText(lineSegment);
@@ -138,7 +141,7 @@ namespace Maestro.Editors.Common.Expression
             return GenerateCompletionData((GetLineText(textArea) + charTyped).Trim());
         }
 
-        class FdoCompletionData : DefaultCompletionData
+        private class FdoCompletionData : DefaultCompletionData
         {
             private string _insertText;
             private string _appendText;
@@ -222,7 +225,7 @@ namespace Maestro.Editors.Common.Expression
             return items.ToArray();
         }
 
-        class Descriptor
+        private class Descriptor
         {
             public string Name;
             public string Description;

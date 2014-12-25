@@ -1,7 +1,8 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2013, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // Original code from SharpDevelop 3.2.1 licensed under the same terms (LGPL 2.1)
 // Copyright 2002-2010 by
 //
@@ -17,23 +18,22 @@
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
 {
@@ -45,14 +45,14 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
     {
         public const string XmlSchemaNamespace = "http://www.w3.org/2001/XMLSchema";
 
-        static XmlSchemaCompletionDataCollection schemas = null;
-        static XmlSchemaManager manager = null;
+        private static XmlSchemaCompletionDataCollection schemas = null;
+        private static XmlSchemaManager manager = null;
 
         public static event EventHandler UserSchemaAdded;
 
         public static event EventHandler UserSchemaRemoved;
 
-        XmlSchemaManager()
+        private XmlSchemaManager()
         {
         }
 
@@ -136,28 +136,28 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// extension in tools->options.</para>
         /// <para>The normal way of doing things is to
         /// pass the GetProperty method a default value which auto-magically
-        /// turns the xml element into a schema association so we would not 
+        /// turns the xml element into a schema association so we would not
         /// have to check for both.  In this case, however, I do not want
         /// a default saved to the SharpDevelopProperties.xml file unless the user
         /// makes a change using Tools->Options.</para>
-        /// <para>If we have a file extension that is currently missing a default 
-        /// schema then if we  ship the schema at a later date the association will 
-        /// be updated by the code if the user has not changed the settings themselves. 
+        /// <para>If we have a file extension that is currently missing a default
+        /// schema then if we  ship the schema at a later date the association will
+        /// be updated by the code if the user has not changed the settings themselves.
         /// </para>
         /// <para>For example, the initial release of the xml editor add-in had
         /// no default schema for .xsl files, by default it was associated with
         /// no schema and this setting is saved if the user ever viewed the settings
         /// in the tools->options dialog.  Now, after the initial release the
         /// .xsl schema was created and shipped with SharpDevelop, there is
-        /// no way to associate this schema to .xsl files by default since 
+        /// no way to associate this schema to .xsl files by default since
         /// the property exists in the SharpDevelopProperties.xml file.</para>
         /// <para>An alternative way of doing this might be to have the
-        /// config info in the schema itself, which a special SharpDevelop 
+        /// config info in the schema itself, which a special SharpDevelop
         /// namespace.  I believe this is what Visual Studio does.  This
         /// way is not as flexible since it requires the user to locate
         /// the schema and change the association manually.</para>
         /// </remarks>
-        static XmlSchemaAssociation GetSchemaAssociation(string extension)
+        private static XmlSchemaAssociation GetSchemaAssociation(string extension)
         {
             extension = extension.ToLower();
             return XmlSchemaAssociation.GetDefaultAssociation(extension);
@@ -190,7 +190,6 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         {
             if (SchemaCompletionDataItems[schemaData.NamespaceUri] == null)
             {
-
                 if (!Directory.Exists(UserSchemaFolder))
                 {
                     Directory.CreateDirectory(UserSchemaFolder);
@@ -208,7 +207,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
                 Debug.WriteLine("Trying to add a schema that already exists.  Namespace=" + schemaData.NamespaceUri);
             }
         }
-        
+
         /// <summary>
         /// Reads the system and user added schemas.
         /// </summary>
@@ -299,7 +298,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Should really pass schema info with the event.
         /// </summary>
-        static void OnUserSchemaAdded()
+        private static void OnUserSchemaAdded()
         {
             if (UserSchemaAdded != null)
             {
@@ -310,7 +309,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Should really pass schema info with the event.
         /// </summary>
-        static void OnUserSchemaRemoved()
+        private static void OnUserSchemaRemoved()
         {
             if (UserSchemaRemoved != null)
             {

@@ -1,34 +1,34 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using System.Xml.Serialization;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System.Globalization;
-using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using System.Xml;
-using System.IO;
-using OSGeo.MapGuide.ObjectModels.Common;
+using System.Xml.Serialization;
 
 #pragma warning disable 1591, 0114, 0108
 
@@ -37,6 +37,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0
 #elif SYM_DEF_110
 namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0
 #else
+
 namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 #endif
 {
@@ -165,7 +166,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<IGraphicBase> ISimpleSymbolDefinition.Graphics
         {
-            get 
+            get
             {
                 foreach (var g in this.Graphics)
                 {
@@ -255,7 +256,6 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             get { return parameterDefinitionField; }
         }
 
-
         public IImageReference CreateImageReference(string resourceId, string dataName)
         {
             return new ImageReference()
@@ -290,7 +290,6 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
                 /*
                 DefaultPath = new Path()
                 {
-                    
                 },*/
                 //EndOffset = "0", //NOXLATE
                 //Repeat = "0", //NOXLATE
@@ -331,7 +330,6 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             };
         }
 
-
         public ITextFrame CreateFrame()
         {
             return new TextFrame() { };
@@ -351,15 +349,15 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         public IImageGraphic CreateImageGraphics()
         {
             //default to empty inline content
-            return new Image() 
-            { 
+            return new Image()
+            {
                 Item = new byte[0]
             };
         }
 
         public IParameter CreateParameter()
         {
-            return new Parameter() 
+            return new Parameter()
             {
                 Identifier = "", //NOXLATE
                 DefaultValue = "", //NOXLATE
@@ -392,6 +390,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 #if SYM_DEF_240 || SYM_DEF_110
     partial class Text : ITextGraphic2
 #else
+
     partial class Text : ITextGraphic
 #endif
     {
@@ -465,7 +464,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         [XmlIgnore]
         public IEnumerable<IGraphicBase> Elements
         {
-            get 
+            get
             {
                 foreach (var g in this.Items)
                 {
@@ -537,103 +536,137 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             {
                 case DataType2.Angle:
                     return ExpressionDataType.Sym_Angle;
+
                 case DataType2.Bold:
                     return ExpressionDataType.Sym_Bold;
+
                 case DataType2.Boolean:
                     return ExpressionDataType.Sym_Boolean;
+
                 case DataType2.Color:
                     return ExpressionDataType.Sym_Color;
+
                 case DataType2.Content:
-                    return ExpressionDataType.Sym_Content; 
+                    return ExpressionDataType.Sym_Content;
+
                 case DataType2.EndOffset:
                     return ExpressionDataType.Sym_EndOffset;
+
                 case DataType2.FillColor:
                     return ExpressionDataType.Sym_FillColor;
+
                 case DataType2.FontHeight:
                     return ExpressionDataType.Sym_FontHeight;
+
                 case DataType2.FontName:
                     return ExpressionDataType.Sym_FontName;
+
                 case DataType2.FrameFillColor:
                     return ExpressionDataType.Sym_FrameFillColor;
+
                 case DataType2.FrameLineColor:
                     return ExpressionDataType.Sym_FrameLineColor;
+
                 case DataType2.GhostColor:
                     return ExpressionDataType.Sym_GhostColor;
+
                 case DataType2.HorizontalAlignment:
                     return ExpressionDataType.Sym_HorizontalAlignment;
+
                 case DataType2.Integer:
                     return ExpressionDataType.Sym_Integer;
+
                 case DataType2.Italic:
                     return ExpressionDataType.Sym_Italic;
+
                 case DataType2.Justification:
                     return ExpressionDataType.Sym_Justification;
+
                 case DataType2.LineColor:
                     return ExpressionDataType.Sym_LineColor;
+
                 case DataType2.LineSpacing:
                     return ExpressionDataType.Sym_LineSpacing;
+
                 case DataType2.LineWeight:
                     return ExpressionDataType.Sym_LineWeight;
+
                 case DataType2.Markup:
                     return ExpressionDataType.Sym_Markup;
+
                 case DataType2.ObliqueAngle:
                     return ExpressionDataType.Sym_ObliqueAngle;
+
                 case DataType2.Overlined:
                     return ExpressionDataType.Sym_Overlined;
+
                 case DataType2.Real:
                     return ExpressionDataType.Sym_Real;
+
                 case DataType2.RepeatX:
                     return ExpressionDataType.Sym_RepeatX;
+
                 case DataType2.RepeatY:
                     return ExpressionDataType.Sym_RepeatY;
+
                 case DataType2.StartOffset:
                     return ExpressionDataType.Sym_StartOffset;
+
                 case DataType2.String:
                     return ExpressionDataType.Sym_String;
+
                 case DataType2 .TextColor:
                     return ExpressionDataType.Sym_TextColor;
+
                 case DataType2.TrackSpacing:
                     return ExpressionDataType.Sym_TrackSpacing;
+
                 case DataType2.Underlined:
                     return ExpressionDataType.Sym_Underlined;
+
                 case DataType2.VerticalAlignment:
                     return ExpressionDataType.Sym_VerticalAlignment;
             }
             throw new ArgumentException();
         }
 #else
-        static ExpressionDataType GetExpressionType(DataType dt)
+
+        private static ExpressionDataType GetExpressionType(DataType dt)
         {
             switch (dt)
             {
                 case DataType.Boolean:
                     return ExpressionDataType.Sym_Boolean;
+
                 case DataType.Color:
                     return ExpressionDataType.Sym_Color;
+
                 case DataType.Integer:
                     return ExpressionDataType.Sym_Integer;
+
                 case DataType.Real:
                     return ExpressionDataType.Sym_Real;
+
                 case DataType.String:
                     return ExpressionDataType.Sym_String;
             }
             throw new ArgumentException();
         }
-#endif
 
+#endif
 
         ExpressionDataType IExpressionPropertySource.ExpressionType
         {
             get { return GetExpressionType(this.DataType); }
         }
     }
- 
 
     partial class ParameterDefinition : IParameterDefinition
     {
         [XmlIgnore]
         IEnumerable<IParameter> IParameterDefinition.Parameter
         {
-            get 
+            get
             {
                 foreach (var p in this.Parameter)
                 {
@@ -679,12 +712,10 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
 
     partial class PointUsage : IPointUsage
     {
-        
     }
 
     partial class AreaUsage : IAreaUsage
     {
-        
     }
 
     partial class Path : IPathGraphic
@@ -734,7 +765,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<ISimpleSymbolReferenceBase> ICompoundSymbolDefinition.SimpleSymbol
         {
-            get 
+            get
             {
                 foreach (var sym in this.SimpleSymbol)
                 {
@@ -810,7 +841,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
         [XmlIgnore]
         public SimpleSymbolReferenceType Type
         {
-            get 
+            get
             {
                 if (this.Item != null)
                 {
@@ -885,7 +916,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
             }
         }
     }
- 
+
     partial class ImageReference : ISymbolInstanceReferenceLibrary, IImageReference
     {
         [XmlIgnore]

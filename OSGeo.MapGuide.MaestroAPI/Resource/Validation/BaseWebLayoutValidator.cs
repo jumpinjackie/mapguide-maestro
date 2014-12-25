@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
-using OSGeo.MapGuide.MaestroAPI.Exceptions;
-using OSGeo.MapGuide.ObjectModels;
+using System;
+using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {

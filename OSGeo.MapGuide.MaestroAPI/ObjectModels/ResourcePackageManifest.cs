@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace OSGeo.MapGuide.ObjectModels.Common
+﻿namespace OSGeo.MapGuide.ObjectModels.Common
 {
     partial class ResourcePackageManifestOperationsOperationParameters
     {

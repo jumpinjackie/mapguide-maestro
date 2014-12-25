@@ -24,7 +24,7 @@
         <MenuItem id="LocalConnectionPoolStatus"
                   insertbefore="CacheView"
                   label="${res:LocalConnectionPoolStatus}"
-                  class="Maestro.AddIn.Local.Commands.ConnectionPoolStatusCommand"/>
+                  class="Maestro.AddIn.Local.Commands.ConnectionPoolStatusCommand" />
       </Condition>
     </Path>
 </AddIn>

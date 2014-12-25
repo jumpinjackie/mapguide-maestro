@@ -1,31 +1,32 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI.Feature
 {
     /// <summary>
-    /// Provides a forward-only, read-only iterator 
+    /// Provides a forward-only, read-only iterator
     /// for reading features selected from a feature source
     /// </summary>
     /// <remarks>
@@ -37,7 +38,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </remarks>
     public interface IFeatureReader : IReader, IFeature, IEnumerable<IFeature>
     {
-        
     }
 
     /// <summary>
@@ -52,9 +52,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     public interface IFeature : IRecord
     {
         /// <summary>
-        /// Gets the class definition of the object currently being read. If the user has requested 
-        /// only a subset of the class properties (as specified in the filter text), the class 
-        /// definition reflects what the user has requested, rather than the full class definition. 
+        /// Gets the class definition of the object currently being read. If the user has requested
+        /// only a subset of the class properties (as specified in the filter text), the class
+        /// definition reflects what the user has requested, rather than the full class definition.
         /// </summary>
         ClassDefinition ClassDefinition { get; }
 
@@ -81,9 +81,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     public interface IMutableFeature : IMutableRecord
     {
         /// <summary>
-        /// Gets the class definition of the object currently being read. If the user has requested 
-        /// only a subset of the class properties (as specified in the filter text), the class 
-        /// definition reflects what the user has requested, rather than the full class definition. 
+        /// Gets the class definition of the object currently being read. If the user has requested
+        /// only a subset of the class properties (as specified in the filter text), the class
+        /// definition reflects what the user has requested, rather than the full class definition.
         /// </summary>
         ClassDefinition ClassDefinition { get; }
 

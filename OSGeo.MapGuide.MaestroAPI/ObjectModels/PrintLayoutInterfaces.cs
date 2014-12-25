@@ -1,28 +1,29 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Resource;
-using System.Drawing;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 
 namespace OSGeo.MapGuide.ObjectModels.PrintLayout
 {
@@ -36,6 +37,7 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout
         /// </summary>
         /// <value>The page properties.</value>
         IPrintLayoutPageProperties PageProperties { get; }
+
         /// <summary>
         /// Gets the layout properties.
         /// </summary>
@@ -50,6 +52,7 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout
         /// <param name="units">The units.</param>
         /// <returns></returns>
         ISize CreateLogoSize(float width, float height, string units);
+
         /// <summary>
         /// Creates the font.
         /// </summary>
@@ -58,6 +61,7 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout
         /// <param name="units">The units.</param>
         /// <returns></returns>
         IFont CreateFont(string name, float height, string units);
+
         /// <summary>
         /// Creates the logo position.
         /// </summary>
@@ -66,6 +70,7 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout
         /// <param name="units">The units.</param>
         /// <returns></returns>
         IPosition CreateLogoPosition(float left, float bottom, string units);
+
         /// <summary>
         /// Creates the text position.
         /// </summary>
@@ -80,6 +85,7 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout
         /// </summary>
         /// <value>The custom logos.</value>
         IEnumerable<ILogo> CustomLogos { get; }
+
         /// <summary>
         /// Creates the logo.
         /// </summary>
@@ -89,11 +95,13 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout
         /// <param name="position">The position.</param>
         /// <returns></returns>
         ILogo CreateLogo(string symbolLibraryId, string symbolName, ISize size, IPosition position);
+
         /// <summary>
         /// Adds the logo.
         /// </summary>
         /// <param name="logo">The logo.</param>
         void AddLogo(ILogo logo);
+
         /// <summary>
         /// Removes the logo.
         /// </summary>
@@ -105,6 +113,7 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout
         /// </summary>
         /// <value>The custom text elements.</value>
         IEnumerable<IText> CustomText { get; }
+
         /// <summary>
         /// Creates the text element.
         /// </summary>
@@ -113,11 +122,13 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout
         /// <param name="text">The text.</param>
         /// <returns></returns>
         IText CreateText(string value, IFont font, IPosition text);
+
         /// <summary>
         /// Adds the text.
         /// </summary>
         /// <param name="text">The text.</param>
         void AddText(IText text);
+
         /// <summary>
         /// Removes the text.
         /// </summary>
@@ -201,11 +212,13 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout
         /// </summary>
         /// <value>The left margin.</value>
         float Left { get; set; }
+
         /// <summary>
         /// Gets or sets the bottom margin.
         /// </summary>
         /// <value>The bottom margin.</value>
         float Bottom { get; set; }
+
         /// <summary>
         /// Gets or sets the units.
         /// </summary>
@@ -223,11 +236,13 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout
         /// </summary>
         /// <value>The width.</value>
         float Width { get; set; }
+
         /// <summary>
         /// Gets or sets the height.
         /// </summary>
         /// <value>The height.</value>
         float Height { get; set; }
+
         /// <summary>
         /// Gets or sets the units.
         /// </summary>
@@ -245,21 +260,25 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout
         /// </summary>
         /// <value>The position.</value>
         IPosition Position { get; }
+
         /// <summary>
         /// Gets or sets the resource id.
         /// </summary>
         /// <value>The resource id.</value>
         string ResourceId { get; set; }
+
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
         /// <value>The name.</value>
         string Name { get; set; }
+
         /// <summary>
         /// Gets the size.
         /// </summary>
         /// <value>The size.</value>
         ISize Size { get; }
+
         /// <summary>
         /// Gets or sets the rotation.
         /// </summary>

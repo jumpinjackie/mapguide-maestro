@@ -1,39 +1,37 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using Maestro.Editors.Common.Expression;
+using Maestro.Editors.LayerDefinition.Vector.Thematics;
+using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.ObjectModels.Capabilities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.ObjectModels.Capabilities;
-using OSGeo.MapGuide.MaestroAPI.Exceptions;
-using Maestro.Shared.UI;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using Maestro.Editors.Common.Expression;
-using ICSharpCode.TextEditor.Gui.CompletionWindow;
-using Maestro.Editors.LayerDefinition.Vector.Thematics;
 
 namespace Maestro.Editors.Common
 {
@@ -47,7 +45,7 @@ namespace Maestro.Editors.Common
         private string m_featureSource = null;
         private IFdoProviderCapabilities _caps;
         private ITextEditor _editor;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ExpressionEditor"/> class.
         /// </summary>
@@ -255,7 +253,7 @@ namespace Maestro.Editors.Common
             this.Close();
         }
 
-        bool OnEditorDialogKeyPress(Keys keyData)
+        private bool OnEditorDialogKeyPress(Keys keyData)
         {
             if (_editor.ProcessKeyPress(keyData))
                 return true;
@@ -266,7 +264,7 @@ namespace Maestro.Editors.Common
             return false;
         }
 
-        bool OnEditorKeyPress(char ch)
+        private bool OnEditorKeyPress(char ch)
         {
             if (Char.IsLetter(ch))
             {
@@ -288,7 +286,7 @@ namespace Maestro.Editors.Common
                 _contextualBuffer.Remove(_contextualBuffer.Length - 1, 1);
                 System.Diagnostics.Debug.WriteLine("Contextual buffer: " + _contextualBuffer);
                 //if (_contextualBuffer.Length == 0)
-                    //this.HideBox();
+                //this.HideBox();
             }
         }
 
@@ -306,7 +304,6 @@ namespace Maestro.Editors.Common
 
         private void ColumnName_Click(object sender, EventArgs e)
         {
-
         }
 
         private void ColumnName_SelectedIndexChanged(object sender, EventArgs e)
@@ -327,7 +324,7 @@ namespace Maestro.Editors.Common
                 ColumnValue.Tag = null;
                 try
                 {
-                    using (var rdr = _edSvc.CurrentConnection.FeatureService.AggregateQueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new System.Collections.Specialized.NameValueCollection() { 
+                    using (var rdr = _edSvc.CurrentConnection.FeatureService.AggregateQueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new System.Collections.Specialized.NameValueCollection() {
                             { "UNIQ_VALS", expr } //NOXLATE
                         }))
                     {
@@ -445,7 +442,7 @@ namespace Maestro.Editors.Common
                             InsertText(ColumnValue.Text);
                     }
                 }
-                else 
+                else
                 {
                     InsertText(ColumnValue.Text);
                 }
@@ -480,7 +477,7 @@ namespace Maestro.Editors.Common
             using (var picker = new ColorDialog())
             {
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                { 
+                {
                     var c = picker.Color;
                     this.InsertText(string.Format("ARGB({0}, {1}, {2}, {3})", c.A, c.R, c.G, c.B));
                 }

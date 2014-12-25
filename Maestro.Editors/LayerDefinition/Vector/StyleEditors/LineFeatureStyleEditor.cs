@@ -1,36 +1,37 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
+//
+
+#endregion Disclaimer / License
+
 using Maestro.Editors.Common;
-using OSGeo.MapGuide.ObjectModels;
+using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Services;
-using Maestro.Shared.UI;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 {
@@ -44,6 +45,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.Container components = null;
+
         private System.Windows.Forms.GroupBox CompositeGroup;
         private System.Windows.Forms.Panel AdvancedPanel;
         private System.Windows.Forms.Label label3;
@@ -56,7 +58,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         private System.Windows.Forms.ComboBox sizeUnitsCombo;
         private System.Windows.Forms.ComboBox sizeContextCombo;
         private LineStyleEditor lineStyleEditor;
-        
+
         private IList<IStroke> m_item = null;
         private System.Windows.Forms.Panel compositePanel;
         private System.Windows.Forms.GroupBox lineGroup;
@@ -162,7 +164,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             {
                 m_inUpdate = false;
             }
-
         }
 
         private void UpdateDisplayForSelected()
@@ -172,7 +173,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             {
                 m_inUpdate = true;
                 IStroke st = this.CurrentStrokeType;
-                sizeGroup.Enabled = 
+                sizeGroup.Enabled =
                 lineGroup.Enabled =
                 previewGroup.Enabled =
                     st != null;
@@ -182,7 +183,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 if (st != null)
                 {
                     sizeUnitsCombo.SelectedValue = st.Unit.ToString();
-                    
+
                     //sizeContextCombo.SelectedValue = st.SizeContext.ToString();
 
                     if (st.Color == null)
@@ -190,7 +191,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     else
                         lineStyleEditor.colorCombo.ColorExpression = st.Color;
 
-                    foreach(object i in lineStyleEditor.fillCombo.Items)
+                    foreach (object i in lineStyleEditor.fillCombo.Items)
                         if (i as ImageStylePicker.NamedImage != null && (i as ImageStylePicker.NamedImage).Name == st.LineStyle)
                         {
                             lineStyleEditor.fillCombo.SelectedItem = i;
@@ -207,17 +208,16 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                         sizeContextCombo.Enabled = false;
                 }
                 UpdatePreviewResult();
-            } 
+            }
             finally
             {
                 m_inUpdate = prevUpdate;
             }
-
         }
 
         private IStroke CurrentStrokeType
         {
-            get 
+            get
             {
                 if (lineStyles.Items.Count == 0)
                     return null;
@@ -231,19 +231,20 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        protected override void Dispose( bool disposing )
+        protected override void Dispose(bool disposing)
         {
-            if( disposing )
+            if (disposing)
             {
-                if(components != null)
+                if (components != null)
                 {
                     components.Dispose();
                 }
             }
-            base.Dispose( disposing );
+            base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
+
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -291,33 +292,33 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // applyLineStyle
-            // 
+            //
             this.applyLineStyle.Checked = true;
             this.applyLineStyle.CheckState = System.Windows.Forms.CheckState.Checked;
             resources.ApplyResources(this.applyLineStyle, "applyLineStyle");
             this.applyLineStyle.Name = "applyLineStyle";
             this.applyLineStyle.CheckedChanged += new System.EventHandler(this.applyLineStyle_CheckedChanged);
-            // 
+            //
             // compositeLines
-            // 
+            //
             this.compositeLines.Checked = true;
             this.compositeLines.CheckState = System.Windows.Forms.CheckState.Checked;
             resources.ApplyResources(this.compositeLines, "compositeLines");
             this.compositeLines.Name = "compositeLines";
             this.compositeLines.CheckedChanged += new System.EventHandler(this.compositeLines_CheckedChanged);
-            // 
+            //
             // CompositeGroup
-            // 
+            //
             this.CompositeGroup.Controls.Add(this.toolStrip1);
             this.CompositeGroup.Controls.Add(this.lineStyles);
             resources.ApplyResources(this.CompositeGroup, "CompositeGroup");
             this.CompositeGroup.Name = "CompositeGroup";
             this.CompositeGroup.TabStop = false;
-            // 
+            //
             // toolStrip1
-            // 
+            //
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddStyleButton,
@@ -325,65 +326,65 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            // 
+            //
             // AddStyleButton
-            // 
+            //
             this.AddStyleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.AddStyleButton, "AddStyleButton");
             this.AddStyleButton.Name = "AddStyleButton";
             this.AddStyleButton.Click += new System.EventHandler(this.AddStyleButton_Click);
-            // 
+            //
             // RemoveStyleButton
-            // 
+            //
             this.RemoveStyleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             resources.ApplyResources(this.RemoveStyleButton, "RemoveStyleButton");
             this.RemoveStyleButton.Name = "RemoveStyleButton";
             this.RemoveStyleButton.Click += new System.EventHandler(this.RemoveStyleButton_Click);
-            // 
+            //
             // lineStyles
-            // 
+            //
             resources.ApplyResources(this.lineStyles, "lineStyles");
             this.lineStyles.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lineStyles.Name = "lineStyles";
             this.lineStyles.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lineStyles_DrawItem);
             this.lineStyles.SelectedIndexChanged += new System.EventHandler(this.lineStyles_SelectedIndexChanged);
-            // 
+            //
             // AdvancedPanel
-            // 
+            //
             this.AdvancedPanel.Controls.Add(this.compositeLines);
             this.AdvancedPanel.Controls.Add(this.applyLineStyle);
             resources.ApplyResources(this.AdvancedPanel, "AdvancedPanel");
             this.AdvancedPanel.Name = "AdvancedPanel";
-            // 
+            //
             // compositePanel
-            // 
+            //
             this.compositePanel.Controls.Add(this.CompositeGroup);
             resources.ApplyResources(this.compositePanel, "compositePanel");
             this.compositePanel.Name = "compositePanel";
-            // 
+            //
             // propertyPanel
-            // 
+            //
             this.propertyPanel.Controls.Add(this.lineGroup);
             this.propertyPanel.Controls.Add(this.sizeGroup);
             resources.ApplyResources(this.propertyPanel, "propertyPanel");
             this.propertyPanel.Name = "propertyPanel";
-            // 
+            //
             // lineGroup
-            // 
+            //
             this.lineGroup.Controls.Add(this.lineStyleEditor);
             resources.ApplyResources(this.lineGroup, "lineGroup");
             this.lineGroup.Name = "lineGroup";
             this.lineGroup.TabStop = false;
-            // 
+            //
             // lineStyleEditor
-            // 
+            //
             this.lineStyleEditor.ColorExpression = "";
             resources.ApplyResources(this.lineStyleEditor, "lineStyleEditor");
             this.lineStyleEditor.Name = "lineStyleEditor";
             this.lineStyleEditor.RequiresExpressionEditor += new System.EventHandler(this.lineStyleEditor_RequiresExpressionEditor);
-            // 
+            //
             // sizeGroup
-            // 
+            //
             this.sizeGroup.Controls.Add(this.sizeUnitsCombo);
             this.sizeGroup.Controls.Add(this.sizeContextCombo);
             this.sizeGroup.Controls.Add(this.label3);
@@ -391,9 +392,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             resources.ApplyResources(this.sizeGroup, "sizeGroup");
             this.sizeGroup.Name = "sizeGroup";
             this.sizeGroup.TabStop = false;
-            // 
+            //
             // sizeUnitsCombo
-            // 
+            //
             resources.ApplyResources(this.sizeUnitsCombo, "sizeUnitsCombo");
             this.sizeUnitsCombo.DataSource = this.UnitsTable;
             this.sizeUnitsCombo.DisplayMember = "Display";
@@ -401,26 +402,26 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.sizeUnitsCombo.Name = "sizeUnitsCombo";
             this.sizeUnitsCombo.ValueMember = "Value";
             this.sizeUnitsCombo.SelectedIndexChanged += new System.EventHandler(this.sizeUnitsCombo_SelectedIndexChanged);
-            // 
+            //
             // UnitsTable
-            // 
+            //
             this.UnitsTable.Columns.AddRange(new System.Data.DataColumn[] {
             this.dataColumn5,
             this.dataColumn6});
             this.UnitsTable.TableName = "Units";
-            // 
+            //
             // dataColumn5
-            // 
+            //
             this.dataColumn5.Caption = "Display";
             this.dataColumn5.ColumnName = "Display";
-            // 
+            //
             // dataColumn6
-            // 
+            //
             this.dataColumn6.Caption = "Value";
             this.dataColumn6.ColumnName = "Value";
-            // 
+            //
             // sizeContextCombo
-            // 
+            //
             resources.ApplyResources(this.sizeContextCombo, "sizeContextCombo");
             this.sizeContextCombo.DataSource = this.SizeContextTable;
             this.sizeContextCombo.DisplayMember = "Display";
@@ -428,69 +429,69 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.sizeContextCombo.Name = "sizeContextCombo";
             this.sizeContextCombo.ValueMember = "Value";
             this.sizeContextCombo.SelectedIndexChanged += new System.EventHandler(this.sizeContextCombo_SelectedIndexChanged);
-            // 
+            //
             // SizeContextTable
-            // 
+            //
             this.SizeContextTable.Columns.AddRange(new System.Data.DataColumn[] {
             this.dataColumn3,
             this.dataColumn4});
             this.SizeContextTable.TableName = "SizeContext";
-            // 
+            //
             // dataColumn3
-            // 
+            //
             this.dataColumn3.Caption = "Display";
             this.dataColumn3.ColumnName = "Display";
-            // 
+            //
             // dataColumn4
-            // 
+            //
             this.dataColumn4.Caption = "Value";
             this.dataColumn4.ColumnName = "Value";
-            // 
+            //
             // label3
-            // 
+            //
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            // 
+            //
             // label2
-            // 
+            //
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            // 
+            //
             // previewGroup
-            // 
+            //
             this.previewGroup.Controls.Add(this.lnkRefresh);
             this.previewGroup.Controls.Add(this.previewPicture);
             resources.ApplyResources(this.previewGroup, "previewGroup");
             this.previewGroup.Name = "previewGroup";
             this.previewGroup.TabStop = false;
-            // 
+            //
             // lnkRefresh
-            // 
+            //
             resources.ApplyResources(this.lnkRefresh, "lnkRefresh");
             this.lnkRefresh.BackColor = System.Drawing.Color.Transparent;
             this.lnkRefresh.Name = "lnkRefresh";
             this.lnkRefresh.TabStop = true;
             this.lnkRefresh.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkRefresh_LinkClicked);
-            // 
+            //
             // previewPicture
-            // 
+            //
             resources.ApplyResources(this.previewPicture, "previewPicture");
             this.previewPicture.BackColor = System.Drawing.Color.White;
             this.previewPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.previewPicture.Name = "previewPicture";
             this.previewPicture.TabStop = false;
             this.previewPicture.Paint += new System.Windows.Forms.PaintEventHandler(this.previewPicture_Paint);
-            // 
+            //
             // ComboBoxDataSet
-            // 
+            //
             this.ComboBoxDataSet.DataSetName = "ComboBoxDataSet";
             this.ComboBoxDataSet.Locale = new System.Globalization.CultureInfo("da-DK");
             this.ComboBoxDataSet.Tables.AddRange(new System.Data.DataTable[] {
             this.SizeContextTable,
             this.UnitsTable});
-            // 
+            //
             // LineFeatureStyleEditor
-            // 
+            //
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.previewGroup);
             this.Controls.Add(this.propertyPanel);
@@ -514,10 +515,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             ((System.ComponentModel.ISupportInitialize)(this.previewPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComboBoxDataSet)).EndInit();
             this.ResumeLayout(false);
-
         }
-        #endregion
 
+        #endregion Windows Form Designer generated code
 
         private void lineStyles_SelectedIndexChanged(object sender, System.EventArgs e)
         {
@@ -613,9 +613,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
         private void applyLineStyle_CheckedChanged(object sender, System.EventArgs e)
         {
-            compositePanel.Enabled = 
-            compositeLines.Enabled = 
-            sizeGroup.Enabled = 
+            compositePanel.Enabled =
+            compositeLines.Enabled =
+            sizeGroup.Enabled =
             lineGroup.Enabled =
             previewGroup.Enabled =
                 applyLineStyle.Checked;
@@ -685,25 +685,24 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             e.DrawBackground();
             if ((e.State & DrawItemState.Focus) != 0)
                 e.DrawFocusRectangle();
-            
+
             if (e.Index >= 0 && e.Index < lineStyles.Items.Count)
             {
                 var col = new BindingList<IStroke>();
-                col.Add((IStroke) lineStyles.Items[e.Index]);
-                FeaturePreviewRender.RenderPreviewLine(e.Graphics, new Rectangle(e.Bounds.Left + 1, e.Bounds.Top + 1, e.Bounds.Width - 2, e.Bounds.Height - 2), col);		
+                col.Add((IStroke)lineStyles.Items[e.Index]);
+                FeaturePreviewRender.RenderPreviewLine(e.Graphics, new Rectangle(e.Bounds.Left + 1, e.Bounds.Top + 1, e.Bounds.Width - 2, e.Bounds.Height - 2), col);
             }
         }
 
         private void RemoveStyleButton_Click(object sender, EventArgs e)
         {
-            for(int i = 0; i < m_item.Count; i++)
+            for (int i = 0; i < m_item.Count; i++)
                 if (m_item[i] == this.CurrentStrokeType)
                 {
                     m_item.RemoveAt(i);
                     UpdateDisplay();
                     break;
                 }
-
         }
 
         private void AddStyleButton_Click(object sender, EventArgs e)

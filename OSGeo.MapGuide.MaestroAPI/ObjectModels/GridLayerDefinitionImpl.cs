@@ -1,25 +1,27 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Xml.Serialization;
 
 #pragma warning disable 1591, 0114, 0108
@@ -35,6 +37,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0
 #elif LDF_240
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_4_0
 #else
+
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 #endif
 {
@@ -84,7 +87,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<IGridScaleRange> IRasterLayerDefinition.GridScaleRange
         {
-            get 
+            get
             {
                 foreach (var gsr in this.GridScaleRange)
                 {
@@ -306,7 +309,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         }
     }
 
-
     partial class GridColorType : IGridColor
     {
         [XmlIgnore]
@@ -323,9 +325,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                     case ItemChoiceType.Band:
                         this.Item = ((ExplicitColorBand)value).Band;
                         break;
+
                     case ItemChoiceType.Bands:
                         this.Item = ((ExplicitColorBands)value).Bands;
                         break;
+
                     case ItemChoiceType.ExplicitColor:
                         this.Item = ((ExplicitColor)value).Value;
                         break;
@@ -342,8 +346,10 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             {
                 case ItemChoiceType.Band:
                     return new ExplicitColorBand() { Band = (string)this.Item };
+
                 case ItemChoiceType.Bands:
                     return new ExplicitColorBands() { Bands = (IGridColorBands)this.Item };
+
                 case ItemChoiceType.ExplicitColor:
                     return new ExplicitColor() { Value = (string)this.Item };
             }
@@ -534,7 +540,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<IGridColorRule> IGridColorStyle.ColorRule
         {
-            get 
+            get
             {
                 foreach (var cr in this.ColorRule)
                 {
@@ -549,7 +555,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             if (cr != null)
                 this.ColorRule.Add((GridColorRuleType)cr);
         }
-
 
         void IGridColorStyle.RemoveColorRule(IGridColorRule rule)
         {
@@ -720,5 +725,4 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             return new GridSurfaceStyleType();
         }
     }
-
 }

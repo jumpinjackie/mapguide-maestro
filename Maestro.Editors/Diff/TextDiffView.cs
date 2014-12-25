@@ -1,36 +1,33 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
+//
 
 // Original code by Michael Potter, made available under Public Domain
 //
 // http://www.codeproject.com/Articles/6943/A-Generic-Reusable-Diff-Algorithm-in-C-II/
-#endregion
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Resource.Comparison;
-using System.Collections;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.Diff
 {
@@ -47,7 +44,7 @@ namespace Maestro.Editors.Diff
             InitializeComponent();
         }
 
-        const string NumFormat = "00000";
+        private const string NumFormat = "00000";
 
         /// <summary>
         /// Initializes a new instance
@@ -77,6 +74,7 @@ namespace Maestro.Editors.Diff
                         }
 
                         break;
+
                     case DiffResultSpanStatus.NoChange:
                         for (i = 0; i < drs.Length; i++)
                         {
@@ -92,6 +90,7 @@ namespace Maestro.Editors.Diff
                         }
 
                         break;
+
                     case DiffResultSpanStatus.AddDestination:
                         for (i = 0; i < drs.Length; i++)
                         {
@@ -107,6 +106,7 @@ namespace Maestro.Editors.Diff
                         }
 
                         break;
+
                     case DiffResultSpanStatus.Replace:
                         for (i = 0; i < drs.Length; i++)
                         {
@@ -123,7 +123,6 @@ namespace Maestro.Editors.Diff
 
                         break;
                 }
-
             }
         }
 

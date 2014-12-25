@@ -1,35 +1,34 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI;
+//
+
+#endregion Disclaimer / License
+
 using Maestro.Editors.Generic;
 using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Maestro.Base.UI.Packaging
 {
@@ -82,7 +81,7 @@ namespace Maestro.Base.UI.Packaging
         public string[] ResourceIds
         {
             get
-            { 
+            {
                 var ids = new HashSet<string>(txtResourceIdList.Lines);
                 return ids.ToArray();
             }
@@ -91,8 +90,8 @@ namespace Maestro.Base.UI.Packaging
         public string FolderToPackage
         {
             get { return txtResourcePath.Text; }
-            set 
-            { 
+            set
+            {
                 txtResourcePath.Text = value;
                 CheckSubmitState();
             }
@@ -101,10 +100,10 @@ namespace Maestro.Base.UI.Packaging
         public string OutputFileName
         {
             get { return txtPackageFilename.Text; }
-            set 
-            { 
-                txtPackageFilename.Text = value; 
-                CheckSubmitState(); 
+            set
+            {
+                txtPackageFilename.Text = value;
+                CheckSubmitState();
             }
         }
 
@@ -115,7 +114,7 @@ namespace Maestro.Base.UI.Packaging
             {
                 if (chkRestorePath.Checked)
                 {
-                    txtRestorePath.Text = value; 
+                    txtRestorePath.Text = value;
                     CheckSubmitState();
                 }
             }
@@ -130,8 +129,8 @@ namespace Maestro.Base.UI.Packaging
         public bool RemoveTargetFolderOnRestore
         {
             get { return chkRemoveTargetFolderOnRestore.Checked; }
-            set 
-            { 
+            set
+            {
                 chkRemoveTargetFolderOnRestore.Checked = value;
                 CheckSubmitState();
             }
@@ -212,7 +211,7 @@ namespace Maestro.Base.UI.Packaging
             txtRestorePath.Enabled = btnBrowseRestorePath.Enabled = chkRestorePath.Checked;
         }
 
-        void CheckSubmitState()
+        private void CheckSubmitState()
         {
             btnOK.Enabled =
                 SelectedTypes.Length > 0 &&

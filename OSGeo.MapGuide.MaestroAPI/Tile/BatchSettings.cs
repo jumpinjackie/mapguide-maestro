@@ -1,28 +1,29 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.MapDefinition;
-using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tile
 {
@@ -59,42 +60,52 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// All maps are being rendered
         /// </summary>
         StartRenderAllMaps,
+
         /// <summary>
         /// A map is being rendered
         /// </summary>
         StartRenderMap,
+
         /// <summary>
         /// A group is being rendered
         /// </summary>
         StartRenderGroup,
+
         /// <summary>
         /// A scale is being rendered
         /// </summary>
         StartRenderScale,
+
         /// <summary>
         /// A tile is being rendered
         /// </summary>
         StartRenderTile,
+
         /// <summary>
         /// A tile has been rendered
         /// </summary>
         FinishRenderTile,
+
         /// <summary>
         /// A scale has been rendered
         /// </summary>
         FinishRenderScale,
+
         /// <summary>
         /// A group has been rendered
         /// </summary>
         FinishRenderGroup,
+
         /// <summary>
         /// A map has been rendered
         /// </summary>
         FinishRenderMap,
+
         /// <summary>
         /// All maps have been rendered
         /// </summary>
         FinishRenderAllMaps,
+
         /// <summary>
         /// A tile has failed to render
         /// </summary>
@@ -110,10 +121,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// A reference to the connection
         /// </summary>
         private IServerConnection m_connection;
+
         /// <summary>
         /// The list of maps
         /// </summary>
         private List<MapTilingConfiguration> m_maps;
+
         /// <summary>
         /// A default set of tile settings
         /// </summary>
@@ -130,46 +143,57 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         public System.Threading.ManualResetEvent PauseEvent = new System.Threading.ManualResetEvent(true);
 
         #region Events
+
         /// <summary>
         /// All maps are being rendered
         /// </summary>
         public event ProgressCallback BeginRenderingMaps;
+
         /// <summary>
         /// A map is being rendered
         /// </summary>
         public event ProgressCallback BeginRenderingMap;
+
         /// <summary>
         /// A group is being rendered
         /// </summary>
         public event ProgressCallback BeginRenderingGroup;
+
         /// <summary>
         /// A scale is being rendered
         /// </summary>
         public event ProgressCallback BeginRenderingScale;
+
         /// <summary>
         /// A tile is being rendered
         /// </summary>
         public event ProgressCallback BeginRenderingTile;
+
         /// <summary>
         /// All maps have been rendered
         /// </summary>
         public event ProgressCallback FinishRenderingMaps;
+
         /// <summary>
         /// A map has been rendered
         /// </summary>
         public event ProgressCallback FinishRenderingMap;
+
         /// <summary>
         /// A group has been rendered
         /// </summary>
         public event ProgressCallback FinishRenderingGroup;
+
         /// <summary>
         /// A scale has been rendered
         /// </summary>
         public event ProgressCallback FinishRenderingScale;
+
         /// <summary>
         /// A tile has been rendered
         /// </summary>
         public event ProgressCallback FinishRenderingTile;
+
         /// <summary>
         /// A tile has failed to render
         /// </summary>
@@ -235,7 +259,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             return exception;
         }
 
-        #endregion
+        #endregion Events
 
         /// <summary>
         /// Constructs a new batch setup. If no maps are supplied, all maps in the repository is assumed.
@@ -358,6 +382,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// The connection to the server
         /// </summary>
         public IServerConnection Connection { get { return m_connection; } }
+
         /// <summary>
         /// The list of map configurations to proccess
         /// </summary>
@@ -383,6 +408,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// A reference to the parent, and thus the connection
         /// </summary>
         private TilingRunCollection m_parent;
+
         /// <summary>
         /// The map read from MapGuide
         /// </summary>
@@ -422,8 +448,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// Gets the list of groups
         /// </summary>
         public string[] Groups { get { return m_groups; } }
-
-       
 
         /// <summary>
         /// The map's scales may have been modified, this array is a map of the new values
@@ -476,14 +500,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
 
             m_dimensions = new long[this.Resolutions][];
             m_scaleindexmap = new int[m_dimensions.Length];
-            
+
             double width_in_meters = Math.Abs(m_parent.Config.MetersPerUnit * (extents.MaxX - extents.MinX));
             double height_in_meters = Math.Abs(m_parent.Config.MetersPerUnit * (extents.MaxY - extents.MinY));
 
             m_dimensions = new long[this.Resolutions][];
             for (int i = this.Resolutions - 1; i >= 0; i--)
             {
-                long rows, cols, rowTileOffset = 0 , colTileOffset = 0;
+                long rows, cols, rowTileOffset = 0, colTileOffset = 0;
                 double scale = m_mapdefinition.BaseMap.GetScaleAt(i);
 
                 // This is the official method, and the only one MgCooker will ever use
@@ -502,7 +526,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                 // where 0.079375 = [inch to meter] / image DPI * tile size = 0.0254 / 96 * 300.
                 //
                 // This assumes you know the scale factor that converts your map width and height to meters. You can get this from the coordinate system of the map if you don't know it, but it's much easier to just plug in the number into this equation.
-                // 
+                //
                 // Also have in mind that you can also request tiles beyond the map extent (for example tile (-1, -1), however, there is probably no point to cache them unless you have valid data outside your initial map extents.
 
                 //The tile extent in meters
@@ -529,11 +553,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                     //GT 03/08/2014 - the right number of columns/rows it's the the end tile (maxtileoffset, ex 12) - the start tile (coltileoffset, ex 11) +1
                     //i.e. 12-11+1=2 so 2 columns
                     cols = (colMaxTileOffset - colTileOffset) + 1;
-                    rows = (rowMinTileOffset - rowTileOffset) + 1; 
+                    rows = (rowMinTileOffset - rowTileOffset) + 1;
                 }
 
-
-                m_dimensions[i] = new long[] { rows, cols, rowTileOffset , colTileOffset};
+                m_dimensions[i] = new long[] { rows, cols, rowTileOffset, colTileOffset };
             }
         }
 
@@ -544,13 +567,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         public void SetGroups(string[] groups)
         {
             List<string> g = new List<string>();
-            for(int i = 0; i < m_groups.Length; i++)
+            for (int i = 0; i < m_groups.Length; i++)
                 if (Array.IndexOf<string>(groups, m_groups[i]) >= 0)
                     g.Add(m_groups[i]);
 
             m_groups = g.ToArray();
         }
-
 
         /// <summary>
         /// Sets the list of scale indexes and sets the maximum extent to the given envelope
@@ -562,7 +584,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             this.m_maxExtent = envelope;
             SetScales(scales);
         }
-
 
         /// <summary>
         /// Sets the list of scale indexes
@@ -633,7 +654,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             }
         }
 
-
         /// <summary>
         /// Renders all tiles in a given scale
         /// </summary>
@@ -653,7 +673,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                 //If the MaxExtents are different from the actual bounds, we need a start offset offset
 
                 RenderThreads settings = new RenderThreads(this, m_parent, m_scaleindexmap[scaleindex], group, m_mapdefinition.ResourceID, rows, cols, rowTileOffset, colTileOffset, m_parent.Config.RandomizeTileSequence);
-                
+
                 settings.RunAndWait();
 
                 if (settings.TileSet.Count != 0 && !m_parent.Cancel)
@@ -661,9 +681,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             }
 
             m_parent.InvokeFinishRendering(this, group, scaleindex);
-
         }
-
 
         /// <summary>
         /// Renders all tiles in all scales
@@ -675,7 +693,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
 
             if (!m_parent.Cancel)
             {
-
                 for (int i = this.Resolutions - 1; i >= 0; i--)
                     if (m_parent.Cancel)
                         break;
@@ -684,7 +701,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             }
 
             m_parent.InvokeFinishRendering(this, group);
-
         }
 
         /// <summary>
@@ -734,8 +750,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// Gets a reference to the parent tiling run collection
         /// </summary>
         public TilingRunCollection Parent { get { return m_parent; } }
-
-       
     }
 
     /// <summary>
@@ -792,6 +806,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// Gets or sets whether to randomize the tile generation sequence
         /// </summary>
         public bool RandomizeTileSequence = false;
+
         private int m_threadCount = 1;
 
         /// <summary>

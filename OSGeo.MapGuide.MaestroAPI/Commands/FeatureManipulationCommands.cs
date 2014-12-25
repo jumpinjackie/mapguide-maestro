@@ -1,35 +1,37 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI.Feature;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using OSGeo.MapGuide.MaestroAPI.Feature;
-using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.MaestroAPI.Commands
 {
     /// <summary>
     /// Defines a command that works against a Feature Class of a Feature Source
     /// </summary>
-    public interface IFeatureCommand : ICommand 
+    public interface IFeatureCommand : ICommand
     {
         /// <summary>
         /// Gets or sets the Feature Source ID
@@ -52,12 +54,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     /// <example>
     /// How to create a data store with a given schema
     /// <code>
-    /// 
+    ///
     ///     IServerConnection conn = ...;
-    /// 
+    ///
     ///     FeatureSchema schema = new FeatureSchema("Default", "");
     ///     ClassDefinition cls = new ClassDefinition("MyClass", "");
-    ///     
+    ///
     ///     cls.DefaultGeometryProperty = "GEOM";
     ///     //Add identity property KEY
     ///     cls.AddProperty(new DataPropertyDefinition("KEY", "")
@@ -81,9 +83,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     ///         GeometricTypes = FeatureGeometricType.Point,
     ///         SpatialContextAssociation = "Default"
     ///     });
-    ///     
+    ///
     ///     schema.AddClass(cls);
-    ///     
+    ///
     ///     ICreateDataStore create = (ICreateDataStore)conn.CreateCommand((int)CommandType.CreateDataStore);
     ///     CoordinateSystemDefinitionBase coordSys = conn.CoordinateSystemCatalog.FindCoordSys("LL84");
     ///     create.FeatureSourceId = fsId;
@@ -96,7 +98,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     ///     create.XYTolerance = 0.001;
     ///     create.ZTolerance = 0.001;
     ///     create.Execute();
-    /// 
+    ///
     /// </code>
     /// </example>
     public interface ICreateDataStore : ICommand, IFdoSpatialContext
@@ -137,7 +139,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     /// <example>
     /// How to insert a feature that contains a string and geometry value
     /// <code>
-    /// 
+    ///
     ///     IServerConnection conn = ...;
     ///     IInsertFeatures insertCmd = (IInsertFeatures)conn.CreateCommand((int)CommandType.InsertFeatures);
     ///     insertCmd.FeatureSourceId = "Library://My.FeatureSource";
@@ -148,7 +150,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     ///     insertRec.PutValue("Name", new StringValue("Foo"));
     ///     insertCmd.RecordToInsert = insertRec;
     ///     InsertResult res = insertCmd.Execute();
-    /// 
+    ///
     /// </code>
     /// </example>
     public interface IInsertFeatures : IFeatureCommand
@@ -157,7 +159,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// The feature to insert
         /// </summary>
         IMutableRecord RecordToInsert { get; set; }
-        
+
         /// <summary>
         /// Executes the command. Any error during execution will be caught and stored in the <see cref="P:OSGeo.MapGuide.MaestroAPI.Commands.InsertResult.Error"/> property
         /// </summary>
@@ -199,7 +201,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// Executes the command.
         /// </summary>
         /// <returns>
-        /// A collection of <see cref="T:OSGeo.MapGuide.MaestroAPI.Commands.InsertResult" /> instances. 
+        /// A collection of <see cref="T:OSGeo.MapGuide.MaestroAPI.Commands.InsertResult" /> instances.
         /// Inspect the individual <see cref="P:OSGeo.MapGuide.MaestroAPI.Commands.InsertResult "/> properties to
         /// determine which features failed to be inserted.
         /// </returns>
@@ -216,7 +218,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     /// <example>
     /// How to update all features matching a given filter to the given value
     /// <code>
-    /// 
+    ///
     ///     IServerConnection conn = ...;
     ///     IUpdateFeatures updateCmd = (IUpdateFeatures)conn.CreateCommand((int)CommandType.UpdateFeatures);
     ///     updateCmd.FeatureSourceId = "Library://My.FeatureSource";
@@ -225,7 +227,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     ///     updateCmd.ValuesToUpdate = new MutableRecord();
     ///     updateCmd.ValuesToUpdate.PutValue("Name", new StringValue("Foo"));
     ///     int updated = updateCmd.Execute();
-    /// 
+    ///
     /// </code>
     /// </example>
     public interface IUpdateFeatures : IFeatureCommand
@@ -258,14 +260,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     /// <example>
     /// How to update all features matching a given filter to the given value
     /// <code>
-    /// 
+    ///
     ///     IServerConnection conn = ...;
     ///     IDeleteFeatures deleteCmd = (IDeleteFeatures)conn.CreateCommand((int)CommandType.DeleteFeatures);
     ///     deleteCmd.FeatureSourceId = "Library://My.FeatureSource";
     ///     deleteCmd.ClassName = "MyFeatureClass";
     ///     deleteCmd.Filter = "Name = 'Bar'";
     ///     int deleted = deleteCmd.Execute();
-    /// 
+    ///
     /// </code>
     /// </example>
     public interface IDeleteFeatures : IFeatureCommand

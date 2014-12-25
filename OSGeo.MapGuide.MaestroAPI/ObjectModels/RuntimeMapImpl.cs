@@ -1,27 +1,29 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2013, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
 {
@@ -49,7 +51,7 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
 
         int IRuntimeMapInfo.DisplayDpi
         {
-            get 
+            get
             {
                 int dpi;
                 if (int.TryParse(this.DisplayDpi, out dpi))
@@ -70,7 +72,7 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
 
         IEnvelope IRuntimeMapInfo.Extents
         {
-            get 
+            get
             {
                 double minx;
                 double miny;
@@ -87,7 +89,7 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
             }
         }
 
-        ReadOnlyLayerCollection _roLayers;
+        private ReadOnlyLayerCollection _roLayers;
 
         IRuntimeLayerInfoCollection IRuntimeMapInfo.Layers
         {
@@ -103,11 +105,11 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
             }
         }
 
-        ReadOnlyGroupCollection _roGroups;
+        private ReadOnlyGroupCollection _roGroups;
 
         IRuntimeLayerGroupInfoCollection IRuntimeMapInfo.Groups
         {
-            get 
+            get
             {
                 if (this.Group == null)
                     return null;
@@ -129,7 +131,7 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
     }
 
     //I love C# generics!
-    internal abstract class ReadOnlyCollectionWrapper<TInterface, TImpl> 
+    internal abstract class ReadOnlyCollectionWrapper<TInterface, TImpl>
         : IReadOnlyCollection<TInterface>
         where TImpl : TInterface
     {
@@ -150,7 +152,7 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
             get { return _list[index]; }
         }
 
-        class Enumerator : IEnumerator<TInterface>
+        private class Enumerator : IEnumerator<TInterface>
         {
             private IList<TImpl> _innerList;
             private int _pos;
@@ -168,7 +170,6 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
 
             public void Dispose()
             {
-                
             }
 
             object System.Collections.IEnumerator.Current
@@ -201,7 +202,6 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
 
     partial class RuntimeMapLayer : IRuntimeLayerInfo
     {
-
         int IRuntimeLayerInfo.LayerType
         {
             get { return Convert.ToInt32(this.Type); }
@@ -212,7 +212,7 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
             get { return this.FeatureSource; }
         }
 
-        ScaleRangeCollection _roScales;
+        private ScaleRangeCollection _roScales;
 
         IScaleRangeInfoCollection IRuntimeLayerInfo.ScaleRanges
         {
@@ -268,40 +268,55 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
     internal class ReadOnlyLayerCollection : ReadOnlyCollectionWrapper<IRuntimeLayerInfo, RuntimeMapLayer>,
                                              IRuntimeLayerInfoCollection
     {
-        public ReadOnlyLayerCollection(IList<RuntimeMapLayer> list) : base(list) { }
+        public ReadOnlyLayerCollection(IList<RuntimeMapLayer> list)
+            : base(list)
+        {
+        }
     }
 
     internal class ReadOnlyGroupCollection : ReadOnlyCollectionWrapper<IRuntimeLayerGroupInfo, RuntimeMapGroup>,
                                              IRuntimeLayerGroupInfoCollection
     {
-        public ReadOnlyGroupCollection(IList<RuntimeMapGroup> list) : base(list) { }
+        public ReadOnlyGroupCollection(IList<RuntimeMapGroup> list)
+            : base(list)
+        {
+        }
     }
 
     internal class ScaleRangeCollection : ReadOnlyCollectionWrapper<IScaleRangeInfo, ScaleRangeInfo>,
                                           IScaleRangeInfoCollection
     {
-        public ScaleRangeCollection(IList<ScaleRangeInfo> list) : base(list) { }
+        public ScaleRangeCollection(IList<ScaleRangeInfo> list)
+            : base(list)
+        {
+        }
     }
 
     internal class FeatureStyleCollection : ReadOnlyCollectionWrapper<IFeatureStyleInfo, FeatureStyleInfo>,
                                             IFeatureStyleInfoCollection
     {
-        public FeatureStyleCollection(IList<FeatureStyleInfo> list) : base(list) { }
+        public FeatureStyleCollection(IList<FeatureStyleInfo> list)
+            : base(list)
+        {
+        }
     }
 
     internal class RuleInfoCollection : ReadOnlyCollectionWrapper<IRuleInfo, RuleInfo>,
                                         IRuleInfoCollection
     {
-        public RuleInfoCollection(IList<RuleInfo> list) : base(list) { }
+        public RuleInfoCollection(IList<RuleInfo> list)
+            : base(list)
+        {
+        }
     }
 
     partial class ScaleRangeInfo : IScaleRangeInfo
     {
-        FeatureStyleCollection _roStyles;
+        private FeatureStyleCollection _roStyles;
 
         IFeatureStyleInfoCollection IScaleRangeInfo.FeatureStyle
         {
-            get 
+            get
             {
                 if (this.FeatureStyle == null)
                     return null;
@@ -321,14 +336,14 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
             get { return Convert.ToInt32(this.Type); }
         }
 
-        RuleInfoCollection _roRules;
+        private RuleInfoCollection _roRules;
 
         /// <summary>
         /// Gets the rules in this feature style
         /// </summary>
         public IRuleInfoCollection Rules
         {
-            get 
+            get
             {
                 if (this.Rule == null)
                     return null;
@@ -351,6 +366,5 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
 
     partial class CoordinateSystemType : ICoordinateSystemInfo
     {
-
     }
 }

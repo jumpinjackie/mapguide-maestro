@@ -1,37 +1,36 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using NUnit.Framework;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using NMock2;
+//
 
-using LoadProc = OSGeo.MapGuide.ObjectModels.LoadProcedure;
+#endregion Disclaimer / License
+
+using NMock2;
+using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.LoadProcedure;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
-using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.LoadProcedure;
+using System;
 using System.Xml;
 
 namespace MaestroAPITests
@@ -98,7 +97,8 @@ namespace MaestroAPITests
         }
 
         #region Mocks
-        class MockResourceService : IResourceService
+
+        private class MockResourceService : IResourceService
         {
             public event ResourceEventHandler ResourceAdded;
 
@@ -277,7 +277,7 @@ namespace MaestroAPITests
             }
         }
 
-        class MockFeatureService : IFeatureService
+        private class MockFeatureService : IFeatureService
         {
             public OSGeo.MapGuide.ObjectModels.Capabilities.IFdoProviderCapabilities GetProviderCapabilities(string provider)
             {
@@ -414,7 +414,6 @@ namespace MaestroAPITests
                 throw new NotImplementedException();
             }
 
-
             public OSGeo.MapGuide.ObjectModels.Common.ILongTransactionList GetLongTransactions(string resourceId, bool activeOnly)
             {
                 throw new NotImplementedException();
@@ -425,13 +424,13 @@ namespace MaestroAPITests
                 throw new NotImplementedException();
             }
 
-
             public OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames, System.Collections.Specialized.NameValueCollection computedProperties, int limit)
             {
                 throw new NotImplementedException();
             }
         }
-        #endregion
+
+        #endregion Mocks
 
         [Test]
         public void TestLoadProcedureValidation()
@@ -445,7 +444,7 @@ namespace MaestroAPITests
             var conn = mock.NewMock<IServerConnection>();
             var featSvc = new MockFeatureService();
             var resSvc = new MockResourceService();
-            var lp = ObjectFactory.CreateLoadProcedure(conn, LoadType.Sdf, new string[] 
+            var lp = ObjectFactory.CreateLoadProcedure(conn, LoadType.Sdf, new string[]
             {
                 "C:\\foo.sdf",
                 "C:\\bar.sdf"
@@ -460,7 +459,7 @@ namespace MaestroAPITests
             //SDF2, generalization and 2 missing files
             Assert.AreEqual(4, set.GetAllIssues().Length);
 
-            lp = ObjectFactory.CreateLoadProcedure(conn, LoadType.Shp, new string[] 
+            lp = ObjectFactory.CreateLoadProcedure(conn, LoadType.Shp, new string[]
             {
                 "C:\\foo.shp",
                 "C:\\bar.shp"
@@ -542,7 +541,7 @@ namespace MaestroAPITests
             }
 
             Assert.True(hasIssue);
-            
+
             //Case described in trac #1472
             var ldf2 = ObjectFactory.CreateDefaultLayer(conn, OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Vector, new Version(1, 0, 0));
             ldf2.ResourceID = "Library://Test/Foo.LayerDefinition";
@@ -584,7 +583,7 @@ namespace MaestroAPITests
         {
             var fs = new FeatureSchema();
             var doc = new XmlDocument();
-            
+
             doc.Load("UserTestData\\1896.xml");
 
             var mgr = new XmlNamespaceManager(doc.NameTable);

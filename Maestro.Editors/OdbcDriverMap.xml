@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<!-- 
+<!--
 This file allows the ODBC Known Driver connection builder to load builders of known
-ODBC drivers. Connection builders specified in this file must inherit from the 
+ODBC drivers. Connection builders specified in this file must inherit from the
 Maestro.Editors.FeatureSource.Providers.Odbc.OdbcDriverInfo class
 
 To create your own ODBC driver connection builder, extend the OdbcDriverInfo class. Define the

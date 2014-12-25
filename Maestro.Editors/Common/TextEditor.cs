@@ -1,7 +1,8 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // Original code from SharpDevelop 3.2.1 licensed under the same terms (LGPL 2.1)
 // Copyright 2002-2010 by
 //
@@ -13,39 +14,39 @@
 //  email: office@alphasierrapapa.com
 //  court of jurisdiction: Landesgericht Leoben
 //
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using ICSharpCode.TextEditor;
 using ICSharpCode.TextEditor.Document;
 using ICSharpCode.TextEditor.Gui.CompletionWindow;
 using OSGeo.MapGuide.MaestroAPI;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Maestro.Editors.Common
 {
     internal abstract class TextEditorBase : ITextEditor
     {
-        delegate string GetLineInvoker(int index);
-        delegate void WriteInvoker(string text, Color color, Color fore);
+        private delegate string GetLineInvoker(int index);
+
+        private delegate void WriteInvoker(string text, Color color, Color fore);
 
         protected TextEditorControl textEditorControl;
         protected TextArea textArea;
@@ -216,12 +217,12 @@ namespace Maestro.Editors.Common
         /// <summary>
         /// Gets the range of the currently selected text.
         /// </summary>
-        ColumnRange GetSelectionRange()
+        private ColumnRange GetSelectionRange()
         {
             return textArea.SelectionManager.GetSelectionAtLine(textArea.Caret.Line);
         }
 
-        void SetIndentStyle(IndentStyle style)
+        private void SetIndentStyle(IndentStyle style)
         {
             if (textEditorControl.InvokeRequired)
             {
@@ -239,7 +240,9 @@ namespace Maestro.Editors.Common
             return false;
         }
 
-        public virtual void SetParent(Control frm) { } 
+        public virtual void SetParent(Control frm)
+        {
+        }
     }
 
     /// <summary>
@@ -311,7 +314,7 @@ namespace Maestro.Editors.Common
         {
             var pt = textArea.Caret.ScreenPosition;
             var cpt = textEditorControl.PointToScreen(pt);
-            int dx = 15; //Shift a bit 
+            int dx = 15; //Shift a bit
             int dy = 0;
 
             //Adjust the postion to accomodate as much space for the auto-complete box as much as possible
@@ -325,7 +328,7 @@ namespace Maestro.Editors.Common
             return pt;
         }
 
-        static bool IsAlphanumeric(Keys key)
+        private static bool IsAlphanumeric(Keys key)
         {
             return (key >= Keys.D0 && key <= Keys.Z);
         }
@@ -347,14 +350,17 @@ namespace Maestro.Editors.Common
                         _autoBox.MoveAutoCompleteSelectionUp();
                         bProcessed = true;
                         break;
+
                     case Keys.Down:
                         _autoBox.MoveAutoCompleteSelectionDown();
                         bProcessed = true;
                         break;
+
                     case Keys.Enter:
                         _autoBox.HandleEnterKey();
                         bProcessed = true;
                         break;
+
                     case Keys.Escape:
                         _autoBox.HideBox();
                         break;
@@ -369,7 +375,7 @@ namespace Maestro.Editors.Common
     /// </summary>
     internal class DefaultTextEditor : TextEditorBase
     {
-        CodeCompletionWindow completionWindow;
+        private CodeCompletionWindow completionWindow;
 
         internal DefaultTextEditor(TextEditorControl textEditor)
             : base(textEditor)
@@ -390,7 +396,7 @@ namespace Maestro.Editors.Common
             }
         }
 
-        void CompletionWindowClosed(object source, EventArgs e)
+        private void CompletionWindowClosed(object source, EventArgs e)
         {
             if (completionWindow != null)
             {

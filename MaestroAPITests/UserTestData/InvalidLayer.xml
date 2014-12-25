@@ -8,7 +8,7 @@
     <VectorScaleRange>
       <LineTypeStyle>
         <LineRule>
-          <LegendLabel/>
+          <LegendLabel />
           <LineSymbolization2D>
             <LineStyle>Rail</LineStyle>
             <Thickness>0.0</Thickness>

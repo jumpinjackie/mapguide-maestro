@@ -1,7 +1,8 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // Original code from SharpDevelop 3.2.1 licensed under the same terms (LGPL 2.1)
 // Copyright 2002-2010 by
 //
@@ -13,28 +14,29 @@
 //  email: office@alphasierrapapa.com
 //  court of jurisdiction: Landesgericht Leoben
 //
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using ICSharpCode.TextEditor.Document;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Xml;
 
@@ -45,11 +47,11 @@ namespace Maestro.Editors.Generic.XmlEditor
     /// </summary>
     public class XmlFoldStart
     {
-        int line = 0;
-        int col = 0;
-        string prefix = String.Empty;
-        string name = String.Empty;
-        string foldText = String.Empty;
+        private int line = 0;
+        private int col = 0;
+        private string prefix = String.Empty;
+        private string name = String.Empty;
+        private string foldText = String.Empty;
 
         /// <summary>
         /// Initializes a new instance of the XmlFoldStart class
@@ -132,7 +134,7 @@ namespace Maestro.Editors.Generic.XmlEditor
         /// Flag indicating whether attributes should be displayed on folded
         /// elements.
         /// </summary>
-        bool showAttributesWhenFolded = false;
+        private bool showAttributesWhenFolded = false;
 
         /// <summary>
         /// Initializes a new instance of the XmlFoldingStrategy class
@@ -147,8 +149,8 @@ namespace Maestro.Editors.Generic.XmlEditor
         /// Adds folds to the text editor around each start-end element pair.
         /// </summary>
         /// <remarks>
-        /// <para>If the xml is not well formed then no folds are created.</para> 
-        /// <para>Note that the xml text reader lines and positions start 
+        /// <para>If the xml is not well formed then no folds are created.</para>
+        /// <para>Note that the xml text reader lines and positions start
         /// from 1 and the SharpDevelop text editor line information starts
         /// from 0.</para>
         /// </remarks>
@@ -188,7 +190,7 @@ namespace Maestro.Editors.Generic.XmlEditor
             }
             catch (Exception)
             {
-                // If the xml is not well formed keep the foldings 
+                // If the xml is not well formed keep the foldings
                 // that already exist in the document.
                 return new List<FoldMarker>(document.FoldingManager.FoldMarker);
             }
@@ -196,14 +198,14 @@ namespace Maestro.Editors.Generic.XmlEditor
             return foldMarkers;
         }
 
-        #endregion
+        #endregion IFoldingStrategy
 
         /// <summary>
         /// Creates a comment fold if the comment spans more than one line.
         /// </summary>
-        /// <remarks>The text displayed when the comment is folded is the first 
+        /// <remarks>The text displayed when the comment is folded is the first
         /// line of the comment.</remarks>
-        void CreateCommentFold(IDocument document, List<FoldMarker> foldMarkers, XmlTextReader reader)
+        private void CreateCommentFold(IDocument document, List<FoldMarker> foldMarkers, XmlTextReader reader)
         {
             if (reader.Value != null)
             {
@@ -211,7 +213,6 @@ namespace Maestro.Editors.Generic.XmlEditor
                 string[] lines = comment.Split('\n');
                 if (lines.Length > 1)
                 {
-
                     // Take off 5 chars to get the actual comment start (takes
                     // into account the <!-- chars.
 
@@ -231,11 +232,11 @@ namespace Maestro.Editors.Generic.XmlEditor
         /// <summary>
         /// Creates an XmlFoldStart for the start tag of an element.
         /// </summary>
-        XmlFoldStart CreateElementFoldStart(XmlTextReader reader)
+        private XmlFoldStart CreateElementFoldStart(XmlTextReader reader)
         {
-            // Take off 2 from the line position returned 
+            // Take off 2 from the line position returned
             // from the xml since it points to the start
-            // of the element name and not the beginning 
+            // of the element name and not the beginning
             // tag.
             XmlFoldStart newFoldStart = new XmlFoldStart(reader.Prefix, reader.LocalName, reader.LineNumber - 1, reader.LinePosition - 2);
 
@@ -252,10 +253,10 @@ namespace Maestro.Editors.Generic.XmlEditor
         }
 
         /// <summary>
-        /// Create an element fold if the start and end tag are on 
+        /// Create an element fold if the start and end tag are on
         /// different lines.
         /// </summary>
-        void CreateElementFold(IDocument document, List<FoldMarker> foldMarkers, XmlTextReader reader, XmlFoldStart foldStart)
+        private void CreateElementFold(IDocument document, List<FoldMarker> foldMarkers, XmlTextReader reader, XmlFoldStart foldStart)
         {
             int endLine = reader.LineNumber - 1;
             if (endLine > foldStart.Line)
@@ -275,7 +276,7 @@ namespace Maestro.Editors.Generic.XmlEditor
         /// line of the start tag.  It does not cater for elements where attributes
         /// are not on the same line as the start tag.
         /// </remarks>
-        string GetAttributeFoldText(XmlTextReader reader)
+        private string GetAttributeFoldText(XmlTextReader reader)
         {
             StringBuilder text = new StringBuilder();
 
@@ -305,7 +306,7 @@ namespace Maestro.Editors.Generic.XmlEditor
         /// the XmlTextReader is the plain unencoded string and .NET
         /// does not provide us with an xml encode method.
         /// </summary>
-        static string XmlEncodeAttributeValue(string attributeValue, char quoteChar)
+        private static string XmlEncodeAttributeValue(string attributeValue, char quoteChar)
         {
             StringBuilder encodedValue = new StringBuilder(attributeValue);
 

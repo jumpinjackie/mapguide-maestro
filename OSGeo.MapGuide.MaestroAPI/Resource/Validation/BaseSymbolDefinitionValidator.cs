@@ -1,7 +1,5 @@
-﻿using System;
+﻿using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {

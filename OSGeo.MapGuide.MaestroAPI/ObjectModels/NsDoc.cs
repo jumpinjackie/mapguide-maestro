@@ -1,25 +1,25 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using System.Runtime.CompilerServices;
 
 namespace OSGeo.MapGuide.ObjectModels
@@ -28,12 +28,12 @@ namespace OSGeo.MapGuide.ObjectModels
     /// The <c>OSGeo.MapGuide.ObjectModels</c> namespace is the root of all classes generated from the MapGuide
     /// XML Schemas. MapGuide resources are provided as strongly-typed classes implementing common interfaces to avoid
     /// needing to work against version specific resources.
-    /// 
+    ///
     /// The <see cref="T:OSGeo.MapGuide.ObjectModels.ObjectFactory"/> utility class is used for creating any of these
     /// resource classes.
     /// </summary>
     [CompilerGenerated]
-    class NamespaceDoc
+    internal class NamespaceDoc
     {
     }
 
@@ -44,7 +44,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Application Definition resources
         /// </summary>
         [CompilerGenerated]
-        class NamespaceDoc
+        internal class NamespaceDoc
         {
         }
     }
@@ -53,11 +53,11 @@ namespace OSGeo.MapGuide.ObjectModels
     {
         /// <summary>
         /// The <c>OSGeo.MapGuide.ObjectModels.Capabilities</c> namespace provides classes for working with common
-        /// elements in mapagent GETPROVIDERCAPABILITIES responses. The classes have been automatically generated from the 
+        /// elements in mapagent GETPROVIDERCAPABILITIES responses. The classes have been automatically generated from the
         /// respective MapGuide XML schemas.
         /// </summary>
         [CompilerGenerated]
-        class NamespaceDoc
+        internal class NamespaceDoc
         {
         }
     }
@@ -70,7 +70,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// XML schemas.
         /// </summary>
         [CompilerGenerated]
-        class NamespaceDoc
+        internal class NamespaceDoc
         {
         }
     }
@@ -82,7 +82,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Drawing Source resources
         /// </summary>
         [CompilerGenerated]
-        class NamespaceDoc
+        internal class NamespaceDoc
         {
         }
     }
@@ -94,7 +94,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Feature Source resources
         /// </summary>
         [CompilerGenerated]
-        class NamespaceDoc
+        internal class NamespaceDoc
         {
         }
     }
@@ -106,7 +106,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Layer Definition resources
         /// </summary>
         [CompilerGenerated]
-        class NamespaceDoc
+        internal class NamespaceDoc
         {
         }
     }
@@ -118,7 +118,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Load Procedure resources
         /// </summary>
         [CompilerGenerated]
-        class NamespaceDoc
+        internal class NamespaceDoc
         {
         }
     }
@@ -130,7 +130,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Map Definition resources
         /// </summary>
         [CompilerGenerated]
-        class NamespaceDoc
+        internal class NamespaceDoc
         {
         }
     }
@@ -142,7 +142,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Print Layout resources
         /// </summary>
         [CompilerGenerated]
-        class NamespaceDoc
+        internal class NamespaceDoc
         {
         }
     }
@@ -154,7 +154,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Symbol Definition resources
         /// </summary>
         [CompilerGenerated]
-        class NamespaceDoc
+        internal class NamespaceDoc
         {
         }
     }
@@ -166,7 +166,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Symbol Library resources
         /// </summary>
         [CompilerGenerated]
-        class NamespaceDoc
+        internal class NamespaceDoc
         {
         }
     }
@@ -178,7 +178,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Watermark Definition resources
         /// </summary>
         [CompilerGenerated]
-        class NamespaceDoc
+        internal class NamespaceDoc
         {
         }
     }
@@ -190,7 +190,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Web Layout resources
         /// </summary>
         [CompilerGenerated]
-        class NamespaceDoc
+        internal class NamespaceDoc
         {
         }
     }

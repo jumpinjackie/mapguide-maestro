@@ -1,37 +1,36 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
+//
+
+#endregion Disclaimer / License
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
+    using OSGeo.MapGuide.MaestroAPI.Exceptions;
+    using OSGeo.MapGuide.MaestroAPI.Resource;
     using System;
-    using System.Collections;
-    using System.Data;
-    using System.IO;
-    using System.Xml;
-    using System.Xml.Schema;
-    using System.Text;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using OSGeo.MapGuide.MaestroAPI.Resource;
-    using OSGeo.MapGuide.MaestroAPI.Exceptions;
+    using System.IO;
+    using System.Text;
+    using System.Xml;
+    using System.Xml.Schema;
 
     ///<summary>
     /// Class that makes XSD validation
@@ -70,7 +69,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             var config = new XmlReaderSettings();
             if (xsds != null && xsds.Length > 0)
             {
-                foreach(var xsd in xsds)
+                foreach (var xsd in xsds)
                     config.Schemas.Add(xsd);
             }
             config.ValidationType = ValidationType.Schema;

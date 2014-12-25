@@ -1,37 +1,38 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Services;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
+using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
+using System;
 using System.Collections.Specialized;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
     /// <summary>
     /// <para>
-    /// MapGuide Platform connection interface. This is the root object of the Maestro API which typically 
-    /// represents a session with a MapGuide Server. Connections are created through the 
+    /// MapGuide Platform connection interface. This is the root object of the Maestro API which typically
+    /// represents a session with a MapGuide Server. Connections are created through the
     /// <see cref="T:OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry"/> class.
     /// </para>
     /// <para>
@@ -45,12 +46,12 @@ namespace OSGeo.MapGuide.MaestroAPI
     ///         <description>Feature Service (<see cref="T:OSGeo.MapGuide.MaestroAPI.Services.IFeatureService"/>) an abstraction layer for querying feature data in technology-independent manner.</description>
     ///     </item>
     ///     <item>
-    ///         <description>Coordinate System Catalog (<see cref="T:OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog"/> for querying coordinate systems and for translating WKT, cs code and EPSG codes to other forms</description>    
-    ///     </item> 
+    ///         <description>Coordinate System Catalog (<see cref="T:OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog"/> for querying coordinate systems and for translating WKT, cs code and EPSG codes to other forms</description>
+    ///     </item>
     /// </list>
     /// <para>
-    /// Additional services are supported at various levels depending on the implementation. 
-    /// The <see cref="P:OSGeo.MapGuide.MaestroAPI.IServerConnection.Capabilities"/> property provides information about 
+    /// Additional services are supported at various levels depending on the implementation.
+    /// The <see cref="P:OSGeo.MapGuide.MaestroAPI.IServerConnection.Capabilities"/> property provides information about
     /// what features, services and resource types are not supported.
     /// </para>
     /// </summary>
@@ -90,7 +91,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="ignoreUnsupportedFeatures"></param>
         /// <returns></returns>
         string[] ExecuteLoadProcedure(ILoadProcedure loadProc, OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack callback, bool ignoreUnsupportedFeatures);
-        
+
         /// <summary>
         /// Executes the load procedure indicated by the specified resource id
         /// </summary>
@@ -170,7 +171,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Gets the coordinate system catalog
         /// </summary>
         ICoordinateSystemCatalog CoordinateSystemCatalog { get; }
-        
+
         /// <summary>
         /// Gets a string that can be used to identify the server by a user
         /// </summary>
@@ -228,7 +229,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public delegate void RequestEventHandler(object sender, RequestEventArgs e);
 

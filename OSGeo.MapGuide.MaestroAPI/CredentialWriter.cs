@@ -1,30 +1,31 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 using ObjCommon = OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -87,20 +88,20 @@ namespace OSGeo.MapGuide.MaestroAPI
         //I'm sure this particular key isn't meant to be made public, but being able to correctly
         //write MG_USER_CREDENTIALS trumps this concern. Besides, if this key were to be truly private, it wouldn't be publicly visible
         //in the source code of a publicly accessible repository now would it?
-        const string MG_CRYPTOGRAPHY_PRIVATE_KEY         = "WutsokeedbA"; //NOXLATE
+        private const string MG_CRYPTOGRAPHY_PRIVATE_KEY = "WutsokeedbA"; //NOXLATE
 
-        static readonly char[] MG_CRYPTOGRAPHY_DEC_CHARS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' }; //NOXLATE
-        static readonly char[] MG_CRYPTOGRAPHY_HEX_CHARS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' }; //NOXLATE
-        const int MG_CRYPTOGRAPHY_MAGIC_NUMBER_1         = 42; //NOXLATE
-        const int MG_CRYPTOGRAPHY_MAGIC_NUMBER_2         = 3;
-        const int MG_CRYPTOGRAPHY_MIN_COLUMN_NUMBER      = 5;
+        private static readonly char[] MG_CRYPTOGRAPHY_DEC_CHARS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' }; //NOXLATE
+        private static readonly char[] MG_CRYPTOGRAPHY_HEX_CHARS = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' }; //NOXLATE
+        private const int MG_CRYPTOGRAPHY_MAGIC_NUMBER_1 = 42; //NOXLATE
+        private const int MG_CRYPTOGRAPHY_MAGIC_NUMBER_2 = 3;
+        private const int MG_CRYPTOGRAPHY_MIN_COLUMN_NUMBER = 5;
 
-        const int MIN_CIPHER_TEXT_LENGTH = 34;
-        const int MIN_KEY_LENGTH = 14;
-        const int MAX_KEY_LENGTH = 32;
-        const string STRING_DELIMITER = "\v"; //NOXLATE
-        const string RESERVED_CHARACTERS_STRINGS = "\v\f"; //NOXLATE
-        const string RESERVED_CHARACTERS_CREDENTIALS = "\t\r\n\v\f"; //NOXLATE
+        private const int MIN_CIPHER_TEXT_LENGTH = 34;
+        private const int MIN_KEY_LENGTH = 14;
+        private const int MAX_KEY_LENGTH = 32;
+        private const string STRING_DELIMITER = "\v"; //NOXLATE
+        private const string RESERVED_CHARACTERS_STRINGS = "\v\f"; //NOXLATE
+        private const string RESERVED_CHARACTERS_CREDENTIALS = "\t\r\n\v\f"; //NOXLATE
 
         /// <summary>
         /// Encrypts the specified credentials. For a feature source that uses %MG_USERNAME% and %MG_PASSWORD% placeholder tokens to
@@ -117,7 +118,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             return new MemoryStream(ASCIIEncoding.Default.GetBytes(credentials));
         }
 
-        static void EncryptStrings(string plainText1, string plainText2, out string cipherText, string reservedCharacters)
+        private static void EncryptStrings(string plainText1, string plainText2, out string cipherText, string reservedCharacters)
         {
             var reservedChars = reservedCharacters.ToCharArray();
             if (plainText1.IndexOfAny(reservedChars) >= 0)
@@ -142,7 +143,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             EncryptStringByTransposition(tmpStr2, out cipherText);
         }
 
-        static void EncryptStringByTransposition(string inStr, out string outStr)
+        private static void EncryptStringByTransposition(string inStr, out string outStr)
         {
             string tmpStr;
             int inStrLength = inStr.Length;
@@ -155,7 +156,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             Debug.Assert(inStrLength == outStr.Length);
         }
 
-        static void EncryptStringByTransposition(string inStr, out string outStr, int numOfColumn)
+        private static void EncryptStringByTransposition(string inStr, out string outStr, int numOfColumn)
         {
             int inStrLen = inStr.Length;
             int numOfRow = (int)Math.Ceiling((double)inStrLen / (double)numOfColumn);
@@ -178,20 +179,20 @@ namespace OSGeo.MapGuide.MaestroAPI
             outStr = sb.ToString();
         }
 
-        static void GenerateCryptographKey(out string publicKey)
+        private static void GenerateCryptographKey(out string publicKey)
         {
             DateTime dt = DateTime.UtcNow;
             publicKey = dt.ToString("yyyymmddHHmmss"); //NOXLATE
         }
 
-        static void CombineStrings(string str1, string str2, out string outStr)
+        private static void CombineStrings(string str1, string str2, out string outStr)
         {
             outStr = str1;
             outStr += STRING_DELIMITER;
             outStr += str2;
         }
 
-        static void EncryptStringWithKey(string inStr, out string outStr, string key)
+        private static void EncryptStringWithKey(string inStr, out string outStr, string key)
         {
             char prevChar = Convert.ToChar(MG_CRYPTOGRAPHY_MAGIC_NUMBER_1);
             char currChar;
@@ -211,15 +212,15 @@ namespace OSGeo.MapGuide.MaestroAPI
 
                 if (keyIdx >= keyLen)
                 {
-                   keyIdx = 0;
+                    keyIdx = 0;
                 }
             }
 
             BinToHex(tmpStr.ToString(), out outStr);
-            Debug.Assert((inStr.Length * 2) == outStr.Length); 
+            Debug.Assert((inStr.Length * 2) == outStr.Length);
         }
 
-        static void BinToHex(string binStr, out string hexStr)
+        private static void BinToHex(string binStr, out string hexStr)
         {
             int binStrLen = binStr.Length;
 

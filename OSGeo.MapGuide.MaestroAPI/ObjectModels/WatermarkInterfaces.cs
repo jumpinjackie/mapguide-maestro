@@ -1,29 +1,30 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Resource;
 using System.ComponentModel;
-using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
-using OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
 {
@@ -32,37 +33,37 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.38968")] //NOXLATE
     [System.SerializableAttribute()]
-    public enum UnitType {
-        
+    public enum UnitType
+    {
         /// <remarks/>
         Inches,
-        
+
         /// <remarks/>
         Centimeters,
-        
+
         /// <remarks/>
         Millimeters,
-        
+
         /// <remarks/>
         Pixels,
-        
+
         /// <remarks/>
         Points,
     }
-    
+
     /// <summary>
     /// The allowed horizontal alignment values for a watermark position
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.38968")] //NOXLATE
     [System.SerializableAttribute()]
-    public enum HorizontalAlignmentType {
-        
+    public enum HorizontalAlignmentType
+    {
         /// <remarks/>
         Left,
-        
+
         /// <remarks/>
         Center,
-        
+
         /// <remarks/>
         Right,
     }
@@ -72,35 +73,35 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.38968")] //NOXLATE
     [System.SerializableAttribute()]
-    public enum UsageType {
-        
+    public enum UsageType
+    {
         /// <remarks/>
         WMS,
-        
+
         /// <remarks/>
         Viewer,
-        
+
         /// <remarks/>
         All,
     }
-    
+
     /// <summary>
     /// The allowed vertical alignments for a watermark position
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.38968")] //NOXLATE
     [System.SerializableAttribute()]
-    public enum VerticalAlignmentType {
-        
+    public enum VerticalAlignmentType
+    {
         /// <remarks/>
         Top,
-        
+
         /// <remarks/>
         Center,
-        
+
         /// <remarks/>
         Bottom,
     }
-    
+
     /// <summary>
     /// A watermark definition containing content, appearance and position information
     /// </summary>
@@ -169,6 +170,7 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
         /// X/Y based position
         /// </summary>
         XY,
+
         /// <summary>
         /// Tile-based position
         /// </summary>

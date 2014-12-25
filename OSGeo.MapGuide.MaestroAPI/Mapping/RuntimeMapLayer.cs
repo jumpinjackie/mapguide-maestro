@@ -1,33 +1,35 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI.Feature;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.Serialization;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.ObjectModels.MapDefinition;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using OSGeo.MapGuide.MaestroAPI.Serialization;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using OSGeo.MapGuide.MaestroAPI.Feature;
 using System.Diagnostics;
-using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
@@ -111,9 +113,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
         //From MgLayerType
         internal const int kBaseMap = 2;
+
         internal const int kDynamic = 1;
 
-        const double InfinityScale = double.MaxValue;
+        private const double InfinityScale = double.MaxValue;
 
         /// <summary>
         /// Gets the <see cref="T:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap"/> that this layer belongs to
@@ -152,10 +155,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             {
                 _featureSourceId = ldf.SubLayer.ResourceId;
                 var dl = ((IDrawingLayerDefinition)ldf.SubLayer);
-                _scaleRanges = new double[] 
+                _scaleRanges = new double[]
                 {
                     dl.MinScale,
-                    dl.MaxScale 
+                    dl.MaxScale
                 };
                 EnsureOrderedMinMaxScales();
             }
@@ -172,7 +175,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Initializes this instance
         /// </summary>
         /// <param name="parent"></param>
-        protected internal RuntimeMapLayer(RuntimeMap parent) 
+        protected internal RuntimeMapLayer(RuntimeMap parent)
         {
             _scaleRanges = new double[] { 0.0, InfinityScale };
             _type = kDynamic;
@@ -271,7 +274,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="source"></param>
         /// <param name="ldf"></param>
         /// <param name="suppressErrors"></param>
-        protected internal RuntimeMapLayer(RuntimeMap parent, IBaseMapLayer source, ILayerDefinition ldf, bool suppressErrors) 
+        protected internal RuntimeMapLayer(RuntimeMap parent, IBaseMapLayer source, ILayerDefinition ldf, bool suppressErrors)
             : this(parent, ldf, suppressErrors)
         {
             Check.NotNull(source, "source"); //NOXLATE
@@ -805,7 +808,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     scaleRanges.Add(d.ReadDouble());
 
                 _scaleRanges = scaleRanges.ToArray();
-                
+
                 _featureSourceId = d.ReadString();
                 _qualifiedClassName = d.ReadString();
                 _geometryPropertyName = d.ReadString();
@@ -846,7 +849,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     scaleRanges.Add(BitConverter.ToDouble(d.ReadStreamRepeat(8), 0));
 
                 _scaleRanges = scaleRanges.ToArray();
-                
+
                 _featureSourceId = d.ReadInternalString();
                 _qualifiedClassName = d.ReadInternalString();
                 if (d.SiteVersion > SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_1))
@@ -872,21 +875,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         //from MgPropertyType
-        const int Blob = 10;
-        const int Boolean = 1;
-        const int Byte = 2;
-        const int Clob = 11;
-        const int DateTime = 3;
-        const int Double = 5;
-        const int Feature = 12;
-        const int Geometry = 13;
-        const int Int16 = 6;
-        const int Int32 = 7;
-        const int Int64 = 8;
-        const int Null = 0;
-        const int Raster = 14;
-        const int Single = 4;
-        const int String = 9;
+        private const int Blob = 10;
+
+        private const int Boolean = 1;
+        private const int Byte = 2;
+        private const int Clob = 11;
+        private const int DateTime = 3;
+        private const int Double = 5;
+        private const int Feature = 12;
+        private const int Geometry = 13;
+        private const int Int16 = 6;
+        private const int Int32 = 7;
+        private const int Int64 = 8;
+        private const int Null = 0;
+        private const int Raster = 14;
+        private const int Single = 4;
+        private const int String = 9;
 
         private static short ConvertNetTypeToMgType(Type type)
         {
@@ -924,30 +928,43 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             {
                 case Byte:
                     return typeof(byte);
+
                 case Int16:
                     return typeof(short);
+
                 case Int32:
                     return typeof(int);
+
                 case Int64:
                     return typeof(long);
+
                 case Single:
                     return typeof(float);
+
                 case Double:
                     return typeof(double);
+
                 case Boolean:
                     return typeof(bool);
+
                 case Geometry:
                     return Utility.GeometryType;
+
                 case String:
                     return typeof(string);
+
                 case DateTime:
                     return typeof(DateTime);
+
                 case Raster:
                     return Utility.RasterType;
+
                 case Blob:
                     return typeof(byte[]);
+
                 case Clob:
                     return typeof(byte[]);
+
                 default:
                     throw new Exception(string.Format(Strings.ErrorFailedToFindTypeForClrType, idType));
             }
@@ -972,18 +989,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     else
                         this.Parent.OnLayerParentChanged(this, string.Empty);
                     break;
+
                 case "Visible": //NOXLATE
                     this.Parent.OnLayerVisibilityChanged(this, this.Visible ? "1" : "0"); //NOXLATE
                     break;
+
                 case "ShowInLegend": //NOXLATE
                     this.Parent.OnLayerDisplayInLegendChanged(this, this.ShowInLegend ? "1" : "0"); //NOXLATE
                     break;
+
                 case "LegendLabel": //NOXLATE
                     this.Parent.OnLayerLegendLabelChanged(this, this.LegendLabel);
                     break;
+
                 case "LayerDefinitionID": //NOXLATE
                     this.Parent.OnLayerDefinitionChanged(this);
                     break;
+
                 case "Selectable": //NOXLATE
                     this.Parent.OnLayerSelectabilityChanged(this, this.Selectable ? "1" : "0"); //NOXLATE
                     break;
@@ -1002,7 +1024,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns></returns>
         public bool IsVisibleAtScale(double scale)
         {
-            for (int i = 0; i < _scaleRanges.Length; i += 2) 
+            for (int i = 0; i < _scaleRanges.Length; i += 2)
             {
                 if (scale >= _scaleRanges[i] && scale <= _scaleRanges[i + 1])
                     return true;

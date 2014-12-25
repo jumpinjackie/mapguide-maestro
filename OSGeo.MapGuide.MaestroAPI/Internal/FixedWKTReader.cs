@@ -1,49 +1,55 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using GeoAPI.Geometries;
+using GisSharpBlog.NetTopologySuite.Geometries;
+using GisSharpBlog.NetTopologySuite.IO;
+using GisSharpBlog.NetTopologySuite.Utilities;
+using RTools_NTS.Util;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using GeoAPI.Geometries;
-using GisSharpBlog.NetTopologySuite.Geometries;
-using RTools_NTS.Util;
-using GisSharpBlog.NetTopologySuite.IO;
-using GisSharpBlog.NetTopologySuite.Utilities;
 
 namespace OSGeo.MapGuide.MaestroAPI.Internal
 {
-    /// <summary>  
+    /// <summary>
     /// A fixed version of WKTReader that can parse 3D geometry WKT
     /// </summary>
     public class FixedWKTReader
     {
         private IGeometryFactory geometryFactory;
         private IPrecisionModel precisionModel;
-        int index;
+        private int index;
 
-        /// <summary> 
+        /// <summary>
         /// Creates a <c>WKTReader</c> that creates objects using a basic GeometryFactory.
         /// </summary>
-        public FixedWKTReader() : this(GeometryFactory.Default) { }
+        public FixedWKTReader()
+            : this(GeometryFactory.Default)
+        {
+        }
 
-        /// <summary>  
+        /// <summary>
         /// Creates a <c>WKTReader</c> that creates objects using the given
         /// <c>GeometryFactory</c>.
         /// </summary>
@@ -72,10 +78,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             }
         }
 
-        /// <summary>  
+        /// <summary>
         /// Converts a Well-known Text representation to a <c>Geometry</c>.
         /// </summary>
-        /// <param name="reader"> 
+        /// <param name="reader">
         /// A Reader which will return a "Geometry Tagged Text"
         /// string (see the OpenGIS Simple Features Specification).
         /// </param>
@@ -131,7 +137,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="tokens"></param>
         /// <param name="skipExtraParenthesis"></param>
@@ -173,7 +179,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="tokens"></param>
         /// <returns></returns>
@@ -440,7 +446,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             return geometryFactory.CreateMultiPoint(ToPoints(GetCoordinates(tokens, true)));
         }
 
-        /// <summary> 
+        /// <summary>
         /// Creates an array of <c>Point</c>s having the given <c>Coordinate</c>s.
         /// </summary>
         /// <param name="coordinates">
@@ -458,7 +464,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             return points.ToArray();
         }
 
-        /// <summary>  
+        /// <summary>
         /// Creates a <c>Polygon</c> using the next token in the stream.
         /// </summary>
         /// <param name="tokens">
@@ -467,7 +473,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// </param>
         /// <returns>
         /// A <c>Polygon</c> specified by the next token
-        /// in the stream.        
+        /// in the stream.
         /// </returns>
         private IPolygon ReadPolygonText(IList tokens)
         {
@@ -517,7 +523,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             return geometryFactory.CreateMultiLineString(lineStrings.ToArray());
         }
 
-        /// <summary>  
+        /// <summary>
         /// Creates a <c>MultiPolygon</c> using the next token in the stream.
         /// </summary>
         /// <param name="tokens">Tokenizer over a stream of text in Well-known Text

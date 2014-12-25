@@ -1,7 +1,8 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2013, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // Original code from SharpDevelop 3.2.1 licensed under the same terms (LGPL 2.1)
 // Copyright 2002-2010 by
 //
@@ -17,21 +18,20 @@
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Xml;
 
 namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
@@ -40,15 +40,15 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
     /// An <see cref="XmlQualifiedName"/> with the namespace prefix.
     /// </summary>
     /// <remarks>
-    /// The namespace prefix active for a namespace is 
+    /// The namespace prefix active for a namespace is
     /// needed when an element is inserted via autocompletion. This
-    /// class just adds this extra information alongside the 
+    /// class just adds this extra information alongside the
     /// <see cref="XmlQualifiedName"/>.
     /// </remarks>
     internal class QualifiedName
     {
-        XmlQualifiedName xmlQualifiedName = XmlQualifiedName.Empty;
-        string prefix = String.Empty;
+        private XmlQualifiedName xmlQualifiedName = XmlQualifiedName.Empty;
+        private string prefix = String.Empty;
 
         public QualifiedName()
         {
@@ -87,7 +87,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         }
 
         /// <summary>
-        /// A qualified name is considered equal if the namespace and 
+        /// A qualified name is considered equal if the namespace and
         /// name are the same.  The prefix is ignored.
         /// </summary>
         public override bool Equals(object obj)

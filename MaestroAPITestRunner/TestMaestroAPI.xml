@@ -6,9 +6,9 @@ Configured for exercising everything in the Maestro API except for LocalNative c
 -->
 <TestConfiguration>
   <TestSettings>
-    <!-- 
-    The path to webconfig.ini required by the LocalNative provider to run its specific tests. Should come from the same 
-    MapGuide installation where you have sourced the .net assemblies used to build your own LocalNative provider with the 
+    <!--
+    The path to webconfig.ini required by the LocalNative provider to run its specific tests. Should come from the same
+    MapGuide installation where you have sourced the .net assemblies used to build your own LocalNative provider with the
     ProviderTemplate tool in the Maestro SDK
     -->
     <LocalNativeConfigFile>C:\Program Files\OSGeo\MapGuide\Web\www\webconfig.ini</LocalNativeConfigFile>
@@ -56,7 +56,7 @@ Configured for exercising everything in the Maestro API except for LocalNative c
     <!-- Functionality that uses the Local connection provider -->
     <IgnoreLocalRuntimeMapTests>false</IgnoreLocalRuntimeMapTests>
     <IgnoreLocalFeatureTests>false</IgnoreLocalFeatureTests>
-    <!-- 
+    <!--
     Local Native connection provider tests are disabled as the standard test profile does not cover
     this functionality. The Test Runner configuration in the Maestro SDK enables such tests, while
     disabling the Local Connection ones (because it doesn't include mg-desktop and supporting libs/datafiles)

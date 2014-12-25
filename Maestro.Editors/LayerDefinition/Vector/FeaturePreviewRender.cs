@@ -1,40 +1,39 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Drawing;
-using System.Collections;
-using System.Drawing.Imaging;
+//
+
+#endregion Disclaimer / License
+
 using Maestro.Editors.Common;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using System.Collections.Generic;
-using OSGeo.MapGuide.MaestroAPI;
 using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace Maestro.Editors.LayerDefinition.Vector
 {
-
     internal class FeaturePreviewRender
     {
         private static ImageStylePicker.NamedImage[] m_fillImages = null;
         private static ImageStylePicker.NamedImage[] m_lineStyles = null;
-
 
         public static void RenderPreviewArea(Graphics g, Rectangle size, IAreaSymbolizationFill item)
         {
@@ -47,7 +46,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
             //Adjust, since painting always excludes top/right and includes left/bottom
             Rectangle size_adj = new Rectangle(size.X, size.Y, size.Width - 1, size.Height - 1);
 
-            Point[] points = new Point[] 
+            Point[] points = new Point[]
             {
                 new Point(size_adj.Left, size_adj.Top),
                 new Point(size_adj.Right, size_adj.Top),
@@ -59,7 +58,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
             if (item.Fill != null)
             {
                 Brush b = null;
-            
+
                 Image texture = null;
                 foreach (ImageStylePicker.NamedImage img in FillImages)
                 {
@@ -98,7 +97,6 @@ namespace Maestro.Editors.LayerDefinition.Vector
                                     bmp.SetPixel(x, y, bg.Value);
                             }
 
-
                         texture = bmp;
                         break;
                     }
@@ -136,7 +134,6 @@ namespace Maestro.Editors.LayerDefinition.Vector
                         g.DrawPolygon(p, points); //TODO: Implement line dash
                 }
             }
-
         }
 
         public static void RenderPreviewLine(Graphics g, Rectangle size, IEnumerable<IStroke> item)
@@ -191,7 +188,6 @@ namespace Maestro.Editors.LayerDefinition.Vector
             Color? background = null;
             string text = string.Empty;
             BackgroundStyleType bgStyle;
-            
 
             if (item == null || item.FontName == null)
             {
@@ -332,11 +328,12 @@ namespace Maestro.Editors.LayerDefinition.Vector
             int npoints = Math.Min(Math.Max(15, radius / 5), 100);
             Point center = new Point(size_adj.X + size_adj.Width / 2, size_adj.Y + size_adj.Height / 2);
 
-            switch(item.Shape)
+            switch (item.Shape)
             {
                 case ShapeType.Square:
                     points = Rotate(CreateNGon(center, radius, 4), center, Math.PI / 4);
                     break;
+
                 case ShapeType.Star:
                     Point[] outerStar = Rotate(CreateNGon(center, radius, 5), center, -Math.PI / 2);
                     Point[] innerStar = Rotate(Rotate(CreateNGon(center, radius / 2, 5), center, -Math.PI / 2), center, Math.PI / 5);
@@ -345,9 +342,11 @@ namespace Maestro.Editors.LayerDefinition.Vector
                         points[i] = i % 2 == 0 ? outerStar[i >> 1] : innerStar[i >> 1];
                     //points = innerStar;
                     break;
+
                 case ShapeType.Triangle:
                     points = Rotate(CreateNGon(center, radius, 3), center, Math.PI / 6);
                     break;
+
                 case ShapeType.Cross:
                 case ShapeType.X:
                     Point[] outerCross = Rotate(CreateNGon(center, radius, 4), center, -Math.PI / 2);
@@ -370,11 +369,12 @@ namespace Maestro.Editors.LayerDefinition.Vector
                     if (item.Shape == ShapeType.X)
                         points = Rotate(points, center, Math.PI / 4);
                     break;
+
                 default: //Circle
-                {
-                    points = CreateNGon(center, radius, Math.Min(Math.Max(15, radius / 5), 100));
-                    break;
-                }				
+                    {
+                        points = CreateNGon(center, radius, Math.Min(Math.Max(15, radius / 5), 100));
+                        break;
+                    }
             }
 
             if (item.Fill != null)
@@ -419,7 +419,6 @@ namespace Maestro.Editors.LayerDefinition.Vector
                                     bmp.SetPixel(x, y, bgColor.Value);
                             }
 
-
                         texture = bmp;
                         break;
                     }
@@ -458,7 +457,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
         {
             //TODO: This will currently just draw the default W2D image, it will not consider color overrides nor size parameters
             //But something is better than nothing at the moment.
-            
+
             if (image != null)
             {
                 //Start from center
@@ -468,7 +467,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 location.X -= image.Width / 2;
                 location.Y -= image.Height / 2;
 
-                //Draw the result. 
+                //Draw the result.
                 graphics.DrawImage(image, location);
             }
         }
@@ -530,7 +529,6 @@ namespace Maestro.Editors.LayerDefinition.Vector
 
         internal static void RenderNoPreview(Graphics graphics, Rectangle rect)
         {
-            
         }
     }
 }

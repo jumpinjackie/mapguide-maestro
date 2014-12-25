@@ -1,38 +1,30 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml;
-using System.Text;
-using System.IO;
+//
 
-using ObjCommon = OSGeo.MapGuide.ObjectModels.Common;
-using AppDef = OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
-using OSGeo.MapGuide.ObjectModels.Capabilities;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.MaestroAPI.Commands;
-using OSGeo.MapGuide.ObjectModels.LoadProcedure;
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Mapping;
-using System.Drawing;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using System;
+using System.Drawing;
+using ObjCommon = OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -87,11 +79,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         virtual public bool AutoRestartSession
         {
             get { return m_autoRestartSession; }
-            set 
+            set
             {
                 if (value && !_canAutoRestartSession)
                     throw new InvalidOperationException(Strings.ErrorConnectionCannotAutoRestartSession);
-                m_autoRestartSession = value; 
+                m_autoRestartSession = value;
             }
         }
 
@@ -171,7 +163,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         protected abstract bool RestartSessionInternal(bool throwException);
 
-        #endregion
+        #endregion Session Management
 
         #region Site
 
@@ -203,12 +195,12 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>The list of groups</returns>
         abstract public ObjCommon.GroupList EnumerateGroups();
 
-        #endregion
+        #endregion Site
 
         #region Rendering
 
         /// <summary>
-        /// Identifies those features that meet the specified spatial selection criteria. This operation is used to implement server-side selection. In addition to a selection set, this operation returns attribute information in case only one feature is selected. 
+        /// Identifies those features that meet the specified spatial selection criteria. This operation is used to implement server-side selection. In addition to a selection set, this operation returns attribute information in case only one feature is selected.
         /// </summary>
         /// <param name="rtMap">The runtime map to identify features</param>
         /// <param name="maxFeatures">The maximum number of features to return</param>
@@ -327,6 +319,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="clip">if set to <c>true</c> [clip].</param>
         /// <returns></returns>
         public abstract System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip);
+
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
@@ -376,7 +369,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public abstract System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, Color selectionColor, int behaviour);
 
-        #endregion
+        #endregion Rendering
 
         #region Tile
 
@@ -392,6 +385,6 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public abstract System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format);
 
-        #endregion
+        #endregion Tile
     }
 }

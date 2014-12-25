@@ -1,7 +1,8 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // Original code from SharpDevelop 3.2.1 licensed under the same terms (LGPL 2.1)
 // Copyright 2002-2010 by
 //
@@ -13,30 +14,30 @@
 //  email: office@alphasierrapapa.com
 //  court of jurisdiction: Landesgericht Leoben
 //
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using ICSharpCode.TextEditor;
 using ICSharpCode.TextEditor.Document;
 using ICSharpCode.TextEditor.Gui.CompletionWindow;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace Maestro.AddIn.Scripting.Lang.Python
 {
@@ -45,7 +46,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
     /// </summary>
     internal class PythonConsoleCompletionDataProvider : ICompletionDataProvider
     {
-        IMemberProvider memberProvider;
+        private IMemberProvider memberProvider;
 
         public PythonConsoleCompletionDataProvider(IMemberProvider memberProvider)
         {
@@ -89,7 +90,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             return items.ToArray();
         }
 
-        string GetName(string text)
+        private string GetName(string text)
         {
             //Assume compacted expressions, meaning we need to take into account operators and non-whitespace tokens
             //TODO: Still imperfect. A dot after a function expression brings up nothing. But a dot after a named variable will
@@ -103,7 +104,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// <summary>
         /// Gets the line of text up to the cursor position.
         /// </summary>
-        string GetLineText(TextArea textArea)
+        private string GetLineText(TextArea textArea)
         {
             LineSegment lineSegment = textArea.Document.GetLineSegmentForOffset(textArea.Caret.Offset);
             return textArea.Document.GetText(lineSegment);

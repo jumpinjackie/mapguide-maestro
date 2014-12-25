@@ -1,26 +1,27 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Feature;
+using System;
 
 namespace OSGeo.MapGuide.MaestroAPI.Commands
 {
@@ -28,7 +29,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     /// A default implementation of <see cref="T:OSGeo.MapGuide.MaestroAPI.Commands.ICommand"/>. This class is reserved for connection provider use
     /// </summary>
     /// <typeparam name="TConn">The type of the conn.</typeparam>
-    public abstract class DefaultCommand<TConn> : ICommand where TConn : IServerConnection 
+    public abstract class DefaultCommand<TConn> : ICommand where TConn : IServerConnection
     {
         /// <summary>
         /// Gets the connection implementation.
@@ -76,7 +77,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// Initializes a new instance of the <see cref="DefaultFeatureCommand&lt;TConn&gt;"/> class.
         /// </summary>
         /// <param name="conn">The conn.</param>
-        protected DefaultFeatureCommand(TConn conn) : base(conn) { }
+        protected DefaultFeatureCommand(TConn conn)
+            : base(conn)
+        {
+        }
 
         /// <summary>
         /// Gets or sets the feature source id.
@@ -125,7 +129,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// Initializes a new instance of the
         /// </summary>
         /// <param name="conn">The conn.</param>
-        protected DefaultInsertCommand(TConn conn) : base(conn) { }
+        protected DefaultInsertCommand(TConn conn)
+            : base(conn)
+        {
+        }
 
         /// <summary>
         /// Gets or sets the record to insert.
@@ -157,7 +164,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                 if (this.RecordToInsert == null)
                     throw new InvalidOperationException(Strings.ErrorNothingToInsert);
 
-                this.ExecuteInternal(); 
+                this.ExecuteInternal();
             }
             catch (Exception ex)
             {
@@ -177,7 +184,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// Initializes a new instance of the <see cref="DefaultUpdateCommand&lt;TConn&gt;"/> class.
         /// </summary>
         /// <param name="parent">The parent.</param>
-        public DefaultUpdateCommand(TConn parent) : base(parent) { }
+        public DefaultUpdateCommand(TConn parent)
+            : base(parent)
+        {
+        }
 
         /// <summary>
         /// Gets or sets the filter.
@@ -227,13 +237,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     /// A default implementation of <see cref="T:OSGeo.MapGuide.MaestroAPI.Commands.IDeleteFeatures"/>. This class is reserved for connection provider use
     /// </summary>
     /// <typeparam name="TConn">The type of the conn.</typeparam>
-    public abstract class DefaultDeleteCommand<TConn> : DefaultFeatureCommand<TConn>, IDeleteFeatures where TConn : IServerConnection 
+    public abstract class DefaultDeleteCommand<TConn> : DefaultFeatureCommand<TConn>, IDeleteFeatures where TConn : IServerConnection
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultDeleteCommand&lt;TConn&gt;"/> class.
         /// </summary>
         /// <param name="conn">The conn.</param>
-        protected DefaultDeleteCommand(TConn conn) : base(conn) { }
+        protected DefaultDeleteCommand(TConn conn)
+            : base(conn)
+        {
+        }
 
         /// <summary>
         /// Gets or sets the filter.
@@ -274,7 +287,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// Initializes a new instance of the <see cref="DefaultApplySchemaCommand&lt;TConn&gt;"/> class.
         /// </summary>
         /// <param name="conn">The conn.</param>
-        protected DefaultApplySchemaCommand(TConn conn) : base(conn) { }
+        protected DefaultApplySchemaCommand(TConn conn)
+            : base(conn)
+        {
+        }
 
         /// <summary>
         /// Gets or sets the schema.
@@ -318,7 +334,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// Initializes a new instance of the <see cref="DefaultCreateDataStoreCommand&lt;TConn&gt;"/> class.
         /// </summary>
         /// <param name="conn">The conn.</param>
-        protected DefaultCreateDataStoreCommand(TConn conn) : base(conn) { }
+        protected DefaultCreateDataStoreCommand(TConn conn)
+            : base(conn)
+        {
+        }
 
         /// <summary>
         /// Gets or sets the schema.
@@ -491,9 +510,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
             get;
             set;
         }
-        
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="doc"></param>
         /// <param name="currentNode"></param>
@@ -503,7 +522,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="node"></param>
         /// <param name="mgr"></param>

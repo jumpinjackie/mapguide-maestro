@@ -1,52 +1,43 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 using System.Xml;
-using System.Xml.Serialization;
-using OSGeo.MapGuide.MaestroAPI.Exceptions;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
-using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.ObjectModels.DrawingSource;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using OSGeo.MapGuide.ObjectModels.LoadProcedure;
-using OSGeo.MapGuide.ObjectModels.MapDefinition;
-using OSGeo.MapGuide.ObjectModels.PrintLayout;
-using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
-using OSGeo.MapGuide.ObjectModels.SymbolLibrary;
-using OSGeo.MapGuide.ObjectModels.WebLayout;
-using OSGeo.MapGuide.ObjectModels;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public delegate IResource ResourceDeserializationCallback(string xml);
+
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public delegate Stream ResourceSerializationCallback(IResource res);
 
@@ -151,8 +142,8 @@ namespace OSGeo.MapGuide.MaestroAPI
                 new ResourceSerializer()
                 {
                     Serialize = (res) => { return res.SerializeToStream(); },
-                    Deserialize = (xml) => 
-                    { 
+                    Deserialize = (xml) =>
+                    {
                         //HACK: We have to peek at the XML to determine if this is simple or compound.
                         var doc = new XmlDocument();
                         doc.LoadXml(xml);
@@ -213,9 +204,9 @@ namespace OSGeo.MapGuide.MaestroAPI
             RegisterResource(desc, new ResourceSerializer() { Deserialize = deserializeMethod, Serialize = serializeMethod });
         }
 
-        internal static void Init() 
-        { 
-            //does nothing, it's just for kicking the static constructor into gear 
+        internal static void Init()
+        {
+            //does nothing, it's just for kicking the static constructor into gear
         }
 
         /// <summary>
@@ -227,7 +218,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public static IResource Deserialize(string resourceType, Stream stream)
         {
             //UGLY: We have to peek inside the stream to determine the version number
-            
+
             //House the stream inside a rewindable memory stream
             using (var ms = new MemoryStream())
             {

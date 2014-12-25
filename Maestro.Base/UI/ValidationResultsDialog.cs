@@ -1,33 +1,31 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.MaestroAPI.Exceptions;
 
 namespace Maestro.Base
 {
@@ -58,8 +56,8 @@ namespace Maestro.Base
         public ValidationResultsDialog(string resourceId, ValidationIssue[] issues, Action<IResource> openAction)
             : this(
                 new List<KeyValuePair<string, ValidationIssue[]>>(
-                    new KeyValuePair<string, ValidationIssue[]>[] { 
-                        new KeyValuePair<string, ValidationIssue[]>(resourceId, issues) 
+                    new KeyValuePair<string, ValidationIssue[]>[] {
+                        new KeyValuePair<string, ValidationIssue[]>(resourceId, issues)
                     }
                 ),
                 openAction
@@ -73,7 +71,6 @@ namespace Maestro.Base
         public ValidationResultsDialog(List<KeyValuePair<string, ValidationIssue[]>> issues)
             : this(issues, null)
         {
-
         }
 
         /// <summary>
@@ -133,12 +130,15 @@ namespace Maestro.Base
                         case ValidationStatus.Information:
                             lvi.ImageIndex = 0;
                             break;
+
                         case ValidationStatus.Warning:
                             lvi.ImageIndex = 1;
                             break;
+
                         case ValidationStatus.Error:
                             lvi.ImageIndex = 2;
                             break;
+
                         default:
                             lvi.ImageIndex = -1;
                             break;

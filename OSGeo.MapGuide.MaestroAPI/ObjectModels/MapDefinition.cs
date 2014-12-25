@@ -1,49 +1,55 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using System.Xml.Serialization;
-using OSGeo.MapGuide.MaestroAPI;
-using System.Drawing;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System.ComponentModel;
-using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
+using System.Drawing;
 using System.IO;
+using System.Xml.Serialization;
 
 #pragma warning disable 1591, 0114, 0108
 
 #if MDF_240
 namespace OSGeo.MapGuide.ObjectModels.MapDefinition_2_4_0
 #elif MDF_230
+
 namespace OSGeo.MapGuide.ObjectModels.MapDefinition_2_3_0
 #else
+
 namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
 #endif
 {
     partial class MapDefinitionType
     {
-        internal MapDefinitionType() { }
+        internal MapDefinitionType()
+        {
+        }
 
         [XmlIgnore]
         public Color BackgroundColor
@@ -111,11 +117,11 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
 
     partial class MapDefinition : IMapDefinition
 #if MDF_230 || MDF_240
-        , IMapDefinition2
+, IMapDefinition2
 #endif
     {
-        internal MapDefinition() 
-        { 
+        internal MapDefinition()
+        {
 #if MDF_240
             this.versionField = "2.4.0"; //NOXLATE
 #elif MDF_230
@@ -183,7 +189,9 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
             }
         }
 
-        internal void SortGroupList() { }
+        internal void SortGroupList()
+        {
+        }
 
         object ICloneable.Clone()
         {
@@ -193,8 +201,8 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
         }
 
         [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")] //NOXLATE
-        public string ValidatingSchema 
-        { 
+        public string ValidatingSchema
+        {
 #if MDF_240
             get { return "MapDefinition-2.4.0.xsd"; } //NOXLATE
 #elif MDF_230
@@ -283,7 +291,8 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
             {
                 Check.Precondition(this.GetGroupByName(groupName) != null, "There should be an existing group for <groupName>"); //NOXLATE
             }
-            var layer = new MapLayerType() { 
+            var layer = new MapLayerType()
+            {
                 Parent = this,
                 ExpandInLegend = true,
                 LegendLabel = layerName,
@@ -294,7 +303,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
                 Selectable = true
             };
             layer.Group = string.IsNullOrEmpty(groupName) ? string.Empty : groupName;
-            
+
             this.MapLayer.Insert(0, layer);
             OnPropertyChanged("MapLayer"); //NOXLATE
 
@@ -429,9 +438,9 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
         private static bool IsEmpty(Box2DType box2DType)
         {
             return box2DType == null ||
-                (box2DType.MaxX == 0.0 && 
-                box2DType.MaxY == 0.0 && 
-                box2DType.MinX == 0.0 && 
+                (box2DType.MaxX == 0.0 &&
+                box2DType.MaxY == 0.0 &&
+                box2DType.MinX == 0.0 &&
                 box2DType.MinY == 0.0);
         }
 
@@ -491,7 +500,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<IMapLayer> IMapDefinition.MapLayer
         {
-            get 
+            get
             {
                 foreach (var layer in this.MapLayer)
                 {
@@ -513,7 +522,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<IMapLayerGroup> IMapDefinition.MapLayerGroup
         {
-            get 
+            get
             {
                 foreach (var grp in this.MapLayerGroup)
                 {
@@ -682,11 +691,11 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
             if (isrc > 0)
             {
                 var src = this.MapLayer[isrc];
-             
+
                 //take everything before this and shift them up one position
                 for (int i = isrc - 1; i >= 0; i--)
                 {
-                    this.MapLayer[i+1] = this.MapLayer[i];
+                    this.MapLayer[i + 1] = this.MapLayer[i];
                 }
 
                 this.MapLayer[0] = src;
@@ -714,21 +723,22 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
         }
 
 #if MDF_230 || MDF_240
-        IEnumerable<OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark> IWatermarkCollection.Watermarks
+
+        IEnumerable<IWatermark> IWatermarkCollection.Watermarks
         {
-            get 
+            get
             {
                 foreach (var wm in this.Watermarks)
                     yield return wm;
             }
         }
 
-        IWatermark IWatermarkCollection.AddWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermarkDefinition watermark)
+        IWatermark IWatermarkCollection.AddWatermark(IWatermarkDefinition watermark)
         {
             return WatermarkCollectionUtil.AddWatermark(this.Watermarks, watermark);
         }
 
-        void IWatermarkCollection.RemoveWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark watermark)
+        void IWatermarkCollection.RemoveWatermark(IWatermark watermark)
         {
             WatermarkCollectionUtil.RemoveWatermark(this.Watermarks, watermark);
         }
@@ -737,6 +747,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
         {
             get { return this.Watermarks.Count; }
         }
+
 #endif
     }
 
@@ -782,7 +793,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<double> IBaseMapDefinition.FiniteDisplayScale
         {
-            get 
+            get
             {
                 foreach (var scale in this.FiniteDisplayScale)
                 {
@@ -810,7 +821,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<IBaseMapGroup> IBaseMapDefinition.BaseMapLayerGroup
         {
-            get 
+            get
             {
                 foreach (var grp in this.BaseMapLayerGroup)
                 {
@@ -829,7 +840,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
                 ExpandInLegend = true,
                 ShowInLegend = true,
                 LegendLabel = name,
-                Visible = true                
+                Visible = true
             };
             this.BaseMapLayerGroup.Add(grp);
 
@@ -846,7 +857,6 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
 
     partial class MapLayerType : IMapLayer
     {
-
     }
 
     partial class BaseMapLayerType : IBaseMapLayer
@@ -881,7 +891,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<IBaseMapLayer> IBaseMapGroup.BaseMapLayer
         {
-            get 
+            get
             {
                 foreach (var lyr in this.BaseMapLayer)
                 {

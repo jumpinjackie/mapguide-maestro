@@ -1,37 +1,41 @@
 #region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using ICSharpCode.Core;
+using ICSharpCode.Core.WinForms;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
-using ICSharpCode.Core;
 using System.Drawing;
 using System.IO;
-using ICSharpCode.Core.WinForms;
+using System.Text;
+using System.Windows.Forms;
 
 namespace Maestro.AddInManager
 {
     public class ManagerForm : System.Windows.Forms.Form
     {
         #region Form Initialization
-        static ManagerForm instance;
+
+        private static ManagerForm instance;
 
         public static ManagerForm Instance
         {
@@ -71,7 +75,7 @@ namespace Maestro.AddInManager
             CreateAddInList();
         }
 
-        void OnSplitContainerPanel1Paint(object sender, PaintEventArgs e)
+        private void OnSplitContainerPanel1Paint(object sender, PaintEventArgs e)
         {
             if (visibleAddInCount == 0)
             {
@@ -83,7 +87,7 @@ namespace Maestro.AddInManager
             }
         }
 
-        void CreateAddInList()
+        private void CreateAddInList()
         {
             Stack<AddInControl> stack = new Stack<AddInControl>();
             int index = 0;
@@ -117,7 +121,7 @@ namespace Maestro.AddInManager
             splitContainer.Panel2Collapsed = true;
         }
 
-        void RefreshAddInList()
+        private void RefreshAddInList()
         {
             List<AddIn> oldSelected = selected;
             foreach (Control ctl in splitContainer.Panel1.Controls)
@@ -136,12 +140,14 @@ namespace Maestro.AddInManager
             }
             UpdateActionBox();
         }
-        #endregion
+
+        #endregion Form Initialization
 
         #region AddInList-Management
-        int visibleAddInCount = 0;
 
-        void ShowPreinstalledAddInsCheckBoxCheckedChanged(object sender, EventArgs e)
+        private int visibleAddInCount = 0;
+
+        private void ShowPreinstalledAddInsCheckBoxCheckedChanged(object sender, EventArgs e)
         {
             visibleAddInCount = 0;
             foreach (AddInControl ctl in splitContainer.Panel1.Controls)
@@ -165,7 +171,7 @@ namespace Maestro.AddInManager
             UpdateActionBox();
         }
 
-        void OnControlClick(object sender, EventArgs e)
+        private void OnControlClick(object sender, EventArgs e)
         {
             // clicking again on already focused item:
             // remove selection of other items / or with Ctrl: toggle selection
@@ -173,10 +179,10 @@ namespace Maestro.AddInManager
                 OnControlEnter(sender, e);
         }
 
-        AddInControl oldFocus;
-        bool ignoreFocusChange;
+        private AddInControl oldFocus;
+        private bool ignoreFocusChange;
 
-        void OnControlEnter(object sender, EventArgs e)
+        private void OnControlEnter(object sender, EventArgs e)
         {
             if (ignoreFocusChange)
                 return;
@@ -220,20 +226,22 @@ namespace Maestro.AddInManager
             }
             UpdateActionBox();
         }
-        #endregion
+
+        #endregion AddInList-Management
 
         #region UpdateActionBox
-        List<AddIn> selected;
-        AddInAction selectedAction;
 
-        static bool IsErrorAction(AddInAction action)
+        private List<AddIn> selected;
+        private AddInAction selectedAction;
+
+        private static bool IsErrorAction(AddInAction action)
         {
             return action == AddInAction.DependencyError
                 || action == AddInAction.InstalledTwice
                 || action == AddInAction.CustomError;
         }
 
-        void UpdateActionBox()
+        private void UpdateActionBox()
         {
             ignoreFocusChange = true;
             selected = new List<AddIn>();
@@ -336,14 +344,14 @@ namespace Maestro.AddInManager
             ignoreFocusChange = false;
         }
 
-        enum ShowDependencyMode
+        private enum ShowDependencyMode
         {
             Disable,
             Enable,
             CancelUpdate
         }
 
-        bool ShowDependencies(IList<AddIn> addIns, ShowDependencyMode mode)
+        private bool ShowDependencies(IList<AddIn> addIns, ShowDependencyMode mode)
         {
             List<AddInReference> dependencies = new List<AddInReference>(); // only used with enable=true
             List<KeyValuePair<AddIn, AddInReference>> dependenciesToSel = new List<KeyValuePair<AddIn, AddInReference>>();
@@ -457,7 +465,7 @@ namespace Maestro.AddInManager
             return allDepenciesOK;
         }
 
-        bool AddDependencyRow(Dictionary<string, Version> addInDict, AddInReference dep, int rowIndex, string requiredByName)
+        private bool AddDependencyRow(Dictionary<string, Version> addInDict, AddInReference dep, int rowIndex, string requiredByName)
         {
             string text = requiredByName ?? GetDisplayName(dep.Name);
             Version versionFound;
@@ -475,7 +483,7 @@ namespace Maestro.AddInManager
             return isOK;
         }
 
-        void AddLabelRow(int rowIndex, string text)
+        private void AddLabelRow(int rowIndex, string text)
         {
             Label label = new Label();
             label.AutoSize = true;
@@ -484,7 +492,7 @@ namespace Maestro.AddInManager
             dependencyTable.SetColumnSpan(label, 2);
         }
 
-        string GetDisplayName(string identity)
+        private string GetDisplayName(string identity)
         {
             foreach (AddIn addIn in AddInTree.AddIns)
             {
@@ -493,10 +501,12 @@ namespace Maestro.AddInManager
             }
             return identity;
         }
-        #endregion
+
+        #endregion UpdateActionBox
 
         #region Install new AddIns
-        void InstallButtonClick(object sender, EventArgs e)
+
+        private void InstallButtonClick(object sender, EventArgs e)
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
@@ -536,10 +546,12 @@ namespace Maestro.AddInManager
                             }
                             list.Add(new InstallableAddIn(file, false));
                             break;
+
                         case ".sdaddin": //NOXLATE
                         case ".zip": //NOXLATE
                             list.Add(new InstallableAddIn(file, true));
                             break;
+
                         default:
                             MessageService.ShowMessage("${res:AddInManager.UnknownFileFormat} " + Path.GetExtension(file)); //NOXLATE
                             return false;
@@ -555,9 +567,9 @@ namespace Maestro.AddInManager
             return true;
         }
 
-        IList<InstallableAddIn> shownAddInPackages;
+        private IList<InstallableAddIn> shownAddInPackages;
 
-        void ShowInstallableAddIns(IList<InstallableAddIn> addInPackages)
+        private void ShowInstallableAddIns(IList<InstallableAddIn> addInPackages)
         {
             shownAddInPackages = addInPackages;
             ignoreFocusChange = true;
@@ -631,7 +643,7 @@ namespace Maestro.AddInManager
             runActionButton.Enabled = ShowDependencies(addInList, ShowDependencyMode.Enable);
         }
 
-        void RunInstallation()
+        private void RunInstallation()
         {
             // install new AddIns
             foreach (InstallableAddIn addInPackage in shownAddInPackages)
@@ -665,19 +677,23 @@ namespace Maestro.AddInManager
             }
             RefreshAddInList();
         }
-        #endregion
+
+        #endregion Install new AddIns
 
         #region Uninstall AddIns
-        void UninstallButtonClick(object sender, EventArgs e)
+
+        private void UninstallButtonClick(object sender, EventArgs e)
         {
             ICSharpCode.Core.AddInManager.RemoveExternalAddIns(selected);
             InstallableAddIn.Uninstall(selected);
             RefreshAddInList();
         }
-        #endregion
+
+        #endregion Uninstall AddIns
 
         #region Drag'N'Drop
-        void Panel1DragEnter(object sender, DragEventArgs e)
+
+        private void Panel1DragEnter(object sender, DragEventArgs e)
         {
             if (!e.Data.GetDataPresent(DataFormats.FileDrop))
             {
@@ -694,10 +710,12 @@ namespace Maestro.AddInManager
                     case ".addin": //NOXLATE
                         addInCount += 1;
                         break;
+
                     case ".sdaddin": //NOXLATE
                     case ".zip": //NOXLATE
                         packageCount += 1;
                         break;
+
                     default:
                         e.Effect = DragDropEffects.None;
                         return;
@@ -717,15 +735,16 @@ namespace Maestro.AddInManager
             }
         }
 
-        void Panel1DragDrop(object sender, DragEventArgs e)
+        private void Panel1DragDrop(object sender, DragEventArgs e)
         {
             if (!e.Data.GetDataPresent(DataFormats.FileDrop))
                 return;
             ShowInstallableAddIns((string[])e.Data.GetData(DataFormats.FileDrop));
         }
-        #endregion
 
-        void CloseButtonClick(object sender, EventArgs e)
+        #endregion Drag'N'Drop
+
+        private void CloseButtonClick(object sender, EventArgs e)
         {
             Close();
         }
@@ -758,7 +777,7 @@ namespace Maestro.AddInManager
                 uninstallButton.PerformClick();
         }
 
-        void RunActionButtonClick(object sender, EventArgs e)
+        private void RunActionButtonClick(object sender, EventArgs e)
         {
             switch (selectedAction)
             {
@@ -773,15 +792,19 @@ namespace Maestro.AddInManager
                     }
                     ICSharpCode.Core.AddInManager.Disable(selected);
                     break;
+
                 case AddInAction.Enable:
                     ICSharpCode.Core.AddInManager.Enable(selected);
                     break;
+
                 case AddInAction.Install:
                     RunInstallation();
                     return;
+
                 case AddInAction.Uninstall:
                     UninstallButtonClick(sender, e);
                     return;
+
                 case AddInAction.InstalledTwice: // used to cancel installation of update
                     InstallableAddIn.CancelUpdate(selected);
                     foreach (AddIn addIn in selected)
@@ -789,6 +812,7 @@ namespace Maestro.AddInManager
                         addIn.Action = addIn.Enabled ? AddInAction.Enable : AddInAction.Disable;
                     }
                     break;
+
                 default:
                     throw new NotImplementedException();
             }
@@ -800,6 +824,7 @@ namespace Maestro.AddInManager
         }
 
         #region Windows Forms Designer generated code
+
         /// <summary>
         /// This method is required for Windows Forms designer support.
         /// Do not change the method contents inside the source code editor. The Forms designer might
@@ -828,18 +853,18 @@ namespace Maestro.AddInManager
             this.actionFlowLayoutPanel.SuspendLayout();
             this.dependencyTable.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // topPanel
-            // 
+            //
             this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.topPanel.Location = new System.Drawing.Point(0, 0);
             this.topPanel.Name = "topPanel";
             this.topPanel.Size = new System.Drawing.Size(460, 33);
             this.topPanel.TabIndex = 1;
             this.topPanel.Visible = false;
-            // 
+            //
             // bottomPanel
-            // 
+            //
             this.bottomPanel.Controls.Add(this.installButton);
             this.bottomPanel.Controls.Add(this.closeButton);
             this.bottomPanel.Controls.Add(this.showPreinstalledAddInsCheckBox);
@@ -848,9 +873,9 @@ namespace Maestro.AddInManager
             this.bottomPanel.Name = "bottomPanel";
             this.bottomPanel.Size = new System.Drawing.Size(460, 35);
             this.bottomPanel.TabIndex = 0;
-            // 
+            //
             // installButton
-            // 
+            //
             this.installButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.installButton.Location = new System.Drawing.Point(274, 6);
             this.installButton.Name = "installButton";
@@ -860,9 +885,9 @@ namespace Maestro.AddInManager
             this.installButton.UseCompatibleTextRendering = true;
             this.installButton.UseVisualStyleBackColor = true;
             this.installButton.Click += new System.EventHandler(this.InstallButtonClick);
-            // 
+            //
             // closeButton
-            // 
+            //
             this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.closeButton.Location = new System.Drawing.Point(373, 6);
             this.closeButton.Name = "closeButton";
@@ -872,9 +897,9 @@ namespace Maestro.AddInManager
             this.closeButton.UseCompatibleTextRendering = true;
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.CloseButtonClick);
-            // 
+            //
             // showPreinstalledAddInsCheckBox
-            // 
+            //
             this.showPreinstalledAddInsCheckBox.Location = new System.Drawing.Point(3, 6);
             this.showPreinstalledAddInsCheckBox.Name = "showPreinstalledAddInsCheckBox";
             this.showPreinstalledAddInsCheckBox.Size = new System.Drawing.Size(169, 24);
@@ -883,34 +908,34 @@ namespace Maestro.AddInManager
             this.showPreinstalledAddInsCheckBox.UseCompatibleTextRendering = true;
             this.showPreinstalledAddInsCheckBox.UseVisualStyleBackColor = true;
             this.showPreinstalledAddInsCheckBox.CheckedChanged += new System.EventHandler(this.ShowPreinstalledAddInsCheckBoxCheckedChanged);
-            // 
+            //
             // splitContainer
-            // 
+            //
             this.splitContainer.BackColor = System.Drawing.SystemColors.Window;
             this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainer.Location = new System.Drawing.Point(0, 33);
             this.splitContainer.Name = "splitContainer";
-            // 
+            //
             // splitContainer.Panel1
-            // 
+            //
             this.splitContainer.Panel1.AllowDrop = true;
             this.splitContainer.Panel1.AutoScroll = true;
             this.splitContainer.Panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.Panel1DragDrop);
             this.splitContainer.Panel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.Panel1DragEnter);
             this.splitContainer.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.OnSplitContainerPanel1Paint);
             this.splitContainer.Panel1MinSize = 100;
-            // 
+            //
             // splitContainer.Panel2
-            // 
+            //
             this.splitContainer.Panel2.Controls.Add(this.actionGroupBox);
             this.splitContainer.Panel2MinSize = 100;
             this.splitContainer.Size = new System.Drawing.Size(460, 322);
             this.splitContainer.SplitterDistance = 248;
             this.splitContainer.TabIndex = 2;
-            // 
+            //
             // actionGroupBox
-            // 
+            //
             this.actionGroupBox.Controls.Add(this.actionFlowLayoutPanel);
             this.actionGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.actionGroupBox.Location = new System.Drawing.Point(0, 0);
@@ -920,9 +945,9 @@ namespace Maestro.AddInManager
             this.actionGroupBox.TabStop = false;
             this.actionGroupBox.Text = "actionGroupBox";
             this.actionGroupBox.UseCompatibleTextRendering = true;
-            // 
+            //
             // actionFlowLayoutPanel
-            // 
+            //
             this.actionFlowLayoutPanel.AutoScroll = true;
             this.actionFlowLayoutPanel.Controls.Add(this.actionDescription);
             this.actionFlowLayoutPanel.Controls.Add(this.dependencyTable);
@@ -936,9 +961,9 @@ namespace Maestro.AddInManager
             this.actionFlowLayoutPanel.Size = new System.Drawing.Size(202, 302);
             this.actionFlowLayoutPanel.TabIndex = 0;
             this.actionFlowLayoutPanel.WrapContents = false;
-            // 
+            //
             // actionDescription
-            // 
+            //
             this.actionDescription.AutoSize = true;
             this.actionDescription.Location = new System.Drawing.Point(3, 0);
             this.actionDescription.Name = "actionDescription";
@@ -946,9 +971,9 @@ namespace Maestro.AddInManager
             this.actionDescription.TabIndex = 0;
             this.actionDescription.Text = "actionDescription";
             this.actionDescription.UseCompatibleTextRendering = true;
-            // 
+            //
             // dependencyTable
-            // 
+            //
             this.dependencyTable.AutoSize = true;
             this.dependencyTable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.dependencyTable.ColumnCount = 2;
@@ -963,9 +988,9 @@ namespace Maestro.AddInManager
             this.dependencyTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.dependencyTable.Size = new System.Drawing.Size(55, 36);
             this.dependencyTable.TabIndex = 1;
-            // 
+            //
             // dummyLabel1
-            // 
+            //
             this.dummyLabel1.AutoSize = true;
             this.dummyLabel1.Location = new System.Drawing.Point(23, 0);
             this.dummyLabel1.Name = "dummyLabel1";
@@ -973,9 +998,9 @@ namespace Maestro.AddInManager
             this.dummyLabel1.TabIndex = 0;
             this.dummyLabel1.Text = "dep1";
             this.dummyLabel1.UseCompatibleTextRendering = true;
-            // 
+            //
             // dummyLabel2
-            // 
+            //
             this.dummyLabel2.AutoSize = true;
             this.dummyLabel2.Location = new System.Drawing.Point(23, 18);
             this.dummyLabel2.Name = "dummyLabel2";
@@ -983,9 +1008,9 @@ namespace Maestro.AddInManager
             this.dummyLabel2.TabIndex = 1;
             this.dummyLabel2.Text = "dep2";
             this.dummyLabel2.UseCompatibleTextRendering = true;
-            // 
+            //
             // runActionButton
-            // 
+            //
             this.runActionButton.AutoSize = true;
             this.runActionButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.runActionButton.Location = new System.Drawing.Point(3, 63);
@@ -997,9 +1022,9 @@ namespace Maestro.AddInManager
             this.runActionButton.UseCompatibleTextRendering = true;
             this.runActionButton.UseVisualStyleBackColor = true;
             this.runActionButton.Click += new System.EventHandler(this.RunActionButtonClick);
-            // 
+            //
             // uninstallButton
-            // 
+            //
             this.uninstallButton.AutoSize = true;
             this.uninstallButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.uninstallButton.Location = new System.Drawing.Point(3, 94);
@@ -1011,9 +1036,9 @@ namespace Maestro.AddInManager
             this.uninstallButton.UseCompatibleTextRendering = true;
             this.uninstallButton.UseVisualStyleBackColor = true;
             this.uninstallButton.Click += new System.EventHandler(this.UninstallButtonClick);
-            // 
+            //
             // ManagerForm
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 390);
@@ -1034,6 +1059,7 @@ namespace Maestro.AddInManager
             this.dependencyTable.PerformLayout();
             this.ResumeLayout(false);
         }
+
         private System.Windows.Forms.Label dummyLabel2;
         private System.Windows.Forms.Label dummyLabel1;
         private System.Windows.Forms.CheckBox showPreinstalledAddInsCheckBox;
@@ -1048,6 +1074,7 @@ namespace Maestro.AddInManager
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.Panel bottomPanel;
         private System.Windows.Forms.Panel topPanel;
-        #endregion
+
+        #endregion Windows Forms Designer generated code
     }
 }

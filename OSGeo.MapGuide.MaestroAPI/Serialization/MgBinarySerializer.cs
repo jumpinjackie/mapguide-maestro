@@ -1,22 +1,25 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
 using System.IO;
 
@@ -30,31 +33,35 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         private Stream m_stream;
         private Version m_siteVersion;
 
-
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static int UInt16Len = BitConverter.GetBytes((UInt16)0).Length;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static int UInt32Len = BitConverter.GetBytes((UInt32)0).Length;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static int UInt64Len = BitConverter.GetBytes((UInt64)0).Length;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public static int FloatLen =  BitConverter.GetBytes((float)0).Length;
+        public static int FloatLen = BitConverter.GetBytes((float)0).Length;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public static int DoubleLen =  BitConverter.GetBytes((double)0).Length;
+        public static int DoubleLen = BitConverter.GetBytes((double)0).Length;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
-        public static int UInt8Len =  1; //a byte...
+        public static int UInt8Len = 1; //a byte...
 
         /// <summary>
         /// Gets the site version.
@@ -96,7 +103,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
             Write(coordinates.Length / ndim);
             Write(dimensions);
 
-            for(int i = 0;i < coordinates.Length; i++)
+            for (int i = 0; i < coordinates.Length; i++)
                 Write(coordinates[i]);
         }
 
@@ -115,7 +122,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
             else
                 Write(resourceID);
         }
-
 
         /// <summary>
         /// Writes the specified value.
@@ -251,7 +257,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
                 value.Serialize(this);
         }
 
-
         /// <summary>
         /// Writes the specified value.
         /// </summary>
@@ -270,7 +275,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         /// <param name="stream">The stream.</param>
         public void Write(Stream stream)
         {
-            Write(new MgBinaryStreamArgumentPacket(MgPacketHeader.ArgumentSimple, MgArgumentType.INT8, null, (ulong)(stream == null ? 0 : stream.Length), MgBinaryStreamArgumentPacket.MG_STREAM_VERSION ));
+            Write(new MgBinaryStreamArgumentPacket(MgPacketHeader.ArgumentSimple, MgArgumentType.INT8, null, (ulong)(stream == null ? 0 : stream.Length), MgBinaryStreamArgumentPacket.MG_STREAM_VERSION));
             Write(stream == null);
             if (stream != null)
             {
@@ -354,6 +359,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
             WriteStreamEnd();
         }
         */
+
         /// <summary>
         /// Writes the raw.
         /// </summary>
@@ -362,6 +368,5 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         {
             m_stream.Write(buf, 0, buf.Length);
         }
-
     }
 }

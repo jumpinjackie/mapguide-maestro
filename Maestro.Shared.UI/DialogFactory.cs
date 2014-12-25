@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.IO;
 using System.Windows.Forms;
-using System.IO;
 
 namespace Maestro.Shared.UI
 {
     /// <summary>
     /// Helper class to overcome some of the bad default values assigned to the <see cref="OpenFileDialog"/> and <see cref="SaveFileDialog"/>
-    /// 
+    ///
     /// It is preferable to use this class instead of creating the <see cref="OpenFileDialog"/> or <see cref="SaveFileDialog"/> yourself.
     /// </summary>
     public static class DialogFactory
     {
-        static string _lastOpenDir;
-        static string _lastSaveDir;
+        private static string _lastOpenDir;
+        private static string _lastSaveDir;
 
         /// <summary>
         /// Creates an <see cref="OpenFileDialog"/> with sensible default values
@@ -24,15 +21,15 @@ namespace Maestro.Shared.UI
         {
             var dlg = new OpenFileDialog();
 
-            // I guess someone at MSFT must've went over the wrong side of the ballmer peak 
+            // I guess someone at MSFT must've went over the wrong side of the ballmer peak
             // because RestoreDirectory should not default to false. Defaulting to false
             // means that attempting to load files/assemblies using relative paths
             // will most likely fail because for some reason, using this dialog will
             // actually modify the current working directory!
             //
             // So we set this to true, but to preserve the existing behaviour, we store
-            // the directory of the selected file in a static variable on dialog close (OK), 
-            // and assign this dir to the InitialDirectory property on each dialog request, 
+            // the directory of the selected file in a static variable on dialog close (OK),
+            // and assign this dir to the InitialDirectory property on each dialog request,
             // effectively replicating the old behaviour (w/o the nasty side effects)
             //
             // Or maybe my usage scenario does not qualify as a common use case.
@@ -58,15 +55,15 @@ namespace Maestro.Shared.UI
         {
             var dlg = new SaveFileDialog();
 
-            // I guess someone at MSFT must've went over the wrong side of the ballmer peak 
+            // I guess someone at MSFT must've went over the wrong side of the ballmer peak
             // because RestoreDirectory should not default to false. Defaulting to false
             // means that attempting to load files/assemblies using relative paths
             // will most likely fail because for some reason, using this dialog will
             // actually modify the current working directory!
             //
             // So we set this to true, but to preserve the existing behaviour, we store
-            // the directory of the selected file in a static variable on dialog close (OK), 
-            // and assign this dir to the InitialDirectory property on each dialog request, 
+            // the directory of the selected file in a static variable on dialog close (OK),
+            // and assign this dir to the InitialDirectory property on each dialog request,
             // effectively replicating the old behaviour (w/o the nasty side effects)
             //
             // Or maybe my usage scenario does not qualify as a common use case.

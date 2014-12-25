@@ -1,43 +1,45 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Drawing;
-using System.Collections.Generic;
+//
+
+#endregion Disclaimer / License
+
+using GeoAPI.Geometries;
+using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using OSGeo.MapGuide.MaestroAPI.IO;
 using OSGeo.MapGuide.MaestroAPI.Schema;
-using System.Collections.Specialized;
-using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using OSGeo.MapGuide.ObjectModels;
-using System.Xml;
-using GeoAPI.Geometries;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using System.Globalization;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using System.Text;
-using System.Text.RegularExpressions;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
-using System.ComponentModel;
-using System.Xml.Serialization;
-using System.IO;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Drawing;
+using System.Globalization;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -291,7 +293,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             return digit.ToString(m_enCI);
         }
 
-
         /// <summary>
         /// Copies the content of a stream into another stream.
         /// Automatically attempts to rewind the source stream.
@@ -319,8 +320,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 if (source.CanSeek)
                 {
-                    try 
-                    { 
+                    try
+                    {
                         source.Position = 0;
                         //rewound = true;
                     }
@@ -342,7 +343,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             do
             {
-                r  = source.Read(buf, 0, buf.Length);
+                r = source.Read(buf, 0, buf.Length);
                 target.Write(buf, 0, r);
             } while (r > 0);
         }
@@ -372,7 +373,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             long freqCount = 0;
 
             if (callback != null)
-                callback(copied, length > 0 ? (length - copied) : -1 , length);
+                callback(copied, length > 0 ? (length - copied) : -1, length);
 
             int r;
             byte[] buf = new byte[1024];
@@ -380,7 +381,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 r = source.Read(buf, 0, buf.Length);
                 target.Write(buf, 0, r);
-                
+
                 copied += r;
                 freqCount += r;
 
@@ -390,7 +391,6 @@ namespace OSGeo.MapGuide.MaestroAPI
                     if (callback != null)
                         callback(copied, length > 0 ? (length - copied) : -1, length);
                 }
-
             } while (r > 0);
 
             if (callback != null)
@@ -424,20 +424,20 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>A copied object</returns>
         public static object DeepCopy(object source, object target)
         {
-            foreach(System.Reflection.PropertyInfo pi in source.GetType().GetProperties())
+            foreach (System.Reflection.PropertyInfo pi in source.GetType().GetProperties())
             {
                 if (!pi.CanRead || !pi.CanWrite)
                     continue;
 
-                if (!pi.PropertyType.IsClass || pi.PropertyType == typeof(string) )
-                    pi.SetValue(target, pi.GetValue(source, null) , null);
+                if (!pi.PropertyType.IsClass || pi.PropertyType == typeof(string))
+                    pi.SetValue(target, pi.GetValue(source, null), null);
                 else if (pi.GetValue(source, null) == null)
                     pi.SetValue(target, null, null);
                 else if (pi.GetValue(source, null).GetType().GetInterface(typeof(System.Collections.ICollection).FullName) != null)
                 {
                     System.Collections.ICollection srcList = (System.Collections.ICollection)pi.GetValue(source, null);
                     System.Collections.ICollection trgList = (System.Collections.ICollection)Activator.CreateInstance(srcList.GetType());
-                    foreach(object o in srcList)
+                    foreach (object o in srcList)
                         trgList.GetType().GetMethod("Add").Invoke(trgList, new object[] { DeepCopy(o) }); //NOXLATE
                     pi.SetValue(target, trgList, null);
                 }
@@ -445,7 +445,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 {
                     System.Array sourceArr = (System.Array)pi.GetValue(source, null);
                     System.Array targetArr = (System.Array)Activator.CreateInstance(sourceArr.GetType(), new object[] { sourceArr.Length });
-                    for(int i = 0; i < targetArr.Length; i++)
+                    for (int i = 0; i < targetArr.Length; i++)
                         targetArr.SetValue(DeepCopy(sourceArr.GetValue(i)), i);
                     pi.SetValue(target, targetArr, null);
                 }
@@ -460,8 +460,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             return target;
         }
 
-
-
         /// <summary>
         /// Makes a deep copy of an object, by copying all the public properties
         /// </summary>
@@ -474,20 +472,20 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             object target = Activator.CreateInstance(source.GetType());
 
-            foreach(System.Reflection.PropertyInfo pi in source.GetType().GetProperties())
+            foreach (System.Reflection.PropertyInfo pi in source.GetType().GetProperties())
             {
                 if (!pi.CanRead || !pi.CanWrite)
                     continue;
 
-                if (!pi.PropertyType.IsClass || pi.PropertyType == typeof(string) )
-                    pi.SetValue(target, pi.GetValue(source, null) , null);
+                if (!pi.PropertyType.IsClass || pi.PropertyType == typeof(string))
+                    pi.SetValue(target, pi.GetValue(source, null), null);
                 else if (pi.GetValue(source, null) == null)
                     pi.SetValue(target, null, null);
                 else if (pi.GetValue(source, null).GetType().GetInterface(typeof(System.Collections.ICollection).FullName) != null)
                 {
                     System.Collections.ICollection srcList = (System.Collections.ICollection)pi.GetValue(source, null);
                     System.Collections.ICollection trgList = (System.Collections.ICollection)Activator.CreateInstance(srcList.GetType());
-                    foreach(object o in srcList)
+                    foreach (object o in srcList)
                         trgList.GetType().GetMethod("Add").Invoke(trgList, new object[] { DeepCopy(o) }); //NOXLATE
                     pi.SetValue(target, trgList, null);
                 }
@@ -495,7 +493,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 {
                     System.Array sourceArr = (System.Array)pi.GetValue(source, null);
                     System.Array targetArr = (System.Array)Activator.CreateInstance(sourceArr.GetType(), new object[] { sourceArr.Length });
-                    for(int i = 0; i < targetArr.Length; i++)
+                    for (int i = 0; i < targetArr.Length; i++)
                         targetArr.SetValue(DeepCopy(sourceArr.GetValue(i)), i);
                     pi.SetValue(target, targetArr, null);
                 }
@@ -505,8 +503,6 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             return target;
         }
-
-        
 
         /// <summary>
         /// Reads all data from a stream, and returns it as a single array.
@@ -524,7 +520,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 System.IO.MemoryStream ms = new System.IO.MemoryStream();
                 byte[] buf = new byte[1024];
                 int c;
-                while((c = s.Read(buf, 0, buf.Length)) > 0)
+                while ((c = s.Read(buf, 0, buf.Length)) > 0)
                     ms.Write(buf, 0, c);
                 return ms.ToArray();
             }
@@ -674,7 +670,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
 
             return doc2.OuterXml == "<FeatureSet />" ? "" : doc2.OuterXml; //NOXLATE
-            
         }
 
         /// <summary>
@@ -727,7 +722,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             // Encode any characters that are not allowed in XML names.
             // The encoding pattern is "-x%x-" where %x is the character value in hexidecimal.
             // The dash delimeters were an unfortunate choice since dash cannot be the 1st character
-            // in an XML name. When the 1st character needs to be encoded, it is encoded as "_x%x-" to 
+            // in an XML name. When the 1st character needs to be encoded, it is encoded as "_x%x-" to
             // resolve this issue.
             for (int i = 0; i < tokens.Length; i++)
             {
@@ -747,10 +742,10 @@ namespace OSGeo.MapGuide.MaestroAPI
                 else if (TokenRegex2.Match(token, 0).Success && i == 0)
                 {
                     bMatchedToken = true;
-                    // the token happens to match the encoding pattern for the 1st character. 
-                    // We want to avoid decoding this sub-string on decode. 
-                    // This is done by prepending a dummy encoding for character 0. This character is 
-                    // discarded on decode. 
+                    // the token happens to match the encoding pattern for the 1st character.
+                    // We want to avoid decoding this sub-string on decode.
+                    // This is done by prepending a dummy encoding for character 0. This character is
+                    // discarded on decode.
                     outName.Append("_x00-");
                 }
                 else
@@ -768,7 +763,6 @@ namespace OSGeo.MapGuide.MaestroAPI
                 outName.Append(bMatchedToken ? token : ReplaceBadChars(token, outName.Length == 0));
             }
 
-
             char c = outName[0];
 
             //Perform actual substitutions of bad characters
@@ -781,12 +775,15 @@ namespace OSGeo.MapGuide.MaestroAPI
                 case ' ':
                     prefix = "_x20-";
                     break;
+
                 case '-':
                     prefix = "_x2d-";
                     break;
+
                 case '&':
                     prefix = "_x26-";
                     break;
+
                 default:
                     if (Char.IsDigit(c))
                     {
@@ -888,7 +885,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             return decoded.ToString();
         }
 
-
         /// <summary>
         /// Enumerates all xml nodes in the document, and looks for tags or attributes named ResourceId
         /// </summary>
@@ -934,7 +930,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public delegate void EnumerateObjectCallback(object obj);
 
@@ -944,6 +940,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         private class EnumerateObjectCollector
         {
             public List<object> items = new List<object>();
+
             public void AddItem(object o)
             {
                 items.Add(o);
@@ -960,7 +957,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (obj == null || c == null)
                 return;
 
-            Dictionary<object, object> visited = new Dictionary<object,object>();
+            Dictionary<object, object> visited = new Dictionary<object, object>();
 
             Queue<object> items = new Queue<object>();
             items.Enqueue(obj);
@@ -1126,6 +1123,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                         if (oar.Label != null)
                             ar.Label = oar.Label.Clone();
                         break;
+
                     case StyleType.Line:
                         range.AreaStyle = null;
                         range.PointStyle = null;
@@ -1141,6 +1139,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                         if (olr.Label != null)
                             lr.Label = olr.Label.Clone();
                         break;
+
                     case StyleType.Point:
                         range.AreaStyle = null;
                         range.LineStyle = null;
@@ -1164,7 +1163,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        const string RESERVED_CHARS = "\\:*?\"<>|&'%=/";
+        private const string RESERVED_CHARS = "\\:*?\"<>|&'%=/";
 
         /// <summary>
         /// Creates a default Layer Definition from the given Class Definition
@@ -1296,25 +1295,25 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
                 {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "aValue", //NOXLATE
                         Description = Strings.Func_ARGB_AValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "rValue", //NOXLATE
                         Description = Strings.Func_ARGB_RValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "gValue", //NOXLATE
                         Description = Strings.Func_ARGB_GValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "bValue", //NOXLATE
                         Description = Strings.Func_ARGB_BValueDescription,
@@ -1330,7 +1329,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
                 {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "strValue", //NOXLATE
                         Description = Strings.Func_DECAP_StringValueDescription,
@@ -1362,19 +1361,19 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
                 {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "condition", //NOXLATE
                         Description = Strings.Func_IF_ConditionDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "trueValue", //NOXLATE
                         Description = Strings.Func_IF_TrueValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "falseValue", //NOXLATE
                         Description = Strings.Func_IF_FalseValueDescription,
@@ -1398,25 +1397,25 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
                 {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "expression", //NOXLATE
                         Description = Strings.Func_LOOKUP_ExpressionDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "defaultValue", //NOXLATE
                         Description = Strings.Func_LOOKUP_DefaultValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "index", //NOXLATE
                         Description = Strings.Func_LOOKUP_IndexDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "value", //NOXLATE
                         Description = Strings.Func_LOOKUP_ValueDescription,
@@ -1440,31 +1439,31 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
                 {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "expression", //NOXLATE
                         Description = Strings.Func_RANGE_ExpressionDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "rangeMin", //NOXLATE
                         Description = Strings.Func_RANGE_MinDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "rangeMax", //NOXLATE
                         Description = Strings.Func_RANGE_MaxDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "defaultValue", //NOXLATE
                         Description = Strings.Func_RANGE_DefaultValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "value", //NOXLATE
                         Description = Strings.Func_RANGE_ValueDescription,
@@ -1488,7 +1487,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
                 {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "strValue", //NOXLATE
                         Description = Strings.Func_URLENCODE_StringValueDescription,
@@ -1575,7 +1574,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Creates color with corrected brightness.
         /// </summary>
         /// <param name="color">Color to correct.</param>
-        /// <param name="correctionFactor">The brightness correction factor. Must be between -1 and 1. 
+        /// <param name="correctionFactor">The brightness correction factor. Must be between -1 and 1.
         /// Negative values produce darker colors.</param>
         /// <returns>
         /// Corrected <see cref="Color"/> structure.

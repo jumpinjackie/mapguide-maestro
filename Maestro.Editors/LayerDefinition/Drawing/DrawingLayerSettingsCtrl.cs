@@ -1,40 +1,40 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using Maestro.Editors.Generic;
+using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
-using Maestro.Shared.UI;
 using System.Diagnostics;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using Maestro.Editors.Generic;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Services;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.LayerDefinition.Drawing
 {
     [ToolboxItem(false)]
-    internal partial class DrawingLayerSettingsCtrl : CollapsiblePanel,IEditorBindable
+    internal partial class DrawingLayerSettingsCtrl : CollapsiblePanel, IEditorBindable
     {
         public DrawingLayerSettingsCtrl()
         {
@@ -64,7 +64,6 @@ namespace Maestro.Editors.LayerDefinition.Drawing
             PopulateSheets();
             cmbSheet_SelectedIndexChanged(this, EventArgs.Empty);
             ComboBoxBinder.BindSelectedIndexChanged(cmbSheet, "SelectedValue", _dlayer, "Sheet"); //NOXLATE
-
 
             var minBinding = new Binding("Text", _dlayer, "MinScale"); //NOXLATE
             var maxBinding = new Binding("Text", _dlayer, "MaxScale"); //NOXLATE
@@ -107,7 +106,7 @@ namespace Maestro.Editors.LayerDefinition.Drawing
             _dlayer.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnDrawingLayerPropertyChanged, (eh) => _dlayer.PropertyChanged -= eh);
         }
 
-        void OnDrawingLayerPropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void OnDrawingLayerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             OnResourceChanged();
         }
@@ -145,7 +144,7 @@ namespace Maestro.Editors.LayerDefinition.Drawing
                     chkListDwfLayers.Items.Add(lyr, true);
                 }
             }
-            else 
+            else
             {
                 string[] visible = _dlayer.LayerFilter.Split(','); //NOXLATE
                 foreach (var lyr in layers)
@@ -207,7 +206,7 @@ namespace Maestro.Editors.LayerDefinition.Drawing
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             using (var picker = new ResourcePicker(_service.CurrentConnection,
-                                                   OSGeo.MapGuide.MaestroAPI.ResourceTypes.DrawingSource.ToString(), 
+                                                   OSGeo.MapGuide.MaestroAPI.ResourceTypes.DrawingSource.ToString(),
                                                    ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)

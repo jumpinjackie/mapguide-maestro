@@ -1,28 +1,27 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -33,16 +32,16 @@ namespace Maestro.Shared.UI
     /// </summary>
     public partial class WorkbenchBase : Form
     {
-        MenuStrip menu;
-        ToolStripContainer toolStripContainer;
-        ToolStrip toolbar;
-        
-        StatusStrip status;
-        ToolStripStatusLabel statusLabel;
+        private MenuStrip menu;
+        private ToolStripContainer toolStripContainer;
+        private ToolStrip toolbar;
 
-        DockPanel contentPanel;
+        private StatusStrip status;
+        private ToolStripStatusLabel statusLabel;
 
-        ContextMenuStrip ctxToolbar;
+        private DockPanel contentPanel;
+
+        private ContextMenuStrip ctxToolbar;
 
         private IWorkbenchInitializer _workbenchInitializer;
 
@@ -55,7 +54,8 @@ namespace Maestro.Shared.UI
         /// Initializes a new instance of the WorkbenchBase class
         /// </summary>
         /// <param name="init"></param>
-        protected WorkbenchBase(IWorkbenchInitializer init) : this()
+        protected WorkbenchBase(IWorkbenchInitializer init)
+            : this()
         {
             _workbenchInitializer = init;
             _toolstrips = new Dictionary<string, ToolStrip>();
@@ -72,7 +72,7 @@ namespace Maestro.Shared.UI
             contentPanel.DockLeftPortion = 250;
             contentPanel.DockBottomPortion = 150;
             contentPanel.DockRightPortion = 200;
-            
+
             menu = _workbenchInitializer.GetMainMenu(this);
 
             toolStripContainer = new ToolStripContainer();
@@ -93,7 +93,7 @@ namespace Maestro.Shared.UI
             toolbar.Tag = BASE_TOOLSTRIP;
 
             AddToolbar(toolbar.Tag.ToString(), toolbar, ToolbarRegion.Top, true); //NOXLATE
-            
+
             status = new StatusStrip();
             statusLabel = new ToolStripStatusLabel();
             status.Items.Add(statusLabel);
@@ -105,7 +105,7 @@ namespace Maestro.Shared.UI
             Application.Idle += OnApplicationIdle;
         }
 
-        void OnActiveDocumentChanged(object sender, EventArgs e)
+        private void OnActiveDocumentChanged(object sender, EventArgs e)
         {
             var doc = contentPanel.ActiveDocument as DockContent;
             if (doc != null)
@@ -116,14 +116,16 @@ namespace Maestro.Shared.UI
             }
         }
 
-        const string BASE_TOOLSTRIP = "Base"; //NOXLATE
+        private const string BASE_TOOLSTRIP = "Base"; //NOXLATE
 
         /// <summary>
         /// Called when a view content has been activated
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="content"></param>
-        protected virtual void OnViewActivated(object sender, IViewContent content) { }
+        protected virtual void OnViewActivated(object sender, IViewContent content)
+        {
+        }
 
         private Dictionary<string, ToolStrip> _toolstrips;
         private Dictionary<string, ToolbarRegion> _toolstripRegions;
@@ -159,12 +161,15 @@ namespace Maestro.Shared.UI
                 case ToolbarRegion.Top:
                     AddTopToolStrip(toolbar);
                     break;
+
                 case ToolbarRegion.Bottom:
                     toolStripContainer.BottomToolStripPanel.Controls.Add(toolbar);
                     break;
+
                 case ToolbarRegion.Left:
                     toolStripContainer.LeftToolStripPanel.Controls.Add(toolbar);
                     break;
+
                 case ToolbarRegion.Right:
                     toolStripContainer.RightToolStripPanel.Controls.Add(toolbar);
                     break;
@@ -189,12 +194,15 @@ namespace Maestro.Shared.UI
                         case ToolbarRegion.Bottom:
                             toolStripContainer.BottomToolStripPanel.Controls.Add(strip);
                             break;
+
                         case ToolbarRegion.Left:
                             toolStripContainer.LeftToolStripPanel.Controls.Add(strip);
                             break;
+
                         case ToolbarRegion.Right:
                             toolStripContainer.RightToolStripPanel.Controls.Add(strip);
                             break;
+
                         case ToolbarRegion.Top:
                             AddTopToolStrip(strip);
                             break;
@@ -207,12 +215,15 @@ namespace Maestro.Shared.UI
                         case ToolbarRegion.Bottom:
                             toolStripContainer.BottomToolStripPanel.Controls.Remove(strip);
                             break;
+
                         case ToolbarRegion.Left:
                             toolStripContainer.LeftToolStripPanel.Controls.Remove(strip);
                             break;
+
                         case ToolbarRegion.Right:
                             toolStripContainer.RightToolStripPanel.Controls.Remove(strip);
                             break;
+
                         case ToolbarRegion.Top:
                             toolStripContainer.TopToolStripPanel.Controls.Remove(strip);
                             break;
@@ -231,7 +242,7 @@ namespace Maestro.Shared.UI
             var panel = toolStripContainer.TopToolStripPanel;
             if ((string)strip.Tag == BASE_TOOLSTRIP)
                 panel.Controls.Add(strip);
-            else 
+            else
             {
                 var controls = new List<Control>();
                 panel.SuspendLayout();
@@ -299,7 +310,7 @@ namespace Maestro.Shared.UI
         public IViewContent ActiveDocumentView
         {
             get
-            { 
+            {
                 var doc = contentPanel.ActiveDocument as DockContent;
                 if (doc != null)
                     return doc.Tag as IViewContent;
@@ -361,13 +372,13 @@ namespace Maestro.Shared.UI
                 content.StartPosition = FormStartPosition.CenterParent;
                 content.ShowDialog();
             }
-            else 
+            else
             {
                 content.Show(contentPanel);
             }
         }
 
-        void OnApplicationIdle(object sender, EventArgs e)
+        private void OnApplicationIdle(object sender, EventArgs e)
         {
             // Use the Idle event to update the status of menu and toolbar.
             // Depending on your application and the number of menu items with complex conditions,
@@ -434,14 +445,17 @@ namespace Maestro.Shared.UI
         /// On the top
         /// </summary>
         Top,
+
         /// <summary>
         /// On the left
         /// </summary>
         Left,
+
         /// <summary>
         /// On the right
         /// </summary>
         Right,
+
         /// <summary>
         /// On the bottom
         /// </summary>

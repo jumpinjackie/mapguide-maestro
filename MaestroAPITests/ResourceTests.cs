@@ -1,47 +1,40 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.IO;
-using System.Text;
+//
+
+#endregion Disclaimer / License
 
 using NMock2;
 using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Resource.Conversion;
-using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
-using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
-using OSGeo.MapGuide.ObjectModels.PrintLayout;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
-using OSGeo.MapGuide.ObjectModels.SymbolLibrary;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
+using System;
+using System.Collections.Specialized;
 using System.Diagnostics;
+using System.IO;
 
 namespace MaestroAPITests
 {
@@ -123,7 +116,9 @@ namespace MaestroAPITests
             //Verify that only valid resource identifiers can be assigned to certain resource types.
 
             IResource res = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF");
+
             #region Feature Source
+
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
@@ -153,30 +148,33 @@ namespace MaestroAPITests
             {
                 Assert.Fail("Resource ID should've checked out");
             }
-            #endregion
+
+            #endregion Feature Source
 
             res = ObjectFactory.CreateDrawingSource(conn);
+
             #region Drawing Source
+
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.FeatureSource";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
@@ -186,30 +184,33 @@ namespace MaestroAPITests
             {
                 Assert.Fail("Resource ID should've checked out");
             }
-            #endregion
+
+            #endregion Drawing Source
 
             res = ObjectFactory.CreateMapDefinition(conn, "Test Map");
+
             #region Map Definition
+
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.DrawingSource";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
@@ -219,30 +220,33 @@ namespace MaestroAPITests
             {
                 Assert.Fail("Resource ID should've checked out");
             }
-            #endregion
+
+            #endregion Map Definition
 
             res = ObjectFactory.CreateWebLayout(conn, new Version(1, 0, 0), "Library://Test.MapDefinition");
+
             #region Web Layout
+
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.DrawingSource";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
@@ -252,30 +256,33 @@ namespace MaestroAPITests
             {
                 Assert.Fail("Resource ID should've checked out");
             }
-            #endregion
+
+            #endregion Web Layout
 
             res = ObjectFactory.DeserializeEmbeddedFlexLayout(conn);
+
             #region Application Definition
+
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.DrawingSource";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
@@ -285,30 +292,33 @@ namespace MaestroAPITests
             {
                 Assert.Fail("Resource ID should've checked out");
             }
-            #endregion
+
+            #endregion Application Definition
 
             res = ObjectFactory.CreateSimpleSymbol(conn, new Version(1, 0, 0), "Test", "Test Symbol");
+
             #region Simple Symbol Definition
+
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.DrawingSource";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
@@ -318,30 +328,33 @@ namespace MaestroAPITests
             {
                 Assert.Fail("Resource ID should've checked out");
             }
-            #endregion
+
+            #endregion Simple Symbol Definition
 
             res = ObjectFactory.CreateCompoundSymbol(conn, new Version(1, 0, 0), "Test", "Test Symbol");
+
             #region Compound Symbol Definition
+
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.DrawingSource";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
@@ -351,30 +364,33 @@ namespace MaestroAPITests
             {
                 Assert.Fail("Resource ID should've checked out");
             }
-            #endregion
+
+            #endregion Compound Symbol Definition
 
             res = ObjectFactory.CreateLoadProcedure(conn, LoadType.Sdf, null);
+
             #region Load Procedure
+
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.DrawingSource";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
@@ -384,10 +400,13 @@ namespace MaestroAPITests
             {
                 Assert.Fail("Resource ID should've checked out");
             }
-            #endregion
+
+            #endregion Load Procedure
 
             res = ObjectFactory.CreateLoadProcedure(conn, LoadType.Shp, null);
+
             #region Load Procedure
+
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
@@ -417,30 +436,33 @@ namespace MaestroAPITests
             {
                 Assert.Fail("Resource ID should've checked out");
             }
-            #endregion
+
+            #endregion Load Procedure
 
             res = ObjectFactory.CreatePrintLayout(conn);
+
             #region Print Layout
+
             try
             {
                 res.ResourceID = "dklgjlahekjedjfd";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
                 res.ResourceID = "Library://UnitTests/Test.DrawingSource";
                 Assert.Fail("Should've thrown exception on invalid resource id");
             }
-            catch (InvalidOperationException){ }
+            catch (InvalidOperationException) { }
 
             try
             {
@@ -450,7 +472,8 @@ namespace MaestroAPITests
             {
                 Assert.Fail("Resource ID should've checked out");
             }
-            #endregion
+
+            #endregion Print Layout
         }
 
         [Test]
@@ -498,7 +521,7 @@ namespace MaestroAPITests
 
             var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF");
             Assert.IsTrue(fs.ConnectionString.Length == 0);
-            
+
             var connParams = new NameValueCollection();
             connParams["File"] = "%MG_DATA_FILE_PATH%Foo.sdf";
 
@@ -509,7 +532,7 @@ namespace MaestroAPITests
             Assert.AreEqual(fs.GetEmbeddedDataName(), "Foo.sdf");
             Assert.Catch<InvalidOperationException>(() => fs.GetAliasedFileName());
             Assert.Catch<InvalidOperationException>(() => fs.GetAliasName());
-            
+
             connParams.Clear();
             connParams["File"] = "%MG_DATA_FILE_PATH%Bar.sdf";
             connParams["ReadOnly"] = "TRUE";
@@ -521,7 +544,7 @@ namespace MaestroAPITests
             Assert.AreEqual(fs.GetEmbeddedDataName(), "Bar.sdf");
             Assert.Catch<InvalidOperationException>(() => fs.GetAliasedFileName());
             Assert.Catch<InvalidOperationException>(() => fs.GetAliasName());
-            
+
             connParams.Clear();
             connParams["DefaultFileLocation"] = "%MG_DATA_PATH_ALIAS[foobar]%";
 
@@ -532,7 +555,7 @@ namespace MaestroAPITests
             Assert.AreEqual(fs.GetAliasName(), "foobar");
             Assert.IsEmpty(fs.GetAliasedFileName());
             Assert.Catch<InvalidOperationException>(() => fs.GetEmbeddedDataName());
-            
+
             connParams.Clear();
             connParams["DefaultFileLocation"] = "%MG_DATA_PATH_ALIAS[foobar]%Test.sdf";
 
@@ -543,7 +566,7 @@ namespace MaestroAPITests
             Assert.AreEqual(fs.GetAliasName(), "foobar");
             Assert.AreEqual(fs.GetAliasedFileName(), "Test.sdf");
             Assert.Catch<InvalidOperationException>(() => fs.GetEmbeddedDataName());
-            
+
             connParams.Clear();
             connParams["DefaultFileLocation"] = "%MG_DATA_PATH_ALIAS[foobar]%Test.sdf";
             connParams["ReadOnly"] = "TRUE";
@@ -555,7 +578,7 @@ namespace MaestroAPITests
             Assert.AreEqual(fs.GetAliasName(), "foobar");
             Assert.AreEqual(fs.GetAliasedFileName(), "Test.sdf");
             Assert.Catch<InvalidOperationException>(() => fs.GetEmbeddedDataName());
-            
+
             connParams.Clear();
             connParams["Service"] = "(local)\\SQLEXPRESS";
             connParams["DataStore"] = "TEST";
@@ -625,7 +648,7 @@ namespace MaestroAPITests
             Assert.AreEqual("LayerDefinition-1.0.0.xsd", ldf.GetResourceTypeDescriptor().XsdName);
             Assert.AreEqual("LayerDefinition-1.0.0.xsd", ldf.ValidatingSchema);
             Assert.AreEqual(new Version(1, 0, 0), ldf.ResourceVersion);
-            
+
             using (var fs = File.OpenWrite("LayerDef_100.xml"))
             {
                 using (var src = ResourceTypeRegistry.Serialize(ldf))
@@ -1090,7 +1113,7 @@ namespace MaestroAPITests
 
             IMapDefinition mdf = ObjectFactory.CreateMapDefinition(conn, "Test");
             /*
-             
+
              [G] Group1
                 [L] Layer1
                 [G] Group2
@@ -1099,7 +1122,7 @@ namespace MaestroAPITests
                       [L] Layer3
              [G] Group4
                 [L] Layer4
-             
+
              */
             var grp1 = mdf.AddGroup("Group1");
             var grp2 = mdf.AddGroup("Group2");

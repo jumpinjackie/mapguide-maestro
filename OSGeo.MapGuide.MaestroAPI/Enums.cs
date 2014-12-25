@@ -1,22 +1,25 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
 
 namespace OSGeo.MapGuide.MaestroAPI
@@ -71,65 +74,78 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// <summary>
     /// Represents the common resource types in MapGuide
     /// </summary>
-	public enum ResourceTypes
-	{
+    public enum ResourceTypes
+    {
         /// <summary>
         /// Map Definition
         /// </summary>
-		MapDefinition,
+        MapDefinition,
+
         /// <summary>
         /// Layer Definition
         /// </summary>
-		LayerDefinition,
+        LayerDefinition,
+
         /// <summary>
         /// Feature Source
         /// </summary>
-		FeatureSource,
+        FeatureSource,
+
         /// <summary>
         /// Web Layout
         /// </summary>
-		WebLayout,
+        WebLayout,
+
         /// <summary>
         /// Runtime Map
         /// </summary>
-		RuntimeMap,
+        RuntimeMap,
+
         /// <summary>
         /// Folder
         /// </summary>
-		Folder,
+        Folder,
+
         /// <summary>
         /// Fusion Flexible Layout
         /// </summary>
-		ApplicationDefinition,
+        ApplicationDefinition,
+
         /// <summary>
         /// Print Layout
         /// </summary>
         PrintLayout,
+
         /// <summary>
         /// Symbol Definition
         /// </summary>
         SymbolDefinition,
+
         /// <summary>
         /// Load Procedure
         /// </summary>
         LoadProcedure,
+
         /// <summary>
         /// Drawing Source
         /// </summary>
         DrawingSource,
+
         /// <summary>
         /// DWF-based Symbol Library
         /// </summary>
         SymbolLibrary,
+
         /// <summary>
         /// A watermark
         /// </summary>
         WatermarkDefinition,
+
         /// <summary>
         /// A selection for a runtime map
         /// </summary>
         Selection
-	}
+    }
 
     /// <summary>
     /// Represents a method involving a resource id
@@ -147,7 +163,10 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Constructor
         /// </summary>
         /// <param name="resourceID"></param>
-        public ResourceEventArgs(string resourceID) { this.ResourceID = resourceID; }
+        public ResourceEventArgs(string resourceID)
+        {
+            this.ResourceID = resourceID;
+        }
 
         /// <summary>
         /// Gets or sets the resource id
@@ -178,9 +197,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
     }
 
-	internal class EnumHelper
-	{
-		private static string[] ResourceTypeNames = new string[]
+    internal class EnumHelper
+    {
+        private static string[] ResourceTypeNames = new string[]
 		{
 			"MapDefinition", //NOXLATE
 			"LayerDefinition", //NOXLATE
@@ -191,68 +210,74 @@ namespace OSGeo.MapGuide.MaestroAPI
 			"ApplicationDefinition", //NOXLATE
 		};
 
-		internal static string ResourceName(ResourceTypes type)
-		{
-			return ResourceName(type, false);
-		}
+        internal static string ResourceName(ResourceTypes type)
+        {
+            return ResourceName(type, false);
+        }
 
-		internal static string ResourceName(ResourceTypes type, bool prefixWithDot)
-		{
-				if (type == ResourceTypes.Folder || !prefixWithDot)
-					return ResourceTypeNames[(int)type];
-				else
-                    return "." + ResourceTypeNames[(int)type]; //NOXLATE
-		}
-
-	}
+        internal static string ResourceName(ResourceTypes type, bool prefixWithDot)
+        {
+            if (type == ResourceTypes.Folder || !prefixWithDot)
+                return ResourceTypeNames[(int)type];
+            else
+                return "." + ResourceTypeNames[(int)type]; //NOXLATE
+        }
+    }
 
     /// <summary>
     /// Flags that can be used for the QueryMapFeatures operation
     /// </summary>
-	public enum QueryMapFeaturesLayerAttributes : int
-	{
+    public enum QueryMapFeaturesLayerAttributes : int
+    {
         /// <summary>
         /// All layers
         /// </summary>
-		AllLayers = 0,
+        AllLayers = 0,
+
         /// <summary>
         /// Only visible
         /// </summary>
-		OnlyVisible = 1,
+        OnlyVisible = 1,
+
         /// <summary>
         /// Only selectable
         /// </summary>
-		OnlySelectable = 2,
+        OnlySelectable = 2,
+
         /// <summary>
         /// Default
         /// </summary>
-		Default = 3,
+        Default = 3,
+
         /// <summary>
         /// Only with tooltips
         /// </summary>
-		OnlyWithToolTips = 4,
+        OnlyWithToolTips = 4,
+
         /// <summary>
         /// Visible with tooltips
         /// </summary>
-		VisibleWithToolTips = 5
-	}
+        VisibleWithToolTips = 5
+    }
 
     /// <summary>
     /// Defines the types of unmananged data
     /// </summary>
-	public enum UnmanagedDataTypes : int
-	{
+    public enum UnmanagedDataTypes : int
+    {
         /// <summary>
         /// Files
         /// </summary>
-		Files,
+        Files,
+
         /// <summary>
         /// Folders
         /// </summary>
-		Folders,
+        Folders,
+
         /// <summary>
         /// Files and Folders
         /// </summary>
-		Both
-	}
+        Both
+    }
 }

@@ -1,31 +1,32 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI;
-using System.Drawing;
 using OSGeo.MapGuide.MaestroAPI.Resource;
-using System.IO;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+using System;
+using System.Drawing;
+using System.IO;
 
 #pragma warning disable 1591, 0114, 0108
 
@@ -40,6 +41,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0
 #elif LDF_240
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_4_0
 #else
+
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 #endif
 {
@@ -106,13 +108,15 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         {
             var lyr = new LayerDefinition();
             switch (type)
-            { 
+            {
                 case LayerType.Drawing:
                     lyr.CreateDrawingLayer();
                     break;
+
                 case LayerType.Raster:
                     lyr.CreateRasterLayer();
                     break;
+
                 case LayerType.Vector:
                     lyr.CreateVectorLayer();
                     break;
@@ -161,13 +165,13 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             {
                 ColorStyle = new GridColorStyleType()
                 {
-                    ColorRule = new System.ComponentModel.BindingList<GridColorRuleType>() 
-                    { 
-                        new GridColorRuleType() { 
+                    ColorRule = new System.ComponentModel.BindingList<GridColorRuleType>()
+                    {
+                        new GridColorRuleType() {
                             LegendLabel = string.Empty,
-                            Color = new GridColorType() 
+                            Color = new GridColorType()
                         },
-                        new GridColorRuleType() { 
+                        new GridColorRuleType() {
                             LegendLabel = string.Empty,
                             Color = new GridColorType()
                         }
@@ -275,7 +279,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         {
             IMarkSymbol sym = new MarkSymbolType()
             {
-                
                 SizeContext = SizeContextType.DeviceUnits,
                 MaintainAspect = true,
                 Shape = ShapeType.Square,
@@ -380,7 +383,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             };
         }
 
-
         public IW2DSymbol CreateDefaultW2DSymbol(string symbolLibrary, string symbolName)
         {
             return new W2DSymbolType()
@@ -403,7 +405,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 LegendLabel = string.Empty,
                 CompositeSymbolization = new CompositeSymbolization()
                 {
-                    SymbolInstance = new System.ComponentModel.BindingList<SymbolInstance>()  
+                    SymbolInstance = new System.ComponentModel.BindingList<SymbolInstance>()
                 }
             };
 #endif

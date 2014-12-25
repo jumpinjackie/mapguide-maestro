@@ -1,26 +1,27 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
+using System.Collections.Generic;
 
 #pragma warning disable 1591, 0114, 0108
 
@@ -34,7 +35,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<IWidgetInfo> IApplicationDefinitionWidgetInfoSet.WidgetInfo
         {
-            get 
+            get
             {
                 foreach (var w in this.WidgetInfo)
                 {
@@ -49,7 +50,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<IApplicationDefinitionContainerInfo> IApplicationDefinitionContainerInfoSet.ContainerInfo
         {
-            get 
+            get
             {
                 foreach (var c in this.ContainerInfo)
                 {
@@ -64,7 +65,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<IApplicationDefinitionTemplateInfo> IApplicationDefinitionTemplateInfoSet.TemplateInfo
         {
-            get 
+            get
             {
                 foreach (var t in this.TemplateInfo)
                 {
@@ -76,7 +77,6 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
 
     partial class AllowedValueType : IAllowedValue
     {
-
     }
 
     partial class ApplicationDefinitionTemplateInfoType : IApplicationDefinitionTemplateInfo
@@ -84,7 +84,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<IApplicationDefinitionPanel> IApplicationDefinitionTemplateInfo.Panels
         {
-            get 
+            get
             {
                 foreach (var p in this.Panel)
                 {
@@ -96,12 +96,10 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
 
     partial class ApplicationDefinitionContainerInfoType : IApplicationDefinitionContainerInfo
     {
-
     }
 
     partial class ApplicationDefinitionPanelType : IApplicationDefinitionPanel
     {
-
     }
 
     partial class ApplicationDefinitionWidgetInfoType : IWidgetInfo
@@ -115,7 +113,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         [XmlIgnore]
         public IWidgetParameter[] Parameters
         {
-            get 
+            get
             {
                 List<IWidgetParameter> param = new List<IWidgetParameter>();
                 foreach (var p in this.Parameter)
@@ -132,7 +130,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         [XmlIgnore]
         IAllowedValue[] IWidgetParameter.AllowedValue
         {
-            get 
+            get
             {
                 List<IAllowedValue> values = new List<IAllowedValue>();
                 foreach (var v in this.AllowedValue)

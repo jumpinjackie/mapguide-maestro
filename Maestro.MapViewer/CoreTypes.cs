@@ -1,26 +1,26 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Drawing;
 
 namespace Maestro.MapViewer
@@ -104,7 +104,7 @@ namespace Maestro.MapViewer
     public class MapPointEventArgs : EventArgs
     {
         /// <summary>
-        /// Gets the X coordinate 
+        /// Gets the X coordinate
         /// </summary>
         public readonly double X;
 
@@ -114,7 +114,7 @@ namespace Maestro.MapViewer
         public readonly double Y;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -134,26 +134,32 @@ namespace Maestro.MapViewer
         /// No digitization in progress
         /// </summary>
         None,
+
         /// <summary>
         /// A point digitization is in progress
         /// </summary>
         Point,
+
         /// <summary>
         /// A line digitization is in progress
         /// </summary>
         Line,
+
         /// <summary>
         /// A line string digitization is in progress
         /// </summary>
         LineString,
+
         /// <summary>
         /// A rectangle digitization is in progress
         /// </summary>
         Rectangle,
+
         /// <summary>
         /// A polygon digitization is in progress
         /// </summary>
         Polygon,
+
         /// <summary>
         /// A circle digitization is in progress
         /// </summary>
@@ -169,18 +175,22 @@ namespace Maestro.MapViewer
         /// Zoom In command
         /// </summary>
         ZoomIn,
+
         /// <summary>
         /// Zoom Out command
         /// </summary>
         ZoomOut,
+
         /// <summary>
         /// Pan command
         /// </summary>
         Pan,
+
         /// <summary>
         /// Select command
         /// </summary>
         Select,
+
         /// <summary>
         /// No active command
         /// </summary>

@@ -1,31 +1,33 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
-using System.Xml.Serialization;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
+using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Xml;
+using System.Xml.Serialization;
 
 #pragma warning disable 1591, 0114, 0108
 
@@ -48,7 +50,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
 
     partial class ApplicationDefinitionType : IApplicationDefinition, IMapSet
     {
-        internal ApplicationDefinitionType() 
+        internal ApplicationDefinitionType()
         {
             this.Extension = new CustomContentType() { Any = new XmlElement[0] };
         }
@@ -68,18 +70,24 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             return map;
         }
 
-        public IWidgetItem CreateWidgetReference(string name) { return new WidgetItemType() { Function = UiItemFunctionType.Widget, Widget = name }; }
+        public IWidgetItem CreateWidgetReference(string name)
+        {
+            return new WidgetItemType() { Function = UiItemFunctionType.Widget, Widget = name };
+        }
 
-        public ISeparator CreateSeparator() { return new SeparatorItemType() { Function = UiItemFunctionType.Separator }; }
+        public ISeparator CreateSeparator()
+        {
+            return new SeparatorItemType() { Function = UiItemFunctionType.Separator };
+        }
 
-        public IFlyoutItem CreateFlyout(string label) 
-        { 
-            return new FlyoutItemType() 
-            { 
-                Function = UiItemFunctionType.Flyout, 
+        public IFlyoutItem CreateFlyout(string label)
+        {
+            return new FlyoutItemType()
+            {
+                Function = UiItemFunctionType.Flyout,
                 Label = label,
                 Item = new System.ComponentModel.BindingList<UiItemType>()
-            }; 
+            };
         }
 
         public IMapGroup AddMapGroup(string id, bool singleTile, string mapDefinitionId)
@@ -170,7 +178,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         }
 
         [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")] //NOXLATE
-        public string ValidatingSchema 
+        public string ValidatingSchema
         {
             get { return "ApplicationDefinition-1.0.0.xsd"; } //NOXLATE
             set { }
@@ -275,7 +283,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<IMapGroup> IMapSet.MapGroups
         {
-            get 
+            get
             {
                 foreach (var grp in this.MapSet)
                 {
@@ -313,7 +321,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         [XmlIgnore]
         public IEnumerable<IWidgetSet> WidgetSets
         {
-            get 
+            get
             {
                 foreach (var wset in this.WidgetSet)
                 {
@@ -451,7 +459,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         [XmlIgnore]
         public IEnumerable<IUIItem> Items
         {
-            get 
+            get
             {
                 foreach (var it in this.Item)
                 {
@@ -528,7 +536,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         }
     }
 
-    partial class UiItemType : IUIItem 
+    partial class UiItemType : IUIItem
     {
         [XmlIgnore]
         public IMenu Parent { get; set; }
@@ -543,7 +551,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         [XmlIgnore]
         public IEnumerable<IWidgetContainer> Containers
         {
-            get 
+            get
             {
                 foreach (var cnt in this.Container)
                 {
@@ -581,9 +589,9 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         [XmlIgnore]
         IMapWidget IWidgetSet.MapWidget
         {
-            get 
+            get
             {
-                return this.MapWidget;  
+                return this.MapWidget;
             }
         }
 
@@ -596,7 +604,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         [XmlIgnore]
         public IEnumerable<IWidget> Widgets
         {
-            get 
+            get
             {
                 foreach (var wgt in this.Widget)
                 {
@@ -633,7 +641,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         }
     }
 
-    partial class WidgetType : IWidget 
+    partial class WidgetType : IWidget
     {
         [XmlIgnore]
         IExtension IExtensibleElement.Extension
@@ -665,7 +673,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         }
     }
 
-    partial class UiWidgetType : IUIWidget 
+    partial class UiWidgetType : IUIWidget
     {
         IUIWidget IUIWidget.Clone()
         {
@@ -827,7 +835,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<IMap> IMapGroup.Map
         {
-            get 
+            get
             {
                 foreach (var map in this.Map)
                 {
@@ -868,7 +876,6 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
 
     public class MapGuideOverlayOptions : IMapGuideOverlayOptions
     {
-
         public bool IsBaseLayer
         {
             get;
@@ -941,26 +948,26 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
             {
                 if (this.extensionField.Any.Length > 0)
                 {
-                     var els = new List<XmlElement>(this.extensionField.Any);
-                     for (int i = 0; i < els.Count; i++)
-                     {
-                         if (els[i].Name.Equals("Options")) //NOXLATE
-                         {
-                             try
-                             {
-                                 var n = els[i]["name"]; //NOXLATE
-                                 var t = els[i]["type"]; //NOXLATE
+                    var els = new List<XmlElement>(this.extensionField.Any);
+                    for (int i = 0; i < els.Count; i++)
+                    {
+                        if (els[i].Name.Equals("Options")) //NOXLATE
+                        {
+                            try
+                            {
+                                var n = els[i]["name"]; //NOXLATE
+                                var t = els[i]["type"]; //NOXLATE
 
-                                 if (n != null && t != null)
-                                     return new MapOptions() { Name = n.InnerText, Type = t.InnerText };
-                             }
-                             catch
-                             {
-                                 return null;
-                             }
-                         }
-                     }
-                     return null;
+                                if (n != null && t != null)
+                                    return new MapOptions() { Name = n.InnerText, Type = t.InnerText };
+                            }
+                            catch
+                            {
+                                return null;
+                            }
+                        }
+                    }
+                    return null;
                 }
                 else
                 {
@@ -1035,12 +1042,12 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
         {
             /*
             From Fusion Wiki:
-            
-            Note that the commercial layer must be the base layer so any overlays must 
-            have the isBaseLayer: false option set. The projection tag is needed so 
-            that OpenLayers will initialize the layer in the same projection as the base 
+
+            Note that the commercial layer must be the base layer so any overlays must
+            have the isBaseLayer: false option set. The projection tag is needed so
+            that OpenLayers will initialize the layer in the same projection as the base
             map.
-            
+
             <Options>
                <isBaseLayer>false</isBaseLayer>
                <useOverlay>true</useOverlay>

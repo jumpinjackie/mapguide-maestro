@@ -1,29 +1,29 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI.Schema;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.ObjectModels;
 using System.Drawing;
-using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
@@ -42,21 +42,26 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             /// Portable Network Graphics (PNG)
             /// </summary>
             public const string PNG = "PNG"; //NOXLATE
+
             /// <summary>
             /// Tagged Image File (TIF)
             /// </summary>
             public const string TIF = "TIF"; //NOXLATE
+
             /// <summary>
             /// Joint Photographic Experts Group (JPEG)
             /// </summary>
             public const string JPG = "JPG"; //NOXLATE
+
             /// <summary>
             /// Graphics Interchange Format (GIF)
             /// </summary>
             public const string GIF = "GIF"; //NOXLATE
         }
 
-        internal RasterWmsItem() { }
+        internal RasterWmsItem()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RasterWmsItem"/> class.
@@ -119,13 +124,19 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// Adds a WMS layer configuration element.
         /// </summary>
         /// <param name="layer">The layer.</param>
-        public void AddLayer(WmsLayerDefinition layer) { _layers.Add(layer); }
+        public void AddLayer(WmsLayerDefinition layer)
+        {
+            _layers.Add(layer);
+        }
 
         /// <summary>
         /// Removes the given WMS layer configuration element
         /// </summary>
         /// <param name="layer">The layer.</param>
-        public void RemoveLayer(WmsLayerDefinition layer) { _layers.Remove(layer); }
+        public void RemoveLayer(WmsLayerDefinition layer)
+        {
+            _layers.Remove(layer);
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether tile caching is used
@@ -190,12 +201,15 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                         case WmsImageFormat.GIF:
                             mimeType.InnerText = "image/gif"; //NOXLATE
                             break;
+
                         case WmsImageFormat.JPG:
                             mimeType.InnerText = "image/jpeg"; //NOXLATE
                             break;
+
                         case WmsImageFormat.PNG:
                             mimeType.InnerText = "image/png"; //NOXLATE
                             break;
+
                         case WmsImageFormat.TIF:
                             mimeType.InnerText = "image/tiff"; //NOXLATE
                             break;
@@ -278,7 +292,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                     else
                         this.BackgroundColor = ColorTranslator.FromHtml("#" + bgcolor.InnerText); //NOXLATE
                 }
-                else 
+                else
                 {
                     this.BackgroundColor = default(Color);
                 }

@@ -1,33 +1,32 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using System.Windows.Forms;
-using Maestro.Editors.Common;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using OSGeo.MapGuide.ObjectModels;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 {
@@ -38,7 +37,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
     internal partial class FontStyleEditor : System.Windows.Forms.UserControl
     {
         private ITextSymbol m_item;
-        
+
         private bool m_inUpdate = false;
 
         public event EventHandler Changed;
@@ -74,7 +73,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             fontCombo.Items.Clear();
             foreach (FontFamily f in new System.Drawing.Text.InstalledFontCollection().Families)
                 fontCombo.Items.Add(f.Name);
-
         }
 
         private FontStyleEditor()
@@ -84,10 +82,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             //
             InitializeComponent();
 
-            using(System.IO.StringReader sr = new System.IO.StringReader(Strings.GeometryStyleComboDataset))
+            using (System.IO.StringReader sr = new System.IO.StringReader(Strings.GeometryStyleComboDataset))
                 ComboBoxDataSet.ReadXml(sr);
         }
-
 
         private void UpdateDisplay()
         {
@@ -149,9 +146,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 m_inUpdate = false;
             }
         }
-
-
-        
 
         private void propertyCombo_SelectedIndexChanged(object sender, System.EventArgs e)
         {
@@ -347,7 +341,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             }
         }
 
-        static double? StringToDouble(string value)
+        private static double? StringToDouble(string value)
         {
             double d;
             if (double.TryParse(value, out d))
@@ -362,7 +356,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
         private void fontGroup_Enter(object sender, System.EventArgs e)
         {
-        
         }
 
         private void propertyCombo_TextChanged(object sender, System.EventArgs e)
@@ -380,7 +373,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         public ITextSymbol Item
         {
             get { return m_item; }
-            set 
+            set
             {
                 m_item = value;
                 UpdateDisplay();
@@ -407,7 +400,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 DisplayLabel.Tag = m_item;
                 this.Item = null;
             }
-
         }
 
         private void sizeCombo_TextChanged(object sender, EventArgs e)
@@ -427,7 +419,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         {
             fontCombo_SelectedIndexChanged(sender, e);
         }
-
 
         public delegate void UpdateComboTextFromSelectChangedDelegate(ComboBox owner, string text, bool userChange);
 
@@ -489,15 +480,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 Changed(this, new EventArgs());
         }
 
-        
-        void TextColor_RequestExpressionEditor(object sender, EventArgs e)
+        private void TextColor_RequestExpressionEditor(object sender, EventArgs e)
         {
             string expr = m_editor.EditExpression(textColor.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)
                 textColor.ColorExpression = expr;
         }
-        
-        void BackgroundColor_RequestExpressionEditor(object sender, EventArgs e)
+
+        private void BackgroundColor_RequestExpressionEditor(object sender, EventArgs e)
         {
             string expr = m_editor.EditExpression(backgroundColor.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)

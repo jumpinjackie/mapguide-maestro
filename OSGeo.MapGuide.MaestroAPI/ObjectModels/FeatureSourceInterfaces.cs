@@ -1,32 +1,35 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.MaestroAPI;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.IO;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using System.Collections.Specialized;
+using System.Text;
 
 namespace OSGeo.MapGuide.ObjectModels.FeatureSource
 {
@@ -99,7 +102,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <value>
         /// 	<c>true</c> if [uses embedded data files]; otherwise, <c>false</c>.
         /// </value>
-        bool UsesEmbeddedDataFiles{ get; }
+        bool UsesEmbeddedDataFiles { get; }
 
         /// <summary>
         /// Gets a value indicating whether [uses aliased data files].
@@ -248,7 +251,6 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
     [System.SerializableAttribute()]
     public enum RelateTypeEnum
     {
-
         /// <remarks/>
         LeftOuter,
 
@@ -481,7 +483,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// </summary>
         /// <remarks>
         /// If you only need to list schemas and class names, use the respective <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetSchemas" /> and
-        /// <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames" /> methods. Using this API will have a noticeable performance impact on 
+        /// <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IFeatureService.GetClassNames" /> methods. Using this API will have a noticeable performance impact on
         /// really large datastores (whose size is in the 100s of classes).
         /// </remarks>
         /// <returns></returns>
@@ -565,7 +567,6 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
             Check.NotNull(fs, "fs"); //NOXLATE
             fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.SpatialContextType() { Name = name, CoordinateSystem = coordSys });
         }
-
 
         /// <summary>
         /// Tests the connection settings in this feature source

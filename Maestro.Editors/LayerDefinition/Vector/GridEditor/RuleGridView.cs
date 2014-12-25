@@ -1,40 +1,40 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2014, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using Maestro.Editors.LayerDefinition.Vector.Scales;
+using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
+using Maestro.Editors.LayerDefinition.Vector.Thematics;
+using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using Maestro.Shared.UI;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using Maestro.Editors.LayerDefinition.Vector.Scales;
 using System.Diagnostics;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using Maestro.Editors.LayerDefinition.Vector.Thematics;
-using OSGeo.MapGuide.MaestroAPI;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
 {
@@ -62,7 +62,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             grdRules.RowsAdded += OnGridRowsAdded;
         }
 
-        void OnGridRowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        private void OnGridRowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             if (_init)
                 return;
@@ -90,7 +90,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             if (_init)
                 return;
 
-            switch(e.ListChangedType)
+            switch (e.ListChangedType)
             {
                 case ListChangedType.ItemChanged:
                     if (e.PropertyDescriptor != null)
@@ -101,6 +101,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                         }
                     }
                     break;
+
                 case ListChangedType.ItemMoved:
                     break;
             }
@@ -179,6 +180,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                             }
                         }
                         break;
+
                     case StyleType.Line:
                         {
                             ILineVectorStyle lts = style as ILineVectorStyle;
@@ -192,6 +194,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                             }
                         }
                         break;
+
                     case StyleType.Area:
                         {
                             IAreaVectorStyle ats = style as IAreaVectorStyle;
@@ -205,6 +208,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                             }
                         }
                         break;
+
                     case StyleType.Composite:
                         {
                             ICompositeTypeStyle cts = style as ICompositeTypeStyle;
@@ -238,6 +242,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                             }
                         }
                         break;
+
                     case StyleType.Line:
                         {
                             for (int i = 0; i < style.RuleCount; i++)
@@ -247,6 +252,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                             }
                         }
                         break;
+
                     case StyleType.Area:
                         {
                             for (int i = 0; i < style.RuleCount; i++)
@@ -256,6 +262,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                             }
                         }
                         break;
+
                     case StyleType.Composite:
                         {
                             for (int i = 0; i < style.RuleCount; i++)
@@ -286,7 +293,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         }
 
         /// <summary>
-        /// Gets or sets the theme index offset. Apply a theme offset if you have a layer with multiple styles and 
+        /// Gets or sets the theme index offset. Apply a theme offset if you have a layer with multiple styles and
         /// your are editing any style beyond the first one. The offset should be the total number of rules before
         /// the style being edited
         /// </summary>
@@ -345,12 +352,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 case StyleType.Point:
                     styleType = 1;
                     break;
+
                 case StyleType.Line:
                     styleType = 2;
                     break;
+
                 case StyleType.Area:
                     styleType = 3;
                     break;
+
                 case StyleType.Composite:
                     styleType = 4;
                     break;
@@ -409,7 +419,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
 
         private void grdRules_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex >= 0 && e.RowIndex >= 0) {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+            {
                 var rule = (RuleModel)grdRules.Rows[e.RowIndex].DataBoundItem;
                 var cell = grdRules.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 var col = cell.OwningColumn;
@@ -419,13 +430,16 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                     case "Style":
                         EditRuleStyle(rule);
                         break;
+
                     case "Label":
                         EditLabelStyle(rule);
                         break;
+
                     case "LegendLabel":
                         grdRules.CurrentCell = cell;
                         grdRules.BeginEdit(true);
                         break;
+
                     case "Filter":
                         {
                             var expr = rule.Filter;
@@ -721,7 +735,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
 
         private ClassDefinition GetLayerClass()
         {
-            if (_layerClass == null) 
+            if (_layerClass == null)
             {
                 IVectorLayerDefinition vl = (IVectorLayerDefinition)_editedLayer.SubLayer;
                 _layerClass = _edSvc.CurrentConnection.FeatureService.GetClassDefinition(vl.ResourceId, vl.FeatureName);
@@ -750,7 +764,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
 
         private void btnAddRule_Click(object sender, EventArgs e)
         {
-            switch(_style.StyleType)
+            switch (_style.StyleType)
             {
                 case StyleType.Point:
                     {
@@ -760,6 +774,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                         _rules.Add(model);
                     }
                     break;
+
                 case StyleType.Line:
                     {
                         var rule = _editedLayer.CreateDefaultLineRule();
@@ -768,6 +783,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                         _rules.Add(model);
                     }
                     break;
+
                 case StyleType.Area:
                     {
                         var rule = _editedLayer.CreateDefaultAreaRule();
@@ -776,6 +792,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                         _rules.Add(model);
                     }
                     break;
+
                 case StyleType.Composite:
                     {
                         var rule = _editedLayer.CreateDefaultCompositeRule();
@@ -803,15 +820,15 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 {
                     _init = true;
                     //Remove in reverse order
-                    foreach(var r in remove)
+                    foreach (var r in remove)
                     {
                         _rules.Remove(r);
                     }
                 }
-                finally 
+                finally
                 {
                     //Yes, we're going thermonuclear, simply because the BindingList's ordering may be out of sync with the underlying
-                    //model as a result of removing rules. Since the BindingList is currently the point of truth (we just made changes to it), 
+                    //model as a result of removing rules. Since the BindingList is currently the point of truth (we just made changes to it),
                     //the underlying model has to be updated to match
                     ReSyncBindingListToRules(_style);
                     _edSvc.SyncSessionCopy();
@@ -990,10 +1007,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                             ((IPointVectorStyle)_style).AddRule((IPointRule)clone.UnwrapRule());
                             clone.SetIndex(_style.RuleCount - 1);
                             break;
+
                         case StyleType.Line:
                             ((ILineVectorStyle)_style).AddRule((ILineRule)clone.UnwrapRule());
                             clone.SetIndex(_style.RuleCount - 1);
                             break;
+
                         case StyleType.Area:
                             ((IAreaVectorStyle)_style).AddRule((IAreaRule)clone.UnwrapRule());
                             clone.SetIndex(_style.RuleCount - 1);

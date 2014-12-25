@@ -1,30 +1,30 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using GeoAPI.CoordinateSystems;
-using ProjNet.CoordinateSystems;
 using GeoAPI.Geometries;
-using ObjCommon = OSGeo.MapGuide.ObjectModels.Common;
 using GisSharpBlog.NetTopologySuite.Geometries;
+using ProjNet.CoordinateSystems;
+using ObjCommon = OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 {
@@ -33,7 +33,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
     /// </summary>
     internal abstract class CoordinateSystemBase
     {
-        static ICoordinateSystemFactory _csFact;
+        private static ICoordinateSystemFactory _csFact;
 
         static CoordinateSystemBase()
         {
@@ -45,7 +45,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
             Check.NotNull(csDef, "csDef");
             return Create(csDef.WKT);
         }
-        
+
         public static CoordinateSystemBase Create(string csWkt)
         {
             Check.NotEmpty(csWkt, "csWkt");
@@ -73,7 +73,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
                 else if (unit is ILinearUnit)
                     csb = new MeterBasedCoordinateSystem(((ILinearUnit)unit).MetersPerUnit, ((ILinearUnit)unit).MetersPerUnit);
             }
-            
+
             if (csb == null)
                 csb = new MeterBasedCoordinateSystem();
 
@@ -105,7 +105,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         protected abstract double CalculateScale(IEnvelope bbox, System.Drawing.Size size);
 
         /// <summary>
-        /// Adjusts the boundingbox to equal proportions 
+        /// Adjusts the boundingbox to equal proportions
         /// </summary>
         /// <param name="bbox">The actual bounding box</param>
         /// <param name="scale">The scale to fit</param>
@@ -119,7 +119,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         }
 
         /// <summary>
-        /// Adjusts the boundingbox to equal proportions 
+        /// Adjusts the boundingbox to equal proportions
         /// </summary>
         /// <param name="bbox">The actual bounding box</param>
         /// <param name="scale">The scale to fit</param>

@@ -1,38 +1,37 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Threading;
-using System.Windows.Forms;
+//
+
+#endregion Disclaimer / License
+
 using Maestro.Editors.Common;
+using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Schema;
-using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using Maestro.Shared.UI;
+using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Globalization;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 {
@@ -65,10 +64,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         private System.Data.DataTable RotationTable;
         private System.Data.DataColumn dataColumn7;
         private System.Data.DataColumn dataColumn8;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.Container components = null;
+
         private System.Windows.Forms.ComboBox HeightText;
         private System.Windows.Forms.ComboBox WidthText;
         private System.Windows.Forms.ComboBox SizeUnits;
@@ -158,7 +159,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         {
             get
             {
-                return _mappingSvc != null && _preview != null; 
+                return _mappingSvc != null && _preview != null;
             }
         }
 
@@ -175,7 +176,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             //
             InitializeComponent();
             //this.AutoScroll = false;
-            using(System.IO.StringReader sr = new System.IO.StringReader(Strings.GeometryStyleComboDataset))
+            using (System.IO.StringReader sr = new System.IO.StringReader(Strings.GeometryStyleComboDataset))
                 ComboBoxDataSet.ReadXml(sr);
 
             fontCombo.Items.Clear();
@@ -187,13 +188,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             fillStyleEditor.displayFill.CheckedChanged += new EventHandler(displayFill_CheckedChanged);
             fillStyleEditor.fillCombo.SelectedIndexChanged += new EventHandler(fillCombo_SelectedIndexChanged);
             fillStyleEditor.foregroundColor.CurrentColorChanged += new EventHandler(foregroundColor_CurrentColorChanged);
-            fillStyleEditor.backgroundColor.CurrentColorChanged +=new EventHandler(backgroundColor_CurrentColorChanged);
+            fillStyleEditor.backgroundColor.CurrentColorChanged += new EventHandler(backgroundColor_CurrentColorChanged);
 
-            lineStyleEditor.displayLine.CheckedChanged +=new EventHandler(displayLine_CheckedChanged);
+            lineStyleEditor.displayLine.CheckedChanged += new EventHandler(displayLine_CheckedChanged);
             lineStyleEditor.thicknessCombo.SelectedIndexChanged += new EventHandler(thicknessCombo_SelectedIndexChanged);
             lineStyleEditor.thicknessCombo.TextChanged += new EventHandler(thicknessCombo_TextChanged);
-            lineStyleEditor.colorCombo.CurrentColorChanged +=new EventHandler(colorCombo_CurrentColorChanged);
-            lineStyleEditor.fillCombo.SelectedIndexChanged +=new EventHandler(fillCombo_Line_SelectedIndexChanged);
+            lineStyleEditor.colorCombo.CurrentColorChanged += new EventHandler(colorCombo_CurrentColorChanged);
+            lineStyleEditor.fillCombo.SelectedIndexChanged += new EventHandler(fillCombo_Line_SelectedIndexChanged);
         }
 
         private void setUIForMarkSymbol(bool isMark)
@@ -335,7 +336,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     MessageBox.Show(this, Strings.SymbolTypeNotSupported, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 UpdatePreviewResult();
-            } 
+            }
             finally
             {
                 m_inUpdate = false;
@@ -345,20 +346,20 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        protected override void Dispose( bool disposing )
+        protected override void Dispose(bool disposing)
         {
-            if( disposing )
+            if (disposing)
             {
-                if(components != null)
+                if (components != null)
                 {
                     components.Dispose();
                 }
             }
-            base.Dispose( disposing );
+            base.Dispose(disposing);
         }
 
-
         #region Windows Form Designer generated code
+
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
@@ -449,9 +450,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.TAB_STYLE.SuspendLayout();
             this.TAB_FILL_BORDER.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // groupBox1
-            // 
+            //
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.RotationBox);
             this.groupBox1.Controls.Add(this.label9);
@@ -467,9 +468,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
-            // 
+            //
             // RotationBox
-            // 
+            //
             resources.ApplyResources(this.RotationBox, "RotationBox");
             this.RotationBox.DataSource = this.RotationTable;
             this.RotationBox.DisplayMember = "Display";
@@ -477,49 +478,49 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.RotationBox.ValueMember = "Value";
             this.RotationBox.SelectedIndexChanged += new System.EventHandler(this.RotationBox_SelectedIndexChanged);
             this.RotationBox.TextChanged += new System.EventHandler(this.RotationBox_TextChanged);
-            // 
+            //
             // RotationTable
-            // 
+            //
             this.RotationTable.Columns.AddRange(new System.Data.DataColumn[] {
             this.dataColumn7,
             this.dataColumn8});
             this.RotationTable.TableName = "Rotation";
-            // 
+            //
             // dataColumn7
-            // 
+            //
             this.dataColumn7.Caption = "Display";
             this.dataColumn7.ColumnName = "Display";
-            // 
+            //
             // dataColumn8
-            // 
+            //
             this.dataColumn8.Caption = "Value";
             this.dataColumn8.ColumnName = "Value";
-            // 
+            //
             // label9
-            // 
+            //
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
-            // 
+            //
             // HeightText
-            // 
+            //
             resources.ApplyResources(this.HeightText, "HeightText");
             this.HeightText.Items.AddRange(new object[] {
             resources.GetString("HeightText.Items")});
             this.HeightText.Name = "HeightText";
             this.HeightText.SelectedIndexChanged += new System.EventHandler(this.HeightText_SelectedIndexChanged);
             this.HeightText.TextChanged += new System.EventHandler(this.HeightText_TextChanged);
-            // 
+            //
             // WidthText
-            // 
+            //
             resources.ApplyResources(this.WidthText, "WidthText");
             this.WidthText.Items.AddRange(new object[] {
             resources.GetString("WidthText.Items")});
             this.WidthText.Name = "WidthText";
             this.WidthText.SelectedIndexChanged += new System.EventHandler(this.WidthText_SelectedIndexChanged);
             this.WidthText.TextChanged += new System.EventHandler(this.WidthText_TextChanged);
-            // 
+            //
             // SizeUnits
-            // 
+            //
             resources.ApplyResources(this.SizeUnits, "SizeUnits");
             this.SizeUnits.DataSource = this.UnitsTable;
             this.SizeUnits.DisplayMember = "Display";
@@ -527,26 +528,26 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.SizeUnits.Name = "SizeUnits";
             this.SizeUnits.ValueMember = "Value";
             this.SizeUnits.SelectedIndexChanged += new System.EventHandler(this.SizeUnits_SelectedIndexChanged);
-            // 
+            //
             // UnitsTable
-            // 
+            //
             this.UnitsTable.Columns.AddRange(new System.Data.DataColumn[] {
             this.dataColumn5,
             this.dataColumn6});
             this.UnitsTable.TableName = "Units";
-            // 
+            //
             // dataColumn5
-            // 
+            //
             this.dataColumn5.Caption = "Display";
             this.dataColumn5.ColumnName = "Display";
-            // 
+            //
             // dataColumn6
-            // 
+            //
             this.dataColumn6.Caption = "Value";
             this.dataColumn6.ColumnName = "Value";
-            // 
+            //
             // SizeContext
-            // 
+            //
             resources.ApplyResources(this.SizeContext, "SizeContext");
             this.SizeContext.DataSource = this.SizeContextTable;
             this.SizeContext.DisplayMember = "Display";
@@ -554,26 +555,26 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.SizeContext.Name = "SizeContext";
             this.SizeContext.ValueMember = "Value";
             this.SizeContext.SelectedIndexChanged += new System.EventHandler(this.SizeContext_SelectedIndexChanged);
-            // 
+            //
             // SizeContextTable
-            // 
+            //
             this.SizeContextTable.Columns.AddRange(new System.Data.DataColumn[] {
             this.dataColumn3,
             this.dataColumn4});
             this.SizeContextTable.TableName = "SizeContext";
-            // 
+            //
             // dataColumn3
-            // 
+            //
             this.dataColumn3.Caption = "Display";
             this.dataColumn3.ColumnName = "Display";
-            // 
+            //
             // dataColumn4
-            // 
+            //
             this.dataColumn4.Caption = "Value";
             this.dataColumn4.ColumnName = "Value";
-            // 
+            //
             // Symbol
-            // 
+            //
             resources.ApplyResources(this.Symbol, "Symbol");
             this.Symbol.DataSource = this.SymbolMarkTable;
             this.Symbol.DisplayMember = "Display";
@@ -581,104 +582,104 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.Symbol.Name = "Symbol";
             this.Symbol.ValueMember = "Value";
             this.Symbol.SelectedIndexChanged += new System.EventHandler(this.Symbol_SelectedIndexChanged);
-            // 
+            //
             // SymbolMarkTable
-            // 
+            //
             this.SymbolMarkTable.Columns.AddRange(new System.Data.DataColumn[] {
             this.dataColumn1,
             this.dataColumn2});
             this.SymbolMarkTable.TableName = "SymbolMark";
-            // 
+            //
             // dataColumn1
-            // 
+            //
             this.dataColumn1.Caption = "Display";
             this.dataColumn1.ColumnName = "Display";
-            // 
+            //
             // dataColumn2
-            // 
+            //
             this.dataColumn2.Caption = "Value";
             this.dataColumn2.ColumnName = "Value";
-            // 
+            //
             // label5
-            // 
+            //
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            // 
+            //
             // label4
-            // 
+            //
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            // 
+            //
             // label3
-            // 
+            //
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            // 
+            //
             // label2
-            // 
+            //
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            // 
+            //
             // label1
-            // 
+            //
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            // 
+            //
             // grpSymbolFill
-            // 
+            //
             resources.ApplyResources(this.grpSymbolFill, "grpSymbolFill");
             this.grpSymbolFill.Controls.Add(this.fillStyleEditor);
             this.grpSymbolFill.Name = "grpSymbolFill";
             this.grpSymbolFill.TabStop = false;
-            // 
+            //
             // fillStyleEditor
-            // 
+            //
             resources.ApplyResources(this.fillStyleEditor, "fillStyleEditor");
             this.fillStyleEditor.Name = "fillStyleEditor";
             this.fillStyleEditor.ForegroundRequiresExpression += new System.EventHandler(this.FillStyleEditor_ForegroundRequiresExpression);
             this.fillStyleEditor.BackgroundRequiresExpression += new System.EventHandler(this.FillStyleEditor_BackgroundRequiresExpression);
-            // 
+            //
             // grpSymbolBorder
-            // 
+            //
             resources.ApplyResources(this.grpSymbolBorder, "grpSymbolBorder");
             this.grpSymbolBorder.Controls.Add(this.lineStyleEditor);
             this.grpSymbolBorder.Name = "grpSymbolBorder";
             this.grpSymbolBorder.TabStop = false;
-            // 
+            //
             // lineStyleEditor
-            // 
+            //
             this.lineStyleEditor.ColorExpression = "";
             resources.ApplyResources(this.lineStyleEditor, "lineStyleEditor");
             this.lineStyleEditor.Name = "lineStyleEditor";
             this.lineStyleEditor.RequiresExpressionEditor += new System.EventHandler(this.LineStyleEditor_RequiresExpressionEditor);
-            // 
+            //
             // groupBox4
-            // 
+            //
             resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Controls.Add(this.lnkRefresh);
             this.groupBox4.Controls.Add(this.previewPicture);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
-            // 
+            //
             // lnkRefresh
-            // 
+            //
             resources.ApplyResources(this.lnkRefresh, "lnkRefresh");
             this.lnkRefresh.BackColor = System.Drawing.Color.Transparent;
             this.lnkRefresh.Name = "lnkRefresh";
             this.lnkRefresh.TabStop = true;
             this.lnkRefresh.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkRefresh_LinkClicked);
-            // 
+            //
             // previewPicture
-            // 
+            //
             resources.ApplyResources(this.previewPicture, "previewPicture");
             this.previewPicture.BackColor = System.Drawing.Color.White;
             this.previewPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.previewPicture.Name = "previewPicture";
             this.previewPicture.TabStop = false;
             this.previewPicture.Paint += new System.Windows.Forms.PaintEventHandler(this.previewPicture_Paint);
-            // 
+            //
             // ComboBoxDataSet
-            // 
+            //
             this.ComboBoxDataSet.DataSetName = "ComboBoxDataSet";
             this.ComboBoxDataSet.Locale = new System.Globalization.CultureInfo("da-DK");
             this.ComboBoxDataSet.Tables.AddRange(new System.Data.DataTable[] {
@@ -686,18 +687,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.SizeContextTable,
             this.UnitsTable,
             this.RotationTable});
-            // 
+            //
             // DisplayPoints
-            // 
+            //
             resources.ApplyResources(this.DisplayPoints, "DisplayPoints");
             this.DisplayPoints.Checked = true;
             this.DisplayPoints.CheckState = System.Windows.Forms.CheckState.Checked;
             this.DisplayPoints.Name = "DisplayPoints";
             this.DisplayPoints.UseVisualStyleBackColor = true;
             this.DisplayPoints.CheckedChanged += new System.EventHandler(this.DisplayPoints_CheckedChanged);
-            // 
+            //
             // groupBoxFont
-            // 
+            //
             resources.ApplyResources(this.groupBoxFont, "groupBoxFont");
             this.groupBoxFont.Controls.Add(this.label11);
             this.groupBoxFont.Controls.Add(this.colorFontForeground);
@@ -708,26 +709,26 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.groupBoxFont.Controls.Add(this.label10);
             this.groupBoxFont.Name = "groupBoxFont";
             this.groupBoxFont.TabStop = false;
-            // 
+            //
             // label11
-            // 
+            //
             resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
-            // 
+            //
             // colorFontForeground
-            // 
+            //
             resources.ApplyResources(this.colorFontForeground, "colorFontForeground");
             this.colorFontForeground.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.colorFontForeground.Name = "colorFontForeground";
-            // 
+            //
             // panel1
-            // 
+            //
             this.panel1.Controls.Add(this.toolStrip1);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            // 
+            //
             // toolStrip1
-            // 
+            //
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FontBoldButton,
@@ -736,60 +737,60 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            // 
+            //
             // FontBoldButton
-            // 
+            //
             this.FontBoldButton.CheckOnClick = true;
             this.FontBoldButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             resources.ApplyResources(this.FontBoldButton, "FontBoldButton");
             this.FontBoldButton.Name = "FontBoldButton";
             this.FontBoldButton.Click += new System.EventHandler(this.FontBoldButton_Click);
-            // 
+            //
             // FontItalicButton
-            // 
+            //
             this.FontItalicButton.CheckOnClick = true;
             this.FontItalicButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             resources.ApplyResources(this.FontItalicButton, "FontItalicButton");
             this.FontItalicButton.Name = "FontItalicButton";
             this.FontItalicButton.Click += new System.EventHandler(this.FontItalicButton_Click);
-            // 
+            //
             // FontUnderlineButton
-            // 
+            //
             this.FontUnderlineButton.CheckOnClick = true;
             this.FontUnderlineButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             resources.ApplyResources(this.FontUnderlineButton, "FontUnderlineButton");
             this.FontUnderlineButton.Name = "FontUnderlineButton";
             this.FontUnderlineButton.Click += new System.EventHandler(this.FontUnderlineButton_Click);
-            // 
+            //
             // lblForeground
-            // 
+            //
             resources.ApplyResources(this.lblForeground, "lblForeground");
             this.lblForeground.Name = "lblForeground";
-            // 
+            //
             // comboBoxCharacter
-            // 
+            //
             resources.ApplyResources(this.comboBoxCharacter, "comboBoxCharacter");
             this.comboBoxCharacter.DisplayMember = "Display";
             this.comboBoxCharacter.Name = "comboBoxCharacter";
             this.comboBoxCharacter.ValueMember = "Value";
             this.comboBoxCharacter.SelectedIndexChanged += new System.EventHandler(this.comboBoxCharacter_SelectedIndexChanged);
             this.comboBoxCharacter.TextChanged += new System.EventHandler(this.comboBoxCharacter_TextChanged);
-            // 
+            //
             // fontCombo
-            // 
+            //
             resources.ApplyResources(this.fontCombo, "fontCombo");
             this.fontCombo.DisplayMember = "Display";
             this.fontCombo.Name = "fontCombo";
             this.fontCombo.ValueMember = "Value";
             this.fontCombo.SelectedIndexChanged += new System.EventHandler(this.fontCombo_SelectedIndexChanged);
-            // 
+            //
             // label10
-            // 
+            //
             resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
-            // 
+            //
             // groupBoxSymbolLocation
-            // 
+            //
             resources.ApplyResources(this.groupBoxSymbolLocation, "groupBoxSymbolLocation");
             this.groupBoxSymbolLocation.Controls.Add(this.button1);
             this.groupBoxSymbolLocation.Controls.Add(this.ReferenceY);
@@ -800,44 +801,44 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.groupBoxSymbolLocation.Controls.Add(this.MaintainAspectRatio);
             this.groupBoxSymbolLocation.Name = "groupBoxSymbolLocation";
             this.groupBoxSymbolLocation.TabStop = false;
-            // 
+            //
             // button1
-            // 
+            //
             resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
-            // 
+            //
             // ReferenceY
-            // 
+            //
             resources.ApplyResources(this.ReferenceY, "ReferenceY");
             this.ReferenceY.Name = "ReferenceY";
-            // 
+            //
             // label8
-            // 
+            //
             resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
-            // 
+            //
             // ReferenceX
-            // 
+            //
             resources.ApplyResources(this.ReferenceX, "ReferenceX");
             this.ReferenceX.Name = "ReferenceX";
-            // 
+            //
             // label7
-            // 
+            //
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            // 
+            //
             // label6
-            // 
+            //
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            // 
+            //
             // MaintainAspectRatio
-            // 
+            //
             resources.ApplyResources(this.MaintainAspectRatio, "MaintainAspectRatio");
             this.MaintainAspectRatio.Name = "MaintainAspectRatio";
-            // 
+            //
             // grpW2DStyle
-            // 
+            //
             resources.ApplyResources(this.grpW2DStyle, "grpW2DStyle");
             this.grpW2DStyle.Controls.Add(this.chkW2DTextColor);
             this.grpW2DStyle.Controls.Add(this.cmbW2DTextColor);
@@ -847,59 +848,59 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.grpW2DStyle.Controls.Add(this.cmbW2DFillColor);
             this.grpW2DStyle.Name = "grpW2DStyle";
             this.grpW2DStyle.TabStop = false;
-            // 
+            //
             // chkW2DTextColor
-            // 
+            //
             resources.ApplyResources(this.chkW2DTextColor, "chkW2DTextColor");
             this.chkW2DTextColor.Name = "chkW2DTextColor";
             this.chkW2DTextColor.UseVisualStyleBackColor = true;
             this.chkW2DTextColor.CheckedChanged += new System.EventHandler(this.chkW2DTextColor_CheckedChanged);
-            // 
+            //
             // cmbW2DTextColor
-            // 
+            //
             resources.ApplyResources(this.cmbW2DTextColor, "cmbW2DTextColor");
             this.cmbW2DTextColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cmbW2DTextColor.Name = "cmbW2DTextColor";
             this.cmbW2DTextColor.CurrentColorChanged += new System.EventHandler(this.cmbW2DTextColor_SelectedIndexChanged);
-            // 
+            //
             // chkW2DLineColor
-            // 
+            //
             resources.ApplyResources(this.chkW2DLineColor, "chkW2DLineColor");
             this.chkW2DLineColor.Name = "chkW2DLineColor";
             this.chkW2DLineColor.UseVisualStyleBackColor = true;
             this.chkW2DLineColor.CheckedChanged += new System.EventHandler(this.chkW2DLineColor_CheckedChanged);
-            // 
+            //
             // cmbW2DLineColor
-            // 
+            //
             resources.ApplyResources(this.cmbW2DLineColor, "cmbW2DLineColor");
             this.cmbW2DLineColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cmbW2DLineColor.Name = "cmbW2DLineColor";
             this.cmbW2DLineColor.CurrentColorChanged += new System.EventHandler(this.cmbW2DLineColor_SelectedIndexChanged);
-            // 
+            //
             // chkW2DFillColor
-            // 
+            //
             resources.ApplyResources(this.chkW2DFillColor, "chkW2DFillColor");
             this.chkW2DFillColor.Name = "chkW2DFillColor";
             this.chkW2DFillColor.UseVisualStyleBackColor = true;
             this.chkW2DFillColor.CheckedChanged += new System.EventHandler(this.chkW2DFillColor_CheckedChanged);
-            // 
+            //
             // cmbW2DFillColor
-            // 
+            //
             resources.ApplyResources(this.cmbW2DFillColor, "cmbW2DFillColor");
             this.cmbW2DFillColor.CurrentColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cmbW2DFillColor.Name = "cmbW2DFillColor";
             this.cmbW2DFillColor.CurrentColorChanged += new System.EventHandler(this.cmbW2DFillColor_SelectedIndexChanged);
-            // 
+            //
             // tabControl1
-            // 
+            //
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Controls.Add(this.TAB_STYLE);
             this.tabControl1.Controls.Add(this.TAB_FILL_BORDER);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            // 
+            //
             // TAB_STYLE
-            // 
+            //
             this.TAB_STYLE.Controls.Add(this.groupBox1);
             this.TAB_STYLE.Controls.Add(this.grpW2DStyle);
             this.TAB_STYLE.Controls.Add(this.groupBoxFont);
@@ -907,17 +908,17 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             resources.ApplyResources(this.TAB_STYLE, "TAB_STYLE");
             this.TAB_STYLE.Name = "TAB_STYLE";
             this.TAB_STYLE.UseVisualStyleBackColor = true;
-            // 
+            //
             // TAB_FILL_BORDER
-            // 
+            //
             this.TAB_FILL_BORDER.Controls.Add(this.grpSymbolFill);
             this.TAB_FILL_BORDER.Controls.Add(this.grpSymbolBorder);
             resources.ApplyResources(this.TAB_FILL_BORDER, "TAB_FILL_BORDER");
             this.TAB_FILL_BORDER.Name = "TAB_FILL_BORDER";
             this.TAB_FILL_BORDER.UseVisualStyleBackColor = true;
-            // 
+            //
             // PointFeatureStyleEditor
-            // 
+            //
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.DisplayPoints);
@@ -951,9 +952,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             this.TAB_FILL_BORDER.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
-        #endregion
+
+        #endregion Windows Form Designer generated code
 
         private void PointFeatureStyleEditor_Load(object sender, System.EventArgs e)
         {
@@ -1033,7 +1034,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
                 m_lastMark.Shape = selectedShape;
                 m_item.Symbol = m_lastMark;
-                
+
                 setUIForMarkSymbol(true);
                 if (update)
                     UpdateDisplay();
@@ -1140,7 +1141,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 if (!userChange)
                     m_inUpdate = true;
                 owner.SelectedIndex = -1;
-                
+
                 //HACK: Odd bug, don't remove
                 if (owner.SelectedIndex != -1)
                     owner.SelectedIndex = -1;
@@ -1218,7 +1219,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 else
                     m_item.Symbol.InsertionPointX = ReferenceX.Text;
             }
-            UpdatePreviewResult();		
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1236,7 +1237,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 else
                     m_item.Symbol.InsertionPointY = "0.5";
             }
-            UpdatePreviewResult();		
+            UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
@@ -1271,7 +1272,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 //RotationBox.SelectedIndex = -1;
                 UpdatePreviewResult();
             }
-
         }
 
         private void displayFill_CheckedChanged(object sender, EventArgs e)
@@ -1322,7 +1322,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
 
             if (m_item.Symbol.Type == PointSymbolType.Mark)
-                ((IMarkSymbol) m_item.Symbol).Fill.FillPattern = fillStyleEditor.fillCombo.Text;
+                ((IMarkSymbol)m_item.Symbol).Fill.FillPattern = fillStyleEditor.fillCombo.Text;
             UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
@@ -1351,7 +1351,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
-
 
         private void thicknessCombo_TextChanged(object sender, EventArgs e)
         {
@@ -1475,11 +1474,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             comboBoxCharacter_SelectedIndexChanged(sender, e);
         }
 
-
         public IPointSymbolization2D Item
         {
             get { return m_item; }
-            set 
+            set
             {
                 m_item = value;
                 UpdateDisplay();
@@ -1509,12 +1507,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             UpdatePreviewResult();
         }
 
-        static string DoubleToString(double? value)
+        private static string DoubleToString(double? value)
         {
             return value.HasValue ? value.Value.ToString() : null;
         }
 
-        static double? StringToDouble(string value)
+        private static double? StringToDouble(string value)
         {
             double d;
             if (double.TryParse(value, out d))
@@ -1569,7 +1567,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
-        
+
         private void ReferenceY_Leave(object sender, EventArgs e)
         {
             double d;
@@ -1628,8 +1626,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
         internal void SetupForTheming()
         {
-            fillStyleEditor.foregroundColor.Enabled = 
-            lineStyleEditor.lblColor.Enabled = 
+            fillStyleEditor.foregroundColor.Enabled =
+            lineStyleEditor.lblColor.Enabled =
             colorFontForeground.Enabled =
             lblForeground.Enabled =
             DisplayPoints.Enabled =
@@ -1760,8 +1758,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (Changed != null)
                 Changed(this, new EventArgs());
         }
-        
-        void FillStyleEditor_BackgroundRequiresExpression(object sender, EventArgs e)
+
+        private void FillStyleEditor_BackgroundRequiresExpression(object sender, EventArgs e)
         {
             string expr = m_editor.EditExpression(fillStyleEditor.backgroundColor.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)
@@ -1770,8 +1768,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 UpdatePreviewResult();
             }
         }
-        
-        void FillStyleEditor_ForegroundRequiresExpression(object sender, EventArgs e)
+
+        private void FillStyleEditor_ForegroundRequiresExpression(object sender, EventArgs e)
         {
             string expr = m_editor.EditExpression(fillStyleEditor.foregroundColor.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)
@@ -1780,8 +1778,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 UpdatePreviewResult();
             }
         }
-        
-        void LineStyleEditor_RequiresExpressionEditor(object sender, EventArgs e)
+
+        private void LineStyleEditor_RequiresExpressionEditor(object sender, EventArgs e)
         {
             string expr = m_editor.EditExpression(lineStyleEditor.colorCombo.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)

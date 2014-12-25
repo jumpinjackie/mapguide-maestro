@@ -1,7 +1,8 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2013, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // Original code from SharpDevelop 3.2.1 licensed under the same terms (LGPL 2.1)
 // Copyright 2002-2010 by
 //
@@ -17,22 +18,22 @@
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using ICSharpCode.TextEditor.Gui.CompletionWindow;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Schema;
@@ -43,30 +44,30 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
     /// Holds the completion (intellisense) data for an xml schema.
     /// </summary>
     /// <remarks>
-    /// The XmlSchema class throws an exception if we attempt to load 
+    /// The XmlSchema class throws an exception if we attempt to load
     /// the xhtml1-strict.xsd schema.  It does not like the fact that
     /// this schema redefines the xml namespace, even though this is
     /// allowed by the w3.org specification.
     /// </remarks>
     internal class XmlSchemaCompletionData
     {
-        string namespaceUri = String.Empty;
-        XmlSchema schema;
-        string fileName = String.Empty;
-        bool readOnly = false;
+        private string namespaceUri = String.Empty;
+        private XmlSchema schema;
+        private string fileName = String.Empty;
+        private bool readOnly = false;
 
         /// <summary>
         /// Stores attributes that have been prohibited whilst the code
         /// generates the attribute completion data.
         /// </summary>
-        XmlSchemaObjectCollection prohibitedAttributes = new XmlSchemaObjectCollection();
+        private XmlSchemaObjectCollection prohibitedAttributes = new XmlSchemaObjectCollection();
 
         public XmlSchemaCompletionData()
         {
         }
 
         /// <summary>
-        /// Creates completion data from the schema passed in 
+        /// Creates completion data from the schema passed in
         /// via the reader object.
         /// </summary>
         public XmlSchemaCompletionData(TextReader reader)
@@ -75,7 +76,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         }
 
         /// <summary>
-        /// Creates completion data from the schema passed in 
+        /// Creates completion data from the schema passed in
         /// via the reader object.
         /// </summary>
         public XmlSchemaCompletionData(XmlTextReader reader)
@@ -115,7 +116,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         }
 
         /// <summary>
-        /// Read only schemas are those that are installed with 
+        /// Read only schemas are those that are installed with
         /// SharpDevelop.
         /// </summary>
         public bool ReadOnly
@@ -303,7 +304,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// Finds an element in the schema.
         /// </summary>
         /// <remarks>
-        /// Only looks at the elements that are defined in the 
+        /// Only looks at the elements that are defined in the
         /// root of the schema so it will not find any elements
         /// that are defined inside any complex types.
         /// </remarks>
@@ -405,7 +406,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// Takes the name and creates a qualified name using the namespace of this
         /// schema.
         /// </summary>
-        /// <remarks>If the name is of the form myprefix:mytype then the correct 
+        /// <remarks>If the name is of the form myprefix:mytype then the correct
         /// namespace is determined from the prefix. If the name is not of this
         /// form then no prefix is added.</remarks>
         public QualifiedName CreateQualifiedName(string name)
@@ -444,7 +445,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Handler for schema validation errors.
         /// </summary>
-        void SchemaValidation(object source, ValidationEventArgs e)
+        private void SchemaValidation(object source, ValidationEventArgs e)
         {
             // Do nothing.
         }
@@ -452,7 +453,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Loads the schema.
         /// </summary>
-        void ReadSchema(XmlReader reader)
+        private void ReadSchema(XmlReader reader)
         {
             try
             {
@@ -467,7 +468,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             }
         }
 
-        void ReadSchema(string baseUri, TextReader reader)
+        private void ReadSchema(string baseUri, TextReader reader)
         {
             XmlTextReader xmlReader = new XmlTextReader(baseUri, reader);
 
@@ -484,11 +485,11 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// Finds an element in the schema.
         /// </summary>
         /// <remarks>
-        /// Only looks at the elements that are defined in the 
+        /// Only looks at the elements that are defined in the
         /// root of the schema so it will not find any elements
         /// that are defined inside any complex types.
         /// </remarks>
-        XmlSchemaElement FindElement(XmlQualifiedName name)
+        private XmlSchemaElement FindElement(XmlQualifiedName name)
         {
             XmlSchemaElement matchedElement = null;
             foreach (XmlSchemaElement element in schema.Elements.Values)
@@ -503,7 +504,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return matchedElement;
         }
 
-        XmlCompletionDataCollection GetChildElementCompletionData(XmlSchemaElement element, string prefix)
+        private XmlCompletionDataCollection GetChildElementCompletionData(XmlSchemaElement element, string prefix)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -517,7 +518,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlCompletionDataCollection GetChildElementCompletionData(XmlSchemaComplexType complexType, string prefix)
+        private XmlCompletionDataCollection GetChildElementCompletionData(XmlSchemaComplexType complexType, string prefix)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -551,13 +552,12 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlCompletionDataCollection GetChildElementCompletionData(XmlSchemaObjectCollection items, string prefix)
+        private XmlCompletionDataCollection GetChildElementCompletionData(XmlSchemaObjectCollection items, string prefix)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
             foreach (XmlSchemaObject schemaObject in items)
             {
-
                 XmlSchemaElement childElement = schemaObject as XmlSchemaElement;
                 XmlSchemaSequence childSequence = schemaObject as XmlSchemaSequence;
                 XmlSchemaChoice childChoice = schemaObject as XmlSchemaChoice;
@@ -608,7 +608,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlCompletionDataCollection GetChildElementCompletionData(XmlSchemaComplexContent complexContent, string prefix)
+        private XmlCompletionDataCollection GetChildElementCompletionData(XmlSchemaComplexContent complexContent, string prefix)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -629,7 +629,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlCompletionDataCollection GetChildElementCompletionData(XmlSchemaComplexContentExtension extension, string prefix)
+        private XmlCompletionDataCollection GetChildElementCompletionData(XmlSchemaComplexContentExtension extension, string prefix)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -663,7 +663,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlCompletionDataCollection GetChildElementCompletionData(XmlSchemaGroupRef groupRef, string prefix)
+        private XmlCompletionDataCollection GetChildElementCompletionData(XmlSchemaGroupRef groupRef, string prefix)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -686,7 +686,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlCompletionDataCollection GetChildElementCompletionData(XmlSchemaComplexContentRestriction restriction, string prefix)
+        private XmlCompletionDataCollection GetChildElementCompletionData(XmlSchemaComplexContentRestriction restriction, string prefix)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -715,10 +715,10 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         }
 
         /// <summary>
-        /// Adds an element completion data to the collection if it does not 
+        /// Adds an element completion data to the collection if it does not
         /// already exist.
         /// </summary>
-        void AddElement(XmlCompletionDataCollection data, string name, string prefix, string documentation)
+        private void AddElement(XmlCompletionDataCollection data, string name, string prefix, string documentation)
         {
             if (!data.Contains(name))
             {
@@ -732,10 +732,10 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         }
 
         /// <summary>
-        /// Adds an element completion data to the collection if it does not 
+        /// Adds an element completion data to the collection if it does not
         /// already exist.
         /// </summary>
-        void AddElement(XmlCompletionDataCollection data, string name, string prefix, XmlSchemaAnnotation annotation)
+        private void AddElement(XmlCompletionDataCollection data, string name, string prefix, XmlSchemaAnnotation annotation)
         {
             // Get any annotation documentation.
             string documentation = GetDocumentation(annotation);
@@ -746,7 +746,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Adds elements to the collection if it does not already exist.
         /// </summary>
-        void AddElements(XmlCompletionDataCollection lhs, XmlCompletionDataCollection rhs)
+        private void AddElements(XmlCompletionDataCollection lhs, XmlCompletionDataCollection rhs)
         {
             foreach (XmlCompletionData data in rhs)
             {
@@ -764,7 +764,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// All documentation elements are added.  All text nodes inside
         /// the documentation element are added.
         /// </remarks>
-        string GetDocumentation(XmlSchemaAnnotation annotation)
+        private string GetDocumentation(XmlSchemaAnnotation annotation)
         {
             string documentation = String.Empty;
 
@@ -799,7 +799,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return documentation;
         }
 
-        XmlCompletionDataCollection GetAttributeCompletionData(XmlSchemaElement element)
+        private XmlCompletionDataCollection GetAttributeCompletionData(XmlSchemaElement element)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -813,7 +813,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlCompletionDataCollection GetAttributeCompletionData(XmlSchemaComplexContentRestriction restriction)
+        private XmlCompletionDataCollection GetAttributeCompletionData(XmlSchemaComplexContentRestriction restriction)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -828,7 +828,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlCompletionDataCollection GetAttributeCompletionData(XmlSchemaComplexType complexType)
+        private XmlCompletionDataCollection GetAttributeCompletionData(XmlSchemaComplexType complexType)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -861,7 +861,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlCompletionDataCollection GetAttributeCompletionData(XmlSchemaComplexContentExtension extension)
+        private XmlCompletionDataCollection GetAttributeCompletionData(XmlSchemaComplexContentExtension extension)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -875,7 +875,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlCompletionDataCollection GetAttributeCompletionData(XmlSchemaSimpleContent simpleContent)
+        private XmlCompletionDataCollection GetAttributeCompletionData(XmlSchemaSimpleContent simpleContent)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -888,7 +888,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlCompletionDataCollection GetAttributeCompletionData(XmlSchemaSimpleContentExtension extension)
+        private XmlCompletionDataCollection GetAttributeCompletionData(XmlSchemaSimpleContentExtension extension)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -897,7 +897,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlCompletionDataCollection GetAttributeCompletionData(XmlSchemaObjectCollection attributes)
+        private XmlCompletionDataCollection GetAttributeCompletionData(XmlSchemaObjectCollection attributes)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -926,9 +926,9 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
 
         /// <summary>
         /// Checks that the attribute is prohibited or has been flagged
-        /// as prohibited previously. 
+        /// as prohibited previously.
         /// </summary>
-        bool IsProhibitedAttribute(XmlSchemaAttribute attribute)
+        private bool IsProhibitedAttribute(XmlSchemaAttribute attribute)
         {
             bool prohibited = false;
             if (attribute.Use == XmlSchemaUse.Prohibited)
@@ -956,7 +956,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <remarks>
         /// Note the special handling of xml:lang attributes.
         /// </remarks>
-        void AddAttribute(XmlCompletionDataCollection data, XmlSchemaAttribute attribute)
+        private void AddAttribute(XmlCompletionDataCollection data, XmlSchemaAttribute attribute)
         {
             string name = attribute.Name;
             if (name == null)
@@ -978,7 +978,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Gets attribute completion data from a group ref.
         /// </summary>
-        XmlCompletionDataCollection GetAttributeCompletionData(XmlSchemaAttributeGroupRef groupRef)
+        private XmlCompletionDataCollection GetAttributeCompletionData(XmlSchemaAttributeGroupRef groupRef)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
             XmlSchemaAttributeGroup group = FindAttributeGroup(schema, groupRef.RefName.Name);
@@ -990,7 +990,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        static XmlSchemaComplexType FindNamedType(XmlSchema schema, XmlQualifiedName name)
+        private static XmlSchemaComplexType FindNamedType(XmlSchema schema, XmlQualifiedName name)
         {
             XmlSchemaComplexType matchedComplexType = null;
 
@@ -1033,7 +1033,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// Finds an element that matches the specified <paramref name="name"/>
         /// from the children of the given <paramref name="element"/>.
         /// </summary>
-        XmlSchemaElement FindChildElement(XmlSchemaElement element, QualifiedName name)
+        private XmlSchemaElement FindChildElement(XmlSchemaElement element, QualifiedName name)
         {
             XmlSchemaElement matchedElement = null;
 
@@ -1046,7 +1046,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return matchedElement;
         }
 
-        XmlSchemaElement FindChildElement(XmlSchemaComplexType complexType, QualifiedName name)
+        private XmlSchemaElement FindChildElement(XmlSchemaComplexType complexType, QualifiedName name)
         {
             XmlSchemaElement matchedElement = null;
 
@@ -1092,7 +1092,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Finds the named child element contained in the extension element.
         /// </summary>
-        XmlSchemaElement FindChildElement(XmlSchemaComplexContentExtension extension, QualifiedName name)
+        private XmlSchemaElement FindChildElement(XmlSchemaComplexContentExtension extension, QualifiedName name)
         {
             XmlSchemaElement matchedElement = null;
 
@@ -1103,7 +1103,6 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
 
                 if (matchedElement == null)
                 {
-
                     XmlSchemaSequence sequence = extension.Particle as XmlSchemaSequence;
                     XmlSchemaChoice choice = extension.Particle as XmlSchemaChoice;
                     XmlSchemaGroupRef groupRef = extension.Particle as XmlSchemaGroupRef;
@@ -1129,7 +1128,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Finds the named child element contained in the restriction element.
         /// </summary>
-        XmlSchemaElement FindChildElement(XmlSchemaComplexContentRestriction restriction, QualifiedName name)
+        private XmlSchemaElement FindChildElement(XmlSchemaComplexContentRestriction restriction, QualifiedName name)
         {
             XmlSchemaElement matchedElement = null;
             XmlSchemaSequence sequence = restriction.Particle as XmlSchemaSequence;
@@ -1150,7 +1149,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Finds the element in the collection of schema objects.
         /// </summary>
-        XmlSchemaElement FindElement(XmlSchemaObjectCollection items, QualifiedName name)
+        private XmlSchemaElement FindElement(XmlSchemaObjectCollection items, QualifiedName name)
         {
             XmlSchemaElement matchedElement = null;
 
@@ -1210,7 +1209,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return matchedElement;
         }
 
-        XmlSchemaElement FindElement(XmlSchemaGroupRef groupRef, QualifiedName name)
+        private XmlSchemaElement FindElement(XmlSchemaGroupRef groupRef, QualifiedName name)
         {
             XmlSchemaElement matchedElement = null;
 
@@ -1233,7 +1232,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return matchedElement;
         }
 
-        static XmlSchemaAttributeGroup FindAttributeGroup(XmlSchema schema, string name)
+        private static XmlSchemaAttributeGroup FindAttributeGroup(XmlSchema schema, string name)
         {
             XmlSchemaAttributeGroup matchedGroup = null;
 
@@ -1241,7 +1240,6 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             {
                 foreach (XmlSchemaObject schemaObject in schema.Items)
                 {
-
                     XmlSchemaAttributeGroup group = schemaObject as XmlSchemaAttributeGroup;
                     if (group != null)
                     {
@@ -1273,7 +1271,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return matchedGroup;
         }
 
-        XmlCompletionDataCollection GetAttributeValueCompletionData(XmlSchemaElement element, string name)
+        private XmlCompletionDataCollection GetAttributeValueCompletionData(XmlSchemaElement element, string name)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -1290,7 +1288,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlCompletionDataCollection GetAttributeValueCompletionData(XmlSchemaAttribute attribute)
+        private XmlCompletionDataCollection GetAttributeValueCompletionData(XmlSchemaAttribute attribute)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -1322,7 +1320,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlCompletionDataCollection GetAttributeValueCompletionData(XmlSchemaSimpleTypeRestriction simpleTypeRestriction)
+        private XmlCompletionDataCollection GetAttributeValueCompletionData(XmlSchemaSimpleTypeRestriction simpleTypeRestriction)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -1338,7 +1336,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlCompletionDataCollection GetAttributeValueCompletionData(XmlSchemaSimpleTypeUnion union)
+        private XmlCompletionDataCollection GetAttributeValueCompletionData(XmlSchemaSimpleTypeUnion union)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -1354,7 +1352,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlCompletionDataCollection GetAttributeValueCompletionData(XmlSchemaSimpleType simpleType)
+        private XmlCompletionDataCollection GetAttributeValueCompletionData(XmlSchemaSimpleType simpleType)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -1378,7 +1376,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlCompletionDataCollection GetAttributeValueCompletionData(XmlSchemaSimpleTypeList list)
+        private XmlCompletionDataCollection GetAttributeValueCompletionData(XmlSchemaSimpleTypeList list)
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -1401,7 +1399,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Gets the set of attribute values for an xs:boolean type.
         /// </summary>
-        XmlCompletionDataCollection GetBooleanAttributeValueCompletionData()
+        private XmlCompletionDataCollection GetBooleanAttributeValueCompletionData()
         {
             XmlCompletionDataCollection data = new XmlCompletionDataCollection();
 
@@ -1413,7 +1411,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return data;
         }
 
-        XmlSchemaAttribute FindAttribute(XmlSchemaComplexType complexType, string name)
+        private XmlSchemaAttribute FindAttribute(XmlSchemaComplexType complexType, string name)
         {
             XmlSchemaAttribute matchedAttribute = null;
 
@@ -1431,7 +1429,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return matchedAttribute;
         }
 
-        XmlSchemaAttribute FindAttribute(XmlSchemaObjectCollection schemaObjects, string name)
+        private XmlSchemaAttribute FindAttribute(XmlSchemaObjectCollection schemaObjects, string name)
         {
             XmlSchemaAttribute matchedAttribute = null;
 
@@ -1461,7 +1459,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return matchedAttribute;
         }
 
-        XmlSchemaAttribute FindAttribute(XmlSchemaAttributeGroupRef groupRef, string name)
+        private XmlSchemaAttribute FindAttribute(XmlSchemaAttributeGroupRef groupRef, string name)
         {
             XmlSchemaAttribute matchedAttribute = null;
 
@@ -1477,7 +1475,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return matchedAttribute;
         }
 
-        XmlSchemaAttribute FindAttribute(XmlSchemaComplexContent complexContent, string name)
+        private XmlSchemaAttribute FindAttribute(XmlSchemaComplexContent complexContent, string name)
         {
             XmlSchemaAttribute matchedAttribute = null;
 
@@ -1496,12 +1494,12 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return matchedAttribute;
         }
 
-        XmlSchemaAttribute FindAttribute(XmlSchemaComplexContentExtension extension, string name)
+        private XmlSchemaAttribute FindAttribute(XmlSchemaComplexContentExtension extension, string name)
         {
             return FindAttribute(extension.Attributes, name);
         }
 
-        XmlSchemaAttribute FindAttribute(XmlSchemaComplexContentRestriction restriction, string name)
+        private XmlSchemaAttribute FindAttribute(XmlSchemaComplexContentRestriction restriction, string name)
         {
             XmlSchemaAttribute matchedAttribute = FindAttribute(restriction.Attributes, name);
 
@@ -1520,7 +1518,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Adds an attribute value to the completion data collection.
         /// </summary>
-        void AddAttributeValue(XmlCompletionDataCollection data, string valueText)
+        private void AddAttributeValue(XmlCompletionDataCollection data, string valueText)
         {
             XmlCompletionData completionData = new XmlCompletionData(valueText, XmlCompletionData.DataType.XmlAttributeValue);
             data.Add(completionData);
@@ -1529,7 +1527,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Adds an attribute value to the completion data collection.
         /// </summary>
-        void AddAttributeValue(XmlCompletionDataCollection data, string valueText, XmlSchemaAnnotation annotation)
+        private void AddAttributeValue(XmlCompletionDataCollection data, string valueText, XmlSchemaAnnotation annotation)
         {
             string documentation = GetDocumentation(annotation);
             XmlCompletionData completionData = new XmlCompletionData(valueText, documentation, XmlCompletionData.DataType.XmlAttributeValue);
@@ -1539,13 +1537,13 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Adds an attribute value to the completion data collection.
         /// </summary>
-        void AddAttributeValue(XmlCompletionDataCollection data, string valueText, string description)
+        private void AddAttributeValue(XmlCompletionDataCollection data, string valueText, string description)
         {
             XmlCompletionData completionData = new XmlCompletionData(valueText, description, XmlCompletionData.DataType.XmlAttributeValue);
             data.Add(completionData);
         }
 
-        XmlSchemaSimpleType FindSimpleType(XmlQualifiedName name)
+        private XmlSchemaSimpleType FindSimpleType(XmlQualifiedName name)
         {
             XmlSchemaSimpleType matchedSimpleType = null;
 
@@ -1568,7 +1566,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Adds any elements that have the specified substitution group.
         /// </summary>
-        void AddSubstitionGroupElements(XmlCompletionDataCollection data, XmlQualifiedName group, string prefix)
+        private void AddSubstitionGroupElements(XmlCompletionDataCollection data, XmlQualifiedName group, string prefix)
         {
             foreach (XmlSchemaElement element in schema.Elements.Values)
             {
@@ -1582,7 +1580,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <summary>
         /// Looks for the substitution group element of the specified name.
         /// </summary>
-        XmlSchemaElement FindSubstitutionGroupElement(XmlQualifiedName group, QualifiedName name)
+        private XmlSchemaElement FindSubstitutionGroupElement(XmlQualifiedName group, QualifiedName name)
         {
             XmlSchemaElement matchedElement = null;
 

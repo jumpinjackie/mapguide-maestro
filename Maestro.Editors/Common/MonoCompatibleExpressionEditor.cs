@@ -1,50 +1,49 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using Maestro.Editors.Common.Expression;
+using Maestro.Editors.LayerDefinition.Vector.Thematics;
+using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.ObjectModels.Capabilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.ObjectModels.Capabilities;
-using OSGeo.MapGuide.MaestroAPI.Exceptions;
-using Maestro.Shared.UI;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using Maestro.Editors.LayerDefinition.Vector.Thematics;
-using Maestro.Editors.Common.Expression;
 
 namespace Maestro.Editors.Common
 {
     /*
      * Intellisense overview:
-     * 
+     *
      * The intellisense of this expression editor consists of the following parts:
      *  - An ImageListBox which is filled with auto-complete suggestions
      *  - A System.Windows.Forms.ToolTip which is shown when an auto-complete choice is highlighted (but not selected)
-     * 
+     *
      * In order to invoke intellisense, we listen for the KeyUp and KeyDown events
      * on the textbox to determine what actions to take. Some actions include:
-     * 
+     *
      * Key Up:
      *  - Comma: Show auto-complete with all suggestions
      *  - Quotes (Single or Double): Insert an extra quote of that type
@@ -52,17 +51,17 @@ namespace Maestro.Editors.Common
      *  - Backspace: Invoke auto-complete with suggestions if there is a context buffer, otherwise hide auto-complete.
      *  - Alt + Right: Invoke auto-complete with all suggestions
      *  - Alphanumeric (no modifiers): Invoke auto-complete with suggestions
-     * 
+     *
      * Key Down:
      *  - Escape: Hide auto-complete
      *  - Enter: Hide auto-complete
-     * 
+     *
      * As part of the loading process, a full list of auto-complete items (functions/properties) is constructed (sorted by name)
      * Everytime intellisense is invoked, this list is queried for possible suggestions.
-     * 
+     *
      * In order to determine what items to suggest, the editor builds a context buffer from the current position of the caret
      * in the textbox. The context buffer algorithm is as follows:
-     * 
+     *
      *  1 - Start from caret position
      *  2 - Can we move back one char?
      *    2.1 - Get this char.
@@ -274,25 +273,25 @@ namespace Maestro.Editors.Common
             {
                 ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
                 {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "aValue", //NOXLATE
                         Description = Strings.Func_ARGB_AValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "rValue", //NOXLATE
                         Description = Strings.Func_ARGB_RValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "gValue", //NOXLATE
                         Description = Strings.Func_ARGB_GValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "bValue", //NOXLATE
                         Description = Strings.Func_ARGB_BValueDescription,
@@ -308,7 +307,7 @@ namespace Maestro.Editors.Common
             {
                 ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
                 {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "strValue", //NOXLATE
                         Description = Strings.Func_DECAP_StringValueDescription,
@@ -340,19 +339,19 @@ namespace Maestro.Editors.Common
             {
                 ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
                 {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "condition", //NOXLATE
                         Description = Strings.Func_IF_ConditionDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "trueValue", //NOXLATE
                         Description = Strings.Func_IF_TrueValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "falseValue", //NOXLATE
                         Description = Strings.Func_IF_FalseValueDescription,
@@ -376,25 +375,25 @@ namespace Maestro.Editors.Common
             {
                 ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
                 {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "expression", //NOXLATE
                         Description = Strings.Func_LOOKUP_ExpressionDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "defaultValue", //NOXLATE
                         Description = Strings.Func_LOOKUP_DefaultValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "index", //NOXLATE
                         Description = Strings.Func_LOOKUP_IndexDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "value", //NOXLATE
                         Description = Strings.Func_LOOKUP_ValueDescription,
@@ -418,31 +417,31 @@ namespace Maestro.Editors.Common
             {
                 ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
                 {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "expression", //NOXLATE
                         Description = Strings.Func_RANGE_ExpressionDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "rangeMin", //NOXLATE
                         Description = Strings.Func_RANGE_MinDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "rangeMax", //NOXLATE
                         Description = Strings.Func_RANGE_MaxDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "defaultValue", //NOXLATE
                         Description = Strings.Func_RANGE_DefaultValueDescription,
                         DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
                     },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "value", //NOXLATE
                         Description = Strings.Func_RANGE_ValueDescription,
@@ -466,7 +465,7 @@ namespace Maestro.Editors.Common
             {
                 ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
                 {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition() 
+                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
                     {
                         Name = "strValue", //NOXLATE
                         Description = Strings.Func_URLENCODE_StringValueDescription,
@@ -522,7 +521,7 @@ namespace Maestro.Editors.Common
         private SortedList<string, List<AutoCompleteItem>> _autoCompleteItems = new SortedList<string, List<AutoCompleteItem>>();
         private ImageListBox _autoBox;
 
-        enum AutoCompleteItemType : int
+        private enum AutoCompleteItemType : int
         {
             Property = 0,
             Function = 1,
@@ -531,7 +530,7 @@ namespace Maestro.Editors.Common
         /// <summary>
         /// Base auto-complete item
         /// </summary>
-        abstract class AutoCompleteItem
+        private abstract class AutoCompleteItem
         {
             public abstract AutoCompleteItemType Type { get; }
 
@@ -545,7 +544,7 @@ namespace Maestro.Editors.Common
         /// <summary>
         /// Property auto-complete item
         /// </summary>
-        class PropertyItem : AutoCompleteItem
+        private class PropertyItem : AutoCompleteItem
         {
             private PropertyDefinition _propDef;
 
@@ -587,7 +586,7 @@ namespace Maestro.Editors.Common
         /// <summary>
         /// Function auto-complete item
         /// </summary>
-        class FunctionItem : AutoCompleteItem
+        private class FunctionItem : AutoCompleteItem
         {
             private IFdoFunctionDefintion _func;
             private IFdoFunctionDefintionSignature _sig;
@@ -627,7 +626,7 @@ namespace Maestro.Editors.Common
                         string argDesc = FdoExpressionCompletionDataProvider.DescribeSignature(_sig);
                         _ttText = string.Format(Strings.ExprEditorFunctionDesc, _insertExpr, _func.Description, argDesc, _sig.ReturnType, Environment.NewLine);
                     }
-                        //_ttText = string.Format(Strings.FunctionTooltip, GetReturnTypeString(), _func.Name, GetArgumentString(), _func.Description);
+                    //_ttText = string.Format(Strings.FunctionTooltip, GetReturnTypeString(), _func.Name, GetArgumentString(), _func.Description);
 
                     return _ttText;
                 }
@@ -679,12 +678,12 @@ namespace Maestro.Editors.Common
             ExpressionText.Controls.Add(_autoBox);
         }
 
-        void OnAutoCompleteKeyDown(object sender, KeyEventArgs e)
+        private void OnAutoCompleteKeyDown(object sender, KeyEventArgs e)
         {
             ExpressionText.Focus();
         }
 
-        void OnAutoCompleteKeyUp(object sender, KeyEventArgs e)
+        private void OnAutoCompleteKeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Return || e.KeyCode == Keys.Enter)
             {
@@ -694,7 +693,7 @@ namespace Maestro.Editors.Common
             }
         }
 
-        void OnAutoCompleteSelectedIndexChanged(object sender, EventArgs e)
+        private void OnAutoCompleteSelectedIndexChanged(object sender, EventArgs e)
         {
             ExpressionText.Focus();
             if (_autoBox.Visible && _autoBox.SelectedIndex >= 0 && _autoBox.Items.Count > 0)
@@ -708,7 +707,7 @@ namespace Maestro.Editors.Common
             }
         }
 
-        void OnAutoCompleteDoubleClick(object sender, EventArgs e)
+        private void OnAutoCompleteDoubleClick(object sender, EventArgs e)
         {
             PutAutoCompleteSuggestion();
             _autoBox.Hide();
@@ -902,7 +901,6 @@ namespace Maestro.Editors.Common
                     InsertText("\"");
                 else                            // '
                     InsertText("'");
-
             }
             else if (code == Keys.D9 && e.Modifiers == Keys.Shift) // (
             {
@@ -1020,7 +1018,6 @@ namespace Maestro.Editors.Common
 
         private void ColumnName_Click(object sender, EventArgs e)
         {
-
         }
 
         private void ColumnName_SelectedIndexChanged(object sender, EventArgs e)
@@ -1041,7 +1038,7 @@ namespace Maestro.Editors.Common
                 ColumnValue.Tag = null;
                 try
                 {
-                    using (var rdr = _edSvc.CurrentConnection.FeatureService.AggregateQueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new System.Collections.Specialized.NameValueCollection() { 
+                    using (var rdr = _edSvc.CurrentConnection.FeatureService.AggregateQueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new System.Collections.Specialized.NameValueCollection() {
                             { "UNIQ_VALS", expr }
                         }))
                     {
@@ -1242,30 +1239,41 @@ namespace Maestro.Editors.Common
         }
     }
 
-    // ImageListBoxItem class 
+    // ImageListBoxItem class
     internal class ImageListBoxItem
     {
         private string _myText;
         private int _myImageIndex;
-        // properties 
+
+        // properties
         public string Text
         {
             get { return _myText; }
             set { _myText = value; }
         }
+
         public int ImageIndex
         {
             get { return _myImageIndex; }
             set { _myImageIndex = value; }
         }
+
         //constructor
         public ImageListBoxItem(string text, int index)
         {
             _myText = text;
             _myImageIndex = index;
         }
-        public ImageListBoxItem(string text) : this(text, -1) { }
-        public ImageListBoxItem() : this("") { }
+
+        public ImageListBoxItem(string text)
+            : this(text, -1)
+        {
+        }
+
+        public ImageListBoxItem()
+            : this("")
+        {
+        }
 
         private object _tag;
 
@@ -1281,7 +1289,7 @@ namespace Maestro.Editors.Common
         }
     }//End of ImageListBoxItem class
 
-    // ImageListBox class 
+    // ImageListBox class
     //
     // Based on GListBox
     //
@@ -1290,16 +1298,19 @@ namespace Maestro.Editors.Common
     internal class ImageListBox : ListBox
     {
         private ImageList _myImageList;
+
         public ImageList ImageList
         {
             get { return _myImageList; }
             set { _myImageList = value; }
         }
+
         public ImageListBox()
         {
             // Set owner draw mode
             this.DrawMode = DrawMode.OwnerDrawFixed;
         }
+
         protected override void OnDrawItem(System.Windows.Forms.DrawItemEventArgs e)
         {
             e.DrawBackground();

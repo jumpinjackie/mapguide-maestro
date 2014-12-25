@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Maestro.Editors.FeatureSource.Providers;
 using Maestro.Shared.UI;
-using Maestro.Editors.FeatureSource.Providers;
+using System;
+using System.Collections.Generic;
 using System.Xml;
 
 namespace Maestro.Editors.FeatureSource
 {
     internal static class FsEditorMap
     {
-        static Dictionary<string, Type> _editors;
+        private static Dictionary<string, Type> _editors;
 
         static FsEditorMap()
         {
@@ -33,7 +32,7 @@ namespace Maestro.Editors.FeatureSource
             }
         }
 
-        static string Normalize(string provider)
+        private static string Normalize(string provider)
         {
             string[] tokens = provider.Split('.'); //NOXLATE
             if (tokens.Length == 2)

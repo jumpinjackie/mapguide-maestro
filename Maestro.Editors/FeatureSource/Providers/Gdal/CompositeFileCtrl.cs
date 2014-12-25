@@ -1,41 +1,39 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using Maestro.Editors.Common;
+using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
+using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
-using System.Xml;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using System.IO;
-using Maestro.Shared.UI;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.MaestroAPI;
 using System.Collections.Specialized;
-using Maestro.Editors.Common;
+using System.ComponentModel;
 using System.Globalization;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.FeatureSource.Providers.Gdal
 {
@@ -114,7 +112,6 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
             "<xs:field xpath=\"FeatId\"/></xs:key></xs:element><xs:complexType name=\"defaultType\" abstract=\"false\" fdo:hasGeometry=\"false\"><xs:annotation><xs:appinfo source=\"http://fdo.osgeo.org/schemas\"/></xs:annotation><xs:complexContent><xs:extension base=\"gml:AbstractFeatureType\"><xs:sequence><xs:element name=\"FeatId\"><xs:annotation><xs:appinfo source=\"http://fdo.osgeo.org/schemas\"/></xs:annotation><xs:simpleType><xs:restriction base=\"xs:string\"><xs:maxLength value=\"256\"/></xs:restriction></xs:simpleType></xs:element><xs:element name=\"Raster\" type=\"fdo:RasterPropertyType\" fdo:defaultImageXSize=\"1024\" fdo:defaultImageYSize=\"1024\" fdo:srsName=\"Default\"><xs:annotation>" +  //NOXLATE
             "<xs:appinfo source=\"http://fdo.osgeo.org/schemas\"><fdo:DefaultDataModel dataModelType=\"Bitonal\" dataType=\"Unknown\" organization=\"Pixel\" bitsPerPixel=\"1\" tileSizeX=\"256\" tileSizeY=\"256\"/></xs:appinfo></xs:annotation></xs:element></xs:sequence></xs:extension></xs:complexContent></xs:complexType></xs:schema><SchemaMapping xmlns=\"http://fdogrfp.osgeo.org/schemas\" provider=\"OSGeo.Gdal.3.2\" name=\"default\"></SchemaMapping></fdo:DataStore>";  //NOXLATE
 
-
         private void BuildDefaultDocument()
         {
             _conf = (GdalConfigurationDocument)ConfigurationDocument.LoadXml(string.Format(TEMPLATE_CFG, -10000000, -10000000, 10000000, 10000000));
@@ -138,7 +135,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
 
         private void lstView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //btnRefresh.Enabled = 
+            //btnRefresh.Enabled =
             btnDelete.Enabled = (lstView.SelectedItems.Count > 0);
         }
 
@@ -218,20 +215,20 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
             }
         }
 
-        class UpdateConfigResult
+        private class UpdateConfigResult
         {
             public List<string> Added { get; set; }
 
             public List<string> Removed { get; set; }
         }
 
-        object UpdateConfigurationDocument(BackgroundWorker worker, DoWorkEventArgs e, params object[] args)
+        private object UpdateConfigurationDocument(BackgroundWorker worker, DoWorkEventArgs e, params object[] args)
         {
             GdalConfigurationDocument conf = (GdalConfigurationDocument)args[0];
-         
+
             IServerConnection conn = (IServerConnection)args[1];
-            string [] toAdd = args[2] as string[];
-            string [] toRemove = args[3] as string[];
+            string[] toAdd = args[2] as string[];
+            string[] toRemove = args[3] as string[];
             bool isAlias = (bool)args[4];
 
             worker.ReportProgress(0, Strings.UpdatingConfiguration);
@@ -296,7 +293,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
                 conn.ResourceService.SaveResource(fs);
 
                 var scList = fs.GetSpatialInfo(false);
-                
+
                 var raster = new GdalRasterItem();
 
                 if (isAlias)
@@ -401,7 +398,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
                                        .Replace("]%", "]"); //NOXLATE
                     }
                     var list = _service.CurrentConnection.ResourceService.EnumerateUnmanagedData(folder, string.Empty, false, UnmanagedDataTypes.Files);
-                    var extensions = new List<string>(new string[] { 
+                    var extensions = new List<string>(new string[] {
                         ".png", //NOXLATE
                         ".jpg", //NOXLATE
                         ".jpeg", //NOXLATE

@@ -1,7 +1,8 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2013, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // Original code from SharpDevelop 3.2.1 licensed under the same terms (LGPL 2.1)
 // Copyright 2002-2010 by
 //
@@ -17,23 +18,22 @@
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using ICSharpCode.TextEditor;
 using ICSharpCode.TextEditor.Gui.CompletionWindow;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
@@ -44,9 +44,9 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
     /// </summary>
     internal class XmlCompletionDataProvider : ICompletionDataProvider
     {
-        XmlSchemaCompletionDataCollection schemaCompletionDataItems;
-        XmlSchemaCompletionData defaultSchemaCompletionData;
-        string defaultNamespacePrefix = String.Empty;
+        private XmlSchemaCompletionDataCollection schemaCompletionDataItems;
+        private XmlSchemaCompletionData defaultSchemaCompletionData;
+        private string defaultNamespacePrefix = String.Empty;
 
         public XmlCompletionDataProvider(XmlSchemaCompletionDataCollection schemaCompletionDataItems, XmlSchemaCompletionData defaultSchemaCompletionData, string defaultNamespacePrefix)
         {
@@ -55,8 +55,8 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             this.defaultNamespacePrefix = defaultNamespacePrefix;
             DefaultIndex = 0;
         }
-        
-        static ImageList smImageList;
+
+        private static ImageList smImageList;
 
         public ImageList ImageList
         {
@@ -98,6 +98,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
                         return schemaCompletionDataItems.GetNamespaceCompletionData(); ;
                     }
                     break;
+
                 case '<':
                     // Child element intellisense.
                     XmlElementPath parentPath = XmlParser.GetParentElementPath(text);
@@ -159,7 +160,6 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
                 }
                 else if (defaultSchemaCompletionData != null)
                 {
-
                     // Use the default schema namespace if none
                     // specified in a xml element path, otherwise
                     // we will not find any attribute or element matches
@@ -186,7 +186,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         }
 
         /// <summary>
-        /// Gets the schema completion data that was created from the specified 
+        /// Gets the schema completion data that was created from the specified
         /// schema filename.
         /// </summary>
         public XmlSchemaCompletionData FindSchemaFromFileName(string fileName)
@@ -194,7 +194,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return schemaCompletionDataItems.GetSchemaFromFileName(fileName);
         }
 
-        ICompletionData[] GetChildElementCompletionData(XmlElementPath path)
+        private ICompletionData[] GetChildElementCompletionData(XmlElementPath path)
         {
             ICompletionData[] completionData = null;
 
@@ -207,7 +207,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return completionData;
         }
 
-        ICompletionData[] GetAttributeCompletionData(XmlElementPath path)
+        private ICompletionData[] GetAttributeCompletionData(XmlElementPath path)
         {
             ICompletionData[] completionData = null;
 
@@ -220,7 +220,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return completionData;
         }
 
-        ICompletionData[] GetAttributeValueCompletionData(XmlElementPath path, string name)
+        private ICompletionData[] GetAttributeValueCompletionData(XmlElementPath path, string name)
         {
             ICompletionData[] completionData = null;
 

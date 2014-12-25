@@ -1,29 +1,31 @@
 #region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Xml;
-using System.Reflection;
 using System.Collections.Specialized;
 using System.Data.Common;
+using System.Reflection;
+using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -37,11 +39,13 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <value>The name.</value>
         public string Name { get; private set; }
+
         /// <summary>
         /// Gets or sets the description.
         /// </summary>
         /// <value>The description.</value>
         public string Description { get; private set; }
+
         /// <summary>
         /// Gets or sets a value indicating whether this instance is multi platform.
         /// </summary>
@@ -49,12 +53,14 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// 	<c>true</c> if this instance is multi platform; otherwise, <c>false</c>.
         /// </value>
         public bool IsMultiPlatform { get; private set; }
+
         /// <summary>
         /// Gets whether this provider has global connection state. This effectively indicates that subsequent connections after the first one
         /// created for this provider will re-use the same connection information and may/will disregard that values of the connection parameters
         /// you pass in
         /// </summary>
         public bool HasGlobalState { get; private set; }
+
         /// <summary>
         /// Gets the path of the assembly containing the provider implementation
         /// </summary>
@@ -100,7 +106,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     ///     <item><description>The name of this <see cref="IServerConnection"/> implementation</description></item>
     /// </list>
     /// <para>
-    /// The <see cref="IServerConnection"/> implementation is expected to have a non-public constructor which takes a single parameter, 
+    /// The <see cref="IServerConnection"/> implementation is expected to have a non-public constructor which takes a single parameter,
     /// a <see cref="System.Collections.Specialized.NameValueCollection"/> containing the initialization parameters parsed from the given connection
     /// string.
     /// </para>
@@ -109,23 +115,23 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// This example shows how to create a http-based MapGuide Server connection to the server's mapagent interface.
     /// <code>
     /// using OSGeo.MapGuide.MaestroAPI;
-    /// 
+    ///
     /// ...
-    /// 
+    ///
     /// IServerConnection conn = ConnectionProviderRegistry.CreateConnection("Maestro.Http",
     ///     "Url", "http://localhost/mapguide/mapagent/mapagent.fcgi",
     ///     "Username", "Administrator",
     ///     "Password", "admin");
-    /// 
+    ///
     /// </code>
     /// </example>
     /// <example>
     /// This example shows how to create a TCP/IP connection that wraps the official MapGuide API
     /// <code>
     /// using OSGeo.MapGuide.MaestroAPI;
-    /// 
+    ///
     /// ...
-    /// 
+    ///
     /// IServerConnection conn = ConnectionProviderRegistry.CreateConnection("Maestro.LocalNative",
     ///     "ConfigFile", "webconfig.ini",
     ///     "Username", "Administrator",
@@ -134,13 +140,13 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// </example>
     public sealed class ConnectionProviderRegistry
     {
-        const string PROVIDER_CONFIG = "ConnectionProviders.xml"; //NOXLATE
+        private const string PROVIDER_CONFIG = "ConnectionProviders.xml"; //NOXLATE
 
-        static Dictionary<string, ConnectionFactoryMethod> _ctors;
-        static List<ConnectionProviderEntry> _providers;
-        static Dictionary<string, int> _callCount;
+        private static Dictionary<string, ConnectionFactoryMethod> _ctors;
+        private static List<ConnectionProviderEntry> _providers;
+        private static Dictionary<string, int> _callCount;
 
-        static string _dllRoot;
+        private static string _dllRoot;
 
         static ConnectionProviderRegistry()
         {
@@ -188,7 +194,6 @@ namespace OSGeo.MapGuide.MaestroAPI
                 }
                 catch
                 {
-
                 }
             }
         }
@@ -261,16 +266,16 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="connectionString"></param>
         /// <remarks>
         /// The Maestro.Local provider (that wraps mg-desktop) and Maestro.LocalNative providers (that wraps the official MapGuide API)
-        /// are unique in that it has global connection state. What this means is that subsequent connections after the first one for 
-        /// these providers may re-use existing state for the first connection. The reason for this is that creating this connection 
-        /// internally calls MgdPlatform.Initialize(iniFile) and MapGuideApi.MgInitializeWebTier(iniFile) respectively, that initializes 
-        /// the necessary library parameters in the process space of your application. Creating another connection will call 
-        /// MgdPlatform.Initialize and MapGuideApi.MgInitializeWebTier again, but these methods are by-design only made to be called once 
+        /// are unique in that it has global connection state. What this means is that subsequent connections after the first one for
+        /// these providers may re-use existing state for the first connection. The reason for this is that creating this connection
+        /// internally calls MgdPlatform.Initialize(iniFile) and MapGuideApi.MgInitializeWebTier(iniFile) respectively, that initializes
+        /// the necessary library parameters in the process space of your application. Creating another connection will call
+        /// MgdPlatform.Initialize and MapGuideApi.MgInitializeWebTier again, but these methods are by-design only made to be called once
         /// as subsequent calls are returned immediately.
-        /// 
+        ///
         /// Basically, the connection parameters you pass in are for initializing the provider the first time round. Subsequent calls may not
-        /// (most likely will not) respect the values of your connection parameters. 
-        /// 
+        /// (most likely will not) respect the values of your connection parameters.
+        ///
         /// You can programmatically check this via the <see cref="P:OSGeo.MapGuide.MaestroAPI.ConnectionProviderEntry.HasGlobalState"/> property
         /// </remarks>
         /// <returns></returns>

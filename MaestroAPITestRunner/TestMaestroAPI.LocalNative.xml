@@ -7,9 +7,9 @@ except for Local Connection and GeoREST support
 -->
 <TestConfiguration>
   <TestSettings>
-    <!-- 
-    The path to webconfig.ini required by the LocalNative provider to run its specific tests. Should come from the same 
-    MapGuide installation where you have sourced the .net assemblies used to build your own LocalNative provider with the 
+    <!--
+    The path to webconfig.ini required by the LocalNative provider to run its specific tests. Should come from the same
+    MapGuide installation where you have sourced the .net assemblies used to build your own LocalNative provider with the
     ProviderTemplate tool in the Maestro SDK
     -->
     <LocalNativeConfigFile>C:\Program Files\OSGeo\MapGuide\Web\www\webconfig.ini</LocalNativeConfigFile>

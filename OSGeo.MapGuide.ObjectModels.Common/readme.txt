@@ -1,1 +1,0 @@
-﻿Running generate.bat will cause redundant generation of the following classes:

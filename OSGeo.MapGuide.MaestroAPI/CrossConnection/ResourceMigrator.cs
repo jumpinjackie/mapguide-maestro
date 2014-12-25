@@ -1,27 +1,28 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Resource.Conversion;
+using System.Collections.Generic;
 using System.IO;
 
 namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
@@ -85,7 +86,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         }
 
         /// <summary>
-        /// Copies resource from the source connection to another connection. 
+        /// Copies resource from the source connection to another connection.
         /// </summary>
         /// <param name="sourceResourceIds">The array of source resource ids</param>
         /// <param name="targetResourceIds">The array of target resource ids to copy to. Each resource id in the source array will be copied to the corresponding resource id in the target array</param>
@@ -120,7 +121,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
             {
                 var srcResId = sourceResourceIds[i];
                 var dstResId = targetResourceIds[i];
-                
+
                 //Get the source resource object
                 IResource res = _source.ResourceService.GetResource(srcResId);
 
@@ -467,7 +468,6 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                         }
                         catch //This happens if we're saving a resource to an older version where this resource version does not exist
                         {
-
                         }
 
                         progress += unit;
@@ -480,7 +480,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
 
         /// <summary>
         /// Shortcut API to migrate a specific resource to the target connection. Dependent resources are automatically
-        /// migrated as well. This copies all dependent resources of the specified resource. 
+        /// migrated as well. This copies all dependent resources of the specified resource.
         /// </summary>
         /// <param name="resourceId">The id of the resource to migrate</param>
         /// <param name="overwrite">If true, all dependent resources that already exist in the target connection are overwritten, otherwise these are not copied over</param>

@@ -1,28 +1,28 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI;
-using Maestro.Editors;
+//
+
+#endregion Disclaimer / License
+
 using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
+using System;
 
 namespace Maestro.Base.UI
 {
@@ -35,6 +35,7 @@ namespace Maestro.Base.UI
         /// Raised when the active connection has changed
         /// </summary>
         event EventHandler ActiveConnectionChanged;
+
         /// <summary>
         /// The name of the active <see cref="IServerConnection"/> associated with this site explorer. The active connection
         /// is the connection whose node or child nodes is currently selected
@@ -58,7 +59,7 @@ namespace Maestro.Base.UI
         void RefreshModel(string connectionName);
 
         /// <summary>
-        /// Refreshes the tree model from the specified resource id 
+        /// Refreshes the tree model from the specified resource id
         /// </summary>
         /// <param name="connectionName">The name of the connection</param>
         /// <param name="resId"></param>
@@ -138,14 +139,17 @@ namespace Maestro.Base.UI
         /// Indicate that the node has been copied and placed on the clipboard
         /// </summary>
         IndicateCopy,*/
+
         /// <summary>
         /// Highlight the affected node with a pre-defined back color to indicate open
         /// </summary>
         HighlightOpen,
+
         /// <summary>
         /// Highlight the affected node with a pre-defined back color to indicate dirty state
         /// </summary>
         HighlightDirty,
+
         /// <summary>
         /// Reset node to default styles
         /// </summary>

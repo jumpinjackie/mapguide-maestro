@@ -1,28 +1,29 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
+//
+
+#endregion Disclaimer / License
+
 using GeoAPI.Geometries;
 using GisSharpBlog.NetTopologySuite.Geometries;
+using System;
+using System.Drawing;
 
 namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 {
@@ -36,9 +37,12 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 
         //Coordsys distance pr unit in meters, X/Y axis
         protected readonly double UDM_X = 1;
+
         protected readonly double UDM_Y = 1;
 
-        internal MeterBasedCoordinateSystem() { }
+        internal MeterBasedCoordinateSystem()
+        {
+        }
 
         internal MeterBasedCoordinateSystem(double meters_pr_x_unit, double meters_pr_y_unit)
             : this()
@@ -67,7 +71,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 
         protected override IEnvelope AdjustBoundingBox(IEnvelope bbox, double scale, Size size)
         {
-            double picture_width_in_meters = ((size.Width / DPI) / IPM) * scale; 
+            double picture_width_in_meters = ((size.Width / DPI) / IPM) * scale;
             double picture_height_in_meters = ((size.Height / DPI) / IPM) * scale;
 
             double width_extent = picture_width_in_meters / UDM_X;
@@ -81,7 +85,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
             double xdist = Math.Abs(p1.X - p2.X);
             double ydist = Math.Abs(p1.Y - p2.Y);
 
-            return Math.Sqrt((xdist * xdist) + (ydist * ydist));            
+            return Math.Sqrt((xdist * xdist) + (ydist * ydist));
         }
     }
 }

@@ -1,41 +1,40 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using ICSharpCode.Core;
+using Maestro.Base.Services;
+using Maestro.Base.UI.Preferences;
+using Maestro.Editors;
+using Maestro.Editors.Preview;
+using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI.Resource.Conversion;
+using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.MaestroAPI;
-using Maestro.Editors;
-using ICSharpCode.Core;
-using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
-using Maestro.Base.UI;
-using Maestro.Base.UI.Preferences;
-using Maestro.Shared.UI;
-using OSGeo.MapGuide.MaestroAPI.Resource.Conversion;
 using System.IO;
-using Maestro.Base.Services;
-using Maestro.Editors.Preview;
+using System.Windows.Forms;
 
 #pragma warning disable 1591
 
@@ -124,7 +123,7 @@ namespace Maestro.Base.Editor
             }
         }
 
-        void OnSessionIdChanged(object sender, EventArgs e)
+        private void OnSessionIdChanged(object sender, EventArgs e)
         {
             this.RequiresReload = true;
         }
@@ -144,14 +143,14 @@ namespace Maestro.Base.Editor
         /// <summary>
         /// Gets the edited resource
         /// </summary>
-        public IResource Resource 
-        { 
-            get 
+        public IResource Resource
+        {
+            get
             {
                 if (this.EditorService == null)
                     return null;
-                return this.EditorService.GetEditedResource(); 
-            } 
+                return this.EditorService.GetEditedResource();
+            }
         }
 
         private void OpenAffectedResource(IResource res)
@@ -161,15 +160,15 @@ namespace Maestro.Base.Editor
 
         /// <summary>
         /// Performs any pre-save validation logic. The base implementation performs
-        /// a <see cref="ResourceValidatorSet"/> validation (non-casccading) on the 
-        /// edited resource before attempting a save into the session repository 
+        /// a <see cref="ResourceValidatorSet"/> validation (non-casccading) on the
+        /// edited resource before attempting a save into the session repository
         /// (triggering any errors relating to invalid XML content). Override this
-        /// method if the base implementation just described does not cover your 
+        /// method if the base implementation just described does not cover your
         /// validation needs.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected virtual void OnBeforeSave(object sender, CancelEventArgs e) 
+        protected virtual void OnBeforeSave(object sender, CancelEventArgs e)
         {
             //We've been editing an in-memory model of the session copy
             //so we need to save this model back to the session copy before Save()
@@ -180,13 +179,14 @@ namespace Maestro.Base.Editor
                 var validate = PropertyService.Get(ConfigProperties.ValidateOnSave, true);
                 if (this.IsDirty && validate)
                 {
-                    BusyWaitDelegate del = () => 
+                    BusyWaitDelegate del = () =>
                     {
                         var errors = new List<ValidationIssue>(ValidateEditedResource()).ToArray();
                         return errors;
                     };
-                    
-                    BusyWaitDialog.Run(Strings.PrgPreSaveValidation, del, (result, ex) => {
+
+                    BusyWaitDialog.Run(Strings.PrgPreSaveValidation, del, (result, ex) =>
+                    {
                         if (ex != null)
                             throw ex;
 
@@ -201,7 +201,7 @@ namespace Maestro.Base.Editor
                         else
                         {
                             e.Cancel = false;
-                        }               
+                        }
                     });
                 }
                 else
@@ -233,7 +233,7 @@ namespace Maestro.Base.Editor
         /// this returns the results of a non-cascading <see cref="ResourceValidatorSet"/>
         /// validation run. Override this if you have a custom method of validation.
         /// </summary>
-        protected virtual ICollection<ValidationIssue> ValidateEditedResource() 
+        protected virtual ICollection<ValidationIssue> ValidateEditedResource()
         {
             var conn = _svc.CurrentConnection;
             var context = new ResourceValidationContext(conn.ResourceService, conn.FeatureService);
@@ -245,7 +245,7 @@ namespace Maestro.Base.Editor
             return errors;
         }
 
-        void OnSaved(object sender, EventArgs e)
+        private void OnSaved(object sender, EventArgs e)
         {
             UpdateTitle();
         }
@@ -261,9 +261,9 @@ namespace Maestro.Base.Editor
             this.Description = GetTooltip(this.IsNew ? Strings.NewResource : _svc.ResourceID);
         }
 
-        const string DIRTY_PREFIX = "* "; //NOXLATE
+        private const string DIRTY_PREFIX = "* "; //NOXLATE
 
-        void OnDirtyStateChanged(object sender, EventArgs e)
+        private void OnDirtyStateChanged(object sender, EventArgs e)
         {
             this.IsDirty = _svc.IsDirty; //Sync states
             if (_svc.IsDirty)
@@ -281,14 +281,14 @@ namespace Maestro.Base.Editor
         /// <summary>
         /// Binds the specified resource to this control. This effectively initializes
         /// all the fields in this control and sets up databinding on all fields. All
-        /// subclasses *must* override this method. 
-        /// 
+        /// subclasses *must* override this method.
+        ///
         /// Also note that this method may be called more than once (e.g. Returning from
         /// and XML edit of this resource). Thus subclasses must take this scenario into
         /// account when implementing
         /// </summary>
         /// <param name="service"></param>
-        protected virtual void Bind(IEditorService service) 
+        protected virtual void Bind(IEditorService service)
         {
             throw new NotImplementedException();
         }
@@ -413,16 +413,16 @@ namespace Maestro.Base.Editor
             {
                 var conv = new ResourceObjectConverter();
                 var res2 = conv.Convert(res, ver);
-                
+
                 using (var stream = ResourceTypeRegistry.Serialize(res2))
                 {
-                    using (var sr =new StreamReader(stream))
+                    using (var sr = new StreamReader(stream))
                     {
                         _svc.UpdateResourceContent(sr.ReadToEnd());
                         ((ResourceEditorService)_svc).ReReadSessionResource();
                     }
                 }
-                
+
                 //This will re-init everything
                 this.EditorService = this.EditorService;
                 MessageBox.Show(string.Format(Strings.ResourceUpgraded, ver.Major, ver.Minor, ver.Build));

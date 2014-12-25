@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ICSharpCode.Core;
-using Maestro.Base;
+﻿using ICSharpCode.Core;
 using Maestro.AddIn.Scripting.UI;
-using Maestro.Shared.UI;
+using Maestro.Base;
 using Maestro.Base.Services;
+using Maestro.Shared.UI;
 using Props = ICSharpCode.Core.PropertyService;
-using Maestro.Base.UI.Preferences;
-using ICSharpCode.TextEditor.Document;
 
 namespace Maestro.AddIn.Scripting.Commands
 {
@@ -32,7 +26,7 @@ namespace Maestro.AddIn.Scripting.Commands
 
         private IronPythonRepl _repl;
 
-        void OnWorkbenchClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
+        private void OnWorkbenchClosed(object sender, System.Windows.Forms.FormClosedEventArgs e)
         {
             if (_repl != null)
                 _repl.Shutdown();

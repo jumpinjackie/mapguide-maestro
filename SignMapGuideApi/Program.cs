@@ -1,30 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.IO;
 using System.Diagnostics;
+using System.IO;
 
 namespace SignMapGuideApi
 {
-    class Program
+    internal class Program
     {
-        static string[] files = { "MapGuideDotNetApi", "OSGeo.MapGuide.Foundation", "OSGeo.MapGuide.Geometry", "OSGeo.MapGuide.MapGuideCommon", "OSGeo.MapGuide.PlatformBase", "OSGeo.MapGuide.Web" };
-        
-        static Dictionary<string, string[]> ilasm32Paths = new Dictionary<string, string[]>()
+        private static string[] files = { "MapGuideDotNetApi", "OSGeo.MapGuide.Foundation", "OSGeo.MapGuide.Geometry", "OSGeo.MapGuide.MapGuideCommon", "OSGeo.MapGuide.PlatformBase", "OSGeo.MapGuide.Web" };
+
+        private static Dictionary<string, string[]> ilasm32Paths = new Dictionary<string, string[]>()
         {
             { "2.0", new string [] { "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\ilasm.exe" } },
             { "3.5", new string [] { "C:\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\ilasm.exe" } },
             { "4.0", new string [] { "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\ilasm.exe" } },
         };
 
-        static Dictionary<string, string[]> ilasm64Paths = new Dictionary<string, string[]>()
+        private static Dictionary<string, string[]> ilasm64Paths = new Dictionary<string, string[]>()
         {
             { "2.0", new string [] { "C:\\Windows\\Microsoft.NET\\Framework64\\v2.0.50727\\ilasm.exe" } },
             { "3.5", new string [] { "C:\\Windows\\Microsoft.NET\\Framework64\\v2.0.50727\\ilasm.exe" } },
             { "4.0", new string [] { "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\ilasm.exe" } },
         };
 
-        static Dictionary<string, string[]> ildasm32Paths = new Dictionary<string, string[]>()
+        private static Dictionary<string, string[]> ildasm32Paths = new Dictionary<string, string[]>()
         {
             { "2.0", new string [] { "C:\\Program Files\\Microsoft SDKs\\Windows\\v6.0A\\Bin\\ildasm.exe",
                                  "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v6.0A\\Bin\\ildasm.exe",
@@ -44,7 +43,7 @@ namespace SignMapGuideApi
                                  "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.1\\bin\\NETFX 4.0 Tools\\ildasm.exe" }}
         };
 
-        static Dictionary<string, string[]> ildasm64Paths = new Dictionary<string, string[]>()
+        private static Dictionary<string, string[]> ildasm64Paths = new Dictionary<string, string[]>()
         {
             { "2.0", new string [] { "C:\\Program Files\\Microsoft SDKs\\Windows\\v6.0A\\Bin\\x64\\ildasm.exe",
                                  "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v6.0A\\Bin\\x64\\ildasm.exe",
@@ -65,15 +64,16 @@ namespace SignMapGuideApi
         };
 
         //TODO: Allow for custom key and infer public key token from it
-        static string _keyFile = "maestroapi.key";
-        static string _publicKeyToken = "F5 26 C4 89 29 FD A8 56";
+        private static string _keyFile = "maestroapi.key";
 
-        static bool Is64BitProcess()
+        private static string _publicKeyToken = "F5 26 C4 89 29 FD A8 56";
+
+        private static bool Is64BitProcess()
         {
             return IntPtr.Size == 8;
         }
 
-        static string getILDASMEXE(string frameworkVersion)
+        private static string getILDASMEXE(string frameworkVersion)
         {
             if (Is64BitProcess())
             {
@@ -96,7 +96,7 @@ namespace SignMapGuideApi
             return null;
         }
 
-        static string getILASMEXE(string frameworkVersion)
+        private static string getILASMEXE(string frameworkVersion)
         {
             if (Is64BitProcess())
             {
@@ -119,7 +119,7 @@ namespace SignMapGuideApi
             return null;
         }
 
-        static void backup()
+        private static void backup()
         {
             Console.Write("Creating Backup folder...");
             Directory.CreateDirectory("Backup");
@@ -139,7 +139,7 @@ namespace SignMapGuideApi
             }
         }
 
-        static void decompile(string decompiler)
+        private static void decompile(string decompiler)
         {
             foreach (string f in files)
             {
@@ -157,7 +157,7 @@ namespace SignMapGuideApi
             }
         }
 
-        static void cleandll()
+        private static void cleandll()
         {
             foreach (string f in files)
             {
@@ -168,7 +168,7 @@ namespace SignMapGuideApi
             }
         }
 
-        static void compile(string compiler, string file)
+        private static void compile(string compiler, string file)
         {
             if (!File.Exists(file + ".il"))
             {
@@ -183,7 +183,7 @@ namespace SignMapGuideApi
             Console.WriteLine("Done");
         }
 
-        static bool assemblyLine(string line)
+        private static bool assemblyLine(string line)
         {
             string l = line.ToLower();
             if (l.StartsWith(".assembly extern"))
@@ -203,7 +203,7 @@ namespace SignMapGuideApi
             return false;
         }
 
-        static void fixKey(string file)
+        private static void fixKey(string file)
         {
             string ilfile = file + ".il";
             if (!File.Exists(ilfile))
@@ -234,7 +234,7 @@ namespace SignMapGuideApi
             fin.Close();
         }
 
-        static void cleanup()
+        private static void cleanup()
         {
             Console.Write("Cleanup...");
             foreach (string f in files)
@@ -251,7 +251,7 @@ namespace SignMapGuideApi
             Console.WriteLine("Done");
         }
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             string fxVersion = "2.0"; //default version
             foreach (var arg in args)

@@ -1,34 +1,32 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using System.Diagnostics;
-using System.IO;
+//
+
+#endregion Disclaimer / License
+
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 
 namespace Maestro.Editors.FeatureSource.Providers.Shp
 {
@@ -57,9 +55,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Shp
             resDataCtrl.ResourceDataUploaded += new Maestro.Editors.Common.ResourceDataCtrl.ResourceUploadEventHandler(OnResourceDataUploaded);
         }
 
-        static readonly string[] SHP_RELATED_EXTENSIONS = { ".shx", ".dbf", ".idx", ".prj", ".cpg" }; //NOXLATE
+        private static readonly string[] SHP_RELATED_EXTENSIONS = { ".shx", ".dbf", ".idx", ".prj", ".cpg" }; //NOXLATE
 
-        void OnResourceDataUploaded(string dataName, string origPath)
+        private void OnResourceDataUploaded(string dataName, string origPath)
         {
             //If a SHP file was loaded, we want all of its buddies too
             if (origPath.ToLower().EndsWith(".shp")) //NOXLATE

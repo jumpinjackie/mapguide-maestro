@@ -1,33 +1,34 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using Aga.Controls.Tree;
+using Maestro.Base.Services;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Aga.Controls.Tree;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.Common;
-using System.Drawing;
 using System.Diagnostics;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using System.Collections.ObjectModel;
-using Maestro.Base.Services;
+using System.Drawing;
 
 namespace Maestro.Base.UI
 {
@@ -52,7 +53,6 @@ namespace Maestro.Base.UI
             this.ResourceId = item.ResourceId;
             this.ResourceType = item.ResourceType;
             this.Name = item.Name; //set name last because update logic requires other properties be set already
-            
 
             if (this.IsRoot)
             {
@@ -65,36 +65,47 @@ namespace Maestro.Base.UI
                     case "DrawingSource":
                         this.Icon = Properties.Resources.blueprints;
                         break;
+
                     case "FeatureSource":
                         this.Icon = Properties.Resources.database_share;
                         break;
+
                     case "Folder":
                         this.Icon = Properties.Resources.folder_horizontal;
                         break;
+
                     case "LayerDefinition":
                         this.Icon = Properties.Resources.layer;
                         break;
+
                     case "MapDefinition":
                         this.Icon = Properties.Resources.map;
                         break;
+
                     case "WebLayout":
                         this.Icon = Properties.Resources.application_browser;
                         break;
+
                     case "ApplicationDefinition":
                         this.Icon = Properties.Resources.applications_stack;
                         break;
+
                     case "SymbolLibrary":
                         this.Icon = Properties.Resources.images_stack;
                         break;
+
                     case "PrintLayout":
                         this.Icon = Properties.Resources.printer;
                         break;
+
                     case "SymbolDefinition":
                         this.Icon = Properties.Resources.marker;
                         break;
+
                     case "WatermarkDefinition":
                         this.Icon = Properties.Resources.water;
                         break;
+
                     default:
                         this.Icon = Properties.Resources.document;
                         break;
@@ -152,7 +163,7 @@ namespace Maestro.Base.UI
         /// </summary>
         public string NameQualified
         {
-            get 
+            get
             {
                 if (this.ResourceType == ResourceTypes.Folder.ToString())
                     return this.Name;
@@ -377,8 +388,8 @@ namespace Maestro.Base.UI
         internal bool IsOpen
         {
             get { return _open; }
-            set 
-            { 
+            set
+            {
                 _open = value;
                 _dirty = !value;
                 this.NotifyNodesChanged();
@@ -388,8 +399,8 @@ namespace Maestro.Base.UI
         internal bool IsDirty
         {
             get { return _dirty; }
-            set 
-            { 
+            set
+            {
                 _dirty = value;
                 _open = !value;
                 this.NotifyNodesChanged();
@@ -397,7 +408,7 @@ namespace Maestro.Base.UI
         }
 
         /// <summary>
-        /// Defines valid clipboard actions for Site Explorer 
+        /// Defines valid clipboard actions for Site Explorer
         /// </summary>
         public enum ClipboardAction
         {
@@ -405,10 +416,12 @@ namespace Maestro.Base.UI
             /// The node was copied
             /// </summary>
             Copy,
+
             /// <summary>
             /// The node was cut
             /// </summary>
             Cut,
+
             /// <summary>
             /// No clipboard action applied
             /// </summary>
@@ -416,7 +429,7 @@ namespace Maestro.Base.UI
         }
 
         private ClipboardAction _action = ClipboardAction.None;
-        
+
         /// <summary>
         /// Gets the clipboard state of this item
         /// </summary>
@@ -460,7 +473,6 @@ namespace Maestro.Base.UI
             return string.Empty;
         }
     }
-
 
     /// <summary>
     /// Defines the repository model for the treeview
@@ -606,7 +618,7 @@ namespace Maestro.Base.UI
                 Debug.Assert(!string.IsNullOrEmpty(current.ConnectionName));
                 return current.ConnectionName;
             }
-            else 
+            else
             {
                 Debug.Assert(!string.IsNullOrEmpty(item.ConnectionName));
                 return item.ConnectionName;
@@ -618,11 +630,11 @@ namespace Maestro.Base.UI
         /// </summary>
         public override void Refresh()
         {
-            //We have to override this because the base impl does not 
+            //We have to override this because the base impl does not
             //preserve the tree path of the selected node (and thus expand
             //all the nodes from the root to this node)
             //
-            //Which is also why we need to pass a reference to 
+            //Which is also why we need to pass a reference to
             //the TreeViewAdv in the ctor
             var selected = _tree.GetPath(_tree.SelectedNode);
             OnStructureChanged(new TreePathEventArgs(selected));

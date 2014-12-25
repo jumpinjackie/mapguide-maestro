@@ -1,36 +1,34 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using ICSharpCode.Core;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using ICSharpCode.Core;
-using OSGeo.MapGuide.MaestroAPI;
-using System.Drawing;
-using OSGeo.MapGuide.MaestroAPI.Services;
 
 namespace Maestro.Base.Services
 {
-    using Res = Properties.Resources;
     using Maestro.Base.Templates;
-    using System.IO;
     using Maestro.Shared.UI;
+    using System.IO;
 
     /// <summary>
     /// An application-level service for creating new resources from a set of pre-defined templates
@@ -73,7 +71,7 @@ namespace Maestro.Base.Services
         private UserItemTemplate[] ScanUserTemplates()
         {
             List<UserItemTemplate> tpls = new List<UserItemTemplate>();
-            
+
             //TODO: Store path in preferences
             string userTplPath = Path.Combine(FileUtility.ApplicationRootPath, "UserTemplates"); //NOXLATE
             if (Directory.Exists(userTplPath))
@@ -113,7 +111,7 @@ namespace Maestro.Base.Services
 
             internal TemplateSet(IEnumerable<ItemTemplate> templates)
             {
-                _templates = new Dictionary<string,List<ItemTemplate>>();
+                _templates = new Dictionary<string, List<ItemTemplate>>();
                 foreach (var tpl in templates)
                 {
                     if (!_templates.ContainsKey(tpl.Category))
@@ -131,7 +129,10 @@ namespace Maestro.Base.Services
             /// Gets the categories for the template set
             /// </summary>
             /// <returns></returns>
-            public IEnumerable<string> GetCategories() { return _templates.Keys; }
+            public IEnumerable<string> GetCategories()
+            {
+                return _templates.Keys;
+            }
 
             /// <summary>
             /// Gets the templates for the specified category

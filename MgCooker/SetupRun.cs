@@ -1,43 +1,41 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+//
+
+#endregion Disclaimer / License
+
+using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
-using System.Collections.Specialized;
 using OSGeo.MapGuide.MaestroAPI.Tile;
 using OSGeo.MapGuide.ObjectModels;
-using System.IO;
-using System.Reflection;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.MaestroAPI.Commands;
+using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using Maestro.Shared.UI;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Windows.Forms;
 
 namespace MgCooker
 {
@@ -111,7 +109,7 @@ namespace MgCooker
 
             if (m_commandlineargs.ContainsKey(TileRunParameters.EXTENTOVERRIDE)) //NOXLATE
             {
-                 string[] parts = m_commandlineargs[TileRunParameters.EXTENTOVERRIDE].Split(',');
+                string[] parts = m_commandlineargs[TileRunParameters.EXTENTOVERRIDE].Split(',');
                 if (parts.Length == 4)
                 {
                     double minx;
@@ -128,7 +126,6 @@ namespace MgCooker
                         overrideExtents = ObjectFactory.CreateEnvelope(minx, miny, maxx, maxy);
                     }
                 }
-
             }
 
             if (m_commandlineargs.ContainsKey(TileRunParameters.METERSPERUNIT)) //NOXLATE
@@ -152,7 +149,6 @@ namespace MgCooker
                 maps = tmp.ToArray();
             }
 
-            
             var basegroupsSelected = new List<string>();
             if (m_commandlineargs.ContainsKey(TileRunParameters.BASEGROUPS))//NOXLATE
             {
@@ -179,11 +175,11 @@ namespace MgCooker
 
                 IBaseMapDefinition baseMap = mdef.BaseMap;
                 if (baseMap != null &&
-                    baseMap.ScaleCount > 0 && 
+                    baseMap.ScaleCount > 0 &&
                     baseMap.HasGroups())
                 {
                     TreeNode mn = MapTree.Nodes.Add(m);
-                    
+
                     mn.ImageIndex = mn.SelectedImageIndex = 0;
                     mn.Tag = mdef;
                     foreach (var g in baseMap.BaseMapLayerGroup)
@@ -199,7 +195,7 @@ namespace MgCooker
                                 m_coordinateOverrides.Add(m, overrideExtents);
                             }
                         }
-                        
+
                         gn.ImageIndex = gn.SelectedImageIndex = 1;
 
                         int counter = 0;
@@ -209,7 +205,6 @@ namespace MgCooker
                             if (gn.Checked && scalesSelected.Contains(counter))
                             {
                                 sn.Checked = true;
-                                
                             }
                             sn.ImageIndex = sn.SelectedImageIndex = 3;
                             counter++;
@@ -251,8 +246,8 @@ namespace MgCooker
                 {
                     MapTilingConfiguration bm = new MapTilingConfiguration(bx, c.MapDefinition);
                     bm.SetGroups(new string[] { c.Group });
-                    bm.SetScalesAndExtend(c.ScaleIndexes,c.ExtentOverride);
-                   
+                    bm.SetScalesAndExtend(c.ScaleIndexes, c.ExtentOverride);
+
                     bx.Maps.Add(bm);
                 }
 
@@ -339,7 +334,6 @@ namespace MgCooker
                 if (RandomTileOrder.Checked)
                     args.Add("--" + TileRunParameters.RANDOMTILEORDER + ""); //NOXLATE
 
-
                 string executable = System.IO.Path.GetFileName(System.Reflection.Assembly.GetExecutingAssembly().Location);
                 string cmdExecutable = "MgCookerCmd.exe"; //NOXLATE
 
@@ -366,7 +360,7 @@ namespace MgCooker
                         sw.WriteLine("@echo off"); //NOXLATE
                     }
 
-                    //If on windows, wrap the exe call in a pushd/popd so that the executable is 
+                    //If on windows, wrap the exe call in a pushd/popd so that the executable is
                     //executed from its own directory
 
                     if (System.Environment.OSVersion.Platform != PlatformID.MacOSX ||
@@ -455,7 +449,7 @@ namespace MgCooker
                 {
                     foreach (TreeNode tn in n.Nodes)
                         tn.Checked = e.Node.Checked;
-                    
+
                     n.Checked = e.Node.Checked;
                 }
 
@@ -583,14 +577,14 @@ namespace MgCooker
             }
         }
 
-        enum MpuMethod
+        private enum MpuMethod
         {
             CreateRuntimeMap,
             MpuCalcExe,
             BuiltIn
         }
 
-        class MpuCalcResult
+        private class MpuCalcResult
         {
             public MpuMethod Method;
             public decimal Result;
@@ -598,7 +592,8 @@ namespace MgCooker
 
         private void TryCalcMpu(string mapDef)
         {
-            BusyWaitDialog.Run(Strings.CalculatingMpu, () => {
+            BusyWaitDialog.Run(Strings.CalculatingMpu, () =>
+            {
                 var currentPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
                 var mpuCalc = Path.Combine(currentPath, "AddIns/Local/MpuCalc.exe");
                 if (!File.Exists(mpuCalc))
@@ -656,7 +651,8 @@ namespace MgCooker
                     else
                         return string.Format(Strings.FailedToCalculateMpu, output);
                 }
-            }, (res, ex) => {
+            }, (res, ex) =>
+            {
                 if (ex != null)
                 {
                     ErrorDialog.Show(ex);

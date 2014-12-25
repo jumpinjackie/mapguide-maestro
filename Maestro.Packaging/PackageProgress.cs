@@ -1,31 +1,31 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.MaestroAPI;
-using Maestro.Shared.UI;
 
 namespace Maestro.Packaging
 {
@@ -41,7 +41,7 @@ namespace Maestro.Packaging
 
         static PackageProgress()
         {
-            BUILD_STAGES = 
+            BUILD_STAGES =
             new ProgressType[] {
                 ProgressType.ReadingFileList,
                 ProgressType.PreparingFolder,
@@ -98,7 +98,7 @@ namespace Maestro.Packaging
 
         /// <summary>
         /// Initiates a user-controlled upload loop whereby failed operations from a non-transactional
-        /// package upload can be retried as many times until either all failed operations have been 
+        /// package upload can be retried as many times until either all failed operations have been
         /// accounted for, or the user has decided to stop
         /// </summary>
         /// <param name="owner"></param>
@@ -231,7 +231,7 @@ namespace Maestro.Packaging
         public static DialogResult CreatePackage(Form owner, IServerConnection connection, string folderResourceId, string zipfilename, IEnumerable<ResourceTypes> allowedExtensions, bool removeExistingFiles, string alternateTargetResourceId)
         {
             PackageProgress pkgp = new PackageProgress();
-            
+
             var builder = new PackageBuilder(connection);
             pkgp.m_invokeObj = builder;
             pkgp.m_method = () => { builder.CreatePackage(folderResourceId, zipfilename, allowedExtensions, removeExistingFiles, alternateTargetResourceId); return true; };
@@ -253,7 +253,7 @@ namespace Maestro.Packaging
         public static DialogResult CreatePackage(Form owner, IServerConnection connection, string[] resourceIdList, string zipfilename, IEnumerable<ResourceTypes> allowedExtensions, bool removeExistingFiles, string alternateTargetResourceId)
         {
             PackageProgress pkgp = new PackageProgress();
-            
+
             var builder = new PackageBuilder(connection);
             pkgp.m_invokeObj = builder;
             pkgp.m_method = () => { builder.CreatePackage(resourceIdList, zipfilename, allowedExtensions, removeExistingFiles, alternateTargetResourceId); return true; };
@@ -288,6 +288,7 @@ namespace Maestro.Packaging
         }
 
         private delegate void SetCurrentProgressDelegate(ProgressType type, string resource, int total, double pg);
+
         private void SetCurrentProgress(ProgressType type, string resource, int total, double pg)
         {
             if (this.InvokeRequired)
@@ -310,7 +311,7 @@ namespace Maestro.Packaging
 
                     this.TotalProgress.Value = (int)Math.Max(Math.Min((int)lv, this.TotalProgress.Maximum), this.TotalProgress.Minimum);
                 }
-                
+
                 if (type == ProgressType.Uploading)
                 {
                     HideTotal();

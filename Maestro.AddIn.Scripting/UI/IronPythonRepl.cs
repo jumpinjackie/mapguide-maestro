@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using Maestro.Editors.Common;
 using Maestro.Shared.UI;
-using ICSharpCode.TextEditor.Document;
-using System.IO;
-using Maestro.Editors.Common;
 using Microsoft.Scripting.Hosting.Shell;
+using System;
+using System.Windows.Forms;
 
 namespace Maestro.AddIn.Scripting.UI
 {
-    using Lang.Python;
     using ICSharpCode.Core;
+    using Lang.Python;
 
     internal partial class IronPythonRepl : SingletonViewContent
     {
@@ -63,7 +55,7 @@ namespace Maestro.AddIn.Scripting.UI
             base.OnLoad(e);
         }
 
-        void OnDisposed(object sender, EventArgs e)
+        private void OnDisposed(object sender, EventArgs e)
         {
             if (host != null)
             {

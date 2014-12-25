@@ -1,32 +1,31 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
+//
 
 // Original code by Michael Potter, made available under Public Domain
 //
 // http://www.codeproject.com/Articles/6943/A-Generic-Reusable-Diff-Algorithm-in-C-II/
-#endregion
+
+#endregion Disclaimer / License
+
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Collections;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 {
@@ -63,7 +62,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
         private int _length;
 
         public int StartIndex { get { return _startIndex; } }
+
         public int EndIndex { get { return ((_startIndex + _length) - 1); } }
+
         public int Length
         {
             get
@@ -104,6 +105,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
                         case -1:
                             stat = DiffStatus.NoMatch;
                             break;
+
                         default:
                             System.Diagnostics.Debug.Assert(_length == -2, "Invalid status: _length < -2"); //NOXLATE
                             stat = DiffStatus.Unknown;
@@ -139,7 +141,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
             _length = (int)DiffStatus.NoMatch;
         }
 
-
         public bool HasValidLength(int newStart, int newEnd, int maxPossibleDestLength)
         {
             if (_length > 0) //have unlocked match
@@ -161,6 +162,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 #else
         private DiffState[] _array;
 #endif
+
         public DiffStateList(int destCount)
         {
 #if USE_HASH_TABLE
@@ -197,19 +199,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
     public enum DiffResultSpanStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NoChange,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Replace,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DeleteSource,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AddDestination
     }
@@ -301,7 +306,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
                 _sourceIndex.ToString(),
                 _length.ToString());
         }
+
         #region IComparable Members
+
         /// <summary>
         /// Compares this instance against the specified object
         /// </summary>
@@ -312,7 +319,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
             return _destIndex.CompareTo(((DiffResultSpan)obj)._destIndex);
         }
 
-        #endregion
+        #endregion IComparable Members
     }
 
     /// <summary>
@@ -324,10 +331,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
         /// Fast, but imperfect
         /// </summary>
         FastImperfect,
+
         /// <summary>
         /// A balanced trade between speed and perfection
         /// </summary>
         Medium,
+
         /// <summary>
         /// Slow, but perfect
         /// </summary>
@@ -374,7 +383,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
 
         private void GetLongestSourceMatch(DiffState curItem, int destIndex, int destEnd, int sourceStart, int sourceEnd)
         {
-
             int maxDestLength = (destEnd - destIndex) + 1;
             int curLength = 0;
             int curBestLength = 0;
@@ -407,7 +415,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
             {
                 curItem.SetMatch(curBestIndex, curBestLength);
             }
-
         }
 
         private void ProcessRange(int destStart, int destEnd, int sourceStart, int sourceEnd)
@@ -444,9 +451,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
                                 curBestLength = curItem.Length;
                                 bestItem = curItem;
                             }
-                            //Jump over the match 
+                            //Jump over the match
                             destIndex += curItem.Length - 1;
                             break;
+
                         case DiffEngineLevel.Medium:
                             if (curItem.Length > curBestLength)
                             {
@@ -454,10 +462,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
                                 curBestIndex = destIndex;
                                 curBestLength = curItem.Length;
                                 bestItem = curItem;
-                                //Jump over the match 
+                                //Jump over the match
                                 destIndex += curItem.Length - 1;
                             }
                             break;
+
                         default:
                             if (curItem.Length > curBestLength)
                             {
@@ -476,7 +485,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
             }
             else
             {
-
                 int sourceIndex = bestItem.StartIndex;
                 _matchList.Add(DiffResultSpan.CreateNoChange(curBestIndex, sourceIndex, curBestLength));
                 if (destStart < curBestIndex)
@@ -533,7 +541,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
             int dcount = _dest.Count();
             int scount = _source.Count();
 
-
             if ((dcount > 0) && (scount > 0))
             {
                 _stateList = new DiffStateList(dcount);
@@ -543,7 +550,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
             TimeSpan ts = DateTime.Now - dt;
             return ts.TotalSeconds;
         }
-
 
         private bool AddChanges(
             List<DiffResultSpan> report,
@@ -620,7 +626,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
                     return retval;
                 }
             }
-
 
             _matchList.Sort();
             int curDest = 0;

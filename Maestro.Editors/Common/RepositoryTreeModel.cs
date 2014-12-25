@@ -1,37 +1,36 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.Common;
-using System.Drawing;
-using OSGeo.MapGuide.MaestroAPI;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.Common
 {
-    class DummyNode : TreeNode
+    internal class DummyNode : TreeNode
     {
-
     }
 
     internal class RepositoryModelItem
@@ -133,7 +132,7 @@ namespace Maestro.Editors.Common
             EndUpdate();
         }
 
-        void OnNodeAfterSelect(object sender, TreeViewEventArgs e)
+        private void OnNodeAfterSelect(object sender, TreeViewEventArgs e)
         {
             RepositoryModelItem item = (RepositoryModelItem)e.Node.Tag;
             SetSelectedItem(item);
@@ -147,12 +146,12 @@ namespace Maestro.Editors.Common
                 handler(this, EventArgs.Empty);
         }
 
-        bool IsNodeNotPopulated(TreeNode node)
+        private bool IsNodeNotPopulated(TreeNode node)
         {
             return node.Nodes.Count == 1 && node.Nodes[0].GetType() == typeof(DummyNode);
         }
 
-        void OnNodeAfterExpand(object sender, TreeViewEventArgs e)
+        private void OnNodeAfterExpand(object sender, TreeViewEventArgs e)
         {
             UpdateNode(e.Node);
         }
@@ -201,7 +200,6 @@ namespace Maestro.Editors.Common
                     folders.Add(item.ResourceId, new RepositoryModelItem(item));
                 else if (!HasFilteredTypes() || (HasFilteredTypes() && IsFilteredType(item.ResourceType)))
                     docs.Add(item.ResourceId, new RepositoryModelItem(item));
-
             }
             foreach (var folder in folders.Values)
             {
@@ -215,13 +213,25 @@ namespace Maestro.Editors.Common
 
         private HashSet<string> _filteredTypes = new HashSet<string>();
 
-        public void AddResourceTypeFilter(string rt) { _filteredTypes.Add(rt); }
+        public void AddResourceTypeFilter(string rt)
+        {
+            _filteredTypes.Add(rt);
+        }
 
-        public void ClearResourceTypeFilters() { _filteredTypes.Clear(); }
+        public void ClearResourceTypeFilters()
+        {
+            _filteredTypes.Clear();
+        }
 
-        public bool HasFilteredTypes() { return _filteredTypes.Count > 0; }
+        public bool HasFilteredTypes()
+        {
+            return _filteredTypes.Count > 0;
+        }
 
-        public bool IsFilteredType(string rt) { return _filteredTypes.Contains(rt); }
+        public bool IsFilteredType(string rt)
+        {
+            return _filteredTypes.Contains(rt);
+        }
 
         public System.Collections.IEnumerable GetChildren(RepositoryModelItem item)
         {

@@ -1,28 +1,29 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Drawing;
-using OSGeo.MapGuide.MaestroAPI.Schema;
+//
+
+#endregion Disclaimer / License
+
 using GeoAPI.Geometries;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using System;
+using System.Drawing;
 
 namespace OSGeo.MapGuide.MaestroAPI.Native
 {
@@ -84,30 +85,43 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             {
                 case OSGeo.MapGuide.MgPropertyType.Byte:
                     return typeof(byte);
+
                 case OSGeo.MapGuide.MgPropertyType.Int16:
                     return typeof(short);
+
                 case OSGeo.MapGuide.MgPropertyType.Int32:
                     return typeof(int);
+
                 case OSGeo.MapGuide.MgPropertyType.Int64:
                     return typeof(long);
+
                 case OSGeo.MapGuide.MgPropertyType.Single:
                     return typeof(float);
+
                 case OSGeo.MapGuide.MgPropertyType.Double:
                     return typeof(double);
+
                 case OSGeo.MapGuide.MgPropertyType.Boolean:
                     return typeof(bool);
+
                 case OSGeo.MapGuide.MgPropertyType.Geometry:
                     return Utility.GeometryType;
+
                 case OSGeo.MapGuide.MgPropertyType.String:
                     return typeof(string);
+
                 case OSGeo.MapGuide.MgPropertyType.DateTime:
                     return typeof(DateTime);
+
                 case OSGeo.MapGuide.MgPropertyType.Raster:
                     return Utility.RasterType;
+
                 case OSGeo.MapGuide.MgPropertyType.Blob:
                     return typeof(byte[]);
+
                 case OSGeo.MapGuide.MgPropertyType.Clob:
                     return typeof(byte[]);
+
                 default:
                     throw new Exception("Failed to find type for: " + MgType.ToString());
             }
@@ -219,7 +233,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 }
                 else if (prop.PropertyType == MgFeaturePropertyType.ObjectProperty)
                 {
-                    
                 }
                 else if (prop.PropertyType == MgFeaturePropertyType.AssociationProperty)
                 {

@@ -1,38 +1,33 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
-using Maestro.Shared.UI;
+//
+
+#endregion Disclaimer / License
+
 using Maestro.Editors.Common;
-using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using System;
+using System.ComponentModel;
 using System.Globalization;
-using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
-using OSGeo.MapGuide.ObjectModels;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.MapDefinition
 {
@@ -47,8 +42,8 @@ namespace Maestro.Editors.MapDefinition
 
         private IMapDefinition _map;
 
-        const string META_START = "<MapDescription>";
-        const string META_END = "</MapDescription>";
+        private const string META_START = "<MapDescription>";
+        private const string META_END = "</MapDescription>";
 
         private IEditorService _service;
         private bool _updatingExtents = false;
@@ -156,10 +151,10 @@ namespace Maestro.Editors.MapDefinition
                     _map.Extents.MaxY = d;
             };
 
-            PropertyChangedEventHandler extChange = (sender, e) => 
+            PropertyChangedEventHandler extChange = (sender, e) =>
             {
                 UpdateExtentsFromMap();
-                OnResourceChanged(); 
+                OnResourceChanged();
             };
             var ext = _map.Extents;
             ext.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(extChange, (eh) => ext.PropertyChanged -= eh);

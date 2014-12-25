@@ -1,35 +1,34 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using System.Diagnostics;
-using OSGeo.MapGuide.ObjectModels.Capabilities;
-using OSGeo.MapGuide.MaestroAPI.Schema;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Feature;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels.Capabilities;
+using System;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.FeatureSource.Preview
 {
@@ -62,6 +61,7 @@ namespace Maestro.Editors.FeatureSource.Preview
                     ctrl = new SqlQueryCtrl(fsId, edSvc);
                     _inner = ctrl;
                     break;
+
                 case QueryMode.Standard:
                     ctrl = new StandardQueryCtrl(fsId, edSvc, cls, caps);
                     _inner = ctrl;
@@ -103,7 +103,7 @@ namespace Maestro.Editors.FeatureSource.Preview
             queryWorker.RunWorkerAsync();
         }
 
-        class QueryResult
+        private class QueryResult
         {
             public DataTable Result { get; set; }
 
@@ -117,7 +117,7 @@ namespace Maestro.Editors.FeatureSource.Preview
             sw.Start();
             var reader = this.ExecuteQuery();
             try
-            {   
+            {
                 res.Result = new DataTable();
                 InitTable(reader, res.Result);
                 while (reader.ReadNext())
@@ -164,8 +164,8 @@ namespace Maestro.Editors.FeatureSource.Preview
             }
         }
 
-        DataTable _cancelResult;
-        TimeSpan? _cancelDuration;
+        private DataTable _cancelResult;
+        private TimeSpan? _cancelDuration;
 
         private void queryWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {

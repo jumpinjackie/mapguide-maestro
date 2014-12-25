@@ -1,37 +1,35 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using System;
+using System.Windows.Forms;
 
 namespace Maestro.Base.UI
 {
     internal partial class BoundsPicker : Form
     {
         private string m_bounds;
+
         public string SRSBounds
         {
             get { return m_bounds; }
@@ -80,10 +78,10 @@ namespace Maestro.Base.UI
                     else
                         throw new Exception(Strings.BoundsPicker_MissingBoundsError);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
-                    MessageBox.Show(this, string.Format(Strings.BoundsPicker_BoundsDecodeError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                    MessageBox.Show(this, string.Format(Strings.BoundsPicker_BoundsDecodeError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -110,7 +108,7 @@ namespace Maestro.Base.UI
             double temp;
             System.Globalization.CultureInfo localCI = System.Globalization.CultureInfo.CurrentUICulture;
             System.Globalization.CultureInfo usCI = System.Globalization.CultureInfo.InvariantCulture;
-            
+
             bool isUs = double.TryParse(MinX.Text, System.Globalization.NumberStyles.Float, usCI, out temp) &&
                 double.TryParse(MaxX.Text, System.Globalization.NumberStyles.Float, usCI, out temp) &&
                 double.TryParse(MinY.Text, System.Globalization.NumberStyles.Float, usCI, out temp) &&
@@ -155,6 +153,7 @@ namespace Maestro.Base.UI
                             return;
                         }
                         break;
+
                     case DialogResult.Cancel:
                         return;
                 }
@@ -172,7 +171,7 @@ namespace Maestro.Base.UI
                 m_bounds += " SRS=\"" + srs + "\""; //NOXLATE
             }
             m_bounds += " />"; //NOXLATE
-            
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

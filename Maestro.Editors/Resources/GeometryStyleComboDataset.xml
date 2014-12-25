@@ -32,7 +32,7 @@
 		<Display>Symbol...</Display>
 		<Value></Value>
 	</SymbolMark>
-	
+
 	<SizeContext>
 		<Display>Device space</Display>
 		<Value>DeviceUnits</Value>
@@ -41,7 +41,7 @@
 		<Display>Map space</Display>
 		<Value>MappingUnits</Value>
 	</SizeContext>
-	
+
 	<Units>
 		<Display>Points</Display>
 		<Value>Points</Value>
@@ -142,5 +142,4 @@
     <Display>Expression...</Display>
     <Value>Expression...</Value>
   </Horizontal>
-
 </ComboBoxDataSet>

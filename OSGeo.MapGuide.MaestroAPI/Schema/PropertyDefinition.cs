@@ -1,27 +1,27 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.ObjectModels.Common;
+using System;
 
 namespace OSGeo.MapGuide.MaestroAPI.Schema
 {
@@ -34,18 +34,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// Data Properties
         /// </summary>
         Data = 100,
+
         /// <summary>
         /// Geometric Properties
         /// </summary>
         Geometry = 102,
+
         /// <summary>
         /// Raster Properties
         /// </summary>
         Raster = 104,
+
         /// <summary>
         /// Association Properties
         /// </summary>
         Association = 103,
+
         /// <summary>
         /// Object Properties
         /// </summary>
@@ -61,58 +65,72 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// BLOB
         /// </summary>
         Blob = 10,
+
         /// <summary>
         /// Boolean
         /// </summary>
         Boolean = 1,
+
         /// <summary>
         /// Byte
         /// </summary>
         Byte = 2,
+
         /// <summary>
         /// CLOB
         /// </summary>
         Clob = 11,
+
         /// <summary>
         /// DateTime
         /// </summary>
         DateTime = 3,
+
         /// <summary>
         /// Double
         /// </summary>
         Double = 5,
+
         /// <summary>
         /// Feature
         /// </summary>
         Feature = 12,
+
         /// <summary>
         /// Geometry
         /// </summary>
         Geometry = 13,
+
         /// <summary>
         /// Int16
         /// </summary>
         Int16 = 6,
+
         /// <summary>
         /// Int32
         /// </summary>
         Int32 = 7,
+
         /// <summary>
         /// Int64
         /// </summary>
         Int64 = 8,
+
         /// <summary>
         /// Invalid or Unknown
         /// </summary>
         Null = 0,
+
         /// <summary>
         /// Raster
         /// </summary>
         Raster = 14,
+
         /// <summary>
         /// Single
         /// </summary>
         Single = 4,
+
         /// <summary>
         /// String
         /// </summary>
@@ -128,42 +146,52 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// BLOB
         /// </summary>
         Blob = PropertyValueType.Blob,
+
         /// <summary>
         /// Boolean
         /// </summary>
         Boolean = PropertyValueType.Boolean,
+
         /// <summary>
         /// Byte
         /// </summary>
         Byte = PropertyValueType.Byte,
+
         /// <summary>
         /// CLOB
         /// </summary>
         Clob = PropertyValueType.Clob,
+
         /// <summary>
         /// DateTime
         /// </summary>
         DateTime = PropertyValueType.DateTime,
+
         /// <summary>
         /// Double
         /// </summary>
         Double = PropertyValueType.Double,
+
         /// <summary>
         /// Int16
         /// </summary>
         Int16 = PropertyValueType.Int16,
+
         /// <summary>
         /// Int32
         /// </summary>
         Int32 = PropertyValueType.Int32,
+
         /// <summary>
         /// Int64
         /// </summary>
         Int64 = PropertyValueType.Int64,
+
         /// <summary>
         /// Single
         /// </summary>
         Single = PropertyValueType.Single,
+
         /// <summary>
         /// String
         /// </summary>

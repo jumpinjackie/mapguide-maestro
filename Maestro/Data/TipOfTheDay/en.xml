@@ -5,7 +5,7 @@
 
         http://trac.osgeo.org/mapguide
 
-        Please be a descriptive as possible when filing issues. For bugs, a 
+        Please be a descriptive as possible when filing issues. For bugs, a
         step-by-step process of reproducing the bug is very helpful.
     </TipOfTheDay>
     <TipOfTheDay>
@@ -24,7 +24,7 @@
     <TipOfTheDay>
         Resource validation can detect and diagnose many common MapGuide problems.
 
-        To validate a resource, right click it in the Site Explorer and choose 
+        To validate a resource, right click it in the Site Explorer and choose
         "Validate"
     </TipOfTheDay>
     <TipOfTheDay>
@@ -38,7 +38,7 @@
         and move these commands between web layouts.
     </TipOfTheDay>
     <TipOfTheDay>
-        If Maestro cannot find a specialized editor that supports the resource you 
+        If Maestro cannot find a specialized editor that supports the resource you
         want to open, it will use the XML editor as a fallback option.
     </TipOfTheDay>
     <TipOfTheDay>
@@ -50,14 +50,14 @@
     <TipOfTheDay>
         Items in the Site Explorer are colored based on whether they are open and/or
         have been edited.
-        
+
         You can configure these colors in the Maestro options.
     </TipOfTheDay>
     <TipOfTheDay>
         The Local Feature Source Preview tool is a powerful way to inspect the data
-        and structure of any Feature Source. 
-        
-        This tool is accessible from the Tools menu and also the Feature Source 
+        and structure of any Feature Source.
+
+        This tool is accessible from the Tools menu and also the Feature Source
         editor.
     </TipOfTheDay>
     <TipOfTheDay>
@@ -68,20 +68,20 @@
     </TipOfTheDay>
     <TipOfTheDay>
         If you want to use Google/Bing/Yahoo maps with Fusion, your Map Definition
-        needs to be in the Popular Visualisation Mercator coordinate system. 
-        
+        needs to be in the Popular Visualisation Mercator coordinate system.
+
         The coordinate system code for this is WGS84.PseudoMercator
     </TipOfTheDay>
     <TipOfTheDay>
         If you want to use Google/Bing/Yahoo maps with Fusion, Google and Yahoo maps
-        require API keys. Bing does not require API keys. 
-        
-        Please carefully read the terms and conditions of each respective mapping 
+        require API keys. Bing does not require API keys.
+
+        Please carefully read the terms and conditions of each respective mapping
         provider.
     </TipOfTheDay>
     <TipOfTheDay>
-        Previews of Symbols from a Symbol Library in the Layer Definition editor will 
-        currently only show the Symbol as-is. It won't take into account the size and 
+        Previews of Symbols from a Symbol Library in the Layer Definition editor will
+        currently only show the Symbol as-is. It won't take into account the size and
         color override settings of your point rule.
     </TipOfTheDay>
     <TipOfTheDay>
@@ -90,32 +90,32 @@
     </TipOfTheDay>
     <TipOfTheDay>
         Check out the author's blog for other MapGuide, Maestro and FDO tips and tricks.
-        
+
         http://themapguyde.blogspot.com
     </TipOfTheDay>
     <TipOfTheDay>
         Do you find Maestro very useful for you? Consider making a Paypal donation to
-        the author. 
-        
+        the author.
+
         The donation link is in the about dialog under: Help - About
     </TipOfTheDay>
     <TipOfTheDay>
-        The coordinate system picker allows fast coordinate system lookup by code, WKT 
+        The coordinate system picker allows fast coordinate system lookup by code, WKT
         and EPSG number.
     </TipOfTheDay>
     <TipOfTheDay>
-        The repointer context command allows you to redirect all current references 
+        The repointer context command allows you to redirect all current references
         to the selected resource to reference another resource of your choice.
     </TipOfTheDay>
     <TipOfTheDay>
         You can clear any cached feature source schema information by right-clicking
-        the feature source in the Site Explorer and selecting the 
+        the feature source in the Site Explorer and selecting the
         "Purge Cached Schema Information" context menu command.
     </TipOfTheDay>
     <TipOfTheDay>
-        Maestro only supports a sub-set of Load Procedures. Maestro does not support 
+        Maestro only supports a sub-set of Load Procedures. Maestro does not support
         the following Load Procedure types:
-        
+
          - DWG Load Procedure type and any of its associated options
          - Raster Load Procedure type and any of its associated options
          - Convert to SDF option (SDF/SHP Load Procedures)

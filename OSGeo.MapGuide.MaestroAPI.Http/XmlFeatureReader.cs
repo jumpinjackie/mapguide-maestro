@@ -1,38 +1,42 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI.Feature;
+using OSGeo.MapGuide.MaestroAPI.Schema;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Xml;
-using System.IO;
-using OSGeo.MapGuide.MaestroAPI.Feature;
-using OSGeo.MapGuide.MaestroAPI.Http;
-using OSGeo.MapGuide.MaestroAPI.Schema;
 using System.Diagnostics;
+using System.IO;
 using System.Net;
+using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http
 {
     public class XmlFeatureReader : XmlReaderBase, IFeatureReader
     {
-        internal XmlFeatureReader(Stream stream) : base(stream) { }
+        internal XmlFeatureReader(Stream stream)
+            : base(stream)
+        {
+        }
 
         public XmlFeatureReader(HttpWebResponse resp)
             : base(resp)
@@ -91,6 +95,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
                 {
                     case PropertyDefinitionType.Association:
                         break;
+
                     case PropertyDefinitionType.Data:
                         {
                             DataPropertyDefinition dp = (DataPropertyDefinition)prop;
@@ -99,49 +104,62 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
                                 case DataPropertyType.Blob:
                                     properties.Add(new XmlProperty(name, PropertyValueType.Blob));
                                     break;
+
                                 case DataPropertyType.Boolean:
                                     properties.Add(new XmlProperty(name, PropertyValueType.Boolean));
                                     break;
+
                                 case DataPropertyType.Byte:
                                     properties.Add(new XmlProperty(name, PropertyValueType.Byte));
                                     break;
+
                                 case DataPropertyType.Clob:
                                     properties.Add(new XmlProperty(name, PropertyValueType.Clob));
                                     break;
+
                                 case DataPropertyType.DateTime:
                                     properties.Add(new XmlProperty(name, PropertyValueType.DateTime));
                                     break;
+
                                 case DataPropertyType.Double:
                                     properties.Add(new XmlProperty(name, PropertyValueType.Double));
                                     break;
+
                                 case DataPropertyType.Int16:
                                     properties.Add(new XmlProperty(name, PropertyValueType.Int16));
                                     break;
+
                                 case DataPropertyType.Int32:
                                     properties.Add(new XmlProperty(name, PropertyValueType.Int32));
                                     break;
+
                                 case DataPropertyType.Int64:
                                     properties.Add(new XmlProperty(name, PropertyValueType.Int64));
                                     break;
+
                                 case DataPropertyType.Single:
                                     properties.Add(new XmlProperty(name, PropertyValueType.Single));
                                     break;
+
                                 case DataPropertyType.String:
                                     properties.Add(new XmlProperty(name, PropertyValueType.String));
                                     break;
                             }
                         }
                         break;
+
                     case PropertyDefinitionType.Geometry:
                         {
                             properties.Add(new XmlProperty(name, PropertyValueType.Geometry));
                         }
                         break;
+
                     case PropertyDefinitionType.Object:
                         {
                             properties.Add(new XmlProperty(name, PropertyValueType.Feature));
                         }
                         break;
+
                     case PropertyDefinitionType.Raster:
                         {
                             properties.Add(new XmlProperty(name, PropertyValueType.Raster));
@@ -245,11 +263,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             }
         }
 
-        class Enumerator : IEnumerator<IFeature>
+        private class Enumerator : IEnumerator<IFeature>
         {
             private XmlFeatureReader _reader;
 
-            public Enumerator(XmlFeatureReader reader) { _reader = reader; }
+            public Enumerator(XmlFeatureReader reader)
+            {
+                _reader = reader;
+            }
 
             public IFeature Current
             {
@@ -258,7 +279,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
 
             public void Dispose()
             {
-                
             }
 
             object System.Collections.IEnumerator.Current

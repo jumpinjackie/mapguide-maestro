@@ -1,12 +1,9 @@
-﻿using System;
+﻿using Maestro.Editors.Common;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
-using Maestro.Editors.Common;
-using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
 {

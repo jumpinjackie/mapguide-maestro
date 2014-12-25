@@ -1,46 +1,42 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Text;
-using System.Windows.Forms;
+//
+
+#endregion Disclaimer / License
+
 using Maestro.Editors.Common;
-using Maestro.Editors.LayerDefinition.Vector.Scales;
-using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Exceptions;
-using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using Ldf = OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using System.Collections.Specialized;
 using Maestro.Editors.Generic;
 using Maestro.Shared.UI;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 {
@@ -48,10 +44,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
     {
         private const int PREVIEW_ITEM_BOX_WIDTH = 20;
         private const int PREVIEW_ITEM_BOX_SPACING = 10;
-        const int MAX_NUMERIC_THEME_RULES = 100000;
-        const int MAX_INDIVIDUAL_THEME_RULES = 100;
-        const int THEME_RULE_WARNING_LIMIT = 1000;
-        const int THEME_RULE_EXPRESSION_WARNING_LIMIT = 20;
+        private const int MAX_NUMERIC_THEME_RULES = 100000;
+        private const int MAX_INDIVIDUAL_THEME_RULES = 100;
+        private const int THEME_RULE_WARNING_LIMIT = 1000;
+        private const int THEME_RULE_EXPRESSION_WARNING_LIMIT = 20;
 
         private static List<ColorBrewer> m_colorBrewer;
 
@@ -61,7 +57,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         private Dictionary<object, long> m_values;
         private DataPropertyType m_dataType;
 
-        class LookupPair
+        private class LookupPair
         {
             public object Key;
             public object Value;
@@ -91,14 +87,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             public string IndividualValue;
         }
 
-        static ThemeCreator ()
+        static ThemeCreator()
         {
             NUMERIC_TYPES = new Type[] { typeof(byte), typeof(int), typeof(float), typeof(double) };
         }
 
         private ILayerElementFactory _factory;
 
-        enum ThemeSource
+        private enum ThemeSource
         {
             LayerDefinition,
             ExpressionEditor
@@ -171,7 +167,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                             args.Graphics.FillRectangle(b, area);
                         args.Graphics.DrawRectangle(Pens.Black, area);
                     }
-
                 }
 
                 if (args.State == DrawItemState.Selected)
@@ -182,7 +177,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             else
                 return false;
         }
-
 
         private ThemeCreator()
         {
@@ -310,7 +304,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                                                     m_featureClass.QualifiedName,
                                                     filter,
                                                     new NameValueCollection() {
-                                                        { "value", "UNIQUE(\"" + col.Name + "\")" } 
+                                                        { "value", "UNIQUE(\"" + col.Name + "\")" }
                                                     }))
                             {
                                 while (rd.ReadNext() && m_values.Count < MAX_NUMERIC_THEME_RULES) //No more than 100.000 records in memory
@@ -329,7 +323,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                         }
                         catch
                         {
-
                             using (var rd = m_editor.CurrentConnection.FeatureService.QueryFeatureSource(fsId, m_featureClass.QualifiedName, filter, new string[] { col.Name }))
                             {
                                 while (rd.ReadNext() && m_values.Count < MAX_NUMERIC_THEME_RULES) //No more than 100.000 records in memory
@@ -347,7 +340,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                             }
                         }
                         rawEx = null; //Clear error
-
                     }
                     catch (Exception ex)
                     {
@@ -406,7 +398,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                             if (AggregateCombo.SelectedIndex == AggregateCombo.Items.Count - 1)
                                 AggregateCombo.SelectedIndex = 0;
                         }
-
                     }
                     else //String type
                     {
@@ -579,7 +570,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                             string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" >= {1}", ColumnCombo.Text, FormatValue(lower + (dev * (colors.Length - 1)))),
                             string.Format(System.Globalization.CultureInfo.InvariantCulture, Strings.MoreThanLabel, FormatValue(lower + (dev * (colors.Length - 1)))),
                             colors[colors.Length - 1]));
-
                     }
                     else if (AggregateCombo.SelectedIndex == 2) //Quantile
                     {
@@ -708,12 +698,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             Bitmap bmp = new Bitmap(PreviewPicture.Width, PreviewPicture.Height);
             using (Graphics g = Graphics.FromImage(bmp))
             {
-
                 List<Color?> colors = new List<Color?>();
                 Color[] actualColors = BuildColorSet(true);
                 if (actualColors.Length > 0)
                 {
-
                     int num_boxes = (bmp.Width - PREVIEW_ITEM_BOX_SPACING) / (PREVIEW_ITEM_BOX_WIDTH + PREVIEW_ITEM_BOX_SPACING);
                     if (actualColors.Length > num_boxes)
                     {
@@ -799,7 +787,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                         Math.Min(255, Math.Max(0, (int)(startColor.G + Math.Round(i * stepG)))),
                         Math.Min(255, Math.Max(0, (int)(startColor.B + Math.Round(i * stepB))))
                     );
-
             }
             else
             {
@@ -848,7 +835,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 RuleCountPanel.Enabled = true;
                 RuleCount.Minimum = 3;
             }
-
 
             RefreshPreview();
         }
@@ -983,27 +969,28 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 string msg = NestedExceptionMessageProcessor.GetFullMessage(ex);
                 //m_editor.SetLastException(ex);
-                MessageBox.Show(this, string.Format(Strings.GenericError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                MessageBox.Show(this, string.Format(Strings.GenericError, msg), Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private static ISymbolDefinitionBase GetSymbolFromReference(IResourceService resSvc, ISymbolInstanceReference symRef)
         {
-            switch(symRef.Type)
+            switch (symRef.Type)
             {
                 case SymbolInstanceType.Inline:
                     return ((ISymbolInstanceReferenceInline)symRef).SymbolDefinition;
+
                 case SymbolInstanceType.Reference:
                     return (ISymbolDefinitionBase)resSvc.GetResource(((ISymbolInstanceReferenceLibrary)symRef).ResourceId);
             }
             return null;
         }
 
-        enum FillColorSource
+        private enum FillColorSource
         {
             PathFillColor,
             SymbolParameterFillColorDefaultValue,
@@ -1203,10 +1190,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         private void IdentifyColorSource(ICompositeRule template, ref FillColorSource? source, ref string fillAlpha)
         {
             // FIXME: This is very naive. It will identify the first color it finds and runs with it.
-            // It doesn't take into consideration things such as usage contexts, which we currently only care about on 
-            // the 2nd pass when we still can't identify a color and presumably we're dealing with a composite symbolization 
+            // It doesn't take into consideration things such as usage contexts, which we currently only care about on
+            // the 2nd pass when we still can't identify a color and presumably we're dealing with a composite symbolization
             // with line usage (where fill colors won't exist most of the time). Thematics should be fine on the most basic
-            // of composite symbolization cases, but I expect this process to break down hardcore on the most elaborate of 
+            // of composite symbolization cases, but I expect this process to break down hardcore on the most elaborate of
             // composite symbolization cases. Still, some thematic support is better than none.
 
             // So anyways, 1st pass: Assume point/area and identify the first fill color we find
@@ -1664,12 +1651,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             if (!string.IsNullOrEmpty(txtFilter.Text))
                 filter = txtFilter.Text;
 
-            BusyWaitDialog.Run(Strings.ComputingThemeParameters, 
-            () => { //Worker method
+            BusyWaitDialog.Run(Strings.ComputingThemeParameters,
+            () =>
+            { //Worker method
                 List<LookupPair> res = new List<LookupPair>();
                 using (var reader = m_editor.CurrentConnection.FeatureService.QueryFeatureSource(fsId, className, filter, new string[] { key, value }))
                 {
-                    while(reader.ReadNext())
+                    while (reader.ReadNext())
                     {
                         if (!reader.IsNull(key) && !reader.IsNull(value))
                         {
@@ -1684,7 +1672,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 }
                 return res;
             },
-            (res, ex) => { //Worker completion
+            (res, ex) =>
+            { //Worker completion
                 if (ex != null)
                 {
                     ErrorDialog.Show(ex);

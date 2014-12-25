@@ -1,27 +1,29 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using GeoAPI.Geometries;
+using OSGeo.MapGuide.MaestroAPI.Schema;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using GeoAPI.Geometries;
 
 namespace OSGeo.MapGuide.MaestroAPI.Feature
 {
@@ -35,6 +37,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// The map of property values
         /// </summary>
         protected Dictionary<string, PropertyValue> _values;
+
         /// <summary>
         /// A dictionary to map indexes to property names
         /// </summary>
@@ -383,30 +386,41 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
                 {
                     case PropertyValueType.Blob:
                         return GetBlob(name);
+
                     case PropertyValueType.Boolean:
                         return GetBoolean(name);
+
                     case PropertyValueType.Byte:
                         return GetByte(name);
+
                     case PropertyValueType.Clob:
                         return GetClob(name);
+
                     case PropertyValueType.DateTime:
                         return GetDateTime(name);
+
                     case PropertyValueType.Double:
                         return GetDouble(name);
+
                     case PropertyValueType.Feature:
                         return GetFeatureObject(name);
+
                     case PropertyValueType.Geometry:
                         return GetGeometry(name);
+
                     case PropertyValueType.Int16:
                         return GetInt16(name);
+
                     case PropertyValueType.Int32:
                         return GetInt32(name);
+
                     case PropertyValueType.Int64:
                         return GetInt64(name);
                     //case PropertyValueType.Raster:
                     //    return GetRaster(name);
                     case PropertyValueType.Single:
                         return GetSingle(name);
+
                     case PropertyValueType.String:
                         return GetString(name);
                 }
@@ -468,18 +482,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
                     case PropertyValueType.Blob:
                         ((BlobValue)val).Value = record.GetBlob(i);
                         break;
+
                     case PropertyValueType.Boolean:
                         ((BooleanValue)val).Value = record.GetBoolean(i);
                         break;
+
                     case PropertyValueType.Byte:
                         ((ByteValue)val).Value = record.GetByte(i);
                         break;
+
                     case PropertyValueType.Clob:
                         ((ClobValue)val).Value = record.GetClob(i);
                         break;
+
                     case PropertyValueType.DateTime:
                         ((DateTimeValue)val).Value = record.GetDateTime(i);
                         break;
+
                     case PropertyValueType.Double:
                         ((DoubleValue)val).Value = record.GetDouble(i);
                         break;
@@ -496,12 +515,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
                     case PropertyValueType.Geometry:
                         ((GeometryValue)val).Value = record.GetGeometry(i);
                         break;
+
                     case PropertyValueType.Int16:
                         ((Int16Value)val).Value = record.GetInt16(i);
                         break;
+
                     case PropertyValueType.Int32:
                         ((Int32Value)val).Value = record.GetInt32(i);
                         break;
+
                     case PropertyValueType.Int64:
                         ((Int64Value)val).Value = record.GetInt64(i);
                         break;
@@ -511,6 +533,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
                     case PropertyValueType.Single:
                         ((SingleValue)val).Value = record.GetSingle(i);
                         break;
+
                     case PropertyValueType.String:
                         ((StringValue)val).Value = record.GetString(i);
                         break;

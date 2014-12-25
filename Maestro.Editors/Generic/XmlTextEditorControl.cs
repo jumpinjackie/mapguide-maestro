@@ -1,36 +1,37 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using ICSharpCode.TextEditor;
 using ICSharpCode.TextEditor.Actions;
-using System.Windows.Forms;
-using System.ComponentModel;
 using ICSharpCode.TextEditor.Document;
-using Maestro.Shared.UI;
 using ICSharpCode.TextEditor.Gui.CompletionWindow;
 using Maestro.Editors.Generic.XmlEditor;
-using System.Drawing;
 using Maestro.Editors.Generic.XmlEditor.AutoCompletion;
+using Maestro.Shared.UI;
+using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.Generic
 {
@@ -79,7 +80,7 @@ namespace Maestro.Editors.Generic
         /// </summary>
         internal void RefreshMargin()
         {
-            Action action = () => 
+            Action action = () =>
             {
                 this.ActiveTextAreaControl.TextArea.Refresh(this.ActiveTextAreaControl.TextArea.FoldMargin);
             };
@@ -92,7 +93,7 @@ namespace Maestro.Editors.Generic
         #region XML auto-completion stuff
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="newControl"></param>
         protected override void InitializeTextAreaControl(TextAreaControl newControl)
@@ -113,9 +114,9 @@ namespace Maestro.Editors.Generic
              */
         }
 
-        CodeCompletionWindow codeCompletionWindow;
-        XmlSchemaCompletionDataCollection schemaCompletionDataItems = new XmlSchemaCompletionDataCollection();
-        XmlSchemaCompletionData defaultSchemaCompletionData = null;
+        private CodeCompletionWindow codeCompletionWindow;
+        private XmlSchemaCompletionDataCollection schemaCompletionDataItems = new XmlSchemaCompletionDataCollection();
+        private XmlSchemaCompletionData defaultSchemaCompletionData = null;
 
         /// <summary>
         /// Gets the schemas that the xml editor will use.
@@ -153,7 +154,7 @@ namespace Maestro.Editors.Generic
             }
         }
 
-        char GetCharacterBeforeCaret()
+        private char GetCharacterBeforeCaret()
         {
             string text = Document.GetText(ActiveTextAreaControl.TextArea.Caret.Offset - 1, 1);
             if (text.Length > 0)
@@ -164,7 +165,7 @@ namespace Maestro.Editors.Generic
             return '\0';
         }
 
-        bool IsCaretAtDocumentStart
+        private bool IsCaretAtDocumentStart
         {
             get
             {
@@ -219,6 +220,7 @@ namespace Maestro.Editors.Generic
                     case '=':
                         ShowCompletionWindow(ch);
                         return false;
+
                     default:
                         if (XmlParser.IsAttributeValueChar(ch))
                         {
@@ -245,7 +247,7 @@ namespace Maestro.Editors.Generic
             return false;
         }
 
-        bool IsCodeCompletionEnabled
+        private bool IsCodeCompletionEnabled
         {
             get
             {
@@ -256,7 +258,7 @@ namespace Maestro.Editors.Generic
         /// <summary>
         /// Checks whether the caret is inside a set of quotes (" or ').
         /// </summary>
-        bool IsInsideQuotes(TextArea textArea)
+        private bool IsInsideQuotes(TextArea textArea)
         {
             bool inside = false;
 
@@ -266,7 +268,6 @@ namespace Maestro.Editors.Generic
                 if ((line.Offset + line.Length > textArea.Caret.Offset) &&
                     (line.Offset < textArea.Caret.Offset))
                 {
-
                     char charAfter = textArea.Document.GetCharAt(textArea.Caret.Offset);
                     char charBefore = textArea.Document.GetCharAt(textArea.Caret.Offset - 1);
 
@@ -305,7 +306,7 @@ namespace Maestro.Editors.Generic
         /// </code>
         /// The Close method is called because the offset is out of the range.
         /// </remarks>
-        void InsertCharacter(char ch)
+        private void InsertCharacter(char ch)
         {
             ActiveTextAreaControl.TextArea.BeginUpdate();
             Document.UndoStack.StartUndoGroup();
@@ -315,6 +316,7 @@ namespace Maestro.Editors.Generic
                 case CaretMode.InsertMode:
                     ActiveTextAreaControl.TextArea.InsertChar(ch);
                     break;
+
                 case CaretMode.OverwriteMode:
                     ActiveTextAreaControl.TextArea.ReplaceChar(ch);
                     break;
@@ -326,14 +328,14 @@ namespace Maestro.Editors.Generic
             Document.UndoStack.EndUndoGroup();
         }
 
-        void CodeCompletionWindowClosed(object sender, EventArgs e)
+        private void CodeCompletionWindowClosed(object sender, EventArgs e)
         {
             codeCompletionWindow.Closed -= new EventHandler(CodeCompletionWindowClosed);
             codeCompletionWindow.Dispose();
             codeCompletionWindow = null;
         }
 
-        bool IsCodeCompletionWindowOpen
+        private bool IsCodeCompletionWindowOpen
         {
             get
             {
@@ -341,7 +343,7 @@ namespace Maestro.Editors.Generic
             }
         }
 
-        void ShowCompletionWindow(char ch)
+        private void ShowCompletionWindow(char ch)
         {
             if (IsCodeCompletionWindowOpen)
             {
@@ -360,7 +362,7 @@ namespace Maestro.Editors.Generic
             }
         }
 
-        #endregion
+        #endregion XML auto-completion stuff
     }
 
     internal class TextEditorProperties : ITextEditorProperties
@@ -556,7 +558,7 @@ namespace Maestro.Editors.Generic
             return new TextEditorProperties()
             {
                 EnableFolding = true,
-                ShowLineNumbers  = true,
+                ShowLineNumbers = true,
                 ShowHorizontalRuler = false,
                 ShowVerticalRuler = false,
                 ShowSpaces = true,

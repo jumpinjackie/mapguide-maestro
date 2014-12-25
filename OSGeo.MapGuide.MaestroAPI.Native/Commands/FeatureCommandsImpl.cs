@@ -1,34 +1,37 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
+using GeoAPI.Geometries;
 using OSGeo.MapGuide.MaestroAPI.Commands;
-using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Internal;
-using GeoAPI.Geometries;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using System;
 
 #if LOCAL_API
+
 namespace OSGeo.MapGuide.MaestroAPI.Local.Commands
 #else
+
 namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
 #endif
 {
@@ -42,9 +45,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
         //    http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dncscol/html/csharp07192001.asp
         //
 
-        public FeatureServiceException() { }
-        public FeatureServiceException(string message) : base(message) { }
-        public FeatureServiceException(string message, Exception inner) : base(message, inner) { }
+        public FeatureServiceException()
+        {
+        }
+
+        public FeatureServiceException(string message)
+            : base(message)
+        {
+        }
+
+        public FeatureServiceException(string message, Exception inner)
+            : base(message, inner)
+        {
+        }
+
         protected FeatureServiceException(
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context)
@@ -57,9 +71,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
 
     internal static class GeomConverter
     {
-        static MgAgfReaderWriter _agfRw;
-        static MgWktReaderWriter _wktRw;
-        static FixedWKTReader _reader;
+        private static MgAgfReaderWriter _agfRw;
+        private static MgWktReaderWriter _wktRw;
+        private static FixedWKTReader _reader;
 
         static GeomConverter()
         {
@@ -82,7 +96,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
         public static IGeometry GetGeometry(MgByteReader agf)
         {
             MgGeometry mgeom = _agfRw.Read(agf);
-            return _reader.Read(GetWkt(mgeom));   
+            return _reader.Read(GetWkt(mgeom));
         }
     }
 
@@ -113,23 +127,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 ((MgBlobProperty)p).SetValue(bs.GetReader());
                             }
                             break;
+
                         case MgPropertyType.Boolean:
                             {
                                 ((MgBooleanProperty)p).SetValue(record.GetBoolean(name));
                             }
                             break;
+
                         case MgPropertyType.Byte:
                             {
                                 ((MgByteProperty)p).SetValue(record.GetByte(name));
                             }
                             break;
+
                         case MgPropertyType.Clob:
                             {
                                 var bytes = record.GetBlob(name);
                                 var bs = new MgByteSource(bytes, bytes.Length);
-                                ((MgClobProperty)p).SetValue(bs.GetReader()); 
+                                ((MgClobProperty)p).SetValue(bs.GetReader());
                             }
                             break;
+
                         case MgPropertyType.DateTime:
                             {
                                 var dt = record.GetDateTime(i);
@@ -137,43 +155,51 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 ((MgDateTimeProperty)p).SetValue(mdt);
                             }
                             break;
+
                         case MgPropertyType.Decimal:
                         case MgPropertyType.Double:
                             {
                                 ((MgDoubleProperty)p).SetValue(record.GetDouble(name));
                             }
                             break;
+
                         case MgPropertyType.Geometry:
                             {
                                 var agf = GeomConverter.GetAgf(record.GetGeometry(name));
                                 ((MgGeometryProperty)p).SetValue(agf);
                             }
                             break;
+
                         case MgPropertyType.Int16:
                             {
                                 ((MgInt16Property)p).SetValue(record.GetInt16(name));
                             }
                             break;
+
                         case MgPropertyType.Int32:
                             {
                                 ((MgInt32Property)p).SetValue(record.GetInt32(name));
                             }
                             break;
+
                         case MgPropertyType.Int64:
                             {
                                 ((MgInt64Property)p).SetValue(record.GetInt64(name));
                             }
                             break;
+
                         case MgPropertyType.Single:
                             {
                                 ((MgSingleProperty)p).SetValue(record.GetSingle(name));
                             }
                             break;
+
                         case MgPropertyType.String:
                             {
                                 ((MgStringProperty)p).SetValue(record.GetString(name));
                             }
                             break;
+
                         default:
                             throw new NotSupportedException();
                     }
@@ -198,6 +224,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(propVal);
                             }
                             break;
+
                         case PropertyValueType.Boolean:
                             {
                                 var propVal = new MgBooleanProperty(name, false);
@@ -205,6 +232,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(propVal);
                             }
                             break;
+
                         case PropertyValueType.Byte:
                             {
                                 var propVal = new MgByteProperty(name, 0);
@@ -212,6 +240,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(propVal);
                             }
                             break;
+
                         case PropertyValueType.Clob:
                             {
                                 var propVal = new MgClobProperty(name, null);
@@ -219,6 +248,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(propVal);
                             }
                             break;
+
                         case PropertyValueType.DateTime:
                             {
                                 var propVal = new MgDateTimeProperty(name, null);
@@ -226,6 +256,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(propVal);
                             }
                             break;
+
                         case PropertyValueType.Double:
                             {
                                 var propVal = new MgDoubleProperty(name, 0.0);
@@ -233,6 +264,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(propVal);
                             }
                             break;
+
                         case PropertyValueType.Geometry:
                             {
                                 var propVal = new MgGeometryProperty(name, null);
@@ -240,6 +272,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(propVal);
                             }
                             break;
+
                         case PropertyValueType.Int16:
                             {
                                 var propVal = new MgInt16Property(name, 0);
@@ -247,6 +280,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(propVal);
                             }
                             break;
+
                         case PropertyValueType.Int32:
                             {
                                 var propVal = new MgInt32Property(name, 0);
@@ -254,6 +288,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(propVal);
                             }
                             break;
+
                         case PropertyValueType.Int64:
                             {
                                 var propVal = new MgInt64Property(name, 0L);
@@ -261,6 +296,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(propVal);
                             }
                             break;
+
                         case PropertyValueType.Single:
                             {
                                 var propVal = new MgSingleProperty(name, 0.0f);
@@ -268,6 +304,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(propVal);
                             }
                             break;
+
                         case PropertyValueType.String:
                             {
                                 var propVal = new MgStringProperty(name, "");
@@ -275,6 +312,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(propVal);
                             }
                             break;
+
                         default:
                             throw new NotSupportedException();
                     }
@@ -291,16 +329,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(bv);
                             }
                             break;
+
                         case PropertyValueType.Boolean:
                             {
                                 props.Add(new MgBooleanProperty(name, record.GetBoolean(i)));
                             }
                             break;
+
                         case PropertyValueType.Byte:
                             {
                                 props.Add(new MgByteProperty(name, record.GetByte(i)));
                             }
                             break;
+
                         case PropertyValueType.Clob:
                             {
                                 var bytes = record.GetBlob(i);
@@ -309,6 +350,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(bv);
                             }
                             break;
+
                         case PropertyValueType.DateTime:
                             {
                                 var dt = record.GetDateTime(i);
@@ -316,42 +358,50 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 props.Add(new MgDateTimeProperty(name, mdt));
                             }
                             break;
+
                         case PropertyValueType.Double:
                             {
                                 props.Add(new MgDoubleProperty(name, record.GetDouble(i)));
                             }
                             break;
+
                         case PropertyValueType.Geometry:
                             {
                                 MgByteReader agf = GeomConverter.GetAgf(record.GetGeometry(i));
                                 props.Add(new MgGeometryProperty(name, agf));
                             }
                             break;
+
                         case PropertyValueType.Int16:
                             {
                                 props.Add(new MgInt16Property(name, record.GetInt16(i)));
                             }
                             break;
+
                         case PropertyValueType.Int32:
                             {
                                 props.Add(new MgInt32Property(name, record.GetInt32(i)));
                             }
                             break;
+
                         case PropertyValueType.Int64:
                             {
                                 props.Add(new MgInt64Property(name, record.GetInt64(i)));
                             }
                             break;
+
                         case PropertyValueType.Single:
                             {
                                 props.Add(new MgSingleProperty(name, record.GetSingle(i)));
                             }
                             break;
+
                         case PropertyValueType.String:
                             {
                                 props.Add(new MgStringProperty(name, record.GetString(i)));
                             }
                             break;
+
                         default:
                             throw new NotSupportedException();
                     }
@@ -396,6 +446,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                     idProps.Add(dp);
                             }
                             break;
+
                         case PropertyDefinitionType.Geometry:
                             {
                                 var gp = new MgGeometricPropertyDefinition(prop.Name);
@@ -410,6 +461,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 clsProps.Add(gp);
                             }
                             break;
+
                         case PropertyDefinitionType.Raster:
                             {
                                 var rp = new MgRasterPropertyDefinition(prop.Name);
@@ -424,6 +476,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                                 clsProps.Add(rp);
                             }
                             break;
+
                         default:
                             throw new NotSupportedException();
                     }
@@ -437,14 +490,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
     }
 
 #if LOCAL_API
+
     public class LocalNativeInsert : DefaultInsertCommand<LocalConnection>
     {
-        internal LocalNativeInsert(LocalConnection conn) : base(conn) { }
+        internal LocalNativeInsert(LocalConnection conn)
+            : base(conn)
+        {
+        }
+
 #else
+
     public class LocalNativeInsert : DefaultInsertCommand<LocalNativeConnection>
     {
-        internal LocalNativeInsert(LocalNativeConnection conn) : base(conn) { }
+        internal LocalNativeInsert(LocalNativeConnection conn)
+            : base(conn)
+        {
+        }
+
 #endif
+
         protected override void ExecuteInternal()
         {
             MgPropertyCollection props = new MgPropertyCollection();
@@ -454,13 +518,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
     }
 
 #if LOCAL_API
+
     public class LocalNativeUpdate : DefaultUpdateCommand<LocalConnection>
     {
-        internal LocalNativeUpdate(LocalConnection conn) : base(conn) { }
+        internal LocalNativeUpdate(LocalConnection conn)
+            : base(conn)
+        {
+        }
+
 #else
+
     public class LocalNativeUpdate : DefaultUpdateCommand<LocalNativeConnection>
     {
-        internal LocalNativeUpdate(LocalNativeConnection conn) : base(conn) { }
+        internal LocalNativeUpdate(LocalNativeConnection conn)
+            : base(conn)
+        {
+        }
+
 #endif
 
         public override int ExecuteInternal()
@@ -472,13 +546,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
     }
 
 #if LOCAL_API
+
     public class LocalNativeDelete : DefaultDeleteCommand<LocalConnection>
     {
-        internal LocalNativeDelete(LocalConnection conn) : base(conn) { }
+        internal LocalNativeDelete(LocalConnection conn)
+            : base(conn)
+        {
+        }
+
 #else
+
     public class LocalNativeDelete : DefaultDeleteCommand<LocalNativeConnection>
     {
-        internal LocalNativeDelete(LocalNativeConnection conn) : base(conn) { }
+        internal LocalNativeDelete(LocalNativeConnection conn)
+            : base(conn)
+        {
+        }
+
 #endif
 
         protected override int ExecuteInternal()
@@ -488,13 +572,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
     }
 
 #if LOCAL_API
+
     public class LocalNativeApplySchema : DefaultApplySchemaCommand<LocalConnection>
     {
-        internal LocalNativeApplySchema(LocalConnection conn) : base(conn) { }
+        internal LocalNativeApplySchema(LocalConnection conn)
+            : base(conn)
+        {
+        }
+
 #else
+
     public class LocalNativeApplySchema : DefaultApplySchemaCommand<LocalNativeConnection>
     {
-        internal LocalNativeApplySchema(LocalNativeConnection conn) : base(conn) { }
+        internal LocalNativeApplySchema(LocalNativeConnection conn)
+            : base(conn)
+        {
+        }
+
 #endif
 
         protected override void ExecuteInternal()
@@ -505,14 +599,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
     }
 
 #if LOCAL_API
+
     public class LocalNativeCreateDataStore : DefaultCreateDataStoreCommand<LocalConnection>
     {
-        internal LocalNativeCreateDataStore(LocalConnection conn) : base(conn) { }
+        internal LocalNativeCreateDataStore(LocalConnection conn)
+            : base(conn)
+        {
+        }
+
 #else
+
     public class LocalNativeCreateDataStore : DefaultCreateDataStoreCommand<LocalNativeConnection>
     {
-        internal LocalNativeCreateDataStore(LocalNativeConnection conn) : base(conn) { }
+        internal LocalNativeCreateDataStore(LocalNativeConnection conn)
+            : base(conn)
+        {
+        }
+
 #endif
+
         protected override void ExecuteInternal()
         {
             MgFileFeatureSourceParams fp = new MgFileFeatureSourceParams(this.Provider, this.Name, this.CoordinateSystemWkt, MgFeatureCommandUtility.ConvertSchema(this.Schema));

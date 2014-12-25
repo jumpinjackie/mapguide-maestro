@@ -1,32 +1,34 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.DrawingSource;
-using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+using System;
+using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {
@@ -179,7 +181,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                                 issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_LayerDefinition_CompositeStyleDefinedAlongsideBasicStyle, string.Format(
                                     Strings.LDF_CompositeStyleDefinedAlongsideBasicStyle,
                                     vsr2.MinScale.HasValue ? vsr2.MinScale.Value : 0,
-                                    vsr2.MaxScale.HasValue ? vsr2.MaxScale.Value.ToString() : Strings.Infinity))); 
+                                    vsr2.MaxScale.HasValue ? vsr2.MaxScale.Value.ToString() : Strings.Infinity)));
                             }
 
                             if (vsr2.CompositeStyleCount > 0)
@@ -199,7 +201,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                                                     if (!context.ResourceExists(symRef.ResourceId))
                                                         issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_LayerDefinition_SymbolDefintionReferenceNotFound, string.Format(
                                                             Strings.LDF_SymbolDefintionReferenceNotFound, symRef.ResourceId)));
-
 
                                                     if (cls != null)
                                                     {
@@ -285,7 +286,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                         for (int j = i + 1; j < ranges.Count; j++)
                             if (ranges[i].Key > ranges[j].Value || ranges[i].Value > ranges[j].Value)
                                 issues.Add(new ValidationIssue(resource, ValidationStatus.Information, ValidationStatusCode.Info_LayerDefinition_ScaleRangeOverlap, string.Format(Strings.LDF_ScaleRangesOverlapInformation, ranges[i].Value, ranges[i].Key, ranges[j].Value, ranges[j].Key)));
-
                 }
             }
             else if (gldef != null)

@@ -1,26 +1,27 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.Schema
 {
@@ -34,18 +35,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// Points
         /// </summary>
         Point = 1,
+
         /// <summary>
         /// Curves (lines)
         /// </summary>
         Curve = 2,
+
         /// <summary>
         /// Surfaces (polygons)
         /// </summary>
         Surface = 4,
+
         /// <summary>
         /// Solids
         /// </summary>
         Solid = 8,
+
         /// <summary>
         /// All types
         /// </summary>
@@ -61,42 +66,52 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// Points
         /// </summary>
         Point = 1,
+
         /// <summary>
         /// Line Strings
         /// </summary>
         LineString = 2,
+
         /// <summary>
         /// Polygons
         /// </summary>
         Polygon = 3,
+
         /// <summary>
         /// Multi Points
         /// </summary>
         MultiPoint = 4,
+
         /// <summary>
         /// Multi Line Strings
         /// </summary>
         MultiLineString = 5,
+
         /// <summary>
         /// Multi Polygons
         /// </summary>
         MultiPolygon = 6,
+
         /// <summary>
         /// Multi Geometries
         /// </summary>
         MultiGeometry = 7,
+
         /// <summary>
         /// Curve Strings
         /// </summary>
         CurveString = 10,
+
         /// <summary>
         /// Curve Polygons
         /// </summary>
         CurvePolygon = 11,
+
         /// <summary>
         /// Multi Curve Strings
         /// </summary>
         MultiCurveString = 12,
+
         /// <summary>
         /// Multi Curve Polygons
         /// </summary>
@@ -108,7 +123,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
     /// </summary>
     public class GeometricPropertyDefinition : PropertyDefinition
     {
-        private GeometricPropertyDefinition() { this.SpecificGeometryTypes = new SpecificGeometryType[0]; }
+        private GeometricPropertyDefinition()
+        {
+            this.SpecificGeometryTypes = new SpecificGeometryType[0];
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GeometricPropertyDefinition"/> class.
@@ -123,31 +141,31 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         }
 
         /// <summary>
-        /// Gets or sets a Boolean value that indicates if this geometric property is read-only. 
+        /// Gets or sets a Boolean value that indicates if this geometric property is read-only.
         /// </summary>
         public bool IsReadOnly { get; set; }
 
         /// <summary>
-        /// Gets or sets a Boolean value that indicates if the geometry of this property includes measurement values that can be used for dynamic segmentation. 
+        /// Gets or sets a Boolean value that indicates if the geometry of this property includes measurement values that can be used for dynamic segmentation.
         /// </summary>
         public bool HasMeasure { get; set; }
 
         /// <summary>
-        /// Gets or sets a Boolean value that indicates if the geometry of this property include elevation values. 
+        /// Gets or sets a Boolean value that indicates if the geometry of this property include elevation values.
         /// </summary>
         public bool HasElevation { get; set; }
 
         /// <summary>
-        /// Gets or sets the Spatial Context name associated to this geometric property. 
+        /// Gets or sets the Spatial Context name associated to this geometric property.
         /// </summary>
         public string SpatialContextAssociation { get; set; }
 
         private FeatureGeometricType _geometricTypes;
 
         /// <summary>
-        /// Gets or sets the <see cref="T:OSGeo.MapGuide.MaestroAPI.Schema.FeatureGeometricType"/> that can be stored in this geometric 
-        /// property. The returned value may be any combination of the values from the <see cref="T:OSGeo.MapGuide.MaestroAPI.Schema.FeatureGeometricType"/> 
-        /// enumeration combined via a bit-wise or operation. 
+        /// Gets or sets the <see cref="T:OSGeo.MapGuide.MaestroAPI.Schema.FeatureGeometricType"/> that can be stored in this geometric
+        /// property. The returned value may be any combination of the values from the <see cref="T:OSGeo.MapGuide.MaestroAPI.Schema.FeatureGeometricType"/>
+        /// enumeration combined via a bit-wise or operation.
         /// </summary>
         public FeatureGeometricType GeometricTypes
         {
@@ -167,12 +185,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                                 sgts.Add(SpecificGeometryType.Point, SpecificGeometryType.Point);
                                 sgts.Add(SpecificGeometryType.MultiPoint, SpecificGeometryType.MultiPoint);
                                 break;
+
                             case FeatureGeometricType.Curve:
                                 sgts.Add(SpecificGeometryType.LineString, SpecificGeometryType.LineString);
                                 sgts.Add(SpecificGeometryType.MultiLineString, SpecificGeometryType.MultiLineString);
                                 sgts.Add(SpecificGeometryType.CurveString, SpecificGeometryType.CurveString);
                                 sgts.Add(SpecificGeometryType.MultiCurveString, SpecificGeometryType.MultiCurveString);
                                 break;
+
                             case FeatureGeometricType.Surface:
                                 sgts.Add(SpecificGeometryType.Polygon, SpecificGeometryType.Polygon);
                                 sgts.Add(SpecificGeometryType.MultiPolygon, SpecificGeometryType.MultiPolygon);
@@ -190,8 +210,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         private SpecificGeometryType[] _sgts;
 
         /// <summary>
-        /// Gets or sets the specific set of geometry types that can be stored in this geometric property. The provided value is a 
-        /// list of geometry types that are supported. Usually, one specific type is supported, but there can be more than one. 
+        /// Gets or sets the specific set of geometry types that can be stored in this geometric property. The provided value is a
+        /// list of geometry types that are supported. Usually, one specific type is supported, but there can be more than one.
         /// </summary>
         public SpecificGeometryType[] SpecificGeometryTypes
         {
@@ -272,7 +292,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             var en = Utility.EncodeFDOName(this.Name);
 
             var geom = doc.CreateElement("xs", "element", XmlNamespaces.XS); //NOXLATE
-            
+
             geom.SetAttribute("name", en); //NOXLATE
             geom.SetAttribute("type", "gml:AbstractGeometryType"); //NOXLATE
             geom.SetAttribute("hasMeasure", XmlNamespaces.FDO, this.HasMeasure.ToString().ToLower()); //NOXLATE
@@ -378,33 +398,43 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                     case "curvepolygon": //NOXLATE
                         values.Add(SpecificGeometryType.CurvePolygon);
                         break;
+
                     case "curvestring": //NOXLATE
                         values.Add(SpecificGeometryType.CurveString);
                         break;
+
                     case "linestring": //NOXLATE
                         values.Add(SpecificGeometryType.LineString);
                         break;
+
                     case "multicurvepolygon": //NOXLATE
                         values.Add(SpecificGeometryType.MultiCurvePolygon);
                         break;
+
                     case "multicurvestring": //NOXLATE
                         values.Add(SpecificGeometryType.MultiCurveString);
                         break;
+
                     case "multigeometry": //NOXLATE
                         values.Add(SpecificGeometryType.MultiGeometry);
                         break;
+
                     case "multilinestring": //NOXLATE
                         values.Add(SpecificGeometryType.MultiLineString);
                         break;
+
                     case "multipoint": //NOXLATE
                         values.Add(SpecificGeometryType.MultiPoint);
                         break;
+
                     case "multipolygon": //NOXLATE
                         values.Add(SpecificGeometryType.MultiPolygon);
                         break;
+
                     case "point": //NOXLATE
                         values.Add(SpecificGeometryType.Point);
                         break;
+
                     case "polygon": //NOXLATE
                         values.Add(SpecificGeometryType.Polygon);
                         break;
@@ -429,6 +459,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                                 gt = FeatureGeometricType.Point;
                         }
                         break;
+
                     case "curve": //NOXLATE
                         {
                             if (gt.HasValue)
@@ -437,6 +468,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                                 gt = FeatureGeometricType.Curve;
                         }
                         break;
+
                     case "surface": //NOXLATE
                         {
                             if (gt.HasValue)
@@ -445,6 +477,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                                 gt = FeatureGeometricType.Surface;
                         }
                         break;
+
                     case "solid": //NOXLATE
                         {
                             if (gt.HasValue)

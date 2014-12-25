@@ -1,47 +1,48 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using GeoAPI.Geometries;
+using OSGeo.MapGuide.MaestroAPI.Commands;
+using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
+using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using OSGeo.MapGuide.MaestroAPI.Feature;
+using OSGeo.MapGuide.MaestroAPI.Mapping;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
+using OSGeo.MapGuide.MaestroAPI.Serialization;
+using OSGeo.MapGuide.ObjectModels.Capabilities;
+using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.LoadProcedure;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
-using System.Text;
+using System.Collections.Specialized;
 using System.IO;
+using System.Text;
 
 using ObjCommon = OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.ObjectModels.Capabilities;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.MaestroAPI.Commands;
-using OSGeo.MapGuide.MaestroAPI.Mapping;
-using OSGeo.MapGuide.MaestroAPI.Serialization;
-using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
-using OSGeo.MapGuide.ObjectModels.MapDefinition;
-using OSGeo.MapGuide.ObjectModels.Common;
-using System.Collections.Specialized;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using OSGeo.MapGuide.MaestroAPI.Feature;
-using OSGeo.MapGuide.ObjectModels.LoadProcedure;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using OSGeo.MapGuide.MaestroAPI.Exceptions;
-using GeoAPI.Geometries;
-using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
@@ -62,7 +63,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         protected XmlValidator m_validator;
 
         /// <summary>
-        /// The path of Xsd schemas 
+        /// The path of Xsd schemas
         /// </summary>
         protected string m_schemasPath;
 
@@ -82,7 +83,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         protected PlatformConnectionBase()
         {
             ResourceTypeRegistry.Init();
-            
+
             m_serializers = new Hashtable();
             m_validator = new XmlValidator();
             m_cachedSchemas = new Hashtable();
@@ -110,7 +111,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>The deserialized object</returns>
         virtual public object DeserializeObject(Type type, System.IO.Stream data)
         {
-            //HACK: MGOS 2.2 outputs different capabilities xml (because it's actually the correct one!), so 
+            //HACK: MGOS 2.2 outputs different capabilities xml (because it's actually the correct one!), so
             //without breaking support against 2.1 and older servers, we transform the xml to its pre-2.2 form
             if (type == typeof(FdoProviderCapabilities) && this.SiteVersion < new Version(2, 2))
             {
@@ -208,7 +209,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             return (System.Xml.Serialization.XmlSerializer)m_serializers[type];
         }
 
-        #endregion
+        #endregion Serialization plumbing
 
         #region Validation
 
@@ -240,13 +241,16 @@ namespace OSGeo.MapGuide.MaestroAPI
                 throw new Exception("Untested with MapGuide Build > " + this.MaxTestedVersion.ToString()); //NOXLATE
         }
 
-        #endregion
+        #endregion Validation
 
         /// <summary>
         /// Gets the preview URL generator.
         /// </summary>
         /// <returns>The preview URL generator. Returns null if this connection does not support browser-based resource previews</returns>
-        public virtual OSGeo.MapGuide.MaestroAPI.Resource.Preview.IResourcePreviewUrlGenerator GetPreviewUrlGenerator() { return null; }
+        public virtual OSGeo.MapGuide.MaestroAPI.Resource.Preview.IResourcePreviewUrlGenerator GetPreviewUrlGenerator()
+        {
+            return null;
+        }
 
         /// <summary>
         /// Gets the name of the provider of this implementation
@@ -301,13 +305,13 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
 
             return (System.Xml.Schema.XmlSchema)m_cachedSchemas[type];
-        
         }
 
         /// <summary>
         /// Raised when a resource is added
         /// </summary>
         public event ResourceEventHandler ResourceAdded;
+
         /// <summary>
         /// Raised when a resource is deleted. Note if a folder is deleted, this will
         /// only be raised for the folder and not its children. Also note that this is
@@ -315,6 +319,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// purposes, deleted.
         /// </summary>
         public event ResourceEventHandler ResourceDeleted;
+
         /// <summary>
         /// Raised when a resource is updated
         /// </summary>
@@ -542,7 +547,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         abstract public ObjCommon.ResourceList GetRepositoryResources(string startingpoint, string type, int depth, bool computeChildren);
 
         /// <summary>
-        /// Forces a timestamp update of the specified resource. This is akin to 
+        /// Forces a timestamp update of the specified resource. This is akin to
         /// setting the resource's content using its existing content.
         /// </summary>
         /// <param name="resourceId"></param>
@@ -742,9 +747,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                         UpdateResourceReferences(v, oldresourcepath, newresourcepath, folderupdates, visited);
                     }
             }
-
         }
-
 
         /// <summary>
         /// Moves a resource, and subsequently updates all resources pointing to the old resource path
@@ -1009,7 +1012,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (la.Cancel)
                 return false;
 
-
             la.Progress = 0;
             la.StatusMessage = Strings.ProgressFindingFolderRefs;
             int pg = 0;
@@ -1193,7 +1195,6 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="newpath">The new folder path, the one moving to</param>
         /// <param name="overwrite">True if the move can overwrite an existing folder, false otherwise</param>
         abstract public void MoveFolder(string oldpath, string newpath, bool overwrite);
-
 
         /// <summary>
         /// Returns data from a resource as a memorystream
@@ -1411,7 +1412,6 @@ namespace OSGeo.MapGuide.MaestroAPI
                 this.SetResourceXmlData(resourceID, null, this.SerializeObject(header));
         }
 
-
         /// <summary>
         /// Enumerates all unmanaged folders, meaning alias'ed folders
         /// </summary>
@@ -1422,7 +1422,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>A list of unmanaged data</returns>
         abstract public ObjCommon.UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type);
 
-        #endregion
+        #endregion Resource Service
 
         #region Feature Service
 
@@ -1452,7 +1452,6 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Gets a list of installed feature providers
         /// </summary>
         abstract public ObjCommon.FeatureProviderRegistryFeatureProvider[] FeatureProviders { get; }
-
 
         /// <summary>
         /// Returns the spatial info for a given featuresource
@@ -1491,6 +1490,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// feature source description cache
         /// </summary>
         protected Dictionary<string, FeatureSourceDescription> m_featureSchemaCache = new Dictionary<string, FeatureSourceDescription>();
+
         /// <summary>
         /// a class definition cache
         /// </summary>
@@ -1510,14 +1510,14 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public virtual FeatureSourceDescription DescribeFeatureSource(string resourceID)
         {
-        #if DEBUG
+#if DEBUG
             bool bFromCache = true;
-        #endif
+#endif
             if (!m_featureSchemaCache.ContainsKey(resourceID))
             {
-            #if DEBUG
+#if DEBUG
                 bFromCache = false;
-            #endif
+#endif
                 var fsd = this.DescribeFeatureSourceInternal(resourceID);
                 try
                 {
@@ -1566,18 +1566,18 @@ namespace OSGeo.MapGuide.MaestroAPI
             string classCacheKey = resourceID + "!" + className; //NOXLATE
             ClassDefinition cls = null;
             bool bStoreInCache = true;
-        #if DEBUG
+#if DEBUG
             bool bFromCache = false;
-        #endif
+#endif
             //We don't interrogate the Feature Source Description cache because part of
             //caching a Feature Source Description is to cache all the classes within
             if (m_classDefinitionCache.ContainsKey(classCacheKey))
             {
                 cls = m_classDefinitionCache[classCacheKey];
                 bStoreInCache = false;
-            #if DEBUG
+#if DEBUG
                 bFromCache = true;
-            #endif
+#endif
             }
             else
             {
@@ -1881,7 +1881,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader"/> containing the results of the query</returns>
         public abstract IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames, NameValueCollection computedProperties);
 
-        #endregion
+        #endregion Feature Service
 
         #region Feature/Capability Discovery
 
@@ -1941,7 +1941,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        #endregion
+        #endregion Feature/Capability Discovery
 
         #region runtime map
 
@@ -1961,7 +1961,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             catch { return 1.0; }
         }
 
-        class DefaultCalculator : IMpuCalculator
+        private class DefaultCalculator : IMpuCalculator
         {
             private PlatformConnectionBase _conn;
 
@@ -2077,7 +2077,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             rtLayer.ShowInLegend = source.ShowInLegend;
             rtLayer.Visible = true;
             rtLayer.Type = RuntimeMapLayer.kBaseMap;
-            
+
             return rtLayer;
         }
 
@@ -2112,7 +2112,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             rtLayer.ShowInLegend = source.ShowInLegend;
             rtLayer.Group = source.Group;
             rtLayer.Visible = source.Visible;
-            
+
             return rtLayer;
         }
 
@@ -2123,8 +2123,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <remarks>
         /// Calculation of meters-per-unit may differ between implementations. This may have an adverse
         /// effect on things such as rendering and measuring depending on the underlying implementation
-        /// 
-        /// If you are certain of the meters-per-unit value required, use the overloaded method that 
+        ///
+        /// If you are certain of the meters-per-unit value required, use the overloaded method that
         /// accepts a metersPerUnit parameter.
         /// </remarks>
         /// <param name="runtimeMapResourceId"></param>
@@ -2142,8 +2142,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <remarks>
         /// Calculation of meters-per-unit may differ between implementations. This may have an adverse
         /// effect on things such as rendering and measuring depending on the underlying implementation
-        /// 
-        /// If you are certain of the meters-per-unit value required, use the overloaded method that 
+        ///
+        /// If you are certain of the meters-per-unit value required, use the overloaded method that
         /// accepts a metersPerUnit parameter.
         /// </remarks>
         /// <param name="runtimeMapResourceId"></param>
@@ -2188,7 +2188,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
-        /// Creates a new runtime map instance from an existing map definition.  The runtime map resource id is calculated from the 
+        /// Creates a new runtime map instance from an existing map definition.  The runtime map resource id is calculated from the
         /// current session id and the name component of the Map Definition resource id
         /// </summary>
         /// <param name="mdf"></param>
@@ -2199,7 +2199,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
-        /// Creates a new runtime map instance from an existing map definition.  The runtime map resource id is calculated from the 
+        /// Creates a new runtime map instance from an existing map definition.  The runtime map resource id is calculated from the
         /// current session id and the name component of the Map Definition resource id
         /// </summary>
         /// <param name="mdf"></param>
@@ -2244,8 +2244,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <remarks>
         /// Calculation of meters-per-unit may differ between implementations. This may have an adverse
         /// effect on things such as rendering and measuring depending on the underlying implementation
-        /// 
-        /// If you are certain of the meters-per-unit value required, use the overloaded method that 
+        ///
+        /// If you are certain of the meters-per-unit value required, use the overloaded method that
         /// accepts a metersPerUnit parameter.
         /// </remarks>
         /// <param name="runtimeMapResourceId"></param>
@@ -2263,8 +2263,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <remarks>
         /// Calculation of meters-per-unit may differ between implementations. This may have an adverse
         /// effect on things such as rendering and measuring depending on the underlying implementation
-        /// 
-        /// If you are certain of the meters-per-unit value required, use the overloaded method that 
+        ///
+        /// If you are certain of the meters-per-unit value required, use the overloaded method that
         /// accepts a metersPerUnit parameter.
         /// </remarks>
         /// <param name="runtimeMapResourceId"></param>
@@ -2327,7 +2327,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             map.IsDirty = false;
             return map;
         }
-        #endregion
+
+        #endregion runtime map
 
         #region Load Procedure
 
@@ -2359,6 +2360,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             return cmd.Execute(resourceID, callback);
         }
 
-        #endregion
+        #endregion Load Procedure
     }
 }

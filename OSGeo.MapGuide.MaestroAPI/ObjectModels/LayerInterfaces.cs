@@ -1,35 +1,32 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using System.Drawing;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.MaestroAPI.Services;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI;
-using System.ComponentModel;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
 {
@@ -41,7 +38,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     [System.SerializableAttribute()]
     public enum LengthUnitType
     {
-
         /// <remarks/>
         Millimeters,
 
@@ -76,7 +72,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     [System.SerializableAttribute()]
     public enum SizeContextType
     {
-
         /// <remarks/>
         MappingUnits,
 
@@ -90,7 +85,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     [System.SerializableAttribute()]
     public enum ShapeType
     {
-
         /// <remarks/>
         Square,
 
@@ -116,7 +110,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     [System.SerializableAttribute()]
     public enum BackgroundStyleType
     {
-
         /// <remarks/>
         Transparent,
 
@@ -133,7 +126,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     [System.SerializableAttribute()]
     public enum FeatureNameType
     {
-
         /// <remarks/>
         FeatureClass,
 
@@ -148,7 +140,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     [System.Xml.Serialization.XmlTypeAttribute(IncludeInSchema = false)]
     public enum ItemChoiceType
     {
-
         /// <remarks/>
         Band,
 
@@ -159,7 +150,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         ExplicitColor,
     }
 
-    #endregion
+    #endregion core enums
 
     #region core
 
@@ -172,10 +163,12 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// DWF-based drawing layer
         /// </summary>
         Drawing,
+
         /// <summary>
         /// Vector layer
         /// </summary>
         Vector,
+
         /// <summary>
         /// Raster layer
         /// </summary>
@@ -271,7 +264,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// </summary>
         /// <returns></returns>
         IPointSymbolization2D CreateDefaultPointSymbolization2D();
-        
+
         /// <summary>
         /// Creates a default stroke
         /// </summary>
@@ -305,7 +298,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// </summary>
         /// <returns></returns>
         ILineRule CreateDefaultLineRule();
-        
+
         /// <summary>
         /// Creates a default point rule
         /// </summary>
@@ -484,7 +477,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
 
         /// <summary>
         /// Gets the property mappings for this layer. This determines which properties
-        /// are displayed (and what labels to use) in the property pane and 
+        /// are displayed (and what labels to use) in the property pane and
         /// </summary>
         IEnumerable<INameStringPair> PropertyMapping { get; }
 
@@ -573,6 +566,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// The content.
         /// </value>
         string Content { get; set; }
+
         /// <summary>
         /// Gets or sets the description of the URL. This can be a string FDO expression
         /// </summary>
@@ -580,6 +574,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// The description.
         /// </value>
         string Description { get; set; }
+
         /// <summary>
         /// Gets or sets the override of URL content for a specific feature which can be a string FDO expression
         /// </summary>
@@ -587,6 +582,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// The content override.
         /// </value>
         string ContentOverride { get; set; }
+
         /// <summary>
         /// Gets or sets the override of URL description for a specific feature which can be a string FDO expression
         /// </summary>
@@ -679,7 +675,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         double MaxScale { get; set; }
     }
 
-    #endregion
+    #endregion core
 
     #region vector layer
 
@@ -723,7 +719,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// The stylization to be applied to the vector features for a given scale range. Supports elevation, extrusion settings
     /// and Advanced Stylization through composite styles
-    /// 
+    ///
     /// Supported by Layer Definition 1.1.0 and higher
     /// </summary>
     public interface IVectorScaleRange2 : IVectorScaleRange
@@ -793,19 +789,22 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     public enum StyleType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Area,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Line,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Point,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Composite
     }
@@ -877,18 +876,21 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="index"></param>
         /// <returns></returns>
         IVectorRule GetRuleAt(int index);
+
         /// <summary>
         /// Gets the index of the specified rule
         /// </summary>
         /// <param name="rule">The rule.</param>
         /// <returns></returns>
         int IndexOfRule(IVectorRule rule);
+
         /// <summary>
         /// Moves the specified rule up the list
         /// </summary>
         /// <param name="rule">The rule.</param>
         /// <returns></returns>
         bool MoveUp(IVectorRule rule);
+
         /// <summary>
         /// Moves the specified rule down the list
         /// </summary>
@@ -909,18 +911,21 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="rule"></param>
         /// <returns></returns>
         int IndexOfRule(TRule rule);
+
         /// <summary>
         /// Gets the rule at the specified index
         /// </summary>
         /// <param name="index">The index.</param>
         /// <returns></returns>
         TRule GetRuleAt(int index);
+
         /// <summary>
         /// Moves the specified rule up the list
         /// </summary>
         /// <param name="rule">The rule.</param>
         /// <returns></returns>
         bool MoveUp(TRule rule);
+
         /// <summary>
         /// Moves the specified rule down the list
         /// </summary>
@@ -970,7 +975,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// Base interface for style rules of all geometric types
     /// </summary>
-    public interface IVectorRule 
+    public interface IVectorRule
     {
         /// <summary>
         /// Gets or sets the label for the rule to be displayed in the legend
@@ -1045,7 +1050,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     public interface IAreaRule : IBasicVectorRule
     {
         /// <summary>
-        /// Gets or sets the polygon stylization settings 
+        /// Gets or sets the polygon stylization settings
         /// </summary>
         IAreaSymbolizationFill AreaSymbolization2D { get; set; }
     }
@@ -1113,22 +1118,27 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// A textual symbol
         /// </summary>
         Text,
+
         /// <summary>
         /// A predefined shape such as a square or circle.
         /// </summary>
         Mark,
+
         /// <summary>
         /// A raster or image symbol.  Note that these do not scale well, but sometimes this is all that you have.  Supported formats are application specific.
         /// </summary>
         Image,
+
         /// <summary>
         /// A symbol specified using a font character
         /// </summary>
         Font,
+
         /// <summary>
         /// A vector symbol defined using a W2D stream
         /// </summary>
         W2D,
+
         /// <summary>
         /// A vector symbol specifed from a block
         /// </summary>
@@ -1360,17 +1370,18 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     public enum ImageSymbolReferenceType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SymbolReference,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Inline
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IBaseImageSymbol
     {
@@ -1469,7 +1480,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         string ForegroundColor { get; set; }
     }
 
-    #endregion
+    #endregion vector layer
 
     #region raster layer
 
@@ -1782,7 +1793,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         IGridSurfaceStyle CreateSurfaceStyle();
     }
 
-    #endregion
+    #endregion raster layer
 
     #region Layer Definition 1.1.0 interfaces
 
@@ -1792,7 +1803,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     [System.SerializableAttribute()]
     public enum ElevationTypeType
     {
-
         /// <remarks/>
         RelativeToGround,
 
@@ -1978,16 +1988,19 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// </summary>
         /// <value>The Z offset.</value>
         string ZOffset { get; set; }
+
         /// <summary>
         /// Gets or sets the Z extrusion.
         /// </summary>
         /// <value>The Z extrusion.</value>
         string ZExtrusion { get; set; }
+
         /// <summary>
         /// Gets or sets the type of the Z offset.
         /// </summary>
         /// <value>The type of the Z offset.</value>
         ElevationTypeType ZOffsetType { get; set; }
+
         /// <summary>
         /// Gets or sets the unit.
         /// </summary>
@@ -1995,7 +2008,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         LengthUnitType Unit { get; set; }
     }
 
-    #endregion
+    #endregion Layer Definition 1.1.0 interfaces
 
     #region Layer Definition 1.2.0 interfaces
 
@@ -2005,7 +2018,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     [System.SerializableAttribute()]
     public enum UsageContextType
     {
-
         /// <remarks/>
         Unspecified,
 
@@ -2025,7 +2037,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     [System.SerializableAttribute()]
     public enum GeometryContextType
     {
-
         /// <remarks/>
         Unspecified,
 
@@ -2091,7 +2102,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         GeometryContextType GeometryContext { get; set; }
     }
 
-    #endregion
+    #endregion Layer Definition 1.2.0 interfaces
 
     #region Layer Definition 1.3.0 interfaces
 
@@ -2143,8 +2154,5 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         bool ShowInLegend { get; set; }
     }
 
-    #endregion
-
-    #region Layer Definition 2.3.0 interfaces
-    #endregion
+    #endregion Layer Definition 1.3.0 interfaces
 }

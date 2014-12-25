@@ -1,29 +1,28 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
-using System.Drawing;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using System.Windows.Forms;
 
 namespace Maestro.Base.UI
 {
@@ -65,13 +64,13 @@ namespace Maestro.Base.UI
         private ImageList _small;
         private ImageList _large;
 
-        private ResourceIconCache() 
+        private ResourceIconCache()
         {
             _small = new ImageList();
             _large = new ImageList();
         }
 
-        const string UNKNOWN = "UNKNOWN"; //NOXLATE
+        private const string UNKNOWN = "UNKNOWN"; //NOXLATE
 
         /// <summary>
         /// Creates the default image lists
@@ -127,6 +126,7 @@ namespace Maestro.Base.UI
                 case "SymbolLibrary":
                 case "PrintLayout":
                     return rt.ToString();
+
                 default:
                     return UNKNOWN;
             }
@@ -152,7 +152,7 @@ namespace Maestro.Base.UI
         /// </summary>
         public ImageList SmallImageList
         {
-            get { return _small;  }
+            get { return _small; }
         }
 
         /// <summary>

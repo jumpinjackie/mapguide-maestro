@@ -1,43 +1,43 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Linq;
-using System.Windows.Forms;
-using Maestro.Shared.UI;
+//
+
+#endregion Disclaimer / License
+
 using Aga.Controls.Tree;
-using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using Maestro.Editors.Common;
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Tile;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.MapDefinition
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public delegate void OpenLayerEventHandler(object sender, string layerResourceId);
 
@@ -53,7 +53,7 @@ namespace Maestro.Editors.MapDefinition
             trvLayersGroup.KeyUp += WeakEventHandler.Wrap<KeyEventHandler>(trvLayersGroup_KeyUp, (eh) => trvLayersGroup.KeyUp -= eh);
         }
 
-        void trvLayersGroup_KeyUp(object sender, KeyEventArgs e)
+        private void trvLayersGroup_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
             {
@@ -84,7 +84,7 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        void trvLayerDrawingOrder_KeyUp(object sender, KeyEventArgs e)
+        private void trvLayerDrawingOrder_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
             {
@@ -103,7 +103,7 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        void trvBaseLayers_KeyUp(object sender, KeyEventArgs e)
+        private void trvBaseLayers_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
             {
@@ -206,9 +206,10 @@ namespace Maestro.Editors.MapDefinition
             propertiesPanel.Controls.Add(item);
         }
 
-        class LocalizedDisplayNameAttribute : DisplayNameAttribute
+        private class LocalizedDisplayNameAttribute : DisplayNameAttribute
         {
             private readonly string resourceName;
+
             public LocalizedDisplayNameAttribute(string resourceName)
                 : base()
             {
@@ -371,7 +372,7 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        #endregion
+        #endregion Designer Attributes
 
         private Control CreateGroupControl(GroupItem group)
         {
@@ -389,7 +390,7 @@ namespace Maestro.Editors.MapDefinition
 
             ctrl.Controls.Add(commCtrl);
             ctrl.Controls.Add(item);
-            
+
             ctrl.Dock = DockStyle.Fill;
 
             return ctrl;
@@ -403,7 +404,7 @@ namespace Maestro.Editors.MapDefinition
             commCtrl.Dock = DockStyle.Fill;
 
             List<object> values = new List<object>();
-            for (int i = 0; i < nodes.Count; i++ )
+            for (int i = 0; i < nodes.Count; i++)
             {
                 var grp = nodes[i].Tag as GroupItem;
                 var lyr = nodes[i].Tag as LayerItem;
@@ -497,7 +498,7 @@ namespace Maestro.Editors.MapDefinition
             return ctrl;
         }
 
-        #endregion
+        #endregion Control Factories
 
         private void OnDynamicLayerItemSelected(LayerItem layer)
         {
@@ -514,9 +515,9 @@ namespace Maestro.Editors.MapDefinition
             propertiesPanel.Controls.Add(item);
         }
 
-        static bool AllLayers(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
+        private static bool AllLayers(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
         {
-            foreach(var node in nodes)
+            foreach (var node in nodes)
             {
                 var layer = node.Tag as LayerItem;
                 if (layer == null)
@@ -525,7 +526,7 @@ namespace Maestro.Editors.MapDefinition
             return true;
         }
 
-        static bool AllBaseLayers(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
+        private static bool AllBaseLayers(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
         {
             foreach (var node in nodes)
             {
@@ -536,7 +537,7 @@ namespace Maestro.Editors.MapDefinition
             return true;
         }
 
-        static bool AllGroups(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
+        private static bool AllGroups(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
         {
             foreach (var node in nodes)
             {
@@ -547,7 +548,7 @@ namespace Maestro.Editors.MapDefinition
             return true;
         }
 
-        static bool AllBaseGroups(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
+        private static bool AllBaseGroups(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
         {
             foreach (var node in nodes)
             {
@@ -840,7 +841,6 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-       
         private void btnDLMoveLayerTop_Click(object sender, EventArgs e)
         {
             var layer = GetSelectedDrawOrderItem() as LayerItem;
@@ -874,7 +874,7 @@ namespace Maestro.Editors.MapDefinition
             foreach (var node in tree.AllNodes)
             {
                 var tag = node.Tag as TaggedType;
-                
+
                 if (tag != null && predicate(tag))
                 {
                     selectedNode = node;
@@ -1280,7 +1280,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnMoveLayerOrGroupUp_Click(object sender, EventArgs e)
         {
-            object item = GetSelectedLayerGroupItem(); 
+            object item = GetSelectedLayerGroupItem();
             var group = item as GroupItem;
             var layer = item as LayerItem;
             if (group != null)
@@ -1585,7 +1585,7 @@ namespace Maestro.Editors.MapDefinition
 
                         grp = parent;
                     }
-                }        
+                }
             }
             return false;
         }
@@ -1608,7 +1608,6 @@ namespace Maestro.Editors.MapDefinition
                 }
                 else
                 {
-
                     e.Effect = DragDropEffects.Move;
                 }
             }
@@ -1923,9 +1922,11 @@ namespace Maestro.Editors.MapDefinition
                     case 0: //Logical
                         RestoreLayerSelection(_activeLayer);
                         break;
+
                     case 1: //Draw Order
                         RestoreDrawOrderSelection(_activeLayer);
                         break;
+
                     default:
                         _activeLayer = null;
                         break;

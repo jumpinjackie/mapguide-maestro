@@ -1,32 +1,34 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using GeoAPI.Geometries;
+using OSGeo.MapGuide.MaestroAPI.Schema;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using GeoAPI.Geometries;
 
 namespace OSGeo.MapGuide.MaestroAPI.Feature
 {
     /// <summary>
-    /// Provides a forward-only, read-only iterator for reading data. You must call <see cref="ReadNext"/> 
+    /// Provides a forward-only, read-only iterator for reading data. You must call <see cref="ReadNext"/>
     /// before you can access any data
     /// </summary>
     /// <remarks>
@@ -39,13 +41,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     public interface IReader : IDisposable, IRecord
     {
         /// <summary>
-        /// Advances the reader to the next item and determines whether there is another object to read. 
+        /// Advances the reader to the next item and determines whether there is another object to read.
         /// </summary>
         /// <returns></returns>
         bool ReadNext();
 
         /// <summary>
-        /// Closes the object, freeing any resources it may be holding. 
+        /// Closes the object, freeing any resources it may be holding.
         /// </summary>
         void Close();
     }
@@ -59,10 +61,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// The reader is a Data Reader
         /// </summary>
         Data = 1,
+
         /// <summary>
         /// The reader is a SQL Reader
         /// </summary>
         Sql = 2,
+
         /// <summary>
         /// The reader is a Feature Reader
         /// </summary>
@@ -201,7 +205,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <param name="name"></param>
         /// <returns></returns>
         short GetInt16(string name);
-        
+
         /// <summary>
         /// Gets the int32 value of the specified property
         /// </summary>
@@ -278,7 +282,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <param name="index"></param>
         /// <returns></returns>
         DateTime GetDateTime(int index);
-        
+
         /// <summary>
         /// Gets the int16 value at the specified index
         /// </summary>
@@ -292,7 +296,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <param name="index"></param>
         /// <returns></returns>
         int GetInt32(int index);
-        
+
         /// <summary>
         /// Gets the int64 value at the specified index
         /// </summary>
@@ -313,7 +317,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <param name="index"></param>
         /// <returns></returns>
         string GetString(int index);
-        
+
         /// <summary>
         /// Gets the geometry value at the specified index
         /// </summary>
@@ -344,6 +348,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <param name="name">The name.</param>
         /// <returns></returns>
         PropertyValueType GetPropertyType(string name);
+
         /// <summary>
         /// Gets the type of the property at the specified index.
         /// </summary>

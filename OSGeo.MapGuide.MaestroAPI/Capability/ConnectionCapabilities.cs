@@ -1,28 +1,30 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using OSGeo.MapGuide.MaestroAPI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.MaestroAPI.Exceptions;
 
 namespace OSGeo.MapGuide.MaestroAPI.Capability
 {
@@ -34,7 +36,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         /// <summary>
         /// Resource types supported on *all* versions of MapGuide
         /// </summary>
-        static string [] _defaultResTypes = new string[] 
+        private static string[] _defaultResTypes = new string[]
         {
             //ResourceTypes.RuntimeMap.ToString(),
             //ResourceTypes.Selection.ToString(),
@@ -78,21 +80,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
                     if (!SupportsFusion())
                         throw new UnsupportedResourceTypeException("ApplicationDefinition");
                     break;
+
                 case "WatermarkDefinition":
                     ver = GetMaxWatermarkDefinitionVersion();
                     break;
+
                 case "MapDefinition":
                     ver = GetMaxMapDefinitionVersion();
                     break;
+
                 case "LayerDefinition":
                     ver = GetMaxLayerDefinitionVersion();
                     break;
+
                 case "LoadProcedure":
                     ver = GetMaxLoadProcedureVersion();
                     break;
+
                 case "WebLayout":
                     ver = GetMaxWebLayoutVersion();
                     break;
+
                 case "SymbolDefinition":
                     if (!SupportsAdvancedSymbols())
                         throw new UnsupportedResourceTypeException("SymbolDefinition");
@@ -206,7 +214,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
                 return new Version(1, 2, 0);
             if (_parent.SiteVersion >= new Version(1, 2))
                 return new Version(1, 1, 0);
-            
+
             return new Version(1, 0, 0);
         }
 
@@ -328,7 +336,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         /// </summary>
         public string[] SupportedResourceTypes
         {
-            get 
+            get
             {
                 var ver = _parent.SiteVersion;
                 var types = new HashSet<string>(_defaultResTypes);

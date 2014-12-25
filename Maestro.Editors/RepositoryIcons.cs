@@ -1,26 +1,26 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
-using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI;
 using System.Windows.Forms;
 
 namespace Maestro.Editors
@@ -34,46 +34,57 @@ namespace Maestro.Editors
         /// Icon for resource types
         /// </summary>
         public const int RES_UNKNOWN = 0;
+
         /// <summary>
         /// Icon for feature sources
         /// </summary>
         public const int RES_FEATURESOURCE = 1;
+
         /// <summary>
         /// Icon for layer definitions
         /// </summary>
         public const int RES_LAYERDEFINITION = 2;
+
         /// <summary>
         /// Icon for map definitions
         /// </summary>
         public const int RES_MAPDEFINITION = 3;
+
         /// <summary>
         /// Icon for web layouts
         /// </summary>
         public const int RES_WEBLAYOUT = 4;
+
         /// <summary>
         /// Icon for symbol libraries
         /// </summary>
         public const int RES_SYMBOLLIBRARY = 5;
+
         /// <summary>
         /// Icon for print layouts
         /// </summary>
         public const int RES_PRINTLAYOUT = 6;
+
         /// <summary>
         /// Icon for drawing sources
         /// </summary>
         public const int RES_DRAWINGSOURCE = 7;
+
         /// <summary>
         /// Icon for application definitions
         /// </summary>
         public const int RES_APPLICATIONDEFINITION = 8;
+
         /// <summary>
         /// Icon for symbol definitions
         /// </summary>
         public const int RES_SYMBOLDEFINITION = 9;
+
         /// <summary>
         /// Icon for watermark definitions
         /// </summary>
         public const int RES_WATERMARK = 10;
+
         /// <summary>
         /// Icon for load procedures
         /// </summary>
@@ -83,6 +94,7 @@ namespace Maestro.Editors
         /// Icon for the root of the repository
         /// </summary>
         public const int RES_ROOT = 12;
+
         /// <summary>
         /// Icon for folders
         /// </summary>
@@ -99,28 +111,40 @@ namespace Maestro.Editors
             {
                 case "ApplicationDefinition":
                     return RES_APPLICATIONDEFINITION;
+
                 case "DrawingSource":
                     return RES_DRAWINGSOURCE;
+
                 case "FeatureSource":
                     return RES_FEATURESOURCE;
+
                 case "Folder":
                     return RES_FOLDER;
+
                 case "LayerDefinition":
                     return RES_LAYERDEFINITION;
+
                 case "LoadProcedure":
                     return RES_LOADPROCEDURE;
+
                 case "MapDefinition":
                     return RES_MAPDEFINITION;
+
                 case "PrintLayout":
                     return RES_PRINTLAYOUT;
+
                 case "SymbolDefinition":
                     return RES_SYMBOLDEFINITION;
+
                 case "SymbolLibrary":
                     return RES_SYMBOLLIBRARY;
+
                 case "WatermarkDefinition":
                     return RES_WATERMARK;
+
                 case "WebLayout":
                     return RES_WEBLAYOUT;
+
                 default:
                     throw new ArgumentException();
             }

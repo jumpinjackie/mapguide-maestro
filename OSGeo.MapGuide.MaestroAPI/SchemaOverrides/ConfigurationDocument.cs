@@ -1,27 +1,29 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.ObjectModels.Common;
+using System;
+using System.Collections.Generic;
 using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
@@ -44,8 +46,8 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <summary>
         /// Initializes a new instance of the <see cref="ConfigurationDocument"/> class.
         /// </summary>
-        protected ConfigurationDocument() 
-        { 
+        protected ConfigurationDocument()
+        {
             _spatialContexts = new List<IFdoSpatialContext>();
             _schemas = new List<FeatureSchema>();
         }
@@ -64,13 +66,19 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// Adds the spatial context.
         /// </summary>
         /// <param name="context">The context.</param>
-        public void AddSpatialContext(IFdoSpatialContext context) { _spatialContexts.Add(context); }
+        public void AddSpatialContext(IFdoSpatialContext context)
+        {
+            _spatialContexts.Add(context);
+        }
 
         /// <summary>
         /// Removes the spatial context.
         /// </summary>
         /// <param name="context">The context.</param>
-        public void RemoveSpatialContext(IFdoSpatialContext context) { _spatialContexts.Remove(context); }
+        public void RemoveSpatialContext(IFdoSpatialContext context)
+        {
+            _spatialContexts.Remove(context);
+        }
 
         /// <summary>
         /// Gets the spatial context by name
@@ -107,13 +115,19 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// Adds the logical schema.
         /// </summary>
         /// <param name="schema">The schema.</param>
-        public void AddSchema(FeatureSchema schema) { _schemas.Add(schema); }
+        public void AddSchema(FeatureSchema schema)
+        {
+            _schemas.Add(schema);
+        }
 
         /// <summary>
         /// Removes the logical schema.
         /// </summary>
         /// <param name="schema">The schema.</param>
-        public void RemoveSchema(FeatureSchema schema) { _schemas.Remove(schema); }
+        public void RemoveSchema(FeatureSchema schema)
+        {
+            _schemas.Remove(schema);
+        }
 
         /// <summary>
         /// Gets the schema by name.
@@ -164,7 +178,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             {
                 sc.WriteXml(doc, dstore);
             }
-            
+
             WriteSchemaMappings(doc, dstore);
             currentNode.AppendChild(dstore);
         }
@@ -257,9 +271,9 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             //Sample the first schema mapping node. Even if there are multiples
             //they will all be the same provider
 
-            //NOTE: Why does the XPath query (commented out) fail? 
+            //NOTE: Why does the XPath query (commented out) fail?
 
-            var map = root.LastChild; //root.SelectSingleNode("SchemaMapping"); 
+            var map = root.LastChild; //root.SelectSingleNode("SchemaMapping");
             if (map != null && map.Name == "SchemaMapping") //NOXLATE
             {
                 var prov = map.Attributes["provider"]; //NOXLATE

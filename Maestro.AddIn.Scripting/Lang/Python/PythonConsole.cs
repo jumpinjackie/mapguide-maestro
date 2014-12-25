@@ -1,7 +1,8 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // Original code from SharpDevelop 3.2.1 licensed under the same terms (LGPL 2.1)
 // Copyright 2002-2010 by
 //
@@ -13,22 +14,24 @@
 //  email: office@alphasierrapapa.com
 //  court of jurisdiction: Landesgericht Leoben
 //
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using ICSharpCode.TextEditor.Document;
 using Maestro.AddIn.Scripting.Services;
 using Maestro.Editors.Common;
@@ -37,8 +40,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -46,15 +47,15 @@ namespace Maestro.AddIn.Scripting.Lang.Python
 {
     internal class PythonConsole : IConsole, IDisposable, IMemberProvider
     {
-        ITextEditor textEditor;
-        int lineReceivedEventIndex = 0; // The index into the waitHandles array where the lineReceivedEvent is stored.
-        ManualResetEvent lineReceivedEvent = new ManualResetEvent(false);
-        ManualResetEvent disposedEvent = new ManualResetEvent(false);
-        WaitHandle[] waitHandles;
-        int promptLength;
-        List<string> previousLines = new List<string>();
-        CommandLine commandLine;
-        CommandLineHistory commandLineHistory = new CommandLineHistory();
+        private ITextEditor textEditor;
+        private int lineReceivedEventIndex = 0; // The index into the waitHandles array where the lineReceivedEvent is stored.
+        private ManualResetEvent lineReceivedEvent = new ManualResetEvent(false);
+        private ManualResetEvent disposedEvent = new ManualResetEvent(false);
+        private WaitHandle[] waitHandles;
+        private int promptLength;
+        private List<string> previousLines = new List<string>();
+        private CommandLine commandLine;
+        private CommandLineHistory commandLineHistory = new CommandLineHistory();
 
         public CommandLine CommandLine { get { return this.commandLine; } }
 
@@ -82,16 +83,16 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         {
             get
             {
-            #if DEBUG
+#if DEBUG
                 Console.WriteLine("PythonConsole.Output get");
-            #endif
+#endif
                 return null;
             }
             set
             {
-            #if DEBUG
+#if DEBUG
                 Console.WriteLine("PythonConsole.Output set");
-            #endif
+#endif
             }
         }
 
@@ -99,16 +100,16 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         {
             get
             {
-            #if DEBUG
+#if DEBUG
                 Console.WriteLine("PythonConsole.ErrorOutput get");
-            #endif
+#endif
                 return null;
             }
             set
             {
-            #if DEBUG
+#if DEBUG
                 Console.WriteLine("PythonConsole.ErrorOutput get");
-            #endif
+#endif
             }
         }
 
@@ -131,9 +132,9 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// </summary>
         public string ReadLine(int autoIndentSize)
         {
-        #if DEBUG
+#if DEBUG
             Console.WriteLine("PythonConsole.ReadLine(): autoIndentSize: " + autoIndentSize);
-        #endif
+#endif
             string indent = String.Empty;
             if (autoIndentSize > 0)
             {
@@ -144,9 +145,9 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             string line = ReadLineFromTextEditor();
             if (line != null)
             {
-            #if DEBUG
+#if DEBUG
                 Console.WriteLine("ReadLine: " + indent + line);
-            #endif
+#endif
                 return indent + line;
             }
             return null;
@@ -159,9 +160,9 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// </summary>
         public void Write(string text, Style style)
         {
-        #if DEBUG
+#if DEBUG
             Console.WriteLine("PythonConsole.Write(text, style): " + text);
-        #endif
+#endif
             if (style == Style.Error)
                 textEditor.Write(text, Color.Red, Color.White);
             else if (style == Style.Warning)
@@ -232,12 +233,12 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             return previousLines.ToArray();
         }
 
-        string GetLastTextEditorLine()
+        private string GetLastTextEditorLine()
         {
             return textEditor.GetLine(textEditor.TotalLines - 1);
         }
 
-        string ReadLineFromTextEditor()
+        private string ReadLineFromTextEditor()
         {
             int result = WaitHandle.WaitAny(waitHandles);
             if (result == lineReceivedEventIndex)
@@ -259,7 +260,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// <summary>
         /// Processes characters entered into the text editor by the user.
         /// </summary>
-        bool ProcessKeyPress(char ch)
+        private bool ProcessKeyPress(char ch)
         {
             if (IsInReadOnlyRegion)
             {
@@ -281,7 +282,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// <summary>
         /// Process dialog keys such as the enter key when typed into the editor by the user.
         /// </summary>
-        bool ProcessDialogKeyPress(Keys keyData)
+        private bool ProcessDialogKeyPress(Keys keyData)
         {
             if (textEditor.ProcessKeyPress(keyData))
                 return true;
@@ -300,6 +301,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
                     case Keys.Up:
                     case Keys.Down:
                         return false;
+
                     default:
                         return true;
                 }
@@ -309,12 +311,15 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             {
                 case Keys.Back:
                     return !CanBackspace;
+
                 case Keys.Home:
                     MoveToHomePosition();
                     return true;
+
                 case Keys.Down:
                     MoveToNextCommandLine();
                     return true;
+
                 case Keys.Up:
                     MoveToPreviousCommandLine();
                     return true;
@@ -325,7 +330,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// <summary>
         /// Move cursor to the end of the line before retrieving the line.
         /// </summary>
-        void OnEnterKeyPressed()
+        private void OnEnterKeyPressed()
         {
             lock (previousLines)
             {
@@ -344,7 +349,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// <summary>
         /// Returns true if the cursor is in a readonly text editor region.
         /// </summary>
-        bool IsInReadOnlyRegion
+        private bool IsInReadOnlyRegion
         {
             get { return IsCurrentLineReadOnly || IsInPrompt; }
         }
@@ -352,7 +357,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// <summary>
         /// Only the last line in the text editor is not read only.
         /// </summary>
-        bool IsCurrentLineReadOnly
+        private bool IsCurrentLineReadOnly
         {
             get { return textEditor.Line < textEditor.TotalLines - 1; }
         }
@@ -360,7 +365,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// <summary>
         /// Determines whether the current cursor position is in a prompt.
         /// </summary>
-        bool IsInPrompt
+        private bool IsInPrompt
         {
             get { return textEditor.Column - promptLength < 0; }
         }
@@ -368,7 +373,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// <summary>
         /// Returns true if the user can backspace at the current cursor position.
         /// </summary>
-        bool CanBackspace
+        private bool CanBackspace
         {
             get
             {
@@ -378,7 +383,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             }
         }
 
-        void ShowCompletionWindow()
+        private void ShowCompletionWindow()
         {
             PythonConsoleCompletionDataProvider completionProvider = new PythonConsoleCompletionDataProvider(this);
             textEditor.ShowCompletionWindow(completionProvider);
@@ -387,7 +392,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// <summary>
         /// The home position is at the start of the line after the prompt.
         /// </summary>
-        void MoveToHomePosition()
+        private void MoveToHomePosition()
         {
             textEditor.Column = promptLength;
         }
@@ -395,7 +400,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// <summary>
         /// Shows the previous command line in the command line history.
         /// </summary>
-        void MoveToPreviousCommandLine()
+        private void MoveToPreviousCommandLine()
         {
             if (commandLineHistory.MovePrevious())
             {
@@ -406,7 +411,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// <summary>
         /// Shows the next command line in the command line history.
         /// </summary>
-        void MoveToNextCommandLine()
+        private void MoveToNextCommandLine()
         {
             if (commandLineHistory.MoveNext())
             {
@@ -417,7 +422,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// <summary>
         /// Replaces the current line text after the prompt with the specified text.
         /// </summary>
-        void ReplaceCurrentLineTextAfterPrompt(string text)
+        private void ReplaceCurrentLineTextAfterPrompt(string text)
         {
             string currentLine = GetCurrentLine();
             textEditor.Replace(promptLength, currentLine.Length, text);

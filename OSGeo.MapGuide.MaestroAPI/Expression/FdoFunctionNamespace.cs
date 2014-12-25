@@ -1,26 +1,28 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using GeoAPI.Geometries;
+using System;
+using System.Text;
 
 #pragma warning disable 1591, 0114, 0108
 
@@ -28,7 +30,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Expression
 {
     /// <summary>
     /// Expression class that implements the standard FDO expression functions.
-    /// 
+    ///
     /// Despite the modifier. This class is for Expression Engine use only.
     /// </summary>
     public static class FdoFunctionNamespace
@@ -40,10 +42,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Expression
         // testing for nulls, test for DBNull.Value
         //
 
-        #region Aggregate
-        #endregion
-
         #region Conversion
+
         public static object NullValue(object first, object second)
         {
             return first == DBNull.Value ? second : first;
@@ -78,9 +78,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expression
         {
             return Coalesce(value);
         }
-        #endregion
+
+        #endregion Conversion
 
         #region Date
+
         public static DateTime AddMonths(object value, object months)
         {
             return Convert.ToDateTime(value).AddMonths(Convert.ToInt32(months));
@@ -105,7 +107,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Expression
         {
             throw new NotImplementedException();
         }
-        #endregion
+
+        #endregion Date
 
         #region Geometry
 
@@ -151,9 +154,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Expression
             return double.NaN;
         }
 
-        #endregion
+        #endregion Geometry
 
         #region Math
+
         public static double Abs(object value)
         {
             return Math.Abs(Convert.ToDouble(value));
@@ -233,10 +237,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expression
         {
             return Math.Tan(Convert.ToDouble(value));
         }
-        #endregion
+
+        #endregion Math
 
         #region Numeric
-        
+
         public static double Ceil(double value)
         {
             return Math.Ceiling(value);
@@ -261,9 +266,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expression
         {
             return Math.Truncate(value);
         }
-        #endregion
+
+        #endregion Numeric
 
         #region String
+
         /// <summary>
         /// Returns a concatenated result of 2 string expressions
         /// </summary>
@@ -395,7 +402,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Expression
             // |           the that resulted from step 4.
             // |   Step 6: Remove all the zeros from the string that resulted from step 5.
             // |   Step 7: Pad the string resulting from step 6 with trailing zeros and
-            // |           return the first 4 positions (resulting in a string of the 
+            // |           return the first 4 positions (resulting in a string of the
             // |           structure <letter><number><number><number>).
             // +---------------------------------------------------------------------------
             throw new NotImplementedException();
@@ -440,6 +447,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Expression
         {
             return Coalesce(str).ToUpper();
         }
-        #endregion
+
+        #endregion String
     }
 }

@@ -1,33 +1,35 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Services;
+//
+
+#endregion Disclaimer / License
+
 using Maestro.Editors.Common;
-using System.ComponentModel;
-using System.IO;
-using OSGeo.MapGuide.MaestroAPI.Resource;
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using System;
+using System.ComponentModel;
+using System.IO;
+using System.Text;
 
 namespace Maestro.Editors
 {
@@ -40,6 +42,7 @@ namespace Maestro.Editors
         /// The server connection
         /// </summary>
         protected IServerConnection _conn;
+
         /// <summary>
         /// The resource being edited
         /// </summary>
@@ -52,12 +55,12 @@ namespace Maestro.Editors
         /// <param name="conn">The conn.</param>
         /// <remarks>
         /// The editor service does not do live edits of the resource you pass in to this constructor
-        /// 
+        ///
         /// When an editor is modifying a resource, it is not modifying the resource you specify here. It is instead modifying a
-        /// session-based copy of the resource that is created internally by the editor service. On a save action (a call to 
-        /// <see cref="M:Maestro.Editors.ResourceEditorServiceBase.Save"/>), the session-based copy is copied back into the resource 
+        /// session-based copy of the resource that is created internally by the editor service. On a save action (a call to
+        /// <see cref="M:Maestro.Editors.ResourceEditorServiceBase.Save"/>), the session-based copy is copied back into the resource
         /// id you specified, overwriting its contents and data files.
-        /// 
+        ///
         /// This provides an extra level of safety against unintentional edits, as such edits will only apply to the session-copy, only
         /// being committed back to the resource id you specified on an explicit save action.
         /// </remarks>
@@ -284,7 +287,7 @@ namespace Maestro.Editors
         /// </summary>
         public bool IsUpgradeAvailable
         {
-            get 
+            get
             {
                 if (_editCopy == null)
                     return false;

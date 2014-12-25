@@ -42,7 +42,7 @@
         <Class id="SltHandler" class="Maestro.Base.Services.DragDropHandlers.SltFileHandler" />
         <Class id="XmlResHandler" class="Maestro.Base.Services.DragDropHandlers.XmlResFileHandler" />
     </Path>
-    
+
     <!-- Registered editors -->
     <Path name="/Maestro/Editors">
         <Class id="FusionEditor100" class="Maestro.Base.Editor.FusionEditorFactory" />
@@ -73,7 +73,7 @@
         <Class id="CompoundSymbol100" class="Maestro.Base.Templates.CompoundSymbolDefinitionItemTemplate" />
         <Class id="WebLayout100" class="Maestro.Base.Templates.WebLayoutItemTemplate" />
     </Path>
-    
+
     <!-- Main Menu Definition -->
     <Path name="/Maestro/Shell/MainMenu">
         <MenuItem id="Menu_File"
@@ -200,7 +200,7 @@
             <MenuItem id="Menu_Tools_Options"
                       label="${res:Menu_Tools_Options}"
                       icon="application_task"
-                      class="Maestro.Base.Commands.OptionsCommand"/>
+                      class="Maestro.Base.Commands.OptionsCommand" />
         </MenuItem>
         <MenuItem id="Menu_Window"
                   type="Menu"
@@ -236,7 +236,7 @@
             <MenuItem id="EditPackage"
                       label="${res:EditPackage}"
                       icon="box__pencil"
-                      class="Maestro.Base.Commands.EditPackageCommand"/>
+                      class="Maestro.Base.Commands.EditPackageCommand" />
         </MenuItem>
         <MenuItem id="Menu_Help"
                   type="Menu"
@@ -275,7 +275,7 @@
         <Class id="MessageViewer" class="Maestro.Base.UI.MessageViewer" />
         <Class id="OutboundRequestViewer" class="Maestro.Base.UI.OutboundRequestViewer" />
     </Path>
-    
+
     <!-- Toolbar Definition -->
     <Path name="/Maestro/Shell/Toolbars/Main">
         <ToolbarItem id="Connect"
@@ -374,10 +374,10 @@
                          tooltip="${res:Menu_Tools_XmlChanges_Desc}"
                          class="Maestro.Base.Commands.ViewXmlChangesCommand" />
         </Condition>
-        <!-- 
+        <!--
         Only needed if our custom drawn close buttons don't appear on document
-        tabs (I'm looking at you Mono). So far this isn't the case. 
-        
+        tabs (I'm looking at you Mono). So far this isn't the case.
+
         This command is a fallback in case there are problems.
         -->
         <!--
@@ -390,7 +390,7 @@
         </Condition>
         -->
     </Path>
-    
+
     <!-- Site Explorer Toolbar -->
     <Path name="/Maestro/Shell/SiteExplorer/Toolbar">
         <Condition action="Disable" name="NotConnected">
@@ -413,7 +413,7 @@
                          class="Maestro.Base.Commands.SiteExplorer.RefreshCommand" />
         </Condition>
     </Path>
-    
+
     <!-- Site Explorer Context Menu -->
     <Path name="/Maestro/Shell/SiteExplorer/SelectedFolder">
         <Condition action="Disable" name="SelectedItem" type="Folder">
@@ -712,26 +712,25 @@
     <Path id="/Workspace/Tools">
         <MenuItem id="SiteAdmin"
                       label="${res:SiteAdministrator}"
-                      class="Maestro.Base.Commands.SiteAdministratorCommand"/>
+                      class="Maestro.Base.Commands.SiteAdministratorCommand" />
         <MenuItem id="MgCooker"
                   label="${res:MgCooker}"
-                  class="Maestro.Base.Commands.MgCookerCommand"/>
+                  class="Maestro.Base.Commands.MgCookerCommand" />
         <MenuItem id="LocalFsPreview"
                   label="${res:LocalFsPreview}"
-                  class="Maestro.Base.Commands.LocalFeatureSourcePreviewCommand"/>
+                  class="Maestro.Base.Commands.LocalFeatureSourcePreviewCommand" />
         <MenuItem id="RtMapInspector"
                   label="${res:RtMapInspector}"
-                  class="Maestro.Base.Commands.RtMapInspectorCommand"/>
+                  class="Maestro.Base.Commands.RtMapInspectorCommand" />
         <MenuItem id="ServerMonitor"
                   label="${res:ServerMonitor}"
                   icon="system_monitor"
-                  class="Maestro.Base.Commands.ServerMonitorCommand"/>
+                  class="Maestro.Base.Commands.ServerMonitorCommand" />
         <MenuItem id="CacheView"
                   label="${res:CacheView}"
-                  class="Maestro.Base.Commands.CacheViewerCommand"/>
+                  class="Maestro.Base.Commands.CacheViewerCommand" />
         <MenuItem id="LiveMapEditor"
                   label="${res:LiveMapEditor}"
-                  class="Maestro.Base.Commands.LiveMapEditorCommand"/>
+                  class="Maestro.Base.Commands.LiveMapEditorCommand" />
     </Path>
-    
 </AddIn>

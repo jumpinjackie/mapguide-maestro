@@ -1,22 +1,25 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
@@ -34,7 +37,6 @@ using OSGeo.MapGuide.ObjectModels.Capabilities;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.RuntimeMap;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
@@ -49,21 +51,22 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// <summary>
     /// Primary http based connection to the MapGuide Server
     /// </summary>
-    public class HttpServerConnection : MgServerConnectionBase, 
-                                        IServerConnection, 
-                                        IDisposable, 
-                                        IFeatureService, 
-                                        IResourceService, 
-                                        ITileService, 
+    public class HttpServerConnection : MgServerConnectionBase,
+                                        IServerConnection,
+                                        IDisposable,
+                                        IFeatureService,
+                                        IResourceService,
+                                        ITileService,
                                         IMappingService,
                                         IDrawingService,
                                         IFusionService,
                                         ISiteService
     {
-        private RequestBuilder m_reqBuilder;   
-        
+        private RequestBuilder m_reqBuilder;
+
         //These only change after server reboot, so it is probably safe to cache them
         private FeatureProviderRegistry m_featureProviders = null; //SHARED
+
         private Version m_siteVersion; //SHARED
 
         private bool mAnonymousUser = false;
@@ -71,7 +74,6 @@ namespace OSGeo.MapGuide.MaestroAPI
         internal HttpServerConnection()
             : base()
         {
-            
         }
 
         internal HttpServerConnection(RequestBuilder builder)
@@ -98,7 +100,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
-        /// Gets whether this connection was initialised with an Anonymous login. If it was, it will return true. 
+        /// Gets whether this connection was initialised with an Anonymous login. If it was, it will return true.
         /// If this was not, or it was initialised from an existing session id, then it will return false.
         /// </summary>
         public bool IsAnonymous
@@ -207,7 +209,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (initParams[PARAM_UNTESTED] != null)
                 bool.TryParse(initParams[PARAM_UNTESTED], out allowUntestedVersion);
 
-            if (initParams[PARAM_SESSION] != null) 
+            if (initParams[PARAM_SESSION] != null)
             {
                 string sessionid = initParams[PARAM_SESSION];
 
@@ -243,7 +245,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public override ResourceList GetRepositoryResources(string startingpoint, string type, int depth, bool computeChildren)
         {
             string req = m_reqBuilder.EnumerateResources(startingpoint, depth, type, computeChildren);
-            
+
             //TODO: Cache?
             return (ResourceList)DeserializeObject(typeof(ResourceList), this.OpenRead(req));
         }
@@ -253,7 +255,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             get
             {
                 string req = m_reqBuilder.GetFeatureProviders();
-                
+
                 lock (SyncRoot)
                 {
                     if (m_featureProviders == null)
@@ -421,43 +423,43 @@ namespace OSGeo.MapGuide.MaestroAPI
             //Use the old code path if stream is under 50MB (implying seekable too)
             if (stream.CanSeek && stream.Length < 50 * 1024 * 1024)
             {
-    #if DEBUG_LASTMESSAGE
+#if DEBUG_LASTMESSAGE
                 using (System.IO.Stream s = System.IO.File.Open("lastSaveData.bin", System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None))
                     Utility.CopyStream(stream, s);
-    #endif
-                    if (stream.CanSeek)
-                        stream.Position = 0;
+#endif
+                if (stream.CanSeek)
+                    stream.Position = 0;
 
-                    System.IO.MemoryStream outStream = new System.IO.MemoryStream();
-    #if DEBUG_LASTMESSAGE
-                try 
+                System.IO.MemoryStream outStream = new System.IO.MemoryStream();
+#if DEBUG_LASTMESSAGE
+                try
                 {
-    #endif
-                    System.Net.WebRequest req = m_reqBuilder.SetResourceData(resourceid, dataname, datatype, outStream, stream, callback);
-                    req.Credentials = _cred;
-                    outStream.Position = 0;
+#endif
+                System.Net.WebRequest req = m_reqBuilder.SetResourceData(resourceid, dataname, datatype, outStream, stream, callback);
+                req.Credentials = _cred;
+                outStream.Position = 0;
 
-                    //TODO: We need a progress bar for the upload....
-                    req.Timeout = 1000 * 60 * 15;
-                    using (System.IO.Stream rs = req.GetRequestStream())
-                    {
-                        Utility.CopyStream(outStream, rs);
-                        rs.Flush();
-                    }
-                    using (System.IO.Stream resp = req.GetResponse().GetResponseStream())
-                    {
-                        //Do nothing... there is no return value
-                    }
-    #if DEBUG_LASTMESSAGE
-                } 
-                catch 
+                //TODO: We need a progress bar for the upload....
+                req.Timeout = 1000 * 60 * 15;
+                using (System.IO.Stream rs = req.GetRequestStream())
+                {
+                    Utility.CopyStream(outStream, rs);
+                    rs.Flush();
+                }
+                using (System.IO.Stream resp = req.GetResponse().GetResponseStream())
+                {
+                    //Do nothing... there is no return value
+                }
+#if DEBUG_LASTMESSAGE
+                }
+                catch
                 {
                     using (System.IO.Stream s = System.IO.File.OpenWrite("lastPost.txt"))
                         Utility.CopyStream(outStream, s);
 
                     throw;
                 }
-    #endif
+#endif
             }
             else
             {
@@ -488,7 +490,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 }
             }
         }
-        
+
         //Source: http://stackoverflow.com/questions/566462/upload-files-with-httpwebrequest-multipart-form-data
         private void HttpUploadFile(string url, string file, string paramName, string contentType, NameValueCollection nvc, Utility.StreamCopyProgressDelegate callback)
         {
@@ -589,7 +591,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             System.IO.MemoryStream outStream = new System.IO.MemoryStream();
 #if DEBUG_LASTMESSAGE
-            try 
+            try
             {
 #endif
             //Protect against session expired
@@ -630,8 +632,8 @@ namespace OSGeo.MapGuide.MaestroAPI
                     throw;
             }
 #if DEBUG_LASTMESSAGE
-            } 
-            catch 
+            }
+            catch
             {
                 if (outStream.CanSeek)
                     outStream.Position = 0;
@@ -647,7 +649,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             else
                 OnResourceAdded(resourceid);
         }
-        
+
         private void LogResponse(HttpWebResponse resp)
         {
             OnRequestDispatched(string.Format("{0:d} {1} {2} {3}", resp.StatusCode, resp.StatusDescription, resp.Method, GetResponseString(resp)));
@@ -726,10 +728,8 @@ namespace OSGeo.MapGuide.MaestroAPI
                     throw ex2;
                 else
                     throw;
-
             }
         }
-
 
         public override IReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, string[] columns)
         {
@@ -769,7 +769,6 @@ namespace OSGeo.MapGuide.MaestroAPI
                     throw ex2;
                 else
                     throw;
-
             }
         }
 
@@ -859,16 +858,14 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             using (System.IO.Stream resp = this.OpenRead(req))
                 resp.ReadByte();
-                //Do nothing... there is no return value
+            //Do nothing... there is no return value
 
             OnResourceDeleted(resourceID);
         }
 
-        
-
         public override Version SiteVersion
         {
-            get 
+            get
             {
                 lock (SyncRoot)
                 {
@@ -887,21 +884,22 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         private ICoordinateSystemCatalog m_coordsys = null;
-        //TODO: Figure out a strategy for cache invalidation 
+
+        //TODO: Figure out a strategy for cache invalidation
         //TODO: Figure out if this can work with MapGuide EP 1.0 (just exclude it?)
-        public ICoordinateSystemCatalog CoordinateSystemCatalog 
-        { 
-            get 
-            { 
+        public ICoordinateSystemCatalog CoordinateSystemCatalog
+        {
+            get
+            {
                 if (this.SiteVersion < OSGeo.MapGuide.MaestroAPI.SiteVersions.GetVersion(OSGeo.MapGuide.MaestroAPI.KnownSiteVersions.MapGuideOS1_1))
                     return null;
                 else
-                {	
+                {
                     if (m_coordsys == null)
                         m_coordsys = new HttpCoordinateSystemCatalog(this, m_reqBuilder);
                     return m_coordsys;
                 }
-            } 
+            }
         }
 
         public System.IO.Stream ExecuteOperation(System.Collections.Specialized.NameValueCollection param)
@@ -914,13 +912,12 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         public string ServerURI { get { return m_reqBuilder.HostURI; } }
 
-
         /// <summary>
         /// Gets a string that can be used to identify the server by a user
         /// </summary>
         public string DisplayName
         {
-            get 
+            get
             {
                 string s = m_reqBuilder.HostURI;
                 if (s.ToLower().EndsWith("/mapagent/mapagent.fcgi"))
@@ -942,7 +939,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             using (System.IO.Stream resp = this.OpenRead(req))
                 return (ResourceReferenceList)DeserializeObject(typeof(ResourceReferenceList), resp);
         }
-
 
         public override void CopyResource(string oldpath, string newpath, bool overwrite)
         {
@@ -1073,7 +1069,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 #else
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, format, null, x, y, scale, dpi, width, height, clip, null, null, null, null, ms);
-            
+
             //Maksim reported that the rendering times out frequently, so now we wait 5 minutes
             req.Timeout = 5 * 60 * 1000;
 
@@ -1105,7 +1101,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 #else
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, format, null, x1, y1, x2, y2, dpi, width, height, clip, null, null, null, null, ms);
-            
+
             //Maksim reported that the rendering times out frequently, so now we wait 5 minutes
             req.Timeout = 5 * 60 * 1000;
 
@@ -1118,7 +1114,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
                 if (hwr != null)
                     LogResponse(hwr);
-    
+
                 return resp.GetResponseStream();
             }
 
@@ -1197,12 +1193,11 @@ namespace OSGeo.MapGuide.MaestroAPI
             else
                 throw new Exception("Unable to parse classname into class and schema: " + classname);
 
-
             XmlDocument doc = new XmlDocument();
             doc.Load(this.OpenRead(req));
             XmlNodeList lst = doc.SelectNodes("/PropertyDefinitions/PropertyDefinition/Name");
             string[] ids = new string[lst.Count];
-            for(int i = 0; i < lst.Count; i++)
+            for (int i = 0; i < lst.Count; i++)
                 ids[i] = lst[i].InnerText;
 
             return ids;
@@ -1263,7 +1258,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                             ok = true;
                         }
                     }
-                    catch {}
+                    catch { }
 
                     if (!ok)
                     {
@@ -1291,7 +1286,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     m_featureProviders = null;
                     m_reqBuilder = reqb;
                 }
-               
+
                 return true;
             }
             catch
@@ -1415,7 +1410,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             string req = m_reqBuilder.EnumerateUnmanagedData(startpath, filter, recursive, type);
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            using(System.IO.Stream s = this.OpenRead(req))
+            using (System.IO.Stream s = this.OpenRead(req))
                 Utility.CopyStream(s, ms);
             ms.Position = 0;
             return (UnmanagedDataList)DeserializeObject(typeof(UnmanagedDataList), ms);
@@ -1424,21 +1419,21 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Gets the base url, ea.: http://localhost/mapguide/
         /// </summary>
-        public string BaseURL 
-        { 
-            get 
-            { 
+        public string BaseURL
+        {
+            get
+            {
                 string baseurl = this.ServerURI;
                 if (baseurl.ToLower().EndsWith("/mapagent.fcgi"))
                     baseurl = baseurl.Substring(0, baseurl.Length - "mapagent.fcgi".Length);
-            
+
                 if (baseurl.ToLower().EndsWith("/mapagent/"))
                     baseurl = baseurl.Substring(0, baseurl.Length - "mapagent/".Length);
                 else if (baseurl.ToLower().EndsWith("/mapagent"))
                     baseurl = baseurl.Substring(0, baseurl.Length - "mapagent".Length);
 
                 return baseurl;
-            } 
+            }
         }
 
         /// <summary>
@@ -1515,17 +1510,16 @@ namespace OSGeo.MapGuide.MaestroAPI
                 else
                     throw;
             }
-            
         }
 
         public override object GetFolderOrResourceHeader(string resourceID)
         {
             string req = m_reqBuilder.GetResourceHeader(resourceID);
-            using(System.IO.Stream s = this.OpenRead(req))
-            if (ResourceIdentifier.IsFolderResource(resourceID))
-                return this.DeserializeObject<ResourceFolderHeaderType>(s);
-            else
-                return this.DeserializeObject<ResourceDocumentHeaderType>(s);
+            using (System.IO.Stream s = this.OpenRead(req))
+                if (ResourceIdentifier.IsFolderResource(resourceID))
+                    return this.DeserializeObject<ResourceFolderHeaderType>(s);
+                else
+                    return this.DeserializeObject<ResourceDocumentHeaderType>(s);
         }
 
         /// <summary>
@@ -1585,7 +1579,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-
         #region IDisposable Members
 
         public override void Dispose()
@@ -1597,7 +1590,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        #endregion
+        #endregion IDisposable Members
 
         public override System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format)
         {
@@ -1610,22 +1603,22 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
-        /// Gets or sets the agent reported to MapGuide. 
+        /// Gets or sets the agent reported to MapGuide.
         /// Free form text, will appear in the log files.
         /// Default is MapGuide Maestro API
         /// </summary>
         public string UserAgent
         {
-            get 
+            get
             {
                 if (m_reqBuilder != null)
                     return m_reqBuilder.UserAgent;
                 return string.Empty;
             }
-            set 
-            { 
+            set
+            {
                 if (m_reqBuilder != null)
-                    m_reqBuilder.UserAgent = value; 
+                    m_reqBuilder.UserAgent = value;
             }
         }
 
@@ -1661,6 +1654,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 case ServiceType.Tile:
                 case ServiceType.Site:
                     return this;
+
                 case ServiceType.Fusion:
                     if (this.SiteVersion >= new Version(2, 0))
                         return this;
@@ -1671,7 +1665,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public const string PROP_USER_AGENT = "UserAgent";
         public const string PROP_BASE_URL = "BaseUrl";
-       
+
         public override string[] GetCustomPropertyNames()
         {
             return new string[] { PROP_USER_AGENT, PROP_BASE_URL };

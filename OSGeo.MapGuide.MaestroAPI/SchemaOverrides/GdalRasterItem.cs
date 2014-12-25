@@ -1,30 +1,32 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using System.IO;
-using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.ObjectModels;
 using System.Globalization;
+using System.IO;
 
 namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 {
@@ -44,7 +46,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// Adds the specified raster image reference
         /// </summary>
         /// <param name="item"></param>
-        public void AddItem(GdalRasterItem item) 
+        public void AddItem(GdalRasterItem item)
         {
             if (!_items.ContainsKey(item.FileName))
                 _items.Add(item.FileName, item);
@@ -73,9 +75,9 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// Removes the specified raster image reference
         /// </summary>
         /// <param name="item"></param>
-        public void RemoveItem(GdalRasterItem item) 
-        { 
-            _items.Remove(item.FileName); 
+        public void RemoveItem(GdalRasterItem item)
+        {
+            _items.Remove(item.FileName);
         }
 
         /// <summary>
@@ -97,7 +99,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
 
             foreach (var item in _items.Values)
             {
-                item.WriteXml(doc, loc);   
+                item.WriteXml(doc, loc);
             }
 
             currentNode.AppendChild(loc);

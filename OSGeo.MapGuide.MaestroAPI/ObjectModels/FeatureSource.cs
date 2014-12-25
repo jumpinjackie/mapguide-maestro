@@ -1,31 +1,32 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using System.Xml.Serialization;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System.ComponentModel;
+using System.Xml.Serialization;
 
 #pragma warning disable 1591, 0114, 0108
 
@@ -33,7 +34,9 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
 {
     partial class FeatureSourceType : IFeatureSource
     {
-        internal FeatureSourceType() { }
+        internal FeatureSourceType()
+        {
+        }
 
         private static readonly Version RES_VERSION = new Version(1, 0, 0);
 
@@ -93,7 +96,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
         }
 
         [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")] //NOXLATE
-        public string ValidatingSchema 
+        public string ValidatingSchema
         {
             get { return "FeatureSource-1.0.0.xsd"; } //NOXLATE
             set { }
@@ -212,7 +215,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
                 return connStr.Substring(tagIndex + StringConstants.MgDataFilePath.Length, end - (tagIndex + StringConstants.MgDataFilePath.Length));
         }
 
-        const string ALIAS_PREFIX = "%MG_DATA_PATH_ALIAS["; //NOXLATE
+        private const string ALIAS_PREFIX = "%MG_DATA_PATH_ALIAS["; //NOXLATE
 
         /// <summary>
         /// Gets the name of the alias. Can only be called if <see cref="UsesAliasedDataFiles"/> returns true
@@ -349,7 +352,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
         [XmlIgnore]
         IEnumerable<ICalculatedProperty> IFeatureSourceExtension.CalculatedProperty
         {
-            get 
+            get
             {
                 foreach (var calc in this.CalculatedProperty)
                 {
@@ -375,7 +378,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
         [XmlIgnore]
         IEnumerable<IAttributeRelation> IFeatureSourceExtension.AttributeRelate
         {
-            get 
+            get
             {
                 foreach (var rel in this.AttributeRelate)
                 {
@@ -441,7 +444,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0
         [XmlIgnore]
         IEnumerable<IRelateProperty> IAttributeRelation.RelateProperty
         {
-            get 
+            get
             {
                 foreach (var rel in this.RelateProperty)
                 {

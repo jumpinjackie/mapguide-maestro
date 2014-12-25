@@ -1,42 +1,38 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using Maestro.MapViewer.Model;
+using OSGeo.MapGuide.MaestroAPI.Mapping;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI.Mapping;
-using System.Windows.Forms.VisualStyles;
 using System.Diagnostics;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using System.Xml;
-using System.IO;
-using Maestro.MapViewer.Model;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Maestro.MapViewer
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="node"></param>
@@ -47,14 +43,14 @@ namespace Maestro.MapViewer
     /// </summary>
     public partial class Legend : UserControl, INotifyPropertyChanged
     {
-        const string IMG_BROKEN = "lc_broken";
-        const string IMG_DWF = "lc_dwf";
-        const string IMG_GROUP = "lc_group";
-        const string IMG_RASTER = "lc_raster";
-        const string IMG_SELECT = "lc_select";
-        const string IMG_THEME = "lc_theme";
-        const string IMG_UNSELECT = "lc_unselect";
-        const string IMG_OTHER = "icon_etc";
+        private const string IMG_BROKEN = "lc_broken";
+        private const string IMG_DWF = "lc_dwf";
+        private const string IMG_GROUP = "lc_group";
+        private const string IMG_RASTER = "lc_raster";
+        private const string IMG_SELECT = "lc_select";
+        private const string IMG_THEME = "lc_theme";
+        private const string IMG_UNSELECT = "lc_unselect";
+        private const string IMG_OTHER = "icon_etc";
 
         private RuntimeMap _map;
 
@@ -70,7 +66,7 @@ namespace Maestro.MapViewer
             this.ThemeCompressionLimit = 25;
             this.ShowAllLayersAndGroups = false;
         }
-        
+
         /// <summary>
         /// Raised when item dragging occurs
         /// </summary>
@@ -91,7 +87,7 @@ namespace Maestro.MapViewer
         {
             get { return _viewer; }
             set
-            { 
+            {
                 _viewer = value;
                 if (_viewer != null && !this.DesignMode)
                 {
@@ -105,7 +101,7 @@ namespace Maestro.MapViewer
             }
         }
 
-        void OnViewerPropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void OnViewerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "IsBusy")
             {
@@ -117,13 +113,13 @@ namespace Maestro.MapViewer
             }
         }
 
-        void OnMapLoaded(object sender, EventArgs e)
+        private void OnMapLoaded(object sender, EventArgs e)
         {
             _map = _viewer.GetMap();
             _presenter = new LegendControlPresenter(this, _map);
         }
 
-        void OnMapRefreshing(object sender, EventArgs e)
+        private void OnMapRefreshing(object sender, EventArgs e)
         {
             this.RefreshLegend();
         }
@@ -163,7 +159,7 @@ namespace Maestro.MapViewer
         private Stopwatch _legendUpdateStopwatch = new Stopwatch();
 
         private bool _busy = false;
-        
+
         /// <summary>
         /// Gets whether the viewer is currently busy
         /// </summary>
@@ -245,7 +241,7 @@ namespace Maestro.MapViewer
             }
         }
 
-        static IEnumerable<TreeNode> AsEnumerable(TreeNodeCollection nodes)
+        private static IEnumerable<TreeNode> AsEnumerable(TreeNodeCollection nodes)
         {
             for (int i = 0; i < nodes.Count; i++)
             {
@@ -411,7 +407,6 @@ namespace Maestro.MapViewer
 
         private void OnGroupContextMenuOpening(object sender, CancelEventArgs e)
         {
-
         }
 
         /// <summary>
@@ -453,7 +448,6 @@ namespace Maestro.MapViewer
 
         private void OnLayerContextMenuOpening(object sender, CancelEventArgs e)
         {
-
         }
 
         private void trvLegend_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -461,12 +455,11 @@ namespace Maestro.MapViewer
             trvLegend.SelectedNode = e.Node;
             var meta = e.Node.Tag as LayerNodeMetadata;
 
-
             if (meta != null && meta.DrawSelectabilityIcon)
             {
                 //Toggle layer's selectability if it's within the bounds of the selectability icon
                 var box = new Rectangle(
-                    new Point((e.Node.Bounds.Location.X - 36) + 16, e.Node.Bounds.Location.Y), 
+                    new Point((e.Node.Bounds.Location.X - 36) + 16, e.Node.Bounds.Location.Y),
                     new Size(16, e.Node.Bounds.Height));
 
                 //Uncheckable items need to move 16px to the left

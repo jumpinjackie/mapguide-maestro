@@ -1,34 +1,34 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using OSGeo.MapGuide.ObjectModels;
+//
+
+#endregion Disclaimer / License
+
+using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Services;
-using Maestro.Shared.UI;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 {
@@ -117,7 +117,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             try
             {
                 m_inUpdate = true;
-                
+
                 if (m_item == null)
                 {
                     fillStyleEditor.displayFill.Checked = false;
@@ -135,7 +135,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                     if (fillStyleEditor.fillCombo.SelectedItem == null && fillStyleEditor.fillCombo.Items.Count > 0)
                         fillStyleEditor.fillCombo.SelectedIndex = fillStyleEditor.fillCombo.FindString(m_item.Fill.FillPattern);
                 }
-                
+
                 lineStyleEditor.displayLine.Checked = m_item.Stroke != null;
                 if (m_item.Stroke != null)
                 {
@@ -157,7 +157,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 }
 
                 UpdatePreviewResult();
-            } 
+            }
             finally
             {
                 m_inUpdate = false;
@@ -191,7 +191,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             }
         }
 
-        public IAreaSymbolizationFill Item 
+        public IAreaSymbolizationFill Item
         {
             get { return m_item; }
             set
@@ -398,8 +398,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 UpdatePreviewResult();
             }
         }
-        
-        void LineStyleEditor_RequiresExpressionEditor(object sender, EventArgs e)
+
+        private void LineStyleEditor_RequiresExpressionEditor(object sender, EventArgs e)
         {
             string expr = m_editor.EditExpression(lineStyleEditor.colorCombo.ColorExpression, m_schema, m_providername, m_featureSource, true);
             if (expr != null)

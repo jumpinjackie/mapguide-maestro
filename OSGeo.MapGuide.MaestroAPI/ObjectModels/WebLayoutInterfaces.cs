@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using System.Collections.Generic;
 using System.ComponentModel;
-using OSGeo.MapGuide.MaestroAPI;
 
 namespace OSGeo.MapGuide.ObjectModels.WebLayout
 {
@@ -16,10 +14,12 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
         /// The context menu
         /// </summary>
         ContextMenu,
+
         /// <summary>
         /// The toolbar
         /// </summary>
         Toolbar,
+
         /// <summary>
         /// The task bar
         /// </summary>
@@ -32,121 +32,148 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
     public enum BuiltInCommandType : int
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pan = BasicCommandActionType.Pan,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PanUp = BasicCommandActionType.PanUp,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PanDown = BasicCommandActionType.PanDown,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PanRight = BasicCommandActionType.PanRight,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PanLeft = BasicCommandActionType.PanLeft,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Zoom = BasicCommandActionType.Zoom,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ZoomIn = BasicCommandActionType.ZoomIn,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ZoomOut = BasicCommandActionType.ZoomOut,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ZoomRectangle = BasicCommandActionType.ZoomRectangle,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ZoomToSelection = BasicCommandActionType.ZoomToSelection,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FitToWindow = BasicCommandActionType.FitToWindow,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PreviousView = BasicCommandActionType.PreviousView,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NextView = BasicCommandActionType.NextView,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RestoreView = BasicCommandActionType.RestoreView,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Select = BasicCommandActionType.Select,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SelectRadius = BasicCommandActionType.SelectRadius,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SelectPolygon = BasicCommandActionType.SelectPolygon,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ClearSelection = BasicCommandActionType.ClearSelection,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Refresh = BasicCommandActionType.Refresh,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CopyMap = BasicCommandActionType.CopyMap,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         About = BasicCommandActionType.About,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Buffer,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SelectWithin,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Print,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GetPrintablePage,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Measure,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ViewOptions,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Help,
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [System.SerializableAttribute()]
     public enum BasicCommandActionType
@@ -219,12 +246,11 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [System.SerializableAttribute()]
     public enum UIItemFunctionType
     {
-
         /// <remarks/>
         Separator,
 
@@ -236,12 +262,11 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [System.SerializableAttribute()]
     public enum TargetType
     {
-
         /// <remarks/>
         TaskPane,
 
@@ -253,12 +278,11 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     [System.SerializableAttribute()]
     public enum TargetViewerType
     {
-
         /// <remarks/>
         Dwf,
 
@@ -679,7 +703,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
     /// <summary>
     /// A flyout menu item
     /// </summary>
-    public interface IFlyoutItem : IUIItem, IMenu, ILocalizable 
+    public interface IFlyoutItem : IUIItem, IMenu, ILocalizable
     {
         /// <summary>
         /// Gets or sets the label.
@@ -766,13 +790,12 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
             }
         }
     }
-    
+
     /// <summary>
     /// The viewer toolbar
     /// </summary>
     public interface IToolbar : IMenu, IWebLayoutControl, INotifyPropertyChanged
-    { 
-        
+    {
     }
 
     /// <summary>
@@ -858,7 +881,6 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
     /// </summary>
     public interface ITaskButton : ILocalizable
     {
-
     }
 
     /// <summary>
@@ -876,7 +898,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public delegate void CommandEventHandler(ICommand cmd);
 
@@ -966,7 +988,6 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
     /// </summary>
     public interface ICustomCommand : ICommand
     {
-
     }
 
     /// <summary>
@@ -1185,7 +1206,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
     /// <summary>
     /// Print command
     /// </summary>
-    public interface IPrintCommand : ICustomCommand 
+    public interface IPrintCommand : ICustomCommand
     {
         /// <summary>
         /// Clears this instance.

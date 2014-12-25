@@ -1,27 +1,28 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml.Serialization;
 using System.ComponentModel;
+using System.Xml.Serialization;
 
 namespace OSGeo.MapGuide.MaestroAPI.Commands
 {
@@ -81,7 +82,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         [XmlElement]
         public DateTime TimeStamp { get; set; }
 
-
         /// <summary>
         /// Gets the configuration settings
         /// </summary>
@@ -91,7 +91,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         [XmlElement(ElementName = "ConfigurationSettings")] //NOXLATE
         [DisplayName("Configuration Settings")] //NOXLATE
         public ConfigurationSettings Configuration { get; set; }
-
 
         /// <summary>
         /// Gets an array of cache status of connections for each provider
@@ -107,7 +106,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     [Serializable]
     public class CachedFdoConnection
     {
-
         /// <summary>
         /// Gets the feature source
         /// </summary>
@@ -165,7 +163,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         public string FeatureSourceId { get; set; }
 
         /// <summary>
-        /// Gets the maximum connection pool size 
+        /// Gets the maximum connection pool size
         /// </summary>
         [XmlElement]
         public int MaximumDataConnectionPoolSize { get; set; }

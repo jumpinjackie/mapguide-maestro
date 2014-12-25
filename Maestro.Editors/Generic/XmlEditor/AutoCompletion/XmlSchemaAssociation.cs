@@ -1,7 +1,8 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2013, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // Original code from SharpDevelop 3.2.1 licensed under the same terms (LGPL 2.1)
 // Copyright 2002-2010 by
 //
@@ -17,21 +18,20 @@
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
 {
@@ -40,9 +40,9 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
     /// </summary>
     internal class XmlSchemaAssociation //: IXmlConvertable
     {
-        string namespaceUri = String.Empty;
-        string extension = String.Empty;
-        string namespacePrefix = String.Empty;
+        private string namespaceUri = String.Empty;
+        private string extension = String.Empty;
+        private string namespacePrefix = String.Empty;
 
         public XmlSchemaAssociation(string extension)
             : this(extension, String.Empty, String.Empty)
@@ -108,7 +108,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         }
 
         /// <summary>
-        /// Gets the default schema association for the file extension. 
+        /// Gets the default schema association for the file extension.
         /// </summary>
         /// <remarks>
         /// These defaults are hard coded.
@@ -122,28 +122,36 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
                 case ".wxs":
                     association = new XmlSchemaAssociation(extension, @"http://schemas.microsoft.com/wix/2003/01/wi");
                     break;
+
                 case ".config":
                     association = new XmlSchemaAssociation(extension, @"urn:app-config");
                     break;
+
                 case ".build":
                     association = new XmlSchemaAssociation(extension, @"http://nant.sf.net/release/0.85/nant.xsd");
                     break;
+
                 case ".addin":
                     association = new XmlSchemaAssociation(extension, @"http://www.icsharpcode.net/2005/addin");
                     break;
+
                 case ".xsl":
                 case ".xslt":
                     association = new XmlSchemaAssociation(extension, @"http://www.w3.org/1999/XSL/Transform", "xsl");
                     break;
+
                 case ".xsd":
                     association = new XmlSchemaAssociation(extension, @"http://www.w3.org/2001/XMLSchema", "xs");
                     break;
+
                 case ".manifest":
                     association = new XmlSchemaAssociation(extension, @"urn:schemas-microsoft-com:asm.v1");
                     break;
+
                 case ".xaml":
                     association = new XmlSchemaAssociation(extension, @"http://schemas.microsoft.com/winfx/avalon/2005");
                     break;
+
                 default:
                     association = new XmlSchemaAssociation(extension);
                     break;

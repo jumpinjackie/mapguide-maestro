@@ -1,34 +1,30 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.MaestroAPI;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels.Common;
+using System;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.Common
 {
@@ -85,10 +81,10 @@ namespace Maestro.Editors.Common
             }
 
             _model = new RepositoryFolderTreeModel(resSvc, trvRepository, bFoldersOnly, bOmitEmptyFolders);
-            _model.ItemSelected += OnItemSelectedInternal; 
+            _model.ItemSelected += OnItemSelectedInternal;
         }
 
-        void OnItemSelectedInternal(object sender, EventArgs e)
+        private void OnItemSelectedInternal(object sender, EventArgs e)
         {
             var h = this.ItemSelected;
             if (h != null)
@@ -123,18 +119,24 @@ namespace Maestro.Editors.Common
         /// Adds a resource type to filter on
         /// </summary>
         /// <param name="rt"></param>
-        public void AddResourceTypeFilter(string rt) { if (_model != null) _model.AddResourceTypeFilter(rt); }
+        public void AddResourceTypeFilter(string rt)
+        {
+            if (_model != null) _model.AddResourceTypeFilter(rt);
+        }
 
         /// <summary>
         /// Clears all applied resource type filters
         /// </summary>
-        public void ClearResourceTypeFilters() { if (_model != null) _model.ClearResourceTypeFilters(); }
+        public void ClearResourceTypeFilters()
+        {
+            if (_model != null) _model.ClearResourceTypeFilters();
+        }
 
         /// <summary>
         /// Gets whether this view has resource type filters applied
         /// </summary>
         /// <returns></returns>
-        public bool HasFilteredTypes() 
+        public bool HasFilteredTypes()
         {
             if (_model != null)
                 return _model.HasFilteredTypes();

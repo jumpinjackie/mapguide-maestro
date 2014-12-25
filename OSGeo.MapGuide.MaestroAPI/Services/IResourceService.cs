@@ -1,29 +1,28 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
 
-using ObjCommon = OSGeo.MapGuide.ObjectModels.Common;
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using System.IO;
+using ObjCommon = OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.MaestroAPI.Services
 {
@@ -41,6 +40,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// Raised when a resource is added
         /// </summary>
         event ResourceEventHandler ResourceAdded;
+
         /// <summary>
         /// Raised when a resource is deleted. Note if a folder is deleted, this will
         /// only be raised for the folder and not its children. Also note that this is
@@ -48,6 +48,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// purposes, deleted.
         /// </summary>
         event ResourceEventHandler ResourceDeleted;
+
         /// <summary>
         /// Raised when a resource is updated
         /// </summary>
@@ -115,7 +116,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="data"></param>
         /// <returns></returns>
         T DeserializeObject<T>(System.IO.Stream data);
-        
+
         /// <summary>
         /// Serializes the specified object to the specified stream
         /// </summary>
@@ -144,7 +145,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="resourceID"></param>
         /// <returns></returns>
         ObjCommon.ResourceFolderHeaderType GetFolderHeader(string resourceID);
-        
+
         /// <summary>
         /// Gets the raw XML stream of the specified resource id
         /// </summary>
@@ -160,7 +161,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         IResource GetResource(string resourceID);
 
         /// <summary>
-        /// Forces a timestamp update of the specified resource. This is akin to 
+        /// Forces a timestamp update of the specified resource. This is akin to
         /// setting the resource's content using its existing content.
         /// </summary>
         /// <param name="resourceID"></param>
@@ -175,7 +176,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="datatype"></param>
         /// <param name="stream"></param>
         void SetResourceData(string resourceid, string dataname, ObjCommon.ResourceDataType datatype, System.IO.Stream stream);
-        
+
         /// <summary>
         /// Sets the resource data of a specified resource
         /// </summary>
@@ -200,7 +201,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="resourceID"></param>
         /// <param name="header"></param>
         void SetFolderHeader(string resourceID, ObjCommon.ResourceFolderHeaderType header);
-        
+
         /// <summary>
         /// Sets the header for the specified resource
         /// </summary>
@@ -257,7 +258,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="newResourceID"></param>
         /// <param name="overwrite"></param>
         void MoveResource(string oldResourceID, string newResourceID, bool overwrite);
-        
+
         /// <summary>
         /// Moves the specified resources to the specified path. Any resources referencing this resource
         /// are updated to reference the resource's new location
@@ -268,9 +269,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="progress"></param>
         /// <returns></returns>
         bool MoveResourceWithReferences(string oldResourceID, string newResourceID, LengthyOperationCallBack callback, LengthyOperationProgressCallBack progress);
-        
+
         /// <summary>
-        /// Copies the specified folder to the specified path. Any resources referencing this folder 
+        /// Copies the specified folder to the specified path. Any resources referencing this folder
         /// are updated to reference the resources's new location
         /// </summary>
         /// <param name="oldResourceID"></param>
@@ -286,12 +287,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="resourceID"></param>
         /// <returns></returns>
         bool ResourceExists(string resourceID);
-        
+
         /// <summary>
         /// Saves an object into the repository
         /// </summary>
         /// <param name="resource"></param>
         void SaveResource(IResource resource);
+
         /// <summary>
         /// Saves an object into the repository using the specified resource id.
         /// </summary>

@@ -1,31 +1,29 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
@@ -41,6 +39,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private object m_selectedItem;
 
         public event EventHandler SelectionChanged;
+
         public event EventHandler ItemChanged;
 
         private VectorLayerEditorCtrl m_owner;
@@ -83,8 +82,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public object SelectedItem 
-        { 
+        public object SelectedItem
+        {
             get { return m_selectedItem; }
             set
             {
@@ -182,7 +181,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     {
                         scale = Math.Floor(m_parent.MaxScale.Value - 0.0001);
                     }
-                    else //both false 
+                    else //both false
                     {
                         scale = 42; //Any number will do
                     }
@@ -227,7 +226,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 return;
 
             c.BorderStyle = BorderStyle.None;
-           
+
             m_selectedItem = null;
             if (SelectionChanged != null)
                 SelectionChanged(this, null);
@@ -261,12 +260,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             }
         }
 
-        void Rule_ItemChanged(object sender, EventArgs e)
+        private void Rule_ItemChanged(object sender, EventArgs e)
         {
             SignalItemChanged();
         }
 
-        void Rule_ItemDeleted(object sender, EventArgs e)
+        private void Rule_ItemDeleted(object sender, EventArgs e)
         {
             foreach (Condition c in this.Controls)
             {
@@ -339,7 +338,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             }
 
             SignalItemChanged();
-            
         }
 
         public void MoveSelectedRule(bool down)
@@ -399,7 +397,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
             return minHeight;
         }
-
 
         internal void SetThemeOffset(int offset)
         {

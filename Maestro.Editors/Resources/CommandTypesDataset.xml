@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<!-- 
+<!--
   Note to translators:
     You can only translate <Label>, <ToolTip> and <Description>
     If you translate any of the others, the editor won't work!
@@ -15,7 +15,7 @@
 		<Description>Display information about this application</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon></EnabledIcon>		
+		<EnabledIcon></EnabledIcon>
 		<DisabledIcon></DisabledIcon>
 	</Command>
 
@@ -27,7 +27,7 @@
 		<Description>Create buffers around the selected features</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_buffer.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_buffer.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_buffer_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -39,7 +39,7 @@
 		<Description>Clear the current selections</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_clearselect.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_clearselect.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_clearselect_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -51,7 +51,7 @@
 		<Description>Copy current view of map to clipboard</Description>
 		<Viewers>DWF</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_copy.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_copy.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_copy_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -63,7 +63,7 @@
 		<Description>Launch help for this application</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_help.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_help.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_help_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -75,7 +75,7 @@
 		<Description>Zoom to the initial center and scale of the map</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_restorecenter.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_restorecenter.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_restorecenter_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -87,7 +87,7 @@
 		<Description>Fit the initial view of the map to the window</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_fitwindow.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_fitwindow.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_fitwindow_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -99,7 +99,7 @@
 		<Description>Invoke a script command</Description>
 		<Viewers>All</Viewers>
 		<Type>Custom</Type>
-		<EnabledIcon>../stdicons/icon_invokescript.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_invokescript.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_invokescript_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -111,7 +111,7 @@
 		<Description>Invoke a URL command</Description>
 		<Viewers>All</Viewers>
 		<Type>Custom</Type>
-		<EnabledIcon>../stdicons/icon_invokeurl.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_invokeurl.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_invokeurl_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -123,7 +123,7 @@
 		<Description>Measure distances on the map</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_measure.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_measure.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_measure_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -135,7 +135,7 @@
 		<Description>Buffer</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_zoomnext.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_zoomnext.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_zoomnext_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -147,7 +147,7 @@
 		<Description>Drag the map to view areas out of range</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_pan.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_pan.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_pan_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -159,7 +159,7 @@
 		<Description>Pan down by a preset increment</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_pandown.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_pandown.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_pandown_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -171,7 +171,7 @@
 		<Description>Pan left by a preset increment</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_panleft.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_panleft.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_panleft_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -183,7 +183,7 @@
 		<Description>Pan right by a preset increment</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_panright.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_panright.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_panright_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -195,7 +195,7 @@
 		<Description>Pan up by a preset increment</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_panup.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_panup.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_panup_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -207,7 +207,7 @@
 		<Description>Go to previous view</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_zoomprev.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_zoomprev.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_zoomprev_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -219,7 +219,7 @@
 		<Description>Print with optional layout</Description>
 		<Viewers>DWF</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_print.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_print.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_print_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -231,7 +231,7 @@
 		<Description>Refresh map and reload all layers keeping current center and scale</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_refreshmap.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_refreshmap.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_refreshmap_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -243,7 +243,7 @@
 		<Description>Perform a search</Description>
 		<Viewers>All</Viewers>
 		<Type>Custom</Type>
-		<EnabledIcon>../stdicons/icon_search.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_search.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_search_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -255,7 +255,7 @@
 		<Description>Select features by clicking and dragging</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_select.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_select.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_select_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -267,7 +267,7 @@
 		<Description>Create a polygon to select all features that fall within</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_selectpolygon.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_selectpolygon.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_selectpolygon_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -279,7 +279,7 @@
 		<Description>Click and drag to select all features inside the circle</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_selectradius.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_selectradius.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_selectradius_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -291,7 +291,7 @@
 		<Description>Select features that fall within currently selected areas</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_selectwithin.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_selectwithin.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_selectwithin_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -303,7 +303,7 @@
 		<Description>View Options</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_viewoptions.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_viewoptions.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_viewoptions_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -315,7 +315,7 @@
 		<Description>Zoom dynamically by clicking and dragging</Description>
 		<Viewers>DWF</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_zoom.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_zoom.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_zoom_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -327,7 +327,7 @@
 		<Description>Zoom in by a preset increment</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_zoomin.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_zoomin.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_zoomin_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -339,7 +339,7 @@
 		<Description>Zoom out by a preset increment</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_zoomout.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_zoomout.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_zoomout_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -351,7 +351,7 @@
 		<Description>Zoom in on an area</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_zoomrect.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_zoomrect.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_zoomrect_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -363,7 +363,7 @@
 		<Description>Zoom to extents of selected features</Description>
 		<Viewers>All</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_zoomselect.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_zoomselect.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_zoomselect_disabled.gif</DisabledIcon>
 	</Command>
 
@@ -375,8 +375,7 @@
 		<Description>Get printer-friendly page</Description>
 		<Viewers>AJAX</Viewers>
 		<Type>Built-In</Type>
-		<EnabledIcon>../stdicons/icon_printablepage.gif</EnabledIcon>		
+		<EnabledIcon>../stdicons/icon_printablepage.gif</EnabledIcon>
 		<DisabledIcon>../stdicons/icon_printablepage_disabled.gif</DisabledIcon>
 	</Command>
-
 </CommandTypesDataset>

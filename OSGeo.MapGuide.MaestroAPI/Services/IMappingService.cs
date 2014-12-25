@@ -1,29 +1,30 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.ObjectModels.MapDefinition;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Mapping;
-using System.Drawing;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using System;
+using System.Drawing;
 
 namespace OSGeo.MapGuide.MaestroAPI.Services
 {
@@ -124,8 +125,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <remarks>
         /// Calculation of meters-per-unit may differ between implementations. This may have an adverse
         /// effect on things such as rendering and measuring depending on the underlying implementation
-        /// 
-        /// If you are certain of the meters-per-unit value required, use the overloaded method that 
+        ///
+        /// If you are certain of the meters-per-unit value required, use the overloaded method that
         /// accepts a metersPerUnit parameter.
         /// </remarks>
         /// <example>
@@ -150,8 +151,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <remarks>
         /// Calculation of meters-per-unit may differ between implementations. This may have an adverse
         /// effect on things such as rendering and measuring depending on the underlying implementation
-        /// 
-        /// If you are certain of the meters-per-unit value required, use the overloaded method that 
+        ///
+        /// If you are certain of the meters-per-unit value required, use the overloaded method that
         /// accepts a metersPerUnit parameter.
         /// </remarks>
         /// <example>
@@ -225,8 +226,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <remarks>
         /// Calculation of meters-per-unit may differ between implementations. This may have an adverse
         /// effect on things such as rendering and measuring depending on the underlying implementation
-        /// 
-        /// If you are certain of the meters-per-unit value required, use the overloaded method that 
+        ///
+        /// If you are certain of the meters-per-unit value required, use the overloaded method that
         /// accepts a metersPerUnit parameter.
         /// </remarks>
         /// <example>
@@ -255,8 +256,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <remarks>
         /// Calculation of meters-per-unit may differ between implementations. This may have an adverse
         /// effect on things such as rendering and measuring depending on the underlying implementation
-        /// 
-        /// If you are certain of the meters-per-unit value required, use the overloaded method that 
+        ///
+        /// If you are certain of the meters-per-unit value required, use the overloaded method that
         /// accepts a metersPerUnit parameter.
         /// </remarks>
         /// <example>
@@ -337,8 +338,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <remarks>
         /// Calculation of meters-per-unit may differ between implementations. This may have an adverse
         /// effect on things such as rendering and measuring depending on the underlying implementation
-        /// 
-        /// If you are certain of the meters-per-unit value required, use the overloaded method that 
+        ///
+        /// If you are certain of the meters-per-unit value required, use the overloaded method that
         /// accepts a metersPerUnit parameter.
         /// </remarks>
         /// <example>
@@ -367,8 +368,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <remarks>
         /// Calculation of meters-per-unit may differ between implementations. This may have an adverse
         /// effect on things such as rendering and measuring depending on the underlying implementation
-        /// 
-        /// If you are certain of the meters-per-unit value required, use the overloaded method that 
+        ///
+        /// If you are certain of the meters-per-unit value required, use the overloaded method that
         /// accepts a metersPerUnit parameter.
         /// </remarks>
         /// <example>
@@ -517,7 +518,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <returns></returns>
         /// <exception cref="T:System.NotSupportedException">Thrown if the service is too old to be able to support this API</exception>
         System.IO.Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, Color selectionColor, int behaviour);
-        
+
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
@@ -530,6 +531,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="dpi">The dpi.</param>
         /// <returns></returns>
         System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi);
+
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
@@ -557,6 +559,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="format">The format.</param>
         /// <returns></returns>
         System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format);
+
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
@@ -586,6 +589,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         /// <param name="clip">if set to <c>true</c> [clip].</param>
         /// <returns></returns>
         System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip);
+
         /// <summary>
         /// Renders the runtime map.
         /// </summary>
@@ -637,8 +641,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Services
         System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format);
 
         /// <summary>
-        /// Identifies features that meet the specified spatial selection criteria. These features can be persisted as selected features in a map. 
-        /// This operation is generally used to implement selection/tooltip functionality for a client-side map viewer. 
+        /// Identifies features that meet the specified spatial selection criteria. These features can be persisted as selected features in a map.
+        /// This operation is generally used to implement selection/tooltip functionality for a client-side map viewer.
         /// QueryMapFeatures returns an XML document describing the set of selected features.
         /// If a single feature is selected, the XML contains the tooltip, hyperlink, and properties of the feature.
         /// </summary>

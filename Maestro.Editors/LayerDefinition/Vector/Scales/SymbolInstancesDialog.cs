@@ -1,44 +1,45 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using Maestro.Editors.Common;
+using Maestro.Editors.Generic;
+using Maestro.Editors.LayerDefinition.Vector.Scales.SymbolInstanceEditors;
+using Maestro.Editors.LayerDefinition.Vector.Scales.SymbolParamEditors;
+using Maestro.Editors.Preview;
+using Maestro.Editors.SymbolDefinition;
+using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using Maestro.Editors.SymbolDefinition;
-using Maestro.Editors.Generic;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
-using Maestro.Editors.LayerDefinition.Vector.Scales.SymbolInstanceEditors;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using Maestro.Shared.UI;
-using Maestro.Editors.Preview;
-using System.IO;
-using Maestro.Editors.LayerDefinition.Vector.Scales.SymbolParamEditors;
 using System.Globalization;
-using Maestro.Editors.Common;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
@@ -55,7 +56,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private ILayerStylePreviewable _preview;
         private BindingList<ParameterModel> _params = new BindingList<ParameterModel>();
 
-        class ParameterModel : INotifyPropertyChanged
+        private class ParameterModel : INotifyPropertyChanged
         {
             private IParameterOverride _ov;
             private IParameter _pdef;
@@ -154,7 +155,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     e.Graphics.DrawImage(_previewImg, new Point(0, 0));
                 }
             }
-            else 
+            else
             {
                 e.Graphics.DrawString(Strings.TextRenderPreviewNotAvailable, Control.DefaultFont, Brushes.Black, new PointF(0, 0));
             }
@@ -196,6 +197,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     }
                     previewSymbol = (ISymbolDefinitionBase)conn.ResourceService.GetResource(resId);
                     break;
+
                 case SymbolInstanceType.Reference:
                     previewSymbol = (ISymbolDefinitionBase)conn.ResourceService.GetResource(((ISymbolInstanceReferenceLibrary)symInst.Reference).ResourceId);
                     previewSymbol = (ISymbolDefinitionBase)previewSymbol.Clone();
@@ -265,8 +267,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             var vl = (IVectorLayerDefinition)res.SubLayer;
             if (vl.SymbolDefinitionVersion == null)
                 throw new InvalidOperationException(Strings.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
-            var ssym = ObjectFactory.CreateSimpleSymbol(_edSvc.GetEditedResource().CurrentConnection, 
-                                                        vl.SymbolDefinitionVersion, 
+            var ssym = ObjectFactory.CreateSimpleSymbol(_edSvc.GetEditedResource().CurrentConnection,
+                                                        vl.SymbolDefinitionVersion,
                                                         "InlineSimpleSymbol", //NOXLATE
                                                         Strings.TextInlineSimpleSymbol);
 
@@ -733,7 +735,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             if (vl.SymbolDefinitionVersion == null)
                 throw new InvalidOperationException(Strings.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
             var ssym = ObjectFactory.CreateSimpleLabel(_edSvc.GetEditedResource().CurrentConnection,
-                                                       vl.SymbolDefinitionVersion, 
+                                                       vl.SymbolDefinitionVersion,
                                                        GeometryContextType.Point);
 
             var instance = _comp.CreateInlineSimpleSymbol(ssym);

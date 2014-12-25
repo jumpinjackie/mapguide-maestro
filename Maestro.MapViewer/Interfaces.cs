@@ -1,31 +1,30 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using OSGeo.MapGuide.ObjectModels.Common;
-using System.Drawing;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Mapping;
-using System.ComponentModel;
+using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Drawing;
 
 namespace Maestro.MapViewer
 {
@@ -208,7 +207,7 @@ namespace Maestro.MapViewer
 
         /// <summary>
         /// Raised when the viewer has started refreshing the map. This is to allow
-        /// any actions dependent on map state to update themselves asynchronously 
+        /// any actions dependent on map state to update themselves asynchronously
         /// without needing to wait for the updated map to be rendered.
         /// </summary>
         event EventHandler MapRefreshing;
@@ -318,11 +317,10 @@ namespace Maestro.MapViewer
         /// </summary>
         bool ConvertTiledGroupsToNonTiled { get; set; }
 
-
         /// <summary>
         /// Gets whether to use the RenderMap API instead of RenderDynamicOverlay if the map has tiled
         /// layers. RenderMap includes tiled layers as part of the output image, but will not take advantage
-        /// of any tile caching mechanisms. Setting this property to true nullifies any effect of the 
+        /// of any tile caching mechanisms. Setting this property to true nullifies any effect of the
         /// <see cref="P:Maestro.MapViewer.IMapViewer.ConvertTiledGroupsToNonTiled"/> property
         /// </summary>
         bool UseRenderMapIfTiledLayersExist { get; set; }

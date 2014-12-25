@@ -1,31 +1,29 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Services;
-using Res = OSGeo.MapGuide.MaestroAPI.Properties.Resources;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
+using OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.DrawingSource;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
@@ -34,11 +32,11 @@ using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.PrintLayout;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
-using OSGeo.MapGuide.ObjectModels.SymbolLibrary;
-using OSGeo.MapGuide.ObjectModels.WebLayout;
-using OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0;
-using System.Collections.Specialized;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
+using OSGeo.MapGuide.ObjectModels.WebLayout;
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 
 namespace OSGeo.MapGuide.ObjectModels
 {
@@ -46,27 +44,33 @@ namespace OSGeo.MapGuide.ObjectModels
     /// Factory method signature for creating layer definitions
     /// </summary>
     public delegate ILayerDefinition LayerCreatorFunc(LayerType type);
+
     /// <summary>
     /// Factory method signature for creating load procedures
     /// </summary>
     public delegate ILoadProcedure LoadProcCreatorFunc();
+
     /// <summary>
     /// Factory method signature for creating web layouts
     /// </summary>
     public delegate IWebLayout WebLayoutCreatorFunc(string mapDefinitionId);
+
     /// <summary>
     /// Factory method signature for creating compound symbol definitions
     /// </summary>
     public delegate ICompoundSymbolDefinition CompoundSymbolDefCreatorFunc();
+
     /// <summary>
     /// Factory method signature for creating simple symbol definitions
     /// </summary>
     public delegate ISimpleSymbolDefinition SimpleSymbolDefCreatorFunc();
+
     /// <summary>
     /// Factory method signature for creating watermarks
     /// </summary>
     /// <returns></returns>
     public delegate IWatermarkDefinition WatermarkCreatorFunc(SymbolDefinitionType type);
+
     /// <summary>
     /// Factory method signature for creating map definitions
     /// </summary>
@@ -78,14 +82,14 @@ namespace OSGeo.MapGuide.ObjectModels
     /// sensible default values. This is recommended over creating the objects directly
     /// as this ensures that there are no null child properties where the XML schema forbids
     /// it.
-    /// 
+    ///
     /// By default this class will only create v1.0.0 of any specified top-level resource unless specified. In order to be able to create
     /// newer versions, you need to register the appropriate methods that can create resources of this version:
-    /// 
+    ///
     ///  - <see cref="RegisterLayerFactoryMethod"/> for Layer Definitions
-    ///  
+    ///
     /// This registration needs to be done as part of your application's startup/initialization phase.
-    /// 
+    ///
     /// In the context of Maestro, this registration is automatically done as part of the addin's startup process
     /// </summary>
     public static class ObjectFactory
@@ -97,10 +101,10 @@ namespace OSGeo.MapGuide.ObjectModels
         private static Dictionary<Version, CompoundSymbolDefCreatorFunc> _compoundSymbolFactories;
         private static Dictionary<Version, MapDefinitionCreatorFunc> _mapDefinitionFactories;
         private static Dictionary<Version, WatermarkCreatorFunc> _watermarkFactories;
-        
+
         static ObjectFactory()
         {
-            _layerFactories = new Dictionary<Version,LayerCreatorFunc>();
+            _layerFactories = new Dictionary<Version, LayerCreatorFunc>();
             _wlFactories = new Dictionary<Version, WebLayoutCreatorFunc>();
             _loadProcFactories = new Dictionary<LoadType, LoadProcCreatorFunc>();
             _simpleSymbolFactories = new Dictionary<Version, SimpleSymbolDefCreatorFunc>();
@@ -111,7 +115,7 @@ namespace OSGeo.MapGuide.ObjectModels
             _layerFactories.Add(
                 new Version(1, 0, 0),
                 new LayerCreatorFunc(OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0.LdfEntryPoint.CreateDefault));
-            
+
             _loadProcFactories.Add(
                 LoadType.Sdf,
                 new LoadProcCreatorFunc(OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0.LoadProcEntryPoint.CreateDefaultSdf));
@@ -251,7 +255,7 @@ namespace OSGeo.MapGuide.ObjectModels
         }
 
         /// <summary>
-        /// Creates the web layout. The schema version used is the highest supported one by the connection 
+        /// Creates the web layout. The schema version used is the highest supported one by the connection
         /// </summary>
         /// <param name="owner"></param>
         /// <param name="mapDefinitionId"></param>
@@ -290,7 +294,7 @@ namespace OSGeo.MapGuide.ObjectModels
 
             var layer = _layerFactories[version](type);
             layer.CurrentConnection = owner;
-            
+
             return layer;
         }
 
@@ -303,8 +307,8 @@ namespace OSGeo.MapGuide.ObjectModels
         {
             Check.NotNull(owner, "owner"); //NOXLATE
 
-            return new OSGeo.MapGuide.ObjectModels.DrawingSource_1_0_0.DrawingSource() 
-            { 
+            return new OSGeo.MapGuide.ObjectModels.DrawingSource_1_0_0.DrawingSource()
+            {
                 CurrentConnection = owner,
                 SourceName = string.Empty,
                 CoordinateSpace = string.Empty,
@@ -523,6 +527,7 @@ namespace OSGeo.MapGuide.ObjectModels
                         sym.LineUsage = usage;
                     }
                     break;
+
                 case GeometryContextType.Polygon:
                     {
                         var usage = sym.CreateAreaUsage();
@@ -532,6 +537,7 @@ namespace OSGeo.MapGuide.ObjectModels
                         sym.AreaUsage = usage;
                     }
                     break;
+
                 case GeometryContextType.Point:
                     {
                         var usage = sym.CreatePointUsage();
@@ -567,7 +573,7 @@ namespace OSGeo.MapGuide.ObjectModels
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="owner"></param>
         /// <param name="version"></param>
@@ -705,7 +711,7 @@ namespace OSGeo.MapGuide.ObjectModels
         }
 
         /// <summary>
-        /// Creates a simple symbol definition. The schema version used is the highest supported one by the connection 
+        /// Creates a simple symbol definition. The schema version used is the highest supported one by the connection
         /// </summary>
         /// <param name="owner"></param>
         /// <param name="name"></param>
@@ -740,7 +746,7 @@ namespace OSGeo.MapGuide.ObjectModels
         }
 
         /// <summary>
-        /// Creates the compound symbol. The schema version used is the highest supported one by the connection 
+        /// Creates the compound symbol. The schema version used is the highest supported one by the connection
         /// </summary>
         /// <param name="owner"></param>
         /// <param name="name"></param>
@@ -752,7 +758,7 @@ namespace OSGeo.MapGuide.ObjectModels
             return CreateCompoundSymbol(owner, ver, name, description);
         }
 
-        static readonly string[] parameterizedWidgets = 
+        private static readonly string[] parameterizedWidgets =
         {
             KnownWidgetNames.CTRLClick,
             KnownWidgetNames.ZoomOnClick,
@@ -775,7 +781,7 @@ namespace OSGeo.MapGuide.ObjectModels
             return vert;
         }
 
-        static Version VER_240 = new Version(2, 4);
+        private static Version VER_240 = new Version(2, 4);
 
         /// <summary>
         /// Creates a fusion flexible layout
@@ -792,7 +798,7 @@ namespace OSGeo.MapGuide.ObjectModels
 
             var fusionSvc = (IFusionService)owner.GetService((int)ServiceType.Fusion);
             var templates = fusionSvc.GetApplicationTemplates();
-            
+
             var appDef = DeserializeEmbeddedFlexLayout();
             //Find matching template.
             var tpl = templates.FindTemplate(templateName);
@@ -803,10 +809,10 @@ namespace OSGeo.MapGuide.ObjectModels
             }
             appDef.CurrentConnection = owner;
             return appDef;
-            */ 
-            
+            */
+
             Check.Precondition(Array.IndexOf(owner.Capabilities.SupportedServices, (int)ServiceType.Fusion) >= 0, "Required Fusion service not supported on this connection");
-            
+
             IApplicationDefinition appDef = new ApplicationDefinitionType()
             {
                 CurrentConnection = owner,
@@ -830,9 +836,9 @@ namespace OSGeo.MapGuide.ObjectModels
             }
             else
             {
-                //NOTE: Depending on MapGuide Server version, this document may be 
+                //NOTE: Depending on MapGuide Server version, this document may be
                 //invalid (eg. References to widgets not available in that version)
-                return DeserializeEmbeddedFlexLayout(owner); 
+                return DeserializeEmbeddedFlexLayout(owner);
             }
 
             //Toolbars, every template has them
@@ -1002,10 +1008,10 @@ namespace OSGeo.MapGuide.ObjectModels
             toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.SelectRadius));
             toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.SelectPolygon));
             toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.ClearSelection));
-            
+
             toolbar.AddItem(appDef.CreateWidgetReference(buffer.Name));
             toolbar.AddItem(appDef.CreateWidgetReference(measure.Name));
-            
+
             //2.2 specific stuff
             if (owner.SiteVersion >= new Version(2, 2))
             {
@@ -1018,7 +1024,7 @@ namespace OSGeo.MapGuide.ObjectModels
             toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.ViewOptions));
             toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.About));
             toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Help));
-            
+
             //Init secondary toolbar
             secToolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Select));
             secToolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Pan));
@@ -1348,8 +1354,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>Properties.Resources.
         public static IAttributeRelation CreateAttributeRelation()
         {
-            IAttributeRelation rel = new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.AttributeRelateType() 
-            { 
+            IAttributeRelation rel = new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.AttributeRelateType()
+            {
                 RelateProperty = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.RelatePropertyType>(),
             };
             rel.RelateType = RelateTypeEnum.LeftOuter;

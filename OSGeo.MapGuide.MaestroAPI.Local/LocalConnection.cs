@@ -1,44 +1,46 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2011, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.MaestroAPI.Native;
-using System.Collections.Specialized;
-using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.MaestroAPI.Resource;
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI.Commands;
+using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.MaestroAPI.Feature;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using System.IO;
-using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
-using System.Diagnostics;
 using OSGeo.MapGuide.MaestroAPI.Local.Commands;
-using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.MaestroAPI.Native;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
-using OSGeo.MapGuide.ObjectModels.MapDefinition;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
+using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Diagnostics;
+using System.IO;
+using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI.Local
 {
@@ -59,7 +61,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
         private MgdServiceFactory _fact;
 
-        protected LocalConnection(NameValueCollection initParams) : base()
+        protected LocalConnection(NameValueCollection initParams)
+            : base()
         {
             _fact = new MgdServiceFactory();
             _sessionId = Guid.NewGuid().ToString();
@@ -79,12 +82,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             {
                 case CommandType.ApplySchema:
                     return new LocalNativeApplySchema(this);
+
                 case CommandType.CreateDataStore:
                     return new LocalNativeCreateDataStore(this);
+
                 case CommandType.DeleteFeatures:
                     return new LocalNativeDelete(this);
+
                 case CommandType.InsertFeature:
                     return new LocalNativeInsert(this);
+
                 case CommandType.UpdateFeatures:
                     return new LocalNativeUpdate(this);
             }
@@ -100,7 +107,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
         public override System.Collections.Specialized.NameValueCollection CloneParameters
         {
-            get 
+            get
             {
                 return new NameValueCollection()
                 {
@@ -125,7 +132,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         }
 
         private string _configFile;
-        const string PARAM_CONFIG = "ConfigFile";
+        private const string PARAM_CONFIG = "ConfigFile";
 
         private MgdResourceService _resSvc;
         private MgdFeatureService _featSvc;
@@ -251,7 +258,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             if (type == null)
                 type = "";
             var res = GetResourceService();
-            GetByteReaderMethod fetch = () => 
+            GetByteReaderMethod fetch = () =>
             {
                 MgResourceIdentifier resId = new MgResourceIdentifier(startingpoint);
                 return res.EnumerateResources(resId, depth, type, computeChildren);
@@ -334,7 +341,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             var res = GetResourceService();
             //var result = Native.Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceData"), new object[] { new MgResourceIdentifier(resourceID), dataname });
-            GetByteReaderMethod fetch = () => 
+            GetByteReaderMethod fetch = () =>
             {
                 MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
                 return res.GetResourceData(resId, dataname);
@@ -343,7 +350,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new MgReadOnlyStream(fetch);
         }
 
-        const int MAX_INPUT_STREAM_SIZE_MB = 30;
+        private const int MAX_INPUT_STREAM_SIZE_MB = 30;
 
         public override void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback)
         {
@@ -476,7 +483,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
         public override FeatureProviderRegistryFeatureProvider[] FeatureProviders
         {
-            get 
+            get
             {
                 MgFeatureService fes = GetFeatureService();
                 GetByteReaderMethod fetch = () =>
@@ -940,7 +947,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
         public OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog CoordinateSystemCatalog
         {
-            get 
+            get
             {
                 if (m_coordsys == null)
                     m_coordsys = new LocalNativeCoordinateSystemCatalog();
@@ -955,7 +962,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
         public void RestartSession()
         {
-            
         }
 
         public bool RestartSession(bool throwException)
@@ -1336,7 +1342,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             {
                 xml = sr.ReadToEnd();
             }
-            
+
             impl.Selection.LoadXml(xml);
 
             return xml;
@@ -1364,7 +1370,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         }
     }
 
-    class LocalLongTransaction : ILongTransaction
+    internal class LocalLongTransaction : ILongTransaction
     {
         public LocalLongTransaction(MgLongTransactionReader rdr)
         {
@@ -1413,7 +1419,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         }
     }
 
-    class LocalLongTransactionList : ILongTransactionList
+    internal class LocalLongTransactionList : ILongTransactionList
     {
         private List<LocalLongTransaction> _transactions;
 
@@ -1432,5 +1438,4 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             get { return _transactions; }
         }
     }
-
 }

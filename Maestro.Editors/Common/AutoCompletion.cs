@@ -1,7 +1,8 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // Original code from SharpDevelop 3.2.1 licensed under the same terms (LGPL 2.1)
 // Copyright 2002-2010 by
 //
@@ -13,56 +14,66 @@
 //  email: office@alphasierrapapa.com
 //  court of jurisdiction: Landesgericht Leoben
 //
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using ICSharpCode.TextEditor;
 using ICSharpCode.TextEditor.Gui.CompletionWindow;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Maestro.Editors.Common
-{ 
+{
     internal class AutoCompletionListBoxItem
     {
         private string _myText;
         private int _myImageIndex;
-        // properties 
+
+        // properties
         public string Text
         {
             get { return _myText; }
             set { _myText = value; }
         }
+
         public int ImageIndex
         {
             get { return _myImageIndex; }
             set { _myImageIndex = value; }
         }
+
         //constructor
         public AutoCompletionListBoxItem(string text, int index)
         {
             _myText = text;
             _myImageIndex = index;
         }
-        public AutoCompletionListBoxItem(string text) : this(text, -1) { }
-        public AutoCompletionListBoxItem() : this(string.Empty) { }
+
+        public AutoCompletionListBoxItem(string text)
+            : this(text, -1)
+        {
+        }
+
+        public AutoCompletionListBoxItem()
+            : this(string.Empty)
+        {
+        }
 
         private object _tag;
 
@@ -78,7 +89,7 @@ namespace Maestro.Editors.Common
         }
     }
 
-    // AutoCompletionListBox class 
+    // AutoCompletionListBox class
     //
     // Based on GListBox
     //
@@ -97,15 +108,14 @@ namespace Maestro.Editors.Common
             // Set owner draw mode
             this.DrawMode = DrawMode.OwnerDrawFixed;
             this.IsShown = false;
-            this.Font = new System.Drawing.Font(FontFamily.GenericMonospace, 10.0f); 
+            this.Font = new System.Drawing.Font(FontFamily.GenericMonospace, 10.0f);
             this.DoubleClick += new EventHandler(OnAutoCompleteDoubleClick);
             this.SelectedIndexChanged += new EventHandler(OnAutoCompleteSelectedIndexChanged);
             this.KeyPress += OnKeyPress;
         }
 
-        void OnKeyPress(object sender, KeyPressEventArgs e)
+        private void OnKeyPress(object sender, KeyPressEventArgs e)
         {
-            
         }
 
         internal void HandleEnterKey()
@@ -136,7 +146,7 @@ namespace Maestro.Editors.Common
             }
         }
 
-        void OnAutoCompleteSelectedIndexChanged(object sender, EventArgs e)
+        private void OnAutoCompleteSelectedIndexChanged(object sender, EventArgs e)
         {
             _context.Editor.Focus();
             if (this.Visible && this.SelectedIndex >= 0 && this.Items.Count > 0)
@@ -157,7 +167,7 @@ namespace Maestro.Editors.Common
             }
         }
 
-        void OnAutoCompleteDoubleClick(object sender, EventArgs e)
+        private void OnAutoCompleteDoubleClick(object sender, EventArgs e)
         {
             PutAutoCompleteSuggestion();
             HideBox();
@@ -265,7 +275,7 @@ namespace Maestro.Editors.Common
         }
 
         private AutoCompleteContext _context;
-        
+
         private void SetCompletionItems(Form parent, AutoCompleteContext context, string fileName, bool p1, bool p2)
         {
             _context = context;

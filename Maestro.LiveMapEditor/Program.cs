@@ -1,39 +1,37 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
+//
+
+#endregion Disclaimer / License
+
+using Maestro.Editors.Preview;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.ExtendedObjectModels;
-using Maestro.Editors.Preview;
+using System;
 using System.Diagnostics;
-using System.Reflection;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
+using System.Windows.Forms;
 
 namespace Maestro.LiveMapEditor
 {
-    static class Program
+    internal static class Program
     {
-        class OurUrlLauncher : IUrlLauncherService
+        private class OurUrlLauncher : IUrlLauncherService
         {
             public void OpenUrl(string url)
             {
@@ -45,7 +43,7 @@ namespace Maestro.LiveMapEditor
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             ModelSetup.Initialize();
             Application.EnableVisualStyles();
@@ -92,7 +90,6 @@ namespace Maestro.LiveMapEditor
             }
             catch (Exception ex)
             {
-
             }
              */
 
@@ -106,7 +103,7 @@ namespace Maestro.LiveMapEditor
             }
         }
 
-        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
             ErrorDialog.Show(e.Exception);
         }

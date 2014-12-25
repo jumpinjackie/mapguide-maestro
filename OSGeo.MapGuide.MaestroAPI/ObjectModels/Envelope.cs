@@ -1,27 +1,27 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.ComponentModel;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI;
+using System.ComponentModel;
 
 #pragma warning disable 1591, 0114, 0108
 
@@ -149,7 +149,9 @@ namespace OSGeo.MapGuide.ObjectModels.Common
 
     partial class Envelope : IEnvelope
     {
-        internal Envelope() { }
+        internal Envelope()
+        {
+        }
 
         public Envelope(double minx, double miny, double maxx, double maxy)
         {
@@ -163,8 +165,8 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         public double MinX
         {
             get { return this.lowerLeftCoordinateField.X; }
-            set 
-            { 
+            set
+            {
                 this.lowerLeftCoordinateField.X = value;
                 OnPropertyChanged("MinX"); //NOXLATE
             }
@@ -176,8 +178,8 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         public double MinY
         {
             get { return this.lowerLeftCoordinateField.Y; }
-            set 
-            { 
+            set
+            {
                 this.lowerLeftCoordinateField.Y = value;
                 OnPropertyChanged("MinY"); //NOXLATE
             }
@@ -189,8 +191,8 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         public double MaxX
         {
             get { return this.upperRightCoordinateField.X; }
-            set 
-            { 
+            set
+            {
                 this.upperRightCoordinateField.X = value;
                 OnPropertyChanged("MaxX");
             }
@@ -202,8 +204,8 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         public double MaxY
         {
             get { return this.upperRightCoordinateField.Y; }
-            set 
-            { 
+            set
+            {
                 this.upperRightCoordinateField.Y = value;
                 OnPropertyChanged("MaxY"); //NOXLATE
             }

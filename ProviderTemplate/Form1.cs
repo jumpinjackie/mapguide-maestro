@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProviderTemplate
@@ -34,7 +29,8 @@ namespace ProviderTemplate
         private void btnBuild_Click(object sender, EventArgs e)
         {
             btnBuild.Enabled = false;
-            worker.RunWorkerAsync(new BuildArgs() { 
+            worker.RunWorkerAsync(new BuildArgs()
+            {
                 FxDir = txtFxDir.Text,
                 MgDir = txtMgDir.Text,
                 MgVersion = txtMgVersion.Text,
@@ -52,7 +48,7 @@ namespace ProviderTemplate
             txtMessages.BeginInvoke(action);
         }
 
-        class BuildArgs
+        private class BuildArgs
         {
             public string FxDir;
             public string MgDir;

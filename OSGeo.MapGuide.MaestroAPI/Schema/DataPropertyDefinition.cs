@@ -1,46 +1,49 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Globalization;
-using System.Xml;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.ObjectModels.Common;
+using System;
+using System.Globalization;
 
 namespace OSGeo.MapGuide.MaestroAPI.Schema
 {
     /// <summary>
-    /// Derives from <see cref="T:OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition"/> and represents simple values or 
-    /// collections of simple values. This can take on any of the data types listed in the 
-    /// <see cref="T:OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyType"/> enumeration. 
+    /// Derives from <see cref="T:OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition"/> and represents simple values or
+    /// collections of simple values. This can take on any of the data types listed in the
+    /// <see cref="T:OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyType"/> enumeration.
     /// </summary>
     public class DataPropertyDefinition : PropertyDefinition
     {
-        private DataPropertyDefinition() { this.DataType = DataPropertyType.String; }
+        private DataPropertyDefinition()
+        {
+            this.DataType = DataPropertyType.String;
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DataPropertyDefinition"/> class.
         /// </summary>
         /// <param name="name">The name.</param>
         /// <param name="description">The description.</param>
-        public DataPropertyDefinition(string name, string description) 
+        public DataPropertyDefinition(string name, string description)
             : this()
         {
             this.Name = name;
@@ -138,25 +141,31 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 case "xs:hexbinary": //NOXLATE
                 case "xs:base64binary": //NOXLATE
                     return DataPropertyType.Blob;
+
                 case "xs:boolean": //NOXLATE
                     return DataPropertyType.Boolean;
+
                 case "fdo:byte": //NOXLATE
                 case "xs:byte": //NOXLATE
                 case "xs:unsignedbyte": //NOXLATE
                     return DataPropertyType.Byte;
+
                 case "xs:date": //NOXLATE
                 case "xs:datetime": //NOXLATE
                     return DataPropertyType.DateTime;
+
                 case "fdo:double": //NOXLATE
                 case "fdo:decimal": //NOXLATE
                 case "xs:decimal": //NOXLATE
                 case "xs:double": //NOXLATE
                     return DataPropertyType.Double;
+
                 case "fdo:int16": //NOXLATE
                 case "xs:int16": //NOXLATE
                 case "xs:short": //NOXLATE
                 case "xs:unsignedshort": //NOXLATE
                     return DataPropertyType.Int16;
+
                 case "fdo:int32": //NOXLATE
                 case "xs:int32": //NOXLATE
                 case "xs:integer": //NOXLATE
@@ -167,19 +176,24 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 case "xs:unsignedint": //NOXLATE
                 case "xs:int": //NOXLATE
                     return DataPropertyType.Int32;
+
                 case "fdo:int64": //NOXLATE
                 case "xs:int64": //NOXLATE
                 case "xs:long": //NOXLATE
                 case "xs:unsignedlong": //NOXLATE
                     return DataPropertyType.Int64;
+
                 case "xs:float": //NOXLATE
                 case "xs:single": //NOXLATE
                 case "fdo:single": //NOXLATE
                     return DataPropertyType.Single;
+
                 case "xs:string": //NOXLATE
                     return DataPropertyType.String;
+
                 case "fdo:clob": //NOXLATE
                     return DataPropertyType.Clob;
+
                 default:
                     throw new ArgumentException();
             }
@@ -223,7 +237,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
 
                 rest.AppendChild(max);
             }
-            
+
             currentNode.AppendChild(prop);
         }
 
@@ -258,30 +272,40 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                    this.DataType == DataPropertyType.Single;
         }
 
-        static ExpressionDataType GetExpressionType(DataPropertyType dt)
+        private static ExpressionDataType GetExpressionType(DataPropertyType dt)
         {
             switch (dt)
             {
                 case DataPropertyType.Blob:
                     return ExpressionDataType.Data_Blob;
+
                 case DataPropertyType.Boolean:
                     return ExpressionDataType.Data_Boolean;
+
                 case DataPropertyType.Byte:
                     return ExpressionDataType.Data_Byte;
+
                 case DataPropertyType.Clob:
                     return ExpressionDataType.Data_Clob;
+
                 case DataPropertyType.DateTime:
                     return ExpressionDataType.Data_DateTime;
+
                 case DataPropertyType.Double:
                     return ExpressionDataType.Data_Double;
+
                 case DataPropertyType.Int16:
                     return ExpressionDataType.Data_Int16;
+
                 case DataPropertyType.Int32:
                     return ExpressionDataType.Data_Int32;
+
                 case DataPropertyType.Int64:
                     return ExpressionDataType.Data_Int64;
+
                 case DataPropertyType.Single:
                     return ExpressionDataType.Data_Single;
+
                 case DataPropertyType.String:
                     return ExpressionDataType.Data_String;
             }

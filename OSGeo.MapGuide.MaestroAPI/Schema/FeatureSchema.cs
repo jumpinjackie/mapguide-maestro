@@ -1,39 +1,44 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Collections.ObjectModel;
 using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.Schema
 {
     /// <summary>
-    /// Contains all of the classes and relationships that make up a particular data model. This class is used to 
+    /// Contains all of the classes and relationships that make up a particular data model. This class is used to
     /// represent the internal logical structure of a Feature Source
     /// </summary>
     public class FeatureSchema : SchemaElement, IFdoSerializable
     {
         private List<ClassDefinition> _classes;
 
-        internal FeatureSchema() { _classes = new List<ClassDefinition>(); }
+        internal FeatureSchema()
+        {
+            _classes = new List<ClassDefinition>();
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FeatureSchema"/> class.
@@ -59,8 +64,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// Adds the specified class definition
         /// </summary>
         /// <param name="cls"></param>
-        public void AddClass(ClassDefinition cls) 
-        { 
+        public void AddClass(ClassDefinition cls)
+        {
             _classes.Add(cls);
             cls.Parent = this;
         }
@@ -70,7 +75,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// </summary>
         /// <param name="cls"></param>
         /// <returns></returns>
-        public bool RemoveClass(ClassDefinition cls) 
+        public bool RemoveClass(ClassDefinition cls)
         {
             if (_classes.Remove(cls))
             {
@@ -100,7 +105,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// </summary>
         /// <param name="cls"></param>
         /// <returns></returns>
-        public int IndexOf(ClassDefinition cls) { return _classes.IndexOf(cls); }
+        public int IndexOf(ClassDefinition cls)
+        {
+            return _classes.IndexOf(cls);
+        }
 
         /// <summary>
         /// Gets the class definition at the specified index
@@ -117,7 +125,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public ClassDefinition GetItem(int index) { return _classes[index]; }
+        public ClassDefinition GetItem(int index)
+        {
+            return _classes[index];
+        }
 
         /// <summary>
         /// Writes the current element's content

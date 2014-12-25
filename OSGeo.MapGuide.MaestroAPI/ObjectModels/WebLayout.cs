@@ -1,31 +1,33 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using System.Xml.Serialization;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System.ComponentModel;
 using System.IO;
+using System.Xml.Serialization;
 
 #pragma warning disable 1591, 0114, 0108
 
@@ -36,6 +38,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_2_4_0
 #elif WL110
 namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0
 #else
+
 namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
 #endif
 {
@@ -85,7 +88,9 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
 
     partial class WebLayoutType : IWebLayout, ICommandSet
     {
-        internal WebLayoutType() { }
+        internal WebLayoutType()
+        {
+        }
 
 #if WL260
         private static readonly Version RES_VERSION = new Version(2, 6, 0);
@@ -287,6 +292,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
             wl.CreateCommandItem(BuiltInCommandType.Pan.ToString())
             );
         }
+
         private static void CreateDefaultContextMenu(IWebLayout wl)
         {
             wl.ContextMenu.AddItems(
@@ -802,7 +808,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
             return flyout;
         }
 
-        public ICommandItem CreateCommandItem(string cmdName) 
+        public ICommandItem CreateCommandItem(string cmdName)
         {
             return new CommandItemType() { Function = UIItemFunctionType.Command, Command = cmdName };
         }
@@ -855,7 +861,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
                     }
 
                     this.commandSetField.Add(importCmd);
-                    
+
                     clashes.Add(new ImportedCommandResult() { OriginalName = oldName, ImportedName = newName });
                 }
             }
@@ -868,7 +874,6 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
         {
             get { return this; }
         }
-
 
         void ICommandSet.Clear()
         {
@@ -1015,7 +1020,6 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
 
     partial class MapViewType : IMapView
     {
-
     }
 
     partial class ToolBarType : IToolbar
@@ -1029,7 +1033,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
         [XmlIgnore]
         public IEnumerable<IUIItem> Items
         {
-            get 
+            get
             {
                 foreach (var item in this.Button)
                 {
@@ -1059,7 +1063,6 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
                 OnPropertyChanged("Button"); //NOXLATE
             }
         }
-
 
         public bool MoveUp(IUIItem item)
         {
@@ -1129,7 +1132,6 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
 
     partial class InformationPaneType : IInformationPane
     {
-
     }
 
     partial class ContextMenuType : IContextMenu
@@ -1372,7 +1374,6 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
 
     partial class TaskButtonType : ITaskButton
     {
-        
     }
 
     partial class StatusBarType : IStatusBar
@@ -1401,7 +1402,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
         [XmlIgnore]
         IEnumerable<IResourceReference> IPrintCommand.PrintLayout
         {
-            get 
+            get
             {
                 foreach (var refer in this.PrintLayout)
                 {
@@ -1459,7 +1460,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
         [XmlIgnore]
         public IEnumerable<IUIItem> Items
         {
-            get 
+            get
             {
                 foreach (var item in this.SubItem)
                 {
@@ -1567,7 +1568,6 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
 
     partial class CommandItemType : ICommandItem
     {
-        
     }
 
     partial class InvokeURLCommandType : IInvokeUrlCommand, ILayerSet
@@ -1584,7 +1584,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
         [XmlIgnore]
         IEnumerable<IParameterPair> IInvokeUrlCommand.AdditionalParameter
         {
-            get 
+            get
             {
                 foreach (var pair in this.AdditionalParameter)
                 {
@@ -1621,7 +1621,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
         [XmlIgnore]
         public BindingList<string> Layer
         {
-            get 
+            get
             {
                 return this.LayerSet;
             }
@@ -1642,7 +1642,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
         [XmlIgnore]
         IResultColumnSet ISearchCommand.ResultColumns
         {
-            get 
+            get
             {
                 return this;
             }
@@ -1707,11 +1707,9 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
 
     partial class ResultColumnType : IResultColumn
     {
-
     }
 
     partial class InvokeScriptCommandType : IInvokeScriptCommand
     {
-        
     }
 }

@@ -1,27 +1,28 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI.Services;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Services;
 using System.Threading;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tile
@@ -107,7 +108,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             while (!completed)
             {
                 EventPassing eventToRaise = null;
-                while(true)
+                while (true)
                 {
                     lock (SyncLock)
                         if (RaiseEvents.Count > 0)
@@ -130,6 +131,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                                     eventToRaise.Row,
                                     eventToRaise.Col);
                                 break;
+
                             case EventPassing.EventType.Finish:
                                 Parent.InvokeFinishRendering(
                                     Invoker,
@@ -138,6 +140,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                                     eventToRaise.Row,
                                     eventToRaise.Col);
                                 break;
+
                             case EventPassing.EventType.Error:
                                 eventToRaise.Result = Parent.InvokeError(
                                     Invoker,
@@ -147,8 +150,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                                     eventToRaise.Col,
                                     ref eventToRaise.Exception);
                                 break;
+
                             default:
-                                //Not translated, because it is an internal error that should never happen 
+                                //Not translated, because it is an internal error that should never happen
                                 throw new Exception("Bad event type"); //NOXLATE
                         }
                         eventToRaise.Event.Set();
@@ -218,10 +222,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             }
             finally
             {
-                lock(SyncLock)
+                lock (SyncLock)
                     FillerComplete = true;
             }
-
         }
 
         /// <summary>
@@ -259,7 +262,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                 var tileSvc = (ITileService)con.GetService((int)ServiceType.Tile);
                 AutoResetEvent ev = new AutoResetEvent(false);
 
-
                 while (!Parent.Cancel)
                 {
                     KeyValuePair<int, int>? round = null;
@@ -281,8 +283,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                     else
                         RenderTile(ev, tileSvc, round.Value.Key, round.Value.Value, Scale, Group);
                 }
-
-
             }
             catch { }
             finally
@@ -291,7 +291,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                 Event.Set();
             }
         }
-
 
         /// <summary>
         /// Renders a single tile
@@ -337,7 +336,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                         Exception pex = ex;
                         ev.Reset();
                         EventPassing evobj = new EventPassing(
-                            EventPassing.EventType.Error ,
+                            EventPassing.EventType.Error,
                                 (int)row, (int)col, ex,
                                 ev
                                 );
@@ -364,7 +363,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             ev.Reset();
             lock (SyncLock)
             {
-                RaiseEvents.Enqueue(new EventPassing( 
+                RaiseEvents.Enqueue(new EventPassing(
                     EventPassing.EventType.Finish,
                     (int)row, (int)col, null,
                     ev
@@ -373,6 +372,5 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             }
             ev.WaitOne(Timeout.Infinite, true);
         }
-
     }
 }

@@ -1,35 +1,33 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
+//
+
+#endregion Disclaimer / License
+
 using Maestro.Editors.Common;
 using Maestro.Editors.Generic;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
+using System;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.WebLayout
 {
@@ -60,14 +58,14 @@ namespace Maestro.Editors.WebLayout
 
             _wl = (IWebLayout)_edsvc.GetEditedResource();
             GeneratePreviewUrl();
-            
+
             _view = _wl.Map.InitialView;
             if (_view == null)
             {
                 _view = _wl.CreateDefaultView();
                 chkCustomView.Checked = false;
             }
-            else 
+            else
             {
                 chkCustomView.Checked = true;
             }
@@ -82,7 +80,7 @@ namespace Maestro.Editors.WebLayout
             TextBoxBinder.BindText(numX, _view, "CenterX");
             TextBoxBinder.BindText(numY, _view, "CenterY");
             TextBoxBinder.BindText(numScale, _view, "Scale");
-            
+
             TextBoxBinder.BindText(txtBrowserTitle, _wl, "Title");
             TextBoxBinder.BindText(txtMapDefinition, _wl.Map, "ResourceId");
             TextBoxBinder.BindText(txtInitialTaskPaneUrl, _wl.TaskPane, "InitialTask");
@@ -147,12 +145,12 @@ namespace Maestro.Editors.WebLayout
             catch { }
         }
 
-        void OnSaved(object sender, EventArgs e)
+        private void OnSaved(object sender, EventArgs e)
         {
             GeneratePreviewUrl();
         }
 
-        void OnWebLayoutPropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void OnWebLayoutPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             OnResourceChanged();
         }

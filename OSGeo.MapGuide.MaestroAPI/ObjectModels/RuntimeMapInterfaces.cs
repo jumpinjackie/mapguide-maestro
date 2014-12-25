@@ -1,27 +1,27 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2013, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.ObjectModels.Common;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
 {
@@ -60,7 +60,7 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
         /// Gets the mime type of any inline icons.
         /// </summary>
         /// <remarks>
-        /// If the application did not request any icons as part of the CreateRuntimeMap 
+        /// If the application did not request any icons as part of the CreateRuntimeMap
         /// or DescribeRuntimeMap request, this property is null
         /// </remarks>
         string IconMimeType { get; }
@@ -126,7 +126,7 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
         /// </summary>
         double MetersPerUnit { get; }
     }
-    
+
     /// <summary>
     /// Models a legend element
     /// </summary>
@@ -316,7 +316,6 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
     /// </summary>
     public interface IRuntimeLayerInfoCollection : IReadOnlyCollection<IRuntimeLayerInfo>
     {
-
     }
 
     /// <summary>
@@ -324,7 +323,6 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
     /// </summary>
     public interface IRuntimeLayerGroupInfoCollection : IReadOnlyCollection<IRuntimeLayerGroupInfo>
     {
-
     }
 
     /// <summary>
@@ -332,7 +330,6 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
     /// </summary>
     public interface IScaleRangeInfoCollection : IReadOnlyCollection<IScaleRangeInfo>
     {
-
     }
 
     /// <summary>
@@ -340,7 +337,6 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
     /// </summary>
     public interface IFeatureStyleInfoCollection : IReadOnlyCollection<IFeatureStyleInfo>
     {
-
     }
 
     /// <summary>
@@ -348,6 +344,5 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
     /// </summary>
     public interface IRuleInfoCollection : IReadOnlyCollection<IRuleInfo>
     {
-
     }
 }

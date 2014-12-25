@@ -1,37 +1,36 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using Maestro.Editors.Common;
+using Maestro.Editors.FeatureSource.Extensions;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using Maestro.Editors.Common;
-using Maestro.Editors.FeatureSource.Extensions;
-using Maestro.Shared.UI;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using OSGeo.MapGuide.MaestroAPI.Schema;
 
 namespace Maestro.Editors.FeatureSource
 {
@@ -43,9 +42,9 @@ namespace Maestro.Editors.FeatureSource
             InitializeComponent();
         }
 
-        const int IDX_EXTENSION = 0;
-        const int IDX_CALC = 1;
-        const int IDX_JOIN = 2;
+        private const int IDX_EXTENSION = 0;
+        private const int IDX_CALC = 1;
+        private const int IDX_JOIN = 2;
 
         private IFeatureSource _fs;
         private IEditorService _edSvc;
@@ -144,7 +143,7 @@ namespace Maestro.Editors.FeatureSource
             _edSvc.Saved -= OnResourceSaved;
         }
 
-        void OnResourceSaved(object sender, EventArgs e)
+        private void OnResourceSaved(object sender, EventArgs e)
         {
             Debug.Assert(!_edSvc.IsNew);
         }
@@ -340,7 +339,7 @@ namespace Maestro.Editors.FeatureSource
                     if (ext.FeatureClass != null)
                     {
                         //NOTE: The feature source id here may be session based, but this is still okay
-                        //as we're only giving context (the primary class to join on) for the secondary join UI. 
+                        //as we're only giving context (the primary class to join on) for the secondary join UI.
                         //This feature source id is never written into the actual document
                         var ctl = new JoinSettings(_fs.ResourceID, ext.FeatureClass, join);
                         ctl.Bind(_edSvc);
@@ -367,13 +366,13 @@ namespace Maestro.Editors.FeatureSource
                     }
                 }
             }
-            else 
+            else
             {
                 splitContainer1.Panel2.Controls.Clear();
             }
         }
 
-        string[] GetAllClassNames()
+        private string[] GetAllClassNames()
         {
             var names = new List<string>();
             foreach (var sn in _fs.GetSchemaNames())

@@ -1,30 +1,31 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
 {
@@ -37,6 +38,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// A library reference to an existing symbol definition
         /// </summary>
         Reference,
+
         /// <summary>
         /// An inline symbol definition
         /// </summary>
@@ -130,7 +132,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <summary>
         /// Gets or sets the inline definition
         /// </summary>
-        ISymbolDefinitionBase SymbolDefinition { get; set; } 
+        ISymbolDefinitionBase SymbolDefinition { get; set; }
     }
 
     /// <summary>
@@ -200,7 +202,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
                     {
                         p.AddRange(((ISimpleSymbolDefinition)symDef).GetParameters());
                     }
-                    else 
+                    else
                     {
                         p.AddRange(((ICompoundSymbolDefinition)symDef).GetParameters());
                     }
@@ -221,6 +223,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// A simple symbol definition
         /// </summary>
         Simple,
+
         /// <summary>
         /// A compound symbol definition
         /// </summary>
@@ -634,7 +637,6 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     [System.SerializableAttribute()]
     public enum DataType
     {
-
         /// <remarks/>
         String,
 
@@ -759,10 +761,12 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// External resource id reference
         /// </summary>
         Library,
+
         /// <summary>
         /// Inlined definition
         /// </summary>
         Inline,
+
         /// <summary>
         /// Undefined
         /// </summary>
@@ -778,10 +782,12 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// Text
         /// </summary>
         Text,
+
         /// <summary>
         /// Images
         /// </summary>
         Image,
+
         /// <summary>
         /// A linear path containing one or more segments
         /// </summary>
@@ -886,6 +892,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// A reference to an image
         /// </summary>
         Reference,
+
         /// <summary>
         /// Inline content
         /// </summary>
@@ -906,7 +913,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <code>
         /// IInlineImage img1 = (IInlineImage)imageGraphic.Item;
         /// IInlineImage img2 = (IInlineImage)imageGraphic.Item;
-        /// 
+        ///
         /// Object.ReferenceEquals(img1, img2);                 //false
         /// Object.ReferenceEquals(img1.Content, img2.Content); //true
         /// </code>
@@ -1130,19 +1137,22 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     public enum GrowControl
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GrowInX,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GrowInY,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GrowInXY,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GrowInXYMaintainAspect,
     }
@@ -1153,11 +1163,12 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     public enum AngleControl
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FromAngle,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FromGeometry,
     }
@@ -1168,11 +1179,12 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     public enum UnitsControl
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Absolute,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Parametric,
     }
@@ -1183,19 +1195,22 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     public enum VertexControl
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OverlapNone,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OverlapDirect,
+
         /// <summary>
         /// Introduced with Symbol Definition 1.1.0 schema
         /// </summary>
         OverlapNoWrap,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OverlapWrap,
     }
@@ -1206,19 +1221,22 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     public enum VertexJoin
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         None,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Bevel,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Round,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Miter,
     }
@@ -1229,15 +1247,17 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     public enum OriginControl
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Global,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Local,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Centroid,
     }
@@ -1248,15 +1268,17 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     public enum ClippingControl
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Clip,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Inside,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Overlap
     }
@@ -1267,15 +1289,17 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     public enum ResizeControl
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ResizeNone,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AddToResizeBox,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AdjustToResizeBox,
     }
@@ -1286,19 +1310,22 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     public enum LineCap
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         None,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Round,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Triangle,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Square,
     }
@@ -1309,19 +1336,22 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     public enum LineJoin
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         None,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Bevel,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Round,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Miter,
     }
@@ -1332,15 +1362,17 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     public enum HorizontalAlignment
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Left,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Center,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Right,
     }
@@ -1351,23 +1383,27 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     public enum VerticalAlignment
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Bottom,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Baseline,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Halfline,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Capline,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Top,
     }
@@ -1378,30 +1414,35 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     public enum Justification
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Left,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Center,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Right,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Justified,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FromAlignment,
     }
 
-    #endregion
+    #endregion Symbol Definition 1.0.0 interfaces
 
     #region Symbol Definition 1.1.0 interfaces
+
     /// <summary>
     /// An extension of the text element to support rich text. Introduced with the Symbol Definition 1.1.0 schema
     /// </summary>
@@ -1434,7 +1475,6 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     [System.SerializableAttribute()]
     public enum DataType2
     {
-
         /// <remarks/>
         String,
 
@@ -1528,9 +1568,11 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <remarks/>
         RepeatY,
     }
-    #endregion
+
+    #endregion Symbol Definition 1.1.0 interfaces
 
     #region Symbol Definition 2.4.0 interfaces
+
     /// <summary>
     /// Path with support for scaling. Only applicable for Symbol Definition schema
     /// 2.4.0 and higher
@@ -1547,5 +1589,6 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// </summary>
         string ScaleY { get; set; }
     }
-    #endregion
+
+    #endregion Symbol Definition 2.4.0 interfaces
 }

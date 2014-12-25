@@ -1,36 +1,36 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.ObjectModels.Common;
 using System.IO;
-using Maestro.Shared.UI;
-using OSGeo.MapGuide.MaestroAPI.Exceptions;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.MaestroAPI;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.Common
 {
@@ -83,7 +83,7 @@ namespace Maestro.Editors.Common
             get
             {
                 var items = new List<ResourceDataListResourceData>();
-                foreach(ListViewItem selItem in lstDataFiles.SelectedItems)
+                foreach (ListViewItem selItem in lstDataFiles.SelectedItems)
                 {
                     items.Add(selItem.Tag as ResourceDataListResourceData);
                 }
@@ -207,7 +207,7 @@ namespace Maestro.Editors.Common
         {
             //TODO: Obviously support progress
             BusyWaitDelegate method = () => { DoFileUpload(fileName); return null; };
-            BusyWaitDialog.Run(Strings.TextUploading, method, (obj, ex) => 
+            BusyWaitDialog.Run(Strings.TextUploading, method, (obj, ex) =>
             {
                 LoadResourceData();
                 OnDataListChanged();
@@ -270,7 +270,7 @@ namespace Maestro.Editors.Common
                         try
                         {
                             //TODO: Obviously support progress
-                            BusyWaitDelegate method = () => 
+                            BusyWaitDelegate method = () =>
                             {
                                 IResource res = _edSvc.GetEditedResource();
                                 var stream = res.GetResourceData(item.Name);
@@ -280,7 +280,7 @@ namespace Maestro.Editors.Common
                                 }
                                 return null;
                             };
-                            BusyWaitDialog.Run(Strings.TextDownloading, method, (obj, ex) => 
+                            BusyWaitDialog.Run(Strings.TextDownloading, method, (obj, ex) =>
                             {
                                 if (ex != null)
                                     throw ex;
@@ -306,7 +306,7 @@ namespace Maestro.Editors.Common
 
         private void MarkResourceDataAsSelected(string name)
         {
-            ListViewItem item = null; 
+            ListViewItem item = null;
 
             //Find matching item
             foreach (ListViewItem it in lstDataFiles.Items)
@@ -416,7 +416,7 @@ namespace Maestro.Editors.Common
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public delegate void ResourceDataSelectionEventHandler(object sender, string dataName);
 }

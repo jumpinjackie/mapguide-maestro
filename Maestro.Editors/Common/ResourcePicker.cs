@@ -1,38 +1,34 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using Aga.Controls.Tree;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.Common;
-using System.Security.AccessControl;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using Maestro.Editors.Common;
+//
+
+#endregion Disclaimer / License
+
 using Maestro.Editors.Preview;
 using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels.Common;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.Generic
 {
@@ -134,7 +130,7 @@ namespace Maestro.Editors.Generic
             cmbResourceFilter.Enabled = false;
         }
 
-        void OnFolderSelected(object sender, EventArgs e)
+        private void OnFolderSelected(object sender, EventArgs e)
         {
             UpdateDocumentList();
         }
@@ -150,7 +146,7 @@ namespace Maestro.Editors.Generic
                 return;
             if (!ResourceIdentifier.IsFolderResource(folderId))
                 throw new ArgumentException(string.Format(Strings.NotAFolder, folderId));
-            
+
             // Library:// will *always* exist, so fallback to this if given folder doesn't check out
             if (!_resSvc.ResourceExists(folderId))
                 folderId = StringConstants.RootIdentifier;
@@ -159,7 +155,7 @@ namespace Maestro.Editors.Generic
             repoView.NavigateTo(folderId);
             this.SelectedFolder = folderId;
 
-            //HACK: Navigating to the specified folder takes away the focus to the 
+            //HACK: Navigating to the specified folder takes away the focus to the
             //name field
             this.ActiveControl = txtName;
         }
@@ -187,8 +183,9 @@ namespace Maestro.Editors.Generic
                         {
                             this.Text = Strings.SelectFolder;
                             this.SelectFoldersOnly = true;
-                        } 
+                        }
                         break;
+
                     case ResourcePickerMode.SaveResource:
                         {
                             this.Text = Strings.SaveResource;
@@ -222,22 +219,22 @@ namespace Maestro.Editors.Generic
         internal bool UseFilter
         {
             get { return cmbResourceFilter.Visible; }
-            set 
+            set
             {
                 if (value && this.SelectFoldersOnly)
                     throw new InvalidOperationException("Cannot specify a filter when SelectFoldersOnly is true"); //LOCALIZE
-                cmbResourceFilter.Visible = value; lblFilter.Visible = value; 
+                cmbResourceFilter.Visible = value; lblFilter.Visible = value;
             }
         }
-        
+
         /// <summary>
-        /// Gets or sets whether to select folders only. If true, the document view is disabled and 
+        /// Gets or sets whether to select folders only. If true, the document view is disabled and
         /// <see cref="UseFilter"/> is set to false
         /// </summary>
         private bool SelectFoldersOnly
         {
             get { return splitContainer1.Panel2Collapsed; }
-            set 
+            set
             {
                 if (_resourceMode && value)
                     throw new InvalidOperationException("Cannot specify to select folders when dialog is initialized with a resource filter"); //LOCALIZE
@@ -484,10 +481,12 @@ namespace Maestro.Editors.Generic
 
         private void RenderPreview(ResourceListResourceDocument doc)
         {
-            BusyWaitDialog.Run(Strings.PrgPreparingResourcePreview, () => {
+            BusyWaitDialog.Run(Strings.PrgPreparingResourcePreview, () =>
+            {
                 var res = _resSvc.GetResource(doc.ResourceId);
                 return DefaultResourcePreviewer.GenerateSymbolDefinitionPreview(res.CurrentConnection, res, picPreview.Width, picPreview.Height);
-            }, (res, ex) => {
+            }, (res, ex) =>
+            {
                 if (ex != null)
                 {
                     ErrorDialog.Show(ex);
@@ -511,15 +510,17 @@ namespace Maestro.Editors.Generic
     public enum ResourcePickerMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OpenResource,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SaveResource,
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OpenFolder
     }

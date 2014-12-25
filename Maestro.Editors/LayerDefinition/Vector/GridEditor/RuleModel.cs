@@ -1,29 +1,30 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2014, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 
 namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
 {
@@ -31,13 +32,19 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
     {
         [Browsable(false)]
         int Index { get; }
+
         string Filter { get; }
+
         string LegendLabel { get; set; }
+
         Image Style { get; }
 
         void SetRuleStylePreview(Image image);
+
         void SwapIndicesWith(IRuleModel model);
+
         void SetIndex(int index);
+
         object UnwrapRule();
 
         IRuleModel CloneRuleModel(ILayerElementFactory factory);
@@ -47,12 +54,19 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
     {
         [Browsable(false)]
         int Index { get; }
+
         string Filter { get; }
+
         string LegendLabel { get; set; }
+
         Image Style { get; }
+
         Image Label { get; }
+
         void SwapIndicesWith(ILabeledRuleModel model);
+
         void SetIndex(int index);
+
         object UnwrapRule();
 
         ILabeledRuleModel CloneLabeledRuleModel(ILayerElementFactory factory);
@@ -69,7 +83,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
 
         public abstract Image Style { get; protected set; }
 
-        public void SetIndex(int index) { this.Index = index; }
+        public void SetIndex(int index)
+        {
+            this.Index = index;
+        }
 
         [Browsable(false)]
         public bool HasStyle { get; protected set; }
@@ -423,7 +440,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             return new AreaRuleModel(clone, -1);
         }
     }
-    
+
     internal class CompositeRuleModel : RuleModel
     {
         private ICompositeRule _rule;

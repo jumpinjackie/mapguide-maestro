@@ -1,22 +1,25 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
 using System.IO;
 
@@ -47,7 +50,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
             m_stream = stream;
             m_siteVersion = siteversion;
         }
-        
+
         /*
         private MgStreamHeader ReadStreamHeader()
         {
@@ -99,9 +102,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
 
                 string b = System.Text.Encoding.UTF8.GetString(buf);
                 //Chop of C zero terminator... Why store it, when the length is also present?
-                return b.Substring(0, b.Length - 1); 
+                return b.Substring(0, b.Length - 1);
             }
-            
         }
 
         /// <summary>
@@ -112,14 +114,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         {
             int charwidth = m_stream.ReadByte();
             System.Text.Encoding ec;
-            switch(charwidth)
+            switch (charwidth)
             {
                 case 1:
                     ec = System.Text.Encoding.UTF8;
                     break;
+
                 case 2:
                     ec = System.Text.Encoding.GetEncoding("UTF-16"); //NOXLATE
                     break;
+
                 default:
                     throw new Exception(Strings.ErrorBinarySerializerGetCharWidth);
             }
@@ -259,7 +263,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
                 throw new Exception(string.Format(Strings.ErrorBinarySerializerInvalidCoordinateDimensionCount, dimensions));
 
             double[] args = new double[dimensions * count];
-            for(int i = 0;i < (dimensions * count); i++)
+            for (int i = 0; i < (dimensions * count); i++)
                 args[i] = ReadDouble();
 
             return args;
@@ -282,7 +286,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
             //Due to the annoying embedded buffer size markers, we cannot return the stream 'as is' Grrrrrr!
 
             int r;
-            ulong remain = p.Length; 
+            ulong remain = p.Length;
             byte[] buf = new byte[1024 * 8];
 
             MemoryStream ms = new MemoryStream();
@@ -291,7 +295,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
                 int blocksize = ReadInt32();
                 r = 1;
 
-                while( r > 0 && blocksize > 0)
+                while (r > 0 && blocksize > 0)
                 {
                     r = m_stream.Read(buf, 0, (int)Math.Min((ulong)remain, (ulong)buf.Length));
                     blocksize -= r;
@@ -301,7 +305,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
 
                 if (blocksize != 0)
                     throw new Exception(Strings.ErrorBinarySerializerPrematureEndOfStream);
-
             } while (remain > 0);
 
             ms.Position = 0;
@@ -342,10 +345,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
                 return null;
 
             IBinarySerializable obj = null;
-            switch(classId)
+            switch (classId)
             {
                 case 0:
                     break;
+
                 default:
                     throw new Exception(string.Format(Strings.ErrorBinarySerializerUnknownObjectType, classId));
             }
@@ -376,7 +380,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         {
             int r;
             int _offset = 0;
-            
+
             if (buf.Length < len + offset)
                 throw new OverflowException(Strings.ErrorBinarySerializerBufferTooSmall);
 
@@ -397,7 +401,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         /// <returns>The internal buffer object</returns>
         private byte[] ReadStream(int len)
         {
-            ReadStreamRepeat(m_buf, 0, len); 
+            ReadStreamRepeat(m_buf, 0, len);
             return m_buf;
         }
     }

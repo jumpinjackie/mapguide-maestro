@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<!-- 
+<!--
 This file allows the feature source editor to resolve the correct specialized
 editor based on the given provider name of the feature source. If the editor
 cannot locate this file or fails to parse the entries defined here, the default

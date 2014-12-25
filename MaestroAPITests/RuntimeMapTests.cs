@@ -1,53 +1,54 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI;
-using System.IO;
-using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace MaestroAPITests
 {
-    using OSGeo.MapGuide.ObjectModels;
-    using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
-    using OSGeo.MapGuide.MaestroAPI.Resource;
-    using OSGeo.MapGuide.ObjectModels.LoadProcedure;
-    using System.Diagnostics;
-    using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
-    using System.Drawing;
     using OSGeo.MapGuide.ExtendedObjectModels;
-    using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-    using OSGeo.MapGuide.ObjectModels.DrawingSource;
     using OSGeo.MapGuide.MaestroAPI.Commands;
+    using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
+    using OSGeo.MapGuide.MaestroAPI.Resource;
+    using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
+    using OSGeo.MapGuide.ObjectModels;
+    using OSGeo.MapGuide.ObjectModels.DrawingSource;
+    using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+    using System.Diagnostics;
+    using System.Drawing;
     using MapModel = OSGeo.MapGuide.ObjectModels.RuntimeMap;
 
     [SetUpFixture]
     public class TestBootstrap
     {
         //Guard variable to prevent duplicate registration on repeated test runs of a single test session
-        static bool _registered = false;
+        private static bool _registered = false;
 
         [SetUp]
         public void Setup()
@@ -123,7 +124,6 @@ namespace MaestroAPITests
         [TestFixtureTearDown]
         public void TestFixtureTearDown()
         {
-            
         }
 
         protected abstract IServerConnection CreateTestConnection();
@@ -143,7 +143,7 @@ namespace MaestroAPITests
             Assert.NotNull(mapSvc);
 
             var map = mapSvc.CreateMap("Session:" + _conn.SessionID + "//TestGroupAssignment.Map", mdf, 1.0);
-            foreach(var grp in mdf.MapLayerGroup)
+            foreach (var grp in mdf.MapLayerGroup)
             {
                 var rtGrp = mapSvc.CreateMapGroup(map, grp);
                 Assert.AreEqual(rtGrp.Group, grp.Group);
@@ -258,7 +258,7 @@ namespace MaestroAPITests
             var map = mapSvc.CreateMap(mid, mdf, 1.0);
             //Doesn't exist yet because save isn't called
             if (CaresAboutRuntimeMapState) Assert.IsTrue(!resSvc.ResourceExists(mid));
-            
+
             //Call save
             Assert.IsTrue(Matches(map, mdf));
             Assert.IsFalse(map.IsDirty);
@@ -326,7 +326,7 @@ namespace MaestroAPITests
         {
             //Render a map of sheboygan at 75k
             //Only programmatically verify the returned stream can be fed to a
-            //System.Drawing.Image object. 
+            //System.Drawing.Image object.
 
             var resSvc = _conn.ResourceService;
             var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
@@ -336,8 +336,8 @@ namespace MaestroAPITests
             Assert.NotNull(mdf);
 
             //FIXME: We have a problem. Can we calculate this value without MgCoordinateSystem and just using the WKT?
-            //The answer to this will answer whether we can actually support the Rendering Service API over http 
-            //using pure client-side runtime maps 
+            //The answer to this will answer whether we can actually support the Rendering Service API over http
+            //using pure client-side runtime maps
             //
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
@@ -548,7 +548,7 @@ namespace MaestroAPITests
             }
         }
 
-        #endregion
+        #endregion render helpers
 
         public virtual void TestLegendIconRendering()
         {
@@ -560,8 +560,8 @@ namespace MaestroAPITests
             Assert.NotNull(mdf);
 
             //FIXME: We have a problem. Can we calculate this value without MgCoordinateSystem and just using the WKT?
-            //The answer to this will answer whether we can actually support the Rendering Service API over http 
-            //using pure client-side runtime maps 
+            //The answer to this will answer whether we can actually support the Rendering Service API over http
+            //using pure client-side runtime maps
             //
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
@@ -614,10 +614,10 @@ namespace MaestroAPITests
         }
 
         public virtual void TestRender12k()
-        { 
+        {
             //Render a map of sheboygan at 12k
             //Only programmatically verify the returned stream can be fed to a
-            //System.Drawing.Image object. 
+            //System.Drawing.Image object.
 
             var resSvc = _conn.ResourceService;
             var mapSvc = _conn.GetService((int)ServiceType.Mapping) as IMappingService;
@@ -627,8 +627,8 @@ namespace MaestroAPITests
             Assert.NotNull(mdf);
 
             //FIXME: We have a problem. Can we calculate this value without MgCoordinateSystem and just using the WKT?
-            //The answer to this will answer whether we can actually support the Rendering Service API over http 
-            //using pure client-side runtime maps 
+            //The answer to this will answer whether we can actually support the Rendering Service API over http
+            //using pure client-side runtime maps
             //
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
@@ -664,7 +664,7 @@ namespace MaestroAPITests
             Assert.IsTrue(map.IsDirty);
             map.Save();
             Assert.IsFalse(map.IsDirty);
-            
+
             //Render again
             RenderAndVerify(mapSvc, map, TestPrefix + "TestRender12k_NoParcels.png", "PNG");
             RenderAndVerifyConvenience(map, TestPrefix + "TestRender12kConvenience_NoParcels.png", "PNG");
@@ -700,8 +700,8 @@ namespace MaestroAPITests
             Assert.NotNull(mdf);
 
             //FIXME: We have a problem. Can we calculate this value without MgCoordinateSystem and just using the WKT?
-            //The answer to this will answer whether we can actually support the Rendering Service API over http 
-            //using pure client-side runtime maps 
+            //The answer to this will answer whether we can actually support the Rendering Service API over http
+            //using pure client-side runtime maps
             //
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
@@ -793,8 +793,8 @@ namespace MaestroAPITests
             Assert.NotNull(mdf);
 
             //FIXME: We have a problem. Can we calculate this value without MgCoordinateSystem and just using the WKT?
-            //The answer to this will answer whether we can actually support the Rendering Service API over http 
-            //using pure client-side runtime maps 
+            //The answer to this will answer whether we can actually support the Rendering Service API over http
+            //using pure client-side runtime maps
             //
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
@@ -922,8 +922,8 @@ namespace MaestroAPITests
             Assert.NotNull(mdf);
 
             //FIXME: We have a problem. Can we calculate this value without MgCoordinateSystem and just using the WKT?
-            //The answer to this will answer whether we can actually support the Rendering Service API over http 
-            //using pure client-side runtime maps 
+            //The answer to this will answer whether we can actually support the Rendering Service API over http
+            //using pure client-side runtime maps
             //
             //The hard-coded value here was the output of MgCoordinateSystem.ConvertCoordinateSystemUnitsToMeters(1.0)
             //for this particular map.
@@ -1056,7 +1056,7 @@ namespace MaestroAPITests
             tmprtm.Save();
             Assert.IsFalse(tmprtm.IsDirty);
 
-            RuntimeMap mymap = mapSvc.OpenMap(mapid); 
+            RuntimeMap mymap = mapSvc.OpenMap(mapid);
         }
 
         public virtual void TestMapManipulation5()
@@ -1240,7 +1240,7 @@ namespace MaestroAPITests
         {
             base.TestExtentSerialization();
         }
-        
+
         [Test]
         public override void TestResourceEvents()
         {
@@ -1300,7 +1300,7 @@ namespace MaestroAPITests
         {
             base.TestLargeMapCreatePerformance();
         }
-        
+
         [Test]
         public override void TestMapManipulation4()
         {
@@ -1349,7 +1349,7 @@ namespace MaestroAPITests
             Assert.True(rtInfo.Layers.Count == 0);
             Assert.NotNull(rtInfo.Groups);
             Assert.True(rtInfo.Groups.Count == 0);
-            
+
             //Barebones with tiled
             create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
             create.MapDefinition = "Library://UnitTests/Maps/SheboyganTiled.MapDefinition";
@@ -1568,7 +1568,7 @@ namespace MaestroAPITests
             //Kitchen sink
             create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
             create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
-            
+
             map = create.Execute();
             describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
             describe.Name = map.Name;
@@ -1769,13 +1769,13 @@ namespace MaestroAPITests
         {
             base.TestCreate();
         }
-        
+
         [Test]
         public override void TestSave()
         {
             base.TestSave();
         }
-        
+
         [Test]
         public override void TestRender75k()
         {

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.ObjectModels.LoadProcedure;
+﻿using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using System.IO;
-using OSGeo.MapGuide.MaestroAPI;
 
 #pragma warning disable 1591, 0114, 0108
 
@@ -13,6 +10,7 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure_1_1_0
 #elif LP220
 namespace OSGeo.MapGuide.ObjectModels.LoadProcedure_2_2_0
 #else
+
 namespace OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0
 #endif
 {
@@ -21,7 +19,7 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0
     /// </summary>
     public static class LoadProcEntryPoint
     {
-        const string ARBITRARY_XYM = "LOCAL_CS[\"Non-Earth (Meter)\", LOCAL_DATUM[\"Local Datum\", 0], UNIT[\"Meter\", 1], AXIS[\"X\", EAST], AXIS[\"Y\", NORTH]]"; //NOXLATE
+        private const string ARBITRARY_XYM = "LOCAL_CS[\"Non-Earth (Meter)\", LOCAL_DATUM[\"Local Datum\", 0], UNIT[\"Meter\", 1], AXIS[\"X\", EAST], AXIS[\"Y\", NORTH]]"; //NOXLATE
 
         private static void ApplyDefaults(LoadProcedureType lt)
         {

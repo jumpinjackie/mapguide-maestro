@@ -1,41 +1,39 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
-using System.Drawing;
-using System.ComponentModel;
-using System.IO;
-using System.Drawing.Drawing2D;
-using System.Diagnostics;
-using System.Threading;
-using System.Xml;
-using System.Collections.Specialized;
-using System.Collections.ObjectModel;
-using OSGeo.MapGuide.MaestroAPI.Services;
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.MaestroAPI.Schema;
-using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.MaestroAPI;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+using System.Xml;
 
 namespace Maestro.MapViewer
 {
@@ -79,7 +77,7 @@ namespace Maestro.MapViewer
             }
         }
 
-        const double MINIMUM_ZOOM_SCALE = 5.0;
+        private const double MINIMUM_ZOOM_SCALE = 5.0;
 
 #if VIEWER_DEBUG
         private MgdLayer _debugLayer;
@@ -125,7 +123,7 @@ namespace Maestro.MapViewer
             var debugLayerId = new MgResourceIdentifier("Session:" + sessionId + "//" + debugFsId.Name + ".LayerDefinition");
             var breader = source.GetReader();
             resSvc.SetResource(debugLayerId, breader, null);
-            
+
             _debugLayer = new MgdLayer(debugLayerId, resSvc);
             _debugLayer.SetLegendLabel("Debug Layer");
             _debugLayer.SetVisible(true);
@@ -222,7 +220,7 @@ namespace Maestro.MapViewer
             _defaultLineStringDigitizationPrompt = Properties.Resources.LineStringDigitizationPrompt;
             _defaultPolygonDigitizationPrompt = Properties.Resources.PolygonDigitizationPrompt;
             _defaultRectangleDigitizationPrompt = Properties.Resources.RectangleDigitizationPrompt;
-            
+
             renderWorker = new BackgroundWorker();
 
             renderWorker.DoWork += renderWorker_DoWork;
@@ -276,19 +274,18 @@ namespace Maestro.MapViewer
             }
         }
 
-        void OnMouseEnter(object sender, EventArgs e)
+        private void OnMouseEnter(object sender, EventArgs e)
         {
-            this.Focus();   
+            this.Focus();
         }
 
-        void OnMapMouseHover(object sender, EventArgs e)
+        private void OnMapMouseHover(object sender, EventArgs e)
         {
             HandleMouseHover(e);
         }
 
         private void HandleMouseHover(EventArgs e)
         {
-            
         }
 
         /// <summary>
@@ -306,7 +303,7 @@ namespace Maestro.MapViewer
                 base.MouseDoubleClick -= OnMapMouseDoubleClick;
                 base.MouseHover -= OnMapMouseHover;
                 base.MouseEnter -= OnMouseEnter;
-                base.MouseLeave -= OnMapMouseLeave; 
+                base.MouseLeave -= OnMapMouseLeave;
 
                 if (renderWorker != null)
                 {
@@ -338,12 +335,12 @@ namespace Maestro.MapViewer
         [Description("The amount of time (in ms) to wait to re-render after a mouse wheel scroll")]
         public int MouseWheelDelayRenderInterval { get; set; }
 
-        /// <summary> 
-        /// The amount of time (in ms) to wait to re-render after a mouse wheel scroll 
-        /// </summary> 
+        /// <summary>
+        /// The amount of time (in ms) to wait to re-render after a mouse wheel scroll
+        /// </summary>
         [Category("MapGuide Viewer")]
         [Description("The amount of time (in ms) to wait to fire off a tooltip request after the mouse pointer becomes stationary")]
-        public int TooltipDelayInterval { get; set; } 
+        public int TooltipDelayInterval { get; set; }
 
         private Color _selColor;
 
@@ -355,8 +352,8 @@ namespace Maestro.MapViewer
         public Color SelectionColor
         {
             get { return _selColor; }
-            set 
-            { 
+            set
+            {
                 _selColor = value;
                 OnPropertyChanged("SelectionColor");
             }
@@ -417,7 +414,6 @@ namespace Maestro.MapViewer
                     Trace.TraceInformation("Selection color updated to ({0}, {1}, {2})", value.R, value.G, value.B);
                 }
             }
-            
         }
 
         private bool _showVertexCoords;
@@ -490,7 +486,7 @@ namespace Maestro.MapViewer
                 e.Graphics.DrawImage(_selectionImage, new PointF(0, 0));
             }
 
-            //TODO: We could add support here for map-space persistent digitizations 
+            //TODO: We could add support here for map-space persistent digitizations
 
             if (isDragging && (this.ActiveTool == MapActiveTool.Select || this.ActiveTool == MapActiveTool.ZoomIn))
             {
@@ -514,9 +510,11 @@ namespace Maestro.MapViewer
                                 case MapDigitizationType.Circle:
                                     DrawTracingCircle(e);
                                     break;
+
                                 case MapDigitizationType.Line:
                                     DrawTracingLine(e);
                                     break;
+
                                 case MapDigitizationType.Rectangle:
                                     DrawTracingRectangle(e);
                                     break;
@@ -529,6 +527,7 @@ namespace Maestro.MapViewer
                                 case MapDigitizationType.LineString:
                                     DrawTracingLineString(e);
                                     break;
+
                                 case MapDigitizationType.Polygon:
                                     DrawTracingPolygon(e);
                                     break;
@@ -594,7 +593,7 @@ namespace Maestro.MapViewer
                 }
             }
         }
-        
+
         /// <summary>
         /// Gets or sets the amount of pixels to buffer out by when doing point-based selections with the select tool
         /// </summary>
@@ -668,12 +667,11 @@ namespace Maestro.MapViewer
                 return;
 
             var f = Control.DefaultFont;
-            
-            
+
             int height = 0;
             int width = 0;
-            string [] tokens = text.Split(new string[] {"\\n", "\\r\\n", "\n", Environment.NewLine }, StringSplitOptions.None);
-            foreach(string t in tokens)
+            string[] tokens = text.Split(new string[] { "\\n", "\\r\\n", "\n", Environment.NewLine }, StringSplitOptions.None);
+            foreach (string t in tokens)
             {
                 var size = e.Graphics.MeasureString(t, f);
                 height += (int)size.Height;
@@ -700,7 +698,7 @@ namespace Maestro.MapViewer
             e.Graphics.DrawEllipse(CreateOutlinePen(), pt2.X, pt2.Y, diameter, diameter);
             e.Graphics.FillEllipse(CreateFillBrush(), pt2.X, pt2.Y, diameter, diameter);
 
-            string str = (_circleCustomDigitizationPrompt ?? _defaultCircleDigitizationPrompt) + Environment.NewLine + _defaultDigitizationInstructions; 
+            string str = (_circleCustomDigitizationPrompt ?? _defaultCircleDigitizationPrompt) + Environment.NewLine + _defaultDigitizationInstructions;
             DrawTrackingTooltip(e, str);
         }
 
@@ -709,7 +707,7 @@ namespace Maestro.MapViewer
             e.Graphics.DrawLine(CreateOutlinePen(), dPtStart, new Point(_mouseX, _mouseY));
             DrawVertexCoordinates(e, dPtStart.X, dPtStart.Y, true);
             DrawVertexCoordinates(e, _mouseX, _mouseY, true);
-            string str = (_lineCustomDigitizationPrompt ?? _defaultLineDigitizationPrompt) + Environment.NewLine + _defaultDigitizationInstructions; 
+            string str = (_lineCustomDigitizationPrompt ?? _defaultLineDigitizationPrompt) + Environment.NewLine + _defaultDigitizationInstructions;
             DrawTrackingTooltip(e, str);
         }
 
@@ -718,14 +716,14 @@ namespace Maestro.MapViewer
             //Not enough points to constitute a line string or polygon
             if (dPath.Count < 2)
                 return;
-            
+
             e.Graphics.DrawLines(CreateOutlinePen(), dPath.ToArray());
             foreach (var pt in dPath)
             {
                 DrawVertexCoordinates(e, pt.X, pt.Y, true);
             }
 
-            string str = (_lineStringCustomDigitizationPrompt ?? _defaultLineStringDigitizationPrompt) + Environment.NewLine + _defaultMultiSegmentDigitizationInstructions; 
+            string str = (_lineStringCustomDigitizationPrompt ?? _defaultLineStringDigitizationPrompt) + Environment.NewLine + _defaultMultiSegmentDigitizationInstructions;
             DrawTrackingTooltip(e, str);
         }
 
@@ -741,7 +739,7 @@ namespace Maestro.MapViewer
             {
                 DrawVertexCoordinates(e, pt.X, pt.Y, true);
             }
-            string str = (_polygonCustomDigitizationPrompt ?? _defaultPolygonDigitizationPrompt) + Environment.NewLine + _defaultMultiSegmentDigitizationInstructions; 
+            string str = (_polygonCustomDigitizationPrompt ?? _defaultPolygonDigitizationPrompt) + Environment.NewLine + _defaultMultiSegmentDigitizationInstructions;
             DrawTrackingTooltip(e, str);
         }
 
@@ -760,7 +758,7 @@ namespace Maestro.MapViewer
                 DrawVertexCoordinates(e, r.Left, r.Bottom, true);
                 DrawVertexCoordinates(e, r.Right, r.Top, true);
                 DrawVertexCoordinates(e, r.Right, r.Bottom, true);
-                string str = (_rectangleCustomDigitizationPrompt ?? _defaultRectangleDigitizationPrompt) + Environment.NewLine + _defaultDigitizationInstructions; 
+                string str = (_rectangleCustomDigitizationPrompt ?? _defaultRectangleDigitizationPrompt) + Environment.NewLine + _defaultDigitizationInstructions;
                 DrawTrackingTooltip(e, str);
             }
         }
@@ -819,34 +817,34 @@ namespace Maestro.MapViewer
 
         /*
          * Digitization behaviour with respect to mouse and paint events
-         * 
+         *
          * Point:
          *  MouseClick -> Invoke Callback
-         * 
+         *
          * Rectangle:
          *  MouseClick -> set start, temp end
          *  MouseMove -> update temp end
          *  OnPaint -> Draw rectangle from start/temp end
          *  MouseClick -> set end -> Invoke Callback
-         * 
+         *
          * Line:
          *  MouseClick -> set start, temp end
          *  MouseMove -> update temp end
          *  OnPaint -> Draw line from start/temp end
          *  MouseClick -> set end -> Invoke Callback
-         * 
+         *
          * LineString:
          *  MouseClick -> append point to path
          *  MouseMove -> update temp end
          *  OnPaint -> Draw line with points in path + temp end
          *  MouseDoubleClick -> append point to path -> Invoke Callback
-         * 
+         *
          * Polygon:
          *  MouseClick -> append point to path
          *  MouseMove -> update temp end
          *  OnPaint -> Draw polygon fill with points in path + temp end
          *  MouseDoubleClick -> append point to path -> Invoke Callback
-         * 
+         *
          * Circle:
          *  MouseClick -> set start, temp end
          *  MouseMove -> update temp end
@@ -1118,14 +1116,14 @@ namespace Maestro.MapViewer
             cb(mapPt.X, mapPt.Y);
         }
 
-        #endregion
+        #endregion Digitization
 
-        static ViewerRenderingOptions CreateMapRenderingOptions(short red, short green, short blue)
+        private static ViewerRenderingOptions CreateMapRenderingOptions(short red, short green, short blue)
         {
             return new ViewerRenderingOptions("PNG", 2, Color.FromArgb(red, green, blue));
         }
 
-        static ViewerRenderingOptions CreateSelectionRenderingOptions(short red, short green, short blue)
+        private static ViewerRenderingOptions CreateSelectionRenderingOptions(short red, short green, short blue)
         {
             return new ViewerRenderingOptions("PNG", (1 | 4), Color.FromArgb(red, green, blue));
         }
@@ -1247,7 +1245,7 @@ namespace Maestro.MapViewer
         /// <summary>
         /// Gets whether to use the RenderMap API instead of RenderDynamicOverlay if the map has tiled
         /// layers. RenderMap includes tiled layers as part of the output image, but will not take advantage
-        /// of any tile caching mechanisms. Setting this property to true nullifies any effect of the 
+        /// of any tile caching mechanisms. Setting this property to true nullifies any effect of the
         /// <see cref="P:Maestro.MapViewer.MapViewer.ConvertTiledGroupsToNonTiled"/> property
         /// </summary>
         [Category("MapGuide Viewer")] //NOXLATE
@@ -1274,7 +1272,7 @@ namespace Maestro.MapViewer
 
         private System.Timers.Timer _delayedResizeTimer;
 
-        void OnDelayResizeTimerElapsed(object sender, System.Timers.ElapsedEventArgs e)
+        private void OnDelayResizeTimerElapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             var action = new MethodInvoker(() =>
             {
@@ -1295,7 +1293,7 @@ namespace Maestro.MapViewer
                 action();
         }
 
-        void OnControlResized(object sender, EventArgs e)
+        private void OnControlResized(object sender, EventArgs e)
         {
             if (_delayedResizeTimer == null)
             {
@@ -1392,9 +1390,12 @@ namespace Maestro.MapViewer
             }
         }
 
-        class RenderWorkArgs
+        private class RenderWorkArgs
         {
-            public RenderWorkArgs() { this.UseRenderMap = false; }
+            public RenderWorkArgs()
+            {
+                this.UseRenderMap = false;
+            }
 
             public bool UseRenderMap { get; set; }
 
@@ -1407,7 +1408,7 @@ namespace Maestro.MapViewer
             public bool InvalidateRegardless { get; set; }
         }
 
-        class RenderResult
+        private class RenderResult
         {
             public Image Image { get; set; }
 
@@ -1459,7 +1460,7 @@ namespace Maestro.MapViewer
         internal void RenderSelection(bool invalidateRegardless)
         {
             //This is our refresh action
-            RefreshAction action = new RefreshAction(() => 
+            RefreshAction action = new RefreshAction(() =>
             {
                 if (HasSelection())
                 {
@@ -1479,7 +1480,7 @@ namespace Maestro.MapViewer
                 }
             });
 
-            //If an existing rendering operation is in progress queue it if 
+            //If an existing rendering operation is in progress queue it if
             //there isn't one queued. Because there is no point in doing the
             //same thing more than once
             if (this.IsBusy)
@@ -1493,9 +1494,9 @@ namespace Maestro.MapViewer
             }
         }
 
-        delegate void RefreshAction();
+        private delegate void RefreshAction();
 
-        RefreshAction _queuedRefresh = null;
+        private RefreshAction _queuedRefresh = null;
 
         internal void RefreshMap(bool raiseEvents)
         {
@@ -1504,7 +1505,7 @@ namespace Maestro.MapViewer
                 h(this, EventArgs.Empty);
 
             //This is our refresh action
-            RefreshAction action = new RefreshAction(() => 
+            RefreshAction action = new RefreshAction(() =>
             {
                 var args = new RenderWorkArgs()
                 {
@@ -1521,7 +1522,7 @@ namespace Maestro.MapViewer
                 renderWorker.RunWorkerAsync(args);
             });
 
-            //If an existing rendering operation is in progress queue it if 
+            //If an existing rendering operation is in progress queue it if
             //there isn't one queued. Because there is no point in doing the
             //same thing more than once
             if (this.IsBusy)
@@ -1531,13 +1532,13 @@ namespace Maestro.MapViewer
             }
             else //Otherwise execute it immediately
             {
-                action();   
+                action();
             }
         }
 
         /// <summary>
         /// Raised when the viewer has started refreshing the map. This is to allow
-        /// any actions dependent on map state to update themselves asynchronously 
+        /// any actions dependent on map state to update themselves asynchronously
         /// without needing to wait for the updated map to be rendered.
         /// </summary>
         [Category("MapGuide Viewer")]
@@ -1688,7 +1689,7 @@ namespace Maestro.MapViewer
             _extX2 = coord.X + mcsWidth / 2;
             _extY2 = coord.Y - mcsHeight / 2;
         }
-        
+
         /// <summary>
         /// Gets the current view extent
         /// </summary>
@@ -1936,7 +1937,7 @@ namespace Maestro.MapViewer
                     _queuedRefresh();
                     _queuedRefresh = null;
                 }
-                else 
+                else
                 {
                     if (bInvalidate || res.InvalidateRegardless)
                         Invalidate(true);
@@ -2231,9 +2232,9 @@ namespace Maestro.MapViewer
 
         private void OnMapMouseLeave(object sender, EventArgs e)
         {
-            //Need to do this otherwise a tooltip query is made at the viewer boundary 
- 		    if (delayTooltipTimer != null && delayTooltipTimer.Enabled) 
- 		        delayTooltipTimer.Stop(); 
+            //Need to do this otherwise a tooltip query is made at the viewer boundary
+            if (delayTooltipTimer != null && delayTooltipTimer.Enabled)
+                delayTooltipTimer.Stop();
         }
 
         private void OnMapMouseDown(object sender, MouseEventArgs e)
@@ -2247,7 +2248,7 @@ namespace Maestro.MapViewer
             if (IsBusy) return;
             HandleMouseMove(e);
         }
-        
+
         private void OnMapMouseUp(object sender, MouseEventArgs e)
         {
             if (IsBusy) return;
@@ -2378,12 +2379,12 @@ namespace Maestro.MapViewer
             Trace.TraceInformation("Paint transform (tx: " + mouseWheelTx + ", ty: " + mouseWheelTy + ", sx: " + mouseWheelSx + ", sy: " + mouseWheelSy + ")");
         }
 
-        static double GetMetersPerPixel(int dpi)
+        private static double GetMetersPerPixel(int dpi)
         {
             return 0.0254 / dpi;
         }
 
-        double GetNewScale(double currentScale, int wheelZoomDelta)
+        private double GetNewScale(double currentScale, int wheelZoomDelta)
         {
             var newScale = currentScale;
             /*
@@ -2411,7 +2412,7 @@ namespace Maestro.MapViewer
             return newScale;
         }
 
-        double NormalizeScale(double scale)
+        private double NormalizeScale(double scale)
         {
             if (scale < this.MinScale)
                 return this.MinScale;
@@ -2420,7 +2421,7 @@ namespace Maestro.MapViewer
             return scale;
         }
 
-        void OnDelayRender(object sender, System.Timers.ElapsedEventArgs e)
+        private void OnDelayRender(object sender, System.Timers.ElapsedEventArgs e)
         {
             Trace.TraceInformation("Delay rendering");
             Trace.TraceInformation("Set new map coordinates to (" + delayRenderViewCenter.Value.X + ", " + delayRenderViewCenter.Value.Y + " at " + delayRenderScale.Value + ")");
@@ -2498,6 +2499,7 @@ namespace Maestro.MapViewer
                                         OnCircleDigitized(dPtStart, dPtEnd);
                                     }
                                     break;
+
                                 case MapDigitizationType.Line:
                                     {
                                         dPtEnd.X = e.X;
@@ -2505,6 +2507,7 @@ namespace Maestro.MapViewer
                                         OnLineDigitized(dPtStart, dPtEnd);
                                     }
                                     break;
+
                                 case MapDigitizationType.Rectangle:
                                     {
                                         dPtEnd.X = e.X;
@@ -2567,9 +2570,11 @@ namespace Maestro.MapViewer
                     case MapActiveTool.Pan:
                         Trace.TraceInformation("START PANNING");
                         break;
+
                     case MapActiveTool.Select:
                         Trace.TraceInformation("START SELECT");
                         break;
+
                     case MapActiveTool.ZoomIn:
                         Trace.TraceInformation("START ZOOM");
                         break;
@@ -2580,11 +2585,11 @@ namespace Maestro.MapViewer
         private System.Drawing.Point translate;
 
         private System.Drawing.Point dragStart;
-        bool isDragging = false;
-        
+        private bool isDragging = false;
+
         private int _mouseX;
         private int _mouseY;
-        
+
         private string _activeTooltipText;
 
         private int _mouseDx;
@@ -2594,7 +2599,7 @@ namespace Maestro.MapViewer
         /// A mouse is considered to have moved if the differerence in either X or Y directions is greater
         /// than this number
         /// </summary>
-        const int MOUSE_TOOLTIP_MOVE_TOLERANCE = 10;
+        private const int MOUSE_TOOLTIP_MOVE_TOLERANCE = 10;
 
         private void HandleMouseMove(MouseEventArgs e)
         {
@@ -2629,13 +2634,13 @@ namespace Maestro.MapViewer
                     }
                 }
 
-                // FIXME: 
+                // FIXME:
                 //
                 // We really need a JS setTimeout() equivalent for C# because that's what we want
                 // to do here, set a delayed call to QueryFirstVisibleTooltip() that is aborted if
                 // the mouse pointer has moved significantly since the last time.
                 //
-                // A timer based approach could probably work, but I haven't figured out the best 
+                // A timer based approach could probably work, but I haven't figured out the best
                 // way yet.
 
                 this.TooltipsEnabled = !isDragging && this.FeatureTooltipsEnabled;
@@ -2645,22 +2650,22 @@ namespace Maestro.MapViewer
                    (this.ActiveTool == MapActiveTool.Select || this.ActiveTool == MapActiveTool.Pan) &&
                     this.TooltipsEnabled)
                 {
-                    if (delayTooltipTimer == null) 
- 		            { 
- 		                delayTooltipTimer = new System.Timers.Timer(); 
- 		                delayTooltipTimer.Enabled = false; 
- 		                delayTooltipTimer.Elapsed += new System.Timers.ElapsedEventHandler(OnDelayTooltipTimerElapsed); 
- 		                delayTooltipTimer.Interval = this.TooltipDelayInterval; 
- 		            } 
- 		 
- 		            _delayTooltipQueryPoint = new Point(e.X, e.Y); 
- 		            delayTooltipTimer.Start(); 
- 		 
- 		            if (Math.Abs(e.X - _lastTooltipQueryX) > 2 || Math.Abs(e.Y - _lastTooltipQueryY) > 2) 
- 		            { 
- 		                _activeTooltipText = null; 
- 		                Invalidate(); 
- 		            } 
+                    if (delayTooltipTimer == null)
+                    {
+                        delayTooltipTimer = new System.Timers.Timer();
+                        delayTooltipTimer.Enabled = false;
+                        delayTooltipTimer.Elapsed += new System.Timers.ElapsedEventHandler(OnDelayTooltipTimerElapsed);
+                        delayTooltipTimer.Interval = this.TooltipDelayInterval;
+                    }
+
+                    _delayTooltipQueryPoint = new Point(e.X, e.Y);
+                    delayTooltipTimer.Start();
+
+                    if (Math.Abs(e.X - _lastTooltipQueryX) > 2 || Math.Abs(e.Y - _lastTooltipQueryY) > 2)
+                    {
+                        _activeTooltipText = null;
+                        Invalidate();
+                    }
                 }
                 else
                 {
@@ -2683,23 +2688,23 @@ namespace Maestro.MapViewer
             }
         }
 
-        void OnDelayTooltipTimerElapsed(object sender, System.Timers.ElapsedEventArgs e) 
- 		{ 
- 		    delayTooltipTimer.Stop(); 
- 		    if (_delayTooltipQueryPoint.HasValue) 
- 		    { 
- 		        _activeTooltipText = QueryFirstVisibleTooltip(_delayTooltipQueryPoint.Value.X, _delayTooltipQueryPoint.Value.Y); 
- 		        _lastTooltipQueryX = _delayTooltipQueryPoint.Value.X; 
- 		        _lastTooltipQueryY = _delayTooltipQueryPoint.Value.Y; 
- 		        _delayTooltipQueryPoint = null; 
- 		        Invalidate(); 
- 		    } 
- 		} 
- 		 
- 		private int _lastTooltipQueryX; 
- 		private int _lastTooltipQueryY; 
- 		private Point? _delayTooltipQueryPoint = null; 
- 		private System.Timers.Timer delayTooltipTimer = null; 
+        private void OnDelayTooltipTimerElapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            delayTooltipTimer.Stop();
+            if (_delayTooltipQueryPoint.HasValue)
+            {
+                _activeTooltipText = QueryFirstVisibleTooltip(_delayTooltipQueryPoint.Value.X, _delayTooltipQueryPoint.Value.Y);
+                _lastTooltipQueryX = _delayTooltipQueryPoint.Value.X;
+                _lastTooltipQueryY = _delayTooltipQueryPoint.Value.Y;
+                _delayTooltipQueryPoint = null;
+                Invalidate();
+            }
+        }
+
+        private int _lastTooltipQueryX;
+        private int _lastTooltipQueryY;
+        private Point? _delayTooltipQueryPoint = null;
+        private System.Timers.Timer delayTooltipTimer = null;
 
         private void HandleMouseUp(MouseEventArgs e)
         {
@@ -2779,7 +2784,7 @@ namespace Maestro.MapViewer
         [Description("Raised when the map position as indicated by the current mouse pointer has changed")]
         public event EventHandler<MapPointEventArgs> MouseMapPositionChanged;
 
-        #endregion
+        #endregion Mouse handlers
 
         private MapActiveTool _tool;
 
@@ -2808,18 +2813,21 @@ namespace Maestro.MapViewer
                             this.Cursor = new Cursor(ms);
                         }
                         break;
+
                     case MapActiveTool.ZoomIn:
                         using (var ms = new MemoryStream(Properties.Resources.zoomin))
                         {
                             this.Cursor = new Cursor(ms);
                         }
                         break;
+
                     case MapActiveTool.ZoomOut:
                         using (var ms = new MemoryStream(Properties.Resources.zoomout))
                         {
                             this.Cursor = new Cursor(ms);
                         }
                         break;
+
                     case MapActiveTool.None:
                     case MapActiveTool.Select:
                         {

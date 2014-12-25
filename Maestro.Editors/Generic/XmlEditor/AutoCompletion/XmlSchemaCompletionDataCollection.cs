@@ -1,7 +1,8 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2013, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // Original code from SharpDevelop 3.2.1 licensed under the same terms (LGPL 2.1)
 // Copyright 2002-2010 by
 //
@@ -17,21 +18,22 @@
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using ICSharpCode.TextEditor.Gui.CompletionWindow;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
@@ -42,7 +44,6 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
     [Serializable()]
     internal class XmlSchemaCompletionDataCollection : System.Collections.CollectionBase
     {
-
         /// <summary>
         ///   Initializes a new instance of <see cref='XmlSchemaCompletionDataCollection'/>.
         /// </summary>
@@ -117,7 +118,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         }
 
         /// <summary>
-        ///   Adds a <see cref='XmlSchemaCompletionData'/> with the specified value to the 
+        ///   Adds a <see cref='XmlSchemaCompletionData'/> with the specified value to the
         ///   <see cref='XmlSchemaCompletionDataCollection'/>.
         /// </summary>
         /// <param name='val'>The <see cref='XmlSchemaCompletionData'/> to add.</param>
@@ -158,12 +159,12 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         }
 
         /// <summary>
-        ///   Gets a value indicating whether the 
+        ///   Gets a value indicating whether the
         ///    <see cref='XmlSchemaCompletionDataCollection'/> contains the specified <see cref='XmlSchemaCompletionData'/>.
         /// </summary>
         /// <param name='val'>The <see cref='XmlSchemaCompletionData'/> to locate.</param>
         /// <returns>
-        /// <see langword='true'/> if the <see cref='XmlSchemaCompletionData'/> is contained in the collection; 
+        /// <see langword='true'/> if the <see cref='XmlSchemaCompletionData'/> is contained in the collection;
         ///   otherwise, <see langword='false'/>.
         /// </returns>
         /// <seealso cref='XmlSchemaCompletionDataCollection.IndexOf'/>
@@ -173,7 +174,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         }
 
         /// <summary>
-        ///   Copies the <see cref='XmlSchemaCompletionDataCollection'/> values to a one-dimensional <see cref='Array'/> instance at the 
+        ///   Copies the <see cref='XmlSchemaCompletionDataCollection'/> values to a one-dimensional <see cref='Array'/> instance at the
         ///    specified index.
         /// </summary>
         /// <param name='array'>The one-dimensional <see cref='Array'/> that is the destination of the values copied from <see cref='XmlSchemaCompletionDataCollection'/>.</param>
@@ -194,12 +195,12 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         }
 
         /// <summary>
-        ///    Returns the index of a <see cref='XmlSchemaCompletionData'/> in 
+        ///    Returns the index of a <see cref='XmlSchemaCompletionData'/> in
         ///       the <see cref='XmlSchemaCompletionDataCollection'/>.
         /// </summary>
         /// <param name='val'>The <see cref='XmlSchemaCompletionData'/> to locate.</param>
         /// <returns>
-        ///   The index of the <see cref='XmlSchemaCompletionData'/> of <paramref name='val'/> in the 
+        ///   The index of the <see cref='XmlSchemaCompletionData'/> of <paramref name='val'/> in the
         ///   <see cref='XmlSchemaCompletionDataCollection'/>, if found; otherwise, -1.
         /// </returns>
         /// <seealso cref='XmlSchemaCompletionDataCollection.Contains'/>
@@ -253,7 +254,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return null;
         }
 
-        static string NormalizePath(string fileName)
+        private static string NormalizePath(string fileName)
         {
             if (string.IsNullOrEmpty(fileName)) return fileName;
 
@@ -300,6 +301,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
                                 result.Append(outputSeparator);
                             }
                             break;
+
                         case 1:
                             // ignore /./ segment, but append other one-letter segments
                             if (fileName[segmentStartPos] != '.')
@@ -308,6 +310,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
                                 result.Append(fileName[segmentStartPos]);
                             }
                             break;
+
                         case 2:
                             if (fileName[segmentStartPos] == '.' && fileName[segmentStartPos + 1] == '.')
                             {
@@ -361,8 +364,8 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <seealso cref='XmlSchemaCompletionData'/>
         public class XmlSchemaCompletionDataEnumerator : System.Collections.IEnumerator
         {
-            System.Collections.IEnumerator baseEnumerator;
-            System.Collections.IEnumerable temp;
+            private System.Collections.IEnumerator baseEnumerator;
+            private System.Collections.IEnumerable temp;
 
             /// <summary>
             ///   Initializes a new instance of <see cref='XmlSchemaCompletionDataEnumerator'/>.
@@ -409,7 +412,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             }
         }
 
-        XmlSchemaCompletionData GetItem(string namespaceUri)
+        private XmlSchemaCompletionData GetItem(string namespaceUri)
         {
             XmlSchemaCompletionData matchedItem = null;
 

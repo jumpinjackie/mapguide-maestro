@@ -1,22 +1,25 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2014, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Resource.Preview;
 using OSGeo.MapGuide.ObjectModels;
@@ -26,14 +29,13 @@ using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http
 {
-    class HttpResourcePreviewUrlGenerator : ResourcePreviewUrlGenerator
+    internal class HttpResourcePreviewUrlGenerator : ResourcePreviewUrlGenerator
     {
         private string _rootUrl;
 
@@ -207,14 +209,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
         protected override string GenerateFeatureSourcePreviewUrl(Resource.IResource res, string locale, bool isNew, string sessionID)
         {
             string url = GetRootUrl();
-            
+
             var resId = res.ResourceID;
             url += "schemareport/describeschema.php?viewer=basic&schemaName=&className=&resId=" + resId + "&sessionId=" + sessionID + "&locale=" + GetLocale(locale); //NOXLATE
 
             return url;
         }
 
-        private static string[] PREVIEWABLE_RESOURCE_TYPES = new string[] 
+        private static string[] PREVIEWABLE_RESOURCE_TYPES = new string[]
         {
             ResourceTypes.FeatureSource.ToString(),
             ResourceTypes.ApplicationDefinition.ToString(),
@@ -229,7 +231,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             return Array.IndexOf(PREVIEWABLE_RESOURCE_TYPES, resourceType) >= 0;
         }
 
-        static void AttachPreviewCommands(IWebLayout wl)
+        private static void AttachPreviewCommands(IWebLayout wl)
         {
             var cmd = wl.CreateInvokeScriptCommand();
             cmd.Name = "ZoomScale"; //NOXLATE
@@ -289,7 +291,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             wl.ToolBar.AddItem(menu);
         }
 
-        static string CreateDebugWatermark(IMapDefinition2 mdf, IServerConnection conn, string layerSc)
+        private static string CreateDebugWatermark(IMapDefinition2 mdf, IServerConnection conn, string layerSc)
         {
             //Tidy up the CS WKT so that it can display nicely in a watermark
             StringBuilder cleanCs = new StringBuilder(mdf.CoordinateSystem);

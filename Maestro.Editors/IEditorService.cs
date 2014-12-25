@@ -1,34 +1,32 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using OSGeo.MapGuide.MaestroAPI;
-using System.Collections.Specialized;
 using OSGeo.MapGuide.MaestroAPI.Resource;
-using System.IO;
-using OSGeo.MapGuide.ObjectModels.Common;
-using System.ComponentModel;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using System;
+using System.Collections.Specialized;
+using System.ComponentModel;
 
 namespace Maestro.Editors
 {
@@ -41,32 +39,39 @@ namespace Maestro.Editors
         /// Gets the locale for previewing
         /// </summary>
         string PreviewLocale { get; set; }
+
         /// <summary>
         /// Gets the connection instance associated with this editor service
         /// </summary>
         IServerConnection CurrentConnection { get; }
+
         /// <summary>
         /// Gets the session id
         /// </summary>
         string SessionID { get; }
+
         /// <summary>
         /// Gets the suggested save folder for a "save as" operation
         /// </summary>
         string SuggestedSaveFolder { get; set; }
+
         /// <summary>
         /// Registers a custom notifier
         /// </summary>
         /// <param name="irc"></param>
         void RegisterCustomNotifier(INotifyResourceChanged irc);
+
         /// <summary>
         /// Indicates whether an upgrade for this resource is available
         /// </summary>
         bool IsUpgradeAvailable { get; }
+
         /// <summary>
         /// Invokes a prompt to select a resource of any type
         /// </summary>
         /// <returns></returns>
         string SelectAnyResource();
+
         /// <summary>
         /// Invokes a prompt to select a resource of the specified type
         /// </summary>

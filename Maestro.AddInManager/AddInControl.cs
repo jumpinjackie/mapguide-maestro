@@ -1,39 +1,40 @@
 #region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
+//
+
+#endregion Disclaimer / License
+
 using ICSharpCode.Core;
+using ICSharpCode.Core.WinForms;
+using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using System.ComponentModel;
-using ICSharpCode.Core.WinForms;
 
 namespace Maestro.AddInManager
 {
     [ToolboxItem(false)]
     public class AddInControl : Control
     {
-        AddIn addIn;
-        bool isExternal;
+        private AddIn addIn;
+        private bool isExternal;
 
         public AddIn AddIn
         {
@@ -60,7 +61,7 @@ namespace Maestro.AddInManager
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
         }
 
-        bool selected;
+        private bool selected;
 
         public bool Selected
         {
@@ -84,7 +85,7 @@ namespace Maestro.AddInManager
             Focus();
         }
 
-        Color Mix(Color c1, Color c2, double perc)
+        private Color Mix(Color c1, Color c2, double perc)
         {
             double p1 = 1 - perc;
             double p2 = perc;
@@ -177,9 +178,9 @@ namespace Maestro.AddInManager
             }
         }
 
-        const int pathHeight = 10;
+        private const int pathHeight = 10;
 
-        string GetText(out Brush textBrush)
+        private string GetText(out Brush textBrush)
         {
             switch (addIn.Action)
             {
@@ -218,6 +219,7 @@ namespace Maestro.AddInManager
                 case AddInAction.CustomError:
                     textBrush = Brushes.Red;
                     return StringParser.Parse(addIn.CustomErrorMessage);
+
                 default:
                     textBrush = Brushes.Yellow;
                     return addIn.Action.ToString();

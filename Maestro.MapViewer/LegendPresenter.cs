@@ -1,22 +1,25 @@
 #region Disclaimer / License
+
 // Copyright (C) 2012, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using Maestro.MapViewer.Model;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
@@ -26,24 +29,22 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Xml;
 
 namespace Maestro.MapViewer
 {
-    class LegendControlPresenter
+    internal class LegendControlPresenter
     {
-        const string IMG_BROKEN = "lc_broken";
-        const string IMG_DWF = "lc_dwf";
-        const string IMG_GROUP = "lc_group";
-        const string IMG_RASTER = "lc_raster";
-        const string IMG_SELECT = "lc_select";
-        const string IMG_THEME = "lc_theme";
-        const string IMG_UNSELECT = "lc_unselect";
-        const string IMG_OTHER = "icon_etc";
+        private const string IMG_BROKEN = "lc_broken";
+        private const string IMG_DWF = "lc_dwf";
+        private const string IMG_GROUP = "lc_group";
+        private const string IMG_RASTER = "lc_raster";
+        private const string IMG_SELECT = "lc_select";
+        private const string IMG_THEME = "lc_theme";
+        private const string IMG_UNSELECT = "lc_unselect";
+        private const string IMG_OTHER = "icon_etc";
 
         private IResourceService _resSvc;
         private IServerConnection _provider;
@@ -113,7 +114,7 @@ namespace Maestro.MapViewer
             return true;
         }
 
-        class RuleData
+        private class RuleData
         {
             public int GeomType;
             public XmlNodeList RuleNodes;
@@ -458,7 +459,6 @@ namespace Maestro.MapViewer
             }
             else
             {
-
             }
         }
 
@@ -848,7 +848,7 @@ namespace Maestro.MapViewer
                         e.Graphics.DrawRectangle(new Pen(Brushes.Black, 2.0f), rect);
                     }
                 }
-               
+
                 if (layerMeta != null)
                 {
                     if (bDrawSelection)
@@ -883,7 +883,7 @@ namespace Maestro.MapViewer
                     else
                     {
                         layerIcon = layerMeta.GetDefaultIcon(currentScale);
-                        if (layerIcon == null &&_legend.ShowAllLayersAndGroups)
+                        if (layerIcon == null && _legend.ShowAllLayersAndGroups)
                             layerIcon = Properties.Resources.lc_broken;
                     }
                     if (layerIcon != null)
@@ -1029,7 +1029,10 @@ namespace Maestro.MapViewer
             /// Gets the associated group
             /// </summary>
             /// <returns></returns>
-            public RuntimeMapGroup GetGroup() { return this.Group; }
+            public RuntimeMapGroup GetGroup()
+            {
+                return this.Group;
+            }
 
             internal GroupNodeMetadata(RuntimeMapGroup group)
             {
@@ -1061,7 +1064,7 @@ namespace Maestro.MapViewer
                 get { return this.Group.ObjectId; }
             }
         }
-        
+
         /// <summary>
         /// Layer theme node metadata
         /// </summary>
@@ -1080,7 +1083,7 @@ namespace Maestro.MapViewer
             /// Gets whether this node is a placeholder
             /// </summary>
             public bool IsPlaceholder { get; private set; }
-            
+
             /// <summary>
             /// Gets the icon for this theme node
             /// </summary>

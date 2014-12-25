@@ -1,28 +1,30 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
 using System.Windows.Forms;
 
 namespace Maestro.Login
 {
-
     /// <summary>
     /// Simple list style container for sites
     /// </summary>
@@ -46,11 +48,11 @@ namespace Maestro.Login
         /// <value>The sites.</value>
         public PreferedSite[] Sites
         {
-            get 
-            { 
+            get
+            {
                 if (m_sites == null)
                     m_sites = new PreferedSite[0];
-                return m_sites; 
+                return m_sites;
             }
             set { m_sites = value; }
         }
@@ -84,7 +86,7 @@ namespace Maestro.Login
         [System.Xml.Serialization.XmlAttribute()]
         public string SystemBrowser
         {
-            get 
+            get
             {
                 if (string.IsNullOrEmpty(m_systemBrowser))
                 {
@@ -96,11 +98,10 @@ namespace Maestro.Login
                         m_systemBrowser = "firefox";
                 }
 
-                return m_systemBrowser; 
+                return m_systemBrowser;
             }
             set { m_systemBrowser = value; }
         }
-
 
         /// <summary>
         /// Gets or sets the prefered site.
@@ -188,7 +189,7 @@ namespace Maestro.Login
             //A generic collection would be nice :/
             PreferedSite[] n = new PreferedSite[m_sites.Length + 1];
             Array.Copy(m_sites, 0, n, 0, m_sites.Length);
-            n[n.Length-1] = site;
+            n[n.Length - 1] = site;
             m_sites = n;
         }
 
@@ -354,11 +355,11 @@ namespace Maestro.Login
         [System.Xml.Serialization.XmlIgnore()]
         public Version ApprovedVersion
         {
-            get 
+            get
             {
                 if (m_approvedVersion == null)
                     m_approvedVersion = new Version(0, 0, 0, 0);
-                return m_approvedVersion; 
+                return m_approvedVersion;
             }
             set { m_approvedVersion = value; }
         }
@@ -374,7 +375,6 @@ namespace Maestro.Login
             set { m_scrambledPassword = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(value)); }
         }
 
-
         /// <summary>
         /// Returns a <see cref="System.String"/> that represents this instance.
         /// </summary>
@@ -385,6 +385,5 @@ namespace Maestro.Login
         {
             return m_siteURL;
         }
-
     }
 }

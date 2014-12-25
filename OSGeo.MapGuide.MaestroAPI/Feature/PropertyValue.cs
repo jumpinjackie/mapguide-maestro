@@ -1,28 +1,29 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Schema;
-using System.Globalization;
+//
+
+#endregion Disclaimer / License
+
 using GeoAPI.Geometries;
+using OSGeo.MapGuide.MaestroAPI.Schema;
+using System;
+using System.Globalization;
 
 namespace OSGeo.MapGuide.MaestroAPI.Feature
 {
@@ -35,7 +36,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes a new instance of the <see cref="PropertyValue"/> class.
         /// </summary>
-        protected PropertyValue() { this.IsNull = true; }
+        protected PropertyValue()
+        {
+            this.IsNull = true;
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is null.
@@ -48,7 +52,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Sets the value to null.
         /// </summary>
-        public virtual void SetNull() { this.IsNull = true; }
+        public virtual void SetNull()
+        {
+            this.IsNull = true;
+        }
 
         /// <summary>
         /// Gets the type.
@@ -79,7 +86,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueTypePropertyValue&lt;T&gt;"/> class.
         /// </summary>
-        protected ValueTypePropertyValue() : base() { }
+        protected ValueTypePropertyValue()
+            : base()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ValueTypePropertyValue&lt;T&gt;"/> class.
@@ -157,7 +167,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes a new instance of the <see cref="ReferenceTypePropertyValue&lt;T&gt;"/> class.
         /// </summary>
-        protected ReferenceTypePropertyValue() : base() { }
+        protected ReferenceTypePropertyValue()
+            : base()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReferenceTypePropertyValue&lt;T&gt;"/> class.
@@ -202,12 +215,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes this instance
         /// </summary>
-        public ByteValue() : base() { }
+        public ByteValue()
+            : base()
+        {
+        }
 
         /// <summary>
         /// Initializes this instance
         /// </summary>
-        public ByteValue(byte value) : base() { }
+        public ByteValue(byte value)
+            : base()
+        {
+        }
 
         /// <summary>
         /// Gets the type.
@@ -238,12 +257,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public BooleanValue() : base() { }
+        public BooleanValue()
+            : base()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public BooleanValue(bool value) : base(value) { }
+        public BooleanValue(bool value)
+            : base(value)
+        {
+        }
 
         /// <summary>
         /// Gets the type.
@@ -274,12 +299,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public BlobValue() : base() { }
+        public BlobValue()
+            : base()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public BlobValue(byte[] value) : base(value) { } 
+        public BlobValue(byte[] value)
+            : base(value)
+        {
+        }
 
         /// <summary>
         /// Gets the type.
@@ -318,12 +349,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public ClobValue() : base() { }
+        public ClobValue()
+            : base()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public ClobValue(char[] value) : base(value) { }
+        public ClobValue(char[] value)
+            : base(value)
+        {
+        }
 
         /// <summary>
         /// Gets the type.
@@ -362,12 +399,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public DateTimeValue() : base() { }
+        public DateTimeValue()
+            : base()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public DateTimeValue(DateTime value) : base(value) { }
+        public DateTimeValue(DateTime value)
+            : base(value)
+        {
+        }
 
         /// <summary>
         /// Gets the type.
@@ -377,7 +420,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             get { return PropertyValueType.DateTime; }
         }
 
-        static string PadLeft(string str, char ch, int totalChars)
+        private static string PadLeft(string str, char ch, int totalChars)
         {
             var value = str;
             while (value.Length < totalChars)
@@ -413,12 +456,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public DoubleValue() : base() { }
+        public DoubleValue()
+            : base()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public DoubleValue(double value) : base(value) { }
+        public DoubleValue(double value)
+            : base(value)
+        {
+        }
 
         /// <summary>
         /// Gets the type.
@@ -449,12 +498,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public FeatureValue() : base() { }
+        public FeatureValue()
+            : base()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public FeatureValue(IFeature[] values) : base(values) { }
+        public FeatureValue(IFeature[] values)
+            : base(values)
+        {
+        }
 
         /// <summary>
         /// Gets the type.
@@ -496,12 +551,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public GeometryValue() : base() { }
+        public GeometryValue()
+            : base()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public GeometryValue(IGeometry value) : base(value) { }
+        public GeometryValue(IGeometry value)
+            : base(value)
+        {
+        }
 
         /// <summary>
         /// Gets the type.
@@ -543,12 +604,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public Int16Value() : base() { }
+        public Int16Value()
+            : base()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public Int16Value(short value) : base(value) { }
+        public Int16Value(short value)
+            : base(value)
+        {
+        }
 
         /// <summary>
         /// Gets the type.
@@ -579,12 +646,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public Int32Value() : base() { }
+        public Int32Value()
+            : base()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public Int32Value(int value) : base(value) { }
+        public Int32Value(int value)
+            : base(value)
+        {
+        }
 
         /// <summary>
         /// Gets the type.
@@ -615,12 +688,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public Int64Value() : base() { }
+        public Int64Value()
+            : base()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public Int64Value(long value) : base(value) { }
+        public Int64Value(long value)
+            : base(value)
+        {
+        }
 
         /// <summary>
         /// Gets the type.
@@ -651,12 +730,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public RasterValue() : base() { }
+        public RasterValue()
+            : base()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public RasterValue(byte[] value) : base(value) { }
+        public RasterValue(byte[] value)
+            : base(value)
+        {
+        }
 
         /// <summary>
         /// Gets the type.
@@ -695,12 +780,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public SingleValue() : base() { }
+        public SingleValue()
+            : base()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public SingleValue(float value) : base(value) { }
+        public SingleValue(float value)
+            : base(value)
+        {
+        }
 
         /// <summary>
         /// Gets the type.
@@ -731,12 +822,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public StringValue() : base() { }
+        public StringValue()
+            : base()
+        {
+        }
 
         /// <summary>
         /// Initializes a new instance
         /// </summary>
-        public StringValue(string value) : base(value) { }
+        public StringValue(string value)
+            : base(value)
+        {
+        }
 
         /// <summary>
         /// Gets the type.

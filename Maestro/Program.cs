@@ -1,50 +1,51 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Reflection;
-using System.Windows.Forms;
+//
+
+#endregion Disclaimer / License
+
 using ICSharpCode.Core;
 using ICSharpCode.Core.Services;
 using ICSharpCode.Core.WinForms;
 using Maestro.Base;
-using Maestro.Base.Events;
 using Maestro.Base.Services;
 using Maestro.Base.UI;
+using Maestro.Editors.Common;
 using Maestro.Login;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
-using Maestro.Editors.Common;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace Maestro
 {
-    static class Program
+    internal static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);
@@ -139,7 +140,8 @@ namespace Maestro
             LoggingService.Info("Initializing Workbench..."); //NOXLATE
             // Workbench is our class from the base project, this method creates an instance
             // of the main form.
-            ServiceRegistry.Initialize(() => {
+            ServiceRegistry.Initialize(() =>
+            {
                 //DIRTY DIRTY HACK: I'm getting tired of Mono workarounds. But background resource
                 //preview preparation has a chance of clogging up if the main window is initially maximized
                 Workbench.InitializeWorkbench(new WorkbenchInitializer(!Platform.IsRunningOnMono));
@@ -165,7 +167,7 @@ namespace Maestro
             });
         }
 
-        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             var ex = e.ExceptionObject as Exception;
             if (ex != null)
@@ -181,12 +183,12 @@ namespace Maestro
             }
         }
 
-        static void CurrentDomain_AssemblyLoad(object sender, AssemblyLoadEventArgs args)
+        private static void CurrentDomain_AssemblyLoad(object sender, AssemblyLoadEventArgs args)
         {
             LoggingService.InfoFormatted("Loaded assembly: {0}", args.LoadedAssembly.GetName().Name); //NOXLATE
         }
 
-        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
             var ex = e.Exception;
             if (XmlContentErrorDialog.IsDbXmlError(ex) && XmlContentErrorDialog.HasOriginalXml(ex))
@@ -200,10 +202,10 @@ namespace Maestro
         }
     }
 
-    sealed class MaestroServiceManager : ServiceManager
+    internal sealed class MaestroServiceManager : ServiceManager
     {
-        static ILoggingService loggingService = new TextWriterLoggingService(BroadcastTextWriter.Instance);
-        static IMessageService messageService = new WinFormsMessageService(); //new TextWriterMessageService(Console.Out);
+        private static ILoggingService loggingService = new TextWriterLoggingService(BroadcastTextWriter.Instance);
+        private static IMessageService messageService = new WinFormsMessageService(); //new TextWriterMessageService(Console.Out);
 
         public override ILoggingService LoggingService
         {

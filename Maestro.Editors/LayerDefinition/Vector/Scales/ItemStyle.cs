@@ -1,32 +1,32 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Scales
 {
@@ -277,7 +277,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
                     m_w2dsymbol = w2d;
                 };
-                rollback = () => 
+                rollback = () =>
                 {
                     ((IPointRule)m_parent).PointSymbolization2D = m_origPoint;
                 };
@@ -291,7 +291,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 uc = lfse;
                 lfse.Item = m_editLine;
 
-                Action editCommit = () => 
+                Action editCommit = () =>
                 {
                     m_editLine = lfse.Item;
                     ((ILineRule)m_parent).SetStrokes(m_editLine);
@@ -375,7 +375,6 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     }
                     else if (isLine)
                     {
-                           
                         if (ItemChanged != null)
                             ItemChanged(m_line, null);
                     }
@@ -393,13 +392,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                         rollback.Invoke();
                 }
             }
-
         }
 
         private void previewPicture_Click(object sender, EventArgs e)
         {
             try { Parent.Focus(); }
-            catch {}
+            catch { }
         }
 
         private void previewPicture_DoubleClick(object sender, EventArgs e)

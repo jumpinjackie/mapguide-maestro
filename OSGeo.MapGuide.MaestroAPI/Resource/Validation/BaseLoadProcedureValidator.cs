@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.ObjectModels.LoadProcedure;
+﻿using OSGeo.MapGuide.ObjectModels.LoadProcedure;
+using System;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {

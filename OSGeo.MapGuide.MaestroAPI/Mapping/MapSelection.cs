@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Serialization;
+using System;
+using System.Collections.Generic;
 using System.Xml;
-using OSGeo.MapGuide.MaestroAPI.Feature;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
@@ -42,7 +41,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     ///     {
     ///         MapSelection.LayerSelection layerSel = selection[i];
     ///         sb.Append("<p>Layer: " + layerSel.Layer.Name + " (" + layerSel.Count + " selected item)");
-    ///         sb.Append("<table>");          
+    ///         sb.Append("<table>");
     ///         for (int j = 0; j < layerSel.Count; j++)
     ///         {
     ///             sb.Append("<tr>");
@@ -441,7 +440,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 }
             }
 
-            #endregion
+            #endregion IList<object[]> Members
 
             #region ICollection<object[]> Members
 
@@ -504,7 +503,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 return true;
             }
 
-            #endregion
+            #endregion ICollection<object[]> Members
 
             #region IEnumerable<object[]> Members
 
@@ -517,7 +516,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 return m_list.GetEnumerator();
             }
 
-            #endregion
+            #endregion IEnumerable<object[]> Members
 
             #region IEnumerable Members
 
@@ -530,7 +529,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 return ((System.Collections.IEnumerable)m_list).GetEnumerator();
             }
 
-            #endregion
+            #endregion IEnumerable Members
         }
 
         /// <summary>
@@ -687,7 +686,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
         }
 
-        #endregion
+        #endregion IList<MapSelection.LayerSelection> Members
 
         #region ICollection<MapSelection.LayerSelection> Members
 
@@ -752,11 +751,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <exception cref="T:System.ArgumentNullException">
         ///   <paramref name="array"/> is null.
         ///   </exception>
-        ///   
+        ///
         /// <exception cref="T:System.ArgumentOutOfRangeException">
         ///   <paramref name="arrayIndex"/> is less than 0.
         ///   </exception>
-        ///   
+        ///
         /// <exception cref="T:System.ArgumentException">
         ///   <paramref name="array"/> is multidimensional.
         /// -or-
@@ -800,7 +799,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             return true;
         }
 
-        #endregion
+        #endregion ICollection<MapSelection.LayerSelection> Members
 
         #region IEnumerable<LayerSelection> Members
 
@@ -813,7 +812,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             return _layers.GetEnumerator();
         }
 
-        #endregion
+        #endregion IEnumerable<LayerSelection> Members
 
         #region IEnumerable Members
 
@@ -822,6 +821,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             return ((System.Collections.IEnumerable)_layers).GetEnumerator();
         }
 
-        #endregion
+        #endregion IEnumerable Members
     }
 }

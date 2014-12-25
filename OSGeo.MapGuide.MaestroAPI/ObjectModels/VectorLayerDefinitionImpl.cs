@@ -1,79 +1,81 @@
 ﻿#region Disclaimer / License
+
 // Copyright (C) 2010, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using System.Xml.Serialization;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.Common;
 using System.ComponentModel;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using System.Globalization;
+using System.Xml.Serialization;
 
 #pragma warning disable 1591, 0114, 0108
 
 #if LDF_110
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_1_0
 #elif LDF_120
+
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_2_0
 #elif LDF_130
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_3_0
 #elif LDF_230
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0
 #elif LDF_240
+
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_4_0
 #else
+
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 #endif
 {
     using OSGeo.MapGuide.ObjectModels.LayerDefinition;
     using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
-    using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 
     abstract partial class BaseLayerDefinitionType : ISubLayerDefinition
 #if LDF_230 || LDF_240
-        , ISubLayerDefinition2
+, ISubLayerDefinition2
 #endif
     {
         [XmlIgnore]
         public abstract LayerType LayerType { get; }
 
 #if LDF_230 || LDF_240
+
         [XmlIgnore]
-        IEnumerable<OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark> IWatermarkCollection.Watermarks
+        IEnumerable<IWatermark> IWatermarkCollection.Watermarks
         {
-            get 
+            get
             {
                 foreach (var wm in this.Watermarks)
                     yield return wm;
             }
         }
 
-        IWatermark IWatermarkCollection.AddWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermarkDefinition watermark)
+        IWatermark IWatermarkCollection.AddWatermark(IWatermarkDefinition watermark)
         {
             return WatermarkCollectionUtil.AddWatermark(this.Watermarks, watermark);
         }
 
-        void IWatermarkCollection.RemoveWatermark(OSGeo.MapGuide.ObjectModels.WatermarkDefinition.IWatermark watermark)
+        void IWatermarkCollection.RemoveWatermark(IWatermark watermark)
         {
             WatermarkCollectionUtil.RemoveWatermark(this.Watermarks, watermark);
         }
@@ -83,6 +85,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         {
             get { return this.Watermarks.Count; }
         }
+
 #endif
     }
 
@@ -117,10 +120,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
     partial class VectorScaleRangeType : IVectorScaleRange
 #if !LDF_100
-        , IVectorScaleRange2
+, IVectorScaleRange2
 #endif
     {
         #region Missing generated stuff
+
         [EditorBrowsable(EditorBrowsableState.Never)]
         private bool minScaleFieldSpecified;
 
@@ -140,7 +144,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 }
             }
         }
-        #endregion
+
+        #endregion Missing generated stuff
 
         [XmlIgnore]
         public IAreaVectorStyle AreaStyle
@@ -166,7 +171,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 //Put the new one in if it is not null
                 if (value != null)
                 {
-                    this.itemsField.Add(value);   
+                    this.itemsField.Add(value);
                 }
             }
         }
@@ -199,7 +204,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 }
             }
         }
-        
+
         [XmlIgnore]
         public IPointVectorStyle PointStyle
         {
@@ -283,6 +288,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         }
 
 #if LDF_110 || LDF_120
+
         [XmlIgnore]
         public IEnumerable<ICompositeTypeStyle> CompositeStyle
         {
@@ -304,7 +310,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                         remove.Add(item);
                 }
 
-                foreach(var obj in remove)
+                foreach (var obj in remove)
                 {
                     this.itemsField.Remove(obj);
                 }
@@ -322,7 +328,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 }
             }
         }
+
 #elif LDF_130 || LDF_230 || LDF_240
+
         [XmlIgnore]
         public IEnumerable<ICompositeTypeStyle> CompositeStyle
         {
@@ -344,7 +352,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                         remove.Add(item);
                 }
 
-                foreach(var obj in remove)
+                foreach (var obj in remove)
                 {
                     this.itemsField.Remove(obj);
                 }
@@ -362,10 +370,12 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 }
             }
         }
+
 #endif
 
 #if LDF_100
 #else
+
         IElevationSettings IVectorScaleRange2.ElevationSettings
         {
             get { return this.ElevationSettings; }
@@ -397,21 +407,28 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 return count;
             }
         }
+
 #endif
     }
 
 #if LDF_100
 #else
+
     partial class ElevationSettingsType : IElevationSettings { }
+
 #endif
 
 #if LDF_100
+
     partial class StrokeType : IStroke
 #else
+
     partial class StrokeType : IStroke, IStroke2
 #endif
     {
-        internal StrokeType() { }
+        internal StrokeType()
+        {
+        }
 
         IStroke ICloneableLayerElement<IStroke>.Clone()
         {
@@ -420,16 +437,20 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
 #if LDF_100
 #else
+
         IStroke2 ICloneableLayerElement<IStroke2>.Clone()
         {
             return StrokeType.Deserialize(this.Serialize());
         }
+
 #endif
     }
 
     partial class FillType : IFill
     {
-        internal FillType() { }
+        internal FillType()
+        {
+        }
 
         IFill ICloneableLayerElement<IFill>.Clone()
         {
@@ -439,13 +460,13 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
     partial class AreaTypeStyleType : IAreaVectorStyle
 #if LDF_130 || LDF_230 || LDF_240
-        , IAreaVectorStyle2
+, IAreaVectorStyle2
 #endif
     {
         [XmlIgnore]
         IEnumerable<IAreaRule> IAreaVectorStyle.Rules
         {
-            get 
+            get
             {
                 foreach (var ar in this.AreaRule)
                 {
@@ -455,14 +476,14 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         }
 
         [XmlIgnore]
-        int IVectorStyle.RuleCount 
-        { 
-            get 
+        int IVectorStyle.RuleCount
+        {
+            get
             {
                 if (this.AreaRule != null)
                     return this.AreaRule.Count;
                 return 0;
-            } 
+            }
         }
 
         void IAreaVectorStyle.RemoveAllRules()
@@ -525,9 +546,10 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             return false;
         }
 
-        #endregion
+        #endregion IRuleCollection<IAreaRule> Members
 
         #region IRuleCollection Members
+
         IVectorRule IRuleCollection.GetRuleAt(int index)
         {
             return this.AreaRule[index];
@@ -560,7 +582,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             }
             return false;
         }
-        #endregion
+
+        #endregion IRuleCollection Members
     }
 
     internal static class CollectionUtil
@@ -629,15 +652,15 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
     partial class PointTypeStyleType : IPointVectorStyle
 #if LDF_130 || LDF_230 || LDF_240
-        , IPointVectorStyle2
+, IPointVectorStyle2
 #endif
     {
         [XmlIgnore]
         public IEnumerable<IPointRule> Rules
         {
-            get 
-            { 
-                foreach(var pr in this.PointRule)
+            get
+            {
+                foreach (var pr in this.PointRule)
                 {
                     yield return pr;
                 }
@@ -711,9 +734,10 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             return false;
         }
 
-        #endregion
+        #endregion IRuleCollection<IPointRule> Members
 
         #region IRuleCollection Members
+
         IVectorRule IRuleCollection.GetRuleAt(int index)
         {
             return this.PointRule[index];
@@ -742,9 +766,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 return CollectionUtil.MoveDown(this.PointRule, pr);
             return false;
         }
-        #endregion
-    }
 
+        #endregion IRuleCollection Members
+    }
 
     partial class PointRuleType : IPointRule
     {
@@ -786,7 +810,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
     partial class LineTypeStyleType : ILineVectorStyle
 #if LDF_130 || LDF_230 || LDF_240
-        , ILineVectorStyle2
+, ILineVectorStyle2
 #endif
     {
         [XmlIgnore]
@@ -868,9 +892,10 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             return false;
         }
 
-        #endregion
+        #endregion IRuleCollection<ILineRule> Members
 
         #region IRuleCollection Members
+
         IVectorRule IRuleCollection.GetRuleAt(int index)
         {
             return this.LineRule[index];
@@ -899,7 +924,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 return CollectionUtil.MoveDown(this.LineRule, lr);
             return false;
         }
-        #endregion
+
+        #endregion IRuleCollection Members
     }
 
     partial class LineRuleType : ILineRule
@@ -1201,7 +1227,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             };
         }
     }
-
 
     partial class ImageSymbolType : IImageSymbol
     {
@@ -1603,7 +1628,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
     partial class TextSymbolTypeAdvancedPlacement : IAdvancedPlacement
     {
-        
     }
 
     partial class AreaSymbolizationFillType : IAreaSymbolizationFill
@@ -1642,21 +1666,21 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
     partial class LayerDefinition : ILayerDefinition
     {
-        //internal LayerDefinition() { } 
+        //internal LayerDefinition() { }
 
-        #if LDF_110
+#if LDF_110
         private static readonly Version RES_VERSION = new Version(1, 1, 0);
-        #elif LDF_120
+#elif LDF_120
         private static readonly Version RES_VERSION = new Version(1, 2, 0);
-        #elif LDF_130
+#elif LDF_130
         private static readonly Version RES_VERSION = new Version(1, 3, 0);
-        #elif LDF_230
+#elif LDF_230
         private static readonly Version RES_VERSION = new Version(2, 3, 0);
-        #elif LDF_240
+#elif LDF_240
         private static readonly Version RES_VERSION = new Version(2, 4, 0);
-        #else
+#else
         private static readonly Version RES_VERSION = new Version(1, 0, 0);
-        #endif
+#endif
 
         [XmlIgnore]
         public OSGeo.MapGuide.MaestroAPI.IServerConnection CurrentConnection
@@ -1766,7 +1790,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
     partial class VectorLayerDefinitionType : IVectorLayerDefinition
 #if LDF_240
-        , IVectorLayerDefinition2
+, IVectorLayerDefinition2
 #endif
     {
         [XmlIgnore]
@@ -1816,7 +1840,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                     this.urlDataField.Content = value;
                     OnPropertyChanged("Url"); //NOXLATE
                 }
-                else 
+                else
                 {
                     //NOTE: None of the other URLData properties seem to be used atm
                     //hence why we are nulling this
@@ -1847,7 +1871,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<IVectorScaleRange> IVectorLayerDefinition.VectorScaleRange
         {
-            get 
+            get
             {
                 foreach (var vsr in this.VectorScaleRange)
                 {
@@ -1995,11 +2019,12 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 return new Version(2, 4, 0);
 #else
                 return null;
-#endif          
+#endif
             }
         }
 
 #if LDF_240
+
         [XmlIgnore]
         IUrlData IVectorLayerDefinition2.UrlData
         {
@@ -2012,6 +2037,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 this.UrlData = (URLDataType)value;
             }
         }
+
 #endif
 
         void IVectorLayerDefinition.ClearPropertyMappings()
@@ -2019,7 +2045,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             propertyMappingField.Clear();
         }
     }
+
     #region Composite Symbolization
+
 #if !LDF_100
 
     partial class CompositeRule : ICompositeRule
@@ -2043,7 +2071,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<ISymbolInstance> ICompositeSymbolization.SymbolInstance
         {
-            get 
+            get
             {
                 foreach (var sym in this.SymbolInstance)
                 {
@@ -2098,7 +2126,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             };
         }
 
-
         public ISymbolInstance CreateInlineSimpleSymbol(ISimpleSymbolDefinition symDef)
         {
             return new SymbolInstance()
@@ -2139,7 +2166,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
     partial class SymbolInstance : ISymbolInstance
 #if LDF_100 || LDF_110
 #else
-                                 , ISymbolInstance2
+, ISymbolInstance2
 #endif
     {
         [XmlIgnore]
@@ -2213,8 +2240,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         public string ResourceId
         {
             get { return _resId; }
-            set 
-            { 
+            set
+            {
                 if (_resId == value) return;
                 _resId = value;
                 OnPropertyChanged("ResourceId"); //NOXLATE
@@ -2258,7 +2285,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<IParameterOverride> IParameterOverrideCollection.Override
         {
-            get 
+            get
             {
                 foreach (var ov in this.Override)
                 {
@@ -2303,7 +2330,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         {
             return new Override()
             {
-                ParameterIdentifier = name, 
+                ParameterIdentifier = name,
                 SymbolName = symbol
             };
         }
@@ -2311,12 +2338,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
 
     partial class Override : IParameterOverride
     {
-
     }
 
     partial class CompositeTypeStyle : ICompositeTypeStyle
 #if LDF_130 || LDF_230 || LDF_240
-        , ICompositeTypeStyle2
+, ICompositeTypeStyle2
 #endif
     {
         [XmlIgnore]
@@ -2331,7 +2357,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
         [XmlIgnore]
         IEnumerable<ICompositeRule> ICompositeTypeStyle.CompositeRule
         {
-            get 
+            get
             {
                 foreach (var cr in this.CompositeRule)
                 {
@@ -2397,9 +2423,10 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             return false;
         }
 
-        #endregion
+        #endregion IRuleCollection<ICompositeRule> Members
 
         #region IRuleCollection Members
+
         public int IndexOfRule(IVectorRule rule)
         {
             var cr = rule as CompositeRule;
@@ -2428,15 +2455,19 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 return CollectionUtil.MoveDown(this.CompositeRule, cr);
             return false;
         }
-        #endregion
+
+        #endregion IRuleCollection Members
     }
+
 #endif
-    #endregion
+
+    #endregion Composite Symbolization
 
 #if LDF_240
+
     partial class URLDataType : IUrlData
     {
-
     }
+
 #endif
 }

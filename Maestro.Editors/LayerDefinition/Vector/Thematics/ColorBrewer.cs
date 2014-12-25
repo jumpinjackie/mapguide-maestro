@@ -1,25 +1,27 @@
 #region Disclaimer / License
+
 // Copyright (C) 2009, Kenneth Skovhede
 // http://www.hexad.dk, opensource@hexad.dk
-// 
+//
 // This library is free software; you can redistribute it and/or
 // modify it under the terms of the GNU Lesser General Public
 // License as published by the Free Software Foundation; either
 // version 2.1 of the License, or (at your option) any later version.
-// 
+//
 // This library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 // Lesser General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Lesser General Public
 // License along with this library; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-// 
-#endregion
+//
+
+#endregion Disclaimer / License
+
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 {
@@ -36,12 +38,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
         /// Gets the name of the ColorBrewer set
         /// </summary>
         public string Name { get { return m_name; } }
+
         /*
         /// <summary>
         /// Gets the assigned type for the ColorBrewer set
         /// </summary>
         public string Type { get { return m_type; } }
          */
+
         /// <summary>
         /// Gets the ordered list of colors to use
         /// </summary>
@@ -116,13 +120,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 {
                     string line = sr.ReadLine();
                     List<string> values = TokenizeLine(line, recordDelimiter, textDelimiter);
-                    
+
                     if (values.Count != columns.Count)
                         throw new Exception(string.Format(Strings.InvalidFieldCountError, line));
 
                     string colorName = values[columns["ColorName"]];
                     string type = values[columns["Type"]];
-                    
+
                     if (string.IsNullOrEmpty(colorName) || string.IsNullOrEmpty(type))
                         continue; //Assume comment
 
@@ -139,7 +143,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                             values = TokenizeLine(line, recordDelimiter, textDelimiter);
                             if (values.Count != colnames.Count)
                                 throw new Exception(string.Format(Strings.InvalidRecordCountError, line));
-                            
+
                             byte r, g, b;
                             if (!byte.TryParse(values[columns["R"]], out r))
                                 throw new Exception(string.Format(Strings.InvalidColorComponent, "R", values[columns["R"]], line));
@@ -191,7 +195,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                     if (rec.StartsWith(textDelimiter.ToString()) && rec.EndsWith(textDelimiter.ToString()))
                         rec = rec.Substring(1, rec.Length - 2);
                     records.Add(rec);
-                    startIndex = i+1;
+                    startIndex = i + 1;
                 }
 
             if (startIndex <= line.Length)
@@ -202,7 +206,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 
                 records.Add(rec);
             }
-            
+
             return records;
         }
 
@@ -226,10 +230,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 {
                     case "qual":
                         return Strings.QualitativeName;
+
                     case "seq":
                         return Strings.SequentialName;
+
                     case "div":
                         return Strings.DivergingName;
+
                     default:
                         return m_type;
                 }
@@ -250,10 +257,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                 /// Displays &quot;Group - Name&quot;
                 /// </summary>
                 Full,
+
                 /// <summary>
                 /// Just display the group
                 /// </summary>
                 Type,
+
                 /// <summary>
                 /// Just display the set name
                 /// </summary>
