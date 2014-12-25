@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ErrorBadDocumentExpectedAttribute" xml:space="preserve">
+    <value>Bad document. Expected attribute: {0}</value>
+  </data>
+  <data name="ErrorBadDocumentExpectedElement" xml:space="preserve">
+    <value>Bad document. Expected element {0}</value>
+  </data>
+  <data name="ErrorBadDocumentInvalidBbox" xml:space="preserve">
+    <value>Bad document. Invalid bounding box</value>
+  </data>
+  <data name="ErrorBadHtmlColor" xml:space="preserve">
+    <value>Bad HTML color: {0}</value>
+  </data>
+  <data name="ErrorCmsOptionsOnMapGuideMap" xml:space="preserve">
+    <value>Commerical layer options are only available for non-MapGuide maps</value>
+  </data>
+  <data name="ErrorCouldNotDetermineSymbolType" xml:space="preserve">
+    <value>Could not determine symbol type</value>
+  </data>
+  <data name="ErrorInvalidResourceIdentifier" xml:space="preserve">
+    <value>Invalid resource identifier</value>
+  </data>
+  <data name="ErrorInvalidResourceIdentifierType" xml:space="preserve">
+    <value>Invalid resource identifier type. Must be Library or Session</value>
+  </data>
+  <data name="ErrorOverlayOptionsOnNonMapGuideMap" xml:space="preserve">
+    <value>Overlay options are only applicable to MapGuide maps</value>
+  </data>
+  <data name="ErrorResourceIdCannotChangeExtensionForFolder" xml:space="preserve">
+    <value>Cannot change extension for a folder</value>
+  </data>
+  <data name="ErrorResourceIdentifierInvalidChars" xml:space="preserve">
+    <value>The resource name must not contain ':', \"//\" or '.'</value>
+  </data>
+  <data name="ErrorResourceIdentifierNameInvalidChars" xml:space="preserve">
+    <value>The new name must not contain the \"/\" character</value>
+  </data>
+  <data name="ErrorResourceIdInvalidExtension" xml:space="preserve">
+    <value>The supplied extension is invalid</value>
+  </data>
+  <data name="ErrorUnexpectedResourceType" xml:space="preserve">
+    <value>Unexpected resource type for {0}. Expected {1}</value>
+  </data>
+  <data name="ErrorUnknownResourceType" xml:space="preserve">
+    <value>The given type is not a known resource type</value>
+  </data>
+  <data name="ERR_FS_NO_ALIAS" xml:space="preserve">
+    <value>This feature source does not connect an externally aliased file</value>
+  </data>
+  <data name="ERR_FS_NO_EMBEDDED_DATA" xml:space="preserve">
+    <value>This feature source does not connect to an embedded data file</value>
+  </data>
+  <data name="ERR_NOT_RESOURCE_CONTENT_XML" xml:space="preserve">
+    <value>XML content does not match any known resource</value>
+  </data>
+  <data name="ERR_NO_SERIALIZER" xml:space="preserve">
+    <value>Could not find matching serializer for this resource: </value>
+  </data>
+  <data name="ERR_SERIALIZER_ALREADY_REGISTERED" xml:space="preserve">
+    <value>A resource serializer has already been registered for {0} v{1}</value>
+  </data>
+  <data name="NotAFolder" xml:space="preserve">
+    <value>Not a folder resource id: {0}</value>
+  </data>
+  <data name="PrecondFailure" xml:space="preserve">
+    <value>Precondition failure: </value>
+  </data>
+  <data name="PrecondStringEmpty" xml:space="preserve">
+    <value>String is empty: </value>
+  </data>
+  <data name="PrecondValueNull" xml:space="preserve">
+    <value>Value is null: </value>
+  </data>
+  <data name="WL_Desc_About" xml:space="preserve">
+    <value>Display information about this application</value>
+  </data>
+  <data name="WL_Desc_Buffer" xml:space="preserve">
+    <value>Create buffers around the selected features</value>
+  </data>
+  <data name="WL_Desc_ClearSelection" xml:space="preserve">
+    <value>Clear the current selection</value>
+  </data>
+  <data name="WL_Desc_Copy" xml:space="preserve">
+    <value>Copy current view of map to clipboard</value>
+  </data>
+  <data name="WL_Desc_GetPrintablePage" xml:space="preserve">
+    <value>Get Printer-friendly page</value>
+  </data>
+  <data name="WL_Desc_Help" xml:space="preserve">
+    <value>Launch help for this application</value>
+  </data>
+  <data name="WL_Desc_InitialCenterScale" xml:space="preserve">
+    <value>Zoom to initial map center and scale</value>
+  </data>
+  <data name="WL_Desc_InitialMapView" xml:space="preserve">
+    <value>Fit the extents of the map to the window</value>
+  </data>
+  <data name="WL_Desc_MapTip" xml:space="preserve">
+    <value>Click to enable/disable display of map tooltips</value>
+  </data>
+  <data name="WL_Desc_Measure" xml:space="preserve">
+    <value>Measure distances on the map</value>
+  </data>
+  <data name="WL_Desc_NextView" xml:space="preserve">
+    <value>Go to next view</value>
+  </data>
+  <data name="WL_Desc_Pan" xml:space="preserve">
+    <value>Drag the map to view areas out of range</value>
+  </data>
+  <data name="WL_Desc_PanDown" xml:space="preserve">
+    <value>Pan down by a preset increment</value>
+  </data>
+  <data name="WL_Desc_PanLeft" xml:space="preserve">
+    <value>Pan left by a preset increment</value>
+  </data>
+  <data name="WL_Desc_PanRight" xml:space="preserve">
+    <value>Pan right by a preset increment</value>
+  </data>
+  <data name="WL_Desc_PanUp" xml:space="preserve">
+    <value>Pan up by a preset increment</value>
+  </data>
+  <data name="WL_Desc_PrevView" xml:space="preserve">
+    <value>Go to previous view</value>
+  </data>
+  <data name="WL_Desc_Print" xml:space="preserve">
+    <value>Print with optional layout</value>
+  </data>
+  <data name="WL_Desc_RefreshMap" xml:space="preserve">
+    <value>Refresh map to reload all layers keeping current center and scale</value>
+  </data>
+  <data name="WL_Desc_Select" xml:space="preserve">
+    <value>Select features by clicking and dragging</value>
+  </data>
+  <data name="WL_Desc_SelectPolygon" xml:space="preserve">
+    <value>Click and drag to select all features that fall within</value>
+  </data>
+  <data name="WL_Desc_SelectRadius" xml:space="preserve">
+    <value>Click and drag to select all features inside the circle</value>
+  </data>
+  <data name="WL_Desc_SelectWithin" xml:space="preserve">
+    <value>Select features that fall within currently selected areas</value>
+  </data>
+  <data name="WL_Desc_TaskBack" xml:space="preserve">
+    <value>Return to previous task page</value>
+  </data>
+  <data name="WL_Desc_TaskForward" xml:space="preserve">
+    <value>Forward to next task page</value>
+  </data>
+  <data name="WL_Desc_TaskHome" xml:space="preserve">
+    <value>Return to home task page</value>
+  </data>
+  <data name="WL_Desc_TaskList" xml:space="preserve">
+    <value>View a list of available tasks</value>
+  </data>
+  <data name="WL_Desc_ViewOptions" xml:space="preserve">
+    <value>View Options</value>
+  </data>
+  <data name="WL_Desc_ZoomDynamic" xml:space="preserve">
+    <value>Zoom dynamically by clicking and dragging</value>
+  </data>
+  <data name="WL_Desc_ZoomIn" xml:space="preserve">
+    <value>Zoom in by a preset increment</value>
+  </data>
+  <data name="WL_Desc_ZoomOut" xml:space="preserve">
+    <value>Zoom out by a preset increment</value>
+  </data>
+  <data name="WL_Desc_ZoomRect" xml:space="preserve">
+    <value>Zoom in on an area</value>
+  </data>
+  <data name="WL_Desc_ZoomSelection" xml:space="preserve">
+    <value>Zoom to the extents of selected features</value>
+  </data>
+  <data name="WL_Label_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="WL_Label_Buffer" xml:space="preserve">
+    <value>Buffer</value>
+  </data>
+  <data name="WL_Label_ClearSelection" xml:space="preserve">
+    <value>Clear Selection</value>
+  </data>
+  <data name="WL_Label_Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="WL_Label_GetPrintablePage" xml:space="preserve">
+    <value>Get Printable Page</value>
+  </data>
+  <data name="WL_Label_Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="WL_Label_InitialCenterScale" xml:space="preserve">
+    <value>Initial Center and Scale</value>
+  </data>
+  <data name="WL_Label_InitialMapView" xml:space="preserve">
+    <value>Initial Map View</value>
+  </data>
+  <data name="WL_Label_Measure" xml:space="preserve">
+    <value>Measure</value>
+  </data>
+  <data name="WL_Label_NextView" xml:space="preserve">
+    <value>Next View</value>
+  </data>
+  <data name="WL_Label_Pan" xml:space="preserve">
+    <value>Pan Mode</value>
+  </data>
+  <data name="WL_Label_PanDown" xml:space="preserve">
+    <value>Pan Down</value>
+  </data>
+  <data name="WL_Label_PanLeft" xml:space="preserve">
+    <value>Pan Left</value>
+  </data>
+  <data name="WL_Label_PanRight" xml:space="preserve">
+    <value>Pan Right</value>
+  </data>
+  <data name="WL_Label_PanUp" xml:space="preserve">
+    <value>Pan Up</value>
+  </data>
+  <data name="WL_Label_PrevView" xml:space="preserve">
+    <value>Previous View</value>
+  </data>
+  <data name="WL_Label_Print" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="WL_Label_RefreshMap" xml:space="preserve">
+    <value>Refresh Map</value>
+  </data>
+  <data name="WL_Label_Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="WL_Label_SelectMore" xml:space="preserve">
+    <value>Select More</value>
+  </data>
+  <data name="WL_Label_SelectPolygon" xml:space="preserve">
+    <value>Select Polygon</value>
+  </data>
+  <data name="WL_Label_SelectRadius" xml:space="preserve">
+    <value>Select Radius</value>
+  </data>
+  <data name="WL_Label_SelectWithin" xml:space="preserve">
+    <value>Select Within</value>
+  </data>
+  <data name="WL_Label_TaskBack" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="WL_Label_TaskForward" xml:space="preserve">
+    <value>Forward</value>
+  </data>
+  <data name="WL_Label_TaskHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="WL_Label_TaskList" xml:space="preserve">
+    <value>Task List</value>
+  </data>
+  <data name="WL_Label_ViewOptions" xml:space="preserve">
+    <value>View Options</value>
+  </data>
+  <data name="WL_Label_Zoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="WL_Label_ZoomDynamic" xml:space="preserve">
+    <value>Zoom Dynamic</value>
+  </data>
+  <data name="WL_Label_ZoomIn" xml:space="preserve">
+    <value>Zoom In</value>
+  </data>
+  <data name="WL_Label_ZoomOut" xml:space="preserve">
+    <value>Zoom Out</value>
+  </data>
+  <data name="WL_Label_ZoomRect" xml:space="preserve">
+    <value>Zoom Rectangle</value>
+  </data>
+  <data name="WL_Label_ZoomSelection" xml:space="preserve">
+    <value>Zoom Selection</value>
+  </data>
+</root>

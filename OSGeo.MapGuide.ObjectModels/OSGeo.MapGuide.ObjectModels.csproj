@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{48C5EB23-45AE-4C4C-8FAB-635428AE8CA1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OSGeo.MapGuide.ObjectModels</RootNamespace>
+    <AssemblyName>OSGeo.MapGuide.ObjectModels</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;LDF_100</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Generated\ApplicationDefinition-1.0.0.designer.cs">
+      <Link>ApplicationDefinition\v1_0_0\ApplicationDefinition-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\ApplicationDefinitionInfo-1.0.0.designer.cs">
+      <Link>ApplicationDefinition\v1_0_0\ApplicationDefinitionInfo-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\DrawingSectionList-1.0.0.designer.cs">
+      <Link>Common\DrawingSectionList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\DrawingSectionResourceList-1.0.0.designer.cs">
+      <Link>Common\DrawingSectionResourceList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\DrawingSource-1.0.0.designer.cs">
+      <Link>DrawingSource\v1_0_0\DrawingSource-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\Envelope-1.0.0.designer.cs">
+      <Link>Common\Envelope-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\FdoLongTransactionList-1.0.0.designer.cs">
+      <Link>Common\FdoLongTransactionList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\FdoSpatialContextList-1.0.0.designer.cs">
+      <Link>Common\FdoSpatialContextList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\FeatureSource-1.0.0.designer.cs">
+      <Link>FeatureSource\v1_0_0\FeatureSource-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\LayerDefinition-1.0.0.designer.cs">
+      <Link>LayerDefinition\v1_0_0\LayerDefinition-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\LayerDefinition-1.1.0.designer.cs">
+      <Link>LayerDefinition\v1_1_0\LayerDefinition-1.1.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\LayerDefinition-1.2.0.designer.cs">
+      <Link>LayerDefinition\v1_2_0\LayerDefinition-1.2.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\LayerDefinition-1.3.0.designer.cs">
+      <Link>LayerDefinition\v1_3_0\LayerDefinition-1.3.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\LayerDefinition-2.3.0.designer.cs">
+      <Link>LayerDefinition\v2_3_0\LayerDefinition-2.3.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\LayerDefinition-2.4.0.designer.cs">
+      <Link>LayerDefinition\v2_4_0\LayerDefinition-2.4.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\LoadProcedure-1.0.0.designer.cs">
+      <Link>LoadProcedure\v1_0_0\LoadProcedure-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\LoadProcedure-1.1.0.designer.cs">
+      <Link>LoadProcedure\v1_1_0\LoadProcedure-1.1.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\LoadProcedure-2.2.0.designer.cs">
+      <Link>LoadProcedure\v2_4_0\LoadProcedure-2.2.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\MapDefinition-1.0.0.designer.cs">
+      <Link>MapDefinition\v1_0_0\MapDefinition-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\PrintLayout-1.0.0.designer.cs">
+      <Link>PrintLayout\v1.0.0\PrintLayout-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\RepositoryList-1.0.0.designer.cs">
+      <Link>Common\RepositoryList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\ResourceDataList-1.0.0.designer.cs">
+      <Link>Common\ResourceDataList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\ResourceList-1.0.0.designer.cs">
+      <Link>Common\ResourceList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\ResourcePackageManifest-1.0.0.designer.cs">
+      <Link>Common\ResourcePackageManifest-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\ResourceReferenceList-1.0.0.designer.cs">
+      <Link>Common\ResourceReferenceList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\SymbolDefinition-1.0.0.designer.cs">
+      <Link>SymbolDefinition\v1_0_0\SymbolDefinition-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\SymbolDefinition-1.1.0.designer.cs">
+      <Link>SymbolDefinition\v1_1_0\SymbolDefinition-1.1.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\SymbolDefinition-2.4.0.designer.cs">
+      <Link>SymbolDefinition\v2_4_0\SymbolDefinition-2.4.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\SymbolLibrary-1.0.0.designer.cs">
+      <Link>SymbolLibrary\v1.0.0\SymbolLibrary-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\WatermarkDefinition-2.3.0.designer.cs">
+      <Link>WatermarkDefinition\v2_3_0\WatermarkDefinition-2.3.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\WatermarkDefinition-2.4.0.designer.cs">
+      <Link>WatermarkDefinition\v2_4_0\WatermarkDefinition-2.4.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\WebLayout-1.0.0.designer.cs">
+      <Link>WebLayout\v1_0_0\WebLayout-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="ApplicationDefinition\v1_0_0\ApplicationDefinitionImpl.cs" />
+    <Compile Include="ApplicationDefinition\v1_0_0\ApplicationDefinitionInfoImpl.cs" />
+    <Compile Include="ApplicationDefinition\ApplicationDefinitionInterfaces.cs" />
+    <Compile Include="BaseSerializable.cs" />
+    <Compile Include="Check.cs" />
+    <Compile Include="Common\ExpressionDataType.cs" />
+    <Compile Include="Common\ExtendedDataType.cs" />
+    <Compile Include="Common\Geometries.cs" />
+    <Compile Include="Common\IEnvelope.cs" />
+    <Compile Include="Common\IExpressionPropertySource.cs" />
+    <Compile Include="Common\IFdoSerializable.cs" />
+    <Compile Include="Common\IFdoSpatialContext.cs" />
+    <Compile Include="Common\ILongTransaction.cs" />
+    <Compile Include="Common\IRepositoryItem.cs" />
+    <Compile Include="Common\IResourceIdReference.cs" />
+    <Compile Include="Common\ResourceItems.cs" />
+    <Compile Include="Common\ResourceList.cs" />
+    <Compile Include="DrawingSource\v1_0_0\DrawingSourceImpl.cs" />
+    <Compile Include="DrawingSource\DrawingSourceInterfaces.cs" />
+    <Compile Include="FeatureSource\FeatureSourceInterfaces.cs" />
+    <Compile Include="FeatureSource\v1_0_0\FeatureSourceImpl.cs" />
+    <Compile Include="IO\ReadOnlyRewindableStream.cs" />
+    <Compile Include="IO\Utf8XmlWriter.cs" />
+    <Compile Include="IResource.cs" />
+    <Compile Include="IVersionedEntity.cs" />
+    <Compile Include="LayerDefinition\v1_0_0\GridLayerDefinitionImpl.cs" />
+    <Compile Include="LayerDefinition\LayerDefinitionInterfaces.cs" />
+    <Compile Include="LayerDefinition\v1_0_0\LayerElementFactoryImpl.cs" />
+    <Compile Include="LayerDefinition\v1_0_0\VectorLayerDefinitionImpl.cs" />
+    <Compile Include="LoadProcedure\v1_0_0\LoadProcedureImpl.cs" />
+    <Compile Include="LoadProcedure\v1_0_0\LoadProcedureFactoryImpl.cs" />
+    <Compile Include="LoadProcedure\LoadProcedureInterfaces.cs" />
+    <Compile Include="MapDefinition\v1_0_0\MapDefinitionImpl.cs" />
+    <Compile Include="MapDefinition\MapDefinitionInterfaces.cs" />
+    <Compile Include="ObjectFactory.cs" />
+    <Compile Include="PrintLayout\v1.0.0\PrintLayoutImpl.cs" />
+    <Compile Include="PrintLayout\PrintLayoutInterfaces.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourceContentVersionChecker.cs" />
+    <Compile Include="ResourceIdentifier.cs" />
+    <Compile Include="ResourceTypeDescriptor.cs" />
+    <Compile Include="ResourceTypeRegistry.cs" />
+    <Compile Include="ResourceTypes.cs" />
+    <Compile Include="Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SymbolDefinition\v1_0_0\SymbolDefinitionImpl.cs" />
+    <Compile Include="SymbolDefinition\SymbolDefinitionInterfaces.cs" />
+    <Compile Include="SymbolLibrary\v1.0.0\SymbolLibraryImpl.cs" />
+    <Compile Include="SymbolLibrary\SymbolLibraryInterfaces.cs" />
+    <Compile Include="UntypedResource.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="WatermarkDefinition\WatermarkDefinitionInterfaces.cs" />
+    <Compile Include="WebLayout\v1_0_0\WebLayoutImpl.cs" />
+    <Compile Include="WebLayout\WebLayoutInterfaces.cs" />
+    <Compile Include="XmlNamespaces.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
