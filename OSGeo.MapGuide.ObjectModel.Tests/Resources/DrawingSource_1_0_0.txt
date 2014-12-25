@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DrawingSource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:noNamespaceSchemaLocation="DrawingSource-1.0.0.xsd">
+  <SourceName>SourceName1</SourceName>
+  <CoordinateSpace>CoordinateSpace1</CoordinateSpace>
+  <Sheet>
+    <Name>Name1</Name>
+    <Extent>
+      <MinX>1</MinX>
+      <MinY>1</MinY>
+      <MaxX>1</MaxX>
+      <MaxY>1</MaxY>
+    </Extent>
+  </Sheet>
+  <Sheet>
+    <Name>Name2</Name>
+    <Extent>
+      <MinX>-1.7976931348623157E+308</MinX>
+      <MinY>-1.7976931348623157E+308</MinY>
+      <MaxX>-1.7976931348623157E+308</MaxX>
+      <MaxY>-1.7976931348623157E+308</MaxY>
+    </Extent>
+  </Sheet>
+  <Sheet>
+    <Name>Name3</Name>
+    <Extent>
+      <MinX>1.7976931348623157E+308</MinX>
+      <MinY>1.7976931348623157E+308</MinY>
+      <MaxX>1.7976931348623157E+308</MaxX>
+      <MaxY>1.7976931348623157E+308</MaxY>
+    </Extent>
+  </Sheet>
+</DrawingSource>

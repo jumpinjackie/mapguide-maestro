@@ -34,6 +34,7 @@ using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Ldf110 = OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_1_0;
@@ -127,6 +128,24 @@ namespace OSGeo.MapGuide.ObjectModels
             _mapDefinitionFactories = new Dictionary<Version, MapDefinitionCreatorFunc>();
             _watermarkFactories = new Dictionary<Version, WatermarkCreatorFunc>();
 
+            Init();
+        }
+
+        public static void Reset()
+        {
+            _layerFactories.Clear();
+            _wlFactories.Clear();
+            _loadProcFactories.Clear();
+            _simpleSymbolFactories.Clear();
+            _compoundSymbolFactories.Clear();
+            _mapDefinitionFactories.Clear();
+            _watermarkFactories.Clear();
+            ResourceTypeRegistry.Reset();
+            Init();
+        }
+
+        private static void Init()
+        {
             _layerFactories.Add(
                 new Version(1, 0, 0),
                 new LayerCreatorFunc(OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0.LdfEntryPoint.CreateDefault));
@@ -283,6 +302,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="serializer">The serializer.</param>
         public static void RegisterResource(ResourceTypeDescriptor desc, ResourceSerializer serializer)
         {
+            Check.ArgumentNotNull(desc, "desc");
+            Check.ArgumentNotNull(serializer, "serializer");
             ResourceTypeRegistry.RegisterResource(desc, serializer);
         }
 
@@ -294,46 +315,55 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="deserializeMethod">The deserialize method.</param>
         public static void RegisterResourceSerializer(ResourceTypeDescriptor resourceType, ResourceSerializationCallback serializer, ResourceDeserializationCallback deserializer)
         {
+            Check.ArgumentNotNull(resourceType, "resourceType");
+            Check.ArgumentNotNull(serializer, "serializer");
+            Check.ArgumentNotNull(deserializer, "deserializer");
             ResourceTypeRegistry.RegisterResource(resourceType, serializer, deserializer);
         }
 
         /// <summary>
         /// Registers the compound symbol factory method
         /// </summary>
-        /// <param name="ver"></param>
+        /// <param name="version"></param>
         /// <param name="func"></param>
-        public static void RegisterCompoundSymbolFactoryMethod(Version ver, CompoundSymbolDefCreatorFunc func)
+        public static void RegisterCompoundSymbolFactoryMethod(Version version, CompoundSymbolDefCreatorFunc func)
         {
-            if (_compoundSymbolFactories.ContainsKey(ver))
-                throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + ver);
+            Check.ArgumentNotNull(version, "version");
+            Check.ArgumentNotNull(func, "func");
+            if (_compoundSymbolFactories.ContainsKey(version))
+                throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + version);
 
-            _compoundSymbolFactories[ver] = func;
+            _compoundSymbolFactories[version] = func;
         }
 
         /// <summary>
         /// Regsiters the simple symbol factory method
         /// </summary>
-        /// <param name="ver"></param>
+        /// <param name="version"></param>
         /// <param name="func"></param>
-        public static void RegisterSimpleSymbolFactoryMethod(Version ver, SimpleSymbolDefCreatorFunc func)
+        public static void RegisterSimpleSymbolFactoryMethod(Version version, SimpleSymbolDefCreatorFunc func)
         {
-            if (_simpleSymbolFactories.ContainsKey(ver))
-                throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + ver);
+            Check.ArgumentNotNull(version, "version");
+            Check.ArgumentNotNull(func, "func");
+            if (_simpleSymbolFactories.ContainsKey(version))
+                throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + version);
 
-            _simpleSymbolFactories[ver] = func;
+            _simpleSymbolFactories[version] = func;
         }
 
         /// <summary>
         /// Registers the layer factory method.
         /// </summary>
-        /// <param name="ver">The ver.</param>
+        /// <param name="version">The ver.</param>
         /// <param name="method">The method.</param>
-        public static void RegisterLayerFactoryMethod(Version ver, LayerCreatorFunc method)
+        public static void RegisterLayerFactoryMethod(Version version, LayerCreatorFunc method)
         {
-            if (_layerFactories.ContainsKey(ver))
-                throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + ver);
+            Check.ArgumentNotNull(version, "version");
+            Check.ArgumentNotNull(method, "method");
+            if (_layerFactories.ContainsKey(version))
+                throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + version);
 
-            _layerFactories[ver] = method;
+            _layerFactories[version] = method;
         }
 
         /// <summary>
@@ -343,6 +373,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="method">The method.</param>
         public static void RegisterLoadProcedureFactoryMethod(LoadType type, LoadProcCreatorFunc method)
         {
+            Check.ArgumentNotNull(method, "method");
             if (_loadProcFactories.ContainsKey(type))
                 throw new ArgumentException(Strings.LoadProcFactoryMethodAlreadyRegistered + type);
 
@@ -356,6 +387,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="method">The method.</param>
         public static void RegisterWebLayoutFactoryMethod(Version version, WebLayoutCreatorFunc method)
         {
+            Check.ArgumentNotNull(version, "version");
+            Check.ArgumentNotNull(method, "method");
             if (_wlFactories.ContainsKey(version))
                 throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + version);
 
@@ -369,6 +402,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="method"></param>
         public static void RegisterMapDefinitionFactoryMethod(Version version, MapDefinitionCreatorFunc method)
         {
+            Check.ArgumentNotNull(version, "version");
+            Check.ArgumentNotNull(method, "method");
             if (_mapDefinitionFactories.ContainsKey(version))
                 throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + version);
 
@@ -382,6 +417,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="method"></param>
         public static void RegisterWatermarkDefinitionFactoryMethod(Version version, WatermarkCreatorFunc method)
         {
+            Check.ArgumentNotNull(version, "version");
+            Check.ArgumentNotNull(method, "method");
             if (_watermarkFactories.ContainsKey(version))
                 throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + version);
 
@@ -420,11 +457,15 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <summary>
         /// Creates the feature source extension.
         /// </summary>
+        /// <param name="name">The name of the extension</param>
+        /// <param name="featureClass">The feature class</param>
         /// <returns></returns>
-        public static IFeatureSourceExtension CreateFeatureSourceExtension()
+        public static IFeatureSourceExtension CreateFeatureSourceExtension(string name, string featureClass)
         {
             return new OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.FeatureSourceTypeExtension()
             {
+                Name = name,
+                FeatureClass = featureClass,
                 CalculatedProperty = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.CalculatedPropertyType>(),
                 AttributeRelate = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.AttributeRelateType>()
             };
@@ -433,10 +474,16 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <summary>
         /// Creates the calculated property.
         /// </summary>
+        /// <param name="name">The name of the calculated property</param>
+        /// <param name="expression">The FDO Expression</param>
         /// <returns></returns>
-        public static ICalculatedProperty CreateCalculatedProperty()
+        public static ICalculatedProperty CreateCalculatedProperty(string name, string expression)
         {
-            return new OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.CalculatedPropertyType();
+            return new OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.CalculatedPropertyType()
+            {
+                Name = name,
+                Expression = expression
+            };
         }
 
         /// <summary>
@@ -612,6 +659,7 @@ namespace OSGeo.MapGuide.ObjectModels
                 throw new ArgumentException(Strings.UnknownMapDefinitionVersion + version.ToString());
 
             var mdf = _mapDefinitionFactories[version]();
+            mdf.Name = name;
             return mdf;
         }
 
@@ -656,6 +704,9 @@ namespace OSGeo.MapGuide.ObjectModels
         {
             var sym = CreateSimpleSymbol(version, "MTEXT", "Default MTEXT Symbol");
             var text = sym.CreateTextGraphics();
+
+            bool bSupportsAdvancedTypes = !(version.Major == 1 && version.Minor == 0 && version.Build == 0);
+
             text.Content = "%CONTENT%";
             text.FontName = "%FONTNAME%";
             text.Bold = "%BOLD%";
@@ -718,25 +769,25 @@ namespace OSGeo.MapGuide.ObjectModels
                     break;
             }
 
-            sym.DefineParameter("CONTENT", "'text'", "T&amp;ext", "Text", "Content");
-            sym.DefineParameter("FONTNAME", "'Arial'", "&amp;Font Name", "Font Name", "FontName");
-            sym.DefineParameter("FONTHEIGHT", "4.0", "Font &amp;Size", "Font Size", "FontHeight");
-            sym.DefineParameter("BOLD", "false", "Bold", "Bold", "Bold");
-            sym.DefineParameter("ITALIC", "false", "Italic", "Italic", "Italic");
-            sym.DefineParameter("UNDERLINED", "false", "Underlined", "Underlined", "Underlined");
+            sym.DefineParameter("CONTENT", "'text'", "T&amp;ext", "Text", bSupportsAdvancedTypes ? "Content" : "String");
+            sym.DefineParameter("FONTNAME", "'Arial'", "&amp;Font Name", "Font Name", bSupportsAdvancedTypes ? "FontName" : "String");
+            sym.DefineParameter("FONTHEIGHT", "4.0", "Font &amp;Size", "Font Size", bSupportsAdvancedTypes ? "FontHeight" : "Real");
+            sym.DefineParameter("BOLD", "false", "Bold", "Bold", bSupportsAdvancedTypes ? "Bold" : "Boolean");
+            sym.DefineParameter("ITALIC", "false", "Italic", "Italic", bSupportsAdvancedTypes ? "Italic" : "Boolean");
+            sym.DefineParameter("UNDERLINED", "false", "Underlined", "Underlined", bSupportsAdvancedTypes ? "Underlined" : "Boolean");
             if (text2 != null)
             {
-                sym.DefineParameter("OVERLINED", "false", "Overlined", "Overlined", "Overlined");
+                sym.DefineParameter("OVERLINED", "false", "Overlined", "Overlined", bSupportsAdvancedTypes ? "Overlined" : "Boolean");
             }
-            sym.DefineParameter("JUSTIFICATION", "'FromAlignment'", "Justification", "Justification", "Justification");
-            sym.DefineParameter("LINESPACING", "1.05", "Line Spacing", "Line Spacing", "LineSpacing");
-            sym.DefineParameter("GHOSTCOLOR", "", "Ghost Color", "Ghost Color", "GhostColor");
-            sym.DefineParameter("FRAMELINECOLOR", "", "Frame Line Color", "Frame Line Color", "FrameLineColor");
-            sym.DefineParameter("FRAMEFILLCOLOR", "", "Frame Fill Color", "Frame Fill Color", "FrameFillColor");
-            sym.DefineParameter("TEXTCOLOR", "0xff000000", "Text Color", "Text Color", "TextColor");
-            sym.DefineParameter("VERTICALALIGNMENT", "'Halfline'", "&amp;Vertical Alignment", "Vertical Alignment", "VerticalAlignment");
-            sym.DefineParameter("ROTATION", "0.0", "&amp;Rotation", "Rotation", "Angle");
-            sym.DefineParameter("HORIZONTALALIGNMENT", "'Center'", "Hori&amp;zontal Alignment", "Horizontal Alignment", "HorizontalAlignment");
+            sym.DefineParameter("JUSTIFICATION", "'FromAlignment'", "Justification", "Justification", bSupportsAdvancedTypes ? "Justification" : "String");
+            sym.DefineParameter("LINESPACING", "1.05", "Line Spacing", "Line Spacing", bSupportsAdvancedTypes ? "LineSpacing" : "Real");
+            sym.DefineParameter("GHOSTCOLOR", "", "Ghost Color", "Ghost Color", bSupportsAdvancedTypes ? "GhostColor" : "Color");
+            sym.DefineParameter("FRAMELINECOLOR", "", "Frame Line Color", "Frame Line Color", bSupportsAdvancedTypes ? "FrameLineColor" : "Color");
+            sym.DefineParameter("FRAMEFILLCOLOR", "", "Frame Fill Color", "Frame Fill Color", bSupportsAdvancedTypes ? "FrameFillColor" : "Color");
+            sym.DefineParameter("TEXTCOLOR", "0xff000000", "Text Color", "Text Color", bSupportsAdvancedTypes ? "TextColor" : "Color");
+            sym.DefineParameter("VERTICALALIGNMENT", "'Halfline'", "&amp;Vertical Alignment", "Vertical Alignment", bSupportsAdvancedTypes ? "VerticalAlignment" : "String");
+            sym.DefineParameter("ROTATION", "0.0", "&amp;Rotation", "Rotation", bSupportsAdvancedTypes ? "Angle" : "Real");
+            sym.DefineParameter("HORIZONTALALIGNMENT", "'Center'", "Hori&amp;zontal Alignment", "Horizontal Alignment", bSupportsAdvancedTypes ? "HorizontalAlignment" : "String");
             sym.DefineParameter("StyleEditorGenerated_TextPositionX_0", "0.0", "PositionX", "PositionX", "Real");
             sym.DefineParameter("StyleEditorGenerated_TextPositionY_0", "0.0", "PositionY", "PositionY", "Real");
 
@@ -752,6 +803,9 @@ namespace OSGeo.MapGuide.ObjectModels
         {
             var sym = CreateSimpleSymbol(version, "Square", "Default Point Symbol");
             var path = sym.CreatePathGraphics();
+
+            bool bSupportsAdvancedTypes = !(version.Major == 1 && version.Minor == 0 && version.Build == 0);
+
             path.Geometry = "M -1.0,-1.0 L 1.0,-1.0 L 1.0,1.0 L -1.0,1.0 L -1.0,-1.0";
             IPathGraphic2 path2 = path as IPathGraphic2;
             if (path2 != null)
@@ -769,10 +823,10 @@ namespace OSGeo.MapGuide.ObjectModels
             usage.Angle = "%ROTATION%";
             sym.PointUsage = usage;
 
-            sym.DefineParameter("FILLCOLOR", "0xffffffff", "&amp;Fill Color", "Fill Color", "FillColor");
-            sym.DefineParameter("LINECOLOR", "0xff000000", "Line &amp;Color", "Line Color", "LineColor");
-            sym.DefineParameter("LINEWEIGHT", "0.0", "Line &amp;Thickness", "Line Thickness", "LineWeight");
-            sym.DefineParameter("ROTATION", "0.0", "&amp;Rotation", "Rotation", "Angle");
+            sym.DefineParameter("FILLCOLOR", "0xffffffff", "&amp;Fill Color", "Fill Color", bSupportsAdvancedTypes ? "FillColor" : "Color");
+            sym.DefineParameter("LINECOLOR", "0xff000000", "Line &amp;Color", "Line Color", bSupportsAdvancedTypes ? "LineColor" : "Color");
+            sym.DefineParameter("LINEWEIGHT", "0.0", "Line &amp;Thickness", "Line Thickness", bSupportsAdvancedTypes ? "LineWeight" : "Real");
+            sym.DefineParameter("ROTATION", "0.0", "&amp;Rotation", "Rotation", bSupportsAdvancedTypes ? "Angle" : "Real");
             if (path2 != null)
             {
                 sym.DefineParameter("StyleEditorGenerated_ScaleX_0", "1.0", "Path ScaleX", "Path ScaleX", "Real");
@@ -792,6 +846,9 @@ namespace OSGeo.MapGuide.ObjectModels
         {
             var sym = CreateSimpleSymbol(version, "Solid Line", "Default Line Symbol");
             var path = sym.CreatePathGraphics();
+
+            bool bSupportsAdvancedTypes = !(version.Major == 1 && version.Minor == 0 && version.Build == 0);
+
             path.Geometry = "M 0.0,0.0 L 1.0,0.0";
             path.LineColor = "%LINECOLOR%";
             path.LineWeight = "%LINEWEIGHT%";
@@ -808,8 +865,8 @@ namespace OSGeo.MapGuide.ObjectModels
             lineUsage.Repeat = "1.0";
             sym.LineUsage = lineUsage;
 
-            sym.DefineParameter("LINECOLOR", "0xff000000", "Line &amp;Color", "Line Color", "LineColor");
-            sym.DefineParameter("LINEWEIGHT", "0.0", "Line &amp;Thickness", "Line Thickness", "LineWeight");
+            sym.DefineParameter("LINECOLOR", "0xff000000", "Line &amp;Color", "Line Color", bSupportsAdvancedTypes ? "LineColor" : "Color");
+            sym.DefineParameter("LINEWEIGHT", "0.0", "Line &amp;Thickness", "Line Thickness", bSupportsAdvancedTypes ? "LineWeight" : "Real");
             if (path2 != null)
             {
                 sym.DefineParameter("StyleEditorGenerated_ScaleX_0", "1.0", "Path ScaleX", "Path ScaleX", "Real");
@@ -829,6 +886,9 @@ namespace OSGeo.MapGuide.ObjectModels
         {
             var sym = CreateSimpleSymbol(version, "Solid Fill", "Default Area Symbol");
             var path = sym.CreatePathGraphics();
+
+            bool bSupportsAdvancedTypes = !(version.Major == 1 && version.Minor == 0 && version.Build == 0);
+
             path.Geometry = "M 0.0,0.0 h 100.0 v 100.0 h -100.0 z";
             path.FillColor = "%FILLCOLOR%";
             path.LineCap = "%StyleEditorGenerated_LineCap_0%";
@@ -845,7 +905,7 @@ namespace OSGeo.MapGuide.ObjectModels
             areaUsage.RepeatY = "100.0";
             sym.AreaUsage = areaUsage;
 
-            sym.DefineParameter("FILLCOLOR", "0xffbfbfbf", "&amp;Fill Color", "Fill Color", "FillColor");
+            sym.DefineParameter("FILLCOLOR", "0xffbfbfbf", "&amp;Fill Color", "Fill Color", bSupportsAdvancedTypes ? "FillColor" : "Color");
             if (path2 != null)
             {
                 sym.DefineParameter("StyleEditorGenerated_ScaleX_0", "1.0", "Path ScaleX", "Path ScaleX", "Real");
@@ -951,6 +1011,16 @@ namespace OSGeo.MapGuide.ObjectModels
         public static IPoint3D CreatePoint3D(double x, double y, double z)
         {
             return new Point3DImpl() { X = x, Y = y, Z = z };
+        }
+
+        /// <summary>
+        /// Deserializes the specified XML.
+        /// </summary>
+        /// <param name="xml">The XML.</param>
+        /// <returns></returns>
+        public static IResource DeserializeResourceXml(string xml)
+        {
+            return ResourceTypeRegistry.Deserialize(xml);
         }
     }
 }

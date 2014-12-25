@@ -72,7 +72,17 @@ namespace OSGeo.MapGuide.ObjectModels
         static ResourceTypeRegistry()
         {
             _serializers = new Dictionary<ResourceTypeDescriptor, ResourceSerializer>();
+            Init();
+        }
 
+        internal static void Reset()
+        {
+            _serializers.Clear();
+            Init();
+        }
+
+        private static void Init()
+        {
             //ApplicationDefinition 1.0.0
             _serializers.Add(
                 ResourceTypeDescriptor.ApplicationDefinition,
@@ -202,11 +212,6 @@ namespace OSGeo.MapGuide.ObjectModels
         public static void RegisterResource(ResourceTypeDescriptor desc, ResourceSerializationCallback serializeMethod, ResourceDeserializationCallback deserializeMethod)
         {
             RegisterResource(desc, new ResourceSerializer() { Deserialize = deserializeMethod, Serialize = serializeMethod });
-        }
-
-        internal static void Init()
-        {
-            //does nothing, it's just for kicking the static constructor into gear
         }
 
         /// <summary>

@@ -44,6 +44,18 @@ namespace OSGeo.MapGuide.ObjectModels
         }
 
         /// <summary>
+        /// Check that the argument value is not null
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="arg"></param>
+        public static void ArgumentNotNull<T>(T obj, string arg) where T : class
+        {
+            if (obj == null)
+                throw new ArgumentNullException(arg);
+        }
+
+        /// <summary>
         /// Check that value is not null
         /// </summary>
         /// <typeparam name="T"></typeparam>

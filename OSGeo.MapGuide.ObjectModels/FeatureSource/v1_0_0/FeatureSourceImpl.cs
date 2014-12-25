@@ -275,9 +275,12 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0
         {
             get
             {
-                foreach (var sc in this.SupplementalSpatialContextInfo)
+                if (this.SupplementalSpatialContextInfo != null)
                 {
-                    yield return sc;
+                    foreach (var sc in this.SupplementalSpatialContextInfo)
+                    {
+                        yield return sc;
+                    }
                 }
             }
         }
@@ -311,9 +314,12 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0
         {
             get
             {
-                foreach (var ext in this.Extension)
+                if (this.Extension != null)
                 {
-                    yield return ext;
+                    foreach (var ext in this.Extension)
+                    {
+                        yield return ext;
+                    }
                 }
             }
         }

@@ -168,6 +168,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7507E52A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Thirdparty", "Thirdparty", "{5A242739-8805-4B57-A036-29C81E899CBE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModel.Tests", "..\OSGeo.MapGuide.ObjectModel.Tests\OSGeo.MapGuide.ObjectModel.Tests.csproj", "{D32BE7DB-D0C3-4805-A057-18312370C57E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -568,6 +570,14 @@ Global
 		{48C5EB23-45AE-4C4C-8FAB-635428AE8CA1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{48C5EB23-45AE-4C4C-8FAB-635428AE8CA1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{48C5EB23-45AE-4C4C-8FAB-635428AE8CA1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D32BE7DB-D0C3-4805-A057-18312370C57E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D32BE7DB-D0C3-4805-A057-18312370C57E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D32BE7DB-D0C3-4805-A057-18312370C57E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D32BE7DB-D0C3-4805-A057-18312370C57E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D32BE7DB-D0C3-4805-A057-18312370C57E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D32BE7DB-D0C3-4805-A057-18312370C57E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D32BE7DB-D0C3-4805-A057-18312370C57E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D32BE7DB-D0C3-4805-A057-18312370C57E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -579,5 +589,6 @@ Global
 		{50C12B5C-387C-4007-A1D1-CB181CB474CC} = {7507E52A-413B-4E0D-A1FF-7D293E462C1B}
 		{2D18BE89-D210-49EB-A9DD-2246FBB3DF6D} = {5A242739-8805-4B57-A036-29C81E899CBE}
 		{AA5EF530-B95C-4C8F-BE9F-52C225613DF9} = {7507E52A-413B-4E0D-A1FF-7D293E462C1B}
+		{D32BE7DB-D0C3-4805-A057-18312370C57E} = {7507E52A-413B-4E0D-A1FF-7D293E462C1B}
 	EndGlobalSection
 EndGlobal
