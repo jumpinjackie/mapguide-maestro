@@ -25,7 +25,7 @@ using System.Collections.Generic;
 
 #pragma warning disable 1591, 0114, 0108
 
-namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0
+namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
 {
     using OSGeo.MapGuide.MaestroAPI;
     using System.Xml.Serialization;

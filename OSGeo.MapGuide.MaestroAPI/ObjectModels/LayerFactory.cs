@@ -31,18 +31,19 @@ using System.IO;
 #pragma warning disable 1591, 0114, 0108
 
 #if LDF_110
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_1_0
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_1_0
 #elif LDF_120
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_2_0
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_2_0
 #elif LDF_130
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_3_0
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_3_0
 #elif LDF_230
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0
+
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v2_3_0
 #elif LDF_240
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_4_0
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v2_4_0
 #else
 
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
 #endif
 {
     /// <summary>
@@ -129,9 +130,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             var vl = new VectorLayerDefinitionType()
             {
 #if LDF_240
-                Watermarks = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0.WatermarkType>()
+                Watermarks = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_4_0.WatermarkType>()
 #elif LDF_230
-                Watermarks = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0.WatermarkType>()
+                Watermarks = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_3_0.WatermarkType>()
 #endif
             };
 

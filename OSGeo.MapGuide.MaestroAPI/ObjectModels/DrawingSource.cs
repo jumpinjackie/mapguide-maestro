@@ -30,7 +30,7 @@ using System.Xml.Serialization;
 
 #pragma warning disable 1591, 0114, 0108
 
-namespace OSGeo.MapGuide.ObjectModels.DrawingSource_1_0_0
+namespace OSGeo.MapGuide.ObjectModels.DrawingSource.v1_0_0
 {
     partial class DrawingSource : IDrawingSource
     {

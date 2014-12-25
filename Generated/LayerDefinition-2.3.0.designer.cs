@@ -5,7 +5,7 @@
 //    <NameSpace>OSGeo.MapGuide.ObjectModels.LayerDefinition</NameSpace><Collection>BindingList</Collection><codeType>CSharp</codeType><EnableDataBinding>True</EnableDataBinding><EnableLasyLoading>False</EnableLasyLoading><HidePrivateFieldInIDE>True</HidePrivateFieldInIDE><EnableSummaryComment>True</EnableSummaryComment><IncludeSerializeMethod>True</IncludeSerializeMethod><UseBaseClass>False</UseBaseClass><GenerateCloneMethod>True</GenerateCloneMethod><GenerateDataContracts>False</GenerateDataContracts><CodeBaseTag>Net20</CodeBaseTag><SerializeMethodName>Serialize</SerializeMethodName><DeserializeMethodName>Deserialize</DeserializeMethodName><SaveToFileMethodName>SaveToFile</SaveToFileMethodName><LoadFromFileMethodName>LoadFromFile</LoadFromFileMethodName><GenerateXMLAttributes>True</GenerateXMLAttributes><AutomaticProperties>False</AutomaticProperties><DisableDebug>False</DisableDebug><CustomUsings></CustomUsings><ExcludeIncludedTypes>False</ExcludeIncludedTypes><EnableInitializeFields>False</EnableInitializeFields>
 //  </auto-generated>
 // ------------------------------------------------------------------------------
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0 {
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v2_3_0 {
     using System;
     using System.Diagnostics;
     using System.Xml.Serialization;
@@ -15,8 +15,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0 {
     using System.IO;
     using OSGeo.MapGuide.ObjectModels.LayerDefinition;
     using OSGeo.MapGuide.ObjectModels.Common;
-    using OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0;
-    using OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0;
+    using OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0;
+    using OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_3_0;
     
     /// <summary>
     /// The specification of the data source and stylization for a layer.
@@ -81,7 +81,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0 {
         /// </summary>
         /// <returns>string XML value</returns>
         public virtual string Serialize() {
-            return OSGeo.MapGuide.MaestroAPI.Utility.NormalizedSerialize(Serializer, this);
+            return base.NormalizedSerialize(Serializer, this);
         }
         
         /// <summary>
@@ -218,7 +218,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=true)]
-    public partial class LayerDefinitionType : System.ComponentModel.INotifyPropertyChanged {
+    public partial class LayerDefinitionType : BaseSerializable, System.ComponentModel.INotifyPropertyChanged {
         
         [EditorBrowsable(EditorBrowsableState.Never)]
         private BaseLayerDefinitionType itemField;

@@ -5,7 +5,7 @@
 //    <NameSpace>WatermarkDefinition-2.3.0.cs</NameSpace><Collection>BindingList</Collection><codeType>CSharp</codeType><EnableDataBinding>True</EnableDataBinding><EnableLazyLoading>False</EnableLazyLoading><TrackingChangesEnable>False</TrackingChangesEnable><GenTrackingClasses>False</GenTrackingClasses><HidePrivateFieldInIDE>True</HidePrivateFieldInIDE><EnableSummaryComment>True</EnableSummaryComment><VirtualProp>False</VirtualProp><IncludeSerializeMethod>True</IncludeSerializeMethod><UseBaseClass>False</UseBaseClass><GenBaseClass>False</GenBaseClass><GenerateCloneMethod>True</GenerateCloneMethod><GenerateDataContracts>False</GenerateDataContracts><CodeBaseTag>Net20</CodeBaseTag><SerializeMethodName>Serialize</SerializeMethodName><DeserializeMethodName>Deserialize</DeserializeMethodName><SaveToFileMethodName>SaveToFile</SaveToFileMethodName><LoadFromFileMethodName>LoadFromFile</LoadFromFileMethodName><GenerateXMLAttributes>True</GenerateXMLAttributes><EnableEncoding>False</EnableEncoding><AutomaticProperties>False</AutomaticProperties><GenerateShouldSerialize>False</GenerateShouldSerialize><DisableDebug>False</DisableDebug><PropNameSpecified>Default</PropNameSpecified><Encoder>UTF8</Encoder><CustomUsings></CustomUsings><ExcludeIncludedTypes>False</ExcludeIncludedTypes><EnableInitializeFields>True</EnableInitializeFields>
 //  </auto-generated>
 // ------------------------------------------------------------------------------
-namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0 {
+namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_4_0 {
     using System;
     using System.Diagnostics;
     using System.Xml.Serialization;
@@ -16,7 +16,7 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0 {
     using System.Text;
     using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
     using OSGeo.MapGuide.ObjectModels.Common;
-    using OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0;
+    using OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0;
     
     /// <summary>
     /// The specification of a watermark.
@@ -80,7 +80,7 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0 {
         /// </summary>
         /// <returns>string XML value</returns>
         public virtual string Serialize() {
-            return OSGeo.MapGuide.MaestroAPI.Utility.NormalizedSerialize(Serializer, this);
+            return base.NormalizedSerialize(Serializer, this);
         }
         
         /// <summary>
@@ -216,7 +216,7 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0 {
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=true)]
-    public partial class WatermarkDefinitionType : System.ComponentModel.INotifyPropertyChanged {
+    public partial class WatermarkDefinitionType : BaseSerializable, System.ComponentModel.INotifyPropertyChanged {
         
         [EditorBrowsable(EditorBrowsableState.Never)]
         private WatermarkDefinitionTypeContent contentField;

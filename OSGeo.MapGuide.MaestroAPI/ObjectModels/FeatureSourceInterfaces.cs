@@ -565,7 +565,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         public static void AddSpatialContextOverride(this IFeatureSource fs, string name, string coordSys)
         {
             Check.NotNull(fs, "fs"); //NOXLATE
-            fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.SpatialContextType() { Name = name, CoordinateSystem = coordSys });
+            fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.SpatialContextType() { Name = name, CoordinateSystem = coordSys });
         }
 
         /// <summary>
@@ -588,7 +588,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         public static void AddRelateProperty(this IAttributeRelation rel, string primary, string secondary)
         {
             Check.NotNull(rel, "rel"); //NOXLATE
-            rel.AddRelateProperty(new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.RelatePropertyType() { FeatureClassProperty = primary, AttributeClassProperty = secondary });
+            rel.AddRelateProperty(new OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.RelatePropertyType() { FeatureClassProperty = primary, AttributeClassProperty = secondary });
         }
     }
 }

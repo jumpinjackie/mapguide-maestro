@@ -1,6 +1,6 @@
 ﻿#region Disclaimer / License
 
-// Copyright (C) 2011, Jackie Ng
+// Copyright (C) 2014, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 //
 // This library is free software; you can redistribute it and/or
@@ -21,19 +21,33 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Xml.Serialization;
 
-namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0
+namespace OSGeo.MapGuide.ObjectModels
 {
-    public class SymbolDefinitionValidator : BaseSymbolDefinitionValidator
+    public class BaseSerializable
     {
-        public override ResourceTypeDescriptor SupportedResourceAndVersion
+        protected virtual string NormalizedSerialize(XmlSerializer serializer, object obj)
         {
-            get { return new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition.ToString(), "2.4.0"); }
+            return Utility.NormalizedSerialize(serializer, obj);
+        }
+    }
+
+    public class BaseSerializableMapDefinition : BaseSerializable
+    {
+        protected string SerializeHTMLColor(Color color, bool bIncludeAlpha)
+        {
+            return Utility.SerializeHTMLColor(color, bIncludeAlpha);
+        }
+
+        protected Color ParseHTMLColor(string strColor)
+        {
+            return Utility.ParseHTMLColor(strColor);
         }
     }
 }

@@ -79,7 +79,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 new ResourceSerializer()
                 {
                     Serialize = (res) => { return res.SerializeToStream(); },
-                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0.ApplicationDefinitionType.Deserialize(xml); }
+                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0.ApplicationDefinitionType.Deserialize(xml); }
                 });
 
             //DrawingSource 1.0.0
@@ -88,7 +88,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 new ResourceSerializer()
                 {
                     Serialize = (res) => { return res.SerializeToStream(); },
-                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.DrawingSource_1_0_0.DrawingSource.Deserialize(xml); }
+                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.DrawingSource.v1_0_0.DrawingSource.Deserialize(xml); }
                 });
 
             //FeatureSource 1.0.0
@@ -97,7 +97,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 new ResourceSerializer()
                 {
                     Serialize = (res) => { return res.SerializeToStream(); },
-                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.FeatureSourceType.Deserialize(xml); }
+                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.FeatureSourceType.Deserialize(xml); }
                 });
 
             //LayerDefinition 1.0.0
@@ -106,7 +106,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 new ResourceSerializer()
                 {
                     Serialize = (res) => { return res.SerializeToStream(); },
-                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0.LayerDefinition.Deserialize(xml); }
+                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0.LayerDefinition.Deserialize(xml); }
                 });
 
             //LoadProcedure 1.0.0
@@ -115,7 +115,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 new ResourceSerializer()
                 {
                     Serialize = (res) => { return res.SerializeToStream(); },
-                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0.LoadProcedure.Deserialize(xml); }
+                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0.LoadProcedure.Deserialize(xml); }
                 });
 
             //MapDefinition 1.0.0
@@ -123,8 +123,8 @@ namespace OSGeo.MapGuide.MaestroAPI
                 ResourceTypeDescriptor.MapDefinition,
                 new ResourceSerializer()
                 {
-                    Serialize = (res) => { return OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0.MdfEntryPoint.Serialize(res); },
-                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0.MdfEntryPoint.Deserialize(xml); }
+                    Serialize = (res) => { return OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0.MdfEntryPoint.Serialize(res); },
+                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0.MdfEntryPoint.Deserialize(xml); }
                 });
 
             //PrintLayout 1.0.0
@@ -133,7 +133,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 new ResourceSerializer()
                 {
                     Serialize = (res) => { return res.SerializeToStream(); },
-                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0.PrintLayout.Deserialize(xml); }
+                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.PrintLayout.v1_0_0.PrintLayout.Deserialize(xml); }
                 });
 
             //SymbolDefinition 1.0.0
@@ -149,12 +149,12 @@ namespace OSGeo.MapGuide.MaestroAPI
                         doc.LoadXml(xml);
                         if (doc.DocumentElement.Name == "SimpleSymbolDefinition") //NOXLATE
                         {
-                            return OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.SimpleSymbolDefinition.Deserialize(xml);
+                            return OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.SimpleSymbolDefinition.Deserialize(xml);
                         }
                         else
                         {
                             if (doc.DocumentElement.Name == "CompoundSymbolDefinition") //NOXLATE
-                                return OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.CompoundSymbolDefinition.Deserialize(xml);
+                                return OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.CompoundSymbolDefinition.Deserialize(xml);
                             else //WTF?
                                 throw new SerializationException(Strings.ErrorCouldNotDetermineSymbolType);
                         }
@@ -167,7 +167,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 new ResourceSerializer()
                 {
                     Serialize = (res) => { return res.SerializeToStream(); },
-                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.SymbolLibrary_1_0_0.SymbolLibraryType.Deserialize(xml); }
+                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.SymbolLibrary.v1_0_0.SymbolLibraryType.Deserialize(xml); }
                 });
 
             //WebLayout 1.0.0
@@ -176,7 +176,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 new ResourceSerializer()
                 {
                     Serialize = (res) => { return res.SerializeToStream(); },
-                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0.WebLayoutType.Deserialize(xml); }
+                    Deserialize = (xml) => { return OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0.WebLayoutType.Deserialize(xml); }
                 });
         }
 

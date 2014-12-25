@@ -27,22 +27,22 @@ using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using System;
 using System.Runtime.CompilerServices;
-using Ldf110 = OSGeo.MapGuide.ObjectModels.LayerDefinition_1_1_0;
-using Ldf120 = OSGeo.MapGuide.ObjectModels.LayerDefinition_1_2_0;
-using Ldf130 = OSGeo.MapGuide.ObjectModels.LayerDefinition_1_3_0;
-using Ldf230 = OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0;
-using Ldf240 = OSGeo.MapGuide.ObjectModels.LayerDefinition_2_4_0;
-using Lp110 = OSGeo.MapGuide.ObjectModels.LoadProcedure_1_1_0;
-using Lp220 = OSGeo.MapGuide.ObjectModels.LoadProcedure_2_2_0;
-using Mdf230 = OSGeo.MapGuide.ObjectModels.MapDefinition_2_3_0;
-using Mdf240 = OSGeo.MapGuide.ObjectModels.MapDefinition_2_4_0;
-using Sym110 = OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0;
-using Sym240 = OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0;
-using Wdf230 = OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0;
-using Wdf240 = OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_4_0;
-using WL110 = OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0;
-using WL240 = OSGeo.MapGuide.ObjectModels.WebLayout_2_4_0;
-using WL260 = OSGeo.MapGuide.ObjectModels.WebLayout_2_6_0;
+using Ldf110 = OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_1_0;
+using Ldf120 = OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_2_0;
+using Ldf130 = OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_3_0;
+using Ldf230 = OSGeo.MapGuide.ObjectModels.LayerDefinition.v2_3_0;
+using Ldf240 = OSGeo.MapGuide.ObjectModels.LayerDefinition.v2_4_0;
+using Lp110 = OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_1_0;
+using Lp220 = OSGeo.MapGuide.ObjectModels.LoadProcedure.v2_2_0;
+using Mdf230 = OSGeo.MapGuide.ObjectModels.MapDefinition.v2_3_0;
+using Mdf240 = OSGeo.MapGuide.ObjectModels.MapDefinition.v2_4_0;
+using Sym110 = OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0;
+using Sym240 = OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0;
+using Wdf230 = OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_3_0;
+using Wdf240 = OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_4_0;
+using WL110 = OSGeo.MapGuide.ObjectModels.WebLayout.v1_1_0;
+using WL240 = OSGeo.MapGuide.ObjectModels.WebLayout.v2_4_0;
+using WL260 = OSGeo.MapGuide.ObjectModels.WebLayout.v2_6_0;
 
 namespace OSGeo.MapGuide.ExtendedObjectModels
 {

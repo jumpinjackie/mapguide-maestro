@@ -68,7 +68,7 @@ namespace MaestroAPITests
             var app2 = app.Clone();
             Assert.AreNotSame(app, app2);
 
-            var fs = new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.FeatureSourceType();
+            var fs = new OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.FeatureSourceType();
             var fs2 = fs.Clone();
             Assert.AreNotSame(fs, fs2);
 
@@ -84,7 +84,7 @@ namespace MaestroAPITests
             var wl2 = wl.Clone();
             Assert.AreNotSame(wl, wl2);
 
-            var sl = new OSGeo.MapGuide.ObjectModels.SymbolLibrary_1_0_0.SymbolLibraryType();
+            var sl = new OSGeo.MapGuide.ObjectModels.SymbolLibrary.v1_0_0.SymbolLibraryType();
             var sl2 = sl.Clone();
             Assert.AreNotSame(sl, sl2);
 

@@ -473,9 +473,9 @@ namespace MaestroAPITests
             //SDF3 conversion, generalization and 2 missing files
             Assert.AreEqual(4, set.GetAllIssues().Length);
 
-            lp = new OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0.LoadProcedure()
+            lp = new OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0.LoadProcedure()
             {
-                Item = new OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0.DwgLoadProcedureType()
+                Item = new OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0.DwgLoadProcedureType()
             };
             lp.ResourceID = id;
             set = new ValidationResultSet();
@@ -485,9 +485,9 @@ namespace MaestroAPITests
             //Not supported
             Assert.AreEqual(1, set.GetAllIssues().Length);
 
-            lp = new OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0.LoadProcedure()
+            lp = new OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0.LoadProcedure()
             {
-                Item = new OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0.RasterLoadProcedureType()
+                Item = new OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0.RasterLoadProcedureType()
             };
             lp.ResourceID = id;
             set = new ValidationResultSet();

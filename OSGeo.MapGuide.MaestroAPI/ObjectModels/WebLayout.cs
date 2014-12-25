@@ -32,14 +32,14 @@ using System.Xml.Serialization;
 #pragma warning disable 1591, 0114, 0108
 
 #if WL260
-namespace OSGeo.MapGuide.ObjectModels.WebLayout_2_6_0
+namespace OSGeo.MapGuide.ObjectModels.WebLayout.v2_6_0
 #elif WL240
-namespace OSGeo.MapGuide.ObjectModels.WebLayout_2_4_0
+namespace OSGeo.MapGuide.ObjectModels.WebLayout.v2_4_0
 #elif WL110
-namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0
+namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_1_0
 #else
 
-namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0
+namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
 #endif
 {
     public static class WebLayoutEntryPoint

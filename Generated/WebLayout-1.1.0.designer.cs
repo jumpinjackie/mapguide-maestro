@@ -6,11 +6,11 @@
 //  </auto-generated>
 // ------------------------------------------------------------------------------
 #if WL260
-namespace OSGeo.MapGuide.ObjectModels.WebLayout_2_6_0 {
+namespace OSGeo.MapGuide.ObjectModels.WebLayout.v2_6_0 {
 #elif WL240
-namespace OSGeo.MapGuide.ObjectModels.WebLayout_2_4_0 {
+namespace OSGeo.MapGuide.ObjectModels.WebLayout.v2_4_0 {
 #else
-namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0 {
+namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_1_0 {
 #endif
     using System;
     using System.Diagnostics;
@@ -26,7 +26,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlRootAttribute("WebLayout", Namespace="", IsNullable=false)]
-    public partial class WebLayoutType : System.ComponentModel.INotifyPropertyChanged {
+    public partial class WebLayoutType : BaseSerializable, System.ComponentModel.INotifyPropertyChanged {
         
         [EditorBrowsable(EditorBrowsableState.Never)]
         private string titleField;
@@ -390,7 +390,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout_1_1_0 {
         /// </summary>
         /// <returns>string XML value</returns>
         public virtual string Serialize() {
-            return OSGeo.MapGuide.MaestroAPI.Utility.NormalizedSerialize(Serializer, this);
+            return base.NormalizedSerialize(Serializer, this);
         }
         
         /// <summary>

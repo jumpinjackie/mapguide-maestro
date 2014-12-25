@@ -5,7 +5,7 @@
 //    <NameSpace>OSGeo.MapGuide.ObjectModels.MapDefinition</NameSpace><Collection>BindingList</Collection><codeType>CSharp</codeType><EnableDataBinding>True</EnableDataBinding><EnableLasyLoading>False</EnableLasyLoading><HidePrivateFieldInIDE>True</HidePrivateFieldInIDE><EnableSummaryComment>True</EnableSummaryComment><IncludeSerializeMethod>True</IncludeSerializeMethod><UseBaseClass>False</UseBaseClass><GenerateCloneMethod>True</GenerateCloneMethod><GenerateDataContracts>False</GenerateDataContracts><CodeBaseTag>Net20</CodeBaseTag><SerializeMethodName>Serialize</SerializeMethodName><DeserializeMethodName>Deserialize</DeserializeMethodName><SaveToFileMethodName>SaveToFile</SaveToFileMethodName><LoadFromFileMethodName>LoadFromFile</LoadFromFileMethodName><GenerateXMLAttributes>True</GenerateXMLAttributes><AutomaticProperties>False</AutomaticProperties><DisableDebug>False</DisableDebug><CustomUsings></CustomUsings><ExcludeIncludedTypes>False</ExcludeIncludedTypes><EnableInitializeFields>False</EnableInitializeFields>
 //  </auto-generated>
 // ------------------------------------------------------------------------------
-namespace OSGeo.MapGuide.ObjectModels.MapDefinition_2_3_0
+namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v2_3_0
 {
     using System;
     using System.Diagnostics;
@@ -14,10 +14,9 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_2_3_0
     using System.Xml.Schema;
     using System.ComponentModel;
     using System.IO;
-    using OSGeo.MapGuide.MaestroAPI;
     using System.Drawing;
     using OSGeo.MapGuide.ObjectModels.MapDefinition;
-    using OSGeo.MapGuide.ObjectModels.WatermarkDefinition_2_3_0;
+    using OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_3_0;
     
     /// <summary>
     /// A MapDefinition defines the collection of layers, groupings of layers, and base map
@@ -75,7 +74,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_2_3_0
         /// </summary>
         /// <returns>string XML value</returns>
         public virtual string Serialize() {
-            return OSGeo.MapGuide.MaestroAPI.Utility.NormalizedSerialize(Serializer, this);
+            return base.NormalizedSerialize(Serializer, this);
         }
         
         /// <summary>
@@ -212,7 +211,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_2_3_0
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=true)]
-    public partial class MapDefinitionType : System.ComponentModel.INotifyPropertyChanged {
+    public partial class MapDefinitionType : BaseSerializableMapDefinition, System.ComponentModel.INotifyPropertyChanged {
         
         [EditorBrowsable(EditorBrowsableState.Never)]
         private string nameField;
@@ -300,10 +299,10 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition_2_3_0
         [System.Xml.Serialization.XmlElementAttribute("BackgroundColor")]
         public string BackgroundColorAsHtml {
             get {
-                return Utility.SerializeHTMLColor(this.backgroundColorField, true);
+                return base.SerializeHTMLColor(this.backgroundColorField, true);
             }
             set {
-                var c = Utility.ParseHTMLColor(value);
+                var c = base.ParseHTMLColor(value);
                 if ((this.backgroundColorField != null)) {
                     if ((backgroundColorField.Equals(c) != true)) {
                         this.backgroundColorField = c;

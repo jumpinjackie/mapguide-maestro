@@ -366,7 +366,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                     else if (spatialContexts.SpatialContext.Count == 0) //Case 2: No Spatial contexts. Declare one using SupplementalContextInfo
                                     {
                                         //Register the default CS from the load procedure
-                                        fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.SpatialContextType()
+                                        fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.SpatialContextType()
                                         {
                                             Name = "Default", //NOXLATE
                                             CoordinateSystem = shpl.CoordinateSystem
@@ -383,7 +383,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                         if (string.IsNullOrEmpty(sc.CoordinateSystemWkt))
                                         {
                                             //Register the default CS from the load procedure
-                                            fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.SpatialContextType()
+                                            fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.SpatialContextType()
                                             {
                                                 Name = sc.Name,
                                                 CoordinateSystem = shpl.CoordinateSystem
@@ -645,7 +645,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                         if (spatialContexts.SpatialContext.Count == 0)
                                         {
                                             //Register the default CS from the load procedure
-                                            fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.SpatialContextType()
+                                            fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.SpatialContextType()
                                             {
                                                 Name = "Default", //NOXLATE
                                                 CoordinateSystem = proc.CoordinateSystem
@@ -662,7 +662,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                             if (string.IsNullOrEmpty(sc.CoordinateSystemWkt))
                                             {
                                                 //Register the default CS from the load procedure
-                                                fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.SpatialContextType()
+                                                fs.AddSpatialContextOverride(new OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.SpatialContextType()
                                                 {
                                                     Name = sc.Name,
                                                     CoordinateSystem = proc.CoordinateSystem

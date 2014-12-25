@@ -6,12 +6,12 @@ using System.IO;
 #pragma warning disable 1591, 0114, 0108
 
 #if LP110
-namespace OSGeo.MapGuide.ObjectModels.LoadProcedure_1_1_0
+namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_1_0
 #elif LP220
-namespace OSGeo.MapGuide.ObjectModels.LoadProcedure_2_2_0
+namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v2_2_0
 #else
 
-namespace OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0
+namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0
 #endif
 {
     /// <summary>

@@ -31,20 +31,21 @@ using System.Xml.Serialization;
 #pragma warning disable 1591, 0114, 0108
 
 #if LDF_110
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_1_0
+
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_1_0
 #elif LDF_120
 
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_2_0
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_2_0
 #elif LDF_130
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_3_0
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_3_0
 #elif LDF_230
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_3_0
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v2_3_0
 #elif LDF_240
 
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_2_4_0
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v2_4_0
 #else
 
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
 #endif
 {
     using OSGeo.MapGuide.ObjectModels.LayerDefinition;
@@ -2131,11 +2132,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             return new SymbolInstance()
             {
 #if LDF_110
-                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.SimpleSymbolDefinition)symDef,
+                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.SimpleSymbolDefinition)symDef,
 #elif LDF_120 || LDF_130 || LDF_230
-                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.SimpleSymbolDefinition)symDef,
+                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0.SimpleSymbolDefinition)symDef,
 #else
-                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0.SimpleSymbolDefinition)symDef,
+                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0.SimpleSymbolDefinition)symDef,
 #endif
                 ParameterOverrides = new ParameterOverrides()
                 {
@@ -2149,11 +2150,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             return new SymbolInstance()
             {
 #if LDF_110
-                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.CompoundSymbolDefinition)compDef,
+                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.CompoundSymbolDefinition)compDef,
 #elif LDF_120 || LDF_130 || LDF_230
-                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.CompoundSymbolDefinition)compDef,
+                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0.CompoundSymbolDefinition)compDef,
 #else
-                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0.CompoundSymbolDefinition)compDef,
+                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0.CompoundSymbolDefinition)compDef,
 #endif
                 ParameterOverrides = new ParameterOverrides()
                 {
@@ -2182,14 +2183,14 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
             {
                 var libId = this.Item as string;
 #if LDF_110
-                var simpSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.SimpleSymbolDefinition;
-                var compSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.CompoundSymbolDefinition;
+                var simpSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.SimpleSymbolDefinition;
+                var compSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.CompoundSymbolDefinition;
 #elif LDF_120 || LDF_130 || LDF_230
-                var simpSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.SimpleSymbolDefinition;
-                var compSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.CompoundSymbolDefinition;
+                var simpSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0.SimpleSymbolDefinition;
+                var compSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0.CompoundSymbolDefinition;
 #else
-                var simpSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0.SimpleSymbolDefinition;
-                var compSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0.CompoundSymbolDefinition;
+                var simpSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0.SimpleSymbolDefinition;
+                var compSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0.CompoundSymbolDefinition;
 #endif
                 if (libId != null)
                     return new SymbolInstanceLibrary() { ResourceId = libId };
@@ -2211,19 +2212,19 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0
                 {
 #if LDF_110
                     if (ir.SymbolDefinition.Type == SymbolDefinitionType.Simple)
-                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.SimpleSymbolDefinition)ir.SymbolDefinition;
+                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.SimpleSymbolDefinition)ir.SymbolDefinition;
                     else if (ir.SymbolDefinition.Type == SymbolDefinitionType.Compound)
-                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.CompoundSymbolDefinition)ir.SymbolDefinition;
+                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.CompoundSymbolDefinition)ir.SymbolDefinition;
 #elif LDF_120 || LDF_130 || LDF_230
                     if (ir.SymbolDefinition.Type == SymbolDefinitionType.Simple)
-                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.SimpleSymbolDefinition)ir.SymbolDefinition;
+                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0.SimpleSymbolDefinition)ir.SymbolDefinition;
                     else if (ir.SymbolDefinition.Type == SymbolDefinitionType.Compound)
-                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0.CompoundSymbolDefinition)ir.SymbolDefinition;
+                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0.CompoundSymbolDefinition)ir.SymbolDefinition;
 #else
                     if (ir.SymbolDefinition.Type == SymbolDefinitionType.Simple)
-                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0.SimpleSymbolDefinition)ir.SymbolDefinition;
+                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0.SimpleSymbolDefinition)ir.SymbolDefinition;
                     else if (ir.SymbolDefinition.Type == SymbolDefinitionType.Compound)
-                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0.CompoundSymbolDefinition)ir.SymbolDefinition;
+                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0.CompoundSymbolDefinition)ir.SymbolDefinition;
 #endif
                 }
                 this.Item = null;

@@ -32,7 +32,7 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
-using OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0;
+using OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.RuntimeMap;

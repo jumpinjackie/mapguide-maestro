@@ -5,7 +5,7 @@
 //    <NameSpace>OSGeo.MapGuide.ObjectModels.Common</NameSpace><Collection>BindingList</Collection><codeType>CSharp</codeType><EnableDataBinding>True</EnableDataBinding><EnableLasyLoading>False</EnableLasyLoading><HidePrivateFieldInIDE>True</HidePrivateFieldInIDE><EnableSummaryComment>True</EnableSummaryComment><IncludeSerializeMethod>True</IncludeSerializeMethod><UseBaseClass>False</UseBaseClass><GenerateCloneMethod>True</GenerateCloneMethod><GenerateDataContracts>False</GenerateDataContracts><CodeBaseTag>Net20</CodeBaseTag><SerializeMethodName>Serialize</SerializeMethodName><DeserializeMethodName>Deserialize</DeserializeMethodName><SaveToFileMethodName>SaveToFile</SaveToFileMethodName><LoadFromFileMethodName>LoadFromFile</LoadFromFileMethodName><GenerateXMLAttributes>True</GenerateXMLAttributes><AutomaticProperties>False</AutomaticProperties><DisableDebug>False</DisableDebug><CustomUsings></CustomUsings><ExcludeIncludedTypes>False</ExcludeIncludedTypes><EnableInitializeFields>False</EnableInitializeFields>
 //  </auto-generated>
 // ------------------------------------------------------------------------------
-namespace OSGeo.MapGuide.ObjectModels.DrawingSource_1_0_0
+namespace OSGeo.MapGuide.ObjectModels.DrawingSource.v1_0_0
 {
     using System;
     using System.Diagnostics;
@@ -26,7 +26,8 @@ namespace OSGeo.MapGuide.ObjectModels.DrawingSource_1_0_0
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
     [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
-    public partial class DrawingSource : System.ComponentModel.INotifyPropertyChanged {
+    public partial class DrawingSource : BaseSerializable, System.ComponentModel.INotifyPropertyChanged
+    {
         
         [EditorBrowsable(EditorBrowsableState.Never)]
         private string sourceNameField;
@@ -124,7 +125,7 @@ namespace OSGeo.MapGuide.ObjectModels.DrawingSource_1_0_0
         /// </summary>
         /// <returns>string XML value</returns>
         public virtual string Serialize() {
-            return OSGeo.MapGuide.MaestroAPI.Utility.NormalizedSerialize(Serializer, this);
+            return base.NormalizedSerialize(Serializer, this);
         }
         
         /// <summary>

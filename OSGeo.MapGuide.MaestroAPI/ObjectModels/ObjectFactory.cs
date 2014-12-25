@@ -23,7 +23,7 @@
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
-using OSGeo.MapGuide.ObjectModels.ApplicationDefinition_1_0_0;
+using OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.DrawingSource;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
@@ -114,33 +114,33 @@ namespace OSGeo.MapGuide.ObjectModels
 
             _layerFactories.Add(
                 new Version(1, 0, 0),
-                new LayerCreatorFunc(OSGeo.MapGuide.ObjectModels.LayerDefinition_1_0_0.LdfEntryPoint.CreateDefault));
+                new LayerCreatorFunc(OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0.LdfEntryPoint.CreateDefault));
 
             _loadProcFactories.Add(
                 LoadType.Sdf,
-                new LoadProcCreatorFunc(OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0.LoadProcEntryPoint.CreateDefaultSdf));
+                new LoadProcCreatorFunc(OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0.LoadProcEntryPoint.CreateDefaultSdf));
             _loadProcFactories.Add(
                 LoadType.Shp,
-                new LoadProcCreatorFunc(OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0.LoadProcEntryPoint.CreateDefaultShp));
+                new LoadProcCreatorFunc(OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0.LoadProcEntryPoint.CreateDefaultShp));
             _loadProcFactories.Add(
                 LoadType.Dwf,
-                new LoadProcCreatorFunc(OSGeo.MapGuide.ObjectModels.LoadProcedure_1_0_0.LoadProcEntryPoint.CreateDefaultDwf));
+                new LoadProcCreatorFunc(OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0.LoadProcEntryPoint.CreateDefaultDwf));
 
             _wlFactories.Add(
                 new Version(1, 0, 0),
-                new WebLayoutCreatorFunc(OSGeo.MapGuide.ObjectModels.WebLayout_1_0_0.WebLayoutEntryPoint.CreateDefault));
+                new WebLayoutCreatorFunc(OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0.WebLayoutEntryPoint.CreateDefault));
 
             _compoundSymbolFactories.Add(
                 new Version(1, 0, 0),
-                new CompoundSymbolDefCreatorFunc(OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.CompoundSymbolDefinition.CreateDefault));
+                new CompoundSymbolDefCreatorFunc(OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.CompoundSymbolDefinition.CreateDefault));
 
             _simpleSymbolFactories.Add(
                 new Version(1, 0, 0),
-                new SimpleSymbolDefCreatorFunc(OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0.SimpleSymbolDefinition.CreateDefault));
+                new SimpleSymbolDefCreatorFunc(OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.SimpleSymbolDefinition.CreateDefault));
 
             _mapDefinitionFactories.Add(
                 new Version(1, 0, 0),
-                new MapDefinitionCreatorFunc(OSGeo.MapGuide.ObjectModels.MapDefinition_1_0_0.MdfEntryPoint.CreateDefault));
+                new MapDefinitionCreatorFunc(OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0.MdfEntryPoint.CreateDefault));
         }
 
         /// <summary>
@@ -307,12 +307,12 @@ namespace OSGeo.MapGuide.ObjectModels
         {
             Check.NotNull(owner, "owner"); //NOXLATE
 
-            return new OSGeo.MapGuide.ObjectModels.DrawingSource_1_0_0.DrawingSource()
+            return new OSGeo.MapGuide.ObjectModels.DrawingSource.v1_0_0.DrawingSource()
             {
                 CurrentConnection = owner,
                 SourceName = string.Empty,
                 CoordinateSpace = string.Empty,
-                Sheet = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.DrawingSource_1_0_0.DrawingSourceSheet>()
+                Sheet = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.DrawingSource.v1_0_0.DrawingSourceSheet>()
             };
         }
 
@@ -326,11 +326,11 @@ namespace OSGeo.MapGuide.ObjectModels
         {
             Check.NotNull(owner, "owner"); //NOXLATE
 
-            return new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.FeatureSourceType()
+            return new OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.FeatureSourceType()
             {
                 CurrentConnection = owner,
                 Provider = provider,
-                Parameter = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.NameValuePairType>()
+                Parameter = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.NameValuePairType>()
             };
         }
 
@@ -1178,12 +1178,12 @@ namespace OSGeo.MapGuide.ObjectModels
         {
             Check.NotNull(owner, "owner"); //NOXLATE
 
-            return new OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0.PrintLayout()
+            return new OSGeo.MapGuide.ObjectModels.PrintLayout.v1_0_0.PrintLayout()
             {
                 CurrentConnection = owner,
-                CustomLogos = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0.PrintLayoutLogo>(),
-                CustomText = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0.PrintLayoutText>(),
-                LayoutProperties = new OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0.PrintLayoutLayoutProperties()
+                CustomLogos = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.PrintLayout.v1_0_0.PrintLayoutLogo>(),
+                CustomText = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.PrintLayout.v1_0_0.PrintLayoutText>(),
+                LayoutProperties = new OSGeo.MapGuide.ObjectModels.PrintLayout.v1_0_0.PrintLayoutLayoutProperties()
                 {
                     ShowCustomLogos = false,
                     ShowCustomLogosSpecified = true,
@@ -1202,9 +1202,9 @@ namespace OSGeo.MapGuide.ObjectModels
                     ShowURL = false,
                     ShowURLSpecified = true
                 },
-                PageProperties = new OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0.PrintLayoutPageProperties()
+                PageProperties = new OSGeo.MapGuide.ObjectModels.PrintLayout.v1_0_0.PrintLayoutPageProperties()
                 {
-                    BackgroundColor = new OSGeo.MapGuide.ObjectModels.PrintLayout_1_0_0.PrintLayoutPagePropertiesBackgroundColor()
+                    BackgroundColor = new OSGeo.MapGuide.ObjectModels.PrintLayout.v1_0_0.PrintLayoutPagePropertiesBackgroundColor()
                     {
                     }
                 },
@@ -1332,10 +1332,10 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static IFeatureSourceExtension CreateFeatureSourceExtension()
         {
-            return new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.FeatureSourceTypeExtension()
+            return new OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.FeatureSourceTypeExtension()
             {
-                CalculatedProperty = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.CalculatedPropertyType>(),
-                AttributeRelate = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.AttributeRelateType>()
+                CalculatedProperty = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.CalculatedPropertyType>(),
+                AttributeRelate = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.AttributeRelateType>()
             };
         }
 
@@ -1345,7 +1345,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static ICalculatedProperty CreateCalculatedProperty()
         {
-            return new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.CalculatedPropertyType();
+            return new OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.CalculatedPropertyType();
         }
 
         /// <summary>
@@ -1354,9 +1354,9 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>Properties.Resources.
         public static IAttributeRelation CreateAttributeRelation()
         {
-            IAttributeRelation rel = new OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.AttributeRelateType()
+            IAttributeRelation rel = new OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.AttributeRelateType()
             {
-                RelateProperty = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.FeatureSource_1_0_0.RelatePropertyType>(),
+                RelateProperty = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.RelatePropertyType>(),
             };
             rel.RelateType = RelateTypeEnum.LeftOuter;
             rel.ForceOneToOne = false;

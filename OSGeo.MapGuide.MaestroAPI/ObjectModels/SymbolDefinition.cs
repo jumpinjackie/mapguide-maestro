@@ -33,12 +33,12 @@ using System.Xml.Serialization;
 #pragma warning disable 1591, 0114, 0108
 
 #if SYM_DEF_240
-namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_2_4_0
+namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0
 #elif SYM_DEF_110
-namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_1_0
+namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0
 #else
 
-namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition_1_0_0
+namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0
 #endif
 {
     abstract partial class SymbolDefinitionBase : ISymbolDefinitionBase

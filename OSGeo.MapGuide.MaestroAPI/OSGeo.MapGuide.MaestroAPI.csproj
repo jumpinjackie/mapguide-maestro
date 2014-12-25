@@ -260,6 +260,7 @@
     <Compile Include="Mapping\NsDoc.cs" />
     <Compile Include="CsHelper.cs" />
     <Compile Include="NsDoc.cs" />
+    <Compile Include="ObjectModels\BaseSerializable.cs" />
     <Compile Include="ObjectModels\CommonTypes.cs" />
     <Compile Include="ObjectModels\FdoCapabilities.cs" />
     <Compile Include="ObjectModels\IFdoSpatialContext.cs" />
