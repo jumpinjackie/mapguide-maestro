@@ -60,13 +60,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\Maestro.Login.dll</HintPath>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.ExtendedObjectModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\bin\OSGeo.MapGuide.ExtendedObjectModels.dll</HintPath>
-    </Reference>
     <Reference Include="OSGeo.MapGuide.MaestroAPI, Version=3.0.0.5728, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\OSGeo.MapGuide.MaestroAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.MapGuide.ObjectModels">
+      <HintPath>..\..\bin\OSGeo.MapGuide.ObjectModels.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

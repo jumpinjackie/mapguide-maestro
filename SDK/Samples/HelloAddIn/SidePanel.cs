@@ -16,6 +16,7 @@ using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels;
 
 namespace HelloAddIn
 {
@@ -122,7 +123,7 @@ namespace HelloAddIn
             }
 
             worker.ReportProgress(0);
-            var context = new ResourceValidationContext(conn.ResourceService, conn.FeatureService);
+            var context = new ResourceValidationContext(conn);
 
             var set = new ValidationResultSet();
             int i = 0;

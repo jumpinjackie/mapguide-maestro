@@ -8,9 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.ExtendedObjectModels;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using Maestro.Editors.Generic;
+using OSGeo.MapGuide.ObjectModels;
 
 namespace MapViewer
 {
@@ -25,11 +25,6 @@ namespace MapViewer
 
         protected override void OnLoad(EventArgs e)
         {
-            //This call is a one-time only call that will instantly register all known resource 
-            //version types and validators. This way you never have to manually reference a 
-            //ObjectModels assembly of the desired resource type you want to work with
-            ModelSetup.Initialize();
-
             //Anytime we work with the Maestro API, we require an IServerConnection
             //reference. The Maestro.Login.LoginDialog provides a UI to obtain such a 
             //reference.

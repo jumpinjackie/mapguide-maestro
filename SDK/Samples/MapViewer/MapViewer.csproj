@@ -44,11 +44,11 @@
     <Reference Include="Maestro.MapViewer">
       <HintPath>..\..\bin\Maestro.MapViewer.dll</HintPath>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.ExtendedObjectModels">
-      <HintPath>..\..\bin\OSGeo.MapGuide.ExtendedObjectModels.dll</HintPath>
-    </Reference>
     <Reference Include="OSGeo.MapGuide.MaestroAPI">
       <HintPath>..\..\bin\OSGeo.MapGuide.MaestroAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.MapGuide.ObjectModels">
+      <HintPath>..\..\bin\OSGeo.MapGuide.ObjectModels.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
