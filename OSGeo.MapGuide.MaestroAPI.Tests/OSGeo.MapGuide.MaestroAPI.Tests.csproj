@@ -57,6 +57,8 @@
     </Compile>
     <Compile Include="CapabilityTests.cs" />
     <Compile Include="ConfigurationDocumentTests.cs" />
+    <Compile Include="CrossConnection\ResourceMigratorTests.cs" />
+    <Compile Include="CrossConnection\ResourceRebaserTests.cs" />
     <Compile Include="FeatureReaderTests.cs" />
     <Compile Include="MiscTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

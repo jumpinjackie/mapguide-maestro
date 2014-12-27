@@ -79,8 +79,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <param name="target">The target.</param>
         public ResourceMigrator(IServerConnection source, IServerConnection target)
         {
-            Check.NotNull(source, "source"); //NOXLATE
-            Check.NotNull(target, "target"); //NOXLATE
+            Check.ArgumentNotNull(source, "source"); //NOXLATE
+            Check.ArgumentNotNull(target, "target"); //NOXLATE
             _source = source;
             _target = target;
             _converter = new ResourceObjectConverter();
@@ -217,8 +217,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
             {
                 string targetId = folderId + ResourceIdentifier.GetName(resId) + "." + ResourceIdentifier.GetResourceTypeAsString(resId); //NOXLATE
                 string message = string.Empty;
-                IResource res = _source.ResourceService.GetResource(resId);
-
+                
                 //Skip if target exists and overwrite is not specified
                 if (!overwrite && _target.ResourceService.ResourceExists(targetId))
                 {
@@ -227,6 +226,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                 }
                 else
                 {
+                    IResource res = _source.ResourceService.GetResource(resId);
                     //Check if downgrading is required
                     var maxVer = targetCaps.GetMaxSupportedResourceVersion(res.ResourceType);
                     if (res.ResourceVersion > maxVer)
@@ -300,7 +300,6 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
             {
                 string targetId = folderId + ResourceIdentifier.GetName(resId) + "." + ResourceIdentifier.GetResourceTypeAsString(resId); //NOXLATE
                 string message = string.Empty;
-                IResource res = _source.ResourceService.GetResource(resId);
 
                 //Skip if target exists and overwrite is not specified
                 if (!overwrite && _target.ResourceService.ResourceExists(targetId))
@@ -310,6 +309,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                 }
                 else
                 {
+                    IResource res = _source.ResourceService.GetResource(resId);
                     //Check if downgrading is required
                     var maxVer = targetCaps.GetMaxSupportedResourceVersion(res.ResourceType);
                     if (res.ResourceVersion > maxVer)

@@ -78,6 +78,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <param name="res">The res.</param>
         public ResourceRebaser(IResource res)
         {
+            Check.ArgumentNotNull(res, "res");
             _res = res;
         }
 
