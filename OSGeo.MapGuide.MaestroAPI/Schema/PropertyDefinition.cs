@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 
@@ -218,14 +219,37 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// </summary>
         /// <param name="doc"></param>
         /// <param name="currentNode"></param>
-        public abstract void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode);
+        protected abstract void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode);
 
         /// <summary>
         /// Set the current element's content from the current XML node
         /// </summary>
         /// <param name="node"></param>
         /// <param name="mgr"></param>
-        public abstract void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr);
+        protected abstract void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr);
+
+        /// <summary>
+        /// Set the current element's content from the current XML node
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="mgr"></param>
+        void IFdoSerializable.ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
+        {
+            Check.ArgumentNotNull(node, "node"); //NOXLATE
+            this.ReadXml(node, mgr);
+        }
+
+        /// <summary>
+        /// Writes the current element's content
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <param name="currentNode"></param>
+        void IFdoSerializable.WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
+        {
+            Check.ArgumentNotNull(doc, "doc"); //NOXLATE
+            Check.ArgumentNotNull(currentNode, "currentNode"); //NOXLATE
+            this.WriteXml(doc, currentNode);
+        }
 
         /// <summary>
         /// Parses the specified XML node into a Property Definition

@@ -1,6 +1,6 @@
 ﻿#region Disclaimer / License
 
-// Copyright (C) 2010, Jackie Ng
+// Copyright (C) 2014, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 //
 // This library is free software; you can redistribute it and/or
@@ -19,24 +19,114 @@
 //
 
 #endregion Disclaimer / License
-
 using NUnit.Framework;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.ObjectModels.Common;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Text;
 
-namespace MaestroAPITests
+namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
     [TestFixture]
-    public class ConfigurationTests
+    public class ConfigurationDocumentTests
     {
-        [TestFixtureSetUp]
-        public void Setup()
+        //These tests are to verify that we can read FDO XML configuration and schema documents without problems
+
+        [Test]
+        public void TestMySqlSchema()
         {
-            if (TestControl.IgnoreConfigurationTests)
-                Assert.Ignore("Skipping ConfigurationTests because TestControl.IgnoreConfigurationTests = true");
+            var fds = new FeatureSourceDescription(File.OpenRead("UserTestData\\gen_default1_MySql_master.xml"));
+            Assert.AreEqual(1, fds.Schemas.Length);
+
+            var fs = fds.GetSchema("AutoGen");
+            Assert.IsNotNull(fs);
+
+            Assert.AreEqual(12, fs.Classes.Count);
+
+            var c1 = fds.GetClass("AutoGen:rtable1");
+            var c2 = fds.GetClass("AutoGen:rtable2");
+            var c3 = fds.GetClass("AutoGen:rtable5");
+            var c4 = fds.GetClass("AutoGen:rtable6");
+            var c5 = fds.GetClass("AutoGen:rtable7");
+            var c6 = fds.GetClass("AutoGen:table1");
+            var c7 = fds.GetClass("AutoGen:table3");
+            var c8 = fds.GetClass("AutoGen:table4");
+            var c9 = fds.GetClass("AutoGen:table5");
+            var c10 = fds.GetClass("AutoGen:table6");
+            var c11 = fds.GetClass("AutoGen:table7");
+            var c12 = fds.GetClass("AutoGen:view1");
+
+            Assert.NotNull(c1);
+            Assert.NotNull(c2);
+            Assert.NotNull(c3);
+            Assert.NotNull(c4);
+            Assert.NotNull(c5);
+            Assert.NotNull(c6);
+            Assert.NotNull(c7);
+            Assert.NotNull(c8);
+            Assert.NotNull(c9);
+            Assert.NotNull(c10);
+            Assert.NotNull(c11);
+            Assert.NotNull(c12);
+
+            Assert.AreEqual(1, c1.IdentityProperties.Count);
+            Assert.AreEqual(1, c2.IdentityProperties.Count);
+            Assert.AreEqual(1, c3.IdentityProperties.Count);
+            Assert.AreEqual(1, c4.IdentityProperties.Count);
+            Assert.AreEqual(1, c5.IdentityProperties.Count);
+            Assert.AreEqual(1, c6.IdentityProperties.Count);
+            Assert.AreEqual(2, c7.IdentityProperties.Count);
+            Assert.AreEqual(1, c8.IdentityProperties.Count);
+            Assert.AreEqual(1, c9.IdentityProperties.Count);
+            Assert.AreEqual(2, c10.IdentityProperties.Count);
+            Assert.AreEqual(1, c11.IdentityProperties.Count);
+            Assert.AreEqual(0, c12.IdentityProperties.Count);
+
+            Assert.AreEqual(c1.Properties.Count, 3);
+            Assert.AreEqual(c2.Properties.Count, 5);
+            Assert.AreEqual(c3.Properties.Count, 3);
+            Assert.AreEqual(c4.Properties.Count, 4);
+            Assert.AreEqual(c5.Properties.Count, 3);
+            Assert.AreEqual(c6.Properties.Count, 47);
+            Assert.AreEqual(c7.Properties.Count, 3);
+            Assert.AreEqual(c8.Properties.Count, 4);
+            Assert.AreEqual(c9.Properties.Count, 2);
+            Assert.AreEqual(c10.Properties.Count, 3);
+            Assert.AreEqual(c11.Properties.Count, 2);
+            Assert.AreEqual(c12.Properties.Count, 3);
+
+            Assert.AreEqual(c1, fds.GetClass("AutoGen", "rtable1"));
+            Assert.AreEqual(c2, fds.GetClass("AutoGen", "rtable2"));
+            Assert.AreEqual(c3, fds.GetClass("AutoGen", "rtable5"));
+            Assert.AreEqual(c4, fds.GetClass("AutoGen", "rtable6"));
+            Assert.AreEqual(c5, fds.GetClass("AutoGen", "rtable7"));
+            Assert.AreEqual(c6, fds.GetClass("AutoGen", "table1"));
+            Assert.AreEqual(c7, fds.GetClass("AutoGen", "table3"));
+            Assert.AreEqual(c8, fds.GetClass("AutoGen", "table4"));
+            Assert.AreEqual(c9, fds.GetClass("AutoGen", "table5"));
+            Assert.AreEqual(c10, fds.GetClass("AutoGen", "table6"));
+            Assert.AreEqual(c11, fds.GetClass("AutoGen", "table7"));
+            Assert.AreEqual(c12, fds.GetClass("AutoGen", "view1"));
+
+            Assert.IsTrue(string.IsNullOrEmpty(c1.DefaultGeometryPropertyName));
+            Assert.IsTrue(string.IsNullOrEmpty(c2.DefaultGeometryPropertyName));
+            Assert.IsTrue(string.IsNullOrEmpty(c3.DefaultGeometryPropertyName));
+            Assert.IsTrue(string.IsNullOrEmpty(c4.DefaultGeometryPropertyName));
+            Assert.IsTrue(string.IsNullOrEmpty(c5.DefaultGeometryPropertyName));
+            //Though this feature class has geometries, the XML schema says none
+            //are designated
+            Assert.IsTrue(string.IsNullOrEmpty(c6.DefaultGeometryPropertyName));
+            Assert.IsTrue(string.IsNullOrEmpty(c7.DefaultGeometryPropertyName));
+            Assert.IsFalse(string.IsNullOrEmpty(c8.DefaultGeometryPropertyName));
+            Assert.IsTrue(string.IsNullOrEmpty(c9.DefaultGeometryPropertyName));
+            Assert.IsTrue(string.IsNullOrEmpty(c10.DefaultGeometryPropertyName));
+            Assert.IsTrue(string.IsNullOrEmpty(c11.DefaultGeometryPropertyName));
+            Assert.IsTrue(string.IsNullOrEmpty(c12.DefaultGeometryPropertyName));
         }
 
         [Test]

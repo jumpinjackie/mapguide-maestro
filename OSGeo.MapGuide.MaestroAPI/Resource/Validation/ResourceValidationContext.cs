@@ -81,7 +81,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         {
             if (_spatialContexts.ContainsKey(resourceId))
             {
-                Trace.TraceInformation("Fetching cached spatial contexts of: " + resourceId); //NOXLATE
+                //Trace.TraceInformation("Fetching cached spatial contexts of: " + resourceId); //NOXLATE
                 return _spatialContexts[resourceId];
             }
 
@@ -100,7 +100,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         {
             if (_schemas.ContainsKey(resourceId))
             {
-                Trace.TraceInformation("Fetching cached schema of: " + resourceId); //NOXLATE
+                //Trace.TraceInformation("Fetching cached schema of: " + resourceId); //NOXLATE
                 return _schemas[resourceId];
             }
 
@@ -119,7 +119,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         {
             if (_resources.ContainsKey(resourceId))
             {
-                Trace.TraceInformation("Fetching cached copy of: " + resourceId); //NOXLATE
+                //Trace.TraceInformation("Fetching cached copy of: " + resourceId); //NOXLATE
                 return _resources[resourceId];
             }
 
@@ -140,8 +140,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         {
             var res = _validated.ContainsKey(resourceId);
 
-            if (res)
-                Trace.TraceInformation("Skipping validation: " + resourceId); //NOXLATE
+            //if (res)
+            //    Trace.TraceInformation("Skipping validation: " + resourceId); //NOXLATE
 
             return res;
         }
@@ -154,7 +154,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         {
             _validated[resourceId] = resourceId;
 
-            Trace.TraceInformation("Validated: " + resourceId); //NOXLATE
+            //Trace.TraceInformation("Validated: " + resourceId); //NOXLATE
         }
 
         /// <summary>

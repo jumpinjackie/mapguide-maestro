@@ -1096,6 +1096,15 @@ namespace OSGeo.MapGuide.MaestroAPI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot write XML for a Class Definition that is not attached to a parent schema.
+        /// </summary>
+        public static string ErrorWriteClassXmlNeedToBeAttachedToParent {
+            get {
+                return ResourceManager.GetString("ErrorWriteClassXmlNeedToBeAttachedToParent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Due to a limitation in the public APIs provided by MapGuide. This Feature Source cannot be packaged by Maestro&apos;s packager without discarding the MG_USER_CREDENTIALS element. The workaround is to either re-secure these Feature Sources after loading the Maestro-created package, or to use the official packaging method which will preserve MG_USER_CREDENTIALS in its encrypted state.
         /// </summary>
         public static string FS_CannotPackageSecuredCredentials {

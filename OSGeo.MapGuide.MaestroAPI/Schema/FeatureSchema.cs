@@ -154,7 +154,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             schema.AppendChild(anno);
             anno.AppendChild(docN);
 
-            foreach (var cls in this.Classes)
+            foreach (IFdoSerializable cls in this.Classes)
             {
                 cls.WriteXml(doc, schema);
             }
@@ -198,7 +198,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
 
                     string name = Utility.DecodeFDOName(nn.Value.Substring(0, nn.Value.Length - "Type".Length)); //NOXLATE
                     ClassDefinition cls = new ClassDefinition(name, string.Empty); //TODO: Description
-                    cls.ReadXml(clsNode, mgr);
+                    ((IFdoSerializable)cls).ReadXml(clsNode, mgr);
                     this.AddClass(cls);
                 }
             }

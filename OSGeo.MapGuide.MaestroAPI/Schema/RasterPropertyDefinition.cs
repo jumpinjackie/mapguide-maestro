@@ -80,7 +80,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// </summary>
         /// <param name="doc"></param>
         /// <param name="currentNode"></param>
-        public override void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
+        protected override void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
             var en = Utility.EncodeFDOName(this.Name);
 
@@ -107,7 +107,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// </summary>
         /// <param name="node"></param>
         /// <param name="mgr"></param>
-        public override void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
+        protected override void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
             var dix = Utility.GetFdoAttribute(node, "defaultImageXSize"); //NOXLATE
             var diy = Utility.GetFdoAttribute(node, "defaultImageYSize"); //NOXLATE

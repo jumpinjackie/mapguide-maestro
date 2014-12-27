@@ -57,6 +57,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         public ClassDefinition(string name, string description)
             : this()
         {
+            Check.ArgumentNotNull(name, "name"); //NOXLATE
+            Check.NotEmpty(name, "name"); //NOXLATE
             this.Name = name;
             this.Description = description;
         }
@@ -95,7 +97,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
                 }
             }
 
-            throw new ArgumentException(string.Format(MaestroAPI.Strings.ErrorPropertyNotFound, name));
+            return -1;
         }
 
         /// <summary>
@@ -263,13 +265,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// </summary>
         /// <param name="doc"></param>
         /// <param name="currentNode"></param>
-        public void WriteXml(XmlDocument doc, XmlNode currentNode)
+        void IFdoSerializable.WriteXml(XmlDocument doc, XmlNode currentNode)
         {
+            Check.ArgumentNotNull(doc, "doc"); //NOXLATE
+            Check.ArgumentNotNull(currentNode, "currentNode"); //NOXLATE
             XmlElement id = null;
 
             var en = Utility.EncodeFDOName(this.Name);
             if (_identity.Count > 0)
             {
+                //Just in case
+                if (this.Parent == null)
+                    throw new InvalidOperationException(Strings.ErrorWriteClassXmlNeedToBeAttachedToParent);
+
                 id = doc.CreateElement("xs", "element", XmlNamespaces.XS); //NOXLATE
 
                 //TODO: May need encoding
@@ -334,7 +342,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             var seq = doc.CreateElement("xs", "sequence", XmlNamespaces.XS); //NOXLATE
             ext.AppendChild(seq);
 
-            foreach (var prop in _properties)
+            foreach (IFdoSerializable prop in _properties)
             {
                 prop.WriteXml(doc, seq);
             }
@@ -350,7 +358,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// </summary>
         /// <param name="node"></param>
         /// <param name="mgr"></param>
-        public void ReadXml(XmlNode node, XmlNamespaceManager mgr)
+        void IFdoSerializable.ReadXml(XmlNode node, XmlNamespaceManager mgr)
         {
             var en = Utility.EncodeFDOName(this.Name);
             var abn = node.Attributes["abstract"]; //NOXLATE

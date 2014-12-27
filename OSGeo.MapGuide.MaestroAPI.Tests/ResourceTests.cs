@@ -1,6 +1,6 @@
 ﻿#region Disclaimer / License
 
-// Copyright (C) 2010, Jackie Ng
+// Copyright (C) 2014, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 //
 // This library is free software; you can redistribute it and/or
@@ -19,11 +19,8 @@
 //
 
 #endregion Disclaimer / License
-
-using NMock2;
+using Moq;
 using NUnit.Framework;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Resource.Conversion;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
@@ -32,30 +29,20 @@ using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
-using System.Collections.Specialized;
-using System.Diagnostics;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 
-namespace MaestroAPITests
+namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
     [TestFixture]
     public class ResourceTests
     {
-        [TestFixtureSetUp]
-        public void Setup()
-        {
-            if (TestControl.IgnoreResourceTests)
-                Assert.Ignore("Skipping ResourceTests because TestControl.IgnoreResourceTests = true");
-
-            _mocks = new Mockery();
-        }
-
-        private Mockery _mocks;
-
         [Test]
         public void TestWebLayout()
         {
-            var conn = _mocks.NewMock<IServerConnection>();
+            var conn = new Mock<IServerConnection>();
 
             var wl = ObjectFactory.CreateWebLayout(new Version(1, 0, 0), "Library://Test.MapDefinition");
             Assert.IsNotNull(wl.CommandSet);
@@ -85,7 +72,7 @@ namespace MaestroAPITests
                         found = true;
                     }
                 }
-                Trace.TraceInformation("Found command (" + cmdName.ToString() + "): " + found);
+                //Trace.TraceInformation("Found command (" + cmdName.ToString() + "): " + found);
                 Assert.IsTrue(found);
             }
         }
@@ -93,7 +80,7 @@ namespace MaestroAPITests
         [Test]
         public void TestLayerDefinitionConversions()
         {
-            var conn = _mocks.NewMock<IServerConnection>();
+            var conn = new Mock<IServerConnection>();
             var conv = new ResourceObjectConverter();
             var ldf = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
             ldf.ResourceID = "Library://Samples/Sheboygan/Layers/Parcels.LayerDefinition";
@@ -120,7 +107,7 @@ namespace MaestroAPITests
             Assert.AreEqual("LayerDefinition-1.1.0.xsd", ldf1.GetResourceTypeDescriptor().XsdName);
             Assert.AreEqual("LayerDefinition-1.1.0.xsd", ldf1.ValidatingSchema);
             Assert.AreEqual(new Version(1, 1, 0), ldf1.ResourceVersion);
-            
+
             using (var fs = File.OpenWrite("LayerDef_110.xml"))
             {
                 using (var src = ObjectFactory.Serialize(ldf1))
@@ -135,7 +122,7 @@ namespace MaestroAPITests
             Assert.AreEqual("LayerDefinition-1.2.0.xsd", ldf2.GetResourceTypeDescriptor().XsdName);
             Assert.AreEqual("LayerDefinition-1.2.0.xsd", ldf2.ValidatingSchema);
             Assert.AreEqual(new Version(1, 2, 0), ldf2.ResourceVersion);
-            
+
             using (var fs = File.OpenWrite("LayerDef_120.xml"))
             {
                 using (var src = ObjectFactory.Serialize(ldf2))
@@ -150,7 +137,7 @@ namespace MaestroAPITests
             Assert.AreEqual("LayerDefinition-1.3.0.xsd", ldf3.GetResourceTypeDescriptor().XsdName);
             Assert.AreEqual("LayerDefinition-1.3.0.xsd", ldf3.ValidatingSchema);
             Assert.AreEqual(new Version(1, 3, 0), ldf3.ResourceVersion);
-            
+
             using (var fs = File.OpenWrite("LayerDef_130.xml"))
             {
                 using (var src = ObjectFactory.Serialize(ldf3))
@@ -187,7 +174,7 @@ namespace MaestroAPITests
         [Test]
         public void TestMapDefinitionLayerInsert()
         {
-            var conn = _mocks.NewMock<IServerConnection>();
+            var conn = new Mock<IServerConnection>();
             var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionLayerInsert");
             SetupMapDefinitionForTest(mdf);
             int layerCount = mdf.GetLayerCount();
@@ -214,7 +201,7 @@ namespace MaestroAPITests
         [Test]
         public void TestMapDefinitionLayerAdd()
         {
-            var conn = _mocks.NewMock<IServerConnection>();
+            var conn = new Mock<IServerConnection>();
             var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionLayerAdd");
             SetupMapDefinitionForTest(mdf);
             int layerCount = mdf.GetLayerCount();
@@ -236,7 +223,7 @@ namespace MaestroAPITests
         [Test]
         public void TestMapDefinitionLayerRemove()
         {
-            var conn = _mocks.NewMock<IServerConnection>();
+            var conn = new Mock<IServerConnection>();
             var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionLayerRemove");
             SetupMapDefinitionForTest(mdf);
             int layerCount = mdf.GetLayerCount();
@@ -254,7 +241,7 @@ namespace MaestroAPITests
         [Test]
         public void TestMapDefinitionLayerReordering()
         {
-            var conn = _mocks.NewMock<IServerConnection>();
+            var conn = new Mock<IServerConnection>();
             var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionLayerReordering");
             SetupMapDefinitionForTest(mdf);
             int layerCount = mdf.GetLayerCount();
@@ -288,7 +275,7 @@ namespace MaestroAPITests
         [Test]
         public void TestMapDefinitionGroupAdd()
         {
-            var conn = _mocks.NewMock<IServerConnection>();
+            var conn = new Mock<IServerConnection>();
             var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionGroupAdd");
             SetupMapDefinitionForTest(mdf);
             int layerCount = mdf.GetLayerCount();
@@ -307,7 +294,7 @@ namespace MaestroAPITests
         [Test]
         public void TestMapDefinitionGroupRemove()
         {
-            var conn = _mocks.NewMock<IServerConnection>();
+            var conn = new Mock<IServerConnection>();
             var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionGroupRemove");
             SetupMapDefinitionForTest(mdf);
             int layerCount = mdf.GetLayerCount();
@@ -326,7 +313,7 @@ namespace MaestroAPITests
         [Test]
         public void TestMapDefinitionGroupReordering()
         {
-            var conn = _mocks.NewMock<IServerConnection>();
+            var conn = new Mock<IServerConnection>();
             var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionGroupReordering");
             SetupMapDefinitionForTest(mdf);
             int groupCount = mdf.GetGroupCount();
@@ -350,7 +337,7 @@ namespace MaestroAPITests
         [Test]
         public void TestMapDefinitionConversions()
         {
-            var conn = _mocks.NewMock<IServerConnection>();
+            var conn = new Mock<IServerConnection>();
             var conv = new ResourceObjectConverter();
 
             var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "Test Map");
@@ -389,7 +376,7 @@ namespace MaestroAPITests
         [Test]
         public void TestLoadProcedureConversions()
         {
-            var conn = _mocks.NewMock<IServerConnection>();
+            var conn = new Mock<IServerConnection>();
             var conv = new ResourceObjectConverter();
 
             var lproc = ObjectFactory.CreateLoadProcedure(LoadType.Sdf);
@@ -442,7 +429,7 @@ namespace MaestroAPITests
         [Test]
         public void TestWebLayoutConversions()
         {
-            var conn = _mocks.NewMock<IServerConnection>();
+            var conn = new Mock<IServerConnection>();
             var conv = new ResourceObjectConverter();
 
             var wl = ObjectFactory.CreateWebLayout(new Version(1, 0, 0), "Library://Test.MapDefinition");
@@ -481,7 +468,7 @@ namespace MaestroAPITests
         [Test]
         public void TestSymbolDefinitionConversions()
         {
-            var conn = _mocks.NewMock<IServerConnection>();
+            var conn = new Mock<IServerConnection>();
             var conv = new ResourceObjectConverter();
 
             var ssym = ObjectFactory.CreateSimpleSymbol(new Version(1, 0, 0), "SimpleSymbolTest", "Test simple symbol");
@@ -550,15 +537,15 @@ namespace MaestroAPITests
         [Test]
         public void TestMapDefinitionNestedGroupDelete()
         {
-            var conn = _mocks.NewMock<IServerConnection>();
-            var caps = _mocks.NewMock<IConnectionCapabilities>();
-            Stub.On(conn).GetProperty("Capabilities").Will(Return.Value(caps));
+            var conn = new Mock<IServerConnection>();
+            var caps = new Mock<IConnectionCapabilities>();
+            
             foreach (var rt in Enum.GetValues(typeof(ResourceTypes)))
             {
-                Stub.On(caps).Method("GetMaxSupportedResourceVersion").With(rt.ToString()).Will(Return.Value(new Version(1, 0, 0)));
+                caps.Setup(c => c.GetMaxSupportedResourceVersion(rt.ToString())).Returns(new Version(1, 0, 0));
             }
-
-            IMapDefinition mdf = Utility.CreateMapDefinition(conn, "Test");
+            conn.Setup(c => c.Capabilities).Returns(caps.Object);
+            IMapDefinition mdf = Utility.CreateMapDefinition(conn.Object, "Test");
             /*
 
              [G] Group1

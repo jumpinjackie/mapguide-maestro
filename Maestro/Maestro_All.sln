@@ -110,6 +110,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Thirdparty", "Thirdparty", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModel.Tests", "..\OSGeo.MapGuide.ObjectModel.Tests\OSGeo.MapGuide.ObjectModel.Tests.csproj", "{D32BE7DB-D0C3-4805-A057-18312370C57E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI.Tests", "..\OSGeo.MapGuide.MaestroAPI.Tests\OSGeo.MapGuide.MaestroAPI.Tests.csproj", "{28224492-7383-46BD-AE64-2DA35243175C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -248,6 +250,10 @@ Global
 		{D32BE7DB-D0C3-4805-A057-18312370C57E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D32BE7DB-D0C3-4805-A057-18312370C57E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D32BE7DB-D0C3-4805-A057-18312370C57E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28224492-7383-46BD-AE64-2DA35243175C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28224492-7383-46BD-AE64-2DA35243175C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28224492-7383-46BD-AE64-2DA35243175C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28224492-7383-46BD-AE64-2DA35243175C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -260,5 +266,6 @@ Global
 		{2D18BE89-D210-49EB-A9DD-2246FBB3DF6D} = {5A242739-8805-4B57-A036-29C81E899CBE}
 		{AA5EF530-B95C-4C8F-BE9F-52C225613DF9} = {7507E52A-413B-4E0D-A1FF-7D293E462C1B}
 		{D32BE7DB-D0C3-4805-A057-18312370C57E} = {7507E52A-413B-4E0D-A1FF-7D293E462C1B}
+		{28224492-7383-46BD-AE64-2DA35243175C} = {7507E52A-413B-4E0D-A1FF-7D293E462C1B}
 	EndGlobalSection
 EndGlobal

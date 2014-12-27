@@ -41,7 +41,6 @@ except for Local Connection and GeoREST support
   <TestControl>
     <!-- Core API -->
     <IgnoreConfigurationTests>false</IgnoreConfigurationTests>
-    <IgnoreCapabilityTests>false</IgnoreCapabilityTests>
     <IgnoreExpressionTests>false</IgnoreExpressionTests>
     <IgnoreFeatureReaderTests>false</IgnoreFeatureReaderTests>
     <IgnoreObjectTests>false</IgnoreObjectTests>

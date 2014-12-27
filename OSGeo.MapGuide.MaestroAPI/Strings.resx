@@ -888,4 +888,7 @@
   <data name="WL_StartViewOutsideExtentsWarning" xml:space="preserve">
     <value>Layout specifies a start view that is outside the map's initial extents</value>
   </data>
+  <data name="ErrorWriteClassXmlNeedToBeAttachedToParent" xml:space="preserve">
+    <value>Cannot write XML for a Class Definition that is not attached to a parent schema</value>
+  </data>
 </root>

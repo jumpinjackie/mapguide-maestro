@@ -79,8 +79,6 @@
     <Compile Include="..\Properties\SignedAssemblyInfo.cs">
       <Link>SignedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="CapabilityTests.cs" />
-    <Compile Include="ConfigurationTests.cs" />
     <Compile Include="ConnectionTestBase.cs" />
     <Compile Include="ExpressionTests.cs" />
     <Compile Include="FeatureReaderTests.cs" />
@@ -89,20 +87,14 @@
     <Compile Include="LocalConnectionTests.cs" />
     <Compile Include="LocalNativeFeatureTests.cs" />
     <Compile Include="LocalNativePerformanceTests.cs" />
-    <Compile Include="MiscTests.cs" />
-    <Compile Include="ObjectTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ResourceTests.cs" />
     <Compile Include="RuntimeMapTests.cs" />
-    <Compile Include="SchemaTests.cs" />
-    <Compile Include="SerializationTests.cs" />
     <Compile Include="TestControl.cs" />
-    <Compile Include="ValidationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

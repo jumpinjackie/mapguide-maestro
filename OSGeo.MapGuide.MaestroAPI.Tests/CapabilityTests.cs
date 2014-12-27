@@ -1,6 +1,6 @@
 ﻿#region Disclaimer / License
 
-// Copyright (C) 2010, Jackie Ng
+// Copyright (C) 2014, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 //
 // This library is free software; you can redistribute it and/or
@@ -19,38 +19,28 @@
 //
 
 #endregion Disclaimer / License
-
-using NMock2;
+using Moq;
 using NUnit.Framework;
-using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.MaestroAPI.Http;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace MaestroAPITests
+namespace OSGeo.MapGuide.MaestroAPI.Tests
 {
     [TestFixture]
     public class CapabilityTests
     {
-        [TestFixtureSetUp]
-        public void Setup()
-        {
-            if (TestControl.IgnoreCapabilityTests)
-                Assert.Ignore("Skipping CapabilityTests because TestControl.IgnoreCapabilityTests = true");
-        }
-
-        private Mockery _mocks;
-
         [Test]
         public void TestHttpCapabilities100()
         {
-            _mocks = new Mockery();
-            var conn = _mocks.NewMock<IServerConnection>();
-            Stub.On(conn).GetProperty("SiteVersion").Will(Return.Value(new Version(1, 0)));
-
-            var caps = new HttpCapabilities(conn);
+            var conn = new Mock<IServerConnection>();
+            conn.Setup(c => c.SiteVersion).Returns(new Version(1, 0));
+            var caps = new HttpCapabilities(conn.Object);
 
             foreach (ResourceTypes type in Enum.GetValues(typeof(ResourceTypes)))
             {
@@ -197,11 +187,9 @@ namespace MaestroAPITests
         [Test]
         public void TestHttpCapabilities110()
         {
-            _mocks = new Mockery();
-            var conn = _mocks.NewMock<IServerConnection>();
-            Stub.On(conn).GetProperty("SiteVersion").Will(Return.Value(new Version(1, 1)));
-
-            var caps = new HttpCapabilities(conn);
+            var conn = new Mock<IServerConnection>();
+            conn.Setup(c => c.SiteVersion).Returns(new Version(1, 1));
+            var caps = new HttpCapabilities(conn.Object);
 
             foreach (ResourceTypes type in Enum.GetValues(typeof(ResourceTypes)))
             {
@@ -348,11 +336,9 @@ namespace MaestroAPITests
         [Test]
         public void TestHttpCapabilities120()
         {
-            _mocks = new Mockery();
-            var conn = _mocks.NewMock<IServerConnection>();
-            Stub.On(conn).GetProperty("SiteVersion").Will(Return.Value(new Version(1, 2)));
-
-            var caps = new HttpCapabilities(conn);
+            var conn = new Mock<IServerConnection>();
+            conn.Setup(c => c.SiteVersion).Returns(new Version(1, 2));
+            var caps = new HttpCapabilities(conn.Object);
 
             foreach (ResourceTypes type in Enum.GetValues(typeof(ResourceTypes)))
             {
@@ -491,11 +477,9 @@ namespace MaestroAPITests
         [Test]
         public void TestHttpCapabilities200()
         {
-            _mocks = new Mockery();
-            var conn = _mocks.NewMock<IServerConnection>();
-            Stub.On(conn).GetProperty("SiteVersion").Will(Return.Value(new Version(2, 0)));
-
-            var caps = new HttpCapabilities(conn);
+            var conn = new Mock<IServerConnection>();
+            conn.Setup(c => c.SiteVersion).Returns(new Version(2, 0));
+            var caps = new HttpCapabilities(conn.Object);
 
             foreach (ResourceTypes type in Enum.GetValues(typeof(ResourceTypes)))
             {
@@ -626,11 +610,9 @@ namespace MaestroAPITests
         [Test]
         public void TestHttpCapabilities210()
         {
-            _mocks = new Mockery();
-            var conn = _mocks.NewMock<IServerConnection>();
-            Stub.On(conn).GetProperty("SiteVersion").Will(Return.Value(new Version(2, 1)));
-
-            var caps = new HttpCapabilities(conn);
+            var conn = new Mock<IServerConnection>();
+            conn.Setup(c => c.SiteVersion).Returns(new Version(2, 1));
+            var caps = new HttpCapabilities(conn.Object);
 
             foreach (ResourceTypes type in Enum.GetValues(typeof(ResourceTypes)))
             {
@@ -761,11 +743,9 @@ namespace MaestroAPITests
         [Test]
         public void TestHttpCapabilities220()
         {
-            _mocks = new Mockery();
-            var conn = _mocks.NewMock<IServerConnection>();
-            Stub.On(conn).GetProperty("SiteVersion").Will(Return.Value(new Version(2, 2)));
-
-            var caps = new HttpCapabilities(conn);
+            var conn = new Mock<IServerConnection>();
+            conn.Setup(c => c.SiteVersion).Returns(new Version(2, 2));
+            var caps = new HttpCapabilities(conn.Object);
 
             foreach (ResourceTypes type in Enum.GetValues(typeof(ResourceTypes)))
             {
@@ -896,11 +876,9 @@ namespace MaestroAPITests
         [Test]
         public void TestHttpCapabilities230()
         {
-            _mocks = new Mockery();
-            var conn = _mocks.NewMock<IServerConnection>();
-            Stub.On(conn).GetProperty("SiteVersion").Will(Return.Value(new Version(2, 3)));
-
-            var caps = new HttpCapabilities(conn);
+            var conn = new Mock<IServerConnection>();
+            conn.Setup(c => c.SiteVersion).Returns(new Version(2, 3));
+            var caps = new HttpCapabilities(conn.Object);
 
             foreach (ResourceTypes type in Enum.GetValues(typeof(ResourceTypes)))
             {
@@ -1037,11 +1015,9 @@ namespace MaestroAPITests
         [Test]
         public void TestHttpCapabilities240()
         {
-            _mocks = new Mockery();
-            var conn = _mocks.NewMock<IServerConnection>();
-            Stub.On(conn).GetProperty("SiteVersion").Will(Return.Value(new Version(2, 4)));
-
-            var caps = new HttpCapabilities(conn);
+            var conn = new Mock<IServerConnection>();
+            conn.Setup(c => c.SiteVersion).Returns(new Version(2, 4));
+            var caps = new HttpCapabilities(conn.Object);
 
             foreach (ResourceTypes type in Enum.GetValues(typeof(ResourceTypes)))
             {
@@ -1178,11 +1154,9 @@ namespace MaestroAPITests
         [Test]
         public void TestHttpCapabilities250()
         {
-            _mocks = new Mockery();
-            var conn = _mocks.NewMock<IServerConnection>();
-            Stub.On(conn).GetProperty("SiteVersion").Will(Return.Value(new Version(2, 5)));
-
-            var caps = new HttpCapabilities(conn);
+            var conn = new Mock<IServerConnection>();
+            conn.Setup(c => c.SiteVersion).Returns(new Version(2, 5));
+            var caps = new HttpCapabilities(conn.Object);
 
             foreach (ResourceTypes type in Enum.GetValues(typeof(ResourceTypes)))
             {
@@ -1319,11 +1293,9 @@ namespace MaestroAPITests
         [Test]
         public void TestHttpCapabilities260()
         {
-            _mocks = new Mockery();
-            var conn = _mocks.NewMock<IServerConnection>();
-            Stub.On(conn).GetProperty("SiteVersion").Will(Return.Value(new Version(2, 6)));
-
-            var caps = new HttpCapabilities(conn);
+            var conn = new Mock<IServerConnection>();
+            conn.Setup(c => c.SiteVersion).Returns(new Version(2, 6));
+            var caps = new HttpCapabilities(conn.Object);
 
             foreach (ResourceTypes type in Enum.GetValues(typeof(ResourceTypes)))
             {

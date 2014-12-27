@@ -40,7 +40,6 @@ Configured for exercising everything in the Maestro API except for LocalNative c
   <TestControl>
     <!-- Core API -->
     <IgnoreConfigurationTests>false</IgnoreConfigurationTests>
-    <IgnoreCapabilityTests>false</IgnoreCapabilityTests>
     <IgnoreExpressionTests>false</IgnoreExpressionTests>
     <IgnoreFeatureReaderTests>false</IgnoreFeatureReaderTests>
     <IgnoreObjectTests>false</IgnoreObjectTests>

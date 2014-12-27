@@ -67,10 +67,6 @@ namespace MaestroAPITests
                 var control = doc.SelectSingleNode("//TestConfiguration/TestControl");
                 if (control != null)
                 {
-                    if (control["IgnoreConfigurationTests"] != null)
-                        TestControl.IgnoreConfigurationTests = control["IgnoreConfigurationTests"].InnerText == "true";
-                    if (control["IgnoreCapabilityTests"] != null)
-                        TestControl.IgnoreCapabilityTests = control["IgnoreCapabilityTests"].InnerText == "true";
                     if (control["IgnoreExpressionTests"] != null)
                         TestControl.IgnoreExpressionTests = control["IgnoreExpressionTests"].InnerText == "true";
                     if (control["IgnoreFeatureReaderTests"] != null)
@@ -79,10 +75,6 @@ namespace MaestroAPITests
                         TestControl.IgnoreHttpConnectionTests = control["IgnoreHttpConnectionTests"].InnerText == "true";
                     if (control["IgnoreHttpSiteTests"] != null)
                         TestControl.IgnoreHttpSiteTests = control["IgnoreHttpSiteTests"].InnerText == "true";
-                    if (control["IgnoreObjectTests"] != null)
-                        TestControl.IgnoreObjectTests = control["IgnoreObjectTests"].InnerText == "true";
-                    if (control["IgnoreResourceTests"] != null)
-                        TestControl.IgnoreResourceTests = control["IgnoreResourceTests"].InnerText == "true";
                     if (control["IgnoreHttpRuntimeMapTests"] != null)
                         TestControl.IgnoreHttpRuntimeMapTests = control["IgnoreHttpRuntimeMapTests"].InnerText == "true";
                     if (control["IgnoreLocalRuntimeMapTests"] != null)
@@ -95,14 +87,6 @@ namespace MaestroAPITests
                         TestControl.IgnoreLocalNativeFeatureTests = control["IgnoreLocalNativeFeatureTests"].InnerText == "true";
                     if (control["IgnoreLocalFeatureTests"] != null)
                         TestControl.IgnoreLocalFeatureTests = control["IgnoreLocalFeatureTests"].InnerText == "true";
-                    if (control["IgnoreSchemaTests"] != null)
-                        TestControl.IgnoreSchemaTests = control["IgnoreSchemaTests"].InnerText == "true";
-                    if (control["IgnoreSerializationTests"] != null)
-                        TestControl.IgnoreSerializationTests = control["IgnoreSerializationTests"].InnerText == "true";
-                    if (control["IgnoreValidationTests"] != null)
-                        TestControl.IgnoreValidationTests = control["IgnoreValidationTests"].InnerText == "true";
-                    if (control["IgnoreMiscTests"] != null)
-                        TestControl.IgnoreMiscTests = control["IgnoreMiscTests"].InnerText == "true";
                 }
             }
         }
@@ -118,47 +102,31 @@ namespace MaestroAPITests
             Console.WriteLine("HttpUsername                         = {0}", TestEnvironment.HttpUsername);
             Console.WriteLine("HttpPassword                         = {0}", TestEnvironment.HttpPassword);
             Console.WriteLine("********************** Test Control **************************");
-            Console.WriteLine("IgnoreConfigurationTests             = {0}", TestControl.IgnoreConfigurationTests);
-            Console.WriteLine("IgnoreCapabilityTests                = {0}", TestControl.IgnoreCapabilityTests);
             Console.WriteLine("IgnoreExpressionTests                = {0}", TestControl.IgnoreExpressionTests);
             Console.WriteLine("IgnoreFeatureReaderTests             = {0}", TestControl.IgnoreFeatureReaderTests);
             Console.WriteLine("IgnoreHttpConnectionTests            = {0}", TestControl.IgnoreHttpConnectionTests);
             Console.WriteLine("IgnoreHttpSiteTests                  = {0}", TestControl.IgnoreHttpSiteTests);
             Console.WriteLine("IgnoreHttpRuntimeMapTests            = {0}", TestControl.IgnoreHttpRuntimeMapTests);
-            Console.WriteLine("IgnoreObjectTests                    = {0}", TestControl.IgnoreObjectTests);
-            Console.WriteLine("IgnoreResourceTests                  = {0}", TestControl.IgnoreResourceTests);
             Console.WriteLine("IgnoreLocalRuntimeMapTests           = {0}", TestControl.IgnoreLocalRuntimeMapTests);
             Console.WriteLine("IgnoreLocalNativeRuntimeMapTests     = {0}", TestControl.IgnoreLocalNativeRuntimeMapTests);
             Console.WriteLine("IgnoreLocalNativePerformanceTests    = {0}", TestControl.IgnoreLocalNativePerformanceTests);
             Console.WriteLine("IgnoreLocalNativeFeatureTests        = {0}", TestControl.IgnoreLocalNativeFeatureTests);
             Console.WriteLine("IgnoreLocalFeatureTests              = {0}", TestControl.IgnoreLocalFeatureTests);
-            Console.WriteLine("IgnoreSchemaTests                    = {0}", TestControl.IgnoreSchemaTests);
-            Console.WriteLine("IgnoreSerializationTests             = {0}", TestControl.IgnoreSerializationTests);
-            Console.WriteLine("IgnoreValidationTests                = {0}", TestControl.IgnoreValidationTests);
-            Console.WriteLine("IgnoreMiscTests                      = {0}", TestControl.IgnoreMiscTests);
         }
     }
 
     internal class TestControl
     {
-        public static bool IgnoreConfigurationTests = false;
-        public static bool IgnoreCapabilityTests = false;
         public static bool IgnoreExpressionTests = false;
         public static bool IgnoreFeatureReaderTests = false;
         public static bool IgnoreHttpConnectionTests = false;
         public static bool IgnoreHttpSiteTests = false;
-        public static bool IgnoreObjectTests = false;
-        public static bool IgnoreResourceTests = false;
         public static bool IgnoreHttpRuntimeMapTests = false;
         public static bool IgnoreLocalRuntimeMapTests = false;
         public static bool IgnoreLocalNativeRuntimeMapTests = true;
         public static bool IgnoreLocalNativePerformanceTests = true;
         public static bool IgnoreLocalNativeFeatureTests = true;
         public static bool IgnoreLocalFeatureTests = false;
-        public static bool IgnoreSchemaTests = false;
-        public static bool IgnoreSerializationTests = false;
-        public static bool IgnoreValidationTests = false;
-        public static bool IgnoreMiscTests = false;
     }
 
     internal class ConnectionUtil

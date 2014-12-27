@@ -30,11 +30,37 @@ using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.DrawingSource;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using System.IO;
+using OSGeo.MapGuide.ObjectModels;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {
     public static class ExtensionMethods
     {
+    }
+}
+
+namespace System.Xml
+{
+    public static class ExtensionMethods
+    {
+        /// <summary>
+        /// Gets the XML string of this document
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <returns></returns>
+        public static string ToXmlString(this XmlDocument doc, bool indent = false)
+        {
+            Check.ArgumentNotNull(doc, "doc"); //NOXLATE
+            var xs = new XmlWriterSettings();
+            xs.Indent = indent;
+            using (var sw = new StringWriter())
+            using (var xtw = XmlWriter.Create(sw, xs))
+            {
+                doc.WriteTo(xtw);
+                xtw.Flush();
+                return sw.GetStringBuilder().ToString();
+            }
+        }
     }
 }
 
