@@ -20,6 +20,10 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkProfile />
     <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,12 +43,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OSGeo.MapGuide.ExtendedObjectModels">
-      <HintPath>..\..\bin\OSGeo.MapGuide.ExtendedObjectModels.dll</HintPath>
-    </Reference>
     <Reference Include="OSGeo.MapGuide.MaestroAPI, Version=3.0.0.5728, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\OSGeo.MapGuide.MaestroAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="OSGeo.MapGuide.ObjectModels">
+      <HintPath>..\..\bin\OSGeo.MapGuide.ObjectModels.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

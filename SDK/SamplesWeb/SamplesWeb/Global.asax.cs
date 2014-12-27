@@ -30,7 +30,6 @@ using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
-using OSGeo.MapGuide.ExtendedObjectModels;
 
 namespace SamplesWeb
 {
@@ -39,16 +38,7 @@ namespace SamplesWeb
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            //By default the ObjectFactory, ResourceTypeRegistry and ResourceValidatorSet only
-            //support v1.0.0 of all resource types. To support additional types we need to inject
-            //this information as part of the consuming application's init/startup process
-            //
-            //This is our application's entry point, so we do this here.
-            //
-            //The ModelSetup utility class can auto-magically do this for us
-            //
-            //This is only necessary if you want to create resources newer than version 1.0.0
-            ModelSetup.Initialize();
+            
         }
 
         protected void Session_Start(object sender, EventArgs e)

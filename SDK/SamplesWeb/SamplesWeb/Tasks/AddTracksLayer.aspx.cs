@@ -115,8 +115,10 @@ namespace SamplesWeb.Tasks
 
         private static void CreateTracksLayer(IServerConnection conn, string resId, string layerId)
         {
-            //We use the ObjectFactory class to create our layer
-            ILayerDefinition ldf = ObjectFactory.CreateDefaultLayer(conn, LayerType.Vector);
+            //We use the Utility class to create our layer. You can also use ObjectFactory, but
+            //that requires explicitly specifying the resource version. Using Utility will pick
+            //the latest supported version
+            ILayerDefinition ldf = Utility.CreateDefaultLayer(conn, LayerType.Vector);
             IVectorLayerDefinition vldf = (IVectorLayerDefinition)ldf.SubLayer;
 
             //Set feature source

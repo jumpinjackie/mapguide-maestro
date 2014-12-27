@@ -60,7 +60,8 @@ namespace SamplesWeb
                 //the latest supported one on the mapguide server we've connected to. For example
                 //connecting to MGOS 2.2 will create a version 1.1.0 WebLayout. All the known
                 //resource versions have been registered on startup (see Global.asax.cs)
-                IWebLayout wl = ObjectFactory.CreateWebLayout(conn, mdfId);
+                Version ver = conn.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.WebLayout.ToString());
+                IWebLayout wl = ObjectFactory.CreateWebLayout(ver, mdfId);
 
                 //What is IWebLayout2? It is an extension of IWebLayout that supports the ping server property.
                 //This is the interface equivalent of WebLayout 1.1.0 schema. Most schema revisions in MapGuide
