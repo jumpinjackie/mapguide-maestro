@@ -127,7 +127,7 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
     ///
     /// Once initialized, load procedures can be executed via <see cref="M:OSGeo.MapGuide.MaestroAPI.MgServerConnectionBase.ExecuteLoadProcedure(OSGeo.MapGuide.ObjectModels.LoadProcedure.ILoadProcedure,OSGeo.MapGuide.MaestroAPI.LengthyOperationProgressCallBack,System.Boolean)"/> method
     ///
-    /// Because Load Procedures are also resources, they can be saved into the library repository via the <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SaveResource(OSGeo.MapGuide.MaestroAPI.Resource.IResource)"/> method
+    /// Because Load Procedures are also resources, they can be saved into the library repository via the <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IResourceService.SaveResource(IResourceHandle)"/> method
     /// and retrieved from the repository via the <see cref="M:OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResource(System.String)"/> method
     /// </summary>
     public interface IBaseLoadProcedure : INotifyPropertyChanged

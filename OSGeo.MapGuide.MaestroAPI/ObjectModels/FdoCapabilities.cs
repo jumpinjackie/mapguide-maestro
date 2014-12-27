@@ -149,7 +149,10 @@ namespace OSGeo.MapGuide.ObjectModels.Capabilities
 
         IFdoSchemaCapabilities Schema { get; }
     }
+}
 
+namespace OSGeo.MapGuide.ObjectModels.Capabilities.v1_0_0
+{
     partial class FdoProviderCapabilities : IFdoProviderCapabilities
     {
         IFdoCommandCapabilities IFdoProviderCapabilities.Command
@@ -300,10 +303,8 @@ namespace OSGeo.MapGuide.ObjectModels.Capabilities
     }
 }
 
-namespace OSGeo.MapGuide.ObjectModels.Capabilities_1_1_0
+namespace OSGeo.MapGuide.ObjectModels.Capabilities.v1_1_0
 {
-    using OSGeo.MapGuide.ObjectModels.Capabilities;
-
     partial class FdoProviderCapabilities : IFdoProviderCapabilities
     {
         IFdoCommandCapabilities IFdoProviderCapabilities.Command

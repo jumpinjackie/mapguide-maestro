@@ -36,7 +36,7 @@ namespace OSGeo.MapGuide.ObjectModels
     /// <summary>
     /// Utility methods
     /// </summary>
-    public static class Utility
+    public static class Utils
     {
         /// <summary>
         /// Parses a color in HTML notation (ea. #ffaabbff)
@@ -274,7 +274,7 @@ namespace OSGeo.MapGuide.ObjectModels
                 {
                     ms.Position = 3;
                     System.IO.MemoryStream mxs = new System.IO.MemoryStream();
-                    Utility.CopyStream(ms, mxs, false);
+                    Utils.CopyStream(ms, mxs, false);
                     mxs.Position = 0;
                     return mxs;
                 }

@@ -231,7 +231,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 return fes.GetCapabilities(provider);
             };
             LogMethodCall("MgFeatureService::GetProviderCapabilities", true, provider);
-            return base.DeserializeObject<OSGeo.MapGuide.ObjectModels.Capabilities_1_1_0.FdoProviderCapabilities>(new MgReadOnlyStream(fetch));
+            return base.DeserializeObject<OSGeo.MapGuide.ObjectModels.Capabilities.v1_1_0.FdoProviderCapabilities>(new MgReadOnlyStream(fetch));
         }
 
         public override System.IO.Stream GetResourceData(string resourceID, string dataname)

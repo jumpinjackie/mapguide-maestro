@@ -241,9 +241,9 @@ namespace OSGeo.MapGuide.ObjectModels.Common
             {
                 var genMeta = meta["gml:GenericMetaData"]; //NOXLATE
 
-                var scType = Utility.GetFdoElement(genMeta, "SCExtentType"); //NOXLATE
-                var xyTol = Utility.GetFdoElement(genMeta, "XYTolerance"); //NOXLATE
-                var zTol = Utility.GetFdoElement(genMeta, "ZTolerance"); //NOXLATE
+                var scType = Utils.GetFdoElement(genMeta, "SCExtentType"); //NOXLATE
+                var xyTol = Utils.GetFdoElement(genMeta, "XYTolerance"); //NOXLATE
+                var zTol = Utils.GetFdoElement(genMeta, "ZTolerance"); //NOXLATE
 
                 //this.ExtentType = (scType == null || scType.InnerText == "dynamic") ? FdoSpatialContextListSpatialContextExtentType.Dynamic : FdoSpatialContextListSpatialContextExtentType.Static;
 
@@ -305,10 +305,10 @@ namespace OSGeo.MapGuide.ObjectModels.Common
                 this.CoordinateSystemName = href.Substring(href.LastIndexOf("#") + 1); //NOXLATE
             }
 
-            var wktCrs = Utility.GetFdoElement(baseCrs, "WKTCRS"); //NOXLATE
+            var wktCrs = Utils.GetFdoElement(baseCrs, "WKTCRS"); //NOXLATE
             if (wktCrs != null)
             {
-                var wkt = Utility.GetFdoElement(wktCrs, "WKT"); //NOXLATE
+                var wkt = Utils.GetFdoElement(wktCrs, "WKT"); //NOXLATE
                 if (wkt != null)
                 {
                     this.CoordinateSystemWkt = wkt.InnerText;

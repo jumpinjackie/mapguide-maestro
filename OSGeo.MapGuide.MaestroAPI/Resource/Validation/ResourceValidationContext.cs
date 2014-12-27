@@ -39,7 +39,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         private Dictionary<string, IResource> _resources;
         private Dictionary<string, FeatureSourceDescription> _schemas;
         private Dictionary<string, FdoSpatialContextList> _spatialContexts;
-        private Dictionary<string, FdoProviderCapabilities> _caps;
 
         private IResourceService _resSvc;
         private IFeatureService _featSvc;
@@ -57,7 +56,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             _resources = new Dictionary<string, IResource>();
             _schemas = new Dictionary<string, FeatureSourceDescription>();
             _spatialContexts = new Dictionary<string, FdoSpatialContextList>();
-            _caps = new Dictionary<string, FdoProviderCapabilities>();
         }
 
         /// <summary>

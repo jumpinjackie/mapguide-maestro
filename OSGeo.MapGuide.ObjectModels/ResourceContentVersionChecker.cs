@@ -47,7 +47,7 @@ namespace OSGeo.MapGuide.ObjectModels
         public ResourceContentVersionChecker(Stream stream)
         {
             var ms = new MemoryStream();
-            Utility.CopyStream(stream, ms);
+            Utils.CopyStream(stream, ms);
             ms.Position = 0L; //Rewind
             _stream = ms;
             _reader = new XmlTextReader(_stream);

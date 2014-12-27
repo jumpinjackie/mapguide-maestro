@@ -227,7 +227,7 @@ namespace OSGeo.MapGuide.ObjectModels
             //House the stream inside a rewindable memory stream
             using (var ms = new MemoryStream())
             {
-                Utility.CopyStream(stream, ms);
+                Utils.CopyStream(stream, ms);
                 ms.Position = 0L; //Rewind
 
                 var rd = ResourceContentVersionChecker.GetVersionFromXmlStream(ms);

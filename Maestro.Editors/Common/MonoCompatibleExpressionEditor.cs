@@ -23,9 +23,11 @@
 using Maestro.Editors.Common.Expression;
 using Maestro.Editors.LayerDefinition.Vector.Thematics;
 using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
+using OSGeo.MapGuide.ObjectModels.Capabilities.v1_0_0;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -160,7 +162,7 @@ namespace Maestro.Editors.Common
 
                 if (attachStylizationFunctions)
                 {
-                    foreach (var func in GetStylizationFunctions())
+                    foreach (var func in Utility.GetStylizationFunctions())
                     {
                         sortedFuncs.Add(func.Name, func);
                     }
@@ -207,7 +209,7 @@ namespace Maestro.Editors.Common
                 }
                 LoadCompletableFunctions(caps.Expression.SupportedFunctions);
                 if (attachStylizationFunctions)
-                    LoadCompletableFunctions(GetStylizationFunctions());
+                    LoadCompletableFunctions(Utility.GetStylizationFunctions());
 
                 //Spatial Operators
                 foreach (var op in caps.Filter.SpatialOperations)
@@ -264,218 +266,6 @@ namespace Maestro.Editors.Common
             catch
             {
             }
-        }
-
-        private IEnumerable<FdoProviderCapabilitiesExpressionFunctionDefinition> GetStylizationFunctions()
-        {
-            //ARGB
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
-                {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "aValue", //NOXLATE
-                        Description = Strings.Func_ARGB_AValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "rValue", //NOXLATE
-                        Description = Strings.Func_ARGB_RValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "gValue", //NOXLATE
-                        Description = Strings.Func_ARGB_GValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "bValue", //NOXLATE
-                        Description = Strings.Func_ARGB_BValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.Int32
-                    },
-                },
-                Description = Strings.Func_ARGB_Description,
-                Name = "ARGB", //NOXLATE
-                ReturnType = "Int32" //NOXLATE
-            };
-            //DECAP
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
-                {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "strValue", //NOXLATE
-                        Description = Strings.Func_DECAP_StringValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    }
-                },
-                Description = Strings.Func_DECAP_Description,
-                Name = "DECAP", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //FEATURECLASS
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
-                Description = Strings.Func_FEATURECLASS_Description,
-                Name = "FEATURECLASS", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //FEATUREID
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
-                Description = Strings.Func_FEATUREID_Description,
-                Name = "FEATUREID", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //IF
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
-                {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "condition", //NOXLATE
-                        Description = Strings.Func_IF_ConditionDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "trueValue", //NOXLATE
-                        Description = Strings.Func_IF_TrueValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "falseValue", //NOXLATE
-                        Description = Strings.Func_IF_FalseValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    }
-                },
-                Description = Strings.Func_IF_Description,
-                Name = "IF", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //LAYERID
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
-                Description = Strings.Func_LAYERID_Description,
-                Name = "LAYERID", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //LOOKUP
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
-                {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "expression", //NOXLATE
-                        Description = Strings.Func_LOOKUP_ExpressionDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "defaultValue", //NOXLATE
-                        Description = Strings.Func_LOOKUP_DefaultValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "index", //NOXLATE
-                        Description = Strings.Func_LOOKUP_IndexDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "value", //NOXLATE
-                        Description = Strings.Func_LOOKUP_ValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    }
-                },
-                Description = Strings.Func_LOOKUP_Description,
-                Name = "LOOKUP", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //MAPNAME
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
-                Description = Strings.Func_MAPNAME_Description,
-                Name = "MAPNAME", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //RANGE
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
-                {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "expression", //NOXLATE
-                        Description = Strings.Func_RANGE_ExpressionDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "rangeMin", //NOXLATE
-                        Description = Strings.Func_RANGE_MinDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "rangeMax", //NOXLATE
-                        Description = Strings.Func_RANGE_MaxDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "defaultValue", //NOXLATE
-                        Description = Strings.Func_RANGE_DefaultValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    },
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "value", //NOXLATE
-                        Description = Strings.Func_RANGE_ValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    }
-                },
-                Description = Strings.Func_RANGE_Description,
-                Name = "RANGE", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //SESSION
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>(),
-                Description = Strings.Func_SESSION_Description,
-                Name = "SESSION", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
-            //URLENCODE
-            yield return new FdoProviderCapabilitiesExpressionFunctionDefinition()
-            {
-                ArgumentDefinitionList = new BindingList<FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition>()
-                {
-                    new FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinition()
-                    {
-                        Name = "strValue", //NOXLATE
-                        Description = Strings.Func_URLENCODE_StringValueDescription,
-                        DataType = FdoProviderCapabilitiesExpressionFunctionDefinitionArgumentDefinitionDataType.String
-                    }
-                },
-                Description = Strings.Func_URLENCODE_Description,
-                Name = "URLENCODE", //NOXLATE
-                ReturnType = "String" //NOXLATE
-            };
         }
 
         private void InsertText(string exprText)

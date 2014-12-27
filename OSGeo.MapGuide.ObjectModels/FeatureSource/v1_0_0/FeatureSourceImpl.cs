@@ -180,7 +180,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0
         {
             get
             {
-                return Utility.ToConnectionString(this.GetConnectionProperties());
+                return Utils.ToConnectionString(this.GetConnectionProperties());
             }
         }
 

@@ -47,6 +47,9 @@
     <Compile Include="..\Generated\ApplicationDefinitionInfo-1.0.0.designer.cs">
       <Link>ApplicationDefinition\v1_0_0\ApplicationDefinitionInfo-1.0.0.designer.cs</Link>
     </Compile>
+    <Compile Include="..\Generated\DataStoreList-1.0.0.designer.cs">
+      <Link>Common\DataStoreList-1.0.0.designer.cs</Link>
+    </Compile>
     <Compile Include="..\Generated\DrawingSectionList-1.0.0.designer.cs">
       <Link>Common\DrawingSectionList-1.0.0.designer.cs</Link>
     </Compile>
@@ -62,11 +65,23 @@
     <Compile Include="..\Generated\FdoLongTransactionList-1.0.0.designer.cs">
       <Link>Common\FdoLongTransactionList-1.0.0.designer.cs</Link>
     </Compile>
+    <Compile Include="..\Generated\FdoProviderCapabilities-1.0.0.designer.cs">
+      <Link>Capabilities\v1_0_0\FdoProviderCapabilities-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\FdoProviderCapabilities-1.1.0.designer.cs">
+      <Link>Capabilities\v1_1_0\FdoProviderCapabilities-1.1.0.designer.cs</Link>
+    </Compile>
     <Compile Include="..\Generated\FdoSpatialContextList-1.0.0.designer.cs">
       <Link>Common\FdoSpatialContextList-1.0.0.designer.cs</Link>
     </Compile>
+    <Compile Include="..\Generated\FeatureProviderRegistry-1.0.0.designer.cs">
+      <Link>Common\FeatureProviderRegistry-1.0.0.designer.cs</Link>
+    </Compile>
     <Compile Include="..\Generated\FeatureSource-1.0.0.designer.cs">
       <Link>FeatureSource\v1_0_0\FeatureSource-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\GroupList-1.0.0.designer.cs">
+      <Link>Common\GroupList-1.0.0.designer.cs</Link>
     </Compile>
     <Compile Include="..\Generated\LayerDefinition-1.0.0.designer.cs">
       <Link>LayerDefinition\v1_0_0\LayerDefinition-1.0.0.designer.cs</Link>
@@ -122,6 +137,18 @@
     <Compile Include="..\Generated\ResourceReferenceList-1.0.0.designer.cs">
       <Link>Common\ResourceReferenceList-1.0.0.designer.cs</Link>
     </Compile>
+    <Compile Include="..\Generated\RuntimeMap-2.6.0.designer.cs">
+      <Link>RuntimeMap\v2_6_0\RuntimeMap-2.6.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\SiteInformation-1.0.0.designer.cs">
+      <Link>Common\SiteInformation-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\SiteVersion-1.0.0.designer.cs">
+      <Link>Common\SiteVersion-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\StringCollection-1.0.0.designer.cs">
+      <Link>Common\StringCollection-1.0.0.designer.cs</Link>
+    </Compile>
     <Compile Include="..\Generated\SymbolDefinition-1.0.0.designer.cs">
       <Link>SymbolDefinition\v1_0_0\SymbolDefinition-1.0.0.designer.cs</Link>
     </Compile>
@@ -133,6 +160,12 @@
     </Compile>
     <Compile Include="..\Generated\SymbolLibrary-1.0.0.designer.cs">
       <Link>SymbolLibrary\v1.0.0\SymbolLibrary-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\UnmanagedDataList-1.0.0.designer.cs">
+      <Link>Common\UnmanagedDataList-1.0.0.designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Generated\UserList-1.0.0.designer.cs">
+      <Link>Common\UserList-1.0.0.designer.cs</Link>
     </Compile>
     <Compile Include="..\Generated\WatermarkDefinition-2.3.0.designer.cs">
       <Link>WatermarkDefinition\v2_3_0\WatermarkDefinition-2.3.0.designer.cs</Link>
@@ -152,10 +185,16 @@
     <Compile Include="..\Generated\WebLayout-2.6.0.designer.cs">
       <Link>WebLayout\v2_6_0\WebLayout-2.6.0.designer.cs</Link>
     </Compile>
+    <Compile Include="..\Properties\SignedAssemblyInfo.cs">
+      <Link>SignedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="ApplicationDefinition\v1_0_0\ApplicationDefinitionImpl.cs" />
     <Compile Include="ApplicationDefinition\v1_0_0\ApplicationDefinitionInfoImpl.cs" />
     <Compile Include="ApplicationDefinition\ApplicationDefinitionInterfaces.cs" />
     <Compile Include="BaseSerializable.cs" />
+    <Compile Include="Capabilities\FdoCapabilities.cs" />
+    <Compile Include="Capabilities\v1_0_0\FdoCapabilitiesImpl.cs" />
+    <Compile Include="Capabilities\v1_1_0\FdoCapabilitiesImpl.cs" />
     <Compile Include="Check.cs" />
     <Compile Include="Common\ExpressionDataType.cs" />
     <Compile Include="Common\ExtendedDataType.cs" />
@@ -169,6 +208,8 @@
     <Compile Include="Common\IResourceIdReference.cs" />
     <Compile Include="Common\ResourceItems.cs" />
     <Compile Include="Common\ResourceList.cs" />
+    <Compile Include="Common\ResourcePackageManifest.cs" />
+    <Compile Include="Common\UnmanagedDataList.cs" />
     <Compile Include="DrawingSource\v1_0_0\DrawingSourceImpl.cs" />
     <Compile Include="DrawingSource\DrawingSourceInterfaces.cs" />
     <Compile Include="FeatureSource\FeatureSourceInterfaces.cs" />
@@ -216,6 +257,8 @@
     <Compile Include="ResourceTypeDescriptor.cs" />
     <Compile Include="ResourceTypeRegistry.cs" />
     <Compile Include="ResourceTypes.cs" />
+    <Compile Include="RuntimeMap\RuntimeMapInterfaces.cs" />
+    <Compile Include="RuntimeMap\v2_6_0\RuntimeMapImpl.cs" />
     <Compile Include="Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

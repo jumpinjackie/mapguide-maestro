@@ -1,6 +1,6 @@
 ﻿#region Disclaimer / License
 
-// Copyright (C) 2013, Jackie Ng
+// Copyright (C) 2014, Jackie Ng
 // http://trac.osgeo.org/mapguide/wiki/maestro, jumpinjackie@gmail.com
 //
 // This library is free software; you can redistribute it and/or
@@ -24,6 +24,7 @@ using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace OSGeo.MapGuide.ObjectModels.RuntimeMap.v2_6_0
 {

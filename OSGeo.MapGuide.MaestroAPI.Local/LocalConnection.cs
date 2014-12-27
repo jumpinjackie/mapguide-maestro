@@ -687,7 +687,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         public IFdoProviderCapabilities GetProviderCapabilities(string provider)
         {
             var fes = GetFeatureService();
-            var res = (IFdoProviderCapabilities)base.DeserializeObject(typeof(OSGeo.MapGuide.ObjectModels.Capabilities_1_1_0.FdoProviderCapabilities), new MgReadOnlyStream(() => fes.GetCapabilities(provider)));
+            var res = (IFdoProviderCapabilities)base.DeserializeObject(typeof(OSGeo.MapGuide.ObjectModels.Capabilities.v1_1_0.FdoProviderCapabilities), new MgReadOnlyStream(() => fes.GetCapabilities(provider)));
             LogMethodCall("MgFeatureService::GetProviderCapabilities", true, provider);
             return res;
         }

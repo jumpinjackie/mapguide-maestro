@@ -33,7 +33,7 @@ namespace OSGeo.MapGuide.ObjectModels
     {
         protected virtual string NormalizedSerialize(XmlSerializer serializer, object obj)
         {
-            return Utility.NormalizedSerialize(serializer, obj);
+            return Utils.NormalizedSerialize(serializer, obj);
         }
     }
 
@@ -41,12 +41,12 @@ namespace OSGeo.MapGuide.ObjectModels
     {
         protected string SerializeHTMLColor(Color color, bool bIncludeAlpha)
         {
-            return Utility.SerializeHTMLColor(color, bIncludeAlpha);
+            return Utils.SerializeHTMLColor(color, bIncludeAlpha);
         }
 
         protected Color ParseHTMLColor(string strColor)
         {
-            return Utility.ParseHTMLColor(strColor);
+            return Utils.ParseHTMLColor(strColor);
         }
     }
 }

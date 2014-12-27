@@ -2173,7 +2173,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         public static void SetBlockColor(this IBlockSymbol sym, Color c)
         {
             Check.NotNull(sym, "sym");
-            sym.BlockColor = Utility.SerializeHTMLColor(c, true);
+            sym.BlockColor = Utils.SerializeHTMLColor(c, true);
         }
 
         /// <summary>
@@ -2184,7 +2184,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         public static void SetLayerColor(this IBlockSymbol sym, Color c)
         {
             Check.NotNull(sym, "sym"); //NOXLATE
-            sym.LayerColor = Utility.SerializeHTMLColor(c, true);
+            sym.LayerColor = Utils.SerializeHTMLColor(c, true);
         }
 
         /// <summary>
@@ -2209,7 +2209,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         public static void SetForegroundColor(this IFontSymbol sym, Color c)
         {
             Check.NotNull(sym, "sym"); //NOXLATE
-            sym.ForegroundColor = Utility.SerializeHTMLColor(c, true);
+            sym.ForegroundColor = Utils.SerializeHTMLColor(c, true);
         }
 
         /// <summary>
@@ -2307,7 +2307,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         public static void SetFillColor(this IW2DSymbol sym, Color c)
         {
             Check.NotNull(sym, "sym"); //NOXLATE
-            sym.FillColor = Utility.SerializeHTMLColor(c, true);
+            sym.FillColor = Utils.SerializeHTMLColor(c, true);
         }
 
         /// <summary>
@@ -2318,7 +2318,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         public static void SetLineColor(this IW2DSymbol sym, Color c)
         {
             Check.NotNull(sym, "sym"); //NOXLATE
-            sym.LineColor = Utility.SerializeHTMLColor(c, true);
+            sym.LineColor = Utils.SerializeHTMLColor(c, true);
         }
 
         /// <summary>
@@ -2329,7 +2329,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         public static void SetTextColor(this IW2DSymbol sym, Color c)
         {
             Check.NotNull(sym, "sym"); //NOXLATE
-            sym.TextColor = Utility.SerializeHTMLColor(c, true);
+            sym.TextColor = Utils.SerializeHTMLColor(c, true);
         }
 
         /// <summary>
@@ -2340,7 +2340,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         public static void SetForegroundColor(this ITextSymbol sym, Color c)
         {
             Check.NotNull(sym, "sym"); //NOXLATE
-            sym.ForegroundColor = Utility.SerializeHTMLColor(c, true);
+            sym.ForegroundColor = Utils.SerializeHTMLColor(c, true);
         }
 
         /// <summary>
@@ -2351,7 +2351,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         public static void SetBackgroundColor(this ITextSymbol sym, Color c)
         {
             Check.NotNull(sym, "sym"); //NOXLATE
-            sym.BackgroundColor = Utility.SerializeHTMLColor(c, true);
+            sym.BackgroundColor = Utils.SerializeHTMLColor(c, true);
         }
 
         /// <summary>
@@ -2376,7 +2376,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         public static void SetBackgroundColor(this IFill fil, Color c)
         {
             Check.NotNull(fil, "fil"); //NOXLATE
-            fil.BackgroundColor = Utility.SerializeHTMLColor(c, true);
+            fil.BackgroundColor = Utils.SerializeHTMLColor(c, true);
         }
 
         /// <summary>
@@ -2387,7 +2387,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         public static void SetForegroundColor(this IFill fil, Color c)
         {
             Check.NotNull(fil, "fil"); //NOXLATE
-            fil.ForegroundColor = Utility.SerializeHTMLColor(c, true);
+            fil.ForegroundColor = Utils.SerializeHTMLColor(c, true);
         }
 
         /// <summary>
@@ -2398,7 +2398,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         public static void SetTransparencyColor(this IGridColorStyle style, Color c)
         {
             Check.NotNull(style, "style"); //NOXLATE
-            style.TransparencyColor = Utility.SerializeHTMLColor(c, true);
+            style.TransparencyColor = Utils.SerializeHTMLColor(c, true);
         }
 
         /// <summary>
@@ -2409,7 +2409,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         public static void SetDefaultColor(this IGridSurfaceStyle style, Color c)
         {
             Check.NotNull(style, "style"); //NOXLATE
-            style.DefaultColor = Utility.SerializeHTMLColor(c, true);
+            style.DefaultColor = Utils.SerializeHTMLColor(c, true);
         }
 
         /// <summary>

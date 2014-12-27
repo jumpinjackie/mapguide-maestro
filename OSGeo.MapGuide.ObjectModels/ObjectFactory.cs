@@ -443,6 +443,18 @@ namespace OSGeo.MapGuide.ObjectModels
         }
 
         /// <summary>
+        /// Creates an empty group security object
+        /// </summary>
+        /// <returns></returns>
+        public static ResourceSecurityTypeGroups CreateSecurityGroup()
+        {
+            return new ResourceSecurityTypeGroups()
+            {
+                Group = new System.ComponentModel.BindingList<ResourceSecurityTypeGroupsGroup>()
+            };
+        }
+
+        /// <summary>
         /// Creates an empty user security object
         /// </summary>
         /// <returns></returns>
@@ -457,8 +469,6 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <summary>
         /// Creates the feature source extension.
         /// </summary>
-        /// <param name="name">The name of the extension</param>
-        /// <param name="featureClass">The feature class</param>
         /// <returns></returns>
         public static IFeatureSourceExtension CreateFeatureSourceExtension(string name, string featureClass)
         {
@@ -468,6 +478,30 @@ namespace OSGeo.MapGuide.ObjectModels
                 FeatureClass = featureClass,
                 CalculatedProperty = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.CalculatedPropertyType>(),
                 AttributeRelate = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.AttributeRelateType>()
+            };
+        }
+
+        /// <summary>
+        /// Creates the feature source extension.
+        /// </summary>
+        /// <returns></returns>
+        public static IFeatureSourceExtension CreateFeatureSourceExtension()
+        {
+            return new OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.FeatureSourceTypeExtension()
+            {
+                CalculatedProperty = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.CalculatedPropertyType>(),
+                AttributeRelate = new System.ComponentModel.BindingList<OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.AttributeRelateType>()
+            };
+        }
+
+        /// <summary>
+        /// Creates the calculated property.
+        /// </summary>
+        /// <returns></returns>
+        public static ICalculatedProperty CreateCalculatedProperty()
+        {
+            return new OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.CalculatedPropertyType()
+            {
             };
         }
 
@@ -692,6 +726,22 @@ namespace OSGeo.MapGuide.ObjectModels
             map.Extents = env;
 
             return map;
+        }
+
+        /// <summary>
+        /// Creates the web layout.
+        /// </summary>
+        /// <param name="version">The version.</param>
+        /// <param name="mapDefinitionId">The map definition id.</param>
+        /// <returns></returns>
+        public static IWebLayout CreateWebLayout(Version version, string mapDefinitionId)
+        {
+            if (!_wlFactories.ContainsKey(version))
+                throw new ArgumentException(Strings.UnknownWebLayoutVersion + version.ToString());
+
+            var wl = _wlFactories[version](mapDefinitionId);
+
+            return wl;
         }
 
         /// <summary>
@@ -1021,6 +1071,37 @@ namespace OSGeo.MapGuide.ObjectModels
         public static IResource DeserializeResourceXml(string xml)
         {
             return ResourceTypeRegistry.Deserialize(xml);
+        }
+
+        /// <summary>
+        /// Serializes the specified resource.
+        /// </summary>
+        /// <param name="res">The resource.</param>
+        /// <returns></returns>
+        public static Stream SerializeResource(IResource resource)
+        {
+            return ResourceTypeRegistry.Serialize(resource);
+        }
+
+        /// <summary>
+        /// Serializes the specified resource.
+        /// </summary>
+        /// <param name="res"></param>
+        /// <returns></returns>
+        public static string SerializeResourceAsString(IResource resource)
+        {
+            return ResourceTypeRegistry.SerializeAsString(resource);
+        }
+
+        /// <summary>
+        /// Deserializes the specified stream for the specified resource type.
+        /// </summary>
+        /// <param name="resourceType">Type of the resource.</param>
+        /// <param name="stream">The stream.</param>
+        /// <returns></returns>
+        public static IResource DeserializeResourceStream(string resourceType, Stream stream)
+        {
+            return ResourceTypeRegistry.Deserialize(resourceType, stream);
         }
     }
 }

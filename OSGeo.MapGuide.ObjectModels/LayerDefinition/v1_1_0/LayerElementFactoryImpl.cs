@@ -227,9 +227,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
         {
             return new FillType()
             {
-                BackgroundColor = Utility.SerializeHTMLColor(background, true),
+                BackgroundColor = Utils.SerializeHTMLColor(background, true),
                 FillPattern = pattern,
-                ForegroundColor = Utility.SerializeHTMLColor(foreground, true)
+                ForegroundColor = Utils.SerializeHTMLColor(foreground, true)
             };
         }
 
@@ -242,7 +242,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
         {
             return new StrokeType()
             {
-                Color = Utility.SerializeHTMLColor(color, true),
+                Color = Utils.SerializeHTMLColor(color, true),
                 LineStyle = "Solid", //NOXLATE
                 Thickness = "1", //NOXLATE
                 Unit = LengthUnitType.Points
@@ -390,11 +390,11 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
             return new TextSymbolType()
             {
                 AdvancedPlacement = null,
-                BackgroundColor = Utility.SerializeHTMLColor(Color.White, true),
+                BackgroundColor = Utils.SerializeHTMLColor(Color.White, true),
                 BackgroundStyle = BackgroundStyleType.Transparent,
                 Bold = "false", //NOXLATE
                 FontName = "Arial", //NOXLATE
-                ForegroundColor = Utility.SerializeHTMLColor(Color.Black, true),
+                ForegroundColor = Utils.SerializeHTMLColor(Color.Black, true),
                 HorizontalAlignment = "'Center'", //NOXLATE
                 Italic = "false", //NOXLATE
                 Rotation = "0", //NOXLATE

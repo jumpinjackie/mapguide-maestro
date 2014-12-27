@@ -1796,7 +1796,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             string req = m_reqBuilder.GetProviderCapabilities(provider);
 
-            var o = DeserializeObject<OSGeo.MapGuide.ObjectModels.Capabilities_1_1_0.FdoProviderCapabilities>(this.OpenRead(req));
+            var o = DeserializeObject<OSGeo.MapGuide.ObjectModels.Capabilities.v1_1_0.FdoProviderCapabilities>(this.OpenRead(req));
             return o;
         }
 
@@ -1986,7 +1986,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             var req = m_reqBuilder.DescribeRuntimeMap(mapName, requestedFeatures, iconsPerScaleRange, iconFormat, iconWidth, iconHeight);
             using (var s = this.OpenRead(req))
             {
-                var info = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.RuntimeMap.RuntimeMap>(s);
+                var info = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.RuntimeMap.v2_6_0.RuntimeMap>(s);
                 return info;
             }
         }
@@ -1996,7 +1996,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             var req = m_reqBuilder.CreateRuntimeMap(mapDefinition, targetMapName, requestedFeatures, iconsPerScaleRange, iconFormat, iconWidth, iconHeight);
             using (var s = this.OpenRead(req))
             {
-                var info = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.RuntimeMap.RuntimeMap>(s);
+                var info = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.RuntimeMap.v2_6_0.RuntimeMap>(s);
                 return info;
             }
         }

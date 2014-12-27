@@ -113,7 +113,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             //HACK: MGOS 2.2 outputs different capabilities xml (because it's actually the correct one!), so
             //without breaking support against 2.1 and older servers, we transform the xml to its pre-2.2 form
-            if (type == typeof(FdoProviderCapabilities) && this.SiteVersion < new Version(2, 2))
+            if (type == typeof(OSGeo.MapGuide.ObjectModels.Capabilities.v1_0_0.FdoProviderCapabilities) && this.SiteVersion < new Version(2, 2))
             {
                 StringBuilder sb = null;
                 using (StreamReader reader = new StreamReader(data))
