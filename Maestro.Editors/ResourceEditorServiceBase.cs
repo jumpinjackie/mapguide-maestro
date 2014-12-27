@@ -109,6 +109,9 @@ namespace Maestro.Editors
             return null;
         }
 
+        /// <summary>
+        /// Gets the attached server connection
+        /// </summary>
         public IServerConnection CurrentConnection
         {
             get { return _conn; }

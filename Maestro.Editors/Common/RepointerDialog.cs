@@ -50,7 +50,7 @@ namespace Maestro.Editors.Common
         /// Constructor
         /// </summary>
         /// <param name="resId">The given resource, whose dependencies we want to re-point</param>
-        /// <param name="edSvc">The editor service</param>
+        /// <param name="conn">The server connection</param>
         public RepointerDialog(ResourceIdentifier resId, IServerConnection conn)
             : this()
         {

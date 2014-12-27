@@ -75,6 +75,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales.SymbolParamEditors
             }
         }
 
+        /// <summary>
+        /// Gets the value of this editor
+        /// </summary>
         public decimal Value
         {
             get { return numericUpDown.Value; }

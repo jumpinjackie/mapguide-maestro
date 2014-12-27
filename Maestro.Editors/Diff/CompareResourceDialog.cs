@@ -45,7 +45,7 @@ namespace Maestro.Editors.Diff
         /// <summary>
         /// Creates a new instance of CompareResourceDialog
         /// </summary>
-        /// <param name="resSvc">The resource service</param>
+        /// <param name="conn">The server connection</param>
         public CompareResourceDialog(IServerConnection conn)
             : this()
         {

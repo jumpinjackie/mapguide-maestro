@@ -43,7 +43,8 @@ namespace Maestro.Editors.MapDefinition
         /// <summary>
         /// Initializes a new instance of the <see cref="ExtentCalculationDialog"/> class.
         /// </summary>
-        /// <param name="mdf">The MDF.</param>
+        /// <param name="mdf">The Map Definition</param>
+        /// <param name="conn">The server connection</param>
         public ExtentCalculationDialog(IMapDefinition mdf, IServerConnection conn)
         {
             InitializeComponent();
