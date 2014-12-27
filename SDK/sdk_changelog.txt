@@ -1,3 +1,17 @@
+current
+-------
+
+MASSIVE BREAKING CHANGES. High level overview:
+ - Resource object classes and various interfaces moved to separate OSGeo.MapGuide.ObjectModels assembly
+ - OSGeo.MapGuide.ExtendedObjectModels is gone. No need to call ModelSetup.Initialize() anymore
+ - OSGeo.MapGuide.ObjectModels.* assemblies have been merged into OSGeo.MapGuide.ObjectModels
+ - ObjectFactory has been moved to OSGeo.MapGuide.ObjectModels and is the one-stop shop for object creation and XML serialization to/from resource classes
+ - ResourceTypeRegistry is no longer public and relevant APIs exposed in ObjectFactory
+ - IResource now resides in OSGeo.MapGuide.ObjectModels and no longer has an attached IServerConnection property. Any helper
+   extension methods that previously relied on this fact now take an IServerConnection parameter to provide context.
+ - Applications will now generally need to reference OSGeo.MapGuide.ObjectModels in addition to OSGeo.MapGuide.MaestroAPI for most existing code to compile
+   and work as before.
+
 5.1
 ---
 
