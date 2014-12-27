@@ -20,17 +20,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestroFsPreview", "..\Maes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.AddIn.ExtendedObjectModels", "..\Maestro.AddIn.ExtendedObjectModels\Maestro.AddIn.ExtendedObjectModels.csproj", "{32BA7DF6-1AFA-441D-9231-5624C5920706}"
 	ProjectSection(ProjectDependencies) = postProject
-		{B3A2B816-9F41-4857-A111-09D2DF2550D6} = {B3A2B816-9F41-4857-A111-09D2DF2550D6}
-		{D525B343-66D6-4D6B-9A55-78A173D94A51} = {D525B343-66D6-4D6B-9A55-78A173D94A51}
 		{CFD19053-2172-41D3-8460-0FD2123A1E88} = {CFD19053-2172-41D3-8460-0FD2123A1E88}
 		{80FA3158-8B5F-48D1-A393-0378AFE48A7E} = {80FA3158-8B5F-48D1-A393-0378AFE48A7E}
-		{BF6E996E-27AF-44CD-B3CF-A40874E15B2E} = {BF6E996E-27AF-44CD-B3CF-A40874E15B2E}
-		{EDDB0F74-6FE7-4969-80B0-817A629722CD} = {EDDB0F74-6FE7-4969-80B0-817A629722CD}
-		{B5EA049C-6AB7-4686-A2F4-4BA2EAC0E585} = {B5EA049C-6AB7-4686-A2F4-4BA2EAC0E585}
-		{B2A1F69E-52AA-42A2-8DED-89ADB9B14A38} = {B2A1F69E-52AA-42A2-8DED-89ADB9B14A38}
-		{0A93ACA8-5B21-44E6-B0B7-5D1E72D3A6A2} = {0A93ACA8-5B21-44E6-B0B7-5D1E72D3A6A2}
 		{5AD2CDBA-952E-4148-98A1-31D2E0D540D5} = {5AD2CDBA-952E-4148-98A1-31D2E0D540D5}
-		{AC5068F6-CFBE-4BCD-B68B-062725E424D4} = {AC5068F6-CFBE-4BCD-B68B-062725E424D4}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MgCooker", "..\MgCooker\MgCooker.csproj", "{C7DCF771-5982-4859-A17F-01126E6F9BA6}"
@@ -53,38 +45,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI.Http", "..\OSGeo.MapGuide.MaestroAPI.Http\OSGeo.MapGuide.MaestroAPI.Http.csproj", "{6EF1E775-444B-4E5F-87FB-D687C43A68D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.LayerDefinition-1.1.0", "..\ExtendedModels\LayerDefinition-1.1.0\OSGeo.MapGuide.ObjectModels.LayerDefinition-1.1.0.csproj", "{B5EA049C-6AB7-4686-A2F4-4BA2EAC0E585}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.LayerDefinition-1.2.0", "..\ExtendedModels\LayerDefinition-1.2.0\OSGeo.MapGuide.ObjectModels.LayerDefinition-1.2.0.csproj", "{EDDB0F74-6FE7-4969-80B0-817A629722CD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.LayerDefinition-1.3.0", "..\ExtendedModels\LayerDefinition-1.3.0\OSGeo.MapGuide.ObjectModels.LayerDefinition-1.3.0.csproj", "{AC5068F6-CFBE-4BCD-B68B-062725E424D4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.LoadProcedure-1.1.0", "..\ExtendedModels\LoadProcedure-1.1.0\OSGeo.MapGuide.ObjectModels.LoadProcedure-1.1.0.csproj", "{B2A1F69E-52AA-42A2-8DED-89ADB9B14A38}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.LoadProcedure-2.2.0", "..\ExtendedModels\LoadProcedure-2.2.0\OSGeo.MapGuide.ObjectModels.LoadProcedure-2.2.0.csproj", "{D525B343-66D6-4D6B-9A55-78A173D94A51}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.SymbolDefinition-1.1.0", "..\ExtendedModels\SymbolDefinition-1.1.0\OSGeo.MapGuide.ObjectModels.SymbolDefinition-1.1.0.csproj", "{BF6E996E-27AF-44CD-B3CF-A40874E15B2E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.WebLayout-1.1.0", "..\ExtendedModels\WebLayout-1.1.0\OSGeo.MapGuide.ObjectModels.WebLayout-1.1.0.csproj", "{0A93ACA8-5B21-44E6-B0B7-5D1E72D3A6A2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestroAPITests", "..\MaestroAPITests\MaestroAPITests.csproj", "{351D49A3-2E4A-4EC3-AFC2-D56598F44F51}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaestroAPITestRunner", "..\MaestroAPITestRunner\MaestroAPITestRunner.csproj", "{50C12B5C-387C-4007-A1D1-CB181CB474CC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.LayerDefinition-2.3.0", "..\ExtendedModels\LayerDefinition-2.3.0\OSGeo.MapGuide.ObjectModels.LayerDefinition-2.3.0.csproj", "{F976A709-D9DB-407E-A4CD-2CEA31C6B1D9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.MapDefinition-2.3.0", "..\ExtendedModels\MapDefinition-2.3.0\OSGeo.MapGuide.ObjectModels.MapDefinition-2.3.0.csproj", "{C8DB3E77-3AF4-471D-A214-69DBEB32750E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.3.0", "..\ExtendedModels\WatermarkDefinition-2.3.0\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.3.0.csproj", "{F84E21EE-360C-46EC-BD01-E66F8D9F5B3E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ExtendedObjectModels", "..\OSGeo.MapGuide.ExtendedObjectModels\OSGeo.MapGuide.ExtendedObjectModels.csproj", "{B3A2B816-9F41-4857-A111-09D2DF2550D6}"
-	ProjectSection(ProjectDependencies) = postProject
-		{C0CA5D05-72C0-4F22-8618-B31BF0FFA190} = {C0CA5D05-72C0-4F22-8618-B31BF0FFA190}
-		{222CB020-5336-47D7-9BB9-A22D18953C80} = {222CB020-5336-47D7-9BB9-A22D18953C80}
-		{16E6B250-C805-4C31-9A7D-F56A0051EC93} = {16E6B250-C805-4C31-9A7D-F56A0051EC93}
-		{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0} = {E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}
-		{BEC17FD3-2ADB-4154-934D-494313C588EE} = {BEC17FD3-2ADB-4154-934D-494313C588EE}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI.Local", "..\OSGeo.MapGuide.MaestroAPI.Local\OSGeo.MapGuide.MaestroAPI.Local.csproj", "{3DDF6501-0148-474C-8674-7C7DA49C7F02}"
 EndProject
@@ -99,26 +62,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignMapGuideApi", "..\SignMapGuideApi\SignMapGuideApi.csproj", "{D24F724A-1CBF-4EB6-A48B-92C08353C4CC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI.Native32-2.2.0", "..\OSGeo.MapGuide.MaestroAPI.Native\OSGeo.MapGuide.MaestroAPI.Native32-2.2.0.csproj", "{F4420153-9DF3-4407-AD65-E8ABED2B6E25}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0", "..\ExtendedModels\WebLayout-2.4.0\OSGeo.MapGuide.ObjectModels.WebLayout-2.4.0.csproj", "{BEC17FD3-2ADB-4154-934D-494313C588EE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.LayerDefinition-2.4.0", "..\ExtendedModels\LayerDefinition-2.4.0\OSGeo.MapGuide.ObjectModels.LayerDefinition-2.4.0.csproj", "{16E6B250-C805-4C31-9A7D-F56A0051EC93}"
-	ProjectSection(ProjectDependencies) = postProject
-		{222CB020-5336-47D7-9BB9-A22D18953C80} = {222CB020-5336-47D7-9BB9-A22D18953C80}
-		{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0} = {E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.MapDefinition-2.4.0", "..\ExtendedModels\MapDefinition-2.4.0\OSGeo.MapGuide.ObjectModels.MapDefinition-2.4.0.csproj", "{C0CA5D05-72C0-4F22-8618-B31BF0FFA190}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0} = {E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.SymbolDefinition-2.4.0", "..\ExtendedModels\SymbolDefinition-2.4.0\OSGeo.MapGuide.ObjectModels.SymbolDefinition-2.4.0.csproj", "{222CB020-5336-47D7-9BB9-A22D18953C80}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.4.0", "..\ExtendedModels\WatermarkDefinition-2.4.0\OSGeo.MapGuide.ObjectModels.WatermarkDefinition-2.4.0.csproj", "{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}"
-	ProjectSection(ProjectDependencies) = postProject
-		{222CB020-5336-47D7-9BB9-A22D18953C80} = {222CB020-5336-47D7-9BB9-A22D18953C80}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.AddIn.FdoToolbox", "..\Maestro.AddIn.FdoToolbox\Maestro.AddIn.FdoToolbox.csproj", "{8787FF3F-552F-46BE-B9D7-548B6162B079}"
 EndProject
@@ -136,7 +79,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maestro.LiveMapEditor", "..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderTemplate", "..\ProviderTemplate\ProviderTemplate.csproj", "{EDDBBE17-E9A9-43FB-99FE-38DD8E10607A}"
 	ProjectSection(ProjectDependencies) = postProject
-		{B3A2B816-9F41-4857-A111-09D2DF2550D6} = {B3A2B816-9F41-4857-A111-09D2DF2550D6}
 		{D24F724A-1CBF-4EB6-A48B-92C08353C4CC} = {D24F724A-1CBF-4EB6-A48B-92C08353C4CC}
 		{F4420153-9DF3-4407-AD65-E8ABED2B6E25} = {F4420153-9DF3-4407-AD65-E8ABED2B6E25}
 		{80FA3158-8B5F-48D1-A393-0378AFE48A7E} = {80FA3158-8B5F-48D1-A393-0378AFE48A7E}
@@ -157,8 +99,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{24093F
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.WebLayout-2.6.0", "..\ExtendedModels\WebLayout-2.6.0\OSGeo.MapGuide.ObjectModels.WebLayout-2.6.0.csproj", "{829D2A4E-7DBC-48AD-9CF9-12ACFBF943A6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MpuCalc", "..\MpuCalc\MpuCalc.csproj", "{43B01C27-E0D2-439B-83ED-8C814ED1526A}"
 EndProject
@@ -228,34 +168,6 @@ Global
 		{6EF1E775-444B-4E5F-87FB-D687C43A68D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EF1E775-444B-4E5F-87FB-D687C43A68D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EF1E775-444B-4E5F-87FB-D687C43A68D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B5EA049C-6AB7-4686-A2F4-4BA2EAC0E585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5EA049C-6AB7-4686-A2F4-4BA2EAC0E585}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5EA049C-6AB7-4686-A2F4-4BA2EAC0E585}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5EA049C-6AB7-4686-A2F4-4BA2EAC0E585}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EDDB0F74-6FE7-4969-80B0-817A629722CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EDDB0F74-6FE7-4969-80B0-817A629722CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EDDB0F74-6FE7-4969-80B0-817A629722CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EDDB0F74-6FE7-4969-80B0-817A629722CD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AC5068F6-CFBE-4BCD-B68B-062725E424D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC5068F6-CFBE-4BCD-B68B-062725E424D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC5068F6-CFBE-4BCD-B68B-062725E424D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC5068F6-CFBE-4BCD-B68B-062725E424D4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B2A1F69E-52AA-42A2-8DED-89ADB9B14A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B2A1F69E-52AA-42A2-8DED-89ADB9B14A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B2A1F69E-52AA-42A2-8DED-89ADB9B14A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B2A1F69E-52AA-42A2-8DED-89ADB9B14A38}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D525B343-66D6-4D6B-9A55-78A173D94A51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D525B343-66D6-4D6B-9A55-78A173D94A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D525B343-66D6-4D6B-9A55-78A173D94A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D525B343-66D6-4D6B-9A55-78A173D94A51}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF6E996E-27AF-44CD-B3CF-A40874E15B2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF6E996E-27AF-44CD-B3CF-A40874E15B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF6E996E-27AF-44CD-B3CF-A40874E15B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF6E996E-27AF-44CD-B3CF-A40874E15B2E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A93ACA8-5B21-44E6-B0B7-5D1E72D3A6A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A93ACA8-5B21-44E6-B0B7-5D1E72D3A6A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A93ACA8-5B21-44E6-B0B7-5D1E72D3A6A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A93ACA8-5B21-44E6-B0B7-5D1E72D3A6A2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{351D49A3-2E4A-4EC3-AFC2-D56598F44F51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{351D49A3-2E4A-4EC3-AFC2-D56598F44F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{351D49A3-2E4A-4EC3-AFC2-D56598F44F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -264,22 +176,6 @@ Global
 		{50C12B5C-387C-4007-A1D1-CB181CB474CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50C12B5C-387C-4007-A1D1-CB181CB474CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50C12B5C-387C-4007-A1D1-CB181CB474CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F976A709-D9DB-407E-A4CD-2CEA31C6B1D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F976A709-D9DB-407E-A4CD-2CEA31C6B1D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F976A709-D9DB-407E-A4CD-2CEA31C6B1D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F976A709-D9DB-407E-A4CD-2CEA31C6B1D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C8DB3E77-3AF4-471D-A214-69DBEB32750E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8DB3E77-3AF4-471D-A214-69DBEB32750E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C8DB3E77-3AF4-471D-A214-69DBEB32750E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8DB3E77-3AF4-471D-A214-69DBEB32750E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F84E21EE-360C-46EC-BD01-E66F8D9F5B3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F84E21EE-360C-46EC-BD01-E66F8D9F5B3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F84E21EE-360C-46EC-BD01-E66F8D9F5B3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F84E21EE-360C-46EC-BD01-E66F8D9F5B3E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B3A2B816-9F41-4857-A111-09D2DF2550D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3A2B816-9F41-4857-A111-09D2DF2550D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B3A2B816-9F41-4857-A111-09D2DF2550D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B3A2B816-9F41-4857-A111-09D2DF2550D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3DDF6501-0148-474C-8674-7C7DA49C7F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3DDF6501-0148-474C-8674-7C7DA49C7F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DDF6501-0148-474C-8674-7C7DA49C7F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -300,26 +196,6 @@ Global
 		{F4420153-9DF3-4407-AD65-E8ABED2B6E25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4420153-9DF3-4407-AD65-E8ABED2B6E25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4420153-9DF3-4407-AD65-E8ABED2B6E25}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BEC17FD3-2ADB-4154-934D-494313C588EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BEC17FD3-2ADB-4154-934D-494313C588EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BEC17FD3-2ADB-4154-934D-494313C588EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BEC17FD3-2ADB-4154-934D-494313C588EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{16E6B250-C805-4C31-9A7D-F56A0051EC93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{16E6B250-C805-4C31-9A7D-F56A0051EC93}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{16E6B250-C805-4C31-9A7D-F56A0051EC93}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{16E6B250-C805-4C31-9A7D-F56A0051EC93}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C0CA5D05-72C0-4F22-8618-B31BF0FFA190}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C0CA5D05-72C0-4F22-8618-B31BF0FFA190}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C0CA5D05-72C0-4F22-8618-B31BF0FFA190}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C0CA5D05-72C0-4F22-8618-B31BF0FFA190}.Release|Any CPU.Build.0 = Release|Any CPU
-		{222CB020-5336-47D7-9BB9-A22D18953C80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{222CB020-5336-47D7-9BB9-A22D18953C80}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{222CB020-5336-47D7-9BB9-A22D18953C80}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{222CB020-5336-47D7-9BB9-A22D18953C80}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E367FE8E-E46F-4DA0-86CE-E6F37E78DEE0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8787FF3F-552F-46BE-B9D7-548B6162B079}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8787FF3F-552F-46BE-B9D7-548B6162B079}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8787FF3F-552F-46BE-B9D7-548B6162B079}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -360,10 +236,6 @@ Global
 		{AA5EF530-B95C-4C8F-BE9F-52C225613DF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA5EF530-B95C-4C8F-BE9F-52C225613DF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA5EF530-B95C-4C8F-BE9F-52C225613DF9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{829D2A4E-7DBC-48AD-9CF9-12ACFBF943A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{829D2A4E-7DBC-48AD-9CF9-12ACFBF943A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{829D2A4E-7DBC-48AD-9CF9-12ACFBF943A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{829D2A4E-7DBC-48AD-9CF9-12ACFBF943A6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{43B01C27-E0D2-439B-83ED-8C814ED1526A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{43B01C27-E0D2-439B-83ED-8C814ED1526A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43B01C27-E0D2-439B-83ED-8C814ED1526A}.Release|Any CPU.ActiveCfg = Release|Any CPU

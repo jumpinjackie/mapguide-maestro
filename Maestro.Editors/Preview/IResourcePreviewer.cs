@@ -20,7 +20,9 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 
 namespace Maestro.Editors.Preview
 {
@@ -33,8 +35,9 @@ namespace Maestro.Editors.Preview
         /// Gets whether the specified resource can be previewed
         /// </summary>
         /// <param name="res"></param>
+        /// <param name="conn"></param>
         /// <returns></returns>
-        bool IsPreviewable(IResource res);
+        bool IsPreviewable(IResource res, IServerConnection conn);
 
         /// <summary>
         /// Previews the specified resource

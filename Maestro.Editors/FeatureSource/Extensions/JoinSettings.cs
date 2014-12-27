@@ -23,6 +23,7 @@
 using Maestro.Editors.Common;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
 using System.Collections.Generic;
@@ -53,9 +54,9 @@ namespace Maestro.Editors.FeatureSource.Extensions
         public JoinSettings(string primaryFeatureSource, string primaryClass, IAttributeRelation rel)
             : this()
         {
-            Check.NotNull(rel, "rel"); //NOXLATE
-            Check.NotNull(primaryClass, "primaryClass"); //NOXLATE
-            Check.NotNull(primaryFeatureSource, "primaryFeatureSource"); //NOXLATE
+            Check.ArgumentNotNull(rel, "rel"); //NOXLATE
+            Check.ArgumentNotNull(primaryClass, "primaryClass"); //NOXLATE
+            Check.ArgumentNotNull(primaryFeatureSource, "primaryFeatureSource"); //NOXLATE
             _primaryFeatureSource = primaryFeatureSource;
             _primaryClass = primaryClass;
 
@@ -84,7 +85,7 @@ namespace Maestro.Editors.FeatureSource.Extensions
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            string resId = _edSvc.SelectResource(OSGeo.MapGuide.MaestroAPI.ResourceTypes.FeatureSource.ToString());
+            string resId = _edSvc.SelectResource(ResourceTypes.FeatureSource.ToString());
             if (!string.IsNullOrEmpty(resId))
             {
                 txtFeatureSource.Text = resId;

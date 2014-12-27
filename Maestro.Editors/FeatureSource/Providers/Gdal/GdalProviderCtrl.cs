@@ -90,7 +90,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
 
                 _sing.Bind(service);
                 _comp.Bind(service);
-                if (!string.IsNullOrEmpty(_fs.GetConfigurationContent()))
+                if (!string.IsNullOrEmpty(_fs.GetConfigurationContent(service.CurrentConnection)))
                     rdComposite.Checked = true;
                 else
                     OnTypeCheckedChanged(null, null); //It is already checked by default
@@ -130,7 +130,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
             txtStatus.Text = string.Empty;
             //Flush back to session before testing
             _service.SyncSessionCopy();
-            string result = _fs.TestConnection();
+            var result = _service.CurrentConnection.FeatureService.TestConnection(_fs.ResourceID);
             txtStatus.Text = string.Format(Strings.FdoConnectionStatus, result);
         }
 

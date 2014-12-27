@@ -24,6 +24,7 @@ using Maestro.Editors.Common;
 using Maestro.Editors.Generic;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
 using System.ComponentModel;
@@ -127,7 +128,7 @@ namespace Maestro.Editors.WebLayout
             txtAjaxViewerUrl.Text = string.Empty;
             try
             {
-                var conn = _wl.CurrentConnection;
+                var conn = _edsvc.CurrentConnection;
                 string baseUrl = conn.GetCustomProperty("BaseUrl").ToString();
                 if (!baseUrl.EndsWith("/"))
                     baseUrl += "/";

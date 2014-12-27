@@ -27,6 +27,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System;
@@ -112,7 +113,7 @@ namespace Maestro.Editors.MapDefinition
             service.RegisterCustomNotifier(this);
 
             _shadowCopy = (IMapDefinition)service.GetEditedResource();
-            _mapSvc = (IMappingService)_shadowCopy.CurrentConnection.GetService((int)ServiceType.Mapping);
+            _mapSvc = (IMappingService)service.CurrentConnection.GetService((int)ServiceType.Mapping);
             _rtMap = _mapSvc.CreateMap(_shadowCopy);
             repoView.Init(service.CurrentConnection.ResourceService, new string[] {
                 ResourceTypes.LayerDefinition.ToString(),
@@ -190,7 +191,7 @@ namespace Maestro.Editors.MapDefinition
         {
             var res = repoView.SelectedItem;
 
-            var ed = new Maestro.Editors.Common.EditorWindow(_shadowCopy.CurrentConnection, res.ResourceId);
+            var ed = new Maestro.Editors.Common.EditorWindow(_rtMap.CurrentConnection, res.ResourceId);
             ed.ShowDialog();
         }
 

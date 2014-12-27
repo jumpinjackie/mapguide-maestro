@@ -70,7 +70,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_featureSource = featureSource;
 
             _preview = prev;
-            var conn = editor.GetEditedResource().CurrentConnection;
+            var conn = editor.CurrentConnection;
             if (Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0)
             {
                 _mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);

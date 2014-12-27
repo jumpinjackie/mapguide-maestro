@@ -26,6 +26,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System;
 using System.Drawing;

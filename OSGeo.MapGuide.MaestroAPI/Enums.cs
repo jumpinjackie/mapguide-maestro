@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.ObjectModels;
 using System;
 
 namespace OSGeo.MapGuide.MaestroAPI
@@ -69,82 +70,6 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return string.Format(Strings.GenericFilter, Strings.PickAll, "*");
             }
         }
-    }
-
-    /// <summary>
-    /// Represents the common resource types in MapGuide
-    /// </summary>
-    public enum ResourceTypes
-    {
-        /// <summary>
-        /// Map Definition
-        /// </summary>
-        MapDefinition,
-
-        /// <summary>
-        /// Layer Definition
-        /// </summary>
-        LayerDefinition,
-
-        /// <summary>
-        /// Feature Source
-        /// </summary>
-        FeatureSource,
-
-        /// <summary>
-        /// Web Layout
-        /// </summary>
-        WebLayout,
-
-        /// <summary>
-        /// Runtime Map
-        /// </summary>
-        RuntimeMap,
-
-        /// <summary>
-        /// Folder
-        /// </summary>
-        Folder,
-
-        /// <summary>
-        /// Fusion Flexible Layout
-        /// </summary>
-        ApplicationDefinition,
-
-        /// <summary>
-        /// Print Layout
-        /// </summary>
-        PrintLayout,
-
-        /// <summary>
-        /// Symbol Definition
-        /// </summary>
-        SymbolDefinition,
-
-        /// <summary>
-        /// Load Procedure
-        /// </summary>
-        LoadProcedure,
-
-        /// <summary>
-        /// Drawing Source
-        /// </summary>
-        DrawingSource,
-
-        /// <summary>
-        /// DWF-based Symbol Library
-        /// </summary>
-        SymbolLibrary,
-
-        /// <summary>
-        /// A watermark
-        /// </summary>
-        WatermarkDefinition,
-
-        /// <summary>
-        /// A selection for a runtime map
-        /// </summary>
-        Selection
     }
 
     /// <summary>

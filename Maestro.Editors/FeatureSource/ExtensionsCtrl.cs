@@ -355,7 +355,7 @@ namespace Maestro.Editors.FeatureSource
                 ext = e.Node.Parent.Tag as IFeatureSourceExtension;
                 if (ext != null)
                 {
-                    ClassDefinition cls = _fs.GetClass(ext.FeatureClass); //TODO: Cache?
+                    ClassDefinition cls = _edSvc.CurrentConnection.FeatureService.GetClassDefinition(_fs.ResourceID, ext.FeatureClass); //TODO: Cache?
                     if (cls != null)
                     {
                         var ctl = new CalculationSettings(_edSvc, cls, _fs, calc);
@@ -375,9 +375,11 @@ namespace Maestro.Editors.FeatureSource
         private string[] GetAllClassNames()
         {
             var names = new List<string>();
-            foreach (var sn in _fs.GetSchemaNames())
+            var schemaNames = _edSvc.CurrentConnection.FeatureService.GetSchemas(_fs.ResourceID);
+            foreach (var sn in schemaNames)
             {
-                names.AddRange(_fs.GetClassNames(sn));
+                var classNames = _edSvc.CurrentConnection.FeatureService.GetClassNames(_fs.ResourceID, sn);
+                names.AddRange(classNames);
             }
             return names.ToArray();
         }

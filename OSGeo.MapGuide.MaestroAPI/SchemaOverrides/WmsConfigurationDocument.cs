@@ -190,8 +190,9 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// context from the given Feature Source is used
         /// </summary>
         /// <param name="fs"></param>
+        /// <param name="conn"></param>
         /// <returns></returns>
-        public string GetDefaultSpatialContext(IFeatureSource fs)
+        public string GetDefaultSpatialContext(IFeatureSource fs, IServerConnection conn)
         {
             //BOGUS: This was not as sufficient as I originally thought, nevertheless this contains
             //information that would not exist if we constructed the document the old fashioned way.
@@ -202,7 +203,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             }
             else
             {
-                var list = fs.GetSpatialInfo(false);
+                var list = conn.FeatureService.GetSpatialContextInfo(fs.ResourceID, false);
                 if (list.SpatialContext.Count > 0)
                 {
                     defaultScName = list.SpatialContext[0].Name;

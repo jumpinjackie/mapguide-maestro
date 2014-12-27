@@ -32,6 +32,7 @@ using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.CrossConnection;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -77,7 +78,7 @@ namespace Maestro.Base.UI
             {
                 if (ed.Resource != null && ed.EditorService != null)
                 {
-                    FocusOnNode(ed.Resource.CurrentConnection.DisplayName, ed.EditorService.ResourceID);
+                    FocusOnNode(ed.EditorService.CurrentConnection.DisplayName, ed.EditorService.ResourceID);
                 }
             }
         }

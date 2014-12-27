@@ -26,6 +26,7 @@ using Maestro.Base.Services;
 using Maestro.Editors.Generic;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 
 namespace Maestro.Base.Commands
@@ -38,7 +39,7 @@ namespace Maestro.Base.Commands
             var exp = wb.ActiveSiteExplorer;
             var omgr = ServiceRegistry.GetService<OpenResourceManager>();
             var ed = wb.ActiveDocumentView as IEditorViewContent;
-            var conn = ed.EditorService.GetEditedResource().CurrentConnection;
+            var conn = ed.EditorService.CurrentConnection;
 
             if (ed != null)
             {

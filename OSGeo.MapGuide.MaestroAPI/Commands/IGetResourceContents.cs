@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI.Commands

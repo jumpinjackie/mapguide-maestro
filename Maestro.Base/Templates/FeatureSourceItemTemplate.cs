@@ -50,7 +50,7 @@ namespace Maestro.Base.Templates
 
             if (provider != null)
             {
-                return ObjectFactory.CreateFeatureSource(conn, Utility.StripVersionFromProviderName(provider.Name));
+                return ObjectFactory.CreateFeatureSource(Utility.StripVersionFromProviderName(provider.Name));
             }
             return null;
         }

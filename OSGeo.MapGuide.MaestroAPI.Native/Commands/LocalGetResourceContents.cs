@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -87,8 +88,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
                     {
                         var resType = ResourceIdentifier.GetResourceTypeAsString(resId);
 
-                        IResource r = ResourceTypeRegistry.Deserialize(resType, ms);
-                        r.CurrentConnection = this.Parent;
+                        IResource r = ObjectFactory.Deserialize(resType, ms);
                         r.ResourceID = resId;
                         resources.Add(resId, r);
                     }

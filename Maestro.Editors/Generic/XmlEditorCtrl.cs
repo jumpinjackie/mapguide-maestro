@@ -23,6 +23,7 @@
 using ICSharpCode.TextEditor.Actions;
 using ICSharpCode.TextEditor.Document;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -319,7 +320,7 @@ namespace Maestro.Editors.Generic
         public override void Bind(IEditorService service)
         {
             var res = service.GetEditedResource();
-            this.XmlContent = ResourceTypeRegistry.SerializeAsString(res);
+            this.XmlContent = ObjectFactory.SerializeAsString(res);
             InitResourceData(service);
         }
 

@@ -304,7 +304,7 @@
       <FileName>Services\ISiteService.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="OSGeo.MapGuide.MaestroAPI.Resource.IResource" Collapsed="true">
+  <Interface Name="IResource" Collapsed="true">
     <Position X="12" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAEAAAAAACAIAAQAAAACAAAAAAAAAACAAAAAA=</HashCode>

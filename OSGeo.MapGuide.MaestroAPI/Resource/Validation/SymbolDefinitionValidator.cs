@@ -20,6 +20,8 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.ObjectModels;
+
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {
     /// <summary>
@@ -27,13 +29,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     /// </summary>
     public class SymbolDefinitionValidator : BaseSymbolDefinitionValidator
     {
+        private string _version;
+
+        internal SymbolDefinitionValidator(string version = "1.0.0")
+        {
+            _version = version;
+        }
+
         /// <summary>
         /// Gets the resource type and version this validator supports
         /// </summary>
         /// <value></value>
         public override ResourceTypeDescriptor SupportedResourceAndVersion
         {
-            get { return new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition.ToString(), "1.0.0"); } //NOXLATE
+            get { return new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition.ToString(), _version); } //NOXLATE
         }
     }
 }

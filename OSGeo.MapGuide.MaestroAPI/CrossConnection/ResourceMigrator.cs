@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Resource.Conversion;
+using OSGeo.MapGuide.ObjectModels;
 using System.Collections.Generic;
 using System.IO;
 
@@ -151,9 +152,10 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                     //Save resource
                     _target.ResourceService.SaveResourceAs(res, dstResId);
                     //Copy resource data
-                    foreach (var data in res.EnumerateResourceData())
+                    var resData = _source.ResourceService.EnumerateResourceData(res.ResourceID);
+                    foreach (var data in resData.ResourceData)
                     {
-                        using (var stream = res.GetResourceData(data.Name))
+                        using (var stream = _source.ResourceService.GetResourceData(res.ResourceID, data.Name))
                         {
                             if (!stream.CanSeek)
                             {
@@ -236,9 +238,10 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                     //Save resource
                     _target.ResourceService.SaveResourceAs(res, targetId);
                     //Copy resource data
-                    foreach (var data in res.EnumerateResourceData())
+                    var resData = _source.ResourceService.EnumerateResourceData(res.ResourceID);
+                    foreach (var data in resData.ResourceData)
                     {
-                        using (var stream = res.GetResourceData(data.Name))
+                        using (var stream = _source.ResourceService.GetResourceData(res.ResourceID, data.Name))
                         {
                             if (!stream.CanSeek)
                             {
@@ -318,9 +321,10 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                     //Save resource
                     _target.ResourceService.SaveResourceAs(res, targetId);
                     //Copy resource data
-                    foreach (var data in res.EnumerateResourceData())
+                    var resData = _source.ResourceService.EnumerateResourceData(res.ResourceID);
+                    foreach (var data in resData.ResourceData)
                     {
-                        using (var stream = res.GetResourceData(data.Name))
+                        using (var stream = _source.ResourceService.GetResourceData(res.ResourceID, data.Name))
                         {
                             if (!stream.CanSeek)
                             {
@@ -397,9 +401,10 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                 _target.ResourceService.SaveResource(res);
 
                 //Copy its resource data
-                foreach (var data in res.EnumerateResourceData())
+                var resData = _source.ResourceService.EnumerateResourceData(res.ResourceID);
+                foreach (var data in resData.ResourceData)
                 {
-                    using (var stream = res.GetResourceData(data.Name))
+                    using (var stream = _source.ResourceService.GetResourceData(res.ResourceID, data.Name))
                     {
                         if (!stream.CanSeek)
                         {
@@ -443,9 +448,10 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
                             _target.ResourceService.SaveResource(res);
 
                             //Copy its resource data
-                            foreach (var data in res.EnumerateResourceData())
+                            var resData = _source.ResourceService.EnumerateResourceData(res.ResourceID);
+                            foreach (var data in resData.ResourceData)
                             {
-                                using (var stream = res.GetResourceData(data.Name))
+                                using (var stream = _source.ResourceService.GetResourceData(res.ResourceID, data.Name))
                                 {
                                     if (!stream.CanSeek)
                                     {

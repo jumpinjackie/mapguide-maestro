@@ -23,6 +23,7 @@
 using ICSharpCode.Core;
 using Maestro.Base.Editor;
 using Maestro.Base.UI;
+using OSGeo.MapGuide.ObjectModels;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -40,16 +41,16 @@ namespace Maestro.Base.Commands
             if (ed != null)
             {
                 var rt = ed.EditorService.GetEditedResource().ResourceType;
-                if (rt == OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition.ToString() ||
-                    rt == OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout.ToString())
+                if (rt == ResourceTypes.ApplicationDefinition.ToString() ||
+                    rt == ResourceTypes.WebLayout.ToString())
                 {
                     var doc = new XmlDocument();
                     doc.LoadXml(ed.GetXmlContent());
 
                     List<string> tags = new List<string>();
-                    if (rt == OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout.ToString())
+                    if (rt == ResourceTypes.WebLayout.ToString())
                         tags.AddRange(new string[] { "Title", "Tooltip", "Description", "Label", "Prompt" }); //NOXLATE
-                    else if (rt == OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition.ToString())
+                    else if (rt == ResourceTypes.ApplicationDefinition.ToString())
                         tags.AddRange(new string[] { "Title", "Label", "Tooltip", "StatusText", "EmptyText" }); //NOXLATE
                     var diag = new LabelLocalizationDialog(doc, tags.ToArray());
                     if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)

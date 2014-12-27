@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.IO;
 using System.Text;
@@ -78,7 +79,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
             var dstVer = string.Format("{0}.{1}.{2}", targetVersion.Major, targetVersion.Minor, targetVersion.Build); //NOXLATE
             var dstXsd = resource.ValidatingSchema.Replace(resVer, dstVer);
 
-            using (var sr = ResourceTypeRegistry.Serialize(resource))
+            using (var sr = ObjectFactory.Serialize(resource))
             {
                 using (var str = new StreamReader(sr))
                 {
@@ -86,8 +87,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
                     xml.Replace(resource.ValidatingSchema, dstXsd);
                     xml.Replace("version=\"" + resVer, "version=\"" + dstVer); //NOXLATE
 
-                    var convRes = ResourceTypeRegistry.Deserialize(xml.ToString());
-                    convRes.CurrentConnection = resource.CurrentConnection;
+                    var convRes = ObjectFactory.DeserializeXml(xml.ToString());
                     convRes.ResourceID = resource.ResourceID;
                     return convRes;
                 }

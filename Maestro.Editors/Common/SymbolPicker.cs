@@ -25,6 +25,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Resource.Conversion;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -63,7 +64,7 @@ namespace Maestro.Editors.Common
         public SymbolPicker(string symbolLibrary, IServerConnection conn)
             : this(conn)
         {
-            if (ResourceIdentifier.GetResourceTypeAsString(symbolLibrary) != OSGeo.MapGuide.MaestroAPI.ResourceTypes.SymbolLibrary.ToString())
+            if (ResourceIdentifier.GetResourceTypeAsString(symbolLibrary) != ResourceTypes.SymbolLibrary.ToString())
                 throw new ArgumentException(string.Format(Strings.ErrorInvalidSymbolLibraryResourceId, symbolLibrary));
 
             txtSymbolLibrary.Text = symbolLibrary;

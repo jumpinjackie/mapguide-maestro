@@ -20,6 +20,8 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.ObjectModels;
+
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Preview
 {
     public interface IResourcePreviewUrlGenerator
@@ -28,7 +30,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Preview
 
         bool AddDebugWatermark { get; set; }
 
-        string GeneratePreviewUrl(OSGeo.MapGuide.MaestroAPI.Resource.IResource res, string locale, bool isNew, string sessionID);
+        string GeneratePreviewUrl(IResource res, string locale, bool isNew, string sessionID);
 
         bool IsPreviewableType(string resourceType);
     }

@@ -118,7 +118,7 @@ namespace Maestro.LiveMapEditor
 
         private void btnSetZoom_Click(object sender, EventArgs e)
         {
-            var diag = new ExtentCalculationDialog(_mdf);
+            var diag = new ExtentCalculationDialog(_mdf, _conn);
             if (diag.ShowDialog() == DialogResult.OK)
             {
                 var env = diag.Extents;

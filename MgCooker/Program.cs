@@ -22,7 +22,6 @@
 
 using Duplicati.CommandLine;
 using Maestro.Login;
-using OSGeo.MapGuide.ExtendedObjectModels;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Tile;
 using OSGeo.MapGuide.ObjectModels;
@@ -59,7 +58,6 @@ namespace MgCooker
             System.Windows.Forms.Application.EnableVisualStyles();
             System.Windows.Forms.Application.DoEvents();
             PreferredSiteList.InitCulture();
-            ModelSetup.Initialize(); //Ensures that > 1.0.0 Map Definitions are recognised
             //Parameters:
             //mapagent=
             //username=

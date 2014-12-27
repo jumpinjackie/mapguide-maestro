@@ -23,6 +23,7 @@
 using Maestro.Editors.Common;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using System;
 using System.ComponentModel;
@@ -212,7 +213,7 @@ namespace Maestro.Editors.Fusion
 
         private TreeNode CreateNode(IUIItem item)
         {
-            Check.NotNull(item, "item"); //NOXLATE
+            Check.ArgumentNotNull(item, "item"); //NOXLATE
             var node = new TreeNode();
             switch (item.Function)
             {

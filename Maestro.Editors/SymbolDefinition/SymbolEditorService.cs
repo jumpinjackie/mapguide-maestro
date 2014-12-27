@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System;
 
@@ -111,7 +112,7 @@ namespace Maestro.Editors.SymbolDefinition
             get { return _inner.EditedResourceID; }
         }
 
-        public OSGeo.MapGuide.MaestroAPI.Resource.IResource GetEditedResource()
+        public IResource GetEditedResource()
         {
             return _symDef;
         }

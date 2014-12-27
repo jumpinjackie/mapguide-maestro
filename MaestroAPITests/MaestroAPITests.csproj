@@ -638,10 +638,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OSGeo.MapGuide.ExtendedObjectModels\OSGeo.MapGuide.ExtendedObjectModels.csproj">
-      <Project>{B3A2B816-9F41-4857-A111-09D2DF2550D6}</Project>
-      <Name>OSGeo.MapGuide.ExtendedObjectModels</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Http\OSGeo.MapGuide.MaestroAPI.Http.csproj">
       <Project>{6EF1E775-444B-4E5F-87FB-D687C43A68D7}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI.Http</Name>
@@ -649,6 +645,10 @@
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
       <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj">
+      <Project>{48c5eb23-45ae-4c4c-8fab-635428ae8ca1}</Project>
+      <Name>OSGeo.MapGuide.ObjectModels</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

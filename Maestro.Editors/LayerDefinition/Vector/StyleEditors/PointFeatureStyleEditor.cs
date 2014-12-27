@@ -147,7 +147,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             m_item = _factory.CreateDefaultPointSymbolization2D();
 
             _preview = prev;
-            var conn = editor.GetEditedResource().CurrentConnection;
+            var conn = editor.CurrentConnection;
             if (Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0)
             {
                 _mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
@@ -1066,7 +1066,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             }
             else if (Symbol.SelectedIndex == 7) //Symbol
             {
-                using (var picker = new SymbolPicker(m_editor.GetEditedResource().CurrentConnection))
+                using (var picker = new SymbolPicker(m_editor.CurrentConnection))
                 {
                     if (picker.ShowDialog() == DialogResult.OK)
                     {

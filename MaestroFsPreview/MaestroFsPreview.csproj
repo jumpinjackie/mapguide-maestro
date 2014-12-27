@@ -140,6 +140,12 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj">
+      <Project>{48c5eb23-45ae-4c4c-8fab-635428ae8ca1}</Project>
+      <Name>OSGeo.MapGuide.ObjectModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -817,7 +817,7 @@ namespace Maestro.Base.UI
                 System.Globalization.CultureInfo ic = System.Globalization.CultureInfo.InvariantCulture;
                 ILayerDefinition ldef = (ILayerDefinition)m_connection.ResourceService.GetResource(m_resourceId);
                 string csWkt;
-                var env = ldef.GetSpatialExtent(true, out csWkt);
+                var env = ldef.GetSpatialExtent(m_connection, true, out csWkt);
                 //TODO: Convert wkt to EPSG code and use that?
                 //TODO: Convert to lon/lat
 
@@ -858,7 +858,8 @@ namespace Maestro.Base.UI
                 bool failures = false;
 
                 IEnvelope env = null;
-                foreach (ClassDefinition scm in fs.Describe().AllClasses)
+                var desc = m_connection.FeatureService.DescribeFeatureSource(fs.ResourceID);
+                foreach (ClassDefinition scm in desc.AllClasses)
                 {
                     foreach (var col in scm.Properties)
                     {

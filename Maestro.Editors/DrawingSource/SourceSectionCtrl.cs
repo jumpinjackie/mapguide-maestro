@@ -78,11 +78,11 @@ namespace Maestro.Editors.DrawingSource
                 _edSvc.SyncSessionCopy();
 
                 //Re-populate sheets
-                _dws.RegenerateSheetList();
+                _dws.RegenerateSheetList(_edSvc.CurrentConnection);
 
                 _edSvc.SyncSessionCopy();
                 //Re-calc extents
-                _dws.UpdateExtents();
+                _dws.UpdateExtents(_edSvc.CurrentConnection);
                 OnResourceChanged();
             }
         }

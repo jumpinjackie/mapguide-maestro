@@ -22,6 +22,7 @@
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource
 {
+    using OSGeo.MapGuide.ObjectModels;
     using Validation;
 
     /// <summary>
@@ -29,6 +30,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
     /// </summary>
     public interface IResourceValidator
     {
+        /// <summary>
+        /// The server connection which validation will be performed against
+        /// </summary>
+        IServerConnection Connection { get; set; }
+
         /// <summary>
         /// Gets the resource type and version this validator supports
         /// </summary>

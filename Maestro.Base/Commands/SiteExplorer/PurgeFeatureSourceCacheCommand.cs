@@ -23,6 +23,7 @@
 using ICSharpCode.Core;
 using Maestro.Base.Services;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
 namespace Maestro.Base.Commands.SiteExplorer

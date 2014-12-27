@@ -32,7 +32,6 @@ using System.IO;
 
 namespace MaestroAPITests
 {
-    using OSGeo.MapGuide.ExtendedObjectModels;
     using OSGeo.MapGuide.MaestroAPI.Commands;
     using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
     using OSGeo.MapGuide.MaestroAPI.Resource;
@@ -59,7 +58,6 @@ namespace MaestroAPITests
                 TestEnvironment.PrintSummary();
 
                 ResourceValidatorLoader.LoadStockValidators();
-                ModelSetup.Initialize();
                 _registered = true;
             }
         }
@@ -1089,7 +1087,7 @@ namespace MaestroAPITests
                     sheetName = sheet.Name;
             }
             conn.ResourceService.SaveResource(ds);
-            var ldf = ObjectFactory.CreateDefaultLayer(conn, LayerType.Drawing);
+            var ldf = Utility.CreateDefaultLayer(conn, LayerType.Drawing);
             var dl = (IDrawingLayerDefinition)ldf.SubLayer;
             dl.ResourceId = ds.ResourceID;
             dl.Sheet = sheetName;
@@ -1156,7 +1154,7 @@ namespace MaestroAPITests
         private void TestMapCreate(int layerSize, int groupSize)
         {
             //Create a 200 layer, 50 group map. This is not part of the benchmark
-            var mdf = ObjectFactory.CreateMapDefinition(_conn, "LargeMap");
+            var mdf = Utility.CreateMapDefinition(_conn, "LargeMap");
             string root = "Library://UnitTests/LargeMapTest/";
 
             //We have to create 200 unique layer definitions (same content) otherwise only one GetResourceContent

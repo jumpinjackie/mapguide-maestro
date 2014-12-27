@@ -28,6 +28,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 using System.Collections.Generic;
@@ -68,7 +69,7 @@ namespace Maestro.Base.Commands
             }
 
             worker.ReportProgress(0);
-            var context = new ResourceValidationContext(_conn.ResourceService, _conn.FeatureService);
+            var context = new ResourceValidationContext(_conn);
 
             var set = new ValidationResultSet();
             int i = 0;
@@ -150,7 +151,7 @@ namespace Maestro.Base.Commands
 
             if (ed != null)
             {
-                _conn = ed.EditorService.GetEditedResource().CurrentConnection;
+                _conn = ed.EditorService.CurrentConnection;
 
                 var xed = ed as XmlEditor;
                 if (xed != null)

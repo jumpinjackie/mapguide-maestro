@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 using System.IO;
 using Res = Maestro.Base.Properties.Resources;
 
@@ -54,14 +55,13 @@ namespace Maestro.Base.Templates
             this.Name = name;
             this.TemplatePath = templatePath;
 
-            _res = ResourceTypeRegistry.Deserialize(File.ReadAllText(templatePath));
+            _res = ObjectFactory.DeserializeXml(File.ReadAllText(templatePath));
             this.ResourceType = _res.ResourceType.ToString();
         }
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
             IResource res = (IResource)_res.Clone();
-            res.CurrentConnection = conn;
             return res;
         }
     }

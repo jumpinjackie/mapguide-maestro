@@ -38,16 +38,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
     internal class HttpResourcePreviewUrlGenerator : ResourcePreviewUrlGenerator
     {
         private string _rootUrl;
+        private HttpServerConnection _conn;
 
-        public HttpResourcePreviewUrlGenerator(string rootUrl)
+        public HttpResourcePreviewUrlGenerator(HttpServerConnection conn, string rootUrl)
         {
+            _conn = conn;
             _rootUrl = rootUrl;
         }
 
         protected override string GenerateWatermarkPreviewUrl(ObjectModels.WatermarkDefinition.IWatermarkDefinition wmd, string locale, bool isNew, string sessionID)
         {
             //We demand a 2.3.0 Map Definition or higher
-            if (wmd.CurrentConnection.SiteVersion < new Version(2, 3))
+            if (_conn.SiteVersion < new Version(2, 3))
                 throw new InvalidOperationException(Strings.SiteVersionDoesntSupportWatermarks);
 
             IMapDefinition2 map = Utility.CreateWatermarkPreviewMapDefinition(wmd);
@@ -68,45 +70,43 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             return url;
         }
 
-        protected override string GenerateWebLayoutPreviewUrl(Resource.IResource res, string locale, bool isNew, string sessionID)
+        protected override string GenerateWebLayoutPreviewUrl(IResource res, string locale, bool isNew, string sessionID)
         {
             string url = GetRootUrl();
 
             var resId = "Session:" + sessionID + "//" + Guid.NewGuid() + ".WebLayout"; //NOXLATE
-            var conn = res.CurrentConnection;
-
-            conn.ResourceService.SaveResourceAs(res, resId);
+            
+            _conn.ResourceService.SaveResourceAs(res, resId);
             url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionID + "&LOCALE=" + GetLocale(locale); //NOXLATE
 
             return url;
         }
 
-        private string _GenerateMapPreviewUrl(Resource.IResource res, string locale, bool isNew, string sessionID, bool addDebugWatermark)
+        private string _GenerateMapPreviewUrl(IResource res, string locale, bool isNew, string sessionID, bool addDebugWatermark)
         {
             string url = GetRootUrl();
 
             var mdfId = "Session:" + sessionID + "//" + Guid.NewGuid() + ".MapDefinition"; //NOXLATE
-            var conn = res.CurrentConnection;
             var mdf = res as IMapDefinition;
             if (mdf != null)
             {
                 IMapDefinition2 mdf2 = mdf as IMapDefinition2;
                 if (mdf2 != null && addDebugWatermark)
-                    CreateDebugWatermark(mdf2, conn, null);
+                    CreateDebugWatermark(mdf2, _conn, null);
             }
-            conn.ResourceService.SaveResourceAs(res, mdfId);
+            _conn.ResourceService.SaveResourceAs(res, mdfId);
             //if (PropertyService.Get(ConfigProperties.PreviewViewerType, "AJAX").Equals("AJAX")) //NOXLATE
             if (this.UseAjaxViewer)
             {
                 //Create temp web layout to house this map
-                var wl = ObjectFactory.CreateWebLayout(conn, new Version(1, 0, 0), mdfId);
+                var wl = ObjectFactory.CreateWebLayout(new Version(1, 0, 0), mdfId);
 
                 //Add a custom zoom command (to assist previews of layers that aren't [0, infinity] scale)
                 AttachPreviewCommands(wl);
 
                 var resId = "Session:" + sessionID + "//" + Guid.NewGuid() + ".WebLayout"; //NOXLATE
 
-                conn.ResourceService.SaveResourceAs(wl, resId);
+                _conn.ResourceService.SaveResourceAs(wl, resId);
                 url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionID + "&LOCALE=" + GetLocale(locale); //NOXLATE
             }
             else
@@ -124,7 +124,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             return url;
         }
 
-        protected override string GenerateMapPreviewUrl(Resource.IResource res, string locale, bool isNew, string sessionID)
+        protected override string GenerateMapPreviewUrl(IResource res, string locale, bool isNew, string sessionID)
         {
             return _GenerateMapPreviewUrl(res, locale, isNew, sessionID, this.AddDebugWatermark);
         }
@@ -134,14 +134,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             //Create temp map definition to house our current layer
             var mdfId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".MapDefinition"; //NOXLATE
             string csWkt;
-            var extent = ldf.GetSpatialExtent(true, out csWkt);
+            var extent = ldf.GetSpatialExtent(_conn, true, out csWkt);
             if (extent == null)
                 throw new ApplicationException(Strings.FailedToCalculateFeatureSourceExtents);
 
-            string layerSc = Utility.GetLayerSpatialContext(ldf);
+            string layerSc = ldf.GetLayerSpatialContextName(_conn);
 
             //TODO: Based on the visible scales in this layer, size this extents accordingly
-            var mdf = ObjectFactory.CreateMapDefinition(conn, Strings.PreviewMap, csWkt, extent);
+            var mdf = Utility.CreateMapDefinition(conn, Strings.PreviewMap, csWkt, extent);
             IMapDefinition2 mdf2 = mdf as IMapDefinition2;
             if (mdf2 != null && this.AddDebugWatermark)
                 CreateDebugWatermark(mdf2, conn, layerSc);
@@ -152,29 +152,28 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             return mdf;
         }
 
-        protected override string GenerateLayerPreviewUrl(Resource.IResource res, string locale, bool isNew, string sessionID)
+        protected override string GenerateLayerPreviewUrl(IResource res, string locale, bool isNew, string sessionID)
         {
             string url = GetRootUrl();
 
             var ldf = (ILayerDefinition)res;
-            var conn = res.CurrentConnection;
 
             //Use feature source as name/label
             string layerName = ResourceIdentifier.GetName(ldf.SubLayer.ResourceId);
 
-            var mdf = CreateLayerPreviewMapDefinition(ldf, sessionID, layerName, conn);
+            var mdf = CreateLayerPreviewMapDefinition(ldf, sessionID, layerName, _conn);
             //if (PropertyService.Get(ConfigProperties.PreviewViewerType, "AJAX").Equals("AJAX")) //NOXLATE
             if (this.UseAjaxViewer)
             {
                 //Create temp web layout to house this map
-                var wl = ObjectFactory.CreateWebLayout(conn, new Version(1, 0, 0), mdf.ResourceID);
+                var wl = ObjectFactory.CreateWebLayout(new Version(1, 0, 0), mdf.ResourceID);
 
                 //Add a custom zoom command (to assist previews of layers that aren't [0, infinity] scale)
                 AttachPreviewCommands(wl);
 
                 var resId = "Session:" + sessionID + "//" + Guid.NewGuid() + ".WebLayout"; //NOXLATE
 
-                conn.ResourceService.SaveResourceAs(wl, resId);
+                _conn.ResourceService.SaveResourceAs(wl, resId);
                 url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionID + "&LOCALE=" + GetLocale(locale); //NOXLATE
             }
             else
@@ -192,21 +191,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             return url;
         }
 
-        protected override string GenerateFlexLayoutPreviewUrl(Resource.IResource res, string locale, bool isNew, string sessionID)
+        protected override string GenerateFlexLayoutPreviewUrl(IResource res, string locale, bool isNew, string sessionID)
         {
             string url = GetRootUrl();
 
             //Create temp flex layout
             var appDef = (IApplicationDefinition)res;
-            var conn = appDef.CurrentConnection;
             var resId = "Session:" + sessionID + "//" + Guid.NewGuid() + ".ApplicationDefinition"; //NOXLATE
 
-            conn.ResourceService.SaveResourceAs(appDef, resId);
+            _conn.ResourceService.SaveResourceAs(appDef, resId);
             url += appDef.TemplateUrl + "?Session=" + sessionID + "&ApplicationDefinition=" + resId + "&locale=" + GetLocale(locale); //NOXLATE
             return url;
         }
 
-        protected override string GenerateFeatureSourcePreviewUrl(Resource.IResource res, string locale, bool isNew, string sessionID)
+        protected override string GenerateFeatureSourcePreviewUrl(IResource res, string locale, bool isNew, string sessionID)
         {
             string url = GetRootUrl();
 

@@ -44,7 +44,7 @@ namespace Maestro.Base.Services.DragDropHandlers
             {
                 var wb = Workbench.Instance;
                 var exp = wb.ActiveSiteExplorer;
-                var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLite"); //NOXLATE
+                var fs = ObjectFactory.CreateFeatureSource("OSGeo.SQLite"); //NOXLATE
 
                 string fileName = Path.GetFileName(file);
                 string resName = Path.GetFileNameWithoutExtension(file);
@@ -61,7 +61,7 @@ namespace Maestro.Base.Services.DragDropHandlers
 
                 using (var stream = File.Open(file, FileMode.Open))
                 {
-                    fs.SetResourceData(fileName, OSGeo.MapGuide.ObjectModels.Common.ResourceDataType.File, stream);
+                    conn.ResourceService.SetResourceData(fs.ResourceID, fileName, OSGeo.MapGuide.ObjectModels.Common.ResourceDataType.File, stream);
                 }
 
                 return true;

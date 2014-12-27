@@ -44,7 +44,7 @@ namespace Maestro.Base.Services.DragDropHandlers
             {
                 var wb = Workbench.Instance;
                 var exp = wb.ActiveSiteExplorer;
-                var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SHP"); //NOXLATE
+                var fs = ObjectFactory.CreateFeatureSource("OSGeo.SHP"); //NOXLATE
 
                 string fileName = Path.GetFileName(file);
                 string resName = Path.GetFileNameWithoutExtension(file);
@@ -77,7 +77,7 @@ namespace Maestro.Base.Services.DragDropHandlers
                         using (var stream = File.Open(fn, FileMode.Open))
                         {
                             string dataName = Path.GetFileName(fn);
-                            fs.SetResourceData(dataName, OSGeo.MapGuide.ObjectModels.Common.ResourceDataType.File, stream);
+                            conn.ResourceService.SetResourceData(fs.ResourceID, dataName, OSGeo.MapGuide.ObjectModels.Common.ResourceDataType.File, stream);
                         }
                     }
                 }

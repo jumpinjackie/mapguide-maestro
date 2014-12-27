@@ -99,7 +99,8 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             using (new WaitCursor(this))
             {
                 WriteEncryptedCredentials();
-                txtStatus.Text = string.Format(Strings.FdoConnectionStatus, _fs.TestConnection());
+                var result = _service.CurrentConnection.FeatureService.TestConnection(_fs.ResourceID);
+                txtStatus.Text = string.Format(Strings.FdoConnectionStatus, result);
             }
         }
 
@@ -114,7 +115,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
                 {
                     _fs.SetConnectionProperty("Username", StringConstants.MgUsernamePlaceholder); //NOXLATE
                     _fs.SetConnectionProperty("Password", StringConstants.MgPasswordPlaceholder); //NOXLATE
-                    _fs.SetEncryptedCredentials(username, password);
+                    _fs.SetEncryptedCredentials(_service.CurrentConnection, username, password);
                     _service.SyncSessionCopy();
                 }
             }
@@ -124,7 +125,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
                 _fs.SetConnectionProperty("Password", null); //NOXLATE
                 try
                 {
-                    _fs.DeleteResourceData(StringConstants.MgUserCredentialsResourceData);
+                    _service.CurrentConnection.ResourceService.DeleteResourceData(_fs.ResourceID, StringConstants.MgUserCredentialsResourceData);
                 }
                 catch { }
                 _service.SyncSessionCopy();
@@ -137,7 +138,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             var diag = new WmsAdvancedConfigurationDialog(_service);
             if (diag.ShowDialog() == DialogResult.OK)
             {
-                _fs.SetConfigurationContent(diag.Document.ToXml());
+                _fs.SetConfigurationContent(_service.CurrentConnection, diag.Document.ToXml());
                 OnResourceChanged();
             }
         }

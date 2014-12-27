@@ -47,7 +47,7 @@ namespace Maestro.Base.Templates
                 dlg.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickShp, "shp"); //NOXLATE
                 if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    var proc = ObjectFactory.CreateLoadProcedure(conn, LoadType.Shp, dlg.FileNames);
+                    var proc = ObjectFactory.CreateLoadProcedure(LoadType.Shp, dlg.FileNames);
                     if (!string.IsNullOrEmpty(startPoint) && ResourceIdentifier.IsFolderResource(startPoint))
                     {
                         proc.SubType.RootPath = startPoint;

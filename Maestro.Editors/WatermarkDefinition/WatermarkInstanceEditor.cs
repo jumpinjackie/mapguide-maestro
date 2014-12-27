@@ -22,6 +22,7 @@
 
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 using System;
 using System.ComponentModel;

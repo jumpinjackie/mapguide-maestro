@@ -263,11 +263,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Initializes a new instance of the <see cref="RuntimeMap"/> class.
         /// </summary>
+        /// <param name="conn">The server connection</param>
         /// <param name="mdf">The map definition to create this map from.</param>
         /// <param name="metersPerUnit">The meters per unit value</param>
         /// <param name="suppressErrors"></param>
-        internal RuntimeMap(IMapDefinition mdf, double metersPerUnit, bool suppressErrors)
-            : this(mdf.CurrentConnection)
+        internal RuntimeMap(IServerConnection conn, IMapDefinition mdf, double metersPerUnit, bool suppressErrors)
+            : this(conn)
         {
             this.MetersPerUnit = metersPerUnit;
 
@@ -1812,7 +1813,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns></returns>
         public IMapDefinition ToMapDefinition(bool useOriginalAsTemplate)
         {
-            var newMdf = ObjectFactory.CreateMapDefinition(this.CurrentConnection, ResourceIdentifier.GetName(this.MapDefinition));
+            var newMdf = Utility.CreateMapDefinition(this.CurrentConnection, ResourceIdentifier.GetName(this.MapDefinition));
             if (useOriginalAsTemplate && this.ResourceService.ResourceExists(this.MapDefinition))
             {
                 var oldMdf = (IMapDefinition)this.ResourceService.GetResource(this.MapDefinition);

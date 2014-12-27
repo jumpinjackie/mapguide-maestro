@@ -124,6 +124,10 @@
       <Name>OSGeo.MapGuide.MaestroAPI</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj">
+      <Project>{48c5eb23-45ae-4c4c-8fab-635428ae8ca1}</Project>
+      <Name>OSGeo.MapGuide.ObjectModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

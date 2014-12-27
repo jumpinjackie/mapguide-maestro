@@ -23,6 +23,7 @@
 using Maestro.Editors.Generic;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System;
 using System.ComponentModel;

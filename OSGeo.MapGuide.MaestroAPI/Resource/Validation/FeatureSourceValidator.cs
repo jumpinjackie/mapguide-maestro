@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
@@ -34,6 +35,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     /// </summary>
     public class FeatureSourceValidator : IResourceValidator
     {
+        private string _version;
+
+        internal FeatureSourceValidator(string version = "1.0.0")
+        {
+            _version = version;
+        }
+
+        /// <summary>
+        /// The server connection which validation will be performed against
+        /// </summary>
+        public IServerConnection Connection { get; set; }
+
         /// <summary>
         /// Validats the specified resources for common issues associated with this
         /// resource type
@@ -55,7 +68,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             List<ValidationIssue> issues = new List<ValidationIssue>();
 
             IFeatureSource feature = (IFeatureSource)resource;
-            IFeatureService featSvc = feature.CurrentConnection.FeatureService;
+            IFeatureService featSvc = this.Connection.FeatureService;
 
             //Feature Join Optimization check
             foreach (var ext in feature.Extension)
@@ -141,8 +154,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 {
                     //Find the MG_USER_CREDENTIALS resource data item
                     bool bFound = false;
-                    var resData = feature.EnumerateResourceData();
-                    foreach (var data in resData)
+                    var resData = this.Connection.ResourceService.EnumerateResourceData(feature.ResourceID);
+                    foreach (var data in resData.ResourceData)
                     {
                         if (data.Name == StringConstants.MgUserCredentialsResourceData)
                         {
@@ -217,7 +230,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <value></value>
         public ResourceTypeDescriptor SupportedResourceAndVersion
         {
-            get { return new ResourceTypeDescriptor(ResourceTypes.FeatureSource.ToString(), "1.0.0"); } //NOXLATE
+            get { return new ResourceTypeDescriptor(ResourceTypes.FeatureSource.ToString(), _version); } //NOXLATE
         }
     }
 }

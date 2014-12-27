@@ -62,12 +62,12 @@ namespace Maestro.Base.Editor
 
         public override void RequestRefresh()
         {
-            _siteExp.RefreshModel(_editCopy.CurrentConnection.DisplayName);
+            _siteExp.RefreshModel(_conn.DisplayName);
         }
 
         public override void RequestRefresh(string folderId)
         {
-            _siteExp.RefreshModel(_editCopy.CurrentConnection.DisplayName, folderId);
+            _siteExp.RefreshModel(_conn.DisplayName, folderId);
         }
 
         public override void OpenResource(string resourceId)

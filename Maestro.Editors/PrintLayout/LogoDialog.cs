@@ -24,6 +24,7 @@ using Maestro.Editors.Common;
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.Windows.Forms;
 

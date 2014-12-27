@@ -90,7 +90,8 @@ namespace Maestro.Editors.LayerDefinition
         {
             var fs = (IFeatureSource)_edsvc.CurrentConnection.ResourceService.GetResource(_vl.ResourceId);
 
-            return _edsvc.EditExpression(expr, fs.GetClass(_vl.FeatureName), fs.Provider, _vl.ResourceId, attachStylizationFunctions);
+            var cls = _edsvc.CurrentConnection.FeatureService.GetClassDefinition(fs.ResourceID, _vl.FeatureName);
+            return _edsvc.EditExpression(expr, cls, fs.Provider, _vl.ResourceId, attachStylizationFunctions);
         }
 
         internal void UpdateDisplay()

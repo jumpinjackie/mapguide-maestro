@@ -48,10 +48,10 @@ namespace MaestroAPITests
         public void TestMapDefinitionValidation()
         {
             var conn = CreateTestConnection();
-            var mdf = ObjectFactory.CreateMapDefinition(conn, "Test");
+            var mdf = Utility.CreateMapDefinition(conn, "Test");
             mdf.ResourceID = "Library://UnitTests/Test.MapDefinition";
 
-            var context = new ResourceValidationContext(conn.ResourceService, conn.FeatureService);
+            var context = new ResourceValidationContext(conn);
             var issues = ResourceValidatorSet.Validate(context, mdf, false);
             Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Warning_MapDefinition_MissingCoordinateSystem));
 
@@ -59,19 +59,19 @@ namespace MaestroAPITests
 
             var layer = mdf.AddLayer(null, "bar", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
             layer.Group = "foo"; //AddLayer no longer lets us put in bogus group names
-            context = new ResourceValidationContext(conn.ResourceService, conn.FeatureService);
+            context = new ResourceValidationContext(conn);
             issues = ResourceValidatorSet.Validate(context, mdf, false);
             Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Error_MapDefinition_LayerWithNonExistentGroup));
 
             mdf.AddLayer(null, "bar", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
-            context = new ResourceValidationContext(conn.ResourceService, conn.FeatureService);
+            context = new ResourceValidationContext(conn);
             issues = ResourceValidatorSet.Validate(context, mdf, false);
             Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Error_MapDefinition_DuplicateLayerName));
 
             var group = mdf.AddGroup("foo");
             group.Group = "bar";
 
-            context = new ResourceValidationContext(conn.ResourceService, conn.FeatureService);
+            context = new ResourceValidationContext(conn);
             issues = ResourceValidatorSet.Validate(context, mdf, false);
             Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Error_MapDefinition_GroupWithNonExistentGroup));
         }
@@ -80,10 +80,10 @@ namespace MaestroAPITests
         public void TestSymbolDefinitionValidation()
         {
             var conn = CreateTestConnection();
-            var ssym = ObjectFactory.CreateSimpleSymbol(conn, "Test", "Test");
+            var ssym = Utility.CreateSimpleSymbol(conn, "Test", "Test");
             ssym.ResourceID = "Library://UnitTests/Test.SymbolDefinition";
 
-            var context = new ResourceValidationContext(conn.ResourceService, conn.FeatureService);
+            var context = new ResourceValidationContext(conn);
             var issues = ResourceValidatorSet.Validate(context, ssym, true);
             Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Error_SymbolDefinition_NoGeometryUsageContexts));
 
@@ -91,7 +91,7 @@ namespace MaestroAPITests
             param.Identifier = "TEST";
             ssym.ParameterDefinition.AddParameter(param);
 
-            context = new ResourceValidationContext(conn.ResourceService, conn.FeatureService);
+            context = new ResourceValidationContext(conn);
             issues = ResourceValidatorSet.Validate(context, ssym, true);
             Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Warning_SymbolDefinition_SymbolParameterNotUsed));
 
@@ -101,7 +101,7 @@ namespace MaestroAPITests
 
             ssym.AddGraphics(img);
 
-            context = new ResourceValidationContext(conn.ResourceService, conn.FeatureService);
+            context = new ResourceValidationContext(conn);
             issues = ResourceValidatorSet.Validate(context, ssym, true);
             Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Error_SymbolDefinition_ImageGraphicReferenceResourceIdNotFound));
 
@@ -113,7 +113,7 @@ namespace MaestroAPITests
 
             ssym.AddGraphics(img);
 
-            context = new ResourceValidationContext(conn.ResourceService, conn.FeatureService);
+            context = new ResourceValidationContext(conn);
             issues = ResourceValidatorSet.Validate(context, ssym, true);
             Assert.True(issues.Any(x => x.StatusCode == ValidationStatusCode.Error_SymbolDefinition_ImageGraphicReferenceResourceDataNotFound));
         }

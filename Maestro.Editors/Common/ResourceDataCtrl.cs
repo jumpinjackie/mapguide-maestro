@@ -24,6 +24,7 @@ using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 using System.Collections.Generic;
@@ -193,9 +194,8 @@ namespace Maestro.Editors.Common
         {
             using (var fs = new FileStream(fileName, FileMode.Open))
             {
-                //_edSvc.AddResourceData(Path.GetFileName(open.FileName), ResourceDataType.File, fs);
                 IResource res = _edSvc.GetEditedResource();
-                res.SetResourceData(Path.GetFileName(fileName), ResourceDataType.File, fs);
+                _edSvc.CurrentConnection.ResourceService.SetResourceData(res.ResourceID, Path.GetFileName(fileName), ResourceDataType.File, fs);
             }
         }
 
@@ -240,7 +240,7 @@ namespace Maestro.Editors.Common
                         {
                             //_edSvc.RemoveResourceData(item.Name);
                             IResource res = _edSvc.GetEditedResource();
-                            res.DeleteResourceData(item.Name);
+                            _edSvc.CurrentConnection.ResourceService.DeleteResourceData(res.ResourceID, item.Name);
                             _data.Remove(item);
                         }
                         BindResourceList();
@@ -273,7 +273,7 @@ namespace Maestro.Editors.Common
                             BusyWaitDelegate method = () =>
                             {
                                 IResource res = _edSvc.GetEditedResource();
-                                var stream = res.GetResourceData(item.Name);
+                                var stream = _edSvc.CurrentConnection.ResourceService.GetResourceData(res.ResourceID, item.Name);
                                 using (var fs = File.OpenWrite(fn))
                                 {
                                     Utility.CopyStream(stream, fs);

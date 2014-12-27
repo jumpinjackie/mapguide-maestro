@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 
 namespace Maestro.Editors
 {

@@ -23,6 +23,7 @@
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System;
 using System.Globalization;

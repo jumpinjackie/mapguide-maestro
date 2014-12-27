@@ -175,6 +175,14 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.AreEqual(0, user.User.Count);
         }
 
+        [Test]
+        public void CreateSecurityGroupTest()
+        {
+            var group = ObjectFactory.CreateSecurityGroup();
+            Assert.NotNull(group);
+            Assert.NotNull(group.Group);
+        }
+
         [Test()]
         public void CreateFeatureSourceExtensionTest()
         {
@@ -208,8 +216,9 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Test()]
         public void CreateEnvelopeTest()
         {
-            Assert.Throws<ArgumentException>(() => ObjectFactory.CreateEnvelope(2, -1, 1, 1));
-            Assert.Throws<ArgumentException>(() => ObjectFactory.CreateEnvelope(-1, 2, 1, 1));
+            Assert.Throws<ArgumentException>(() => ObjectFactory.CreateEnvelope(.1, -.1, -.1, .1));
+            Assert.Throws<ArgumentException>(() => ObjectFactory.CreateEnvelope(-.1, .1, .1, -.1));
+            Assert.Throws<ArgumentException>(() => ObjectFactory.CreateEnvelope(.1, .1, -.1, -.1));
             var env = ObjectFactory.CreateEnvelope(-1, -1, 1, 1);
             Assert.NotNull(env);
             Assert.AreEqual(-1, env.MinX);
@@ -330,6 +339,15 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
                 Assert.AreEqual(version, simpWmd.ResourceVersion);
                 Assert.AreEqual(version, compWmd.ResourceVersion);
             }
+        }
+
+        [Test()]
+        public void CreateSymbolLibraryTest()
+        {
+            var lib = ObjectFactory.CreateSymbolLibrary();
+            Assert.NotNull(lib);
+            Assert.NotNull(lib.Symbol);
+            Assert.AreEqual(0, lib.Symbol.Count());
         }
 
         [Test()]

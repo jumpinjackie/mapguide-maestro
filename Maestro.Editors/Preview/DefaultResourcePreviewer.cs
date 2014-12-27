@@ -84,7 +84,7 @@ namespace Maestro.Editors.Preview
             //TODO: Prompt for symbol parameters if there are any, as these can affect the rendered output
             //and it is a nice way to test symbol parameters wrt to rendering
 
-            IServerConnection conn = res.CurrentConnection;
+            IServerConnection conn = edSvc.CurrentConnection;
             BusyWaitDelegate worker = () =>
             {
                 //Save the current resource to another session copy
@@ -133,7 +133,7 @@ namespace Maestro.Editors.Preview
         internal static ImagePreviewResult GenerateSymbolDefinitionPreview(IServerConnection conn, IResource previewCopy, int width, int height)
         {
             //For Symbol Definition previews, we make a placeholder Layer Definition with the
-            ILayerDefinition layerDef = ObjectFactory.CreateDefaultLayer(conn, LayerType.Vector);
+            ILayerDefinition layerDef = Utility.CreateDefaultLayer(conn, LayerType.Vector);
             IVectorLayerDefinition2 vl = layerDef.SubLayer as IVectorLayerDefinition2;
             if (vl != null)
             {
@@ -171,20 +171,24 @@ namespace Maestro.Editors.Preview
         /// Gets whether the specified resource can be previewed
         /// </summary>
         /// <param name="res"></param>
+        /// <param name="conn"></param>
         /// <returns></returns>
-        public bool IsPreviewable(IResource res)
+        public bool IsPreviewable(IResource res, IServerConnection conn)
         {
+            Check.ArgumentNotNull(res, "res"); //NOXLATE
+            Check.ArgumentNotNull(conn, "conn"); //NOXLATE
+
             var rt = res.ResourceType;
-            if (res.CurrentConnection.Capabilities.SupportsResourcePreviews)
+            if (conn.Capabilities.SupportsResourcePreviews)
             {
                 bool bKnownResourceType = !(res is UntypedResource);
                 if (rt == ResourceTypes.SymbolDefinition.ToString())
                 {
-                    return bKnownResourceType && res.CurrentConnection.SiteVersion >= new Version(2, 0) && Array.IndexOf(res.CurrentConnection.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0;
+                    return bKnownResourceType && conn.SiteVersion >= new Version(2, 0) && Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0;
                 }
                 else
                 {
-                    var previewer = res.CurrentConnection.GetPreviewUrlGenerator();
+                    var previewer = conn.GetPreviewUrlGenerator();
                     bool bPreviewable = (previewer != null && previewer.IsPreviewableType(rt));
                     //A Map Definition can be saved directly and referenced by a Web Layout
                     //An Web Layout and Application Definition can be saved directly and

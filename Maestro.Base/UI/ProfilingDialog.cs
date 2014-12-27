@@ -102,7 +102,7 @@ namespace Maestro.Base.UI
         {
             if (m_tempmap == null)
             {
-                IMapDefinition m = ObjectFactory.CreateMapDefinition(m_connection, string.Empty);
+                IMapDefinition m = Utility.CreateMapDefinition(m_connection, string.Empty);
                 m.CoordinateSystem = @"LOCAL_CS[""*XY-M*"", LOCAL_DATUM[""*X-Y*"", 10000], UNIT[""Meter"", 1], AXIS[""X"", EAST], AXIS[""Y"", NORTH]]"; //NOXLATE
                 m.SetExtents(-1, -1, 1, 1);
 
@@ -132,7 +132,7 @@ namespace Maestro.Base.UI
             {
                 try
                 {
-                    IMapDefinition mdef = ObjectFactory.CreateMapDefinition(m_connection, string.Empty);
+                    IMapDefinition mdef = Utility.CreateMapDefinition(m_connection, string.Empty);
                     //We cannot flub this anymore. AIMS 2012 demands the Map Definition id specified checks out
                     mdef.ResourceID = "Session:" + m_connection.SessionID + "//ProfileTest.MapDefinition"; //NOXLATE
                     m_connection.ResourceService.SaveResource(mdef);
@@ -201,7 +201,7 @@ namespace Maestro.Base.UI
 
                                 //Create a runtime map just containing this particular layer at this particular scale range
                                 //We are profiling the stylization settings for this layer
-                                var mdf = ObjectFactory.CreateMapDefinition(m_connection, "");
+                                var mdf = Utility.CreateMapDefinition(m_connection, "");
                                 if (lst.SpatialContext != null && lst.SpatialContext.Count >= 1)
                                 {
                                     mdf.CoordinateSystem = lst.SpatialContext[0].CoordinateSystemWkt;
@@ -280,7 +280,7 @@ namespace Maestro.Base.UI
                         if (backgroundWorker.CancellationPending)
                             return;
 
-                        ILayerDefinition ldef = (ILayerDefinition)mdef.CurrentConnection.ResourceService.GetResource(ml.ResourceId);
+                        ILayerDefinition ldef = (ILayerDefinition)m_connection.ResourceService.GetResource(ml.ResourceId);
                         ProfileLayerDefinition(ldef);
                     }
                     catch (Exception ex)
@@ -303,7 +303,7 @@ namespace Maestro.Base.UI
                                     if (backgroundWorker.CancellationPending)
                                         return;
 
-                                    ILayerDefinition ldef = (ILayerDefinition)mdef.CurrentConnection.ResourceService.GetResource(ml.ResourceId);
+                                    ILayerDefinition ldef = (ILayerDefinition)m_connection.ResourceService.GetResource(ml.ResourceId);
                                     ProfileLayerDefinition(ldef);
                                 }
                                 catch (Exception ex)

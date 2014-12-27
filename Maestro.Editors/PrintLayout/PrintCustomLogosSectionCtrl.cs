@@ -48,7 +48,7 @@ namespace Maestro.Editors.PrintLayout
         {
             service.RegisterCustomNotifier(this);
             _layout = (IPrintLayout)service.GetEditedResource();
-            _conn = _layout.CurrentConnection;
+            _conn = service.CurrentConnection;
 
             foreach (var logo in _layout.CustomLogos)
             {

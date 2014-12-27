@@ -138,7 +138,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
                     string targetId = targetFolder + sect.Title + "." + ResourceTypes.SymbolDefinition.ToString();
                     string dataName = sect.Title + "." + GetImageFormat(img.RawFormat);
 
-                    var symDef = ObjectFactory.CreateSimpleSymbol(_conn, sect.Title, "Image symbol definition extracted from a Symbol Library by Maestro"); //NOXLATE
+                    var symDef = Utility.CreateSimpleSymbol(_conn, sect.Title, "Image symbol definition extracted from a Symbol Library by Maestro"); //NOXLATE
                     var imgGraphics = symDef.CreateImageGraphics();
                     symDef.AddGraphics(imgGraphics);
 
@@ -216,7 +216,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
                 dwf.Dispose();
                 dwf = ms;
             }
-            var ds = OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateDrawingSource(conn);
+            var ds = ObjectFactory.CreateDrawingSource();
             ds.SourceName = "symbols.dwf"; //NOXLATE
             ds.ResourceID = "Session:" + conn.SessionID + "//" + Guid.NewGuid() + ".DrawingSource"; //NOXLATE
             conn.ResourceService.SaveResource(ds);

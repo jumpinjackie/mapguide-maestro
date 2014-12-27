@@ -48,7 +48,7 @@ namespace Maestro.Base.Templates
                 picker.SetStartingPoint(startPoint);
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    var lyr = ObjectFactory.CreateDefaultLayer(conn, OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Vector, new Version(1, 0, 0));
+                    var lyr = ObjectFactory.CreateDefaultLayer(OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Vector, new Version(1, 0, 0));
                     var vl = (IVectorLayerDefinition)lyr.SubLayer;
                     vl.ResourceId = picker.ResourceID;
                     //Stub these for now, validation will ensure this never makes it

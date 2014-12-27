@@ -23,6 +23,7 @@
 using Maestro.Editors;
 using Maestro.Editors.Fusion;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 using System.Drawing;
 using System.Windows.Forms;
 

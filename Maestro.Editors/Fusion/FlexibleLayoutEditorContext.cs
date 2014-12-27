@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using System.Collections.Generic;
 

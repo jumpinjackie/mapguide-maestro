@@ -22,6 +22,7 @@
 
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -90,8 +91,8 @@ namespace Maestro.Editors.Common
         /// <param name="ex"></param>
         public static void Show(Exception ex)
         {
-            Check.NotNull(ex, "ex"); //NOXLATE
-            Check.NotNull(ex.Data[Utility.XML_EXCEPTION_KEY], "ex.Data[Utility.XML_EXCEPTION_KEY]"); //NOXLATE
+            Check.ArgumentNotNull(ex, "ex"); //NOXLATE
+            Check.ArgumentNotNull(ex.Data[Utility.XML_EXCEPTION_KEY], "ex.Data[Utility.XML_EXCEPTION_KEY]"); //NOXLATE
             string origXmlContent = ex.Data[Utility.XML_EXCEPTION_KEY].ToString();
             var diag = new XmlContentErrorDialog();
             diag._ex = ex;

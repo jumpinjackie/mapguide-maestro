@@ -143,7 +143,7 @@ namespace Maestro.Editors.LoadProcedure
             IEditorService ed = (IEditorService)args[0];
             var proc = (ILoadProcedure)args[1];
 
-            return proc.CurrentConnection.ExecuteLoadProcedure(proc, cb, true);
+            return ed.CurrentConnection.ExecuteLoadProcedure(proc, cb, true);
         }
     }
 }

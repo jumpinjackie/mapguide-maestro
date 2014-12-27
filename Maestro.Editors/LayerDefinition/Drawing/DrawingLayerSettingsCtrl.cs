@@ -24,6 +24,7 @@ using Maestro.Editors.Generic;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System;
 using System.Collections.Generic;
@@ -206,7 +207,7 @@ namespace Maestro.Editors.LayerDefinition.Drawing
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             using (var picker = new ResourcePicker(_service.CurrentConnection,
-                                                   OSGeo.MapGuide.MaestroAPI.ResourceTypes.DrawingSource.ToString(),
+                                                   ResourceTypes.DrawingSource.ToString(),
                                                    ResourcePickerMode.OpenResource))
             {
                 if (picker.ShowDialog() == DialogResult.OK)

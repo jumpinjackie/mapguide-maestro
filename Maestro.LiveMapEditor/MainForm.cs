@@ -86,7 +86,7 @@ namespace Maestro.LiveMapEditor
         {
             ClearExistingEditor();
 
-            var mdf = ObjectFactory.CreateMapDefinition(_conn, Strings.NewMap);
+            var mdf = Utility.CreateMapDefinition(_conn, Strings.NewMap);
             var diag = new MapSettingsDialog(_conn, mdf, null);
             //if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -137,7 +137,7 @@ namespace Maestro.LiveMapEditor
                 {
                     ILayerDefinition layerDef = (ILayerDefinition)_conn.ResourceService.GetResource(layer.LayerDefinitionID);
                     string wkt;
-                    IEnvelope env = layerDef.GetSpatialExtent(true, out wkt);
+                    IEnvelope env = layerDef.GetSpatialExtent(_conn, true, out wkt);
                     if (SupportsMutableMapProperties(_mapEditor.Map))
                     {
                         _mapEditor.Map.MapExtent = env;

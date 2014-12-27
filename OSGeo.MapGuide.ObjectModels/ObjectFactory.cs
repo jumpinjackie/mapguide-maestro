@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
+using OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.DrawingSource;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
@@ -29,6 +30,7 @@ using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.PrintLayout;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+using OSGeo.MapGuide.ObjectModels.SymbolLibrary;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
@@ -744,6 +746,383 @@ namespace OSGeo.MapGuide.ObjectModels
             return wl;
         }
 
+        public static IApplicationDefinition DeserializeEmbeddedFlexLayout(Version siteVersion)
+        {
+            Check.ArgumentNotNull(siteVersion, "siteVersion"); //NOXLATE
+            if (siteVersion >= VER_240)
+                return (IApplicationDefinition)ResourceTypeRegistry.Deserialize(Strings.BaseTemplate240_ApplicationDefinition);
+            else
+                return (IApplicationDefinition)ResourceTypeRegistry.Deserialize(Strings.BaseTemplate_ApplicationDefinition);
+        }
+
+        private static readonly string[] parameterizedWidgets =
+        {
+            KnownWidgetNames.CTRLClick,
+            KnownWidgetNames.ZoomOnClick,
+            KnownWidgetNames.ExtentHistory,
+            KnownWidgetNames.Buffer,
+            KnownWidgetNames.Measure,
+            KnownWidgetNames.InvokeScript,
+            KnownWidgetNames.InvokeURL,
+            KnownWidgetNames.Search,
+            KnownWidgetNames.CursorPosition,
+            KnownWidgetNames.SelectionInfo,
+            KnownWidgetNames.ViewSize
+        };
+
+        private static IUIWidget CreateVerticalWidget(IUIWidget widget)
+        {
+            var vert = widget.Clone();
+            vert.Name = "vert" + widget.Name; //NOXLATE
+            vert.Label = string.Empty;
+            return vert;
+        }
+
+        private static Version VER_240 = new Version(2, 4);
+
+        /// <summary>
+        /// Creates a fusion flexible layout
+        /// </summary>
+        /// <param name="siteVersion">The site version</param>
+        /// <param name="templates">The set of available templates</param>
+        /// <param name="widgets">The set of available widgets</param>
+        /// <param name="containers">The set of available containers</param>
+        /// <param name="templateName">The name of the template. See <see cref="FusionTemplateNames"/> for the common pre-defined names</param>
+        /// <returns></returns>
+        public static IApplicationDefinition CreateFlexibleLayout(Version siteVersion,
+                                                                  IApplicationDefinitionTemplateInfoSet templates,
+                                                                  IApplicationDefinitionWidgetInfoSet widgets,
+                                                                  IApplicationDefinitionContainerInfoSet containers,
+                                                                  string templateName)
+        {
+            Check.ArgumentNotNull(templates, "templates"); //NOXLATE
+            Check.ArgumentNotNull(widgets, "widgets"); //NOXLATE
+            Check.ArgumentNotNull(containers, "containers"); //NOXLATE
+            Check.ArgumentNotNull(templateName, "templateName"); //NOXLATE
+
+            IApplicationDefinition appDef = new ApplicationDefinitionType()
+            {
+                MapSet = new System.ComponentModel.BindingList<MapGroupType>(),
+                WidgetSet = new System.ComponentModel.BindingList<WidgetSetType>()
+            };
+
+            //Find matching template. If it's a known template we should be able to
+            //build it programatically, otherwise return a deserialized copy from our
+            //embedded resource
+            var tpl = templates.FindTemplate(templateName);
+            if (tpl != null)
+            {
+                appDef.TemplateUrl = tpl.LocationUrl;
+                appDef.Title = tpl.Name;
+            }
+            else
+            {
+                //NOTE: Depending on MapGuide Server version, this document may be
+                //invalid (eg. References to widgets not available in that version)
+                return DeserializeEmbeddedFlexLayout(siteVersion);
+            }
+
+            //Toolbars, every template has them
+            var toolbar = appDef.CreateContainer("Toolbar", containers.FindContainer("Toolbar")); //NOXLATE
+            var secToolbar = appDef.CreateContainer("ToolbarSecondary", containers.FindContainer("Toolbar")); //NOXLATE
+            var vertToolbar = appDef.CreateContainer("ToolbarVertical", containers.FindContainer("Toolbar")); //NOXLATE
+
+            //Context menus, every template has them
+            var mapContextMenu = appDef.CreateContainer("MapContextMenu", containers.FindContainer("ContextMenu")); //NOXLATE
+            var taskPaneMenu = appDef.CreateContainer("TaskMenu", containers.FindContainer("ContextMenu")); //NOXLATE
+
+            //Menu
+            var menu = appDef.CreateContainer("FileMenu", containers.FindContainer("Toolbar")); //NOXLATE
+
+            //Status bar
+            var statusbar = appDef.CreateContainer("Statusbar", containers.FindContainer("Splitterbar")); //NOXLATE
+
+            string mapId = "MainMap"; //NOXLATE
+            //Set default map group
+            appDef.AddMapGroup(mapId, true, string.Empty);
+
+            //Create default widget set
+            var widgetSet = appDef.CreateWidgetSet(appDef.CreateMapWidget(mapId, mapContextMenu.Name));
+            appDef.AddWidgetSet(widgetSet);
+
+            //Add all known non-parameterized widgets to this widget set
+            foreach (var wgt in widgets.WidgetInfo)
+            {
+                if (Array.IndexOf(parameterizedWidgets, wgt.Type) < 0)
+                {
+                    var widget = appDef.CreateWidget(wgt.Type, wgt);
+                    widgetSet.AddWidget(widget);
+                }
+            }
+
+            //Add some parameterized ones
+
+            //Zoom In
+            var zoomIn = (IUIWidget)appDef.CreateWidget("ZoomIn", widgets.FindWidget(KnownWidgetNames.ZoomOnClick)); //NOXLATE
+            zoomIn.SetValue("Factor", "2"); //NOXLATE
+            zoomIn.StatusText = zoomIn.Tooltip = Strings.ADF_Widget_ZoomIn_Desc;
+            zoomIn.Label = Strings.ADF_Widget_ZoomIn_Label;
+            zoomIn.ImageUrl = "images/icons.png"; //NOXLATE
+            zoomIn.ImageClass = "zoom-in-fixed"; //NOXLATE
+            var vZoomIn = CreateVerticalWidget(zoomIn);
+
+            //Zoom Out
+            var zoomOut = (IUIWidget)appDef.CreateWidget("ZoomOut", widgets.FindWidget(KnownWidgetNames.ZoomOnClick)); //NOXLATE
+            zoomOut.SetValue("Factor", "0.5"); //NOXLATE
+            zoomOut.StatusText = zoomOut.Tooltip = Strings.ADF_Widget_ZoomOut_Desc;
+            zoomOut.Label = Strings.ADF_Widget_ZoomOut_Label;
+            zoomOut.ImageUrl = "images/icons.png"; //NOXLATE
+            zoomOut.ImageClass = "zoom-out-fixed"; //NOXLATE
+            var vZoomOut = CreateVerticalWidget(zoomOut);
+
+            //Previous View
+            var prevView = (IUIWidget)appDef.CreateWidget("PreviousView", widgets.FindWidget(KnownWidgetNames.ExtentHistory)); //NOXLATE
+            prevView.SetValue("Direction", "previous"); //NOXLATE
+            prevView.StatusText = prevView.Tooltip = Strings.ADF_Widget_PreviousView_Desc;
+            prevView.Label = Strings.ADF_Widget_PreviousView_Label;
+            prevView.ImageUrl = "images/icons.png"; //NOXLATE
+            prevView.ImageClass = "view-back"; //NOXLATE
+            var vPrevView = CreateVerticalWidget(prevView);
+
+            //Next View
+            var nextView = (IUIWidget)appDef.CreateWidget("NextView", widgets.FindWidget(KnownWidgetNames.ExtentHistory)); //NOXLATE
+            nextView.SetValue("Direction", "next"); //NOXLATE
+            nextView.StatusText = nextView.Tooltip = Strings.ADF_Widget_NextView_Desc;
+            nextView.Label = Strings.ADF_Widget_NextView_Label;
+            nextView.ImageUrl = "images/icons.png"; //NOXLATE
+            nextView.ImageClass = "view-forward"; //NOXLATE
+            var vNextView = CreateVerticalWidget(nextView);
+
+            //Buffer
+            var buffer = (IUIWidget)appDef.CreateWidget("tbBuffer", widgets.FindWidget(KnownWidgetNames.BufferPanel)); //NOXLATE
+            //buffer.SetValue("Target", "TaskPane"); //NOXLATE
+            buffer.StatusText = buffer.Tooltip = Strings.ADF_Widget_Buffer_Desc;
+            buffer.Tooltip = Strings.ADF_Widget_Buffer_Label;
+
+            //Measure
+            var measure = (IUIWidget)appDef.CreateWidget("Measure", widgets.FindWidget(KnownWidgetNames.Measure)); //NOXLATE
+            var measureParams = new NameValueCollection();
+            measureParams["Type"] = "both"; //NOXLATE
+            measureParams["MeasureTooltipContainer"] = "MeasureResult"; //NOXLATE
+            measureParams["MeasureTooltipType"] = "dynamic"; //NOXLATE
+            measureParams["DistancePrecision"] = "0"; //NOXLATE
+            measureParams["AreaPrecision"] = "0"; //NOXLATE
+            measureParams["Units"] = "meters"; //NOXLATE
+            measureParams["Target"] = "TaskPane"; //NOXLATE
+            measure.SetAllValues(measureParams);
+            measure.StatusText = buffer.Tooltip = Strings.ADF_Widget_Measure_Desc;
+            measure.Tooltip = Strings.ADF_Widget_Measure_Label;
+
+            //Show Overview
+            var showOverview = (IUIWidget)appDef.CreateWidget("showOverview", widgets.FindWidget(KnownWidgetNames.InvokeScript)); //NOXLATE
+            showOverview.Label = "Show Overview"; //NOXLATE
+            showOverview.SetValue("Script", "showOverviewMap()"); //NOXLATE
+
+            //Show Task Pane
+            var showTaskPane = (IUIWidget)appDef.CreateWidget("showTaskPane", widgets.FindWidget(KnownWidgetNames.InvokeScript)); //NOXLATE
+            showTaskPane.Label = "Show Task Pane"; //NOXLATE
+            showTaskPane.SetValue("Script", "showTaskPane()"); //NOXLATE
+
+            //Show Legend
+            var showLegend = (IUIWidget)appDef.CreateWidget("showLegend", widgets.FindWidget(KnownWidgetNames.InvokeScript)); //NOXLATE
+            showLegend.Label = "Show Legend"; //NOXLATE
+            showLegend.SetValue("Script", "showLegend()"); //NOXLATE
+
+            //Show Selection Panel
+            var showSelectionPanel = (IUIWidget)appDef.CreateWidget("showSelectionPanel", widgets.FindWidget(KnownWidgetNames.InvokeScript)); //NOXLATE
+            showSelectionPanel.Label = "Show Selection Panel"; //NOXLATE
+            showSelectionPanel.SetValue("Script", "showSelectionPanel()"); //NOXLATE
+
+            //Coordinate Tracker
+            var coordTracker = appDef.CreateWidget("statusCoordinates", widgets.FindWidget(KnownWidgetNames.CursorPosition)); //NOXLATE
+            coordTracker.SetValue("Template", "X: {x} {units}, Y: {y} {units}"); //NOXLATE
+            coordTracker.SetValue("Precision", "4"); //NOXLATE
+            coordTracker.SetValue("EmptyText", "&amp;nbsp;"); //NOXLATE
+
+            //Selection Info
+            var selInfo = appDef.CreateWidget("statusSelection", widgets.FindWidget(KnownWidgetNames.SelectionInfo)); //NOXLATE
+            selInfo.SetValue("EmptyText", "No selection"); //NOXLATE
+
+            //View Size
+            var viewSize = appDef.CreateWidget("statusViewSize", widgets.FindWidget(KnownWidgetNames.ViewSize)); //NOXLATE
+            viewSize.SetValue("Template", "{w} x {h} ({units})"); //NOXLATE
+            viewSize.SetValue("Precision", "2"); //NOXLATE
+
+            widgetSet.AddWidget(zoomIn);
+            widgetSet.AddWidget(zoomOut);
+            widgetSet.AddWidget(prevView);
+            widgetSet.AddWidget(nextView);
+            widgetSet.AddWidget(buffer);
+            widgetSet.AddWidget(measure);
+            widgetSet.AddWidget(showOverview);
+            widgetSet.AddWidget(showTaskPane);
+            widgetSet.AddWidget(showLegend);
+            widgetSet.AddWidget(showSelectionPanel);
+            widgetSet.AddWidget(coordTracker);
+            widgetSet.AddWidget(selInfo);
+            widgetSet.AddWidget(viewSize);
+
+            widgetSet.AddWidget(vZoomIn);
+            widgetSet.AddWidget(vZoomOut);
+            widgetSet.AddWidget(vPrevView);
+            widgetSet.AddWidget(vNextView);
+
+            //Now here's where things may diverge completely between templates
+            //So let's try for something that is somewhat consistent
+
+            //Init primary toolbar
+            toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Print));
+
+            //2.2 specific stuff
+            if (siteVersion >= new Version(2, 2))
+            {
+                toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.QuickPlot));
+            }
+
+            toolbar.AddItem(appDef.CreateSeparator());
+            toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.RefreshMap));
+            //2.4 requires maptips to be a toggle widget
+            if (siteVersion >= VER_240)
+            {
+                toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Maptip));
+            }
+            toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.SelectRadius));
+            toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.SelectPolygon));
+            toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.ClearSelection));
+
+            toolbar.AddItem(appDef.CreateWidgetReference(buffer.Name));
+            toolbar.AddItem(appDef.CreateWidgetReference(measure.Name));
+
+            //2.2 specific stuff
+            if (siteVersion >= new Version(2, 2))
+            {
+                toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.FeatureInfo));
+                toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Query));
+                toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Theme));
+                toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Redline));
+            }
+
+            toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.ViewOptions));
+            toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.About));
+            toolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Help));
+
+            //Init secondary toolbar
+            secToolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Select));
+            secToolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Pan));
+            secToolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Zoom));
+            secToolbar.AddItem(appDef.CreateWidgetReference(zoomIn.Name));
+            secToolbar.AddItem(appDef.CreateWidgetReference(zoomOut.Name));
+            secToolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.InitialMapView));
+            secToolbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.ZoomToSelection));
+            secToolbar.AddItem(appDef.CreateWidgetReference(prevView.Name));
+            secToolbar.AddItem(appDef.CreateWidgetReference(nextView.Name));
+
+            //Init vertical toolbar
+            widgetSet.AddWidget(CreateVerticalWidget((IUIWidget)appDef.CreateWidget(KnownWidgetNames.Select, widgets.FindWidget(KnownWidgetNames.Select))));
+            widgetSet.AddWidget(CreateVerticalWidget((IUIWidget)appDef.CreateWidget(KnownWidgetNames.Pan, widgets.FindWidget(KnownWidgetNames.Pan))));
+            widgetSet.AddWidget(CreateVerticalWidget((IUIWidget)appDef.CreateWidget(KnownWidgetNames.Zoom, widgets.FindWidget(KnownWidgetNames.Zoom))));
+            widgetSet.AddWidget(CreateVerticalWidget((IUIWidget)appDef.CreateWidget(KnownWidgetNames.InitialMapView, widgets.FindWidget(KnownWidgetNames.InitialMapView))));
+            widgetSet.AddWidget(CreateVerticalWidget((IUIWidget)appDef.CreateWidget(KnownWidgetNames.ZoomToSelection, widgets.FindWidget(KnownWidgetNames.ZoomToSelection))));
+
+            vertToolbar.AddItem(appDef.CreateWidgetReference("vert" + KnownWidgetNames.Select)); //NOXLATE
+            vertToolbar.AddItem(appDef.CreateWidgetReference("vert" + KnownWidgetNames.Pan)); //NOXLATE
+            vertToolbar.AddItem(appDef.CreateWidgetReference("vert" + KnownWidgetNames.Zoom)); //NOXLATE
+            vertToolbar.AddItem(appDef.CreateWidgetReference(vZoomIn.Name));
+            vertToolbar.AddItem(appDef.CreateWidgetReference(vZoomOut.Name));
+            vertToolbar.AddItem(appDef.CreateWidgetReference("vert" + KnownWidgetNames.InitialMapView)); //NOXLATE
+            vertToolbar.AddItem(appDef.CreateWidgetReference("vert" + KnownWidgetNames.ZoomToSelection)); //NOXLATE
+            vertToolbar.AddItem(appDef.CreateWidgetReference(vPrevView.Name));
+            vertToolbar.AddItem(appDef.CreateWidgetReference(vNextView.Name));
+
+            //Main menu
+            menu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.MapMenu));
+
+            //2.2 specific stuff
+            if (siteVersion >= new Version(2, 2))
+            {
+                menu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.BasemapSwitcher));
+            }
+            var viewMenu = appDef.CreateFlyout(Strings.ADF_Flyout_View);
+            viewMenu.AddItem(appDef.CreateWidgetReference(showOverview.Name));
+            viewMenu.AddItem(appDef.CreateWidgetReference(showTaskPane.Name));
+            viewMenu.AddItem(appDef.CreateWidgetReference(showLegend.Name));
+            viewMenu.AddItem(appDef.CreateWidgetReference(showSelectionPanel.Name));
+            menu.AddItem(viewMenu);
+
+            //status bar
+            statusbar.AddItem(appDef.CreateWidgetReference(coordTracker.Name));
+            statusbar.AddItem(appDef.CreateWidgetReference(selInfo.Name));
+            statusbar.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.EditableScale));
+            statusbar.AddItem(appDef.CreateWidgetReference(viewSize.Name));
+
+            //Map Context Menu
+            mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.RefreshMap));
+            mapContextMenu.AddItem(appDef.CreateSeparator());
+            mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Pan));
+            mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Zoom));
+            mapContextMenu.AddItem(appDef.CreateSeparator());
+            mapContextMenu.AddItem(appDef.CreateWidgetReference(zoomIn.Name));
+            mapContextMenu.AddItem(appDef.CreateWidgetReference(zoomOut.Name));
+            mapContextMenu.AddItem(appDef.CreateSeparator());
+            var zoomMenu = appDef.CreateFlyout(Strings.ADF_Flyout_Zoom);
+
+            mapContextMenu.AddItem(zoomMenu);
+            mapContextMenu.AddItem(appDef.CreateSeparator());
+            mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Select));
+            mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.ClearSelection));
+            var selectMoreMenu = appDef.CreateFlyout(Strings.ADF_Flyout_SelectMore);
+
+            mapContextMenu.AddItem(selectMoreMenu);
+            mapContextMenu.AddItem(appDef.CreateSeparator());
+            mapContextMenu.AddItem(appDef.CreateWidgetReference(buffer.Name));
+            mapContextMenu.AddItem(appDef.CreateWidgetReference(measure.Name));
+
+            if (siteVersion >= new Version(2, 2))
+            {
+                mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.FeatureInfo));
+                mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Query));
+                mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Theme));
+                mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Redline));
+            }
+
+            mapContextMenu.AddItem(appDef.CreateSeparator());
+            mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.ViewOptions));
+            mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Help));
+            mapContextMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.About));
+
+            //Tasks Context Menu
+            taskPaneMenu.AddItem(appDef.CreateWidgetReference(measure.Name));
+            taskPaneMenu.AddItem(appDef.CreateWidgetReference(buffer.Name));
+
+            if (siteVersion >= new Version(2, 2))
+            {
+                taskPaneMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.FeatureInfo));
+                taskPaneMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Query));
+                taskPaneMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Theme));
+                taskPaneMenu.AddItem(appDef.CreateWidgetReference(KnownWidgetNames.Redline));
+            }
+
+            //Now add them all to the main widget set
+            widgetSet.AddContainer(toolbar);
+            widgetSet.AddContainer(secToolbar);
+            widgetSet.AddContainer(vertToolbar);
+            widgetSet.AddContainer(menu);
+            widgetSet.AddContainer(statusbar);
+            widgetSet.AddContainer(mapContextMenu);
+            widgetSet.AddContainer(taskPaneMenu);
+
+            //Set positioning
+            toolbar.Position = "top"; //NOXLATE
+            secToolbar.Position = "top"; //NOXLATE
+            menu.Position = "top"; //NOXLATE
+            statusbar.Position = "bottom"; //NOXLATE
+            mapContextMenu.Position = "top"; //NOXLATE
+            taskPaneMenu.Position = "top"; //NOXLATE
+            vertToolbar.Position = "left"; //NOXLATE
+
+            return appDef;
+        }
+
         /// <summary>
         /// Creates a simple label symbol
         /// </summary>
@@ -1041,6 +1420,18 @@ namespace OSGeo.MapGuide.ObjectModels
         }
 
         /// <summary>
+        /// Creates a new symbol library
+        /// </summary>
+        /// <returns></returns>
+        public static ISymbolLibrary CreateSymbolLibrary()
+        {
+            return new OSGeo.MapGuide.ObjectModels.SymbolLibrary.v1_0_0.SymbolLibraryType()
+            {
+                Symbol = new System.ComponentModel.BindingList<SymbolLibrary.v1_0_0.SymbolType>()
+            };
+        }
+
+        /// <summary>
         /// Creates a 2d point
         /// </summary>
         /// <param name="x"></param>
@@ -1068,7 +1459,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// </summary>
         /// <param name="xml">The XML.</param>
         /// <returns></returns>
-        public static IResource DeserializeResourceXml(string xml)
+        public static IResource DeserializeXml(string xml)
         {
             return ResourceTypeRegistry.Deserialize(xml);
         }
@@ -1078,7 +1469,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// </summary>
         /// <param name="res">The resource.</param>
         /// <returns></returns>
-        public static Stream SerializeResource(IResource resource)
+        public static Stream Serialize(IResource resource)
         {
             return ResourceTypeRegistry.Serialize(resource);
         }
@@ -1088,7 +1479,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// </summary>
         /// <param name="res"></param>
         /// <returns></returns>
-        public static string SerializeResourceAsString(IResource resource)
+        public static string SerializeAsString(IResource resource)
         {
             return ResourceTypeRegistry.SerializeAsString(resource);
         }
@@ -1099,7 +1490,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="resourceType">Type of the resource.</param>
         /// <param name="stream">The stream.</param>
         /// <returns></returns>
-        public static IResource DeserializeResourceStream(string resourceType, Stream stream)
+        public static IResource Deserialize(string resourceType, Stream stream)
         {
             return ResourceTypeRegistry.Deserialize(resourceType, stream);
         }

@@ -56,7 +56,7 @@ namespace Maestro.Editors.Preview
         /// <returns></returns>
         public string GeneratePreviewUrl(IResource res, string locale)
         {
-            var conn = res.CurrentConnection;
+            var conn = _edSvc.CurrentConnection;
             var previewer = conn.GetPreviewUrlGenerator();
             previewer.AddDebugWatermark = PreviewSettings.AddDebugWatermark;
             previewer.UseAjaxViewer = PreviewSettings.UseAjaxViewer;
@@ -112,14 +112,14 @@ namespace Maestro.Editors.Preview
             //Create temp map definition to house our current layer
             var mdfId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".MapDefinition"; //NOXLATE
             string csWkt;
-            var extent = ldf.GetSpatialExtent(true, out csWkt);
+            var extent = ldf.GetSpatialExtent(conn, true, out csWkt);
             if (extent == null)
                 throw new ApplicationException(Strings.FailedToCalculateFeatureSourceExtents);
 
-            string layerSc = Utility.GetLayerSpatialContext(ldf);
+            string layerSc = ldf.GetLayerSpatialContextName(conn);
 
             //TODO: Based on the visible scales in this layer, size this extents accordingly
-            var mdf = ObjectFactory.CreateMapDefinition(conn, Strings.PreviewMap, csWkt, extent);
+            var mdf = Utility.CreateMapDefinition(conn, Strings.PreviewMap, csWkt, extent);
             IMapDefinition2 mdf2 = mdf as IMapDefinition2;
             if (mdf2 != null && PreviewSettings.AddDebugWatermark)
                 CreateDebugWatermark(mdf2, conn, layerSc);

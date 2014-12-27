@@ -74,7 +74,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
             //and auto trigger dirty state.
             if (!_service.IsNew)
             {
-                txtUsername.Text = _fs.GetEncryptedUsername() ?? _fs.GetConnectionProperty("Username"); //NOXLATE
+                txtUsername.Text = _fs.GetEncryptedUsername(_service.CurrentConnection) ?? _fs.GetConnectionProperty("Username"); //NOXLATE
                 txtPassword.Text = GenerateRandomFakeString();
             }
 
@@ -153,7 +153,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
                     {
                         _fs.SetConnectionProperty("Username", StringConstants.MgUsernamePlaceholder); //NOXLATE
                         _fs.SetConnectionProperty("Password", StringConstants.MgPasswordPlaceholder); //NOXLATE
-                        _fs.SetEncryptedCredentials(username, password);
+                        _fs.SetEncryptedCredentials(_service.CurrentConnection, username, password);
                         _service.SyncSessionCopy();
                     }
                 }
@@ -164,7 +164,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
                 _fs.SetConnectionProperty("Password", null); //NOXLATE
                 try
                 {
-                    _fs.DeleteResourceData(StringConstants.MgUserCredentialsResourceData);
+                    _service.CurrentConnection.ResourceService.DeleteResourceData(_fs.ResourceID, StringConstants.MgUserCredentialsResourceData);
                 }
                 catch { }
                 _service.SyncSessionCopy();
@@ -212,7 +212,8 @@ namespace Maestro.Editors.FeatureSource.Providers.Rdbms
             using (new WaitCursor(this))
             {
                 WriteEncryptedCredentials();
-                txtStatus.Text = string.Format(Strings.FdoConnectionStatus, _fs.TestConnection());
+                var result = _service.CurrentConnection.FeatureService.TestConnection(_fs.ResourceID);
+                txtStatus.Text = string.Format(Strings.FdoConnectionStatus, result);
             }
         }
 

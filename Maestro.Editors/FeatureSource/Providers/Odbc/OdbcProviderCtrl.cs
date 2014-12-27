@@ -28,6 +28,7 @@ using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
 using System.ComponentModel;
@@ -215,7 +216,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                 _fs.ApplyConnectionProperties(props);
                 //Flush back to session before testing
                 _service.SyncSessionCopy();
-                string result = _fs.TestConnection();
+                string result = _service.CurrentConnection.FeatureService.TestConnection(_fs.ResourceID);
 
                 txtConnectionStatus.Text = string.Format(Strings.FdoConnectionStatus, result);
             }
@@ -240,7 +241,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
             //Flush back to session before testing
             _service.SyncSessionCopy();
 
-            string result = _fs.TestConnection();
+            var result = _service.CurrentConnection.FeatureService.TestConnection(_fs.ResourceID);
             if (!result.ToLower().Equals("true")) //NOXLATE
             {
                 MessageBox.Show(string.Format(Strings.InvalidConnection, result), Strings.TitleError);
@@ -256,7 +257,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
             {
                 if (string.IsNullOrEmpty(_defaultSchemaName))
                 {
-                    var names = _fs.GetSchemaNames();
+                    var names = _service.CurrentConnection.FeatureService.GetSchemas(_fs.ResourceID);
                     if (names.Length == 1)
                     {
                         _defaultSchemaName = names[0];
@@ -268,7 +269,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                     }
                 }
 
-                string xml = _fs.GetConfigurationContent();
+                string xml = _fs.GetConfigurationContent(_service.CurrentConnection);
                 if (!string.IsNullOrEmpty(xml))
                 {
                     _doc = (OdbcConfigurationDocument)ConfigurationDocument.LoadXml(xml);
@@ -294,7 +295,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                         sc.CoordinateSystemWkt = diag.CoordinateSystemWkt;
                     }
                     string updatedContent = _doc.ToXml();
-                    _fs.SetConfigurationContent(updatedContent);
+                    _fs.SetConfigurationContent(_service.CurrentConnection, updatedContent);
                     OnResourceChanged();
                 }
             }
@@ -320,8 +321,8 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
 
             try
             {
-                var schemaName = _fs.GetSchemaNames()[0];
-                var classNames = _fs.GetClassNames(schemaName);
+                var schemaName = _service.CurrentConnection.FeatureService.GetSchemas(_fs.ResourceID)[0];
+                var classNames = _service.CurrentConnection.FeatureService.GetClassNames(_fs.ResourceID, schemaName);
                 var diag = new FilteredLogicalSchemaDialog(classNames);
                 if (diag.ShowDialog() == DialogResult.Cancel)
                     throw new ApplicationException(Strings.TextNoItemSelected);
@@ -331,10 +332,10 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
                 BusyWaitDelegate worker = () =>
                 {
                     classNames = names.Select(x => x.Contains(":") ? x.Split(':')[1] : x).ToArray(); //NOXLATE
-                    var schema = _fs.CurrentConnection.FeatureService.DescribeFeatureSourcePartial(_fs.ResourceID, schemaName, classNames);
+                    var schema = _service.CurrentConnection.FeatureService.DescribeFeatureSourcePartial(_fs.ResourceID, schemaName, classNames);
 
                     _doc.AddSchema(schema); //Only one schema is supported by ODBC so this is ok
-                    var scList = _fs.GetSpatialInfo(false);
+                    var scList = _service.CurrentConnection.FeatureService.GetSpatialContextInfo(_fs.ResourceID, false);
                     foreach (var sc in scList.SpatialContext)
                     {
                         _doc.AddSpatialContext(sc);
@@ -362,7 +363,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
 
         private void DoDocumentReset()
         {
-            _fs.SetConfigurationContent(null);
+            _fs.SetConfigurationContent(_service.CurrentConnection, null);
             _fs.ConfigurationDocument = null;
             _service.SyncSessionCopy();
             _doc = null;
@@ -371,7 +372,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
             if (null != _doc)
             {
                 _fs.ConfigurationDocument = "config.xml";
-                _fs.SetConfigurationContent(_doc.ToXml());
+                _fs.SetConfigurationContent(_service.CurrentConnection, _doc.ToXml());
                 MessageBox.Show(Strings.ConfigurationDocumentReset);
             }
         }

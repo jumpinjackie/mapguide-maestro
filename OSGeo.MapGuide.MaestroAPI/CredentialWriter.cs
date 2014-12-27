@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
 using System.Diagnostics;
@@ -27,10 +28,8 @@ using System.IO;
 using System.Text;
 using ObjCommon = OSGeo.MapGuide.ObjectModels.Common;
 
-namespace OSGeo.MapGuide.MaestroAPI
+namespace OSGeo.MapGuide.ObjectModels.FeatureSource
 {
-    using Resource;
-
     /// <summary>
     /// Extension methods for feature sources
     /// </summary>
@@ -41,16 +40,17 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// and %MG_PASSWORD% placeholder tokens in the Feature Source content.
         /// </summary>
         /// <param name="fs"></param>
+        /// <param name="conn"></param>
         /// <param name="username"></param>
         /// <param name="password"></param>
-        public static void SetEncryptedCredentials(this IFeatureSource fs, string username, string password)
+        public static void SetEncryptedCredentials(this IFeatureSource fs, IServerConnection conn, string username, string password)
         {
-            Check.NotNull(fs, "fs"); //NOXLATE
+            Check.ArgumentNotNull(fs, "fs"); //NOXLATE
             if (string.IsNullOrEmpty(fs.ResourceID))
                 throw new ArgumentException(Strings.ErrorNoResourceIdAttached);
             using (var stream = CredentialWriter.Write(username, password))
             {
-                fs.SetResourceData(StringConstants.MgUserCredentialsResourceData, ObjCommon.ResourceDataType.String, stream);
+                conn.ResourceService.SetResourceData(fs.ResourceID, StringConstants.MgUserCredentialsResourceData, ObjCommon.ResourceDataType.String, stream);
             }
         }
 
@@ -58,16 +58,17 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Gets the encrypted username referenced by the %MG_USERNAME% placeholder token in the Feature Source content
         /// </summary>
         /// <param name="fs"></param>
+        /// <param name="conn"></param>
         /// <returns></returns>
-        public static string GetEncryptedUsername(this IFeatureSource fs)
+        public static string GetEncryptedUsername(this IFeatureSource fs, IServerConnection conn)
         {
             Check.NotNull(fs, "fs"); //NOXLATE
-            var resData = fs.EnumerateResourceData();
-            foreach (var rd in resData)
+            var resData = conn.ResourceService.EnumerateResourceData(fs.ResourceID);
+            foreach (var rd in resData.ResourceData)
             {
                 if (rd.Name.ToUpper() == StringConstants.MgUserCredentialsResourceData)
                 {
-                    using (var sr = new StreamReader(fs.GetResourceData(StringConstants.MgUserCredentialsResourceData)))
+                    using (var sr = new StreamReader(conn.ResourceService.GetResourceData(fs.ResourceID, StringConstants.MgUserCredentialsResourceData)))
                     {
                         return sr.ReadToEnd();
                     }

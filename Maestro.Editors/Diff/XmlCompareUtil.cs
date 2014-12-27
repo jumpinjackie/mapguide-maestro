@@ -24,6 +24,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Resource.Comparison;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using System.IO;
 using System.Xml;
 
@@ -76,8 +77,8 @@ namespace Maestro.Editors.Diff
             var sourceDoc = new XmlDocument();
             var targetDoc = new XmlDocument();
 
-            using (var sourceStream = ResourceTypeRegistry.Serialize(source))
-            using (var targetStream = ResourceTypeRegistry.Serialize(target))
+            using (var sourceStream = ObjectFactory.Serialize(source))
+            using (var targetStream = ObjectFactory.Serialize(target))
             {
                 sourceDoc.Load(sourceStream);
                 targetDoc.Load(targetStream);

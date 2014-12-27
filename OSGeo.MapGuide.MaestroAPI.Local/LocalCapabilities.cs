@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.MaestroAPI.Capability;
 using OSGeo.MapGuide.MaestroAPI.Commands;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 
 namespace OSGeo.MapGuide.MaestroAPI.Local

@@ -20,7 +20,9 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 using System.Collections.Generic;
 
 namespace Maestro.Editors.Preview
@@ -55,14 +57,16 @@ namespace Maestro.Editors.Preview
         /// <summary>
         /// Gets whether the given resource type is previewable for the given connection provider
         /// </summary>
-        /// <param name="provider"></param>
+        /// <param name="conn"></param>
         /// <param name="resource"></param>
         /// <returns></returns>
-        public static bool IsPreviewable(string provider, IResource resource)
+        public static bool IsPreviewable(IServerConnection conn, IResource resource)
         {
-            var preview = GetPreviewer(provider);
+            Check.ArgumentNotNull(conn, "conn"); //NOXLATE
+            Check.ArgumentNotNull(resource, "resource"); //NOXLATE
+            var preview = GetPreviewer(conn.ProviderName);
             if (preview != null)
-                return preview.IsPreviewable(resource);
+                return preview.IsPreviewable(resource, conn);
 
             return false;
         }

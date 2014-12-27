@@ -57,7 +57,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
                 picker.SetStartingPoint(startPoint);
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    var wl = ObjectFactory.CreateWebLayout(conn, new Version(1, 1, 0), string.Empty);
+                    var wl = ObjectFactory.CreateWebLayout(new Version(1, 1, 0), string.Empty);
                     wl.Map.ResourceId = picker.ResourceID;
                     return wl;
                 }

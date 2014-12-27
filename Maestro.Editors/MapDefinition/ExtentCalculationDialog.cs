@@ -38,15 +38,17 @@ namespace Maestro.Editors.MapDefinition
     public partial class ExtentCalculationDialog : Form
     {
         private IMapDefinition _mdf;
+        private IServerConnection _conn;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ExtentCalculationDialog"/> class.
         /// </summary>
         /// <param name="mdf">The MDF.</param>
-        public ExtentCalculationDialog(IMapDefinition mdf)
+        public ExtentCalculationDialog(IMapDefinition mdf, IServerConnection conn)
         {
             InitializeComponent();
             _mdf = mdf;
+            _conn = conn;
             grdCalculations.DataSource = _results;
 
             prgCalculations.Maximum = mdf.GetLayerCount();
@@ -75,7 +77,7 @@ namespace Maestro.Editors.MapDefinition
         /// <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
-            bgCalculation.RunWorkerAsync(_mdf);
+            bgCalculation.RunWorkerAsync();
         }
 
         private enum TransformStatus
@@ -138,8 +140,8 @@ namespace Maestro.Editors.MapDefinition
 
         private void bgCalculation_DoWork(object sender, DoWorkEventArgs e)
         {
-            var mdf = (IMapDefinition)e.Argument;
-            var resSvc = mdf.CurrentConnection.ResourceService;
+            var mdf = _mdf;
+            var resSvc = _conn.ResourceService;
 
             //Accumulate layers
             Dictionary<string, ILayerDefinition> layers = new Dictionary<string, ILayerDefinition>();
@@ -168,7 +170,7 @@ namespace Maestro.Editors.MapDefinition
             {
                 CalculationResult res = new CalculationResult();
                 string wkt;
-                var e1 = layer.GetSpatialExtent(true, out wkt);
+                var e1 = layer.GetSpatialExtent(_conn, true, out wkt);
                 if (e1 != null)
                 {
                     res.Extents = ExtentsToString(e1);

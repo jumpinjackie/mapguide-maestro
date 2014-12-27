@@ -24,6 +24,7 @@ using ICSharpCode.Core;
 using Maestro.Base.Services;
 using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels;
 
 namespace Maestro.Base.Commands.Test
 {

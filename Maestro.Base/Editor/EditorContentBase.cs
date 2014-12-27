@@ -30,6 +30,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Resource.Conversion;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -94,7 +95,7 @@ namespace Maestro.Base.Editor
                     _svc.BeforeSave -= OnBeforeSave;
 
                     var res = _svc.GetEditedResource();
-                    res.CurrentConnection.SessionIDChanged -= OnSessionIdChanged;
+                    _svc.CurrentConnection.SessionIDChanged -= OnSessionIdChanged;
                 }
 
                 _svc = value;
@@ -105,7 +106,7 @@ namespace Maestro.Base.Editor
 
                 {
                     var res = _svc.GetEditedResource();
-                    var conn = res.CurrentConnection;
+                    var conn = _svc.CurrentConnection;
                     conn.SessionIDChanged += WeakEventHandler.Wrap(OnSessionIdChanged, (eh) => conn.SessionIDChanged -= eh);
                 }
 
@@ -134,7 +135,7 @@ namespace Maestro.Base.Editor
         /// <returns></returns>
         public virtual string GetXmlContent()
         {
-            using (var sr = new System.IO.StreamReader(ResourceTypeRegistry.Serialize(this.Resource)))
+            using (var sr = new System.IO.StreamReader(ObjectFactory.Serialize(this.Resource)))
             {
                 return sr.ReadToEnd();
             }
@@ -236,7 +237,7 @@ namespace Maestro.Base.Editor
         protected virtual ICollection<ValidationIssue> ValidateEditedResource()
         {
             var conn = _svc.CurrentConnection;
-            var context = new ResourceValidationContext(conn.ResourceService, conn.FeatureService);
+            var context = new ResourceValidationContext(conn);
             //Don't recurse as we only want to validate the current resource
             var issues = ResourceValidatorSet.Validate(context, this.Resource, false);
             var set = new ValidationResultSet(issues);
@@ -252,7 +253,7 @@ namespace Maestro.Base.Editor
 
         private string GetTooltip(string item)
         {
-            return string.Format(Strings.EditorTitleTemplate, item, Environment.NewLine, this.Resource.CurrentConnection.DisplayName, this.Resource.ResourceVersion);
+            return string.Format(Strings.EditorTitleTemplate, item, Environment.NewLine, this.EditorService.CurrentConnection.DisplayName, this.Resource.ResourceVersion);
         }
 
         private void UpdateTitle()
@@ -303,8 +304,8 @@ namespace Maestro.Base.Editor
                 var res = this.Resource;
                 if (res != null)
                 {
-                    var type = res.CurrentConnection.ProviderName;
-                    return ResourcePreviewerFactory.IsPreviewable(type, res);
+                    var conn = this.EditorService.CurrentConnection;
+                    return ResourcePreviewerFactory.IsPreviewable(conn, res);
                 }
                 return false;
             }
@@ -369,7 +370,7 @@ namespace Maestro.Base.Editor
         /// </summary>
         public virtual void Preview()
         {
-            var conn = this.Resource.CurrentConnection;
+            var conn = this.EditorService.CurrentConnection;
             _svc.PrePreviewProcess();
             var previewer = ResourcePreviewerFactory.GetPreviewer(conn.ProviderName);
             if (previewer != null)
@@ -406,7 +407,7 @@ namespace Maestro.Base.Editor
         private void btnUpgrade_Click(object sender, EventArgs e)
         {
             var res = _svc.GetEditedResource();
-            var conn = res.CurrentConnection;
+            var conn = _svc.CurrentConnection;
             var ver = conn.Capabilities.GetMaxSupportedResourceVersion(res.ResourceType);
 
             using (new WaitCursor(this))
@@ -414,7 +415,7 @@ namespace Maestro.Base.Editor
                 var conv = new ResourceObjectConverter();
                 var res2 = conv.Convert(res, ver);
 
-                using (var stream = ResourceTypeRegistry.Serialize(res2))
+                using (var stream = ObjectFactory.Serialize(res2))
                 {
                     using (var sr = new StreamReader(stream))
                     {
@@ -442,7 +443,7 @@ namespace Maestro.Base.Editor
                 var omgr = ServiceRegistry.GetService<OpenResourceManager>();
                 var res = this.EditorService.GetEditedResource();
                 var origResId = this.EditorService.ResourceID;
-                var conn = res.CurrentConnection;
+                var conn = this.EditorService.CurrentConnection;
                 var wb = Workbench.Instance;
                 this.Close();
                 omgr.Open(origResId, conn, false, wb.ActiveSiteExplorer);

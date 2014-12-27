@@ -15,6 +15,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     public abstract class BaseWebLayoutValidator : IResourceValidator
     {
         /// <summary>
+        /// The server connection which validation will be performed against
+        /// </summary>
+        public IServerConnection Connection { get; set; }
+
+        /// <summary>
         /// Gets the resource type and version this validator supports
         /// </summary>
         /// <value></value>
@@ -53,7 +58,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             if (context.IsAlreadyValidated(resource.ResourceID))
                 return null;
 
-            if (resource.ResourceType != OSGeo.MapGuide.MaestroAPI.ResourceTypes.WebLayout.ToString())
+            if (resource.ResourceType != ResourceTypes.WebLayout.ToString())
                 return null;
 
             List<ValidationIssue> issues = new List<ValidationIssue>();

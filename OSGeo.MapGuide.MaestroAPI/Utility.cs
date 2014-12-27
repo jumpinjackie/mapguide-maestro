@@ -24,11 +24,15 @@ using GeoAPI.Geometries;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using OSGeo.MapGuide.MaestroAPI.IO;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
 using OSGeo.MapGuide.ObjectModels.Capabilities.v1_0_0;
+using OSGeo.MapGuide.ObjectModels.DrawingSource;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 using System;
 using System.Collections.Generic;
@@ -1076,11 +1080,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Explodes a themed layer into filtered sub-layers where each sub-layer is filtered on the individual theme rule's filter
         /// </summary>
+        /// <param name="conn"></param>
         /// <param name="options"></param>
         /// <param name="progress"></param>
-        public static void ExplodeThemeIntoFilteredLayers(ExplodeThemeOptions options, LengthyOperationProgressCallBack progress)
+        public static void ExplodeThemeIntoFilteredLayers(IServerConnection conn, ExplodeThemeOptions options, LengthyOperationProgressCallBack progress)
         {
-            var conn = options.Layer.CurrentConnection;
             var origLayerId = options.Layer.ResourceID;
             string layerPrefix = options.LayerPrefix;
 
@@ -1092,7 +1096,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 var currentRule = origStyle.GetRuleAt(i);
 
-                var newLayer = ObjectFactory.CreateDefaultLayer(conn, LayerType.Vector, options.Layer.ResourceVersion);
+                var newLayer = ObjectFactory.CreateDefaultLayer(LayerType.Vector, options.Layer.ResourceVersion);
                 var vl = (IVectorLayerDefinition)newLayer.SubLayer;
                 vl.ResourceId = origVl.ResourceId;
                 vl.FeatureName = origVl.FeatureName;
@@ -1211,7 +1215,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 lyrId = prefix + clsDef.Name + "(" + counter + ").LayerDefinition"; //NOXLATE
             }
 
-            var ld = ObjectFactory.CreateDefaultLayer(conn, LayerType.Vector, new Version(1, 0, 0));
+            var ld = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
 
             //Assign default properties
             ld.ResourceID = lyrId;
@@ -1502,40 +1506,13 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         /// <summary>
-        /// Gets the name of the active spatial context used by the given layer definition
-        /// </summary>
-        /// <param name="ldf"></param>
-        /// <returns></returns>
-        public static string GetLayerSpatialContext(ILayerDefinition ldf)
-        {
-            var conn = ldf.CurrentConnection;
-            var rl = ldf.SubLayer as IRasterLayerDefinition;
-            var vl = ldf.SubLayer as IVectorLayerDefinition;
-            if (vl != null)
-            {
-                var cls = conn.FeatureService.GetClassDefinition(vl.ResourceId, vl.FeatureName);
-                var gp = cls.FindProperty(vl.Geometry) as GeometricPropertyDefinition;
-                if (gp != null)
-                    return gp.SpatialContextAssociation;
-            }
-            else if (rl != null)
-            {
-                var cls = conn.FeatureService.GetClassDefinition(rl.ResourceId, rl.FeatureName);
-                var rp = cls.FindProperty(rl.Geometry) as RasterPropertyDefinition;
-                if (rp != null)
-                    return rp.SpatialContextAssociation;
-            }
-            return null;
-        }
-
-        /// <summary>
         /// Creates a preview map definition for the given watermark
         /// </summary>
         /// <param name="wmd"></param>
         /// <returns></returns>
         public static IMapDefinition2 CreateWatermarkPreviewMapDefinition(IWatermarkDefinition wmd)
         {
-            IMapDefinition2 map = (IMapDefinition2)ObjectFactory.CreateMapDefinition(wmd.CurrentConnection, wmd.SupportedMapDefinitionVersion, "Watermark Definition Preview"); //NOXLATE
+            IMapDefinition2 map = (IMapDefinition2)ObjectFactory.CreateMapDefinition(wmd.SupportedMapDefinitionVersion, "Watermark Definition Preview"); //NOXLATE
             map.CoordinateSystem = @"LOCAL_CS[""*XY-M*"", LOCAL_DATUM[""*X-Y*"", 10000], UNIT[""Meter"", 1], AXIS[""X"", EAST], AXIS[""Y"", NORTH]]"; //NOXLATE
             map.Extents = ObjectFactory.CreateEnvelope(-1000000, -1000000, 1000000, 1000000);
             map.AddWatermark(wmd);
@@ -1601,6 +1578,41 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
 
             return Color.FromArgb(color.A, (int)red, (int)green, (int)blue);
+        }
+
+        public static ISimpleSymbolDefinition CreateSimpleSymbol(IServerConnection conn, string name, string description)
+        {
+            return ObjectFactory.CreateSimpleSymbol(conn.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.SymbolDefinition.ToString()), name, description);
+        }
+
+        public static IMapDefinition CreateMapDefinition(IServerConnection conn, string name)
+        {
+            return ObjectFactory.CreateMapDefinition(conn.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition.ToString()), name);
+        }
+
+        public static IMapDefinition CreateMapDefinition(IServerConnection conn, string name, string csWkt, ObjectModels.Common.IEnvelope extent)
+        {
+            return ObjectFactory.CreateMapDefinition(conn.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition.ToString()),
+                                                     name,
+                                                     csWkt,
+                                                     extent);
+        }
+
+        public static ILayerDefinition CreateDefaultLayer(IServerConnection conn, LayerType layerType)
+        {
+            return ObjectFactory.CreateDefaultLayer(layerType, conn.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.LayerDefinition.ToString()));
+        }
+
+        public static IApplicationDefinition CreateFlexibleLayout(IServerConnection conn, string templateName)
+        {
+            Check.Precondition(Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Fusion) >= 0, "Required Fusion service not supported on this connection");
+
+            IFusionService service = (IFusionService)conn.GetService((int)ServiceType.Fusion);
+            var templates = service.GetApplicationTemplates();
+            var widgets = service.GetApplicationWidgets();
+            var containers = service.GetApplicationContainers();
+
+            return ObjectFactory.CreateFlexibleLayout(conn.SiteVersion, templates, widgets, containers, templateName);
         }
     }
 

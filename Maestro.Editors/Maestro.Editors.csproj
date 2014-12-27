@@ -1976,6 +1976,10 @@
       <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj">
+      <Project>{48c5eb23-45ae-4c4c-8fab-635428ae8ca1}</Project>
+      <Name>OSGeo.MapGuide.ObjectModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.TextEditor\ICSharpCode.TextEditor.csproj">
       <Project>{2D18BE89-D210-49EB-A9DD-2246FBB3DF6D}</Project>
       <Name>ICSharpCode.TextEditor</Name>

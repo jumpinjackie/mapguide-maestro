@@ -49,7 +49,7 @@ namespace Maestro.Base.Templates
                 picker.SetStartingPoint(startPoint);
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    var ldf = ObjectFactory.CreateDefaultLayer(conn, OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Drawing, new Version(1, 0, 0));
+                    var ldf = ObjectFactory.CreateDefaultLayer(OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Drawing, new Version(1, 0, 0));
                     ldf.SubLayer.ResourceId = picker.ResourceID;
                     var dl = ((IDrawingLayerDefinition)ldf.SubLayer);
                     dl.LayerFilter = string.Empty;

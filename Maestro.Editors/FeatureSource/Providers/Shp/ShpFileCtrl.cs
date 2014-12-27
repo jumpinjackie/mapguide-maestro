@@ -136,7 +136,8 @@ namespace Maestro.Editors.FeatureSource.Providers.Shp
             using (new WaitCursor(this))
             {
                 _service.SyncSessionCopy();
-                txtStatus.Text = string.Format(Strings.FdoConnectionStatus, _fs.TestConnection());
+                var result = _service.CurrentConnection.FeatureService.TestConnection(_fs.ResourceID);
+                txtStatus.Text = string.Format(Strings.FdoConnectionStatus, result);
             }
         }
     }

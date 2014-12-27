@@ -32,6 +32,7 @@ using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System;
 using System.IO;
@@ -103,13 +104,13 @@ namespace MaestroAPITests
             string fsId = "Library://UnitTests/" + fsName + ".FeatureSource";
             if (!conn.ResourceService.ResourceExists(fsId))
             {
-                var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF");
+                var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");
                 fs.SetConnectionProperty("File", "%MG_DATA_FILE_PATH%Sheboygan_Parcels.sdf");
                 fs.ResourceID = fsId;
                 conn.ResourceService.SaveResourceAs(fs, fsId);
                 using (var stream = File.OpenRead("TestData/FeatureService/SDF/Sheboygan_Parcels.sdf"))
                 {
-                    fs.SetResourceData("Sheboygan_Parcels.sdf", ResourceDataType.File, stream);
+                    conn.ResourceService.SetResourceData(fs.ResourceID, "Sheboygan_Parcels.sdf", ResourceDataType.File, stream);
                 }
                 Assert.True(Convert.ToBoolean(conn.FeatureService.TestConnection(fsId)));
             }
@@ -138,13 +139,13 @@ namespace MaestroAPITests
             string fsId = "Library://UnitTests/" + fsName + ".FeatureSource";
             if (!conn.ResourceService.ResourceExists(fsId))
             {
-                var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF");
+                var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");
                 fs.SetConnectionProperty("File", "%MG_DATA_FILE_PATH%Sheboygan_Parcels.sdf");
                 conn.ResourceService.SaveResourceAs(fs, fsId);
                 fs.ResourceID = fsId;
                 using (var stream = File.OpenRead("TestData/FeatureService/SDF/Sheboygan_Parcels.sdf"))
                 {
-                    fs.SetResourceData("Sheboygan_Parcels.sdf", ResourceDataType.File, stream);
+                    conn.ResourceService.SetResourceData(fs.ResourceID, "Sheboygan_Parcels.sdf", ResourceDataType.File, stream);
                 }
                 Assert.True(Convert.ToBoolean(conn.FeatureService.TestConnection(fsId)));
             }
@@ -458,7 +459,7 @@ namespace MaestroAPITests
 
             var conn = ConnectionUtil.CreateTestHttpConnection();
             string fsId = "Library://UnitTests/" + GetTestPrefix() + "EncryptedCredentials.FeatureSource";
-            var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLServerSpatial");
+            var fs = ObjectFactory.CreateFeatureSource("OSGeo.SQLServerSpatial");
             fs.SetConnectionProperty("Username", "%MG_USERNAME%");
             fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
             fs.SetConnectionProperty("Service", server);
@@ -476,22 +477,22 @@ namespace MaestroAPITests
 
             //Test convenience method
             fsId = "Library://UnitTests/" + GetTestPrefix() + "EncryptedCredentials2.FeatureSource";
-            fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLServerSpatial");
+            fs = ObjectFactory.CreateFeatureSource("OSGeo.SQLServerSpatial");
             fs.SetConnectionProperty("Username", "%MG_USERNAME%");
             fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
             fs.SetConnectionProperty("Service", server);
             fs.SetConnectionProperty("DataStore", database);
             fs.ResourceID = fsId;
             conn.ResourceService.SaveResource(fs);
-            fs.SetEncryptedCredentials(actualUser, actualPass);
+            fs.SetEncryptedCredentials(conn, actualUser, actualPass);
 
             result = conn.FeatureService.TestConnection(fsId);
             Assert.AreEqual("TRUE", result.ToUpper());
-            Assert.AreEqual(actualUser, fs.GetEncryptedUsername());
+            Assert.AreEqual(actualUser, fs.GetEncryptedUsername(conn));
 
             //Do not set encrypted credentials
             fsId = "Library://UnitTests/" + GetTestPrefix() + "EncryptedCredentials3.FeatureSource";
-            fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLServerSpatial");
+            fs = ObjectFactory.CreateFeatureSource("OSGeo.SQLServerSpatial");
             fs.SetConnectionProperty("Username", "%MG_USERNAME%");
             fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
             fs.SetConnectionProperty("Service", server);
@@ -510,14 +511,14 @@ namespace MaestroAPITests
 
             //Encrypt credentials, but use bogus username/password
             fsId = "Library://UnitTests/" + GetTestPrefix() + "EncryptedCredentials4.FeatureSource";
-            fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLServerSpatial");
+            fs = ObjectFactory.CreateFeatureSource( "OSGeo.SQLServerSpatial");
             fs.SetConnectionProperty("Username", "%MG_USERNAME%");
             fs.SetConnectionProperty("Password", "%MG_PASSWORD%");
             fs.SetConnectionProperty("Service", server);
             fs.SetConnectionProperty("DataStore", database);
             fs.ResourceID = fsId;
             conn.ResourceService.SaveResource(fs);
-            fs.SetEncryptedCredentials(bogusUser, bogusPass);
+            fs.SetEncryptedCredentials(conn, bogusUser, bogusPass);
 
             try
             {
@@ -528,7 +529,7 @@ namespace MaestroAPITests
             {
                 //Exception or false I can't remember, as long as the result is not "true"
             }
-            Assert.AreEqual(bogusUser, fs.GetEncryptedUsername());
+            Assert.AreEqual(bogusUser, fs.GetEncryptedUsername(conn));
         }
 
         public virtual void TestTouch()

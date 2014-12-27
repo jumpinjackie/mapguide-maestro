@@ -35,7 +35,7 @@ namespace Maestro.AddIn.Local.Services
 {
     public class LocalPreviewer : IResourcePreviewer
     {
-        public bool IsPreviewable(OSGeo.MapGuide.MaestroAPI.Resource.IResource res)
+        public bool IsPreviewable(IResource res, IServerConnection conn)
         {
             var rt = res.ResourceType;
             return (rt == ResourceTypes.LayerDefinition.ToString() ||
@@ -56,20 +56,20 @@ namespace Maestro.AddIn.Local.Services
         public void Preview(IResource res, IEditorService edSvc, string locale)
         {
             IMapDefinition mapDef = null;
-            var conn = res.CurrentConnection;
+            var conn = edSvc.CurrentConnection;
 
             if (res.ResourceType == ResourceTypes.LayerDefinition.ToString())
             {
                 var ldf = (ILayerDefinition)res;
                 string wkt;
-                var env = ldf.GetSpatialExtent(true, out wkt);
+                var env = ldf.GetSpatialExtent(conn, true, out wkt);
                 if (env == null)
                     throw new ApplicationException(Strings.CouldNotComputeExtentsForPreview);
-                mapDef = ObjectFactory.CreateMapDefinition(conn, "Preview");
+                mapDef = Utility.CreateMapDefinition(conn, "Preview");
                 mapDef.CoordinateSystem = wkt;
                 mapDef.SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);
                 string resId = "Session:" + edSvc.SessionID + "//" + Guid.NewGuid() + "." + res.ResourceType.ToString();
-                conn.ResourceService.SetResourceXmlData(resId, ResourceTypeRegistry.Serialize(res));
+                conn.ResourceService.SetResourceXmlData(resId, ObjectFactory.Serialize(res));
                 mapDef.AddLayer(null, "PreviewLayer", resId);
             }
             else if (res.ResourceType == ResourceTypes.MapDefinition.ToString())
@@ -79,11 +79,11 @@ namespace Maestro.AddIn.Local.Services
             else if (res.ResourceType == ResourceTypes.WatermarkDefinition.ToString())
             {
                 string resId = "Session:" + edSvc.SessionID + "//" + Guid.NewGuid() + "." + res.ResourceType.ToString();
-                conn.ResourceService.SetResourceXmlData(resId, ResourceTypeRegistry.Serialize(res));
+                conn.ResourceService.SetResourceXmlData(resId, ObjectFactory.Serialize(res));
 
                 var csFact = new MgCoordinateSystemFactory();
                 var arbXY = csFact.ConvertCoordinateSystemCodeToWkt("XY-M");
-                mapDef = ObjectFactory.CreateMapDefinition(conn, new Version(2, 3, 0), "Preview");
+                mapDef = ObjectFactory.CreateMapDefinition(new Version(2, 3, 0), "Preview");
                 mapDef.CoordinateSystem = arbXY;
                 mapDef.SetExtents(-100000, -100000, 100000, 100000);
                 var wm = ((IMapDefinition2)mapDef).AddWatermark(((IWatermarkDefinition)res));
@@ -91,7 +91,7 @@ namespace Maestro.AddIn.Local.Services
             }
 
             var mapResId = new MgResourceIdentifier("Session:" + edSvc.SessionID + "//" + mapDef.ResourceType.ToString() + "Preview" + Guid.NewGuid() + "." + mapDef.ResourceType.ToString());
-            conn.ResourceService.SetResourceXmlData(mapResId.ToString(), ResourceTypeRegistry.Serialize(mapDef));
+            conn.ResourceService.SetResourceXmlData(mapResId.ToString(), ObjectFactory.Serialize(mapDef));
 
             //MgdMap map = new MgdMap(mapResId);
 

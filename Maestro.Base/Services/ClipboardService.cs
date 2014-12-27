@@ -23,6 +23,7 @@
 using Maestro.Base.UI;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels;
 
 namespace Maestro.Base.Services
 {
@@ -60,7 +61,7 @@ namespace Maestro.Base.Services
         /// <param name="item"></param>
         public void Put(object item)
         {
-            Check.NotNull(item, "item");
+            Check.ArgumentNotNull(item, "item"); //NOXLATE
             lock (_clipLock)
             {
                 _item = item;

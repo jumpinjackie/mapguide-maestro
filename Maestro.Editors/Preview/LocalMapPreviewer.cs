@@ -25,6 +25,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
@@ -63,8 +64,9 @@ namespace Maestro.Editors.Preview
         /// Gets whether the given resource is previewable with this previewer
         /// </summary>
         /// <param name="res"></param>
+        /// <param name="conn"></param>
         /// <returns></returns>
-        public bool IsPreviewable(IResource res)
+        public bool IsPreviewable(IResource res, IServerConnection conn)
         {
             if (this.UseLocal)
             {
@@ -73,7 +75,7 @@ namespace Maestro.Editors.Preview
                     return true;
                 }
             }
-            return _inner.IsPreviewable(res);
+            return _inner.IsPreviewable(res, conn);
         }
 
         private static bool IsLocalPreviewableType(IResource res)
@@ -107,7 +109,7 @@ namespace Maestro.Editors.Preview
         /// <param name="locale"></param>
         public void Preview(IResource res, IEditorService edSvc, string locale)
         {
-            IServerConnection conn = res.CurrentConnection;
+            IServerConnection conn = edSvc.CurrentConnection;
             if (this.UseLocal && IsLocalPreviewableType(res) && SupportsMappingService(conn))
             {
                 BusyWaitDelegate worker = () =>

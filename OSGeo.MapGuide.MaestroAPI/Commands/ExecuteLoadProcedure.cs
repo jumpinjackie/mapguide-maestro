@@ -299,7 +299,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                             //Step 1: Create feature source document
                             var conp = new NameValueCollection();
                             conp["DefaultFileLocation"] = StringConstants.MgDataFilePath + dataName; //NOXLATE
-                            var fs = ObjectFactory.CreateFeatureSource(this.Parent, "OSGeo.SHP", conp); //NOXLATE
+                            var fs = ObjectFactory.CreateFeatureSource("OSGeo.SHP", conp); //NOXLATE
                             fs.ResourceID = fsId;
 
                             this.Parent.ResourceService.SaveResource(fs);
@@ -337,7 +337,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                 {
                                     bool hasPrj = false;
                                     //If there is no prj file, we can just upload one with the specified WKT
-                                    foreach (var resd in fs.EnumerateResourceData())
+                                    var resData = this.Parent.ResourceService.EnumerateResourceData(fs.ResourceID);
+                                    foreach (var resd in resData.ResourceData)
                                     {
                                         if (resd.Name == resName + ".prj") //NOXLATE
                                         {
@@ -353,7 +354,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
 
                                         using (var fsr = System.IO.File.OpenRead(tmp))
                                         {
-                                            fs.SetResourceData(resName + ".prj", ResourceDataType.File, fsr); //NOXLATE
+                                            this.Parent.ResourceService.SetResourceData(fs.ResourceID, resName + ".prj", ResourceDataType.File, fsr); //NOXLATE
                                             cb(this, new LengthyOperationProgressArgs(string.Format(Strings.TemplateUploadedPrj, resName), current));
                                         }
 
@@ -451,7 +452,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
 
                             if (clsDef != null && geom != null)
                             {
-                                var ld = ObjectFactory.CreateDefaultLayer(this.Parent, LayerType.Vector, new Version(1, 0, 0));
+                                var ld = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
 
                                 //Step 3: Assign default properties
                                 ld.ResourceID = lyrId;
@@ -578,7 +579,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                 // 2. Upload dwf file as resource data for this document.
 
                                 //Step 1: Create and save drawing source document.
-                                IDrawingSource ds = ObjectFactory.CreateDrawingSource(this.Parent);
+                                IDrawingSource ds = ObjectFactory.CreateDrawingSource();
                                 ds.SourceName = dataName;
                                 ds.CoordinateSpace = proc.CoordinateSystem;
                                 ds.ResourceID = dsId;
@@ -590,9 +591,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                 this.Parent.ResourceService.SetResourceData(dsId, dataName, ResourceDataType.File, System.IO.File.OpenRead(file));
                                 cb(this, new LengthyOperationProgressArgs(string.Format(Strings.TemplateLoaded, file), current));
 
-                                ds.RegenerateSheetList();
+                                ds.RegenerateSheetList(this.Parent);
                                 this.Parent.ResourceService.SaveResource(ds);
-                                ds.UpdateExtents();
+                                ds.UpdateExtents(this.Parent);
                                 this.Parent.ResourceService.SaveResource(ds);
                             }
                             else
@@ -615,7 +616,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                 }
                                 var conp = new NameValueCollection();
                                 conp["File"] = StringConstants.MgDataFilePath + dataName;
-                                var fs = ObjectFactory.CreateFeatureSource(this.Parent, provider, conp);
+                                var fs = ObjectFactory.CreateFeatureSource(provider, conp);
                                 fs.ResourceID = fsId;
 
                                 this.Parent.ResourceService.SaveResource(fs);
@@ -698,7 +699,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                                 if (list.Section.Count > 0)
                                 {
                                     //Create drawing layer
-                                    var ld = ObjectFactory.CreateDefaultLayer(this.Parent, LayerType.Drawing, new Version(1, 0, 0));
+                                    var ld = ObjectFactory.CreateDefaultLayer(LayerType.Drawing, new Version(1, 0, 0));
                                     var dl = ld.SubLayer as IDrawingLayerDefinition;
                                     dl.ResourceId = dsId;
                                     //Use the first one
@@ -760,7 +761,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
 
                                     if (clsDef != null && geom != null)
                                     {
-                                        var ld = ObjectFactory.CreateDefaultLayer(this.Parent, LayerType.Vector, new Version(1, 0, 0));
+                                        var ld = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
 
                                         //Step 3: Assign default properties
                                         ld.ResourceID = lyrId;

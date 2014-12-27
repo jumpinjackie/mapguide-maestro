@@ -1,4 +1,5 @@
-﻿using OSGeo.MapGuide.ObjectModels.LoadProcedure;
+﻿using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using System;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
@@ -9,6 +10,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     /// </summary>
     public abstract class BaseLoadProcedureValidator : IResourceValidator
     {
+        /// <summary>
+        /// The server connection which validation will be performed against
+        /// </summary>
+        public IServerConnection Connection { get; set; }
+
         /// <summary>
         /// Gets the resource type and version this validator supports
         /// </summary>
@@ -45,7 +51,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             if (context.IsAlreadyValidated(resource.ResourceID))
                 return null;
 
-            if (resource.ResourceType != OSGeo.MapGuide.MaestroAPI.ResourceTypes.LoadProcedure.ToString())
+            if (resource.ResourceType != ResourceTypes.LoadProcedure.ToString())
                 return null;
 
             if (resource.ResourceVersion != new Version(1, 0, 0))

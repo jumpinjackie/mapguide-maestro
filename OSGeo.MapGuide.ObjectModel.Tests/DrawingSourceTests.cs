@@ -36,7 +36,7 @@ namespace OSGeo.MapGuide.ObjectModel.Tests
         [Test]
         public void DrawingSourceDeserializationWithFullContentModel()
         {
-            IResource res = ObjectFactory.DeserializeResourceXml(Properties.Resources.DrawingSource_1_0_0);
+            IResource res = ObjectFactory.DeserializeXml(Properties.Resources.DrawingSource_1_0_0);
             Assert.NotNull(res);
             Assert.AreEqual(res.ResourceType, "DrawingSource");
             Assert.AreEqual(res.ResourceVersion, new Version(1, 0, 0));

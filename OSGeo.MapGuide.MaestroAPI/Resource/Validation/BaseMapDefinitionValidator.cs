@@ -37,6 +37,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     public abstract class BaseMapDefinitionValidator : IResourceValidator
     {
         /// <summary>
+        /// The server connection which validation will be performed against
+        /// </summary>
+        public IServerConnection Connection { get; set; }
+
+        /// <summary>
         /// Gets the resource type and version this validator supports
         /// </summary>
         /// <value></value>
@@ -65,7 +70,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <param name="resource"></param>
         /// <param name="recurse"></param>
         /// <returns></returns>
-        protected static ValidationIssue[] ValidateBase(ResourceValidationContext context, IResource resource, bool recurse)
+        protected ValidationIssue[] ValidateBase(ResourceValidationContext context, IResource resource, bool recurse)
         {
             Check.NotNull(context, "context"); //NOXLATE
 
@@ -165,7 +170,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                             if (l.Selectable)
                             {
                                 //Test selectability requirement
-                                string[] idProps = fs.GetIdentityProperties(vl.FeatureName);
+                                string[] idProps = fs.GetIdentityProperties(this.Connection, vl.FeatureName);
                                 if (idProps == null || idProps.Length == 0)
                                 {
                                     issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_MapDefinition_UnselectableLayer, string.Format(Strings.MDF_UnselectableLayer, l.Name, vl.FeatureName, fs.ResourceID)));
@@ -188,7 +193,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                                     //TODO: Switch to the correct version (2.1), once released
                                     if (scList.SpatialContext[0].CoordinateSystemWkt != mdef.CoordinateSystem)
                                     {
-                                        if (layer.SubLayer.LayerType == LayerType.Raster && mdef.CurrentConnection.SiteVersion <= SiteVersions.GetVersion(OSGeo.MapGuide.MaestroAPI.KnownSiteVersions.MapGuideOS2_0_2))
+                                        if (layer.SubLayer.LayerType == LayerType.Raster && this.Connection.SiteVersion <= SiteVersions.GetVersion(OSGeo.MapGuide.MaestroAPI.KnownSiteVersions.MapGuideOS2_0_2))
                                             issues.Add(new ValidationIssue(resource, ValidationStatus.Error, ValidationStatusCode.Error_MapDefinition_RasterReprojection, string.Format(Strings.MDF_RasterReprojectionError, fs.ResourceID)));
                                         else
                                             issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_MapDefinition_LayerReprojection, string.Format(Strings.MDF_DataReprojectionWarning, fs.ResourceID)));
@@ -198,7 +203,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 
                                     if (vl.Geometry != null && !skipGeomCheck)
                                     {
-                                        var env = fs.GetSpatialExtent(vl.FeatureName, vl.Geometry);
+                                        var env = this.Connection.FeatureService.GetSpatialExtent(fs.ResourceID, vl.FeatureName, vl.Geometry);
                                         if (!env.Intersects(mapEnv))
                                             issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_MapDefinition_DataOutsideMapBounds, string.Format(Strings.MDF_DataOutsideMapWarning, fs.ResourceID)));
                                     }

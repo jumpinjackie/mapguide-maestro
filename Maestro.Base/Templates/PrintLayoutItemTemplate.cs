@@ -40,7 +40,7 @@ namespace Maestro.Base.Templates
 
         public override IResource CreateItem(string startPoint, IServerConnection conn)
         {
-            return ObjectFactory.CreatePrintLayout(conn);
+            return ObjectFactory.CreatePrintLayout();
         }
     }
 }

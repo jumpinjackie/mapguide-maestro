@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using Maestro.Editors.Common;
+using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
 using System.ComponentModel;
@@ -37,6 +38,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
         }
 
         private IFeatureSource _fs;
+        private IServerConnection _conn;
 
         private bool _init = false;
 
@@ -47,6 +49,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
                 _init = true;
                 service.RegisterCustomNotifier(this);
                 _fs = (IFeatureSource)service.GetEditedResource();
+                _conn = service.CurrentConnection;
 
                 InitDefaults();
             }
@@ -87,7 +90,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
 
         private void btnBrowseAliasFile_Click(object sender, EventArgs e)
         {
-            using (var picker = new UnmanagedFileBrowser(_fs.CurrentConnection.ResourceService))
+            using (var picker = new UnmanagedFileBrowser(_conn.ResourceService))
             {
                 picker.SelectFoldersOnly = false;
                 if (picker.ShowDialog() == DialogResult.OK)
@@ -99,7 +102,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
 
         private void btnBrowseAliasDir_Click(object sender, EventArgs e)
         {
-            using (var picker = new UnmanagedFileBrowser(_fs.CurrentConnection.ResourceService))
+            using (var picker = new UnmanagedFileBrowser(_conn.ResourceService))
             {
                 picker.SelectFoldersOnly = true;
                 if (picker.ShowDialog() == DialogResult.OK)

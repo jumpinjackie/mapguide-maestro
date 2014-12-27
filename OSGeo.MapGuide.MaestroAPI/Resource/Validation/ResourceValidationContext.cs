@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
 using OSGeo.MapGuide.ObjectModels.Common;
 using System.Collections.Generic;
@@ -40,22 +41,24 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         private Dictionary<string, FeatureSourceDescription> _schemas;
         private Dictionary<string, FdoSpatialContextList> _spatialContexts;
 
-        private IResourceService _resSvc;
-        private IFeatureService _featSvc;
+        private IServerConnection _conn;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ResourceValidationContext"/> class.
         /// </summary>
-        /// <param name="resSvc">The res SVC.</param>
-        /// <param name="featSvc">The feat SVC.</param>
-        public ResourceValidationContext(IResourceService resSvc, IFeatureService featSvc)
+        /// <param name="conn">The server connection</param>
+        public ResourceValidationContext(IServerConnection conn)
         {
-            _resSvc = resSvc;
-            _featSvc = featSvc;
+            _conn = conn;
             _validated = new Dictionary<string, string>();
             _resources = new Dictionary<string, IResource>();
             _schemas = new Dictionary<string, FeatureSourceDescription>();
             _spatialContexts = new Dictionary<string, FdoSpatialContextList>();
+        }
+
+        internal IServerConnection Connection
+        {
+            get { return _conn; }
         }
 
         /// <summary>
@@ -82,7 +85,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 return _spatialContexts[resourceId];
             }
 
-            var scList = _featSvc.GetSpatialContextInfo(resourceId, false);
+            var scList = _conn.FeatureService.GetSpatialContextInfo(resourceId, false);
             _spatialContexts[resourceId] = scList;
 
             return scList;
@@ -101,7 +104,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 return _schemas[resourceId];
             }
 
-            var desc = _featSvc.DescribeFeatureSource(resourceId);
+            var desc = _conn.FeatureService.DescribeFeatureSource(resourceId);
             _schemas[resourceId] = desc;
 
             return desc;
@@ -120,7 +123,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 return _resources[resourceId];
             }
 
-            var res = _resSvc.GetResource(resourceId);
+            var res = _conn.ResourceService.GetResource(resourceId);
             _resources[resourceId] = res;
 
             return res;
@@ -161,7 +164,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <returns></returns>
         public bool ResourceExists(string resourceId)
         {
-            return _resSvc.ResourceExists(resourceId);
+            return _conn.ResourceService.ResourceExists(resourceId);
         }
     }
 }

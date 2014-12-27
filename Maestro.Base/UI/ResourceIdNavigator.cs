@@ -26,6 +26,7 @@ using Maestro.Base.Services;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.Windows.Forms;
 
@@ -135,7 +136,7 @@ namespace Maestro.Base.UI
             var ed = e.View as IEditorViewContent;
             if (ed != null && !ed.IsNew)
             {
-                var conn = ed.Resource.CurrentConnection;
+                var conn = ed.EditorService.CurrentConnection;
                 var idx = _cmbActiveConnections.Items.IndexOf(conn.DisplayName);
                 if (idx >= 0)
                 {

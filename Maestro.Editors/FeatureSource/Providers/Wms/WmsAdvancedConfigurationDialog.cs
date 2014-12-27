@@ -46,7 +46,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             _service = service;
             _fs = (IFeatureSource)_service.GetEditedResource();
             txtFeatureServer.Text = _fs.GetConnectionProperty("FeatureServer"); //NOXLATE
-            string xml = _fs.GetConfigurationContent();
+            string xml = _fs.GetConfigurationContent(service.CurrentConnection);
             if (!string.IsNullOrEmpty(xml))
             {
                 try
@@ -71,9 +71,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
         private WmsConfigurationDocument BuildDefaultWmsDocument()
         {
             var doc = new WmsConfigurationDocument();
-            var contexts = _fs.GetSpatialInfo(false);
-            var schemaName = _fs.GetSchemaNames()[0];
-            var clsNames = _fs.GetClassNames(schemaName);
+            var contexts = _service.CurrentConnection.FeatureService.GetSpatialContextInfo(_fs.ResourceID, false);
+            var schemaName = _service.CurrentConnection.FeatureService.GetSchemas(_fs.ResourceID)[0];
+            var clsNames = _service.CurrentConnection.FeatureService.GetClassNames(_fs.ResourceID, schemaName);
             var schema = new FeatureSchema(schemaName, string.Empty);
             doc.AddSchema(schema);
 
@@ -134,7 +134,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            _fs.SetConfigurationContent(_config.ToXml());
+            _fs.SetConfigurationContent(_service.CurrentConnection, _config.ToXml());
             this.DialogResult = DialogResult.OK;
         }
 
@@ -257,7 +257,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Wms
             try
             {
                 _config = (WmsConfigurationDocument)_service.CurrentConnection.FeatureService.GetSchemaMapping("OSGeo.WMS", _fs.ConnectionString); //NOXLATE
-                string defaultScName = _config.GetDefaultSpatialContext(_fs);
+                string defaultScName = _config.GetDefaultSpatialContext(_fs, _service.CurrentConnection);
                 _config.EnsureRasterProperties(defaultScName);
                 _config.EnsureConsistency();
             }

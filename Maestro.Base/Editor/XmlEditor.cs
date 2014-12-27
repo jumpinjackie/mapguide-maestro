@@ -29,6 +29,7 @@ using Maestro.Editors.Preview;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Resource.Validation;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -104,9 +105,9 @@ namespace Maestro.Base.Editor
 
                 try
                 {
-                    var res = ResourceTypeRegistry.Deserialize(editor.XmlContent);
+                    var res = ObjectFactory.DeserializeXml(editor.XmlContent);
                     var conn = _edSvc.CurrentConnection;
-                    var context = new ResourceValidationContext(conn.ResourceService, conn.FeatureService);
+                    var context = new ResourceValidationContext(conn);
                     //We don't care about dependents, we just want to validate *this* resource
                     var resIssues = ResourceValidatorSet.Validate(context, res, false);
                     set.AddIssues(resIssues);
@@ -166,9 +167,8 @@ namespace Maestro.Base.Editor
 
             //Copy any resource data
             var previewCopy = resSvc.GetResource(resId);
-            this.Resource.CopyResourceDataTo(previewCopy);
-
-            var conn = previewCopy.CurrentConnection;
+            var conn = _edSvc.CurrentConnection;
+            this.Resource.CopyResourceDataTo(conn, previewCopy);
             var previewer = ResourcePreviewerFactory.GetPreviewer(conn.ProviderName);
             if (previewer != null)
                 previewer.Preview(previewCopy, this.EditorService);

@@ -48,9 +48,9 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
             }
         }
 
-        public override OSGeo.MapGuide.MaestroAPI.Resource.IResource CreateItem(string startPoint, OSGeo.MapGuide.MaestroAPI.IServerConnection conn)
+        public override IResource CreateItem(string startPoint, OSGeo.MapGuide.MaestroAPI.IServerConnection conn)
         {
-            return ObjectFactory.CreateWatermark(conn, SymbolDefinitionType.Simple, new Version(2, 3, 0));
+            return ObjectFactory.CreateWatermark(SymbolDefinitionType.Simple, new Version(2, 3, 0));
         }
     }
 
@@ -73,9 +73,9 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
             }
         }
 
-        public override OSGeo.MapGuide.MaestroAPI.Resource.IResource CreateItem(string startPoint, OSGeo.MapGuide.MaestroAPI.IServerConnection conn)
+        public override IResource CreateItem(string startPoint, OSGeo.MapGuide.MaestroAPI.IServerConnection conn)
         {
-            return ObjectFactory.CreateWatermark(conn, SymbolDefinitionType.Compound, new Version(2, 3, 0));
+            return ObjectFactory.CreateWatermark(SymbolDefinitionType.Compound, new Version(2, 3, 0));
         }
     }
 }

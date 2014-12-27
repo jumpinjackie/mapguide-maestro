@@ -146,6 +146,11 @@
       <Name>OSGeo.MapGuide.MaestroAPI</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj">
+      <Project>{48c5eb23-45ae-4c4c-8fab-635428ae8ca1}</Project>
+      <Name>OSGeo.MapGuide.ObjectModels</Name>
+      <Private>False</Private>
+    </ProjectReference>
     <ProjectReference Include="..\Thirdparty\SharpDevelop\ICSharpCode.Core\ICSharpCode.Core.csproj">
       <Project>{35CEF10F-2D4C-45F2-9DD1-161E0FEC583C}</Project>
       <Name>ICSharpCode.Core</Name>

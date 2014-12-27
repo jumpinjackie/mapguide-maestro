@@ -40,18 +40,6 @@ namespace Maestro.Editors.FeatureSource
         /// <summary>
         /// Initializes a new instance of the <see cref="SpatialContextsDialog"/> class.
         /// </summary>
-        /// <param name="fs">The fs.</param>
-        public SpatialContextsDialog(IFeatureSource fs)
-            : this()
-        {
-            lblFeatureSource.Text = fs.ResourceID;
-            grdSpatialContexts.DataSource = fs.GetSpatialInfo(false).SpatialContext;
-            lblCount.Text = string.Format(Strings.SpatialContextsFound, grdSpatialContexts.Rows.Count);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SpatialContextsDialog"/> class.
-        /// </summary>
         /// <param name="fsId">The fs id.</param>
         /// <param name="featSvc">The feat SVC.</param>
         public SpatialContextsDialog(string fsId, IFeatureService featSvc)

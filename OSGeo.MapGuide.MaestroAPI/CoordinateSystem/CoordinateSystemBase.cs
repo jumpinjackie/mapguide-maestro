@@ -23,6 +23,7 @@
 using GeoAPI.CoordinateSystems;
 using GeoAPI.Geometries;
 using GisSharpBlog.NetTopologySuite.Geometries;
+using OSGeo.MapGuide.ObjectModels;
 using ProjNet.CoordinateSystems;
 using ObjCommon = OSGeo.MapGuide.ObjectModels.Common;
 

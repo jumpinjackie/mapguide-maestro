@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 using System;
 

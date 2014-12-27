@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

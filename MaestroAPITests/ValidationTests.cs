@@ -444,14 +444,14 @@ namespace MaestroAPITests
             var conn = mock.NewMock<IServerConnection>();
             var featSvc = new MockFeatureService();
             var resSvc = new MockResourceService();
-            var lp = ObjectFactory.CreateLoadProcedure(conn, LoadType.Sdf, new string[]
+            var lp = ObjectFactory.CreateLoadProcedure(LoadType.Sdf, new string[]
             {
                 "C:\\foo.sdf",
                 "C:\\bar.sdf"
             });
             lp.ResourceID = id;
 
-            var context = new ResourceValidationContext(resSvc, featSvc);
+            var context = new ResourceValidationContext(conn);
             var set = new ValidationResultSet();
             context.Reset();
             set.AddIssues(ResourceValidatorSet.Validate(context, lp, false));
@@ -459,7 +459,7 @@ namespace MaestroAPITests
             //SDF2, generalization and 2 missing files
             Assert.AreEqual(4, set.GetAllIssues().Length);
 
-            lp = ObjectFactory.CreateLoadProcedure(conn, LoadType.Shp, new string[]
+            lp = ObjectFactory.CreateLoadProcedure(LoadType.Shp, new string[]
             {
                 "C:\\foo.shp",
                 "C:\\bar.shp"
@@ -503,7 +503,7 @@ namespace MaestroAPITests
         {
             var mock = new Mockery();
             var conn = mock.NewMock<IServerConnection>();
-            var ldf1 = ObjectFactory.CreateDefaultLayer(conn, OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Vector, new Version(1, 0, 0));
+            var ldf1 = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
             ldf1.ResourceID = "Library://Test/Foo.LayerDefinition";
 
             var vl1 = (IVectorLayerDefinition)ldf1.SubLayer;
@@ -527,7 +527,7 @@ namespace MaestroAPITests
 
             var validator = new LayerDefinitionValidator();
 
-            var context = new ResourceValidationContext(resSvc, featSvc);
+            var context = new ResourceValidationContext(conn);
             var issues = validator.Validate(context, ldf1, false);
 
             bool hasIssue = false;
@@ -543,7 +543,7 @@ namespace MaestroAPITests
             Assert.True(hasIssue);
 
             //Case described in trac #1472
-            var ldf2 = ObjectFactory.CreateDefaultLayer(conn, OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Vector, new Version(1, 0, 0));
+            var ldf2 = ObjectFactory.CreateDefaultLayer(OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Vector, new Version(1, 0, 0));
             ldf2.ResourceID = "Library://Test/Foo.LayerDefinition";
 
             var vl2 = (IVectorLayerDefinition)ldf2.SubLayer;
@@ -562,7 +562,7 @@ namespace MaestroAPITests
             vl2.AddVectorScaleRange(vsr1);
             vl2.AddVectorScaleRange(vsr2);
 
-            context = new ResourceValidationContext(resSvc, featSvc);
+            context = new ResourceValidationContext(conn);
             issues = validator.Validate(context, ldf2, false);
 
             hasIssue = false;

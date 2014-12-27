@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 using System.IO;
 using System.Xml;
 
@@ -91,7 +92,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
             if (sourceRoot == targetRoot)
                 return _res;
 
-            var xml = ResourceTypeRegistry.SerializeAsString(_res);
+            var xml = ObjectFactory.SerializeAsString(_res);
             var doc = new XmlDocument();
             doc.LoadXml(xml);
 
@@ -105,8 +106,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
             {
                 doc.Save(ms);
                 ms.Position = 0L;
-                var modifiedRes = ResourceTypeRegistry.Deserialize(_res.ResourceType, ms);
-                modifiedRes.CurrentConnection = _res.CurrentConnection;
+                var modifiedRes = ObjectFactory.Deserialize(_res.ResourceType, ms);
                 modifiedRes.ResourceID = _res.ResourceID;
 
                 return modifiedRes;

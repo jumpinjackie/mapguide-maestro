@@ -22,6 +22,7 @@
 
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.IO;
 using System.Text;
@@ -49,7 +50,7 @@ namespace Maestro.Base.Services.DragDropHandlers
                 try
                 {
                     //The easiest way to tell if this XML file is legit
-                    var res = ResourceTypeRegistry.Deserialize(xml);
+                    var res = ObjectFactory.DeserializeXml(xml);
                     string resId = folderId + name + "." + res.ResourceType.ToString(); //NOXLATE
                     while (conn.ResourceService.ResourceExists(resId))
                     {

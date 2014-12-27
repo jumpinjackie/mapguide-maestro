@@ -22,6 +22,7 @@
 
 using Maestro.Editors.Common;
 using Maestro.Editors.SymbolDefinition.GraphicsEditors;
+using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System;
 using System.ComponentModel;
@@ -38,11 +39,13 @@ namespace Maestro.Editors.SymbolDefinition
         }
 
         private ISimpleSymbolDefinition _sym;
+        private IServerConnection _conn;
 
         public override void Bind(IEditorService service)
         {
             service.RegisterCustomNotifier(this);
             _sym = (ISimpleSymbolDefinition)service.GetEditedResource();
+            _conn = service.CurrentConnection;
             lstGraphics.Items.Clear();
 
             foreach (var g in _sym.Graphics)
@@ -99,7 +102,7 @@ namespace Maestro.Editors.SymbolDefinition
             var img = _sym.CreateImageGraphics();
             AddGraphicsItem(img);
             _sym.AddGraphics(img);
-            new ImageDialog(this, _sym.CurrentConnection, _sym, img).ShowDialog();
+            new ImageDialog(this, _conn, _sym, img).ShowDialog();
         }
 
         private void lstGraphics_SelectedIndexChanged(object sender, EventArgs e)
@@ -128,7 +131,7 @@ namespace Maestro.Editors.SymbolDefinition
                 }
                 else if (img != null)
                 {
-                    new ImageDialog(this, _sym.CurrentConnection, _sym, img).ShowDialog();
+                    new ImageDialog(this, _conn, _sym, img).ShowDialog();
                 }
             }
         }

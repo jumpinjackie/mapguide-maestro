@@ -390,7 +390,7 @@ namespace Maestro.Editors.FeatureSource.Providers
                 {
                     _fs.SetConnectionProperty(diag.UserProperty, StringConstants.MgUsernamePlaceholder);
                     _fs.SetConnectionProperty(diag.PasswordProperty, StringConstants.MgPasswordPlaceholder);
-                    _fs.SetEncryptedCredentials(diag.Username, diag.Password);
+                    _fs.SetEncryptedCredentials(_service.CurrentConnection, diag.Username, diag.Password);
                     _service.SyncSessionCopy();
                     InitGrid();
                     resDataCtrl.Init(_service);

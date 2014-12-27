@@ -21,7 +21,6 @@
 #endregion Disclaimer / License
 
 using ICSharpCode.Core;
-using OSGeo.MapGuide.ExtendedObjectModels;
 
 namespace Maestro.AddIn.ExtendedObjectModels.Commands
 {
@@ -29,7 +28,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Commands
     {
         public override void Run()
         {
-            ModelSetup.Initialize();
+            
         }
     }
 }

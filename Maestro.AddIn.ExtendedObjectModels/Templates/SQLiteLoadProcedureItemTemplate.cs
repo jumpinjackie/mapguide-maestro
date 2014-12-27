@@ -60,7 +60,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
                              string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickSqlite, "slt"); //NOXLATE
                 if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    var proc = ObjectFactory.CreateLoadProcedure(conn, LoadType.Sqlite, dlg.FileNames);
+                    var proc = ObjectFactory.CreateLoadProcedure(LoadType.Sqlite, dlg.FileNames);
                     if (!string.IsNullOrEmpty(startPoint) && ResourceIdentifier.IsFolderResource(startPoint))
                     {
                         proc.SubType.RootPath = startPoint;

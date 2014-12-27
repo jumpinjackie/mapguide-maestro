@@ -88,7 +88,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
         public CommandType[] Commands { get; set; }
     }
 
-    partial class WebLayoutType : IWebLayout, ICommandSet
+    partial class WebLayoutType : IWebLayout2, ICommandSet
     {
         internal WebLayoutType()
         {

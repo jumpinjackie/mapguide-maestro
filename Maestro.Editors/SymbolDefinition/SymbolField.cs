@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System;
 using System.Collections;
@@ -317,7 +318,7 @@ namespace Maestro.Editors.SymbolDefinition
         /// <param name="propertyName">Name of the property.</param>
         public void Bind(object dataSource, string propertyName)
         {
-            Check.NotNull(dataSource, "dataSource");
+            Check.ArgumentNotNull(dataSource, "dataSource");
             Check.NotEmpty(propertyName, "member");
             try
             {

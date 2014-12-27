@@ -36,7 +36,7 @@ namespace OSGeo.MapGuide.ObjectModels
     /// <summary>
     /// Utility methods
     /// </summary>
-    public static class Utils
+    internal static class Utils
     {
         /// <summary>
         /// Parses a color in HTML notation (ea. #ffaabbff)

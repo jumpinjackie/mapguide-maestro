@@ -26,6 +26,7 @@ using Maestro.Editors.Generic;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Tile;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System;
 using System.Collections.Generic;
@@ -1625,7 +1626,7 @@ namespace Maestro.Editors.MapDefinition
             {
                 //All handles should have the same connection, so sample the first
                 //Must be the same connection as this current editor
-                if (rids[0].Connection != _edSvc.GetEditedResource().CurrentConnection)
+                if (rids[0].Connection != _edSvc.CurrentConnection)
                 {
                     e.Effect = DragDropEffects.None;
                     return;
@@ -1893,7 +1894,7 @@ namespace Maestro.Editors.MapDefinition
                 return;
             }
 
-            var conn = _map.CurrentConnection;
+            var conn = _edSvc.CurrentConnection;
             //HACK: Can't support other connection types beyond HTTP atm
             if (!conn.ProviderName.ToLower().Contains("maestro.http"))
             {

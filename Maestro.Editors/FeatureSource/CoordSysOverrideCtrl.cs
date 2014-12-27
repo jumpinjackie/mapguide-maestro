@@ -143,7 +143,7 @@ namespace Maestro.Editors.FeatureSource
                 }
             }
 
-            var scList = _fs.GetSpatialInfo(false);
+            var scList = _ed.CurrentConnection.FeatureService.GetSpatialContextInfo(_fs.ResourceID, false);
             foreach (var sc in scList.SpatialContext)
             {
                 _fs.AddSpatialContextOverride(sc.Name, sc.CoordinateSystemWkt);

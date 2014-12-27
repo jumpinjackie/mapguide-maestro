@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.Collections.Generic;
 
@@ -49,7 +50,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         public ValidationResultSet(IEnumerable<ValidationIssue> issues)
             : this()
         {
-            Check.NotNull(issues, "issues"); //NOXLATE
+            Check.ArgumentNotNull(issues, "issues"); //NOXLATE
 
             AddIssues(issues);
         }

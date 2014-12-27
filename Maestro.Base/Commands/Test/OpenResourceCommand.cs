@@ -23,6 +23,7 @@
 using ICSharpCode.Core;
 using Maestro.Base.Services;
 using Maestro.Editors.Generic;
+using OSGeo.MapGuide.ObjectModels;
 
 namespace Maestro.Base.Commands.Test
 {
@@ -99,7 +100,7 @@ namespace Maestro.Base.Commands.Test
             var mgr = ServiceRegistry.GetService<ServerConnectionManager>();
             var conn = mgr.GetConnection(exp.ConnectionName);
 
-            var picker = new ResourcePicker(conn, OSGeo.MapGuide.MaestroAPI.ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource);
+            var picker = new ResourcePicker(conn, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource);
             if (picker.ShowDialog(wb) == System.Windows.Forms.DialogResult.OK)
             {
                 MessageService.ShowMessage(picker.ResourceID);

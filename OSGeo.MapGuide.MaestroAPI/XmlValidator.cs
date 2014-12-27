@@ -24,6 +24,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 {
     using OSGeo.MapGuide.MaestroAPI.Exceptions;
     using OSGeo.MapGuide.MaestroAPI.Resource;
+    using OSGeo.MapGuide.ObjectModels;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -144,7 +145,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             try
             {
                 //Use original resource type to determine how to deserialize
-                res = ResourceTypeRegistry.Deserialize(xmlContent);
+                res = ObjectFactory.DeserializeXml(xmlContent);
             }
             catch (Exception ex)
             {

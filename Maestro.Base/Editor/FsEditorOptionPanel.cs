@@ -112,20 +112,20 @@ namespace Maestro.Base.Editor
 
         private void btnEditConfiguration_Click(object sender, EventArgs e)
         {
-            var content = _fs.GetConfigurationContent();
+            var content = _fs.GetConfigurationContent(_edsvc.CurrentConnection);
             var dlg = new XmlEditorDialog(_edsvc);
             dlg.XmlContent = content;
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 content = dlg.XmlContent;
-                _fs.SetConfigurationContent(content);
+                _fs.SetConfigurationContent(_edsvc.CurrentConnection, content);
                 OnResourceChanged();
             }
         }
 
         private void btnSpatialContexts_Click(object sender, EventArgs e)
         {
-            new SpatialContextsDialog(_fs).ShowDialog();
+            new SpatialContextsDialog(_fs.ResourceID, _edsvc.CurrentConnection.FeatureService).ShowDialog();
         }
     }
 }

@@ -29,6 +29,7 @@ using Maestro.Editors.Generic;
 using Maestro.Editors.Preview;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.IO;
 using System.Linq;
@@ -90,7 +91,7 @@ namespace Maestro.AddIn.Scripting.Services
         public string GetResourceXml(IServerConnection conn, string resourceId)
         {
             var res = conn.ResourceService.GetResource(resourceId);
-            return ResourceTypeRegistry.SerializeAsString(res);
+            return ObjectFactory.SerializeAsString(res);
         }
 
         /// <summary>
@@ -280,7 +281,7 @@ namespace Maestro.AddIn.Scripting.Services
                 IEditorViewContent openEd = null;
                 foreach (var ed in omgr.OpenEditors)
                 {
-                    if (ed.Resource.CurrentConnection == conn && ed.EditorService.ResourceID == resourceId)
+                    if (ed.EditorService.CurrentConnection == conn && ed.EditorService.ResourceID == resourceId)
                     {
                         openEd = ed;
                         break;

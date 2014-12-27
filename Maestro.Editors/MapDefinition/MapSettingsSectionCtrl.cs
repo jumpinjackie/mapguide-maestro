@@ -188,7 +188,7 @@ namespace Maestro.Editors.MapDefinition
                     //Transform current extents
                     try
                     {
-                        var trans = _service.GetEditedResource().CurrentConnection.CoordinateSystemCatalog.CreateTransform(oldCs, cs);
+                        var trans = _service.CurrentConnection.CoordinateSystemCatalog.CreateTransform(oldCs, cs);
 
                         var oldExt = _map.Extents;
 
@@ -215,7 +215,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void btnSetZoom_Click(object sender, EventArgs e)
         {
-            var diag = new ExtentCalculationDialog(_map);
+            var diag = new ExtentCalculationDialog(_map, _service.CurrentConnection);
             if (diag.ShowDialog() == DialogResult.OK)
             {
                 var env = diag.Extents;

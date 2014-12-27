@@ -22,7 +22,6 @@
 
 using Maestro.Editors.Preview;
 using Maestro.Shared.UI;
-using OSGeo.MapGuide.ExtendedObjectModels;
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -45,7 +44,6 @@ namespace Maestro.LiveMapEditor
         [STAThread]
         private static void Main()
         {
-            ModelSetup.Initialize();
             Application.EnableVisualStyles();
             Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
             Application.SetCompatibleTextRenderingDefault(false);

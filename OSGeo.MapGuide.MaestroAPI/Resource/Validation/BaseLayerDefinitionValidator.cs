@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.DrawingSource;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
@@ -39,6 +40,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     /// </summary>
     public abstract class BaseLayerDefinitionValidator : IResourceValidator
     {
+        /// <summary>
+        /// The server connection which validation will be performed against
+        /// </summary>
+        public IServerConnection Connection { get; set; }
+
         /// <summary>
         /// Validats the specified resources for common issues associated with this
         /// resource type
@@ -62,7 +68,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <param name="resource"></param>
         /// <param name="recurse"></param>
         /// <returns></returns>
-        protected static ValidationIssue[] ValidateBase(ResourceValidationContext context, IResource resource, bool recurse)
+        protected ValidationIssue[] ValidateBase(ResourceValidationContext context, IResource resource, bool recurse)
         {
             Check.NotNull(context, "context"); //NOXLATE
 
@@ -105,7 +111,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                         bool foundSchema = false;
                         bool foundGeometry = false;
 
-                        cls = fs.GetClass(qualClassName);
+                        cls = this.Connection.FeatureService.GetClassDefinition(fs.ResourceID, qualClassName);
                         if (cls != null)
                         {
                             foundSchema = true;
@@ -309,9 +315,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 
                 if (dws != null)
                 {
-                    if (Array.IndexOf(ldef.CurrentConnection.Capabilities.SupportedServices, (int)ServiceType.Drawing) >= 0)
+                    if (Array.IndexOf(this.Connection.Capabilities.SupportedServices, (int)ServiceType.Drawing) >= 0)
                     {
-                        var dwSvc = (IDrawingService)ldef.CurrentConnection.GetService((int)ServiceType.Drawing);
+                        var dwSvc = (IDrawingService)this.Connection.GetService((int)ServiceType.Drawing);
 
                         //Check if specified section exists
                         var shtList = dwSvc.EnumerateDrawingSections(dws.ResourceID);

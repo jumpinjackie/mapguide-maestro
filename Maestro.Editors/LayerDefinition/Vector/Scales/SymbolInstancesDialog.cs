@@ -113,7 +113,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             _featureSourceId = featureSourceId;
 
             _preview = prev;
-            var conn = edSvc.GetEditedResource().CurrentConnection;
+            var conn = edSvc.CurrentConnection;
             if (Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Mapping) >= 0)
             {
                 _mappingSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
@@ -181,7 +181,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 img.Dispose();
             }
 
-            var conn = _edSvc.GetEditedResource().CurrentConnection;
+            var conn = _edSvc.CurrentConnection;
             ISymbolDefinitionBase previewSymbol = null;
             string resId = "Session:" + conn.SessionID + "//" + Guid.NewGuid().ToString() + ".SymbolDefinition";
             switch (symInst.Reference.Type)
@@ -227,7 +227,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     }
                 }
             }
-            return ResourceTypeRegistry.Serialize(previewSymbol);
+            return ObjectFactory.Serialize(previewSymbol);
         }
 
         private void AddInstance(ISymbolInstance symRef, bool add)
@@ -267,8 +267,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             var vl = (IVectorLayerDefinition)res.SubLayer;
             if (vl.SymbolDefinitionVersion == null)
                 throw new InvalidOperationException(Strings.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
-            var ssym = ObjectFactory.CreateSimpleSymbol(_edSvc.GetEditedResource().CurrentConnection,
-                                                        vl.SymbolDefinitionVersion,
+            var ssym = ObjectFactory.CreateSimpleSymbol(vl.SymbolDefinitionVersion,
                                                         "InlineSimpleSymbol", //NOXLATE
                                                         Strings.TextInlineSimpleSymbol);
 
@@ -282,8 +281,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             var vl = (IVectorLayerDefinition)res.SubLayer;
             if (vl.SymbolDefinitionVersion == null)
                 throw new InvalidOperationException(Strings.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
-            var csym = ObjectFactory.CreateCompoundSymbol(_edSvc.GetEditedResource().CurrentConnection,
-                                                          vl.SymbolDefinitionVersion,
+            var csym = ObjectFactory.CreateCompoundSymbol(vl.SymbolDefinitionVersion,
                                                           "InlineCompoundSymbol",
                                                           Strings.TextInlineCompoundSymbol); //NOXLATE
 
@@ -708,8 +706,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             var vl = (IVectorLayerDefinition)res.SubLayer;
             if (vl.SymbolDefinitionVersion == null)
                 throw new InvalidOperationException(Strings.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
-            var ssym = ObjectFactory.CreateSimpleSolidFill(_edSvc.GetEditedResource().CurrentConnection,
-                                                           vl.SymbolDefinitionVersion);
+            var ssym = ObjectFactory.CreateSimpleSolidFill(vl.SymbolDefinitionVersion);
 
             var instance = _comp.CreateInlineSimpleSymbol(ssym);
             AddInstance(instance, true);
@@ -721,8 +718,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             var vl = (IVectorLayerDefinition)res.SubLayer;
             if (vl.SymbolDefinitionVersion == null)
                 throw new InvalidOperationException(Strings.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
-            var ssym = ObjectFactory.CreateSimpleSolidLine(_edSvc.GetEditedResource().CurrentConnection,
-                                                           vl.SymbolDefinitionVersion);
+            var ssym = ObjectFactory.CreateSimpleSolidLine(vl.SymbolDefinitionVersion);
 
             var instance = _comp.CreateInlineSimpleSymbol(ssym);
             AddInstance(instance, true);
@@ -734,8 +730,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             var vl = (IVectorLayerDefinition)res.SubLayer;
             if (vl.SymbolDefinitionVersion == null)
                 throw new InvalidOperationException(Strings.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
-            var ssym = ObjectFactory.CreateSimpleLabel(_edSvc.GetEditedResource().CurrentConnection,
-                                                       vl.SymbolDefinitionVersion,
+            var ssym = ObjectFactory.CreateSimpleLabel(vl.SymbolDefinitionVersion,
                                                        GeometryContextType.Point);
 
             var instance = _comp.CreateInlineSimpleSymbol(ssym);
@@ -748,8 +743,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             var vl = (IVectorLayerDefinition)res.SubLayer;
             if (vl.SymbolDefinitionVersion == null)
                 throw new InvalidOperationException(Strings.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
-            var ssym = ObjectFactory.CreateSimpleLabel(_edSvc.GetEditedResource().CurrentConnection,
-                                                       vl.SymbolDefinitionVersion,
+            var ssym = ObjectFactory.CreateSimpleLabel(vl.SymbolDefinitionVersion,
                                                        GeometryContextType.LineString);
 
             var instance = _comp.CreateInlineSimpleSymbol(ssym);
@@ -762,8 +756,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             var vl = (IVectorLayerDefinition)res.SubLayer;
             if (vl.SymbolDefinitionVersion == null)
                 throw new InvalidOperationException(Strings.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
-            var ssym = ObjectFactory.CreateSimpleLabel(_edSvc.GetEditedResource().CurrentConnection,
-                                                       vl.SymbolDefinitionVersion,
+            var ssym = ObjectFactory.CreateSimpleLabel(vl.SymbolDefinitionVersion,
                                                        GeometryContextType.Polygon);
 
             var instance = _comp.CreateInlineSimpleSymbol(ssym);
@@ -776,8 +769,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             var vl = (IVectorLayerDefinition)res.SubLayer;
             if (vl.SymbolDefinitionVersion == null)
                 throw new InvalidOperationException(Strings.ErrorLayerDefnitionDoesNotSupportCompositeSymbolization);
-            var ssym = ObjectFactory.CreateSimplePoint(_edSvc.GetEditedResource().CurrentConnection,
-                                                       vl.SymbolDefinitionVersion);
+            var ssym = ObjectFactory.CreateSimplePoint(vl.SymbolDefinitionVersion);
 
             var instance = _comp.CreateInlineSimpleSymbol(ssym);
             AddInstance(instance, true);

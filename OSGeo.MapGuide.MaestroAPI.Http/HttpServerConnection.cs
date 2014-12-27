@@ -31,6 +31,7 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
@@ -2003,7 +2004,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public override Resource.Preview.IResourcePreviewUrlGenerator GetPreviewUrlGenerator()
         {
-            return new HttpResourcePreviewUrlGenerator(m_reqBuilder.HostURI);
+            return new HttpResourcePreviewUrlGenerator(this, m_reqBuilder.HostURI);
         }
     }
 }

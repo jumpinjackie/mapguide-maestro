@@ -25,6 +25,7 @@ using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 using System.Collections.Generic;
@@ -46,7 +47,7 @@ namespace Maestro.Editors.Generic
             RepositoryIcons.PopulateImageList(folderImageList);
         }
 
-        private IResourceService _resSvc;
+        private IServerConnection _conn;
 
         private bool _resourceMode = false;
 
@@ -61,7 +62,7 @@ namespace Maestro.Editors.Generic
         /// <param name="conn">The server connection</param>
         /// <param name="mode">The mode that the resource picker will be used in</param>
         public ResourcePicker(IServerConnection conn, ResourcePickerMode mode)
-            : this(conn.ResourceService, mode, conn.Capabilities.SupportedResourceTypes)
+            : this(conn, mode, conn.Capabilities.SupportedResourceTypes)
         { }
 
         /// <summary>
@@ -73,16 +74,16 @@ namespace Maestro.Editors.Generic
         /// Use this overload if you need to present a resource picker with resource types not currently known or supported
         /// by the Maestro API
         /// </remarks>
-        /// <param name="resSvc">The resource service</param>
+        /// <param name="conn">The server connection</param>
         /// <param name="mode">The mode that the resource picker will be used in</param>
         /// <param name="allowedResourceTypes">The array of allowed resource types</param>
-        public ResourcePicker(IResourceService resSvc, ResourcePickerMode mode, string[] allowedResourceTypes)
+        public ResourcePicker(IServerConnection conn, ResourcePickerMode mode, string[] allowedResourceTypes)
             : this()
         {
-            _resSvc = resSvc;
+            _conn = conn;
             _resTypes = allowedResourceTypes;
             cmbResourceFilter.DataSource = _resTypes;
-            repoView.Init(_resSvc, true, false);
+            repoView.Init(conn.ResourceService, true, false);
             repoView.ItemSelected += OnFolderSelected;
             this.UseFilter = true;
             this.Mode = mode;
@@ -101,7 +102,7 @@ namespace Maestro.Editors.Generic
         /// <param name="resTypeFilter">The resource type to filter on</param>
         /// <param name="mode">The mode that the resource picker will be used in</param>
         public ResourcePicker(IServerConnection conn, string resTypeFilter, ResourcePickerMode mode)
-            : this(conn.ResourceService, resTypeFilter, mode, conn.Capabilities.SupportedResourceTypes)
+            : this(conn, resTypeFilter, mode, conn.Capabilities.SupportedResourceTypes)
         { }
 
         /// <summary>
@@ -113,12 +114,12 @@ namespace Maestro.Editors.Generic
         /// Use this overload if you need to present a resource picker with resource types not currently known or supported
         /// by the Maestro API
         /// </remarks>
-        /// <param name="resSvc">The resource service.</param>
+        /// <param name="conn">The server connection</param>
         /// <param name="resTypeFilter">The resource type to filter on</param>
         /// <param name="mode">The mode that the resource picker will be used in</param>
         /// <param name="allowedResourceTypes">The array of allowed resource types</param>
-        public ResourcePicker(IResourceService resSvc, string resTypeFilter, ResourcePickerMode mode, string[] allowedResourceTypes)
-            : this(resSvc, mode, allowedResourceTypes)
+        public ResourcePicker(IServerConnection conn, string resTypeFilter, ResourcePickerMode mode, string[] allowedResourceTypes)
+            : this(conn, mode, allowedResourceTypes)
         {
             if (mode == ResourcePickerMode.OpenFolder)
                 throw new InvalidOperationException(string.Format(Strings.ModeNotAllowed, mode));
@@ -148,7 +149,7 @@ namespace Maestro.Editors.Generic
                 throw new ArgumentException(string.Format(Strings.NotAFolder, folderId));
 
             // Library:// will *always* exist, so fallback to this if given folder doesn't check out
-            if (!_resSvc.ResourceExists(folderId))
+            if (!_conn.ResourceService.ResourceExists(folderId))
                 folderId = StringConstants.RootIdentifier;
 
             this.ActiveControl = repoView;
@@ -288,7 +289,7 @@ namespace Maestro.Editors.Generic
         {
             if (_mode == ResourcePickerMode.OpenResource)
             {
-                if (!_resSvc.ResourceExists(txtResourceId.Text))
+                if (!_conn.ResourceService.ResourceExists(txtResourceId.Text))
                 {
                     MessageBox.Show(Strings.ResourceDoesntExist);
                     return;
@@ -317,7 +318,7 @@ namespace Maestro.Editors.Generic
                         }
                     }
 
-                    if (_resSvc.ResourceExists(txtResourceId.Text))
+                    if (_conn.ResourceService.ResourceExists(txtResourceId.Text))
                     {
                         if (MessageBox.Show(Strings.OverwriteResource, Strings.SaveResource, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                             return;
@@ -342,9 +343,9 @@ namespace Maestro.Editors.Generic
                 {
                     ResourceList list = null;
                     if (!this.UseFilter)
-                        list = _resSvc.GetRepositoryResources(folder.ResourceId, 1);
+                        list = _conn.ResourceService.GetRepositoryResources(folder.ResourceId, 1);
                     else
-                        list = _resSvc.GetRepositoryResources(folder.ResourceId, this.Filter.ToString(), 1);
+                        list = _conn.ResourceService.GetRepositoryResources(folder.ResourceId, this.Filter.ToString(), 1);
 
                     PopulateDocumentList(list);
                 }
@@ -483,8 +484,8 @@ namespace Maestro.Editors.Generic
         {
             BusyWaitDialog.Run(Strings.PrgPreparingResourcePreview, () =>
             {
-                var res = _resSvc.GetResource(doc.ResourceId);
-                return DefaultResourcePreviewer.GenerateSymbolDefinitionPreview(res.CurrentConnection, res, picPreview.Width, picPreview.Height);
+                var res = _conn.ResourceService.GetResource(doc.ResourceId);
+                return DefaultResourcePreviewer.GenerateSymbolDefinitionPreview(_conn, res, picPreview.Width, picPreview.Height);
             }, (res, ex) =>
             {
                 if (ex != null)

@@ -142,7 +142,7 @@ namespace Maestro.Editors.SymbolDefinition
         private void simpleSymbolToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Must create simple symbol of the same version
-            var sym = ObjectFactory.CreateSimpleSymbol(_compSym.CurrentConnection, _compSym.ResourceVersion, "", "");
+            var sym = ObjectFactory.CreateSimpleSymbol(_compSym.ResourceVersion, "", "");
             var symRef = _compSym.CreateSimpleSymbol(sym);
             AddSymbolReference(symRef);
             _compSym.AddSimpleSymbol(symRef);

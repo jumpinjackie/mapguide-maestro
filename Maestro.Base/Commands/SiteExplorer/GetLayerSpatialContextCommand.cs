@@ -25,6 +25,7 @@ using Maestro.Base.Services;
 using Maestro.Editors.FeatureSource;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System;
@@ -83,7 +84,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                                     if (ltype == LayerType.Vector ||
                                         ltype == LayerType.Raster)
                                     {
-                                        var sc = ldf.GetSpatialContext();
+                                        var sc = ldf.GetSpatialContext(conn);
                                         if (sc == null)
                                         {
                                             if (ltype == LayerType.Vector)

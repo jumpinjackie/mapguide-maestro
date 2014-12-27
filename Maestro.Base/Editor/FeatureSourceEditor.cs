@@ -24,6 +24,7 @@ using ICSharpCode.Core;
 using Maestro.Editors;
 using Maestro.Editors.FeatureSource;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System;
 using System.Collections.Generic;
@@ -83,13 +84,13 @@ namespace Maestro.Base.Editor
             foreach (var r in refs.ResourceId)
             {
                 ResourceIdentifier rid = new ResourceIdentifier(r);
-                if (rid.ResourceType == OSGeo.MapGuide.MaestroAPI.ResourceTypes.LayerDefinition.ToString())
+                if (rid.ResourceType == ResourceTypes.LayerDefinition.ToString())
                 {
                     var lrefs = resSvc.EnumerateResourceReferences(r);
                     foreach (var lr in lrefs.ResourceId)
                     {
                         ResourceIdentifier rid2 = new ResourceIdentifier(lr);
-                        if (rid2.ResourceType == OSGeo.MapGuide.MaestroAPI.ResourceTypes.MapDefinition.ToString())
+                        if (rid2.ResourceType == ResourceTypes.MapDefinition.ToString())
                         {
                             var mdf = (IMapDefinition)resSvc.GetResource(lr);
                             if (mdf.BaseMap != null)

@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.Collections.Generic;
 
@@ -83,6 +84,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             {
                 foreach (IResourceValidator v in m_validators)
                 {
+                    //Ensure the current connection is set before validating
+                    v.Connection = context.Connection;
+
                     if (!v.SupportedResourceAndVersion.Equals(item.GetResourceTypeDescriptor()))
                         continue;
 

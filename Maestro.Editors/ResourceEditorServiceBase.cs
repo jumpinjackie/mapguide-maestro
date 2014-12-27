@@ -26,6 +26,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -419,7 +420,7 @@ namespace Maestro.Editors
         /// </summary>
         public void SyncSessionCopy()
         {
-            string xml = ResourceTypeRegistry.SerializeAsString(_editCopy);
+            string xml = ObjectFactory.SerializeAsString(_editCopy);
             try
             {
                 using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))

@@ -371,7 +371,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 scale = _parentScaleRange.MinScale.Value;
             var layerId = _edSvc.EditedResourceID;
             var editedRes = _edSvc.GetEditedResource();
-            var conn = editedRes.CurrentConnection;
+            var conn = _edSvc.CurrentConnection;
             var mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
             var themeOffset = this.ThemeIndexOffest;
 
@@ -907,14 +907,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             }
         }
 
-        private static object ExplodeThemeWorker(BackgroundWorker worker, DoWorkEventArgs e, params object[] args)
+        private object ExplodeThemeWorker(BackgroundWorker worker, DoWorkEventArgs e, params object[] args)
         {
             var options = (ExplodeThemeOptions)args[0];
             LengthyOperationProgressCallBack cb = (s, cbArgs) =>
             {
                 worker.ReportProgress(cbArgs.Progress, cbArgs.StatusMessage);
             };
-            Utility.ExplodeThemeIntoFilteredLayers(options, cb);
+            Utility.ExplodeThemeIntoFilteredLayers(_edSvc.CurrentConnection, options, cb);
             return true;
         }
 

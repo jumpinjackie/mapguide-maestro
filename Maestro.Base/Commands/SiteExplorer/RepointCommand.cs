@@ -26,6 +26,7 @@ using Maestro.Editors.Common;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
+using OSGeo.MapGuide.ObjectModels;
 using System.IO;
 using System.Xml;
 

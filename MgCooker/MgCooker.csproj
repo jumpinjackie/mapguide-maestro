@@ -146,13 +146,13 @@
       <Project>{cfd19053-2172-41d3-8460-0fd2123a1e88}</Project>
       <Name>Maestro.Shared.UI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OSGeo.MapGuide.ExtendedObjectModels\OSGeo.MapGuide.ExtendedObjectModels.csproj">
-      <Project>{b3a2b816-9f41-4857-a111-09d2df2550d6}</Project>
-      <Name>OSGeo.MapGuide.ExtendedObjectModels</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
       <Project>{80fa3158-8b5f-48d1-a393-0378afe48a7e}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSGeo.MapGuide.ObjectModels\OSGeo.MapGuide.ObjectModels.csproj">
+      <Project>{48c5eb23-45ae-4c4c-8fab-635428ae8ca1}</Project>
+      <Name>OSGeo.MapGuide.ObjectModels</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

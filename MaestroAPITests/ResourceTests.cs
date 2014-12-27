@@ -46,442 +46,18 @@ namespace MaestroAPITests
         {
             if (TestControl.IgnoreResourceTests)
                 Assert.Ignore("Skipping ResourceTests because TestControl.IgnoreResourceTests = true");
+
+            _mocks = new Mockery();
         }
 
         private Mockery _mocks;
-
-        [Test]
-        public void TestCloning()
-        {
-            //Generated classes have built in Clone() methods. Verify they check out
-            _mocks = new Mockery();
-            var conn = _mocks.NewMock<IServerConnection>();
-            Stub.On(conn).GetProperty("SiteVersion").Will(Return.Value(new Version(2, 2, 0, 0)));
-            var caps = _mocks.NewMock<IConnectionCapabilities>();
-            Stub.On(conn).GetProperty("Capabilities").Will(Return.Value(caps));
-            foreach (var rt in Enum.GetValues(typeof(ResourceTypes)))
-            {
-                Stub.On(caps).Method("GetMaxSupportedResourceVersion").With(rt.ToString()).Will(Return.Value(new Version(1, 0, 0)));
-            }
-
-            var app = ObjectFactory.DeserializeEmbeddedFlexLayout(conn);
-            var app2 = app.Clone();
-            Assert.AreNotSame(app, app2);
-
-            var fs = new OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0.FeatureSourceType();
-            var fs2 = fs.Clone();
-            Assert.AreNotSame(fs, fs2);
-
-            var ld = ObjectFactory.CreateDefaultLayer(conn, LayerType.Vector, new Version(1, 0, 0));
-            var ld2 = ld.Clone();
-            Assert.AreNotSame(ld, ld2);
-
-            var md = ObjectFactory.CreateMapDefinition(conn, "TestMap");
-            var md2 = md.Clone();
-            Assert.AreNotSame(md, md2);
-
-            var wl = ObjectFactory.CreateWebLayout(conn, new Version(1, 0, 0), "Library://Test.MapDefinition");
-            var wl2 = wl.Clone();
-            Assert.AreNotSame(wl, wl2);
-
-            var sl = new OSGeo.MapGuide.ObjectModels.SymbolLibrary.v1_0_0.SymbolLibraryType();
-            var sl2 = sl.Clone();
-            Assert.AreNotSame(sl, sl2);
-
-            var ssd = ObjectFactory.CreateSimpleSymbol(conn, new Version(1, 0, 0), "Test", "Test Symbol");
-            var ssd2 = ssd.Clone();
-            Assert.AreNotSame(ssd, ssd2);
-
-            var csd = ObjectFactory.CreateCompoundSymbol(conn, new Version(1, 0, 0), "Test", "Test Symbol");
-            var csd2 = csd.Clone();
-            Assert.AreNotSame(csd, csd2);
-
-            var pl = ObjectFactory.CreatePrintLayout(conn);
-            var pl2 = pl.Clone();
-            Assert.AreNotSame(pl, pl2);
-        }
-
-        [Test]
-        public void TestValidResourceIdentifiers()
-        {
-            var conn = _mocks.NewMock<IServerConnection>();
-            Stub.On(conn).GetProperty("SiteVersion").Will(Return.Value(new Version(2, 2, 0, 0)));
-            var caps = _mocks.NewMock<IConnectionCapabilities>();
-            Stub.On(conn).GetProperty("Capabilities").Will(Return.Value(caps));
-            foreach (var rt in Enum.GetValues(typeof(ResourceTypes)))
-            {
-                Stub.On(caps).Method("GetMaxSupportedResourceVersion").With(rt.ToString()).Will(Return.Value(new Version(1, 0, 0)));
-            }
-
-            //Verify that only valid resource identifiers can be assigned to certain resource types.
-
-            IResource res = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF");
-
-            #region Feature Source
-
-            try
-            {
-                res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.FeatureSource";
-            }
-            catch (InvalidOperationException)
-            {
-                Assert.Fail("Resource ID should've checked out");
-            }
-
-            #endregion Feature Source
-
-            res = ObjectFactory.CreateDrawingSource(conn);
-
-            #region Drawing Source
-
-            try
-            {
-                res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.FeatureSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-            }
-            catch (Exception)
-            {
-                Assert.Fail("Resource ID should've checked out");
-            }
-
-            #endregion Drawing Source
-
-            res = ObjectFactory.CreateMapDefinition(conn, "Test Map");
-
-            #region Map Definition
-
-            try
-            {
-                res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.MapDefinition";
-            }
-            catch (Exception)
-            {
-                Assert.Fail("Resource ID should've checked out");
-            }
-
-            #endregion Map Definition
-
-            res = ObjectFactory.CreateWebLayout(conn, new Version(1, 0, 0), "Library://Test.MapDefinition");
-
-            #region Web Layout
-
-            try
-            {
-                res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.WebLayout";
-            }
-            catch (Exception)
-            {
-                Assert.Fail("Resource ID should've checked out");
-            }
-
-            #endregion Web Layout
-
-            res = ObjectFactory.DeserializeEmbeddedFlexLayout(conn);
-
-            #region Application Definition
-
-            try
-            {
-                res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.ApplicationDefinition";
-            }
-            catch (Exception)
-            {
-                Assert.Fail("Resource ID should've checked out");
-            }
-
-            #endregion Application Definition
-
-            res = ObjectFactory.CreateSimpleSymbol(conn, new Version(1, 0, 0), "Test", "Test Symbol");
-
-            #region Simple Symbol Definition
-
-            try
-            {
-                res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.SymbolDefinition";
-            }
-            catch (Exception)
-            {
-                Assert.Fail("Resource ID should've checked out");
-            }
-
-            #endregion Simple Symbol Definition
-
-            res = ObjectFactory.CreateCompoundSymbol(conn, new Version(1, 0, 0), "Test", "Test Symbol");
-
-            #region Compound Symbol Definition
-
-            try
-            {
-                res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.SymbolDefinition";
-            }
-            catch (Exception)
-            {
-                Assert.Fail("Resource ID should've checked out");
-            }
-
-            #endregion Compound Symbol Definition
-
-            res = ObjectFactory.CreateLoadProcedure(conn, LoadType.Sdf, null);
-
-            #region Load Procedure
-
-            try
-            {
-                res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.LoadProcedure";
-            }
-            catch (Exception)
-            {
-                Assert.Fail("Resource ID should've checked out");
-            }
-
-            #endregion Load Procedure
-
-            res = ObjectFactory.CreateLoadProcedure(conn, LoadType.Shp, null);
-
-            #region Load Procedure
-
-            try
-            {
-                res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.LoadProcedure";
-            }
-            catch (Exception)
-            {
-                Assert.Fail("Resource ID should've checked out");
-            }
-
-            #endregion Load Procedure
-
-            res = ObjectFactory.CreatePrintLayout(conn);
-
-            #region Print Layout
-
-            try
-            {
-                res.ResourceID = "dklgjlahekjedjfd";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.DrawingSource";
-                Assert.Fail("Should've thrown exception on invalid resource id");
-            }
-            catch (InvalidOperationException) { }
-
-            try
-            {
-                res.ResourceID = "Library://UnitTests/Test.PrintLayout";
-            }
-            catch (Exception)
-            {
-                Assert.Fail("Resource ID should've checked out");
-            }
-
-            #endregion Print Layout
-        }
 
         [Test]
         public void TestWebLayout()
         {
             var conn = _mocks.NewMock<IServerConnection>();
 
-            var wl = ObjectFactory.CreateWebLayout(conn, new Version(1, 0, 0), "Library://Test.MapDefinition");
+            var wl = ObjectFactory.CreateWebLayout(new Version(1, 0, 0), "Library://Test.MapDefinition");
             Assert.IsNotNull(wl.CommandSet);
             Assert.IsNotNull(wl.ContextMenu);
             Assert.IsNotNull(wl.InformationPane);
@@ -515,130 +91,11 @@ namespace MaestroAPITests
         }
 
         [Test]
-        public void TestFeatureSource()
-        {
-            var conn = _mocks.NewMock<IServerConnection>();
-
-            var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF");
-            Assert.IsTrue(fs.ConnectionString.Length == 0);
-
-            var connParams = new NameValueCollection();
-            connParams["File"] = "%MG_DATA_FILE_PATH%Foo.sdf";
-
-            fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF", connParams);
-
-            Assert.IsTrue(fs.UsesEmbeddedDataFiles);
-            Assert.IsFalse(fs.UsesAliasedDataFiles);
-            Assert.AreEqual(fs.GetEmbeddedDataName(), "Foo.sdf");
-            Assert.Catch<InvalidOperationException>(() => fs.GetAliasedFileName());
-            Assert.Catch<InvalidOperationException>(() => fs.GetAliasName());
-
-            connParams.Clear();
-            connParams["File"] = "%MG_DATA_FILE_PATH%Bar.sdf";
-            connParams["ReadOnly"] = "TRUE";
-
-            fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF", connParams);
-
-            Assert.IsTrue(fs.UsesEmbeddedDataFiles);
-            Assert.IsFalse(fs.UsesAliasedDataFiles);
-            Assert.AreEqual(fs.GetEmbeddedDataName(), "Bar.sdf");
-            Assert.Catch<InvalidOperationException>(() => fs.GetAliasedFileName());
-            Assert.Catch<InvalidOperationException>(() => fs.GetAliasName());
-
-            connParams.Clear();
-            connParams["DefaultFileLocation"] = "%MG_DATA_PATH_ALIAS[foobar]%";
-
-            fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SHP", connParams);
-
-            Assert.IsTrue(fs.UsesAliasedDataFiles);
-            Assert.IsFalse(fs.UsesEmbeddedDataFiles);
-            Assert.AreEqual(fs.GetAliasName(), "foobar");
-            Assert.IsEmpty(fs.GetAliasedFileName());
-            Assert.Catch<InvalidOperationException>(() => fs.GetEmbeddedDataName());
-
-            connParams.Clear();
-            connParams["DefaultFileLocation"] = "%MG_DATA_PATH_ALIAS[foobar]%Test.sdf";
-
-            fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF", connParams);
-
-            Assert.IsTrue(fs.UsesAliasedDataFiles);
-            Assert.IsFalse(fs.UsesEmbeddedDataFiles);
-            Assert.AreEqual(fs.GetAliasName(), "foobar");
-            Assert.AreEqual(fs.GetAliasedFileName(), "Test.sdf");
-            Assert.Catch<InvalidOperationException>(() => fs.GetEmbeddedDataName());
-
-            connParams.Clear();
-            connParams["DefaultFileLocation"] = "%MG_DATA_PATH_ALIAS[foobar]%Test.sdf";
-            connParams["ReadOnly"] = "TRUE";
-
-            fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SDF", connParams);
-
-            Assert.IsTrue(fs.UsesAliasedDataFiles);
-            Assert.IsFalse(fs.UsesEmbeddedDataFiles);
-            Assert.AreEqual(fs.GetAliasName(), "foobar");
-            Assert.AreEqual(fs.GetAliasedFileName(), "Test.sdf");
-            Assert.Catch<InvalidOperationException>(() => fs.GetEmbeddedDataName());
-
-            connParams.Clear();
-            connParams["Service"] = "(local)\\SQLEXPRESS";
-            connParams["DataStore"] = "TEST";
-
-            fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.SQLServerSpatial", connParams);
-
-            Assert.IsFalse(fs.UsesEmbeddedDataFiles);
-            Assert.IsFalse(fs.UsesAliasedDataFiles);
-
-            Assert.Catch<InvalidOperationException>(() => fs.GetAliasedFileName());
-            Assert.Catch<InvalidOperationException>(() => fs.GetAliasName());
-            Assert.Catch<InvalidOperationException>(() => fs.GetEmbeddedDataName());
-        }
-
-        [Test]
-        public void TestResourceTypeDescriptor()
-        {
-            var rtd = new ResourceTypeDescriptor(ResourceTypes.ApplicationDefinition.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "ApplicationDefinition-1.0.0.xsd");
-
-            rtd = new ResourceTypeDescriptor(ResourceTypes.DrawingSource.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "DrawingSource-1.0.0.xsd");
-
-            rtd = new ResourceTypeDescriptor(ResourceTypes.FeatureSource.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "FeatureSource-1.0.0.xsd");
-
-            rtd = new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "LayerDefinition-1.0.0.xsd");
-
-            rtd = new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), "1.1.0");
-            Assert.AreEqual(rtd.XsdName, "LayerDefinition-1.1.0.xsd");
-
-            rtd = new ResourceTypeDescriptor(ResourceTypes.LoadProcedure.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "LoadProcedure-1.0.0.xsd");
-
-            rtd = new ResourceTypeDescriptor(ResourceTypes.MapDefinition.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "MapDefinition-1.0.0.xsd");
-
-            rtd = new ResourceTypeDescriptor(ResourceTypes.DrawingSource.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "DrawingSource-1.0.0.xsd");
-
-            rtd = new ResourceTypeDescriptor(ResourceTypes.PrintLayout.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "PrintLayout-1.0.0.xsd");
-
-            rtd = new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "SymbolDefinition-1.0.0.xsd");
-
-            rtd = new ResourceTypeDescriptor(ResourceTypes.SymbolLibrary.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "SymbolLibrary-1.0.0.xsd");
-
-            rtd = new ResourceTypeDescriptor(ResourceTypes.WebLayout.ToString(), "1.0.0");
-            Assert.AreEqual(rtd.XsdName, "WebLayout-1.0.0.xsd");
-        }
-
-        [Test]
         public void TestLayerDefinitionConversions()
         {
             var conn = _mocks.NewMock<IServerConnection>();
             var conv = new ResourceObjectConverter();
-            var ldf = ObjectFactory.CreateDefaultLayer(conn, LayerType.Vector, new Version(1, 0, 0));
+            var ldf = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
             ldf.ResourceID = "Library://Samples/Sheboygan/Layers/Parcels.LayerDefinition";
             ldf.SubLayer.ResourceId = "Library://Samples/Sheboygan/Data/Parcels.FeatureSource";
             ((IVectorLayerDefinition)ldf.SubLayer).FeatureName = "SHP_Schema:Parcels";
@@ -651,7 +108,7 @@ namespace MaestroAPITests
 
             using (var fs = File.OpenWrite("LayerDef_100.xml"))
             {
-                using (var src = ResourceTypeRegistry.Serialize(ldf))
+                using (var src = ObjectFactory.Serialize(ldf))
                 {
                     Utility.CopyStream(src, fs);
                 }
@@ -663,11 +120,10 @@ namespace MaestroAPITests
             Assert.AreEqual("LayerDefinition-1.1.0.xsd", ldf1.GetResourceTypeDescriptor().XsdName);
             Assert.AreEqual("LayerDefinition-1.1.0.xsd", ldf1.ValidatingSchema);
             Assert.AreEqual(new Version(1, 1, 0), ldf1.ResourceVersion);
-            Assert.NotNull(ldf1.CurrentConnection);
-
+            
             using (var fs = File.OpenWrite("LayerDef_110.xml"))
             {
-                using (var src = ResourceTypeRegistry.Serialize(ldf1))
+                using (var src = ObjectFactory.Serialize(ldf1))
                 {
                     Utility.CopyStream(src, fs);
                 }
@@ -679,11 +135,10 @@ namespace MaestroAPITests
             Assert.AreEqual("LayerDefinition-1.2.0.xsd", ldf2.GetResourceTypeDescriptor().XsdName);
             Assert.AreEqual("LayerDefinition-1.2.0.xsd", ldf2.ValidatingSchema);
             Assert.AreEqual(new Version(1, 2, 0), ldf2.ResourceVersion);
-            Assert.NotNull(ldf2.CurrentConnection);
-
+            
             using (var fs = File.OpenWrite("LayerDef_120.xml"))
             {
-                using (var src = ResourceTypeRegistry.Serialize(ldf2))
+                using (var src = ObjectFactory.Serialize(ldf2))
                 {
                     Utility.CopyStream(src, fs);
                 }
@@ -695,11 +150,10 @@ namespace MaestroAPITests
             Assert.AreEqual("LayerDefinition-1.3.0.xsd", ldf3.GetResourceTypeDescriptor().XsdName);
             Assert.AreEqual("LayerDefinition-1.3.0.xsd", ldf3.ValidatingSchema);
             Assert.AreEqual(new Version(1, 3, 0), ldf3.ResourceVersion);
-            Assert.NotNull(ldf3.CurrentConnection);
-
+            
             using (var fs = File.OpenWrite("LayerDef_130.xml"))
             {
-                using (var src = ResourceTypeRegistry.Serialize(ldf3))
+                using (var src = ObjectFactory.Serialize(ldf3))
                 {
                     Utility.CopyStream(src, fs);
                 }
@@ -711,12 +165,11 @@ namespace MaestroAPITests
             Assert.AreEqual("LayerDefinition-2.3.0.xsd", ldf4.GetResourceTypeDescriptor().XsdName);
             Assert.AreEqual("LayerDefinition-2.3.0.xsd", ldf4.ValidatingSchema);
             Assert.AreEqual(new Version(2, 3, 0), ldf4.ResourceVersion);
-            Assert.NotNull(ldf4.CurrentConnection);
             Assert.IsTrue(ldf4.SubLayer is ISubLayerDefinition2);
 
             using (var fs = File.OpenWrite("LayerDef_230.xml"))
             {
-                using (var src = ResourceTypeRegistry.Serialize(ldf4))
+                using (var src = ObjectFactory.Serialize(ldf4))
                 {
                     Utility.CopyStream(src, fs);
                 }
@@ -735,18 +188,18 @@ namespace MaestroAPITests
         public void TestMapDefinitionLayerInsert()
         {
             var conn = _mocks.NewMock<IServerConnection>();
-            var mdf = ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), "TestMapDefinitionLayerInsert");
+            var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionLayerInsert");
             SetupMapDefinitionForTest(mdf);
             int layerCount = mdf.GetLayerCount();
 
-            Assert.Throws<PreconditionException>(() => { mdf.InsertLayer(-1, null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"); });
-            Assert.Throws<PreconditionException>(() => { mdf.InsertLayer(layerCount + 1, null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"); });
-            Assert.Throws<PreconditionException>(() => { mdf.InsertLayer(0, null, "", ""); });
-            Assert.Throws<PreconditionException>(() => { mdf.InsertLayer(0, null, null, ""); });
-            Assert.Throws<PreconditionException>(() => { mdf.InsertLayer(0, null, "", null); });
-            Assert.Throws<PreconditionException>(() => { mdf.InsertLayer(0, null, null, null); });
-            Assert.Throws<PreconditionException>(() => { mdf.InsertLayer(0, null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.FeatureSource"); });
-            Assert.Throws<PreconditionException>(() => { mdf.InsertLayer(0, null, "Hydro", "Garbage"); });
+            Assert.Throws<ArgumentException>(() => { mdf.InsertLayer(-1, null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"); });
+            Assert.Throws<ArgumentException>(() => { mdf.InsertLayer(layerCount + 1, null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"); });
+            Assert.Throws<ArgumentException>(() => { mdf.InsertLayer(0, null, "", ""); });
+            Assert.Throws<ArgumentException>(() => { mdf.InsertLayer(0, null, null, ""); });
+            Assert.Throws<ArgumentException>(() => { mdf.InsertLayer(0, null, "", null); });
+            Assert.Throws<ArgumentException>(() => { mdf.InsertLayer(0, null, null, null); });
+            Assert.Throws<ArgumentException>(() => { mdf.InsertLayer(0, null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.FeatureSource"); });
+            Assert.Throws<ArgumentException>(() => { mdf.InsertLayer(0, null, "Hydro", "Garbage"); });
 
             IMapLayer layer = mdf.InsertLayer(0, null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
             Assert.AreEqual(0, mdf.GetIndex(layer));
@@ -762,17 +215,17 @@ namespace MaestroAPITests
         public void TestMapDefinitionLayerAdd()
         {
             var conn = _mocks.NewMock<IServerConnection>();
-            var mdf = ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), "TestMapDefinitionLayerAdd");
+            var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionLayerAdd");
             SetupMapDefinitionForTest(mdf);
             int layerCount = mdf.GetLayerCount();
 
-            Assert.Throws<PreconditionException>(() => { mdf.AddLayer("IDontExist", "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"); });
-            Assert.Throws<PreconditionException>(() => { mdf.AddLayer(null, "", ""); });
-            Assert.Throws<PreconditionException>(() => { mdf.AddLayer(null, null, ""); });
-            Assert.Throws<PreconditionException>(() => { mdf.AddLayer(null, "", null); });
-            Assert.Throws<PreconditionException>(() => { mdf.AddLayer(null, null, null); });
-            Assert.Throws<PreconditionException>(() => { mdf.AddLayer(null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.FeatureSource"); });
-            Assert.Throws<PreconditionException>(() => { mdf.AddLayer(null, "Hydro", "Garbage"); });
+            Assert.Throws<ArgumentException>(() => { mdf.AddLayer("IDontExist", "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"); });
+            Assert.Throws<ArgumentException>(() => { mdf.AddLayer(null, "", ""); });
+            Assert.Throws<ArgumentException>(() => { mdf.AddLayer(null, null, ""); });
+            Assert.Throws<ArgumentException>(() => { mdf.AddLayer(null, "", null); });
+            Assert.Throws<ArgumentException>(() => { mdf.AddLayer(null, null, null); });
+            Assert.Throws<ArgumentException>(() => { mdf.AddLayer(null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.FeatureSource"); });
+            Assert.Throws<ArgumentException>(() => { mdf.AddLayer(null, "Hydro", "Garbage"); });
 
             IMapLayer layer = mdf.AddLayer(null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
             Assert.AreEqual(0, mdf.GetIndex(layer));
@@ -784,7 +237,7 @@ namespace MaestroAPITests
         public void TestMapDefinitionLayerRemove()
         {
             var conn = _mocks.NewMock<IServerConnection>();
-            var mdf = ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), "TestMapDefinitionLayerRemove");
+            var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionLayerRemove");
             SetupMapDefinitionForTest(mdf);
             int layerCount = mdf.GetLayerCount();
 
@@ -802,14 +255,14 @@ namespace MaestroAPITests
         public void TestMapDefinitionLayerReordering()
         {
             var conn = _mocks.NewMock<IServerConnection>();
-            var mdf = ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), "TestMapDefinitionLayerReordering");
+            var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionLayerReordering");
             SetupMapDefinitionForTest(mdf);
             int layerCount = mdf.GetLayerCount();
 
-            Assert.Throws<PreconditionException>(() => { mdf.MoveDown(null); });
-            Assert.Throws<PreconditionException>(() => { mdf.MoveUp(null); });
-            Assert.Throws<PreconditionException>(() => { mdf.SetTopDrawOrder(null); });
-            Assert.Throws<PreconditionException>(() => { mdf.SetBottomDrawOrder(null); });
+            Assert.Throws<ArgumentException>(() => { mdf.MoveDown(null); });
+            Assert.Throws<ArgumentException>(() => { mdf.MoveUp(null); });
+            Assert.Throws<ArgumentException>(() => { mdf.SetTopDrawOrder(null); });
+            Assert.Throws<ArgumentException>(() => { mdf.SetBottomDrawOrder(null); });
 
             IMapLayer layer = mdf.AddLayer(null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
             Assert.AreEqual(0, mdf.GetIndex(layer));
@@ -836,14 +289,14 @@ namespace MaestroAPITests
         public void TestMapDefinitionGroupAdd()
         {
             var conn = _mocks.NewMock<IServerConnection>();
-            var mdf = ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), "TestMapDefinitionGroupAdd");
+            var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionGroupAdd");
             SetupMapDefinitionForTest(mdf);
             int layerCount = mdf.GetLayerCount();
             int groupCount = mdf.GetGroupCount();
 
-            Assert.Throws<PreconditionException>(() => { mdf.AddGroup(null); });
-            Assert.Throws<PreconditionException>(() => { mdf.AddGroup(""); });
-            Assert.Throws<PreconditionException>(() => { mdf.AddGroup("Group1"); });
+            Assert.Throws<ArgumentException>(() => { mdf.AddGroup(null); });
+            Assert.Throws<ArgumentException>(() => { mdf.AddGroup(""); });
+            Assert.Throws<ArgumentException>(() => { mdf.AddGroup("Group1"); });
 
             IMapLayerGroup group = mdf.AddGroup("Test");
             Assert.AreEqual(groupCount + 1, mdf.GetGroupCount());
@@ -855,7 +308,7 @@ namespace MaestroAPITests
         public void TestMapDefinitionGroupRemove()
         {
             var conn = _mocks.NewMock<IServerConnection>();
-            var mdf = ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), "TestMapDefinitionGroupRemove");
+            var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionGroupRemove");
             SetupMapDefinitionForTest(mdf);
             int layerCount = mdf.GetLayerCount();
             int groupCount = mdf.GetGroupCount();
@@ -874,14 +327,14 @@ namespace MaestroAPITests
         public void TestMapDefinitionGroupReordering()
         {
             var conn = _mocks.NewMock<IServerConnection>();
-            var mdf = ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), "TestMapDefinitionGroupReordering");
+            var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionGroupReordering");
             SetupMapDefinitionForTest(mdf);
             int groupCount = mdf.GetGroupCount();
 
-            Assert.Throws<PreconditionException>(() => { mdf.MoveDown(null); });
-            Assert.Throws<PreconditionException>(() => { mdf.MoveUp(null); });
-            Assert.Throws<PreconditionException>(() => { mdf.SetTopDrawOrder(null); });
-            Assert.Throws<PreconditionException>(() => { mdf.SetBottomDrawOrder(null); });
+            Assert.Throws<ArgumentException>(() => { mdf.MoveDown(null); });
+            Assert.Throws<ArgumentException>(() => { mdf.MoveUp(null); });
+            Assert.Throws<ArgumentException>(() => { mdf.SetTopDrawOrder(null); });
+            Assert.Throws<ArgumentException>(() => { mdf.SetBottomDrawOrder(null); });
 
             IMapLayerGroup group = mdf.AddGroup("Test");
             Assert.AreEqual(groupCount, mdf.GetIndex(group));
@@ -900,7 +353,7 @@ namespace MaestroAPITests
             var conn = _mocks.NewMock<IServerConnection>();
             var conv = new ResourceObjectConverter();
 
-            var mdf = ObjectFactory.CreateMapDefinition(conn, new Version(1, 0, 0), "Test Map");
+            var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "Test Map");
             mdf.ResourceID = "Library://Samples/Sheboygan/Maps/Sheboygan.MapDefinition";
 
             Assert.AreEqual("1.0.0", mdf.GetResourceTypeDescriptor().Version);
@@ -910,7 +363,7 @@ namespace MaestroAPITests
 
             using (var fs = File.OpenWrite("MapDef_100.xml"))
             {
-                using (var src = ResourceTypeRegistry.Serialize(mdf))
+                using (var src = ObjectFactory.Serialize(mdf))
                 {
                     Utility.CopyStream(src, fs);
                 }
@@ -922,12 +375,11 @@ namespace MaestroAPITests
             Assert.AreEqual("MapDefinition-2.3.0.xsd", mdf2.GetResourceTypeDescriptor().XsdName);
             Assert.AreEqual("MapDefinition-2.3.0.xsd", mdf2.ValidatingSchema);
             Assert.AreEqual(new Version(2, 3, 0), mdf2.ResourceVersion);
-            Assert.NotNull(mdf2.CurrentConnection);
             Assert.True(mdf2 is IMapDefinition2);
 
             using (var fs = File.OpenWrite("MapDef_230.xml"))
             {
-                using (var src = ResourceTypeRegistry.Serialize(mdf2))
+                using (var src = ObjectFactory.Serialize(mdf2))
                 {
                     Utility.CopyStream(src, fs);
                 }
@@ -940,7 +392,7 @@ namespace MaestroAPITests
             var conn = _mocks.NewMock<IServerConnection>();
             var conv = new ResourceObjectConverter();
 
-            var lproc = ObjectFactory.CreateLoadProcedure(conn, LoadType.Sdf);
+            var lproc = ObjectFactory.CreateLoadProcedure(LoadType.Sdf);
             lproc.ResourceID = "Library://Samples/Sheboygan/Load/Load.LoadProcedure";
 
             Assert.AreEqual("1.0.0", lproc.GetResourceTypeDescriptor().Version);
@@ -950,7 +402,7 @@ namespace MaestroAPITests
 
             using (var fs = File.OpenWrite("LoadProc_100.xml"))
             {
-                using (var src = ResourceTypeRegistry.Serialize(lproc))
+                using (var src = ObjectFactory.Serialize(lproc))
                 {
                     Utility.CopyStream(src, fs);
                 }
@@ -962,11 +414,10 @@ namespace MaestroAPITests
             Assert.AreEqual("LoadProcedure-1.1.0.xsd", lproc2.GetResourceTypeDescriptor().XsdName);
             Assert.AreEqual("LoadProcedure-1.1.0.xsd", lproc2.ValidatingSchema);
             Assert.AreEqual(new Version(1, 1, 0), lproc2.ResourceVersion);
-            Assert.NotNull(lproc2.CurrentConnection);
 
             using (var fs = File.OpenWrite("LoadProc_110.xml"))
             {
-                using (var src = ResourceTypeRegistry.Serialize(lproc2))
+                using (var src = ObjectFactory.Serialize(lproc2))
                 {
                     Utility.CopyStream(src, fs);
                 }
@@ -978,11 +429,10 @@ namespace MaestroAPITests
             Assert.AreEqual("LoadProcedure-2.2.0.xsd", lproc3.GetResourceTypeDescriptor().XsdName);
             Assert.AreEqual("LoadProcedure-2.2.0.xsd", lproc3.ValidatingSchema);
             Assert.AreEqual(new Version(2, 2, 0), lproc3.ResourceVersion);
-            Assert.NotNull(lproc3.CurrentConnection);
 
             using (var fs = File.OpenWrite("LoadProc_220.xml"))
             {
-                using (var src = ResourceTypeRegistry.Serialize(lproc3))
+                using (var src = ObjectFactory.Serialize(lproc3))
                 {
                     Utility.CopyStream(src, fs);
                 }
@@ -995,7 +445,7 @@ namespace MaestroAPITests
             var conn = _mocks.NewMock<IServerConnection>();
             var conv = new ResourceObjectConverter();
 
-            var wl = ObjectFactory.CreateWebLayout(conn, new Version(1, 0, 0), "Library://Test.MapDefinition");
+            var wl = ObjectFactory.CreateWebLayout(new Version(1, 0, 0), "Library://Test.MapDefinition");
             wl.ResourceID = "Library://Test.WebLayout";
 
             Assert.AreEqual("1.0.0", wl.GetResourceTypeDescriptor().Version);
@@ -1005,7 +455,7 @@ namespace MaestroAPITests
 
             using (var fs = File.OpenWrite("WebLayout_100.xml"))
             {
-                using (var src = ResourceTypeRegistry.Serialize(wl))
+                using (var src = ObjectFactory.Serialize(wl))
                 {
                     Utility.CopyStream(src, fs);
                 }
@@ -1017,12 +467,11 @@ namespace MaestroAPITests
             Assert.AreEqual("WebLayout-1.1.0.xsd", wl2.GetResourceTypeDescriptor().XsdName);
             Assert.AreEqual("WebLayout-1.1.0.xsd", wl2.ValidatingSchema);
             Assert.AreEqual(new Version(1, 1, 0), wl2.ResourceVersion);
-            Assert.NotNull(wl2.CurrentConnection);
             Assert.True(wl2 is IWebLayout2);
 
             using (var fs = File.OpenWrite("WebLayout_110.xml"))
             {
-                using (var src = ResourceTypeRegistry.Serialize(wl2))
+                using (var src = ObjectFactory.Serialize(wl2))
                 {
                     Utility.CopyStream(src, fs);
                 }
@@ -1035,7 +484,7 @@ namespace MaestroAPITests
             var conn = _mocks.NewMock<IServerConnection>();
             var conv = new ResourceObjectConverter();
 
-            var ssym = ObjectFactory.CreateSimpleSymbol(conn, new Version(1, 0, 0), "SimpleSymbolTest", "Test simple symbol");
+            var ssym = ObjectFactory.CreateSimpleSymbol(new Version(1, 0, 0), "SimpleSymbolTest", "Test simple symbol");
             ssym.ResourceID = "Library://Samples/Sheboygan/Symbols/Test.SymbolDefinition";
 
             Assert.AreEqual("1.0.0", ssym.GetResourceTypeDescriptor().Version);
@@ -1045,7 +494,7 @@ namespace MaestroAPITests
 
             using (var fs = File.OpenWrite("SimpleSymDef_100.xml"))
             {
-                using (var src = ResourceTypeRegistry.Serialize(ssym))
+                using (var src = ObjectFactory.Serialize(ssym))
                 {
                     Utility.CopyStream(src, fs);
                 }
@@ -1057,17 +506,16 @@ namespace MaestroAPITests
             Assert.AreEqual("SymbolDefinition-1.1.0.xsd", ssym2.GetResourceTypeDescriptor().XsdName);
             Assert.AreEqual("SymbolDefinition-1.1.0.xsd", ssym2.ValidatingSchema);
             Assert.AreEqual(new Version(1, 1, 0), ssym2.ResourceVersion);
-            Assert.NotNull(ssym2.CurrentConnection);
 
             using (var fs = File.OpenWrite("SimpleSymDef_110.xml"))
             {
-                using (var src = ResourceTypeRegistry.Serialize(ssym2))
+                using (var src = ObjectFactory.Serialize(ssym2))
                 {
                     Utility.CopyStream(src, fs);
                 }
             }
 
-            var csym = ObjectFactory.CreateCompoundSymbol(conn, new Version(1, 0, 0), "CompoundSymbolTest", "Test compound symbol");
+            var csym = ObjectFactory.CreateCompoundSymbol(new Version(1, 0, 0), "CompoundSymbolTest", "Test compound symbol");
             csym.ResourceID = "Library://Samples/Sheboygan/Symbols/Compound.SymbolDefinition";
 
             Assert.AreEqual("1.0.0", csym.GetResourceTypeDescriptor().Version);
@@ -1077,7 +525,7 @@ namespace MaestroAPITests
 
             using (var fs = File.OpenWrite("CompoundSymDef_100.xml"))
             {
-                using (var src = ResourceTypeRegistry.Serialize(csym))
+                using (var src = ObjectFactory.Serialize(csym))
                 {
                     Utility.CopyStream(src, fs);
                 }
@@ -1089,11 +537,10 @@ namespace MaestroAPITests
             Assert.AreEqual("SymbolDefinition-1.1.0.xsd", csym2.GetResourceTypeDescriptor().XsdName);
             Assert.AreEqual("SymbolDefinition-1.1.0.xsd", csym2.ValidatingSchema);
             Assert.AreEqual(new Version(1, 1, 0), csym2.ResourceVersion);
-            Assert.NotNull(csym2.CurrentConnection);
 
             using (var fs = File.OpenWrite("CompoundSymDef_110.xml"))
             {
-                using (var src = ResourceTypeRegistry.Serialize(csym2))
+                using (var src = ObjectFactory.Serialize(csym2))
                 {
                     Utility.CopyStream(src, fs);
                 }
@@ -1111,7 +558,7 @@ namespace MaestroAPITests
                 Stub.On(caps).Method("GetMaxSupportedResourceVersion").With(rt.ToString()).Will(Return.Value(new Version(1, 0, 0)));
             }
 
-            IMapDefinition mdf = ObjectFactory.CreateMapDefinition(conn, "Test");
+            IMapDefinition mdf = Utility.CreateMapDefinition(conn, "Test");
             /*
 
              [G] Group1

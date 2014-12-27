@@ -197,7 +197,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
             double scale = GetApplicablePreviewScale();
             //Not pretty, but we need a server connection to fetch DWF symbol thumbnails for previewing
-            Condition c = new Condition(m_owner.EditorService.GetEditedResource().CurrentConnection);
+            Condition c = new Condition(m_owner.EditorService.CurrentConnection);
 
             if (rule as IPointRule != null)
                 c.SetItem(rule as IPointRule, scale, themeCategory);

@@ -30,6 +30,7 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.MaestroAPI.Serialization;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
@@ -82,8 +83,6 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         protected PlatformConnectionBase()
         {
-            ResourceTypeRegistry.Init();
-
             m_serializers = new Hashtable();
             m_validator = new XmlValidator();
             m_cachedSchemas = new Hashtable();
@@ -414,8 +413,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             var stream = GetResourceXmlData(resourceID);
             var rt = ResourceIdentifier.GetResourceTypeAsString(resourceID);
 
-            IResource o = ResourceTypeRegistry.Deserialize(rt, stream);
-            o.CurrentConnection = GetInterface();
+            IResource o = ObjectFactory.Deserialize(rt, stream);
             o.ResourceID = resourceID;
 
             return o;
@@ -1268,7 +1266,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Saves the resource.
         /// </summary>
         /// <param name="resource">The resource.</param>
-        public void SaveResource(OSGeo.MapGuide.MaestroAPI.Resource.IResource resource)
+        public void SaveResource(IResource resource)
         {
             try
             {
@@ -1287,11 +1285,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="resource">The resource.</param>
         /// <param name="resourceid">The resourceid.</param>
-        public void SaveResourceAs(OSGeo.MapGuide.MaestroAPI.Resource.IResource resource, string resourceid)
+        public void SaveResourceAs(IResource resource, string resourceid)
         {
             try
             {
-                var stream = ResourceTypeRegistry.Serialize(resource);
+                var stream = ObjectFactory.Serialize(resource);
                 SetResourceXmlData(resourceid, stream);
             }
             catch (Exception ex)
@@ -2303,7 +2301,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public virtual RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, double metersPerUnit, bool suppressErrors)
         {
-            var map = new RuntimeMap(mdf, metersPerUnit, suppressErrors);
+            var map = new RuntimeMap(GetInterface(), mdf, metersPerUnit, suppressErrors);
             map.ResourceID = runtimeMapResourceId;
             map.IsDirty = false;
             return map;

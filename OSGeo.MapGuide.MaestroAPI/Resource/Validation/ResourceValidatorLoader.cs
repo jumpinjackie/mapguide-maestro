@@ -38,15 +38,34 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 return;
 
             ResourceValidatorSet.RegisterValidator(new DrawingSourceValidator());
-            ResourceValidatorSet.RegisterValidator(new FeatureSourceValidator());
-            ResourceValidatorSet.RegisterValidator(new LayerDefinitionValidator());
-            ResourceValidatorSet.RegisterValidator(new MapDefinitionValidator());
-            ResourceValidatorSet.RegisterValidator(new WebLayoutValidator());
-            ResourceValidatorSet.RegisterValidator(new ApplicationDefinitionValidator());
-            ResourceValidatorSet.RegisterValidator(new LoadProcedureValidator());
-            ResourceValidatorSet.RegisterValidator(new SymbolDefinitionValidator());
             ResourceValidatorSet.RegisterValidator(new SymbolLibraryValidator());
             ResourceValidatorSet.RegisterValidator(new PrintLayoutValidator());
+            ResourceValidatorSet.RegisterValidator(new FeatureSourceValidator());
+            ResourceValidatorSet.RegisterValidator(new ApplicationDefinitionValidator());
+
+            //NOTE: As of right now, all resources (regardless of version) are validated
+            //with the same logic with each respective validator. In the event that a specific
+            //resource requires its own validation class, it should be registered here.
+
+            ResourceValidatorSet.RegisterValidator(new LayerDefinitionValidator("1.0.0"));
+            ResourceValidatorSet.RegisterValidator(new LayerDefinitionValidator("1.1.0"));
+            ResourceValidatorSet.RegisterValidator(new LayerDefinitionValidator("1.2.0"));
+            ResourceValidatorSet.RegisterValidator(new LayerDefinitionValidator("1.3.0"));
+            ResourceValidatorSet.RegisterValidator(new LayerDefinitionValidator("2.3.0"));
+            ResourceValidatorSet.RegisterValidator(new LayerDefinitionValidator("2.4.0"));
+            ResourceValidatorSet.RegisterValidator(new MapDefinitionValidator("1.0.0"));
+            ResourceValidatorSet.RegisterValidator(new MapDefinitionValidator("2.3.0"));
+            ResourceValidatorSet.RegisterValidator(new MapDefinitionValidator("2.4.0"));
+            ResourceValidatorSet.RegisterValidator(new WebLayoutValidator("1.0.0"));
+            ResourceValidatorSet.RegisterValidator(new WebLayoutValidator("1.1.0"));
+            ResourceValidatorSet.RegisterValidator(new WebLayoutValidator("2.4.0"));
+            ResourceValidatorSet.RegisterValidator(new WebLayoutValidator("2.6.0"));
+            ResourceValidatorSet.RegisterValidator(new LoadProcedureValidator("1.0.0"));
+            ResourceValidatorSet.RegisterValidator(new LoadProcedureValidator("1.1.0"));
+            ResourceValidatorSet.RegisterValidator(new LoadProcedureValidator("2.2.0"));
+            ResourceValidatorSet.RegisterValidator(new SymbolDefinitionValidator("1.0.0"));
+            ResourceValidatorSet.RegisterValidator(new SymbolDefinitionValidator("1.1.0"));
+            ResourceValidatorSet.RegisterValidator(new SymbolDefinitionValidator("2.4.0"));
 
             m_initialized = true;
         }

@@ -59,7 +59,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
 
         internal void InitDefaults()
         {
-            string xml = _fs.GetConfigurationContent();
+            string xml = _fs.GetConfigurationContent(_service.CurrentConnection);
             if (!string.IsNullOrEmpty(xml))
             {
                 try
@@ -172,10 +172,10 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
             var pdlg = new ProgressDialog();
             pdlg.CancelAbortsThread = true;
             var worker = new ProgressDialog.DoBackgroundWork(UpdateConfigurationDocument);
-            var result = (UpdateConfigResult)pdlg.RunOperationAsync(null, worker, _conf, _fs.CurrentConnection, toAdd, toRemove, isAlias);
+            var result = (UpdateConfigResult)pdlg.RunOperationAsync(null, worker, _conf, _service.CurrentConnection, toAdd, toRemove, isAlias);
             if (result.Added.Count > 0 || result.Removed.Count > 0)
             {
-                _fs.SetConfigurationContent(_conf.ToXml());
+                _fs.SetConfigurationContent(_service.CurrentConnection, _conf.ToXml());
                 List<ListViewItem> remove = new List<ListViewItem>();
                 foreach (ListViewItem lvi in lstView.Items)
                 {
@@ -286,13 +286,13 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
                 //Create a temp feature source to attempt interrogation of extents
                 var values = new NameValueCollection();
                 values["DefaultRasterFileLocation"] = add; //NOXLATE
-                var fs = ObjectFactory.CreateFeatureSource(conn, "OSGeo.Gdal", values); //NOXLATE
+                var fs = ObjectFactory.CreateFeatureSource("OSGeo.Gdal", values); //NOXLATE
 
                 var resId = new ResourceIdentifier("Session:" + conn.SessionID + "//" + Guid.NewGuid() + ".FeatureSource"); //NOXLATE
                 fs.ResourceID = resId.ToString();
                 conn.ResourceService.SaveResource(fs);
 
-                var scList = fs.GetSpatialInfo(false);
+                var scList = conn.FeatureService.GetSpatialContextInfo(fs.ResourceID, false);
 
                 var raster = new GdalRasterItem();
 

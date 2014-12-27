@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.DrawingSource;
 using System.Collections.Generic;
 
@@ -30,6 +31,18 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     /// </summary>
     public class DrawingSourceValidator : IResourceValidator
     {
+        private string _version;
+
+        internal DrawingSourceValidator(string version = "1.0.0")
+        {
+            _version = version;
+        }
+
+        /// <summary>
+        /// The server connection which validation will be performed against
+        /// </summary>
+        public IServerConnection Connection { get; set; }
+
         /// <summary>
         /// Validats the specified resources for common issues associated with this
         /// resource type
@@ -68,7 +81,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <value></value>
         public ResourceTypeDescriptor SupportedResourceAndVersion
         {
-            get { return new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.DrawingSource.ToString(), "1.0.0"); } //NOXLATE
+            get { return new ResourceTypeDescriptor(ResourceTypes.DrawingSource.ToString(), _version); } //NOXLATE
         }
     }
 }

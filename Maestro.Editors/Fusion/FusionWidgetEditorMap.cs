@@ -22,6 +22,7 @@
 
 using Maestro.Editors.Fusion.WidgetEditors;
 using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 
 namespace Maestro.Editors.Fusion
@@ -40,9 +41,9 @@ namespace Maestro.Editors.Fusion
         /// <returns></returns>
         public static IWidgetEditor GetEditorForWidget(IWidget widget, FlexibleLayoutEditorContext context, IEditorService edsvc)
         {
-            Check.NotNull(widget, "widget"); //NOXLATE
-            Check.NotNull(context, "context"); //NOXLATE
-            Check.NotNull(edsvc, "edsvc"); //NOXLATE
+            Check.ArgumentNotNull(widget, "widget"); //NOXLATE
+            Check.ArgumentNotNull(context, "context"); //NOXLATE
+            Check.ArgumentNotNull(edsvc, "edsvc"); //NOXLATE
 
             IWidgetEditor ed = new GenericWidgetCtrl();
             ed.Setup(widget, context, edsvc);

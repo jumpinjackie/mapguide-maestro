@@ -91,7 +91,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
                     if (diag.ShowDialog() == DialogResult.OK)
                     {
                         var fs = (IFeatureSource)_service.GetEditedResource();
-                        fs.SetEncryptedCredentials(diag.Username, diag.Password);
+                        fs.SetEncryptedCredentials(_service.CurrentConnection, diag.Username, diag.Password);
                         //Bit of a hack as parent does a 64-bit driver check to determine
                         //which NameValueCollection to return from the child, but we can
                         //get away with this because the same NameValueCollection is returned

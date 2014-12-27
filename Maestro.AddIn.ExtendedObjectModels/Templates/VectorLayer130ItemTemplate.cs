@@ -49,14 +49,14 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
             }
         }
 
-        public override OSGeo.MapGuide.MaestroAPI.Resource.IResource CreateItem(string startPoint, OSGeo.MapGuide.MaestroAPI.IServerConnection conn)
+        public override IResource CreateItem(string startPoint, OSGeo.MapGuide.MaestroAPI.IServerConnection conn)
         {
             using (var picker = new ResourcePicker(conn, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
             {
                 picker.SetStartingPoint(startPoint);
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    var lyr = ObjectFactory.CreateDefaultLayer(conn, OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Vector, new Version(1, 3, 0));
+                    var lyr = ObjectFactory.CreateDefaultLayer(OSGeo.MapGuide.ObjectModels.LayerDefinition.LayerType.Vector, new Version(1, 3, 0));
                     var vl = (IVectorLayerDefinition)lyr.SubLayer;
                     vl.ResourceId = picker.ResourceID;
                     //Stub these for now, validation will ensure this never makes it

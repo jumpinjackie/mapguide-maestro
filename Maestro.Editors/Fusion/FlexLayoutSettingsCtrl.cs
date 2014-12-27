@@ -98,7 +98,7 @@ namespace Maestro.Editors.Fusion
 
             try
             {
-                var conn = _flexLayout.CurrentConnection;
+                var conn = _edsvc.CurrentConnection;
                 string baseUrl = conn.GetCustomProperty("BaseUrl").ToString(); //NOXLATE
                 if (!baseUrl.EndsWith("/")) //NOXLATE
                     baseUrl += "/"; //NOXLATE

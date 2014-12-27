@@ -30,7 +30,7 @@ namespace OSGeo.MapGuide.ObjectModels
     /// <summary>
     /// Pre-condition verifier utility class
     /// </summary>
-    internal static class Check
+    public static class Check
     {
         /// <summary>
         /// Check that condition evaluates to true

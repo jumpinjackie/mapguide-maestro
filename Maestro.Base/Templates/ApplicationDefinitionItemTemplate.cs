@@ -57,7 +57,7 @@ namespace Maestro.Base.Templates
                 picker.SetStartingPoint(startPoint);
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    var flex = ObjectFactory.CreateFlexibleLayout(conn, FusionTemplateNames.Slate);
+                    var flex = Utility.CreateFlexibleLayout(conn, FusionTemplateNames.Slate);
                     var grp = flex.MapSet.GetGroupAt(0);
                     var map = grp.GetMapAt(0);
 

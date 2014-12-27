@@ -20,6 +20,8 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.ObjectModels;
+
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {
     /// <summary>
@@ -27,6 +29,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     /// </summary>
     public class PrintLayoutValidator : IResourceValidator
     {
+        /// <summary>
+        /// The server connection which validation will be performed against
+        /// </summary>
+        public IServerConnection Connection { get; set; }
+
         /// <summary>
         /// Gets the resource type and version this validator supports
         /// </summary>

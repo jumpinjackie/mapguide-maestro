@@ -74,43 +74,5 @@ namespace MaestroAPITests
             Assert.AreEqual(string.Empty, parser.GetValue("whatever"));
             Assert.AreEqual(parser.GetValue("bar"), "snafu");
         }
-
-        [Test]
-        public void TestEnvelope()
-        {
-            var env = ObjectFactory.CreateEnvelope(-.1, -.1, .1, .1);
-            Assert.AreEqual(env.MinX, -.1);
-            Assert.AreEqual(env.MinY, -.1);
-            Assert.AreEqual(env.MaxX, .1);
-            Assert.AreEqual(env.MaxY, .1);
-
-            Assert.Catch<ArgumentException>(() => ObjectFactory.CreateEnvelope(.1, -.1, -.1, .1));
-            Assert.Catch<ArgumentException>(() => ObjectFactory.CreateEnvelope(-.1, .1, .1, -.1));
-            Assert.Catch<ArgumentException>(() => ObjectFactory.CreateEnvelope(.1, .1, -.1, -.1));
-        }
-
-        [Test]
-        public void TestSecurityUser()
-        {
-            var user = ObjectFactory.CreateSecurityUser();
-            Assert.IsNotNull(user.User);
-        }
-
-        [Test]
-        public void TestSecurityGroup()
-        {
-            var group = ObjectFactory.CreateSecurityGroup();
-            Assert.IsNotNull(group.Group);
-        }
-
-        [Test]
-        public void TestResourceMetadata()
-        {
-            var meta = ObjectFactory.CreateMetadata();
-            Assert.IsNotNull(meta.Simple);
-            Assert.IsNotNull(meta.Simple.Property);
-
-            Assert.AreEqual(0, meta.GetProperties().Count);
-        }
     }
 }

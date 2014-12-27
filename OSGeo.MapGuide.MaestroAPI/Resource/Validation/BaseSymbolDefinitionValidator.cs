@@ -1,4 +1,5 @@
-﻿using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+﻿using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
@@ -8,6 +9,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     /// </summary>
     public abstract class BaseSymbolDefinitionValidator : IResourceValidator
     {
+        public IServerConnection Connection { get; set; }
+
         /// <summary>
         /// Gets the resource type and version this validator supports
         /// </summary>
@@ -38,7 +41,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <param name="resource"></param>
         /// <param name="recurse"></param>
         /// <returns></returns>
-        protected static ValidationIssue[] ValidateBase(ResourceValidationContext context, IResource resource, bool recurse)
+        protected ValidationIssue[] ValidateBase(ResourceValidationContext context, IResource resource, bool recurse)
         {
             Check.NotNull(context, "context"); //NOXLATE
 
@@ -83,7 +86,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <param name="ssym">The ssym.</param>
         /// <param name="context">The context.</param>
         /// <returns></returns>
-        protected static IEnumerable<ValidationIssue> ValidateSimpleSymbolDefinition(ISimpleSymbolDefinition ssym, ResourceValidationContext context)
+        protected IEnumerable<ValidationIssue> ValidateSimpleSymbolDefinition(ISimpleSymbolDefinition ssym, ResourceValidationContext context)
         {
             //Check that one geometry usage context has been specified
             if (ssym.AreaUsage == null &&
@@ -111,9 +114,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                             else
                             {
                                 var res = context.GetResource(imgRef.ResourceId);
-                                var resData = res.EnumerateResourceData();
+                                var resData = this.Connection.ResourceService.EnumerateResourceData(res.ResourceID);
                                 bool found = false;
-                                foreach (var item in resData)
+                                foreach (var item in resData.ResourceData)
                                 {
                                     if (item.Name == imgRef.LibraryItemName)
                                         found = true;
@@ -138,7 +141,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 }
             }
 
-            string xml = ResourceTypeRegistry.SerializeAsString(ssym);
+            string xml = ObjectFactory.SerializeAsString(ssym);
 
             //Check non existent symbol parameters
             foreach (var paramDef in ssym.ParameterDefinition.Parameter)

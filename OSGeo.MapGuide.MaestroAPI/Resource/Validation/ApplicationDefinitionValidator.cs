@@ -36,6 +36,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     public class ApplicationDefinitionValidator : IResourceValidator
     {
         /// <summary>
+        /// The server connection which validation will be performed against
+        /// </summary>
+        public IServerConnection Connection { get; set; }
+
+        /// <summary>
         /// Validats the specified resources for common issues associated with this
         /// resource type
         /// </summary>
@@ -45,7 +50,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <returns></returns>
         public ValidationIssue[] Validate(ResourceValidationContext context, IResource resource, bool recurse)
         {
-            if (resource.ResourceType != OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition.ToString())
+            if (resource.ResourceType != ResourceTypes.ApplicationDefinition.ToString())
                 return null;
 
             //TODO: Other items to check for
@@ -79,7 +84,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                             if (map.Type.ToLower() == "mapguide") //NOXLATE
                             {
                                 var mdfId = map.GetMapDefinition();
-                                if (string.IsNullOrEmpty(mdfId) || !resource.CurrentConnection.ResourceService.ResourceExists(mdfId))
+                                if (string.IsNullOrEmpty(mdfId) || !this.Connection.ResourceService.ResourceExists(mdfId))
                                 {
                                     issues.Add(new ValidationIssue(fusionApp, ValidationStatus.Error, ValidationStatusCode.Error_Fusion_InvalidMap, string.Format(Strings.ADF_MapInvalidError, mapGroup.id)));
                                 }
@@ -115,7 +120,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                         foreach (var mdf in mapDefsInGroup)
                         {
                             var wkt = mdf.CoordinateSystem;
-                            var csCode = resource.CurrentConnection.CoordinateSystemCatalog.ConvertWktToCoordinateSystemCode(wkt);
+                            var csCode = this.Connection.CoordinateSystemCatalog.ConvertWktToCoordinateSystemCode(wkt);
                             if (csCode.ToUpper() != "WGS84.PSEUDOMERCATOR") //NOXLATE
                             {
                                 issues.Add(new ValidationIssue(resource, ValidationStatus.Warning, ValidationStatusCode.Warning_Fusion_MapCoordSysIncompatibleWithCommericalLayers, string.Format(Strings.ADF_MapWithIncompatibleCommericalCs, mdf.ResourceID)));
@@ -199,7 +204,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <value></value>
         public ResourceTypeDescriptor SupportedResourceAndVersion
         {
-            get { return new ResourceTypeDescriptor(OSGeo.MapGuide.MaestroAPI.ResourceTypes.ApplicationDefinition.ToString(), "1.0.0"); }
+            get { return new ResourceTypeDescriptor(ResourceTypes.ApplicationDefinition.ToString(), "1.0.0"); }
         }
     }
 }

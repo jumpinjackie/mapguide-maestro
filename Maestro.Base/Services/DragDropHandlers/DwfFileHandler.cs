@@ -45,7 +45,7 @@ namespace Maestro.Base.Services.DragDropHandlers
             {
                 var wb = Workbench.Instance;
                 var exp = wb.ActiveSiteExplorer;
-                var ds = ObjectFactory.CreateDrawingSource(conn);
+                var ds = ObjectFactory.CreateDrawingSource();
 
                 string fileName = Path.GetFileName(file);
                 string resName = Path.GetFileNameWithoutExtension(file);
@@ -64,12 +64,12 @@ namespace Maestro.Base.Services.DragDropHandlers
 
                 using (var stream = File.Open(file, FileMode.Open))
                 {
-                    ds.SetResourceData(fileName, OSGeo.MapGuide.ObjectModels.Common.ResourceDataType.File, stream);
+                    conn.ResourceService.SetResourceData(ds.ResourceID, fileName, OSGeo.MapGuide.ObjectModels.Common.ResourceDataType.File, stream);
                 }
 
-                ds.RegenerateSheetList();
+                ds.RegenerateSheetList(conn);
                 conn.ResourceService.SaveResource(ds); //Need to re-save for the next call to work
-                ds.UpdateExtents();
+                ds.UpdateExtents(conn);
 
                 return true;
             }

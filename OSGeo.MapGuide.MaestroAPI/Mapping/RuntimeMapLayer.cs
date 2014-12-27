@@ -24,6 +24,7 @@ using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Serialization;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
@@ -315,7 +316,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             try
             {
                 var fs = (IFeatureSource)this.Parent.ResourceService.GetResource(vl.ResourceId);
-                var cls = fs.GetClass(vl.FeatureName);
+                var cls = this.Parent.FeatureService.GetClassDefinition(fs.ResourceID, vl.FeatureName);
                 if (cls == null)
                     throw new Exception(string.Format(Strings.ERR_CLASS_NOT_FOUND, vl.FeatureName));
 
