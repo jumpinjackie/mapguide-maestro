@@ -233,9 +233,18 @@ namespace OSGeo.MapGuide.MaestroAPI
             return EncodeParameters(param, true);
         }
 
+        static string UrlEncode(string name)
+        {
+            if (name == null)
+                return string.Empty;
+            return System.Uri.EscapeDataString(name);
+        }
+
         private string EncodeParameter(string name, string value)
         {
-            return System.Web.HttpUtility.UrlEncode(name) + "=" + System.Web.HttpUtility.UrlEncode(value);
+            if (name == null)
+                return string.Empty;
+            return UrlEncode(name) + "=" + UrlEncode(value);
         }
 
         public string GetMapDWF(string id)

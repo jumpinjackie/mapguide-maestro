@@ -1155,6 +1155,7 @@ namespace MaestroAPITests
         {
             //Create a 200 layer, 50 group map. This is not part of the benchmark
             var mdf = Utility.CreateMapDefinition(_conn, "LargeMap");
+            mdf.ResourceID = "Library://UnitTests/LargeMapTest/LargeMap.MapDefinition";
             string root = "Library://UnitTests/LargeMapTest/";
 
             //We have to create 200 unique layer definitions (same content) otherwise only one GetResourceContent
