@@ -1753,11 +1753,11 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
-        internal string DescribeRuntimeMap(string mapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight)
+        internal string DescribeRuntimeMap(string mapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight, string targetVersion = "2.6.0")
         {
             NameValueCollection param = new NameValueCollection();
             param.Add("OPERATION", "DESCRIBERUNTIMEMAP");
-            param.Add("VERSION", "2.6.0");
+            param.Add("VERSION", targetVersion);
             param.Add("SESSION", m_sessionID);
             param.Add("MAPNAME", mapName);
             param.Add("REQUESTEDFEATURES", requestedFeatures.ToString());
@@ -1769,11 +1769,11 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
-        internal string CreateRuntimeMap(string mapDefinition, string targetMapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight)
+        internal string CreateRuntimeMap(string mapDefinition, string targetMapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight, string targetVersion = "2.6.0")
         {
             NameValueCollection param = new NameValueCollection();
             param.Add("OPERATION", "CREATERUNTIMEMAP");
-            param.Add("VERSION", "2.6.0");
+            param.Add("VERSION", targetVersion);
             param.Add("SESSION", m_sessionID);
             param.Add("MAPDEFINITION", mapDefinition);
             param.Add("TARGETMAPNAME", targetMapName);

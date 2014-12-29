@@ -1984,21 +1984,41 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         internal IRuntimeMapInfo DescribeRuntimeMap(string mapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight)
         {
-            var req = m_reqBuilder.DescribeRuntimeMap(mapName, requestedFeatures, iconsPerScaleRange, iconFormat, iconWidth, iconHeight);
-            using (var s = this.OpenRead(req))
+            if (m_siteVersion >= new Version(3, 0))
             {
-                var info = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.RuntimeMap.v2_6_0.RuntimeMap>(s);
-                return info;
+                var req = m_reqBuilder.DescribeRuntimeMap(mapName, requestedFeatures, iconsPerScaleRange, iconFormat, iconWidth, iconHeight, "3.0.0");
+                using (var s = this.OpenRead(req))
+                {
+                    return this.DeserializeObject<OSGeo.MapGuide.ObjectModels.RuntimeMap.v3_0_0.RuntimeMap>(s);
+                }
+            }
+            else
+            {
+                var req = m_reqBuilder.DescribeRuntimeMap(mapName, requestedFeatures, iconsPerScaleRange, iconFormat, iconWidth, iconHeight);
+                using (var s = this.OpenRead(req))
+                {
+                    return this.DeserializeObject<OSGeo.MapGuide.ObjectModels.RuntimeMap.v2_6_0.RuntimeMap>(s);
+                }
             }
         }
 
         internal IRuntimeMapInfo CreateRuntimeMap(string mapDefinition, string targetMapName, int requestedFeatures, int iconsPerScaleRange, string iconFormat, int iconWidth, int iconHeight)
         {
-            var req = m_reqBuilder.CreateRuntimeMap(mapDefinition, targetMapName, requestedFeatures, iconsPerScaleRange, iconFormat, iconWidth, iconHeight);
-            using (var s = this.OpenRead(req))
+            if (m_siteVersion >= new Version(3, 0))
             {
-                var info = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.RuntimeMap.v2_6_0.RuntimeMap>(s);
-                return info;
+                var req = m_reqBuilder.CreateRuntimeMap(mapDefinition, targetMapName, requestedFeatures, iconsPerScaleRange, iconFormat, iconWidth, iconHeight, "3.0.0");
+                using (var s = this.OpenRead(req))
+                {
+                    return this.DeserializeObject<OSGeo.MapGuide.ObjectModels.RuntimeMap.v3_0_0.RuntimeMap>(s);
+                }
+            }
+            else
+            {
+                var req = m_reqBuilder.CreateRuntimeMap(mapDefinition, targetMapName, requestedFeatures, iconsPerScaleRange, iconFormat, iconWidth, iconHeight);
+                using (var s = this.OpenRead(req))
+                {
+                    return this.DeserializeObject<OSGeo.MapGuide.ObjectModels.RuntimeMap.v2_6_0.RuntimeMap>(s);
+                }
             }
         }
 

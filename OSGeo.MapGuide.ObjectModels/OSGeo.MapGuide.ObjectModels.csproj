@@ -140,6 +140,9 @@
     <Compile Include="..\Generated\RuntimeMap-2.6.0.designer.cs">
       <Link>RuntimeMap\v2_6_0\RuntimeMap-2.6.0.designer.cs</Link>
     </Compile>
+    <Compile Include="..\Generated\RuntimeMap-3.0.0.designer.cs">
+      <Link>RuntimeMap\v3_0_0\RuntimeMap-3.0.0.designer.cs</Link>
+    </Compile>
     <Compile Include="..\Generated\SiteInformation-1.0.0.designer.cs">
       <Link>Common\SiteInformation-1.0.0.designer.cs</Link>
     </Compile>
@@ -259,6 +262,7 @@
     <Compile Include="ResourceTypes.cs" />
     <Compile Include="RuntimeMap\RuntimeMapInterfaces.cs" />
     <Compile Include="RuntimeMap\v2_6_0\RuntimeMapImpl.cs" />
+    <Compile Include="RuntimeMap\v3_0_0\RuntimeMapImpl.cs" />
     <Compile Include="Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -104,6 +104,18 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap
     }
 
     /// <summary>
+    /// Describes the structure of a Runtime Map. Based on RuntimeMap v3.0.0 schema
+    /// </summary>
+    public interface IRuntimeMapInfo2 : IRuntimeMapInfo
+    {
+        string TileSetDefinition { get; set; }
+
+        int? TileWidth { get; set; }
+
+        int? TileHeight { get; set; }
+    }
+
+    /// <summary>
     /// Represents coordinate system information for a Runtime Map
     /// </summary>
     public interface ICoordinateSystemInfo

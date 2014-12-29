@@ -263,6 +263,11 @@
       <Link>Schemas\MapDefinition-2.4.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\MapDefinition-3.0.0.xsd">
+      <Link>Schemas\MapDefinition-3.0.0.xsd</Link>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\PlatformCommon-1.0.0.xsd">
       <Link>Schemas\PlatformCommon-1.0.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -317,6 +322,11 @@
     </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\RuntimeMap-2.6.0.xsd">
       <Link>Schemas\RuntimeMap-2.6.0.xsd</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\RuntimeMap-3.0.0.xsd">
+      <Link>Schemas\RuntimeMap-3.0.0.xsd</Link>
+      <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\SelectAggregate-1.0.0.xsd">
@@ -375,6 +385,16 @@
       <Link>Schemas\SymbolLibrary-1.0.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\TileProviderList-3.0.0.xsd">
+      <Link>Schemas\TileProviderList-3.0.0.xsd</Link>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\TileSetDefinition-3.0.0.xsd">
+      <Link>Schemas\TileSetDefinition-3.0.0.xsd</Link>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\Types-1.0.0.xsd">
       <Link>Schemas\Types-1.0.0.xsd</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -405,6 +425,11 @@
     </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WebLayout-1.1.0.xsd">
       <Link>Schemas\WebLayout-1.1.0.xsd</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WebLayout-2.4.0.xsd">
+      <Link>Schemas\WebLayout-2.4.0.xsd</Link>
+      <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="..\OSGeo.MapGuide.MaestroAPI\Schemas\WebLayout-2.6.0.xsd">

@@ -117,6 +117,22 @@ namespace MaestroAPITests
 
             resSvc.SetResourceXmlData("Library://UnitTests/Data/SpaceShip.DrawingSource", File.OpenRead("TestData/DrawingService/SpaceShipDrawingSource.xml"));
             resSvc.SetResourceData("Library://UnitTests/Data/SpaceShip.DrawingSource", "SpaceShip.dwf", ResourceDataType.File, File.OpenRead("TestData/DrawingService/SpaceShip.dwf"));
+
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                resSvc.SetResourceXmlData("Library://UnitTests/Data/RoadCenterLines.FeatureSource", File.OpenRead("TestData/TileService/UT_RoadCenterLines.fs"));
+                resSvc.SetResourceData("Library://UnitTests/Data/RoadCenterLines.FeatureSource", "RoadCenterLines.sdf", ResourceDataType.File, File.OpenRead("TestData/TileService/UT_RoadCenterLines.sdf"));
+
+                resSvc.SetResourceXmlData("Library://UnitTests/Layers/RoadCenterLines.LayerDefinition", File.OpenRead("TestData/TileService/UT_RoadCenterLines.ldf"));
+
+                resSvc.SetResourceXmlData("Library://UnitTests/Data/VotingDistricts.FeatureSource", File.OpenRead("TestData/TileService/UT_VotingDistricts.fs"));
+                resSvc.SetResourceData("Library://UnitTests/Data/VotingDistricts.FeatureSource", "VotingDistricts.sdf", ResourceDataType.File, File.OpenRead("TestData/TileService/UT_VotingDistricts.sdf"));
+
+                resSvc.SetResourceXmlData("Library://UnitTests/Layers/VotingDistricts.LayerDefinition", File.OpenRead("TestData/TileService/UT_VotingDistricts.ldf"));
+
+                resSvc.SetResourceXmlData("Library://UnitTests/TileSets/Sheboygan.TileSetDefinition", File.OpenRead("TestData/TileService/UT_BaseMap.tsd"));
+                resSvc.SetResourceXmlData("Library://UnitTests/Maps/SheboyganLinked.MapDefinition", File.OpenRead("TestData/TileService/UT_LinkedTileSet.mdf"));
+            }
         }
 
         [TestFixtureTearDown]
@@ -1341,6 +1357,11 @@ namespace MaestroAPITests
             create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
 
             MapModel.IRuntimeMapInfo rtInfo = create.Execute();
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+            }
+
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.IsNullOrEmpty(rtInfo.IconMimeType);
             Assert.NotNull(rtInfo.Extents);
@@ -1354,6 +1375,10 @@ namespace MaestroAPITests
             create.MapDefinition = "Library://UnitTests/Maps/SheboyganTiled.MapDefinition";
 
             rtInfo = create.Execute();
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+            }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.IsNullOrEmpty(rtInfo.IconMimeType);
             Assert.NotNull(rtInfo.Extents);
@@ -1370,6 +1395,10 @@ namespace MaestroAPITests
             create.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups);
 
             rtInfo = create.Execute();
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+            }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.IsNullOrEmpty(rtInfo.IconMimeType);
             Assert.NotNull(rtInfo.Extents);
@@ -1389,6 +1418,10 @@ namespace MaestroAPITests
             create.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons);
 
             rtInfo = create.Execute();
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+            }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.IsNotNullOrEmpty(rtInfo.IconMimeType);
             Assert.NotNull(rtInfo.Extents);
@@ -1423,6 +1456,10 @@ namespace MaestroAPITests
             create.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons | RuntimeMapRequestedFeatures.FeatureSourceInformation);
 
             rtInfo = create.Execute();
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+            }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.IsNotNullOrEmpty(rtInfo.IconMimeType);
             Assert.NotNull(rtInfo.Extents);
@@ -1453,6 +1490,20 @@ namespace MaestroAPITests
             }
             Assert.NotNull(rtInfo.Groups);
             Assert.True(rtInfo.Groups.Count == 0);
+
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+                create.MapDefinition = "Library://UnitTests/Maps/SheboyganLinked.MapDefinition";
+                create.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons | RuntimeMapRequestedFeatures.FeatureSourceInformation);
+
+                rtInfo = create.Execute();
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+                MapModel.IRuntimeMapInfo2 rtInfo2 = (MapModel.IRuntimeMapInfo2)rtInfo;
+                Assert.AreEqual("Library://UnitTests/TileSets/Sheboygan.TileSetDefinition", rtInfo2.TileSetDefinition);
+                Assert.True(rtInfo2.TileWidth.HasValue);
+                Assert.True(rtInfo2.TileHeight.HasValue);
+            }
         }
 
         [Test]
@@ -1472,10 +1523,17 @@ namespace MaestroAPITests
             create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
 
             MapModel.IRuntimeMapInfo map = create.Execute();
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(map);
+            }
             IDescribeRuntimeMap describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
             describe.Name = map.Name;
             MapModel.IRuntimeMapInfo rtInfo = describe.Execute();
-
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+            }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.IsNullOrEmpty(rtInfo.IconMimeType);
             Assert.NotNull(rtInfo.Extents);
@@ -1489,10 +1547,17 @@ namespace MaestroAPITests
             create.MapDefinition = "Library://UnitTests/Maps/SheboyganTiled.MapDefinition";
 
             map = create.Execute();
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(map);
+            }
             describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
             describe.Name = map.Name;
             rtInfo = describe.Execute();
-
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+            }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.IsNullOrEmpty(rtInfo.IconMimeType);
             Assert.NotNull(rtInfo.Extents);
@@ -1508,11 +1573,18 @@ namespace MaestroAPITests
             create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
 
             map = create.Execute();
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(map);
+            }
             describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
             describe.Name = map.Name;
             describe.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups);
             rtInfo = describe.Execute();
-
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+            }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.IsNullOrEmpty(rtInfo.IconMimeType);
             Assert.NotNull(rtInfo.Extents);
@@ -1531,11 +1603,18 @@ namespace MaestroAPITests
             create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
 
             map = create.Execute();
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(map);
+            }
             describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
             describe.Name = map.Name;
             describe.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons);
             rtInfo = describe.Execute();
-
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+            }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.IsNotNullOrEmpty(rtInfo.IconMimeType);
             Assert.NotNull(rtInfo.Extents);
@@ -1569,11 +1648,18 @@ namespace MaestroAPITests
             create.MapDefinition = "Library://UnitTests/Maps/Sheboygan.MapDefinition";
 
             map = create.Execute();
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(map);
+            }
             describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
             describe.Name = map.Name;
             describe.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons | RuntimeMapRequestedFeatures.FeatureSourceInformation);
             rtInfo = describe.Execute();
-
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+            }
             Assert.NotNull(rtInfo.CoordinateSystem);
             Assert.IsNotNullOrEmpty(rtInfo.IconMimeType);
             Assert.NotNull(rtInfo.Extents);
@@ -1604,6 +1690,30 @@ namespace MaestroAPITests
             }
             Assert.NotNull(rtInfo.Groups);
             Assert.True(rtInfo.Groups.Count == 0);
+
+            if (_conn.SiteVersion >= new Version(3, 0))
+            {
+                create = (ICreateRuntimeMap)_conn.CreateCommand((int)CommandType.CreateRuntimeMap);
+                create.MapDefinition = "Library://UnitTests/Maps/SheboyganLinked.MapDefinition";
+                create.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons | RuntimeMapRequestedFeatures.FeatureSourceInformation);
+
+                rtInfo = create.Execute();
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+                MapModel.IRuntimeMapInfo2 rtInfo2 = (MapModel.IRuntimeMapInfo2)rtInfo;
+                Assert.AreEqual("Library://UnitTests/TileSets/Sheboygan.TileSetDefinition", rtInfo2.TileSetDefinition);
+                Assert.True(rtInfo2.TileWidth.HasValue);
+                Assert.True(rtInfo2.TileHeight.HasValue);
+
+                describe = (IDescribeRuntimeMap)_conn.CreateCommand((int)CommandType.DescribeRuntimeMap);
+                describe.Name = rtInfo.Name;
+                describe.RequestedFeatures = (int)(RuntimeMapRequestedFeatures.LayersAndGroups | RuntimeMapRequestedFeatures.Icons | RuntimeMapRequestedFeatures.FeatureSourceInformation);
+                rtInfo = describe.Execute();
+                Assert.IsInstanceOf<MapModel.IRuntimeMapInfo2>(rtInfo);
+                rtInfo2 = (MapModel.IRuntimeMapInfo2)rtInfo;
+                Assert.AreEqual("Library://UnitTests/TileSets/Sheboygan.TileSetDefinition", rtInfo2.TileSetDefinition);
+                Assert.True(rtInfo2.TileWidth.HasValue);
+                Assert.True(rtInfo2.TileHeight.HasValue);
+            }
         }
     }
 
