@@ -196,6 +196,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             {
                 _mapSvc = (IMappingService)conn.GetService((int)ServiceType.Mapping);
             }
+            else
+            {
+                throw new NotSupportedException();
+            }
             if (Array.IndexOf(conn.Capabilities.SupportedCommands, (int)CommandType.GetResourceContents) >= 0)
             {
                 _getRes = (IGetResourceContents)conn.CreateCommand((int)CommandType.GetResourceContents);
@@ -270,6 +274,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         internal RuntimeMap(IServerConnection conn, IMapDefinition mdf, double metersPerUnit, bool suppressErrors)
             : this(conn)
         {
+            Check.ArgumentNotNull(conn, "conn"); //NOXLATE
+            Check.ArgumentNotNull(mdf, "mdf"); //NOXLATE
+            Check.ArgumentNotNull(mdf.ResourceID, "mdf.ResourceID"); //NOXLATE
             this.MetersPerUnit = metersPerUnit;
 
             this.MapDefinition = mdf.ResourceID;
@@ -1112,7 +1119,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="id">The id.</param>
         /// <returns></returns>
-        [Obsolete("Use the Layers property instead")] //NOXLATE
         public RuntimeMapLayer GetLayerByObjectId(string id)
         {
             return this.Layers.GetByObjectId(id);
@@ -1142,89 +1148,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         protected Dictionary<string, ILayerDefinition> layerDefinitionCache = new Dictionary<string, ILayerDefinition>();
 
         /// <summary>
-        /// Adds the layer to the map. Does nothing if the layer instance is already in the map.
-        /// </summary>
-        /// <param name="layer"></param>
-        /// <returns></returns>
-        [Obsolete("Use the Layers property instead")] //NOXLATE
-        internal void AddLayer(RuntimeMapLayer layer)
-        {
-            this.Layers.Add(layer);
-        }
-
-        /// <summary>
-        /// Inserts the specified layer at the specified index. Does nothing
-        /// if the layer instance is already in the map.
-        /// </summary>
-        /// <param name="index"></param>
-        /// <param name="layer"></param>
-        [Obsolete("Use the Layers property instead")] //NOXLATE
-        public void InsertLayer(int index, RuntimeMapLayer layer)
-        {
-            this.Layers.Insert(index, layer);
-        }
-
-        /// <summary>
-        /// Sets the layer to the specified index
-        /// </summary>
-        /// <param name="index">The index.</param>
-        /// <param name="layer">The layer.</param>
-        [Obsolete("Use the Layers property instead")] //NOXLATE
-        public void SetLayerIndex(int index, RuntimeMapLayer layer)
-        {
-            this.Layers[index] = layer;
-        }
-
-        /// <summary>
-        /// Removes the layer at the specified index
-        /// </summary>
-        /// <param name="index">The index.</param>
-        [Obsolete("Use the Layers property instead")] //NOXLATE
-        public void RemoveLayerAt(int index)
-        {
-            this.Layers.RemoveAt(index);
-        }
-
-        /// <summary>
-        /// Gets the index of the specified layer
-        /// </summary>
-        /// <param name="layer"></param>
-        /// <returns></returns>
-        [Obsolete("Use the Layers property instead")] //NOXLATE
-        public int IndexOfLayer(RuntimeMapLayer layer)
-        {
-            return this.Layers.IndexOf(layer);
-        }
-
-        /// <summary>
         /// Gets the index of the first layer whose name matches the specified name
         /// </summary>
         /// <param name="layerName"></param>
         /// <returns></returns>
-        [Obsolete("Use the Layers property instead")] //NOXLATE
         public int IndexOfLayer(string layerName)
         {
             Check.NotEmpty(layerName, "layerName"); //NOXLATE
 
             var layer = this.Layers[layerName];
             return this.Layers.IndexOf(layer);
-        }
-
-        /// <summary>
-        /// Creates a new runtime layer from a layer definition. The created layer needs
-        /// to be added to the map.
-        /// </summary>
-        /// <param name="layerDefinitionId"></param>
-        /// <param name="group"></param>
-        /// <returns></returns>
-        [Obsolete("Use RuntimeMapLayer constructor")] //NOXLATE
-        public RuntimeMapLayer CreateLayer(string layerDefinitionId, RuntimeMapGroup group)
-        {
-            ILayerDefinition ldf = GetLayerDefinition(layerDefinitionId);
-            var layer = new RuntimeMapLayer(this, ldf, true);
-            if (group != null)
-                layer.Group = group.Name;
-            return layer;
         }
 
         private ILayerDefinition GetLayerDefinition(string layerDefinitionId)
@@ -1255,28 +1188,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             var group = _mapSvc.CreateMapGroup(this, name);
             this.Groups.Add(group);
             return group;
-        }
-
-        /// <summary>
-        /// Removes the specified layer.
-        /// </summary>
-        /// <param name="layer">The layer.</param>
-        [Obsolete("Use the Layers property instead")] //NOXLATE
-        public void RemoveLayer(RuntimeMapLayer layer)
-        {
-            Check.NotNull(layer, "layer"); //NOXLATE
-            this.Layers.Remove(layer);
-        }
-
-        /// <summary>
-        /// Removes the specified group.
-        /// </summary>
-        /// <param name="group">The group.</param>
-        [Obsolete("Use the Groups property instead")] //NOXLATE
-        public void RemoveGroup(RuntimeMapGroup group)
-        {
-            Check.NotNull(group, "group"); //NOXLATE
-            this.Groups.Remove(group);
         }
 
         /// <summary>
@@ -1402,18 +1313,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             this.Selection.Serialize(serializer);
             ms.Position = 0;
             this.ResourceService.SetResourceData(selectionID, "RuntimeData", ResourceDataType.Stream, ms); //NOXLATE
-        }
-
-        /// <summary>
-        /// Gets the layer by its specified name
-        /// </summary>
-        /// <param name="name">The name.</param>
-        /// <returns></returns>
-        [Obsolete("Use the indexer of the Layer property instead")] //NOXLATE
-        public RuntimeMapLayer GetLayerByName(string name)
-        {
-            Check.NotEmpty(name, "name"); //NOXLATE
-            return this.Layers[name];
         }
 
         #region change tracking

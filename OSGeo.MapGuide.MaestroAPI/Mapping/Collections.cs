@@ -154,7 +154,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             {
                 if (_values[index] != null)
                     RemoveAt(index);
-                _values[index] = value;
+
+                if (index < _values.Count - 1)
+                    _values[index] = value;
+                else
+                    _values.Add(value);
                 OnCollectionChanged();
             }
         }
