@@ -43,6 +43,7 @@
         <Class id="VectorLayerDefinition240" class="Maestro.AddIn.ExtendedObjectModels.Templates.VectorLayer240ItemTemplate" />
         <Class id="MapDefinition230" class="Maestro.AddIn.ExtendedObjectModels.Templates.MapDefinition230ItemTemplate" />
         <Class id="MapDefinition240" class="Maestro.AddIn.ExtendedObjectModels.Templates.MapDefinition240ItemTemplate" />
+        <Class id="MapDefinition300" class="Maestro.AddIn.ExtendedObjectModels.Templates.MapDefinition300ItemTemplate" />
         <Class id="WatermarkDefinitionSimple230" class="Maestro.AddIn.ExtendedObjectModels.Templates.WatermarkDefinitionSimple230ItemTemplate" />
         <Class id="WatermarkDefinitionSimple240" class="Maestro.AddIn.ExtendedObjectModels.Templates.WatermarkDefinitionSimple240ItemTemplate" />
         <Class id="SimpleSymbolDefinition110" class="Maestro.AddIn.ExtendedObjectModels.Templates.SimpleSymbolDefinitionItem110Template" />

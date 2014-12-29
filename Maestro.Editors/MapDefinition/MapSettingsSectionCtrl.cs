@@ -71,6 +71,9 @@ namespace Maestro.Editors.MapDefinition
                     case TileSourceType.Inline:
                         rdInline.Checked = true;
                         break;
+                    default: //Default to external
+                        rdExternal.Checked = true;
+                        break;
                 }
             }
 

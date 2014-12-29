@@ -28,6 +28,7 @@ using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Tile;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -168,6 +169,11 @@ namespace Maestro.Editors.MapDefinition
                         InitInlineModel();
                     }
                     else if (mdf3.TileSourceType == TileSourceType.External)
+                    {
+                        tabs.TabPages.Add(TAB_TILE_SET);
+                        InitExternalModel();
+                    }
+                    else //Default to external
                     {
                         tabs.TabPages.Add(TAB_TILE_SET);
                         InitExternalModel();
@@ -2115,6 +2121,11 @@ namespace Maestro.Editors.MapDefinition
                 if (picker.ShowDialog() == DialogResult.OK )
                 {
                     txtTileSet.Text = picker.ResourceID;
+
+                    var tsd = (ITileSetDefinition)_edSvc.CurrentConnection.ResourceService.GetResource(picker.ResourceID);
+                    string coordSys = tsd.GetDefaultCoordinateSystem();
+                    if (!string.IsNullOrEmpty(coordSys))
+                        _map.CoordinateSystem = coordSys;
                 }
             }
         }

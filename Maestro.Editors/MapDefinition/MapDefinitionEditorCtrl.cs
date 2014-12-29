@@ -21,6 +21,8 @@
 #endregion Disclaimer / License
 
 using Maestro.Editors.WatermarkDefinition;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System.Windows.Forms;
 
@@ -42,6 +44,35 @@ namespace Maestro.Editors.MapDefinition
         private IMapDefinition _map;
         private IEditorService _edSvc;
 
+        class LayerExtentCalculator : ILayerExtentCalculator
+        {
+            private IServerConnection _conn;
+
+            public LayerExtentCalculator(IServerConnection conn)
+            {
+                _conn = conn;
+            }
+
+            public LayerExtent GetLayerExtent(string resourceID, string mapCoordSys)
+            {
+                var ldf = (ILayerDefinition)_conn.ResourceService.GetResource(resourceID);
+                string csWkt;
+                var env = ldf.GetSpatialExtent(_conn, true, out csWkt);
+                if (env != null)
+                {
+                    if (!string.IsNullOrEmpty(mapCoordSys) && csWkt != mapCoordSys)
+                        env = Utility.TransformEnvelope(env, csWkt, mapCoordSys);
+
+                    return new LayerExtent()
+                    {
+                        LayerCoordinateSystem = csWkt,
+                        Extent = env
+                    };
+                }
+                return null;
+            }
+        }
+
         /// <summary>
         /// Sets the initial state of this editor and sets up any databinding
         /// within such that user interface changes will propagate back to the
@@ -56,6 +87,8 @@ namespace Maestro.Editors.MapDefinition
 
             mapSettingsCtrl.Bind(service);
             mapLayersCtrl.Bind(service);
+
+            _map.ExtentCalculator = new LayerExtentCalculator(_edSvc.CurrentConnection);
 
             var mp2 = _map as IMapDefinition2;
             if (mp2 != null)
