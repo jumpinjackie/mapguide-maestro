@@ -48,6 +48,7 @@ using Lp110 = OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_1_0;
 using Lp220 = OSGeo.MapGuide.ObjectModels.LoadProcedure.v2_2_0;
 using Mdf230 = OSGeo.MapGuide.ObjectModels.MapDefinition.v2_3_0;
 using Mdf240 = OSGeo.MapGuide.ObjectModels.MapDefinition.v2_4_0;
+using Mdf300 = OSGeo.MapGuide.ObjectModels.MapDefinition.v3_0_0;
 using Sym110 = OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0;
 using Sym240 = OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0;
 using Wdf230 = OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_3_0;
@@ -278,6 +279,13 @@ namespace OSGeo.MapGuide.ObjectModels
                 new ResourceSerializationCallback(Mdf240.MdfEntryPoint.Serialize),
                 new ResourceDeserializationCallback(Mdf240.MdfEntryPoint.Deserialize));
             ObjectFactory.RegisterMapDefinitionFactoryMethod(new Version(2, 4, 0), new MapDefinitionCreatorFunc(Mdf240.MdfEntryPoint.CreateDefault));
+
+            //Map Definition 3.0.0
+            ResourceTypeRegistry.RegisterResource(
+                new ResourceTypeDescriptor(ResourceTypes.MapDefinition.ToString(), "3.0.0"),
+                new ResourceSerializationCallback(Mdf300.MdfEntryPoint.Serialize),
+                new ResourceDeserializationCallback(Mdf300.MdfEntryPoint.Deserialize));
+            ObjectFactory.RegisterMapDefinitionFactoryMethod(new Version(3, 0, 0), new MapDefinitionCreatorFunc(Mdf300.MdfEntryPoint.CreateDefault));
 
             //Watermark Definition 2.3.0
             ResourceTypeRegistry.RegisterResource(

@@ -119,6 +119,9 @@
     <Compile Include="..\Generated\MapDefinition-2.4.0.designer.cs">
       <Link>MapDefinition\v2_4_0\MapDefinition-2.4.0.designer.cs</Link>
     </Compile>
+    <Compile Include="..\Generated\MapDefinition-3.0.0.designer.cs">
+      <Link>MapDefinition\v3_0_0\MapDefinition-3.0.0.designer.cs</Link>
+    </Compile>
     <Compile Include="..\Generated\PrintLayout-1.0.0.designer.cs">
       <Link>PrintLayout\v1.0.0\PrintLayout-1.0.0.designer.cs</Link>
     </Compile>
@@ -251,6 +254,7 @@
     <Compile Include="MapDefinition\MapDefinitionInterfaces.cs" />
     <Compile Include="MapDefinition\v2_3_0\MapDefinitionImpl.cs" />
     <Compile Include="MapDefinition\v2_4_0\MapDefinitionImpl.cs" />
+    <Compile Include="MapDefinition\v3_0_0\MapDefinitionImpl.cs" />
     <Compile Include="ObjectFactory.cs" />
     <Compile Include="PrintLayout\v1.0.0\PrintLayoutImpl.cs" />
     <Compile Include="PrintLayout\PrintLayoutInterfaces.cs" />

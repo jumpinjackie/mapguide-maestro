@@ -281,6 +281,41 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
     }
 
     /// <summary>
+    /// Represents a Map Definition with support for linking to tile sets. Corresponds to schema version 3.0.0
+    /// </summary>
+    public interface IMapDefinition3 : IMapDefinition2
+    {
+        /// <summary>
+        /// Gets or sets the Tile Set Definition. When setting a tile set, any existing base map settings are removed
+        /// </summary>
+        string TileSetDefinitionID { get; set; }
+
+        /// <summary>
+        /// Gets the type of tile source
+        /// </summary>
+        TileSourceType TileSourceType { get; }
+    }
+
+    /// <summary>
+    /// Defines the type of tile source
+    /// </summary>
+    public enum TileSourceType
+    {
+        /// <summary>
+        /// The Map Definition links to an external tile set
+        /// </summary>
+        External,
+        /// <summary>
+        /// The tile layer/group settings are defined within the Map Definition
+        /// </summary>
+        Inline,
+        /// <summary>
+        /// No tile layer/group settings are defined
+        /// </summary>
+        None
+    }
+
+    /// <summary>
     /// Extension methdo class
     /// </summary>
     public static class BaseMapDefinitionExtensions

@@ -62,7 +62,7 @@ namespace OSGeo.MapGuide.ObjectModel.Tests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-        ///&lt;ApplicationDefinition&gt;
+        ///&lt;ApplicationDefinition xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xsi:noNamespaceSchemaLocation=&quot;ApplicationDefinition-1.0.0.xsd&quot;&gt;
         ///  &lt;Title&gt;Title1&lt;/Title&gt;
         ///  &lt;TemplateUrl&gt;TemplateUrl1&lt;/TemplateUrl&gt;
         ///  &lt;MapSet&gt;
@@ -74,13 +74,7 @@ namespace OSGeo.MapGuide.ObjectModel.Tests.Properties {
         ///      &lt;/InitialView&gt;
         ///      &lt;Map&gt;
         ///        &lt;Type&gt;Type1&lt;/Type&gt;
-        ///        &lt;SingleTile&gt;SingleTile1&lt;/SingleTile&gt;
-        ///        &lt;Extension /&gt;
-        ///      &lt;/Map&gt;
-        ///      &lt;Map&gt;
-        ///        &lt;Type&gt;Type2&lt;/Type&gt;
-        ///        &lt;SingleTile&gt;SingleTile2&lt;/SingleTile&gt;
-        ///   [rest of string was truncated]&quot;;.
+        ///        &lt; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string AppDef_1_0_0 {
             get {
@@ -131,6 +125,18 @@ namespace OSGeo.MapGuide.ObjectModel.Tests.Properties {
         internal static string FeatureSource_1_0_0 {
             get {
                 return ResourceManager.GetString("FeatureSource_1_0_0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+        ///&lt;MapDefinition xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&quot;MapDefinition-3.0.0.xsd&quot; version=&quot;3.0.0&quot;&gt;
+        ///  &lt;Name&gt;Base Map linked to Tile Set&lt;/Name&gt;
+        ///  &lt;CoordinateSystem&gt;PROJCS[&quot;WGS84.PseudoMercator&quot;,GEOGCS[&quot;LL84&quot;,DATUM[&quot;WGS84&quot;,SPHEROID[&quot;WGS84&quot;,6378137.000,298.25722293]],PRIMEM[&quot;Greenwich&quot;,0],UNIT[&quot;Degree&quot;,0.017453292519943295]],PROJECTION[&quot;Popular Visualisation Pseudo Mercator&quot;],PARAMETER[&quot;false_easting&quot;,0.000],PARAMETER[&quot;false_no [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string UT_LinkedTileSet {
+            get {
+                return ResourceManager.GetString("UT_LinkedTileSet", resourceCulture);
             }
         }
     }
