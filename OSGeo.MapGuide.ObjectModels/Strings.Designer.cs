@@ -468,6 +468,15 @@ namespace OSGeo.MapGuide.ObjectModels {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parameter {0} is not applicable for tile provider {1}.
+        /// </summary>
+        internal static string ParameterNotApplicableForTileProvider {
+            get {
+                return ResourceManager.GetString("ParameterNotApplicableForTileProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Precondition failure: .
         /// </summary>
         internal static string PrecondFailure {
@@ -518,6 +527,15 @@ namespace OSGeo.MapGuide.ObjectModels {
         internal static string UnknownSymbolDefVersion {
             get {
                 return ResourceManager.GetString("UnknownSymbolDefVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown Tile Set Definition version:.
+        /// </summary>
+        internal static string UnknownTileDefinitionVersion {
+            get {
+                return ResourceManager.GetString("UnknownTileDefinitionVersion", resourceCulture);
             }
         }
         

@@ -2718,4 +2718,10 @@
   &lt;Extension /&gt;
 &lt;/ApplicationDefinition&gt;</value>
   </data>
+  <data name="UnknownTileDefinitionVersion" xml:space="preserve">
+    <value>Unknown Tile Set Definition version:</value>
+  </data>
+  <data name="ParameterNotApplicableForTileProvider" xml:space="preserve">
+    <value>Parameter {0} is not applicable for tile provider {1}</value>
+  </data>
 </root>

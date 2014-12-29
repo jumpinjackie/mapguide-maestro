@@ -100,6 +100,11 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <summary>
         /// A selection for a runtime map
         /// </summary>
-        Selection
+        Selection,
+
+        /// <summary>
+        /// A tile set definition
+        /// </summary>
+        TileSetDefinition
     }
 }

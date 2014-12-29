@@ -31,6 +31,7 @@ using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.PrintLayout;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using OSGeo.MapGuide.ObjectModels.SymbolLibrary;
+using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
@@ -56,46 +57,10 @@ using Wdf240 = OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_4_0;
 using WL110 = OSGeo.MapGuide.ObjectModels.WebLayout.v1_1_0;
 using WL240 = OSGeo.MapGuide.ObjectModels.WebLayout.v2_4_0;
 using WL260 = OSGeo.MapGuide.ObjectModels.WebLayout.v2_6_0;
+using Tsd300 = OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0;
 
 namespace OSGeo.MapGuide.ObjectModels
 {
-    /// <summary>
-    /// Factory method signature for creating layer definitions
-    /// </summary>
-    public delegate ILayerDefinition LayerCreatorFunc(LayerType type);
-
-    /// <summary>
-    /// Factory method signature for creating load procedures
-    /// </summary>
-    public delegate ILoadProcedure LoadProcCreatorFunc();
-
-    /// <summary>
-    /// Factory method signature for creating web layouts
-    /// </summary>
-    public delegate IWebLayout WebLayoutCreatorFunc(string mapDefinitionId);
-
-    /// <summary>
-    /// Factory method signature for creating compound symbol definitions
-    /// </summary>
-    public delegate ICompoundSymbolDefinition CompoundSymbolDefCreatorFunc();
-
-    /// <summary>
-    /// Factory method signature for creating simple symbol definitions
-    /// </summary>
-    public delegate ISimpleSymbolDefinition SimpleSymbolDefCreatorFunc();
-
-    /// <summary>
-    /// Factory method signature for creating watermarks
-    /// </summary>
-    /// <returns></returns>
-    public delegate IWatermarkDefinition WatermarkCreatorFunc(SymbolDefinitionType type);
-
-    /// <summary>
-    /// Factory method signature for creating map definitions
-    /// </summary>
-    /// <returns></returns>
-    public delegate IMapDefinition MapDefinitionCreatorFunc();
-
     /// <summary>
     /// Factory class to create MapGuide resource objects with either pre-defined or
     /// sensible default values. This is recommended over creating the objects directly
@@ -112,23 +77,25 @@ namespace OSGeo.MapGuide.ObjectModels
     /// </summary>
     public class ObjectFactory
     {
-        private static Dictionary<Version, LayerCreatorFunc> _layerFactories;
-        private static Dictionary<LoadType, LoadProcCreatorFunc> _loadProcFactories;
-        private static Dictionary<Version, WebLayoutCreatorFunc> _wlFactories;
-        private static Dictionary<Version, SimpleSymbolDefCreatorFunc> _simpleSymbolFactories;
-        private static Dictionary<Version, CompoundSymbolDefCreatorFunc> _compoundSymbolFactories;
-        private static Dictionary<Version, MapDefinitionCreatorFunc> _mapDefinitionFactories;
-        private static Dictionary<Version, WatermarkCreatorFunc> _watermarkFactories;
+        private static Dictionary<Version, Func<LayerType, ILayerDefinition>> _layerFactories;
+        private static Dictionary<LoadType, Func<ILoadProcedure>> _loadProcFactories;
+        private static Dictionary<Version, Func<string, IWebLayout>> _wlFactories;
+        private static Dictionary<Version, Func<ISimpleSymbolDefinition>> _simpleSymbolFactories;
+        private static Dictionary<Version, Func<ICompoundSymbolDefinition>> _compoundSymbolFactories;
+        private static Dictionary<Version, Func<IMapDefinition>> _mapDefinitionFactories;
+        private static Dictionary<Version, Func<SymbolDefinitionType, IWatermarkDefinition>> _watermarkFactories;
+        private static Dictionary<Version, Func<ITileSetDefinition>> _tileSetDefinitionFactories;
 
         static ObjectFactory()
         {
-            _layerFactories = new Dictionary<Version, LayerCreatorFunc>();
-            _wlFactories = new Dictionary<Version, WebLayoutCreatorFunc>();
-            _loadProcFactories = new Dictionary<LoadType, LoadProcCreatorFunc>();
-            _simpleSymbolFactories = new Dictionary<Version, SimpleSymbolDefCreatorFunc>();
-            _compoundSymbolFactories = new Dictionary<Version, CompoundSymbolDefCreatorFunc>();
-            _mapDefinitionFactories = new Dictionary<Version, MapDefinitionCreatorFunc>();
-            _watermarkFactories = new Dictionary<Version, WatermarkCreatorFunc>();
+            _layerFactories = new Dictionary<Version,Func<LayerType,ILayerDefinition>>();
+            _wlFactories = new Dictionary<Version,Func<string,IWebLayout>>();
+            _loadProcFactories = new Dictionary<LoadType,Func<ILoadProcedure>>();
+            _simpleSymbolFactories = new Dictionary<Version,Func<ISimpleSymbolDefinition>>();
+            _compoundSymbolFactories = new Dictionary<Version,Func<ICompoundSymbolDefinition>>();
+            _mapDefinitionFactories = new Dictionary<Version,Func<IMapDefinition>>();
+            _watermarkFactories = new Dictionary<Version,Func<SymbolDefinitionType,IWatermarkDefinition>>();
+            _tileSetDefinitionFactories = new Dictionary<Version, Func<ITileSetDefinition>>();
 
             Init();
         }
@@ -142,6 +109,7 @@ namespace OSGeo.MapGuide.ObjectModels
             _compoundSymbolFactories.Clear();
             _mapDefinitionFactories.Clear();
             _watermarkFactories.Clear();
+            _tileSetDefinitionFactories.Clear();
             ResourceTypeRegistry.Reset();
             Init();
         }
@@ -150,74 +118,74 @@ namespace OSGeo.MapGuide.ObjectModels
         {
             _layerFactories.Add(
                 new Version(1, 0, 0),
-                new LayerCreatorFunc(OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0.LdfEntryPoint.CreateDefault));
+                OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0.LdfEntryPoint.CreateDefault);
 
             _loadProcFactories.Add(
                 LoadType.Sdf,
-                new LoadProcCreatorFunc(OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0.LoadProcEntryPoint.CreateDefaultSdf));
+                OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0.LoadProcEntryPoint.CreateDefaultSdf);
             _loadProcFactories.Add(
                 LoadType.Shp,
-                new LoadProcCreatorFunc(OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0.LoadProcEntryPoint.CreateDefaultShp));
+                OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0.LoadProcEntryPoint.CreateDefaultShp);
             _loadProcFactories.Add(
                 LoadType.Dwf,
-                new LoadProcCreatorFunc(OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0.LoadProcEntryPoint.CreateDefaultDwf));
+                OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0.LoadProcEntryPoint.CreateDefaultDwf);
 
             _wlFactories.Add(
                 new Version(1, 0, 0),
-                new WebLayoutCreatorFunc(OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0.WebLayoutEntryPoint.CreateDefault));
+                OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0.WebLayoutEntryPoint.CreateDefault);
 
             _compoundSymbolFactories.Add(
                 new Version(1, 0, 0),
-                new CompoundSymbolDefCreatorFunc(OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.CompoundSymbolDefinition.CreateDefault));
+                OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.CompoundSymbolDefinition.CreateDefault);
 
             _simpleSymbolFactories.Add(
                 new Version(1, 0, 0),
-                new SimpleSymbolDefCreatorFunc(OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.SimpleSymbolDefinition.CreateDefault));
+                OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.SimpleSymbolDefinition.CreateDefault);
 
             _mapDefinitionFactories.Add(
                 new Version(1, 0, 0),
-                new MapDefinitionCreatorFunc(OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0.MdfEntryPoint.CreateDefault));
+                OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0.MdfEntryPoint.CreateDefault);
 
             //Layer Definition 1.1.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), "1.1.0"),
-                new ResourceSerializationCallback(Ldf110.LdfEntryPoint.Serialize),
-                new ResourceDeserializationCallback(Ldf110.LdfEntryPoint.Deserialize));
-            ObjectFactory.RegisterLayerFactoryMethod(new Version(1, 1, 0), new LayerCreatorFunc(Ldf110.LdfEntryPoint.CreateDefault));
+                Ldf110.LdfEntryPoint.Serialize,
+                Ldf110.LdfEntryPoint.Deserialize);
+            ObjectFactory.RegisterLayerFactoryMethod(new Version(1, 1, 0), Ldf110.LdfEntryPoint.CreateDefault);
 
             //Layer Definition 1.2.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), "1.2.0"),
-                new ResourceSerializationCallback(Ldf120.LdfEntryPoint.Serialize),
-                new ResourceDeserializationCallback(Ldf120.LdfEntryPoint.Deserialize));
-            ObjectFactory.RegisterLayerFactoryMethod(new Version(1, 2, 0), new LayerCreatorFunc(Ldf120.LdfEntryPoint.CreateDefault));
+                Ldf120.LdfEntryPoint.Serialize,
+                Ldf120.LdfEntryPoint.Deserialize);
+            ObjectFactory.RegisterLayerFactoryMethod(new Version(1, 2, 0), Ldf120.LdfEntryPoint.CreateDefault);
 
             //Layer Definition 1.3.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), "1.3.0"),
-                new ResourceSerializationCallback(Ldf130.LdfEntryPoint.Serialize),
-                new ResourceDeserializationCallback(Ldf130.LdfEntryPoint.Deserialize));
-            ObjectFactory.RegisterLayerFactoryMethod(new Version(1, 3, 0), new LayerCreatorFunc(Ldf130.LdfEntryPoint.CreateDefault));
+                Ldf130.LdfEntryPoint.Serialize,
+                Ldf130.LdfEntryPoint.Deserialize);
+            ObjectFactory.RegisterLayerFactoryMethod(new Version(1, 3, 0), Ldf130.LdfEntryPoint.CreateDefault);
 
             //Layer Definition 2.3.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), "2.3.0"),
-                new ResourceSerializationCallback(Ldf230.LdfEntryPoint.Serialize),
-                new ResourceDeserializationCallback(Ldf230.LdfEntryPoint.Deserialize));
-            ObjectFactory.RegisterLayerFactoryMethod(new Version(2, 3, 0), new LayerCreatorFunc(Ldf230.LdfEntryPoint.CreateDefault));
+                Ldf230.LdfEntryPoint.Serialize,
+                Ldf230.LdfEntryPoint.Deserialize);
+            ObjectFactory.RegisterLayerFactoryMethod(new Version(2, 3, 0), Ldf230.LdfEntryPoint.CreateDefault);
 
             //Layer Definition 2.4.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), "2.4.0"),
-                new ResourceSerializationCallback(Ldf240.LdfEntryPoint.Serialize),
-                new ResourceDeserializationCallback(Ldf240.LdfEntryPoint.Deserialize));
-            ObjectFactory.RegisterLayerFactoryMethod(new Version(2, 4, 0), new LayerCreatorFunc(Ldf240.LdfEntryPoint.CreateDefault));
+                Ldf240.LdfEntryPoint.Serialize,
+                Ldf240.LdfEntryPoint.Deserialize);
+            ObjectFactory.RegisterLayerFactoryMethod(new Version(2, 4, 0), Ldf240.LdfEntryPoint.CreateDefault);
 
             //Load Procedure 1.1.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.LoadProcedure.ToString(), "1.1.0"),
-                new ResourceSerializationCallback(Lp110.LoadProcEntryPoint.Serialize),
-                new ResourceDeserializationCallback(Lp110.LoadProcEntryPoint.Deserialize));
+                Lp110.LoadProcEntryPoint.Serialize,
+                Lp110.LoadProcEntryPoint.Deserialize);
 
             //Load Procedure 1.1.0 schema offers nothing new for the ones we want to support, so nothing to register
             //with the ObjectFactory
@@ -225,81 +193,88 @@ namespace OSGeo.MapGuide.ObjectModels
             //Load Procedure 2.2.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.LoadProcedure.ToString(), "2.2.0"),
-                new ResourceSerializationCallback(Lp220.LoadProcEntryPoint.Serialize),
-                new ResourceDeserializationCallback(Lp220.LoadProcEntryPoint.Deserialize));
-            ObjectFactory.RegisterLoadProcedureFactoryMethod(LoadType.Sqlite, new LoadProcCreatorFunc(Lp220.LoadProcEntryPoint.CreateDefaultSqlite));
+                Lp220.LoadProcEntryPoint.Serialize,
+                Lp220.LoadProcEntryPoint.Deserialize);
+            ObjectFactory.RegisterLoadProcedureFactoryMethod(LoadType.Sqlite, Lp220.LoadProcEntryPoint.CreateDefaultSqlite);
 
             //Web Layout 1.1.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.WebLayout.ToString(), "1.1.0"),
-                new ResourceSerializationCallback(WL110.WebLayoutEntryPoint.Serialize),
-                new ResourceDeserializationCallback(WL110.WebLayoutEntryPoint.Deserialize));
-            ObjectFactory.RegisterWebLayoutFactoryMethod(new Version(1, 1, 0), new WebLayoutCreatorFunc(WL110.WebLayoutEntryPoint.CreateDefault));
+                WL110.WebLayoutEntryPoint.Serialize,
+                WL110.WebLayoutEntryPoint.Deserialize);
+            ObjectFactory.RegisterWebLayoutFactoryMethod(new Version(1, 1, 0), WL110.WebLayoutEntryPoint.CreateDefault);
 
             //Web Layout 2.4.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.WebLayout.ToString(), "2.4.0"),
-                new ResourceSerializationCallback(WL240.WebLayoutEntryPoint.Serialize),
-                new ResourceDeserializationCallback(WL240.WebLayoutEntryPoint.Deserialize));
-            ObjectFactory.RegisterWebLayoutFactoryMethod(new Version(2, 4, 0), new WebLayoutCreatorFunc(WL240.WebLayoutEntryPoint.CreateDefault));
+                WL240.WebLayoutEntryPoint.Serialize,
+                WL240.WebLayoutEntryPoint.Deserialize);
+            ObjectFactory.RegisterWebLayoutFactoryMethod(new Version(2, 4, 0), WL240.WebLayoutEntryPoint.CreateDefault);
 
             //Web Layout 2.6.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.WebLayout.ToString(), "2.6.0"),
-                new ResourceSerializationCallback(WL260.WebLayoutEntryPoint.Serialize),
-                new ResourceDeserializationCallback(WL260.WebLayoutEntryPoint.Deserialize));
-            ObjectFactory.RegisterWebLayoutFactoryMethod(new Version(2, 6, 0), new WebLayoutCreatorFunc(WL260.WebLayoutEntryPoint.CreateDefault));
+                WL260.WebLayoutEntryPoint.Serialize,
+                WL260.WebLayoutEntryPoint.Deserialize);
+            ObjectFactory.RegisterWebLayoutFactoryMethod(new Version(2, 6, 0), WL260.WebLayoutEntryPoint.CreateDefault);
 
             //Symbol Definition 1.1.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition.ToString(), "1.1.0"),
-                new ResourceSerializationCallback(Sym110.SymbolDefEntryPoint.Serialize),
-                new ResourceDeserializationCallback(Sym110.SymbolDefEntryPoint.Deserialize));
-            ObjectFactory.RegisterCompoundSymbolFactoryMethod(new Version(1, 1, 0), new CompoundSymbolDefCreatorFunc(Sym110.SymbolDefEntryPoint.CreateDefaultCompound));
-            ObjectFactory.RegisterSimpleSymbolFactoryMethod(new Version(1, 1, 0), new SimpleSymbolDefCreatorFunc(Sym110.SymbolDefEntryPoint.CreateDefaultSimple));
+                Sym110.SymbolDefEntryPoint.Serialize,
+                Sym110.SymbolDefEntryPoint.Deserialize);
+            ObjectFactory.RegisterCompoundSymbolFactoryMethod(new Version(1, 1, 0), Sym110.SymbolDefEntryPoint.CreateDefaultCompound);
+            ObjectFactory.RegisterSimpleSymbolFactoryMethod(new Version(1, 1, 0), Sym110.SymbolDefEntryPoint.CreateDefaultSimple);
 
             //Symbol Definition 2.4.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.SymbolDefinition.ToString(), "2.4.0"),
-                new ResourceSerializationCallback(Sym240.SymbolDefEntryPoint.Serialize),
-                new ResourceDeserializationCallback(Sym240.SymbolDefEntryPoint.Deserialize));
-            ObjectFactory.RegisterCompoundSymbolFactoryMethod(new Version(2, 4, 0), new CompoundSymbolDefCreatorFunc(Sym240.SymbolDefEntryPoint.CreateDefaultCompound));
-            ObjectFactory.RegisterSimpleSymbolFactoryMethod(new Version(2, 4, 0), new SimpleSymbolDefCreatorFunc(Sym240.SymbolDefEntryPoint.CreateDefaultSimple));
+                Sym240.SymbolDefEntryPoint.Serialize,
+                Sym240.SymbolDefEntryPoint.Deserialize);
+            ObjectFactory.RegisterCompoundSymbolFactoryMethod(new Version(2, 4, 0), Sym240.SymbolDefEntryPoint.CreateDefaultCompound);
+            ObjectFactory.RegisterSimpleSymbolFactoryMethod(new Version(2, 4, 0), Sym240.SymbolDefEntryPoint.CreateDefaultSimple);
 
             //Map Definition 2.3.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.MapDefinition.ToString(), "2.3.0"),
-                new ResourceSerializationCallback(Mdf230.MdfEntryPoint.Serialize),
-                new ResourceDeserializationCallback(Mdf230.MdfEntryPoint.Deserialize));
-            ObjectFactory.RegisterMapDefinitionFactoryMethod(new Version(2, 3, 0), new MapDefinitionCreatorFunc(Mdf230.MdfEntryPoint.CreateDefault));
+                Mdf230.MdfEntryPoint.Serialize,
+                Mdf230.MdfEntryPoint.Deserialize);
+            ObjectFactory.RegisterMapDefinitionFactoryMethod(new Version(2, 3, 0), Mdf230.MdfEntryPoint.CreateDefault);
 
             //Map Definition 2.4.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.MapDefinition.ToString(), "2.4.0"),
-                new ResourceSerializationCallback(Mdf240.MdfEntryPoint.Serialize),
-                new ResourceDeserializationCallback(Mdf240.MdfEntryPoint.Deserialize));
-            ObjectFactory.RegisterMapDefinitionFactoryMethod(new Version(2, 4, 0), new MapDefinitionCreatorFunc(Mdf240.MdfEntryPoint.CreateDefault));
+                Mdf240.MdfEntryPoint.Serialize,
+                Mdf240.MdfEntryPoint.Deserialize);
+            ObjectFactory.RegisterMapDefinitionFactoryMethod(new Version(2, 4, 0), Mdf240.MdfEntryPoint.CreateDefault);
 
             //Map Definition 3.0.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.MapDefinition.ToString(), "3.0.0"),
-                new ResourceSerializationCallback(Mdf300.MdfEntryPoint.Serialize),
-                new ResourceDeserializationCallback(Mdf300.MdfEntryPoint.Deserialize));
-            ObjectFactory.RegisterMapDefinitionFactoryMethod(new Version(3, 0, 0), new MapDefinitionCreatorFunc(Mdf300.MdfEntryPoint.CreateDefault));
+                Mdf300.MdfEntryPoint.Serialize,
+                Mdf300.MdfEntryPoint.Deserialize);
+            ObjectFactory.RegisterMapDefinitionFactoryMethod(new Version(3, 0, 0), Mdf300.MdfEntryPoint.CreateDefault);
 
             //Watermark Definition 2.3.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.WatermarkDefinition.ToString(), "2.3.0"),
-                new ResourceSerializationCallback(Wdf230.WdfEntryPoint.Serialize),
-                new ResourceDeserializationCallback(Wdf230.WdfEntryPoint.Deserialize));
-            ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(new Version(2, 3, 0), new WatermarkCreatorFunc(Wdf230.WdfEntryPoint.CreateDefault));
+                Wdf230.WdfEntryPoint.Serialize,
+                Wdf230.WdfEntryPoint.Deserialize);
+            ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(new Version(2, 3, 0), Wdf230.WdfEntryPoint.CreateDefault);
 
             //Watermark Definition 2.4.0
             ResourceTypeRegistry.RegisterResource(
                 new ResourceTypeDescriptor(ResourceTypes.WatermarkDefinition.ToString(), "2.4.0"),
-                new ResourceSerializationCallback(Wdf240.WdfEntryPoint.Serialize),
-                new ResourceDeserializationCallback(Wdf240.WdfEntryPoint.Deserialize));
-            ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(new Version(2, 4, 0), new WatermarkCreatorFunc(Wdf240.WdfEntryPoint.CreateDefault));
+                Wdf240.WdfEntryPoint.Serialize,
+                Wdf240.WdfEntryPoint.Deserialize);
+            ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(new Version(2, 4, 0), Wdf240.WdfEntryPoint.CreateDefault);
+            
+            //Tile Set Definition 3.0.0
+            ResourceTypeRegistry.RegisterResource(
+                new ResourceTypeDescriptor(ResourceTypes.TileSetDefinition.ToString(), "3.0.0"),
+                Tsd300.TileSetDefinition.Serialize,
+                Tsd300.TileSetDefinition.Deserialize);
+            ObjectFactory.RegisterTileSetDefinitionFactoryMethod(new Version(3, 0, 0), Tsd300.TileSetDefinition.CreateDefault);
         }
 
         #region Factory registration
@@ -322,7 +297,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="resourceType">The resource type descriptor.</param>
         /// <param name="serializeMethod">The serialize method.</param>
         /// <param name="deserializeMethod">The deserialize method.</param>
-        public static void RegisterResourceSerializer(ResourceTypeDescriptor resourceType, ResourceSerializationCallback serializer, ResourceDeserializationCallback deserializer)
+        public static void RegisterResourceSerializer(ResourceTypeDescriptor resourceType, Func<IResource, Stream> serializer, Func<string, IResource> deserializer)
         {
             Check.ArgumentNotNull(resourceType, "resourceType");
             Check.ArgumentNotNull(serializer, "serializer");
@@ -335,7 +310,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// </summary>
         /// <param name="version"></param>
         /// <param name="func"></param>
-        public static void RegisterCompoundSymbolFactoryMethod(Version version, CompoundSymbolDefCreatorFunc func)
+        public static void RegisterCompoundSymbolFactoryMethod(Version version, Func<ICompoundSymbolDefinition> func)
         {
             Check.ArgumentNotNull(version, "version");
             Check.ArgumentNotNull(func, "func");
@@ -350,7 +325,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// </summary>
         /// <param name="version"></param>
         /// <param name="func"></param>
-        public static void RegisterSimpleSymbolFactoryMethod(Version version, SimpleSymbolDefCreatorFunc func)
+        public static void RegisterSimpleSymbolFactoryMethod(Version version, Func<ISimpleSymbolDefinition> func)
         {
             Check.ArgumentNotNull(version, "version");
             Check.ArgumentNotNull(func, "func");
@@ -365,7 +340,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// </summary>
         /// <param name="version">The ver.</param>
         /// <param name="method">The method.</param>
-        public static void RegisterLayerFactoryMethod(Version version, LayerCreatorFunc method)
+        public static void RegisterLayerFactoryMethod(Version version, Func<LayerType, ILayerDefinition> method)
         {
             Check.ArgumentNotNull(version, "version");
             Check.ArgumentNotNull(method, "method");
@@ -380,7 +355,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// </summary>
         /// <param name="type">The type.</param>
         /// <param name="method">The method.</param>
-        public static void RegisterLoadProcedureFactoryMethod(LoadType type, LoadProcCreatorFunc method)
+        public static void RegisterLoadProcedureFactoryMethod(LoadType type, Func<ILoadProcedure> method)
         {
             Check.ArgumentNotNull(method, "method");
             if (_loadProcFactories.ContainsKey(type))
@@ -394,7 +369,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// </summary>
         /// <param name="version">The version.</param>
         /// <param name="method">The method.</param>
-        public static void RegisterWebLayoutFactoryMethod(Version version, WebLayoutCreatorFunc method)
+        public static void RegisterWebLayoutFactoryMethod(Version version, Func<string, IWebLayout> method)
         {
             Check.ArgumentNotNull(version, "version");
             Check.ArgumentNotNull(method, "method");
@@ -409,7 +384,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// </summary>
         /// <param name="version"></param>
         /// <param name="method"></param>
-        public static void RegisterMapDefinitionFactoryMethod(Version version, MapDefinitionCreatorFunc method)
+        public static void RegisterMapDefinitionFactoryMethod(Version version, Func<IMapDefinition> method)
         {
             Check.ArgumentNotNull(version, "version");
             Check.ArgumentNotNull(method, "method");
@@ -424,7 +399,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// </summary>
         /// <param name="version"></param>
         /// <param name="method"></param>
-        public static void RegisterWatermarkDefinitionFactoryMethod(Version version, WatermarkCreatorFunc method)
+        public static void RegisterWatermarkDefinitionFactoryMethod(Version version, Func<SymbolDefinitionType, IWatermarkDefinition> method)
         {
             Check.ArgumentNotNull(version, "version");
             Check.ArgumentNotNull(method, "method");
@@ -432,6 +407,21 @@ namespace OSGeo.MapGuide.ObjectModels
                 throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + version);
 
             _watermarkFactories[version] = method;
+        }
+        
+        /// <summary>
+        /// Registers the Tile Set Definition factory method
+        /// </summary>
+        /// <param name="version"></param>
+        /// <param name="func"></param>
+        public static void RegisterTileSetDefinitionFactoryMethod(Version version, Func<ITileSetDefinition> func)
+        {
+            Check.ArgumentNotNull(version, "version");
+            Check.ArgumentNotNull(func, "func");
+            if (_tileSetDefinitionFactories.ContainsKey(version))
+                throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + version);
+
+            _tileSetDefinitionFactories[version] = func;
         }
 
         #endregion Factory registration
@@ -735,6 +725,36 @@ namespace OSGeo.MapGuide.ObjectModels
             map.Extents = env;
 
             return map;
+        }
+
+        /// <summary>
+        /// Creates the tile set definition
+        /// </summary>
+        /// <param name="version"></param>
+        /// <returns></returns>
+        public static ITileSetDefinition CreateTileSetDefinition(Version version)
+        {
+            Check.ArgumentNotNull(version, "version"); //NOXLATE
+            if (!_mapDefinitionFactories.ContainsKey(version))
+                throw new ArgumentException(Strings.UnknownTileDefinitionVersion + version.ToString());
+
+            var tsd = _tileSetDefinitionFactories[version]();
+            return tsd;
+        }
+
+        /// <summary>
+        /// Creates the tile set definition using the default provider
+        /// </summary>
+        /// <param name="version"></param>
+        /// <param name="name"></param>
+        /// <param name="coordinateSystemWkt"></param>
+        /// <param name="extents"></param>
+        /// <returns></returns>
+        public static ITileSetDefinition CreateTileSetDefinition(Version version, IEnvelope extents)
+        {
+            var tsd = CreateTileSetDefinition(version);
+            tsd.Extents = extents;
+            return tsd;
         }
 
         /// <summary>

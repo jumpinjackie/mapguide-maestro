@@ -32,16 +32,6 @@ using System.Xml;
 namespace OSGeo.MapGuide.ObjectModels
 {
     /// <summary>
-    ///
-    /// </summary>
-    public delegate IResource ResourceDeserializationCallback(string xml);
-
-    /// <summary>
-    ///
-    /// </summary>
-    public delegate Stream ResourceSerializationCallback(IResource res);
-
-    /// <summary>
     /// A resource serializer
     /// </summary>
     public class ResourceSerializer
@@ -50,13 +40,13 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Gets or sets the serialize method.
         /// </summary>
         /// <value>The serialize method.</value>
-        public ResourceSerializationCallback Serialize { get; set; }
+        public Func<IResource, Stream> Serialize { get; set; }
 
         /// <summary>
         /// Gets or sets the deserialize method.
         /// </summary>
         /// <value>The deserialize method.</value>
-        public ResourceDeserializationCallback Deserialize { get; set; }
+        public Func<string, IResource> Deserialize { get; set; }
     }
 
     //TODO: Expand on documentation as this is an important class
@@ -209,7 +199,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="desc">The desc.</param>
         /// <param name="serializeMethod">The serialize method.</param>
         /// <param name="deserializeMethod">The deserialize method.</param>
-        public static void RegisterResource(ResourceTypeDescriptor desc, ResourceSerializationCallback serializeMethod, ResourceDeserializationCallback deserializeMethod)
+        public static void RegisterResource(ResourceTypeDescriptor desc, Func<IResource, Stream> serializeMethod, Func<string, IResource> deserializeMethod)
         {
             RegisterResource(desc, new ResourceSerializer() { Deserialize = deserializeMethod, Serialize = serializeMethod });
         }

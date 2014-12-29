@@ -167,6 +167,9 @@
     <Compile Include="..\Generated\SymbolLibrary-1.0.0.designer.cs">
       <Link>SymbolLibrary\v1.0.0\SymbolLibrary-1.0.0.designer.cs</Link>
     </Compile>
+    <Compile Include="..\Generated\TileSetDefinition-3.0.0.designer.cs">
+      <Link>TileSetDefinition\v3_0_0\TileSetDefinition-3.0.0.designer.cs</Link>
+    </Compile>
     <Compile Include="..\Generated\UnmanagedDataList-1.0.0.designer.cs">
       <Link>Common\UnmanagedDataList-1.0.0.designer.cs</Link>
     </Compile>
@@ -278,6 +281,8 @@
     <Compile Include="SymbolDefinition\v2_4_0\SymbolDefinitionImpl.cs" />
     <Compile Include="SymbolLibrary\v1.0.0\SymbolLibraryImpl.cs" />
     <Compile Include="SymbolLibrary\SymbolLibraryInterfaces.cs" />
+    <Compile Include="TileSetDefinition\TileSetInterfaces.cs" />
+    <Compile Include="TileSetDefinition\v3_0_0\TileSetImpl.cs" />
     <Compile Include="UntypedResource.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="WatermarkDefinition\v2_3_0\WatermarkDefinitionImpl.cs" />
@@ -300,6 +305,7 @@
   <ItemGroup>
     <None Include="CoreTypes.cd" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

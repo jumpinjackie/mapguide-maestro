@@ -24,10 +24,17 @@ using Moq;
 using NUnit.Framework;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
+using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
+using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -63,8 +70,8 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Test()]
         public void RegisterResourceSerializerTest()
         {
-            ResourceSerializationCallback serFunc = (res) => null;
-            ResourceDeserializationCallback deserFunc = (stream) => null;
+            Func<IResource, Stream> serFunc = (res) => null;
+            Func<string, IResource> deserFunc = (stream) => null;
 
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterResourceSerializer(new ResourceTypeDescriptor("FeatureSource", "1.0.0"), null, null));
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterResourceSerializer(new ResourceTypeDescriptor("FeatureSource", "1.0.0"), serFunc, null));
@@ -79,7 +86,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Test()]
         public void RegisterCompoundSymbolFactoryMethodTest()
         {
-            CompoundSymbolDefCreatorFunc func = () => null;
+            Func<ICompoundSymbolDefinition> func = () => null;
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterCompoundSymbolFactoryMethod(null, null));
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterCompoundSymbolFactoryMethod(new Version(1, 0, 0), null));
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterCompoundSymbolFactoryMethod(null, func));
@@ -91,7 +98,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Test()]
         public void RegisterSimpleSymbolFactoryMethodTest()
         {
-            SimpleSymbolDefCreatorFunc func = () => null;
+            Func<ISimpleSymbolDefinition> func = () => null;
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterSimpleSymbolFactoryMethod(null, null));
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterSimpleSymbolFactoryMethod(new Version(1, 0, 0), null));
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterSimpleSymbolFactoryMethod(null, func));
@@ -103,7 +110,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Test()]
         public void RegisterLayerFactoryMethodTest()
         {
-            LayerCreatorFunc func = (lt) => null;
+            Func<LayerType, ILayerDefinition> func = (lt) => null;
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterLayerFactoryMethod(null, null));
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterLayerFactoryMethod(new Version(1, 0, 0), null));
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterLayerFactoryMethod(null, func));
@@ -115,7 +122,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Test()]
         public void RegisterLoadProcedureFactoryMethodTest()
         {
-            LoadProcCreatorFunc func = () => null;
+            Func<ILoadProcedure> func = () => null;
             foreach (LoadType lt in Enum.GetValues(typeof(LoadType)))
             {
                 Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterLoadProcedureFactoryMethod(LoadType.Dwf, null));
@@ -125,7 +132,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Test()]
         public void RegisterWebLayoutFactoryMethodTest()
         {
-            WebLayoutCreatorFunc func = (mdfId) => null;
+            Func<string, IWebLayout> func = (mdfId) => null;
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterWebLayoutFactoryMethod(null, null));
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterWebLayoutFactoryMethod(null, func));
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterWebLayoutFactoryMethod(new Version(1, 0, 0), null));
@@ -137,7 +144,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Test()]
         public void RegisterMapDefinitionFactoryMethodTest()
         {
-            MapDefinitionCreatorFunc func = () => null;
+            Func<IMapDefinition> func = () => null;
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterMapDefinitionFactoryMethod(null, null));
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterMapDefinitionFactoryMethod(null, func));
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterMapDefinitionFactoryMethod(new Version(1, 0, 0), null));
@@ -149,13 +156,25 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
         [Test()]
         public void RegisterWatermarkDefinitionFactoryMethodTest()
         {
-            WatermarkCreatorFunc func = (st) => null;
+            Func<SymbolDefinitionType, IWatermarkDefinition> func = (st) => null;
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(null, null));
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(null, func));
             Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(new Version(1, 0, 0), null));
             //Already exists
             Assert.Throws<ArgumentException>(() => ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(new Version(2, 3, 0), func));
             Assert.DoesNotThrow(() => ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(new Version(4, 0, 0), func));
+        }
+
+        [Test()]
+        public void RegisterTileSetDefinitionFactoryMethodTest()
+        {
+            Func<ITileSetDefinition> func = () => null;
+            Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterTileSetDefinitionFactoryMethod(null, null));
+            Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterTileSetDefinitionFactoryMethod(null, func));
+            Assert.Throws<ArgumentNullException>(() => ObjectFactory.RegisterTileSetDefinitionFactoryMethod(new Version(1, 0, 0), null));
+            //Already exists
+            Assert.Throws<ArgumentException>(() => ObjectFactory.RegisterTileSetDefinitionFactoryMethod(new Version(3, 0, 0), func));
+            Assert.DoesNotThrow(() => ObjectFactory.RegisterTileSetDefinitionFactoryMethod(new Version(4, 0, 0), func));
         }
 
         [Test()]
