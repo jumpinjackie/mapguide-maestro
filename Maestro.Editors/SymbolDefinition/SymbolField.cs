@@ -319,7 +319,7 @@ namespace Maestro.Editors.SymbolDefinition
         public void Bind(object dataSource, string propertyName)
         {
             Check.ArgumentNotNull(dataSource, "dataSource");
-            Check.NotEmpty(propertyName, "member");
+            Check.ArgumentNotEmpty(propertyName, "member");
             try
             {
                 _isBinding = true;

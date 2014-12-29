@@ -33,17 +33,6 @@ namespace OSGeo.MapGuide.ObjectModels
     public static class Check
     {
         /// <summary>
-        /// Check that condition evaluates to true
-        /// </summary>
-        /// <param name="condition"></param>
-        /// <param name="msg"></param>
-        public static void That(bool condition, string msg)
-        {
-            if (!condition)
-                throw new ArgumentException(msg);
-        }
-
-        /// <summary>
         /// Check that the argument value is not null
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -56,23 +45,11 @@ namespace OSGeo.MapGuide.ObjectModels
         }
 
         /// <summary>
-        /// Check that value is not null
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="obj"></param>
-        /// <param name="arg"></param>
-        public static void NotNull<T>(T obj, string arg) where T : class
-        {
-            if (obj == null)
-                throw new ArgumentException(Strings.PrecondValueNull + arg);
-        }
-
-        /// <summary>
         /// Check that string value is not null or empty
         /// </summary>
         /// <param name="value"></param>
         /// <param name="arg"></param>
-        public static void NotEmpty(string value, string arg)
+        public static void ArgumentNotEmpty(string value, string arg)
         {
             if (string.IsNullOrEmpty(value))
                 throw new ArgumentException(Strings.PrecondStringEmpty + arg);
@@ -83,7 +60,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// </summary>
         /// <param name="condition"></param>
         /// <param name="msg"></param>
-        public static void Precondition(bool condition, string msg)
+        public static void ThatPreconditionIsMet(bool condition, string msg)
         {
             if (!condition)
                 throw new ArgumentException(Strings.PrecondFailure + msg);
@@ -97,13 +74,13 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="max">The upper bound</param>
         /// <param name="bInclusive">Determines whether the range is inclusive. If false, the range is exclusive</param>
         /// <param name="msg">The message to include for precondition failure</param>
-        public static void IntBetween(int value, int min, int max, bool bInclusive, string msg)
+        public static void ThatArgumentIsBetweenRange<T>(T value, T min, T max, bool bInclusive, string msg) where T : IComparable
         {
             bool bInRange = false;
             if (bInclusive)
-                bInRange = (value >= min && value <= max);
+                bInRange = (value.CompareTo(min) >= 0 && value.CompareTo(max) <= 0);
             else
-                bInRange = (value > min && value < max);
+                bInRange = (value.CompareTo(min) > 0 && value.CompareTo(max) < 0);
 
             if (!bInRange)
                 throw new ArgumentException(Strings.PrecondFailure + msg);
@@ -114,7 +91,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// </summary>
         /// <param name="folderid">The folder resource id to check</param>
         /// <param name="name">The argument name</param>
-        public static void IsFolderArgument(string folderid, string name)
+        public static void ThatArgumentIsFolder(string folderid, string name)
         {
             if (!ResourceIdentifier.IsFolderResource(folderid))
                 throw new ArgumentException(string.Format(Strings.NotAFolder, folderid), name);

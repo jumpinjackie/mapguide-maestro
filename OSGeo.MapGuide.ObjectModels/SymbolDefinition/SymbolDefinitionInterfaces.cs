@@ -148,7 +148,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <returns></returns>
         public static IParameter GetParameter(this ISymbolDefinitionBase sym, string identifier)
         {
-            Check.NotNull(sym, "sym");
+            Check.ArgumentNotNull(sym, "sym"); //NOXLATE
             return sym.GetParameters().FirstOrDefault(x => x.Identifier == identifier);
         }
 
@@ -159,7 +159,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <returns></returns>
         public static IEnumerable<IParameter> GetParameters(this ISymbolDefinitionBase sym)
         {
-            Check.NotNull(sym, "sym");
+            Check.ArgumentNotNull(sym, "sym"); //NOXLATE
             if (sym.Type == SymbolDefinitionType.Simple)
                 return ((ISimpleSymbolDefinition)sym).GetParameters();
             else
@@ -173,7 +173,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
         /// <returns></returns>
         public static IEnumerable<IParameter> GetParameters(this ISimpleSymbolDefinition ssym)
         {
-            Check.NotNull(ssym, "ssym");
+            Check.ArgumentNotNull(ssym, "ssym");
             return ssym.ParameterDefinition.Parameter;
         }
     }

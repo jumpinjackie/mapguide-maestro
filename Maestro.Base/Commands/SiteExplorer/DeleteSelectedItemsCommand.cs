@@ -131,8 +131,8 @@ namespace Maestro.Base.Commands.SiteExplorer
 
         private static bool ConfirmDeleteOpenResources(RepositoryItem[] items, Maestro.Base.Editor.IEditorViewContent[] editors)
         {
-            Check.NotNull(items, "items"); //NOXLATE
-            Check.NotNull(editors, "editors"); //NOXLATE
+            Check.ArgumentNotNull(items, "items"); //NOXLATE
+            Check.ArgumentNotNull(editors, "editors"); //NOXLATE
             Dictionary<string, string> resIds = new Dictionary<string, string>();
             foreach (var item in items)
             {

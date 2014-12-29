@@ -163,7 +163,7 @@ namespace Maestro.Editors.MapDefinition
                 }
             }
 
-            Check.NotNull(layers, "layers");
+            Check.ArgumentNotNull(layers, "layers");
             int processed = 0;
 
             //Begin
@@ -215,7 +215,7 @@ namespace Maestro.Editors.MapDefinition
 
         private string ExtentsToString(IEnvelope env)
         {
-            Check.NotNull(env, "env");
+            Check.ArgumentNotNull(env, "env");
             return string.Format("[{0} {1}] [{2} {3}]", env.MinX, env.MinY, env.MaxX, env.MaxY);
         }
 

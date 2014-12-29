@@ -58,7 +58,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             : this()
         {
             Check.ArgumentNotNull(name, "name"); //NOXLATE
-            Check.NotEmpty(name, "name"); //NOXLATE
+            Check.ArgumentNotEmpty(name, "name"); //NOXLATE
             this.Name = name;
             this.Description = description;
         }

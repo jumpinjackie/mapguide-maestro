@@ -31,7 +31,7 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
     {
         public static IWatermark AddWatermark<T>(IList<T> collection, IWatermarkDefinition watermark) where T : class, IWatermark, new()
         {
-            Check.NotNull(watermark, "watermark");
+            Check.ArgumentNotNull(watermark, "watermark"); //NOXLATE
             T impl = new T();
             impl.ResourceId = watermark.ResourceID;
             impl.Name = ResourceIdentifier.GetName(impl.ResourceId);
@@ -42,7 +42,7 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
 
         public static void RemoveWatermark<T>(IList<T> collection, IWatermark watermark) where T : class, IWatermark
         {
-            Check.NotNull(watermark, "watermark");
+            Check.ArgumentNotNull(watermark, "watermark"); //NOXLATE
             T impl = watermark as T;
             if (impl != null)
                 collection.Remove(impl);

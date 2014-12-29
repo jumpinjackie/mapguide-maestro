@@ -62,7 +62,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <returns></returns>
         public static string GetEncryptedUsername(this IFeatureSource fs, IServerConnection conn)
         {
-            Check.NotNull(fs, "fs"); //NOXLATE
+            Check.ArgumentNotNull(fs, "fs"); //NOXLATE
             var resData = conn.ResourceService.EnumerateResourceData(fs.ResourceID);
             foreach (var rd in resData.ResourceData)
             {

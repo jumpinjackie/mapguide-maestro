@@ -202,7 +202,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <returns></returns>
         public static IList<IStroke> CloneStrokes(IEnumerable<IStroke> strokes)
         {
-            Check.NotNull(strokes, "strokes"); //NOXLATE
+            Check.ArgumentNotNull(strokes, "strokes"); //NOXLATE
             var list = new List<IStroke>();
             foreach (var st in strokes)
             {
@@ -2172,7 +2172,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetBlockColor(this IBlockSymbol sym, Color c)
         {
-            Check.NotNull(sym, "sym");
+            Check.ArgumentNotNull(sym, "sym");
             sym.BlockColor = Utils.SerializeHTMLColor(c, true);
         }
 
@@ -2183,7 +2183,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetLayerColor(this IBlockSymbol sym, Color c)
         {
-            Check.NotNull(sym, "sym"); //NOXLATE
+            Check.ArgumentNotNull(sym, "sym"); //NOXLATE
             sym.LayerColor = Utils.SerializeHTMLColor(c, true);
         }
 
@@ -2194,7 +2194,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="f"></param>
         public static void Apply(this IFontSymbol sym, Font f)
         {
-            Check.NotNull(sym, "sym"); //NOXLATE
+            Check.ArgumentNotNull(sym, "sym"); //NOXLATE
             sym.FontName = f.Name;
             sym.Italic = f.Italic;
             sym.Bold = f.Bold;
@@ -2208,7 +2208,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetForegroundColor(this IFontSymbol sym, Color c)
         {
-            Check.NotNull(sym, "sym"); //NOXLATE
+            Check.ArgumentNotNull(sym, "sym"); //NOXLATE
             sym.ForegroundColor = Utils.SerializeHTMLColor(c, true);
         }
 
@@ -2221,7 +2221,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// </returns>
         public static bool HasVectorScaleRanges(this IVectorLayerDefinition vl)
         {
-            Check.NotNull(vl, "vl"); //NOXLATE
+            Check.ArgumentNotNull(vl, "vl"); //NOXLATE
             return vl.GetScaleRangeCount() > 0;
         }
 
@@ -2232,7 +2232,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <returns></returns>
         public static int GetScaleRangeCount(this IVectorLayerDefinition vl)
         {
-            Check.NotNull(vl, "vl"); //NOXLATE
+            Check.ArgumentNotNull(vl, "vl"); //NOXLATE
             var list = new List<IVectorScaleRange>(vl.VectorScaleRange);
             return list.Count;
         }
@@ -2244,8 +2244,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="geomTypes">The geometry types to remove</param>
         public static void RemoveStyles(this IVectorScaleRange range, IEnumerable<string> geomTypes)
         {
-            Check.NotNull(range, "range"); //NOXLATE
-            Check.NotNull(geomTypes, "geomTypes"); //NOXLATE
+            Check.ArgumentNotNull(range, "range"); //NOXLATE
+            Check.ArgumentNotNull(geomTypes, "geomTypes"); //NOXLATE
 
             List<IVectorStyle> remove = new List<IVectorStyle>();
 
@@ -2306,7 +2306,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetFillColor(this IW2DSymbol sym, Color c)
         {
-            Check.NotNull(sym, "sym"); //NOXLATE
+            Check.ArgumentNotNull(sym, "sym"); //NOXLATE
             sym.FillColor = Utils.SerializeHTMLColor(c, true);
         }
 
@@ -2317,7 +2317,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetLineColor(this IW2DSymbol sym, Color c)
         {
-            Check.NotNull(sym, "sym"); //NOXLATE
+            Check.ArgumentNotNull(sym, "sym"); //NOXLATE
             sym.LineColor = Utils.SerializeHTMLColor(c, true);
         }
 
@@ -2328,7 +2328,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetTextColor(this IW2DSymbol sym, Color c)
         {
-            Check.NotNull(sym, "sym"); //NOXLATE
+            Check.ArgumentNotNull(sym, "sym"); //NOXLATE
             sym.TextColor = Utils.SerializeHTMLColor(c, true);
         }
 
@@ -2339,7 +2339,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetForegroundColor(this ITextSymbol sym, Color c)
         {
-            Check.NotNull(sym, "sym"); //NOXLATE
+            Check.ArgumentNotNull(sym, "sym"); //NOXLATE
             sym.ForegroundColor = Utils.SerializeHTMLColor(c, true);
         }
 
@@ -2350,7 +2350,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetBackgroundColor(this ITextSymbol sym, Color c)
         {
-            Check.NotNull(sym, "sym"); //NOXLATE
+            Check.ArgumentNotNull(sym, "sym"); //NOXLATE
             sym.BackgroundColor = Utils.SerializeHTMLColor(c, true);
         }
 
@@ -2361,7 +2361,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="f"></param>
         public static void Apply(this ITextSymbol sym, Font f)
         {
-            Check.NotNull(sym, "sym"); //NOXLATE
+            Check.ArgumentNotNull(sym, "sym"); //NOXLATE
             sym.FontName = f.Name;
             sym.Italic = f.Italic.ToString();
             sym.Bold = f.Bold.ToString();
@@ -2375,7 +2375,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetBackgroundColor(this IFill fil, Color c)
         {
-            Check.NotNull(fil, "fil"); //NOXLATE
+            Check.ArgumentNotNull(fil, "fil"); //NOXLATE
             fil.BackgroundColor = Utils.SerializeHTMLColor(c, true);
         }
 
@@ -2386,7 +2386,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetForegroundColor(this IFill fil, Color c)
         {
-            Check.NotNull(fil, "fil"); //NOXLATE
+            Check.ArgumentNotNull(fil, "fil"); //NOXLATE
             fil.ForegroundColor = Utils.SerializeHTMLColor(c, true);
         }
 
@@ -2397,7 +2397,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetTransparencyColor(this IGridColorStyle style, Color c)
         {
-            Check.NotNull(style, "style"); //NOXLATE
+            Check.ArgumentNotNull(style, "style"); //NOXLATE
             style.TransparencyColor = Utils.SerializeHTMLColor(c, true);
         }
 
@@ -2408,7 +2408,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="c">The c.</param>
         public static void SetDefaultColor(this IGridSurfaceStyle style, Color c)
         {
-            Check.NotNull(style, "style"); //NOXLATE
+            Check.ArgumentNotNull(style, "style"); //NOXLATE
             style.DefaultColor = Utils.SerializeHTMLColor(c, true);
         }
 
@@ -2418,7 +2418,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <param name="style"></param>
         public static void RemoveAllRules(this ICompositeTypeStyle style)
         {
-            Check.NotNull(style, "style"); //NOXLATE
+            Check.ArgumentNotNull(style, "style"); //NOXLATE
 
             var remove = new List<ICompositeRule>();
             foreach (var r in style.CompositeRule)
@@ -2442,7 +2442,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <returns>The defined parameter</returns>
         public static IParameter DefineParameter(this ISimpleSymbolDefinition simpleSym, string identifier, string defaultValue, string displayName, string description, string dataType)
         {
-            Check.NotNull(simpleSym, "simpleSym");
+            Check.ArgumentNotNull(simpleSym, "simpleSym");
             var p = simpleSym.CreateParameter();
             p.Identifier = identifier;
             p.DefaultValue = defaultValue;
@@ -2463,7 +2463,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// <returns>The added parameter override</returns>
         public static IParameterOverride AddOverride(this IParameterOverrideCollection overrides, string symbolName, string paramName, string paramValue)
         {
-            Check.NotNull(overrides, "overrides");
+            Check.ArgumentNotNull(overrides, "overrides");
             var ov = overrides.CreateParameterOverride(symbolName, paramName);
             ov.ParameterValue = paramValue;
             overrides.AddOverride(ov);

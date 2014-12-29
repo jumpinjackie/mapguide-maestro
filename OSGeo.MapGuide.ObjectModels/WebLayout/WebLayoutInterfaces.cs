@@ -805,8 +805,8 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
         /// <param name="items"></param>
         public static void AddItems(this IMenu mnu, params IUIItem[] items)
         {
-            Check.NotNull(mnu, "mnu"); //NOXLATE
-            Check.NotNull(items, "items"); //NOXLATE
+            Check.ArgumentNotNull(mnu, "mnu"); //NOXLATE
+            Check.ArgumentNotNull(items, "items"); //NOXLATE
             foreach (var item in items)
             {
                 mnu.AddItem(item);

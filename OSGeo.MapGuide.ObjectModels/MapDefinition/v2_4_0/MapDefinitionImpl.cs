@@ -220,8 +220,8 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
         /// <param name="layer"></param>
         void IMapDefinition.InsertLayer(int idx, IMapLayer layer)
         {
-            Check.IntBetween(idx, 0, this.MapLayer.Count, true, "idx (" + idx + ") between [" + 0 + "," + this.MapLayer.Count + "]"); //NOXLATE
-            Check.NotNull(layer, "layer"); //NOXLATE
+            Check.ThatArgumentIsBetweenRange(idx, 0, this.MapLayer.Count, true, "idx (" + idx + ") between [" + 0 + "," + this.MapLayer.Count + "]"); //NOXLATE
+            Check.ArgumentNotNull(layer, "layer"); //NOXLATE
             var li = layer as MapLayerType;
             if (li != null)
             {
@@ -255,8 +255,8 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
 
         public IMapLayerGroup AddGroup(string groupName)
         {
-            Check.NotEmpty(groupName, "groupName"); //NOXLATE
-            Check.Precondition(this.GetGroupByName(groupName) == null, "<groupName> does not already exist"); //NOXLATE
+            Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
+            Check.ThatPreconditionIsMet(this.GetGroupByName(groupName) == null, "<groupName> does not already exist"); //NOXLATE
             if (this.MapLayerGroup == null)
                 this.MapLayerGroup = new System.ComponentModel.BindingList<MapLayerGroupType>();
 
@@ -277,13 +277,13 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
 
         public IMapLayer AddLayer(string groupName, string layerName, string layerDefinitionId)
         {
-            Check.NotEmpty(layerName, "layerName"); //NOXLATE
-            Check.NotEmpty(layerDefinitionId, "layerDefinitionId"); //NOXLATE
-            Check.Precondition(ResourceIdentifier.Validate(layerDefinitionId), "ResourceIdentifier.Validate(layerDefinitionId)"); //NOXLATE
-            Check.Precondition(ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString(), "ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString()"); //NOXLATE
+            Check.ArgumentNotEmpty(layerName, "layerName"); //NOXLATE
+            Check.ArgumentNotEmpty(layerDefinitionId, "layerDefinitionId"); //NOXLATE
+            Check.ThatPreconditionIsMet(ResourceIdentifier.Validate(layerDefinitionId), "ResourceIdentifier.Validate(layerDefinitionId)"); //NOXLATE
+            Check.ThatPreconditionIsMet(ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString(), "ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString()"); //NOXLATE
             if (!string.IsNullOrEmpty(groupName))
             {
-                Check.Precondition(this.GetGroupByName(groupName) != null, "There should be an existing group for <groupName>"); //NOXLATE
+                Check.ThatPreconditionIsMet(this.GetGroupByName(groupName) != null, "There should be an existing group for <groupName>"); //NOXLATE
             }
             var layer = new MapLayerType()
             {
@@ -341,14 +341,14 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
 
         public IMapLayer InsertLayer(int index, string groupName, string layerName, string layerDefinitionId)
         {
-            Check.IntBetween(index, 0, this.MapLayer.Count, true, "index (" + index + ") between [" + 0 + "," + this.MapLayer.Count + "]");
-            Check.NotEmpty(layerName, "layerName"); //NOXLATE
-            Check.NotEmpty(layerDefinitionId, "layerDefinitionId"); //NOXLATE
-            Check.Precondition(ResourceIdentifier.Validate(layerDefinitionId), "ResourceIdentifier.Validate(layerDefinitionId)"); //NOXLATE
-            Check.Precondition(ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString(), "ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString()"); //NOXLATE
+            Check.ThatArgumentIsBetweenRange(index, 0, this.MapLayer.Count, true, "index (" + index + ") between [" + 0 + "," + this.MapLayer.Count + "]");
+            Check.ArgumentNotEmpty(layerName, "layerName"); //NOXLATE
+            Check.ArgumentNotEmpty(layerDefinitionId, "layerDefinitionId"); //NOXLATE
+            Check.ThatPreconditionIsMet(ResourceIdentifier.Validate(layerDefinitionId), "ResourceIdentifier.Validate(layerDefinitionId)"); //NOXLATE
+            Check.ThatPreconditionIsMet(ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString(), "ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString()"); //NOXLATE
             if (!string.IsNullOrEmpty(groupName))
             {
-                Check.NotNull(this.GetGroupByName(groupName), "Group for <groupName>"); //NOXLATE
+                Check.ArgumentNotNull(this.GetGroupByName(groupName), "Group for <groupName>"); //NOXLATE
             }
             var layer = new MapLayerType()
             {
@@ -368,13 +368,13 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
 
         public IMapLayer AddLayer(IMapLayer layerToInsertAbove, string groupName, string layerName, string layerDefinitionId)
         {
-            Check.NotEmpty(layerName, "layerName"); //NOXLATE
-            Check.NotEmpty(layerDefinitionId, "layerDefinitionId"); //NOXLATE
-            Check.Precondition(ResourceIdentifier.Validate(layerDefinitionId), "ResourceIdentifier.Validate(layerDefinitionId)"); //NOXLATE
-            Check.Precondition(ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString(), "ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString()"); //NOXLATE
+            Check.ArgumentNotEmpty(layerName, "layerName"); //NOXLATE
+            Check.ArgumentNotEmpty(layerDefinitionId, "layerDefinitionId"); //NOXLATE
+            Check.ThatPreconditionIsMet(ResourceIdentifier.Validate(layerDefinitionId), "ResourceIdentifier.Validate(layerDefinitionId)"); //NOXLATE
+            Check.ThatPreconditionIsMet(ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString(), "ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString()"); //NOXLATE
             if (!string.IsNullOrEmpty(groupName))
             {
-                Check.NotNull(this.GetGroupByName(groupName), "Group for <groupName>"); //NOXLATE
+                Check.ArgumentNotNull(this.GetGroupByName(groupName), "Group for <groupName>"); //NOXLATE
             }
             var layer = new MapLayerType()
             {
@@ -521,7 +521,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
 
         void IMapDefinition.RemoveGroup(IMapLayerGroup group)
         {
-            Check.NotNull(group, "group"); //NOXLATE
+            Check.ArgumentNotNull(group, "group"); //NOXLATE
             var grp = group as MapLayerGroupType;
             if (grp != null)
             {
@@ -542,7 +542,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
 
         int IMapDefinition.GetIndex(IMapLayer layer)
         {
-            Check.NotNull(layer, "layer"); //NOXLATE
+            Check.ArgumentNotNull(layer, "layer"); //NOXLATE
             var lyr = layer as MapLayerType;
             if (lyr != null)
                 return this.MapLayer.IndexOf(lyr);
@@ -552,7 +552,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
 
         int IMapDefinition.MoveUp(IMapLayer layer)
         {
-            Check.NotNull(layer, "layer"); //NOXLATE
+            Check.ArgumentNotNull(layer, "layer"); //NOXLATE
             int isrc = ((IMapDefinition)this).GetIndex(layer);
             if (isrc > 0)
             {
@@ -578,7 +578,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
 
         int IMapDefinition.MoveDown(IMapLayer layer)
         {
-            Check.NotNull(layer, "layer"); //NOXLATE
+            Check.ArgumentNotNull(layer, "layer"); //NOXLATE
             int isrc = ((IMapDefinition)this).GetIndex(layer);
             if (isrc < this.MapLayer.Count - 1)
             {
@@ -604,7 +604,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
 
         int IMapDefinition.MoveUpGroup(IMapLayerGroup group)
         {
-            Check.NotNull(group, "group"); //NOXLATE
+            Check.ArgumentNotNull(group, "group"); //NOXLATE
             var grp = group as MapLayerGroupType;
             if (grp != null)
             {
@@ -634,7 +634,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
 
         int IMapDefinition.MoveDownGroup(IMapLayerGroup group)
         {
-            Check.NotNull(group, "group"); //NOXLATE
+            Check.ArgumentNotNull(group, "group"); //NOXLATE
             var grp = group as MapLayerGroupType;
             if (grp != null)
             {
@@ -664,7 +664,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
 
         int IMapDefinition.GetIndex(IMapLayerGroup group)
         {
-            Check.NotNull(group, "group"); //NOXLATE
+            Check.ArgumentNotNull(group, "group"); //NOXLATE
             var grp = group as MapLayerGroupType;
             if (grp != null)
                 return this.MapLayerGroup.IndexOf(grp);
@@ -674,7 +674,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
 
         void IMapDefinition.SetTopDrawOrder(IMapLayer layer)
         {
-            Check.NotNull(layer, "layer"); //NOXLATE
+            Check.ArgumentNotNull(layer, "layer"); //NOXLATE
             int isrc = ((IMapDefinition)this).GetIndex(layer);
             if (isrc > 0)
             {
@@ -693,7 +693,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
 
         void IMapDefinition.SetBottomDrawOrder(IMapLayer layer)
         {
-            Check.NotNull(layer, "layer"); //NOXLATE
+            Check.ArgumentNotNull(layer, "layer"); //NOXLATE
             int isrc = ((IMapDefinition)this).GetIndex(layer);
             if (isrc >= 0 && isrc < this.MapLayer.Count)
             {

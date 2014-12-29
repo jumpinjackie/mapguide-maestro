@@ -87,7 +87,7 @@ namespace Maestro.Base.Services
 
         internal RepositoryItem.ClipboardAction GetClipboardState(string resId)
         {
-            Check.NotEmpty(resId, "resId");
+            Check.ArgumentNotEmpty(resId, "resId");
             var state = RepositoryItem.ClipboardAction.None;
             object o = null;
             lock (_clipLock)

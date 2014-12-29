@@ -1110,7 +1110,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         [Obsolete("Use the indexer of the Groups property instead")] //NOXLATE
         public RuntimeMapGroup GetGroupByName(string name)
         {
-            Check.NotNull(name, "name"); //NOXLATE
+            Check.ArgumentNotNull(name, "name"); //NOXLATE
             return this.Groups[name];
         }
 
@@ -1154,7 +1154,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns></returns>
         public int IndexOfLayer(string layerName)
         {
-            Check.NotEmpty(layerName, "layerName"); //NOXLATE
+            Check.ArgumentNotEmpty(layerName, "layerName"); //NOXLATE
 
             var layer = this.Layers[layerName];
             return this.Layers.IndexOf(layer);
@@ -1197,7 +1197,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns></returns>
         public RuntimeMapLayer[] GetLayersOfGroup(string groupName)
         {
-            Check.NotEmpty(groupName, "groupName"); //NOXLATE
+            Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
             List<RuntimeMapLayer> layers = new List<RuntimeMapLayer>();
             foreach (var lyr in this.Layers)
             {
@@ -1214,7 +1214,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns></returns>
         public RuntimeMapGroup[] GetGroupsOfGroup(string groupName)
         {
-            Check.NotEmpty(groupName, "groupName"); //NOXLATE
+            Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
             List<RuntimeMapGroup> groups = new List<RuntimeMapGroup>();
             foreach (var grp in this.Groups)
             {

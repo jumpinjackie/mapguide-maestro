@@ -71,7 +71,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <returns></returns>
         public ICollection<ValidationIssue> GetIssuesForResource(string resourceId)
         {
-            Check.NotEmpty(resourceId, "resourceId"); //NOXLATE
+            Check.ArgumentNotEmpty(resourceId, "resourceId"); //NOXLATE
 
             if (_issues.ContainsKey(resourceId))
                 return _issues[resourceId].Keys;
@@ -134,9 +134,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <param name="issue">The issue.</param>
         public void AddIssue(ValidationIssue issue)
         {
-            Check.NotNull(issue, "issue"); //NOXLATE
-            Check.NotNull(issue.Resource, "issue.Resource"); //NOXLATE
-            Check.NotEmpty(issue.Resource.ResourceID, "issue.Resource.ResourceID"); //NOXLATE
+            Check.ArgumentNotNull(issue, "issue"); //NOXLATE
+            Check.ArgumentNotNull(issue.Resource, "issue.Resource"); //NOXLATE
+            Check.ArgumentNotEmpty(issue.Resource.ResourceID, "issue.Resource.ResourceID"); //NOXLATE
 
             if (!_issues.ContainsKey(issue.Resource.ResourceID))
                 _issues[issue.Resource.ResourceID] = new Dictionary<ValidationIssue, ValidationIssue>();

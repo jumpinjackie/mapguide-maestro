@@ -132,7 +132,7 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0
 
         public void AddFiles(IEnumerable<string> files)
         {
-            Check.NotNull(files, "files"); //NOXLATE
+            Check.ArgumentNotNull(files, "files"); //NOXLATE
 
             var _files = this.sourceFileField;
             foreach (var f in files)
@@ -144,7 +144,7 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0
 
         public void RemoveFile(string file)
         {
-            Check.NotEmpty(file, "file"); //NOXLATE
+            Check.ArgumentNotEmpty(file, "file"); //NOXLATE
 
             if (this.sourceFileField.Contains(file))
             {

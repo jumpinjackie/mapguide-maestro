@@ -70,7 +70,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         /// <returns></returns>
         public static IPoint2D Center(this IEnvelope env)
         {
-            Check.NotNull(env, "env"); //NOXLATE
+            Check.ArgumentNotNull(env, "env"); //NOXLATE
 
             return ObjectFactory.CreatePoint2D(
                 (env.MinX + env.MaxX) / 2,
@@ -84,7 +84,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         /// <returns></returns>
         public static IEnvelope Clone(this IEnvelope env)
         {
-            Check.NotNull(env, "env"); //NOXLATE
+            Check.ArgumentNotNull(env, "env"); //NOXLATE
             return ObjectFactory.CreateEnvelope(env.MinX, env.MinY, env.MaxX, env.MaxY);
         }
 
@@ -95,7 +95,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         /// <param name="e1"></param>
         public static void ExpandToInclude(this IEnvelope env, IEnvelope e1)
         {
-            Check.NotNull(env, "env"); //NOXLATE
+            Check.ArgumentNotNull(env, "env"); //NOXLATE
             if (e1 == null)
                 return;
 
@@ -123,7 +123,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         /// </returns>
         public static bool Contains(this IEnvelope env, double x, double y)
         {
-            Check.NotNull(env, "env"); //NOXLATE
+            Check.ArgumentNotNull(env, "env"); //NOXLATE
 
             return env.MinX <= x &&
                    env.MaxX >= x &&
@@ -139,7 +139,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         /// <returns></returns>
         public static bool Intersects(this IEnvelope env, IEnvelope other)
         {
-            Check.NotNull(env, "env"); //NOXLATE
+            Check.ArgumentNotNull(env, "env"); //NOXLATE
 
             if (other == null)
                 return false;

@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDefinitionTests.cs" />
+    <Compile Include="CheckTests.cs" />
     <Compile Include="DrawingSourceTests.cs" />
     <Compile Include="FeatureSourceTests.cs" />
     <Compile Include="ObjectFactoryTests.cs" />

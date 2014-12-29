@@ -65,7 +65,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             public static TEventHandler Create(TEventHandler eh, Action<TEventHandler> cleanup)
             {
-                Check.That(eh != null && cleanup != null, "eh != null && cleanup != null");
+                Check.ThatPreconditionIsMet(eh != null && cleanup != null, "eh != null && cleanup != null");
                 // We don't create weak events for static methods since types don't get GC'd
                 Delegate d = (Delegate)(Object)eh;  // We know that all event handlers are derived from Delegate
                 if (d.Target == null) return eh;

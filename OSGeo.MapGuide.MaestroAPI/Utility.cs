@@ -1528,8 +1528,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>true if a replacement was made. false if no replacements were made</returns>
         public static bool ReplaceResourceIds(XmlDocument doc, string srcId, string dstId)
         {
-            Check.NotEmpty(srcId, "srcId"); //NOXLATE
-            Check.NotEmpty(dstId, "dstId"); //NOXLATE
+            Check.ArgumentNotEmpty(srcId, "srcId"); //NOXLATE
+            Check.ArgumentNotEmpty(dstId, "dstId"); //NOXLATE
             bool changed = false;
             //There's an unwritten spec that all elements that refer to a Resource ID are named "ResourceId".
             //This is why this method can be relied upon to cover all resource id references.
@@ -1605,7 +1605,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public static IApplicationDefinition CreateFlexibleLayout(IServerConnection conn, string templateName)
         {
-            Check.Precondition(Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Fusion) >= 0, "Required Fusion service not supported on this connection");
+            Check.ThatPreconditionIsMet(Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Fusion) >= 0, "Required Fusion service not supported on this connection");
 
             IFusionService service = (IFusionService)conn.GetService((int)ServiceType.Fusion);
             var templates = service.GetApplicationTemplates();

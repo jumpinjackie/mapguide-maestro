@@ -39,8 +39,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="ver">The ver.</param>
         public ResourceTypeDescriptor(string resType, string ver)
         {
-            Check.NotEmpty(resType, "resType"); //NOXLATE
-            Check.NotEmpty(ver, "ver"); //NOXLATE
+            Check.ArgumentNotEmpty(resType, "resType"); //NOXLATE
+            Check.ArgumentNotEmpty(ver, "ver"); //NOXLATE
 
             this.ResourceType = resType;
             this.Version = ver;

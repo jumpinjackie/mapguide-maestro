@@ -39,8 +39,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <param name="targetFolder">The target folder.</param>
         public RebaseOptions(string sourceFolder, string targetFolder)
         {
-            Check.Precondition(ResourceIdentifier.IsFolderResource(sourceFolder), "ResourceIdentifier.IsFolderResource(sourceFolder)"); //NOXLATE
-            Check.Precondition(ResourceIdentifier.IsFolderResource(targetFolder), "ResourceIdentifier.IsFolderResource(targetFolder)"); //NOXLATE
+            Check.ThatPreconditionIsMet(ResourceIdentifier.IsFolderResource(sourceFolder), "ResourceIdentifier.IsFolderResource(sourceFolder)"); //NOXLATE
+            Check.ThatPreconditionIsMet(ResourceIdentifier.IsFolderResource(targetFolder), "ResourceIdentifier.IsFolderResource(targetFolder)"); //NOXLATE
 
             this.SourceFolder = sourceFolder;
             this.TargetFolder = targetFolder;

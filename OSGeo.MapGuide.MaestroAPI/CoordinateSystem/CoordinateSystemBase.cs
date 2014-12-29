@@ -43,13 +43,13 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 
         public static CoordinateSystemBase Create(CoordinateSystemDefinitionBase csDef)
         {
-            Check.NotNull(csDef, "csDef");
+            Check.ArgumentNotNull(csDef, "csDef");
             return Create(csDef.WKT);
         }
 
         public static CoordinateSystemBase Create(string csWkt)
         {
-            Check.NotEmpty(csWkt, "csWkt");
+            Check.ArgumentNotEmpty(csWkt, "csWkt");
             return Create(_csFact.CreateFromWkt(csWkt));
         }
 
@@ -93,7 +93,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <returns>The scale</returns>
         public double CalculateScale(ObjCommon.IEnvelope bbox, System.Drawing.Size size)
         {
-            Check.NotNull(bbox, "bbox");
+            Check.ArgumentNotNull(bbox, "bbox");
             return CalculateScale(new Envelope(bbox.MinX, bbox.MaxX, bbox.MinY, bbox.MaxY), size);
         }
 
@@ -114,7 +114,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <returns>A bounding box with the correct ratio</returns>
         public ObjCommon.IEnvelope AdjustBoundingBox(ObjCommon.IEnvelope bbox, double scale, System.Drawing.Size size)
         {
-            Check.NotNull(bbox, "bbox");
+            Check.ArgumentNotNull(bbox, "bbox");
             var env = AdjustBoundingBox(new Envelope(bbox.MinX, bbox.MaxX, bbox.MinY, bbox.MaxY), scale, size);
             return OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateEnvelope(env.MinX, env.MinY, env.MaxX, env.MaxY);
         }

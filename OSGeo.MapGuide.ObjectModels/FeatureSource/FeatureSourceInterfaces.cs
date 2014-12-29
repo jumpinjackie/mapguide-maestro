@@ -363,7 +363,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <returns></returns>
         public static NameValueCollection GetConnectionProperties(this IFeatureSource fs)
         {
-            Check.NotNull(fs, "fs"); //NOXLATE
+            Check.ArgumentNotNull(fs, "fs"); //NOXLATE
             var values = new NameValueCollection();
             foreach (string name in fs.ConnectionPropertyNames)
             {
@@ -379,8 +379,8 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <param name="values"></param>
         public static void ApplyConnectionProperties(this IFeatureSource fs, NameValueCollection values)
         {
-            Check.NotNull(fs, "fs"); //NOXLATE
-            Check.NotNull(values, "values"); //NOXLATE
+            Check.ArgumentNotNull(fs, "fs"); //NOXLATE
+            Check.ArgumentNotNull(values, "values"); //NOXLATE
 
             fs.ClearConnectionProperties();
 
@@ -400,7 +400,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <param name="coordSys"></param>
         public static void AddSpatialContextOverride(this IFeatureSource fs, string name, string coordSys)
         {
-            Check.NotNull(fs, "fs"); //NOXLATE
+            Check.ArgumentNotNull(fs, "fs"); //NOXLATE
             fs.AddSpatialContextOverride(new SpatialContextType() { Name = name, CoordinateSystem = coordSys });
         }
 
@@ -412,7 +412,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <param name="secondary"></param>
         public static void AddRelateProperty(this IAttributeRelation rel, string primary, string secondary)
         {
-            Check.NotNull(rel, "rel"); //NOXLATE
+            Check.ArgumentNotNull(rel, "rel"); //NOXLATE
             rel.AddRelateProperty(new RelatePropertyType() { FeatureClassProperty = primary, AttributeClassProperty = secondary });
         }
     }

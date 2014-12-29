@@ -175,7 +175,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <returns>The matching class definition. null if not found</returns>
         public ClassDefinition GetClass(string qualifiedName)
         {
-            Check.NotEmpty(qualifiedName, "qualifiedName"); //NOXLATE
+            Check.ArgumentNotEmpty(qualifiedName, "qualifiedName"); //NOXLATE
             var tokens = qualifiedName.Split(':'); //NOXLATE
             if (tokens.Length != 2)
                 throw new ArgumentException(string.Format(Strings.ErrorNotAQualifiedClassName, qualifiedName));

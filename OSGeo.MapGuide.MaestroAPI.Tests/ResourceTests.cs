@@ -246,10 +246,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             SetupMapDefinitionForTest(mdf);
             int layerCount = mdf.GetLayerCount();
 
-            Assert.Throws<ArgumentException>(() => { mdf.MoveDown(null); });
-            Assert.Throws<ArgumentException>(() => { mdf.MoveUp(null); });
-            Assert.Throws<ArgumentException>(() => { mdf.SetTopDrawOrder(null); });
-            Assert.Throws<ArgumentException>(() => { mdf.SetBottomDrawOrder(null); });
+            Assert.Throws<ArgumentNullException>(() => { mdf.MoveDown(null); });
+            Assert.Throws<ArgumentNullException>(() => { mdf.MoveUp(null); });
+            Assert.Throws<ArgumentNullException>(() => { mdf.SetTopDrawOrder(null); });
+            Assert.Throws<ArgumentNullException>(() => { mdf.SetBottomDrawOrder(null); });
 
             IMapLayer layer = mdf.AddLayer(null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
             Assert.AreEqual(0, mdf.GetIndex(layer));
@@ -318,10 +318,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             SetupMapDefinitionForTest(mdf);
             int groupCount = mdf.GetGroupCount();
 
-            Assert.Throws<ArgumentException>(() => { mdf.MoveDown(null); });
-            Assert.Throws<ArgumentException>(() => { mdf.MoveUp(null); });
-            Assert.Throws<ArgumentException>(() => { mdf.SetTopDrawOrder(null); });
-            Assert.Throws<ArgumentException>(() => { mdf.SetBottomDrawOrder(null); });
+            Assert.Throws<ArgumentNullException>(() => { mdf.MoveDown(null); });
+            Assert.Throws<ArgumentNullException>(() => { mdf.MoveUp(null); });
+            Assert.Throws<ArgumentNullException>(() => { mdf.SetTopDrawOrder(null); });
+            Assert.Throws<ArgumentNullException>(() => { mdf.SetBottomDrawOrder(null); });
 
             IMapLayerGroup group = mdf.AddGroup("Test");
             Assert.AreEqual(groupCount, mdf.GetIndex(group));

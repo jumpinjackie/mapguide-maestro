@@ -75,7 +75,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns></returns>
         public static RuntimeMapGroup GetParentGroup(this RuntimeMapLayer layer)
         {
-            Check.NotNull(layer, "layer"); //NOXLATE
+            Check.ArgumentNotNull(layer, "layer"); //NOXLATE
 
             if (string.IsNullOrEmpty(layer.Group))
                 return null;
@@ -131,7 +131,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="suppressErrors"></param>
         protected void Initialize(ILayerDefinition ldf, bool suppressErrors)
         {
-            Check.NotNull(ldf, "ldf"); //NOXLATE
+            Check.ArgumentNotNull(ldf, "ldf"); //NOXLATE
             this.LayerDefinitionID = ldf.ResourceID;
             if (ldf.SubLayer.LayerType == LayerType.Vector)
             {
@@ -278,9 +278,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         protected internal RuntimeMapLayer(RuntimeMap parent, IBaseMapLayer source, ILayerDefinition ldf, bool suppressErrors)
             : this(parent, ldf, suppressErrors)
         {
-            Check.NotNull(source, "source"); //NOXLATE
-            Check.NotNull(ldf, "ldf"); //NOXLATE
-            Check.Precondition(source.ResourceId == ldf.ResourceID, "source.ResourceId == ldf.ResourceID"); //NOXLATE
+            Check.ArgumentNotNull(source, "source"); //NOXLATE
+            Check.ArgumentNotNull(ldf, "ldf"); //NOXLATE
+            Check.ThatPreconditionIsMet(source.ResourceId == ldf.ResourceID, "source.ResourceId == ldf.ResourceID"); //NOXLATE
         }
 
         private void EnsureOrderedMinMaxScales()

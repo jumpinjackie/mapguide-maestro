@@ -609,8 +609,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static bool WidgetNameExists(this IApplicationDefinition appDef, string name)
         {
-            Check.NotNull(appDef, "appDef");
-            Check.NotEmpty(name, "name");
+            Check.ArgumentNotNull(appDef, "appDef");
+            Check.ArgumentNotEmpty(name, "name");
 
             return appDef.FindWidget(name) != null;
         }
@@ -623,8 +623,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static IWidget FindWidget(this IApplicationDefinition appDef, string name)
         {
-            Check.NotNull(appDef, "appDef");
-            Check.NotEmpty(name, "name");
+            Check.ArgumentNotNull(appDef, "appDef");
+            Check.ArgumentNotEmpty(name, "name");
 
             foreach (var set in appDef.WidgetSets)
             {
@@ -645,8 +645,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <param name="deleteReferences">if set to <c>true</c> [deletes any references to the widget to be deleted].</param>
         public static void RemoveWidget(this IApplicationDefinition appDef, string widgetName, bool deleteReferences)
         {
-            Check.NotNull(appDef, "appDef"); //NOXLATE
-            Check.NotEmpty(widgetName, "widgetName"); //NOXLATE
+            Check.ArgumentNotNull(appDef, "appDef"); //NOXLATE
+            Check.ArgumentNotEmpty(widgetName, "widgetName"); //NOXLATE
 
             IWidgetSet matchingSet = null;
             IWidget matchingWidget = null;
@@ -718,8 +718,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static IApplicationDefinitionContainerInfo FindContainer(this IApplicationDefinitionContainerInfoSet set, string name)
         {
-            Check.NotNull(set, "set"); //NOXLATE
-            Check.NotEmpty(name, "name"); //NOXLATE
+            Check.ArgumentNotNull(set, "set"); //NOXLATE
+            Check.ArgumentNotEmpty(name, "name"); //NOXLATE
 
             foreach (var cnt in set.ContainerInfo)
             {
@@ -737,8 +737,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static IWidgetInfo FindWidget(this IApplicationDefinitionWidgetInfoSet set, string name)
         {
-            Check.NotNull(set, "set"); //NOXLATE
-            Check.NotEmpty(name, "name"); //NOXLATE
+            Check.ArgumentNotNull(set, "set"); //NOXLATE
+            Check.ArgumentNotEmpty(name, "name"); //NOXLATE
 
             foreach (var wgt in set.WidgetInfo)
             {
@@ -756,8 +756,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static IApplicationDefinitionTemplateInfo FindTemplate(this IApplicationDefinitionTemplateInfoSet set, string name)
         {
-            Check.NotNull(set, "set"); //NOXLATE
-            Check.NotEmpty(name, "name"); //NOXLATE
+            Check.ArgumentNotNull(set, "set"); //NOXLATE
+            Check.ArgumentNotEmpty(name, "name"); //NOXLATE
 
             foreach (var tpl in set.TemplateInfo)
             {
@@ -775,7 +775,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static IMapGroup GetGroupById(this IMapSet set, string id)
         {
-            Check.NotNull(set, "set"); //NOXLATE
+            Check.ArgumentNotNull(set, "set"); //NOXLATE
             foreach (var group in set.MapGroups)
             {
                 if (group.id.Equals(id))
@@ -791,7 +791,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static string[] GetNames(this IExtensibleElement ext)
         {
-            Check.NotNull(ext, "ext"); //NOXLATE
+            Check.ArgumentNotNull(ext, "ext"); //NOXLATE
 
             List<string> names = new List<string>();
 
@@ -810,7 +810,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static NameValueCollection GetAllValues(this IExtensibleElement ext)
         {
-            Check.NotNull(ext, "ext"); //NOXLATE
+            Check.ArgumentNotNull(ext, "ext"); //NOXLATE
             NameValueCollection values = new NameValueCollection();
             foreach (var el in ext.Extension.Content)
             {
@@ -826,8 +826,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <param name="values"></param>
         public static void SetAllValues(this IExtensibleElement ext, NameValueCollection values)
         {
-            Check.NotNull(ext, "ext"); //NOXLATE
-            Check.NotNull(values, "values"); //NOXLATE
+            Check.ArgumentNotNull(ext, "ext"); //NOXLATE
+            Check.ArgumentNotNull(values, "values"); //NOXLATE
 
             var elements = new List<XmlElement>();
             foreach (string name in values.Keys)
@@ -848,8 +848,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <param name="value"></param>
         public static void SetValue(this IExtensibleElement ext, string name, string value)
         {
-            Check.NotNull(ext, "ext"); //NOXLATE
-            Check.NotEmpty(name, "name"); //NOXLATE
+            Check.ArgumentNotNull(ext, "ext"); //NOXLATE
+            Check.ArgumentNotEmpty(name, "name"); //NOXLATE
 
             if (ext.Extension.Content != null)
             {
@@ -885,8 +885,8 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static string GetValue(this IExtensibleElement ext, string name)
         {
-            Check.NotNull(ext, "ext"); //NOXLATE
-            Check.NotEmpty(name, "name"); //NOXLATE
+            Check.ArgumentNotNull(ext, "ext"); //NOXLATE
+            Check.ArgumentNotEmpty(name, "name"); //NOXLATE
 
             if (ext.Extension.Content != null)
             {
@@ -907,7 +907,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static XmlElement FindElementByName(this XmlElement[] elements, string name)
         {
-            Check.NotNull(elements, "elements"); //NOXLATE
+            Check.ArgumentNotNull(elements, "elements"); //NOXLATE
             foreach (var el in elements)
             {
                 if (el.Name == name)
@@ -923,7 +923,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static string GetMapDefinition(this IMap map)
         {
-            Check.NotNull(map, "map"); //NOXLATE
+            Check.ArgumentNotNull(map, "map"); //NOXLATE
             return map.GetValue("ResourceId"); //NOXLATE
         }
 
@@ -934,7 +934,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <param name="mapDefId"></param>
         public static void SetMapDefinition(this IMap map, string mapDefId)
         {
-            Check.NotNull(map, "map"); //NOXLATE
+            Check.ArgumentNotNull(map, "map"); //NOXLATE
             map.SetValue("ResourceId", mapDefId); //NOXLATE
         }
 
@@ -945,7 +945,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition
         /// <returns></returns>
         public static IWidgetSet GetFirstWidgetSet(this IApplicationDefinition appDef)
         {
-            Check.NotNull(appDef, "appDef"); //NOXLATE
+            Check.ArgumentNotNull(appDef, "appDef"); //NOXLATE
             IWidgetSet set = null;
             foreach (var wgt in appDef.WidgetSets)
             {
@@ -995,8 +995,8 @@ public class RangedWidgetValue : WidgetValue
 {
     public RangedWidgetValue(string name, bool required, IComparable minValue, IComparable maxValue) : base(name, required)
     {
-        Check.NotNull(minValue, "minValue"); //NOXLATE
-        Check.NotNull(maxValue, "maxValue"); //NOXLATE
+        Check.ArgumentNotNull(minValue, "minValue"); //NOXLATE
+        Check.ArgumentNotNull(maxValue, "maxValue"); //NOXLATE
 
         if (minValue.CompareTo(maxValue) <= 0)
         {

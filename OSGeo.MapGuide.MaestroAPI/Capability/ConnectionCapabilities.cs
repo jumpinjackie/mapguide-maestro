@@ -287,7 +287,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         /// <returns></returns>
         public virtual bool IsSupportedResourceType(string resourceType)
         {
-            Check.NotEmpty(resourceType, "resourceType"); //NOXLATE
+            Check.ArgumentNotEmpty(resourceType, "resourceType"); //NOXLATE
 
             return Array.IndexOf(this.SupportedResourceTypes, resourceType) >= 0;
         }

@@ -40,7 +40,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <param name="validator">The validator.</param>
         public static void RegisterValidator(IResourceValidator validator)
         {
-            Check.NotNull(validator, "validator"); //NOXLATE
+            Check.ArgumentNotNull(validator, "validator"); //NOXLATE
 
             if (!m_validators.Contains(validator))
                 m_validators.Add(validator);
@@ -55,7 +55,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <returns></returns>
         public static ValidationIssue[] Validate(ResourceValidationContext context, IEnumerable<IResource> items, bool recurse)
         {
-            Check.NotNull(items, "items"); //NOXLATE
+            Check.ArgumentNotNull(items, "items"); //NOXLATE
             var issues = new List<ValidationIssue>();
             foreach (var item in items)
             {
@@ -74,7 +74,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <returns></returns>
         public static ValidationIssue[] Validate(ResourceValidationContext context, IResource item, bool recurse)
         {
-            Check.NotNull(item, "item"); //NOXLATE
+            Check.ArgumentNotNull(item, "item"); //NOXLATE
             var issueSet = new ValidationResultSet();
             if (!HasValidator(item.ResourceType, item.ResourceVersion))
             {
