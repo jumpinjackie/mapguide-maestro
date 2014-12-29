@@ -146,8 +146,9 @@
 		  </row>
 		</table>
 		<para>
-		To determine whether a given interface is accessible, you can either check the <codeEntityReference qualifyHint="false">P:OSGeo.MapGuide.MaestroAPI.Resource.IVersionedEntity.ResourceVersion</codeEntityReference> and refer
-		to this table to see if these interfaces can be casted from their older versions. Or you can utilise language features such as C#'s 
+		To determine whether a given interface is accessible, you can either check the <codeEntityReference qualifyHint="false">P:OSGeo.MapGuide.ObjectModels.IVersionedEntity.ResourceVersion</codeEntityReference> and refer
+		to this table to see if these interfaces can be casted from their older versions. Or you can utilise language features such as C#'s as keyword to cast objects to specific interfaces. If the casted object is not null, then that
+		interface is supported
 		</para>
       </content>
     </section>

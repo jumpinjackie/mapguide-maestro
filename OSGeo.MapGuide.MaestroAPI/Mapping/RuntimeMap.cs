@@ -36,8 +36,6 @@ using System.Linq;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping
 {
-    //TODO: Verify the code examples here :)
-
     /// <summary>
     /// Represents a runtime instance of a Map Definition
     /// </summary>

@@ -12,7 +12,7 @@
         </para>
         <list class="bullet">
            <listItem><para>The Maestro API core (OSGeo.MapGuide.MaestroAPI.dll)</para></listItem>
-           <listItem><para>The Maestro Extended Object Model Helper (OSGeo.MapGuide.ExtendedObjectModels.dll)</para></listItem>
+           <listItem><para>The Maestro Extended Object Model Helper (OSGeo.MapGuide.ObjectModels.dll)</para></listItem>
         </list>
         <para>
         For building GUI applications, you can tap into the Maestro UI components, which consist of:

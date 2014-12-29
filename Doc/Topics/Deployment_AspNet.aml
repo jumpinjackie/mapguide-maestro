@@ -28,19 +28,11 @@
 		</para>
 		<list class="bullet">
 		  <listItem><para>OSGeo.MapGuide.MaestroAPI.dll</para></listItem>
+          <listItem><para>OSGeo.MapGuide.ObjectModels.dll</para></listItem>
 		  <listItem><para>ConnectionProviders.xml</para></listItem>
 		  <listItem><para>Ciloci.Flee.dll</para></listItem>
 		  <listItem><para>NetTopologySuite.Merged.dll</para></listItem>
 		  <listItem><para>OSGeo.MapGuide.MaestroAPI.Http.dll</para></listItem>
-		</list>
-		<para>
-		In addition, if you have referenced the OSGeo.MapGuide.ExtenedObjectModels assembly
-		and need to support all known resource versions (greater than v1.0.0), then your application needs to
-		include the following additional binaries in your application's bin directory:
-		</para>
-		<list class="bullet">
-		  <listItem><para>OSGeo.MapGuide.ExtendedObjectModels.dll</para></listItem>
-		  <listItem><para>OSGeo.MapGuide.ObjectModels.*.dll</para></listItem>
 		</list>
       </content>
 	</section>

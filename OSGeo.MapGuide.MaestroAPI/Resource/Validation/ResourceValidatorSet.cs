@@ -28,8 +28,20 @@ using System.Collections.Generic;
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {
     /// <summary>
-    /// A collection of resource validators
+    /// A collection of resource validators. Use this to validate a given resource for common issues.
     /// </summary>
+    /// <example>
+    /// This example shows how a ResourceValidatorSet is used
+    /// <code>
+    /// <![CDATA[
+    /// IResource resource;
+    /// IServerConnection conn;
+    /// ...
+    /// var context = new ResourceValidationContext(conn);
+    /// var issues = ResourceValidatorSet.Validate(context, item, false);
+    /// ]]>
+    /// </code>
+    /// </example>
     public static class ResourceValidatorSet
     {
         private static List<IResourceValidator> m_validators = new List<IResourceValidator>();

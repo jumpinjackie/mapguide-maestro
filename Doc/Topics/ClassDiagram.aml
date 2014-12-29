@@ -42,6 +42,31 @@
           </section>
       </sections> -->
     </section>
+    <section address="ObjectModelsClassDiagramSection">
+      <title>Class Diagram: MapGuide Object Model Core Types</title>
+      <content>
+        <!-- Uncomment this to create a sub-section outline
+        <autoOutline /> -->
+        <para>The following class diagram outlines the core classes and interfaces of the Maestro API</para>
+        <mediaLink><image xlink:href="ObjectModelsClassDiagram" placement="center" /></mediaLink>
+      </content>
+      <!-- If a section contains a sections element, its content creates
+           sub-sections.  These are not collapsible.
+      <sections>
+          <section address="SubSection1">
+              <title>Sub-section 1</title>
+              <content>
+                  <para>Sub-section content.</para>
+              </content>
+          </section>
+          <section address="SubSection2">
+              <title>Sub-section 2</title>
+              <content>
+                  <para>Sub-section content.</para>
+              </content>
+          </section>
+      </sections> -->
+    </section>
     <relatedTopics>
       <!-- One or more of the following:
            - A local link

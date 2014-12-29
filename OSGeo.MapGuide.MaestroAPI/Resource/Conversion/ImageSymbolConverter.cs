@@ -38,6 +38,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
     /// A utility class that extracts image symbols from a Symbol Library and converts them
     /// to image-based Symbol Definition resources
     /// </summary>
+    /// <example>
+    /// This example shows how an ImageSymbolConverter is used
+    /// <code>
+    /// <![CDATA[
+    /// IServerConnection conn;
+    /// ...
+    /// var converter = new ImageSymbolConverter(conn, "Library://Test.SymbolLibrary");
+    /// converter.ExtractSymbols("Library://ExtractedSymbols/");
+    /// ]]>
+    /// </code>
+    /// </example>
     public class ImageSymbolConverter
     {
         private string _symbolLibId;
@@ -58,10 +69,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
             _conn = conn;
         }
 
+        /// <summary>
+        /// Extracts the specified symbols to the given folder
+        /// </summary>
+        /// <param name="targetFolder"></param>
+        /// <param name="symbols"></param>
+        /// <param name="progressCallback"></param>
         public void ExtractSymbols(string targetFolder, IEnumerable<string> symbols, Action<int, int> progressCallback)
         {
             Check.ArgumentNotEmpty(targetFolder, "targetFolder"); //NOXLATE
-            Check.ThatPreconditionIsMet(ResourceIdentifier.IsFolderResource(targetFolder), "ResourceIdentifier.IsFolderResource(targetFolder)"); //NOXLATE
+            Check.ThatArgumentIsFolder(targetFolder, "targetFolder"); //NOXLATE
 
             if (symbols == null)
             {

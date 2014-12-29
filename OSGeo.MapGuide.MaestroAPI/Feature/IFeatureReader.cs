@@ -36,6 +36,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// <item><description>The exception for this is if you are access the value via the indexer. In this case you only need determine the property type when casting from the System.Object that is returned by the indexer</description></item>
     /// </list>
     /// </remarks>
+    /// <example>
+    /// How an IFeatureReader is normally used
+    /// <code>
+    ///     IServerConnection conn = ConnectionProviderRegistry.CreateConnection("Maestro.Http",
+    ///         "Username", "Administrator",
+    ///         "Password", "admin",
+    ///         "Url", "http://localhost/mapguide/mapagent/mapagent.fcgi");
+    ///     using (IFeatureReader reader = conn.FeatureService.QueryFeatureSource("Library://Test/Parcels.FeatureSource", "Default:Parcels", null))
+    ///     {
+    ///         while (reader.ReadNext())
+    ///         {
+    ///             //Process the current feature
+    ///         }
+    ///         reader.Close();
+    ///     }
+    /// </code>
+    /// </example>
     public interface IFeatureReader : IReader, IFeature, IEnumerable<IFeature>
     {
     }

@@ -24,14 +24,36 @@ using OSGeo.MapGuide.ObjectModels;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Preview
 {
+    /// <summary>
+    /// Generates preview URLs for any given resource
+    /// </summary>
     public interface IResourcePreviewUrlGenerator
     {
+        /// <summary>
+        /// Gets or sets whether to use the AJAX viewer for previewing
+        /// </summary>
         bool UseAjaxViewer { get; set; }
 
+        /// <summary>
+        /// Gets or sets whether to insert a debug watermark in the previewed resource
+        /// </summary>
         bool AddDebugWatermark { get; set; }
 
+        /// <summary>
+        /// Generates a preview URL for the given resource
+        /// </summary>
+        /// <param name="res"></param>
+        /// <param name="locale"></param>
+        /// <param name="isNew"></param>
+        /// <param name="sessionID"></param>
+        /// <returns></returns>
         string GeneratePreviewUrl(IResource res, string locale, bool isNew, string sessionID);
 
+        /// <summary>
+        /// Gets whether the given resource type is previewable
+        /// </summary>
+        /// <param name="resourceType"></param>
+        /// <returns></returns>
         bool IsPreviewableType(string resourceType);
     }
 }

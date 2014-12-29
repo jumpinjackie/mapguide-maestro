@@ -26,6 +26,9 @@ using System;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Preview
 {
+    /// <summary>
+    /// Base class of any resource preview URL generator
+    /// </summary>
     public abstract class ResourcePreviewUrlGenerator : IResourcePreviewUrlGenerator
     {
         protected ResourcePreviewUrlGenerator()

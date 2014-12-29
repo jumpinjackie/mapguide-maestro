@@ -29,10 +29,11 @@ using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.Schema
 {
-    //TODO: Expand on documentation as this is an important class
-
     /// <summary>
-    /// Represents a FDO class definition
+    /// Represents a FDO class definition. A Class Definition defines the structure of features that originate
+    /// from it in feature queries. Class Definitions usually contain a Geometry property for spatial features.
+    /// 
+    /// Class Definitions belong to a Feature Schema
     /// </summary>
     public class ClassDefinition : SchemaElement, IFdoSerializable
     {

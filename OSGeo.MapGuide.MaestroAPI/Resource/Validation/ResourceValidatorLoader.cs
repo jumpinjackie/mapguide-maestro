@@ -25,6 +25,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     /// <summary>
     /// Utility class that initializes the default set of resource validators
     /// </summary>
+    /// <example>
+    /// This example shows how a ResourceValidatorLoader is used
+    /// <code>
+    /// <![CDATA[
+    /// IResource resource;
+    /// IServerConnection conn;
+    /// ...
+    /// ResourceValidatorLoader.LoadStockValidators();
+    /// var context = new ResourceValidationContext(conn);
+    /// var issues = ResourceValidatorSet.Validate(context, item, false);
+    /// ]]>
+    /// </code>
+    /// </example>
     public static class ResourceValidatorLoader
     {
         private static bool m_initialized = false;
@@ -32,6 +45,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <summary>
         /// Loads the default set of validators in this assembly
         /// </summary>
+        /// <remarks>
+        /// This method only needs to be called once. Subsequent calls return immediately. As such it is ideal
+        /// to put this call in your application's startup/initialization code.
+        /// </remarks>
         public static void LoadStockValidators()
         {
             if (m_initialized)

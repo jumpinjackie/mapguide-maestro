@@ -467,10 +467,7 @@ namespace MaestroAPITests
             fs.ResourceID = fsId;
             conn.ResourceService.SaveResource(fs);
 
-            using (var ms = CredentialWriter.Write(actualUser, actualPass))
-            {
-                conn.ResourceService.SetResourceData(fsId, "MG_USER_CREDENTIALS", ResourceDataType.String, ms);
-            }
+            fs.SetEncryptedCredentials(conn, actualUser, actualPass);
 
             string result = conn.FeatureService.TestConnection(fsId);
             Assert.AreEqual("TRUE", result.ToUpper());

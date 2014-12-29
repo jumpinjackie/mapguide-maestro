@@ -27,8 +27,22 @@ using System.Collections.Generic;
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {
     /// <summary>
-    /// A "bucket" class that filters out redundant validation messages
+    /// A "bucket" class that filters out redundant validation messages and allows for filtering the set of
+    /// validation results by resource and specific validation status types
     /// </summary>
+    /// <example>
+    /// This example shows how a ValidationResultSet is used
+    /// <code>
+    /// <![CDATA[
+    /// IResource resource;
+    /// IServerConnection conn;
+    /// ...
+    /// var context = new ResourceValidationContext(conn);
+    /// var issues = ResourceValidatorSet.Validate(context, item, false);
+    /// var results = new ValidationResultSet(issues);
+    /// ]]>
+    /// </code>
+    /// </example>
     public class ValidationResultSet
     {
         //HACK: Abusing the Key component of Dictionary<K, V> because there is no

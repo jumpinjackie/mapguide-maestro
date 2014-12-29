@@ -69,6 +69,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ResourceTests.cs" />
+    <Compile Include="Resource\ResourceSchemaChainTests.cs" />
     <Compile Include="SchemaTests.cs" />
     <Compile Include="Schema\ClassDefinitionTests.cs" />
     <Compile Include="Schema\DataPropertyDefinitionTests.cs" />

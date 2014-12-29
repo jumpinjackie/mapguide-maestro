@@ -1,232 +1,203 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
   <Comment CommentText="Runtime Map Classes">
-    <Position X="24.124" Y="1.189" Height="0.311" Width="2.759" />
+    <Position X="3.856" Y="7.847" Height="0.311" Width="2.759" />
   </Comment>
   <Comment CommentText="Maestro API root classes / interfaces">
-    <Position X="23.786" Y="6.767" Height="0.441" Width="2.653" />
-  </Comment>
-  <Comment CommentText="Resource Object Model - Core Interfaces">
-    <Position X="11.447" Y="1.277" Height="0.38" Width="2.691" />
+    <Position X="1.25" Y="13" Height="0.441" Width="2.653" />
   </Comment>
   <Comment CommentText="Services API - Core Interfaces">
-    <Position X="7.741" Y="7.09" Height="0.402" Width="2.215" />
-  </Comment>
-  <Comment CommentText="The UntypedResource class is an arbitrary container of XML content and is only returned by any API that returns IResource if the resource schema version is not recognised or not supported yet">
-    <Position X="7.26" Y="2.033" Height="1.032" Width="2.744" />
+    <Position X="7.491" Y="1.59" Height="0.402" Width="2.215" />
   </Comment>
   <Comment CommentText="Use IServerConnection.GetService(int) to create service objects of the specified type, passing in a ServiceType enum casted to an int. Use connection capabilities to determine supported services. All IServerConnection implementations have built-in support for resource and feature services and are accessible  via the top-level ResourceService and FeatureService properties.">
-    <Position X="11.946" Y="6.668" Height="1.073" Width="4.942" />
+    <Position X="11.696" Y="1.168" Height="1.073" Width="4.942" />
   </Comment>
   <Comment CommentText="The IMappingService provides operations to create, open and interact with a RuntimeMap and methods to create RuntimeMapLayer and RuntimeMapGroup instances that can then be added to the RuntimeMap">
-    <Position X="24.11" Y="1.653" Height="0.984" Width="3.113" />
+    <Position X="3.81" Y="8.406" Height="0.984" Width="3.113" />
   </Comment>
   <Comment CommentText="Schema API - Classes used to model the structure of a Feature Source">
-    <Position X="22.665" Y="9.539" Height="0.353" Width="4.34" />
+    <Position X="10.5" Y="9.5" Height="0.353" Width="4.34" />
   </Comment>
   <Comment CommentText="A FeatureSourceDescription contains 1 or more FeatureSchema instances">
-    <Position X="22.665" Y="10.171" Height="0.316" Width="4.327" />
+    <Position X="10.5" Y="10.132" Height="0.316" Width="4.327" />
   </Comment>
   <Comment CommentText="A FeatureSchema contains 1 or more ClassDefinition instances">
-    <Position X="22.665" Y="10.543" Height="0.341" Width="4.327" />
+    <Position X="10.5" Y="10.504" Height="0.341" Width="4.327" />
   </Comment>
   <Comment CommentText="A ClassDefinition contains 1 or more PropertyDefinition instances">
-    <Position X="22.665" Y="10.927" Height="0.341" Width="4.327" />
+    <Position X="10.5" Y="10.888" Height="0.341" Width="4.327" />
   </Comment>
   <Comment CommentText="Accessing and creating instances of other classes and interfaces in this diagram is usually done through one of these 4 classes/interfaces">
-    <Position X="23.801" Y="7.423" Height="0.75" Width="2.642" />
+    <Position X="4.169" Y="12.867" Height="0.75" Width="2.642" />
   </Comment>
   <Comment CommentText="Feature API - Core Interfaces for working with data queried via IFeatureService">
-    <Position X="31.958" Y="2.231" Height="0.503" Width="2.656" />
+    <Position X="24.208" Y="2.481" Height="0.503" Width="2.656" />
   </Comment>
   <Comment CommentText="Feature Queries return IFeatureReader">
-    <Position X="31.958" Y="2.984" Height="0.379" Width="2.656" />
+    <Position X="24.208" Y="3.234" Height="0.379" Width="2.656" />
   </Comment>
   <Comment CommentText="Aggregate and SQL Queries return IReader">
-    <Position X="31.958" Y="3.467" Height="0.39" Width="2.656" />
+    <Position X="24.208" Y="3.717" Height="0.39" Width="2.656" />
   </Comment>
   <Comment CommentText="Both IReader and IFeatureReader are forward-only iterators. Must first call ReadNext() on respective readers to access the data">
-    <Position X="31.958" Y="3.973" Height="0.75" Width="2.644" />
+    <Position X="24.208" Y="4.223" Height="0.75" Width="2.644" />
   </Comment>
   <Comment CommentText="IReader and IFeatureReader are IEnumerable&lt;IRecord&gt; and IEnumerable&lt;IFeature&gt; respectively. This means that these readers can also be iterated via a foreach loop instead of ReadNext() in a while loop">
-    <Position X="31.969" Y="4.85" Height="1.192" Width="2.622" />
+    <Position X="24.219" Y="5.1" Height="1.192" Width="2.622" />
   </Comment>
   <Comment CommentText="Used for describing and querying drawing data from a Drawing Source">
-    <Position X="2.026" Y="11.19" Height="0.594" Width="2.492" />
+    <Position X="1.776" Y="5.69" Height="0.594" Width="2.492" />
   </Comment>
   <Comment CommentText="Used for assisting in building Fusion Flexible Layouts (aka. Application Definitions)">
-    <Position X="4.786" Y="10.065" Height="0.75" Width="2.221" />
+    <Position X="4.536" Y="4.565" Height="0.75" Width="2.221" />
   </Comment>
   <Comment CommentText="Used for rendering / pre-caching of Map Tiles">
-    <Position X="7.266" Y="9.617" Height="0.531" Width="1.971" />
+    <Position X="7.016" Y="4.117" Height="0.531" Width="1.971" />
   </Comment>
   <Comment CommentText="Used for creating, opening and interacting with a Runtime Map">
-    <Position X="9.529" Y="11.295" Height="0.552" Width="1.971" />
+    <Position X="9.279" Y="5.795" Height="0.552" Width="1.971" />
   </Comment>
   <Comment CommentText="Used for querying MapGuide Server information">
-    <Position X="11.758" Y="10.034" Height="0.51" Width="1.981" />
+    <Position X="11.508" Y="4.534" Height="0.51" Width="1.981" />
   </Comment>
   <Comment CommentText="Used for querying spatial and non-spatial data from a Feature Source. Also provides APIs for describing the structure of a Feature Source">
-    <Position X="13.995" Y="12.784" Height="0.844" Width="2.742" />
+    <Position X="13.777" Y="7.963" Height="0.844" Width="2.742" />
   </Comment>
   <Comment CommentText="Used for saving, reading and managing resources in a MapGuide Repository">
-    <Position X="17.005" Y="15.232" Height="0.573" Width="2.742" />
-  </Comment>
-  <Comment CommentText="Load Procedure objects can be executed via IServerConnection.ExecuteLoadProcedure()">
-    <Position X="14.599" Y="4.711" Height="0.563" Width="2.669" />
-  </Comment>
-  <Comment CommentText="Check the ResourceType property to determine which interface an IResource instance can be cast into">
-    <Position X="13.708" Y="2.187" Height="0.719" Width="2.21" />
+    <Position X="16.755" Y="9.732" Height="0.573" Width="2.742" />
   </Comment>
   <Comment CommentText="Use the Type property of PropertyDefinition to determine the subclass it can be cast to">
-    <Position X="20.218" Y="12.461" Height="0.654" Width="2.287" />
+    <Position X="8.053" Y="12.422" Height="0.654" Width="2.287" />
   </Comment>
   <Comment CommentText="Custom Commands - Interfaces for custom commands to execute custom functionality. Support for such commands vary between connection providers">
-    <Position X="31.667" Y="11.437" Height="0.904" Width="2.841" />
+    <Position X="19.5" Y="11.5" Height="0.904" Width="2.841" />
   </Comment>
   <Comment CommentText="Mutable features and records can have their property values modified">
-    <Position X="27.74" Y="4.188" Height="0.708" Width="1.7" />
+    <Position X="19.99" Y="4.438" Height="0.708" Width="1.7" />
   </Comment>
-  <Class Name="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry" Collapsed="true">
-    <Position X="21.25" Y="7" Width="2.25" />
+  <Comment CommentText="The ResourceObjectConverter allows  for conversion of resources between schema versions">
+    <Position X="8.092" Y="8.232" Height="0.624" Width="2.252" />
+  </Comment>
+  <Comment CommentText="The ResourceValidatorSet allows for validation to be performed on resources to ensure certain rules and constraints are not violated">
+    <Position X="10.848" Y="8.421" Height="0.813" Width="2.394" />
+  </Comment>
+  <Class Name="OSGeo.MapGuide.MaestroAPI.ConnectionProviderRegistry">
+    <Position X="1.5" Y="14" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAgEAEAAAAAAAEAAAAAAAAAAAIQAAAAAAIEABAAAAA=</HashCode>
+      <HashCode>AAAgEAEAAAAAAAEAAAEAAAAAAAIQAAAAAAIEABAAAAA=</HashCode>
       <FileName>ConnectionProviderRegistry.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSGeo.MapGuide.ObjectModels.ObjectFactory" Collapsed="true">
-    <Position X="21.25" Y="6.25" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>iaANAgAABERABAAAJAoAkAAgRAAACABAYAhAgCCAAEg=</HashCode>
-      <FileName>ObjectModels\ObjectFactory.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="OSGeo.MapGuide.MaestroAPI.ResourceTypeRegistry" Collapsed="true">
-    <Position X="21.25" Y="7.75" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAARAAAAAAAAAACBACAAAAAACAAAAAAA=</HashCode>
-      <FileName>ResourceTypeRegistry.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap" Collapsed="true">
-    <Position X="21.5" Y="2" Width="2.25" />
+    <Position X="1.25" Y="8.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>VgqRItUhFBECAAABI4BWwSaLymhwkBLFjRIFYIFISVA=</HashCode>
+      <HashCode>VguRItUhEFECEAQBI4A2xSaJymhwkBLFjRIFoIGISUA=</HashCode>
       <FileName>Mapping\RuntimeMap.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapGroup" Collapsed="true">
-    <Position X="21.5" Y="4.75" Width="2.25" />
+    <Position X="1.25" Y="11.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>QEAAIEEAAAAAAAAAIAQQQAQACCBBAAAJAQBAAAAAAAI=</HashCode>
       <FileName>Mapping\RuntimeMapGroup.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayer" Collapsed="true">
-    <Position X="24.25" Y="4.75" Width="2.25" />
+    <Position X="4" Y="11.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>QEAIYEMQATQAEQQBYARwQATALHBTgIQJE0NACAKyyBM=</HashCode>
+      <HashCode>QEAI4EMYATQAEQQBYARwQATALHBTgIQJE0NACAKyyBM=</HashCode>
       <FileName>Mapping\RuntimeMapLayer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSGeo.MapGuide.MaestroAPI.Mapping.KeyValueCollection&lt;TKey, TVal&gt;" Collapsed="true">
-    <Position X="22.75" Y="3" Width="2.5" />
+    <Position X="2.5" Y="10" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AGIAAEAAAAAABBAQCQBABARAAAAAAAAACAAIAABQICE=</HashCode>
+      <HashCode>AmIAAEAACIAEBBARCSBAhCRQQAUMARAACAAIAABQICM=</HashCode>
       <FileName>Mapping\Collections.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapLayerCollection" Collapsed="true">
-    <Position X="24.25" Y="4" Width="2.25" />
+    <Position X="4" Y="11" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAIAAEAAAAAABAAACQAABABQAAAAAAAACAEAAAAAAIE=</HashCode>
       <FileName>Mapping\Collections.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMapGroupCollection" Collapsed="true">
-    <Position X="21.5" Y="4" Width="2.25" />
+    <Position X="1.25" Y="11" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAAAQAABAAQAAAAAAAAAAAAAAAAAAE=</HashCode>
       <FileName>Mapping\Collections.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSGeo.MapGuide.ObjectModels.UntypedResource" Collapsed="true">
-    <Position X="10.25" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAEAAAAAEAAAAAACAIAAQQAAgCAAAAAAAAAACAAAABA=</HashCode>
-      <FileName>ObjectModels\UntypedResource.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
   <Class Name="OSGeo.MapGuide.MaestroAPI.Schema.ClassDefinition" Collapsed="true">
-    <Position X="20.25" Y="11.5" Width="2" />
+    <Position X="8" Y="11.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAQAoAQADBAECAACUAAQAAKAQAAAAAYAAAAgAACABA=</HashCode>
+      <HashCode>AAAQAoAQEDBAECAACUAAQAAIAQAAAAAYAAAAAAACADA=</HashCode>
       <FileName>Schema\ClassDefinition.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema" Collapsed="true">
-    <Position X="20.25" Y="10.5" Width="2" />
+    <Position X="8" Y="10.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AEAAAAAAAAEAAGAACABAAAACCBAAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AEAAAAAAAAEAAGAACABAAAACCBAAAAAAAAAAgAAAABA=</HashCode>
       <FileName>Schema\FeatureSchema.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="OSGeo.MapGuide.MaestroAPI.Schema.FeatureSourceDescription" Collapsed="true">
-    <Position X="20.25" Y="9.5" Width="2" />
+    <Position X="8" Y="9.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAACABACAAgAAAgAAAAgAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAACABACAAgAAAgAAAAgBA=</HashCode>
       <FileName>Schema\FeatureSourceDescription.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyDefinition" Collapsed="true">
-    <Position X="22.75" Y="13.5" Width="2" />
+    <Position X="10.5" Y="13.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAgAAAAIAgAAQAAIAAABCAoBAAAAAAQAAgACAMIA=</HashCode>
       <FileName>Schema\DataPropertyDefinition.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSGeo.MapGuide.MaestroAPI.Schema.GeometricPropertyDefinition" Collapsed="true">
-    <Position X="20.25" Y="13.5" Width="2.25" />
+    <Position X="8" Y="13.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>QAQAAAAAgAAAAAASAAAAQAAOAAAAQAAAARAAgARAAIA=</HashCode>
       <FileName>Schema\GeometricPropertyDefinition.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinition" Collapsed="true">
-    <Position X="22.75" Y="12.5" Width="2" />
+    <Position X="10.5" Y="12.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAgAAAAAAAAAAAAAAAAQAACAAAAAAAAAQAAgAAAAJA=</HashCode>
+      <HashCode>AAAgAAAAEAAAAAAAAAAAQAACAAAAAAAAAQAAgAAAALA=</HashCode>
       <FileName>Schema\PropertyDefinition.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="OSGeo.MapGuide.MaestroAPI.Schema.RasterPropertyDefinition" Collapsed="true">
-    <Position X="25" Y="13.5" Width="2" />
+    <Position X="12.75" Y="13.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAgAAAAAAQAAAAAAACAAAAQAAAAQAAgAAAIIA=</HashCode>
       <FileName>Schema\RasterPropertyDefinition.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSGeo.MapGuide.MaestroAPI.Resource.ResourceIdentifier" Collapsed="true">
-    <Position X="5" Y="2.25" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>gAJiKBBAAACBgAIEGEgAQERKBAACIQRBCAAEQABABCA=</HashCode>
-      <FileName>Resource\ResourceIdentifier.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="OSGeo.MapGuide.MaestroAPI.Resource.Validation.ResourceValidatorSet" Collapsed="true">
-    <Position X="5" Y="1.25" Width="1.75" />
+  <Class Name="OSGeo.MapGuide.MaestroAPI.Resource.Validation.ResourceValidatorSet">
+    <Position X="11" Y="6.5" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAQAAAAAAIAAAAIAAAAAAAAAAA=</HashCode>
       <FileName>Resource\Validation\ResourceValidatorSet.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OSGeo.MapGuide.MaestroAPI.Resource.Conversion.ResourceObjectConverter" Collapsed="true">
-    <Position X="2.75" Y="1.25" Width="2" />
+  <Class Name="OSGeo.MapGuide.MaestroAPI.Resource.Conversion.ResourceObjectConverter">
+    <Position X="8.25" Y="6.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Resource\Conversion\IResourceConverter.cs</FileName>
@@ -234,325 +205,213 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="OSGeo.MapGuide.MaestroAPI.Mapping.MapSelection" Collapsed="true">
-    <Position X="21.5" Y="1.25" Width="2.25" />
+    <Position X="1.25" Y="7.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AGIAAEAAAAAgABAQCAAABAQAACBAAAAECEAAAABQMAA=</HashCode>
       <FileName>Mapping\MapSelection.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Interface Name="OSGeo.MapGuide.MaestroAPI.IServerConnection" Collapsed="true">
-    <Position X="21.25" Y="8.5" Width="2.25" />
+  <Interface Name="OSGeo.MapGuide.MaestroAPI.IServerConnection">
+    <Position X="4" Y="14" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAEgAAEBAAABEAAAAGSABIAAAAEAAAEAlAAAAQAFA=</HashCode>
+      <HashCode>AAACEgAAEBAAABEAAAAGSABIAAAAEAAAEClAAAAQAFQ=</HashCode>
       <FileName>IServerConnection.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Services.IDrawingService">
-    <Position X="2" Y="8.25" Width="2.5" />
+    <Position X="1.75" Y="2.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AABAEAAACACAAAAAAAAAABAAAgAIAAAACAAAAAAAAAQ=</HashCode>
       <FileName>Services\IDrawingService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Services.ITileService">
-    <Position X="7.25" Y="8.25" Width="2" />
+    <Position X="7" Y="2.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Services\ITileService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Services.IFeatureService">
-    <Position X="14" Y="8.25" Width="2.75" />
+    <Position X="13.75" Y="2.75" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAIAAMCAAAAECIABAgAAAIABAAAAAAABEAAACA=</HashCode>
+      <HashCode>IAABAAAIAAMCAAAAECIABAgAAAIABAAAABAABEAAACA=</HashCode>
       <FileName>Services\IFeatureService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Services.IFusionService">
-    <Position X="4.75" Y="8.25" Width="2.25" />
+    <Position X="4.5" Y="2.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAQAAAAAAAAAAAAAQAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Services\IFusionService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Services.IMappingService">
-    <Position X="9.5" Y="8.25" Width="2" />
+    <Position X="9.25" Y="2.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAEAAAAAAAAAEAAAAAAEAAAAAEABAAEAAAUAE=</HashCode>
       <FileName>Services\IMappingService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Services.IResourceService">
-    <Position X="17" Y="8.25" Width="2.75" />
+    <Position X="16.75" Y="2.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>BAAAoACAgU0BEAAEAAAAAIICGEJAAEUIAAAAWBAEAAA=</HashCode>
       <FileName>Services\IResourceService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Services.IService" Collapsed="true">
-    <Position X="10.25" Y="7" Width="1.5" />
+    <Position X="10" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Services\IService.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Services.ISiteService">
-    <Position X="11.75" Y="8.25" Width="2" />
+    <Position X="11.5" Y="2.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAgAAAAAAAgAAAAAAAAAAQAAAAAAAA=</HashCode>
       <FileName>Services\ISiteService.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="IResource" Collapsed="true">
-    <Position X="12" Y="2" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAEAAAAAACAIAAQAAAACAAAAAAAAAACAAAAAA=</HashCode>
-      <FileName>Resource\IResource.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="OSGeo.MapGuide.ObjectModels.FeatureSource.IFeatureSource" Collapsed="true">
-    <Position X="3.25" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AQAAAAAAAAwGgAAAAAAAAAAQIAAAAQAQkSAAIAAAABg=</HashCode>
-      <FileName>ObjectModels\FeatureSourceInterfaces.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="OSGeo.MapGuide.ObjectModels.DrawingSource.IDrawingSource" Collapsed="true">
-    <Position X="5" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAABAgEgAAAAAAAAAACAAAgAAAAAAAAAEAA=</HashCode>
-      <FileName>ObjectModels\DrawingSourceInterfaces.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="OSGeo.MapGuide.ObjectModels.LayerDefinition.ILayerDefinition" Collapsed="true">
-    <Position X="6.75" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ObjectModels\LayerInterfaces.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition" Collapsed="true">
-    <Position X="10.25" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ACMAAACIBQAAAAAQAABAIAQQAAAgAEIAwAAACAJEAAA=</HashCode>
-      <FileName>ObjectModels\MapDefinitionInterfaces.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout" Collapsed="true">
-    <Position X="8.5" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>gCAAAQCAABAAAUBAAQAAABIIAABAIBBgAACAAIADCRg=</HashCode>
-      <FileName>ObjectModels\WebLayoutInterfaces.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="OSGeo.MapGuide.ObjectModels.WebLayout.IWebLayout2" Collapsed="true">
-    <Position X="8.5" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ObjectModels\WebLayoutInterfaces.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="OSGeo.MapGuide.ObjectModels.PrintLayout.IPrintLayout" Collapsed="true">
-    <Position X="12" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AQEQAAECAAAAAAABABICAAAgAAAAAAgAIAAAAAEAAAA=</HashCode>
-      <FileName>ObjectModels\PrintLayoutInterfaces.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="OSGeo.MapGuide.ObjectModels.ApplicationDefinition.IApplicationDefinition" Collapsed="true">
-    <Position X="17.25" Y="3.75" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAQEAAAABAEIAAAACAAAAAAABAAAEIAQgAAQAAQE=</HashCode>
-      <FileName>ObjectModels\ApplicationDefinitionInterfaces.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="OSGeo.MapGuide.ObjectModels.LoadProcedure.ILoadProcedure" Collapsed="true">
-    <Position X="15.5" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ObjectModels\LoadProcedureInterfaces.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="OSGeo.MapGuide.ObjectModels.SymbolLibrary.ISymbolLibrary" Collapsed="true">
-    <Position X="13.75" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
-      <FileName>ObjectModels\SymbolLibraryInterfaces.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISymbolDefinitionBase" Collapsed="true">
-    <Position X="19.25" Y="3.75" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAgAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
-      <FileName>ObjectModels\SymbolInterfaces.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="OSGeo.MapGuide.ObjectModels.SymbolDefinition.ISimpleSymbolDefinition" Collapsed="true">
-    <Position X="17.5" Y="5.75" Width="2" />
-    <TypeIdentifier>
-      <HashCode>CAAQAAAQACMkAAAgAAAAAAAACAAAAiEgAQACAwAAAAg=</HashCode>
-      <FileName>ObjectModels\SymbolInterfaces.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="OSGeo.MapGuide.ObjectModels.SymbolDefinition.ICompoundSymbolDefinition" Collapsed="true">
-    <Position X="17.5" Y="4.75" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAACQgAAAAAAAAQAAAAAAAAAAAACAAAACAAAAA=</HashCode>
-      <FileName>ObjectModels\SymbolInterfaces.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="OSGeo.MapGuide.ObjectModels.MapDefinition.IMapDefinition2" Collapsed="true">
-    <Position X="10.25" Y="5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ObjectModels\MapDefinitionInterfaces.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Feature.IReader">
-    <Position X="29" Y="6.5" Width="1.5" />
+    <Position X="21.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAACAAAA=</HashCode>
       <FileName>Feature\IReader.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Feature.IRecord">
-    <Position X="29.75" Y="2" Width="2" />
+    <Position X="22" Y="2.25" Width="2" />
     <TypeIdentifier>
       <HashCode>BAAAAAQggAACAAAACAAABAIAAAAEAAQYIBAAAAAABkA=</HashCode>
       <FileName>Feature\IReader.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader">
-    <Position X="30" Y="8.5" Width="1.5" />
+    <Position X="22.25" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Feature\IFeatureReader.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Feature.IFeature">
-    <Position X="31" Y="6.5" Width="1.5" />
+    <Position X="23.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAIAAAAA=</HashCode>
       <FileName>Feature\IFeatureReader.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Feature.IMutableFeature" Collapsed="true">
-    <Position X="27.75" Y="3.25" Width="1.5" />
+    <Position X="20" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAIAAAAA=</HashCode>
       <FileName>Feature\IFeatureReader.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Feature.IMutableRecord" Collapsed="true">
-    <Position X="27.75" Y="2" Width="1.5" />
+    <Position X="20" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IEBAAAIgAAEAAAAACEAAAAAAIABACAAAAAEAAAAABCA=</HashCode>
       <FileName>Feature\IReader.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.ICommand" Collapsed="true">
-    <Position X="29.75" Y="12.75" Width="1.5" />
+    <Position X="17.5" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Commands\ICommand.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.ICreateDataStore">
-    <Position X="28" Y="14" Width="1.5" />
+    <Position X="15.75" Y="14" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAEAAQAAAAAAAAEAAAAAAAAAAAAAABgAAA=</HashCode>
       <FileName>Commands\FeatureManipulationCommands.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.IDeleteFeatures">
-    <Position X="31.75" Y="14.5" Width="1.5" />
+    <Position X="19.5" Y="14.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Commands\FeatureManipulationCommands.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.IFeatureCommand">
-    <Position X="31.75" Y="12.75" Width="1.5" />
+    <Position X="19.5" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
       <FileName>Commands\FeatureManipulationCommands.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.IInsertFeatures">
-    <Position X="33.5" Y="14.5" Width="1.5" />
+    <Position X="21.25" Y="14.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
       <FileName>Commands\FeatureManipulationCommands.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.IUpdateFeatures">
-    <Position X="35.25" Y="14.5" Width="1.5" />
+    <Position X="23" Y="14.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAABAAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>Commands\FeatureManipulationCommands.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.IApplySchema">
-    <Position X="29.75" Y="14" Width="1.5" />
+    <Position X="17.5" Y="14" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAEAAAAAAAAAAAAAAAgAAA=</HashCode>
       <FileName>Commands\FeatureManipulationCommands.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.IGetResourceContents">
-    <Position X="29.75" Y="11.25" Width="1.5" />
+    <Position X="17.5" Y="11.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Commands\IGetResourceContents.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="OSGeo.MapGuide.MaestroAPI.Commands.IGetFdoCacheInfo">
-    <Position X="28" Y="12.25" Width="1.5" />
+    <Position X="15.75" Y="12.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Commands\IGetFdoCacheInfo.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="OSGeo.MapGuide.MaestroAPI.Services.ServiceType">
-    <Position X="7.25" Y="10.5" Width="2" />
+    <Position X="4.5" Y="5.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAIAABgAAAAAAAACAAAAAAAAAAAAAACIAAAQA=</HashCode>
       <FileName>Services\ServiceType.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="OSGeo.MapGuide.MaestroAPI.ResourceTypes">
-    <Position X="1" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAgAMAAAAARAAAAQAAAAAAIAAAAACAABAAAAgAQABAA=</HashCode>
-      <FileName>Enums.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
   <Enum Name="OSGeo.MapGuide.MaestroAPI.Schema.DataPropertyType">
-    <Position X="22.75" Y="14.5" Width="2" />
+    <Position X="10.5" Y="14.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAAQAAAAAAQAAAAACAJAACAAQAEEAAAACAAAA=</HashCode>
       <FileName>Schema\PropertyDefinition.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="OSGeo.MapGuide.MaestroAPI.Schema.FeatureGeometricType">
-    <Position X="20.25" Y="14.5" Width="2.25" />
+    <Position X="8" Y="14.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAAAAAAAEAAAAAAAIgIAAAAAAAAA=</HashCode>
       <FileName>Schema\GeometricPropertyDefinition.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinitionType">
-    <Position X="25" Y="11.5" Width="2" />
+    <Position X="12.75" Y="11.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAhAAAAAAAAAAAAABAAAAAAAAAAgQA=</HashCode>
       <FileName>Schema\PropertyDefinition.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="OSGeo.MapGuide.MaestroAPI.Commands.CommandType">
-    <Position X="34.75" Y="11.75" Width="1.5" />
+    <Position X="22.5" Y="11.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAABAAQAAGAAAAAAAAAAIBAAAAAAAAAAAAIAAA=</HashCode>
+      <HashCode>AAAAAAAABAAQAAWEAAAAAAAAAIBAAAAAAAAAAAAIAAA=</HashCode>
       <FileName>Commands\CommandType.cs</FileName>
     </TypeIdentifier>
   </Enum>

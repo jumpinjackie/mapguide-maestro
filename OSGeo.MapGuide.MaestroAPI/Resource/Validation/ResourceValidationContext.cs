@@ -31,9 +31,20 @@ using System.Diagnostics;
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {
     /// <summary>
-    /// Provides the means for the resource validation system to avoid validating
-    /// already validated resources
+    /// Provides a context for the resource validation system. This improves performance of validation by skipping
+    /// over already validated resources and re-using previously cached information where possible
     /// </summary>
+    /// <example>
+    /// This example shows how a ResourceValidationContext is used
+    /// <code>
+    /// <![CDATA[
+    /// IResource resource;
+    /// IServerConnection conn;
+    /// ...
+    /// var context = new ResourceValidationContext(conn);
+    /// var issues = ResourceValidatorSet.Validate(context, item, false);
+    /// ]]>
+    /// </code>
     public class ResourceValidationContext
     {
         private Dictionary<string, string> _validated;
@@ -64,7 +75,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <summary>
         /// Clears all cached items and validated resources
         /// </summary>
-        public void Reset()
+        internal void Reset()
         {
             _validated.Clear();
             _resources.Clear();

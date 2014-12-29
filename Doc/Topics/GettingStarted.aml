@@ -56,8 +56,8 @@
         <!-- Uncomment this to create a sub-section outline
         <autoOutline /> -->
         <para>
-        To use the Maestro API in your project, your application must target the .net Framework 2.0 or higher. You can use
-        any version (and any edition) of Visual Studio that supports targeting the .net Framework 2.0 or higher.
+        To use the Maestro API in your project, your application must target the .net Framework 4.0 or higher. You can use
+        any version (and any edition) of Visual Studio that supports targeting the .net Framework 4.0 or higher.
         </para>
       </content>
     </section>
@@ -67,42 +67,13 @@
         <!-- Uncomment this to create a sub-section outline
         <autoOutline /> -->
         <para>
-        To use the Maestro API in your project, simply reference the OSGeo.MapGuide.MaestroAPI assembly from the SDK.
+        To use the Maestro API in your project, simply reference the OSGeo.MapGuide.MaestroAPI and OSGeo.MapGuide.ObjectModels assemblies from the SDK.
         </para>
         <para>
         Also ensure that the ConnectionProviders.xml file is also copied to your application's output directory. If you want to use certain
         connection providers in your application, make sure the provider assemblies are registered in ConnectionProviders.xml and that the
         provider assemblies are also in your output directory.
         </para>
-      </content>
-    </section>
-	<section address="ExtendedModelSetup">
-      <title>Setting up extended model support</title>
-      <content>
-        <!-- Uncomment this to create a sub-section outline
-        <autoOutline /> -->
-        <para>
-        The Maestro API understands and supports all known schema versions of every resource. If your application only references
-        the OSGeo.MapGuide.MaestroAPI assembly, it will only recognise v1.0.0 resources. Newer versions will return an <codeEntityReference qualifyHint="false">T:OSGeo.MapGuide.ObjectModels.UntypedResource</codeEntityReference> if you
-        are to retrieve a resource via <codeEntityReference qualifyHint="false" autoUpgrade="true">M:OSGeo.MapGuide.MaestroAPI.Services.IResourceService.GetResource(System.String)</codeEntityReference>.
-        
-        Such objects are basically arbitrary containers of XML content.
-        </para>
-        <para>
-        For your application to recognise all supported resource schema versions, and to have the above APIs return strongly typed objects,
-        you will need to also reference the OSGeo.MapGuide.ExtendedObjectModels assembly and have all OSGeo.MapGuide.ObjectModels.* assemblies
-        copied to your application's output directory (which referencing the ExtendedObjectModels assembly should automatically do)
-        
-        Then in your application's entry point, add the following line of code:
-        </para>
-		<code language="cs"> 
-		ModelSetup.Initialize();
-		</code>
-		<para>
-		This line of code will automatically register the additional schema versions with the Maestro API. For an ASP.net application,
-		you can use the Application_Start() entry point in Global.asax to add this line of code. For ASP.net MVC and other .net-based
-		web frameworks, look for a similar initialization entry point to insert this line of code.
-		</para>
       </content>
     </section>
     <relatedTopics>

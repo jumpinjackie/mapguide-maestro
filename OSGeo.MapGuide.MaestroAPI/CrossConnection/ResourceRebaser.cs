@@ -68,6 +68,17 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
     /// <summary>
     /// A helper class to re-base referenced resource ids in a resource document
     /// </summary>
+    /// <example>
+    /// How to use the ResourceRebaser
+    /// <code>
+    /// IServerConnection conn;
+    /// ...
+    /// IResource layerDef = conn.ResourceService.GetResource("Library://Test/Sample.LayerDefinition");
+    /// var rebaser = new ResourceRebaser(layerDef);
+    /// //Change all resource id references within to point to the new parent location
+    /// rebaser.Rebase("Library://Test/", "Library://Rebased/");
+    /// </code>
+    /// </example>
     public class ResourceRebaser
     {
         private IResource _res;

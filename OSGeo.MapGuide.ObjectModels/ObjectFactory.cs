@@ -101,14 +101,13 @@ namespace OSGeo.MapGuide.ObjectModels
     /// as this ensures that there are no null child properties where the XML schema forbids
     /// it.
     ///
-    /// By default this class will only create v1.0.0 of any specified top-level resource unless specified. In order to be able to create
-    /// newer versions, you need to register the appropriate methods that can create resources of this version:
+    /// By default this class will only create known versions of any top-level resource (as of writing, up to MapGuide
+    /// Open Source 2.6 / AIMS 2015). In order to be able to create newer versions where support has not yet been added to
+    /// this library, you will need to register the appropriate methods that can create resources of this version:
     ///
     ///  - <see cref="RegisterLayerFactoryMethod"/> for Layer Definitions
     ///
     /// This registration needs to be done as part of your application's startup/initialization phase.
-    ///
-    /// In the context of Maestro, this registration is automatically done as part of the addin's startup process
     /// </summary>
     public class ObjectFactory
     {

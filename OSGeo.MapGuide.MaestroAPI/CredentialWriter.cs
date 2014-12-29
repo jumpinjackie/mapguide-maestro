@@ -81,7 +81,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
     /// <summary>
     /// Utility class to create encrypted Feature Source credentials
     /// </summary>
-    public class CredentialWriter
+    internal class CredentialWriter
     {
         //NOTE: This is a verbatim copy of MgCryptographyUtil in MgDev\Common\Security to the best I can do in .net
         //Only the encryption bits are implemented. Maestro has no need to decrypt MG_USER_CREDENTIALS

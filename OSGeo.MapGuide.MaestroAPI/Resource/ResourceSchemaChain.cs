@@ -43,6 +43,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
                 case "LayerDefinition-1.2.0.xsd": //NOXLATE
                 case "LayerDefinition-1.3.0.xsd": //NOXLATE
                     return new string[] { schema, "SymbolDefinition-1.1.0.xsd", "PlatformCommon-1.0.0.xsd" }; //NOXLATE
+                case "LayerDefinition-2.4.0.xsd": //NOXLATE
+                    return new string[] { schema, "SymbolDefinition-2.4.0.xsd", "WatermarkDefinition-2.4.0.xsd", "PlatformCommon-1.0.0.xsd" }; //NOXLATE
+                case "WatermarkDefinition-2.3.0.xsd": //NOXLATE
+                    return new string[] { schema, "SymbolDefinition-1.1.0.xsd" }; //NOXLATE
+                case "WatermarkDefinition-2.4.0.xsd": //NOXLATE
+                    return new string[] { schema, "SymbolDefinition-2.4.0.xsd" }; //NOXLATE
+                case "SymbolDefinition-1.0.0.xsd": //NOXLATE
+                case "SymbolDefinition-1.1.0.xsd": //NOXLATE
+                case "SymbolDefinition-2.4.0.xsd": //NOXLATE
+                    return new string[] { schema, "PlatformCommon-1.0.0.xsd" }; //NOXLATE
+                case "MapDefinition-2.3.0.xsd": //NOXLATE
+                    return new string[] { schema, "WatermarkDefinition-2.3.0.xsd" }; //NOXLATE
+                case "MapDefinition-2.4.0.xsd": //NOXLATE
+                    return new string[] { schema, "WatermarkDefinition-2.4.0.xsd" }; //NOXLATE
             }
             return new string[] { schema, "PlatformCommon-1.0.0.xsd" }; //NOXLATE
         }
