@@ -1061,7 +1061,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public override System.IO.Stream RenderRuntimeMap(Mapping.RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
         {
             var resourceId = map.ResourceID;
-            ResourceIdentifier.Validate(resourceId, ResourceTypes.RuntimeMap);
+            ResourceIdentifier.Validate(resourceId, ResourceTypes.Map);
             string mapname = resourceId.Substring(resourceId.IndexOf("//") + 2);
             mapname = mapname.Substring(0, mapname.LastIndexOf("."));
 #if DEBUG
@@ -1093,7 +1093,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public override System.IO.Stream RenderRuntimeMap(Mapping.RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
         {
             var resourceId = map.ResourceID;
-            ResourceIdentifier.Validate(resourceId, ResourceTypes.RuntimeMap);
+            ResourceIdentifier.Validate(resourceId, ResourceTypes.Map);
             string mapname = resourceId.Substring(resourceId.IndexOf("//") + 2);
             mapname = mapname.Substring(0, mapname.LastIndexOf("."));
 #if DEBUG

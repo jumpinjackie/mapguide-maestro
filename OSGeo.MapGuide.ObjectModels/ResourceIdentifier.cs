@@ -418,7 +418,7 @@ namespace OSGeo.MapGuide.ObjectModels
         {
             var ext = GetExtension(identifier);
             if (ext == "Map") //NOXLATE
-                return ResourceTypes.RuntimeMap;
+                return ResourceTypes.Map;
             else
                 return (ResourceTypes)Enum.Parse(typeof(ResourceTypes), ext);
         }

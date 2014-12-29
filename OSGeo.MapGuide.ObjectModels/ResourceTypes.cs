@@ -55,7 +55,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <summary>
         /// Runtime Map
         /// </summary>
-        RuntimeMap,
+        Map,
 
         /// <summary>
         /// Folder

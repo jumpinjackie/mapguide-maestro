@@ -1043,7 +1043,7 @@ namespace MaestroAPITests
             ResourceIdentifier rtmX = new ResourceIdentifier(mapdefinition);
             string rtmDef = "Library://UnitTests/Cache/" + rtmX.Fullpath.Replace(":", "_").Replace("/", "_");
             string mapName = rtmX.Name;
-            ResourceIdentifier mapid = new ResourceIdentifier(mapName, ResourceTypes.RuntimeMap, conn.SessionID);
+            ResourceIdentifier mapid = new ResourceIdentifier(mapName, ResourceTypes.Map, conn.SessionID);
             IMapDefinition mdef = (IMapDefinition)conn.ResourceService.GetResource(mapdefinition);
             RuntimeMap rtm = mapSvc.CreateMap(mdef); // Create new runtime map
             Assert.IsFalse(rtm.IsDirty);

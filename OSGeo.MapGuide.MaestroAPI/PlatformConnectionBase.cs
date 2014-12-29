@@ -2205,7 +2205,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public RuntimeMap CreateMap(IMapDefinition mdf, bool suppressErrors)
         {
-            var rid = new ResourceIdentifier(ResourceIdentifier.GetName(mdf.ResourceID), ResourceTypes.RuntimeMap, this.SessionID);
+            var rid = new ResourceIdentifier(ResourceIdentifier.GetName(mdf.ResourceID), ResourceTypes.Map, this.SessionID);
             return CreateMap(rid.ToString(), mdf, suppressErrors);
         }
 
@@ -2231,7 +2231,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         public RuntimeMap CreateMap(IMapDefinition mdf, double metersPerUnit, bool suppressErrors)
         {
-            var rid = new ResourceIdentifier(ResourceIdentifier.GetName(mdf.ResourceID), ResourceTypes.RuntimeMap, this.SessionID);
+            var rid = new ResourceIdentifier(ResourceIdentifier.GetName(mdf.ResourceID), ResourceTypes.Map, this.SessionID);
             return CreateMap(rid.ToString(), mdf, metersPerUnit, suppressErrors);
         }
 

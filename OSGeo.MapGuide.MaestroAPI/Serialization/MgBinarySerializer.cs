@@ -113,14 +113,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         /// <param name="resourceID">The resource ID.</param>
         public void WriteResourceIdentifier(string resourceID)
         {
-            if (m_siteVersion <= SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP1_1))
-                WriteClassId(12003);
+            if (resourceID == null)
+            {
+                //For null objects, we write a class ID of 0
+                WriteClassId(0);
+            }
             else
-                WriteClassId(11500);
-            if (m_siteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
-                WriteStringInternal(resourceID);
-            else
-                Write(resourceID);
+            {
+                if (m_siteVersion <= SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP1_1))
+                    WriteClassId(12003);
+                else
+                    WriteClassId(11500);
+                if (m_siteVersion >= SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
+                    WriteStringInternal(resourceID);
+                else
+                    Write(resourceID);
+            }
         }
 
         /// <summary>

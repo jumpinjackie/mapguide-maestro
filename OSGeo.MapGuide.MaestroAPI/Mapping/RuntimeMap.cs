@@ -485,6 +485,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         }
 
         /// <summary>
+        /// Gets or sets the tile set definition resource id. Only applicable
+        /// if the Map Definition used to create this map contains a reference
+        /// to a tile set
+        /// </summary>
+        public virtual string TileSetDefinition
+        {
+            get;
+            internal set;
+        }
+
+        /// <summary>
         /// Gets or sets the map definition resource id
         /// </summary>
         /// <value>The map definition resource id.</value>
@@ -649,7 +660,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <value>The type of the resource.</value>
         public ResourceTypes ResourceType
         {
-            get { return ResourceTypes.RuntimeMap; }
+            get { return ResourceTypes.Map; }
         }
 
         /// <summary>
@@ -735,6 +746,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 if (s.SiteVersion >= new Version(2, 3)) //SiteVersions.GetVersion(KnownSiteVersions.MapGuideEP2012))
                 {
                     s.Write(this.WatermarkUsage);
+                }
+                if (s.SiteVersion >= new Version(3, 0))
+                {
+                    s.WriteResourceIdentifier(this.TileSetDefinition);
                 }
                 s.Write((int)0);
             }
@@ -950,6 +965,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 if (d.SiteVersion >= new Version(2, 3))
                 {
                     this.WatermarkUsage = d.ReadInt32();
+                }
+                if (d.SiteVersion >= new Version(3, 0))
+                {
+                    this.TileSetDefinition = d.ReadResourceIdentifier();
                 }
                 int mapLayerCount = d.ReadInt32();
                 if (mapLayerCount != 0)
@@ -1242,13 +1261,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
         private void Save(string resourceID)
         {
+            Check.ArgumentNotNull(resourceID, "resourceID");
+            Check.ArgumentNotEmpty(resourceID, "resourceID");
+            Check.ThatPreconditionIsMet(resourceID.EndsWith(".Map"), "resourceID.EndsWith(\".Map\")");
             var map = this;
 
             string selectionID = resourceID.Substring(0, resourceID.LastIndexOf(".")) + ".Selection"; //NOXLATE
             this.ResourceService.SetResourceXmlData(resourceID, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(RUNTIMEMAP_XML)));
             this.ResourceService.SetResourceXmlData(selectionID, new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(RUNTIMEMAP_SELECTION_XML)));
 
-            ResourceIdentifier.Validate(resourceID, ResourceTypes.RuntimeMap);
+            ResourceIdentifier.Validate(resourceID, ResourceTypes.Map);
             if (!resourceID.StartsWith("Session:" + this.SessionId + "//") || !resourceID.EndsWith(".Map")) //NOXLATE
                 throw new Exception(Strings.ErrorRuntimeMapNotInSessionRepo);
 
@@ -1304,7 +1326,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
         private void SaveSelectionXml(string resourceID)
         {
-            ResourceIdentifier.Validate(resourceID, ResourceTypes.RuntimeMap);
+            ResourceIdentifier.Validate(resourceID, ResourceTypes.Map);
             string selectionID = resourceID.Substring(0, resourceID.LastIndexOf(".")) + ".Selection"; //NOXLATE
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             MgBinarySerializer serializer = new MgBinarySerializer(ms, this.SiteVersion);

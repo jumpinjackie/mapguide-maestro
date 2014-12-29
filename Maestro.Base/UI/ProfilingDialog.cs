@@ -109,7 +109,7 @@ namespace Maestro.Base.UI
                 //AIMS 2012 demands this checks out. Can't flub it anymore
                 m.ResourceID = "Session:" + m_connection.SessionID + "//non-existing.MapDefinition"; //NOXLATE
                 var mpsvc = (IMappingService)m_connection.GetService((int)ServiceType.Mapping);
-                var rid = new ResourceIdentifier(Guid.NewGuid().ToString(), ResourceTypes.RuntimeMap, m_connection.SessionID);
+                var rid = new ResourceIdentifier(Guid.NewGuid().ToString(), ResourceTypes.Map, m_connection.SessionID);
 
                 m_tempmap = mpsvc.CreateMap(m);
             }
