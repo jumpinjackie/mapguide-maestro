@@ -348,6 +348,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
                     types.Add(ResourceTypes.ApplicationDefinition.ToString());
                 if (ver >= new Version(2, 3))
                     types.Add(ResourceTypes.WatermarkDefinition.ToString());
+                if (ver >= new Version(3, 0))
+                    types.Add(ResourceTypes.TileSetDefinition.ToString());
 
                 //When new types are introduced to MapGuide and we wish to add such support, put the new types here
                 return types.OrderBy(x => x).ToArray();

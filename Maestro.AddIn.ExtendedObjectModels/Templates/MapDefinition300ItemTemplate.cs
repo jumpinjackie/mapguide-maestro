@@ -28,14 +28,14 @@ using Res = Maestro.AddIn.ExtendedObjectModels.Properties.Resources;
 
 namespace Maestro.AddIn.ExtendedObjectModels.Templates
 {
-    internal class MapDefinition230ItemTemplate : ItemTemplate
+    internal class MapDefinition300ItemTemplate : ItemTemplate
     {
-        public MapDefinition230ItemTemplate()
+        public MapDefinition300ItemTemplate()
         {
-            Category = Strings.TPL_CATEGORY_MGOS23;
+            Category = Strings.TPL_CATEGORY_MGOS30;
             Icon = Res.map;
-            Description = Strings.TPL_MDF_230_DESC;
-            Name = Strings.TPL_MDF_230_NAME;
+            Description = Strings.TPL_MDF_300_DESC;
+            Name = Strings.TPL_MDF_300_NAME;
             ResourceType = ResourceTypes.MapDefinition.ToString();
         }
 
@@ -43,13 +43,13 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
         {
             get
             {
-                return new Version(2, 3);
+                return new Version(3, 0);
             }
         }
 
         public override IResource CreateItem(string startPoint, OSGeo.MapGuide.MaestroAPI.IServerConnection conn)
         {
-            return ObjectFactory.CreateMapDefinition(new Version(2, 3, 0), string.Empty);
+            return ObjectFactory.CreateMapDefinition(new Version(3, 0, 0), string.Empty);
         }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapLayersSectionCtrl));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabs = new System.Windows.Forms.TabControl();
             this.TAB_GROUP = new System.Windows.Forms.TabPage();
             this.trvLayersGroup = new Aga.Controls.Tree.TreeViewAdv();
             this.NODE_GROUP_ICON = new Aga.Controls.Tree.NodeControls.NodeIcon();
@@ -74,34 +74,41 @@
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.btnBaseLayerGroupToRegular = new System.Windows.Forms.ToolStripButton();
             this.btnInvokeMgCooker = new System.Windows.Forms.ToolStripButton();
+            this.TAB_TILE_SET = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.txtTileSet = new System.Windows.Forms.TextBox();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.propertiesPanel = new System.Windows.Forms.Panel();
             this.contentPanel.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabs.SuspendLayout();
             this.TAB_GROUP.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.TAB_DRAWING_ORDER.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.TAB_BASE_LAYERS.SuspendLayout();
             this.toolStrip3.SuspendLayout();
+            this.TAB_TILE_SET.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // contentPanel
             // 
             this.contentPanel.Controls.Add(this.propertiesPanel);
             this.contentPanel.Controls.Add(this.splitter1);
-            this.contentPanel.Controls.Add(this.tabControl1);
+            this.contentPanel.Controls.Add(this.tabs);
             resources.ApplyResources(this.contentPanel, "contentPanel");
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.TAB_GROUP);
-            this.tabControl1.Controls.Add(this.TAB_DRAWING_ORDER);
-            this.tabControl1.Controls.Add(this.TAB_BASE_LAYERS);
-            resources.ApplyResources(this.tabControl1, "tabControl1");
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabs.Controls.Add(this.TAB_GROUP);
+            this.tabs.Controls.Add(this.TAB_DRAWING_ORDER);
+            this.tabs.Controls.Add(this.TAB_BASE_LAYERS);
+            this.tabs.Controls.Add(this.TAB_TILE_SET);
+            resources.ApplyResources(this.tabs, "tabControl1");
+            this.tabs.Name = "tabControl1";
+            this.tabs.SelectedIndex = 0;
+            this.tabs.SelectedIndexChanged += new System.EventHandler(this.tabs_SelectedIndexChanged);
             // 
             // TAB_GROUP
             // 
@@ -489,6 +496,35 @@
             this.btnInvokeMgCooker.Name = "btnInvokeMgCooker";
             this.btnInvokeMgCooker.Click += new System.EventHandler(this.btnInvokeMgCooker_Click);
             // 
+            // TAB_TILE_SET
+            // 
+            this.TAB_TILE_SET.Controls.Add(this.groupBox1);
+            resources.ApplyResources(this.TAB_TILE_SET, "TAB_TILE_SET");
+            this.TAB_TILE_SET.Name = "TAB_TILE_SET";
+            this.TAB_TILE_SET.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.btnBrowse);
+            this.groupBox1.Controls.Add(this.txtTileSet);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // btnBrowse
+            // 
+            resources.ApplyResources(this.btnBrowse, "btnBrowse");
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // txtTileSet
+            // 
+            resources.ApplyResources(this.txtTileSet, "txtTileSet");
+            this.txtTileSet.Name = "txtTileSet";
+            this.txtTileSet.ReadOnly = true;
+            this.txtTileSet.TextChanged += new System.EventHandler(this.txtTileSet_TextChanged);
+            // 
             // splitter1
             // 
             resources.ApplyResources(this.splitter1, "splitter1");
@@ -506,7 +542,7 @@
             resources.ApplyResources(this, "$this");
             this.Name = "MapLayersSectionCtrl";
             this.contentPanel.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.tabs.ResumeLayout(false);
             this.TAB_GROUP.ResumeLayout(false);
             this.TAB_GROUP.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -519,13 +555,16 @@
             this.TAB_BASE_LAYERS.PerformLayout();
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
+            this.TAB_TILE_SET.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabs;
         private System.Windows.Forms.TabPage TAB_GROUP;
         private System.Windows.Forms.TabPage TAB_DRAWING_ORDER;
         private System.Windows.Forms.ToolStrip toolStrip1;
@@ -572,5 +611,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripButton btnBaseLayerGroupToRegular;
         private System.Windows.Forms.ToolStripButton btnInvokeMgCooker;
+        private System.Windows.Forms.TabPage TAB_TILE_SET;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.TextBox txtTileSet;
     }
 }

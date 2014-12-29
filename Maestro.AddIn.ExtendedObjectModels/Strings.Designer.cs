@@ -142,6 +142,15 @@ namespace Maestro.AddIn.ExtendedObjectModels {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MapGuide Open Source 3.0 / Autodesk Infrastructure Map Server 2016.
+        /// </summary>
+        internal static string TPL_CATEGORY_MGOS30 {
+            get {
+                return ResourceManager.GetString("TPL_CATEGORY_MGOS30", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a new Compound Symbol Definition using the v2.4.0 schema.
         /// </summary>
         internal static string TPL_CSD_240_DESC {
@@ -228,6 +237,24 @@ namespace Maestro.AddIn.ExtendedObjectModels {
         internal static string TPL_MDF_240_NAME {
             get {
                 return ResourceManager.GetString("TPL_MDF_240_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create a new Map Definition using the v3.0.0 schema.
+        /// </summary>
+        internal static string TPL_MDF_300_DESC {
+            get {
+                return ResourceManager.GetString("TPL_MDF_300_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Map Definition (v3.0.0).
+        /// </summary>
+        internal static string TPL_MDF_300_NAME {
+            get {
+                return ResourceManager.GetString("TPL_MDF_300_NAME", resourceCulture);
             }
         }
         

@@ -291,9 +291,9 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         string TileSetDefinitionID { get; set; }
 
         /// <summary>
-        /// Gets the type of tile source
+        /// Gets or sets the type of tile source
         /// </summary>
-        TileSourceType TileSourceType { get; }
+        TileSourceType TileSourceType { get; set; }
     }
 
     /// <summary>

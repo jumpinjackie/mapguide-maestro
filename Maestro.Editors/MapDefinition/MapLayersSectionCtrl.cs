@@ -142,15 +142,93 @@ namespace Maestro.Editors.MapDefinition
         private TiledLayerModel _tiledLayerModel;
         private IEditorService _edSvc;
 
+        private bool _init = false;
+
         public override void Bind(IEditorService service)
         {
-            _edSvc = service;
-            _edSvc.RegisterCustomNotifier(this);
-            _map = (IMapDefinition)service.GetEditedResource();
+            try
+            {
+                _init = true;
+                _edSvc = service;
+                _edSvc.RegisterCustomNotifier(this);
+                _map = (IMapDefinition)service.GetEditedResource();
 
-            trvLayerDrawingOrder.Model = _doLayerModel = new DrawOrderLayerModel(_map);
-            trvLayersGroup.Model = _grpLayerModel = new GroupedLayerModel(_map);
+                var mdf3 = _map as IMapDefinition3;
+                if (mdf3 == null)
+                {
+                    tabs.TabPages.Remove(TAB_TILE_SET);
+                }
+                else
+                {
+                    tabs.TabPages.Remove(TAB_BASE_LAYERS);
+                    tabs.TabPages.Remove(TAB_TILE_SET);
+                    if (mdf3.TileSourceType == TileSourceType.Inline)
+                    {
+                        tabs.TabPages.Add(TAB_BASE_LAYERS);
+                        InitInlineModel();
+                    }
+                    else if (mdf3.TileSourceType == TileSourceType.External)
+                    {
+                        tabs.TabPages.Add(TAB_TILE_SET);
+                        InitExternalModel();
+                    }
+                }
+
+                _map.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnMapPropertyChanged, (eh) => _map.PropertyChanged -= eh);
+
+                trvLayerDrawingOrder.Model = _doLayerModel = new DrawOrderLayerModel(_map);
+                trvLayersGroup.Model = _grpLayerModel = new GroupedLayerModel(_map);
+                
+            }
+            finally
+            {
+                _init = false;
+            }
+        }
+
+        private void InitExternalModel()
+        {
+            propertiesPanel.Controls.Clear();
+            var mdf3 = _map as IMapDefinition3;
+            if (mdf3 != null)
+                txtTileSet.Text = mdf3.TileSetDefinitionID;
+        }
+
+        private void InitInlineModel()
+        {
             trvBaseLayers.Model = _tiledLayerModel = new TiledLayerModel(_map);
+        }
+
+        private void OnMapPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "TileSourceType")
+            {
+                var mdf = _map as IMapDefinition3;
+                if (mdf != null)
+                {
+                    tabs.TabPages.Remove(TAB_BASE_LAYERS);
+                    tabs.TabPages.Remove(TAB_TILE_SET);
+                    switch (mdf.TileSourceType)
+                    {
+                        case TileSourceType.External:
+                            {
+                                tabs.TabPages.Add(TAB_TILE_SET);
+                                int idx = tabs.TabPages.IndexOf(TAB_TILE_SET);
+                                tabs.SelectedIndex = idx;
+                                InitExternalModel();
+                            }
+                            break;
+                        case TileSourceType.Inline:
+                            {
+                                tabs.TabPages.Add(TAB_BASE_LAYERS);
+                                int idx = tabs.TabPages.IndexOf(TAB_BASE_LAYERS);
+                                tabs.SelectedIndex = idx;
+                                InitInlineModel();
+                            }
+                            break;
+                    }
+                }
+            }
         }
 
         private void RefreshModels()
@@ -735,7 +813,7 @@ namespace Maestro.Editors.MapDefinition
             {
                 MessageBox.Show(string.Join(Environment.NewLine, messages.ToArray()));
                 this.RefreshModels();
-                tabControl1.SelectedIndex = 2; //Switch to Base Layer Groups
+                tabs.SelectedIndex = 2; //Switch to Base Layer Groups
             }
         }
 
@@ -782,7 +860,7 @@ namespace Maestro.Editors.MapDefinition
             {
                 MessageBox.Show(string.Join(Environment.NewLine, messages.ToArray()));
                 this.RefreshModels();
-                tabControl1.SelectedIndex = 0; //Switch to Layer Groups
+                tabs.SelectedIndex = 0; //Switch to Layer Groups
             }
         }
 
@@ -1914,11 +1992,11 @@ namespace Maestro.Editors.MapDefinition
                               "--" + TileRunParameters.MAPDEFINITIONS + "=" + _edSvc.ResourceID);
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private void tabs_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_activeLayer != null)
             {
-                switch (tabControl1.SelectedIndex)
+                switch (tabs.SelectedIndex)
                 {
                     case 0: //Logical
                         RestoreLayerSelection(_activeLayer);
@@ -2027,6 +2105,30 @@ namespace Maestro.Editors.MapDefinition
             else if (trvLayersGroup.SelectedNodes.Count > 1)
             {
                 OnMultipleItemsSelected(trvLayersGroup.SelectedNodes);
+            }
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            using (var picker = new ResourcePicker(_edSvc.CurrentConnection, ResourceTypes.TileSetDefinition.ToString(), ResourcePickerMode.OpenResource))
+            {
+                if (picker.ShowDialog() == DialogResult.OK )
+                {
+                    txtTileSet.Text = picker.ResourceID;
+                }
+            }
+        }
+
+        private void txtTileSet_TextChanged(object sender, EventArgs e)
+        {
+            if (_init)
+                return;
+
+            if (ResourceIdentifier.Validate(txtTileSet.Text))
+            {
+                var mdf3 = _map as IMapDefinition3;
+                if (mdf3 != null)
+                    mdf3.TileSetDefinitionID = txtTileSet.Text;
             }
         }
     }

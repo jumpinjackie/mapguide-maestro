@@ -56,6 +56,24 @@ namespace Maestro.Editors.MapDefinition
             _service.RegisterCustomNotifier(this);
             _map = (IMapDefinition)service.GetEditedResource();
 
+            var mdf3 = _map as IMapDefinition3;
+            if (mdf3 == null)
+            {
+                pnlTileSource.Visible = false;
+            }
+            else
+            {
+                switch(mdf3.TileSourceType)
+                {
+                    case TileSourceType.External:
+                        rdExternal.Checked = true;
+                        break;
+                    case TileSourceType.Inline:
+                        rdInline.Checked = true;
+                        break;
+                }
+            }
+
             var bmeta = new Binding("Text", _map, "Metadata");
             bmeta.Parse += (sender, e) =>
             {
@@ -227,6 +245,30 @@ namespace Maestro.Editors.MapDefinition
                 {
                     MessageBox.Show(Strings.ErrorMapExtentCalculationFailed, Strings.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void rdInline_CheckedChanged(object sender, EventArgs e)
+        {
+            var mdf3 = _map as IMapDefinition3;
+            if (mdf3 != null)
+            {
+                if (rdInline.Checked)
+                    mdf3.TileSourceType = TileSourceType.Inline;
+                else
+                    mdf3.TileSourceType = TileSourceType.External;
+            }
+        }
+
+        private void rdExternal_CheckedChanged(object sender, EventArgs e)
+        {
+            var mdf3 = _map as IMapDefinition3;
+            if (mdf3 != null)
+            {
+                if (rdExternal.Checked)
+                    mdf3.TileSourceType = TileSourceType.External;
+                else
+                    mdf3.TileSourceType = TileSourceType.Inline;
             }
         }
     }

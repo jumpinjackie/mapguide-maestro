@@ -48,12 +48,18 @@
             this.txtCoordinateSystem = new System.Windows.Forms.TextBox();
             this.btnPickCs = new System.Windows.Forms.Button();
             this.cmbBackgroundColor = new Maestro.Editors.Common.ColorComboBox();
+            this.pnlTileSource = new System.Windows.Forms.Panel();
+            this.rdExternal = new System.Windows.Forms.RadioButton();
+            this.rdInline = new System.Windows.Forms.RadioButton();
+            this.label10 = new System.Windows.Forms.Label();
             this.contentPanel.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.pnlTileSource.SuspendLayout();
             this.SuspendLayout();
             // 
             // contentPanel
             // 
+            this.contentPanel.Controls.Add(this.pnlTileSource);
             this.contentPanel.Controls.Add(this.cmbBackgroundColor);
             this.contentPanel.Controls.Add(this.btnPickCs);
             this.contentPanel.Controls.Add(this.txtCoordinateSystem);
@@ -183,16 +189,46 @@
             resources.ApplyResources(this.cmbBackgroundColor, "cmbBackgroundColor");
             this.cmbBackgroundColor.Name = "cmbBackgroundColor";
             // 
+            // pnlTileSource
+            // 
+            this.pnlTileSource.Controls.Add(this.rdExternal);
+            this.pnlTileSource.Controls.Add(this.rdInline);
+            this.pnlTileSource.Controls.Add(this.label10);
+            resources.ApplyResources(this.pnlTileSource, "pnlTileSource");
+            this.pnlTileSource.Name = "pnlTileSource";
+            // 
+            // rdExternal
+            // 
+            resources.ApplyResources(this.rdExternal, "rdExternal");
+            this.rdExternal.Name = "rdExternal";
+            this.rdExternal.UseVisualStyleBackColor = true;
+            this.rdExternal.CheckedChanged += new System.EventHandler(this.rdExternal_CheckedChanged);
+            // 
+            // rdInline
+            // 
+            resources.ApplyResources(this.rdInline, "rdInline");
+            this.rdInline.Checked = true;
+            this.rdInline.Name = "rdInline";
+            this.rdInline.TabStop = true;
+            this.rdInline.UseVisualStyleBackColor = true;
+            this.rdInline.CheckedChanged += new System.EventHandler(this.rdInline_CheckedChanged);
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
             // MapSettingsSectionCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.HeaderText = "Map Settings";
-            this.Name = "MapSettingsSectionCtrl";
             resources.ApplyResources(this, "$this");
+            this.Name = "MapSettingsSectionCtrl";
             this.contentPanel.ResumeLayout(false);
             this.contentPanel.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.pnlTileSource.ResumeLayout(false);
+            this.pnlTileSource.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -218,5 +254,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnPickCs;
         private Maestro.Editors.Common.ColorComboBox cmbBackgroundColor;
+        private System.Windows.Forms.Panel pnlTileSource;
+        private System.Windows.Forms.RadioButton rdExternal;
+        private System.Windows.Forms.RadioButton rdInline;
+        private System.Windows.Forms.Label label10;
     }
 }

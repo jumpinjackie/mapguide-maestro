@@ -183,6 +183,22 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
         }
     }
 
+    internal class MapDefinition300EditorFactory : IEditorFactory
+    {
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+
+        public MapDefinition300EditorFactory()
+        {
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(ResourceTypes.MapDefinition.ToString(), "3.0.0"); //NOXLATE
+        }
+
+        public IEditorViewContent Create()
+        {
+            //Use the same 1.0.0 editor for now
+            return new MapDefinitionEditor();
+        }
+    }
+
     internal class WatermarkDefinition230EditorFactory : IEditorFactory
     {
         public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }

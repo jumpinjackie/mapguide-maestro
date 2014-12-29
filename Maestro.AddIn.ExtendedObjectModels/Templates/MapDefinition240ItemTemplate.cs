@@ -36,7 +36,7 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
             Icon = Res.map;
             Description = Strings.TPL_MDF_240_DESC;
             Name = Strings.TPL_MDF_240_NAME;
-            ResourceType = ResourceTypes.LayerDefinition.ToString();
+            ResourceType = ResourceTypes.MapDefinition.ToString();
         }
 
         public override Version MinimumSiteVersion

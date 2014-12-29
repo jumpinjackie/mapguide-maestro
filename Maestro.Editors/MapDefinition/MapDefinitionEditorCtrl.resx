@@ -112,23 +112,26 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="mapSettingsCtrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="mapSettingsCtrl.HeaderText" xml:space="preserve">
+    <value>Map Settings</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="mapSettingsCtrl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="mapSettingsCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>572, 206</value>
+    <value>555, 224</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="mapSettingsCtrl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -136,7 +139,7 @@
     <value>mapSettingsCtrl</value>
   </data>
   <data name="&gt;&gt;mapSettingsCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.MapDefinition.MapSettingsSectionCtrl, Maestro.Editors, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.MapDefinition.MapSettingsSectionCtrl, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;mapSettingsCtrl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -147,11 +150,14 @@
   <data name="mapLayersCtrl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="mapLayersCtrl.HeaderText" xml:space="preserve">
+    <value>Layers</value>
+  </data>
   <data name="mapLayersCtrl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 206</value>
+    <value>0, 224</value>
   </data>
   <data name="mapLayersCtrl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>572, 319</value>
+    <value>555, 319</value>
   </data>
   <data name="mapLayersCtrl.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -160,7 +166,7 @@
     <value>mapLayersCtrl</value>
   </data>
   <data name="&gt;&gt;mapLayersCtrl.Type" xml:space="preserve">
-    <value>Maestro.Editors.MapDefinition.MapLayersSectionCtrl, Maestro.Editors, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.MapDefinition.MapLayersSectionCtrl, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
   <data name="&gt;&gt;mapLayersCtrl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -168,19 +174,19 @@
   <data name="&gt;&gt;mapLayersCtrl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>572, 500</value>
+    <value>555, 500</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MapDefinitionEditorCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.EditorBase, Maestro.Editors, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=null</value>
+    <value>Maestro.Editors.EditorBase, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
 </root>

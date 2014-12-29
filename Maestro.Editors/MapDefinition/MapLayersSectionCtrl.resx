@@ -195,204 +195,6 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>3, 3</value>
   </metadata>
-  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 25</value>
-  </data>
-  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="toolStrip1.Text" xml:space="preserve">
-    <value>toolStrip1</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
-    <value>toolStrip1</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
-    <value>TAB_GROUP</value>
-  </data>
-  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="TAB_GROUP.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TAB_GROUP.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TAB_GROUP.Size" type="System.Drawing.Size, System.Drawing">
-    <value>318, 266</value>
-  </data>
-  <data name="TAB_GROUP.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="TAB_GROUP.Text" xml:space="preserve">
-    <value>Layers by Group</value>
-  </data>
-  <data name="&gt;&gt;TAB_GROUP.Name" xml:space="preserve">
-    <value>TAB_GROUP</value>
-  </data>
-  <data name="&gt;&gt;TAB_GROUP.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TAB_GROUP.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;TAB_GROUP.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>3, 3</value>
-  </metadata>
-  <data name="&gt;&gt;trvLayerDrawingOrder.Name" xml:space="preserve">
-    <value>trvLayerDrawingOrder</value>
-  </data>
-  <data name="&gt;&gt;trvLayerDrawingOrder.Type" xml:space="preserve">
-    <value>Aga.Controls.Tree.TreeViewAdv, Aga.Controls, Version=1.7.0.0, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
-  </data>
-  <data name="&gt;&gt;trvLayerDrawingOrder.Parent" xml:space="preserve">
-    <value>TAB_DRAWING_ORDER</value>
-  </data>
-  <data name="&gt;&gt;trvLayerDrawingOrder.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.Name" xml:space="preserve">
-    <value>toolStrip2</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.Parent" xml:space="preserve">
-    <value>TAB_DRAWING_ORDER</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="TAB_DRAWING_ORDER.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TAB_DRAWING_ORDER.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TAB_DRAWING_ORDER.Size" type="System.Drawing.Size, System.Drawing">
-    <value>318, 266</value>
-  </data>
-  <data name="TAB_DRAWING_ORDER.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="TAB_DRAWING_ORDER.Text" xml:space="preserve">
-    <value>Layers by Drawing Order</value>
-  </data>
-  <data name="&gt;&gt;TAB_DRAWING_ORDER.Name" xml:space="preserve">
-    <value>TAB_DRAWING_ORDER</value>
-  </data>
-  <data name="&gt;&gt;TAB_DRAWING_ORDER.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TAB_DRAWING_ORDER.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;TAB_DRAWING_ORDER.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <metadata name="toolStrip3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>3, 3</value>
-  </metadata>
-  <data name="&gt;&gt;trvBaseLayers.Name" xml:space="preserve">
-    <value>trvBaseLayers</value>
-  </data>
-  <data name="&gt;&gt;trvBaseLayers.Type" xml:space="preserve">
-    <value>Aga.Controls.Tree.TreeViewAdv, Aga.Controls, Version=1.7.0.0, Culture=neutral, PublicKeyToken=fcc90fbf924463a3</value>
-  </data>
-  <data name="&gt;&gt;trvBaseLayers.Parent" xml:space="preserve">
-    <value>TAB_BASE_LAYERS</value>
-  </data>
-  <data name="&gt;&gt;trvBaseLayers.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;toolStrip3.Name" xml:space="preserve">
-    <value>toolStrip3</value>
-  </data>
-  <data name="&gt;&gt;toolStrip3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip3.Parent" xml:space="preserve">
-    <value>TAB_BASE_LAYERS</value>
-  </data>
-  <data name="&gt;&gt;toolStrip3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="TAB_BASE_LAYERS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="TAB_BASE_LAYERS.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="TAB_BASE_LAYERS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>318, 266</value>
-  </data>
-  <data name="TAB_BASE_LAYERS.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="TAB_BASE_LAYERS.Text" xml:space="preserve">
-    <value>Base Layer Groups</value>
-  </data>
-  <data name="&gt;&gt;TAB_BASE_LAYERS.Name" xml:space="preserve">
-    <value>TAB_BASE_LAYERS</value>
-  </data>
-  <data name="&gt;&gt;TAB_BASE_LAYERS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TAB_BASE_LAYERS.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;TAB_BASE_LAYERS.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>326, 292</value>
-  </data>
-  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>contentPanel</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="contentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>610, 292</value>
-  </data>
-  <data name="&gt;&gt;contentPanel.Name" xml:space="preserve">
-    <value>contentPanel</value>
-  </data>
-  <data name="&gt;&gt;contentPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;contentPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;contentPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="btnAddGroup.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -480,6 +282,57 @@
   <data name="btnConvertLayerGroupToBaseGroup.ToolTipText" xml:space="preserve">
     <value>Convert selected group to a base layer group</value>
   </data>
+  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>312, 25</value>
+  </data>
+  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="toolStrip1.Text" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
+    <value>TAB_GROUP</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TAB_GROUP.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="TAB_GROUP.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TAB_GROUP.Size" type="System.Drawing.Size, System.Drawing">
+    <value>318, 266</value>
+  </data>
+  <data name="TAB_GROUP.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="TAB_GROUP.Text" xml:space="preserve">
+    <value>Layers by Group</value>
+  </data>
+  <data name="&gt;&gt;TAB_GROUP.Name" xml:space="preserve">
+    <value>TAB_GROUP</value>
+  </data>
+  <data name="&gt;&gt;TAB_GROUP.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_GROUP.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;TAB_GROUP.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="trvLayerDrawingOrder.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -510,30 +363,6 @@
   <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>3, 3</value>
   </metadata>
-  <data name="toolStrip2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="toolStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 25</value>
-  </data>
-  <data name="toolStrip2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="toolStrip2.Text" xml:space="preserve">
-    <value>toolStrip2</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.Name" xml:space="preserve">
-    <value>toolStrip2</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.Parent" xml:space="preserve">
-    <value>TAB_DRAWING_ORDER</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="btnDLAddLayer.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -609,6 +438,57 @@
   <data name="btnDLMoveLayerBottom.ToolTipText" xml:space="preserve">
     <value>Move selected layer to bottom</value>
   </data>
+  <data name="toolStrip2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="toolStrip2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>312, 25</value>
+  </data>
+  <data name="toolStrip2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="toolStrip2.Text" xml:space="preserve">
+    <value>toolStrip2</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.Name" xml:space="preserve">
+    <value>toolStrip2</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.Parent" xml:space="preserve">
+    <value>TAB_DRAWING_ORDER</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TAB_DRAWING_ORDER.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="TAB_DRAWING_ORDER.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TAB_DRAWING_ORDER.Size" type="System.Drawing.Size, System.Drawing">
+    <value>318, 266</value>
+  </data>
+  <data name="TAB_DRAWING_ORDER.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="TAB_DRAWING_ORDER.Text" xml:space="preserve">
+    <value>Layers by Drawing Order</value>
+  </data>
+  <data name="&gt;&gt;TAB_DRAWING_ORDER.Name" xml:space="preserve">
+    <value>TAB_DRAWING_ORDER</value>
+  </data>
+  <data name="&gt;&gt;TAB_DRAWING_ORDER.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_DRAWING_ORDER.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;TAB_DRAWING_ORDER.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="trvBaseLayers.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -639,30 +519,6 @@
   <metadata name="toolStrip3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>3, 3</value>
   </metadata>
-  <data name="toolStrip3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="toolStrip3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 25</value>
-  </data>
-  <data name="toolStrip3.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="toolStrip3.Text" xml:space="preserve">
-    <value>toolStrip3</value>
-  </data>
-  <data name="&gt;&gt;toolStrip3.Name" xml:space="preserve">
-    <value>toolStrip3</value>
-  </data>
-  <data name="&gt;&gt;toolStrip3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip3.Parent" xml:space="preserve">
-    <value>TAB_BASE_LAYERS</value>
-  </data>
-  <data name="&gt;&gt;toolStrip3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="btnNewBaseLayerGroup.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
@@ -756,19 +612,19 @@
   <data name="btnInvokeMgCooker.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKnSURBVDhPfZDdT5JhGIc9qr+g0zxoa8ta5ShQUJEsFD8a
-        2maTtInzYzU5yRq2nO9wGROXZpljBsiHpjgBaQ4FFVCRDwFJNEvNsi23WiflBqsDf/RabzKH69p+J89z
-        X/dzP3fSYfAqjCfzb089zrijmGU3KOZ5da96CgQmGnX9fwrr7XV0gvgpHBsAZ/AhcvuZSO29ikr9+m5+
-        uaWFKjucgrrpfOYT4W7hsAzJnXwUmzRgaUXIGlvGaUsUQuM2uCXmW1R5IuzGF+EcLRMczSWkKTNRYngO
-        kS+KImcUtGEzzuvawb/f9y0vT3SUUuKkch4k0yUNyNExwVKlQ2SR4+nyDpoCEQhcUZxTNuFsrwAMaS3S
-        MrrYlBbnVLaE0WwIgKGoQY35GUzvI5C/iYAIRlDh+EBOVIA0FQ98jRQXGJ3XKS0OjSU+3jywDiIUQfFw
-        G3j9ZRA7pyH2R1Ay7gJTycQVcjqOrBJ0ZkcmpR2kVrIQEvt2IBjTgUtun63OQJFJjVx7FAzLNi4qSpFZ
-        3/I1JYU4QikH4d80cu+OvNutdn5GOrlElvoauNZN0CaiOGHeQVYbgbIbfY1UeSLd3Yqs9i4rhI/0yFZX
-        xC6Pr8fo4z9ivOnvsaqOAAjCCL3e4KDKE7Fap0acTjcGh6bQIrWBkDrQJJnEvcaXkMm0mJychdPpQmtr
-        6xlKiUMeHnO5vL+CwSUEg6/h9Qbgdi/8Eez2WXg8fvj9iwiFwlCpNB2UFkepVJcGAkvw+UL78XpD8HgX
-        4fYEMe8OYGbGg7m5BZjNE2uUFkep1JWvvt0kx5xLiM8XJl9eQ39VNWxa/V6jLUqLs9dgY+MTRkctCQkE
-        V/Bx6wvme3qx6g+T3/ElNpDLFenkRdjtdq+Qi6TiXLHZ/sWxn6Ehw8BfKynpNzkbyqNO5mj5AAAAAElF
-        TkSuQmCC
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKlSURBVDhPfZDbS5NxGMe9qr+g27wIgiwqWTnd1GnWdB5i
+        GhiaWooHCr1RYkbim9JwQp5IZLijmjlxBxzLOdvezbm9c+9cHlrloRMJQXSz2C7qwu96q1eHTPrA9+b3
+        PJ/n9/AkHYWo2ni68J69L7NV6Ra0Kb2iJvNIUaWJw5b/T3Ez2ZRGED9rzRPInexG/jgPqfLrqJne3Cus
+        mutm246mqMlRyBu8vVeskyG5T4xSgwZ8bQuyzes4a4miVr8LYdnsXbY9EUG7YiNPy0Ou5grSFVkom3mK
+        Fl8UJWQUHJ0JF8d6IX6g+V5Q0HKcVeKk5j5MTiPakDfGA1+ZgRbLCAbXw+igI6h0R3FB0YHz8kpwpY1I
+        zxwSsFqcMzld3M4ZGtzRBjSYhmDYjmDkdQREIIJqx3tmoyKkK0UQa6S4xB24yWpxOHzJyc6JTRDBCEp1
+        PRCNV0BCvoTEH0HZCzd4Ch6uMdvlyu4gjdefxWqHaeyiVyW+MCrNYxAy1xeoM1FiUCPfHgXXsovLo+XI
+        au7+lpJCHGOVw4hrjMJW/du9evILMpgj8tU3ILTugDMXxSlTGNk9BCpuadrZ9kSGh5XZvQNW1D6eQo62
+        OnbVuh1Ls/6IiRzhWN0TGgShx/S0wcm2J2Kz2fUk6cHk8wU8ks6DkDrQQdhwv/0ZZDItbDYXSNINqVR6
+        jlXiMI8n3G7qVyCwikDgFSiKhsez/Few213wev3w+1cQDK5BrR7rZ7U4KpW2nKZX4fMFD0JRQXipFXi8
+        ASx5aDidXiwuLmN2dn6L1eKoVBNVoTc7zJqLCfH51pif32G8rh7z2ilmiO8zq8X5M2Br6xOMRktC6MAG
+        Pnz8iqVhOUL+NWagP3GAXK7MYAobFEWFXK79uEILC/txHkSnM0z+s5KSfgPO08idmmCwcwAAAABJRU5E
+        rkJggg==
 </value>
   </data>
   <data name="btnInvokeMgCooker.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
@@ -779,6 +635,198 @@
   </data>
   <data name="btnInvokeMgCooker.Text" xml:space="preserve">
     <value>Start MgCooker</value>
+  </data>
+  <data name="toolStrip3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="toolStrip3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>312, 25</value>
+  </data>
+  <data name="toolStrip3.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="toolStrip3.Text" xml:space="preserve">
+    <value>toolStrip3</value>
+  </data>
+  <data name="&gt;&gt;toolStrip3.Name" xml:space="preserve">
+    <value>toolStrip3</value>
+  </data>
+  <data name="&gt;&gt;toolStrip3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip3.Parent" xml:space="preserve">
+    <value>TAB_BASE_LAYERS</value>
+  </data>
+  <data name="&gt;&gt;toolStrip3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TAB_BASE_LAYERS.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="TAB_BASE_LAYERS.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="TAB_BASE_LAYERS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>318, 266</value>
+  </data>
+  <data name="TAB_BASE_LAYERS.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="TAB_BASE_LAYERS.Text" xml:space="preserve">
+    <value>Base Layer Groups</value>
+  </data>
+  <data name="&gt;&gt;TAB_BASE_LAYERS.Name" xml:space="preserve">
+    <value>TAB_BASE_LAYERS</value>
+  </data>
+  <data name="&gt;&gt;TAB_BASE_LAYERS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_BASE_LAYERS.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;TAB_BASE_LAYERS.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="btnBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnBrowse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>253, 29</value>
+  </data>
+  <data name="btnBrowse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 23</value>
+  </data>
+  <data name="btnBrowse.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="btnBrowse.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;btnBrowse.Name" xml:space="preserve">
+    <value>btnBrowse</value>
+  </data>
+  <data name="&gt;&gt;btnBrowse.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnBrowse.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btnBrowse.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtTileSet.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="txtTileSet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 31</value>
+  </data>
+  <data name="txtTileSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 20</value>
+  </data>
+  <data name="txtTileSet.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;txtTileSet.Name" xml:space="preserve">
+    <value>txtTileSet</value>
+  </data>
+  <data name="&gt;&gt;txtTileSet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtTileSet.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;txtTileSet.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 13</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>288, 72</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Tile Set</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>TAB_TILE_SET</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="TAB_TILE_SET.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="TAB_TILE_SET.Size" type="System.Drawing.Size, System.Drawing">
+    <value>318, 266</value>
+  </data>
+  <data name="TAB_TILE_SET.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="TAB_TILE_SET.Text" xml:space="preserve">
+    <value>Linked Tile Set</value>
+  </data>
+  <data name="&gt;&gt;TAB_TILE_SET.Name" xml:space="preserve">
+    <value>TAB_TILE_SET</value>
+  </data>
+  <data name="&gt;&gt;TAB_TILE_SET.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TAB_TILE_SET.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;TAB_TILE_SET.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>326, 292</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>contentPanel</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="contentPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>610, 292</value>
+  </data>
+  <data name="&gt;&gt;contentPanel.Name" xml:space="preserve">
+    <value>contentPanel</value>
+  </data>
+  <data name="&gt;&gt;contentPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;contentPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;contentPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1003,6 +1051,6 @@
     <value>MapLayersSectionCtrl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=5.1.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
+    <value>Maestro.Editors.Common.EditorBindableCollapsiblePanel, Maestro.Editors, Version=6.0.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856</value>
   </data>
 </root>

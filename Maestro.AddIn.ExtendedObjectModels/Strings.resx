@@ -144,6 +144,9 @@
   <data name="TPL_CATEGORY_MGOS26" xml:space="preserve">
     <value>MapGuide Open Source 2.6 / Autodesk Infrastructure Map Server 2015</value>
   </data>
+  <data name="TPL_CATEGORY_MGOS30" xml:space="preserve">
+    <value>MapGuide Open Source 3.0 / Autodesk Infrastructure Map Server 2016</value>
+  </data>
   <data name="TPL_CSD_240_DESC" xml:space="preserve">
     <value>Create a new Compound Symbol Definition using the v2.4.0 schema</value>
   </data>
@@ -173,6 +176,12 @@
   </data>
   <data name="TPL_MDF_240_NAME" xml:space="preserve">
     <value>Map Definition (v2.4.0)</value>
+  </data>
+  <data name="TPL_MDF_300_DESC" xml:space="preserve">
+    <value>Create a new Map Definition using the v3.0.0 schema</value>
+  </data>
+  <data name="TPL_MDF_300_NAME" xml:space="preserve">
+    <value>Map Definition (v3.0.0)</value>
   </data>
   <data name="TPL_SSD_240_DESC" xml:space="preserve">
     <value>Create a new Simple Symbol Definition using the v2.4.0 schema</value>

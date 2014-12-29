@@ -144,6 +144,36 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v3_0_0
                 else
                     return TileSourceType.None;
             }
+            set
+            {
+                var oldType = ((IMapDefinition3)this).TileSourceType;
+
+                switch(value)
+                {
+                    case TileSourceType.External:
+                        {
+                            ((IMapDefinition)this).RemoveBaseMap();
+                            if (this.TileSetSource == null)
+                                this.TileSetSource = new MapDefinitionTypeTileSetSource();   
+                        }
+                        break;
+                    case TileSourceType.Inline:
+                        {
+                            this.TileSetSource = null;
+                            if (this.BaseMapDefinition == null)
+                                ((IMapDefinition)this).InitBaseMap();
+                        }
+                        break;
+                    default:
+                        {
+                            this.TileSetSource = null;
+                            ((IMapDefinition)this).RemoveBaseMap();
+                        }
+                        break;
+                }
+                if (oldType != value)
+                    OnPropertyChanged("TileSourceType");
+            }
         }
 
         private static readonly Version RES_VERSION = new Version(3, 0, 0);
@@ -481,12 +511,14 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v3_0_0
                     FiniteDisplayScale = new System.ComponentModel.BindingList<double>()
                 };
             }
-            this.TileSetSource = null;
+            if (this.TileSetSource != null)
+                this.TileSetSource = null;
         }
 
         void IMapDefinition.RemoveBaseMap()
         {
-            this.BaseMapDefinition = null;
+            if (this.BaseMapDefinition != null)
+                this.BaseMapDefinition = null;
         }
 
         [XmlIgnore]

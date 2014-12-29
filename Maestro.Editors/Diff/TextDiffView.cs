@@ -161,7 +161,7 @@ namespace Maestro.Editors.Diff
 
         private void Results_Load(object sender, System.EventArgs e)
         {
-            Results_Resize(sender, e);
+            lvSource_Resize(sender, e);
         }
     }
 }
