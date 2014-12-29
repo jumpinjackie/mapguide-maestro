@@ -22,10 +22,10 @@
 
 using GeoAPI.Geometries;
 using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
-using OSGeo.MapGuide.MaestroAPI.IO;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.IO;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
 using OSGeo.MapGuide.ObjectModels.Capabilities.v1_0_0;

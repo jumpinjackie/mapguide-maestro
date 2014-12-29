@@ -20,7 +20,7 @@
 
 #endregion Disclaimer / License
 
-using OSGeo.MapGuide.MaestroAPI.IO;
+using OSGeo.MapGuide.ObjectModels.IO;
 using System;
 
 namespace OSGeo.MapGuide.MaestroAPI.Native

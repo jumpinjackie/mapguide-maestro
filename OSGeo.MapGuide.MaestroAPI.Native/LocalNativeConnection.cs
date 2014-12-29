@@ -39,6 +39,7 @@ using System.Collections.Specialized;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI.Native

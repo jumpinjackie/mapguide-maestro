@@ -79,7 +79,6 @@
       <Link>SignedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="ArgumentParser.cs" />
-    <Compile Include="BindingListExtensions.cs" />
     <Compile Include="Capability\NsDoc.cs" />
     <Compile Include="Commands\CreateRuntimeMap.cs" />
     <Compile Include="Commands\DescribeRuntimeMap.cs" />
@@ -132,7 +131,6 @@
     <Compile Include="Feature\ReaderBase.cs" />
     <Compile Include="Feature\RecordBase.cs" />
     <Compile Include="Internal\FixedWKTReader.cs" />
-    <Compile Include="IO\NsDoc.cs" />
     <Compile Include="Mapping\Collections.cs" />
     <Compile Include="Mapping\NsDoc.cs" />
     <Compile Include="CsHelper.cs" />
@@ -165,7 +163,6 @@
     <Compile Include="Schema\RasterPropertyDefinition.cs" />
     <Compile Include="Schema\SchemaElement.cs" />
     <Compile Include="IConnectionCapabilities.cs" />
-    <Compile Include="IO\ReadOnlyRewindableStream.cs" />
     <Compile Include="MaestroApiProviderAttribute.cs" />
     <Compile Include="ConnectionProviderRegistry.cs" />
     <Compile Include="CoordinateSystem\CoordinateSystem.cs" />

@@ -30,7 +30,7 @@ namespace OSGeo.MapGuide.ObjectModels.IO
     /// <summary>
     /// Overrides the default XmlWriter, to ensure that the Xml is Utf8 and with whitespaces, as the MapGuide server requires Utf8
     /// </summary>
-    public class Utf8XmlWriter : System.Xml.XmlTextWriter
+    internal class Utf8XmlWriter : System.Xml.XmlTextWriter
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Utf8XmlWriter"/> class.

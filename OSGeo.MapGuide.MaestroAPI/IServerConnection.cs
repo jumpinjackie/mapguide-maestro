@@ -253,34 +253,4 @@ namespace OSGeo.MapGuide.MaestroAPI
             this.Data = data;
         }
     }
-
-    /// <summary>
-    /// Extension method class
-    /// </summary>
-    public static class ConnectionExtensionMethods
-    {
-        /// <summary>
-        /// Generates the session resource id.
-        /// </summary>
-        /// <param name="conn">The conn.</param>
-        /// <param name="resType">Type of the res.</param>
-        /// <returns></returns>
-        public static string GenerateSessionResourceId(this IServerConnection conn, string resType)
-        {
-            Guid id = Guid.NewGuid();
-            return conn.GenerateSessionResourceId(id.ToString(), resType);
-        }
-
-        /// <summary>
-        /// Generates the session resource id.
-        /// </summary>
-        /// <param name="conn">The conn.</param>
-        /// <param name="name">The name.</param>
-        /// <param name="resType">Type of the res.</param>
-        /// <returns></returns>
-        public static string GenerateSessionResourceId(this IServerConnection conn, string name, string resType)
-        {
-            return "Session:" + conn.SessionID + "//" + name + "." + resType; //NOXLATE
-        }
-    }
 }

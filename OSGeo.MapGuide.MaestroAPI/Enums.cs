@@ -122,33 +122,6 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
     }
 
-    internal class EnumHelper
-    {
-        private static string[] ResourceTypeNames = new string[]
-		{
-			"MapDefinition", //NOXLATE
-			"LayerDefinition", //NOXLATE
-			"FeatureSource", //NOXLATE
-			"WebLayout", //NOXLATE
-			"Map", //NOXLATE
-			string.Empty, //NOXLATE
-			"ApplicationDefinition", //NOXLATE
-		};
-
-        internal static string ResourceName(ResourceTypes type)
-        {
-            return ResourceName(type, false);
-        }
-
-        internal static string ResourceName(ResourceTypes type, bool prefixWithDot)
-        {
-            if (type == ResourceTypes.Folder || !prefixWithDot)
-                return ResourceTypeNames[(int)type];
-            else
-                return "." + ResourceTypeNames[(int)type]; //NOXLATE
-        }
-    }
-
     /// <summary>
     /// Flags that can be used for the QueryMapFeatures operation
     /// </summary>
