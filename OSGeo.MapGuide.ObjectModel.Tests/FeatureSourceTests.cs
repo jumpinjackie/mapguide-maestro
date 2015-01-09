@@ -29,7 +29,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 
-namespace OSGeo.MapGuide.ObjectModel.Tests
+namespace OSGeo.MapGuide.ObjectModels.Tests
 {
     [TestFixture]
     public class FeatureSourceTests

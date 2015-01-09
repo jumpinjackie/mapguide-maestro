@@ -27,7 +27,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OSGeo.MapGuide.ObjectModel.Tests
+namespace OSGeo.MapGuide.ObjectModels.Tests
 {
     [TestFixture]
     public class CheckTests
