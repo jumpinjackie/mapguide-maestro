@@ -111,7 +111,7 @@ namespace Maestro.Editors.Fusion
 
         private void LoadMapOptions()
         {
-            foreach (var option in EditorFactory.GetAvailableOptions(_group))
+            foreach (var option in EditorFactory.GetAvailableOptions(_edSvc.CurrentConnection.SiteVersion, _group))
             {
                 var ed = option;
                 btnNewMap.DropDown.Items.Add(ed.Name, null, (s, e) =>
@@ -131,6 +131,11 @@ namespace Maestro.Editors.Fusion
                     else if (map.Type == EditorFactory.Type_OSM)
                     {
                         _appDef.SetValue("OpenStreetMapScript", EditorFactory.OSM_URL);
+                        bAddedCommercialLayer = true;
+                    }
+                    else if (map.Type == EditorFactory.Type_Stamen)
+                    {
+                        _appDef.SetValue("StamenScript", EditorFactory.STAMEN_URL);
                         bAddedCommercialLayer = true;
                     }
                     _group.AddMap(map);

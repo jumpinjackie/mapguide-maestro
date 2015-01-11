@@ -42,15 +42,21 @@ namespace Maestro.Editors.Fusion.MapEditors
         internal const string Type_Bing = "VirtualEarth"; //NOXLATE
         internal const string Type_OSM = "OpenStreetMap"; //NOXLATE
         internal const string Type_MapGuide = "MapGuide"; //NOXLATE
+        internal const string Type_Stamen = "Stamen"; //NOXLATE
         private const string Type_Generic = "Generic"; //NOXLATE
 
         private const string OSM_MAP_MAPNIK = "Mapnik"; //NOXLATE
         private const string OSM_MAP_TRANSPORTMAP = "TransportMap"; //NOXLATE
         private const string OSM_MAP_CYCLEMAP = "CycleMap"; //NOXLATE
 
+        private const string STAMEN_TERRAIN = "terrain"; //NOXLATE
+        private const string STAMEN_TONER = "toner"; //NOXLATE
+        private const string STAMEN_WATERCOLOR = "watercolor"; //NOXLATE
+
         internal const string OSM_URL = "http://www.openstreetmap.org/openlayers/OpenStreetMap.js"; //NOXLATE
         internal const string GOOGLE_URL = "http://maps.google.com/maps/api/js?sensor=false"; //NOXLATE
         internal const string BING_URL = "http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.2"; //NOXLATE
+        internal const string STAMEN_URL = "http://maps.stamen.com/js/tile.stamen.js?v1.3.0"; //NOXLATE
 
         internal static Control GetEditor(IEditorService edSvc, IMapGroup group, IMap map)
         {
@@ -65,6 +71,9 @@ namespace Maestro.Editors.Fusion.MapEditors
                 case Type_OSM:
                     return new CommercialMapEditor(edSvc, map, new string[] { OSM_MAP_MAPNIK, OSM_MAP_CYCLEMAP, OSM_MAP_TRANSPORTMAP });
 
+                case Type_Stamen:
+                    return new CommercialMapEditor(edSvc, map, new string[] { STAMEN_TONER, STAMEN_TERRAIN, STAMEN_WATERCOLOR });
+
                 case Type_MapGuide:
                     return new MapGuideEditor(edSvc, group, map);
 
@@ -73,7 +82,7 @@ namespace Maestro.Editors.Fusion.MapEditors
             }
         }
 
-        internal static IEnumerable<EditorInvoker> GetAvailableOptions(IMapGroup group)
+        internal static IEnumerable<EditorInvoker> GetAvailableOptions(Version version, IMapGroup group)
         {
             yield return new EditorInvoker()
             {
@@ -171,6 +180,33 @@ namespace Maestro.Editors.Fusion.MapEditors
                     return group.CreateCmsMapEntry(Type_OSM, false, Strings.CmsOsmTransport, OSM_MAP_TRANSPORTMAP);
                 }
             };
+            if (version.Major >= 3) //MGOS 3.0 or higher
+            {
+                yield return new EditorInvoker()
+                {
+                    Name = Strings.CmsStamenToner,
+                    Action = () =>
+                    {
+                        return group.CreateCmsMapEntry(Type_Stamen, false, Strings.CmsStamenToner, STAMEN_TONER);
+                    }
+                };
+                yield return new EditorInvoker()
+                {
+                    Name = Strings.CmsStamenTerrain,
+                    Action = () =>
+                    {
+                        return group.CreateCmsMapEntry(Type_Stamen, false, Strings.CmsStamenTerrain, STAMEN_TERRAIN);
+                    }
+                };
+                yield return new EditorInvoker()
+                {
+                    Name = Strings.CmsStamenWaterColor,
+                    Action = () =>
+                    {
+                        return group.CreateCmsMapEntry(Type_Stamen, false, Strings.CmsStamenWaterColor, STAMEN_WATERCOLOR);
+                    }
+                };
+            }
         }
     }
 

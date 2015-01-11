@@ -1610,4 +1610,13 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="DebugWatermarkMessageLayer" xml:space="preserve">
     <value>MapGuide Debugging Information\n==============================\n\nMap Extents Min: ({0}, {1})\nMap Extents Max: ({2}, {3})\nMap Coordinate System: \n{4}\nLayer Spatial Context: {5}</value>
   </data>
+  <data name="CmsStamenTerrain" xml:space="preserve">
+    <value>Stamen (Terrain)</value>
+  </data>
+  <data name="CmsStamenToner" xml:space="preserve">
+    <value>Stamen (Toner)</value>
+  </data>
+  <data name="CmsStamenWaterColor" xml:space="preserve">
+    <value>Stamen (WaterColor)</value>
+  </data>
 </root>
