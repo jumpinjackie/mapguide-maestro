@@ -11,6 +11,9 @@
 ; Include NSIS headers
 ;----------------------
 
+# .net Checker
+!include "DotNetChecker.nsh"
+
 # Modern UI 2
 !include "MUI2.nsh"
 
@@ -328,16 +331,7 @@ Function .onInit
     !endif
     
     !insertmacro MUI_LANGDLL_DISPLAY
-
-    ; Check for .NET Framework 4.0
-    ReadRegDWORD $0 HKLM "SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" Install
-    IntOp $8 $0 & 1
-    IntCmp $8 1 done noDotNet done 
-
-    noDotNet: 
-        MessageBox MB_OK|MB_ICONINFORMATION "${INST_PRODUCT_QUALIFIED} requires that the .net Framework 4.0 is installed. Please download and install the .net Framework 4.0 before installing ${INST_PRODUCT}."
-        Quit
-    done:
+    !insertmacro CheckNetFramework 45
 FunctionEnd
 
 Function LaunchLink
