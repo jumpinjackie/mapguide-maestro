@@ -10,14 +10,15 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OSGeo.MapGuide.MaestroAPI.Local</RootNamespace>
     <AssemblyName>OSGeo.MapGuide.MaestroAPI.Local</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -45,6 +46,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -54,6 +56,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NetTopologySuite.Merged, Version=1.8.0.0, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
@@ -61,21 +64,17 @@
       <HintPath>..\Thirdparty\NTS\NetTopologySuite.Merged.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.Desktop, Version=2.5.2.7949, Culture=neutral, PublicKeyToken=e75f9fd7cf82dc3f, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Maestro\packages\mg-desktop-net40-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.Desktop.dll</HintPath>
+    <Reference Include="OSGeo.MapGuide.Desktop">
+      <HintPath>..\Maestro\packages\mg-desktop-x86.2.6.0.8316\lib\net40\OSGeo.MapGuide.Desktop.dll</HintPath>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.Foundation, Version=2.5.2.7949, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.Foundation.dll</HintPath>
+    <Reference Include="OSGeo.MapGuide.Foundation">
+      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.6.0.8316\lib\net40\OSGeo.MapGuide.Foundation.dll</HintPath>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.Geometry, Version=2.5.2.7949, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.Geometry.dll</HintPath>
+    <Reference Include="OSGeo.MapGuide.Geometry">
+      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.6.0.8316\lib\net40\OSGeo.MapGuide.Geometry.dll</HintPath>
     </Reference>
-    <Reference Include="OSGeo.MapGuide.PlatformBase, Version=2.5.2.7949, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.5.2.7949\lib\net40\OSGeo.MapGuide.PlatformBase.dll</HintPath>
+    <Reference Include="OSGeo.MapGuide.PlatformBase">
+      <HintPath>..\Maestro\packages\mapguide-api-base-x86.2.6.0.8316\lib\net40\OSGeo.MapGuide.PlatformBase.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -173,8 +172,8 @@
   </Target>
   <PropertyGroup>
     <PostBuildEvent>
-xcopy /s /y "$(SolutionDir)packages\mapguide-api-base-x86.2.5.2.7949\mapguide-api-base\*.*" "$(TargetDir)"
-xcopy /s /y "$(SolutionDir)packages\mg-desktop-net40-x86.2.5.2.7949\mg-desktop\*.*" "$(TargetDir)"</PostBuildEvent>
+xcopy /s /y "$(SolutionDir)packages\mapguide-api-base-x86.2.6.0.8316\mapguide-api-base\*.*" "$(TargetDir)"
+xcopy /s /y "$(SolutionDir)packages\mg-desktop-x86.2.6.0.8316\mg-desktop\*.*" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
