@@ -24,7 +24,7 @@ using System.Reflection;
 
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Open Source Geospatial Foundation")]
-[assembly: AssemblyCopyright("Copyright (c) 2014, Jackie Ng")]
+[assembly: AssemblyCopyright("Copyright (c) 2015, Jackie Ng")]
 
 // Version information for an assembly consists of the following four values:
 //

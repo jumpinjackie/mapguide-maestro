@@ -61,6 +61,7 @@
     <Compile Include="ConfigurationDocumentTests.cs" />
     <Compile Include="CrossConnection\ResourceMigratorTests.cs" />
     <Compile Include="CrossConnection\ResourceRebaserTests.cs" />
+    <Compile Include="ExpressionTests.cs" />
     <Compile Include="FeatureReaderTests.cs" />
     <Compile Include="Mapping\RuntimeMapTests.cs" />
     <Compile Include="MiscTests.cs" />
@@ -80,6 +81,10 @@
     <Compile Include="ValidationTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Expressions\OSGeo.MapGuide.MaestroAPI.Expressions.csproj">
+      <Project>{da2cc031-200b-4f99-a0a9-2e95374be78f}</Project>
+      <Name>OSGeo.MapGuide.MaestroAPI.Expressions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Http\OSGeo.MapGuide.MaestroAPI.Http.csproj">
       <Project>{6ef1e775-444b-4e5f-87fb-d687c43a68d7}</Project>
       <Name>OSGeo.MapGuide.MaestroAPI.Http</Name>
