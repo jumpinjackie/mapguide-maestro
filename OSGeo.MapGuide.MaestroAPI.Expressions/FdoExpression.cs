@@ -45,7 +45,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
             }
         }
 
-        protected static FdoExpression ParseNode(ParseTreeNode child)
+        internal static FdoExpression ParseNode(ParseTreeNode child)
         {
             if (child.Term.Name == FdoTerminalNames.Expression)
             {

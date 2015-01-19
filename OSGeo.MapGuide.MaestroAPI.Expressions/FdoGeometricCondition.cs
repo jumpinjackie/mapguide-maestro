@@ -28,37 +28,26 @@ using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI.Expressions
 {
-    public class FdoFunction : FdoExpression
+    public abstract class FdoGeometricCondition : FdoSearchCondition
     {
-        public FdoIdentifier Identifier { get; private set; }
-
-        public List<FdoExpression> Arguments { get; private set; }
-
-        internal FdoFunction(ParseTreeNode node)
+        internal static FdoSearchCondition ParseGeometricNode(ParseTreeNode node)
         {
-            this.Identifier = new FdoIdentifier(node.ChildNodes[0]);
-            this.Arguments = new List<FdoExpression>();
-            ProcessArguments(node.ChildNodes[1]);
-        }
-
-        private void ProcessNodeList(ParseTreeNodeList list)
-        {
-            foreach (ParseTreeNode child in list)
+            if (node.Term.Name == FdoTerminalNames.GeometricCondition)
             {
-                if (child.Term.Name == FdoTerminalNames.ExpressionCollection)
+                return ParseGeometricNode(node.ChildNodes[0]);
+            }
+            else
+            {
+                switch (node.Term.Name)
                 {
-                    ProcessNodeList(child.ChildNodes);
-                }
-                else
-                {
-                    this.Arguments.Add(FdoExpression.ParseNode(child));
+                    case FdoTerminalNames.DistanceCondition:
+                        return new FdoDistanceCondition(node);
+                    case FdoTerminalNames.SpatialCondition:
+                        return new FdoSpatialCondition(node);
+                    default:
+                        throw new FdoParseException("Unknown terminal: " + node.Term.Name);
                 }
             }
-        }
-
-        private void ProcessArguments(ParseTreeNode node)
-        {
-            ProcessNodeList(node.ChildNodes);
         }
     }
 }

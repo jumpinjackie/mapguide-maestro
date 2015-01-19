@@ -28,35 +28,35 @@ using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI.Expressions
 {
-    public class FdoFunction : FdoExpression
+    public class FdoInCondition : FdoSearchCondition
     {
         public FdoIdentifier Identifier { get; private set; }
 
-        public List<FdoExpression> Arguments { get; private set; }
+        public List<FdoValueExpression> ValueList { get; private set; }
 
-        internal FdoFunction(ParseTreeNode node)
+        public FdoInCondition(ParseTreeNode node)
         {
             this.Identifier = new FdoIdentifier(node.ChildNodes[0]);
-            this.Arguments = new List<FdoExpression>();
-            ProcessArguments(node.ChildNodes[1]);
+            this.ValueList = new List<FdoValueExpression>();
+            ProcessValueList(node.ChildNodes[2]);
         }
 
         private void ProcessNodeList(ParseTreeNodeList list)
         {
             foreach (ParseTreeNode child in list)
             {
-                if (child.Term.Name == FdoTerminalNames.ExpressionCollection)
+                if (child.Term.Name == FdoTerminalNames.ValueExpressionCollection)
                 {
                     ProcessNodeList(child.ChildNodes);
                 }
                 else
                 {
-                    this.Arguments.Add(FdoExpression.ParseNode(child));
+                    this.ValueList.Add(FdoValueExpression.ParseValueNode(child));
                 }
             }
         }
 
-        private void ProcessArguments(ParseTreeNode node)
+        private void ProcessValueList(ParseTreeNode node)
         {
             ProcessNodeList(node.ChildNodes);
         }

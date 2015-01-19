@@ -141,12 +141,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             expr = FdoExpression.Parse("CurrentDate()");
             Assert.IsInstanceOf<FdoFunction>(expr);
-            Assert.AreEqual("CurrentDate", ((FdoFunction)expr).Name);
+            Assert.AreEqual("CurrentDate", ((FdoFunction)expr).Identifier.Name);
             Assert.AreEqual(0, ((FdoFunction)expr).Arguments.Count);
 
             expr = FdoExpression.Parse("Concat(RNAME, ' ', RBILAD)");
             Assert.IsInstanceOf<FdoFunction>(expr);
-            Assert.AreEqual("Concat", ((FdoFunction)expr).Name);
+            Assert.AreEqual("Concat", ((FdoFunction)expr).Identifier.Name);
             Assert.AreEqual(3, ((FdoFunction)expr).Arguments.Count);
             Assert.IsInstanceOf<FdoIdentifier>(((FdoFunction)expr).Arguments[0]);
             Assert.IsInstanceOf<FdoStringValue>(((FdoFunction)expr).Arguments[1]);

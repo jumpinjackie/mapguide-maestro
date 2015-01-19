@@ -97,9 +97,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
                 DistanceCondition |
                 SpatialCondition;
             DistanceCondition.Rule = Identifier + DistanceOperations + Expression + Distance;
-            NullCondition.Rule = Identifier + "NULL";
+            NullCondition.Rule = Identifier + ToTerm("NULL");
             SpatialCondition.Rule = Identifier + SpatialOperations + Expression;
-            UnaryLogicalOperator.Rule = "NOT" + Filter;
+            UnaryLogicalOperator.Rule = ToTerm("NOT") + Filter;
             BinaryLogicalOperations.Rule =
                 ToTerm("AND") |
                 ToTerm("OR");
@@ -150,9 +150,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
                 String |
                 //Blob | 
                 //Clob | 
-                "NULL" |
-                "TRUE" |
-                "FALSE";
+                Boolean |
+                "NULL";
+            Boolean.Rule =
+                ToTerm("TRUE") |
+                ToTerm("FALSE");
             DateTime.Rule =
                 "DATE" + String |
                 "TIME" + String |

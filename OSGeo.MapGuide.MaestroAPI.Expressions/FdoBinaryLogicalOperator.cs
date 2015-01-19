@@ -19,7 +19,6 @@
 //
 
 #endregion Disclaimer / License
-using Irony.Parsing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,37 +27,36 @@ using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI.Expressions
 {
-    public class FdoFunction : FdoExpression
+    public enum BinaryLogicalOperations
     {
-        public FdoIdentifier Identifier { get; private set; }
+        And,
+        Or
+    }
 
-        public List<FdoExpression> Arguments { get; private set; }
+    public class FdoBinaryLogicalOperator : FdoLogicalOperator
+    {
+        public FdoFilter Left { get; private set; }
 
-        internal FdoFunction(ParseTreeNode node)
+        public BinaryLogicalOperations Operator { get; private set; }
+
+        public FdoFilter Right { get; private set; }
+
+        public FdoBinaryLogicalOperator(Irony.Parsing.ParseTreeNode node)
         {
-            this.Identifier = new FdoIdentifier(node.ChildNodes[0]);
-            this.Arguments = new List<FdoExpression>();
-            ProcessArguments(node.ChildNodes[1]);
-        }
-
-        private void ProcessNodeList(ParseTreeNodeList list)
-        {
-            foreach (ParseTreeNode child in list)
+            this.Left = FdoFilter.ParseNode(node.ChildNodes[0]);
+            var opName = node.ChildNodes[1].ChildNodes[0].Token.ValueString;
+            switch (opName.ToUpper())
             {
-                if (child.Term.Name == FdoTerminalNames.ExpressionCollection)
-                {
-                    ProcessNodeList(child.ChildNodes);
-                }
-                else
-                {
-                    this.Arguments.Add(FdoExpression.ParseNode(child));
-                }
+                case "AND":
+                    this.Operator = BinaryLogicalOperations.And;
+                    break;
+                case "OR":
+                    this.Operator = BinaryLogicalOperations.Or;
+                    break;
+                default:
+                    throw new FdoParseException("Unknown operator: " + opName);
             }
-        }
-
-        private void ProcessArguments(ParseTreeNode node)
-        {
-            ProcessNodeList(node.ChildNodes);
+            this.Right = FdoFilter.ParseNode(node.ChildNodes[2]);
         }
     }
 }

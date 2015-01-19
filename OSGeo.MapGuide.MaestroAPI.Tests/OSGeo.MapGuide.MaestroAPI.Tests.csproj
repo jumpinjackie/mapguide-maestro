@@ -63,6 +63,7 @@
     <Compile Include="CrossConnection\ResourceRebaserTests.cs" />
     <Compile Include="ExpressionTests.cs" />
     <Compile Include="FeatureReaderTests.cs" />
+    <Compile Include="FilterTests.cs" />
     <Compile Include="Mapping\RuntimeMapTests.cs" />
     <Compile Include="MiscTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

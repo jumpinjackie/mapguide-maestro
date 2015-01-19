@@ -28,37 +28,39 @@ using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI.Expressions
 {
-    public class FdoFunction : FdoExpression
+    public enum DistanceOperations
+    {
+        Beyond,
+        WithinDistance
+    }
+
+    public class FdoDistanceCondition : FdoGeometricCondition
     {
         public FdoIdentifier Identifier { get; private set; }
 
-        public List<FdoExpression> Arguments { get; private set; }
+        public DistanceOperations Operator { get; private set; }
 
-        internal FdoFunction(ParseTreeNode node)
+        public FdoExpression Expression { get; private set; }
+
+        public FdoDataValue Distance { get; private set; }
+
+        internal FdoDistanceCondition(ParseTreeNode node)
         {
             this.Identifier = new FdoIdentifier(node.ChildNodes[0]);
-            this.Arguments = new List<FdoExpression>();
-            ProcessArguments(node.ChildNodes[1]);
-        }
-
-        private void ProcessNodeList(ParseTreeNodeList list)
-        {
-            foreach (ParseTreeNode child in list)
+            var opName = node.ChildNodes[1].ChildNodes[0].Token.ValueString;
+            switch(opName.ToUpper())
             {
-                if (child.Term.Name == FdoTerminalNames.ExpressionCollection)
-                {
-                    ProcessNodeList(child.ChildNodes);
-                }
-                else
-                {
-                    this.Arguments.Add(FdoExpression.ParseNode(child));
-                }
+                case "WITHINDISTANCE":
+                    this.Operator = DistanceOperations.WithinDistance;
+                    break;
+                case "BEYOND":
+                    this.Operator = DistanceOperations.Beyond;
+                    break;
+                default:
+                    throw new FdoParseException("Unknown operator: " + opName);
             }
-        }
-
-        private void ProcessArguments(ParseTreeNode node)
-        {
-            ProcessNodeList(node.ChildNodes);
+            this.Expression = FdoExpression.ParseNode(node.ChildNodes[2]);
+            this.Distance = FdoDataValue.ParseDataNode(node.ChildNodes[3].ChildNodes[0]);
         }
     }
 }

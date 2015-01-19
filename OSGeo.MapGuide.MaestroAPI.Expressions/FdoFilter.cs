@@ -19,6 +19,7 @@
 //
 
 #endregion Disclaimer / License
+using Irony.Parsing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,41 @@ using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI.Expressions
 {
-    public class FdoFilter
+    public abstract class FdoFilter
     {
+        public static FdoFilter Parse(string str)
+        {
+            Parser p = new Parser(new FdoFilterGrammar());
+            var tree = p.Parse(str);
+            if (tree.Root.Term.Name == FdoTerminalNames.Filter)
+            {
+                var child = tree.Root.ChildNodes[0];
+                return ParseNode(child);
+            }
+            else
+            {
+                throw new FdoParseException();
+            }
+        }
+
+        internal static FdoFilter ParseNode(ParseTreeNode child)
+        {
+            if (child.Term.Name == FdoTerminalNames.Filter)
+            {
+                return ParseNode(child.ChildNodes[0]);
+            }
+            else
+            {
+                switch (child.Term.Name)
+                {
+                    case FdoTerminalNames.LogicalOperator:
+                        return FdoLogicalOperator.ParseLogicalOperatorNode(child);
+                    case FdoTerminalNames.SearchCondition:
+                        return FdoSearchCondition.ParseSearchNode(child);
+                    default:
+                        throw new FdoParseException("Unknown terminal: " + child.Term.Name);
+                }
+            }
+        }
     }
 }

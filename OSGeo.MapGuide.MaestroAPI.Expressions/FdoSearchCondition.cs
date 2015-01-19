@@ -28,37 +28,30 @@ using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI.Expressions
 {
-    public class FdoFunction : FdoExpression
+    public abstract class FdoSearchCondition : FdoFilter
     {
-        public FdoIdentifier Identifier { get; private set; }
-
-        public List<FdoExpression> Arguments { get; private set; }
-
-        internal FdoFunction(ParseTreeNode node)
+        internal static FdoSearchCondition ParseSearchNode(ParseTreeNode node)
         {
-            this.Identifier = new FdoIdentifier(node.ChildNodes[0]);
-            this.Arguments = new List<FdoExpression>();
-            ProcessArguments(node.ChildNodes[1]);
-        }
-
-        private void ProcessNodeList(ParseTreeNodeList list)
-        {
-            foreach (ParseTreeNode child in list)
+            if (node.Term.Name == FdoTerminalNames.SearchCondition)
             {
-                if (child.Term.Name == FdoTerminalNames.ExpressionCollection)
+                return ParseSearchNode(node.ChildNodes[0]);
+            }
+            else
+            {
+                switch (node.Term.Name)
                 {
-                    ProcessNodeList(child.ChildNodes);
-                }
-                else
-                {
-                    this.Arguments.Add(FdoExpression.ParseNode(child));
+                    case FdoTerminalNames.InCondition:
+                        return new FdoInCondition(node);
+                    case FdoTerminalNames.ComparisonCondition:
+                        return new FdoComparisonCondition(node);
+                    case FdoTerminalNames.GeometricCondition:
+                        return FdoGeometricCondition.ParseGeometricNode(node);
+                    case FdoTerminalNames.NullCondition:
+                        return new FdoNullCondition(node);
+                    default:
+                        throw new FdoParseException("Unknown terminal: " + node.Term.Name);
                 }
             }
-        }
-
-        private void ProcessArguments(ParseTreeNode node)
-        {
-            ProcessNodeList(node.ChildNodes);
         }
     }
 }

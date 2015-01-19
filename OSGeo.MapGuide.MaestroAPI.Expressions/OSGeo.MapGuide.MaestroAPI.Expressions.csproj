@@ -56,19 +56,29 @@
       <Link>SignedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="FdoBinaryExpression.cs" />
+    <Compile Include="FdoBinaryLogicalOperator.cs" />
+    <Compile Include="FdoComparisonCondition.cs" />
     <Compile Include="FdoDataValue.cs" />
+    <Compile Include="FdoDistanceCondition.cs" />
     <Compile Include="FdoExpression.cs" />
     <Compile Include="FdoExpressionGrammar.cs" />
     <Compile Include="FdoFilterGrammar.cs" />
     <Compile Include="FdoFilter.cs" />
     <Compile Include="FdoFunction.cs" />
+    <Compile Include="FdoGeometricCondition.cs" />
     <Compile Include="FdoGeometryValue.cs" />
     <Compile Include="FdoIdentifier.cs" />
+    <Compile Include="FdoInCondition.cs" />
     <Compile Include="FdoLiteralValue.cs" />
+    <Compile Include="FdoLogicalOperator.cs" />
+    <Compile Include="FdoNullCondition.cs" />
     <Compile Include="FdoParameter.cs" />
     <Compile Include="FdoParseException.cs" />
+    <Compile Include="FdoSearchCondition.cs" />
+    <Compile Include="FdoSpatialCondition.cs" />
     <Compile Include="FdoTerminalNames.cs" />
     <Compile Include="FdoUnaryExpression.cs" />
+    <Compile Include="FdoUnaryLogicalOperator.cs" />
     <Compile Include="FdoValueExpression.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

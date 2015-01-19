@@ -28,37 +28,13 @@ using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI.Expressions
 {
-    public class FdoFunction : FdoExpression
+    public class FdoUnaryLogicalOperator : FdoLogicalOperator
     {
-        public FdoIdentifier Identifier { get; private set; }
+        public FdoFilter NegatedFilter { get; private set; }
 
-        public List<FdoExpression> Arguments { get; private set; }
-
-        internal FdoFunction(ParseTreeNode node)
+        public FdoUnaryLogicalOperator(ParseTreeNode node)
         {
-            this.Identifier = new FdoIdentifier(node.ChildNodes[0]);
-            this.Arguments = new List<FdoExpression>();
-            ProcessArguments(node.ChildNodes[1]);
-        }
-
-        private void ProcessNodeList(ParseTreeNodeList list)
-        {
-            foreach (ParseTreeNode child in list)
-            {
-                if (child.Term.Name == FdoTerminalNames.ExpressionCollection)
-                {
-                    ProcessNodeList(child.ChildNodes);
-                }
-                else
-                {
-                    this.Arguments.Add(FdoExpression.ParseNode(child));
-                }
-            }
-        }
-
-        private void ProcessArguments(ParseTreeNode node)
-        {
-            ProcessNodeList(node.ChildNodes);
+            this.NegatedFilter = FdoFilter.ParseNode(node.ChildNodes[1]);
         }
     }
 }
