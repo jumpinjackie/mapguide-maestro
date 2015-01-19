@@ -30,6 +30,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
 {
     public class FdoInCondition : FdoSearchCondition
     {
+        public override FilterType FilterType
+        {
+            get { return Expressions.FilterType.InCondition; }
+        }
+
         public FdoIdentifier Identifier { get; private set; }
 
         public List<FdoValueExpression> ValueList { get; private set; }

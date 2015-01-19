@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using Maestro.Editors.Common;
 using Maestro.Editors.LayerDefinition.Vector.Scales;
 using Maestro.Editors.LayerDefinition.Vector.StyleEditors;
 using Maestro.Editors.LayerDefinition.Vector.Thematics;
@@ -443,7 +444,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                     case "Filter":
                         {
                             var expr = rule.Filter;
-                            var newExpr = _edSvc.EditExpression(expr, GetLayerClass(), GetLayerProvider(), GetFeatureSource(), true);
+                            var newExpr = _edSvc.EditExpression(expr, GetLayerClass(), GetLayerProvider(), GetFeatureSource(), ExpressionEditorMode.Filter, true);
                             if (newExpr != null)
                             {
                                 rule.Filter = newExpr;

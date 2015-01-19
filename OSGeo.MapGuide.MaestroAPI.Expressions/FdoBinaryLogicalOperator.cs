@@ -35,6 +35,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
 
     public class FdoBinaryLogicalOperator : FdoLogicalOperator
     {
+        public override FilterType FilterType
+        {
+            get { return Expressions.FilterType.BinaryLogicalOperator; }
+        }
+
         public FdoFilter Left { get; private set; }
 
         public BinaryLogicalOperations Operator { get; private set; }

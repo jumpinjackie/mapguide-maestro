@@ -1619,4 +1619,91 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="CmsStamenWaterColor" xml:space="preserve">
     <value>Stamen (WaterColor)</value>
   </data>
+  <data name="ExprIsValid" xml:space="preserve">
+    <value>Expression is valid</value>
+  </data>
+  <data name="FilterIsValid" xml:space="preserve">
+    <value>Filter is valid</value>
+  </data>
+  <data name="InvalidExpressionPropertyNotFound" xml:space="preserve">
+    <value>Invalid Expression. Property not found: {0}</value>
+  </data>
+  <data name="InvalidExpressionUnsupportedFunction" xml:space="preserve">
+    <value>Invalid Expression. Function not supported: {0}</value>
+  </data>
+  <data name="InvalidFilterUnsupportedConditionType" xml:space="preserve">
+    <value>Invalid Filter. Unsupported condition type: {0}</value>
+  </data>
+  <data name="InvalidFilterUnsupportedDistanceOperator" xml:space="preserve">
+    <value>Invalid Filter. Unsupported distance operator: {0}</value>
+  </data>
+  <data name="InvalidFilterUnsupportedSpatialOperator" xml:space="preserve">
+    <value>Invalid Filter. Unsupported spatial operator: {0}</value>
+  </data>
+  <data name="ExprDispBoolean" xml:space="preserve">
+    <value>Boolean: {0}</value>
+  </data>
+  <data name="ExprDispDateTime" xml:space="preserve">
+    <value>DateTime: {0}</value>
+  </data>
+  <data name="ExprDispDouble" xml:space="preserve">
+    <value>Double: {0}</value>
+  </data>
+  <data name="ExprDispFunction" xml:space="preserve">
+    <value>Function: {0}</value>
+  </data>
+  <data name="ExprDispGeometry" xml:space="preserve">
+    <value>Geometry: {0}</value>
+  </data>
+  <data name="ExprDispIdentifier" xml:space="preserve">
+    <value>Identifier: {0}</value>
+  </data>
+  <data name="ExprDispInt32" xml:space="preserve">
+    <value>Int32: {0}</value>
+  </data>
+  <data name="ExprDispParameter" xml:space="preserve">
+    <value>Parameter: {0}</value>
+  </data>
+  <data name="ExprDispString" xml:space="preserve">
+    <value>String: '{0}'</value>
+  </data>
+  <data name="ExprDispUnaryExpr" xml:space="preserve">
+    <value>Unary Expression (Negated)</value>
+  </data>
+  <data name="FdoDispDistanceCondition" xml:space="preserve">
+    <value>Distance ({0})</value>
+  </data>
+  <data name="FdoDispDistanceTitle" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="FdoDispExprTitle" xml:space="preserve">
+    <value>Expression</value>
+  </data>
+  <data name="FdoDispIdentifierTitle" xml:space="preserve">
+    <value>Identifier</value>
+  </data>
+  <data name="FdoDispInCondition" xml:space="preserve">
+    <value>In Condition ({0})</value>
+  </data>
+  <data name="FdoDispNullCondition" xml:space="preserve">
+    <value>Null Condition ({0})</value>
+  </data>
+  <data name="FdoDispSpatialCondition" xml:space="preserve">
+    <value>Spatial Condition ({0})</value>
+  </data>
+  <data name="FdoDispUnaryOperator" xml:space="preserve">
+    <value>Unary Operator (NOT)</value>
+  </data>
+  <data name="FltrDispBinaryLogicalOperator" xml:space="preserve">
+    <value>Binary Logical Operator ({0})</value>
+  </data>
+  <data name="FltrDispComparisonCondition" xml:space="preserve">
+    <value>Comparison ({0})</value>
+  </data>
+  <data name="FltrDispLeftNode" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="FltrDispRightNode" xml:space="preserve">
+    <value>Right</value>
+  </data>
 </root>

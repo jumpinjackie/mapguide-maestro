@@ -199,7 +199,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private void EditFilter_Click(object sender, EventArgs e)
         {
-            string tmp = m_owner.EditExpression(RuleCondition.Text, false);
+            string tmp = m_owner.EditExpression(RuleCondition.Text, ExpressionEditorMode.Filter, false);
             if (tmp != null)
                 RuleCondition.Text = tmp;
         }

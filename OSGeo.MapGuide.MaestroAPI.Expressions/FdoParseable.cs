@@ -19,7 +19,6 @@
 //
 
 #endregion Disclaimer / License
-using Irony.Parsing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,18 +27,7 @@ using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI.Expressions
 {
-    public class FdoUnaryLogicalOperator : FdoLogicalOperator
+    public abstract class FdoParseable
     {
-        public override FilterType FilterType
-        {
-            get { return Expressions.FilterType.UnaryLogicalOperator; }
-        }
-
-        public FdoFilter NegatedFilter { get; private set; }
-
-        public FdoUnaryLogicalOperator(ParseTreeNode node)
-        {
-            this.NegatedFilter = FdoFilter.ParseNode(node.ChildNodes[1]);
-        }
     }
 }

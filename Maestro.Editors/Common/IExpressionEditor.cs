@@ -27,6 +27,21 @@ using OSGeo.MapGuide.ObjectModels.Capabilities;
 namespace Maestro.Editors.Common
 {
     /// <summary>
+    /// The mode in which the expression editor should function
+    /// </summary>
+    public enum ExpressionEditorMode
+    {
+        /// <summary>
+        /// The editor is for editing expressions
+        /// </summary>
+        Expression,
+        /// <summary>
+        /// The editor is for editing filters
+        /// </summary>
+        Filter
+    }
+
+    /// <summary>
     /// The expression editor interface
     /// </summary>
     internal interface IExpressionEditor
@@ -37,9 +52,10 @@ namespace Maestro.Editors.Common
         /// <param name="edSvc"></param>
         /// <param name="caps"></param>
         /// <param name="cls"></param>
-        /// <param name="featuresSourceId"></param>
+        /// <param name="featureSourceId"></param>
+        /// <param name="mode"></param>
         /// <param name="attachStylizationFunctions"></param>
-        void Initialize(IEditorService edSvc, IFdoProviderCapabilities caps, ClassDefinition cls, string featuresSourceId, bool attachStylizationFunctions);
+        void Initialize(IEditorService edSvc, IFdoProviderCapabilities caps, ClassDefinition cls, string featureSourceId, ExpressionEditorMode mode, bool attachStylizationFunctions);
 
         /// <summary>
         /// Gets or sets the FDO expression

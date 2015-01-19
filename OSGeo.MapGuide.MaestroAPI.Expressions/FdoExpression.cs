@@ -28,12 +28,30 @@ using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI.Expressions
 {
-    public abstract class FdoExpression
+    public enum ExpressionType
     {
+        UnaryExpression,
+        BinaryExpression,
+        Function,
+        Identifier,
+        Parameter,
+        GeometryValue,
+        BooleanValue,
+        StringValue,
+        Int32Value,
+        DoubleValue,
+        DateTimeValue
+    }
+
+    public abstract class FdoExpression : FdoParseable
+    {
+        public abstract ExpressionType ExpressionType { get; }
+
         public static FdoExpression Parse(string str)
         {
             Parser p = new Parser(new FdoExpressionGrammar());
             var tree = p.Parse(str);
+            CheckParserErrors(tree);
             if (tree.Root.Term.Name == FdoTerminalNames.Expression)
             {
                 var child = tree.Root.ChildNodes[0];
@@ -42,6 +60,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
             else
             {
                 throw new FdoParseException();
+            }
+        }
+
+        private static void CheckParserErrors(ParseTree tree)
+        {
+            if (tree.HasErrors())
+            {
+                List<string> errors = new List<string>();
+                foreach(var msg in tree.ParserMessages)
+                {
+                    if (msg.Level == Irony.ErrorLevel.Error)
+                    {
+                        errors.Add(string.Format(Strings.ParserErrorMessage, msg.Location.ToUiString(), msg.Message));
+                    }
+                }
+                throw new FdoParseException(string.Format(Strings.ExpressionParseError, Environment.NewLine, string.Join(Environment.NewLine, errors.ToArray())));
             }
         }
 

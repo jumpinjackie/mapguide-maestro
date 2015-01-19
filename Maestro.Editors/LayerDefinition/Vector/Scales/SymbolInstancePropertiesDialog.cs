@@ -102,7 +102,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private void OnRequestBrowse(SymbolDefinition.SymbolField sender)
         {
-            string expr = _edSvc.EditExpression(sender.Content, _cls, _providerName, _featureSourceId, true);
+            string expr = _edSvc.EditExpression(sender.Content, _cls, _providerName, _featureSourceId, Common.ExpressionEditorMode.Expression, true);
             if (expr != null)
                 sender.Content = expr;
         }

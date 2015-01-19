@@ -44,6 +44,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
 
     public class FdoSpatialCondition : FdoGeometricCondition
     {
+        public override FilterType FilterType
+        {
+            get { return Expressions.FilterType.SpatialCondition; }
+        }
+
         public FdoIdentifier Identifier { get; private set; }
 
         public SpatialOperations Operator { get; private set; }

@@ -41,6 +41,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
 
     public class FdoComparisonCondition : FdoSearchCondition
     {
+        public override FilterType FilterType
+        {
+            get { return Expressions.FilterType.ComparisonCondition; }
+        }
+
         public FdoExpression Left { get; private set; }
 
         public ComparisonOperations Operator { get; private set; }

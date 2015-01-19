@@ -47,12 +47,14 @@
             this.ColumnName = new System.Windows.Forms.ToolStripComboBox();
             this.btnTools = new System.Windows.Forms.ToolStripDropDownButton();
             this.insertThemeExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ExpressionText = new System.Windows.Forms.TextBox();
-            this._autoCompleteTooltip = new System.Windows.Forms.ToolTip(this.components);
             this.insertARGBColorExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.insertHTMLCOLORExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buildAndInsertLOOKUPExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buildAndInsertRANGEExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnValidate = new System.Windows.Forms.ToolStripButton();
+            this.ExpressionText = new System.Windows.Forms.TextBox();
+            this._autoCompleteTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.viewParsedExpressionFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -95,7 +97,8 @@
             this.ColumnValue,
             this.LookupValues,
             this.ColumnName,
-            this.btnTools});
+            this.btnTools,
+            this.btnValidate});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -178,7 +181,8 @@
             this.insertARGBColorExpressionToolStripMenuItem,
             this.insertHTMLCOLORExpressionToolStripMenuItem,
             this.buildAndInsertLOOKUPExpressionToolStripMenuItem,
-            this.buildAndInsertRANGEExpressionToolStripMenuItem});
+            this.buildAndInsertRANGEExpressionToolStripMenuItem,
+            this.viewParsedExpressionFilterToolStripMenuItem});
             this.btnTools.Image = global::Maestro.Editors.Properties.Resources.gear;
             resources.ApplyResources(this.btnTools, "btnTools");
             this.btnTools.Name = "btnTools";
@@ -188,14 +192,6 @@
             this.insertThemeExpressionToolStripMenuItem.Name = "insertThemeExpressionToolStripMenuItem";
             resources.ApplyResources(this.insertThemeExpressionToolStripMenuItem, "insertThemeExpressionToolStripMenuItem");
             this.insertThemeExpressionToolStripMenuItem.Click += new System.EventHandler(this.insertThemeExpressionToolStripMenuItem_Click);
-            // 
-            // ExpressionText
-            // 
-            resources.ApplyResources(this.ExpressionText, "ExpressionText");
-            this.ExpressionText.HideSelection = false;
-            this.ExpressionText.Name = "ExpressionText";
-            this.ExpressionText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ExpressionText_KeyDown);
-            this.ExpressionText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ExpressionText_KeyUp);
             // 
             // insertARGBColorExpressionToolStripMenuItem
             // 
@@ -220,6 +216,27 @@
             this.buildAndInsertRANGEExpressionToolStripMenuItem.Name = "buildAndInsertRANGEExpressionToolStripMenuItem";
             resources.ApplyResources(this.buildAndInsertRANGEExpressionToolStripMenuItem, "buildAndInsertRANGEExpressionToolStripMenuItem");
             this.buildAndInsertRANGEExpressionToolStripMenuItem.Click += new System.EventHandler(this.buildAndInsertRANGEExpressionToolStripMenuItem_Click);
+            // 
+            // btnValidate
+            // 
+            this.btnValidate.Image = global::Maestro.Editors.Properties.Resources.tick;
+            resources.ApplyResources(this.btnValidate, "btnValidate");
+            this.btnValidate.Name = "btnValidate";
+            this.btnValidate.Click += new System.EventHandler(this.btnValidate_Click);
+            // 
+            // ExpressionText
+            // 
+            resources.ApplyResources(this.ExpressionText, "ExpressionText");
+            this.ExpressionText.HideSelection = false;
+            this.ExpressionText.Name = "ExpressionText";
+            this.ExpressionText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ExpressionText_KeyDown);
+            this.ExpressionText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ExpressionText_KeyUp);
+            // 
+            // viewParsedExpressionFilterToolStripMenuItem
+            // 
+            this.viewParsedExpressionFilterToolStripMenuItem.Name = "viewParsedExpressionFilterToolStripMenuItem";
+            resources.ApplyResources(this.viewParsedExpressionFilterToolStripMenuItem, "viewParsedExpressionFilterToolStripMenuItem");
+            this.viewParsedExpressionFilterToolStripMenuItem.Click += new System.EventHandler(this.viewParsedExpressionFilterToolStripMenuItem_Click);
             // 
             // MonoCompatibleExpressionEditor
             // 
@@ -264,5 +281,7 @@
         private System.Windows.Forms.ToolStripMenuItem insertHTMLCOLORExpressionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buildAndInsertLOOKUPExpressionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buildAndInsertRANGEExpressionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton btnValidate;
+        private System.Windows.Forms.ToolStripMenuItem viewParsedExpressionFilterToolStripMenuItem;
     }
 }

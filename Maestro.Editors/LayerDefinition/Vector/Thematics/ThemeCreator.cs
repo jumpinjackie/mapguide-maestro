@@ -1728,7 +1728,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             var conn = m_editor.CurrentConnection;
             IFeatureSource fs = (IFeatureSource)conn.ResourceService.GetResource(fsId);
             ClassDefinition clsDef = conn.FeatureService.GetClassDefinition(fsId, className);
-            string expr = m_editor.EditExpression(txtFilter.Text, clsDef, fs.Provider, fsId, false);
+            string expr = m_editor.EditExpression(txtFilter.Text, clsDef, fs.Provider, fsId, ExpressionEditorMode.Filter, false);
             if (expr != null)
                 txtFilter.Text = expr;
         }

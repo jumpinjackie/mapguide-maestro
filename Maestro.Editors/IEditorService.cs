@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using Maestro.Editors.Common;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Schema;
@@ -107,9 +108,10 @@ namespace Maestro.Editors
         /// <param name="schema"></param>
         /// <param name="providerName"></param>
         /// <param name="featureSourceId"></param>
+        /// <param name="mode"></param>
         /// <param name="attachStylizationFunctions"></param>
         /// <returns></returns>
-        string EditExpression(string currentExpr, ClassDefinition schema, string providerName, string featureSourceId, bool attachStylizationFunctions);
+        string EditExpression(string currentExpr, ClassDefinition schema, string providerName, string featureSourceId, ExpressionEditorMode mode, bool attachStylizationFunctions);
 
         /// <summary>
         /// Gets the resource ID of the resource, whose session-copy is being edited

@@ -646,6 +646,96 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Boolean: {0}.
+        /// </summary>
+        internal static string ExprDispBoolean {
+            get {
+                return ResourceManager.GetString("ExprDispBoolean", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DateTime: {0}.
+        /// </summary>
+        internal static string ExprDispDateTime {
+            get {
+                return ResourceManager.GetString("ExprDispDateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Double: {0}.
+        /// </summary>
+        internal static string ExprDispDouble {
+            get {
+                return ResourceManager.GetString("ExprDispDouble", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Function: {0}.
+        /// </summary>
+        internal static string ExprDispFunction {
+            get {
+                return ResourceManager.GetString("ExprDispFunction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geometry: {0}.
+        /// </summary>
+        internal static string ExprDispGeometry {
+            get {
+                return ResourceManager.GetString("ExprDispGeometry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Identifier: {0}.
+        /// </summary>
+        internal static string ExprDispIdentifier {
+            get {
+                return ResourceManager.GetString("ExprDispIdentifier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Int32: {0}.
+        /// </summary>
+        internal static string ExprDispInt32 {
+            get {
+                return ResourceManager.GetString("ExprDispInt32", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter: {0}.
+        /// </summary>
+        internal static string ExprDispParameter {
+            get {
+                return ResourceManager.GetString("ExprDispParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to String: &apos;{0}&apos;.
+        /// </summary>
+        internal static string ExprDispString {
+            get {
+                return ResourceManager.GetString("ExprDispString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unary Expression (Negated).
+        /// </summary>
+        internal static string ExprDispUnaryExpr {
+            get {
+                return ResourceManager.GetString("ExprDispUnaryExpr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0}{4}Description:{1}{4}Arguments:{2}{4}Returns: {3}.
         /// </summary>
         internal static string ExprEditorFunctionDesc {
@@ -660,6 +750,15 @@ namespace Maestro.Editors {
         internal static string ExpressionItem {
             get {
                 return ResourceManager.GetString("ExpressionItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expression is valid.
+        /// </summary>
+        internal static string ExprIsValid {
+            get {
+                return ResourceManager.GetString("ExprIsValid", resourceCulture);
             }
         }
         
@@ -732,6 +831,78 @@ namespace Maestro.Editors {
         internal static string FdoConnectionStringComponentNotFound {
             get {
                 return ResourceManager.GetString("FdoConnectionStringComponentNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distance ({0}).
+        /// </summary>
+        internal static string FdoDispDistanceCondition {
+            get {
+                return ResourceManager.GetString("FdoDispDistanceCondition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distance.
+        /// </summary>
+        internal static string FdoDispDistanceTitle {
+            get {
+                return ResourceManager.GetString("FdoDispDistanceTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expression.
+        /// </summary>
+        internal static string FdoDispExprTitle {
+            get {
+                return ResourceManager.GetString("FdoDispExprTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Identifier.
+        /// </summary>
+        internal static string FdoDispIdentifierTitle {
+            get {
+                return ResourceManager.GetString("FdoDispIdentifierTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In Condition ({0}).
+        /// </summary>
+        internal static string FdoDispInCondition {
+            get {
+                return ResourceManager.GetString("FdoDispInCondition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Null Condition ({0}).
+        /// </summary>
+        internal static string FdoDispNullCondition {
+            get {
+                return ResourceManager.GetString("FdoDispNullCondition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Spatial Condition ({0}).
+        /// </summary>
+        internal static string FdoDispSpatialCondition {
+            get {
+                return ResourceManager.GetString("FdoDispSpatialCondition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unary Operator (NOT).
+        /// </summary>
+        internal static string FdoDispUnaryOperator {
+            get {
+                return ResourceManager.GetString("FdoDispUnaryOperator", resourceCulture);
             }
         }
         
@@ -844,6 +1015,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Filter is valid.
+        /// </summary>
+        internal static string FilterIsValid {
+            get {
+                return ResourceManager.GetString("FilterIsValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot Find an Empty String.
         /// </summary>
         internal static string FindEmptyString {
@@ -876,6 +1056,42 @@ namespace Maestro.Editors {
         internal static string FiniteDisplayScales {
             get {
                 return ResourceManager.GetString("FiniteDisplayScales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Binary Logical Operator ({0}).
+        /// </summary>
+        internal static string FltrDispBinaryLogicalOperator {
+            get {
+                return ResourceManager.GetString("FltrDispBinaryLogicalOperator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comparison ({0}).
+        /// </summary>
+        internal static string FltrDispComparisonCondition {
+            get {
+                return ResourceManager.GetString("FltrDispComparisonCondition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Left.
+        /// </summary>
+        internal static string FltrDispLeftNode {
+            get {
+                return ResourceManager.GetString("FltrDispLeftNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Right.
+        /// </summary>
+        internal static string FltrDispRightNode {
+            get {
+                return ResourceManager.GetString("FltrDispRightNode", resourceCulture);
             }
         }
         
@@ -1382,6 +1598,24 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid Expression. Property not found: {0}.
+        /// </summary>
+        internal static string InvalidExpressionPropertyNotFound {
+            get {
+                return ResourceManager.GetString("InvalidExpressionPropertyNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Expression. Function not supported: {0}.
+        /// </summary>
+        internal static string InvalidExpressionUnsupportedFunction {
+            get {
+                return ResourceManager.GetString("InvalidExpressionUnsupportedFunction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Feature Source ({0}) has no usable feature classes. Choose a different feature source.
         /// </summary>
         internal static string InvalidFeatureSourceNoClasses {
@@ -1396,6 +1630,33 @@ namespace Maestro.Editors {
         internal static string InvalidFieldCountError {
             get {
                 return ResourceManager.GetString("InvalidFieldCountError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Filter. Unsupported condition type: {0}.
+        /// </summary>
+        internal static string InvalidFilterUnsupportedConditionType {
+            get {
+                return ResourceManager.GetString("InvalidFilterUnsupportedConditionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Filter. Unsupported distance operator: {0}.
+        /// </summary>
+        internal static string InvalidFilterUnsupportedDistanceOperator {
+            get {
+                return ResourceManager.GetString("InvalidFilterUnsupportedDistanceOperator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Filter. Unsupported spatial operator: {0}.
+        /// </summary>
+        internal static string InvalidFilterUnsupportedSpatialOperator {
+            get {
+                return ResourceManager.GetString("InvalidFilterUnsupportedSpatialOperator", resourceCulture);
             }
         }
         

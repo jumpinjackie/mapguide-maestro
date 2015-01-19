@@ -46,12 +46,14 @@ namespace Maestro.Editors.Common
             this.ColumnName = new System.Windows.Forms.ToolStripComboBox();
             this.btnTools = new System.Windows.Forms.ToolStripDropDownButton();
             this.insertThemeExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this._autoCompleteTooltip = new System.Windows.Forms.ToolTip(this.components);
-            this.ExpressionText = new ICSharpCode.TextEditor.TextEditorControl();
             this.insertARGBColorExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.insertHTMLCOLORExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buildAndInsertLOOKUPExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buildAndInsertRANGEExpressionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnValidate = new System.Windows.Forms.ToolStripButton();
+            this._autoCompleteTooltip = new System.Windows.Forms.ToolTip(this.components);
+            this.ExpressionText = new ICSharpCode.TextEditor.TextEditorControl();
+            this.viewParsedExpressionFilterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -88,7 +90,8 @@ namespace Maestro.Editors.Common
             this.ColumnValue,
             this.LookupValues,
             this.ColumnName,
-            this.btnTools});
+            this.btnTools,
+            this.btnValidate});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -171,7 +174,8 @@ namespace Maestro.Editors.Common
             this.insertARGBColorExpressionToolStripMenuItem,
             this.insertHTMLCOLORExpressionToolStripMenuItem,
             this.buildAndInsertLOOKUPExpressionToolStripMenuItem,
-            this.buildAndInsertRANGEExpressionToolStripMenuItem});
+            this.buildAndInsertRANGEExpressionToolStripMenuItem,
+            this.viewParsedExpressionFilterToolStripMenuItem});
             this.btnTools.Image = global::Maestro.Editors.Properties.Resources.gear;
             resources.ApplyResources(this.btnTools, "btnTools");
             this.btnTools.Name = "btnTools";
@@ -181,14 +185,6 @@ namespace Maestro.Editors.Common
             this.insertThemeExpressionToolStripMenuItem.Name = "insertThemeExpressionToolStripMenuItem";
             resources.ApplyResources(this.insertThemeExpressionToolStripMenuItem, "insertThemeExpressionToolStripMenuItem");
             this.insertThemeExpressionToolStripMenuItem.Click += new System.EventHandler(this.insertThemeExpressionToolStripMenuItem_Click);
-            // 
-            // ExpressionText
-            // 
-            resources.ApplyResources(this.ExpressionText, "ExpressionText");
-            this.ExpressionText.IsReadOnly = false;
-            this.ExpressionText.Name = "ExpressionText";
-            this.ExpressionText.ShowLineNumbers = false;
-            this.ExpressionText.ShowVRuler = false;
             // 
             // insertARGBColorExpressionToolStripMenuItem
             // 
@@ -213,6 +209,27 @@ namespace Maestro.Editors.Common
             this.buildAndInsertRANGEExpressionToolStripMenuItem.Name = "buildAndInsertRANGEExpressionToolStripMenuItem";
             resources.ApplyResources(this.buildAndInsertRANGEExpressionToolStripMenuItem, "buildAndInsertRANGEExpressionToolStripMenuItem");
             this.buildAndInsertRANGEExpressionToolStripMenuItem.Click += new System.EventHandler(this.buildAndInsertRANGEExpressionToolStripMenuItem_Click);
+            // 
+            // btnValidate
+            // 
+            this.btnValidate.Image = global::Maestro.Editors.Properties.Resources.tick;
+            resources.ApplyResources(this.btnValidate, "btnValidate");
+            this.btnValidate.Name = "btnValidate";
+            this.btnValidate.Click += new System.EventHandler(this.btnValidate_Click);
+            // 
+            // ExpressionText
+            // 
+            resources.ApplyResources(this.ExpressionText, "ExpressionText");
+            this.ExpressionText.IsReadOnly = false;
+            this.ExpressionText.Name = "ExpressionText";
+            this.ExpressionText.ShowLineNumbers = false;
+            this.ExpressionText.ShowVRuler = false;
+            // 
+            // viewParsedExpressionFilterToolStripMenuItem
+            // 
+            this.viewParsedExpressionFilterToolStripMenuItem.Name = "viewParsedExpressionFilterToolStripMenuItem";
+            resources.ApplyResources(this.viewParsedExpressionFilterToolStripMenuItem, "viewParsedExpressionFilterToolStripMenuItem");
+            this.viewParsedExpressionFilterToolStripMenuItem.Click += new System.EventHandler(this.viewParsedExpressionFilterToolStripMenuItem_Click);
             // 
             // ExpressionEditor
             // 
@@ -255,5 +272,7 @@ namespace Maestro.Editors.Common
         private System.Windows.Forms.ToolStripMenuItem insertHTMLCOLORExpressionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buildAndInsertLOOKUPExpressionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buildAndInsertRANGEExpressionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton btnValidate;
+        private System.Windows.Forms.ToolStripMenuItem viewParsedExpressionFilterToolStripMenuItem;
     }
 }

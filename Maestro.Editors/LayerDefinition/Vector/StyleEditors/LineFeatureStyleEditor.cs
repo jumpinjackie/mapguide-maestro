@@ -579,7 +579,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
 
             string current = this.CurrentStrokeType.Thickness;
-            string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource, true);
+            string expr = m_editor.EditExpression(current, m_schema, m_providername, m_featureSource, ExpressionEditorMode.Expression, true);
             if (!string.IsNullOrEmpty(expr))
                 current = expr;
 
@@ -746,7 +746,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
         private void lineStyleEditor_RequiresExpressionEditor(object sender, EventArgs e)
         {
-            string expr = m_editor.EditExpression(lineStyleEditor.ColorExpression, m_schema, m_providername, m_featureSource, true);
+            string expr = m_editor.EditExpression(lineStyleEditor.ColorExpression, m_schema, m_providername, m_featureSource, ExpressionEditorMode.Expression, true);
             if (expr != null)
             {
                 lineStyleEditor.ColorExpression = expr;

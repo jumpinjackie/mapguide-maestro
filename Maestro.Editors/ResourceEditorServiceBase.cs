@@ -94,13 +94,14 @@ namespace Maestro.Editors
         /// <param name="classDef">The class def.</param>
         /// <param name="providerName">Name of the provider.</param>
         /// <param name="featureSourceId">The feature source id.</param>
+        /// <param name="mode">The editor mode</param>
         /// <param name="attachStylizationFunctions">If true, FDO stylization functions are also included in the function list</param>
         /// <returns></returns>
-        public string EditExpression(string currentExpr, ClassDefinition classDef, string providerName, string featureSourceId, bool attachStylizationFunctions)
+        public string EditExpression(string currentExpr, ClassDefinition classDef, string providerName, string featureSourceId, ExpressionEditorMode mode, bool attachStylizationFunctions)
         {
-            var ed = FdoExpressionEditorFactory.Create(); new ExpressionEditor();
+            var ed = FdoExpressionEditorFactory.Create();
             var caps = _conn.FeatureService.GetProviderCapabilities(providerName);
-            ed.Initialize(this, caps, classDef, featureSourceId, attachStylizationFunctions);
+            ed.Initialize(this, caps, classDef, featureSourceId, mode, attachStylizationFunctions);
             ed.Expression = currentExpr;
             if (ed.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {

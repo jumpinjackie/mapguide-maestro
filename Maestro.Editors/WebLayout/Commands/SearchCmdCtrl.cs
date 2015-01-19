@@ -177,7 +177,7 @@ namespace Maestro.Editors.WebLayout.Commands
 
                 var fs = (IFeatureSource)resSvc.GetResource(vl.ResourceId);
 
-                string expr = _edsvc.EditExpression(txtFilter.Text, _cls, fs.Provider, vl.ResourceId, false);
+                string expr = _edsvc.EditExpression(txtFilter.Text, _cls, fs.Provider, vl.ResourceId, ExpressionEditorMode.Filter, false);
                 if (expr != null)
                 {
                     txtFilter.Text = expr;

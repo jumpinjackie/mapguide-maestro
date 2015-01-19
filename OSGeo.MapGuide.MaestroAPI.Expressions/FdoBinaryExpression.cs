@@ -38,6 +38,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
 
     public class FdoBinaryExpression : FdoExpression
     {
+        public override ExpressionType ExpressionType
+        {
+            get { return Expressions.ExpressionType.BinaryExpression; }
+        }
+
         public FdoExpression Left { get; private set; }
 
         public BinaryOperator Operator { get; private set; }

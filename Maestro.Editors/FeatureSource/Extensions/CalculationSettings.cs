@@ -52,7 +52,7 @@ namespace Maestro.Editors.FeatureSource.Extensions
 
         private void lnkEdit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            string expr = _edSvc.EditExpression(txtExpression.Text, _cls, _parent.Provider, _parent.ResourceID, false);
+            string expr = _edSvc.EditExpression(txtExpression.Text, _cls, _parent.Provider, _parent.ResourceID, Common.ExpressionEditorMode.Expression, false);
             if (expr != null)
             {
                 txtExpression.Text = expr;

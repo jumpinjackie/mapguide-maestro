@@ -75,6 +75,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
 
     public class FdoStringValue : FdoDataValue
     {
+        public override ExpressionType ExpressionType
+        {
+            get { return Expressions.ExpressionType.StringValue; }
+        }
+
         public string Value { get; private set; }
 
         internal FdoStringValue(ParseTreeNode node)
@@ -86,6 +91,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
 
     public class FdoInt32Value : FdoDataValue
     {
+        public override ExpressionType ExpressionType
+        {
+            get { return Expressions.ExpressionType.Int32Value; }
+        }
+
         public int Value { get; private set; }
 
         internal FdoInt32Value(ParseTreeNode node)
@@ -107,6 +117,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
 
     public class FdoDoubleValue : FdoDataValue
     {
+        public override ExpressionType ExpressionType
+        {
+            get { return Expressions.ExpressionType.DoubleValue; }
+        }
+
         public double Value { get; private set; }
 
         internal FdoDoubleValue(ParseTreeNode node)
@@ -128,6 +143,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
 
     public class FdoDateTimeValue : FdoDataValue
     {
+        public override ExpressionType ExpressionType
+        {
+            get { return Expressions.ExpressionType.DateTimeValue; }
+        }
+
         public DateTime? DateTime { get; private set; }
 
         public TimeSpan? Time { get; private set; }
@@ -172,6 +192,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
 
     public class FdoBooleanValue : FdoDataValue
     {
+        public override ExpressionType ExpressionType
+        {
+            get { return Expressions.ExpressionType.BooleanValue; }
+        }
+
         public bool Value { get; private set; }
 
         internal FdoBooleanValue(ParseTreeNode node)

@@ -30,6 +30,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
 {
     public class FdoNullCondition : FdoSearchCondition
     {
+        public override FilterType FilterType
+        {
+            get { return Expressions.FilterType.NullCondition; }
+        }
+
         public FdoIdentifier Identifier { get; private set; }
 
         public FdoNullCondition(ParseTreeNode node)

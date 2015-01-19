@@ -122,6 +122,13 @@
     <Compile Include="Common\ExpressionEditor.designer.cs">
       <DependentUpon>ExpressionEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\Expression\ExpressionDisplayDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\Expression\ExpressionDisplayDialog.Designer.cs">
+      <DependentUpon>ExpressionDisplayDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Expression\FdoExpressionValidator.cs" />
     <Compile Include="Common\Expression\LookupExpressionBuilder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1352,6 +1359,9 @@
       <DependentUpon>ExpressionEditor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Common\Expression\ExpressionDisplayDialog.resx">
+      <DependentUpon>ExpressionDisplayDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Common\Expression\LookupExpressionBuilder.resx">
       <DependentUpon>LookupExpressionBuilder.cs</DependentUpon>
     </EmbeddedResource>
@@ -1973,6 +1983,10 @@
     <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj">
       <Project>{CFD19053-2172-41D3-8460-0FD2123A1E88}</Project>
       <Name>Maestro.Shared.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Expressions\OSGeo.MapGuide.MaestroAPI.Expressions.csproj">
+      <Project>{da2cc031-200b-4f99-a0a9-2e95374be78f}</Project>
+      <Name>OSGeo.MapGuide.MaestroAPI.Expressions</Name>
     </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
       <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>

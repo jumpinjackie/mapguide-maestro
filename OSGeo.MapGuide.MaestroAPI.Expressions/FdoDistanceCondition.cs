@@ -36,6 +36,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
 
     public class FdoDistanceCondition : FdoGeometricCondition
     {
+        public override FilterType FilterType
+        {
+            get { return Expressions.FilterType.DistanceCondition; }
+        }
+
         public FdoIdentifier Identifier { get; private set; }
 
         public DistanceOperations Operator { get; private set; }

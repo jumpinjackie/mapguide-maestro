@@ -473,7 +473,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             if (grdOverrides.SelectedRows.Count == 1)
             {
                 var ov = (ParameterModel)grdOverrides.SelectedRows[0].DataBoundItem;
-                string expr = _edSvc.EditExpression(ov.Value, _cls, _provider, _featureSourceId, true);
+                string expr = _edSvc.EditExpression(ov.Value, _cls, _provider, _featureSourceId, ExpressionEditorMode.Expression, true);
                 if (expr != null)
                 {
                     ov.Value = expr;
@@ -501,7 +501,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 }
                 else //Fallback to Expression Editor
                 {
-                    string expr = _edSvc.EditExpression(ov.Value, _cls, _provider, _featureSourceId, true);
+                    string expr = _edSvc.EditExpression(ov.Value, _cls, _provider, _featureSourceId, ExpressionEditorMode.Expression, true);
                     if (expr != null)
                     {
                         ov.Value = expr;

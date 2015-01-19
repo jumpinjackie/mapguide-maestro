@@ -107,7 +107,7 @@ namespace Maestro.Editors.FeatureSource.Preview
         private void txtFilter_Click(object sender, EventArgs e)
         {
             var ed = FdoExpressionEditorFactory.Create(); //new ExpressionEditor();
-            ed.Initialize(_edSvc, _caps, _cls, _fsId, false);
+            ed.Initialize(_edSvc, _caps, _cls, _fsId, ExpressionEditorMode.Filter, false);
             ed.Expression = txtFilter.Text;
             if (ed.ShowDialog() == DialogResult.OK)
             {
@@ -134,7 +134,7 @@ namespace Maestro.Editors.FeatureSource.Preview
         private void btnAdd_Click(object sender, EventArgs e)
         {
             var ed = FdoExpressionEditorFactory.Create();// new ExpressionEditor();
-            ed.Initialize(_edSvc, _caps, _cls, _fsId, false);
+            ed.Initialize(_edSvc, _caps, _cls, _fsId, ExpressionEditorMode.Expression, false);
             if (ed.ShowDialog() == DialogResult.OK)
             {
                 grdExpressions.Rows.Add(GenerateAlias(), ed.Expression);

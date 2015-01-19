@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using Maestro.Editors.Common;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System;
@@ -110,14 +111,14 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
         private void btnZOffset_Click(object sender, EventArgs e)
         {
-            string expr = _edSvc.EditExpression(txtZOffset.Text, _clsDef, _provider, _featureSourceId, true);
+            string expr = _edSvc.EditExpression(txtZOffset.Text, _clsDef, _provider, _featureSourceId, ExpressionEditorMode.Expression, true);
             if (expr != null)
                 txtZOffset.Text = expr;
         }
 
         private void btnZExtrusion_Click(object sender, EventArgs e)
         {
-            string expr = _edSvc.EditExpression(txtZExtrusion.Text, _clsDef, _provider, _featureSourceId, true);
+            string expr = _edSvc.EditExpression(txtZExtrusion.Text, _clsDef, _provider, _featureSourceId, ExpressionEditorMode.Expression, true);
             if (expr != null)
                 txtZExtrusion.Text = expr;
         }

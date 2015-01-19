@@ -30,6 +30,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
 {
     public class FdoIdentifier : FdoExpression
     {
+        public override ExpressionType ExpressionType
+        {
+            get { return Expressions.ExpressionType.Identifier; }
+        }
+
         public string Name { get; private set; }
 
         internal FdoIdentifier(ParseTreeNode node)

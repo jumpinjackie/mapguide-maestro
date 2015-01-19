@@ -25,6 +25,7 @@ using Maestro.Editors.LayerDefinition.Vector.Thematics;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using OSGeo.MapGuide.MaestroAPI.Expressions;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
 using System;
@@ -79,21 +80,25 @@ namespace Maestro.Editors.Common
             set { ExpressionText.Text = value; }
         }
 
+        private ExpressionEditorMode _mode;
+
         /// <summary>
         /// Initializes the dialog.
         /// </summary>
         /// <param name="edSvc">The editor service.</param>
         /// <param name="caps">The provider capabilities.</param>
         /// <param name="cls">The class definition.</param>
-        /// <param name="featuresSourceId">The FeatureSource id.</param>
+        /// <param name="featureSourceId">The FeatureSource id.</param>
+        /// <param name="mode">The editor mode</param>
         /// <param name="attachStylizationFunctions">if set to <c>true</c> stylization functions are also attached</param>
-        public void Initialize(IEditorService edSvc, IFdoProviderCapabilities caps, ClassDefinition cls, string featuresSourceId, bool attachStylizationFunctions)
+        public void Initialize(IEditorService edSvc, IFdoProviderCapabilities caps, ClassDefinition cls, string featureSourceId, ExpressionEditorMode mode, bool attachStylizationFunctions)
         {
             try
             {
+                _mode = mode;
                 _cls = cls;
                 _edSvc = edSvc;
-                m_featureSource = featuresSourceId;
+                m_featureSource = featureSourceId;
                 _caps = caps;
 
                 btnTools.Enabled = attachStylizationFunctions;
@@ -525,6 +530,52 @@ namespace Maestro.Editors.Common
                 {
                     this.InsertText(picker.GetExpression());
                 }
+            }
+        }
+
+        private FdoExpressionValidator _validator = new FdoExpressionValidator();
+
+        private void btnValidate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_mode == ExpressionEditorMode.Filter)
+                {
+                    FdoFilter filter = FdoFilter.Parse(ExpressionText.Text);
+                    _validator.ValidateFilter(filter, _cls, _caps);
+                    MessageBox.Show(Strings.FilterIsValid);
+                }
+                else //Expression
+                {
+                    FdoExpression expr = FdoExpression.Parse(ExpressionText.Text);
+                    _validator.ValidateExpression(expr, _cls, _caps);
+                    MessageBox.Show(Strings.ExprIsValid);
+                }
+            }
+            catch (FdoParseException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void viewParsedExpressionFilterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_mode == ExpressionEditorMode.Filter)
+                {
+                    FdoFilter filter = FdoFilter.Parse(ExpressionText.Text);
+                    new ExpressionDisplayDialog(filter).ShowDialog();
+                }
+                else //Expression
+                {
+                    FdoExpression expr = FdoExpression.Parse(ExpressionText.Text);
+                    new ExpressionDisplayDialog(expr).ShowDialog();
+                }
+            }
+            catch (FdoParseException ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
