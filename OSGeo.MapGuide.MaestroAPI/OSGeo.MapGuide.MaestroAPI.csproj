@@ -61,10 +61,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ciloci.Flee, Version=0.9.27.0, Culture=neutral, PublicKeyToken=fc11e355737f8b7f, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Maestro\packages\fleesharp.0.9.27-pre\lib\net40\Ciloci.Flee.dll</HintPath>
-    </Reference>
     <Reference Include="NetTopologySuite.Merged, Version=1.8.0.0, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Thirdparty\NTS\NetTopologySuite.Merged.dll</HintPath>
@@ -115,11 +111,6 @@
     <Compile Include="Exceptions\SerializationException.cs" />
     <Compile Include="Exceptions\UnsupportedResourceTypeException.cs" />
     <Compile Include="Exceptions\UnsupportedServiceTypeException.cs" />
-    <Compile Include="Expression\ExpressionEngine.cs" />
-    <Compile Include="Expression\ExpressionFeatureReader.cs" />
-    <Compile Include="Expression\FdoFunctionNamespace.cs" />
-    <Compile Include="Expression\MgFunctionNamespace.cs" />
-    <Compile Include="Expression\NsDoc.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Feature\ClrFdoTypeMap.cs" />
     <Compile Include="Feature\FeatureBase.cs" />
@@ -245,7 +236,6 @@
     <Compile Include="XmlValidator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="Schemas\ApplicationDefinition-1.0.0.xsd">
     </None>
     <None Include="Schemas\ApplicationDefinitionInfo-1.0.0.xsd">

@@ -82,7 +82,6 @@
       <Link>SignedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="ConnectionTestBase.cs" />
-    <Compile Include="ExpressionTests.cs" />
     <Compile Include="FeatureReaderTests.cs" />
     <Compile Include="HttpConnectionTests.cs" />
     <Compile Include="HttpSiteTests.cs" />
