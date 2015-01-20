@@ -72,7 +72,7 @@ namespace Maestro.Editors.Common
     /// <summary>
     /// An interface for inserting text
     /// </summary>
-    public interface ITextInserter
+    internal interface ITextInserter
     {
         /// <summary>
         /// Inserts the specified text. The implementation determines the position/cursor where the
@@ -86,7 +86,8 @@ namespace Maestro.Editors.Common
     {
         public static IExpressionEditor Create()
         {
-            if (Platform.IsRunningOnMono)
+            //if (Platform.IsRunningOnMono)
+            if (true)
                 return new MonoCompatibleExpressionEditor();
             else
                 return new ExpressionEditor();

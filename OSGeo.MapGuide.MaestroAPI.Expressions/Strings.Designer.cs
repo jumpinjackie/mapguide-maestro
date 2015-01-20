@@ -79,7 +79,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to   ({0}) - {1}.
+        ///   Looks up a localized string similar to Parser Error.
         /// </summary>
         internal static string ParserErrorMessage {
             get {

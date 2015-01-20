@@ -38,4 +38,39 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
           System.Runtime.Serialization.StreamingContext context)
             : base(info, context) { }
     }
+
+    public class FdoParseErrorMessage
+    {
+        public int LineNumber { get; private set; }
+
+        public int Column { get; private set; }
+
+        public string Message { get; private set; }
+
+        public FdoParseErrorMessage(string message, int line, int column)
+        {
+            this.Message = message;
+            this.LineNumber = line;
+            this.Column = column;
+        }
+    }
+
+    [Serializable]
+    public class FdoMalformedExpressionException : FdoParseException
+    {
+        public List<FdoParseErrorMessage> Messages { get; private set; }
+
+        public FdoMalformedExpressionException(string message, List<FdoParseErrorMessage> parserErrorMessages)
+            : this(message)
+        {
+            this.Messages = parserErrorMessages;
+        }
+
+        private FdoMalformedExpressionException(string message) : base(message) { }
+        private FdoMalformedExpressionException(string message, Exception inner) : base(message, inner) { }
+        protected FdoMalformedExpressionException(
+          System.Runtime.Serialization.SerializationInfo info,
+          System.Runtime.Serialization.StreamingContext context)
+            : base(info, context) { }
+    }
 }

@@ -78,7 +78,7 @@ namespace Maestro.Editors.Common
     /// <summary>
     /// An expression editor dialog
     /// </summary>
-    public partial class MonoCompatibleExpressionEditor : Form, IExpressionEditor, ITextInserter
+    public partial class MonoCompatibleExpressionEditor : Form, IExpressionEditor, ITextInserter, IExpressionErrorSource
     {
         private ClassDefinition _cls;
 
@@ -1035,6 +1035,27 @@ namespace Maestro.Editors.Common
             }
         }
 
+        void IExpressionErrorSource.SetCursor(int line, int col)
+        {
+            string text = ExpressionText.Text;
+            int start = -1;
+            for (int i = 0; i <= line; i++)
+            {
+                start++;
+                start = text.IndexOf(Environment.NewLine, start);
+            }
+
+            ExpressionText.SelectionStart = start + col + 2; //1 to offset col, 1 to offset start
+            ExpressionText.SelectionLength = 0;
+        }
+
+        void IExpressionErrorSource.HighlightToken(string token)
+        {
+            int idx = ExpressionText.Text.IndexOf(token, StringComparison.InvariantCultureIgnoreCase);
+            ExpressionText.SelectionStart = idx;
+            ExpressionText.SelectionLength = token.Length;
+        }
+
         private FdoExpressionValidator _validator = new FdoExpressionValidator();
 
         private void btnValidate_Click(object sender, EventArgs e)
@@ -1054,9 +1075,13 @@ namespace Maestro.Editors.Common
                     MessageBox.Show(Strings.ExprIsValid);
                 }
             }
-            catch (FdoParseException ex)
+            catch (FdoExpressionValidationException ex)
             {
-                MessageBox.Show(ex.Message);
+                new ExpressionParseErrorDialog(ex, this).ShowDialog();
+            }
+            catch (FdoMalformedExpressionException ex)
+            {
+                new MalformedExpressionDialog(ex, this).ShowDialog();
             }
         }
 

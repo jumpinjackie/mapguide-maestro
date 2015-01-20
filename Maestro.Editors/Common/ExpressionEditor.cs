@@ -20,7 +20,9 @@
 
 #endregion Disclaimer / License
 
+using ICSharpCode.TextEditor;
 using Maestro.Editors.Common.Expression;
+using Maestro.Editors.Generic.XmlEditor;
 using Maestro.Editors.LayerDefinition.Vector.Thematics;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
@@ -39,7 +41,7 @@ namespace Maestro.Editors.Common
     /// <summary>
     /// An expression editor dialog
     /// </summary>
-    public partial class ExpressionEditor : Form, IExpressionEditor, ITextInserter
+    public partial class ExpressionEditor : Form, IExpressionEditor, ITextInserter, IExpressionErrorSource
     {
         private ClassDefinition _cls;
         private IEditorService _edSvc;
@@ -533,6 +535,47 @@ namespace Maestro.Editors.Common
             }
         }
 
+        void IExpressionErrorSource.SetCursor(int line, int col)
+        {
+            ExpressionText.ActiveTextAreaControl.Caret.Line = line;
+            ExpressionText.ActiveTextAreaControl.Caret.Column = col;
+        }
+
+        void IExpressionErrorSource.HighlightToken(string token)
+        {
+            bool silent = false;
+            if (string.IsNullOrEmpty(token))
+            {
+                if (!silent)
+                    MessageBox.Show(Strings.TextNoStringSpecifiedToLookFor);
+                return;
+            }
+            var search = new TextEditorSearcher();
+            search.Document = ExpressionText.Document;
+            search.LookFor = token; // txtLookFor.Text;
+            search.MatchCase = false;
+            search.MatchWholeWordOnly = true;
+
+            bool bLoopedAround;
+            TextRange range = search.FindNext(0, false, out bLoopedAround);
+            if (range != null)
+                SelectResult(range);
+            else if (!silent)
+                MessageBox.Show(Strings.TextNoStringSpecifiedToLookFor);
+        }
+
+        private void SelectResult(TextRange range)
+        {
+            TextLocation p1 = ExpressionText.Document.OffsetToPosition(range.Offset);
+            TextLocation p2 = ExpressionText.Document.OffsetToPosition(range.Offset + range.Length);
+            ExpressionText.ActiveTextAreaControl.SelectionManager.SetSelection(p1, p2);
+            ExpressionText.ActiveTextAreaControl.ScrollTo(p1.Line, p1.Column);
+            // Also move the caret to the end of the selection, because when the user
+            // presses F3, the caret is where we start searching next time.
+            ExpressionText.ActiveTextAreaControl.Caret.Position =
+                ExpressionText.Document.OffsetToPosition(range.Offset + range.Length);
+        }
+
         private FdoExpressionValidator _validator = new FdoExpressionValidator();
 
         private void btnValidate_Click(object sender, EventArgs e)
@@ -552,9 +595,13 @@ namespace Maestro.Editors.Common
                     MessageBox.Show(Strings.ExprIsValid);
                 }
             }
-            catch (FdoParseException ex)
+            catch (FdoExpressionValidationException ex)
             {
-                MessageBox.Show(ex.Message);
+                new ExpressionParseErrorDialog(ex, this).ShowDialog();
+            }
+            catch (FdoMalformedExpressionException ex)
+            {
+                new MalformedExpressionDialog(ex, this).ShowDialog();
             }
         }
 

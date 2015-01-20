@@ -63,15 +63,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Expressions
         {
             if (tree.HasErrors())
             {
-                List<string> errors = new List<string>();
+                List<FdoParseErrorMessage> errors = new List<FdoParseErrorMessage>();
                 foreach (var msg in tree.ParserMessages)
                 {
                     if (msg.Level == Irony.ErrorLevel.Error)
                     {
-                        errors.Add(string.Format(Strings.ParserErrorMessage, msg.Location.ToUiString(), msg.Message));
+                        errors.Add(new FdoParseErrorMessage(msg.Message, msg.Location.Line, msg.Location.Column));
                     }
                 }
-                throw new FdoParseException(string.Format(Strings.FilterParseError, Environment.NewLine, string.Join(Environment.NewLine, errors.ToArray())));
+                throw new FdoMalformedExpressionException(Strings.ParserErrorMessage, errors);
             }
         }
 
