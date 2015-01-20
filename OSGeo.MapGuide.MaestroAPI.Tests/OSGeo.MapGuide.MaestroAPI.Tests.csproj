@@ -82,9 +82,9 @@
     <Compile Include="ValidationTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Expressions\OSGeo.MapGuide.MaestroAPI.Expressions.csproj">
+    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Expressions\OSGeo.FDO.Expressions.csproj">
       <Project>{da2cc031-200b-4f99-a0a9-2e95374be78f}</Project>
-      <Name>OSGeo.MapGuide.MaestroAPI.Expressions</Name>
+      <Name>OSGeo.FDO.Expressions</Name>
     </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Http\OSGeo.MapGuide.MaestroAPI.Http.csproj">
       <Project>{6ef1e775-444b-4e5f-87fb-d687c43a68d7}</Project>

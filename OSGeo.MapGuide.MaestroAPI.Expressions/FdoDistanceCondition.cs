@@ -26,7 +26,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OSGeo.MapGuide.MaestroAPI.Expressions
+namespace OSGeo.FDO.Expressions
 {
     public enum DistanceOperations
     {

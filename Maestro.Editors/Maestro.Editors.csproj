@@ -2002,9 +2002,9 @@
       <Project>{CFD19053-2172-41D3-8460-0FD2123A1E88}</Project>
       <Name>Maestro.Shared.UI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Expressions\OSGeo.MapGuide.MaestroAPI.Expressions.csproj">
+    <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Expressions\OSGeo.FDO.Expressions.csproj">
       <Project>{da2cc031-200b-4f99-a0a9-2e95374be78f}</Project>
-      <Name>OSGeo.MapGuide.MaestroAPI.Expressions</Name>
+      <Name>OSGeo.FDO.Expressions</Name>
     </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI\OSGeo.MapGuide.MaestroAPI.csproj">
       <Project>{80FA3158-8B5F-48D1-A393-0378AFE48A7E}</Project>

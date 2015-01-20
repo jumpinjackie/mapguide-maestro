@@ -7,8 +7,8 @@
     <ProjectGuid>{DA2CC031-200B-4F99-A0A9-2E95374BE78F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OSGeo.MapGuide.MaestroAPI.Expressions</RootNamespace>
-    <AssemblyName>OSGeo.MapGuide.MaestroAPI.Expressions</AssemblyName>
+    <RootNamespace>OSGeo.FDO.Expressions</RootNamespace>
+    <AssemblyName>OSGeo.FDO.Expressions</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\Maestro\</SolutionDir>
@@ -34,7 +34,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>..\SDK\bin\OSGeo.MapGuide.MaestroAPI.Expressions.XML</DocumentationFile>
+    <DocumentationFile>..\SDK\bin\OSGeo.FDO.Expressions.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Irony">

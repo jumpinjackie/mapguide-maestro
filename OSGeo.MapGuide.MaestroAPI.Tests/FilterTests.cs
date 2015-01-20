@@ -20,7 +20,7 @@
 
 #endregion Disclaimer / License
 using NUnit.Framework;
-using OSGeo.MapGuide.MaestroAPI.Expressions;
+using OSGeo.FDO.Expressions;
 using System;
 using System.Collections.Generic;
 using System.Linq;

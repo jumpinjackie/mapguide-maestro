@@ -25,7 +25,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OSGeo.MapGuide.MaestroAPI.Expressions
+namespace OSGeo.FDO.Expressions
 {
     [Language("FDO Expression", "1.0", "FDO Expression Grammar")]
     public class FdoExpressionGrammar : Grammar

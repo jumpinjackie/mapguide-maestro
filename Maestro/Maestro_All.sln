@@ -120,7 +120,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maestro Shared Components",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.ObjectModels.Tests", "..\OSGeo.MapGuide.ObjectModel.Tests\OSGeo.MapGuide.ObjectModels.Tests.csproj", "{D32BE7DB-D0C3-4805-A057-18312370C57E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.MapGuide.MaestroAPI.Expressions", "..\OSGeo.MapGuide.MaestroAPI.Expressions\OSGeo.MapGuide.MaestroAPI.Expressions.csproj", "{DA2CC031-200B-4F99-A0A9-2E95374BE78F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSGeo.FDO.Expressions", "..\OSGeo.MapGuide.MaestroAPI.Expressions\OSGeo.FDO.Expressions.csproj", "{DA2CC031-200B-4F99-A0A9-2E95374BE78F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

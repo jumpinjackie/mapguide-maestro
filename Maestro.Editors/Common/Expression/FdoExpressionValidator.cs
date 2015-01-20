@@ -19,7 +19,7 @@
 //
 
 #endregion Disclaimer / License
-using OSGeo.MapGuide.MaestroAPI.Expressions;
+using OSGeo.FDO.Expressions;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
 using System;

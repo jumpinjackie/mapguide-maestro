@@ -27,7 +27,7 @@ using Maestro.Editors.LayerDefinition.Vector.Thematics;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
-using OSGeo.MapGuide.MaestroAPI.Expressions;
+using OSGeo.FDO.Expressions;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
 using System;
