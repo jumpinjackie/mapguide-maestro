@@ -59,10 +59,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NetTopologySuite.Merged, Version=1.8.0.0, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Thirdparty\NTS\NetTopologySuite.Merged.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="GeoAPI">
+      <HintPath>..\Maestro\packages\GeoAPI.1.7.3\lib\net45-client\GeoAPI.dll</HintPath>
     </Reference>
     <Reference Include="OSGeo.MapGuide.Desktop">
       <HintPath>..\Maestro\packages\mg-desktop-x86.2.6.0.8316\lib\net40\OSGeo.MapGuide.Desktop.dll</HintPath>

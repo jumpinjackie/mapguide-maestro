@@ -36,12 +36,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GeoAPI">
+      <HintPath>..\Maestro\packages\GeoAPI.1.7.3\lib\net45-client\GeoAPI.dll</HintPath>
+    </Reference>
     <Reference Include="Moq">
       <HintPath>..\Maestro\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="NetTopologySuite.Merged, Version=1.8.0.0, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Thirdparty\NTS\NetTopologySuite.Merged.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\Maestro\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>

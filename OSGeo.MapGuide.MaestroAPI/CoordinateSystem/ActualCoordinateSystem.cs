@@ -23,7 +23,7 @@
 using GeoAPI.CoordinateSystems;
 using GeoAPI.CoordinateSystems.Transformations;
 using GeoAPI.Geometries;
-using GisSharpBlog.NetTopologySuite.Geometries;
+using NetTopologySuite.Geometries;
 using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
 using System;

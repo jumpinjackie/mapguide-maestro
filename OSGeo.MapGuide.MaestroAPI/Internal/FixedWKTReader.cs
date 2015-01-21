@@ -21,9 +21,9 @@
 #endregion Disclaimer / License
 
 using GeoAPI.Geometries;
-using GisSharpBlog.NetTopologySuite.Geometries;
-using GisSharpBlog.NetTopologySuite.IO;
-using GisSharpBlog.NetTopologySuite.Utilities;
+using NetTopologySuite.Geometries;
+using NetTopologySuite.IO;
+using NetTopologySuite.Utilities;
 using RTools_NTS.Util;
 using System;
 using System.Collections;
@@ -120,12 +120,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// stream, or an empty array if "EMPTY" is the next element returned by
         /// the stream.
         /// </returns>
-        private ICoordinate[] GetCoordinates(IList tokens, Boolean skipExtraParenthesis)
+        private Coordinate[] GetCoordinates(IList tokens, Boolean skipExtraParenthesis)
         {
             string nextToken = GetNextEmptyOrOpener(tokens);
             if (nextToken.Equals("EMPTY")) //NOXLATE
-                return new ICoordinate[] { };
-            List<ICoordinate> coordinates = new List<ICoordinate>();
+                return new Coordinate[] { };
+            var coordinates = new List<Coordinate>();
             coordinates.Add(GetPreciseCoordinate(tokens, skipExtraParenthesis));
             nextToken = GetNextCloserOrComma(tokens);
             while (nextToken.Equals(",")) //NOXLATE
@@ -142,9 +142,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// <param name="tokens"></param>
         /// <param name="skipExtraParenthesis"></param>
         /// <returns></returns>
-        private ICoordinate GetPreciseCoordinate(IList tokens, Boolean skipExtraParenthesis)
+        private Coordinate GetPreciseCoordinate(IList tokens, Boolean skipExtraParenthesis)
         {
-            ICoordinate coord = new Coordinate();
+            Coordinate coord = new Coordinate();
             Boolean extraParenthesisFound = false;
             if (skipExtraParenthesis)
             {
@@ -159,7 +159,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             if (IsNumberNext(tokens))
                 coord.Z = GetNextNumber(tokens);
             if (IsNumberNext(tokens))
-                coord.M = GetNextNumber(tokens);
+                ((ICoordinate)coord).M = GetNextNumber(tokens);
 
             if (skipExtraParenthesis &&
                 extraParenthesisFound &&
@@ -168,7 +168,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
                 index++;
             }
 
-            precisionModel.MakePrecise(coord);
+            precisionModel.MakePrecise((Coordinate)coord);
             return coord;
         }
 
@@ -396,8 +396,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         {
             string nextToken = GetNextEmptyOrOpener(tokens);
             if (nextToken.Equals("EMPTY")) //NOXLATE
-                return geometryFactory.CreatePoint((ICoordinate)null);
-            IPoint point = geometryFactory.CreatePoint(GetPreciseCoordinate(tokens, false));
+                return geometryFactory.CreatePoint((Coordinate)null);
+            IPoint point = geometryFactory.CreatePoint((Coordinate)GetPreciseCoordinate(tokens, false));
             GetNextCloser(tokens);
             return point;
         }
@@ -456,7 +456,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
         /// <c>Point</c>s created using this <c>WKTReader</c>
         /// s <c>GeometryFactory</c>.
         /// </returns>
-        private IPoint[] ToPoints(ICoordinate[] coordinates)
+        private IPoint[] ToPoints(Coordinate[] coordinates)
         {
             List<IPoint> points = new List<IPoint>();
             for (int i = 0; i < coordinates.Length; i++)
@@ -480,7 +480,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             string nextToken = GetNextEmptyOrOpener(tokens);
             if (nextToken.Equals("EMPTY")) //NOXLATE
                 return geometryFactory.CreatePolygon(
-                    geometryFactory.CreateLinearRing(new ICoordinate[] { }), new ILinearRing[] { });
+                    geometryFactory.CreateLinearRing(new Coordinate[] { }), new ILinearRing[] { });
 
             List<ILinearRing> holes = new List<ILinearRing>();
             ILinearRing shell = ReadLinearRingText(tokens);

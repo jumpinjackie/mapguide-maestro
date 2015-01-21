@@ -61,9 +61,17 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NetTopologySuite.Merged, Version=1.8.0.0, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Thirdparty\NTS\NetTopologySuite.Merged.dll</HintPath>
+    <Reference Include="GeoAPI">
+      <HintPath>..\Maestro\packages\GeoAPI.1.7.3\lib\net45-client\GeoAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="NetTopologySuite">
+      <HintPath>..\Maestro\packages\NetTopologySuite.1.13.3.2\lib\net45\NetTopologySuite.dll</HintPath>
+    </Reference>
+    <Reference Include="PowerCollections">
+      <HintPath>..\Maestro\packages\NetTopologySuite.1.13.3.2\lib\net45\PowerCollections.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjNet">
+      <HintPath>..\Maestro\packages\ProjNET4GeoAPI.1.3.0.4\lib\net45-client\ProjNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -236,6 +244,7 @@
     <Compile Include="XmlValidator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Schemas\ApplicationDefinition-1.0.0.xsd">
     </None>
     <None Include="Schemas\ApplicationDefinitionInfo-1.0.0.xsd">

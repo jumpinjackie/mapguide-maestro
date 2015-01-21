@@ -61,8 +61,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ciloci.Flee">
-      <HintPath>..\Maestro\packages\fleesharp.0.9.27-pre\lib\net40\Ciloci.Flee.dll</HintPath>
+    <Reference Include="GeoAPI, Version=1.7.3.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Maestro\packages\GeoAPI.1.7.3\lib\net45-client\GeoAPI.dll</HintPath>
     </Reference>
     <Reference Include="NetTopologySuite.Merged">
       <HintPath>..\Thirdparty\NTS\NetTopologySuite.Merged.dll</HintPath>

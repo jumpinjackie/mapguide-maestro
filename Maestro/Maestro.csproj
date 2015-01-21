@@ -81,12 +81,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\IronPython.2.7.5\lib\Net45\IronPython.Modules.dll</HintPath>
     </Reference>
-    <Reference Include="IronPython.SQLite">
-      <HintPath>packages\IronPython.2.7.5\lib\Net45\IronPython.SQLite.dll</HintPath>
-    </Reference>
-    <Reference Include="IronPython.Wpf">
-      <HintPath>packages\IronPython.2.7.5\lib\Net45\IronPython.Wpf.dll</HintPath>
-    </Reference>
     <Reference Include="Maestro.Editors, Version=3.0.0.5475, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\SDK\bin\Maestro.Editors.dll</HintPath>
@@ -111,16 +105,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\IronPython.2.7.5\lib\Net45\Microsoft.Scripting.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Scripting.AspNet">
-      <HintPath>packages\IronPython.2.7.5\lib\Net45\Microsoft.Scripting.AspNet.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Scripting.Metadata, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\IronPython.2.7.5\lib\Net45\Microsoft.Scripting.Metadata.dll</HintPath>
-    </Reference>
-    <Reference Include="NetTopologySuite.Merged, Version=1.8.0.0, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Thirdparty\NTS\NetTopologySuite.Merged.dll</HintPath>
     </Reference>
     <Reference Include="OSGeo.MapGuide.MaestroAPI, Version=3.0.0.5475, Culture=neutral, PublicKeyToken=f526c48929fda856, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

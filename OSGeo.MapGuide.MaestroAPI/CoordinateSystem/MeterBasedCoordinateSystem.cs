@@ -21,7 +21,7 @@
 #endregion Disclaimer / License
 
 using GeoAPI.Geometries;
-using GisSharpBlog.NetTopologySuite.Geometries;
+using NetTopologySuite.Geometries;
 using System;
 using System.Drawing;
 

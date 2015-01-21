@@ -60,9 +60,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NetTopologySuite.Merged">
-      <HintPath>..\Thirdparty\NTS\NetTopologySuite.Merged.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="GeoAPI">
+      <HintPath>..\Maestro\packages\GeoAPI.1.7.3\lib\net45-client\GeoAPI.dll</HintPath>
     </Reference>
     <Reference Include="NMock2, Version=2.0.0.44, Culture=neutral, PublicKeyToken=37d3be0adc87c2b7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
