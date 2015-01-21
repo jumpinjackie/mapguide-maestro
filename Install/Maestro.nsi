@@ -211,13 +211,14 @@ Section
     
     # libraries
     File "${INST_OUTPUT_MAESTRO}\Aga.Controls.dll"
-    File "${INST_OUTPUT_MAESTRO}\Ciloci.Flee.dll"
+    File "${INST_OUTPUT_MAESTRO}\GeoAPI.dll"
     File "${INST_OUTPUT_MAESTRO}\ICSharpCode.Core.dll"
     File "${INST_OUTPUT_MAESTRO}\ICSharpCode.Core.WinForms.dll"
     File "${INST_OUTPUT_MAESTRO}\ICSharpCode.SharpZipLib.dll"
     File "${INST_OUTPUT_MAESTRO}\ICSharpCode.TextEditor.dll"
     File "${INST_OUTPUT_MAESTRO}\IronPython.dll"
     File "${INST_OUTPUT_MAESTRO}\IronPython.Modules.dll"
+    File "${INST_OUTPUT_MAESTRO}\Irony.dll"
     File "${INST_OUTPUT_MAESTRO}\Maestro.Base.dll"
     File "${INST_OUTPUT_MAESTRO}\Maestro.Editors.dll"
     File "${INST_OUTPUT_MAESTRO}\Maestro.Login.dll"
@@ -227,10 +228,12 @@ Section
     File "${INST_OUTPUT_MAESTRO}\Microsoft.Dynamic.dll"
     File "${INST_OUTPUT_MAESTRO}\Microsoft.Scripting.dll"
     File "${INST_OUTPUT_MAESTRO}\Microsoft.Scripting.Metadata.dll"
-    File "${INST_OUTPUT_MAESTRO}\NetTopologySuite.Merged.dll"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.FDO.Expressions.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.dll"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.Http.dll"
+    File "${INST_OUTPUT_MAESTRO}\PowerCollections.dll"
+    File "${INST_OUTPUT_MAESTRO}\ProjNet.dll"
     File "${INST_OUTPUT_MAESTRO}\WeifenLuo.WinFormsUI.Docking.dll"
     
     # pdbs for greater context in exception stack traces
@@ -246,6 +249,7 @@ Section
     File "${INST_OUTPUT_MAESTRO}\Maestro.MapViewer.pdb"
     File "${INST_OUTPUT_MAESTRO}\Maestro.Packaging.pdb"
     File "${INST_OUTPUT_MAESTRO}\Maestro.Shared.UI.pdb"
+    File "${INST_OUTPUT_MAESTRO}\OSGeo.FDO.Expressions.pdb"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.ObjectModels.pdb"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.pdb"
     File "${INST_OUTPUT_MAESTRO}\OSGeo.MapGuide.MaestroAPI.Http.pdb"
