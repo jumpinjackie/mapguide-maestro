@@ -346,11 +346,14 @@ namespace OSGeo.MapGuide.MaestroAPI
                 //    throw new InvalidOperationException("Could not rewind the source stream. Most likely the source stream does not support seeking or rewinding"); //LOCALIZEME
             }
 
+            source.CopyTo(target);
+            /*
             do
             {
                 r = source.Read(buf, 0, buf.Length);
                 target.Write(buf, 0, r);
             } while (r > 0);
+             */
         }
 
         /// <summary>

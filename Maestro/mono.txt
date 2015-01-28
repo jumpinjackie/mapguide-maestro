@@ -1,0 +1,25 @@
+﻿Mono Gotchas
+============
+
+This document is a compilation of known gotchas when using Maestro within a Mono environment
+
+Suggestions for code-based workarounds or alternatives would be much appreciated.
+
+Notes are based on running the current Maestro trunk against Mono 3.12 on Ubuntu 14.04 (from Xamarin's repo)
+
+General
+=======
+
+ - Where possible, run the latest and greatest version of Mono.
+ - Maestro may randomly core dump on startup. Workaround is just to restart again.
+ - Editors may be "shrunk" when opened when Maestro is not fully maximized. Workaround is to resize the Maestro main window or maximize it.
+
+Layer Editor
+============
+
+ - Style rule previews do not render. Either Mono's DataGridView cannot support image-based cells or the Image property of our rule models do not bind properly to image-based cells
+
+Map Editor
+==========
+
+ - You cannot batch edit multiple groups and layers. Mono's PropertyGrid does not properly handle editing properties multiple selected objects

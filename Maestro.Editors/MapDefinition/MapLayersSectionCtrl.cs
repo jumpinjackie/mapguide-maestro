@@ -158,6 +158,7 @@ namespace Maestro.Editors.MapDefinition
                 if (mdf3 == null)
                 {
                     tabs.TabPages.Remove(TAB_TILE_SET);
+                    InitInlineModel();
                 }
                 else
                 {
@@ -285,10 +286,8 @@ namespace Maestro.Editors.MapDefinition
             btnMoveLayerOrGroupDown.Enabled = true;
             btnConvertLayerGroupToBaseGroup.Enabled = true;
 
-            propertiesPanel.Controls.Clear();
-            var item = CreateGroupControl(group);
             _activeLayer = null;
-            propertiesPanel.Controls.Add(item);
+            AddGroupControl(group);
         }
 
         private class LocalizedDisplayNameAttribute : DisplayNameAttribute
@@ -459,14 +458,14 @@ namespace Maestro.Editors.MapDefinition
 
         #endregion Designer Attributes
 
-        private Control CreateGroupControl(GroupItem group)
+        private void AddGroupControl(GroupItem group)
         {
+            propertiesPanel.Controls.Clear();
+
             Control ctrl = new Control();
 
             CommonPropertyCtrl commCtrl = new CommonPropertyCtrl();
             commCtrl.Dock = DockStyle.Fill;
-
-            commCtrl.SelectedObject = new GroupItemDesigner(group);
 
             var item = new GroupPropertiesCtrl(_map, group.Tag);
             //item.GroupChanged += (s, evt) => { OnResourceChanged(); };
@@ -478,13 +477,17 @@ namespace Maestro.Editors.MapDefinition
 
             ctrl.Dock = DockStyle.Fill;
 
-            return ctrl;
+            propertiesPanel.Controls.Add(ctrl);
+
+            commCtrl.SelectedObject = new GroupItemDesigner(group);
         }
 
         #region Control Factories
 
-        private Control CreateMultiControl(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
+        private void AddMultiControl(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
         {
+            propertiesPanel.Controls.Clear();
+
             CommonPropertyCtrl commCtrl = new CommonPropertyCtrl();
             commCtrl.Dock = DockStyle.Fill;
 
@@ -513,18 +516,19 @@ namespace Maestro.Editors.MapDefinition
                 }
             }
 
+            propertiesPanel.Controls.Add(commCtrl);
+
             commCtrl.SelectedObjects = values.ToArray();
-            return commCtrl;
         }
 
-        private Control CreateBaseGroupControl(BaseLayerGroupItem group)
+        private void AddBaseGroupControl(BaseLayerGroupItem group)
         {
+            propertiesPanel.Controls.Clear();
+
             Control ctrl = new Control();
 
             CommonPropertyCtrl commCtrl = new CommonPropertyCtrl();
             commCtrl.Dock = DockStyle.Fill;
-
-            commCtrl.SelectedObject = new BaseGroupItemDesigner(group);
 
             var item = new GroupPropertiesCtrl(_map, group.Tag);
             //item.GroupChanged += (s, evt) => { OnResourceChanged(); };
@@ -536,40 +540,44 @@ namespace Maestro.Editors.MapDefinition
 
             ctrl.Dock = DockStyle.Fill;
 
-            return ctrl;
+            propertiesPanel.Controls.Add(ctrl);
+
+            commCtrl.SelectedObject = new BaseGroupItemDesigner(group);
         }
 
-        private Control CreateBaseLayerControl(BaseLayerItem layer)
+        private void AddBaseLayerControl(BaseLayerItem layer)
         {
+            propertiesPanel.Controls.Clear();
+
             Control ctrl = new Control();
 
             CommonPropertyCtrl commCtrl = new CommonPropertyCtrl();
             commCtrl.Dock = DockStyle.Fill;
+
+            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc);
+            //item.LayerChanged += (s, evt) => { OnResourceChanged(); };
+            item.LayerChanged += WeakEventHandler.Wrap((s, evt) => OnResourceChanged(), (eh) => item.LayerChanged -= eh);
+            item.Dock = DockStyle.Top;
+
+            ctrl.Controls.Add(commCtrl);
+            ctrl.Controls.Add(item);
+
+            ctrl.Dock = DockStyle.Fill;
+
+            propertiesPanel.Controls.Add(ctrl);
 
             commCtrl.SelectedObject = new BaseLayerItemDesigner(layer);
-
-            var item = new LayerPropertiesCtrl(layer.Tag, _edSvc);
-            //item.LayerChanged += (s, evt) => { OnResourceChanged(); };
-            item.LayerChanged += WeakEventHandler.Wrap((s, evt) => OnResourceChanged(), (eh) => item.LayerChanged -= eh);
-            item.Dock = DockStyle.Top;
-
-            ctrl.Controls.Add(commCtrl);
-            ctrl.Controls.Add(item);
-
-            ctrl.Dock = DockStyle.Fill;
-
-            return ctrl;
         }
 
-        private Control CreateLayerControl(LayerItem layer)
+        private void AddLayerControl(LayerItem layer)
         {
+            propertiesPanel.Controls.Clear();
+
             Control ctrl = new Control();
 
             CommonPropertyCtrl commCtrl = new CommonPropertyCtrl();
             commCtrl.Dock = DockStyle.Fill;
 
-            commCtrl.SelectedObject = new LayerItemDesigner(layer);
-
             var item = new LayerPropertiesCtrl(layer.Tag, _edSvc);
             //item.LayerChanged += (s, evt) => { OnResourceChanged(); };
             item.LayerChanged += WeakEventHandler.Wrap((s, evt) => OnResourceChanged(), (eh) => item.LayerChanged -= eh);
@@ -580,7 +588,9 @@ namespace Maestro.Editors.MapDefinition
 
             ctrl.Dock = DockStyle.Fill;
 
-            return ctrl;
+            propertiesPanel.Controls.Add(ctrl);
+            
+            commCtrl.SelectedObject = new LayerItemDesigner(layer);
         }
 
         #endregion Control Factories
@@ -593,11 +603,8 @@ namespace Maestro.Editors.MapDefinition
             btnMoveLayerOrGroupUp.Enabled = true;   //TODO: Disable if layer is top of its group
             btnMoveLayerOrGroupDown.Enabled = true; //TODO: Disable if layer is bottom of its group
 
-            propertiesPanel.Controls.Clear();
-
-            var item = CreateLayerControl(layer);
             _activeLayer = layer.Tag;
-            propertiesPanel.Controls.Add(item);
+            AddLayerControl(layer);
         }
 
         private static bool AllLayers(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
@@ -671,11 +678,8 @@ namespace Maestro.Editors.MapDefinition
             btnRemoveBaseLayerGroup.Enabled = bAllBaseGroups;
             btnBaseLayerGroupToRegular.Enabled = bAllBaseGroups;
 
-            propertiesPanel.Controls.Clear();
-
-            var item = CreateMultiControl(nodes);
+            AddMultiControl(nodes);
             _activeLayer = null;
-            propertiesPanel.Controls.Add(item);
         }
 
         private IMapLayer _activeLayer;
@@ -688,11 +692,8 @@ namespace Maestro.Editors.MapDefinition
             btnDLMoveLayerUp.Enabled =
             btnDLRemoveLayer.Enabled = true;
 
-            propertiesPanel.Controls.Clear();
-
-            var item = CreateLayerControl(layer);
             _activeLayer = layer.Tag;
-            propertiesPanel.Controls.Add(item);
+            AddLayerControl(layer);
         }
 
         private void btnAddGroup_Click(object sender, EventArgs e)
@@ -1469,9 +1470,8 @@ namespace Maestro.Editors.MapDefinition
             //var item = new GroupPropertiesCtrl(_map, group.Tag);
             //item.GroupChanged += (s, evt) => { OnResourceChanged(); };
             //item.Dock = DockStyle.Fill;
-            var item = CreateBaseGroupControl(group);
             _activeLayer = null;
-            propertiesPanel.Controls.Add(item);
+            AddBaseGroupControl(group);
         }
 
         private void OnBaseLayerItemSelected(BaseLayerItem layer)
@@ -1481,13 +1481,11 @@ namespace Maestro.Editors.MapDefinition
             btnMoveBaseLayerUp.Enabled = true;
             btnBaseLayerGroupToRegular.Enabled = false;
 
-            propertiesPanel.Controls.Clear();
             //var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService, _edSvc);
             //item.LayerChanged += (s, evt) => { OnResourceChanged(); };
             //item.Dock = DockStyle.Fill;
-            var item = CreateBaseLayerControl(layer);
             _activeLayer = null;
-            propertiesPanel.Controls.Add(item);
+            AddBaseLayerControl(layer);
         }
 
         private void trvBaseLayers_MouseDoubleClick(object sender, MouseEventArgs e)
