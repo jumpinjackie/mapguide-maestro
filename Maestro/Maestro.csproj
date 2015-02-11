@@ -476,6 +476,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="MapGuide Maestro.ico" />
+    <Content Include="mono.txt" />
     <Content Include="resource-readme.txt" />
   </ItemGroup>
   <ItemGroup>
