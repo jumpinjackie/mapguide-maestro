@@ -38,8 +38,10 @@ using Maestro.Editors.Common;
 using Microsoft.Scripting.Hosting.Shell;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -49,6 +51,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
     {
         private ITextEditor textEditor;
         private int lineReceivedEventIndex = 0; // The index into the waitHandles array where the lineReceivedEvent is stored.
+        private ManualResetEvent inputLineReceivedEvent = new ManualResetEvent(false);
         private ManualResetEvent lineReceivedEvent = new ManualResetEvent(false);
         private ManualResetEvent disposedEvent = new ManualResetEvent(false);
         private WaitHandle[] waitHandles;
@@ -59,8 +62,11 @@ namespace Maestro.AddIn.Scripting.Lang.Python
 
         public CommandLine CommandLine { get { return this.commandLine; } }
 
-        public PythonConsole(ITextEditor textEditor, CommandLine commandLine)
+        private IConsoleLineHook _hook;
+
+        public PythonConsole(ITextEditor textEditor, CommandLine commandLine, IConsoleLineHook hook)
         {
+            _hook = hook;
             waitHandles = new WaitHandle[] { lineReceivedEvent, disposedEvent };
 
             this.commandLine = commandLine;
@@ -83,16 +89,12 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         {
             get
             {
-#if DEBUG
-                Console.WriteLine("PythonConsole.Output get");
-#endif
+                Debug.WriteLine("PythonConsole.Output get");
                 return null;
             }
             set
             {
-#if DEBUG
-                Console.WriteLine("PythonConsole.Output set");
-#endif
+                Debug.WriteLine("PythonConsole.Output set");
             }
         }
 
@@ -100,16 +102,12 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         {
             get
             {
-#if DEBUG
-                Console.WriteLine("PythonConsole.ErrorOutput get");
-#endif
+                Debug.WriteLine("PythonConsole.ErrorOutput get");
                 return null;
             }
             set
             {
-#if DEBUG
-                Console.WriteLine("PythonConsole.ErrorOutput get");
-#endif
+                Debug.WriteLine("PythonConsole.ErrorOutput get");
             }
         }
 
@@ -132,9 +130,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// </summary>
         public string ReadLine(int autoIndentSize)
         {
-#if DEBUG
-            Console.WriteLine("PythonConsole.ReadLine(): autoIndentSize: " + autoIndentSize);
-#endif
+            Debug.WriteLine("PythonConsole.ReadLine(): autoIndentSize: " + autoIndentSize);
             string indent = String.Empty;
             if (autoIndentSize > 0)
             {
@@ -145,9 +141,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             string line = ReadLineFromTextEditor();
             if (line != null)
             {
-#if DEBUG
-                Console.WriteLine("ReadLine: " + indent + line);
-#endif
+                Debug.WriteLine("ReadLine: " + indent + line);
                 return indent + line;
             }
             return null;
@@ -160,9 +154,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// </summary>
         public void Write(string text, Style style)
         {
-#if DEBUG
-            Console.WriteLine("PythonConsole.Write(text, style): " + text);
-#endif
+            Debug.WriteLine("PythonConsole.Write(text, style): " + text);
             if (style == Style.Error)
                 textEditor.Write(text, Color.Red, Color.White);
             else if (style == Style.Warning)
@@ -238,17 +230,65 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             return textEditor.GetLine(textEditor.TotalLines - 1);
         }
 
+        private readonly object _syncInput = new object();
+        private bool _IsReadingInput;
+
+        internal bool IsReadingInput
+        {
+            get
+            {
+                lock (_syncInput)
+                    return _IsReadingInput;
+            }
+            set
+            {
+                lock (_syncInput)
+                {
+                    _IsReadingInput = value;
+                    Debug.WriteLine("({0}): IsReadingInput: {1}", Thread.CurrentThread.ManagedThreadId, value);
+                    if (!value)
+                    {
+                        Debug.WriteLine("({0}): IsReadingInput - Reset line received event", Thread.CurrentThread.ManagedThreadId);
+                        inputLineReceivedEvent.Reset();
+                    }
+                }
+            }
+        }
+
+        private string _inputLine;
+
+        internal string GetLineForInput(string lastWrittenLine)
+        {
+            Debug.WriteLine(string.Format("({0}): GetLineForInput() - BEGIN", Thread.CurrentThread.ManagedThreadId));
+            inputLineReceivedEvent.WaitOne();
+            Debug.WriteLine("({0}): GetLineForInput() - {1}", Thread.CurrentThread.ManagedThreadId, _inputLine);
+            string lineInput = null;
+            if (_inputLine != null)
+            {
+                lineInput = _inputLine.Substring(lastWrittenLine.Substring(promptLength).Length);
+                _inputLine = null;
+            }
+            this.IsReadingInput = false;
+            return lineInput;
+        }
+
+        
+
         private string ReadLineFromTextEditor()
         {
+            Debug.WriteLine(string.Format("({0}): ReadLineFromTextEditor()", Thread.CurrentThread.ManagedThreadId));
+            _hook.OnBeginWaitForNextLine();
             int result = WaitHandle.WaitAny(waitHandles);
             if (result == lineReceivedEventIndex)
             {
+                Debug.WriteLine(string.Format("({0}): Received line", Thread.CurrentThread.ManagedThreadId));
                 lock (previousLines)
                 {
                     string line = previousLines[0];
                     previousLines.RemoveAt(0);
                     if (previousLines.Count == 0)
                     {
+                        Debug.WriteLine(string.Format("({0}): ReadLineFromTextEditor - Reset line received event", Thread.CurrentThread.ManagedThreadId));
                         lineReceivedEvent.Reset();
                     }
                     return line;
@@ -266,7 +306,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             {
                 return true;
             }
-
+            
             if (ch == '\n')
             {
                 OnEnterKeyPressed();
@@ -332,6 +372,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// </summary>
         private void OnEnterKeyPressed()
         {
+            Debug.WriteLine(string.Format("({0}): OnEnterKeyPressed", Thread.CurrentThread.ManagedThreadId));
             lock (previousLines)
             {
                 // Move cursor to the end of the line.
@@ -339,10 +380,21 @@ namespace Maestro.AddIn.Scripting.Lang.Python
 
                 // Append line.
                 string currentLine = GetCurrentLine();
-                previousLines.Add(currentLine);
-                commandLineHistory.Add(currentLine);
 
-                lineReceivedEvent.Set();
+                if (IsReadingInput)
+                {
+                    _inputLine = currentLine;
+                    Debug.WriteLine(string.Format("({0}): Set input line received event", Thread.CurrentThread.ManagedThreadId));
+                    inputLineReceivedEvent.Set();
+                }
+                else
+                {
+                    previousLines.Add(currentLine);
+                    commandLineHistory.Add(currentLine);
+
+                    Debug.WriteLine(string.Format("({0}): Set line received event", Thread.CurrentThread.ManagedThreadId));
+                    lineReceivedEvent.Set();
+                }
             }
         }
 

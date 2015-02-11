@@ -33,23 +33,28 @@
 #endregion Disclaimer / License
 
 using Maestro.Editors.Common;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace Maestro.AddIn.Scripting.Lang.Python
 {
     internal class PythonOutputStream : Stream
     {
+        private PythonConsole _console;
         private ITextEditor textEditor;
 
-        public PythonOutputStream(ITextEditor textEditor)
+        public PythonOutputStream(PythonConsole console, ITextEditor textEditor)
         {
+            _console = console;
             this.textEditor = textEditor;
         }
 
         public override bool CanRead
         {
-            get { return false; }
+            get { return true; }
         }
 
         public override bool CanSeek
@@ -86,10 +91,45 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         {
         }
 
+        /// <summary>
+        /// This is a control flag to determine if the read stream should end. Set to true to signal end of stream when
+        /// the next line is received. Set to false to signal that reading the next line should start or continue
+        /// </summary>
+        public bool DoneReadingForNow
+        {
+            get;
+            set;
+        }
+
         public override int Read(byte[] buffer, int offset, int count)
         {
-            return 0;
+            if (this.DoneReadingForNow)
+                return 0;
+
+            Debug.WriteLine("({0}): PythonOutputStream.Read() - buffer: {1}, offset: {2}, count: {3}, currently reading: {4}", Thread.CurrentThread.ManagedThreadId, buffer.Length, offset, count, _console.IsReadingInput);
+            _console.IsReadingInput = true;
+            int read = 0;
+            string line = _console.GetLineForInput(_lastWrittenText);
+            if (line != null)
+            {
+                using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(line)))
+                {
+                    read = ms.Read(buffer, offset, count);
+                }
+                _lastCapturedText = line;
+            }
+            else
+            {
+                this.DoneReadingForNow = false;
+                return 0;
+            }
+            Debug.WriteLine("({0}): PythonOutputStream.Read() read {1} bytes", Thread.CurrentThread.ManagedThreadId, read);
+            this.DoneReadingForNow = true;
+            return read;
         }
+
+        private string _lastCapturedText;
+        private string _lastWrittenText;
 
         /// <summary>
         /// Assumes the bytes are UTF8 and writes them to the text editor.
@@ -97,6 +137,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         public override void Write(byte[] buffer, int offset, int count)
         {
             string text = UTF8Encoding.UTF8.GetString(buffer, offset, count);
+            _lastWrittenText = text;
             textEditor.Write(text);
         }
     }

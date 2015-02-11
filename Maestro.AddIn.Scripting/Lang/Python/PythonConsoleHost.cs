@@ -45,10 +45,15 @@ using System.Threading;
 
 namespace Maestro.AddIn.Scripting.Lang.Python
 {
+    internal interface IConsoleLineHook
+    {
+        void OnBeginWaitForNextLine();
+    }
+
     /// <summary>
     /// Hosts the python console.
     /// </summary>
-    internal class PythonConsoleHost : ConsoleHost, IDisposable
+    internal class PythonConsoleHost : ConsoleHost, IDisposable, IConsoleLineHook
     {
         private Thread thread;
         private ITextEditor textEditor;
@@ -134,14 +139,24 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// </remarks>
         protected override IConsole CreateConsole(ScriptEngine engine, CommandLine commandLine, ConsoleOptions options)
         {
-            SetOutput(new PythonOutputStream(textEditor));
-            pythonConsole = new PythonConsole(textEditor, commandLine);
+            pythonConsole = new PythonConsole(textEditor, commandLine, this);
+            SetScriptStream(new PythonOutputStream(pythonConsole, textEditor));
             return pythonConsole;
         }
 
-        protected virtual void SetOutput(PythonOutputStream stream)
+        private PythonOutputStream _pyStream;
+
+        void IConsoleLineHook.OnBeginWaitForNextLine()
         {
-            Runtime.IO.SetOutput(stream, Encoding.UTF8);
+            if (_pyStream != null)
+                _pyStream.DoneReadingForNow = false;
+        }
+
+        protected virtual void SetScriptStream(PythonOutputStream stream)
+        {
+            _pyStream = stream;
+            Runtime.IO.SetInput(_pyStream, Encoding.UTF8);
+            Runtime.IO.SetOutput(_pyStream, Encoding.UTF8);
         }
 
         /// <summary>
