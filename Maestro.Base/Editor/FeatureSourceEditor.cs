@@ -95,7 +95,7 @@ namespace Maestro.Base.Editor
                             var mdf = (IMapDefinition)resSvc.GetResource(lr);
                             if (mdf.BaseMap != null)
                             {
-                                foreach (var blg in mdf.BaseMap.BaseMapLayerGroup)
+                                foreach (var blg in mdf.BaseMap.BaseMapLayerGroups)
                                 {
                                     foreach (var bl in blg.BaseMapLayer)
                                     {

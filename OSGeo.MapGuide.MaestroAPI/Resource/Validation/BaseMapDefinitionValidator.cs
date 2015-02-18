@@ -113,7 +113,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 if (mdef.BaseMap.ScaleCount == 0)
                     issues.Add(new ValidationIssue(mdef, ValidationStatus.Error, ValidationStatusCode.Error_MapDefinition_NoFiniteDisplayScales, Strings.MDF_NoFiniteDisplayScalesSpecified));
 
-                foreach (IBaseMapGroup g in mdef.BaseMap.BaseMapLayerGroup)
+                foreach (IBaseMapGroup g in mdef.BaseMap.BaseMapLayerGroups)
                 {
                     foreach (IBaseMapLayer l in g.BaseMapLayer)
                         layers.Add(l);

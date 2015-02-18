@@ -52,6 +52,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
                     cmds.Add((int)CommandType.CreateRuntimeMap);
                     cmds.Add((int)CommandType.DescribeRuntimeMap);
                 }
+
+                //GetTileProviders available with 3.0
+                if (_implConn.SiteVersion >= new Version(3, 0))
+                {
+                    cmds.Add((int)CommandType.GetTileProviders);
+                }
                 return cmds.ToArray();
             }
         }

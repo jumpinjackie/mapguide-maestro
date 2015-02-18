@@ -97,6 +97,7 @@
     <Compile Include="Commands\CommandType.cs" />
     <Compile Include="Commands\ExecuteLoadProcedure.cs" />
     <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\IGetTileProviders.cs" />
     <Compile Include="Commands\NsDoc.cs" />
     <Compile Include="CoordinateSystem\ActualCoordinateSystem.cs" />
     <Compile Include="CoordinateSystem\DegreeBasedCoordinateSystem.cs" />

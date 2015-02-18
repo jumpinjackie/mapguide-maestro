@@ -290,7 +290,7 @@
                          tooltip="${res:Menu_File_NewResource}"
                          class="Maestro.Base.Commands.NewItemCommand" />
             <ToolbarItem id="Disconnect"
-                         icon="plug--minus"
+                         icon="plug__minus"
                          label="${res:SiteExplorer_Disconnect}"
                          tooltip="${res:SiteExplorer_Disconnect}"
                          class="Maestro.Base.Commands.SiteExplorer.DisconnectCommand" />
@@ -408,7 +408,7 @@
               </Condition>
             </Condition>
             <ToolbarItem id="SiteExplorer_Refresh"
-                         icon="arrow-circle-045-left"
+                         icon="arrow_circle_045_left"
                          tooltip="${res:SiteExplorer_Refresh}"
                          class="Maestro.Base.Commands.SiteExplorer.RefreshCommand" />
         </Condition>

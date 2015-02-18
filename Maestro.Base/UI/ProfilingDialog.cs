@@ -292,7 +292,7 @@ namespace Maestro.Base.UI
 
                 if (mdef.BaseMap != null)
                 {
-                    foreach (var g in mdef.BaseMap.BaseMapLayerGroup)
+                    foreach (var g in mdef.BaseMap.BaseMapLayerGroups)
                     {
                         if (g.BaseMapLayer != null)
                         {

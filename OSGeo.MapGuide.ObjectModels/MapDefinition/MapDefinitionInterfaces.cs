@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 using System;
 using System.Collections.Generic;
@@ -358,10 +359,10 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         /// <param name="map"></param>
         /// <param name="layer"></param>
         /// <returns></returns>
-        public static IBaseMapGroup GetGroupForLayer(this IBaseMapDefinition map, IBaseMapLayer layer)
+        public static IBaseMapGroup GetGroupForLayer(this ITileSetAbstract map, IBaseMapLayer layer)
         {
             Check.ArgumentNotNull(map, "map"); //NOXLATE
-            foreach (var group in map.BaseMapLayerGroup)
+            foreach (var group in map.BaseMapLayerGroups)
             {
                 foreach (var tl in group.BaseMapLayer)
                 {
@@ -394,7 +395,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
             if (!map.HasGroups())
                 return false;
 
-            foreach (var group in map.BaseMapLayerGroup)
+            foreach (var group in map.BaseMapLayerGroups)
             {
                 if (group.HasLayers())
                     return true;
@@ -410,7 +411,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         public static bool HasGroups(this IBaseMapDefinition map)
         {
             Check.ArgumentNotNull(map, "map"); //NOXLATE
-            return new List<IBaseMapGroup>(map.BaseMapLayerGroup).Count > 0;
+            return new List<IBaseMapGroup>(map.BaseMapLayerGroups).Count > 0;
         }
 
         /// <summary>
@@ -418,10 +419,10 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        public static IBaseMapGroup GetFirstGroup(this IBaseMapDefinition map)
+        public static IBaseMapGroup GetFirstGroup(this ITileSetAbstract map)
         {
             Check.ArgumentNotNull(map, "map"); //NOXLATE
-            var list = new List<IBaseMapGroup>(map.BaseMapLayerGroup);
+            var list = new List<IBaseMapGroup>(map.BaseMapLayerGroups);
             if (list.Count > 0)
                 return list[0];
             return null;
@@ -433,12 +434,12 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         /// <param name="map"></param>
         /// <param name="layerName"></param>
         /// <returns></returns>
-        public static bool LayerExists(this IBaseMapDefinition map, string layerName)
+        public static bool LayerExists(this ITileSetAbstract map, string layerName)
         {
             Check.ArgumentNotNull(map, "map"); //NOXLATE
             Check.ArgumentNotEmpty(layerName, "layerName"); //NOXLATE
 
-            foreach (var group in map.BaseMapLayerGroup)
+            foreach (var group in map.BaseMapLayerGroups)
             {
                 foreach (var layer in group.BaseMapLayer)
                 {
@@ -459,7 +460,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         {
             Check.ArgumentNotNull(map, "map"); //NOXLATE
             Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
-            foreach (var group in map.BaseMapLayerGroup)
+            foreach (var group in map.BaseMapLayerGroups)
             {
                 if (groupName.Equals(group.Name))
                     return group;
@@ -477,7 +478,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         {
             Check.ArgumentNotNull(map, "map"); //NOXLATE
             Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
-            foreach (var group in map.BaseMapLayerGroup)
+            foreach (var group in map.BaseMapLayerGroups)
             {
                 if (groupName.Equals(group.Name))
                     return true;
@@ -496,7 +497,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
             Check.ArgumentNotNull(map, "map"); //NOXLATE
             Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
 
-            foreach (var group in map.BaseMapLayerGroup)
+            foreach (var group in map.BaseMapLayerGroups)
             {
                 if (groupName.Equals(group.Name))
                 {
@@ -787,13 +788,8 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
     /// <summary>
     /// Represents the tiled map portion of the Map Definition
     /// </summary>
-    public interface IBaseMapDefinition
+    public interface IBaseMapDefinition : ITileSetAbstract
     {
-        /// <summary>
-        /// Gets the finite display scales
-        /// </summary>
-        IEnumerable<double> FiniteDisplayScale { get; }
-
         /// <summary>
         /// Adds the finite display scale.
         /// </summary>
@@ -824,38 +820,6 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         /// <param name="index">The index.</param>
         /// <returns></returns>
         double GetScaleAt(int index);
-
-        /// <summary>
-        /// Gets the base map layer groups.
-        /// </summary>
-        /// <value>The base map layer groups.</value>
-        IEnumerable<IBaseMapGroup> BaseMapLayerGroup { get; }
-
-        /// <summary>
-        /// Gets the group count.
-        /// </summary>
-        /// <value>The group count.</value>
-        int GroupCount { get; }
-
-        /// <summary>
-        /// Gets the group at the specified index
-        /// </summary>
-        /// <param name="index">The index.</param>
-        /// <returns></returns>
-        IBaseMapGroup GetGroupAt(int index);
-
-        /// <summary>
-        /// Adds the base layer group.
-        /// </summary>
-        /// <param name="name">The name.</param>
-        /// <returns></returns>
-        IBaseMapGroup AddBaseLayerGroup(string name);
-
-        /// <summary>
-        /// Removes the base layer group.
-        /// </summary>
-        /// <param name="group">The group.</param>
-        void RemoveBaseLayerGroup(IBaseMapGroup group);
 
         /// <summary>
         /// Removes all scales.

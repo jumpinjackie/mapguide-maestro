@@ -104,7 +104,7 @@ namespace Maestro.Editors.MapDefinition
                 this.Controls.Add(mapSettingsCtrl);
             }
 
-            mapLayersCtrl.RequestLayerOpen += new OpenLayerEventHandler(OnRequestLayerOpen);
+            mapLayersCtrl.RequestLayerOpen += OnRequestLayerOpen;
         }
 
         private void OnRequestLayerOpen(object sender, string layerResourceId)

@@ -292,4 +292,19 @@ namespace Maestro.AddIn.ExtendedObjectModels.Editor
             return new SymbolDefinitionEditor();
         }
     }
+
+    internal class TileSetDefinition300EditorFactory : IEditorFactory
+    {
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+
+        public TileSetDefinition300EditorFactory()
+        {
+            this.ResourceTypeAndVersion = new ResourceTypeDescriptor(ResourceTypes.TileSetDefinition.ToString(), "3.0.0"); //NOXLATE
+        }
+
+        public IEditorViewContent Create()
+        {
+            return new TileSetEditor();
+        }
+    }
 }

@@ -61,6 +61,7 @@ namespace Maestro.Base.UI
             }
             else
             {
+                //TODO: Should probably centralize this in ResourceIconCache
                 switch (item.ResourceType)
                 {
                     case "DrawingSource":
@@ -105,6 +106,10 @@ namespace Maestro.Base.UI
 
                     case "WatermarkDefinition":
                         this.Icon = Properties.Resources.water;
+                        break;
+
+                    case "TileSetDefinition":
+                        this.Icon = Properties.Resources.grid;
                         break;
 
                     default:

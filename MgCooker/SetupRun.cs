@@ -182,7 +182,7 @@ namespace MgCooker
 
                     mn.ImageIndex = mn.SelectedImageIndex = 0;
                     mn.Tag = mdef;
-                    foreach (var g in baseMap.BaseMapLayerGroup)
+                    foreach (var g in baseMap.BaseMapLayerGroups)
                     {
                         TreeNode gn = mn.Nodes.Add(g.Name);
                         gn.Tag = g;

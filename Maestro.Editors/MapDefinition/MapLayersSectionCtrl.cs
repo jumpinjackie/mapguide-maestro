@@ -203,7 +203,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void InitInlineModel()
         {
-            trvBaseLayers.Model = _tiledLayerModel = new TiledLayerModel(_map);
+            trvBaseLayers.Model = _tiledLayerModel = new TiledLayerModel(_map.BaseMap);
         }
 
         private void OnMapPropertyChanged(object sender, PropertyChangedEventArgs e)

@@ -221,6 +221,7 @@
     <Compile Include="Common\ResourceItems.cs" />
     <Compile Include="Common\ResourceList.cs" />
     <Compile Include="Common\ResourcePackageManifest.cs" />
+    <Compile Include="Common\TileProviderList.cs" />
     <Compile Include="Common\UnmanagedDataList.cs" />
     <Compile Include="DrawingSource\v1_0_0\DrawingSourceImpl.cs" />
     <Compile Include="DrawingSource\DrawingSourceInterfaces.cs" />

@@ -23,6 +23,7 @@
 #define MDF_230
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using OSGeo.MapGuide.ObjectModels.WatermarkDefinition;
 using System;
 using System.Collections.Generic;
@@ -761,12 +762,12 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
         }
 
         [XmlIgnore]
-        int IBaseMapDefinition.GroupCount
+        int ITileSetAbstract.GroupCount
         {
             get { return this.BaseMapLayerGroup.Count; }
         }
 
-        IBaseMapGroup IBaseMapDefinition.GetGroupAt(int index)
+        IBaseMapGroup ITileSetAbstract.GetGroupAt(int index)
         {
             return this.BaseMapLayerGroup[index];
         }
@@ -775,18 +776,6 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
         int IBaseMapDefinition.ScaleCount
         {
             get { return this.FiniteDisplayScale.Count; }
-        }
-
-        [XmlIgnore]
-        IEnumerable<double> IBaseMapDefinition.FiniteDisplayScale
-        {
-            get
-            {
-                foreach (var scale in this.FiniteDisplayScale)
-                {
-                    yield return scale;
-                }
-            }
         }
 
         public void AddFiniteDisplayScale(double value)
@@ -806,7 +795,30 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
         }
 
         [XmlIgnore]
-        IEnumerable<IBaseMapGroup> IBaseMapDefinition.BaseMapLayerGroup
+        IEnumerable<double> ITileSetAbstract.FiniteDisplayScale
+        {
+            get
+            {
+                foreach (double dbl in this.FiniteDisplayScale)
+                {
+                    yield return dbl;
+                }
+            }
+        }
+
+        IEnumerable<IBaseMapLayer> ITileSetAbstract.GetLayersForGroup(string groupName)
+        {
+            return this.GetLayersForGroup(groupName);
+        }
+
+        [XmlIgnore]
+        bool ITileSetAbstract.SupportsCustomFiniteDisplayScales
+        {
+            get { return true; }
+        }
+
+        [XmlIgnore]
+        IEnumerable<IBaseMapGroup> ITileSetAbstract.BaseMapLayerGroups
         {
             get
             {

@@ -43,7 +43,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             var layers = new Dictionary<string, ILayerDefinition>();
             var mdf = (IMapDefinition)ObjectFactory.Deserialize(ResourceTypes.MapDefinition.ToString(), File.OpenRead("UserTestData\\TestTiledMap.xml"));
             mdf.ResourceID = "Library://UnitTest/Test.MapDefinition";
-            foreach (var lyr in mdf.BaseMap.BaseMapLayerGroup.First().BaseMapLayer)
+            foreach (var lyr in mdf.BaseMap.BaseMapLayerGroups.First().BaseMapLayer)
             {
                 var ldf = ObjectFactory.CreateDefaultLayer(LayerType.Vector, new Version(1, 0, 0));
                 ldf.ResourceID = lyr.ResourceId;

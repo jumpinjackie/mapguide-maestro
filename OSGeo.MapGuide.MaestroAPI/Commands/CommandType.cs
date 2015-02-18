@@ -70,6 +70,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// <summary>
         /// Describes the structure of an existing runtime map
         /// </summary>
-        DescribeRuntimeMap
+        DescribeRuntimeMap,
+
+        /// <summary>
+        /// Enumerates registered Tile Set Providers
+        /// </summary>
+        GetTileProviders
     }
 }

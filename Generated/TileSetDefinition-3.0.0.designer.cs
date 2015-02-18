@@ -23,7 +23,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0 {
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
     [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
-    public partial class TileSetDefinition : System.ComponentModel.INotifyPropertyChanged {
+    public partial class TileSetDefinition : BaseSerializable, System.ComponentModel.INotifyPropertyChanged
+    {
         
         [EditorBrowsable(EditorBrowsableState.Never)]
         private TileStoreParametersType tileStoreParametersField;
@@ -123,24 +124,9 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0 {
         /// Serializes current TileSetDefinition object into an XML document
         /// </summary>
         /// <returns>string XML value</returns>
-        public virtual string Serialize() {
-            System.IO.StreamReader streamReader = null;
-            System.IO.MemoryStream memoryStream = null;
-            try {
-                memoryStream = new System.IO.MemoryStream();
-                Serializer.Serialize(memoryStream, this);
-                memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
-                streamReader = new System.IO.StreamReader(memoryStream);
-                return streamReader.ReadToEnd();
-            }
-            finally {
-                if ((streamReader != null)) {
-                    streamReader.Dispose();
-                }
-                if ((memoryStream != null)) {
-                    memoryStream.Dispose();
-                }
-            }
+        public virtual string Serialize()
+        {
+            return base.NormalizedSerialize(Serializer, this);
         }
         
         /// <summary>

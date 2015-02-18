@@ -32,6 +32,7 @@
         <Class id="SymbolDefinition240" class="Maestro.AddIn.ExtendedObjectModels.Editor.SymbolDefinition240EditorFactory" />
         <Class id="WatermarkDefinition230" class="Maestro.AddIn.ExtendedObjectModels.Editor.WatermarkDefinition230EditorFactory" />
         <Class id="WatermarkDefinition240" class="Maestro.AddIn.ExtendedObjectModels.Editor.WatermarkDefinition240EditorFactory" />
+        <Class id="TileSetDefinition300" class="Maestro.AddIn.ExtendedObjectModels.Editor.TileSetDefinition300EditorFactory" />
     </Path>
 
     <!-- Registered System Templates -->
@@ -57,6 +58,7 @@
         <Class id="WebLayout110" class="Maestro.AddIn.ExtendedObjectModels.Templates.WebLayout110ItemTemplate" />
         <Class id="WebLayout240" class="Maestro.AddIn.ExtendedObjectModels.Templates.WebLayout240ItemTemplate" />
         <Class id="WebLayout260" class="Maestro.AddIn.ExtendedObjectModels.Templates.WebLayout260ItemTemplate" />
+        <Class id="TileSetDefinition300" class="Maestro.AddIn.ExtendedObjectModels.Templates.TileSetDefinition300ItemTemplate" />
     </Path>
 
     <!-- Auto-start commands -->

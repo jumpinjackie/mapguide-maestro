@@ -225,6 +225,12 @@
     <Compile Include="Editor\SymbolDefinitionEditor.Designer.cs">
       <DependentUpon>SymbolDefinitionEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editor\TileSetEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor\TileSetEditor.Designer.cs">
+      <DependentUpon>TileSetEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Editor\UnsupportedEditorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -452,6 +458,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Maestro.Base.addin" />
+    <None Include="Resources\Icons\icon_tileset.ico" />
+    <None Include="Resources\Images\grid.png" />
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Resources\icon_document.ico" />

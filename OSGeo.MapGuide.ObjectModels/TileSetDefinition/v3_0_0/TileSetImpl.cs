@@ -45,13 +45,25 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0
                 },
                 Extents = new Box2DType() { MaxX = 0.0, MaxY = 0.0, MinX = 0.0, MinY = 0.0 },
                 BaseMapLayerGroup = new System.ComponentModel.BindingList<BaseMapLayerGroupCommonType>()
+                {
+                    new BaseMapLayerGroupCommonType()
+                    {
+                        Name = "Base Layer Group", //NOXLATE
+                        LegendLabel = "Base Layer Group", //NOXLATE
+                        Visible = true,
+                        ShowInLegend = true,
+                        ExpandInLegend = true,
+                        BaseMapLayer = new System.ComponentModel.BindingList<BaseMapLayerType>()
+                    }
+                }
             };
         }
 
-        [XmlIgnore]
+        [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")] //NOXLATE
         public string ValidatingSchema
         {
             get { return "TileSetDefinition-3.0.0.xsd"; } //NOXLATE
+            set { }
         }
 
         private string _resId;
@@ -142,7 +154,37 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0
             }
         }
 
-        public IEnumerable<IBaseMapGroup> BaseGroups
+        public IEnumerable<IBaseMapLayer> GetLayersForGroup(string groupName)
+        {
+            foreach (var grp in this.BaseMapLayerGroup)
+            {
+                if (grp.Name == groupName)
+                {
+                    foreach (var layer in grp.BaseMapLayer)
+                    {
+                        yield return layer;
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<double> FiniteDisplayScale
+        {
+            get
+            {
+                return this.GetDefaultFiniteScaleList();
+            }
+        }
+
+        public bool SupportsCustomFiniteDisplayScales
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public IEnumerable<IBaseMapGroup> BaseMapLayerGroups
         {
             get 
             {
@@ -153,6 +195,38 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0
                         yield return grp;
                     }
                 }
+            }
+        }
+
+
+        public int GroupCount
+        {
+            get { return this.BaseMapLayerGroup.Count; }
+        }
+
+        public IBaseMapGroup GetGroupAt(int index)
+        {
+            return this.BaseMapLayerGroup[index];
+        }
+
+        public IBaseMapGroup AddBaseLayerGroup(string name)
+        {
+            var grp = new BaseMapLayerGroupCommonType()
+            {
+                Name = name,
+                LegendLabel = name,
+                BaseMapLayer = new System.ComponentModel.BindingList<BaseMapLayerType>()
+            };
+            this.BaseMapLayerGroup.Add(grp);
+            return grp;
+        }
+
+        public void RemoveBaseLayerGroup(IBaseMapGroup group)
+        {
+            var grp = group as BaseMapLayerGroupCommonType;
+            if (grp != null)
+            {
+                this.BaseMapLayerGroup.Remove(grp);
             }
         }
     }

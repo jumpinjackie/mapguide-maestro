@@ -295,6 +295,24 @@ namespace Maestro.AddIn.ExtendedObjectModels {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a new Tile Set Definition using the v3.0.0 schema.
+        /// </summary>
+        internal static string TPL_TSD_300_DESC {
+            get {
+                return ResourceManager.GetString("TPL_TSD_300_DESC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tile Set Definition (v3.0.0).
+        /// </summary>
+        internal static string TPL_TSD_300_NAME {
+            get {
+                return ResourceManager.GetString("TPL_TSD_300_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a new Vector Layer Definition using the v1.1.0 schema.
         /// </summary>
         internal static string TPL_VLDF_110_DESC {

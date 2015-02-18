@@ -81,6 +81,7 @@
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
     <Compile Include="Templates\MapDefinition300ItemTemplate.cs" />
+    <Compile Include="Templates\TileSetDefinition300ItemTemplate.cs" />
     <Compile Include="Templates\WebLayout260ItemTemplate.cs" />
     <Compile Include="Templates\SymbolDefinition240ItemTemplate.cs" />
     <Compile Include="Templates\WatermarkDefinition240ItemTemplate.cs" />
@@ -101,6 +102,7 @@
     <Content Include="Manifest.addin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Images\grid.png" />
     <None Include="app.config" />
     <None Include="Resources\water.png" />
     <None Include="Resources\edit.png" />

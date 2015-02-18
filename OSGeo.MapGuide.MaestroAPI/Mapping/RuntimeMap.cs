@@ -214,7 +214,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             if (mdf.BaseMap != null)
             {
-                foreach (var group in mdf.BaseMap.BaseMapLayerGroup)
+                foreach (var group in mdf.BaseMap.BaseMapLayerGroups)
                 {
                     foreach (var layer in group.BaseMapLayer)
                     {
@@ -320,7 +320,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             if (mdf.BaseMap != null)
             {
                 var bm = mdf.BaseMap;
-                foreach (var group in bm.BaseMapLayerGroup)
+                foreach (var group in bm.BaseMapLayerGroups)
                 {
                     if (group.HasLayers())
                     {
@@ -1356,7 +1356,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             var change = new Change(type, param);
             changes.Changes.Add(change);
 
-            Debug.WriteLine("Tracked change for " + (isLayer ? "Layer " : "Group ") + objectId + " (type: " + type + ", value: " + param + ")");
+            //Debug.WriteLine("Tracked change for " + (isLayer ? "Layer " : "Group ") + objectId + " (type: " + type + ", value: " + param + ")");
 
             this.IsDirty = true;
         }

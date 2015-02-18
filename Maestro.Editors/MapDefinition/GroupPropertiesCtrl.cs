@@ -113,7 +113,7 @@ namespace Maestro.Editors.MapDefinition
             }
             if (map.BaseMap != null)
             {
-                foreach (var grp in map.BaseMap.BaseMapLayerGroup)
+                foreach (var grp in map.BaseMap.BaseMapLayerGroups)
                 {
                     if (grp.Name == name)
                         count++;

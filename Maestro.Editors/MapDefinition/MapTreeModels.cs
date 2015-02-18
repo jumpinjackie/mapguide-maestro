@@ -23,6 +23,7 @@
 using Aga.Controls.Tree;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -267,28 +268,30 @@ namespace Maestro.Editors.MapDefinition
 
     internal class TiledLayerModel : TreeModelBase
     {
-        private IMapDefinition _map;
+        private ITileSetAbstract _tileSet;
 
-        public TiledLayerModel(IMapDefinition map)
+        public TiledLayerModel(ITileSetAbstract tileSet)
         {
-            _map = map;
+            _tileSet = tileSet;
         }
 
         public override System.Collections.IEnumerable GetChildren(TreePath treePath)
         {
             if (treePath.IsEmpty())
             {
-                if (_map.BaseMap != null)
+                if (_tileSet != null)
                 {
-                    yield return new ScaleItem(Strings.FiniteDisplayScales, new List<double>(_map.BaseMap.FiniteDisplayScale));
-                    foreach (var grp in _map.BaseMap.BaseMapLayerGroup)
+                    if (_tileSet.SupportsCustomFiniteDisplayScales)
+                        yield return new ScaleItem(Strings.FiniteDisplayScales, new List<double>(_tileSet.FiniteDisplayScale));
+                    foreach (var grp in _tileSet.BaseMapLayerGroups)
                     {
                         yield return new BaseLayerGroupItem(grp);
                     }
                 }
                 else
                 {
-                    yield return new ScaleItem(Strings.FiniteDisplayScales, new List<double>());
+                    if (_tileSet.SupportsCustomFiniteDisplayScales)
+                        yield return new ScaleItem(Strings.FiniteDisplayScales, new List<double>());
                 }
             }
             else
@@ -296,9 +299,9 @@ namespace Maestro.Editors.MapDefinition
                 var grp = treePath.LastNode as BaseLayerGroupItem;
                 if (grp != null)
                 {
-                    if (_map.BaseMap != null)
+                    if (_tileSet != null)
                     {
-                        foreach (var layer in _map.BaseMap.GetLayersForGroup(grp.Tag.Name))
+                        foreach (var layer in _tileSet.GetLayersForGroup(grp.Tag.Name))
                         {
                             yield return new BaseLayerItem(layer, grp.Tag);
                         }

@@ -1230,6 +1230,36 @@
     <Compile Include="SymbolDefinition\UsageContextsCtrl.Designer.cs">
       <DependentUpon>UsageContextsCtrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="TileSetDefinition\GroupPropertiesCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TileSetDefinition\GroupPropertiesCtrl.Designer.cs">
+      <DependentUpon>GroupPropertiesCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TileSetDefinition\LayerStructureCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TileSetDefinition\LayerStructureCtrl.Designer.cs">
+      <DependentUpon>LayerStructureCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TileSetDefinition\Providers\GenericProviderCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TileSetDefinition\Providers\GenericProviderCtrl.Designer.cs">
+      <DependentUpon>GenericProviderCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TileSetDefinition\TileSetDefinitionEditorCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TileSetDefinition\TileSetDefinitionEditorCtrl.Designer.cs">
+      <DependentUpon>TileSetDefinitionEditorCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TileSetDefinition\TileSetSettingsCtrl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TileSetDefinition\TileSetSettingsCtrl.Designer.cs">
+      <DependentUpon>TileSetSettingsCtrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="WatermarkDefinition\NsDoc.cs" />
     <Compile Include="WatermarkDefinition\TilePositionEditor.cs">
       <SubType>UserControl</SubType>
@@ -1930,6 +1960,22 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SymbolDefinition\UsageContextsCtrl.resx">
       <DependentUpon>UsageContextsCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TileSetDefinition\GroupPropertiesCtrl.resx">
+      <DependentUpon>GroupPropertiesCtrl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TileSetDefinition\LayerStructureCtrl.resx">
+      <DependentUpon>LayerStructureCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TileSetDefinition\Providers\GenericProviderCtrl.resx">
+      <DependentUpon>GenericProviderCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TileSetDefinition\TileSetDefinitionEditorCtrl.resx">
+      <DependentUpon>TileSetDefinitionEditorCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TileSetDefinition\TileSetSettingsCtrl.resx">
+      <DependentUpon>TileSetSettingsCtrl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WatermarkDefinition\TilePositionEditor.resx">
       <DependentUpon>TilePositionEditor.cs</DependentUpon>

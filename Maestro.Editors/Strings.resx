@@ -1023,7 +1023,7 @@ Are you sure this is what you want?</value>
     <value>Not a folder: {0}</value>
   </data>
   <data name="NotATiledMap" xml:space="preserve">
-    <value>This is not a Map Definition with tiled layers</value>
+    <value>This resource has no tiled layers</value>
   </data>
   <data name="NoTransformationRequired" xml:space="preserve">
     <value>No transformation required</value>

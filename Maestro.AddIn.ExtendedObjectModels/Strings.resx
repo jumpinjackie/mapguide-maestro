@@ -267,4 +267,10 @@
   <data name="TPL_WL_260_NAME" xml:space="preserve">
     <value>Web Layout (v2.6.0)</value>
   </data>
+  <data name="TPL_TSD_300_NAME" xml:space="preserve">
+    <value>Tile Set Definition (v3.0.0)</value>
+  </data>
+  <data name="TPL_TSD_300_DESC" xml:space="preserve">
+    <value>Create a new Tile Set Definition using the v3.0.0 schema</value>
+  </data>
 </root>

@@ -1969,6 +1969,8 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return new HttpCreateRuntimeMap(this);
             else if (ct == CommandType.DescribeRuntimeMap)
                 return new HttpDescribeRuntimeMap(this);
+            else if (ct == CommandType.GetTileProviders)
+                return new HttpGetTileProviders(this);
             return base.CreateCommand(cmdType);
         }
 
@@ -2026,6 +2028,15 @@ namespace OSGeo.MapGuide.MaestroAPI
         public override Resource.Preview.IResourcePreviewUrlGenerator GetPreviewUrlGenerator()
         {
             return new HttpResourcePreviewUrlGenerator(this, m_reqBuilder.HostURI);
+        }
+
+        internal TileProviderList GetTileProviders()
+        {
+            var req = m_reqBuilder.GetTileProviders();
+            using (var s = this.OpenRead(req))
+            {
+                return this.DeserializeObject<OSGeo.MapGuide.ObjectModels.Common.TileProviderList>(s);
+            }
         }
     }
 }

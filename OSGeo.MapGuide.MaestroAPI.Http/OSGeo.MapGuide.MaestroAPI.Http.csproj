@@ -78,6 +78,7 @@
     <Compile Include="Commands\HttpCreateRuntimeMap.cs" />
     <Compile Include="Commands\HttpDescribeRuntimeMap.cs" />
     <Compile Include="Commands\HttpGetFdoCacheInfo.cs" />
+    <Compile Include="Commands\HttpGetTileProviders.cs" />
     <Compile Include="Files.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -62,7 +62,7 @@ namespace Maestro.Editors.MapDefinition
         private int GetLayerCount(IBaseMapDefinition baseMap)
         {
             int count = 0;
-            foreach (var grp in baseMap.BaseMapLayerGroup)
+            foreach (var grp in baseMap.BaseMapLayerGroups)
             {
                 foreach (var layer in grp.BaseMapLayer)
                 {
@@ -153,7 +153,7 @@ namespace Maestro.Editors.MapDefinition
             }
             if (mdf.BaseMap != null)
             {
-                foreach (var group in mdf.BaseMap.BaseMapLayerGroup)
+                foreach (var group in mdf.BaseMap.BaseMapLayerGroups)
                 {
                     foreach (var layer in group.BaseMapLayer)
                     {

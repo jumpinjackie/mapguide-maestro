@@ -1785,5 +1785,15 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             return m_hosturi + "?" + EncodeParameters(param);
         }
+
+        internal string GetTileProviders()
+        {
+            NameValueCollection param = new NameValueCollection();
+            param.Add("OPERATION", "GETTILEPROVIDERS");
+            param.Add("VERSION", "3.0.0");
+            param.Add("SESSION", m_sessionID);
+
+            return m_hosturi + "?" + EncodeParameters(param);
+        }
     }
 }

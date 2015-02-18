@@ -115,7 +115,7 @@ namespace Maestro.Base.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap arrow_180 {
             get {
-                object obj = ResourceManager.GetObject("arrow-180", resourceCulture);
+                object obj = ResourceManager.GetObject("arrow_180", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -125,7 +125,7 @@ namespace Maestro.Base.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap arrow_circle_045_left {
             get {
-                object obj = ResourceManager.GetObject("arrow-circle-045-left", resourceCulture);
+                object obj = ResourceManager.GetObject("arrow_circle_045_left", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -215,7 +215,7 @@ namespace Maestro.Base.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap cross_circle {
             get {
-                object obj = ResourceManager.GetObject("cross-circle", resourceCulture);
+                object obj = ResourceManager.GetObject("cross_circle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -401,6 +401,16 @@ namespace Maestro.Base.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap grid {
+            get {
+                object obj = ResourceManager.GetObject("grid", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon icon_document {
@@ -486,6 +496,16 @@ namespace Maestro.Base.Properties {
         internal static System.Drawing.Icon icon_symbolibrary {
             get {
                 object obj = ResourceManager.GetObject("icon_symbolibrary", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon icon_tileset {
+            get {
+                object obj = ResourceManager.GetObject("icon_tileset", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -595,7 +615,7 @@ namespace Maestro.Base.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap navigation_000_white {
             get {
-                object obj = ResourceManager.GetObject("navigation-000-white", resourceCulture);
+                object obj = ResourceManager.GetObject("navigation_000_white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -605,7 +625,7 @@ namespace Maestro.Base.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap navigation_180 {
             get {
-                object obj = ResourceManager.GetObject("navigation-180", resourceCulture);
+                object obj = ResourceManager.GetObject("navigation_180", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -615,7 +635,7 @@ namespace Maestro.Base.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap navigation_180_white {
             get {
-                object obj = ResourceManager.GetObject("navigation-180-white", resourceCulture);
+                object obj = ResourceManager.GetObject("navigation_180_white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -635,7 +655,7 @@ namespace Maestro.Base.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap plug__minus {
             get {
-                object obj = ResourceManager.GetObject("plug--minus", resourceCulture);
+                object obj = ResourceManager.GetObject("plug__minus", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

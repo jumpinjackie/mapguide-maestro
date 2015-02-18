@@ -31,13 +31,11 @@ using System.Text;
 
 namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
 {
-    public interface ITileSetDefinition : IResource
+    public interface ITileSetDefinition : IResource, ITileSetAbstract
     {
         ITileStoreParameters TileStoreParameters { get; }
 
         IEnvelope Extents { get; set; }
-
-        IEnumerable<IBaseMapGroup> BaseGroups { get; }
     }
 
     public interface ITileStoreParameters
@@ -55,8 +53,78 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         event EventHandler ParametersChanged;
     }
 
+    public interface ITileSetAbstract
+    {
+        IEnumerable<double> FiniteDisplayScale { get; }
+
+        bool SupportsCustomFiniteDisplayScales { get; }
+
+        IEnumerable<IBaseMapGroup> BaseMapLayerGroups { get; }
+
+        IEnumerable<IBaseMapLayer> GetLayersForGroup(string groupName);
+
+        /// <summary>
+        /// Gets the group count.
+        /// </summary>
+        /// <value>The group count.</value>
+        int GroupCount { get; }
+
+        /// <summary>
+        /// Gets the group at the specified index
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
+        IBaseMapGroup GetGroupAt(int index);
+
+        /// <summary>
+        /// Adds the base layer group.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
+        IBaseMapGroup AddBaseLayerGroup(string name);
+
+        /// <summary>
+        /// Removes the base layer group.
+        /// </summary>
+        /// <param name="group">The group.</param>
+        void RemoveBaseLayerGroup(IBaseMapGroup group);
+    }
+
     public static class ExtensionMethods
     {
+        /// <summary>
+        /// Removes the given base layer group from the Map Definition
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="group"></param>
+        /// <param name="bDetachIfEmpty"></param>
+        public static void RemoveBaseLayerGroup(this ITileSetDefinition map, IBaseMapGroup group)
+        {
+            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            if (null == group)
+                return;
+
+            map.RemoveBaseLayerGroup(group);
+        }
+
+        /// <summary>
+        /// Gets whether the specified base group exists in the tile set
+        /// </summary>
+        /// <param name="tileSet"></param>
+        /// <param name="groupName"></param>
+        /// <returns></returns>
+        public static bool GroupExists(this ITileSetDefinition tileSet, string groupName)
+        {
+            Check.ArgumentNotNull(tileSet, "map"); //NOXLATE
+            Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
+            foreach (var group in tileSet.BaseMapLayerGroups)
+            {
+                if (groupName.Equals(group.Name))
+                    return true;
+            }
+            return false;
+        }
+
         /// <summary>
         /// Gets the tile set parameter of the specified name
         /// </summary>

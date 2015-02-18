@@ -91,6 +91,7 @@ namespace Maestro.Base.UI
             icons._small.Images.Add(ResourceTypes.ApplicationDefinition.ToString(), Properties.Resources.applications_stack);
             icons._small.Images.Add(ResourceTypes.SymbolLibrary.ToString(), Properties.Resources.images_stack);
             icons._small.Images.Add(ResourceTypes.PrintLayout.ToString(), Properties.Resources.printer);
+            icons._small.Images.Add(ResourceTypes.TileSetDefinition.ToString(), Properties.Resources.grid);
             icons._small.Images.Add(Properties.Resources.document);
 
             icons._large.Images.Add(ResourceTypes.DrawingSource.ToString(), Properties.Resources.blueprints);
@@ -102,6 +103,7 @@ namespace Maestro.Base.UI
             icons._large.Images.Add(ResourceTypes.ApplicationDefinition.ToString(), Properties.Resources.applications_stack);
             icons._large.Images.Add(ResourceTypes.SymbolLibrary.ToString(), Properties.Resources.images_stack);
             icons._large.Images.Add(ResourceTypes.PrintLayout.ToString(), Properties.Resources.printer);
+            icons._large.Images.Add(ResourceTypes.TileSetDefinition.ToString(), Properties.Resources.grid);
             icons._large.Images.Add(Properties.Resources.document);
 
             return icons;
@@ -126,6 +128,7 @@ namespace Maestro.Base.UI
                 case "ApplicationDefinition":
                 case "SymbolLibrary":
                 case "PrintLayout":
+                case "TileSetDefinition":
                     return rt.ToString();
 
                 default:

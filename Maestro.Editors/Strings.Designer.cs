@@ -2104,7 +2104,7 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This is not a Map Definition with tiled layers.
+        ///   Looks up a localized string similar to This resource has no tiled layers.
         /// </summary>
         internal static string NotATiledMap {
             get {
