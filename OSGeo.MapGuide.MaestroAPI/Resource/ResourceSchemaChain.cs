@@ -57,6 +57,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
                     return new string[] { schema, "WatermarkDefinition-2.3.0.xsd" }; //NOXLATE
                 case "MapDefinition-2.4.0.xsd": //NOXLATE
                     return new string[] { schema, "WatermarkDefinition-2.4.0.xsd" }; //NOXLATE
+                case "MapDefinition-3.0.0.xsd": //NOXLATE
+                    return new string[] { schema, "WatermarkDefinition-2.4.0.xsd" }; //NOXLATE
             }
             return new string[] { schema, "PlatformCommon-1.0.0.xsd" }; //NOXLATE
         }

@@ -236,7 +236,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                         if (wmd != null)
                             xsds.Add("WatermarkDefinition-2.3.0.xsd", wmd); //NOXLATE
                     }
-                    else if (version.StartsWith("2.4.0"))
+                    else if (version.StartsWith("2.4.0") || version.StartsWith("3.0.0"))
                     {
                         var sym = GetXsd(xsdPath, "SymbolDefinition-2.4.0.xsd"); //NOXLATE
                         if (sym != null)
