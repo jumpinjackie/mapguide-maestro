@@ -142,6 +142,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You cannot link to a tile set that does not use the default provider. Your selected tile set uses the provider: {0}.
+        /// </summary>
+        internal static string CannotLinkIncompatibleTileSet {
+            get {
+                return ResourceManager.GetString("CannotLinkIncompatibleTileSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ensure the Geometry box is checked.
         /// </summary>
         internal static string CheckGeometryFirst {
@@ -1837,6 +1846,15 @@ namespace Maestro.Editors {
         internal static string LessThanLabel {
             get {
                 return ResourceManager.GetString("LessThanLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Map Definition&apos;s coordinate system and extents have been replaced with the ones from the linked tile set.
+        /// </summary>
+        internal static string LinkedTileSetNote {
+            get {
+                return ResourceManager.GetString("LinkedTileSetNote", resourceCulture);
             }
         }
         

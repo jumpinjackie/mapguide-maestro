@@ -26,6 +26,7 @@ using Maestro.Editors.MapDefinition;
 using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;

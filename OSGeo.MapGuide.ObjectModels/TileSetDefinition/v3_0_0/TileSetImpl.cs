@@ -172,7 +172,18 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0
         {
             get
             {
+                if (!this.SupportsCustomFiniteDisplayScales)
+                    throw new InvalidOperationException();
+
                 return this.GetDefaultFiniteScaleList();
+            }
+        }
+
+        public bool SupportsCustomFiniteDisplayScalesUnconditionally
+        {
+            get
+            {
+                return false;
             }
         }
 
@@ -180,7 +191,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0
         {
             get
             {
-                return false;
+                return this.TileStoreParameters.TileProvider == "Default";
             }
         }
 
@@ -228,6 +239,68 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0
             {
                 this.BaseMapLayerGroup.Remove(grp);
             }
+        }
+
+        public void AddFiniteDisplayScale(double value)
+        {
+            if (!this.SupportsCustomFiniteDisplayScales)
+                throw new InvalidOperationException();
+
+            this.SetDefaultFiniteScaleList(this.GetDefaultFiniteScaleList().Concat(new double[] { value }));
+        }
+
+        public void RemoveFiniteDisplayScale(double value)
+        {
+            if (!this.SupportsCustomFiniteDisplayScales)
+                throw new InvalidOperationException();
+
+            var list = new List<double>(this.GetDefaultFiniteScaleList());
+            if (list.Remove(value))
+                this.SetDefaultFiniteScaleList(list);
+        }
+
+        public int ScaleCount
+        {
+            get 
+            {
+                if (!this.SupportsCustomFiniteDisplayScales)
+                    throw new InvalidOperationException();
+                return this.FiniteDisplayScale.Count(); 
+            }
+        }
+
+        public void RemoveScaleAt(int index)
+        {
+            if (!this.SupportsCustomFiniteDisplayScales)
+                throw new InvalidOperationException();
+
+            if (index >= this.ScaleCount)
+                throw new ArgumentOutOfRangeException("index");
+
+            var list = new List<double>(this.GetDefaultFiniteScaleList());
+            list.RemoveAt(index);
+            this.SetDefaultFiniteScaleList(list);
+        }
+
+        public double GetScaleAt(int index)
+        {
+            if (!this.SupportsCustomFiniteDisplayScales)
+                throw new InvalidOperationException();
+
+            return this.GetDefaultFiniteScaleList().ElementAt(index);
+        }
+
+        public void SetFiniteDisplayScales(IEnumerable<double> scales)
+        {
+            this.SetDefaultFiniteScaleList(scales.OrderBy(s => s));
+        }
+
+        public void RemoveAllScales()
+        {
+            if (!this.SupportsCustomFiniteDisplayScales)
+                throw new InvalidOperationException();
+
+            this.SetDefaultFiniteScaleList(Enumerable.Empty<double>());
         }
     }
 

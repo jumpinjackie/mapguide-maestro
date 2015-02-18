@@ -26,6 +26,7 @@ using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -37,26 +38,26 @@ namespace Maestro.Editors.MapDefinition
     /// </summary>
     public partial class ExtentCalculationDialog : Form
     {
-        private IMapDefinition _mdf;
+        private string _coordSys;
+        private Func<IEnumerable<string>> _layerIdCollector;
         private IServerConnection _conn;
+
+        private IList<string> _layerIdsToProcess;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ExtentCalculationDialog"/> class.
         /// </summary>
         /// <param name="mdf">The Map Definition</param>
         /// <param name="conn">The server connection</param>
-        public ExtentCalculationDialog(IMapDefinition mdf, IServerConnection conn)
+        /// <param name="layerIdCollector"></param>
+        public ExtentCalculationDialog(IServerConnection conn, string coordinateSystem, Func<IEnumerable<string>> layerIdCollector)
         {
             InitializeComponent();
-            _mdf = mdf;
+            _coordSys = coordinateSystem;
+            _layerIdCollector = layerIdCollector;
             _conn = conn;
             grdCalculations.DataSource = _results;
-
-            prgCalculations.Maximum = mdf.GetLayerCount();
-            if (mdf.BaseMap != null)
-                prgCalculations.Maximum += GetLayerCount(mdf.BaseMap);
-
-            txtCoordinateSystem.Text = mdf.CoordinateSystem;
+            txtCoordinateSystem.Text = _coordSys;
         }
 
         private int GetLayerCount(IBaseMapDefinition baseMap)
@@ -78,6 +79,8 @@ namespace Maestro.Editors.MapDefinition
         /// <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
         protected override void OnLoad(EventArgs e)
         {
+            _layerIdsToProcess = _layerIdCollector().Distinct().ToList();
+            prgCalculations.Maximum = _layerIdsToProcess.Count;
             bgCalculation.RunWorkerAsync();
         }
 
@@ -141,26 +144,13 @@ namespace Maestro.Editors.MapDefinition
 
         private void bgCalculation_DoWork(object sender, DoWorkEventArgs e)
         {
-            var mdf = _mdf;
             var resSvc = _conn.ResourceService;
 
             //Accumulate layers
             Dictionary<string, ILayerDefinition> layers = new Dictionary<string, ILayerDefinition>();
-            foreach (var lyr in mdf.MapLayer)
+            foreach (var ldfId in _layerIdsToProcess)
             {
-                if (!layers.ContainsKey(lyr.ResourceId))
-                    layers.Add(lyr.ResourceId, (ILayerDefinition)resSvc.GetResource(lyr.ResourceId));
-            }
-            if (mdf.BaseMap != null)
-            {
-                foreach (var group in mdf.BaseMap.BaseMapLayerGroups)
-                {
-                    foreach (var layer in group.BaseMapLayer)
-                    {
-                        if (!layers.ContainsKey(layer.ResourceId))
-                            layers.Add(layer.ResourceId, (ILayerDefinition)resSvc.GetResource(layer.ResourceId));
-                    }
-                }
+                layers.Add(ldfId, (ILayerDefinition)resSvc.GetResource(ldfId));
             }
 
             Check.ArgumentNotNull(layers, "layers");
@@ -180,13 +170,13 @@ namespace Maestro.Editors.MapDefinition
                 res.CoordinateSystem = wkt;
 
                 bool tx = false;
-                if (wkt != mdf.CoordinateSystem)
+                if (wkt != _coordSys)
                 {
                     tx = true;
                     //Transform if not the same, otherwise assume either arbitrary or same as the map
                     if (!string.IsNullOrEmpty(wkt))
                     {
-                        e1 = Utility.TransformEnvelope(e1, wkt, mdf.CoordinateSystem);
+                        e1 = Utility.TransformEnvelope(e1, wkt, _coordSys);
                         res.TransformedResult = e1;
                     }
                 }

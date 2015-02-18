@@ -501,6 +501,15 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v3_0_0
             }
         }
 
+        void IMapDefinition.AttachBaseMap(IBaseMapDefinition baseMap)
+        {
+            var bmd = baseMap as MapDefinitionTypeBaseMapDefinition;
+            if (bmd != null)
+            {
+                this.BaseMapDefinition = bmd;
+            }
+        }
+
         void IMapDefinition.InitBaseMap()
         {
             if (this.BaseMapDefinition == null)
@@ -784,12 +793,20 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v3_0_0
             set;
         }
 
-        void IBaseMapDefinition.RemoveScaleAt(int index)
+        bool ITileSetAbstract.SupportsCustomFiniteDisplayScalesUnconditionally
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        void ITileSetAbstract.RemoveScaleAt(int index)
         {
             this.FiniteDisplayScale.RemoveAt(index);
         }
 
-        double IBaseMapDefinition.GetScaleAt(int index)
+        double ITileSetAbstract.GetScaleAt(int index)
         {
             return this.FiniteDisplayScale[index];
         }
@@ -806,22 +823,48 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v3_0_0
         }
 
         [XmlIgnore]
-        int IBaseMapDefinition.ScaleCount
+        int ITileSetAbstract.ScaleCount
         {
             get { return this.FiniteDisplayScale.Count; }
         }
 
         public void AddFiniteDisplayScale(double value)
         {
-            this.FiniteDisplayScale.Add(value);
+            int index = 0;
+            var fds = this.FiniteDisplayScale;
+            if (fds.Count == 0)
+            {
+                fds.Add(value);
+            }
+            else
+            {
+                for (int i = fds.Count - 1; i >= 0; i--)
+                {
+                    if (value < fds[i])
+                        index = i;
+                }
+                fds.Insert(index, value);
+            }
+            OnPropertyChanged("FiniteDisplayScale"); //NOXLATE
         }
 
         public void RemoveFiniteDisplayScale(double value)
         {
             this.FiniteDisplayScale.Remove(value);
+            OnPropertyChanged("FiniteDisplayScale"); //NOXLATE
         }
 
-        void IBaseMapDefinition.RemoveAllScales()
+        void ITileSetAbstract.SetFiniteDisplayScales(IEnumerable<double> scales)
+        {
+            this.FiniteDisplayScale.Clear();
+            foreach (double scale in scales.OrderBy(s => s))
+            {
+                this.FiniteDisplayScale.Add(scale);
+            }
+            OnPropertyChanged("FiniteDisplayScale"); //NOXLATE
+        }
+
+        void ITileSetAbstract.RemoveAllScales()
         {
             this.FiniteDisplayScale.Clear();
             OnPropertyChanged("FiniteDisplayScale"); //NOXLATE

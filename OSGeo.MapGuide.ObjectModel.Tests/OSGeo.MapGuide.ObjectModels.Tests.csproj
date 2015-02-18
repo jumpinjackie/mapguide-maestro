@@ -78,6 +78,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ResourceTests.cs" />
+    <Compile Include="TileSetAbstractTests.cs" />
     <Compile Include="TileSetDefinitionTests.cs" />
   </ItemGroup>
   <ItemGroup>

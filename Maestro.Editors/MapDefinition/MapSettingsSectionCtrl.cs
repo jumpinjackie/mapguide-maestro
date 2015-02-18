@@ -25,6 +25,7 @@ using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Forms;
@@ -234,9 +235,29 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
+        private IEnumerable<string> CollectLayerIds()
+        {
+            HashSet<string> ids = new HashSet<string>();
+            foreach (var layer in _map.MapLayer)
+            {
+                ids.Add(layer.ResourceId);
+            }
+            if (_map.BaseMap != null)
+            {
+                foreach (var grp in _map.BaseMap.BaseMapLayerGroups)
+                {
+                    foreach (var layer in grp.BaseMapLayer)
+                    {
+                        ids.Add(layer.ResourceId);
+                    }
+                }
+            }
+            return ids;
+        }
+
         private void btnSetZoom_Click(object sender, EventArgs e)
         {
-            var diag = new ExtentCalculationDialog(_map, _service.CurrentConnection);
+            var diag = new ExtentCalculationDialog(_service.CurrentConnection, _map.CoordinateSystem, CollectLayerIds);
             if (diag.ShowDialog() == DialogResult.OK)
             {
                 var env = diag.Extents;

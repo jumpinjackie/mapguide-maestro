@@ -121,6 +121,13 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         IBaseMapDefinition BaseMap { get; }
 
         /// <summary>
+        /// Attaches the given base map section to this map definition. If an existing base map section
+        /// exists, it is replaced
+        /// </summary>
+        /// <param name="baseMap"></param>
+        void AttachBaseMap(IBaseMapDefinition baseMap);
+
+        /// <summary>
         /// Initializes the base map section of this map definition. Subsequent calls
         /// do nothing, unless you have cleared the section via <see cref="RemoveBaseMap"/>
         /// </summary>
@@ -314,199 +321,6 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         /// No tile layer/group settings are defined
         /// </summary>
         None
-    }
-
-    /// <summary>
-    /// Extension methdo class
-    /// </summary>
-    public static class BaseMapDefinitionExtensions
-    {
-        /// <summary>
-        /// Gets the minimum finite display scale
-        /// </summary>
-        /// <param name="map"></param>
-        /// <returns></returns>
-        public static double GetMinScale(this IBaseMapDefinition map)
-        {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
-            if (map.ScaleCount == 0)
-                return 0.0;
-
-            var scales = new List<double>(map.FiniteDisplayScale);
-            scales.Sort();
-            return scales[0];
-        }
-
-        /// <summary>
-        /// Gets the maximum finite display scale
-        /// </summary>
-        /// <param name="map"></param>
-        /// <returns></returns>
-        public static double GetMaxScale(this IBaseMapDefinition map)
-        {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
-            if (map.ScaleCount == 0)
-                return 0.0;
-
-            var scales = new List<double>(map.FiniteDisplayScale);
-            scales.Sort();
-            return scales[scales.Count - 1];
-        }
-
-        /// <summary>
-        /// Gets the parent group for the specified layer
-        /// </summary>
-        /// <param name="map"></param>
-        /// <param name="layer"></param>
-        /// <returns></returns>
-        public static IBaseMapGroup GetGroupForLayer(this ITileSetAbstract map, IBaseMapLayer layer)
-        {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
-            foreach (var group in map.BaseMapLayerGroups)
-            {
-                foreach (var tl in group.BaseMapLayer)
-                {
-                    if (tl == layer)
-                        return group;
-                }
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// Gets whether this base map group has tiled layers
-        /// </summary>
-        /// <param name="grp"></param>
-        /// <returns></returns>
-        public static bool HasLayers(this IBaseMapGroup grp)
-        {
-            Check.ArgumentNotNull(grp, "grp"); //NOXLATE
-            return new List<IBaseMapLayer>(grp.BaseMapLayer).Count > 0;
-        }
-
-        /// <summary>
-        /// Gets whether this base map has tiled layers
-        /// </summary>
-        /// <param name="map"></param>
-        /// <returns></returns>
-        public static bool HasLayers(this IBaseMapDefinition map)
-        {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
-            if (!map.HasGroups())
-                return false;
-
-            foreach (var group in map.BaseMapLayerGroups)
-            {
-                if (group.HasLayers())
-                    return true;
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// Gets whether this base map has groups
-        /// </summary>
-        /// <param name="map"></param>
-        /// <returns></returns>
-        public static bool HasGroups(this IBaseMapDefinition map)
-        {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
-            return new List<IBaseMapGroup>(map.BaseMapLayerGroups).Count > 0;
-        }
-
-        /// <summary>
-        /// Gets the first base map group
-        /// </summary>
-        /// <param name="map"></param>
-        /// <returns></returns>
-        public static IBaseMapGroup GetFirstGroup(this ITileSetAbstract map)
-        {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
-            var list = new List<IBaseMapGroup>(map.BaseMapLayerGroups);
-            if (list.Count > 0)
-                return list[0];
-            return null;
-        }
-
-        /// <summary>
-        /// Gets whether a tiled layer of the specified name exists.
-        /// </summary>
-        /// <param name="map"></param>
-        /// <param name="layerName"></param>
-        /// <returns></returns>
-        public static bool LayerExists(this ITileSetAbstract map, string layerName)
-        {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
-            Check.ArgumentNotEmpty(layerName, "layerName"); //NOXLATE
-
-            foreach (var group in map.BaseMapLayerGroups)
-            {
-                foreach (var layer in group.BaseMapLayer)
-                {
-                    if (layerName.Equals(layer.Name))
-                        return true;
-                }
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// Gets the base map group of the specified name
-        /// </summary>
-        /// <param name="map"></param>
-        /// <param name="groupName"></param>
-        /// <returns></returns>
-        public static IBaseMapGroup GetGroup(this IBaseMapDefinition map, string groupName)
-        {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
-            Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
-            foreach (var group in map.BaseMapLayerGroups)
-            {
-                if (groupName.Equals(group.Name))
-                    return group;
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// Gets whether the specified base map group exists
-        /// </summary>
-        /// <param name="map"></param>
-        /// <param name="groupName"></param>
-        /// <returns></returns>
-        public static bool GroupExists(this IBaseMapDefinition map, string groupName)
-        {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
-            Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
-            foreach (var group in map.BaseMapLayerGroups)
-            {
-                if (groupName.Equals(group.Name))
-                    return true;
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// Gets the tiled layers for the specified base map group
-        /// </summary>
-        /// <param name="map"></param>
-        /// <param name="groupName"></param>
-        /// <returns></returns>
-        public static IEnumerable<IBaseMapLayer> GetLayersForGroup(this IBaseMapDefinition map, string groupName)
-        {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
-            Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
-
-            foreach (var group in map.BaseMapLayerGroups)
-            {
-                if (groupName.Equals(group.Name))
-                {
-                    return group.BaseMapLayer;
-                }
-            }
-
-            return new IBaseMapLayer[0];
-        }
     }
 
     /// <summary>
@@ -790,41 +604,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
     /// </summary>
     public interface IBaseMapDefinition : ITileSetAbstract
     {
-        /// <summary>
-        /// Adds the finite display scale.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        void AddFiniteDisplayScale(double value);
-
-        /// <summary>
-        /// Removes the finite display scale.
-        /// </summary>
-        /// <param name="value">The value.</param>
-        void RemoveFiniteDisplayScale(double value);
-
-        /// <summary>
-        /// Gets the scale count.
-        /// </summary>
-        /// <value>The scale count.</value>
-        int ScaleCount { get; }
-
-        /// <summary>
-        /// Removes the scale at the specified index
-        /// </summary>
-        /// <param name="index">The index.</param>
-        void RemoveScaleAt(int index);
-
-        /// <summary>
-        /// Gets the scale at the specified index
-        /// </summary>
-        /// <param name="index">The index.</param>
-        /// <returns></returns>
-        double GetScaleAt(int index);
-
-        /// <summary>
-        /// Removes all scales.
-        /// </summary>
-        void RemoveAllScales();
+        
     }
 
     /// <summary>

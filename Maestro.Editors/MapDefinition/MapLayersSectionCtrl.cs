@@ -1163,7 +1163,7 @@ namespace Maestro.Editors.MapDefinition
         {
             _map.InitBaseMap();
             var grp = _map.BaseMap.AddBaseLayerGroup(GenerateBaseGroupName(_map));
-            _tiledLayerModel.Invalidate();
+            _tiledLayerModel.Invalidate(_map.BaseMap);
         }
 
         private void btnRemoveBaseLayerGroup_Click(object sender, EventArgs e)
@@ -1454,6 +1454,7 @@ namespace Maestro.Editors.MapDefinition
         private void OnFiniteScaleListSelected()
         {
             propertiesPanel.Controls.Clear();
+            _map.InitBaseMap();
             var item = new FiniteScaleListCtrl(_map, _edSvc);
 
             item.Dock = DockStyle.Fill;
@@ -1467,9 +1468,7 @@ namespace Maestro.Editors.MapDefinition
             btnBaseLayerGroupToRegular.Enabled = true;
 
             propertiesPanel.Controls.Clear();
-            //var item = new GroupPropertiesCtrl(_map, group.Tag);
-            //item.GroupChanged += (s, evt) => { OnResourceChanged(); };
-            //item.Dock = DockStyle.Fill;
+
             _activeLayer = null;
             AddBaseGroupControl(group);
         }
@@ -1481,9 +1480,6 @@ namespace Maestro.Editors.MapDefinition
             btnMoveBaseLayerUp.Enabled = true;
             btnBaseLayerGroupToRegular.Enabled = false;
 
-            //var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService, _edSvc);
-            //item.LayerChanged += (s, evt) => { OnResourceChanged(); };
-            //item.Dock = DockStyle.Fill;
             _activeLayer = null;
             AddBaseLayerControl(layer);
         }
@@ -2118,12 +2114,24 @@ namespace Maestro.Editors.MapDefinition
             {
                 if (picker.ShowDialog() == DialogResult.OK )
                 {
-                    txtTileSet.Text = picker.ResourceID;
-
                     var tsd = (ITileSetDefinition)_edSvc.CurrentConnection.ResourceService.GetResource(picker.ResourceID);
+                    if (tsd.TileStoreParameters.TileProvider != "Default") //NOXLATE
+                    {
+                        MessageBox.Show(string.Format(Maestro.Editors.Strings.CannotLinkIncompatibleTileSet, tsd.TileStoreParameters.TileProvider));
+                        return;
+                    }
+                    txtTileSet.Text = picker.ResourceID;
                     string coordSys = tsd.GetDefaultCoordinateSystem();
                     if (!string.IsNullOrEmpty(coordSys))
+                    {
+                        //Update Map Definition's CS and extents to match that from the tile set. Note that this has no real
+                        //ramifications. Internally the Tile Set's CS and extents will be used anyway, this is just a way to
+                        //communicate to the user that the Tile Set's CS and extents take precedence.
                         _map.CoordinateSystem = coordSys;
+                        var env = tsd.Extents;
+                        _map.SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);
+                        MessageBox.Show(Maestro.Editors.Strings.LinkedTileSetNote);
+                    }
                 }
             }
         }

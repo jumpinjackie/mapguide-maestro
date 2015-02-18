@@ -101,6 +101,11 @@ namespace Maestro.Editors
         public const int RES_FOLDER = 13;
 
         /// <summary>
+        /// Icon for tile sets
+        /// </summary>
+        public const int RES_TILESET = 14;
+
+        /// <summary>
         /// Gets the image icon index for the given resource type
         /// </summary>
         /// <param name="resType">Type of the resource.</param>
@@ -145,6 +150,9 @@ namespace Maestro.Editors
                 case "WebLayout":
                     return RES_WEBLAYOUT;
 
+                case "TileSetDefinition":
+                    return RES_TILESET;
+
                 default:
                     throw new ArgumentException();
             }
@@ -183,6 +191,7 @@ namespace Maestro.Editors
             imgList.Images.Add(Properties.Resources.script__arrow);
             imgList.Images.Add(Properties.Resources.server);
             imgList.Images.Add(Properties.Resources.folder_horizontal);
+            imgList.Images.Add(Properties.Resources.grid);
         }
     }
 }

@@ -138,6 +138,15 @@
   <data name="BetweenLabel" xml:space="preserve">
     <value>Between {0} and {1}</value>
   </data>
+  <data name="CannotCreateThemeForCompositeStyleClassicEditor" xml:space="preserve">
+    <value>Theming composite styles with this editor is not supported</value>
+  </data>
+  <data name="CannotCreateThemeFromCompoundSymbolInstance" xml:space="preserve">
+    <value>Creating themes from a Composite Rule with a Compound Symbol is not supported</value>
+  </data>
+  <data name="CannotLinkIncompatibleTileSet" xml:space="preserve">
+    <value>You cannot link to a tile set that does not use the default provider. Your selected tile set uses the provider: {0}</value>
+  </data>
   <data name="CheckGeometryFirst" xml:space="preserve">
     <value>Ensure the Geometry box is checked</value>
   </data>
@@ -149,6 +158,9 @@
   </data>
   <data name="CmsBingStreet" xml:space="preserve">
     <value>Bing Maps Street</value>
+  </data>
+  <data name="CmsGeneric" xml:space="preserve">
+    <value>Generic Layer</value>
   </data>
   <data name="CmsGoogleHybrid" xml:space="preserve">
     <value>Google Hybrid</value>
@@ -170,6 +182,15 @@
   </data>
   <data name="CmsOsmTransport" xml:space="preserve">
     <value>Open Street Map (TransportMap)</value>
+  </data>
+  <data name="CmsStamenTerrain" xml:space="preserve">
+    <value>Stamen (Terrain)</value>
+  </data>
+  <data name="CmsStamenToner" xml:space="preserve">
+    <value>Stamen (Toner)</value>
+  </data>
+  <data name="CmsStamenWaterColor" xml:space="preserve">
+    <value>Stamen (WaterColor)</value>
   </data>
   <data name="CmsYahooHybrid" xml:space="preserve">
     <value>Yahoo! Maps Hybrid</value>
@@ -583,6 +604,12 @@
 &lt;/CommandTypesDataset&gt;
 </value>
   </data>
+  <data name="CompositeThemeRequiresFirstRuleAsTemplate" xml:space="preserve">
+    <value>Generating a theme for a composite style, requires a composite rule</value>
+  </data>
+  <data name="ComputingThemeParameters" xml:space="preserve">
+    <value>Computing Theme Parameters ...</value>
+  </data>
   <data name="ConfigurationDocumentReset" xml:space="preserve">
     <value>Configuration Document has been reset</value>
   </data>
@@ -594,6 +621,12 @@
   </data>
   <data name="ConfirmGoogleScaleList" xml:space="preserve">
     <value>Are you sure you want to use a Google-compatible Scale List? This will overwrite your existing scale ranges and will only line up with commercial layers in Fusion if your Map's Coordinate System is WGS84.PseudoMercator</value>
+  </data>
+  <data name="ConfirmNonMapGuideSupportedCsWkt" xml:space="preserve">
+    <value>The WKT you entered is not recognised by MapGuide's Coordinate System Library. Use it anyway?</value>
+  </data>
+  <data name="ConfirmWmsLogicalClassSwap" xml:space="preserve">
+    <value>In some cases, the actual WMS layer name would be generated in the FDO class description. Swap FDO logical class names with their descriptions?</value>
   </data>
   <data name="ContentFileMissing" xml:space="preserve">
     <value>The content file does not exist</value>
@@ -610,6 +643,12 @@
   <data name="DataReadError" xml:space="preserve">
     <value>Unable to read data from the selected column: {0}</value>
   </data>
+  <data name="DebugWatermarkMessage" xml:space="preserve">
+    <value>MapGuide Debugging Information\n==============================\n\nMap Extents Min: ({0}, {1})\nMap Extents Max: ({2}, {3})\nMap Coordinate System: \n{4}</value>
+  </data>
+  <data name="DebugWatermarkMessageLayer" xml:space="preserve">
+    <value>MapGuide Debugging Information\n==============================\n\nMap Extents Min: ({0}, {1})\nMap Extents Max: ({2}, {3})\nMap Coordinate System: \n{4}\nLayer Spatial Context: {5}</value>
+  </data>
   <data name="DeleteCommand" xml:space="preserve">
     <value>Delete Command</value>
   </data>
@@ -619,6 +658,9 @@
   <data name="DivergingName" xml:space="preserve">
     <value>Diverging</value>
   </data>
+  <data name="EditSymbolDefinition" xml:space="preserve">
+    <value>Edit Symbol Definition</value>
+  </data>
   <data name="EditWatermarkInstance" xml:space="preserve">
     <value>Edit Watermark Instance</value>
   </data>
@@ -627,6 +669,9 @@
   </data>
   <data name="ErrNotAFolder" xml:space="preserve">
     <value>Not a folder</value>
+  </data>
+  <data name="ErrorExplodingCompositeStyleNotSupported" xml:space="preserve">
+    <value>Exploding Composite Styles is not currently supported</value>
   </data>
   <data name="ErrorInvalidSymbolLibraryResourceId" xml:space="preserve">
     <value>Not a valid symbol library resource identifier: {0}</value>
@@ -646,17 +691,59 @@
   <data name="ExportNoCustomCommandsSelected" xml:space="preserve">
     <value>No custom commands selected. Nothing to export</value>
   </data>
+  <data name="ExprDispBoolean" xml:space="preserve">
+    <value>Boolean: {0}</value>
+  </data>
+  <data name="ExprDispDateTime" xml:space="preserve">
+    <value>DateTime: {0}</value>
+  </data>
+  <data name="ExprDispDouble" xml:space="preserve">
+    <value>Double: {0}</value>
+  </data>
+  <data name="ExprDispFunction" xml:space="preserve">
+    <value>Function: {0}</value>
+  </data>
+  <data name="ExprDispGeometry" xml:space="preserve">
+    <value>Geometry: {0}</value>
+  </data>
+  <data name="ExprDispIdentifier" xml:space="preserve">
+    <value>Identifier: {0}</value>
+  </data>
+  <data name="ExprDispInt32" xml:space="preserve">
+    <value>Int32: {0}</value>
+  </data>
+  <data name="ExprDispParameter" xml:space="preserve">
+    <value>Parameter: {0}</value>
+  </data>
+  <data name="ExprDispString" xml:space="preserve">
+    <value>String: '{0}'</value>
+  </data>
+  <data name="ExprDispUnaryExpr" xml:space="preserve">
+    <value>Unary Expression (Negated)</value>
+  </data>
+  <data name="ExprEditorFunctionDesc" xml:space="preserve">
+    <value>{0}{4}Description:{1}{4}Arguments:{2}{4}Returns: {3}</value>
+  </data>
   <data name="ExpressionItem" xml:space="preserve">
     <value>Expression...</value>
   </data>
+  <data name="ExprIsValid" xml:space="preserve">
+    <value>Expression is valid</value>
+  </data>
   <data name="ExtendedClassTooltip" xml:space="preserve">
     <value>Extended class based on: {0}</value>
+  </data>
+  <data name="ExtendedFeatureClassAlreadyExists" xml:space="preserve">
+    <value>An extended feature class named ({0}) already exist. Please choose a different name</value>
   </data>
   <data name="ExtentsCalculationCompleted" xml:space="preserve">
     <value>Map extents calculation completed. Click Accept to use the calculated extents.</value>
   </data>
   <data name="ExtentsTransformationFailed" xml:space="preserve">
     <value>Could not transform extent of layer {0} to the map definition's coordinate system. Extents ignored</value>
+  </data>
+  <data name="FailedToCalculateFeatureSourceExtents" xml:space="preserve">
+    <value>Could not calculate the extents of the Feature Source. Preview is not possible</value>
   </data>
   <data name="FailEnumDataStores" xml:space="preserve">
     <value>Failed to enumerate data stores. Reason: {0}</value>
@@ -666,6 +753,45 @@
   </data>
   <data name="FdoConnectionStringComponentNotFound" xml:space="preserve">
     <value>The component "{0}" could not be found in the specified FDO connection string</value>
+  </data>
+  <data name="FdoDispDistanceCondition" xml:space="preserve">
+    <value>Distance ({0})</value>
+  </data>
+  <data name="FdoDispDistanceTitle" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="FdoDispExprTitle" xml:space="preserve">
+    <value>Expression</value>
+  </data>
+  <data name="FdoDispIdentifierTitle" xml:space="preserve">
+    <value>Identifier</value>
+  </data>
+  <data name="FdoDispInCondition" xml:space="preserve">
+    <value>In Condition ({0})</value>
+  </data>
+  <data name="FdoDispNullCondition" xml:space="preserve">
+    <value>Null Condition ({0})</value>
+  </data>
+  <data name="FdoDispSpatialCondition" xml:space="preserve">
+    <value>Spatial Condition ({0})</value>
+  </data>
+  <data name="FdoDispUnaryOperator" xml:space="preserve">
+    <value>Unary Operator (NOT)</value>
+  </data>
+  <data name="FeatureClassNotFound" xml:space="preserve">
+    <value>Feature Class not found: {0}</value>
+  </data>
+  <data name="FeatureNotImplemented" xml:space="preserve">
+    <value>This feature is not implemented yet</value>
+  </data>
+  <data name="FetchingClassDefinition" xml:space="preserve">
+    <value>Fetching Class Definition</value>
+  </data>
+  <data name="FetchingClassNames" xml:space="preserve">
+    <value>Fetching Class Names</value>
+  </data>
+  <data name="FetchingSchemaNames" xml:space="preserve">
+    <value>Fetching Schema Names</value>
   </data>
   <data name="FieldRequired" xml:space="preserve">
     <value>This field is required: {0}</value>
@@ -688,6 +814,9 @@
   <data name="FiletypeZip" xml:space="preserve">
     <value>Zip files ({0})</value>
   </data>
+  <data name="FilterIsValid" xml:space="preserve">
+    <value>Filter is valid</value>
+  </data>
   <data name="FindEmptyString" xml:space="preserve">
     <value>Cannot Find an Empty String</value>
   </data>
@@ -699,6 +828,18 @@
   </data>
   <data name="FiniteDisplayScales" xml:space="preserve">
     <value>Finite Display Scales</value>
+  </data>
+  <data name="FltrDispBinaryLogicalOperator" xml:space="preserve">
+    <value>Binary Logical Operator ({0})</value>
+  </data>
+  <data name="FltrDispComparisonCondition" xml:space="preserve">
+    <value>Comparison ({0})</value>
+  </data>
+  <data name="FltrDispLeftNode" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="FltrDispRightNode" xml:space="preserve">
+    <value>Right</value>
   </data>
   <data name="FolderMissingPrefix" xml:space="preserve">
     <value>The folder must start with \"Library://\", do you want the starting folder to become:\n {0} ?</value>
@@ -718,6 +859,9 @@
   <data name="FsPreview_DataPropertyNodeTooltip" xml:space="preserve">
     <value>Name: {0}{8}Description: {1}{8}Data Type: {2}{8}Nullable: {3}{8}Read Only: {4}{8}Length: {5}{8}Precision: {6}{8}Scale: {7}</value>
   </data>
+  <data name="FsPreview_GenericPropertyTooltip" xml:space="preserve">
+    <value>Property: {0}{2}Type: {1}</value>
+  </data>
   <data name="FsPreview_GeometryPropertyNodeTooltip" xml:space="preserve">
     <value>Name: {0}{7}Description: {1}{7}Geometry Types: {2}{7}Read Only: {3}{7}Has Elevation: {4}{7}Has Measure: {5}{7}Spatial Context: {6}</value>
   </data>
@@ -726,6 +870,93 @@
   </data>
   <data name="FsSqlServerSpatial" xml:space="preserve">
     <value>SQL Server Spatial Feature Source</value>
+  </data>
+  <data name="Func_ARGB_AValueDescription" xml:space="preserve">
+    <value>Alpha value</value>
+  </data>
+  <data name="Func_ARGB_BValueDescription" xml:space="preserve">
+    <value>Blue value</value>
+  </data>
+  <data name="Func_ARGB_Description" xml:space="preserve">
+    <value>Color generation function</value>
+  </data>
+  <data name="Func_ARGB_GValueDescription" xml:space="preserve">
+    <value>Green value</value>
+  </data>
+  <data name="Func_ARGB_RValueDescription" xml:space="preserve">
+    <value>Red value</value>
+  </data>
+  <data name="Func_DECAP_Description" xml:space="preserve">
+    <value>String formatting function</value>
+  </data>
+  <data name="Func_DECAP_StringValueDescription" xml:space="preserve">
+    <value>String to format</value>
+  </data>
+  <data name="Func_FEATURECLASS_Description" xml:space="preserve">
+    <value>Returns the active feature class name</value>
+  </data>
+  <data name="Func_FEATUREID_Description" xml:space="preserve">
+    <value>Returns the active feature Id</value>
+  </data>
+  <data name="Func_IF_ConditionDescription" xml:space="preserve">
+    <value>Boolean expression (filter) encapsulated in a string</value>
+  </data>
+  <data name="Func_IF_Description" xml:space="preserve">
+    <value>If evaluator for style theming</value>
+  </data>
+  <data name="Func_IF_FalseValueDescription" xml:space="preserve">
+    <value>Returned if condition is false</value>
+  </data>
+  <data name="Func_IF_TrueValueDescription" xml:space="preserve">
+    <value>Returned if condition is true</value>
+  </data>
+  <data name="Func_LAYERID_Description" xml:space="preserve">
+    <value>Returns the active layer Id</value>
+  </data>
+  <data name="Func_LOOKUP_DefaultValueDescription" xml:space="preserve">
+    <value>Default value returned if expression does not evaluate to any of the keys</value>
+  </data>
+  <data name="Func_LOOKUP_Description" xml:space="preserve">
+    <value>Lookup table for style theming</value>
+  </data>
+  <data name="Func_LOOKUP_ExpressionDescription" xml:space="preserve">
+    <value>Key expression</value>
+  </data>
+  <data name="Func_LOOKUP_IndexDescription" xml:space="preserve">
+    <value>Lookup index that can be matched by the key expression</value>
+  </data>
+  <data name="Func_LOOKUP_ValueDescription" xml:space="preserve">
+    <value>Value that is returned when the key expression matches the associated index</value>
+  </data>
+  <data name="Func_MAPNAME_Description" xml:space="preserve">
+    <value>Returns the active map name</value>
+  </data>
+  <data name="Func_RANGE_DefaultValueDescription" xml:space="preserve">
+    <value>Default value returned if expression does not fall into any of the ranges</value>
+  </data>
+  <data name="Func_RANGE_Description" xml:space="preserve">
+    <value>Range table for style theming</value>
+  </data>
+  <data name="Func_RANGE_ExpressionDescription" xml:space="preserve">
+    <value>Key expression</value>
+  </data>
+  <data name="Func_RANGE_MaxDescription" xml:space="preserve">
+    <value>Exclusive maximum of range that can be matched by the key expression</value>
+  </data>
+  <data name="Func_RANGE_MinDescription" xml:space="preserve">
+    <value>Inclusive minimum of range that can be matched by the key expression</value>
+  </data>
+  <data name="Func_RANGE_ValueDescription" xml:space="preserve">
+    <value>Value that is returned when the key expression matches the associated range</value>
+  </data>
+  <data name="Func_SESSION_Description" xml:space="preserve">
+    <value>Returns the active session</value>
+  </data>
+  <data name="Func_URLENCODE_Description" xml:space="preserve">
+    <value>String encoding function</value>
+  </data>
+  <data name="Func_URLENCODE_StringValueDescription" xml:space="preserve">
+    <value>String to URL encode</value>
   </data>
   <data name="FunctionTooltip" xml:space="preserve">
     <value>Function: {1}({2})
@@ -894,6 +1125,9 @@ Returns: {0}</value>
   <data name="GeomFilterTemplate" xml:space="preserve">
     <value>&lt;geometry property&gt; {0} GeomFromText('&lt;FGF geometry text&gt;')</value>
   </data>
+  <data name="GroupAlreadyExists" xml:space="preserve">
+    <value>A group named "{0}" already exists. Choose a different name</value>
+  </data>
   <data name="HeaderFileMissing" xml:space="preserve">
     <value>The header file does not exist</value>
   </data>
@@ -921,11 +1155,29 @@ Returns: {0}</value>
   <data name="InvalidConnection" xml:space="preserve">
     <value>This is not a valid connection: {0}</value>
   </data>
+  <data name="InvalidExpressionPropertyNotFound" xml:space="preserve">
+    <value>Invalid Expression. Property not found: {0}</value>
+  </data>
+  <data name="InvalidExpressionUnsupportedFunction" xml:space="preserve">
+    <value>Invalid Expression. Function not supported: {0}</value>
+  </data>
   <data name="InvalidFeatureSourceNoClasses" xml:space="preserve">
     <value>Feature Source ({0}) has no usable feature classes. Choose a different feature source</value>
   </data>
   <data name="InvalidFieldCountError" xml:space="preserve">
     <value>Invalid field count in line {0}</value>
+  </data>
+  <data name="InvalidFilterUnsupportedConditionType" xml:space="preserve">
+    <value>Invalid Filter. Unsupported condition type: {0}</value>
+  </data>
+  <data name="InvalidFilterUnsupportedDistanceOperator" xml:space="preserve">
+    <value>Invalid Filter. Unsupported distance operator: {0}</value>
+  </data>
+  <data name="InvalidFilterUnsupportedSpatialOperator" xml:space="preserve">
+    <value>Invalid Filter. Unsupported spatial operator: {0}</value>
+  </data>
+  <data name="InvalidLayerNameFormat" xml:space="preserve">
+    <value>Invalid Layer Name Format. Name must have both {0} and {1} format markers</value>
   </data>
   <data name="InvalidRecordCountError" xml:space="preserve">
     <value>Invalid record count in line {0}</value>
@@ -957,17 +1209,53 @@ Returns: {0}</value>
   <data name="LastUpdated" xml:space="preserve">
     <value>Last Updated: </value>
   </data>
+  <data name="LayerAlreadyAtBottomOfGroup" xml:space="preserve">
+    <value>The selected layer is already at the bottom of its group</value>
+  </data>
+  <data name="LayerAlreadyAtTopOfGroup" xml:space="preserve">
+    <value>The selected layer is already at the top of its group</value>
+  </data>
+  <data name="LayerChangedFeatureClass" xml:space="preserve">
+    <value>You have changed the Feature Class for this layer. Styles made for the previous Feature Class may no longer be applicable to this Feature Class. You should review such style settings (eg. Settings involving FDO expressions) to see if anything needs to be changed.</value>
+  </data>
+  <data name="LayerEditorFeatureClassNotFound" xml:space="preserve">
+    <value>Feature Class Not Found</value>
+  </data>
+  <data name="LayerEditorFeatureSourceNotFound" xml:space="preserve">
+    <value>Feature Source Not Found</value>
+  </data>
+  <data name="LayerEditorGeometryNotFound" xml:space="preserve">
+    <value>Geometry Property Not Found</value>
+  </data>
+  <data name="LayerEditorHasErrors" xml:space="preserve">
+    <value>Found errors in the Layer Definition. Please check any errors flagged in the editor.</value>
+  </data>
   <data name="LayerGroupConvertedToBaseLayerGroup" xml:space="preserve">
     <value>Layer Group ({0}) successfully converted to Base Layer Group ({1})</value>
   </data>
   <data name="LessThanLabel" xml:space="preserve">
     <value>Less than {0}</value>
   </data>
+  <data name="LoadingFeatureClasses" xml:space="preserve">
+    <value>Loading Feature Classes</value>
+  </data>
   <data name="LoadProcedureVersionExecutionNotSupported" xml:space="preserve">
     <value>This connection does not support executing this type of Load Procedure</value>
   </data>
   <data name="MapUpdatedToUseGroup" xml:space="preserve">
     <value>Map widget has been updated to use the map group: {0}</value>
+  </data>
+  <data name="MdfEditorExpandInLegend" xml:space="preserve">
+    <value>Expand In Legend</value>
+  </data>
+  <data name="MdfEditorSelectable" xml:space="preserve">
+    <value>Selectable</value>
+  </data>
+  <data name="MdfEditorShowInLegend" xml:space="preserve">
+    <value>Show In Legend</value>
+  </data>
+  <data name="MdfEditorVisible" xml:space="preserve">
+    <value>Visible</value>
   </data>
   <data name="MissingColumnError" xml:space="preserve">
     <value>Missing column "{0}"</value>
@@ -980,6 +1268,9 @@ Returns: {0}</value>
   </data>
   <data name="MoreThanLabel" xml:space="preserve">
     <value>More than {0}</value>
+  </data>
+  <data name="MultiSigFunction" xml:space="preserve">
+    <value>{0} ({1} signatures)</value>
   </data>
   <data name="NewFlyout" xml:space="preserve">
     <value>New Flyout</value>
@@ -999,11 +1290,23 @@ Returns: {0}</value>
   <data name="NoColumnValuesError" xml:space="preserve">
     <value>No values found in selected column</value>
   </data>
+  <data name="NoFeatureClassAssigned" xml:space="preserve">
+    <value>No Feature Class assigned</value>
+  </data>
   <data name="NoFolderSelected" xml:space="preserve">
     <value>You have not selected a starting folder, do you want to back up the entire site?</value>
   </data>
+  <data name="None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="NonMapGuideSupportedCsWkt" xml:space="preserve">
+    <value>Non-supported WKT</value>
+  </data>
   <data name="NoRasterClasses" xml:space="preserve">
     <value>This feature source has no class definitions with raster properties</value>
+  </data>
+  <data name="NoRegisteredPreviewerForProvider" xml:space="preserve">
+    <value>No registered previewer for connection: {0}</value>
   </data>
   <data name="NoRestorePathWarning" xml:space="preserve">
     <value>You have selected to restore the package at another location, but not entered one.
@@ -1043,6 +1346,9 @@ Are you sure this is what you want?</value>
   <data name="OdbcConnectionStringComponentNotFound" xml:space="preserve">
     <value>The component "{0}" could not be found in the specified ODBC connection string</value>
   </data>
+  <data name="OdbcConnStrMissingMgPlaceholders" xml:space="preserve">
+    <value>The ODBC connection string requires a %MG_USERNAME% and %MG_PASSWORD% placeholder tokens present</value>
+  </data>
   <data name="OdbcNoMarkedFile" xml:space="preserve">
     <value>Could not infer ODBC driver. No file specified</value>
   </data>
@@ -1051,6 +1357,9 @@ Are you sure this is what you want?</value>
   </data>
   <data name="OperationCompleted" xml:space="preserve">
     <value>Operation Completed</value>
+  </data>
+  <data name="OptionsSyncedToDocument" xml:space="preserve">
+    <value>Options synced back to document</value>
   </data>
   <data name="OutputFileMissing" xml:space="preserve">
     <value>You must enter a full path to the output file</value>
@@ -1073,6 +1382,9 @@ Are you sure this is what you want?</value>
   <data name="ParameterOverrideExists" xml:space="preserve">
     <value>Parameter Override already specified</value>
   </data>
+  <data name="PreviewMap" xml:space="preserve">
+    <value>Preview Map</value>
+  </data>
   <data name="PreviewQueryElapsed" xml:space="preserve">
     <value>Preview Completed in {0}ms</value>
   </data>
@@ -1081,6 +1393,9 @@ Are you sure this is what you want?</value>
   </data>
   <data name="PreviewUrlNotAvailable" xml:space="preserve">
     <value>The Preview URL is not currently available</value>
+  </data>
+  <data name="PrgPreparingResourcePreview" xml:space="preserve">
+    <value>Preparing resource preview</value>
   </data>
   <data name="ProcessedItem" xml:space="preserve">
     <value>Processed: {0}</value>
@@ -1121,6 +1436,9 @@ Are you sure this is what you want?</value>
   <data name="PropEnumNoValues" xml:space="preserve">
     <value>Could not find possible values for enumerable property</value>
   </data>
+  <data name="PropertyInfo" xml:space="preserve">
+    <value>Name: {1}{0}Identifier: {2}{0}Description: {3}{0}Type: {4}{0}Default Value: {5}</value>
+  </data>
   <data name="PropertyTooltip" xml:space="preserve">
     <value>Property: {0}
 Type: {1}</value>
@@ -1142,6 +1460,9 @@ Type: {1}</value>
 You have also selected to delete the target before restoring.
 This will result in the entire repository being deleted and replaced with this package.
 Are you absolutely sure that is what you want?</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>Required</value>
   </data>
   <data name="RequiredServiceNotSupported" xml:space="preserve">
     <value>This connection does not support required service: </value>
@@ -1167,6 +1488,9 @@ Are you absolutely sure that is what you want?</value>
   <data name="SelectColumnPlaceholder" xml:space="preserve">
     <value>&lt;Select column&gt;</value>
   </data>
+  <data name="SelectedItemCount" xml:space="preserve">
+    <value>{0} selected items</value>
+  </data>
   <data name="SelectFeatureClass" xml:space="preserve">
     <value>Select Feature Class</value>
   </data>
@@ -1185,6 +1509,9 @@ Are you absolutely sure that is what you want?</value>
   <data name="SelectProperty" xml:space="preserve">
     <value>Select Property</value>
   </data>
+  <data name="SelectSourceResource" xml:space="preserve">
+    <value>Choose a resource for "Selected Resource" first</value>
+  </data>
   <data name="SelectSpatialContext" xml:space="preserve">
     <value>Select Spatial Context</value>
   </data>
@@ -1199,6 +1526,9 @@ Are you absolutely sure that is what you want?</value>
   </data>
   <data name="SequentialName" xml:space="preserve">
     <value>Sequential</value>
+  </data>
+  <data name="SiteVersionDoesntSupportWatermarks" xml:space="preserve">
+    <value>The site version of this current connection is not known to support watermarks</value>
   </data>
   <data name="SpatialContextsFound" xml:space="preserve">
     <value>{0} spatial contexts found</value>
@@ -1281,6 +1611,15 @@ Are you absolutely sure that is what you want?</value>
   <data name="TextUploading" xml:space="preserve">
     <value>Uploading</value>
   </data>
+  <data name="ThemeExpressionOnlySupportsIndividualValues" xml:space="preserve">
+    <value>Only individual values is supported when generating a theme expression</value>
+  </data>
+  <data name="ThemePrimaryKeyPropertyNotSelected" xml:space="preserve">
+    <value>Property not selected. Please select the Property which connects to the selected Key Property in the external class</value>
+  </data>
+  <data name="ThemingNotAVectorLayer" xml:space="preserve">
+    <value>The layer being themed is not a vector layer</value>
+  </data>
   <data name="TitleBufferUnits" xml:space="preserve">
     <value>Buffer Units</value>
   </data>
@@ -1343,11 +1682,17 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="UpdatingConfiguration" xml:space="preserve">
     <value>Updating Configuration Document</value>
   </data>
+  <data name="UpdatingStylePreviews" xml:space="preserve">
+    <value>Updating Style Previews</value>
+  </data>
   <data name="ValidateOutputfileError" xml:space="preserve">
     <value>An error occured while validating the output file path: {0}</value>
   </data>
   <data name="WarningMapExtentCalculation" xml:space="preserve">
     <value>Could not transform extents of one or more layers in this Map Definition. These extents have not been factored into the computed result.</value>
+  </data>
+  <data name="WarningUnconfiguredWmsFeatureSource" xml:space="preserve">
+    <value>Your WMS Feature Source is not configured. An un-configured WMS Feature Source may not properly read layer information from your WMS Server. Click "Advanced" after testing your connection to build a default document.</value>
   </data>
   <data name="WidgetNameExists" xml:space="preserve">
     <value>A widget named {0} already exists</value>
@@ -1364,346 +1709,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="XmlEditorCursorTemplate" xml:space="preserve">
     <value>Line {0}, Column {1}</value>
   </data>
-  <data name="FeatureNotImplemented" xml:space="preserve">
-    <value>This feature is not implemented yet</value>
-  </data>
-  <data name="ErrorExplodingCompositeStyleNotSupported" xml:space="preserve">
-    <value>Exploding Composite Styles is not currently supported</value>
-  </data>
-  <data name="InvalidLayerNameFormat" xml:space="preserve">
-    <value>Invalid Layer Name Format. Name must have both {0} and {1} format markers</value>
-  </data>
-  <data name="ConfirmWmsLogicalClassSwap" xml:space="preserve">
-    <value>In some cases, the actual WMS layer name would be generated in the FDO class description. Swap FDO logical class names with their descriptions?</value>
-  </data>
-  <data name="FsPreview_GenericPropertyTooltip" xml:space="preserve">
-    <value>Property: {0}{2}Type: {1}</value>
-  </data>
-  <data name="ExprEditorFunctionDesc" xml:space="preserve">
-    <value>{0}{4}Description:{1}{4}Arguments:{2}{4}Returns: {3}</value>
-  </data>
-  <data name="Func_ARGB_AValueDescription" xml:space="preserve">
-    <value>Alpha value</value>
-  </data>
-  <data name="Func_ARGB_BValueDescription" xml:space="preserve">
-    <value>Blue value</value>
-  </data>
-  <data name="Func_ARGB_Description" xml:space="preserve">
-    <value>Color generation function</value>
-  </data>
-  <data name="Func_ARGB_GValueDescription" xml:space="preserve">
-    <value>Green value</value>
-  </data>
-  <data name="Func_ARGB_RValueDescription" xml:space="preserve">
-    <value>Red value</value>
-  </data>
-  <data name="Func_DECAP_Description" xml:space="preserve">
-    <value>String formatting function</value>
-  </data>
-  <data name="Func_DECAP_StringValueDescription" xml:space="preserve">
-    <value>String to format</value>
-  </data>
-  <data name="Func_FEATURECLASS_Description" xml:space="preserve">
-    <value>Returns the active feature class name</value>
-  </data>
-  <data name="Func_FEATUREID_Description" xml:space="preserve">
-    <value>Returns the active feature Id</value>
-  </data>
-  <data name="Func_IF_ConditionDescription" xml:space="preserve">
-    <value>Boolean expression (filter) encapsulated in a string</value>
-  </data>
-  <data name="Func_IF_Description" xml:space="preserve">
-    <value>If evaluator for style theming</value>
-  </data>
-  <data name="Func_IF_FalseValueDescription" xml:space="preserve">
-    <value>Returned if condition is false</value>
-  </data>
-  <data name="Func_IF_TrueValueDescription" xml:space="preserve">
-    <value>Returned if condition is true</value>
-  </data>
-  <data name="Func_LAYERID_Description" xml:space="preserve">
-    <value>Returns the active layer Id</value>
-  </data>
-  <data name="Func_LOOKUP_DefaultValueDescription" xml:space="preserve">
-    <value>Default value returned if expression does not evaluate to any of the keys</value>
-  </data>
-  <data name="Func_LOOKUP_Description" xml:space="preserve">
-    <value>Lookup table for style theming</value>
-  </data>
-  <data name="Func_LOOKUP_ExpressionDescription" xml:space="preserve">
-    <value>Key expression</value>
-  </data>
-  <data name="Func_LOOKUP_IndexDescription" xml:space="preserve">
-    <value>Lookup index that can be matched by the key expression</value>
-  </data>
-  <data name="Func_LOOKUP_ValueDescription" xml:space="preserve">
-    <value>Value that is returned when the key expression matches the associated index</value>
-  </data>
-  <data name="Func_MAPNAME_Description" xml:space="preserve">
-    <value>Returns the active map name</value>
-  </data>
-  <data name="Func_RANGE_DefaultValueDescription" xml:space="preserve">
-    <value>Default value returned if expression does not fall into any of the ranges</value>
-  </data>
-  <data name="Func_RANGE_Description" xml:space="preserve">
-    <value>Range table for style theming</value>
-  </data>
-  <data name="Func_RANGE_ExpressionDescription" xml:space="preserve">
-    <value>Key expression</value>
-  </data>
-  <data name="Func_RANGE_MaxDescription" xml:space="preserve">
-    <value>Exclusive maximum of range that can be matched by the key expression</value>
-  </data>
-  <data name="Func_RANGE_MinDescription" xml:space="preserve">
-    <value>Inclusive minimum of range that can be matched by the key expression</value>
-  </data>
-  <data name="Func_RANGE_ValueDescription" xml:space="preserve">
-    <value>Value that is returned when the key expression matches the associated range</value>
-  </data>
-  <data name="Func_SESSION_Description" xml:space="preserve">
-    <value>Returns the active session</value>
-  </data>
-  <data name="Func_URLENCODE_Description" xml:space="preserve">
-    <value>String encoding function</value>
-  </data>
-  <data name="Func_URLENCODE_StringValueDescription" xml:space="preserve">
-    <value>String to URL encode</value>
-  </data>
-  <data name="LoadingFeatureClasses" xml:space="preserve">
-    <value>Loading Feature Classes</value>
-  </data>
-  <data name="FailedToCalculateFeatureSourceExtents" xml:space="preserve">
-    <value>Could not calculate the extents of the Feature Source. Preview is not possible</value>
-  </data>
-  <data name="PreviewMap" xml:space="preserve">
-    <value>Preview Map</value>
-  </data>
-  <data name="PrgPreparingResourcePreview" xml:space="preserve">
-    <value>Preparing resource preview</value>
-  </data>
-  <data name="SiteVersionDoesntSupportWatermarks" xml:space="preserve">
-    <value>The site version of this current connection is not known to support watermarks</value>
-  </data>
-  <data name="NoRegisteredPreviewerForProvider" xml:space="preserve">
-    <value>No registered previewer for connection: {0}</value>
-  </data>
-  <data name="FeatureClassNotFound" xml:space="preserve">
-    <value>Feature Class not found: {0}</value>
-  </data>
-  <data name="NoFeatureClassAssigned" xml:space="preserve">
-    <value>No Feature Class assigned</value>
-  </data>
-  <data name="LayerAlreadyAtBottomOfGroup" xml:space="preserve">
-    <value>The selected layer is already at the bottom of its group</value>
-  </data>
-  <data name="LayerAlreadyAtTopOfGroup" xml:space="preserve">
-    <value>The selected layer is already at the top of its group</value>
-  </data>
-  <data name="OdbcConnStrMissingMgPlaceholders" xml:space="preserve">
-    <value>The ODBC connection string requires a %MG_USERNAME% and %MG_PASSWORD% placeholder tokens present</value>
-  </data>
-  <data name="GroupAlreadyExists" xml:space="preserve">
-    <value>A group named "{0}" already exists. Choose a different name</value>
-  </data>
-  <data name="ExtendedFeatureClassAlreadyExists" xml:space="preserve">
-    <value>An extended feature class named ({0}) already exist. Please choose a different name</value>
-  </data>
-  <data name="ConfirmNonMapGuideSupportedCsWkt" xml:space="preserve">
-    <value>The WKT you entered is not recognised by MapGuide's Coordinate System Library. Use it anyway?</value>
-  </data>
-  <data name="NonMapGuideSupportedCsWkt" xml:space="preserve">
-    <value>Non-supported WKT</value>
-  </data>
-  <data name="MdfEditorExpandInLegend" xml:space="preserve">
-    <value>Expand In Legend</value>
-  </data>
-  <data name="MdfEditorSelectable" xml:space="preserve">
-    <value>Selectable</value>
-  </data>
-  <data name="MdfEditorShowInLegend" xml:space="preserve">
-    <value>Show In Legend</value>
-  </data>
-  <data name="MdfEditorVisible" xml:space="preserve">
-    <value>Visible</value>
-  </data>
-  <data name="SelectedItemCount" xml:space="preserve">
-    <value>{0} selected items</value>
-  </data>
-  <data name="ComputingThemeParameters" xml:space="preserve">
-    <value>Computing Theme Parameters ...</value>
-  </data>
-  <data name="ThemePrimaryKeyPropertyNotSelected" xml:space="preserve">
-    <value>Property not selected. Please select the Property which connects to the selected Key Property in the external class</value>
-  </data>
-  <data name="UpdatingStylePreviews" xml:space="preserve">
-    <value>Updating Style Previews</value>
-  </data>
-  <data name="CannotCreateThemeFromCompoundSymbolInstance" xml:space="preserve">
-    <value>Creating themes from a Composite Rule with a Compound Symbol is not supported</value>
-  </data>
-  <data name="CompositeThemeRequiresFirstRuleAsTemplate" xml:space="preserve">
-    <value>Generating a theme for a composite style, requires a composite rule</value>
-  </data>
-  <data name="LayerChangedFeatureClass" xml:space="preserve">
-    <value>You have changed the Feature Class for this layer. Styles made for the previous Feature Class may no longer be applicable to this Feature Class. You should review such style settings (eg. Settings involving FDO expressions) to see if anything needs to be changed.</value>
-  </data>
-  <data name="ThemeExpressionOnlySupportsIndividualValues" xml:space="preserve">
-    <value>Only individual values is supported when generating a theme expression</value>
-  </data>
-  <data name="ThemingNotAVectorLayer" xml:space="preserve">
-    <value>The layer being themed is not a vector layer</value>
-  </data>
-  <data name="WarningUnconfiguredWmsFeatureSource" xml:space="preserve">
-    <value>Your WMS Feature Source is not configured. An un-configured WMS Feature Source may not properly read layer information from your WMS Server. Click "Advanced" after testing your connection to build a default document.</value>
-  </data>
-  <data name="FetchingClassDefinition" xml:space="preserve">
-    <value>Fetching Class Definition</value>
-  </data>
-  <data name="FetchingClassNames" xml:space="preserve">
-    <value>Fetching Class Names</value>
-  </data>
-  <data name="FetchingSchemaNames" xml:space="preserve">
-    <value>Fetching Schema Names</value>
-  </data>
-  <data name="Required" xml:space="preserve">
-    <value>Required</value>
-  </data>
-  <data name="SelectSourceResource" xml:space="preserve">
-    <value>Choose a resource for "Selected Resource" first</value>
-  </data>
-  <data name="LayerEditorFeatureClassNotFound" xml:space="preserve">
-    <value>Feature Class Not Found</value>
-  </data>
-  <data name="LayerEditorFeatureSourceNotFound" xml:space="preserve">
-    <value>Feature Source Not Found</value>
-  </data>
-  <data name="LayerEditorGeometryNotFound" xml:space="preserve">
-    <value>Geometry Property Not Found</value>
-  </data>
-  <data name="LayerEditorHasErrors" xml:space="preserve">
-    <value>Found errors in the Layer Definition. Please check any errors flagged in the editor.</value>
-  </data>
-  <data name="CannotCreateThemeForCompositeStyleClassicEditor" xml:space="preserve">
-    <value>Theming composite styles with this editor is not supported</value>
-  </data>
-  <data name="EditSymbolDefinition" xml:space="preserve">
-    <value>Edit Symbol Definition</value>
-  </data>
-  <data name="PropertyInfo" xml:space="preserve">
-    <value>Name: {1}{0}Identifier: {2}{0}Description: {3}{0}Type: {4}{0}Default Value: {5}</value>
-  </data>
-  <data name="CmsGeneric" xml:space="preserve">
-    <value>Generic Layer</value>
-  </data>
-  <data name="OptionsSyncedToDocument" xml:space="preserve">
-    <value>Options synced back to document</value>
-  </data>
-  <data name="MultiSigFunction" xml:space="preserve">
-    <value>{0} ({1} signatures)</value>
-  </data>
-  <data name="None" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="DebugWatermarkMessage" xml:space="preserve">
-    <value>MapGuide Debugging Information\n==============================\n\nMap Extents Min: ({0}, {1})\nMap Extents Max: ({2}, {3})\nMap Coordinate System: \n{4}</value>
-  </data>
-  <data name="DebugWatermarkMessageLayer" xml:space="preserve">
-    <value>MapGuide Debugging Information\n==============================\n\nMap Extents Min: ({0}, {1})\nMap Extents Max: ({2}, {3})\nMap Coordinate System: \n{4}\nLayer Spatial Context: {5}</value>
-  </data>
-  <data name="CmsStamenTerrain" xml:space="preserve">
-    <value>Stamen (Terrain)</value>
-  </data>
-  <data name="CmsStamenToner" xml:space="preserve">
-    <value>Stamen (Toner)</value>
-  </data>
-  <data name="CmsStamenWaterColor" xml:space="preserve">
-    <value>Stamen (WaterColor)</value>
-  </data>
-  <data name="ExprIsValid" xml:space="preserve">
-    <value>Expression is valid</value>
-  </data>
-  <data name="FilterIsValid" xml:space="preserve">
-    <value>Filter is valid</value>
-  </data>
-  <data name="InvalidExpressionPropertyNotFound" xml:space="preserve">
-    <value>Invalid Expression. Property not found: {0}</value>
-  </data>
-  <data name="InvalidExpressionUnsupportedFunction" xml:space="preserve">
-    <value>Invalid Expression. Function not supported: {0}</value>
-  </data>
-  <data name="InvalidFilterUnsupportedConditionType" xml:space="preserve">
-    <value>Invalid Filter. Unsupported condition type: {0}</value>
-  </data>
-  <data name="InvalidFilterUnsupportedDistanceOperator" xml:space="preserve">
-    <value>Invalid Filter. Unsupported distance operator: {0}</value>
-  </data>
-  <data name="InvalidFilterUnsupportedSpatialOperator" xml:space="preserve">
-    <value>Invalid Filter. Unsupported spatial operator: {0}</value>
-  </data>
-  <data name="ExprDispBoolean" xml:space="preserve">
-    <value>Boolean: {0}</value>
-  </data>
-  <data name="ExprDispDateTime" xml:space="preserve">
-    <value>DateTime: {0}</value>
-  </data>
-  <data name="ExprDispDouble" xml:space="preserve">
-    <value>Double: {0}</value>
-  </data>
-  <data name="ExprDispFunction" xml:space="preserve">
-    <value>Function: {0}</value>
-  </data>
-  <data name="ExprDispGeometry" xml:space="preserve">
-    <value>Geometry: {0}</value>
-  </data>
-  <data name="ExprDispIdentifier" xml:space="preserve">
-    <value>Identifier: {0}</value>
-  </data>
-  <data name="ExprDispInt32" xml:space="preserve">
-    <value>Int32: {0}</value>
-  </data>
-  <data name="ExprDispParameter" xml:space="preserve">
-    <value>Parameter: {0}</value>
-  </data>
-  <data name="ExprDispString" xml:space="preserve">
-    <value>String: '{0}'</value>
-  </data>
-  <data name="ExprDispUnaryExpr" xml:space="preserve">
-    <value>Unary Expression (Negated)</value>
-  </data>
-  <data name="FdoDispDistanceCondition" xml:space="preserve">
-    <value>Distance ({0})</value>
-  </data>
-  <data name="FdoDispDistanceTitle" xml:space="preserve">
-    <value>Distance</value>
-  </data>
-  <data name="FdoDispExprTitle" xml:space="preserve">
-    <value>Expression</value>
-  </data>
-  <data name="FdoDispIdentifierTitle" xml:space="preserve">
-    <value>Identifier</value>
-  </data>
-  <data name="FdoDispInCondition" xml:space="preserve">
-    <value>In Condition ({0})</value>
-  </data>
-  <data name="FdoDispNullCondition" xml:space="preserve">
-    <value>Null Condition ({0})</value>
-  </data>
-  <data name="FdoDispSpatialCondition" xml:space="preserve">
-    <value>Spatial Condition ({0})</value>
-  </data>
-  <data name="FdoDispUnaryOperator" xml:space="preserve">
-    <value>Unary Operator (NOT)</value>
-  </data>
-  <data name="FltrDispBinaryLogicalOperator" xml:space="preserve">
-    <value>Binary Logical Operator ({0})</value>
-  </data>
-  <data name="FltrDispComparisonCondition" xml:space="preserve">
-    <value>Comparison ({0})</value>
-  </data>
-  <data name="FltrDispLeftNode" xml:space="preserve">
-    <value>Left</value>
-  </data>
-  <data name="FltrDispRightNode" xml:space="preserve">
-    <value>Right</value>
+  <data name="LinkedTileSetNote" xml:space="preserve">
+    <value>The Map Definition's coordinate system and extents have been replaced with the ones from the linked tile set</value>
   </data>
 </root>

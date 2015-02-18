@@ -55,8 +55,57 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
 
     public interface ITileSetAbstract
     {
+        void SetFiniteDisplayScales(IEnumerable<double> scales);
+
+        /// <summary>
+        /// Adds the finite display scale. The implementation may internally sort after adding the added item
+        /// </summary>
+        /// <param name="value">The value.</param>
+        void AddFiniteDisplayScale(double value);
+
+        /// <summary>
+        /// Removes the finite display scale.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        void RemoveFiniteDisplayScale(double value);
+
+        /// <summary>
+        /// Gets the scale count.
+        /// </summary>
+        /// <value>The scale count.</value>
+        int ScaleCount { get; }
+
+        /// <summary>
+        /// Removes the scale at the specified index
+        /// </summary>
+        /// <param name="index">The index.</param>
+        void RemoveScaleAt(int index);
+
+        /// <summary>
+        /// Gets the scale at the specified index
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
+        double GetScaleAt(int index);
+
+        /// <summary>
+        /// Removes all scales.
+        /// </summary>
+        void RemoveAllScales();
+
         IEnumerable<double> FiniteDisplayScale { get; }
 
+        /// <summary>
+        /// Gets whether this tile set supports under certain conditions. If false, the caller
+        /// should check if <see cref="SupportsCustomFiniteDisplayScales"/> is true in order to
+        /// safely invoke any scale based operations
+        /// </summary>
+        bool SupportsCustomFiniteDisplayScalesUnconditionally { get; }
+
+        /// <summary>
+        /// Gets whether this tile set supports custom finite display scales. If false, none
+        /// of the scale operations should be used
+        /// </summary>
         bool SupportsCustomFiniteDisplayScales { get; }
 
         IEnumerable<IBaseMapGroup> BaseMapLayerGroups { get; }
@@ -92,6 +141,214 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
 
     public static class ExtensionMethods
     {
+        /// <summary>
+        /// Gets the number of base layers
+        /// </summary>
+        /// <param name="map"></param>
+        /// <returns></returns>
+        public static int GetBaseLayerCount(this ITileSetAbstract map)
+        {
+            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            return map.BaseMapLayerGroups.SelectMany(g => g.BaseMapLayer).Count();
+        }
+
+        /// <summary>
+        /// Gets the minimum finite display scale
+        /// </summary>
+        /// <param name="map"></param>
+        /// <returns></returns>
+        public static double GetMinScale(this ITileSetAbstract map)
+        {
+            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            if (map.ScaleCount == 0)
+                return 0.0;
+
+            return map.FiniteDisplayScale.First();
+        }
+
+        /// <summary>
+        /// Gets the maximum finite display scale
+        /// </summary>
+        /// <param name="map"></param>
+        /// <returns></returns>
+        public static double GetMaxScale(this ITileSetAbstract map)
+        {
+            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            if (map.ScaleCount == 0)
+                return 0.0;
+
+            return map.FiniteDisplayScale.Last();
+        }
+
+        /// <summary>
+        /// Gets the parent group for the specified layer
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="layer"></param>
+        /// <returns></returns>
+        public static IBaseMapGroup GetGroupForLayer(this ITileSetAbstract map, IBaseMapLayer layer)
+        {
+            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            foreach (var group in map.BaseMapLayerGroups)
+            {
+                foreach (var tl in group.BaseMapLayer)
+                {
+                    if (tl == layer)
+                        return group;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Gets whether this base map group has tiled layers
+        /// </summary>
+        /// <param name="grp"></param>
+        /// <returns></returns>
+        public static bool HasLayers(this IBaseMapGroup grp)
+        {
+            Check.ArgumentNotNull(grp, "grp"); //NOXLATE
+            return new List<IBaseMapLayer>(grp.BaseMapLayer).Count > 0;
+        }
+
+        /// <summary>
+        /// Gets whether this base map has tiled layers
+        /// </summary>
+        /// <param name="map"></param>
+        /// <returns></returns>
+        public static bool HasLayers(this ITileSetAbstract map)
+        {
+            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            if (!map.HasGroups())
+                return false;
+
+            foreach (var group in map.BaseMapLayerGroups)
+            {
+                if (group.HasLayers())
+                    return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Gets whether this base map has groups
+        /// </summary>
+        /// <param name="map"></param>
+        /// <returns></returns>
+        public static bool HasGroups(this ITileSetAbstract map)
+        {
+            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            return new List<IBaseMapGroup>(map.BaseMapLayerGroups).Count > 0;
+        }
+
+        /// <summary>
+        /// Gets the first base map group
+        /// </summary>
+        /// <param name="map"></param>
+        /// <returns></returns>
+        public static IBaseMapGroup GetFirstGroup(this ITileSetAbstract map)
+        {
+            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            var list = new List<IBaseMapGroup>(map.BaseMapLayerGroups);
+            if (list.Count > 0)
+                return list[0];
+            return null;
+        }
+
+        /// <summary>
+        /// Gets the base layer of the specified name
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="layerName"></param>
+        /// <returns></returns>
+        public static IBaseMapLayer GetBaseLayerByName(this ITileSetAbstract map, string layerName)
+        {
+            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            Check.ArgumentNotEmpty(layerName, "layerName"); //NOXLATE
+
+            foreach (var group in map.BaseMapLayerGroups)
+            {
+                foreach (var layer in group.BaseMapLayer)
+                {
+                    if (layerName.Equals(layer.Name))
+                        return layer;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Gets whether a base layer of the specified name exists.
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="layerName"></param>
+        /// <returns></returns>
+        public static bool LayerExists(this ITileSetAbstract map, string layerName)
+        {
+            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            Check.ArgumentNotEmpty(layerName, "layerName"); //NOXLATE
+
+            return map.GetBaseLayerByName(layerName) != null;
+        }
+
+        /// <summary>
+        /// Gets the base map group of the specified name
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="groupName"></param>
+        /// <returns></returns>
+        public static IBaseMapGroup GetGroup(this ITileSetAbstract map, string groupName)
+        {
+            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
+            foreach (var group in map.BaseMapLayerGroups)
+            {
+                if (groupName.Equals(group.Name))
+                    return group;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Gets whether the specified base map group exists
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="groupName"></param>
+        /// <returns></returns>
+        public static bool GroupExists(this ITileSetAbstract map, string groupName)
+        {
+            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
+            foreach (var group in map.BaseMapLayerGroups)
+            {
+                if (groupName.Equals(group.Name))
+                    return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Gets the tiled layers for the specified base map group
+        /// </summary>
+        /// <param name="map"></param>
+        /// <param name="groupName"></param>
+        /// <returns></returns>
+        public static IEnumerable<IBaseMapLayer> GetLayersForGroup(this ITileSetAbstract map, string groupName)
+        {
+            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
+
+            foreach (var group in map.BaseMapLayerGroups)
+            {
+                if (groupName.Equals(group.Name))
+                {
+                    return group.BaseMapLayer;
+                }
+            }
+
+            return new IBaseMapLayer[0];
+        }
+
         /// <summary>
         /// Removes the given base layer group from the Map Definition
         /// </summary>
@@ -163,7 +420,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
             Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
             Check.ArgumentNotEmpty(coordinateSystem, "coordinateSystem"); //NOXLATE
 
-            if (tileSet.TileStoreParameters.TileProvider == "Default") //NOXLATE
+            if (tileSet.TileStoreParameters.TileProvider != "Default") //NOXLATE
                 throw new InvalidOperationException(string.Format(Strings.ParameterNotApplicableForTileProvider, "CoordinateSystem", tileSet.TileStoreParameters.TileProvider));
 
             tileSet.TileStoreParameters.SetParameter("CoordinateSystem", coordinateSystem); //NOXLATE
@@ -178,8 +435,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         {
             Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
             var p = tileSet.GetParameter("FiniteScaleList"); //NOXLATE
-            if (p != null)
-                return p.Value.Split(',').Select(x => x.Trim()).Select(x => Convert.ToDouble(x)).ToArray();
+            if (p != null && !string.IsNullOrEmpty(p.Value))
+                return p.Value.Split(',').Select(x => x.Trim()).Select(x => Convert.ToDouble(x)).OrderBy(s => s).ToArray();
             return new double[0];
         }
 
@@ -193,7 +450,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
             Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
             Check.ArgumentNotNull(scales, "scales"); //NOXLATE
 
-            if (tileSet.TileStoreParameters.TileProvider == "Default") //NOXLATE
+            if (tileSet.TileStoreParameters.TileProvider != "Default") //NOXLATE
                 throw new InvalidOperationException(string.Format(Strings.ParameterNotApplicableForTileProvider, "FiniteScaleList", tileSet.TileStoreParameters.TileProvider)); //NOXLATE
 
             string str = string.Join(",", scales.OrderByDescending(x => x).Select(x => x.ToString(CultureInfo.InvariantCulture)).ToArray());

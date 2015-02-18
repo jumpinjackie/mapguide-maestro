@@ -32,6 +32,8 @@ using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.ObjectModels.Common;
 using Maestro.Editors.TileSetDefinition.Providers;
 using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
+using Maestro.Editors.MapDefinition;
+using System.Globalization;
 
 namespace Maestro.Editors.TileSetDefinition
 {
@@ -45,15 +47,23 @@ namespace Maestro.Editors.TileSetDefinition
 
         private bool _init = false;
         private ITileSetDefinition _tsd;
+        private IEditorService _service;
 
         public override void Bind(IEditorService service)
         {
-            service.RegisterCustomNotifier(this);
+            _service = service;
+            _service.RegisterCustomNotifier(this);
             try
             {
                 _init = true;
-                _tsd = (ITileSetDefinition)service.GetEditedResource();
-                var cmd = (IGetTileProviders)service.CurrentConnection.CreateCommand((int)CommandType.GetTileProviders);
+                _tsd = (ITileSetDefinition)_service.GetEditedResource();
+
+                txtMinX.Text = _tsd.Extents.MinX.ToString(CultureInfo.InvariantCulture);
+                txtMinY.Text = _tsd.Extents.MinY.ToString(CultureInfo.InvariantCulture);
+                txtMaxX.Text = _tsd.Extents.MaxX.ToString(CultureInfo.InvariantCulture);
+                txtMaxY.Text = _tsd.Extents.MaxY.ToString(CultureInfo.InvariantCulture);
+
+                var cmd = (IGetTileProviders)_service.CurrentConnection.CreateCommand((int)CommandType.GetTileProviders);
                 var providers = cmd.Execute();
 
                 var provider = providers.TileProvider.FirstOrDefault(p => p.Name == _tsd.TileStoreParameters.TileProvider);
@@ -80,6 +90,88 @@ namespace Maestro.Editors.TileSetDefinition
         private Control MakeProviderCtrl(TileProvider provider)
         {
             return new GenericProviderCtrl(provider, _tsd, OnResourceChanged);
+        }
+
+        private IEnumerable<string> CollectLayerIds()
+        {
+            HashSet<string> ids = new HashSet<string>();
+
+            foreach (var grp in _tsd.BaseMapLayerGroups)
+            {
+                foreach (var lyr in grp.BaseMapLayer)
+                {
+                    ids.Add(lyr.ResourceId);
+                }
+            }
+
+            return ids;
+        }
+
+        private void btnSetZoom_Click(object sender, EventArgs e)
+        {
+            string coordinateSystem = null;
+            if (_tsd.TileStoreParameters.TileProvider == "Default") //NOXLATE
+                coordinateSystem = _tsd.GetDefaultCoordinateSystem();
+            else
+                coordinateSystem = _service.CurrentConnection.CoordinateSystemCatalog.FindCoordSys("LL84").WKT;
+
+            var diag = new ExtentCalculationDialog(_service.CurrentConnection, coordinateSystem, CollectLayerIds);
+            if (diag.ShowDialog() == DialogResult.OK)
+            {
+                var env = diag.Extents;
+                if (env != null)
+                {
+                    txtMinX.Text = env.MinX.ToString(CultureInfo.InvariantCulture);
+                    txtMinY.Text = env.MinY.ToString(CultureInfo.InvariantCulture);
+                    txtMaxX.Text = env.MaxX.ToString(CultureInfo.InvariantCulture);
+                    txtMaxY.Text = env.MaxY.ToString(CultureInfo.InvariantCulture);
+                    OnResourceChanged();
+                }
+                else
+                {
+                    MessageBox.Show(Strings.ErrorMapExtentCalculationFailed, Strings.TitleError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void txtMinX_TextChanged(object sender, EventArgs e)
+        {
+            if (_init)
+                return;
+
+            double d;
+            if (double.TryParse(txtMinX.Text, out d))
+                _tsd.Extents.MinX = d;
+        }
+
+        private void txtMinY_TextChanged(object sender, EventArgs e)
+        {
+            if (_init)
+                return;
+
+            double d;
+            if (double.TryParse(txtMinY.Text, out d))
+                _tsd.Extents.MinY = d;
+        }
+
+        private void txtMaxX_TextChanged(object sender, EventArgs e)
+        {
+            if (_init)
+                return;
+
+            double d;
+            if (double.TryParse(txtMaxX.Text, out d))
+                _tsd.Extents.MaxX = d;
+        }
+
+        private void txtMaxY_TextChanged(object sender, EventArgs e)
+        {
+            if (_init)
+                return;
+
+            double d;
+            if (double.TryParse(txtMaxY.Text, out d))
+                _tsd.Extents.MaxY = d;
         }
     }
 }

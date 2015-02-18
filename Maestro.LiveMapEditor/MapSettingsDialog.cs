@@ -27,6 +27,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -116,9 +117,29 @@ namespace Maestro.LiveMapEditor
             }
         }
 
+        private IEnumerable<string> CollectLayerIds()
+        {
+            HashSet<string> ids = new HashSet<string>();
+            foreach (var layer in _mdf.MapLayer)
+            {
+                ids.Add(layer.ResourceId);
+            }
+            if (_mdf.BaseMap != null)
+            {
+                foreach (var grp in _mdf.BaseMap.BaseMapLayerGroups)
+                {
+                    foreach (var layer in grp.BaseMapLayer)
+                    {
+                        ids.Add(layer.ResourceId);
+                    }
+                }
+            }
+            return ids;
+        }
+
         private void btnSetZoom_Click(object sender, EventArgs e)
         {
-            var diag = new ExtentCalculationDialog(_mdf, _conn);
+            var diag = new ExtentCalculationDialog(_conn, _mdf.CoordinateSystem, CollectLayerIds);
             if (diag.ShowDialog() == DialogResult.OK)
             {
                 var env = diag.Extents;

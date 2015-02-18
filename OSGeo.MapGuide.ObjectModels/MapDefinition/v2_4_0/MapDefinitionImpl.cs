@@ -468,6 +468,15 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
             }
         }
 
+        void IMapDefinition.AttachBaseMap(IBaseMapDefinition baseMap)
+        {
+            var bmd = baseMap as MapDefinitionTypeBaseMapDefinition;
+            if (bmd != null)
+            {
+                this.BaseMapDefinition = bmd;
+            }
+        }
+
         void IMapDefinition.InitBaseMap()
         {
             if (this.BaseMapDefinition == null)
@@ -752,12 +761,20 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
             set;
         }
 
-        void IBaseMapDefinition.RemoveScaleAt(int index)
+        bool ITileSetAbstract.SupportsCustomFiniteDisplayScalesUnconditionally
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        void ITileSetAbstract.RemoveScaleAt(int index)
         {
             this.FiniteDisplayScale.RemoveAt(index);
         }
 
-        double IBaseMapDefinition.GetScaleAt(int index)
+        double ITileSetAbstract.GetScaleAt(int index)
         {
             return this.FiniteDisplayScale[index];
         }
@@ -774,7 +791,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
         }
 
         [XmlIgnore]
-        int IBaseMapDefinition.ScaleCount
+        int ITileSetAbstract.ScaleCount
         {
             get { return this.FiniteDisplayScale.Count; }
         }
@@ -789,7 +806,17 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
             this.FiniteDisplayScale.Remove(value);
         }
 
-        void IBaseMapDefinition.RemoveAllScales()
+        void ITileSetAbstract.SetFiniteDisplayScales(IEnumerable<double> scales)
+        {
+            this.FiniteDisplayScale.Clear();
+            foreach (double scale in scales.OrderBy(s => s))
+            {
+                this.FiniteDisplayScale.Add(scale);
+            }
+            OnPropertyChanged("FiniteDisplayScale"); //NOXLATE
+        }
+
+        void ITileSetAbstract.RemoveAllScales()
         {
             this.FiniteDisplayScale.Clear();
             OnPropertyChanged("FiniteDisplayScale"); //NOXLATE

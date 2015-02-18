@@ -20,18 +20,19 @@
 
 #endregion Disclaimer / License
 
+using Moq;
+using NUnit.Framework;
+using OSGeo.MapGuide.MaestroAPI.Mapping;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using OSGeo.MapGuide.MaestroAPI.Mapping;
-using NUnit.Framework;
-using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.ObjectModels.MapDefinition;
-using System.IO;
-using Moq;
-using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
 {

@@ -281,17 +281,12 @@ namespace Maestro.Editors.MapDefinition
             {
                 if (_tileSet != null)
                 {
-                    if (_tileSet.SupportsCustomFiniteDisplayScales)
+                    if (_tileSet.SupportsCustomFiniteDisplayScalesUnconditionally)
                         yield return new ScaleItem(Strings.FiniteDisplayScales, new List<double>(_tileSet.FiniteDisplayScale));
                     foreach (var grp in _tileSet.BaseMapLayerGroups)
                     {
                         yield return new BaseLayerGroupItem(grp);
                     }
-                }
-                else
-                {
-                    if (_tileSet.SupportsCustomFiniteDisplayScales)
-                        yield return new ScaleItem(Strings.FiniteDisplayScales, new List<double>());
                 }
             }
             else
@@ -314,6 +309,12 @@ namespace Maestro.Editors.MapDefinition
         {
             var grp = treePath.LastNode as BaseLayerGroupItem;
             return grp == null;
+        }
+
+        internal void Invalidate(ITileSetAbstract tileSet)
+        {
+            _tileSet = tileSet;
+            base.Invalidate();
         }
     }
 }

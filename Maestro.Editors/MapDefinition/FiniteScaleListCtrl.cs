@@ -22,7 +22,9 @@
 
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
+using System.Linq;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -46,18 +48,40 @@ namespace Maestro.Editors.MapDefinition
 
         private BindingList<double> _scales;
 
-        private IMapDefinition _map;
+        private ITileSetAbstract _tileSet;
         private IEditorService _edSvc;
 
-        public FiniteScaleListCtrl(IMapDefinition map, IEditorService editorSvc)
+        public FiniteScaleListCtrl(ITileSetAbstract map, IEditorService editorSvc)
             : this()
         {
-            _map = map;
+            _tileSet = map;
             _edSvc = editorSvc;
             //Init scale list
-            if (_map.BaseMap != null)
+            if (_tileSet != null)
             {
-                foreach (var scale in _map.BaseMap.FiniteDisplayScale)
+                foreach (var scale in _tileSet.FiniteDisplayScale)
+                {
+                    _scales.Add(scale);
+                }
+            }
+            //Now wire change events
+            _scales.ListChanged += new ListChangedEventHandler(OnScaleListChanged);
+        }
+
+        private IMapDefinition _parent;
+
+        public FiniteScaleListCtrl(IMapDefinition parent, IEditorService editorSvc)
+            : this()
+        {
+            _parent = parent;
+            _parent.InitBaseMap();
+
+            _tileSet = _parent.BaseMap;
+            _edSvc = editorSvc;
+            //Init scale list
+            if (_tileSet != null)
+            {
+                foreach (var scale in _tileSet.FiniteDisplayScale)
                 {
                     _scales.Add(scale);
                 }
@@ -86,22 +110,26 @@ namespace Maestro.Editors.MapDefinition
 
         private void ClearScales()
         {
-            _map.InitBaseMap();
-            _map.RemoveAllFiniteDisplayScales(true);
+            _tileSet.RemoveAllScales();
+            if (_parent != null)
+                _parent.RemoveBaseMap();
             _edSvc.MarkDirty();
         }
 
         private void RemoveScaleFromMap(double scale)
         {
             _scales.Remove(scale);
-            _map.RemoveFiniteDisplayScale(scale, true);
+            _tileSet.RemoveFiniteDisplayScale(scale);
+            if (_parent != null && _tileSet.ScaleCount == 0)
+                _parent.RemoveBaseMap();
             _edSvc.MarkDirty();
         }
 
         private void AddScaleToMap(double scale)
         {
-            _map.InitBaseMap();
-            _map.AddFiniteDisplayScale(scale);
+            if (_parent != null && _parent.BaseMap == null)
+                _parent.AttachBaseMap((IBaseMapDefinition)_tileSet);
+            _tileSet.AddFiniteDisplayScale(scale);
             _edSvc.MarkDirty();
         }
 
@@ -162,7 +190,7 @@ namespace Maestro.Editors.MapDefinition
                     using (new WaitCursor(this))
                     {
                         _scales.Clear();
-                        foreach (double scale in dlg.Scales)
+                        foreach (double scale in dlg.Scales.OrderBy(s => s))
                         {
                             _scales.Add(scale);
                         }
