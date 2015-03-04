@@ -33,6 +33,7 @@ using RestSharp;
 using Maestro.AddIn.Rest.Model;
 using OSGeo.MapGuide.MaestroAPI;
 using Maestro.Base.Services;
+using System.IO;
 
 namespace Maestro.AddIn.Rest.UI
 {
@@ -148,9 +149,12 @@ namespace Maestro.AddIn.Rest.UI
         private void trvRestExplorer_AfterSelect(object sender, TreeViewEventArgs e)
         {
             var conf = e.Node.Tag as DataConfiguration;
-            btnDelete.Enabled = btnEdit.Enabled = false;
+            var list = e.Node.Tag as DataFileList;
+            btnDelete.Enabled = btnEdit.Enabled = btnAddFile.Enabled = false;
             if (conf != null)
                 btnDelete.Enabled = btnEdit.Enabled = btnAddFile.Enabled = true;
+            else if (list != null)
+                btnDelete.Enabled = true;
         }
 
         private void LoadConfig(string json, string uriPart, bool isNew)
@@ -173,6 +177,7 @@ namespace Maestro.AddIn.Rest.UI
                         foreach (var file in list.File)
                         {
                             var n = e.Node.Nodes.Add(file);
+                            n.Tag = list;
                             n.ImageIndex = n.SelectedImageIndex = IDX_FILE;
                         }
                     });
@@ -200,6 +205,7 @@ namespace Maestro.AddIn.Rest.UI
         private void btnDelete_Click(object sender, EventArgs e)
         {
             var conf = trvRestExplorer.SelectedNode.Tag as DataConfiguration;
+            var list = trvRestExplorer.SelectedNode.Tag as DataFileList;
             if (conf != null)
             {
                 if (MessageBox.Show(Maestro.AddIn.Rest.Strings.PromptDeleteConfiguration, Maestro.AddIn.Rest.Strings.DeleteConfiguration, MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -221,11 +227,69 @@ namespace Maestro.AddIn.Rest.UI
                     });
                 }
             }
+            else if (list != null)
+            {
+                string file = trvRestExplorer.SelectedNode.Text;
+                //Parent node is the configuration
+                conf = trvRestExplorer.SelectedNode.Parent.Tag as DataConfiguration;
+                if (conf != null)
+                {
+                    if (MessageBox.Show("Delete this file?", "Delete file", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        var req = new RestRequest(conf.ConfigUriPart.Replace("/config", "/file"), Method.POST);
+                        req.AddHeader("X-HTTP-METHOD-OVERRIDE", "DELETE");
+                        req.AddParameter("filename", file);
+                        _client.ExecuteAsync(req, (resp) =>
+                        {
+                            if (resp.StatusCode == System.Net.HttpStatusCode.OK)
+                            {
+                                this.UIThreadInvoke(() =>
+                                {
+                                    MessageBox.Show("File deleted");
+                                    this.DoRefresh();
+                                });
+                            }
+                            else
+                                MessageBox.Show(resp.Content);
+                        });
+                    }
+                }
+            }
         }
 
         private void btnAddFile_Click(object sender, EventArgs e)
         {
-
+            var conf = trvRestExplorer.SelectedNode.Tag as DataConfiguration;
+            var list = trvRestExplorer.SelectedNode.Tag as DataFileList;
+            if (list != null) 
+            {
+                conf = trvRestExplorer.SelectedNode.Parent.Tag as DataConfiguration;
+            }
+            if (conf != null)
+            {
+                using (var picker = new OpenFileDialog())
+                {
+                    if (picker.ShowDialog() == DialogResult.OK)
+                    {
+                        var req = new RestRequest(conf.ConfigUriPart.Replace("/config", "/file"), Method.POST);
+                        req.AddParameter("filename", Path.GetFileName(picker.FileName));
+                        req.AddFile("data", picker.FileName);
+                        _client.ExecuteAsync(req, (resp) =>
+                        {
+                            if (resp.StatusCode == System.Net.HttpStatusCode.OK)
+                            {
+                                this.UIThreadInvoke(() =>
+                                {
+                                    MessageBox.Show("File added");
+                                    this.DoRefresh();
+                                });
+                            }
+                            else
+                                MessageBox.Show(resp.Content);
+                        });
+                    }
+                }
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
