@@ -147,10 +147,13 @@
   <data name="DeleteConfiguration" xml:space="preserve">
     <value>Delete configuration</value>
   </data>
-  <data name="ConfigurationDeleted" xml:space="preserve">
-    <value>Configuration deleted</value>
-  </data>
   <data name="UriPartRequrired" xml:space="preserve">
     <value>Please enter the URI part for this configuration. If the URI part already exists, saving will overwrite the existing configuration</value>
+  </data>
+  <data name="DeleteFilePrompt" xml:space="preserve">
+    <value>Delete this file?</value>
+  </data>
+  <data name="DeleteFile" xml:space="preserve">
+    <value>Delete file</value>
   </data>
 </root>

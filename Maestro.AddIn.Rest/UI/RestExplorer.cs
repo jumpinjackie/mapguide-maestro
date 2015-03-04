@@ -218,7 +218,6 @@ namespace Maestro.AddIn.Rest.UI
                         {
                             this.UIThreadInvoke(() =>
                             {
-                                MessageBox.Show(Maestro.AddIn.Rest.Strings.ConfigurationDeleted);
                                 this.DoRefresh();
                             });
                         }
@@ -234,7 +233,7 @@ namespace Maestro.AddIn.Rest.UI
                 conf = trvRestExplorer.SelectedNode.Parent.Tag as DataConfiguration;
                 if (conf != null)
                 {
-                    if (MessageBox.Show("Delete this file?", "Delete file", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show(Maestro.AddIn.Rest.Strings.DeleteFilePrompt, Maestro.AddIn.Rest.Strings.DeleteFile, MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         var req = new RestRequest(conf.ConfigUriPart.Replace("/config", "/file"), Method.POST);
                         req.AddHeader("X-HTTP-METHOD-OVERRIDE", "DELETE");
@@ -245,7 +244,6 @@ namespace Maestro.AddIn.Rest.UI
                             {
                                 this.UIThreadInvoke(() =>
                                 {
-                                    MessageBox.Show("File deleted");
                                     this.DoRefresh();
                                 });
                             }
@@ -280,7 +278,6 @@ namespace Maestro.AddIn.Rest.UI
                             {
                                 this.UIThreadInvoke(() =>
                                 {
-                                    MessageBox.Show("File added");
                                     this.DoRefresh();
                                 });
                             }

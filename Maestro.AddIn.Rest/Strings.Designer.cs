@@ -61,15 +61,6 @@ namespace Maestro.AddIn.Rest {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Configuration deleted.
-        /// </summary>
-        internal static string ConfigurationDeleted {
-            get {
-                return ResourceManager.GetString("ConfigurationDeleted", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Configuration saved.
         /// </summary>
         internal static string ConfigurationSaved {
@@ -84,6 +75,24 @@ namespace Maestro.AddIn.Rest {
         internal static string DeleteConfiguration {
             get {
                 return ResourceManager.GetString("DeleteConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete file.
+        /// </summary>
+        internal static string DeleteFile {
+            get {
+                return ResourceManager.GetString("DeleteFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete this file?.
+        /// </summary>
+        internal static string DeleteFilePrompt {
+            get {
+                return ResourceManager.GetString("DeleteFilePrompt", resourceCulture);
             }
         }
         
