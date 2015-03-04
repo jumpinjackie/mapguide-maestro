@@ -143,6 +143,7 @@
     <ProjectReference Include="..\Maestro.Shared.UI\Maestro.Shared.UI.csproj">
       <Project>{CFD19053-2172-41D3-8460-0FD2123A1E88}</Project>
       <Name>Maestro.Shared.UI</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\OSGeo.MapGuide.MaestroAPI.Local\OSGeo.MapGuide.MaestroAPI.Local.csproj">
       <Project>{3DDF6501-0148-474C-8674-7C7DA49C7F02}</Project>

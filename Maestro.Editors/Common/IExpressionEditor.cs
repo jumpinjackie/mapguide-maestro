@@ -44,7 +44,7 @@ namespace Maestro.Editors.Common
     /// <summary>
     /// The expression editor interface
     /// </summary>
-    internal interface IExpressionEditor
+    public interface IExpressionEditor
     {
         /// <summary>
         /// Initializes the expression editor
@@ -67,6 +67,8 @@ namespace Maestro.Editors.Common
         /// </summary>
         /// <returns></returns>
         System.Windows.Forms.DialogResult ShowDialog();
+
+        void Initialize(IServerConnection conn, ClassDefinition classDefinition, string featureSourceId, ExpressionEditorMode mode);
     }
 
     /// <summary>
@@ -82,7 +84,7 @@ namespace Maestro.Editors.Common
         void InsertText(string text);
     }
 
-    internal static class FdoExpressionEditorFactory
+    public static class FdoExpressionEditorFactory
     {
         public static IExpressionEditor Create()
         {

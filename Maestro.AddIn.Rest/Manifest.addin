@@ -1,0 +1,25 @@
+﻿<AddIn name="Maestro.AddIn.Rest"
+       author="Jackie Ng"
+       url="http://trac.osgeo.org/mapguide/wiki/maestro"
+       description="MapGuide Maestro AddIn to support publishing spatial data to a mapguide-rest instance"
+       addInManagerHidden="preinstalled">
+
+  <Manifest>
+    <Identity name="Maestro.AddIn.Rest" />
+  </Manifest>
+
+  <Runtime>
+    <Import assembly=":Maestro.Base" />
+    <Import assembly="Maestro.AddIn.Rest.dll" />
+  </Runtime>
+
+  <!-- Auto-start commands -->
+  <Path name="/Workspace/Autostart">
+    <Class id="Startup" class="Maestro.AddIn.Rest.Commands.StartupCommand" />
+  </Path>
+
+  <!-- Singleton view content -->
+  <Path name="/Maestro/Shell/SingleViewContent">
+    <Class id="RestExplorer" class="Maestro.AddIn.Rest.UI.RestExplorer" />
+  </Path>
+</AddIn>

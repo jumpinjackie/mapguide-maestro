@@ -34,6 +34,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
+using OSGeo.MapGuide.MaestroAPI.Services;
 
 namespace Maestro.Editors.Common
 {
@@ -82,6 +84,7 @@ namespace Maestro.Editors.Common
     {
         private ClassDefinition _cls;
 
+        private IFeatureService _featSvc;
         private IEditorService _edSvc;
         private string m_featureSource = null;
 
@@ -107,6 +110,17 @@ namespace Maestro.Editors.Common
         private IFdoProviderCapabilities _caps;
         private ExpressionEditorMode _mode;
 
+        public void Initialize(IServerConnection conn, ClassDefinition cls, string featureSourceId, ExpressionEditorMode mode)
+        {
+            IFeatureSource fs = (IFeatureSource)conn.ResourceService.GetResource(featureSourceId);
+            IFdoProviderCapabilities caps = conn.FeatureService.GetProviderCapabilities(fs.Provider);
+
+            //This is normally set by the Editor Service, but we don't have that so do it here
+            _featSvc = conn.FeatureService;
+
+            this.Initialize(null, caps, cls, featureSourceId, mode, false);
+        }
+
         /// <summary>
         /// Initializes the dialog.
         /// </summary>
@@ -124,6 +138,15 @@ namespace Maestro.Editors.Common
                 _mode = mode;
                 _cls = cls;
                 _edSvc = edSvc;
+                if (_edSvc != null)
+                {
+                    _featSvc = _edSvc.CurrentConnection.FeatureService;
+                    insertThemeExpressionToolStripMenuItem.Enabled = true;
+                }
+                else
+                {
+                    insertThemeExpressionToolStripMenuItem.Enabled = false;
+                }
                 m_featureSource = featureSourceId;
 
                 insertThemeExpressionToolStripMenuItem.Enabled = attachStylizationFunctions;
@@ -835,7 +858,7 @@ namespace Maestro.Editors.Common
                 ColumnValue.Tag = null;
                 try
                 {
-                    using (var rdr = _edSvc.CurrentConnection.FeatureService.AggregateQueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new System.Collections.Specialized.NameValueCollection() {
+                    using (var rdr = _featSvc.AggregateQueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new System.Collections.Specialized.NameValueCollection() {
                             { "UNIQ_VALS", expr }
                         }))
                     {
@@ -886,7 +909,7 @@ namespace Maestro.Editors.Common
                         try
                         {
                             retry = false;
-                            using (var rd = _edSvc.CurrentConnection.FeatureService.QueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new string[] { ColumnName.Text }))
+                            using (var rd = _featSvc.QueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new string[] { ColumnName.Text }))
                             {
                                 while (rd.ReadNext())
                                 {
