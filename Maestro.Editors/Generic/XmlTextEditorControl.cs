@@ -574,7 +574,8 @@ namespace Maestro.Editors.Generic
                 MouseWheelScrollDown = true,
                 MouseWheelTextZoom = false,
                 FontContainer = new FontContainer(font),
-                Encoding = Encoding.UTF8
+                Encoding = Encoding.UTF8,
+                Font = font
             };
         }
     }
