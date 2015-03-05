@@ -24,6 +24,7 @@ using Maestro.Editors.Common;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -242,9 +243,21 @@ namespace Maestro.Editors.MapDefinition
             {
                 ids.Add(layer.ResourceId);
             }
+            IMapDefinition3 mdf3 = _map as IMapDefinition3;
             if (_map.BaseMap != null)
             {
                 foreach (var grp in _map.BaseMap.BaseMapLayerGroups)
+                {
+                    foreach (var layer in grp.BaseMapLayer)
+                    {
+                        ids.Add(layer.ResourceId);
+                    }
+                }
+            }
+            else if (mdf3 != null && !string.IsNullOrEmpty(mdf3.TileSetDefinitionID))
+            {
+                var tsd = (ITileSetDefinition)_service.CurrentConnection.ResourceService.GetResource(mdf3.TileSetDefinitionID);
+                foreach (var grp in tsd.BaseMapLayerGroups)
                 {
                     foreach (var layer in grp.BaseMapLayer)
                     {

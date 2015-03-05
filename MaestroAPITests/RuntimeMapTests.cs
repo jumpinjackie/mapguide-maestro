@@ -225,7 +225,7 @@ namespace MaestroAPITests
         {
             if (map.MapDefinition != mdf.ResourceID) return false;
             if (map.Groups.Count != mdf.GetGroupCount()) return false;
-            if (map.Layers.Count != mdf.GetLayerCount()) return false;
+            if (map.Layers.Count != mdf.GetDynamicLayerCount()) return false;
 
             foreach (var layer in map.Layers)
             {

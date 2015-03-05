@@ -840,7 +840,7 @@ namespace Maestro.Editors.MapDefinition
                         groupName = group.Tag.Name + "(" + counter + ")";
                     }
                     _map.AddGroup(groupName);
-                    int layerCount = _map.GetLayerCount();
+                    int layerCount = _map.GetDynamicLayerCount();
                     foreach (var layer in group.Tag.BaseMapLayer)
                     {
                         //We an avoid a duplicate name check because the Map Definition should already ensure uniqueness
@@ -1352,10 +1352,10 @@ namespace Maestro.Editors.MapDefinition
         /// <returns>The index of the layer below the current layer. Returns -1 if the current layer index is the bottom-most layer of the group</returns>
         private static int GetIndexOfLayerBelow(IMapDefinition mdf, int layerIndex, string group)
         {
-            if (layerIndex < mdf.GetLayerCount() - 1)
+            if (layerIndex < mdf.GetDynamicLayerCount() - 1)
             {
                 var list = new List<IMapLayer>(mdf.MapLayer);
-                for (int i = layerIndex + 1; i < mdf.GetLayerCount(); i++)
+                for (int i = layerIndex + 1; i < mdf.GetDynamicLayerCount(); i++)
                 {
                     if (list[i].Group == group)
                         return i;

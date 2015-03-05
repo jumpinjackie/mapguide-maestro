@@ -109,7 +109,6 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v3_0_0
         internal MapDefinition()
         {
             this.versionField = "3.0.0"; //NOXLATE
-            this.SetExtentsFromFirstAddedLayer = false;
         }
 
         string IMapDefinition3.TileSetDefinitionID
@@ -178,9 +177,6 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v3_0_0
         }
 
         private static readonly Version RES_VERSION = new Version(3, 0, 0);
-
-        [XmlIgnore]
-        public bool SetExtentsFromFirstAddedLayer { get; set; }
 
         private string _resId;
 
@@ -334,44 +330,14 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v3_0_0
 
             this.MapLayer.Insert(0, layer);
             OnPropertyChanged("MapLayer"); //NOXLATE
-
-            if (this.MapLayer.Count == 1) //First one
-            {
-                OnFirstLayerAdded(layer);
-            }
+            
+            this.AutoSetExtentsFromLayer(layer.ResourceId);
 
             return layer;
         }
 
         [XmlIgnore]
         public ILayerExtentCalculator ExtentCalculator { get; set; }
-
-        private void OnFirstLayerAdded(MapLayerType layer)
-        {
-            //Do nothing if this is false
-            if (!this.SetExtentsFromFirstAddedLayer)
-                return;
-
-            var calc = this.ExtentCalculator;
-            if (calc != null)
-            {
-                var res = calc.GetLayerExtent(layer.ResourceId, this.CoordinateSystem);
-                if (res != null)
-                {
-                    //Set the coordinate system if empty
-                    if (string.IsNullOrEmpty(this.CoordinateSystem))
-                    {
-                        this.CoordinateSystem = res.LayerCoordinateSystem;
-                    }
-                    //Set the bounds if empty
-                    if (IsEmpty(this.Extents))
-                    {
-                        var env = res.Extent;
-                        ((IMapDefinition)this).SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);
-                    }
-                }
-            }
-        }
 
         public IMapLayer InsertLayer(int index, string groupName, string layerName, string layerDefinitionId)
         {
@@ -449,10 +415,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v3_0_0
             }
             OnPropertyChanged("MapLayer"); //NOXLATE
 
-            if (this.MapLayer.Count == 1) //First one
-            {
-                OnFirstLayerAdded(layer);
-            }
+            this.AutoSetExtentsFromLayer(layer.ResourceId);
 
             return layer;
         }

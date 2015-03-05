@@ -83,7 +83,6 @@ namespace Maestro.Editors.MapDefinition
         {
             _edSvc = service;
             _map = _edSvc.GetEditedResource() as IMapDefinition;
-            _map.SetExtentsFromFirstAddedLayer = true;
 
             mapSettingsCtrl.Bind(service);
             mapLayersCtrl.Bind(service);

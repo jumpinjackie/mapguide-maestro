@@ -75,12 +75,6 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
     public interface IMapDefinition : IResource, IMapDefinitionBase, INotifyPropertyChanged
     {
         /// <summary>
-        /// If true, the first layer added to this map definition will automatically set the extents
-        /// based on that layer's added extents. Default is false
-        /// </summary>
-        bool SetExtentsFromFirstAddedLayer { get; set; }
-
-        /// <summary>
         /// Gets or sets the name.
         /// </summary>
         /// <value>The name.</value>
@@ -328,6 +322,48 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
     /// </summary>
     public static class MapDefinitionExtensions
     {
+        public static bool IsEmpty(this IEnvelope box2DType)
+        {
+            return box2DType == null ||
+                (box2DType.MaxX == 0.0 &&
+                box2DType.MaxY == 0.0 &&
+                box2DType.MinX == 0.0 &&
+                box2DType.MinY == 0.0);
+        }
+
+        /// <summary>
+        /// Sets the extents of the map definition from the id of the the given layer definition
+        /// Does nothing if the extent is already set
+        /// </summary>
+        /// <param name="mdf"></param>
+        /// <param name="layerDefinitionId"></param>
+        public static void AutoSetExtentsFromLayer(this IMapDefinition mdf, string layerDefinitionId)
+        {
+            //Do nothing if this is false
+            if (!mdf.Extents.IsEmpty())
+                return;
+
+            var calc = mdf.ExtentCalculator;
+            if (calc != null)
+            {
+                var res = calc.GetLayerExtent(layerDefinitionId, mdf.CoordinateSystem);
+                if (res != null)
+                {
+                    //Set the coordinate system if empty
+                    if (string.IsNullOrEmpty(mdf.CoordinateSystem))
+                    {
+                        mdf.CoordinateSystem = res.LayerCoordinateSystem;
+                    }
+                    //Set the bounds if empty
+                    if (mdf.Extents.IsEmpty())
+                    {
+                        var env = res.Extent;
+                        mdf.SetExtents(env.MinX, env.MinY, env.MaxX, env.MaxY);
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Adds the specified finite display scale to the Map Definition
         /// </summary>
@@ -534,7 +570,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
         /// </summary>
         /// <param name="map"></param>
         /// <returns></returns>
-        public static int GetLayerCount(this IMapDefinition map)
+        public static int GetDynamicLayerCount(this IMapDefinition map)
         {
             Check.ArgumentNotNull(map, "map"); //NOXLATE
             return new List<IMapLayer>(map.MapLayer).Count;

@@ -68,7 +68,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.AreEqual(5417109.9090669, extent.MinY);
             Assert.AreEqual(-9758770.5921973, extent.MaxX);
             Assert.AreEqual(5435129.2308673, extent.MaxY);
-            Assert.AreEqual(1, mdf.GetLayerCount());
+            Assert.AreEqual(1, mdf.GetDynamicLayerCount());
             Assert.NotNull(mdf.GetLayerByName("RoadCenterLines"));
             Assert.AreEqual(TileSourceType.External, mdf.TileSourceType);
             Assert.AreEqual("Library://UnitTests/TileSets/Sheboygan.TileSetDefinition", mdf.TileSetDefinitionID);

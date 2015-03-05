@@ -269,7 +269,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             var map = CreateTestMap();
             IMapDefinition mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "Test Map");
             map.UpdateMapDefinition(mdf);
-            Assert.AreEqual(0, mdf.GetLayerCount());
+            Assert.AreEqual(0, mdf.GetDynamicLayerCount());
             Assert.AreEqual(0, mdf.GetGroupCount());
             Assert.NotNull(mdf.BaseMap);
             var grp = mdf.BaseMap.GetFirstGroup();
@@ -283,7 +283,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
         {
             var map = CreateTestMap();
             var mdf = map.ToMapDefinition(false);
-            Assert.AreEqual(0, mdf.GetLayerCount());
+            Assert.AreEqual(0, mdf.GetDynamicLayerCount());
             Assert.AreEqual(0, mdf.GetGroupCount());
             Assert.NotNull(mdf.BaseMap);
             var grp = mdf.BaseMap.GetFirstGroup();
@@ -292,7 +292,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.AreEqual("Base Layer Group", grp.Name);
 
             mdf = map.ToMapDefinition(true);
-            Assert.AreEqual(0, mdf.GetLayerCount());
+            Assert.AreEqual(0, mdf.GetDynamicLayerCount());
             Assert.AreEqual(0, mdf.GetGroupCount());
             Assert.NotNull(mdf.BaseMap);
             grp = mdf.BaseMap.GetFirstGroup();

@@ -177,7 +177,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var conn = new Mock<IServerConnection>();
             var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionLayerInsert");
             SetupMapDefinitionForTest(mdf);
-            int layerCount = mdf.GetLayerCount();
+            int layerCount = mdf.GetDynamicLayerCount();
 
             Assert.Throws<ArgumentException>(() => { mdf.InsertLayer(-1, null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"); });
             Assert.Throws<ArgumentException>(() => { mdf.InsertLayer(layerCount + 1, null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"); });
@@ -192,7 +192,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual(0, mdf.GetIndex(layer));
             Assert.True(layer == mdf.GetLayerByName("Hydro"));
 
-            layerCount = mdf.GetLayerCount();
+            layerCount = mdf.GetDynamicLayerCount();
             IMapLayer layer1 = mdf.InsertLayer(layerCount, null, "Hydro2", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
             Assert.AreEqual(layerCount, mdf.GetIndex(layer1));
             Assert.True(layer1 == mdf.GetLayerByName("Hydro2"));
@@ -204,7 +204,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var conn = new Mock<IServerConnection>();
             var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionLayerAdd");
             SetupMapDefinitionForTest(mdf);
-            int layerCount = mdf.GetLayerCount();
+            int layerCount = mdf.GetDynamicLayerCount();
 
             Assert.Throws<ArgumentException>(() => { mdf.AddLayer("IDontExist", "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition"); });
             Assert.Throws<ArgumentException>(() => { mdf.AddLayer(null, "", ""); });
@@ -217,7 +217,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             IMapLayer layer = mdf.AddLayer(null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
             Assert.AreEqual(0, mdf.GetIndex(layer));
             Assert.True(layer == mdf.GetLayerByName("Hydro"));
-            Assert.AreEqual(layerCount + 1, mdf.GetLayerCount());
+            Assert.AreEqual(layerCount + 1, mdf.GetDynamicLayerCount());
         }
 
         [Test]
@@ -226,16 +226,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var conn = new Mock<IServerConnection>();
             var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionLayerRemove");
             SetupMapDefinitionForTest(mdf);
-            int layerCount = mdf.GetLayerCount();
+            int layerCount = mdf.GetDynamicLayerCount();
 
             IMapLayer layer = mdf.AddLayer(null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
             Assert.AreEqual(0, mdf.GetIndex(layer));
             Assert.True(layer == mdf.GetLayerByName("Hydro"));
-            Assert.AreEqual(layerCount + 1, mdf.GetLayerCount());
+            Assert.AreEqual(layerCount + 1, mdf.GetDynamicLayerCount());
 
             mdf.RemoveLayer(layer);
             Assert.True(mdf.GetIndex(layer) < 0);
-            Assert.AreEqual(layerCount, mdf.GetLayerCount());
+            Assert.AreEqual(layerCount, mdf.GetDynamicLayerCount());
         }
 
         [Test]
@@ -244,7 +244,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var conn = new Mock<IServerConnection>();
             var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionLayerReordering");
             SetupMapDefinitionForTest(mdf);
-            int layerCount = mdf.GetLayerCount();
+            int layerCount = mdf.GetDynamicLayerCount();
 
             Assert.Throws<ArgumentNullException>(() => { mdf.MoveDown(null); });
             Assert.Throws<ArgumentNullException>(() => { mdf.MoveUp(null); });
@@ -254,7 +254,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             IMapLayer layer = mdf.AddLayer(null, "Hydro", "Library://UnitTests/Layers/HydrographicPolygons.LayerDefinition");
             Assert.AreEqual(0, mdf.GetIndex(layer));
             Assert.True(layer == mdf.GetLayerByName("Hydro"));
-            Assert.AreEqual(layerCount + 1, mdf.GetLayerCount());
+            Assert.AreEqual(layerCount + 1, mdf.GetDynamicLayerCount());
 
             int value = mdf.MoveUp(layer);
             Assert.AreEqual(0, value); //Already at top
@@ -262,11 +262,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             Assert.AreEqual(1, value);
             mdf.SetBottomDrawOrder(layer);
             value = mdf.GetIndex(layer);
-            Assert.AreEqual(mdf.GetLayerCount() - 1, value);
+            Assert.AreEqual(mdf.GetDynamicLayerCount() - 1, value);
             value = mdf.MoveDown(layer);
-            Assert.AreEqual(mdf.GetLayerCount() - 1, value); //Already at bottom
+            Assert.AreEqual(mdf.GetDynamicLayerCount() - 1, value); //Already at bottom
             value = mdf.MoveUp(layer);
-            Assert.AreEqual(mdf.GetLayerCount() - 2, value);
+            Assert.AreEqual(mdf.GetDynamicLayerCount() - 2, value);
             mdf.SetTopDrawOrder(layer);
             value = mdf.GetIndex(layer);
             Assert.AreEqual(0, value);
@@ -278,7 +278,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var conn = new Mock<IServerConnection>();
             var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionGroupAdd");
             SetupMapDefinitionForTest(mdf);
-            int layerCount = mdf.GetLayerCount();
+            int layerCount = mdf.GetDynamicLayerCount();
             int groupCount = mdf.GetGroupCount();
 
             Assert.Throws<ArgumentException>(() => { mdf.AddGroup(null); });
@@ -297,7 +297,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
             var conn = new Mock<IServerConnection>();
             var mdf = ObjectFactory.CreateMapDefinition(new Version(1, 0, 0), "TestMapDefinitionGroupRemove");
             SetupMapDefinitionForTest(mdf);
-            int layerCount = mdf.GetLayerCount();
+            int layerCount = mdf.GetDynamicLayerCount();
             int groupCount = mdf.GetGroupCount();
 
             IMapLayerGroup group = mdf.AddGroup("Test");
@@ -579,7 +579,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
 
             mdf.RemoveLayerGroupAndChildLayers("Group1");
             Assert.AreEqual(1, mdf.GetGroupCount());
-            Assert.AreEqual(1, mdf.GetLayerCount());
+            Assert.AreEqual(1, mdf.GetDynamicLayerCount());
             Assert.Null(mdf.GetLayerByName("Layer1"));
             Assert.Null(mdf.GetLayerByName("Layer2"));
             Assert.Null(mdf.GetLayerByName("Layer3"));
