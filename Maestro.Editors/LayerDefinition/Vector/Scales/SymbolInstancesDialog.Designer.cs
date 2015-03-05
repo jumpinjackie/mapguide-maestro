@@ -48,6 +48,7 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.inlineSimpleSymbolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
+            this.btnSaveExternal = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnEditInstanceProperties = new System.Windows.Forms.ToolStripButton();
             this.btnEditComponent = new System.Windows.Forms.ToolStripButton();
@@ -114,6 +115,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAdd,
             this.btnDelete,
+            this.btnSaveExternal,
             this.toolStripSeparator2,
             this.btnEditInstanceProperties,
             this.btnEditComponent});
@@ -219,6 +221,13 @@
             resources.ApplyResources(this.btnDelete, "btnDelete");
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnSaveExternal
+            // 
+            resources.ApplyResources(this.btnSaveExternal, "btnSaveExternal");
+            this.btnSaveExternal.Image = global::Maestro.Editors.Properties.Resources.disk;
+            this.btnSaveExternal.Name = "btnSaveExternal";
+            this.btnSaveExternal.Click += new System.EventHandler(this.btnSaveExternal_Click);
             // 
             // toolStripSeparator2
             // 
@@ -425,5 +434,6 @@
         private System.Windows.Forms.ToolStripDropDownButton btnEditProperty;
         private System.Windows.Forms.ToolStripMenuItem viaEditorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viaExpressionEditorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton btnSaveExternal;
     }
 }

@@ -24,6 +24,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using System;
 using System.IO;
 using System.Windows.Forms;
+using System.Xml;
 using System.Xml.Schema;
 
 #pragma warning disable 1591
@@ -44,6 +45,7 @@ namespace Maestro.Editors.Generic
         internal XmlEditorDialog()
         {
             InitializeComponent();
+            this.OnlyValidateWellFormedness = false;
             _ed = new XmlEditorCtrl();
             _ed.Validator = new XmlValidationCallback(ValidateXml);
             _ed.Dock = DockStyle.Fill;
@@ -138,7 +140,26 @@ namespace Maestro.Editors.Generic
 
         private void ValidateXml(out string[] errors, out string[] warnings)
         {
-            XmlValidator.ValidateResourceXmlContent(this.XmlContent, this.XsdPath, out errors, out warnings);
+            if (this.OnlyValidateWellFormedness)
+            {
+                errors = new string[0];
+                warnings = new string[0];
+
+                //Test for well-formedness
+                try
+                {
+                    XmlDocument doc = new XmlDocument();
+                    doc.LoadXml(this.XmlContent);
+                }
+                catch (XmlException ex)
+                {
+                    errors = new string[] { ex.Message };
+                }
+            }
+            else
+            {
+                XmlValidator.ValidateResourceXmlContent(this.XmlContent, this.XsdPath, out errors, out warnings);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -164,5 +185,7 @@ namespace Maestro.Editors.Generic
         }
 
         public event EventHandler ResourceChanged;
+
+        public bool OnlyValidateWellFormedness { get; set; }
     }
 }

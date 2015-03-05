@@ -1712,4 +1712,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="LinkedTileSetNote" xml:space="preserve">
     <value>The Map Definition's coordinate system and extents have been replaced with the ones from the linked tile set</value>
   </data>
+  <data name="SymbolExported" xml:space="preserve">
+    <value>Symbol exported to: {0}</value>
+  </data>
 </root>

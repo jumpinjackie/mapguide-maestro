@@ -2774,6 +2774,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Symbol exported to: {0}.
+        /// </summary>
+        internal static string SymbolExported {
+            get {
+                return ResourceManager.GetString("SymbolExported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;image&gt;.
         /// </summary>
         internal static string SymbolGraphicsImagePlaceholder {

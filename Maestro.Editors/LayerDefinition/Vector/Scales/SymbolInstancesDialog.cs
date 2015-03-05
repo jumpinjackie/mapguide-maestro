@@ -236,7 +236,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             li.Tag = symRef;
 
             var sym = GetSymbolDefinition(symRef);
-            if (li.ImageIndex == 0)
+            if (symRef.Reference.Type == SymbolInstanceType.Reference)
                 li.Text = sym.Name + " (" + ((ISymbolInstanceReferenceLibrary)symRef.Reference).ResourceId + ")";
             else
                 li.Text = sym.Name + " (" + Strings.InlineSymbolDefinition + ")";
@@ -320,11 +320,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 //Now add available parameters
                 PopulateAvailableParameters(symRef, sym);
 
+                btnSaveExternal.Enabled = (symRef.Reference.Type == SymbolInstanceType.Inline);
                 btnEditInstanceProperties.Enabled = true;
                 btnEditComponent.Enabled = true;
             }
             else
             {
+                btnSaveExternal.Enabled = false;
                 btnEditInstanceProperties.Enabled = false;
                 btnEditComponent.Enabled = false;
             }
@@ -386,6 +388,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         {
             string xml = _comp.ToXml();
             XmlEditorDialog diag = new XmlEditorDialog();
+            diag.OnlyValidateWellFormedness = true;
             diag.XmlContent = xml;
             if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -773,6 +776,29 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
             var instance = _comp.CreateInlineSimpleSymbol(ssym);
             AddInstance(instance, true);
+        }
+
+        private void btnSaveExternal_Click(object sender, EventArgs e)
+        {
+            if (lstInstances.SelectedItems.Count == 1)
+            {
+                var it = lstInstances.SelectedItems[0];
+                ISymbolInstance symRef = (ISymbolInstance)it.Tag;
+
+                if (symRef.Reference.Type == SymbolInstanceType.Inline)
+                {
+                    var sym = ((ISymbolInstanceReferenceInline)symRef.Reference).SymbolDefinition;
+                    using (var picker = new ResourcePicker(_edSvc.CurrentConnection, ResourceTypes.SymbolDefinition.ToString(), ResourcePickerMode.SaveResource))
+                    {
+                        if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            sym.SetSchemaAttributes();
+                            _edSvc.CurrentConnection.ResourceService.SaveResourceAs(sym, picker.ResourceID);
+                            MessageBox.Show(string.Format(Maestro.Editors.Strings.SymbolExported, picker.ResourceID));
+                        }
+                    }
+                }
+            }
         }
     }
 }
