@@ -48,10 +48,14 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.inlineSimpleSymbolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
-            this.btnSaveExternal = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnEditInstanceProperties = new System.Windows.Forms.ToolStripButton();
-            this.btnEditComponent = new System.Windows.Forms.ToolStripButton();
+            this.btnUp = new System.Windows.Forms.ToolStripButton();
+            this.btnDown = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnSaveExternal = new System.Windows.Forms.ToolStripButton();
+            this.btnEdit = new System.Windows.Forms.ToolStripDropDownButton();
+            this.btnEditInstanceProperties = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnEditComponent = new System.Windows.Forms.ToolStripMenuItem();
             this.grpProperties = new System.Windows.Forms.GroupBox();
             this.grdOverrides = new System.Windows.Forms.DataGridView();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
@@ -115,10 +119,12 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAdd,
             this.btnDelete,
-            this.btnSaveExternal,
             this.toolStripSeparator2,
-            this.btnEditInstanceProperties,
-            this.btnEditComponent});
+            this.btnUp,
+            this.btnDown,
+            this.toolStripSeparator5,
+            this.btnSaveExternal,
+            this.btnEdit});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
             // 
@@ -222,6 +228,32 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            // 
+            // btnUp
+            // 
+            this.btnUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.btnUp, "btnUp");
+            this.btnUp.Image = global::Maestro.Editors.Properties.Resources.arrow_090;
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
+            // 
+            // btnDown
+            // 
+            this.btnDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.btnDown, "btnDown");
+            this.btnDown.Image = global::Maestro.Editors.Properties.Resources.arrow_270;
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
+            // 
             // btnSaveExternal
             // 
             resources.ApplyResources(this.btnSaveExternal, "btnSaveExternal");
@@ -229,10 +261,14 @@
             this.btnSaveExternal.Name = "btnSaveExternal";
             this.btnSaveExternal.Click += new System.EventHandler(this.btnSaveExternal_Click);
             // 
-            // toolStripSeparator2
+            // btnEdit
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            this.btnEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnEditInstanceProperties,
+            this.btnEditComponent});
+            this.btnEdit.Image = global::Maestro.Editors.Properties.Resources.document__pencil;
+            resources.ApplyResources(this.btnEdit, "btnEdit");
+            this.btnEdit.Name = "btnEdit";
             // 
             // btnEditInstanceProperties
             // 
@@ -418,7 +454,6 @@
         private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton btnDeleteProperty;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton btnEditComponent;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton btnPropertyInfo;
         private System.Windows.Forms.ToolStripMenuItem inlineSymbolToolStripMenuItem;
@@ -430,10 +465,15 @@
         private System.Windows.Forms.ToolStripMenuItem textLabelLineToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem textLabelPolygonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pointToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton btnEditInstanceProperties;
         private System.Windows.Forms.ToolStripDropDownButton btnEditProperty;
         private System.Windows.Forms.ToolStripMenuItem viaEditorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viaExpressionEditorToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton btnSaveExternal;
+        private System.Windows.Forms.ToolStripButton btnUp;
+        private System.Windows.Forms.ToolStripButton btnDown;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripDropDownButton btnEdit;
+        private System.Windows.Forms.ToolStripMenuItem btnEditInstanceProperties;
+        private System.Windows.Forms.ToolStripMenuItem btnEditComponent;
     }
 }

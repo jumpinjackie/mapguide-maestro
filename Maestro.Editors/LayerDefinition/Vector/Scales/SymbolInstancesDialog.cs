@@ -34,6 +34,7 @@ using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -235,17 +236,36 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             var li = new ListViewItem();
             li.Tag = symRef;
 
-            var sym = GetSymbolDefinition(symRef);
-            if (symRef.Reference.Type == SymbolInstanceType.Reference)
-                li.Text = sym.Name + " (" + ((ISymbolInstanceReferenceLibrary)symRef.Reference).ResourceId + ")";
-            else
-                li.Text = sym.Name + " (" + Strings.InlineSymbolDefinition + ")";
+            SetListViewItemLabel(symRef, li);
 
             lstInstances.Items.Add(li);
+            btnUp.Enabled = btnDown.Enabled = (lstInstances.Items.Count > 1);
+
             if (add)
                 _comp.AddSymbolInstance(symRef);
             li.Selected = (lstInstances.Items.Count == 1);
             RenderPreview(symRef, li);
+        }
+
+        private void SetListViewItemLabel(ISymbolInstance symRef, ListViewItem li)
+        {
+            var sym = GetSymbolDefinition(symRef);
+            if (symRef.Reference.Type == SymbolInstanceType.Reference)
+            {
+                ISymbolInstance2 symRef2 = symRef as ISymbolInstance2;
+                if (symRef2 != null)
+                    li.Text = sym.Name + " (" + symRef2.GeometryContext + " - " + ((ISymbolInstanceReferenceLibrary)symRef.Reference).ResourceId + ")";
+                else
+                    li.Text = sym.Name + " (" + ((ISymbolInstanceReferenceLibrary)symRef.Reference).ResourceId + ")";
+            }
+            else
+            {
+                ISymbolInstance2 symRef2 = symRef as ISymbolInstance2;
+                if (symRef2 != null)
+                    li.Text = sym.Name + " (" + symRef2.GeometryContext + " - " + Strings.InlineSymbolDefinition + ")";
+                else
+                    li.Text = sym.Name + " (" + Strings.InlineSymbolDefinition + ")";
+            }
         }
 
         private void referenceToolStripMenuItem_Click(object sender, EventArgs e)
@@ -380,6 +400,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 using (var diag = new SymbolInstancePropertiesDialog(symRef, _edSvc, _cls, _featureSourceId, _provider))
                 {
                     diag.ShowDialog();
+                    SetListViewItemLabel(symRef, it);
                 }
             }
         }
@@ -797,6 +818,44 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                             MessageBox.Show(string.Format(Maestro.Editors.Strings.SymbolExported, picker.ResourceID));
                         }
                     }
+                }
+            }
+        }
+
+        private void btnUp_Click(object sender, EventArgs e)
+        {
+            if (lstInstances.SelectedItems.Count == 1)
+            {
+                var it = lstInstances.SelectedItems[0];
+                var oldIdx = lstInstances.Items.IndexOf(it);
+                ISymbolInstance symRef = (ISymbolInstance)it.Tag;
+                int idx = _comp.MoveSymbolInstanceUp(symRef);
+                if (idx >= 0)
+                {
+                    var item = lstInstances.Items[idx];
+                    lstInstances.Items.RemoveAt(oldIdx);
+                    lstInstances.Items.RemoveAt(idx);
+                    lstInstances.Items.Insert(idx, it);
+                    lstInstances.Items.Insert(oldIdx, item);
+                }
+            }
+        }
+
+        private void btnDown_Click(object sender, EventArgs e)
+        {
+            if (lstInstances.SelectedItems.Count == 1)
+            {
+                var it = lstInstances.SelectedItems[0];
+                var oldIdx = lstInstances.Items.IndexOf(it);
+                ISymbolInstance symRef = (ISymbolInstance)it.Tag;
+                int idx = _comp.MoveSymbolInstanceDown(symRef);
+                if (idx <= _comp.SymbolInstance.Count() - 1 && idx >= 0)
+                {
+                    var item = lstInstances.Items[idx];
+                    lstInstances.Items.RemoveAt(idx);
+                    lstInstances.Items.RemoveAt(oldIdx);
+                    lstInstances.Items.Insert(oldIdx, item);
+                    lstInstances.Items.Insert(idx, it);
                 }
             }
         }

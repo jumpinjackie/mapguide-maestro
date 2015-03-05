@@ -1913,6 +1913,10 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
         /// Removes all symbol instances
         /// </summary>
         void RemoveAllSymbolInstances();
+
+        int MoveSymbolInstanceUp(ISymbolInstance symRef);
+
+        int MoveSymbolInstanceDown(ISymbolInstance symRef);
     }
 
     /// <summary>

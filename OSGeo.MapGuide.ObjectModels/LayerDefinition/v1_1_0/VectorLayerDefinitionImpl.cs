@@ -2090,6 +2090,46 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
             }
         }
 
+        public int MoveSymbolInstanceUp(ISymbolInstance inst)
+        {
+            var sym = inst as SymbolInstance;
+            if (sym != null)
+            {
+                int oldIdx = this.SymbolInstance.IndexOf(sym);
+                int newIdx = oldIdx - 1;
+                if (newIdx >= 0)
+                {
+                    //Swap old and new items
+                    var newItem = this.SymbolInstance[newIdx];
+                    this.SymbolInstance[newIdx] = sym;
+                    this.SymbolInstance[oldIdx] = newItem;
+
+                    return newIdx;
+                }
+            }
+            return -1;
+        }
+
+        public int MoveSymbolInstanceDown(ISymbolInstance inst)
+        {
+            var sym = inst as SymbolInstance;
+            if (sym != null)
+            {
+                int oldIdx = this.SymbolInstance.IndexOf(sym);
+                int newIdx = oldIdx + 1;
+                if (newIdx <= this.SymbolInstance.Count - 1)
+                {
+                    //Swap old and new items
+                    var newItem = this.SymbolInstance[newIdx];
+                    this.SymbolInstance[newIdx] = sym;
+                    this.SymbolInstance[oldIdx] = newItem;
+
+                    return newIdx;
+                }
+            }
+            return -1;
+        }
+
         public void AddSymbolInstance(ISymbolInstance inst)
         {
             var sym = inst as SymbolInstance;
