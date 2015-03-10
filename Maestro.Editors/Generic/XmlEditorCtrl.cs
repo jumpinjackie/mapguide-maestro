@@ -24,6 +24,7 @@ using ICSharpCode.TextEditor.Actions;
 using ICSharpCode.TextEditor.Document;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.IO;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -305,12 +306,25 @@ namespace Maestro.Editors.Generic
                 return;
 
             System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
-            doc.LoadXml(txtXmlContent.Text);
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            System.Xml.XmlWriter xw = System.Xml.XmlTextWriter.Create(sb, new System.Xml.XmlWriterSettings() { Indent = true });
-            doc.WriteTo(xw);
-            xw.Flush();
-            txtXmlContent.Text = sb.ToString();
+
+            using (var ms = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(txtXmlContent.Text)))
+            { 
+                using (var ms2 = Utility.RemoveUTF8BOM(ms))
+                {
+                    doc.Load(ms2);
+                }
+            }
+
+            using (var ms = new MemoryStream())
+            {
+                using (var uw = new Utf8XmlWriter(ms))
+                {
+                    uw.WriteStartDocument();
+                    doc.WriteTo(uw);
+                    uw.Flush();
+                }
+                txtXmlContent.Text = System.Text.Encoding.UTF8.GetString(ms.GetBuffer());
+            }
         }
 
         /// <summary>

@@ -114,6 +114,7 @@ namespace Maestro.Base.Editor
         {
             var content = _fs.GetConfigurationContent(_edsvc.CurrentConnection);
             var dlg = new XmlEditorDialog(_edsvc);
+            dlg.OnlyValidateWellFormedness = true;
             dlg.XmlContent = content;
             if (dlg.ShowDialog() == DialogResult.OK)
             {

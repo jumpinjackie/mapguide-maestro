@@ -33,6 +33,7 @@ using OSGeo.MapGuide.MaestroAPI.Serialization;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
 using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.IO;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
@@ -42,7 +43,6 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Text;
-
 using ObjCommon = OSGeo.MapGuide.ObjectModels.Common;
 
 namespace OSGeo.MapGuide.MaestroAPI
