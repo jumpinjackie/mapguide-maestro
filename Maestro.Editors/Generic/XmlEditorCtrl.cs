@@ -26,6 +26,7 @@ using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.IO;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -319,7 +320,8 @@ namespace Maestro.Editors.Generic
             {
                 using (var uw = new Utf8XmlWriter(ms))
                 {
-                    uw.WriteStartDocument();
+                    if (!doc.ChildNodes.OfType<XmlDeclaration>().Any())
+                        uw.WriteStartDocument();
                     doc.WriteTo(uw);
                     uw.Flush();
                 }
