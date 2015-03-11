@@ -1852,11 +1852,12 @@ namespace Maestro.Editors.MapDefinition
                     group = _map.BaseMap.AddBaseLayerGroup(GenerateBaseGroupName(_map));
                 }
 
+                IBaseMapLayer focusLayer = null;
                 foreach (var rid in rids)
                 {
                     if (rid.ResourceId.ResourceType == ResourceTypes.LayerDefinition.ToString())
                     {
-                        group.AddLayer(GenerateBaseLayerName(rid.ResourceId.ToString(), _map.BaseMap), rid.ResourceId.ToString());
+                        focusLayer = group.AddLayer(GenerateBaseLayerName(rid.ResourceId.ToString(), _map.BaseMap), rid.ResourceId.ToString());
                         added++;
                     }
                 }
@@ -1864,6 +1865,8 @@ namespace Maestro.Editors.MapDefinition
                 if (added > 0)
                 {
                     _tiledLayerModel.Invalidate();
+                    if (focusLayer != null)
+                        RestoreBaseLayerSelection(focusLayer);
                 }
             }
             else if (data != null && data.Length == 1)

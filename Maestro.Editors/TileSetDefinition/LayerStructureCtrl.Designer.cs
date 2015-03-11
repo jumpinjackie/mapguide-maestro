@@ -79,6 +79,7 @@
             // 
             // trvBaseLayers
             // 
+            this.trvBaseLayers.AllowDrop = true;
             this.trvBaseLayers.BackColor = System.Drawing.SystemColors.Window;
             this.trvBaseLayers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.trvBaseLayers.DefaultToolTipProvider = null;
