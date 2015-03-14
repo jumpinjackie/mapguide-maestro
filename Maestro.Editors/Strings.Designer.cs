@@ -2549,6 +2549,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Saved tile set to: {0}.
+        /// </summary>
+        internal static string SavedTileSet {
+            get {
+                return ResourceManager.GetString("SavedTileSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You must save this map first before you can run MgCooker.
         /// </summary>
         internal static string SaveMapBeforeTiling {

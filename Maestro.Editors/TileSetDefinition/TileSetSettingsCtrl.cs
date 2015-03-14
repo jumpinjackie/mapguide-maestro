@@ -113,7 +113,7 @@ namespace Maestro.Editors.TileSetDefinition
             if (_tsd.TileStoreParameters.TileProvider == "Default") //NOXLATE
                 coordinateSystem = _tsd.GetDefaultCoordinateSystem();
             else
-                coordinateSystem = _service.CurrentConnection.CoordinateSystemCatalog.FindCoordSys("LL84").WKT;
+                coordinateSystem = _service.CurrentConnection.CoordinateSystemCatalog.FindCoordSys("WGS84.PseudoMercator").WKT; //NOXLATE
 
             var diag = new ExtentCalculationDialog(_service.CurrentConnection, coordinateSystem, CollectLayerIds);
             if (diag.ShowDialog() == DialogResult.OK)

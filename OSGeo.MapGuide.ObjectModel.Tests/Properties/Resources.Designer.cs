@@ -145,6 +145,29 @@ namespace OSGeo.MapGuide.ObjectModels.Tests.Properties {
         ///      &lt;Name&gt;TileHeight&lt;/Name&gt;
         ///      &lt;Value&gt;256&lt;/Value&gt; [rest of string was truncated]&quot;;.
         /// </summary>
+        internal static string OldTiledMap {
+            get {
+                return ResourceManager.GetString("OldTiledMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+        ///&lt;TileSetDefinition xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&quot;TileSetDefinition-3.0.0.xsd&quot;&gt;
+        ///  &lt;TileStoreParameters&gt;
+        ///    &lt;TileProvider&gt;Default&lt;/TileProvider&gt;
+        ///    &lt;Parameter&gt;
+        ///      &lt;Name&gt;TilePath&lt;/Name&gt;
+        ///      &lt;Value&gt;%MG_TILE_CACHE_PATH%&lt;/Value&gt;
+        ///    &lt;/Parameter&gt;
+        ///    &lt;Parameter&gt;
+        ///      &lt;Name&gt;TileWidth&lt;/Name&gt;
+        ///      &lt;Value&gt;256&lt;/Value&gt;
+        ///    &lt;/Parameter&gt;
+        ///    &lt;Parameter&gt;
+        ///      &lt;Name&gt;TileHeight&lt;/Name&gt;
+        ///      &lt;Value&gt;256&lt;/Value&gt; [rest of string was truncated]&quot;;.
+        /// </summary>
         internal static string UT_BaseMap {
             get {
                 return ResourceManager.GetString("UT_BaseMap", resourceCulture);

@@ -80,6 +80,7 @@
             this.txtTileSet = new System.Windows.Forms.TextBox();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.propertiesPanel = new System.Windows.Forms.Panel();
+            this.btnConvertToTileSet = new System.Windows.Forms.ToolStripButton();
             this.contentPanel.SuspendLayout();
             this.tabs.SuspendLayout();
             this.TAB_GROUP.SuspendLayout();
@@ -99,14 +100,14 @@
             this.contentPanel.Controls.Add(this.tabs);
             resources.ApplyResources(this.contentPanel, "contentPanel");
             // 
-            // tabControl1
+            // tabs
             // 
             this.tabs.Controls.Add(this.TAB_GROUP);
             this.tabs.Controls.Add(this.TAB_DRAWING_ORDER);
             this.tabs.Controls.Add(this.TAB_BASE_LAYERS);
             this.tabs.Controls.Add(this.TAB_TILE_SET);
-            resources.ApplyResources(this.tabs, "tabControl1");
-            this.tabs.Name = "tabControl1";
+            resources.ApplyResources(this.tabs, "tabs");
+            this.tabs.Name = "tabs";
             this.tabs.SelectedIndex = 0;
             this.tabs.SelectedIndexChanged += new System.EventHandler(this.tabs_SelectedIndexChanged);
             // 
@@ -414,7 +415,8 @@
             this.btnMoveBaseLayerDown,
             this.toolStripSeparator8,
             this.btnBaseLayerGroupToRegular,
-            this.btnInvokeMgCooker});
+            this.btnInvokeMgCooker,
+            this.btnConvertToTileSet});
             resources.ApplyResources(this.toolStrip3, "toolStrip3");
             this.toolStrip3.Name = "toolStrip3";
             // 
@@ -536,6 +538,14 @@
             resources.ApplyResources(this.propertiesPanel, "propertiesPanel");
             this.propertiesPanel.Name = "propertiesPanel";
             // 
+            // btnConvertToTileSet
+            // 
+            this.btnConvertToTileSet.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnConvertToTileSet.Image = global::Maestro.Editors.Properties.Resources.grid;
+            resources.ApplyResources(this.btnConvertToTileSet, "btnConvertToTileSet");
+            this.btnConvertToTileSet.Name = "btnConvertToTileSet";
+            this.btnConvertToTileSet.Click += new System.EventHandler(this.btnConvertToTileSet_Click);
+            // 
             // MapLayersSectionCtrl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -615,5 +625,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.TextBox txtTileSet;
+        private System.Windows.Forms.ToolStripButton btnConvertToTileSet;
     }
 }

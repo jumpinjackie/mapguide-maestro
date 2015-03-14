@@ -459,6 +459,15 @@ namespace OSGeo.MapGuide.ObjectModels {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Map Definition has no base map section.
+        /// </summary>
+        internal static string MapDefinitionHasNoBaseMapSection {
+            get {
+                return ResourceManager.GetString("MapDefinitionHasNoBaseMapSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not a folder resource id: {0}.
         /// </summary>
         internal static string NotAFolder {

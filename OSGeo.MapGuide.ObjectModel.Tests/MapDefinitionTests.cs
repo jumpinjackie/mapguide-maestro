@@ -23,6 +23,7 @@
 using NUnit.Framework;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,6 +73,60 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.NotNull(mdf.GetLayerByName("RoadCenterLines"));
             Assert.AreEqual(TileSourceType.External, mdf.TileSourceType);
             Assert.AreEqual("Library://UnitTests/TileSets/Sheboygan.TileSetDefinition", mdf.TileSetDefinitionID);
+        }
+
+        [Test]
+        public void ConvertToTileSetTest()
+        {
+            var res = ObjectFactory.DeserializeXml(Properties.Resources.OldTiledMap);
+            Assert.IsInstanceOf<IMapDefinition>(res);
+            var mdf = (IMapDefinition)res;
+
+            var tsd = mdf.ConvertToTileSet(new Version(3, 0, 0));
+
+            Assert.AreEqual(mdf.CoordinateSystem, tsd.GetDefaultCoordinateSystem());
+            Assert.AreEqual(mdf.Extents.MinX, tsd.Extents.MinX);
+            Assert.AreEqual(mdf.Extents.MinY, tsd.Extents.MinY);
+            Assert.AreEqual(mdf.Extents.MaxX, tsd.Extents.MaxX);
+            Assert.AreEqual(mdf.Extents.MaxY, tsd.Extents.MaxY);
+
+            Assert.AreEqual(mdf.BaseMap.BaseMapLayerGroups.Count(), tsd.GroupCount);
+
+            var origGroups = mdf.BaseMap.BaseMapLayerGroups.ToArray();
+            var tsdGroups = tsd.BaseMapLayerGroups.ToArray();
+
+            Assert.AreEqual(origGroups.Length, tsdGroups.Length);
+            for (int i = 0; i < origGroups.Length; i++)
+            {
+                var oriGroup = origGroups[i];
+                var tsdGroup = tsdGroups[i];
+
+                Assert.AreEqual(oriGroup.ExpandInLegend, tsdGroup.ExpandInLegend);
+                Assert.AreEqual(oriGroup.LegendLabel, tsdGroup.LegendLabel);
+                Assert.AreEqual(oriGroup.Name, tsdGroup.Name);
+                Assert.AreEqual(oriGroup.ShowInLegend, tsdGroup.ShowInLegend);
+                Assert.AreEqual(oriGroup.Visible, tsdGroup.Visible);
+
+                Assert.AreEqual(oriGroup.BaseMapLayer.Count(), tsdGroup.BaseMapLayer.Count());
+
+                var oriLayers = oriGroup.BaseMapLayer.ToArray();
+                var tsdLayers = tsdGroup.BaseMapLayer.ToArray();
+
+                Assert.AreEqual(oriLayers.Length, tsdLayers.Length);
+
+                for (int j = 0; j < oriLayers.Length; j++)
+                {
+                    var oriLayer = oriLayers[j];
+                    var tsdLayer = tsdLayers[j];
+
+                    Assert.AreEqual(oriLayer.ExpandInLegend, tsdLayer.ExpandInLegend);
+                    Assert.AreEqual(oriLayer.LegendLabel, tsdLayer.LegendLabel);
+                    Assert.AreEqual(oriLayer.Name, tsdLayer.Name);
+                    Assert.AreEqual(oriLayer.ResourceId, tsdLayer.ResourceId);
+                    Assert.AreEqual(oriLayer.Selectable, tsdLayer.Selectable);
+                    Assert.AreEqual(oriLayer.ShowInLegend, tsdLayer.ShowInLegend);
+                }
+            }
         }
     }
 }

@@ -181,6 +181,11 @@ namespace Maestro.Editors.MapDefinition
                     }
                 }
 
+                btnConvertToTileSet.Visible = (
+                    _edSvc.CurrentConnection.SiteVersion >= new Version(3, 0) &&
+                    _edSvc.CurrentConnection.Capabilities.SupportedResourceTypes.Contains(ResourceTypes.TileSetDefinition.ToString())
+                );
+
                 _map.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnMapPropertyChanged, (eh) => _map.PropertyChanged -= eh);
 
                 trvLayerDrawingOrder.Model = _doLayerModel = new DrawOrderLayerModel(_map);
@@ -2149,6 +2154,20 @@ namespace Maestro.Editors.MapDefinition
                 var mdf3 = _map as IMapDefinition3;
                 if (mdf3 != null)
                     mdf3.TileSetDefinitionID = txtTileSet.Text;
+            }
+        }
+
+        private void btnConvertToTileSet_Click(object sender, EventArgs e)
+        {
+            using (var picker = new ResourcePicker(_edSvc.CurrentConnection, ResourceTypes.TileSetDefinition.ToString(), ResourcePickerMode.SaveResource))
+            {
+                if (picker.ShowDialog() == DialogResult.OK)
+                {
+                    var tsd = _map.ConvertToTileSet(new Version(3, 0, 0));
+                    _edSvc.CurrentConnection.ResourceService.SaveResourceAs(tsd, picker.ResourceID);
+
+                    MessageBox.Show(string.Format(Maestro.Editors.Strings.SavedTileSet, picker.ResourceID));
+                }
             }
         }
     }

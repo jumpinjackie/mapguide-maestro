@@ -29,6 +29,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using OSGeo.MapGuide.ObjectModels;
 
 namespace OSGeo.MapGuide.ObjectModels.MapDefinition
 {
@@ -632,6 +633,49 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
                 if (string.IsNullOrEmpty(layer.Group))
                     yield return layer;
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="map"></param>
+        /// <returns></returns>
+        public static ITileSetDefinition ConvertToTileSet(this IMapDefinition map, Version schemaVersion)
+        {
+            Check.ArgumentNotNull(map, "map"); //NOXLATE
+
+            var tsd = ObjectFactory.CreateTileSetDefinition(schemaVersion, map.Extents.Clone());
+
+            var baseMap = map.BaseMap;
+            if (baseMap == null)
+                throw new InvalidOperationException(Strings.MapDefinitionHasNoBaseMapSection);
+
+            //Clear any existing default groups created
+            foreach(var grp in tsd.BaseMapLayerGroups.ToArray())
+            {
+                tsd.RemoveBaseLayerGroup(grp);
+            }
+            tsd.SetDefaultProviderParameters(300, 300, map.CoordinateSystem, baseMap.FiniteDisplayScale.ToArray());
+
+            foreach (var grp in baseMap.BaseMapLayerGroups)
+            {
+                var tsdGroup = tsd.AddBaseLayerGroup(grp.Name);
+                tsdGroup.ExpandInLegend = grp.ExpandInLegend;
+                tsdGroup.LegendLabel = grp.LegendLabel;
+                tsdGroup.ShowInLegend = grp.ShowInLegend;
+                tsdGroup.Visible = grp.Visible;
+
+                foreach (var layer in grp.BaseMapLayer)
+                {
+                    var tsdLayer = tsdGroup.AddLayer(layer.Name, layer.ResourceId);
+                    tsdLayer.ExpandInLegend = layer.ExpandInLegend;
+                    tsdLayer.LegendLabel = layer.LegendLabel;
+                    tsdLayer.Selectable = layer.Selectable;
+                    tsdLayer.ShowInLegend = layer.ShowInLegend;
+                }
+            }
+
+            return tsd;
         }
     }
 

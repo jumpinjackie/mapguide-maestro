@@ -2724,4 +2724,7 @@
   <data name="ParameterNotApplicableForTileProvider" xml:space="preserve">
     <value>Parameter {0} is not applicable for tile provider {1}</value>
   </data>
+  <data name="MapDefinitionHasNoBaseMapSection" xml:space="preserve">
+    <value>Map Definition has no base map section</value>
+  </data>
 </root>

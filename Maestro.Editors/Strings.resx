@@ -1715,4 +1715,7 @@ The calculated averages only accounts for the first {0} distinct values.</value>
   <data name="SymbolExported" xml:space="preserve">
     <value>Symbol exported to: {0}</value>
   </data>
+  <data name="SavedTileSet" xml:space="preserve">
+    <value>Saved tile set to: {0}</value>
+  </data>
 </root>
