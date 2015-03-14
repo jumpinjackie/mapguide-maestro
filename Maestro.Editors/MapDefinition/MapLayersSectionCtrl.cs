@@ -1997,7 +1997,7 @@ namespace Maestro.Editors.MapDefinition
             _edSvc.RunProcess("MgCooker",
                               "--" + TileRunParameters.PROVIDER + "=Maestro.Http",
                               "--" + TileRunParameters.CONNECTIONPARAMS + "=\"Url=" + conn.GetCustomProperty("BaseUrl").ToString() + ";SessionId=" + conn.SessionID + "\"",
-                              "--" + TileRunParameters.MAPDEFINITIONS + "=" + _edSvc.ResourceID);
+                              "\"--" + TileRunParameters.MAPDEFINITIONS + "=" + _edSvc.ResourceID + "\"");
         }
 
         private void tabs_SelectedIndexChanged(object sender, EventArgs e)
