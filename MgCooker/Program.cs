@@ -305,8 +305,8 @@ namespace MgCooker
                 Console.Clear();
             Console.WriteLine(string.Format(Strings.ConsoleUpdateTime.Replace("\\t", "\t"), DateTime.Now));
             Console.WriteLine(string.Format(Strings.ConsoleCurrentMap.Replace("\\t", "\t"), map.ResourceId, mapCount, map.Parent.Maps.Count));
-            Console.WriteLine(string.Format(Strings.ConsoleCurrentGroup.Replace("\\t", "\t"), group, groupCount, map.MapDefinition.BaseMap.GroupCount));
-            Console.WriteLine(string.Format(Strings.ConsoleCurrentScale.Replace("\\t", "\t"), map.MapDefinition.BaseMap.GetScaleAt(Array.IndexOf<int>(map.ScaleIndexMap, scaleindex)), Array.IndexOf<int>(map.ScaleIndexMap, scaleindex) + 1, map.MapDefinition.BaseMap.ScaleCount));
+            Console.WriteLine(string.Format(Strings.ConsoleCurrentGroup.Replace("\\t", "\t"), group, groupCount, map.TileSet.GroupCount));
+            Console.WriteLine(string.Format(Strings.ConsoleCurrentScale.Replace("\\t", "\t"), map.TileSet.GetScaleAt(Array.IndexOf<int>(map.ScaleIndexMap, scaleindex)), Array.IndexOf<int>(map.ScaleIndexMap, scaleindex) + 1, map.TileSet.ScaleCount));
             Console.WriteLine(string.Format(Strings.ConsoleCurrentTile.Replace("\\t", "\t"), tileCount, totalTiles));
             Console.WriteLine();
             Console.WriteLine(string.Format(Strings.ConsoleGroupDuration.Replace("\\t", "\t"), DateTime.Now - beginGroup));
@@ -379,14 +379,14 @@ namespace MgCooker
         {
             TimeSpan duration = DateTime.Now - beginScale;
             if (m_loggableProgress)
-                Console.WriteLine(string.Format(Strings.ConsoleOperationFinishScale, DateTime.Now, map.MapDefinition.BaseMap.GetScaleAt(scaleindex), duration));
+                Console.WriteLine(string.Format(Strings.ConsoleOperationFinishScale, DateTime.Now, map.TileSet.GetScaleAt(scaleindex), duration));
         }
 
         private static void bx_BeginRenderingScale(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
             beginScale = DateTime.Now;
             if (m_loggableProgress)
-                Console.WriteLine(string.Format(Strings.ConsoleOperationBeginScale, beginMap, map.MapDefinition.BaseMap.GetScaleAt(scaleindex), scaleindex, map.Resolutions));
+                Console.WriteLine(string.Format(Strings.ConsoleOperationBeginScale, beginMap, map.TileSet.GetScaleAt(scaleindex), scaleindex, map.Resolutions));
         }
 
         private static void bx_FinishRenderingMap(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)

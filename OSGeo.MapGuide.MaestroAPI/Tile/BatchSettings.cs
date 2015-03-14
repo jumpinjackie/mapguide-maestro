@@ -412,9 +412,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         private TilingRunCollection m_parent;
 
         /// <summary>
+        /// The resource ID of the tile set or map definition
+        /// </summary>
+        private string m_tileSetResourceID;
+
+        /// <summary>
+        /// The tile set extents
+        /// </summary>
+        private IEnvelope m_tileSetExtents;
+
+        /// <summary>
         /// The map read from MapGuide
         /// </summary>
-        private IMapDefinition m_mapdefinition;
+        private ITileSetAbstract m_tileset;
 
         /// <summary>
         /// The max extent of the map
@@ -464,8 +474,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         public MapTilingConfiguration(TilingRunCollection parent, string map)
         {
             m_parent = parent;
-            m_mapdefinition = (IMapDefinition)parent.Connection.ResourceService.GetResource(map);
-            var baseMap = m_mapdefinition.BaseMap;
+
+            IResource res = parent.Connection.ResourceService.GetResource(map);
+            IMapDefinition mdf = res as IMapDefinition;
+            ITileSetDefinition tsd = res as ITileSetDefinition;
+            if (mdf != null)
+            {
+                m_tileSetResourceID = mdf.ResourceID;
+                m_tileSetExtents = mdf.Extents.Clone();
+                m_tileset = mdf.BaseMap;
+            }
+            else if (tsd != null && tsd.SupportsCustomFiniteDisplayScales)
+            {
+                m_tileSetResourceID = tsd.ResourceID;
+                m_tileSetExtents = tsd.Extents.Clone();
+                m_tileset = tsd;
+            }
+
+            if (m_tileset == null)
+                throw new InvalidOperationException(OSGeo.MapGuide.MaestroAPI.Strings.UnseedableTileSet);
+
+            var baseMap = m_tileset;
 
             if (baseMap != null &&
                 baseMap.ScaleCount > 0)
@@ -481,7 +510,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
 
         internal void CalculateDimensions()
         {
-            int[] tmp = new int[this.MapDefinition.BaseMap.ScaleCount];
+            int[] tmp = new int[this.TileSet.ScaleCount];
             for (int i = 0; i < tmp.Length; i++)
                 tmp[i] = i;
 
@@ -490,14 +519,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
 
         internal void CalculateDimensionsInternal()
         {
-            if (m_mapdefinition.BaseMap.ScaleCount == 0)
+            if (m_tileset.ScaleCount == 0)
             {
                 m_scaleindexmap = new int[0];
                 m_dimensions = new long[0][];
                 return;
             }
 
-            IEnvelope extents = this.MaxExtent ?? m_mapdefinition.Extents;
+            IEnvelope extents = this.MaxExtent ?? m_tileSetExtents;
             double maxscale = m_maxscale;
 
             m_dimensions = new long[this.Resolutions][];
@@ -510,7 +539,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             for (int i = this.Resolutions - 1; i >= 0; i--)
             {
                 long rows, cols, rowTileOffset = 0, colTileOffset = 0;
-                double scale = m_mapdefinition.BaseMap.GetScaleAt(i);
+                double scale = m_tileset.GetScaleAt(i);
 
                 // This is the official method, and the only one MgCooker will ever use
 
@@ -542,13 +571,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                 if (m_maxExtent != null)
                 {
                     //The extent is overridden, so we need to adjust the start offsets
-                    double offsetX = MaxExtent.MinX - m_mapdefinition.Extents.MinX;
-                    double offsetY = m_mapdefinition.Extents.MaxY - MaxExtent.MaxY;
+                    double offsetX = MaxExtent.MinX - m_tileSetExtents.MinX;
+                    double offsetY = m_tileSetExtents.MaxY - MaxExtent.MaxY;
                     rowTileOffset = (int)Math.Floor(offsetY / tileHeight);
                     colTileOffset = (int)Math.Floor(offsetX / tileWidth);
 
-                    double offsetMaxX = MaxExtent.MaxX - m_mapdefinition.Extents.MinX;
-                    double offsetMinY = m_mapdefinition.Extents.MaxY - MaxExtent.MinY;
+                    double offsetMaxX = MaxExtent.MaxX - m_tileSetExtents.MinX;
+                    double offsetMinY = m_tileSetExtents.MaxY - MaxExtent.MinY;
                     int rowMinTileOffset = (int)Math.Floor(offsetMinY / tileHeight);
                     int colMaxTileOffset = (int)Math.Floor(offsetMaxX / tileWidth);
 
@@ -602,9 +631,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             List<int> keys = new List<int>(s.Keys);
             keys.Reverse();
 
-            for (int i = m_mapdefinition.BaseMap.ScaleCount - 1; i >= 0; i--)
+            for (int i = m_tileset.ScaleCount - 1; i >= 0; i--)
                 if (!keys.Contains(i))
-                    m_mapdefinition.BaseMap.RemoveScaleAt(i);
+                    m_tileset.RemoveScaleAt(i);
 
             CalculateDimensionsInternal();
 
@@ -649,10 +678,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         {
             get
             {
-                if (m_mapdefinition.BaseMap == null || m_mapdefinition.BaseMap.ScaleCount == 0)
+                if (m_tileset == null || m_tileset.ScaleCount == 0)
                     return 0;
                 else
-                    return m_mapdefinition.BaseMap.ScaleCount;
+                    return m_tileset.ScaleCount;
             }
         }
 
@@ -674,7 +703,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
 
                 //If the MaxExtents are different from the actual bounds, we need a start offset offset
 
-                RenderThreads settings = new RenderThreads(this, m_parent, m_scaleindexmap[scaleindex], group, m_mapdefinition.ResourceID, rows, cols, rowTileOffset, colTileOffset, m_parent.Config.RandomizeTileSequence);
+                RenderThreads settings = new RenderThreads(this, m_parent, m_scaleindexmap[scaleindex], group, m_tileSetResourceID, rows, cols, rowTileOffset, colTileOffset, m_parent.Config.RandomizeTileSequence);
 
                 settings.RunAndWait();
 
@@ -741,12 +770,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <summary>
         /// Gets the resourceId for the map
         /// </summary>
-        public string ResourceId { get { return m_mapdefinition.ResourceID; } }
+        public string ResourceId { get { return m_tileSetResourceID; } }
 
         /// <summary>
         /// Gets the MapDefintion
         /// </summary>
-        public IMapDefinition MapDefinition { get { return m_mapdefinition; } }
+        public ITileSetAbstract TileSet { get { return m_tileset; } }
 
         /// <summary>
         /// Gets a reference to the parent tiling run collection

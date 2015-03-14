@@ -147,6 +147,8 @@ namespace MgCooker
                 List<string> tmp = new List<string>();
                 foreach (ResourceListResourceDocument doc in m_connection.ResourceService.GetRepositoryResources(StringConstants.RootIdentifier, ResourceTypes.MapDefinition.ToString()).Items)
                     tmp.Add(doc.ResourceId);
+                foreach (ResourceListResourceDocument doc in m_connection.ResourceService.GetRepositoryResources(StringConstants.RootIdentifier, ResourceTypes.TileSetDefinition.ToString()).Items)
+                    tmp.Add(doc.ResourceId);
                 maps = tmp.ToArray();
             }
 
@@ -170,20 +172,33 @@ namespace MgCooker
             MapTree.Nodes.Clear();
             foreach (string m in maps)
             {
-                IMapDefinition mdef = m_connection.ResourceService.GetResource(m) as IMapDefinition;
-                if (mdef == null) //Skip unknown Map Definition version (which would be returned as UntypedResource objects)
+                ITileSetAbstract tileSet = null;
+                IResource res = m_connection.ResourceService.GetResource(m);
+                IMapDefinition mdef = res as IMapDefinition;
+                ITileSetDefinition tsd = res as ITileSetDefinition;
+                if (mdef != null)
+                {
+                    tileSet = mdef.BaseMap;
+                }
+                else if (tsd != null && tsd.SupportsCustomFiniteDisplayScales)
+                {
+                    tileSet = tsd;
+                }
+
+                if (tileSet == null)
                     continue;
 
-                IBaseMapDefinition baseMap = mdef.BaseMap;
-                if (baseMap != null &&
-                    baseMap.ScaleCount > 0 &&
-                    baseMap.HasGroups())
+                bool bValidTileSet = (tileSet != null &&
+                    tileSet.ScaleCount > 0 &&
+                    tileSet.HasGroups());
+
+                if (bValidTileSet)
                 {
                     TreeNode mn = MapTree.Nodes.Add(m);
 
                     mn.ImageIndex = mn.SelectedImageIndex = 0;
                     mn.Tag = mdef;
-                    foreach (var g in baseMap.BaseMapLayerGroups)
+                    foreach (var g in tileSet.BaseMapLayerGroups)
                     {
                         TreeNode gn = mn.Nodes.Add(g.Name);
                         gn.Tag = g;
@@ -200,7 +215,7 @@ namespace MgCooker
                         gn.ImageIndex = gn.SelectedImageIndex = 1;
 
                         int counter = 0;
-                        foreach (double d in baseMap.FiniteDisplayScale)
+                        foreach (double d in tileSet.FiniteDisplayScale)
                         {
                             TreeNode sn = gn.Nodes.Add(d.ToString(System.Globalization.CultureInfo.CurrentUICulture));
                             if (gn.Checked && scalesSelected.Contains(counter))
@@ -274,16 +289,19 @@ namespace MgCooker
                 if (mn.Checked)
                 {
                     foreach (TreeNode gn in mn.Nodes)
+                    {
                         if (gn.Checked)
                         {
                             List<int> ix = new List<int>();
                             foreach (TreeNode sn in gn.Nodes)
+                            {
                                 if (sn.Checked)
                                     ix.Add(sn.Index);
-
+                            }
                             if (ix.Count > 0)
                                 lst.Add(new Config(mn.Text, gn.Text, ix.ToArray(), (m_coordinateOverrides.ContainsKey(mn.Text) ? m_coordinateOverrides[mn.Text] : null)));
                         }
+                    }
                 }
             }
 
@@ -597,7 +615,7 @@ namespace MgCooker
             {
                 var currentPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
                 var mpuCalc = Path.Combine(currentPath, "AddIns/Local/MpuCalc.exe");
-                if (!File.Exists(mpuCalc))
+                if (!File.Exists(mpuCalc) && mapDef.EndsWith(ResourceTypes.MapDefinition.ToString()))
                 {
                     int[] cmdTypes = m_connection.Capabilities.SupportedCommands;
                     if (Array.IndexOf(cmdTypes, (int)OSGeo.MapGuide.MaestroAPI.Commands.CommandType.CreateRuntimeMap) < 0)
@@ -625,27 +643,40 @@ namespace MgCooker
                 }
                 else
                 {
-                    IMapDefinition mdf = (IMapDefinition)m_connection.ResourceService.GetResource(mapDef);
-                    var proc = new Process
+                    IResource res = m_connection.ResourceService.GetResource(mapDef);
+                    ITileSetDefinition tsd = res as ITileSetDefinition;
+                    IMapDefinition mdf = res as IMapDefinition;
+
+                    string coordSys = null;
+                    if (mdf != null)
+                        coordSys = mdf.CoordinateSystem;
+                    else if (tsd != null)
+                        coordSys = tsd.GetDefaultCoordinateSystem();
+
+                    string output = string.Empty;
+                    if (coordSys != null)
                     {
-                        StartInfo = new ProcessStartInfo
+                        var proc = new Process
                         {
-                            FileName = mpuCalc,
-                            Arguments = mdf.CoordinateSystem,
-                            UseShellExecute = false,
-                            RedirectStandardOutput = true,
-                            CreateNoWindow = true
+                            StartInfo = new ProcessStartInfo
+                            {
+                                FileName = mpuCalc,
+                                Arguments = coordSys,
+                                UseShellExecute = false,
+                                RedirectStandardOutput = true,
+                                CreateNoWindow = true
+                            }
+                        };
+                        proc.Start();
+                        StringBuilder sb = new StringBuilder();
+                        while (!proc.StandardOutput.EndOfStream)
+                        {
+                            string line = proc.StandardOutput.ReadLine();
+                            // do something with line
+                            sb.AppendLine(line);
                         }
-                    };
-                    proc.Start();
-                    StringBuilder sb = new StringBuilder();
-                    while (!proc.StandardOutput.EndOfStream)
-                    {
-                        string line = proc.StandardOutput.ReadLine();
-                        // do something with line
-                        sb.AppendLine(line);
+                        output = sb.ToString();
                     }
-                    string output = sb.ToString();
                     double mpu;
                     if (double.TryParse(output, out mpu))
                         return new MpuCalcResult() { Method = MpuMethod.MpuCalcExe, Result = Convert.ToDecimal(mpu) };

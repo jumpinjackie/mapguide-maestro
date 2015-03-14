@@ -2293,6 +2293,15 @@ namespace OSGeo.MapGuide.MaestroAPI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The given Map Definition or Tile Set Definition cannot be seeded.
+        /// </summary>
+        public static string UnseedableTileSet {
+            get {
+                return ResourceManager.GetString("UnseedableTileSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unsupported Load Procedure Type.
         /// </summary>
         public static string UnsupportedLoadProcedureType {

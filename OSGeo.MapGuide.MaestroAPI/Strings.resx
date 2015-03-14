@@ -891,4 +891,7 @@
   <data name="ErrorWriteClassXmlNeedToBeAttachedToParent" xml:space="preserve">
     <value>Cannot write XML for a Class Definition that is not attached to a parent schema</value>
   </data>
+  <data name="UnseedableTileSet" xml:space="preserve">
+    <value>The given Map Definition or Tile Set Definition cannot be seeded</value>
+  </data>
 </root>
