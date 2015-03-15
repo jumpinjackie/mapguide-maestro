@@ -88,8 +88,7 @@ namespace Maestro.Editors.Common
     {
         public static IExpressionEditor Create()
         {
-            //if (Platform.IsRunningOnMono)
-            if (true)
+            if (Platform.IsRunningOnMono)
                 return new MonoCompatibleExpressionEditor();
             else
                 return new ExpressionEditor();

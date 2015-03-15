@@ -1922,6 +1922,15 @@ namespace Maestro.Editors {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MgCooker only works with Tile Sets using the &apos;Default&apos; tile provider.
+        /// </summary>
+        internal static string MgCookerIncompatibleTileSet {
+            get {
+                return ResourceManager.GetString("MgCookerIncompatibleTileSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Missing column &quot;{0}&quot;.
         /// </summary>
         internal static string MissingColumnError {

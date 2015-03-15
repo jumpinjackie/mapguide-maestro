@@ -195,6 +195,12 @@ namespace Maestro.Editors.TileSetDefinition
                 return;
             }
 
+            if (_tsd.TileStoreParameters.TileProvider != "Default") //NOXLATE
+            {
+                MessageBox.Show(Maestro.Editors.Strings.MgCookerIncompatibleTileSet);
+                return;
+            }
+
             var conn = _edSvc.CurrentConnection;
             //HACK: Can't support other connection types beyond HTTP atm
             if (!conn.ProviderName.ToLower().Contains("maestro.http"))
