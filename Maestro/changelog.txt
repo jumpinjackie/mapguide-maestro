@@ -1,21 +1,30 @@
-﻿ 6.0a4
- =====
+﻿6.0m4
+=====
  
  - Updated to target .net Framework 4.5
+ - New mapguide-rest add-in
+ - Support for input() and raw_input() in IronPython console
  - Expression Editor now supports parsing/validation of FDO Filters and Expressions
     - Structure of an FDO filter or expression can be viewed under the tools menu
+ - Composite Symbolization editor improvements:
+    - Support for re-ordering display order of component symbols
+    - Support for exporting an inline component symbol out as an external Symbol Definition
  - MapGuide Open Source 3.0 support
     - Support for editing v3.0.0 Map Definition resources
     - Support for local resource previews in 3.0
     - Stamed tile layer options in Fusion editor
+    - Support Tile Set Definitions in MgCooker
+    - Base map sections of a Map Definition can be exported out to a Tile Set Definition
+ - Fix: Auto-calculation of Map Definition extent not triggering when adding first base layer or linking from an external tile set
+ - Fix: Cannot edit certain XML fragments through the Generic XML editor
  - Fix: Don't show debug watermarks when previewing watermarks
  - Fix: Divide by zero errors in Text Editor component
  - Fix: Incorrect MgCooker tile calculations
  - Fix: Add missing "Left" and "Right" horizontal text alignment options
  - Fix: Avoid XML content error in Layer Definition by preventing the ability to deleting style rule if there's only one
  
- 6.0a3
- =====
+6.0a3
+=====
  
  - Drag/Drop now properly handles cases where multiple handlers could handle a given file drop
  - Future-proofing
