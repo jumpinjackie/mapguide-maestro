@@ -273,4 +273,7 @@
   <data name="TPL_TSD_300_DESC" xml:space="preserve">
     <value>Create a new Tile Set Definition using the v3.0.0 schema</value>
   </data>
+  <data name="SelectTileProvider" xml:space="preserve">
+    <value>Select Tile Provider</value>
+  </data>
 </root>

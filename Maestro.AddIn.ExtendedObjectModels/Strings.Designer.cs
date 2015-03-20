@@ -79,6 +79,15 @@ namespace Maestro.AddIn.ExtendedObjectModels {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select Tile Provider.
+        /// </summary>
+        internal static string SelectTileProvider {
+            get {
+                return ResourceManager.GetString("SelectTileProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MapGuide Open Source 1.2 / MapGuide Enterprise 2008.
         /// </summary>
         internal static string TPL_CATEGORY_MGOS12 {

@@ -20,7 +20,10 @@
 
 #endregion Disclaimer / License
 using Maestro.Base.Templates;
+using Maestro.Editors.Common;
+using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,7 +54,26 @@ namespace Maestro.AddIn.ExtendedObjectModels.Templates
 
         public override IResource CreateItem(string startPoint, OSGeo.MapGuide.MaestroAPI.IServerConnection conn)
         {
-            return ObjectFactory.CreateTileSetDefinition(new Version(3, 0, 0));
+            var cmd = (IGetTileProviders)conn.CreateCommand((int)CommandType.GetTileProviders);
+            var providers = cmd.Execute();
+            var item = GenericItemSelectionDialog.SelectItem(Strings.SelectTileProvider, Strings.SelectTileProvider, providers.TileProvider, "DisplayName", "Name");
+            if (item != null)
+            {
+                ITileSetDefinition tsd = ObjectFactory.CreateTileSetDefinition(new Version(3, 0, 0));
+                switch (item.Name)
+                {
+                    case "Default":
+                        tsd.SetDefaultProviderParameters(300, 300, string.Empty, new double[0]);
+                        break;
+                    case "XYZ":
+                        tsd.SetXYZProviderParameters();
+                        break;
+                    default:
+                        return null;
+                }
+                return tsd;
+            }
+            return null;
         }
     }
 }
