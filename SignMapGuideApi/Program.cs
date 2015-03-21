@@ -41,7 +41,8 @@ namespace SignMapGuideApi
                                  "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.0A\\Bin\\ildasm.exe",
                                  "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.0A\\bin\\NETFX 4.0 Tools\\ildasm.exe",
                                  "C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\bin\\NETFX 4.0 Tools\\ildasm.exe",
-                                 "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.1\\bin\\NETFX 4.0 Tools\\ildasm.exe" }}
+                                 "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.1\\bin\\NETFX 4.0 Tools\\ildasm.exe",
+                                 "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v8.0A\\bin\\NETFX 4.0 Tools\\ildasm.exe" }}
         };
 
         private static Dictionary<string, string[]> ildasm64Paths = new Dictionary<string, string[]>()
@@ -62,7 +63,8 @@ namespace SignMapGuideApi
                                  "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.0A\\Bin\\x64\\ildasm.exe",
                                  "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.0A\\bin\\NETFX 4.0 Tools\\x64\\ildasm.exe",
                                  "C:\\Program Files\\Microsoft SDKs\\Windows\\v7.1\\bin\\NETFX 4.0 Tools\\x64\\ildasm.exe",
-                                 "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.1\\bin\\NETFX 4.0 Tools\\x64\\ildasm.exe" }}
+                                 "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v7.1\\bin\\NETFX 4.0 Tools\\x64\\ildasm.exe",
+                                 "C:\\Program Files (x86)\\Microsoft SDKs\\Windows\\v8.0A\\bin\\NETFX 4.0 Tools\\x64\\ildasm.exe"}}
         };
 
         //TODO: Allow for custom key and infer public key token from it
