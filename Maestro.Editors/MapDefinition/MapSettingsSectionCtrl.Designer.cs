@@ -52,6 +52,7 @@
             this.rdExternal = new System.Windows.Forms.RadioButton();
             this.rdInline = new System.Windows.Forms.RadioButton();
             this.label10 = new System.Windows.Forms.Label();
+            this.rdNone = new System.Windows.Forms.RadioButton();
             this.contentPanel.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.pnlTileSource.SuspendLayout();
@@ -191,6 +192,7 @@
             // 
             // pnlTileSource
             // 
+            this.pnlTileSource.Controls.Add(this.rdNone);
             this.pnlTileSource.Controls.Add(this.rdExternal);
             this.pnlTileSource.Controls.Add(this.rdInline);
             this.pnlTileSource.Controls.Add(this.label10);
@@ -207,9 +209,7 @@
             // rdInline
             // 
             resources.ApplyResources(this.rdInline, "rdInline");
-            this.rdInline.Checked = true;
             this.rdInline.Name = "rdInline";
-            this.rdInline.TabStop = true;
             this.rdInline.UseVisualStyleBackColor = true;
             this.rdInline.CheckedChanged += new System.EventHandler(this.rdInline_CheckedChanged);
             // 
@@ -217,6 +217,15 @@
             // 
             resources.ApplyResources(this.label10, "label10");
             this.label10.Name = "label10";
+            // 
+            // rdNone
+            // 
+            resources.ApplyResources(this.rdNone, "rdNone");
+            this.rdNone.Checked = true;
+            this.rdNone.Name = "rdNone";
+            this.rdNone.TabStop = true;
+            this.rdNone.UseVisualStyleBackColor = true;
+            this.rdNone.CheckedChanged += new System.EventHandler(this.rdNone_CheckedChanged);
             // 
             // MapSettingsSectionCtrl
             // 
@@ -258,5 +267,6 @@
         private System.Windows.Forms.RadioButton rdExternal;
         private System.Windows.Forms.RadioButton rdInline;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.RadioButton rdNone;
     }
 }

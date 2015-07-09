@@ -73,8 +73,8 @@ namespace Maestro.Editors.MapDefinition
                     case TileSourceType.Inline:
                         rdInline.Checked = true;
                         break;
-                    default: //Default to external
-                        rdExternal.Checked = true;
+                    default: //Default to none
+                        rdNone.Checked = true;
                         break;
                 }
             }
@@ -285,28 +285,33 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        private void rdInline_CheckedChanged(object sender, EventArgs e)
-        {
-            var mdf3 = _map as IMapDefinition3;
-            if (mdf3 != null)
-            {
-                if (rdInline.Checked)
-                    mdf3.TileSourceType = TileSourceType.Inline;
-                else
-                    mdf3.TileSourceType = TileSourceType.External;
-            }
-        }
-
-        private void rdExternal_CheckedChanged(object sender, EventArgs e)
+        private void UpdateTileSourceType()
         {
             var mdf3 = _map as IMapDefinition3;
             if (mdf3 != null)
             {
                 if (rdExternal.Checked)
                     mdf3.TileSourceType = TileSourceType.External;
-                else
+                else if (rdInline.Checked)
                     mdf3.TileSourceType = TileSourceType.Inline;
+                else
+                    mdf3.TileSourceType = TileSourceType.None;
             }
+        }
+
+        private void rdInline_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateTileSourceType();
+        }
+
+        private void rdExternal_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateTileSourceType();
+        }
+
+        private void rdNone_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateTileSourceType();
         }
     }
 }

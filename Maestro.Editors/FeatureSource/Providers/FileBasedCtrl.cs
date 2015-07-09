@@ -46,6 +46,9 @@ namespace Maestro.Editors.FeatureSource.Providers
         {
             unmanagedPanel.Enabled = true;
             resDataCtrl.Enabled = false;
+
+            if (!string.IsNullOrEmpty(txtAlias.Text))
+                ApplyAliasToFeatureSource();
         }
 
         private IEditorService _service;
@@ -103,6 +106,11 @@ namespace Maestro.Editors.FeatureSource.Providers
         }
 
         private void txtAlias_TextChanged(object sender, EventArgs e)
+        {
+            ApplyAliasToFeatureSource();
+        }
+
+        private void ApplyAliasToFeatureSource()
         {
             if (rdUnmanaged.Checked)
             {

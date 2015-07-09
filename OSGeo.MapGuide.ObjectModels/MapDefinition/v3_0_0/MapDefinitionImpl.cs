@@ -76,7 +76,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v3_0_0
     {
         internal static MapDefinition CreateDefault()
         {
-            return new MapDefinition()
+            var mdf3 = new MapDefinition()
             {
                 Name = string.Empty,
                 CoordinateSystem = string.Empty,
@@ -84,8 +84,10 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v3_0_0
                 BackgroundColor = Color.White,
                 MapLayer = new System.ComponentModel.BindingList<MapLayerType>(),
                 MapLayerGroup = new System.ComponentModel.BindingList<MapLayerGroupType>(),
-                Watermarks = new BindingList<OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_4_0.WatermarkType>()
+                Watermarks = new BindingList<OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_4_0.WatermarkType>()               
             };
+            ((IMapDefinition3)mdf3).TileSourceType = TileSourceType.None;
+            return mdf3;
         }
 
         public static IResource Deserialize(string xml)

@@ -245,9 +245,12 @@ namespace Maestro.Editors.MapDefinition
 
         private void RefreshModels()
         {
-            _doLayerModel.Invalidate();
-            _grpLayerModel.Invalidate();
-            _tiledLayerModel.Invalidate();
+            if (_doLayerModel != null)
+                _doLayerModel.Invalidate();
+            if (_grpLayerModel != null)
+                _grpLayerModel.Invalidate();
+            if (_tiledLayerModel != null)
+                _tiledLayerModel.Invalidate();
         }
 
         public event OpenLayerEventHandler RequestLayerOpen;
