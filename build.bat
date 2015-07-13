@@ -2,7 +2,7 @@
 SET TYPEACTION=build
 SET TYPEBUILD=Release
 SET PLATFORM=Any CPU
-SET RELEASE_VERSION=6.0a4
+SET RELEASE_VERSION=6.0m5
 SET OLDPATH=%PATH%
 SET PATH=%PATH%;%CD%\Thirdparty\NSIS;C:\Windows\Microsoft.NET\Framework\v4.0.30319
 SET SLNDIR=%CD%
@@ -74,10 +74,6 @@ if "%TYPEACTION%"=="clean" goto clean
 :build
 pushd Maestro
 %MSBUILD% Maestro_All.sln
-popd
-rem GeoRest addin not ready for prime-time so remove this from output dir
-pushd out\%TYPEBUILD%\AddIns
-rd /S /Q GeoRest
 popd
 pushd UserDoc
 call make.bat html
