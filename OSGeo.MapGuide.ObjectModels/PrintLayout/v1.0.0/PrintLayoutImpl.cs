@@ -57,7 +57,7 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout.v1_0_0
                     throw new InvalidOperationException(string.Format(Strings.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.PrintLayout));
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID"); //NOXLATE
+                this.OnPropertyChanged(nameof(ResourceID));
             }
         }
 
@@ -127,7 +127,7 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout.v1_0_0
             if (l != null)
             {
                 this.CustomLogos.Remove(l);
-                OnPropertyChanged("CustomLogos"); //NOXLATE
+                OnPropertyChanged(nameof(CustomLogos));
             }
         }
 
@@ -149,7 +149,7 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout.v1_0_0
             if (t != null)
             {
                 this.CustomText.Add(t);
-                OnPropertyChanged("CustomText"); //NOXLATE
+                OnPropertyChanged(nameof(CustomText));
             }
         }
 
@@ -159,7 +159,7 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout.v1_0_0
             if (t != null)
             {
                 this.CustomText.Remove(t);
-                OnPropertyChanged("CustomText"); //NOXLATE
+                OnPropertyChanged(nameof(CustomText));
             }
         }
 
@@ -202,7 +202,7 @@ namespace OSGeo.MapGuide.ObjectModels.PrintLayout.v1_0_0
             if (l != null)
             {
                 this.CustomLogos.Add(l);
-                OnPropertyChanged("CustomLogos"); //NOXLATE
+                OnPropertyChanged(nameof(CustomLogos));
             }
         }
 

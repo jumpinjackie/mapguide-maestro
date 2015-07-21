@@ -174,7 +174,7 @@ namespace Maestro.MapViewer
 
                 _busy = value;
                 Trace.TraceInformation("Legend IsBusy: {0}", this.IsBusy);
-                OnPropertyChanged("IsBusy");
+                OnPropertyChanged(nameof(IsBusy));
             }
         }
 

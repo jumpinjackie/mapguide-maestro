@@ -201,7 +201,7 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_3_0
                     throw new InvalidOperationException("Invalid resource identifier for this type of object: " + res.Extension); //LOCALIZE
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID");
+                this.OnPropertyChanged(nameof(ResourceID));
             }
         }
 

@@ -55,13 +55,13 @@ namespace OSGeo.MapGuide.ObjectModels.Common
                     if ((anyField.Equals(value) != true))
                     {
                         this.anyField = value;
-                        this.OnPropertyChanged("Any"); //NOXLATE
+                        this.OnPropertyChanged(nameof(Any));
                     }
                 }
                 else
                 {
                     this.anyField = value;
-                    this.OnPropertyChanged("Any"); //NOXLATE
+                    this.OnPropertyChanged(nameof(Any));
                 }
             }
         }

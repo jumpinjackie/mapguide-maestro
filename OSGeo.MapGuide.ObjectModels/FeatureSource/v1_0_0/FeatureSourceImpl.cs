@@ -56,7 +56,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0
                     throw new InvalidOperationException(string.Format(Strings.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.FeatureSource));
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID"); //NOXLATE
+                this.OnPropertyChanged(nameof(ResourceID));
             }
         }
 
@@ -159,7 +159,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0
             }
 
             if (bRaise)
-                OnPropertyChanged("Parameter"); //NOXLATE
+                OnPropertyChanged(nameof(Parameter));
         }
 
         protected void DetachChangeListeners()

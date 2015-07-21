@@ -67,7 +67,7 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0
                     throw new InvalidOperationException(string.Format(Strings.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.LoadProcedure));
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID"); //NOXLATE
+                this.OnPropertyChanged(nameof(ResourceID));
             }
         }
 

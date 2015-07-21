@@ -142,7 +142,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
                     throw new InvalidOperationException(string.Format(Strings.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.ApplicationDefinition));
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID"); //NOXLATE
+                this.OnPropertyChanged(nameof(ResourceID));
             }
         }
 
@@ -296,7 +296,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             if (grp != null)
             {
                 this.MapSet.Add(grp);
-                OnPropertyChanged("MapSet"); //NOXLATE
+                OnPropertyChanged(nameof(MapSet));
             }
         }
 
@@ -306,7 +306,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             if (grp != null)
             {
                 this.MapSet.Remove(grp);
-                OnPropertyChanged("MapSet"); //NOXLATE
+                OnPropertyChanged(nameof(MapSet));
             }
         }
 
@@ -328,7 +328,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             if (wset != null)
             {
                 this.WidgetSet.Add(wset);
-                OnPropertyChanged("WidgetSet"); //NOXLATE
+                OnPropertyChanged(nameof(WidgetSet));
             }
         }
 
@@ -338,7 +338,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             if (wset != null)
             {
                 this.WidgetSet.Remove(wset);
-                OnPropertyChanged("WidgetSet"); //NOXLATE
+                OnPropertyChanged(nameof(WidgetSet));
             }
         }
 
@@ -413,7 +413,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             {
                 this.Item.Insert(index, it);
                 it.Parent = this;
-                OnPropertyChanged("Item"); //NOXLATE
+                OnPropertyChanged(nameof(Item));
             }
         }
 
@@ -424,7 +424,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             {
                 this.Item.Add(it);
                 it.Parent = this;
-                OnPropertyChanged("Item"); //NOXLATE
+                OnPropertyChanged(nameof(Item));
             }
         }
 
@@ -435,7 +435,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             {
                 this.Item.Remove(it);
                 it.Parent = null;
-                OnPropertyChanged("Item"); //NOXLATE
+                OnPropertyChanged(nameof(Item));
             }
         }
     }
@@ -501,7 +501,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             {
                 this.Item.Insert(index, it);
                 it.Parent = this;
-                OnPropertyChanged("Item"); //NOXLATE
+                OnPropertyChanged(nameof(Item));
             }
         }
 
@@ -512,7 +512,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             {
                 this.Item.Add(it);
                 it.Parent = this;
-                OnPropertyChanged("Item"); //NOXLATE
+                OnPropertyChanged(nameof(Item));
             }
         }
 
@@ -523,7 +523,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             {
                 this.Item.Remove(it);
                 it.Parent = null;
-                OnPropertyChanged("Item"); //NOXLATE
+                OnPropertyChanged(nameof(Item));
             }
         }
     }
@@ -564,7 +564,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             if (cnt != null)
             {
                 this.Container.Add(cnt);
-                OnPropertyChanged("Container"); //NOXLATE
+                OnPropertyChanged(nameof(Container));
             }
         }
 
@@ -574,7 +574,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             if (cnt != null)
             {
                 this.Container.Remove(cnt);
-                OnPropertyChanged("Container"); //NOXLATE
+                OnPropertyChanged(nameof(Container));
             }
         }
 
@@ -842,7 +842,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             if (m != null)
             {
                 this.Map.Add(m);
-                OnPropertyChanged("Map"); //NOXLATE
+                OnPropertyChanged(nameof(Map));
             }
         }
 
@@ -852,7 +852,7 @@ namespace OSGeo.MapGuide.ObjectModels.ApplicationDefinition.v1_0_0
             if (m != null)
             {
                 this.Map.Remove(m);
-                OnPropertyChanged("Map"); //NOXLATE
+                OnPropertyChanged(nameof(Map));
             }
         }
 

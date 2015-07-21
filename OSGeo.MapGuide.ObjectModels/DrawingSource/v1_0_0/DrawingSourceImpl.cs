@@ -52,14 +52,14 @@ namespace OSGeo.MapGuide.ObjectModels.DrawingSource.v1_0_0
             set
             {
                 if (!ResourceIdentifier.Validate(value))
-                    throw new InvalidOperationException(Strings.ErrorInvalidResourceIdentifier); //LOCALIZE
+                    throw new InvalidOperationException(Strings.ErrorInvalidResourceIdentifier);
 
                 var res = new ResourceIdentifier(value);
                 if (res.Extension != ResourceTypes.DrawingSource.ToString())
                     throw new InvalidOperationException(string.Format(Strings.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.DrawingSource)); //LOCALIZE
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID"); //NOXLATE
+                this.OnPropertyChanged(nameof(ResourceID));
             }
         }
 

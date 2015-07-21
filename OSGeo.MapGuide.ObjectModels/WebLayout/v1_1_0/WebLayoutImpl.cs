@@ -122,7 +122,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
                     throw new InvalidOperationException(string.Format(Strings.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.WebLayout));
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID"); //NOXLATE
+                this.OnPropertyChanged(nameof(ResourceID));
             }
         }
 
@@ -902,7 +902,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
             if (c != null)
             {
                 this.CommandSet.Add(c);
-                OnPropertyChanged("CommandSet"); //NOXLATE
+                OnPropertyChanged(nameof(CommandSet));
                 if (cmd is IInvokeUrlCommand || cmd is IInvokeScriptCommand || cmd is ISearchCommand)
                 {
                     var handler = this.CustomCommandAdded;
@@ -918,7 +918,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
             if (c != null)
             {
                 this.CommandSet.Remove(c);
-                OnPropertyChanged("CommandSet"); //NOXLATE
+                OnPropertyChanged(nameof(CommandSet));
                 if (cmd is IInvokeUrlCommand || cmd is IInvokeScriptCommand || cmd is ISearchCommand)
                 {
                     var handler = this.CustomCommandRemoved;
@@ -1043,7 +1043,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
             {
                 this.Button.Add(it);
                 it.Parent = this;
-                OnPropertyChanged("Button"); //NOXLATE
+                OnPropertyChanged(nameof(Button));
             }
         }
 
@@ -1054,7 +1054,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
             {
                 this.Button.Remove(it);
                 it.Parent = null;
-                OnPropertyChanged("Button"); //NOXLATE
+                OnPropertyChanged(nameof(Button));
             }
         }
 
@@ -1073,7 +1073,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
                     this.Button[isrc] = dst;
                     this.Button[idst] = src;
 
-                    OnPropertyChanged("Button"); //NOXLATE
+                    OnPropertyChanged(nameof(Button));
                     return true;
                 }
             }
@@ -1096,7 +1096,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
                     this.Button[isrc] = dst;
                     this.Button[idst] = src;
 
-                    OnPropertyChanged("Button"); //NOXLATE
+                    OnPropertyChanged(nameof(Button));
                     return true;
                 }
             }
@@ -1155,7 +1155,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
             {
                 this.MenuItem.Add(it);
                 it.Parent = this;
-                OnPropertyChanged("MenuItem"); //NOXLATE
+                OnPropertyChanged(nameof(MenuItem));
             }
         }
 
@@ -1166,7 +1166,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
             {
                 this.MenuItem.Remove(it);
                 it.Parent = null;
-                OnPropertyChanged("MenuItem"); //NOXLATE
+                OnPropertyChanged(nameof(MenuItem));
             }
         }
 
@@ -1185,7 +1185,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
                     this.MenuItem[isrc] = dst;
                     this.MenuItem[idst] = src;
 
-                    OnPropertyChanged("Button"); //NOXLATE
+                    OnPropertyChanged(nameof(MenuItem));
                     return true;
                 }
             }
@@ -1207,7 +1207,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
                     this.MenuItem[isrc] = dst;
                     this.MenuItem[idst] = src;
 
-                    OnPropertyChanged("Button"); //NOXLATE
+                    OnPropertyChanged(nameof(MenuItem));
                     return true;
                 }
             }
@@ -1262,7 +1262,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
             {
                 this.MenuButton.Add(it);
                 it.Parent = this;
-                OnPropertyChanged("MenuButton"); //NOXLATE
+                OnPropertyChanged(nameof(MenuButton));
             }
         }
 
@@ -1273,7 +1273,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
             {
                 this.MenuButton.Remove(it);
                 it.Parent = null;
-                OnPropertyChanged("MenuButton"); //NOXLATE
+                OnPropertyChanged(nameof(MenuButton));
             }
         }
 
@@ -1292,7 +1292,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
                     this.MenuButton[isrc] = dst;
                     this.MenuButton[idst] = src;
 
-                    OnPropertyChanged("Button"); //NOXLATE
+                    OnPropertyChanged(nameof(MenuButton));
                     return true;
                 }
             }
@@ -1314,7 +1314,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
                     this.MenuButton[isrc] = dst;
                     this.MenuButton[idst] = src;
 
-                    OnPropertyChanged("Button"); //NOXLATE
+                    OnPropertyChanged(nameof(MenuButton));
                     return true;
                 }
             }
@@ -1416,7 +1416,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
             if (r != null)
             {
                 this.PrintLayout.Add(r);
-                OnPropertyChanged("PrintLayout"); //NOXLATE
+                OnPropertyChanged(nameof(PrintLayout));
             }
         }
 
@@ -1426,7 +1426,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
             if (r != null)
             {
                 this.PrintLayout.Remove(r);
-                OnPropertyChanged("PrintLayout"); //NOXLATE
+                OnPropertyChanged(nameof(PrintLayout));
             }
         }
     }
@@ -1470,7 +1470,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
             {
                 this.SubItem.Add(i);
                 i.Parent = this;
-                OnPropertyChanged("SubItem"); //NOXLATE
+                OnPropertyChanged(nameof(SubItem));
             }
         }
 
@@ -1481,7 +1481,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
             {
                 this.SubItem.Remove(i);
                 i.Parent = null;
-                OnPropertyChanged("SubItem"); //NOXLATE
+                OnPropertyChanged(nameof(SubItem));
             };
         }
 
@@ -1500,7 +1500,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
                     this.SubItem[isrc] = dst;
                     this.SubItem[idst] = src;
 
-                    OnPropertyChanged("Button"); //NOXLATE
+                    OnPropertyChanged(nameof(SubItem));
                     return true;
                 }
             }
@@ -1522,7 +1522,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
                     this.SubItem[isrc] = dst;
                     this.SubItem[idst] = src;
 
-                    OnPropertyChanged("Button"); //NOXLATE
+                    OnPropertyChanged(nameof(SubItem));
                     return true;
                 }
             }
@@ -1598,7 +1598,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
             if (p != null)
             {
                 this.AdditionalParameter.Add(p);
-                OnPropertyChanged("AdditionalParameter"); //NOXLATE
+                OnPropertyChanged(nameof(AdditionalParameter));
             }
         }
 
@@ -1608,7 +1608,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
             if (p != null)
             {
                 this.AdditionalParameter.Remove(p);
-                OnPropertyChanged("AdditionalParameter"); //NOXLATE
+                OnPropertyChanged(nameof(AdditionalParameter));
             }
         }
 
@@ -1684,7 +1684,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
             if (c != null)
             {
                 this.ResultColumns.Add(c);
-                OnPropertyChanged("ResultColumns"); //NOXLATE
+                OnPropertyChanged(nameof(ResultColumns));
             }
         }
 
@@ -1694,7 +1694,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
             if (c != null)
             {
                 this.ResultColumns.Remove(c);
-                OnPropertyChanged("ResultColumns"); //NOXLATE
+                OnPropertyChanged(nameof(ResultColumns));
             }
         }
     }

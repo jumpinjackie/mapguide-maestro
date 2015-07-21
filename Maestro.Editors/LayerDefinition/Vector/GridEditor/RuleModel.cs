@@ -147,7 +147,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 if (value != _rule.Filter)
                 {
                     _rule.Filter = value;
-                    OnPropertyChanged("Filter");
+                    OnPropertyChanged(nameof(Filter));
                 }
             }
         }
@@ -163,7 +163,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 if (value != _rule.LegendLabel)
                 {
                     _rule.LegendLabel = value;
-                    OnPropertyChanged("LegendLabel");
+                    OnPropertyChanged(nameof(LegendLabel));
                 }
             }
         }
@@ -181,7 +181,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 if (value != _style)
                 {
                     _style = value;
-                    OnPropertyChanged("Style");
+                    OnPropertyChanged(nameof(Style));
                 }
             }
         }
@@ -220,7 +220,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 if (value != _label)
                 {
                     _label = value;
-                    OnPropertyChanged("Label");
+                    OnPropertyChanged(nameof(Label));
                 }
             }
         }
@@ -479,7 +479,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 if (value != _rule.Filter)
                 {
                     _rule.Filter = value;
-                    OnPropertyChanged("Filter");
+                    OnPropertyChanged(nameof(Filter));
                 }
             }
         }
@@ -495,7 +495,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 if (value != _rule.LegendLabel)
                 {
                     _rule.LegendLabel = value;
-                    OnPropertyChanged("LegendLabel");
+                    OnPropertyChanged(nameof(LegendLabel));
                 }
             }
         }
@@ -513,7 +513,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
                 if (value != _style)
                 {
                     _style = value;
-                    OnPropertyChanged("Style");
+                    OnPropertyChanged(nameof(Style));
                 }
             }
         }

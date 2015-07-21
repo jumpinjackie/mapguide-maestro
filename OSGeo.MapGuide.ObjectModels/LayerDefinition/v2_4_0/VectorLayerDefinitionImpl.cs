@@ -145,7 +145,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
                 if ((minScaleFieldSpecified.Equals(value) != true))
                 {
                     this.minScaleFieldSpecified = value;
-                    this.OnPropertyChanged("MinScaleSpecified"); //NOXLATE
+                    this.OnPropertyChanged(nameof(MinScaleSpecified));
                 }
             }
         }
@@ -1706,7 +1706,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
                     throw new InvalidOperationException(string.Format(Strings.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.LayerDefinition));
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID"); //NOXLATE
+                this.OnPropertyChanged(nameof(ResourceID));
             }
         }
 
@@ -2282,7 +2282,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
             {
                 if (_resId == value) return;
                 _resId = value;
-                OnPropertyChanged("ResourceId"); //NOXLATE
+                OnPropertyChanged(nameof(ResourceId));
             }
         }
 

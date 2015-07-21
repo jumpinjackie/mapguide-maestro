@@ -169,7 +169,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
             set
             {
                 this.lowerLeftCoordinateField.X = value;
-                OnPropertyChanged("MinX"); //NOXLATE
+                OnPropertyChanged(nameof(MinX));
             }
         }
 
@@ -182,7 +182,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
             set
             {
                 this.lowerLeftCoordinateField.Y = value;
-                OnPropertyChanged("MinY"); //NOXLATE
+                OnPropertyChanged(nameof(MinY));
             }
         }
 
@@ -195,7 +195,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
             set
             {
                 this.upperRightCoordinateField.X = value;
-                OnPropertyChanged("MaxX");
+                OnPropertyChanged(nameof(MaxX));
             }
         }
 
@@ -208,7 +208,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
             set
             {
                 this.upperRightCoordinateField.Y = value;
-                OnPropertyChanged("MaxY"); //NOXLATE
+                OnPropertyChanged(nameof(MaxY));
             }
         }
     }

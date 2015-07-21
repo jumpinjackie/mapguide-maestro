@@ -355,7 +355,7 @@ namespace Maestro.MapViewer
             set
             {
                 _selColor = value;
-                OnPropertyChanged("SelectionColor");
+                OnPropertyChanged(nameof(SelectionColor));
             }
         }
 
@@ -377,7 +377,7 @@ namespace Maestro.MapViewer
                 if (!value.Equals(_tooltipFillColor))
                 {
                     _tooltipFillColor = value;
-                    OnPropertyChanged("TooltipFillColor");
+                    OnPropertyChanged(nameof(TooltipFillColor));
                 }
             }
         }
@@ -395,7 +395,7 @@ namespace Maestro.MapViewer
                 if (!value.Equals(_tooltipFillTransparency))
                 {
                     _tooltipFillTransparency = value;
-                    OnPropertyChanged("TooltipFillTransparency");
+                    OnPropertyChanged(nameof(TooltipFillTransparency));
                 }
             }
         }
@@ -435,7 +435,7 @@ namespace Maestro.MapViewer
                 if (!value.Equals(_showVertexCoords))
                 {
                     _showVertexCoords = value;
-                    OnPropertyChanged("ShowVertexCoordinatesWhenDigitizing");
+                    OnPropertyChanged(nameof(ShowVertexCoordinatesWhenDigitizing));
                 }
             }
         }
@@ -572,7 +572,7 @@ namespace Maestro.MapViewer
             set
             {
                 _digitizingOutline = value;
-                OnPropertyChanged("DigitizingOutline");
+                OnPropertyChanged(nameof(DigitizingOutline));
             }
         }
 
@@ -589,7 +589,7 @@ namespace Maestro.MapViewer
                 if (!value.Equals(_digitizingFillTransparency))
                 {
                     _digitizingFillTransparency = value;
-                    OnPropertyChanged("DigitizingFillTransparency");
+                    OnPropertyChanged(nameof(DigitizingFillTransparency));
                 }
             }
         }
@@ -611,7 +611,8 @@ namespace Maestro.MapViewer
             set
             {
                 _digitizingFillColor = value;
-                OnPropertyChanged("DigitzingFillColor");
+                var _this = this;
+                OnPropertyChanged("DigitzingFillColor"); //NOXLATE
             }
         }
 
@@ -799,7 +800,7 @@ namespace Maestro.MapViewer
                     Invalidate();
                 }
 
-                OnPropertyChanged("FeatureTooltipsEnabled");
+                OnPropertyChanged(nameof(FeatureTooltipsEnabled));
             }
         }
 
@@ -1196,9 +1197,9 @@ namespace Maestro.MapViewer
 
             //Reset history stack
             _viewHistory.Clear();
-            OnPropertyChanged("ViewHistory");
+            OnPropertyChanged(nameof(ViewHistory));
             _viewHistoryIndex = -1;
-            OnPropertyChanged("ViewHistoryIndex");
+            OnPropertyChanged(nameof(ViewHistoryIndex));
 
             var handler = this.MapLoaded;
             if (handler != null)
@@ -1386,7 +1387,7 @@ namespace Maestro.MapViewer
 
                 _digitizingType = value;
 
-                OnPropertyChanged("DigitizingType");
+                OnPropertyChanged(nameof(DigitizingType));
             }
         }
 
@@ -1585,7 +1586,7 @@ namespace Maestro.MapViewer
                     Trace.TraceInformation("Rendering operation took {0}ms", _renderSw.ElapsedMilliseconds);
                 }
 #endif
-                OnPropertyChanged("IsBusy");
+                OnPropertyChanged(nameof(IsBusy));
             }
         }
 
@@ -1738,7 +1739,7 @@ namespace Maestro.MapViewer
             var view = _viewHistory[newIndex];
             ZoomToView(view.X, view.Y, view.Scale, true, true, false);
             _viewHistoryIndex = newIndex;
-            OnPropertyChanged("ViewHistoryIndex");
+            OnPropertyChanged(nameof(ViewHistoryIndex));
         }
 
         /// <summary>
@@ -1757,7 +1758,7 @@ namespace Maestro.MapViewer
             var view = _viewHistory[newIndex];
             ZoomToView(view.X, view.Y, view.Scale, true, true, false);
             _viewHistoryIndex = newIndex;
-            OnPropertyChanged("ViewHistoryIndex");
+            OnPropertyChanged(nameof(ViewHistoryIndex));
         }
 
         /// <summary>
@@ -1788,9 +1789,9 @@ namespace Maestro.MapViewer
                     PruneHistoryEntriesFromCurrentView();
 
                 _viewHistory.Add(new MapViewHistoryEntry(x, y, newScale));
-                OnPropertyChanged("ViewHistory");
+                OnPropertyChanged(nameof(ViewHistory));
                 _viewHistoryIndex = _viewHistory.Count - 1;
-                OnPropertyChanged("ViewHistoryIndex");
+                OnPropertyChanged(nameof(ViewHistoryIndex));
             }
 
             _map.SetViewCenter(x, y);
@@ -2060,7 +2061,7 @@ namespace Maestro.MapViewer
                 if (value.Equals(_zoomInFactor))
                     return;
                 _zoomInFactor = value;
-                OnPropertyChanged("ZoomInFactor");
+                OnPropertyChanged(nameof(ZoomInFactor));
             }
         }
 
@@ -2077,7 +2078,7 @@ namespace Maestro.MapViewer
                 if (value.Equals(_zoomOutFactor))
                     return;
                 _zoomOutFactor = value;
-                OnPropertyChanged("ZoomOutFactor");
+                OnPropertyChanged(nameof(ZoomOutFactor));
             }
         }
 
@@ -2846,7 +2847,7 @@ namespace Maestro.MapViewer
                 if (value != MapActiveTool.None)
                     this.DigitizingType = MapDigitizationType.None;
 
-                OnPropertyChanged("ActiveTool");
+                OnPropertyChanged(nameof(ActiveTool));
             }
         }
 

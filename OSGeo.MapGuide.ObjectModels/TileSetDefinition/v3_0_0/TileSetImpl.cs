@@ -85,7 +85,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0
                     throw new InvalidOperationException(string.Format(Strings.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.SymbolDefinition));
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID"); //NOXLATE
+                this.OnPropertyChanged(nameof(ResourceID));
             }
         }
 
@@ -149,7 +149,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0
                     this.Extents.MaxY = value.MaxY;
                     this.Extents.MinX = value.MinX;
                     this.Extents.MinY = value.MinY;
-                    OnPropertyChanged("Extents"); //NOXLATE
+                    OnPropertyChanged(nameof(Extents));
                 }
             }
         }
@@ -447,7 +447,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0
                 Selectable = true
             };
             this.BaseMapLayer.Add(layer);
-            OnPropertyChanged("BaseMapLayer"); //NOXLATE
+            OnPropertyChanged(nameof(BaseMapLayer));
             return layer;
         }
 
@@ -457,7 +457,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0
             if (lyr != null)
             {
                 this.BaseMapLayer.Remove(lyr);
-                OnPropertyChanged("BaseMapLayer"); //NOXLATE
+                OnPropertyChanged(nameof(BaseMapLayer));
             }
         }
 
@@ -477,7 +477,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0
                     this.BaseMapLayer[isrc] = dst;
                     this.BaseMapLayer[idst] = src;
 
-                    OnPropertyChanged("BaseMapLayer"); //NOXLATE
+                    OnPropertyChanged(nameof(BaseMapLayer));
 
                     return idst;
                 }
@@ -502,7 +502,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0
                     this.BaseMapLayer[isrc] = dst;
                     this.BaseMapLayer[idst] = src;
 
-                    OnPropertyChanged("BaseMapLayer"); //NOXLATE
+                    OnPropertyChanged(nameof(BaseMapLayer));
 
                     return idst;
                 }

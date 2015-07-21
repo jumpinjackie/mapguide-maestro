@@ -416,7 +416,7 @@ namespace Maestro.Editors.WebLayout
                 if (value != _cmd.Name)
                 {
                     _cmd.Name = value;
-                    OnPropertyChanged("Name");
+                    OnPropertyChanged(nameof(Name));
                 }
             }
         }
@@ -432,7 +432,7 @@ namespace Maestro.Editors.WebLayout
                 if (value != _cmd.Label)
                 {
                     _cmd.Label = value;
-                    OnPropertyChanged("Label");
+                    OnPropertyChanged(nameof(Label));
                 }
             }
         }
@@ -448,7 +448,7 @@ namespace Maestro.Editors.WebLayout
                 if (value != _cmd.TargetViewer)
                 {
                     _cmd.TargetViewer = value;
-                    OnPropertyChanged("TargetViewer");
+                    OnPropertyChanged(nameof(TargetViewer));
                 }
             }
         }
@@ -464,7 +464,7 @@ namespace Maestro.Editors.WebLayout
                 if (value != _cmd.Tooltip)
                 {
                     _cmd.Tooltip = value;
-                    OnPropertyChanged("Tooltip");
+                    OnPropertyChanged(nameof(Tooltip));
                 }
             }
         }
@@ -480,7 +480,7 @@ namespace Maestro.Editors.WebLayout
                 if (value != _cmd.Description)
                 {
                     _cmd.Description = value;
-                    OnPropertyChanged("Description");
+                    OnPropertyChanged(nameof(Description));
                 }
             }
         }
@@ -496,7 +496,7 @@ namespace Maestro.Editors.WebLayout
                 if (value != _cmd.ImageURL)
                 {
                     _cmd.ImageURL = value;
-                    OnPropertyChanged("ImageURL");
+                    OnPropertyChanged(nameof(ImageURL));
                 }
             }
         }
@@ -512,7 +512,7 @@ namespace Maestro.Editors.WebLayout
                 if (value != _cmd.DisabledImageURL)
                 {
                     _cmd.DisabledImageURL = value;
-                    OnPropertyChanged("DisabledImageURL");
+                    OnPropertyChanged(nameof(DisabledImageURL));
                 }
             }
         }

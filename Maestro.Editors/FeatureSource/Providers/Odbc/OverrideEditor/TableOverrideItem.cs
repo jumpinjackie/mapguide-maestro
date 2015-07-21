@@ -25,7 +25,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
             set
             {
                 _override = value;
-                OnPropertyChanged("Override"); //NOXLATE
+                OnPropertyChanged(nameof(Override));
             }
         }
 
@@ -42,7 +42,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
                     if (prop != null)
                         prop.SpatialContextAssociation = value;
                 }
-                OnPropertyChanged("SpatialContext"); //NOXLATE
+                OnPropertyChanged(nameof(SpatialContext));
             }
         }
 
@@ -53,7 +53,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
             set
             {
                 _key = value;
-                OnPropertyChanged("Key"); //NOXLATE
+                OnPropertyChanged(nameof(Key));
             }
         }
 
@@ -66,7 +66,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
             set
             {
                 _geom = value;
-                OnPropertyChanged("Geometry"); //NOXLATE
+                OnPropertyChanged(nameof(Geometry));
             }
         }
 
@@ -77,7 +77,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
             set
             {
                 _x = value;
-                OnPropertyChanged("X"); //NOXLATE
+                OnPropertyChanged(nameof(X));
             }
         }
 
@@ -88,7 +88,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
             set
             {
                 _y = value;
-                OnPropertyChanged("Y"); //NOXLATE
+                OnPropertyChanged(nameof(Y));
             }
         }
 
@@ -99,7 +99,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
             set
             {
                 _z = value;
-                OnPropertyChanged("Z"); //NOXLATE
+                OnPropertyChanged(nameof(Z));
             }
         }
 

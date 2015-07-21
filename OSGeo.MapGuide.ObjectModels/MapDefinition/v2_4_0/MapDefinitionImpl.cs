@@ -63,7 +63,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
             set
             {
                 this.backgroundColorField = value;
-                OnPropertyChanged("BackgroundColor"); //NOXLATE
+                OnPropertyChanged(nameof(BackgroundColor));
             }
         }
 
@@ -157,7 +157,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
                     throw new InvalidOperationException(string.Format(Strings.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.MapDefinition));
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID"); //NOXLATE
+                this.OnPropertyChanged(nameof(ResourceID));
             }
         }
 
@@ -216,7 +216,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
         /// <param name="layer"></param>
         void IMapDefinition.InsertLayer(int idx, IMapLayer layer)
         {
-            Check.ThatArgumentIsBetweenRange(idx, 0, this.MapLayer.Count, true, nameof(idx) + " (" + idx + ") between [" + 0 + "," + this.MapLayer.Count + "]"); //NOXLATE
+            Check.ThatArgumentIsBetweenRange(idx, 0, this.MapLayer.Count, true, nameof(idx) + " (" + idx + ") between [" + 0 + "," + this.MapLayer.Count + "]");
             Check.ArgumentNotNull(layer, nameof(layer));
             var li = layer as MapLayerType;
             if (li != null)
@@ -245,14 +245,14 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
                 this.Extents.MaxY = maxy;
                 this.Extents.MinX = minx;
                 this.Extents.MinY = miny;
-                OnPropertyChanged("Extents"); //NOXLATE
+                OnPropertyChanged(nameof(Extents));
             }
         }
 
         public IMapLayerGroup AddGroup(string groupName)
         {
             Check.ArgumentNotEmpty(groupName, nameof(groupName));
-            Check.ThatPreconditionIsMet(this.GetGroupByName(groupName) == null, $"<{nameof(groupName)}> does not already exist"); //NOXLATE
+            Check.ThatPreconditionIsMet(this.GetGroupByName(groupName) == null, $"<{nameof(groupName)}> does not already exist");
             if (this.MapLayerGroup == null)
                 this.MapLayerGroup = new System.ComponentModel.BindingList<MapLayerGroupType>();
 
@@ -267,7 +267,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
                 Group = string.Empty
             };
             this.MapLayerGroup.Add(group);
-            OnPropertyChanged("MapLayerGroup"); //NOXLATE
+            OnPropertyChanged(nameof(MapLayerGroup));
             return group;
         }
 
@@ -275,11 +275,11 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
         {
             Check.ArgumentNotEmpty(layerName, nameof(layerName));
             Check.ArgumentNotEmpty(layerDefinitionId, nameof(layerDefinitionId));
-            Check.ThatPreconditionIsMet(ResourceIdentifier.Validate(layerDefinitionId), $"ResourceIdentifier.Validate({nameof(layerDefinitionId)})"); //NOXLATE
-            Check.ThatPreconditionIsMet(ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString(), $"ResourceIdentifier.GetResourceTypeAsString({nameof(layerDefinitionId)}) == ResourceTypes.LayerDefinition.ToString()"); //NOXLATE
+            Check.ThatPreconditionIsMet(ResourceIdentifier.Validate(layerDefinitionId), $"ResourceIdentifier.Validate({nameof(layerDefinitionId)})");
+            Check.ThatPreconditionIsMet(ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString(), $"ResourceIdentifier.GetResourceTypeAsString({nameof(layerDefinitionId)}) == ResourceTypes.LayerDefinition.ToString()");
             if (!string.IsNullOrEmpty(groupName))
             {
-                Check.ThatPreconditionIsMet(this.GetGroupByName(groupName) != null, $"There should be an existing group for <{nameof(groupName)}>"); //NOXLATE
+                Check.ThatPreconditionIsMet(this.GetGroupByName(groupName) != null, $"There should be an existing group for <{nameof(groupName)}>");
             }
             var layer = new MapLayerType()
             {
@@ -295,7 +295,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
             layer.Group = string.IsNullOrEmpty(groupName) ? string.Empty : groupName;
 
             this.MapLayer.Insert(0, layer);
-            OnPropertyChanged("MapLayer"); //NOXLATE
+            OnPropertyChanged(nameof(MapLayer));
 
             this.AutoSetExtentsFromLayer(layer.ResourceId);
 
@@ -310,11 +310,11 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
             Check.ThatArgumentIsBetweenRange(index, 0, this.MapLayer.Count, true, nameof(index) + " (" + index + ") between [" + 0 + "," + this.MapLayer.Count + "]");
             Check.ArgumentNotEmpty(layerName, nameof(layerName));
             Check.ArgumentNotEmpty(layerDefinitionId, nameof(layerDefinitionId));
-            Check.ThatPreconditionIsMet(ResourceIdentifier.Validate(layerDefinitionId), $"ResourceIdentifier.Validate({nameof(layerDefinitionId)})"); //NOXLATE
-            Check.ThatPreconditionIsMet(ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString(), $"ResourceIdentifier.GetResourceTypeAsString({nameof(layerDefinitionId)}) == ResourceTypes.LayerDefinition.ToString()"); //NOXLATE
+            Check.ThatPreconditionIsMet(ResourceIdentifier.Validate(layerDefinitionId), $"ResourceIdentifier.Validate({nameof(layerDefinitionId)})");
+            Check.ThatPreconditionIsMet(ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString(), $"ResourceIdentifier.GetResourceTypeAsString({nameof(layerDefinitionId)}) == ResourceTypes.LayerDefinition.ToString()");
             if (!string.IsNullOrEmpty(groupName))
             {
-                Check.ArgumentNotNull(this.GetGroupByName(groupName), $"Group for <{nameof(groupName)}>"); //NOXLATE
+                Check.ArgumentNotNull(this.GetGroupByName(groupName), $"Group for <{nameof(groupName)}>");
             }
             var layer = new MapLayerType()
             {
@@ -336,11 +336,11 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
         {
             Check.ArgumentNotEmpty(layerName, nameof(layerName));
             Check.ArgumentNotEmpty(layerDefinitionId, nameof(layerDefinitionId));
-            Check.ThatPreconditionIsMet(ResourceIdentifier.Validate(layerDefinitionId), $"ResourceIdentifier.Validate({nameof(layerDefinitionId)})"); //NOXLATE
-            Check.ThatPreconditionIsMet(ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString(), $"ResourceIdentifier.GetResourceTypeAsString({nameof(layerDefinitionId)}) == ResourceTypes.LayerDefinition.ToString()"); //NOXLATE
+            Check.ThatPreconditionIsMet(ResourceIdentifier.Validate(layerDefinitionId), $"ResourceIdentifier.Validate({nameof(layerDefinitionId)})");
+            Check.ThatPreconditionIsMet(ResourceIdentifier.GetResourceTypeAsString(layerDefinitionId) == ResourceTypes.LayerDefinition.ToString(), $"ResourceIdentifier.GetResourceTypeAsString({nameof(layerDefinitionId)}) == ResourceTypes.LayerDefinition.ToString()");
             if (!string.IsNullOrEmpty(groupName))
             {
-                Check.ArgumentNotNull(this.GetGroupByName(groupName), $"Group for <{nameof(groupName)}>"); //NOXLATE
+                Check.ArgumentNotNull(this.GetGroupByName(groupName), $"Group for <{nameof(groupName)}>");
             }
             var layer = new MapLayerType()
             {
@@ -379,7 +379,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
             {
                 this.MapLayer.Add(layer);
             }
-            OnPropertyChanged("MapLayer"); //NOXLATE
+            OnPropertyChanged(nameof(MapLayer));
 
             this.AutoSetExtentsFromLayer(layer.ResourceId);
 
@@ -475,7 +475,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
             if (lyr != null)
             {
                 this.MapLayer.Remove(lyr);
-                OnPropertyChanged("MapLayer"); //NOXLATE
+                OnPropertyChanged(nameof(MapLayer));
             }
         }
 
@@ -498,7 +498,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
             if (grp != null)
             {
                 this.MapLayerGroup.Remove(grp);
-                OnPropertyChanged("MapLayerGroup"); //NOXLATE
+                OnPropertyChanged(nameof(MapLayerGroup));
             }
         }
 
@@ -536,7 +536,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
                 this.MapLayer[isrc] = dst;
                 this.MapLayer[idst] = src;
 
-                OnPropertyChanged("MapLayer"); //NOXLATE
+                OnPropertyChanged(nameof(MapLayer));
 
                 return idst;
             }
@@ -562,7 +562,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
                 this.MapLayer[isrc] = dst;
                 this.MapLayer[idst] = src;
 
-                OnPropertyChanged("MapLayer"); //NOXLATE
+                OnPropertyChanged(nameof(MapLayer));
 
                 return idst;
             }
@@ -591,7 +591,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
                     this.MapLayerGroup[idx] = dst;
                     this.MapLayerGroup[idst] = src;
 
-                    OnPropertyChanged("MapLayerGroup"); //NOXLATE
+                    OnPropertyChanged(nameof(MapLayerGroup));
 
                     return idst;
                 }
@@ -621,7 +621,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
                     this.MapLayerGroup[idx] = dst;
                     this.MapLayerGroup[idst] = src;
 
-                    OnPropertyChanged("MapLayerGroup"); //NOXLATE
+                    OnPropertyChanged(nameof(MapLayerGroup));
 
                     return idst;
                 }
@@ -659,7 +659,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
                 }
 
                 this.MapLayer[0] = src;
-                OnPropertyChanged("MapLayer"); //NOXLATE
+                OnPropertyChanged(nameof(MapLayer));
             }
         }
 
@@ -678,7 +678,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
                 }
 
                 this.MapLayer[this.MapLayer.Count - 1] = src;
-                OnPropertyChanged("MapLayer"); //NOXLATE
+                OnPropertyChanged(nameof(MapLayer));
             }
         }
 
@@ -775,13 +775,13 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
             {
                 this.FiniteDisplayScale.Add(scale);
             }
-            OnPropertyChanged("FiniteDisplayScale"); //NOXLATE
+            OnPropertyChanged(nameof(FiniteDisplayScale));
         }
 
         void ITileSetAbstract.RemoveAllScales()
         {
             this.FiniteDisplayScale.Clear();
-            OnPropertyChanged("FiniteDisplayScale"); //NOXLATE
+            OnPropertyChanged(nameof(FiniteDisplayScale));
         }
 
         [XmlIgnore]
@@ -921,7 +921,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
                 Selectable = true
             };
             this.BaseMapLayer.Add(layer);
-            OnPropertyChanged("BaseMapLayer"); //NOXLATE
+            OnPropertyChanged(nameof(BaseMapLayer));
             return layer;
         }
 
@@ -931,7 +931,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
             if (lyr != null)
             {
                 this.BaseMapLayer.Remove(lyr);
-                OnPropertyChanged("BaseMapLayer"); //NOXLATE
+                OnPropertyChanged(nameof(BaseMapLayer));
             }
         }
 
@@ -951,7 +951,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
                     this.BaseMapLayer[isrc] = dst;
                     this.BaseMapLayer[idst] = src;
 
-                    OnPropertyChanged("BaseMapLayer"); //NOXLATE
+                    OnPropertyChanged(nameof(BaseMapLayer));
 
                     return idst;
                 }
@@ -976,7 +976,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
                     this.BaseMapLayer[isrc] = dst;
                     this.BaseMapLayer[idst] = src;
 
-                    OnPropertyChanged("BaseMapLayer"); //NOXLATE
+                    OnPropertyChanged(nameof(BaseMapLayer));
 
                     return idst;
                 }

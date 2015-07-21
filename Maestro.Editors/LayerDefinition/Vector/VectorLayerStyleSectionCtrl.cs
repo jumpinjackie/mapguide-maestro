@@ -162,7 +162,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 set
                 {
                     this.Item.MinScale = value;
-                    OnPropertyChanged("ScaleDisplayString");
+                    OnPropertyChanged(nameof(ScaleDisplayString));
                 }
             }
 
@@ -175,7 +175,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 set
                 {
                     this.Item.MaxScale = value;
-                    OnPropertyChanged("ScaleDisplayString");
+                    OnPropertyChanged(nameof(ScaleDisplayString));
                 }
             }
 

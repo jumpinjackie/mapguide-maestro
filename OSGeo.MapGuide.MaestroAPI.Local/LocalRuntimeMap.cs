@@ -251,7 +251,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             if (center.X != x || center.Y != y)
             {
                 _impl.SetViewCenterXY(x, y);
-                OnPropertyChanged("ViewCenter");
+                OnPropertyChanged(nameof(ViewCenter));
             }
         }
 
@@ -381,7 +381,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                     if (grp != _impl.Group)
                     {
                         _impl.Group = grp;
-                        OnPropertyChanged("Group");
+                        OnPropertyChanged(nameof(Group));
                     }
                 }
                 else
@@ -552,7 +552,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                     if (implGroup != _impl.Group)
                     {
                         _impl.Group = implGroup;
-                        OnPropertyChanged("Group");
+                        OnPropertyChanged(nameof(Group));
                         _parent.MakeDirty();
                     }
                 }

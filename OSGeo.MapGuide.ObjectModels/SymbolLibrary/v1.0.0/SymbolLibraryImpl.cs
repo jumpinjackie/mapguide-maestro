@@ -57,7 +57,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolLibrary.v1_0_0
                     throw new InvalidOperationException("Invalid resource identifier for this type of object: " + res.Extension); //LOCALIZE
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID");
+                this.OnPropertyChanged(nameof(ResourceID));
             }
         }
 

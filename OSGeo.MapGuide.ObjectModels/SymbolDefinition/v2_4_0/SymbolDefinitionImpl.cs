@@ -78,7 +78,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0
                     throw new InvalidOperationException(string.Format(Strings.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.SymbolDefinition));
 
                 _resId = value;
-                this.OnPropertyChanged("ResourceID"); //NOXLATE
+                this.OnPropertyChanged(nameof(ResourceID));
             }
         }
 
@@ -871,7 +871,8 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0
                     throw new InvalidOperationException(string.Format(Strings.ErrorUnexpectedResourceType, res.ToString(), ResourceTypes.SymbolDefinition));
 
                 this.Item = value;
-                OnPropertyChanged("ResourceId"); //NOXLATE
+                IResourceIdReference idref = this;
+                OnPropertyChanged(nameof(idref.ResourceId));
             }
         }
     }
