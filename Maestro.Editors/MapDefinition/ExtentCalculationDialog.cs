@@ -153,7 +153,7 @@ namespace Maestro.Editors.MapDefinition
                 layers.Add(ldfId, (ILayerDefinition)resSvc.GetResource(ldfId));
             }
 
-            Check.ArgumentNotNull(layers, "layers");
+            Check.ArgumentNotNull(layers, nameof(layers));
             int processed = 0;
 
             //Begin
@@ -205,8 +205,8 @@ namespace Maestro.Editors.MapDefinition
 
         private string ExtentsToString(IEnvelope env)
         {
-            Check.ArgumentNotNull(env, "env");
-            return string.Format("[{0} {1}] [{2} {3}]", env.MinX, env.MinY, env.MaxX, env.MaxY);
+            Check.ArgumentNotNull(env, nameof(env));
+            return $"[{env.MinX} {env.MinY}] [{env.MaxX} {env.MaxY}]";
         }
 
         private void bgCalculation_ProgressChanged(object sender, ProgressChangedEventArgs e)

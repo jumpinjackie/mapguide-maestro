@@ -318,8 +318,8 @@ namespace Maestro.Editors.SymbolDefinition
         /// <param name="propertyName">Name of the property.</param>
         public void Bind(object dataSource, string propertyName)
         {
-            Check.ArgumentNotNull(dataSource, "dataSource");
-            Check.ArgumentNotEmpty(propertyName, "member");
+            Check.ArgumentNotNull(dataSource, nameof(dataSource));
+            Check.ArgumentNotEmpty(propertyName, nameof(propertyName));
             try
             {
                 _isBinding = true;

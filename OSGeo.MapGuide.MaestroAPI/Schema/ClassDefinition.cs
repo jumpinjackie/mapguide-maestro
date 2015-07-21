@@ -58,8 +58,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         public ClassDefinition(string name, string description)
             : this()
         {
-            Check.ArgumentNotNull(name, "name"); //NOXLATE
-            Check.ArgumentNotEmpty(name, "name"); //NOXLATE
+            Check.ArgumentNotNull(name, nameof(name));
+            Check.ArgumentNotEmpty(name, nameof(name));
             this.Name = name;
             this.Description = description;
         }
@@ -268,8 +268,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <param name="currentNode"></param>
         void IFdoSerializable.WriteXml(XmlDocument doc, XmlNode currentNode)
         {
-            Check.ArgumentNotNull(doc, "doc"); //NOXLATE
-            Check.ArgumentNotNull(currentNode, "currentNode"); //NOXLATE
+            Check.ArgumentNotNull(doc, nameof(doc));
+            Check.ArgumentNotNull(currentNode, nameof(currentNode));
             XmlElement id = null;
 
             var en = Utility.EncodeFDOName(this.Name);

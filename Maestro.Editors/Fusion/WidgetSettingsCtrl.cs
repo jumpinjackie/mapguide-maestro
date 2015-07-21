@@ -213,7 +213,7 @@ namespace Maestro.Editors.Fusion
 
         private TreeNode CreateNode(IUIItem item)
         {
-            Check.ArgumentNotNull(item, "item"); //NOXLATE
+            Check.ArgumentNotNull(item, nameof(item));
             var node = new TreeNode();
             switch (item.Function)
             {

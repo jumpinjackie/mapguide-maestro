@@ -1255,8 +1255,8 @@ namespace Maestro.Editors.MapDefinition
 
         private static string GenerateLayerName(string layerId, IMapDefinition baseMapDef)
         {
-            Check.ArgumentNotNull(baseMapDef, "baseMapDef");
-            Check.ArgumentNotEmpty(layerId, "layerId");
+            Check.ArgumentNotNull(baseMapDef, nameof(baseMapDef));
+            Check.ArgumentNotEmpty(layerId, nameof(layerId));
 
             int counter = 0;
             string prefix = ResourceIdentifier.GetName(layerId);
@@ -1276,8 +1276,8 @@ namespace Maestro.Editors.MapDefinition
 
         private static string GenerateBaseLayerName(string layerId, IBaseMapDefinition baseMapDef)
         {
-            Check.ArgumentNotNull(baseMapDef, "baseMapDef");
-            Check.ArgumentNotEmpty(layerId, "layerId");
+            Check.ArgumentNotNull(baseMapDef, nameof(baseMapDef));
+            Check.ArgumentNotEmpty(layerId, nameof(layerId));
 
             int counter = 0;
             string prefix = ResourceIdentifier.GetName(layerId);

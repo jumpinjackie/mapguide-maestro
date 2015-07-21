@@ -700,7 +700,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
 
         private Control CreateSymbolDefinitionEditor(ISymbolInstance symRef)
         {
-            Check.ArgumentNotNull(symRef, "symRef"); //NOXLATE
+            Check.ArgumentNotNull(symRef, nameof(symRef));
             if (symRef.Reference.Type == SymbolInstanceType.Reference)
             {
                 return new ReferenceCtrl((ISymbolInstanceReferenceLibrary)symRef.Reference, _edSvc);

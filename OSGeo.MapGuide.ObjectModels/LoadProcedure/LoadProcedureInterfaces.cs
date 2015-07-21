@@ -261,8 +261,8 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
         /// <param name="files"></param>
         public static void AddFiles(this IBaseLoadProcedure proc, IEnumerable<string> files)
         {
-            Check.ArgumentNotNull(proc, "proc"); //NOXLATE
-            Check.ArgumentNotNull(files, "files"); //NOXLATE
+            Check.ArgumentNotNull(proc, nameof(proc));
+            Check.ArgumentNotNull(files, nameof(files));
             foreach (var f in files)
             {
                 proc.AddFile(f);

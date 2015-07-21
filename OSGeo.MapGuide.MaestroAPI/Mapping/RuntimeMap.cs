@@ -273,9 +273,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         internal RuntimeMap(IServerConnection conn, IMapDefinition mdf, double metersPerUnit, bool suppressErrors)
             : this(conn)
         {
-            Check.ArgumentNotNull(conn, "conn"); //NOXLATE
-            Check.ArgumentNotNull(mdf, "mdf"); //NOXLATE
-            Check.ArgumentNotNull(mdf.ResourceID, "mdf.ResourceID"); //NOXLATE
+            Check.ArgumentNotNull(conn, nameof(conn));
+            Check.ArgumentNotNull(mdf, nameof(mdf));
+            Check.ArgumentNotNull(mdf.ResourceID, $"{nameof(mdf)}.{nameof(mdf.ResourceID)}");
             this.MetersPerUnit = metersPerUnit;
 
             this.MapDefinition = mdf.ResourceID;
@@ -1128,7 +1128,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         [Obsolete("Use the indexer of the Groups property instead")] //NOXLATE
         public RuntimeMapGroup GetGroupByName(string name)
         {
-            Check.ArgumentNotNull(name, "name"); //NOXLATE
+            Check.ArgumentNotNull(name, nameof(name));
             return this.Groups[name];
         }
 
@@ -1172,7 +1172,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns></returns>
         public int IndexOfLayer(string layerName)
         {
-            Check.ArgumentNotEmpty(layerName, "layerName"); //NOXLATE
+            Check.ArgumentNotEmpty(layerName, nameof(layerName));
 
             var layer = this.Layers[layerName];
             return this.Layers.IndexOf(layer);
@@ -1215,7 +1215,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns></returns>
         public RuntimeMapLayer[] GetLayersOfGroup(string groupName)
         {
-            Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
+            Check.ArgumentNotEmpty(groupName, nameof(groupName));
             List<RuntimeMapLayer> layers = new List<RuntimeMapLayer>();
             foreach (var lyr in this.Layers)
             {
@@ -1232,7 +1232,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns></returns>
         public RuntimeMapGroup[] GetGroupsOfGroup(string groupName)
         {
-            Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
+            Check.ArgumentNotEmpty(groupName, nameof(groupName));
             List<RuntimeMapGroup> groups = new List<RuntimeMapGroup>();
             foreach (var grp in this.Groups)
             {
@@ -1262,9 +1262,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
         private void Save(string resourceID)
         {
-            Check.ArgumentNotNull(resourceID, "resourceID");
-            Check.ArgumentNotEmpty(resourceID, "resourceID");
-            Check.ThatPreconditionIsMet(resourceID.EndsWith(".Map"), "resourceID.EndsWith(\".Map\")");
+            Check.ArgumentNotNull(resourceID, nameof(resourceID));
+            Check.ArgumentNotEmpty(resourceID, nameof(ResourceID));
+            Check.ThatPreconditionIsMet(resourceID.EndsWith(".Map"), $"{nameof(resourceID)}.EndsWith(\".Map\")"); //NOXLATE
             var map = this;
 
             string selectionID = resourceID.Substring(0, resourceID.LastIndexOf(".")) + ".Selection"; //NOXLATE

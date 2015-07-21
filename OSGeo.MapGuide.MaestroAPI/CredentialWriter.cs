@@ -45,7 +45,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <param name="password"></param>
         public static void SetEncryptedCredentials(this IFeatureSource fs, IServerConnection conn, string username, string password)
         {
-            Check.ArgumentNotNull(fs, "fs"); //NOXLATE
+            Check.ArgumentNotNull(fs, nameof(fs));
             if (string.IsNullOrEmpty(fs.ResourceID))
                 throw new ArgumentException(Strings.ErrorNoResourceIdAttached);
             using (var stream = CredentialWriter.Write(username, password))
@@ -62,7 +62,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
         /// <returns></returns>
         public static string GetEncryptedUsername(this IFeatureSource fs, IServerConnection conn)
         {
-            Check.ArgumentNotNull(fs, "fs"); //NOXLATE
+            Check.ArgumentNotNull(fs, nameof(fs));
             var resData = conn.ResourceService.EnumerateResourceData(fs.ResourceID);
             foreach (var rd in resData.ResourceData)
             {

@@ -61,10 +61,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
         /// <param name="symbolLibId"></param>
         public ImageSymbolConverter(IServerConnection conn, string symbolLibId)
         {
-            Check.ArgumentNotNull(conn, "conn"); //NOXLATE
-            Check.ArgumentNotEmpty(symbolLibId, "symbolLibId"); //NOXLATE
-            Check.ThatPreconditionIsMet(ResourceIdentifier.GetResourceTypeAsString(symbolLibId) == ResourceTypes.SymbolLibrary.ToString(), "ResourceIdentifier.GetResourceTypeAsString(symbolLibId) == ResourceTypes.SymbolLibrary.ToString()"); //NOXLATE
-            Check.ThatPreconditionIsMet(Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Drawing) >= 0, "Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Drawing) >= 0"); //NOXLATE
+            Check.ArgumentNotNull(conn, nameof(conn));
+            Check.ArgumentNotEmpty(symbolLibId, nameof(symbolLibId));
+            Check.ThatPreconditionIsMet(ResourceIdentifier.GetResourceTypeAsString(symbolLibId) == ResourceTypes.SymbolLibrary.ToString(),
+                "ResourceIdentifier.GetResourceTypeAsString(symbolLibId) == ResourceTypes.SymbolLibrary.ToString()"); //NOXLATE
+            Check.ThatPreconditionIsMet(Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Drawing) >= 0, 
+                "Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Drawing) >= 0"); //NOXLATE
             _symbolLibId = symbolLibId;
             _conn = conn;
         }
@@ -77,8 +79,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
         /// <param name="progressCallback"></param>
         public void ExtractSymbols(string targetFolder, IEnumerable<string> symbols, Action<int, int> progressCallback)
         {
-            Check.ArgumentNotEmpty(targetFolder, "targetFolder"); //NOXLATE
-            Check.ThatArgumentIsFolder(targetFolder, "targetFolder"); //NOXLATE
+            Check.ArgumentNotEmpty(targetFolder, nameof(targetFolder));
+            Check.ThatArgumentIsFolder(targetFolder, nameof(targetFolder));
 
             if (symbols == null)
             {
@@ -123,8 +125,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
         /// <param name="targetFolder"></param>
         public void ExtractSymbols(string targetFolder)
         {
-            Check.ArgumentNotEmpty(targetFolder, "targetFolder"); //NOXLATE
-            Check.ThatPreconditionIsMet(ResourceIdentifier.IsFolderResource(targetFolder), "ResourceIdentifier.IsFolderResource(targetFolder)"); //NOXLATE
+            Check.ArgumentNotEmpty(targetFolder, nameof(targetFolder));
+            Check.ThatPreconditionIsMet(ResourceIdentifier.IsFolderResource(targetFolder), $"{nameof(ResourceIdentifier)}.{nameof(ResourceIdentifier.IsFolderResource)}({nameof(targetFolder)})");
 
             IDrawingService drawSvc = (IDrawingService)_conn.GetService((int)ServiceType.Drawing);
             IDrawingSource ds = PrepareSymbolDrawingSource(_conn, _symbolLibId);

@@ -1531,8 +1531,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns>true if a replacement was made. false if no replacements were made</returns>
         public static bool ReplaceResourceIds(XmlDocument doc, string srcId, string dstId)
         {
-            Check.ArgumentNotEmpty(srcId, "srcId"); //NOXLATE
-            Check.ArgumentNotEmpty(dstId, "dstId"); //NOXLATE
+            Check.ArgumentNotEmpty(srcId, nameof(srcId));
+            Check.ArgumentNotEmpty(dstId, nameof(dstId));
             bool changed = false;
             //There's an unwritten spec that all elements that refer to a Resource ID are named "ResourceId".
             //This is why this method can be relied upon to cover all resource id references.

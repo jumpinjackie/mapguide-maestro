@@ -91,7 +91,7 @@ namespace Maestro.Editors.Common
         /// <param name="ex"></param>
         public static void Show(Exception ex)
         {
-            Check.ArgumentNotNull(ex, "ex"); //NOXLATE
+            Check.ArgumentNotNull(ex, nameof(ex));
             Check.ArgumentNotNull(ex.Data[Utility.XML_EXCEPTION_KEY], "ex.Data[Utility.XML_EXCEPTION_KEY]"); //NOXLATE
             string origXmlContent = ex.Data[Utility.XML_EXCEPTION_KEY].ToString();
             var diag = new XmlContentErrorDialog();

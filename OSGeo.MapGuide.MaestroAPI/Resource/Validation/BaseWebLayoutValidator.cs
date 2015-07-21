@@ -53,7 +53,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <returns></returns>
         protected static ValidationIssue[] ValidateBase(ResourceValidationContext context, IResource resource, bool recurse)
         {
-            Check.ArgumentNotNull(context, "context"); //NOXLATE
+            Check.ArgumentNotNull(context, nameof(context));
 
             if (context.IsAlreadyValidated(resource.ResourceID))
                 return null;

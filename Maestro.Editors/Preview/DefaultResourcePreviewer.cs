@@ -175,8 +175,8 @@ namespace Maestro.Editors.Preview
         /// <returns></returns>
         public bool IsPreviewable(IResource res, IServerConnection conn)
         {
-            Check.ArgumentNotNull(res, "res"); //NOXLATE
-            Check.ArgumentNotNull(conn, "conn"); //NOXLATE
+            Check.ArgumentNotNull(res, nameof(res));
+            Check.ArgumentNotNull(conn, nameof(conn));
 
             var rt = res.ResourceType;
             if (conn.Capabilities.SupportsResourcePreviews)

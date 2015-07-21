@@ -682,8 +682,8 @@ namespace Maestro.Editors.TileSetDefinition
 
         private static string GenerateBaseLayerName(string layerId, ITileSetDefinition tileSet)
         {
-            Check.ArgumentNotNull(tileSet, "baseMapDef");
-            Check.ArgumentNotEmpty(layerId, "layerId");
+            Check.ArgumentNotNull(tileSet, nameof(tileSet));
+            Check.ArgumentNotEmpty(layerId, nameof(layerId));
 
             int counter = 0;
             string prefix = ResourceIdentifier.GetName(layerId);

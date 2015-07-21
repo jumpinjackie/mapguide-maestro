@@ -48,8 +48,8 @@ namespace Maestro.Editors.TileSetDefinition.Providers
         public GenericProviderCtrl(TileProvider provider, ITileSetDefinition tsd, Action resourceChangeHandler)
             : this()
         {
-            Check.ArgumentNotNull(provider, "provider");
-            Check.ArgumentNotNull(tsd, "tsd");
+            Check.ArgumentNotNull(provider, nameof(provider));
+            Check.ArgumentNotNull(tsd, nameof(tsd));
             _tsd = tsd;
             _provider = provider;
             _resourceChangeHandler = resourceChangeHandler;

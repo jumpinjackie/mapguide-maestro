@@ -62,8 +62,8 @@ namespace Maestro.Editors.Preview
         /// <returns></returns>
         public static bool IsPreviewable(IServerConnection conn, IResource resource)
         {
-            Check.ArgumentNotNull(conn, "conn"); //NOXLATE
-            Check.ArgumentNotNull(resource, "resource"); //NOXLATE
+            Check.ArgumentNotNull(conn, nameof(conn));
+            Check.ArgumentNotNull(resource, nameof(resource));
             var preview = GetPreviewer(conn.ProviderName);
             if (preview != null)
                 return preview.IsPreviewable(resource, conn);

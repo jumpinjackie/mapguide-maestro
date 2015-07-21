@@ -148,7 +148,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static int GetBaseLayerCount(this ITileSetAbstract map)
         {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            Check.ArgumentNotNull(map, nameof(map));
             return map.BaseMapLayerGroups.SelectMany(g => g.BaseMapLayer).Count();
         }
 
@@ -159,7 +159,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static double GetMinScale(this ITileSetAbstract map)
         {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            Check.ArgumentNotNull(map, nameof(map));
             if (map.ScaleCount == 0)
                 return 0.0;
 
@@ -173,7 +173,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static double GetMaxScale(this ITileSetAbstract map)
         {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            Check.ArgumentNotNull(map, nameof(map));
             if (map.ScaleCount == 0)
                 return 0.0;
 
@@ -188,7 +188,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static IBaseMapGroup GetGroupForLayer(this ITileSetAbstract map, IBaseMapLayer layer)
         {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            Check.ArgumentNotNull(map, nameof(map));
             foreach (var group in map.BaseMapLayerGroups)
             {
                 foreach (var tl in group.BaseMapLayer)
@@ -207,7 +207,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static bool HasLayers(this IBaseMapGroup grp)
         {
-            Check.ArgumentNotNull(grp, "grp"); //NOXLATE
+            Check.ArgumentNotNull(grp, nameof(grp));
             return new List<IBaseMapLayer>(grp.BaseMapLayer).Count > 0;
         }
 
@@ -218,7 +218,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static bool HasLayers(this ITileSetAbstract map)
         {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            Check.ArgumentNotNull(map, nameof(map));
             if (!map.HasGroups())
                 return false;
 
@@ -237,7 +237,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static bool HasGroups(this ITileSetAbstract map)
         {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            Check.ArgumentNotNull(map, nameof(map));
             return new List<IBaseMapGroup>(map.BaseMapLayerGroups).Count > 0;
         }
 
@@ -248,7 +248,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static IBaseMapGroup GetFirstGroup(this ITileSetAbstract map)
         {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            Check.ArgumentNotNull(map, nameof(map));
             var list = new List<IBaseMapGroup>(map.BaseMapLayerGroups);
             if (list.Count > 0)
                 return list[0];
@@ -263,8 +263,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static IBaseMapLayer GetBaseLayerByName(this ITileSetAbstract map, string layerName)
         {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
-            Check.ArgumentNotEmpty(layerName, "layerName"); //NOXLATE
+            Check.ArgumentNotNull(map, nameof(map));
+            Check.ArgumentNotEmpty(layerName, nameof(layerName));
 
             foreach (var group in map.BaseMapLayerGroups)
             {
@@ -285,8 +285,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static bool LayerExists(this ITileSetAbstract map, string layerName)
         {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
-            Check.ArgumentNotEmpty(layerName, "layerName"); //NOXLATE
+            Check.ArgumentNotNull(map, nameof(map));
+            Check.ArgumentNotEmpty(layerName, nameof(layerName));
 
             return map.GetBaseLayerByName(layerName) != null;
         }
@@ -299,8 +299,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static IBaseMapGroup GetGroup(this ITileSetAbstract map, string groupName)
         {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
-            Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
+            Check.ArgumentNotNull(map, nameof(map));
+            Check.ArgumentNotEmpty(groupName, nameof(groupName));
             foreach (var group in map.BaseMapLayerGroups)
             {
                 if (groupName.Equals(group.Name))
@@ -317,8 +317,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static bool GroupExists(this ITileSetAbstract map, string groupName)
         {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
-            Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
+            Check.ArgumentNotNull(map, nameof(map));
+            Check.ArgumentNotEmpty(groupName, nameof(groupName));
             foreach (var group in map.BaseMapLayerGroups)
             {
                 if (groupName.Equals(group.Name))
@@ -335,8 +335,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static IEnumerable<IBaseMapLayer> GetLayersForGroup(this ITileSetAbstract map, string groupName)
         {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
-            Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
+            Check.ArgumentNotNull(map, nameof(map));
+            Check.ArgumentNotEmpty(groupName, nameof(groupName));
 
             foreach (var group in map.BaseMapLayerGroups)
             {
@@ -357,7 +357,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <param name="bDetachIfEmpty"></param>
         public static void RemoveBaseLayerGroup(this ITileSetDefinition map, IBaseMapGroup group)
         {
-            Check.ArgumentNotNull(map, "map"); //NOXLATE
+            Check.ArgumentNotNull(map, nameof(map));
             if (null == group)
                 return;
 
@@ -372,8 +372,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static bool GroupExists(this ITileSetDefinition tileSet, string groupName)
         {
-            Check.ArgumentNotNull(tileSet, "map"); //NOXLATE
-            Check.ArgumentNotEmpty(groupName, "groupName"); //NOXLATE
+            Check.ArgumentNotNull(tileSet, nameof(tileSet));
+            Check.ArgumentNotEmpty(groupName, nameof(groupName));
             foreach (var group in tileSet.BaseMapLayerGroups)
             {
                 if (groupName.Equals(group.Name))
@@ -390,7 +390,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static INameStringPair GetParameter(this ITileSetDefinition tileSet, string name)
         {
-            Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
+            Check.ArgumentNotNull(tileSet, nameof(tileSet));
 
             return tileSet.TileStoreParameters.Parameters.FirstOrDefault(p => p.Name == name);
         }
@@ -402,7 +402,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static string GetDefaultCoordinateSystem(this ITileSetDefinition tileSet)
         {
-            Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
+            Check.ArgumentNotNull(tileSet, nameof(tileSet));
 
             var p = tileSet.GetParameter("CoordinateSystem"); //NOXLATE
             if (p != null)
@@ -417,8 +417,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <param name="coordinateSystem"></param>
         public static void SetDefaultCoordinateSystem(this ITileSetDefinition tileSet, string coordinateSystem)
         {
-            Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
-            Check.ArgumentNotEmpty(coordinateSystem, "coordinateSystem"); //NOXLATE
+            Check.ArgumentNotNull(tileSet, nameof(tileSet));
+            Check.ArgumentNotEmpty(coordinateSystem, nameof(coordinateSystem));
 
             if (tileSet.TileStoreParameters.TileProvider != "Default") //NOXLATE
                 throw new InvalidOperationException(string.Format(Strings.ParameterNotApplicableForTileProvider, "CoordinateSystem", tileSet.TileStoreParameters.TileProvider));
@@ -433,7 +433,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static double[] GetDefaultFiniteScaleList(this ITileSetDefinition tileSet)
         {
-            Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
+            Check.ArgumentNotNull(tileSet, nameof(tileSet));
             var p = tileSet.GetParameter("FiniteScaleList"); //NOXLATE
             if (p != null && !string.IsNullOrEmpty(p.Value))
                 return p.Value.Split(',').Select(x => x.Trim()).Select(x => Convert.ToDouble(x)).OrderBy(s => s).ToArray();
@@ -447,8 +447,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <param name="scales"></param>
         public static void SetDefaultFiniteScaleList(this ITileSetDefinition tileSet, IEnumerable<double> scales)
         {
-            Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
-            Check.ArgumentNotNull(scales, "scales"); //NOXLATE
+            Check.ArgumentNotNull(tileSet, nameof(tileSet));
+            Check.ArgumentNotNull(scales, nameof(scales));
 
             if (tileSet.TileStoreParameters.TileProvider != "Default") //NOXLATE
                 throw new InvalidOperationException(string.Format(Strings.ParameterNotApplicableForTileProvider, "FiniteScaleList", tileSet.TileStoreParameters.TileProvider)); //NOXLATE
@@ -464,7 +464,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static string GetTilePath(this ITileSetDefinition tileSet)
         {
-            Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
+            Check.ArgumentNotNull(tileSet, nameof(tileSet));
             var p = tileSet.GetParameter("TilePath"); //NOXLATE
             if (p != null)
                 return p.Value;
@@ -478,8 +478,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <param name="path"></param>
         public static void SetTilePath(this ITileSetDefinition tileSet, string path)
         {
-            Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
-            Check.ArgumentNotEmpty(path, "path"); //NOXLATE
+            Check.ArgumentNotNull(tileSet, nameof(tileSet));
+            Check.ArgumentNotEmpty(path, nameof(path));
             tileSet.TileStoreParameters.SetParameter("TilePath", path); //NOXLATE
         }
 
@@ -490,7 +490,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static int? GetDefaultTileWidth(this ITileSetDefinition tileSet)
         {
-            Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
+            Check.ArgumentNotNull(tileSet, nameof(tileSet));
             var p = tileSet.GetParameter("TileWidth"); //NOXLATE
             if (p != null)
                 return Convert.ToInt32(p.Value);
@@ -504,7 +504,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <param name="value"></param>
         public static void SetDefaultTileWidth(this ITileSetDefinition tileSet, int value)
         {
-            Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
+            Check.ArgumentNotNull(tileSet, nameof(tileSet));
             if (tileSet.TileStoreParameters.TileProvider == "XYZ") //NOXLATE
                 throw new InvalidOperationException(string.Format(Strings.ParameterNotApplicableForTileProvider, "TileWidth", "XYZ")); //NOXLATE
             tileSet.TileStoreParameters.SetParameter("TileWidth", value.ToString(CultureInfo.InvariantCulture)); //NOXLATE
@@ -517,7 +517,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static int? GetDefaultTileHeight(this ITileSetDefinition tileSet)
         {
-            Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
+            Check.ArgumentNotNull(tileSet, nameof(tileSet));
             var p = tileSet.GetParameter("TileHeight"); //NOXLATE
             if (p != null)
                 return Convert.ToInt32(p.Value);
@@ -531,7 +531,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <param name="value"></param>
         public static void SetDefaultTileHeight(this ITileSetDefinition tileSet, int value)
         {
-            Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
+            Check.ArgumentNotNull(tileSet, nameof(tileSet));
             if (tileSet.TileStoreParameters.TileProvider == "XYZ")
                 throw new InvalidOperationException(string.Format(Strings.ParameterNotApplicableForTileProvider, "TileHeight", "XYZ")); //NOXLATE
             tileSet.TileStoreParameters.SetParameter("TileHeight", value.ToString(CultureInfo.InvariantCulture)); //NOXLATE
@@ -544,7 +544,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <returns></returns>
         public static string GetTileFormat(this ITileSetDefinition tileSet)
         {
-            Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
+            Check.ArgumentNotNull(tileSet, nameof(tileSet));
             var p = tileSet.GetParameter("TileFormat"); //NOXLATE
             if (p != null)
                 return p.Value;
@@ -558,8 +558,8 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
         /// <param name="format"></param>
         public static void SetTileFormat(this ITileSetDefinition tileSet, string format)
         {
-            Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
-            Check.ArgumentNotEmpty(format, "format"); //NOXLATE
+            Check.ArgumentNotNull(tileSet, nameof(tileSet));
+            Check.ArgumentNotEmpty(format, nameof(format));
             tileSet.TileStoreParameters.SetParameter("TileFormat", format); //NOXLATE
         }
 
@@ -573,7 +573,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
                                                     string tileFormat = "PNG",
                                                     string tilePath = "%MG_TILE_CACHE_PATH%")
         {
-            Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
+            Check.ArgumentNotNull(tileSet, nameof(tileSet));
 
             var param = tileSet.TileStoreParameters;
             param.TileProvider = "XYZ"; //NOXLATE
@@ -601,7 +601,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition
                                                         string tileFormat = "PNG", //NOXLATE
                                                         string tilePath = "%MG_TILE_CACHE_PATH%") //NOXLATE
         {
-            Check.ArgumentNotNull(tileSet, "tileSet"); //NOXLATE
+            Check.ArgumentNotNull(tileSet, nameof(tileSet));
 
             var param = tileSet.TileStoreParameters;
             param.TileProvider = "Default"; //NOXLATE

@@ -79,8 +79,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <param name="target">The target.</param>
         public ResourceMigrator(IServerConnection source, IServerConnection target)
         {
-            Check.ArgumentNotNull(source, "source"); //NOXLATE
-            Check.ArgumentNotNull(target, "target"); //NOXLATE
+            Check.ArgumentNotNull(source, nameof(source));
+            Check.ArgumentNotNull(target, nameof(target));
             _source = source;
             _target = target;
             _converter = new ResourceObjectConverter();
@@ -97,9 +97,9 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <returns></returns>
         public string[] CopyResources(string[] sourceResourceIds, string[] targetResourceIds, bool overwrite, RebaseOptions options, LengthyOperationProgressCallBack callback)
         {
-            Check.ArgumentNotNull(sourceResourceIds, "sourceResourceIds"); //NOXLATE
-            Check.ArgumentNotNull(targetResourceIds, "targetResourceIds"); //NOXLATE
-            Check.ThatPreconditionIsMet(sourceResourceIds.Length == targetResourceIds.Length, "resourceIds.Length == targetResourceIds.Length"); //NOXLATE
+            Check.ArgumentNotNull(sourceResourceIds, nameof(sourceResourceIds));
+            Check.ArgumentNotNull(targetResourceIds, nameof(targetResourceIds));
+            Check.ThatPreconditionIsMet(sourceResourceIds.Length == targetResourceIds.Length, $"{nameof(sourceResourceIds)}.Length == {nameof(targetResourceIds)}.Length");
 
             var copiedItems = new List<string>();
             var cb = callback;
@@ -196,8 +196,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <returns></returns>
         public int CopyResources(string[] resourceIds, string folderId, bool overwrite, LengthyOperationProgressCallBack callback)
         {
-            Check.ArgumentNotNull(resourceIds, "resourceIds"); //NOXLATE
-            Check.ArgumentNotEmpty(folderId, "folderId"); //NOXLATE
+            Check.ArgumentNotNull(resourceIds, nameof(resourceIds));
+            Check.ArgumentNotEmpty(folderId, nameof(folderId));
 
             var cb = callback;
             if (cb == null)
@@ -279,8 +279,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <returns></returns>
         public int MoveResources(string[] resourceIds, string folderId, bool overwrite, LengthyOperationProgressCallBack callback)
         {
-            Check.ArgumentNotNull(resourceIds, "resourceIds"); //NOXLATE
-            Check.ArgumentNotEmpty(folderId, "folderId"); //NOXLATE
+            Check.ArgumentNotNull(resourceIds, nameof(resourceIds));
+            Check.ArgumentNotEmpty(folderId, nameof(folderId));
 
             var cb = callback;
             if (cb == null)
@@ -363,8 +363,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <returns>An array of resource ids that were succesfully migrated</returns>
         public string[] MigrateResource(string resourceId, string[] dependentResourceIds, bool overwrite, LengthyOperationProgressCallBack callback)
         {
-            Check.ArgumentNotEmpty(resourceId, "resourceId"); //NOXLATE
-            Check.ArgumentNotNull(dependentResourceIds, "dependentResourceIds"); //NOXLATE
+            Check.ArgumentNotEmpty(resourceId, nameof(resourceId));
+            Check.ArgumentNotNull(dependentResourceIds, nameof(dependentResourceIds));
 
             //TODO: Figure out a more elegant strategy of handling saving resources
             //to older versions (downgrading?)
@@ -494,7 +494,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <returns>An array of resource ids that were succesfully migrated</returns>
         public string[] MigrateResource(string resourceId, bool overwrite, LengthyOperationProgressCallBack callback)
         {
-            Check.ArgumentNotEmpty(resourceId, "resourceId"); //NOXLATE
+            Check.ArgumentNotEmpty(resourceId, nameof(resourceId));
             Dictionary<string, string> resIds = new Dictionary<string, string>();
             var refList = GetReverseReferences(resourceId);
             BuildFullDependencyList(resIds, refList);

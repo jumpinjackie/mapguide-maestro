@@ -44,11 +44,9 @@ namespace Maestro.Editors.MapDefinition
     {
         public static double[] GenerateScales(double minScale, double maxScale, ScaleGenerationMethod method, ScaleRoundingMethod rounding, int scaleCount)
         {
-            Check.ThatPreconditionIsMet(minScale < maxScale, "minScale < maxScale");
-            Check.ThatPreconditionIsMet(scaleCount > 0, "scaleCount > 0");
-
+            Check.ThatPreconditionIsMet(minScale < maxScale, $"{nameof(minScale)} < {nameof(maxScale)}");
+            Check.ThatPreconditionIsMet(scaleCount > 0, $"{nameof(scaleCount)} > 0");
             List<double> vals = new List<double>();
-
             if (method == ScaleGenerationMethod.Linear)
             {
                 double inc = (double)(maxScale - minScale) / (double)scaleCount;

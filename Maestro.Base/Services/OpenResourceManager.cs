@@ -132,10 +132,10 @@ namespace Maestro.Base.Services
 
         internal void RenameResourceId(string oldId, string newId, IServerConnection conn, ISiteExplorer siteExp)
         {
-            Check.ArgumentNotEmpty(oldId, "oldId"); //NOXLATE
-            Check.ArgumentNotEmpty(newId, "newId"); //NOXLATE
-            Check.ArgumentNotNull(siteExp, "siteExp"); //NOXLATE
-            Check.ArgumentNotNull(conn, "conn"); //NOXLATE
+            Check.ArgumentNotEmpty(oldId, nameof(oldId));
+            Check.ArgumentNotEmpty(newId, nameof(newId));
+            Check.ArgumentNotNull(siteExp, nameof(siteExp));
+            Check.ArgumentNotNull(conn, nameof(conn));
 
             string oldKey = ComputeResourceKey(oldId, conn);
             string newKey = ComputeResourceKey(newId, conn);

@@ -61,7 +61,7 @@ namespace Maestro.Base.Services
         /// <param name="item"></param>
         public void Put(object item)
         {
-            Check.ArgumentNotNull(item, "item"); //NOXLATE
+            Check.ArgumentNotNull(item, nameof(item));
             lock (_clipLock)
             {
                 _item = item;
@@ -87,7 +87,7 @@ namespace Maestro.Base.Services
 
         internal RepositoryItem.ClipboardAction GetClipboardState(string resId)
         {
-            Check.ArgumentNotEmpty(resId, "resId");
+            Check.ArgumentNotEmpty(resId, nameof(resId));
             var state = RepositoryItem.ClipboardAction.None;
             object o = null;
             lock (_clipLock)

@@ -64,7 +64,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         public ValidationResultSet(IEnumerable<ValidationIssue> issues)
             : this()
         {
-            Check.ArgumentNotNull(issues, "issues"); //NOXLATE
+            Check.ArgumentNotNull(issues, nameof(issues));
 
             AddIssues(issues);
         }
@@ -85,7 +85,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <returns></returns>
         public ICollection<ValidationIssue> GetIssuesForResource(string resourceId)
         {
-            Check.ArgumentNotEmpty(resourceId, "resourceId"); //NOXLATE
+            Check.ArgumentNotEmpty(resourceId, nameof(resourceId));
 
             if (_issues.ContainsKey(resourceId))
                 return _issues[resourceId].Keys;
@@ -148,9 +148,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// <param name="issue">The issue.</param>
         public void AddIssue(ValidationIssue issue)
         {
-            Check.ArgumentNotNull(issue, "issue"); //NOXLATE
-            Check.ArgumentNotNull(issue.Resource, "issue.Resource"); //NOXLATE
-            Check.ArgumentNotEmpty(issue.Resource.ResourceID, "issue.Resource.ResourceID"); //NOXLATE
+            Check.ArgumentNotNull(issue, nameof(issue));
+            Check.ArgumentNotNull(issue.Resource, $"{nameof(issue)}.{nameof(issue.Resource)}");
+            Check.ArgumentNotEmpty(issue.Resource.ResourceID, $"{nameof(issue)}.{nameof(issue.Resource)}.{nameof(issue.Resource.ResourceID)}");
 
             if (!_issues.ContainsKey(issue.Resource.ResourceID))
                 _issues[issue.Resource.ResourceID] = new Dictionary<ValidationIssue, ValidationIssue>();

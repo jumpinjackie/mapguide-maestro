@@ -1710,8 +1710,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <returns></returns>
         protected virtual OSGeo.MapGuide.ObjectModels.Common.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, string filter, bool allowFallbackToContextInformation)
         {
-            Check.ArgumentNotEmpty(schema, "schema"); //NOXLATE
-            Check.ArgumentNotEmpty(geometry, "geometry"); //NOXLATE
+            Check.ArgumentNotEmpty(schema, nameof(schema));
+            Check.ArgumentNotEmpty(geometry, nameof(geometry));
             try
             {
                 System.Collections.Specialized.NameValueCollection fun = new System.Collections.Specialized.NameValueCollection();

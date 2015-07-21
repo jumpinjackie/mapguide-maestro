@@ -286,8 +286,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="serializer">The serializer.</param>
         public static void RegisterResource(ResourceTypeDescriptor desc, ResourceSerializer serializer)
         {
-            Check.ArgumentNotNull(desc, "desc");
-            Check.ArgumentNotNull(serializer, "serializer");
+            Check.ArgumentNotNull(desc, nameof(desc));
+            Check.ArgumentNotNull(serializer, nameof(serializer));
             ResourceTypeRegistry.RegisterResource(desc, serializer);
         }
 
@@ -299,9 +299,9 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="deserializeMethod">The deserialize method.</param>
         public static void RegisterResourceSerializer(ResourceTypeDescriptor resourceType, Func<IResource, Stream> serializer, Func<string, IResource> deserializer)
         {
-            Check.ArgumentNotNull(resourceType, "resourceType");
-            Check.ArgumentNotNull(serializer, "serializer");
-            Check.ArgumentNotNull(deserializer, "deserializer");
+            Check.ArgumentNotNull(resourceType, nameof(resourceType));
+            Check.ArgumentNotNull(serializer, nameof(serializer));
+            Check.ArgumentNotNull(deserializer, nameof(deserializer));
             ResourceTypeRegistry.RegisterResource(resourceType, serializer, deserializer);
         }
 
@@ -312,8 +312,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="func"></param>
         public static void RegisterCompoundSymbolFactoryMethod(Version version, Func<ICompoundSymbolDefinition> func)
         {
-            Check.ArgumentNotNull(version, "version");
-            Check.ArgumentNotNull(func, "func");
+            Check.ArgumentNotNull(version, nameof(version));
+            Check.ArgumentNotNull(func, nameof(func));
             if (_compoundSymbolFactories.ContainsKey(version))
                 throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + version);
 
@@ -327,8 +327,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="func"></param>
         public static void RegisterSimpleSymbolFactoryMethod(Version version, Func<ISimpleSymbolDefinition> func)
         {
-            Check.ArgumentNotNull(version, "version");
-            Check.ArgumentNotNull(func, "func");
+            Check.ArgumentNotNull(version, nameof(version));
+            Check.ArgumentNotNull(func, nameof(func));
             if (_simpleSymbolFactories.ContainsKey(version))
                 throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + version);
 
@@ -342,8 +342,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="method">The method.</param>
         public static void RegisterLayerFactoryMethod(Version version, Func<LayerType, ILayerDefinition> method)
         {
-            Check.ArgumentNotNull(version, "version");
-            Check.ArgumentNotNull(method, "method");
+            Check.ArgumentNotNull(version, nameof(version));
+            Check.ArgumentNotNull(method, nameof(method));
             if (_layerFactories.ContainsKey(version))
                 throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + version);
 
@@ -357,7 +357,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="method">The method.</param>
         public static void RegisterLoadProcedureFactoryMethod(LoadType type, Func<ILoadProcedure> method)
         {
-            Check.ArgumentNotNull(method, "method");
+            Check.ArgumentNotNull(method, nameof(method));
             if (_loadProcFactories.ContainsKey(type))
                 throw new ArgumentException(Strings.LoadProcFactoryMethodAlreadyRegistered + type);
 
@@ -371,8 +371,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="method">The method.</param>
         public static void RegisterWebLayoutFactoryMethod(Version version, Func<string, IWebLayout> method)
         {
-            Check.ArgumentNotNull(version, "version");
-            Check.ArgumentNotNull(method, "method");
+            Check.ArgumentNotNull(version, nameof(version));
+            Check.ArgumentNotNull(method, nameof(method));
             if (_wlFactories.ContainsKey(version))
                 throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + version);
 
@@ -386,8 +386,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="method"></param>
         public static void RegisterMapDefinitionFactoryMethod(Version version, Func<IMapDefinition> method)
         {
-            Check.ArgumentNotNull(version, "version");
-            Check.ArgumentNotNull(method, "method");
+            Check.ArgumentNotNull(version, nameof(version));
+            Check.ArgumentNotNull(method, nameof(method));
             if (_mapDefinitionFactories.ContainsKey(version))
                 throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + version);
 
@@ -401,8 +401,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="method"></param>
         public static void RegisterWatermarkDefinitionFactoryMethod(Version version, Func<SymbolDefinitionType, IWatermarkDefinition> method)
         {
-            Check.ArgumentNotNull(version, "version");
-            Check.ArgumentNotNull(method, "method");
+            Check.ArgumentNotNull(version, nameof(version));
+            Check.ArgumentNotNull(method, nameof(method));
             if (_watermarkFactories.ContainsKey(version))
                 throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + version);
 
@@ -416,8 +416,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="func"></param>
         public static void RegisterTileSetDefinitionFactoryMethod(Version version, Func<ITileSetDefinition> func)
         {
-            Check.ArgumentNotNull(version, "version");
-            Check.ArgumentNotNull(func, "func");
+            Check.ArgumentNotNull(version, nameof(version));
+            Check.ArgumentNotNull(func, nameof(func));
             if (_tileSetDefinitionFactories.ContainsKey(version))
                 throw new ArgumentException(Strings.FactoryMethodAlreadyRegistered + version);
 
@@ -734,7 +734,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <returns></returns>
         public static ITileSetDefinition CreateTileSetDefinition(Version version)
         {
-            Check.ArgumentNotNull(version, "version"); //NOXLATE
+            Check.ArgumentNotNull(version, nameof(version));
             if (!_mapDefinitionFactories.ContainsKey(version))
                 throw new ArgumentException(Strings.UnknownTileDefinitionVersion + version.ToString());
 
@@ -775,7 +775,7 @@ namespace OSGeo.MapGuide.ObjectModels
 
         public static IApplicationDefinition DeserializeEmbeddedFlexLayout(Version siteVersion)
         {
-            Check.ArgumentNotNull(siteVersion, "siteVersion"); //NOXLATE
+            Check.ArgumentNotNull(siteVersion, nameof(siteVersion));
             if (siteVersion >= VER_240)
                 return (IApplicationDefinition)ResourceTypeRegistry.Deserialize(Strings.BaseTemplate240_ApplicationDefinition);
             else
@@ -822,10 +822,10 @@ namespace OSGeo.MapGuide.ObjectModels
                                                                   IApplicationDefinitionContainerInfoSet containers,
                                                                   string templateName)
         {
-            Check.ArgumentNotNull(templates, "templates"); //NOXLATE
-            Check.ArgumentNotNull(widgets, "widgets"); //NOXLATE
-            Check.ArgumentNotNull(containers, "containers"); //NOXLATE
-            Check.ArgumentNotNull(templateName, "templateName"); //NOXLATE
+            Check.ArgumentNotNull(templates, nameof(templates));
+            Check.ArgumentNotNull(widgets, nameof(widgets));
+            Check.ArgumentNotNull(containers, nameof(containers));
+            Check.ArgumentNotNull(templateName, nameof(templateName));
 
             IApplicationDefinition appDef = new ApplicationDefinitionType()
             {

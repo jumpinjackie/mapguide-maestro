@@ -39,8 +39,8 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <param name="targetFolder">The target folder.</param>
         public RebaseOptions(string sourceFolder, string targetFolder)
         {
-            Check.ThatPreconditionIsMet(ResourceIdentifier.IsFolderResource(sourceFolder), "ResourceIdentifier.IsFolderResource(sourceFolder)"); //NOXLATE
-            Check.ThatPreconditionIsMet(ResourceIdentifier.IsFolderResource(targetFolder), "ResourceIdentifier.IsFolderResource(targetFolder)"); //NOXLATE
+            Check.ThatPreconditionIsMet(ResourceIdentifier.IsFolderResource(sourceFolder), $"{nameof(ResourceIdentifier)}.{nameof(ResourceIdentifier.IsFolderResource)}({nameof(sourceFolder)})");
+            Check.ThatPreconditionIsMet(ResourceIdentifier.IsFolderResource(targetFolder), $"{nameof(ResourceIdentifier)}.{nameof(ResourceIdentifier.IsFolderResource)}({nameof(targetFolder)})");
 
             this.SourceFolder = sourceFolder;
             this.TargetFolder = targetFolder;
@@ -89,7 +89,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <param name="res">The res.</param>
         public ResourceRebaser(IResource res)
         {
-            Check.ArgumentNotNull(res, "res");
+            Check.ArgumentNotNull(res, nameof(res));
             _res = res;
         }
 

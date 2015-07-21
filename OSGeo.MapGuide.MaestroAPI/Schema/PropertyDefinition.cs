@@ -235,7 +235,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <param name="mgr"></param>
         void IFdoSerializable.ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
         {
-            Check.ArgumentNotNull(node, "node"); //NOXLATE
+            Check.ArgumentNotNull(node, nameof(node));
             this.ReadXml(node, mgr);
         }
 
@@ -246,8 +246,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <param name="currentNode"></param>
         void IFdoSerializable.WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
         {
-            Check.ArgumentNotNull(doc, "doc"); //NOXLATE
-            Check.ArgumentNotNull(currentNode, "currentNode"); //NOXLATE
+            Check.ArgumentNotNull(doc, nameof(doc));
+            Check.ArgumentNotNull(currentNode, nameof(currentNode));
             this.WriteXml(doc, currentNode);
         }
 

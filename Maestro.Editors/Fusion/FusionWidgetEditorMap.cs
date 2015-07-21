@@ -41,9 +41,9 @@ namespace Maestro.Editors.Fusion
         /// <returns></returns>
         public static IWidgetEditor GetEditorForWidget(IWidget widget, FlexibleLayoutEditorContext context, IEditorService edsvc)
         {
-            Check.ArgumentNotNull(widget, "widget"); //NOXLATE
-            Check.ArgumentNotNull(context, "context"); //NOXLATE
-            Check.ArgumentNotNull(edsvc, "edsvc"); //NOXLATE
+            Check.ArgumentNotNull(widget, nameof(widget));
+            Check.ArgumentNotNull(context, nameof(context));
+            Check.ArgumentNotNull(edsvc, nameof(edsvc));
 
             IWidgetEditor ed = new GenericWidgetCtrl();
             ed.Setup(widget, context, edsvc);

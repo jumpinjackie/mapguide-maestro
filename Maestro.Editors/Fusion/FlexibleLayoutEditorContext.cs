@@ -59,7 +59,7 @@ namespace Maestro.Editors.Fusion
         /// <returns></returns>
         public IWidgetInfo GetWidgetInfo(string name)
         {
-            Check.ArgumentNotEmpty(name, "name"); //NOXLATE
+            Check.ArgumentNotEmpty(name, nameof(name));
             foreach (var wgt in _widgetSet.WidgetInfo)
             {
                 if (name.Equals(wgt.Type))
@@ -84,7 +84,7 @@ namespace Maestro.Editors.Fusion
         /// <returns></returns>
         public IApplicationDefinitionContainerInfo GetContainerInfo(string name)
         {
-            Check.ArgumentNotEmpty(name, "name"); //NOXLATE
+            Check.ArgumentNotEmpty(name, nameof(name));
             foreach (var cnt in _containerSet.ContainerInfo)
             {
                 if (name.Equals(cnt.Type))
@@ -100,7 +100,7 @@ namespace Maestro.Editors.Fusion
         /// <returns></returns>
         public IApplicationDefinitionTemplateInfo GetTemplateInfo(string name)
         {
-            Check.ArgumentNotEmpty(name, "name"); //NOXLATE
+            Check.ArgumentNotEmpty(name, nameof(name));
             foreach (var tpl in _templateSet.TemplateInfo)
             {
                 if (name.Equals(tpl.Name))

@@ -73,7 +73,7 @@ namespace System.Xml
         /// <returns></returns>
         public static string ToXmlString(this XmlDocument doc, bool indent = false)
         {
-            Check.ArgumentNotNull(doc, "doc"); //NOXLATE
+            Check.ArgumentNotNull(doc, nameof(doc));
             var xs = new XmlWriterSettings();
             xs.Indent = indent;
             using (var sw = new StringWriter())
@@ -105,9 +105,9 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="target">The target.</param>
         public static void CopyResourceDataTo(this IResource source, IServerConnection conn, IResource target)
         {
-            Check.ArgumentNotNull(source, "source"); //NOXLATE
-            Check.ArgumentNotNull(conn, "conn"); //NOXLATE
-            Check.ArgumentNotNull(target, "target"); //NOXLATE
+            Check.ArgumentNotNull(source, nameof(source));
+            Check.ArgumentNotNull(conn, nameof(conn));
+            Check.ArgumentNotNull(target, nameof(target));
 
             var resData = conn.ResourceService.EnumerateResourceData(source.ResourceID);
             foreach (var res in resData.ResourceData)
@@ -137,8 +137,8 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <param name="targetID">The target ID.</param>
         public static void CopyResourceDataTo(this IResource source, IServerConnection conn, string targetID)
         {
-            Check.ArgumentNotNull(source, "source"); //NOXLATE
-            Check.ArgumentNotEmpty(targetID, "targetID"); //NOXLATE
+            Check.ArgumentNotNull(source, nameof(source));
+            Check.ArgumentNotEmpty(targetID, nameof(targetID));
 
             var resData = conn.ResourceService.EnumerateResourceData(source.ResourceID);
             foreach (var res in resData.ResourceData)
@@ -167,8 +167,8 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <returns></returns>
             public static string GetConfigurationContent(this IFeatureSource fs, IServerConnection conn)
             {
-                Check.ArgumentNotNull(fs, "fs"); //NOXLATE
-                Check.ArgumentNotNull(conn, "conn"); //NOXLATE
+                Check.ArgumentNotNull(fs, nameof(fs));
+                Check.ArgumentNotNull(conn, nameof(conn));
                 if (string.IsNullOrEmpty(fs.ConfigurationDocument))
                     return string.Empty;
 
@@ -190,8 +190,8 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <param name="xmlContent"></param>
             public static void SetConfigurationContent(this IFeatureSource fs, IServerConnection conn, string xmlContent)
             {
-                Check.ArgumentNotNull(fs, "fs"); //NOXLATE
-                Check.ArgumentNotNull(conn, "conn"); //NOXLATE
+                Check.ArgumentNotNull(fs, nameof(fs));
+                Check.ArgumentNotNull(conn, nameof(conn));
                 if (string.IsNullOrEmpty(fs.ConfigurationDocument))
                     fs.ConfigurationDocument = "config.xml"; //NOXLATE
 
@@ -229,8 +229,8 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <returns></returns>
             public static string[] GetIdentityProperties(this IFeatureSource fs, IServerConnection conn, string className)
             {
-                Check.ArgumentNotNull(fs, "fs"); //NOXLATE
-                Check.ArgumentNotNull(conn, "conn"); //NOXLATE
+                Check.ArgumentNotNull(fs, nameof(fs));
+                Check.ArgumentNotNull(conn, nameof(conn));
                 try
                 {
                     return conn.FeatureService.GetIdentityProperties(fs.ResourceID, className);
@@ -264,9 +264,9 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <returns>True if sheets were regenerated. False otherwise</returns>
             public static bool RegenerateSheetList(this IDrawingSource source, IServerConnection conn)
             {
-                Check.ArgumentNotNull(source, "source"); //NOXLATE
-                Check.ArgumentNotNull(conn, "conn"); //NOXLATE
-                Check.ArgumentNotEmpty(source.ResourceID, "source.ResourceID"); //NOXLATE
+                Check.ArgumentNotNull(source, nameof(source));
+                Check.ArgumentNotNull(conn, nameof(conn));
+                Check.ArgumentNotEmpty(source.ResourceID, $"{nameof(source)}.{nameof(source.ResourceID)}");
 
                 IDrawingService dwSvc = (IDrawingService)conn.GetService((int)ServiceType.Drawing);
                 var sheets = dwSvc.EnumerateDrawingSections(source.ResourceID);
@@ -289,9 +289,9 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <param name="conn"></param>
             public static void UpdateExtents(this IDrawingSource source, IServerConnection conn)
             {
-                Check.ArgumentNotNull(source, "source"); //NOXLATE
-                Check.ArgumentNotNull(conn, "conn"); //NOXLATE
-                Check.ArgumentNotEmpty(source.ResourceID, "source.ResourceID"); //NOXLATE
+                Check.ArgumentNotNull(source, nameof(source));
+                Check.ArgumentNotNull(conn, nameof(conn));
+                Check.ArgumentNotEmpty(source.ResourceID, $"{nameof(source)}.{nameof(source.ResourceID)}");
 
                 //Need drawing service
                 if (Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Drawing) < 0)
@@ -376,8 +376,8 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <returns></returns>
             public static IFdoSpatialContext GetSpatialContext(this ILayerDefinition layer, IServerConnection conn)
             {
-                Check.ArgumentNotNull(layer, "layer"); //NOXLATE
-                Check.ArgumentNotNull(conn, "conn"); //NOXLATE
+                Check.ArgumentNotNull(layer, nameof(layer));
+                Check.ArgumentNotNull(conn, nameof(conn));
                 var ltype = layer.SubLayer.LayerType;
                 if (ltype == LayerType.Vector ||
                     ltype == LayerType.Raster)
@@ -433,8 +433,8 @@ namespace OSGeo.MapGuide.ObjectModels
             public static IEnvelope GetSpatialExtent(this ILayerDefinition layer, IServerConnection conn, bool allowFallbackToContextInformation, out string csWkt)
             {
                 csWkt = null;
-                Check.ArgumentNotNull(layer, "layer"); //NOXLATE
-                Check.ArgumentNotNull(conn, "conn"); //NOXLATE
+                Check.ArgumentNotNull(layer, nameof(layer));
+                Check.ArgumentNotNull(conn, nameof(conn));
 
                 switch (layer.SubLayer.LayerType)
                 {
@@ -552,7 +552,7 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <returns></returns>
             public static ICompositeRule CreateDefaultPointCompositeRule(this ILayerElementFactory fact)
             {
-                Check.ArgumentNotNull(fact, "fact");
+                Check.ArgumentNotNull(fact, nameof(fact));
                 var rule = fact.CreateDefaultCompositeRule();
                 //Clear out existing instances
                 rule.CompositeSymbolization.RemoveAllSymbolInstances();
@@ -608,7 +608,7 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <returns></returns>
             public static ICompositeRule CreateDefaultLineCompositeRule(this ILayerElementFactory fact)
             {
-                Check.ArgumentNotNull(fact, "fact");
+                Check.ArgumentNotNull(fact, nameof(fact));
                 var rule = fact.CreateDefaultCompositeRule();
                 //Clear out existing instances
                 rule.CompositeSymbolization.RemoveAllSymbolInstances();
@@ -659,7 +659,7 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <returns></returns>
             public static ICompositeRule CreateDefaultAreaCompositeRule(this ILayerElementFactory fact)
             {
-                Check.ArgumentNotNull(fact, "fact");
+                Check.ArgumentNotNull(fact, nameof(fact));
                 var rule = fact.CreateDefaultCompositeRule();
                 //Clear out existing instances
                 rule.CompositeSymbolization.RemoveAllSymbolInstances();
@@ -736,7 +736,7 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <returns></returns>
             public static ICompositeTypeStyle CreateDefaultPointCompositeStyle(this ILayerElementFactory fact)
             {
-                Check.ArgumentNotNull(fact, "fact");
+                Check.ArgumentNotNull(fact, nameof(fact));
                 var style = fact.CreateDefaultCompositeStyle();
                 style.RemoveAllRules();
                 style.AddCompositeRule(fact.CreateDefaultPointCompositeRule());
@@ -750,7 +750,7 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <returns></returns>
             public static ICompositeTypeStyle CreateDefaultLineCompositeStyle(this ILayerElementFactory fact)
             {
-                Check.ArgumentNotNull(fact, "fact");
+                Check.ArgumentNotNull(fact, nameof(fact));
                 var style = fact.CreateDefaultCompositeStyle();
                 style.RemoveAllRules();
                 style.AddCompositeRule(fact.CreateDefaultLineCompositeRule());
@@ -764,7 +764,7 @@ namespace OSGeo.MapGuide.ObjectModels
             /// <returns></returns>
             public static ICompositeTypeStyle CreateDefaultAreaCompositeStyle(this ILayerElementFactory fact)
             {
-                Check.ArgumentNotNull(fact, "fact");
+                Check.ArgumentNotNull(fact, nameof(fact));
                 var style = fact.CreateDefaultCompositeStyle();
                 style.RemoveAllRules();
                 style.AddCompositeRule(fact.CreateDefaultAreaCompositeRule());

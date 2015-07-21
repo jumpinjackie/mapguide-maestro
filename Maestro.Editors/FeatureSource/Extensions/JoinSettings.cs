@@ -54,9 +54,9 @@ namespace Maestro.Editors.FeatureSource.Extensions
         public JoinSettings(string primaryFeatureSource, string primaryClass, IAttributeRelation rel)
             : this()
         {
-            Check.ArgumentNotNull(rel, "rel"); //NOXLATE
-            Check.ArgumentNotNull(primaryClass, "primaryClass"); //NOXLATE
-            Check.ArgumentNotNull(primaryFeatureSource, "primaryFeatureSource"); //NOXLATE
+            Check.ArgumentNotNull(rel, nameof(rel));
+            Check.ArgumentNotNull(primaryClass, nameof(primaryClass));
+            Check.ArgumentNotNull(primaryFeatureSource, nameof(primaryFeatureSource));
             _primaryFeatureSource = primaryFeatureSource;
             _primaryClass = primaryClass;
 

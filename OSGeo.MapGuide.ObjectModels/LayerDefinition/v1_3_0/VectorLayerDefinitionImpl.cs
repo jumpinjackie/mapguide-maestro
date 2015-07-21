@@ -953,7 +953,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
 
         void ILineRule.SetStrokes(IEnumerable<IStroke> strokes)
         {
-            Check.ArgumentNotNull(strokes, "strokes"); //NOXLATE
+            Check.ArgumentNotNull(strokes, nameof(strokes));
             this.Items.Clear();
             foreach (var stroke in strokes)
             {

@@ -80,9 +80,7 @@
     <Compile Include="..\Properties\SignedAssemblyInfo2.cs">
       <Link>SignedAssemblyInfo2.cs</Link>
     </Compile>
-    <Compile Include="Common\AutoCompletion.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Common\AutoCompletion.cs" />
     <Compile Include="Common\ColorComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
