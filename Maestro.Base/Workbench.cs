@@ -30,7 +30,7 @@ namespace Maestro.Base
     /// <summary>
     /// The top level application window
     /// </summary>
-    public partial class Workbench : WorkbenchBase
+    public class Workbench : WorkbenchBase
     {
         private static Workbench instance;
 

@@ -60,8 +60,7 @@ namespace Maestro.Base.Services.DragDropHandlers
                 conn.ResourceService.SaveResource(fs);
 
                 //As we all know, the term shape file is deceptive...
-                string[] files = new string[]
-                {
+                string[] files = {
                     file,
                     file.Substring(0, file.LastIndexOf(".")) + ".shx", //NOXLATE
                     file.Substring(0, file.LastIndexOf(".")) + ".dbf", //NOXLATE

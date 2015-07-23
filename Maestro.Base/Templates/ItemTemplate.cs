@@ -75,7 +75,7 @@ namespace Maestro.Base.Templates
         /// <param name="startFolder"></param>
         /// <param name="conn">The server connection</param>
         /// <returns>a new resource, null if the user cancelled during this process</returns>
-        public abstract IResource CreateItem(string startFolder, IServerConnection conn);
+        public abstract IResource CreateItem(string startPoint, IServerConnection conn);
 
         /// <summary>
         /// Compares this template against the specified template
