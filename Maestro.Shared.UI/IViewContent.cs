@@ -173,6 +173,7 @@ namespace Maestro.Shared.UI
     /// <summary>
     /// Defines the possible regions of the user interface a <see cref="IViewContent"/> can reside in
     /// </summary>
+    [Flags]
     public enum ViewRegion
     {
         /// <summary>

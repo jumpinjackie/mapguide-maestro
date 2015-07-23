@@ -201,7 +201,7 @@ namespace Maestro
             }
         }
     }
-
+    
     internal sealed class MaestroServiceManager : ServiceManager
     {
         private static ILoggingService loggingService = new TextWriterLoggingService(BroadcastTextWriter.Instance);

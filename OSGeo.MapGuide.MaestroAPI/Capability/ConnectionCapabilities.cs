@@ -37,8 +37,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         /// <summary>
         /// Resource types supported on *all* versions of MapGuide
         /// </summary>
-        private static string[] _defaultResTypes = new string[]
-        {
+        private static readonly string[] _defaultResTypes = {
             //ResourceTypes.RuntimeMap.ToString(),
             //ResourceTypes.Selection.ToString(),
             //ResourceTypes.Folder.ToString(),

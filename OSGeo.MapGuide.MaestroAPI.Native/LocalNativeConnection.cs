@@ -334,7 +334,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         {
             return AggregateQueryFeatureSourceCore(resourceID, schema, filter, columns, null);
         }
-
+        
         public override IReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, System.Collections.Specialized.NameValueCollection aggregateFunctions)
         {
             return AggregateQueryFeatureSourceCore(resourceID, schema, filter, null, aggregateFunctions);

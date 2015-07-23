@@ -92,9 +92,9 @@ namespace Maestro.Shared.UI
         public static void Run(string message, BusyWaitDelegate action, Action<object, Exception> onComplete, bool bPreserveThreadCulture)
         {
             if (action == null)
-                throw new ArgumentNullException("action"); //NOXLATE
+                throw new ArgumentNullException(nameof(action)); //NOXLATE
             if (onComplete == null)
-                throw new ArgumentNullException("onComplete"); //NOXLATE
+                throw new ArgumentNullException(nameof(onComplete)); //NOXLATE
 
             var frm = new BusyWaitDialog(action, bPreserveThreadCulture ? Thread.CurrentThread.CurrentCulture : null);
             frm.lblBusy.Text = message;
