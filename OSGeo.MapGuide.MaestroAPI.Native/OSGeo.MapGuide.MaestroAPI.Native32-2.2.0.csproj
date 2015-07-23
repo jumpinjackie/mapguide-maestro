@@ -152,6 +152,9 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\Maestro\packages\RefactoringEssentials.1.1.0\tools\analyzers\RefactoringEssentials.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy /Y /I "$(ProjectDir)*.cs" "$(SolutionDir)..\SDK\LocalNativeProvider\Src\"
