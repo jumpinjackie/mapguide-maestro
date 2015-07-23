@@ -65,11 +65,11 @@ namespace OSGeo.MapGuide.ObjectModels
         public ResourceIdentifier(string name, ResourceTypes type)
         {
             if (string.IsNullOrEmpty(name))
-                throw new ArgumentNullException("name"); //NOXLATE
+                throw new ArgumentNullException(nameof(name)); //NOXLATE
             if (name.IndexOf(".") > 0 || name.IndexOf("//") > 0 || name.IndexOf(":") > 0) //NOXLATE
-                throw new ArgumentException(Strings.ErrorResourceIdentifierInvalidChars, "name"); //NOXLATE
+                throw new ArgumentException(Strings.ErrorResourceIdentifierInvalidChars, nameof(name)); //NOXLATE
             if (!Enum.IsDefined(typeof(ResourceTypes), type))
-                throw new ArgumentException(Strings.ErrorUnknownResourceType, "type"); //NOXLATE
+                throw new ArgumentException(Strings.ErrorUnknownResourceType, nameof(type)); //NOXLATE
             m_id = ROOT_IDENTIFIER + name + ResourceName(type, true);
         }
 
@@ -285,12 +285,12 @@ namespace OSGeo.MapGuide.ObjectModels
         public static string GetName(string identifier)
         {
             if (string.IsNullOrEmpty(identifier))
-                throw new ArgumentNullException("identifier"); //NOXLATE
+                throw new ArgumentNullException(nameof(identifier)); //NOXLATE
 
             string temp = GetPath(identifier);
 
             if (string.IsNullOrEmpty(temp))
-                throw new ArgumentException(Strings.ErrorInvalidResourceIdentifier, "identifier"); //NOXLATE
+                throw new ArgumentException(Strings.ErrorInvalidResourceIdentifier, nameof(identifier)); //NOXLATE
 
             return temp.Substring(temp.LastIndexOf("/") + 1); //NOXLATE
         }
@@ -313,7 +313,7 @@ namespace OSGeo.MapGuide.ObjectModels
                 newname += "." + GetExtension(identifier); //NOXLATE
 
             if (newname.IndexOf("/") > 0) //NOXLATE
-                throw new ArgumentException(Strings.ErrorResourceIdentifierNameInvalidChars, "newname");
+                throw new ArgumentException(Strings.ErrorResourceIdentifierNameInvalidChars, nameof(newname));
             temp = temp.Substring(0, temp.Length - GetName(identifier).Length) + newname;
 
             return GetRepository(identifier) + temp;
@@ -349,7 +349,7 @@ namespace OSGeo.MapGuide.ObjectModels
                 newextension = "." + newextension; //NOXLATE
 
             if (newextension.LastIndexOf(".") > 0) //NOXLATE
-                throw new ArgumentException(Strings.ErrorResourceIdInvalidExtension, "newextension"); //NOXLATE
+                throw new ArgumentException(Strings.ErrorResourceIdInvalidExtension, nameof(newextension)); //NOXLATE
 
             return identifier.Substring(0, identifier.Length - GetExtension(identifier).Length - 1) + newextension;
         }
@@ -362,14 +362,14 @@ namespace OSGeo.MapGuide.ObjectModels
         public static string GetRepository(string identifier)
         {
             if (string.IsNullOrEmpty(identifier))
-                throw new ArgumentNullException("identifier"); //NOXLATE
+                throw new ArgumentNullException(nameof(identifier)); //NOXLATE
             int ix = identifier.IndexOf("//"); //NOXLATE
             if (ix <= 0)
-                throw new ArgumentException(Strings.ErrorInvalidResourceIdentifier, "identifier"); //NOXLATE
+                throw new ArgumentException(Strings.ErrorInvalidResourceIdentifier, nameof(identifier)); //NOXLATE
 
             string repo = identifier.Substring(0, ix);
             if (repo != "Library:" && !repo.StartsWith("Session:")) //NOXLATE
-                throw new ArgumentException(Strings.ErrorInvalidResourceIdentifierType, "identifier"); //NOXLATE
+                throw new ArgumentException(Strings.ErrorInvalidResourceIdentifierType, nameof(identifier)); //NOXLATE
 
             return repo + "//"; //NOXLATE
         }
@@ -382,7 +382,7 @@ namespace OSGeo.MapGuide.ObjectModels
         public static string GetFullpath(string identifier)
         {
             if (string.IsNullOrEmpty(identifier))
-                throw new ArgumentNullException("identifier"); //NOXLATE
+                throw new ArgumentNullException(nameof(identifier)); //NOXLATE
             return identifier.Substring(GetRepository(identifier).Length);
         }
 
@@ -394,7 +394,7 @@ namespace OSGeo.MapGuide.ObjectModels
         public static string GetPath(string identifier)
         {
             if (string.IsNullOrEmpty(identifier))
-                throw new ArgumentNullException("identifier"); //NOXLATE
+                throw new ArgumentNullException(nameof(identifier)); //NOXLATE
             return identifier.Substring(GetRepository(identifier).Length, identifier.Length - GetExtension(identifier).Length - GetRepository(identifier).Length - 1);
         }
 
@@ -431,14 +431,14 @@ namespace OSGeo.MapGuide.ObjectModels
         private static string GetExtension(string identifier)
         {
             if (string.IsNullOrEmpty(identifier))
-                throw new ArgumentNullException("identifier"); //NOXLATE
+                throw new ArgumentNullException(nameof(identifier)); //NOXLATE
 
             if (identifier.EndsWith("/")) //NOXLATE
                 return string.Empty;
 
             int ix = identifier.LastIndexOf("."); //NOXLATE
             if (ix <= 0)
-                throw new ArgumentException(Strings.ErrorInvalidResourceIdentifier, "identifier"); //NOXLATE
+                throw new ArgumentException(Strings.ErrorInvalidResourceIdentifier, nameof(identifier)); //NOXLATE
 
             return identifier.Substring(ix + 1);
         }

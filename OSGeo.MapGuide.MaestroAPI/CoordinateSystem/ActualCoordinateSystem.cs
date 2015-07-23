@@ -38,7 +38,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         internal ActualCoordinateSystem(ICoordinateSystem coordinateSystem)
         {
             if (coordinateSystem == null)
-                throw new ArgumentNullException("coordinateSystem"); //NOXLATE
+                throw new ArgumentNullException(nameof(coordinateSystem)); //NOXLATE
 
             CoordinateTransformationFactory f = new CoordinateTransformationFactory();
             CoordinateSystemFactory cf = new CoordinateSystemFactory();

@@ -1384,7 +1384,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public virtual void SetFolderOrResourceHeader(string resourceID, object header)
         {
             if (header == null)
-                throw new ArgumentNullException("header"); //NOXLATE
+                throw new ArgumentNullException(nameof(header)); //NOXLATE
 
             ObjCommon.ResourceSecurityType sec;
             if (header as ObjCommon.ResourceFolderHeaderType != null)
@@ -1392,7 +1392,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             else if (header as ObjCommon.ResourceDocumentHeaderType != null)
                 sec = (header as ObjCommon.ResourceDocumentHeaderType).Security;
             else
-                throw new ArgumentException(Strings.ErrorInvalidResourceHeaderRootElement, "header"); //NOXLATE
+                throw new ArgumentException(Strings.ErrorInvalidResourceHeaderRootElement, nameof(header)); //NOXLATE
 
             if (sec.Users != null && sec.Users.User != null && sec.Users.User.Count == 0)
                 sec.Users = null;

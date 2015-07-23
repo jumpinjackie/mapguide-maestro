@@ -381,7 +381,7 @@ namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_3_0
         [XmlIgnore]
         public override OSGeo.MapGuide.ObjectModels.WatermarkDefinition.PositionType Type
         {
-            get { return OSGeo.MapGuide.ObjectModels.WatermarkDefinition.PositionType.Tile; ; }
+            get { return OSGeo.MapGuide.ObjectModels.WatermarkDefinition.PositionType.Tile; }
         }
 
         [XmlIgnore]

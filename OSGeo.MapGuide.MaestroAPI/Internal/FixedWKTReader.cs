@@ -202,7 +202,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Internal
             Token token = tokens[index++] as Token;
 
             if (token == null)
-                throw new ArgumentNullException("tokens", Strings.ErrorTokenListContainsNullValue); //NOXLATE
+                throw new ArgumentNullException(nameof(tokens), Strings.ErrorTokenListContainsNullValue); //NOXLATE
             else if (token is EofToken)
                 throw new ParseException(Strings.ErrorParseExpectedNumberEos);
             else if (token is EolToken)

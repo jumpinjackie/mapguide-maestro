@@ -545,10 +545,10 @@ namespace OSGeo.MapGuide.ObjectModels
         public static IEnvelope CreateEnvelope(double minx, double miny, double maxx, double maxy)
         {
             if (minx > maxx)
-                throw new ArgumentException("minx > maxx", "minx"); //NOXLATE
+                throw new ArgumentException($"{nameof(minx)} > {nameof(maxx)}", nameof(minx)); //NOXLATE
 
             if (miny > maxy)
-                throw new ArgumentException("miny > maxy", "miny"); //NOXLATE
+                throw new ArgumentException($"{nameof(miny)} > {nameof(maxy)}", nameof(miny)); //NOXLATE
 
             return new Envelope()
             {

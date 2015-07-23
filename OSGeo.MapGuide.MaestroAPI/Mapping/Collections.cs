@@ -537,15 +537,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Adds the specified layer.
         /// </summary>
-        /// <param name="layer">The layer.</param>
-        public override void Add(RuntimeMapLayer layer)
+        /// <param name="item">The layer.</param>
+        public override void Add(RuntimeMapLayer item)
         {
             //calculate and set the zorder for the new layer
             RuntimeMapLayer prevLayer = (this.Count == 0) ? null : this[this.Count - 1];
             double zOrder = prevLayer == null ? RuntimeMap.Z_ORDER_TOP : prevLayer.DisplayOrder + RuntimeMap.Z_ORDER_INCREMENT;
-            layer.DisplayOrder = zOrder;
+            item.DisplayOrder = zOrder;
 
-            base.Add(layer);
+            base.Add(item);
         }
 
         /// <summary>
@@ -569,32 +569,32 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Called when [before item added].
         /// </summary>
-        /// <param name="layer">The layer.</param>
-        protected override void OnBeforeItemAdded(RuntimeMapLayer layer)
+        /// <param name="item">The layer.</param>
+        protected override void OnBeforeItemAdded(RuntimeMapLayer item)
         {
-            if (_layerIdMap.ContainsKey(layer.ObjectId))
-                throw new DuplicateKeyException(string.Format(Strings.DuplicateKeyExceptionMessage, layer.ObjectId));
+            if (_layerIdMap.ContainsKey(item.ObjectId))
+                throw new DuplicateKeyException(string.Format(Strings.DuplicateKeyExceptionMessage, item.ObjectId));
         }
 
         /// <summary>
         /// Called when [item added].
         /// </summary>
-        /// <param name="layer">The layer.</param>
-        protected override void OnItemAdded(RuntimeMapLayer layer)
+        /// <param name="item">The layer.</param>
+        protected override void OnItemAdded(RuntimeMapLayer item)
         {
-            _layerIdMap[layer.ObjectId] = layer;
-            _parent.OnLayerAdded(layer);
+            _layerIdMap[item.ObjectId] = item;
+            _parent.OnLayerAdded(item);
         }
 
         /// <summary>
         /// Called when [item removed].
         /// </summary>
-        /// <param name="layer">The layer.</param>
-        protected override void OnItemRemoved(RuntimeMapLayer layer)
+        /// <param name="value">The layer.</param>
+        protected override void OnItemRemoved(RuntimeMapLayer value)
         {
-            if (_layerIdMap.ContainsKey(layer.ObjectId))
-                _layerIdMap.Remove(layer.ObjectId);
-            _parent.OnLayerRemoved(layer);
+            if (_layerIdMap.ContainsKey(value.ObjectId))
+                _layerIdMap.Remove(value.ObjectId);
+            _parent.OnLayerRemoved(value);
         }
 
         /// <summary>

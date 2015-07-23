@@ -275,7 +275,7 @@ namespace OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0
                 throw new InvalidOperationException();
 
             if (index >= this.ScaleCount)
-                throw new ArgumentOutOfRangeException("index");
+                throw new ArgumentOutOfRangeException(nameof(index));
 
             var list = new List<double>(this.GetDefaultFiniteScaleList());
             list.RemoveAt(index);

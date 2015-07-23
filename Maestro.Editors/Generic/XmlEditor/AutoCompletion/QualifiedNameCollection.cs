@@ -39,7 +39,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
     /// <summary>
     ///   A collection that stores <see cref='QualifiedName'/> objects.
     /// </summary>
-    [Serializable()]
+    [Serializable]
     internal class QualifiedNameCollection : CollectionBase
     {
         /// <summary>

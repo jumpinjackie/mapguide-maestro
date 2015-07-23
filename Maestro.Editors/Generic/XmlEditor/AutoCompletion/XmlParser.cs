@@ -99,7 +99,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             }
         }
 
-        private static readonly char[] whitespaceCharacters = new char[] { ' ', '\n', '\t', '\r' };
+        private static readonly char[] whitespaceCharacters = { ' ', '\n', '\t', '\r' };
 
         private XmlParser()
         {

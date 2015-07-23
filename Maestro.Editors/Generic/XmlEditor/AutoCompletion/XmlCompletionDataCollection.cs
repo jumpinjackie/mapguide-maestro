@@ -40,7 +40,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
     /// <summary>
     ///   A collection that stores <see cref='XmlCompletionData'/> objects.
     /// </summary>
-    [Serializable()]
+    [Serializable]
     internal class XmlCompletionDataCollection : CollectionBase
     {
         /// <summary>

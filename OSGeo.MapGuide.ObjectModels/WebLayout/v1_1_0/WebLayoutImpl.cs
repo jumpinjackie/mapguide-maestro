@@ -1482,7 +1482,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_0_0
                 this.SubItem.Remove(i);
                 i.Parent = null;
                 OnPropertyChanged(nameof(SubItem));
-            };
+            }
         }
 
         public bool MoveUp(IUIItem item)

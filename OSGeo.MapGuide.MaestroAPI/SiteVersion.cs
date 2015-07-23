@@ -153,9 +153,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// The array of supported site versions
         /// </summary>
-        public static readonly Version[] SiteVersionNumbers = new Version[]
-		{
-			new Version(1,0,0,17864),   //MGE 2007
+        private static readonly Version[] siteVersionNumbers = {
+            new Version(1,0,0,17864),   //MGE 2007
 			new Version(1,1,0,301),     //MGOS 1.1.0
 			new Version(1,2,0,1307),    //MGOS 1.2.0
 			new Version(1,2,0,4103),    //MGE 2008
@@ -179,6 +178,14 @@ namespace OSGeo.MapGuide.MaestroAPI
             new Version(2,4,1,7767),    //MGOS 2.4.1
             new Version(2,5,1,7768)     //MGOS 2.5.1
 		};
+
+        public static Version[] SiteVersionNumbers
+        {
+            get
+            {
+                return siteVersionNumbers;
+            }
+        }
 
         /// <summary>
         /// Gets the specified version by the known site version identifier

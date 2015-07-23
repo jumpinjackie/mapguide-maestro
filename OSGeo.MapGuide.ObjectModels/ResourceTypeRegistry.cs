@@ -188,7 +188,7 @@ namespace OSGeo.MapGuide.ObjectModels
         public static void RegisterResource(ResourceTypeDescriptor desc, ResourceSerializer serializer)
         {
             if (_serializers.ContainsKey(desc))
-                throw new ArgumentException(string.Format(Strings.ERR_SERIALIZER_ALREADY_REGISTERED, desc.ResourceType, desc.Version), "desc"); //NOXLATE
+                throw new ArgumentException(string.Format(Strings.ERR_SERIALIZER_ALREADY_REGISTERED, desc.ResourceType, desc.Version), nameof(desc)); //NOXLATE
 
             _serializers.Add(desc, serializer);
         }

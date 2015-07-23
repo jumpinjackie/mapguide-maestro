@@ -305,7 +305,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             public LayerSelection(RuntimeMapLayer layer)
             {
                 if (layer == null)
-                    throw new ArgumentNullException("layer"); //NOXLATE
+                    throw new ArgumentNullException(nameof(layer)); //NOXLATE
 
                 if (layer.IdentityProperties.Length == 0 && layer.Parent.StrictSelection)
                     throw new Exception(Strings.ErrorLayerHasNoPk);
@@ -334,7 +334,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             private object[] NormalizeAndValidate(object[] values)
             {
                 if (values == null)
-                    throw new ArgumentNullException("values"); //NOXLATE
+                    throw new ArgumentNullException(nameof(values)); //NOXLATE
 
                 if (values.Length != m_layer.IdentityProperties.Length)
                     throw new Exception(string.Format(Strings.ErrorLayerKeyMismatch, m_layer.IdentityProperties.Length, values.Length));

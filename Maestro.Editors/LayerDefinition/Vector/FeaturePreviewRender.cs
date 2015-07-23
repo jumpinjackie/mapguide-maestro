@@ -46,8 +46,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
             //Adjust, since painting always excludes top/right and includes left/bottom
             Rectangle size_adj = new Rectangle(size.X, size.Y, size.Width - 1, size.Height - 1);
 
-            Point[] points = new Point[]
-            {
+            Point[] points = {
                 new Point(size_adj.Left, size_adj.Top),
                 new Point(size_adj.Right, size_adj.Top),
                 new Point(size_adj.Right, size_adj.Bottom),
