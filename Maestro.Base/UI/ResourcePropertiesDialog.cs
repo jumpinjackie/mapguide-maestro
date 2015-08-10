@@ -659,28 +659,42 @@ namespace Maestro.Base.UI
                 {
                     ResourceSecurityTypeUsersUser u = new ResourceSecurityTypeUsersUser();
                     u.Name = (lvi.Tag as UserListUser).Name;
-                    if (lvi.ImageIndex == RWUSER)
-                        u.Permissions = PermissionsType.rw;
-                    else if (lvi.ImageIndex == ROUSER)
-                        u.Permissions = PermissionsType.r;
-                    else if (lvi.ImageIndex == NOUSER)
-                        u.Permissions = PermissionsType.n;
-                    else
-                        continue;
+                    switch (lvi.ImageIndex)
+                    {
+                        case RWUSER:
+                            u.Permissions = PermissionsType.rw;
+                            break;
+                        case ROUSER:
+                            u.Permissions = PermissionsType.r;
+                            break;
+                        case NOUSER:
+                            u.Permissions = PermissionsType.n;
+                            break;
+                        default:
+                            continue;
+                    }
+
                     users.Add(u);
                 }
                 else if (lvi.Tag as GroupListGroup != null && lvi.ImageIndex != IHGROUP)
                 {
                     ResourceSecurityTypeGroupsGroup g = new ResourceSecurityTypeGroupsGroup();
                     g.Name = (lvi.Tag as GroupListGroup).Name;
-                    if (lvi.ImageIndex == RWGROUP)
-                        g.Permissions = PermissionsType.rw;
-                    else if (lvi.ImageIndex == ROGROUP)
-                        g.Permissions = PermissionsType.r;
-                    else if (lvi.ImageIndex == NOGROUP)
-                        g.Permissions = PermissionsType.n;
-                    else
-                        continue;
+                    switch (lvi.ImageIndex)
+                    {
+                        case RWGROUP:
+                            g.Permissions = PermissionsType.rw;
+                            break;
+                        case ROGROUP:
+                            g.Permissions = PermissionsType.r;
+                            break;
+                        case NOGROUP:
+                            g.Permissions = PermissionsType.n;
+                            break;
+                        default:
+                            continue;
+                    }
+
                     groups.Add(g);
                 }
             }

@@ -115,7 +115,7 @@ namespace MaestroAPITests
         }
     }
 
-    internal class TestControl
+    internal static class TestControl
     {
         public static bool IgnoreExpressionTests = false;
         public static bool IgnoreFeatureReaderTests = false;
@@ -129,7 +129,7 @@ namespace MaestroAPITests
         public static bool IgnoreLocalFeatureTests = false;
     }
 
-    internal class ConnectionUtil
+    internal static class ConnectionUtil
     {
         public static IServerConnection CreateTestLocalNativeConnection()
         {

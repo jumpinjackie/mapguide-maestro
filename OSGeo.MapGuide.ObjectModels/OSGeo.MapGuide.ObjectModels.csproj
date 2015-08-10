@@ -197,6 +197,9 @@
     <Compile Include="..\Generated\WebLayout-2.6.0.designer.cs">
       <Link>WebLayout\v2_6_0\WebLayout-2.6.0.designer.cs</Link>
     </Compile>
+    <Compile Include="..\Properties\CodeAnalysisRules.cs">
+      <Link>CodeAnalysisRules.cs</Link>
+    </Compile>
     <Compile Include="..\Properties\SignedAssemblyInfo.cs">
       <Link>SignedAssemblyInfo.cs</Link>
     </Compile>

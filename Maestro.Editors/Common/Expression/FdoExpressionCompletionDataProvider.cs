@@ -256,32 +256,30 @@ namespace Maestro.Editors.Common.Expression
 
         private Descriptor CreateFdoConditionDescriptor(string cond)
         {
-            if (cond == "Null") //NOXLATE
+            switch (cond)
             {
-                return new Descriptor()
-                {
-                    Name = cond.ToString().ToUpper(),
-                    Description = "[property] NULL" //NOXLATE
-                };
+                case "Null":
+                    return new Descriptor()
+                    {
+                        Name = cond.ToString().ToUpper(),
+                        Description = "[property] NULL" //NOXLATE
+                    };
+                case "In":
+                    return new Descriptor()
+                    {
+                        Name = cond.ToString().ToUpper(),
+                        Description = "[property] IN ([value1], [value2], ..., [valueN])", //NOXLATE
+                        AppendText = " ([value1], [value2])" //NOXLATE
+                    };
+                case "Like":
+                    return new Descriptor()
+                    {
+                        Name = cond.ToString().ToUpper(),
+                        Description = "[property] LIKE [string value]", //NOXLATE
+                        AppendText = " [string value]" //NOXLATE
+                    };
             }
-            else if (cond == "In") //NOXLATE
-            {
-                return new Descriptor()
-                {
-                    Name = cond.ToString().ToUpper(),
-                    Description = "[property] IN ([value1], [value2], ..., [valueN])", //NOXLATE
-                    AppendText = " ([value1], [value2])" //NOXLATE
-                };
-            }
-            else if (cond == "Like") //NOXLATE
-            {
-                return new Descriptor()
-                {
-                    Name = cond.ToString().ToUpper(),
-                    Description = "[property] LIKE [string value]", //NOXLATE
-                    AppendText = " [string value]" //NOXLATE
-                };
-            }
+
             return null; //Handled by operators
         }
 
@@ -375,52 +373,58 @@ namespace Maestro.Editors.Common.Expression
         {
             var desc = new Descriptor();
             desc.Name = prop.Name;
-
-            if (prop.Type == PropertyDefinitionType.Geometry)
+            switch (prop.Type)
             {
-                var g = (GeometricPropertyDefinition)prop;
-                desc.Description = string.Format(Strings.FsPreview_GeometryPropertyNodeTooltip,
-                    g.Name,
-                    g.Description,
-                    g.GeometryTypesToString(),
-                    g.IsReadOnly,
-                    g.HasElevation,
-                    g.HasMeasure,
-                    g.SpatialContextAssociation,
-                    Environment.NewLine);
-            }
-            else if (prop.Type == PropertyDefinitionType.Data)
-            {
-                var d = (DataPropertyDefinition)prop;
-                desc.Description = string.Format(Strings.FsPreview_DataPropertyNodeTooltip,
-                    d.Name,
-                    d.Description,
-                    d.DataType.ToString(),
-                    d.IsNullable,
-                    d.IsReadOnly,
-                    d.Length,
-                    d.Precision,
-                    d.Scale,
-                    Environment.NewLine);
-            }
-            else if (prop.Type == PropertyDefinitionType.Raster)
-            {
-                var r = (RasterPropertyDefinition)prop;
-                desc.Description = string.Format(Strings.FsPreview_RasterPropertyNodeTooltip,
-                    r.Name,
-                    r.Description,
-                    r.IsNullable,
-                    r.DefaultImageXSize,
-                    r.DefaultImageYSize,
-                    r.SpatialContextAssociation,
-                    Environment.NewLine);
-            }
-            else
-            {
-                desc.Description = string.Format(Strings.FsPreview_GenericPropertyTooltip,
-                    prop.Name,
-                    prop.Type.ToString(),
-                    Environment.NewLine);
+                case PropertyDefinitionType.Geometry:
+                    { 
+                        var g = (GeometricPropertyDefinition)prop;
+                        desc.Description = string.Format(Strings.FsPreview_GeometryPropertyNodeTooltip,
+                            g.Name,
+                            g.Description,
+                            g.GeometryTypesToString(),
+                            g.IsReadOnly,
+                            g.HasElevation,
+                            g.HasMeasure,
+                            g.SpatialContextAssociation,
+                            Environment.NewLine);
+                    }
+                    break;
+                case PropertyDefinitionType.Data:
+                    {
+                        var d = (DataPropertyDefinition)prop;
+                        desc.Description = string.Format(Strings.FsPreview_DataPropertyNodeTooltip,
+                            d.Name,
+                            d.Description,
+                            d.DataType.ToString(),
+                            d.IsNullable,
+                            d.IsReadOnly,
+                            d.Length,
+                            d.Precision,
+                            d.Scale,
+                            Environment.NewLine);
+                    }
+                    break;
+                case PropertyDefinitionType.Raster:
+                    {
+                        var r = (RasterPropertyDefinition)prop;
+                        desc.Description = string.Format(Strings.FsPreview_RasterPropertyNodeTooltip,
+                            r.Name,
+                            r.Description,
+                            r.IsNullable,
+                            r.DefaultImageXSize,
+                            r.DefaultImageYSize,
+                            r.SpatialContextAssociation,
+                            Environment.NewLine);
+                    }
+                    break;
+                default:
+                    {
+                        desc.Description = string.Format(Strings.FsPreview_GenericPropertyTooltip,
+                            prop.Name,
+                            prop.Type.ToString(),
+                            Environment.NewLine);
+                    }
+                    break;
             }
 
             return desc;

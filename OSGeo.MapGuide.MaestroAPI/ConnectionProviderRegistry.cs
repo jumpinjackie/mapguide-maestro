@@ -138,7 +138,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     ///     "Password", "admin");
     /// </code>
     /// </example>
-    public sealed class ConnectionProviderRegistry
+    public static class ConnectionProviderRegistry
     {
         private const string PROVIDER_CONFIG = "ConnectionProviders.xml"; //NOXLATE
 

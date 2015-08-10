@@ -1178,7 +1178,7 @@ namespace Maestro.MapViewer
             {
                 base.IsGroup = false;
                 this.Layer = layer;
-                this.IsSelectable = (layer != null) ? layer.Selectable : false;
+                this.IsSelectable = (layer != null) && layer.Selectable;
                 this.DrawSelectabilityIcon = (layer != null && bInitiallySelectable);
                 this.WasInitiallySelectable = bInitiallySelectable;
                 this.LayerDefinitionContent = null;

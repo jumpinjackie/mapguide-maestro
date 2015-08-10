@@ -29,7 +29,7 @@ namespace Maestro.Base
     /// <summary>
     /// Contains path information
     /// </summary>
-    public class MaestroPaths
+    public static class MaestroPaths
     {
         /// <summary>
         /// The name of the application

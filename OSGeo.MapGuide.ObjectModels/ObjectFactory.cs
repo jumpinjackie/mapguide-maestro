@@ -75,7 +75,7 @@ namespace OSGeo.MapGuide.ObjectModels
     ///
     /// This registration needs to be done as part of your application's startup/initialization phase.
     /// </summary>
-    public class ObjectFactory
+    public static class ObjectFactory
     {
         private static Dictionary<Version, Func<LayerType, ILayerDefinition>> _layerFactories;
         private static Dictionary<LoadType, Func<ILoadProcedure>> _loadProcFactories;

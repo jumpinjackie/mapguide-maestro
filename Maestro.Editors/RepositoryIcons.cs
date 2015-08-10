@@ -28,7 +28,7 @@ namespace Maestro.Editors
     /// <summary>
     /// Image list helper class for components that display or interact with Repository resources
     /// </summary>
-    public class RepositoryIcons
+    public static class RepositoryIcons
     {
         /// <summary>
         /// Icon for resource types

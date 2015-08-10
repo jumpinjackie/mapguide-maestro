@@ -27,7 +27,7 @@ using System.Text;
 
 namespace OSGeo.MapGuide.ObjectModels.WatermarkDefinition
 {
-    internal class WatermarkCollectionUtil
+    internal static class WatermarkCollectionUtil
     {
         public static IWatermark AddWatermark<T>(IList<T> collection, IWatermarkDefinition watermark) where T : class, IWatermark, new()
         {

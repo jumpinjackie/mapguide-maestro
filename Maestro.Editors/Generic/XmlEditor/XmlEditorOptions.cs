@@ -37,7 +37,7 @@ namespace Maestro.Editors.Generic.XmlEditor
     /// <summary>
     /// Options for the generic XML editor
     /// </summary>
-    public class XmlEditorOptions
+    public static class XmlEditorOptions
     {
         static XmlEditorOptions()
         {

@@ -331,9 +331,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
             if (gt2 != null)
                 this.SpecificGeometryTypes = ProcessSpecificGeometryTypes(gt2.Value);
 
-            this.IsReadOnly = (gtro != null ? Convert.ToBoolean(gtro.Value) : false);
-            this.HasElevation = (hev != null ? Convert.ToBoolean(hev.Value) : false);
-            this.HasMeasure = (hms != null ? Convert.ToBoolean(hms.Value) : false);
+            this.IsReadOnly = (gtro != null && Convert.ToBoolean(gtro.Value));
+            this.HasElevation = (hev != null && Convert.ToBoolean(hev.Value));
+            this.HasMeasure = (hms != null && Convert.ToBoolean(hms.Value));
             this.SpatialContextAssociation = (srs != null ? srs.Value : string.Empty);
         }
 

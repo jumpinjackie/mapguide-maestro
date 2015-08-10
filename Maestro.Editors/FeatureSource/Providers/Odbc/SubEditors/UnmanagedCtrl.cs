@@ -161,7 +161,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors
         public event EventHandler RequestDocumentReset;
     }
 
-    internal class OdbcDriverNames
+    internal static class OdbcDriverNames
     {
         //These aren't localizable
         public const string OdbcDriverAccess = "{Microsoft Access Driver (*.mdb)}";

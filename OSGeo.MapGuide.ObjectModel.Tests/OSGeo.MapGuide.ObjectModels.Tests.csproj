@@ -65,6 +65,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Properties\CodeAnalysisRules.cs">
+      <Link>CodeAnalysisRules.cs</Link>
+    </Compile>
     <Compile Include="ApplicationDefinitionTests.cs" />
     <Compile Include="CheckTests.cs" />
     <Compile Include="DrawingSourceTests.cs" />

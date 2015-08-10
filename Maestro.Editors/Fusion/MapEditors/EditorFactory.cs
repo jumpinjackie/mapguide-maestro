@@ -27,7 +27,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Editors.Fusion.MapEditors
 {
-    internal class EditorFactory
+    internal static class EditorFactory
     {
         private const string G_NORMAL_MAP = "G_NORMAL_MAP"; //NOXLATE
         private const string G_SATELLITE_MAP = "G_SATELLITE_MAP"; //NOXLATE
@@ -95,10 +95,7 @@ namespace Maestro.Editors.Fusion.MapEditors
             yield return new EditorInvoker()
             {
                 Name = Strings.CmsGeneric,
-                Action = () =>
-                {
-                    return group.CreateGenericEntry();
-                }
+                Action = group.CreateGenericEntry
             };
             yield return new EditorInvoker()
             {

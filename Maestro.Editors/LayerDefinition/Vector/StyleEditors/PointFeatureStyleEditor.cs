@@ -242,98 +242,105 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
                 SizeUnits.SelectedValue = m_item.Symbol.Unit;
                 SizeContext.SelectedValue = m_item.Symbol.SizeContext.ToString();
-
-                // specifics
-                if (m_item.Symbol.Type == PointSymbolType.Mark)
+                switch (m_item.Symbol.Type)
                 {
-                    MaintainAspectRatio.Checked = m_item.Symbol.MaintainAspect;
-                    double d;
-                    if (double.TryParse(m_item.Symbol.InsertionPointX, NumberStyles.Float, CultureInfo.InvariantCulture, out d))
-                        ReferenceX.Text = d.ToString(System.Threading.Thread.CurrentThread.CurrentUICulture);
-                    else
-                        ReferenceX.Text = m_item.Symbol.InsertionPointX;
+                    case PointSymbolType.Mark:
+                        {
+                            MaintainAspectRatio.Checked = m_item.Symbol.MaintainAspect;
+                            double d;
+                            if (double.TryParse(m_item.Symbol.InsertionPointX, NumberStyles.Float, CultureInfo.InvariantCulture, out d))
+                                ReferenceX.Text = d.ToString(System.Threading.Thread.CurrentThread.CurrentUICulture);
+                            else
+                                ReferenceX.Text = m_item.Symbol.InsertionPointX;
 
-                    if (double.TryParse(m_item.Symbol.InsertionPointY, NumberStyles.Float, CultureInfo.InvariantCulture, out d))
-                        ReferenceY.Text = d.ToString(System.Threading.Thread.CurrentThread.CurrentUICulture);
-                    else
-                        ReferenceY.Text = m_item.Symbol.InsertionPointY;
+                            if (double.TryParse(m_item.Symbol.InsertionPointY, NumberStyles.Float, CultureInfo.InvariantCulture, out d))
+                                ReferenceY.Text = d.ToString(System.Threading.Thread.CurrentThread.CurrentUICulture);
+                            else
+                                ReferenceY.Text = m_item.Symbol.InsertionPointY;
 
-                    IMarkSymbol t = (IMarkSymbol)m_item.Symbol;
-                    Symbol.SelectedValue = t.Shape.ToString();
+                            IMarkSymbol t = (IMarkSymbol)m_item.Symbol;
+                            Symbol.SelectedValue = t.Shape.ToString();
 
-                    fillStyleEditor.displayFill.Checked = t.Fill != null;
-                    if (t.Fill != null)
-                    {
-                        fillStyleEditor.foregroundColor.ColorExpression = t.Fill.ForegroundColor;
-                        fillStyleEditor.backgroundColor.ColorExpression = t.Fill.BackgroundColor;
-                        fillStyleEditor.fillCombo.SelectedValue = t.Fill.FillPattern;
-                        if (fillStyleEditor.fillCombo.SelectedItem == null && fillStyleEditor.fillCombo.Items.Count > 0)
-                            fillStyleEditor.fillCombo.SelectedIndex = fillStyleEditor.fillCombo.FindString(t.Fill.FillPattern);
-                    }
+                            fillStyleEditor.displayFill.Checked = t.Fill != null;
+                            if (t.Fill != null)
+                            {
+                                fillStyleEditor.foregroundColor.ColorExpression = t.Fill.ForegroundColor;
+                                fillStyleEditor.backgroundColor.ColorExpression = t.Fill.BackgroundColor;
+                                fillStyleEditor.fillCombo.SelectedValue = t.Fill.FillPattern;
+                                if (fillStyleEditor.fillCombo.SelectedItem == null && fillStyleEditor.fillCombo.Items.Count > 0)
+                                    fillStyleEditor.fillCombo.SelectedIndex = fillStyleEditor.fillCombo.FindString(t.Fill.FillPattern);
+                            }
 
-                    lineStyleEditor.displayLine.Checked = t.Edge != null;
-                    if (t.Edge != null)
-                    {
-                        lineStyleEditor.fillCombo.SelectedValue = t.Edge.LineStyle;
-                        if (lineStyleEditor.fillCombo.SelectedItem == null && lineStyleEditor.fillCombo.Items.Count > 0)
-                            lineStyleEditor.fillCombo.SelectedIndex = lineStyleEditor.fillCombo.FindString(t.Edge.LineStyle);
+                            lineStyleEditor.displayLine.Checked = t.Edge != null;
+                            if (t.Edge != null)
+                            {
+                                lineStyleEditor.fillCombo.SelectedValue = t.Edge.LineStyle;
+                                if (lineStyleEditor.fillCombo.SelectedItem == null && lineStyleEditor.fillCombo.Items.Count > 0)
+                                    lineStyleEditor.fillCombo.SelectedIndex = lineStyleEditor.fillCombo.FindString(t.Edge.LineStyle);
 
-                        lineStyleEditor.colorCombo.ColorExpression = t.Edge.Color;
-                        lineStyleEditor.thicknessCombo.Text = t.Edge.Thickness;
-                    }
+                                lineStyleEditor.colorCombo.ColorExpression = t.Edge.Color;
+                                lineStyleEditor.thicknessCombo.Text = t.Edge.Thickness;
+                            }
 
-                    setUIForMarkSymbol(true);
+                            setUIForMarkSymbol(true);
+                        }
+                        break;
+                    case PointSymbolType.Font:
+                        {
+                            IFontSymbol f = (IFontSymbol)m_item.Symbol;
+
+                            // TODO: Dislike this hard coding, but with association from 'Shape' the 'Font...' string cannot be found or set from the Symbol combobox
+                            Symbol.SelectedIndex = 6; //Font
+
+                            fontCombo.SelectedIndex = fontCombo.FindString(f.FontName);
+                            if (string.Compare(fontCombo.Text, f.FontName, true) == 0)
+                                fontCombo.Text = f.FontName;
+
+                            comboBoxCharacter.SelectedIndex = comboBoxCharacter.FindString(f.Character);
+                            if (comboBoxCharacter.Text != f.Character)
+                                comboBoxCharacter.Text = f.Character;
+
+                            FontBoldButton.Checked = f.Bold.HasValue && f.Bold.Value;
+                            FontItalicButton.Checked = f.Italic.HasValue && f.Italic.Value;
+                            FontUnderlineButton.Checked = f.Underlined.HasValue && f.Underlined.Value;
+
+                            if (string.IsNullOrEmpty(f.ForegroundColor))
+                                colorFontForeground.CurrentColor = Color.Black;
+                            else
+                                colorFontForeground.CurrentColor = Utility.ParseHTMLColor(f.ForegroundColor);
+
+                            setUIForMarkSymbol(false);
+                        }
+                        break;
+                    case PointSymbolType.W2D:
+                        {
+                            // TODO: Dislike this hard coding, but with association from 'Shape' the 'Font...' string cannot be found or set from the Symbol combobox
+                            Symbol.SelectedIndex = 7; //Symbol
+                            var sym = (IW2DSymbol)m_item.Symbol;
+
+                            chkW2DFillColor.Checked = (sym.FillColor != null);
+                            chkW2DLineColor.Checked = (sym.LineColor != null);
+                            chkW2DTextColor.Checked = (sym.TextColor != null);
+
+                            if (chkW2DFillColor.Checked)
+                                cmbW2DFillColor.CurrentColor = Utility.ParseHTMLColor(sym.FillColor);
+
+                            if (chkW2DLineColor.Checked)
+                                cmbW2DLineColor.CurrentColor = Utility.ParseHTMLColor(sym.LineColor);
+
+                            if (chkW2DTextColor.Checked)
+                                cmbW2DTextColor.CurrentColor = Utility.ParseHTMLColor(sym.TextColor);
+
+                            setUIForMarkSymbol(false);
+                        }
+                        break;
+                    default:
+                        {
+                            //TODO: Fix this
+                            MessageBox.Show(this, Strings.SymbolTypeNotSupported, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        break;
                 }
-                else if (m_item.Symbol.Type == PointSymbolType.Font)
-                {
-                    IFontSymbol f = (IFontSymbol)m_item.Symbol;
-
-                    // TODO: Dislike this hard coding, but with association from 'Shape' the 'Font...' string cannot be found or set from the Symbol combobox
-                    Symbol.SelectedIndex = 6; //Font
-
-                    fontCombo.SelectedIndex = fontCombo.FindString(f.FontName);
-                    if (string.Compare(fontCombo.Text, f.FontName, true) == 0)
-                        fontCombo.Text = f.FontName;
-
-                    comboBoxCharacter.SelectedIndex = comboBoxCharacter.FindString(f.Character);
-                    if (comboBoxCharacter.Text != f.Character)
-                        comboBoxCharacter.Text = f.Character;
-
-                    FontBoldButton.Checked = f.Bold.HasValue && f.Bold.Value;
-                    FontItalicButton.Checked = f.Italic.HasValue && f.Italic.Value;
-                    FontUnderlineButton.Checked = f.Underlined.HasValue && f.Underlined.Value;
-
-                    if (string.IsNullOrEmpty(f.ForegroundColor))
-                        colorFontForeground.CurrentColor = Color.Black;
-                    else
-                        colorFontForeground.CurrentColor = Utility.ParseHTMLColor(f.ForegroundColor);
-
-                    setUIForMarkSymbol(false);
-                }
-                else if (m_item.Symbol.Type == PointSymbolType.W2D)
-                {
-                    // TODO: Dislike this hard coding, but with association from 'Shape' the 'Font...' string cannot be found or set from the Symbol combobox
-                    Symbol.SelectedIndex = 7; //Symbol
-                    var sym = (IW2DSymbol)m_item.Symbol;
-
-                    chkW2DFillColor.Checked = (sym.FillColor != null);
-                    chkW2DLineColor.Checked = (sym.LineColor != null);
-                    chkW2DTextColor.Checked = (sym.TextColor != null);
-
-                    if (chkW2DFillColor.Checked)
-                        cmbW2DFillColor.CurrentColor = Utility.ParseHTMLColor(sym.FillColor);
-
-                    if (chkW2DLineColor.Checked)
-                        cmbW2DLineColor.CurrentColor = Utility.ParseHTMLColor(sym.LineColor);
-
-                    if (chkW2DTextColor.Checked)
-                        cmbW2DTextColor.CurrentColor = Utility.ParseHTMLColor(sym.TextColor);
-
-                    setUIForMarkSymbol(false);
-                }
-                else
-                    //TODO: Fix this
-                    MessageBox.Show(this, Strings.SymbolTypeNotSupported, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 UpdatePreviewResult();
             }
@@ -1108,13 +1115,19 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         {
             if (m_inUpdate)
                 return;
+            switch (m_item.Symbol.Type)
+            {
+                case PointSymbolType.Mark:
+                    ((IMarkSymbol)m_item.Symbol).SizeContext = (SizeContextType)Enum.Parse((typeof(SizeContextType)), (string)SizeContext.SelectedValue);
+                    break;
+                case PointSymbolType.Font:
+                    ((IFontSymbol)m_item.Symbol).SizeContext = (SizeContextType)Enum.Parse((typeof(SizeContextType)), (string)SizeContext.SelectedValue);
+                    break;
+                case PointSymbolType.W2D:
+                    ((IW2DSymbol)m_item.Symbol).SizeContext = (SizeContextType)Enum.Parse((typeof(SizeContextType)), (string)SizeContext.SelectedValue);
+                    break;
+            }
 
-            if (m_item.Symbol.Type == PointSymbolType.Mark)
-                ((IMarkSymbol)m_item.Symbol).SizeContext = (SizeContextType)Enum.Parse((typeof(SizeContextType)), (string)SizeContext.SelectedValue);
-            else if (m_item.Symbol.Type == PointSymbolType.Font)
-                ((IFontSymbol)m_item.Symbol).SizeContext = (SizeContextType)Enum.Parse((typeof(SizeContextType)), (string)SizeContext.SelectedValue);
-            else if (m_item.Symbol.Type == PointSymbolType.W2D)
-                ((IW2DSymbol)m_item.Symbol).SizeContext = (SizeContextType)Enum.Parse((typeof(SizeContextType)), (string)SizeContext.SelectedValue);
             UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
@@ -1538,14 +1551,19 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         {
             if (m_inUpdate || HeightText.SelectedIndex != -1)
                 return;
+            switch (m_item.Symbol.Type)
+            {
+                case PointSymbolType.Mark:
+                    m_item.Symbol.SizeY = HeightText.Text;
+                    break;
+                case PointSymbolType.Font:
+                    m_item.Symbol.SizeY = HeightText.Text;
+                    break;
+                case PointSymbolType.W2D:
+                    m_item.Symbol.SizeY = HeightText.Text;
+                    break;
+            }
 
-            //TODO: Validate
-            if (m_item.Symbol.Type == PointSymbolType.Mark)
-                m_item.Symbol.SizeY = HeightText.Text;
-            else if (m_item.Symbol.Type == PointSymbolType.Font)
-                m_item.Symbol.SizeY = HeightText.Text;
-            else if (m_item.Symbol.Type == PointSymbolType.W2D)
-                m_item.Symbol.SizeY = HeightText.Text;
             UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());
@@ -1555,14 +1573,19 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         {
             if (m_inUpdate || RotationBox.SelectedIndex != -1)
                 return;
+            switch (m_item.Symbol.Type)
+            {
+                case PointSymbolType.Mark:
+                    m_item.Symbol.Rotation = RotationBox.Text;
+                    break;
+                case PointSymbolType.Font:
+                    m_item.Symbol.Rotation = RotationBox.Text;
+                    break;
+                case PointSymbolType.W2D:
+                    m_item.Symbol.Rotation = RotationBox.Text;
+                    break;
+            }
 
-            //TODO: Validate
-            if (m_item.Symbol.Type == PointSymbolType.Mark)
-                m_item.Symbol.Rotation = RotationBox.Text;
-            else if (m_item.Symbol.Type == PointSymbolType.Font)
-                m_item.Symbol.Rotation = RotationBox.Text;
-            else if (m_item.Symbol.Type == PointSymbolType.W2D)
-                m_item.Symbol.Rotation = RotationBox.Text;
             UpdatePreviewResult();
             if (Changed != null)
                 Changed(this, new EventArgs());

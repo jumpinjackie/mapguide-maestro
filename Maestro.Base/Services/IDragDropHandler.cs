@@ -52,7 +52,7 @@ namespace Maestro.Base.Services
         bool HandleDrop(IServerConnection conn, string file, string folderId);
     }
 
-    internal class HandlerUtil
+    internal static class HandlerUtil
     {
         public static bool ExtensionInList(string[] extensions, string fileExtension)
         {

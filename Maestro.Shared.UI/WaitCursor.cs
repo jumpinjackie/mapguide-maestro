@@ -31,7 +31,7 @@ namespace Maestro.Shared.UI
     /// </summary>
     public class WaitCursor : IDisposable
     {
-        private Control _owner;
+        private readonly Control _owner;
         private Cursor _orig;
 
         /// <summary>

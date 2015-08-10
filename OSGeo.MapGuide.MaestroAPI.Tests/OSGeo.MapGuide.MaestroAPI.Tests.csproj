@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Properties\CodeAnalysisRules.cs">
+      <Link>CodeAnalysisRules.cs</Link>
+    </Compile>
     <Compile Include="..\Properties\SignedAssemblyInfo.cs">
       <Link>SignedAssemblyInfo.cs</Link>
     </Compile>

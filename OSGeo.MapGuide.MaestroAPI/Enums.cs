@@ -28,7 +28,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// <summary>
     /// Commonly used string constants for MapGuide
     /// </summary>
-    public class StringConstants
+    public static class StringConstants
     {
         /// <summary>
         /// The root resource identifier
@@ -38,7 +38,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// A thumbnail dwf resource role
         /// </summary>
-        public const string Thumbnail = "Thumbnail"; //NOXLATE
+        public const string Thumbnail = nameof(Thumbnail);
 
         /// <summary>
         /// The username login placeholder token

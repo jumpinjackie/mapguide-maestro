@@ -39,7 +39,7 @@ namespace Maestro.Shared.UI
         private StatusStrip status;
         private ToolStripStatusLabel statusLabel;
 
-        private DockPanel contentPanel;
+        private readonly DockPanel contentPanel;
 
         private ContextMenuStrip ctxToolbar;
 

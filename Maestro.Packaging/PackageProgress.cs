@@ -313,51 +313,61 @@ namespace Maestro.Packaging
                     this.TotalProgress.Value = (int)Math.Max(Math.Min((int)lv, this.TotalProgress.Maximum), this.TotalProgress.Minimum);
                 }
 
-                if (type == ProgressType.Uploading)
+                switch (type)
                 {
-                    HideTotal();
-                    if (pg == total)
-                    {
-                        OperationLabel.Text = Strings.ProgressWaitingForServer;
-                        CurrentProgress.Style = ProgressBarStyle.Marquee;
-                    }
-                    else
-                    {
-                        OperationLabel.Text = string.Format(Strings.ProgressUploading, ((double)pg / 1024), ((double)total / 1024));
-                        this.Refresh();
-                    }
-                }
-                else if (type == ProgressType.ListingFiles)
-                {
-                    HideTotal();
-                    OperationLabel.Text = Strings.ProgressReadingPackage;
-                    CurrentProgress.Style = ProgressBarStyle.Marquee;
-                }
-                else if (type == ProgressType.Compressing)
-                {
-                    OperationLabel.Text = Strings.ProgressCompressing;
-                }
-                else if (type == ProgressType.MovingResources)
-                {
-                    OperationLabel.Text = Strings.ProgressUpdatingReferences;
-                }
-                else if (type == ProgressType.PreparingFolder)
-                {
-                    OperationLabel.Text = resource;
-                }
-                else if (type == ProgressType.SetResource)
-                {
-                    CurrentProgress.Style = ProgressBarStyle.Continuous;
-                    CurrentProgress.Maximum = 100;
-                    CurrentProgress.Value = Convert.ToInt32(Math.Min(100.0, pg));
-                    OperationLabel.Text = string.Format(Strings.ProgressSetResource, resource, pg);
-                }
-                else if (type == ProgressType.SetResourceData)
-                {
-                    CurrentProgress.Style = ProgressBarStyle.Continuous;
-                    CurrentProgress.Maximum = 100;
-                    CurrentProgress.Value = Convert.ToInt32(Math.Min(100.0, pg));
-                    OperationLabel.Text = string.Format(Strings.ProgressSetResourceData, resource, pg);
+                    case ProgressType.Uploading:
+                        {
+                            HideTotal();
+                            if (pg == total)
+                            {
+                                OperationLabel.Text = Strings.ProgressWaitingForServer;
+                                CurrentProgress.Style = ProgressBarStyle.Marquee;
+                            }
+                            else
+                            {
+                                OperationLabel.Text = string.Format(Strings.ProgressUploading, ((double)pg / 1024), ((double)total / 1024));
+                                this.Refresh();
+                            }
+                        }
+                        break;
+                    case ProgressType.ListingFiles:
+                        {
+                            HideTotal();
+                            OperationLabel.Text = Strings.ProgressReadingPackage;
+                            CurrentProgress.Style = ProgressBarStyle.Marquee;
+                        }
+                        break;
+                    case ProgressType.Compressing:
+                        {
+                            OperationLabel.Text = Strings.ProgressCompressing;
+                        }
+                        break;
+                    case ProgressType.MovingResources:
+                        {
+                            OperationLabel.Text = Strings.ProgressUpdatingReferences;
+                        }
+                        break;
+                    case ProgressType.PreparingFolder:
+                        {
+                            OperationLabel.Text = resource;
+                        }
+                        break;
+                    case ProgressType.SetResource:
+                        {
+                            CurrentProgress.Style = ProgressBarStyle.Continuous;
+                            CurrentProgress.Maximum = 100;
+                            CurrentProgress.Value = Convert.ToInt32(Math.Min(100.0, pg));
+                            OperationLabel.Text = string.Format(Strings.ProgressSetResource, resource, pg);
+                        }
+                        break;
+                    case ProgressType.SetResourceData:
+                        {
+                            CurrentProgress.Style = ProgressBarStyle.Continuous;
+                            CurrentProgress.Maximum = 100;
+                            CurrentProgress.Value = Convert.ToInt32(Math.Min(100.0, pg));
+                            OperationLabel.Text = string.Format(Strings.ProgressSetResourceData, resource, pg);
+                        }
+                        break;
                 }
             }
         }

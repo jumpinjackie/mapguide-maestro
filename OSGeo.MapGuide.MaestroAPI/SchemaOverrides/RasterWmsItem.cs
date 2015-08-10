@@ -37,27 +37,27 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <summary>
         /// Represents all valid WMS image formats
         /// </summary>
-        public class WmsImageFormat
+        public static class WmsImageFormat
         {
             /// <summary>
             /// Portable Network Graphics (PNG)
             /// </summary>
-            public const string PNG = "PNG"; //NOXLATE
+            public const string PNG = nameof(PNG);
 
             /// <summary>
             /// Tagged Image File (TIF)
             /// </summary>
-            public const string TIF = "TIF"; //NOXLATE
+            public const string TIF = nameof(TIF);
 
             /// <summary>
             /// Joint Photographic Experts Group (JPEG)
             /// </summary>
-            public const string JPG = "JPG"; //NOXLATE
+            public const string JPG = nameof(JPG);
 
             /// <summary>
             /// Graphics Interchange Format (GIF)
             /// </summary>
-            public const string GIF = "GIF"; //NOXLATE
+            public const string GIF = nameof(GIF);
         }
 
         internal RasterWmsItem()

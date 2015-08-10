@@ -148,19 +148,19 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// <summary>
     /// Helper class containing known MapGuide Site Versions
     /// </summary>
-    public class SiteVersions
+    public static class SiteVersions
     {
         /// <summary>
         /// The array of supported site versions
         /// </summary>
         private static readonly Version[] siteVersionNumbers = {
             new Version(1,0,0,17864),   //MGE 2007
-			new Version(1,1,0,301),     //MGOS 1.1.0
-			new Version(1,2,0,1307),    //MGOS 1.2.0
-			new Version(1,2,0,4103),    //MGE 2008
-			new Version(2,0,0,1402),    //MGOS 2.0.0 b1
-			new Version(2,0,0,2308),    //MGOS 2.0.0
-			new Version(2,0,0,3202),    //MGE 2009
+            new Version(1,1,0,301),     //MGOS 1.1.0
+            new Version(1,2,0,1307),    //MGOS 1.2.0
+            new Version(1,2,0,4103),    //MGE 2008
+            new Version(2,0,0,1402),    //MGOS 2.0.0 b1
+            new Version(2,0,0,2308),    //MGOS 2.0.0
+            new Version(2,0,0,3202),    //MGE 2009
             new Version(2,0,2,3011),    //MGOS 2.0.2
             new Version(2,0,2,3402),    //MGE 2009 SP1
             new Version(2,1,0,3001),    //MGE 2010
@@ -177,7 +177,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             new Version(2,5,1,7601),    //AIMS 2014
             new Version(2,4,1,7767),    //MGOS 2.4.1
             new Version(2,5,1,7768)     //MGOS 2.5.1
-		};
+        };
 
         public static Version[] SiteVersionNumbers
         {

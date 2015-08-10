@@ -1961,16 +1961,20 @@ namespace OSGeo.MapGuide.MaestroAPI
         public override ICommand CreateCommand(int cmdType)
         {
             CommandType ct = (CommandType)cmdType;
-            if (ct == CommandType.GetResourceContents)
-                return new HttpGetResourceContents(this);
-            else if (ct == CommandType.GetFdoCacheInfo)
-                return new HttpGetFdoCacheInfo(this);
-            else if (ct == CommandType.CreateRuntimeMap)
-                return new HttpCreateRuntimeMap(this);
-            else if (ct == CommandType.DescribeRuntimeMap)
-                return new HttpDescribeRuntimeMap(this);
-            else if (ct == CommandType.GetTileProviders)
-                return new HttpGetTileProviders(this);
+            switch (ct)
+            {
+                case CommandType.GetResourceContents:
+                    return new HttpGetResourceContents(this);
+                case CommandType.GetFdoCacheInfo:
+                    return new HttpGetFdoCacheInfo(this);
+                case CommandType.CreateRuntimeMap:
+                    return new HttpCreateRuntimeMap(this);
+                case CommandType.DescribeRuntimeMap:
+                    return new HttpDescribeRuntimeMap(this);
+                case CommandType.GetTileProviders:
+                    return new HttpGetTileProviders(this);
+            }
+
             return base.CreateCommand(cmdType);
         }
 

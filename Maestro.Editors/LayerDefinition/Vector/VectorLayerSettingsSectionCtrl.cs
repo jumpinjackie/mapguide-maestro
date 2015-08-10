@@ -454,33 +454,21 @@ namespace Maestro.Editors.LayerDefinition.Vector
         {
             if (_init)
                 return;
-
-            if (string.IsNullOrEmpty(txtHyperlink.Text))
-                _vl.Url = null;
-            else
-                _vl.Url = txtHyperlink.Text;
+            _vl.Url = string.IsNullOrEmpty(txtHyperlink.Text) ? null : txtHyperlink.Text;
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
             if (_init)
                 return;
-
-            if (string.IsNullOrEmpty(txtFilter.Text))
-                _vl.Filter = null;
-            else
-                _vl.Filter = txtFilter.Text;
+            _vl.Filter = string.IsNullOrEmpty(txtFilter.Text) ? null : txtFilter.Text;
         }
 
         private void txtTooltip_TextChanged(object sender, EventArgs e)
         {
             if (_init)
                 return;
-
-            if (string.IsNullOrEmpty(txtTooltip.Text))
-                _vl.ToolTip = null;
-            else
-                _vl.ToolTip = txtTooltip.Text;
+            _vl.ToolTip = string.IsNullOrEmpty(txtTooltip.Text) ? null : txtTooltip.Text;
         }
 
         private void btnGoToFeatureSource_Click(object sender, EventArgs e)

@@ -119,6 +119,9 @@
     <Compile Include="..\OSGeo.MapGuide.MaestroAPI.Native\Utility.cs">
       <Link>Utility.cs</Link>
     </Compile>
+    <Compile Include="..\Properties\CodeAnalysisRules.cs">
+      <Link>CodeAnalysisRules.cs</Link>
+    </Compile>
     <Compile Include="..\Properties\GlobalAssemblyInfo.cs">
       <Link>GlobalAssemblyInfo.cs</Link>
     </Compile>

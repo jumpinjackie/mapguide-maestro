@@ -2525,36 +2525,42 @@ namespace Maestro.MapViewer
             }
             else
             {
-                if (this.ActiveTool == MapActiveTool.Select)
+                switch (this.ActiveTool)
                 {
-                    var mapPt1 = ScreenToMapUnits(e.X - this.PointPixelBuffer, e.Y - this.PointPixelBuffer);
-                    var mapPt2 = ScreenToMapUnits(e.X + this.PointPixelBuffer, e.Y + this.PointPixelBuffer);
+                    case MapActiveTool.Select:
+                        {
+                            var mapPt1 = ScreenToMapUnits(e.X - this.PointPixelBuffer, e.Y - this.PointPixelBuffer);
+                            var mapPt2 = ScreenToMapUnits(e.X + this.PointPixelBuffer, e.Y + this.PointPixelBuffer);
 
-                    var env = ObjectFactory.CreateEnvelope(
-                        Math.Min(mapPt1.X, mapPt2.X),
-                        Math.Min(mapPt1.Y, mapPt2.Y),
-                        Math.Max(mapPt1.X, mapPt2.X),
-                        Math.Max(mapPt1.Y, mapPt2.Y));
+                            var env = ObjectFactory.CreateEnvelope(
+                                Math.Min(mapPt1.X, mapPt2.X),
+                                Math.Min(mapPt1.Y, mapPt2.Y),
+                                Math.Max(mapPt1.X, mapPt2.X),
+                                Math.Max(mapPt1.Y, mapPt2.Y));
 
-                    SelectByWkt(MakeWktPolygon(env.MinX, env.MinY, env.MaxX, env.MaxY), 1);
-                }
-                else if (this.ActiveTool == MapActiveTool.ZoomIn)
-                {
-                    if (!isDragging)
-                    {
-                        var mapPt = ScreenToMapUnits(e.X, e.Y);
-                        var scale = _map.ViewScale;
-                        ZoomToView(mapPt.X, mapPt.Y, scale * ZoomInFactor, true);
-                    }
-                }
-                else if (this.ActiveTool == MapActiveTool.ZoomOut)
-                {
-                    if (!isDragging)
-                    {
-                        var mapPt = ScreenToMapUnits(e.X, e.Y);
-                        var scale = _map.ViewScale;
-                        ZoomToView(mapPt.X, mapPt.Y, scale * ZoomOutFactor, true);
-                    }
+                            SelectByWkt(MakeWktPolygon(env.MinX, env.MinY, env.MaxX, env.MaxY), 1);
+                        }
+                        break;
+                    case MapActiveTool.ZoomIn:
+                        {
+                            if (!isDragging)
+                            {
+                                var mapPt = ScreenToMapUnits(e.X, e.Y);
+                                var scale = _map.ViewScale;
+                                ZoomToView(mapPt.X, mapPt.Y, scale * ZoomInFactor, true);
+                            }
+                        }
+                        break;
+                    case MapActiveTool.ZoomOut:
+                        {
+                            if (!isDragging)
+                            {
+                                var mapPt = ScreenToMapUnits(e.X, e.Y);
+                                var scale = _map.ViewScale;
+                                ZoomToView(mapPt.X, mapPt.Y, scale * ZoomOutFactor, true);
+                            }
+                        }
+                        break;
                 }
             }
         }
@@ -2712,61 +2718,66 @@ namespace Maestro.MapViewer
             if (isDragging)
             {
                 isDragging = false;
-
-                if (this.ActiveTool == MapActiveTool.Pan)
+                switch (this.ActiveTool)
                 {
-                    //FIXME: This is not perfect. The view will be slightly off of where you released the mouse button
+                    case MapActiveTool.Pan:
+                        {
+                            //FIXME: This is not perfect. The view will be slightly off of where you released the mouse button
 
-                    //System.Diagnostics.Trace.TraceInformation("Dragged screen distance (" + translate.X + ", " + translate.Y + ")");
+                            //System.Diagnostics.Trace.TraceInformation("Dragged screen distance (" + translate.X + ", " + translate.Y + ")");
 
-                    int dx = e.X - dragStart.X;
-                    int dy = e.Y - dragStart.Y;
+                            int dx = e.X - dragStart.X;
+                            int dy = e.Y - dragStart.Y;
 
-                    var centerScreen = new Point(this.Location.X + (this.Width / 2), this.Location.Y + (this.Height / 2));
+                            var centerScreen = new Point(this.Location.X + (this.Width / 2), this.Location.Y + (this.Height / 2));
 
-                    centerScreen.X -= translate.X;
-                    centerScreen.Y -= translate.Y;
+                            centerScreen.X -= translate.X;
+                            centerScreen.Y -= translate.Y;
 
-                    var pt = _map.ViewCenter;
-                    var coord = ScreenToMapUnits(centerScreen.X, centerScreen.Y);
+                            var pt = _map.ViewCenter;
+                            var coord = ScreenToMapUnits(centerScreen.X, centerScreen.Y);
 
-                    double mdx = coord.X - pt.X;
-                    double mdy = coord.Y - pt.Y;
+                            double mdx = coord.X - pt.X;
+                            double mdy = coord.Y - pt.Y;
 
-                    ZoomToView(coord.X, coord.Y, _map.ViewScale, true);
-                    Trace.TraceInformation("END PANNING");
-                }
-                else if (this.ActiveTool == MapActiveTool.Select)
-                {
-                    var mapPt = ScreenToMapUnits(e.X, e.Y);
-                    var mapDragPt = ScreenToMapUnits(dragStart.X, dragStart.Y);
-                    var env = ObjectFactory.CreateEnvelope(
-                        Math.Min(mapPt.X, mapDragPt.X),
-                        Math.Min(mapPt.Y, mapDragPt.Y),
-                        Math.Max(mapPt.X, mapDragPt.X),
-                        Math.Max(mapPt.Y, mapDragPt.Y));
-                    SelectByWkt(MakeWktPolygon(env.MinX, env.MinY, env.MaxX, env.MaxY), -1);
-                }
-                else if (this.ActiveTool == MapActiveTool.ZoomIn)
-                {
-                    var mapPt = ScreenToMapUnits(e.X, e.Y);
-                    var mapDragPt = ScreenToMapUnits(dragStart.X, dragStart.Y);
+                            ZoomToView(coord.X, coord.Y, _map.ViewScale, true);
+                            Trace.TraceInformation("END PANNING");
+                        }
+                        break;
+                    case MapActiveTool.Select:
+                        {
+                            var mapPt = ScreenToMapUnits(e.X, e.Y);
+                            var mapDragPt = ScreenToMapUnits(dragStart.X, dragStart.Y);
+                            var env = ObjectFactory.CreateEnvelope(
+                                Math.Min(mapPt.X, mapDragPt.X),
+                                Math.Min(mapPt.Y, mapDragPt.Y),
+                                Math.Max(mapPt.X, mapDragPt.X),
+                                Math.Max(mapPt.Y, mapDragPt.Y));
+                            SelectByWkt(MakeWktPolygon(env.MinX, env.MinY, env.MaxX, env.MaxY), -1);
+                        }
+                        break;
+                    case MapActiveTool.ZoomIn:
+                        {
+                            var mapPt = ScreenToMapUnits(e.X, e.Y);
+                            var mapDragPt = ScreenToMapUnits(dragStart.X, dragStart.Y);
 
-                    PointF ll;
-                    PointF ur;
+                            PointF ll;
+                            PointF ur;
 
-                    if (mapPt.X <= mapDragPt.X && mapPt.Y <= mapDragPt.Y)
-                    {
-                        ll = mapPt;
-                        ur = mapDragPt;
-                    }
-                    else
-                    {
-                        ll = mapDragPt;
-                        ur = mapPt;
-                    }
+                            if (mapPt.X <= mapDragPt.X && mapPt.Y <= mapDragPt.Y)
+                            {
+                                ll = mapPt;
+                                ur = mapDragPt;
+                            }
+                            else
+                            {
+                                ll = mapDragPt;
+                                ur = mapPt;
+                            }
 
-                    ZoomToExtents(ll.X, ll.Y, ur.X, ur.Y);
+                            ZoomToExtents(ll.X, ll.Y, ur.X, ur.Y);
+                        }
+                        break;
                 }
             }
         }

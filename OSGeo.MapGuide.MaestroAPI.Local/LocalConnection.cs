@@ -488,10 +488,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             get
             {
                 MgFeatureService fes = GetFeatureService();
-                GetByteReaderMethod fetch = () =>
-                {
-                    return fes.GetFeatureProviders();
-                };
+                GetByteReaderMethod fetch = fes.GetFeatureProviders;
                 LogMethodCall("MgFeatureService::GetFeatureProviders", true);
                 var reg = base.DeserializeObject<FeatureProviderRegistry>(new MgReadOnlyStream(fetch));
                 return reg.FeatureProvider.ToArray();

@@ -55,7 +55,7 @@ namespace Maestro.Editors.Diff
     /// <summary>
     /// A helper utility that performs the necessary preparation of two resoures for XML comparison
     /// </summary>
-    public class XmlCompareUtil
+    public static class XmlCompareUtil
     {
         /// <summary>
         /// Prepares the source and target resource content for XML comparison

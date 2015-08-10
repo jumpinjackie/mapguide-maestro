@@ -674,7 +674,7 @@ namespace Maestro.Base.UI
                         parent = test;
 
                         test = test + parts[partIndex - 1] + "/";
-                        matches = data.Where(x => x.ResourceId.ResourceId.StartsWith(test)).Count();
+                        matches = data.Count(x => x.ResourceId.ResourceId.StartsWith(test));
 
                         if (matches > 0 && matches != data.Length)
                             break;
@@ -719,7 +719,7 @@ namespace Maestro.Base.UI
                             break;
 
                         test = test + parts[partIndex];
-                        matches = data.Where(x => x.ResourceId.StartsWith(test)).Count();
+                        matches = data.Count(x => x.ResourceId.StartsWith(test));
                     }
                     return parent;
                 }

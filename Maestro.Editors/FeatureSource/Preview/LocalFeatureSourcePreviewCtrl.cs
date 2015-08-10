@@ -171,57 +171,63 @@ namespace Maestro.Editors.FeatureSource.Preview
                 var propNode = new TreeNode(prop.Name);
                 propNode.Text = prop.Name;
                 propNode.Tag = prop;
+                switch (prop.Type)
+                {
+                    case PropertyDefinitionType.Geometry:
+                        {
+                            var g = (GeometricPropertyDefinition)prop;
+                            propNode.ImageIndex = propNode.SelectedImageIndex = IDX_GEOMETRY;
+                            propNode.ToolTipText = string.Format(Strings.FsPreview_GeometryPropertyNodeTooltip,
+                                g.Name,
+                                g.Description,
+                                g.GeometryTypesToString(),
+                                g.IsReadOnly,
+                                g.HasElevation,
+                                g.HasMeasure,
+                                g.SpatialContextAssociation,
+                                Environment.NewLine);
+                        }
+                        break;
+                    case PropertyDefinitionType.Data:
+                        {
+                            var d = (DataPropertyDefinition)prop;
+                            if (cls.IdentityProperties.Contains((DataPropertyDefinition)prop))
+                                propNode.ImageIndex = propNode.SelectedImageIndex = IDX_IDENTITY;
+                            else
+                                propNode.ImageIndex = propNode.SelectedImageIndex = IDX_PROP;
 
-                if (prop.Type == PropertyDefinitionType.Geometry)
-                {
-                    var g = (GeometricPropertyDefinition)prop;
-                    propNode.ImageIndex = propNode.SelectedImageIndex = IDX_GEOMETRY;
-                    propNode.ToolTipText = string.Format(Strings.FsPreview_GeometryPropertyNodeTooltip,
-                        g.Name,
-                        g.Description,
-                        g.GeometryTypesToString(),
-                        g.IsReadOnly,
-                        g.HasElevation,
-                        g.HasMeasure,
-                        g.SpatialContextAssociation,
-                        Environment.NewLine);
-                }
-                else if (prop.Type == PropertyDefinitionType.Data)
-                {
-                    var d = (DataPropertyDefinition)prop;
-                    if (cls.IdentityProperties.Contains((DataPropertyDefinition)prop))
-                        propNode.ImageIndex = propNode.SelectedImageIndex = IDX_IDENTITY;
-                    else
-                        propNode.ImageIndex = propNode.SelectedImageIndex = IDX_PROP;
+                            propNode.ToolTipText = string.Format(Strings.FsPreview_DataPropertyNodeTooltip,
+                                d.Name,
+                                d.Description,
+                                d.DataType.ToString(),
+                                d.IsNullable,
+                                d.IsReadOnly,
+                                d.Length,
+                                d.Precision,
+                                d.Scale,
+                                Environment.NewLine);
+                        }
+                        break;
+                    case PropertyDefinitionType.Raster:
+                        {
+                            var r = (RasterPropertyDefinition)prop;
+                            propNode.ImageIndex = propNode.SelectedImageIndex = IDX_RASTER;
 
-                    propNode.ToolTipText = string.Format(Strings.FsPreview_DataPropertyNodeTooltip,
-                        d.Name,
-                        d.Description,
-                        d.DataType.ToString(),
-                        d.IsNullable,
-                        d.IsReadOnly,
-                        d.Length,
-                        d.Precision,
-                        d.Scale,
-                        Environment.NewLine);
-                }
-                else if (prop.Type == PropertyDefinitionType.Raster)
-                {
-                    var r = (RasterPropertyDefinition)prop;
-                    propNode.ImageIndex = propNode.SelectedImageIndex = IDX_RASTER;
-
-                    propNode.ToolTipText = string.Format(Strings.FsPreview_RasterPropertyNodeTooltip,
-                        r.Name,
-                        r.Description,
-                        r.IsNullable,
-                        r.DefaultImageXSize,
-                        r.DefaultImageYSize,
-                        r.SpatialContextAssociation,
-                        Environment.NewLine);
-                }
-                else
-                {
-                    propNode.ImageIndex = propNode.SelectedImageIndex = IDX_PROP;
+                            propNode.ToolTipText = string.Format(Strings.FsPreview_RasterPropertyNodeTooltip,
+                                r.Name,
+                                r.Description,
+                                r.IsNullable,
+                                r.DefaultImageXSize,
+                                r.DefaultImageYSize,
+                                r.SpatialContextAssociation,
+                                Environment.NewLine);
+                        }
+                        break;
+                    default:
+                        {
+                            propNode.ImageIndex = propNode.SelectedImageIndex = IDX_PROP;
+                        }
+                        break;
                 }
 
                 classNode.Nodes.Add(propNode);

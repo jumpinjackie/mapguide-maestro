@@ -32,7 +32,7 @@ using System.Windows.Forms;
 
 namespace Maestro.Base.UI
 {
-    internal sealed class SiteExplorerDragDropHandler
+    internal static class SiteExplorerDragDropHandler
     {
         internal static void OnDragEnter(ISiteExplorer sender, DragEventArgs e)
         {

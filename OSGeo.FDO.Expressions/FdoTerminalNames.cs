@@ -27,45 +27,45 @@ using System.Threading.Tasks;
 
 namespace OSGeo.FDO.Expressions
 {
-    internal class FdoTerminalNames
+    internal static class FdoTerminalNames
     {
-        public const string Identifier = "Identifier";
-        public const string String = "String";
-        public const string Integer = "Integer";
-        public const string Double = "Double";
+        public const string Identifier = nameof(Identifier);
+        public const string String = nameof(String);
+        public const string Integer = nameof(Integer);
+        public const string Double = nameof(Double);
 
-        public const string Expression = "Expression";
-        public const string UnaryExpression = "UnaryExpression";
-        public const string BinaryExpression = "BinaryExpression";
-        public const string ValueExpression = "ValueExpression";
-        public const string Function = "Function";
+        public const string Expression = nameof(Expression);
+        public const string UnaryExpression = nameof(UnaryExpression);
+        public const string BinaryExpression = nameof(BinaryExpression);
+        public const string ValueExpression = nameof(ValueExpression);
+        public const string Function = nameof(Function);
 
-        public const string DataValue = "DataValue";
-        public const string LiteralValue = "LiteralValue";
-        public const string Parameter = "Parameter";
-        public const string ExpressionCollection = "ExpressionCollection";
-        public const string GeometryValue = "GeometryValue";
+        public const string DataValue = nameof(DataValue);
+        public const string LiteralValue = nameof(LiteralValue);
+        public const string Parameter = nameof(Parameter);
+        public const string ExpressionCollection = nameof(ExpressionCollection);
+        public const string GeometryValue = nameof(GeometryValue);
 
-        public const string Boolean = "Boolean";
-        public const string DateTime = "DateTime";
+        public const string Boolean = nameof(Boolean);
+        public const string DateTime = nameof(DateTime);
 
-        public const string Filter = "Filter";
-        public const string LogicalOperator = "LogicalOperator";
-        public const string BinaryLogicalOperator = "BinaryLogicalOperator";
-        public const string UnaryLogicalOperator = "UnaryLogicalOperator";
-        public const string BinaryLogicalOperations = "BinaryLogicalOperations";
-        public const string InCondition = "InCondition";
-        public const string SearchCondition = "SearchCondition";
-        public const string ComparisonCondition = "ComparisonCondition";
-        public const string GeometricCondition = "GeometricCondition";
-        public const string NullCondition = "NullCondition";
-        public const string DistanceCondition = "DistanceCondition";
-        public const string SpatialCondition = "SpatialCondition";
+        public const string Filter = nameof(Filter);
+        public const string LogicalOperator = nameof(LogicalOperator);
+        public const string BinaryLogicalOperator = nameof(BinaryLogicalOperator);
+        public const string UnaryLogicalOperator = nameof(UnaryLogicalOperator);
+        public const string BinaryLogicalOperations = nameof(BinaryLogicalOperations);
+        public const string InCondition = nameof(InCondition);
+        public const string SearchCondition = nameof(SearchCondition);
+        public const string ComparisonCondition = nameof(ComparisonCondition);
+        public const string GeometricCondition = nameof(GeometricCondition);
+        public const string NullCondition = nameof(NullCondition);
+        public const string DistanceCondition = nameof(DistanceCondition);
+        public const string SpatialCondition = nameof(SpatialCondition);
 
-        public const string ValueExpressionCollection = "ValueExpressionCollection";
-        public const string ComparisonOperations = "ComparisonOperations";
-        public const string DistanceOperations = "DistanceOperations";
-        public const string Distance = "Distance";
-        public const string SpatialOperations = "SpatialOperations";
+        public const string ValueExpressionCollection = nameof(ValueExpressionCollection);
+        public const string ComparisonOperations = nameof(ComparisonOperations);
+        public const string DistanceOperations = nameof(DistanceOperations);
+        public const string Distance = nameof(Distance);
+        public const string SpatialOperations = nameof(SpatialOperations);
     }
 }

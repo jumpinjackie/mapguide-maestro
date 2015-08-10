@@ -167,7 +167,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.Throws<InvalidOperationException>(() => tsTileSet.GetScaleAt(0));
             Assert.Throws<InvalidOperationException>(() => tsTileSet.RemoveScaleAt(3));
             Assert.Throws<InvalidOperationException>(() => tsTileSet.RemoveFiniteDisplayScale(1.2));
-            Assert.Throws<InvalidOperationException>(() => tsTileSet.RemoveAllScales());
+            Assert.Throws<InvalidOperationException>(tsTileSet.RemoveAllScales);
             Assert.Throws<InvalidOperationException>(() => tsTileSet.AddFiniteDisplayScale(1234.0));
         }
 

@@ -338,7 +338,7 @@ namespace Maestro.Base.Editor
         /// </summary>
         public bool IsNew
         {
-            get { return _svc != null ? _svc.IsNew : true; } //Mono
+            get { return _svc == null || _svc.IsNew; } //Mono
         }
 
         /// <summary>

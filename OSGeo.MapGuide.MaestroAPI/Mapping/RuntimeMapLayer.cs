@@ -133,35 +133,41 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             Check.ArgumentNotNull(ldf, nameof(ldf));
             this.LayerDefinitionID = ldf.ResourceID;
-            if (ldf.SubLayer.LayerType == LayerType.Vector)
+            switch (ldf.SubLayer.LayerType)
             {
-                var vl = ((IVectorLayerDefinition)ldf.SubLayer);
-                _qualifiedClassName = vl.FeatureName;
-                _geometryPropertyName = vl.Geometry;
-                _featureSourceId = vl.ResourceId;
-                _filter = vl.Filter;
-                InitIdentityProperties(vl, suppressErrors);
-                InitScaleRanges(vl);
-                _hasTooltips = !string.IsNullOrEmpty(vl.ToolTip);
-            }
-            else if (ldf.SubLayer.LayerType == LayerType.Raster)
-            {
-                var rl = ((IRasterLayerDefinition)ldf.SubLayer);
-                _qualifiedClassName = rl.FeatureName;
-                _geometryPropertyName = rl.Geometry;
-                _featureSourceId = rl.ResourceId;
-                InitScaleRanges(rl);
-            }
-            else if (ldf.SubLayer.LayerType == LayerType.Drawing)
-            {
-                _featureSourceId = ldf.SubLayer.ResourceId;
-                var dl = ((IDrawingLayerDefinition)ldf.SubLayer);
-                _scaleRanges = new double[]
-                {
-                    dl.MinScale,
-                    dl.MaxScale
-                };
-                EnsureOrderedMinMaxScales();
+                case LayerType.Vector:
+                    {
+                        var vl = ((IVectorLayerDefinition)ldf.SubLayer);
+                        _qualifiedClassName = vl.FeatureName;
+                        _geometryPropertyName = vl.Geometry;
+                        _featureSourceId = vl.ResourceId;
+                        _filter = vl.Filter;
+                        InitIdentityProperties(vl, suppressErrors);
+                        InitScaleRanges(vl);
+                        _hasTooltips = !string.IsNullOrEmpty(vl.ToolTip);
+                    }
+                    break;
+                case LayerType.Raster:
+                    {
+                        var rl = ((IRasterLayerDefinition)ldf.SubLayer);
+                        _qualifiedClassName = rl.FeatureName;
+                        _geometryPropertyName = rl.Geometry;
+                        _featureSourceId = rl.ResourceId;
+                        InitScaleRanges(rl);
+                    }
+                    break;
+                case LayerType.Drawing:
+                    {
+                        _featureSourceId = ldf.SubLayer.ResourceId;
+                        var dl = ((IDrawingLayerDefinition)ldf.SubLayer);
+                        _scaleRanges = new double[]
+                        {
+                            dl.MinScale,
+                            dl.MaxScale
+                        };
+                        EnsureOrderedMinMaxScales();
+                    }
+                    break;
             }
 
             _expandInLegend = false;
@@ -360,7 +366,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 if (this.Type == kBaseMap)
                     throw new InvalidOperationException(Strings.ErrorSettingVisibilityOfTiledLayer);
 
-                if (SetField(ref _visible, value, "Visible")) //NOXLATE
+                if (SetField(ref _visible, value, nameof(Visible)))
                     Parent.IsDirty = true;
             }
         }

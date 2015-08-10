@@ -30,7 +30,7 @@ using System.Drawing;
 
 namespace Maestro.Editors.LayerDefinition.Vector
 {
-    internal class FeaturePreviewRender
+    internal static class FeaturePreviewRender
     {
         private static ImageStylePicker.NamedImage[] m_fillImages = null;
         private static ImageStylePicker.NamedImage[] m_lineStyles = null;

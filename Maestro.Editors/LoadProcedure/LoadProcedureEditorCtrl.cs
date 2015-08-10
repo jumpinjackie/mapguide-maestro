@@ -59,34 +59,38 @@ namespace Maestro.Editors.LoadProcedure
             service.RegisterCustomNotifier(this);
 
             CollapsiblePanel tp = null;
-
-            if (_lp.SubType.Type == LoadType.Sdf)
+            switch (_lp.SubType.Type)
             {
-                var trans = new SdfTransformationCtrl();
-                trans.Bind(service);
-                tp = trans;
-            }
-            else if (_lp.SubType.Type == LoadType.Shp)
-            {
-                var trans = new ShpTransformationCtrl();
-                trans.Bind(service);
-                tp = trans;
-            }
-            else if (_lp.SubType.Type == LoadType.Dwf)
-            {
-                var trans = new DwfTransformationCtrl();
-                trans.Bind(service);
-                tp = trans;
-            }
-            else if (_lp.SubType.Type == LoadType.Sqlite)
-            {
-                var trans = new SqliteTransformationCtrl();
-                trans.Bind(service);
-                tp = trans;
-            }
-            else
-            {
-                throw new NotSupportedException();
+                case LoadType.Sdf:
+                    {
+                        var trans = new SdfTransformationCtrl();
+                        trans.Bind(service);
+                        tp = trans;
+                    }
+                    break;
+                case LoadType.Shp:
+                    {
+                        var trans = new ShpTransformationCtrl();
+                        trans.Bind(service);
+                        tp = trans;
+                    }
+                    break;
+                case LoadType.Dwf:
+                    {
+                        var trans = new DwfTransformationCtrl();
+                        trans.Bind(service);
+                        tp = trans;
+                    }
+                    break;
+                case LoadType.Sqlite:
+                    {
+                        var trans = new SqliteTransformationCtrl();
+                        trans.Bind(service);
+                        tp = trans;
+                    }
+                    break;
+                default:
+                    throw new NotSupportedException();
             }
 
             var input = new InputFilesCtrl();

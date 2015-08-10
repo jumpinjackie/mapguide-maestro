@@ -321,24 +321,15 @@ namespace Maestro.Editors.MapDefinition
                 {
                     if (layer != null)
                     {
-                        if (groupMeta.Name != layer.GroupName)
-                            e.Effect = DragDropEffects.Copy;
-                        else
-                            e.Effect = DragDropEffects.None;
+                        e.Effect = groupMeta.Name != layer.GroupName ? DragDropEffects.Copy : DragDropEffects.None;
                     }
                     else if (group != null)
                     {
-                        if (groupMeta.Name != group.GroupName)
-                            e.Effect = DragDropEffects.Copy;
-                        else
-                            e.Effect = DragDropEffects.None;
+                        e.Effect = groupMeta.Name != group.GroupName ? DragDropEffects.Copy : DragDropEffects.None;
                     }
                     else if (res != null)
                     {
-                        if (groupMeta != null)
-                            e.Effect = DragDropEffects.Copy;
-                        else
-                            e.Effect = DragDropEffects.None;
+                        e.Effect = groupMeta != null ? DragDropEffects.Copy : DragDropEffects.None;
                     }
                     else
                     {

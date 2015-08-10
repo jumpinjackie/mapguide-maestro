@@ -44,7 +44,7 @@ namespace Maestro.Shared.UI
             _mrtType = Type.GetType("Mono.Runtime"); //NOXLATE
         }
 
-        private static Type _mrtType;
+        private static readonly Type _mrtType;
 
         /// <summary>
         /// Gets whether this application is running under the Mono CLR
@@ -69,7 +69,7 @@ namespace Maestro.Shared.UI
 
     internal static class TabFactory
     {
-        private static List<HiddenTab> _hiddenTabs = new List<HiddenTab>();
+        private static readonly List<HiddenTab> _hiddenTabs = new List<HiddenTab>();
 
         internal static TabPage CreateTab(IViewContent content, string imgKey)
         {

@@ -149,10 +149,7 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap.v3_0_0
             }
             set
             {
-                if (value.HasValue)
-                    this.TileHeight = value.Value.ToString(CultureInfo.InvariantCulture);
-                else
-                    this.TileHeight = null;
+                this.TileHeight = value.HasValue ? value.Value.ToString(CultureInfo.InvariantCulture) : null;
             }
         }
     }
@@ -162,7 +159,7 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap.v3_0_0
         : IReadOnlyCollection<TInterface>
         where TImpl : TInterface
     {
-        private IList<TImpl> _list;
+        private readonly IList<TImpl> _list;
 
         protected ReadOnlyCollectionWrapper(IList<TImpl> list)
         {

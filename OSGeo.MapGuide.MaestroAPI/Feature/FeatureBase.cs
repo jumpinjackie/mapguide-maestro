@@ -157,14 +157,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         public override PropertyValueType GetPropertyType(int index)
         {
             var prop = this.ClassDefinition.Properties[index];
-            if (prop.Type == PropertyDefinitionType.Data)
-                return (PropertyValueType)((DataPropertyDefinition)prop).DataType;
-            else if (prop.Type == PropertyDefinitionType.Geometry)
-                return PropertyValueType.Geometry;
-            else if (prop.Type == PropertyDefinitionType.Raster)
-                return PropertyValueType.Raster;
-            else
-                throw new ArgumentException();
+            switch (prop.Type)
+            {
+                case PropertyDefinitionType.Data:
+                    return (PropertyValueType)((DataPropertyDefinition)prop).DataType;
+                case PropertyDefinitionType.Geometry:
+                    return PropertyValueType.Geometry;
+                case PropertyDefinitionType.Raster:
+                    return PropertyValueType.Raster;
+                default:
+                    throw new ArgumentException();
+            }
         }
 
         /// <summary>
@@ -177,14 +180,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             var prop = this.ClassDefinition.FindProperty(name);
             if (prop != null)
             {
-                if (prop.Type == PropertyDefinitionType.Data)
-                    return (PropertyValueType)((DataPropertyDefinition)prop).DataType;
-                else if (prop.Type == PropertyDefinitionType.Geometry)
-                    return PropertyValueType.Geometry;
-                else if (prop.Type == PropertyDefinitionType.Raster)
-                    return PropertyValueType.Raster;
-                else
-                    throw new ArgumentException();
+                switch (prop.Type)
+                {
+                    case PropertyDefinitionType.Data:
+                        return (PropertyValueType)((DataPropertyDefinition)prop).DataType;
+                    case PropertyDefinitionType.Geometry:
+                        return PropertyValueType.Geometry;
+                    case PropertyDefinitionType.Raster:
+                        return PropertyValueType.Raster;
+                    default:
+                        throw new ArgumentException();
+                }
             }
             throw new ArgumentException();
         }

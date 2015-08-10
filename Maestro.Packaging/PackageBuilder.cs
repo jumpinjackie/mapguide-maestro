@@ -421,7 +421,7 @@ namespace Maestro.Packaging
                             break;
 
                         test = test + parts[partIndex];
-                        matches = data.Where(x => x.StartsWith(test)).Count();
+                        matches = data.Count(x => x.StartsWith(test));
                     }
                     return parent;
                 }

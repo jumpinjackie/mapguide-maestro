@@ -51,7 +51,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// <summary>
     /// Various helper functions
     /// </summary>
-    public class Utility
+    public static class Utility
     {
         /// <summary>
         /// The exception data key that hints that an <see cref="T:System.Exception"/> thrown is related to XML content errors
