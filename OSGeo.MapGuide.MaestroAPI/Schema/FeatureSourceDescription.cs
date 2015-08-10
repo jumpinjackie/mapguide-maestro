@@ -77,7 +77,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <summary>
         /// Gets an array of feature schemas in this feature source
         /// </summary>
-        public FeatureSchema[] Schemas { get; private set; }
+        public FeatureSchema[] Schemas { get; }
 
         /// <summary>
         /// Gets a feature schema by its name

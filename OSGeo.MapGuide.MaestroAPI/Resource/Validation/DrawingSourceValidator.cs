@@ -31,7 +31,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     /// </summary>
     public class DrawingSourceValidator : IResourceValidator
     {
-        private string _version;
+        private readonly string _version;
 
         internal DrawingSourceValidator(string version = "1.0.0")
         {

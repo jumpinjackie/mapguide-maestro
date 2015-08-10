@@ -286,7 +286,7 @@ namespace Maestro.Editors.FeatureSource.Preview
             {
                 var pane = new PreviewPane(currentFsId, mode, cls, _edSvc, _caps);
                 var page = new TabPage();
-                page.Text = Strings.StandardQuery + " - " + cls.QualifiedName; //NOXLATE
+                page.Text = $"{Strings.StandardQuery} - {cls.QualifiedName}"; //NOXLATE
                 page.Tag = mode;
                 pane.Dock = DockStyle.Fill;
                 page.Controls.Add(pane);

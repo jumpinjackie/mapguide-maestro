@@ -56,14 +56,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         }
 
         public Queue<KeyValuePair<int, int>> TileSet;
-        private Queue<EventPassing> RaiseEvents = new Queue<EventPassing>();
-        private object SyncLock;
-        private AutoResetEvent Event;
+        private readonly Queue<EventPassing> RaiseEvents = new Queue<EventPassing>();
+        private readonly object SyncLock;
+        private readonly AutoResetEvent Event;
         private int CompleteFlag;
-        private TilingRunCollection Parent;
+        private readonly TilingRunCollection Parent;
         private int Scale;
         private string Group;
-        private string MapDefinition;
+        private readonly string MapDefinition;
         private MapTilingConfiguration Invoker;
 
         private bool Randomize;

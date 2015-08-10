@@ -39,7 +39,7 @@ namespace Maestro.Base.UI
         // [Resource ID: ][ComboBox: Resource ID][@][ComboBox: Active Connections][ Go =>]
         //
 
-        private ToolStrip _strip;
+        private readonly ToolStrip _strip;
 
         private ToolStripLabel _resIdLabel;
         private ToolStripComboBox _cmbResourceId;

@@ -36,7 +36,7 @@ namespace Maestro.Base.Services.DragDropHandlers
             get { return Strings.MgpHandlerAction; }
         }
 
-        private string[] extensions = { ".mgp" }; //NOXLATE
+        private readonly string[] extensions = { ".mgp" }; //NOXLATE
 
         public bool HandleDrop(IServerConnection conn, string file, string folderId)
         {

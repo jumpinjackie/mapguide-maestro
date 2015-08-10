@@ -56,7 +56,7 @@ namespace Maestro.Base.Commands.SiteExplorer
                     //doesn't already exists. Note this would automatically guard against any resources in this folder
                     //that may already be open in an editor
                     var rid = new ResourceIdentifier(item.ResourceId);
-                    var name = rid.IsFolder ? (rid.Name + "/") : (rid.Name + "." + rid.ResourceType.ToString()); //NOXLATE
+                    var name = rid.IsFolder ? $"{rid.Name}/" : $"{rid.Name}.{rid.ResourceType.ToString()}"; //NOXLATE
                     var resId = folder.ResourceId + name;
                     int counter = 0;
                     while (conn.ResourceService.ResourceExists(resId))
@@ -65,13 +65,13 @@ namespace Maestro.Base.Commands.SiteExplorer
 
                         if (rid.IsFolder)
                         {
-                            resId = folder.ResourceId + rid.Name + " (" + counter + ")/"; //NOXLATE
+                            resId = $"{folder.ResourceId + rid.Name} ({counter})/"; //NOXLATE
                         }
                         else
                         {
                             var rname = name.Substring(0, name.IndexOf(".")); //NOXLATE
                             var type = name.Substring(name.IndexOf(".")); //NOXLATE
-                            rname += " (" + counter + ")"; //NOXLATE
+                            rname += $" ({counter})"; //NOXLATE
                             resId = folder.ResourceId + rname + type;
                         }
                     }

@@ -54,7 +54,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         public IServerConnection Parent
         {
             get;
-            private set;
         }
 
         /// <summary>
@@ -184,7 +183,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// Initializes a new instance of the <see cref="DefaultUpdateCommand&lt;TConn&gt;"/> class.
         /// </summary>
         /// <param name="parent">The parent.</param>
-        public DefaultUpdateCommand(TConn parent)
+        protected DefaultUpdateCommand(TConn parent)
             : base(parent)
         {
         }

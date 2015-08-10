@@ -69,7 +69,7 @@ namespace Maestro.Editors.LayerDefinition
         private void OnVectorLayerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             //Feature Source changed
-            if (e.PropertyName == "ResourceId") //NOXLATE
+            if (e.PropertyName == nameof(_vl.ResourceId))
             {
                 PopulatePropertyList();
             }

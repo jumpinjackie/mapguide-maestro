@@ -421,7 +421,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Gdal
                                 {
                                     var leftpart = file.UnmanagedDataId.Substring(0, file.UnmanagedDataId.IndexOf("]")); //NOXLATE
                                     var rightpart = file.UnmanagedDataId.Substring(file.UnmanagedDataId.IndexOf("]") + 1); //NOXLATE
-                                    var item = "%MG_DATA_PATH_ALIAS" + leftpart + "]%" + rightpart; //NOXLATE
+                                    var item = $"%MG_DATA_PATH_ALIAS{leftpart}]%{rightpart}"; //NOXLATE
                                     files.Add(item);
                                     break;
                                 }

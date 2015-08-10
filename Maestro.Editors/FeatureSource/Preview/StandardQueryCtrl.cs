@@ -144,11 +144,11 @@ namespace Maestro.Editors.FeatureSource.Preview
         private string GenerateAlias()
         {
             int counter = 1;
-            string name = "Expr" + counter; //NOXLATE
+            string name = $"Expr{counter}"; //NOXLATE
             while (AliasExists(name))
             {
                 counter++;
-                name = "Expr" + counter; //NOXLATE
+                name = $"Expr{counter}"; //NOXLATE
             }
             return name;
         }

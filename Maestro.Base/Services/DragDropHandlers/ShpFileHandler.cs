@@ -36,7 +36,7 @@ namespace Maestro.Base.Services.DragDropHandlers
             get { return Strings.ShpHandlerAction; }
         }
 
-        private string[] extensions = { ".shp" }; //NOXLATE
+        private readonly string[] extensions = { ".shp" }; //NOXLATE
 
         public bool HandleDrop(IServerConnection conn, string file, string folderId)
         {
@@ -49,11 +49,11 @@ namespace Maestro.Base.Services.DragDropHandlers
                 string fileName = Path.GetFileName(file);
                 string resName = Path.GetFileNameWithoutExtension(file);
                 int counter = 0;
-                string resId = folderId + resName + ".FeatureSource"; //NOXLATE
+                string resId = $"{folderId + resName}.FeatureSource"; //NOXLATE
                 while (conn.ResourceService.ResourceExists(resId))
                 {
                     counter++;
-                    resId = folderId + resName + " (" + counter + ").FeatureSource"; //NOXLATE
+                    resId = $"{folderId + resName} ({counter}).FeatureSource"; //NOXLATE
                 }
                 fs.ResourceID = resId;
                 fs.SetConnectionProperty("DefaultFileLocation", StringConstants.MgDataFilePath + fileName); //NOXLATE
@@ -62,11 +62,11 @@ namespace Maestro.Base.Services.DragDropHandlers
                 //As we all know, the term shape file is deceptive...
                 string[] files = {
                     file,
-                    file.Substring(0, file.LastIndexOf(".")) + ".shx", //NOXLATE
-                    file.Substring(0, file.LastIndexOf(".")) + ".dbf", //NOXLATE
-                    file.Substring(0, file.LastIndexOf(".")) + ".idx", //NOXLATE
-                    file.Substring(0, file.LastIndexOf(".")) + ".prj", //NOXLATE
-                    file.Substring(0, file.LastIndexOf(".")) + ".cpg" //NOXLATE
+                    $"{file.Substring(0, file.LastIndexOf("."))}.shx", //NOXLATE
+                    $"{file.Substring(0, file.LastIndexOf("."))}.dbf", //NOXLATE
+                    $"{file.Substring(0, file.LastIndexOf("."))}.idx", //NOXLATE
+                    $"{file.Substring(0, file.LastIndexOf("."))}.prj", //NOXLATE
+                    $"{file.Substring(0, file.LastIndexOf("."))}.cpg" //NOXLATE
                 };
 
                 foreach (string fn in files)

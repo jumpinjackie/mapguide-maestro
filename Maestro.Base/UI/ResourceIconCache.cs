@@ -63,7 +63,7 @@ namespace Maestro.Base.UI
     public class ResourceIconCache : IResourceIconCache
     {
         private ImageList _small;
-        private ImageList _large;
+        private readonly ImageList _large;
 
         private ResourceIconCache()
         {
@@ -71,7 +71,7 @@ namespace Maestro.Base.UI
             _large = new ImageList();
         }
 
-        private const string UNKNOWN = "UNKNOWN"; //NOXLATE
+        private const string UNKNOWN = nameof(UNKNOWN);
 
         /// <summary>
         /// Creates the default image lists

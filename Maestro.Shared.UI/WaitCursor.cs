@@ -32,7 +32,7 @@ namespace Maestro.Shared.UI
     public class WaitCursor : IDisposable
     {
         private readonly Control _owner;
-        private Cursor _orig;
+        private readonly Cursor _orig;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WaitCursor"/> class.

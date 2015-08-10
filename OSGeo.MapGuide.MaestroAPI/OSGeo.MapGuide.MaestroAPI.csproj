@@ -141,8 +141,6 @@
     <Compile Include="Mapping\NsDoc.cs" />
     <Compile Include="CsHelper.cs" />
     <Compile Include="NsDoc.cs" />
-    <Compile Include="Resource\Comparison\BinaryData.cs" />
-    <Compile Include="Resource\Comparison\CharData.cs" />
     <Compile Include="Resource\Comparison\DiffEngine.cs" />
     <Compile Include="Resource\Comparison\TextFile.cs" />
     <Compile Include="Resource\Conversion\ImageSymbolConverter.cs" />

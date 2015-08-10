@@ -28,7 +28,7 @@ namespace Maestro.Base.UI
 {
     internal partial class NewFolderDialog : Form
     {
-        private List<string> _folderNames;
+        private readonly List<string> _folderNames;
 
         public NewFolderDialog(string name, string[] folderNames)
         {

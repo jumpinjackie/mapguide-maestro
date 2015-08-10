@@ -68,10 +68,7 @@ namespace Maestro.Editors.FeatureSource.Providers
         {
         }
 
-        protected virtual string[] GetUnmanagedFileExtensions()
-        {
-            return new string[0];
-        }
+        protected virtual string[] GetUnmanagedFileExtensions() => new string[0];
 
         private void btnBrowseAlias_Click(object sender, EventArgs e)
         {
@@ -98,12 +95,9 @@ namespace Maestro.Editors.FeatureSource.Providers
             }
         }
 
-        protected virtual string FileFdoProperty { get { return "File"; } } //NOXLATE
+        protected virtual string FileFdoProperty => "File"; //NOXLATE
 
-        protected virtual bool CanSelectFolders()
-        {
-            return false;
-        }
+        protected virtual bool CanSelectFolders() => false;
 
         private void txtAlias_TextChanged(object sender, EventArgs e)
         {

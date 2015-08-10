@@ -68,7 +68,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
     public class ResourceMigrator
     {
         private IServerConnection _source;
-        private IServerConnection _target;
+        private readonly IServerConnection _target;
 
         private IResourceConverter _converter;
 

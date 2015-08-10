@@ -128,9 +128,9 @@ namespace Maestro.Editors.FeatureSource.Extensions
             _edSvc = service;
             _edSvc.RegisterCustomNotifier(this);
 
-            TextBoxBinder.BindText(txtJoinName, _rel, "Name"); //NOXLATE
-            TextBoxBinder.BindText(txtFeatureSource, _rel, "ResourceId"); //NOXLATE
-            TextBoxBinder.BindText(txtSecondaryClass, _rel, "AttributeClass"); //NOXLATE
+            TextBoxBinder.BindText(txtJoinName, _rel, nameof(_rel.Name));
+            TextBoxBinder.BindText(txtFeatureSource, _rel, nameof(_rel.ResourceId));
+            TextBoxBinder.BindText(txtSecondaryClass, _rel, nameof(_rel.AttributeClass));
 
             //Init selected classes
             if (!string.IsNullOrEmpty(_rel.ResourceId))

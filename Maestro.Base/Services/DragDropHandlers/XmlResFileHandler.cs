@@ -51,11 +51,11 @@ namespace Maestro.Base.Services.DragDropHandlers
                 {
                     //The easiest way to tell if this XML file is legit
                     var res = ObjectFactory.DeserializeXml(xml);
-                    string resId = folderId + name + "." + res.ResourceType.ToString(); //NOXLATE
+                    string resId = $"{folderId + name}.{res.ResourceType.ToString()}"; //NOXLATE
                     while (conn.ResourceService.ResourceExists(resId))
                     {
                         counter++;
-                        resId = folderId + name + " (" + counter + ")." + res.ResourceType.ToString(); //NOXLATE
+                        resId = $"{folderId + name} ({counter}).{res.ResourceType.ToString()}"; //NOXLATE
                     }
                     res.ResourceID = resId;
                     conn.ResourceService.SaveResource(res);
@@ -63,11 +63,11 @@ namespace Maestro.Base.Services.DragDropHandlers
                 catch //We may be working with an unknown resource type or schema version here so try blind before bailing
                 {
                     string resType = Path.GetExtension(file);
-                    string resId = folderId + name + "." + resType; //NOXLATE
+                    string resId = $"{folderId + name}.{resType}"; //NOXLATE
                     while (conn.ResourceService.ResourceExists(resId))
                     {
                         counter++;
-                        resId = folderId + name + " (" + counter + ")." + resType; //NOXLATE
+                        resId = $"{folderId + name} ({counter}).{resType}"; //NOXLATE
                     }
                     using (var ms = new MemoryStream(Encoding.UTF8.GetBytes(xml)))
                     {

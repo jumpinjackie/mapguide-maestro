@@ -47,9 +47,9 @@ namespace Maestro.Editors.Fusion.WidgetEditors
         /// <param name="edsvc"></param>
         public void Setup(IWidget widget, FlexibleLayoutEditorContext context, IEditorService edsvc)
         {
-            TextBoxBinder.BindText(txtName, widget, "Name"); //NOXLATE
-            TextBoxBinder.BindText(txtType, widget, "Type"); //NOXLATE
-            TextBoxBinder.BindText(txtLocation, widget, "Location"); //NOXLATE
+            TextBoxBinder.BindText(txtName, widget, nameof(widget.Name));
+            TextBoxBinder.BindText(txtType, widget, nameof(widget.Type));
+            TextBoxBinder.BindText(txtLocation, widget, nameof(widget.Location));
         }
 
         /// <summary>

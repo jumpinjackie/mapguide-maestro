@@ -242,7 +242,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Gets or sets the data.
         /// </summary>
         /// <value>The data.</value>
-        public string Data { get; private set; }
+        public string Data { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RequestEventArgs"/> class.

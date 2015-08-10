@@ -146,7 +146,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 Failure
             }
 
-            private string m_itempath;
+            private readonly string m_itempath;
             private OperationStatus m_status;
 
             /// <summary>

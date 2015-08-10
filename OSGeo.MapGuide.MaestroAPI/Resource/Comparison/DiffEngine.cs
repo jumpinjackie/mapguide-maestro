@@ -76,14 +76,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
                 }
                 else
                 {
-                    if (_length == 0)
-                    {
-                        len = 1;
-                    }
-                    else
-                    {
-                        len = 0;
-                    }
+                    len = _length == 0 ? 1 : 0;
                 }
                 return len;
             }
@@ -158,15 +151,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
     internal class DiffStateList
     {
 #if USE_HASH_TABLE
-		private Hashtable _table;
+        private Hashtable _table;
 #else
-        private DiffState[] _array;
+        private readonly DiffState[] _array;
 #endif
 
         public DiffStateList(int destCount)
         {
 #if USE_HASH_TABLE
-			_table = new Hashtable(Math.Max(9,destCount/10));
+            _table = new Hashtable(Math.Max(9,destCount/10));
 #else
             _array = new DiffState[destCount];
 #endif
@@ -175,12 +168,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
         public DiffState GetByIndex(int index)
         {
 #if USE_HASH_TABLE
-			DiffState retval = (DiffState)_table[index];
-			if (retval == null)
-			{
-				retval = new DiffState();
-				_table.Add(index,retval);
-			}
+            DiffState retval = (DiffState)_table[index];
+            if (retval == null)
+            {
+                retval = new DiffState();
+                _table.Add(index,retval);
+            }
 #else
             DiffState retval = _array[index];
             if (retval == null)
@@ -225,7 +218,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
     public class DiffResultSpan : IComparable
     {
         private const int BAD_INDEX = -1;
-        private int _destIndex;
+        private readonly int _destIndex;
         private int _sourceIndex;
         private int _length;
         private DiffResultSpanStatus _status;

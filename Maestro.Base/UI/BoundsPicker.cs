@@ -57,7 +57,7 @@ namespace Maestro.Base.UI
                     System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
                     if (bounds.Trim().StartsWith("&lt;")) //NOXLATE
                         bounds = System.Web.HttpUtility.HtmlDecode(bounds);
-                    bounds = "<root>" + bounds + "</root>"; //NOXLATE
+                    bounds = $"<root>{bounds}</root>"; //NOXLATE
                     doc.LoadXml(bounds);
                     System.Xml.XmlNode root = doc["root"]; //NOXLATE
                     if (root["Bounds"] != null) //NOXLATE
@@ -165,10 +165,10 @@ namespace Maestro.Base.UI
                     return;
             }
 
-            m_bounds = "<Bounds west=\"" + MinX.Text + "\" east=\"" + MaxX.Text + "\" south=\"" + MinY.Text + "\" north=\"" + MaxY.Text + "\" "; //NOXLATE
+            m_bounds = $"<Bounds west=\"{MinX.Text}\" east=\"{MaxX.Text}\" south=\"{MinY.Text}\" north=\"{MaxY.Text}\" "; //NOXLATE
             if (srs != null)
             {
-                m_bounds += " SRS=\"" + srs + "\""; //NOXLATE
+                m_bounds += $" SRS=\"{srs}\""; //NOXLATE
             }
             m_bounds += " />"; //NOXLATE
 

@@ -39,7 +39,7 @@ namespace Maestro.Base
             get
             {
                 var asmVersion = Assembly.GetExecutingAssembly().GetName().Version;
-                return string.Format("Maestro-{0}.{1}", asmVersion.Major, asmVersion.Minor); //NOXLATE
+                return $"Maestro-{asmVersion.Major}.{asmVersion.Minor}"; //NOXLATE
             }
         }
 
@@ -64,7 +64,7 @@ namespace Maestro.Base
             {
                 var asmVersion = Assembly.GetExecutingAssembly().GetName().Version;
                 return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                                    string.Format("Maestro-{0}.{1}", asmVersion.Major, asmVersion.Minor), //NOXLATE
+                                    $"Maestro-{asmVersion.Major}.{asmVersion.Minor}", //NOXLATE
                                     "AddIns"); //NOXLATE
             }
         }*/

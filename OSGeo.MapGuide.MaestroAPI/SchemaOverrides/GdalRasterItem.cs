@@ -35,7 +35,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
     /// </summary>
     public class GdalRasterLocationItem : IFdoSerializable
     {
-        private Dictionary<string, GdalRasterItem> _items = new Dictionary<string, GdalRasterItem>();
+        private readonly Dictionary<string, GdalRasterItem> _items = new Dictionary<string, GdalRasterItem>();
 
         /// <summary>
         /// Gets or sets the directory

@@ -29,7 +29,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     /// </summary>
     public class WebLayoutValidator : BaseWebLayoutValidator
     {
-        private string _version;
+        private readonly string _version;
 
         internal WebLayoutValidator(string version = "1.0.0")
         {

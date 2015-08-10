@@ -67,27 +67,27 @@ namespace Maestro.Base.Events
             {
                 case ConfigProperties.UseLocalPreview:
                     PreviewSettings.UseLocalPreview = Convert.ToBoolean(e.NewValue);
-                    LoggingService.Info("Use Local Preview setting is now: " + PreviewSettings.UseLocalPreview); //NOXLATE
+                    LoggingService.Info($"Use Local Preview setting is now: {PreviewSettings.UseLocalPreview}"); //NOXLATE
                     break;
 
                 case ConfigProperties.AddDebugWatermark:
                     PreviewSettings.AddDebugWatermark = Convert.ToBoolean(e.NewValue);
-                    LoggingService.Info("Add Debug Watermark setting is now: " + PreviewSettings.AddDebugWatermark); //NOXLATE
+                    LoggingService.Info($"Add Debug Watermark setting is now: {PreviewSettings.AddDebugWatermark}"); //NOXLATE
                     break;
 
                 case ConfigProperties.PreviewViewerType:
                     PreviewSettings.UseAjaxViewer = (e.NewValue.ToString() == "AJAX"); //NOXLATE
-                    LoggingService.Info("Use AJAX Viewer setting is now: " + PreviewSettings.UseAjaxViewer);
+                    LoggingService.Info($"Use AJAX Viewer setting is now: {PreviewSettings.UseAjaxViewer}"); //NOXLATE
                     break;
 
                 case ConfigProperties.UseGridStyleEditor:
                     LayerEditorSettings.UseGridEditor = Convert.ToBoolean(e.NewValue);
-                    LoggingService.Info("Use Grid Style Editor is now: " + LayerEditorSettings.UseGridEditor);
+                    LoggingService.Info($"Use Grid Style Editor is now: {LayerEditorSettings.UseGridEditor}"); //NOXLATE
                     break;
 
                 case ConfigProperties.XsdSchemaPath:
                     XmlEditorSettings.XsdPath = e.NewValue.ToString();
-                    LoggingService.Info("XSD path is now: " + XmlEditorSettings.XsdPath);
+                    LoggingService.Info($"XSD path is now: {XmlEditorSettings.XsdPath}"); //NOXLAT
                     break;
             }
         }
@@ -109,7 +109,7 @@ namespace Maestro.Base.Events
                     try
                     {
                         conn.FeatureService.GetProviderCapabilities("OSGeo.SDF"); //NOXLATE
-                        LoggingService.Info("Session kept alive: " + sessionId); //NOXLATE
+                        LoggingService.Info($"Session kept alive: {sessionId}"); //NOXLATE
                     }
                     catch (Exception)
                     {
@@ -135,7 +135,7 @@ namespace Maestro.Base.Events
             Workbench wb = Workbench.Instance;
             Debug.Assert(wb.ActiveSiteExplorer != null);
             var svc = ServiceRegistry.GetService<ServerConnectionManager>();
-            LoggingService.Info("There are now " + svc.GetConnectionNames().Count + " active connections");  //NOXLATE
+            LoggingService.Info($"There are now {svc.GetConnectionNames().Count} active connections");  //NOXLATE
             //Debug.Assert(wb.ActiveSiteExplorer.ConnectionName == name);
         }
 
@@ -166,7 +166,7 @@ namespace Maestro.Base.Events
             var svc = ServiceRegistry.GetService<ServerConnectionManager>();
             var conn = svc.GetConnection(e.ConnectionName);
 
-            LoggingService.Info("There are now " + svc.GetConnectionNames().Count + " active connections"); //NOXLATE
+            LoggingService.Info($"There are now {svc.GetConnectionNames().Count} active connections"); //NOXLATE
         }
 
         private static void OnActiveConnectionChanged(object sender, EventArgs e)

@@ -29,7 +29,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     /// </summary>
     public class LayerDefinitionValidator : BaseLayerDefinitionValidator
     {
-        private string _version;
+        private readonly string _version;
 
         internal LayerDefinitionValidator(string version = "1.0.0")
         {

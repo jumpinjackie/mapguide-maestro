@@ -4,6 +4,7 @@ using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
@@ -82,19 +83,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
                 }
 
                 //Check for duplicate property references in search commands
-                foreach (ICommand cmd in cmdSet.Commands)
+                foreach (ISearchCommand search in cmdSet.Commands.OfType<ISearchCommand>())
                 {
-                    if (cmd is ISearchCommand)
+                    Dictionary<string, string> resColProps = new Dictionary<string, string>();
+                    foreach (IResultColumn resCol in search.ResultColumns.Column)
                     {
-                        ISearchCommand search = (ISearchCommand)cmd;
-                        Dictionary<string, string> resColProps = new Dictionary<string, string>();
-                        foreach (IResultColumn resCol in search.ResultColumns.Column)
-                        {
-                            if (resColProps.ContainsKey(resCol.Property))
-                                issues.Add(new ValidationIssue(layout, ValidationStatus.Error, ValidationStatusCode.Error_WebLayout_DuplicateSearchCommandResultColumn, string.Format(Strings.WL_DuplicateSearchResultColumn, search.Name, resCol.Property)));
-                            else
-                                resColProps.Add(resCol.Property, resCol.Property);
-                        }
+                        if (resColProps.ContainsKey(resCol.Property))
+                            issues.Add(new ValidationIssue(layout, ValidationStatus.Error, ValidationStatusCode.Error_WebLayout_DuplicateSearchCommandResultColumn, string.Format(Strings.WL_DuplicateSearchResultColumn, search.Name, resCol.Property)));
+                        else
+                            resColProps.Add(resCol.Property, resCol.Property);
                     }
                 }
 

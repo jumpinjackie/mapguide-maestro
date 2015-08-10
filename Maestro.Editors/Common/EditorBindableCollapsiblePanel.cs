@@ -102,7 +102,7 @@ namespace Maestro.Editors.Common
             //
             // EditorBindableCollapsiblePanel
             //
-            this.Name = "EditorBindableCollapsiblePanel"; //NOXLATE
+            this.Name = nameof(EditorBindableCollapsiblePanel);
             this.ResumeLayout(false);
         }
     }

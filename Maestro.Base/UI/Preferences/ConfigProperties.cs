@@ -150,7 +150,7 @@ namespace Maestro.Base.UI.Preferences
         /// <summary>
         /// Default locale setting for web-based resource previews
         /// </summary>
-        public static string DefaultPreviewLocale { get { return "en"; } } //NOXLATE
+        public static string DefaultPreviewLocale => "en"; //NOXLATE
 
         /// <summary>
         /// Default setting for "Show tip of the day"

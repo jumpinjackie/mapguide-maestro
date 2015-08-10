@@ -208,7 +208,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         public override string ToString()
         {
             if (m_description == null && m_code == null)
-                return m_wkt == null ? "<null>" : m_wkt; //NOXLATE
+                return m_wkt ?? "<null>"; //NOXLATE
             else if (m_description == null)
                 return m_code;
             else if (m_code == null)

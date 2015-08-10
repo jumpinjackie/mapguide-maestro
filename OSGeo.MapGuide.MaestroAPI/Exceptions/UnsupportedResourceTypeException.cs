@@ -89,6 +89,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Exceptions
         /// Gets or sets the type of the resource.
         /// </summary>
         /// <value>The type of the resource.</value>
-        public string ResourceType { get; private set; }
+        public string ResourceType { get; }
     }
 }

@@ -692,58 +692,71 @@ namespace OSGeo.MapGuide.MaestroAPI
                 if (v == null)
                     continue;
 
-                if (v is string)
-
-                    //If we are at a ResourceId property, update it as needed
-                    if (v is string)
+                //If we are at a ResourceId property, update it as needed
+                string str = v as string;
+                IEnumerable enu = v as IEnumerable;
+                if (str != null)
+                {
+                    bool isResId = pi.Name == "ResourceId"; //NOXLATE
+                    if (!isResId)
                     {
-                        bool isResId = pi.Name == "ResourceId"; //NOXLATE
-                        if (!isResId)
+                        //Search for attributes
+                        object[] xmlAttrs = pi.GetCustomAttributes(typeof(System.Xml.Serialization.XmlElementAttribute), false);
+                        if (xmlAttrs != null)
                         {
-                            //Search for attributes
-                            object[] xmlAttrs = pi.GetCustomAttributes(typeof(System.Xml.Serialization.XmlElementAttribute), false);
-                            if (xmlAttrs != null)
-                                foreach (System.Xml.Serialization.XmlElementAttribute attr in xmlAttrs)
-                                    if (attr.Type == typeof(string) && attr.ElementName == "ResourceId") //NOXLATE
-                                        if (pi.Name == "ResourceId") //NOXLATE
-                                        {
-                                            isResId = true;
-                                            break;
-                                        }
-                        }
-
-                        if (isResId)
-                        {
-                            string current = v as string;
-
-                            if (current != null)
+                            foreach (System.Xml.Serialization.XmlElementAttribute attr in xmlAttrs)
                             {
-                                if (folderupdates && current.StartsWith(oldresourcepath))
-                                    pi.SetValue(o, newresourcepath + current.Substring(oldresourcepath.Length), null);
-                                else if (current == oldresourcepath)
-                                    pi.SetValue(o, newresourcepath, null);
+                                if (attr.Type == typeof(string) && attr.ElementName == "ResourceId") //NOXLATE
+                                {
+                                    if (pi.Name == "ResourceId") //NOXLATE
+                                    {
+                                        isResId = true;
+                                        break;
+                                    }
+                                }
                             }
                         }
                     }
-                    else if (v is IEnumerable)
+
+                    if (isResId)
                     {
-                        //Handle collections
-                        System.Collections.IEnumerable srcList = (System.Collections.IEnumerable)v;
-                        foreach (object ox in srcList)
-                            UpdateResourceReferences(ox, oldresourcepath, newresourcepath, folderupdates, visited);
+                        string current = str;
+
+                        if (current != null)
+                        {
+                            if (folderupdates && current.StartsWith(oldresourcepath))
+                                pi.SetValue(o, newresourcepath + current.Substring(oldresourcepath.Length), null);
+                            else if (current == oldresourcepath)
+                                pi.SetValue(o, newresourcepath, null);
+                        }
                     }
-                    else if (v.GetType().IsArray)
+                }
+                else if (enu != null)
+                {
+                    //Handle collections
+                    foreach (object ox in enu)
+                    {
+                        UpdateResourceReferences(ox, oldresourcepath, newresourcepath, folderupdates, visited);
+                    }
+                }
+                else
+                {
+                    Type vt = v.GetType();
+                    if (vt.IsArray)
                     {
                         //Handle arrays
-                        System.Array sourceArr = (System.Array)v;
+                        Array sourceArr = (Array)v;
                         for (int i = 0; i < sourceArr.Length; i++)
+                        {
                             UpdateResourceReferences(sourceArr.GetValue(i), oldresourcepath, newresourcepath, folderupdates, visited);
+                        }
                     }
-                    else if (v.GetType().IsClass)
+                    else if (vt.IsClass)
                     {
                         //Handle subobjects
                         UpdateResourceReferences(v, oldresourcepath, newresourcepath, folderupdates, visited);
                     }
+                }
             }
         }
 
@@ -1961,7 +1974,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         private class DefaultCalculator : IMpuCalculator
         {
-            private PlatformConnectionBase _conn;
+            private readonly PlatformConnectionBase _conn;
 
             public DefaultCalculator(PlatformConnectionBase conn)
             {
@@ -2152,10 +2165,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             var mdf = (IMapDefinition)GetResource(baseMapDefinitionId);
             double mpu = 1.0;
-            if (CsHelper.DefaultCalculator != null)
-                mpu = CsHelper.DefaultCalculator.Calculate(mdf.CoordinateSystem, 1.0);
-            else
-                mpu = InferMPU(mdf.CoordinateSystem, 1.0);
+            mpu = CsHelper.DefaultCalculator != null ? CsHelper.DefaultCalculator.Calculate(mdf.CoordinateSystem, 1.0) : InferMPU(mdf.CoordinateSystem, 1.0);
             return CreateMap(runtimeMapResourceId, mdf, mpu, suppressErrors);
         }
 
@@ -2272,10 +2282,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, bool suppressErrors)
         {
             double mpu = 1.0;
-            if (CsHelper.DefaultCalculator != null)
-                mpu = CsHelper.DefaultCalculator.Calculate(mdf.CoordinateSystem, 1.0);
-            else
-                mpu = InferMPU(mdf.CoordinateSystem, 1.0);
+            mpu = CsHelper.DefaultCalculator != null ? CsHelper.DefaultCalculator.Calculate(mdf.CoordinateSystem, 1.0) : InferMPU(mdf.CoordinateSystem, 1.0);
             return CreateMap(runtimeMapResourceId, mdf, mpu, suppressErrors);
         }
 

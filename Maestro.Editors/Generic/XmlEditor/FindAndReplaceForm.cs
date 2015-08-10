@@ -61,9 +61,9 @@ namespace Maestro.Editors.Generic.XmlEditor
         {
             string text = ReplaceMode ? Strings.TextFindAndReplace : Strings.TextFind;
             if (_editor != null && _editor.FileName != null)
-                text += " - " + Path.GetFileName(_editor.FileName); //NOXLATE
+                text += $" - {Path.GetFileName(_editor.FileName)}"; //NOXLATE
             if (_search.HasScanRegion)
-                text += " " + Strings.TextSelectionOnly; //NOXLATE
+                text += $" {Strings.TextSelectionOnly}"; //NOXLATE
             this.Text = text;
         }
 

@@ -54,11 +54,11 @@ namespace Maestro.Base.Commands.SiteExplorer
                 }
                 foreach (var n in names)
                 {
-                    string fid = current + n + "/"; //NOXLATE
+                    string fid = $"{current + n}/"; //NOXLATE
                     if (!conn.ResourceService.ResourceExists(fid))
                     {
                         conn.ResourceService.SetResourceXmlData(fid, null);
-                        LoggingService.Info("Created Folder: " + fid);
+                        LoggingService.Info($"Created Folder: {fid}");
                     }
                 }
                 exp.RefreshModel(conn.DisplayName, current);

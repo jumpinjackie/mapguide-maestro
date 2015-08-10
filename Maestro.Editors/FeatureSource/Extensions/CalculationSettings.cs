@@ -46,8 +46,8 @@ namespace Maestro.Editors.FeatureSource.Extensions
             _edSvc = edSvc;
             _cls = cls;
             _parent = parent;
-            TextBoxBinder.BindText(txtExpression, calc, "Expression"); //NOXLATE
-            TextBoxBinder.BindText(txtName, calc, "Name"); //NOXLATE
+            TextBoxBinder.BindText(txtExpression, calc, nameof(calc.Expression));
+            TextBoxBinder.BindText(txtName, calc, nameof(calc.Name));
         }
 
         private void lnkEdit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

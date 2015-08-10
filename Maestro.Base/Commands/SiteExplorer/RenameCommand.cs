@@ -66,13 +66,13 @@ namespace Maestro.Base.Commands.SiteExplorer
                     string newid = string.Empty;
                     if (current.IsFolder)
                     {
-                        oldid = parent.ResourceId + current.Name + "/"; //NOXLATE
-                        newid = parent.ResourceId + dlg.NewName + "/"; //NOXLATE
+                        oldid = $"{parent.ResourceId + current.Name}/"; //NOXLATE
+                        newid = $"{parent.ResourceId + dlg.NewName}/"; //NOXLATE
                     }
                     else
                     {
-                        oldid = parent.ResourceId + current.Name + "." + current.ResourceType; //NOXLATE
-                        newid = parent.ResourceId + dlg.NewName + "." + current.ResourceType; //NOXLATE
+                        oldid = $"{parent.ResourceId + current.Name}.{current.ResourceType}"; //NOXLATE
+                        newid = $"{parent.ResourceId + dlg.NewName}.{current.ResourceType}"; //NOXLATE
                     }
 
                     if (omgr.IsOpen(newid, conn))

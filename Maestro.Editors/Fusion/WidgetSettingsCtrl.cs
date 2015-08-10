@@ -219,15 +219,16 @@ namespace Maestro.Editors.Fusion
             {
                 case UiItemFunctionType.Flyout:
                     {
+                        var fly = ((IFlyoutItem)item);
                         node.ImageIndex = node.SelectedImageIndex = IDX_MENU;
-                        node.Text = ((IFlyoutItem)item).Label;
+                        node.Text = fly.Label;
                         node.Tag = item;
 
                         PropertyChangedEventHandler itemChange = (s, evt) =>
                         {
-                            if (evt.PropertyName == "Label") //NOXLATE
+                            if (evt.PropertyName == nameof(fly.Label))
                             {
-                                node.Text = ((IFlyoutItem)item).Label;
+                                node.Text = fly.Label;
                                 OnResourceChanged();
                             }
                         };
@@ -245,13 +246,14 @@ namespace Maestro.Editors.Fusion
 
                 case UiItemFunctionType.Widget:
                     {
+                        var wgt = ((IWidgetItem)item);
                         node.ImageIndex = node.SelectedImageIndex = IDX_WIDGET;
-                        node.Text = ((IWidgetItem)item).Widget;
+                        node.Text = wgt.Widget;
                         node.Tag = item;
 
                         PropertyChangedEventHandler itemChange = (s, evt) =>
                         {
-                            if (evt.PropertyName == "Widget") //NOXLATE
+                            if (evt.PropertyName == nameof(wgt.Widget))
                             {
                                 node.Text = ((IWidgetItem)item).Widget;
                                 OnResourceChanged();

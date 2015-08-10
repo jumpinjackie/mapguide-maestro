@@ -115,7 +115,7 @@ namespace Maestro.Base.UI
         /// <summary>
         /// Gets the affected site explorer items
         /// </summary>
-        public RepositoryItem[] Items { get; private set; }
+        public RepositoryItem[] Items { get; }
     }
 
     /// <summary>

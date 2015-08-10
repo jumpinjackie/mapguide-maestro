@@ -53,7 +53,7 @@ namespace Maestro.Base.UI
                 {
                     node.Nodes.Add(res.ResourceId);
                 }
-                node.Text += " (" + node.Nodes.Count + ")"; //NOXLATE
+                node.Text += $" ({node.Nodes.Count})"; //NOXLATE
             }
         }
 

@@ -409,7 +409,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <summary>
         /// A reference to the parent, and thus the connection
         /// </summary>
-        private TilingRunCollection m_parent;
+        private readonly TilingRunCollection m_parent;
 
         /// <summary>
         /// The resource ID of the tile set or map definition

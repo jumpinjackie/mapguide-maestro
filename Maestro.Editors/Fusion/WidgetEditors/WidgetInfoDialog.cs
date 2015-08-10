@@ -36,7 +36,7 @@ namespace Maestro.Editors.Fusion.WidgetEditors
         public WidgetInfoDialog(IWidgetInfo info)
         {
             InitializeComponent();
-            this.Text += " - " + info.Type; //NOXLATE
+            this.Text += $" - {info.Type}"; //NOXLATE
             grdExtensionProperties.DataSource = info.Parameters;
         }
     }

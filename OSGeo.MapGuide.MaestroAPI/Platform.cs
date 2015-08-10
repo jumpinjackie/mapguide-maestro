@@ -35,7 +35,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             _mrtType = Type.GetType("Mono.Runtime"); //NOXLATE
         }
 
-        private static Type _mrtType;
+        private static readonly Type _mrtType;
 
         /// <summary>
         /// Gets whether this application is running under the Mono CLR

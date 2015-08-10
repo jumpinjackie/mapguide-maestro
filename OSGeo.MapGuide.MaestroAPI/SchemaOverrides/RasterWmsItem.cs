@@ -114,7 +114,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// </value>
         public string ImageFormat { get; set; }
 
-        private List<WmsLayerDefinition> _layers = new List<WmsLayerDefinition>();
+        private readonly List<WmsLayerDefinition> _layers = new List<WmsLayerDefinition>();
 
         /// <summary>
         /// Gets the array of WMS layer configuration elements
@@ -288,10 +288,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
             {
                 if (!string.IsNullOrEmpty(bgcolor.InnerText))
                 {
-                    if (bgcolor.InnerText.StartsWith("0x")) //NOXLATE
-                        this.BackgroundColor = ColorTranslator.FromHtml("#" + bgcolor.InnerText.Substring(2)); //NOXLATE
-                    else
-                        this.BackgroundColor = ColorTranslator.FromHtml("#" + bgcolor.InnerText); //NOXLATE
+                    this.BackgroundColor = bgcolor.InnerText.StartsWith("0x") ? ColorTranslator.FromHtml("#" + bgcolor.InnerText.Substring(2)) : ColorTranslator.FromHtml("#" + bgcolor.InnerText);
                 }
                 else
                 {

@@ -317,7 +317,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="rewind">True if the source stream should be rewound before being copied</param>
         public static void CopyStream(System.IO.Stream source, System.IO.Stream target, bool rewind)
         {
-            int r;
+            //int r;
             byte[] buf = new byte[1024];
 
             //bool rewound = false;
@@ -1017,20 +1017,12 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="srcCsWkt">The source coordinate system WKT.</param>
         /// <param name="dstCsWkt">The destination coordinate system WKT.</param>
         /// <returns></returns>
-        public static OSGeo.MapGuide.ObjectModels.Common.IEnvelope TransformEnvelope(OSGeo.MapGuide.ObjectModels.Common.IEnvelope env, string srcCsWkt, string dstCsWkt)
+        public static ObjectModels.Common.IEnvelope TransformEnvelope(ObjectModels.Common.IEnvelope env, string srcCsWkt, string dstCsWkt)
         {
             try
             {
                 ISimpleTransform trans = null;
-                if (CsHelper.DefaultCatalog != null)
-                {
-                    trans = CsHelper.DefaultCatalog.CreateTransform(srcCsWkt, dstCsWkt);
-                }
-                else
-                {
-                    trans = new DefaultSimpleTransform(srcCsWkt, dstCsWkt);
-                }
-
+                trans = CsHelper.DefaultCatalog != null ? CsHelper.DefaultCatalog.CreateTransform(srcCsWkt, dstCsWkt) : new DefaultSimpleTransform(srcCsWkt, dstCsWkt);
                 var oldExt = env;
 
                 double llx;

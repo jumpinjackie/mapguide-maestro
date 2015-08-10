@@ -126,20 +126,14 @@ namespace Maestro.Base.UI
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public bool Contains(string name)
-        {
-            return _children.ContainsKey(name);
-        }
+        public bool Contains(string name) => _children.ContainsKey(name);
 
         /// <summary>
         /// Gets the child RepositoryItem by its name
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public RepositoryItem this[string name]
-        {
-            get { return _children[name]; }
-        }
+        public RepositoryItem this[string name] => _children[name];
 
         internal RepositoryTreeModel Model
         {
@@ -159,10 +153,7 @@ namespace Maestro.Base.UI
         /// <summary>
         /// Gets the children of this item
         /// </summary>
-        public IEnumerable<RepositoryItem> Children
-        {
-            get { return _children.Values; }
-        }
+        public IEnumerable<RepositoryItem> Children => _children.Values;
 
         /// <summary>
         /// Gets the qualified name of this item
@@ -174,7 +165,7 @@ namespace Maestro.Base.UI
                 if (this.ResourceType == ResourceTypes.Folder.ToString())
                     return this.Name;
                 else
-                    return this.Name + "." + this.ResourceType; //NOXLATE
+                    return $"{this.Name}.{this.ResourceType}"; //NOXLATE
             }
         }
 

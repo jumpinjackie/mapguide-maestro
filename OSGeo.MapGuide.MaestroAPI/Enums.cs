@@ -105,7 +105,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// </summary>
     public static class SiteResourceType
     {
-        private static ResourceTypes[] _resTypes;
+        private static readonly ResourceTypes[] _resTypes;
 
         static SiteResourceType()
         {

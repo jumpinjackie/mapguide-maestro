@@ -189,7 +189,7 @@ namespace Maestro.Editors.FeatureSource.Providers
 
             var cloneFs = (IFeatureSource)_fs.Clone();
             var resSvc = _service.CurrentConnection.ResourceService;
-            resSvc.SaveResourceAs(cloneFs, "Session:" + _service.SessionID + "//" + Guid.NewGuid().ToString() + ".FeatureSource"); //NOXLATE
+            resSvc.SaveResourceAs(cloneFs, $"Session:{_service.SessionID}//{Guid.NewGuid().ToString()}.FeatureSource"); //NOXLATE
 
             cloneFs.ClearConnectionProperties();
             foreach (var key in param.AllKeys)
@@ -355,7 +355,7 @@ namespace Maestro.Editors.FeatureSource.Providers
             var file = resDataCtrl.MarkedFile;
             if (!string.IsNullOrEmpty(file))
             {
-                var value = "%MG_DATA_FILE_PATH%" + file; //NOXLATE
+                var value = $"%MG_DATA_FILE_PATH%{file}"; //NOXLATE
                 cell.Value = value;
             }
             else

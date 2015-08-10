@@ -77,22 +77,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource
         /// <summary>
         /// Gets the validation status code
         /// </summary>
-        public ValidationStatusCode StatusCode { get; private set; }
+        public ValidationStatusCode StatusCode { get; }
 
         /// <summary>
         /// Gets the message for the validation issue
         /// </summary>
-        public string Message { get; private set; }
+        public string Message { get; }
 
         /// <summary>
         /// Gets the status of the validation issue
         /// </summary>
-        public ValidationStatus Status { get; private set; }
+        public ValidationStatus Status { get; }
 
         /// <summary>
         /// Gets the resource this issue pertains to
         /// </summary>
-        public IResource Resource { get; private set; }
+        public IResource Resource { get; }
 
         /// <summary>
         /// Determines whether the specified <see cref="System.Object"/> is equal to this instance.

@@ -31,7 +31,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
     /// </summary>
     public class FeatureBase : RecordBase, IFeature
     {
-        private ClassDefinition _clsDef;
+        private readonly ClassDefinition _clsDef;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FeatureBase"/> class.

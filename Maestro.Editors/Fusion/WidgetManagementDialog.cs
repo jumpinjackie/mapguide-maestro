@@ -109,7 +109,7 @@ namespace Maestro.Editors.Fusion
 
             PropertyChangedEventHandler widgetChange = (s, e) =>
             {
-                if (e.PropertyName == "Name") //NOXLATE
+                if (e.PropertyName == nameof(widget.Name))
                     item.Name = widget.Name;
             };
             widget.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(widgetChange, (eh) => widget.PropertyChanged -= eh);

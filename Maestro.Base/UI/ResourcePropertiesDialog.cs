@@ -49,7 +49,7 @@ namespace Maestro.Base.UI
         }
 
         private IResourceIconCache m_icons;
-        private IServerConnection m_connection;
+        private readonly IServerConnection m_connection;
         private ResourceIdentifier m_resourceId;
 
         private ResourceDocumentHeaderType m_resourceHeader;
@@ -90,8 +90,8 @@ namespace Maestro.Base.UI
         /// </summary>
         public string OpenResource { get { return m_openResource; } }
 
-        private OpenResourceManager _openMgr;
-        private ISiteExplorer _siteExp;
+        private readonly OpenResourceManager _openMgr;
+        private readonly ISiteExplorer _siteExp;
 
         /// <summary>
         /// Initializes a new instance of the ResourcePropertiesDialog class
@@ -713,11 +713,7 @@ namespace Maestro.Base.UI
         {
             foreach (ListViewItem lvi in UsersAndGroups.SelectedItems)
             {
-                if (lvi.Tag as UserListUser != null)
-                    lvi.ImageIndex = RWUSER;
-                else
-                    lvi.ImageIndex = RWGROUP;
-
+                lvi.ImageIndex = lvi.Tag as UserListUser != null ? RWUSER : RWGROUP;
                 lvi.SubItems[2].Text = StatusNames[lvi.ImageIndex];
             }
         }
@@ -726,11 +722,7 @@ namespace Maestro.Base.UI
         {
             foreach (ListViewItem lvi in UsersAndGroups.SelectedItems)
             {
-                if (lvi.Tag as UserListUser != null)
-                    lvi.ImageIndex = ROUSER;
-                else
-                    lvi.ImageIndex = ROGROUP;
-
+                lvi.ImageIndex = lvi.Tag as UserListUser != null ? ROUSER : ROGROUP;
                 lvi.SubItems[2].Text = StatusNames[lvi.ImageIndex];
             }
         }
@@ -739,11 +731,7 @@ namespace Maestro.Base.UI
         {
             foreach (ListViewItem lvi in UsersAndGroups.SelectedItems)
             {
-                if (lvi.Tag as UserListUser != null)
-                    lvi.ImageIndex = NOUSER;
-                else
-                    lvi.ImageIndex = NOGROUP;
-
+                lvi.ImageIndex = lvi.Tag as UserListUser != null ? NOUSER : NOGROUP;
                 lvi.SubItems[2].Text = StatusNames[lvi.ImageIndex];
             }
         }
@@ -752,11 +740,7 @@ namespace Maestro.Base.UI
         {
             foreach (ListViewItem lvi in UsersAndGroups.SelectedItems)
             {
-                if (lvi.Tag as UserListUser != null)
-                    lvi.ImageIndex = IHUSER;
-                else
-                    lvi.ImageIndex = IHGROUP;
-
+                lvi.ImageIndex = lvi.Tag as UserListUser != null ? IHUSER : IHGROUP;
                 lvi.SubItems[2].Text = StatusNames[lvi.ImageIndex];
             }
         }
@@ -835,8 +819,8 @@ namespace Maestro.Base.UI
                 //TODO: Convert wkt to EPSG code and use that?
                 //TODO: Convert to lon/lat
 
-                bounds = "<Bounds west=\"" + env.MinX.ToString(ic) + "\" east=\"" + env.MaxX.ToString(ic) + "\" south=\"" + env.MinY.ToString(ic) + "\" north=\"" + env.MaxY.ToString(ic) + "\" "; //NOXLATE
-                bounds += " SRS=\"" + srs + "\""; //NOXLATE
+                bounds = $"<Bounds west=\"{env.MinX.ToString(ic)}\" east=\"{env.MaxX.ToString(ic)}\" south=\"{env.MinY.ToString(ic)}\" north=\"{env.MaxY.ToString(ic)}\" "; //NOXLATE
+                bounds += $" SRS=\"{srs}\""; //NOXLATE
                 bounds += " />"; //NOXLATE
 
                 m_isUpdating = false;
@@ -1042,7 +1026,7 @@ namespace Maestro.Base.UI
                     var cs = picker.SelectedCoordSys;
                     if (!string.IsNullOrEmpty(cs.EPSG))
                     {
-                        txtPrimarySRS.Text = "EPSG:" + cs.EPSG; //NOXLATE
+                        txtPrimarySRS.Text = $"EPSG:{cs.EPSG}"; //NOXLATE
                     }
                 }
             }
@@ -1057,7 +1041,7 @@ namespace Maestro.Base.UI
                     var cs = picker.SelectedCoordSys;
                     if (!string.IsNullOrEmpty(cs.EPSG))
                     {
-                        txtOtherSRS.Text = "EPSG:" + cs.EPSG; //NOXLATE
+                        txtOtherSRS.Text = $"EPSG:{cs.EPSG}"; //NOXLATE
                     }
                 }
             }

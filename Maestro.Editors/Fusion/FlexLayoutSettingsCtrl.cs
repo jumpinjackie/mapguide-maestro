@@ -105,7 +105,7 @@ namespace Maestro.Editors.Fusion
 
                 if (!_edsvc.IsNew)
                 {
-                    txtPublicUrl.Text = baseUrl + txtTemplateUrl.Text + "?ApplicationDefinition=" + _edsvc.ResourceID + "&locale=" + _edsvc.PreviewLocale; //NOXLATE
+                    txtPublicUrl.Text = $"{baseUrl + txtTemplateUrl.Text}?ApplicationDefinition={_edsvc.ResourceID}&locale={_edsvc.PreviewLocale}"; //NOXLATE
                     btnShowInBrowser.Enabled = true;
                 }
                 else

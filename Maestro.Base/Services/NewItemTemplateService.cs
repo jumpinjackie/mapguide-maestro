@@ -49,7 +49,7 @@ namespace Maestro.Base.Services
                     _templates[tp.Category] = new List<ItemTemplate>();
 
                 _templates[tp.Category].Add(tp);
-                LoggingService.Info("Registered default template: " + tp.GetType()); //NOXLATE
+                LoggingService.Info($"Registered default template: {tp.GetType()}"); //NOXLATE
             }
 
             LoggingService.Info("Initialized: New Item Template Service"); //NOXLATE
@@ -85,7 +85,7 @@ namespace Maestro.Base.Services
                     }
                     catch (Exception)
                     {
-                        LoggingService.Info("Could not load user template: " + file); //NOXLATE
+                        LoggingService.Info($"Could not load user template: {file}"); //NOXLATE
                     }
                 }
             }
@@ -107,7 +107,7 @@ namespace Maestro.Base.Services
         /// </summary>
         public class TemplateSet
         {
-            private Dictionary<string, List<ItemTemplate>> _templates;
+            private readonly Dictionary<string, List<ItemTemplate>> _templates;
 
             internal TemplateSet(IEnumerable<ItemTemplate> templates)
             {

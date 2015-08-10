@@ -155,15 +155,9 @@ namespace Maestro.Base.Services
             }
         }
 
-        internal static string ComputeResourceKey(string resId, IServerConnection conn)
-        {
-            return conn.DisplayName + "|" + resId; //NOXLATE
-        }
+        internal static string ComputeResourceKey(string resId, IServerConnection conn) => $"{conn.DisplayName}|{resId}"; //NOXLATE
 
-        internal static string ComputeResourceKey(IResource res, IServerConnection conn)
-        {
-            return conn.DisplayName + "|" + res.ResourceID; //NOXLATE
-        }
+        internal static string ComputeResourceKey(IResource res, IServerConnection conn) => $"{conn.DisplayName}|{res.ResourceID}"; //NOXLATE
 
         /// <summary>
         /// Opens the specified resource using its assigned editor. If the resource is already

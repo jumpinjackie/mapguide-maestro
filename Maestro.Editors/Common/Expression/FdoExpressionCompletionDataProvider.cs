@@ -288,7 +288,7 @@ namespace Maestro.Editors.Common.Expression
             return new Descriptor()
             {
                 Name = opName.ToUpper(),
-                Description = "[property] " + opName + " [number]", //NOXLATE
+                Description = $"[property] {opName} [number]", //NOXLATE
                 AppendText = " [number]" //NOXLATE
             };
         }
@@ -298,7 +298,7 @@ namespace Maestro.Editors.Common.Expression
             return new Descriptor()
             {
                 Name = opName.ToUpper(),
-                Description = "[geometry] " + opName + " GeomFromText('geometry wkt')", //NOXLATE
+                Description = $"[geometry] {opName} GeomFromText('geometry wkt')", //NOXLATE
                 AppendText = " GeomFromText('geometry wkt')" //NOXLATE
             };
         }
@@ -331,7 +331,6 @@ namespace Maestro.Editors.Common.Expression
         private Descriptor CreateFdoFunctionSignatureDescriptor(IFdoFunctionDefintion func, IFdoFunctionDefintionSignature sig)
         {
             var desc = new Descriptor();
-            string fmt = "{0}({1})"; //NOXLATE
             List<string> args = new List<string>();
             foreach (var argDef in sig.Arguments)
             {
@@ -339,10 +338,10 @@ namespace Maestro.Editors.Common.Expression
             }
             string argsStr = StringifyFunctionArgs(args);
             string argDesc = DescribeSignature(sig);
-            string expr = string.Format(fmt, func.Name, argsStr); //NOXLATE
+            string expr = $"{func.Name}({argsStr})"; //NOXLAT
             desc.Name = expr;
             desc.Description = string.Format(Strings.ExprEditorFunctionDesc, expr, func.Description, argDesc, sig.ReturnType, Environment.NewLine);
-            desc.AppendText = "";
+            desc.AppendText = string.Empty;
             return desc;
         }
 

@@ -27,6 +27,15 @@ namespace Maestro.Base.Commands.Conditions
 {
     internal class ActiveEditorConditionEvaluator : IConditionEvaluator
     {
+        static class ConditionProperties
+        {
+            public const string CANPREVIEW = nameof(CANPREVIEW);
+            public const string CANVALIDATE = nameof(CANVALIDATE);
+            public const string CANSAVE = nameof(CANSAVE);
+            public const string CANPROFILE = nameof(CANPROFILE);
+            public const string CANEDITASXML = nameof(CANEDITASXML);
+        }
+
         public bool IsValid(object caller, Condition condition)
         {
             var wb = Workbench.Instance;
@@ -40,19 +49,19 @@ namespace Maestro.Base.Commands.Conditions
                     prop = prop.ToUpper();
                     switch (prop)
                     {
-                        case "CANPREVIEW": //NOXLATE
+                        case ConditionProperties.CANPREVIEW:
                             return ed != null && ed.CanBePreviewed;
 
-                        case "CANVALIDATE": //NOXLATE
+                        case ConditionProperties.CANVALIDATE:
                             return ed != null && ed.CanBeValidated;
 
-                        case "CANSAVE": //NOXLATE
+                        case ConditionProperties.CANSAVE:
                             return ed != null && !ed.IsNew && ed.IsDirty;
 
-                        case "CANPROFILE": //NOXLATE
+                        case ConditionProperties.CANPROFILE:
                             return ed != null && ed.CanProfile;
 
-                        case "CANEDITASXML": //NOXLATE
+                        case ConditionProperties.CANEDITASXML:
                             return ed != null && ed.CanEditAsXml;
 
                         default:

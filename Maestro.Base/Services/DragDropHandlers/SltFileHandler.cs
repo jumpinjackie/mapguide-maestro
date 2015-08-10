@@ -36,7 +36,7 @@ namespace Maestro.Base.Services.DragDropHandlers
             get { return Strings.SdfHandlerAction; }
         }
 
-        private string[] extensions = { ".sqlite", ".db", ".slt" }; //NOXLATE
+        private readonly string[] extensions = { ".sqlite", ".db", ".slt" }; //NOXLATE
 
         public bool HandleDrop(IServerConnection conn, string file, string folderId)
         {
@@ -49,11 +49,11 @@ namespace Maestro.Base.Services.DragDropHandlers
                 string fileName = Path.GetFileName(file);
                 string resName = Path.GetFileNameWithoutExtension(file);
                 int counter = 0;
-                string resId = folderId + resName + ".FeatureSource"; //NOXLATE
+                string resId = $"{folderId + resName}.FeatureSource"; //NOXLATE
                 while (conn.ResourceService.ResourceExists(resId))
                 {
                     counter++;
-                    resId = folderId + resName + " (" + counter + ").FeatureSource"; //NOXLATE
+                    resId = $"{folderId + resName} ({counter}).FeatureSource"; //NOXLATE
                 }
                 fs.ResourceID = resId;
                 fs.SetConnectionProperty("File", StringConstants.MgDataFilePath + fileName); //NOXLATE

@@ -53,7 +53,7 @@ namespace Maestro.Base.UI
         {
             if (!txtMessages.IsDisposed)
             {
-                txtMessages.AppendText(string.Format("[{0}]: {1}", msg.LogDate.ToString("dd MMM yyyy hh:mm:ss"), msg.Message)); //NOXLATE
+                txtMessages.AppendText($"[{msg.LogDate.ToString("dd MMM yyyy hh:mm:ss")}]: {msg.Message}"); //NOXLATE
                 txtMessages.ScrollToCaret();
             }
         }

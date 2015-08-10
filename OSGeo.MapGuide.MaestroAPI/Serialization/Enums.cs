@@ -116,11 +116,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
     {
         public MgPacketHeader PacketHeader;
 
-        public MgBasicPacket()
+        protected MgBasicPacket()
         {
         }
 
-        public MgBasicPacket(MgPacketHeader header)
+        protected MgBasicPacket(MgPacketHeader header)
         {
             PacketHeader = header;
         }

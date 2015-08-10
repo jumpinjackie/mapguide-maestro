@@ -37,7 +37,7 @@ namespace Maestro.Base
     {
         private List<KeyValuePair<string, ValidationIssue[]>> m_issues = new List<KeyValuePair<string, ValidationIssue[]>>();
 
-        private Action<IResource> _openAction;
+        private readonly Action<IResource> _openAction;
 
         /// <summary>
         /// Creates a new instance

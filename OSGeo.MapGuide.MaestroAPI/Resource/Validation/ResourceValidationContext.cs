@@ -52,7 +52,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         private Dictionary<string, FeatureSourceDescription> _schemas;
         private Dictionary<string, FdoSpatialContextList> _spatialContexts;
 
-        private IServerConnection _conn;
+        private readonly IServerConnection _conn;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ResourceValidationContext"/> class.

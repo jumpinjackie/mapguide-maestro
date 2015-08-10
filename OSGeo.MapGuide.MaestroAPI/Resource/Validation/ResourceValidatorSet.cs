@@ -44,7 +44,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     /// </example>
     public static class ResourceValidatorSet
     {
-        private static List<IResourceValidator> m_validators = new List<IResourceValidator>();
+        private static readonly List<IResourceValidator> m_validators = new List<IResourceValidator>();
 
         /// <summary>
         /// Registers the validator.

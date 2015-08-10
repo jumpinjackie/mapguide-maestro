@@ -62,7 +62,7 @@ namespace Maestro.Base.UI
 
         private void OnRequestDispatched(object sender, OSGeo.MapGuide.MaestroAPI.RequestEventArgs e)
         {
-            string msg = string.Format("[{0}]: {1}", DateTime.Now.ToString("dd MMM yyyy hh:mm:ss"), e.Data); //NOXLATE
+            string msg = $"[{DateTime.Now.ToString("dd MMM yyyy hh:mm:ss")}]: {e.Data}"; //NOXLATE
 
             if (!txtMessages.IsDisposed)
             {

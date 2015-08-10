@@ -66,13 +66,17 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
             if (csb == null && coordSys != null)
             {
                 IUnit unit = coordSys.GetUnits(0);
-                if (unit is IAngularUnit)
+                var au = unit as IAngularUnit;
+                var lu = unit as ILinearUnit;
+                if (au != null)
                 {
-                    double radians = (unit as IAngularUnit).RadiansPerUnit;
+                    double radians = au.RadiansPerUnit;
                     csb = new DegreeBasedCoordinateSystem();
                 }
-                else if (unit is ILinearUnit)
-                    csb = new MeterBasedCoordinateSystem(((ILinearUnit)unit).MetersPerUnit, ((ILinearUnit)unit).MetersPerUnit);
+                else if (lu != null)
+                {
+                    csb = new MeterBasedCoordinateSystem(lu.MetersPerUnit, lu.MetersPerUnit);
+                }
             }
 
             if (csb == null)

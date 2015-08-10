@@ -59,7 +59,7 @@ namespace Maestro.Base.UI
             string totdRoot = Path.Combine(FileUtility.ApplicationRootPath, "Data/TipOfTheDay"); //NOXLATE
             var ci = Thread.CurrentThread.CurrentUICulture;
             //Try to find a localized source based on current UI culture, fallback to english if none found
-            string path = Path.Combine(totdRoot, ci.Name + ".xml"); //NOXLATE
+            string path = Path.Combine(totdRoot, $"{ci.Name}.xml"); //NOXLATE
             if (!File.Exists(path))
                 path = Path.Combine(totdRoot, "en.xml"); //NOXLATE
             doc.Load(path);

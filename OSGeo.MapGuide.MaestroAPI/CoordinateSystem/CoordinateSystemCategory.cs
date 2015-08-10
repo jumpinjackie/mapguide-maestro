@@ -28,7 +28,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
     public abstract class CoordinateSystemCategory
     {
         private ICoordinateSystemCatalog _parent;
-        private string m_name;
+        private readonly string m_name;
         private CoordinateSystemDefinitionBase[] m_items;
 
         /// <summary>

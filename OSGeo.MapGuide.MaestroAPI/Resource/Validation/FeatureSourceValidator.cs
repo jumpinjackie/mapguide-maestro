@@ -35,7 +35,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
     /// </summary>
     public class FeatureSourceValidator : IResourceValidator
     {
-        private string _version;
+        private readonly string _version;
 
         internal FeatureSourceValidator(string version = "1.0.0")
         {

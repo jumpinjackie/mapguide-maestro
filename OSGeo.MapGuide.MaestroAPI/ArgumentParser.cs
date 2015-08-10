@@ -35,7 +35,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// </remarks>
     public class ArgumentParser
     {
-        private Dictionary<string, string> _values;
+        private readonly Dictionary<string, string> _values;
 
         /// <summary>
         /// Constructs a new instance

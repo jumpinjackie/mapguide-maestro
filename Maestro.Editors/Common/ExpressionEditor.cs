@@ -167,13 +167,12 @@ namespace Maestro.Editors.Common
             var dict = new Dictionary<string, IFdoFunctionDefintionSignature>();
             foreach (var sig in func.Signatures)
             {
-                string fmt = "{0}({1})"; //NOXLATE
                 List<string> args = new List<string>();
                 foreach (var argDef in sig.Arguments)
                 {
                     args.Add(argDef.Name.Trim());
                 }
-                string expr = string.Format(fmt, func.Name, FdoExpressionCompletionDataProvider.StringifyFunctionArgs(args));
+                string expr = $"{func.Name}({FdoExpressionCompletionDataProvider.StringifyFunctionArgs(args)})"; //NOXLATE
                 if (!dict.ContainsKey(expr))
                     dict[expr] = sig;
             }
@@ -220,14 +219,13 @@ namespace Maestro.Editors.Common
                     ToolStripMenuItem btn = new ToolStripMenuItem();
                     btn.Name = name;
                     btn.ToolTipText = desc;
-
-                    string fmt = "{0}({1})"; //NOXLATE
+                    
                     List<string> args = new List<string>();
                     foreach (var argDef in sig.Arguments)
                     {
                         args.Add(argDef.Name.Trim());
                     }
-                    string expr = string.Format(fmt, name, FdoExpressionCompletionDataProvider.StringifyFunctionArgs(args));
+                    string expr = $"{name}({FdoExpressionCompletionDataProvider.StringifyFunctionArgs(args)})";
                     btn.Text = expr;
                     btn.Click += (s, e) =>
                     {
@@ -342,28 +340,30 @@ namespace Maestro.Editors.Common
             LookupValues.Enabled = ColumnName.SelectedIndex >= 0;
         }
 
+        const string UNIQ_VALS = nameof(UNIQ_VALS);
+
         private void LookupValues_Click(object sender, EventArgs e)
         {
             //Use UNIQUE() method first. This should work in most cases
             using (new WaitCursor(this))
             {
                 string filter = null;
-                var expr = "UNIQUE(" + ColumnName.Text + ")"; //NOXLATE
+                var expr = $"UNIQUE({ColumnName.Text})"; //NOXLATE
                 bool bFallback = false;
                 ColumnValue.Items.Clear();
                 ColumnValue.Tag = null;
                 try
                 {
                     using (var rdr = _featSvc.AggregateQueryFeatureSource(m_featureSource, _cls.QualifiedName, filter, new System.Collections.Specialized.NameValueCollection() {
-                            { "UNIQ_VALS", expr } //NOXLATE
+                            { UNIQ_VALS, expr }
                         }))
                     {
-                        ColumnValue.Tag = rdr.GetPropertyType("UNIQ_VALS"); //NOXLATE
+                        ColumnValue.Tag = rdr.GetPropertyType(UNIQ_VALS);
                         while (rdr.ReadNext())
                         {
-                            if (!rdr.IsNull("UNIQ_VALS")) //NOXLATE
+                            if (!rdr.IsNull(UNIQ_VALS))
                             {
-                                object value = rdr["UNIQ_VALS"]; //NOXLATE
+                                object value = rdr[UNIQ_VALS];
                                 ColumnValue.Items.Add(value);
                             }
                         }
@@ -418,7 +418,7 @@ namespace Maestro.Editors.Common
                                 hasNull = true;
                                 rawEx = ex;
                                 retry = true;
-                                filter = ColumnName.Text + " != NULL"; //NOXLATE
+                                filter = $"{ColumnName.Text} != NULL"; //NOXLATE
                             }
                             else if (rawEx != null)
                                 throw rawEx;
@@ -462,12 +462,12 @@ namespace Maestro.Editors.Common
                 {
                     if (ColumnValue.Tag == typeof(string) && (ColumnValue.SelectedIndex != 0 || ColumnValue.Text != "NULL")) //NOXLATE
                     {
-                        InsertText("'" + ColumnValue.Text + "'"); //NOXLATE
+                        InsertText($"'{ColumnValue.Text}'"); //NOXLATE
                     }
                     else
                     {
                         if (tag is PropertyValueType && (PropertyValueType)tag == PropertyValueType.String)
-                            InsertText("'" + ColumnValue.Text + "'"); //NOXLATE
+                            InsertText($"'{ColumnValue.Text}'"); //NOXLATE
                         else
                             InsertText(ColumnValue.Text);
                     }
@@ -481,7 +481,7 @@ namespace Maestro.Editors.Common
 
         private void InsertSpatialFilter(string text)
         {
-            InsertText("[geometry] " + text + " GeomFromText('geometry wkt')");
+            InsertText($"[geometry] {text} GeomFromText('geometry wkt')"); //NOXLATE
         }
 
         private void InsertText(string text)
@@ -509,7 +509,7 @@ namespace Maestro.Editors.Common
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     var c = picker.Color;
-                    this.InsertText(string.Format("ARGB({0}, {1}, {2}, {3})", c.A, c.R, c.G, c.B));
+                    this.InsertText($"ARGB({c.A}, {c.R}, {c.G}, {c.B})"); //NOXLATE
                 }
             }
         }
@@ -521,7 +521,7 @@ namespace Maestro.Editors.Common
                 if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     var c = picker.Color;
-                    this.InsertText(string.Format("HTMLCOLOR({0}, {1}, {2})", c.R, c.G, c.B));
+                    this.InsertText($"HTMLCOLOR({c.R}, {c.G}, {c.B})"); //NOXLATE
                 }
             }
         }

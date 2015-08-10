@@ -30,7 +30,7 @@ namespace Maestro.Base.Templates
 {
     internal class UserItemTemplate : ItemTemplate
     {
-        private IResource _res;
+        private readonly IResource _res;
 
         public UserItemTemplate(string templatePath)
             : this(Strings.TPL_USER_DEFINED, templatePath)
@@ -43,7 +43,7 @@ namespace Maestro.Base.Templates
         public string TemplatePath
         {
             get;
-            private set;
+
         }
 
         public UserItemTemplate(string name, string description, string templatePath)

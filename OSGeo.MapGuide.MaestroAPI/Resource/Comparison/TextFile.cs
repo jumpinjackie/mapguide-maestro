@@ -68,7 +68,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
     /// </summary>
     public class TextFileDiffList : IDiffList
     {
-        private List<TextLine> _lines;
+        private readonly List<TextLine> _lines;
 
         /// <summary>
         /// Creates a new instance

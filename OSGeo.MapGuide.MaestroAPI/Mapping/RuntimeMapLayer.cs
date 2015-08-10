@@ -104,12 +104,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             /// <summary>
             /// Gets the min scale.
             /// </summary>
-            public double MinScale { get; private set; }
+            public double MinScale { get; }
 
             /// <summary>
             /// Gets the max scale.
             /// </summary>
-            public double MaxScale { get; private set; }
+            public double MaxScale { get; }
         }
 
         //From MgLayerType
@@ -122,7 +122,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets the <see cref="T:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap"/> that this layer belongs to
         /// </summary>
-        public RuntimeMap Parent { get; private set; }
+        public RuntimeMap Parent { get; }
 
         /// <summary>
         /// Initializes this instances from the specified Layer Definition

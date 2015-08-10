@@ -91,6 +91,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Exceptions
         /// Gets or sets the type of the service.
         /// </summary>
         /// <value>The type of the service.</value>
-        public ServiceType ServiceType { get; private set; }
+        public ServiceType ServiceType { get; }
     }
 }

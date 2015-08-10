@@ -35,7 +35,7 @@ namespace Maestro.Base.UI
             InitializeComponent();
         }
 
-        private BindingList<LocalizableElement> _elements;
+        private readonly BindingList<LocalizableElement> _elements;
 
         public LabelLocalizationDialog(XmlDocument doc, string[] localizableTags)
             : this()
@@ -119,7 +119,7 @@ namespace Maestro.Base.UI
             }
         }
 
-        public string Label { get; private set; }
+        public string Label { get; }
 
         private string _translation;
 

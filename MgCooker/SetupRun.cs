@@ -324,6 +324,21 @@ namespace MgCooker
             }
         }
 
+        static void PushArg(List<string> args, string name, string value)
+        {
+            args.Add($"--{name}=\"{value}\""); //NOXLATE
+        }
+
+        static void PushArgUnquoted(List<string> args, string name, string value)
+        {
+            args.Add($"--{name}={value}"); //NOXLATE
+        }
+
+        static void PushSwitch(List<string> args, string name)
+        {
+            args.Add($"--{name}"); //NOXLATE
+        }
+
         private void btnSaveScript_Click(object sender, EventArgs e)
         {
             if (System.Environment.OSVersion.Platform == PlatformID.Unix)
@@ -336,22 +351,21 @@ namespace MgCooker
                 //Common args for all map defintions to be tiled
                 List<string> args = new List<string>();
 
-                args.Add("--" + TileRunParameters.PROVIDER + "=\"" + txtProvider.Text + "\""); //NOXLATE
-                args.Add("--" + TileRunParameters.CONNECTIONPARAMS + "=\"" + txtConnectionString.Text + "\""); //NOXLATE
+                PushArg(args, TileRunParameters.PROVIDER, txtProvider.Text);
+                PushArg(args, TileRunParameters.CONNECTIONPARAMS, txtConnectionString.Text);
 
                 if (LimitTileset.Checked)
                 {
                     if (MaxRowLimit.Value > 0)
-                        args.Add("--" + TileRunParameters.LIMITROWS + "=\"" + ((int)MaxRowLimit.Value).ToString() + "\""); //NOXLATE
+                        PushArg(args, TileRunParameters.LIMITROWS, ((int)MaxRowLimit.Value).ToString());
                     if (MaxColLimit.Value > 0)
-                        args.Add("--" + TileRunParameters.LIMITCOLS + "=\"" + ((int)MaxColLimit.Value).ToString() + "\""); //NOXLATE
+                        PushArg(args, TileRunParameters.LIMITCOLS, ((int)MaxColLimit.Value).ToString());
                 }
 
-                args.Add("--" + TileRunParameters.METERSPERUNIT + "=" + ((double)MetersPerUnit.Value).ToString(System.Globalization.CultureInfo.InvariantCulture)); //NOXLATE
-
-                args.Add("--" + TileRunParameters.THREADCOUNT + "=" + ((int)ThreadCount.Value).ToString()); //NOXLATE
+                PushArgUnquoted(args, TileRunParameters.METERSPERUNIT, ((double)MetersPerUnit.Value).ToString(System.Globalization.CultureInfo.InvariantCulture));
+                PushArgUnquoted(args, TileRunParameters.THREADCOUNT, ((int)ThreadCount.Value).ToString());
                 if (RandomTileOrder.Checked)
-                    args.Add("--" + TileRunParameters.RANDOMTILEORDER + ""); //NOXLATE
+                    PushSwitch(args, TileRunParameters.RANDOMTILEORDER);
 
                 string executable = System.IO.Path.GetFileName(System.Reflection.Assembly.GetExecutingAssembly().Location);
                 string cmdExecutable = "MgCookerCmd.exe"; //NOXLATE
@@ -365,7 +379,7 @@ namespace MgCooker
                 string exeName = System.IO.Path.GetFileName(executable);
                 string exePath = System.IO.Path.GetDirectoryName(executable);
 
-                executable = "\"" + executable + "\""; //NOXLATE
+                executable = $"\"{executable}\""; //NOXLATE
 
                 using (System.IO.StreamWriter sw = new System.IO.StreamWriter(saveFileDialog.FileName))
                 {
@@ -385,7 +399,7 @@ namespace MgCooker
                     if (System.Environment.OSVersion.Platform != PlatformID.MacOSX ||
                         System.Environment.OSVersion.Platform != PlatformID.Unix)
                     {
-                        sw.WriteLine("pushd \"" + exePath + "\""); //NOXLATE
+                        sw.WriteLine($"pushd \"{exePath}\""); //NOXLATE
                     }
 
                     foreach (Config c in ReadTree())
@@ -403,8 +417,8 @@ namespace MgCooker
                         }
 
                         argsMap.Add("batch"); //NOXLATE
-                        argsMap.Add("--" + TileRunParameters.MAPDEFINITIONS + "=\"" + c.MapDefinition + "\"");
-                        argsMap.Add("--" + TileRunParameters.BASEGROUPS + "=\"" + c.Group + "\"");
+                        PushArg(argsMap, TileRunParameters.MAPDEFINITIONS, c.MapDefinition);
+                        PushArg(argsMap, TileRunParameters.BASEGROUPS, c.Group);
                         StringBuilder si = new StringBuilder("--" + TileRunParameters.SCALEINDEX + "="); //NOXLATE
                         for (int i = 0; i < c.ScaleIndexes.Length; i++)
                         {

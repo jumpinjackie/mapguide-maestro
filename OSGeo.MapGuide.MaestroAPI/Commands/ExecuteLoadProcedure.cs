@@ -74,7 +74,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         public IServerConnection Parent
         {
             get;
-            private set;
         }
 
         /// <summary>

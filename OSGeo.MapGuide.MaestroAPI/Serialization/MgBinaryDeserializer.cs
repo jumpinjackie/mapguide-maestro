@@ -31,7 +31,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
     public class MgBinaryDeserializer
     {
         private Stream m_stream;
-        private byte[] m_buf = new byte[Math.Max(MgBinarySerializer.DoubleLen, MgBinarySerializer.UInt64Len)];
+        private readonly byte[] m_buf = new byte[Math.Max(MgBinarySerializer.DoubleLen, MgBinarySerializer.UInt64Len)];
         private Version m_siteVersion;
 
         /// <summary>

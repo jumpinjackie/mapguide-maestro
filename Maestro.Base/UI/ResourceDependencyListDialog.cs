@@ -36,8 +36,8 @@ namespace Maestro.Base.UI
         }
 
         private IList<string> _uplist;
-        private IList<string> _downlist;
-        private IList<string> _selResources;
+        private readonly IList<string> _downlist;
+        private readonly IList<string> _selResources;
 
         public ResourceDependencyListDialog(IList<string> selResources, IList<string> downlist, IList<string> uplist)
             : this()

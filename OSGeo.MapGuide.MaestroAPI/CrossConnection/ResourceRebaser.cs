@@ -52,7 +52,6 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         public string SourceFolder
         {
             get;
-            private set;
         }
 
         /// <summary>
@@ -61,7 +60,6 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         public string TargetFolder
         {
             get;
-            private set;
         }
     }
 
@@ -81,7 +79,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
     /// </example>
     public class ResourceRebaser
     {
-        private IResource _res;
+        private readonly IResource _res;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ResourceRebaser"/> class.

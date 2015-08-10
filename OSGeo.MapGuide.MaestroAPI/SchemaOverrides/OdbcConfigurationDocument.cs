@@ -32,7 +32,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
     /// </summary>
     public class OdbcConfigurationDocument : ConfigurationDocument
     {
-        private List<OdbcTableItem> _tables;
+        private readonly List<OdbcTableItem> _tables;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OdbcConfigurationDocument"/> class.

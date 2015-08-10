@@ -54,7 +54,7 @@ namespace Maestro.Editors.FeatureSource.Extensions
             if (string.IsNullOrEmpty(_ext.FeatureClass))
                 _ext.FeatureClass = names[0];
 
-            ComboBoxBinder.BindSelectedIndexChanged(cmbBaseClass, "SelectedItem", ext, "FeatureClass"); //NOXLATE
+            ComboBoxBinder.BindSelectedIndexChanged(cmbBaseClass, nameof(cmbBaseClass.SelectedItem), ext, nameof(ext.FeatureClass));
         }
 
         private void OnExtensionPropertyChanged(object sender, PropertyChangedEventArgs e)

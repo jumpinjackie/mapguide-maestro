@@ -45,7 +45,7 @@ namespace Maestro.Base
         /// <summary>
         /// Gets whether the workbench will start fully maximized
         /// </summary>
-        public bool StartMaximized { get; private set; }
+        public bool StartMaximized { get; }
 
         /// <summary>
         /// Gets the main window icon

@@ -30,7 +30,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
     /// </summary>
     public class MgBinarySerializer
     {
-        private Stream m_stream;
+        private readonly Stream m_stream;
         private Version m_siteVersion;
 
         /// <summary>

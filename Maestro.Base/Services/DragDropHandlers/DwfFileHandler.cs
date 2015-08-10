@@ -37,7 +37,7 @@ namespace Maestro.Base.Services.DragDropHandlers
             get { return Strings.DwfHandlerAction; }
         }
 
-        private string[] extensions = { ".dwf" }; //NOXLATE
+        private readonly string[] extensions = { ".dwf" }; //NOXLATE
 
         public bool HandleDrop(IServerConnection conn, string file, string folderId)
         {
@@ -50,11 +50,11 @@ namespace Maestro.Base.Services.DragDropHandlers
                 string fileName = Path.GetFileName(file);
                 string resName = Path.GetFileNameWithoutExtension(file);
                 int counter = 0;
-                string resId = folderId + resName + ".DrawingSource"; //NOXLATE
+                string resId = $"{folderId + resName}.DrawingSource"; //NOXLATE
                 while (conn.ResourceService.ResourceExists(resId))
                 {
                     counter++;
-                    resId = folderId + resName + " (" + counter + ").DrawingSource"; //NOXLATE
+                    resId = $"{folderId + resName} ({counter}).DrawingSource"; //NOXLATE
                 }
                 ds.ResourceID = resId;
                 //fs.SetConnectionProperty("File", StringConstants.MgDataFilePath + fileName); //NOXLATE

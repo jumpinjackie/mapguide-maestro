@@ -79,7 +79,7 @@ namespace Maestro.Base.Editor
             editor.LoadAutoCompletionData(path);
             editor.Bind(_edSvc);
             editor.ReadyForEditing(); //This turns on event broadcasting
-            this.Title = Strings.XmlEditor + " " + ResourceIdentifier.GetName(this.EditorService.ResourceID); //NOXLATE
+            this.Title = $"{Strings.XmlEditor} {ResourceIdentifier.GetName(this.EditorService.ResourceID)}"; //NOXLATE
         }
 
         protected override ICollection<ValidationIssue> ValidateEditedResource()
@@ -150,7 +150,7 @@ namespace Maestro.Base.Editor
         public override void Preview()
         {
             //Save the current resource to another session copy
-            string resId = "Session:" + this.EditorService.SessionID + "//" + Guid.NewGuid() + "." + this.Resource.ResourceType.ToString(); //NOXLATE
+            string resId = $"Session:{this.EditorService.SessionID}//Preview{Guid.NewGuid()}.{this.Resource.ResourceType.ToString()}"; //NOXLATE
             string xml = this.XmlContent;
             var resSvc = this.EditorService.CurrentConnection.ResourceService;
             try

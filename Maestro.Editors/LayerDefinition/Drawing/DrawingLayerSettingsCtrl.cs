@@ -58,16 +58,16 @@ namespace Maestro.Editors.LayerDefinition.Drawing
             _dlayer = lyr.SubLayer as IDrawingLayerDefinition;
             Debug.Assert(_dlayer != null);
 
-            TextBoxBinder.BindText(txtDrawingSource, _dlayer, "ResourceId"); //NOXLATE
+            TextBoxBinder.BindText(txtDrawingSource, _dlayer, nameof(_dlayer.ResourceId));
             cmbSheet.DisplayMember = "Title"; //NOXLATE
             cmbSheet.ValueMember = "Name"; //NOXLATE
             cmbSheet.DataSource = _sheets;
             PopulateSheets();
             cmbSheet_SelectedIndexChanged(this, EventArgs.Empty);
-            ComboBoxBinder.BindSelectedIndexChanged(cmbSheet, "SelectedValue", _dlayer, "Sheet"); //NOXLATE
+            ComboBoxBinder.BindSelectedIndexChanged(cmbSheet, nameof(cmbSheet.SelectedValue), _dlayer, nameof(_dlayer.Sheet));
 
-            var minBinding = new Binding("Text", _dlayer, "MinScale"); //NOXLATE
-            var maxBinding = new Binding("Text", _dlayer, "MaxScale"); //NOXLATE
+            var minBinding = new Binding(nameof(txtMinScale.Text), _dlayer, nameof(_dlayer.MinScale));
+            var maxBinding = new Binding(nameof(txtMaxScale.Text), _dlayer, nameof(_dlayer.MaxScale));
 
             minBinding.Format += (sender, ce) =>
             {

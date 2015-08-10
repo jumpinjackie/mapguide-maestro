@@ -104,7 +104,7 @@ namespace Maestro.Base.Services
         /// </summary>
         public event ServerConnectionEventHandler ConnectionRemoved;
 
-        private Dictionary<string, IServerConnection> _connections = new Dictionary<string, IServerConnection>();
+        private readonly Dictionary<string, IServerConnection> _connections = new Dictionary<string, IServerConnection>();
 
         /// <summary>
         /// Gets the names of all currently open connections

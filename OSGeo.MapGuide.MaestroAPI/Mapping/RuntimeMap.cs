@@ -130,9 +130,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets the <see cref="T:OSGeo.MapGuide.MaestroAPI.IServerConnection"/> that is attached to this instance
         /// </summary>
-        public IServerConnection CurrentConnection { get; private set; }
+        public IServerConnection CurrentConnection { get; }
 
-        internal Version SiteVersion { get; private set; }
+        internal Version SiteVersion { get; }
 
         /// <summary>
         /// The mapping service
@@ -798,9 +798,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                 definitionChanged
             };
 
-            public ChangeType Type { get; private set; }
+            public ChangeType Type { get; }
 
-            public string Params { get; private set; }
+            public string Params { get; }
 
             public Change()
             {
@@ -815,11 +815,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
         internal class ChangeList
         {
-            public string ObjectId { get; private set; }
+            public string ObjectId { get; }
 
-            public bool IsLayer { get; private set; }
+            public bool IsLayer { get; }
 
-            public List<Change> Changes { get; private set; }
+            public List<Change> Changes { get; }
 
             public ChangeList()
             {
@@ -1148,7 +1148,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public RuntimeMapLayerCollection Layers
         {
             get;
-            private set;
         }
 
         /// <summary>
@@ -1157,7 +1156,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public RuntimeMapGroupCollection Groups
         {
             get;
-            private set;
         }
 
         /// <summary>

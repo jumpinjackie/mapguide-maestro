@@ -116,15 +116,9 @@ namespace Maestro.Editors.Diagnostics
             DoPoll();
         }
 
-        private static string ParseMs(string value)
-        {
-            return value + " " + Strings.UnitsMs; //NOXLATE
-        }
+        private static string ParseMs(string value) => $"{value} {Strings.UnitsMs}"; //NOXLATE
 
-        private static string ParseSeconds(string value)
-        {
-            return value + " " + Strings.UnitsSeconds; //NOXLATE
-        }
+        private static string ParseSeconds(string value) => $"{value} {Strings.UnitsSeconds}"; //NOXLATE
 
         private static string ParseKb(string valueBytes)
         {
@@ -134,7 +128,7 @@ namespace Maestro.Editors.Diagnostics
                                 System.Threading.Thread.CurrentThread.CurrentUICulture,
                                 out d))
             {
-                return (d / 1000.0).ToString(System.Threading.Thread.CurrentThread.CurrentUICulture) + " " + Strings.UnitsKb; //NOXLATE
+                return $"{(d / 1000.0).ToString(System.Threading.Thread.CurrentThread.CurrentUICulture)} {Strings.UnitsKb}"; //NOXLATE
             }
             return valueBytes;
         }

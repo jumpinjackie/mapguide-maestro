@@ -87,8 +87,8 @@ namespace Maestro.Base.UI
         {
             foreach (var item in tsSiteExplorer.Items)
             {
-                if (item is IStatusUpdate)
-                    ((IStatusUpdate)item).UpdateStatus();
+                var stupd = item as IStatusUpdate;
+                stupd?.UpdateStatus();
             }
         }
 
@@ -148,7 +148,7 @@ namespace Maestro.Base.UI
         }
 
         private RepositoryTreeModel _model;
-        private ServerConnectionManager _connManager;
+        private readonly ServerConnectionManager _connManager;
 
         protected override void OnLoad(EventArgs e)
         {
@@ -474,7 +474,7 @@ namespace Maestro.Base.UI
 
                         foreach (var fid in folders)
                         {
-                            LoggingService.Info("Refreshing: " + fid + " on " + connectionName);  //NOXLATE
+                            LoggingService.Info($"Refreshing: {fid} on {connectionName}");  //NOXLATE
                             RefreshModel(connectionName, fid);
                         }
                     }
@@ -608,7 +608,7 @@ namespace Maestro.Base.UI
             foreach (var resId in sourceIds)
             {
                 var dstId = resId.Replace(rootSourceParent, folderId);
-                System.Diagnostics.Trace.TraceInformation("{0} => {1}", resId, dstId); //NOXLATE
+                System.Diagnostics.Trace.TraceInformation($"{resId} => {dstId}"); //NOXLATE
                 targets.Add(dstId);
             }
 
@@ -805,13 +805,13 @@ namespace Maestro.Base.UI
                         //otherwise the content *inside* the source folder is
                         //moved instead of the folder itself!
                         var rid = new ResourceIdentifier(r);
-                        var target = folderId + rid.Name + "/"; //NOXLATE
+                        var target = $"{folderId + rid.Name}/"; //NOXLATE
                         conn.ResourceService.MoveResourceWithReferences(r, target, null, cb);
                     }
                     else
                     {
                         var rid = new ResourceIdentifier(r);
-                        var target = folderId + rid.Name + "." + rid.Extension; //NOXLATE
+                        var target = $"{folderId + rid.Name}.{rid.Extension}"; //NOXLATE
                         if (omgr.IsOpen(r, conn))
                         {
                             notMovedFromSource.Add(r);

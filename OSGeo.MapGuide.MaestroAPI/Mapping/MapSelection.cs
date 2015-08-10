@@ -74,7 +74,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     public class MapSelection : IBinarySerializable, IList<MapSelection.LayerSelection>
     {
         private RuntimeMap _map;
-        private List<LayerSelection> _layers;
+        private readonly List<LayerSelection> _layers;
 
         /// <summary>
         /// Constructor
@@ -163,7 +163,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public class LayerSelection : IList<object[]>
         {
             private RuntimeMapLayer m_layer;
-            private List<object[]> m_list = new List<object[]>();
+            private readonly List<object[]> m_list = new List<object[]>();
 
             /// <summary>
             /// Gets the layer that contains the selected objects

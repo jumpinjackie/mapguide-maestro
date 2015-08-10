@@ -38,7 +38,7 @@ namespace Maestro.Editors.FeatureSource
             if (tokens.Length == 2)
                 return provider;
             else
-                return tokens[0] + "." + tokens[1]; //NOXLATE
+                return $"{tokens[0]}.{tokens[1]}"; //NOXLATE
         }
 
         public static CollapsiblePanel GetPanel(string provider)

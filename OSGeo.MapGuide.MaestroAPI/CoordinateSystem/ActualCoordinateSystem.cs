@@ -32,7 +32,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
 {
     internal class ActualCoordinateSystem : MeterBasedCoordinateSystem
     {
-        private ICoordinateTransformation m_transform;
+        private readonly ICoordinateTransformation m_transform;
         private const string XY_M = "LOCAL_CS[\"Non-Earth (Meter)\",LOCAL_DATUM[\"Local Datum\",0],UNIT[\"Meter\", 1],AXIS[\"X\",EAST],AXIS[\"Y\",NORTH]]"; //NOXLATE
 
         internal ActualCoordinateSystem(ICoordinateSystem coordinateSystem)

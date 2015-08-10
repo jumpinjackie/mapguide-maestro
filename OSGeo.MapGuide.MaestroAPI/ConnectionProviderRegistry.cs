@@ -38,13 +38,13 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Gets or sets the name.
         /// </summary>
         /// <value>The name.</value>
-        public string Name { get; private set; }
+        public string Name { get; }
 
         /// <summary>
         /// Gets or sets the description.
         /// </summary>
         /// <value>The description.</value>
-        public string Description { get; private set; }
+        public string Description { get; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance is multi platform.
@@ -52,19 +52,19 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <value>
         /// 	<c>true</c> if this instance is multi platform; otherwise, <c>false</c>.
         /// </value>
-        public bool IsMultiPlatform { get; private set; }
+        public bool IsMultiPlatform { get; }
 
         /// <summary>
         /// Gets whether this provider has global connection state. This effectively indicates that subsequent connections after the first one
         /// created for this provider will re-use the same connection information and may/will disregard that values of the connection parameters
         /// you pass in
         /// </summary>
-        public bool HasGlobalState { get; private set; }
+        public bool HasGlobalState { get; }
 
         /// <summary>
         /// Gets the path of the assembly containing the provider implementation
         /// </summary>
-        public string AssemblyPath { get; private set; }
+        public string AssemblyPath { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ConnectionProviderEntry"/> class.
@@ -143,7 +143,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         private const string PROVIDER_CONFIG = "ConnectionProviders.xml"; //NOXLATE
 
         private static Dictionary<string, ConnectionFactoryMethod> _ctors;
-        private static List<ConnectionProviderEntry> _providers;
+        private readonly static List<ConnectionProviderEntry> _providers;
         private static Dictionary<string, int> _callCount;
 
         private static string _dllRoot;

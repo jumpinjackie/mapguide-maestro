@@ -95,11 +95,11 @@ namespace Maestro.Base.Commands.SiteExplorer
                 this.UpstreamDependencies = upRefs;
             }
 
-            public ICollection<string> SelectedResources { get; private set; }
+            public ICollection<string> SelectedResources { get; }
 
-            public ICollection<string> DownstreamDependencies { get; private set; }
+            public ICollection<string> DownstreamDependencies { get; }
 
-            public ICollection<string> UpstreamDependencies { get; private set; }
+            public ICollection<string> UpstreamDependencies { get; }
         }
 
         private static object DoBackgroundWorker(BackgroundWorker wrk, DoWorkEventArgs e, params object[] args)

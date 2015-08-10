@@ -49,7 +49,7 @@ namespace Maestro.Base.Editor
 
     internal class FusionEditorFactory : IEditorFactory
     {
-        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; }
 
         public FusionEditorFactory()
         {
@@ -64,7 +64,7 @@ namespace Maestro.Base.Editor
 
     internal class DrawingSourceEditorFactory : IEditorFactory
     {
-        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; }
 
         public DrawingSourceEditorFactory()
         {
@@ -79,7 +79,7 @@ namespace Maestro.Base.Editor
 
     internal class FeatureSourceEditorFactory : IEditorFactory
     {
-        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; }
 
         public FeatureSourceEditorFactory()
         {
@@ -94,7 +94,7 @@ namespace Maestro.Base.Editor
 
     internal class LayerDefinitionEditorFactory : IEditorFactory
     {
-        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; }
 
         public LayerDefinitionEditorFactory()
         {
@@ -109,7 +109,7 @@ namespace Maestro.Base.Editor
 
     internal class LoadProcedureEditorFactory : IEditorFactory
     {
-        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; }
 
         public LoadProcedureEditorFactory()
         {
@@ -124,7 +124,7 @@ namespace Maestro.Base.Editor
 
     internal class MapDefinitionEditorFactory : IEditorFactory
     {
-        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; }
 
         public MapDefinitionEditorFactory()
         {
@@ -139,7 +139,7 @@ namespace Maestro.Base.Editor
 
     internal class PrintLayoutEditorFactory : IEditorFactory
     {
-        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; }
 
         public PrintLayoutEditorFactory()
         {
@@ -154,7 +154,7 @@ namespace Maestro.Base.Editor
 
     internal class SymbolDefinitionEditorFactory : IEditorFactory
     {
-        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; }
 
         public SymbolDefinitionEditorFactory()
         {
@@ -169,7 +169,7 @@ namespace Maestro.Base.Editor
 
     internal class WebLayoutEditorFactory : IEditorFactory
     {
-        public ResourceTypeDescriptor ResourceTypeAndVersion { get; private set; }
+        public ResourceTypeDescriptor ResourceTypeAndVersion { get; }
 
         public WebLayoutEditorFactory()
         {

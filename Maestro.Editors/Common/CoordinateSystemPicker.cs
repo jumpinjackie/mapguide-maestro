@@ -77,7 +77,7 @@ namespace Maestro.Editors.Common
             CoordinateWait.Visible = true;
             CoordinateWait.BringToFront();
             this.Refresh();
-            _cat.FindCoordSys(""); //NOXLATE
+            _cat.FindCoordSys(string.Empty);
 
             CoordinateSystemDefinitionBase[] items = null;
             try
@@ -118,7 +118,7 @@ namespace Maestro.Editors.Common
                 CoordSysCodeText.EndUpdate();
             }
 
-            if (WKTText.Text != "") //NOXLATE
+            if (WKTText.Text != string.Empty)
             {
                 SelectByWKT.Checked = true;
                 ValidateWKT_Click(null, null);
@@ -214,7 +214,7 @@ namespace Maestro.Editors.Common
             try
             {
                 m_epsgCoordSys = null;
-                m_epsgCoordSys = _cat.FindCoordSys("EPSG:" + EPSGCodeText.Text); //NOXLATE
+                m_epsgCoordSys = _cat.FindCoordSys($"EPSG:{EPSGCodeText.Text}"); //NOXLATE
                 if (m_epsgCoordSys == null)
                 {
                     string s = _cat.ConvertEpsgCodeToWkt(EPSGCodeText.Text);
@@ -353,10 +353,10 @@ namespace Maestro.Editors.Common
                     try { CoordinateSystem.SelectedItem = selectedCoordsys; }
                     catch { }
                 if (!SelectByCoordSysCode.Checked)
-                    try { CoordSysCodeText.Text = selectedCoordsys == null ? "" : selectedCoordsys.Code; } //NOXLATE
+                    try { CoordSysCodeText.Text = selectedCoordsys == null ? string.Empty : selectedCoordsys.Code; } //NOXLATE
                     catch { }
                 if (!SelectByWKT.Checked)
-                    try { WKTText.Text = selectedCoordsys == null ? "" : selectedCoordsys.WKT; } //NOXLATE
+                    try { WKTText.Text = selectedCoordsys == null ? string.Empty : selectedCoordsys.WKT; } //NOXLATE
                     catch { }
                 if (!SelectByEPSGCode.Checked)
                     try { EPSGCodeText.Text = selectedCoordsys.EPSG; }

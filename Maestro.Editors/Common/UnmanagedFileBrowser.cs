@@ -233,7 +233,7 @@ namespace Maestro.Editors.Common
                 {
                     var leftpart = path.Substring(0, path.IndexOf("]")); //NOXLATE
                     var rightpart = path.Substring(path.IndexOf("]") + 1); //NOXLATE
-                    items.Add("%MG_DATA_PATH_ALIAS" + leftpart + "]%" + rightpart); //NOXLATE
+                    items.Add($"%MG_DATA_PATH_ALIAS{leftpart}]%{rightpart}"); //NOXLATE
                 }
                 return items.ToArray();
             }
