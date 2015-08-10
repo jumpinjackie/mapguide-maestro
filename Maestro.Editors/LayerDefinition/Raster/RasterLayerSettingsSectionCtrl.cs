@@ -62,16 +62,13 @@ namespace Maestro.Editors.LayerDefinition.Raster
             _rl = res.SubLayer as IRasterLayerDefinition;
             Debug.Assert(_rl != null);
 
-            TextBoxBinder.BindText(txtFeatureSource, _rl, "ResourceId"); //NOXLATE
-            TextBoxBinder.BindText(txtFeatureClass, _rl, "FeatureName"); //NOXLATE
-            TextBoxBinder.BindText(txtGeometry, _rl, "Geometry"); //NOXLATE
+            TextBoxBinder.BindText(txtFeatureSource, _rl, nameof(_rl.ResourceId));
+            TextBoxBinder.BindText(txtFeatureClass, _rl, nameof(_rl.FeatureName));
+            TextBoxBinder.BindText(txtGeometry, _rl, nameof(_rl.Geometry));
             _rl.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnRasterLayerPropertyChanged, (eh) => _rl.PropertyChanged -= eh);
         }
 
-        private void OnRasterLayerPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            OnResourceChanged();
-        }
+        private void OnRasterLayerPropertyChanged(object sender, PropertyChangedEventArgs e) => OnResourceChanged();
 
         protected override void UnsubscribeEventHandlers()
         {
@@ -203,17 +200,11 @@ namespace Maestro.Editors.LayerDefinition.Raster
             }
         }
 
-        internal string FeatureSourceID
-        {
-            get { return txtFeatureSource.Text; }
-        }
+        internal string FeatureSourceID => txtFeatureSource.Text;
 
         private ClassDefinition _selectedClass;
 
-        internal ClassDefinition GetSelectedClass()
-        {
-            return _selectedClass;
-        }
+        internal ClassDefinition GetSelectedClass() => _selectedClass;
 
         private IFeatureSource _cachedFs;
 
@@ -225,9 +216,6 @@ namespace Maestro.Editors.LayerDefinition.Raster
             return _cachedFs;
         }
 
-        private void btnGoToFeatureSource_Click(object sender, EventArgs e)
-        {
-            _edsvc.OpenResource(txtFeatureSource.Text);
-        }
+        private void btnGoToFeatureSource_Click(object sender, EventArgs e) => _edsvc.OpenResource(txtFeatureSource.Text);
     }
 }

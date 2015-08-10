@@ -43,14 +43,14 @@ namespace Maestro.MapViewer
     /// </summary>
     public partial class Legend : UserControl, INotifyPropertyChanged
     {
-        private const string IMG_BROKEN = "lc_broken";
-        private const string IMG_DWF = "lc_dwf";
-        private const string IMG_GROUP = "lc_group";
-        private const string IMG_RASTER = "lc_raster";
-        private const string IMG_SELECT = "lc_select";
-        private const string IMG_THEME = "lc_theme";
-        private const string IMG_UNSELECT = "lc_unselect";
-        private const string IMG_OTHER = "icon_etc";
+        private const string lc_broken = nameof(lc_broken);
+        private const string lc_dwf = nameof(lc_dwf);
+        private const string lc_group = nameof(lc_group);
+        private const string lc_raster = nameof(lc_raster);
+        private const string lc_select = nameof(lc_select);
+        private const string lc_theme = nameof(lc_theme);
+        private const string lc_unselect = nameof(lc_unselect);
+        private const string icon_etc = nameof(icon_etc);
 
         private RuntimeMap _map;
 
@@ -103,7 +103,7 @@ namespace Maestro.MapViewer
 
         private void OnViewerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "IsBusy")
+            if (e.PropertyName == nameof(_viewer.IsBusy))
             {
                 Action<bool> set = (value) => { this.Enabled = value; };
                 if (this.InvokeRequired)
@@ -119,20 +119,11 @@ namespace Maestro.MapViewer
             _presenter = new LegendControlPresenter(this, _map);
         }
 
-        private void OnMapRefreshing(object sender, EventArgs e)
-        {
-            this.RefreshLegend();
-        }
+        private void OnMapRefreshing(object sender, EventArgs e) => this.RefreshLegend();
 
-        internal bool GetVisibilityFlag(RuntimeMapGroup group)
-        {
-            return this.ShowAllLayersAndGroups;
-        }
+        internal bool GetVisibilityFlag(RuntimeMapGroup group) => this.ShowAllLayersAndGroups;
 
-        internal bool GetVisibilityFlag(RuntimeMapLayer layer)
-        {
-            return layer.IsVisibleAtScale(_map.ViewScale);
-        }
+        internal bool GetVisibilityFlag(RuntimeMapLayer layer) => layer.IsVisibleAtScale(_map.ViewScale);
 
         private LegendControlPresenter _presenter;
 
@@ -173,7 +164,7 @@ namespace Maestro.MapViewer
                     return;
 
                 _busy = value;
-                Trace.TraceInformation("Legend IsBusy: {0}", this.IsBusy);
+                Trace.TraceInformation($"Legend IsBusy: {this.IsBusy}"); //NOXLATE
                 OnPropertyChanged(nameof(IsBusy));
             }
         }
@@ -183,17 +174,9 @@ namespace Maestro.MapViewer
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void OnPropertyChanged(string propertyName)
-        {
-            var h = this.PropertyChanged;
-            if (h != null)
-                h(this, new PropertyChangedEventArgs(propertyName));
-        }
+        private void OnPropertyChanged(string propertyName) => this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        private void bgLegendUpdate_DoWork(object sender, DoWorkEventArgs e)
-        {
-            e.Result = _presenter.CreateNodes();
-        }
+        private void bgLegendUpdate_DoWork(object sender, DoWorkEventArgs e) => e.Result = _presenter.CreateNodes();
 
         private void bgLegendUpdate_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -214,7 +197,7 @@ namespace Maestro.MapViewer
             }
             trvLegend.EndUpdate();
             _legendUpdateStopwatch.Stop();
-            Trace.TraceInformation("RefreshLegend: Completed in {0}ms", _legendUpdateStopwatch.ElapsedMilliseconds);
+            Trace.TraceInformation($"RefreshLegend: Completed in {_legendUpdateStopwatch.ElapsedMilliseconds}ms"); //NOXLATE
             _legendUpdateStopwatch.Reset();
         }
 
@@ -252,7 +235,7 @@ namespace Maestro.MapViewer
         /// <summary>
         /// Gets the selected node of the legend control
         /// </summary>
-        public TreeNode SelectedNode { get { return trvLegend.SelectedNode; } }
+        public TreeNode SelectedNode => trvLegend.SelectedNode;
 
         private static void ClearNodes(TreeNodeCollection nodes)
         {
@@ -268,14 +251,14 @@ namespace Maestro.MapViewer
         {
             imgLegend.Images.Clear();
 
-            imgLegend.Images.Add(IMG_BROKEN, Properties.Resources.lc_broken);
-            imgLegend.Images.Add(IMG_DWF, Properties.Resources.lc_dwf);
-            imgLegend.Images.Add(IMG_GROUP, Properties.Resources.lc_group);
-            imgLegend.Images.Add(IMG_RASTER, Properties.Resources.lc_raster);
-            imgLegend.Images.Add(IMG_SELECT, Properties.Resources.lc_select);
-            imgLegend.Images.Add(IMG_THEME, Properties.Resources.lc_theme);
-            imgLegend.Images.Add(IMG_UNSELECT, Properties.Resources.lc_unselect);
-            imgLegend.Images.Add(IMG_OTHER, Properties.Resources.icon_etc);
+            imgLegend.Images.Add(lc_broken, Properties.Resources.lc_broken);
+            imgLegend.Images.Add(lc_dwf, Properties.Resources.lc_dwf);
+            imgLegend.Images.Add(lc_group, Properties.Resources.lc_group);
+            imgLegend.Images.Add(lc_raster, Properties.Resources.lc_raster);
+            imgLegend.Images.Add(lc_select, Properties.Resources.lc_select);
+            imgLegend.Images.Add(lc_theme, Properties.Resources.lc_theme);
+            imgLegend.Images.Add(lc_unselect, Properties.Resources.lc_unselect);
+            imgLegend.Images.Add(icon_etc, Properties.Resources.icon_etc);
         }
 
         private double _scale;
@@ -369,16 +352,9 @@ namespace Maestro.MapViewer
 
         private bool _noUpdate = false;
 
-        internal void OnRequestRefresh()
-        {
-            if (this.Viewer != null)
-                this.Viewer.RefreshMap();
-        }
+        internal void OnRequestRefresh() => this.Viewer?.RefreshMap();
 
-        private void trvLegend_DrawNode(object sender, DrawTreeNodeEventArgs e)
-        {
-            _presenter.DrawNode(e, trvLegend.ShowPlusMinus, trvLegend.Font);
-        }
+        private void trvLegend_DrawNode(object sender, DrawTreeNodeEventArgs e) => _presenter.DrawNode(e, trvLegend.ShowPlusMinus, trvLegend.Font);
 
         private ContextMenuStrip _grpContextMenu;
 
@@ -535,9 +511,7 @@ namespace Maestro.MapViewer
 
         private void trvLegend_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            var h = this.NodeSelected;
-            if (h != null)
-                h(this, e.Node);
+            this.NodeSelected?.Invoke(this, e.Node);
         }
 
         /// <summary>
@@ -559,16 +533,8 @@ namespace Maestro.MapViewer
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public TreeNode GetNodeAt(int x, int y)
-        {
-            return trvLegend.GetNodeAt(x, y);
-        }
+        public TreeNode GetNodeAt(int x, int y) => trvLegend.GetNodeAt(x, y);
 
-        private void trvLegend_ItemDrag(object sender, ItemDragEventArgs e)
-        {
-            var h = this.ItemDrag;
-            if (h != null)
-                h(this, e);
-        }
+        private void trvLegend_ItemDrag(object sender, ItemDragEventArgs e) => this.ItemDrag?.Invoke(this, e);
     }
 }

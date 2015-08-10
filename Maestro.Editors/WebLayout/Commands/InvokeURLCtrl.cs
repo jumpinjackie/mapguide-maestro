@@ -56,10 +56,10 @@ namespace Maestro.Editors.WebLayout.Commands
             Bind(service);
             service.RegisterCustomNotifier(this);
 
-            TextBoxBinder.BindText(txtUrl, invokeUrlCommandType, "URL");
-            TextBoxBinder.BindText(txtFrame, invokeUrlCommandType, "TargetFrame");
-            ComboBoxBinder.BindSelectedIndexChanged(cmbTargetFrame, "SelectedItem", invokeUrlCommandType, "Target");
-            CheckBoxBinder.BindChecked(chkDisableIfEmpty, invokeUrlCommandType, "DisableIfSelectionEmpty");
+            TextBoxBinder.BindText(txtUrl, invokeUrlCommandType, nameof(invokeUrlCommandType.URL));
+            TextBoxBinder.BindText(txtFrame, invokeUrlCommandType, nameof(invokeUrlCommandType.TargetFrame));
+            ComboBoxBinder.BindSelectedIndexChanged(cmbTargetFrame, nameof(cmbTargetFrame.SelectedItem), invokeUrlCommandType, nameof(invokeUrlCommandType.Target));
+            CheckBoxBinder.BindChecked(chkDisableIfEmpty, invokeUrlCommandType, nameof(invokeUrlCommandType.DisableIfSelectionEmpty));
 
             foreach (var p in invokeUrlCommandType.AdditionalParameter)
             {
@@ -74,10 +74,7 @@ namespace Maestro.Editors.WebLayout.Commands
             _cmd = invokeUrlCommandType;
         }
 
-        private void OnAddingNew(object sender, AddingNewEventArgs e)
-        {
-            e.NewObject = _cmd.CreateParameter("", "");
-        }
+        private void OnAddingNew(object sender, AddingNewEventArgs e) => e.NewObject = _cmd.CreateParameter(string.Empty, string.Empty);
 
         private void OnParamsListChanged(object sender, ListChangedEventArgs e)
         {
@@ -100,10 +97,7 @@ namespace Maestro.Editors.WebLayout.Commands
             base.UnsubscribeEventHandlers();
         }
 
-        private void OnCommandPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            OnResourceChanged();
-        }
+        private void OnCommandPropertyChanged(object sender, PropertyChangedEventArgs e) => OnResourceChanged();
 
         private void btnBrowseLayers_Click(object sender, EventArgs e)
         {

@@ -88,7 +88,7 @@ namespace Maestro.Editors.MapDefinition
                 group.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnGroupChanged, (eh) => group.PropertyChanged -= eh);
 
                 txtName.Text = group.Name;
-                TextBoxBinder.BindText(txtLegendLabel, group, "LegendLabel");
+                TextBoxBinder.BindText(txtLegendLabel, group, nameof(group.LegendLabel));
             }
             finally
             {
@@ -96,12 +96,7 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        private void OnGroupChanged(object sender, PropertyChangedEventArgs e)
-        {
-            var handler = this.GroupChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
-        }
+        private void OnGroupChanged(object sender, PropertyChangedEventArgs e) => this.GroupChanged?.Invoke(this, EventArgs.Empty);
 
         private static int GetGroupCount(IMapDefinition map, string name)
         {
@@ -119,7 +114,7 @@ namespace Maestro.Editors.MapDefinition
                         count++;
                 }
             }
-            System.Diagnostics.Debug.WriteLine("{0} groups with the name: {1}", count, name);
+            System.Diagnostics.Debug.WriteLine($"{count} groups with the name: {name}");
             return count;
         }
 

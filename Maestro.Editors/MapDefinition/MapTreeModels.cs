@@ -65,7 +65,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "Name")
+            if (e.PropertyName == nameof(this.Tag.Name))
             {
                 this.Text = this.Tag.Name;
             }
@@ -82,7 +82,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "Name")
+            if (e.PropertyName == nameof(this.Tag.Name))
             {
                 this.Text = this.Tag.Name;
             }
@@ -106,7 +106,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "Name")
+            if (e.PropertyName == nameof(this.Tag.Name))
             {
                 this.Text = this.Tag.Name;
             }
@@ -123,7 +123,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "Name")
+            if (e.PropertyName == nameof(this.Tag.Name))
             {
                 this.Text = this.Tag.Name;
             }

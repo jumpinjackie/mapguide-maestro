@@ -86,9 +86,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             if (_disableChangeTracking)
                 return;
 
-            var handler = this.PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(propertyName));
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         /// <summary>

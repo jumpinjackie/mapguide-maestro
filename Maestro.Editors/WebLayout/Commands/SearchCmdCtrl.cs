@@ -67,7 +67,7 @@ namespace Maestro.Editors.WebLayout.Commands
 
             _wl = (IWebLayout)_edsvc.GetEditedResource();
             var wlMap = _wl.Map;
-            wlMap.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnWebLayoutPropertyChanged, (eh) => wlMap.PropertyChanged -= eh);
+            wlMap.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnWebMapLayoutPropertyChanged, (eh) => wlMap.PropertyChanged -= eh);
 
             LoadLayers();
 
@@ -83,13 +83,13 @@ namespace Maestro.Editors.WebLayout.Commands
                 }
             }
 
-            TextBoxBinder.BindText(txtFrame, _cmd, "TargetFrame");
-            ComboBoxBinder.BindSelectedIndexChanged(cmbTargetFrame, "SelectedItem", _cmd, "Target");
-            TextBoxBinder.BindText(txtLayer, _cmd, "Layer");
-            TextBoxBinder.BindText(txtFilter, _cmd, "Filter");
-            TextBoxBinder.BindText(txtPrompt, _cmd, "Prompt");
+            TextBoxBinder.BindText(txtFrame, _cmd, nameof(_cmd.TargetFrame));
+            ComboBoxBinder.BindSelectedIndexChanged(cmbTargetFrame, nameof(cmbTargetFrame.SelectedItem), _cmd, nameof(_cmd.Target));
+            TextBoxBinder.BindText(txtLayer, _cmd, nameof(_cmd.Layer));
+            TextBoxBinder.BindText(txtFilter, _cmd, nameof(_cmd.Filter));
+            TextBoxBinder.BindText(txtPrompt, _cmd, nameof(_cmd.Prompt));
 
-            NumericBinder.BindValueChanged(numLimit, _cmd, "MatchLimit");
+            NumericBinder.BindValueChanged(numLimit, _cmd, nameof(_cmd.MatchLimit));
 
             UpdateColumns();
             foreach (var col in _cmd.ResultColumns.Column)
@@ -111,7 +111,7 @@ namespace Maestro.Editors.WebLayout.Commands
             if (_cls == null)
                 return;
 
-            e.NewObject = _cmd.ResultColumns.CreateColumn("MyProperty", _cls.Properties[0].Name);
+            e.NewObject = _cmd.ResultColumns.CreateColumn("MyProperty", _cls.Properties[0].Name); //NOXLATE
         }
 
         private void OnColumnsChanged(object sender, ListChangedEventArgs e)
@@ -142,7 +142,7 @@ namespace Maestro.Editors.WebLayout.Commands
             _cleanup = true;
 
             if (_wl != null && _wl.Map != null)
-                _wl.Map.PropertyChanged -= OnWebLayoutPropertyChanged;
+                _wl.Map.PropertyChanged -= OnWebMapLayoutPropertyChanged;
 
             _columns.AddingNew -= OnAddingNewColumn;
             _columns.ListChanged -= OnColumnsChanged;
@@ -159,9 +159,9 @@ namespace Maestro.Editors.WebLayout.Commands
             _layers = new List<IMapLayer>(map.MapLayer);
         }
 
-        private void OnWebLayoutPropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void OnWebMapLayoutPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "ResourceId")
+            if (e.PropertyName == nameof(_wl.Map.ResourceId))
             {
                 LoadLayers();
             }

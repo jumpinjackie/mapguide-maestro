@@ -57,10 +57,7 @@ namespace Maestro.Editors.FeatureSource.Extensions
             ComboBoxBinder.BindSelectedIndexChanged(cmbBaseClass, nameof(cmbBaseClass.SelectedItem), ext, nameof(ext.FeatureClass));
         }
 
-        private void OnExtensionPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            OnResourceChanged();
-        }
+        private void OnExtensionPropertyChanged(object sender, PropertyChangedEventArgs e) => OnResourceChanged();
 
         public void Bind(IEditorService service)
         {

@@ -50,9 +50,9 @@ namespace Maestro.Editors.MapDefinition
             layer.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnLayerChanged, (eh) => layer.PropertyChanged -= eh);
             _edSvc = edSvc;
 
-            TextBoxBinder.BindText(txtResourceId, layer, "ResourceId");
-            TextBoxBinder.BindText(txtName, layer, "Name");
-            TextBoxBinder.BindText(txtLegendLabel, layer, "LegendLabel");
+            TextBoxBinder.BindText(txtResourceId, layer, nameof(layer.ResourceId));
+            TextBoxBinder.BindText(txtName, layer, nameof(layer.Name));
+            TextBoxBinder.BindText(txtLegendLabel, layer, nameof(layer.LegendLabel));
         }
 
         public LayerPropertiesCtrl(IBaseMapLayer layer, IEditorService edSvc)
@@ -61,17 +61,12 @@ namespace Maestro.Editors.MapDefinition
             layer.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnLayerChanged, (eh) => layer.PropertyChanged -= eh);
             _edSvc = edSvc;
 
-            TextBoxBinder.BindText(txtResourceId, layer, "ResourceId");
-            TextBoxBinder.BindText(txtName, layer, "Name");
-            TextBoxBinder.BindText(txtLegendLabel, layer, "LegendLabel");
+            TextBoxBinder.BindText(txtResourceId, layer, nameof(layer.ResourceId));
+            TextBoxBinder.BindText(txtName, layer, nameof(layer.Name));
+            TextBoxBinder.BindText(txtLegendLabel, layer, nameof(layer.LegendLabel));
         }
 
-        private void OnLayerChanged(object sender, PropertyChangedEventArgs e)
-        {
-            var handler = this.LayerChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
-        }
+        private void OnLayerChanged(object sender, PropertyChangedEventArgs e) => this.LayerChanged?.Invoke(this, EventArgs.Empty);
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {

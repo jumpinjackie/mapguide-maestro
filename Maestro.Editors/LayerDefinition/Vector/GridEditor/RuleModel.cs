@@ -98,12 +98,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             this.Style = preview;
         }
 
-        protected void OnPropertyChanged(string name)
-        {
-            var h = this.PropertyChanged;
-            if (h != null)
-                h(this, new PropertyChangedEventArgs(name));
-        }
+        protected void OnPropertyChanged(string name) => this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
         public event PropertyChangedEventHandler PropertyChanged;
 

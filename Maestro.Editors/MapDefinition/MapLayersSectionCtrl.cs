@@ -213,7 +213,7 @@ namespace Maestro.Editors.MapDefinition
 
         private void OnMapPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "TileSourceType")
+            if (e.PropertyName == "TileSourceType") //NOXLATE
             {
                 var mdf = _map as IMapDefinition3;
                 if (mdf != null)

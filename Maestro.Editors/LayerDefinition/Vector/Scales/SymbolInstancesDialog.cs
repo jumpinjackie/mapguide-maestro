@@ -68,18 +68,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             {
                 _ov = ov;
                 _pdef = pdef;
-                _name = pdef.DisplayName.Replace("&amp;", "");
+                _name = pdef.DisplayName.Replace("&amp;", string.Empty);
             }
 
             [Browsable(false)]
-            public IParameterOverride Override { get { return _ov; } }
+            public IParameterOverride Override => _ov;
 
             [Browsable(false)]
-            public IParameter Definition { get { return _pdef; } }
+            public IParameter Definition => _pdef;
 
-            public string Name { get { return _name; } }
+            public string Name => _name;
 
-            public string Type { get { return _pdef.DataType; } }
+            public string Type => _pdef.DataType;
 
             public string Value
             {
@@ -92,9 +92,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                     if (value != _ov.ParameterValue)
                     {
                         _ov.ParameterValue = value;
-                        var h = this.PropertyChanged;
-                        if (h != null)
-                            h(this, new PropertyChangedEventArgs("Value"));
+                        this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Value)));
                     }
                 }
             }
@@ -130,10 +128,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             UpdatePreviewImage();
         }
 
-        public bool UseLayerIconPreview
-        {
-            get { return _mappingSvc != null && _preview != null; }
-        }
+        public bool UseLayerIconPreview =>_mappingSvc != null && _preview != null;
 
         private void UpdatePreviewImage()
         {
@@ -162,10 +157,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void btnClose_Click(object sender, EventArgs e) => this.Close();
 
         private void RenderPreview(ISymbolInstance symInst, ListViewItem item)
         {
@@ -424,10 +416,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             }
         }
 
-        private void lnkRefresh_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            RefreshPreviews(true, true);
-        }
+        private void lnkRefresh_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => RefreshPreviews(true, true);
 
         private void btnEditComponent_Click(object sender, EventArgs e)
         {
@@ -648,7 +637,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 var item = Maestro.Editors.Common.GenericItemSelectionDialog.SelectItem(null, dt2.ToString(), list.ToArray());
                 if (item != null)
                 {
-                    return "'" + item + "'";
+                    return $"'{item}'";
                 }
                 return null;
             };

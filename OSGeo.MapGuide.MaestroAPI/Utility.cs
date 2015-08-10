@@ -54,6 +54,27 @@ namespace OSGeo.MapGuide.MaestroAPI
     public static class Utility
     {
         /// <summary>
+        /// Creates the polygon WKT for the given bounding box
+        /// </summary>
+        /// <param name="x1"></param>
+        /// <param name="y1"></param>
+        /// <param name="x2"></param>
+        /// <param name="y2"></param>
+        /// <returns></returns>
+        public static string MakeWktPolygon(double x1, double y1, double x2, double y2)
+            => $"POLYGON(({x1} {y1}, {x2} {y1}, {x2} {y2}, {x1} {y2}, {x1} {y1}))"; //NOXLATE
+
+        /// <summary>
+        /// Creates the WKT for the given circle
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="r"></param>
+        /// <returns></returns>
+        public static string MakeWktCircle(double x, double y, double r)
+            => $"CURVEPOLYGON (({(x - r)} {y} (CIRCULARARCSEGMENT ({x} {(y - r)}, {(x + r)} {y}), CIRCULARARCSEGMENT ({x} {(y + r)}, {(x - r)} {y}))))"; //NOXLATE
+
+        /// <summary>
         /// The exception data key that hints that an <see cref="T:System.Exception"/> thrown is related to XML content errors
         /// </summary>
         public const string XML_EXCEPTION_KEY = "XmlError"; //NOXLATE
@@ -63,20 +84,14 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="ex"></param>
         /// <returns></returns>
-        public static bool IsDbXmlError(Exception ex)
-        {
-            return ex.Message.Contains("MgDbXmlException") || ex.Message.Contains("MgXmlParserException"); //NOXLATE
-        }
+        public static bool IsDbXmlError(Exception ex) => ex.Message.Contains("MgDbXmlException") || ex.Message.Contains("MgXmlParserException"); //NOXLATE
 
         /// <summary>
         /// Gets whether the given exception has original xml content attached
         /// </summary>
         /// <param name="ex"></param>
         /// <returns></returns>
-        public static bool HasOriginalXml(Exception ex)
-        {
-            return ex.Data[XML_EXCEPTION_KEY] != null;
-        }
+        public static bool HasOriginalXml(Exception ex) => ex.Data[XML_EXCEPTION_KEY] != null;
 
         //Americans NEVER obey nationalization when outputting decimal values, so the rest of the world always have to work around their bugs :(
         private static System.Globalization.CultureInfo m_enCI = new System.Globalization.CultureInfo("en-US"); //NOXLATE
@@ -127,11 +142,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="sResult"></param>
         /// <returns></returns>
-        public static bool IsSuccessfulConnectionTestResult(string sResult)
-        {
-            //LocalNativeConnection returns this string, so I'm assuming this is the "success" result
-            return (sResult == "No errors" || sResult.ToLower() == "true"); //NOXLATE
-        }
+        public static bool IsSuccessfulConnectionTestResult(string sResult) => (sResult == "No errors" || sResult.ToLower() == "true"); //NOXLATE
 
         /// <summary>
         /// Parses a color in HTML notation (ea. #ffaabbff)
@@ -273,30 +284,21 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="digit">The string value</param>
         /// <returns>The parsed value</returns>
-        public static float ParseDigit(string digit)
-        {
-            return (float)double.Parse(digit, m_enCI);
-        }
+        public static float ParseDigit(string digit) => (float)double.Parse(digit, m_enCI);
 
         /// <summary>
         /// Turns a decimal value into a string representation in EN-US format
         /// </summary>
         /// <param name="digit">The value to encode</param>
         /// <returns>The encoded value</returns>
-        public static string SerializeDigit(float digit)
-        {
-            return digit.ToString(m_enCI);
-        }
+        public static string SerializeDigit(float digit) => digit.ToString(m_enCI);
 
         /// <summary>
         /// Turns a decimal value into a string representation in EN-US format
         /// </summary>
         /// <param name="digit">The value to encode</param>
         /// <returns>The encoded value</returns>
-        public static string SerializeDigit(double digit)
-        {
-            return digit.ToString(m_enCI);
-        }
+        public static string SerializeDigit(double digit) => digit.ToString(m_enCI);
 
         /// <summary>
         /// Copies the content of a stream into another stream.
@@ -304,10 +306,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="source">The source stream</param>
         /// <param name="target">The target stream</param>
-        public static void CopyStream(System.IO.Stream source, System.IO.Stream target)
-        {
-            CopyStream(source, target, true);
-        }
+        public static void CopyStream(System.IO.Stream source, System.IO.Stream target) => CopyStream(source, target, true);
 
         /// <summary>
         /// Copies the content of a stream into another stream.
@@ -592,26 +591,17 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Returns a type used to define an unknown column type in a feature reader
         /// </summary>
-        public static Type UnmappedType
-        {
-            get { return typeof(UnmappedDataType); }
-        }
+        public static Type UnmappedType => typeof(UnmappedDataType);
 
         /// <summary>
         /// Returns a type used to define a raster column in a feature reader
         /// </summary>
-        public static Type RasterType
-        {
-            get { return typeof(System.Drawing.Bitmap); }
-        }
+        public static Type RasterType => typeof(System.Drawing.Bitmap);
 
         /// <summary>
         /// Returns the type used to define a geometry column in a feature reader
         /// </summary>
-        public static Type GeometryType
-        {
-            get { return typeof(IGeometry); }
-        }
+        public static Type GeometryType => typeof(IGeometry);
 
         /// <summary>
         /// This method tries to extract the html content of a WebException.
@@ -697,7 +687,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 return string.Format("{0} bytes", size); //NOXLATE
         }
 
-        private static Regex EncRegExp = new System.Text.RegularExpressions.Regex(@"(\-x[0-2a-fA-F][0-9a-fA-F]\-)|(\-dot\-)|(\-colon\-)", System.Text.RegularExpressions.RegexOptions.Compiled);
+        private static Regex EncRegExp = new Regex(@"(\-x[0-2a-fA-F][0-9a-fA-F]\-)|(\-dot\-)|(\-colon\-)", System.Text.RegularExpressions.RegexOptions.Compiled);
 
         private static Regex TokenRegex = new Regex("^x[0-9a-fA-F][0-9a-fA-F]", RegexOptions.Compiled);
 
@@ -898,28 +888,36 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="item">The xml item to examine</param>
         /// <returns>A list with all found elements</returns>
-        public static List<KeyValuePair<System.Xml.XmlNode, string>> GetResourceIdPointers(System.Xml.XmlNode item)
+        public static List<KeyValuePair<XmlNode, string>> GetResourceIdPointers(System.Xml.XmlNode item)
         {
-            Queue<System.Xml.XmlNode> lst = new Queue<System.Xml.XmlNode>();
-            List<KeyValuePair<System.Xml.XmlNode, string>> res = new List<KeyValuePair<System.Xml.XmlNode, string>>();
+            var lst = new Queue<XmlNode>();
+            var res = new List<KeyValuePair<XmlNode, string>>();
 
             lst.Enqueue(item);
 
             while (lst.Count > 0)
             {
-                System.Xml.XmlNode n = lst.Dequeue();
+                XmlNode n = lst.Dequeue();
 
-                foreach (System.Xml.XmlNode nx in n.ChildNodes)
-                    if (nx.NodeType == System.Xml.XmlNodeType.Element)
+                foreach (XmlNode nx in n.ChildNodes)
+                {
+                    if (nx.NodeType == XmlNodeType.Element)
                         lst.Enqueue(nx);
+                }
 
                 if (n.Name == "ResourceId") //NOXLATE
-                    res.Add(new KeyValuePair<System.Xml.XmlNode, string>(n, n.InnerXml));
+                {
+                    res.Add(new KeyValuePair<XmlNode, string>(n, n.InnerXml));
+                }
 
                 if (n.Attributes != null)
-                    foreach (System.Xml.XmlAttribute a in n.Attributes)
+                {
+                    foreach (XmlAttribute a in n.Attributes)
+                    {
                         if (a.Name == "ResourceId") //NOXLATE
-                            res.Add(new KeyValuePair<System.Xml.XmlNode, string>(a, a.Value));
+                            res.Add(new KeyValuePair<XmlNode, string>(a, a.Value));
+                    }
+                }
             }
 
             return res;
@@ -1279,10 +1277,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static string FdoStringifiyLiteral(string str)
-        {
-            return "'" + str + "'"; //NOXLATE
-        }
+        public static string FdoStringifiyLiteral(string str) => $"'{str}'"; //NOXLATE
 
         /// <summary>
         /// Returns the list of known FDO stylization expression functions
@@ -1576,28 +1571,20 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         public static ISimpleSymbolDefinition CreateSimpleSymbol(IServerConnection conn, string name, string description)
-        {
-            return ObjectFactory.CreateSimpleSymbol(conn.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.SymbolDefinition.ToString()), name, description);
-        }
-
+            => ObjectFactory.CreateSimpleSymbol(conn.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.SymbolDefinition.ToString()), name, description);
+        
         public static IMapDefinition CreateMapDefinition(IServerConnection conn, string name)
-        {
-            return ObjectFactory.CreateMapDefinition(conn.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition.ToString()), name);
-        }
-
+            => ObjectFactory.CreateMapDefinition(conn.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition.ToString()), name);
+        
         public static IMapDefinition CreateMapDefinition(IServerConnection conn, string name, string csWkt, ObjectModels.Common.IEnvelope extent)
-        {
-            return ObjectFactory.CreateMapDefinition(conn.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition.ToString()),
+            => ObjectFactory.CreateMapDefinition(conn.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.MapDefinition.ToString()),
                                                      name,
                                                      csWkt,
                                                      extent);
-        }
 
         public static ILayerDefinition CreateDefaultLayer(IServerConnection conn, LayerType layerType)
-        {
-            return ObjectFactory.CreateDefaultLayer(layerType, conn.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.LayerDefinition.ToString()));
-        }
-
+            => ObjectFactory.CreateDefaultLayer(layerType, conn.Capabilities.GetMaxSupportedResourceVersion(ResourceTypes.LayerDefinition.ToString()));
+        
         public static IApplicationDefinition CreateFlexibleLayout(IServerConnection conn, string templateName)
         {
             Check.ThatPreconditionIsMet(Array.IndexOf(conn.Capabilities.SupportedServices, (int)ServiceType.Fusion) >= 0, "Required Fusion service not supported on this connection");

@@ -20,6 +20,7 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.MaestroAPI;
 using System;
 using System.ComponentModel;
 using System.Text;
@@ -40,37 +41,37 @@ namespace Maestro.MapViewer
             : base()
         {
             this.GripStyle = ToolStripGripStyle.Visible;
-            this.ZoomIn = new ToolStripButton("", Properties.Resources.zoom_in_fixed, OnZoomIn)
+            this.ZoomIn = new ToolStripButton(string.Empty, Properties.Resources.zoom_in_fixed, OnZoomIn)
             {
                 ToolTipText = Properties.Resources.TextZoomIn,
                 DisplayStyle = ToolStripItemDisplayStyle.Image
             };
-            this.ZoomOut = new ToolStripButton("", Properties.Resources.zoom_out_fixed, OnZoomOut)
+            this.ZoomOut = new ToolStripButton(string.Empty, Properties.Resources.zoom_out_fixed, OnZoomOut)
             {
                 ToolTipText = Properties.Resources.TextZoomOut,
                 DisplayStyle = ToolStripItemDisplayStyle.Image
             };
-            this.ZoomExtents = new ToolStripButton("", Properties.Resources.zoom_full, OnZoomExtents)
+            this.ZoomExtents = new ToolStripButton(string.Empty, Properties.Resources.zoom_full, OnZoomExtents)
             {
                 ToolTipText = Properties.Resources.TextZoomExtents,
                 DisplayStyle = ToolStripItemDisplayStyle.Image
             };
-            this.SelectTool = new ToolStripButton("", Properties.Resources.select_features, OnSelect)
+            this.SelectTool = new ToolStripButton(string.Empty, Properties.Resources.select_features, OnSelect)
             {
                 ToolTipText = Properties.Resources.TextSelect,
                 DisplayStyle = ToolStripItemDisplayStyle.Image
             };
-            this.Pan = new ToolStripButton("", Properties.Resources.icon_pan, OnPan)
+            this.Pan = new ToolStripButton(string.Empty, Properties.Resources.icon_pan, OnPan)
             {
                 ToolTipText = Properties.Resources.TextPan,
                 DisplayStyle = ToolStripItemDisplayStyle.Image
             };
-            this.ClearSelection = new ToolStripButton("", Properties.Resources.select_clear, OnClearSelection)
+            this.ClearSelection = new ToolStripButton(string.Empty, Properties.Resources.select_clear, OnClearSelection)
             {
                 ToolTipText = Properties.Resources.TextClearSelection,
                 DisplayStyle = ToolStripItemDisplayStyle.Image
             };
-            this.RefreshMap = new ToolStripButton("", Properties.Resources.view_refresh, OnRefreshMap)
+            this.RefreshMap = new ToolStripButton(string.Empty, Properties.Resources.view_refresh, OnRefreshMap)
             {
                 ToolTipText = Properties.Resources.TextRefreshMap,
                 DisplayStyle = ToolStripItemDisplayStyle.Image
@@ -80,23 +81,23 @@ namespace Maestro.MapViewer
                 ToolTipText = Properties.Resources.TextDisableTooltips,
                 DisplayStyle = ToolStripItemDisplayStyle.ImageAndText
             };
-            this.Loading = new ToolStripButton("", Properties.Resources.icon_loading)
+            this.Loading = new ToolStripButton(string.Empty, Properties.Resources.icon_loading)
             {
                 Alignment = ToolStripItemAlignment.Right,
                 ImageScaling = ToolStripItemImageScaling.None,
                 Visible = false
             };
-            this.SelectPolygon = new ToolStripButton("", Properties.Resources.select_polygon, OnSelectPolygon)
+            this.SelectPolygon = new ToolStripButton(string.Empty, Properties.Resources.select_polygon, OnSelectPolygon)
             {
                 ToolTipText = Properties.Resources.TextSelectPolygon,
                 DisplayStyle = ToolStripItemDisplayStyle.Image
             };
-            this.SelectRadius = new ToolStripButton("", Properties.Resources.select_radius, OnSelectRadius)
+            this.SelectRadius = new ToolStripButton(string.Empty, Properties.Resources.select_radius, OnSelectRadius)
             {
                 ToolTipText = Properties.Resources.TextSelectRadius,
                 DisplayStyle = ToolStripItemDisplayStyle.Image
             };
-            this.CopyMap = new ToolStripButton("", Properties.Resources.edit_copy, OnCopyMap)
+            this.CopyMap = new ToolStripButton(string.Empty, Properties.Resources.edit_copy, OnCopyMap)
             {
                 ToolTipText = Properties.Resources.TextCopyMap,
                 DisplayStyle = ToolStripItemDisplayStyle.Image
@@ -246,7 +247,7 @@ namespace Maestro.MapViewer
 
             _viewer.DigitizeCircle((x, y, r) =>
             {
-                _viewer.SelectByWkt(MakeWktCircle(x, y, r), -1);
+                _viewer.SelectByWkt(Utility.MakeWktCircle(x, y, r), -1);
             });
         }
 
@@ -271,7 +272,7 @@ namespace Maestro.MapViewer
             });
         }
 
-        internal ToolStripButton RefreshMap { get; private set; }
+        internal ToolStripButton RefreshMap { get; }
 
         private void OnRefreshMap(object sender, EventArgs e)
         {
@@ -281,7 +282,7 @@ namespace Maestro.MapViewer
             _viewer.RefreshMap();
         }
 
-        internal ToolStripButton ToggleTooltips { get; private set; }
+        internal ToolStripButton ToggleTooltips { get; }
 
         private void OnToggleTooltips(object sender, EventArgs e)
         {
@@ -292,7 +293,7 @@ namespace Maestro.MapViewer
             TooltipStateChanged();
         }
 
-        internal ToolStripButton CopyMap { get; private set; }
+        internal ToolStripButton CopyMap { get; }
 
         private void OnCopyMap(object sender, EventArgs e)
         {
@@ -330,7 +331,7 @@ namespace Maestro.MapViewer
 
         private void OnViewerPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "IsBusy")
+            if (e.PropertyName == nameof(_viewer.IsBusy))
             {
                 var busy = _viewer.IsBusy;
                 this.ZoomExtents.Enabled = this.ZoomIn.Enabled
@@ -345,20 +346,10 @@ namespace Maestro.MapViewer
                                          = this.RefreshMap.Enabled = !busy;
                 this.Loading.Visible = busy;
             }
-            else if (e.PropertyName == "ActiveTool" || e.PropertyName == "DigitizingType")
+            else if (e.PropertyName == nameof(_viewer.ActiveTool) || e.PropertyName == nameof(_viewer.DigitizingType))
             {
                 UpdateButtonCheckedState();
             }
-        }
-
-        private static string MakeWktPolygon(double x1, double y1, double x2, double y2)
-        {
-            return "POLYGON((" + x1 + " " + y1 + ", " + x2 + " " + y1 + ", " + x2 + " " + y2 + ", " + x1 + " " + y2 + ", " + x1 + " " + y1 + "))";
-        }
-
-        private static string MakeWktCircle(double x, double y, double r)
-        {
-            return "CURVEPOLYGON ((" + (x - r) + " " + y + " (CIRCULARARCSEGMENT (" + x + " " + (y - r) + ", " + (x + r) + " " + y + "), CIRCULARARCSEGMENT (" + x + " " + (y + r) + ", " + (x - r) + " " + y + "))))";
         }
     }
 

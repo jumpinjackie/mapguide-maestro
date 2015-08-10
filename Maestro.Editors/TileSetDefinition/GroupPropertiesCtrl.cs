@@ -70,7 +70,7 @@ namespace Maestro.Editors.TileSetDefinition
                     currentName = newName;
                 };*/
 
-                TextBoxBinder.BindText(txtLegendLabel, group, "LegendLabel");
+                TextBoxBinder.BindText(txtLegendLabel, group, nameof(group.LegendLabel));
             }
             finally
             {
@@ -89,7 +89,7 @@ namespace Maestro.Editors.TileSetDefinition
                 group.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnGroupChanged, (eh) => group.PropertyChanged -= eh);
 
                 txtName.Text = group.Name;
-                TextBoxBinder.BindText(txtLegendLabel, group, "LegendLabel");
+                TextBoxBinder.BindText(txtLegendLabel, group, nameof(group.LegendLabel));
             }
             finally
             {
@@ -97,12 +97,7 @@ namespace Maestro.Editors.TileSetDefinition
             }
         }
 
-        private void OnGroupChanged(object sender, PropertyChangedEventArgs e)
-        {
-            var handler = this.GroupChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
-        }
+        private void OnGroupChanged(object sender, PropertyChangedEventArgs e) => this.GroupChanged?.Invoke(this, EventArgs.Empty);
 
         private static int GetGroupCount(ITileSetDefinition map, string name)
         {
@@ -112,7 +107,7 @@ namespace Maestro.Editors.TileSetDefinition
                 if (grp.Name == name)
                     count++;
             }
-            System.Diagnostics.Debug.WriteLine("{0} groups with the name: {1}", count, name);
+            System.Diagnostics.Debug.WriteLine($"{count} groups with the name: {name}"); //NOXLATE
             return count;
         }
 
@@ -128,7 +123,7 @@ namespace Maestro.Editors.TileSetDefinition
                 errorProvider.Clear();
                 string currentName = _el.Name;
                 _el.Name = newName;
-                System.Diagnostics.Debug.WriteLine(string.Format("Updated group name {0} -> {1}", currentName, newName));
+                System.Diagnostics.Debug.WriteLine($"Updated group name {currentName} -> {newName}"); //NOXLATE
             }
             else
             {

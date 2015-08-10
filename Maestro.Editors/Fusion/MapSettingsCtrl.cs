@@ -84,7 +84,7 @@ namespace Maestro.Editors.Fusion
             item.Tag = group;
             PropertyChangedEventHandler groupChange = (s, e) =>
             {
-                if (e.PropertyName == "id") //NOXLATE
+                if (e.PropertyName == nameof(group.id))
                     item.Text = group.id;
             };
             group.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(groupChange, (eh) => group.PropertyChanged -= eh);

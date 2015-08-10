@@ -69,10 +69,7 @@ namespace Maestro.Editors.LoadProcedure
             base.UnsubscribeEventHandlers();
         }
 
-        private void OnLoadProcedurePropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            OnResourceChanged();
-        }
+        private void OnLoadProcedurePropertyChanged(object sender, PropertyChangedEventArgs e) => OnResourceChanged();
 
         private void btnBrowseRoot_Click(object sender, EventArgs e)
         {
@@ -85,14 +82,8 @@ namespace Maestro.Editors.LoadProcedure
                 txtLayerRoot.Text = txtTargetRoot.Text;
         }
 
-        private void btnBrowseFeatureRoot_Click(object sender, EventArgs e)
-        {
-            txtFeatureSourceRoot.Text = _service.SelectFolder();
-        }
+        private void btnBrowseFeatureRoot_Click(object sender, EventArgs e) => txtFeatureSourceRoot.Text = _service.SelectFolder();
 
-        private void btnBrowseLayerRoot_Click(object sender, EventArgs e)
-        {
-            txtLayerRoot.Text = _service.SelectFolder();
-        }
+        private void btnBrowseLayerRoot_Click(object sender, EventArgs e) => txtLayerRoot.Text = _service.SelectFolder();
     }
 }

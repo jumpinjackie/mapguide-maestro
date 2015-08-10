@@ -42,8 +42,8 @@ namespace Maestro.AddIn.Rest.UI.Methods
 
             public ComputedProperty()
             {
-                _alias = "";
-                _expression = "";
+                _alias = string.Empty;
+                _expression = string.Empty;
             }
 
             public string Alias
@@ -54,9 +54,7 @@ namespace Maestro.AddIn.Rest.UI.Methods
                     if (value != _alias)
                     {
                         _alias = value;
-                        var h = this.PropertyChanged;
-                        if (h != null)
-                            h(this, new PropertyChangedEventArgs("Alias")); //NOXLATE
+                        this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Alias)));
                     }
                 }
             }
@@ -68,9 +66,7 @@ namespace Maestro.AddIn.Rest.UI.Methods
                     if (value != _expression)
                     {
                         _expression = value;
-                        var h = this.PropertyChanged;
-                        if (h != null)
-                            h(this, new PropertyChangedEventArgs("Expression")); //NOXLATE
+                        this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Expression)));
                     }
                 }
             }

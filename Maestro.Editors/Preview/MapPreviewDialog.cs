@@ -83,7 +83,7 @@ namespace Maestro.Editors.Preview
 
         private void mapViewer_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "IsBusy") //NOXLATE
+            if (e.PropertyName == nameof(mapViewer.IsBusy))
             {
                 grpOtherTools.Enabled = !mapViewer.IsBusy;
 

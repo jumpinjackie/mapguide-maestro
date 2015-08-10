@@ -201,10 +201,7 @@ namespace Maestro.Editors.LayerDefinition.Vector
             }
         }
 
-        private void OnVectorLayerPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            OnResourceChanged();
-        }
+        private void OnVectorLayerPropertyChanged(object sender, PropertyChangedEventArgs e) => OnResourceChanged();
 
         protected override void UnsubscribeEventHandlers()
         {

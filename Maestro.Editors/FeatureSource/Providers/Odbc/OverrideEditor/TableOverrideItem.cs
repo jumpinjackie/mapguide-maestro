@@ -103,12 +103,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
             }
         }
 
-        private void OnPropertyChanged(string name)
-        {
-            var handler = this.PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(name));
-        }
+        private void OnPropertyChanged(string name) => this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

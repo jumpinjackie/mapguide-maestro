@@ -183,17 +183,9 @@ namespace Maestro.Editors.FeatureSource.Extensions
             _propertyJoins.ListChanged += new ListChangedEventHandler(OnPropertyJoinListChanged);
         }
 
-        private void OnRelationPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            OnResourceChanged();
-        }
+        private void OnRelationPropertyChanged(object sender, PropertyChangedEventArgs e) => OnResourceChanged();
 
-        private void OnResourceChanged()
-        {
-            var handler = this.ResourceChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
-        }
+        private void OnResourceChanged() => this.ResourceChanged?.Invoke(this, EventArgs.Empty);
 
         public event EventHandler ResourceChanged;
 

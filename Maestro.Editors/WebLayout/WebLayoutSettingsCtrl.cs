@@ -74,33 +74,33 @@ namespace Maestro.Editors.WebLayout
 
             var wl2 = _wl as IWebLayout2;
             if (wl2 != null)
-                CheckBoxBinder.BindChecked(chkPingServer, wl2, "EnablePingServer");
+                CheckBoxBinder.BindChecked(chkPingServer, wl2, nameof(wl2.EnablePingServer));
             else
                 chkPingServer.Visible = false;
 
-            TextBoxBinder.BindText(numX, _view, "CenterX");
-            TextBoxBinder.BindText(numY, _view, "CenterY");
-            TextBoxBinder.BindText(numScale, _view, "Scale");
+            TextBoxBinder.BindText(numX, _view, nameof(_view.CenterX));
+            TextBoxBinder.BindText(numY, _view, nameof(_view.CenterY));
+            TextBoxBinder.BindText(numScale, _view, nameof(_view.Scale));
 
-            TextBoxBinder.BindText(txtBrowserTitle, _wl, "Title");
-            TextBoxBinder.BindText(txtMapDefinition, _wl.Map, "ResourceId");
-            TextBoxBinder.BindText(txtInitialTaskPaneUrl, _wl.TaskPane, "InitialTask");
+            TextBoxBinder.BindText(txtBrowserTitle, _wl, nameof(_wl.Title));
+            TextBoxBinder.BindText(txtMapDefinition, _wl.Map, nameof(_wl.Map.ResourceId));
+            TextBoxBinder.BindText(txtInitialTaskPaneUrl, _wl.TaskPane, nameof(_wl.TaskPane.InitialTask));
 
-            CheckBoxBinder.BindChecked(chkContextMenu, _wl.ContextMenu, "Visible");
-            CheckBoxBinder.BindChecked(chkLegend, _wl.InformationPane, "LegendVisible");
-            CheckBoxBinder.BindChecked(chkProperties, _wl.InformationPane, "PropertiesVisible");
-            CheckBoxBinder.BindChecked(chkStatusBar, _wl.StatusBar, "Visible");
+            CheckBoxBinder.BindChecked(chkContextMenu, _wl.ContextMenu, nameof(_wl.ContextMenu.Visible));
+            CheckBoxBinder.BindChecked(chkLegend, _wl.InformationPane, nameof(_wl.InformationPane.LegendVisible));
+            CheckBoxBinder.BindChecked(chkProperties, _wl.InformationPane, nameof(_wl.InformationPane.PropertiesVisible));
+            CheckBoxBinder.BindChecked(chkStatusBar, _wl.StatusBar, nameof(_wl.StatusBar.Visible));
 
-            CheckBoxBinder.BindChecked(chkTaskPane, _wl.TaskPane, "Visible");
-            CheckBoxBinder.BindChecked(chkTaskBar, _wl.TaskPane.TaskBar, "Visible");
-            CheckBoxBinder.BindChecked(chkToolbar, _wl.ToolBar, "Visible");
-            CheckBoxBinder.BindChecked(chkZoomControl, _wl.ZoomControl, "Visible");
+            CheckBoxBinder.BindChecked(chkTaskPane, _wl.TaskPane, nameof(_wl.TaskPane.Visible));
+            CheckBoxBinder.BindChecked(chkTaskBar, _wl.TaskPane.TaskBar, nameof(_wl.TaskPane.TaskBar.Visible));
+            CheckBoxBinder.BindChecked(chkToolbar, _wl.ToolBar, nameof(_wl.ToolBar.Visible));
+            CheckBoxBinder.BindChecked(chkZoomControl, _wl.ZoomControl, nameof(_wl.ZoomControl.Visible));
 
-            ComboBoxBinder.BindSelectedIndexChanged(cmbHyperlinkTarget, "SelectedItem", _wl.Map, "HyperlinkTarget");
-            TextBoxBinder.BindText(txtHyperlinkFrame, _wl.Map, "HyperlinkTargetFrame");
+            ComboBoxBinder.BindSelectedIndexChanged(cmbHyperlinkTarget, nameof(cmbHyperlinkTarget.SelectedItem), _wl.Map, nameof(_wl.Map.HyperlinkTarget));
+            TextBoxBinder.BindText(txtHyperlinkFrame, _wl.Map, nameof(_wl.Map.HyperlinkTargetFrame));
 
-            TextBoxBinder.BindText(numInfoPaneWidth, _wl.InformationPane, "Width");
-            TextBoxBinder.BindText(numTaskPaneWidth, _wl.TaskPane, "Width");
+            TextBoxBinder.BindText(numInfoPaneWidth, _wl.InformationPane, nameof(_wl.InformationPane.Width));
+            TextBoxBinder.BindText(numTaskPaneWidth, _wl.TaskPane, nameof(_wl.TaskPane.Width));
 
             _wl.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnWebLayoutPropertyChanged, (eh) => _wl.PropertyChanged -= eh);
             _view.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnWebLayoutPropertyChanged, (eh) => _view.PropertyChanged -= eh);
@@ -135,7 +135,7 @@ namespace Maestro.Editors.WebLayout
 
                 if (!_edsvc.IsNew)
                 {
-                    txtAjaxViewerUrl.Text = baseUrl + "mapviewerajax/?WEBLAYOUT=" + _edsvc.ResourceID + "&LOCALE=" + _edsvc.PreviewLocale;
+                    txtAjaxViewerUrl.Text = $"{baseUrl}mapviewerajax/?WEBLAYOUT={_edsvc.ResourceID}&LOCALE={_edsvc.PreviewLocale}"; //NOXLATE
                     btnShowInBrowser.Enabled = true;
                 }
                 else
@@ -146,15 +146,9 @@ namespace Maestro.Editors.WebLayout
             catch { }
         }
 
-        private void OnSaved(object sender, EventArgs e)
-        {
-            GeneratePreviewUrl();
-        }
+        private void OnSaved(object sender, EventArgs e) => GeneratePreviewUrl();
 
-        private void OnWebLayoutPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            OnResourceChanged();
-        }
+        private void OnWebLayoutPropertyChanged(object sender, PropertyChangedEventArgs e) => OnResourceChanged();
 
         protected override void UnsubscribeEventHandlers()
         {

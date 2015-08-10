@@ -145,20 +145,12 @@ namespace Maestro.Editors
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="System.ComponentModel.PropertyChangedEventArgs"/> instance containing the event data.</param>
-        protected void OnResourcePropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            MarkDirty();
-        }
+        protected void OnResourcePropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) => MarkDirty();
 
         /// <summary>
         /// Called when [dirty state changed].
         /// </summary>
-        protected void OnDirtyStateChanged()
-        {
-            var handler = this.DirtyStateChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
-        }
+        protected void OnDirtyStateChanged() => this.DirtyStateChanged?.Invoke(this, EventArgs.Empty);
 
         /// <summary>
         /// Indicates whether the edited resource has unsaved changes

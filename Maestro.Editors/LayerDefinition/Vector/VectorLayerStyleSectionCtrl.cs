@@ -179,16 +179,11 @@ namespace Maestro.Editors.LayerDefinition.Vector
                 }
             }
 
-            internal VectorScaleRange Clone()
-            {
-                return new VectorScaleRange() { Item = this.Item.Clone() };
-            }
+            internal VectorScaleRange Clone() => new VectorScaleRange() { Item = this.Item.Clone() };
 
             private void OnPropertyChanged(string name)
             {
-                var handler = this.PropertyChanged;
-                if (handler != null)
-                    handler(this, new PropertyChangedEventArgs(name));
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
             }
 
             public event PropertyChangedEventHandler PropertyChanged;
@@ -212,21 +207,24 @@ namespace Maestro.Editors.LayerDefinition.Vector
                     double maxY = vy.MaxScale.HasValue ? vy.MaxScale.Value : double.MaxValue;
 
                     if (minX == minY)
+                    {
                         if (maxX == maxY)
                             return 0;
                         else
                             return maxX > maxY ? 1 : -1;
+                    }
                     else
+                    {
                         return minX > minY ? 1 : -1;
+                    }
                 }
                 else
+                {
                     return 0;
+                }
             }
 
-            public int Compare(IVectorScaleRange x, IVectorScaleRange y)
-            {
-                return this.Compare((object)x, (object)y);
-            }
+            public int Compare(IVectorScaleRange x, IVectorScaleRange y) => this.Compare((object)x, (object)y);
         }
 
         private void RemoveScaleRange(VectorScaleRange vsc)
@@ -384,14 +382,6 @@ namespace Maestro.Editors.LayerDefinition.Vector
                     OnResourceChanged();
                 }
             }
-        }
-
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
         }
     }
 }

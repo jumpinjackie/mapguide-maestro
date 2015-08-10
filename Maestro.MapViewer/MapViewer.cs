@@ -2081,12 +2081,7 @@ namespace Maestro.MapViewer
                 OnPropertyChanged(nameof(ZoomOutFactor));
             }
         }
-
-        private static string MakeWktPolygon(double x1, double y1, double x2, double y2)
-        {
-            return "POLYGON((" + x1 + " " + y1 + ", " + x2 + " " + y1 + ", " + x2 + " " + y2 + ", " + x1 + " " + y2 + ", " + x1 + " " + y1 + "))";
-        }
-
+        
         private int? _lastTooltipX;
         private int? _lastTooltipY;
 
@@ -2115,7 +2110,7 @@ namespace Maestro.MapViewer
             var pt2 = ScreenToMapUnits(x + this.PointPixelBuffer, y + this.PointPixelBuffer);
             //Unlike mg-desktop, this is actually easy API-wise
             var res = _map.QueryMapFeatures(
-                MakeWktPolygon(pt1.X, pt1.Y, pt2.X, pt2.Y),
+                Utility.MakeWktPolygon(pt1.X, pt1.Y, pt2.X, pt2.Y),
                 1,
                 false,
                 "INTERSECTS",
@@ -2151,7 +2146,7 @@ namespace Maestro.MapViewer
         {
             foreach (var prop in cls.Properties)
             {
-                if (prop.Type == OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinitionType.Raster)
+                if (prop.Type == PropertyDefinitionType.Raster)
                     return true;
             }
             return false;
@@ -2168,7 +2163,7 @@ namespace Maestro.MapViewer
         /// Gets the current buffered image
         /// </summary>
         /// <returns></returns>
-        public System.Drawing.Image GetCurrentImage()
+        public Image GetCurrentImage()
         {
             var bmp = new Bitmap(this.Width, this.Height);
             this.DrawToBitmap(bmp, this.ClientRectangle);
@@ -2178,10 +2173,7 @@ namespace Maestro.MapViewer
         /// <summary>
         /// Copies the image of the current map to the clipboard
         /// </summary>
-        public void CopyMap()
-        {
-            Clipboard.SetImage(this.GetCurrentImage());
-        }
+        public void CopyMap() => Clipboard.SetImage(this.GetCurrentImage());
 
         /// <summary>
         /// Selects features from all selectable layers that intersects the given geometry
@@ -2199,10 +2191,10 @@ namespace Maestro.MapViewer
             var sw = new Stopwatch();
             sw.Start();
 #endif
-            _map.QueryMapFeatures(wkt, maxFeatures, true, "INTERSECTS", CreateQueryOptionsForSelection());
+            _map.QueryMapFeatures(wkt, maxFeatures, true, "INTERSECTS", CreateQueryOptionsForSelection()); //NOXLATE
 #if TRACE
             sw.Stop();
-            Trace.TraceInformation("Selection processing completed in {0}ms", sw.ElapsedMilliseconds);
+            Trace.TraceInformation($"Selection processing completed in {sw.ElapsedMilliseconds}ms"); //NOXLATE
 #endif
 
             RenderSelection(true); //This is either async or queued up. Either way do this before firing off selection changed
@@ -2320,8 +2312,8 @@ namespace Maestro.MapViewer
 
             delayRenderTimer.Stop();
             delayRenderTimer.Start();
-            Trace.TraceInformation("Postponed delay render");
-            Trace.TraceInformation("Mouse delta: " + e.Delta + " (" + (e.Delta > 0 ? "Zoom in" : "Zoom out") + ")");
+            Trace.TraceInformation("Postponed delay render"); //NOXLATE
+            Trace.TraceInformation($"Mouse delta: {e.Delta} ({(e.Delta > 0 ? "Zoom in" : "Zoom out")})"); //NOXLATE
             //Negative delta = zoom out, Positive delta = zoom in
             //deltas are in units of 120, so treat each multiple of 120 as a "zoom unit"
 
@@ -2349,7 +2341,7 @@ namespace Maestro.MapViewer
                 Invalidate();
             }
 
-            Trace.TraceInformation("Delta units is: " + mouseWheelDelta);
+            Trace.TraceInformation($"Delta units is: {mouseWheelDelta}"); //NOXLATE
 
             //Completely ripped the number crunching here from the AJAX viewer with no sense of shame whatsoever :)
             delayRenderScale = GetNewScale(_map.ViewScale, mouseWheelDelta.Value);
@@ -2377,7 +2369,7 @@ namespace Maestro.MapViewer
             mouseWheelSx = (float)(w / (double)this.Width);
             mouseWheelSy = (float)(h / (double)this.Height);
 
-            Trace.TraceInformation("Paint transform (tx: " + mouseWheelTx + ", ty: " + mouseWheelTy + ", sx: " + mouseWheelSx + ", sy: " + mouseWheelSy + ")");
+            Trace.TraceInformation($"Paint transform (tx: {mouseWheelTx}, ty: {mouseWheelTy}, sx: {mouseWheelSx}, sy: {mouseWheelSy})"); //NOXLATE
         }
 
         private static double GetMetersPerPixel(int dpi)
@@ -2424,8 +2416,8 @@ namespace Maestro.MapViewer
 
         private void OnDelayRender(object sender, System.Timers.ElapsedEventArgs e)
         {
-            Trace.TraceInformation("Delay rendering");
-            Trace.TraceInformation("Set new map coordinates to (" + delayRenderViewCenter.Value.X + ", " + delayRenderViewCenter.Value.Y + " at " + delayRenderScale.Value + ")");
+            Trace.TraceInformation("Delay rendering"); //NOXLATE
+            Trace.TraceInformation($"Set new map coordinates to ({delayRenderViewCenter.Value.X }, {delayRenderViewCenter.Value.Y} at {delayRenderScale.Value})"); //NOXLATE
             ResetMouseWheelPaintTransforms();
             MethodInvoker action = () => { ZoomToView(delayRenderViewCenter.Value.X, delayRenderViewCenter.Value.Y, delayRenderScale.Value, true); };
             if (this.InvokeRequired)
@@ -2443,7 +2435,7 @@ namespace Maestro.MapViewer
             mouseWheelTx = null;
             mouseWheelTy = null;
             mouseWheelDelta = 0;
-            Trace.TraceInformation("Mouse wheel paint transform reset");
+            Trace.TraceInformation("Mouse wheel paint transform reset"); //NOXLATE
         }
 
         private void HandleMouseClick(MouseEventArgs e)
@@ -2538,7 +2530,7 @@ namespace Maestro.MapViewer
                                 Math.Max(mapPt1.X, mapPt2.X),
                                 Math.Max(mapPt1.Y, mapPt2.Y));
 
-                            SelectByWkt(MakeWktPolygon(env.MinX, env.MinY, env.MaxX, env.MaxY), 1);
+                            SelectByWkt(Utility.MakeWktPolygon(env.MinX, env.MinY, env.MaxX, env.MaxY), 1);
                         }
                         break;
                     case MapActiveTool.ZoomIn:
@@ -2570,20 +2562,20 @@ namespace Maestro.MapViewer
             if (e.Button == MouseButtons.Left)
             {
                 dragStart = e.Location;
-                Trace.TraceInformation("Drag started at (" + dragStart.X + ", " + dragStart.Y + ")");
+                Trace.TraceInformation($"Drag started at ({dragStart.X}, {dragStart.Y})"); //NOXLATE
 
                 switch (this.ActiveTool)
                 {
                     case MapActiveTool.Pan:
-                        Trace.TraceInformation("START PANNING");
+                        Trace.TraceInformation("START PANNING"); //NOXLATE
                         break;
 
                     case MapActiveTool.Select:
-                        Trace.TraceInformation("START SELECT");
+                        Trace.TraceInformation("START SELECT"); //NOXLATE
                         break;
 
                     case MapActiveTool.ZoomIn:
-                        Trace.TraceInformation("START ZOOM");
+                        Trace.TraceInformation("START ZOOM"); //NOXLATE
                         break;
                 }
             }
@@ -2741,7 +2733,7 @@ namespace Maestro.MapViewer
                             double mdy = coord.Y - pt.Y;
 
                             ZoomToView(coord.X, coord.Y, _map.ViewScale, true);
-                            Trace.TraceInformation("END PANNING");
+                            Trace.TraceInformation("END PANNING"); //NOXLATE
                         }
                         break;
                     case MapActiveTool.Select:
@@ -2753,7 +2745,7 @@ namespace Maestro.MapViewer
                                 Math.Min(mapPt.Y, mapDragPt.Y),
                                 Math.Max(mapPt.X, mapDragPt.X),
                                 Math.Max(mapPt.Y, mapDragPt.Y));
-                            SelectByWkt(MakeWktPolygon(env.MinX, env.MinY, env.MaxX, env.MaxY), -1);
+                            SelectByWkt(Utility.MakeWktPolygon(env.MinX, env.MinY, env.MaxX, env.MaxY), -1);
                         }
                         break;
                     case MapActiveTool.ZoomIn:
@@ -2782,12 +2774,7 @@ namespace Maestro.MapViewer
             }
         }
 
-        private void OnMouseMapPositionChanged(double x, double y)
-        {
-            var handler = this.MouseMapPositionChanged;
-            if (handler != null)
-                handler(this, new MapPointEventArgs(x, y));
-        }
+        private void OnMouseMapPositionChanged(double x, double y) => this.MouseMapPositionChanged.Invoke(this, new MapPointEventArgs(x, y));
 
         /// <summary>
         /// Raised when the map cursor position has changed
@@ -2868,10 +2855,7 @@ namespace Maestro.MapViewer
         /// <param name="x">The x.</param>
         /// <param name="y">The y.</param>
         /// <returns></returns>
-        public PointF ScreenToMapUnits(double x, double y)
-        {
-            return ScreenToMapUnits(x, y, false);
-        }
+        public PointF ScreenToMapUnits(double x, double y) => ScreenToMapUnits(x, y, false);
 
         private PointF ScreenToMapUnits(double x, double y, bool allowOutsideWindow)
         {
@@ -2902,12 +2886,7 @@ namespace Maestro.MapViewer
         /// <param name="name">The name.</param>
         protected void OnPropertyChanged(string name)
         {
-            Action action = () =>
-            {
-                var handler = this.PropertyChanged;
-                if (handler != null)
-                    handler(this, new PropertyChangedEventArgs(name));
-            };
+            Action action = () => this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
             if (this.InvokeRequired)
                 this.Invoke(action);
             else
@@ -2917,7 +2896,7 @@ namespace Maestro.MapViewer
         /// <summary>
         /// Gets whether this viewer has a loaded map
         /// </summary>
-        public bool HasLoadedMap { get { return _map != null; } }
+        public bool HasLoadedMap => _map != null;
 
         private bool? _hasTiledLayers;
 

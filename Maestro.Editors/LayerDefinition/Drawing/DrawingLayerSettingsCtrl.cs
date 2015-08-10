@@ -107,10 +107,7 @@ namespace Maestro.Editors.LayerDefinition.Drawing
             _dlayer.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnDrawingLayerPropertyChanged, (eh) => _dlayer.PropertyChanged -= eh);
         }
 
-        private void OnDrawingLayerPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            OnResourceChanged();
-        }
+        private void OnDrawingLayerPropertyChanged(object sender, PropertyChangedEventArgs e) => OnResourceChanged();
 
         private void PopulateSheets()
         {
@@ -123,12 +120,7 @@ namespace Maestro.Editors.LayerDefinition.Drawing
             }
         }
 
-        private void OnResourceChanged()
-        {
-            var handler = this.ResourceChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
-        }
+        private void OnResourceChanged() => this.ResourceChanged?.Invoke(this, EventArgs.Empty);
 
         public event EventHandler ResourceChanged;
 
@@ -158,10 +150,7 @@ namespace Maestro.Editors.LayerDefinition.Drawing
             }
         }
 
-        private bool IsAllLayersChecked()
-        {
-            return chkListDwfLayers.CheckedIndices.Count == chkListDwfLayers.Items.Count;
-        }
+        private bool IsAllLayersChecked() => chkListDwfLayers.CheckedIndices.Count == chkListDwfLayers.Items.Count;
 
         private string GetLayerFilter()
         {
@@ -184,10 +173,7 @@ namespace Maestro.Editors.LayerDefinition.Drawing
             }
         }
 
-        private void chkListDwfLayers_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            _dlayer.LayerFilter = GetLayerFilter();
-        }
+        private void chkListDwfLayers_ItemCheck(object sender, ItemCheckEventArgs e) => _dlayer.LayerFilter = GetLayerFilter();
 
         private void lnkCheckAll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -199,10 +185,7 @@ namespace Maestro.Editors.LayerDefinition.Drawing
             _dlayer.LayerFilter = GetLayerFilter();
         }
 
-        private void btnGoToDrawingSource_Click(object sender, EventArgs e)
-        {
-            _service.OpenResource(txtDrawingSource.Text);
-        }
+        private void btnGoToDrawingSource_Click(object sender, EventArgs e) => _service.OpenResource(txtDrawingSource.Text);
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
