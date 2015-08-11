@@ -318,7 +318,7 @@ namespace Maestro.Packaging
                     case ProgressType.Uploading:
                         {
                             HideTotal();
-                            if (pg == total)
+                            if (Math.Abs(pg - total) < double.Epsilon)
                             {
                                 OperationLabel.Text = Strings.ProgressWaitingForServer;
                                 CurrentProgress.Style = ProgressBarStyle.Marquee;

@@ -75,7 +75,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Tests
         [Test]
         public void TestArgParser()
         {
-            string[] args = new string[] { "-foo", "-bar:snafu", "-whatever:" };
+            string[] args = { "-foo", "-bar:snafu", "-whatever:" };
 
             var parser = new ArgumentParser(args);
             Assert.IsFalse(parser.IsDefined("snafu"));

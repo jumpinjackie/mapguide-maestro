@@ -36,6 +36,22 @@ using System.Reflection;
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Virtual member call in constructor", "RECS0021")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Use 'var' keyword", "RECS0091")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Nullable type can be simplified", "RECS0013")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Replace with '|='", "RECS0033", Justification = "The author prefers clarity of code")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Replace with '&='", "RECS0093", Justification = "The author prefers clarity of code")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Not implemented", "RECS0083", Justification = "A NotImplementedException is thrown for a reason")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Potential Code Quality Issues", "RECS0029", Justification = "Needed to satisfy an XML serialization contract")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Redundancies in Symbol Declarations", "RECS0001", Justification = "Other parts may exist in the future")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Redundancies in Code", "RECS0071", Justification = "This is just plain pedantry")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Redundancies in Code", "RECS0138", Justification = "The author prefers to be explicit")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Redundancies in Symbol Declarations", "RECS0004", Justification = "If one is specified, it's to satisfy an XML serialization contract")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Common Practices and Code Improvements", "RECS0060", Justification = "To be reviewed at a later time")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Common Practices and Code Improvements", "RECS0061", Justification = "To be reviewed at a later time")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Common Practices and Code Improvements", "RECS0062", Justification = "To be reviewed at a later time")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Common Practices and Code Improvements", "RECS0063", Justification = "To be reviewed at a later time")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Language", "CSE0001", Justification = "<Pending>")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Potential Code Quality Issues", "RECS0163", Justification = "<Pending>")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Common Practices and Code Improvements", "RECS0092", Justification = "<Pending>")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Language Usage Opportunities", "RECS0011", Justification = "<Pending>")]
 
 internal static class RevisionClass
 {

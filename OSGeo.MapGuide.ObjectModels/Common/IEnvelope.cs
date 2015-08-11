@@ -63,6 +63,16 @@ namespace OSGeo.MapGuide.ObjectModels.Common
     /// </summary>
     public static class EnvelopeExtensions
     {
+        static bool IsZero(this float val)
+        {
+            return Math.Abs(val) < float.Epsilon;
+        }
+
+        static bool IsZero(this double val)
+        {
+            return Math.Abs(val) < double.Epsilon;
+        }
+
         /// <summary>
         /// Gets whether the given instance is empty
         /// </summary>
@@ -71,10 +81,10 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         public static bool IsEmpty(this IEnvelope env)
         {
             return env == null ||
-               (Math.Abs(env.MaxX) < double.Epsilon &&
-                Math.Abs(env.MaxY) < double.Epsilon &&
-                Math.Abs(env.MinX) < double.Epsilon &&
-                Math.Abs(env.MinY) < double.Epsilon);
+               (env.MaxX.IsZero() &&
+                env.MaxY.IsZero() &&
+                env.MinX.IsZero() &&
+                env.MinY.IsZero());
         }
 
         /// <summary>

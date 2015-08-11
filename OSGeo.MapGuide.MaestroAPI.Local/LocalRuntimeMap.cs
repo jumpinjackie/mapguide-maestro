@@ -248,7 +248,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         public override void SetViewCenter(double x, double y)
         {
             var center = this.ViewCenter;
-            if (center.X != x || center.Y != y)
+            if (Math.Abs(center.X - x) > double.Epsilon || Math.Abs(center.Y - y) > double.Epsilon)
             {
                 _impl.SetViewCenterXY(x, y);
                 OnPropertyChanged(nameof(ViewCenter));

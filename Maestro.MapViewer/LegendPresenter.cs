@@ -193,8 +193,8 @@ namespace Maestro.MapViewer
                         type = LAYER_RASTER;
                 }
 
-                String[] typeStyles = new String[] { "PointTypeStyle", "LineTypeStyle", "AreaTypeStyle", "CompositeTypeStyle" };
-                String[] ruleNames = new String[] { "PointRule", "LineRule", "AreaRule", "CompositeRule" };
+                string[] typeStyles = { "PointTypeStyle", "LineTypeStyle", "AreaTypeStyle", "CompositeTypeStyle" };
+                string[] ruleNames = { "PointRule", "LineRule", "AreaRule", "CompositeRule" };
 
                 node.ToolTipText = string.Format(Properties.Resources.DefaultLayerTooltip, Environment.NewLine, layer.Name, layer.FeatureSourceID, layer.QualifiedClassName);
                 //Do this if not cached already from a previous run

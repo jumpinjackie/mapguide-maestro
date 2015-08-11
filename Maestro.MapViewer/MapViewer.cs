@@ -468,7 +468,7 @@ namespace Maestro.MapViewer
 
             ApplyPaintTranslateTransform(e);
 
-            if (mouseWheelSx.HasValue && mouseWheelSy.HasValue && mouseWheelSx.Value != 0.0 && mouseWheelSy.Value != 0.0)
+            if (mouseWheelSx.HasValue && mouseWheelSy.HasValue && !mouseWheelSx.Value.IsZero() && !mouseWheelSy.Value.IsZero())
             {
                 e.Graphics.ScaleTransform(mouseWheelSx.Value, mouseWheelSy.Value);
             }
@@ -1166,7 +1166,7 @@ namespace Maestro.MapViewer
             _extX2 = _orgX2 = env.MaxX;
             _extY1 = _orgY1 = env.MaxY;
 
-            if ((_orgX1 - _orgX2) == 0 || (_orgY1 - _orgY2) == 0)
+            if ((_orgX1 - _orgX2).IsZero() || (_orgY1 - _orgY2).IsZero())
             {
                 _extX1 = _orgX1 = -.1;
                 _extY2 = _orgX2 = .1;
@@ -1807,7 +1807,7 @@ namespace Maestro.MapViewer
             var oldScale = _map.ViewScale;
             _map.ViewScale = newScale;
 
-            if (oldScale != _map.ViewScale)
+            if (Math.Abs(oldScale - _map.ViewScale) > double.Epsilon)
             {
                 var handler = this.MapScaleChanged;
                 if (handler != null)
@@ -1844,7 +1844,7 @@ namespace Maestro.MapViewer
                     {
                         index = i;
                         bestDiff = scaleDiff;
-                        if (bestDiff == 0)
+                        if (bestDiff.IsZero())
                         {
                             //perfect match
                             break;

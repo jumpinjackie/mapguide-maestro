@@ -316,7 +316,10 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
                             {
                                 // remove previous segment
                                 int j;
-                                for (j = result.Length - 1; j >= 0 && result[j] != outputSeparator; j--) ;
+                                for (j = result.Length - 1; j >= 0 && result[j] != outputSeparator; j--)
+                                {
+                                }
+
                                 if (j > 0)
                                 {
                                     result.Length = j;

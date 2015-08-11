@@ -64,8 +64,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
 
             var emptyDataList = new ResourceDataList() { ResourceData = new System.ComponentModel.BindingList<ResourceDataListResourceData>() };
 
-            string [] resources = new string[]
-            {
+            string [] resources = {
                 "Library://Test/Data.FeatureSource",
                 "Library://Test/Data1.FeatureSource",
                 "Library://Test/Data2.FeatureSource",
@@ -133,8 +132,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
 
             var emptyDataList = new ResourceDataList() { ResourceData = new System.ComponentModel.BindingList<ResourceDataListResourceData>() };
 
-            string[] resources = new string[]
-            {
+            string[] resources = {
                 "Library://Test/Data.FeatureSource",
                 "Library://Test/Data1.FeatureSource",
                 "Library://Test/Data2.FeatureSource",
@@ -211,8 +209,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
 
             var emptyDataList = new ResourceDataList() { ResourceData = new System.ComponentModel.BindingList<ResourceDataListResourceData>() };
 
-            string[] resources = new string[]
-            {
+            string[] resources = {
                 "Library://Test/Data.FeatureSource",
                 "Library://Test/Data1.FeatureSource",
                 "Library://Test/Data2.FeatureSource",
@@ -286,8 +283,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
 
             var emptyDataList = new ResourceDataList() { ResourceData = new System.ComponentModel.BindingList<ResourceDataListResourceData>() };
 
-            string[] resources = new string[]
-            {
+            string[] resources = {
                 "Library://Test/Data.FeatureSource",
                 "Library://Test/Data1.FeatureSource",
                 "Library://Test/Data2.FeatureSource",

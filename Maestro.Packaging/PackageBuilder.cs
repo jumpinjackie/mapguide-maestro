@@ -132,7 +132,7 @@ namespace Maestro.Packaging
         public PackageBuilder(IServerConnection connection)
         {
             if (connection == null)
-                throw new ArgumentNullException("connection"); //NOXLATE
+                throw new ArgumentNullException(nameof(connection)); //NOXLATE
             m_connection = connection;
         }
 

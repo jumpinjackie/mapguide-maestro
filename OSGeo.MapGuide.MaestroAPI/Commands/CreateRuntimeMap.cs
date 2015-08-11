@@ -21,6 +21,7 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.ObjectModels.RuntimeMap;
+using System;
 
 namespace OSGeo.MapGuide.MaestroAPI.Commands
 {
@@ -78,6 +79,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
     /// A bitmask that defines what information to include in a CreateRuntimeMap or DescribeRuntimeMap
     /// response.
     /// </summary>
+    [Flags]
     public enum RuntimeMapRequestedFeatures : int
     {
         /// <summary>

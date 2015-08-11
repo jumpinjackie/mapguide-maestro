@@ -37,8 +37,8 @@ namespace OSGeo.MapGuide.ObjectModels
     /// </summary>
     public sealed class ResourceContentVersionChecker : IDisposable
     {
-        private XmlReader _reader;
-        private Stream _stream;
+        private readonly XmlReader _reader;
+        private readonly Stream _stream;
 
         /// <summary>
         /// Constructor

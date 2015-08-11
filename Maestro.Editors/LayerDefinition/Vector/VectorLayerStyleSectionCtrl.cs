@@ -206,9 +206,9 @@ namespace Maestro.Editors.LayerDefinition.Vector
                     double minY = vy.MinScale.HasValue ? vy.MinScale.Value : 0;
                     double maxY = vy.MaxScale.HasValue ? vy.MaxScale.Value : double.MaxValue;
 
-                    if (minX == minY)
+                    if (Math.Abs(minX - minY) < double.Epsilon)
                     {
-                        if (maxX == maxY)
+                        if (Math.Abs(maxX - maxY) < double.Epsilon)
                             return 0;
                         else
                             return maxX > maxY ? 1 : -1;

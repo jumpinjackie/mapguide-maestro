@@ -53,6 +53,16 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// </summary>
     public static class Utility
     {
+        public static bool IsZero(this float val)
+        {
+            return Math.Abs(val) < float.Epsilon;
+        }
+
+        public static bool IsZero(this double val)
+        {
+            return Math.Abs(val) < double.Epsilon;
+        }
+
         /// <summary>
         /// Creates the polygon WKT for the given bounding box
         /// </summary>

@@ -125,6 +125,7 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// <summary>
     /// Flags that can be used for the QueryMapFeatures operation
     /// </summary>
+    [Flags]
     public enum QueryMapFeaturesLayerAttributes : int
     {
         /// <summary>

@@ -242,7 +242,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             var orgX2 = ext.MaxX;
             var orgY1 = ext.MaxY;
 
-            if ((orgX1 - orgX2) == 0 || (orgY1 - orgY2) == 0)
+            if ((orgX1 - orgX2).IsZero() || (orgY1 - orgY2).IsZero())
             {
                 orgX1 = -.1;
                 orgX2 = .1;

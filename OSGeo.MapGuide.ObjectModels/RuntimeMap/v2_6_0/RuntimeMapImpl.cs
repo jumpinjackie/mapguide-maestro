@@ -136,22 +136,16 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap.v2_6_0
         : IReadOnlyCollection<TInterface>
         where TImpl : TInterface
     {
-        private IList<TImpl> _list;
+        private readonly IList<TImpl> _list;
 
         protected ReadOnlyCollectionWrapper(IList<TImpl> list)
         {
             _list = list;
         }
 
-        public int Count
-        {
-            get { return _list.Count; }
-        }
+        public int Count => _list.Count;
 
-        public TInterface this[int index]
-        {
-            get { return _list[index]; }
-        }
+        public TInterface this[int index] => _list[index];
 
         private class Enumerator : IEnumerator<TInterface>
         {
@@ -164,19 +158,13 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap.v2_6_0
                 _innerList = list;
             }
 
-            public TInterface Current
-            {
-                get { return _innerList[_pos]; }
-            }
+            public TInterface Current => _innerList[_pos];
 
             public void Dispose()
             {
             }
 
-            object System.Collections.IEnumerator.Current
-            {
-                get { return _innerList[_pos]; }
-            }
+            object System.Collections.IEnumerator.Current => _innerList[_pos];
 
             public bool MoveNext()
             {
@@ -184,34 +172,19 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap.v2_6_0
                 return _pos <= _innerList.Count - 1;
             }
 
-            public void Reset()
-            {
-                _pos = -1;
-            }
+            public void Reset() => _pos = -1;
         }
 
-        public IEnumerator<TInterface> GetEnumerator()
-        {
-            return new Enumerator(_list);
-        }
+        public IEnumerator<TInterface> GetEnumerator() => new Enumerator(_list);
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return _list.GetEnumerator();
-        }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => _list.GetEnumerator();
     }
 
     partial class RuntimeMapLayer : IRuntimeLayerInfo
     {
-        int IRuntimeLayerInfo.LayerType
-        {
-            get { return Convert.ToInt32(this.Type); }
-        }
+        int IRuntimeLayerInfo.LayerType => Convert.ToInt32(this.Type);
 
-        IFeatureSourceInfo IRuntimeLayerInfo.FeatureSource
-        {
-            get { return this.FeatureSource; }
-        }
+        IFeatureSourceInfo IRuntimeLayerInfo.FeatureSource => this.FeatureSource;
 
         private ScaleRangeCollection _roScales;
 
@@ -229,41 +202,23 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap.v2_6_0
             }
         }
 
-        string IRuntimeMapLegendElement.ObjectID
-        {
-            get { return this.ObjectId; }
-        }
+        string IRuntimeMapLegendElement.ObjectID => this.ObjectId;
 
-        string IRuntimeMapLegendElement.ParentID
-        {
-            get { return this.ParentId; }
-        }
+        string IRuntimeMapLegendElement.ParentID => this.ParentId;
     }
 
     partial class FeatureSourceInfo : IFeatureSourceInfo
     {
-        string IFeatureSourceInfo.ResourceID
-        {
-            get { return this.ResourceId; }
-        }
+        string IFeatureSourceInfo.ResourceID => this.ResourceId;
     }
 
     partial class RuntimeMapGroup : IRuntimeLayerGroupInfo
     {
-        int IRuntimeLayerGroupInfo.GroupType
-        {
-            get { return Convert.ToInt32(this.Type); }
-        }
+        int IRuntimeLayerGroupInfo.GroupType => Convert.ToInt32(this.Type);
 
-        string IRuntimeMapLegendElement.ObjectID
-        {
-            get { return this.ObjectId; }
-        }
+        string IRuntimeMapLegendElement.ObjectID => this.ObjectId;
 
-        string IRuntimeMapLegendElement.ParentID
-        {
-            get { return this.ParentId; }
-        }
+        string IRuntimeMapLegendElement.ParentID => this.ParentId;
     }
 
     internal class ReadOnlyLayerCollection : ReadOnlyCollectionWrapper<IRuntimeLayerInfo, RuntimeMapLayer>,
@@ -332,10 +287,7 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap.v2_6_0
 
     partial class FeatureStyleInfo : IFeatureStyleInfo
     {
-        int IFeatureStyleInfo.Type
-        {
-            get { return Convert.ToInt32(this.Type); }
-        }
+        int IFeatureStyleInfo.Type => Convert.ToInt32(this.Type);
 
         private RuleInfoCollection _roRules;
 
@@ -359,10 +311,7 @@ namespace OSGeo.MapGuide.ObjectModels.RuntimeMap.v2_6_0
 
     partial class RuleInfo : IRuleInfo
     {
-        string IRuleInfo.IconBase64
-        {
-            get { return this.Icon; }
-        }
+        string IRuleInfo.IconBase64 => this.Icon;
     }
 
     partial class CoordinateSystemType : ICoordinateSystemInfo
