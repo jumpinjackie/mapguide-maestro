@@ -52,7 +52,7 @@ namespace MgCooker
 
         private static bool hasConsole = true;
 
-        [STAThread()]
+        [STAThread]
         public static void Main(string[] args)
         {
             System.Windows.Forms.Application.EnableVisualStyles();

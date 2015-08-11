@@ -841,7 +841,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0
                 {
                     if (typeof(ISimpleSymbolDefinition).IsAssignableFrom(this.Item.GetType()))
                         return SimpleSymbolReferenceType.Inline;
-                    else if (typeof(string) == this.Item.GetType())
+                    else if (this.Item is string)
                         return SimpleSymbolReferenceType.Library;
                 }
                 return SimpleSymbolReferenceType.Undefined;

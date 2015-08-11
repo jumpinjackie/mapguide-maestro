@@ -32,10 +32,10 @@ using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.Common;
 namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class ResourceMigratorTests
     {
-        [Test()]
+        [Test]
         public void ResourceMigratorTest()
         {
             var source = new Mock<IServerConnection>();
@@ -50,7 +50,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
             Assert.NotNull(mig.Target);
         }
 
-        [Test()]
+        [Test]
         public void CopyResourcesWithOverwriteTest()
         {
             var sr = new Mock<IResourceService>();
@@ -119,7 +119,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
             tr.Verify(c => c.SaveResourceAs(It.IsAny<IResource>(), It.IsAny<string>()), Times.Exactly(5));
         }
 
-        [Test()]
+        [Test]
         public void CopyResourcesWithoutOverwriteTest()
         {
             var sr = new Mock<IResourceService>();
@@ -197,7 +197,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
             tr.Verify(c => c.SaveResourceAs(It.IsAny<IResource>(), "Library://Migrated/Data4.FeatureSource"), Times.Once);
         }
 
-        [Test()]
+        [Test]
         public void MoveResourcesWithOverwriteTest()
         {
             var sr = new Mock<IResourceService>();
@@ -272,7 +272,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
             sr.Verify(c => c.DeleteResource(resources[4]), Times.Once);
         }
 
-        [Test()]
+        [Test]
         public void MoveResourcesWithoutOverwriteTest()
         {
             var sr = new Mock<IResourceService>();
@@ -356,7 +356,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
             sr.Verify(c => c.DeleteResource(resources[4]), Times.Once);
         }
 
-        //[Test()]
+        //[Test]
         //public void MigrateResourceTest()
         //{
         //    Assert.Fail();

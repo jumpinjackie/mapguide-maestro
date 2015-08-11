@@ -191,7 +191,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.Xml.Serialization.XmlAttributeAttribute]
         public bool Enumerable
         {
             get
@@ -205,7 +205,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.Xml.Serialization.XmlAttributeAttribute]
         public bool Protected
         {
             get
@@ -219,7 +219,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.Xml.Serialization.XmlAttributeAttribute]
         public bool Required
         {
             get

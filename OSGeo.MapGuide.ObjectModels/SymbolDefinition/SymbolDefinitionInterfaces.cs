@@ -600,7 +600,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     /// Enumerates the allowed DataType values
     /// </summary>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.3.0.33572")]
-    [System.SerializableAttribute()]
+    [Serializable]
     public enum DataType
     {
         /// <remarks/>
@@ -1438,7 +1438,7 @@ namespace OSGeo.MapGuide.ObjectModels.SymbolDefinition
     /// <summary>
     /// Enumerates the allowed DataType values. Introduced with Symbol Definition 1.1.0 schema
     /// </summary>
-    [System.SerializableAttribute()]
+    [Serializable]
     public enum DataType2
     {
         /// <remarks/>

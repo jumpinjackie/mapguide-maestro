@@ -64,6 +64,20 @@ namespace OSGeo.MapGuide.ObjectModels.Common
     public static class EnvelopeExtensions
     {
         /// <summary>
+        /// Gets whether the given instance is empty
+        /// </summary>
+        /// <param name="env"></param>
+        /// <returns></returns>
+        public static bool IsEmpty(this IEnvelope env)
+        {
+            return env == null ||
+               (Math.Abs(env.MaxX) < double.Epsilon &&
+                Math.Abs(env.MaxY) < double.Epsilon &&
+                Math.Abs(env.MinX) < double.Epsilon &&
+                Math.Abs(env.MinY) < double.Epsilon);
+        }
+
+        /// <summary>
         /// Gets the center of the specified envelope
         /// </summary>
         /// <param name="env"></param>

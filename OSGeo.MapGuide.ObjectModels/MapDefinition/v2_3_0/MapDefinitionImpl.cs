@@ -384,16 +384,7 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v1_0_0
 
             return layer;
         }
-
-        private static bool IsEmpty(Box2DType box2DType)
-        {
-            return box2DType == null ||
-                (box2DType.MaxX == 0.0 &&
-                box2DType.MaxY == 0.0 &&
-                box2DType.MinX == 0.0 &&
-                box2DType.MinY == 0.0);
-        }
-
+        
         [XmlIgnore]
         OSGeo.MapGuide.ObjectModels.Common.IEnvelope IMapDefinition.Extents
         {

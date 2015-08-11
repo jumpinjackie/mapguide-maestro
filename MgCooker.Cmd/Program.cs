@@ -27,7 +27,7 @@ namespace MgCooker.Cmd
 {
     internal class Program
     {
-        [STAThread()]
+        [STAThread]
         private static void Main(string[] args)
         {
             //Append the "/commandline" switch

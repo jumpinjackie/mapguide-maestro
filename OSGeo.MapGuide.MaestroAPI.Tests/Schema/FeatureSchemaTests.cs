@@ -28,10 +28,10 @@ using NUnit.Framework;
 using System.Xml;
 namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class FeatureSchemaTests
     {
-        [Test()]
+        [Test]
         public void FeatureSchemaTest()
         {
             var fs = new FeatureSchema();
@@ -50,7 +50,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.AreEqual(0, fs.Classes.Count);
         }
 
-        [Test()]
+        [Test]
         public void AddClassTest()
         {
             var fs = new FeatureSchema("Foo", "Bar");
@@ -63,7 +63,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.AreEqual(1, fs.Classes.Count);
         }
 
-        [Test()]
+        [Test]
         public void RemoveClassTest()
         {
             var fs = new FeatureSchema("Foo", "Bar");
@@ -87,7 +87,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.AreEqual(0, fs.Classes.Count);
         }
 
-        [Test()]
+        [Test]
         public void GetClassTest()
         {
             var fs = new FeatureSchema("Foo", "Bar");
@@ -101,7 +101,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.NotNull(fs.GetClass("Class1"));
         }
 
-        [Test()]
+        [Test]
         public void IndexOfTest()
         {
             var fs = new FeatureSchema("Foo", "Bar");
@@ -117,7 +117,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.Less(fs.IndexOf(cls), 0);
         }
 
-        [Test()]
+        [Test]
         public void GetItemTest()
         {
             var fs = new FeatureSchema("Foo", "Bar");
@@ -135,7 +135,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.Throws<ArgumentOutOfRangeException>(() => fs.GetItem(0));
         }
 
-        [Test()]
+        [Test]
         public void WriteXmlTest()
         {
             var fs = new FeatureSchema("Foo", "Bar");
@@ -159,7 +159,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.IsNotNullOrEmpty(xml);
         }
 
-        [Test()]
+        [Test]
         public void CloneTest()
         {
             var fs = new FeatureSchema("Foo", "Bar");

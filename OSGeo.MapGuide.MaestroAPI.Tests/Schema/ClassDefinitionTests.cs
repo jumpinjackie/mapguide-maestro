@@ -29,10 +29,10 @@ using System.Xml;
 using System.IO;
 namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class SchemaTests
     {
-        [Test()]
+        [Test]
         public void ClassDefinitionTest()
         {
             Assert.Throws<ArgumentNullException>(() => new ClassDefinition(null, ""));
@@ -46,7 +46,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.Null(cls.Parent);
         }
 
-        [Test()]
+        [Test]
         public void GetOrdinalTest()
         {
             var cls = new ClassDefinition("Foo", "Bar");
@@ -58,7 +58,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.GreaterOrEqual(cls.GetOrdinal("Prop1"), 0);
         }
 
-        [Test()]
+        [Test]
         public void ClearIdentityPropertiesTest()
         {
             var cls = new ClassDefinition("Foo", "Bar");
@@ -74,7 +74,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.AreEqual(0, cls.IdentityProperties.Count);
         }
 
-        [Test()]
+        [Test]
         public void IndexOfPropertyTest()
         {
             var cls = new ClassDefinition("Foo", "Bar");
@@ -92,7 +92,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.GreaterOrEqual(cls.IndexOfProperty(prop), 0);
         }
 
-        [Test()]
+        [Test]
         public void RemovePropertyTest()
         {
             var cls = new ClassDefinition("Foo", "Bar");
@@ -118,7 +118,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.Less(cls.IndexOfProperty(prop), 0);
         }
 
-        [Test()]
+        [Test]
         public void RemovePropertyAtTest()
         {
             var cls = new ClassDefinition("Foo", "Bar");
@@ -148,7 +148,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.Less(cls.IndexOfProperty(prop), 0);
         }
 
-        [Test()]
+        [Test]
         public void FindPropertyTest()
         {
             var cls = new ClassDefinition("Foo", "Bar");
@@ -169,7 +169,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.NotNull(cls.FindProperty("Prop1"));
         }
 
-        [Test()]
+        [Test]
         public void CloneTest()
         {
             var cls = new ClassDefinition("Foo", "Bar");

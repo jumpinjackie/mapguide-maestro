@@ -29,10 +29,10 @@ using NUnit.Framework;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class ResourceSchemaChainTests
     {
-        [Test()]
+        [Test]
         public void GetValidatingSchemasTest()
         {
             var schemas = ResourceSchemaChain.GetValidatingSchemas("LayerDefinition-1.0.0.xsd");

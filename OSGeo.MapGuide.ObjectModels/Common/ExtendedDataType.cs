@@ -31,8 +31,8 @@ using System.Threading.Tasks;
 namespace OSGeo.MapGuide.ObjectModels.Common
 {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.3.0.33572")] //NOXLATE
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.SerializableAttribute]
+    [System.Diagnostics.DebuggerStepThroughAttribute]
     [System.ComponentModel.DesignerCategoryAttribute("code")] //NOXLATE
     public partial class ExtendedDataType : System.ComponentModel.INotifyPropertyChanged
     {
@@ -41,7 +41,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
 
         private static System.Xml.Serialization.XmlSerializer serializer;
 
-        [System.Xml.Serialization.XmlAnyElementAttribute()]
+        [System.Xml.Serialization.XmlAnyElementAttribute]
         public System.Xml.XmlElement[] Any
         {
             get

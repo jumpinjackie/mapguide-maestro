@@ -52,10 +52,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <summary>
         /// Gets the validating XML schema
         /// </summary>
-        public string ValidatingSchema
-        {
-            get { return this.ResourceType + "-" + this.ResourceVersion.ToString() + ".xsd"; } //NOXLATE
-        }
+        public string ValidatingSchema => $"{this.ResourceType}-{this.ResourceVersion.ToString()}.xsd"; //NOXLATE
 
         /// <summary>
         /// Gets or sets the resource id
@@ -69,11 +66,7 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <summary>
         /// Gets the resource type
         /// </summary>
-        public string ResourceType
-        {
-            get;
-            private set;
-        }
+        public string ResourceType { get; }
 
         /// <summary>
         /// Gets or sets the XML content
@@ -88,28 +81,18 @@ namespace OSGeo.MapGuide.ObjectModels
         /// Gets the XML form of this instance
         /// </summary>
         /// <returns></returns>
-        public string Serialize()
-        {
-            return this.XmlContent;
-        }
+        public string Serialize() => this.XmlContent;
 
         /// <summary>
         /// Gets the resource version
         /// </summary>
-        public Version ResourceVersion
-        {
-            get;
-            private set;
-        }
+        public Version ResourceVersion { get; }
 
         /// <summary>
         /// Returns a clone of this instance
         /// </summary>
         /// <returns></returns>
-        public object Clone()
-        {
-            return this.MemberwiseClone();
-        }
+        public object Clone() => this.MemberwiseClone();
 
         /// <summary>
         /// Raised when a property changes
@@ -119,9 +102,6 @@ namespace OSGeo.MapGuide.ObjectModels
         /// <summary>
         /// Gets whether this resource is strongly typed
         /// </summary>
-        public bool IsStronglyTyped
-        {
-            get { return false; }
-        }
+        public bool IsStronglyTyped => false;
     }
 }

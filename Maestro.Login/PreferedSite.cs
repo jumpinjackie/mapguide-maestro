@@ -352,7 +352,7 @@ namespace Maestro.Login
         /// Gets or sets the approved version.
         /// </summary>
         /// <value>The approved version.</value>
-        [System.Xml.Serialization.XmlIgnore()]
+        [System.Xml.Serialization.XmlIgnore]
         public Version ApprovedVersion
         {
             get

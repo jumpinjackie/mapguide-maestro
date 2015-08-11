@@ -36,7 +36,7 @@ using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class RuntimeMapTests
     {
         private static RuntimeMap CreateTestMap()
@@ -86,7 +86,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             return map;
         }
 
-        [Test()]
+        [Test]
         public void UnsupportedConnectionTest()
         {
             var res = (IMapDefinition)ObjectFactory.Deserialize(ResourceTypes.MapDefinition.ToString(), File.OpenRead("UserTestData\\TestTiledMap.xml"));
@@ -99,7 +99,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.Throws<NotSupportedException>(() => new RuntimeMap(conn.Object, res, 1.0, true));
         }
 
-        [Test()]
+        [Test]
         public void GetFiniteDisplayScaleAtTest()
         {
             var map = CreateTestMap();
@@ -111,7 +111,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             }
         }
 
-        [Test()]
+        [Test]
         public void SetViewCenterTest()
         {
             var map = CreateTestMap();
@@ -120,7 +120,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.AreEqual(23, map.ViewCenter.Y);
         }
 
-        [Test()]
+        [Test]
         public void GetGroupByNameTest()
         {
             var map = CreateTestMap();
@@ -128,7 +128,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.Null(map.Groups["asjgsfdsf"]);
         }
 
-        [Test()]
+        [Test]
         public void GetLayerByObjectIdTest()
         {
             var map = CreateTestMap();
@@ -139,7 +139,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.Null(map.GetLayerByObjectId("asjgsfdsf"));
         }
 
-        [Test()]
+        [Test]
         public void InsertLayerTest()
         {
             var map = CreateTestMap();
@@ -157,7 +157,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.AreSame(lyr, lyr2);
         }
 
-        [Test()]
+        [Test]
         public void SetLayerIndexTest()
         {
             var map = CreateTestMap();
@@ -176,7 +176,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.AreSame(lyr, lyr2);
         }
 
-        [Test()]
+        [Test]
         public void RemoveLayerAtTest()
         {
             var map = CreateTestMap();
@@ -189,7 +189,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.Null(map.Layers[lyr.Name]);
         }
 
-        [Test()]
+        [Test]
         public void IndexOfLayerTest()
         {
             var map = CreateTestMap();
@@ -199,7 +199,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.Less(map.IndexOfLayer("sdjgdsfasdf"), 0);
         }
 
-        [Test()]
+        [Test]
         public void RemoveLayerTest()
         {
             var map = CreateTestMap();
@@ -210,7 +210,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.AreEqual(2, map.Layers.Count);
         }
 
-        [Test()]
+        [Test]
         public void RemoveGroupTest()
         {
             var map = CreateTestMap();
@@ -224,7 +224,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.AreEqual(0, map.Groups.Count);
         }
 
-        [Test()]
+        [Test]
         public void GetLayersOfGroupTest()
         {
             var map = CreateTestMap();
@@ -234,7 +234,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.AreEqual(0, layers.Length);
         }
 
-        [Test()]
+        [Test]
         public void GetGroupsOfGroupTest()
         {
             var map = CreateTestMap();
@@ -253,7 +253,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.AreEqual(0, groups.Length);
         }
         
-        [Test()]
+        [Test]
         public void GetLayerByNameTest()
         {
             var map = CreateTestMap();
@@ -263,7 +263,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.Null(map.Layers["sdhgdsafdsfd"]);
         }
 
-        [Test()]
+        [Test]
         public void UpdateMapDefinitionTest()
         {
             var map = CreateTestMap();
@@ -278,7 +278,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping.Tests
             Assert.AreEqual("Base Layer Group", grp.Name);
         }
 
-        [Test()]
+        [Test]
         public void ToMapDefinitionTest()
         {
             var map = CreateTestMap();

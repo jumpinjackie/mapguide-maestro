@@ -1286,7 +1286,7 @@ public class ArbitraryWidgetValue : WidgetValue
     /// <summary>
     /// Defines the type of UI items
     /// </summary>
-    [System.SerializableAttribute()]
+    [System.SerializableAttribute]
     public enum UiItemFunctionType
     {
         /// <remarks/>

@@ -40,7 +40,7 @@ using System.Text;
 
 namespace OSGeo.MapGuide.ObjectModels.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class ObjectFactoryTests
     {
         [SetUp]
@@ -55,7 +55,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             ObjectFactory.Reset();
         }
 
-        [Test()]
+        [Test]
         public void RegisterResourceTest()
         {
             var ser = new Mock<ResourceSerializer>();
@@ -67,7 +67,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.DoesNotThrow(() => ObjectFactory.RegisterResource(new ResourceTypeDescriptor("MyNewResourceType", "1.0.0"), ser.Object));
         }
 
-        [Test()]
+        [Test]
         public void RegisterResourceSerializerTest()
         {
             Func<IResource, Stream> serFunc = (res) => null;
@@ -83,7 +83,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.DoesNotThrow(() => ObjectFactory.RegisterResourceSerializer(new ResourceTypeDescriptor("MyNewResourceType", "1.0.0"), serFunc, deserFunc));
         }
 
-        [Test()]
+        [Test]
         public void RegisterCompoundSymbolFactoryMethodTest()
         {
             Func<ICompoundSymbolDefinition> func = () => null;
@@ -95,7 +95,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.DoesNotThrow(() => ObjectFactory.RegisterCompoundSymbolFactoryMethod(new Version(3, 0, 0), func));
         }
 
-        [Test()]
+        [Test]
         public void RegisterSimpleSymbolFactoryMethodTest()
         {
             Func<ISimpleSymbolDefinition> func = () => null;
@@ -107,7 +107,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.DoesNotThrow(() => ObjectFactory.RegisterSimpleSymbolFactoryMethod(new Version(3, 0, 0), func));
         }
 
-        [Test()]
+        [Test]
         public void RegisterLayerFactoryMethodTest()
         {
             Func<LayerType, ILayerDefinition> func = (lt) => null;
@@ -119,7 +119,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.DoesNotThrow(() => ObjectFactory.RegisterLayerFactoryMethod(new Version(3, 0, 0), func));
         }
 
-        [Test()]
+        [Test]
         public void RegisterLoadProcedureFactoryMethodTest()
         {
             Func<ILoadProcedure> func = () => null;
@@ -129,7 +129,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test()]
+        [Test]
         public void RegisterWebLayoutFactoryMethodTest()
         {
             Func<string, IWebLayout> func = (mdfId) => null;
@@ -141,7 +141,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.DoesNotThrow(() => ObjectFactory.RegisterWebLayoutFactoryMethod(new Version(3, 0, 0), func));
         }
 
-        [Test()]
+        [Test]
         public void RegisterMapDefinitionFactoryMethodTest()
         {
             Func<IMapDefinition> func = () => null;
@@ -153,7 +153,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.DoesNotThrow(() => ObjectFactory.RegisterMapDefinitionFactoryMethod(new Version(4, 0, 0), func));
         }
 
-        [Test()]
+        [Test]
         public void RegisterWatermarkDefinitionFactoryMethodTest()
         {
             Func<SymbolDefinitionType, IWatermarkDefinition> func = (st) => null;
@@ -165,7 +165,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.DoesNotThrow(() => ObjectFactory.RegisterWatermarkDefinitionFactoryMethod(new Version(4, 0, 0), func));
         }
 
-        [Test()]
+        [Test]
         public void RegisterTileSetDefinitionFactoryMethodTest()
         {
             Func<ITileSetDefinition> func = () => null;
@@ -177,7 +177,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.DoesNotThrow(() => ObjectFactory.RegisterTileSetDefinitionFactoryMethod(new Version(4, 0, 0), func));
         }
 
-        [Test()]
+        [Test]
         public void CreateMetadataTest()
         {
             var meta = ObjectFactory.CreateMetadata();
@@ -186,7 +186,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.AreEqual(0, meta.Simple.Property.Count);
         }
 
-        [Test()]
+        [Test]
         public void CreateSecurityUserTest()
         {
             var user = ObjectFactory.CreateSecurityUser();
@@ -202,7 +202,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.NotNull(group.Group);
         }
 
-        [Test()]
+        [Test]
         public void CreateFeatureSourceExtensionTest()
         {
             var ext = ObjectFactory.CreateFeatureSourceExtension("Foo", "Bar");
@@ -214,7 +214,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.AreEqual(0, ext.CalculatedProperty.Count());
         }
 
-        [Test()]
+        [Test]
         public void CreateCalculatedPropertyTest()
         {
             var calc = ObjectFactory.CreateCalculatedProperty("Foo", "Bar");
@@ -222,7 +222,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.AreEqual("Bar", calc.Expression);
         }
 
-        [Test()]
+        [Test]
         public void CreateAttributeRelationTest()
         {
             var rel = ObjectFactory.CreateAttributeRelation();
@@ -232,7 +232,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.AreEqual(0, rel.RelatePropertyCount);
         }
 
-        [Test()]
+        [Test]
         public void CreateEnvelopeTest()
         {
             Assert.Throws<ArgumentException>(() => ObjectFactory.CreateEnvelope(.1, -.1, -.1, .1));
@@ -246,7 +246,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.AreEqual(1, env.MaxY);
         }
 
-        [Test()]
+        [Test]
         public void CreateDefaultLayerTest()
         {
             var versions = new Version[]
@@ -281,7 +281,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test()]
+        [Test]
         public void CreateDrawingSourceTest()
         {
             var ds = ObjectFactory.CreateDrawingSource();
@@ -292,7 +292,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.IsNullOrEmpty(ds.CoordinateSpace);
         }
 
-        [Test()]
+        [Test]
         public void CreateFeatureSourceTest()
         {
             var fs = ObjectFactory.CreateFeatureSource("OSGeo.SDF");
@@ -310,7 +310,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.AreEqual(0, fs.ConnectionPropertyNames.Length);
         }
 
-        [Test()]
+        [Test]
         public void CreateFeatureSourceTestWithParameters()
         {
             var param = new NameValueCollection();
@@ -338,7 +338,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.NotNull(param2["ReadOnly"]);
         }
 
-        [Test()]
+        [Test]
         public void CreateWatermarkTest()
         {
             var versions = new Version[]
@@ -360,7 +360,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test()]
+        [Test]
         public void CreateSymbolLibraryTest()
         {
             var lib = ObjectFactory.CreateSymbolLibrary();
@@ -369,7 +369,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.AreEqual(0, lib.Symbol.Count());
         }
 
-        [Test()]
+        [Test]
         public void CreateLoadProcedureTest()
         {
             foreach (LoadType lt in Enum.GetValues(typeof(LoadType)))
@@ -384,7 +384,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test()]
+        [Test]
         public void CreateLoadProcedureTestWithFileNames()
         {
             foreach (LoadType lt in Enum.GetValues(typeof(LoadType)))
@@ -406,7 +406,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test()]
+        [Test]
         public void CreateMapDefinitionTestWithName()
         {
             var versions = new Version[]
@@ -430,7 +430,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test()]
+        [Test]
         public void CreateMapDefinitionTestWithNameAndCoordSys()
         {
             var versions = new Version[]
@@ -454,7 +454,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test()]
+        [Test]
         public void CreateMapDefinitionTestWithNameAndCoordSysAndExtent()
         {
             var versions = new Version[]
@@ -483,7 +483,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test()]
+        [Test]
         public void CreateSimpleLabelTest()
         {
             var versions = new Version[]
@@ -510,7 +510,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test()]
+        [Test]
         public void CreateSimplePointTest()
         {
             var versions = new Version[]
@@ -530,7 +530,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test()]
+        [Test]
         public void CreateSimpleSolidLineTest()
         {
             var versions = new Version[]
@@ -550,7 +550,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test()]
+        [Test]
         public void CreateSimpleSolidFillTest()
         {
             var versions = new Version[]
@@ -570,7 +570,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test()]
+        [Test]
         public void CreateSimpleSymbolTest()
         {
             var versions = new Version[]
@@ -592,7 +592,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test()]
+        [Test]
         public void CreateCompoundSymbolTest()
         {
             var versions = new Version[]
@@ -616,7 +616,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             }
         }
 
-        [Test()]
+        [Test]
         public void CreatePrintLayoutTest()
         {
             var pl = ObjectFactory.CreatePrintLayout();
@@ -627,7 +627,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.NotNull(pl.CustomText);
         }
 
-        [Test()]
+        [Test]
         public void CreatePoint2DTest()
         {
             var pt = ObjectFactory.CreatePoint2D(1, 2);
@@ -635,7 +635,7 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
             Assert.AreEqual(2, pt.Y);
         }
 
-        [Test()]
+        [Test]
         public void CreatePoint3DTest()
         {
             var pt = ObjectFactory.CreatePoint3D(1, 2, 3);

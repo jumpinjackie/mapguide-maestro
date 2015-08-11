@@ -245,7 +245,7 @@ namespace OSGeo.MapGuide.ObjectModels.FeatureSource
     /// <summary>
     /// Defines the type of joins
     /// </summary>
-    [System.SerializableAttribute()]
+    [System.SerializableAttribute]
     public enum RelateTypeEnum
     {
         /// <remarks/>

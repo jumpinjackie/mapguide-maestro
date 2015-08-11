@@ -28,10 +28,10 @@ using NUnit.Framework;
 
 namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class DataPropertyDefinitionTests
     {
-        [Test()]
+        [Test]
         public void DataPropertyDefinitionTest()
         {
             var prop = new DataPropertyDefinition("Foo", "Bar");
@@ -40,7 +40,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.AreEqual(DataPropertyType.String, prop.DataType);
         }
 
-        [Test()]
+        [Test]
         public void IsNumericTypeTest()
         {
             var prop = new DataPropertyDefinition("Foo", "Bar");

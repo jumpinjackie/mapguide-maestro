@@ -31,7 +31,7 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure
     /// <summary>
     /// Defines how to handle duplicate SDF2 keys (not supported by Maestro)
     /// </summary>
-    [System.SerializableAttribute()]
+    [Serializable]
     public enum SdfKeyTreatmentType
     {
         /// <remarks/>

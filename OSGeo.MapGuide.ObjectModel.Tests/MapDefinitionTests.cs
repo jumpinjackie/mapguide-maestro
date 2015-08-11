@@ -22,6 +22,7 @@
 
 using NUnit.Framework;
 using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
@@ -34,6 +35,17 @@ namespace OSGeo.MapGuide.ObjectModels.Tests
     [TestFixture]
     public class MapDefinitionTests
     {
+        [Test]
+        public void Envelope_Empty()
+        {
+            IEnvelope env = ObjectFactory.CreateEnvelope(0.0, 0.0, 0.0, 0.0);
+            Assert.True(env.IsEmpty());
+            env = null;
+            Assert.True(env.IsEmpty());
+            env = ObjectFactory.CreateEnvelope(-0.00000000001, -0.0000000000000001, 0.0000000000000000001, 0.000000000000001);
+            Assert.False(env.IsEmpty());
+        }
+
         [Test]
         public void CreateTest_V30()
         {

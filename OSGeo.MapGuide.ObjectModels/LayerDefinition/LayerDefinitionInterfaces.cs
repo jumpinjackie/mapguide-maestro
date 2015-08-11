@@ -37,7 +37,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// The type of length unit
     /// </summary>
-    [System.SerializableAttribute()]
+    [Serializable]
     public enum LengthUnitType
     {
         /// <remarks/>
@@ -71,7 +71,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// The type of size context
     /// </summary>
-    [System.SerializableAttribute()]
+    [Serializable]
     public enum SizeContextType
     {
         /// <remarks/>
@@ -84,7 +84,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// The type of shape
     /// </summary>
-    [System.SerializableAttribute()]
+    [Serializable]
     public enum ShapeType
     {
         /// <remarks/>
@@ -109,7 +109,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// The type of background style
     /// </summary>
-    [System.SerializableAttribute()]
+    [Serializable]
     public enum BackgroundStyleType
     {
         /// <remarks/>
@@ -125,7 +125,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// The type of feature name
     /// </summary>
-    [System.SerializableAttribute()]
+    [Serializable]
     public enum FeatureNameType
     {
         /// <remarks/>
@@ -138,7 +138,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// The type of explicit color
     /// </summary>
-    [System.SerializableAttribute()]
+    [Serializable]
     [System.Xml.Serialization.XmlTypeAttribute(IncludeInSchema = false)]
     public enum ItemChoiceType
     {
@@ -1802,7 +1802,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// Type of elevation
     /// </summary>
-    [System.SerializableAttribute()]
+    [Serializable]
     public enum ElevationTypeType
     {
         /// <remarks/>
@@ -2021,7 +2021,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// The types of usage context
     /// </summary>
-    [System.SerializableAttribute()]
+    [Serializable]
     public enum UsageContextType
     {
         /// <remarks/>
@@ -2040,7 +2040,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition
     /// <summary>
     /// The types of geometry context
     /// </summary>
-    [System.SerializableAttribute()]
+    [Serializable]
     public enum GeometryContextType
     {
         /// <remarks/>

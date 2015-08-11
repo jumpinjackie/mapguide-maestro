@@ -604,6 +604,7 @@ namespace OSGeo.MapGuide.ObjectModels
             return GetParentFolder(identifier, false);
         }
 
+
         /// <summary>
         /// Gets the parent folder.
         /// </summary>

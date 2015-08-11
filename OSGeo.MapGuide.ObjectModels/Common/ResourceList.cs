@@ -53,6 +53,7 @@ namespace OSGeo.MapGuide.ObjectModels.Common
             };
         }
 
+
         /// <summary>
         /// For internal use only. Made public to satisfy serialization requirements. Use <see cref="M:OSGeo.MapGuide.ObjectModels.ResourceDocumentHeaderType.CreateDefault"/> to
         /// create new instances

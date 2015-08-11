@@ -323,15 +323,6 @@ namespace OSGeo.MapGuide.ObjectModels.MapDefinition
     /// </summary>
     public static class MapDefinitionExtensions
     {
-        public static bool IsEmpty(this IEnvelope box2DType)
-        {
-            return box2DType == null ||
-                (box2DType.MaxX == 0.0 &&
-                box2DType.MaxY == 0.0 &&
-                box2DType.MinX == 0.0 &&
-                box2DType.MinY == 0.0);
-        }
-
         /// <summary>
         /// Sets the extents of the map definition from the id of the the given layer definition
         /// Does nothing if the extent is already set

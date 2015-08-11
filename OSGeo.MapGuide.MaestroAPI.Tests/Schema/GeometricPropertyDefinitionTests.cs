@@ -27,10 +27,10 @@ using OSGeo.MapGuide.MaestroAPI.Schema;
 using NUnit.Framework;
 namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class GeometricPropertyDefinitionTests
     {
-        [Test()]
+        [Test]
         public void GeometricPropertyDefinitionTest()
         {
             var prop = new GeometricPropertyDefinition("Foo", "Bar");
@@ -40,7 +40,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.IsNullOrEmpty(prop.SpatialContextAssociation);
         }
 
-        [Test()]
+        [Test]
         public void GeometryTypesToStringTest()
         {
             var prop = new GeometricPropertyDefinition("Foo", "Bar");
@@ -57,7 +57,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.Less(types.IndexOf("surface"), 0);
         }
 
-        [Test()]
+        [Test]
         public void GetIndividualGeometricTypesTest()
         {
             var prop = new GeometricPropertyDefinition("Foo", "Bar");
@@ -75,7 +75,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema.Tests
             Assert.Less(types.IndexOf(FeatureGeometricType.Surface), 0);
         }
 
-        [Test()]
+        [Test]
         public void SpecificGeometryTypesTest()
         {
             var prop = new GeometricPropertyDefinition("Foo", "Bar");

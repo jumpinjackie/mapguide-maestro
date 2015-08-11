@@ -34,10 +34,10 @@ using System.Xml;
 
 namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class ResourceRebaserTests
     {
-        [Test()]
+        [Test]
         public void ResourceRebaserTest()
         {
             Assert.Throws<ArgumentNullException>(() => new ResourceRebaser(null));
@@ -46,7 +46,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection.Tests
             var rbaser = new ResourceRebaser(res.Object);
         }
 
-        [Test()]
+        [Test]
         public void RebaseTest()
         {
             var res = (IMapDefinition)ObjectFactory.Deserialize(ResourceTypes.MapDefinition.ToString(), File.OpenRead("UserTestData\\TestTiledMap.xml"));

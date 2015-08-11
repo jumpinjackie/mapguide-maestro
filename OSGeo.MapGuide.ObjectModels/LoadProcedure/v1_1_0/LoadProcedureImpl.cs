@@ -20,7 +20,6 @@
 
 #endregion Disclaimer / License
 
-#define LP110
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,25 +28,11 @@ using System.Xml.Serialization;
 
 #pragma warning disable 1591, 0114, 0108
 
-#if LP110
-
 namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_1_0
-#elif LP220
-namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v2_2_0
-#else
-
-namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0
-#endif
 {
     partial class LoadProcedure : ILoadProcedure
     {
-#if LP110
         private static readonly Version RES_VERSION = new Version(1, 1, 0);
-#elif LP220
-        private static readonly Version RES_VERSION = new Version(2, 2, 0);
-#else
-        private static readonly Version RES_VERSION = new Version(1, 0, 0);
-#endif
 
         private string _resId;
 
@@ -73,52 +58,25 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0
         }
 
         [XmlIgnore]
-        public string ResourceType
-        {
-            get
-            {
-                return ResourceTypes.LoadProcedure.ToString();
-            }
-        }
+        public string ResourceType => ResourceTypes.LoadProcedure.ToString();
 
         [XmlIgnore]
-        public Version ResourceVersion
-        {
-            get
-            {
-                return RES_VERSION;
-            }
-        }
+        public Version ResourceVersion => RES_VERSION;
 
-        object ICloneable.Clone()
-        {
-            return this.Clone();
-        }
+        object ICloneable.Clone() => this.Clone();
 
         [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")] //NOXLATE
         public string ValidatingSchema
         {
-#if LP110
             get { return "LoadProcedure-1.1.0.xsd"; } //NOXLATE
-#elif LP220
-            get { return "LoadProcedure-2.2.0.xsd"; } //NOXLATE
-#else
-            get { return "LoadProcedure-1.0.0.xsd"; } //NOXLATE
-#endif
             set { }
         }
 
         [XmlIgnore]
-        public bool IsStronglyTyped
-        {
-            get { return true; }
-        }
+        public bool IsStronglyTyped => true;
 
         [XmlIgnore]
-        IBaseLoadProcedure ILoadProcedure.SubType
-        {
-            get { return (IBaseLoadProcedure)this.Item; }
-        }
+        IBaseLoadProcedure ILoadProcedure.SubType => this.Item;
     }
 
     abstract partial class LoadProcedureType : IBaseLoadProcedure
@@ -206,56 +164,30 @@ namespace OSGeo.MapGuide.ObjectModels.LoadProcedure.v1_0_0
     partial class SdfLoadProcedureType : ISdfLoadProcedure
     {
         [XmlIgnore]
-        public override LoadType Type
-        {
-            get { return LoadType.Sdf; }
-        }
+        public override LoadType Type => LoadType.Sdf;
     }
 
     partial class ShpLoadProcedureType : IShpLoadProcedure
     {
         [XmlIgnore]
-        public override LoadType Type
-        {
-            get { return LoadType.Shp; }
-        }
+        public override LoadType Type => LoadType.Shp;
     }
 
     partial class DwfLoadProcedureType : IDwfLoadProcedure
     {
         [XmlIgnore]
-        public override LoadType Type
-        {
-            get { return LoadType.Dwf; }
-        }
+        public override LoadType Type => LoadType.Dwf;
     }
 
     partial class DwgLoadProcedureType : IDwgLoadProcedure
     {
         [XmlIgnore]
-        public override LoadType Type
-        {
-            get { return LoadType.Dwg; }
-        }
+        public override LoadType Type => LoadType.Dwg;
     }
 
     partial class RasterLoadProcedureType : IRasterLoadProcedure
     {
         [XmlIgnore]
-        public override LoadType Type
-        {
-            get { return LoadType.Raster; }
-        }
+        public override LoadType Type => LoadType.Raster;
     }
-
-#if LP220
-    partial class SQLiteLoadProcedureType : ISqliteLoadProcedure
-    {
-        [XmlIgnore]
-        public override LoadType Type
-        {
-            get { return LoadType.Sqlite; }
-        }
-    }
-#endif
 }

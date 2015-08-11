@@ -198,7 +198,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
     /// <summary>
     ///
     /// </summary>
-    [System.SerializableAttribute()]
+    [Serializable]
     public enum BasicCommandActionType
     {
         /// <remarks/>
@@ -271,7 +271,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
     /// <summary>
     ///
     /// </summary>
-    [System.SerializableAttribute()]
+    [Serializable]
     public enum UIItemFunctionType
     {
         /// <remarks/>
@@ -287,7 +287,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
     /// <summary>
     ///
     /// </summary>
-    [System.SerializableAttribute()]
+    [Serializable]
     public enum TargetType
     {
         /// <remarks/>
@@ -303,7 +303,7 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
     /// <summary>
     ///
     /// </summary>
-    [System.SerializableAttribute()]
+    [Serializable]
     public enum TargetViewerType
     {
         /// <remarks/>
