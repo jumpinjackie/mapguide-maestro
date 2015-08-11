@@ -26,6 +26,7 @@ using OSGeo.MapGuide.MaestroAPI.Mapping;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.Common;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -48,37 +49,31 @@ namespace RtMapInspector
 
         private class PointDecorator
         {
-            private string _str;
+            private readonly string _str;
 
             public PointDecorator(IPoint2D pt)
             {
-                _str = "(" + pt.X + ", " + pt.Y + ")";
+                _str = $"({pt.X}, {pt.Y})"; //NOXLATE
             }
 
-            public override string ToString()
-            {
-                return _str;
-            }
+            public override string ToString() =>_str;
         }
 
         private class BoxDecorator
         {
-            private string _str;
+            private readonly string _str;
 
             public BoxDecorator(IEnvelope env)
             {
-                _str = string.Format("( ({0}, {1}),  ({2}, {3}) )", env.MinX, env.MinY, env.MaxX, env.MaxY);
+                _str = $"( ({env.MinX}, {env.MinX}),  ({env.MaxX}, {env.MaxY}) )"; //NOXLATE
             }
 
-            public override string ToString()
-            {
-                return _str;
-            }
+            public override string ToString() => _str;
         }
 
         private class MapDecorator
         {
-            private RuntimeMap _map;
+            private readonly RuntimeMap _map;
 
             [Category("Map Properties")]
             [ReadOnly(true)]
@@ -130,38 +125,23 @@ namespace RtMapInspector
 
             [Category("Map Properties")]
             [ReadOnly(true)]
-            public string ObjectId
-            {
-                get { return _map.ObjectId; }
-            }
+            public string ObjectId => _map.ObjectId;
 
             [Category("Map Properties")]
             [ReadOnly(true)]
-            public string CoordinateSystem
-            {
-                get { return _map.CoordinateSystem; }
-            }
+            public string CoordinateSystem => _map.CoordinateSystem;
 
             [Category("Map Properties")]
             [ReadOnly(true)]
-            public double MetersPerUnit
-            {
-                get { return _map.MetersPerUnit; }
-            }
+            public double MetersPerUnit => _map.MetersPerUnit;
 
             [Category("Map Properties")]
             [ReadOnly(true)]
-            public PointDecorator ViewCenter
-            {
-                get { return new PointDecorator(_map.ViewCenter); }
-            }
+            public PointDecorator ViewCenter => new PointDecorator(_map.ViewCenter);
 
             [Category("Map Properties")]
             [ReadOnly(true)]
-            public BoxDecorator DataExtent
-            {
-                get { return new BoxDecorator(_map.DataExtent); }
-            }
+            public BoxDecorator DataExtent => new BoxDecorator(_map.DataExtent);
 
             public MapDecorator(RuntimeMap map)
             {
@@ -171,7 +151,7 @@ namespace RtMapInspector
 
         private class GroupDecorator
         {
-            private RuntimeMapGroup _group;
+            private readonly RuntimeMapGroup _group;
 
             public GroupDecorator(RuntimeMapGroup group)
             {
@@ -227,10 +207,7 @@ namespace RtMapInspector
 
             [Category("Group properties")]
             [ReadOnly(true)]
-            public int Type
-            {
-                get { return _group.Type; }
-            }
+            public int Type => _group.Type;
 
             [Category("Group properties")]
             [ReadOnly(true)]
@@ -243,7 +220,7 @@ namespace RtMapInspector
 
         private class LayerDecorator
         {
-            private RuntimeMapLayer _layer;
+            private readonly RuntimeMapLayer _layer;
 
             public LayerDecorator(RuntimeMapLayer layer)
             {
@@ -252,10 +229,7 @@ namespace RtMapInspector
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
-            public double DisplayOrder
-            {
-                get { return _layer.DisplayOrder; }
-            }
+            public double DisplayOrder => _layer.DisplayOrder;
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
@@ -267,24 +241,15 @@ namespace RtMapInspector
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
-            public string FeatureSourceID
-            {
-                get { return _layer.FeatureSourceID; }
-            }
+            public string FeatureSourceID => _layer.FeatureSourceID;
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
-            public string Filter
-            {
-                get { return _layer.Filter; }
-            }
+            public string Filter => _layer.Filter;
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
-            public string GeometryPropertyName
-            {
-                get { return _layer.GeometryPropertyName; }
-            }
+            public string GeometryPropertyName => _layer.GeometryPropertyName;
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
@@ -296,24 +261,15 @@ namespace RtMapInspector
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
-            public bool HasTooltips
-            {
-                get { return _layer.HasTooltips; }
-            }
+            public bool HasTooltips => _layer.HasTooltips;
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
-            public string[] IdentityProperties
-            {
-                get { return new IdentityPropertyCollection(_layer.IdentityProperties).ToArray(); }
-            }
+            public string[] IdentityProperties => _layer.IdentityProperties.Select(p => $"{p.Name} ({p.Type.FullName})").ToArray();
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
-            public string LayerDefinition
-            {
-                get { return _layer.LayerDefinitionID; }
-            }
+            public string LayerDefinition => _layer.LayerDefinitionID;
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
@@ -333,38 +289,23 @@ namespace RtMapInspector
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
-            public bool NeedsRefresh
-            {
-                get { return _layer.NeedsRefresh; }
-            }
+            public bool NeedsRefresh => _layer.NeedsRefresh;
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
-            public string ObjectId
-            {
-                get { return _layer.ObjectId; }
-            }
+            public string ObjectId => _layer.ObjectId;
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
-            public string FeatureClass
-            {
-                get { return _layer.QualifiedClassName; }
-            }
+            public string FeatureClass => _layer.QualifiedClassName;
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
-            public string[] ScaleRanges
-            {
-                get { return new ScaleRangeCollection(_layer.ScaleRanges).ToArray(); }
-            }
+            public string[] ScaleRanges => _layer.ScaleRanges.Select(s => $"{s.MinScale} : {s.MaxScale}").ToArray();
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
-            public string SchemaName
-            {
-                get { return _layer.SchemaName; }
-            }
+            public string SchemaName => _layer.SchemaName;
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
@@ -384,10 +325,7 @@ namespace RtMapInspector
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
-            public int Type
-            {
-                get { return _layer.Type; }
-            }
+            public int Type => _layer.Type;
 
             [Category("Layer Properties")]
             [ReadOnly(true)]
@@ -400,44 +338,19 @@ namespace RtMapInspector
 
         private class DrawOrderDisplayItem
         {
-            public string Label { get; private set; }
+            public string Label { get; }
 
-            public LayerDecorator Decorator { get; private set; }
+            public LayerDecorator Decorator { get; }
 
             public DrawOrderDisplayItem(RuntimeMapLayer layer)
             {
-                this.Label = layer.Name + " (" + layer.LegendLabel + ")";
+                this.Label = $"{layer.Name} ({layer.LegendLabel})"; //NOXLATE
                 this.Decorator = new LayerDecorator(layer);
             }
 
-            public override string ToString()
-            {
-                return this.Label;
-            }
+            public override string ToString() => this.Label;
         }
-
-        private class ScaleRangeCollection : List<string>
-        {
-            public ScaleRangeCollection(RuntimeMapLayer.ScaleRange[] ranges)
-            {
-                foreach (var s in ranges)
-                {
-                    Add(s.MinScale + " : " + s.MaxScale);
-                }
-            }
-        }
-
-        private class IdentityPropertyCollection : List<string>
-        {
-            public IdentityPropertyCollection(PropertyInfo[] props)
-            {
-                foreach (var p in props)
-                {
-                    Add(p.Name + " (" + p.Type.FullName + ")");
-                }
-            }
-        }
-
+        
         #endregion Design-time property wrappers
 
         protected override void OnLoad(EventArgs e)
@@ -469,7 +382,7 @@ namespace RtMapInspector
             trvSelection.Nodes.Clear();
             if (rdMapName.Checked)
             {
-                _rtMap = _mappingSvc.OpenMap(string.Format("Session:{0}//{1}.Map", txtSessionId.Text, txtMapName.Text));
+                _rtMap = _mappingSvc.OpenMap($"Session:{txtSessionId.Text}//{txtMapName.Text}.Map"); //NOXLATE
             }
             else if (rdResourceId.Checked)
             {
@@ -560,7 +473,7 @@ namespace RtMapInspector
                     for (int i = 0; i < sel.Count; i++)
                     {
                         var rtLayer = sel[i].Layer;
-                        var node = new TreeNode(rtLayer.Name + " (" + sel[i].Count + " objects selected)");
+                        var node = new TreeNode($"{rtLayer.Name} ({sel[i].Count} objects selected)"); //LOCALIZEME
                         node.Tag = new LayerDecorator(rtLayer);
                         node.ImageIndex = node.SelectedImageIndex = IDX_LAYER;
                         trvSelection.Nodes.Add(node);

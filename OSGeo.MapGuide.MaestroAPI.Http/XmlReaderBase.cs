@@ -69,7 +69,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             InitCommon(stream);
         }
 
-        public XmlReaderBase(HttpWebResponse resp)
+        protected XmlReaderBase(HttpWebResponse resp)
         {
             _resp = resp;
             try

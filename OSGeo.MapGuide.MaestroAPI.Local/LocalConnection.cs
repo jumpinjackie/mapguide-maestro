@@ -77,7 +77,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             Trace.TraceInformation("MapGuide Platform initialized in {0}ms", sw.ElapsedMilliseconds);
         }
 
-        public override OSGeo.MapGuide.MaestroAPI.Commands.ICommand CreateCommand(int cmdType)
+        public override ICommand CreateCommand(int cmdType)
         {
             CommandType ct = (CommandType)cmdType;
             switch (ct)
@@ -107,7 +107,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             get { return PROVIDER_NAME; }
         }
 
-        public override System.Collections.Specialized.NameValueCollection CloneParameters
+        public override NameValueCollection CloneParameters
         {
             get
             {
@@ -120,18 +120,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
         private string _sessionId;
 
-        public override string SessionID
-        {
-            get
-            {
-                return _sessionId;
-            }
-        }
+        public override string SessionID => _sessionId;
 
-        protected override IServerConnection GetInterface()
-        {
-            return this;
-        }
+        protected override IServerConnection GetInterface() => this;
 
         private string _configFile;
         private const string PARAM_CONFIG = "ConfigFile";
@@ -234,7 +225,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             OnRequestDispatched(method + "(" + string.Join(", ", values) + ") " + ((success) ? "Success" : "Failure"));
         }
 
-        public override System.IO.Stream GetResourceXmlData(string resourceID)
+        public override Stream GetResourceXmlData(string resourceID)
         {
             var res = GetResourceService();
             //var result = Native.Utility.MgStreamToNetStream(res, res.GetType().GetMethod("GetResourceContent"), new object[] { new MgResourceIdentifier(resourceID) });
@@ -415,7 +406,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                 callback(fi.Length, 0, fi.Length);
         }
 
-        public override void UpdateRepository(string resourceId, OSGeo.MapGuide.ObjectModels.Common.ResourceFolderHeaderType header)
+        public override void UpdateRepository(string resourceId, ResourceFolderHeaderType header)
         {
             throw new NotImplementedException();
         }
@@ -432,9 +423,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
         }
 
-        public override void SetResourceXmlData(string resourceid, System.IO.Stream content, System.IO.Stream header)
+        public override void SetResourceXmlData(string resourceId, Stream content, Stream header)
         {
-            bool exists = ResourceExists(resourceid);
+            bool exists = ResourceExists(resourceId);
 
             var res = GetResourceService();
             byte[] bufHeader = header == null ? new byte[0] : Utility.StreamAsArray(header);
@@ -458,12 +449,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                 rC = source.GetReader();
             }
 
-            res.SetResource(new MgResourceIdentifier(resourceid), rC, rH);
-            LogMethodCall("MgResourceService::SetResource", true, resourceid, "MgByteReader", "MgByteReader");
+            res.SetResource(new MgResourceIdentifier(resourceId), rC, rH);
+            LogMethodCall("MgResourceService::SetResource", true, resourceId, "MgByteReader", "MgByteReader");
             if (exists)
-                OnResourceUpdated(resourceid);
+                OnResourceUpdated(resourceId);
             else
-                OnResourceAdded(resourceid);
+                OnResourceAdded(resourceId);
         }
 
         public override UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type)
@@ -499,10 +490,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             var fes = GetFeatureService();
             MgSpatialContextReader rd = fes.GetSpatialContexts(new MgResourceIdentifier(resourceID), activeOnly);
-            GetByteReaderMethod fetch = () =>
-            {
-                return rd.ToXml();
-            };
+            GetByteReaderMethod fetch = rd.ToXml;
             LogMethodCall("MgFeatureService::GetSpatialContexts", true, resourceID, activeOnly.ToString());
             return base.DeserializeObject<FdoSpatialContextList>(new MgReadOnlyStream(fetch));
         }
@@ -541,15 +529,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                 }
             }
 
-            throw new Exception("Unable to find class: " + parts[1] + " in schema " + parts[0]);
+            throw new Exception($"Unable to find class: {parts[1]} in schema {parts[0]}"); //LOCALIZEME
         }
 
-        protected override FeatureSourceDescription DescribeFeatureSourceInternal(string resourceID)
+        protected override FeatureSourceDescription DescribeFeatureSourceInternal(string resourceId)
         {
             var fes = GetFeatureService();
-            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceID), "")));
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceId), "")));
 
-            LogMethodCall("MgFeatureService::DescribeSchemaAsXml", true, resourceID, "");
+            LogMethodCall("MgFeatureService::DescribeSchemaAsXml", true, resourceId, string.Empty);
 
             return new FeatureSourceDescription(ms);
         }
@@ -728,15 +716,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new LocalNativeSqlReader(reader);
         }
 
-        public override IFeatureReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns, NameValueCollection computedProperties)
+        public override IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames, NameValueCollection computedProperties)
         {
             var fes = GetFeatureService();
             MgFeatureQueryOptions mgf = new MgFeatureQueryOptions();
-            if (query != null)
-                mgf.SetFilter(query);
+            if (filter != null)
+                mgf.SetFilter(filter);
 
-            if (columns != null && columns.Length != 0)
-                foreach (string s in columns)
+            if (propertyNames != null && propertyNames.Length != 0)
+                foreach (string s in propertyNames)
                     mgf.AddFeatureProperty(s);
 
             if (computedProperties != null && computedProperties.Count > 0)
@@ -744,9 +732,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                     mgf.AddComputedProperty(s, computedProperties[s]);
 
             var fsId = new MgResourceIdentifier(resourceID);
-            MgFeatureReader mr = fes.SelectFeatures(fsId, schema, mgf);
+            MgFeatureReader mr = fes.SelectFeatures(fsId, className, mgf);
 
-            LogMethodCall("MgFeatureService::SelectFeatures", true, resourceID, schema, "MgFeatureQueryOptions");
+            LogMethodCall("MgFeatureService::SelectFeatures", true, resourceID, className, "MgFeatureQueryOptions");
 
             return new LocalNativeFeatureReader(mr);
         }
@@ -1081,7 +1069,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             var impl = parent as LocalRuntimeMap;
             if (impl == null)
-                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", nameof(parent)); //LOCALIZEME
 
             var rtGroup = new MgLayerGroup(group.Name);
             rtGroup.DisplayInLegend = group.ShowInLegend;
@@ -1097,7 +1085,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             var impl = parent as LocalRuntimeMap;
             if (impl == null)
-                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", nameof(parent)); //LOCALIZEME
 
             var rtGroup = new MgLayerGroup(group.Name);
             rtGroup.DisplayInLegend = group.ShowInLegend;
@@ -1124,7 +1112,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             var impl = parent as LocalRuntimeMap;
             if (impl == null)
-                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", nameof(parent)); //LOCALIZEME
 
             var group = new MgLayerGroup(name);
             return new LocalRuntimeMapGroup(impl, group);
@@ -1134,7 +1122,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             var impl = parent as LocalRuntimeMap;
             if (impl == null)
-                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", nameof(parent)); //LOCALIZEME
 
             var ldfId = new MgResourceIdentifier(ldf.ResourceID);
             var layer = new MgdLayer(ldfId, GetResourceService());
@@ -1158,11 +1146,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return impl;
         }
 
-        public Stream RenderDynamicOverlay(Mapping.RuntimeMap map, Mapping.MapSelection selection, string format, bool keepSelection)
+        public Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, bool keepSelection)
         {
             var impl = map as LocalRuntimeMap;
             if (impl == null)
-                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", nameof(map)); //LOCALIZEME
             var renderSvc = GetRenderingService();
             GetByteReaderMethod fetch = () =>
             {
@@ -1173,11 +1161,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new MgReadOnlyStream(fetch);
         }
 
-        public Stream RenderDynamicOverlay(Mapping.RuntimeMap map, Mapping.MapSelection selection, string format, System.Drawing.Color selectionColor, int behaviour)
+        public Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, System.Drawing.Color selectionColor, int behaviour)
         {
             var impl = map as LocalRuntimeMap;
             if (impl == null)
-                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", nameof(map)); //LOCALIZEME
             var renderSvc = GetRenderingService();
             GetByteReaderMethod fetch = () =>
             {
@@ -1213,7 +1201,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             var impl = map as LocalRuntimeMap;
             if (impl == null)
-                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", nameof(map)); //LOCALIZEME
             var implMap = impl.GetWrappedInstance();
             var renderSvc = GetRenderingService();
             GetByteReaderMethod fetch = () =>
@@ -1248,7 +1236,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             var impl = map as LocalRuntimeMap;
             if (impl == null)
-                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", nameof(map)); //LOCALIZEME
             var implMap = impl.GetWrappedInstance();
             var renderSvc = GetRenderingService();
             GetByteReaderMethod fetch = () =>
@@ -1268,7 +1256,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             var impl = map as LocalRuntimeMap;
             if (impl == null)
-                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", nameof(map)); //LOCALIZEME
             var renderSvc = GetRenderingService();
             GetByteReaderMethod fetch = () =>
             {
@@ -1298,7 +1286,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         {
             var impl = rtMap as LocalRuntimeMap;
             if (impl == null)
-                throw new ArgumentException("Instance is not a LocalRuntimeMap", "map"); //LOCALIZEME
+                throw new ArgumentException("Instance is not a LocalRuntimeMap", nameof(rtMap)); //LOCALIZEME
 
             var rs = GetRenderingService();
             var res = GetResourceService();
@@ -1309,16 +1297,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             string featureFilter = "";
             int layerAttributeFilter = 0;
             int op = MgFeatureSpatialOperations.Intersects;
-            if (selectionVariant == "TOUCHES")
-                op = MgFeatureSpatialOperations.Touches;
-            else if (selectionVariant == "INTERSECTS")
-                op = MgFeatureSpatialOperations.Intersects;
-            else if (selectionVariant == "WITHIN")
-                op = MgFeatureSpatialOperations.Within;
-            else if (selectionVariant == "ENVELOPEINTERSECTS")
-                op = MgFeatureSpatialOperations.EnvelopeIntersects;
-            else
-                throw new ArgumentException("Unknown or unsupported selection variant: " + selectionVariant);
+            switch (selectionVariant)
+            {
+                case "TOUCHES":
+                    op = MgFeatureSpatialOperations.Touches;
+                    break;
+                case "INTERSECTS":
+                    op = MgFeatureSpatialOperations.Intersects;
+                    break;
+                case "WITHIN":
+                    op = MgFeatureSpatialOperations.Within;
+                    break;
+                case "ENVELOPEINTERSECTS":
+                    op = MgFeatureSpatialOperations.EnvelopeIntersects;
+                    break;
+                default:
+                    throw new ArgumentException("Unknown or unsupported selection variant: " + selectionVariant);
+            }
 
             if (extraOptions != null)
             {
@@ -1336,7 +1331,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             MgdFeatureInformation info = rs.QueryFeatures(map, layerNames, r.Read(wkt), op, featureFilter, maxFeatures, layerAttributeFilter);
 
             string xml = "";
-            GetByteReaderMethod fetch = () => { return info.ToXml(); };
+            GetByteReaderMethod fetch = info.ToXml;
             using (var sr = new StreamReader(new MgReadOnlyStream(fetch)))
             {
                 xml = sr.ReadToEnd();
@@ -1381,46 +1376,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             this.IsFrozen = rdr.IsFrozen();
         }
 
-        public string Name
-        {
-            get;
-            private set;
-        }
+        public string Name { get; }
 
-        public string Description
-        {
-            get;
-            private set;
-        }
+        public string Description { get; }
 
-        public string Owner
-        {
-            get;
-            private set;
-        }
+        public string Owner { get; }
 
-        public string CreationDate
-        {
-            get;
-            private set;
-        }
+        public string CreationDate { get; }
 
-        public bool IsActive
-        {
-            get;
-            private set;
-        }
+        public bool IsActive { get; }
 
-        public bool IsFrozen
-        {
-            get;
-            private set;
-        }
+        public bool IsFrozen { get; }
     }
 
     internal class LocalLongTransactionList : ILongTransactionList
     {
-        private List<LocalLongTransaction> _transactions;
+        private readonly List<LocalLongTransaction> _transactions;
 
         public LocalLongTransactionList(MgLongTransactionReader rdr)
         {

@@ -20,11 +20,6 @@
 
 #endregion Disclaimer / License
 using Irony.Parsing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OSGeo.FDO.Expressions
 {
@@ -44,16 +39,13 @@ namespace OSGeo.FDO.Expressions
 
     public class FdoSpatialCondition : FdoGeometricCondition
     {
-        public override FilterType FilterType
-        {
-            get { return Expressions.FilterType.SpatialCondition; }
-        }
+        public override FilterType FilterType => FilterType.SpatialCondition;
 
-        public FdoIdentifier Identifier { get; private set; }
+        public FdoIdentifier Identifier { get; }
 
-        public SpatialOperations Operator { get; private set; }
+        public SpatialOperations Operator { get; }
 
-        public FdoExpression Expression { get; private set; }
+        public FdoExpression Expression { get; }
 
         internal FdoSpatialCondition(ParseTreeNode node)
         {
@@ -92,7 +84,7 @@ namespace OSGeo.FDO.Expressions
                     this.Operator = SpatialOperations.Inside;
                     break;
                 default:
-                    throw new FdoParseException("Unknown operator: " + opName);
+                    throw new FdoParseException($"Unknown operator: {opName}"); //LOCALIZEME
             }
             this.Expression = FdoExpression.ParseNode(node.ChildNodes[2]);
         }

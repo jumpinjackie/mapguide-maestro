@@ -323,7 +323,7 @@ namespace Maestro.Editors.MapDefinition
 
         internal class BaseLayerItemDesigner
         {
-            private BaseLayerItem _layer;
+            private readonly BaseLayerItem _layer;
 
             public BaseLayerItemDesigner(BaseLayerItem layer)
             {
@@ -331,7 +331,7 @@ namespace Maestro.Editors.MapDefinition
             }
 
             [Browsable(false)]
-            internal BaseLayerItem Item { get { return _layer; } }
+            internal BaseLayerItem Item => _layer;
 
             [LocalizedDisplayName("MdfEditorSelectable")]
             public bool Selectable
@@ -357,7 +357,7 @@ namespace Maestro.Editors.MapDefinition
 
         internal class BaseGroupItemDesigner
         {
-            private BaseLayerGroupItem _group;
+            private readonly BaseLayerGroupItem _group;
 
             public BaseGroupItemDesigner(BaseLayerGroupItem group)
             {
@@ -365,7 +365,7 @@ namespace Maestro.Editors.MapDefinition
             }
 
             [Browsable(false)]
-            internal BaseLayerGroupItem Item { get { return _group; } }
+            internal BaseLayerGroupItem Item => _group;
 
             [LocalizedDisplayName("MdfEditorVisible")]
             public bool Visible
@@ -391,7 +391,7 @@ namespace Maestro.Editors.MapDefinition
 
         internal class LayerItemDesigner
         {
-            private LayerItem _layer;
+            private readonly LayerItem _layer;
 
             public LayerItemDesigner(LayerItem layer)
             {
@@ -399,7 +399,7 @@ namespace Maestro.Editors.MapDefinition
             }
 
             [Browsable(false)]
-            internal LayerItem Item { get { return _layer; } }
+            internal LayerItem Item => _layer;
 
             [LocalizedDisplayName("MdfEditorSelectable")]
             public bool Selectable
@@ -432,7 +432,7 @@ namespace Maestro.Editors.MapDefinition
 
         internal class GroupItemDesigner
         {
-            private GroupItem _group;
+            private readonly GroupItem _group;
 
             public GroupItemDesigner(GroupItem group)
             {
@@ -440,7 +440,7 @@ namespace Maestro.Editors.MapDefinition
             }
 
             [Browsable(false)]
-            internal GroupItem Item { get { return _group; } }
+            internal GroupItem Item => _group;
 
             [LocalizedDisplayName("MdfEditorVisible")]
             public bool Visible

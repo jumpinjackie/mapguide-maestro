@@ -46,13 +46,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             _rootUrl = rootUrl;
         }
 
-        protected override string GenerateWatermarkPreviewUrl(ObjectModels.WatermarkDefinition.IWatermarkDefinition wmd, string locale, bool isNew, string sessionID)
+        protected override string GenerateWatermarkPreviewUrl(IWatermarkDefinition watermarkDefinition, string locale, bool isNew, string sessionID)
         {
             //We demand a 2.3.0 Map Definition or higher
             if (_conn.SiteVersion < new Version(2, 3))
                 throw new InvalidOperationException(Strings.SiteVersionDoesntSupportWatermarks);
 
-            IMapDefinition2 map = Utility.CreateWatermarkPreviewMapDefinition(wmd);
+            IMapDefinition2 map = Utility.CreateWatermarkPreviewMapDefinition(watermarkDefinition);
             return _GenerateMapPreviewUrl(map, locale, isNew, sessionID, false);
         }
 
@@ -74,10 +74,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
         {
             string url = GetRootUrl();
 
-            var resId = "Session:" + sessionID + "//" + Guid.NewGuid() + ".WebLayout"; //NOXLATE
+            var resId = $"Session:{sessionID}//{Guid.NewGuid()}.WebLayout"; //NOXLATE
             
             _conn.ResourceService.SaveResourceAs(res, resId);
-            url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionID + "&LOCALE=" + GetLocale(locale); //NOXLATE
+            url += $"mapviewerajax/?WEBLAYOUT={resId}&SESSION={sessionID}&LOCALE={GetLocale(locale)}"; //NOXLATE
 
             return url;
         }
@@ -86,7 +86,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
         {
             string url = GetRootUrl();
 
-            var mdfId = "Session:" + sessionID + "//" + Guid.NewGuid() + ".MapDefinition"; //NOXLATE
+            var mdfId = $"Session:{sessionID}//{Guid.NewGuid()}.MapDefinition"; //NOXLATE
             var mdf = res as IMapDefinition;
             if (mdf != null)
             {
@@ -104,10 +104,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
                 //Add a custom zoom command (to assist previews of layers that aren't [0, infinity] scale)
                 AttachPreviewCommands(wl);
 
-                var resId = "Session:" + sessionID + "//" + Guid.NewGuid() + ".WebLayout"; //NOXLATE
+                var resId = $"Session:{sessionID}//{Guid.NewGuid()}.WebLayout"; //NOXLATE
 
                 _conn.ResourceService.SaveResourceAs(wl, resId);
-                url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionID + "&LOCALE=" + GetLocale(locale); //NOXLATE
+                url += $"mapviewerajax/?WEBLAYOUT={resId}&SESSION={sessionID}&LOCALE={GetLocale(locale)}"; //NOXLATE
             }
             else
             {
@@ -132,7 +132,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
         private IMapDefinition CreateLayerPreviewMapDefinition(ILayerDefinition ldf, string sessionId, string layerName, IServerConnection conn)
         {
             //Create temp map definition to house our current layer
-            var mdfId = "Session:" + sessionId + "//" + Guid.NewGuid() + ".MapDefinition"; //NOXLATE
+            var mdfId = $"Session:{sessionId}//{Guid.NewGuid()}.MapDefinition"; //NOXLATE
             string csWkt;
             var extent = ldf.GetSpatialExtent(_conn, true, out csWkt);
             if (extent == null)
@@ -171,10 +171,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
                 //Add a custom zoom command (to assist previews of layers that aren't [0, infinity] scale)
                 AttachPreviewCommands(wl);
 
-                var resId = "Session:" + sessionID + "//" + Guid.NewGuid() + ".WebLayout"; //NOXLATE
+                var resId = $"Session:{sessionID}//{Guid.NewGuid()}.WebLayout"; //NOXLATE
 
                 _conn.ResourceService.SaveResourceAs(wl, resId);
-                url += "mapviewerajax/?WEBLAYOUT=" + resId + "&SESSION=" + sessionID + "&LOCALE=" + GetLocale(locale); //NOXLATE
+                url += $"mapviewerajax/?WEBLAYOUT={resId}&SESSION={sessionID}&LOCALE={GetLocale(locale)}"; //NOXLATE
             }
             else
             {
@@ -197,10 +197,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
 
             //Create temp flex layout
             var appDef = (IApplicationDefinition)res;
-            var resId = "Session:" + sessionID + "//" + Guid.NewGuid() + ".ApplicationDefinition"; //NOXLATE
+            var resId = $"Session:{sessionID}//{Guid.NewGuid()}.ApplicationDefinition"; //NOXLATE
 
             _conn.ResourceService.SaveResourceAs(appDef, resId);
-            url += appDef.TemplateUrl + "?Session=" + sessionID + "&ApplicationDefinition=" + resId + "&locale=" + GetLocale(locale); //NOXLATE
+            url += $"{appDef.TemplateUrl}?Session={sessionID}&ApplicationDefinition={resId}&locale={GetLocale(locale)}"; //NOXLATE
             return url;
         }
 
@@ -209,13 +209,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             string url = GetRootUrl();
 
             var resId = res.ResourceID;
-            url += "schemareport/describeschema.php?viewer=basic&schemaName=&className=&resId=" + resId + "&sessionId=" + sessionID + "&locale=" + GetLocale(locale); //NOXLATE
+            url += $"schemareport/describeschema.php?viewer=basic&schemaName=&className=&resId={resId}&sessionId={sessionID}&locale={GetLocale(locale)}"; //NOXLATE
 
             return url;
         }
 
-        private static string[] PREVIEWABLE_RESOURCE_TYPES = new string[]
-        {
+        private static string[] PREVIEWABLE_RESOURCE_TYPES = {
             ResourceTypes.FeatureSource.ToString(),
             ResourceTypes.ApplicationDefinition.ToString(),
             ResourceTypes.LayerDefinition.ToString(),
@@ -224,10 +223,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             ResourceTypes.WatermarkDefinition.ToString()
         };
 
-        public override bool IsPreviewableType(string resourceType)
-        {
-            return Array.IndexOf(PREVIEWABLE_RESOURCE_TYPES, resourceType) >= 0;
-        }
+        public override bool IsPreviewableType(string resourceType) => Array.IndexOf(PREVIEWABLE_RESOURCE_TYPES, resourceType) >= 0;
 
         private static void AttachPreviewCommands(IWebLayout wl)
         {

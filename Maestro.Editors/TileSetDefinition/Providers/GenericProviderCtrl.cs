@@ -41,8 +41,8 @@ namespace Maestro.Editors.TileSetDefinition.Providers
             InitializeComponent();
         }
 
-        private ITileSetDefinition _tsd;
-        private TileProvider _provider;
+        private readonly ITileSetDefinition _tsd;
+        private readonly TileProvider _provider;
         private Action _resourceChangeHandler;
 
         public GenericProviderCtrl(TileProvider provider, ITileSetDefinition tsd, Action resourceChangeHandler)
@@ -87,7 +87,7 @@ namespace Maestro.Editors.TileSetDefinition.Providers
 
     class TileSetParameter
     {
-        private Action<TileSetParameter> _valueChangeListener;
+        private readonly Action<TileSetParameter> _valueChangeListener;
 
         public TileSetParameter(string name, string value, Action<TileSetParameter> valueChangeListener)
         {
@@ -96,7 +96,7 @@ namespace Maestro.Editors.TileSetDefinition.Providers
             _valueChangeListener = valueChangeListener;
         }
 
-        public string Name { get; private set; }
+        public string Name { get; }
 
         private string _value;
 

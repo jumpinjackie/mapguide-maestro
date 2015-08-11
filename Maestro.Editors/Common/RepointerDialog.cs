@@ -44,7 +44,7 @@ namespace Maestro.Editors.Common
             InitializeComponent();
         }
 
-        private IServerConnection _conn;
+        private readonly IServerConnection _conn;
 
         /// <summary>
         /// Constructor
@@ -66,33 +66,23 @@ namespace Maestro.Editors.Common
         /// <summary>
         /// Returns a list of resource ids which are the dependent resources of the specified resource
         /// </summary>
-        public ICollection<string> Dependents { get { return (ICollection<string>)lstAffectedResources.DataSource; } }
+        public ICollection<string> Dependents => (ICollection<string>)lstAffectedResources.DataSource;
 
         /// <summary>
         /// Gets the specified resource id
         /// </summary>
-        public string Source { get { return txtSource.Text; } }
+        public string Source => txtSource.Text;
 
         /// <summary>
         /// Gets the target resource id we want to re-point
         /// </summary>
-        public string Target { get { return txtTarget.Text; } }
+        public string Target => txtTarget.Text;
 
-        internal string ResourceType
-        {
-            get;
-            private set;
-        }
+        internal string ResourceType { get; }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
+        private void btnCancel_Click(object sender, EventArgs e) => this.DialogResult = DialogResult.Cancel;
 
-        private void btnOK_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.OK;
-        }
+        private void btnOK_Click(object sender, EventArgs e) => this.DialogResult = DialogResult.OK;
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {

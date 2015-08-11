@@ -531,7 +531,7 @@ namespace Maestro.Base.UI
             item.ClipboardState = _clip.GetClipboardState(item.ResourceId);
         }
 
-        private Dictionary<string, RepositoryItem> _rootNodes = new Dictionary<string, RepositoryItem>();
+        private readonly Dictionary<string, RepositoryItem> _rootNodes = new Dictionary<string, RepositoryItem>();
 
         /// <summary>
         /// Gets the child nodes in the given tree path

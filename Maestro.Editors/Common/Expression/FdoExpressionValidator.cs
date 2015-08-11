@@ -43,7 +43,7 @@ namespace Maestro.Editors.Common.Expression
         /// <summary>
         /// Gets the contextual token that is the cause of the validation error
         /// </summary>
-        public string Token { get; private set; }
+        public string Token { get; }
 
         public FdoExpressionValidationException(string message, string token) 
             : this(message)

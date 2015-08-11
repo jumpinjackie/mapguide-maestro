@@ -61,7 +61,7 @@ namespace Maestro.Login
         /// Gets or sets the GUI language.
         /// </summary>
         /// <value>The GUI language.</value>
-        [System.Xml.Serialization.XmlAttribute()]
+        [System.Xml.Serialization.XmlAttribute]
         public string GUILanguage
         {
             get { return m_guiLanguage; }
@@ -72,7 +72,7 @@ namespace Maestro.Login
         /// Gets or sets a value indicating whether [use fusion preview].
         /// </summary>
         /// <value><c>true</c> if [use fusion preview]; otherwise, <c>false</c>.</value>
-        [System.Xml.Serialization.XmlAttribute()]
+        [System.Xml.Serialization.XmlAttribute]
         public bool UseFusionPreview
         {
             get { return m_useFusionPreview; }
@@ -83,7 +83,7 @@ namespace Maestro.Login
         /// Gets or sets the system browser.
         /// </summary>
         /// <value>The system browser.</value>
-        [System.Xml.Serialization.XmlAttribute()]
+        [System.Xml.Serialization.XmlAttribute]
         public string SystemBrowser
         {
             get
@@ -95,7 +95,7 @@ namespace Maestro.Login
                         m_systemBrowser = string.Empty;
                     //Linux, assume firefox
                     else
-                        m_systemBrowser = "firefox";
+                        m_systemBrowser = "firefox"; //NOXLATE
                 }
 
                 return m_systemBrowser;
@@ -107,7 +107,7 @@ namespace Maestro.Login
         /// Gets or sets the prefered site.
         /// </summary>
         /// <value>The prefered site.</value>
-        [System.Xml.Serialization.XmlAttribute()]
+        [System.Xml.Serialization.XmlAttribute]
         public int PreferedSite
         {
             get { return m_initialSite; }
@@ -118,7 +118,7 @@ namespace Maestro.Login
         /// Gets or sets a value indicating whether [auto connect].
         /// </summary>
         /// <value><c>true</c> if [auto connect]; otherwise, <c>false</c>.</value>
-        [System.Xml.Serialization.XmlAttribute()]
+        [System.Xml.Serialization.XmlAttribute]
         public bool AutoConnect
         {
             get { return m_autoconnect; }
@@ -129,7 +129,7 @@ namespace Maestro.Login
         /// Gets or sets a value indicating whether [maximized window].
         /// </summary>
         /// <value><c>true</c> if [maximized window]; otherwise, <c>false</c>.</value>
-        [System.Xml.Serialization.XmlAttribute()]
+        [System.Xml.Serialization.XmlAttribute]
         public bool MaximizedWindow
         {
             get { return m_maximizedWindow; }
@@ -140,7 +140,7 @@ namespace Maestro.Login
         /// Gets or sets the window left.
         /// </summary>
         /// <value>The window left.</value>
-        [System.Xml.Serialization.XmlAttribute()]
+        [System.Xml.Serialization.XmlAttribute]
         public int WindowLeft
         {
             get { return m_windowLeft; }
@@ -151,7 +151,7 @@ namespace Maestro.Login
         /// Gets or sets the window top.
         /// </summary>
         /// <value>The window top.</value>
-        [System.Xml.Serialization.XmlAttribute()]
+        [System.Xml.Serialization.XmlAttribute]
         public int WindowTop
         {
             get { return m_windowTop; }
@@ -162,7 +162,7 @@ namespace Maestro.Login
         /// Gets or sets the width of the window.
         /// </summary>
         /// <value>The width of the window.</value>
-        [System.Xml.Serialization.XmlAttribute()]
+        [System.Xml.Serialization.XmlAttribute]
         public int WindowWidth
         {
             get { return m_windowWidth; }
@@ -173,7 +173,7 @@ namespace Maestro.Login
         /// Gets or sets the height of the window.
         /// </summary>
         /// <value>The height of the window.</value>
-        [System.Xml.Serialization.XmlAttribute()]
+        [System.Xml.Serialization.XmlAttribute]
         public int WindowHeight
         {
             get { return m_windowHeight; }
@@ -368,7 +368,7 @@ namespace Maestro.Login
         /// Gets or sets the unscrambled password.
         /// </summary>
         /// <value>The unscrambled password.</value>
-        [System.Xml.Serialization.XmlIgnore()]
+        [System.Xml.Serialization.XmlIgnore]
         public string UnscrambledPassword
         {
             get { return System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(m_scrambledPassword == null ? string.Empty : m_scrambledPassword)); }
@@ -381,9 +381,6 @@ namespace Maestro.Login
         /// <returns>
         /// A <see cref="System.String"/> that represents this instance.
         /// </returns>
-        public override string ToString()
-        {
-            return m_siteURL;
-        }
+        public override string ToString() => m_siteURL;
     }
 }

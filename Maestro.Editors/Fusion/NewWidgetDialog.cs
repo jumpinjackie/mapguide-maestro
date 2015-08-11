@@ -28,7 +28,7 @@ namespace Maestro.Editors.Fusion
 {
     internal partial class NewWidgetDialog : Form
     {
-        private IApplicationDefinition _appDef;
+        private readonly IApplicationDefinition _appDef;
         private FlexibleLayoutEditorContext _context;
 
         public NewWidgetDialog(IApplicationDefinition appDef, FlexibleLayoutEditorContext context)

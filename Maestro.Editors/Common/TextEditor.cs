@@ -78,20 +78,11 @@ namespace Maestro.Editors.Common
             remove { textArea.DoProcessDialogKey -= value; }
         }
 
-        public Color CustomLineColour
-        {
-            get { return customLineColour; }
-        }
+        public Color CustomLineColour => customLineColour;
 
-        public void Write(string text)
-        {
-            Write(text, Color.Empty, default(Color));
-        }
+        public void Write(string text) => Write(text, Color.Empty, default(Color));
 
-        public void Write(string text, Color backgroundColour)
-        {
-            Write(text, backgroundColour, default(Color));
-        }
+        public void Write(string text, Color backgroundColour) => Write(text, backgroundColour, default(Color));
 
         public void Write(string text, Color backgroundColour, Color foregroundColor)
         {
@@ -145,18 +136,12 @@ namespace Maestro.Editors.Common
         /// <summary>
         /// Gets the current cursor line.
         /// </summary>
-        public int Line
-        {
-            get { return textArea.Caret.Line; }
-        }
+        public int Line => textArea.Caret.Line;
 
         /// <summary>
         /// Gets the total number of lines in the text editor.
         /// </summary>
-        public int TotalLines
-        {
-            get { return textEditorControl.Document.TotalNumberOfLines; }
-        }
+        public int TotalLines => textEditorControl.Document.TotalNumberOfLines;
 
         /// <summary>
         /// Gets the text for the specified line.
@@ -202,10 +187,7 @@ namespace Maestro.Editors.Common
             doc.UndoStack.ClearAll();
         }
 
-        public virtual void ShowCompletionWindow(ICompletionDataProvider completionDataProvider)
-        {
-            ShowCompletionWindow(completionDataProvider, ' ');
-        }
+        public virtual void ShowCompletionWindow(ICompletionDataProvider completionDataProvider) => ShowCompletionWindow(completionDataProvider, ' ');
 
         public abstract void ShowCompletionWindow(ICompletionDataProvider completionDataProvider, char firstChar);
 
@@ -217,10 +199,7 @@ namespace Maestro.Editors.Common
         /// <summary>
         /// Gets the range of the currently selected text.
         /// </summary>
-        private ColumnRange GetSelectionRange()
-        {
-            return textArea.SelectionManager.GetSelectionAtLine(textArea.Caret.Line);
-        }
+        private ColumnRange GetSelectionRange() => textArea.SelectionManager.GetSelectionAtLine(textArea.Caret.Line);
 
         private void SetIndentStyle(IndentStyle style)
         {
@@ -235,10 +214,7 @@ namespace Maestro.Editors.Common
             }
         }
 
-        public virtual bool ProcessKeyPress(Keys keyData)
-        {
-            return false;
-        }
+        public virtual bool ProcessKeyPress(Keys keyData) => false;
 
         public virtual void SetParent(Control frm)
         {
@@ -269,7 +245,7 @@ namespace Maestro.Editors.Common
     /// </summary>
     internal class MonoCompatibleTextEditor : TextEditorBase
     {
-        private AutoCompletionListBox _autoBox;
+        private readonly AutoCompletionListBox _autoBox;
         private ToolTip _autoCompleteTooltip;
 
         internal MonoCompatibleTextEditor(TextEditorControl textEditor)
@@ -281,16 +257,13 @@ namespace Maestro.Editors.Common
 
         private Control _parent;
 
-        public override void SetParent(Control ctrl)
+        public override void SetParent(Control frm)
         {
-            _parent = ctrl;
+            _parent = frm;
             _parent.Controls.Add(_autoBox);
         }
 
-        public override bool IsCompletionWindowDisplayed
-        {
-            get { return _autoBox.IsShown; }
-        }
+        public override bool IsCompletionWindowDisplayed => _autoBox.IsShown;
 
         public override void ShowCompletionWindow(ICompletionDataProvider completionDataProvider, char firstChar)
         {
@@ -328,10 +301,7 @@ namespace Maestro.Editors.Common
             return pt;
         }
 
-        private static bool IsAlphanumeric(Keys key)
-        {
-            return (key >= Keys.D0 && key <= Keys.Z);
-        }
+        private static bool IsAlphanumeric(Keys key) => key >= Keys.D0 && key <= Keys.Z;
 
         public override bool ProcessKeyPress(Keys keyData)
         {
@@ -381,14 +351,11 @@ namespace Maestro.Editors.Common
             : base(textEditor)
         { }
 
-        public override bool IsCompletionWindowDisplayed
-        {
-            get { return completionWindow != null; }
-        }
+        public override bool IsCompletionWindowDisplayed => completionWindow != null;
 
-        public override void ShowCompletionWindow(ICompletionDataProvider completionDataProvider, char ch)
+        public override void ShowCompletionWindow(ICompletionDataProvider completionDataProvider, char firstChar)
         {
-            completionWindow = CodeCompletionWindow.ShowCompletionWindow(textEditorControl.ParentForm, textEditorControl, String.Empty, completionDataProvider, ch);
+            completionWindow = CodeCompletionWindow.ShowCompletionWindow(textEditorControl.ParentForm, textEditorControl, String.Empty, completionDataProvider, firstChar);
             if (completionWindow != null)
             {
                 completionWindow.Width = 250;

@@ -41,7 +41,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
     /// <summary>
     ///   A collection that stores <see cref='XmlSchemaCompletionData'/> objects.
     /// </summary>
-    [Serializable()]
+    [Serializable]
     internal class XmlSchemaCompletionDataCollection : System.Collections.CollectionBase
     {
         /// <summary>
@@ -364,7 +364,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <seealso cref='XmlSchemaCompletionData'/>
         public class XmlSchemaCompletionDataEnumerator : System.Collections.IEnumerator
         {
-            private System.Collections.IEnumerator baseEnumerator;
+            private readonly System.Collections.IEnumerator baseEnumerator;
             private System.Collections.IEnumerable temp;
 
             /// <summary>

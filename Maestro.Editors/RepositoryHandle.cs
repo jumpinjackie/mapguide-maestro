@@ -34,12 +34,12 @@ namespace Maestro.Editors
         /// <summary>
         /// Gets the resource id.
         /// </summary>
-        public ResourceIdentifier ResourceId { get; private set; }
+        public ResourceIdentifier ResourceId { get; }
 
         /// <summary>
         /// Gets the connection.
         /// </summary>
-        public IServerConnection Connection { get; private set; }
+        public IServerConnection Connection { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RepositoryHandle"/> class.

@@ -29,7 +29,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 {
     public class LocalNativeSqlReader : ReaderBase
     {
-        private MgSqlDataReader _reader;
+        private readonly MgSqlDataReader _reader;
         private FixedWKTReader _mgReader;
         private MgAgfReaderWriter _agfRw;
         private MgWktReaderWriter _wktRw;

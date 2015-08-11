@@ -33,16 +33,10 @@ namespace Maestro.AddInManager
     [ToolboxItem(false)]
     public class AddInControl : Control
     {
-        private AddIn addIn;
+        private readonly AddIn addIn;
         private bool isExternal;
 
-        public AddIn AddIn
-        {
-            get
-            {
-                return addIn;
-            }
-        }
+        public AddIn AddIn => addIn;
 
         public AddInControl(AddIn addIn)
         {

@@ -587,11 +587,11 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        public override void SetResourceXmlData(string resourceid, System.IO.Stream content, System.IO.Stream header)
+        public override void SetResourceXmlData(string resourceId, Stream content, Stream header)
         {
-            bool exists = ResourceExists(resourceid);
+            bool exists = ResourceExists(resourceId);
 
-            System.IO.MemoryStream outStream = new System.IO.MemoryStream();
+            MemoryStream outStream = new MemoryStream();
 #if DEBUG_LASTMESSAGE
             try
             {
@@ -600,24 +600,24 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (this.m_autoRestartSession && m_username != null && m_password != null)
                 this.DownloadData(m_reqBuilder.GetSiteVersion());
 
-            System.Net.WebRequest req = m_reqBuilder.SetResource(resourceid, outStream, content, header);
+            WebRequest req = m_reqBuilder.SetResource(resourceId, outStream, content, header);
             req.Credentials = _cred;
             outStream.Position = 0;
             try
             {
-                using (System.IO.Stream rs = req.GetRequestStream())
+                using (var rs = req.GetRequestStream())
                 {
                     Utility.CopyStream(outStream, rs);
                     rs.Flush();
                 }
                 var wresp = req.GetResponse();
-                if (wresp is HttpWebResponse)
+                var hresp = wresp as HttpWebResponse;
+                if (hresp != null)
                 {
-                    HttpWebResponse httpresp = (HttpWebResponse)wresp;
-                    LogResponse(httpresp);
+                    LogResponse(hresp);
                 }
 
-                using (System.IO.Stream resp = wresp.GetResponseStream())
+                using (var resp = wresp.GetResponseStream())
                 {
                     //Do nothing... there is no return value
                 }
@@ -647,9 +647,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 #endif
 
             if (exists)
-                OnResourceUpdated(resourceid);
+                OnResourceUpdated(resourceId);
             else
-                OnResourceAdded(resourceid);
+                OnResourceAdded(resourceId);
         }
 
         private void LogResponse(HttpWebResponse resp)
@@ -679,10 +679,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             throw new NotSupportedException();
         }
 
-        public override IFeatureReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns, NameValueCollection computedProperties)
-        {
-            return (IFeatureReader)QueryFeatureSourceCore(false, resourceID, schema, query, columns, computedProperties);
-        }
+        public override IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames, NameValueCollection computedProperties)
+            => (IFeatureReader)QueryFeatureSourceCore(false, resourceID, className, filter, propertyNames, computedProperties);
 
         private IReader QueryFeatureSourceCore(bool aggregate, string resourceID, string schema, string query, string[] columns, NameValueCollection computedProperties)
         {
@@ -697,7 +695,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 #endif
             try
             {
-                using (System.IO.Stream rs = req.GetRequestStream())
+                using (var rs = req.GetRequestStream())
                 {
                     Utility.CopyStream(ms, rs);
                     rs.Flush();
@@ -734,19 +732,15 @@ namespace OSGeo.MapGuide.MaestroAPI
         }
 
         public override IReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, string[] columns)
-        {
-            return QueryFeatureSourceCore(true, resourceID, schema, filter, columns, null);
-        }
+            => QueryFeatureSourceCore(true, resourceID, schema, filter, columns, null);
 
         public override IReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, NameValueCollection aggregateFunctions)
-        {
-            return QueryFeatureSourceCore(true, resourceID, schema, filter, null, aggregateFunctions);
-        }
+            => QueryFeatureSourceCore(true, resourceID, schema, filter, null, aggregateFunctions);
 
-        protected override FeatureSourceDescription DescribeFeatureSourceInternal(string resourceID)
+        protected override FeatureSourceDescription DescribeFeatureSourceInternal(string resourceId)
         {
-            ResourceIdentifier.Validate(resourceID, ResourceTypes.FeatureSource);
-            string req = m_reqBuilder.DescribeSchema(resourceID);
+            ResourceIdentifier.Validate(resourceId, ResourceTypes.FeatureSource);
+            string req = m_reqBuilder.DescribeSchema(resourceId);
 
             try
             {
@@ -759,7 +753,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 try
                 {
                     if (this.IsSessionExpiredException(ex) && this.AutoRestartSession && this.RestartSession(false))
-                        return this.DescribeFeatureSource(resourceID);
+                        return this.DescribeFeatureSource(resourceId);
                 }
                 catch
                 {
@@ -841,7 +835,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             string req = m_reqBuilder.DeleteResourceData(resourceID, dataname);
 
-            using (System.IO.Stream resp = this.OpenRead(req))
+            using (var resp = this.OpenRead(req))
                 resp.ReadByte();
             //Do nothing... there is no return value
         }
@@ -850,7 +844,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             string req = m_reqBuilder.EnumerateResourceData(resourceID);
 
-            using (System.IO.Stream resp = this.OpenRead(req))
+            using (var resp = this.OpenRead(req))
                 return (ResourceDataList)DeserializeObject(typeof(ResourceDataList), resp);
         }
 
@@ -858,7 +852,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             string req = m_reqBuilder.DeleteResource(resourceID);
 
-            using (System.IO.Stream resp = this.OpenRead(req))
+            using (var resp = this.OpenRead(req))
                 resp.ReadByte();
             //Do nothing... there is no return value
 
@@ -893,7 +887,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             get
             {
-                if (this.SiteVersion < OSGeo.MapGuide.MaestroAPI.SiteVersions.GetVersion(OSGeo.MapGuide.MaestroAPI.KnownSiteVersions.MapGuideOS1_1))
+                if (this.SiteVersion < SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_1))
                     return null;
                 else
                 {
@@ -904,15 +898,12 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        public System.IO.Stream ExecuteOperation(System.Collections.Specialized.NameValueCollection param)
-        {
-            return this.OpenRead(m_reqBuilder.BuildRequest(param));
-        }
+        public Stream ExecuteOperation(NameValueCollection param) => this.OpenRead(m_reqBuilder.BuildRequest(param));
 
         /// <summary>
         /// Returns the Uri for the mapagent
         /// </summary>
-        public string ServerURI { get { return m_reqBuilder.HostURI; } }
+        public string ServerURI => m_reqBuilder.HostURI;
 
         /// <summary>
         /// Gets a string that can be used to identify the server by a user
@@ -938,7 +929,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             string req = m_reqBuilder.EnumerateResourceReferences(resourceid);
 
-            using (System.IO.Stream resp = this.OpenRead(req))
+            using (var resp = this.OpenRead(req))
                 return (ResourceReferenceList)DeserializeObject(typeof(ResourceReferenceList), resp);
         }
 
@@ -948,7 +939,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             string req = m_reqBuilder.CopyResource(oldpath, newpath, overwrite);
 
-            using (System.IO.Stream resp = this.OpenRead(req))
+            using (var resp = this.OpenRead(req))
                 resp.ReadByte();
             //Do nothing... there is no return value
 
@@ -971,7 +962,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             string req = m_reqBuilder.CopyResource(oldpath, newpath, overwrite);
 
-            using (System.IO.Stream resp = this.OpenRead(req))
+            using (var resp = this.OpenRead(req))
                 resp.ReadByte();
             //Do nothing... there is no return value
 
@@ -987,7 +978,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             string req = m_reqBuilder.MoveResource(oldpath, newpath, overwrite);
 
-            using (System.IO.Stream resp = this.OpenRead(req))
+            using (var resp = this.OpenRead(req))
                 resp.ReadByte();
             //Do nothing... there is no return value
 
@@ -1018,27 +1009,27 @@ namespace OSGeo.MapGuide.MaestroAPI
                 OnResourceAdded(newpath);
         }
 
-        public override System.IO.Stream RenderDynamicOverlay(Mapping.RuntimeMap map, MapSelection selection, string format, Color selectionColor, int behavior)
+        public override Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, Color selectionColor, int behaviour)
         {
             //This API was introduced in MGOS 2.1 so this won't work with older versions
             if (this.SiteVersion < new Version(2, 1, 0))
                 throw new NotSupportedException();
 
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            var req = m_reqBuilder.GetDynamicMapOverlayImage(map.Name, (selection == null ? string.Empty : selection.ToXml()), format, selectionColor, behavior);
+            var ms = new MemoryStream();
+            var req = m_reqBuilder.GetDynamicMapOverlayImage(map.Name, (selection == null ? string.Empty : selection.ToXml()), format, selectionColor, behaviour);
 
             return this.OpenRead(req);
         }
 
-        public override System.IO.Stream RenderDynamicOverlay(Mapping.RuntimeMap map, MapSelection selection, string format, bool keepSelection)
+        public override Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format, bool keepSelection)
         {
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            System.Net.WebRequest req = m_reqBuilder.GetDynamicMapOverlayImage(map.Name, (selection == null ? string.Empty : selection.ToXml()), format, ms);
+            var ms = new MemoryStream();
+            var req = m_reqBuilder.GetDynamicMapOverlayImage(map.Name, (selection == null ? string.Empty : selection.ToXml()), format, ms);
 
             //Maksim reported that the rendering times out frequently, so now we wait 5 minutes
             req.Timeout = 5 * 60 * 1000;
 
-            using (System.IO.Stream rs = req.GetRequestStream())
+            using (var rs = req.GetRequestStream())
             {
                 Utility.CopyStream(ms, rs);
                 rs.Flush();
@@ -1051,15 +1042,15 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        public Stream RenderMapLegend(Mapping.RuntimeMap map, int width, int height, System.Drawing.Color backgroundColor, string format)
+        public Stream RenderMapLegend(RuntimeMap map, int width, int height, Color backgroundColor, string format)
         {
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            var ms = new MemoryStream();
             string req = m_reqBuilder.RenderMapLegend(map.Name, width, height, ColorTranslator.ToHtml(backgroundColor), format);
 
             return this.OpenRead(req);
         }
 
-        public override System.IO.Stream RenderRuntimeMap(Mapping.RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
+        public override Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
         {
             var resourceId = map.ResourceID;
             ResourceIdentifier.Validate(resourceId, ResourceTypes.Map);
@@ -1067,7 +1058,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             mapname = mapname.Substring(0, mapname.LastIndexOf("."));
 #if DEBUG
             string s = m_reqBuilder.GetMapImageUrl(mapname, format, null, x, y, scale, dpi, width, height, clip, null, null, null, null);
-            return new System.IO.MemoryStream(this.DownloadData(s));
+            return new MemoryStream(this.DownloadData(s));
 #else
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, format, null, x, y, scale, dpi, width, height, clip, null, null, null, null, ms);
@@ -1099,7 +1090,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             mapname = mapname.Substring(0, mapname.LastIndexOf("."));
 #if DEBUG
             string s = m_reqBuilder.GetMapImageUrl(mapname, format, null, x1, y1, x2, y2, dpi, width, height, clip, null, null, null, null);
-            return new System.IO.MemoryStream(this.DownloadData(s));
+            return new MemoryStream(this.DownloadData(s));
 #else
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
             System.Net.WebRequest req = m_reqBuilder.GetMapImage(mapname, format, null, x1, y1, x2, y2, dpi, width, height, clip, null, null, null, null, ms);
@@ -1125,11 +1116,10 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         public override bool IsSessionExpiredException(Exception ex)
         {
-            if (ex != null && ex.GetType() == typeof(System.Net.WebException))
+            var wex = ex as WebException;
+            if (wex != null && (wex.Message.ToLower().IndexOf("session expired") >= 0 || wex.Message.ToLower().IndexOf("session not found") >= 0 || wex.Message.ToLower().IndexOf("mgsessionexpiredexception") >= 0))
             {
-                System.Net.WebException wex = (System.Net.WebException)ex;
-                if (wex.Message.ToLower().IndexOf("session expired") >= 0 || wex.Message.ToLower().IndexOf("session not found") >= 0 || wex.Message.ToLower().IndexOf("mgsessionexpiredexception") >= 0)
-                    return true;
+                return true;
             }
             return false;
         }
@@ -1139,30 +1129,21 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <returns>The avalible application templates on the server</returns>
         public IApplicationDefinitionTemplateInfoSet GetApplicationTemplates()
-        {
-            //TODO: Caching these should be safe
-            return (IApplicationDefinitionTemplateInfoSet)base.DeserializeObject(typeof(ApplicationDefinitionTemplateInfoSet), this.OpenRead(m_reqBuilder.EnumerateApplicationTemplates()));
-        }
+            => (IApplicationDefinitionTemplateInfoSet)base.DeserializeObject(typeof(ApplicationDefinitionTemplateInfoSet), this.OpenRead(m_reqBuilder.EnumerateApplicationTemplates()));
 
         /// <summary>
         /// Returns the avalible application widgets on the server
         /// </summary>
         /// <returns>The avalible application widgets on the server</returns>
         public IApplicationDefinitionWidgetInfoSet GetApplicationWidgets()
-        {
-            //TODO: Caching these should be safe
-            return (IApplicationDefinitionWidgetInfoSet)base.DeserializeObject(typeof(ApplicationDefinitionWidgetInfoSet), this.OpenRead(m_reqBuilder.EnumerateApplicationWidgets()));
-        }
+            => (IApplicationDefinitionWidgetInfoSet)base.DeserializeObject(typeof(ApplicationDefinitionWidgetInfoSet), this.OpenRead(m_reqBuilder.EnumerateApplicationWidgets()));
 
         /// <summary>
         /// Returns the avalible widget containers on the server
         /// </summary>
         /// <returns>The avalible widget containers on the server</returns>
         public IApplicationDefinitionContainerInfoSet GetApplicationContainers()
-        {
-            //TODO: Caching these should be safe
-            return (IApplicationDefinitionContainerInfoSet)base.DeserializeObject(typeof(ApplicationDefinitionContainerInfoSet), this.OpenRead(m_reqBuilder.EnumerateApplicationContainers()));
-        }
+            => (IApplicationDefinitionContainerInfoSet)base.DeserializeObject(typeof(ApplicationDefinitionContainerInfoSet), this.OpenRead(m_reqBuilder.EnumerateApplicationContainers()));
 
         /// <summary>
         /// Returns the spatial info for a given featuresource
@@ -1193,7 +1174,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             else if (parts.Length == 1)
                 req = m_reqBuilder.GetIdentityProperties(resourceID, null, parts[0]);
             else
-                throw new Exception("Unable to parse classname into class and schema: " + classname);
+                throw new Exception($"Unable to parse classname into class and schema: {classname}");
 
             XmlDocument doc = new XmlDocument();
             doc.Load(this.OpenRead(req));
@@ -1216,7 +1197,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             if (m_username == null || m_password == null)
                 if (throwException)
-                    throw new Exception("Cannot recreate session, because connection was not opened with username and password");
+                    throw new Exception("Cannot recreate session, because connection was not opened with username and password"); //LOCALIZEME
                 else
                     return false;
 
@@ -1235,7 +1216,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 {
                     reqb.SessionID = System.Text.Encoding.Default.GetString(wc.DownloadData(req));
                     if (reqb.SessionID.IndexOf("<") >= 0)
-                        throw new Exception("Invalid server token recieved: " + reqb.SessionID);
+                        throw new Exception($"Invalid server token recieved: {reqb.SessionID}"); //LOCALIZEME
                     else
                         CheckAndRaiseSessionChanged(oldSessionId, reqb.SessionID);
                 }
@@ -1246,17 +1227,17 @@ namespace OSGeo.MapGuide.MaestroAPI
                     try
                     {
                         //Retry, and append missing path, if applicable
-                        if (!hosturl.ToString().EndsWith("/mapagent/mapagent.fcgi"))
+                        if (!hosturl.ToString().EndsWith("/mapagent/mapagent.fcgi")) //NOXLATE
                         {
                             string tmp = hosturl.ToString();
-                            if (!tmp.EndsWith("/"))
-                                tmp += "/";
-                            hosturl = new Uri(tmp + "mapagent/mapagent.fcgi");
+                            if (!tmp.EndsWith("/")) //NOXLATE
+                                tmp += "/"; //NOXLATE
+                            hosturl = new Uri($"{tmp}mapagent/mapagent.fcgi"); //NOXLATE
                             reqb = new RequestBuilder(hosturl, locale);
                             req = reqb.CreateSession();
                             reqb.SessionID = System.Text.Encoding.Default.GetString(wc.DownloadData(req));
-                            if (reqb.SessionID.IndexOf("<") >= 0)
-                                throw new Exception("Invalid server token recieved: " + reqb.SessionID);
+                            if (reqb.SessionID.IndexOf("<") >= 0) //NOXLATE
+                                throw new Exception($"Invalid server token recieved: {reqb.SessionID}");
                             ok = true;
                         }
                     }
@@ -1269,7 +1250,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                             if (ex is WebException) //These exceptions, we just want the underlying message. No need for 50 bajillion nested exceptions
                                 throw;
                             else //We don't know what this could be so grab everything
-                                throw new Exception("Failed to connect, perhaps session is expired?\nExtended error info: " + ex.Message, ex);
+                                throw new Exception($"Failed to connect, perhaps session is expired?\nExtended error info: {ex.Message}", ex); //LOCALIZEME
                         }
                         else
                             return false;
@@ -1360,7 +1341,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="req">The request URI</param>
         /// <returns>The data at the given location</returns>
-        internal System.IO.Stream OpenRead(string req)
+        internal Stream OpenRead(string req)
         {
             string prev_session = m_reqBuilder.SessionID;
             try
@@ -1411,8 +1392,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         public override UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type)
         {
             string req = m_reqBuilder.EnumerateUnmanagedData(startpath, filter, recursive, type);
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            using (System.IO.Stream s = this.OpenRead(req))
+            var ms = new MemoryStream();
+            using (var s = this.OpenRead(req))
                 Utility.CopyStream(s, ms);
             ms.Position = 0;
             return (UnmanagedDataList)DeserializeObject(typeof(UnmanagedDataList), ms);
@@ -1426,13 +1407,13 @@ namespace OSGeo.MapGuide.MaestroAPI
             get
             {
                 string baseurl = this.ServerURI;
-                if (baseurl.ToLower().EndsWith("/mapagent.fcgi"))
-                    baseurl = baseurl.Substring(0, baseurl.Length - "mapagent.fcgi".Length);
+                if (baseurl.ToLower().EndsWith("/mapagent.fcgi")) //NOXLATE
+                    baseurl = baseurl.Substring(0, baseurl.Length - "mapagent.fcgi".Length); //NOXLATE
 
-                if (baseurl.ToLower().EndsWith("/mapagent/"))
-                    baseurl = baseurl.Substring(0, baseurl.Length - "mapagent/".Length);
-                else if (baseurl.ToLower().EndsWith("/mapagent"))
-                    baseurl = baseurl.Substring(0, baseurl.Length - "mapagent".Length);
+                if (baseurl.ToLower().EndsWith("/mapagent/")) //NOXLATE
+                    baseurl = baseurl.Substring(0, baseurl.Length - "mapagent/".Length); //NOXLATE
+                else if (baseurl.ToLower().EndsWith("/mapagent")) //NOXLATE
+                    baseurl = baseurl.Substring(0, baseurl.Length - "mapagent".Length); //NOXLATE
 
                 return baseurl;
             }
@@ -1446,10 +1427,10 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
         /// <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
         /// <returns>The minature bitmap</returns>
-        public override System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
+        public override Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
         {
             string param = m_reqBuilder.GetLegendImage(scale, layerdefinition, themeIndex, type, width, height, format);
-            return new System.Drawing.Bitmap(this.OpenRead(param));
+            return new Bitmap(this.OpenRead(param));
         }
 
         /// <summary>
@@ -1461,17 +1442,19 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             try
             {
-                using (System.IO.FileStream fs = new System.IO.FileStream(filename, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read))
+                using (var fs = new FileStream(filename, FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
-                    System.Net.WebRequest req = m_reqBuilder.ApplyPackage(fs, callback);
+                    var req = m_reqBuilder.ApplyPackage(fs, callback);
                     req.Credentials = _cred;
                     req.GetRequestStream().Flush();
                     req.GetRequestStream().Close();
 
                     byte[] buf = new byte[1];
-                    System.IO.Stream s = req.GetResponse().GetResponseStream();
-                    s.Read(buf, 0, 1);
-                    s.Close();
+                    using (var s = req.GetResponse().GetResponseStream())
+                    {
+                        s.Read(buf, 0, 1);
+                        s.Close();
+                    }
                 }
             }
             catch (Exception ex)
@@ -1491,15 +1474,17 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             try
             {
-                System.Net.WebRequest req = m_reqBuilder.UpdateRepository(resourceId, this.SerializeObject(header));
+                var req = m_reqBuilder.UpdateRepository(resourceId, this.SerializeObject(header));
                 req.Credentials = _cred;
                 req.GetRequestStream().Flush();
                 req.GetRequestStream().Close();
 
                 byte[] buf = new byte[1];
-                System.IO.Stream s = req.GetResponse().GetResponseStream();
-                s.Read(buf, 0, 1);
-                s.Close();
+                using (var s = req.GetResponse().GetResponseStream())
+                {
+                    s.Read(buf, 0, 1);
+                    s.Close();
+                }
             }
             catch (Exception ex)
             {
@@ -1514,14 +1499,16 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        public override object GetFolderOrResourceHeader(string resourceID)
+        public override object GetFolderOrResourceHeader(string resourceId)
         {
-            string req = m_reqBuilder.GetResourceHeader(resourceID);
-            using (System.IO.Stream s = this.OpenRead(req))
-                if (ResourceIdentifier.IsFolderResource(resourceID))
+            string req = m_reqBuilder.GetResourceHeader(resourceId);
+            using (var s = this.OpenRead(req))
+            {
+                if (ResourceIdentifier.IsFolderResource(resourceId))
                     return this.DeserializeObject<ResourceFolderHeaderType>(s);
                 else
                     return this.DeserializeObject<ResourceDocumentHeaderType>(s);
+            }
         }
 
         /// <summary>
@@ -1534,7 +1521,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_cachedUserList == null)
             {
                 string req = m_reqBuilder.EnumerateUsers(group);
-                using (System.IO.Stream s = this.OpenRead(req))
+                using (var s = this.OpenRead(req))
                     m_cachedUserList = this.DeserializeObject<UserList>(s);
             }
             return m_cachedUserList;
@@ -1549,24 +1536,24 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (m_cachedGroupList == null)
             {
                 string req = m_reqBuilder.EnumerateGroups();
-                using (System.IO.Stream s = this.OpenRead(req))
+                using (var s = this.OpenRead(req))
                     m_cachedGroupList = this.DeserializeObject<GroupList>(s);
             }
             return m_cachedGroupList;
         }
 
-        public override bool ResourceExists(string resourceid)
+        public override bool ResourceExists(string resourceID)
         {
             try
             {
-                string req = m_reqBuilder.ResourceExists(resourceid);
-                using (System.IO.Stream s = this.OpenRead(req))
-                using (System.IO.StreamReader sr = new System.IO.StreamReader(s))
+                string req = m_reqBuilder.ResourceExists(resourceID);
+                using (var s = this.OpenRead(req))
+                using (var sr = new System.IO.StreamReader(s))
                     return sr.ReadToEnd().Trim().Equals("true", StringComparison.InvariantCultureIgnoreCase);
             }
             catch (Exception ex)
             {
-                try { return base.ResourceExists(resourceid); }
+                try { return base.ResourceExists(resourceID); }
                 catch { throw ex; } //Throw original error
             }
         }
@@ -1574,9 +1561,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         public string[] GetConnectionPropertyValues(string providerName, string propertyName, string partialConnectionString)
         {
             string req = m_reqBuilder.GetConnectionPropertyValues(providerName, propertyName, partialConnectionString);
-            using (System.IO.Stream s = this.OpenRead(req))
+            using (var s = this.OpenRead(req))
             {
-                OSGeo.MapGuide.ObjectModels.Common.StringCollection strc = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.Common.StringCollection>(s);
+                var strc = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.Common.StringCollection>(s);
                 return strc.Item.ToArray();
             }
         }
@@ -1594,7 +1581,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
         #endregion IDisposable Members
 
-        public override System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format)
+        public override Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format)
         {
             string req = string.Empty;
             if (mAnonymousUser)
@@ -1624,25 +1611,13 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        public bool SupportsResourcePreviews
-        {
-            get { return true; }
-        }
+        public bool SupportsResourcePreviews => true;
 
-        public IFeatureService FeatureService
-        {
-            get { return this; }
-        }
+        public IFeatureService FeatureService => this;
 
-        public IResourceService ResourceService
-        {
-            get { return this; }
-        }
+        public IResourceService ResourceService => this;
 
-        public IConnectionCapabilities Capabilities
-        {
-            get { return new HttpCapabilities(this); }
-        }
+        public IConnectionCapabilities Capabilities => new HttpCapabilities(this);
 
         public IService GetService(int serviceType)
         {
@@ -1665,13 +1640,10 @@ namespace OSGeo.MapGuide.MaestroAPI
             throw new UnsupportedServiceTypeException(st);
         }
 
-        public const string PROP_USER_AGENT = "UserAgent";
-        public const string PROP_BASE_URL = "BaseUrl";
+        public const string PROP_USER_AGENT = "UserAgent"; //NOXLATE
+        public const string PROP_BASE_URL = "BaseUrl"; //NOXLATE
 
-        public override string[] GetCustomPropertyNames()
-        {
-            return new string[] { PROP_USER_AGENT, PROP_BASE_URL };
-        }
+        public override string[] GetCustomPropertyNames() => new string[] { PROP_USER_AGENT, PROP_BASE_URL };
 
         /// <summary>
         /// Gets or sets the number of worker threads to spawn when initializing
@@ -1711,12 +1683,9 @@ namespace OSGeo.MapGuide.MaestroAPI
                 throw new CustomPropertyNotFoundException();
         }
 
-        protected override IServerConnection GetInterface()
-        {
-            return this;
-        }
+        protected override IServerConnection GetInterface() => this;
 
-        public System.IO.Stream DescribeDrawing(string resourceID)
+        public Stream DescribeDrawing(string resourceID)
         {
             string req = m_reqBuilder.DescribeDrawing(resourceID);
             return this.OpenRead(resourceID);
@@ -1725,7 +1694,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public string[] EnumerateDrawingLayers(string resourceID, string sectionName)
         {
             string req = m_reqBuilder.EnumerateDrawingLayers(resourceID, sectionName);
-            using (System.IO.Stream s = this.OpenRead(req))
+            using (var s = this.OpenRead(req))
             {
                 var list = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.Common.StringCollection>(s);
                 //Workaround for #1727
@@ -1742,43 +1711,43 @@ namespace OSGeo.MapGuide.MaestroAPI
         public DrawingSectionResourceList EnumerateDrawingSectionResources(string resourceID, string sectionName)
         {
             string req = m_reqBuilder.EnumerateDrawingSectionResources(resourceID, sectionName);
-            using (System.IO.Stream s = this.OpenRead(req))
+            using (var s = this.OpenRead(req))
                 return this.DeserializeObject<DrawingSectionResourceList>(s);
         }
 
         public DrawingSectionList EnumerateDrawingSections(string resourceID)
         {
             string req = m_reqBuilder.EnumerateDrawingSections(resourceID);
-            using (System.IO.Stream s = this.OpenRead(req))
+            using (var s = this.OpenRead(req))
                 return this.DeserializeObject<DrawingSectionList>(s);
         }
 
         public string GetDrawingCoordinateSpace(string resourceID)
         {
             string req = m_reqBuilder.GetDrawingCoordinateSpace(resourceID);
-            using (System.IO.StreamReader s = new System.IO.StreamReader(this.OpenRead(req)))
+            using (var s = new StreamReader(this.OpenRead(req)))
                 return s.ReadToEnd();
         }
 
-        public System.IO.Stream GetDrawing(string resourceID)
+        public Stream GetDrawing(string resourceID)
         {
             string req = m_reqBuilder.GetDrawing(resourceID);
             return this.OpenRead(req);
         }
 
-        public System.IO.Stream GetLayer(string resourceID, string sectionName, string layerName)
+        public Stream GetLayer(string resourceID, string sectionName, string layerName)
         {
             string req = m_reqBuilder.GetDrawingLayer(resourceID, sectionName, layerName);
             return this.OpenRead(req);
         }
 
-        public System.IO.Stream GetSection(string resourceID, string sectionName)
+        public Stream GetSection(string resourceID, string sectionName)
         {
             string req = m_reqBuilder.GetDrawingSection(resourceID, sectionName);
             return this.OpenRead(req);
         }
 
-        public System.IO.Stream GetSectionResource(string resourceID, string resourceName)
+        public Stream GetSectionResource(string resourceID, string resourceName)
         {
             string req = m_reqBuilder.GetDrawingSectionResource(resourceID, resourceName);
             return this.OpenRead(req);
@@ -1787,7 +1756,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public override DataStoreList EnumerateDataStores(string providerName, string partialConnString)
         {
             string req = m_reqBuilder.EnumerateDataStores(providerName, partialConnString);
-            using (System.IO.Stream s = this.OpenRead(req))
+            using (var s = this.OpenRead(req))
             {
                 var list = this.DeserializeObject<OSGeo.MapGuide.ObjectModels.Common.DataStoreList>(s);
                 return list;
@@ -1798,7 +1767,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             string req = m_reqBuilder.GetProviderCapabilities(provider);
 
-            var o = DeserializeObject<OSGeo.MapGuide.ObjectModels.Capabilities.v1_1_0.FdoProviderCapabilities>(this.OpenRead(req));
+            var o = DeserializeObject<ObjectModels.Capabilities.v1_1_0.FdoProviderCapabilities>(this.OpenRead(req));
             return o;
         }
 
@@ -1828,9 +1797,9 @@ namespace OSGeo.MapGuide.MaestroAPI
                 newpath = FixAndValidateFolderPath(newpath);
 
                 string req = m_reqBuilder.MoveResource(oldpath, newpath, true);
-                req += "&CASCADE=1";
+                req += "&CASCADE=1"; //NOXLATE
 
-                using (System.IO.Stream resp = this.OpenRead(req))
+                using (var resp = this.OpenRead(req))
                     resp.ReadByte();
 
                 return true;
@@ -1852,9 +1821,9 @@ namespace OSGeo.MapGuide.MaestroAPI
                     progress(this, la);
 
                 string req = m_reqBuilder.MoveResource(oldpath, newpath, true);
-                req += "&CASCADE=1";
+                req += "&CASCADE=1"; //NOXLATE
 
-                using (System.IO.Stream resp = this.OpenRead(req))
+                using (var resp = this.OpenRead(req))
                     resp.ReadByte();
 
                 return true;
@@ -1865,16 +1834,16 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        public override string QueryMapFeatures(Mapping.RuntimeMap map, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)
+        public override string QueryMapFeatures(RuntimeMap rtMap, int maxFeatures, string wkt, bool persist, string selectionVariant, QueryMapOptions extraOptions)
         {
-            string runtimeMapName = map.Name;
+            string runtimeMapName = rtMap.Name;
             //The request may execeed the url limit of the server, when large geometries
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            System.Net.WebRequest req = m_reqBuilder.QueryMapFeatures(runtimeMapName, maxFeatures, wkt, persist, selectionVariant, extraOptions, ms);
+            var ms = new MemoryStream();
+            var req = m_reqBuilder.QueryMapFeatures(runtimeMapName, maxFeatures, wkt, persist, selectionVariant, extraOptions, ms);
             req.Timeout = 200 * 1000;
             ms.Position = 0;
 
-            using (System.IO.Stream rs = req.GetRequestStream())
+            using (var rs = req.GetRequestStream())
             {
                 Utility.CopyStream(ms, rs);
                 rs.Flush();
@@ -1944,7 +1913,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public override IServerConnection Clone()
         {
             if (this.IsAnonymous)
-                return new HttpServerConnection(new Uri(this.ServerURI), "Anonymous", "", null, true);
+                return new HttpServerConnection(new Uri(this.ServerURI), "Anonymous", string.Empty, null, true); //NOXLATE
             else
                 return new HttpServerConnection(new Uri(this.ServerURI), this.SessionID, null, true);
         }
@@ -2029,10 +1998,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        public override Resource.Preview.IResourcePreviewUrlGenerator GetPreviewUrlGenerator()
-        {
-            return new HttpResourcePreviewUrlGenerator(this, m_reqBuilder.HostURI);
-        }
+        public override Resource.Preview.IResourcePreviewUrlGenerator GetPreviewUrlGenerator() => new HttpResourcePreviewUrlGenerator(this, m_reqBuilder.HostURI);
 
         internal TileProviderList GetTileProviders()
         {

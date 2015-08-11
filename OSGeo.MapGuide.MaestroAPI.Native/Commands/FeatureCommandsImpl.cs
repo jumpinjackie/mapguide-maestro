@@ -71,9 +71,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
 
     internal static class GeomConverter
     {
-        private static MgAgfReaderWriter _agfRw;
+        private static readonly MgAgfReaderWriter _agfRw;
         private static MgWktReaderWriter _wktRw;
-        private static FixedWKTReader _reader;
+        private static readonly FixedWKTReader _reader;
 
         static GeomConverter()
         {

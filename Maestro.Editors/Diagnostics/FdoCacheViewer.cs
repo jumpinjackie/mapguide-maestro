@@ -33,7 +33,7 @@ namespace Maestro.Editors.Diagnostics
     /// </summary>
     public partial class FdoCacheViewer : Form
     {
-        private IGetFdoCacheInfo _cmd;
+        private readonly IGetFdoCacheInfo _cmd;
 
         /// <summary>
         /// Constructor
@@ -55,19 +55,10 @@ namespace Maestro.Editors.Diagnostics
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void btnClose_Click(object sender, EventArgs e) => this.Close();
 
-        private void chkAutoRefresh_CheckedChanged(object sender, EventArgs e)
-        {
-            tmRefresh.Enabled = chkAutoRefresh.Checked;
-        }
+        private void chkAutoRefresh_CheckedChanged(object sender, EventArgs e) => tmRefresh.Enabled = chkAutoRefresh.Checked;
 
-        private void tmRefresh_Tick(object sender, EventArgs e)
-        {
-            txtXml.Text = ToXml(_cmd.Execute());
-        }
+        private void tmRefresh_Tick(object sender, EventArgs e) => txtXml.Text = ToXml(_cmd.Execute());
     }
 }

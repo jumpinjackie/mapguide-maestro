@@ -219,7 +219,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
 
             if (fillStyleEditor.displayFill.Checked)
-                m_item.Fill = previousFill == null ? _factory.CreateDefaultFill() : previousFill;
+                m_item.Fill = previousFill ?? _factory.CreateDefaultFill();
             else
             {
                 if (m_item.Fill != null)
@@ -259,7 +259,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
                 return;
 
             if (lineStyleEditor.displayLine.Checked)
-                m_item.Stroke = previousStroke == null ? _factory.CreateDefaultStroke() : previousStroke;
+                m_item.Stroke = previousStroke ?? _factory.CreateDefaultStroke();
             else
             {
                 if (m_item.Stroke != null)

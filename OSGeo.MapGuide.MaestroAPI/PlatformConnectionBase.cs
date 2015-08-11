@@ -422,15 +422,15 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Deletes the resource.
         /// </summary>
-        /// <param name="resourceid">The resourceid.</param>
-        public abstract void DeleteResource(string resourceid);
+        /// <param name="resourceID">The resourceid.</param>
+        public abstract void DeleteResource(string resourceID);
 
         /// <summary>
         /// Writes an object into a resourceID
         /// </summary>
-        /// <param name="resourceid">The resource to write into</param>
+        /// <param name="resourceID">The resource to write into</param>
         /// <param name="resource">The resourcec to write</param>
-        virtual public void WriteResource(string resourceid, object resource)
+        virtual public void WriteResource(string resourceID, object resource)
         {
             System.IO.MemoryStream ms = SerializeObject(resource);
             ms.Position = 0;
@@ -448,20 +448,20 @@ namespace OSGeo.MapGuide.MaestroAPI
             ms.Position = 0;
 #endif
 
-            SetResourceXmlData(resourceid, ms);
+            SetResourceXmlData(resourceID, ms);
         }
 
         /// <summary>
         /// Writes raw data into a resource.
         /// </summary>
-        /// <param name="resourceid">The resourceID to write into</param>
+        /// <param name="resourceID">The resourceID to write into</param>
         /// <param name="stream">The stream containing the data to write.</param>
-        public virtual void SetResourceXmlData(string resourceid, System.IO.Stream stream)
+        public virtual void SetResourceXmlData(string resourceID, System.IO.Stream stream)
         {
-            SetResourceXmlData(resourceid, stream, null);
-            int purged = PurgeCachedItemsOf(resourceid);
+            SetResourceXmlData(resourceID, stream, null);
+            int purged = PurgeCachedItemsOf(resourceID);
 #if DEBUG
-            System.Diagnostics.Trace.TraceInformation("{0} cached items purged for {1}", purged, resourceid); //NOXLATE
+            System.Diagnostics.Trace.TraceInformation($"{purged} cached items purged for {resourceID}"); //NOXLATE
 #endif
         }
 
@@ -470,10 +470,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// This method returns the full catalog and should be used sparringly.
         /// </summary>
         /// <returns>A list of contained resources</returns>
-        virtual public ObjCommon.ResourceList GetRepositoryResources()
-        {
-            return GetRepositoryResources(StringConstants.RootIdentifier, null, -1, true);
-        }
+        public virtual ResourceList GetRepositoryResources() => GetRepositoryResources(StringConstants.RootIdentifier, null, -1, true);
 
         /// <summary>
         /// Gets a list of resources in the permanent server repository (Library).
@@ -481,10 +478,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="depth">The max depth to recurse. Use -1 for no limit.</param>
         /// <returns>A list of contained resources</returns>
-        virtual public ObjCommon.ResourceList GetRepositoryResources(int depth)
-        {
-            return GetRepositoryResources(StringConstants.RootIdentifier, null, depth, true);
-        }
+        public virtual ResourceList GetRepositoryResources(int depth) => GetRepositoryResources(StringConstants.RootIdentifier, null, depth, true);
 
         /// <summary>
         /// Gets a list of resources in the permanent server repository (Library).
@@ -493,10 +487,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="startingpoint">The folder from which to return items. Use null for &quot;Library://&quot;</param>
         /// <param name="depth">The max depth to recurse. Use -1 for no limit.</param>
         /// <returns>A list of contained resources</returns>
-        virtual public ObjCommon.ResourceList GetRepositoryResources(string startingpoint, int depth)
-        {
-            return GetRepositoryResources(startingpoint, null, depth, true);
-        }
+        public virtual ResourceList GetRepositoryResources(string startingpoint, int depth) => GetRepositoryResources(startingpoint, null, depth, true);
 
         /// <summary>
         /// Gets a list of resources in the permanent server repository (Library).
@@ -504,10 +495,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="startingpoint">The folder from which to return items. Use null for &quot;Library://&quot;</param>
         /// <returns>A list of contained resources</returns>
-        virtual public ObjCommon.ResourceList GetRepositoryResources(string startingpoint)
-        {
-            return GetRepositoryResources(startingpoint, null, -1, true);
-        }
+        public virtual ResourceList GetRepositoryResources(string startingpoint) => GetRepositoryResources(startingpoint, null, -1, true);
 
         /// <summary>
         /// Gets a list of resources in the permanent server repository (Library).
@@ -516,10 +504,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="startingpoint">The folder from which to return items. Use null for &quot;Library://&quot;</param>
         /// <param name="type">The type of resource to look for. Basically this is the resource extension, like &quot;.MapDefinition&quot;. Use null for all resources.</param>
         /// <returns>A list of contained resources</returns>
-        virtual public ObjCommon.ResourceList GetRepositoryResources(string startingpoint, string type)
-        {
-            return GetRepositoryResources(startingpoint, type, -1, true);
-        }
+        public virtual ResourceList GetRepositoryResources(string startingpoint, string type) => GetRepositoryResources(startingpoint, type, -1, true);
 
         /// <summary>
         /// Gets a list of resources in the permanent server repository (Library).
@@ -529,10 +514,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="type">The type of resource to look for. Basically this is the resource extension, like &quot;.MapDefinition&quot;. Use null for all resources.</param>
         /// <param name="depth">The max depth to recurse. Use -1 for no limit.</param>
         /// <returns>A list of contained resources</returns>
-        public ObjCommon.ResourceList GetRepositoryResources(string startingpoint, string type, int depth)
-        {
-            return GetRepositoryResources(startingpoint, type, depth, true);
-        }
+        public ResourceList GetRepositoryResources(string startingpoint, string type, int depth) => GetRepositoryResources(startingpoint, type, depth, true);
 
         /// <summary>
         /// Gets a list of resources in the permanent server repository (Library).
@@ -542,7 +524,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="depth">The max depth to recurse. Use -1 for no limit.</param>
         /// <param name="computeChildren">A flag indicating if the count of subfolders and resources should be calculated for leaf nodes</param>
         /// <returns>A list of contained resources</returns>
-        abstract public ObjCommon.ResourceList GetRepositoryResources(string startingpoint, string type, int depth, bool computeChildren);
+        public abstract ResourceList GetRepositoryResources(string startingpoint, string type, int depth, bool computeChildren);
 
         /// <summary>
         /// Forces a timestamp update of the specified resource. This is akin to
@@ -560,23 +542,23 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Returns a boolean indicating if a given resource exists
         /// </summary>
-        /// <param name="resourceid">The resource to look for</param>
+        /// <param name="resourceID">The resource to look for</param>
         /// <returns>True if the resource exists false otherwise. Also returns false on error.</returns>
-        public virtual bool ResourceExists(string resourceid)
+        public virtual bool ResourceExists(string resourceID)
         {
             try
             {
                 string sourcefolder;
-                if (resourceid.EndsWith("/")) //NOXLATE
-                    sourcefolder = resourceid.Substring(0, resourceid.Substring(0, resourceid.Length - 1).LastIndexOf("/") + 1); //NOXLATE
+                if (resourceID.EndsWith("/")) //NOXLATE
+                    sourcefolder = resourceID.Substring(0, resourceID.Substring(0, resourceID.Length - 1).LastIndexOf("/") + 1); //NOXLATE
                 else
-                    sourcefolder = resourceid.Substring(0, resourceid.LastIndexOf("/") + 1); //NOXLATE
+                    sourcefolder = resourceID.Substring(0, resourceID.LastIndexOf("/") + 1); //NOXLATE
 
                 ObjCommon.ResourceList lst = GetRepositoryResources(sourcefolder, 1);
                 foreach (object o in lst.Items)
-                    if (o.GetType() == typeof(ObjCommon.ResourceListResourceFolder) && ((ObjCommon.ResourceListResourceFolder)o).ResourceId == resourceid)
+                    if (o.GetType() == typeof(ObjCommon.ResourceListResourceFolder) && ((ObjCommon.ResourceListResourceFolder)o).ResourceId == resourceID)
                         return true;
-                    else if (o.GetType() == typeof(ObjCommon.ResourceListResourceDocument) && ((ObjCommon.ResourceListResourceDocument)o).ResourceId == resourceid)
+                    else if (o.GetType() == typeof(ObjCommon.ResourceListResourceDocument) && ((ObjCommon.ResourceListResourceDocument)o).ResourceId == resourceID)
                         return true;
 
                 return false;
@@ -595,9 +577,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="newresourcepath">The new resource path, the one updating to</param>
         /// <param name="folderupdates">True if the old and new resource path identifiers are folders, false otherwise</param>
         public virtual void UpdateResourceReferences(object o, string oldresourcepath, string newresourcepath, bool folderupdates)
-        {
-            UpdateResourceReferences(o, oldresourcepath, newresourcepath, folderupdates, new Hashtable());
-        }
+            => UpdateResourceReferences(o, oldresourcepath, newresourcepath, folderupdates, new Hashtable());
 
         /// <summary>
         /// Updates all resource references inside an object.

@@ -43,11 +43,11 @@ namespace OSGeo.FDO.Expressions
             get { return Expressions.ExpressionType.BinaryExpression; }
         }
 
-        public FdoExpression Left { get; private set; }
+        public FdoExpression Left { get; }
 
-        public BinaryOperator Operator { get; private set; }
+        public BinaryOperator Operator { get; }
 
-        public FdoExpression Right { get; private set; }
+        public FdoExpression Right { get; }
 
         public FdoBinaryExpression(ParseTreeNode node)
         {

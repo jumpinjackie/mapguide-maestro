@@ -35,9 +35,9 @@ namespace Maestro.LiveMapEditor
 {
     public partial class MapSettingsDialog : Form
     {
-        private IMapDefinition _mdf;
+        private readonly IMapDefinition _mdf;
         private IServerConnection _conn;
-        private IMapViewer _viewer;
+        private readonly IMapViewer _viewer;
 
         public MapSettingsDialog(IServerConnection conn, IMapDefinition mdf, IMapViewer viewer)
         {

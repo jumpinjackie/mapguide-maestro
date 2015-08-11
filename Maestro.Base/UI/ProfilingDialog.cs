@@ -375,7 +375,7 @@ namespace Maestro.Base.UI
         {
             private string m_text;
             private bool m_isDisposed;
-            private DateTime m_begin;
+            private readonly DateTime m_begin;
             private BackgroundWorker m_worker;
 
             public Timer(string text, BackgroundWorker worker)

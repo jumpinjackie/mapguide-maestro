@@ -39,8 +39,8 @@ namespace Maestro.Editors.Common.Expression
             InitializeComponent();
         }
 
-        private FdoExpressionValidationException _ex;
-        private IExpressionErrorSource _source;
+        private readonly FdoExpressionValidationException _ex;
+        private readonly IExpressionErrorSource _source;
 
         public ExpressionParseErrorDialog(FdoExpressionValidationException ex, IExpressionErrorSource source)
             : this()
@@ -50,10 +50,7 @@ namespace Maestro.Editors.Common.Expression
             txtErrorDetails.Text = _ex.Message;
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
-        }
+        private void btnClose_Click(object sender, EventArgs e) => this.DialogResult = System.Windows.Forms.DialogResult.OK;
 
         private void btnGotoError_Click(object sender, EventArgs e)
         {

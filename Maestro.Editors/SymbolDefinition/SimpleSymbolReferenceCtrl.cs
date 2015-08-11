@@ -34,7 +34,7 @@ namespace Maestro.Editors.SymbolDefinition
     internal partial class SimpleSymbolReferenceCtrl : UserControl
     {
         private IEditorService _edSvc;
-        private IResourceIdReference _symRef;
+        private readonly IResourceIdReference _symRef;
 
         private bool _init = false;
 

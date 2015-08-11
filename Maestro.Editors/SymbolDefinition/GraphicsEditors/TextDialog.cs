@@ -32,7 +32,7 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
     {
         private ISimpleSymbolDefinition _sym;
         private EditorBindableCollapsiblePanel _ed;
-        private ITextGraphic _text;
+        private readonly ITextGraphic _text;
         private ITextFrame _frame;
 
         public TextDialog(EditorBindableCollapsiblePanel parent, ISimpleSymbolDefinition sym, ITextGraphic text)
@@ -59,36 +59,36 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
                 if (_frame == null)
                     _frame = _sym.CreateFrame();
 
-                TextBoxBinder.BindText(txtContent, _text, "Content");
+                TextBoxBinder.BindText(txtContent, _text, nameof(_text.Content));
 
-                symAlignmentHorizontal.Bind(_text, "HorizontalAlignment");
-                symAlignmentJustification.Bind(_text, "Justification");
-                symAlignmentVertical.Bind(_text, "VerticalAlignment");
-                symAngle.Bind(_text, "Angle");
-                symFontBold.Bind(_text, "Bold");
-                symFontFamily.Bind(_text, "FontName");
-                symFontItalic.Bind(_text, "Italic");
-                symFontUnderlined.Bind(_text, "Underlined");
-                symGhostColor.Bind(_text, "GhostColor");
-                symHeight.Bind(_text, "Height");
-                symHeightScalable.Bind(_text, "HeightScalable");
-                symLineSpacing.Bind(_text, "LineSpacing");
-                symPositionX.Bind(_text, "PositionX");
-                symPositionY.Bind(_text, "PositionY");
-                symTextColor.Bind(_text, "TextColor");
+                symAlignmentHorizontal.Bind(_text, nameof(_text.HorizontalAlignment));
+                symAlignmentJustification.Bind(_text, nameof(_text.Justification));
+                symAlignmentVertical.Bind(_text, nameof(_text.VerticalAlignment));
+                symAngle.Bind(_text, nameof(_text.Angle));
+                symFontBold.Bind(_text, nameof(_text.Bold));
+                symFontFamily.Bind(_text, nameof(_text.FontName));
+                symFontItalic.Bind(_text, nameof(_text.Italic));
+                symFontUnderlined.Bind(_text, nameof(_text.Underlined));
+                symGhostColor.Bind(_text, nameof(_text.GhostColor));
+                symHeight.Bind(_text, nameof(_text.Height));
+                symHeightScalable.Bind(_text, nameof(_text.HeightScalable));
+                symLineSpacing.Bind(_text, nameof(_text.LineSpacing));
+                symPositionX.Bind(_text, nameof(_text.PositionX));
+                symPositionY.Bind(_text, nameof(_text.PositionY));
+                symTextColor.Bind(_text, nameof(_text.TextColor));
 
-                symFillColor.Bind(_frame, "FillColor");
-                symLineColor.Bind(_frame, "LineColor");
-                symOffsetX.Bind(_frame, "OffsetX");
-                symOffsetY.Bind(_frame, "OffsetY");
+                symFillColor.Bind(_frame, nameof(_frame.FillColor));
+                symLineColor.Bind(_frame, nameof(_frame.LineColor));
+                symOffsetX.Bind(_frame, nameof(_frame.OffsetX));
+                symOffsetY.Bind(_frame, nameof(_frame.OffsetY));
 
                 var text2 = _text as ITextGraphic2;
                 if (text2 != null)
                 {
-                    symOverlined.Bind(text2, "Overlined");
-                    symObliqueAngle.Bind(text2, "ObliqueAngle");
-                    symTrackSpacing.Bind(text2, "TrackSpacing");
-                    symMarkup.Bind(text2, "Markup");
+                    symOverlined.Bind(text2, nameof(text2.Overlined));
+                    symObliqueAngle.Bind(text2, nameof(text2.ObliqueAngle));
+                    symTrackSpacing.Bind(text2, nameof(text2.TrackSpacing));
+                    symMarkup.Bind(text2, nameof(text2.Markup));
                 }
                 else
                 {
@@ -108,10 +108,7 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
             _ed.RaiseResourceChanged();
         }
 
-        private void OnRequestBrowse(SymbolField sender)
-        {
-            ParameterSelector.ShowParameterSelector(_sym.ParameterDefinition.Parameter, sender);
-        }
+        private void OnRequestBrowse(SymbolField sender) => ParameterSelector.ShowParameterSelector(_sym.ParameterDefinition.Parameter, sender);
 
         private void chkTextFrame_CheckedChanged(object sender, EventArgs e)
         {
@@ -133,10 +130,7 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
                 txtContent.Text = content;
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void btnClose_Click(object sender, EventArgs e) => this.Close();
 
         private void lnkSelectFont_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -144,7 +138,7 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
             if (fd.ShowDialog() == DialogResult.OK)
             {
                 var font = fd.Font;
-                _text.FontName = "'" + font.Name + "'";
+                _text.FontName = $"'{font.Name}'"; //NOXLATE
                 if (font.Bold)
                     _text.Bold = font.Bold.ToString();
                 if (font.Italic)

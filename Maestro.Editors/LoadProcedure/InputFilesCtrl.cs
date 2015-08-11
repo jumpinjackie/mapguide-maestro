@@ -75,14 +75,21 @@ namespace Maestro.Editors.LoadProcedure
         private string GetFilter()
         {
             string filter = OSGeo.MapGuide.MaestroAPI.StringConstants.AllFilesFilter;
-            if (_lpt.Type == LoadType.Sdf)
-                filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickSdf, "sdf"); //NOXLATE
-            else if (_lpt.Type == LoadType.Shp)
-                filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickShp, "shp"); //NOXLATE
-            else if (_lpt.Type == LoadType.Dwf)
-                filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickDwf, "dwf"); //NOXLATE
-            else if (_lpt.Type == LoadType.Sqlite)
-                filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickSqlite, "sqlite"); //NOXLATE
+            switch (_lpt.Type)
+            {
+                case LoadType.Sdf:
+                    filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickSdf, "sdf"); //NOXLATE
+                    break;
+                case LoadType.Shp:
+                    filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickShp, "shp"); //NOXLATE
+                    break;
+                case LoadType.Dwf:
+                    filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickDwf, "dwf"); //NOXLATE
+                    break;
+                case LoadType.Sqlite:
+                    filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickSqlite, "sqlite"); //NOXLATE
+                    break;
+            }
 
             return filter;
         }

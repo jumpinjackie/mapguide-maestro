@@ -42,7 +42,7 @@ namespace Maestro.Editors.MapDefinition
 
         public event EventHandler LayerChanged;
 
-        private IEditorService _edSvc;
+        private readonly IEditorService _edSvc;
 
         public LayerPropertiesCtrl(IMapLayer layer, IEditorService edSvc)
             : this()

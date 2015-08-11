@@ -35,7 +35,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
         private IAreaVectorStyle _ars;
         private BindingList<ICompositeTypeStyle> _cts;
 
-        private VectorLayerStyleSectionCtrl _parent;
+        private readonly VectorLayerStyleSectionCtrl _parent;
 
         private IVectorScaleRange _vsr;
         private bool _init;

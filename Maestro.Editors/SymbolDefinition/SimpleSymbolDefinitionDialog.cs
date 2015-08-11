@@ -30,7 +30,7 @@ namespace Maestro.Editors.SymbolDefinition
     /// </summary>
     public partial class SimpleSymbolDefinitionDialog : Form
     {
-        private IEditorService _edSvc;
+        private readonly IEditorService _edSvc;
 
         /// <summary>
         /// Constructor

@@ -41,9 +41,9 @@ namespace Maestro.AddIn.Rest.UI
             InitializeComponent();
         }
 
-        private string _rep;
-        private IRepresentationCtrl _ctrl;
-        private dynamic _config;
+        private readonly string _rep;
+        private readonly IRepresentationCtrl _ctrl;
+        private readonly dynamic _config;
         private RestSourceContext _context;
 
         public NewRepresentationDialog(string rep, dynamic config, RestSourceContext context)

@@ -29,7 +29,7 @@ namespace MgCooker
 {
     public partial class Progress : Form
     {
-        private TilingRunCollection m_bx;
+        private readonly TilingRunCollection m_bx;
         private List<TimeSpan> m_tileRuns;
         private long m_tileCount;
         private DateTime m_lastUpdate;
@@ -86,12 +86,7 @@ namespace MgCooker
             m_allowClose = true;
 
             this.TotalTime = DateTime.Now - m_grandBegin;
-
-            if (m_cancel)
-                this.DialogResult = DialogResult.Cancel;
-            else
-                this.DialogResult = DialogResult.OK;
-
+            this.DialogResult = m_cancel ? DialogResult.Cancel : DialogResult.OK;
             this.Close();
         }
 
@@ -151,7 +146,7 @@ namespace MgCooker
                 this.Text = m_origTitle + " - (" + (int)(((double)m_grandTotalTileCount / (double)m_grandTotalTiles) * 100.0) + "%)";
 
                 if (m_failCount == 0)
-                    tileCounter.Text = string.Format(Strings.CurrentTileCounter, m_grandTotalTileCount, m_grandTotalTiles, "");
+                    tileCounter.Text = string.Format(Strings.CurrentTileCounter, m_grandTotalTileCount, m_grandTotalTiles, string.Empty);
                 else
                     tileCounter.Text = string.Format(Strings.CurrentTileCounter, m_grandTotalTileCount, m_grandTotalTiles, string.Format(Strings.TileErrorCount, m_failCount));
 

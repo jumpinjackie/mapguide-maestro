@@ -38,13 +38,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
         }
 
         private bool _init = false;
-        private VectorLayerStyleSectionCtrl _parent;
-        private IVectorScaleRange _vsr;
+        private readonly VectorLayerStyleSectionCtrl _parent;
+        private readonly IVectorScaleRange _vsr;
         private IPointVectorStyle _pts;
         private ILineVectorStyle _lts;
         private IAreaVectorStyle _ats;
-        private BindingList<ICompositeTypeStyle> _cts;
-        private ILayerDefinition _editedLayer;
+        private readonly BindingList<ICompositeTypeStyle> _cts;
+        private readonly ILayerDefinition _editedLayer;
 
         public VectorScaleRangeGrid(IVectorScaleRange vsr, VectorLayerStyleSectionCtrl parent)
             : this()

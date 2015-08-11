@@ -60,23 +60,11 @@ namespace Maestro.Editors.Common.Expression
             this.ImageList.Images.Add(Properties.Resources.funnel);
         }
 
-        public System.Windows.Forms.ImageList ImageList
-        {
-            get;
-            private set;
-        }
+        public System.Windows.Forms.ImageList ImageList { get; }
 
-        public string PreSelection
-        {
-            get;
-            private set;
-        }
+        public string PreSelection { get; }
 
-        public int DefaultIndex
-        {
-            get;
-            private set;
-        }
+        public int DefaultIndex { get; }
 
         public bool InsertSpace
         {
@@ -137,21 +125,19 @@ namespace Maestro.Editors.Common.Expression
         }
 
         public ICompletionData[] GenerateCompletionData(string fileName, TextArea textArea, char charTyped)
-        {
-            return GenerateCompletionData((GetLineText(textArea) + charTyped).Trim());
-        }
+            => GenerateCompletionData((GetLineText(textArea) + charTyped).Trim());
 
         private class FdoCompletionData : DefaultCompletionData
         {
-            private string _insertText;
-            private string _appendText;
+            private readonly string _insertText;
+            private readonly string _appendText;
             private int _highlightLength = 0;
 
-            public int HighlightLength { get { return _highlightLength; } }
+            public int HighlightLength => _highlightLength;
 
-            public string InsertText { get { return _insertText; } }
+            public string InsertText => _insertText;
 
-            public string AppendText { get { return _appendText; } }
+            public string AppendText => _appendText;
 
             public FdoCompletionData(string prefix, string text, string description, int imageIndex)
                 : base(text, description, imageIndex)

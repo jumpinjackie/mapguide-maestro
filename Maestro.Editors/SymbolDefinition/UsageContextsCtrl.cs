@@ -98,31 +98,31 @@ namespace Maestro.Editors.SymbolDefinition
                 symLineVertexJoin.Items = SymbolField.GetItems<VertexJoin>();
                 symPointAngleControl.Items = SymbolField.GetItems<AngleControl>();
 
-                symAreaAngle.Bind(_au, "Angle");
-                symAreaAngleControl.Bind(_au, "AngleControl");
-                symAreaBufferWidth.Bind(_au, "BufferWidth");
-                symAreaClippingControl.Bind(_au, "ClippingControl");
-                symAreaOriginControl.Bind(_au, "OriginControl");
-                symAreaOriginX.Bind(_au, "OriginX");
-                symAreaOriginY.Bind(_au, "OriginY");
-                symAreaRepeatX.Bind(_au, "RepeatX");
-                symAreaRepeatY.Bind(_au, "RepeatY");
+                symAreaAngle.Bind(_au, nameof(_au.Angle));
+                symAreaAngleControl.Bind(_au, nameof(_au.AngleControl));
+                symAreaBufferWidth.Bind(_au, nameof(_au.BufferWidth));
+                symAreaClippingControl.Bind(_au, nameof(_au.ClippingControl));
+                symAreaOriginControl.Bind(_au, nameof(_au.OriginControl));
+                symAreaOriginX.Bind(_au, nameof(_au.OriginX));
+                symAreaOriginY.Bind(_au, nameof(_au.OriginY));
+                symAreaRepeatX.Bind(_au, nameof(_au.RepeatX));
+                symAreaRepeatY.Bind(_au, nameof(_au.RepeatY));
 
-                symLineAngle.Bind(_lu, "Angle");
-                symLineAngleControl.Bind(_lu, "AngleControl");
-                symLineEndOffset.Bind(_lu, "EndOffset");
-                symLineRepeat.Bind(_lu, "Repeat");
-                symLineStartOffset.Bind(_lu, "StartOffset");
-                symLineUnitsControl.Bind(_lu, "UnitsControl");
-                symLineVertexAngleLimit.Bind(_lu, "VertexAngleLimit");
-                symLineVertexControl.Bind(_lu, "VertexControl");
-                symLineVertexJoin.Bind(_lu, "VertexJoin");
-                symLineVertexMiterLimit.Bind(_lu, "VertexMiterLimit");
+                symLineAngle.Bind(_lu, nameof(_lu.Angle));
+                symLineAngleControl.Bind(_lu, nameof(_lu.AngleControl));
+                symLineEndOffset.Bind(_lu, nameof(_lu.EndOffset));
+                symLineRepeat.Bind(_lu, nameof(_lu.Repeat));
+                symLineStartOffset.Bind(_lu, nameof(_lu.StartOffset));
+                symLineUnitsControl.Bind(_lu, nameof(_lu.UnitsControl));
+                symLineVertexAngleLimit.Bind(_lu, nameof(_lu.VertexAngleLimit));
+                symLineVertexControl.Bind(_lu, nameof(_lu.VertexControl));
+                symLineVertexJoin.Bind(_lu, nameof(_lu.VertexJoin));
+                symLineVertexMiterLimit.Bind(_lu, nameof(_lu.VertexMiterLimit));
 
-                symPointAngle.Bind(_pu, "Angle");
-                symPointAngleControl.Bind(_pu, "AngleControl");
-                symPointOriginOffsetX.Bind(_pu, "OriginOffsetX");
-                symPointOriginOffsetY.Bind(_pu, "OriginOffsetY");
+                symPointAngle.Bind(_pu, nameof(_pu.Angle));
+                symPointAngleControl.Bind(_pu, nameof(_pu.AngleControl));
+                symPointOriginOffsetX.Bind(_pu, nameof(_pu.OriginOffsetX));
+                symPointOriginOffsetY.Bind(_pu, nameof(_pu.OriginOffsetY));
             }
             finally
             {
@@ -157,14 +157,8 @@ namespace Maestro.Editors.SymbolDefinition
             _sym.AreaUsage = (chkArea.Checked) ? _au : null;
         }
 
-        private void OnRequestBrowse(SymbolField sender)
-        {
-            ParameterSelector.ShowParameterSelector(_sym.ParameterDefinition.Parameter, sender);
-        }
+        private void OnRequestBrowse(SymbolField sender) => ParameterSelector.ShowParameterSelector(_sym.ParameterDefinition.Parameter, sender);
 
-        private void OnContentChanged(object sender, EventArgs e)
-        {
-            OnResourceChanged();
-        }
+        private void OnContentChanged(object sender, EventArgs e) => OnResourceChanged();
     }
 }

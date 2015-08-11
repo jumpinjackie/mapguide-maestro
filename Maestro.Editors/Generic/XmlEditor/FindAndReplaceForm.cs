@@ -337,7 +337,7 @@ namespace Maestro.Editors.Generic.XmlEditor
 
     internal class TextRange : AbstractSegment
     {
-        private IDocument _document;
+        private readonly IDocument _document;
 
         public TextRange(IDocument document, int offset, int length)
         {
@@ -567,7 +567,7 @@ namespace Maestro.Editors.Generic.XmlEditor
     /// together.</summary>
     internal class HighlightGroup : IDisposable
     {
-        private List<TextMarker> _markers = new List<TextMarker>();
+        private readonly List<TextMarker> _markers = new List<TextMarker>();
         private TextEditorControl _editor;
         private IDocument _document;
 

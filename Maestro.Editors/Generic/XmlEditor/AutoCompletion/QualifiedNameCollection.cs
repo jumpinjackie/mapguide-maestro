@@ -257,7 +257,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <seealso cref='QualifiedName'/>
         public class QualifiedNameEnumerator : IEnumerator
         {
-            private IEnumerator baseEnumerator;
+            private readonly IEnumerator baseEnumerator;
             private IEnumerable temp;
 
             /// <summary>

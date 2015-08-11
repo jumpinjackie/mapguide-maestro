@@ -30,12 +30,9 @@ namespace OSGeo.FDO.Expressions
 {
     public class FdoGeometryValue : FdoLiteralValue
     {
-        public override ExpressionType ExpressionType
-        {
-            get { return Expressions.ExpressionType.GeometryValue; }
-        }
+        public override ExpressionType ExpressionType => ExpressionType.GeometryValue;
 
-        public string GeometryWkt { get; private set; }
+        public string GeometryWkt { get; }
 
         internal FdoGeometryValue(ParseTreeNode node)
         {

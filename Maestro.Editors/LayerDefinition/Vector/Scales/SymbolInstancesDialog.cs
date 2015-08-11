@@ -47,7 +47,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
     internal partial class SymbolInstancesDialog : Form
     {
         private IEditorService _edSvc;
-        private ICompositeSymbolization _comp;
+        private readonly ICompositeSymbolization _comp;
 
         private ClassDefinition _cls;
         private string _provider;

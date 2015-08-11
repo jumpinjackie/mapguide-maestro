@@ -46,7 +46,7 @@ namespace Maestro.Editors.MapDefinition
 
         class LayerExtentCalculator : ILayerExtentCalculator
         {
-            private IServerConnection _conn;
+            private readonly IServerConnection _conn;
 
             public LayerExtentCalculator(IServerConnection conn)
             {

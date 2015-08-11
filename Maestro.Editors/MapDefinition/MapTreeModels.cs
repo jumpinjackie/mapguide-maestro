@@ -33,7 +33,7 @@ namespace Maestro.Editors.MapDefinition
 {
     internal abstract class TreeItem<T>
     {
-        public TreeItem(string text, Image icon, T item)
+        protected TreeItem(string text, Image icon, T item)
         {
             this.Text = text;
             this.Icon = icon;
@@ -118,7 +118,7 @@ namespace Maestro.Editors.MapDefinition
         public BaseLayerGroupItem(IBaseMapGroup group)
             : base(group.Name, Properties.Resources.folder_horizontal, group)
         {
-            group.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnPropertyChanged, (eh) => group.PropertyChanged -= eh); ;
+            group.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnPropertyChanged, (eh) => group.PropertyChanged -= eh);
         }
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)

@@ -12,7 +12,7 @@ namespace Maestro.AddIn.Scripting.UI
     internal partial class IronPythonRepl : SingletonViewContent
     {
         private ITextEditor textEditor;
-        private PythonConsoleHost host;
+        private readonly PythonConsoleHost host;
 
         public IronPythonRepl()
         {

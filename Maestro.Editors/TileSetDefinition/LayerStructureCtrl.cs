@@ -501,7 +501,6 @@ namespace Maestro.Editors.TileSetDefinition
             //var item = new GroupPropertiesCtrl(_tsd, group.Tag);
             //item.GroupChanged += (s, evt) => { OnResourceChanged(); };
             //item.Dock = DockStyle.Fill;
-            _activeLayer = null;
             AddBaseGroupControl(group);
         }
 
@@ -514,7 +513,6 @@ namespace Maestro.Editors.TileSetDefinition
             //var item = new LayerPropertiesCtrl(layer.Tag, _edSvc.ResourceService, _edSvc);
             //item.LayerChanged += (s, evt) => { OnResourceChanged(); };
             //item.Dock = DockStyle.Fill;
-            _activeLayer = null;
             AddBaseLayerControl(layer);
         }
 
@@ -631,11 +629,8 @@ namespace Maestro.Editors.TileSetDefinition
             btnRemoveBaseLayerGroup.Enabled = bAllBaseGroups;
 
             AddMultiControl(nodes);
-            _activeLayer = null;
         }
-
-        private IMapLayer _activeLayer;
-
+        
         private static bool AllLayers(System.Collections.ObjectModel.ReadOnlyCollection<TreeNodeAdv> nodes)
         {
             foreach (var node in nodes)

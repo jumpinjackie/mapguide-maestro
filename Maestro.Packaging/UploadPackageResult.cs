@@ -33,17 +33,17 @@ namespace Maestro.Packaging
         /// <summary>
         /// Gets the successful operations
         /// </summary>
-        public ICollection<PackageOperation> Successful { get; private set; }
+        public ICollection<PackageOperation> Successful { get; }
 
         /// <summary>
         /// Gets the failed operations
         /// </summary>
-        public Dictionary<PackageOperation, Exception> Failed { get; private set; }
+        public Dictionary<PackageOperation, Exception> Failed { get; }
 
         /// <summary>
         /// Gets the operations that were skipped
         /// </summary>
-        public ICollection<PackageOperation> SkipOperations { get; private set; }
+        public ICollection<PackageOperation> SkipOperations { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UploadPackageResult"/> class.

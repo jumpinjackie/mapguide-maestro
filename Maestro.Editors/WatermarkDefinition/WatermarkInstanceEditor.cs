@@ -37,7 +37,7 @@ namespace Maestro.Editors.WatermarkDefinition
         private IWatermark _watermark;
         private IEditorService _edSvc;
 
-        private IWatermarkAppearance _ovAppearance;
+        private readonly IWatermarkAppearance _ovAppearance;
         private ITilePosition _ovTilePosition;
         private IXYPosition _ovXyPosition;
 

@@ -21,10 +21,6 @@
 #endregion Disclaimer / License
 using Irony.Parsing;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OSGeo.FDO.Expressions
 {
@@ -67,7 +63,7 @@ namespace OSGeo.FDO.Expressions
                     case FdoTerminalNames.DateTime:
                         return new FdoDateTimeValue(node);
                     default:
-                        throw new FdoParseException("Unknown terminal: " + node.Term.Name);
+                        throw new FdoParseException($"Unknown terminal: {node.Term.Name}");
                 }
             }
         }
@@ -75,32 +71,26 @@ namespace OSGeo.FDO.Expressions
 
     public class FdoStringValue : FdoDataValue
     {
-        public override ExpressionType ExpressionType
-        {
-            get { return Expressions.ExpressionType.StringValue; }
-        }
+        public override ExpressionType ExpressionType => ExpressionType.StringValue;
 
-        public string Value { get; private set; }
+        public string Value { get; }
 
         internal FdoStringValue(ParseTreeNode node)
         {
-            this.DataType = Expressions.DataType.String;
+            this.DataType = DataType.String;
             this.Value = node.Token.ValueString;
         }
     }
 
     public class FdoInt32Value : FdoDataValue
     {
-        public override ExpressionType ExpressionType
-        {
-            get { return Expressions.ExpressionType.Int32Value; }
-        }
+        public override ExpressionType ExpressionType => ExpressionType.Int32Value;
 
-        public int Value { get; private set; }
+        public int Value { get; }
 
         internal FdoInt32Value(ParseTreeNode node)
         {
-            this.DataType = Expressions.DataType.Int32;
+            this.DataType = DataType.Int32;
             this.Value = Convert.ToInt32(node.Token.ValueString);
         }
 
@@ -117,16 +107,13 @@ namespace OSGeo.FDO.Expressions
 
     public class FdoDoubleValue : FdoDataValue
     {
-        public override ExpressionType ExpressionType
-        {
-            get { return Expressions.ExpressionType.DoubleValue; }
-        }
+        public override ExpressionType ExpressionType => ExpressionType.DoubleValue;
 
-        public double Value { get; private set; }
+        public double Value { get; }
 
         internal FdoDoubleValue(ParseTreeNode node)
         {
-            this.DataType = Expressions.DataType.Double;
+            this.DataType = DataType.Double;
             this.Value = Convert.ToDouble(node.Token.ValueString);
         }
 
@@ -143,18 +130,15 @@ namespace OSGeo.FDO.Expressions
 
     public class FdoDateTimeValue : FdoDataValue
     {
-        public override ExpressionType ExpressionType
-        {
-            get { return Expressions.ExpressionType.DateTimeValue; }
-        }
+        public override ExpressionType ExpressionType => ExpressionType.DateTimeValue;
 
-        public DateTime? DateTime { get; private set; }
+        public DateTime? DateTime { get; }
 
-        public TimeSpan? Time { get; private set; }
+        public TimeSpan? Time { get; }
 
         internal FdoDateTimeValue(ParseTreeNode node)
         {
-            this.DataType = Expressions.DataType.DateTime;
+            this.DataType = DataType.DateTime;
             string keyword = node.ChildNodes[0].Token.ValueString;
             string value = node.ChildNodes[1].Token.ValueString;
             switch (keyword)
@@ -163,7 +147,7 @@ namespace OSGeo.FDO.Expressions
                     {
                         string[] tokens = value.Split('-');
                         if (tokens.Length != 3)
-                            throw new FdoParseException("Value is not a valid FDO date string: " + value);
+                            throw new FdoParseException($"Value is not a valid FDO date string: {value}"); //LOCALIZEME
                         this.DateTime = new DateTime(Convert.ToInt32(tokens[0]), Convert.ToInt32(tokens[1]), Convert.ToInt32(tokens[2]));
                     }
                     break;
@@ -171,7 +155,7 @@ namespace OSGeo.FDO.Expressions
                     {
                         string [] tokens = value.Split(':', '.');
                         if (tokens.Length != 3 && tokens.Length != 4)
-                            throw new FdoParseException("Value is not a valid FDO time string: " + value);
+                            throw new FdoParseException($"Value is not a valid FDO time string: {value}"); //LOCALIZEME
                         var ts = new TimeSpan(0, Convert.ToInt32(tokens[0]), Convert.ToInt32(tokens[1]), Convert.ToInt32(tokens[2]), (tokens.Length == 4) ? Convert.ToInt32(tokens[3]) : 0);
                         this.Time = ts;
                     }
@@ -180,24 +164,21 @@ namespace OSGeo.FDO.Expressions
                     {
                         string[] tokens = value.Split('-', '.', ':', ' ');
                         if (tokens.Length != 6 && tokens.Length != 7)
-                            throw new FdoParseException("Value is not a valid FDO timestamp string: " + value);
+                            throw new FdoParseException($"Value is not a valid FDO timestamp string: {value}"); //LOCALIZEME
                         this.DateTime = new DateTime(Convert.ToInt32(tokens[0]), Convert.ToInt32(tokens[1]), Convert.ToInt32(tokens[2]), Convert.ToInt32(tokens[3]), Convert.ToInt32(tokens[4]), Convert.ToInt32(tokens[5]), (tokens.Length == 7) ? Convert.ToInt32(tokens[6]) : 0);
                     }
                     break;
                 default:
-                    throw new FdoParseException("Unknown keyword: " + keyword);
+                    throw new FdoParseException($"Unknown keyword: {keyword}"); //LOCALIZEME
             }
         } 
     }
 
     public class FdoBooleanValue : FdoDataValue
     {
-        public override ExpressionType ExpressionType
-        {
-            get { return Expressions.ExpressionType.BooleanValue; }
-        }
+        public override ExpressionType ExpressionType => ExpressionType.BooleanValue;
 
-        public bool Value { get; private set; }
+        public bool Value { get; }
 
         internal FdoBooleanValue(ParseTreeNode node)
         {

@@ -38,8 +38,8 @@ namespace Maestro.Editors.Preview
     /// </summary>
     public class LocalMapPreviewer : IResourcePreviewer
     {
-        private IResourcePreviewer _inner;
-        private IUrlLauncherService _launcher;
+        private readonly IResourcePreviewer _inner;
+        private readonly IUrlLauncherService _launcher;
 
         /// <summary>
         /// Initializes a new instance of the LocalMapPreviewer class

@@ -59,11 +59,11 @@ namespace Maestro.Editors.SymbolDefinition
 
                 symGrowControl.Items = SymbolField.GetItems<GrowControl>();
 
-                symGrowControl.Bind(_rbox, "GrowControl");
-                symHeight.Bind(_rbox, "SizeY");
-                symWidth.Bind(_rbox, "SizeX");
-                symXCoord.Bind(_rbox, "PositionX");
-                symYCoord.Bind(_rbox, "PositionY");
+                symGrowControl.Bind(_rbox, nameof(_rbox.GrowControl));
+                symHeight.Bind(_rbox, nameof(_rbox.SizeY));
+                symWidth.Bind(_rbox, nameof(_rbox.SizeX));
+                symXCoord.Bind(_rbox, nameof(_rbox.PositionX));
+                symYCoord.Bind(_rbox, nameof(_rbox.PositionY));
             }
             finally
             {
@@ -83,14 +83,8 @@ namespace Maestro.Editors.SymbolDefinition
                 _sym.ResizeBox = null;
         }
 
-        private void OnContentChanged(object sender, EventArgs e)
-        {
-            OnResourceChanged();
-        }
+        private void OnContentChanged(object sender, EventArgs e) => OnResourceChanged();
 
-        private void OnRequestBrowse(SymbolField sender)
-        {
-            ParameterSelector.ShowParameterSelector(_sym.ParameterDefinition.Parameter, sender);
-        }
+        private void OnRequestBrowse(SymbolField sender) => ParameterSelector.ShowParameterSelector(_sym.ParameterDefinition.Parameter, sender);
     }
 }

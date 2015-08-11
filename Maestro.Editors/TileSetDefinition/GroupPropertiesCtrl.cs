@@ -40,8 +40,8 @@ namespace Maestro.Editors.TileSetDefinition
 
         public event EventHandler GroupChanged;
 
-        private ITileSetDefinition _mdf;
-        private IMapLegendElementBase _el;
+        private readonly ITileSetDefinition _mdf;
+        private readonly IMapLegendElementBase _el;
 
         private bool _init = false;
 

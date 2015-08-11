@@ -32,7 +32,7 @@ namespace Maestro.Editors.Preview
     /// </summary>
     public static class ResourcePreviewerFactory
     {
-        private static Dictionary<string, IResourcePreviewer> _previewers = new Dictionary<string, IResourcePreviewer>();
+        private static readonly Dictionary<string, IResourcePreviewer> _previewers = new Dictionary<string, IResourcePreviewer>();
 
         /// <summary>
         /// Registers the given <see cref="T:Maestro.Editors.Preview.IResourcePreviewer"/> for a given connection provider

@@ -45,16 +45,9 @@ namespace Maestro.Editors.WebLayout
             this.Tag = item;
         }
 
-        public T Tag
-        {
-            get;
-            private set;
-        }
+        public T Tag { get; }
 
-        public override IUIItem Item
-        {
-            get { return this.Tag; }
-        }
+        public override IUIItem Item => this.Tag;
     }
 
     internal class CommandItem : ItemBase<ICommandItem>
@@ -68,20 +61,11 @@ namespace Maestro.Editors.WebLayout
                 _icon = icon;
         }
 
-        public override string Label
-        {
-            get
-            {
-                return this.Tag.Command;
-            }
-        }
+        public override string Label => this.Tag.Command;
 
-        private Image _icon;
+        private readonly Image _icon;
 
-        public override Image Icon
-        {
-            get { return _icon; }
-        }
+        public override Image Icon => _icon;
     }
 
     internal class SeparatorItem : ItemBase<ISeparatorItem>
@@ -90,15 +74,9 @@ namespace Maestro.Editors.WebLayout
             : base(sep)
         { }
 
-        public override string Label
-        {
-            get { return this.Tag.Function.ToString(); }
-        }
+        public override string Label => this.Tag.Function.ToString();
 
-        public override Image Icon
-        {
-            get { return Properties.Resources.ui_splitter_horizontal; }
-        }
+        public override Image Icon => Properties.Resources.ui_splitter_horizontal;
     }
 
     internal class FlyoutItem : ItemBase<IFlyoutItem>
@@ -107,20 +85,11 @@ namespace Maestro.Editors.WebLayout
             : base(fly)
         { }
 
-        public override string Label
-        {
-            get { return this.Tag.Label; }
-        }
+        public override string Label => this.Tag.Label;
 
-        public override Image Icon
-        {
-            get { return Properties.Resources.ui_menu; }
-        }
+        public override Image Icon => Properties.Resources.ui_menu;
 
-        public IEnumerable<IUIItem> SubItem
-        {
-            get { return this.Tag.Items; }
-        }
+        public IEnumerable<IUIItem> SubItem => this.Tag.Items;
     }
 
     internal class MenuTreeModel : ITreeModel
@@ -182,17 +151,9 @@ namespace Maestro.Editors.WebLayout
             }
         }
 
-        public bool IsLeaf(TreePath treePath)
-        {
-            return (treePath.LastNode as FlyoutItem) == null;
-        }
+        public bool IsLeaf(TreePath treePath) => (treePath.LastNode as FlyoutItem) == null;
 
-        internal void Refresh()
-        {
-            var handler = this.StructureChanged;
-            if (handler != null)
-                handler(this, new TreePathEventArgs(TreePath.Empty));
-        }
+        internal void Refresh() => this.StructureChanged?.Invoke(this, new TreePathEventArgs(TreePath.Empty));
 
         public event EventHandler<TreeModelEventArgs> NodesChanged;
 

@@ -30,12 +30,9 @@ namespace OSGeo.FDO.Expressions
 {
     public class FdoUnaryLogicalOperator : FdoLogicalOperator
     {
-        public override FilterType FilterType
-        {
-            get { return Expressions.FilterType.UnaryLogicalOperator; }
-        }
+        public override FilterType FilterType => FilterType.UnaryLogicalOperator;
 
-        public FdoFilter NegatedFilter { get; private set; }
+        public FdoFilter NegatedFilter { get; }
 
         public FdoUnaryLogicalOperator(ParseTreeNode node)
         {

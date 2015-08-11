@@ -185,7 +185,7 @@ namespace Maestro
 
         private static void CurrentDomain_AssemblyLoad(object sender, AssemblyLoadEventArgs args)
         {
-            LoggingService.InfoFormatted("Loaded assembly: {0}", args.LoadedAssembly.GetName().Name); //NOXLATE
+            LoggingService.InfoFormatted($"Loaded assembly: {args.LoadedAssembly.GetName().Name}"); //NOXLATE
         }
 
         private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
@@ -204,18 +204,12 @@ namespace Maestro
     
     internal sealed class MaestroServiceManager : ServiceManager
     {
-        private static ILoggingService loggingService = new TextWriterLoggingService(BroadcastTextWriter.Instance);
-        private static IMessageService messageService = new WinFormsMessageService(); //new TextWriterMessageService(Console.Out);
+        private static readonly ILoggingService loggingService = new TextWriterLoggingService(BroadcastTextWriter.Instance);
+        private static readonly IMessageService messageService = new WinFormsMessageService(); //new TextWriterMessageService(Console.Out);
 
-        public override ILoggingService LoggingService
-        {
-            get { return loggingService; }
-        }
+        public override ILoggingService LoggingService => loggingService;
 
-        public override IMessageService MessageService
-        {
-            get { return messageService; }
-        }
+        public override IMessageService MessageService => messageService;
 
         public override object GetService(Type serviceType)
         {

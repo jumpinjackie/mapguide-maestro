@@ -30,8 +30,8 @@ namespace Maestro.Editors.WatermarkDefinition
     [ToolboxItem(false)]
     internal partial class XYPositionEditor : UserControl
     {
-        private IXYPosition _pos;
-        private IEditorService _edSvc;
+        private readonly IXYPosition _pos;
+        private readonly IEditorService _edSvc;
         private bool _init = false;
 
         public XYPositionEditor(IXYPosition pos, IEditorService service)

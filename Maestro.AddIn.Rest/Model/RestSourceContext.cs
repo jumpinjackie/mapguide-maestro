@@ -43,7 +43,7 @@ namespace Maestro.AddIn.Rest.Model
     public class RestSourceContext
     {
         private RestSource _source;
-        private IServerConnection _conn;
+        private readonly IServerConnection _conn;
         private ClassDefinition _cls;
 
         public RestSourceContext(IServerConnection conn, RestSource source)

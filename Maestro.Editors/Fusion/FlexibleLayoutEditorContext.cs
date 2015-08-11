@@ -20,11 +20,11 @@
 
 #endregion Disclaimer / License
 
-using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Maestro.Editors.Fusion
 {
@@ -35,7 +35,7 @@ namespace Maestro.Editors.Fusion
     {
         private IFusionService _service;
 
-        private IApplicationDefinitionWidgetInfoSet _widgetSet;
+        private readonly IApplicationDefinitionWidgetInfoSet _widgetSet;
         private IApplicationDefinitionTemplateInfoSet _templateSet;
         private IApplicationDefinitionContainerInfoSet _containerSet;
 
@@ -72,10 +72,7 @@ namespace Maestro.Editors.Fusion
         /// Gets information about all widgets
         /// </summary>
         /// <returns></returns>
-        public IWidgetInfo[] GetAllWidgets()
-        {
-            return new List<IWidgetInfo>(_widgetSet.WidgetInfo).ToArray();
-        }
+        public IWidgetInfo[] GetAllWidgets() => _widgetSet.WidgetInfo.ToArray();
 
         /// <summary>
         /// Gets information about a specific container

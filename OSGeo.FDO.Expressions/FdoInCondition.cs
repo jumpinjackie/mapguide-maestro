@@ -30,14 +30,11 @@ namespace OSGeo.FDO.Expressions
 {
     public class FdoInCondition : FdoSearchCondition
     {
-        public override FilterType FilterType
-        {
-            get { return Expressions.FilterType.InCondition; }
-        }
+        public override FilterType FilterType => FilterType.InCondition;
 
-        public FdoIdentifier Identifier { get; private set; }
+        public FdoIdentifier Identifier { get; }
 
-        public List<FdoValueExpression> ValueList { get; private set; }
+        public List<FdoValueExpression> ValueList { get; }
 
         public FdoInCondition(ParseTreeNode node)
         {

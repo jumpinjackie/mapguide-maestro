@@ -20,22 +20,14 @@
 
 #endregion Disclaimer / License
 using Irony.Parsing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OSGeo.FDO.Expressions
 {
     public class FdoIdentifier : FdoExpression
     {
-        public override ExpressionType ExpressionType
-        {
-            get { return Expressions.ExpressionType.Identifier; }
-        }
+        public override ExpressionType ExpressionType => ExpressionType.Identifier;
 
-        public string Name { get; private set; }
+        public string Name { get; }
 
         internal FdoIdentifier(ParseTreeNode node)
         {

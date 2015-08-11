@@ -411,7 +411,7 @@ namespace Maestro.Editors.Common
             private IFdoFunctionDefintion _func;
             private IFdoFunctionDefintionSignature _sig;
 
-            private string _insertExpr;
+            private readonly string _insertExpr;
 
             private FunctionItem(IFdoFunctionDefintion fd, IFdoFunctionDefintionSignature sig)
             {

@@ -37,7 +37,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
     /// </summary>
     public class MgReadOnlyStream : ReadOnlyRewindableStream
     {
-        private MgByteReader _reader;
+        private readonly MgByteReader _reader;
 
         /// <summary>
         /// Creates a new instance

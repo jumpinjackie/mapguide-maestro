@@ -32,7 +32,7 @@ namespace Maestro.Login
         : IDisposable
     {
         private Form m_owner = null;
-        private Cursor m_oldcursor;
+        private readonly Cursor m_oldcursor;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WaitCursor"/> class.

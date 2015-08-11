@@ -34,7 +34,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales.SymbolInstanceEditors
     [ToolboxItem(false)]
     internal partial class ReferenceCtrl : UserControl
     {
-        private IEditorService _edSvc;
+        private readonly IEditorService _edSvc;
         private ISymbolInstanceReferenceLibrary _libRef;
 
         public ReferenceCtrl(ISymbolInstanceReferenceLibrary libRef, IEditorService edSvc)

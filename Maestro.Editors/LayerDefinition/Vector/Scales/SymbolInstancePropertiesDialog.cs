@@ -49,19 +49,19 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             _providerName = providerName;
 
             symAddToExclusionRegion.SetBooleanMode();
-            symAddToExclusionRegion.Bind(inst, "AddToExclusionRegion");
+            symAddToExclusionRegion.Bind(inst, nameof(inst.AddToExclusionRegion));
 
             symCheckExclusionRegion.SetBooleanMode();
-            symCheckExclusionRegion.Bind(inst, "CheckExclusionRegion");
+            symCheckExclusionRegion.Bind(inst, nameof(inst.CheckExclusionRegion));
 
             symDrawLast.SetBooleanMode();
-            symDrawLast.Bind(inst, "DrawLast");
+            symDrawLast.Bind(inst, nameof(inst.DrawLast));
 
             symSizeContext.SetEnumMode<SizeContextType>();
-            symSizeContext.Bind(inst, "SizeContext");
+            symSizeContext.Bind(inst, nameof(inst.SizeContext));
 
-            symInsertOffsetX.Bind(inst, "InsertionOffsetX");
-            symInsertOffsetY.Bind(inst, "InsertionOffsetY");
+            symInsertOffsetX.Bind(inst, nameof(inst.InsertionOffsetX));
+            symInsertOffsetY.Bind(inst, nameof(inst.InsertionOffsetY));
 
             symPositioningAlgorithm.Items = new string[]
             {
@@ -69,10 +69,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 "'EightSurrounding'",
                 "'PathLabels'"
             };
-            symPositioningAlgorithm.Bind(inst, "PositioningAlgorithm");
+            symPositioningAlgorithm.Bind(inst, nameof(inst.PositioningAlgorithm));
 
-            symScaleX.Bind(inst, "ScaleX");
-            symScaleY.Bind(inst, "ScaleY");
+            symScaleX.Bind(inst, nameof(inst.ScaleX));
+            symScaleY.Bind(inst, nameof(inst.ScaleY));
 
             var inst2 = inst as ISymbolInstance2;
             if (inst2 != null)
@@ -80,9 +80,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 symGeometryContext.SetEnumMode<GeometryContextType>();
                 symUsageContext.SetEnumMode<UsageContextType>();
 
-                symRenderingPass.Bind(inst2, "RenderingPass");
-                symGeometryContext.Bind(inst2, "GeometryContext");
-                symUsageContext.Bind(inst2, "UsageContext");
+                symRenderingPass.Bind(inst2, nameof(inst2.RenderingPass));
+                symGeometryContext.Bind(inst2, nameof(inst2.GeometryContext));
+                symUsageContext.Bind(inst2, nameof(inst2.UsageContext));
             }
             else
             {
@@ -95,10 +95,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
-        }
+        private void btnClose_Click(object sender, EventArgs e) => this.DialogResult = System.Windows.Forms.DialogResult.OK;
 
         private void OnRequestBrowse(SymbolDefinition.SymbolField sender)
         {
@@ -107,10 +104,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
                 sender.Content = expr;
         }
 
-        private void OnContentChanged(object sender, EventArgs e)
-        {
-            this.HasChanged = true;
-        }
+        private void OnContentChanged(object sender, EventArgs e) => this.HasChanged = true;
 
         public bool HasChanged { get; private set; }
     }

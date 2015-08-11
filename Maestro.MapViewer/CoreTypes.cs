@@ -85,17 +85,17 @@ namespace Maestro.MapViewer
         /// <summary>
         /// Gets the X coordinate
         /// </summary>
-        public double X { get; private set; }
+        public double X { get; }
 
         /// <summary>
         /// Gets the Y coordinate
         /// </summary>
-        public double Y { get; private set; }
+        public double Y { get; }
 
         /// <summary>
         /// Gets the view scale
         /// </summary>
-        public double Scale { get; private set; }
+        public double Scale { get; }
     }
 
     /// <summary>
@@ -212,16 +212,16 @@ namespace Maestro.MapViewer
         /// <summary>
         /// Gets the format.
         /// </summary>
-        public string Format { get; private set; }
+        public string Format { get; }
 
         /// <summary>
         /// Gets the behavior.
         /// </summary>
-        public int Behavior { get; private set; }
+        public int Behavior { get; }
 
         /// <summary>
         /// Gets the color.
         /// </summary>
-        public Color Color { get; private set; }
+        public Color Color { get; }
     }
 }

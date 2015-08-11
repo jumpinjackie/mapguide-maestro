@@ -99,12 +99,12 @@ namespace Maestro.Editors.Common
         }
 
         private IServerConnection _conn;
-        private DefaultResourceEditorService _svc;
+        private readonly DefaultResourceEditorService _svc;
 
         //TODO: The reason we are using a generic XML editor is because the mechanism
         //for resolving specialized editor types is currently part of the Maestro AddIn
         //infrastructure and not available in this standalone library
-        private Generic.XmlEditorCtrl _ed;
+        private readonly Generic.XmlEditorCtrl _ed;
 
         /// <summary>
         /// Initializes a new instance of the EditorWindow class

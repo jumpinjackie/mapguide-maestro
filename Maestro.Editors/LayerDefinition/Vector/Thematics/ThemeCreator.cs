@@ -151,7 +151,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 
                 for (int i = 0; i < items; i++)
                 {
-                    Rectangle area = new Rectangle(args.Bounds.Left + leftOffset + (i * itemWidth), args.Bounds.Top + 1, itemWidth, args.Bounds.Height - 3); ;
+                    Rectangle area = new Rectangle(args.Bounds.Left + leftOffset + (i * itemWidth), args.Bounds.Top + 1, itemWidth, args.Bounds.Height - 3);
 
                     if (maxItems < cb.Colors.Count && i == items / 2)
                     {

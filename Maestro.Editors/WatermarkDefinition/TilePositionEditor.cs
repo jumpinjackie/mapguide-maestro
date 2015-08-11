@@ -30,8 +30,8 @@ namespace Maestro.Editors.WatermarkDefinition
     [ToolboxItem(false)]
     internal partial class TilePositionEditor : UserControl
     {
-        private ITilePosition _pos;
-        private IEditorService _edSvc;
+        private readonly ITilePosition _pos;
+        private readonly IEditorService _edSvc;
 
         private bool _init = false;
 

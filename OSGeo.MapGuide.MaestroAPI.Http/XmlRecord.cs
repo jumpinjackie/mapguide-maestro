@@ -37,9 +37,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             this.Type = pvtype;
         }
 
-        public string Name { get; private set; }
+        public string Name { get; }
 
-        public PropertyValueType Type { get; private set; }
+        public PropertyValueType Type { get; }
     }
 
     public class XmlRecord : RecordBase

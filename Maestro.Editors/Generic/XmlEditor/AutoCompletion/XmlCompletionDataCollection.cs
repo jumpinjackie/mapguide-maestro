@@ -276,7 +276,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// <seealso cref='XmlCompletionData'/>
         public class XmlCompletionDataEnumerator : IEnumerator
         {
-            private IEnumerator baseEnumerator;
+            private readonly IEnumerator baseEnumerator;
             private IEnumerable temp;
 
             /// <summary>

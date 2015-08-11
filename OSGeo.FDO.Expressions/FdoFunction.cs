@@ -30,14 +30,11 @@ namespace OSGeo.FDO.Expressions
 {
     public class FdoFunction : FdoExpression
     {
-        public override ExpressionType ExpressionType
-        {
-            get { return Expressions.ExpressionType.Function; }
-        }
+        public override ExpressionType ExpressionType => ExpressionType.Function;
 
-        public FdoIdentifier Identifier { get; private set; }
+        public FdoIdentifier Identifier { get; }
 
-        public List<FdoExpression> Arguments { get; private set; }
+        public List<FdoExpression> Arguments { get; }
 
         internal FdoFunction(ParseTreeNode node)
         {

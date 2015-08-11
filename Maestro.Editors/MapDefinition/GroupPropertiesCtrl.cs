@@ -39,8 +39,8 @@ namespace Maestro.Editors.MapDefinition
 
         public event EventHandler GroupChanged;
 
-        private IMapDefinition _mdf;
-        private IMapLegendElementBase _el;
+        private readonly IMapDefinition _mdf;
+        private readonly IMapLegendElementBase _el;
 
         private bool _init = false;
 

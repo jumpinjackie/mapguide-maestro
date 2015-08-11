@@ -27,7 +27,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http.Commands
 {
     public class HttpDescribeRuntimeMap : IDescribeRuntimeMap
     {
-        private HttpServerConnection _conn;
+        private readonly HttpServerConnection _conn;
 
         internal HttpDescribeRuntimeMap(HttpServerConnection conn)
         {

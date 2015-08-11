@@ -295,37 +295,22 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
 
     internal class BasicLineSymbolizationAdapter : ILineRule
     {
-        private ILineRule _wrappee;
+        private readonly ILineRule _wrappee;
 
         public BasicLineSymbolizationAdapter(ILineRule wrappee)
         {
             _wrappee = wrappee;
         }
 
-        public int StrokeCount
-        {
-            get { return _wrappee.StrokeCount; }
-        }
+        public int StrokeCount => _wrappee.StrokeCount;
 
-        public IEnumerable<IStroke> Strokes
-        {
-            get { return _wrappee.Strokes; }
-        }
+        public IEnumerable<IStroke> Strokes => _wrappee.Strokes;
 
-        public void SetStrokes(IEnumerable<IStroke> strokes)
-        {
-            _wrappee.SetStrokes(strokes);
-        }
+        public void SetStrokes(IEnumerable<IStroke> strokes) => _wrappee.SetStrokes(strokes);
 
-        public void AddStroke(IStroke stroke)
-        {
-            _wrappee.AddStroke(stroke);
-        }
+        public void AddStroke(IStroke stroke) => _wrappee.AddStroke(stroke);
 
-        public void RemoveStroke(IStroke stroke)
-        {
-            _wrappee.RemoveStroke(stroke);
-        }
+        public void RemoveStroke(IStroke stroke) => _wrappee.RemoveStroke(stroke);
 
         public ITextSymbol Label
         {
@@ -379,10 +364,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             this.HasStyle = (_rule.Strokes != null && _rule.StrokeCount > 0);
         }
 
-        public override BasicLineSymbolizationAdapter GetSymbolizationStyle()
-        {
-            return new BasicLineSymbolizationAdapter(_rule);
-        }
+        public override BasicLineSymbolizationAdapter GetSymbolizationStyle() => new BasicLineSymbolizationAdapter(_rule);
 
         public override ILabeledRuleModel CloneLabeledRuleModel(ILayerElementFactory factory)
         {
@@ -412,10 +394,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             this.HasStyle = (_rule.AreaSymbolization2D != null);
         }
 
-        public override IAreaSymbolizationFill GetSymbolizationStyle()
-        {
-            return _rule.AreaSymbolization2D;
-        }
+        public override IAreaSymbolizationFill GetSymbolizationStyle() => _rule.AreaSymbolization2D;
 
         public override void SetSymbolizationStyle(IAreaSymbolizationFill style)
         {
@@ -438,7 +417,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
 
     internal class CompositeRuleModel : RuleModel
     {
-        private ICompositeRule _rule;
+        private readonly ICompositeRule _rule;
 
         public CompositeRuleModel(ICompositeRule rule, int index)
         {
@@ -447,15 +426,9 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
             this.HasStyle = (_rule.CompositeSymbolization != null);
         }
 
-        public override object UnwrapRule()
-        {
-            return _rule;
-        }
+        public override object UnwrapRule() => _rule;
 
-        public ICompositeSymbolization GetSymbolizationStyle()
-        {
-            return _rule.CompositeSymbolization;
-        }
+        public ICompositeSymbolization GetSymbolizationStyle() => _rule.CompositeSymbolization;
 
         public void SetSymbolizationStyle(ICompositeSymbolization style)
         {

@@ -50,23 +50,23 @@ namespace Maestro.Editors.Generic.XmlEditor
     /// </summary>
     internal class XmlFormattingStrategy : DefaultFormattingStrategy
     {
-        public override void FormatLine(TextArea textArea, int lineNr, int caretOffset, char charTyped) // used for comment tag formater/inserter
+        public override void FormatLine(TextArea textArea, int line, int cursorOffset, char ch) // used for comment tag formater/inserter
         {
             textArea.Document.UndoStack.StartUndoGroup();
             try
             {
-                if (charTyped == '>')
+                if (ch == '>')
                 {
                     StringBuilder stringBuilder = new StringBuilder();
-                    int offset = Math.Min(caretOffset - 2, textArea.Document.TextLength - 1);
+                    int offset = Math.Min(cursorOffset - 2, textArea.Document.TextLength - 1);
                     while (true)
                     {
                         if (offset < 0)
                         {
                             break;
                         }
-                        char ch = textArea.Document.GetCharAt(offset);
-                        if (ch == '<')
+                        char c = textArea.Document.GetCharAt(offset);
+                        if (c == '<')
                         {
                             string reversedTag = stringBuilder.ToString().Trim();
                             if (!reversedTag.StartsWith("/") && !reversedTag.EndsWith("/"))
@@ -92,13 +92,13 @@ namespace Maestro.Editors.Generic.XmlEditor
                                     string tagString = tag.ToString();
                                     if (tagString.Length > 0 && !tagString.StartsWith("!") && !tagString.StartsWith("?"))
                                     {
-                                        textArea.Document.Insert(caretOffset, "</" + tagString + ">");
+                                        textArea.Document.Insert(cursorOffset, "</" + tagString + ">");
                                     }
                                 }
                             }
                             break;
                         }
-                        stringBuilder.Append(ch);
+                        stringBuilder.Append(c);
                         --offset;
                     }
                 }
@@ -107,9 +107,9 @@ namespace Maestro.Editors.Generic.XmlEditor
             { // Insanity check
                 Debug.Assert(false, e.ToString());
             }
-            if (charTyped == '\n')
+            if (ch == '\n')
             {
-                textArea.Caret.Column = IndentLine(textArea, lineNr);
+                textArea.Caret.Column = IndentLine(textArea, line);
             }
             textArea.Document.UndoStack.EndUndoGroup();
         }
@@ -117,17 +117,17 @@ namespace Maestro.Editors.Generic.XmlEditor
         /// <summary>
         /// Define XML specific smart indenting for a line :)
         /// </summary>
-        protected override int SmartIndentLine(TextArea textArea, int lineNr)
+        protected override int SmartIndentLine(TextArea textArea, int line)
         {
-            if (lineNr <= 0) return AutoIndentLine(textArea, lineNr);
+            if (line <= 0) return AutoIndentLine(textArea, line);
             try
             {
-                TryIndent(textArea, lineNr, lineNr);
-                return GetIndentation(textArea, lineNr).Length;
+                TryIndent(textArea, line, line);
+                return GetIndentation(textArea, line).Length;
             }
             catch (XmlException)
             {
-                return AutoIndentLine(textArea, lineNr);
+                return AutoIndentLine(textArea, line);
             }
         }
 

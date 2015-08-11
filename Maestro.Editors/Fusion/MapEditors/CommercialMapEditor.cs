@@ -29,9 +29,9 @@ namespace Maestro.Editors.Fusion.MapEditors
 {
     internal partial class CommercialMapEditor : UserControl
     {
-        private IEditorService _edSvc;
-        private IMap _map;
-        private bool _init;
+        private readonly IEditorService _edSvc;
+        private readonly IMap _map;
+        private readonly bool _init;
 
         public CommercialMapEditor(IEditorService edSvc, IMap map, string[] types)
         {

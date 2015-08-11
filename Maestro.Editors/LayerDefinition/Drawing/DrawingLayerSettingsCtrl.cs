@@ -45,7 +45,7 @@ namespace Maestro.Editors.LayerDefinition.Drawing
 
         private IEditorService _service;
         private IDrawingLayerDefinition _dlayer;
-        private BindingList<OSGeo.MapGuide.ObjectModels.Common.DrawingSectionListSection> _sheets;
+        private readonly BindingList<OSGeo.MapGuide.ObjectModels.Common.DrawingSectionListSection> _sheets;
 
         public void Bind(IEditorService service)
         {

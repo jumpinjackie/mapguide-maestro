@@ -107,10 +107,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Native.Commands
             return resources;
         }
 
-        public IServerConnection Parent
-        {
-            get;
-            private set;
-        }
+        public IServerConnection Parent { get; }
     }
 }

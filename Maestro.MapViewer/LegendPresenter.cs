@@ -53,9 +53,9 @@ namespace Maestro.MapViewer
         private Image _selectableIcon;
         private Image _unselectableIcon;
 
-        private Legend _legend;
+        private readonly Legend _legend;
 
-        private Dictionary<string, LayerNodeMetadata> _layers = new Dictionary<string, LayerNodeMetadata>();
+        private readonly Dictionary<string, LayerNodeMetadata> _layers = new Dictionary<string, LayerNodeMetadata>();
         private Dictionary<string, GroupNodeMetadata> _groups = new Dictionary<string, GroupNodeMetadata>();
 
         public LegendControlPresenter(Legend legend, RuntimeMap map)
@@ -1023,7 +1023,7 @@ namespace Maestro.MapViewer
         [DebuggerDisplay("Name = {GroupName}, Label = {LegendLabel}")]
         public class GroupNodeMetadata : LegendNodeMetadata
         {
-            internal RuntimeMapGroup Group { get; private set; }
+            internal RuntimeMapGroup Group { get; }
 
             /// <summary>
             /// Gets the associated group
@@ -1082,7 +1082,7 @@ namespace Maestro.MapViewer
             /// <summary>
             /// Gets whether this node is a placeholder
             /// </summary>
-            public bool IsPlaceholder { get; private set; }
+            public bool IsPlaceholder { get; }
 
             /// <summary>
             /// Gets the icon for this theme node
@@ -1092,15 +1092,12 @@ namespace Maestro.MapViewer
             /// <summary>
             /// Gets the label for this theme node
             /// </summary>
-            public string Label { get; private set; }
+            public string Label { get; }
 
             /// <summary>
             /// Gets the unique id for this node
             /// </summary>
-            public override string ObjectId
-            {
-                get { return string.Empty; }
-            }
+            public override string ObjectId => string.Empty;
         }
 
         /// <summary>
@@ -1278,7 +1275,7 @@ namespace Maestro.MapViewer
 
             //public Image Icon { get; set; }
 
-            internal RuntimeMapLayer Layer { get; private set; }
+            internal RuntimeMapLayer Layer { get; }
 
             internal bool DrawSelectabilityIcon { get; set; }
 
@@ -1287,7 +1284,7 @@ namespace Maestro.MapViewer
             /// </summary>
             public bool IsSelectable { get; set; }
 
-            internal bool WasInitiallySelectable { get; private set; }
+            internal bool WasInitiallySelectable { get; }
 
             /// <summary>
             /// Gets or sets whether the layer is a base (tiled) layer
@@ -1299,7 +1296,7 @@ namespace Maestro.MapViewer
             /// </summary>
             public string LayerDefinitionContent { get; set; }
 
-            private Dictionary<ThemeCategory, List<LayerThemeNodeMetadata>> _themeNodes;
+            private readonly Dictionary<ThemeCategory, List<LayerThemeNodeMetadata>> _themeNodes;
 
             /// <summary>
             /// Gets the theme nodes for this layer

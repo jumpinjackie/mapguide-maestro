@@ -248,7 +248,7 @@ namespace Maestro.Shared.UI
         /// <summary>
         /// The attached view instance
         /// </summary>
-        public IViewContent View { get; private set; }
+        public IViewContent View { get; }
     }
 
     /// <summary>

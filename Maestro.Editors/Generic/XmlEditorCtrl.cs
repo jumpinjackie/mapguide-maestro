@@ -50,32 +50,26 @@ namespace Maestro.Editors.Generic
     {
         private class FindAction : AbstractEditAction
         {
-            private XmlEditorCtrl _parent;
+            private readonly XmlEditorCtrl _parent;
 
             public FindAction(XmlEditorCtrl parent)
             {
                 _parent = parent;
             }
 
-            public override void Execute(ICSharpCode.TextEditor.TextArea textArea)
-            {
-                _parent.DoFind();
-            }
+            public override void Execute(ICSharpCode.TextEditor.TextArea textArea) => _parent.DoFind();
         }
 
         private class FindAndReplaceAction : AbstractEditAction
         {
-            private XmlEditorCtrl _parent;
+            private readonly XmlEditorCtrl _parent;
 
             public FindAndReplaceAction(XmlEditorCtrl parent)
             {
                 _parent = parent;
             }
 
-            public override void Execute(ICSharpCode.TextEditor.TextArea textArea)
-            {
-                _parent.DoFindReplace();
-            }
+            public override void Execute(ICSharpCode.TextEditor.TextArea textArea) => _parent.DoFindReplace();
         }
 
         private bool _ready = false;
@@ -164,19 +158,13 @@ namespace Maestro.Editors.Generic
         /// <summary>
         /// Readies for editing.
         /// </summary>
-        public void ReadyForEditing()
-        {
-            _ready = true;
-        }
+        public void ReadyForEditing() => _ready = true;
 
         /// <summary>
         /// Raises the <see cref="E:System.Windows.Forms.UserControl.Load"/> event.
         /// </summary>
         /// <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
-        protected override void OnLoad(EventArgs e)
-        {
-            EvaluateCommands();
-        }
+        protected override void OnLoad(EventArgs e) => EvaluateCommands();
 
         private void EvaluateCommands()
         {
@@ -211,15 +199,9 @@ namespace Maestro.Editors.Generic
             }
         }
 
-        private void btnUndo_Click(object sender, EventArgs e)
-        {
-            txtXmlContent.Undo();
-        }
+        private void btnUndo_Click(object sender, EventArgs e) => txtXmlContent.Undo();
 
-        private IDocument GetDocument()
-        {
-            return txtXmlContent.ActiveTextAreaControl.Document;
-        }
+        private IDocument GetDocument() => txtXmlContent.ActiveTextAreaControl.Document;
 
         private void UpdateTextPosition()
         {
@@ -238,10 +220,7 @@ namespace Maestro.Editors.Generic
                 OnResourceChanged();
         }
 
-        private void btnValidate_Click(object sender, EventArgs e)
-        {
-            PerformValidation(false, false);
-        }
+        private void btnValidate_Click(object sender, EventArgs e) => PerformValidation(false, false);
 
         /// <summary>
         /// Performs validation of the XML content
@@ -296,17 +275,14 @@ namespace Maestro.Editors.Generic
             return true;
         }
 
-        private void btnFormat_Click(object sender, EventArgs e)
-        {
-            FormatText();
-        }
+        private void btnFormat_Click(object sender, EventArgs e) => FormatText();
 
         private void FormatText()
         {
             if (string.IsNullOrEmpty(txtXmlContent.Text))
                 return;
 
-            System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
+            var doc = new XmlDocument();
 
             using (var ms = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(txtXmlContent.Text)))
             { 
@@ -344,10 +320,7 @@ namespace Maestro.Editors.Generic
         /// Inits the resource data.
         /// </summary>
         /// <param name="service">The service.</param>
-        public void InitResourceData(IEditorService service)
-        {
-            resDataCtrl.Init(service);
-        }
+        public void InitResourceData(IEditorService service) => resDataCtrl.Init(service);
 
         private void resDataCtrl_DataListChanged(object sender, EventArgs e)
         {
@@ -356,26 +329,17 @@ namespace Maestro.Editors.Generic
         }
 
         private void btnCut_Click(object sender, EventArgs e)
-        {
-            txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Cut(this, EventArgs.Empty);
-        }
-
+            => txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Cut(this, EventArgs.Empty);
+        
         private void btnCopy_Click(object sender, EventArgs e)
-        {
-            txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Copy(this, EventArgs.Empty);
-        }
-
+            => txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Copy(this, EventArgs.Empty);
+        
         private void btnPaste_Click(object sender, EventArgs e)
-        {
-            txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Paste(this, EventArgs.Empty);
-        }
+            => txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Paste(this, EventArgs.Empty);
 
         private XmlEditor.FindAndReplaceForm _findForm = new XmlEditor.FindAndReplaceForm();
 
-        private void btnFind_Click(object sender, EventArgs e)
-        {
-            DoFind();
-        }
+        private void btnFind_Click(object sender, EventArgs e) => DoFind();
 
         private void DoFind()
         {
@@ -384,10 +348,7 @@ namespace Maestro.Editors.Generic
             _findForm.ShowFor(editor, false);
         }
 
-        private void btnFindAndReplace_Click(object sender, EventArgs e)
-        {
-            DoFindReplace();
-        }
+        private void btnFindAndReplace_Click(object sender, EventArgs e) => DoFindReplace();
 
         private void DoFindReplace()
         {
@@ -408,29 +369,17 @@ namespace Maestro.Editors.Generic
         }
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Cut(this, EventArgs.Empty);
-        }
+            => txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Cut(this, EventArgs.Empty);
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Copy(this, EventArgs.Empty);
-        }
+            => txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Copy(this, EventArgs.Empty);
 
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Paste(this, EventArgs.Empty);
-        }
+            => txtXmlContent.ActiveTextAreaControl.TextArea.ClipboardHandler.Paste(this, EventArgs.Empty);
 
-        private void findToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DoFind();
-        }
+        private void findToolStripMenuItem_Click(object sender, EventArgs e) => DoFind();
 
-        private void findReplaceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DoFindReplace();
-        }
+        private void findReplaceToolStripMenuItem_Click(object sender, EventArgs e) => DoFindReplace();
 
         /// <summary>
         /// Gets or sets whether this editor can support reloading XML content
@@ -453,9 +402,7 @@ namespace Maestro.Editors.Generic
 
         private void btnReRead_Click(object sender, EventArgs e)
         {
-            var h = this.RequestReloadFromSource;
-            if (h != null)
-                h(this, EventArgs.Empty);
+            this.RequestReloadFromSource?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -481,24 +428,12 @@ namespace Maestro.Editors.Generic
         /// <summary>
         /// The line where the fold should start.  Lines start from 0.
         /// </summary>
-        public int Line
-        {
-            get
-            {
-                return line;
-            }
-        }
+        public int Line => line;
 
         /// <summary>
         /// The column where the fold should start.  Columns start from 0.
         /// </summary>
-        public int Column
-        {
-            get
-            {
-                return col;
-            }
-        }
+        public int Column => col;
 
         /// <summary>
         /// The name of the xml item with its prefix if it has one.

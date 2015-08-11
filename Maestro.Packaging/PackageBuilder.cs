@@ -123,7 +123,7 @@ namespace Maestro.Packaging
         /// <summary>
         /// The connection object
         /// </summary>
-        private IServerConnection m_connection;
+        private readonly IServerConnection m_connection;
 
         /// <summary>
         /// Constructs a new package builder instance
@@ -1175,7 +1175,7 @@ namespace Maestro.Packaging
                         header = op.Parameters.GetParameterValue("HEADER"); //NOXLATE
                     else
                         header = null;
-                    string content = op.Parameters.GetParameterValue("CONTENT") == null ? null : op.Parameters.GetParameterValue("CONTENT"); //NOXLATE
+                    string content = op.Parameters.GetParameterValue("CONTENT") ?? null; //NOXLATE
 
                     resourceList.Add(id, new ResourceItem(id, header, content));
                 }

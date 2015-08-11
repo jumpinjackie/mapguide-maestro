@@ -27,7 +27,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http.Commands
 {
     public class HttpCreateRuntimeMap : ICreateRuntimeMap
     {
-        private HttpServerConnection _conn;
+        private readonly HttpServerConnection _conn;
 
         internal HttpCreateRuntimeMap(HttpServerConnection conn)
         {

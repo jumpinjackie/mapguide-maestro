@@ -44,7 +44,7 @@ namespace MaestroFsPreview
             localFsPreviewCtrl.Init(edSvc);
         }
 
-        private IEditorService _edSvc;
+        private readonly IEditorService _edSvc;
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {

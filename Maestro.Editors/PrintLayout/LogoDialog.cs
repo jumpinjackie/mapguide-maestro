@@ -37,7 +37,7 @@ namespace Maestro.Editors.PrintLayout
             InitializeComponent();
         }
 
-        private IServerConnection _conn;
+        private readonly IServerConnection _conn;
 
         public LogoDialog(IServerConnection conn)
             : this()

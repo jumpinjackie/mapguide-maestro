@@ -31,7 +31,7 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
     internal partial class PathDialog : Form
     {
         private ISimpleSymbolDefinition _sym;
-        private EditorBindableCollapsiblePanel _ed;
+        private readonly EditorBindableCollapsiblePanel _ed;
         private IPathGraphic _path;
 
         public PathDialog(EditorBindableCollapsiblePanel parent, ISimpleSymbolDefinition sym, IPathGraphic path)
@@ -50,20 +50,20 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
             {
                 _init = true;
 
-                TextBoxBinder.BindText(txtGeometry, _path, "Geometry");
-                symFillColor.Bind(_path, "FillColor");
-                symLineCap.Bind(_path, "LineCap");
-                symLineColor.Bind(_path, "LineColor");
-                symLineJoin.Bind(_path, "LineJoin");
-                symLineMiterLimit.Bind(_path, "LineMiterLimit");
-                symLineWeight.Bind(_path, "LineWeight");
-                symLineWeightScalable.Bind(_path, "LineWeightScalable");
+                TextBoxBinder.BindText(txtGeometry, _path, nameof(_path.Geometry));
+                symFillColor.Bind(_path, nameof(_path.FillColor));
+                symLineCap.Bind(_path, nameof(_path.LineCap));
+                symLineColor.Bind(_path, nameof(_path.LineColor));
+                symLineJoin.Bind(_path, nameof(_path.LineJoin));
+                symLineMiterLimit.Bind(_path, nameof(_path.LineMiterLimit));
+                symLineWeight.Bind(_path, nameof(_path.LineWeight));
+                symLineWeightScalable.Bind(_path, nameof(_path.LineWeightScalable));
 
                 IPathGraphic2 path2 = _path as IPathGraphic2;
                 if (path2 != null)
                 {
-                    symScaleX.Bind(path2, "ScaleX");
-                    symScaleY.Bind(path2, "ScaleY");
+                    symScaleX.Bind(path2, nameof(path2.ScaleX));
+                    symScaleY.Bind(path2, nameof(path2.ScaleY));
                 }
                 else
                 {
@@ -76,24 +76,12 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void btnClose_Click(object sender, EventArgs e) => this.Close();
 
-        private void OnContentChanged(object sender, EventArgs e)
-        {
-            _ed.RaiseResourceChanged();
-        }
+        private void OnContentChanged(object sender, EventArgs e) => _ed.RaiseResourceChanged();
 
-        private void OnRequestBrowse(SymbolField sender)
-        {
-            ParameterSelector.ShowParameterSelector(_sym.ParameterDefinition.Parameter, sender);
-        }
+        private void OnRequestBrowse(SymbolField sender) => ParameterSelector.ShowParameterSelector(_sym.ParameterDefinition.Parameter, sender);
 
-        private void txtGeometry_TextChanged(object sender, EventArgs e)
-        {
-            _ed.RaiseResourceChanged();
-        }
+        private void txtGeometry_TextChanged(object sender, EventArgs e) => _ed.RaiseResourceChanged();
     }
 }

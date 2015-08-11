@@ -28,7 +28,7 @@ namespace Maestro.Editors.SymbolDefinition
 {
     internal partial class SymbolParameterDialog : Form
     {
-        private IParameter _p;
+        private readonly IParameter _p;
         private bool _init = false;
 
         public SymbolParameterDialog(Version ver, IParameter p)
@@ -62,10 +62,7 @@ namespace Maestro.Editors.SymbolDefinition
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void btnClose_Click(object sender, EventArgs e) => this.Close();
 
         private void txtIdentifier_TextChanged(object sender, EventArgs e)
         {

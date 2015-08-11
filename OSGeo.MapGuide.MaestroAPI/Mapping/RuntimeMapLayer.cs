@@ -385,7 +385,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                if (SetField(ref _group, value, "Group")) //NOXLATE
+                if (SetField(ref _group, value, nameof(this.Group)))
                     Parent.IsDirty = true;
             }
         }
@@ -414,7 +414,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                if (SetField(ref _selectable, value, "Selectable")) //NOXLATE
+                if (SetField(ref _selectable, value, nameof(this.Selectable)))
                     Parent.IsDirty = true;
             }
         }
@@ -433,7 +433,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                if (SetField(ref _name, value, "Name")) //NOXLATE
+                if (SetField(ref _name, value, nameof(this.Name)))
                     Parent.IsDirty = true;
             }
         }
@@ -452,7 +452,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                if (SetField(ref _showInLegend, value, "ShowInLegend")) //NOXLATE
+                if (SetField(ref _showInLegend, value, nameof(this.ShowInLegend)))
                     Parent.IsDirty = true;
             }
         }
@@ -471,7 +471,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                if (SetField(ref _legendLabel, value, "LegendLabel")) //NOXLATE
+                if (SetField(ref _legendLabel, value, nameof(this.LegendLabel)))
                     Parent.IsDirty = true;
             }
         }
@@ -490,7 +490,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                if (SetField(ref _expandInLegend, value, "ExpandInLegend")) //NOXLATE
+                if (SetField(ref _expandInLegend, value, nameof(this.ExpandInLegend)))
                     Parent.IsDirty = true;
             }
         }

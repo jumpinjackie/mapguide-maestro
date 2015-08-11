@@ -131,12 +131,18 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             }
             else if (m_point != null)
             {
-                if (m_point.Symbol.Type == PointSymbolType.Mark)
-                    FeaturePreviewRender.RenderPreviewPoint(e.Graphics, rect, m_point.Symbol as IMarkSymbol);
-                else if (m_point.Symbol.Type == PointSymbolType.Font)
-                    FeaturePreviewRender.RenderPreviewFontSymbol(e.Graphics, rect, m_point.Symbol as IFontSymbol);
-                else if (m_point.Symbol.Type == PointSymbolType.W2D)
-                    FeaturePreviewRender.RenderW2DImage(e.Graphics, rect, m_point.Symbol as IW2DSymbol, m_w2dsymbol);
+                switch (m_point.Symbol.Type)
+                {
+                    case PointSymbolType.Mark:
+                        FeaturePreviewRender.RenderPreviewPoint(e.Graphics, rect, m_point.Symbol as IMarkSymbol);
+                        break;
+                    case PointSymbolType.Font:
+                        FeaturePreviewRender.RenderPreviewFontSymbol(e.Graphics, rect, m_point.Symbol as IFontSymbol);
+                        break;
+                    case PointSymbolType.W2D:
+                        FeaturePreviewRender.RenderW2DImage(e.Graphics, rect, m_point.Symbol as IW2DSymbol, m_w2dsymbol);
+                        break;
+                }
             }
             else if (m_line != null)
             {

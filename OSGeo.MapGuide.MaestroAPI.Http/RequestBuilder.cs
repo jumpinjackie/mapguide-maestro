@@ -33,8 +33,8 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// </summary>
     internal class RequestBuilder
     {
-        private string m_userAgent = "MapGuide Maestro API";
-        private string m_hosturi;
+        private string m_userAgent = "MapGuide Maestro API"; //NOXLATE
+        private readonly string m_hosturi;
         private string m_sessionID = null;
         private string m_locale = null;
 
@@ -57,9 +57,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// the HTTP connection was initialized with only a session id, otherwise it can be set to false if the connection
         /// was initialized with a username/password as requests use the already established authenticated credentials.
         /// </summary>
-        internal bool IncludeSessionIdInRequestParams { get; private set; }
+        internal bool IncludeSessionIdInRequestParams { get; }
 
-        internal string Locale { get { return m_locale; } }
+        internal string Locale => m_locale;
 
         internal string CreateSession()
         {

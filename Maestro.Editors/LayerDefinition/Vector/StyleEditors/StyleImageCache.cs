@@ -28,7 +28,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 {
     internal static class StyleImageCache
     {
-        private static Assembly _asm;
+        private static readonly Assembly _asm;
 
         static StyleImageCache()
         {
@@ -62,10 +62,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             }
         }
 
-        private static int CompareImages(ImageStylePicker.NamedImage x, ImageStylePicker.NamedImage y)
-        {
-            return x.Name.CompareTo(y.Name);
-        }
+        private static int CompareImages(ImageStylePicker.NamedImage x, ImageStylePicker.NamedImage y) => x.Name.CompareTo(y.Name);
 
         private static ImageStylePicker.NamedImage[] _lines;
 

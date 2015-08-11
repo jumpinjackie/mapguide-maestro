@@ -49,40 +49,16 @@ namespace Maestro.Editors.LayerDefinition.Vector
             this.ThemeCategory = themeCat;
         }
 
-        public string LayerDefinition
-        {
-            get;
-            private set;
-        }
+        public string LayerDefinition { get; }
 
-        public double Scale
-        {
-            get;
-            private set;
-        }
+        public double Scale { get; }
 
-        public int Width
-        {
-            get;
-            private set;
-        }
+        public int Width { get; }
 
-        public int Height
-        {
-            get;
-            private set;
-        }
+        public int Height { get; }
 
-        public string ImageFormat
-        {
-            get;
-            private set;
-        }
+        public string ImageFormat { get; }
 
-        public int ThemeCategory
-        {
-            get;
-            private set;
-        }
+        public int ThemeCategory { get; }
     }
 }

@@ -36,18 +36,15 @@ namespace OSGeo.FDO.Expressions
 
     public class FdoDistanceCondition : FdoGeometricCondition
     {
-        public override FilterType FilterType
-        {
-            get { return Expressions.FilterType.DistanceCondition; }
-        }
+        public override FilterType FilterType => FilterType.DistanceCondition;
 
-        public FdoIdentifier Identifier { get; private set; }
+        public FdoIdentifier Identifier { get; }
 
-        public DistanceOperations Operator { get; private set; }
+        public DistanceOperations Operator { get; }
 
-        public FdoExpression Expression { get; private set; }
+        public FdoExpression Expression { get; }
 
-        public FdoDataValue Distance { get; private set; }
+        public FdoDataValue Distance { get; }
 
         internal FdoDistanceCondition(ParseTreeNode node)
         {
@@ -62,7 +59,7 @@ namespace OSGeo.FDO.Expressions
                     this.Operator = DistanceOperations.Beyond;
                     break;
                 default:
-                    throw new FdoParseException("Unknown operator: " + opName);
+                    throw new FdoParseException($"Unknown operator: {opName}"); //LOCALIZEME
             }
             this.Expression = FdoExpression.ParseNode(node.ChildNodes[2]);
             this.Distance = FdoDataValue.ParseDataNode(node.ChildNodes[3].ChildNodes[0]);

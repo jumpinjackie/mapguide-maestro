@@ -28,7 +28,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc
 {
     internal static class OdbcDriverMap
     {
-        private static Dictionary<string, Type> _drivers;
+        private static readonly Dictionary<string, Type> _drivers;
 
         static OdbcDriverMap()
         {

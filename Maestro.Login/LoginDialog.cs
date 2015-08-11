@@ -35,7 +35,7 @@ namespace Maestro.Login
     public partial class LoginDialog : Form
     {
         private int _selectedIndex;
-        private ILoginCtrl[] _controls;
+        private readonly ILoginCtrl[] _controls;
         private IServerConnection _conn;
 
         private PreferredSiteList _siteList;
@@ -43,8 +43,8 @@ namespace Maestro.Login
         private HttpLoginCtrl _http;
         private LocalNativeLoginCtrl _localNative;
         private LocalLoginCtrl _local;
-        private LocalNativeStubCtrl _localNativeStub;
-        private LocalStubCtrl _localStub;
+        private readonly LocalNativeStubCtrl _localNativeStub;
+        private readonly LocalStubCtrl _localStub;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginDialog"/> class.

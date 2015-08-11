@@ -95,7 +95,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
                     // Namespace intellisense.
                     if (XmlParser.IsNamespaceDeclaration(text, text.Length))
                     {
-                        return schemaCompletionDataItems.GetNamespaceCompletionData(); ;
+                        return schemaCompletionDataItems.GetNamespaceCompletionData();
                     }
                     break;
 
@@ -239,11 +239,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             private set;
         }
 
-        public int DefaultIndex
-        {
-            get;
-            private set;
-        }
+        public int DefaultIndex { get; }
 
         public bool InsertSpace
         {

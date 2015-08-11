@@ -42,7 +42,7 @@ namespace MgCooker
 {
     public partial class SetupRun : Form
     {
-        private IServerConnection m_connection;
+        private readonly IServerConnection m_connection;
         private IDictionary<string, string> m_commandlineargs;
         private IDictionary<string, IEnvelope> m_coordinateOverrides;
         private bool m_isUpdating = false;
@@ -51,7 +51,7 @@ namespace MgCooker
         {
             InitializeComponent();
             saveFileDialog.Filter = string.Format(OSGeo.MapGuide.MaestroAPI.Strings.GenericFilter, OSGeo.MapGuide.MaestroAPI.Strings.PickBat, "bat") + "|" + //NOXLATE
-                                     OSGeo.MapGuide.MaestroAPI.StringConstants.AllFilesFilter; //NOXLATE
+                                     StringConstants.AllFilesFilter; //NOXLATE
         }
 
         internal SetupRun(string username, string password, IServerConnection connection, string[] maps, IDictionary<string, string> args)
@@ -527,11 +527,7 @@ namespace MgCooker
                     root = root.Parent;
 
                 IEnvelope box;
-                if (m_coordinateOverrides.ContainsKey(root.Text))
-                    box = m_coordinateOverrides[root.Text];
-                else
-                    box = ((IMapDefinition)root.Tag).Extents;
-
+                box = m_coordinateOverrides.ContainsKey(root.Text) ? m_coordinateOverrides[root.Text] : ((IMapDefinition)root.Tag).Extents;
                 BoundsOverride.Tag = root;
 
                 try

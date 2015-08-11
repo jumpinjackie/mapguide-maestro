@@ -36,7 +36,7 @@ namespace Maestro.Editors.Fusion
             InitializeComponent();
         }
 
-        private IWidgetItem _widgetRef;
+        private readonly IWidgetItem _widgetRef;
         private IApplicationDefinition _flexLayout;
         private IFusionService _fsvc;
         private FlexibleLayoutEditorContext _context;

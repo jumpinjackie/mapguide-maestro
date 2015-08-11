@@ -8,7 +8,7 @@ namespace Maestro.Editors.FeatureSource
 {
     internal static class FsEditorMap
     {
-        private static Dictionary<string, Type> _editors;
+        private static readonly Dictionary<string, Type> _editors;
 
         static FsEditorMap()
         {

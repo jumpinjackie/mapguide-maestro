@@ -43,10 +43,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 
         public event EventHandler Changed;
 
-        private IEditorService m_editor;
-        private ClassDefinition m_schema;
-        private string m_featureSource;
-        private string m_providername;
+        private readonly IEditorService m_editor;
+        private readonly ClassDefinition m_schema;
+        private readonly string m_featureSource;
+        private readonly string m_providername;
 
         private ILayerElementFactory _factory;
 

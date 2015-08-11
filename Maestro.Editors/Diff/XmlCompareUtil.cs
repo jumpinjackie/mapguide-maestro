@@ -44,12 +44,12 @@ namespace Maestro.Editors.Diff
         /// <summary>
         /// Gets the difference list for the source
         /// </summary>
-        public TextFileDiffList Source { get; private set; }
+        public TextFileDiffList Source { get; }
 
         /// <summary>
         /// Gets the difference list for the target
         /// </summary>
-        public TextFileDiffList Target { get; private set; }
+        public TextFileDiffList Target { get; }
     }
 
     /// <summary>

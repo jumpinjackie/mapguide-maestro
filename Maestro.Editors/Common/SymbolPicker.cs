@@ -43,7 +43,7 @@ namespace Maestro.Editors.Common
             InitializeComponent();
         }
 
-        private IServerConnection _conn;
+        private readonly IServerConnection _conn;
         private Image _symbolImage;
 
         /// <summary>

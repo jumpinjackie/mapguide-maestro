@@ -97,7 +97,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             //trigger auto-complete most of the time
             int startIndex = text.LastIndexOfAny(new char[] { ' ', '+', '/', '*', '-', '%', '=', '>', '<', '&', '|', '^', '~', '(', ')' });
             string res = text.Substring(startIndex + 1);
-            Debug.WriteLine("Evaluating python auto-complete options for: " + res);
+            Debug.WriteLine($"Evaluating python auto-complete options for: {res}"); //NOXLATE
             return res;
         }
 
@@ -110,23 +110,11 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             return textArea.Document.GetText(lineSegment);
         }
 
-        public System.Windows.Forms.ImageList ImageList
-        {
-            get;
-            private set;
-        }
+        public System.Windows.Forms.ImageList ImageList { get; }
 
-        public string PreSelection
-        {
-            get;
-            private set;
-        }
+        public string PreSelection { get; }
 
-        public int DefaultIndex
-        {
-            get;
-            private set;
-        }
+        public int DefaultIndex { get; }
 
         public bool InsertSpace
         {

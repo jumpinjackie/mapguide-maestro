@@ -191,20 +191,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             get
             {
                 MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
-                GetByteReaderMethod fetch = () =>
-                {
-                    return fes.GetFeatureProviders();
-                };
+                GetByteReaderMethod fetch = fes.GetFeatureProviders;
                 LogMethodCall("MgFeatureService::GetFeatureProviders", true);
                 var reg = base.DeserializeObject<FeatureProviderRegistry>(new MgReadOnlyStream(fetch));
                 return reg.FeatureProvider.ToArray();
             }
         }
 
-        public string TestConnection(string providername, System.Collections.Specialized.NameValueCollection parameters)
+        public string TestConnection(string providername, NameValueCollection parameters)
         {
             MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            var sb = new StringBuilder();
             if (parameters != null)
             {
                 foreach (System.Collections.DictionaryEntry de in parameters)
@@ -260,9 +257,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return new MgReadOnlyStream(fetch);
         }
 
-        public override void SetResourceXmlData(string resourceid, System.IO.Stream content, System.IO.Stream header)
+        public override void SetResourceXmlData(string resourceId, Stream content, System.IO.Stream header)
         {
-            bool exists = ResourceExists(resourceid);
+            bool exists = ResourceExists(resourceId);
 
             MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
 
@@ -270,12 +267,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             byte[] bufContent = content == null ? new byte[0] : Utility.StreamAsArray(content);
             MgByteReader rH = bufHeader.Length == 0 ? null : new MgByteReader(bufHeader, bufHeader.Length, "text/xml");
             MgByteReader rC = bufContent.Length == 0 ? null : new MgByteReader(bufContent, bufContent.Length, "text/xml");
-            res.SetResource(new MgResourceIdentifier(resourceid), rC, rH);
-            LogMethodCall("MgResourceService::SetResource", true, resourceid, "MgByteReader", "MgByteReader");
+            res.SetResource(new MgResourceIdentifier(resourceId), rC, rH);
+            LogMethodCall("MgResourceService::SetResource", true, resourceId, "MgByteReader", "MgByteReader");
             if (exists)
-                OnResourceUpdated(resourceid);
+                OnResourceUpdated(resourceId);
             else
-                OnResourceAdded(resourceid);
+                OnResourceAdded(resourceId);
         }
 
         public IReader ExecuteSqlQuery(string featureSourceID, string sql)
@@ -286,24 +283,24 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return new LocalNativeSqlReader(reader);
         }
 
-        public override IFeatureReader QueryFeatureSource(string resourceID, string schema, string query, string[] columns, System.Collections.Specialized.NameValueCollection computedProperties)
+        public override IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames, NameValueCollection computedProperties)
         {
             MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
             MgFeatureQueryOptions mgf = new MgFeatureQueryOptions();
-            if (query != null)
-                mgf.SetFilter(query);
+            if (filter != null)
+                mgf.SetFilter(filter);
 
-            if (columns != null && columns.Length != 0)
-                foreach (string s in columns)
+            if (propertyNames != null && propertyNames.Length != 0)
+                foreach (string s in propertyNames)
                     mgf.AddFeatureProperty(s);
 
             if (computedProperties != null && computedProperties.Count > 0)
                 foreach (string s in computedProperties.Keys)
                     mgf.AddComputedProperty(s, computedProperties[s]);
 
-            MgFeatureReader mr = fes.SelectFeatures(new MgResourceIdentifier(resourceID), schema, mgf);
+            MgFeatureReader mr = fes.SelectFeatures(new MgResourceIdentifier(resourceID), className, mgf);
 
-            LogMethodCall("MgFeatureService::SelectFeatures", true, resourceID, schema, "MgFeatureQueryOptions");
+            LogMethodCall("MgFeatureService::SelectFeatures", true, resourceID, className, "MgFeatureQueryOptions");
 
             return new LocalNativeFeatureReader(mr);
         }
@@ -331,21 +328,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         }
 
         public override IReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, string[] columns)
-        {
-            return AggregateQueryFeatureSourceCore(resourceID, schema, filter, columns, null);
-        }
+            => AggregateQueryFeatureSourceCore(resourceID, schema, filter, columns, null);
         
-        public override IReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, System.Collections.Specialized.NameValueCollection aggregateFunctions)
-        {
-            return AggregateQueryFeatureSourceCore(resourceID, schema, filter, null, aggregateFunctions);
-        }
+        public override IReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, NameValueCollection aggregateFunctions)
+            => AggregateQueryFeatureSourceCore(resourceID, schema, filter, null, aggregateFunctions);
 
-        protected override FeatureSourceDescription DescribeFeatureSourceInternal(string resourceID)
+        protected override FeatureSourceDescription DescribeFeatureSourceInternal(string resourceId)
         {
             MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
-            System.IO.MemoryStream ms = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceID), "")));
+            var ms = new MemoryStream(Encoding.UTF8.GetBytes(fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceId), "")));
 
-            LogMethodCall("MgFeatureService::DescribeSchemaAsXml", true, resourceID, "");
+            LogMethodCall("MgFeatureService::DescribeSchemaAsXml", true, resourceId, "");
 
             return new FeatureSourceDescription(ms);
         }
@@ -577,9 +570,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 OnResourceAdded(newpath);
         }
 
-        public override System.IO.Stream RenderRuntimeMap(RuntimeMap rtmap, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
+        public override Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
         {
-            var resourceId = rtmap.ResourceID;
+            var resourceId = map.ResourceID;
             MgRenderingService rnd = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
             MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
             MgGeometryFactory gf = new MgGeometryFactory();
@@ -588,21 +581,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 
             GetByteReaderMethod fetch = () =>
             {
-                MgMap map = new MgMap();
-                map.Open(res, mapname);
-                MgSelection sel = new MgSelection(map);
+                MgMap m = new MgMap();
+                m.Open(res, mapname);
+                MgSelection sel = new MgSelection(m);
                 //The color accepted by MgColor has alpha as the last value, but the returned has alpha first
-                MgColor color = new MgColor(Utility.ParseHTMLColor(map.GetBackgroundColor()));
+                MgColor color = new MgColor(Utility.ParseHTMLColor(m.GetBackgroundColor()));
                 MgCoordinate coord = gf.CreateCoordinateXY(x, y);
-                return rnd.RenderMap(map, sel, coord, scale, width, height, color, format, true);
+                return rnd.RenderMap(m, sel, coord, scale, width, height, color, format, true);
             };
-            LogMethodCall("MgRenderingService::RenderMap", true, "MgMap", "MgSelection", "MgPoint(" + x + "," + y + ")", scale.ToString(), width.ToString(), height.ToString(), "MgColor", format, true.ToString());
+            LogMethodCall("MgRenderingService::RenderMap", true, nameof(MgMap), nameof(MgSelection), $"{nameof(MgPoint)}({x}, {y})", scale.ToString(), width.ToString(), height.ToString(), nameof(MgColor), format, true.ToString());
             return new MgReadOnlyStream(fetch);
         }
 
-        public override System.IO.Stream RenderRuntimeMap(RuntimeMap rtmap, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
+        public override Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
         {
-            var resourceId = rtmap.ResourceID;
+            var resourceId = map.ResourceID;
             MgRenderingService rnd = this.Connection.CreateService(MgServiceType.RenderingService) as MgRenderingService;
             MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
             MgGeometryFactory gf = new MgGeometryFactory();
@@ -613,16 +606,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 
             GetByteReaderMethod fetch = () =>
             {
-                MgMap map = new MgMap();
-                map.Open(res, mapname);
-                MgSelection sel = new MgSelection(map);
+                MgMap m = new MgMap();
+                m.Open(res, mapname);
+                MgSelection sel = new MgSelection(m);
                 //The color accepted by MgColor has alpha as the last value, but the returned has alpha first
-                MgColor color = new MgColor(Utility.ParseHTMLColor(map.GetBackgroundColor()));
+                MgColor color = new MgColor(Utility.ParseHTMLColor(m.GetBackgroundColor()));
                 MgEnvelope env = new MgEnvelope(gf.CreateCoordinateXY(x1, y1), gf.CreateCoordinateXY(x2, y2));
 
-                return rnd.RenderMap(map, sel, env, width, height, color, format);
+                return rnd.RenderMap(m, sel, env, width, height, color, format);
             };
-            LogMethodCall("MgRenderingService::RenderMap", true, "MgMap", "MgSelection", "MgEnvelope", width.ToString(), height.ToString(), "MgColor", format);
+            LogMethodCall("MgRenderingService::RenderMap", true, nameof(MgMap), nameof(MgSelection), nameof(MgEnvelope), width.ToString(), height.ToString(), nameof(MgColor), format);
             return new MgReadOnlyStream(fetch);
         }
 
@@ -699,10 +692,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
             MgSpatialContextReader rd = fes.GetSpatialContexts(new MgResourceIdentifier(resourceID), activeOnly);
 
-            GetByteReaderMethod fetch = () =>
-            {
-                return rd.ToXml();
-            };
+            GetByteReaderMethod fetch = rd.ToXml;
             LogMethodCall("MgFeatureService::GetSpatialContexts", true, resourceID, activeOnly.ToString());
             return base.DeserializeObject<FdoSpatialContextList>(new MgReadOnlyStream(fetch));
         }
@@ -811,19 +801,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 MgByteReader rd = new MgByteReader(data, data.Length, "text/xml");
                 res.UpdateRepository(new MgResourceIdentifier(resourceId), null, rd);
 
-                LogMethodCall("MgResourceService::UpdateRepository", true, resourceId, "null", "MgByteReader");
+                LogMethodCall("MgResourceService::UpdateRepository", true, resourceId, "null", nameof(MgByteReader));
             }
         }
 
-        public override object GetFolderOrResourceHeader(string resourceID)
+        public override object GetFolderOrResourceHeader(string resourceId)
         {
             MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
             GetByteReaderMethod fetch = () =>
             {
-                MgResourceIdentifier resId = new MgResourceIdentifier(resourceID);
+                MgResourceIdentifier resId = new MgResourceIdentifier(resourceId);
                 return res.GetResourceHeader(resId);
             };
-            if (ResourceIdentifier.IsFolderResource(resourceID))
+            if (ResourceIdentifier.IsFolderResource(resourceId))
                 return this.DeserializeObject<ResourceFolderHeaderType>(new MgReadOnlyStream(fetch));
             else
                 return this.DeserializeObject<ResourceDocumentHeaderType>(new MgReadOnlyStream(fetch));
@@ -868,7 +858,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return m_cachedGroupList;
         }
 
-        public override System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format)
+        public override Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format)
         {
             MgTileService ts = this.Connection.CreateService(MgServiceType.TileService) as MgTileService;
             GetByteReaderMethod fetch = () =>
@@ -880,20 +870,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return new MgReadOnlyStream(fetch);
         }
 
-        public override bool ResourceExists(string resourceid)
+        public override bool ResourceExists(string resourceID)
         {
             //API is safe to call in MG 2.1 and newer
             var version = this.SiteVersion;
             if (version >= new Version(2, 1))
             {
                 MgResourceService res = this.Connection.CreateService(MgServiceType.ResourceService) as MgResourceService;
-                var result = res.ResourceExists(new MgResourceIdentifier(resourceid));
-                LogMethodCall("MgResourceService::ResourceExists", true, resourceid);
+                var result = res.ResourceExists(new MgResourceIdentifier(resourceID));
+                LogMethodCall("MgResourceService::ResourceExists", true, resourceID);
                 return result;
             }
             else
             {
-                return base.ResourceExists(resourceid);
+                return base.ResourceExists(resourceID);
             }
         }
 
@@ -1368,16 +1358,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             string featureFilter = "";
             int layerAttributeFilter = 0;
             int op = MgFeatureSpatialOperations.Intersects;
-            if (selectionVariant == "TOUCHES")
-                op = MgFeatureSpatialOperations.Touches;
-            else if (selectionVariant == "INTERSECTS")
-                op = MgFeatureSpatialOperations.Intersects;
-            else if (selectionVariant == "WITHIN")
-                op = MgFeatureSpatialOperations.Within;
-            else if (selectionVariant == "ENVELOPEINTERSECTS")
-                op = MgFeatureSpatialOperations.EnvelopeIntersects;
-            else
-                throw new ArgumentException("Unknown or unsupported selection variant: " + selectionVariant);
+            switch (selectionVariant)
+            {
+                case "TOUCHES":
+                    op = MgFeatureSpatialOperations.Touches;
+                    break;
+                case "INTERSECTS":
+                    op = MgFeatureSpatialOperations.Intersects;
+                    break;
+                case "WITHIN":
+                    op = MgFeatureSpatialOperations.Within;
+                    break;
+                case "ENVELOPEINTERSECTS":
+                    op = MgFeatureSpatialOperations.EnvelopeIntersects;
+                    break;
+                default:
+                    throw new ArgumentException("Unknown or unsupported selection variant: " + selectionVariant);
+            }
 
             if (extraOptions != null)
             {
@@ -1395,7 +1392,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             MgFeatureInformation info = rs.QueryFeatures(map, layerNames, r.Read(wkt), op, featureFilter, maxFeatures, layerAttributeFilter);
 
             string xml = "";
-            GetByteReaderMethod fetch = () => { return info.ToXml(); };
+            GetByteReaderMethod fetch = info.ToXml;
             using (var sr = new StreamReader(new MgReadOnlyStream(fetch)))
             {
                 xml = sr.ReadToEnd();
@@ -1557,46 +1554,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             this.IsFrozen = rdr.IsFrozen();
         }
 
-        public string Name
-        {
-            get;
-            private set;
-        }
+        public string Name { get; }
 
-        public string Description
-        {
-            get;
-            private set;
-        }
+        public string Description { get; }
 
-        public string Owner
-        {
-            get;
-            private set;
-        }
+        public string Owner { get; }
 
-        public string CreationDate
-        {
-            get;
-            private set;
-        }
+        public string CreationDate { get; }
 
-        public bool IsActive
-        {
-            get;
-            private set;
-        }
+        public bool IsActive { get; }
 
-        public bool IsFrozen
-        {
-            get;
-            private set;
-        }
+        public bool IsFrozen { get; }
     }
 
     internal class LocalLongTransactionList : ILongTransactionList
     {
-        private List<LocalLongTransaction> _transactions;
+        private readonly List<LocalLongTransaction> _transactions;
 
         public LocalLongTransactionList(MgLongTransactionReader rdr)
         {
@@ -1608,9 +1581,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             rdr.Close();
         }
 
-        public IEnumerable<ILongTransaction> Transactions
-        {
-            get { return _transactions; }
-        }
+        public IEnumerable<ILongTransaction> Transactions => _transactions;
     }
 }

@@ -32,16 +32,16 @@ namespace Maestro.Editors.Preview
 {
     internal partial class MapPreviewDialog : Form
     {
-        private RuntimeMap _map;
-        private IUrlLauncherService _launcher;
-        private IServerConnection _conn;
+        private readonly RuntimeMap _map;
+        private readonly IUrlLauncherService _launcher;
+        private readonly IServerConnection _conn;
 
         public MapPreviewDialog(RuntimeMap map, IUrlLauncherService urlLauncher, string resourceId)
         {
             InitializeComponent();
             _map = map;
             if (!string.IsNullOrEmpty(resourceId))
-                this.Text += " - " + resourceId;
+                this.Text += $" - {resourceId}"; //NOXLATE
 
             txtCoordinateSystem.Text = map.CoordinateSystem;
             numZoomToScale.Minimum = 1;

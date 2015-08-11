@@ -44,7 +44,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
     internal class PythonOutputStream : Stream
     {
         private PythonConsole _console;
-        private ITextEditor textEditor;
+        private readonly ITextEditor textEditor;
 
         public PythonOutputStream(PythonConsole console, ITextEditor textEditor)
         {

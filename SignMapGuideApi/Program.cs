@@ -7,7 +7,7 @@ namespace SignMapGuideApi
 {
     internal class Program
     {
-        private static string[] files = { "MapGuideDotNetApi", "OSGeo.MapGuide.Foundation", "OSGeo.MapGuide.Geometry", "OSGeo.MapGuide.MapGuideCommon", "OSGeo.MapGuide.PlatformBase", "OSGeo.MapGuide.Web" };
+        private static readonly string[] files = { "MapGuideDotNetApi", "OSGeo.MapGuide.Foundation", "OSGeo.MapGuide.Geometry", "OSGeo.MapGuide.MapGuideCommon", "OSGeo.MapGuide.PlatformBase", "OSGeo.MapGuide.Web" };
 
         private static Dictionary<string, string[]> ilasm32Paths = new Dictionary<string, string[]>()
         {

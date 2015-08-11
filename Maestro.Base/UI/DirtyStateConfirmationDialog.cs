@@ -37,7 +37,7 @@ namespace Maestro.Base.UI
             InitializeComponent();
         }
 
-        private IEditorService _edSvc;
+        private readonly IEditorService _edSvc;
 
         public DirtyStateConfirmationDialog(IEditorService edSvc)
             : this()

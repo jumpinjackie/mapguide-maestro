@@ -26,7 +26,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
 {
     public class LocalNativeMpuCalculator : IMpuCalculator
     {
-        private MgCoordinateSystemFactory _csFact;
+        private readonly MgCoordinateSystemFactory _csFact;
 
         public LocalNativeMpuCalculator()
         {

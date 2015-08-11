@@ -40,7 +40,7 @@ namespace Maestro.Editors.Diff
             InitializeComponent();
         }
 
-        private IServerConnection _conn;
+        private readonly IServerConnection _conn;
 
         /// <summary>
         /// Creates a new instance of CompareResourceDialog
@@ -70,10 +70,7 @@ namespace Maestro.Editors.Diff
             set { txtTarget.Text = value; }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-        }
+        private void btnCancel_Click(object sender, EventArgs e) => this.DialogResult = DialogResult.Cancel;
 
         private void btnCompare_Click(object sender, EventArgs e)
         {

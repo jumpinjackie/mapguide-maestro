@@ -207,35 +207,33 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             for (int i = 0; i < pcount; i++)
             {
                 var prop = props.GetItem(i);
-                if (prop.PropertyType == MgFeaturePropertyType.DataProperty)
+                switch (prop.PropertyType)
                 {
-                    MgDataPropertyDefinition mgData = (MgDataPropertyDefinition)prop;
-                    var dp = ConvertDataProperty(mgData);
+                    case MgFeaturePropertyType.DataProperty:
+                        MgDataPropertyDefinition mgData = (MgDataPropertyDefinition)prop;
+                        var dp = ConvertDataProperty(mgData);
 
-                    //API Bug? passing object reference gives incorrect result for identity
-                    //properties
-                    bool identity = (mgClass.GetIdentityProperties().Contains(prop.Name));
-                    cls.AddProperty(dp, identity);
-                }
-                else if (prop.PropertyType == MgFeaturePropertyType.GeometricProperty)
-                {
-                    MgGeometricPropertyDefinition mgGeom = (MgGeometricPropertyDefinition)prop;
-                    var geom = ConvertGeometricProperty(mgGeom);
+                        //API Bug? passing object reference gives incorrect result for identity
+                        //properties
+                        bool identity = (mgClass.GetIdentityProperties().Contains(prop.Name));
+                        cls.AddProperty(dp, identity);
+                        break;
+                    case MgFeaturePropertyType.GeometricProperty:
+                        MgGeometricPropertyDefinition mgGeom = (MgGeometricPropertyDefinition)prop;
+                        var geom = ConvertGeometricProperty(mgGeom);
 
-                    cls.AddProperty(geom);
-                }
-                else if (prop.PropertyType == MgFeaturePropertyType.RasterProperty)
-                {
-                    MgRasterPropertyDefinition mgRaster = (MgRasterPropertyDefinition)prop;
-                    var raster = ConvertRasterProperty(mgRaster);
+                        cls.AddProperty(geom);
+                        break;
+                    case MgFeaturePropertyType.RasterProperty:
+                        MgRasterPropertyDefinition mgRaster = (MgRasterPropertyDefinition)prop;
+                        var raster = ConvertRasterProperty(mgRaster);
 
-                    cls.AddProperty(raster);
-                }
-                else if (prop.PropertyType == MgFeaturePropertyType.ObjectProperty)
-                {
-                }
-                else if (prop.PropertyType == MgFeaturePropertyType.AssociationProperty)
-                {
+                        cls.AddProperty(raster);
+                        break;
+                    case MgFeaturePropertyType.ObjectProperty:
+                        break;
+                    case MgFeaturePropertyType.AssociationProperty:
+                        break;
                 }
             }
 

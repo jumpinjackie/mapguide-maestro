@@ -89,10 +89,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Http.Commands
             return _completed;
         }
 
-        public IServerConnection Parent
-        {
-            get;
-            private set;
-        }
+        public IServerConnection Parent { get; }
     }
 }

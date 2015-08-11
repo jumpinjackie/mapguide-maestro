@@ -38,12 +38,12 @@ namespace Maestro.Editors.Common
     {
         private abstract class ModelBase<T>
         {
-            public ModelBase(T item)
+            protected ModelBase(T item)
             {
                 this.Tag = item;
             }
 
-            public T Tag { get; private set; }
+            public T Tag { get; }
         }
 
         private class FolderModel : ModelBase<UnmanagedDataListUnmanagedDataFolder>
@@ -55,11 +55,11 @@ namespace Maestro.Editors.Common
                 this.HasChildren = (folder.NumberOfFolders > 0);
             }
 
-            public string Name { get; private set; }
+            public string Name { get; }
 
-            public bool HasChildren { get; private set; }
+            public bool HasChildren { get; }
 
-            public Image Icon { get { return Properties.Resources.folder_horizontal; } }
+            public Image Icon => Properties.Resources.folder_horizontal;
         }
 
         private class FolderTreeModel : ITreeModel

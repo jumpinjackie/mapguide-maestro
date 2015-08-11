@@ -35,7 +35,7 @@ namespace Maestro.Editors.Fusion
             InitializeComponent();
         }
 
-        private IFlyoutItem _menu;
+        private readonly IFlyoutItem _menu;
         private IEditorService _edSvc;
         private bool _init = false;
 

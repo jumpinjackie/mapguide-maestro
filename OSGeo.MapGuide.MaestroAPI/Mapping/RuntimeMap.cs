@@ -439,7 +439,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _dpi, value, "DisplayDpi"); //NOXLATE
+                SetField(ref _dpi, value, nameof(this.DisplayDpi));
             }
         }
 
@@ -578,7 +578,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _viewScale, value, "ViewScale"); //NOXLATE
+                SetField(ref _viewScale, value, nameof(this.ViewScale));
             }
         }
 
@@ -594,7 +594,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public string Name
         {
             get { return _name; }
-            set { SetField(ref _name, value, "Name"); } //NOXLATE
+            set { SetField(ref _name, value, nameof(this.Name)); }
         }
 
         /// <summary>
@@ -611,7 +611,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         public virtual string CoordinateSystem
         {
             get { return _mapSrs; }
-            set { SetField(ref _mapSrs, value, "CoordinateSystem"); } //NOXLATE
+            set { SetField(ref _mapSrs, value, nameof(this.CoordinateSystem)); }
         }
 
         /// <summary>
@@ -633,7 +633,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _bgColor, value, "BackgroundColor"); //NOXLATE
+                SetField(ref _bgColor, value, nameof(this.BackgroundColor));
             }
         }
 
@@ -649,7 +649,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             get { return _resId; }
             set
             {
-                SetField(ref _resId, value, "ResourceID"); //NOXLATE
+                SetField(ref _resId, value, nameof(this.ResourceID));
                 if (this.Name == null)
                     this.Name = ResourceIdentifier.GetName(_resId);
             }

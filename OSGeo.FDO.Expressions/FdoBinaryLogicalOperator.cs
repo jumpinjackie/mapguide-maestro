@@ -35,16 +35,13 @@ namespace OSGeo.FDO.Expressions
 
     public class FdoBinaryLogicalOperator : FdoLogicalOperator
     {
-        public override FilterType FilterType
-        {
-            get { return Expressions.FilterType.BinaryLogicalOperator; }
-        }
+        public override FilterType FilterType => FilterType.BinaryLogicalOperator;
 
-        public FdoFilter Left { get; private set; }
+        public FdoFilter Left { get; }
 
-        public BinaryLogicalOperations Operator { get; private set; }
+        public BinaryLogicalOperations Operator { get; }
 
-        public FdoFilter Right { get; private set; }
+        public FdoFilter Right { get; }
 
         public FdoBinaryLogicalOperator(Irony.Parsing.ParseTreeNode node)
         {

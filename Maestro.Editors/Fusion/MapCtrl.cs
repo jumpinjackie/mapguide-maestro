@@ -38,23 +38,20 @@ namespace Maestro.Editors.Fusion
         }
 
         private IMapWidget _widget;
-        private IMapGroup _group;
+        private readonly IMapGroup _group;
         private IApplicationDefinition _appDef;
         private IEditorService _edSvc;
 
         private class MapModel
         {
-            private IMap _map;
+            private readonly IMap _map;
 
             public MapModel(IMap map)
             {
                 _map = map;
             }
 
-            public IMap Map
-            {
-                get { return _map; }
-            }
+            public IMap Map => _map;
 
             public override string ToString()
             {
@@ -65,7 +62,7 @@ namespace Maestro.Editors.Fusion
                     if (string.IsNullOrEmpty(_map.Type))
                         return Strings.CmsGeneric;
                     else
-                        return _map.Type + " (" + cmsOpts.Type + ")";
+                        return $"{_map.Type} ({cmsOpts.Type})"; //NOXLATE
                 }
                 else if (mgOpts != null)
                 {
@@ -82,7 +79,7 @@ namespace Maestro.Editors.Fusion
             }
         }
 
-        private BindingList<MapModel> _models;
+        private readonly BindingList<MapModel> _models;
 
         public MapCtrl(IApplicationDefinition appDef, IMapGroup group, IEditorService edService, IMapWidget widget)
             : this()
@@ -118,26 +115,26 @@ namespace Maestro.Editors.Fusion
                 {
                     bool bAddedCommercialLayer = false;
                     var map = ed.Action();
-                    if (map.Type == EditorFactory.Type_Google)
+                    switch (map.Type)
                     {
-                        _appDef.SetValue("GoogleScript", EditorFactory.GOOGLE_URL);
-                        bAddedCommercialLayer = true;
+                        case EditorFactory.Type_Google:
+                            _appDef.SetValue("GoogleScript", EditorFactory.GOOGLE_URL);
+                            bAddedCommercialLayer = true;
+                            break;
+                        case EditorFactory.Type_Bing:
+                            _appDef.SetValue("VirtualEarthScript", EditorFactory.BING_URL);
+                            bAddedCommercialLayer = true;
+                            break;
+                        case EditorFactory.Type_OSM:
+                            _appDef.SetValue("OpenStreetMapScript", EditorFactory.OSM_URL);
+                            bAddedCommercialLayer = true;
+                            break;
+                        case EditorFactory.Type_Stamen:
+                            _appDef.SetValue("StamenScript", EditorFactory.STAMEN_URL);
+                            bAddedCommercialLayer = true;
+                            break;
                     }
-                    else if (map.Type == EditorFactory.Type_Bing)
-                    {
-                        _appDef.SetValue("VirtualEarthScript", EditorFactory.BING_URL);
-                        bAddedCommercialLayer = true;
-                    }
-                    else if (map.Type == EditorFactory.Type_OSM)
-                    {
-                        _appDef.SetValue("OpenStreetMapScript", EditorFactory.OSM_URL);
-                        bAddedCommercialLayer = true;
-                    }
-                    else if (map.Type == EditorFactory.Type_Stamen)
-                    {
-                        _appDef.SetValue("StamenScript", EditorFactory.STAMEN_URL);
-                        bAddedCommercialLayer = true;
-                    }
+
                     _group.AddMap(map);
                     _models.Add(new MapModel(map));
                     if (bAddedCommercialLayer)

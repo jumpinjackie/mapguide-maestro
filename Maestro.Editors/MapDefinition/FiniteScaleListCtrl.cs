@@ -46,10 +46,10 @@ namespace Maestro.Editors.MapDefinition
             lstDisplayScales.DataSource = _scales;
         }
 
-        private BindingList<double> _scales;
+        private readonly BindingList<double> _scales;
 
         private ITileSetAbstract _tileSet;
-        private IEditorService _edSvc;
+        private readonly IEditorService _edSvc;
 
         public FiniteScaleListCtrl(ITileSetAbstract map, IEditorService editorSvc)
             : this()
@@ -200,7 +200,7 @@ namespace Maestro.Editors.MapDefinition
             }
         }
 
-        private static double[] CMS_SCALE_LIST = {
+        private static readonly double[] CMS_SCALE_LIST = {
             1128.49722,
             2256.9944399999999,
             4513.9888799999999,

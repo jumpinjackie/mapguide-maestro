@@ -263,7 +263,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
             set
             {
-                Action<double> setter = (val) => { _impl.SetViewScale(val); };
+                Action<double> setter = _impl.SetViewScale;
                 ObservableSet(_impl.ViewScale, value, setter, "ViewScale");
             }
         }
@@ -436,7 +436,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             set
             {
                 if (_disableChangeTracking) return; //Still initializing it seems
-                Action<bool> setter = (val) => { _impl.SetDisplayInLegend(val); };
+                Action<bool> setter = _impl.SetDisplayInLegend;
                 ObservableSet(_impl.GetDisplayInLegend(), value, setter, "ShowInLegend");
             }
         }

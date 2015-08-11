@@ -20,22 +20,14 @@
 
 #endregion Disclaimer / License
 using Irony.Parsing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OSGeo.FDO.Expressions
 {
     public class FdoNullCondition : FdoSearchCondition
     {
-        public override FilterType FilterType
-        {
-            get { return Expressions.FilterType.NullCondition; }
-        }
+        public override FilterType FilterType => FilterType.NullCondition;
 
-        public FdoIdentifier Identifier { get; private set; }
+        public FdoIdentifier Identifier { get; }
 
         public FdoNullCondition(ParseTreeNode node)
         {

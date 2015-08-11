@@ -42,14 +42,14 @@ namespace Maestro.Editors.FeatureSource.Extensions
             grdJoinKeys.DataSource = _propertyJoins;
         }
 
-        private IAttributeRelation _rel;
+        private readonly IAttributeRelation _rel;
 
         private string _primaryFeatureSource;
         private string _primaryClass;
         private string[] _secondaryClasses;
         private string _secondaryClass;
 
-        private BindingList<IRelateProperty> _propertyJoins;
+        private readonly BindingList<IRelateProperty> _propertyJoins;
 
         public JoinSettings(string primaryFeatureSource, string primaryClass, IAttributeRelation rel)
             : this()
@@ -78,10 +78,7 @@ namespace Maestro.Editors.FeatureSource.Extensions
             }
         }
 
-        private void UpdateJoinKeyList(IAttributeRelation rel)
-        {
-            grdJoinKeys.DataSource = new List<IRelateProperty>(rel.RelateProperty);
-        }
+        private void UpdateJoinKeyList(IAttributeRelation rel) => grdJoinKeys.DataSource = new List<IRelateProperty>(rel.RelateProperty);
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
@@ -116,10 +113,7 @@ namespace Maestro.Editors.FeatureSource.Extensions
             }
         }
 
-        private void ClearPropertyJoins()
-        {
-            _propertyJoins.Clear();
-        }
+        private void ClearPropertyJoins() => _propertyJoins.Clear();
 
         private IEditorService _edSvc;
 
@@ -203,20 +197,12 @@ namespace Maestro.Editors.FeatureSource.Extensions
             throw new InvalidOperationException();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-        }
+        protected override void OnLoad(EventArgs e) => base.OnLoad(e);
 
-        private void rdJoinTypeChanged(object sender, EventArgs e)
-        {
-            _rel.RelateType = GetJoinType();
-        }
+        private void rdJoinTypeChanged(object sender, EventArgs e) => _rel.RelateType = GetJoinType();
 
         private void CheckAddStatus()
-        {
-            btnAddKey.Enabled = !string.IsNullOrEmpty(txtFeatureSource.Text) && !string.IsNullOrEmpty(txtSecondaryClass.Text);
-        }
+            => btnAddKey.Enabled = !string.IsNullOrEmpty(txtFeatureSource.Text) && !string.IsNullOrEmpty(txtSecondaryClass.Text);
 
         private void grdJoinKeys_CellClick(object sender, DataGridViewCellEventArgs e)
         {

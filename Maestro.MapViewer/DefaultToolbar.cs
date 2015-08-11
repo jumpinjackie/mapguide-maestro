@@ -166,9 +166,9 @@ namespace Maestro.MapViewer
             }
         }
 
-        internal ToolStripButton Loading { get; private set; }
+        internal ToolStripButton Loading { get; }
 
-        internal ToolStripButton ZoomIn { get; private set; }
+        internal ToolStripButton ZoomIn { get; }
 
         private void OnZoomIn(object sender, EventArgs e)
         {
@@ -178,7 +178,7 @@ namespace Maestro.MapViewer
             _viewer.ActiveTool = MapActiveTool.ZoomIn;
         }
 
-        internal ToolStripButton ZoomOut { get; private set; }
+        internal ToolStripButton ZoomOut { get; }
 
         private void OnZoomOut(object sender, EventArgs e)
         {
@@ -198,7 +198,7 @@ namespace Maestro.MapViewer
             }
         }
 
-        internal ToolStripButton ZoomExtents { get; private set; }
+        internal ToolStripButton ZoomExtents { get; }
 
         private void OnZoomExtents(object sender, EventArgs e)
         {
@@ -208,7 +208,7 @@ namespace Maestro.MapViewer
             _viewer.InitialMapView();
         }
 
-        internal ToolStripButton SelectTool { get; private set; }
+        internal ToolStripButton SelectTool { get; }
 
         private void OnSelect(object sender, EventArgs e)
         {
@@ -218,7 +218,7 @@ namespace Maestro.MapViewer
             _viewer.ActiveTool = MapActiveTool.Select;
         }
 
-        internal ToolStripButton Pan { get; private set; }
+        internal ToolStripButton Pan { get; }
 
         private void OnPan(object sender, EventArgs e)
         {
@@ -228,7 +228,7 @@ namespace Maestro.MapViewer
             _viewer.ActiveTool = MapActiveTool.Pan;
         }
 
-        internal ToolStripButton ClearSelection { get; private set; }
+        internal ToolStripButton ClearSelection { get; }
 
         private void OnClearSelection(object sender, EventArgs e)
         {
@@ -238,7 +238,7 @@ namespace Maestro.MapViewer
             _viewer.ClearSelection();
         }
 
-        internal ToolStripButton SelectRadius { get; private set; }
+        internal ToolStripButton SelectRadius { get; }
 
         private void OnSelectRadius(object sender, EventArgs e)
         {
@@ -251,7 +251,7 @@ namespace Maestro.MapViewer
             });
         }
 
-        internal ToolStripButton SelectPolygon { get; private set; }
+        internal ToolStripButton SelectPolygon { get; }
 
         private void OnSelectPolygon(object sender, EventArgs e)
         {

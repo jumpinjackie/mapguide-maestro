@@ -24,6 +24,7 @@ using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -38,8 +39,8 @@ namespace Maestro.Editors.FeatureSource.Extensions
             InitializeComponent();
         }
 
-        private IFeatureSourceExtension _ext;
-        private IFeatureSource _fs;
+        private readonly IFeatureSourceExtension _ext;
+        private readonly IFeatureSource _fs;
 
         public ExtendedClassSettings(IFeatureSource fs, IEnumerable<string> qualifiedClassNames, IFeatureSourceExtension ext)
             : this()
@@ -59,36 +60,20 @@ namespace Maestro.Editors.FeatureSource.Extensions
 
         private void OnExtensionPropertyChanged(object sender, PropertyChangedEventArgs e) => OnResourceChanged();
 
-        public void Bind(IEditorService service)
-        {
-            service.RegisterCustomNotifier(this);
-        }
+        public void Bind(IEditorService service) => service.RegisterCustomNotifier(this);
 
         private void OnResourceChanged()
         {
-            var handler = this.ResourceChanged;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
+            this.ResourceChanged?.Invoke(this, EventArgs.Empty);
         }
 
         public event EventHandler ResourceChanged;
-
-        private int GetExtensionCount(string name)
-        {
-            int count = 0;
-            foreach (var ext in _fs.Extension)
-            {
-                if (ext.Name == name)
-                    count++;
-            }
-            return count;
-        }
-
+        
         private void txtExtendedName_TextChanged(object sender, EventArgs e)
         {
             //Before we apply, check if the new name matches any existing feature classes
             string newName = txtExtendedName.Text;
-            if (GetExtensionCount(newName) > 0)
+            if (_fs.Extension.Count(ext => ext.Name == newName) > 0)
             {
                 errorProvider.SetError(txtExtendedName, string.Format(Strings.ExtendedFeatureClassAlreadyExists, newName));
             }

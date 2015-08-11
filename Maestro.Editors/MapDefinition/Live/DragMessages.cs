@@ -29,7 +29,7 @@ namespace Maestro.Editors.MapDefinition.Live
             this.ResourceID = resId;
         }
 
-        public string ResourceID { get; private set; }
+        public string ResourceID { get; }
     }
 
     internal class LayerDragMessage
@@ -40,9 +40,9 @@ namespace Maestro.Editors.MapDefinition.Live
             this.LayerName = layerName;
         }
 
-        public string GroupName { get; private set; }
+        public string GroupName { get; }
 
-        public string LayerName { get; private set; }
+        public string LayerName { get; }
     }
 
     internal class GroupDragMessage
@@ -52,6 +52,6 @@ namespace Maestro.Editors.MapDefinition.Live
             this.GroupName = groupName;
         }
 
-        public string GroupName { get; private set; }
+        public string GroupName { get; }
     }
 }

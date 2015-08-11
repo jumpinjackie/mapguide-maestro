@@ -21,9 +21,6 @@
 #endregion Disclaimer / License
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OSGeo.FDO.Expressions
 {
@@ -41,11 +38,11 @@ namespace OSGeo.FDO.Expressions
 
     public class FdoParseErrorMessage
     {
-        public int LineNumber { get; private set; }
+        public int LineNumber { get; }
 
-        public int Column { get; private set; }
+        public int Column { get; }
 
-        public string Message { get; private set; }
+        public string Message { get; }
 
         public FdoParseErrorMessage(string message, int line, int column)
         {
@@ -58,7 +55,7 @@ namespace OSGeo.FDO.Expressions
     [Serializable]
     public class FdoMalformedExpressionException : FdoParseException
     {
-        public List<FdoParseErrorMessage> Messages { get; private set; }
+        public List<FdoParseErrorMessage> Messages { get; }
 
         public FdoMalformedExpressionException(string message, List<FdoParseErrorMessage> parserErrorMessages)
             : this(message)

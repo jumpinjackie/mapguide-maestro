@@ -49,7 +49,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
 {
     internal class PythonConsole : IConsole, IDisposable, IMemberProvider
     {
-        private ITextEditor textEditor;
+        private readonly ITextEditor textEditor;
         private int lineReceivedEventIndex = 0; // The index into the waitHandles array where the lineReceivedEvent is stored.
         private ManualResetEvent inputLineReceivedEvent = new ManualResetEvent(false);
         private ManualResetEvent lineReceivedEvent = new ManualResetEvent(false);

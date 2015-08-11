@@ -46,8 +46,8 @@ namespace Maestro.Editors.Common.Expression
             InitializeComponent();
         }
 
-        private FdoMalformedExpressionException _ex;
-        private IExpressionErrorSource _source;
+        private readonly FdoMalformedExpressionException _ex;
+        private readonly IExpressionErrorSource _source;
 
         public MalformedExpressionDialog(FdoMalformedExpressionException ex, IExpressionErrorSource source)
             : this()
@@ -57,10 +57,7 @@ namespace Maestro.Editors.Common.Expression
             txtErrorDetails.Text = _ex.Messages[0].Message;
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
-        }
+        private void btnClose_Click(object sender, EventArgs e) => this.DialogResult = System.Windows.Forms.DialogResult.OK;
 
         private void btnGotoError_Click(object sender, EventArgs e)
         {

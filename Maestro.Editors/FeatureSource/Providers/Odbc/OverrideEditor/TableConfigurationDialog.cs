@@ -19,7 +19,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
             grdTables.DataSource = _tables;
         }
 
-        private IEditorService _edSvc;
+        private readonly IEditorService _edSvc;
 
         public TableConfigurationDialog(IEditorService edSvc, OdbcConfigurationDocument doc, string schemaName)
             : this()
@@ -75,7 +75,7 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
             }
         }
 
-        public string CoordinateSystemWkt { get { return txtCoordinateSystem.Text; } }
+        public string CoordinateSystemWkt => txtCoordinateSystem.Text;
 
         public OdbcTableItem[] ConfiguredTables
         {
@@ -102,15 +102,9 @@ namespace Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
+        private void btnCancel_Click(object sender, EventArgs e) => this.DialogResult = DialogResult.Cancel;
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.OK;
-        }
+        private void btnSave_Click(object sender, EventArgs e) => this.DialogResult = DialogResult.OK;
 
         private void grdTables_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {

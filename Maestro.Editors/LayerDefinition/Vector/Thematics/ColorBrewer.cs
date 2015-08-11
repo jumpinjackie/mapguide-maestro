@@ -272,7 +272,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             /// <summary>
             /// A reference to the set
             /// </summary>
-            private ColorBrewer m_set;
+            private readonly ColorBrewer m_set;
 
             /// <summary>
             /// The current display mode

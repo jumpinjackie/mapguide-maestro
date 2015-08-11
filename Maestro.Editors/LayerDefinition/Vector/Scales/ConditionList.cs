@@ -52,7 +52,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Scales
             {
                 m_owner = value;
                 foreach (Condition c in this.Controls)
-                    c.Owner = m_owner; ;
+                    c.Owner = m_owner;
             }
         }
 

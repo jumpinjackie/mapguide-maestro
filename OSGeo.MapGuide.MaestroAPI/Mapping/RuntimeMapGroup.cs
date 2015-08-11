@@ -109,7 +109,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _visible, value, "Visible"); //NOXLATE
+                SetField(ref _visible, value, nameof(this.Visible));
             }
         }
 
@@ -126,7 +126,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _group, value, "Group"); //NOXLATE
+                SetField(ref _group, value, nameof(this.Group));
             }
         }
 
@@ -152,7 +152,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _name, value, "Name"); //NOXLATE
+                SetField(ref _name, value, nameof(this.Name));
             }
         }
 
@@ -169,7 +169,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _showInLegend, value, "ShowInLegend"); //NOXLATE
+                SetField(ref _showInLegend, value, nameof(this.ShowInLegend));
             }
         }
 
@@ -186,7 +186,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _legendLabel, value, "LegendLabel"); //NOXLATE
+                SetField(ref _legendLabel, value, nameof(this.LegendLabel));
             }
         }
 
@@ -203,7 +203,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
             set
             {
-                SetField(ref _expandInLegend, value, "ExpandInLegend"); //NOXLATE
+                SetField(ref _expandInLegend, value, nameof(this.ExpandInLegend));
             }
         }
 

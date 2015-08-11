@@ -36,9 +36,9 @@ namespace Maestro.Editors.FeatureSource.Extensions
             InitializeComponent();
         }
 
-        private IEditorService _edSvc;
-        private ClassDefinition _cls;
-        private IFeatureSource _parent;
+        private readonly IEditorService _edSvc;
+        private readonly ClassDefinition _cls;
+        private readonly IFeatureSource _parent;
 
         public CalculationSettings(IEditorService edSvc, ClassDefinition cls, IFeatureSource parent, ICalculatedProperty calc)
             : this()

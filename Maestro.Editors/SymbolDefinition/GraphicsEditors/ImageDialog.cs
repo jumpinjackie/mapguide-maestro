@@ -35,12 +35,12 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
 {
     internal partial class ImageDialog : Form
     {
-        private ISimpleSymbolDefinition _ssd;
+        private readonly ISimpleSymbolDefinition _ssd;
         private IImageGraphic _image;
         private IImageReference _imageRef;
         private IInlineImage _imageInline;
         private EditorBindableCollapsiblePanel _ed;
-        private IServerConnection _conn;
+        private readonly IServerConnection _conn;
 
         private bool _init = false;
 
@@ -66,7 +66,7 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
                 }
 
                 if (_imageRef == null)
-                    _imageRef = ssd.CreateImageReference("", "");
+                    _imageRef = ssd.CreateImageReference(string.Empty, string.Empty);
                 else
                     rdResourceRef.Checked = true;
 
@@ -94,12 +94,12 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
             try
             {
                 _init = true;
-                symAngle.Bind(_image, "Angle");
-                symPositionX.Bind(_image, "PositionX");
-                symPositionY.Bind(_image, "PositionY");
-                symSizeScalable.Bind(_image, "SizeScalable");
-                symSizeX.Bind(_image, "SizeX");
-                symSizeY.Bind(_image, "SizeY");
+                symAngle.Bind(_image, nameof(_image.Angle));
+                symPositionX.Bind(_image, nameof(_image.PositionX));
+                symPositionY.Bind(_image, nameof(_image.PositionY));
+                symSizeScalable.Bind(_image, nameof(_image.SizeScalable));
+                symSizeX.Bind(_image, nameof(_image.SizeX));
+                symSizeY.Bind(_image, nameof(_image.SizeY));
             }
             finally
             {
@@ -131,15 +131,9 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
             }
         }
 
-        private void txtResourceId_TextChanged(object sender, EventArgs e)
-        {
-            _imageRef.ResourceId = txtResourceId.Text;
-        }
+        private void txtResourceId_TextChanged(object sender, EventArgs e) => _imageRef.ResourceId = txtResourceId.Text;
 
-        private void txtResData_TextChanged(object sender, EventArgs e)
-        {
-            _imageRef.LibraryItemName = txtResData.Text;
-        }
+        private void txtResData_TextChanged(object sender, EventArgs e) => _imageRef.LibraryItemName = txtResData.Text;
 
         private void txtImageBase64_TextChanged(object sender, EventArgs e)
         {
@@ -168,17 +162,14 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
                     using (var ms = new MemoryStream(content))
                     {
                         Image img = Image.FromStream(ms);
-                        symSizeX.Content = "'" + PxToMM(img.Width, 96).ToString(System.Globalization.CultureInfo.InvariantCulture) + "'"; //NOXLATE
-                        symSizeY.Content = "'" + PxToMM(img.Height, 96).ToString(System.Globalization.CultureInfo.InvariantCulture) + "'"; //NOXLATE
+                        symSizeX.Content = $"'{PxToMM(img.Width, 96).ToString(System.Globalization.CultureInfo.InvariantCulture)}'"; //NOXLATE
+                        symSizeY.Content = $"'{PxToMM(img.Height, 96).ToString(System.Globalization.CultureInfo.InvariantCulture)}'"; //NOXLATE
                     }
                 }
             }
         }
 
-        private static double PxToMM(int px, int dpi)
-        {
-            return (px * 25.4) / dpi;
-        }
+        private static double PxToMM(int px, int dpi) => (px * 25.4) / dpi;
 
         private void lnkPreview_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -195,10 +186,7 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void btnClose_Click(object sender, EventArgs e) => this.Close();
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
@@ -234,7 +222,7 @@ namespace Maestro.Editors.SymbolDefinition.GraphicsEditors
             var result = GenericItemSelectionDialog.SelectItem(null, null, items.ToArray());
             if (result != null)
             {
-                txtResData.Text = "'" + result + "'"; //To avoid Expression Engine invocation
+                txtResData.Text = $"'{result}'"; //To avoid Expression Engine invocation
             }
         }
     }

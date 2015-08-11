@@ -36,7 +36,7 @@ namespace Maestro.Editors.Common
 
     internal class RepositoryModelItem
     {
-        private IRepositoryItem _item;
+        private readonly IRepositoryItem _item;
 
         public RepositoryModelItem(IRepositoryItem item)
         {
@@ -54,25 +54,19 @@ namespace Maestro.Editors.Common
             }
         }
 
-        public int ImageIndex { get; private set; }
+        public int ImageIndex { get; }
 
-        public string Name { get { return _item.Name; } }
+        public string Name => _item.Name;
 
-        public string ResourceId { get { return _item.ResourceId; } }
+        public string ResourceId => _item.ResourceId;
 
-        public bool HasChildren { get { return _item.HasChildren; } }
+        public bool HasChildren => _item.HasChildren;
 
-        public bool IsFolder
-        {
-            get { return _item.IsFolder; }
-        }
+        public bool IsFolder =>_item.IsFolder;
 
-        public bool IsRoot
-        {
-            get { return this.ResourceId == StringConstants.RootIdentifier; }
-        }
+        public bool IsRoot => this.ResourceId == StringConstants.RootIdentifier;
 
-        public IRepositoryItem Instance { get { return _item; } }
+        public IRepositoryItem Instance => _item;
     }
 
     internal class RepositoryFolderTreeModel
