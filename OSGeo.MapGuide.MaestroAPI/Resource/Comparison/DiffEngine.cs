@@ -61,9 +61,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
         private int _startIndex;
         private int _length;
 
-        public int StartIndex { get { return _startIndex; } }
+        public int StartIndex => _startIndex;
 
-        public int EndIndex { get { return ((_startIndex + _length) - 1); } }
+        public int EndIndex => ((_startIndex + _length) - 1);
 
         public int Length
         {
@@ -226,22 +226,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
         /// <summary>
         /// The destination index
         /// </summary>
-        public int DestIndex { get { return _destIndex; } }
+        public int DestIndex => _destIndex;
 
         /// <summary>
         /// The source index
         /// </summary>
-        public int SourceIndex { get { return _sourceIndex; } }
+        public int SourceIndex => _sourceIndex;
 
         /// <summary>
         /// Gets the length of this span
         /// </summary>
-        public int Length { get { return _length; } }
+        public int Length => _length;
 
         /// <summary>
         /// Gets the status of this span
         /// </summary>
-        public DiffResultSpanStatus Status { get { return _status; } }
+        public DiffResultSpanStatus Status => _status;
 
         /// <summary>
         /// Initializes this instance
@@ -291,14 +291,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
         /// Returns a string that represents the current object
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
-        {
-            return string.Format("{0} (Dest: {1},Source: {2}) {3}", //NOXLATE
-                _status.ToString(),
-                _destIndex.ToString(),
-                _sourceIndex.ToString(),
-                _length.ToString());
-        }
+        public override string ToString() => $"{_status} (Dest: {_destIndex},Source: {_sourceIndex}) {_length}";
 
         #region IComparable Members
 
@@ -307,10 +300,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Comparison
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public int CompareTo(object obj)
-        {
-            return _destIndex.CompareTo(((DiffResultSpan)obj)._destIndex);
-        }
+        public int CompareTo(object obj) => _destIndex.CompareTo(((DiffResultSpan)obj)._destIndex);
 
         #endregion IComparable Members
     }

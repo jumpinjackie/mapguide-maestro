@@ -29,7 +29,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
     {
         private CoordinateSystemCategory[] m_categories;
         private string m_coordLib = null;
-        internal OSGeo.MapGuide.MgCoordinateSystemFactory m_cf;
+        internal MgCoordinateSystemFactory m_cf;
 
         public LocalNativeCoordinateSystemCatalog()
         {
@@ -54,30 +54,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             }
         }
 
-        public override string ConvertCoordinateSystemCodeToWkt(string coordcode)
-        {
-            return m_cf.ConvertCoordinateSystemCodeToWkt(coordcode);
-        }
-
-        public override string ConvertEpsgCodeToWkt(string epsg)
-        {
-            return m_cf.ConvertEpsgCodeToWkt(int.Parse(epsg));
-        }
-
-        public override string ConvertWktToCoordinateSystemCode(string wkt)
-        {
-            return m_cf.ConvertWktToCoordinateSystemCode(wkt);
-        }
-
-        public override string ConvertWktToEpsgCode(string wkt)
-        {
-            return m_cf.ConvertWktToEpsgCode(wkt).ToString();
-        }
-
-        public override bool IsValid(string wkt)
-        {
-            return m_cf.IsValid(wkt);
-        }
+        public override string ConvertCoordinateSystemCodeToWkt(string coordcode) => m_cf.ConvertCoordinateSystemCodeToWkt(coordcode);
+        public override string ConvertEpsgCodeToWkt(string epsg) => m_cf.ConvertEpsgCodeToWkt(int.Parse(epsg));
+        public override string ConvertWktToCoordinateSystemCode(string wkt) => m_cf.ConvertWktToCoordinateSystemCode(wkt);
+        public override string ConvertWktToEpsgCode(string wkt) => m_cf.ConvertWktToEpsgCode(wkt).ToString();
+        public override bool IsValid(string wkt) => m_cf.IsValid(wkt);
 
         public override string LibraryName
         {
@@ -89,7 +70,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             }
         }
 
-        public override bool IsLoaded { get { return m_categories != null; } }
+        public override bool IsLoaded => m_categories != null;
 
         public override CoordinateSystemDefinitionBase[] EnumerateCoordinateSystems(string category)
         {
@@ -114,14 +95,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return lst.ToArray();
         }
 
-        public override CoordinateSystemDefinitionBase CreateEmptyCoordinateSystem()
-        {
-            return new LocalNativeCoordinateSystemDefinition();
-        }
+        public override CoordinateSystemDefinitionBase CreateEmptyCoordinateSystem() => new LocalNativeCoordinateSystemDefinition();
 
-        public override ISimpleTransform CreateTransform(string sourceWkt, string targetWkt)
-        {
-            return new LocalNativeSimpleTransform(sourceWkt, targetWkt);
-        }
+        public override ISimpleTransform CreateTransform(string sourceWkt, string targetWkt) => new LocalNativeSimpleTransform(sourceWkt, targetWkt);
     }
 }

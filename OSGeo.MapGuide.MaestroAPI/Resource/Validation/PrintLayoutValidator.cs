@@ -38,10 +38,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// Gets the resource type and version this validator supports
         /// </summary>
         /// <value></value>
-        public ResourceTypeDescriptor SupportedResourceAndVersion
-        {
-            get { return ResourceTypeDescriptor.PrintLayout; }
-        }
+        public ResourceTypeDescriptor SupportedResourceAndVersion => ResourceTypeDescriptor.PrintLayout;
 
         /// <summary>
         /// Validats the specified resources for common issues associated with this

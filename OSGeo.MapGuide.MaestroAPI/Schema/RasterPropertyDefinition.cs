@@ -70,10 +70,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <summary>
         /// Gets the type of property definition
         /// </summary>
-        public override PropertyDefinitionType Type
-        {
-            get { return PropertyDefinitionType.Raster; }
-        }
+        public override PropertyDefinitionType Type => PropertyDefinitionType.Raster;
 
         /// <summary>
         /// Writes the current element's content
@@ -128,9 +125,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <summary>
         /// Gets the expression data type
         /// </summary>
-        public override OSGeo.MapGuide.ObjectModels.Common.ExpressionDataType ExpressionType
-        {
-            get { return OSGeo.MapGuide.ObjectModels.Common.ExpressionDataType.Raster; }
-        }
+        public override ObjectModels.Common.ExpressionDataType ExpressionType => ObjectModels.Common.ExpressionDataType.Raster;
     }
 }

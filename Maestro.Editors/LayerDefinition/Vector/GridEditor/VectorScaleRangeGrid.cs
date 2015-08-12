@@ -289,7 +289,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.GridEditor
 
         private void SetActiveControl(RuleGridView activeGrid)
         {
-            Debug.WriteLine(string.Format("Set active composite rule grid to: {0}", activeGrid.GetHashCode()));
+            Debug.WriteLine($"Set active composite rule grid to: {activeGrid.GetHashCode()}");
             splitContainer1.Panel2.Controls.Clear();
             activeGrid.Dock = DockStyle.Fill;
             splitContainer1.Panel2.Controls.Add(activeGrid);

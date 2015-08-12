@@ -94,10 +94,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <summary>
         /// Gets the type of Property Definition
         /// </summary>
-        public override PropertyDefinitionType Type
-        {
-            get { return PropertyDefinitionType.Data; }
-        }
+        public override PropertyDefinitionType Type => PropertyDefinitionType.Data;
 
         private static string GetXmlType(DataPropertyType dataPropertyType)
         {
@@ -316,9 +313,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <summary>
         /// Gets the expression data type
         /// </summary>
-        public override ExpressionDataType ExpressionType
-        {
-            get { return GetExpressionType(this.DataType); }
-        }
+        public override ExpressionDataType ExpressionType => GetExpressionType(this.DataType);
     }
 }

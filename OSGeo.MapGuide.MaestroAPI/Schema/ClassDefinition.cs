@@ -74,10 +74,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public PropertyDefinition this[int index]
-        {
-            get { return _properties[index]; }
-        }
+        public PropertyDefinition this[int index] => _properties[index];
 
         /// <summary>
         /// Gets the ordinal of the specified property name
@@ -120,26 +117,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <summary>
         /// Gets the identity properties
         /// </summary>
-        public ReadOnlyCollection<DataPropertyDefinition> IdentityProperties
-        {
-            get { return _identity.AsReadOnly(); }
-        }
+        public ReadOnlyCollection<DataPropertyDefinition> IdentityProperties => _identity.AsReadOnly();
 
         /// <summary>
         /// Removes the assigned identity properties
         /// </summary>
-        public void ClearIdentityProperties()
-        {
-            _identity.Clear();
-        }
+        public void ClearIdentityProperties() => _identity.Clear();
 
         /// <summary>
         /// Gets the properties
         /// </summary>
-        public ReadOnlyCollection<PropertyDefinition> Properties
-        {
-            get { return _properties.AsReadOnly(); }
-        }
+        public ReadOnlyCollection<PropertyDefinition> Properties => _properties.AsReadOnly();
 
         /// <summary>
         /// Adds the specified data property, with an option to include it as an identity property
@@ -173,10 +161,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// </summary>
         /// <param name="prop"></param>
         /// <returns></returns>
-        public int IndexOfProperty(PropertyDefinition prop)
-        {
-            return _properties.IndexOf(prop);
-        }
+        public int IndexOfProperty(PropertyDefinition prop) => _properties.IndexOf(prop);
 
         /// <summary>
         /// Removes the property definition of the specified name. If it is a data property
@@ -259,7 +244,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <summary>
         /// Gets the qualified name of this class. The qualified name takes the form [Schema Name]:[Class Name]
         /// </summary>
-        public string QualifiedName { get { return this.Parent != null ? this.Parent.Name + ":" + this.Name : this.Name; } } //NOXLATE
+        public string QualifiedName => this.Parent != null ? this.Parent.Name + ":" + this.Name : this.Name;
 
         /// <summary>
         /// Writes the current element's content

@@ -53,7 +53,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                                          IDrawingService,
                                          ISiteService
     {
-        private OSGeo.MapGuide.MgSiteConnection m_con;
+        private MgSiteConnection m_con;
         private string m_locale;
         private string m_sessionId;
 
@@ -62,11 +62,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         /// </summary>
         protected string m_webconfig;
 
-        public const string PARAM_SESSION = "SessionId";
-        public const string PARAM_CONFIG = "ConfigFile";
-        public const string PARAM_USERNAME = "Username";
-        public const string PARAM_PASSWORD = "Password";
-        public const string PARAM_LOCALE = "Locale";
+        public const string PARAM_SESSION = "SessionId"; //NOXLATE
+        public const string PARAM_CONFIG = "ConfigFile"; //NOXLATE
+        public const string PARAM_USERNAME = "Username"; //NOXLATE
+        public const string PARAM_PASSWORD = "Password"; //NOXLATE
+        public const string PARAM_LOCALE = "Locale"; //NOXLATE
 
         private LocalNativeConnection()
             : base()
@@ -87,11 +87,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             else
             {
                 if (initParams[PARAM_CONFIG] == null)
-                    throw new ArgumentException("Missing connection parameter: " + PARAM_CONFIG);
+                    throw new ArgumentException("Missing connection parameter: " + PARAM_CONFIG); //LOCALIZEME
                 if (initParams[PARAM_PASSWORD] == null)
-                    throw new ArgumentException("Missing connection parameter: " + PARAM_PASSWORD);
+                    throw new ArgumentException("Missing connection parameter: " + PARAM_PASSWORD); //LOCALIZEME
                 if (initParams[PARAM_USERNAME] == null)
-                    throw new ArgumentException("Missing connection parameter: " + PARAM_USERNAME);
+                    throw new ArgumentException("Missing connection parameter: " + PARAM_USERNAME); //LOCALIZEME
 
                 string configFile = initParams[PARAM_CONFIG];
                 string password = initParams[PARAM_PASSWORD];
@@ -104,10 +104,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             }
         }
 
-        public override string ProviderName
-        {
-            get { return "Maestro.LocalNative"; }
-        }
+        public override string ProviderName => "Maestro.LocalNative"; //NOXLATE
 
         public override NameValueCollection CloneParameters
         {
@@ -137,7 +134,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             m_password = password;
             m_locale = locale;
 
-            OSGeo.MapGuide.MapGuideApi.MgInitializeWebTier(configFile);
+            MapGuideApi.MgInitializeWebTier(configFile);
             //Throws an exception if it fails
             RestartSession();
         }
@@ -156,13 +153,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             }
         }
 
-        public override string SessionID
-        {
-            get
-            {
-                return m_sessionId;
-            }
-        }
+        public override string SessionID => m_sessionId;
 
         private void LogMethodCall(string method, bool success, params object[] values)
         {
@@ -362,7 +353,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             MgFeatureService fes = this.Connection.CreateService(MgServiceType.FeatureService) as MgFeatureService;
             if (schema != null && schema.IndexOf(":") > 0)
                 schema = schema.Split(':')[0];
-            System.IO.MemoryStream ms = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceID), schema)));
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceID), schema)));
 
             LogMethodCall("MgFeatureService::DescribeSchemaAsXml", true, resourceID, schema);
 
@@ -467,7 +458,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         {
             get
             {
-                if (this.SiteVersion < OSGeo.MapGuide.MaestroAPI.SiteVersions.GetVersion(OSGeo.MapGuide.MaestroAPI.KnownSiteVersions.MapGuideOS1_2))
+                if (this.SiteVersion < SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS1_2))
                     return null;
                 else
                 {
@@ -478,13 +469,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             }
         }
 
-        public string DisplayName
-        {
-            get
-            {
-                return this.Connection.GetSite().GetCurrentSiteAddress();
-            }
-        }
+        public string DisplayName => this.Connection.GetSite().GetCurrentSiteAddress();
 
         public override ResourceReferenceList EnumerateResourceReferences(string resourceid)
         {
@@ -676,10 +661,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return new MgReadOnlyStream(fetch);
         }
 
-        public override bool IsSessionExpiredException(Exception ex)
-        {
-            return ex != null && ex.GetType() == typeof(OSGeo.MapGuide.MgSessionExpiredException) || ex.GetType() == typeof(OSGeo.MapGuide.MgSessionNotFoundException);
-        }
+        public override bool IsSessionExpiredException(Exception ex) => ex != null && ex.GetType() == typeof(MgSessionExpiredException) || ex.GetType() == typeof(MgSessionNotFoundException);
 
         /// <summary>
         /// Returns the spatial info for a given featuresource
@@ -900,10 +882,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return values;
         }
 
-        public bool SupportsResourcePreviews
-        {
-            get { return false; }
-        }
+        public bool SupportsResourcePreviews => false;
 
         public override void Dispose()
         {
@@ -927,7 +906,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         /// <returns>
         /// The minature bitmap
         /// </returns>
-        public override System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
+        public override Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
         {
             MgMappingService ms = this.Connection.CreateService(MgServiceType.MappingService) as MgMappingService;
             GetByteReaderMethod fetch = () =>
@@ -939,17 +918,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return new Bitmap(new MgReadOnlyStream(fetch));
         }
 
-        public OSGeo.MapGuide.MaestroAPI.Services.IFeatureService FeatureService
-        {
-            get { return this; }
-        }
+        public IFeatureService FeatureService => this;
 
-        public OSGeo.MapGuide.MaestroAPI.Services.IResourceService ResourceService
-        {
-            get { return this; }
-        }
+        public IResourceService ResourceService => this;
 
-        public override OSGeo.MapGuide.MaestroAPI.Commands.ICommand CreateCommand(int cmdType)
+        public override ICommand CreateCommand(int cmdType)
         {
             CommandType ct = (CommandType)cmdType;
             switch (ct)
@@ -989,7 +962,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             }
         }
 
-        public OSGeo.MapGuide.MaestroAPI.Services.IService GetService(int serviceType)
+        public IService GetService(int serviceType)
         {
             ServiceType st = (ServiceType)serviceType;
             switch (st)
@@ -1010,10 +983,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             throw new UnsupportedServiceTypeException(st);
         }
 
-        protected override IServerConnection GetInterface()
-        {
-            return this;
-        }
+        protected override IServerConnection GetInterface() => this;
 
         private const int MAX_INPUT_STREAM_SIZE_MB = 30;
 
@@ -1079,10 +1049,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
                 callback(fi.Length, 0, fi.Length);
         }
 
-        public override string[] GetCustomPropertyNames()
-        {
-            return new string[] { };
-        }
+        public override string[] GetCustomPropertyNames() => new string[] { };
 
         public override Type GetCustomPropertyType(string name)
         {

@@ -119,7 +119,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <summary>
         /// Gets the array of WMS layer configuration elements
         /// </summary>
-        public WmsLayerDefinition[] Layers { get { return _layers.ToArray(); } }
+        public WmsLayerDefinition[] Layers => _layers.ToArray();
 
         /// <summary>
         /// Adds a WMS layer configuration element.
@@ -184,7 +184,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// </summary>
         /// <param name="doc"></param>
         /// <param name="currentNode"></param>
-        public void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
+        public void WriteXml(XmlDocument doc, XmlNode currentNode)
         {
             var rasterDef = doc.CreateElement("RasterDefinition"); //NOXLATE
             var n = doc.CreateAttribute("name"); //NOXLATE
@@ -248,7 +248,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                 {
                     layer.WriteXml(doc, rasterDef);
                 }
-            };
+            }
 
             currentNode.AppendChild(rasterDef);
         }
@@ -258,7 +258,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// </summary>
         /// <param name="node"></param>
         /// <param name="mgr"></param>
-        public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
+        public void ReadXml(XmlNode node, XmlNamespaceManager mgr)
         {
             if (node.Name != "RasterDefinition") //NOXLATE
                 throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "RasterDefinition"));
@@ -320,9 +320,6 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <summary>
         /// Removes all WMS layer configuration elements
         /// </summary>
-        public void RemoveAllLayers()
-        {
-            _layers.Clear();
-        }
+        public void RemoveAllLayers() =>_layers.Clear();
     }
 }

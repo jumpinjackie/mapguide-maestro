@@ -1044,25 +1044,22 @@ namespace Maestro.MapViewer
             /// <summary>
             /// Gets the legend label
             /// </summary>
-            public string LegendLabel { get { return this.Group.LegendLabel; } }
+            public string LegendLabel => this.Group.LegendLabel;
 
             /// <summary>
             /// Gets the name of the parent group
             /// </summary>
-            public string ParentGroupName { get { return this.Group.Group; } }
+            public string ParentGroupName => this.Group.Group;
 
             /// <summary>
             /// Gets the name of this group
             /// </summary>
-            public string Name { get { return this.Group.Name; } }
+            public string Name => this.Group.Name;
 
             /// <summary>
             /// Gets the unique id of this group
             /// </summary>
-            public override string ObjectId
-            {
-                get { return this.Group.ObjectId; }
-            }
+            public override string ObjectId => this.Group.ObjectId;
         }
 
         /// <summary>
@@ -1187,20 +1184,17 @@ namespace Maestro.MapViewer
             /// <summary>
             /// Gets the parent group name
             /// </summary>
-            public string ParentGroupName { get { return this.Layer.Group; } }
+            public string ParentGroupName => this.Layer.Group;
 
             /// <summary>
             /// Gets the name
             /// </summary>
-            public string Name { get { return this.Layer.Name; } }
+            public string Name => this.Layer.Name;
 
             /// <summary>
             /// Gets the object id
             /// </summary>
-            public override string ObjectId
-            {
-                get { return this.Layer.ObjectId; }
-            }
+            public override string ObjectId => this.Layer.ObjectId;
 
             private bool? _isRaster;
 
@@ -1215,7 +1209,7 @@ namespace Maestro.MapViewer
                         return _isRaster.Value;
 
                     if (!string.IsNullOrEmpty(this.LayerDefinitionContent))
-                        _isRaster = this.LayerDefinitionContent.Contains("<GridLayerDefinition");
+                        _isRaster = this.LayerDefinitionContent.Contains("<GridLayerDefinition"); //NOXLATE
 
                     if (_isRaster.HasValue)
                         return _isRaster.Value;

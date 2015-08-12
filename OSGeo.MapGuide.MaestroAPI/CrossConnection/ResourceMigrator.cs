@@ -531,17 +531,11 @@ namespace OSGeo.MapGuide.MaestroAPI.CrossConnection
         /// <summary>
         /// Gets the source connection
         /// </summary>
-        public IServerConnection Source
-        {
-            get { return _source; }
-        }
+        public IServerConnection Source => _source;
 
         /// <summary>
         /// Gets the target connection
         /// </summary>
-        public IServerConnection Target
-        {
-            get { return _target; }
-        }
+        public IServerConnection Target => _target;
     }
 }

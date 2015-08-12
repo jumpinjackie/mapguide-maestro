@@ -52,10 +52,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Sets the value to null.
         /// </summary>
-        public virtual void SetNull()
-        {
-            this.IsNull = true;
-        }
+        public virtual void SetNull() => this.IsNull = true;
 
         /// <summary>
         /// Gets the type.
@@ -109,13 +106,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <value>
         ///   <c>true</c> if this instance is null; otherwise, <c>false</c>.
         /// </value>
-        public override bool IsNull
-        {
-            get
-            {
-                return !_value.HasValue;
-            }
-        }
+        public override bool IsNull => !_value.HasValue;
 
         /// <summary>
         /// Gets or sets the value.
@@ -141,10 +132,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Sets the value to null.
         /// </summary>
-        public override void SetNull()
-        {
-            _value = null;
-        }
+        public override void SetNull() => _value = null;
 
         /// <summary>
         /// Gets the suggsted property definition type for this value
@@ -152,10 +140,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <value>
         /// The suggsted property definition type.
         /// </value>
-        public override PropertyDefinitionType PropertyDefType
-        {
-            get { return PropertyDefinitionType.Data; }
-        }
+        public override PropertyDefinitionType PropertyDefType => PropertyDefinitionType.Data;
     }
 
     /// <summary>
@@ -231,10 +216,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Gets the type.
         /// </summary>
-        public override PropertyValueType Type
-        {
-            get { return PropertyValueType.Byte; }
-        }
+        public override PropertyValueType Type => PropertyValueType.Byte;
 
         /// <summary>
         /// Gets the value as a string
@@ -273,10 +255,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Gets the type.
         /// </summary>
-        public override PropertyValueType Type
-        {
-            get { return PropertyValueType.Boolean; }
-        }
+        public override PropertyValueType Type => PropertyValueType.Boolean;
 
         /// <summary>
         /// Gets the value as a string
@@ -315,10 +294,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Gets the type.
         /// </summary>
-        public override PropertyValueType Type
-        {
-            get { return PropertyValueType.Blob; }
-        }
+        public override PropertyValueType Type => PropertyValueType.Blob;
 
         /// <summary>
         /// Gets the suggsted property definition type for this value
@@ -326,10 +302,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <value>
         /// The suggsted property definition type.
         /// </value>
-        public override PropertyDefinitionType PropertyDefType
-        {
-            get { return PropertyDefinitionType.Data; }
-        }
+        public override PropertyDefinitionType PropertyDefType => PropertyDefinitionType.Data;
 
         /// <summary>
         /// Gets the value as a string
@@ -365,10 +338,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Gets the type.
         /// </summary>
-        public override PropertyValueType Type
-        {
-            get { return PropertyValueType.Clob; }
-        }
+        public override PropertyValueType Type => PropertyValueType.Clob;
 
         /// <summary>
         /// Gets the suggsted property definition type for this value
@@ -376,10 +346,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <value>
         /// The suggsted property definition type.
         /// </value>
-        public override PropertyDefinitionType PropertyDefType
-        {
-            get { return PropertyDefinitionType.Data; }
-        }
+        public override PropertyDefinitionType PropertyDefType => PropertyDefinitionType.Data;
 
         /// <summary>
         /// Gets the value as a string
@@ -415,10 +382,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Gets the type.
         /// </summary>
-        public override PropertyValueType Type
-        {
-            get { return PropertyValueType.DateTime; }
-        }
+        public override PropertyValueType Type => PropertyValueType.DateTime;
 
         private static string PadLeft(string str, char ch, int totalChars)
         {
@@ -472,10 +436,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Gets the type.
         /// </summary>
-        public override PropertyValueType Type
-        {
-            get { return PropertyValueType.Double; }
-        }
+        public override PropertyValueType Type => PropertyValueType.Double;
 
         /// <summary>
         /// Gets the value as a string
@@ -514,10 +475,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Gets the type.
         /// </summary>
-        public override PropertyValueType Type
-        {
-            get { return PropertyValueType.Feature; }
-        }
+        public override PropertyValueType Type => PropertyValueType.Feature;
 
         /// <summary>
         /// Gets the suggsted property definition type for this value
@@ -525,10 +483,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <value>
         /// The suggsted property definition type.
         /// </value>
-        public override PropertyDefinitionType PropertyDefType
-        {
-            get { return PropertyDefinitionType.Object; }
-        }
+        public override PropertyDefinitionType PropertyDefType => PropertyDefinitionType.Object;
 
         /// <summary>
         /// Gets the value as a string
@@ -567,10 +522,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Gets the type.
         /// </summary>
-        public override PropertyValueType Type
-        {
-            get { return PropertyValueType.Geometry; }
-        }
+        public override PropertyValueType Type => PropertyValueType.Geometry;
 
         /// <summary>
         /// Gets the suggsted property definition type for this value
@@ -578,10 +530,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <value>
         /// The suggsted property definition type.
         /// </value>
-        public override PropertyDefinitionType PropertyDefType
-        {
-            get { return PropertyDefinitionType.Geometry; }
-        }
+        public override PropertyDefinitionType PropertyDefType => PropertyDefinitionType.Geometry;
 
         /// <summary>
         /// Gets the value as a string
@@ -620,10 +569,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Gets the type.
         /// </summary>
-        public override PropertyValueType Type
-        {
-            get { return PropertyValueType.Int16; }
-        }
+        public override PropertyValueType Type => PropertyValueType.Int16;
 
         /// <summary>
         /// Gets the value as a string
@@ -662,10 +608,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Gets the type.
         /// </summary>
-        public override PropertyValueType Type
-        {
-            get { return PropertyValueType.Int32; }
-        }
+        public override PropertyValueType Type => PropertyValueType.Int32;
 
         /// <summary>
         /// Gets the value as a string
@@ -704,10 +647,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Gets the type.
         /// </summary>
-        public override PropertyValueType Type
-        {
-            get { return PropertyValueType.Int64; }
-        }
+        public override PropertyValueType Type => PropertyValueType.Int64;
 
         /// <summary>
         /// Gets the value as a string
@@ -746,10 +686,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Gets the type.
         /// </summary>
-        public override PropertyValueType Type
-        {
-            get { return PropertyValueType.Raster; }
-        }
+        public override PropertyValueType Type => PropertyValueType.Raster;
 
         /// <summary>
         /// Gets the suggsted property definition type for this value
@@ -757,10 +694,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <value>
         /// The suggsted property definition type.
         /// </value>
-        public override PropertyDefinitionType PropertyDefType
-        {
-            get { return PropertyDefinitionType.Raster; }
-        }
+        public override PropertyDefinitionType PropertyDefType => PropertyDefinitionType.Raster;
 
         /// <summary>
         /// Gets the value as a string
@@ -796,10 +730,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Gets the type.
         /// </summary>
-        public override PropertyValueType Type
-        {
-            get { return PropertyValueType.Single; }
-        }
+        public override PropertyValueType Type => PropertyValueType.Single;
 
         /// <summary>
         /// Gets the value as a string
@@ -838,10 +769,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Gets the type.
         /// </summary>
-        public override PropertyValueType Type
-        {
-            get { return PropertyValueType.String; }
-        }
+        public override PropertyValueType Type => PropertyValueType.String;
 
         /// <summary>
         /// Gets the suggsted property definition type for this value
@@ -849,10 +777,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <value>
         /// The suggsted property definition type.
         /// </value>
-        public override PropertyDefinitionType PropertyDefType
-        {
-            get { return PropertyDefinitionType.Data; }
-        }
+        public override PropertyDefinitionType PropertyDefType => PropertyDefinitionType.Data;
 
         /// <summary>
         /// Gets the value as a string

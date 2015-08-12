@@ -40,9 +40,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// Gets the supported resource and version.
         /// </summary>
         /// <value>The supported resource and version.</value>
-        public override ResourceTypeDescriptor SupportedResourceAndVersion
-        {
-            get { return new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), _version); }
-        }
+        public override ResourceTypeDescriptor SupportedResourceAndVersion => new ResourceTypeDescriptor(ResourceTypes.LayerDefinition.ToString(), _version);
     }
 }

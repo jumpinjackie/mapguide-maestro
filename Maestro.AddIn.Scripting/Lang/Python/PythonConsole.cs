@@ -41,7 +41,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -77,13 +76,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             textEditor.IndentStyle = IndentStyle.None;
         }
 
-        public void Dispose()
-        {
-            disposedEvent.Set();
-            //TextArea textArea = textEditor.ActiveTextAreaControl.TextArea;
-            //textArea.KeyEventHandler -= ProcessKeyPress;
-            //textArea.DoProcessDialogKey -= ProcessDialogKey;
-        }
+        public void Dispose() => disposedEvent.Set();
 
         public TextWriter Output
         {
@@ -114,15 +107,9 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// <summary>
         /// Gets the member names of the specified item.
         /// </summary>
-        public IList<string> GetMemberNames(string name)
-        {
-            return commandLine.GetMemberNames(name);
-        }
+        public IList<string> GetMemberNames(string name) => commandLine.GetMemberNames(name);
 
-        public IList<string> GetGlobals(string name)
-        {
-            return commandLine.GetGlobals(name);
-        }
+        public IList<string> GetGlobals(string name) => commandLine.GetGlobals(name);
 
         /// <summary>
         /// Returns the next line typed in by the console user. If no line is available this method
@@ -179,18 +166,12 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// <summary>
         /// Writes text followed by a newline to the console.
         /// </summary>
-        public void WriteLine(string text, Style style)
-        {
-            Write(text + Environment.NewLine, style);
-        }
+        public void WriteLine(string text, Style style) => Write(text + Environment.NewLine, style);
 
         /// <summary>
         /// Writes an empty line to the console.
         /// </summary>
-        public void WriteLine()
-        {
-            Write(Environment.NewLine, Style.Out);
-        }
+        public void WriteLine() => Write(Environment.NewLine, Style.Out);
 
         /// <summary>
         /// Indicates whether there is a line already read by the console and waiting to be processed.
@@ -220,15 +201,9 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// Gets the lines that have not been returned by the ReadLine method. This does not
         /// include the current line.
         /// </summary>
-        public string[] GetUnreadLines()
-        {
-            return previousLines.ToArray();
-        }
+        public string[] GetUnreadLines() => previousLines.ToArray();
 
-        private string GetLastTextEditorLine()
-        {
-            return textEditor.GetLine(textEditor.TotalLines - 1);
-        }
+        private string GetLastTextEditorLine() => textEditor.GetLine(textEditor.TotalLines - 1);
 
         private readonly object _syncInput = new object();
         private bool _IsReadingInput;
@@ -271,9 +246,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             this.IsReadingInput = false;
             return lineInput;
         }
-
         
-
         private string ReadLineFromTextEditor()
         {
             Debug.WriteLine(string.Format("({0}): ReadLineFromTextEditor()", Thread.CurrentThread.ManagedThreadId));
@@ -401,26 +374,17 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// <summary>
         /// Returns true if the cursor is in a readonly text editor region.
         /// </summary>
-        private bool IsInReadOnlyRegion
-        {
-            get { return IsCurrentLineReadOnly || IsInPrompt; }
-        }
+        private bool IsInReadOnlyRegion => IsCurrentLineReadOnly || IsInPrompt;
 
         /// <summary>
         /// Only the last line in the text editor is not read only.
         /// </summary>
-        private bool IsCurrentLineReadOnly
-        {
-            get { return textEditor.Line < textEditor.TotalLines - 1; }
-        }
+        private bool IsCurrentLineReadOnly => textEditor.Line < textEditor.TotalLines - 1;
 
         /// <summary>
         /// Determines whether the current cursor position is in a prompt.
         /// </summary>
-        private bool IsInPrompt
-        {
-            get { return textEditor.Column - promptLength < 0; }
-        }
+        private bool IsInPrompt => textEditor.Column - promptLength < 0;
 
         /// <summary>
         /// Returns true if the user can backspace at the current cursor position.
@@ -444,10 +408,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// <summary>
         /// The home position is at the start of the line after the prompt.
         /// </summary>
-        private void MoveToHomePosition()
-        {
-            textEditor.Column = promptLength;
-        }
+        private void MoveToHomePosition() => textEditor.Column = promptLength;
 
         /// <summary>
         /// Shows the previous command line in the command line history.

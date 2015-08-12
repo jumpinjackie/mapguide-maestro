@@ -164,12 +164,16 @@ namespace Maestro.Base.Commands
         private static RepositoryItem[] GetItems(ClipboardService clip)
         {
             object o = clip.Get();
+
+            var ri = o as RepositoryItem;
+            var riArr = o as RepositoryItem[];
+
             if (o == null)
                 return new RepositoryItem[0];
-            else if (o is RepositoryItem[])
-                return (RepositoryItem[])o;
-            else if (o is RepositoryItem)
-                return new RepositoryItem[] { (RepositoryItem)o };
+            else if (riArr != null)
+                return riArr;
+            else if (ri != null)
+                return new RepositoryItem[] { ri };
             return new RepositoryItem[0];
         }
     }

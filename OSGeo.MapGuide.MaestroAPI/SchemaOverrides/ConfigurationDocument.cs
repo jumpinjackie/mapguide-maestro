@@ -56,30 +56,24 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <summary>
         /// Gets the array of spatial contexts.
         /// </summary>
-        public IFdoSpatialContext[] SpatialContexts { get { return _spatialContexts.ToArray(); } }
+        public IFdoSpatialContext[] SpatialContexts => _spatialContexts.ToArray();
 
         /// <summary>
         /// Gets the array of logical schemas.
         /// </summary>
-        public FeatureSchema[] Schemas { get { return _schemas.ToArray(); } }
+        public FeatureSchema[] Schemas => _schemas.ToArray();
 
         /// <summary>
         /// Adds the spatial context.
         /// </summary>
         /// <param name="context">The context.</param>
-        public void AddSpatialContext(IFdoSpatialContext context)
-        {
-            _spatialContexts.Add(context);
-        }
+        public void AddSpatialContext(IFdoSpatialContext context) => _spatialContexts.Add(context);
 
         /// <summary>
         /// Removes the spatial context.
         /// </summary>
         /// <param name="context">The context.</param>
-        public void RemoveSpatialContext(IFdoSpatialContext context)
-        {
-            _spatialContexts.Remove(context);
-        }
+        public void RemoveSpatialContext(IFdoSpatialContext context) => _spatialContexts.Remove(context);
 
         /// <summary>
         /// Gets the spatial context by name
@@ -102,13 +96,11 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <returns></returns>
         public string[] GetSpatialContextNames()
         {
-            List<string> names = new List<string>();
-
+            var names = new List<string>();
             foreach (var ctx in _spatialContexts)
             {
                 names.Add(ctx.Name);
             }
-
             return names.ToArray();
         }
 
@@ -116,19 +108,13 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// Adds the logical schema.
         /// </summary>
         /// <param name="schema">The schema.</param>
-        public void AddSchema(FeatureSchema schema)
-        {
-            _schemas.Add(schema);
-        }
+        public void AddSchema(FeatureSchema schema) => _schemas.Add(schema);
 
         /// <summary>
         /// Removes the logical schema.
         /// </summary>
         /// <param name="schema">The schema.</param>
-        public void RemoveSchema(FeatureSchema schema)
-        {
-            _schemas.Remove(schema);
-        }
+        public void RemoveSchema(FeatureSchema schema) => _schemas.Remove(schema);
 
         /// <summary>
         /// Gets the schema by name.
@@ -162,7 +148,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// </summary>
         /// <param name="doc"></param>
         /// <param name="currentNode"></param>
-        public virtual void WriteXml(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
+        public virtual void WriteXml(XmlDocument doc, XmlNode currentNode)
         {
             var dstore = doc.CreateElement("fdo", "DataStore", XmlNamespaces.FDO); //NOXLATE
             dstore.SetAttribute("xmlns:xs", XmlNamespaces.XS); //NOXLATE
@@ -189,21 +175,21 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// </summary>
         /// <param name="doc"></param>
         /// <param name="currentNode"></param>
-        protected abstract void WriteSchemaMappings(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode);
+        protected abstract void WriteSchemaMappings(XmlDocument doc, XmlNode currentNode);
 
         /// <summary>
         /// Write this document's schema mappings from the given XML document
         /// </summary>
         /// <param name="node">The node.</param>
         /// <param name="mgr">The namespace manager.</param>
-        protected abstract void ReadSchemaMappings(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr);
+        protected abstract void ReadSchemaMappings(XmlNode node, XmlNamespaceManager mgr);
 
         /// <summary>
         /// Set the current element's content from the current XML node
         /// </summary>
         /// <param name="node"></param>
         /// <param name="mgr"></param>
-        public void ReadXml(System.Xml.XmlNode node, System.Xml.XmlNamespaceManager mgr)
+        public void ReadXml(XmlNode node, XmlNamespaceManager mgr)
         {
             if (!node.Name.Equals("fdo:DataStore")) //NOXLATE
                 throw new Exception(string.Format(Strings.ErrorBadDocumentExpectedElement, "fdo:DataStore")); //NOXLATE

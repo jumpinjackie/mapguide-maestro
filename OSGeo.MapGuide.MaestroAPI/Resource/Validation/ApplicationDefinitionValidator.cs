@@ -202,9 +202,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// Gets the resource type and version this validator supports
         /// </summary>
         /// <value></value>
-        public ResourceTypeDescriptor SupportedResourceAndVersion
-        {
-            get { return new ResourceTypeDescriptor(ResourceTypes.ApplicationDefinition.ToString(), "1.0.0"); }
-        }
+        public ResourceTypeDescriptor SupportedResourceAndVersion => new ResourceTypeDescriptor(ResourceTypes.ApplicationDefinition.ToString(), "1.0.0");
     }
 }

@@ -27,7 +27,14 @@ using System.Threading.Tasks;
 
 namespace OSGeo.FDO.Expressions
 {
+    public enum FdoParseableType
+    {
+        Expression,
+        Filter
+    }
+
     public abstract class FdoParseable
     {
+        public abstract FdoParseableType ParseableType { get; }
     }
 }

@@ -341,15 +341,17 @@ namespace MgCooker
 
         private void btnSaveScript_Click(object sender, EventArgs e)
         {
-            if (System.Environment.OSVersion.Platform == PlatformID.Unix)
+            if (Environment.OSVersion.Platform == PlatformID.Unix)
+            {
                 saveFileDialog.Filter =
                     string.Format(Strings.FileTypeShellScript + "|{0}", "*.sh") + //NOXLATE
                     string.Format(Strings.FileTypeAllFiles + "|{0}", "*.*"); //NOXLATE
+            }
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 //Common args for all map defintions to be tiled
-                List<string> args = new List<string>();
+                var args = new List<string>();
 
                 PushArg(args, TileRunParameters.PROVIDER, txtProvider.Text);
                 PushArg(args, TileRunParameters.CONNECTIONPARAMS, txtConnectionString.Text);
@@ -371,19 +373,19 @@ namespace MgCooker
                 string cmdExecutable = "MgCookerCmd.exe"; //NOXLATE
 
                 //Windows has problems with console output from GUI applications...
-                if (System.Environment.OSVersion.Platform != PlatformID.Unix && executable == "MgCooker.exe" && System.IO.File.Exists(System.IO.Path.Combine(Application.StartupPath, cmdExecutable))) //NOXLATE
-                    executable = System.IO.Path.Combine(Application.StartupPath, cmdExecutable); //NOXLATE
+                if (Environment.OSVersion.Platform != PlatformID.Unix && executable == "MgCooker.exe" && System.IO.File.Exists(System.IO.Path.Combine(Application.StartupPath, cmdExecutable))) //NOXLATE
+                    executable = Path.Combine(Application.StartupPath, cmdExecutable); //NOXLATE
                 else
-                    executable = System.IO.Path.Combine(Application.StartupPath, executable);
+                    executable = Path.Combine(Application.StartupPath, executable);
 
-                string exeName = System.IO.Path.GetFileName(executable);
-                string exePath = System.IO.Path.GetDirectoryName(executable);
+                string exeName = Path.GetFileName(executable);
+                string exePath = Path.GetDirectoryName(executable);
 
                 executable = $"\"{executable}\""; //NOXLATE
 
-                using (System.IO.StreamWriter sw = new System.IO.StreamWriter(saveFileDialog.FileName))
+                using (var sw = new StreamWriter(saveFileDialog.FileName))
                 {
-                    if (System.Environment.OSVersion.Platform == PlatformID.Unix)
+                    if (Environment.OSVersion.Platform == PlatformID.Unix)
                     {
                         sw.WriteLine("#!/bin/sh"); //NOXLATE
                         executable = "mono " + executable; //NOXLATE
@@ -396,8 +398,8 @@ namespace MgCooker
                     //If on windows, wrap the exe call in a pushd/popd so that the executable is
                     //executed from its own directory
 
-                    if (System.Environment.OSVersion.Platform != PlatformID.MacOSX ||
-                        System.Environment.OSVersion.Platform != PlatformID.Unix)
+                    if (Environment.OSVersion.Platform != PlatformID.MacOSX ||
+                        Environment.OSVersion.Platform != PlatformID.Unix)
                     {
                         sw.WriteLine($"pushd \"{exePath}\""); //NOXLATE
                     }
@@ -406,8 +408,8 @@ namespace MgCooker
                     {
                         //Map-specific args
                         List<string> argsMap = new List<string>();
-                        if (System.Environment.OSVersion.Platform != PlatformID.MacOSX ||
-                            System.Environment.OSVersion.Platform != PlatformID.Unix)
+                        if (Environment.OSVersion.Platform != PlatformID.MacOSX ||
+                            Environment.OSVersion.Platform != PlatformID.Unix)
                         {
                             argsMap.Add(exeName);
                         }
@@ -460,8 +462,8 @@ namespace MgCooker
                         sw.WriteLine();
                     }
 
-                    if (System.Environment.OSVersion.Platform != PlatformID.MacOSX ||
-                        System.Environment.OSVersion.Platform != PlatformID.Unix)
+                    if (Environment.OSVersion.Platform != PlatformID.MacOSX ||
+                        Environment.OSVersion.Platform != PlatformID.Unix)
                     {
                         sw.WriteLine("popd"); //NOXLATE
                     }
@@ -624,7 +626,7 @@ namespace MgCooker
             BusyWaitDialog.Run(Strings.CalculatingMpu, () =>
             {
                 var currentPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath);
-                var mpuCalc = Path.Combine(currentPath, "AddIns/Local/MpuCalc.exe");
+                var mpuCalc = Path.Combine(currentPath, "AddIns/Local/MpuCalc.exe"); //NOXLATE
                 if (!File.Exists(mpuCalc) && mapDef.EndsWith(ResourceTypes.MapDefinition.ToString()))
                 {
                     int[] cmdTypes = m_connection.Capabilities.SupportedCommands;

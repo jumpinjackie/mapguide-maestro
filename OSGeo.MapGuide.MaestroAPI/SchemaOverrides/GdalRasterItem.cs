@@ -75,15 +75,12 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// Removes the specified raster image reference
         /// </summary>
         /// <param name="item"></param>
-        public void RemoveItem(GdalRasterItem item)
-        {
-            _items.Remove(item.FileName);
-        }
+        public void RemoveItem(GdalRasterItem item) => _items.Remove(item.FileName);
 
         /// <summary>
         /// Gets all the raster image references in this location
         /// </summary>
-        public GdalRasterItem[] Items { get { return new List<GdalRasterItem>(_items.Values).ToArray(); } }
+        public GdalRasterItem[] Items => new List<GdalRasterItem>(_items.Values).ToArray();
 
         /// <summary>
         /// Writes the current element's content
@@ -131,10 +128,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// Removes the specified raster image
         /// </summary>
         /// <param name="fileName"></param>
-        public void RemoveItem(string fileName)
-        {
-            _items.Remove(fileName);
-        }
+        public void RemoveItem(string fileName) => _items.Remove(fileName);
     }
 
     /// <summary>

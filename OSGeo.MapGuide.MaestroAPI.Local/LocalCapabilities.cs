@@ -56,60 +56,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
         }
 
-        public override bool IsSupportedResourceType(string resourceType)
-        {
-            return resourceType != ResourceTypes.ApplicationDefinition.ToString() &&
-                   resourceType != ResourceTypes.WebLayout.ToString();
-        }
+        public override bool IsSupportedResourceType(string resourceType) 
+            => resourceType != ResourceTypes.ApplicationDefinition.ToString() && 
+               resourceType != ResourceTypes.WebLayout.ToString();
 
-        public override bool SupportsResourcePreviews
-        {
-            get { return true; }
-        }
+        public override bool SupportsResourcePreviews => true;
 
-        public override bool IsMultithreaded
-        {
-            get { return false; }
-        }
+        public override bool IsMultithreaded => false;
 
-        public override bool SupportsResourceReferences
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool SupportsResourceReferences => false;
 
-        public override bool SupportsResourceSecurity
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool SupportsResourceSecurity => false;
 
-        public override bool SupportsWfsPublishing
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool SupportsWfsPublishing => false;
 
-        public override bool SupportsWmsPublishing
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool SupportsWmsPublishing => false;
 
-        public override bool SupportsResourceHeaders
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool SupportsResourceHeaders => false;
     }
 }

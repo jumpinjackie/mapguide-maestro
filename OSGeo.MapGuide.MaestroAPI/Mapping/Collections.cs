@@ -60,10 +60,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns>
         /// The index of <paramref name="item"/> if found in the list; otherwise, -1.
         /// </returns>
-        public int IndexOf(TVal item)
-        {
-            return _values.IndexOf(item);
-        }
+        public int IndexOf(TVal item) => _values.IndexOf(item);
 
         /// <summary>
         /// Determines the index of a specific key in the collection
@@ -257,10 +254,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns>
         /// true if <paramref name="item"/> is found in the <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, false.
         /// </returns>
-        public bool Contains(TVal item)
-        {
-            return _values.Contains(item);
-        }
+        public bool Contains(TVal item) => _values.Contains(item);
 
         /// <summary>
         /// Copies the elements of the <see cref="T:System.Collections.Generic.ICollection`1"/> to an <see cref="T:System.Array"/>, starting at a particular <see cref="T:System.Array"/> index.
@@ -284,10 +278,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// -or-
         /// Type <typeparamref name="TVal"/> cannot be cast automatically to the type of the destination <paramref name="array"/>.
         ///   </exception>
-        public void CopyTo(TVal[] array, int arrayIndex)
-        {
-            _values.CopyTo(array, arrayIndex);
-        }
+        public void CopyTo(TVal[] array, int arrayIndex) => _values.CopyTo(array, arrayIndex);
 
         /// <summary>
         /// Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
@@ -295,20 +286,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns>
         /// The number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
         ///   </returns>
-        public int Count
-        {
-            get { return _values.Count; }
-        }
+        public int Count => _values.Count;
 
         /// <summary>
         /// Gets a value indicating whether the <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.
         /// </summary>
         /// <returns>true if the <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only; otherwise, false.
         ///   </returns>
-        public bool IsReadOnly
-        {
-            get { return false; }
-        }
+        public bool IsReadOnly => false;
 
         /// <summary>
         /// Removes the first occurrence of a specific object from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
@@ -342,10 +327,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns>
         /// A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the collection.
         /// </returns>
-        public IEnumerator<TVal> GetEnumerator()
-        {
-            return _values.GetEnumerator();
-        }
+        public IEnumerator<TVal> GetEnumerator() => _values.GetEnumerator();
 
         /// <summary>
         /// Returns an enumerator that iterates through a collection.
@@ -353,10 +335,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns>
         /// An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
         /// </returns>
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return _values.GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => _values.GetEnumerator();
 
         /// <summary>
         /// Gets or sets the element at the specified index.
@@ -397,9 +376,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             if (bSuppressCollectionChanged)
                 return;
 
-            var h = this.CollectionChanged;
-            if (h != null)
-                h(this, EventArgs.Empty);
+            this.CollectionChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -444,45 +421,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             return this.Count - 1;
         }
 
-        void IList.Clear()
-        {
-            this.Clear();
-        }
+        void IList.Clear() => this.Clear();
 
-        bool IList.Contains(object value)
-        {
-            return this.Contains((TVal)value);
-        }
+        bool IList.Contains(object value) => this.Contains((TVal)value);
 
-        int IList.IndexOf(object value)
-        {
-            return this.IndexOf((TVal)value);
-        }
+        int IList.IndexOf(object value) => this.IndexOf((TVal)value);
 
-        void IList.Insert(int index, object value)
-        {
-            this.Insert(index, (TVal)value);
-        }
+        void IList.Insert(int index, object value) => this.Insert(index, (TVal)value);
 
-        bool IList.IsFixedSize
-        {
-            get { return false; }
-        }
+        bool IList.IsFixedSize => false;
 
-        bool IList.IsReadOnly
-        {
-            get { return false; }
-        }
+        bool IList.IsReadOnly => false;
 
-        void IList.Remove(object value)
-        {
-            this.Remove((TVal)value);
-        }
+        void IList.Remove(object value) => this.Remove((TVal)value);
 
-        void IList.RemoveAt(int index)
-        {
-            this.RemoveAt(index);
-        }
+        void IList.RemoveAt(int index) => this.RemoveAt(index);
 
         object IList.this[int index]
         {
@@ -496,27 +449,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             }
         }
 
-        void ICollection.CopyTo(Array array, int index)
-        {
-            this.CopyTo((TVal[])array, index);
-        }
+        void ICollection.CopyTo(Array array, int index) => this.CopyTo((TVal[])array, index);
 
-        int ICollection.Count
-        {
-            get { return this.Count; }
-        }
+        int ICollection.Count => this.Count;
 
-        bool ICollection.IsSynchronized
-        {
-            get { return false; }
-        }
+        bool ICollection.IsSynchronized => false;
 
         private readonly object _syncRoot = new object();
 
-        object ICollection.SyncRoot
-        {
-            get { return _syncRoot; }
-        }
+        object ICollection.SyncRoot => _syncRoot;
     }
 
     /// <summary>
@@ -602,20 +543,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        protected override string SelectKey(RuntimeMapLayer value)
-        {
-            return value.Name;
-        }
+        protected override string SelectKey(RuntimeMapLayer value) => value.Name;
 
         /// <summary>
         /// Gets a runtime map layer by its object id.
         /// </summary>
         /// <param name="id">The object id.</param>
         /// <returns></returns>
-        public RuntimeMapLayer GetByObjectId(string id)
-        {
-            return _layerIdMap.ContainsKey(id) ? _layerIdMap[id] : null;
-        }
+        public RuntimeMapLayer GetByObjectId(string id) => _layerIdMap.ContainsKey(id) ? _layerIdMap[id] : null;
 
         /// <summary>
         /// Gets or sets the element at the specified index.
@@ -696,30 +631,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Called after an item has been added
         /// </summary>
         /// <param name="item">The item.</param>
-        protected override void OnItemAdded(RuntimeMapGroup item)
-        {
-            _parent.OnGroupAdded(item);
-        }
+        protected override void OnItemAdded(RuntimeMapGroup item) => _parent.OnGroupAdded(item);
 
         /// <summary>
         /// Called after an item has been removed. Note this is only called if the remove
         /// operation removed the item in question
         /// </summary>
         /// <param name="value">The value.</param>
-        protected override void OnItemRemoved(RuntimeMapGroup value)
-        {
-            _parent.OnGroupRemoved(value);
-        }
+        protected override void OnItemRemoved(RuntimeMapGroup value) => _parent.OnGroupRemoved(value);
 
         /// <summary>
         /// Selects the key given the value.
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
-        protected override string SelectKey(RuntimeMapGroup value)
-        {
-            return value.Name;
-        }
+        protected override string SelectKey(RuntimeMapGroup value) => value.Name;
 
         /// <summary>
         /// Removes the specified group by its name.

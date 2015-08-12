@@ -42,26 +42,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             : base(resp)
         { }
 
-        public IFeatureReader GetFeatureObject(string name)
-        {
-            return ((IFeature)this.Current).GetFeatureObject(name);
-        }
+        public IFeatureReader GetFeatureObject(string name) => ((IFeature)this.Current).GetFeatureObject(name);
 
-        public IFeatureReader GetFeatureObject(int index)
-        {
-            return ((IFeature)this.Current).GetFeatureObject(index);
-        }
+        public IFeatureReader GetFeatureObject(int index) => ((IFeature)this.Current).GetFeatureObject(index);
 
-        public override ReaderType ReaderType
-        {
-            get { return ReaderType.Feature; }
-        }
+        public override ReaderType ReaderType => ReaderType.Feature;
 
         protected override void InitProperties()
         {
             //SelectAggregate responses start with PropertySet
             _reader.Read();
-            if (_reader.Name != "xml")
+            if (_reader.Name != "xml") //NOXLATE
                 throw new Exception("Bad document. Expected xml prolog"); //LOCALIZEME
             _reader.Read();
             if (_reader.Name != this.ResponseRootElement)
@@ -186,15 +177,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             }
         }
 
-        protected override string ResponseRootElement
-        {
-            get { return "FeatureSet"; }
-        }
+        protected override string ResponseRootElement => "FeatureSet"; //NOXLATE
 
-        protected override string DefinitionRootElement
-        {
-            get { return "xs:schema"; }
-        }
+        protected override string DefinitionRootElement => "xs:schema"; //NOXLATE
 
         protected override string DefinitionChildElement
         {
@@ -211,32 +196,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             get { throw new NotImplementedException(); }
         }
 
-        protected override string ValuesRootElement
-        {
-            get { return "Features"; }
-        }
+        protected override string ValuesRootElement => "Features"; //NOXLATE
 
-        protected override string ValuesRowElement
-        {
-            get { return "Feature"; }
-        }
+        protected override string ValuesRowElement => "Feature"; //NOXLATE
 
-        protected override string ValuesRowPropertyElement
-        {
-            get { return "Property"; }
-        }
+        protected override string ValuesRowPropertyElement => "Property"; //NOXLATE
 
-        protected override string ValuesRowPropertyNameElement
-        {
-            get { return "Name"; }
-        }
+        protected override string ValuesRowPropertyNameElement => "Name"; //NOXLATE
 
-        protected override string ValuesRowPropertyValueElement
-        {
-            get { return "Value"; }
-        }
+        protected override string ValuesRowPropertyValueElement => "Value"; //NOXLATE
 
-        public OSGeo.MapGuide.MaestroAPI.Schema.ClassDefinition ClassDefinition
+        public ClassDefinition ClassDefinition
         {
             get;
             private set;
@@ -272,24 +242,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
                 _reader = reader;
             }
 
-            public IFeature Current
-            {
-                get { return (IFeature)_reader.Current; }
-            }
+            public IFeature Current => (IFeature)_reader.Current;
 
             public void Dispose()
             {
             }
 
-            object System.Collections.IEnumerator.Current
-            {
-                get { return this.Current; }
-            }
+            object System.Collections.IEnumerator.Current => this.Current;
 
-            public bool MoveNext()
-            {
-                return _reader.ReadNext();
-            }
+            public bool MoveNext() => _reader.ReadNext();
 
             public void Reset()
             {
@@ -297,14 +258,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             }
         }
 
-        public IEnumerator<IFeature> GetEnumerator()
-        {
-            return new Enumerator(this);
-        }
+        public IEnumerator<IFeature> GetEnumerator() => new Enumerator(this);
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return new Enumerator(this);
-        }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => new Enumerator(this);
     }
 }

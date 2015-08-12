@@ -39,32 +39,26 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <summary>
         /// Gets an array of the added override items
         /// </summary>
-        public RasterWmsItem[] RasterOverrides { get { return _rasterItems.ToArray(); } }
+        public RasterWmsItem[] RasterOverrides => _rasterItems.ToArray();
 
         /// <summary>
         /// Adds the specified override item
         /// </summary>
         /// <param name="item"></param>
-        public void AddRasterItem(RasterWmsItem item)
-        {
-            _rasterItems.Add(item);
-        }
+        public void AddRasterItem(RasterWmsItem item) => _rasterItems.Add(item);
 
         /// <summary>
         /// Removes the specified override item
         /// </summary>
         /// <param name="item"></param>
-        public void RemoveRasterItem(RasterWmsItem item)
-        {
-            _rasterItems.Remove(item);
-        }
+        public void RemoveRasterItem(RasterWmsItem item) => _rasterItems.Remove(item);
 
         /// <summary>
         /// Write this document's schema mappings to the given XML document
         /// </summary>
         /// <param name="doc"></param>
         /// <param name="currentNode"></param>
-        protected override void WriteSchemaMappings(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
+        protected override void WriteSchemaMappings(XmlDocument doc, XmlNode currentNode)
         {
             var map = doc.CreateElement("SchemaMapping"); //NOXLATE
             map.SetAttribute("provider", "OSGeo.WMS.3.2"); //NOXLATE
@@ -278,7 +272,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
                         //Try to find this raster property
                         foreach (var prop in cls.Properties)
                         {
-                            if (prop.Type == OSGeo.MapGuide.MaestroAPI.Schema.PropertyDefinitionType.Raster)
+                            if (prop.Type == PropertyDefinitionType.Raster)
                             {
                                 bFoundRaster = true;
                                 break;

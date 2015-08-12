@@ -97,25 +97,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             base.Dispose();
         }
 
-        public override ReaderType ReaderType
-        {
-            get { return ReaderType.Data; }
-        }
+        public override ReaderType ReaderType => ReaderType.Data;
 
-        public override PropertyValueType GetPropertyType(int index)
-        {
-            return (PropertyValueType)_reader.GetPropertyType(index); //We can do this because the enum values map directly to MgPropertyType
-        }
+        public override PropertyValueType GetPropertyType(int index) => (PropertyValueType)_reader.GetPropertyType(index);
 
-        public override PropertyValueType GetPropertyType(string name)
-        {
-            return (PropertyValueType)_reader.GetPropertyType(name); //We can do this because the enum values map directly to MgPropertyType
-        }
+        public override PropertyValueType GetPropertyType(string name) => (PropertyValueType)_reader.GetPropertyType(name);
 
-        public override string GetName(int index)
-        {
-            return _reader.GetPropertyName(index);
-        }
+        public override string GetName(int index) => _reader.GetPropertyName(index);
 
         public override Type GetFieldType(int i)
         {

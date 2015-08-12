@@ -54,10 +54,7 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        public bool RemoveLocation(GdalRasterLocationItem item)
-        {
-            return _items.Remove(item.Location);
-        }
+        public bool RemoveLocation(GdalRasterLocationItem item) => _items.Remove(item.Location);
 
         /// <summary>
         /// Calculates the combined extent that encompasses all the raster images in this document.
@@ -92,14 +89,14 @@ namespace OSGeo.MapGuide.MaestroAPI.SchemaOverrides
         /// <summary>
         /// Gets an array of all the raster locations for this document
         /// </summary>
-        public GdalRasterLocationItem[] RasterLocations { get { return new List<GdalRasterLocationItem>(_items.Values).ToArray(); } }
+        public GdalRasterLocationItem[] RasterLocations => new List<GdalRasterLocationItem>(_items.Values).ToArray();
 
         /// <summary>
         /// Write this document's schema mappings to the given XML document
         /// </summary>
         /// <param name="doc"></param>
         /// <param name="currentNode"></param>
-        protected override void WriteSchemaMappings(System.Xml.XmlDocument doc, System.Xml.XmlNode currentNode)
+        protected override void WriteSchemaMappings(XmlDocument doc, XmlNode currentNode)
         {
             foreach (var schema in base._schemas)
             {

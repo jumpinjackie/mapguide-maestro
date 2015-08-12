@@ -38,59 +38,26 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
         {
         }
 
-        public override ReaderType ReaderType
-        {
-            get { return ReaderType.Data; }
-        }
+        public override ReaderType ReaderType => ReaderType.Data;
 
-        protected override string DefinitionRootElement
-        {
-            get { return "PropertyDefinitions"; }
-        }
+        protected override string DefinitionRootElement => "PropertyDefinitions"; //NOXLATE
 
-        protected override string DefinitionChildElement
-        {
-            get { return "PropertyDefinition"; }
-        }
+        protected override string DefinitionChildElement => "PropertyDefinition"; //NOXLATE
 
-        protected override string DefinitionChildNameElement
-        {
-            get { return "Name"; }
-        }
+        protected override string DefinitionChildNameElement => "Name"; //NOXLATE
 
-        protected override string DefinitionChildTypeElement
-        {
-            get { return "Type"; }
-        }
+        protected override string DefinitionChildTypeElement => "Type"; //NOXLATE
 
-        protected override string ValuesRootElement
-        {
-            get { return "Properties"; }
-        }
+        protected override string ValuesRootElement => "Properties"; //NOXLATE
 
-        protected override string ValuesRowElement
-        {
-            get { return "PropertyCollection"; }
-        }
+        protected override string ValuesRowElement => "PropertyCollection"; //NOXLATE
 
-        protected override string ValuesRowPropertyElement
-        {
-            get { return "Property"; }
-        }
+        protected override string ValuesRowPropertyElement => "Property"; //NOXLATE
 
-        protected override string ValuesRowPropertyNameElement
-        {
-            get { return "Name"; }
-        }
+        protected override string ValuesRowPropertyNameElement => "Name"; //NOXLATE
 
-        protected override string ValuesRowPropertyValueElement
-        {
-            get { return "Value"; }
-        }
+        protected override string ValuesRowPropertyValueElement => "Value"; //NOXLATE
 
-        protected override string ResponseRootElement
-        {
-            get { return "PropertySet"; }
-        }
+        protected override string ResponseRootElement => "PropertySet"; //NOXLATE
     }
 }

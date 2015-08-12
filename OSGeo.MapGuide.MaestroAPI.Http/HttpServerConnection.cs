@@ -27,7 +27,6 @@ using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Http;
 using OSGeo.MapGuide.MaestroAPI.Http.Commands;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
-using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.MaestroAPI.Services;
@@ -96,10 +95,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        public override string ProviderName
-        {
-            get { return "Maestro.Http"; }
-        }
+        public override string ProviderName => "Maestro.Http"; //NOXLATE
 
         /// <summary>
         /// Gets whether this connection was initialised with an Anonymous login. If it was, it will return true.
@@ -116,12 +112,12 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
         }
 
-        public const string PARAM_URL = "Url";
-        public const string PARAM_SESSION = "SessionId";
-        public const string PARAM_LOCALE = "Locale";
-        public const string PARAM_UNTESTED = "AllowUntestedVersion";
-        public const string PARAM_USERNAME = "Username";
-        public const string PARAM_PASSWORD = "Password";
+        public const string PARAM_URL = "Url"; //NOXLATE
+        public const string PARAM_SESSION = "SessionId"; //NOXLATE
+        public const string PARAM_LOCALE = "Locale"; //NOXLATE
+        public const string PARAM_UNTESTED = "AllowUntestedVersion"; //NOXLATE
+        public const string PARAM_USERNAME = "Username"; //NOXLATE
+        public const string PARAM_PASSWORD = "Password"; //NOXLATE
 
         private ICredentials _cred;
 
@@ -239,10 +235,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             InitConnection(hosturl, username, password, locale, allowUntestedVersion);
         }
 
-        public override string SessionID
-        {
-            get { return m_reqBuilder.SessionID; }
-        }
+        public override string SessionID => m_reqBuilder.SessionID;
 
         public override ResourceList GetRepositoryResources(string startingpoint, string type, int depth, bool computeChildren)
         {
@@ -305,10 +298,10 @@ namespace OSGeo.MapGuide.MaestroAPI
                 {
                     try
                     {
-                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                        using (MemoryStream ms = new MemoryStream())
                         {
                             Utility.CopyStream(wex.Response.GetResponseStream(), ms);
-                            result = System.Text.Encoding.UTF8.GetString(ms.ToArray(), 0, (int)ms.Length);
+                            result = Encoding.UTF8.GetString(ms.ToArray(), 0, (int)ms.Length);
                         }
 
                         if (result.ToLower().IndexOf("<body>") > 0)
@@ -360,10 +353,10 @@ namespace OSGeo.MapGuide.MaestroAPI
                     try
                     {
                         string result = "";
-                        using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                        using (MemoryStream ms = new MemoryStream())
                         {
                             Utility.CopyStream(wex.Response.GetResponseStream(), ms);
-                            result = System.Text.Encoding.UTF8.GetString(ms.ToArray(), 0, (int)ms.Length);
+                            result = Encoding.UTF8.GetString(ms.ToArray(), 0, (int)ms.Length);
                         }
 
                         if (result.ToLower().IndexOf("<body>") > 0)
@@ -392,7 +385,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             return string.Empty;
         }
 
-        public override System.IO.Stream GetResourceData(string resourceID, string dataname)
+        public override Stream GetResourceData(string resourceID, string dataname)
         {
             string req = m_reqBuilder.GetResourceData(resourceID, dataname);
             return this.OpenRead(req);
@@ -686,8 +679,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             //The request may execeed the url limit of the server, especially when using GeomFromText('...')
             ResourceIdentifier.Validate(resourceID, ResourceTypes.FeatureSource);
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            System.Net.WebRequest req = m_reqBuilder.SelectFeatures(aggregate, resourceID, schema, query, columns, computedProperties, ms);
+            MemoryStream ms = new MemoryStream();
+            WebRequest req = m_reqBuilder.SelectFeatures(aggregate, resourceID, schema, query, columns, computedProperties, ms);
             req.Timeout = 200 * 1000;
             ms.Position = 0;
 #if DEBUG
@@ -921,7 +914,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                 /*if (m_wc.Credentials as NetworkCredential != null)
                     s += " [" + (m_wc.Credentials as NetworkCredential).UserName + "]"; */
 
-                return s + " (v" + this.SiteVersion.ToString() + ")";
+                return $"{s} (v{this.SiteVersion.ToString() })";
             }
         }
 
@@ -1082,7 +1075,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 #endif
         }
 
-        public override System.IO.Stream RenderRuntimeMap(Mapping.RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
+        public override Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format, bool clip)
         {
             var resourceId = map.ResourceID;
             ResourceIdentifier.Validate(resourceId, ResourceTypes.Map);

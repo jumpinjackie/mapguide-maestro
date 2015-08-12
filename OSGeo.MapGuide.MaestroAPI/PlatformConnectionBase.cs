@@ -26,12 +26,10 @@ using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
 using OSGeo.MapGuide.MaestroAPI.Feature;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
-using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.MaestroAPI.Serialization;
 using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.ObjectModels.Capabilities;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.IO;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
@@ -86,7 +84,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             m_serializers = new Hashtable();
             m_validator = new XmlValidator();
             m_cachedSchemas = new Hashtable();
-            m_schemasPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "Schemas"); //NOXLATE
+            m_schemasPath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "Schemas"); //NOXLATE
         }
 
         #region Serialization plumbing
@@ -97,10 +95,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <typeparam name="T">The expected object type</typeparam>
         /// <param name="data">The stream containing the object</param>
         /// <returns>The deserialized object</returns>
-        virtual public T DeserializeObject<T>(System.IO.Stream data)
-        {
-            return (T)DeserializeObject(typeof(T), data);
-        }
+        public virtual T DeserializeObject<T>(Stream data) => (T)DeserializeObject(typeof(T), data);
 
         /// <summary>
         /// Deserializes an object from a stream.
@@ -108,11 +103,11 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="type">The expected object type</param>
         /// <param name="data">The stream containing the object</param>
         /// <returns>The deserialized object</returns>
-        virtual public object DeserializeObject(Type type, System.IO.Stream data)
+        public virtual object DeserializeObject(Type type, Stream data)
         {
             //HACK: MGOS 2.2 outputs different capabilities xml (because it's actually the correct one!), so
             //without breaking support against 2.1 and older servers, we transform the xml to its pre-2.2 form
-            if (type == typeof(OSGeo.MapGuide.ObjectModels.Capabilities.v1_0_0.FdoProviderCapabilities) && this.SiteVersion < new Version(2, 2))
+            if (type == typeof(ObjectModels.Capabilities.v1_0_0.FdoProviderCapabilities) && this.SiteVersion < new Version(2, 2))
             {
                 StringBuilder sb = null;
                 using (StreamReader reader = new StreamReader(data))
@@ -172,9 +167,9 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="o">The object to serialize</param>
         /// <returns>A memorystream with the serialized object</returns>
-        virtual public System.IO.MemoryStream SerializeObject(object o)
+        public virtual System.IO.MemoryStream SerializeObject(object o)
         {
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            MemoryStream ms = new MemoryStream();
             GetSerializer(o.GetType()).Serialize(new Utf8XmlWriter(ms), o);
             return Utility.RemoveUTF8BOM(ms);
         }
@@ -184,7 +179,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="o">The object to serialize</param>
         /// <param name="stream">The stream to serialize into</param>
-        virtual public void SerializeObject(object o, System.IO.Stream stream)
+        public virtual void SerializeObject(object o, Stream stream)
         {
             //The Utf8 writer makes sure the Utf8 tag is in place + sets encoding to Utf8
             //This is needed because the server fails when rendering maps using non utf8 xml documents
@@ -225,16 +220,13 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Validates the current server version against the highest tested version.
         /// </summary>
         /// <param name="version">The version to validate</param>
-        virtual protected void ValidateVersion(ObjCommon.SiteVersion version)
-        {
-            ValidateVersion(new Version(version.Version));
-        }
+        protected virtual void ValidateVersion(SiteVersion version) => ValidateVersion(new Version(version.Version));
 
         /// <summary>
         /// Validates the current server version against the highest tested version.
         /// </summary>
         /// <param name="version">The version to validate</param>
-        virtual protected void ValidateVersion(Version version)
+        protected virtual void ValidateVersion(Version version)
         {
             if (version > this.MaxTestedVersion)
                 throw new Exception("Untested with MapGuide Build > " + this.MaxTestedVersion.ToString()); //NOXLATE
@@ -246,7 +238,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Gets the preview URL generator.
         /// </summary>
         /// <returns>The preview URL generator. Returns null if this connection does not support browser-based resource previews</returns>
-        public virtual OSGeo.MapGuide.MaestroAPI.Resource.Preview.IResourcePreviewUrlGenerator GetPreviewUrlGenerator()
+        public virtual Resource.Preview.IResourcePreviewUrlGenerator GetPreviewUrlGenerator()
         {
             return null;
         }
@@ -266,7 +258,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Gets the current SessionID.
         /// </summary>
-        abstract public string SessionID { get; }
+        public abstract string SessionID { get; }
 
         /// <summary>
         /// Gets the interface of this connection
@@ -279,10 +271,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="providername">The name of the provider, with or without version numbers</param>
         /// <returns>The provider name without version numbers</returns>
-        virtual public string RemoveVersionFromProviderName(string providername)
-        {
-            return Utility.StripVersionFromProviderName(providername);
-        }
+        public virtual string RemoveVersionFromProviderName(string providername) => Utility.StripVersionFromProviderName(providername);
 
         /// <summary>
         /// Gets the Xsd schema for a given type.
@@ -328,39 +317,24 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Raises the <see cref="ResourceAdded"/> event
         /// </summary>
         /// <param name="resId"></param>
-        protected void OnResourceAdded(string resId)
-        {
-            var handler = this.ResourceAdded;
-            if (handler != null)
-                handler(this, new ResourceEventArgs(resId));
-        }
+        protected void OnResourceAdded(string resId) => this.ResourceAdded?.Invoke(this, new ResourceEventArgs(resId));
 
         /// <summary>
         /// Raises the <see cref="ResourceDeleted"/> event
         /// </summary>
         /// <param name="resId"></param>
-        protected void OnResourceDeleted(string resId)
-        {
-            var handler = this.ResourceDeleted;
-            if (handler != null)
-                handler(this, new ResourceEventArgs(resId));
-        }
+        protected void OnResourceDeleted(string resId) => this.ResourceDeleted?.Invoke(this, new ResourceEventArgs(resId));
 
         /// <summary>
         /// Raises the <see cref="ResourceUpdated"/> event
         /// </summary>
         /// <param name="resId"></param>
-        protected void OnResourceUpdated(string resId)
-        {
-            var handler = this.ResourceUpdated;
-            if (handler != null)
-                handler(this, new ResourceEventArgs(resId));
-        }
+        protected void OnResourceUpdated(string resId) => this.ResourceUpdated?.Invoke(this, new ResourceEventArgs(resId));
 
         /// <summary>
         /// Gets or sets the collection of cached schemas. Use the object type for key, and an XmlSchema instance for value.
         /// </summary>
-        virtual public Hashtable CachedSchemas
+        public virtual Hashtable CachedSchemas
         {
             get { return m_cachedSchemas; }
             set { m_cachedSchemas = value; }
@@ -369,7 +343,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Releases unmanaged and - optionally - managed resources
         /// </summary>
-        abstract public void Dispose();
+        public abstract void Dispose();
 
         /// <summary>
         /// Clones this instance.
@@ -408,7 +382,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="resourceID">The full resourceID of the item to retrieve.</param>
         /// <returns>A deserialized object.</returns>
-        virtual public IResource GetResource(string resourceID)
+        public virtual IResource GetResource(string resourceID)
         {
             var stream = GetResourceXmlData(resourceID);
             var rt = ResourceIdentifier.GetResourceTypeAsString(resourceID);
@@ -430,7 +404,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="resourceID">The resource to write into</param>
         /// <param name="resource">The resourcec to write</param>
-        virtual public void WriteResource(string resourceID, object resource)
+        public virtual void WriteResource(string resourceID, object resource)
         {
             System.IO.MemoryStream ms = SerializeObject(resource);
             ms.Position = 0;
@@ -554,11 +528,11 @@ namespace OSGeo.MapGuide.MaestroAPI
                 else
                     sourcefolder = resourceID.Substring(0, resourceID.LastIndexOf("/") + 1); //NOXLATE
 
-                ObjCommon.ResourceList lst = GetRepositoryResources(sourcefolder, 1);
+                ResourceList lst = GetRepositoryResources(sourcefolder, 1);
                 foreach (object o in lst.Items)
-                    if (o.GetType() == typeof(ObjCommon.ResourceListResourceFolder) && ((ObjCommon.ResourceListResourceFolder)o).ResourceId == resourceID)
+                    if (o.GetType() == typeof(ResourceListResourceFolder) && ((ResourceListResourceFolder)o).ResourceId == resourceID)
                         return true;
-                    else if (o.GetType() == typeof(ObjCommon.ResourceListResourceDocument) && ((ObjCommon.ResourceListResourceDocument)o).ResourceId == resourceID)
+                    else if (o.GetType() == typeof(ResourceListResourceDocument) && ((ResourceListResourceDocument)o).ResourceId == resourceID)
                         return true;
 
                 return false;
@@ -773,7 +747,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             Hashtable paths = new Hashtable();
 
             //The old path does not exist, but luckily the call works anyway
-            ObjCommon.ResourceReferenceList rlf = EnumerateResourceReferences(oldpath);
+            ResourceReferenceList rlf = EnumerateResourceReferences(oldpath);
 
             foreach (string s in rlf.ResourceId)
                 if (!paths.ContainsKey(s))
@@ -882,18 +856,18 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (la.Cancel)
                 return false;
 
-            ObjCommon.ResourceList lst = GetRepositoryResources(newpath);
+            ResourceList lst = GetRepositoryResources(newpath);
 
             Hashtable items = new Hashtable();
             foreach (object o in lst.Items)
             {
-                if (o.GetType() == typeof(ObjCommon.ResourceListResourceDocument))
+                if (o.GetType() == typeof(ResourceListResourceDocument))
                 {
                     //The old path does not exist, but we need to enumerate references at the old location
-                    string resource_oldpath = ((ObjCommon.ResourceListResourceDocument)o).ResourceId;
+                    string resource_oldpath = ((ResourceListResourceDocument)o).ResourceId;
                     resource_oldpath = oldpath + resource_oldpath.Substring(newpath.Length);
 
-                    ObjCommon.ResourceReferenceList rlf = EnumerateResourceReferences(resource_oldpath);
+                    ResourceReferenceList rlf = EnumerateResourceReferences(resource_oldpath);
                     foreach (string s in rlf.ResourceId)
                         if (!items.Contains(s))
                             items.Add(s, new LengthyOperationCallbackArgs.LengthyOperationItem(s));
@@ -989,7 +963,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             oldpath = FixAndValidateFolderPath(oldpath);
             newpath = FixAndValidateFolderPath(newpath);
-            ObjCommon.ResourceList lst = GetRepositoryResources(oldpath);
+            ResourceList lst = GetRepositoryResources(oldpath);
 
             LengthyOperationProgressArgs la = new LengthyOperationProgressArgs(Strings.ProgressCopyingFolder, -1);
             if (progress != null)
@@ -1014,9 +988,9 @@ namespace OSGeo.MapGuide.MaestroAPI
             Hashtable paths = new Hashtable();
             foreach (object o in lst.Items)
             {
-                if (o.GetType() == typeof(ObjCommon.ResourceListResourceDocument))
+                if (o.GetType() == typeof(ResourceListResourceDocument))
                 {
-                    ObjCommon.ResourceReferenceList rlf = EnumerateResourceReferences(((ObjCommon.ResourceListResourceDocument)o).ResourceId);
+                    ResourceReferenceList rlf = EnumerateResourceReferences(((ResourceListResourceDocument)o).ResourceId);
                     foreach (string s in rlf.ResourceId)
                         if (s.StartsWith(oldpath))
                         {
@@ -1122,10 +1096,10 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Creates a folder on the server
         /// </summary>
         /// <param name="resourceID">The path of the folder to create</param>
-        virtual public void CreateFolder(string resourceID)
+        public virtual void CreateFolder(string resourceID)
         {
             resourceID = FixAndValidateFolderPath(resourceID);
-            SetResourceXmlData(resourceID, new System.IO.MemoryStream());
+            SetResourceXmlData(resourceID, new MemoryStream());
         }
 
         /// <summary>
@@ -1133,13 +1107,13 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="folderpath">The path of the folder</param>
         /// <returns>True if the folder exists, false otherwise. Also returns false on error.</returns>
-        virtual public bool HasFolder(string folderpath)
+        public virtual bool HasFolder(string folderpath)
         {
             folderpath = FixAndValidateFolderPath(folderpath);
 
             try
             {
-                ObjCommon.ResourceList l = this.GetRepositoryResources(folderpath, 1);
+                ResourceList l = this.GetRepositoryResources(folderpath, 1);
                 return true;
             }
             catch
@@ -1153,7 +1127,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="resourceid">The resource to enumerate references for</param>
         /// <returns>A list of resources that reference the given resourceID</returns>
-        abstract public ObjCommon.ResourceReferenceList EnumerateResourceReferences(string resourceid);
+        public abstract ResourceReferenceList EnumerateResourceReferences(string resourceid);
 
         /// <summary>
         /// Copies a resource from one location to another. This does not update any references.
@@ -1161,7 +1135,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="oldpath">The current resource path, the one copying from</param>
         /// <param name="newpath">The new resource path, the one copying to</param>
         /// <param name="overwrite">True if the copy can overwrite an existing resource, false otherwise</param>
-        abstract public void CopyResource(string oldpath, string newpath, bool overwrite);
+        public abstract void CopyResource(string oldpath, string newpath, bool overwrite);
 
         /// <summary>
         /// Copies a folder and all its content. This does not update any references.
@@ -1169,7 +1143,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="oldpath">The current folder path, the one copying from</param>
         /// <param name="newpath">The new folder path, the one copying to</param>
         /// <param name="overwrite">True if the copy can overwrite an existing folder, false otherwise</param>
-        abstract public void CopyFolder(string oldpath, string newpath, bool overwrite);
+        public abstract void CopyFolder(string oldpath, string newpath, bool overwrite);
 
         /// <summary>
         /// Moves a resource from one location to another. This does not update any references.
@@ -1177,7 +1151,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="oldpath">The current resource path, the one moving from</param>
         /// <param name="newpath">The new resource path, the one moving to</param>
         /// <param name="overwrite">True if the move can overwrite an existing resource, false otherwise</param>
-        abstract public void MoveResource(string oldpath, string newpath, bool overwrite);
+        public abstract void MoveResource(string oldpath, string newpath, bool overwrite);
 
         /// <summary>
         /// Moves a folder and its content from one location to another. This does not update any references.
@@ -1185,7 +1159,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="oldpath">The current folder path, the one moving from</param>
         /// <param name="newpath">The new folder path, the one moving to</param>
         /// <param name="overwrite">True if the move can overwrite an existing folder, false otherwise</param>
-        abstract public void MoveFolder(string oldpath, string newpath, bool overwrite);
+        public abstract void MoveFolder(string oldpath, string newpath, bool overwrite);
 
         /// <summary>
         /// Returns data from a resource as a memorystream
@@ -1193,7 +1167,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="resourceID">The id of the resource to fetch data from</param>
         /// <param name="dataname">The name of the associated data item</param>
         /// <returns>A stream containing the references resource data</returns>
-        abstract public System.IO.Stream GetResourceData(string resourceID, string dataname);
+        public abstract Stream GetResourceData(string resourceID, string dataname);
 
         /// <summary>
         /// Uploads data to a resource
@@ -1202,10 +1176,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="dataname">The name of the data to update or create</param>
         /// <param name="datatype">The type of data</param>
         /// <param name="stream">A stream containing the new content of the resource data</param>
-        virtual public void SetResourceData(string resourceid, string dataname, ObjCommon.ResourceDataType datatype, System.IO.Stream stream)
-        {
-            SetResourceData(resourceid, dataname, datatype, stream, null);
-        }
+        public virtual void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, Stream stream) => SetResourceData(resourceid, dataname, datatype, stream, null);
 
         /// <summary>
         /// Uploads data to a resource
@@ -1215,7 +1186,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="datatype">The type of data</param>
         /// <param name="stream">A stream containing the new content of the resource data</param>
         /// <param name="callback">The callback.</param>
-        abstract public void SetResourceData(string resourceid, string dataname, ObjCommon.ResourceDataType datatype, System.IO.Stream stream, Utility.StreamCopyProgressDelegate callback);
+        public abstract void SetResourceData(string resourceid, string dataname, ResourceDataType datatype, Stream stream, Utility.StreamCopyProgressDelegate callback);
 
         /// <summary>
         /// Removes all cached items associated with the given feature source
@@ -1298,21 +1269,21 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="filename">Name of the file to upload</param>
         /// <param name="callback">A callback argument used to display progress. May be null.</param>
-        abstract public void UploadPackage(string filename, Utility.StreamCopyProgressDelegate callback);
+        public abstract void UploadPackage(string filename, Utility.StreamCopyProgressDelegate callback);
 
         /// <summary>
         /// Updates the repository.
         /// </summary>
         /// <param name="resourceId">The resource id.</param>
         /// <param name="header">The header.</param>
-        abstract public void UpdateRepository(string resourceId, ObjCommon.ResourceFolderHeaderType header);
+        public abstract void UpdateRepository(string resourceId, ResourceFolderHeaderType header);
 
         /// <summary>
         /// Gets the folder or resource header.
         /// </summary>
         /// <param name="resourceId">The resource id.</param>
         /// <returns></returns>
-        abstract public object GetFolderOrResourceHeader(string resourceId);
+        public abstract object GetFolderOrResourceHeader(string resourceId);
 
         /// <summary>
         /// Sets the resource XML data.
@@ -1320,33 +1291,30 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="resourceId">The resource id.</param>
         /// <param name="content">The content.</param>
         /// <param name="header">The header.</param>
-        abstract public void SetResourceXmlData(string resourceId, System.IO.Stream content, System.IO.Stream header);
+        public abstract void SetResourceXmlData(string resourceId, System.IO.Stream content, System.IO.Stream header);
 
         /// <summary>
         /// Gets the resource header.
         /// </summary>
         /// <param name="resourceID">The resource ID.</param>
         /// <returns></returns>
-        public virtual ObjCommon.ResourceDocumentHeaderType GetResourceHeader(string resourceID)
-        {
-            return (ObjCommon.ResourceDocumentHeaderType)this.GetFolderOrResourceHeader(resourceID);
-        }
+        public virtual ResourceDocumentHeaderType GetResourceHeader(string resourceID) => (ResourceDocumentHeaderType)this.GetFolderOrResourceHeader(resourceID);
 
         /// <summary>
         /// Gets the folder header.
         /// </summary>
         /// <param name="resourceID">The resource ID.</param>
         /// <returns></returns>
-        public virtual ObjCommon.ResourceFolderHeaderType GetFolderHeader(string resourceID)
+        public virtual ResourceFolderHeaderType GetFolderHeader(string resourceID)
         {
             if (resourceID.EndsWith("//"))
             {
-                ObjCommon.ResourceList lst = this.GetRepositoryResources(resourceID, 0);
-                ObjCommon.ResourceListResourceFolder fld = lst.Items[0] as ObjCommon.ResourceListResourceFolder;
+                ResourceList lst = this.GetRepositoryResources(resourceID, 0);
+                ResourceListResourceFolder fld = lst.Items[0] as ResourceListResourceFolder;
                 return fld.ResourceFolderHeader;
             }
             else
-                return (ObjCommon.ResourceFolderHeaderType)this.GetFolderOrResourceHeader(resourceID);
+                return (ResourceFolderHeaderType)this.GetFolderOrResourceHeader(resourceID);
         }
 
         /// <summary>
@@ -1354,20 +1322,14 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="resourceID">The resource ID.</param>
         /// <param name="header">The header.</param>
-        public virtual void SetFolderHeader(string resourceID, ObjCommon.ResourceFolderHeaderType header)
-        {
-            SetFolderOrResourceHeader(resourceID, header);
-        }
+        public virtual void SetFolderHeader(string resourceID, ResourceFolderHeaderType header) => SetFolderOrResourceHeader(resourceID, header);
 
         /// <summary>
         /// Sets the resource header.
         /// </summary>
         /// <param name="resourceID">The resource ID.</param>
         /// <param name="header">The header.</param>
-        public virtual void SetResourceHeader(string resourceID, ObjCommon.ResourceDocumentHeaderType header)
-        {
-            SetFolderOrResourceHeader(resourceID, header);
-        }
+        public virtual void SetResourceHeader(string resourceID, ResourceDocumentHeaderType header) => SetFolderOrResourceHeader(resourceID, header);
 
         /// <summary>
         /// Sets the folder or resource header.
@@ -1379,11 +1341,11 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (header == null)
                 throw new ArgumentNullException(nameof(header)); //NOXLATE
 
-            ObjCommon.ResourceSecurityType sec;
-            if (header as ObjCommon.ResourceFolderHeaderType != null)
-                sec = (header as ObjCommon.ResourceFolderHeaderType).Security;
-            else if (header as ObjCommon.ResourceDocumentHeaderType != null)
-                sec = (header as ObjCommon.ResourceDocumentHeaderType).Security;
+            ResourceSecurityType sec;
+            if (header as ResourceFolderHeaderType != null)
+                sec = (header as ResourceFolderHeaderType).Security;
+            else if (header as ResourceDocumentHeaderType != null)
+                sec = (header as ResourceDocumentHeaderType).Security;
             else
                 throw new ArgumentException(Strings.ErrorInvalidResourceHeaderRootElement, nameof(header)); //NOXLATE
 
@@ -1395,9 +1357,9 @@ namespace OSGeo.MapGuide.MaestroAPI
 
             if (resourceID.EndsWith("//")) //NOXLATE
             {
-                if (header as ObjCommon.ResourceFolderHeaderType == null)
+                if (header as ResourceFolderHeaderType == null)
                     throw new Exception(string.Format(Strings.ErrorResourceMustBeUpdatedWithFolderHeader, resourceID));
-                UpdateRepository(resourceID, header as ObjCommon.ResourceFolderHeaderType);
+                UpdateRepository(resourceID, header as ResourceFolderHeaderType);
             }
             else
                 this.SetResourceXmlData(resourceID, null, this.SerializeObject(header));
@@ -1411,7 +1373,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="recursive">True if the list should contains recursive results</param>
         /// <param name="startpath">The path to retrieve the data from</param>
         /// <returns>A list of unmanaged data</returns>
-        abstract public ObjCommon.UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type);
+        public abstract UnmanagedDataList EnumerateUnmanagedData(string startpath, string filter, bool recursive, UnmanagedDataTypes type);
 
         #endregion Resource Service
 
@@ -1422,10 +1384,10 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="providername">The name of the provider</param>
         /// <returns>The first matching provider or null</returns>
-        virtual public ObjCommon.FeatureProviderRegistryFeatureProvider GetFeatureProvider(string providername)
+        public virtual FeatureProviderRegistryFeatureProvider GetFeatureProvider(string providername)
         {
             string pname = RemoveVersionFromProviderName(providername).ToLower();
-            foreach (ObjCommon.FeatureProviderRegistryFeatureProvider p in this.FeatureProviders)
+            foreach (FeatureProviderRegistryFeatureProvider p in this.FeatureProviders)
                 if (RemoveVersionFromProviderName(p.Name).ToLower().Equals(pname.ToLower()))
                     return p;
 
@@ -1442,7 +1404,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Gets a list of installed feature providers
         /// </summary>
-        abstract public ObjCommon.FeatureProviderRegistryFeatureProvider[] FeatureProviders { get; }
+        public abstract FeatureProviderRegistryFeatureProvider[] FeatureProviders { get; }
 
         /// <summary>
         /// Returns the spatial info for a given featuresource
@@ -1450,7 +1412,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="resourceID">The ID of the resource to query</param>
         /// <param name="activeOnly">Query only active items</param>
         /// <returns>A list of spatial contexts</returns>
-        abstract public ObjCommon.FdoSpatialContextList GetSpatialContextInfo(string resourceID, bool activeOnly);
+        public abstract FdoSpatialContextList GetSpatialContextInfo(string resourceID, bool activeOnly);
 
         /// <summary>
         /// Gets the names of the identity properties from a feature
@@ -1458,7 +1420,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="resourceID">The resourceID for the FeatureSource</param>
         /// <param name="classname">The classname of the feature, including schema</param>
         /// <returns>A string array with the found identities</returns>
-        abstract public string[] GetIdentityProperties(string resourceID, string classname);
+        public abstract string[] GetIdentityProperties(string resourceID, string classname);
 
         /// <summary>
         /// Describes the feature source.
@@ -1466,7 +1428,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="resourceID">The resource ID.</param>
         /// <param name="schema">The schema.</param>
         /// <returns></returns>
-        abstract public FeatureSchema DescribeFeatureSource(string resourceID, string schema);
+        public abstract FeatureSchema DescribeFeatureSource(string resourceID, string schema);
 
         /// <summary>
         /// Describes the specified feature source restricted to only the specified schema and the specified class names
@@ -1527,7 +1489,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             }
 #if DEBUG
             if (bFromCache)
-                System.Diagnostics.Trace.TraceInformation("Returning cached description for {0}", resourceID); //NOXLATE
+                System.Diagnostics.Trace.TraceInformation($"Returning cached description for {resourceID}"); //NOXLATE
 #endif
             //Return a clone to ensure immutability of cached one
             return FeatureSourceDescription.Clone(m_featureSchemaCache[resourceID]);
@@ -1589,7 +1551,7 @@ namespace OSGeo.MapGuide.MaestroAPI
 
 #if DEBUG
             if (bFromCache)
-                System.Diagnostics.Trace.TraceInformation("Returning cached class ({0}) for {1}", className, resourceID); //NOXLATE
+                System.Diagnostics.Trace.TraceInformation($"Returning cached class ({className}) for {resourceID}"); //NOXLATE
 #endif
 
             if (cls != null)
@@ -1608,9 +1570,9 @@ namespace OSGeo.MapGuide.MaestroAPI
             return null;
         }
 
-        internal int CachedFeatureSources { get { return m_featureSchemaCache.Count; } }
+        internal int CachedFeatureSources => m_featureSchemaCache.Count;
 
-        internal int CachedClassDefinitions { get { return m_classDefinitionCache.Count; } }
+        internal int CachedClassDefinitions => m_classDefinitionCache.Count;
 
         /// <summary>
         /// Resets the feature source schema cache.
@@ -1628,10 +1590,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="schema">The schema name</param>
         /// <param name="filter">The filter to apply to the </param>
         /// <returns>A FeatureSetReader with the aggregated values</returns>
-        public virtual IReader AggregateQueryFeatureSource(string resourceID, string schema, string filter)
-        {
-            return AggregateQueryFeatureSource(resourceID, schema, filter, (string[])null);
-        }
+        public virtual IReader AggregateQueryFeatureSource(string resourceID, string schema, string filter) => AggregateQueryFeatureSource(resourceID, schema, filter, (string[])null);
 
         /// <summary>
         /// Performs an aggregate query on columns in the datasource
@@ -1660,10 +1619,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="schema">The schema.</param>
         /// <param name="geometry">The geometry.</param>
         /// <returns></returns>
-        public virtual OSGeo.MapGuide.ObjectModels.Common.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry)
-        {
-            return GetSpatialExtent(resourceID, schema, geometry, null, false);
-        }
+        public virtual ObjCommon.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry) => GetSpatialExtent(resourceID, schema, geometry, null, false);
 
         /// <summary>
         /// Gets the spatial extent.
@@ -1673,10 +1629,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="geometry">The geometry.</param>
         /// <param name="filter">The filter.</param>
         /// <returns></returns>
-        public virtual OSGeo.MapGuide.ObjectModels.Common.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, string filter)
-        {
-            return GetSpatialExtent(resourceID, schema, geometry, filter, false);
-        }
+        public virtual ObjCommon.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, string filter) => GetSpatialExtent(resourceID, schema, geometry, filter, false);
 
         /// <summary>
         /// Gets the spatial extent.
@@ -1686,10 +1639,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="geometry">The geometry.</param>
         /// <param name="allowFallbackToContextInformation">if set to <c>true</c> [allow fallback to context information].</param>
         /// <returns></returns>
-        public virtual OSGeo.MapGuide.ObjectModels.Common.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, bool allowFallbackToContextInformation)
-        {
-            return GetSpatialExtent(resourceID, schema, geometry, null, allowFallbackToContextInformation);
-        }
+        public virtual ObjCommon.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, bool allowFallbackToContextInformation) => GetSpatialExtent(resourceID, schema, geometry, null, allowFallbackToContextInformation);
 
         /// <summary>
         /// Gets the spatial extent.
@@ -1701,14 +1651,14 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="allowFallbackToContextInformation">if set to <c>true</c> [allow fallback to context information].</param>
         /// <exception cref="T:OSGeo.MapGuide.MaestroAPI.Exceptions.NullExtentException">Thrown if the geometric extent is null</exception>
         /// <returns></returns>
-        protected virtual OSGeo.MapGuide.ObjectModels.Common.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, string filter, bool allowFallbackToContextInformation)
+        protected virtual ObjCommon.IEnvelope GetSpatialExtent(string resourceID, string schema, string geometry, string filter, bool allowFallbackToContextInformation)
         {
             Check.ArgumentNotEmpty(schema, nameof(schema));
             Check.ArgumentNotEmpty(geometry, nameof(geometry));
             try
             {
-                System.Collections.Specialized.NameValueCollection fun = new System.Collections.Specialized.NameValueCollection();
-                fun.Add("EXTENT", "SpatialExtents(\"" + geometry + "\")"); //NOXLATE
+                var fun = new NameValueCollection();
+                fun.Add("EXTENT", $"SpatialExtents(\"{geometry}\")"); //NOXLATE
                 using (IReader fsr = AggregateQueryFeatureSource(resourceID, schema, filter, fun))
                 {
                     try
@@ -1726,7 +1676,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                             else
                             {
                                 var env = geom.EnvelopeInternal;
-                                return OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateEnvelope(
+                                return ObjectFactory.CreateEnvelope(
                                     env.MinX,
                                     env.MinY,
                                     env.MaxX,
@@ -1747,10 +1697,10 @@ namespace OSGeo.MapGuide.MaestroAPI
                 if (allowFallbackToContextInformation)
                     try
                     {
-                        ObjCommon.FdoSpatialContextList lst = this.GetSpatialContextInfo(resourceID, false);
+                        FdoSpatialContextList lst = this.GetSpatialContextInfo(resourceID, false);
                         if (lst.SpatialContext != null && lst.SpatialContext.Count >= 1)
                         {
-                            return OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateEnvelope(
+                            return ObjectFactory.CreateEnvelope(
                                 double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.X, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture),
                                 double.Parse(lst.SpatialContext[0].Extent.LowerLeftCoordinate.Y, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture),
                                 double.Parse(lst.SpatialContext[0].Extent.UpperRightCoordinate.X, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture),
@@ -1772,7 +1722,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="providerName">Name of the provider.</param>
         /// <param name="partialConnString">The partial conn string.</param>
         /// <returns></returns>
-        public abstract OSGeo.MapGuide.ObjectModels.Common.DataStoreList EnumerateDataStores(string providerName, string partialConnString);
+        public abstract DataStoreList EnumerateDataStores(string providerName, string partialConnString);
 
         /// <summary>
         /// Gets the schemas.
@@ -1813,10 +1763,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="className">The feature class name</param>
         /// <param name="filter">The FDO filter string that determines what features will be returned</param>
         /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader"/> containing the results of the query</returns>
-        public IFeatureReader QueryFeatureSource(string resourceID, string className, string filter)
-        {
-            return QueryFeatureSource(resourceID, className, filter, null);
-        }
+        public IFeatureReader QueryFeatureSource(string resourceID, string className, string filter) => QueryFeatureSource(resourceID, className, filter, null);
 
         /// <summary>
         /// Executes a feature query on the specified feature source
@@ -1824,10 +1771,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="resourceID">The Feature Source ID</param>
         /// <param name="className">The feature class name</param>
         /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader"/> containing the results of the query</returns>
-        public IFeatureReader QueryFeatureSource(string resourceID, string className)
-        {
-            return QueryFeatureSource(resourceID, className, null, null);
-        }
+        public IFeatureReader QueryFeatureSource(string resourceID, string className) => QueryFeatureSource(resourceID, className, null, null);
 
         /// <summary>
         /// Executes a feature query on the specified feature source
@@ -1837,10 +1781,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="filter">The FDO filter string that determines what features will be returned</param>
         /// <param name="propertyNames">A list of properties that are to be returned in the query result</param>
         /// <returns>A <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader"/> containing the results of the query</returns>
-        public IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames)
-        {
-            return QueryFeatureSource(resourceID, className, filter, propertyNames, null);
-        }
+        public IFeatureReader QueryFeatureSource(string resourceID, string className, string filter, string[] propertyNames) => QueryFeatureSource(resourceID, className, filter, propertyNames, null);
 
         /// <summary>
         /// Executes a feature query on the specified feature source
@@ -1879,16 +1820,13 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Gets the highest version the API is currently tested againts
         /// </summary>
-        virtual public Version MaxTestedVersion
-        {
-            get { return SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_1); }
-        }
+        public virtual Version MaxTestedVersion => SiteVersions.GetVersion(KnownSiteVersions.MapGuideOS2_1);
 
         /// <summary>
         /// Gets the site version.
         /// </summary>
         /// <value>The site version.</value>
-        abstract public Version SiteVersion { get; }
+        public abstract Version SiteVersion { get; }
 
         /// <summary>
         /// Gets the custom property names.
@@ -1971,10 +1909,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Gets the MPU calculator
         /// </summary>
         /// <returns></returns>
-        public virtual IMpuCalculator GetCalculator()
-        {
-            return new DefaultCalculator(this);
-        }
+        public virtual IMpuCalculator GetCalculator() => new DefaultCalculator(this);
 
         /// <summary>
         /// Creates the map group.
@@ -1982,11 +1917,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
         /// <param name="name">The name.</param>
         /// <returns></returns>
-        public virtual RuntimeMapGroup CreateMapGroup(RuntimeMap parent, string name)
-        {
-            //TODO: Review when we split implementations
-            return new RuntimeMapGroup(parent, name);
-        }
+        public virtual RuntimeMapGroup CreateMapGroup(RuntimeMap parent, string name) => new RuntimeMapGroup(parent, name); //TODO: Review when we decide to split the implementations
 
         /// <summary>
         /// Creates a new runtime map group
@@ -1994,11 +1925,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="parent">The map.</param>
         /// <param name="group">The group.</param>
         /// <returns></returns>
-        public virtual RuntimeMapGroup CreateMapGroup(RuntimeMap parent, IBaseMapGroup group)
-        {
-            //TODO: Review when we split implementations
-            return new RuntimeMapGroup(parent, group);
-        }
+        public virtual RuntimeMapGroup CreateMapGroup(RuntimeMap parent, IBaseMapGroup group) => new RuntimeMapGroup(parent, group); //TODO: Review when we decide to split the implementations
 
         /// <summary>
         /// Creates a new runtime map group
@@ -2006,11 +1933,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
         /// <param name="group">The group.</param>
         /// <returns></returns>
-        public virtual RuntimeMapGroup CreateMapGroup(RuntimeMap parent, IMapLayerGroup group)
-        {
-            //TODO: Review when we split implementations
-            return new RuntimeMapGroup(parent, group);
-        }
+        public virtual RuntimeMapGroup CreateMapGroup(RuntimeMap parent, IMapLayerGroup group) => new RuntimeMapGroup(parent, group); //TODO: Review when we decide to split the implementations
 
         /// <summary>
         /// Creates a new runtime map layer from the specified Layer Definition
@@ -2018,11 +1941,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
         /// <param name="ldf">The layer definition</param>
         /// <returns></returns>
-        public virtual RuntimeMapLayer CreateMapLayer(RuntimeMap parent, ILayerDefinition ldf)
-        {
-            //TODO: Review when we decide to split the implementations
-            return CreateMapLayer(parent, ldf, true);
-        }
+        public virtual RuntimeMapLayer CreateMapLayer(RuntimeMap parent, ILayerDefinition ldf) => CreateMapLayer(parent, ldf, true); //TODO: Review when we decide to split the implementations
 
         /// <summary>
         /// Creates a new runtime map layer from the specified Layer Definition
@@ -2031,11 +1950,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="ldf">The layer definition</param>
         /// <param name="suppressErrors"></param>
         /// <returns></returns>
-        public virtual RuntimeMapLayer CreateMapLayer(RuntimeMap parent, ILayerDefinition ldf, bool suppressErrors)
-        {
-            //TODO: Review when we decide to split the implementations
-            return new RuntimeMapLayer(parent, ldf, suppressErrors);
-        }
+        public virtual RuntimeMapLayer CreateMapLayer(RuntimeMap parent, ILayerDefinition ldf, bool suppressErrors) => new RuntimeMapLayer(parent, ldf, suppressErrors); //TODO: Review when we decide to split the implementations
 
         /// <summary>
         /// Creates a new runtime map layer from the specified <see cref="T:OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer"/> instance
@@ -2043,10 +1958,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
         /// <param name="source">The map definition layer</param>
         /// <returns></returns>
-        public RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IBaseMapLayer source)
-        {
-            return CreateMapLayer(parent, source, true);
-        }
+        public RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IBaseMapLayer source) => CreateMapLayer(parent, source, true);
 
         /// <summary>
         /// Creates a new runtime map layer from the specified <see cref="T:OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer"/> instance
@@ -2078,10 +1990,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="parent">The parent runtime map. The runtime map must have been created or opened from this same service instance</param>
         /// <param name="source">The map definition layer</param>
         /// <returns></returns>
-        public RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IMapLayer source)
-        {
-            return CreateMapLayer(parent, source);
-        }
+        public RuntimeMapLayer CreateMapLayer(RuntimeMap parent, IMapLayer source) => CreateMapLayer(parent, source);
 
         /// <summary>
         /// Creates a new runtime map layer from the specified <see cref="T:OSGeo.MapGuide.ObjectModels.MapDefinition.IBaseMapLayer"/> instance
@@ -2121,10 +2030,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="runtimeMapResourceId"></param>
         /// <param name="baseMapDefinitionId"></param>
         /// <returns></returns>
-        public RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId)
-        {
-            return CreateMap(runtimeMapResourceId, baseMapDefinitionId, true);
-        }
+        public RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId) => CreateMap(runtimeMapResourceId, baseMapDefinitionId, true);
 
         /// <summary>
         /// Creates a new runtime map instance from an existing map definition. Meters per unit
@@ -2156,10 +2062,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="baseMapDefinitionId"></param>
         /// <param name="metersPerUnit"></param>
         /// <returns></returns>
-        public virtual RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId, double metersPerUnit)
-        {
-            return CreateMap(runtimeMapResourceId, baseMapDefinitionId, metersPerUnit, true);
-        }
+        public virtual RuntimeMap CreateMap(string runtimeMapResourceId, string baseMapDefinitionId, double metersPerUnit) => CreateMap(runtimeMapResourceId, baseMapDefinitionId, metersPerUnit, true);
 
         /// <summary>
         /// Creates a new runtime map instance from an existing map definition
@@ -2181,10 +2084,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="mdf"></param>
         /// <returns></returns>
-        public RuntimeMap CreateMap(IMapDefinition mdf)
-        {
-            return CreateMap(mdf, true);
-        }
+        public RuntimeMap CreateMap(IMapDefinition mdf) => CreateMap(mdf, true);
 
         /// <summary>
         /// Creates a new runtime map instance from an existing map definition.  The runtime map resource id is calculated from the
@@ -2206,10 +2106,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="mdf">The map definition.</param>
         /// <param name="metersPerUnit">The meters per unit.</param>
         /// <returns></returns>
-        public RuntimeMap CreateMap(IMapDefinition mdf, double metersPerUnit)
-        {
-            return CreateMap(mdf, metersPerUnit, true);
-        }
+        public RuntimeMap CreateMap(IMapDefinition mdf, double metersPerUnit) => CreateMap(mdf, metersPerUnit, true);
 
         /// <summary>
         /// Creates a new runtime map instance from an existing map definition. The runtime map resource id is calculated from the
@@ -2239,10 +2136,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="runtimeMapResourceId"></param>
         /// <param name="mdf"></param>
         /// <returns></returns>
-        public RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf)
-        {
-            return CreateMap(runtimeMapResourceId, mdf, true);
-        }
+        public RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf) => CreateMap(runtimeMapResourceId, mdf, true);
 
         /// <summary>
         /// Creates a new runtime map instance from an existing map definition. Meters per unit
@@ -2273,10 +2167,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="mdf"></param>
         /// <param name="metersPerUnit"></param>
         /// <returns></returns>
-        public virtual RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, double metersPerUnit)
-        {
-            return CreateMap(runtimeMapResourceId, mdf, metersPerUnit, true);
-        }
+        public virtual RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, double metersPerUnit) => CreateMap(runtimeMapResourceId, mdf, metersPerUnit, true);
 
         /// <summary>
         /// Creates a new runtime map instance from an existing map definition

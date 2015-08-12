@@ -52,10 +52,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// Gets the elements specifying the path.
         /// </summary>
         /// <remarks>The order of the elements determines the path.</remarks>
-        public QualifiedNameCollection Elements
-        {
-            get { return elements; }
-        }
+        public QualifiedNameCollection Elements => elements;
 
         /// <summary>
         /// Compacts the path so it only contains the elements that are from
@@ -86,10 +83,13 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         /// </summary>
         public override bool Equals(object obj)
         {
-            if (!(obj is XmlElementPath)) return false;
-            if (this == obj) return true;
+            var rhs = obj as XmlElementPath;
 
-            XmlElementPath rhs = (XmlElementPath)obj;
+            if (rhs == null)
+                return false;
+            if (this == obj)
+                return true;
+            
             if (elements.Count == rhs.elements.Count)
             {
                 for (int i = 0; i < elements.Count; ++i)
@@ -105,10 +105,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return false;
         }
 
-        public override int GetHashCode()
-        {
-            return elements.GetHashCode();
-        }
+        public override int GetHashCode() => elements.GetHashCode();
 
         /// <summary>
         /// Gets a string that represents the XmlElementPath.
@@ -134,7 +131,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
                 }
                 return toString.ToString();
             }
-            return String.Empty;
+            return string.Empty;
         }
 
         /// <summary>
@@ -182,7 +179,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
         {
             if (name.Prefix.Length > 0)
             {
-                return name.Prefix + ":" + name.Name;
+                return $"{name.Prefix}:{name.Name}";
             }
             return name.Name;
         }

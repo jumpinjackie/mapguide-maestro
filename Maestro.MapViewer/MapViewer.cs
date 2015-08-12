@@ -1764,18 +1764,12 @@ namespace Maestro.MapViewer
         /// <summary>
         /// Gets the current index in the view history stack
         /// </summary>
-        public int ViewHistoryIndex
-        {
-            get { return _viewHistoryIndex; }
-        }
+        public int ViewHistoryIndex => _viewHistoryIndex;
 
         /// <summary>
         /// Gets the view history stack. The first item being the earliest and the last item being the most recent.
         /// </summary>
-        public ReadOnlyCollection<MapViewHistoryEntry> ViewHistory
-        {
-            get { return _viewHistory.AsReadOnly(); }
-        }
+        public ReadOnlyCollection<MapViewHistoryEntry> ViewHistory => _viewHistory.AsReadOnly();
 
         internal void ZoomToView(double x, double y, double scale, bool refresh, bool raiseEvents, bool addToHistoryStack)
         {

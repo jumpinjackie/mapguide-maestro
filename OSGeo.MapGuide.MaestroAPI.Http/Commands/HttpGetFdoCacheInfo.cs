@@ -33,11 +33,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Http.Commands
             _conn = conn;
         }
 
-        public IServerConnection Parent { get { return _conn; } }
+        public IServerConnection Parent => _conn;
 
-        public FdoCacheInfo Execute()
-        {
-            return _conn.GetFdoCacheInfo();
-        }
+        public FdoCacheInfo Execute() => _conn.GetFdoCacheInfo();
     }
 }

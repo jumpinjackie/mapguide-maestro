@@ -76,7 +76,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Gets or sets a value indicating if the session should automatically be restarted if it expires
         /// </summary>
-        virtual public bool AutoRestartSession
+        public virtual bool AutoRestartSession
         {
             get { return m_autoRestartSession; }
             set
@@ -107,15 +107,12 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="ex">The exception to evaluate</param>
         /// <returns>True if the exception is a session expired exception</returns>
-        abstract public bool IsSessionExpiredException(Exception ex);
+        public abstract bool IsSessionExpiredException(Exception ex);
 
         /// <summary>
         /// Restarts the server session, and creates a new session ID
         /// </summary>
-        public void RestartSession()
-        {
-            RestartSession(true);
-        }
+        public void RestartSession() => RestartSession(true);
 
         /// <summary>
         /// Raised when the associated session id has changed. This would happen if the connection detected an expired session
@@ -149,9 +146,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             {
                 if (oldSessionId != newSessionId)
                 {
-                    var h = this.SessionIDChanged;
-                    if (h != null)
-                        h(this, EventArgs.Empty);
+                    this.SessionIDChanged?.Invoke(this, EventArgs.Empty);
                 }
             }
         }
@@ -177,23 +172,20 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// Gets a list of all users on the server
         /// </summary>
         /// <returns>The list of users</returns>
-        public virtual ObjCommon.UserList EnumerateUsers()
-        {
-            return this.EnumerateUsers(null);
-        }
+        public virtual ObjCommon.UserList EnumerateUsers() => this.EnumerateUsers(null);
 
         /// <summary>
         /// Gets a list of users in a group
         /// </summary>
         /// <param name="group">The group to retrieve the users from</param>
         /// <returns>The list of users</returns>
-        abstract public ObjCommon.UserList EnumerateUsers(string group);
+        public abstract ObjCommon.UserList EnumerateUsers(string group);
 
         /// <summary>
         /// Gets a list of all groups on the server
         /// </summary>
         /// <returns>The list of groups</returns>
-        abstract public ObjCommon.GroupList EnumerateGroups();
+        public abstract ObjCommon.GroupList EnumerateGroups();
 
         #endregion Site
 
@@ -219,10 +211,8 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="themeIndex">If the layer is themed, this gives the theme index, otherwise set to 0</param>
         /// <param name="type">The geometry type, 1 for point, 2 for line, 3 for area, 4 for composite</param>
         /// <returns>The minature bitmap</returns>
-        public virtual System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type)
-        {
-            return GetLegendImage(scale, layerdefinition, themeIndex, type, 16, 16, "PNG"); //NOXLATE
-        }
+        public virtual Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type) 
+            => GetLegendImage(scale, layerdefinition, themeIndex, type, 16, 16, "PNG");
 
         /// <summary>
         /// Gets the legend image.
@@ -235,7 +225,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="height">The height.</param>
         /// <param name="format">The format.</param>
         /// <returns></returns>
-        abstract public System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format);
+        public abstract Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format);
 
         /// <summary>
         /// Renders the runtime map.
@@ -249,9 +239,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="dpi">The dpi.</param>
         /// <returns></returns>
         public virtual System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi)
-        {
-            return this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, "PNG", false); //NOXLATE
-        }
+            => this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, "PNG", false);
 
         /// <summary>
         /// Renders the runtime map.
@@ -266,9 +254,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="dpi">The dpi.</param>
         /// <returns></returns>
         public virtual System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi)
-        {
-            return this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, "PNG", false); //NOXLATE
-        }
+            => this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, "PNG", false);
 
         /// <summary>
         /// Renders the runtime map.
@@ -283,9 +269,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="format">The format.</param>
         /// <returns></returns>
         public virtual System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format)
-        {
-            return this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, format, false);
-        }
+            => this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, format, false);
 
         /// <summary>
         /// Renders the runtime map.
@@ -301,9 +285,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="format">The format.</param>
         /// <returns></returns>
         public virtual System.IO.Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format)
-        {
-            return this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, format, false);
-        }
+            => this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, format, false);
 
         /// <summary>
         /// Renders the runtime map.

@@ -38,7 +38,7 @@ namespace Maestro.AddIn.Local.UI
             InitializeComponent();
             _conn = conn;
 
-            new MapViewerController(viewer, legend, this, propertyPane, toolbar);
+            var cntrl = new MapViewerController(viewer, legend, this, propertyPane, toolbar);
             this.Disposed += OnDisposed;
         }
 

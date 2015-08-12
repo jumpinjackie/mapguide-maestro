@@ -22,6 +22,7 @@
 
 using OSGeo.MapGuide.ObjectModels;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
@@ -73,10 +74,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// Gets the resource IDs
         /// </summary>
         /// <value>The resource IDs.</value>
-        public string[] ResourceIDs
-        {
-            get { return new List<string>(_issues.Keys).ToArray(); }
-        }
+        public string[] ResourceIDs => _issues.Keys.ToArray();
 
         /// <summary>
         /// Gets the issues for resource.

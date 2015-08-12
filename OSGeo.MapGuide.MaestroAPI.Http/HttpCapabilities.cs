@@ -62,14 +62,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Http
             }
         }
 
-        public override bool SupportsResourcePreviews
-        {
-            get { return true; }
-        }
+        public override bool SupportsResourcePreviews => true;
 
-        public override bool IsMultithreaded
-        {
-            get { return false; }
-        }
+        public override bool IsMultithreaded => false;
     }
 }

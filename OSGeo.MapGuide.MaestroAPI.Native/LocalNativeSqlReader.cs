@@ -42,10 +42,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             _wktRw = new MgWktReaderWriter();
         }
 
-        public override ReaderType ReaderType
-        {
-            get { return ReaderType.Sql; }
-        }
+        public override ReaderType ReaderType => ReaderType.Sql;
 
         public override void Dispose()
         {
@@ -85,15 +82,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return null;
         }
 
-        public override PropertyValueType GetPropertyType(int index)
-        {
-            return (PropertyValueType)_reader.GetPropertyType(index); //We can do this because the enum values map directly to MgPropertyType
-        }
+        public override PropertyValueType GetPropertyType(int index) => (PropertyValueType)_reader.GetPropertyType(index);
 
-        public override PropertyValueType GetPropertyType(string name)
-        {
-            return (PropertyValueType)_reader.GetPropertyType(name); //We can do this because the enum values map directly to MgPropertyType
-        }
+        public override PropertyValueType GetPropertyType(string name) => (PropertyValueType)_reader.GetPropertyType(name);
 
         public override void Close()
         {
@@ -107,10 +98,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             }
         }
 
-        public override string GetName(int index)
-        {
-            return _reader.GetPropertyName(index);
-        }
+        public override string GetName(int index) => _reader.GetPropertyName(index);
 
         public override Type GetFieldType(int i)
         {

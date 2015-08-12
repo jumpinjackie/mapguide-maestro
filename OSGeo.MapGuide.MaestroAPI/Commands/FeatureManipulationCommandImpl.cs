@@ -34,7 +34,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// <summary>
         /// Gets the connection implementation.
         /// </summary>
-        public TConn ConnImpl { get { return (TConn)this.Parent; } }
+        public TConn ConnImpl => (TConn)this.Parent;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DefaultCommand&lt;TConn&gt;"/> class.
@@ -297,7 +297,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// <value>
         /// The schema.
         /// </value>
-        public OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema Schema
+        public Schema.FeatureSchema Schema
         {
             get;
             set;
@@ -344,7 +344,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// <value>
         /// The schema.
         /// </value>
-        public OSGeo.MapGuide.MaestroAPI.Schema.FeatureSchema Schema
+        public Schema.FeatureSchema Schema
         {
             get;
             set;
@@ -396,7 +396,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
                 throw new InvalidOperationException(Strings.ErrorNoFeatureSourceIdSpecified);
             if (string.IsNullOrEmpty(this.CoordinateSystemWkt))
                 throw new InvalidOperationException(Strings.ErrorNoCoordinateSystemWktSpecified);
-            if (this.Extent == null && this.ExtentType != OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContextExtentType.Dynamic)
+            if (this.Extent == null && this.ExtentType != ObjectModels.Common.FdoSpatialContextListSpatialContextExtentType.Dynamic)
                 throw new InvalidOperationException(Strings.ErrorNoExtentSpecifiedForStaticType);
             if (string.IsNullOrEmpty(this.FileName))
                 throw new InvalidOperationException(Strings.ErrorNoFileNameSpecified);
@@ -456,7 +456,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// <value>
         /// The extent.
         /// </value>
-        public OSGeo.MapGuide.ObjectModels.Common.IEnvelope Extent
+        public ObjectModels.Common.IEnvelope Extent
         {
             get;
             set;
@@ -468,7 +468,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Commands
         /// <value>
         /// The type of the extent.
         /// </value>
-        public OSGeo.MapGuide.ObjectModels.Common.FdoSpatialContextListSpatialContextExtentType ExtentType
+        public ObjectModels.Common.FdoSpatialContextListSpatialContextExtentType ExtentType
         {
             get;
             set;

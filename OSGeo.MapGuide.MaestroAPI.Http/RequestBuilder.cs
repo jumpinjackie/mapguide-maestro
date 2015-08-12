@@ -228,16 +228,13 @@ namespace OSGeo.MapGuide.MaestroAPI
             return sb.ToString(0, sb.Length - 1);
         }
 
-        private string EncodeParameters(NameValueCollection param)
-        {
-            return EncodeParameters(param, true);
-        }
+        private string EncodeParameters(NameValueCollection param) => EncodeParameters(param, true);
 
         static string UrlEncode(string name)
         {
             if (name == null)
                 return string.Empty;
-            return System.Uri.EscapeDataString(name);
+            return Uri.EscapeDataString(name);
         }
 
         private string EncodeParameter(string name, string value)
@@ -1131,7 +1128,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             return m_hosturi + "?" + EncodeParameters(param);
         }
 
-        public string HostURI { get { return m_hosturi; } }
+        public string HostURI => m_hosturi;
 
         public string GetIdentityProperties(string resourceID, string schema, string classname)
         {

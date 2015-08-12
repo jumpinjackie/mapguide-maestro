@@ -62,10 +62,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public IFeatureReader GetFeatureObject(string name)
-        {
-            return ((IFeature)this.Current).GetFeatureObject(name);
-        }
+        public IFeatureReader GetFeatureObject(string name) => ((IFeature)this.Current).GetFeatureObject(name);
 
         /// <summary>
         /// Gets a <see cref="T:OSGeo.MapGuide.MaestroAPI.Feature.IFeatureReader"/> containing
@@ -73,30 +70,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public IFeatureReader GetFeatureObject(int index)
-        {
-            return ((IFeature)this.Current).GetFeatureObject(index);
-        }
+        public IFeatureReader GetFeatureObject(int index) => ((IFeature)this.Current).GetFeatureObject(index);
 
         /// <summary>
         /// Gets the name of the field at the specified index
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public override string GetName(int index)
-        {
-            return this.ClassDefinition.Properties[index].Name;
-        }
+        public override string GetName(int index) => this.ClassDefinition.Properties[index].Name;
 
         /// <summary>
         /// Gets the CLR type of the field at the specified index
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
-        public override Type GetFieldType(int i)
-        {
-            return ClrFdoTypeMap.GetClrType(this.ClassDefinition[i]);
-        }
+        public override Type GetFieldType(int i) => ClrFdoTypeMap.GetClrType(this.ClassDefinition[i]);
 
         /// <summary>
         /// Gets the type of the reader.
@@ -104,19 +92,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <value>
         /// The type of the reader.
         /// </value>
-        public override ReaderType ReaderType
-        {
-            get { return ReaderType.Feature; }
-        }
+        public override ReaderType ReaderType => ReaderType.Feature;
 
         /// <summary>
         /// Reads the next record.
         /// </summary>
         /// <returns></returns>
-        protected override IRecord ReadNextRecord()
-        {
-            return ReadNextFeature();
-        }
+        protected override IRecord ReadNextRecord() => ReadNextFeature();
 
         private class Enumerator : IEnumerator<IFeature>
         {
@@ -127,24 +109,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
                 _reader = reader;
             }
 
-            public IFeature Current
-            {
-                get { return (IFeature)_reader.Current; }
-            }
+            public IFeature Current => (IFeature)_reader.Current;
 
             public void Dispose()
             {
             }
 
-            object IEnumerator.Current
-            {
-                get { return this.Current; }
-            }
+            object IEnumerator.Current => this.Current;
 
-            public bool MoveNext()
-            {
-                return _reader.ReadNext();
-            }
+            public bool MoveNext() => _reader.ReadNext();
 
             public void Reset()
             {
@@ -158,10 +131,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <returns>
         /// A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the collection.
         /// </returns>
-        public IEnumerator<IFeature> GetEnumerator()
-        {
-            return new Enumerator(this);
-        }
+        public IEnumerator<IFeature> GetEnumerator() => new Enumerator(this);
 
         /// <summary>
         /// Returns an enumerator that iterates through a collection.
@@ -169,9 +139,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <returns>
         /// An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
         /// </returns>
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return new Enumerator(this);
-        }
+        IEnumerator IEnumerable.GetEnumerator() => new Enumerator(this);
     }
 }

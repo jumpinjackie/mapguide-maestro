@@ -83,10 +83,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Http.Commands
             set;
         }
 
-        public IServerConnection Parent
-        {
-            get { return _conn; }
-        }
+        public IServerConnection Parent => _conn;
 
         public IRuntimeMapInfo Execute()
         {

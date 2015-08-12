@@ -52,25 +52,13 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             this.textEditor = textEditor;
         }
 
-        public override bool CanRead
-        {
-            get { return true; }
-        }
+        public override bool CanRead => true;
 
-        public override bool CanSeek
-        {
-            get { return false; }
-        }
+        public override bool CanSeek => false;
 
-        public override bool CanWrite
-        {
-            get { return true; }
-        }
+        public override bool CanWrite => true;
 
-        public override long Length
-        {
-            get { return 0; }
-        }
+        public override long Length => 0;
 
         public override long Position
         {
@@ -82,10 +70,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         {
         }
 
-        public override long Seek(long offset, SeekOrigin origin)
-        {
-            return 0;
-        }
+        public override long Seek(long offset, SeekOrigin origin) => 0;
 
         public override void SetLength(long value)
         {

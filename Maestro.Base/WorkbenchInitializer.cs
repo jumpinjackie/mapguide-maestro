@@ -25,6 +25,7 @@ using Maestro.Base.Services;
 using Maestro.Shared.UI;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace Maestro.Base
 {
@@ -63,18 +64,16 @@ namespace Maestro.Base
         /// <param name="toolstrips"></param>
         public void UpdateMenuItemStatus(MenuStrip menu, IEnumerable<ToolStrip> toolstrips)
         {
-            foreach (ToolStripItem item in menu.Items)
+            foreach (var item in menu.Items.OfType<IStatusUpdate>())
             {
-                if (item is IStatusUpdate)
-                    (item as IStatusUpdate).UpdateStatus();
+                item.UpdateStatus();
             }
 
             foreach (ToolStrip ts in toolstrips)
             {
-                foreach (ToolStripItem item in ts.Items)
+                foreach (var item in ts.Items.OfType<IStatusUpdate>())
                 {
-                    if (item is IStatusUpdate)
-                        (item as IStatusUpdate).UpdateStatus();
+                    item.UpdateStatus();
                 }
             }
         }

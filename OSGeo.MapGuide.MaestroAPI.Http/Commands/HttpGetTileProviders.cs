@@ -20,11 +20,6 @@
 
 #endregion Disclaimer / License
 using OSGeo.MapGuide.MaestroAPI.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OSGeo.MapGuide.MaestroAPI.Http.Commands
 {
@@ -38,14 +33,8 @@ namespace OSGeo.MapGuide.MaestroAPI.Http.Commands
         }
 
 
-        public ObjectModels.Common.TileProviderList Execute()
-        {
-            return _conn.GetTileProviders();
-        }
+        public ObjectModels.Common.TileProviderList Execute() => _conn.GetTileProviders();
 
-        public IServerConnection Parent
-        {
-            get { return _conn; }
-        }
+        public IServerConnection Parent => _conn;
     }
 }

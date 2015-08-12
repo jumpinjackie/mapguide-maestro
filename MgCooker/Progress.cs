@@ -153,11 +153,11 @@ namespace MgCooker
                 TimeSpan elapsed = DateTime.Now - m_grandBegin;
                 DateTime finish = DateTime.Now + (new TimeSpan(m_prevDuration.Ticks * m_grandTotalTiles) - elapsed);
                 TimeSpan remain = finish - DateTime.Now;
-
+                
                 if (finish < DateTime.Now)
                     finishEstimate.Text = Strings.InsufficientTimePassed;
                 else
-                    finishEstimate.Text = string.Format(Strings.RemainingTime, finish.ToShortTimeString(), string.Format("{0}:{1}:{2}", (int)Math.Floor(remain.TotalHours), remain.Minutes.ToString("00"), remain.Seconds.ToString("00")));
+                    finishEstimate.Text = string.Format(Strings.RemainingTime, finish.ToShortTimeString(), $"{Math.Floor(remain.TotalHours)}:{remain.Minutes.ToString("00")}:{remain.Seconds.ToString("00")}");
             }
         }
 

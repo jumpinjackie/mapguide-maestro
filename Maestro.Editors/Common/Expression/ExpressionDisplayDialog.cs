@@ -55,9 +55,9 @@ namespace Maestro.Editors.Common.Expression
 
         private TreeNode LoadTree(FdoParseable obj)
         {
-            if (obj is FdoFilter)
+            if (obj.ParseableType == FdoParseableType.Filter)
                 return LoadFilterTree((FdoFilter)obj);
-            else
+            else //Expression
                 return LoadExpressionTree((FdoExpression)obj);
         }
 

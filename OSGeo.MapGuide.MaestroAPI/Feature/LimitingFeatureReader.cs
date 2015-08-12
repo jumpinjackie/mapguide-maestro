@@ -48,211 +48,57 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
             return bRet;
         }
 
-        public void Close()
-        {
-            if (_reader != null)
-            {
-                _reader.Close();
-            }
-        }
+        public void Close() => _reader?.Close();
 
         public void Dispose()
         {
-            if (_reader != null)
-            {
-                _reader.Dispose();
-                _reader = null;
-            }
+            _reader?.Dispose();
+            _reader = null;
         }
 
-        public int FieldCount
-        {
-            get { return _reader.FieldCount; }
-        }
+        public int FieldCount => _reader.FieldCount;
 
-        public string GetName(int index)
-        {
-            return _reader.GetName(index);
-        }
+        public string GetName(int index) => _reader.GetName(index);
+        public Type GetFieldType(int i) => _reader.GetFieldType(i);
+        public bool IsNull(string name) => _reader.IsNull(name);
+        public bool IsNull(int index) => _reader.IsNull(index);
+        public bool GetBoolean(string name) => _reader.GetBoolean(name);
+        public byte GetByte(string name) => _reader.GetByte(name);
+        public byte[] GetBlob(string name) => _reader.GetBlob(name);
+        public char[] GetClob(string name) => _reader.GetClob(name);
+        public double GetDouble(string name) => _reader.GetDouble(name);
+        public DateTime GetDateTime(string name) => _reader.GetDateTime(name);
+        public short GetInt16(string name) => _reader.GetInt16(name);
+        public int GetInt32(string name) => _reader.GetInt32(name);
+        public long GetInt64(string name) => _reader.GetInt64(name);
+        public float GetSingle(string name) => _reader.GetSingle(name);
+        public string GetString(string name) => _reader.GetString(name);
+        public GeoAPI.Geometries.IGeometry GetGeometry(string name) => _reader.GetGeometry(name);
+        public bool GetBoolean(int index) => _reader.GetBoolean(index);
+        public byte GetByte(int index) => _reader.GetByte(index);
+        public byte[] GetBlob(int index) => _reader.GetBlob(index);
+        public char[] GetClob(int index) => _reader.GetClob(index);
+        public double GetDouble(int index) => _reader.GetDouble(index);
+        public DateTime GetDateTime(int index) => _reader.GetDateTime(index);
+        public short GetInt16(int index) => _reader.GetInt16(index);
+        public int GetInt32(int index) => _reader.GetInt32(index);
+        public long GetInt64(int index) => _reader.GetInt64(index);
+        public float GetSingle(int index) => _reader.GetSingle(index);
+        public string GetString(int index) => _reader.GetString(index);
+        public GeoAPI.Geometries.IGeometry GetGeometry(int index) => _reader.GetGeometry(index);
 
-        public Type GetFieldType(int i)
-        {
-            return _reader.GetFieldType(i);
-        }
+        public object this[int index] => _reader[index];
 
-        public bool IsNull(string name)
-        {
-            return _reader.IsNull(name);
-        }
+        public object this[string name] => _reader[name];
 
-        public bool IsNull(int index)
-        {
-            return _reader.IsNull(index);
-        }
+        public Schema.PropertyValueType GetPropertyType(string name) => _reader.GetPropertyType(name);
+        public Schema.PropertyValueType GetPropertyType(int index) => _reader.GetPropertyType(index);
 
-        public bool GetBoolean(string name)
-        {
-            return _reader.GetBoolean(name);
-        }
+        public Schema.ClassDefinition ClassDefinition => _reader.ClassDefinition;
 
-        public byte GetByte(string name)
-        {
-            return _reader.GetByte(name);
-        }
-
-        public byte[] GetBlob(string name)
-        {
-            return _reader.GetBlob(name);
-        }
-
-        public char[] GetClob(string name)
-        {
-            return _reader.GetClob(name);
-        }
-
-        public double GetDouble(string name)
-        {
-            return _reader.GetDouble(name);
-        }
-
-        public DateTime GetDateTime(string name)
-        {
-            return _reader.GetDateTime(name);
-        }
-
-        public short GetInt16(string name)
-        {
-            return _reader.GetInt16(name);
-        }
-
-        public int GetInt32(string name)
-        {
-            return _reader.GetInt32(name);
-        }
-
-        public long GetInt64(string name)
-        {
-            return _reader.GetInt64(name);
-        }
-
-        public float GetSingle(string name)
-        {
-            return _reader.GetSingle(name);
-        }
-
-        public string GetString(string name)
-        {
-            return _reader.GetString(name);
-        }
-
-        public GeoAPI.Geometries.IGeometry GetGeometry(string name)
-        {
-            return _reader.GetGeometry(name);
-        }
-
-        public bool GetBoolean(int index)
-        {
-            return _reader.GetBoolean(index);
-        }
-
-        public byte GetByte(int index)
-        {
-            return _reader.GetByte(index);
-        }
-
-        public byte[] GetBlob(int index)
-        {
-            return _reader.GetBlob(index);
-        }
-
-        public char[] GetClob(int index)
-        {
-            return _reader.GetClob(index);
-        }
-
-        public double GetDouble(int index)
-        {
-            return _reader.GetDouble(index);
-        }
-
-        public DateTime GetDateTime(int index)
-        {
-            return _reader.GetDateTime(index);
-        }
-
-        public short GetInt16(int index)
-        {
-            return _reader.GetInt16(index);
-        }
-
-        public int GetInt32(int index)
-        {
-            return _reader.GetInt32(index);
-        }
-
-        public long GetInt64(int index)
-        {
-            return _reader.GetInt64(index);
-        }
-
-        public float GetSingle(int index)
-        {
-            return _reader.GetSingle(index);
-        }
-
-        public string GetString(int index)
-        {
-            return _reader.GetString(index);
-        }
-
-        public GeoAPI.Geometries.IGeometry GetGeometry(int index)
-        {
-            return _reader.GetGeometry(index);
-        }
-
-        public object this[int index]
-        {
-            get { return _reader[index]; }
-        }
-
-        public object this[string name]
-        {
-            get { return _reader[name]; }
-        }
-
-        public Schema.PropertyValueType GetPropertyType(string name)
-        {
-            return _reader.GetPropertyType(name);
-        }
-
-        public Schema.PropertyValueType GetPropertyType(int index)
-        {
-            return _reader.GetPropertyType(index);
-        }
-
-        public Schema.ClassDefinition ClassDefinition
-        {
-            get { return _reader.ClassDefinition; }
-        }
-
-        public IFeatureReader GetFeatureObject(string name)
-        {
-            return _reader.GetFeatureObject(name);
-        }
-
-        public IFeatureReader GetFeatureObject(int index)
-        {
-            return _reader.GetFeatureObject(index);
-        }
-
-        public IEnumerator<IFeature> GetEnumerator()
-        {
-            return _reader.GetEnumerator();
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return _reader.GetEnumerator();
-        }
+        public IFeatureReader GetFeatureObject(string name) => _reader.GetFeatureObject(name);
+        public IFeatureReader GetFeatureObject(int index) => _reader.GetFeatureObject(index);
+        public IEnumerator<IFeature> GetEnumerator() => _reader.GetEnumerator();
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => _reader.GetEnumerator();
     }
 }

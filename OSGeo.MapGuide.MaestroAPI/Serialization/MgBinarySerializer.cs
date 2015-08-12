@@ -67,7 +67,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         /// Gets the site version.
         /// </summary>
         /// <value>The site version.</value>
-        public Version SiteVersion { get { return m_siteVersion; } }
+        public Version SiteVersion => m_siteVersion;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MgBinarySerializer"/> class.
@@ -372,9 +372,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         /// Writes the raw.
         /// </summary>
         /// <param name="buf">The buf.</param>
-        public void WriteRaw(byte[] buf)
-        {
-            m_stream.Write(buf, 0, buf.Length);
-        }
+        public void WriteRaw(byte[] buf) => m_stream.Write(buf, 0, buf.Length);
     }
 }

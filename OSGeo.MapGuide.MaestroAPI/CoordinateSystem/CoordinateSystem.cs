@@ -131,37 +131,37 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// Gets the projection.
         /// </summary>
         /// <value>The projection.</value>
-        public string Projection { get { return m_projection; } }
+        public string Projection => m_projection;
 
         /// <summary>
         /// Gets the projection description.
         /// </summary>
         /// <value>The projection description.</value>
-        public string ProjectionDescription { get { return m_projectionDescription; } }
+        public string ProjectionDescription => m_projectionDescription;
 
         /// <summary>
         /// Gets the datum.
         /// </summary>
         /// <value>The datum.</value>
-        public string Datum { get { return m_datum; } }
+        public string Datum => m_datum;
 
         /// <summary>
         /// Gets the datum description.
         /// </summary>
         /// <value>The datum description.</value>
-        public string DatumDescription { get { return m_datumDescription; } }
+        public string DatumDescription => m_datumDescription;
 
         /// <summary>
         /// Gets the ellipsoid.
         /// </summary>
         /// <value>The ellipsoid.</value>
-        public string Ellipsoid { get { return m_ellipsoid; } }
+        public string Ellipsoid => m_ellipsoid;
 
         /// <summary>
         /// Gets the ellipsoid description.
         /// </summary>
         /// <value>The ellipsoid description.</value>
-        public string EllipsoidDescription { get { return m_ellipsoidDescription; } }
+        public string EllipsoidDescription => m_ellipsoidDescription;
 
         /// <summary>
         /// Gets or sets the WKT.
@@ -214,7 +214,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
             else if (m_code == null)
                 return m_description;
             else
-                return m_description + " (" + m_code + ")"; //NOXLATE
+                return $"{m_description} ({m_code})"; //NOXLATE
         }
     }
 }

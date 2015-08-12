@@ -110,10 +110,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Gets the operation items
         /// </summary>
-        public LengthyOperationItem[] Items
-        {
-            get { return m_items; }
-        }
+        public LengthyOperationItem[] Items => m_items;
 
         /// <summary>
         ///
@@ -152,7 +149,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             /// <summary>
             /// Gets the item path
             /// </summary>
-            public string Itempath { get { return m_itempath; } }
+            public string Itempath => m_itempath;
 
             /// <summary>
             /// Gets or sets the operation status

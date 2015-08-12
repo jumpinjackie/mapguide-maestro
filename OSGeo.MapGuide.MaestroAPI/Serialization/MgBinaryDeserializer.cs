@@ -38,7 +38,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         /// Gets the site version.
         /// </summary>
         /// <value>The site version.</value>
-        public Version SiteVersion { get { return m_siteVersion; } }
+        public Version SiteVersion => m_siteVersion;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MgBinaryDeserializer"/> class.
@@ -199,10 +199,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Serialization
         /// Reads the bool.
         /// </summary>
         /// <returns></returns>
-        public bool ReadBool()
-        {
-            return ReadByte() != 0;
-        }
+        public bool ReadBool() => ReadByte() != 0;
 
         /// <summary>
         /// Reads the byte.

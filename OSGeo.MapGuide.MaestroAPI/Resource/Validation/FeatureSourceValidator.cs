@@ -228,9 +228,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// Gets the resource type and version this validator supports
         /// </summary>
         /// <value></value>
-        public ResourceTypeDescriptor SupportedResourceAndVersion
-        {
-            get { return new ResourceTypeDescriptor(ResourceTypes.FeatureSource.ToString(), _version); } //NOXLATE
-        }
+        public ResourceTypeDescriptor SupportedResourceAndVersion => new ResourceTypeDescriptor(ResourceTypes.FeatureSource.ToString(), _version);
     }
 }

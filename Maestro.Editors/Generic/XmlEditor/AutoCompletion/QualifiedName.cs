@@ -111,6 +111,7 @@ namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion
             return equals;
         }
 
+
         /// <summary>
         /// Returns the hash code for the QualifiedName
         /// </summary>

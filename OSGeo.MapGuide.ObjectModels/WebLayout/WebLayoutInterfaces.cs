@@ -334,16 +334,13 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout
         /// <summary>
         /// Gets whether the name was changed when importing
         /// </summary>
-        public bool NameChanged { get { return !this.ImportedName.Equals(this.OriginalName); } }
-
+        public bool NameChanged => !this.ImportedName.Equals(this.OriginalName);
+        
         /// <summary>
         /// Gets the string representation
         /// </summary>
         /// <returns></returns>
-        public override string ToString()
-        {
-            return string.Format("{0} => {1}", this.OriginalName, this.ImportedName); //NOXLATE
-        }
+        public override string ToString() => $"{this.OriginalName} => {this.ImportedName}";
     }
 
     /// <summary>

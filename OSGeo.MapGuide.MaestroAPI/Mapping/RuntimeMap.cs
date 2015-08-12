@@ -21,7 +21,6 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.MaestroAPI.Commands;
-using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Serialization;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
@@ -123,9 +122,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
     /// </example>
     public class RuntimeMap : MapObservable
     {
-        internal IFeatureService FeatureService { get { return this.CurrentConnection.FeatureService; } }
+        internal IFeatureService FeatureService => this.CurrentConnection.FeatureService;
 
-        internal IResourceService ResourceService { get { return this.CurrentConnection.ResourceService; } }
+        internal IResourceService ResourceService => this.CurrentConnection.ResourceService;
 
         /// <summary>
         /// Gets the <see cref="T:OSGeo.MapGuide.MaestroAPI.IServerConnection"/> that is attached to this instance
@@ -157,22 +156,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets whether extents of this map can be modified at runtime
         /// </summary>
-        public virtual bool SupportsMutableExtents { get { return true; } }
+        public virtual bool SupportsMutableExtents => true;
 
         /// <summary>
         /// Gets whether the coordinate system of this map can be modified at runtime
         /// </summary>
-        public virtual bool SupportsMutableCoordinateSystem { get { return true; } }
+        public virtual bool SupportsMutableCoordinateSystem => true;
 
         /// <summary>
         /// Gets whether the background color of this map can be modified at runtime
         /// </summary>
-        public virtual bool SupportsMutableBackgroundColor { get { return true; } }
+        public virtual bool SupportsMutableBackgroundColor => true;
 
         /// <summary>
         /// Gets whether the meters-per-unit value of this map can be modified at runtime
         /// </summary>
-        public virtual bool SupportsMutableMetersPerUnit { get { return true; } }
+        public virtual bool SupportsMutableMetersPerUnit => true;
 
         /// <summary>
         /// Initializes this instance
@@ -300,7 +299,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     if (layer != null)
                         layerDefinitionCache.Add(key, layer);
                 }
-                Debug.WriteLine("[RuntimeMap.ctor]: {0} layers pre-cached", layerDefinitionCache.Count); //NOXLATE
+                Debug.WriteLine($"[RuntimeMap.ctor]: {layerDefinitionCache.Count} layers pre-cached"); //NOXLATE
             }
 
             //Load map layers
@@ -364,17 +363,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets the number of finite display scales
         /// </summary>
-        public int FiniteDisplayScaleCount { get { return _finiteDisplayScales.Length; } }
+        public int FiniteDisplayScaleCount => _finiteDisplayScales.Length;
 
         /// <summary>
         /// Gets the finite display scale at the specified index
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public double GetFiniteDisplayScaleAt(int index)
-        {
-            return _finiteDisplayScales[index];
-        }
+        public double GetFiniteDisplayScaleAt(int index) => _finiteDisplayScales[index];
 
         /// <summary>
         /// Gets or sets the map extents. Inspect the <see cref="P:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableMapExtents"/>
@@ -617,7 +613,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// The background color of the map
         /// </summary>
-        protected System.Drawing.Color _bgColor;
+        protected Color _bgColor;
 
         /// <summary>
         /// Gets or sets the color of the background. Check the <see cref="P:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableBackgroundColor"/>
@@ -625,7 +621,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <exception cref="T:System.NotSupportedException">Thrown if the operation is not supported</exception>
         /// <value>The color of the background.</value>
-        public virtual System.Drawing.Color BackgroundColor
+        public virtual Color BackgroundColor
         {
             get
             {
@@ -659,10 +655,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets the type of the resource.
         /// </summary>
         /// <value>The type of the resource.</value>
-        public ResourceTypes ResourceType
-        {
-            get { return ResourceTypes.Map; }
-        }
+        public ResourceTypes ResourceType => ResourceTypes.Map;
 
         /// <summary>
         /// Gets the meters per unit value. Check the <see cref="P:OSGeo.MapGuide.MaestroAPI.Mapping.RuntimeMap.SupportsMutableMetersPerUnit"/>
@@ -1137,10 +1130,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="id">The id.</param>
         /// <returns></returns>
-        public RuntimeMapLayer GetLayerByObjectId(string id)
-        {
-            return this.Layers.GetByObjectId(id);
-        }
+        public RuntimeMapLayer GetLayerByObjectId(string id) => this.Layers.GetByObjectId(id);
 
         /// <summary>
         /// The collection of layers in this map
@@ -1243,10 +1233,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Saves this instance. The changes are propagated back to the MapGuide Server
         /// </summary>
-        public virtual void Save()
-        {
-            Save(this.ResourceID);
-        }
+        public virtual void Save() => Save(this.ResourceID);
 
         /// <summary>
         /// A dummy resource, used for the runtime map
@@ -1373,10 +1360,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Clears all tracked changes
         /// </summary>
-        protected void ClearChanges()
-        {
-            m_changeList.Clear();
-        }
+        protected void ClearChanges() => m_changeList.Clear();
 
         /// <summary>
         /// Called when a group is removed
@@ -1398,40 +1382,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Called when a group is added
         /// </summary>
         /// <param name="group"></param>
-        internal void OnGroupAdded(RuntimeMapGroup group)
-        {
-            //???
+        internal void OnGroupAdded(RuntimeMapGroup group) => TrackChange(group.ObjectId, false, Change.ChangeType.added, string.Empty);
 
-            TrackChange(group.ObjectId, false, Change.ChangeType.added, string.Empty);
-        }
+        internal void OnGroupVisibilityChanged(RuntimeMapGroup group, string visbility) => TrackChange(group.ObjectId, false, Change.ChangeType.visibilityChanged, visbility);
 
-        internal void OnGroupVisibilityChanged(RuntimeMapGroup group, string visbility)
-        {
-            TrackChange(group.ObjectId, false, Change.ChangeType.visibilityChanged, visbility);
+        internal void OnGroupDisplayInLegendChanged(RuntimeMapGroup group, string displayInLegendState) => TrackChange(group.ObjectId, false, Change.ChangeType.displayInLegendChanged, displayInLegendState);
 
-            //???
-        }
+        internal void OnGroupLegendLabelChanged(RuntimeMapGroup group, string legendLabel) => TrackChange(group.ObjectId, false, Change.ChangeType.legendLabelChanged, legendLabel);
 
-        internal void OnGroupDisplayInLegendChanged(RuntimeMapGroup group, string displayInLegendState)
-        {
-            TrackChange(group.ObjectId, false, Change.ChangeType.displayInLegendChanged, displayInLegendState);
-        }
+        internal void OnGroupParentChanged(RuntimeMapGroup group, string parentId) => TrackChange(group.ObjectId, false, Change.ChangeType.parentChanged, parentId);
 
-        internal void OnGroupLegendLabelChanged(RuntimeMapGroup group, string legendLabel)
-        {
-            TrackChange(group.ObjectId, false, Change.ChangeType.legendLabelChanged, legendLabel);
-        }
-
-        internal void OnGroupParentChanged(RuntimeMapGroup group, string parentId)
-        {
-            TrackChange(group.ObjectId, false, Change.ChangeType.parentChanged, parentId);
-        }
-
-        internal void OnLayerRemoved(RuntimeMapLayer layer)
-        {
-            //???
-            TrackChange(layer.ObjectId, true, Change.ChangeType.removed, string.Empty);
-        }
+        internal void OnLayerRemoved(RuntimeMapLayer layer) => TrackChange(layer.ObjectId, true, Change.ChangeType.removed, string.Empty);
 
         /// <summary>
         /// Raise when a layer is added to the map
@@ -1440,9 +1401,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
 
         internal void OnLayerAdded(RuntimeMapLayer layer)
         {
-            var h = this.LayerAdded;
-            if (h != null)
-                h(this, layer);
+            this.LayerAdded?.Invoke(this, layer);
             //Fix the draw order of this layer that was added
 
             //???
@@ -1450,37 +1409,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             TrackChange(layer.ObjectId, true, Change.ChangeType.added, string.Empty);
         }
 
-        internal void OnLayerVisibilityChanged(RuntimeMapLayer layer, string visibility)
-        {
-            //???
+        internal void OnLayerVisibilityChanged(RuntimeMapLayer layer, string visibility) => TrackChange(layer.ObjectId, true, Change.ChangeType.visibilityChanged, visibility);
 
-            TrackChange(layer.ObjectId, true, Change.ChangeType.visibilityChanged, visibility);
-        }
+        internal void OnLayerDisplayInLegendChanged(RuntimeMapLayer layer, string displayInLegendState) => TrackChange(layer.ObjectId, true, Change.ChangeType.displayInLegendChanged, displayInLegendState);
 
-        internal void OnLayerDisplayInLegendChanged(RuntimeMapLayer layer, string displayInLegendState)
-        {
-            TrackChange(layer.ObjectId, true, Change.ChangeType.displayInLegendChanged, displayInLegendState);
-        }
+        internal void OnLayerLegendLabelChanged(RuntimeMapLayer layer, string legendLabel) => TrackChange(layer.ObjectId, true, Change.ChangeType.legendLabelChanged, legendLabel);
 
-        internal void OnLayerLegendLabelChanged(RuntimeMapLayer layer, string legendLabel)
-        {
-            TrackChange(layer.ObjectId, true, Change.ChangeType.legendLabelChanged, legendLabel);
-        }
+        internal void OnLayerParentChanged(RuntimeMapLayer layer, string parentId) => TrackChange(layer.ObjectId, true, Change.ChangeType.parentChanged, parentId);
 
-        internal void OnLayerParentChanged(RuntimeMapLayer layer, string parentId)
-        {
-            TrackChange(layer.ObjectId, true, Change.ChangeType.parentChanged, parentId);
-        }
+        internal void OnLayerSelectabilityChanged(RuntimeMapLayer layer, string selectability) => TrackChange(layer.ObjectId, true, Change.ChangeType.selectabilityChanged, selectability);
 
-        internal void OnLayerSelectabilityChanged(RuntimeMapLayer layer, string selectability)
-        {
-            TrackChange(layer.ObjectId, true, Change.ChangeType.selectabilityChanged, selectability);
-        }
-
-        internal void OnLayerDefinitionChanged(RuntimeMapLayer layer)
-        {
-            TrackChange(layer.ObjectId, true, Change.ChangeType.definitionChanged, string.Empty);
-        }
+        internal void OnLayerDefinitionChanged(RuntimeMapLayer layer) => TrackChange(layer.ObjectId, true, Change.ChangeType.definitionChanged, string.Empty);
 
         #endregion change tracking
 
@@ -1514,10 +1453,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="keepSelection"></param>
         /// <returns></returns>
         [Obsolete("Use the version of RenderDynamicOverlay that is not marked Obsolete")] //NOXLATE
-        public System.IO.Stream RenderDynamicOverlay(string format, bool keepSelection)
-        {
-            return RenderDynamicOverlay(this.Selection, format, keepSelection);
-        }
+        public System.IO.Stream RenderDynamicOverlay(string format, bool keepSelection) => RenderDynamicOverlay(this.Selection, format, keepSelection);
 
         /// <summary>
         /// Convenience method for rendering a dynamic overlay of the current map
@@ -1568,7 +1504,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="color"></param>
         /// <param name="format"></param>
         /// <returns></returns>
-        public System.IO.Stream RenderMapLegend(int width, int height, System.Drawing.Color color, string format)
+        public System.IO.Stream RenderMapLegend(int width, int height, Color color, string format)
         {
             if (_mapSvc == null)
                 throw new NotSupportedException();
@@ -1614,7 +1550,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <param name="geomType"></param>
         /// <param name="themeCategory"></param>
         /// <returns></returns>
-        public System.Drawing.Image GetLegendImage(string layerDefinitionID, double scale, int width, int height, string format, int geomType, int themeCategory)
+        public Image GetLegendImage(string layerDefinitionID, double scale, int width, int height, string format, int geomType, int themeCategory)
         {
             if (_mapSvc == null)
                 throw new NotSupportedException();

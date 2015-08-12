@@ -25,11 +25,10 @@ using OSGeo.MapGuide.MaestroAPI.CoordinateSystem;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.ObjectModels.IO;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
 using OSGeo.MapGuide.ObjectModels.Capabilities.v1_0_0;
-using OSGeo.MapGuide.ObjectModels.DrawingSource;
+using OSGeo.MapGuide.ObjectModels.IO;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
@@ -53,15 +52,19 @@ namespace OSGeo.MapGuide.MaestroAPI
     /// </summary>
     public static class Utility
     {
-        public static bool IsZero(this float val)
-        {
-            return Math.Abs(val) < float.Epsilon;
-        }
+        /// <summary>
+        /// Returns true if this value is zero for all intents and purposes
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        public static bool IsZero(this float val) => Math.Abs(val) < float.Epsilon;
 
-        public static bool IsZero(this double val)
-        {
-            return Math.Abs(val) < double.Epsilon;
-        }
+        /// <summary>
+        /// Returns true if this value is zero for all intents and purposes
+        /// </summary>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        public static bool IsZero(this double val) => Math.Abs(val) < double.Epsilon;
 
         /// <summary>
         /// Creates the polygon WKT for the given bounding box
@@ -104,7 +107,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         public static bool HasOriginalXml(Exception ex) => ex.Data[XML_EXCEPTION_KEY] != null;
 
         //Americans NEVER obey nationalization when outputting decimal values, so the rest of the world always have to work around their bugs :(
-        private static System.Globalization.CultureInfo m_enCI = new System.Globalization.CultureInfo("en-US"); //NOXLATE
+        private static CultureInfo m_enCI = new CultureInfo("en-US"); //NOXLATE
 
         /// <summary>
         /// Converts the specified name value collection into a connection string
@@ -163,18 +166,18 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             if (color.Length == 8)
             {
-                int a = int.Parse(color.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
-                int r = int.Parse(color.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
-                int g = int.Parse(color.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
-                int b = int.Parse(color.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
+                int a = int.Parse(color.Substring(0, 2), NumberStyles.HexNumber);
+                int r = int.Parse(color.Substring(2, 2), NumberStyles.HexNumber);
+                int g = int.Parse(color.Substring(4, 2), NumberStyles.HexNumber);
+                int b = int.Parse(color.Substring(6, 2), NumberStyles.HexNumber);
 
                 return Color.FromArgb(a, r, g, b);
             }
             else if (color.Length == 6)
             {
-                int r = int.Parse(color.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
-                int g = int.Parse(color.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
-                int b = int.Parse(color.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+                int r = int.Parse(color.Substring(0, 2), NumberStyles.HexNumber);
+                int g = int.Parse(color.Substring(2, 2), NumberStyles.HexNumber);
+                int b = int.Parse(color.Substring(4, 2), NumberStyles.HexNumber);
 
                 return Color.FromArgb(r, g, b);
             }
@@ -191,18 +194,18 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             if (color.Length == 8)
             {
-                int r = int.Parse(color.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
-                int g = int.Parse(color.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
-                int b = int.Parse(color.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
-                int a = int.Parse(color.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
+                int r = int.Parse(color.Substring(0, 2), NumberStyles.HexNumber);
+                int g = int.Parse(color.Substring(2, 2), NumberStyles.HexNumber);
+                int b = int.Parse(color.Substring(4, 2), NumberStyles.HexNumber);
+                int a = int.Parse(color.Substring(6, 2), NumberStyles.HexNumber);
 
                 return Color.FromArgb(a, r, g, b);
             }
             else if (color.Length == 6)
             {
-                int r = int.Parse(color.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
-                int g = int.Parse(color.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
-                int b = int.Parse(color.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+                int r = int.Parse(color.Substring(0, 2), NumberStyles.HexNumber);
+                int g = int.Parse(color.Substring(2, 2), NumberStyles.HexNumber);
+                int b = int.Parse(color.Substring(4, 2), NumberStyles.HexNumber);
 
                 return Color.FromArgb(r, g, b);
             }
@@ -219,18 +222,18 @@ namespace OSGeo.MapGuide.MaestroAPI
         {
             if (color.Length == 8)
             {
-                int a = int.Parse(color.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
-                int r = int.Parse(color.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
-                int g = int.Parse(color.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
-                int b = int.Parse(color.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
+                int a = int.Parse(color.Substring(0, 2), NumberStyles.HexNumber);
+                int r = int.Parse(color.Substring(2, 2), NumberStyles.HexNumber);
+                int g = int.Parse(color.Substring(4, 2), NumberStyles.HexNumber);
+                int b = int.Parse(color.Substring(6, 2), NumberStyles.HexNumber);
 
                 return Color.FromArgb(a, r, g, b);
             }
             else if (color.Length == 6)
             {
-                int r = int.Parse(color.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
-                int g = int.Parse(color.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
-                int b = int.Parse(color.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+                int r = int.Parse(color.Substring(0, 2), NumberStyles.HexNumber);
+                int g = int.Parse(color.Substring(2, 2), NumberStyles.HexNumber);
+                int b = int.Parse(color.Substring(4, 2), NumberStyles.HexNumber);
 
                 return Color.FromArgb(r, g, b);
             }
@@ -316,7 +319,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="source">The source stream</param>
         /// <param name="target">The target stream</param>
-        public static void CopyStream(System.IO.Stream source, System.IO.Stream target) => CopyStream(source, target, true);
+        public static void CopyStream(Stream source, Stream target) => CopyStream(source, target, true);
 
         /// <summary>
         /// Copies the content of a stream into another stream.
@@ -324,7 +327,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="source">The source stream</param>
         /// <param name="target">The target stream</param>
         /// <param name="rewind">True if the source stream should be rewound before being copied</param>
-        public static void CopyStream(System.IO.Stream source, System.IO.Stream target, bool rewind)
+        public static void CopyStream(Stream source, Stream target, bool rewind)
         {
             //int r;
             byte[] buf = new byte[1024];
@@ -380,7 +383,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <param name="target">The target stream</param>
         /// <param name="callback">An optional callback delegate, may be null.</param>
         /// <param name="updateFrequence">The number of bytes to copy before calling the callback delegate, set to 0 to get every update</param>
-        public static void CopyStream(System.IO.Stream source, System.IO.Stream target, StreamCopyProgressDelegate callback, long updateFrequence)
+        public static void CopyStream(Stream source, Stream target, StreamCopyProgressDelegate callback, long updateFrequence)
         {
             long length = -1;
             if (source.CanSeek)
@@ -425,8 +428,8 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (source == null)
                 return null;
 
-            System.Xml.Serialization.XmlSerializer ser = new System.Xml.Serialization.XmlSerializer(source.GetType());
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            var ser = new XmlSerializer(source.GetType());
+            var ms = new MemoryStream();
             ser.Serialize(ms, source);
             ms.Position = 0;
             return ser.Deserialize(ms);
@@ -460,8 +463,8 @@ namespace OSGeo.MapGuide.MaestroAPI
                 }
                 else if (pi.GetValue(source, null).GetType().IsArray)
                 {
-                    System.Array sourceArr = (System.Array)pi.GetValue(source, null);
-                    System.Array targetArr = (System.Array)Activator.CreateInstance(sourceArr.GetType(), new object[] { sourceArr.Length });
+                    Array sourceArr = (Array)pi.GetValue(source, null);
+                    Array targetArr = (Array)Activator.CreateInstance(sourceArr.GetType(), new object[] { sourceArr.Length });
                     for (int i = 0; i < targetArr.Length; i++)
                         targetArr.SetValue(DeepCopy(sourceArr.GetValue(i)), i);
                     pi.SetValue(target, targetArr, null);
@@ -508,8 +511,8 @@ namespace OSGeo.MapGuide.MaestroAPI
                 }
                 else if (pi.GetValue(source, null).GetType().IsArray)
                 {
-                    System.Array sourceArr = (System.Array)pi.GetValue(source, null);
-                    System.Array targetArr = (System.Array)Activator.CreateInstance(sourceArr.GetType(), new object[] { sourceArr.Length });
+                    Array sourceArr = (Array)pi.GetValue(source, null);
+                    Array targetArr = (Array)Activator.CreateInstance(sourceArr.GetType(), new object[] { sourceArr.Length });
                     for (int i = 0; i < targetArr.Length; i++)
                         targetArr.SetValue(DeepCopy(sourceArr.GetValue(i)), i);
                     pi.SetValue(target, targetArr, null);
@@ -527,14 +530,15 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="s">The stream to exhaust</param>
         /// <returns>The streams content as an array</returns>
-        public static byte[] StreamAsArray(System.IO.Stream s)
+        public static byte[] StreamAsArray(Stream s)
         {
-            if (s as System.IO.MemoryStream != null)
-                return ((System.IO.MemoryStream)s).ToArray();
+            var mes = s as MemoryStream;
+            if (mes != null)
+                return mes.ToArray();
 
             if (!s.CanSeek)
             {
-                System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                var ms = new MemoryStream();
                 byte[] buf = new byte[1024];
                 int c;
                 while ((c = s.Read(buf, 0, buf.Length)) > 0)
@@ -579,7 +583,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// </summary>
         /// <param name="ms">The stream to fix</param>
         /// <returns>A stream with no Utf8 BOM</returns>
-        public static System.IO.MemoryStream RemoveUTF8BOM(System.IO.MemoryStream ms)
+        public static MemoryStream RemoveUTF8BOM(MemoryStream ms)
         {
             //Skip UTF file header, since the MapGuide XmlParser is broken
             ms.Position = 0;
@@ -588,8 +592,8 @@ namespace OSGeo.MapGuide.MaestroAPI
                 if (utfheader[0] == 0xEF && utfheader[1] == 0xBB && utfheader[2] == 0xBF)
                 {
                     ms.Position = 3;
-                    System.IO.MemoryStream mxs = new System.IO.MemoryStream();
-                    Utility.CopyStream(ms, mxs, false);
+                    var mxs = new MemoryStream();
+                    CopyStream(ms, mxs, false);
                     mxs.Position = 0;
                     return mxs;
                 }
@@ -606,7 +610,7 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Returns a type used to define a raster column in a feature reader
         /// </summary>
-        public static Type RasterType => typeof(System.Drawing.Bitmap);
+        public static Type RasterType => typeof(Bitmap);
 
         /// <summary>
         /// Returns the type used to define a geometry column in a feature reader
@@ -662,18 +666,18 @@ namespace OSGeo.MapGuide.MaestroAPI
             if (string.IsNullOrEmpty(input))
                 return input;
 
-            System.Xml.XmlDocument doc1 = new System.Xml.XmlDocument();
+            var doc1 = new XmlDocument();
             doc1.LoadXml(input);
 
-            System.Xml.XmlDocument doc2 = new System.Xml.XmlDocument();
+            var doc2 = new XmlDocument();
 
-            System.Xml.XmlNode root1 = doc1["FeatureInformation"]; //NOXLATE
+            XmlNode root1 = doc1["FeatureInformation"]; //NOXLATE
             if (root1 == null)
                 root1 = doc1;
 
             if (root1["FeatureSet"] != null) //NOXLATE
             {
-                System.Xml.XmlNode root2 = doc2.AppendChild(doc2.CreateElement("FeatureSet")); //NOXLATE
+                XmlNode root2 = doc2.AppendChild(doc2.CreateElement("FeatureSet")); //NOXLATE
                 root2.InnerXml = root1["FeatureSet"].InnerXml; //NOXLATE
             }
 
@@ -777,7 +781,7 @@ namespace OSGeo.MapGuide.MaestroAPI
             outName = outName.Remove(0, 1);
 
             //Check if the first character requires a meta-escape character replacement
-            string prefix = c + "";
+            string prefix = c + string.Empty;
             switch (c)
             {
                 case ' ':

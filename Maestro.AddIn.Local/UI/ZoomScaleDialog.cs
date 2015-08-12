@@ -34,19 +34,10 @@ namespace Maestro.AddIn.Local.UI
             numScale.Maximum = Convert.ToDecimal(int.MaxValue);
         }
 
-        public double Value
-        {
-            get { return Convert.ToDouble(numScale.Value); }
-        }
+        public double Value => Convert.ToDouble(numScale.Value);
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
+        private void btnCancel_Click(object sender, EventArgs e) => this.DialogResult = DialogResult.Cancel;
 
-        private void btnOK_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.OK;
-        }
+        private void btnOK_Click(object sender, EventArgs e) => this.DialogResult = DialogResult.OK;
     }
 }

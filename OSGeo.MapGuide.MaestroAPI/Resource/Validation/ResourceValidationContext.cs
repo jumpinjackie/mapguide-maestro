@@ -67,10 +67,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
             _spatialContexts = new Dictionary<string, FdoSpatialContextList>();
         }
 
-        internal IServerConnection Connection
-        {
-            get { return _conn; }
-        }
+        internal IServerConnection Connection => _conn;
 
         /// <summary>
         /// Clears all cached items and validated resources
@@ -161,12 +158,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
         /// Marks the specified resource id as being validated.
         /// </summary>
         /// <param name="resourceId">The resource id.</param>
-        public void MarkValidated(string resourceId)
-        {
-            _validated[resourceId] = resourceId;
-
-            //Trace.TraceInformation("Validated: " + resourceId); //NOXLATE
-        }
+        public void MarkValidated(string resourceId) => _validated[resourceId] = resourceId;
 
         /// <summary>
         /// Gets whether the specified resource exists

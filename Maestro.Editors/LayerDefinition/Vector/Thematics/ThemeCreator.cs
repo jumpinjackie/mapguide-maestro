@@ -134,9 +134,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
 
         private bool DrawColorSetPreview(DrawItemEventArgs args, object o)
         {
-            if (o is ColorBrewer.ColorBrewerListItem)
+            var cbLi = o as ColorBrewer.ColorBrewerListItem;
+            if (cbLi != null)
             {
-                ColorBrewer cb = (o as ColorBrewer.ColorBrewerListItem).Set;
+                var cb = cbLi.Set;
                 int maxItems = (args.Bounds.Width - 2) / 10;
                 int items = Math.Min(maxItems, cb.Colors.Count);
 
@@ -628,7 +629,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                                 string.Format(System.Globalization.CultureInfo.InvariantCulture, "\"{0}\" = '{1}'", ColumnCombo.Text, items[i]),
                                 string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}", items[i]),
                                 colors[i]);
-                            r.IndividualValue = "'" + items[i].ToString() + "'";
+                            r.IndividualValue = $"'{items[i].ToString()}'";
                             result.Add(r);
                         }
                         else
@@ -954,18 +955,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                     RuleItem defaultRule = null;
                     foreach (var rule in rules)
                     {
-                        if (rule.IndividualValue == "''")
+                        if (rule.IndividualValue == "''") //NOXLATE
                             defaultRule = rule;
                         else
-                            strings.Add(string.Format("{0}, ARGB({1}, {2}, {3}, {4})", rule.IndividualValue, rule.Color.A, rule.Color.R, rule.Color.G, rule.Color.B));
+                            strings.Add($"{rule.IndividualValue}, ARGB({rule.Color.A}, {rule.Color.R}, {rule.Color.G}, {rule.Color.B})"); //NOXLATE
                     }
-                    _inserter.InsertText(string.Format("LOOKUP({0}, ARGB({1}, {2}, {3}, {4}), {5})",
-                        ColumnCombo.Text,
-                        defaultRule.Color.A,
-                        defaultRule.Color.R,
-                        defaultRule.Color.G,
-                        defaultRule.Color.B,
-                        string.Join(", ", strings.ToArray())));
+
+                    _inserter.InsertText($"LOOKUP({ColumnCombo.Text}, ARGB({defaultRule.Color.A}, {defaultRule.Color.R}, {defaultRule.Color.G}, {defaultRule.Color.B}), {string.Join(", ", strings.ToArray())})"); //NOXLATE
                 }
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -1032,7 +1028,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             foreach (RuleItem entry in rules)
             {
                 var r = (template != null) ? CreateCompositeRule(template, _factory) : _factory.CreateDefaultCompositeRule();
-                Debug.WriteLine("Made rule {0}", r.GetHashCode());
+                Debug.WriteLine($"Made rule {r.GetHashCode()}"); //NOXLATE
                 r.Filter = entry.Filter;
                 r.LegendLabel = entry.Label;
                 if (r.CompositeSymbolization != null)
@@ -1074,13 +1070,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                             string color = path.FillColor;
                             if (source.Value == FillColorSource.PathFillColor)
                             {
-                                path.FillColor = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
-                                Debug.WriteLine(string.Format("Set fill color to {0} for symbol instance {1} of symbolization {2} in rule {3}", path.FillColor, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
+                                path.FillColor = FormatColor(fillAlpha, entry);
+                                Debug.WriteLine($"Set fill color to {path.FillColor} for symbol instance {symInst.GetHashCode()} of symbolization {r.CompositeSymbolization.GetHashCode()} in rule {r.GetHashCode()}"); //NOXLATE
                                 bSetFill = true;
                                 break;
                             }
                             //Is this a parameter?
-                            if (color.StartsWith("%") && color.EndsWith("%"))
+                            if (IsSymbolParameter(color))
                             {
                                 string paramName = color.Substring(1, color.Length - 2);
                                 if (simpleSym.ParameterDefinition != null)
@@ -1094,8 +1090,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                                         {
                                             if (source.Value == FillColorSource.SymbolParameterFillColorDefaultValue)
                                             {
-                                                paramDef.DefaultValue = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
-                                                Debug.WriteLine(string.Format("Set fill color default parameter value to {0} for symbol instance {1} of symbolization {2} in rule {3}", paramDef.DefaultValue, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
+                                                paramDef.DefaultValue = FormatColor(fillAlpha, entry);
+                                                Debug.WriteLine($"Set fill color default parameter value to {paramDef.DefaultValue} for symbol instance {symInst.GetHashCode()} of symbolization {r.CompositeSymbolization.GetHashCode()} in rule {r.GetHashCode()}"); //NOXLATE
                                                 bSetFill = true;
                                                 break;
                                             }
@@ -1113,8 +1109,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                                                     {
                                                         if (source.Value == FillColorSource.SymbolParameterFillColorOverride)
                                                         {
-                                                            pov.ParameterValue = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
-                                                            Debug.WriteLine(string.Format("Set fill color parameter override value to {0} for symbol instance {1} of symbolization {2} in rule {3}", pov.ParameterValue, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
+                                                            pov.ParameterValue = FormatColor(fillAlpha, entry);
+                                                            Debug.WriteLine($"Set fill color parameter override value to {pov.ParameterValue} for symbol instance {symInst.GetHashCode()} of symbolization {r.CompositeSymbolization.GetHashCode()} in rule {r.GetHashCode()}"); //NOXLATE
                                                             bSetFill = true;
                                                             break;
                                                         }
@@ -1131,13 +1127,13 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                             string color = path.LineColor;
                             if (source.Value == FillColorSource.PathLineColor)
                             {
-                                path.LineColor = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
-                                Debug.WriteLine(string.Format("Set line color to {0} for symbol instance {1} of symbolization {2} in rule {3}", path.FillColor, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
+                                path.LineColor = FormatColor(fillAlpha, entry);
+                                Debug.WriteLine($"Set line color to {path.FillColor} for symbol instance {symInst.GetHashCode()} of symbolization {r.CompositeSymbolization.GetHashCode()} in rule {r.GetHashCode()}"); //NOXLATE
                                 bSetFill = true;
                                 break;
                             }
                             //Is this a parameter?
-                            if (color.StartsWith("%") && color.EndsWith("%"))
+                            if (IsSymbolParameter(color))
                             {
                                 string paramName = color.Substring(1, color.Length - 2);
                                 if (simpleSym.ParameterDefinition != null)
@@ -1151,8 +1147,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                                         {
                                             if (source.Value == FillColorSource.SymbolParameterLineColorDefaultValue)
                                             {
-                                                paramDef.DefaultValue = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
-                                                Debug.WriteLine(string.Format("Set line color default parameter value to {0} for symbol instance {1} of symbolization {2} in rule {3}", paramDef.DefaultValue, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
+                                                paramDef.DefaultValue = FormatColor(fillAlpha, entry);
+                                                Debug.WriteLine($"Set line color default parameter value to {paramDef.DefaultValue} for symbol instance {symInst.GetHashCode()} of symbolization {r.CompositeSymbolization.GetHashCode()} in rule {r.GetHashCode()}"); //NOXLATE
                                                 bSetFill = true;
                                                 break;
                                             }
@@ -1170,8 +1166,8 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                                                     {
                                                         if (source.Value == FillColorSource.SymbolParameterLineColorOverride)
                                                         {
-                                                            pov.ParameterValue = "0x" + fillAlpha + Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha));
-                                                            Debug.WriteLine(string.Format("Set line color parameter override value to {0} for symbol instance {1} of symbolization {2} in rule {3}", pov.ParameterValue, symInst.GetHashCode(), r.CompositeSymbolization.GetHashCode(), r.GetHashCode()));
+                                                            pov.ParameterValue = FormatColor(fillAlpha, entry);
+                                                            Debug.WriteLine($"Set line color parameter override value to {pov.ParameterValue} for symbol instance {symInst.GetHashCode()} of symbolization {r.CompositeSymbolization.GetHashCode()} in rule {r.GetHashCode()}"); //NOXLATE
                                                             bSetFill = true;
                                                             break;
                                                         }
@@ -1188,6 +1184,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
             }
         }
 
+        static bool IsSymbolParameter(string str) => (str?.StartsWith("%") == true) && (str?.EndsWith("%") == true); //NOXLATE
+
+        static string FormatColor(string fillAlpha, RuleItem entry) => $"0x{fillAlpha}{Utility.SerializeHTMLColor(entry.Color, string.IsNullOrEmpty(fillAlpha))}";
+        
         private void IdentifyColorSource(ICompositeRule template, ref FillColorSource? source, ref string fillAlpha)
         {
             // FIXME: This is very naive. It will identify the first color it finds and runs with it.
@@ -1230,7 +1230,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                             {
                                 string color = path.FillColor;
                                 //Is this a parameter?
-                                if (color.StartsWith("%") && color.EndsWith("%"))
+                                if (IsSymbolParameter(color))
                                 {
                                     string paramName = color.Substring(1, color.Length - 2);
                                     if (simpleSym.ParameterDefinition != null)
@@ -1317,7 +1317,7 @@ namespace Maestro.Editors.LayerDefinition.Vector.Thematics
                                 {
                                     string color = path.LineColor;
                                     //Is this a parameter?
-                                    if (color.StartsWith("%") && color.EndsWith("%"))
+                                    if (IsSymbolParameter(color))
                                     {
                                         string paramName = color.Substring(1, color.Length - 2);
                                         if (simpleSym.ParameterDefinition != null)

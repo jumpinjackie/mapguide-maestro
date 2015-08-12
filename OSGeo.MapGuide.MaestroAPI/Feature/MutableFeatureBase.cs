@@ -57,9 +57,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// <summary>
         /// Gets the associated class definition
         /// </summary>
-        public ClassDefinition ClassDefinition
-        {
-            get { return _clsDef; }
-        }
+        public ClassDefinition ClassDefinition => _clsDef;
     }
 }

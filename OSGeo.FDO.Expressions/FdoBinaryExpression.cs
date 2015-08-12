@@ -38,10 +38,7 @@ namespace OSGeo.FDO.Expressions
 
     public class FdoBinaryExpression : FdoExpression
     {
-        public override ExpressionType ExpressionType
-        {
-            get { return Expressions.ExpressionType.BinaryExpression; }
-        }
+        public override ExpressionType ExpressionType => ExpressionType.BinaryExpression;
 
         public FdoExpression Left { get; }
 
@@ -127,7 +124,7 @@ namespace OSGeo.FDO.Expressions
                         this.Operator = BinaryOperator.Multiply;
                         break;
                     default:
-                        throw new FdoParseException("Unknown binary operator: " + opStr);
+                        throw new FdoParseException($"Unknown binary operator: {opStr}"); //LOCALIZEME
                 }
                 this.Right = FdoExpression.ParseNode(node.ChildNodes[2]);
             }

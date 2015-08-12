@@ -45,29 +45,14 @@ namespace Maestro.AddIn.Rest.UI
         public RestExplorer()
         {
             InitializeComponent();
-            this.Title = this.Description = Maestro.AddIn.Rest.Strings.RestExplorer;
+            this.Title = this.Description = Strings.RestExplorer;
         }
 
-        public override ViewRegion DefaultRegion
-        {
-            get
-            {
-                return ViewRegion.Right;
-            }
-        }
+        public override ViewRegion DefaultRegion => ViewRegion.Right;
 
-        public override bool AllowUserClose
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool AllowUserClose => false;
 
-        private bool IsConnected
-        {
-            get { return _client != null; }
-        }
+        private bool IsConnected => _client != null;
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
@@ -81,7 +66,7 @@ namespace Maestro.AddIn.Rest.UI
 
         private void DoRefresh()
         {
-            _client.ExecuteGetRequestAsync<DataConfigurationResponse>("data/configs.json", (resp, ex) =>
+            _client.ExecuteGetRequestAsync<DataConfigurationResponse>("data/configs.json", (resp, ex) => //NOXLATE
             {
                 this.UIThreadInvoke(() =>
                 {
@@ -95,7 +80,7 @@ namespace Maestro.AddIn.Rest.UI
                     {
                         var conn = connMgr.GetConnection(name);
                         var param = conn.CloneParameters;
-                        if (resp.DataConfigurationList.MapAgentUrl.IndexOf(param["Url"] ?? Guid.NewGuid().ToString()) >= 0)
+                        if (resp.DataConfigurationList.MapAgentUrl.IndexOf(param["Url"] ?? Guid.NewGuid().ToString()) >= 0) //NOXLATE
                         {
                             _conn = conn;
                             break;
@@ -131,8 +116,8 @@ namespace Maestro.AddIn.Rest.UI
                 foreach (var conf in list.Configuration)
                 {
                     string name = conf.ConfigUriPart;
-                    if (name.EndsWith("/config"))
-                        name = name.Substring(0, name.Length - "/config".Length);
+                    if (name.EndsWith("/config")) //NOXLATE
+                        name = name.Substring(0, name.Length - "/config".Length); //NOXLATE
                     var node = root.Nodes.Add(name);
                     node.Tag = conf;
                     node.ImageIndex = node.SelectedImageIndex = IDX_CONFIG;
@@ -157,18 +142,15 @@ namespace Maestro.AddIn.Rest.UI
                 btnDelete.Enabled = true;
         }
 
-        private void LoadConfig(string json, string uriPart, bool isNew)
-        {
-            new RestConfigurationEditor(_conn, _client, json, uriPart, isNew).ShowDialog();
-        }
+        private void LoadConfig(string json, string uriPart, bool isNew) => new RestConfigurationEditor(_conn, _client, json, uriPart, isNew).ShowDialog();
 
         private void trvRestExplorer_AfterExpand(object sender, TreeViewEventArgs e)
         {
             var conf = e.Node.Tag as DataConfiguration;
-            if (conf != null && e.Node.Nodes[0].Text == "dummy")
+            if (conf != null && e.Node.Nodes[0].Text == "dummy") //NOXLATE
             {
                 e.Node.Nodes.Clear();
-                var req = new RestRequest(conf.ConfigUriPart.Replace("/config", "/files.json"));
+                var req = new RestRequest(conf.ConfigUriPart.Replace("/config", "/files.json")); //NOXLATE
                 _client.ExecuteAsync<DataFileListResponse>(req, (resp) =>
                 {
                     var list = resp.Data.DataConfigurationFileList;
@@ -208,10 +190,10 @@ namespace Maestro.AddIn.Rest.UI
             var list = trvRestExplorer.SelectedNode.Tag as DataFileList;
             if (conf != null)
             {
-                if (MessageBox.Show(Maestro.AddIn.Rest.Strings.PromptDeleteConfiguration, Maestro.AddIn.Rest.Strings.DeleteConfiguration, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show(Strings.PromptDeleteConfiguration, Strings.DeleteConfiguration, MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     var req = new RestRequest(conf.ConfigUriPart, Method.POST);
-                    req.AddHeader("X-HTTP-METHOD-OVERRIDE", "DELETE");
+                    req.AddHeader("X-HTTP-METHOD-OVERRIDE", "DELETE"); //NOXLATE
                     _client.ExecuteAsync(req, (resp) =>
                     {
                         if (resp.StatusCode == System.Net.HttpStatusCode.OK)
@@ -233,11 +215,11 @@ namespace Maestro.AddIn.Rest.UI
                 conf = trvRestExplorer.SelectedNode.Parent.Tag as DataConfiguration;
                 if (conf != null)
                 {
-                    if (MessageBox.Show(Maestro.AddIn.Rest.Strings.DeleteFilePrompt, Maestro.AddIn.Rest.Strings.DeleteFile, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show(Strings.DeleteFilePrompt, Strings.DeleteFile, MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        var req = new RestRequest(conf.ConfigUriPart.Replace("/config", "/file"), Method.POST);
-                        req.AddHeader("X-HTTP-METHOD-OVERRIDE", "DELETE");
-                        req.AddParameter("filename", file);
+                        var req = new RestRequest(conf.ConfigUriPart.Replace("/config", "/file"), Method.POST); //NOXLATE
+                        req.AddHeader("X-HTTP-METHOD-OVERRIDE", "DELETE"); //NOXLATE
+                        req.AddParameter("filename", file); //NOXLATE
                         _client.ExecuteAsync(req, (resp) =>
                         {
                             if (resp.StatusCode == System.Net.HttpStatusCode.OK)
@@ -269,9 +251,9 @@ namespace Maestro.AddIn.Rest.UI
                 {
                     if (picker.ShowDialog() == DialogResult.OK)
                     {
-                        var req = new RestRequest(conf.ConfigUriPart.Replace("/config", "/file"), Method.POST);
-                        req.AddParameter("filename", Path.GetFileName(picker.FileName));
-                        req.AddFile("data", picker.FileName);
+                        var req = new RestRequest(conf.ConfigUriPart.Replace("/config", "/file"), Method.POST); //NOXLATE
+                        req.AddParameter("filename", Path.GetFileName(picker.FileName)); //NOXLATE
+                        req.AddFile("data", picker.FileName); //NOXLATE
                         _client.ExecuteAsync(req, (resp) =>
                         {
                             if (resp.StatusCode == System.Net.HttpStatusCode.OK)
@@ -289,14 +271,8 @@ namespace Maestro.AddIn.Rest.UI
             }
         }
 
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            LoadConfig("{}", "", true);
-        }
+        private void btnNew_Click(object sender, EventArgs e) => LoadConfig("{}", string.Empty, true);
 
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            this.DoRefresh();
-        }
+        private void btnRefresh_Click(object sender, EventArgs e) => this.DoRefresh();
     }
 }

@@ -21,7 +21,6 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.MaestroAPI.Feature;
-using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.Serialization;
 using OSGeo.MapGuide.ObjectModels;
@@ -926,7 +925,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             else if (type == typeof(byte[]))
                 return Blob;
 
-            throw new Exception("Failed to find type for: " + type.FullName.ToString());
+            throw new Exception($"Failed to find type for: {type.FullName.ToString()}"); //LOCALIZEME
         }
 
         private static Type ConvertMgTypeToNetType(short idType)
@@ -989,7 +988,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             //register change items on map
             switch (propertyName)
             {
-                case "Group": //NOXLATE
+                case nameof(this.Group):
                     var name = this.Group;
                     if (this.Parent.Groups[name] != null)
                         this.Parent.OnLayerParentChanged(this, this.Parent.Groups[name].ObjectId);
@@ -997,23 +996,23 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                         this.Parent.OnLayerParentChanged(this, string.Empty);
                     break;
 
-                case "Visible": //NOXLATE
+                case nameof(this.Visible):
                     this.Parent.OnLayerVisibilityChanged(this, this.Visible ? "1" : "0"); //NOXLATE
                     break;
 
-                case "ShowInLegend": //NOXLATE
+                case nameof(this.ShowInLegend):
                     this.Parent.OnLayerDisplayInLegendChanged(this, this.ShowInLegend ? "1" : "0"); //NOXLATE
                     break;
 
-                case "LegendLabel": //NOXLATE
+                case nameof(this.LegendLabel):
                     this.Parent.OnLayerLegendLabelChanged(this, this.LegendLabel);
                     break;
 
-                case "LayerDefinitionID": //NOXLATE
+                case nameof(this.LayerDefinitionID):
                     this.Parent.OnLayerDefinitionChanged(this);
                     break;
 
-                case "Selectable": //NOXLATE
+                case nameof(this.Selectable):
                     this.Parent.OnLayerSelectabilityChanged(this, this.Selectable ? "1" : "0"); //NOXLATE
                     break;
             }
@@ -1052,6 +1051,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets a display string for this layer for presentation purposes
         /// </summary>
-        public string DisplayString { get { return this.LegendLabel + " (" + this.Name + ")"; } } //NOXLATE
+        public string DisplayString => $"{this.LegendLabel} ({this.Name})"; //NOXLATE
     }
 }

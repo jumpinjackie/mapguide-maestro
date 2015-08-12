@@ -105,16 +105,16 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         {
             _layers.Clear();
 
-            System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
+            XmlDocument doc = new XmlDocument();
             if (!string.IsNullOrEmpty(xml))
                 doc.LoadXml(xml);
 
             //There are two variations
-            System.Xml.XmlNodeList lst = doc.SelectNodes("FeatureSet/Layer"); //NOXLATE
+            XmlNodeList lst = doc.SelectNodes("FeatureSet/Layer"); //NOXLATE
             if (lst.Count == 0)
                 lst = doc.SelectNodes("FeatureInformation/FeatureSet/Layer"); //NOXLATE
 
-            foreach (System.Xml.XmlNode n in lst)
+            foreach (XmlNode n in lst)
             {
                 if (n.Attributes["id"] != null) //NOXLATE
                 {
@@ -122,7 +122,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
                     var l = _map.Layers.GetByObjectId(guid);
                     if (l != null)
                     {
-                        foreach (System.Xml.XmlNode c in n.SelectNodes("Class")) //NOXLATE
+                        foreach (XmlNode c in n.SelectNodes("Class")) //NOXLATE
                         {
                             if (c.Attributes["id"] != null) //NOXLATE
                                 if (c.Attributes["id"].Value == l.QualifiedClassName) //NOXLATE
@@ -139,15 +139,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <returns>An xml document that represents the current map selection</returns>
         public string ToXml()
         {
-            System.Xml.XmlDocument doc = new System.Xml.XmlDocument();
-            System.Xml.XmlNode root = doc.AppendChild(doc.CreateElement("FeatureSet")); //NOXLATE
+            XmlDocument doc = new XmlDocument();
+            XmlNode root = doc.AppendChild(doc.CreateElement("FeatureSet")); //NOXLATE
 
             foreach (LayerSelection layer in _layers)
             {
-                System.Xml.XmlNode ln = root.AppendChild(doc.CreateElement("Layer")); //NOXLATE
+                XmlNode ln = root.AppendChild(doc.CreateElement("Layer")); //NOXLATE
                 ln.Attributes.Append(doc.CreateAttribute("id")).Value = layer.Layer.ObjectId; //NOXLATE
 
-                System.Xml.XmlNode cn = ln.AppendChild(doc.CreateElement("Class")); //NOXLATE
+                XmlNode cn = ln.AppendChild(doc.CreateElement("Class")); //NOXLATE
                 cn.Attributes.Append(doc.CreateAttribute("id")).Value = layer.Layer.QualifiedClassName; //NOXLATE
 
                 for (int i = 0; i < layer.Count; i++)
@@ -168,17 +168,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             /// <summary>
             /// Gets the layer that contains the selected objects
             /// </summary>
-            public RuntimeMapLayer Layer { get { return m_layer; } }
+            public RuntimeMapLayer Layer => m_layer;
 
             /// <summary>
             /// Internal helper to construct a LayerSelection
             /// </summary>
             /// <param name="layer">The layer that the selection belongs to</param>
             /// <param name="ids">A list of xml &lt;ID&gt; nodes</param>
-            internal LayerSelection(RuntimeMapLayer layer, System.Xml.XmlNodeList ids)
+            internal LayerSelection(RuntimeMapLayer layer, XmlNodeList ids)
                 : this(layer)
             {
-                foreach (System.Xml.XmlNode n in ids)
+                foreach (XmlNode n in ids)
                     Add(ParseIDString(n.InnerXml));
             }
 
@@ -282,10 +282,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             /// </summary>
             /// <param name="id">The base64 encoded ID string</param>
             /// <returns>The composite value key</returns>
-            public object[] ParseIDString(string id)
-            {
-                return m_layer.ParseSelectionValues(id);
-            }
+            public object[] ParseIDString(string id) => m_layer.ParseSelectionValues(id);
 
             /// <summary>
             /// Constructs a new LayerSelection with a number of selected featured
@@ -416,10 +413,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             /// Removes the element at the specified location
             /// </summary>
             /// <param name="index">The index of the item to remove</param>
-            public void RemoveAt(int index)
-            {
-                m_list.RemoveAt(index);
-            }
+            public void RemoveAt(int index) => m_list.RemoveAt(index);
 
             /// <summary>
             /// Gets or sets the composite key for the specified index
@@ -447,20 +441,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             /// <summary>
             /// Removes all composite keys from the collection
             /// </summary>
-            public void Clear()
-            {
-                m_list.Clear();
-            }
+            public void Clear() => m_list.Clear();
 
             /// <summary>
             /// Returns a value indicating if the composite key is contained in the collection
             /// </summary>
             /// <param name="item">The composite key to look for</param>
             /// <returns>True if the collection contains the composite key, false otherwise</returns>
-            public bool Contains(object[] item)
-            {
-                return IndexOf(item) >= 0;
-            }
+            public bool Contains(object[] item) => IndexOf(item) >= 0;
 
             /// <summary>
             /// Not implemented
@@ -475,18 +463,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             /// <summary>
             /// Returns the number of composite keys (and thus selected objects)
             /// </summary>
-            public int Count
-            {
-                get { return m_list.Count; }
-            }
+            public int Count => m_list.Count;
 
             /// <summary>
             /// Gets a value indicating if the collection is read-only
             /// </summary>
-            public bool IsReadOnly
-            {
-                get { return false; }
-            }
+            public bool IsReadOnly => false;
 
             /// <summary>
             /// Removes the given composite key from the collection
@@ -511,10 +493,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             /// Returns an enumerator for the collection
             /// </summary>
             /// <returns>An enumerator for the collection</returns>
-            public IEnumerator<object[]> GetEnumerator()
-            {
-                return m_list.GetEnumerator();
-            }
+            public IEnumerator<object[]> GetEnumerator() => m_list.GetEnumerator();
 
             #endregion IEnumerable<object[]> Members
 
@@ -524,10 +503,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
             /// Returns an enumerator for the collection
             /// </summary>
             /// <returns>An enumerator for the collection</returns>
-            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-            {
-                return ((System.Collections.IEnumerable)m_list).GetEnumerator();
-            }
+            System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => ((System.Collections.IEnumerable)m_list).GetEnumerator();
 
             #endregion IEnumerable Members
         }
@@ -604,10 +580,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="item">The layer to look for</param>
         /// <returns>The index of the layer, or -1 if the layer is not in the collection</returns>
-        public int IndexOf(MapSelection.LayerSelection item)
-        {
-            return IndexOf(item.Layer);
-        }
+        public int IndexOf(LayerSelection item) => IndexOf(item.Layer);
 
         /// <summary>
         /// Returns the index of the given layer
@@ -630,36 +603,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="index">The index to place the item at</param>
         /// <param name="item">The item to insert</param>
-        public void Insert(int index, MapSelection.LayerSelection item)
-        {
-            _layers.Insert(index, item);
-        }
+        public void Insert(int index, LayerSelection item) => _layers.Insert(index, item);
 
         /// <summary>
         /// Inserts a selection layer into the collection
         /// </summary>
         /// <param name="index">The index to place the item at</param>
         /// <param name="layer">The layer.</param>
-        public void Insert(int index, RuntimeMapLayer layer)
-        {
-            _layers.Insert(index, new LayerSelection(layer));
-        }
+        public void Insert(int index, RuntimeMapLayer layer) => _layers.Insert(index, new LayerSelection(layer));
 
         /// <summary>
         /// Removes the item at the given index
         /// </summary>
         /// <param name="index">The index to remove the item at</param>
-        public void RemoveAt(int index)
-        {
-            _layers.RemoveAt(index);
-        }
+        public void RemoveAt(int index) => _layers.RemoveAt(index);
 
         /// <summary>
         /// Gets or sets the selection layer at a given index
         /// </summary>
         /// <param name="index">The index to get or set the item for</param>
         /// <returns>The item at the given index</returns>
-        public MapSelection.LayerSelection this[int index]
+        public LayerSelection this[int index]
         {
             get
             {
@@ -678,13 +642,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// </summary>
         /// <param name="index">The index to get or set the item for</param>
         /// <returns>The item at the given index</returns>
-        public MapSelection.LayerSelection this[RuntimeMapLayer index]
-        {
-            get
-            {
-                return _layers[IndexOf(index)];
-            }
-        }
+        public LayerSelection this[RuntimeMapLayer index] => _layers[IndexOf(index)];
 
         #endregion IList<MapSelection.LayerSelection> Members
 
@@ -718,30 +676,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Clears this selction
         /// </summary>
-        public void Clear()
-        {
-            _layers.Clear();
-        }
+        public void Clear() => _layers.Clear();
 
         /// <summary>
         /// Gets whether this selection contains the specified layer
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        public bool Contains(RuntimeMapLayer item)
-        {
-            return IndexOf(item) >= 0;
-        }
+        public bool Contains(RuntimeMapLayer item) => IndexOf(item) >= 0;
 
         /// <summary>
         /// Gets whether this selection contains the specified layer selection
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        public bool Contains(MapSelection.LayerSelection item)
-        {
-            return IndexOf(item) >= 0;
-        }
+        public bool Contains(LayerSelection item) => IndexOf(item) >= 0;
 
         /// <summary>
         /// Copies the elements of the <see cref="T:System.Collections.Generic.ICollection`1"/> to an <see cref="T:System.Array"/>, starting at a particular <see cref="T:System.Array"/> index.
@@ -763,7 +712,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// -or-
         /// The number of elements in the source <see cref="T:System.Collections.Generic.ICollection`1"/> is greater than the available space from <paramref name="arrayIndex"/> to the end of the destination <paramref name="array"/>.
         ///   </exception>
-        public void CopyTo(MapSelection.LayerSelection[] array, int arrayIndex)
+        public void CopyTo(LayerSelection[] array, int arrayIndex)
         {
             throw new NotImplementedException();
         }
@@ -771,25 +720,19 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// <summary>
         /// Gets the number of layers in this selection
         /// </summary>
-        public int Count
-        {
-            get { return _layers.Count; }
-        }
+        public int Count => _layers.Count;
 
         /// <summary>
         /// Gets whether this is read only
         /// </summary>
-        public bool IsReadOnly
-        {
-            get { return false; }
-        }
+        public bool IsReadOnly => false;
 
         /// <summary>
         /// Removes the specified layer selection
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        public bool Remove(MapSelection.LayerSelection item)
+        public bool Remove(LayerSelection item)
         {
             int ix = IndexOf(item);
             if (ix < 0)
@@ -807,19 +750,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Mapping
         /// Gets the layer selection enumerator
         /// </summary>
         /// <returns></returns>
-        public IEnumerator<MapSelection.LayerSelection> GetEnumerator()
-        {
-            return _layers.GetEnumerator();
-        }
+        public IEnumerator<LayerSelection> GetEnumerator() => _layers.GetEnumerator();
 
         #endregion IEnumerable<LayerSelection> Members
 
         #region IEnumerable Members
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return ((System.Collections.IEnumerable)_layers).GetEnumerator();
-        }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => ((System.Collections.IEnumerable)_layers).GetEnumerator();
 
         #endregion IEnumerable Members
     }

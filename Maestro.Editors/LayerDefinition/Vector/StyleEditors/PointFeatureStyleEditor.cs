@@ -1434,10 +1434,12 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
             if (m_inUpdate)
                 return;
 
+            var fontSym = m_item.Symbol as IFontSymbol;
             //TODO: Validate
-            if (!(m_item.Symbol is IFontSymbol))
+            if (fontSym == null)
                 return;
-            ((IFontSymbol)m_item.Symbol).FontName = fontCombo.Text;
+
+            fontSym.FontName = fontCombo.Text;
 
             comboBoxCharacter.Items.Clear();
             try
@@ -1577,9 +1579,10 @@ namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
         private void ReferenceY_Leave(object sender, EventArgs e)
         {
             double d;
-            if (m_item.Symbol is IMarkSymbol)
-                if (!double.TryParse(((IMarkSymbol)m_item.Symbol).InsertionPointY, NumberStyles.Float, CultureInfo.InvariantCulture, out d))
-                    MessageBox.Show(this, Strings.InsertionPointYError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            var markSym = m_item.Symbol as IMarkSymbol;
+
+            if (markSym != null && !double.TryParse(markSym.InsertionPointY, NumberStyles.Float, CultureInfo.InvariantCulture, out d))
+                MessageBox.Show(this, Strings.InsertionPointYError, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void FontBoldButton_Click(object sender, EventArgs e)

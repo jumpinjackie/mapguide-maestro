@@ -460,7 +460,7 @@ namespace Maestro.Editors.Common
                 var tag = ColumnValue.Tag;
                 if (tag != null)
                 {
-                    if (ColumnValue.Tag == typeof(string) && (ColumnValue.SelectedIndex != 0 || ColumnValue.Text != "NULL")) //NOXLATE
+                    if (ColumnValue.Tag as Type == typeof(string) && (ColumnValue.SelectedIndex != 0 || ColumnValue.Text != "NULL")) //NOXLATE
                     {
                         InsertText($"'{ColumnValue.Text}'"); //NOXLATE
                     }

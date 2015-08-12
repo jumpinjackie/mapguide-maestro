@@ -58,29 +58,20 @@ namespace Maestro.AddIn.Scripting.Services
         /// <summary>
         /// The main application window
         /// </summary>
-        public Workbench MainWindow
-        {
-            get { return Workbench.Instance; }
-        }
+        public Workbench MainWindow => Workbench.Instance;
 
         /// <summary>
         /// Returns a list of the names of all currently open connections
         /// </summary>
         /// <returns></returns>
-        public string[] GetConnectionNames()
-        {
-            return ServiceRegistry.GetService<ServerConnectionManager>().GetConnectionNames().ToArray();
-        }
+        public string[] GetConnectionNames() => ServiceRegistry.GetService<ServerConnectionManager>().GetConnectionNames().ToArray();
 
         /// <summary>
         /// Gets the connection by its specified name
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public IServerConnection GetConnection(string name)
-        {
-            return ServiceRegistry.GetService<ServerConnectionManager>().GetConnection(name);
-        }
+        public IServerConnection GetConnection(string name) => ServiceRegistry.GetService<ServerConnectionManager>().GetConnection(name);
 
         /// <summary>
         /// Gets the XML content of the given resource id
@@ -131,29 +122,20 @@ namespace Maestro.AddIn.Scripting.Services
         /// <param name="title"></param>
         /// <param name="question"></param>
         /// <returns></returns>
-        public bool AskQuestion(string title, string question)
-        {
-            return MessageService.AskQuestion(question, title);
-        }
+        public bool AskQuestion(string title, string question) => MessageService.AskQuestion(question, title);
 
         /// <summary>
         /// Displays a message
         /// </summary>
         /// <param name="title"></param>
         /// <param name="message"></param>
-        public void ShowMessage(string title, string message)
-        {
-            MessageService.ShowMessage(message, title);
-        }
+        public void ShowMessage(string title, string message) => MessageService.ShowMessage(message, title);
 
         /// <summary>
         /// Displays an exception in a dialog
         /// </summary>
         /// <param name="ex"></param>
-        public void ShowError(Exception ex)
-        {
-            ErrorDialog.Show(ex);
-        }
+        public void ShowError(Exception ex) => ErrorDialog.Show(ex);
 
         /// <summary>
         /// Displays a resource picker for opening
@@ -311,9 +293,6 @@ namespace Maestro.AddIn.Scripting.Services
         /// must be done on this thread
         /// </summary>
         /// <param name="method"></param>
-        public void UIInvoke(Delegate method)
-        {
-            this.MainWindow.Invoke(method);
-        }
+        public void UIInvoke(Delegate method) => this.MainWindow.Invoke(method);
     }
 }

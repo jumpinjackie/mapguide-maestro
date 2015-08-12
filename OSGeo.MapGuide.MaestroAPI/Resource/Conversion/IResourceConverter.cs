@@ -76,7 +76,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Resource.Conversion
             //wayside in the process, and any new bits flubbed with default values as part of deserialization
 
             var resVer = resource.GetResourceTypeDescriptor().Version;
-            var dstVer = string.Format("{0}.{1}.{2}", targetVersion.Major, targetVersion.Minor, targetVersion.Build); //NOXLATE
+            var dstVer = $"{targetVersion.Major}.{targetVersion.Minor}.{targetVersion.Build}"; //NOXLATE
             var dstXsd = resource.ValidatingSchema.Replace(resVer, dstVer);
 
             using (var sr = ObjectFactory.Serialize(resource))

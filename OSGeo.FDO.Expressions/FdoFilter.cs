@@ -20,11 +20,7 @@
 
 #endregion Disclaimer / License
 using Irony.Parsing;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OSGeo.FDO.Expressions
 {
@@ -41,6 +37,8 @@ namespace OSGeo.FDO.Expressions
 
     public abstract class FdoFilter : FdoParseable
     {
+        public override FdoParseableType ParseableType => FdoParseableType.Filter;
+
         public abstract FilterType FilterType { get; }
 
         public static FdoFilter Parse(string str)

@@ -38,9 +38,9 @@ namespace OSGeo.MapGuide.MaestroAPI
             m_req = req;
         }
 
-        internal HttpServerConnection Connection { get { return m_con; } }
+        internal HttpServerConnection Connection => m_con;
 
-        internal RequestBuilder RequestBuilder { get { return m_req; } }
+        internal RequestBuilder RequestBuilder => m_req;
 
         public override CoordinateSystemCategory[] Categories
         {
@@ -51,7 +51,7 @@ namespace OSGeo.MapGuide.MaestroAPI
                     string req = m_req.EnumerateCategories();
                     XmlDocument doc = new XmlDocument();
                     doc.Load(m_con.OpenRead(req));
-                    XmlNodeList lst = doc.SelectNodes("StringCollection/Item");
+                    XmlNodeList lst = doc.SelectNodes("StringCollection/Item"); //NOXLATE
                     CoordinateSystemCategory[] data = new CoordinateSystemCategory[lst.Count];
                     for (int i = 0; i < lst.Count; i++)
                         data[i] = new HttpCoordinateSystemCategory(this, lst[i].InnerText);
@@ -105,9 +105,9 @@ namespace OSGeo.MapGuide.MaestroAPI
             return System.Text.Encoding.UTF8.GetString(m_con.DownloadData(req)).Trim('\0');
         }
 
-        public override bool IsLoaded { get { return m_categories != null; } }
+        public override bool IsLoaded => m_categories != null;
 
-        public override CoordinateSystem.CoordinateSystemDefinitionBase[] EnumerateCoordinateSystems(string category)
+        public override CoordinateSystemDefinitionBase[] EnumerateCoordinateSystems(string category)
         {
             CoordinateSystemCategory cat = null;
             foreach (CoordinateSystemCategory csc in this.Categories)
@@ -133,9 +133,6 @@ namespace OSGeo.MapGuide.MaestroAPI
             return data;
         }
 
-        public override CoordinateSystem.CoordinateSystemDefinitionBase CreateEmptyCoordinateSystem()
-        {
-            return new HttpCoordinateSystemDefinition();
-        }
+        public override CoordinateSystemDefinitionBase CreateEmptyCoordinateSystem() => new HttpCoordinateSystemDefinition();
     }
 }

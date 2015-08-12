@@ -44,12 +44,12 @@ namespace Maestro.Shared.UI
         /// <summary>
         /// Gets whether this instance is a modal window
         /// </summary>
-        public virtual bool IsModalWindow { get { return false; } }
+        public virtual bool IsModalWindow => false;
 
         /// <summary>
         /// Gets whether this instance can only be docked to the document region
         /// </summary>
-        public virtual bool IsExclusiveToDocumentRegion { get { return false; } }
+        public virtual bool IsExclusiveToDocumentRegion => false;
 
         private string _title;
 
@@ -67,9 +67,7 @@ namespace Maestro.Shared.UI
                 if (_title != value)
                 {
                     _title = value;
-                    var handler = this.TitleChanged;
-                    if (handler != null)
-                        handler(this, EventArgs.Empty);
+                    this.TitleChanged?.Invoke(this, EventArgs.Empty);
                 }
             }
         }
@@ -90,17 +88,9 @@ namespace Maestro.Shared.UI
             _parent.FormClosing += new FormClosingEventHandler(OnParentFormClosed);
         }
 
-        private void OnParentFormClosed(object sender, FormClosingEventArgs e)
-        {
-            var h = this.ViewContentClosed;
-            if (h != null)
-                h(this, EventArgs.Empty);
-        }
+        private void OnParentFormClosed(object sender, FormClosingEventArgs e) => this.ViewContentClosed?.Invoke(this, EventArgs.Empty);
 
-        private void OnParentFormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = CheckCancelEvents();
-        }
+        private void OnParentFormClosing(object sender, FormClosingEventArgs e) => e.Cancel = CheckCancelEvents();
 
         /// <summary>
         /// Fires when the title has been changed
@@ -112,29 +102,19 @@ namespace Maestro.Shared.UI
         /// in any way. All view content can still be programmatically closed if they inherit from <see cref="ViewContentBase"/> and
         /// does not override the default implementation of <see cref="Close"/>
         /// </summary>
-        public virtual bool AllowUserClose
-        {
-            get { return true; }
-        }
+        public virtual bool AllowUserClose => true;
 
         internal bool CheckCancelEvents()
         {
             CancelEventArgs ce = new CancelEventArgs(false);
-            var ceHandler = this.ViewContentClosing;
-            if (ceHandler != null)
-                ceHandler(this, ce);
-
+            this.ViewContentClosing?.Invoke(this, ce);
             return ce.Cancel;
         }
 
         /// <summary>
         /// Closes the view. This raises the <see cref="ViewContentClosing"/> event
         /// </summary>
-        public virtual void Close()
-        {
-            if (_parent != null)
-                _parent.Close();
-        }
+        public virtual void Close() => _parent?.Close();
 
         /// <summary>
         /// Fired when the view has been closed internally
@@ -145,31 +125,20 @@ namespace Maestro.Shared.UI
         /// Displays an exception message
         /// </summary>
         /// <param name="ex">The exception object</param>
-        public void ShowError(Exception ex)
-        {
-            ErrorDialog.Show(ex);
-        }
+        public void ShowError(Exception ex) => ErrorDialog.Show(ex);
 
         /// <summary>
         /// Displays an error message
         /// </summary>
         /// <param name="message">The message</param>
-        public virtual void ShowError(string message)
-        {
-            //MessageService.ShowError(message);
-            ErrorDialog.Show(message, message);
-        }
+        public virtual void ShowError(string message) => ErrorDialog.Show(message, message);
 
         /// <summary>
         /// Displays an alert message
         /// </summary>
         /// <param name="title">The title of this message</param>
         /// <param name="message">The message</param>
-        public virtual void ShowMessage(string title, string message)
-        {
-            //MessageService.ShowMessage(message, title);
-            MessageBox.Show(message, title);
-        }
+        public virtual void ShowMessage(string title, string message) => MessageBox.Show(message, title);
 
         /// <summary>
         /// Make a request for confirmation
@@ -179,11 +148,8 @@ namespace Maestro.Shared.UI
         /// <returns>
         /// true if confirmed, false otherwise
         /// </returns>
-        public virtual bool Confirm(string title, string message)
-        {
-            //return MessageService.AskQuestion(message, title);
-            return MessageBox.Show(message, title, MessageBoxButtons.YesNo) == DialogResult.Yes;
-        }
+        public virtual bool Confirm(string title, string message) 
+            => MessageBox.Show(message, title, MessageBoxButtons.YesNo) == DialogResult.Yes;
 
         /// <summary>
         /// Make a request for confirmation
@@ -194,11 +160,8 @@ namespace Maestro.Shared.UI
         /// <returns>
         /// true if confirmed, false otherwise
         /// </returns>
-        public virtual bool ConfirmFormatted(string title, string format, params string[] args)
-        {
-            //return MessageService.AskQuestion(string.Format(format, args), title);
-            return MessageBox.Show(string.Format(format, args), title, MessageBoxButtons.YesNo) == DialogResult.Yes;
-        }
+        public virtual bool ConfirmFormatted(string title, string format, params string[] args) 
+            => MessageBox.Show(string.Format(format, args), title, MessageBoxButtons.YesNo) == DialogResult.Yes;
 
         /// <summary>
         /// The underlying control
@@ -224,9 +187,7 @@ namespace Maestro.Shared.UI
                 if (_description != value)
                 {
                     _description = value;
-                    var handler = this.DescriptionChanged;
-                    if (handler != null)
-                        handler(this, EventArgs.Empty);
+                    this.DescriptionChanged?.Invoke(this, EventArgs.Empty);
                 }
             }
         }
@@ -239,12 +200,7 @@ namespace Maestro.Shared.UI
         /// <summary>
         /// Makes this content active
         /// </summary>
-        public void Activate()
-        {
-            var handler = this.ViewContentActivating;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
-        }
+        public void Activate() => this.ViewContentActivating?.Invoke(this, EventArgs.Empty);
 
         /// <summary>
         /// Fired when the view is going to hide
@@ -265,12 +221,7 @@ namespace Maestro.Shared.UI
         ///   <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence"/>
         ///   <IPermission class="System.Diagnostics.PerformanceCounterPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true"/>
         ///   </PermissionSet>
-        void IViewContent.Hide()
-        {
-            var handler = this.ViewContentHiding;
-            if (handler != null)
-                handler(this, EventArgs.Empty);
-        }
+        void IViewContent.Hide() => this.ViewContentHiding?.Invoke(this, EventArgs.Empty);
 
         /// <summary>
         /// Indicates whether this view is attached to a workbench
@@ -284,18 +235,12 @@ namespace Maestro.Shared.UI
         /// <summary>
         /// Indicates the default region this view content will be put in
         /// </summary>
-        public virtual ViewRegion DefaultRegion
-        {
-            get { return ViewRegion.Document; }
-        }
+        public virtual ViewRegion DefaultRegion => ViewRegion.Document;
 
         /// <summary>
         /// Gets the icon for this view
         /// </summary>
-        public virtual Icon ViewIcon
-        {
-            get { return null; }
-        }
+        public virtual Icon ViewIcon => null;
 
         /// <summary>
         /// Fired when the view has been closed internally

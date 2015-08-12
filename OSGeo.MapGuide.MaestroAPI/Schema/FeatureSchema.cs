@@ -57,10 +57,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// <summary>
         /// Gets the class definitions
         /// </summary>
-        public ReadOnlyCollection<ClassDefinition> Classes
-        {
-            get { return _classes.AsReadOnly(); }
-        }
+        public ReadOnlyCollection<ClassDefinition> Classes => _classes.AsReadOnly();
 
         /// <summary>
         /// Adds the specified class definition
@@ -107,30 +104,21 @@ namespace OSGeo.MapGuide.MaestroAPI.Schema
         /// </summary>
         /// <param name="cls"></param>
         /// <returns></returns>
-        public int IndexOf(ClassDefinition cls)
-        {
-            return _classes.IndexOf(cls);
-        }
+        public int IndexOf(ClassDefinition cls) => _classes.IndexOf(cls);
 
         /// <summary>
         /// Gets the class definition at the specified index
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public ClassDefinition this[int index]
-        {
-            get { return GetItem(index); }
-        }
+        public ClassDefinition this[int index] => GetItem(index);
 
         /// <summary>
         /// Gets the class definition at the specified index
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public ClassDefinition GetItem(int index)
-        {
-            return _classes[index];
-        }
+        public ClassDefinition GetItem(int index) => _classes[index];
 
         /// <summary>
         /// Writes the current element's content

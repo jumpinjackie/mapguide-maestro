@@ -371,7 +371,7 @@ namespace Maestro.Login
         [System.Xml.Serialization.XmlIgnore]
         public string UnscrambledPassword
         {
-            get { return System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(m_scrambledPassword == null ? string.Empty : m_scrambledPassword)); }
+            get { return System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(m_scrambledPassword ?? string.Empty)); }
             set { m_scrambledPassword = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(value)); }
         }
 

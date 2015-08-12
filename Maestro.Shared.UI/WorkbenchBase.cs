@@ -281,28 +281,19 @@ namespace Maestro.Shared.UI
         /// Gets the toolbar names.
         /// </summary>
         /// <value>The toolbar names.</value>
-        public ICollection<string> ToolbarNames
-        {
-            get { return _toolstrips.Keys; }
-        }
+        public ICollection<string> ToolbarNames => _toolstrips.Keys;
 
         /// <summary>
         /// Sets the status label.
         /// </summary>
         /// <param name="text">The text.</param>
-        public void SetStatusLabel(string text)
-        {
-            statusLabel.Text = text;
-        }
+        public void SetStatusLabel(string text) => statusLabel.Text = text;
 
         /// <summary>
         /// Sets the title.
         /// </summary>
         /// <param name="title">The title.</param>
-        public void SetTitle(string title)
-        {
-            this.Text = title;
-        }
+        public void SetTitle(string title) => this.Text = title;
 
         /// <summary>
         /// Gets the active view in the document region
@@ -378,13 +369,10 @@ namespace Maestro.Shared.UI
             }
         }
 
-        private void OnApplicationIdle(object sender, EventArgs e)
-        {
-            // Use the Idle event to update the status of menu and toolbar.
-            // Depending on your application and the number of menu items with complex conditions,
-            // you might want to update the status less frequently.
-            _workbenchInitializer.UpdateMenuItemStatus(menu, _toolstrips.Values);
-        }
+        // Use the Idle event to update the status of menu and toolbar.
+        // Depending on your application and the number of menu items with complex conditions,
+        // you might want to update the status less frequently.
+        private void OnApplicationIdle(object sender, EventArgs e) => _workbenchInitializer.UpdateMenuItemStatus(menu, _toolstrips.Values);
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {

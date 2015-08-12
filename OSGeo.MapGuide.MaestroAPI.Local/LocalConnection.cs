@@ -56,10 +56,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
     {
         public event EventHandler SessionIDChanged; //Not used
 
-        public static LocalConnection Create(NameValueCollection initParams)
-        {
-            return new LocalConnection(initParams);
-        }
+        public static LocalConnection Create(NameValueCollection initParams) => new LocalConnection(initParams);
 
         private MgdServiceFactory _fact;
 
@@ -74,7 +71,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             sw.Start();
             MgdPlatform.Initialize(_configFile);
             sw.Stop();
-            Trace.TraceInformation("MapGuide Platform initialized in {0}ms", sw.ElapsedMilliseconds);
+            Trace.TraceInformation($"MapGuide Platform initialized in {sw.ElapsedMilliseconds}ms");
         }
 
         public override ICommand CreateCommand(int cmdType)
@@ -100,12 +97,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return base.CreateCommand(cmdType);
         }
 
-        public const string PROVIDER_NAME = "Maestro.Local";
+        public const string PROVIDER_NAME = "Maestro.Local"; //NOXLATE
 
-        public override string ProviderName
-        {
-            get { return PROVIDER_NAME; }
-        }
+        public override string ProviderName => PROVIDER_NAME;
 
         public override NameValueCollection CloneParameters
         {
@@ -125,7 +119,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
         protected override IServerConnection GetInterface() => this;
 
         private string _configFile;
-        private const string PARAM_CONFIG = "ConfigFile";
+        private const string PARAM_CONFIG = "ConfigFile"; //NOXLATE
 
         private MgdResourceService _resSvc;
         private MgdFeatureService _featSvc;
@@ -215,10 +209,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return _tileSvc;
         }
 
-        public override IServerConnection Clone()
-        {
-            return LocalConnection.Create(this.CloneParameters);
-        }
+        public override IServerConnection Clone() => LocalConnection.Create(this.CloneParameters);
 
         private void LogMethodCall(string method, bool success, params string[] values)
         {
@@ -561,22 +552,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             var fes = GetFeatureService();
             if (schema != null && schema.IndexOf(":") > 0)
                 schema = schema.Split(':')[0];
-            System.IO.MemoryStream ms = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceID), schema)));
+            MemoryStream ms = new MemoryStream(Encoding.UTF8.GetBytes(fes.DescribeSchemaAsXml(new MgResourceIdentifier(resourceID), schema)));
 
             LogMethodCall("MgFeatureService::DescribeSchemaAsXml", true, resourceID, schema);
 
             return new FeatureSourceDescription(ms).Schemas[0];
         }
 
-        public override IReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, string[] columns)
-        {
-            return AggregateQueryFeatureSourceCore(resourceID, schema, filter, columns, null);
-        }
-
-        public override IReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, System.Collections.Specialized.NameValueCollection aggregateFunctions)
-        {
-            return AggregateQueryFeatureSourceCore(resourceID, schema, filter, null, aggregateFunctions);
-        }
+        public override IReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, string[] columns) => AggregateQueryFeatureSourceCore(resourceID, schema, filter, columns, null);
+        public override IReader AggregateQueryFeatureSource(string resourceID, string schema, string filter, System.Collections.Specialized.NameValueCollection aggregateFunctions) => AggregateQueryFeatureSourceCore(resourceID, schema, filter, null, aggregateFunctions);
 
         private IReader AggregateQueryFeatureSourceCore(string resourceID, string schema, string query, string[] columns, System.Collections.Specialized.NameValueCollection computedProperties)
         {
@@ -646,15 +630,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return klass;
         }
 
-        public override Version SiteVersion
-        {
-            get { return typeof(MgdMap).Assembly.GetName().Version; }
-        }
+        public override Version SiteVersion => typeof(MgdMap).Assembly.GetName().Version;
 
-        public override string[] GetCustomPropertyNames()
-        {
-            return new string[0];
-        }
+        public override string[] GetCustomPropertyNames() => new string[0];
 
         public override Type GetCustomPropertyType(string name)
         {
@@ -759,7 +737,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return base.DeserializeObject<ResourceDataList>(new MgReadOnlyStream(fetch));
         }
 
-        public System.IO.Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format)
+        public Stream GetTile(string mapdefinition, string baselayergroup, int col, int row, int scaleindex, string format)
         {
             var ts = GetTileService();
             GetByteReaderMethod fetch = () =>
@@ -771,7 +749,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new MgReadOnlyStream(fetch);
         }
 
-        public System.IO.Stream DescribeDrawing(string resourceID)
+        public Stream DescribeDrawing(string resourceID)
         {
             var dwSvc = GetDrawingService();
             GetByteReaderMethod fetch = () =>
@@ -828,7 +806,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return res;
         }
 
-        public System.IO.Stream GetDrawing(string resourceID)
+        public Stream GetDrawing(string resourceID)
         {
             var dwSvc = GetDrawingService();
             GetByteReaderMethod fetch = () =>
@@ -840,7 +818,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new MgReadOnlyStream(fetch);
         }
 
-        public System.IO.Stream GetLayer(string resourceID, string sectionName, string layerName)
+        public Stream GetLayer(string resourceID, string sectionName, string layerName)
         {
             var dwSvc = GetDrawingService();
             GetByteReaderMethod fetch = () =>
@@ -852,7 +830,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new MgReadOnlyStream(fetch);
         }
 
-        public System.IO.Stream GetSection(string resourceID, string sectionName)
+        public Stream GetSection(string resourceID, string sectionName)
         {
             var dwSvc = GetDrawingService();
             GetByteReaderMethod fetch = () =>
@@ -864,7 +842,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new MgReadOnlyStream(fetch);
         }
 
-        public System.IO.Stream GetSectionResource(string resourceID, string resourceName)
+        public Stream GetSectionResource(string resourceID, string resourceName)
         {
             var dwSvc = GetDrawingService();
             GetByteReaderMethod fetch = () =>
@@ -876,15 +854,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new MgReadOnlyStream(fetch);
         }
 
-        public IFeatureService FeatureService
-        {
-            get { return this; }
-        }
+        public IFeatureService FeatureService => this;
 
-        public IResourceService ResourceService
-        {
-            get { return this; }
-        }
+        public IResourceService ResourceService => this;
 
         private IConnectionCapabilities _caps;
 
@@ -932,7 +904,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
 
         private ICoordinateSystemCatalog m_coordsys = null;
 
-        public OSGeo.MapGuide.MaestroAPI.CoordinateSystem.ICoordinateSystemCatalog CoordinateSystemCatalog
+        public ICoordinateSystemCatalog CoordinateSystemCatalog
         {
             get
             {
@@ -942,19 +914,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
         }
 
-        public string DisplayName
-        {
-            get { return "Local MgDesktop (" + _configFile + ")"; }
-        }
+        public string DisplayName => $"Local MgDesktop ({_configFile})"; //NOXLATE
 
         public void RestartSession()
         {
         }
 
-        public bool RestartSession(bool throwException)
-        {
-            return true;
-        }
+        public bool RestartSession(bool throwException) => true;
 
         internal void InsertFeatures(MgResourceIdentifier fsId, string className, MgPropertyCollection props)
         {
@@ -1050,12 +1016,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             }
         }
 
-        public override Mapping.RuntimeMap OpenMap(string runtimeMapResourceId)
+        public override RuntimeMap OpenMap(string runtimeMapResourceId)
         {
             throw new NotSupportedException();
         }
 
-        public override Mapping.RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, double metersPerUnit, bool suppressErrors)
+        public override RuntimeMap CreateMap(string runtimeMapResourceId, IMapDefinition mdf, double metersPerUnit, bool suppressErrors)
         {
             var mdfId = new MgResourceIdentifier(mdf.ResourceID);
             var implMap = new MgdMap(mdfId);
@@ -1065,7 +1031,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return map;
         }
 
-        public override Mapping.RuntimeMapGroup CreateMapGroup(Mapping.RuntimeMap parent, IBaseMapGroup group)
+        public override RuntimeMapGroup CreateMapGroup(RuntimeMap parent, IBaseMapGroup group)
         {
             var impl = parent as LocalRuntimeMap;
             if (impl == null)
@@ -1081,7 +1047,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new LocalRuntimeMapGroup(impl, rtGroup);
         }
 
-        public override Mapping.RuntimeMapGroup CreateMapGroup(Mapping.RuntimeMap parent, IMapLayerGroup group)
+        public override RuntimeMapGroup CreateMapGroup(RuntimeMap parent, IMapLayerGroup group)
         {
             var impl = parent as LocalRuntimeMap;
             if (impl == null)
@@ -1108,7 +1074,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new LocalRuntimeMapGroup(impl, rtGroup);
         }
 
-        public override Mapping.RuntimeMapGroup CreateMapGroup(Mapping.RuntimeMap parent, string name)
+        public override RuntimeMapGroup CreateMapGroup(RuntimeMap parent, string name)
         {
             var impl = parent as LocalRuntimeMap;
             if (impl == null)
@@ -1118,7 +1084,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new LocalRuntimeMapGroup(impl, group);
         }
 
-        public override Mapping.RuntimeMapLayer CreateMapLayer(Mapping.RuntimeMap parent, ILayerDefinition ldf, bool suppressErrors)
+        public override RuntimeMapLayer CreateMapLayer(RuntimeMap parent, ILayerDefinition ldf, bool suppressErrors)
         {
             var impl = parent as LocalRuntimeMap;
             if (impl == null)
@@ -1129,12 +1095,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new LocalRuntimeMapLayer(impl, layer, this, suppressErrors);
         }
 
-        public Stream RenderDynamicOverlay(Mapping.RuntimeMap map, Mapping.MapSelection selection, string format)
-        {
-            return RenderDynamicOverlay(map, selection, format, true);
-        }
+        public Stream RenderDynamicOverlay(RuntimeMap map, MapSelection selection, string format) => RenderDynamicOverlay(map, selection, format, true);
 
-        private static MgdSelection Convert(MgdMap map, Mapping.MapSelection sel)
+        private static MgdSelection Convert(MgdMap map, MapSelection sel)
         {
             if (sel == null)
                 return null;
@@ -1177,25 +1140,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new MgReadOnlyStream(fetch);
         }
 
-        public Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi)
-        {
-            return this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, "PNG", false);
-        }
-
-        public Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi)
-        {
-            return this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, "PNG", false);
-        }
-
-        public Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format)
-        {
-            return this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, format, false);
-        }
-
-        public Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format)
-        {
-            return this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, format, false);
-        }
+        public Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi) => this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, "PNG", false);
+        public Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi) => this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, "PNG", false);
+        public Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format) => this.RenderRuntimeMap(map, x, y, scale, width, height, dpi, format, false);
+        public Stream RenderRuntimeMap(RuntimeMap map, double x1, double y1, double x2, double y2, int width, int height, int dpi, string format) => this.RenderRuntimeMap(map, x1, y1, x2, y2, width, height, dpi, format, false);
 
         public Stream RenderRuntimeMap(RuntimeMap map, double x, double y, double scale, int width, int height, int dpi, string format, bool clip)
         {
@@ -1266,10 +1214,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             return new MgReadOnlyStream(fetch);
         }
 
-        public System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type)
-        {
-            return GetLegendImage(scale, layerdefinition, themeIndex, type, 16, 16, "PNG");
-        }
+        public System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type) => GetLegendImage(scale, layerdefinition, themeIndex, type, 16, 16, "PNG");
 
         public System.Drawing.Image GetLegendImage(double scale, string layerdefinition, int themeIndex, int type, int width, int height, string format)
         {
@@ -1312,7 +1257,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
                     op = MgFeatureSpatialOperations.EnvelopeIntersects;
                     break;
                 default:
-                    throw new ArgumentException("Unknown or unsupported selection variant: " + selectionVariant);
+                    throw new ArgumentException($"Unknown or unsupported selection variant: {selectionVariant}"); //FIXME
             }
 
             if (extraOptions != null)
@@ -1403,9 +1348,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Local
             rdr.Close();
         }
 
-        public IEnumerable<ILongTransaction> Transactions
-        {
-            get { return _transactions; }
-        }
+        public IEnumerable<ILongTransaction> Transactions => _transactions;
     }
 }

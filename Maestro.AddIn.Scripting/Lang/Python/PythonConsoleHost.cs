@@ -59,17 +59,14 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         private ITextEditor textEditor;
         private PythonConsole pythonConsole;
 
-        public PythonConsole Console { get { return pythonConsole; } }
+        public PythonConsole Console => pythonConsole;
 
         public PythonConsoleHost(ITextEditor textEditor)
         {
             this.textEditor = textEditor;
         }
 
-        protected override Type Provider
-        {
-            get { return typeof(PythonContext); }
-        }
+        protected override Type Provider => typeof(PythonContext);
 
         /// <summary>
         /// Runs the console host in its own thread.
@@ -93,15 +90,9 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             }
         }
 
-        protected override CommandLine CreateCommandLine()
-        {
-            return new PythonCommandLine();
-        }
+        protected override CommandLine CreateCommandLine() => new PythonCommandLine();
 
-        protected override OptionsParser CreateOptionsParser()
-        {
-            return new PythonOptionsParser();
-        }
+        protected override OptionsParser CreateOptionsParser() => new PythonOptionsParser();
 
         protected override ScriptRuntimeSetup CreateRuntimeSetup()
         {
@@ -162,9 +153,6 @@ namespace Maestro.AddIn.Scripting.Lang.Python
         /// <summary>
         /// Runs the console.
         /// </summary>
-        private void RunConsole()
-        {
-            Run(new string[0]);
-        }
+        private void RunConsole() => Run(new string[0]);
     }
 }

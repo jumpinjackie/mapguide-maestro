@@ -267,10 +267,11 @@ namespace Maestro.Editors.Common
             if (value == null)
                 return false;
 
-            if (value.GetType() == typeof(SpecialCell))
+            var sc = value as SpecialCell;
+            if (sc != null)
             {
                 if (value == m_currentColor)
-                    color = ((SpecialCell)value).Color;
+                    color = sc.Color;
                 else
                     return false;
             }

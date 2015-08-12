@@ -21,7 +21,6 @@
 #endregion Disclaimer / License
 
 using GeoAPI.Geometries;
-using NetTopologySuite.Geometries;
 using System;
 using System.Drawing;
 
@@ -51,9 +50,9 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
             UDM_Y = meters_pr_y_unit;
         }
 
-        public override double MetersPerUnitX { get { return UDM_X; } }
+        public override double MetersPerUnitX => UDM_X;
 
-        public override double MetersPerUnitY { get { return UDM_Y; } }
+        public override double MetersPerUnitY => UDM_Y;
 
         protected override double CalculateScale(IEnvelope bbox, Size size)
         {

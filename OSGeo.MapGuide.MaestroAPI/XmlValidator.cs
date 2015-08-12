@@ -20,19 +20,18 @@
 
 #endregion Disclaimer / License
 
+using OSGeo.MapGuide.MaestroAPI.Exceptions;
+using OSGeo.MapGuide.ObjectModels;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Text;
+using System.Xml;
+using System.Xml.Schema;
+
 namespace OSGeo.MapGuide.MaestroAPI
 {
-    using OSGeo.MapGuide.MaestroAPI.Exceptions;
-    using OSGeo.MapGuide.MaestroAPI.Resource;
-    using OSGeo.MapGuide.ObjectModels;
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.IO;
-    using System.Text;
-    using System.Xml;
-    using System.Xml.Schema;
-
     ///<summary>
     /// Class that makes XSD validation
     ///</summary>
@@ -44,25 +43,19 @@ namespace OSGeo.MapGuide.MaestroAPI
         /// <summary>
         /// Gets the validation warnings.
         /// </summary>
-        public ReadOnlyCollection<string> ValidationWarnings
-        {
-            get { return this.warnings.AsReadOnly(); }
-        }
+        public ReadOnlyCollection<string> ValidationWarnings => this.warnings.AsReadOnly();
 
         /// <summary>
         /// Gets the validation errors.
         /// </summary>
-        public ReadOnlyCollection<string> ValidationErrors
-        {
-            get { return this.errors.AsReadOnly(); }
-        }
+        public ReadOnlyCollection<string> ValidationErrors => this.errors.AsReadOnly();
 
         /// <summary>
         /// Validates the specified XML.
         /// </summary>
         /// <param name="xml">The XML.</param>
         /// <param name="xsds">The array of <see cref="T:System.Xml.Schema.XmlSchema"/> objects to validate against.</param>
-        public void Validate(System.IO.Stream xml, XmlSchema[] xsds)
+        public void Validate(Stream xml, XmlSchema[] xsds)
         {
             this.warnings.Clear();
             this.errors.Clear();

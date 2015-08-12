@@ -383,22 +383,22 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <summary>
         /// The connection to the server
         /// </summary>
-        public IServerConnection Connection { get { return m_connection; } }
+        public IServerConnection Connection => m_connection;
 
         /// <summary>
         /// The list of map configurations to proccess
         /// </summary>
-        public List<MapTilingConfiguration> Maps { get { return m_maps; } }
+        public List<MapTilingConfiguration> Maps => m_maps;
 
         /// <summary>
         /// The tile settings
         /// </summary>
-        public TileRunParameters Config { get { return m_tileSettings; } }
+        public TileRunParameters Config => m_tileSettings;
 
         /// <summary>
         /// Gets a flag indicating if the rendering process is cancelled
         /// </summary>
-        public bool Cancel { get { return m_cancel; } }
+        public bool Cancel => m_cancel;
     }
 
     /// <summary>
@@ -459,12 +459,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <summary>
         /// Gets the list of groups
         /// </summary>
-        public string[] Groups { get { return m_groups; } }
+        public string[] Groups => m_groups;
 
         /// <summary>
         /// The map's scales may have been modified, this array is a map of the new values
         /// </summary>
-        public int[] ScaleIndexMap { get { return m_scaleindexmap; } }
+        public int[] ScaleIndexMap => m_scaleindexmap;
 
         /// <summary>
         /// Constructs a new map to be processed
@@ -770,17 +770,17 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// <summary>
         /// Gets the resourceId for the map
         /// </summary>
-        public string ResourceId { get { return m_tileSetResourceID; } }
+        public string ResourceId => m_tileSetResourceID;
 
         /// <summary>
         /// Gets the MapDefintion
         /// </summary>
-        public ITileSetAbstract TileSet { get { return m_tileset; } }
+        public ITileSetAbstract TileSet => m_tileset;
 
         /// <summary>
         /// Gets a reference to the parent tiling run collection
         /// </summary>
-        public TilingRunCollection Parent { get { return m_parent; } }
+        public TilingRunCollection Parent => m_parent;
     }
 
     /// <summary>

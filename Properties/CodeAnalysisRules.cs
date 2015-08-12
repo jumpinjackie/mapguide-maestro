@@ -40,9 +40,13 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Potential Code Quality Issues", "RECS0022", Justification = "If I'm swallowing up an exception, it is intentional")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Language Usage Opportunities", "RECS0011", Justification = "It's if/else because it's more readable that a single long ternary expression")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Common Practices and Code Improvements", "RECS0030", Justification = "<Pending>")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Potential Code Quality Issues", "RECS0025", Justification = "<Pending>")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Potential Code Quality Issues", "CS0108", Justification = "Shadowing is the result of constraints imposed by interfaces we're implementing")]
 
 //TODO: Review these ones as we get further clarity about what string comparisons should be culture-sensitive and which ones shouldn't be
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Common Practices and Code Improvements", "RECS0060", Justification = "To be reviewed at a later time")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Common Practices and Code Improvements", "RECS0061", Justification = "To be reviewed at a later time")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Common Practices and Code Improvements", "RECS0062", Justification = "To be reviewed at a later time")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Common Practices and Code Improvements", "RECS0063", Justification = "To be reviewed at a later time")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Common Practices and Code Improvements", "RECS0064", Justification = "To be reviewed at a later time")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Common Practices and Code Improvements", "RECS0119", Justification = "To be reviewed at a later time")]

@@ -33,18 +33,12 @@ namespace Maestro.AddIn.Scripting
         /// <summary>
         /// Default IronPython module path
         /// </summary>
-        public static string DefaultIronPythonModulePath
-        {
-            get { return Path.Combine(FileUtility.ApplicationRootPath, "AddIns\\Scripting\\Lib"); } //NOXLATE
-        }
+        public static string DefaultIronPythonModulePath => Path.Combine(FileUtility.ApplicationRootPath, "AddIns\\Scripting\\Lib");
 
         /// <summary>
         /// Show the IronPython console by default
         /// </summary>
-        public static bool DefaultShowIronPythonConsole
-        {
-            get { return true; }
-        }
+        public static bool DefaultShowIronPythonConsole => true;
 
         /// <summary>
         /// IronPython module path (property name)

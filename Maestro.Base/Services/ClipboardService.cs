@@ -90,6 +90,10 @@ namespace Maestro.Base.Services
             Check.ArgumentNotEmpty(resId, nameof(resId));
             var state = RepositoryItem.ClipboardAction.None;
             object o = null;
+
+            var riArr = o as RepositoryItem[];
+            var ri = o as RepositoryItem;
+
             lock (_clipLock)
             {
                 o = _item;
@@ -98,9 +102,9 @@ namespace Maestro.Base.Services
             {
                 state = RepositoryItem.ClipboardAction.None;
             }
-            else if (o is RepositoryItem[])
+            else if (riArr != null)
             {
-                foreach (RepositoryItem r in (RepositoryItem[])o)
+                foreach (var r in riArr)
                 {
                     if (resId.Equals(r.ResourceId))
                     {
@@ -109,12 +113,11 @@ namespace Maestro.Base.Services
                     }
                 }
             }
-            else if (o is RepositoryItem)
+            else if (ri != null)
             {
-                var r = ((RepositoryItem)o);
-                if (resId.Equals(r.ResourceId))
+                if (resId.Equals(ri.ResourceId))
                 {
-                    state = r.ClipboardState;
+                    state = ri.ClipboardState;
                 }
             }
             return state;

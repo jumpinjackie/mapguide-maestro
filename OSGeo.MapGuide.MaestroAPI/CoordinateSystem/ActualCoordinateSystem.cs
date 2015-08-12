@@ -67,7 +67,5 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
             double[] points = m_transform.MathTransform.Transform(new double[] { p1.X, p1.Y, p2.X, p2.Y });
             return base.DistanceInMeters(new Point(points[0], points[1]), new Point(points[2], points[3]));
         }
-
-        //public override Topology.CoordinateSystems.ICoordinateSystem CoordinateSystem { get { return m_transform.SourceCS; } }
     }
 }

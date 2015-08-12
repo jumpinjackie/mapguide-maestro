@@ -61,18 +61,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         /// <summary>
         /// Returns a type used to define a raster column in a feature reader
         /// </summary>
-        public static Type RasterType
-        {
-            get { return typeof(System.Drawing.Bitmap); }
-        }
+        public static Type RasterType => typeof(Bitmap);
 
         /// <summary>
         /// Returns the type used to define a geometry column in a feature reader
         /// </summary>
-        public static Type GeometryType
-        {
-            get { return typeof(IGeometry); }
-        }
+        public static Type GeometryType => typeof(IGeometry);
 
         /// <summary>
         /// Gets the type of an item, given the MapGuide type id
@@ -83,47 +77,47 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         {
             switch (MgType)
             {
-                case OSGeo.MapGuide.MgPropertyType.Byte:
+                case MgPropertyType.Byte:
                     return typeof(byte);
 
-                case OSGeo.MapGuide.MgPropertyType.Int16:
+                case MgPropertyType.Int16:
                     return typeof(short);
 
-                case OSGeo.MapGuide.MgPropertyType.Int32:
+                case MgPropertyType.Int32:
                     return typeof(int);
 
-                case OSGeo.MapGuide.MgPropertyType.Int64:
+                case MgPropertyType.Int64:
                     return typeof(long);
 
-                case OSGeo.MapGuide.MgPropertyType.Single:
+                case MgPropertyType.Single:
                     return typeof(float);
 
-                case OSGeo.MapGuide.MgPropertyType.Double:
+                case MgPropertyType.Double:
                     return typeof(double);
 
-                case OSGeo.MapGuide.MgPropertyType.Boolean:
+                case MgPropertyType.Boolean:
                     return typeof(bool);
 
-                case OSGeo.MapGuide.MgPropertyType.Geometry:
+                case MgPropertyType.Geometry:
                     return Utility.GeometryType;
 
-                case OSGeo.MapGuide.MgPropertyType.String:
+                case MgPropertyType.String:
                     return typeof(string);
 
-                case OSGeo.MapGuide.MgPropertyType.DateTime:
+                case MgPropertyType.DateTime:
                     return typeof(DateTime);
 
-                case OSGeo.MapGuide.MgPropertyType.Raster:
+                case MgPropertyType.Raster:
                     return Utility.RasterType;
 
-                case OSGeo.MapGuide.MgPropertyType.Blob:
+                case MgPropertyType.Blob:
                     return typeof(byte[]);
 
-                case OSGeo.MapGuide.MgPropertyType.Clob:
+                case MgPropertyType.Clob:
                     return typeof(byte[]);
 
                 default:
-                    throw new Exception("Failed to find type for: " + MgType.ToString());
+                    throw new Exception($"Failed to find type for: {MgType.ToString()}"); //LOCALIZEME
             }
         }
 
@@ -158,10 +152,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         /// <summary>
         /// Returns a type used to define an unknown column type in a feature reader
         /// </summary>
-        public static Type UnmappedType
-        {
-            get { return typeof(UnmappedDataType); }
-        }
+        public static Type UnmappedType => typeof(UnmappedDataType);
 
         /// <summary>
         /// Gets the MapGuide id for a given type
@@ -171,31 +162,31 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         public static int ConvertNetTypeToMgType(Type type)
         {
             if (type == typeof(short))
-                return OSGeo.MapGuide.MgPropertyType.Int16;
+                return MgPropertyType.Int16;
             else if (type == typeof(byte))
-                return OSGeo.MapGuide.MgPropertyType.Byte;
+                return MgPropertyType.Byte;
             else if (type == typeof(bool))
-                return OSGeo.MapGuide.MgPropertyType.Boolean;
+                return MgPropertyType.Boolean;
             else if (type == typeof(int))
-                return OSGeo.MapGuide.MgPropertyType.Int32;
+                return MgPropertyType.Int32;
             else if (type == typeof(long))
-                return OSGeo.MapGuide.MgPropertyType.Int64;
+                return MgPropertyType.Int64;
             else if (type == typeof(float))
-                return OSGeo.MapGuide.MgPropertyType.Single;
+                return MgPropertyType.Single;
             else if (type == typeof(double))
-                return OSGeo.MapGuide.MgPropertyType.Double;
+                return MgPropertyType.Double;
             else if (type == Utility.GeometryType)
-                return OSGeo.MapGuide.MgPropertyType.Geometry;
+                return MgPropertyType.Geometry;
             else if (type == typeof(string))
-                return OSGeo.MapGuide.MgPropertyType.String;
+                return MgPropertyType.String;
             else if (type == typeof(DateTime))
-                return OSGeo.MapGuide.MgPropertyType.DateTime;
+                return MgPropertyType.DateTime;
             else if (type == Utility.RasterType)
-                return OSGeo.MapGuide.MgPropertyType.Raster;
+                return MgPropertyType.Raster;
             else if (type == typeof(byte[]))
-                return OSGeo.MapGuide.MgPropertyType.Blob;
+                return MgPropertyType.Blob;
 
-            throw new Exception("Failed to find type for: " + type.FullName.ToString());
+            throw new Exception($"Failed to find type for: {type.FullName.ToString()}"); //LOCALIZEME
         }
 
         public static ClassDefinition ConvertClassDefinition(MgClassDefinition mgClass)
@@ -285,9 +276,6 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
             return dp;
         }
 
-        internal static DateTime ConvertMgDateTime(MgDateTime dt)
-        {
-            return new DateTime(dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second, dt.Microsecond * 1000);
-        }
+        internal static DateTime ConvertMgDateTime(MgDateTime dt) => new DateTime(dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second, dt.Microsecond * 1000);
     }
 }

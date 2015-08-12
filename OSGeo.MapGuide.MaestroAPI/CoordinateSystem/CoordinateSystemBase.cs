@@ -120,7 +120,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         {
             Check.ArgumentNotNull(bbox, nameof(bbox));
             var env = AdjustBoundingBox(new Envelope(bbox.MinX, bbox.MaxX, bbox.MinY, bbox.MaxY), scale, size);
-            return OSGeo.MapGuide.ObjectModels.ObjectFactory.CreateEnvelope(env.MinX, env.MinY, env.MaxX, env.MaxY);
+            return ObjectFactory.CreateEnvelope(env.MinX, env.MinY, env.MaxX, env.MaxY);
         }
 
         /// <summary>
@@ -140,12 +140,7 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <param name="x2"></param>
         /// <param name="y2"></param>
         /// <returns></returns>
-        public double DistanceInMeters(double x1, double y1, double x2, double y2)
-        {
-            return DistanceInMeters(
-                new Point(x1, y1),
-                new Point(x2, y2));
-        }
+        public double DistanceInMeters(double x1, double y1, double x2, double y2) => DistanceInMeters(new Point(x1, y1), new Point(x2, y2));
 
         /// <summary>
         /// Calculates the distance from one point to another, in meters

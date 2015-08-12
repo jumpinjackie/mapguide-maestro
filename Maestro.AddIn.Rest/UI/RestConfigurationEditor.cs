@@ -24,21 +24,14 @@ using Maestro.Editors.Common;
 using Maestro.Editors.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Dynamic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Maestro.AddIn.Rest.UI
@@ -62,62 +55,48 @@ namespace Maestro.AddIn.Rest.UI
             _client = client;
             if (!isNew)
             {
-                var dataLen = "data/".Length;
-                var configLen = "/config".Length;
-                txtUriPart.Text = uriPart.Substring(uriPart.IndexOf("data/") + dataLen, uriPart.Length - dataLen - configLen);
+                var dataLen = "data/".Length; //NOXLATE
+                var configLen = "/config".Length; //NOXLATE
+                txtUriPart.Text = uriPart.Substring(uriPart.IndexOf("data/") + dataLen, uriPart.Length - dataLen - configLen); //NOXLATE
             }
             txtUriPart.ReadOnly = !isNew;
             txtJson.Text = json;
         }
 
-        public bool IsNew
-        {
-            get { return !txtUriPart.ReadOnly; }
-        }
+        public bool IsNew => !txtUriPart.ReadOnly;
 
-        public string GetUriPart()
-        {
-            return "data/" + txtUriPart.Text + "/config";
-        }
+        public string GetUriPart() => $"data/{txtUriPart.Text}/config"; //NOXLATE
 
-        public string GetJson()
-        {
-            string json = txtJson.Text;
+        public string GetJson() => txtJson.Text;
 
-            return json;
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-        }
+        private void btnCancel_Click(object sender, EventArgs e) => this.DialogResult = DialogResult.Cancel;
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!txtUriPart.ReadOnly && string.IsNullOrEmpty(txtUriPart.Text))
             {
-                MessageBox.Show(Maestro.AddIn.Rest.Strings.UriPartRequrired);
+                MessageBox.Show(Strings.UriPartRequrired);
                 txtUriPart.Focus();
                 return;
             }
 
             var req = new RestRequest(this.GetUriPart(), Method.POST);
-            req.AddFile("data", Encoding.UTF8.GetBytes(this.GetJson()), "restcfg.json");
+            req.AddFile("data", Encoding.UTF8.GetBytes(this.GetJson()), "restcfg.json"); //NOXLATE
 
             var resp = _client.Execute(req);
             if (resp.StatusCode != System.Net.HttpStatusCode.OK)
-                MessageBox.Show(string.Format(Maestro.AddIn.Rest.Strings.ErrorSavingConfiguration, resp.Content));
+                MessageBox.Show(string.Format(Strings.ErrorSavingConfiguration, resp.Content));
             else
-                MessageBox.Show(Maestro.AddIn.Rest.Strings.ConfigurationSaved);
+                MessageBox.Show(Strings.ConfigurationSaved);
 
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.DialogResult = DialogResult.OK;
         }
 
         private void featureSourceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var picker = new ResourcePicker(_conn, ResourceTypes.FeatureSource.ToString(), ResourcePickerMode.OpenResource))
             {
-                if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (picker.ShowDialog() == DialogResult.OK)
                 {
                     dynamic conf = GetConfigurationObject();
                     dynamic source = new ExpandoObject();
@@ -125,7 +104,7 @@ namespace Maestro.AddIn.Rest.UI
                     source.FeatureSource = picker.ResourceID;
 
                     string[] classNames = _conn.FeatureService.GetClassNames(picker.ResourceID, null);
-                    string className = GenericItemSelectionDialog.SelectItem(Maestro.AddIn.Rest.Strings.FdoClass, Maestro.AddIn.Rest.Strings.SelectClassName, classNames);
+                    string className = GenericItemSelectionDialog.SelectItem(Strings.FdoClass, Strings.SelectClassName, classNames);
                     if (className != null)
                     {
                         source.FeatureClass = className;
@@ -140,7 +119,7 @@ namespace Maestro.AddIn.Rest.UI
         {
             using (var picker = new ResourcePicker(_conn, ResourceTypes.LayerDefinition.ToString(), ResourcePickerMode.OpenResource))
             {
-                if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (picker.ShowDialog() == DialogResult.OK)
                 {
                     dynamic conf = GetConfigurationObject();
                     dynamic source = new ExpandoObject();
@@ -163,13 +142,13 @@ namespace Maestro.AddIn.Rest.UI
         private RestSourceContext GetSourceContext(dynamic conf)
         {
             var source = conf.Source as IDictionary<string, object>;
-            if (source.ContainsKey("LayerDefinition"))
+            if (source.ContainsKey("LayerDefinition")) //NOXLATE
             {
                 string resId = conf.Source.LayerDefinition;
                 ILayerDefinition ldf = (ILayerDefinition)_conn.ResourceService.GetResource(resId);
                 IVectorLayerDefinition vl = ldf.SubLayer as IVectorLayerDefinition;
                 if (vl == null)
-                    throw new InvalidOperationException(string.Format(Maestro.AddIn.Rest.Strings.NotAVectorLayer, resId));
+                    throw new InvalidOperationException(string.Format(Strings.NotAVectorLayer, resId));
 
                 return new RestSourceContext(_conn, new RestSource()
                 {
@@ -177,7 +156,7 @@ namespace Maestro.AddIn.Rest.UI
                     ClassName = vl.FeatureName
                 });
             }
-            else if (source.ContainsKey("FeatureSource"))
+            else if (source.ContainsKey("FeatureSource")) //NOXLATE
             {
                 string resId = conf.Source.FeatureSource;
 
@@ -188,19 +167,19 @@ namespace Maestro.AddIn.Rest.UI
                 });
             }
 
-            throw new InvalidOperationException(Maestro.AddIn.Rest.Strings.InvalidSourceConfiguration);
+            throw new InvalidOperationException(Strings.InvalidSourceConfiguration);
         }
 
         private void xmlToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var conf = GetConfigurationObject();
-            if (!((IDictionary<string, object>)conf).ContainsKey("Source"))
+            if (!((IDictionary<string, object>)conf).ContainsKey("Source")) //NOXLATE
             {
-                MessageBox.Show(Maestro.AddIn.Rest.Strings.NoSourceInConfiguration);
+                MessageBox.Show(Strings.NoSourceInConfiguration);
                 return;
             }
             var ctx = GetSourceContext(conf);
-            if (new NewRepresentationDialog("xml", conf, ctx).ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (new NewRepresentationDialog("xml", conf, ctx).ShowDialog() == DialogResult.OK) //NOXLATE
             {
                 txtJson.Text = JsonConvert.SerializeObject(conf, Formatting.Indented);
             }
@@ -209,13 +188,13 @@ namespace Maestro.AddIn.Rest.UI
         private void geoJSONToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var conf = GetConfigurationObject();
-            if (!((IDictionary<string, object>)conf).ContainsKey("Source"))
+            if (!((IDictionary<string, object>)conf).ContainsKey("Source")) //NOXLATE
             {
-                MessageBox.Show(Maestro.AddIn.Rest.Strings.NoSourceInConfiguration);
+                MessageBox.Show(Strings.NoSourceInConfiguration);
                 return;
             }
             var ctx = GetSourceContext(conf);
-            if (new NewRepresentationDialog("geojson", conf, ctx).ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (new NewRepresentationDialog("geojson", conf, ctx).ShowDialog() == DialogResult.OK) //NOXLATE
             {
                 txtJson.Text = JsonConvert.SerializeObject(conf, Formatting.Indented);
             }
@@ -224,13 +203,13 @@ namespace Maestro.AddIn.Rest.UI
         private void csvToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var conf = GetConfigurationObject();
-            if (!((IDictionary<string, object>)conf).ContainsKey("Source"))
+            if (!((IDictionary<string, object>)conf).ContainsKey("Source")) //NOXLATE
             {
-                MessageBox.Show(Maestro.AddIn.Rest.Strings.NoSourceInConfiguration);
+                MessageBox.Show(Strings.NoSourceInConfiguration);
                 return;
             }
             var ctx = GetSourceContext(conf);
-            if (new NewRepresentationDialog("csv", conf, ctx).ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (new NewRepresentationDialog("csv", conf, ctx).ShowDialog() == DialogResult.OK) //NOXLATE
             {
                 txtJson.Text = JsonConvert.SerializeObject(conf, Formatting.Indented);
             }
@@ -239,13 +218,13 @@ namespace Maestro.AddIn.Rest.UI
         private void imageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var conf = GetConfigurationObject();
-            if (!((IDictionary<string, object>)conf).ContainsKey("Source"))
+            if (!((IDictionary<string, object>)conf).ContainsKey("Source")) //NOXLATE
             {
-                MessageBox.Show(Maestro.AddIn.Rest.Strings.NoSourceInConfiguration);
+                MessageBox.Show(Strings.NoSourceInConfiguration);
                 return;
             }
             var ctx = GetSourceContext(conf);
-            if (new NewRepresentationDialog("image", conf, ctx).ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (new NewRepresentationDialog("image", conf, ctx).ShowDialog() == DialogResult.OK) //NOXLATE
             {
                 txtJson.Text = JsonConvert.SerializeObject(conf, Formatting.Indented);
             }
@@ -254,13 +233,13 @@ namespace Maestro.AddIn.Rest.UI
         private void templateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var conf = GetConfigurationObject();
-            if (!((IDictionary<string, object>)conf).ContainsKey("Source"))
+            if (!((IDictionary<string, object>)conf).ContainsKey("Source")) //NOXLATE
             {
-                MessageBox.Show(Maestro.AddIn.Rest.Strings.NoSourceInConfiguration);
+                MessageBox.Show(Strings.NoSourceInConfiguration);
                 return;
             }
             var ctx = GetSourceContext(conf);
-            if (new NewRepresentationDialog("template", conf, ctx).ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (new NewRepresentationDialog("template", conf, ctx).ShowDialog() == DialogResult.OK) //NOXLATE
             {
                 txtJson.Text = JsonConvert.SerializeObject(conf, Formatting.Indented);
             }

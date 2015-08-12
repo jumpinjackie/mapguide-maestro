@@ -66,17 +66,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Native
         {
         }
 
-        public override long Length
-        {
-            //NOTE: MgByteReader only returns remaining length! Should we
-            //be keeping track of position and adding on this value?
-            get { return _reader.GetLength(); }
-        }
+        //NOTE: MgByteReader only returns remaining length! Should we
+        //be keeping track of position and adding on this value?
+        public override long Length => _reader.GetLength();
 
-        public override bool CanRewind
-        {
-            get { return _reader.IsRewindable(); }
-        }
+        public override bool CanRewind => _reader.IsRewindable();
 
         public override void Rewind()
         {

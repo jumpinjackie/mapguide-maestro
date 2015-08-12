@@ -76,34 +76,34 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
             Version ver = new Version(1, 0, 0);
             switch (resourceType)
             {
-                case "ApplicationDefinition":
+                case nameof(ResourceTypes.ApplicationDefinition):
                     if (!SupportsFusion())
-                        throw new UnsupportedResourceTypeException("ApplicationDefinition");
+                        throw new UnsupportedResourceTypeException(nameof(ResourceTypes.ApplicationDefinition));
                     break;
 
-                case "WatermarkDefinition":
+                case nameof(ResourceTypes.WatermarkDefinition):
                     ver = GetMaxWatermarkDefinitionVersion();
                     break;
 
-                case "MapDefinition":
+                case nameof(ResourceTypes.MapDefinition):
                     ver = GetMaxMapDefinitionVersion();
                     break;
 
-                case "LayerDefinition":
+                case nameof(ResourceTypes.LayerDefinition):
                     ver = GetMaxLayerDefinitionVersion();
                     break;
 
-                case "LoadProcedure":
+                case nameof(ResourceTypes.LoadProcedure):
                     ver = GetMaxLoadProcedureVersion();
                     break;
 
-                case "WebLayout":
+                case nameof(ResourceTypes.WebLayout):
                     ver = GetMaxWebLayoutVersion();
                     break;
 
-                case "SymbolDefinition":
+                case nameof(ResourceTypes.SymbolDefinition):
                     if (!SupportsAdvancedSymbols())
-                        throw new UnsupportedResourceTypeException("SymbolDefinition");
+                        throw new UnsupportedResourceTypeException(nameof(ResourceTypes.SymbolDefinition));
                     else
                         ver = GetMaxSymbolDefinitionVersion();
                     break;
@@ -115,19 +115,13 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         /// Supportses the advanced symbols.
         /// </summary>
         /// <returns></returns>
-        protected virtual bool SupportsAdvancedSymbols()
-        {
-            return (_parent.SiteVersion >= new Version(1, 2));
-        }
+        protected virtual bool SupportsAdvancedSymbols() => (_parent.SiteVersion >= new Version(1, 2));
 
         /// <summary>
         /// Supportses the fusion.
         /// </summary>
         /// <returns></returns>
-        protected virtual bool SupportsFusion()
-        {
-            return (_parent.SiteVersion >= new Version(2, 0));
-        }
+        protected virtual bool SupportsFusion() => (_parent.SiteVersion >= new Version(2, 0));
 
         /// <summary>
         /// Gets the max watermark definition version
@@ -294,42 +288,27 @@ namespace OSGeo.MapGuide.MaestroAPI.Capability
         /// <summary>
         /// Gets whether this connection supports publishing resources for WFS
         /// </summary>
-        public virtual bool SupportsWfsPublishing
-        {
-            get { return true; }
-        }
+        public virtual bool SupportsWfsPublishing => true;
 
         /// <summary>
         /// Gets whether this connection supports publishing resources for WMS
         /// </summary>
-        public virtual bool SupportsWmsPublishing
-        {
-            get { return true; }
-        }
+        public virtual bool SupportsWmsPublishing => true;
 
         /// <summary>
         /// Gets whether this connection supports resource reference tracking
         /// </summary>
-        public virtual bool SupportsResourceReferences
-        {
-            get { return true; }
-        }
+        public virtual bool SupportsResourceReferences => true;
 
         /// <summary>
         /// Gets whether this connection supports resource security
         /// </summary>
-        public virtual bool SupportsResourceSecurity
-        {
-            get { return true; }
-        }
+        public virtual bool SupportsResourceSecurity => true;
 
         /// <summary>
         /// Gets whether this connection supports the concept of resource headers
         /// </summary>
-        public virtual bool SupportsResourceHeaders
-        {
-            get { return true; }
-        }
+        public virtual bool SupportsResourceHeaders => true;
 
         /// <summary>
         /// Gets the array of supported resource types

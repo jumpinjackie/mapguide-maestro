@@ -46,9 +46,9 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// Gets the name.
         /// </summary>
         /// <value>The name.</value>
-        public string Name { get { return m_name; } }
+        public string Name => m_name;
 
-        internal ICoordinateSystemCatalog Parent { get { return _parent; } }
+        internal ICoordinateSystemCatalog Parent => _parent;
 
         /// <summary>
         /// Gets an array of all coordinate systems in this category
@@ -74,9 +74,6 @@ namespace OSGeo.MapGuide.MaestroAPI.CoordinateSystem
         /// <returns>
         /// A <see cref="System.String"/> that represents this instance.
         /// </returns>
-        public override string ToString()
-        {
-            return m_name;
-        }
+        public override string ToString() => m_name;
     }
 }

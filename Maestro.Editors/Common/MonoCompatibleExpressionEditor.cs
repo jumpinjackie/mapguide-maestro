@@ -221,15 +221,14 @@ namespace Maestro.Editors.Common
                         ToolStripMenuItem btn = new ToolStripMenuItem();
                         btn.Name = name;
                         btn.ToolTipText = desc;
-
-                        string fmt = "{0}({1})"; //NOXLATE
+                        
                         List<string> args = new List<string>();
                         foreach (var argDef in sig.Arguments)
                         {
                             args.Add(argDef.Name.Trim());
                         }
-                        string expr = string.Format(fmt, name, FdoExpressionCompletionDataProvider.StringifyFunctionArgs(args));
-                        btn.Text = expr + " : " + sig.ReturnType;
+                        string expr = $"{name}({FdoExpressionCompletionDataProvider.StringifyFunctionArgs(args)})"; //NOXLATE
+                        btn.Text = $"{expr} : {sig.ReturnType}"; //NOXLATE
                         btn.Click += (s, e) =>
                         {
                             InsertText(expr);
@@ -326,8 +325,7 @@ namespace Maestro.Editors.Common
         {
             if (!string.IsNullOrEmpty(op))
             {
-                string filterTemplate = "<geometry property> {0} GeomFromText('<FGF geometry text>')";
-                string exprText = string.Format(filterTemplate, op);
+                string exprText = $"<geometry property> {op} GeomFromText('<FGF geometry text>')"; //LOCALIZEME
                 InsertText(exprText);
             }
         }
@@ -583,13 +581,12 @@ namespace Maestro.Editors.Common
                 var sigs = ExpressionEditor.MakeUniqueSignatures(func);
                 foreach (var sig in sigs)
                 {
-                    string fmt = "{0}({1})"; //NOXLATE
-                    List<string> args = new List<string>();
+                    var args = new List<string>();
                     foreach (var argDef in sig.Arguments)
                     {
                         args.Add(argDef.Name.Trim());
                     }
-                    string expr = string.Format(fmt, func.Name, FdoExpressionCompletionDataProvider.StringifyFunctionArgs(args));
+                    string expr = $"{func.Name}({FdoExpressionCompletionDataProvider.StringifyFunctionArgs(args)})"; //NOXLATE
                     if (!_autoCompleteItems.ContainsKey(func.Name))
                         _autoCompleteItems[func.Name] = new List<AutoCompleteItem>();
                     _autoCompleteItems[func.Name].Add(new FunctionItem(func, sig, expr));
@@ -680,31 +677,35 @@ namespace Maestro.Editors.Common
         private void HandleKeyDown(KeyEventArgs e)
         {
             Keys code = e.KeyCode;
-            if (code == Keys.Escape)
+            switch (code)
             {
-                if (_autoBox.Visible)
-                {
-                    e.SuppressKeyPress = true;
-                    _autoBox.Hide();
-                    _autoCompleteTooltip.Hide(this);
-                }
-            }
-            else if (code == Keys.Up || code == Keys.Down)
-            {
-                if (_autoBox.Visible)
-                {
-                    e.SuppressKeyPress = true;
-                }
-            }
-            else if (code == Keys.Enter || code == Keys.Return)
-            {
-                if (_autoBox.Visible && _autoBox.SelectedItems.Count == 1)
-                {
-                    e.SuppressKeyPress = true;
-                    PutAutoCompleteSuggestion();
-                    _autoBox.Hide();
-                    _autoCompleteTooltip.Hide(this);
-                }
+                case Keys.Escape:
+                    if (_autoBox.Visible)
+                    {
+                        e.SuppressKeyPress = true;
+                        _autoBox.Hide();
+                        _autoCompleteTooltip.Hide(this);
+                    }
+
+                    break;
+                case Keys.Up:
+                case Keys.Down:
+                    if (_autoBox.Visible)
+                    {
+                        e.SuppressKeyPress = true;
+                    }
+
+                    break;
+                case Keys.Enter: // || Keys.Return
+                    if (_autoBox.Visible && _autoBox.SelectedItems.Count == 1)
+                    {
+                        e.SuppressKeyPress = true;
+                        PutAutoCompleteSuggestion();
+                        _autoBox.Hide();
+                        _autoCompleteTooltip.Hide(this);
+                    }
+
+                    break;
             }
         }
 
@@ -852,7 +853,7 @@ namespace Maestro.Editors.Common
             using (new WaitCursor(this))
             {
                 string filter = null;
-                var expr = "UNIQUE(" + ColumnName.Text + ")";
+                var expr = $"UNIQUE({ColumnName.Text})";
                 bool bFallback = false;
                 ColumnValue.Items.Clear();
                 ColumnValue.Tag = null;
@@ -970,14 +971,14 @@ namespace Maestro.Editors.Common
                 var tag = ColumnValue.Tag;
                 if (tag != null)
                 {
-                    if (ColumnValue.Tag == typeof(string) && (ColumnValue.SelectedIndex != 0 || ColumnValue.Text != "NULL"))
+                    if (ColumnValue.Tag as Type == typeof(string) && (ColumnValue.SelectedIndex != 0 || ColumnValue.Text != "NULL"))
                     {
-                        InsertText("'" + ColumnValue.Text + "'");
+                        InsertText($"'{ColumnValue.Text}'"); //NOXLATE
                     }
                     else
                     {
                         if (tag is PropertyValueType && (PropertyValueType)tag == PropertyValueType.String)
-                            InsertText("'" + ColumnValue.Text + "'");
+                            InsertText($"'{ColumnValue.Text}'"); //NOXLATE
                         else
                             InsertText(ColumnValue.Text);
                     }
@@ -1006,10 +1007,10 @@ namespace Maestro.Editors.Common
         {
             using (var picker = new ColorDialog())
             {
-                if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (picker.ShowDialog() == DialogResult.OK)
                 {
                     var c = picker.Color;
-                    this.InsertText(string.Format("ARGB({0}, {1}, {2}, {3})", c.A, c.R, c.G, c.B));
+                    this.InsertText($"ARGB({c.A}, {c.R}, {c.G}, {c.B})"); //NOXLATE
                 }
             }
         }
@@ -1018,10 +1019,10 @@ namespace Maestro.Editors.Common
         {
             using (var picker = new ColorDialog())
             {
-                if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (picker.ShowDialog() == DialogResult.OK)
                 {
                     var c = picker.Color;
-                    this.InsertText(string.Format("HTMLCOLOR({0}, {1}, {2})", c.R, c.G, c.B));
+                    this.InsertText($"HTMLCOLOR({c.R}, {c.G}, {c.B})"); //NOXLATE
                 }
             }
         }
@@ -1035,7 +1036,7 @@ namespace Maestro.Editors.Common
             }
             using (var picker = new LookupExpressionBuilder(propNames.ToArray()))
             {
-                if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (picker.ShowDialog() == DialogResult.OK)
                 {
                     this.InsertText(picker.GetExpression());
                 }
@@ -1051,7 +1052,7 @@ namespace Maestro.Editors.Common
             }
             using (var picker = new RangeExpressionBuilder(propNames.ToArray()))
             {
-                if (picker.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (picker.ShowDialog() == DialogResult.OK)
                 {
                     this.InsertText(picker.GetExpression());
                 }
@@ -1202,7 +1203,7 @@ namespace Maestro.Editors.Common
             this.DrawMode = DrawMode.OwnerDrawFixed;
         }
 
-        protected override void OnDrawItem(System.Windows.Forms.DrawItemEventArgs e)
+        protected override void OnDrawItem(DrawItemEventArgs e)
         {
             e.DrawBackground();
             e.DrawFocusRectangle();

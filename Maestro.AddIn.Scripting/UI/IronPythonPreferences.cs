@@ -44,15 +44,9 @@ namespace Maestro.AddIn.Scripting.UI
             txtModulePaths.Text = Props.Get(ScriptingConfigProperties.IronPythonModulePath, ScriptingConfigProperties.DefaultIronPythonModulePath);
         }
 
-        public string Title
-        {
-            get { return Strings.Title_IronPython_Console; }
-        }
+        public string Title => Strings.Title_IronPython_Console;
 
-        public Control ContentControl
-        {
-            get { return this; }
-        }
+        public Control ContentControl => this;
 
         public bool ApplyChanges()
         {

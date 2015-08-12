@@ -80,10 +80,8 @@ namespace Maestro.Base.Commands
             }
             catch (Exception ex)
             {
-                string tmp = string.Format("{0}{1}{1}***STACK***{1}{2}",
-                    ex.Message,
-                    Environment.NewLine,
-                    ex.StackTrace);
+                string nl = Environment.NewLine;
+                string tmp = $"{ex.Message}{nl}{nl}***STACK***{nl}{ex.StackTrace}";
                 MessageBox.Show(tmp, Strings.CompareError);
                 return;
             }

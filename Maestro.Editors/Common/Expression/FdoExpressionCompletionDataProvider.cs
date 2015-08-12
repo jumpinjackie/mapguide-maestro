@@ -341,7 +341,7 @@ namespace Maestro.Editors.Common.Expression
                 sb.Append(Environment.NewLine);
                 foreach (var argDef in sig.Arguments)
                 {
-                    sb.AppendFormat("  [{0}] - {1}{2}", argDef.Name, argDef.Description, Environment.NewLine);
+                    sb.Append($"  [{argDef.Name}] - {argDef.Description}{Environment.NewLine}"); //NOXLATE
                 }
                 argDesc = sb.ToString();
             }

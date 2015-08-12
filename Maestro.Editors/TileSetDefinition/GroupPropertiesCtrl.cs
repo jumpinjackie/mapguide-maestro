@@ -56,20 +56,6 @@ namespace Maestro.Editors.TileSetDefinition
                 group.PropertyChanged += WeakEventHandler.Wrap<PropertyChangedEventHandler>(OnGroupChanged, (eh) => group.PropertyChanged -= eh);
                 string currentName = group.Name;
                 txtName.Text = currentName;
-                //TextBoxBinder.BindText(txtName, group, "Name");
-                /*
-                IMapDefinition mdf = group.Parent;
-                string currentName = group.Name;
-                txtName.Text = currentName;
-                txtName.TextChanged += (s, e) =>
-                {
-                    string newName = txtName.Text;
-                    group.Name = newName;
-                    mdf.UpdateDynamicGroupName(currentName, newName);
-                    System.Diagnostics.Debug.WriteLine(string.Format("Updated group name {0} -> {1}", currentName, newName));
-                    currentName = newName;
-                };*/
-
                 TextBoxBinder.BindText(txtLegendLabel, group, nameof(group.LegendLabel));
             }
             finally
