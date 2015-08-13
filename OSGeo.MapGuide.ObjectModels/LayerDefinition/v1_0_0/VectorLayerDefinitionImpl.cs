@@ -27,68 +27,18 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
+using System.Xml.Serialization;
 
 #pragma warning disable 1591, 0114, 0108
 
-#if LDF_110
-
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_1_0
-#elif LDF_120
-
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_2_0
-#elif LDF_130
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_3_0
-#elif LDF_230
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v2_3_0
-#elif LDF_240
-
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v2_4_0
-#else
-
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
-#endif
 {
-    using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-    using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
-    using System.Xml.Serialization;
-
     abstract partial class BaseLayerDefinitionType : ISubLayerDefinition
-#if LDF_230 || LDF_240
-, ISubLayerDefinition2
-#endif
     {
         [XmlIgnore]
         public abstract LayerType LayerType { get; }
-
-#if LDF_230 || LDF_240
-
-        [XmlIgnore]
-        IEnumerable<IWatermark> IWatermarkCollection.Watermarks
-        {
-            get
-            {
-                foreach (var wm in this.Watermarks)
-                    yield return wm;
-            }
-        }
-
-        IWatermark IWatermarkCollection.AddWatermark(IWatermarkDefinition watermark)
-        {
-            return WatermarkCollectionUtil.AddWatermark(this.Watermarks, watermark);
-        }
-
-        void IWatermarkCollection.RemoveWatermark(IWatermark watermark)
-        {
-            WatermarkCollectionUtil.RemoveWatermark(this.Watermarks, watermark);
-        }
-
-        [XmlIgnore]
-        int IWatermarkCollection.WatermarkCount
-        {
-            get { return this.Watermarks.Count; }
-        }
-
-#endif
     }
 
     partial class NameStringPairType : INameStringPair
@@ -121,9 +71,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
     }
 
     partial class VectorScaleRangeType : IVectorScaleRange
-#if !LDF_100
-, IVectorScaleRange2
-#endif
     {
         #region Missing generated stuff
 
@@ -288,145 +235,9 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
         {
             return VectorScaleRangeType.Deserialize(this.Serialize());
         }
-
-#if LDF_110 || LDF_120
-
-        [XmlIgnore]
-        public IEnumerable<ICompositeTypeStyle> CompositeStyle
-        {
-            get
-            {
-                foreach (var item in this.itemsField)
-                {
-                    if (typeof(ICompositeTypeStyle).IsAssignableFrom(item.GetType()))
-                        yield return (ICompositeTypeStyle)item;
-                }
-            }
-            set
-            {
-                //Clear old ones
-                var remove = new List<object>();
-                foreach (var item in this.itemsField)
-                {
-                    if (typeof(ICompositeTypeStyle).IsAssignableFrom(item.GetType()))
-                        remove.Add(item);
-                }
-
-                foreach (var obj in remove)
-                {
-                    this.itemsField.Remove(obj);
-                }
-
-                //Put the new ones in if it is not null
-                if (value != null)
-                {
-                    foreach (var item in value)
-                    {
-                        if (!typeof(ICompositeTypeStyle).IsAssignableFrom(item.GetType()))
-                            throw new InvalidOperationException(Strings.ErrorObjectNotICompositeTypeStyle);
-
-                        this.itemsField.Add(item);
-                    }
-                }
-            }
-        }
-
-#elif LDF_130 || LDF_230 || LDF_240
-
-        [XmlIgnore]
-        public IEnumerable<ICompositeTypeStyle> CompositeStyle
-        {
-            get
-            {
-                foreach (var item in this.itemsField)
-                {
-                    if (typeof(ICompositeTypeStyle2).IsAssignableFrom(item.GetType()))
-                        yield return (ICompositeTypeStyle2)item;
-                }
-            }
-            set
-            {
-                //Clear old ones
-                var remove = new List<object>();
-                foreach (var item in this.itemsField)
-                {
-                    if (typeof(ICompositeTypeStyle2).IsAssignableFrom(item.GetType()))
-                        remove.Add(item);
-                }
-
-                foreach (var obj in remove)
-                {
-                    this.itemsField.Remove(obj);
-                }
-
-                //Put the new ones in if it is not null
-                if (value != null)
-                {
-                    foreach (var item in value)
-                    {
-                        if (!typeof(ICompositeTypeStyle2).IsAssignableFrom(item.GetType()))
-                            throw new InvalidOperationException(Strings.ErrorObjectNotICompositeTypeStyle);
-
-                        this.itemsField.Add(item);
-                    }
-                }
-            }
-        }
-
-#endif
-
-#if LDF_100
-#else
-
-        IElevationSettings IVectorScaleRange2.ElevationSettings
-        {
-            get { return this.ElevationSettings; }
-            set { this.ElevationSettings = (ElevationSettingsType)value; }
-        }
-
-        IElevationSettings IVectorScaleRange2.Create(string zOffset, string zExtrusion, ElevationTypeType zOffsetType, LengthUnitType unit)
-        {
-            return new ElevationSettingsType()
-            {
-                ZOffset = zOffset,
-                ZOffsetType = zOffsetType,
-                ZExtrusion = zExtrusion,
-                Unit = unit
-            };
-        }
-
-        [XmlIgnore]
-        int IVectorScaleRange2.CompositeStyleCount
-        {
-            get
-            {
-                int count = 0;
-                foreach (var item in this.itemsField)
-                {
-                    if (typeof(ICompositeTypeStyle).IsAssignableFrom(item.GetType()))
-                        count++;
-                }
-                return count;
-            }
-        }
-
-#endif
     }
-
-#if LDF_100
-#else
-
-    partial class ElevationSettingsType : IElevationSettings { }
-
-#endif
-
-#if LDF_100
-
+    
     partial class StrokeType : IStroke
-#else
-
-    partial class StrokeType : IStroke, IStroke2
-#endif
     {
         internal StrokeType()
         {
@@ -436,16 +247,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
         {
             return StrokeType.Deserialize(this.Serialize());
         }
-
-#if LDF_100
-#else
-
-        IStroke2 ICloneableLayerElement<IStroke2>.Clone()
-        {
-            return StrokeType.Deserialize(this.Serialize());
-        }
-
-#endif
     }
 
     partial class FillType : IFill
@@ -461,9 +262,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
     }
 
     partial class AreaTypeStyleType : IAreaVectorStyle
-#if LDF_130 || LDF_230 || LDF_240
-, IAreaVectorStyle2
-#endif
     {
         [XmlIgnore]
         IEnumerable<IAreaRule> IAreaVectorStyle.Rules
@@ -653,9 +451,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
     }
 
     partial class PointTypeStyleType : IPointVectorStyle
-#if LDF_130 || LDF_230 || LDF_240
-, IPointVectorStyle2
-#endif
     {
         [XmlIgnore]
         public IEnumerable<IPointRule> Rules
@@ -811,9 +606,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
     }
 
     partial class LineTypeStyleType : ILineVectorStyle
-#if LDF_130 || LDF_230 || LDF_240
-, ILineVectorStyle2
-#endif
     {
         [XmlIgnore]
         public IEnumerable<ILineRule> Rules
@@ -1669,20 +1461,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
     partial class LayerDefinition : ILayerDefinition
     {
         //internal LayerDefinition() { }
-
-#if LDF_110
-        private static readonly Version RES_VERSION = new Version(1, 1, 0);
-#elif LDF_120
-        private static readonly Version RES_VERSION = new Version(1, 2, 0);
-#elif LDF_130
-        private static readonly Version RES_VERSION = new Version(1, 3, 0);
-#elif LDF_230
-        private static readonly Version RES_VERSION = new Version(2, 3, 0);
-#elif LDF_240
-        private static readonly Version RES_VERSION = new Version(2, 4, 0);
-#else
         private static readonly Version RES_VERSION = new Version(1, 0, 0);
-#endif
 
         private string _resId;
 
@@ -1733,19 +1512,7 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
         [XmlAttribute("noNamespaceSchemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")] //NOXLATE
         public string ValidatingSchema
         {
-#if LDF_110
-            get { return "LayerDefinition-1.1.0.xsd"; } //NOXLATE
-#elif LDF_120
-            get { return "LayerDefinition-1.2.0.xsd"; } //NOXLATE
-#elif LDF_130
-            get { return "LayerDefinition-1.3.0.xsd"; } //NOXLATE
-#elif LDF_230
-            get { return "LayerDefinition-2.3.0.xsd"; } //NOXLATE
-#elif LDF_240
-            get { return "LayerDefinition-2.4.0.xsd"; } //NOXLATE
-#else
             get { return ResourceTypes.LayerDefinition.ToString() + "-" + this.ResourceVersion.ToString() + ".xsd"; } //NOXLATE
-#endif
             set { }
         }
 
@@ -1784,9 +1551,6 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
     }
 
     partial class VectorLayerDefinitionType : IVectorLayerDefinition
-#if LDF_240
-, IVectorLayerDefinition2
-#endif
     {
         [XmlIgnore]
         public override LayerType LayerType
@@ -1818,35 +1582,8 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
         [XmlIgnore]
         string IVectorLayerDefinition.Url
         {
-#if LDF_240
-            get
-            {
-                if (this.urlDataField == null)
-                    return string.Empty;
-                else
-                    return this.urlDataField.Content;
-            }
-            set
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    if (this.urlDataField == null)
-                        this.urlDataField = new URLDataType();
-                    this.urlDataField.Content = value;
-                    OnPropertyChanged(nameof(Url));
-                }
-                else
-                {
-                    //NOTE: None of the other URLData properties seem to be used atm
-                    //hence why we are nulling this
-                    this.urlDataField = null;
-                    OnPropertyChanged(nameof(Url));
-                }
-            }
-#else
             get { return this.Url; }
             set { this.Url = value; }
-#endif
         }
 
         [XmlIgnore]
@@ -2006,463 +1743,13 @@ namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
         {
             get
             {
-#if LDF_110
-                return new Version(1, 0, 0);
-#elif LDF_120 || LDF_130 || LDF_230
-                return new Version(1, 1, 0);
-#elif LDF_240
-                return new Version(2, 4, 0);
-#else
                 return null;
-#endif
             }
         }
-
-#if LDF_240
-
-        [XmlIgnore]
-        IUrlData IVectorLayerDefinition2.UrlData
-        {
-            get
-            {
-                return this.UrlData;
-            }
-            set
-            {
-                this.UrlData = (URLDataType)value;
-            }
-        }
-
-#endif
 
         void IVectorLayerDefinition.ClearPropertyMappings()
         {
             propertyMappingField.Clear();
         }
     }
-
-    #region Composite Symbolization
-
-#if !LDF_100
-
-    partial class CompositeRule : ICompositeRule
-    {
-        [XmlIgnore]
-        ICompositeSymbolization ICompositeRule.CompositeSymbolization
-        {
-            get
-            {
-                return this.CompositeSymbolization;
-            }
-            set
-            {
-                this.CompositeSymbolization = (CompositeSymbolization)value;
-            }
-        }
-    }
-
-    partial class CompositeSymbolization : ICompositeSymbolization
-    {
-        [XmlIgnore]
-        IEnumerable<ISymbolInstance> ICompositeSymbolization.SymbolInstance
-        {
-            get
-            {
-                foreach (var sym in this.SymbolInstance)
-                {
-                    yield return sym;
-                }
-            }
-        }
-
-        public string ToXml()
-        {
-            return this.Serialize();
-        }
-
-        public void UpdateFromXml(string xml)
-        {
-            var compsym = CompositeSymbolization.Deserialize(xml);
-            this.SymbolInstance.Clear();
-            foreach (var sym in compsym.SymbolInstance)
-            {
-                this.AddSymbolInstance(sym);
-            }
-        }
-
-        public void AddSymbolInstance(ISymbolInstance inst)
-        {
-            var sym = inst as SymbolInstance;
-            if (sym != null)
-                this.SymbolInstance.Add(sym);
-        }
-
-        public void RemoveSymbolInstance(ISymbolInstance inst)
-        {
-            var sym = inst as SymbolInstance;
-            if (sym != null)
-                this.SymbolInstance.Remove(sym);
-        }
-
-        public void RemoveAllSymbolInstances()
-        {
-            this.SymbolInstance.Clear();
-        }
-
-        public ISymbolInstance CreateSymbolReference(string resourceId)
-        {
-            return new SymbolInstance()
-            {
-                Item = resourceId,
-                ParameterOverrides = new ParameterOverrides()
-                {
-                    Override = new BindingList<Override>()
-                },
-            };
-        }
-
-        public ISymbolInstance CreateInlineSimpleSymbol(ISimpleSymbolDefinition symDef)
-        {
-            return new SymbolInstance()
-            {
-#if LDF_110
-                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.SimpleSymbolDefinition)symDef,
-#elif LDF_120 || LDF_130 || LDF_230
-                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0.SimpleSymbolDefinition)symDef,
-#else
-                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0.SimpleSymbolDefinition)symDef,
-#endif
-                ParameterOverrides = new ParameterOverrides()
-                {
-                    Override = new BindingList<Override>()
-                }
-            };
-        }
-
-        public ISymbolInstance CreateInlineCompoundSymbol(ICompoundSymbolDefinition compDef)
-        {
-            return new SymbolInstance()
-            {
-#if LDF_110
-                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.CompoundSymbolDefinition)compDef,
-#elif LDF_120 || LDF_130 || LDF_230
-                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0.CompoundSymbolDefinition)compDef,
-#else
-                Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0.CompoundSymbolDefinition)compDef,
-#endif
-                ParameterOverrides = new ParameterOverrides()
-                {
-                    Override = new BindingList<Override>()
-                }
-            };
-        }
-    }
-
-    partial class SymbolInstance : ISymbolInstance
-#if LDF_100 || LDF_110
-#else
-, ISymbolInstance2
-#endif
-    {
-        [XmlIgnore]
-        IParameterOverrideCollection ISymbolInstance.ParameterOverrides
-        {
-            get { return this.ParameterOverrides; }
-        }
-
-        [XmlIgnore]
-        public ISymbolInstanceReference Reference
-        {
-            get
-            {
-                var libId = this.Item as string;
-#if LDF_110
-                var simpSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.SimpleSymbolDefinition;
-                var compSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.CompoundSymbolDefinition;
-#elif LDF_120 || LDF_130 || LDF_230
-                var simpSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0.SimpleSymbolDefinition;
-                var compSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0.CompoundSymbolDefinition;
-#else
-                var simpSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0.SimpleSymbolDefinition;
-                var compSym = this.Item as OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0.CompoundSymbolDefinition;
-#endif
-                if (libId != null)
-                    return new SymbolInstanceLibrary() { ResourceId = libId };
-                else if (simpSym != null)
-                    return new SymbolInstanceInline() { SymbolDefinition = simpSym };
-                else if (compSym != null)
-                    return new SymbolInstanceInline() { SymbolDefinition = compSym };
-                return null;
-            }
-            set
-            {
-                var sr = value as ISymbolInstanceReferenceLibrary;
-                var ir = value as ISymbolInstanceReferenceInline;
-                if (sr != null)
-                {
-                    this.Item = sr.ResourceId;
-                }
-                else if (ir != null)
-                {
-#if LDF_110
-                    if (ir.SymbolDefinition.Type == SymbolDefinitionType.Simple)
-                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.SimpleSymbolDefinition)ir.SymbolDefinition;
-                    else if (ir.SymbolDefinition.Type == SymbolDefinitionType.Compound)
-                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_0_0.CompoundSymbolDefinition)ir.SymbolDefinition;
-#elif LDF_120 || LDF_130 || LDF_230
-                    if (ir.SymbolDefinition.Type == SymbolDefinitionType.Simple)
-                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0.SimpleSymbolDefinition)ir.SymbolDefinition;
-                    else if (ir.SymbolDefinition.Type == SymbolDefinitionType.Compound)
-                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0.CompoundSymbolDefinition)ir.SymbolDefinition;
-#else
-                    if (ir.SymbolDefinition.Type == SymbolDefinitionType.Simple)
-                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0.SimpleSymbolDefinition)ir.SymbolDefinition;
-                    else if (ir.SymbolDefinition.Type == SymbolDefinitionType.Compound)
-                        this.Item = (OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0.CompoundSymbolDefinition)ir.SymbolDefinition;
-#endif
-                }
-                this.Item = null;
-            }
-        }
-    }
-
-    partial class SymbolInstanceLibrary : ISymbolInstanceReferenceLibrary
-    {
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        private string _resId;
-
-        [XmlIgnore]
-        public string ResourceId
-        {
-            get { return _resId; }
-            set
-            {
-                if (_resId == value) return;
-                _resId = value;
-                OnPropertyChanged(nameof(ResourceId));
-            }
-        }
-
-        [XmlIgnore]
-        public SymbolInstanceType Type
-        {
-            get { return SymbolInstanceType.Reference; }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string name)
-        {
-            var handler = this.PropertyChanged;
-            if (handler != null)
-                handler(this, new PropertyChangedEventArgs(name));
-        }
-    }
-
-    partial class SymbolInstanceInline : ISymbolInstanceReferenceInline
-    {
-        [XmlIgnore]
-        public ISymbolDefinitionBase SymbolDefinition
-        {
-            get;
-            set;
-        }
-
-        [XmlIgnore]
-        public SymbolInstanceType Type
-        {
-            get { return SymbolInstanceType.Inline; }
-        }
-    }
-
-    partial class ParameterOverrides : IParameterOverrideCollection
-    {
-        [XmlIgnore]
-        IEnumerable<IParameterOverride> IParameterOverrideCollection.Override
-        {
-            get
-            {
-                foreach (var ov in this.Override)
-                {
-                    yield return ov;
-                }
-            }
-        }
-
-        [XmlIgnore]
-        public int Count
-        {
-            get { return this.Override.Count; }
-        }
-
-        [XmlIgnore]
-        public IParameterOverride this[int index]
-        {
-            get
-            {
-                if (index >= this.Override.Count)
-                    throw new ArgumentOutOfRangeException();
-
-                return this.Override[index];
-            }
-        }
-
-        public void AddOverride(IParameterOverride ov)
-        {
-            var o = ov as Override;
-            if (o != null)
-                this.Override.Add(o);
-        }
-
-        public void RemoveOverride(IParameterOverride ov)
-        {
-            var o = ov as Override;
-            if (o != null)
-                this.Override.Remove(o);
-        }
-
-        public IParameterOverride CreateParameterOverride(string symbol, string name)
-        {
-            return new Override()
-            {
-                ParameterIdentifier = name,
-                SymbolName = symbol
-            };
-        }
-    }
-
-    partial class Override : IParameterOverride
-    {
-    }
-
-    partial class CompositeTypeStyle : ICompositeTypeStyle
-#if LDF_130 || LDF_230 || LDF_240
-, ICompositeTypeStyle2
-#endif
-    {
-        [XmlIgnore]
-        string ICompositeTypeStyle.DisplayString
-        {
-            get
-            {
-                return Strings.CompositeStyleDisplayString;
-            }
-        }
-
-        [XmlIgnore]
-        IEnumerable<ICompositeRule> ICompositeTypeStyle.CompositeRule
-        {
-            get
-            {
-                foreach (var cr in this.CompositeRule)
-                {
-                    yield return cr;
-                }
-            }
-        }
-
-        public void AddCompositeRule(ICompositeRule compRule)
-        {
-            var cr = compRule as CompositeRule;
-            if (cr != null)
-                this.CompositeRule.Add(cr);
-        }
-
-        public void RemoveCompositeRule(ICompositeRule compRule)
-        {
-            var cr = compRule as CompositeRule;
-            if (cr != null)
-                this.CompositeRule.Remove(cr);
-        }
-
-        [XmlIgnore]
-        public StyleType StyleType
-        {
-            get { return StyleType.Composite; }
-        }
-
-        [XmlIgnore]
-        public int RuleCount
-        {
-            get { return this.CompositeRule.Count; }
-        }
-
-    #region IRuleCollection<ICompositeRule> Members
-
-        public int IndexOfRule(ICompositeRule rule)
-        {
-            var cr = rule as CompositeRule;
-            if (cr != null)
-                return this.CompositeRule.IndexOf(cr);
-            return -1;
-        }
-
-        public ICompositeRule GetRuleAt(int index)
-        {
-            return this.CompositeRule[index];
-        }
-
-        public bool MoveUp(ICompositeRule rule)
-        {
-            var cr = rule as CompositeRule;
-            if (cr != null)
-                return CollectionUtil.MoveUp(this.CompositeRule, cr);
-            return false;
-        }
-
-        public bool MoveDown(ICompositeRule rule)
-        {
-            var cr = rule as CompositeRule;
-            if (cr != null)
-                return CollectionUtil.MoveDown(this.CompositeRule, cr);
-            return false;
-        }
-
-    #endregion IRuleCollection<ICompositeRule> Members
-
-    #region IRuleCollection Members
-
-        public int IndexOfRule(IVectorRule rule)
-        {
-            var cr = rule as CompositeRule;
-            if (cr != null)
-                return this.CompositeRule.IndexOf(cr);
-            return -1;
-        }
-
-        IVectorRule IRuleCollection.GetRuleAt(int index)
-        {
-            return this.CompositeRule[index];
-        }
-
-        public bool MoveUp(IVectorRule rule)
-        {
-            var cr = rule as CompositeRule;
-            if (cr != null)
-                return CollectionUtil.MoveUp(this.CompositeRule, cr);
-            return false;
-        }
-
-        public bool MoveDown(IVectorRule rule)
-        {
-            var cr = rule as CompositeRule;
-            if (cr != null)
-                return CollectionUtil.MoveDown(this.CompositeRule, cr);
-            return false;
-        }
-
-    #endregion IRuleCollection Members
-    }
-
-#endif
-
-    #endregion Composite Symbolization
-
-#if LDF_240
-
-    partial class URLDataType : IUrlData
-    {
-    }
-
-#endif
 }

@@ -27,28 +27,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+using System.Xml.Serialization;
 
 #pragma warning disable 1591, 0114, 0108
 
-#if LDF_110
-
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_1_0
-#elif LDF_120
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_2_0
-#elif LDF_130
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_3_0
-#elif LDF_230
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v2_3_0
-#elif LDF_240
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v2_4_0
-#else
-
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_0_0
-#endif
-{
-    using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-    using System.Xml.Serialization;
-
+{    
     partial class GridLayerDefinitionType : IRasterLayerDefinition
     {
         [XmlIgnore]
