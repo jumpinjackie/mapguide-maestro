@@ -38,12 +38,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                 Error
             }
 
-            public EventType Type;
-            public int Col;
-            public int Row;
-            public Exception Exception;
-            public EventWaitHandle Event;
-            public object Result = null;
+            public EventType Type { get; }
+            public int Col { get; }
+            public int Row { get; }
+            public Exception Exception { get; }
+            public EventWaitHandle Event { get; }
+            public object Result { get; set; }
 
             public EventPassing(EventType type, int row, int col, Exception ex, EventWaitHandle @event)
             {
@@ -55,53 +55,50 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             }
         }
 
-        public Queue<KeyValuePair<int, int>> TileSet;
-        private readonly Queue<EventPassing> RaiseEvents = new Queue<EventPassing>();
-        private readonly object SyncLock;
-        private readonly AutoResetEvent Event;
-        private int CompleteFlag;
-        private readonly TilingRunCollection Parent;
-        private int Scale;
-        private string Group;
-        private readonly string MapDefinition;
-        private MapTilingConfiguration Invoker;
+        public Queue<KeyValuePair<int, int>> TileSet { get; }
 
-        private bool Randomize;
-        private int Rows;
-        private int Cols;
-        private int RowOffset;
-        private int ColOffset;
+        private readonly Queue<EventPassing> _raiseEvents = new Queue<EventPassing>();
+        private readonly object _syncLock;
+        private readonly AutoResetEvent _event;
+        private readonly TilingRunCollection _parent;
+        private readonly int _scale;
+        private readonly string _group;
+        private readonly string _mapDefinition;
+        private readonly MapTilingConfiguration _invoker;
+        private readonly bool _randomize;
+        private readonly int _rows;
+        private readonly int _cols;
+        private readonly int _rowOffset;
+        private readonly int _colOffset;
 
-        private bool FillerComplete = false;
+        private bool _fillerComplete = false;
+        private int _completeFlag;
 
         public RenderThreads(MapTilingConfiguration invoker, TilingRunCollection parent, int scale, string group, string mapdef, int rows, int cols, int rowOffset, int colOffset, bool randomize)
         {
-            TileSet = new Queue<KeyValuePair<int, int>>();
-            SyncLock = new object();
-            Event = new AutoResetEvent(false);
-            CompleteFlag = parent.Config.ThreadCount;
-            RaiseEvents = new Queue<EventPassing>();
-            this.Scale = scale;
-            this.Group = group;
-            this.Parent = parent;
-            this.MapDefinition = mapdef;
-            this.Invoker = invoker;
-            Randomize = randomize;
-            Rows = rows;
-            Cols = cols;
-            this.RowOffset = rowOffset;
-            this.ColOffset = colOffset;
+            this.TileSet = new Queue<KeyValuePair<int, int>>();
+            _syncLock = new object();
+            _event = new AutoResetEvent(false);
+            _completeFlag = parent.Config.ThreadCount;
+            _raiseEvents = new Queue<EventPassing>();
+            _scale = scale;
+            _group = group;
+            _parent = parent;
+            _mapDefinition = mapdef;
+            _invoker = invoker;
+            _randomize = randomize;
+            _rows = rows;
+            _cols = cols;
+            _rowOffset = rowOffset;
+            _colOffset = colOffset;
         }
 
         public void RunAndWait()
         {
-            ThreadPool.QueueUserWorkItem(
-                new WaitCallback(QueueFiller));
-
-            for (int i = 0; i < Parent.Config.ThreadCount; i++)
+            ThreadPool.QueueUserWorkItem(QueueFiller);
+            for (int i = 0; i < _parent.Config.ThreadCount; i++)
             {
-                ThreadPool.QueueUserWorkItem(
-                    new WaitCallback(ThreadRender));
+                ThreadPool.QueueUserWorkItem(ThreadRender);
             }
 
             bool completed = false;
@@ -110,9 +107,11 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                 EventPassing eventToRaise = null;
                 while (true)
                 {
-                    lock (SyncLock)
-                        if (RaiseEvents.Count > 0)
-                            eventToRaise = RaiseEvents.Dequeue();
+                    lock (_syncLock)
+                    {
+                        if (_raiseEvents.Count > 0)
+                            eventToRaise = _raiseEvents.Dequeue();
+                    }
 
                     if (eventToRaise == null)
                     {
@@ -124,31 +123,31 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                         switch (eventToRaise.Type)
                         {
                             case EventPassing.EventType.Begin:
-                                Parent.InvokeBeginRendering(
-                                    Invoker,
-                                    Group,
-                                    Scale,
+                                _parent.InvokeBeginRendering(
+                                    _invoker,
+                                    _group,
+                                    _scale,
                                     eventToRaise.Row,
                                     eventToRaise.Col);
                                 break;
 
                             case EventPassing.EventType.Finish:
-                                Parent.InvokeFinishRendering(
-                                    Invoker,
-                                    Group,
-                                    Scale,
+                                _parent.InvokeFinishRendering(
+                                    _invoker,
+                                    _group,
+                                    _scale,
                                     eventToRaise.Row,
                                     eventToRaise.Col);
                                 break;
 
                             case EventPassing.EventType.Error:
-                                eventToRaise.Result = Parent.InvokeError(
-                                    Invoker,
-                                    Group,
-                                    Scale,
+                                eventToRaise.Result = _parent.InvokeError(
+                                    _invoker,
+                                    _group,
+                                    _scale,
                                     eventToRaise.Row,
                                     eventToRaise.Col,
-                                    ref eventToRaise.Exception);
+                                    eventToRaise.Exception);
                                 break;
 
                             default:
@@ -160,12 +159,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                     }
                 }
 
-                lock (SyncLock)
-                    if (CompleteFlag == 0 && RaiseEvents.Count == 0)
+                lock (_syncLock)
+                {
+                    if (_completeFlag == 0 && _raiseEvents.Count == 0)
                         completed = true;
+                }
 
                 if (!completed)
-                    Event.WaitOne(5 * 1000, true);
+                    _event.WaitOne(5 * 1000, true);
             }
         }
 
@@ -177,16 +178,20 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         {
             try
             {
-                if (Randomize)
+                if (_randomize)
                 {
                     Random ra = new Random();
                     List<int> rows = new List<int>();
-                    int[] cols_full = new int[Cols];
-                    for (int i = 0; i < Rows; i++)
+                    int[] cols_full = new int[_cols];
+                    for (int i = 0; i < _rows; i++)
+                    {
                         rows.Add(i);
+                    }
 
-                    for (int i = 0; i < Cols; i++)
+                    for (int i = 0; i < _cols; i++)
+                    {
                         cols_full[i] = i;
+                    }
 
                     //TODO: This is not really random, because we select
                     //a row, and then random columns
@@ -208,22 +213,28 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                             int c = cols[ci];
                             cols.RemoveAt(ci);
 
-                            AddPairToQueue(r + RowOffset, c + ColOffset);
+                            AddPairToQueue(r + _rowOffset, c + _colOffset);
                         }
                     }
                 }
                 else
                 {
                     //Non-random is straightforward
-                    for (int r = 0; r < Rows; r++)
-                        for (int c = 0; c < Cols; c++)
-                            AddPairToQueue(r + RowOffset, c + ColOffset);
+                    for (int r = 0; r < _rows; r++)
+                    {
+                        for (int c = 0; c < _cols; c++)
+                        {
+                            AddPairToQueue(r + _rowOffset, c + _colOffset);
+                        }
+                    }
                 }
             }
             finally
             {
-                lock (SyncLock)
-                    FillerComplete = true;
+                lock (_syncLock)
+                {
+                    _fillerComplete = true;
+                }
             }
         }
 
@@ -237,12 +248,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             bool added = false;
             while (!added)
             {
-                lock (SyncLock)
+                lock (_syncLock)
+                {
                     if (TileSet.Count < 500) //Keep at most 500 items in queue
                     {
                         TileSet.Enqueue(new KeyValuePair<int, int>(r, c));
                         added = true;
                     }
+                }
 
                 if (!added) //Prevent CPU spinning
                     Thread.Sleep(500);
@@ -258,37 +271,37 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             try
             {
                 //Create a copy of the connection for local usage
-                IServerConnection con = Parent.Connection.Clone();
+                IServerConnection con = _parent.Connection.Clone();
                 var tileSvc = (ITileService)con.GetService((int)ServiceType.Tile);
                 AutoResetEvent ev = new AutoResetEvent(false);
 
-                while (!Parent.Cancel)
+                while (!_parent.Cancel)
                 {
                     KeyValuePair<int, int>? round = null;
 
-                    lock (SyncLock)
+                    lock (_syncLock)
                     {
-                        if (TileSet.Count == 0 && FillerComplete)
+                        if (TileSet.Count == 0 && _fillerComplete)
                             return; //No more data
 
                         if (TileSet.Count > 0)
                             round = TileSet.Dequeue();
                     }
 
-                    if (Parent.Cancel)
+                    if (_parent.Cancel)
                         return;
 
                     if (round == null) //No data, but producer is still running
                         Thread.Sleep(500);
                     else
-                        RenderTile(ev, tileSvc, round.Value.Key, round.Value.Value, Scale, Group);
+                        RenderTile(ev, tileSvc, round.Value.Key, round.Value.Value, _scale, _group);
                 }
             }
             catch { }
             finally
             {
-                CompleteFlag--;
-                Event.Set();
+                _completeFlag--;
+                _event.Set();
             }
         }
 
@@ -304,28 +317,30 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         private void RenderTile(EventWaitHandle ev, ITileService tileSvc, long row, long col, int scaleindex, string group)
         {
             ev.Reset();
-            lock (SyncLock)
+            lock (_syncLock)
             {
-                RaiseEvents.Enqueue(new EventPassing(
+                _raiseEvents.Enqueue(new EventPassing(
                     EventPassing.EventType.Begin,
                      (int)row, (int)col, null,
                      ev
                     ));
-                Event.Set();
+                _event.Set();
             }
             ev.WaitOne(Timeout.Infinite, true);
 
-            int c = Parent.Config.RetryCount;
+            int c = _parent.Config.RetryCount;
             while (c > 0)
             {
                 c--;
                 try
                 {
-                    if (!Parent.Cancel)
-                        if (Parent.Config.RenderMethod == null)
-                            tileSvc.GetTile(MapDefinition, group, (int)col, (int)row, scaleindex, "PNG").Dispose(); //NOXLATE
+                    if (!_parent.Cancel)
+                    {
+                        if (_parent.Config.RenderMethod == null)
+                            tileSvc.GetTile(_mapDefinition, group, (int)col, (int)row, scaleindex, "PNG").Dispose(); //NOXLATE
                         else
-                            Parent.Config.RenderMethod(MapDefinition, group, (int)col, (int)row, scaleindex);
+                            _parent.Config.RenderMethod(_mapDefinition, group, (int)col, (int)row, scaleindex);
+                    }
 
                     break;
                 }
@@ -341,10 +356,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
                                 ev
                                 );
 
-                        lock (SyncLock)
+                        lock (_syncLock)
                         {
-                            RaiseEvents.Enqueue(evobj);
-                            Event.Set();
+                            _raiseEvents.Enqueue(evobj);
+                            _event.Set();
                         }
 
                         ev.WaitOne(Timeout.Infinite, true);
@@ -361,14 +376,14 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             }
 
             ev.Reset();
-            lock (SyncLock)
+            lock (_syncLock)
             {
-                RaiseEvents.Enqueue(new EventPassing(
+                _raiseEvents.Enqueue(new EventPassing(
                     EventPassing.EventType.Finish,
                     (int)row, (int)col, null,
                     ev
                 ));
-                Event.Set();
+                _event.Set();
             }
             ev.WaitOne(Timeout.Infinite, true);
         }

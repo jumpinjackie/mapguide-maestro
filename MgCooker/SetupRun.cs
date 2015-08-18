@@ -197,7 +197,7 @@ namespace MgCooker
                     TreeNode mn = MapTree.Nodes.Add(m);
 
                     mn.ImageIndex = mn.SelectedImageIndex = 0;
-                    mn.Tag = mdef;
+                    mn.Tag = (object)mdef ?? (object)tsd;
                     foreach (var g in tileSet.BaseMapLayerGroups)
                     {
                         TreeNode gn = mn.Nodes.Add(g.Name);
@@ -233,10 +233,7 @@ namespace MgCooker
             MapTree_AfterSelect(null, null);
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void btnClose_Click(object sender, EventArgs e) => this.Close();
 
         private void btnBuild_Click(object sender, EventArgs e)
         {
@@ -265,6 +262,12 @@ namespace MgCooker
                     bm.SetScalesAndExtend(c.ScaleIndexes, c.ExtentOverride);
 
                     bx.Maps.Add(bm);
+                }
+
+                if (bx.Maps.Count == 0)
+                {
+                    MessageBox.Show(Strings.NoMapsOrTileSetsSelected);
+                    return;
                 }
 
                 Progress p = new Progress(bx);
@@ -324,20 +327,11 @@ namespace MgCooker
             }
         }
 
-        static void PushArg(List<string> args, string name, string value)
-        {
-            args.Add($"--{name}=\"{value}\""); //NOXLATE
-        }
+        static void PushArg(List<string> args, string name, string value) => args.Add($"--{name}=\"{value}\""); //NOXLATE
 
-        static void PushArgUnquoted(List<string> args, string name, string value)
-        {
-            args.Add($"--{name}={value}"); //NOXLATE
-        }
+        static void PushArgUnquoted(List<string> args, string name, string value) => args.Add($"--{name}={value}"); //NOXLATE
 
-        static void PushSwitch(List<string> args, string name)
-        {
-            args.Add($"--{name}"); //NOXLATE
-        }
+        static void PushSwitch(List<string> args, string name) => args.Add($"--{name}"); //NOXLATE
 
         private void btnSaveScript_Click(object sender, EventArgs e)
         {
@@ -346,6 +340,13 @@ namespace MgCooker
                 saveFileDialog.Filter =
                     string.Format(Strings.FileTypeShellScript + "|{0}", "*.sh") + //NOXLATE
                     string.Format(Strings.FileTypeAllFiles + "|{0}", "*.*"); //NOXLATE
+            }
+
+            var configs = ReadTree();
+            if (configs.Count == 0)
+            {
+                MessageBox.Show(Strings.NoMapsOrTileSetsSelected);
+                return;
             }
 
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
@@ -404,7 +405,7 @@ namespace MgCooker
                         sw.WriteLine($"pushd \"{exePath}\""); //NOXLATE
                     }
 
-                    foreach (Config c in ReadTree())
+                    foreach (Config c in configs)
                     {
                         //Map-specific args
                         List<string> argsMap = new List<string>();
@@ -506,10 +507,7 @@ namespace MgCooker
             }
         }
 
-        private void LimitTileset_CheckedChanged(object sender, EventArgs e)
-        {
-            TilesetLimitPanel.Enabled = LimitTileset.Checked;
-        }
+        private void LimitTileset_CheckedChanged(object sender, EventArgs e) => TilesetLimitPanel.Enabled = LimitTileset.Checked;
 
         private void MapTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -529,7 +527,8 @@ namespace MgCooker
                     root = root.Parent;
 
                 IEnvelope box;
-                box = m_coordinateOverrides.ContainsKey(root.Text) ? m_coordinateOverrides[root.Text] : ((IMapDefinition)root.Tag).Extents;
+
+                box = m_coordinateOverrides.ContainsKey(root.Text) ? m_coordinateOverrides[root.Text] : GetExtents(root);
                 BoundsOverride.Tag = root;
 
                 try
@@ -547,6 +546,13 @@ namespace MgCooker
 
                 ModfiedOverrideWarning.Visible = m_coordinateOverrides.ContainsKey(root.Text);
             }
+        }
+
+        private IEnvelope GetExtents(TreeNode root)
+        {
+            IMapDefinition mdf = root.Tag as IMapDefinition;
+            ITileSetDefinition tsd = root.Tag as ITileSetDefinition;
+            return mdf?.Extents ?? tsd?.Extents;
         }
 
         private void ResetBounds_Click(object sender, EventArgs e)

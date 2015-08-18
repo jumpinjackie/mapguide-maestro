@@ -56,27 +56,27 @@ namespace MgCooker
             : this()
         {
             m_bx = bx;
-            bx.BeginRenderingMap += new ProgressCallback(bx_BeginRenderingMap);
-            bx.BeginRenderingGroup += new ProgressCallback(bx_BeginRenderingGroup);
-            bx.BeginRenderingScale += new ProgressCallback(bx_BeginRenderingScale);
-            bx.BeginRenderingTile += new ProgressCallback(bx_BeginRenderingTile);
-
-            bx.FinishRenderingTile += new ProgressCallback(bx_FinishRenderingTile);
-            bx.FinishRenderingMaps += new ProgressCallback(bx_FinishRenderingMaps);
-            bx.FailedRenderingTile += new ErrorCallback(bx_FailedRenderingTile);
+            bx.BeginRenderingMap += OnBeginRenderingMap;
+            bx.BeginRenderingGroup += OnBeginRenderingGroup;
+            bx.BeginRenderingScale += OnBeginRenderingScale;
+            bx.BeginRenderingTile += OnBeginRenderingTile;
+            bx.FinishRenderingTile += OnFinishRenderingTile;
+            bx.FinishRenderingMaps += OnFinishRenderingMaps;
+            bx.FailedRenderingTile += OnFailedRenderingTile;
             m_tileRuns = new List<TimeSpan>();
 
             m_grandTotalTiles = 0;
             foreach (MapTilingConfiguration bm in m_bx.Maps)
+            {
                 m_grandTotalTiles += bm.TotalTiles;
-
+            }
             m_grandBegin = DateTime.Now;
         }
 
-        private void bx_FailedRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref Exception exception)
+        private void OnFailedRenderingTile(object sender, TileRenderingErrorEventArgs args)
         {
             m_failCount++;
-            exception = null; //Eat it
+            args.Error = null; //Eat it
         }
 
         public TimeSpan TotalTime { get; private set; }
@@ -90,7 +90,7 @@ namespace MgCooker
             this.Close();
         }
 
-        private void bx_FinishRenderingMaps(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private void OnFinishRenderingMaps(object sender, TileProgressEventArgs args)
         {
             if (this.InvokeRequired)
                 this.Invoke(new System.Threading.ThreadStart(DoClose));
@@ -98,7 +98,7 @@ namespace MgCooker
                 DoClose();
         }
 
-        private void bx_FinishRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private void OnFinishRenderingTile(object sender, TileProgressEventArgs args)
         {
             m_tileRuns.Add(DateTime.Now - m_beginTile);
             m_tileCount++;
@@ -123,27 +123,31 @@ namespace MgCooker
                 m_tileRuns.Clear();
                 m_lastUpdate = DateTime.Now;
 
-                DisplayProgress(map, group, scaleindex, row, column, ref cancel);
+                DisplayProgress(sender, args);
             }
         }
-
-        private delegate void DisplayProgressDelegate(MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel);
-
-        private void DisplayProgress(MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        
+        private void DisplayProgress(object sender, TileProgressEventArgs args)
         {
             if (m_cancel)
-                cancel = true;
+            {
+                args.Cancel = true;
+            }
 
             if (this.InvokeRequired)
-                this.Invoke(new DisplayProgressDelegate(DisplayProgress), new object[] { map, group, scaleindex, row, column, cancel });
+            {
+                ProgressCallback action = DisplayProgress;
+                this.Invoke(action, new object[] { sender, args });
+            }
             else
             {
-                label1.Text = string.Format(Strings.CurrentGroupStatus, group, map.ResourceId);
+                label1.Text = string.Format(Strings.CurrentGroupStatus, args.Group, args.Map.ResourceId);
 
                 tilePG.Value = (int)Math.Max(Math.Min((m_tileCount / (double)m_totalTiles) * (tilePG.Maximum - tilePG.Minimum), tilePG.Maximum), tilePG.Minimum);
                 totalPG.Value = (int)Math.Max(Math.Min((m_grandTotalTileCount / (double)m_grandTotalTiles) * (totalPG.Maximum - totalPG.Minimum), totalPG.Maximum), totalPG.Minimum);
 
-                this.Text = m_origTitle + " - (" + (int)(((double)m_grandTotalTileCount / (double)m_grandTotalTiles) * 100.0) + "%)";
+                var percentage = (int)(((double)m_grandTotalTileCount / (double)m_grandTotalTiles) * 100.0);
+                this.Text = $"{m_origTitle} - ({percentage}%)";
 
                 if (m_failCount == 0)
                     tileCounter.Text = string.Format(Strings.CurrentTileCounter, m_grandTotalTileCount, m_grandTotalTiles, string.Empty);
@@ -153,7 +157,7 @@ namespace MgCooker
                 TimeSpan elapsed = DateTime.Now - m_grandBegin;
                 DateTime finish = DateTime.Now + (new TimeSpan(m_prevDuration.Ticks * m_grandTotalTiles) - elapsed);
                 TimeSpan remain = finish - DateTime.Now;
-                
+
                 if (finish < DateTime.Now)
                     finishEstimate.Text = Strings.InsufficientTimePassed;
                 else
@@ -161,30 +165,19 @@ namespace MgCooker
             }
         }
 
-        private void bx_BeginRenderingTile(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
-        {
-            m_beginTile = DateTime.Now;
-        }
+        private void OnBeginRenderingTile(object sender, TileProgressEventArgs args) => m_beginTile = DateTime.Now;
 
-        private void bx_BeginRenderingScale(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
-        {
-        }
+        private void OnBeginRenderingScale(object sender, TileProgressEventArgs args) { }
 
-        private void bx_BeginRenderingGroup(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
+        private void OnBeginRenderingGroup(object sender, TileProgressEventArgs args)
         {
-            m_totalTiles = map.TotalTiles;
+            m_totalTiles = args.Map.TotalTiles;
             m_tileCount = 0;
         }
 
-        private void bx_BeginRenderingMap(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
-        {
-            m_tileCount = 0;
-        }
+        private void OnBeginRenderingMap(object sender, TileProgressEventArgs args) => m_tileCount = 0;
 
-        private void BeginRendering()
-        {
-            m_bx.RenderAll();
-        }
+        private void BeginRendering() => m_bx.RenderAll();
 
         private void Progress_Load(object sender, EventArgs e)
         {

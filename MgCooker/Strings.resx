@@ -233,6 +233,9 @@ Either copy in the file, or do not use the Native connection method</value>
   <data name="NoMapSelected" xml:space="preserve">
     <value>No Map Definition selected</value>
   </data>
+  <data name="NoMapsOrTileSetsSelected" xml:space="preserve">
+    <value>You have no selected any Map Definitions or Tile Sets</value>
+  </data>
   <data name="NoMethodToCalculateMpu" xml:space="preserve">
     <value>Could not determine any method to calculate meters per unit</value>
   </data>

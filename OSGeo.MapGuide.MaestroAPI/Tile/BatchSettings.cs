@@ -29,29 +29,137 @@ using System.Collections.Generic;
 
 namespace OSGeo.MapGuide.MaestroAPI.Tile
 {
-    /// <summary>
-    /// This delegate is used to monitor progress on tile rendering
-    /// </summary>
-    /// <param name="map">The map currently being processed</param>
-    /// <param name="group">The group being processed</param>
-    /// <param name="scaleindex">The scaleindex being processed</param>
-    /// <param name="row">The row being processed</param>
-    /// <param name="column">The column being processed</param>
-    /// <param name="cancel">A control flag to stop the tile rendering</param>
-    /// <param name="state">The state that invoked the callback</param>
-    public delegate void ProgressCallback(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel);
+    public class TileProgressEventArgs : EventArgs
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="state">The state that invoked the callback</param>
+        /// <param name="map">The map currently being processed</param>
+        /// <param name="group">The group being processed</param>
+        /// <param name="scaleindex">The scaleindex being processed</param>
+        /// <param name="row">The row being processed</param>
+        /// <param name="column">The column being processed</param>
+        /// <param name="cancel">A control flag to stop the tile rendering</param>
+        public TileProgressEventArgs(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, bool cancel)
+        {
+            this.State = state;
+            this.Map = map;
+            this.Group = group;
+            this.ScaleIndex = scaleindex;
+            this.Row = row;
+            this.Column = column;
+            this.Cancel = cancel;
+        }
+
+        /// <summary>
+        /// The state that invoked the callback
+        /// </summary>
+        public CallbackStates State { get; }
+
+        /// <summary>
+        /// The map currently being processed
+        /// </summary>
+        public MapTilingConfiguration Map { get; }
+
+        /// <summary>
+        /// The group being processed
+        /// </summary>
+        public string Group { get; }
+
+        /// <summary>
+        /// The scaleindex being processed
+        /// </summary>
+        public int ScaleIndex { get; }
+
+        /// <summary>
+        /// The row being processed
+        /// </summary>
+        public int Row { get; }
+
+        /// <summary>
+        /// The column being processed
+        /// </summary>
+        public int Column { get; }
+
+        /// <summary>
+        /// A control flag to stop the tile rendering
+        /// </summary>
+        public bool Cancel { get; set; }
+    }
+
+    public class TileRenderingErrorEventArgs : EventArgs
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="state">The state that invoked the callback</param>
+        /// <param name="map">The map currently being processed</param>
+        /// <param name="group">The group being processed</param>
+        /// <param name="scaleindex">The scaleindex being processed</param>
+        /// <param name="row">The row being processed</param>
+        /// <param name="column">The column being processed</param>
+        /// <param name="error"></param>
+        public TileRenderingErrorEventArgs(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, Exception error)
+        {
+            this.State = state;
+            this.Map = map;
+            this.Group = group;
+            this.ScaleIndex = scaleindex;
+            this.Row = row;
+            this.Column = column;
+            this.Error = error;
+        }
+
+        /// <summary>
+        /// The state that invoked the callback
+        /// </summary>
+        public CallbackStates State { get; }
+
+        /// <summary>
+        /// The map currently being processed
+        /// </summary>
+        public MapTilingConfiguration Map { get; }
+
+        /// <summary>
+        /// The group being processed
+        /// </summary>
+        public string Group { get; }
+
+        /// <summary>
+        /// The scaleindex being processed
+        /// </summary>
+        public int ScaleIndex { get; }
+
+        /// <summary>
+        /// The row being processed
+        /// </summary>
+        public int Row { get; }
+
+        /// <summary>
+        /// The column being processed
+        /// </summary>
+        public int Column { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Exception Error { get; set; }
+    }
 
     /// <summary>
     /// This delegate is used to monitor progress on tile rendering
     /// </summary>
-    /// <param name="map">The map currently being processed</param>
-    /// <param name="group">The group being processed</param>
-    /// <param name="scaleindex">The scaleindex being processed</param>
-    /// <param name="row">The row being processed</param>
-    /// <param name="column">The column being processed</param>
-    /// <param name="state">The state that invoked the callback</param>
-    /// <param name="exception">The exception from the last attempt, set this to null to ignore the exception</param>
-    public delegate void ErrorCallback(CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref Exception exception);
+    /// <param name="sender"></param>
+    /// <param name="args"></param>
+    public delegate void ProgressCallback(object sender, TileProgressEventArgs args);
+
+    /// <summary>
+    /// This delegate is used to monitor progress on tile rendering
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="args"></param>
+    public delegate void ErrorCallback(object sender, TileRenderingErrorEventArgs args);
 
     /// <summary>
     /// These are the avalible states for callbacks
@@ -203,62 +311,69 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
 
         internal void InvokeBeginRendering(MapTilingConfiguration batchMap)
         {
-            if (this.BeginRenderingMap != null)
-                this.BeginRenderingMap(CallbackStates.StartRenderMap, batchMap, null, -1, -1, -1, ref m_cancel);
+            var args = new TileProgressEventArgs(CallbackStates.StartRenderMap, batchMap, null, -1, -1, -1, m_cancel);
+            this.BeginRenderingMap?.Invoke(this, args);
+            m_cancel = args.Cancel;
             PauseEvent.WaitOne();
         }
 
         internal void InvokeFinishRendering(MapTilingConfiguration batchMap)
         {
-            if (this.FinishRenderingMap != null)
-                this.FinishRenderingMap(CallbackStates.FinishRenderMap, batchMap, null, -1, -1, -1, ref m_cancel);
+            var args = new TileProgressEventArgs(CallbackStates.FinishRenderMap, batchMap, null, -1, -1, -1, m_cancel);
+            this.FinishRenderingMap?.Invoke(this, args);
+            m_cancel = args.Cancel;
         }
 
         internal void InvokeBeginRendering(MapTilingConfiguration batchMap, string group)
         {
-            if (this.BeginRenderingGroup != null)
-                this.BeginRenderingGroup(CallbackStates.StartRenderGroup, batchMap, group, -1, -1, -1, ref m_cancel);
+            var args = new TileProgressEventArgs(CallbackStates.StartRenderGroup, batchMap, group, -1, -1, -1, m_cancel);
+            this.BeginRenderingGroup?.Invoke(this, args);
+            m_cancel = args.Cancel;
             PauseEvent.WaitOne();
         }
 
         internal void InvokeFinishRendering(MapTilingConfiguration batchMap, string group)
         {
-            if (this.FinishRenderingGroup != null)
-                this.FinishRenderingGroup(CallbackStates.FinishRenderGroup, batchMap, group, -1, -1, -1, ref m_cancel);
+            var args = new TileProgressEventArgs(CallbackStates.FinishRenderGroup, batchMap, group, -1, -1, -1, m_cancel);
+            this.FinishRenderingGroup?.Invoke(this, args);
+            m_cancel = args.Cancel;
         }
 
         internal void InvokeBeginRendering(MapTilingConfiguration batchMap, string group, int scaleindex)
         {
-            if (this.BeginRenderingScale != null)
-                this.BeginRenderingScale(CallbackStates.StartRenderScale, batchMap, group, scaleindex, -1, -1, ref m_cancel);
+            var args = new TileProgressEventArgs(CallbackStates.StartRenderScale, batchMap, group, scaleindex, -1, -1, m_cancel);
+            this.BeginRenderingScale?.Invoke(this, args);
+            m_cancel = args.Cancel;
             PauseEvent.WaitOne();
         }
 
         internal void InvokeFinishRendering(MapTilingConfiguration batchMap, string group, int scaleindex)
         {
-            if (this.FinishRenderingScale != null)
-                this.FinishRenderingScale(CallbackStates.FinishRenderScale, batchMap, group, scaleindex, -1, -1, ref m_cancel);
+            var args = new TileProgressEventArgs(CallbackStates.FinishRenderScale, batchMap, group, scaleindex, -1, -1, m_cancel);
+            this.FinishRenderingScale?.Invoke(this, args);
+            m_cancel = args.Cancel;
         }
 
         internal void InvokeBeginRendering(MapTilingConfiguration batchMap, string group, int scaleindex, int row, int col)
         {
-            if (this.BeginRenderingTile != null)
-                this.BeginRenderingTile(CallbackStates.StartRenderTile, batchMap, group, scaleindex, row, col, ref m_cancel);
+            var args = new TileProgressEventArgs(CallbackStates.StartRenderTile, batchMap, group, scaleindex, row, col, m_cancel);
+            this.BeginRenderingTile?.Invoke(this, args);
+            m_cancel = args.Cancel;
             PauseEvent.WaitOne();
         }
 
         internal void InvokeFinishRendering(MapTilingConfiguration batchMap, string group, int scaleindex, int row, int col)
         {
-            if (this.FinishRenderingTile != null)
-                this.FinishRenderingTile(CallbackStates.FinishRenderTile, batchMap, group, scaleindex, row, col, ref m_cancel);
+            var args = new TileProgressEventArgs(CallbackStates.FinishRenderTile, batchMap, group, scaleindex, row, col, m_cancel);
+            this.FinishRenderingTile?.Invoke(this, args);
+            m_cancel = args.Cancel;
         }
 
-        internal Exception InvokeError(MapTilingConfiguration batchMap, string group, int scaleindex, int row, int col, ref Exception exception)
+        internal Exception InvokeError(MapTilingConfiguration batchMap, string group, int scaleindex, int row, int col, Exception exception)
         {
-            if (this.FailedRenderingTile != null)
-                this.FailedRenderingTile(CallbackStates.FailedRenderingTile, batchMap, group, scaleindex, row, col, ref exception);
-
-            return exception;
+            var args = new TileRenderingErrorEventArgs(CallbackStates.FailedRenderingTile, batchMap, group, scaleindex, row, col, exception);
+            this.FailedRenderingTile?.Invoke(this, args);
+            return args.Error;
         }
 
         #endregion Events
@@ -308,7 +423,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             {
                 List<string> tmp = new List<string>();
                 foreach (var doc in m_connection.ResourceService.GetRepositoryResources(StringConstants.RootIdentifier, ResourceTypes.MapDefinition.ToString()).Children)
+                {
                     tmp.Add(doc.ResourceId);
+                }
                 maps = tmp.ToArray();
             }
 
@@ -324,40 +441,31 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         /// Sets the list of scale indexes
         /// </summary>
         /// <param name="scaleindexes"></param>
-        public void SetScales(int[] scaleindexes)
-        {
-            foreach (MapTilingConfiguration bm in m_maps)
-                bm.SetScales(scaleindexes);
-        }
+        public void SetScales(int[] scaleindexes) => m_maps.ForEach(bm => bm.SetScales(scaleindexes));
 
         /// <summary>
         /// Sets the list of groups
         /// </summary>
         /// <param name="groups"></param>
-        public void SetGroups(string[] groups)
-        {
-            foreach (MapTilingConfiguration bm in m_maps)
-                bm.SetGroups(groups);
-        }
+        public void SetGroups(string[] groups) => m_maps.ForEach(bm => bm.SetGroups(groups));
 
         /// <summary>
         /// Limits the number of rows
         /// </summary>
         /// <param name="limit"></param>
-        public void LimitRows(long limit)
-        {
-            foreach (MapTilingConfiguration bm in m_maps)
-                bm.LimitRows(limit);
-        }
+        public void LimitRows(long limit) => m_maps.ForEach(bm => bm.LimitRows(limit));
 
         /// <summary>
         /// Limits the number of columns
         /// </summary>
         /// <param name="limit"></param>
-        public void LimitCols(long limit)
+        public void LimitCols(long limit) => m_maps.ForEach(bm => bm.LimitCols(limit));
+
+        private static void TriggerEvent(ProgressCallback evt, object sender, CallbackStates state, MapTilingConfiguration map, string group, int scaleindex, int row, int column, ref bool cancel)
         {
-            foreach (MapTilingConfiguration bm in m_maps)
-                bm.LimitCols(limit);
+            var args = new TileProgressEventArgs(state, map, group, scaleindex, row, column, cancel);
+            evt?.Invoke(sender, args);
+            cancel = args.Cancel;
         }
 
         /// <summary>
@@ -367,17 +475,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
         {
             m_cancel = false;
 
-            if (this.BeginRenderingMaps != null)
-                this.BeginRenderingMaps(CallbackStates.StartRenderAllMaps, null, null, -1, -1, -1, ref m_cancel);
-
+            TriggerEvent(this.BeginRenderingMaps, this, CallbackStates.StartRenderAllMaps, null, null, -1, -1, -1, ref m_cancel);
             foreach (MapTilingConfiguration bm in this.Maps)
+            {
                 if (m_cancel)
                     break;
                 else
                     bm.Render();
-
-            if (this.FinishRenderingMaps != null)
-                this.FinishRenderingMaps(CallbackStates.FinishRenderAllMaps, null, null, -1, -1, -1, ref m_cancel);
+            }
+            TriggerEvent(this.FinishRenderingMaps, this, CallbackStates.FinishRenderAllMaps, null, null, -1, -1, -1, ref m_cancel);
         }
 
         /// <summary>
@@ -625,8 +731,10 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             //TODO: Re-read scales from mapdef?
             SortedList<int, int> s = new SortedList<int, int>();
             foreach (int i in scaleindexes)
+            {
                 if (!s.ContainsKey(i))
                     s.Add(i, i);
+            }
 
             List<int> keys = new List<int>(s.Keys);
             keys.Reverse();
@@ -642,19 +750,25 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             //Preserve the original scales
             m_scaleindexmap = new int[keys.Count];
             for (int i = 0; i < keys.Count; i++)
+            {
                 m_scaleindexmap[i] = keys[i];
+            }
         }
 
         internal void LimitCols(long limit)
         {
             foreach (long[] d in m_dimensions)
+            {
                 d[1] = Math.Min(limit, d[1]);
+            }
         }
 
         internal void LimitRows(long limit)
         {
             foreach (long[] d in m_dimensions)
+            {
                 d[0] = Math.Min(limit, d[0]);
+            }
         }
 
         /// <summary>
@@ -666,7 +780,9 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             {
                 long t = 0;
                 foreach (long[] d in m_dimensions)
+                {
                     t += d[0] * d[1];
+                }
                 return t;
             }
         }
@@ -725,10 +841,12 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             if (!m_parent.Cancel)
             {
                 for (int i = this.Resolutions - 1; i >= 0; i--)
+                {
                     if (m_parent.Cancel)
                         break;
                     else
                         RenderScale(i, group);
+                }
             }
 
             m_parent.InvokeFinishRendering(this, group);
@@ -742,12 +860,15 @@ namespace OSGeo.MapGuide.MaestroAPI.Tile
             m_parent.InvokeBeginRendering(this);
 
             if (!m_parent.Cancel)
+            {
                 foreach (string s in m_groups)
+                {
                     if (m_parent.Cancel)
                         break;
                     else
                         RenderGroup(s);
-
+                }
+            }
             m_parent.InvokeFinishRendering(this);
         }
 
