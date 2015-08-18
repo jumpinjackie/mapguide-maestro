@@ -21,14 +21,8 @@
 #endregion Disclaimer / License
 using Maestro.AddIn.Rest.Model;
 using RestSharp;
+using RestSharp.Authenticators;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Maestro.AddIn.Rest.UI
@@ -42,26 +36,22 @@ namespace Maestro.AddIn.Rest.UI
 
         private RestClient _client;
 
-        public RestClient GetClient()
-        {
-            return _client;
-        }
+        public RestClient GetClient() => _client;
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-        }
+        private void btnCancel_Click(object sender, EventArgs e) => this.DialogResult = DialogResult.Cancel;
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            _client = new RestClient(txtUrl.Text);
-            _client.Authenticator = new HttpBasicAuthenticator(txtUsername.Text, txtPassword.Text);
+            _client = new RestClient(txtUrl.Text)
+            {
+                Authenticator = new HttpBasicAuthenticator(txtUsername.Text, txtPassword.Text)
+            };
 
             //To test the credentials, create a session
             var req = new RestRequest("session", Method.POST);
             var session = _client.Execute<PrimitiveValueResponse>(req);
 
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.DialogResult = DialogResult.OK;
         }
     }
 }
