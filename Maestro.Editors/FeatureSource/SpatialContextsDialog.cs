@@ -21,7 +21,6 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.MaestroAPI.Services;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
 using System.Windows.Forms;
 

@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OSGeo.FDO.Expressions {
-    using System;
-    
-    
+namespace OSGeo.FDO.Expressions
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>

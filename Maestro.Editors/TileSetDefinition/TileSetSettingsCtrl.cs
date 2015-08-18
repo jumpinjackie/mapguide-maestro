@@ -19,21 +19,18 @@
 //
 
 #endregion Disclaimer / License
+using Maestro.Editors.Common;
+using Maestro.Editors.MapDefinition;
+using Maestro.Editors.TileSetDefinition.Providers;
+using OSGeo.MapGuide.MaestroAPI.Commands;
+using OSGeo.MapGuide.ObjectModels.Common;
+using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Maestro.Editors.Common;
-using OSGeo.MapGuide.MaestroAPI.Commands;
-using OSGeo.MapGuide.ObjectModels.Common;
-using Maestro.Editors.TileSetDefinition.Providers;
-using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
-using Maestro.Editors.MapDefinition;
 using System.Globalization;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Maestro.Editors.TileSetDefinition
 {

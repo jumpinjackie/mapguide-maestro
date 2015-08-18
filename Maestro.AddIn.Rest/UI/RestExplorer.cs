@@ -19,21 +19,14 @@
 //
 
 #endregion Disclaimer / License
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Maestro.Shared.UI;
-using RestSharp;
 using Maestro.AddIn.Rest.Model;
-using OSGeo.MapGuide.MaestroAPI;
 using Maestro.Base.Services;
+using Maestro.Shared.UI;
+using OSGeo.MapGuide.MaestroAPI;
+using RestSharp;
+using System;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Maestro.AddIn.Rest.UI
 {

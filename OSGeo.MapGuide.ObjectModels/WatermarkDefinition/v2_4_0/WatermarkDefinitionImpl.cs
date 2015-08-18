@@ -24,10 +24,7 @@
 
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Xml.Serialization;
 
 #if WDF_240

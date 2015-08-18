@@ -26,7 +26,6 @@ using Maestro.Editors.FeatureSource.Providers.Odbc.OverrideEditor;
 using Maestro.Editors.FeatureSource.Providers.Odbc.SubEditors;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Schema;
 using OSGeo.MapGuide.MaestroAPI.SchemaOverrides;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.FeatureSource;

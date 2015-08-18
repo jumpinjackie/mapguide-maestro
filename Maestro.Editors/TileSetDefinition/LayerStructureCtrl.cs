@@ -19,24 +19,21 @@
 //
 
 #endregion Disclaimer / License
+using Aga.Controls.Tree;
+using Maestro.Editors.Common;
+using Maestro.Editors.Generic;
+using Maestro.Editors.MapDefinition;
+using OSGeo.MapGuide.MaestroAPI;
+using OSGeo.MapGuide.MaestroAPI.Tile;
+using OSGeo.MapGuide.ObjectModels;
+using OSGeo.MapGuide.ObjectModels.MapDefinition;
+using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Maestro.Editors.Common;
-using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
-using Maestro.Editors.MapDefinition;
-using Aga.Controls.Tree;
-using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.ObjectModels.MapDefinition;
-using OSGeo.MapGuide.ObjectModels;
-using Maestro.Editors.Generic;
-using OSGeo.MapGuide.MaestroAPI.Tile;
 
 namespace Maestro.Editors.TileSetDefinition
 {

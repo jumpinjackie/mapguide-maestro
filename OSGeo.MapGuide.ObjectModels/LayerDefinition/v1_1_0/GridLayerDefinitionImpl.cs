@@ -23,17 +23,12 @@
 #define LDF_110
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Xml;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using System.Xml.Serialization;
 
 #pragma warning disable 1591, 0114, 0108
 
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_1_0
-{    
+{
     partial class GridLayerDefinitionType : IRasterLayerDefinition
     {
         [XmlIgnore]

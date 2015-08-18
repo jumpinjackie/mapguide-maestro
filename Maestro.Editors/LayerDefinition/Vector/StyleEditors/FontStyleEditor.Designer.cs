@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
+﻿namespace Maestro.Editors.LayerDefinition.Vector.StyleEditors
 {
     partial class FontStyleEditor
     {

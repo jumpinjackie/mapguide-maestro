@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OSGeo.MapGuide.MaestroAPI.Http {
-    using System;
-    
-    
+namespace OSGeo.MapGuide.MaestroAPI.Http
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>

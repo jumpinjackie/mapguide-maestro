@@ -21,12 +21,9 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0;
-using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 
 namespace OSGeo.MapGuide.ObjectModels.FeatureSource
 {

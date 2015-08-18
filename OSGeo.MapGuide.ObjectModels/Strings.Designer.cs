@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OSGeo.MapGuide.ObjectModels {
-    using System;
-    
-    
+namespace OSGeo.MapGuide.ObjectModels
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>

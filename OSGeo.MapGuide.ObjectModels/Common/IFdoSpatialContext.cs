@@ -21,10 +21,7 @@
 #endregion Disclaimer / License
 
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Xml.Serialization;
 
 namespace OSGeo.MapGuide.ObjectModels.Common

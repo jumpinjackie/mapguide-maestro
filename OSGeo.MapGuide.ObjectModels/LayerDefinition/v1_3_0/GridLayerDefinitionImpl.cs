@@ -23,10 +23,6 @@
 #define LDF_130
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Xml;
 
 #pragma warning disable 1591, 0114, 0108
 

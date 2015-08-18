@@ -23,7 +23,6 @@
 using ICSharpCode.Core;
 using Maestro.Editors;
 using Maestro.Editors.MapDefinition;
-using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.TileSetDefinition;

@@ -23,7 +23,6 @@
 using Maestro.Packaging;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
-using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.Collections.Generic;

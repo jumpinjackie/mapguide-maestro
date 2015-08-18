@@ -7,16 +7,11 @@
 // ------------------------------------------------------------------------------
 namespace OSGeo.MapGuide.ObjectModels.FeatureSource.v1_0_0
 {
-    using System;
-    using System.Diagnostics;
-    using System.Xml.Serialization;
-    using System.Collections;
-    using System.Xml.Schema;
+    using OSGeo.MapGuide.ObjectModels.Common;
+    using OSGeo.MapGuide.ObjectModels.FeatureSource;
     using System.ComponentModel;
     using System.IO;
-    using OSGeo.MapGuide.ObjectModels.FeatureSource;
-    using OSGeo.MapGuide.ObjectModels.Common;
-    
+
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.3.0.33572")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]

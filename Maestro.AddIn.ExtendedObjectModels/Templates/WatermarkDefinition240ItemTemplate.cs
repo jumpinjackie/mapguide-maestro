@@ -21,7 +21,6 @@
 #endregion Disclaimer / License
 
 using Maestro.Base.Templates;
-using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
 using System;

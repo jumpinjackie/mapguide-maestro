@@ -23,7 +23,6 @@
 using Maestro.Base.Templates;
 using Maestro.Shared.UI;
 using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LoadProcedure;
 using System;

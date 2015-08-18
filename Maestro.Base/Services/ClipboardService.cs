@@ -22,7 +22,6 @@
 
 using Maestro.Base.UI;
 using Maestro.Shared.UI;
-using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
 
 namespace Maestro.Base.Services

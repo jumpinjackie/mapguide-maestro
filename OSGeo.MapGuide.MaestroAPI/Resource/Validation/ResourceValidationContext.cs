@@ -21,12 +21,9 @@
 #endregion Disclaimer / License
 
 using OSGeo.MapGuide.MaestroAPI.Schema;
-using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
-using OSGeo.MapGuide.ObjectModels.Capabilities;
 using OSGeo.MapGuide.ObjectModels.Common;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {

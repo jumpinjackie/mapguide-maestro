@@ -31,7 +31,6 @@
 
 #endregion Disclaimer / License
 
-using System;
 using System.Text;
 
 namespace Maestro.Editors.Generic.XmlEditor.AutoCompletion

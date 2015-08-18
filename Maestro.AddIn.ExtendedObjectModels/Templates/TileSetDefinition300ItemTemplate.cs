@@ -25,10 +25,6 @@ using OSGeo.MapGuide.MaestroAPI.Commands;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Res = Maestro.AddIn.ExtendedObjectModels.Properties.Resources;
 
 namespace Maestro.AddIn.ExtendedObjectModels.Templates

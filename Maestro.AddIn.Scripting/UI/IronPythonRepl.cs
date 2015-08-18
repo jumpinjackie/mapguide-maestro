@@ -1,10 +1,10 @@
-﻿using Maestro.Editors.Common;
+﻿using ICSharpCode.Core;
+using Maestro.AddIn.Scripting.Lang.Python;
+using Maestro.Editors.Common;
 using Maestro.Shared.UI;
 using Microsoft.Scripting.Hosting.Shell;
 using System;
 using System.Windows.Forms;
-using ICSharpCode.Core;
-using Maestro.AddIn.Scripting.Lang.Python;
 
 namespace Maestro.AddIn.Scripting.UI
 {

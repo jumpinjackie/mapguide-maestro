@@ -24,7 +24,6 @@ using OSGeo.MapGuide.ObjectModels.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace OSGeo.MapGuide.ObjectModels.RuntimeMap.v2_6_0
 {

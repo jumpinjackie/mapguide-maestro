@@ -24,7 +24,6 @@ using ICSharpCode.Core;
 using Maestro.Base.Services;
 using Maestro.Editors.FeatureSource;
 using Maestro.Shared.UI;
-using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;

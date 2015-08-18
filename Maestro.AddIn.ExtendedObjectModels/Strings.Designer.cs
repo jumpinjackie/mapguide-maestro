@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Maestro.AddIn.ExtendedObjectModels {
-    using System;
-    
-    
+namespace Maestro.AddIn.ExtendedObjectModels
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>

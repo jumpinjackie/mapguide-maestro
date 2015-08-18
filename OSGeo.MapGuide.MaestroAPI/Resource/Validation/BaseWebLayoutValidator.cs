@@ -4,8 +4,8 @@ using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.MapDefinition;
 using OSGeo.MapGuide.ObjectModels.WebLayout;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {

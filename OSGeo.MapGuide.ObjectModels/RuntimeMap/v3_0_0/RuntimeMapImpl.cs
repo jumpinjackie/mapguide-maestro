@@ -25,7 +25,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 
 namespace OSGeo.MapGuide.ObjectModels.RuntimeMap.v3_0_0
 {

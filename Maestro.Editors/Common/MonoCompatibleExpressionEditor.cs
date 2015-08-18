@@ -23,19 +23,17 @@
 using Maestro.Editors.Common.Expression;
 using Maestro.Editors.LayerDefinition.Vector.Thematics;
 using Maestro.Shared.UI;
+using OSGeo.FDO.Expressions;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
-using OSGeo.FDO.Expressions;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
-using OSGeo.MapGuide.ObjectModels.Capabilities.v1_0_0;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using OSGeo.MapGuide.MaestroAPI.Services;
 
 namespace Maestro.Editors.Common
 {

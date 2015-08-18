@@ -20,7 +20,6 @@
 
 #endregion Disclaimer / License
 
-using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.Collections.Generic;

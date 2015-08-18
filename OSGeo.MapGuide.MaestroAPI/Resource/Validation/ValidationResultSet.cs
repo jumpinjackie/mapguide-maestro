@@ -22,8 +22,8 @@
 
 using OSGeo.MapGuide.ObjectModels;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace OSGeo.MapGuide.MaestroAPI.Resource.Validation
 {

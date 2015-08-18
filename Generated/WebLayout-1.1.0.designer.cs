@@ -10,17 +10,13 @@ namespace OSGeo.MapGuide.ObjectModels.WebLayout.v2_6_0 {
 #elif WL240
 namespace OSGeo.MapGuide.ObjectModels.WebLayout.v2_4_0 {
 #else
-namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_1_0 {
+namespace OSGeo.MapGuide.ObjectModels.WebLayout.v1_1_0
+{
 #endif
-    using System;
-    using System.Diagnostics;
-    using System.Xml.Serialization;
-    using System.Collections;
-    using System.Xml.Schema;
+    using OSGeo.MapGuide.ObjectModels.WebLayout;
     using System.ComponentModel;
     using System.IO;
-    using OSGeo.MapGuide.ObjectModels.WebLayout;
-    
+
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.3.0.33572")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]

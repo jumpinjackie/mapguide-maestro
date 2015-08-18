@@ -22,7 +22,6 @@
 
 #define MDF_100
 using OSGeo.MapGuide.ObjectModels.Common;
-using OSGeo.MapGuide.ObjectModels.LayerDefinition;
 using OSGeo.MapGuide.ObjectModels.TileSetDefinition;
 using System;
 using System.Collections.Generic;
@@ -30,7 +29,6 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Xml.Serialization;
 
 #pragma warning disable 1591, 0114, 0108

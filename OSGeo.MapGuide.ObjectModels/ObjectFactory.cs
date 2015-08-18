@@ -38,8 +38,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
-using System.Linq;
-using System.Text;
 using Ldf110 = OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_1_0;
 using Ldf120 = OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_2_0;
 using Ldf130 = OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_3_0;
@@ -52,12 +50,12 @@ using Mdf240 = OSGeo.MapGuide.ObjectModels.MapDefinition.v2_4_0;
 using Mdf300 = OSGeo.MapGuide.ObjectModels.MapDefinition.v3_0_0;
 using Sym110 = OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0;
 using Sym240 = OSGeo.MapGuide.ObjectModels.SymbolDefinition.v2_4_0;
+using Tsd300 = OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0;
 using Wdf230 = OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_3_0;
 using Wdf240 = OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_4_0;
 using WL110 = OSGeo.MapGuide.ObjectModels.WebLayout.v1_1_0;
 using WL240 = OSGeo.MapGuide.ObjectModels.WebLayout.v2_4_0;
 using WL260 = OSGeo.MapGuide.ObjectModels.WebLayout.v2_6_0;
-using Tsd300 = OSGeo.MapGuide.ObjectModels.TileSetDefinition.v3_0_0;
 
 namespace OSGeo.MapGuide.ObjectModels
 {

@@ -7,16 +7,10 @@
 // ------------------------------------------------------------------------------
 namespace OSGeo.MapGuide.ObjectModels.DrawingSource.v1_0_0
 {
-    using System;
-    using System.Diagnostics;
-    using System.Xml.Serialization;
-    using System.Collections;
-    using System.Xml.Schema;
     using System.ComponentModel;
     using System.IO;
-    using OSGeo.MapGuide.ObjectModels.DrawingSource;
-    
-    
+
+
     /// <summary>
     /// A drawing source is a definition that provides part of the information required to connect to a particular drawing
     /// </summary>

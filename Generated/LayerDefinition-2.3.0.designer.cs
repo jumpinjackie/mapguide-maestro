@@ -5,19 +5,15 @@
 //    <NameSpace>OSGeo.MapGuide.ObjectModels.LayerDefinition</NameSpace><Collection>BindingList</Collection><codeType>CSharp</codeType><EnableDataBinding>True</EnableDataBinding><EnableLasyLoading>False</EnableLasyLoading><HidePrivateFieldInIDE>True</HidePrivateFieldInIDE><EnableSummaryComment>True</EnableSummaryComment><IncludeSerializeMethod>True</IncludeSerializeMethod><UseBaseClass>False</UseBaseClass><GenerateCloneMethod>True</GenerateCloneMethod><GenerateDataContracts>False</GenerateDataContracts><CodeBaseTag>Net20</CodeBaseTag><SerializeMethodName>Serialize</SerializeMethodName><DeserializeMethodName>Deserialize</DeserializeMethodName><SaveToFileMethodName>SaveToFile</SaveToFileMethodName><LoadFromFileMethodName>LoadFromFile</LoadFromFileMethodName><GenerateXMLAttributes>True</GenerateXMLAttributes><AutomaticProperties>False</AutomaticProperties><DisableDebug>False</DisableDebug><CustomUsings></CustomUsings><ExcludeIncludedTypes>False</ExcludeIncludedTypes><EnableInitializeFields>False</EnableInitializeFields>
 //  </auto-generated>
 // ------------------------------------------------------------------------------
-namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v2_3_0 {
-    using System;
-    using System.Diagnostics;
-    using System.Xml.Serialization;
-    using System.Collections;
-    using System.Xml.Schema;
-    using System.ComponentModel;
-    using System.IO;
-    using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v2_3_0
+{
     using OSGeo.MapGuide.ObjectModels.Common;
+    using OSGeo.MapGuide.ObjectModels.LayerDefinition;
     using OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0;
     using OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_3_0;
-    
+    using System.ComponentModel;
+    using System.IO;
+
     /// <summary>
     /// The specification of the data source and stylization for a layer.
     /// </summary>

@@ -22,12 +22,8 @@
 
 #define LDF_240
 using OSGeo.MapGuide.ObjectModels.SymbolDefinition;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 #pragma warning disable 1591, 0114, 0108
 

@@ -24,8 +24,8 @@ using ICSharpCode.Core.WinForms;
 using Maestro.Base.Services;
 using Maestro.Shared.UI;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Maestro.Base
 {

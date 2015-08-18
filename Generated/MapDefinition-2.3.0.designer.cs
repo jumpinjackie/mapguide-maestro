@@ -7,17 +7,11 @@
 // ------------------------------------------------------------------------------
 namespace OSGeo.MapGuide.ObjectModels.MapDefinition.v2_3_0
 {
-    using System;
-    using System.Diagnostics;
-    using System.Xml.Serialization;
-    using System.Collections;
-    using System.Xml.Schema;
-    using System.ComponentModel;
-    using System.IO;
-    using System.Drawing;
-    using OSGeo.MapGuide.ObjectModels.MapDefinition;
     using OSGeo.MapGuide.ObjectModels.WatermarkDefinition.v2_3_0;
-    
+    using System.ComponentModel;
+    using System.Drawing;
+    using System.IO;
+
     /// <summary>
     /// A MapDefinition defines the collection of layers, groupings of layers, and base map
     /// </summary>

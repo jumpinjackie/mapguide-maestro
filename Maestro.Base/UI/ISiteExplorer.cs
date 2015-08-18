@@ -21,7 +21,6 @@
 #endregion Disclaimer / License
 
 using Maestro.Shared.UI;
-using OSGeo.MapGuide.MaestroAPI;
 using System;
 
 namespace Maestro.Base.UI

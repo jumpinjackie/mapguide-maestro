@@ -21,7 +21,6 @@
 #endregion Disclaimer / License
 
 using Maestro.Editors.Fusion.WidgetEditors;
-using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.ApplicationDefinition;
 

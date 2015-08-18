@@ -7,16 +7,11 @@
 // ------------------------------------------------------------------------------
 namespace OSGeo.MapGuide.ObjectModels.LayerDefinition.v1_2_0
 {
-    using System;
-    using System.Diagnostics;
-    using System.Xml.Serialization;
-    using System.Collections;
-    using System.Xml.Schema;
+    using OSGeo.MapGuide.ObjectModels.Common;
+    using OSGeo.MapGuide.ObjectModels.LayerDefinition;
+    using OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0;
     using System.ComponentModel;
     using System.IO;
-    using OSGeo.MapGuide.ObjectModels.LayerDefinition;
-    using OSGeo.MapGuide.ObjectModels.Common;
-    using OSGeo.MapGuide.ObjectModels.SymbolDefinition.v1_1_0;
 
     /// <summary>
     /// The specification of the data source and stylization for a layer.

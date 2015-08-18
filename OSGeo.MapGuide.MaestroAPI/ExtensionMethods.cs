@@ -20,17 +20,15 @@
 
 #endregion Disclaimer / License
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.Services;
+using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.Common;
 using OSGeo.MapGuide.ObjectModels.DrawingSource;
-using OSGeo.MapGuide.MaestroAPI.Services;
+using System;
 using System.IO;
-using OSGeo.MapGuide.ObjectModels;
+using System.Text;
 
 namespace OSGeo.MapGuide.MaestroAPI
 {

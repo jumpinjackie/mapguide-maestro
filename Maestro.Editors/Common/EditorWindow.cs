@@ -22,7 +22,6 @@
 
 using Maestro.Editors.Preview;
 using OSGeo.MapGuide.MaestroAPI;
-using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.ObjectModels;
 using System;
 using System.IO;

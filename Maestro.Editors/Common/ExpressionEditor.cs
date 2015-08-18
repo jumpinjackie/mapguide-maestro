@@ -25,18 +25,18 @@ using Maestro.Editors.Common.Expression;
 using Maestro.Editors.Generic.XmlEditor;
 using Maestro.Editors.LayerDefinition.Vector.Thematics;
 using Maestro.Shared.UI;
+using OSGeo.FDO.Expressions;
 using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Exceptions;
-using OSGeo.FDO.Expressions;
 using OSGeo.MapGuide.MaestroAPI.Schema;
+using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels.Capabilities;
+using OSGeo.MapGuide.ObjectModels.FeatureSource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using OSGeo.MapGuide.ObjectModels.FeatureSource;
-using OSGeo.MapGuide.MaestroAPI.Services;
 
 namespace Maestro.Editors.Common
 {

@@ -23,9 +23,7 @@
 using Maestro.Editors.MapDefinition.Live;
 using Maestro.MapViewer;
 using Maestro.MapViewer.Model;
-using OSGeo.MapGuide.MaestroAPI;
 using OSGeo.MapGuide.MaestroAPI.Mapping;
-using OSGeo.MapGuide.MaestroAPI.Resource;
 using OSGeo.MapGuide.MaestroAPI.Services;
 using OSGeo.MapGuide.ObjectModels;
 using OSGeo.MapGuide.ObjectModels.LayerDefinition;
