@@ -401,8 +401,10 @@ namespace Maestro.AddIn.Scripting.Lang.Python
 
         private void ShowCompletionWindow()
         {
-            PythonConsoleCompletionDataProvider completionProvider = new PythonConsoleCompletionDataProvider(this);
-            textEditor.ShowCompletionWindow(completionProvider);
+            using (var completionProvider = new PythonConsoleCompletionDataProvider(this))
+            {
+                textEditor.ShowCompletionWindow(completionProvider);
+            }
         }
 
         /// <summary>

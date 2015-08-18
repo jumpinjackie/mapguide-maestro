@@ -66,7 +66,7 @@ namespace Maestro.Packaging
         /// <returns>A DialogResult object that indicates the upload result</returns>
         public static DialogResult UploadPackage(Form owner, IServerConnection con)
         {
-            OpenFileDialog dlg = Maestro.Shared.UI.DialogFactory.OpenFile();
+            OpenFileDialog dlg = DialogFactory.OpenFile();
             //Mono does NOT like this one
             //dlg.AutoUpgradeEnabled = true;
             dlg.CheckFileExists = true;
@@ -288,12 +288,17 @@ namespace Maestro.Packaging
             }
         }
 
-        private delegate void SetCurrentProgressDelegate(ProgressType type, string resource, int total, double pg);
-
-        private void SetCurrentProgress(ProgressType type, string resource, int total, double pg)
+        private void SetCurrentProgress(ProgressEventArgs args)
         {
+            ProgressType type = args.Type;
+            string resource = args.ResourceId;
+            int total = args.MaxValue;
+            double pg = args.Value;
             if (this.InvokeRequired)
-                this.Invoke(new SetCurrentProgressDelegate(SetCurrentProgress), new object[] { type, resource, total, pg });
+            {
+                Action<ProgressEventArgs> action = SetCurrentProgress;
+                this.Invoke(action, new object[] { args });
+            }
             else
             {
                 int span = this.CurrentProgress.Maximum - this.CurrentProgress.Minimum;

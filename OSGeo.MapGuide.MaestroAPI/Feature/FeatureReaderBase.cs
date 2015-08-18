@@ -46,7 +46,7 @@ namespace OSGeo.MapGuide.MaestroAPI.Feature
         /// only a subset of the class properties (as specified in the filter text), the class
         /// definition reflects what the user has requested, rather than the full class definition.
         /// </summary>
-        public OSGeo.MapGuide.MaestroAPI.Schema.ClassDefinition ClassDefinition
+        public ClassDefinition ClassDefinition
         {
             get { return _cls; }
             protected set

@@ -44,7 +44,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
     /// <summary>
     /// Provides code completion for the Python Console window.
     /// </summary>
-    internal class PythonConsoleCompletionDataProvider : ICompletionDataProvider
+    internal class PythonConsoleCompletionDataProvider : ICompletionDataProvider, IDisposable
     {
         private IMemberProvider memberProvider;
 
@@ -110,7 +110,7 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             return textArea.Document.GetText(lineSegment);
         }
 
-        public System.Windows.Forms.ImageList ImageList { get; }
+        public System.Windows.Forms.ImageList ImageList { get; private set; }
 
         public string PreSelection { get; }
 
@@ -152,6 +152,12 @@ namespace Maestro.AddIn.Scripting.Lang.Python
             textArea.Caret.Position = textArea.Document.OffsetToPosition(insertionOffset);
 
             return data.InsertAction(textArea, key);
+        }
+
+        public void Dispose()
+        {
+            this.ImageList?.Dispose();
+            this.ImageList = null;
         }
     }
 }
